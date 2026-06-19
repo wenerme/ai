@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,19 +19,13 @@ Attempts to validate a Custom Hostname are distributed over seven days (a total 
 * For the first 10 attempts:
 
 ```
-
 now() + min((floor(60 * pow(1.05, retry_attempt)) * INTERVAL '1 second'), INTERVAL '4 hours')
-
-
 ```
 
 * For the remaining 65 attempts:
 
 ```
-
 now() + min((floor(60 * pow(1.15, retry_attempt)) * INTERVAL '1 second'), INTERVAL '4 hours')
-
-
 ```
 
 The first 10 checks complete within 20 minutes and most checks complete in the first four hours. The check back off is capped to a maximum of four hours to avoid exponential growth. The back off behavior causes larger gaps between check intervals towards the end of the back off schedule:

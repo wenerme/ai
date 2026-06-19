@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -46,8 +46,7 @@ If you prefer to deploy step by step:
 2. Scaffold the bridge project:  
 Terminal window  
 ```  
-npm create cloudflare sandbox-bridge --template=cloudflare/sandbox-sdk/bridge/worker  
-cd sandbox-bridge  
+npm create cloudflare sandbox-bridge --template=cloudflare/sandbox-sdk/bridge/workercd sandbox-bridge  
 ```
 3. Authenticate with Cloudflare:  
 Terminal window  
@@ -79,10 +78,7 @@ Create a new directory for the agent:
 Terminal window
 
 ```
-
 mkdir openai-sandbox-agent && cd openai-sandbox-agent
-
-
 ```
 
 Create a `.env` file with your credentials:
@@ -90,14 +86,7 @@ Create a `.env` file with your credentials:
 .env
 
 ```
-
-OPENAI_API_KEY=sk-your-openai-key
-
-CLOUDFLARE_SANDBOX_API_KEY=your-bridge-token
-
-CLOUDFLARE_SANDBOX_WORKER_URL=https://cloudflare-sandbox-bridge.your-subdomain.workers.dev
-
-
+OPENAI_API_KEY=sk-your-openai-keyCLOUDFLARE_SANDBOX_API_KEY=your-bridge-tokenCLOUDFLARE_SANDBOX_WORKER_URL=https://cloudflare-sandbox-bridge.your-subdomain.workers.dev
 ```
 
 ## 3\. Build the agent
@@ -107,175 +96,23 @@ Create `main.py` with the following content. The inline script metadata tells `u
 main.py
 
 ```
-
-# /// script
-
-# requires-python = ">=3.12"
-
-# dependencies = ["openai-agents[cloudflare]"]
-
-# ///
-
-"""One-shot coding agent backed by a Cloudflare Sandbox."""
-
-
+# /// script# requires-python = ">=3.12"# dependencies = ["openai-agents[cloudflare]"]# ///"""One-shot coding agent backed by a Cloudflare Sandbox."""
 from __future__ import annotations
-
-
-import asyncio
-
-import os
-
-import sys
-
-from pathlib import Path
-
-
-from agents import Runner
-
-from agents.extensions.sandbox.cloudflare import (
-
-    CloudflareSandboxClient,
-
-    CloudflareSandboxClientOptions,
-
-)
-
-from agents.run import RunConfig
-
-from agents.sandbox import SandboxAgent, SandboxRunConfig
-
-from agents.sandbox.capabilities import Shell
-
-
+import asyncioimport osimport sysfrom pathlib import Path
+from agents import Runnerfrom agents.extensions.sandbox.cloudflare import (    CloudflareSandboxClient,    CloudflareSandboxClientOptions,)from agents.run import RunConfigfrom agents.sandbox import SandboxAgent, SandboxRunConfigfrom agents.sandbox.capabilities import Shell
 MODEL = "gpt-5.4"
+INSTRUCTIONS = """\You are an expert developer working inside a sandbox.The sandbox has bun, node, npm, and python available on the PATH.Implement the user's task in /workspace, test it, then copy deliverable files to /workspace/output/.""".strip()
 
+async def copy_output(session, dest: Path) -> list[Path]:    """Download files from /workspace/output/ in the sandbox to a local directory."""    dest.mkdir(parents=True, exist_ok=True)    ls = await session.exec("find", "/workspace/output", "-maxdepth", "1", "-type", "f", shell=False)    if not ls.ok():        return []    copied: list[Path] = []    for name in (l.strip() for l in ls.stdout.decode().splitlines() if l.strip()):        handle = await session.read(Path(name))        local = dest / Path(name).name        payload = handle.read(); handle.close()        local.write_bytes(payload if isinstance(payload, bytes) else payload.encode())        copied.append(local)    return copied
 
-INSTRUCTIONS = """\
+async def run(prompt: str, output_dir: Path) -> None:    worker_url = os.environ.get("CLOUDFLARE_SANDBOX_WORKER_URL", "")    if not worker_url:        sys.exit("Error: CLOUDFLARE_SANDBOX_WORKER_URL is not set.")
+    agent = SandboxAgent(        name="Developer",        model=MODEL,        instructions=INSTRUCTIONS,        capabilities=[Shell()],    )
+    client = CloudflareSandboxClient()    options = CloudflareSandboxClientOptions(worker_url=worker_url)    session = await client.create(manifest=agent.default_manifest, options=options)
+    try:        async with session:            run_config = RunConfig(                sandbox=SandboxRunConfig(session=session),                tracing_disabled=True,            )
+            # Stream tool calls so the user can follow progress.            result = Runner.run_streamed(agent, prompt, run_config=run_config)            async for ev in result.stream_events():                if ev.type == "run_item_stream_event" and ev.name == "tool_called":                    print(f"  [tool] {getattr(ev.item.raw_item, 'name', '')}")                elif ev.type == "run_item_stream_event" and ev.name == "tool_output":                    print(f"  [output] {str(getattr(ev.item, 'output', ''))[:200]}")
+            # Copy output files from the sandbox to the local machine.            copied = await copy_output(session, output_dir)            if copied:                print(f"\nCopied {len(copied)} file(s) to {output_dir}:")                for p in copied:                    print(f"   {p}")            else:                print("\nAgent did not produce any output files.")    finally:        await client.delete(session)
 
-You are an expert developer working inside a sandbox.
-
-The sandbox has bun, node, npm, and python available on the PATH.
-
-Implement the user's task in /workspace, test it, then copy deliverable files to /workspace/output/.
-
-""".strip()
-
-
-async def copy_output(session, dest: Path) -> list[Path]:
-
-    """Download files from /workspace/output/ in the sandbox to a local directory."""
-
-    dest.mkdir(parents=True, exist_ok=True)
-
-    ls = await session.exec("find", "/workspace/output", "-maxdepth", "1", "-type", "f", shell=False)
-
-    if not ls.ok():
-
-        return []
-
-    copied: list[Path] = []
-
-    for name in (l.strip() for l in ls.stdout.decode().splitlines() if l.strip()):
-
-        handle = await session.read(Path(name))
-
-        local = dest / Path(name).name
-
-        payload = handle.read(); handle.close()
-
-        local.write_bytes(payload if isinstance(payload, bytes) else payload.encode())
-
-        copied.append(local)
-
-    return copied
-
-
-async def run(prompt: str, output_dir: Path) -> None:
-
-    worker_url = os.environ.get("CLOUDFLARE_SANDBOX_WORKER_URL", "")
-
-    if not worker_url:
-
-        sys.exit("Error: CLOUDFLARE_SANDBOX_WORKER_URL is not set.")
-
-
-    agent = SandboxAgent(
-
-        name="Developer",
-
-        model=MODEL,
-
-        instructions=INSTRUCTIONS,
-
-        capabilities=[Shell()],
-
-    )
-
-
-    client = CloudflareSandboxClient()
-
-    options = CloudflareSandboxClientOptions(worker_url=worker_url)
-
-    session = await client.create(manifest=agent.default_manifest, options=options)
-
-
-    try:
-
-        async with session:
-
-            run_config = RunConfig(
-
-                sandbox=SandboxRunConfig(session=session),
-
-                tracing_disabled=True,
-
-            )
-
-
-            # Stream tool calls so the user can follow progress.
-
-            result = Runner.run_streamed(agent, prompt, run_config=run_config)
-
-            async for ev in result.stream_events():
-
-                if ev.type == "run_item_stream_event" and ev.name == "tool_called":
-
-                    print(f"  [tool] {getattr(ev.item.raw_item, 'name', '')}")
-
-                elif ev.type == "run_item_stream_event" and ev.name == "tool_output":
-
-                    print(f"  [output] {str(getattr(ev.item, 'output', ''))[:200]}")
-
-
-            # Copy output files from the sandbox to the local machine.
-
-            copied = await copy_output(session, output_dir)
-
-            if copied:
-
-                print(f"\nCopied {len(copied)} file(s) to {output_dir}:")
-
-                for p in copied:
-
-                    print(f"   {p}")
-
-            else:
-
-                print("\nAgent did not produce any output files.")
-
-    finally:
-
-        await client.delete(session)
-
-
-if __name__ == "__main__":
-
-    prompt = sys.argv[1] if len(sys.argv) > 1 else "Create a hello world HTTP server using Bun.serve"
-
-    asyncio.run(run(prompt, Path("output")))
-
-
+if __name__ == "__main__":    prompt = sys.argv[1] if len(sys.argv) > 1 else "Create a hello world HTTP server using Bun.serve"    asyncio.run(run(prompt, Path("output")))
 ```
 
 Here is what the key pieces do:
@@ -294,32 +131,14 @@ Here is what the key pieces do:
 Terminal window
 
 ```
-
 uv run --env-file .env main.py "Create a hello world HTTP server using Bun.serve"
-
-
 ```
 
 You should see tool calls and output streaming to the console:
 
 ```
-
-Sending task to sandbox agent (gpt-5.4)...
-
-  [tool] exec_command
-
-  [output] exit_code=0 stdout: mkdir: created directory '/workspace/output'
-
-  [tool] exec_command
-
-  [output] exit_code=0 stdout: Listening on http://localhost:3000
-
-
-Copied 1 file(s) to output:
-
-   output/server.ts
-
-
+Sending task to sandbox agent (gpt-5.4)...  [tool] exec_command  [output] exit_code=0 stdout: mkdir: created directory '/workspace/output'  [tool] exec_command  [output] exit_code=0 stdout: Listening on http://localhost:3000
+Copied 1 file(s) to output:   output/server.ts
 ```
 
 The agent wrote the code, tested it inside the sandbox, and copied the deliverable to your local machine.

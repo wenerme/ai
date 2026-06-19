@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,11 +35,11 @@ Domain Connect templates are published and maintained on a GitHub repository.
 
 1. Create a fork of the [templates repository ↗](https://github.com/Domain-Connect/Templates).
 2. Add your template. You can create a copy of one of the existing templates and edit it according to your needs.  
-   * Refer to the [Domain Connect Specification ↗](https://github.com/Domain-Connect/spec/blob/master/Domain%20Connect%20Spec%20Draft.adoc) for details on the different available fields.  
-   Note  
-   Not all fields (properties) are supported by Cloudflare, and some will be mandatory for onboarding your template. Refer to the [properties support](#properties-support) section below for details.  
-   * If present, you must set the `syncBlock` field on your template to `false`. This means the template flow will be synchronous, which is the only option supported by Cloudflare.  
-   * You must also provide a synchronous public key domain (`syncPubKeyDomain` [1](#user-content-fn-1)). When your template is in use, synchronous calls will be digitally signed.
+  * Refer to the [Domain Connect Specification ↗](https://github.com/Domain-Connect/spec/blob/master/Domain%20Connect%20Spec%20Draft.adoc) for details on the different available fields.  
+  Note  
+  Not all fields (properties) are supported by Cloudflare, and some will be mandatory for onboarding your template. Refer to the [properties support](#properties-support) section below for details.
+  * If present, you must set the `syncBlock` field on your template to `false`. This means the template flow will be synchronous, which is the only option supported by Cloudflare.
+  * You must also provide a synchronous public key domain (`syncPubKeyDomain` [1](#user-content-fn-1)). When your template is in use, synchronous calls will be digitally signed.
 3. Make sure you follow the naming format defined by Domain Connect: `<providerId>.<serviceId>.json`.
 
 Tip
@@ -138,11 +138,12 @@ You can contact Cloudflare to opt out of the automatic updates. Once the automat
 
 Send an email to `domain-connect@cloudflare.com` with the following information:
 
-1. Detailed description of what is wrong, including:  
-   * Date and time when the issue occurred.  
-   * The `providerId` and `serviceId` of the template.  
-   * Description of what the request did.  
-   * Description of what you expected to happen.
+1. Detailed description of what is wrong, including:
+
+  * Date and time when the issue occurred.
+  * The `providerId` and `serviceId` of the template.
+  * Description of what the request did.
+  * Description of what you expected to happen.
 2. A [HAR file](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/#generate-a-har-file) attachment containing the problematic update.
 
 ### Validation errors

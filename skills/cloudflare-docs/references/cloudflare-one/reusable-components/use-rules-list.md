@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,26 +25,7 @@ For example:
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/rules/lists \
-
---header "X-Auth-Email: <EMAIL>" \
-
---header "X-Auth-Key: <API_KEY>" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "name": "iplist",
-
-  "description": "This contains IPs that should be allowed.",
-
-  "kind": "ip"
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/rules/lists \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "name": "iplist",  "description": "This contains IPs that should be allowed.",  "kind": "ip"}'
 ```
 
 ## 2\. Add IPs to the list
@@ -54,24 +35,7 @@ Next, [create list items](https://developers.cloudflare.com/api/resources/rules/
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/rules/lists/{list_id}/items \
-
---header "X-Auth-Email: <EMAIL>" \
-
---header "X-Auth-Key: <API_KEY>" \
-
---header "Content-Type: application/json" \
-
---data '[
-
-  {"ip":"10.0.0.1"},
-
-  {"ip":"10.10.0.0/24"}
-
-]'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/rules/lists/{list_id}/items \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '[  {"ip":"10.0.0.1"},  {"ip":"10.10.0.0/24"}]'
 ```
 
 ## 3\. Use the list in a rule
@@ -81,32 +45,7 @@ Finally, add a Cloudflare Network Firewall rule referencing the list into an exi
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets/{ruleset_id}/rules \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "action": "skip",
-
-  "action_parameters": {
-
-    "ruleset": "current"
-
-  },
-
-  "expression": "ip.src in $iplist",
-
-  "description": "Allowed IPs from iplist",
-
-  "enabled": true
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets/{ruleset_id}/rules \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "action": "skip",  "action_parameters": {    "ruleset": "current"  },  "expression": "ip.src in $iplist",  "description": "Allowed IPs from iplist",  "enabled": true}'
 ```
 
 ## Managed lists

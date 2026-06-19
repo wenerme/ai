@@ -285,6 +285,18 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
         "Default allow/deny for app tools with `open_world_hint = true`.",
     },
     {
+      key: "apps._default.approvals_reviewer",
+      type: "user | auto_review",
+      description:
+        "Default reviewer for app tool approval prompts unless overridden per app. When omitted, apps inherit the top-level `approvals_reviewer` value.",
+    },
+    {
+      key: "apps._default.default_tools_approval_mode",
+      type: "auto | prompt | approve",
+      description:
+        "Default approval behavior for app tools without per-app or per-tool overrides.",
+    },
+    {
       key: "apps.<id>.destructive_enabled",
       type: "boolean",
       description:
@@ -301,6 +313,12 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       type: "boolean",
       description:
         "Default enabled state for tools in this app unless a per-tool override exists.",
+    },
+    {
+      key: "apps.<id>.approvals_reviewer",
+      type: "user | auto_review",
+      description:
+        "Reviewer for this app's tool approval prompts. Overrides `apps._default.approvals_reviewer`.",
     },
     {
       key: "apps.<id>.default_tools_approval_mode",
@@ -347,6 +365,54 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       type: "boolean",
       description:
         "Enable Codex-generated git commits. When enabled, Codex uses `commit_attribution` to append a `Co-authored-by:` trailer to generated commit messages.",
+    },
+    {
+      key: "features.code_mode.enabled",
+      type: "boolean",
+      description:
+        "Enable code mode feature configuration. This feature is under development and off by default.",
+    },
+    {
+      key: "features.code_mode.excluded_tool_namespaces",
+      type: "array<string>",
+      description:
+        "Tool namespaces code mode excludes from nested code-mode tool guidance and executor exposure.",
+    },
+    {
+      key: "features.code_mode.direct_only_tool_namespaces",
+      type: "array<string>",
+      description:
+        "Tool namespaces code mode can use only through direct tool calls.",
+    },
+    {
+      key: "features.rollout_budget.enabled",
+      type: "boolean",
+      description:
+        "Enable rollout budget tracking. This feature is under development and off by default. When enabled, `features.rollout_budget.limit_tokens` is required.",
+    },
+    {
+      key: "features.rollout_budget.limit_tokens",
+      type: "integer",
+      description:
+        "Positive token limit for rollout budget tracking. Required when rollout budget is enabled.",
+    },
+    {
+      key: "features.rollout_budget.reminder_interval_tokens",
+      type: "integer",
+      description:
+        "Positive token interval between rollout budget reminders. Defaults to 10% of `limit_tokens`, with a minimum of 1 token.",
+    },
+    {
+      key: "features.rollout_budget.sampling_token_weight",
+      type: "number",
+      description:
+        "Finite non-negative multiplier for sampled tokens in rollout budget accounting. Defaults to `1.0`.",
+    },
+    {
+      key: "features.rollout_budget.prefill_token_weight",
+      type: "number",
+      description:
+        "Finite non-negative multiplier for prefill tokens in rollout budget accounting. Defaults to `1.0`.",
     },
     {
       key: "hooks",
@@ -1675,7 +1741,7 @@ deployments, use `allowed_permission_profiles` with managed
       key: "features.computer_use",
       type: "boolean",
       description:
-        "Set to `false` in `requirements.toml` to disable Computer Use availability and related install or enablement flows.",
+        "Set to `false` in `requirements.toml` to disable Computer Use, Record & Replay, and related install or enablement flows.",
     },
     {
       key: "features.workspace_dependencies",

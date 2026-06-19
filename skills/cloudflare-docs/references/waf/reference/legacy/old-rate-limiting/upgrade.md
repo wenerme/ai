@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,10 +29,11 @@ You must now use the [Rulesets API](https://developers.cloudflare.com/ruleset-en
 * **Counter scope:** The new version of rate limiting uses counters scoped per data center, with `cf.colo.id` always included as a characteristic. This means thresholds can behave differently for traffic distributed across multiple Cloudflare locations. Data centers in the same geographic location share counters. For more information, refer to [How Cloudflare determines the request rate](https://developers.cloudflare.com/waf/rate-limiting-rules/request-rate/).
 * **Separate counting and mitigation expressions:** In the new version of Rate Limiting, counting and mitigation expressions are separate (for Business and Enterprise customers). The counting expression defines which requests are used to compute the rate. The mitigation expression defines which requests are mitigated once the threshold has been reached. Using these separate expressions, you can track the rate of requests on a specific path such as `/login` and, when an IP exceeds the threshold, block every request from the same IP addressed at your domain.
 * **Additional counting dimensions (Advanced Rate Limiting only):** Like in the previous version of Rate Limiting, customers with the new Rate Limiting get IP-based rate limiting, where Cloudflare counts requests based on the source IP address of incoming requests. In addition to IP-based rate limiting, customers with the new Rate Limiting who subscribe to Advanced Rate Limiting can group requests based on other characteristics, such as the value of API keys, cookies, session headers, ASN, query parameters, or a specific JSON body field. Refer to [Rate limiting best practices](https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/) for examples.
-* **Number of rules per plan**: Besides the exact features per Cloudflare plan, the number of rules per plan is different in the new version of Rate Limiting (for information on the new version limits, refer to [Rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/#availability)):  
-| Product                          | Free | Pro | Business | Enterprise with RL add-on, or equivalent plan |  
-| -------------------------------- | ---- | --- | -------- | --------------------------------------------- |  
-| Rate Limiting (previous version) | 1    | 10  | 15       | 100                                           |  
+* **Number of rules per plan**: Besides the exact features per Cloudflare plan, the number of rules per plan is different in the new version of Rate Limiting (for information on the new version limits, refer to [Rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/#availability)):
+
+| Product                          | Free | Pro | Business | Enterprise with RL add-on, or equivalent plan |
+| -------------------------------- | ---- | --- | -------- | --------------------------------------------- |
+| Rate Limiting (previous version) | 1    | 10  | 15       | 100                                           |
 | Rate Limiting (new version)      | 1    | 2   | 5        | 100                                           |  
 Enterprise customers must have application security on their contract to get access to rate limiting rules.  
 Refer to [Important remarks about the upgrade](#important-remarks-about-the-upgrade) for details on how Cloudflare will adjust your rules quota, if needed, after the upgrade.
@@ -95,17 +96,7 @@ Terminal window
 cf-terraforming generate --zone <ZONE_ID> --resource-type "cloudflare_ruleset"  
 ```  
 ```  
-resource "cloudflare_ruleset" "terraform_managed_resource_3c0b456bc2aa443089c5f40f45f51b31" {  
-  kind    = "zone"  
-  name    = "default"  
-  phase   = "http_ratelimit"  
-  zone_id = "<ZONE_ID>"  
-  rules {  
-    # (...)  
-  }  
-  # (...)  
-}  
-# (...)  
+resource "cloudflare_ruleset" "terraform_managed_resource_3c0b456bc2aa443089c5f40f45f51b31" {  kind    = "zone"  name    = "default"  phase   = "http_ratelimit"  zone_id = "<ZONE_ID>"  rules {    # (...)  }  # (...)}# (...)  
 ```
 2. The previous command may return additional ruleset configurations for other Cloudflare products also based on the [Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/). Since you are updating your rate limiting rules configuration, keep only the Terraform resource for the `http_ratelimit` phase and save it to a `.tf` configuration file. You will need the full resource name in the next step.
 3. Import the `cloudflare_ruleset` resource you previously identified into Terraform state using the `terraform import` command. For example:  
@@ -114,13 +105,9 @@ Terminal window
 terraform import cloudflare_ruleset.terraform_managed_resource_3c0b456bc2aa443089c5f40f45f51b31 zone/<ZONE_ID>/3c0b456bc2aa443089c5f40f45f51b31  
 ```  
 ```  
-cloudflare_ruleset.terraform_managed_resource_3c0b456bc2aa443089c5f40f45f51b31: Importing from ID "zone/<ZONE_ID>/3c0b456bc2aa443089c5f40f45f51b31"...  
-cloudflare_ruleset.terraform_managed_resource_3c0b456bc2aa443089c5f40f45f51b31: Import prepared!  
-  Prepared cloudflare_ruleset for import  
-cloudflare_ruleset.terraform_managed_resource_3c0b456bc2aa443089c5f40f45f51b31: Refreshing state... [id=3c0b456bc2aa443089c5f40f45f51b31]  
+cloudflare_ruleset.terraform_managed_resource_3c0b456bc2aa443089c5f40f45f51b31: Importing from ID "zone/<ZONE_ID>/3c0b456bc2aa443089c5f40f45f51b31"...cloudflare_ruleset.terraform_managed_resource_3c0b456bc2aa443089c5f40f45f51b31: Import prepared!  Prepared cloudflare_ruleset for importcloudflare_ruleset.terraform_managed_resource_3c0b456bc2aa443089c5f40f45f51b31: Refreshing state... [id=3c0b456bc2aa443089c5f40f45f51b31]  
 Import successful!  
-The resources that were imported are shown above. These resources are now in  
-your Terraform state and will henceforth be managed by Terraform.  
+The resources that were imported are shown above. These resources are now inyour Terraform state and will henceforth be managed by Terraform.  
 ```
 4. Run `terraform plan` to validate that Terraform now checks the state of the new `cloudflare_ruleset` resource, in addition to other existing resources already managed by Terraform. For example:  
 Terminal window  
@@ -128,39 +115,36 @@ Terminal window
 terraform plan  
 ```  
 ```  
-cloudflare_ruleset.terraform_managed_resource_3c0b456bc2aa443089c5f40f45f51b31: Refreshing state... [id=3c0b456bc2aa443089c5f40f45f51b31]  
-[...]  
-cloudflare_rate_limit.my_rate_limiting_rules: Refreshing state... [id=0580eb5d92e344ddb2374979f74c3ddf]  
-[...]  
+cloudflare_ruleset.terraform_managed_resource_3c0b456bc2aa443089c5f40f45f51b31: Refreshing state... [id=3c0b456bc2aa443089c5f40f45f51b31][...]cloudflare_rate_limit.my_rate_limiting_rules: Refreshing state... [id=0580eb5d92e344ddb2374979f74c3ddf][...]  
 ```
 5. Remove any state related to rate limiting rules configured through the old `cloudflare_rate_limit` resource from your Terraform state:  
 Important  
-You must remove rate limiting rules configured through the `cloudflare_rate_limit` resource from Terraform state before deleting their configuration from `.tf` configuration files to prevent issues.  
-   1. Run the following command to find all resources related to rate limiting rules (previous version):  
-   Terminal window  
-   ```  
-   terraform state list | grep -E '^cloudflare_rate_limit\.'  
-   ```  
-   ```  
-   cloudflare_rate_limit.my_rate_limiting_rules  
-   ```  
-   2. Run the `terraform state rm ...` command in dry-run mode to understand the impact of removing those resources without performing any changes:  
-   Terminal window  
-   ```  
-   terraform state rm -dry-run cloudflare_rate_limit.my_rate_limiting_rules  
-   ```  
-   ```  
-   Would remove cloudflare_rate_limit.my_rate_limiting_rules  
-   ```  
-   3. If the impact looks correct, run the same command without the `-dry-run` parameter to actually remove the resources from Terraform state:  
-   Terminal window  
-   ```  
-   terraform state rm cloudflare_rate_limit.my_rate_limiting_rules  
-   ```  
-   ```  
-   Removed cloudflare_rate_limit.my_rate_limiting_rules  
-   Successfully removed 1 resource instance(s).  
-   ```
+You must remove rate limiting rules configured through the `cloudflare_rate_limit` resource from Terraform state before deleting their configuration from `.tf` configuration files to prevent issues.
+
+  1. Run the following command to find all resources related to rate limiting rules (previous version):  
+  Terminal window  
+  ```  
+  terraform state list | grep -E '^cloudflare_rate_limit\.'  
+  ```  
+  ```  
+  cloudflare_rate_limit.my_rate_limiting_rules  
+  ```
+  2. Run the `terraform state rm ...` command in dry-run mode to understand the impact of removing those resources without performing any changes:  
+  Terminal window  
+  ```  
+  terraform state rm -dry-run cloudflare_rate_limit.my_rate_limiting_rules  
+  ```  
+  ```  
+  Would remove cloudflare_rate_limit.my_rate_limiting_rules  
+  ```
+  3. If the impact looks correct, run the same command without the `-dry-run` parameter to actually remove the resources from Terraform state:  
+  Terminal window  
+  ```  
+  terraform state rm cloudflare_rate_limit.my_rate_limiting_rules  
+  ```  
+  ```  
+  Removed cloudflare_rate_limit.my_rate_limiting_rulesSuccessfully removed 1 resource instance(s).  
+  ```
 6. After removing `cloudflare_rate_limit` resources from Terraform state, delete all these resources from `.tf` configuration files.
 7. Run `terraform plan` to verify that the resources you deleted from configuration files no longer appear. You should not have any pending changes.  
 Terminal window  
@@ -168,8 +152,7 @@ Terminal window
 terraform plan  
 ```  
 ```  
-cloudflare_ruleset.terraform_managed_resource_3c0b456bc2aa443089c5f40f45f51b31: Refreshing state... [id=3c0b456bc2aa443089c5f40f45f51b31]  
-[...]  
+cloudflare_ruleset.terraform_managed_resource_3c0b456bc2aa443089c5f40f45f51b31: Refreshing state... [id=3c0b456bc2aa443089c5f40f45f51b31][...]  
 No changes. Your infrastructure matches the configuration.  
 Terraform has compared your real infrastructure against your configuration and found no differences, so no changes are needed.  
 ```

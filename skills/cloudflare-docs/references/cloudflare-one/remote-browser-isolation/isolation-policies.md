@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -138,8 +138,8 @@ Custom block dialogs are still in beta. Contact your account team to start using
 
 Isolate security threats such as malware and phishing.
 
-* [ Dashboard ](#tab-panel-7392)
-* [ API ](#tab-panel-7393)
+* [ Dashboard ](#tab-panel-7468)
+* [ API ](#tab-panel-7469)
 
 | Selector            | Operator | Value                | Action  |
 | ------------------- | -------- | -------------------- | ------- |
@@ -148,46 +148,15 @@ Isolate security threats such as malware and phishing.
 Create a Zero Trust Gateway rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "Isolate all security threats",
-
-    "description": "Isolate security threats such as malware and phishing",
-
-    "enabled": true,
-
-    "action": "isolate",
-
-    "filters": [
-
-        "http"
-
-    ],
-
-    "traffic": "any(http.request.uri.security_category[*] in {68 178 80 83 176 175 117 131 134 151 153})",
-
-    "identity": "",
-
-    "device_posture": ""
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Isolate all security threats",    "description": "Isolate security threats such as malware and phishing",    "enabled": true,    "action": "isolate",    "filters": [        "http"    ],    "traffic": "any(http.request.uri.security_category[*] in {68 178 80 83 176 175 117 131 134 151 153})",    "identity": "",    "device_posture": ""  }'
 ```
 
 ### Isolate high risk content
 
 Isolate high risk content categories such as newly registered domains.
 
-* [ Dashboard ](#tab-panel-7394)
-* [ API ](#tab-panel-7395)
+* [ Dashboard ](#tab-panel-7470)
+* [ API ](#tab-panel-7471)
 
 | Selector           | Operator | Value            | Action  |
 | ------------------ | -------- | ---------------- | ------- |
@@ -196,46 +165,15 @@ Isolate high risk content categories such as newly registered domains.
 Create a Zero Trust Gateway rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "Isolate high risk content",
-
-    "description": "Isolate high risk content categories such as newly registered domains",
-
-    "enabled": true,
-
-    "action": "isolate",
-
-    "filters": [
-
-        "http"
-
-    ],
-
-    "traffic": "any(http.request.uri.content_category[*] in {32 169 177 128})",
-
-    "identity": "",
-
-    "device_posture": ""
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Isolate high risk content",    "description": "Isolate high risk content categories such as newly registered domains",    "enabled": true,    "action": "isolate",    "filters": [        "http"    ],    "traffic": "any(http.request.uri.content_category[*] in {32 169 177 128})",    "identity": "",    "device_posture": ""  }'
 ```
 
 ### Isolate news and media
 
 Isolate news and media sites, which are targets for malvertising attacks.
 
-* [ Dashboard ](#tab-panel-7396)
-* [ API ](#tab-panel-7397)
+* [ Dashboard ](#tab-panel-7472)
+* [ API ](#tab-panel-7473)
 
 | Selector           | Operator | Value            | Action  |
 | ------------------ | -------- | ---------------- | ------- |
@@ -244,46 +182,15 @@ Isolate news and media sites, which are targets for malvertising attacks.
 Create a Zero Trust Gateway rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "Isolate news and media",
-
-    "description": "Isolate news and media sites, which are targets for malvertising attacks",
-
-    "enabled": true,
-
-    "action": "isolate",
-
-    "filters": [
-
-        "http"
-
-    ],
-
-    "traffic": "any(http.request.uri.content_category[*] in {122})",
-
-    "identity": "",
-
-    "device_posture": ""
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Isolate news and media",    "description": "Isolate news and media sites, which are targets for malvertising attacks",    "enabled": true,    "action": "isolate",    "filters": [        "http"    ],    "traffic": "any(http.request.uri.content_category[*] in {122})",    "identity": "",    "device_posture": ""  }'
 ```
 
 ### Isolate uncategorized content
 
 Isolate content that has not been categorized by [Cloudflare Radar](https://developers.cloudflare.com/radar/).
 
-* [ Dashboard ](#tab-panel-7398)
-* [ API ](#tab-panel-7399)
+* [ Dashboard ](#tab-panel-7474)
+* [ API ](#tab-panel-7475)
 
 | Selector           | Operator | Value                    | Action  |
 | ------------------ | -------- | ------------------------ | ------- |
@@ -292,46 +199,15 @@ Isolate content that has not been categorized by [Cloudflare Radar](https://deve
 Create a Zero Trust Gateway rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "Isolate uncategorized content",
-
-    "description": "Isolate content not categorized by Cloudflare Radar",
-
-    "enabled": true,
-
-    "action": "isolate",
-
-    "filters": [
-
-        "http"
-
-    ],
-
-    "traffic": "not(any(http.request.uri.content_category[*] in {2 67 125 133 3 75 183 89 182 6 90 91 144 150 7 70 74 76 79 92 96 100 106 107 116 120 121 122 127 139 156 164 99 9 101 137 10 103 146 11 12 77 98 108 110 111 118 126 129 172 168 113 33 179 166 15 115 119 124 141 161 17 85 87 102 157 135 138 180 162 140 142 32 169 177 128 22 73 82 88 148 23 24 181 71 72 173 78 84 86 94 97 104 105 114 174 93 130 132 136 147 149 154 158 152 26 69 184 81 95 109 123 145 155 159 160 163 165 167}))",
-
-    "identity": "",
-
-    "device_posture": ""
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Isolate uncategorized content",    "description": "Isolate content not categorized by Cloudflare Radar",    "enabled": true,    "action": "isolate",    "filters": [        "http"    ],    "traffic": "not(any(http.request.uri.content_category[*] in {2 67 125 133 3 75 183 89 182 6 90 91 144 150 7 70 74 76 79 92 96 100 106 107 116 120 121 122 127 139 156 164 99 9 101 137 10 103 146 11 12 77 98 108 110 111 118 126 129 172 168 113 33 179 166 15 115 119 124 141 161 17 85 87 102 157 135 138 180 162 140 142 32 169 177 128 22 73 82 88 148 23 24 181 71 72 173 78 84 86 94 97 104 105 114 174 93 130 132 136 147 149 154 158 152 26 69 184 81 95 109 123 145 155 159 160 163 165 167}))",    "identity": "",    "device_posture": ""  }'
 ```
 
 ### Isolate ChatGPT
 
 Isolate the use of ChatGPT.
 
-* [ Dashboard ](#tab-panel-7400)
-* [ API ](#tab-panel-7401)
+* [ Dashboard ](#tab-panel-7476)
+* [ API ](#tab-panel-7477)
 
 | Selector    | Operator | Value     | Action  |
 | ----------- | -------- | --------- | ------- |
@@ -342,38 +218,7 @@ In **Configure policy settings**, you can customize restrictions for ChatGPT. Fo
 Create a Zero Trust Gateway rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "Isolate ChatGPT",
-
-    "description": "Isolate the use of ChatGPT",
-
-    "enabled": true,
-
-    "action": "isolate",
-
-    "filters": [
-
-        "http"
-
-    ],
-
-    "traffic": "any(app.ids[*] in {1199})",
-
-    "identity": "",
-
-    "device_posture": ""
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Isolate ChatGPT",    "description": "Isolate the use of ChatGPT",    "enabled": true,    "action": "isolate",    "filters": [        "http"    ],    "traffic": "any(app.ids[*] in {1199})",    "identity": "",    "device_posture": ""  }'
 ```
 
 ```json

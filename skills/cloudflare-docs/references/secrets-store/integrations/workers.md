@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/secrets-store/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,8 +23,9 @@ This is different from Workers [Variables and Secrets](https://developers.cloudf
 ## Before you begin
 
 * If [using the Dashboard](#via-dashboard), make sure you already have a Workers application. Refer to the [Workers get started](https://developers.cloudflare.com/workers/get-started/dashboard/) for guidance.
-* You should also have a store created under the **Secrets Store** tab on the Dashboard. The first store in your account is created automatically when a user with [Super Administrator or Secrets Store Admin role](https://developers.cloudflare.com/secrets-store/access-control/) interacts with it.  
-   * If no store exists in your account yet and you have the necessary permissions, you can use the [Wrangler command](https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/#secrets-store-store) `secrets-store store create <name> --remote` to create your first store.
+* You should also have a store created under the **Secrets Store** tab on the Dashboard. The first store in your account is created automatically when a user with [Super Administrator or Secrets Store Admin role](https://developers.cloudflare.com/secrets-store/access-control/) interacts with it.
+
+  * If no store exists in your account yet and you have the necessary permissions, you can use the [Wrangler command](https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/#secrets-store-store) `secrets-store store create <name> --remote` to create your first store.
 
 Local development mode
 
@@ -38,9 +39,9 @@ Note
 
 You may also add account secrets directly from the Workers settings on the dashboard. You can skip to [step 2](#via-dashboard) to do that.
 
-* [ Wrangler ](#tab-panel-10525)
-* [ Dashboard ](#tab-panel-10526)
-* [ API ](#tab-panel-10527)
+* [ Wrangler ](#tab-panel-10601)
+* [ Dashboard ](#tab-panel-10602)
+* [ API ](#tab-panel-10603)
 
 Use the [Wrangler command](https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/#secrets-store-secret) `secrets-store secret create`.
 
@@ -51,24 +52,12 @@ Note that a secret name cannot contain spaces.
 Terminal window
 
 ```
-
 npx wrangler secrets-store secret create <STORE_ID> --name MY_SECRET_NAME --scopes workers --remote
-
-
 ```
 
 ```
-
 ✓ Enter a secret value: › ***
-
-
-🔐 Creating secret... (Name: MY_SECRET_NAME, Value: REDACTED, Scopes: workers, Comment: undefined)
-
-✓ Select an account: › My account
-
-✅ Created secret! (ID: 13bc7498c6374a4e9d13be091c3c65f1)
-
-
+🔐 Creating secret... (Name: MY_SECRET_NAME, Value: REDACTED, Scopes: workers, Comment: undefined)✓ Select an account: › My account✅ Created secret! (ID: 13bc7498c6374a4e9d13be091c3c65f1)
 ```
 
 1. In the Cloudflare dashboard, go to the **Secrets Store** page.  
@@ -84,58 +73,13 @@ Refer to [Secrets Store API](https://developers.cloudflare.com/api/resources/sec
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Secrets Store Write`
 
 Create a secret
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/secrets_store/stores/$STORE_ID/secrets" \
-
-  --request POST \
-
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
-
-  --json '[
-
-    {
-
-        "name": "<MY_SECRET_NAME>",
-
-        "value": "<SECRET_VALUE>",
-
-        "scopes": [
-
-            "workers"
-
-        ],
-
-        "comment": ""
-
-    },
-
-    {
-
-        "name": "<MY_SECRET_NAME_2>",
-
-        "value": "<SECRET_VALUE>",
-
-        "scopes": [
-
-            "workers"
-
-        ],
-
-        "comment": ""
-
-    }
-
-  ]'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/secrets_store/stores/$STORE_ID/secrets" \  --request POST \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \  --json '[    {        "name": "<MY_SECRET_NAME>",        "value": "<SECRET_VALUE>",        "scopes": [            "workers"        ],        "comment": ""    },    {        "name": "<MY_SECRET_NAME_2>",        "value": "<SECRET_VALUE>",        "scopes": [            "workers"        ],        "comment": ""    }  ]'
 ```
 
 Refer to [manage account secrets](https://developers.cloudflare.com/secrets-store/manage-secrets/) for further options.
@@ -152,56 +96,24 @@ To bind an account secret to your Worker, you must have one of the following [ro
 ### Via Wrangler
 
 1. Add a Secrets Store binding to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):  
-   * `binding`: a descriptive name for your binding. This will be used in the Workers application when [accessing your secret on the env object](https://developers.cloudflare.com/secrets-store/integrations/workers/#3-access-the-secret-on-the-env-object).  
-   * `store_id`: the corresponding Secrets Store ID where your account secret was created.  
-   * `secret_name`: the unique secret name, defined when your account secret was created.
+  * `binding`: a descriptive name for your binding. This will be used in the Workers application when [accessing your secret on the env object](https://developers.cloudflare.com/secrets-store/integrations/workers/#3-access-the-secret-on-the-env-object).
+  * `store_id`: the corresponding Secrets Store ID where your account secret was created.
+  * `secret_name`: the unique secret name, defined when your account secret was created.
 
-* [  wrangler.jsonc ](#tab-panel-10523)
-* [  wrangler.toml ](#tab-panel-10524)
+* [  wrangler.jsonc ](#tab-panel-10599)
+* [  wrangler.toml ](#tab-panel-10600)
 
 JSONC
 
 ```
-
-{
-
-  "main": "./src/index.js",
-
-  "secrets_store_secrets": [
-
-    {
-
-      "binding": "<BINDING_VARIABLE>",
-
-      "store_id": "<STORE_ID>",
-
-      "secret_name": "<MY_SECRET_NAME>"
-
-    }
-
-  ]
-
-}
-
-
+{  "main": "./src/index.js",  "secrets_store_secrets": [    {      "binding": "<BINDING_VARIABLE>",      "store_id": "<STORE_ID>",      "secret_name": "<MY_SECRET_NAME>"    }  ]}
 ```
 
 TOML
 
 ```
-
 main = "./src/index.js"
-
-
-[[secrets_store_secrets]]
-
-binding = "<BINDING_VARIABLE>"
-
-store_id = "<STORE_ID>"
-
-secret_name = "<MY_SECRET_NAME>"
-
-
+[[secrets_store_secrets]]binding = "<BINDING_VARIABLE>"store_id = "<STORE_ID>"secret_name = "<MY_SECRET_NAME>"
 ```
 
 ### Via Dashboard
@@ -211,13 +123,15 @@ secret_name = "<MY_SECRET_NAME>"
 2. Select a Workers application.
 3. Go to **Settings** \> **Bindings** and select **Add**.
 4. On the **Add a resource binding** side panel, choose **Secrets Store**.
-5. Fill in the required fields:  
-   * **Variable name**: a name for the binding. This will be used for your Worker to access the secret ([step 3](#3-access-the-secret-on-the-env-object) below).  
-   * **Secret name**: select from the list of available account secrets created in [step 1](#1-set-up-account-secrets-in-secrets-store).  
-   * (Optional - Admins only) If the secret you need does not exist yet, select **Create secret**. This will add an account level secret in the same way as if you had [created it on the Secrets Store](https://developers.cloudflare.com/secrets-store/manage-secrets/).
-6. Select **Deploy** to deploy your binding. When deploying, there are two options:  
-   * **Deploy:** Immediately deploy the binding to 100% of your audience.  
-   * **Save version:** Save a version of the binding which you can deploy in the future.
+5. Fill in the required fields:
+
+  * **Variable name**: a name for the binding. This will be used for your Worker to access the secret ([step 3](#3-access-the-secret-on-the-env-object) below).
+  * **Secret name**: select from the list of available account secrets created in [step 1](#1-set-up-account-secrets-in-secrets-store).
+  * (Optional - Admins only) If the secret you need does not exist yet, select **Create secret**. This will add an account level secret in the same way as if you had [created it on the Secrets Store](https://developers.cloudflare.com/secrets-store/manage-secrets/).
+6. Select **Deploy** to deploy your binding. When deploying, there are two options:
+
+  * **Deploy:** Immediately deploy the binding to 100% of your audience.
+  * **Save version:** Save a version of the binding which you can deploy in the future.
 
 ## 3\. Access the secret on the `env` object
 
@@ -232,43 +146,10 @@ You cannot access production secrets (created on the dashboard, via API, or with
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    // Example of using the secret safely in an API request
-
-    const APIkey = await env.<BINDING_VARIABLE>.get()
-
-
-    const response = await fetch("https://api.example.com/data", {
-
-      headers: { "Authorization": `Bearer ${APIKey}` },
-
-    });
-
-
-    if (!response.ok) {
-
-      return new Response("Failed to fetch data", { status: response.status });
-
-    }
-
-
-    const data = await response.json();
-
-    return new Response(JSON.stringify(data), {
-
-      headers: { "Content-Type": "application/json" },
-
-    });
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    // Example of using the secret safely in an API request    const APIkey = await env.<BINDING_VARIABLE>.get()
+    const response = await fetch("https://api.example.com/data", {      headers: { "Authorization": `Bearer ${APIKey}` },    });
+    if (!response.ok) {      return new Response("Failed to fetch data", { status: response.status });    }
+    const data = await response.json();    return new Response(JSON.stringify(data), {      headers: { "Content-Type": "application/json" },    });  },};
 ```
 
 ```json

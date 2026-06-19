@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/version-management/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,7 +29,7 @@ Any changes made to the **Global Configuration** will immediately apply to your 
 
 On the Environments page, you can create default environments for **Production**, **Staging**, and **Development**.
 
-If you need to test out different implementations of configurations at the same time or multiple types of changes, create a new version of your zone.**Zone Versioning** roles are not adequate for creating a new version. A **Super Administrator** or **Administrator** role is required.
+If you need to test out different implementations of configurations at the same time or multiple types of changes, create a new version of your zone. **Zone Versioning** roles are not adequate for creating a new version. A **Super Administrator** or **Administrator** role is required.
 
 To create a new version:
 
@@ -47,8 +47,8 @@ Your zone configurations are split up into two areas: **Global Configuration** a
 
 * Global Configuration controls the configurations of a zone that is not available for versioning and, when changed, automatically apply to all versions of your zone.
 * Version configurations update configurations of a zone that is available for versioning and are:  
-   * Editable when not applied to a [read-only environment](https://developers.cloudflare.com/version-management/reference/read-only-environments/).  
-   * Applied when [associated with an environment](https://developers.cloudflare.com/version-management/how-to/environments/#change-environment-version).
+  * Editable when not applied to a [read-only environment](https://developers.cloudflare.com/version-management/reference/read-only-environments/).
+  * Applied when [associated with an environment](https://developers.cloudflare.com/version-management/how-to/environments/#change-environment-version).
 
 Note
 
@@ -63,9 +63,10 @@ To change between different versions of your zone:
 1. Log in to the Cloudflare dashboard.  
 [ Go to **Account home** ](https://dash.cloudflare.com/?to=/:account/home)
 2. Select your account and a domain that has version management. The Global Configuration of your domain will load.
-3. Go to the product or feature you wish to modify.  
-   * **If the product or feature is available for versioning**: The last version you were working on will load.  
-   * **If the product or feature is NOT available for versioning**: Your Global Configuration will load, and any changes you make will impact live traffic.
+3. Go to the product or feature you wish to modify.
+
+  * **If the product or feature is available for versioning**: The last version you were working on will load.
+  * **If the product or feature is NOT available for versioning**: Your Global Configuration will load, and any changes you make will impact live traffic.
 4. Ensure that the configuration or version displayed in the domain summary bar is the one you would like to work on. If not, select the version in the domain summary bar to open the version switcher.
 
 Note

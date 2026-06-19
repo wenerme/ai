@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,12 +35,12 @@ To use a popular screen criteria:
 
 1. Under **Method**, select **Popular screens**.
 2. Select one of the following criteria:  
-   * **Moved emails**: View emails automatically or manually moved within the last seven days.  
-   * **Reclassified emails**: Emails that had their disposition reclassified within the last seven days.  
-   * **Malicious emails**: Emails assigned the malicious disposition within the last seven days.  
-   * **Spoof emails**: Emails assigned the spoof disposition within the last seven days.  
-   * **Suspicious emails**: Emails assigned the suspicious disposition within the last seven days.  
-   * **Spam emails**: Emails assigned to the spam disposition within the last seven days.
+  * **Moved emails**: View emails automatically or manually moved within the last seven days.
+  * **Reclassified emails**: Emails that had their disposition reclassified within the last seven days.
+  * **Malicious emails**: Emails assigned the malicious disposition within the last seven days.
+  * **Spoof emails**: Emails assigned the spoof disposition within the last seven days.
+  * **Suspicious emails**: Emails assigned the suspicious disposition within the last seven days.
+  * **Spam emails**: Emails assigned to the spam disposition within the last seven days.
 3. Select **Run screen**.
 
 To modify your screening criteria, under **Active screen criteria**, select **Modify**.
@@ -89,11 +89,11 @@ To move messages:
 2. On the Investigation page, select all the messages you want to move.
 3. Select the **Action** dropdown, then select **Move**.
 4. Select among one of the following folders:  
-   * **Inbox**: Move messages to the primary email folder.  
-   * **Junk email**: Move messages to the junk or spam folder.  
-   * **Trash**: Move messages to the trash or deleted items email folder.  
-   * **Soft delete (user recoverable)**: Move messages to the user's Deleted Items folder. This option is for Microsoft 365 only.  
-   * **Hard delete (admin recoverable)**: Delete messages from a user's inbox.
+  * **Inbox**: Move messages to the primary email folder.
+  * **Junk email**: Move messages to the junk or spam folder.
+  * **Trash**: Move messages to the trash or deleted items email folder.
+  * **Soft delete (user recoverable)**: Move messages to the user's Deleted Items folder. This option is for Microsoft 365 only.
+  * **Hard delete (admin recoverable)**: Delete messages from a user's inbox.
 5. Select **Save**.
 
 To move messages in bulk, select **Select all messages** \> **Action** \> **Move**.
@@ -129,17 +129,19 @@ To view status and actions for each email:
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Email security**, and select **Investigation**.
 2. On the Investigation page, select the three dots.
 3. Selecting the three dots will show you the following options:
-* If the email is quarantined:  
-   * **View details**: Refer to [Email details](#email-details) to learn more.  
-   * **View similar emails**: Find similar emails based on the `value_edf_hash` (Electronic Detection Fingerprint hash).  
-   * **Release**: Email security will no longer quarantine your chosen messages.  
-   * **Submit for review**: Choose the dispositions of your messages if they are incorrect. Refer to [Reclassify messages](#reclassify-messages) to learn more.
-* If the email is not quarantined:  
-   * **View details**.  
-   * **View similar emails**.  
-   * **View submission detail**.  
-   * **[Move](https://developers.cloudflare.com/cloudflare-one/email-security/settings/auto-moves/)** (only available if you authorized moves).  
-   * **[Submit for review](#reclassify-messages)**.
+* If the email is quarantined:
+
+  * **View details**: Refer to [Email details](#email-details) to learn more.
+  * **View similar emails**: Find similar emails based on the `value_edf_hash` (Electronic Detection Fingerprint hash).
+  * **Release**: Email security will no longer quarantine your chosen messages.
+  * **Submit for review**: Choose the dispositions of your messages if they are incorrect. Refer to [Reclassify messages](#reclassify-messages) to learn more.
+* If the email is not quarantined:
+
+  * **View details**.
+  * **View similar emails**.
+  * **View submission detail**.
+  * **[Move](https://developers.cloudflare.com/cloudflare-one/email-security/settings/auto-moves/)** (only available if you authorized moves).
+  * **[Submit for review](#reclassify-messages)**.
 
 ## Email details
 
@@ -157,11 +159,11 @@ Email security displays the following details:
 1. **Threat type**: Threat type of the email, for example, [credential harvester](https://developers.cloudflare.com/cloudflare-one/email-security/reference/how-es-detects-phish/), and [IP-based spam](https://developers.cloudflare.com/cloudflare-one/email-security/reference/how-es-detects-phish/).
 2. **Validation**: Email validation methods [SPF ↗](https://www.cloudflare.com/learning/dns/dns-records/dns-spf-record/), [DKIM ↗](https://www.cloudflare.com/learning/dns/dns-records/dns-dkim-record/), [DMARC ↗](https://www.cloudflare.com/learning/dns/dns-records/dns-dmarc-record/). The dashboard will display Pass if SPF, DKIM and DMARC checks have passed.
 3. **Sender details**: Information include:  
-   * IP address  
-   * Registered domain  
-   * Autonomous sys number: This number identifies your [autonomous system (AS) ↗](https://www.cloudflare.com/en-gb/learning/network-layer/what-is-an-autonomous-system/).  
-   * Autonomous sys name: This name identifies your autonomous system (AS).  
-   * Country
+  * IP address
+  * Registered domain
+  * Autonomous sys number: This number identifies your [autonomous system (AS) ↗](https://www.cloudflare.com/en-gb/learning/network-layer/what-is-an-autonomous-system/).
+  * Autonomous sys name: This name identifies your autonomous system (AS).
+  * Country
 4. **Links identified**: A list of malicious links identified by Email security. Refer to [Open links](#open-links) to open links in Security Center, Browser Isolation or an external tool of your choice.
 5. **Attachments**: If an email has an attachment, the Cloudflare dashboard will display the filename, and the disposition assigned. You can open attachments in [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/). Only PDF files are currently supported.
 6. **Reasons for disposition**: Description of why the email was deemed as malicious, suspicious, or spam. The dashboard also displays [Cloudy summaries](https://developers.cloudflare.com/cloudflare-one/email-security/investigation/search-email/#cloudy-summaries).

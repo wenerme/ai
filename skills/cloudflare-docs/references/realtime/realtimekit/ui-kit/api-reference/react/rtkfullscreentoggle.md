@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,45 +30,15 @@ A button which toggles full screen mode for any existing `rtk-meeting` component
 ### Basic Usage
 
 ```
-
 import { RtkFullscreenToggle } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return <RtkFullscreenToggle />;
-
-}
-
-
+function MyComponent() {  return <RtkFullscreenToggle />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkFullscreenToggle } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkFullscreenToggle
-
-      size="md"
-
-      targetElement={htmlelement}
-
-      variant="button"
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkFullscreenToggle      size="md"      targetElement={htmlelement}      variant="button"    />  );}
 ```
 
 ```json

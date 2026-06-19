@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/firewall/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,48 +21,7 @@ You can include up to 25 rules in the JSON object array (`-d` flag) to update as
 Request
 
 ```
-
-curl --request PUT \
-
-"https://api.cloudflare.com/client/v4/zones/{zone_id}/firewall/rules" \
-
---header "X-Auth-Email: <EMAIL>" \
-
---header "X-Auth-Key: <API_KEY>" \
-
---header "Content-Type: application/json" \
-
---data '[
-
-  {
-
-    "id": "<RULE_ID>",
-
-    "paused": false,
-
-    "description": "Challenge site",
-
-    "action": "challenge",
-
-    "priority": null,
-
-    "filter": {
-
-      "id": "<FILTER_ID>",
-
-      "expression": "not http.request.uri.path matches \"^/api/.*$\"",
-
-      "paused": false,
-
-      "description": "not /api"
-
-    }
-
-  }
-
-]'
-
-
+curl --request PUT \"https://api.cloudflare.com/client/v4/zones/{zone_id}/firewall/rules" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '[  {    "id": "<RULE_ID>",    "paused": false,    "description": "Challenge site",    "action": "challenge",    "priority": null,    "filter": {      "id": "<FILTER_ID>",      "expression": "not http.request.uri.path matches \"^/api/.*$\"",      "paused": false,      "description": "not /api"    }  }]'
 ```
 
 Note
@@ -74,48 +33,7 @@ To update the filter, use the [Filters API](https://developers.cloudflare.com/fi
 Response
 
 ```
-
-{
-
-  "result": [
-
-    {
-
-      "id": "<RULE_ID>",
-
-      "paused": false,
-
-      "description": "Challenge site",
-
-      "action": "challenge",
-
-      "priority": null,
-
-      "filter": {
-
-        "id": "<FILTER_ID>",
-
-        "expression": "not http.request.uri.path matches \"^/api/.*$\"",
-
-        "paused": false,
-
-        "description": "not /api"
-
-      }
-
-    }
-
-  ],
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": [    {      "id": "<RULE_ID>",      "paused": false,      "description": "Challenge site",      "action": "challenge",      "priority": null,      "filter": {        "id": "<FILTER_ID>",        "expression": "not http.request.uri.path matches \"^/api/.*$\"",        "paused": false,        "description": "not /api"      }    }  ],  "success": true,  "errors": [],  "messages": []}
 ```
 
 ## Update a single rule
@@ -133,87 +51,13 @@ All other fields are optional.
 Request
 
 ```
-
-curl --request PUT \
-
-"https://api.cloudflare.com/client/v4/zones/{zone_id}/firewall/rules/{rule_id}" \
-
---header "X-Auth-Email: <EMAIL>" \
-
---header "X-Auth-Key: <API_KEY>" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "id": "<RULE_ID>",
-
-  "paused": false,
-
-  "description": "Do not challenge login from office IPv6",
-
-  "action": "allow",
-
-  "priority": null,
-
-  "filter": {
-
-    "id": "<FILTER_ID>",
-
-    "expression": "ip.src in {2400:cb00::/32 2803:f800::/32 2c0f:f248::/32 2a06:98c0::/29} and (http.request.uri.path ~ \"^.*/wp-login.php$\" or http.request.uri.path ~ \"^.*/xmlrpc.php$\")",
-
-    "paused": false,
-
-    "description": "Login from office"
-
-  }
-
-}'
-
-
+curl --request PUT \"https://api.cloudflare.com/client/v4/zones/{zone_id}/firewall/rules/{rule_id}" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "id": "<RULE_ID>",  "paused": false,  "description": "Do not challenge login from office IPv6",  "action": "allow",  "priority": null,  "filter": {    "id": "<FILTER_ID>",    "expression": "ip.src in {2400:cb00::/32 2803:f800::/32 2c0f:f248::/32 2a06:98c0::/29} and (http.request.uri.path ~ \"^.*/wp-login.php$\" or http.request.uri.path ~ \"^.*/xmlrpc.php$\")",    "paused": false,    "description": "Login from office"  }}'
 ```
 
 Response
 
 ```
-
-{
-
-  "result": {
-
-    "id": "<RULE_ID>",
-
-    "paused": false,
-
-    "description": "Do not challenge login from office IPv6",
-
-    "action": "allow",
-
-    "priority": null,
-
-    "filter": {
-
-      "id": "<FILTER_ID>",
-
-      "expression": "ip.src in {2400:cb00::/32 2803:f800::/32 2c0f:f248::/32 2a06:98c0::/29} and (http.request.uri.path ~ \"^.*/wp-login.php$\" or http.request.uri.path ~ \"^.*/xmlrpc.php$\")",
-
-      "paused": false,
-
-      "description": "Login from office"
-
-    }
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "id": "<RULE_ID>",    "paused": false,    "description": "Do not challenge login from office IPv6",    "action": "allow",    "priority": null,    "filter": {      "id": "<FILTER_ID>",      "expression": "ip.src in {2400:cb00::/32 2803:f800::/32 2c0f:f248::/32 2a06:98c0::/29} and (http.request.uri.path ~ \"^.*/wp-login.php$\" or http.request.uri.path ~ \"^.*/xmlrpc.php$\")",      "paused": false,      "description": "Login from office"    }  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 Note

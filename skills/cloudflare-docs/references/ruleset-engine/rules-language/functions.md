@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,10 +26,7 @@ For example, the `lower()` function converts all uppercase characters in a strin
 In the expression below, the `lower()` function transforms `http.host` values to lowercase so that they match the target value `"www.cloudflare.com"`:
 
 ```
-
 lower(http.host) == "www.cloudflare.com"
-
-
 ```
 
 Transformation functions that do not take arrays as an argument type require the `[*]` index notation. Refer to [Arrays](https://developers.cloudflare.com/ruleset-engine/rules-language/values/#arrays) for more information.
@@ -45,10 +42,7 @@ Returns `true` when the comparison operator in the argument returns `true` for _
 Example:
 
 ```
-
 any(url_decode(http.request.body.form.values[*])[*] contains "an xss attack")
-
-
 ```
 
 ### `all`
@@ -60,10 +54,7 @@ Returns `true` when the comparison operator in the argument returns `true` for _
 Example:
 
 ```
-
 all(http.request.headers["content-type"][*] == "application/json")
-
-
 ```
 
 ### `encode_base64`
@@ -82,25 +73,13 @@ By default, the output uses standard Base64 encoding without padding.
 Examples:
 
 ```
-
-encode_base64("hello world")          will return "aGVsbG8gd29ybGQ"
-
-encode_base64("hello world", "p")     will return "aGVsbG8gd29ybGQ="
-
-encode_base64("hello world", "u")     will return "aGVsbG8gd29ybGQ"
-
-encode_base64("hello world", "up")    will return "aGVsbG8gd29ybGQ="
-
-
+encode_base64("hello world")          will return "aGVsbG8gd29ybGQ"encode_base64("hello world", "p")     will return "aGVsbG8gd29ybGQ="encode_base64("hello world", "u")     will return "aGVsbG8gd29ybGQ"encode_base64("hello world", "up")    will return "aGVsbG8gd29ybGQ="
 ```
 
 You can combine `encode_base64()` with other functions to create signed request headers:
 
 ```
-
 encode_base64(sha256(concat(to_string(ip.src), http.host, "my-secret")))
-
-
 ```
 
 Note
@@ -194,12 +173,7 @@ This function does the opposite of the [split()](#split) function.
 Example:
 
 ```
-
-# Joins all HTTP request header names into a single string, with names separated by commas
-
-join(http.request.headers.names, ",")
-
-
+# Joins all HTTP request header names into a single string, with names separated by commasjoin(http.request.headers.names, ",")
 ```
 
 Note
@@ -219,17 +193,8 @@ If any of the arguments is nil, the returned value will be nil.
 Examples:
 
 ```
-
-# Check if an HTTP request header exists:
-
-has_key(http.request.headers, "x-my-header")
-
-
-# Check if a request header exists based on the name of the first query argument:
-
-has_key(http.request.headers, lower(http.request.uri.args.names[0]))
-
-
+# Check if an HTTP request header exists:has_key(http.request.headers, "x-my-header")
+# Check if a request header exists based on the name of the first query argument:has_key(http.request.headers, lower(http.request.uri.args.names[0]))
 ```
 
 ### `has_value`
@@ -245,17 +210,8 @@ If any of the arguments is nil, the returned value will be nil.
 Examples:
 
 ```
-
-# Check if there is an HTTP request header with the exact name 'X-My-Header'
-
-has_value(http.request.headers.names, "X-My-Header")
-
-
-# Check if there is a request header with the exact name provided as the first query argument:
-
-has_value(http.request.headers.names, http.request.uri.args.names[0])
-
-
+# Check if there is an HTTP request header with the exact name 'X-My-Header'has_value(http.request.headers.names, "X-My-Header")
+# Check if there is a request header with the exact name provided as the first query argument:has_value(http.request.headers.names, http.request.uri.args.names[0])
 ```
 
 ### `is_jwt_present`
@@ -269,10 +225,7 @@ Returns true if the request has a token as configured in the token configuration
 Example:
 
 ```
-
 is_jwt_present("51231d16-01f1-48e3-93f8-91c99e81288e")
-
-
 ```
 
 Note
@@ -288,10 +241,7 @@ Returns true if the request has a valid token according to the token configurati
 `token_configuration_id` must be the ID of an existing [token configuration](https://developers.cloudflare.com/api-shield/security/jwt-validation/api/#token-configurations). The function returns false if the token is missing from the request.
 
 ```
-
 is_jwt_valid("51231d16-01f1-48e3-93f8-91c99e81288e")
-
-
 ```
 
 Note
@@ -429,25 +379,10 @@ The ordering of unaffected query parameters will be preserved.
 Examples:
 
 ```
-
 // If http.request.uri.query is "order=asc&country=GB":
-
-
-remove_query_args(http.request.uri.query, "country")  will return "order=asc"
-
-remove_query_args(http.request.uri.query, "order")    will return "country=GB"
-
-remove_query_args(http.request.uri.query, "search")   will return "order=asc&country=GB" (unchanged)
-
-
+remove_query_args(http.request.uri.query, "country")  will return "order=asc"remove_query_args(http.request.uri.query, "order")    will return "country=GB"remove_query_args(http.request.uri.query, "search")   will return "order=asc&country=GB" (unchanged)
 // If http.request.uri.query is "category=Foo&order=desc&category=Bar":
-
-
-remove_query_args(http.request.uri.query, "order")    will return "category=Foo&category=Bar"
-
-remove_query_args(http.request.uri.query, "category") will return "order=desc"
-
-
+remove_query_args(http.request.uri.query, "order")    will return "category=Foo&category=Bar"remove_query_args(http.request.uri.query, "category") will return "order=desc"
 ```
 
 Note
@@ -465,10 +400,7 @@ Use this function to generate signed request headers, validate request integrity
 Examples:
 
 ```
-
 sha256("my-token")
-
-
 ```
 
 The example above returns a 32-byte hash that your origin can validate to authenticate requests.
@@ -476,19 +408,13 @@ The example above returns a 32-byte hash that your origin can validate to authen
 You can combine `sha256()` with [encode\_base64()](#encode%5Fbase64) to create Base64-encoded signatures:
 
 ```
-
 encode_base64(sha256("my-token"))
-
-
 ```
 
 To create a signed header value from request attributes:
 
 ```
-
 encode_base64(sha256(concat(to_string(ip.src), to_string(http.request.timestamp.sec), "my-secret-key")))
-
-
 ```
 
 Notes
@@ -516,28 +442,11 @@ This function does the opposite of the [join()](#join) function.
 Examples:
 
 ```
-
 # Split a comma-separated list of categories obtained from an HTTP request header.
-
-
-# A) Consider the following HTTP request header:
-
-x-categories: groceries,electronics,diy,auto
-
-
-split(http.request.headers["x-categories"][0], ",", 64)  will return ["groceries", "electronics", "diy", "auto"]
-
-split(http.request.headers["x-categories"][0], ",", 3)   will return ["groceries", "electronics", "diy,auto"]
-
-
-# B) Consider the following HTTP request header:
-
-x-categories: groceries,,electronics
-
-
+# A) Consider the following HTTP request header:x-categories: groceries,electronics,diy,auto
+split(http.request.headers["x-categories"][0], ",", 64)  will return ["groceries", "electronics", "diy", "auto"]split(http.request.headers["x-categories"][0], ",", 3)   will return ["groceries", "electronics", "diy,auto"]
+# B) Consider the following HTTP request header:x-categories: groceries,,electronics
 split(http.request.headers["x-categories"][0], ",", 64)  will return ["groceries", "", "electronics"]
-
-
 ```
 
 Note
@@ -563,19 +472,8 @@ The `start` and `end` indexes can be negative integer values, which allows you t
 Examples:
 
 ```
-
 // If http.request.body.raw is "asdfghjk":
-
-
-substring(http.request.body.raw, 2, 5)   will return "dfg"
-
-substring(http.request.body.raw, 2)      will return "dfghjk"
-
-substring(http.request.body.raw, -2)     will return "jk"
-
-substring(http.request.body.raw, 0, -2)  will return "asdfgh"
-
-
+substring(http.request.body.raw, 2, 5)   will return "dfg"substring(http.request.body.raw, 2)      will return "dfghjk"substring(http.request.body.raw, -2)     will return "jk"substring(http.request.body.raw, 0, -2)  will return "asdfgh"
 ```
 
 ### `to_string`
@@ -587,17 +485,8 @@ Returns the string representation of an Integer, Boolean, or IP address value.
 Examples:
 
 ```
-
-// If cf.bot_management.score is 5:
-
-to_string(cf.bot_management.score)   will return "5"
-
-
-// If ssl is true:
-
-to_string(ssl)                       will return "true"
-
-
+// If cf.bot_management.score is 5:to_string(cf.bot_management.score)   will return "5"
+// If ssl is true:to_string(ssl)                       will return "true"
 ```
 
 Note
@@ -631,26 +520,9 @@ The `options` parameter is optional. You must provide any options as a single st
 Examples:
 
 ```
-
-url_decode("John%20Doe")   will return "John Doe"
-
-url_decode("John+Doe")     will return "John Doe"
-
-url_decode("%2520")        will return "%20"
-
-url_decode("%2520", "r")   will return " "
-
-
-// Using url_decode() with the any() function:
-
-any(url_decode(http.request.body.form.values[*])[*] contains "an xss attack")
-
-
-// Using the u option to match a specific alphabet
-
-url_decode(http.request.uri.path) matches "(?u)\p{Hangul}+"
-
-
+url_decode("John%20Doe")   will return "John Doe"url_decode("John+Doe")     will return "John Doe"url_decode("%2520")        will return "%20"url_decode("%2520", "r")   will return " "
+// Using url_decode() with the any() function:any(url_decode(http.request.body.form.values[*])[*] contains "an xss attack")
+// Using the u option to match a specific alphabeturl_decode(http.request.uri.path) matches "(?u)\p{Hangul}+"
 ```
 
 ### `uuidv4`
@@ -733,41 +605,30 @@ Access to the HMAC validation function requires a Cloudflare Pro, Business, or E
 You can validate hash-based message authentication code (HMAC) tokens in a rule expression by using the `is_timed_hmac_valid_v0()` function, which has this signature:
 
 ```
-
-is_timed_hmac_valid_v0(
-
-  <String literal as Key>,
-
-  <String field as MessageMAC>,
-
-  <Integer literal as ttl>,
-
-  <Integer as currentTimeStamp>,
-
-  <Optional Integer literal as lengthOfSeparator, default: 0>,
-
-  <Optional String literal as flags>
-
-) -> <Bool as result>
-
-
+is_timed_hmac_valid_v0(  <String literal as Key>,  <String field as MessageMAC>,  <Integer literal as ttl>,  <Integer as currentTimeStamp>,  <Optional Integer literal as lengthOfSeparator, default: 0>,  <Optional String literal as flags>) -> <Bool as result>
 ```
 
 The `is_timed_hmac_valid_v0()` function has these parameter definitions:
 
-* `Key` ` String literal `  
-   * Specifies the secret cryptographic key for validating the HMAC.
-* `MessageMAC` ` String `  
-   * Contains a concatenation of these HMAC elements: `message`, `separator`, `timestamp`, `mac`. For a definition and an example, refer to [MessageMAC](#messagemac).
-* `ttl` ` Integer literal `  
-   * Defines the time-to-live for the HMAC token, expressed in seconds. Determines how long the token is valid, relative to the time it was issued.
-* `currentTimeStamp` ` Integer `  
-   * Represents the UNIX timestamp when Cloudflare received the request, expressed in seconds. Pass the `http.request.timestamp.sec` field as an approximate value to this argument.
-* `lengthOfSeparator` ` Integer literal ` optional  
-   * Specifies the length of the `separator` between the `timestamp` and the `message` in the `MessageMAC`. Expressed in bytes, with a default value of `0`.
-* `flags` ` String literal ` optional  
-   * When you set this optional argument to `'s'`, the function expects the value of the Base64-encoded `mac` in the `MessageMAC` argument to use the URL-safe character set with no padding.  
-   * When you do **not** set the value of `flags` to `'s'`, you must URL encode the Base64 value for `mac` in the `MessageMAC` argument.
+* `Key` ` String literal `
+
+  * Specifies the secret cryptographic key for validating the HMAC.
+* `MessageMAC` ` String `
+
+  * Contains a concatenation of these HMAC elements: `message`, `separator`, `timestamp`, `mac`. For a definition and an example, refer to [MessageMAC](#messagemac).
+* `ttl` ` Integer literal `
+
+  * Defines the time-to-live for the HMAC token, expressed in seconds. Determines how long the token is valid, relative to the time it was issued.
+* `currentTimeStamp` ` Integer `
+
+  * Represents the UNIX timestamp when Cloudflare received the request, expressed in seconds. Pass the `http.request.timestamp.sec` field as an approximate value to this argument.
+* `lengthOfSeparator` ` Integer literal ` optional
+
+  * Specifies the length of the `separator` between the `timestamp` and the `message` in the `MessageMAC`. Expressed in bytes, with a default value of `0`.
+* `flags` ` String literal ` optional
+
+  * When you set this optional argument to `'s'`, the function expects the value of the Base64-encoded `mac` in the `MessageMAC` argument to use the URL-safe character set with no padding.
+  * When you do **not** set the value of `flags` to `'s'`, you must URL encode the Base64 value for `mac` in the `MessageMAC` argument.
 
 ### Usage
 
@@ -776,12 +637,7 @@ The `is_timed_hmac_valid_v0()` function uses the supplied _Key_ to generate a me
 For example, the following expression matches requests to `downloads.example.com` that do not include valid HMAC tokens:
 
 ```
-
-http.host == "downloads.example.com"
-
-and not is_timed_hmac_valid_v0("mysecretkey", http.request.uri, 100000, http.request.timestamp.sec, 8)
-
-
+http.host == "downloads.example.com"and not is_timed_hmac_valid_v0("mysecretkey", http.request.uri, 100000, http.request.timestamp.sec, 8)
 ```
 
 For examples of rules that use HMAC validation, refer to [Configure token authentication](https://developers.cloudflare.com/waf/custom-rules/use-cases/configure-token-authentication/) in the WAF documentation.
@@ -791,10 +647,7 @@ For examples of rules that use HMAC validation, refer to [Configure token authen
 A valid MessageMAC satisfies the following regular expression:
 
 ```
-
 (.+)(.*)(\d{10})-(.{43,})
-
-
 ```
 
 and is composed of these parentheses-delimited expressions:
@@ -821,10 +674,7 @@ For more information, refer to [HMAC Validation: Overview](#overview).
 Consider the case where the MessageMAC is contained entirely within a single field, as in this example URI path:
 
 ```
-
 /download/cat.jpg?verify=1484063787-IaLGSmELTvlhfd0ItdN6PhhHTFhzx73EX8uy%2FcSDiIU%3D
-
-
 ```
 
 Note how the URI maps to the elements of the MessageMAC:
@@ -839,22 +689,7 @@ Note how the URI maps to the elements of the MessageMAC:
 When the MessageMAC is contained entirely within a single field such as `http.request.uri`, pass the field name to the `MessageMAC` argument of the HMAC validation function:
 
 ```
-
-is_timed_hmac_valid_v0(
-
-  "mysecretkey",
-
-  http.request.uri,
-
-  100000,
-
-  http.request.timestamp.sec,
-
-  8
-
-)
-
-
+is_timed_hmac_valid_v0(  "mysecretkey",  http.request.uri,  100000,  http.request.timestamp.sec,  8)
 ```
 
 ### Concatenated MessageMAC argument
@@ -864,30 +699,7 @@ To compose a MessageMAC from more than one field, use the [concat()](#concat) fu
 This example constructs the value of the `MessageMAC` argument by concatenating the request URI and two header fields:
 
 ```
-
-is_timed_hmac_valid_v0(
-
-  "mysecretkey",
-
-  concat(
-
-    http.request.uri,
-
-    http.request.headers["timestamp"][0],
-
-    "-",
-
-    http.request.headers["mac"][0]),
-
-  100000,
-
-  http.request.timestamp.sec,
-
-  0
-
-)
-
-
+is_timed_hmac_valid_v0(  "mysecretkey",  concat(    http.request.uri,    http.request.headers["timestamp"][0],    "-",    http.request.headers["mac"][0]),  100000,  http.request.timestamp.sec,  0)
 ```
 
 ```json

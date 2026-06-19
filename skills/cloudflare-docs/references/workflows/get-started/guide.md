@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workflows/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,10 +31,7 @@ If you want to skip the steps and pull down the complete Workflow we are buildin
 Terminal window
 
 ```
-
 npm create cloudflare@latest workflows-starter -- --template "cloudflare/workflows-starter"
-
-
 ```
 
 Use this option if you are familiar with Cloudflare Workers or want to explore the code first and learn the details later.
@@ -63,60 +60,43 @@ yarn create cloudflare my-workflow
 ```  
 pnpm create cloudflare@latest my-workflow  
 ```  
-For setup, select the following options:  
-   * For _What would you like to start with?_, choose `Hello World example`.  
-   * For _Which template would you like to use?_, choose `Worker only`.  
-   * For _Which language do you want to use?_, choose `TypeScript`.  
-   * For _Do you want to use git for version control?_, choose `Yes`.  
-   * For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+For setup, select the following options:
+
+  * For _What would you like to start with?_, choose `Hello World example`.
+  * For _Which template would you like to use?_, choose `Worker only`.
+  * For _Which language do you want to use?_, choose `TypeScript`.
+  * For _Do you want to use git for version control?_, choose `Yes`.
+  * For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
 2. Move into your new project directory:  
 Terminal window  
 ```  
 cd my-workflow  
 ```  
 What files did C3 create?  
-In your project directory, C3 will have generated the following:  
-   * `wrangler.jsonc`: Your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/#sample-wrangler-configuration).  
-   * `src/index.ts`: A minimal Worker written in TypeScript.  
-   * `package.json`: A minimal Node dependencies configuration file.  
-   * `tsconfig.json`: TypeScript configuration.
+In your project directory, C3 will have generated the following:
+
+  * `wrangler.jsonc`: Your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/#sample-wrangler-configuration).
+  * `src/index.ts`: A minimal Worker written in TypeScript.
+  * `package.json`: A minimal Node dependencies configuration file.
+  * `tsconfig.json`: TypeScript configuration.
 
 ## 2\. Write your Workflow
 
 1. Create a new file `src/workflow.ts`:  
 src/workflow.ts  
 ```  
-import { WorkflowEntrypoint, WorkflowStep } from "cloudflare:workers";  
-import type { WorkflowEvent } from "cloudflare:workers";  
-type Params = { name?: string };  
-type IPResponse = { result: { ipv4_cidrs: string[] } };  
-export class MyWorkflow extends WorkflowEntrypoint<Env, Params> {  
-  async run(event: WorkflowEvent<Params>, step: WorkflowStep) {  
-    const data = await step.do("fetch data", async () => {  
-      const response = await fetch(  
-        "https://api.cloudflare.com/client/v4/ips",  
-      );  
-      return await response.json<IPResponse>();  
-    });  
+import { WorkflowEntrypoint, WorkflowStep } from "cloudflare:workers";import type { WorkflowEvent } from "cloudflare:workers";  
+type Params = { name?: string };type IPResponse = { result: { ipv4_cidrs: string[] } };  
+export class MyWorkflow extends WorkflowEntrypoint<Env, Params> {  async run(event: WorkflowEvent<Params>, step: WorkflowStep) {    const data = await step.do("fetch data", async () => {      const response = await fetch(        "https://api.cloudflare.com/client/v4/ips",      );      return await response.json<IPResponse>();    });  
     await step.sleep("pause", "20 seconds");  
-    const result = await step.do(  
-      "process data",  
-      { retries: { limit: 3, delay: "5 seconds", backoff: "linear" } },  
-      async () => {  
-        return {  
-          name: event.payload.name ?? "World",  
-          ipCount: data.result.ipv4_cidrs.length,  
-        };  
-      },  
-    );  
-    return result;  
-  }  
-}  
+    const result = await step.do(      "process data",      { retries: { limit: 3, delay: "5 seconds", backoff: "linear" } },      async () => {        return {          name: event.payload.name ?? "World",          ipCount: data.result.ipv4_cidrs.length,        };      },    );  
+    return result;  }}  
 ```  
 A Workflow extends `WorkflowEntrypoint` and implements a `run` method. This code also passes in our `Params` type as a [type parameter](https://developers.cloudflare.com/workflows/build/events-and-parameters/) so that events that trigger our Workflow are typed.  
-The [step](https://developers.cloudflare.com/workflows/build/workers-api/#step) object is the core of the Workflows API. It provides methods to define durable steps in your Workflow:  
-   * `step.do(name, callback)` \- Executes code and persists the result. If the Workflow is interrupted or retried, it resumes from the last successful step rather than re-running completed work. The callback returns serializable data, including `ReadableStream<Uint8Array>` for large binary output in JavaScript Workflows.  
-   * `step.sleep(name, duration)` \- Pauses the Workflow for a duration (for example, `"10 seconds"`, `"1 hour"`).  
+The [step](https://developers.cloudflare.com/workflows/build/workers-api/#step) object is the core of the Workflows API. It provides methods to define durable steps in your Workflow:
+
+  * `step.do(name, callback)` \- Executes code and persists the result. If the Workflow is interrupted or retried, it resumes from the last successful step rather than re-running completed work. The callback returns serializable data, including `ReadableStream<Uint8Array>` for large binary output in JavaScript Workflows.
+  * `step.sleep(name, duration)` \- Pauses the Workflow for a duration (for example, `"10 seconds"`, `"1 hour"`).  
 If you return a stream, return a fresh, unlocked `ReadableStream<Uint8Array>`. BYOB streams and BYOB readers are not supported.  
 You can pass a [retry configuration](https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/) to `step.do()` to customize how failures are handled. See the [full step API](https://developers.cloudflare.com/workflows/build/workers-api/#step) for stream requirements, limits, and additional methods like `sleepUntil` and `waitForEvent`.  
 When deciding whether to break code into separate steps, ask yourself: "Do I want all of this code to run again if just one part fails?" Separate steps are ideal for operations like calling external APIs, querying databases, or reading files from storage - if a later step fails, your Workflow can retry from that point using data already fetched, avoiding redundant API calls or database queries.  
@@ -124,77 +104,33 @@ For more guidance on how to define your Workflow logic, refer to [Rules of Workf
 
 ## 3\. Configure your Workflow
 
-1. Open `wrangler.jsonc`, which is your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) for your Workers project and your Workflow, and add the `workflows` configuration:  
-   * [  wrangler.jsonc ](#tab-panel-13067)  
-   * [  wrangler.toml ](#tab-panel-13068)  
+1. Open `wrangler.jsonc`, which is your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) for your Workers project and your Workflow, and add the `workflows` configuration:
+
+  * [  wrangler.jsonc ](#tab-panel-13084)
+  * [  wrangler.toml ](#tab-panel-13085)  
 JSONC  
 ```  
-{  
-  "$schema": "node_modules/wrangler/config-schema.json",  
-  "name": "my-workflow",  
-  "main": "src/index.ts",  
-  // Set this to today's date  
-  "compatibility_date": "2026-06-17",  
-  "observability": {  
-    "enabled": true  
-  },  
-  "workflows": [  
-    {  
-      "name": "my-workflow",  
-      "binding": "MY_WORKFLOW",  
-      "class_name": "MyWorkflow"  
-    }  
-  ]  
-}  
+{  "$schema": "node_modules/wrangler/config-schema.json",  "name": "my-workflow",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-19",  "observability": {    "enabled": true  },  "workflows": [    {      "name": "my-workflow",      "binding": "MY_WORKFLOW",      "class_name": "MyWorkflow"    }  ]}  
 ```  
 TOML  
 ```  
-"$schema" = "node_modules/wrangler/config-schema.json"  
-name = "my-workflow"  
-main = "src/index.ts"  
-# Set this to today's date  
-compatibility_date = "2026-06-17"  
-[observability]  
-enabled = true  
-[[workflows]]  
-name = "my-workflow"  
-binding = "MY_WORKFLOW"  
-class_name = "MyWorkflow"  
+"$schema" = "node_modules/wrangler/config-schema.json"name = "my-workflow"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-19"  
+[observability]enabled = true  
+[[workflows]]name = "my-workflow"binding = "MY_WORKFLOW"class_name = "MyWorkflow"  
 ```  
 The `class_name` must match your exported class, and `binding` is the variable name you use to access the Workflow in your code (like `env.MY_WORKFLOW`).  
-If you want the same Workflow to run automatically on a recurring interval, add `schedules` to the Workflow definition:  
-   * [  wrangler.jsonc ](#tab-panel-13069)  
-   * [  wrangler.toml ](#tab-panel-13070)  
+If you want the same Workflow to run automatically on a recurring interval, add `schedules` to the Workflow definition:
+
+  * [  wrangler.jsonc ](#tab-panel-13086)
+  * [  wrangler.toml ](#tab-panel-13087)  
 JSONC  
 ```  
-{  
-  "$schema": "node_modules/wrangler/config-schema.json",  
-  "name": "my-workflow",  
-  "main": "src/index.ts",  
-  // Set this to today's date  
-  "compatibility_date": "2026-06-17",  
-  "workflows": [  
-    {  
-      "name": "my-workflow",  
-      "binding": "MY_WORKFLOW",  
-      "class_name": "MyWorkflow",  
-      "schedules": ["0 * * * *"]  
-    }  
-  ]  
-}  
+{  "$schema": "node_modules/wrangler/config-schema.json",  "name": "my-workflow",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-19",  "workflows": [    {      "name": "my-workflow",      "binding": "MY_WORKFLOW",      "class_name": "MyWorkflow",      "schedules": ["0 * * * *"]    }  ]}  
 ```  
 TOML  
 ```  
-"$schema" = "node_modules/wrangler/config-schema.json"  
-name = "my-workflow"  
-main = "src/index.ts"  
-# Set this to today's date  
-compatibility_date = "2026-06-17"  
-[[workflows]]  
-name = "my-workflow"  
-binding = "MY_WORKFLOW"  
-class_name = "MyWorkflow"  
-schedules = [ "0 * * * *" ]  
+"$schema" = "node_modules/wrangler/config-schema.json"name = "my-workflow"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-19"  
+[[workflows]]name = "my-workflow"binding = "MY_WORKFLOW"class_name = "MyWorkflow"schedules = [ "0 * * * *" ]  
 ```  
 Each matching cron expression creates a new Workflow instance automatically, so you do not need top-level `triggers.crons` and a separate `scheduled` handler for Workflow-specific recurring runs.  
 Scheduled instances include the matching cron expression and scheduled trigger time on `event.schedule`.  
@@ -215,18 +151,9 @@ Now, you'll need a place to call your Workflow.
 src/index.ts  
 ```  
 export { MyWorkflow } from "./workflow";  
-export default {  
-  async fetch(request: Request, env: Env): Promise<Response> {  
-    const url = new URL(request.url);  
-    const instanceId = url.searchParams.get("instanceId");  
-    if (instanceId) {  
-      const instance = await env.MY_WORKFLOW.get(instanceId);  
-      return Response.json(await instance.status());  
-    }  
-    const instance = await env.MY_WORKFLOW.create();  
-    return Response.json({ instanceId: instance.id });  
-  },  
-} satisfies ExportedHandler<Env>;  
+export default {  async fetch(request: Request, env: Env): Promise<Response> {    const url = new URL(request.url);    const instanceId = url.searchParams.get("instanceId");  
+    if (instanceId) {      const instance = await env.MY_WORKFLOW.get(instanceId);      return Response.json(await instance.status());    }  
+    const instance = await env.MY_WORKFLOW.create();    return Response.json({ instanceId: instance.id });  },} satisfies ExportedHandler<Env>;  
 ```
 
 ## 5\. Develop locally
@@ -265,12 +192,13 @@ Terminal window
 ```  
 npx wrangler workflows instances describe my-workflow latest  
 ```  
-The output of `instances describe` shows:  
-   * The status (success, failure, running) of each step  
-   * Any state emitted by the step. For streamed output, the CLI shows a preview or summary instead of the full contents.  
-   * Any `sleep` state, including when the Workflow will wake up  
-   * Retries associated with each step  
-   * Errors, including exception messages
+The output of `instances describe` shows:
+
+  * The status (success, failure, running) of each step
+  * Any state emitted by the step. For streamed output, the CLI shows a preview or summary instead of the full contents.
+  * Any `sleep` state, including when the Workflow will wake up
+  * Retries associated with each step
+  * Errors, including exception messages
 
 ## Learn more
 
@@ -280,7 +208,7 @@ The output of `instances describe` shows:
 
 [ Workers API ](https://developers.cloudflare.com/workflows/build/workers-api/) Explore the full Workflows API for programmatic control. 
 
-[ Rules of Workflows ](https://developers.cloudflare.com/workflows/build/rules-of-workflows/) Understand the programming model and best practices. 
+[ Rules of Workflows ](https://developers.cloudflare.com/workflows/build/rules-of-workflows/) Understand the programming model and best practices.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/get-started/guide/#page","headline":"Build your first Workflow · Cloudflare Workflows docs","description":"Create and deploy your first Cloudflare Workflow with durable, multi-step execution on the Workers platform.","url":"https://developers.cloudflare.com/workflows/get-started/guide/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -44,14 +44,17 @@ To solve this problem, you can contact your account team to request an entitleme
 
 Choose how your custom hostname populates the SNI value with SNI rewrites:
 
-* **Origin server name** (default): Set SNI to the custom origin  
-   * If custom origin is `custom-origin.example.com`, then the SNI is `custom-origin.example.com`.
-* **Host header**: Set SNI to the host header (or a host header override)  
-   * If wildcards are not enabled and the hostname is `example.com`, then the SNI is `example.com`.  
-   * If wildcards are enabled, the hostname is `example.com`, and a request comes to `www.example.com`, then the SNI is `www.example.com`.
-* **Subdomain of zone**: Choose what to set as the SNI value (custom hostname or any subdomain)  
-   * If wildcards are not enabled and a request comes to `example.com`, choose whether to set the SNI as `example.com` or `www.example.com`.  
-   * If wildcards are enabled, you set the SNI to `example.com`, and a request comes to `www.example.com`, then the SNI is `example.com`.
+* **Origin server name** (default): Set SNI to the custom origin
+
+  * If custom origin is `custom-origin.example.com`, then the SNI is `custom-origin.example.com`.
+* **Host header**: Set SNI to the host header (or a host header override)
+
+  * If wildcards are not enabled and the hostname is `example.com`, then the SNI is `example.com`.
+  * If wildcards are enabled, the hostname is `example.com`, and a request comes to `www.example.com`, then the SNI is `www.example.com`.
+* **Subdomain of zone**: Choose what to set as the SNI value (custom hostname or any subdomain)
+
+  * If wildcards are not enabled and a request comes to `example.com`, choose whether to set the SNI as `example.com` or `www.example.com`.
+  * If wildcards are enabled, you set the SNI to `example.com`, and a request comes to `www.example.com`, then the SNI is `example.com`.
 
 Important
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,8 +22,8 @@ Your AI Gateway dashboard shows metrics on requests, tokens, caching, errors, an
 
 ## View analytics
 
-* [ Dashboard ](#tab-panel-6558)
-* [ graphql ](#tab-panel-6559)
+* [ Dashboard ](#tab-panel-6634)
+* [ graphql ](#tab-panel-6635)
 
 To view analytics in the dashboard:
 
@@ -36,32 +36,7 @@ You can use GraphQL to query your usage data outside of the AI Gateway dashboard
 Request
 
 ```
-
-curl https://api.cloudflare.com/client/v4/graphql \
-
-  --header 'Authorization: Bearer TOKEN \
-
-  --header 'Content-Type: application/json' \
-
-  --data '{
-
-    "query": "query{\n  viewer {\n  accounts(filter: { accountTag: \"{account_id}\" }) {\n  requests: aiGatewayRequestsAdaptiveGroups(\n      limit: $limit\n      filter: { datetimeHour_geq: $start, datetimeHour_leq: $end }\n      orderBy: [datetimeMinute_ASC]\n    ) {\n      count,\n      dimensions {\n          model,\n          provider,\n          gateway,\n          ts: datetimeMinute\n      }\n      \n    }\n      \n  }\n  }\n}",
-
-    "variables": {
-
-      "limit": 1000,
-
-      "start": "2023-09-01T10:00:00.000Z",
-
-      "end": "2023-09-30T10:00:00.000Z",
-
-      "orderBy": "date_ASC"
-
-    }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/graphql \  --header 'Authorization: Bearer TOKEN \  --header 'Content-Type: application/json' \  --data '{    "query": "query{\n  viewer {\n  accounts(filter: { accountTag: \"{account_id}\" }) {\n  requests: aiGatewayRequestsAdaptiveGroups(\n      limit: $limit\n      filter: { datetimeHour_geq: $start, datetimeHour_leq: $end }\n      orderBy: [datetimeMinute_ASC]\n    ) {\n      count,\n      dimensions {\n          model,\n          provider,\n          gateway,\n          ts: datetimeMinute\n      }\n      \n    }\n      \n  }\n  }\n}",    "variables": {      "limit": 1000,      "start": "2023-09-01T10:00:00.000Z",      "end": "2023-09-30T10:00:00.000Z",      "orderBy": "date_ASC"    }}'
 ```
 
 ```json

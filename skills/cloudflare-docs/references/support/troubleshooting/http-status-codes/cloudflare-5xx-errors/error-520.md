@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/support/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -40,13 +40,14 @@ As a temporary workaround, you can set the affected DNS record to [DNS-only](htt
 
 * Contact your hosting provider or site administrator and share the necessary [error details](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/#required-error-details-for-hosting-provider) to assist with troubleshooting. Request a review of your origin web server error logs for crashes and check for [common causes](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-520/#common-causes) mentioned in the previous section.
 * If HTTP/2 is enabled at your origin server, ensure it is correctly set up. Cloudflare connects to servers who announce support of HTTP/2 connections via [ALPN ↗](https://blog.cloudflare.com/introducing-http2). If the origin web server accepts the HTTP/2 connection but then does not respect or support the protocol, an HTTP `520` error will be returned. You can disable the [HTTP/2 to Origin](https://developers.cloudflare.com/speed/optimization/protocol/http2-to-origin/#disable-http2-to-origin) in **Speed** \> **Settings** \> **Protocol Optimization** on the Cloudflare dashboard.
-* If `520` errors continue after contacting your hosting provider or site administrator, provide the following information to [Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/):  
-   * Full URL(s) of the resource requested when the error occurred.  
-   * Cloudflare [**cf-ray**](https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/) from the `520` error message.  
-   * Output from `http://<YOUR_DOMAIN>/cdn-cgi/trace`.  
-   * Two [HAR files](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/#generate-a-har-file):  
-         * One with Cloudflare enabled on your website.  
-         * Another with [Cloudflare temporarily disabled](https://developers.cloudflare.com/fundamentals/manage-domains/pause-cloudflare/).
+* If `520` errors continue after contacting your hosting provider or site administrator, provide the following information to [Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/):
+
+  * Full URL(s) of the resource requested when the error occurred.
+  * Cloudflare [**cf-ray**](https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/) from the `520` error message.
+  * Output from `http://<YOUR_DOMAIN>/cdn-cgi/trace`.
+  * Two [HAR files](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/#generate-a-har-file):  
+    * One with Cloudflare enabled on your website.
+    * Another with [Cloudflare temporarily disabled](https://developers.cloudflare.com/fundamentals/manage-domains/pause-cloudflare/).
 
 ## Diagnosing origin connectivity using OriginResponseStatus in logs
 

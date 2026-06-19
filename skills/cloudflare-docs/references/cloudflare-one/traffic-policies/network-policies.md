@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -267,7 +267,7 @@ Policies with Network Override actions override traffic directed to or coming fr
 | -------------- | -------- | -------------- | ----- | ---------------- |
 | Destination IP | in       | 95.92.143.151  | And   | Network Override |
 | User Email     | in       | \*@example.com | And   |                  |
-| Override IP    | 10.0.0.1 |                |       |                  |
+| Override IP    |          | 10.0.0.1       |       |                  |
 
 Warning
 

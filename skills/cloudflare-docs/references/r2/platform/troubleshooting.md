@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -52,6 +52,20 @@ Here are some common issues with CORS configurations:
 * `AllowedHeaders` is missing headers like `Authorization` or `Content-Type`
 * `AllowedMethods` is missing methods like `POST`/`PUT`
 
+## Object-level API tokens fail against the REST API
+
+If you use an R2 API token created with the **Object Read & Write** or **Object Read only** permissions against the [Cloudflare REST API](https://developers.cloudflare.com/api/resources/r2/) (`api.cloudflare.com`), object requests fail to authenticate and return one of the following:
+
+* When the token applies to all buckets: `{"code":10002,"message":"Unauthorized"}` (HTTP 401).
+* When the token is scoped to specific buckets: `{"code":10000,"message":"Authentication error"}` (HTTP 403).
+
+Object-level tokens are only supported by the [S3-compatible API](https://developers.cloudflare.com/r2/api/s3/api/), which authenticates with AWS Signature Version 4 (SigV4).
+
+To resolve this:
+
+* To keep using an Object-level token, make object requests through the [S3-compatible API](https://developers.cloudflare.com/r2/api/s3/api/) instead of the REST API. The S3-compatible API is also better suited for object operations: the REST API is [rate limited](https://developers.cloudflare.com/r2/platform/limits/#cloudflare-rest-api).
+* To use the REST API, authenticate with an **Admin Read & Write** or **Admin Read only** token. Admin tokens grant account-wide access rather than bucket-scoped access.
+
 ## HTTP 5XX Errors and capacity limitations of Cloudflare R2
 
 When you encounter an HTTP 5XX error, it is usually a sign that your Cloudflare R2 bucket has been overwhelmed by too many concurrent requests. These errors can trigger bucket-wide read and write locks, affecting the performance of all ongoing operations.
@@ -77,16 +91,16 @@ In the Cloudflare dashboard, you can choose to view objects with `/` in the name
 For example, an object named `example/object` will be displayed as below.
 
 * Directoryexample  
-   * object
+  * object
 
 Object names which end with `/` will cause the Cloudflare dashboard to render the object as a folder with an unnamed object inside.
 
 For example, uploading an object named `example/` into an R2 bucket will be displayed as below.
 
 * Directoryexample  
-   * `This object is unnamed`
+  * `This object is unnamed`
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/platform/troubleshooting/#page","headline":"Troubleshooting · Cloudflare R2 docs","description":"Troubleshoot common R2 issues including CORS errors, 403 responses, and cache behavior.","url":"https://developers.cloudflare.com/r2/platform/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/platform/troubleshooting/#page","headline":"Troubleshooting · Cloudflare R2 docs","description":"Troubleshoot common R2 issues including CORS errors, 403 responses, and cache behavior.","url":"https://developers.cloudflare.com/r2/platform/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/platform/troubleshooting/","name":"Troubleshooting"}}]}
 ```

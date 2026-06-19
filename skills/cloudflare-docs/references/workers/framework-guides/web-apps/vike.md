@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -85,32 +85,16 @@ bun add wrangler vike-photon @photonjs/cloudflare
 ```
 2. pages/+config.ts  
 ```  
-import type { Config } from 'vike/types'  
-import vikePhoton from 'vike-photon/config'  
-export default {  
-  extends: [vikePhoton]  
-} satisfies Config  
+import type { Config } from 'vike/types'import vikePhoton from 'vike-photon/config'  
+export default {  extends: [vikePhoton]} satisfies Config  
 ```
 3. package.json  
 ```  
-{  
-  "scripts": {  
-    "dev": "vike dev",  
-    "preview": "vike build && vike preview",  
-    "deploy": "vike build && wrangler deploy"  
-  }  
-}  
+{  "scripts": {    "dev": "vike dev",    "preview": "vike build && vike preview",    "deploy": "vike build && wrangler deploy"  }}  
 ```  
 wrangler.jsonc  
 ```  
-{  
-  "$schema": "node_modules/wrangler/config-schema.json",  
-  "compatibility_date": "2025-08-06",  
-  "name": "my-vike-cloudflare-app",  
-  "main": "virtual:photon:cloudflare:server-entry",  
-  // Only required if your app depends a Node.js API  
-  "compatibility_flags": ["nodejs_compat"]  
-}  
+{  "$schema": "node_modules/wrangler/config-schema.json",  "compatibility_date": "2025-08-06",  "name": "my-vike-cloudflare-app",  "main": "virtual:photon:cloudflare:server-entry",  // Only required if your app depends a Node.js API  "compatibility_flags": ["nodejs_compat"]}  
 ```
 4. .gitignore  
 ```  
@@ -125,20 +109,7 @@ To access Cloudflare APIs (such as [D1](https://developers.cloudflare.com/d1/) a
 TypeScript
 
 ```
-
-import { env } from 'cloudflare:workers'
-
-// Key-value store
-
-env.KV.get('my-key')
-
-// Environment variable
-
-env.LOG_LEVEL
-
-// ...
-
-
+import { env } from 'cloudflare:workers'// Key-value storeenv.KV.get('my-key')// Environment variableenv.LOG_LEVEL// ...
 ```
 
 > Example of using Cloudflare D1:
@@ -182,10 +153,7 @@ Then commit:
 Terminal window
 
 ```
-
 git commit -am "update cloudflare types"
-
-
 ```
 
 Make sure TypeScript loads it:
@@ -193,18 +161,7 @@ Make sure TypeScript loads it:
 tsconfig.json
 
 ```
-
-{
-
-  "compilerOptions": {
-
-    "types": ["./worker-configuration.d.ts"]
-
- }
-
-}
-
-
+{  "compilerOptions": {    "types": ["./worker-configuration.d.ts"] }}
 ```
 
 See also: [Cloudflare Workers > TypeScript](https://developers.cloudflare.com/workers/languages/typescript/).

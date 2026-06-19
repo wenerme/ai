@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pipelines/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -36,14 +36,7 @@ To create a sink, run the [pipelines sinks create](https://developers.cloudflare
 Terminal window
 
 ```
-
-npx wrangler pipelines sinks create <SINK_NAME> \
-
-  --type r2 \
-
-  --bucket my-bucket \
-
-
+npx wrangler pipelines sinks create <SINK_NAME> \  --type r2 \  --bucket my-bucket \
 ```
 
 For sink-specific configuration options, refer to [Available sinks](https://developers.cloudflare.com/pipelines/sinks/available-sinks/).
@@ -53,10 +46,7 @@ Alternatively, to use the interactive setup wizard that helps you configure a st
 Terminal window
 
 ```
-
 npx wrangler pipelines setup
-
-
 ```
 
 ## View sink configuration
@@ -73,10 +63,7 @@ To view a specific sink, run the [pipelines sinks get](https://developers.cloudf
 Terminal window
 
 ```
-
 npx wrangler pipelines sinks get <SINK_NAME_OR_ID>
-
-
 ```
 
 To list all sinks in your account, run the [pipelines sinks list](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-sinks-list) command:
@@ -84,10 +71,7 @@ To list all sinks in your account, run the [pipelines sinks list](https://develo
 Terminal window
 
 ```
-
 npx wrangler pipelines sinks list
-
-
 ```
 
 ## Delete a sink
@@ -105,10 +89,7 @@ To delete a sink, run the [pipelines sinks delete](https://developers.cloudflare
 Terminal window
 
 ```
-
 npx wrangler pipelines sinks delete <SINK_ID>
-
-
 ```
 
 Warning

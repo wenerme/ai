@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,35 +28,18 @@ A component which shows an image sent via chat.
 ### Basic Usage
 
 ```
-
 <rtk-image-viewer></rtk-image-viewer>
-
-
 ```
 
 ### With Properties
 
 ```
-
-<rtk-image-viewer
-
- size="md">
-
-</rtk-image-viewer>
-
-
+<rtk-image-viewer size="md"></rtk-image-viewer>
 ```
 
 ```
-
-<script>
-
-  const el = document.querySelector("rtk-image-viewer");
-
-
+<script>  const el = document.querySelector("rtk-image-viewer");
 </script>
-
-
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -79,11 +79,12 @@ Note that removing access to GitHub will disable new builds for Workers and Page
 When encountering Git integration related issues, one potential troubleshooting step is attempting to uninstall and reinstall the GitHub or GitLab application associated with the Cloudflare Pages installation. The process for each Git provider is provided below.
 
 1. Go to the installation settings page on GitHub:  
-   * Navigate to **Settings > Builds** for the Workers or Pages project and select **Manage** under Git Repository.  
-   * Alternatively, visit these links to find the Cloudflare Workers and Pages installation and select **Configure**:
+  * Navigate to **Settings > Builds** for the Workers or Pages project and select **Manage** under Git Repository.
+  * Alternatively, visit these links to find the Cloudflare Workers and Pages installation and select **Configure**:
 
-| **Individual**   | https://github.com/settings/installations                                          |
+|                  |                                                                                    |
 | ---------------- | ---------------------------------------------------------------------------------- |
+| **Individual**   | https://github.com/settings/installations                                          |
 | **Organization** | https://github.com/organizations/<YOUR\_ORGANIZATION\_NAME>/settings/installations |
 
 1. In the Cloudflare Workers and Pages GitHub App settings page, navigate to **Uninstall "Cloudflare Workers and Pages"** and select **Uninstall**.

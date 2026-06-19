@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,9 +16,9 @@ Improve the Tor user experience by enabling Onion Routing, which enables Cloudfl
 
 ## Availability
 
-| Free         | Pro | Business | Enterprise |     |
-| ------------ | --- | -------- | ---------- | --- |
-| Availability | Yes | Yes      | Yes        | Yes |
+|              | Free | Pro | Business | Enterprise |
+| ------------ | ---- | --- | -------- | ---------- |
+| Availability | Yes  | Yes | Yes      | Yes        |
 
 ## How it works
 
@@ -33,8 +33,8 @@ You should note that the visible domain in the user interface remains unchanged,
 
 ## Enable Onion Routing
 
-* [ Dashboard ](#tab-panel-9376)
-* [ API ](#tab-panel-9377)
+* [ Dashboard ](#tab-panel-9452)
+* [ API ](#tab-panel-9453)
 
 To enable **Onion Routing** in the dashboard:
 

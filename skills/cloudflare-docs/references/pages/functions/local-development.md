@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,10 +27,7 @@ With your folder of static assets set up, run the following command to start loc
 Terminal window
 
 ```
-
 npx wrangler pages dev <DIRECTORY-OF-ASSETS>
-
-
 ```
 
 This will then start serving your Pages project. You can press `b` to open the browser on your local site, (available, by default, on [http://localhost:8788 ↗](http://localhost:8788)).
@@ -46,10 +43,7 @@ To serve your local development server over HTTPS with a self-signed certificate
 Terminal window
 
 ```
-
 npx wrangler pages dev --local-protocol=https <DIRECTORY-OF-ASSETS>
-
-
 ```
 
 ## Attach bindings to local development

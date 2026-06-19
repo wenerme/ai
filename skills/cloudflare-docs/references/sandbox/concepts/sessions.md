@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,22 +26,9 @@ By default, every sandbox has a default session that maintains shell state betwe
 TypeScript
 
 ```
-
 const sandbox = getSandbox(env.Sandbox, 'my-sandbox');
-
-
-// These commands run in the default session
-
-await sandbox.exec("cd /app");
-
-await sandbox.exec("pwd");  // Output: /app
-
-
-await sandbox.exec("export MY_VAR=hello");
-
-await sandbox.exec("echo $MY_VAR");  // Output: hello
-
-
+// These commands run in the default sessionawait sandbox.exec("cd /app");await sandbox.exec("pwd");  // Output: /app
+await sandbox.exec("export MY_VAR=hello");await sandbox.exec("echo $MY_VAR");  // Output: hello
 ```
 
 Working directory, environment variables, and exported variables carry over between commands. This state resets if the container restarts due to inactivity.
@@ -51,19 +38,8 @@ If you set `enableDefaultSession: false` when calling `getSandbox()`, operations
 TypeScript
 
 ```
-
-const sandbox = getSandbox(env.Sandbox, 'my-sandbox', {
-
-  enableDefaultSession: false
-
-});
-
-
-await sandbox.exec("cd /app");
-
-await sandbox.exec("pwd");  // Output: /workspace (cd was not inherited)
-
-
+const sandbox = getSandbox(env.Sandbox, 'my-sandbox', {  enableDefaultSession: false});
+await sandbox.exec("cd /app");await sandbox.exec("pwd");  // Output: /workspace (cd was not inherited)
 ```
 
 Without the default session, the second command does not inherit shell state from the first command. It is recommended that you always apply this setting as it will become the default in a future Sandbox SDK release. Create or retrieve an explicit session when you want commands to share shell state.
@@ -75,18 +51,7 @@ The container automatically creates sessions on first use. If you reference a no
 TypeScript
 
 ```
-
-// This session does not exist yet
-
-const result = await sandbox.exec('echo hello', { sessionId: 'new-session' });
-
-// Container automatically creates 'new-session' with defaults:
-
-// - cwd: '/workspace'
-
-// - env: {} (empty)
-
-
+// This session does not exist yetconst result = await sandbox.exec('echo hello', { sessionId: 'new-session' });// Container automatically creates 'new-session' with defaults:// - cwd: '/workspace'// - env: {} (empty)
 ```
 
 This behavior is particularly relevant after deleting a session:
@@ -94,30 +59,9 @@ This behavior is particularly relevant after deleting a session:
 TypeScript
 
 ```
-
-// Create and configure a session
-
-const session = await sandbox.createSession({
-
-  id: 'temp',
-
-  env: { MY_VAR: 'value' }
-
-});
-
-
-// Delete the session
-
-await sandbox.deleteSession('temp');
-
-
-// Using the same session ID again works - auto-created with defaults
-
-const result = await sandbox.exec('echo $MY_VAR', { sessionId: 'temp' });
-
-// Output: (empty) - MY_VAR is not set in the freshly created session
-
-
+// Create and configure a sessionconst session = await sandbox.createSession({  id: 'temp',  env: { MY_VAR: 'value' }});
+// Delete the sessionawait sandbox.deleteSession('temp');
+// Using the same session ID again works - auto-created with defaultsconst result = await sandbox.exec('echo $MY_VAR', { sessionId: 'temp' });// Output: (empty) - MY_VAR is not set in the freshly created session
 ```
 
 This auto-creation means commands still run when they reference a non-existent session. However, custom configuration (environment variables, working directory) is lost after deletion.
@@ -129,36 +73,9 @@ Create additional sessions for separate workflows in the same sandbox:
 TypeScript
 
 ```
-
-const buildSession = await sandbox.createSession({
-
-  id: "build",
-
-  env: { NODE_ENV: "production" },
-
-  cwd: "/build"
-
-});
-
-
-const testSession = await sandbox.createSession({
-
-  id: "test",
-
-  env: { NODE_ENV: "test" },
-
-  cwd: "/test"
-
-});
-
-
-// Different shell contexts
-
-await buildSession.exec("npm run build");
-
-await testSession.exec("npm test");
-
-
+const buildSession = await sandbox.createSession({  id: "build",  env: { NODE_ENV: "production" },  cwd: "/build"});
+const testSession = await sandbox.createSession({  id: "test",  env: { NODE_ENV: "test" },  cwd: "/test"});
+// Different shell contextsawait buildSession.exec("npm run build");await testSession.exec("npm test");
 ```
 
 You can also set a default command timeout for all commands in a session:
@@ -166,19 +83,8 @@ You can also set a default command timeout for all commands in a session:
 TypeScript
 
 ```
-
-const session = await sandbox.createSession({
-
-  id: "ci",
-
-  commandTimeoutMs: 30000 // 30s timeout for all commands
-
-});
-
-
+const session = await sandbox.createSession({  id: "ci",  commandTimeoutMs: 30000 // 30s timeout for all commands});
 await session.exec("npm test"); // Times out after 30s if still running
-
-
 ```
 
 Individual commands can override the session timeout with the `timeout` option on `exec()`. For more details, refer to the [Sessions API](https://developers.cloudflare.com/sandbox/api/sessions/) and the [execute commands guide](https://developers.cloudflare.com/sandbox/guides/execute-commands/#timeouts).
@@ -192,12 +98,7 @@ Each session has its own:
 TypeScript
 
 ```
-
-await session1.exec("export MY_VAR=hello");
-
-await session2.exec("echo $MY_VAR");  // Empty - different shell
-
-
+await session1.exec("export MY_VAR=hello");await session2.exec("echo $MY_VAR");  // Empty - different shell
 ```
 
 **Working directory**:
@@ -205,12 +106,7 @@ await session2.exec("echo $MY_VAR");  // Empty - different shell
 TypeScript
 
 ```
-
-await session1.exec("cd /workspace/project1");
-
-await session2.exec("pwd");  // Different working directory
-
-
+await session1.exec("cd /workspace/project1");await session2.exec("pwd");  // Different working directory
 ```
 
 **Environment variables** (set via `createSession` options):
@@ -218,20 +114,7 @@ await session2.exec("pwd");  // Different working directory
 TypeScript
 
 ```
-
-const session1 = await sandbox.createSession({
-
-  env: { API_KEY: 'key-1' }
-
-});
-
-const session2 = await sandbox.createSession({
-
-  env: { API_KEY: 'key-2' }
-
-});
-
-
+const session1 = await sandbox.createSession({  env: { API_KEY: 'key-1' }});const session2 = await sandbox.createSession({  env: { API_KEY: 'key-2' }});
 ```
 
 ## What is shared across sessions
@@ -243,12 +126,7 @@ All sessions in a sandbox share:
 TypeScript
 
 ```
-
-await session1.writeFile('/workspace/file.txt', 'data');
-
-await session2.readFile('/workspace/file.txt');  // Can read it
-
-
+await session1.writeFile('/workspace/file.txt', 'data');await session2.readFile('/workspace/file.txt');  // Can read it
 ```
 
 **Processes**:
@@ -256,12 +134,7 @@ await session2.readFile('/workspace/file.txt');  // Can read it
 TypeScript
 
 ```
-
-await session1.startProcess('node server.js');
-
-await session2.listProcesses();  // Sees the server
-
-
+await session1.startProcess('node server.js');await session2.listProcesses();  // Sees the server
 ```
 
 ## When to use sessions
@@ -277,33 +150,8 @@ await session2.listProcesses();  // Sees the server
 TypeScript
 
 ```
-
-// Phase 1: AI agent writes code (with API keys)
-
-const devSession = await sandbox.createSession({
-
-  id: "dev",
-
-  env: { ANTHROPIC_API_KEY: env.ANTHROPIC_API_KEY }
-
-});
-
-await devSession.exec('ai-tool "build a web server"');
-
-
-// Phase 2: Run the code (without API keys)
-
-const appSession = await sandbox.createSession({
-
-  id: "app",
-
-  env: { PORT: "3000" }
-
-});
-
-await appSession.exec("node server.js");
-
-
+// Phase 1: AI agent writes code (with API keys)const devSession = await sandbox.createSession({  id: "dev",  env: { ANTHROPIC_API_KEY: env.ANTHROPIC_API_KEY }});await devSession.exec('ai-tool "build a web server"');
+// Phase 2: Run the code (without API keys)const appSession = await sandbox.createSession({  id: "app",  env: { PORT: "3000" }});await appSession.exec("node server.js");
 ```
 
 **Use separate sandboxes when**:
@@ -322,20 +170,7 @@ await appSession.exec("node server.js");
 TypeScript
 
 ```
-
-try {
-
-  const session = await sandbox.createSession({ id: 'temp' });
-
-  await session.exec('command');
-
-} finally {
-
-  await sandbox.deleteSession('temp');
-
-}
-
-
+try {  const session = await sandbox.createSession({ id: 'temp' });  await session.exec('command');} finally {  await sandbox.deleteSession('temp');}
 ```
 
 **Default session cannot be deleted**:
@@ -343,14 +178,7 @@ try {
 TypeScript
 
 ```
-
-// This throws an error
-
-await sandbox.deleteSession('default');
-
-// Error: Cannot delete default session. Use sandbox.destroy() instead.
-
-
+// This throws an errorawait sandbox.deleteSession('default');// Error: Cannot delete default session. Use sandbox.destroy() instead.
 ```
 
 ### Filesystem scope
@@ -360,17 +188,8 @@ await sandbox.deleteSession('default');
 TypeScript
 
 ```
-
-// Bad - affects all sessions
-
-await session.exec('rm -rf /workspace/*');
-
-
-// For user data or untrusted code, use a separate sandbox
-
-const userSandbox = getSandbox(env.Sandbox, `user-${userId}`);
-
-
+// Bad - affects all sessionsawait session.exec('rm -rf /workspace/*');
+// For user data or untrusted code, use a separate sandboxconst userSandbox = getSandbox(env.Sandbox, `user-${userId}`);
 ```
 
 ## Related resources

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -94,20 +94,7 @@ This can cause issues when adding a [custom domain](https://developers.cloudflar
 To resolve this, add the necessary CAA records to allow Cloudflare to issue a certificate for your custom domain.
 
 ```
-
-example.com.            300     IN      CAA     0 issue "letsencrypt.org"
-
-example.com.            300     IN      CAA     0 issue "pki.goog; cansignhttpexchanges=yes"
-
-example.com.            300     IN      CAA     0 issue "ssl.com"
-
-example.com.            300     IN      CAA     0 issuewild "letsencrypt.org"
-
-example.com.            300     IN      CAA     0 issuewild "pki.goog; cansignhttpexchanges=yes"
-
-example.com.            300     IN      CAA     0 issuewild "ssl.com"
-
-
+example.com.            300     IN      CAA     0 issue "letsencrypt.org"example.com.            300     IN      CAA     0 issue "pki.goog; cansignhttpexchanges=yes"example.com.            300     IN      CAA     0 issue "ssl.com"example.com.            300     IN      CAA     0 issuewild "letsencrypt.org"example.com.            300     IN      CAA     0 issuewild "pki.goog; cansignhttpexchanges=yes"example.com.            300     IN      CAA     0 issuewild "ssl.com"
 ```
 
 Refer to the [Certification Authority Authorization (CAA) FAQ](https://developers.cloudflare.com/ssl/faq/#caa-records) for more information.

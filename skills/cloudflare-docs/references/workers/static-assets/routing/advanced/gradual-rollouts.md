@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,20 +17,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 Modern JavaScript frameworks commonly generate fingerprinted asset filenames during builds. For example, when you build a React application with Vite, your assets might look like:
 
 ```
-
-dist/
-
-├── index.html
-
-├── assets/
-
-│   ├── index-a1b2c3d4.js    # Main bundle with content hash
-
-│   ├── index-e5f6g7h8.css   # Styles with content hash
-
-│   └── logo-i9j0k1l2.svg    # Images with content hash
-
-
+dist/├── index.html├── assets/│   ├── index-a1b2c3d4.js    # Main bundle with content hash│   ├── index-e5f6g7h8.css   # Styles with content hash│   └── logo-i9j0k1l2.svg    # Images with content hash
 ```
 
 During a gradual rollout between two versions of your application, you might have:
@@ -66,10 +53,7 @@ For applications with user sessions, use session identifiers:
 Text in **Expression Editor**:
 
 ```
-
 http.cookie contains "session_id"
-
-
 ```
 
 Selected operation under **Modify request header**: _Set dynamic_
@@ -85,10 +69,7 @@ For authenticated applications, use user identifiers stored in cookies or header
 Text in **Expression Editor**:
 
 ```
-
 http.cookie contains "user_id"
-
-
 ```
 
 Selected operation under **Modify request header**: _Set dynamic_
@@ -104,14 +85,7 @@ Before rolling out to production, verify that your version affinity setup works 
 Terminal window
 
 ```
-
-# Test with version affinity - both requests should hit the same version
-
-curl -H "Cookie: session_id=test123" https://your-worker.example.com/
-
-curl -H "Cookie: session_id=test123" https://your-worker.example.com/assets/index.js
-
-
+# Test with version affinity - both requests should hit the same versioncurl -H "Cookie: session_id=test123" https://your-worker.example.com/curl -H "Cookie: session_id=test123" https://your-worker.example.com/assets/index.js
 ```
 
 During gradual rollouts, monitor your Worker's analytics for increased 404 response rates, especially for asset files (`.js`, `.css`, `.png`). Use [Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/) or [Logpush](https://developers.cloudflare.com/workers/observability/logs/logpush/) to track these metrics and catch asset mismatch issues early.

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waiting-room/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -44,10 +44,7 @@ When a visitor first enters the host and path combination for your waiting room,
 Each cookie also contains a value for `acceptedAt`, which corresponds to the minute your visitor entered your application. This value lets us know how many visitors per minute are leaving the waiting room to enter your application.
 
 ```
-
 visitorsAhead ÷ activeUsersToWebApplication = estimatedWaitTime
-
-
 ```
 
 We combine these pieces of information to calculate estimated wait time for each group of visitors.

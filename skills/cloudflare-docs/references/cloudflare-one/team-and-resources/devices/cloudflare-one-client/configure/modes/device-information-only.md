@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,26 +31,13 @@ Using the API, enable client certificate provisioning for [your zone](https://de
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `SSL and Certificates Write`
 
 Update device certificate provisioning status
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/devices/policy/certificates" \
-
-  --request PATCH \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "enabled": true
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/devices/policy/certificates" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "enabled": true  }'
 ```
 
 ## 2\. Configure the Cloudflare One Client
@@ -64,33 +51,38 @@ When enrolled in Posture only mode, the Cloudflare One Client (formerly WARP) wi
 
 ## 3\. (Optional) Verify the client certificate
 
-1. To view the client certificates installed on the device:  
-   * [ Windows ](#tab-panel-7432)  
-   * [ macOS ](#tab-panel-7433)  
-   * [ Linux ](#tab-panel-7434)  
-   * [ iOS ](#tab-panel-7435)  
-   * [ Android ](#tab-panel-7436)  
-   * [ ChromeOS ](#tab-panel-7437)  
-   1. Open the **Start** menu and select **Run**.  
-   2. Enter `certlm.msc`.  
-   3. Go to **Personal** \> **Certificates**.  
-   1. Open **Keychain Access**.  
-   2. Go to **System** \> **My Certificates**.  
+1. To view the client certificates installed on the device:
+
+  * [ Windows ](#tab-panel-7508)
+  * [ macOS ](#tab-panel-7509)
+  * [ Linux ](#tab-panel-7510)
+  * [ iOS ](#tab-panel-7511)
+  * [ Android ](#tab-panel-7512)
+  * [ ChromeOS ](#tab-panel-7513)
+
+  1. Open the **Start** menu and select **Run**.
+  2. Enter `certlm.msc`.
+  3. Go to **Personal** \> **Certificates**.
+
+  1. Open **Keychain Access**.
+  2. Go to **System** \> **My Certificates**.  
 Open a terminal window and run the following command:  
 Terminal window  
 ```  
 $ certutil -L -d sql:/etc/pki/nssdb  
 ```  
 Go to **Settings** \> **General** \> **About** \> **Certificate Trust Settings**.  
-The location of the client certificate may vary depending on the Android device.  
-   * **Samsung**: Go to **Settings** \> **Security** \> **Other security settings** \> **View security certificates**.  
-   * **Google Pixel**: Go to **Security** \> **Advanced settings** \> **Encryption & credentials** \> **Credential storage**.  
+The location of the client certificate may vary depending on the Android device.
+
+  * **Samsung**: Go to **Settings** \> **Security** \> **Other security settings** \> **View security certificates**.
+  * **Google Pixel**: Go to **Security** \> **Advanced settings** \> **Encryption & credentials** \> **Credential storage**.  
 Go to **Settings** \> **Apps** \> **Google Play Store** \> **Manage Android Preferences** \> **Security** \> **Credentials**.  
 The client certificate name should match the **Device ID** in your Cloudflare One Client **Preferences**.
-2. To verify the client certificate in your Cloudflare account:  
-   1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), select the zone for which you enabled client certificates.  
-   2. Go to **SSL/TLS** \> **Client Certificates**.  
-The certificate name is the WARP enrollment **Device ID**.![Example client certificate in the Cloudflare dashboard](https://developers.cloudflare.com/_astro/device-information-only-cert.CBHcWmIc_Z1MHrng.webp)
+2. To verify the client certificate in your Cloudflare account:
+
+  1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), select the zone for which you enabled client certificates.
+  2. Go to **SSL/TLS** \> **Client Certificates**.  
+The certificate name is the WARP enrollment **Device ID**. ![Example client certificate in the Cloudflare dashboard](https://developers.cloudflare.com/_astro/device-information-only-cert.CBHcWmIc_Z1MHrng.webp)
 
 ## 4\. Enforce the client certificate
 
@@ -100,9 +92,10 @@ To block traffic from devices that do not have a valid client certificate:
 2. Under **Hosts**, select **Edit** and enter the hostname of your Access application (for example, `app.mycompany.com`). This enables mTLS authentication for the application.
 3. Select **Create mTLS rule**.
 4. Create a WAF custom rule that checks all requests to your application for a valid client certificate:  
-| Field              | Operator | Value             | Logic | Action |  
-| ------------------ | -------- | ----------------- | ----- | ------ |  
-| Client Certificate | equals   | Off               | And   | Block  |  
+
+| Field              | Operator | Value             | Logic | Action |
+| ------------------ | -------- | ----------------- | ----- | ------ |
+| Client Certificate | equals   | Off               | And   | Block  |
 | Hostname           | equals   | app.mycompany.com |       |        |
 5. Select **Deploy**.
 

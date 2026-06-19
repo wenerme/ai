@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,28 +31,7 @@ You cannot import a raw SQLite database (`.sqlite3` files) directly. Refer to [h
 For example, consider the following `users_export.sql` schema & values, which includes a `CREATE TABLE IF NOT EXISTS` statement:
 
 ```
-
-CREATE TABLE IF NOT EXISTS users (
-
-  id VARCHAR(50),
-
-  full_name VARCHAR(50),
-
-  created_on DATE
-
-);
-
-INSERT INTO users (id, full_name, created_on) VALUES ('01GREFXCN9519NRVXWTPG0V0BF', 'Catlaina Harbar', '2022-08-20 05:39:52');
-
-INSERT INTO users (id, full_name, created_on) VALUES ('01GREFXCNBYBGX2GC6ZGY9FMP4', 'Hube Bilverstone', '2022-12-15 21:56:13');
-
-INSERT INTO users (id, full_name, created_on) VALUES ('01GREFXCNCWAJWRQWC2863MYW4', 'Christin Moss', '2022-07-28 04:13:37');
-
-INSERT INTO users (id, full_name, created_on) VALUES ('01GREFXCNDGQNBQAJG1AP0TYXZ', 'Vlad Koche', '2022-11-29 17:40:57');
-
-INSERT INTO users (id, full_name, created_on) VALUES ('01GREFXCNF67KV7FPPSEJVJMEW', 'Riane Zamora', '2022-12-24 06:49:04');
-
-
+CREATE TABLE IF NOT EXISTS users (  id VARCHAR(50),  full_name VARCHAR(50),  created_on DATE);INSERT INTO users (id, full_name, created_on) VALUES ('01GREFXCN9519NRVXWTPG0V0BF', 'Catlaina Harbar', '2022-08-20 05:39:52');INSERT INTO users (id, full_name, created_on) VALUES ('01GREFXCNBYBGX2GC6ZGY9FMP4', 'Hube Bilverstone', '2022-12-15 21:56:13');INSERT INTO users (id, full_name, created_on) VALUES ('01GREFXCNCWAJWRQWC2863MYW4', 'Christin Moss', '2022-07-28 04:13:37');INSERT INTO users (id, full_name, created_on) VALUES ('01GREFXCNDGQNBQAJG1AP0TYXZ', 'Vlad Koche', '2022-11-29 17:40:57');INSERT INTO users (id, full_name, created_on) VALUES ('01GREFXCNF67KV7FPPSEJVJMEW', 'Riane Zamora', '2022-12-24 06:49:04');
 ```
 
 With your `users_export.sql` file in the current working directory, you can pass the `--file=users_export.sql` flag to `d1 execute` to execute (import) our table schema and values:
@@ -60,10 +39,7 @@ With your `users_export.sql` file in the current working directory, you can pass
 Terminal window
 
 ```
-
 npx wrangler d1 execute example-db --remote --file=users_export.sql
-
-
 ```
 
 To confirm your table was imported correctly and is queryable, execute a `SELECT` statement to fetch all the tables from your D1 database:
@@ -71,35 +47,11 @@ To confirm your table was imported correctly and is queryable, execute a `SELECT
 Terminal window
 
 ```
-
 npx wrangler d1 execute example-db --remote --command "SELECT name FROM sqlite_schema WHERE type='table' ORDER BY name;"
-
-
 ```
 
 ```
-
-...
-
-🌀 To execute on your local development database, remove the --remote flag from your wrangler command.
-
-🚣 Executed 1 commands in 0.3165ms
-
-┌────────┐
-
-│ name   │
-
-├────────┤
-
-│ _cf_KV │
-
-├────────┤
-
-│ users  │
-
-└────────┘
-
-
+...🌀 To execute on your local development database, remove the --remote flag from your wrangler command.🚣 Executed 1 commands in 0.3165ms┌────────┐│ name   │├────────┤│ _cf_KV │├────────┤│ users  │└────────┘
 ```
 
 Note
@@ -125,10 +77,7 @@ For example, if you have a raw SQLite dump called `db_dump.sqlite3`, run the fol
 Terminal window
 
 ```
-
 sqlite3 db_dump.sqlite3 .dump > db.sql
-
-
 ```
 
 Once you have run the above command, you will need to edit the output SQL file to be compatible with D1:
@@ -136,10 +85,7 @@ Once you have run the above command, you will need to edit the output SQL file t
 1. Remove `BEGIN TRANSACTION` and `COMMIT;` from the file
 2. Remove the following table creation statement (if present):  
 ```  
-CREATE TABLE _cf_KV (  
-   key TEXT PRIMARY KEY,  
-   value BLOB  
-) WITHOUT ROWID;  
+CREATE TABLE _cf_KV (   key TEXT PRIMARY KEY,   value BLOB) WITHOUT ROWID;  
 ```
 
 You can then follow the steps to [import an existing database](#import-an-existing-database) into D1 by using the `.sql` file you generated from the database dump as the input to `wrangler d1 execute`.
@@ -153,10 +99,7 @@ To export full D1 database schema and data:
 Terminal window
 
 ```
-
 npx wrangler d1 export <database_name> --remote --output=./database.sql
-
-
 ```
 
 To export single table schema and data:
@@ -164,10 +107,7 @@ To export single table schema and data:
 Terminal window
 
 ```
-
 npx wrangler d1 export <database_name> --remote --table=<table_name> --output=./table.sql
-
-
 ```
 
 To export only D1 database schema:
@@ -175,10 +115,7 @@ To export only D1 database schema:
 Terminal window
 
 ```
-
 npx wrangler d1 export <database_name> --remote --output=./schema.sql --no-data
-
-
 ```
 
 To export only D1 table schema:
@@ -186,10 +123,7 @@ To export only D1 table schema:
 Terminal window
 
 ```
-
 npx wrangler d1 export <database_name> --remote --table=<table_name> --output=./schema.sql --no-data
-
-
 ```
 
 To export only D1 database data:
@@ -197,10 +131,7 @@ To export only D1 database data:
 Terminal window
 
 ```
-
 npx wrangler d1 export <database_name> --remote --output=./data.sql --no-schema
-
-
 ```
 
 To export only D1 table data:
@@ -208,10 +139,7 @@ To export only D1 table data:
 Terminal window
 
 ```
-
 npx wrangler d1 export <database_name> --remote --table=<table_name> --output=./data.sql --no-schema
-
-
 ```
 
 ### Known limitations
@@ -238,49 +166,13 @@ To resolve this issue, convert the single large `INSERT` statement into multiple
 Before:
 
 ```
-
-INSERT INTO users (id, full_name, created_on)
-
-VALUES
-
-  ('1', 'Jacquelin Elara', '2022-08-20 05:39:52'),
-
-  ('2', 'Hubert Simmons', '2022-12-15 21:56:13'),
-
-  ...
-
-  ('1000', 'Boris Pewter', '2022-12-24 07:59:54');
-
-
+INSERT INTO users (id, full_name, created_on)VALUES  ('1', 'Jacquelin Elara', '2022-08-20 05:39:52'),  ('2', 'Hubert Simmons', '2022-12-15 21:56:13'),  ...  ('1000', 'Boris Pewter', '2022-12-24 07:59:54');
 ```
 
 After:
 
 ```
-
-INSERT INTO users (id, full_name, created_on)
-
-VALUES
-
-  ('1', 'Jacquelin Elara', '2022-08-20 05:39:52'),
-
-  ...
-
-  ('100', 'Eddy Orelo', '2022-12-15 22:16:15');
-
-...
-
-INSERT INTO users (id, full_name, created_on)
-
-VALUES
-
-  ('901', 'Roran Eroi', '2022-08-20 05:39:52'),
-
-  ...
-
-  ('1000', 'Boris Pewter', '2022-12-15 22:16:15');
-
-
+INSERT INTO users (id, full_name, created_on)VALUES  ('1', 'Jacquelin Elara', '2022-08-20 05:39:52'),  ...  ('100', 'Eddy Orelo', '2022-12-15 22:16:15');...INSERT INTO users (id, full_name, created_on)VALUES  ('901', 'Roran Eroi', '2022-08-20 05:39:52'),  ...  ('1000', 'Boris Pewter', '2022-12-15 22:16:15');
 ```
 
 ## Foreign key constraints

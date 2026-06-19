@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,121 +32,27 @@ If you are using [Pages Functions](https://developers.cloudflare.com/pages/funct
 
 The following examples show how to access a D1 database bound to `DB` from both a Workers script and a Pages Function:
 
-* [ workers ](#tab-panel-7882)
-* [ pages ](#tab-panel-7883)
+* [ workers ](#tab-panel-7958)
+* [ pages ](#tab-panel-7959)
 
 TypeScript
 
 ```
-
 import { Hono } from "hono";
-
-
-// This ensures c.env.DB is correctly typed
-
-type Bindings = {
-
-  DB: D1Database;
-
-};
-
-
+// This ensures c.env.DB is correctly typedtype Bindings = {  DB: D1Database;};
 const app = new Hono<{ Bindings: Bindings }>();
-
-
-// Accessing D1 is via the c.env.YOUR_BINDING property
-
-app.get("/query/users/:id", async (c) => {
-
-  const userId = c.req.param("id");
-
-  try {
-
-    let { results } = await c.env.DB.prepare(
-
-      "SELECT * FROM users WHERE user_id = ?",
-
-    )
-
-      .bind(userId)
-
-      .run();
-
-    return c.json(results);
-
-  } catch (e) {
-
-    return c.json({ err: "Failed to query user" }, 500);
-
-  }
-
-});
-
-
-// Export our Hono app: Hono automatically exports a
-
-// Workers 'fetch' handler for you
-
-export default app;
-
-
+// Accessing D1 is via the c.env.YOUR_BINDING propertyapp.get("/query/users/:id", async (c) => {  const userId = c.req.param("id");  try {    let { results } = await c.env.DB.prepare(      "SELECT * FROM users WHERE user_id = ?",    )      .bind(userId)      .run();    return c.json(results);  } catch (e) {    return c.json({ err: "Failed to query user" }, 500);  }});
+// Export our Hono app: Hono automatically exports a// Workers 'fetch' handler for youexport default app;
 ```
 
 TypeScript
 
 ```
-
-import { Hono } from "hono";
-
-import { handle } from "hono/cloudflare-pages";
-
-
-// This ensures c.env.DB is correctly typed
-
-type Bindings = {
-
-  DB: D1Database;
-
-};
-
-
+import { Hono } from "hono";import { handle } from "hono/cloudflare-pages";
+// This ensures c.env.DB is correctly typedtype Bindings = {  DB: D1Database;};
 const app = new Hono<{ Bindings: Bindings }>().basePath("/api");
-
-
-// Accessing D1 is via the c.env.YOUR_BINDING property
-
-app.get("/query/users/:id", async (c) => {
-
-  const userId = c.req.param("id");
-
-  try {
-
-    let { results } = await c.env.DB.prepare(
-
-      "SELECT * FROM users WHERE user_id = ?",
-
-    )
-
-      .bind(userId)
-
-      .run();
-
-    return c.json(results);
-
-  } catch (e) {
-
-    return c.json({ err: "Failed to query user" }, 500);
-
-  }
-
-});
-
-
-// Export the Hono instance as a Pages onRequest function
-
-export const onRequest = handle(app);
-
-
+// Accessing D1 is via the c.env.YOUR_BINDING propertyapp.get("/query/users/:id", async (c) => {  const userId = c.req.param("id");  try {    let { results } = await c.env.DB.prepare(      "SELECT * FROM users WHERE user_id = ?",    )      .bind(userId)      .run();    return c.json(results);  } catch (e) {    return c.json({ err: "Failed to query user" }, 500);  }});
+// Export the Hono instance as a Pages onRequest functionexport const onRequest = handle(app);
 ```
 
 ```json

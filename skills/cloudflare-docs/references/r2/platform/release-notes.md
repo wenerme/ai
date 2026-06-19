@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -294,12 +294,13 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ## 2022-07-20
 
-* Added dummy implementations of the following operations that mimic the response that a basic AWS S3 bucket will return when first created:  
-   * `GetBucketVersioning`  
-   * `GetBucketLifecycleConfiguration`  
-   * `GetBucketReplication`  
-   * `GetBucketTagging`  
-   * `GetObjectLockConfiguration`
+* Added dummy implementations of the following operations that mimic the response that a basic AWS S3 bucket will return when first created:
+
+  * `GetBucketVersioning`
+  * `GetBucketLifecycleConfiguration`
+  * `GetBucketReplication`
+  * `GetBucketTagging`
+  * `GetObjectLockConfiguration`
 
 ## 2022-07-19
 
@@ -327,10 +328,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 ## 2022-07-01
 
 * Unsupported search parameters to `ListObjects`/`ListObjectsV2` are now rejected with `501 Not Implemented`.
-* Fixes for Listing:  
-   * Fix listing behavior when the number of files within a folder exceeds the limit (you'd end up seeing a CommonPrefix for that large folder N times where N = number of children within the CommonPrefix / limit).  
-   * Fix corner case where listing could cause objects with sharing the base name of a "folder" to be skipped.  
-   * Fix listing over some files that shared a certain common prefix.
+* Fixes for Listing:
+  * Fix listing behavior when the number of files within a folder exceeds the limit (you'd end up seeing a CommonPrefix for that large folder N times where N = number of children within the CommonPrefix / limit).
+  * Fix corner case where listing could cause objects with sharing the base name of a "folder" to be skipped.
+  * Fix listing over some files that shared a certain common prefix.
 * `DeleteObjects` can now handle 1000 objects at a time.
 * S3 `CreateBucket` request can specify `x-amz-bucket-object-lock-enabled` with a value of `false` and not have the requested rejected with a `NotImplemented`error. A value of `true` will continue to be rejected as R2 does not yet support object locks.
 

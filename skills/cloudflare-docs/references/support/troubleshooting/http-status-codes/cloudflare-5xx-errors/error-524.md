@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/support/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,9 +26,10 @@ Error `524` can also indicate that Cloudflare successfully connected to the orig
 
 Here are the options we suggest to work around this issue:
 
-* [Contact your hosting provider](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/#required-error-details-for-hosting-provider) to exclude the following common causes at your origin web server:  
-   * A long-running process on the origin web server.  
-   * An overloaded origin web server.
+* [Contact your hosting provider](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/#required-error-details-for-hosting-provider) to exclude the following common causes at your origin web server:
+
+  * A long-running process on the origin web server.
+  * An overloaded origin web server.
 * Implement status polling of large HTTP processes to avoid hitting this error.
 
 Note
@@ -41,8 +42,8 @@ Here are some other actions you can take on the Cloudflare side:
 
 * If you regularly run HTTP requests that take over 120 seconds to complete (for example, large data exports), move those processes behind a [subdomain not proxied (DNS-only, grey clouded)](https://developers.cloudflare.com/dns/proxy-status/#dns-only-records) in the Cloudflare **DNS** app.
 * Enterprise customers can increase the `524` timeout up to 6,000 seconds:  
-   * If your content can be cached, you can create a [Cache Rule](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#proxy-read-timeout-enterprise-only) with the `Proxy Read Timeout` setting. The content needs to be cacheable for the rule to be triggered, but does not need to be cached.  
-   * You can increase the `proxy_read_timeout` setting for the whole zone using the [Edit zone setting API endpoint](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/).
+  * If your content can be cached, you can create a [Cache Rule](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#proxy-read-timeout-enterprise-only) with the `Proxy Read Timeout` setting. The content needs to be cacheable for the rule to be triggered, but does not need to be cached.
+  * You can increase the `proxy_read_timeout` setting for the whole zone using the [Edit zone setting API endpoint](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/).
 
 Note
 

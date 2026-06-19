@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,47 +28,19 @@ This is helpful when:
 
 In the dynamic dispatch Worker's Wrangler file, configure the [dispatch namespace binding](https://developers.cloudflare.com/workers/wrangler/configuration/#dispatch-namespace-bindings-workers-for-platforms) to connect to the remote namespace by setting [remote = true](https://developers.cloudflare.com/workers/development-testing/#remote-bindings):
 
-* [  wrangler.jsonc ](#tab-panel-7037)
-* [  wrangler.toml ](#tab-panel-7038)
+* [  wrangler.jsonc ](#tab-panel-7113)
+* [  wrangler.toml ](#tab-panel-7114)
 
 JSONC
 
 ```
-
-{
-
-  "dispatch_namespaces": [
-
-    {
-
-      "binding": "DISPATCH_NAMESPACE",
-
-      "namespace": "production",
-
-      "remote": true
-
-    }
-
-  ]
-
-}
-
-
+{  "dispatch_namespaces": [    {      "binding": "DISPATCH_NAMESPACE",      "namespace": "production",      "remote": true    }  ]}
 ```
 
 TOML
 
 ```
-
-[[dispatch_namespaces]]
-
-binding = "DISPATCH_NAMESPACE"
-
-namespace = "production"
-
-remote = true
-
-
+[[dispatch_namespaces]]binding = "DISPATCH_NAMESPACE"namespace = "production"remote = true
 ```
 
 This tells your dispatch Worker that's running locally to connect to the remote `production` namespace. When you run `wrangler dev`, your Dispatch Worker will route requests to the User Workers deployed in that namespace.

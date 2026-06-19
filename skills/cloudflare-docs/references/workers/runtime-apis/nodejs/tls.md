@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,39 +21,10 @@ You can use [node:tls ↗](https://nodejs.org/api/tls.html) to create secure con
 JavaScript
 
 ```
-
 import { connect } from "node:tls";
-
-
-// ... in a request handler ...
-
-const connectionOptions = { key: env.KEY, cert: env.CERT };
-
-const socket = connect(url, connectionOptions, () => {
-
-  if (socket.authorized) {
-
-    console.log("Connection authorized");
-
-  }
-
-});
-
-
-socket.on("data", (data) => {
-
-  console.log(data);
-
-});
-
-
-socket.on("end", () => {
-
-  console.log("server ends connection");
-
-});
-
-
+// ... in a request handler ...const connectionOptions = { key: env.KEY, cert: env.CERT };const socket = connect(url, connectionOptions, () => {  if (socket.authorized) {    console.log("Connection authorized");  }});
+socket.on("data", (data) => {  console.log(data);});
+socket.on("end", () => {  console.log("server ends connection");});
 ```
 
 The following APIs are available:

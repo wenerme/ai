@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -85,11 +85,12 @@ The dashboard confirms that your application is available and protected behind C
 
 ## Recommended next steps
 
-* **Test your application**:  
-   1. Select **Test login** on the success screen.  
-   2. On the Access login screen, enter one of the email addresses you added to your Access policy.  
-   3. Select **Send me a code**.  
-   4. Enter the code from your email and select **Sign in**.
+* **Test your application**:
+
+  1. Select **Test login** on the success screen.
+  2. On the Access login screen, enter one of the email addresses you added to your Access policy.
+  3. Select **Send me a code**.
+  4. Enter the code from your email and select **Sign in**.
 * **Explore more with Zero Trust**: Review your applications and policies in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Zero Trust** \> **Access controls**, and your tunnels under **Zero Trust** \> **Networks** \> **Connectors**.
 * **Configure an identity provider**: Replace email one-time PINs with your organization's identity provider for a seamless login experience. For more information, refer to [Identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/).
 

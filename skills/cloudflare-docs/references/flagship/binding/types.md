@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/flagship/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,14 +21,7 @@ The binding type. Each Flagship binding in your Wrangler configuration is typed 
 TypeScript
 
 ```
-
-interface Env {
-
-  FLAGS: Flagship;
-
-}
-
-
+interface Env {  FLAGS: Flagship;}
 ```
 
 Refer to the [methods reference](https://developers.cloudflare.com/flagship/binding/methods/) for the full list of evaluation methods available on the binding.
@@ -40,10 +33,7 @@ A record of attribute names to values passed for [targeting rules](https://devel
 TypeScript
 
 ```
-
 type FlagshipEvaluationContext = Record<string, string | number | boolean>;
-
-
 ```
 
 ## `FlagshipEvaluationDetails`
@@ -53,24 +43,7 @@ Returned by the `*Details` methods. Contains the evaluated value and metadata ab
 TypeScript
 
 ```
-
-interface FlagshipEvaluationDetails<T> {
-
-  flagKey: string;
-
-  value: T;
-
-  variant?: string;
-
-  reason?: string;
-
-  errorCode?: string;
-
-  errorMessage?: string;
-
-}
-
-
+interface FlagshipEvaluationDetails<T> {  flagKey: string;  value: T;  variant?: string;  reason?: string;  errorCode?: string;  errorMessage?: string;}
 ```
 
 | Property     | Type   | Description                                                                         |

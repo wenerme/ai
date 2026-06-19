@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,10 +29,7 @@ A token with this permission is only valid for the Cloud Connector endpoints des
 To obtain the complete endpoint, append the Cloud Connector endpoints listed below to the Cloudflare API base URL:
 
 ```
-
 https://api.cloudflare.com/client/v4
-
-
 ```
 
 The `{zone_id}` argument is the [zone ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) (a hexadecimal string). You can find this value in the Cloudflare dashboard.
@@ -52,62 +49,18 @@ The following example returns a list of existing Cloud Connector rules:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Cloud Connector Read`
 * `Cloud Connector Write`
 
 Rules
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cloud_connector/rules" \
-
-  --request GET \
-
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cloud_connector/rules" \  --request GET \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
 ```
 
 ```
-
-{
-
-  "result": [
-
-    {
-
-      "id": "<RULE_1_ID>",
-
-      "provider": "aws_s3",
-
-      "expression": "http.request.uri.path wildcard \"/images/*\"",
-
-      "description": "Connect to S3 bucket containing images",
-
-      "enabled": true,
-
-      "parameters": {
-
-        "host": "examplebucketwithimages.s3.north-eu.amazonaws.com"
-
-      }
-
-    }
-
-  ],
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": [    {      "id": "<RULE_1_ID>",      "provider": "aws_s3",      "expression": "http.request.uri.path wildcard \"/images/*\"",      "description": "Connect to S3 bucket containing images",      "enabled": true,      "parameters": {        "host": "examplebucketwithimages.s3.north-eu.amazonaws.com"      }    }  ],  "success": true,  "errors": [],  "messages": []}
 ```
 
 ### Create/update/delete Cloud Connector rules
@@ -120,42 +73,13 @@ The following example request will replace all existing Cloud Connector rules wi
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Cloud Connector Write`
 
 Put Rules
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cloud_connector/rules" \
-
-  --request PUT \
-
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
-
-  --json '[
-
-    {
-
-        "expression": "http.request.uri.path wildcard \"/images/*\"",
-
-        "provider": "cloudflare_r2",
-
-        "description": "Connect to R2 bucket containing images",
-
-        "parameters": {
-
-            "host": "mybucketcustomdomain.example.com"
-
-        }
-
-    }
-
-  ]'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cloud_connector/rules" \  --request PUT \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \  --json '[    {        "expression": "http.request.uri.path wildcard \"/images/*\"",        "provider": "cloudflare_r2",        "description": "Connect to R2 bucket containing images",        "parameters": {            "host": "mybucketcustomdomain.example.com"        }    }  ]'
 ```
 
 The required body parameters for each rule are: `expression`, `provider`, and `parameters.host`.

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/privacy-proxy/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -73,10 +73,7 @@ Privacy Proxy exports metrics that help you understand usage patterns and perfor
 Privacy Proxy includes a `Server-Timing` header in responses to help measure processing latency from the client side. For full header format details, refer to [HTTP headers](https://developers.cloudflare.com/privacy-proxy/reference/http-headers/#server-timing).
 
 ```
-
 Server-Timing: proxy;dur=12.5
-
-
 ```
 
 The `dur` value is the processing time in milliseconds introduced by the proxy. Use this header as a client-side SLI (Service Level Indicator) to monitor proxy performance.
@@ -92,22 +89,9 @@ To visualize Privacy Proxy metrics in Grafana:
 Example Prometheus queries
 
 ```
-
-# Request rate over time
-
-rate(privacy_proxy_requests_total[5m])
-
-
-# 95th percentile connection latency
-
-histogram_quantile(0.95, rate(privacy_proxy_connect_latency_seconds_bucket[5m]))
-
-
-# Error rate
-
-sum(rate(privacy_proxy_requests_by_status{status=~"5.."}[5m])) / sum(rate(privacy_proxy_requests_total[5m]))
-
-
+# Request rate over timerate(privacy_proxy_requests_total[5m])
+# 95th percentile connection latencyhistogram_quantile(0.95, rate(privacy_proxy_connect_latency_seconds_bucket[5m]))
+# Error ratesum(rate(privacy_proxy_requests_by_status{status=~"5.."}[5m])) / sum(rate(privacy_proxy_requests_total[5m]))
 ```
 
 ---

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,35 +25,13 @@ When Workers are deployed to Cloudflare, as a security measure to [mitigate agai
 Time is frozen — start will have the exact same value as end.
 
 ```
-
-const start = performance.now();
-
-for (let i = 0; i < 1e6; i++) {
-
-  // do expensive work
-
-}
-
-const end = performance.now();
-
-const timing = end - start; // 0
-
-
+const start = performance.now();for (let i = 0; i < 1e6; i++) {  // do expensive work}const end = performance.now();const timing = end - start; // 0
 ```
 
 Time advances, because a subrequest has occurred between start and end.
 
 ```
-
-const start = performance.now();
-
-const response = await fetch("https://developers.cloudflare.com/");
-
-const end = performance.now();
-
-const timing = end - start; // duration of the subrequest to developers.cloudflare.com
-
-
+const start = performance.now();const response = await fetch("https://developers.cloudflare.com/");const end = performance.now();const timing = end - start; // duration of the subrequest to developers.cloudflare.com
 ```
 
 By wrapping a subrequest in calls to `performance.now()` or `Date.now()` APIs, you can measure the timing of a subrequest, fetching a key from KV, an object from R2, or any other form of I/O in your Worker.

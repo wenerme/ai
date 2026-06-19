@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,50 +22,20 @@ The Query Builder can be found in the **Observability** page of the Cloudflare d
 
 The Query Builder is available to all developers and requires no enablement. Queries search all Workers Logs stored by Cloudflare. If you have not yet enabled Workers Logs, you can do so by adding the following setting to your [Worker's Wrangler file](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#enable-workers-logs) and redeploying your Worker.
 
-* [  wrangler.jsonc ](#tab-panel-11866)
-* [  wrangler.toml ](#tab-panel-11867)
+* [  wrangler.jsonc ](#tab-panel-11883)
+* [  wrangler.toml ](#tab-panel-11884)
 
 JSONC
 
 ```
-
-{
-
-  "observability": {
-
-    "enabled": true,
-
-    "logs": {
-
-      "invocation_logs": true,
-
-      "head_sampling_rate": 1 // optional. default = 1.
-
-    }
-
-  }
-
-}
-
-
+{  "observability": {    "enabled": true,    "logs": {      "invocation_logs": true,      "head_sampling_rate": 1 // optional. default = 1.    }  }}
 ```
 
 TOML
 
 ```
-
-[observability]
-
-enabled = true
-
-
-  [observability.logs]
-
-  invocation_logs = true
-
-  head_sampling_rate = 1
-
-
+[observability]enabled = true
+  [observability.logs]  invocation_logs = true  head_sampling_rate = 1
 ```
 
 ## Write a query in the Cloudflare dashboard
@@ -216,7 +186,7 @@ Now, we can investigate by selecting the **Invocations** tab. We can see that th
 
 We can expand a single invocation to view the relevant logs, and continue to debug.
 
-![Viewing the logs for a single Invocation](https://developers.cloudflare.com/_astro/wobs_invocation_logs_122.Bno9WyO1_9W3QT.webp) 
+![Viewing the logs for a single Invocation](https://developers.cloudflare.com/_astro/wobs_invocation_logs_122.Bno9WyO1_9W3QT.webp)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/query-builder/#page","headline":"Query Builder · Cloudflare Workers docs","description":"Write structured queries to investigate and visualize your telemetry data.","url":"https://developers.cloudflare.com/workers/observability/query-builder/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

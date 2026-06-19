@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -49,48 +49,7 @@ An Access Policy defines what resources the token can act on and what permission
 Each token can contain multiple policies.
 
 ```
-
-[
-
-  {
-
-    "id": "f267e341f3dd4697bd3b9f71dd96247f",
-
-    "effect": "allow",
-
-    "resources": {
-
-      "com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*",
-
-      "com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
-
-    },
-
-    "permission_groups": [
-
-      {
-
-        "id": "c8fed203ed3043cba015a93ad1616f1f",
-
-        "name": "Zone Read"
-
-      },
-
-      {
-
-        "id": "82e64a83756745bbbb1c9c2701bf816b",
-
-        "name": "DNS Read"
-
-      }
-
-    ]
-
-  }
-
-]
-
-
+[  {    "id": "f267e341f3dd4697bd3b9f71dd96247f",    "effect": "allow",    "resources": {      "com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*",      "com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"    },    "permission_groups": [      {        "id": "c8fed203ed3043cba015a93ad1616f1f",        "name": "Zone Read"      },      {        "id": "82e64a83756745bbbb1c9c2701bf816b",        "name": "DNS Read"      }    ]  }]
 ```
 
 | Field              | Description                                                                                                                                                                                                                         |
@@ -135,68 +94,18 @@ To fetch all available permission groups and their IDs, use the [List permission
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `API Tokens Write`
 * `API Tokens Read`
 
 List Token Permission Groups
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/user/tokens/permission_groups" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/user/tokens/permission_groups" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```
-
-{
-
-  "result": [
-
-    {
-
-      "id": "19637fbb73d242c0a92845d8db0b95b1",
-
-      "name": "AI Crawl Control Read",
-
-      "description": "Grants access to reading AI Crawl Control",
-
-      "scopes": [
-
-        "com.cloudflare.api.account.zone"
-
-      ]
-
-    },
-
-    {
-
-      "id": "1ba6ab4cacdb454b913bbb93e1b8cb8c",
-
-      "name": "AI Crawl Control Write",
-
-      "description": "Grants access to reading and editing AI Crawl Control",
-
-      "scopes": [
-
-        "com.cloudflare.api.account.zone"
-
-      ]
-
-    },
-
-    // (...)
-
-  ]
-
-}
-
-
+{  "result": [    {      "id": "19637fbb73d242c0a92845d8db0b95b1",      "name": "AI Crawl Control Read",      "description": "Grants access to reading AI Crawl Control",      "scopes": [        "com.cloudflare.api.account.zone"      ]    },    {      "id": "1ba6ab4cacdb454b913bbb93e1b8cb8c",      "name": "AI Crawl Control Write",      "description": "Grants access to reading and editing AI Crawl Control",      "scopes": [        "com.cloudflare.api.account.zone"      ]    },    // (...)  ]}
 ```
 
 ### 2\. Define the restrictions
@@ -208,20 +117,7 @@ When defining TTLs, you can set the time at which a token becomes active with `n
 Limit usage of a token by client IP address filters with the following object:
 
 ```
-
-{
-
-  "request.ip": {
-
-    "in": ["199.27.128.0/21", "2400:cb00::/32"],
-
-    "not_in": ["199.27.128.0/21", "2400:cb00::/32"]
-
-  }
-
-}
-
-
+{  "request.ip": {    "in": ["199.27.128.0/21", "2400:cb00::/32"],    "not_in": ["199.27.128.0/21", "2400:cb00::/32"]  }}
 ```
 
 Each parameter in the `in` and `not_in` objects must be in CIDR notation. For example, use `192.168.0.1/32` to specify a single IP address.
@@ -230,256 +126,25 @@ Each parameter in the `in` and `not_in` objects must be in CIDR notation. For ex
 
 Combine the previous information to create a token as in the following example:
 
-* [ Account token ](#tab-panel-8567)
-* [ User token ](#tab-panel-8568)
+* [ Account token ](#tab-panel-8643)
+* [ User token ](#tab-panel-8644)
 
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/tokens" \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "name": "readonly token",
-
-  "policies": [
-
-    {
-
-      "effect": "allow",
-
-      "resources": {
-
-        "com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*",
-
-        "com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
-
-      },
-
-      "permission_groups": [
-
-        {
-
-          "id": "c8fed203ed3043cba015a93ad1616f1f",
-
-          "name": "Zone Read"
-
-        },
-
-        {
-
-          "id": "82e64a83756745bbbb1c9c2701bf816b",
-
-          "name": "DNS Read"
-
-        }
-
-      ]
-
-    }
-
-  ],
-
-  "not_before": "2020-04-01T05:20:00Z",
-
-  "expires_on": "2020-04-10T00:00:00Z",
-
-  "condition": {
-
-    "request.ip": {
-
-      "in": [
-
-        "199.27.128.0/21",
-
-        "2400:cb00::/32"
-
-      ],
-
-      "not_in": [
-
-        "199.27.128.1/32"
-
-      ]
-
-    }
-
-  }
-
-}'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/tokens" \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "name": "readonly token",  "policies": [    {      "effect": "allow",      "resources": {        "com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*",        "com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"      },      "permission_groups": [        {          "id": "c8fed203ed3043cba015a93ad1616f1f",          "name": "Zone Read"        },        {          "id": "82e64a83756745bbbb1c9c2701bf816b",          "name": "DNS Read"        }      ]    }  ],  "not_before": "2020-04-01T05:20:00Z",  "expires_on": "2020-04-10T00:00:00Z",  "condition": {    "request.ip": {      "in": [        "199.27.128.0/21",        "2400:cb00::/32"      ],      "not_in": [        "199.27.128.1/32"      ]    }  }}'
 ```
 
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/user/tokens" \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "name": "readonly token",
-
-  "policies": [
-
-    {
-
-      "effect": "allow",
-
-      "resources": {
-
-        "com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*",
-
-        "com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
-
-      },
-
-      "permission_groups": [
-
-        {
-
-          "id": "c8fed203ed3043cba015a93ad1616f1f",
-
-          "name": "Zone Read"
-
-        },
-
-        {
-
-          "id": "82e64a83756745bbbb1c9c2701bf816b",
-
-          "name": "DNS Read"
-
-        }
-
-      ]
-
-    }
-
-  ],
-
-  "not_before": "2020-04-01T05:20:00Z",
-
-  "expires_on": "2020-04-10T00:00:00Z",
-
-  "condition": {
-
-    "request.ip": {
-
-      "in": [
-
-        "199.27.128.0/21",
-
-        "2400:cb00::/32"
-
-      ],
-
-      "not_in": [
-
-        "199.27.128.1/32"
-
-      ]
-
-    }
-
-  }
-
-}'
-
-
+curl "https://api.cloudflare.com/client/v4/user/tokens" \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "name": "readonly token",  "policies": [    {      "effect": "allow",      "resources": {        "com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*",        "com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"      },      "permission_groups": [        {          "id": "c8fed203ed3043cba015a93ad1616f1f",          "name": "Zone Read"        },        {          "id": "82e64a83756745bbbb1c9c2701bf816b",          "name": "DNS Read"        }      ]    }  ],  "not_before": "2020-04-01T05:20:00Z",  "expires_on": "2020-04-10T00:00:00Z",  "condition": {    "request.ip": {      "in": [        "199.27.128.0/21",        "2400:cb00::/32"      ],      "not_in": [        "199.27.128.1/32"      ]    }  }}'
 ```
 
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/user/tokens" \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "name": "readonly token",
-
-  "policies": [
-
-    {
-
-      "effect": "allow",
-
-      "resources": {
-
-        "com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*",
-
-        "com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
-
-      },
-
-      "permission_groups": [
-
-        {
-
-          "id": "c8fed203ed3043cba015a93ad1616f1f",
-
-          "name": "Zone Read"
-
-        },
-
-        {
-
-          "id": "82e64a83756745bbbb1c9c2701bf816b",
-
-          "name": "DNS Read"
-
-        }
-
-      ]
-
-    }
-
-  ],
-
-  "not_before": "2020-04-01T05:20:00Z",
-
-  "expires_on": "2020-04-10T00:00:00Z",
-
-  "condition": {
-
-    "request.ip": {
-
-      "in": [
-
-        "199.27.128.0/21",
-
-        "2400:cb00::/32"
-
-      ],
-
-      "not_in": [
-
-        "199.27.128.1/32"
-
-      ]
-
-    }
-
-  }
-
-}'
-
-
+curl "https://api.cloudflare.com/client/v4/user/tokens" \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "name": "readonly token",  "policies": [    {      "effect": "allow",      "resources": {        "com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*",        "com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"      },      "permission_groups": [        {          "id": "c8fed203ed3043cba015a93ad1616f1f",          "name": "Zone Read"        },        {          "id": "82e64a83756745bbbb1c9c2701bf816b",          "name": "DNS Read"        }      ]    }  ],  "not_before": "2020-04-01T05:20:00Z",  "expires_on": "2020-04-10T00:00:00Z",  "condition": {    "request.ip": {      "in": [        "199.27.128.0/21",        "2400:cb00::/32"      ],      "not_in": [        "199.27.128.1/32"      ]    }  }}'
 ```
 
 ```json

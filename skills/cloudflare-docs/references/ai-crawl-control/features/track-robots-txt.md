@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-crawl-control/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -52,8 +52,8 @@ The **Robots.txt availability** table shows the historical request frequency and
 From this table, you can take the following actions:
 
 * Monitor for a high number of unsuccessful requests, which suggests that crawlers are having trouble accessing your `robots.txt` file.  
-   * If the **Status** is `404 Not Found`, create a `robots.txt` file to provide clear directives.  
-   * If the file exists, check for upstream WAF rules or other security settings that may be blocking access.
+  * If the **Status** is `404 Not Found`, create a `robots.txt` file to provide clear directives.
+  * If the file exists, check for upstream WAF rules or other security settings that may be blocking access.
 * If the **Content Signals** column indicates that signals are missing, add them to your `robots.txt` file. You can do this by following the [Content Signals ↗](https://contentsignals.org/) instructions or by enabling [Managed robots.txt](https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/) to have Cloudflare manage them for you.
 
 ## Track robots.txt violations

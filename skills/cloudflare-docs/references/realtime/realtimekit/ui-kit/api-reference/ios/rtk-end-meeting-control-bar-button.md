@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -36,21 +36,8 @@ A control bar button that ends or leaves the meeting. Optionally displays a conf
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let endButton = RtkEndMeetingControlBarButton(
-
-    meeting: rtkClient,
-
-    alertViewController: self
-
-)
-
-view.addSubview(endButton)
-
-
+let endButton = RtkEndMeetingControlBarButton(    meeting: rtkClient,    alertViewController: self)view.addSubview(endButton)
 ```
 
 ### Without confirmation dialog
@@ -58,29 +45,8 @@ view.addSubview(endButton)
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let endButton = RtkEndMeetingControlBarButton(
-
-    meeting: rtkClient,
-
-    alertViewController: self,
-
-    onClick: { button, actionType in
-
-        print("Action: \(actionType)")
-
-    }
-
-)
-
-endButton.shouldShowAlertOnClick = false
-
-view.addSubview(endButton)
-
-
+let endButton = RtkEndMeetingControlBarButton(    meeting: rtkClient,    alertViewController: self,    onClick: { button, actionType in        print("Action: \(actionType)")    })endButton.shouldShowAlertOnClick = falseview.addSubview(endButton)
 ```
 
 ```json

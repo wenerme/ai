@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,8 +28,7 @@ Terminal window
 dig txt _mta-sts.example.com  
 ```  
 ```  
-_mta-sts.example.com. 300 IN  CNAME _mta-sts.mx.cloudflare.net.  
-_mta-sts.mx.cloudflare.net. 300 IN  TXT "v=STSv1; id=20230615T153000;"  
+_mta-sts.example.com. 300 IN  CNAME _mta-sts.mx.cloudflare.net._mta-sts.mx.cloudflare.net. 300 IN  TXT "v=STSv1; id=20230615T153000;"  
 ```  
 This tells the other end client that is trying to connect to us that we support MTA-STS.
 
@@ -42,13 +41,7 @@ To do this you need to deploy a Worker that allows email clients to pull Cloudfl
 1. Go to your **Account** \> **Workers & Pages** and select **Create**. Pick the default "Hello World" option button, and replace the sample worker code with the following:  
 TypeScript  
 ```  
-export default {  
-  async fetch(request, env, ctx): Promise<Response> {  
-    return await fetch(  
-      "https://mta-sts.mx.cloudflare.net/.well-known/mta-sts.txt",  
-    );  
-  },  
-} satisfies ExportedHandler;  
+export default {  async fetch(request, env, ctx): Promise<Response> {    return await fetch(      "https://mta-sts.mx.cloudflare.net/.well-known/mta-sts.txt",    );  },} satisfies ExportedHandler;  
 ```  
 This Worker proxies `https://mta-sts.mx.cloudflare.net/.well-known/mta-sts.txt` to your own domain.
 2. After deploying it, go to the Worker configuration, then **Settings** \> **Domains & Routes** \> **+Add**. Type the subdomain `mta-sts.example.com`.  
@@ -59,10 +52,7 @@ Terminal window
 curl https://mta-sts.example.com/.well-known/mta-sts.txt  
 ```  
 ```  
-version: STSv1  
-mode: enforce  
-mx: *.mx.cloudflare.net  
-max_age: 86400  
+version: STSv1mode: enforcemx: *.mx.cloudflare.netmax_age: 86400  
 ```  
 This says that you domain `example.com` enforces MTA-STS. Capable email clients will only deliver email to this domain over a secure connection to the specified MX servers. If no secure connection can be established the email will not be delivered.  
 Test before enforcing  

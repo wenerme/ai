@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,8 +29,8 @@ To set a duration for a DNS policy:
 2. Create a new DNS policy or choose an existing policy and select **Edit**.
 3. In **Apply durations and schedules**, turn on **Policy duration**.
 4. In **Input method**, choose the type of duration:  
-   * Choose _Duration_ and enter a specific amount of time until the policy turns off.  
-   * Choose _Exact end date_ and enter a specific date and time in your account's time zone for the policy to turn off.
+  * Choose _Duration_ and enter a specific amount of time until the policy turns off.
+  * Choose _Exact end date_ and enter a specific date and time in your account's time zone for the policy to turn off.
 5. Select **Save policy**.
 
 When a policy turns off, it will remain off until you turn it back on.
@@ -57,8 +57,8 @@ For policies with an exact end time, you can change the time before the policy t
 
 You can use Gateway to create a new DNS policy with a schedule or add a schedule to an existing policy.
 
-* [ Dashboard ](#tab-panel-7598)
-* [ API ](#tab-panel-7599)
+* [ Dashboard ](#tab-panel-7674)
+* [ API ](#tab-panel-7675)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **DNS**.
 2. Create a new DNS policy or choose an existing policy and select **Edit**.
@@ -72,34 +72,7 @@ To schedule a policy with the API, use the [Create a Zero Trust Gateway rule end
 Create a Zero Trust Gateway rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "action": "block",
-
-    "name": "Block gambling sites on weekends",
-
-    "traffic": "any(dns.content_category[*] in {\"Gambling\"})",
-
-    "schedule": {
-
-        "sat": "08:00-17:00",
-
-        "sun": "08:00-17:00",
-
-        "timezone": "Europe/Paris"
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "action": "block",    "name": "Block gambling sites on weekends",    "traffic": "any(dns.content_category[*] in {\"Gambling\"})",    "schedule": {        "sat": "08:00-17:00",        "sun": "08:00-17:00",        "timezone": "Europe/Paris"    }  }'
 ```
 
 The policy's schedule will appear in the Cloudflare dashboard under **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **DNS** when you select the policy.
@@ -121,42 +94,7 @@ The following command creates a DNS policy to block `facebook.com` only on weekd
 Create a Zero Trust Gateway rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "office-no-facebook-policy",
-
-    "action": "block",
-
-    "traffic": "dns.fqdn == \"facebook.com\"",
-
-    "enabled": true,
-
-    "schedule": {
-
-        "time_zone": "America/Chicago",
-
-        "mon": "08:00-12:30,13:30-17:00",
-
-        "tue": "08:00-12:30,13:30-17:00",
-
-        "wed": "08:00-12:30,13:30-17:00",
-
-        "thu": "08:00-12:30,13:30-17:00",
-
-        "fri": "08:00-12:30,13:30-17:00"
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "office-no-facebook-policy",    "action": "block",    "traffic": "dns.fqdn == \"facebook.com\"",    "enabled": true,    "schedule": {        "time_zone": "America/Chicago",        "mon": "08:00-12:30,13:30-17:00",        "tue": "08:00-12:30,13:30-17:00",        "wed": "08:00-12:30,13:30-17:00",        "thu": "08:00-12:30,13:30-17:00",        "fri": "08:00-12:30,13:30-17:00"    }  }'
 ```
 
 Refer to [this table ↗](https://en.wikipedia.org/wiki/List%5Fof%5Ftz%5Fdatabase%5Ftime%5Fzones#List) for a list of all time zone identifiers.
@@ -168,34 +106,7 @@ The following command creates a DNS policy to block `clockin.com` only on weeken
 Create a Zero Trust Gateway rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "clock-in-policy",
-
-    "action": "block",
-
-    "traffic": "dns.fqdn == \"clockin.com\"",
-
-    "enabled": true,
-
-    "schedule": {
-
-        "sat": "00:00-24:00",
-
-        "sun": "00:00-24:00"
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "clock-in-policy",    "action": "block",    "traffic": "dns.fqdn == \"clockin.com\"",    "enabled": true,    "schedule": {        "sat": "00:00-24:00",        "sun": "00:00-24:00"    }  }'
 ```
 
 Note

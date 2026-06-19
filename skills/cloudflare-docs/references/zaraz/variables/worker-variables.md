@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,28 +37,9 @@ Zaraz forwards the Zaraz Context object to your Worker as a JSON payload with a 
 JavaScript
 
 ```
-
 const { system, client } = await request.json()
-
-
-/* System parameters */
-
-system.page.url.href // URL of the current page
-
-system.page.query.gclid // Value of the gclid query parameter
-
-system.device.resolution // Device screen resolution
-
-system.device.language // Browser preferred language
-
-
-/* Zaraz Track values */
-
-client.value // value from `zaraz.track("foo", {value: "bar"})`
-
-client.products[0].name // name of the first product in an ecommerce call
-
-
+/* System parameters */system.page.url.href // URL of the current pagesystem.page.query.gclid // Value of the gclid query parametersystem.device.resolution // Device screen resolutionsystem.device.language // Browser preferred language
+/* Zaraz Track values */client.value // value from `zaraz.track("foo", {value: "bar"})`client.products[0].name // name of the first product in an ecommerce call
 ```
 
 Keep reading for more complete examples of different use cases or refer to [Zaraz Context](https://developers.cloudflare.com/zaraz/reference/context/).
@@ -98,22 +79,7 @@ Assuming we are sending a list of products in a cart, like this:
 JavaScript
 
 ```
-
-zaraz.ecommerce("Cart Viewed", {
-
-  products: [
-
-    { name: "shirt", price: "50" },
-
-    { name: "jacket", price: "20" },
-
-    { name: "hat", price: "30" },
-
-  ],
-
-});
-
-
+zaraz.ecommerce("Cart Viewed", {  products: [    { name: "shirt", price: "50" },    { name: "jacket", price: "20" },    { name: "hat", price: "30" },  ],});
 ```
 
 Calculating the sum can be done like this:
@@ -121,33 +87,10 @@ Calculating the sum can be done like this:
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    // Parse the Zaraz Context object
-
-    const { system, client } = await request.json();
-
-
-    // Get an array of all prices
-
-    const productsPrices = client.products.map((p) => p.price);
-
-
-    // Calculate the sum
-
-    const sum = productsPrices.reduce((partialSum, a) => partialSum + a, 0);
-
-
-    return new Response(sum);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    // Parse the Zaraz Context object    const { system, client } = await request.json();
+    // Get an array of all prices    const productsPrices = client.products.map((p) => p.price);
+    // Calculate the sum    const sum = productsPrices.reduce((partialSum, a) => partialSum + a, 0);
+    return new Response(sum);  },};
 ```
 
 ### Match a cookie with a user in your backend
@@ -157,37 +100,10 @@ Zaraz exposes all cookies automatically under the `system.cookies` object, so th
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    // Parse the Zaraz Context object
-
-    const { system, client } = await request.json();
-
-
-    // Get the value of the cookie "login-cookie"
-
-    const cookieValue = system.cookies["login-cookie"];
-
-
-    const userId = await fetch("https://example.com/api/getUserIdFromCookie", {
-
-      method: POST,
-
-      body: cookieValue,
-
-    });
-
-
-    return new Response(userId);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    // Parse the Zaraz Context object    const { system, client } = await request.json();
+    // Get the value of the cookie "login-cookie"    const cookieValue = system.cookies["login-cookie"];
+    const userId = await fetch("https://example.com/api/getUserIdFromCookie", {      method: POST,      body: cookieValue,    });
+    return new Response(userId);  },};
 ```
 
 ### Hash a value before sending it to a third-party vendor
@@ -197,10 +113,7 @@ Assuming you're sending a value that you want to hash, for example, an email add
 JavaScript
 
 ```
-
 zaraz.track("user_logged_in", { email: "user@example.com" });
-
-
 ```
 
 You can access this property and hash it like this:
@@ -208,45 +121,10 @@ You can access this property and hash it like this:
 JavaScript
 
 ```
-
-async function digestMessage(message) {
-
-  const msgUint8 = new TextEncoder().encode(message); // encode as (utf-8) Uint8Array
-
-  const hashBuffer = await crypto.subtle.digest("SHA-256", msgUint8); // hash the message
-
-  const hashArray = Array.from(new Uint8Array(hashBuffer)); // convert buffer to byte array
-
-  const hashHex = hashArray
-
-    .map((b) => b.toString(16).padStart(2, "0"))
-
-    .join(""); // convert bytes to hex string
-
-  return hashHex;
-
-}
-
-
-export default {
-
-  async fetch(request, env) {
-
-    // Parse the Zaraz Context object
-
-    const { system, client } = await request.json();
-
-
+async function digestMessage(message) {  const msgUint8 = new TextEncoder().encode(message); // encode as (utf-8) Uint8Array  const hashBuffer = await crypto.subtle.digest("SHA-256", msgUint8); // hash the message  const hashArray = Array.from(new Uint8Array(hashBuffer)); // convert buffer to byte array  const hashHex = hashArray    .map((b) => b.toString(16).padStart(2, "0"))    .join(""); // convert bytes to hex string  return hashHex;}
+export default {  async fetch(request, env) {    // Parse the Zaraz Context object    const { system, client } = await request.json();
     const { email } = client;
-
-
-    return new Response(await digestMessage(email));
-
-  },
-
-};
-
-
+    return new Response(await digestMessage(email));  },};
 ```
 
 ```json

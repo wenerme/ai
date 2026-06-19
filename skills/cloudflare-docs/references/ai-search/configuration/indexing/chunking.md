@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,8 +29,8 @@ AI Search exposes two parameters to help you control chunking behavior:
 
 * **Chunk size**: The number of tokens per chunk. The option range may vary depending on the model.
 * **Chunk overlap**: The percentage of overlapping tokens between adjacent chunks.  
-   * Minimum: `0%`  
-   * Maximum: `30%`
+  * Minimum: `0%`
+  * Maximum: `30%`
 
 These settings apply during the indexing step, before your data is embedded and stored in your search index.
 

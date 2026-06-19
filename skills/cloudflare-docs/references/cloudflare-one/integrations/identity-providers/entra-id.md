@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -53,14 +53,15 @@ When the client secret expires, users will be unable to log in through Access. T
 1. Go to **App registrations** \> **All applications** \> select your application > **API permissions**.
 2. Select **Add a permission**.
 3. Select **Microsoft Graph**.
-4. Select **Delegated permissions** and enable the following [permissions ↗](https://learn.microsoft.com/graph/permissions-reference):  
-   * `email`  
-   * `offline_access`  
-   * `openid`  
-   * `profile`  
-   * `User.Read`  
-   * `Directory.Read.All`  
-   * `GroupMember.Read.All`
+4. Select **Delegated permissions** and enable the following [permissions ↗](https://learn.microsoft.com/graph/permissions-reference):
+
+  * `email`
+  * `offline_access`
+  * `openid`
+  * `profile`
+  * `User.Read`
+  * `Directory.Read.All`
+  * `GroupMember.Read.All`
 
 Note
 
@@ -72,9 +73,9 @@ More narrow permissions may be used, however this is the set of permissions that
 
 ### 3\. Add Entra ID as an identity provider
 
-* [ Dashboard ](#tab-panel-7210)
-* [ API ](#tab-panel-7211)
-* [ Terraform ](#tab-panel-7212)
+* [ Dashboard ](#tab-panel-7286)
+* [ API ](#tab-panel-7287)
+* [ Terraform ](#tab-panel-7288)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
@@ -82,73 +83,38 @@ More narrow permissions may be used, however this is the set of permissions that
 4. Enter the **Application (client) ID**, **Client secret**, and **Directory (tenant) ID** obtained from Microsoft Entra ID.
 5. Select **Save**.
 6. To [test](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/#test-idps-in-cloudflare-one) that your connection is working, select **Test**.
-7. (Optional) Configure the following settings:  
-   * **Proof Key for Code Exchange**: Perform [PKCE ↗](https://www.oauth.com/oauth2-servers/pkce/) on all login attempts.  
-   * **Support Groups**: Allow Cloudflare to read a user's Entra ID group membership.  
-   * **Entra ID Policy Sync**: Refer to our [Entra ID Conditional Access tutorial](https://developers.cloudflare.com/cloudflare-one/tutorials/entra-id-conditional-access/).  
-   * **Enable SCIM**: Refer to [Synchronize users and groups](#synchronize-users-and-groups).  
-   * **Email claim**: Enter the Entra ID claim that you wish to use for user identification (for example, `preferred_username`).  
-   * **OIDC Claims**: Enter [custom OIDC claims](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/#custom-oidc-claims) that you wish to add to your users' identity.
+7. (Optional) Configure the following settings:
+
+  * **Proof Key for Code Exchange**: Perform [PKCE ↗](https://www.oauth.com/oauth2-servers/pkce/) on all login attempts.
+  * **Support Groups**: Allow Cloudflare to read a user's Entra ID group membership.
+  * **Entra ID Policy Sync**: Refer to our [Entra ID Conditional Access tutorial](https://developers.cloudflare.com/cloudflare-one/tutorials/entra-id-conditional-access/).
+  * **Enable SCIM**: Refer to [Synchronize users and groups](#synchronize-users-and-groups).
+  * **Email claim**: Enter the Entra ID claim that you wish to use for user identification (for example, `preferred_username`).
+  * **OIDC Claims**: Enter [custom OIDC claims](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/#custom-oidc-claims) that you wish to add to your users' identity.
 
 Make a `POST` request to the [Identity Providers](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/identity%5Fproviders/methods/create/) endpoint:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Access: Organizations, Identity Providers, and Groups Write`
 
 Add an Access identity provider
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_providers" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "Entra ID example",
-
-    "type": "azureAD",
-
-    "config": {
-
-        "client_id": "<your client id>",
-
-        "client_secret": "<your client secret>",
-
-        "directory_id": "<your azure directory uuid>",
-
-        "support_groups": true
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_providers" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Entra ID example",    "type": "azureAD",    "config": {        "client_id": "<your client id>",        "client_secret": "<your client secret>",        "directory_id": "<your azure directory uuid>",        "support_groups": true    }  }'
 ```
 
 Provider versions
 
 The following example requires Cloudflare provider version `4.40.0` or greater.
 
-1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):  
-   * `Access: Organizations, Identity Providers, and Groups Write`
+1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
+
+  * `Access: Organizations, Identity Providers, and Groups Write`
 2. Configure the [cloudflare\_zero\_trust\_access\_identity\_provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fidentity%5Fprovider) resource:  
 ```  
-resource "cloudflare_zero_trust_access_identity_provider" "microsoft_entra_id" {  
-  account_id = var.cloudflare_account_id  
-  name       = "Entra ID example"  
-  type       = "azureAD"  
-  config      = {  
-    client_id                  = var.entra_id_client_id  
-    client_secret              = var.entra_id_client_secret  
-    directory_id               = var.entra_id_directory_id  
-    support_groups             = true  
-    }  
-}  
+resource "cloudflare_zero_trust_access_identity_provider" "microsoft_entra_id" {  account_id = var.cloudflare_account_id  name       = "Entra ID example"  type       = "azureAD"  config      = {    client_id                  = var.entra_id_client_id    client_secret              = var.entra_id_client_secret    directory_id               = var.entra_id_directory_id    support_groups             = true    }}  
 ```
 
 #### UPN and email
@@ -189,9 +155,9 @@ The Microsoft Entra ID integration allows you to synchronize IdP groups and auto
 * **Enable user deprovisioning**: [Revoke a user's active session](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#per-user) when they are removed from the SCIM application in Entra ID. This will invalidate all active Access sessions and prompt for reauthentication for any [Cloudflare One Client session policies](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/).
 * **Remove user seat on deprovision**: [Remove a user's seat](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/seat-management/) from your Cloudflare One account when they are removed from the SCIM application in Entra ID.
 * **SCIM identity update behavior**: Choose what happens in Cloudflare One when the user's identity updates in Entra ID.  
-   * _Automatic identity updates_: Automatically update the [User Registry identity](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/users/) when Entra ID sends an updated identity or group membership through SCIM. This identity is used for Gateway policies and Cloudflare One Client [device profiles](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/); Access will read the user's updated identity when they reauthenticate.  
-   * _Group membership change reauthentication_: [Revoke a user's active session](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#per-user) when their group membership changes in Entra ID. This will invalidate all active Access sessions and prompt for reauthentication for any [Cloudflare One Client session policies](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/). Access will read the user's updated group membership when they reauthenticate.  
-   * _No action_: Update the user's identity the next time they reauthenticate to Access or the Cloudflare One Client.
+  * _Automatic identity updates_: Automatically update the [User Registry identity](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/users/) when Entra ID sends an updated identity or group membership through SCIM. This identity is used for Gateway policies and Cloudflare One Client [device profiles](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/); Access will read the user's updated identity when they reauthenticate.
+  * _Group membership change reauthentication_: [Revoke a user's active session](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#per-user) when their group membership changes in Entra ID. This will invalidate all active Access sessions and prompt for reauthentication for any [Cloudflare One Client session policies](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/). Access will read the user's updated group membership when they reauthenticate.
+  * _No action_: Update the user's identity the next time they reauthenticate to Access or the Cloudflare One Client.
 1. Select **Regenerate Secret**. Copy the **SCIM Endpoint** and **SCIM Secret**. You will need to enter these values into Entra ID.
 2. Select **Save**.
 
@@ -284,48 +250,20 @@ You can require users to re-enter their credentials into Entra ID whenever they 
 
 1. Make a `GET` request to the [Identity Providers endpoint](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/identity%5Fproviders/) and copy the response for the Entra ID identity provider.  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Access: Organizations, Identity Providers, and Groups Write`  
-   * `Access: Organizations, Identity Providers, and Groups Read`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Access: Organizations, Identity Providers, and Groups Write`
+  * `Access: Organizations, Identity Providers, and Groups Read`  
 Get an Access identity provider  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_providers/$IDENTITY_PROVIDER_ID" \  
-  --request GET \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_providers/$IDENTITY_PROVIDER_ID" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
 ```
 2. [Update the Entra ID identity provider](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/identity%5Fproviders/methods/update/) using a `PUT` request. In the request body, include all existing configurations and set the `prompt` parameter to either `login` or `select_account`. For example:  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Access: Organizations, Identity Providers, and Groups Write`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Access: Organizations, Identity Providers, and Groups Write`  
 Update an Access identity provider  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_providers/$IDENTITY_PROVIDER_ID" \  
-  --request PUT \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",  
-    "type": "azureAD",  
-    "uid": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",  
-    "name": "Entra ID",  
-    "version": "31e74e9b4f033e16b604552091a72295",  
-    "config": {  
-        "azure_cloud": "default",  
-        "client_id": "<CLIENT_ID>",  
-        "conditional_access_enabled": false,  
-        "directory_id": "<AZURE_DIRECTORY_ID>",  
-        "redirect_url": "https://<TEAM_NAME>.cloudflareaccess.com/cdn-cgi/access/callback",  
-        "prompt": "login",  
-        "support_groups": true  
-    },  
-    "scim_config": {  
-        "enabled": true,  
-        "user_deprovision": true,  
-        "seat_deprovision": false,  
-        "group_member_deprovision": false,  
-        "identity_update_behavior": "automatic"  
-    },  
-    "scim_base_url": "https://<TEAM_NAME>.cloudflareaccess.com/populations/f174e90a-fafe-4643-bbbc-4a0ed4fc8415/scim/v2"  
-  }'  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_providers/$IDENTITY_PROVIDER_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",    "type": "azureAD",    "uid": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",    "name": "Entra ID",    "version": "31e74e9b4f033e16b604552091a72295",    "config": {        "azure_cloud": "default",        "client_id": "<CLIENT_ID>",        "conditional_access_enabled": false,        "directory_id": "<AZURE_DIRECTORY_ID>",        "redirect_url": "https://<TEAM_NAME>.cloudflareaccess.com/cdn-cgi/access/callback",        "prompt": "login",        "support_groups": true    },    "scim_config": {        "enabled": true,        "user_deprovision": true,        "seat_deprovision": false,        "group_member_deprovision": false,        "identity_update_behavior": "automatic"    },    "scim_base_url": "https://<TEAM_NAME>.cloudflareaccess.com/populations/f174e90a-fafe-4643-bbbc-4a0ed4fc8415/scim/v2"  }'  
 ```
 
 ```json

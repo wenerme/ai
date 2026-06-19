@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/support/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,7 +26,7 @@ The diagram below illustrates the different ways that IP addresses are handled w
 
 Warning
 
-Cloudflare no longer updates and supports _mod\_cloudflare_, starting with versions **Debian 9** and **Ubuntu 18.04 LTS** of the Linux operating system. We now recommend[_mod\_remoteip_ ↗](https://httpd.apache.org/docs/2.4/mod/mod%5Fremoteip.html)for customers using Apache web servers. Customers who are interested in building the _mod\_cloudflare_ package can [download the codebase ↗](https://github.com/cloudflare/mod%5Fcloudflare) from GitHub.
+Cloudflare no longer updates and supports _mod\_cloudflare_, starting with versions **Debian 9** and **Ubuntu 18.04 LTS** of the Linux operating system. We now recommend [_mod\_remoteip_ ↗](https://httpd.apache.org/docs/2.4/mod/mod%5Fremoteip.html)for customers using Apache web servers. Customers who are interested in building the _mod\_cloudflare_ package can [download the codebase ↗](https://github.com/cloudflare/mod%5Fcloudflare) from GitHub.
 
 ---
 
@@ -43,62 +43,31 @@ To install _mod\_remoteip_ on your Apache web server:
 Terminal window
 
 ```
-
 sudo a2enmod remoteip
-
-
 ```
 
 1. Update the site configuration to include _RemoteIPHeader CF-Connecting-IP_, e.g. `/etc/apache2/sites-available/000-default.conf`
 
 ```
-
-ServerAdmin webmaster@localhost
-
-DocumentRoot /var/www/html
-
-ServerName remoteip.andy.support
-
-RemoteIPHeader CF-Connecting-IP
-
-ErrorLog ${APACHE_LOG_DIR}/error.log
-
-CustomLog ${APACHE_LOG_DIR}/access.log combined
-
-
+ServerAdmin webmaster@localhostDocumentRoot /var/www/htmlServerName remoteip.andy.supportRemoteIPHeader CF-Connecting-IPErrorLog ${APACHE_LOG_DIR}/error.logCustomLog ${APACHE_LOG_DIR}/access.log combined
 ```
 
 1. Update combined _LogFormat_ entry in `apache.conf`, replacing _%h_ with _%a in_ `/etc/apache2/apache2.conf.` For example, if your current _LogFormat_ appeared as follows
 
 ```
-
 LogFormat "%h %l %u %t \"%r\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"" combined
-
-
 ```
 
 you would update _LogFormat_ to the following:
 
 ```
-
 LogFormat "%a %l %u %t \"%r\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"" combined
-
-
 ```
 
 1. Define trusted proxy addresses by creating `/etc/apache2/conf-available/remoteip.conf` by entering the following code and [Cloudflare IPs ↗](https://www.cloudflare.com/ips/):
 
 ```
-
-RemoteIPHeader CF-Connecting-IP
-
-RemoteIPTrustedProxy 192.0.2.1 (example IP address)
-
-RemoteIPTrustedProxy 192.0.2.2 (example IP address)
-
-(repeat for all Cloudflare IPs listed at https://www.cloudflare.com/ips/)
-
-
+RemoteIPHeader CF-Connecting-IPRemoteIPTrustedProxy 192.0.2.1 (example IP address)RemoteIPTrustedProxy 192.0.2.2 (example IP address)(repeat for all Cloudflare IPs listed at https://www.cloudflare.com/ips/)
 ```
 
 1. Enable Apache configuration:
@@ -106,21 +75,11 @@ RemoteIPTrustedProxy 192.0.2.2 (example IP address)
 Terminal window
 
 ```
-
 sudo a2enconf remoteip
-
-
 ```
 
 ```
-
-Enabling conf remoteip.
-
-To activate the new configuration, you need to run:
-
-service apache2 reload
-
-
+Enabling conf remoteip.To activate the new configuration, you need to run:service apache2 reload
 ```
 
 1. Test Apache configuration:
@@ -128,17 +87,11 @@ service apache2 reload
 Terminal window
 
 ```
-
 sudo apache2ctl configtest
-
-
 ```
 
 ```
-
 Syntax OK
-
-
 ```
 
 1. Restart Apache:
@@ -146,10 +99,7 @@ Syntax OK
 Terminal window
 
 ```
-
 sudo systemctl restart apache2
-
-
 ```
 
 Note
@@ -162,7 +112,7 @@ For more information on _mod\_remoteip_, refer to the [Apache documentation ↗]
 
 Warning
 
-Cloudflare no longer updates and supports _mod\_cloudflare_, starting with versions **Debian 9** and **Ubuntu 18.04 LTS** of the Linux operating system. We now recommend[_mod\_remoteip_ ↗](https://httpd.apache.org/docs/2.4/mod/mod%5Fremoteip.html)for customers using Apache web servers. Customers who are interested in building the _mod\_cloudflare_ package can [download the codebase ↗](https://github.com/cloudflare/mod%5Fcloudflare) from GitHub.
+Cloudflare no longer updates and supports _mod\_cloudflare_, starting with versions **Debian 9** and **Ubuntu 18.04 LTS** of the Linux operating system. We now recommend [_mod\_remoteip_ ↗](https://httpd.apache.org/docs/2.4/mod/mod%5Fremoteip.html)for customers using Apache web servers. Customers who are interested in building the _mod\_cloudflare_ package can [download the codebase ↗](https://github.com/cloudflare/mod%5Fcloudflare) from GitHub.
 
 ### Installing
 
@@ -177,10 +127,7 @@ If you are using an Apache web server, you can download mod\_cloudflare from [Gi
 If you can't install mod\_cloudflare, or if there is no Cloudflare plugin available for your content management system platform to restore original visitor IP, add this code to your origin web server in or before the `<body>` tag on any page that needs the original visitor IPs:
 
 ```
-
 <?php if (isset($_SERVER['HTTP_CF_CONNECTING_IP'])) $_SERVER['REMOTE_ADDR'] = $_SERVER['HTTP_CF_CONNECTING_IP'];?>
-
-
 ```
 
 This command will only make the IP address available to scripts that need it. It doesn’t store the IP in your actual server logs.
@@ -217,33 +164,22 @@ Refer below for instructions on how to configure your web server to log original
 
 Warning
 
-Cloudflare no longer updates and supports _mod\_cloudflare_, starting with versions **Debian 9** and **Ubuntu 18.04 LTS** of the Linux operating system. We now recommend[_mod\_remoteip_ ↗](https://httpd.apache.org/docs/2.4/mod/mod%5Fremoteip.html)for customers using Apache web servers. Customers who are interested in building the _mod\_cloudflare_ package can [download the codebase ↗](https://github.com/cloudflare/mod%5Fcloudflare) from GitHub.
+Cloudflare no longer updates and supports _mod\_cloudflare_, starting with versions **Debian 9** and **Ubuntu 18.04 LTS** of the Linux operating system. We now recommend [_mod\_remoteip_ ↗](https://httpd.apache.org/docs/2.4/mod/mod%5Fremoteip.html)for customers using Apache web servers. Customers who are interested in building the _mod\_cloudflare_ package can [download the codebase ↗](https://github.com/cloudflare/mod%5Fcloudflare) from GitHub.
 
 1. Make sure the following is installed:  
-   * Red Hat/Fedora`sudo yum install httpd-devel libtool git`  
-   * Debian/Ubuntu`sudo apt-get install apache2-dev libtool git`
+  * Red Hat/Fedora`sudo yum install httpd-devel libtool git`
+  * Debian/Ubuntu`sudo apt-get install apache2-dev libtool git`
 2. Clone the following for the most recent build of _mod\_cloudflare_:  
-   * Red Hat/Fedora/Debian/Ubuntu:`git clone https://github.com/cloudflare/mod_cloudflare.git; cd mod_cloudflare`
+  * Red Hat/Fedora/Debian/Ubuntu:`git clone https://github.com/cloudflare/mod_cloudflare.git; cd mod_cloudflare`
 3. Use the Apache extension tool to convert the .c file into a module:  
-   * Red Hat/Fedora/Debian/Ubuntu:`apxs -a -i -c mod_cloudflare.c`
+  * Red Hat/Fedora/Debian/Ubuntu:`apxs -a -i -c mod_cloudflare.c`
 4. Restart and verify the module is active:  
-   * Red Hat/Fedora`service httpd restart; httpd -M|grep cloudflare`  
-   * Debian/Ubuntu:`sudo apachectl restart; apache2ctl -M|grep cloudflare`
+  * Red Hat/Fedora`service httpd restart; httpd -M|grep cloudflare`
+  * Debian/Ubuntu:`sudo apachectl restart; apache2ctl -M|grep cloudflare`
 5. If your web server is behind a load balancer, add the following line to your Apache configuration (httpd.conf usually) and replace 123.123.123.123 with your load balancer's IP address:
 
 ```
-
-IfModule cloudflare_module
-
-CloudFlareRemoteIPHeader X-Forwarded-For
-
-CloudFlareRemoteIPTrustedProxy [insert your load balancer’s IP address]
-
-DenyAllButCloudFlare
-
-/IfModule
-
-
+IfModule cloudflare_moduleCloudFlareRemoteIPHeader X-Forwarded-ForCloudFlareRemoteIPTrustedProxy [insert your load balancer’s IP address]DenyAllButCloudFlare/IfModule
 ```
 
 ### Nginx
@@ -251,20 +187,9 @@ DenyAllButCloudFlare
 Use the [ngx\_http\_realip\_module Nginx module ↗](http://nginx.org/en/docs/http/ngx%5Fhttp%5Frealip%5Fmodule.html) and the following configuration parameters:
 
 ```
-
-#example IP address
-
-set_real_ip_from 192.0.2.1;
-
-
+#example IP addressset_real_ip_from 192.0.2.1;
 #use any of the following two
-
-
-real_ip_header CF-Connecting-IP;
-
-#real_ip_header X-Forwarded-For;
-
-
+real_ip_header CF-Connecting-IP;#real_ip_header X-Forwarded-For;
 ```
 
 That list of prefixes needs to be updated regularly, and we publish the full list in [Cloudflare IP addresses ↗](https://www.cloudflare.com/ips).
@@ -279,7 +204,7 @@ Also refer to: [Cloudflare and NGINX ↗](https://danielmiessler.com/blog/gettin
 
 Warning
 
-Cloudflare no longer updates and supports _mod\_cloudflare_, starting with versions **Debian 9** and **Ubuntu 18.04 LTS** of the Linux operating system. We now recommend[_mod\_remoteip_ ↗](https://httpd.apache.org/docs/2.4/mod/mod%5Fremoteip.html)for customers using Apache web servers. Customers who are interested in building the _mod\_cloudflare_ package can [download the codebase ↗](https://github.com/cloudflare/mod%5Fcloudflare) from GitHub.
+Cloudflare no longer updates and supports _mod\_cloudflare_, starting with versions **Debian 9** and **Ubuntu 18.04 LTS** of the Linux operating system. We now recommend [_mod\_remoteip_ ↗](https://httpd.apache.org/docs/2.4/mod/mod%5Fremoteip.html)for customers using Apache web servers. Customers who are interested in building the _mod\_cloudflare_ package can [download the codebase ↗](https://github.com/cloudflare/mod%5Fcloudflare) from GitHub.
 
 1. Run the following script to install mod\_cloudflare as part of EasyApache: `bash <(curl -s https://raw.githubusercontent.com/cloudflare/mod_cloudflare/master/EasyApache/installer.sh)`
 2. Upon installing, you will need to recompile your Apache with the new mod\_cloudflare plugin.
@@ -295,23 +220,12 @@ To have Lighttpd automatically rewrite the server IP for the access logs and for
 2. Add the following code block anywhere in the **lighttpd.conf** file after the server modules list and then restart Lighttpd
 
 ```
-
-$HTTP["remoteip"] == "192.2.0.1 (example IP address)"
-
-{
-
-extforward.forwarder = ( "all" => "trust" )
-
-extforward.headers = ("CF-Connecting-IP")
-
-}
-
-
+$HTTP["remoteip"] == "192.2.0.1 (example IP address)"{extforward.forwarder = ( "all" => "trust" )extforward.headers = ("CF-Connecting-IP")}
 ```
 
 Note
 
-If your origin connects to the Internet with IPv6,**$HTTP\["remoteip"\]**, which is required for matching the remote IP ranges does not work when IPv6 is enabled. Using the above method will not work when trying to forward IP ranges. Add the following lines to lighttpd.conf as an alternative solution:`extforward.forwarder = ( "all" => "trust" ) extforward.headers = ("CF-Connecting-IP")`
+If your origin connects to the Internet with IPv6, **$HTTP\["remoteip"\]**, which is required for matching the remote IP ranges does not work when IPv6 is enabled. Using the above method will not work when trying to forward IP ranges. Add the following lines to lighttpd.conf as an alternative solution: `extforward.forwarder = ( "all" => "trust" ) extforward.headers = ("CF-Connecting-IP")`
 
 ### LiteSpeed server
 
@@ -343,10 +257,7 @@ To have Tomcat7 automatically restore the original visitor IP to your access log
 As an example, you could add the below block to your `server.xml` file.
 
 ```
-
 <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" prefix="localhost_access_log." suffix=".txt" pattern="%{CF-Connecting-IP}i - %h %u %t - &quot;%r&quot; - %s - %b - %{CF-RAY}i"/>
-
-
 ```
 
 Which would result in your logs looking like this:
@@ -472,14 +383,7 @@ In order to extract the original client IP in the X\_FORWARDED\_FOR header, you 
 HAProxy config:
 
 ```
-
-acl from_cf src -f /path/to/CF_ips.lst
-
-acl cf_ip_hdr req.hdr(CF-Connecting-IP) -m found
-
-http-request set-header X-Forwarded-For %[req.hdr(CF-Connecting-IP)] if from_cf cf_ip_hdr
-
-
+acl from_cf src -f /path/to/CF_ips.lstacl cf_ip_hdr req.hdr(CF-Connecting-IP) -m foundhttp-request set-header X-Forwarded-For %[req.hdr(CF-Connecting-IP)] if from_cf cf_ip_hdr
 ```
 
 ### Envoy Gateway
@@ -489,16 +393,7 @@ To extract the original client IP for your Envoy Gateway, set a [Client Traffic 
 Truncated Client Traffic Policy example
 
 ```
-
-clientIPDetection:
-
-    customHeader:
-
-        name: CF-Connecting-IP
-
-        failClosed: true
-
-
+clientIPDetection:    customHeader:        name: CF-Connecting-IP        failClosed: true
 ```
 
 For more details, refer to [Custom header original IP detection extension ↗](https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/http/original%5Fip%5Fdetection/custom%5Fheader/v3/custom%5Fheader.proto).
@@ -512,20 +407,7 @@ It is advised that you also only accept traffic from [Cloudflare's IP addresses 
 Caddyfile
 
 ```
-
-https://example.com {
-
-    reverse_proxy localhost:8080 {
-
-        # Sets X-Forwarded-For as the value Cloudflare gives us for CF-Connecting-IP.
-
-        header_up X-Forwarded-For {http.request.header.CF-Connecting-IP}
-
-    }
-
-}
-
-
+https://example.com {    reverse_proxy localhost:8080 {        # Sets X-Forwarded-For as the value Cloudflare gives us for CF-Connecting-IP.        header_up X-Forwarded-For {http.request.header.CF-Connecting-IP}    }}
 ```
 
 If you want Caddy to handle only accepting traffic from [Cloudflare's IP addresses ↗](https://www.cloudflare.com/ips/), you can use a configuration like this one:
@@ -533,44 +415,9 @@ If you want Caddy to handle only accepting traffic from [Cloudflare's IP address
 Caddyfile
 
 ```
-
-https://example.com {
-
-    # Restrict access to Cloudflare IPs (https://www.cloudflare.com/ips/)
-
-    @cloudflare {
-
-        remote_ip 173.245.48.0/20 103.21.244.0/22 103.22.200.0/22 103.31.4.0/22 141.101.64.0/18 108.162.192.0/18 190.93.240.0/20 188.114.96.0/20 197.234.240.0/22 198.41.128.0/17 162.158.0.0/15 104.16.0.0/13 104.24.0.0/14 172.64.0.0/13 131.0.72.0/22 2400:cb00::/32 2606:4700::/32 2803:f800::/32 2405:b500::/32 2405:8100::/32 2a06:98c0::/29 2c0f:f248::/32
-
-    }
-
-
-    # Process requests from Cloudflare IPs
-
-    handle @cloudflare {
-
-        reverse_proxy localhost:8080 {
-
-            # Sets X-Forwarded-For as the value Cloudflare gives us for CF-Connecting-IP.
-
-            header_up X-Forwarded-For {http.request.header.CF-Connecting-IP}
-
-        }
-
-    }
-
-
-    # Deny requests from non-Cloudflare IPs
-
-    handle {
-
-        respond "Access Denied" 403
-
-    }
-
-}
-
-
+https://example.com {    # Restrict access to Cloudflare IPs (https://www.cloudflare.com/ips/)    @cloudflare {        remote_ip 173.245.48.0/20 103.21.244.0/22 103.22.200.0/22 103.31.4.0/22 141.101.64.0/18 108.162.192.0/18 190.93.240.0/20 188.114.96.0/20 197.234.240.0/22 198.41.128.0/17 162.158.0.0/15 104.16.0.0/13 104.24.0.0/14 172.64.0.0/13 131.0.72.0/22 2400:cb00::/32 2606:4700::/32 2803:f800::/32 2405:b500::/32 2405:8100::/32 2a06:98c0::/29 2c0f:f248::/32    }
+    # Process requests from Cloudflare IPs    handle @cloudflare {        reverse_proxy localhost:8080 {            # Sets X-Forwarded-For as the value Cloudflare gives us for CF-Connecting-IP.            header_up X-Forwarded-For {http.request.header.CF-Connecting-IP}        }    }
+    # Deny requests from non-Cloudflare IPs    handle {        respond "Access Denied" 403    }}
 ```
 
 ---

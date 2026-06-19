@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,16 +37,16 @@ This guide covers how to configure [Ironclad ↗](https://support.ironcladapp.co
 2. Select **Add SAML Configuration** \> **Show Additional IdP Settings**.
 3. Copy the **Callback** value.
 4. Fill in the following fields:  
-   * **Entry Point**: SSO endpoint from application configuration in Cloudflare One.  
-   * **Identity Provider Certificate**: Public key from application configuration in Cloudflare One. The key will automatically be wrapped in `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`.
+  * **Entry Point**: SSO endpoint from application configuration in Cloudflare One.
+  * **Identity Provider Certificate**: Public key from application configuration in Cloudflare One. The key will automatically be wrapped in `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`.
 5. Select **Save**.
 
 ## 3\. Finish adding a SaaS application to Cloudflare One
 
 1. In your open Cloudflare One window, fill in the following fields:  
-   * **Entity ID**: `ironcladapp.com`  
-   * **Assertion Consumer Service URL**: Callback from Ironclad SAML SSO set-up.  
-   * **Name ID format**: _Email_
+  * **Entity ID**: `ironcladapp.com`
+  * **Assertion Consumer Service URL**: Callback from Ironclad SAML SSO set-up.
+  * **Name ID format**: _Email_
 2. Configure [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) for the application.
 3. Save the application.
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-vpc/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -68,10 +68,7 @@ Navigate to your project directory:
 Terminal window
 
 ```
-
 cd workers-vpc-app
-
-
 ```
 
 ## 2\. Set up Cloudflare Tunnel
@@ -100,20 +97,22 @@ For comprehensive tunnel configuration, monitoring, and management, refer to the
 
 Now that your tunnel is running, create a VPC Service that Workers can use to access your internal resources:
 
-* [ Dashboard ](#tab-panel-11355)
-* [ Wrangler CLI ](#tab-panel-11356)
+* [ Dashboard ](#tab-panel-11372)
+* [ Wrangler CLI ](#tab-panel-11373)
 
 1. Navigate to the [Workers VPC dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/vpc) and select the **VPC Services** tab.
 2. Select **Create** to create a new VPC Service.
 3. Enter a **Service name** for your VPC Service (for example, `my-private-api`).
 4. Select your tunnel from the **Tunnel** dropdown, or select **Create Tunnel** if you need to create a new one.
 5. Enter the **Host or IP address** of your internal service (for example, `localhost`, `internal-api.company.local`, or `10.0.1.50`).
-6. Configure **Ports**. Select either:  
-   * **Use default ports** for standard HTTP (80) and HTTPS (443)  
-   * **Provide port values** to specify custom HTTP and HTTPS ports
-7. Configure **DNS Resolver**. Select either:  
-   * **Use tunnel as resolver** to use the tunnel's built-in DNS resolution  
-   * **Custom resolver** and enter your DNS resolver IP (for example, `8.8.8.8`)
+6. Configure **Ports**. Select either:
+
+  * **Use default ports** for standard HTTP (80) and HTTPS (443)
+  * **Provide port values** to specify custom HTTP and HTTPS ports
+7. Configure **DNS Resolver**. Select either:
+
+  * **Use tunnel as resolver** to use the tunnel's built-in DNS resolution
+  * **Custom resolver** and enter your DNS resolver IP (for example, `8.8.8.8`)
 8. Select **Create service** to create your VPC Service.
 
 The dashboard will display your new VPC Service with a unique Service ID. Save this Service ID for the next step.
@@ -123,16 +122,7 @@ For an HTTP service:
 Terminal window
 
 ```
-
-npx wrangler vpc service create my-private-api \
-
-  --type http \
-
-  --tunnel-id <YOUR_TUNNEL_ID> \
-
-  --hostname <YOUR_HOSTNAME>
-
-
+npx wrangler vpc service create my-private-api \  --type http \  --tunnel-id <YOUR_TUNNEL_ID> \  --hostname <YOUR_HOSTNAME>
 ```
 
 For a TCP service (for example, a PostgreSQL database):
@@ -140,20 +130,7 @@ For a TCP service (for example, a PostgreSQL database):
 Terminal window
 
 ```
-
-npx wrangler vpc service create my-database \
-
-  --type tcp \
-
-  --tcp-port 5432 \
-
-  --app-protocol postgresql \
-
-  --tunnel-id <YOUR_TUNNEL_ID> \
-
-  --ipv4 <YOUR_IPV4_ADDRESS>
-
-
+npx wrangler vpc service create my-database \  --type tcp \  --tcp-port 5432 \  --app-protocol postgresql \  --tunnel-id <YOUR_TUNNEL_ID> \  --ipv4 <YOUR_IPV4_ADDRESS>
 ```
 
 Replace:
@@ -176,64 +153,20 @@ If you encounter permission errors, refer to [Required roles](https://developers
 
 Add the VPC Service binding to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-11357)
-* [  wrangler.toml ](#tab-panel-11358)
+* [  wrangler.jsonc ](#tab-panel-11374)
+* [  wrangler.toml ](#tab-panel-11375)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "workers-vpc-app",
-
-  "main": "src/index.ts",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "vpc_services": [
-
-    {
-
-      "binding": "VPC_SERVICE",
-
-      "service_id": "<YOUR_SERVICE_ID>"
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "workers-vpc-app",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-19",  "vpc_services": [    {      "binding": "VPC_SERVICE",      "service_id": "<YOUR_SERVICE_ID>"    }  ]}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "workers-vpc-app"
-
-main = "src/index.ts"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[[vpc_services]]
-
-binding = "VPC_SERVICE"
-
-service_id = "<YOUR_SERVICE_ID>"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "workers-vpc-app"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-19"
+[[vpc_services]]binding = "VPC_SERVICE"service_id = "<YOUR_SERVICE_ID>"
 ```
 
 Replace `<YOUR_SERVICE_ID>` with the service ID from step 3.
@@ -245,50 +178,11 @@ Update your Worker to use the VPC Service binding. The following example:
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    const url = new URL(request.url);
-
-
-    // This is a simple proxy scenario.
-
-    // In this case, you will need to replace the URL with the proper protocol (http vs. https), hostname and port of the service.
-
-    // For example, this could be "http://localhost:1111", "http://192.0.0.1:3000", "https://my-internal-api.example.com"
-
-    const targetUrl = new URL(
-
-      `http://<ENTER_SERVICE_HOST>:<ENTER_SERVICE_PORT>${url.pathname}${url.search}`,
-
-    );
-
-
-    // Create new request with the target URL but preserve all other properties
-
-    const proxyRequest = new Request(targetUrl, {
-
-      method: request.method,
-
-      headers: request.headers,
-
-      body: request.body,
-
-    });
-
-
+export default {  async fetch(request, env, ctx): Promise<Response> {    const url = new URL(request.url);
+    // This is a simple proxy scenario.    // In this case, you will need to replace the URL with the proper protocol (http vs. https), hostname and port of the service.    // For example, this could be "http://localhost:1111", "http://192.0.0.1:3000", "https://my-internal-api.example.com"    const targetUrl = new URL(      `http://<ENTER_SERVICE_HOST>:<ENTER_SERVICE_PORT>${url.pathname}${url.search}`,    );
+    // Create new request with the target URL but preserve all other properties    const proxyRequest = new Request(targetUrl, {      method: request.method,      headers: request.headers,      body: request.body,    });
     const response = await env.VPC_SERVICE.fetch(proxyRequest);
-
-
-    return response;
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+    return response;  },} satisfies ExportedHandler<Env>;
 ```
 
 ## 6\. Test locally
@@ -298,10 +192,7 @@ Test your Worker locally. You must use remote VPC Services, using either [Worker
 Terminal window
 
 ```
-
 npx wrangler dev
-
-
 ```
 
 Visit `http://localhost:8787` to test your Worker's connection to your private network.
@@ -313,10 +204,7 @@ Once testing is complete, deploy your Worker:
 Terminal window
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 Your Worker is now deployed and can access your private network resources securely through the Cloudflare Tunnel. If you encounter permission errors, refer to [Required roles](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/#required-roles).

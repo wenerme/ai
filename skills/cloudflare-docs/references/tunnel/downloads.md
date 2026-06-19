@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tunnel/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -44,10 +44,7 @@ Download and install `cloudflared` via Homebrew:
 Terminal window
 
 ```
-
 brew install cloudflared
-
-
 ```
 
 Alternatively, download the [latest Darwin arm64 release ↗](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-darwin-arm64.tgz) or [latest Darwin amd64 release ↗](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-darwin-amd64.tgz) directly.

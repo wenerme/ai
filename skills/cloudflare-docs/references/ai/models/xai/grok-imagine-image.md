@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,263 +28,88 @@ xAI's Grok Imagine image model. Generates and edits images from text and referen
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1928)
-* [ cURL ](#tab-panel-1929)
+* [ TypeScript ](#tab-panel-2002)
+* [ cURL ](#tab-panel-2003)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'xai/grok-imagine-image',
-
-  { prompt: 'A golden retriever puppy playing in autumn leaves' },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'xai/grok-imagine-image',  { prompt: 'A golden retriever puppy playing in autumn leaves' },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "xai/grok-imagine-image",
-
-  "input": {
-
-    "prompt": "A golden retriever puppy playing in autumn leaves"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "xai/grok-imagine-image",  "input": {    "prompt": "A golden retriever puppy playing in autumn leaves"  }}'
 ```
 
-* [ Output ](#tab-panel-1926)
-* [ Raw response ](#tab-panel-1927)
+* [ Output ](#tab-panel-2000)
+* [ Raw response ](#tab-panel-2001)
 
 ![Simple Generation](https://examples.aig.cloudflare.com/xai/grok-imagine-image/simple-generation.jpeg) 
 
 ```
-
-{
-
-  "state": "Completed",
-
-  "result": {
-
-    "image": "https://examples.aig.cloudflare.com/xai/grok-imagine-image/simple-generation.jpeg"
-
-  },
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
-
-}
-
-
+{  "state": "Completed",  "result": {    "image": "https://examples.aig.cloudflare.com/xai/grok-imagine-image/simple-generation.jpeg"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
 ```
 
 ## Examples
 
 **Custom Aspect Ratio**  — Portrait orientation render at 2K resolution 
 
-* [ TypeScript ](#tab-panel-1932)
-* [ cURL ](#tab-panel-1933)
+* [ TypeScript ](#tab-panel-2006)
+* [ cURL ](#tab-panel-2007)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'xai/grok-imagine-image',
-
-  {
-
-    prompt:
-
-      'A detailed botanical illustration of exotic tropical flowers with fine line work and watercolor textures',
-
-    aspect_ratio: '3:4',
-
-    resolution: '2k',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'xai/grok-imagine-image',  {    prompt:      'A detailed botanical illustration of exotic tropical flowers with fine line work and watercolor textures',    aspect_ratio: '3:4',    resolution: '2k',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "xai/grok-imagine-image",
-
-  "input": {
-
-    "prompt": "A detailed botanical illustration of exotic tropical flowers with fine line work and watercolor textures",
-
-    "aspect_ratio": "3:4",
-
-    "resolution": "2k"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "xai/grok-imagine-image",  "input": {    "prompt": "A detailed botanical illustration of exotic tropical flowers with fine line work and watercolor textures",    "aspect_ratio": "3:4",    "resolution": "2k"  }}'
 ```
 
-* [ Output ](#tab-panel-1930)
-* [ Raw response ](#tab-panel-1931)
+* [ Output ](#tab-panel-2004)
+* [ Raw response ](#tab-panel-2005)
 
 ![Custom Aspect Ratio](https://examples.aig.cloudflare.com/xai/grok-imagine-image/custom-aspect-ratio.png) 
 
 ```
-
-{
-
-  "state": "Completed",
-
-  "result": {
-
-    "image": "https://examples.aig.cloudflare.com/xai/grok-imagine-image/custom-aspect-ratio.png"
-
-  },
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
-
-}
-
-
+{  "state": "Completed",  "result": {    "image": "https://examples.aig.cloudflare.com/xai/grok-imagine-image/custom-aspect-ratio.png"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
 ```
 
 **Cinematic Landscape**  — Widescreen landscape at 2K resolution 
 
-* [ TypeScript ](#tab-panel-1936)
-* [ cURL ](#tab-panel-1937)
+* [ TypeScript ](#tab-panel-2010)
+* [ cURL ](#tab-panel-2011)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'xai/grok-imagine-image',
-
-  {
-
-    prompt:
-
-      'A neon-lit cyberpunk figure standing in the rain beneath a holographic billboard, cinematic lighting',
-
-    aspect_ratio: '16:9',
-
-    resolution: '2k',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'xai/grok-imagine-image',  {    prompt:      'A neon-lit cyberpunk figure standing in the rain beneath a holographic billboard, cinematic lighting',    aspect_ratio: '16:9',    resolution: '2k',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "xai/grok-imagine-image",
-
-  "input": {
-
-    "prompt": "A neon-lit cyberpunk figure standing in the rain beneath a holographic billboard, cinematic lighting",
-
-    "aspect_ratio": "16:9",
-
-    "resolution": "2k"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "xai/grok-imagine-image",  "input": {    "prompt": "A neon-lit cyberpunk figure standing in the rain beneath a holographic billboard, cinematic lighting",    "aspect_ratio": "16:9",    "resolution": "2k"  }}'
 ```
 
-* [ Output ](#tab-panel-1934)
-* [ Raw response ](#tab-panel-1935)
+* [ Output ](#tab-panel-2008)
+* [ Raw response ](#tab-panel-2009)
 
 ![Cinematic Landscape](https://examples.aig.cloudflare.com/xai/grok-imagine-image/cinematic-landscape.png) 
 
 ```
-
-{
-
-  "state": "Completed",
-
-  "result": {
-
-    "image": "https://examples.aig.cloudflare.com/xai/grok-imagine-image/cinematic-landscape.png"
-
-  },
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
-
-}
-
-
+{  "state": "Completed",  "result": {    "image": "https://examples.aig.cloudflare.com/xai/grok-imagine-image/cinematic-landscape.png"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-1938)
-* [ Output ](#tab-panel-1939)
+* [ Input ](#tab-panel-2012)
+* [ Output ](#tab-panel-2013)
 
 aspect\_ratio
 
@@ -334,7 +159,7 @@ image
 
 Input [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image/schema-input.json "Download") 
 
-Output [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image/schema-output.json "Download") 
+Output [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image/schema-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/xai/grok-imagine-image/#page","headline":"Grok Imagine Image (xAI) · Cloudflare AI docs · Cloudflare AI docs","description":"xAI's Grok Imagine image model. Generates and edits images from text and reference-image inputs with configurable aspect ratio and resolution.","url":"https://developers.cloudflare.com/ai/models/xai/grok-imagine-image/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

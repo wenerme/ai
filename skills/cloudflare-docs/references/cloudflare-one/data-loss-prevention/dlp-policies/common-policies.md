@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,8 +31,8 @@ The following example logs any upload or download that matches your enabled [Fin
 
 Block the upload or download of files based on their type.
 
-* [ Dashboard ](#tab-panel-7184)
-* [ API ](#tab-panel-7185)
+* [ Dashboard ](#tab-panel-7260)
+* [ API ](#tab-panel-7261)
 
 | Selector            | Operator | Value                                   | Logic | Action |
 | ------------------- | -------- | --------------------------------------- | ----- | ------ |
@@ -42,38 +42,7 @@ Block the upload or download of files based on their type.
 Create a Zero Trust Gateway rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "Block file types",
-
-    "description": "Block the upload or download of files based on their type",
-
-    "enabled": true,
-
-    "action": "block",
-
-    "filters": [
-
-        "http"
-
-    ],
-
-    "traffic": "any(http.upload.file.types[*] in {\"docx\"}) and any(http.download.file.types[*] in {\"pdf\"})",
-
-    "identity": "",
-
-    "device_posture": ""
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Block file types",    "description": "Block the upload or download of files based on their type",    "enabled": true,    "action": "block",    "filters": [        "http"    ],    "traffic": "any(http.upload.file.types[*] in {\"docx\"}) and any(http.download.file.types[*] in {\"pdf\"})",    "identity": "",    "device_posture": ""  }'
 ```
 
 For more information on what file formats DLP can scan, refer to [Supported file types](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/#supported-file-types).
@@ -95,10 +64,11 @@ The following example blocks only contractors from uploading/downloading Financi
 Many Android applications (such as Google Drive) use [certificate pinning](https://developers.cloudflare.com/ssl/reference/certificate-pinning/), which is incompatible with Gateway TLS decryption. These applications verify they are connecting directly to their own servers and will reject Gateway's inspection certificate. If needed, you can create a [Do Not Inspect policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#do-not-inspect) so that the app can continue to function on Android:
 
 1. Set up an [OS version device posture check](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/os-version/) that checks for the Android operating system.
-2. Create the following HTTP policy in Gateway:  
-| Selector                     | Operator | Value                | Logic | Action         |  
-| ---------------------------- | -------- | -------------------- | ----- | -------------- |  
-| Application                  | in       | _Google Drive_       | And   | Do Not Inspect |  
+2. Create the following HTTP policy in Gateway:
+
+| Selector                     | Operator | Value                | Logic | Action         |
+| ---------------------------- | -------- | -------------------- | ----- | -------------- |
+| Application                  | in       | _Google Drive_       | And   | Do Not Inspect |
 | Passed Device Posture Checks | in       | _OS Version Android_ |       |                |
 
 Android users can now use the app, but the app traffic will bypass Gateway inspection entirely — including DLP scanning, HTTP logging, and antivirus scanning.
@@ -108,11 +78,12 @@ Android users can now use the app, but the app traffic will bypass Gateway inspe
 In your [DLP logs](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/#4-view-dlp-logs), you may find that certain sites routinely trigger DLP detections that do not represent actual data loss (false positives). To exempt these sites from DLP scanning:
 
 1. [Create a list](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/) of hostnames or URLs.
-2. Exclude the list from your DLP policy using the `not in list` operator, which references the list you created in step 1:  
-| Selector    | Operator    | Value                   | Logic | Action |  
-| ----------- | ----------- | ----------------------- | ----- | ------ |  
-| DLP Profile | in          | _Financial Information_ | And   | Block  |  
-| Application | in          | _Google Drive_          | And   |        |  
+2. Exclude the list from your DLP policy using the `not in list` operator, which references the list you created in step 1:
+
+| Selector    | Operator    | Value                   | Logic | Action |
+| ----------- | ----------- | ----------------------- | ----- | ------ |
+| DLP Profile | in          | _Financial Information_ | And   | Block  |
+| Application | in          | _Google Drive_          | And   |        |
 | Domain      | not in list | _Do not DLP - SSN_      |       |        |
 
 ```json

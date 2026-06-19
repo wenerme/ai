@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -46,27 +46,8 @@ The dynamic dispatch Worker uses a [dispatch namespace binding](https://develope
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    // Determine which customer Worker to call
-
-    const customerName = new URL(request.url).hostname.split(".")[0];
-
-
-    // Get and invoke the customer's Worker
-
-    const userWorker = env.DISPATCHER.get(customerName);
-
-    return userWorker.fetch(request);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    // Determine which customer Worker to call    const customerName = new URL(request.url).hostname.split(".")[0];
+    // Get and invoke the customer's Worker    const userWorker = env.DISPATCHER.get(customerName);    return userWorker.fetch(request);  },};
 ```
 
 ### User Workers

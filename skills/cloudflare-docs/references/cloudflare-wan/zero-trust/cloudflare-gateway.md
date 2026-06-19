@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,13 +32,13 @@ Because Gateway cannot discern Cloudflare WAN traffic, you must use [Cloudflare 
 
 For example, if your organization onboards devices to Cloudflare WAN using the Cloudflare One Client, you can exempt devices not running the Cloudflare One Client using [OS version checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/os-version/):
 
-| Selector                     | Operator | Value                | Logic          | Action         |
-| ---------------------------- | -------- | -------------------- | -------------- | -------------- |
-| Passed Device Posture Checks | not in   | Windows (OS version) | Or             | Do Not Inspect |
-| Passed Device Posture Checks | not in   | macOS (OS version)   | Or             | Do Not Inspect |
-| Passed Device Posture Checks | not in   | Linux (OS version)   | Or             | Do Not Inspect |
-| Passed Device Posture Checks | not in   | iOS (OS version)     | Or             | Do Not Inspect |
-| Passed Device Posture Checks | not in   | Android (OS version) | Do Not Inspect |                |
+| Selector                     | Operator | Value                | Logic | Action         |
+| ---------------------------- | -------- | -------------------- | ----- | -------------- |
+| Passed Device Posture Checks | not in   | Windows (OS version) | Or    | Do Not Inspect |
+| Passed Device Posture Checks | not in   | macOS (OS version)   | Or    | Do Not Inspect |
+| Passed Device Posture Checks | not in   | Linux (OS version)   | Or    | Do Not Inspect |
+| Passed Device Posture Checks | not in   | iOS (OS version)     | Or    | Do Not Inspect |
+| Passed Device Posture Checks | not in   | Android (OS version) |       | Do Not Inspect |
 
 If your organization onboards users to Cloudflare WAN using an [on-ramp other than the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-wan/on-ramps/), you can exempt devices from inspection using the IP addresses for your IPsec tunnels:
 

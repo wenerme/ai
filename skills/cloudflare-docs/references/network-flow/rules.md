@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network-flow/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -101,63 +101,13 @@ In the following example, the rule triggers when the **combined** packet traffic
 You can also [configure rule IP prefixes at scale using the API](https://developers.cloudflare.com/api/resources/magic%5Fnetwork%5Fmonitoring/subresources/rules/).
 
 ```
-
-{
-
-  "rules": [
-
-    {
-
-      "name": "Too many packets",
-
-      "prefixes": ["192.168.0.0/24", "172.118.0.0/24"],
-
-      "packet_threshold": 10000,
-
-      "automatic_advertisement": true,
-
-      "duration": "1m0s",
-
-      "type": "threshold"
-
-    }
-
-  ]
-
-}
-
-
+{  "rules": [    {      "name": "Too many packets",      "prefixes": ["192.168.0.0/24", "172.118.0.0/24"],      "packet_threshold": 10000,      "automatic_advertisement": true,      "duration": "1m0s",      "type": "threshold"    }  ]}
 ```
 
 To set a threshold for a single prefix, create a separate rule:
 
 ```
-
-{
-
-  "rules": [
-
-    {
-
-      "name": "Too many packets",
-
-      "prefixes": ["172.118.0.0/24"],
-
-      "packet_threshold": 1000,
-
-      "automatic_advertisement": true,
-
-      "duration": "1m0s",
-
-      "type": "threshold"
-
-    }
-
-  ]
-
-}
-
-
+{  "rules": [    {      "name": "Too many packets",      "prefixes": ["172.118.0.0/24"],      "packet_threshold": 1000,      "automatic_advertisement": true,      "duration": "1m0s",      "type": "threshold"    }  ]}
 ```
 
 ```json

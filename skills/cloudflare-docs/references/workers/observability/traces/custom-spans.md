@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,41 +23,19 @@ The custom spans API is available in two ways — both provide the same `enterSp
 
 Custom spans require tracing to be enabled on your Worker. If you have not already done so, set `observability.traces.enabled` to `true` in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/#observability):
 
-* [  wrangler.jsonc ](#tab-panel-11874)
-* [  wrangler.toml ](#tab-panel-11875)
+* [  wrangler.jsonc ](#tab-panel-11891)
+* [  wrangler.toml ](#tab-panel-11892)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "observability": {
-
-    "traces": {
-
-      "enabled": true
-
-    }
-
-  }
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "observability": {    "traces": {      "enabled": true    }  }}
 ```
 
 TOML
 
 ```
-
-[observability.traces]
-
-enabled = true
-
-
+[observability.traces]enabled = true
 ```
 
 Note
@@ -74,83 +52,25 @@ Use `tracing.enterSpan()` to wrap a section of code in a named span. The span au
 
 The following example uses both access methods — the `cloudflare:workers` import and `ctx.tracing` — to show that they are interchangeable:
 
-* [  JavaScript ](#tab-panel-11876)
-* [  TypeScript ](#tab-panel-11877)
+* [  JavaScript ](#tab-panel-11893)
+* [  TypeScript ](#tab-panel-11894)
 
 src/index.js
 
 ```
-
 import { tracing } from "cloudflare:workers";
-
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    // Using the import
-
-    return tracing.enterSpan("handleRequest", async (span) => {
-
-      span.setAttribute("url.path", new URL(request.url).pathname);
-
-
-      const user = await ctx.tracing.enterSpan("auth", async () => {
-
-        // Using ctx.tracing
-
-        return authenticate(request, env);
-
-      });
-
-
-      return buildResponse(user);
-
-    });
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    // Using the import    return tracing.enterSpan("handleRequest", async (span) => {      span.setAttribute("url.path", new URL(request.url).pathname);
+      const user = await ctx.tracing.enterSpan("auth", async () => {        // Using ctx.tracing        return authenticate(request, env);      });
+      return buildResponse(user);    });  },};
 ```
 
 src/index.ts
 
 ```
-
 import { tracing } from "cloudflare:workers";
-
-
-export default {
-
-  async fetch(request: Request, env: Env, ctx: ExecutionContext) {
-
-    // Using the import
-
-    return tracing.enterSpan("handleRequest", async (span) => {
-
-      span.setAttribute("url.path", new URL(request.url).pathname);
-
-
-      const user = await ctx.tracing.enterSpan("auth", async () => {
-
-        // Using ctx.tracing
-
-        return authenticate(request, env);
-
-      });
-
-
-      return buildResponse(user);
-
-    });
-
-  },
-
-};
-
-
+export default {  async fetch(request: Request, env: Env, ctx: ExecutionContext) {    // Using the import    return tracing.enterSpan("handleRequest", async (span) => {      span.setAttribute("url.path", new URL(request.url).pathname);
+      const user = await ctx.tracing.enterSpan("auth", async () => {        // Using ctx.tracing        return authenticate(request, env);      });
+      return buildResponse(user);    });  },};
 ```
 
 ## API reference
@@ -178,36 +98,9 @@ Creates a new span and runs `callback` inside it. The span is automatically ende
 TypeScript
 
 ```
-
-// Synchronous callback — span ends when the function returns
-
-const result = tracing.enterSpan("parse", (span) => {
-
-  span.setAttribute("format", "json");
-
-  return JSON.parse(body);
-
-});
-
-
-// Async callback — span ends when the promise settles
-
-const data = await tracing.enterSpan("fetchData", async (span) => {
-
-  const res = await fetch("https://api.example.com/data");
-
-  span.setAttribute("http.response.status_code", res.status);
-
-  return res.json();
-
-});
-
-
-// Forwarding arguments
-
-const doubled = tracing.enterSpan("compute", (span, x) => x * 2, 21);
-
-
+// Synchronous callback — span ends when the function returnsconst result = tracing.enterSpan("parse", (span) => {  span.setAttribute("format", "json");  return JSON.parse(body);});
+// Async callback — span ends when the promise settlesconst data = await tracing.enterSpan("fetchData", async (span) => {  const res = await fetch("https://api.example.com/data");  span.setAttribute("http.response.status_code", res.status);  return res.json();});
+// Forwarding argumentsconst doubled = tracing.enterSpan("compute", (span, x) => x * 2, 21);
 ```
 
 ### `Span`
@@ -228,14 +121,7 @@ Attributes appear alongside the span in your traces and OpenTelemetry exports.
 TypeScript
 
 ```
-
-span.setAttribute("user.plan", "enterprise");
-
-span.setAttribute("item.count", 42);
-
-span.setAttribute("cache.hit", true);
-
-
+span.setAttribute("user.plan", "enterprise");span.setAttribute("item.count", 42);span.setAttribute("cache.hit", true);
 ```
 
 #### `span.isTraced`
@@ -247,127 +133,36 @@ You can use this to skip expensive attribute computation when the request is not
 TypeScript
 
 ```
-
-tracing.enterSpan("process", (span) => {
-
-  if (span.isTraced) {
-
-    span.setAttribute("request.body.preview", JSON.stringify(body).slice(0, 200));
-
-  }
-
-  return processBody(body);
-
-});
-
-
+tracing.enterSpan("process", (span) => {  if (span.isTraced) {    span.setAttribute("request.body.preview", JSON.stringify(body).slice(0, 200));  }  return processBody(body);});
 ```
 
 ## Nested spans
 
 Spans nest automatically based on the JavaScript async context. Any `enterSpan` call or platform operation (like `fetch`, `env.MY_KV.get()`, and so on) that runs inside a callback becomes a child of the enclosing span.
 
-* [  JavaScript ](#tab-panel-11878)
-* [  TypeScript ](#tab-panel-11879)
+* [  JavaScript ](#tab-panel-11895)
+* [  TypeScript ](#tab-panel-11896)
 
 src/index.js
 
 ```
-
 import { tracing } from "cloudflare:workers";
-
-
-async function handleOrder(env, orderId) {
-
-  return tracing.enterSpan("handleOrder", async (span) => {
-
-    span.setAttribute("order.id", orderId);
-
-
-    // This KV read is automatically a child of "handleOrder"
-
-    const order = await env.ORDERS_KV.get(orderId, "json");
-
-
-    // This nested span is also a child of "handleOrder"
-
-    const total = tracing.enterSpan("calculateTotal", (innerSpan) => {
-
-      innerSpan.setAttribute("item.count", order.items.length);
-
-      return order.items.reduce((sum, item) => sum + item.price, 0);
-
-    });
-
-
-    // This fetch is a child of "handleOrder"
-
-    await fetch("https://api.example.com/notify", {
-
-      method: "POST",
-
-      body: JSON.stringify({ orderId, total }),
-
-    });
-
-
-    return new Response(JSON.stringify({ orderId, total }));
-
-  });
-
-}
-
-
+async function handleOrder(env, orderId) {  return tracing.enterSpan("handleOrder", async (span) => {    span.setAttribute("order.id", orderId);
+    // This KV read is automatically a child of "handleOrder"    const order = await env.ORDERS_KV.get(orderId, "json");
+    // This nested span is also a child of "handleOrder"    const total = tracing.enterSpan("calculateTotal", (innerSpan) => {      innerSpan.setAttribute("item.count", order.items.length);      return order.items.reduce((sum, item) => sum + item.price, 0);    });
+    // This fetch is a child of "handleOrder"    await fetch("https://api.example.com/notify", {      method: "POST",      body: JSON.stringify({ orderId, total }),    });
+    return new Response(JSON.stringify({ orderId, total }));  });}
 ```
 
 src/index.ts
 
 ```
-
 import { tracing } from "cloudflare:workers";
-
-
-async function handleOrder(env: Env, orderId: string) {
-
-  return tracing.enterSpan("handleOrder", async (span) => {
-
-    span.setAttribute("order.id", orderId);
-
-
-    // This KV read is automatically a child of "handleOrder"
-
-    const order = await env.ORDERS_KV.get(orderId, "json");
-
-
-    // This nested span is also a child of "handleOrder"
-
-    const total = tracing.enterSpan("calculateTotal", (innerSpan) => {
-
-      innerSpan.setAttribute("item.count", order.items.length);
-
-      return order.items.reduce((sum: number, item: any) => sum + item.price, 0);
-
-    });
-
-
-    // This fetch is a child of "handleOrder"
-
-    await fetch("https://api.example.com/notify", {
-
-      method: "POST",
-
-      body: JSON.stringify({ orderId, total }),
-
-    });
-
-
-    return new Response(JSON.stringify({ orderId, total }));
-
-  });
-
-}
-
-
+async function handleOrder(env: Env, orderId: string) {  return tracing.enterSpan("handleOrder", async (span) => {    span.setAttribute("order.id", orderId);
+    // This KV read is automatically a child of "handleOrder"    const order = await env.ORDERS_KV.get(orderId, "json");
+    // This nested span is also a child of "handleOrder"    const total = tracing.enterSpan("calculateTotal", (innerSpan) => {      innerSpan.setAttribute("item.count", order.items.length);      return order.items.reduce((sum: number, item: any) => sum + item.price, 0);    });
+    // This fetch is a child of "handleOrder"    await fetch("https://api.example.com/notify", {      method: "POST",      body: JSON.stringify({ orderId, total }),    });
+    return new Response(JSON.stringify({ orderId, total }));  });}
 ```
 
 ![Trace waterfall showing custom spans nested alongside automatic KV and fetch instrumentation](https://developers.cloudflare.com/_astro/wobs_custom_spans_screenshot.B-hsHjyv_ZGVlIY.webp) 
@@ -379,18 +174,7 @@ async function handleOrder(env: Env, orderId: string) {
 TypeScript
 
 ```
-
-tracing.enterSpan("processPayment", async (span) => {
-
-  console.log("Starting payment processing"); // attributed to "processPayment"
-
-  const result = await chargeCard(token, amount);
-
-  console.log("Payment complete", result.id); // also attributed to "processPayment"
-
-});
-
-
+tracing.enterSpan("processPayment", async (span) => {  console.log("Starting payment processing"); // attributed to "processPayment"  const result = await chargeCard(token, amount);  console.log("Payment complete", result.id); // also attributed to "processPayment"});
 ```
 
 ## TypeScript types
@@ -400,41 +184,8 @@ The full type declarations for the custom spans API:
 TypeScript
 
 ```
-
-declare module "cloudflare:workers" {
-
-  namespace tracing {
-
-    function enterSpan<T, A extends unknown[]>(
-
-      name: string,
-
-      callback: (span: Span, ...args: A) => T,
-
-      ...args: A
-
-    ): T;
-
-  }
-
-
-  class Span {
-
-    readonly isTraced: boolean;
-
-    setAttribute(
-
-      key: string,
-
-      value: string | number | boolean | undefined,
-
-    ): void;
-
-  }
-
-}
-
-
+declare module "cloudflare:workers" {  namespace tracing {    function enterSpan<T, A extends unknown[]>(      name: string,      callback: (span: Span, ...args: A) => T,      ...args: A    ): T;  }
+  class Span {    readonly isTraced: boolean;    setAttribute(      key: string,      value: string | number | boolean | undefined,    ): void;  }}
 ```
 
 The same API is available on the handler context as `ctx.tracing`, with the same types.

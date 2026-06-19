@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,114 +28,33 @@ xAI's real-time voice conversation model with low-latency audio input and output
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-2028)
-* [ cURL ](#tab-panel-2029)
+* [ TypeScript ](#tab-panel-2102)
+* [ cURL ](#tab-panel-2103)
 
 TypeScript
 
 ```
-
-// Establish WebSocket connection
-
-const response = await fetch(
-
-  `https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run?model=xai/grok-voice`,
-
-  {
-
-    method: 'GET',
-
-    headers: {
-
-      'Authorization': `Bearer $CLOUDFLARE_API_TOKEN`,
-
-      'Upgrade': 'websocket'
-
-    }
-
-  }
-
-)
-
-
-const ws = response.webSocket
-
-ws.accept()
-
-
-// Send audio chunks
-
-ws.send(JSON.stringify({
-
-  type: 'input_audio_buffer.append',
-
-  audio: audioBase64
-
-}))
-
-
-// Receive transcriptions and audio responses
-
-ws.addEventListener('message', (event) => {
-
-  const data = JSON.parse(event.data)
-
-  console.log(data)
-
-})
-
-
+// Establish WebSocket connectionconst response = await fetch(  `https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run?model=xai/grok-voice`,  {    method: 'GET',    headers: {      'Authorization': `Bearer $CLOUDFLARE_API_TOKEN`,      'Upgrade': 'websocket'    }  })
+const ws = response.webSocketws.accept()
+// Send audio chunksws.send(JSON.stringify({  type: 'input_audio_buffer.append',  audio: audioBase64}))
+// Receive transcriptions and audio responsesws.addEventListener('message', (event) => {  const data = JSON.parse(event.data)  console.log(data)})
 ```
 
 Terminal window
 
 ```
-
-# Note: WebSocket connections require a WebSocket client
-
-# curl does not support WebSocket upgrade
-
-# Use wscat, websocat, or a programming language WebSocket library
-
-
-wscat -c 'wss://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run?model=xai/grok-voice' \
-
-  -H 'Authorization: Bearer $CLOUDFLARE_API_TOKEN'
-
-
+# Note: WebSocket connections require a WebSocket client# curl does not support WebSocket upgrade# Use wscat, websocat, or a programming language WebSocket library
+wscat -c 'wss://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run?model=xai/grok-voice' \  -H 'Authorization: Bearer $CLOUDFLARE_API_TOKEN'
 ```
 
 ```
-
-{
-
-  "websocket": {
-
-    "url": "wss://api.x.ai/v1/realtime?model=grok-voice-latest",
-
-    "headers": {
-
-      "Authorization": "Bearer [ephemeral_token]"
-
-    }
-
-  },
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
-
-}
-
-
+{  "websocket": {    "url": "wss://api.x.ai/v1/realtime?model=grok-voice-latest",    "headers": {      "Authorization": "Bearer [ephemeral_token]"    }  },  "gatewayMetadata": {    "keySource": "Unified"  }}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-2030)
-* [ Output ](#tab-panel-2031)
+* [ Input ](#tab-panel-2104)
+* [ Output ](#tab-panel-2105)
 
 websocket
 
@@ -153,7 +72,7 @@ url
 
 Input [ ](https://developers.cloudflare.com/ai/models/xai/grok-voice/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-voice/schema-input.json "Download") 
 
-Output [ ](https://developers.cloudflare.com/ai/models/xai/grok-voice/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-voice/schema-output.json "Download") 
+Output [ ](https://developers.cloudflare.com/ai/models/xai/grok-voice/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-voice/schema-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/xai/grok-voice/#page","headline":"Grok Voice (xAI) · Cloudflare AI docs · Cloudflare AI docs","description":"xAI's real-time voice conversation model with low-latency audio input and output streaming.","url":"https://developers.cloudflare.com/ai/models/xai/grok-voice/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

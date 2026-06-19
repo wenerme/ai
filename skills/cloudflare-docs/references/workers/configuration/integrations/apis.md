@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,36 +21,9 @@ To make the `fetch()` request, add the following code to your project's `src/ind
 JavaScript
 
 ```
-
-async function handleRequest(request) {
-
-  // Make the fetch request to the third party API endpoint
-
-  const response = await fetch("https://weather-api.com/endpoint", {
-
-    method: "GET",
-
-    headers: {
-
-      "Content-Type": "application/json",
-
-    },
-
-  });
-
-
-  // Retrieve the data from the response
-
-  const data = await response.json();
-
-
-  // Use the data to modify or manipulate your content as needed
-
-  return new Response(data);
-
-}
-
-
+async function handleRequest(request) {  // Make the fetch request to the third party API endpoint  const response = await fetch("https://weather-api.com/endpoint", {    method: "GET",    headers: {      "Content-Type": "application/json",    },  });
+  // Retrieve the data from the response  const data = await response.json();
+  // Use the data to modify or manipulate your content as needed  return new Response(data);}
 ```
 
 ## Authentication
@@ -60,10 +33,7 @@ If your API requires authentication, use Wrangler secrets to securely store your
 Terminal window
 
 ```
-
 wrangler secret put SECRET_NAME
-
-
 ```
 
 Then, retrieve the secret value in your code using the following code snippet:
@@ -71,10 +41,7 @@ Then, retrieve the secret value in your code using the following code snippet:
 JavaScript
 
 ```
-
 const secretValue = env.SECRET_NAME;
-
-
 ```
 
 Then use the secret value to authenticate with the external service. For example, if the external service requires an API key for authentication, include it in your request headers.

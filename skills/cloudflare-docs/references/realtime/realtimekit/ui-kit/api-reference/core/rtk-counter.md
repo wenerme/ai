@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,39 +29,18 @@ A number picker with increment and decrement buttons.
 ### Basic Usage
 
 ```
-
 <rtk-counter></rtk-counter>
-
-
 ```
 
 ### With Properties
 
 ```
-
-<rtk-counter
-
- size="md">
-
-</rtk-counter>
-
-
+<rtk-counter size="md"></rtk-counter>
 ```
 
 ```
-
-<script>
-
-  const el = document.querySelector("rtk-counter");
-
-
-  el.minValue= 42;
-
-  el.value= 42;
-
-</script>
-
-
+<script>  const el = document.querySelector("rtk-counter");
+  el.minValue= 42;  el.value= 42;</script>
 ```
 
 ```json

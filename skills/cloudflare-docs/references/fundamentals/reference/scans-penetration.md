@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,10 +35,11 @@ Targets like `*.cloudflare.com` or other Cloudflare-owned destinations are only 
 
 Before starting a penetration test on your [zones](https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/#zones), set the following application security configurations for each zone you will run the test on:
 
-1. [Deploy the Cloudflare Managed Ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/#deploy-in-the-dashboard) and[enable all rules](https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/#ruleset-level-configuration) in the ruleset by setting **Ruleset status** to **Enabled**.
-2. [Deploy the Cloudflare OWASP Core Ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/configure-dashboard/#deploy-in-the-dashboard) and set the following [ruleset configuration](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/configure-dashboard/#ruleset-level-configuration):  
-   * **Paranoia Level**: _PL4_  
-   * **Score threshold**: _High - 25 and higher_
+1. [Deploy the Cloudflare Managed Ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/#deploy-in-the-dashboard) and [enable all rules](https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/#ruleset-level-configuration) in the ruleset by setting **Ruleset status** to **Enabled**.
+2. [Deploy the Cloudflare OWASP Core Ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/configure-dashboard/#deploy-in-the-dashboard) and set the following [ruleset configuration](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/configure-dashboard/#ruleset-level-configuration):
+
+  * **Paranoia Level**: _PL4_
+  * **Score threshold**: _High - 25 and higher_
 3. [Create a custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) based on the [WAF attack score](https://developers.cloudflare.com/waf/detections/attack-score/) to block requests considered as an attack (WAF attack score between 1 and 20). Refer to the [WAF attack score](https://developers.cloudflare.com/waf/detections/attack-score/#1-create-a-custom-rule) documentation for an example.
 4. [Create a custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) based on [malicious uploads detection](https://developers.cloudflare.com/waf/detections/malicious-uploads/) to block requests containing content objects considered malicious. Refer to [Example rules](https://developers.cloudflare.com/waf/detections/malicious-uploads/example-rules/#block-requests-to-uri-path-with-a-malicious-content-object) for examples of custom rules used to mitigate this kind of threat.
 5. On Pro and Business plans without Bot Management, [enable Super Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/super-bot-fight-mode/#enable-super-bot-fight-mode).  

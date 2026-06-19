@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,22 +26,22 @@ Use one of the following API endpoints:
 A `POST` request to create a ruleset supports the following parameters in the request body:
 
 * `name` ` String `  
-   * A human-readable name for the ruleset.  
-   * The name is immutable. You cannot change it over the lifetime of the ruleset.
+  * A human-readable name for the ruleset.
+  * The name is immutable. You cannot change it over the lifetime of the ruleset.
 * `description` ` String ` Optional  
-   * Optional description for the ruleset.  
-   * You can change the description over the lifetime of the ruleset.
+  * Optional description for the ruleset.
+  * You can change the description over the lifetime of the ruleset.
 * `kind` ` String `  
-   * The kind of ruleset the JSON object represents.  
-   * Allowed values:  
-         * `custom`: Creates a custom ruleset  
-         * `root`: Creates a phase [entry point ruleset](https://developers.cloudflare.com/ruleset-engine/about/rulesets/#entry-point-ruleset) at the account level  
-         * `zone`: Creates a phase entry point ruleset at the zone level
+  * The kind of ruleset the JSON object represents.
+  * Allowed values:  
+    * `custom`: Creates a custom ruleset
+    * `root`: Creates a phase [entry point ruleset](https://developers.cloudflare.com/ruleset-engine/about/rulesets/#entry-point-ruleset) at the account level
+    * `zone`: Creates a phase entry point ruleset at the zone level
 * `phase` ` String `  
-   * The name of the [phase](https://developers.cloudflare.com/ruleset-engine/about/phases/) where the ruleset will be created.  
-   * Check the [phases list](https://developers.cloudflare.com/ruleset-engine/reference/phases-list/) or the specific Cloudflare product documentation for more information on the phases where you can create rulesets for that product.
+  * The name of the [phase](https://developers.cloudflare.com/ruleset-engine/about/phases/) where the ruleset will be created.
+  * Check the [phases list](https://developers.cloudflare.com/ruleset-engine/reference/phases-list/) or the specific Cloudflare product documentation for more information on the phases where you can create rulesets for that product.
 * `rules` ` Array<Rule> ` Optional  
-   * A list of [rules](https://developers.cloudflare.com/ruleset-engine/rulesets-api/json-object/#rule-object-structure-and-properties) to include in the ruleset.
+  * A list of [rules](https://developers.cloudflare.com/ruleset-engine/rulesets-api/json-object/#rule-object-structure-and-properties) to include in the ruleset.
 
 For additional details on these parameters, refer to [JSON objects](https://developers.cloudflare.com/ruleset-engine/rulesets-api/json-object/).
 
@@ -51,7 +51,7 @@ The following `POST` request creates a custom ruleset in the `http_request_firew
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Mass URL Redirects Write`
 * `Magic Firewall Write`
 * `L4 DDoS Managed Ruleset Write`
@@ -64,89 +64,11 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Create an account ruleset
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "Example custom ruleset",
-
-    "kind": "custom",
-
-    "description": "Example ruleset description",
-
-    "rules": [
-
-        {
-
-            "action": "log",
-
-            "expression": "cf.zone.name eq \"example.com\""
-
-        }
-
-    ],
-
-    "phase": "http_request_firewall_custom"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Example custom ruleset",    "kind": "custom",    "description": "Example ruleset description",    "rules": [        {            "action": "log",            "expression": "cf.zone.name eq \"example.com\""        }    ],    "phase": "http_request_firewall_custom"  }'
 ```
 
 ```
-
-{
-
-  "result": {
-
-    "id": "<RULESET_ID>",
-
-    "name": "Example custom ruleset",
-
-    "description": "Example ruleset description",
-
-    "kind": "custom",
-
-    "version": "1",
-
-    "rules": [
-
-      {
-
-        "id": "<RULE_ID>",
-
-        "version": "1",
-
-        "action": "log",
-
-        "expression": "cf.zone.name eq \"example.com\"",
-
-        "last_updated": "2025-03-17T15:42:37.917815Z"
-
-      }
-
-    ],
-
-    "last_updated": "2025-03-17T15:42:37.917815Z",
-
-    "phase": "http_request_firewall_custom"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "id": "<RULESET_ID>",    "name": "Example custom ruleset",    "description": "Example ruleset description",    "kind": "custom",    "version": "1",    "rules": [      {        "id": "<RULE_ID>",        "version": "1",        "action": "log",        "expression": "cf.zone.name eq \"example.com\"",        "last_updated": "2025-03-17T15:42:37.917815Z"      }    ],    "last_updated": "2025-03-17T15:42:37.917815Z",    "phase": "http_request_firewall_custom"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 ## Example - Create a zone-level phase entry point ruleset
@@ -159,7 +81,7 @@ You do not have to use this method to create a phase entry point ruleset. Cloudf
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Response Compression Write`
 * `Config Settings Write`
 * `Dynamic URL Redirects Write`
@@ -185,101 +107,11 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Create a zone ruleset
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "Zone-level phase entry point",
-
-    "kind": "zone",
-
-    "description": "This ruleset executes a managed ruleset.",
-
-    "rules": [
-
-        {
-
-            "action": "execute",
-
-            "expression": "true",
-
-            "action_parameters": {
-
-                "id": "<MANAGED_RULESET_ID>"
-
-            }
-
-        }
-
-    ],
-
-    "phase": "http_request_firewall_managed"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Zone-level phase entry point",    "kind": "zone",    "description": "This ruleset executes a managed ruleset.",    "rules": [        {            "action": "execute",            "expression": "true",            "action_parameters": {                "id": "<MANAGED_RULESET_ID>"            }        }    ],    "phase": "http_request_firewall_managed"  }'
 ```
 
 ```
-
-{
-
-  "result": {
-
-    "id": "<RULESET_ID>",
-
-    "name": "Zone-level phase entry point",
-
-    "description": "This ruleset executes a managed ruleset.",
-
-    "kind": "zone",
-
-    "version": "1",
-
-    "rules": [
-
-      {
-
-        "id": "<RULE_ID>",
-
-        "version": "1",
-
-        "action": "execute",
-
-        "expression": "true",
-
-        "action_parameters": {
-
-          "id": "<MANAGED_RULESET_ID>"
-
-        },
-
-        "last_updated": "2025-03-17T15:42:37.917815Z"
-
-      }
-
-    ],
-
-    "last_updated": "2025-03-17T15:42:37.917815Z",
-
-    "phase": "http_request_firewall_managed"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "id": "<RULESET_ID>",    "name": "Zone-level phase entry point",    "description": "This ruleset executes a managed ruleset.",    "kind": "zone",    "version": "1",    "rules": [      {        "id": "<RULE_ID>",        "version": "1",        "action": "execute",        "expression": "true",        "action_parameters": {          "id": "<MANAGED_RULESET_ID>"        },        "last_updated": "2025-03-17T15:42:37.917815Z"      }    ],    "last_updated": "2025-03-17T15:42:37.917815Z",    "phase": "http_request_firewall_managed"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 ## Example - Create an account-level phase entry point ruleset
@@ -292,7 +124,7 @@ You do not have to use this method to create a phase entry point ruleset. Cloudf
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Mass URL Redirects Write`
 * `Magic Firewall Write`
 * `L4 DDoS Managed Ruleset Write`
@@ -305,101 +137,11 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Create an account ruleset
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "Account-level phase entry point",
-
-    "kind": "root",
-
-    "description": "This ruleset executes a rate limiting ruleset.",
-
-    "rules": [
-
-        {
-
-            "action": "execute",
-
-            "expression": "(cf.zone.plan eq \"ENT\")",
-
-            "action_parameters": {
-
-                "id": "<RATE_LIMITING_RULESET_ID>"
-
-            }
-
-        }
-
-    ],
-
-    "phase": "http_ratelimit"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Account-level phase entry point",    "kind": "root",    "description": "This ruleset executes a rate limiting ruleset.",    "rules": [        {            "action": "execute",            "expression": "(cf.zone.plan eq \"ENT\")",            "action_parameters": {                "id": "<RATE_LIMITING_RULESET_ID>"            }        }    ],    "phase": "http_ratelimit"  }'
 ```
 
 ```
-
-{
-
-  "result": {
-
-    "id": "<RULESET_ID>",
-
-    "name": "Account-level phase entry point",
-
-    "description": "This ruleset executes a rate limiting ruleset.",
-
-    "kind": "root",
-
-    "version": "1",
-
-    "rules": [
-
-      {
-
-        "id": "<RULE_ID>",
-
-        "version": "1",
-
-        "action": "execute",
-
-        "expression": "(cf.zone.plan eq \"ENT\")",
-
-        "action_parameters": {
-
-          "id": "<RATE_LIMITING_RULESET_ID>"
-
-        },
-
-        "last_updated": "2024-09-17T15:42:37.917815Z"
-
-      }
-
-    ],
-
-    "last_updated": "2024-09-17T15:42:37.917815Z",
-
-    "phase": "http_ratelimit"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "id": "<RULESET_ID>",    "name": "Account-level phase entry point",    "description": "This ruleset executes a rate limiting ruleset.",    "kind": "root",    "version": "1",    "rules": [      {        "id": "<RULE_ID>",        "version": "1",        "action": "execute",        "expression": "(cf.zone.plan eq \"ENT\")",        "action_parameters": {          "id": "<RATE_LIMITING_RULESET_ID>"        },        "last_updated": "2024-09-17T15:42:37.917815Z"      }    ],    "last_updated": "2024-09-17T15:42:37.917815Z",    "phase": "http_ratelimit"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 Warning

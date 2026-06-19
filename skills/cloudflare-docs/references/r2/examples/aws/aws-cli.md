@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,23 +22,11 @@ With the [aws ↗](https://docs.aws.amazon.com/cli/latest/userguide/getting-star
 Terminal window
 
 ```
-
 aws configure
-
-
 ```
 
 ```
-
-AWS Access Key ID [None]: <ACCESS_KEY_ID>
-
-AWS Secret Access Key [None]: <SECRET_ACCESS_KEY>
-
-Default region name [None]: auto
-
-Default output format [None]: json
-
-
+AWS Access Key ID [None]: <ACCESS_KEY_ID>AWS Secret Access Key [None]: <SECRET_ACCESS_KEY>Default region name [None]: autoDefault output format [None]: json
 ```
 
 The `region` value can be set to `auto` since it is required by the SDK but not used by R2.
@@ -48,61 +36,8 @@ You may then use the `aws` CLI for any of your normal workflows.
 Terminal window
 
 ```
-
-# Provide your Cloudflare account ID
-
-aws s3api list-buckets --endpoint-url https://<ACCOUNT_ID>.r2.cloudflarestorage.com
-
-# {
-
-#     "Buckets": [
-
-#         {
-
-#             "Name": "my-bucket",
-
-#             "CreationDate": "2022-05-18T17:19:59.645000+00:00"
-
-#         }
-
-#     ],
-
-#     "Owner": {
-
-#         "DisplayName": "134a5a2c0ba47b38eada4b9c8ead10b6",
-
-#         "ID": "134a5a2c0ba47b38eada4b9c8ead10b6"
-
-#     }
-
-# }
-
-
-aws s3api list-objects-v2 --endpoint-url https://<ACCOUNT_ID>.r2.cloudflarestorage.com --bucket my-bucket
-
-# {
-
-#     "Contents": [
-
-#         {
-
-#             "Key": "ferriswasm.png",
-
-#             "LastModified": "2022-05-18T17:20:21.670000+00:00",
-
-#             "ETag": "\"eb2b891dc67b81755d2b726d9110af16\"",
-
-#             "Size": 87671,
-
-#             "StorageClass": "STANDARD"
-
-#         }
-
-#     ]
-
-# }
-
-
+# Provide your Cloudflare account IDaws s3api list-buckets --endpoint-url https://<ACCOUNT_ID>.r2.cloudflarestorage.com# {#     "Buckets": [#         {#             "Name": "my-bucket",#             "CreationDate": "2022-05-18T17:19:59.645000+00:00"#         }#     ],#     "Owner": {#         "DisplayName": "134a5a2c0ba47b38eada4b9c8ead10b6",#         "ID": "134a5a2c0ba47b38eada4b9c8ead10b6"#     }# }
+aws s3api list-objects-v2 --endpoint-url https://<ACCOUNT_ID>.r2.cloudflarestorage.com --bucket my-bucket# {#     "Contents": [#         {#             "Key": "ferriswasm.png",#             "LastModified": "2022-05-18T17:20:21.670000+00:00",#             "ETag": "\"eb2b891dc67b81755d2b726d9110af16\"",#             "Size": 87671,#             "StorageClass": "STANDARD"#         }#     ]# }
 ```
 
 ## Generate presigned URLs
@@ -112,14 +47,7 @@ You can also generate presigned links which allow you to share public access to 
 Terminal window
 
 ```
-
-# You can pass the --expires-in flag to determine how long the presigned link is valid.
-
-aws s3 presign --endpoint-url https://<ACCOUNT_ID>.r2.cloudflarestorage.com  s3://my-bucket/ferriswasm.png --expires-in 3600
-
-# https://<ACCOUNT_ID>.r2.cloudflarestorage.com/my-bucket/ferriswasm.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=<credential>&X-Amz-Date=<timestamp>&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=<signature>
-
-
+# You can pass the --expires-in flag to determine how long the presigned link is valid.aws s3 presign --endpoint-url https://<ACCOUNT_ID>.r2.cloudflarestorage.com  s3://my-bucket/ferriswasm.png --expires-in 3600# https://<ACCOUNT_ID>.r2.cloudflarestorage.com/my-bucket/ferriswasm.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=<credential>&X-Amz-Date=<timestamp>&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=<signature>
 ```
 
 ```json

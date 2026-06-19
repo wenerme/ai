@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,49 +27,15 @@ A menu container component with placement options.
 ### Basic Usage
 
 ```
-
 import { RtkMenu } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkMenu size="md" placement="bottom">
-
-      <Text>Menu content</Text>
-
-    </RtkMenu>
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkMenu size="md" placement="bottom">      <Text>Menu content</Text>    </RtkMenu>  );}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkMenu } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkMenu size="lg" placement="bottom-start">
-
-      <Text>Menu content</Text>
-
-    </RtkMenu>
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkMenu size="lg" placement="bottom-start">      <Text>Menu content</Text>    </RtkMenu>  );}
 ```
 
 ```json

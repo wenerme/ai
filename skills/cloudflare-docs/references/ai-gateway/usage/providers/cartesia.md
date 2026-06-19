@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,10 +17,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 ## Endpoint
 
 ```
-
 https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/cartesia
-
-
 ```
 
 ## URL Structure
@@ -43,42 +40,7 @@ When making requests to Cartesia, ensure you have the following:
 Request
 
 ```
-
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/cartesia/tts/bytes \
-
-  --header 'Content-Type: application/json' \
-
-  --header 'Cartesia-Version: 2024-06-10' \
-
-  --header 'X-API-Key: {cartesia_api_token}' \
-
-  --data '{
-
-    "transcript": "Welcome to Cloudflare - AI Gateway!",
-
-    "model_id": "sonic-english",
-
-    "voice": {
-
-        "mode": "id",
-
-        "id": "694f9389-aac1-45b6-b726-9d9369183238"
-
-    },
-
-    "output_format": {
-
-        "container": "wav",
-
-        "encoding": "pcm_f32le",
-
-        "sample_rate": 44100
-
-    }
-
-}
-
-
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/cartesia/tts/bytes \  --header 'Content-Type: application/json' \  --header 'Cartesia-Version: 2024-06-10' \  --header 'X-API-Key: {cartesia_api_token}' \  --data '{    "transcript": "Welcome to Cloudflare - AI Gateway!",    "model_id": "sonic-english",    "voice": {        "mode": "id",        "id": "694f9389-aac1-45b6-b726-9d9369183238"    },    "output_format": {        "container": "wav",        "encoding": "pcm_f32le",        "sample_rate": 44100    }}
 ```
 
 ```json

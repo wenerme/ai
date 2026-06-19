@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/china-network/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,51 +25,11 @@ You can obtain the list of JD Cloud data center IP addresses via Cloudflare API.
 Cloudflare/JD Cloud IP Details
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/ips?networks=jdcloud" \
-
-  --request GET
-
-
+curl "https://api.cloudflare.com/client/v4/ips?networks=jdcloud" \  --request GET
 ```
 
 ```
-
-{
-
-  "result": {
-
-    "ipv4_cidrs": [
-
-      // (...)
-
-    ],
-
-    "ipv6_cidrs": [
-
-      // (...)
-
-    ],
-
-    "jdcloud_cidrs": [
-
-      // (...)
-
-    ],
-
-    "etag": "<ETAG>"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "ipv4_cidrs": [      // (...)    ],    "ipv6_cidrs": [      // (...)    ],    "jdcloud_cidrs": [      // (...)    ],    "etag": "<ETAG>"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 The `jdcloud_cidrs` array lists the IP addresses of JD Cloud data centers.

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,8 +26,8 @@ Credentials sent over plain HTTP are visible to anyone on the network path betwe
 
 Always Use HTTPS redirects all visitor requests from `http` to `https` for all subdomains and hosts.
 
-* [ Dashboard ](#tab-panel-11067)
-* [ API ](#tab-panel-11068)
+* [ Dashboard ](#tab-panel-11084)
+* [ API ](#tab-panel-11085)
 
 To enable **Always Use HTTPS** in the dashboard:
 
@@ -58,8 +58,8 @@ Cloudflare provides bot protection on all plans, with features that vary by plan
 
 Bot Fight Mode challenges requests that match known bot patterns. It applies to all traffic on your domain and cannot be customized with exceptions or path-specific rules.
 
-* [  New dashboard ](#tab-panel-11069)
-* [ Old dashboard ](#tab-panel-11070)
+* [  New dashboard ](#tab-panel-11086)
+* [ Old dashboard ](#tab-panel-11087)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -86,28 +86,30 @@ If you are upgrading from Bot Fight Mode to Super Bot Fight Mode, you must disab
 * Old dashboard: **Security** \> **Bots**, and select **Configure Bot Fight Mode**.
 * New dashboard: **Security** \> **Settings**. Filter by **Bot traffic** and turn **Bot fight mode** off.
 
-* [  New dashboard ](#tab-panel-11071)
-* [ Old dashboard ](#tab-panel-11072)
+* [  New dashboard ](#tab-panel-11088)
+* [ Old dashboard ](#tab-panel-11089)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Bot traffic**.
 3. Go to **Super Bot fight mode**.
 4. Turn **Super Bot fight mode** on.
-5. Choose how your domain should respond to various types of traffic by selecting the associated edit icon:  
-   * For more details on verified bots, refer to [Verified Bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).  
-   * For more details on supported file types, refer to [Static resource protection](https://developers.cloudflare.com/bots/additional-configurations/static-resources/).  
-   * For more details on invisible code injection, refer to [JavaScript detections](https://developers.cloudflare.com/bots/additional-configurations/javascript-detections/).  
-   * For more details on WordPress optimization, refer to [Super Bot Fight Mode for WordPress](https://developers.cloudflare.com/bots/troubleshooting/wordpress-loopback-issue/).
+5. Choose how your domain should respond to various types of traffic by selecting the associated edit icon:
+
+  * For more details on verified bots, refer to [Verified Bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).
+  * For more details on supported file types, refer to [Static resource protection](https://developers.cloudflare.com/bots/additional-configurations/static-resources/).
+  * For more details on invisible code injection, refer to [JavaScript detections](https://developers.cloudflare.com/bots/additional-configurations/javascript-detections/).
+  * For more details on WordPress optimization, refer to [Super Bot Fight Mode for WordPress](https://developers.cloudflare.com/bots/troubleshooting/wordpress-loopback-issue/).
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login), and select your account and domain.
 2. Go to **Security** \> **Bots**.
 3. Select **Configure Super Bot Fight Mode**.
-4. Choose how your domain should respond to various types of traffic:  
-   * For more details on verified bots, refer to [Verified Bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).  
-   * For more details on supported file types, refer to [Static resource protection](https://developers.cloudflare.com/bots/additional-configurations/static-resources/).  
-   * For more details on invisible code injection, refer to [JavaScript detections](https://developers.cloudflare.com/bots/additional-configurations/javascript-detections/).  
-   * For more details on WordPress optimization, refer to [Super Bot Fight Mode for WordPress](https://developers.cloudflare.com/bots/troubleshooting/wordpress-loopback-issue/).
+4. Choose how your domain should respond to various types of traffic:
+
+  * For more details on verified bots, refer to [Verified Bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).
+  * For more details on supported file types, refer to [Static resource protection](https://developers.cloudflare.com/bots/additional-configurations/static-resources/).
+  * For more details on invisible code injection, refer to [JavaScript detections](https://developers.cloudflare.com/bots/additional-configurations/javascript-detections/).
+  * For more details on WordPress optimization, refer to [Super Bot Fight Mode for WordPress](https://developers.cloudflare.com/bots/troubleshooting/wordpress-loopback-issue/).
 
 For login protection, the following are recommended starting values. Adjust based on your traffic patterns.
 
@@ -141,10 +143,11 @@ Turnstile is configured at the account level.
 1. In the Cloudflare dashboard, go to the **Turnstile** page.  
 [ Go to **Turnstile** ](https://dash.cloudflare.com/?to=/:account/turnstile)
 2. Select **Add widget**.
-3. Fill out the required information:  
-   * **Widget name**: A descriptive name for your widget.  
-   * **Hostname management**: Domains where the widget will be used.  
-   * **Widget mode**: Choose from Managed, Non-Interactive, or Invisible.
+3. Fill out the required information:
+
+  * **Widget name**: A descriptive name for your widget.
+  * **Hostname management**: Domains where the widget will be used.
+  * **Widget mode**: Choose from Managed, Non-Interactive, or Invisible.
 4. (Optional) Configure **Pre-clearance support** for single-page applications.
 5. Select **Create** to save your widget.
 6. Copy your sitekey and secret key, and store the secret key securely.
@@ -156,31 +159,8 @@ You need both the sitekey and secret key in the following steps.
 Add the Turnstile script and widget container to your login form. Replace `<YOUR-SITE-KEY>` with the sitekey from the previous step.
 
 ```
-
-<form id="login-form">
-
-  <input type="text" id="username" placeholder="Username" required />
-
-  <input type="password" id="password" placeholder="Password" autocomplete="off" required />
-
-  <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>"></div>
-
-  <button type="submit">Log in</button>
-
-</form>
-
-
-<script
-
-  src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-
-  async
-
-  defer
-
-></script>
-
-
+<form id="login-form">  <input type="text" id="username" placeholder="Username" required />  <input type="password" id="password" placeholder="Password" autocomplete="off" required />  <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>"></div>  <button type="submit">Log in</button></form>
+<script  src="https://challenges.cloudflare.com/turnstile/v0/api.js"  async  defer></script>
 ```
 
 The widget renders inside the `div` and produces a token when the visitor passes the challenge. When the form is submitted, a `cf-turnstile-response` token is included in the form data.
@@ -192,58 +172,9 @@ Before processing the form submission, send the token to the Turnstile siteverif
 server.js
 
 ```
-
 const SECRET_KEY = "<YOUR-SECRET-KEY>";
-
-
-async function validateTurnstile(token, remoteip) {
-
-  try {
-
-    const response = await fetch(
-
-      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
-
-      {
-
-        method: "POST",
-
-        headers: {
-
-          "Content-Type": "application/json",
-
-        },
-
-        body: JSON.stringify({
-
-          secret: SECRET_KEY,
-
-          response: token,
-
-          remoteip: remoteip,
-
-        }),
-
-      },
-
-    );
-
-
-    const result = await response.json();
-
-    return result;
-
-  } catch (error) {
-
-    console.error("Turnstile validation error:", error);
-
-    return { success: false, "error-codes": ["internal-error"] };
-
-  }
-
-}
-
-
+async function validateTurnstile(token, remoteip) {  try {    const response = await fetch(      "https://challenges.cloudflare.com/turnstile/v0/siteverify",      {        method: "POST",        headers: {          "Content-Type": "application/json",        },        body: JSON.stringify({          secret: SECRET_KEY,          response: token,          remoteip: remoteip,        }),      },    );
+    const result = await response.json();    return result;  } catch (error) {    console.error("Turnstile validation error:", error);    return { success: false, "error-codes": ["internal-error"] };  }}
 ```
 
 Replace `"<YOUR-SECRET-KEY>"` with your Turnstile secret key. The endpoint returns a JSON object with a `success` field. Only process the form submission if `success` is `true`.
@@ -289,10 +220,7 @@ Note
 (Optional) To count only failed login attempts instead of all matching requests, Business plan and above users can add a separate counting expression under **Increment counter when**:
 
 ```
-
 http.request.uri.path eq "/login" and http.request.method eq "POST" and http.response.code in {401 403}
-
-
 ```
 
 This counts requests based on the response status code. Successful logins (200) do not increment the counter.
@@ -325,10 +253,10 @@ The `cf.waf.credential_check.username_and_password_leaked` field requires a Pro 
 
 On Free plans, the leaked credentials detection is enabled by default, and no action is required. On paid plans, you can turn on the detection in the Cloudflare dashboard, via API, or using Terraform.
 
-* [  New dashboard ](#tab-panel-11073)
-* [ Old dashboard ](#tab-panel-11074)
-* [ API ](#tab-panel-11075)
-* [ Terraform ](#tab-panel-11076)
+* [  New dashboard ](#tab-panel-11090)
+* [ Old dashboard ](#tab-panel-11091)
+* [ API ](#tab-panel-11092)
+* [ Terraform ](#tab-panel-11093)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -343,42 +271,20 @@ Use a `POST` request similar to the following:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone WAF Write`
 * `Account WAF Write`
 
 Set Leaked Credential Checks Status
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "enabled": true
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "enabled": true  }'
 ```
 
 Use the `cloudflare_leaked_credential_check` resource to enable leaked credentials detection for a zone. For example:
 
 ```
-
-resource "cloudflare_leaked_credential_check" "zone_lcc_example" {
-
-  zone_id = var.cloudflare_zone_id
-
-  enabled = true
-
-}
-
-
+resource "cloudflare_leaked_credential_check" "zone_lcc_example" {  zone_id = var.cloudflare_zone_id  enabled = true}
 ```
 
 After turning on the detection, your origin server can receive leaked credential status via the `Exposed-Credential-Check` request header. To forward this header, turn on the [Add leaked credentials checks header](https://developers.cloudflare.com/rules/transform/managed-transforms/reference/#add-leaked-credentials-checks-header) managed transform. Your origin can then trigger a password reset for affected users.

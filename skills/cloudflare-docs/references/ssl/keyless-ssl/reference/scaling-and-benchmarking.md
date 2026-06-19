@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,18 +35,7 @@ Additional details can be found in the [gokeyless server readme file ↗](https:
 We conducted benchmarks using [Cloudflare's gokeyless bench tool ↗](https://github.com/cloudflare/gokeyless/tree/master/cmd/bench) on a then current-generation, compute-optimized EC2 instance ([c5.xlarge ↗](https://aws.amazon.com/ec2/instance-types/c5/)). This particular instance has 4 vCPUs powered by 3.0 GHz Intel Xeon processors:
 
 ```
-
-c5$ cat /proc/cpuinfo|grep "model name"
-
-model name  : Intel(R) Xeon(R) Platinum 8124M CPU @ 3.00GHz
-
-model name  : Intel(R) Xeon(R) Platinum 8124M CPU @ 3.00GHz
-
-model name  : Intel(R) Xeon(R) Platinum 8124M CPU @ 3.00GHz
-
-model name  : Intel(R) Xeon(R) Platinum 8124M CPU @ 3.00GHz
-
-
+c5$ cat /proc/cpuinfo|grep "model name"model name  : Intel(R) Xeon(R) Platinum 8124M CPU @ 3.00GHzmodel name  : Intel(R) Xeon(R) Platinum 8124M CPU @ 3.00GHzmodel name  : Intel(R) Xeon(R) Platinum 8124M CPU @ 3.00GHzmodel name  : Intel(R) Xeon(R) Platinum 8124M CPU @ 3.00GHz
 ```
 
 By default, bench runs with one worker goroutine per core (4) and a maximum number of operating system threads equal to the total number of cores (in this case, `GOMAXPROCS=4`). As expected and explained above, ECDSA signature performance far exceeds that of RSA. The [results show](#results) that each core of this c5.xl machine can perform over 10,000 ECDSA signing operations/second and approximately 200 RSA signing operations/second.
@@ -58,27 +47,13 @@ When planning your deployment, determine the maximum number of new TLS connectio
 #### ECDSA
 
 ```
-
-c5$ bench -ski $ECDSA_SKI -op ECDSA-SHA256 -bandwidth -duration 60s
-
-Total operations completed: 2661570
-
-Average operation duration: 22.543µs
-
-
+c5$ bench -ski $ECDSA_SKI -op ECDSA-SHA256 -bandwidth -duration 60sTotal operations completed: 2661570Average operation duration: 22.543µs
 ```
 
 #### RSA
 
 ```
-
-c5$ bench -ski $RSA_SKI -op RSA-SHA256 -bandwidth -duration 60s
-
-Total operations completed: 46560
-
-Average operation duration: 1.288659ms.
-
-
+c5$ bench -ski $RSA_SKI -op RSA-SHA256 -bandwidth -duration 60sTotal operations completed: 46560Average operation duration: 1.288659ms.
 ```
 
 ```json

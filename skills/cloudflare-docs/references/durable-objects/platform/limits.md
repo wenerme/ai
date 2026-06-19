@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -98,39 +98,19 @@ Durable Objects are Worker scripts, and have the same [per invocation CPU limits
 
 By default, the maximum CPU time per Durable Objects invocation (HTTP request, WebSocket message, or Alarm) is set to 30 seconds, but can be increased for all Durable Objects associated with a Durable Object definition by setting `limits.cpu_ms` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-8383)
-* [  wrangler.toml ](#tab-panel-8384)
+* [  wrangler.jsonc ](#tab-panel-8459)
+* [  wrangler.toml ](#tab-panel-8460)
 
 JSONC
 
 ```
-
-{
-
-  // ...rest of your configuration...
-
-  "limits": {
-
-    "cpu_ms": 300000, // 300,000 milliseconds = 5 minutes
-
-  },
-
-  // ...rest of your configuration...
-
-}
-
-
+{  // ...rest of your configuration...  "limits": {    "cpu_ms": 300000, // 300,000 milliseconds = 5 minutes  },  // ...rest of your configuration...}
 ```
 
 TOML
 
 ```
-
-[limits]
-
-cpu_ms = 300_000
-
-
+[limits]cpu_ms = 300_000
 ```
 
 ### What happens when a Durable Object exceeds its storage limit?
@@ -138,10 +118,7 @@ cpu_ms = 300_000
 When a SQLite-backed Durable Object reaches its [maximum storage limit](https://developers.cloudflare.com/durable-objects/platform/limits/) (10 GB on Workers Paid, or 1 GB on the Free plan), write operations (such as `INSERT`, `UPDATE`, or calls to the `put()` and `sql.exec()` storage APIs) will fail with the following error:
 
 ```
-
 database or disk is full: SQLITE_FULL
-
-
 ```
 
 Read operations (such as `SELECT` queries, `get()`, and `list()` calls) will continue to work, and `DELETE` operations will also succeed so that you can remove data to free up space.
@@ -151,34 +128,7 @@ To handle this error in your Durable Object, catch the exception thrown by the s
 TypeScript
 
 ```
-
-try {
-
-  this.ctx.storage.sql.exec(
-
-    "INSERT INTO my_table (key, value) VALUES (?, ?)",
-
-    key,
-
-    value,
-
-  );
-
-} catch (e) {
-
-  if (e.message.includes("SQLITE_FULL")) {
-
-    // Storage limit reached — reads and deletes still work
-
-    // Consider deleting old data or returning a meaningful error to the caller
-
-  }
-
-  throw e;
-
-}
-
-
+try {  this.ctx.storage.sql.exec(    "INSERT INTO my_table (key, value) VALUES (?, ?)",    key,    value,  );} catch (e) {  if (e.message.includes("SQLITE_FULL")) {    // Storage limit reached — reads and deletes still work    // Consider deleting old data or returning a meaningful error to the caller  }  throw e;}
 ```
 
 ## Wall time limits by invocation type

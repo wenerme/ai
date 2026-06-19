@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -44,9 +44,9 @@ If you don't already have a dataset to send data to:
 2. Click on **API Tokens**
 3. Click **Create API Token**
 4. Configure your API token:  
-   * **Name**: Enter a descriptive name (e.g., `cloudflare-workers-otel`)  
-   * **Permissions**: Select **Ingest** permission (required for sending telemetry data)  
-   * **Datasets**: Choose which datasets this token can write to, or select **All Datasets**
+  * **Name**: Enter a descriptive name (e.g., `cloudflare-workers-otel`)
+  * **Permissions**: Select **Ingest** permission (required for sending telemetry data)
+  * **Datasets**: Choose which datasets this token can write to, or select **All Datasets**
 5. Click **Create**
 6. **Important**: Copy the API token immediately and store it securely - you won't be able to see it again
 
@@ -68,78 +68,36 @@ Axiom provides separate OTLP endpoints for traces and logs:
 1. Navigate to your Cloudflare account's [Workers Observability ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages/observability/pipelines) section
 2. Click **Add destination**
 3. Configure your trace destination:  
-   * **Destination Name**: `axiom-traces` (or any descriptive name)  
-   * **Destination Type**: Select **Traces**  
-   * **OTLP Endpoint**: `https://api.axiom.co/v1/traces` (or `/v1/logs`)  
-   * **Custom Headers**: Add two required headers:  
-         * Authentication header  
-                  * Header name: `Authorization`  
-                  * Header value: `Bearer <your-api-token>`  
-         * Dataset header:  
-                  * Header name: `X-Axiom-Dataset`  
-                  * Header value: Your dataset name (e.g., `cloudflare-workers-otel`)
+  * **Destination Name**: `axiom-traces` (or any descriptive name)
+  * **Destination Type**: Select **Traces**
+  * **OTLP Endpoint**: `https://api.axiom.co/v1/traces` (or `/v1/logs`)
+  * **Custom Headers**: Add two required headers:  
+    * Authentication header  
+      * Header name: `Authorization`
+      * Header value: `Bearer <your-api-token>`
+    * Dataset header:  
+      * Header name: `X-Axiom-Dataset`
+      * Header value: Your dataset name (e.g., `cloudflare-workers-otel`)
 4. Click **Save**
 
 ## Step 3: Configure your Worker
 
 With your destinations created in the Cloudflare dashboard, update your Worker's configuration to enable telemetry export.
 
-* [  wrangler.jsonc ](#tab-panel-11842)
-* [  wrangler.toml ](#tab-panel-11843)
+* [  wrangler.jsonc ](#tab-panel-11859)
+* [  wrangler.toml ](#tab-panel-11860)
 
 JSONC
 
 ```
-
-{
-
-  "observability": {
-
-    "traces": {
-
-      "enabled": true,
-
-      // Must match the destination name in the dashboard
-
-      "destinations": ["axiom-traces"]
-
-    },
-
-    "logs": {
-
-      "enabled": true,
-
-      // Must match the destination name in the dashboard
-
-      "destinations": ["axiom-logs"]
-
-    }
-
-  }
-
-}
-
-
+{  "observability": {    "traces": {      "enabled": true,      // Must match the destination name in the dashboard      "destinations": ["axiom-traces"]    },    "logs": {      "enabled": true,      // Must match the destination name in the dashboard      "destinations": ["axiom-logs"]    }  }}
 ```
 
 TOML
 
 ```
-
-[observability.traces]
-
-enabled = true
-
-destinations = [ "axiom-traces" ]
-
-
-[observability.logs]
-
-enabled = true
-
-destinations = [ "axiom-logs" ]
-
-
+[observability.traces]enabled = truedestinations = [ "axiom-traces" ]
+[observability.logs]enabled = truedestinations = [ "axiom-logs" ]
 ```
 
 After updating your configuration, deploy your Worker for the changes to take effect.

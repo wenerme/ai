@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,10 +16,11 @@ If images are missing from your website, other Cloudflare features may be interf
 
 To troubleshoot:
 
-1. Perform one of the following actions:  
-   * [Purge cache](https://developers.cloudflare.com/cache/how-to/purge-cache) for the URL of the missing image file.  
-   * [Temporarily pause Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/pause-cloudflare/).  
-   * Disable [Rocket Loader](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/enable/).
+1. Perform one of the following actions:
+
+  * [Purge cache](https://developers.cloudflare.com/cache/how-to/purge-cache) for the URL of the missing image file.
+  * [Temporarily pause Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/pause-cloudflare/).
+  * Disable [Rocket Loader](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/enable/).
 2. Retest the image load in a private browser tab.
 3. If the issue is not fixed, try another of the actions suggested in Step 1.
 

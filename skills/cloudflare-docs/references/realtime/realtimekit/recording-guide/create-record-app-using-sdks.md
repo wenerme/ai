@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -50,10 +50,7 @@ Creates an instance of the `RealtimeKitRecording` class.
 JavaScript
 
 ```
-
 init(client: RealtimeKitClient)
-
-
 ```
 
 Initiates the SDK by providing a `RealtimeKitClient` object. Call this after creating the meeting object and before calling `meeting.joinRoom()`.
@@ -61,10 +58,7 @@ Initiates the SDK by providing a `RealtimeKitClient` object. Call this after cre
 JavaScript
 
 ```
-
 startRecording();
-
-
 ```
 
 Manually starts the recording. Ensure that `autoStart` is passed as true in the constructor options.
@@ -72,10 +66,7 @@ Manually starts the recording. Ensure that `autoStart` is passed as true in the 
 JavaScript
 
 ```
-
 stopRecording();
-
-
 ```
 
 Manually stops the recording. Ensure that `autoStop` is passed as true in the constructor options.
@@ -83,10 +74,7 @@ Manually stops the recording. Ensure that `autoStop` is passed as true in the co
 JavaScript
 
 ```
-
 cleanup();
-
-
 ```
 
 Performs cleanup tasks after leaving the meeting, such as clearing added listeners and closing WebSocket connections.
@@ -100,10 +88,7 @@ Perform the following steps to create the recording app for your RealtimeKit mee
 JavaScript
 
 ```
-
 npm i @cloudflare/realtimekit-recording-sdk
-
-
 ```
 
 ### Step 2: Import the `RealtimeKitRecording` object
@@ -111,10 +96,7 @@ npm i @cloudflare/realtimekit-recording-sdk
 JavaScript
 
 ```
-
 import { RealtimeKitRecording } from '@cloudflare/realtimekit-recording-sdk';
-
-
 ```
 
 ### Step 3: Create the `RealtimeKitRecording` object
@@ -122,10 +104,7 @@ import { RealtimeKitRecording } from '@cloudflare/realtimekit-recording-sdk';
 JavaScript
 
 ```
-
 const recordingSdk = new RealtimeKitRecording(options);
-
-
 ```
 
 ### Step 4: Initialize the recording SDK
@@ -135,12 +114,7 @@ Call `init` after creating the meeting object and before `joinRoom` is called.
 JavaScript
 
 ```
-
-// Call this after you have called initMeeting
-
-await recordingSdk.init();
-
-
+// Call this after you have called initMeetingawait recordingSdk.init();
 ```
 
 ### (Optional) Step 5: Manually start the recording
@@ -150,12 +124,7 @@ To manually start the recording, call the `startRecording()` function. For examp
 JavaScript
 
 ```
-
-// This throws an exception if autoStart is set to false.
-
-await recordingSdk.startRecording();
-
-
+// This throws an exception if autoStart is set to false.await recordingSdk.startRecording();
 ```
 
 ### (Optional) Step 6: Manually stop the recording
@@ -165,12 +134,7 @@ To manually stop the recording, use `stopRecording`.
 JavaScript
 
 ```
-
-// This throws an exception if autoStop is set to false.
-
-await recordingSdk.stopRecording();
-
-
+// This throws an exception if autoStop is set to false.await recordingSdk.stopRecording();
 ```
 
 Once `stopRecording` is called, the recorder in your recording app will exit after a few seconds. After this point, you won't be able to perform any further actions within your recording app.

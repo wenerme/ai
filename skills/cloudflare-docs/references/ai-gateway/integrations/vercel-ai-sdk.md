@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,10 +19,7 @@ The [Vercel AI SDK ↗](https://sdk.vercel.ai/) is a TypeScript library for buil
 Terminal window
 
 ```
-
 npm install ai-gateway-provider
-
-
 ```
 
 ## Examples
@@ -38,906 +35,196 @@ API with
 Stored Key (BYOK)
 
 ```
-
-import { createAiGateway } from 'ai-gateway-provider';
-
-import { createUnified } from 'ai-gateway-provider/providers/unified';
-
-import { generateText } from "ai";
-
-
-const aigateway = createAiGateway({
-
-  accountId: "{CLOUDFLARE_ACCOUNT_ID}",
-
-  gateway: '{GATEWAY_NAME}',
-
-  apiKey: '{CF_AIG_TOKEN}',
-
-});
-
-
+import { createAiGateway } from 'ai-gateway-provider';import { createUnified } from 'ai-gateway-provider/providers/unified';import { generateText } from "ai";
+const aigateway = createAiGateway({  accountId: "{CLOUDFLARE_ACCOUNT_ID}",  gateway: '{GATEWAY_NAME}',  apiKey: '{CF_AIG_TOKEN}',});
 const unified = createUnified();
-
-
-const { text } = await generateText({
-
-  model: aigateway(unified('openai/gpt-5.2')),
-
-  prompt: 'What is Cloudflare?',
-
-});
-
-
+const { text } = await generateText({  model: aigateway(unified('openai/gpt-5.2')),  prompt: 'What is Cloudflare?',});
 ```
 
 ```
-
-import { createAiGateway } from 'ai-gateway-provider';
-
-import { createUnified } from 'ai-gateway-provider/providers/unified';
-
-import { generateText } from "ai";
-
-
-const aigateway = createAiGateway({
-
-  accountId: "{CLOUDFLARE_ACCOUNT_ID}",
-
-  gateway: '{GATEWAY_NAME}',
-
-  apiKey: '{CF_AIG_TOKEN}',
-
-});
-
-
+import { createAiGateway } from 'ai-gateway-provider';import { createUnified } from 'ai-gateway-provider/providers/unified';import { generateText } from "ai";
+const aigateway = createAiGateway({  accountId: "{CLOUDFLARE_ACCOUNT_ID}",  gateway: '{GATEWAY_NAME}',  apiKey: '{CF_AIG_TOKEN}',});
 const unified = createUnified();
-
-
-const { text } = await generateText({
-
-  model: aigateway(unified('anthropic/claude-4-5-sonnet')),
-
-  prompt: 'What is Cloudflare?',
-
-});
-
-
+const { text } = await generateText({  model: aigateway(unified('anthropic/claude-4-5-sonnet')),  prompt: 'What is Cloudflare?',});
 ```
 
 ```
-
-import { createAiGateway } from 'ai-gateway-provider';
-
-import { createUnified } from 'ai-gateway-provider/providers/unified';
-
-import { generateText } from "ai";
-
-
-const aigateway = createAiGateway({
-
-  accountId: "{CLOUDFLARE_ACCOUNT_ID}",
-
-  gateway: '{GATEWAY_NAME}',
-
-  apiKey: '{CF_AIG_TOKEN}',
-
-});
-
-
+import { createAiGateway } from 'ai-gateway-provider';import { createUnified } from 'ai-gateway-provider/providers/unified';import { generateText } from "ai";
+const aigateway = createAiGateway({  accountId: "{CLOUDFLARE_ACCOUNT_ID}",  gateway: '{GATEWAY_NAME}',  apiKey: '{CF_AIG_TOKEN}',});
 const unified = createUnified();
-
-
-const { text } = await generateText({
-
-  model: aigateway(unified('google/gemini-2.5-pro')),
-
-  prompt: 'What is Cloudflare?',
-
-});
-
-
+const { text } = await generateText({  model: aigateway(unified('google/gemini-2.5-pro')),  prompt: 'What is Cloudflare?',});
 ```
 
 ```
-
-import { createAiGateway } from 'ai-gateway-provider';
-
-import { createUnified } from 'ai-gateway-provider/providers/unified';
-
-import { generateText } from "ai";
-
-
-const aigateway = createAiGateway({
-
-  accountId: "{CLOUDFLARE_ACCOUNT_ID}",
-
-  gateway: '{GATEWAY_NAME}',
-
-  apiKey: '{CF_AIG_TOKEN}',
-
-});
-
-
+import { createAiGateway } from 'ai-gateway-provider';import { createUnified } from 'ai-gateway-provider/providers/unified';import { generateText } from "ai";
+const aigateway = createAiGateway({  accountId: "{CLOUDFLARE_ACCOUNT_ID}",  gateway: '{GATEWAY_NAME}',  apiKey: '{CF_AIG_TOKEN}',});
 const unified = createUnified();
-
-
-const { text } = await generateText({
-
-  model: aigateway(unified('grok/grok-4')),
-
-  prompt: 'What is Cloudflare?',
-
-});
-
-
+const { text } = await generateText({  model: aigateway(unified('grok/grok-4')),  prompt: 'What is Cloudflare?',});
 ```
 
 ```
-
-import { createAiGateway } from 'ai-gateway-provider';
-
-import { createUnified } from 'ai-gateway-provider/providers/unified';
-
-import { generateText } from "ai";
-
-
-const aigateway = createAiGateway({
-
-  accountId: "{CLOUDFLARE_ACCOUNT_ID}",
-
-  gateway: '{GATEWAY_NAME}',
-
-  apiKey: '{CF_AIG_TOKEN}',
-
-});
-
-
+import { createAiGateway } from 'ai-gateway-provider';import { createUnified } from 'ai-gateway-provider/providers/unified';import { generateText } from "ai";
+const aigateway = createAiGateway({  accountId: "{CLOUDFLARE_ACCOUNT_ID}",  gateway: '{GATEWAY_NAME}',  apiKey: '{CF_AIG_TOKEN}',});
 const unified = createUnified();
-
-
-const { text } = await generateText({
-
-  model: aigateway(unified('dynamic/customer-support')),
-
-  prompt: 'What is Cloudflare?',
-
-});
-
-
+const { text } = await generateText({  model: aigateway(unified('dynamic/customer-support')),  prompt: 'What is Cloudflare?',});
 ```
 
 ```
-
-import { createAiGateway } from 'ai-gateway-provider';
-
-import { createUnified } from 'ai-gateway-provider/providers/unified';
-
-import { generateText } from "ai";
-
-
-const aigateway = createAiGateway({
-
-  accountId: "{CLOUDFLARE_ACCOUNT_ID}",
-
-  gateway: '{GATEWAY_NAME}',
-
-  apiKey: '{CF_AIG_TOKEN}',
-
-});
-
-
+import { createAiGateway } from 'ai-gateway-provider';import { createUnified } from 'ai-gateway-provider/providers/unified';import { generateText } from "ai";
+const aigateway = createAiGateway({  accountId: "{CLOUDFLARE_ACCOUNT_ID}",  gateway: '{GATEWAY_NAME}',  apiKey: '{CF_AIG_TOKEN}',});
 const unified = createUnified();
-
-
-const { text } = await generateText({
-
-  model: aigateway(unified('workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast')),
-
-  prompt: 'What is Cloudflare?',
-
-});
-
-
+const { text } = await generateText({  model: aigateway(unified('workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast')),  prompt: 'What is Cloudflare?',});
 ```
 
 ```
-
-import { createAiGateway } from 'ai-gateway-provider';
-
-import { createUnified } from 'ai-gateway-provider/providers/unified';
-
-import { generateText } from "ai";
-
-
-const aigateway = createAiGateway({
-
-  accountId: "{CLOUDFLARE_ACCOUNT_ID}",
-
-  gateway: '{GATEWAY_NAME}',
-
-  apiKey: '{CF_AIG_TOKEN}',
-
-});
-
-
+import { createAiGateway } from 'ai-gateway-provider';import { createUnified } from 'ai-gateway-provider/providers/unified';import { generateText } from "ai";
+const aigateway = createAiGateway({  accountId: "{CLOUDFLARE_ACCOUNT_ID}",  gateway: '{GATEWAY_NAME}',  apiKey: '{CF_AIG_TOKEN}',});
 const unified = createUnified({ apiKey: '{API_KEY}' });
-
-
-const { text } = await generateText({
-
-  model: aigateway(unified('openai/gpt-5.2')),
-
-  prompt: 'What is Cloudflare?',
-
-});
-
-
+const { text } = await generateText({  model: aigateway(unified('openai/gpt-5.2')),  prompt: 'What is Cloudflare?',});
 ```
 
 ```
-
-import { createAiGateway } from 'ai-gateway-provider';
-
-import { createUnified } from 'ai-gateway-provider/providers/unified';
-
-import { generateText } from "ai";
-
-
-const aigateway = createAiGateway({
-
-  accountId: "{CLOUDFLARE_ACCOUNT_ID}",
-
-  gateway: '{GATEWAY_NAME}',
-
-  apiKey: '{CF_AIG_TOKEN}',
-
-});
-
-
+import { createAiGateway } from 'ai-gateway-provider';import { createUnified } from 'ai-gateway-provider/providers/unified';import { generateText } from "ai";
+const aigateway = createAiGateway({  accountId: "{CLOUDFLARE_ACCOUNT_ID}",  gateway: '{GATEWAY_NAME}',  apiKey: '{CF_AIG_TOKEN}',});
 const unified = createUnified({ apiKey: '{API_KEY}' });
-
-
-const { text } = await generateText({
-
-  model: aigateway(unified('anthropic/claude-4-5-sonnet')),
-
-  prompt: 'What is Cloudflare?',
-
-});
-
-
+const { text } = await generateText({  model: aigateway(unified('anthropic/claude-4-5-sonnet')),  prompt: 'What is Cloudflare?',});
 ```
 
 ```
-
-import { createAiGateway } from 'ai-gateway-provider';
-
-import { createUnified } from 'ai-gateway-provider/providers/unified';
-
-import { generateText } from "ai";
-
-
-const aigateway = createAiGateway({
-
-  accountId: "{CLOUDFLARE_ACCOUNT_ID}",
-
-  gateway: '{GATEWAY_NAME}',
-
-  apiKey: '{CF_AIG_TOKEN}',
-
-});
-
-
+import { createAiGateway } from 'ai-gateway-provider';import { createUnified } from 'ai-gateway-provider/providers/unified';import { generateText } from "ai";
+const aigateway = createAiGateway({  accountId: "{CLOUDFLARE_ACCOUNT_ID}",  gateway: '{GATEWAY_NAME}',  apiKey: '{CF_AIG_TOKEN}',});
 const unified = createUnified({ apiKey: '{API_KEY}' });
-
-
-const { text } = await generateText({
-
-  model: aigateway(unified('google/gemini-2.5-pro')),
-
-  prompt: 'What is Cloudflare?',
-
-});
-
-
+const { text } = await generateText({  model: aigateway(unified('google/gemini-2.5-pro')),  prompt: 'What is Cloudflare?',});
 ```
 
 ```
-
-import { createAiGateway } from 'ai-gateway-provider';
-
-import { createUnified } from 'ai-gateway-provider/providers/unified';
-
-import { generateText } from "ai";
-
-
-const aigateway = createAiGateway({
-
-  accountId: "{CLOUDFLARE_ACCOUNT_ID}",
-
-  gateway: '{GATEWAY_NAME}',
-
-  apiKey: '{CF_AIG_TOKEN}',
-
-});
-
-
+import { createAiGateway } from 'ai-gateway-provider';import { createUnified } from 'ai-gateway-provider/providers/unified';import { generateText } from "ai";
+const aigateway = createAiGateway({  accountId: "{CLOUDFLARE_ACCOUNT_ID}",  gateway: '{GATEWAY_NAME}',  apiKey: '{CF_AIG_TOKEN}',});
 const unified = createUnified({ apiKey: '{API_KEY}' });
-
-
-const { text } = await generateText({
-
-  model: aigateway(unified('grok/grok-4')),
-
-  prompt: 'What is Cloudflare?',
-
-});
-
-
+const { text } = await generateText({  model: aigateway(unified('grok/grok-4')),  prompt: 'What is Cloudflare?',});
 ```
 
 ```
-
-import { createAiGateway } from 'ai-gateway-provider';
-
-import { createUnified } from 'ai-gateway-provider/providers/unified';
-
-import { generateText } from "ai";
-
-
-const aigateway = createAiGateway({
-
-  accountId: "{CLOUDFLARE_ACCOUNT_ID}",
-
-  gateway: '{GATEWAY_NAME}',
-
-  apiKey: '{CF_AIG_TOKEN}',
-
-});
-
-
+import { createAiGateway } from 'ai-gateway-provider';import { createUnified } from 'ai-gateway-provider/providers/unified';import { generateText } from "ai";
+const aigateway = createAiGateway({  accountId: "{CLOUDFLARE_ACCOUNT_ID}",  gateway: '{GATEWAY_NAME}',  apiKey: '{CF_AIG_TOKEN}',});
 const unified = createUnified({ apiKey: '{API_KEY}' });
-
-
-const { text } = await generateText({
-
-  model: aigateway(unified('dynamic/customer-support')),
-
-  prompt: 'What is Cloudflare?',
-
-});
-
-
+const { text } = await generateText({  model: aigateway(unified('dynamic/customer-support')),  prompt: 'What is Cloudflare?',});
 ```
 
 ```
-
-import { createAiGateway } from 'ai-gateway-provider';
-
-import { createUnified } from 'ai-gateway-provider/providers/unified';
-
-import { generateText } from "ai";
-
-
-const aigateway = createAiGateway({
-
-  accountId: "{CLOUDFLARE_ACCOUNT_ID}",
-
-  gateway: '{GATEWAY_NAME}',
-
-  apiKey: '{CF_AIG_TOKEN}',
-
-});
-
-
+import { createAiGateway } from 'ai-gateway-provider';import { createUnified } from 'ai-gateway-provider/providers/unified';import { generateText } from "ai";
+const aigateway = createAiGateway({  accountId: "{CLOUDFLARE_ACCOUNT_ID}",  gateway: '{GATEWAY_NAME}',  apiKey: '{CF_AIG_TOKEN}',});
 const unified = createUnified({ apiKey: '{API_KEY}' });
-
-
-const { text } = await generateText({
-
-  model: aigateway(unified('workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast')),
-
-  prompt: 'What is Cloudflare?',
-
-});
-
-
+const { text } = await generateText({  model: aigateway(unified('workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast')),  prompt: 'What is Cloudflare?',});
 ```
 
 ```
-
-import { createAiGateway } from 'ai-gateway-provider';
-
-import { createOpenAI } from 'ai-gateway-provider/providers/openai';
-
-import { generateText } from "ai";
-
-
-const aigateway = createAiGateway({
-
-  accountId: "{CLOUDFLARE_ACCOUNT_ID}",
-
-  gateway: '{GATEWAY_NAME}',
-
-  apiKey: '{CF_AIG_TOKEN}',
-
-});
-
-
+import { createAiGateway } from 'ai-gateway-provider';import { createOpenAI } from 'ai-gateway-provider/providers/openai';import { generateText } from "ai";
+const aigateway = createAiGateway({  accountId: "{CLOUDFLARE_ACCOUNT_ID}",  gateway: '{GATEWAY_NAME}',  apiKey: '{CF_AIG_TOKEN}',});
 const openai = createOpenAI();
-
-
-const { text } = await generateText({
-
-  model: aigateway(openai.chat('gpt-5.2')),
-
-  prompt: 'What is Cloudflare?',
-
-});
-
-
+const { text } = await generateText({  model: aigateway(openai.chat('gpt-5.2')),  prompt: 'What is Cloudflare?',});
 ```
 
 ```
-
-import { createAiGateway } from 'ai-gateway-provider';
-
-import { createAnthropic } from 'ai-gateway-provider/providers/anthropic';
-
-import { generateText } from "ai";
-
-
-const aigateway = createAiGateway({
-
-  accountId: "{CLOUDFLARE_ACCOUNT_ID}",
-
-  gateway: '{GATEWAY_NAME}',
-
-  apiKey: '{CF_AIG_TOKEN}',
-
-});
-
-
+import { createAiGateway } from 'ai-gateway-provider';import { createAnthropic } from 'ai-gateway-provider/providers/anthropic';import { generateText } from "ai";
+const aigateway = createAiGateway({  accountId: "{CLOUDFLARE_ACCOUNT_ID}",  gateway: '{GATEWAY_NAME}',  apiKey: '{CF_AIG_TOKEN}',});
 const anthropic = createAnthropic();
-
-
-const { text } = await generateText({
-
-  model: aigateway(anthropic('claude-4-5-sonnet')),
-
-  prompt: 'What is Cloudflare?',
-
-});
-
-
+const { text } = await generateText({  model: aigateway(anthropic('claude-4-5-sonnet')),  prompt: 'What is Cloudflare?',});
 ```
 
 ```
-
-import { createAiGateway } from 'ai-gateway-provider';
-
-import { createGoogle } from 'ai-gateway-provider/providers/google';
-
-import { generateText } from "ai";
-
-
-const aigateway = createAiGateway({
-
-  accountId: "{CLOUDFLARE_ACCOUNT_ID}",
-
-  gateway: '{GATEWAY_NAME}',
-
-  apiKey: '{CF_AIG_TOKEN}',
-
-});
-
-
+import { createAiGateway } from 'ai-gateway-provider';import { createGoogle } from 'ai-gateway-provider/providers/google';import { generateText } from "ai";
+const aigateway = createAiGateway({  accountId: "{CLOUDFLARE_ACCOUNT_ID}",  gateway: '{GATEWAY_NAME}',  apiKey: '{CF_AIG_TOKEN}',});
 const google = createGoogle();
-
-
-const { text } = await generateText({
-
-  model: aigateway(google('gemini-2.5-pro')),
-
-  prompt: 'What is Cloudflare?',
-
-});
-
-
+const { text } = await generateText({  model: aigateway(google('gemini-2.5-pro')),  prompt: 'What is Cloudflare?',});
 ```
 
 ```
-
-import { createAiGateway } from 'ai-gateway-provider';
-
-import { createXai } from 'ai-gateway-provider/providers/xai';
-
-import { generateText } from "ai";
-
-
-const aigateway = createAiGateway({
-
-  accountId: "{CLOUDFLARE_ACCOUNT_ID}",
-
-  gateway: '{GATEWAY_NAME}',
-
-  apiKey: '{CF_AIG_TOKEN}',
-
-});
-
-
+import { createAiGateway } from 'ai-gateway-provider';import { createXai } from 'ai-gateway-provider/providers/xai';import { generateText } from "ai";
+const aigateway = createAiGateway({  accountId: "{CLOUDFLARE_ACCOUNT_ID}",  gateway: '{GATEWAY_NAME}',  apiKey: '{CF_AIG_TOKEN}',});
 const xai = createXai();
-
-
-const { text } = await generateText({
-
-  model: aigateway(xai('grok-4')),
-
-  prompt: 'What is Cloudflare?',
-
-});
-
-
+const { text } = await generateText({  model: aigateway(xai('grok-4')),  prompt: 'What is Cloudflare?',});
 ```
 
 ```
-
-import { createAiGateway } from 'ai-gateway-provider';
-
-import { createUnified } from 'ai-gateway-provider/providers/unified';
-
-import { generateText } from "ai";
-
-
-const aigateway = createAiGateway({
-
-  accountId: "{CLOUDFLARE_ACCOUNT_ID}",
-
-  gateway: '{GATEWAY_NAME}',
-
-  apiKey: '{CF_AIG_TOKEN}',
-
-});
-
-
+import { createAiGateway } from 'ai-gateway-provider';import { createUnified } from 'ai-gateway-provider/providers/unified';import { generateText } from "ai";
+const aigateway = createAiGateway({  accountId: "{CLOUDFLARE_ACCOUNT_ID}",  gateway: '{GATEWAY_NAME}',  apiKey: '{CF_AIG_TOKEN}',});
 const unified = createUnified();
-
-
-const { text } = await generateText({
-
-  model: aigateway(unified('customer-support')),
-
-  prompt: 'What is Cloudflare?',
-
-});
-
-
+const { text } = await generateText({  model: aigateway(unified('customer-support')),  prompt: 'What is Cloudflare?',});
 ```
 
 ```
-
-import { createAiGateway } from 'ai-gateway-provider';
-
-import { createUnified } from 'ai-gateway-provider/providers/unified';
-
-import { generateText } from "ai";
-
-
-const aigateway = createAiGateway({
-
-  accountId: "{CLOUDFLARE_ACCOUNT_ID}",
-
-  gateway: '{GATEWAY_NAME}',
-
-  apiKey: '{CF_AIG_TOKEN}',
-
-});
-
-
+import { createAiGateway } from 'ai-gateway-provider';import { createUnified } from 'ai-gateway-provider/providers/unified';import { generateText } from "ai";
+const aigateway = createAiGateway({  accountId: "{CLOUDFLARE_ACCOUNT_ID}",  gateway: '{GATEWAY_NAME}',  apiKey: '{CF_AIG_TOKEN}',});
 const unified = createUnified();
-
-
-const { text } = await generateText({
-
-  model: aigateway(unified('@cf/meta/llama-3.3-70b-instruct-fp8-fast')),
-
-  prompt: 'What is Cloudflare?',
-
-});
-
-
+const { text } = await generateText({  model: aigateway(unified('@cf/meta/llama-3.3-70b-instruct-fp8-fast')),  prompt: 'What is Cloudflare?',});
 ```
 
 ```
-
-import { createAiGateway } from 'ai-gateway-provider';
-
-import { createOpenAI } from 'ai-gateway-provider/providers/openai';
-
-import { generateText } from "ai";
-
-
-const aigateway = createAiGateway({
-
-  accountId: "{CLOUDFLARE_ACCOUNT_ID}",
-
-  gateway: '{GATEWAY_NAME}',
-
-  apiKey: '{CF_AIG_TOKEN}',
-
-});
-
-
+import { createAiGateway } from 'ai-gateway-provider';import { createOpenAI } from 'ai-gateway-provider/providers/openai';import { generateText } from "ai";
+const aigateway = createAiGateway({  accountId: "{CLOUDFLARE_ACCOUNT_ID}",  gateway: '{GATEWAY_NAME}',  apiKey: '{CF_AIG_TOKEN}',});
 const openai = createOpenAI({ apiKey: '{API_KEY}' });
-
-
-const { text } = await generateText({
-
-  model: aigateway(openai.chat('gpt-5.2')),
-
-  prompt: 'What is Cloudflare?',
-
-});
-
-
+const { text } = await generateText({  model: aigateway(openai.chat('gpt-5.2')),  prompt: 'What is Cloudflare?',});
 ```
 
 ```
-
-import { createAiGateway } from 'ai-gateway-provider';
-
-import { createAnthropic } from 'ai-gateway-provider/providers/anthropic';
-
-import { generateText } from "ai";
-
-
-const aigateway = createAiGateway({
-
-  accountId: "{CLOUDFLARE_ACCOUNT_ID}",
-
-  gateway: '{GATEWAY_NAME}',
-
-  apiKey: '{CF_AIG_TOKEN}',
-
-});
-
-
+import { createAiGateway } from 'ai-gateway-provider';import { createAnthropic } from 'ai-gateway-provider/providers/anthropic';import { generateText } from "ai";
+const aigateway = createAiGateway({  accountId: "{CLOUDFLARE_ACCOUNT_ID}",  gateway: '{GATEWAY_NAME}',  apiKey: '{CF_AIG_TOKEN}',});
 const anthropic = createAnthropic({ apiKey: '{API_KEY}' });
-
-
-const { text } = await generateText({
-
-  model: aigateway(anthropic('claude-4-5-sonnet')),
-
-  prompt: 'What is Cloudflare?',
-
-});
-
-
+const { text } = await generateText({  model: aigateway(anthropic('claude-4-5-sonnet')),  prompt: 'What is Cloudflare?',});
 ```
 
 ```
-
-import { createAiGateway } from 'ai-gateway-provider';
-
-import { createGoogle } from 'ai-gateway-provider/providers/google';
-
-import { generateText } from "ai";
-
-
-const aigateway = createAiGateway({
-
-  accountId: "{CLOUDFLARE_ACCOUNT_ID}",
-
-  gateway: '{GATEWAY_NAME}',
-
-  apiKey: '{CF_AIG_TOKEN}',
-
-});
-
-
+import { createAiGateway } from 'ai-gateway-provider';import { createGoogle } from 'ai-gateway-provider/providers/google';import { generateText } from "ai";
+const aigateway = createAiGateway({  accountId: "{CLOUDFLARE_ACCOUNT_ID}",  gateway: '{GATEWAY_NAME}',  apiKey: '{CF_AIG_TOKEN}',});
 const google = createGoogle({ apiKey: '{API_KEY}' });
-
-
-const { text } = await generateText({
-
-  model: aigateway(google('gemini-2.5-pro')),
-
-  prompt: 'What is Cloudflare?',
-
-});
-
-
+const { text } = await generateText({  model: aigateway(google('gemini-2.5-pro')),  prompt: 'What is Cloudflare?',});
 ```
 
 ```
-
-import { createAiGateway } from 'ai-gateway-provider';
-
-import { createXai } from 'ai-gateway-provider/providers/xai';
-
-import { generateText } from "ai";
-
-
-const aigateway = createAiGateway({
-
-  accountId: "{CLOUDFLARE_ACCOUNT_ID}",
-
-  gateway: '{GATEWAY_NAME}',
-
-  apiKey: '{CF_AIG_TOKEN}',
-
-});
-
-
+import { createAiGateway } from 'ai-gateway-provider';import { createXai } from 'ai-gateway-provider/providers/xai';import { generateText } from "ai";
+const aigateway = createAiGateway({  accountId: "{CLOUDFLARE_ACCOUNT_ID}",  gateway: '{GATEWAY_NAME}',  apiKey: '{CF_AIG_TOKEN}',});
 const xai = createXai({ apiKey: '{API_KEY}' });
-
-
-const { text } = await generateText({
-
-  model: aigateway(xai('grok-4')),
-
-  prompt: 'What is Cloudflare?',
-
-});
-
-
+const { text } = await generateText({  model: aigateway(xai('grok-4')),  prompt: 'What is Cloudflare?',});
 ```
 
 ```
-
-import { createAiGateway } from 'ai-gateway-provider';
-
-import { createUnified } from 'ai-gateway-provider/providers/unified';
-
-import { generateText } from "ai";
-
-
-const aigateway = createAiGateway({
-
-  accountId: "{CLOUDFLARE_ACCOUNT_ID}",
-
-  gateway: '{GATEWAY_NAME}',
-
-  apiKey: '{CF_AIG_TOKEN}',
-
-});
-
-
+import { createAiGateway } from 'ai-gateway-provider';import { createUnified } from 'ai-gateway-provider/providers/unified';import { generateText } from "ai";
+const aigateway = createAiGateway({  accountId: "{CLOUDFLARE_ACCOUNT_ID}",  gateway: '{GATEWAY_NAME}',  apiKey: '{CF_AIG_TOKEN}',});
 const unified = createUnified({ apiKey: '{API_KEY}' });
-
-
-const { text } = await generateText({
-
-  model: aigateway(unified('customer-support')),
-
-  prompt: 'What is Cloudflare?',
-
-});
-
-
+const { text } = await generateText({  model: aigateway(unified('customer-support')),  prompt: 'What is Cloudflare?',});
 ```
 
 ```
-
-import { createAiGateway } from 'ai-gateway-provider';
-
-import { createUnified } from 'ai-gateway-provider/providers/unified';
-
-import { generateText } from "ai";
-
-
-const aigateway = createAiGateway({
-
-  accountId: "{CLOUDFLARE_ACCOUNT_ID}",
-
-  gateway: '{GATEWAY_NAME}',
-
-  apiKey: '{CF_AIG_TOKEN}',
-
-});
-
-
+import { createAiGateway } from 'ai-gateway-provider';import { createUnified } from 'ai-gateway-provider/providers/unified';import { generateText } from "ai";
+const aigateway = createAiGateway({  accountId: "{CLOUDFLARE_ACCOUNT_ID}",  gateway: '{GATEWAY_NAME}',  apiKey: '{CF_AIG_TOKEN}',});
 const unified = createUnified({ apiKey: '{API_KEY}' });
-
-
-const { text } = await generateText({
-
-  model: aigateway(unified('@cf/meta/llama-3.3-70b-instruct-fp8-fast')),
-
-  prompt: 'What is Cloudflare?',
-
-});
-
-
+const { text } = await generateText({  model: aigateway(unified('@cf/meta/llama-3.3-70b-instruct-fp8-fast')),  prompt: 'What is Cloudflare?',});
 ```
 
 ### AI binding with third-party models
 
 If you are already using the [workers-ai-provider ↗](https://www.npmjs.com/package/workers-ai-provider) package, you can route requests through AI Gateway to call third-party models without needing separate provider SDKs. Pass a `gateway` option with your gateway ID to `createWorkersAI`:
 
-* [  JavaScript ](#tab-panel-6556)
-* [  TypeScript ](#tab-panel-6557)
+* [  JavaScript ](#tab-panel-6632)
+* [  TypeScript ](#tab-panel-6633)
 
 JavaScript
 
 ```
-
-import { createWorkersAI } from "workers-ai-provider";
-
-import { streamText } from "ai";
-
-
-export default {
-
-  async fetch(request, env) {
-
-    const workersai = createWorkersAI({
-
-      binding: env.AI,
-
-      gateway: { id: "my-gateway" },
-
-    });
-
-
-    const result = streamText({
-
-      model: workersai("openai/gpt-4o"),
-
-      messages: [{ role: "user", content: "Write a short story" }],
-
-    });
-
-
-    return result.toTextStreamResponse();
-
-  },
-
-};
-
-
+import { createWorkersAI } from "workers-ai-provider";import { streamText } from "ai";
+export default {  async fetch(request, env) {    const workersai = createWorkersAI({      binding: env.AI,      gateway: { id: "my-gateway" },    });
+    const result = streamText({      model: workersai("openai/gpt-4o"),      messages: [{ role: "user", content: "Write a short story" }],    });
+    return result.toTextStreamResponse();  },};
 ```
 
 TypeScript
 
 ```
-
-import { createWorkersAI } from "workers-ai-provider";
-
-import { streamText } from "ai";
-
-
-export default {
-
-  async fetch(request, env) {
-
-    const workersai = createWorkersAI({
-
-      binding: env.AI,
-
-      gateway: { id: "my-gateway" },
-
-    });
-
-
-    const result = streamText({
-
-      model: workersai("openai/gpt-4o"),
-
-      messages: [{ role: "user", content: "Write a short story" }],
-
-    });
-
-
-    return result.toTextStreamResponse();
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+import { createWorkersAI } from "workers-ai-provider";import { streamText } from "ai";
+export default {  async fetch(request, env) {    const workersai = createWorkersAI({      binding: env.AI,      gateway: { id: "my-gateway" },    });
+    const result = streamText({      model: workersai("openai/gpt-4o"),      messages: [{ role: "user", content: "Write a short story" }],    });
+    return result.toTextStreamResponse();  },} satisfies ExportedHandler<Env>;
 ```
 
 This works with any [supported provider and model](https://developers.cloudflare.com/ai/models/) available through AI Gateway.
@@ -947,16 +234,7 @@ This works with any [supported provider and model](https://developers.cloudflare
 To specify model or provider fallbacks to handle request failures and ensure reliability, you can pass an array of models to the `model` option.
 
 ```
-
-const { text } = await generateText({
-
-  model: aigateway([openai.chat("gpt-5.1"), anthropic("claude-sonnet-4-5")]),
-
-  prompt: "Write a vegetarian lasagna recipe for 4 people.",
-
-});
-
-
+const { text } = await generateText({  model: aigateway([openai.chat("gpt-5.1"), anthropic("claude-sonnet-4-5")]),  prompt: "Write a vegetarian lasagna recipe for 4 people.",});
 ```
 
 ```json

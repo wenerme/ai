@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,12 +30,7 @@ We include an uninstall script as part of the macOS package that you originally 
 Terminal window
 
 ```
-
-cd /Applications/Cloudflare\ WARP.app/Contents/Resources
-
-./uninstall.sh
-
-
+cd /Applications/Cloudflare\ WARP.app/Contents/Resources./uninstall.sh
 ```
 
 1. If prompted, enter your admin credentials to proceed with the uninstall.
@@ -51,10 +46,7 @@ On CentOS 8, RHEL 8:
 Terminal window
 
 ```
-
 sudo yum remove cloudflare-warp
-
-
 ```
 
 On Ubuntu 18.04, Ubuntu 20.04, Ubuntu 22.04, Debian 9, Debian 10, Debian 11:
@@ -62,10 +54,7 @@ On Ubuntu 18.04, Ubuntu 20.04, Ubuntu 22.04, Debian 9, Debian 10, Debian 11:
 Terminal window
 
 ```
-
 sudo apt remove cloudflare-warp
-
-
 ```
 
 ## iOS and Android

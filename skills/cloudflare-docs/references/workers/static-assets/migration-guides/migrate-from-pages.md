@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -41,79 +41,37 @@ Where you previously would configure a "build output directory" for Pages (in ei
 
 Before, with **Cloudflare Pages**:
 
-* [  wrangler.jsonc ](#tab-panel-12095)
-* [  wrangler.toml ](#tab-panel-12096)
+* [  wrangler.jsonc ](#tab-panel-12112)
+* [  wrangler.toml ](#tab-panel-12113)
 
 JSONC
 
 ```
-
-{
-
-  "name": "my-pages-project",
-
-  "pages_build_output_dir": "./dist/client/"
-
-}
-
-
+{  "name": "my-pages-project",  "pages_build_output_dir": "./dist/client/"}
 ```
 
 TOML
 
 ```
-
-name = "my-pages-project"
-
-pages_build_output_dir = "./dist/client/"
-
-
+name = "my-pages-project"pages_build_output_dir = "./dist/client/"
 ```
 
 Now, with **Cloudflare Workers**:
 
-* [  wrangler.jsonc ](#tab-panel-12097)
-* [  wrangler.toml ](#tab-panel-12098)
+* [  wrangler.jsonc ](#tab-panel-12114)
+* [  wrangler.toml ](#tab-panel-12115)
 
 JSONC
 
 ```
-
-{
-
-  "name": "my-worker",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "assets": {
-
-    "directory": "./dist/client/"
-
-  }
-
-}
-
-
+{  "name": "my-worker",  // Set this to today's date  "compatibility_date": "2026-06-19",  "assets": {    "directory": "./dist/client/"  }}
 ```
 
 TOML
 
 ```
-
-name = "my-worker"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[assets]
-
-directory = "./dist/client/"
-
-
+name = "my-worker"# Set this to today's datecompatibility_date = "2026-06-19"
+[assets]directory = "./dist/client/"
 ```
 
 Note
@@ -128,102 +86,38 @@ In Workers, to prevent accidental misconfiguration, this behavior is explicit an
 
 For a Single Page Application (SPA):
 
-* [  wrangler.jsonc ](#tab-panel-12099)
-* [  wrangler.toml ](#tab-panel-12100)
+* [  wrangler.jsonc ](#tab-panel-12116)
+* [  wrangler.toml ](#tab-panel-12117)
 
 JSONC
 
 ```
-
-{
-
-  "name": "my-worker",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "assets": {
-
-    "directory": "./dist/client/",
-
-    "not_found_handling": "single-page-application"
-
-  }
-
-}
-
-
+{  "name": "my-worker",  // Set this to today's date  "compatibility_date": "2026-06-19",  "assets": {    "directory": "./dist/client/",    "not_found_handling": "single-page-application"  }}
 ```
 
 TOML
 
 ```
-
-name = "my-worker"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[assets]
-
-directory = "./dist/client/"
-
-not_found_handling = "single-page-application"
-
-
+name = "my-worker"# Set this to today's datecompatibility_date = "2026-06-19"
+[assets]directory = "./dist/client/"not_found_handling = "single-page-application"
 ```
 
 For custom 404 pages:
 
-* [  wrangler.jsonc ](#tab-panel-12101)
-* [  wrangler.toml ](#tab-panel-12102)
+* [  wrangler.jsonc ](#tab-panel-12118)
+* [  wrangler.toml ](#tab-panel-12119)
 
 JSONC
 
 ```
-
-{
-
-  "name": "my-worker",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "assets": {
-
-    "directory": "./dist/client/",
-
-    "not_found_handling": "404-page"
-
-  }
-
-}
-
-
+{  "name": "my-worker",  // Set this to today's date  "compatibility_date": "2026-06-19",  "assets": {    "directory": "./dist/client/",    "not_found_handling": "404-page"  }}
 ```
 
 TOML
 
 ```
-
-name = "my-worker"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[assets]
-
-directory = "./dist/client/"
-
-not_found_handling = "404-page"
-
-
+name = "my-worker"# Set this to today's datecompatibility_date = "2026-06-19"
+[assets]directory = "./dist/client/"not_found_handling = "404-page"
 ```
 
 ##### Ignoring assets
@@ -233,14 +127,7 @@ Pages would automatically exclude some files and folders from being uploaded as 
 dist/client/.assetsignore
 
 ```
-
-**/node_modules
-
-**/.DS_Store
-
-**/.git
-
-
+**/node_modules**/.DS_Store**/.git
 ```
 
 #### Pages Functions
@@ -256,60 +143,25 @@ If you use Pages Functions with an ["advanced mode" \_worker.js file](https://de
 dist/client/.assetsignore
 
 ```
-
 _worker.js
-
-
 ```
 
 Then, update your configuration file's `main` field to point to the location of this Worker script:
 
-* [  wrangler.jsonc ](#tab-panel-12103)
-* [  wrangler.toml ](#tab-panel-12104)
+* [  wrangler.jsonc ](#tab-panel-12120)
+* [  wrangler.toml ](#tab-panel-12121)
 
 JSONC
 
 ```
-
-{
-
-  "name": "my-worker",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "main": "./dist/client/_worker.js", // or some other location if you moved the script out of the static asset directory
-
-  "assets": {
-
-    "directory": "./dist/client/"
-
-  }
-
-}
-
-
+{  "name": "my-worker",  // Set this to today's date  "compatibility_date": "2026-06-19",  "main": "./dist/client/_worker.js", // or some other location if you moved the script out of the static asset directory  "assets": {    "directory": "./dist/client/"  }}
 ```
 
 TOML
 
 ```
-
-name = "my-worker"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-main = "./dist/client/_worker.js"
-
-
-[assets]
-
-directory = "./dist/client/"
-
-
+name = "my-worker"# Set this to today's datecompatibility_date = "2026-06-19"main = "./dist/client/_worker.js"
+[assets]directory = "./dist/client/"
 ```
 
 ##### Pages Functions with a `functions/` folder
@@ -334,52 +186,20 @@ Although this command will remain available to you to run at any time, we do rec
 
 Once the Worker script has been compiled, you can update your configuration file's `main` field to point to the location it was built to:
 
-* [  wrangler.jsonc ](#tab-panel-12105)
-* [  wrangler.toml ](#tab-panel-12106)
+* [  wrangler.jsonc ](#tab-panel-12122)
+* [  wrangler.toml ](#tab-panel-12123)
 
 JSONC
 
 ```
-
-{
-
-  "name": "my-worker",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "main": "./dist/worker/index.js",
-
-  "assets": {
-
-    "directory": "./dist/client/"
-
-  }
-
-}
-
-
+{  "name": "my-worker",  // Set this to today's date  "compatibility_date": "2026-06-19",  "main": "./dist/worker/index.js",  "assets": {    "directory": "./dist/client/"  }}
 ```
 
 TOML
 
 ```
-
-name = "my-worker"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-main = "./dist/worker/index.js"
-
-
-[assets]
-
-directory = "./dist/client/"
-
-
+name = "my-worker"# Set this to today's datecompatibility_date = "2026-06-19"main = "./dist/worker/index.js"
+[assets]directory = "./dist/client/"
 ```
 
 ##### `_routes.json` and Pages Functions middleware
@@ -388,278 +208,98 @@ If you authored [a \_routes.json file](https://developers.cloudflare.com/pages/f
 
 Workers, on the other hand, will default to serving static assets ahead of your Worker script, unless you have configured [assets.run\_worker\_first](https://developers.cloudflare.com/workers/static-assets/routing/worker-script/#run-your-worker-script-first). This option is required if you are, for example, performing any authentication checks or logging requests before serving static assets.
 
-* [  wrangler.jsonc ](#tab-panel-12107)
-* [  wrangler.toml ](#tab-panel-12108)
+* [  wrangler.jsonc ](#tab-panel-12124)
+* [  wrangler.toml ](#tab-panel-12125)
 
 JSONC
 
 ```
-
-{
-
-  "name": "my-worker",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "main": "./dist/worker/index.js",
-
-  "assets": {
-
-    "directory": "./dist/client/",
-
-    "run_worker_first": true
-
-  }
-
-}
-
-
+{  "name": "my-worker",  // Set this to today's date  "compatibility_date": "2026-06-19",  "main": "./dist/worker/index.js",  "assets": {    "directory": "./dist/client/",    "run_worker_first": true  }}
 ```
 
 TOML
 
 ```
-
-name = "my-worker"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-main = "./dist/worker/index.js"
-
-
-[assets]
-
-directory = "./dist/client/"
-
-run_worker_first = true
-
-
+name = "my-worker"# Set this to today's datecompatibility_date = "2026-06-19"main = "./dist/worker/index.js"
+[assets]directory = "./dist/client/"run_worker_first = true
 ```
 
 ##### Starting from scratch
 
 If you wish to, you can start a new Worker script from scratch and take advantage of all of Wrangler's and the latest runtime features (e.g. [WorkerEntrypoints](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/), [TypeScript support](https://developers.cloudflare.com/workers/languages/typescript/), [bundling](https://developers.cloudflare.com/workers/wrangler/bundling), etc.):
 
-* [  JavaScript ](#tab-panel-12117)
-* [  TypeScript ](#tab-panel-12118)
+* [  JavaScript ](#tab-panel-12134)
+* [  TypeScript ](#tab-panel-12135)
 
 ./worker/index.js
 
 ```
-
 import { WorkerEntrypoint } from "cloudflare:workers";
-
-
-export default class extends WorkerEntrypoint {
-
-  async fetch(request) {
-
-    return new Response("Hello, world!");
-
-  }
-
-}
-
-
+export default class extends WorkerEntrypoint {  async fetch(request) {    return new Response("Hello, world!");  }}
 ```
 
 ./worker/index.ts
 
 ```
-
 import { WorkerEntrypoint } from "cloudflare:workers";
-
-
-export default class extends WorkerEntrypoint {
-
-  async fetch(request: Request) {
-
-    return new Response("Hello, world!");
-
-  }
-
-}
-
-
+export default class extends WorkerEntrypoint {  async fetch(request: Request) {    return new Response("Hello, world!");  }}
 ```
 
-* [  wrangler.jsonc ](#tab-panel-12109)
-* [  wrangler.toml ](#tab-panel-12110)
+* [  wrangler.jsonc ](#tab-panel-12126)
+* [  wrangler.toml ](#tab-panel-12127)
 
 JSONC
 
 ```
-
-{
-
-  "name": "my-worker",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "main": "./worker/index.ts",
-
-  "assets": {
-
-    "directory": "./dist/client/"
-
-  }
-
-}
-
-
+{  "name": "my-worker",  // Set this to today's date  "compatibility_date": "2026-06-19",  "main": "./worker/index.ts",  "assets": {    "directory": "./dist/client/"  }}
 ```
 
 TOML
 
 ```
-
-name = "my-worker"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-main = "./worker/index.ts"
-
-
-[assets]
-
-directory = "./dist/client/"
-
-
+name = "my-worker"# Set this to today's datecompatibility_date = "2026-06-19"main = "./worker/index.ts"
+[assets]directory = "./dist/client/"
 ```
 
 #### Assets binding
 
 Pages automatically provided [an ASSETS binding](https://developers.cloudflare.com/pages/functions/api-reference/#envassetsfetch) to access static assets from Pages Functions. In Workers, the name of this binding is customizable and it must be manually configured:
 
-* [  wrangler.jsonc ](#tab-panel-12111)
-* [  wrangler.toml ](#tab-panel-12112)
+* [  wrangler.jsonc ](#tab-panel-12128)
+* [  wrangler.toml ](#tab-panel-12129)
 
 JSONC
 
 ```
-
-{
-
-  "name": "my-worker",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "main": "./worker/index.ts",
-
-  "assets": {
-
-    "directory": "./dist/client/",
-
-    "binding": "ASSETS"
-
-  }
-
-}
-
-
+{  "name": "my-worker",  // Set this to today's date  "compatibility_date": "2026-06-19",  "main": "./worker/index.ts",  "assets": {    "directory": "./dist/client/",    "binding": "ASSETS"  }}
 ```
 
 TOML
 
 ```
-
-name = "my-worker"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-main = "./worker/index.ts"
-
-
-[assets]
-
-directory = "./dist/client/"
-
-binding = "ASSETS"
-
-
+name = "my-worker"# Set this to today's datecompatibility_date = "2026-06-19"main = "./worker/index.ts"
+[assets]directory = "./dist/client/"binding = "ASSETS"
 ```
 
 #### Runtime
 
 If you had customized [placement](https://developers.cloudflare.com/workers/configuration/placement/), or set a [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) or any [compatibility flags](https://developers.cloudflare.com/workers/configuration/compatibility-flags/) in your Pages project, you can define the same in your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-12119)
-* [  wrangler.toml ](#tab-panel-12120)
+* [  wrangler.jsonc ](#tab-panel-12136)
+* [  wrangler.toml ](#tab-panel-12137)
 
 JSONC
 
 ```
-
-{
-
-  "name": "my-worker",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "compatibility_flags": ["nodejs_compat"],
-
-  "main": "./worker/index.ts",
-
-  "placement": {
-
-    "mode": "smart"
-
-  },
-
-  "assets": {
-
-    "directory": "./dist/client/",
-
-    "binding": "ASSETS"
-
-  }
-
-}
-
-
+{  "name": "my-worker",  // Set this to today's date  "compatibility_date": "2026-06-19",  "compatibility_flags": ["nodejs_compat"],  "main": "./worker/index.ts",  "placement": {    "mode": "smart"  },  "assets": {    "directory": "./dist/client/",    "binding": "ASSETS"  }}
 ```
 
 TOML
 
 ```
-
-name = "my-worker"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-compatibility_flags = [ "nodejs_compat" ]
-
-main = "./worker/index.ts"
-
-
-[placement]
-
-mode = "smart"
-
-
-[assets]
-
-directory = "./dist/client/"
-
-binding = "ASSETS"
-
-
+name = "my-worker"# Set this to today's datecompatibility_date = "2026-06-19"compatibility_flags = [ "nodejs_compat" ]main = "./worker/index.ts"
+[placement]mode = "smart"
+[assets]directory = "./dist/client/"binding = "ASSETS"
 ```
 
 ### Variables, secrets and bindings
@@ -688,31 +328,18 @@ Pages automatically creates a preview environment for each project, and can be i
 
 To get a similar experience in Workers, you must:
 
-1. Ensure [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled (they are on by default).  
-   * [  wrangler.jsonc ](#tab-panel-12115)  
-   * [  wrangler.toml ](#tab-panel-12116)  
+1. Ensure [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled (they are on by default).
+
+  * [  wrangler.jsonc ](#tab-panel-12132)
+  * [  wrangler.toml ](#tab-panel-12133)  
 JSONC  
 ```  
-{  
-  "name": "my-worker",  
-  // Set this to today's date  
-  "compatibility_date": "2026-06-17",  
-  "main": "./worker/index.ts",  
-  "assets": {  
-    "directory": "./dist/client/"  
-  },  
-  "preview_urls": true  
-}  
+{  "name": "my-worker",  // Set this to today's date  "compatibility_date": "2026-06-19",  "main": "./worker/index.ts",  "assets": {    "directory": "./dist/client/"  },  "preview_urls": true}  
 ```  
 TOML  
 ```  
-name = "my-worker"  
-# Set this to today's date  
-compatibility_date = "2026-06-17"  
-main = "./worker/index.ts"  
-preview_urls = true  
-[assets]  
-directory = "./dist/client/"  
+name = "my-worker"# Set this to today's datecompatibility_date = "2026-06-19"main = "./worker/index.ts"preview_urls = true  
+[assets]directory = "./dist/client/"  
 ```
 2. [Enable non-production branch builds](https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/#configure-non-production-branch-builds) in Workers Builds.
 
@@ -730,45 +357,19 @@ Unlike Pages, Workers does not natively support defining different bindings in p
 
 Where previously you were offered a `pages.dev` subdomain for your Pages project, you can now configure a personalized `workers.dev` subdomain for all of your Worker projects. You can [configure this subdomain in the Cloudflare dashboard](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/#configure-workersdev), and opt-in to using it with the [workers\_dev option](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/#disabling-workersdev-in-the-wrangler-configuration-file) in your configuration file.
 
-* [  wrangler.jsonc ](#tab-panel-12113)
-* [  wrangler.toml ](#tab-panel-12114)
+* [  wrangler.jsonc ](#tab-panel-12130)
+* [  wrangler.toml ](#tab-panel-12131)
 
 JSONC
 
 ```
-
-{
-
-  "name": "my-worker",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "main": "./worker/index.ts",
-
-  "workers_dev": true
-
-}
-
-
+{  "name": "my-worker",  // Set this to today's date  "compatibility_date": "2026-06-19",  "main": "./worker/index.ts",  "workers_dev": true}
 ```
 
 TOML
 
 ```
-
-name = "my-worker"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-main = "./worker/index.ts"
-
-workers_dev = true
-
-
+name = "my-worker"# Set this to today's datecompatibility_date = "2026-06-19"main = "./worker/index.ts"workers_dev = true
 ```
 
 ### Custom domains
@@ -802,10 +403,7 @@ pnpm wrangler pages project delete
 You can add the following [experimental prompt ↗](https://developers.cloudflare.com/workers/prompts/pages-to-workers.txt) in your preferred coding assistant (e.g. Claude Code, Cursor) to make your project compatible with Workers:
 
 ```
-
 https://developers.cloudflare.com/workers/prompts/pages-to-workers.txt
-
-
 ```
 
 You can also use the Cloudflare Documentation [MCP server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/docs-vectorize) in your coding assistant to provide better context to your LLM when building with Workers, which includes this prompt when you ask to migrate from Pages to Workers.
@@ -820,7 +418,7 @@ This compatibility matrix compares the features of Workers and Pages. Unless oth
 🟡: Unsupported, workaround available   
 ❌: Unsupported
 
-| Workers                                                                                                                                      | Pages                      |                            |
+|                                                                                                                                              | Workers                    | Pages                      |
 | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- | -------------------------- |
 | **Writing, Testing, and Deploying Code**                                                                                                     |                            |                            |
 | [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/)                                                             | ✅                          | ❌                          |

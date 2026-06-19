@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,35 +18,26 @@ Use `wrangler browser` commands to manage Browser Run sessions from the command 
 
 Create a new Browser Run session
 
-* [  npm ](#tab-panel-6927)
-* [  pnpm ](#tab-panel-6928)
-* [  yarn ](#tab-panel-6929)
+* [  npm ](#tab-panel-7003)
+* [  pnpm ](#tab-panel-7004)
+* [  yarn ](#tab-panel-7005)
 
 Terminal window
 
 ```
-
 npx wrangler browser create
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler browser create
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler browser create
-
-
 ```
 
 * `--lab` ` boolean ` default: false  
@@ -81,35 +72,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Close a Browser Run session
 
-* [  npm ](#tab-panel-6930)
-* [  pnpm ](#tab-panel-6931)
-* [  yarn ](#tab-panel-6932)
+* [  npm ](#tab-panel-7006)
+* [  pnpm ](#tab-panel-7007)
+* [  yarn ](#tab-panel-7008)
 
 Terminal window
 
 ```
-
 npx wrangler browser close [SESSIONID]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler browser close [SESSIONID]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler browser close [SESSIONID]
-
-
 ```
 
 * `[SESSIONID]` ` string ` required  
@@ -140,35 +122,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List active Browser Run sessions
 
-* [  npm ](#tab-panel-6933)
-* [  pnpm ](#tab-panel-6934)
-* [  yarn ](#tab-panel-6935)
+* [  npm ](#tab-panel-7009)
+* [  pnpm ](#tab-panel-7010)
+* [  yarn ](#tab-panel-7011)
 
 Terminal window
 
 ```
-
 npx wrangler browser list
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler browser list
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler browser list
-
-
 ```
 
 * `--json` ` boolean ` default: false  
@@ -197,35 +170,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 View a live browser session
 
-* [  npm ](#tab-panel-6936)
-* [  pnpm ](#tab-panel-6937)
-* [  yarn ](#tab-panel-6938)
+* [  npm ](#tab-panel-7012)
+* [  pnpm ](#tab-panel-7013)
+* [  yarn ](#tab-panel-7014)
 
 Terminal window
 
 ```
-
 npx wrangler browser view [SESSIONID]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler browser view [SESSIONID]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler browser view [SESSIONID]
-
-
 ```
 
 * `[SESSIONID]` ` string `  

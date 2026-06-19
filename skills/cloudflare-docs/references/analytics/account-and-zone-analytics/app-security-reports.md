@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -87,37 +87,25 @@ A Cloudflare user must have one of the following [roles](https://developers.clou
 List all report policies for a specific account
 
 ```
-
 GET /accounts/{account_id}/reporting/policies
-
-
 ```
 
 Retrieve the details of a single, specific report policy
 
 ```
-
 GET /accounts/{account_id}/reporting/policies/{policy_id}
-
-
 ```
 
 List all generated reports for a specific account
 
 ```
-
 GET /accounts/{account_id}/reporting/reports
-
-
 ```
 
 Retrieve a single, specific report, including its data and findings
 
 ```
-
 GET /accounts/{account_id}/reporting/reports/{report_id}
-
-
 ```
 
 Data returned by the API

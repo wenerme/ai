@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -72,30 +72,7 @@ bun add -d webpack@^4.46.0 webpack-cli wranglerjs-compat-webpack-plugin
 You should see this reflected in your `package.json` file:
 
 ```
-
-{
-
-  "name": "my-worker",
-
-  "version": "x.y.z",
-
-  // ...
-
-  "devDependencies": {
-
-    // ...
-
-    "wranglerjs-compat-webpack-plugin": "^x.y.z",
-
-    "webpack": "^4.46.0",
-
-    "webpack-cli": "^x.y.z"
-
-  }
-
-}
-
-
+{  "name": "my-worker",  "version": "x.y.z",  // ...  "devDependencies": {    // ...    "wranglerjs-compat-webpack-plugin": "^x.y.z",    "webpack": "^4.46.0",    "webpack-cli": "^x.y.z"  }}
 ```
 
 1. Add `wranglerjs-compat-webpack-plugin` to `webpack.config.js`.
@@ -105,123 +82,53 @@ Modify your `webpack.config.js` file to include the plugin you just installed.
 JavaScript
 
 ```
-
-const {
-
-  WranglerJsCompatWebpackPlugin,
-
-} = require("wranglerjs-compat-webpack-plugin");
-
-
-module.exports = {
-
-  // ...
-
-  plugins: [new WranglerJsCompatWebpackPlugin()],
-
-};
-
-
+const {  WranglerJsCompatWebpackPlugin,} = require("wranglerjs-compat-webpack-plugin");
+module.exports = {  // ...  plugins: [new WranglerJsCompatWebpackPlugin()],};
 ```
 
 1. Add a build script your `package.json`.
 
 ```
-
-{
-
-  "name": "my-worker",
-
-  "version": "2.0.0",
-
-  // ...
-
-  "scripts": {
-
-    "build": "webpack" // <-- Add this line!
-
-    // ...
-
-  }
-
-}
-
-
+{  "name": "my-worker",  "version": "2.0.0",  // ...  "scripts": {    "build": "webpack" // <-- Add this line!    // ...  }}
 ```
 
 1. Remove unsupported entries from your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/).
 
 Remove the `type` and `webpack_config` keys from your Wrangler file, as they are not supported anymore.
 
-* [  wrangler.jsonc ](#tab-panel-12943)
-* [  wrangler.toml ](#tab-panel-12944)
+* [  wrangler.jsonc ](#tab-panel-12960)
+* [  wrangler.toml ](#tab-panel-12961)
 
 JSONC
 
 ```
-
-{
-
-  // Remove these!
-
-  "type": "webpack",
-
-  "webpack_config": "webpack.config.js"
-
-}
-
-
+{  // Remove these!  "type": "webpack",  "webpack_config": "webpack.config.js"}
 ```
 
 TOML
 
 ```
-
-type = "webpack"
-
-webpack_config = "webpack.config.js"
-
-
+type = "webpack"webpack_config = "webpack.config.js"
 ```
 
 1. Tell Wrangler how to bundle your Worker.
 
 Wrangler no longer has any knowledge of how to build your Worker. You will need to tell it how to call webpack and where to look for webpack's output. This translates into two fields:
 
-* [  wrangler.jsonc ](#tab-panel-12945)
-* [  wrangler.toml ](#tab-panel-12946)
+* [  wrangler.jsonc ](#tab-panel-12962)
+* [  wrangler.toml ](#tab-panel-12963)
 
 JSONC
 
 ```
-
-{
-
-  "main": "./worker/script.js", // by default, or whatever file webpack outputs
-
-  "build": {
-
-    "command": "npm run build" // or "yarn build"
-
-  }
-
-}
-
-
+{  "main": "./worker/script.js", // by default, or whatever file webpack outputs  "build": {    "command": "npm run build" // or "yarn build"  }}
 ```
 
 TOML
 
 ```
-
 main = "./worker/script.js"
-
-
-[build]
-
-command = "npm run build"
-
-
+[build]command = "npm run build"
 ```
 
 1. Test your project.

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,47 +19,8 @@ This example is a snippet from our Cloudflare Pages Template repo.
 TypeScript
 
 ```
-
-// Respond to OPTIONS method
-
-export const onRequestOptions: PagesFunction = async () => {
-
-  return new Response(null, {
-
-    status: 204,
-
-    headers: {
-
-      "Access-Control-Allow-Origin": "*",
-
-      "Access-Control-Allow-Headers": "*",
-
-      "Access-Control-Allow-Methods": "GET, OPTIONS",
-
-      "Access-Control-Max-Age": "86400",
-
-    },
-
-  });
-
-};
-
-
-// Set CORS to all /api responses
-
-export const onRequest: PagesFunction = async (context) => {
-
-  const response = await context.next();
-
-  response.headers.set("Access-Control-Allow-Origin", "*");
-
-  response.headers.set("Access-Control-Max-Age", "86400");
-
-  return response;
-
-};
-
-
+// Respond to OPTIONS methodexport const onRequestOptions: PagesFunction = async () => {  return new Response(null, {    status: 204,    headers: {      "Access-Control-Allow-Origin": "*",      "Access-Control-Allow-Headers": "*",      "Access-Control-Allow-Methods": "GET, OPTIONS",      "Access-Control-Max-Age": "86400",    },  });};
+// Set CORS to all /api responsesexport const onRequest: PagesFunction = async (context) => {  const response = await context.next();  response.headers.set("Access-Control-Allow-Origin", "*");  response.headers.set("Access-Control-Max-Age", "86400");  return response;};
 ```
 
 ```json

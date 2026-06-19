@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dynamic-workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,140 +31,44 @@ The playground uses [@cloudflare/worker-bundler ↗](https://www.npmjs.com/packa
 
 Pass source files and a `package.json` to `createWorker()`, which resolves dependencies and returns bundled modules ready to load as a Dynamic Worker:
 
-* [  JavaScript ](#tab-panel-8421)
-* [  TypeScript ](#tab-panel-8422)
+* [  JavaScript ](#tab-panel-8497)
+* [  TypeScript ](#tab-panel-8498)
 
 JavaScript
 
 ```
-
 import { createWorker } from "@cloudflare/worker-bundler";
-
-
-const { mainModule, modules, warnings } = await createWorker({
-
-  files: {
-
-    "src/index.ts": userCode,
-
-    "package.json": JSON.stringify({
-
-      dependencies: { hono: "^4.0.0" },
-
-    }),
-
-  },
-
-  bundle: true,
-
-  minify: false,
-
-});
-
-
+const { mainModule, modules, warnings } = await createWorker({  files: {    "src/index.ts": userCode,    "package.json": JSON.stringify({      dependencies: { hono: "^4.0.0" },    }),  },  bundle: true,  minify: false,});
 ```
 
 TypeScript
 
 ```
-
 import { createWorker } from "@cloudflare/worker-bundler";
-
-
-const { mainModule, modules, warnings } = await createWorker({
-
-  files: {
-
-    "src/index.ts": userCode,
-
-    "package.json": JSON.stringify({
-
-      dependencies: { hono: "^4.0.0" },
-
-    }),
-
-  },
-
-  bundle: true,
-
-  minify: false,
-
-});
-
-
+const { mainModule, modules, warnings } = await createWorker({  files: {    "src/index.ts": userCode,    "package.json": JSON.stringify({      dependencies: { hono: "^4.0.0" },    }),  },  bundle: true,  minify: false,});
 ```
 
 ## Caching Dynamic Workers
 
 `env.LOADER.load()` creates a new Dynamic Worker on every call. To avoid re-bundling unchanged code, use `env.LOADER.get(id, callback)` instead. The runtime returns an existing Worker on a cache hit, or calls your callback to build one on a miss:
 
-* [  JavaScript ](#tab-panel-8423)
-* [  TypeScript ](#tab-panel-8424)
+* [  JavaScript ](#tab-panel-8499)
+* [  TypeScript ](#tab-panel-8500)
 
 JavaScript
 
 ```
-
-const worker = env.LOADER.get(workerId, async () => {
-
-  // This callback only runs on cache miss
-
-  const { mainModule, modules } = await createWorker({ files });
-
-
-  return {
-
-    mainModule,
-
-    modules,
-
-    compatibilityDate: "2026-05-01",
-
-    tails: [contextExports.DynamicWorkerTail({ props: { workerId } })],
-
-  };
-
-});
-
-
+const worker = env.LOADER.get(workerId, async () => {  // This callback only runs on cache miss  const { mainModule, modules } = await createWorker({ files });
+  return {    mainModule,    modules,    compatibilityDate: "2026-05-01",    tails: [contextExports.DynamicWorkerTail({ props: { workerId } })],  };});
 const response = await worker.getEntrypoint().fetch(request);
-
-
 ```
 
 TypeScript
 
 ```
-
-const worker = env.LOADER.get(workerId, async () => {
-
-  // This callback only runs on cache miss
-
-  const { mainModule, modules } = await createWorker({ files });
-
-
-  return {
-
-    mainModule,
-
-    modules,
-
-    compatibilityDate: "2026-05-01",
-
-    tails: [
-
-      contextExports.DynamicWorkerTail({ props: { workerId } }),
-
-    ],
-
-  };
-
-});
-
-
+const worker = env.LOADER.get(workerId, async () => {  // This callback only runs on cache miss  const { mainModule, modules } = await createWorker({ files });
+  return {    mainModule,    modules,    compatibilityDate: "2026-05-01",    tails: [      contextExports.DynamicWorkerTail({ props: { workerId } }),    ],  };});
 const response = await worker.getEntrypoint().fetch(request);
-
-
 ```
 
 In the playground, you can see this in action — run the same Dynamic Worker twice and the second request shows a cached result with 0ms cold start, since the build and load phases are skipped entirely.
@@ -179,45 +83,19 @@ When you run code in the playground, console output from the Dynamic Worker stre
 
 To wire this up, include the Tail Worker in the `tails` array when creating the Dynamic Worker:
 
-* [  JavaScript ](#tab-panel-8419)
-* [  TypeScript ](#tab-panel-8420)
+* [  JavaScript ](#tab-panel-8495)
+* [  TypeScript ](#tab-panel-8496)
 
 JavaScript
 
 ```
-
-const worker = env.LOADER.get(workerId, async () => ({
-
-  mainModule,
-
-  modules,
-
-  compatibilityDate: "2026-05-01",
-
-  tails: [contextExports.DynamicWorkerTail({ props: { workerId } })],
-
-}));
-
-
+const worker = env.LOADER.get(workerId, async () => ({  mainModule,  modules,  compatibilityDate: "2026-05-01",  tails: [contextExports.DynamicWorkerTail({ props: { workerId } })],}));
 ```
 
 TypeScript
 
 ```
-
-const worker = env.LOADER.get(workerId, async () => ({
-
-  mainModule,
-
-  modules,
-
-  compatibilityDate: "2026-05-01",
-
-  tails: [contextExports.DynamicWorkerTail({ props: { workerId } })],
-
-}));
-
-
+const worker = env.LOADER.get(workerId, async () => ({  mainModule,  modules,  compatibilityDate: "2026-05-01",  tails: [contextExports.DynamicWorkerTail({ props: { workerId } })],}));
 ```
 
 For more information on how to capture and stream logs from Dynamic Workers, refer to [Observability with Dynamic Workers](https://developers.cloudflare.com/dynamic-workers/usage/observability/).
@@ -229,12 +107,7 @@ Clone the repo and start the dev server:
 Terminal window
 
 ```
-
-npm install
-
-npm run dev
-
-
+npm installnpm run dev
 ```
 
 ```json

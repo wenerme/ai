@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,7 +16,7 @@ This guide helps you validate connectivity between your environment and [Cloudfl
 
 Automated pre-checks in cloudflared 2026.5.2 and later 
 
-Starting with `cloudflared` version `2026.5.2`, these checks run**automatically** every time you start a tunnel — including DNS resolution, UDP/TCP connectivity on port `7844`, and access to the management API. If you have already installed `cloudflared`, run `cloudflared tunnel diag` to execute the checks without starting a tunnel, and skip the manual steps in this guide. The manual workflow below remains useful when you need to validate your network **before** installing `cloudflared` — for example, when a SecOps team wants to confirm firewall rules ahead of a deployment.
+Starting with `cloudflared` version `2026.5.2`, these checks run **automatically** every time you start a tunnel — including DNS resolution, UDP/TCP connectivity on port `7844`, and access to the management API. If you have already installed `cloudflared`, run `cloudflared tunnel diag` to execute the checks without starting a tunnel, and skip the manual steps in this guide. The manual workflow below remains useful when you need to validate your network **before** installing `cloudflared` — for example, when a SecOps team wants to confirm firewall rules ahead of a deployment.
 
 Running these checks before you install `cloudflared` sets your deployment up for success and narrows down the cause of any later connectivity issues.
 
@@ -61,464 +61,128 @@ First, you need to verify that your DNS resolver returns the expected IP address
 
 Depending on whether you are testing a global region or the US region, run one of the following commands:
 
-* [ Global region ](#tab-panel-7297)
-* [ US region ](#tab-panel-7298)
-* [ FedRAMP High region ](#tab-panel-7299)
+* [ Global region ](#tab-panel-7373)
+* [ US region ](#tab-panel-7374)
+* [ FedRAMP High region ](#tab-panel-7375)
 
 Terminal window
 
 ```
-
 dig A region1.v2.argotunnel.com
-
-
 ```
 
 ```
-
-;; ANSWER SECTION:
-
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.167
-
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.67
-
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.57
-
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.107
-
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.27
-
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.7
-
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.227
-
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.47
-
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.37
-
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.77
-
-...
-
-
+;; ANSWER SECTION:region1.v2.argotunnel.com. 86400 IN  A  198.41.192.167region1.v2.argotunnel.com. 86400 IN  A  198.41.192.67region1.v2.argotunnel.com. 86400 IN  A  198.41.192.57region1.v2.argotunnel.com. 86400 IN  A  198.41.192.107region1.v2.argotunnel.com. 86400 IN  A  198.41.192.27region1.v2.argotunnel.com. 86400 IN  A  198.41.192.7region1.v2.argotunnel.com. 86400 IN  A  198.41.192.227region1.v2.argotunnel.com. 86400 IN  A  198.41.192.47region1.v2.argotunnel.com. 86400 IN  A  198.41.192.37region1.v2.argotunnel.com. 86400 IN  A  198.41.192.77...
 ```
 
 Terminal window
 
 ```
-
 dig AAAA region1.v2.argotunnel.com
-
-
 ```
 
 ```
-
-;; ANSWER SECTION:
-
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::1
-
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::2
-
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::3
-
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::4
-
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::5
-
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::6
-
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::7
-
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::8
-
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::9
-
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::10
-
-...
-
-
+;; ANSWER SECTION:region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::1region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::2region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::3region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::4region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::5region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::6region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::7region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::8region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::9region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::10...
 ```
 
 Terminal window
 
 ```
-
 dig A region2.v2.argotunnel.com
-
-
 ```
 
 ```
-
-;; ANSWER SECTION:
-
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.13
-
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.193
-
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.33
-
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.233
-
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.53
-
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.63
-
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.113
-
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.73
-
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.43
-
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.23
-
-...
-
-
+;; ANSWER SECTION:region2.v2.argotunnel.com. 86400 IN  A  198.41.200.13region2.v2.argotunnel.com. 86400 IN  A  198.41.200.193region2.v2.argotunnel.com. 86400 IN  A  198.41.200.33region2.v2.argotunnel.com. 86400 IN  A  198.41.200.233region2.v2.argotunnel.com. 86400 IN  A  198.41.200.53region2.v2.argotunnel.com. 86400 IN  A  198.41.200.63region2.v2.argotunnel.com. 86400 IN  A  198.41.200.113region2.v2.argotunnel.com. 86400 IN  A  198.41.200.73region2.v2.argotunnel.com. 86400 IN  A  198.41.200.43region2.v2.argotunnel.com. 86400 IN  A  198.41.200.23...
 ```
 
 Terminal window
 
 ```
-
 dig AAAA region2.v2.argotunnel.com
-
-
 ```
 
 ```
-
-;; ANSWER SECTION:
-
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::1
-
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::2
-
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::3
-
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::4
-
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::5
-
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::6
-
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::7
-
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::8
-
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::9
-
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::10
-
-...
-
-
+;; ANSWER SECTION:region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::1region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::2region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::3region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::4region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::5region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::6region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::7region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::8region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::9region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::10...
 ```
 
 Terminal window
 
 ```
-
 dig A us-region1.v2.argotunnel.com
-
-
 ```
 
 ```
-
-;; ANSWER SECTION:
-
-us-region1.v2.argotunnel.com. 86400 IN  A  198.41.218.1
-
-us-region1.v2.argotunnel.com. 86400 IN  A  198.41.218.2
-
-us-region1.v2.argotunnel.com. 86400 IN  A  198.41.218.3
-
-us-region1.v2.argotunnel.com. 86400 IN  A  198.41.218.4
-
-us-region1.v2.argotunnel.com. 86400 IN  A  198.41.218.5
-
-us-region1.v2.argotunnel.com. 86400 IN  A  198.41.218.6
-
-us-region1.v2.argotunnel.com. 86400 IN  A  198.41.218.7
-
-us-region1.v2.argotunnel.com. 86400 IN  A  198.41.218.8
-
-us-region1.v2.argotunnel.com. 86400 IN  A  198.41.218.9
-
-us-region1.v2.argotunnel.com. 86400 IN  A  198.41.218.10
-
-...
-
-
+;; ANSWER SECTION:us-region1.v2.argotunnel.com. 86400 IN  A  198.41.218.1us-region1.v2.argotunnel.com. 86400 IN  A  198.41.218.2us-region1.v2.argotunnel.com. 86400 IN  A  198.41.218.3us-region1.v2.argotunnel.com. 86400 IN  A  198.41.218.4us-region1.v2.argotunnel.com. 86400 IN  A  198.41.218.5us-region1.v2.argotunnel.com. 86400 IN  A  198.41.218.6us-region1.v2.argotunnel.com. 86400 IN  A  198.41.218.7us-region1.v2.argotunnel.com. 86400 IN  A  198.41.218.8us-region1.v2.argotunnel.com. 86400 IN  A  198.41.218.9us-region1.v2.argotunnel.com. 86400 IN  A  198.41.218.10...
 ```
 
 Terminal window
 
 ```
-
 dig AAAA us-region1.v2.argotunnel.com
-
-
 ```
 
 ```
-
-;; ANSWER SECTION:
-
-us-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a1::1
-
-us-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a1::2
-
-us-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a1::3
-
-us-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a1::4
-
-us-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a1::5
-
-us-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a1::6
-
-us-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a1::7
-
-us-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a1::8
-
-us-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a1::9
-
-us-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a1::10
-
-...
-
-
+;; ANSWER SECTION:us-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a1::1us-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a1::2us-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a1::3us-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a1::4us-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a1::5us-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a1::6us-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a1::7us-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a1::8us-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a1::9us-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a1::10...
 ```
 
 Terminal window
 
 ```
-
 dig A us-region2.v2.argotunnel.com
-
-
 ```
 
 ```
-
-;; ANSWER SECTION:
-
-us-region2.v2.argotunnel.com. 86400 IN  A  198.41.219.1
-
-us-region2.v2.argotunnel.com. 86400 IN  A  198.41.219.2
-
-us-region2.v2.argotunnel.com. 86400 IN  A  198.41.219.3
-
-us-region2.v2.argotunnel.com. 86400 IN  A  198.41.219.4
-
-us-region2.v2.argotunnel.com. 86400 IN  A  198.41.219.5
-
-us-region2.v2.argotunnel.com. 86400 IN  A  198.41.219.6
-
-us-region2.v2.argotunnel.com. 86400 IN  A  198.41.219.7
-
-us-region2.v2.argotunnel.com. 86400 IN  A  198.41.219.8
-
-us-region2.v2.argotunnel.com. 86400 IN  A  198.41.219.9
-
-us-region2.v2.argotunnel.com. 86400 IN  A  198.41.219.10
-
-...
-
-
+;; ANSWER SECTION:us-region2.v2.argotunnel.com. 86400 IN  A  198.41.219.1us-region2.v2.argotunnel.com. 86400 IN  A  198.41.219.2us-region2.v2.argotunnel.com. 86400 IN  A  198.41.219.3us-region2.v2.argotunnel.com. 86400 IN  A  198.41.219.4us-region2.v2.argotunnel.com. 86400 IN  A  198.41.219.5us-region2.v2.argotunnel.com. 86400 IN  A  198.41.219.6us-region2.v2.argotunnel.com. 86400 IN  A  198.41.219.7us-region2.v2.argotunnel.com. 86400 IN  A  198.41.219.8us-region2.v2.argotunnel.com. 86400 IN  A  198.41.219.9us-region2.v2.argotunnel.com. 86400 IN  A  198.41.219.10...
 ```
 
 Terminal window
 
 ```
-
 dig AAAA us-region2.v2.argotunnel.com
-
-
 ```
 
 ```
-
-;; ANSWER SECTION:
-
-us-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a9::1
-
-us-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a9::2
-
-us-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a9::3
-
-us-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a9::4
-
-us-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a9::5
-
-us-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a9::6
-
-us-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a9::7
-
-us-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a9::8
-
-us-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a9::9
-
-us-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a9::10
-
-...
-
-
+;; ANSWER SECTION:us-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a9::1us-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a9::2us-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a9::3us-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a9::4us-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a9::5us-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a9::6us-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a9::7us-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a9::8us-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a9::9us-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a9::10...
 ```
 
 Terminal window
 
 ```
-
 dig A fed-region1.v2.argotunnel.com
-
-
 ```
 
 ```
-
-;; ANSWER SECTION:
-
-fed-region1.v2.argotunnel.com. 300 IN  A  162.159.234.1
-
-fed-region1.v2.argotunnel.com. 300 IN  A  162.159.234.2
-
-fed-region1.v2.argotunnel.com. 300 IN  A  162.159.234.3
-
-fed-region1.v2.argotunnel.com. 300 IN  A  162.159.234.4
-
-fed-region1.v2.argotunnel.com. 300 IN  A  162.159.234.5
-
-fed-region1.v2.argotunnel.com. 300 IN  A  162.159.234.6
-
-fed-region1.v2.argotunnel.com. 300 IN  A  162.159.234.7
-
-fed-region1.v2.argotunnel.com. 300 IN  A  162.159.234.8
-
-fed-region1.v2.argotunnel.com. 300 IN  A  162.159.234.9
-
-fed-region1.v2.argotunnel.com. 300 IN  A  162.159.234.10
-
-...
-
-
+;; ANSWER SECTION:fed-region1.v2.argotunnel.com. 300 IN  A  162.159.234.1fed-region1.v2.argotunnel.com. 300 IN  A  162.159.234.2fed-region1.v2.argotunnel.com. 300 IN  A  162.159.234.3fed-region1.v2.argotunnel.com. 300 IN  A  162.159.234.4fed-region1.v2.argotunnel.com. 300 IN  A  162.159.234.5fed-region1.v2.argotunnel.com. 300 IN  A  162.159.234.6fed-region1.v2.argotunnel.com. 300 IN  A  162.159.234.7fed-region1.v2.argotunnel.com. 300 IN  A  162.159.234.8fed-region1.v2.argotunnel.com. 300 IN  A  162.159.234.9fed-region1.v2.argotunnel.com. 300 IN  A  162.159.234.10...
 ```
 
 Terminal window
 
 ```
-
 dig AAAA fed-region1.v2.argotunnel.com
-
-
 ```
 
 ```
-
-;; ANSWER SECTION:
-
-fed-region1.v2.argotunnel.com. 300 IN  AAAA  2a06:98c1:4d::1
-
-fed-region1.v2.argotunnel.com. 300 IN  AAAA  2a06:98c1:4d::2
-
-fed-region1.v2.argotunnel.com. 300 IN  AAAA  2a06:98c1:4d::3
-
-fed-region1.v2.argotunnel.com. 300 IN  AAAA  2a06:98c1:4d::4
-
-fed-region1.v2.argotunnel.com. 300 IN  AAAA  2a06:98c1:4d::5
-
-fed-region1.v2.argotunnel.com. 300 IN  AAAA  2a06:98c1:4d::6
-
-fed-region1.v2.argotunnel.com. 300 IN  AAAA  2a06:98c1:4d::7
-
-fed-region1.v2.argotunnel.com. 300 IN  AAAA  2a06:98c1:4d::8
-
-fed-region1.v2.argotunnel.com. 300 IN  AAAA  2a06:98c1:4d::9
-
-fed-region1.v2.argotunnel.com. 300 IN  AAAA  2a06:98c1:4d::10
-
-...
-
-
+;; ANSWER SECTION:fed-region1.v2.argotunnel.com. 300 IN  AAAA  2a06:98c1:4d::1fed-region1.v2.argotunnel.com. 300 IN  AAAA  2a06:98c1:4d::2fed-region1.v2.argotunnel.com. 300 IN  AAAA  2a06:98c1:4d::3fed-region1.v2.argotunnel.com. 300 IN  AAAA  2a06:98c1:4d::4fed-region1.v2.argotunnel.com. 300 IN  AAAA  2a06:98c1:4d::5fed-region1.v2.argotunnel.com. 300 IN  AAAA  2a06:98c1:4d::6fed-region1.v2.argotunnel.com. 300 IN  AAAA  2a06:98c1:4d::7fed-region1.v2.argotunnel.com. 300 IN  AAAA  2a06:98c1:4d::8fed-region1.v2.argotunnel.com. 300 IN  AAAA  2a06:98c1:4d::9fed-region1.v2.argotunnel.com. 300 IN  AAAA  2a06:98c1:4d::10...
 ```
 
 Terminal window
 
 ```
-
 dig A fed-region2.v2.argotunnel.com
-
-
 ```
 
 ```
-
-;; ANSWER SECTION:
-
-fed-region2.v2.argotunnel.com. 300 IN  A  172.64.234.1
-
-fed-region2.v2.argotunnel.com. 300 IN  A  172.64.234.2
-
-fed-region2.v2.argotunnel.com. 300 IN  A  172.64.234.3
-
-fed-region2.v2.argotunnel.com. 300 IN  A  172.64.234.4
-
-fed-region2.v2.argotunnel.com. 300 IN  A  172.64.234.5
-
-fed-region2.v2.argotunnel.com. 300 IN  A  172.64.234.6
-
-fed-region2.v2.argotunnel.com. 300 IN  A  172.64.234.7
-
-fed-region2.v2.argotunnel.com. 300 IN  A  172.64.234.8
-
-fed-region2.v2.argotunnel.com. 300 IN  A  172.64.234.9
-
-fed-region2.v2.argotunnel.com. 300 IN  A  172.64.234.10
-
-...
-
-
+;; ANSWER SECTION:fed-region2.v2.argotunnel.com. 300 IN  A  172.64.234.1fed-region2.v2.argotunnel.com. 300 IN  A  172.64.234.2fed-region2.v2.argotunnel.com. 300 IN  A  172.64.234.3fed-region2.v2.argotunnel.com. 300 IN  A  172.64.234.4fed-region2.v2.argotunnel.com. 300 IN  A  172.64.234.5fed-region2.v2.argotunnel.com. 300 IN  A  172.64.234.6fed-region2.v2.argotunnel.com. 300 IN  A  172.64.234.7fed-region2.v2.argotunnel.com. 300 IN  A  172.64.234.8fed-region2.v2.argotunnel.com. 300 IN  A  172.64.234.9fed-region2.v2.argotunnel.com. 300 IN  A  172.64.234.10...
 ```
 
 Terminal window
 
 ```
-
 dig AAAA fed-region2.v2.argotunnel.com
-
-
 ```
 
 ```
-
-;; ANSWER SECTION:
-
-fed-region2.v2.argotunnel.com. 300 IN  AAAA  2606:4700:f6::1
-
-fed-region2.v2.argotunnel.com. 300 IN  AAAA  2606:4700:f6::2
-
-fed-region2.v2.argotunnel.com. 300 IN  AAAA  2606:4700:f6::3
-
-fed-region2.v2.argotunnel.com. 300 IN  AAAA  2606:4700:f6::4
-
-fed-region2.v2.argotunnel.com. 300 IN  AAAA  2606:4700:f6::5
-
-fed-region2.v2.argotunnel.com. 300 IN  AAAA  2606:4700:f6::6
-
-fed-region2.v2.argotunnel.com. 300 IN  AAAA  2606:4700:f6::7
-
-fed-region2.v2.argotunnel.com. 300 IN  AAAA  2606:4700:f6::8
-
-fed-region2.v2.argotunnel.com. 300 IN  AAAA  2606:4700:f6::9
-
-fed-region2.v2.argotunnel.com. 300 IN  AAAA  2606:4700:f6::10
-
-...
-
-
+;; ANSWER SECTION:fed-region2.v2.argotunnel.com. 300 IN  AAAA  2606:4700:f6::1fed-region2.v2.argotunnel.com. 300 IN  AAAA  2606:4700:f6::2fed-region2.v2.argotunnel.com. 300 IN  AAAA  2606:4700:f6::3fed-region2.v2.argotunnel.com. 300 IN  AAAA  2606:4700:f6::4fed-region2.v2.argotunnel.com. 300 IN  AAAA  2606:4700:f6::5fed-region2.v2.argotunnel.com. 300 IN  AAAA  2606:4700:f6::6fed-region2.v2.argotunnel.com. 300 IN  AAAA  2606:4700:f6::7fed-region2.v2.argotunnel.com. 300 IN  AAAA  2606:4700:f6::8fed-region2.v2.argotunnel.com. 300 IN  AAAA  2606:4700:f6::9fed-region2.v2.argotunnel.com. 300 IN  AAAA  2606:4700:f6::10...
 ```
 
 The `ANSWER SECTION` should include the expected IP addresses for Cloudflare Tunnel endpoints.
@@ -535,10 +199,7 @@ If your original `dig` response is empty or does not match the documented IPs, t
 Terminal window
 
 ```
-
 dig A region1.v2.argotunnel.com @1.1.1.1
-
-
 ```
 
 #### If only `1.1.1.1` works
@@ -572,10 +233,7 @@ Choose one of the IPs from your `dig` output (for example, `198.41.192.167`) and
 Terminal window
 
 ```
-
 nc -uvz -w 3 198.41.192.167 7844
-
-
 ```
 
 Example output:
@@ -583,10 +241,7 @@ Example output:
 Terminal window
 
 ```
-
 Connection to 198.41.192.167 port 7844 [udp/*] succeeded!
-
-
 ```
 
 ### 3.2\. Test TCP connectivity
@@ -594,10 +249,7 @@ Connection to 198.41.192.167 port 7844 [udp/*] succeeded!
 Terminal window
 
 ```
-
 nc -vz -w 3 198.41.192.167 7844
-
-
 ```
 
 Example output:
@@ -605,10 +257,7 @@ Example output:
 Terminal window
 
 ```
-
 Connection to 198.41.192.167 port 7844 [tcp/*] succeeded!
-
-
 ```
 
 ### 3.3 Interpret results

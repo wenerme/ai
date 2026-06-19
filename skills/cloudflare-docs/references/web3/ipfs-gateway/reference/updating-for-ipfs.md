@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/web3/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,32 +33,16 @@ Gatsby is a JavaScript framework based on React. There is a [plugin ↗](https:/
 Add a file `_includes/base.html` with the contents:
 
 ```
-
-{% assign base = '' %}
-
-{% assign depth = page.url | split: '/' | size | minus: 1 %}
-
-{% if    depth <= 1 %}{% assign base = '.' %}
-
-{% elsif depth == 2 %}{% assign base = '..' %}
-
-{% elsif depth == 3 %}{% assign base = '../..' %}
-
-{% elsif depth == 4 %}{% assign base = '../../..' %}{% endif %}
-
-
+{% assign base = '' %}{% assign depth = page.url | split: '/' | size | minus: 1 %}{% if    depth <= 1 %}{% assign base = '.' %}{% elsif depth == 2 %}{% assign base = '..' %}{% elsif depth == 3 %}{% assign base = '../..' %}{% elsif depth == 4 %}{% assign base = '../../..' %}{% endif %}
 ```
 
 This snippet computes the relative path back to the root of the website from the current page. Update any pages that need to link to the root by adding this at the top:
 
 ```
-
 {%- include base.html -%}
-
-
 ```
 
-This snippet also prefixing any links with `{{base}}`. So for example, we would change`href="https://developers.cloudflare.com/css/main.css"` to be `href="https://developers.cloudflare.com/web3/ipfs-gateway/reference/updating-for-ipfs/%7B%7Bbase%7D%7D/css/main.css"`
+This snippet also prefixing any links with `{{base}}`. So for example, we would change `href="https://developers.cloudflare.com/css/main.css"` to be `href="https://developers.cloudflare.com/web3/ipfs-gateway/reference/updating-for-ipfs/%7B%7Bbase%7D%7D/css/main.css"`
 
 ## Generic
 

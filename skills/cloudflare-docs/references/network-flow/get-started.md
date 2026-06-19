@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network-flow/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -86,14 +86,11 @@ AWS VPC flow logs can only be configured through the Cloudflare API for Network 
 
 1. Create an authorization token using [Cloudflare's API for Network Flow](https://developers.cloudflare.com/api/resources/magic%5Fnetwork%5Fmonitoring/subresources/vpc%5Fflows/subresources/tokens/methods/create/). This authorization token allows Cloudflare to identify and verify the account sending VPC flow logs to our endpoint.  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Magic Network Monitoring Admin`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Magic Network Monitoring Admin`  
 Generate authentication token for VPC flow logs export.  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/mnm/vpc-flows/token" \  
-  --request POST \  
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/mnm/vpc-flows/token" \  --request POST \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"  
 ```
 2. In your AWS Firehose stream configuration, set the `HTTP Headers - X-Amz-Firehose-Access-Key` to the authorization token generated in the previous step.
 3. Send your AWS Firehose VPC flow log stream towards `https://aws-flow-logs.cloudflare.com/`.

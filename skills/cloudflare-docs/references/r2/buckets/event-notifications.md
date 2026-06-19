@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -46,10 +46,7 @@ Log in to Wrangler with the [wrangler login command](https://developers.cloudfla
 Terminal window
 
 ```
-
 npx wrangler r2 bucket notification create <BUCKET_NAME> --event-type <EVENT_TYPE> --queue <QUEUE_NAME>
-
-
 ```
 
 To add filtering based on `prefix` or `suffix` use the `--prefix` or `--suffix` flag, respectively.
@@ -57,22 +54,9 @@ To add filtering based on `prefix` or `suffix` use the `--prefix` or `--suffix` 
 Terminal window
 
 ```
-
-# Filter using prefix
-
-$ npx wrangler r2 bucket notification create <BUCKET_NAME> --event-type <EVENT_TYPE> --queue <QUEUE_NAME> --prefix "<PREFIX_VALUE>"
-
-
-# Filter using suffix
-
-$ npx wrangler r2 bucket notification create <BUCKET_NAME> --event-type <EVENT_TYPE> --queue <QUEUE_NAME> --suffix "<SUFFIX_VALUE>"
-
-
-# Filter using prefix and suffix. Both the conditions will be used for filtering
-
-$ npx wrangler r2 bucket notification create <BUCKET_NAME> --event-type <EVENT_TYPE> --queue <QUEUE_NAME> --prefix "<PREFIX_VALUE>" --suffix "<SUFFIX_VALUE>"
-
-
+# Filter using prefix$ npx wrangler r2 bucket notification create <BUCKET_NAME> --event-type <EVENT_TYPE> --queue <QUEUE_NAME> --prefix "<PREFIX_VALUE>"
+# Filter using suffix$ npx wrangler r2 bucket notification create <BUCKET_NAME> --event-type <EVENT_TYPE> --queue <QUEUE_NAME> --suffix "<SUFFIX_VALUE>"
+# Filter using prefix and suffix. Both the conditions will be used for filtering$ npx wrangler r2 bucket notification create <BUCKET_NAME> --event-type <EVENT_TYPE> --queue <QUEUE_NAME> --prefix "<PREFIX_VALUE>" --suffix "<SUFFIX_VALUE>"
 ```
 
 For a more complete step-by-step example, refer to the [Log and store upload events in R2 with event notifications](https://developers.cloudflare.com/r2/tutorials/upload-logs-event-notifications/) example.
@@ -93,38 +77,7 @@ Event notification rules determine the [event types](https://developers.cloudfla
 Queue consumers receive notifications as [Messages](https://developers.cloudflare.com/queues/configuration/javascript-apis/#message). The following is an example of the body of a message that a consumer Worker will receive:
 
 ```
-
-{
-
-  "account": "3f4b7e3dcab231cbfdaa90a6a28bd548",
-
-  "action": "CopyObject",
-
-  "bucket": "my-bucket",
-
-  "object": {
-
-    "key": "my-new-object",
-
-    "size": 65536,
-
-    "eTag": "c846ff7a18f28c2e262116d6e8719ef0"
-
-  },
-
-  "eventTime": "2024-05-24T19:36:44.379Z",
-
-  "copySource": {
-
-    "bucket": "my-bucket",
-
-    "object": "my-original-object"
-
-  }
-
-}
-
-
+{  "account": "3f4b7e3dcab231cbfdaa90a6a28bd548",  "action": "CopyObject",  "bucket": "my-bucket",  "object": {    "key": "my-new-object",    "size": 65536,    "eTag": "c846ff7a18f28c2e262116d6e8719ef0"  },  "eventTime": "2024-05-24T19:36:44.379Z",  "copySource": {    "bucket": "my-bucket",    "object": "my-original-object"  }}
 ```
 
 ### Properties

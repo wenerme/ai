@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,35 +26,26 @@ In order to interact with Secrets Store in production, you should append `--remo
 
 Create a secret within a store
 
-* [  npm ](#tab-panel-12655)
-* [  pnpm ](#tab-panel-12656)
-* [  yarn ](#tab-panel-12657)
+* [  npm ](#tab-panel-12672)
+* [  pnpm ](#tab-panel-12673)
+* [  yarn ](#tab-panel-12674)
 
 Terminal window
 
 ```
-
 npx wrangler secrets-store secret create [STORE-ID]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler secrets-store secret create [STORE-ID]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler secrets-store secret create [STORE-ID]
-
-
 ```
 
 * `[STORE-ID]` ` string ` required  
@@ -96,59 +87,38 @@ The following is an example of using the `create` command to create an account-l
 Terminal window
 
 ```
-
 npx wrangler secrets-store secret create 8f7a1cdced6342c18d223ece462fd88d --name ServiceA_key-1 --scopes workers --remote
-
-
 ```
 
 ```
-
 ✓ Enter a secret value: › ***
-
-
-🔐 Creating secret... (Name: ServiceA_key-1, Value: REDACTED, Scopes: workers, Comment: undefined)
-
-✓ Select an account: › My account
-
-✅ Created secret! (ID: 13bc7498c6374a4e9d13be091c3c65f1)
-
-
+🔐 Creating secret... (Name: ServiceA_key-1, Value: REDACTED, Scopes: workers, Comment: undefined)✓ Select an account: › My account✅ Created secret! (ID: 13bc7498c6374a4e9d13be091c3c65f1)
 ```
 
 ### `secrets-store secret update`
 
 Update a secret within a store
 
-* [  npm ](#tab-panel-12658)
-* [  pnpm ](#tab-panel-12659)
-* [  yarn ](#tab-panel-12660)
+* [  npm ](#tab-panel-12675)
+* [  pnpm ](#tab-panel-12676)
+* [  yarn ](#tab-panel-12677)
 
 Terminal window
 
 ```
-
 npx wrangler secrets-store secret update [STORE-ID]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler secrets-store secret update [STORE-ID]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler secrets-store secret update [STORE-ID]
-
-
 ```
 
 * `[STORE-ID]` ` string ` required  
@@ -189,35 +159,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Duplicate a secret within a store
 
-* [  npm ](#tab-panel-12661)
-* [  pnpm ](#tab-panel-12662)
-* [  yarn ](#tab-panel-12663)
+* [  npm ](#tab-panel-12678)
+* [  pnpm ](#tab-panel-12679)
+* [  yarn ](#tab-panel-12680)
 
 Terminal window
 
 ```
-
 npx wrangler secrets-store secret duplicate [STORE-ID]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler secrets-store secret duplicate [STORE-ID]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler secrets-store secret duplicate [STORE-ID]
-
-
 ```
 
 * `[STORE-ID]` ` string ` required  
@@ -258,35 +219,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get a secret within a store
 
-* [  npm ](#tab-panel-12664)
-* [  pnpm ](#tab-panel-12665)
-* [  yarn ](#tab-panel-12666)
+* [  npm ](#tab-panel-12681)
+* [  pnpm ](#tab-panel-12682)
+* [  yarn ](#tab-panel-12683)
 
 Terminal window
 
 ```
-
 npx wrangler secrets-store secret get [STORE-ID]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler secrets-store secret get [STORE-ID]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler secrets-store secret get [STORE-ID]
-
-
 ```
 
 * `[STORE-ID]` ` string ` required  
@@ -322,60 +274,37 @@ The following is an example with the expected output:
 Terminal window
 
 ```
-
 npx wrangler secrets-store secret get 8f7a1cdced6342c18d223ece462fd88d --secret-id 13bc7498c6374a4e9d13be091c3c65f1 --remote
-
-
 ```
 
 ```
-
-🔐 Getting secret... (ID: 13bc7498c6374a4e9d13be091c3c65f1)
-
-✓ Select an account: › My account
-
-| Name                        | ID                                  | StoreID                             | Comment | Scopes  | Status  | Created                | Modified               |
-
-|-----------------------------|-------------------------------------|-------------------------------------|---------|---------|---------|------------------------|------------------------|
-
-| ServiceA_key-1          | 13bc7498c6374a4e9d13be091c3c65f1    | 8f7a1cdced6342c18d223ece462fd88d    |         | workers | active  | 4/9/2025, 10:06:01 PM  | 4/15/2025, 09:13:05 AM |
-
-
+🔐 Getting secret... (ID: 13bc7498c6374a4e9d13be091c3c65f1)✓ Select an account: › My account| Name                        | ID                                  | StoreID                             | Comment | Scopes  | Status  | Created                | Modified               ||-----------------------------|-------------------------------------|-------------------------------------|---------|---------|---------|------------------------|------------------------|| ServiceA_key-1          | 13bc7498c6374a4e9d13be091c3c65f1    | 8f7a1cdced6342c18d223ece462fd88d    |         | workers | active  | 4/9/2025, 10:06:01 PM  | 4/15/2025, 09:13:05 AM |
 ```
 
 ### `secrets-store secret delete`
 
 Delete a secret within a store
 
-* [  npm ](#tab-panel-12667)
-* [  pnpm ](#tab-panel-12668)
-* [  yarn ](#tab-panel-12669)
+* [  npm ](#tab-panel-12684)
+* [  pnpm ](#tab-panel-12685)
+* [  yarn ](#tab-panel-12686)
 
 Terminal window
 
 ```
-
 npx wrangler secrets-store secret delete [STORE-ID]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler secrets-store secret delete [STORE-ID]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler secrets-store secret delete [STORE-ID]
-
-
 ```
 
 * `[STORE-ID]` ` string ` required  
@@ -410,35 +339,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List secrets within a store
 
-* [  npm ](#tab-panel-12670)
-* [  pnpm ](#tab-panel-12671)
-* [  yarn ](#tab-panel-12672)
+* [  npm ](#tab-panel-12687)
+* [  pnpm ](#tab-panel-12688)
+* [  yarn ](#tab-panel-12689)
 
 Terminal window
 
 ```
-
 npx wrangler secrets-store secret list [STORE-ID]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler secrets-store secret list [STORE-ID]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler secrets-store secret list [STORE-ID]
-
-
 ```
 
 * `[STORE-ID]` ` string ` required  
@@ -483,35 +403,26 @@ Store limitation
 
 Create a store within an account
 
-* [  npm ](#tab-panel-12673)
-* [  pnpm ](#tab-panel-12674)
-* [  yarn ](#tab-panel-12675)
+* [  npm ](#tab-panel-12690)
+* [  pnpm ](#tab-panel-12691)
+* [  yarn ](#tab-panel-12692)
 
 Terminal window
 
 ```
-
 npx wrangler secrets-store store create [NAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler secrets-store store create [NAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler secrets-store store create [NAME]
-
-
 ```
 
 * `[NAME]` ` string ` required  
@@ -543,54 +454,37 @@ The following is an example of using the `create` command to create a store.
 Terminal window
 
 ```
-
 npx wrangler secrets-store store create default --remote
-
-
 ```
 
 ```
-
-🔐 Creating store... (Name: default)
-
-✅ Created store! (Name: default, ID: 2e2a82d317134506b58defbe16982d54)
-
-
+🔐 Creating store... (Name: default)✅ Created store! (Name: default, ID: 2e2a82d317134506b58defbe16982d54)
 ```
 
 ### `secrets-store store delete`
 
 Delete a store within an account
 
-* [  npm ](#tab-panel-12676)
-* [  pnpm ](#tab-panel-12677)
-* [  yarn ](#tab-panel-12678)
+* [  npm ](#tab-panel-12693)
+* [  pnpm ](#tab-panel-12694)
+* [  yarn ](#tab-panel-12695)
 
 Terminal window
 
 ```
-
 npx wrangler secrets-store store delete [STORE-ID]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler secrets-store store delete [STORE-ID]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler secrets-store store delete [STORE-ID]
-
-
 ```
 
 * `[STORE-ID]` ` string ` required  
@@ -622,54 +516,37 @@ The following is an example of using the `delete` command to delete a store.
 Terminal window
 
 ```
-
 npx wrangler secrets-store store delete d2dafaeac9434de2b6d08b292ce08211 --remote
-
-
 ```
 
 ```
-
-🔐 Deleting store... (Name: d2dafaeac9434de2b6d08b292ce08211)
-
-✅ Deleted store! (ID: d2dafaeac9434de2b6d08b292ce08211)
-
-
+🔐 Deleting store... (Name: d2dafaeac9434de2b6d08b292ce08211)✅ Deleted store! (ID: d2dafaeac9434de2b6d08b292ce08211)
 ```
 
 ### `secrets-store store list`
 
 List stores within an account
 
-* [  npm ](#tab-panel-12679)
-* [  pnpm ](#tab-panel-12680)
-* [  yarn ](#tab-panel-12681)
+* [  npm ](#tab-panel-12696)
+* [  pnpm ](#tab-panel-12697)
+* [  yarn ](#tab-panel-12698)
 
 Terminal window
 
 ```
-
 npx wrangler secrets-store store list
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler secrets-store store list
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler secrets-store store list
-
-
 ```
 
 * `--page` ` number ` default: 1  
@@ -703,27 +580,11 @@ The following is an example of using the `list` command to list stores.
 Terminal window
 
 ```
-
 npx wrangler secrets-store store list --remote
-
-
 ```
 
 ```
-
-🔐 Listing stores...
-
-┌─────────┬──────────────────────────────────┬──────────────────────────────────┬──────────────────────┬──────────────────────┐
-
-│ Name    │ ID                               │ AccountID                        │ Created              │ Modified             │
-
-├─────────┼──────────────────────────────────┼──────────────────────────────────┼──────────────────────┼──────────────────────┤
-
-│ default │ 8876bad33f164462bf0743fe8adf98f4 │ REDACTED │ 4/9/2025, 1:11:48 PM  │ 4/9/2025, 1:11:48 PM │
-
-└─────────┴──────────────────────────────────┴──────────────────────────────────┴──────────────────────┴──────────────────────┘
-
-
+🔐 Listing stores...┌─────────┬──────────────────────────────────┬──────────────────────────────────┬──────────────────────┬──────────────────────┐│ Name    │ ID                               │ AccountID                        │ Created              │ Modified             │├─────────┼──────────────────────────────────┼──────────────────────────────────┼──────────────────────┼──────────────────────┤│ default │ 8876bad33f164462bf0743fe8adf98f4 │ REDACTED │ 4/9/2025, 1:11:48 PM  │ 4/9/2025, 1:11:48 PM │└─────────┴──────────────────────────────────┴──────────────────────────────────┴──────────────────────┴──────────────────────┘
 ```
 
 ```json

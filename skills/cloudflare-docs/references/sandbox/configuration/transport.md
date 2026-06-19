@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -44,16 +44,7 @@ RPC transport establishes a single persistent connection to the container and mu
 TypeScript
 
 ```
-
-await sandbox.exec("python setup.py");
-
-await sandbox.writeFile("/app/config.json", config);
-
-await sandbox.exec("python process.py");
-
-const result = await sandbox.readFile("/app/output.txt");
-
-
+await sandbox.exec("python setup.py");await sandbox.writeFile("/app/config.json", config);await sandbox.exec("python process.py");const result = await sandbox.readFile("/app/output.txt");
 ```
 
 **Same code with RPC transport (1 subrequest):**
@@ -61,18 +52,7 @@ const result = await sandbox.readFile("/app/output.txt");
 TypeScript
 
 ```
-
-// Identical code - transport is configured via environment variable
-
-await sandbox.exec("python setup.py");
-
-await sandbox.writeFile("/app/config.json", config);
-
-await sandbox.exec("python process.py");
-
-const result = await sandbox.readFile("/app/output.txt");
-
-
+// Identical code - transport is configured via environment variableawait sandbox.exec("python setup.py");await sandbox.writeFile("/app/config.json", config);await sandbox.exec("python process.py");const result = await sandbox.readFile("/app/output.txt");
 ```
 
 RPC transport also removes the [32 MiB limitation](https://developers.cloudflare.com/workers/runtime-apis/rpc/#limitations) that the HTTP transport has. Pass a `ReadableStream` instance to the `writeFile()` method.
@@ -80,12 +60,7 @@ RPC transport also removes the [32 MiB limitation](https://developers.cloudflare
 JavaScript
 
 ```
-
-const req = await fetch("https://example.com/archive.tar.gz");
-
-await sandbox.writeFile("/archive.tar.gz", req.body);
-
-
+const req = await fetch("https://example.com/archive.tar.gz");await sandbox.writeFile("/archive.tar.gz", req.body);
 ```
 
 ## Configuration
@@ -100,94 +75,22 @@ HTTP transport is the default and requires no additional configuration.
 
 Enable RPC transport by adding `SANDBOX_TRANSPORT` to your Worker's `vars`:
 
-* [  wrangler.jsonc ](#tab-panel-10231)
-* [  wrangler.toml ](#tab-panel-10232)
+* [  wrangler.jsonc ](#tab-panel-10307)
+* [  wrangler.toml ](#tab-panel-10308)
 
 JSONC
 
 ```
-
-{
-
-  "name": "my-sandbox-worker",
-
-  "main": "src/index.ts",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "vars": {
-
-    "SANDBOX_TRANSPORT": "rpc"
-
-  },
-
-  "containers": [
-
-    {
-
-      "class_name": "Sandbox",
-
-      "image": "./Dockerfile",
-
-    },
-
-  ],
-
-  "durable_objects": {
-
-    "bindings": [
-
-      {
-
-        "class_name": "Sandbox",
-
-        "name": "Sandbox",
-
-      },
-
-    ],
-
-  },
-
-}
-
-
+{  "name": "my-sandbox-worker",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-18",  "vars": {    "SANDBOX_TRANSPORT": "rpc"  },  "containers": [    {      "class_name": "Sandbox",      "image": "./Dockerfile",    },  ],  "durable_objects": {    "bindings": [      {        "class_name": "Sandbox",        "name": "Sandbox",      },    ],  },}
 ```
 
 TOML
 
 ```
-
-name = "my-sandbox-worker"
-
-main = "src/index.ts"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[vars]
-
-SANDBOX_TRANSPORT = "rpc"
-
-
-[[containers]]
-
-class_name = "Sandbox"
-
-image = "./Dockerfile"
-
-
-[[durable_objects.bindings]]
-
-class_name = "Sandbox"
-
-name = "Sandbox"
-
-
+name = "my-sandbox-worker"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-18"
+[vars]SANDBOX_TRANSPORT = "rpc"
+[[containers]]class_name = "Sandbox"image = "./Dockerfile"
+[[durable_objects.bindings]]class_name = "Sandbox"name = "Sandbox"
 ```
 
 No application code changes are needed. The SDK automatically uses the configured transport for all operations.
@@ -244,35 +147,19 @@ Using the `rpc` transport requires version 0.9.1 or newer. If you are using an o
 
 Add `SANDBOX_TRANSPORT` to your `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-10225)
-* [  wrangler.toml ](#tab-panel-10226)
+* [  wrangler.jsonc ](#tab-panel-10301)
+* [  wrangler.toml ](#tab-panel-10302)
 
 JSONC
 
 ```
-
-{
-
-  "vars": {
-
-    "SANDBOX_TRANSPORT": "rpc"
-
-  },
-
-}
-
-
+{  "vars": {    "SANDBOX_TRANSPORT": "rpc"  },}
 ```
 
 TOML
 
 ```
-
-[vars]
-
-SANDBOX_TRANSPORT = "rpc"
-
-
+[vars]SANDBOX_TRANSPORT = "rpc"
 ```
 
 Then deploy:
@@ -280,43 +167,26 @@ Then deploy:
 Terminal window
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 ### Switch from RPC to HTTP
 
 Remove the `SANDBOX_TRANSPORT` variable (or set it to `"http"`):
 
-* [  wrangler.jsonc ](#tab-panel-10227)
-* [  wrangler.toml ](#tab-panel-10228)
+* [  wrangler.jsonc ](#tab-panel-10303)
+* [  wrangler.toml ](#tab-panel-10304)
 
 JSONC
 
 ```
-
-{
-
-  "vars": {
-
-    // Remove SANDBOX_TRANSPORT or set to "http"
-
-  },
-
-}
-
-
+{  "vars": {    // Remove SANDBOX_TRANSPORT or set to "http"  },}
 ```
 
 TOML
 
 ```
-
 vars = { }
-
-
 ```
 
 ### Switch from deprecated WebSocket to RPC
@@ -327,35 +197,19 @@ Using the `rpc` transport requires version 0.9.1 or newer. If you are using an o
 
 Set the `SANDBOX_TRANSPORT` variable to `"rpc"`:
 
-* [  wrangler.jsonc ](#tab-panel-10229)
-* [  wrangler.toml ](#tab-panel-10230)
+* [  wrangler.jsonc ](#tab-panel-10305)
+* [  wrangler.toml ](#tab-panel-10306)
 
 JSONC
 
 ```
-
-{
-
-  "vars": {
-
-    "SANDBOX_TRANSPORT": "rpc"
-
-  },
-
-}
-
-
+{  "vars": {    "SANDBOX_TRANSPORT": "rpc"  },}
 ```
 
 TOML
 
 ```
-
-[vars]
-
-SANDBOX_TRANSPORT = "rpc"
-
-
+[vars]SANDBOX_TRANSPORT = "rpc"
 ```
 
 ## Related resources

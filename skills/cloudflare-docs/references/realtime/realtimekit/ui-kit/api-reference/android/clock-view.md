@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,16 +26,7 @@ A clock component which shows the elapsed time of a meeting.
 ### Basic Usage
 
 ```
-
-<com.cloudflare.realtimekit.ui.view.RtkClockView
-
-    android:id="@+id/rtk_clock_view"
-
-    android:layout_width="wrap_content"
-
-    android:layout_height="wrap_content" />
-
-
+<com.cloudflare.realtimekit.ui.view.RtkClockView    android:id="@+id/rtk_clock_view"    android:layout_width="wrap_content"    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
@@ -43,12 +34,7 @@ A clock component which shows the elapsed time of a meeting.
 Kotlin
 
 ```
-
-val clockView = findViewById<RtkClockView>(R.id.rtk_clock_view)
-
-clockView.activate(meeting)
-
-
+val clockView = findViewById<RtkClockView>(R.id.rtk_clock_view)clockView.activate(meeting)
 ```
 
 ```json

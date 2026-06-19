@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,61 +33,23 @@ Some applications and networking implementations require specific custom headers
 4. Select **Edit code**.
 5. Input the following Worker:
 
-* [  JavaScript ](#tab-panel-7709)
-* [  TypeScript ](#tab-panel-7710)
+* [  JavaScript ](#tab-panel-7785)
+* [  TypeScript ](#tab-panel-7786)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    const { headers } = request;
-
-    const cfaccessemail = headers.get("cf-access-authenticated-user-email");
-
-
-    const requestWithID = new Request(request);
-
-    requestWithID.headers.set("company-user-id", cfaccessemail);
-
-
-    return fetch(requestWithID);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    const { headers } = request;    const cfaccessemail = headers.get("cf-access-authenticated-user-email");
+    const requestWithID = new Request(request);    requestWithID.headers.set("company-user-id", cfaccessemail);
+    return fetch(requestWithID);  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    const { headers } = request;
-
-    const cfaccessemail = headers.get("cf-access-authenticated-user-email");
-
-
-    const requestWithID = new Request(request);
-
-    requestWithID.headers.set("company-user-id", cfaccessemail);
-
-
-    return fetch(requestWithID);
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export default {  async fetch(request, env, ctx): Promise<Response> {    const { headers } = request;    const cfaccessemail = headers.get("cf-access-authenticated-user-email");
+    const requestWithID = new Request(request);    requestWithID.headers.set("company-user-id", cfaccessemail);
+    return fetch(requestWithID);  },} satisfies ExportedHandler<Env>;
 ```
 
 1. Select **Save and deploy**.
@@ -105,20 +67,7 @@ The Worker will now insert a custom header into requests that match the defined 
 Example custom header
 
 ```
-
-"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
-
-    "Accept-Encoding": "gzip",
-
-    "Accept-Language": "en-US,en;q=0.9",
-
-    "Cf-Access-Authenticated-User-Email": "user@example.com",
-
-    "Company-User-Id": "user@example.com",
-
-    "Connection": "keep-alive"
-
-
+"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",    "Accept-Encoding": "gzip",    "Accept-Language": "en-US,en;q=0.9",    "Cf-Access-Authenticated-User-Email": "user@example.com",    "Company-User-Id": "user@example.com",    "Connection": "keep-alive"
 ```
 
 ```json

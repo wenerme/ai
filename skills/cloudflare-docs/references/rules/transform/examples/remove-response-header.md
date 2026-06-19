@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,10 +19,7 @@ The following response header transform rule removes the `cf-connecting-ip` head
 Text in **Expression Editor**:
 
 ```
-
 starts_with(http.request.uri.path, "/private/")
-
-
 ```
 
 Selected operation under **Modify response header**: _Remove_

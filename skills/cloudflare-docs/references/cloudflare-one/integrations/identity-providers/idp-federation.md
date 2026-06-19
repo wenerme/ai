@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,8 +33,8 @@ When a user in a recipient account authenticates, the request is routed through 
 
 ## Share an IdP
 
-* [ Dashboard ](#tab-panel-7220)
-* [ API ](#tab-panel-7221)
+* [ Dashboard ](#tab-panel-7296)
+* [ API ](#tab-panel-7297)
 
 The dashboard combines grant creation and sharing into a single flow. If a federation grant already exists for the IdP, it will be reused; otherwise, one is created automatically.
 
@@ -53,20 +53,7 @@ Sharing an IdP via the API is a two-step process: create a federation grant, the
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/idp_federation_grants" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "idp_id": "<IDP_UUID>"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/idp_federation_grants" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "idp_id": "<IDP_UUID>"  }'
 ```
 
 The response includes the grant `id`, which you will use in the next step. To list all federation grants in your account:
@@ -74,14 +61,7 @@ The response includes the grant `id`, which you will use in the next step. To li
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/idp_federation_grants" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/idp_federation_grants" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 #### 2\. Share the grant with recipient accounts
@@ -91,46 +71,7 @@ Share the grant with one or more recipient accounts.
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/shares" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "Identity provider: OpenID Connect",
-
-    "recipients": [
-
-        {
-
-            "account_id": "<RECIPIENT_ACCOUNT_ID>"
-
-        }
-
-    ],
-
-    "resources": [
-
-        {
-
-            "resource_account_id": "<SOURCE_ACCOUNT_ID>",
-
-            "resource_id": "<GRANT_ID>",
-
-            "resource_type": "idp-federation-grant",
-
-            "meta": {}
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/shares" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Identity provider: OpenID Connect",    "recipients": [        {            "account_id": "<RECIPIENT_ACCOUNT_ID>"        }    ],    "resources": [        {            "resource_account_id": "<SOURCE_ACCOUNT_ID>",            "resource_id": "<GRANT_ID>",            "resource_type": "idp-federation-grant",            "meta": {}        }    ]  }'
 ```
 
 Each recipient account will be automatically provisioned with a read-only IdP connection that points to the bridge.
@@ -143,8 +84,8 @@ Warning
 
 Deleting the federation grant immediately removes the IdP connection from all recipient accounts. Any Access policies in those accounts that reference the federated IdP will no longer match, which may lock users out. Verify that recipient accounts have alternative authentication methods before you stop sharing.
 
-* [ Dashboard ](#tab-panel-7218)
-* [ API ](#tab-panel-7219)
+* [ Dashboard ](#tab-panel-7294)
+* [ API ](#tab-panel-7295)
 
 The dashboard handles both grant and share deletion in a single flow.
 
@@ -160,14 +101,7 @@ Unfederating an IdP via the API is a two-step process. Deleting the grant stops 
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/idp_federation_grants/%7Bgrant_id%7D" \
-
-  --request DELETE \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/idp_federation_grants/%7Bgrant_id%7D" \  --request DELETE \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 #### 2\. (Optional) Delete the share
@@ -175,14 +109,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/idp_
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/shares/%7Bshare_id%7D" \
-
-  --request DELETE \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/shares/%7Bshare_id%7D" \  --request DELETE \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ## Limitations

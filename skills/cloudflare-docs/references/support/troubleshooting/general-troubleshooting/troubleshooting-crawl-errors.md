@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/support/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,8 +28,8 @@ To optimize CDN performance, Google and Bing assign special crawl rates to websi
 
 * Change the Google crawl rate by [reviewing Google’s documentation ↗](https://support.google.com/webmasters/answer/48620?hl=en).
 * Change your Bing crawl rate via guidance from Bing’s documentation:  
-   * [Bing Crawl Control ↗](https://www.bing.com/webmasters/help/?topicid=55a30303)  
-   * [Crawl Delay and the Bing Crawler ↗](https://blogs.bing.com/webmaster/2009/08/10/crawl-delay-and-the-bing-crawler-msnbot)
+  * [Bing Crawl Control ↗](https://www.bing.com/webmasters/help/?topicid=55a30303)
+  * [Crawl Delay and the Bing Crawler ↗](https://blogs.bing.com/webmaster/2009/08/10/crawl-delay-and-the-bing-crawler-msnbot)
 
 ---
 
@@ -37,11 +37,12 @@ To optimize CDN performance, Google and Bing assign special crawl rates to websi
 
 Review the following recommendations to prevent crawler errors:
 
-* Monitor the performance and availability of your website using a third-party tool:  
-   * [StatusCake ↗](http://www.statuscake.com/)  
-   * [Pingdom ↗](http://www.pingdom.com/)  
-   * [Monitor.Us ↗](http://www.monitor.us/)  
-   * [Updown ↗](https://updown.io/)
+* Monitor the performance and availability of your website using a third-party tool:
+
+  * [StatusCake ↗](http://www.statuscake.com/)
+  * [Pingdom ↗](http://www.pingdom.com/)
+  * [Monitor.Us ↗](http://www.monitor.us/)
+  * [Updown ↗](https://updown.io/)
 * Do not block Google crawler IP addresses via [custom rules](https://developers.cloudflare.com/waf/custom-rules/) or [IP Access rules](https://developers.cloudflare.com/waf/tools/ip-access-rules/). If you are using [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/), make sure they do not apply to the Google crawler.  
 Confirm an IP address belongs to Google by consulting Google’s documentation on [verifying googlebot IP addresses ↗](https://support.google.com/webmasters/bin/answer.py?answer=80553).
 * Do not block the United States via [custom rules](https://developers.cloudflare.com/waf/custom-rules/) or [IP Access rules](https://developers.cloudflare.com/waf/tools/ip-access-rules/).

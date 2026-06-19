@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/byoip/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,8 +22,8 @@ There is **no expected downtime** when setting up or updating your address maps.
 
 If you are using BYOIP, refer to the following steps. If you have [static IPs](https://developers.cloudflare.com/byoip/concepts/static-ips/), Cloudflare creates an address map during the static IP onboarding process, meaning you may only [edit](#manage-address-maps) the Cloudflare-created map.
 
-* [ Dashboard ](#tab-panel-6943)
-* [ API ](#tab-panel-6944)
+* [ Dashboard ](#tab-panel-7019)
+* [ API ](#tab-panel-7020)
 
 1. In the Cloudflare dashboard, go to the **Address Maps** page.  
 [ Go to **Address maps** ](https://dash.cloudflare.com/?to=/:account/ip-addresses/proxy-ips)
@@ -39,50 +39,13 @@ Creating an address map does not automatically change DNS configuration. DNS res
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Address Maps Write`
 
 Create Address Map
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/address_maps" \
-
-  --request POST \
-
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
-
-  --json '{
-
-    "description": "Example address map",
-
-    "enabled": true,
-
-    "ips": [
-
-        "203.0.113.1",
-
-        "203.0.113.2"
-
-    ],
-
-    "memberships": [
-
-        {
-
-            "identifier": "<ZONE_ID>",
-
-            "kind": "zone"
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/address_maps" \  --request POST \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \  --json '{    "description": "Example address map",    "enabled": true,    "ips": [        "203.0.113.1",        "203.0.113.2"    ],    "memberships": [        {            "identifier": "<ZONE_ID>",            "kind": "zone"        }    ]  }'
 ```
 
 Note
@@ -91,8 +54,8 @@ A zone membership will take priority over an account membership.
 
 ## Manage address maps
 
-* [ Dashboard ](#tab-panel-6941)
-* [ API ](#tab-panel-6942)
+* [ Dashboard ](#tab-panel-7017)
+* [ API ](#tab-panel-7018)
 
 1. In the Cloudflare dashboard, go to the **Address Maps** page.  
 [ Go to **Address maps** ](https://dash.cloudflare.com/?to=/:account/ip-addresses/proxy-ips)
@@ -138,40 +101,13 @@ Do not include any membership in your command. Your API command should resemble 
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Address Maps Write`
 
 Create Address Map
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/address_maps" \
-
-  --request POST \
-
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
-
-  --json '{
-
-    "description": "default_sni",
-
-    "default_sni": "sni.example.com",
-
-    "enabled": false,
-
-    "ips": [
-
-        "192.0.0.1"
-
-    ],
-
-    "memberships": []
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/address_maps" \  --request POST \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \  --json '{    "description": "default_sni",    "default_sni": "sni.example.com",    "enabled": false,    "ips": [        "192.0.0.1"    ],    "memberships": []  }'
 ```
 
 ```json

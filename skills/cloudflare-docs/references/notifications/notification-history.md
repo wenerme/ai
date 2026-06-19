@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/notifications/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,21 +21,13 @@ Currently, customers can access Notification History [via the Cloudflare API](ht
 Syntax
 
 ```
-
 GET accounts/{account_id}/alerting/v3/history
-
-
 ```
 
 Example
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/alerting/v3/history?page=1&per_page=25" \
-
---header "Authorization: Bearer <API_TOKEN>"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/alerting/v3/history?page=1&per_page=25" \--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 ## Availability

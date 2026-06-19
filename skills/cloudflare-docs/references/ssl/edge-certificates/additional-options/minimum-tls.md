@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,7 +22,7 @@ If you are looking to restrict cipher suites, refer to [Customize cipher suites]
 
 ## Availability
 
-| Free         | Pro                                                                                                                                 | Business                                                                                                                            | Enterprise                                                                                                                          |                                                                                                                                     |
+|              | Free                                                                                                                                | Pro                                                                                                                                 | Business                                                                                                                            | Enterprise                                                                                                                          |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
 | Availability | Yes                                                                                                                                 | Yes                                                                                                                                 | Yes                                                                                                                                 | Yes                                                                                                                                 |
 | Per-hostname | Included with [Advanced Certificate Manager](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) | Included with [Advanced Certificate Manager](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) | Included with [Advanced Certificate Manager](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) | Included with [Advanced Certificate Manager](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) |
@@ -47,8 +47,8 @@ The Minimum TLS version that you set up following these steps does not apply to 
 
 To manage the TLS version applied to your whole zone when proxied through Cloudflare:
 
-* [ Dashboard ](#tab-panel-10590)
-* [ API ](#tab-panel-10591)
+* [ Dashboard ](#tab-panel-10666)
+* [ API ](#tab-panel-10667)
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.  
 [ Go to **Edge Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
@@ -60,28 +60,13 @@ In the following example, the minimum TLS version for the zone will be set to `1
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone Settings Write`
 
 Edit zone setting
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/min_tls_version" \
-
-  --request PATCH \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "id": "min_tls_version",
-
-    "value": "1.2"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/min_tls_version" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "id": "min_tls_version",    "value": "1.2"  }'
 ```
 
 ### Per-hostname
@@ -99,26 +84,13 @@ In the following example, the minimum TLS version for a specific hostname will b
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `SSL and Certificates Write`
 
 Edit TLS setting for hostname
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/hostnames/settings/min_tls_version/$HOSTNAME" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "value": "1.2"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/hostnames/settings/min_tls_version/$HOSTNAME" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "value": "1.2"  }'
 ```
 
 ### Cloudflare for SaaS
@@ -134,10 +106,7 @@ For example, to test TLS 1.1, use the `curl` command below. Replace `www.example
 Terminal window
 
 ```
-
 curl https://www.example.com -svo /dev/null --tls-max 1.1
-
-
 ```
 
 If the TLS version you are testing is blocked by Cloudflare, the TLS handshake is not completed and returns an error:

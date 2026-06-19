@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -39,24 +39,9 @@ bun add @cloudflare/pages-plugin-google-chat
 TypeScript
 
 ```
-
 import googleChatPlugin from "@cloudflare/pages-plugin-google-chat";
-
-
-export const onRequest: PagesFunction = googleChatPlugin(async (message) => {
-
-  if (message.text.includes("ping")) {
-
-    return { text: "pong" };
-
-  }
-
-
-  return { text: "Sorry, I could not understand your message." };
-
-});
-
-
+export const onRequest: PagesFunction = googleChatPlugin(async (message) => {  if (message.text.includes("ping")) {    return { text: "pong" };  }
+  return { text: "Sorry, I could not understand your message." };});
 ```
 
 The Plugin takes a function, which in turn takes an incoming message, and returns a `Promise` of a response message (or `void` if there should not be any response).
@@ -72,51 +57,10 @@ The Google Chat API can be called directly using the `GoogleChatAPI` class:
 TypeScript
 
 ```
-
 import { GoogleChatAPI } from "@cloudflare/pages-plugin-google-chat/api";
-
-
-export const onRequest: PagesFunction = () => {
-
-  // Initialize a GoogleChatAPI with your service account's credentials
-
-  const googleChat = new GoogleChatAPI({
-
-    credentials: {
-
-      client_email: "SERVICE_ACCOUNT_EMAIL_ADDRESS",
-
-      private_key: "SERVICE_ACCOUNT_PRIVATE_KEY",
-
-    },
-
-  });
-
-
-  // Post a message
-
-  // https://developers.google.com/chat/api/reference/rest/v1/spaces.messages/create
-
-  const message = await googleChat.createMessage(
-
-    { parent: "spaces/AAAAAAAAAAA" },
-
-    undefined,
-
-    {
-
-      text: "I'm an alert!",
-
-    },
-
-  );
-
-
-  return new Response("Alert sent.");
-
-};
-
-
+export const onRequest: PagesFunction = () => {  // Initialize a GoogleChatAPI with your service account's credentials  const googleChat = new GoogleChatAPI({    credentials: {      client_email: "SERVICE_ACCOUNT_EMAIL_ADDRESS",      private_key: "SERVICE_ACCOUNT_PRIVATE_KEY",    },  });
+  // Post a message  // https://developers.google.com/chat/api/reference/rest/v1/spaces.messages/create  const message = await googleChat.createMessage(    { parent: "spaces/AAAAAAAAAAA" },    undefined,    {      text: "I'm an alert!",    },  );
+  return new Response("Alert sent.");};
 ```
 
 We recommend storing your service account's credentials in KV rather than in plain text as above.

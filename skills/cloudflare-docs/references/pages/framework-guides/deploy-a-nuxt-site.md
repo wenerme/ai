@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -45,10 +45,7 @@ When creating your new project, C3 will give you the option of deploying an init
 Terminal window
 
 ```
-
 npm run deploy
-
-
 ```
 
 Git integration
@@ -76,25 +73,8 @@ Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). Aft
 Terminal window
 
 ```
-
-# Skip the following three commands if you have built your application
-
-# using C3 or already committed your changes
-
-git init
-
-git add .
-
-git commit -m "Initial commit"
-
-
-git branch -M main
-
-git remote add origin https://github.com/<YOUR_GH_USERNAME>/<REPOSITORY_NAME>
-
-git push -u origin main
-
-
+# Skip the following three commands if you have built your application# using C3 or already committed your changesgit initgit add .git commit -m "Initial commit"
+git branch -M maingit remote add origin https://github.com/<YOUR_GH_USERNAME>/<REPOSITORY_NAME>git push -u origin main
 ```
 
 ### Create a Pages project
@@ -135,14 +115,7 @@ Projects created via C3 come with `nitro-cloudflare-dev`, a `nitro` module that 
 TypeScript
 
 ```
-
-export default defineNuxtConfig({
-
-  modules: ["nitro-cloudflare-dev"],
-
-});
-
-
+export default defineNuxtConfig({  modules: ["nitro-cloudflare-dev"],});
 ```
 
 This module is powered by the [getPlatformProxy helper function](https://developers.cloudflare.com/workers/wrangler/api#getplatformproxy). `getPlatformProxy` will automatically detect any bindings defined in your project's Wrangler configuration file and emulate those bindings in local development. Review [Wrangler configuration information on bindings](https://developers.cloudflare.com/workers/wrangler/configuration/#bindings) for more information on how to configure bindings in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/).
@@ -164,32 +137,7 @@ The following is an example of adding a `KVNamespace` binding:
 TypeScript
 
 ```
-
-declare module "h3" {
-
-  interface H3EventContext {
-
-    cf: CfProperties;
-
-    cloudflare: {
-
-      request: Request;
-
-      env: {
-
-        MY_KV: KVNamespace;
-
-      };
-
-      context: ExecutionContext;
-
-    };
-
-  }
-
-}
-
-
+declare module "h3" {  interface H3EventContext {    cf: CfProperties;    cloudflare: {      request: Request;      env: {        MY_KV: KVNamespace;      };      context: ExecutionContext;    };  }}
 ```
 
 ### Access bindings in your Nuxt application
@@ -198,47 +146,21 @@ In Nuxt, add server-side code via [Server Routes and Middleware ↗](https://nux
 
 The following code block shows an example of accessing a KV namespace in Nuxt.
 
-* [  JavaScript ](#tab-panel-9394)
-* [  TypeScript ](#tab-panel-9395)
+* [  JavaScript ](#tab-panel-9470)
+* [  TypeScript ](#tab-panel-9471)
 
 JavaScript
 
 ```
-
-export default defineEventHandler(({ context }) => {
-
-  const MY_KV = context.cloudflare.env.MY_KV;
-
-
-  return {
-
-    // ...
-
-  };
-
-});
-
-
+export default defineEventHandler(({ context }) => {  const MY_KV = context.cloudflare.env.MY_KV;
+  return {    // ...  };});
 ```
 
 TypeScript
 
 ```
-
-export default defineEventHandler(({ context }) => {
-
-  const MY_KV = context.cloudflare.env.MY_KV;
-
-
-  return {
-
-    // ...
-
-  };
-
-});
-
-
+export default defineEventHandler(({ context }) => {  const MY_KV = context.cloudflare.env.MY_KV;
+  return {    // ...  };});
 ```
 
 ## Learn more

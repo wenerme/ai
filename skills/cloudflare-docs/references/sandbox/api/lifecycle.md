@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,18 +23,7 @@ Get or create a sandbox instance by ID.
 TypeScript
 
 ```
-
-const sandbox = getSandbox(
-
-  binding: DurableObjectNamespace<Sandbox>,
-
-  sandboxId: string,
-
-  options?: SandboxOptions
-
-): Sandbox
-
-
+const sandbox = getSandbox(  binding: DurableObjectNamespace<Sandbox>,  sandboxId: string,  options?: SandboxOptions): Sandbox
 ```
 
 **Parameters**:
@@ -42,11 +31,11 @@ const sandbox = getSandbox(
 * `binding` \- The Durable Object namespace binding from your Worker environment
 * `sandboxId` \- Unique identifier for this sandbox. The same ID always returns the same sandbox instance. In user-facing apps, scope IDs to a single user.
 * `options` (optional) - See [SandboxOptions](https://developers.cloudflare.com/sandbox/configuration/sandbox-options/) for all available options:  
-   * `enableDefaultSession` \- Use the default session for operations without an explicit `sessionId`. Set to `false` to evaluate each call in isolation (default: `true`)  
-   * `sleepAfter` \- Duration of inactivity before automatic sleep (default: `"10m"`)  
-   * `keepAlive` \- Prevent automatic sleep entirely. Persists across hibernation (default: `false`)  
-   * `containerTimeouts` \- Configure container startup timeouts  
-   * `normalizeId` \- Lowercase sandbox IDs for preview URL compatibility (default: `false`)
+  * `enableDefaultSession` \- Use the default session for operations without an explicit `sessionId`. Set to `false` to evaluate each call in isolation (default: `true`)
+  * `sleepAfter` \- Duration of inactivity before automatic sleep (default: `"10m"`)
+  * `keepAlive` \- Prevent automatic sleep entirely. Persists across hibernation (default: `false`)
+  * `containerTimeouts` \- Configure container startup timeouts
+  * `normalizeId` \- Lowercase sandbox IDs for preview URL compatibility (default: `false`)
 
 **Returns**: `Sandbox` instance
 
@@ -58,55 +47,21 @@ Implicit execution mode
 
 By default, sandbox methods that do not specify a `sessionId` run in the sandbox's default session and preserve shell state between calls. It is recommended to set `enableDefaultSession` to `false` to ensure operations run in isolation. The `createSession()` API exists when sessions are required. Default sessions will be removed in a future version of the Sandbox SDK.
 
-* [  JavaScript ](#tab-panel-10153)
-* [  TypeScript ](#tab-panel-10154)
+* [  JavaScript ](#tab-panel-10229)
+* [  TypeScript ](#tab-panel-10230)
 
 JavaScript
 
 ```
-
 import { getSandbox } from "@cloudflare/sandbox";
-
-
-export default {
-
-  async fetch(request, env) {
-
-    const sandbox = getSandbox(env.Sandbox, "user-123");
-
-    const result = await sandbox.exec("python script.py");
-
-    return Response.json(result);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const sandbox = getSandbox(env.Sandbox, "user-123");    const result = await sandbox.exec("python script.py");    return Response.json(result);  },};
 ```
 
 TypeScript
 
 ```
-
 import { getSandbox } from '@cloudflare/sandbox';
-
-
-export default {
-
-  async fetch(request: Request, env: Env): Promise<Response> {
-
-    const sandbox = getSandbox(env.Sandbox, 'user-123');
-
-    const result = await sandbox.exec('python script.py');
-
-    return Response.json(result);
-
-  }
-
-};
-
-
+export default {  async fetch(request: Request, env: Env): Promise<Response> {    const sandbox = getSandbox(env.Sandbox, 'user-123');    const result = await sandbox.exec('python script.py');    return Response.json(result);  }};
 ```
 
 Warning
@@ -122,10 +77,7 @@ Enable or disable keepAlive mode dynamically after sandbox creation.
 TypeScript
 
 ```
-
 await sandbox.setKeepAlive(keepAlive: boolean): Promise<void>
-
-
 ```
 
 **Parameters**:
@@ -134,49 +86,23 @@ await sandbox.setKeepAlive(keepAlive: boolean): Promise<void>
 
 When enabled, the sandbox automatically sends heartbeat pings every 30 seconds to prevent container eviction. When disabled, the sandbox returns to normal sleep behavior based on the `sleepAfter` configuration.
 
-* [  JavaScript ](#tab-panel-10155)
-* [  TypeScript ](#tab-panel-10156)
+* [  JavaScript ](#tab-panel-10231)
+* [  TypeScript ](#tab-panel-10232)
 
 JavaScript
 
 ```
-
 const sandbox = getSandbox(env.Sandbox, "user-123");
-
-
-// Enable keepAlive for a long-running process
-
-await sandbox.setKeepAlive(true);
-
-await sandbox.startProcess("python long_running_analysis.py");
-
-
-// Later, disable keepAlive when done
-
-await sandbox.setKeepAlive(false);
-
-
+// Enable keepAlive for a long-running processawait sandbox.setKeepAlive(true);await sandbox.startProcess("python long_running_analysis.py");
+// Later, disable keepAlive when doneawait sandbox.setKeepAlive(false);
 ```
 
 TypeScript
 
 ```
-
 const sandbox = getSandbox(env.Sandbox, 'user-123');
-
-
-// Enable keepAlive for a long-running process
-
-await sandbox.setKeepAlive(true);
-
-await sandbox.startProcess('python long_running_analysis.py');
-
-
-// Later, disable keepAlive when done
-
-await sandbox.setKeepAlive(false);
-
-
+// Enable keepAlive for a long-running processawait sandbox.setKeepAlive(true);await sandbox.startProcess('python long_running_analysis.py');
+// Later, disable keepAlive when doneawait sandbox.setKeepAlive(false);
 ```
 
 Heartbeat mechanism
@@ -196,10 +122,7 @@ Destroy the sandbox container and free up resources.
 TypeScript
 
 ```
-
 await sandbox.destroy(): Promise<void>
-
-
 ```
 
 Immediately terminates the container and permanently deletes all state:
@@ -209,63 +132,21 @@ Immediately terminates the container and permanently deletes all state:
 * All sessions (including the default session)
 * Network connections and exposed ports
 
-* [  JavaScript ](#tab-panel-10157)
-* [  TypeScript ](#tab-panel-10158)
+* [  JavaScript ](#tab-panel-10233)
+* [  TypeScript ](#tab-panel-10234)
 
 JavaScript
 
 ```
-
-async function executeCode(code) {
-
-  const sandbox = getSandbox(env.Sandbox, `temp-${Date.now()}`);
-
-
-  try {
-
-    await sandbox.writeFile("/tmp/code.py", code);
-
-    const result = await sandbox.exec("python /tmp/code.py");
-
-    return result.stdout;
-
-  } finally {
-
-    await sandbox.destroy();
-
-  }
-
-}
-
-
+async function executeCode(code) {  const sandbox = getSandbox(env.Sandbox, `temp-${Date.now()}`);
+  try {    await sandbox.writeFile("/tmp/code.py", code);    const result = await sandbox.exec("python /tmp/code.py");    return result.stdout;  } finally {    await sandbox.destroy();  }}
 ```
 
 TypeScript
 
 ```
-
-async function executeCode(code: string): Promise<string> {
-
-  const sandbox = getSandbox(env.Sandbox, `temp-${Date.now()}`);
-
-
-  try {
-
-    await sandbox.writeFile('/tmp/code.py', code);
-
-    const result = await sandbox.exec('python /tmp/code.py');
-
-    return result.stdout;
-
-  } finally {
-
-    await sandbox.destroy();
-
-  }
-
-}
-
-
+async function executeCode(code: string): Promise<string> {  const sandbox = getSandbox(env.Sandbox, `temp-${Date.now()}`);
+  try {    await sandbox.writeFile('/tmp/code.py', code);    const result = await sandbox.exec('python /tmp/code.py');    return result.stdout;  } finally {    await sandbox.destroy();  }}
 ```
 
 Note

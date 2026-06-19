@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,9 +31,9 @@ This guide covers how to configure [Zoom ↗](https://support.zoom.com/hc/en/art
 4. For the authentication protocol, select **SAML**.
 5. Select **Add application**.
 6. Fill in the following fields:  
-   * **Entity ID**: ` https://<your-vanity-url>.zoom.us`  
-   * **Assertion Consumer Service URL**: `https://<your-vanity-url>.zoom.us/saml/SSO`  
-   * **Name ID format**: _Email_
+  * **Entity ID**: ` https://<your-vanity-url>.zoom.us`
+  * **Assertion Consumer Service URL**: `https://<your-vanity-url>.zoom.us/saml/SSO`
+  * **Name ID format**: _Email_
 7. Copy the **Access Entity ID or Issuer**, **Public key**, and **SSO endpoint**.
 8. Configure [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) for the application.
 9. Save the application.
@@ -43,10 +43,10 @@ This guide covers how to configure [Zoom ↗](https://support.zoom.com/hc/en/art
 1. In Zoom, go to **Advanced** \> **Single Sign-On**.
 2. For **Vanity URL**, select the vanity URL you want to configure SSO for.
 3. Fill out the following fields:  
-   * **Sign in page URL**: SSO endpoint from application configuration in Cloudflare One  
-   * **Identity Provider Certificate**: Public key from application configuration in Cloudflare One  
-   * **Service Provider (SP) Entity ID**: `yourvanityurl.zoom.us` (no `https://`)  
-   * **Issuer (DP Entity ID)**: Access Entity ID or Issuer from application configuration in Cloudflare One
+  * **Sign in page URL**: SSO endpoint from application configuration in Cloudflare One
+  * **Identity Provider Certificate**: Public key from application configuration in Cloudflare One
+  * **Service Provider (SP) Entity ID**: `yourvanityurl.zoom.us` (no `https://`)
+  * **Issuer (DP Entity ID)**: Access Entity ID or Issuer from application configuration in Cloudflare One
 4. For **Binding**, select _http-redirect_.
 5. For **Signature Hash Algorithm**, ensure **SHA-256** is selected.
 6. Under **Security**, turn off **Sign SAML request** and **Sign SAML logout request**.

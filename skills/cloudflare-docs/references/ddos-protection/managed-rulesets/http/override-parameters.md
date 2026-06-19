@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,30 +25,37 @@ API property name: `"action"`.
 
 The action that will be performed for requests that match specific rules of Cloudflare's DDoS mitigation services. The available actions are:
 
-* **Block**  
-   * API value: `"block"`.  
-   * Blocks HTTP requests that match the rule expression.
-* **Managed Challenge**  
-   * API value: `"managed_challenge"`.  
-   * [Managed Challenges](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/#managed-challenge) help reduce the lifetimes of human time spent solving CAPTCHAs across the Internet. Depending on the characteristics of a request, Cloudflare will dynamically choose the appropriate type of challenge based on specific criteria.
-* **Interactive Challenge**  
-   * API value: `"challenge"`.  
-   * Presents an interactive challenge to the clients making HTTP requests that match a rule expression.
-* **Log**  
-   * API value: `"log"`.  
-   * Only available on Enterprise plans with the Advanced DDoS Protection subscription. Logs requests that match the expression of a rule detecting HTTP DDoS attacks. Recommended for validating a rule before committing to a more severe action.
-* **Connection Close**  
-   * API value: _N/A_ (internal rule action that you cannot use in overrides).  
-   * The client is instructed to establish a new connection (by disabling `keep-alive`) instead of reusing the existing connection. Existing requests are not affected.
-* **Force Connection Close**  
-   * API value: _N/A_ (internal rule action that you cannot use in overrides).  
-   * Closes ongoing HTTP connections. This action does not block a request, but it forces the client to reconnect. For HTTP/2 and HTTP/3 connections, the connection will be closed even if it breaks other requests running on the same connection.  
-   * The performed action depends on the HTTP version:  
-         * HTTP/1: set the [Connection header ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Connection#directives) to `close`.  
-         * HTTP/2: send a [GOAWAY frame ↗](https://datatracker.ietf.org/doc/html/rfc7540#section-6.8) to the client.
-* **DDoS Dynamic**  
-   * API value: _N/A_ (internal rule action that you cannot use in overrides).  
-   * Performs a specific action according to a set of internal guidelines defined by Cloudflare. The executed action can be one of the above or an undisclosed mitigation action.
+* **Block**
+
+  * API value: `"block"`.
+  * Blocks HTTP requests that match the rule expression.
+* **Managed Challenge**
+
+  * API value: `"managed_challenge"`.
+  * [Managed Challenges](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/#managed-challenge) help reduce the lifetimes of human time spent solving CAPTCHAs across the Internet. Depending on the characteristics of a request, Cloudflare will dynamically choose the appropriate type of challenge based on specific criteria.
+* **Interactive Challenge**
+
+  * API value: `"challenge"`.
+  * Presents an interactive challenge to the clients making HTTP requests that match a rule expression.
+* **Log**
+
+  * API value: `"log"`.
+  * Only available on Enterprise plans with the Advanced DDoS Protection subscription. Logs requests that match the expression of a rule detecting HTTP DDoS attacks. Recommended for validating a rule before committing to a more severe action.
+* **Connection Close**
+
+  * API value: _N/A_ (internal rule action that you cannot use in overrides).
+  * The client is instructed to establish a new connection (by disabling `keep-alive`) instead of reusing the existing connection. Existing requests are not affected.
+* **Force Connection Close**
+
+  * API value: _N/A_ (internal rule action that you cannot use in overrides).
+  * Closes ongoing HTTP connections. This action does not block a request, but it forces the client to reconnect. For HTTP/2 and HTTP/3 connections, the connection will be closed even if it breaks other requests running on the same connection.
+  * The performed action depends on the HTTP version:  
+    * HTTP/1: set the [Connection header ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Connection#directives) to `close`.
+    * HTTP/2: send a [GOAWAY frame ↗](https://datatracker.ietf.org/doc/html/rfc7540#section-6.8) to the client.
+* **DDoS Dynamic**
+
+  * API value: _N/A_ (internal rule action that you cannot use in overrides).
+  * Performs a specific action according to a set of internal guidelines defined by Cloudflare. The executed action can be one of the above or an undisclosed mitigation action.
 
 ## Sensitivity Level
 

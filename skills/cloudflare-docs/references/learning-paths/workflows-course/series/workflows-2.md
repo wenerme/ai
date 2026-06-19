@@ -7,15 +7,15 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
 # Monitor and batch your website data
 
-* [ Watch this episode ](#tab-panel-9299)
-* [ Step-by-step tutorial ](#tab-panel-9300)
-* [ Series overview ](#tab-panel-9301)
+* [ Watch this episode ](#tab-panel-9375)
+* [ Step-by-step tutorial ](#tab-panel-9376)
+* [ Series overview ](#tab-panel-9377)
 
 Workflows can be used to process batches of data, ensuring each item in the batch goes through a defined process with reliable execution. This section demonstrates processing a batch of puns using the Punderful application as an example.
 
@@ -54,10 +54,7 @@ To list the available workflows associated with your account:
 Terminal window
 
 ```
-
 npx wrangler workflows list
-
-
 ```
 
 To list the instances of a specific workflow (for example, the `publish` workflow):
@@ -65,10 +62,7 @@ To list the instances of a specific workflow (for example, the `publish` workflo
 Terminal window
 
 ```
-
 npx wrangler workflows instances list publish
-
-
 ```
 
 This command will show a list of workflow instances, their status (Queued, Running, Completed, Errored), and timestamps.
@@ -78,10 +72,7 @@ To view the details of a specific workflow instance, including its steps and the
 Terminal window
 
 ```
-
 npx wrangler workflows instances describe publish <instance-id>
-
-
 ```
 
 Replace `<instance-id>` with the actual ID of a running or completed instance from the `list` command output.
@@ -91,61 +82,8 @@ Replace `<instance-id>` with the actual ID of a running or completed instance fr
 Describing a workflow instance provides a detailed breakdown of its execution:
 
 ```
-
-Workflow Name: publish
-
-Instance ID: oPun-batch-aea07d75-95fa-448f-9573-6e435388eff7
-
-Version ID: 75665fce-24a1-4c83-a561-088aabc91e5f
-
-Status: Completed
-
-Trigger: API
-
-Queued: 10/24/2024, 1:43:45 AM
-
-Success: Yes
-
-Start: 10/24/2024, 1:43:45 AM
-
-End: 10/24/2024, 1:43:49 AM
-
-Duration: 4 seconds
-
-Last Successful Step: update-status-to-published-1
-
-Steps:
-
-
-Name: content-moderation-1
-
-Type: Step
-
-Start: 10/24/2024, 1:43:45 AM
-
-End: 10/24/2024, 1:43:45 AM
-
-Duration: 0 seconds
-
-Success: Yes
-
-Output: "true"
-
-Config: {"retries":{"limit":5,"delay":1000,"backoff":"exponential"},"timeout":"10 minutes"}
-
-Attempts:
-
-  Status: Completed
-
-  Start Time: Oct 23, 2024 6:44:57 PM
-
-  End Time: Oct 23, 2024 6:44:57 PM
-
-  Wall Time: 180 ms
-
-... (additional steps like create-pun-embedding-1, categorize-pun-1, add-embeddings-to-vector-store-1, update-status-to-published-1)
-
-
+Workflow Name: publishInstance ID: oPun-batch-aea07d75-95fa-448f-9573-6e435388eff7Version ID: 75665fce-24a1-4c83-a561-088aabc91e5fStatus: CompletedTrigger: APIQueued: 10/24/2024, 1:43:45 AMSuccess: YesStart: 10/24/2024, 1:43:45 AMEnd: 10/24/2024, 1:43:49 AMDuration: 4 secondsLast Successful Step: update-status-to-published-1Steps:
+Name: content-moderation-1Type: StepStart: 10/24/2024, 1:43:45 AMEnd: 10/24/2024, 1:43:45 AMDuration: 0 secondsSuccess: YesOutput: "true"Config: {"retries":{"limit":5,"delay":1000,"backoff":"exponential"},"timeout":"10 minutes"}Attempts:  Status: Completed  Start Time: Oct 23, 2024 6:44:57 PM  End Time: Oct 23, 2024 6:44:57 PM  Wall Time: 180 ms... (additional steps like create-pun-embedding-1, categorize-pun-1, add-embeddings-to-vector-store-1, update-status-to-published-1)
 ```
 
 This output shows the status, start/end times, duration, success status, and even the output and configuration for each step within the workflow instance.
@@ -160,7 +98,7 @@ This dashboard view provides a user-friendly way to observe the progress of your
 
 [ Watch Episode 2: Monitor and batch your website data ](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-2/) In this episode, we describe how Workflows can be used to process batches of data, ensuring each item in the batch goes through a defined process with reliable execution. 
 
-[ Watch Episode 3: Use cron triggers to develop time-aware applications ](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-3/) In this episode, we review Workflows ability to explicitly schedule tasks using cron triggers and pause execution with \`step.sleep\` allows developers to build sophisticated, time-aware applications. 
+[ Watch Episode 3: Use cron triggers to develop time-aware applications ](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-3/) In this episode, we review Workflows ability to explicitly schedule tasks using cron triggers and pause execution with \`step.sleep\` allows developers to build sophisticated, time-aware applications.
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-2/#page","headline":"Monitor and batch your website data · Cloudflare Learning Paths","description":"Workflows can be used to process batches of data, ensuring each item in the batch goes through a defined process with reliable execution. This section demonstrates processing a batch of puns using the Punderful application as an example.","url":"https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-2/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

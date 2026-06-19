@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -106,91 +106,21 @@ Any header starting with `X-` is allowed. This covers common headers like `X-Mai
 
 ## Usage examples
 
-* [ REST API (curl) ](#tab-panel-8529)
-* [ Workers binding ](#tab-panel-8530)
+* [ REST API (curl) ](#tab-panel-8605)
+* [ Workers binding ](#tab-panel-8606)
 
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send" \
-
-  --header "Authorization: Bearer <API_TOKEN>" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-    "to": "user@example.com",
-
-    "from": "notifications@yourdomain.com",
-
-    "subject": "Your weekly digest",
-
-    "html": "<h1>Weekly Digest</h1>",
-
-    "headers": {
-
-      "In-Reply-To": "<original-message-id@yourdomain.com>",
-
-      "References": "<original-message-id@yourdomain.com>",
-
-      "List-Unsubscribe": "<https://yourdomain.com/unsubscribe?id=abc123>",
-
-      "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
-
-      "X-Campaign-ID": "weekly-digest-2026-03",
-
-      "X-User-Segment": "premium"
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send" \  --header "Authorization: Bearer <API_TOKEN>" \  --header "Content-Type: application/json" \  --data '{    "to": "user@example.com",    "from": "notifications@yourdomain.com",    "subject": "Your weekly digest",    "html": "<h1>Weekly Digest</h1>",    "headers": {      "In-Reply-To": "<original-message-id@yourdomain.com>",      "References": "<original-message-id@yourdomain.com>",      "List-Unsubscribe": "<https://yourdomain.com/unsubscribe?id=abc123>",      "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",      "X-Campaign-ID": "weekly-digest-2026-03",      "X-User-Segment": "premium"    }  }'
 ```
 
 TypeScript
 
 ```
-
-const response = await env.EMAIL.send({
-
-  to: "user@example.com",
-
-  from: "notifications@yourdomain.com",
-
-  subject: "Your weekly digest",
-
-  html: "<h1>Weekly Digest</h1>",
-
-  headers: {
-
-    // Threading
-
-    "In-Reply-To": "<original-message-id@yourdomain.com>",
-
-    References: "<original-message-id@yourdomain.com>",
-
-
-    // List management (required by Gmail/Yahoo for bulk senders)
-
-    "List-Unsubscribe": "<https://yourdomain.com/unsubscribe?id=abc123>",
-
-    "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
-
-
-    // Custom tracking
-
-    "X-Campaign-ID": "weekly-digest-2026-03",
-
-    "X-User-Segment": "premium",
-
-  },
-
-});
-
-
+const response = await env.EMAIL.send({  to: "user@example.com",  from: "notifications@yourdomain.com",  subject: "Your weekly digest",  html: "<h1>Weekly Digest</h1>",  headers: {    // Threading    "In-Reply-To": "<original-message-id@yourdomain.com>",    References: "<original-message-id@yourdomain.com>",
+    // List management (required by Gmail/Yahoo for bulk senders)    "List-Unsubscribe": "<https://yourdomain.com/unsubscribe?id=abc123>",    "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+    // Custom tracking    "X-Campaign-ID": "weekly-digest-2026-03",    "X-User-Segment": "premium",  },});
 ```
 
 ## Header limits

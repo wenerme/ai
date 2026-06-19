@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,33 +28,15 @@ Displays a participant's avatar image or initials-based fallback avatar.
 ### Basic Usage
 
 ```
-
 import { RtkAvatar } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkAvatar participant={participant} />;
-
-}
-
-
+function MyComponent() {  return <RtkAvatar participant={participant} />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkAvatar } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkAvatar participant={participant} size="lg" variant="circular" />;
-
-}
-
-
+function MyComponent() {  return <RtkAvatar participant={participant} size="lg" variant="circular" />;}
 ```
 
 ```json

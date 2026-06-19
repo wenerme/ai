@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,35 +19,8 @@ Define a delay to be used when incoming requests match a rule you consider suspi
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request) {
-
-    // Define delay
-
-    const delay_in_seconds = 5;
-
-    // Introduce a delay
-
-    await new Promise((resolve) =>
-
-      setTimeout(resolve, delay_in_seconds * 1000),
-
-    ); // Set delay in milliseconds
-
-
-    // Pass the request to the origin
-
-    const response = await fetch(request);
-
-    return response;
-
-  },
-
-};
-
-
+export default {  async fetch(request) {    // Define delay    const delay_in_seconds = 5;    // Introduce a delay    await new Promise((resolve) =>      setTimeout(resolve, delay_in_seconds * 1000),    ); // Set delay in milliseconds
+    // Pass the request to the origin    const response = await fetch(request);    return response;  },};
 ```
 
 ## Snippet rule
@@ -61,10 +34,7 @@ Configure a custom filter expression:
 If you are using the Expression Editor, enter the following expression:
 
 ```
-
 (cf.bot_management.score lt 10)
-
-
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pipelines/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,7 +23,7 @@ All included usage is on a monthly basis.
 
 ## Pipelines pricing
 
-| Workers Free                               | Workers Paid |               |
+|                                            | Workers Free | Workers Paid  |
 | ------------------------------------------ | ------------ | ------------- |
 | **Streams (ingress)**                      |              |               |
 | Included                                   | 1 GB / month | Unlimited     |
@@ -58,23 +58,23 @@ Sink pricing is based on the volume of uncompressed data delivered to the destin
 
 A pipeline ingests 200 GB of log data per month and writes it directly to an R2 bucket in JSON format with no SQL transforms.
 
-| Dimension      | Usage     | Included | Billable | Cost  |
-| -------------- | --------- | -------- | -------- | ----- |
-| Streams        | 200 GB    | 50 GB    | 150 GB   | $0.00 |
-| SQL transforms | 0 GB      | 50 GB    | 0 GB     | $0.00 |
-| Sinks (JSON)   | 200 GB    | 50 GB    | 150 GB   | $4.50 |
-| **Total**      | **$4.50** |          |          |       |
+| Dimension      | Usage  | Included | Billable | Cost      |
+| -------------- | ------ | -------- | -------- | --------- |
+| Streams        | 200 GB | 50 GB    | 150 GB   | $0.00     |
+| SQL transforms | 0 GB   | 50 GB    | 0 GB     | $0.00     |
+| Sinks (JSON)   | 200 GB | 50 GB    | 150 GB   | $4.50     |
+| **Total**      |        |          |          | **$4.50** |
 
 ### Example 2: Filtered ingest to Iceberg with SQL
 
 A pipeline ingests 500 GB of event data per month. A SQL transform filters and reshapes the data, reducing output to 300 GB written to an R2 Data Catalog Iceberg table.
 
-| Dimension       | Usage      | Included | Billable | Cost   |
-| --------------- | ---------- | -------- | -------- | ------ |
-| Streams         | 500 GB     | 50 GB    | 450 GB   | $0.00  |
-| SQL transforms  | 500 GB     | 50 GB    | 450 GB   | $18.00 |
-| Sinks (Iceberg) | 300 GB     | 50 GB    | 250 GB   | $15.00 |
-| **Total**       | **$33.00** |          |          |        |
+| Dimension       | Usage  | Included | Billable | Cost       |
+| --------------- | ------ | -------- | -------- | ---------- |
+| Streams         | 500 GB | 50 GB    | 450 GB   | $0.00      |
+| SQL transforms  | 500 GB | 50 GB    | 450 GB   | $18.00     |
+| Sinks (Iceberg) | 300 GB | 50 GB    | 250 GB   | $15.00     |
+| **Total**       |        |          |          | **$33.00** |
 
 ## Cloudflare billing policy
 

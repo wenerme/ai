@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -46,8 +46,8 @@ API token configuration
 
 ## 1\. Set up your internal DNS zone
 
-* [ Dashboard ](#tab-panel-8081)
-* [ API ](#tab-panel-8082)
+* [ Dashboard ](#tab-panel-8157)
+* [ API ](#tab-panel-8158)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.  
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)
@@ -89,35 +89,14 @@ Example
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone Zone Edit`
 * `Zone DNS Edit`
 
 Create Zone
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "account": {
-
-        "id": "<ACCOUNT_ID>"
-
-    },
-
-    "name": "<ZONE_NAME>",
-
-    "type": "internal"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "account": {        "id": "<ACCOUNT_ID>"    },    "name": "<ZONE_NAME>",    "type": "internal"  }'
 ```
 
 1. Add DNS records to your internal zone using your preferred option:
@@ -131,8 +110,8 @@ During an [internal DNS query resolution](https://developers.cloudflare.com/dns/
 
 For details, refer to [reference zones](https://developers.cloudflare.com/dns/internal-dns/internal-zones/reference-zones/).
 
-* [ Dashboard ](#tab-panel-8083)
-* [ API ](#tab-panel-8084)
+* [ Dashboard ](#tab-panel-8159)
+* [ API ](#tab-panel-8160)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.  
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)
@@ -147,39 +126,22 @@ In the following example, internal zone A (ID `8a904aeb565c42cfa207d98f6edea2f3`
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone DNS Settings Write`
 * `DNS Write`
 
 Update DNS Settings
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/8a904aeb565c42cfa207d98f6edea2f3/dns_settings" \
-
-  --request PATCH \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "internal_dns": {
-
-        "reference_zone_id": "8e64c6fb4b514f3faf64de81efc11e51"
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/8a904aeb565c42cfa207d98f6edea2f3/dns_settings" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "internal_dns": {        "reference_zone_id": "8e64c6fb4b514f3faf64de81efc11e51"    }  }'
 ```
 
 ## 2\. Link your internal zone to a view
 
 Since the resolver policy will require a [DNS view](https://developers.cloudflare.com/dns/internal-dns/dns-views/), you must have at least one view to be able to route requests to internal zones.
 
-* [ Dashboard ](#tab-panel-8079)
-* [ API ](#tab-panel-8080)
+* [ Dashboard ](#tab-panel-8155)
+* [ API ](#tab-panel-8156)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.  
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)
@@ -218,8 +180,8 @@ The Gateway configuration must exist within the same Cloudflare account where th
 
 Besides selecting an internal DNS view when setting up your resolver policies, you can also enable the **fallback through public DNS** option.
 
-* [ Dashboard ](#tab-panel-8077)
-* [ API ](#tab-panel-8078)
+* [ Dashboard ](#tab-panel-8153)
+* [ API ](#tab-panel-8154)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Firewall policies** \> **Resolver policies**.
 2. Select **Add a policy** and enter a name and description.

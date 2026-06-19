@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,45 +29,15 @@ A switch component which follows RTK Design System.
 ### Basic Usage
 
 ```
-
 import { RtkSwitch } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return <RtkSwitch />;
-
-}
-
-
+function MyComponent() {  return <RtkSwitch />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkSwitch } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkSwitch
-
-      checked={true}
-
-      disabled={true}
-
-      readonly={true}
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkSwitch      checked={true}      disabled={true}      readonly={true}    />  );}
 ```
 
 ```json

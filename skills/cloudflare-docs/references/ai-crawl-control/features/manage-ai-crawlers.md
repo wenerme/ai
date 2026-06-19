@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-crawl-control/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -51,8 +51,8 @@ The values of the table will update according to your filter.
 
 ## Take action for each AI crawler
 
-* [ Without pay per crawl ](#tab-panel-6519)
-* [ With pay per crawl ](#tab-panel-6520)
+* [ Without pay per crawl ](#tab-panel-6593)
+* [ With pay per crawl ](#tab-panel-6594)
 
 For each AI crawler, you can choose to allow or block access.
 

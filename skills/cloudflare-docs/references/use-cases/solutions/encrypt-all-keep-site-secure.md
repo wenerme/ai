@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -34,9 +34,10 @@ Your SSL/TLS encryption mode controls how Cloudflare connects to your origin ser
 
 1. In the Cloudflare dashboard, go to the **SSL/TLS Overview** page.  
 [ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
-2. Check the current encryption mode displayed on the page.  
-   * If the mode is already **Full (strict)**, skip to [Redirect all HTTP requests to HTTPS](#redirect-all-http-requests-to-https).  
-   * If the mode is not **Full (strict)**, continue below to install an origin certificate (if needed) and change the mode.
+2. Check the current encryption mode displayed on the page.
+
+  * If the mode is already **Full (strict)**, skip to [Redirect all HTTP requests to HTTPS](#redirect-all-http-requests-to-https).
+  * If the mode is not **Full (strict)**, continue below to install an origin certificate (if needed) and change the mode.
 
 ### Install a Cloudflare Origin CA certificate
 
@@ -49,15 +50,17 @@ If your origin already has a valid certificate from a publicly trusted certifica
 1. Go to the **Origin Server** page.  
 [ Go to **Origin Server** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
 2. On the **Origin Certificates** tab, select **Create Certificate**.
-3. Choose either:  
-   * **Generate private key and CSR with Cloudflare**: Private key type can be RSA or ECC.  
-   * **Use my private key and CSR**: Paste your Certificate Signing Request (CSR) into the text field.
+3. Choose either:
+
+  * **Generate private key and CSR with Cloudflare**: Private key type can be RSA or ECC.
+  * **Use my private key and CSR**: Paste your Certificate Signing Request (CSR) into the text field.
 4. List the hostnames (including wildcards) the certificate should protect with SSL encryption. The zone apex and first level wildcard hostname are included by default.
 5. Choose a **Certificate Validity** period.
 6. Select **Create**.
-7. Choose the **Key Format**:  
-   * Servers using OpenSSL (such as Apache and NGINX) generally expect PEM files (Base64-encoded ASCII), but also work with binary DER files.  
-   * Servers using Windows and Apache Tomcat require PKCS#7 (a `.p7b` file).
+7. Choose the **Key Format**:
+
+  * Servers using OpenSSL (such as Apache and NGINX) generally expect PEM files (Base64-encoded ASCII), but also work with binary DER files.
+  * Servers using Windows and Apache Tomcat require PKCS#7 (a `.p7b` file).
 8. Copy the signed **Origin Certificate** and **Private Key** into separate files. For security reasons, you cannot see the **Private Key** after you exit this screen.
 9. Select **OK**.
 
@@ -80,8 +83,8 @@ If you do not see your server listed, search the [DigiCert documentation ↗](ht
 
 After installing a valid certificate on your origin server, set the encryption mode to **Full (strict)** by following the steps below.
 
-* [ Dashboard ](#tab-panel-11063)
-* [ API ](#tab-panel-11064)
+* [ Dashboard ](#tab-panel-11080)
+* [ API ](#tab-panel-11081)
 
 To change your encryption mode in the dashboard:
 
@@ -110,8 +113,8 @@ Note
 
 If only some parts of your application can support HTTPS traffic, do not turn on Always Use HTTPS. Use a [single redirect](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) to selectively redirect specific paths to HTTPS instead. Refer to [Redirect admin area requests to HTTPS](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-admin-https/) for an example.
 
-* [ Dashboard ](#tab-panel-11053)
-* [ API ](#tab-panel-11054)
+* [ Dashboard ](#tab-panel-11070)
+* [ API ](#tab-panel-11071)
 
 1. In the Cloudflare dashboard, go to the **SSL/TLS Overview** page.  
 [ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
@@ -126,8 +129,8 @@ If only some parts of your application can support HTTPS traffic, do not turn on
 
 Automatic HTTPS Rewrites prevents mixed content errors by rewriting HTTP resource URLs in your page HTML to HTTPS. This is useful for sites where you do not control all asset URLs, such as CMS-hosted content or embedded third-party resources.
 
-* [ Dashboard ](#tab-panel-11055)
-* [ API ](#tab-panel-11056)
+* [ Dashboard ](#tab-panel-11072)
+* [ API ](#tab-panel-11073)
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.  
 [ Go to **Edge Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
@@ -147,8 +150,8 @@ After your encryption mode is set and HTTP traffic is redirected, strengthen you
 
 TLS 1.0 and 1.1 have known vulnerabilities and are no longer considered secure. Setting the minimum TLS version to 1.2 blocks connections from clients using older protocols. For guidance on which version to choose, refer to [TLS protocols](https://developers.cloudflare.com/ssl/reference/protocols/).
 
-* [ Dashboard ](#tab-panel-11057)
-* [ API ](#tab-panel-11058)
+* [ Dashboard ](#tab-panel-11074)
+* [ API ](#tab-panel-11075)
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.  
 [ Go to **Edge Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
@@ -164,8 +167,8 @@ To set minimum TLS versions for individual hostnames instead of the entire zone,
 
 TLS 1.3 provides faster handshakes and improved security over TLS 1.2.
 
-* [ Dashboard ](#tab-panel-11059)
-* [ API ](#tab-panel-11060)
+* [ Dashboard ](#tab-panel-11076)
+* [ API ](#tab-panel-11077)
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.  
 [ Go to **Edge Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
@@ -187,19 +190,20 @@ Before turning on HSTS, confirm these prerequisites:
 * Your DNS records are set to [Proxied](https://developers.cloudflare.com/dns/proxy-status/).
 * You are not redirecting HTTPS to HTTP anywhere.
 
-* [ Dashboard ](#tab-panel-11061)
-* [ API ](#tab-panel-11062)
+* [ Dashboard ](#tab-panel-11078)
+* [ API ](#tab-panel-11079)
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.  
 [ Go to **Edge Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. For **HTTP Strict Transport Security (HSTS)**, select **Enable HSTS**.
 3. Read the dialog and select **I understand**.
 4. Select **Next**.
-5. Configure the HSTS settings:  
-   * **Max Age Header**: Choose a duration (start with 6 months, increase to 12 months after confirming stability).  
-   * **Apply HSTS policy to subdomains (includeSubDomains)**: Turn on if all your subdomains support HTTPS. Subdomains without HTTPS become inaccessible when this is enabled.  
-   * **Preload**: Turn on only after setting Max Age Header to 12 months. Preload inclusion prevents downgrade attacks on the first visit. Submit your domain at [hstspreload.org ↗](https://hstspreload.org) after turning on preload.  
-   * **No-Sniff Header**: Sends the `X-Content-Type-Options: nosniff` header. Turn on to prevent browsers from MIME-type sniffing.
+5. Configure the HSTS settings:
+
+  * **Max Age Header**: Choose a duration (start with 6 months, increase to 12 months after confirming stability).
+  * **Apply HSTS policy to subdomains (includeSubDomains)**: Turn on if all your subdomains support HTTPS. Subdomains without HTTPS become inaccessible when this is enabled.
+  * **Preload**: Turn on only after setting Max Age Header to 12 months. Preload inclusion prevents downgrade attacks on the first visit. Submit your domain at [hstspreload.org ↗](https://hstspreload.org) after turning on preload.
+  * **No-Sniff Header**: Sends the `X-Content-Type-Options: nosniff` header. Turn on to prevent browsers from MIME-type sniffing.
 6. Select **Save**.
 
 Send a [PATCH](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `security_header` as the setting name in the URI path, and specify the `value` object that includes your HSTS settings.
@@ -269,10 +273,7 @@ For example, to test TLS 1.1, use the `curl` command below. Replace `www.example
 Terminal window
 
 ```
-
 curl https://www.example.com -svo /dev/null --tls-max 1.1
-
-
 ```
 
 If the TLS version you are testing is blocked by Cloudflare, the TLS handshake is not completed and returns an error:

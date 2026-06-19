@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,45 +29,15 @@ A component which lists all participants, with ability to run privileged actions
 ### Basic Usage
 
 ```
-
 import { RtkBreakoutRoomParticipants } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return <RtkBreakoutRoomParticipants />;
-
-}
-
-
+function MyComponent() {  return <RtkBreakoutRoomParticipants />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkBreakoutRoomParticipants } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkBreakoutRoomParticipants
-
-      meeting={meeting}
-
-      participantIds="example"
-
-      selectedParticipantIds="example"
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkBreakoutRoomParticipants      meeting={meeting}      participantIds="example"      selectedParticipantIds="example"    />  );}
 ```
 
 ```json

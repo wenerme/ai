@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -24,56 +24,15 @@ All Client Certificate details can be found in the [tlsClientAuth](https://devel
 
 Example Cloudflare Workers code to return all headers and gain visibility, including [Client Certificate headers](https://developers.cloudflare.com/ssl/client-certificates/forward-a-client-certificate/#cloudflare-workers):
 
-* [  Module Worker ](#tab-panel-9075)
-* [  Service Worker ](#tab-panel-9076)
+* [  Module Worker ](#tab-panel-9151)
+* [  Service Worker ](#tab-panel-9152)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    const { tlsClientAuth = {} } = request.cf || {};
-
-    const tlsHeaders = {
-
-      'X-CERT-ISSUER-DN': tlsClientAuth.certIssuerDN,
-
-      'X-CERT-SUBJECT-DN': tlsClientAuth.certSubjectDN,
-
-      'X-CERT-ISSUER-DN-L': tlsClientAuth.certIssuerDNLegacy,
-
-      'X-CERT-SUBJECT-DN-L': tlsClientAuth.certSubjectDNLegacy,
-
-      'X-CERT-SERIAL': tlsClientAuth.certSerial,
-
-      'X-CERT-FINGER': tlsClientAuth.certFingerprintSHA1,
-
-      'X-CERT-VERIFY': tlsClientAuth.certVerify,
-
-      'X-CERT-NOTBE': tlsClientAuth.certNotBefore,
-
-      'X-CERT-NOTAF': tlsClientAuth.certNotAfter
-
-    };
-
-
-    const headers = Object.fromEntries(request.headers);
-
-    return new Response(JSON.stringify({ ...headers, ...tlsHeaders }, null, 2), {
-
-      headers: { 'Content-Type': 'application/json' }
-
-    });
-
-
-}
-
-}
-
-
+export default {  async fetch(request, env, ctx) {    const { tlsClientAuth = {} } = request.cf || {};    const tlsHeaders = {      'X-CERT-ISSUER-DN': tlsClientAuth.certIssuerDN,      'X-CERT-SUBJECT-DN': tlsClientAuth.certSubjectDN,      'X-CERT-ISSUER-DN-L': tlsClientAuth.certIssuerDNLegacy,      'X-CERT-SUBJECT-DN-L': tlsClientAuth.certSubjectDNLegacy,      'X-CERT-SERIAL': tlsClientAuth.certSerial,      'X-CERT-FINGER': tlsClientAuth.certFingerprintSHA1,      'X-CERT-VERIFY': tlsClientAuth.certVerify,      'X-CERT-NOTBE': tlsClientAuth.certNotBefore,      'X-CERT-NOTAF': tlsClientAuth.certNotAfter    };
+    const headers = Object.fromEntries(request.headers);    return new Response(JSON.stringify({ ...headers, ...tlsHeaders }, null, 2), {      headers: { 'Content-Type': 'application/json' }    });
+}}
 ```
 
 Service Workers are deprecated
@@ -83,53 +42,8 @@ Service Workers are deprecated, but still supported. We recommend using [Module 
 JavaScript
 
 ```
-
-addEventListener('fetch', event => {
-
-  event.respondWith(
-
-    (async request => {
-
-      const { tlsClientAuth = {} } = request.cf || {};
-
-      const tlsHeaders = {
-
-        'X-CERT-ISSUER-DN': tlsClientAuth.certIssuerDN,
-
-        'X-CERT-SUBJECT-DN': tlsClientAuth.certSubjectDN,
-
-        'X-CERT-ISSUER-DN-L': tlsClientAuth.certIssuerDNLegacy,
-
-        'X-CERT-SUBJECT-DN-L': tlsClientAuth.certSubjectDNLegacy,
-
-        'X-CERT-SERIAL': tlsClientAuth.certSerial,
-
-        'X-CERT-FINGER': tlsClientAuth.certFingerprintSHA1,
-
-        'X-CERT-VERIFY': tlsClientAuth.certVerify,
-
-        'X-CERT-NOTBE': tlsClientAuth.certNotBefore,
-
-        'X-CERT-NOTAF': tlsClientAuth.certNotAfter
-
-      };
-
-
-      const headers = Object.fromEntries(request.headers);
-
-      return new Response(JSON.stringify({ ...headers, ...tlsHeaders }, null, 2), {
-
-        headers: { 'Content-Type': 'application/json' }
-
-      });
-
-    })(event.request)
-
-  );
-
-});
-
-
+addEventListener('fetch', event => {  event.respondWith(    (async request => {      const { tlsClientAuth = {} } = request.cf || {};      const tlsHeaders = {        'X-CERT-ISSUER-DN': tlsClientAuth.certIssuerDN,        'X-CERT-SUBJECT-DN': tlsClientAuth.certSubjectDN,        'X-CERT-ISSUER-DN-L': tlsClientAuth.certIssuerDNLegacy,        'X-CERT-SUBJECT-DN-L': tlsClientAuth.certSubjectDNLegacy,        'X-CERT-SERIAL': tlsClientAuth.certSerial,        'X-CERT-FINGER': tlsClientAuth.certFingerprintSHA1,        'X-CERT-VERIFY': tlsClientAuth.certVerify,        'X-CERT-NOTBE': tlsClientAuth.certNotBefore,        'X-CERT-NOTAF': tlsClientAuth.certNotAfter      };
+      const headers = Object.fromEntries(request.headers);      return new Response(JSON.stringify({ ...headers, ...tlsHeaders }, null, 2), {        headers: { 'Content-Type': 'application/json' }      });    })(event.request)  );});
 ```
 
 The response when using the browser with a P12 Certificate to visit the mTLS hostname would look similar to this example:
@@ -137,28 +51,7 @@ The response when using the browser with a P12 Certificate to visit the mTLS hos
 ![Example response after exposing an mTLS header with Cloudflare Workers](https://developers.cloudflare.com/_astro/expose-mtls-workers.CZtg7nI7_2kyLoG.webp) 
 
 ```
-
-{
-
-  "X-CERT-ISSUER-DN": "CN=Managed CA abcdefghijklmnopq123456789,OU=www.cloudflare.com,O=Cloudflare\\, Inc.,L=San Francisco,ST=California,C=US",
-
-  "X-CERT-SUBJECT-DN": "CN=Cloudflare,C=US",
-
-  "X-CERT-ISSUER-DN-L": "/C=US/ST=California/L=San Francisco/O=Cloudflare, Inc./OU=www.cloudflare.com/CN=Managed CA abcdefghijklmnopq123456789",
-
-  "X-CERT-SUBJECT-DN-L": "/C=US/CN=Cloudflare",
-
-  "X-CERT-SERIAL": "37C52778E2F1820CC6342172A0E0ED33A4555F8B",
-
-  "X-CERT-FINGER": "161e3a2089add0b2134ec43c9071f460e9f4b898",
-
-  "X-CERT-NOTBE": "May 25 23:11:00 2024 GMT",
-
-  "X-CERT-NOTAF": "May 23 23:11:00 2034 GMT"
-
-}
-
-
+{  "X-CERT-ISSUER-DN": "CN=Managed CA abcdefghijklmnopq123456789,OU=www.cloudflare.com,O=Cloudflare\\, Inc.,L=San Francisco,ST=California,C=US",  "X-CERT-SUBJECT-DN": "CN=Cloudflare,C=US",  "X-CERT-ISSUER-DN-L": "/C=US/ST=California/L=San Francisco/O=Cloudflare, Inc./OU=www.cloudflare.com/CN=Managed CA abcdefghijklmnopq123456789",  "X-CERT-SUBJECT-DN-L": "/C=US/CN=Cloudflare",  "X-CERT-SERIAL": "37C52778E2F1820CC6342172A0E0ED33A4555F8B",  "X-CERT-FINGER": "161e3a2089add0b2134ec43c9071f460e9f4b898",  "X-CERT-NOTBE": "May 25 23:11:00 2024 GMT",  "X-CERT-NOTAF": "May 23 23:11:00 2034 GMT"}
 ```
 
 Note

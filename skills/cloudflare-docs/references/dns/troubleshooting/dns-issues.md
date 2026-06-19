@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -83,19 +83,13 @@ You can check if a negative cache entry is active by querying for the non-existe
 Terminal window
 
 ```
-
 dig +noall +answer +authority mynewrecord.example.com
-
-
 ```
 
 If the record is still negatively cached, the response will include the zone's SOA record in the authority section with a TTL indicating how many seconds remain before the entry expires:
 
 ```
-
 example.com.    256  IN  SOA  ...
-
-
 ```
 
 In this example, the negative cache response will continue for 256 more seconds.
@@ -114,23 +108,13 @@ To verify the record was correctly created, query Cloudflare's authoritative nam
 Terminal window
 
 ```
-
-# Find the authoritative nameservers for your zone
-
-dig @1.1.1.1 example.com NS +short
-
-
+# Find the authoritative nameservers for your zonedig @1.1.1.1 example.com NS +short
 ```
 
 Terminal window
 
 ```
-
-# Query the authoritative nameserver for your new record
-
-dig @hera.ns.cloudflare.com mynewrecord.example.com A
-
-
+# Query the authoritative nameserver for your new recorddig @hera.ns.cloudflare.com mynewrecord.example.com A
 ```
 
 Querying the authoritative nameserver directly bypasses resolver caching. If the record is returned, resolvers will eventually start returning it as well. If the record does not appear, verify the record exists in the Cloudflare dashboard and that the hostname matches exactly.

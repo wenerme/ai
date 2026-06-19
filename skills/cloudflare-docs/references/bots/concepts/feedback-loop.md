@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -46,8 +46,8 @@ If Cloudflare is unable to detect a portion of automated traffic on your site, s
 
 ## Submit a report
 
-* [  New dashboard ](#tab-panel-6834)
-* [ Old dashboard ](#tab-panel-6835)
+* [  New dashboard ](#tab-panel-6910)
+* [ Old dashboard ](#tab-panel-6911)
 
 1. In the Cloudflare dashboard, go to the **Security Analytics** page.  
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
@@ -69,76 +69,7 @@ If Cloudflare is unable to detect a portion of automated traffic on your site, s
 Terminal window
 
 ```
-
-curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/bot_management/feedback' \
-
---header "X-Auth-Email: <EMAIL>" \
-
---header "X-Auth-Key: <API_KEY>" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "type": "false_positive",
-
-  "description": "Legitimate customers having low score",
-
-  "expression": "(cf.bot_management.score le 46 and ip.src.asnum eq 132892 and http.host eq \"api-discovery.theburritobot.com\" and cf.bot_management.ja3_hash eq \"3fed133de60c35724739b913924b6c24\")",
-
-  "first_request_seen_at": "2022-08-01T00:00:00Z",
-
-  "last_request_seen_at": "2022-08-10T00:00:00Z",
-
-  "requests": 100,
-
-  "requests_by_score": {
-
-    "1": 50,
-
-    "10": 50
-
-  },
-
-  "requests_by_score_src": {
-
-    "heuristics": 25,
-
-    "machine_learning": 75
-
-  },
-
-  "requests_by_attribute": {
-
-    "topIPs": [
-
-      {
-
-        "metric": "10.75.34.1",
-
-        "requests": 100
-
-      }
-
-    ],
-
-    "topUserAgents": [
-
-      {
-
-        "metric": "curl/7.68.0",
-
-        "requests": 100
-
-      }
-
-    ]
-
-  }
-
-}'
-
-
+curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/bot_management/feedback' \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "type": "false_positive",  "description": "Legitimate customers having low score",  "expression": "(cf.bot_management.score le 46 and ip.src.asnum eq 132892 and http.host eq \"api-discovery.theburritobot.com\" and cf.bot_management.ja3_hash eq \"3fed133de60c35724739b913924b6c24\")",  "first_request_seen_at": "2022-08-01T00:00:00Z",  "last_request_seen_at": "2022-08-10T00:00:00Z",  "requests": 100,  "requests_by_score": {    "1": 50,    "10": 50  },  "requests_by_score_src": {    "heuristics": 25,    "machine_learning": 75  },  "requests_by_attribute": {    "topIPs": [      {        "metric": "10.75.34.1",        "requests": 100      }    ],    "topUserAgents": [      {        "metric": "curl/7.68.0",        "requests": 100      }    ]  }}'
 ```
 
 ### List feedback reports
@@ -146,85 +77,11 @@ curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/bot_management/feedba
 Terminal window
 
 ```
-
-curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/bot_management/feedback' \
-
---header "X-Auth-Email: <EMAIL>" \
-
---header "X-Auth-Key: <API_KEY>"
-
-
+curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/bot_management/feedback' \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>"
 ```
 
 ```
-
-[
-
-  {
-
-    "created_at": "2022-08-19T00:05:24.749712Z",
-
-    "type": "false_positive",
-
-    "description": "Legitimate customers having low score",
-
-    "expression": "(cf.bot_management.score le 46 and ip.src.asnum eq 132892 and http.host eq \"api-discovery.theburritobot.com\" and cf.bot_management.ja3_hash eq \"3fed133de60c35724739b913924b6c24\")",
-
-    "first_request_seen_at": "2022-08-01T00:00:00Z",
-
-    "last_request_seen_at": "2022-08-10T00:00:00Z",
-
-    "requests": 100,
-
-    "requests_by_score": {
-
-      "1": 50,
-
-      "10": 50
-
-    },
-
-    "requests_by_score_src": {
-
-      "heuristics": 25,
-
-      "machine_learning": 75
-
-    },
-
-    "requests_by_attribute": {
-
-      "topIPs": [
-
-        {
-
-          "metric": "10.75.34.1",
-
-          "requests": 100
-
-        }
-
-      ],
-
-      "topUserAgents": [
-
-        {
-
-          "metric": "curl/7.68.0",
-
-          "requests": 100
-
-        }
-
-      ]
-
-    }
-
-  }
-
-]
-
-
+[  {    "created_at": "2022-08-19T00:05:24.749712Z",    "type": "false_positive",    "description": "Legitimate customers having low score",    "expression": "(cf.bot_management.score le 46 and ip.src.asnum eq 132892 and http.host eq \"api-discovery.theburritobot.com\" and cf.bot_management.ja3_hash eq \"3fed133de60c35724739b913924b6c24\")",    "first_request_seen_at": "2022-08-01T00:00:00Z",    "last_request_seen_at": "2022-08-10T00:00:00Z",    "requests": 100,    "requests_by_score": {      "1": 50,      "10": 50    },    "requests_by_score_src": {      "heuristics": 25,      "machine_learning": 75    },    "requests_by_attribute": {      "topIPs": [        {          "metric": "10.75.34.1",          "requests": 100        }      ],      "topUserAgents": [        {          "metric": "curl/7.68.0",          "requests": 100        }      ]    }  }]
 ```
 
 ## API Fields
@@ -244,66 +101,19 @@ curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/bot_management/feedba
 `requests_by_score`
 
 ```
-
-{
-
-  "1": 50,
-
-  "10": 50
-
-}
-
-
+{  "1": 50,  "10": 50}
 ```
 
 `requests_by_score_src`
 
 ```
-
-{
-
-  "machine_learning": 75,
-
-  "heuristics": 25
-
-}
-
-
+{  "machine_learning": 75,  "heuristics": 25}
 ```
 
 `requests_by_attribute`
 
 ```
-
-{
-
-  "topIPs": [
-
-    {
-
-      "metric": "10.75.34.1"
-
-      "requests": 100
-
-    }
-
-  ],
-
-  "topUserAgents": [
-
-    {
-
-      "metric": "curl/7.68.0",
-
-      "requests": 100
-
-    }
-
-  ]
-
-}
-
-
+{  "topIPs": [    {      "metric": "10.75.34.1"      "requests": 100    }  ],  "topUserAgents": [    {      "metric": "curl/7.68.0",      "requests": 100    }  ]}
 ```
 
 ### Expression fields

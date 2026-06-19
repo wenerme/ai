@@ -6,15 +6,15 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agent-setup/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
-[ All agents](https://developers.cloudflare.com/agent-setup/) 
+[ All agents ](https://developers.cloudflare.com/agent-setup/) 
 
 ![GitHub Copilot icon](https://developers.cloudflare.com/icons/agents/copilot/light.svg) ![GitHub Copilot icon](https://developers.cloudflare.com/icons/agents/copilot/dark.svg) 
 
-#  GitHub Copilot + Cloudflare
+#  GitHub Copilot + Cloudflare 
 
  GitHub 
 
@@ -22,7 +22,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 TerminalCloudExtension
 
-[ Cloudflare Skills ↗](https://github.com/cloudflare/skills)[ Cloudflare Code Mode API MCP ↗](https://github.com/cloudflare/mcp)[ Cloudflare Domain Specific MCPs ↗](https://github.com/cloudflare/mcp-server-cloudflare)[ GitHub Copilot Docs ↗](https://docs.github.com/en/copilot) 
+[ Cloudflare Skills ↗ ](https://github.com/cloudflare/skills)[ Cloudflare Code Mode API MCP ↗ ](https://github.com/cloudflare/mcp)[ Cloudflare Domain Specific MCPs ↗ ](https://github.com/cloudflare/mcp-server-cloudflare)[ GitHub Copilot Docs ↗ ](https://docs.github.com/en/copilot) 
 
 ## Quick start
 
@@ -36,20 +36,12 @@ npx skills add https://github.com/cloudflare/skills
 3. **Configure Cloudflare MCP servers**  
 For VS Code, add to `.vscode/mcp.json`. For Copilot CLI, add to `~/.copilot/mcp-config.json` for user-level configuration or `.mcp.json` or `.github/mcp.json` for project-level configuration. For domain-specific MCP servers, refer to [mcp-server-cloudflare ↗](https://github.com/cloudflare/mcp-server-cloudflare). For the full Cloudflare API MCP server (Code Mode), refer to [cloudflare/mcp ↗](https://github.com/cloudflare/mcp).  
 ```  
-{  
-  "mcpServers": {  
-    "cloudflare": { "url": "https://mcp.cloudflare.com/mcp" },  
-    "cloudflare-docs": { "url": "https://docs.mcp.cloudflare.com/mcp" },  
-    "cloudflare-bindings": { "url": "https://bindings.mcp.cloudflare.com/mcp" },  
-    "cloudflare-builds": { "url": "https://builds.mcp.cloudflare.com/mcp" },  
-    "cloudflare-observability": { "url": "https://observability.mcp.cloudflare.com/mcp" }  
-  }  
-}  
+{  "mcpServers": {    "cloudflare": { "url": "https://mcp.cloudflare.com/mcp" },    "cloudflare-docs": { "url": "https://docs.mcp.cloudflare.com/mcp" },    "cloudflare-bindings": { "url": "https://bindings.mcp.cloudflare.com/mcp" },    "cloudflare-builds": { "url": "https://builds.mcp.cloudflare.com/mcp" },    "cloudflare-observability": { "url": "https://observability.mcp.cloudflare.com/mcp" }  }}  
 ```
 4. **Try a prompt**  
 Open Copilot Chat (**Ctrl+Shift+I**), switch to agent mode, and try a prompt — for example:  
 ```  
-Set up WAF rules to block SQL injection and XSS attacks on my application.  
+Check my Workers deployment logs for errors and suggest fixes.  
 ```
 
 ## Cloudflare platform access
@@ -58,9 +50,9 @@ Expand any section to learn more.
 
 Cloudflare Skills 
 
-Persistent platform context that teaches the agent how Cloudflare works.
+Persistent platform context that teaches the agent how Cloudflare works. 
 
-Skills are instructions the agent loads on demand. The [cloudflare/skills](https://github.com/cloudflare/skills)bundle covers every layer of the platform — so the agent knows your conventions without you re-explaining them.
+Skills are instructions the agent loads on demand. The [cloudflare/skills ](https://github.com/cloudflare/skills) bundle covers every layer of the platform — so the agent knows your conventions without you re-explaining them. 
 
 * agents-sdk Build AI agents on Cloudflare Workers using the Agents SDK. Load when creating stateful agents, durable workflows, real-time WebSocket apps, scheduled tasks, MCP servers, chat applications, voice agents, or browser automation. Covers Agent class, state management, callable RPC, Workflows, durable execution, queues, retries, observability, and React hooks. Biases towards retrieval from Cloudflare docs over pre-trained knowledge.
 * cloudflare Comprehensive Cloudflare platform skill covering Workers, Pages, storage (KV, D1, R2), AI (Workers AI, Vectorize, Agents SDK), feature flags (Flagship), networking (Tunnel, Spectrum), security (WAF, DDoS), and infrastructure-as-code (Terraform, Pulumi). Use for any Cloudflare development task. Biases towards retrieval from Cloudflare docs over pre-trained knowledge.
@@ -76,9 +68,9 @@ Skills are instructions the agent loads on demand. The [cloudflare/skills](https
 
 MCP servers 
 
-Live access to the Cloudflare API, docs, and observability.
+Live access to the Cloudflare API, docs, and observability. 
 
-MCP servers provide typed tools to call into Cloudflare at runtime. There are two options: [Code Mode](https://blog.cloudflare.com/code-mode-mcp/) — a single server that covers the entire Cloudflare API (2,500+ endpoints in \~1,000 tokens) — or a set of focused, domain-specific servers hosted in the [cloudflare/mcp-server-cloudflare](https://github.com/cloudflare/mcp-server-cloudflare)repo. The full catalog is also in the [MCP servers for Cloudflare](https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/)docs.
+MCP servers provide typed tools to call into Cloudflare at runtime. There are two options: [Code Mode](https://blog.cloudflare.com/code-mode-mcp/) — a single server that covers the entire Cloudflare API (2,500+ endpoints in \~1,000 tokens) — or a set of focused, domain-specific servers hosted in the [cloudflare/mcp-server-cloudflare ](https://github.com/cloudflare/mcp-server-cloudflare) repo. The full catalog is also in the [MCP servers for Cloudflare ](https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/) docs. 
 
 * Code mode API code mode Broad access to the full Cloudflare API via code execution, with minimal token overhead https://mcp.cloudflare.com/mcp
 * AI Gateway server Search your logs, get details about the prompts and responses https://ai-gateway.mcp.cloudflare.com/mcp
@@ -97,9 +89,9 @@ MCP servers provide typed tools to call into Cloudflare at runtime. There are tw
 
 Wrangler CLI 
 
-Local dev, deploys, and Workers-specific commands.
+Local dev, deploys, and Workers-specific commands. 
 
-Use [Wrangler](https://developers.cloudflare.com/workers/wrangler/) for local development, deploys, and product-specific commands like `wrangler d1 migrations apply` or `wrangler tail`. The bundled **wrangler** Skill teaches the agent when to reach for it.
+Use [Wrangler](https://developers.cloudflare.com/workers/wrangler/) for local development, deploys, and product-specific commands like `wrangler d1 migrations apply` or `wrangler tail`. The bundled **wrangler** Skill teaches the agent when to reach for it. 
 
 What’s next
 
@@ -107,9 +99,9 @@ The unified `cf` CLI is in technical preview — a next-generation CLI that cove
 
 Agent-friendly docs 
 
-Token-efficient references optimized for agents.
+Token-efficient references optimized for agents. 
 
-Append `/index.md` to any Cloudflare docs URL for a clean markdown version. Every top-level product section also has its own `llms.txt` — a page index sized for a single context window. A few useful ones:
+Append `/index.md` to any Cloudflare docs URL for a clean markdown version. Every top-level product section also has its own `llms.txt` — a page index sized for a single context window. A few useful ones: 
 
 * [developers.cloudflare.com/llms.txt](https://developers.cloudflare.com/llms.txt) — directory of every Cloudflare product.
 * [developers.cloudflare.com/workers/llms.txt](https://developers.cloudflare.com/workers/llms.txt)
@@ -117,7 +109,7 @@ Append `/index.md` to any Cloudflare docs URL for a clean markdown version. Ever
 * [developers.cloudflare.com/r2/llms.txt](https://developers.cloudflare.com/r2/llms.txt)
 * [developers.cloudflare.com/d1/llms.txt](https://developers.cloudflare.com/d1/llms.txt)
 
-For a full overview of how these docs are structured for agents, refer to the [Docs for Agents guide](https://developers.cloudflare.com/docs-for-agents/).
+For a full overview of how these docs are structured for agents, refer to the [Docs for Agents guide](https://developers.cloudflare.com/docs-for-agents/). 
 
 ## Example prompts
 
@@ -165,13 +157,13 @@ Enable the [Cloudflare docs MCP server](https://github.com/cloudflare/mcp-server
 
 Also worth knowing 
 
-Cloudflare is not just a deploy target for agents, it is a full stack for building your own.
+Cloudflare is not just a deploy target for agents, it is a full stack for building your own. 
 
 [ Agents SDK Stateful AI agents with state, scheduling, RPC, email, streaming chat — and the Code Mode SDK for token-efficient tool use. Learn more → ](https://developers.cloudflare.com/agents/) [ Build an MCP server Ship a remote MCP server on Workers with OAuth, durable state, and streamable HTTP transport. Learn more → ](https://developers.cloudflare.com/agents/model-context-protocol/) [ Workers AI Run open-source LLMs, embedding models, and image models at the edge. Use it as your agent's model provider. Learn more → ](https://developers.cloudflare.com/workers-ai/) [ Worker Loader Load user-generated code into isolated Workers on demand. The secure sandbox behind Code Mode. Learn more → ](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/) 
 
 ## Other agents
 
-[ ![Claude Code icon](https://developers.cloudflare.com/icons/agents/claude/light.svg) ![Claude Code icon](https://developers.cloudflare.com/icons/agents/claude/dark.svg) Claude Code Anthropic Terminal-based coding agent that understands your codebase, runs commands, edits files, and manages git. Made by Anthropic. ](https://developers.cloudflare.com/agent-setup/claude-code/)[ ![Codex icon](https://developers.cloudflare.com/icons/agents/codex/light.svg) ![Codex icon](https://developers.cloudflare.com/icons/agents/codex/dark.svg) Codex OpenAI Lightweight open-source terminal agent that reads and writes files, runs commands, and browses the web in a sandbox. Made by OpenAI. ](https://developers.cloudflare.com/agent-setup/codex/)[ ![Cursor icon](https://developers.cloudflare.com/icons/agents/cursor/light.svg) ![Cursor icon](https://developers.cloudflare.com/icons/agents/cursor/dark.svg) Cursor Cursor AI-first IDE built on VS Code with multi-file Composer edits and background agents. Made by Cursor. ](https://developers.cloudflare.com/agent-setup/cursor/)[ ![OpenCode icon](https://developers.cloudflare.com/icons/agents/opencode/light.svg) ![OpenCode icon](https://developers.cloudflare.com/icons/agents/opencode/dark.svg) OpenCode Anomaly Open-source terminal agent with a rich TUI that works with 75+ LLMs. Made by Anomaly. ](https://developers.cloudflare.com/agent-setup/opencode/)[ ![Windsurf icon](https://developers.cloudflare.com/icons/agents/windsurf/light.svg) ![Windsurf icon](https://developers.cloudflare.com/icons/agents/windsurf/dark.svg) Windsurf Cognition Agentic IDE with Cascade context and Flows for multi-step tasks. Made by Cognition. ](https://developers.cloudflare.com/agent-setup/windsurf/) 
+[ ![Claude Code icon](https://developers.cloudflare.com/icons/agents/claude/light.svg) ![Claude Code icon](https://developers.cloudflare.com/icons/agents/claude/dark.svg) Claude Code Anthropic Terminal-based coding agent that understands your codebase, runs commands, edits files, and manages git. Made by Anthropic. ](https://developers.cloudflare.com/agent-setup/claude-code/)[ ![Codex icon](https://developers.cloudflare.com/icons/agents/codex/light.svg) ![Codex icon](https://developers.cloudflare.com/icons/agents/codex/dark.svg) Codex OpenAI Lightweight open-source terminal agent that reads and writes files, runs commands, and browses the web in a sandbox. Made by OpenAI. ](https://developers.cloudflare.com/agent-setup/codex/)[ ![Cursor icon](https://developers.cloudflare.com/icons/agents/cursor/light.svg) ![Cursor icon](https://developers.cloudflare.com/icons/agents/cursor/dark.svg) Cursor Cursor AI-first IDE built on VS Code with multi-file Composer edits and background agents. Made by Cursor. ](https://developers.cloudflare.com/agent-setup/cursor/)[ ![OpenCode icon](https://developers.cloudflare.com/icons/agents/opencode/light.svg) ![OpenCode icon](https://developers.cloudflare.com/icons/agents/opencode/dark.svg) OpenCode Anomaly Open-source terminal agent with a rich TUI that works with 75+ LLMs. Made by Anomaly. ](https://developers.cloudflare.com/agent-setup/opencode/)[ ![Windsurf icon](https://developers.cloudflare.com/icons/agents/windsurf/light.svg) ![Windsurf icon](https://developers.cloudflare.com/icons/agents/windsurf/dark.svg) Windsurf Cognition Agentic IDE with Cascade context and Flows for multi-step tasks. Made by Cognition. ](https://developers.cloudflare.com/agent-setup/windsurf/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/github-copilot/#page","headline":"GitHub Copilot + Cloudflare · Agent setup docs","description":"Editor extension and CLI with agent mode, workspace context, and native PR integration. Made by GitHub.","url":"https://developers.cloudflare.com/agent-setup/github-copilot/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

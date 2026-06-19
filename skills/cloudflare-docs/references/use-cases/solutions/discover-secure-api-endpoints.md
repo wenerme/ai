@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,11 +29,12 @@ Before configuring any security rules, build an inventory of your API endpoints.
 1. Review your application's routing configuration and list every endpoint with its HTTP method and expected parameters.  
 AI-assisted endpoint discovery  
 Consider using an AI agent to analyze the API routes exposed in your codebase and then generate an OpenAPI schema from the findings.
-2. Categorize each endpoint by access level (public, authenticated, internal). Prioritize endpoints that accept file uploads, process payments, or return sensitive data.  
-| Access level      | Description                       | Example endpoints          |  
-| ----------------- | --------------------------------- | -------------------------- |  
-| **Public**        | No authentication required        | /api/status, /api/products |  
-| **Authenticated** | Require a token or session        | /api/account, /api/orders  |  
+2. Categorize each endpoint by access level (public, authenticated, internal). Prioritize endpoints that accept file uploads, process payments, or return sensitive data.
+
+| Access level      | Description                       | Example endpoints          |
+| ----------------- | --------------------------------- | -------------------------- |
+| **Public**        | No authentication required        | /api/status, /api/products |
+| **Authenticated** | Require a token or session        | /api/account, /api/orders  |
 | **Internal**      | Should not be publicly accessible | /api/admin, /api/debug     |
 3. Record the inventory in a spreadsheet or OpenAPI schema file for reference when writing rule expressions in later sections. If you already have an OpenAPI specification, you can use it directly with API Shield's schema validation (covered in the Enterprise callout below).
 
@@ -104,8 +105,8 @@ API clients typically include a `Content-Type` header and may include an `Author
 
 The following custom security rule blocks requests to `/api/` paths that are missing a `Content-Type` header. Adjust the path and header checks to match your API.
 
-* [  New dashboard ](#tab-panel-11037)
-* [ Old dashboard ](#tab-panel-11038)
+* [  New dashboard ](#tab-panel-11054)
+* [ Old dashboard ](#tab-panel-11055)
 
 1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -133,8 +134,8 @@ The following custom security rule blocks requests to `/api/` paths that are mis
 
 If your `/api/users` endpoint only accepts `GET` and `POST` requests, block all other HTTP methods on that path. This prevents attackers from probing with `PUT`, `DELETE`, or `PATCH` requests against endpoints that do not support them.
 
-* [  New dashboard ](#tab-panel-11039)
-* [ Old dashboard ](#tab-panel-11040)
+* [  New dashboard ](#tab-panel-11056)
+* [ Old dashboard ](#tab-panel-11057)
 
 1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -177,8 +178,8 @@ Create separate rate limiting rules for authenticated and unauthenticated endpoi
 
 The following example limits requests to `/api/auth/login` to 10 per minute per IP address. Adjust the path, request threshold, and period for your endpoints.
 
-* [  New dashboard ](#tab-panel-11043)
-* [ Old dashboard ](#tab-panel-11044)
+* [  New dashboard ](#tab-panel-11060)
+* [ Old dashboard ](#tab-panel-11061)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -228,8 +229,8 @@ If you are on a Cloudflare Pro or Business plan, go to the [next section](#creat
 
 Bot Fight Mode challenges requests that match known bot patterns. It applies to your entire domain and is available on all plans at no additional cost.
 
-* [  New dashboard ](#tab-panel-11049)
-* [ Old dashboard ](#tab-panel-11050)
+* [  New dashboard ](#tab-panel-11066)
+* [ Old dashboard ](#tab-panel-11067)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -249,8 +250,8 @@ For more information on Bot Fight Mode behavior and limitations, refer to [Bot F
 
 If your API receives traffic from known automated clients (monitoring services, partner APIs, CI/CD systems), create a [custom security rule with the _Skip_ action](https://developers.cloudflare.com/waf/custom-rules/skip/) to exclude them from bot protections. Create the exception rule before turning on Super Bot Fight Mode in the next section.
 
-* [  New dashboard ](#tab-panel-11041)
-* [ Old dashboard ](#tab-panel-11042)
+* [  New dashboard ](#tab-panel-11058)
+* [ Old dashboard ](#tab-panel-11059)
 
 1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -293,28 +294,30 @@ If you are upgrading from Bot Fight Mode to Super Bot Fight Mode, you must disab
 
 To configure Super Bot Fight Mode:
 
-* [  New dashboard ](#tab-panel-11051)
-* [ Old dashboard ](#tab-panel-11052)
+* [  New dashboard ](#tab-panel-11068)
+* [ Old dashboard ](#tab-panel-11069)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Bot traffic**.
 3. Go to **Super Bot fight mode**.
 4. Turn **Super Bot fight mode** on.
-5. Choose how your domain should respond to various types of traffic by selecting the associated edit icon:  
-   * For more details on verified bots, refer to [Verified Bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).  
-   * For more details on supported file types, refer to [Static resource protection](https://developers.cloudflare.com/bots/additional-configurations/static-resources/).  
-   * For more details on invisible code injection, refer to [JavaScript detections](https://developers.cloudflare.com/bots/additional-configurations/javascript-detections/).  
-   * For more details on WordPress optimization, refer to [Super Bot Fight Mode for WordPress](https://developers.cloudflare.com/bots/troubleshooting/wordpress-loopback-issue/).
+5. Choose how your domain should respond to various types of traffic by selecting the associated edit icon:
+
+  * For more details on verified bots, refer to [Verified Bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).
+  * For more details on supported file types, refer to [Static resource protection](https://developers.cloudflare.com/bots/additional-configurations/static-resources/).
+  * For more details on invisible code injection, refer to [JavaScript detections](https://developers.cloudflare.com/bots/additional-configurations/javascript-detections/).
+  * For more details on WordPress optimization, refer to [Super Bot Fight Mode for WordPress](https://developers.cloudflare.com/bots/troubleshooting/wordpress-loopback-issue/).
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login), and select your account and domain.
 2. Go to **Security** \> **Bots**.
 3. Select **Configure Super Bot Fight Mode**.
-4. Choose how your domain should respond to various types of traffic:  
-   * For more details on verified bots, refer to [Verified Bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).  
-   * For more details on supported file types, refer to [Static resource protection](https://developers.cloudflare.com/bots/additional-configurations/static-resources/).  
-   * For more details on invisible code injection, refer to [JavaScript detections](https://developers.cloudflare.com/bots/additional-configurations/javascript-detections/).  
-   * For more details on WordPress optimization, refer to [Super Bot Fight Mode for WordPress](https://developers.cloudflare.com/bots/troubleshooting/wordpress-loopback-issue/).
+4. Choose how your domain should respond to various types of traffic:
+
+  * For more details on verified bots, refer to [Verified Bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).
+  * For more details on supported file types, refer to [Static resource protection](https://developers.cloudflare.com/bots/additional-configurations/static-resources/).
+  * For more details on invisible code injection, refer to [JavaScript detections](https://developers.cloudflare.com/bots/additional-configurations/javascript-detections/).
+  * For more details on WordPress optimization, refer to [Super Bot Fight Mode for WordPress](https://developers.cloudflare.com/bots/troubleshooting/wordpress-loopback-issue/).
 
 With Super Bot Fight Mode, you can configure different actions for different bot types:
 
@@ -361,25 +364,26 @@ After deploying your security rules, review the results to identify false positi
 
 [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/) shows every request that your rules matched, including the action taken and the rule that triggered it. Filter by your API path prefix to see what Cloudflare is blocking and why.
 
-* [  New dashboard ](#tab-panel-11045)
-* [ Old dashboard ](#tab-panel-11046)
+* [  New dashboard ](#tab-panel-11062)
+* [ Old dashboard ](#tab-panel-11063)
 
 1. In the Cloudflare dashboard, go to the **Analytics** page.  
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 2. Select the **Events** tab.
 3. Add a filter for **URI Path** starts with `/api/`.
-4. Review the events. Look for legitimate clients that are being blocked (false positives). Common indicators of false positives:  
-   * Requests from known partner IP addresses  
-   * Requests with valid API keys or authorization headers  
-   * Requests from monitoring services with known User-Agent strings
+4. Review the events. Look for legitimate clients that are being blocked (false positives). Common indicators of false positives:
+
+  * Requests from known partner IP addresses
+  * Requests with valid API keys or authorization headers
+  * Requests from monitoring services with known User-Agent strings
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and zone.
 2. Go to **Security** \> **Events**.
 3. Add a filter for **URI Path** starts with `/api/`.
 4. Review the events. Look for legitimate clients that are being blocked (false positives). Common indicators of false positives:  
-   * Requests from known partner IP addresses  
-   * Requests with valid API keys or authorization headers  
-   * Requests from monitoring services with known User-Agent strings
+  * Requests from known partner IP addresses
+  * Requests with valid API keys or authorization headers
+  * Requests from monitoring services with known User-Agent strings
 
 If you find false positives, update your custom rules to exclude the affected traffic. Refer to the [exception rule procedure](#create-exception-rules-for-legitimate-bot-clients-pro-business) in an earlier section.
 
@@ -387,8 +391,8 @@ If you find false positives, update your custom rules to exclude the affected tr
 
 Rate limiting thresholds that are too tight block legitimate clients. Thresholds that are too loose allow abuse. Review rate limiting events in [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/) to find the right balance.
 
-* [  New dashboard ](#tab-panel-11047)
-* [ Old dashboard ](#tab-panel-11048)
+* [  New dashboard ](#tab-panel-11064)
+* [ Old dashboard ](#tab-panel-11065)
 
 1. In the Cloudflare dashboard, go to the **Analytics** page.  
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,9 +22,9 @@ The key principle is to ensure the new certificate pack reaches **Active** befor
 
 ### 1\. Create the new certificate pack
 
-* [ Dashboard ](#tab-panel-10664)
-* [ API ](#tab-panel-10665)
-* [ Terraform ](#tab-panel-10666)
+* [ Dashboard ](#tab-panel-10740)
+* [ API ](#tab-panel-10741)
+* [ Terraform ](#tab-panel-10742)
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.  
 [ Go to **Edge Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
@@ -56,9 +56,9 @@ For zones using Cloudflare as authoritative DNS (full setup), most validations c
 
 Once the new pack is **Active**, it is safe to delete the old one.
 
-* [ Dashboard ](#tab-panel-10667)
-* [ API ](#tab-panel-10668)
-* [ Terraform ](#tab-panel-10669)
+* [ Dashboard ](#tab-panel-10743)
+* [ API ](#tab-panel-10744)
+* [ Terraform ](#tab-panel-10745)
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.  
 [ Go to **Edge Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)

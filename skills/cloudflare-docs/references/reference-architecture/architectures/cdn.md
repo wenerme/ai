@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -156,7 +156,7 @@ The different cache topologies allow customers to control how Cloudflare interac
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Recommended for most deployments. It is the default configuration once Tiered Cache is enabled.                                                                       | Recommended for those who have high traffic that is spread across the globe and desire the highest cache usage and best performance possible.     | Recommended for customers who have additional data on their user base and have specific geographic regions they would like to focus on.                                    |
 | Ideal for customers who want to leverage CDN for performance but minimize requests to origin servers and bandwidth utilization between Cloudflare and origin servers. | Generic Global Tiered Topology balances between cache efficiency and latency. Instructs Cloudflare to use all Tier 1 data centers as upper tiers. | Custom Tiered Cache Topology allows customers to set a custom topology that fits specific needs (ex: upper tiers in specific geographic locations serving more customers). |
-| Cloudflare will dynamically find the single best upper tier for an origin using Argo performance and routing data.                                                    | Engage your account team to build a custom topology.                                                                                              |                                                                                                                                                                            |
+| Cloudflare will dynamically find the single best upper tier for an origin using Argo performance and routing data.                                                    |                                                                                                                                                   | Engage your account team to build a custom topology.                                                                                                                       |
 
 ### Traffic flow: Tiered Cache, Smart Tiered Cache topology
 

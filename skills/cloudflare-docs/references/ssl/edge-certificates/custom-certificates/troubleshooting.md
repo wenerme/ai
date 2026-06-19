@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,12 +23,7 @@ Alternatively, use `openssl` to verify the match by comparing the public key has
 Terminal window
 
 ```
-
-openssl x509 -noout -pubkey -in certificate.crt | openssl md5
-
-openssl pkey -pubout -in private.key | openssl md5
-
-
+openssl x509 -noout -pubkey -in certificate.crt | openssl md5openssl pkey -pubout -in private.key | openssl md5
 ```
 
 If the two outputs match, the certificate and key are a valid pair.
@@ -40,10 +35,7 @@ You can use `openssl` to check all the details of your certificate:
 Terminal window
 
 ```
-
 openssl x509 -in certificate.crt -noout -text
-
-
 ```
 
 Then, make sure all the information is correct before uploading.
@@ -55,10 +47,7 @@ Cloudflare does not accept password-protected private keys. If your private key 
 Terminal window
 
 ```
-
 openssl pkey -in protected.key -out unprotected.key
-
-
 ```
 
 Use the `unprotected.key` file when uploading to Cloudflare. For detailed instructions, refer to [Remove key file password](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/remove-file-key-password/).
@@ -103,10 +92,7 @@ Carefully check the content of the certificate. You may use `openssl` to check a
 Terminal window
 
 ```
-
 openssl x509 -in certificate.crt -noout -text
-
-
 ```
 
 When using the API, carefully check the `{custom_certificate_id}` path parameter. You can confirm the certificate ID by [listing the existing custom certificates](https://developers.cloudflare.com/api/resources/custom%5Fcertificates/methods/list/) (`id` in the response).
@@ -218,10 +204,7 @@ Make sure your certificate contains a Subject Alternative Name (SAN) specifying 
 Terminal window
 
 ```
-
 openssl x509 -in certificateFile.pem -noout -text
-
-
 ```
 
 If it does not exist, you will need to request a new certificate.
@@ -253,12 +236,7 @@ Ensure the private key corresponds to the certificate you are uploading. You can
 Terminal window
 
 ```
-
-openssl x509 -noout -pubkey -in certificate.crt | openssl md5
-
-openssl pkey -pubout -in private.key | openssl md5
-
-
+openssl x509 -noout -pubkey -in certificate.crt | openssl md5openssl pkey -pubout -in private.key | openssl md5
 ```
 
 If the outputs do not match, you have mismatched the certificate and key.

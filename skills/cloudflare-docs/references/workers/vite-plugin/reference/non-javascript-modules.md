@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,10 +27,7 @@ For example, with the following import, `text` will be a string containing the c
 JavaScript
 
 ```
-
 import text from "./example.txt";
-
-
 ```
 
 This is also the basis for importing Wasm, as in the following example:
@@ -38,29 +35,10 @@ This is also the basis for importing Wasm, as in the following example:
 TypeScript
 
 ```
-
 import wasm from "./example.wasm";
-
-
-// Instantiate Wasm modules in the module scope
-
-const instance = await WebAssembly.instantiate(wasm);
-
-
-export default {
-
-  fetch() {
-
-    const result = instance.exports.exported_func();
-
-
-    return new Response(result);
-
-  },
-
-};
-
-
+// Instantiate Wasm modules in the module scopeconst instance = await WebAssembly.instantiate(wasm);
+export default {  fetch() {    const result = instance.exports.exported_func();
+    return new Response(result);  },};
 ```
 
 Note

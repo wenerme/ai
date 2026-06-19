@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,8 +18,9 @@ This tutorial will instruct you how to configure an origin rule and a DNS record
 
 The procedure will use the following example values:
 
-| URL that website visitors will access | mycustomerexample.com/blog/\* |
+|                                       |                               |
 | ------------------------------------- | ----------------------------- |
+| URL that website visitors will access | mycustomerexample.com/blog/\* |
 | Zone domain                           | mycustomerexample.com         |
 | Cloudflare Pages subdomain            | myblog.pages.dev              |
 | Cloudflare Pages custom domain        | blogmirror.example.com        |
@@ -52,10 +53,7 @@ In your `mycustomerexample.com` zone, create an origin rule with the following c
 If using the Expression Editor, enter the following expression:
 
 ```
-
 (http.request.uri.path wildcard "/blog/*")
-
-
 ```
 
 **Set origin parameters**
@@ -78,9 +76,10 @@ Use a URL rewrite to remove the `/blog` segment from the URL path.
 https://<YOUR_HOSTNAME>/blog/*  
 ```  
 In the current example, the value would be `https://mycustomerexample.com/blog/*`.
-6. In **Then rewrite the path and/or query**, enter the following values under **Path**:  
-| Target path   | Rewrite to |  
-| ------------- | ---------- |  
+6. In **Then rewrite the path and/or query**, enter the following values under **Path**:
+
+| Target path   | Rewrite to |
+| ------------- | ---------- |
 | \[/\] blog/\* | \[/\] ${1} |
 7. Select **Deploy**.
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -143,16 +143,16 @@ Virtual Tunnel Interfaces (VTIs) cannot be configured on MX appliances.
 * **Firmware prerequisite**: The minimum required firmware for this configuration is MX 19.2.7.
 * **Hardware compatibility**: Older Meraki hardware may be physically incapable of running 19.2.7\. Route-Based VPN support is required for this architecture. Refer to [Product firmware restrictions ↗](https://documentation.meraki.com/Platform%5FManagement/Product%5FInformation/Compatibility%5Fand%5FFirmware/Firmware%5FUpgrades/Product%5FFirmware%5FVersion%5FRestrictions) to determine whether your MX platform supports firmware release 19.2.7 or later.
 * **Active/Standby configuration**: Redundant tunnels associated with Non-Meraki VPN connections are Active/Standby. Both tunnels are established, but Meraki only routes traffic via the primary IPsec VPN peer and dynamically fails over to the secondary IPsec VPN peer based on tunnel monitoring probes.  
-   * **Anycast and tunnel redundancy**: Despite the Active/Standby nature of IPsec VPN tunnels on the MX platform, high availability is maintained at the network layer because the Cloudflare remote endpoint IPs are advertised via BGP anycast across the Cloudflare global network and provide inherent geographic and logical redundancy.
+  * **Anycast and tunnel redundancy**: Despite the Active/Standby nature of IPsec VPN tunnels on the MX platform, high availability is maintained at the network layer because the Cloudflare remote endpoint IPs are advertised via BGP anycast across the Cloudflare global network and provide inherent geographic and logical redundancy.
 * **Route-Based VPN support**: While often associated with specific cloud integrations, version 19.2.7 supports Route-Based IPsec VPN for third-party devices generally, including Cloudflare WAN.
 * **Redundancy and Multi-Uplink**: This documentation specifically covers Active/Standby tunnel configurations.  
-   * **Multi-Uplink IPsec VPN**: The Meraki [Multi-Uplink IPsec VPN ↗](https://documentation.meraki.com/SASE%5Fand%5FSD-WAN/MX/Design%5Fand%5FConfigure/Configuration%5FGuides/Site-to-site%5FVPN/Multi-Uplink%5FIPsec%5FVPN) feature is outside the scope of this guide.
+  * **Multi-Uplink IPsec VPN**: The Meraki [Multi-Uplink IPsec VPN ↗](https://documentation.meraki.com/SASE%5Fand%5FSD-WAN/MX/Design%5Fand%5FConfigure/Configuration%5FGuides/Site-to-site%5FVPN/Multi-Uplink%5FIPsec%5FVPN) feature is outside the scope of this guide.
 * **Anti-Replay Protection**: Cloudflare recommends [disabling Anti-Replay Protection](https://developers.cloudflare.com/cloudflare-wan/reference/anti-replay-protection/) for optimal performance with Cloudflare WAN. The Cisco Meraki MX platform does not permit administrators to disable this feature.  
-   * This is a known Meraki platform limitation.  
-   * In environments with high jitter or out-of-order packet delivery on the underlay (ISP network), this may cause intermittent packet drops on the MX side of the IPsec VPN tunnels.
+  * This is a known Meraki platform limitation.
+  * In environments with high jitter or out-of-order packet delivery on the underlay (ISP network), this may cause intermittent packet drops on the MX side of the IPsec VPN tunnels.
 * **MSS Clamping**: Cloudflare recommends specific Maximum Segment Size (MSS) [clamping](https://developers.cloudflare.com/cloudflare-wan/reference/mtu-mss/#mss-clamping) values to account for IPsec overhead and prevent fragmentation.  
-   * The Meraki Dashboard does not provide a user-accessible field to modify the MSS clamping value for third-party VPN tunnels.  
-   * Customers must contact Meraki Technical Support to request a manual backend modification of the MSS value (approximately 1360; the value may vary) for the specific network or tunnel.
+  * The Meraki Dashboard does not provide a user-accessible field to modify the MSS clamping value for third-party VPN tunnels.
+  * Customers must contact Meraki Technical Support to request a manual backend modification of the MSS value (approximately 1360; the value may vary) for the specific network or tunnel.
 * **ISP scope**: The provided configuration is validated for a single Internet Service Provider (ISP). The logic can be extended to accommodate redundant ISPs, but multi-homed configuration is outside the scope of this guide.
 
 ### Cloudflare
@@ -174,25 +174,25 @@ The following details from the Cloudflare configuration are required before proc
 
 ### CF\_WAN\_TUN\_01
 
-| **Attribute**          | **Value/Address**                         | **Meraki — Applies To**            | **Required to**                         |
-| ---------------------- | ----------------------------------------- | ---------------------------------- | --------------------------------------- |
-| IPv4 Interface Address | 169.254.250.0/31                          | Private subnets                    | Support Cloudflare tunnel health checks |
-| Cloudflare Endpoint    | 162.159.135.1                             | Public IP or hostname              | Tunnel peer IP — primary IPsec peer     |
-| 162.159.135.1          | Remote ID                                 | IKE remote ID — primary IPsec peer |                                         |
-| FQDN ID                | bf6c493d03<REDACTED>.ipsec.cloudflare.com | Local ID                           | IKE local ID — primary IPsec peer       |
-| Pre-Shared Key         | Cloudflare-WAN-T1-PSK-1234!               | Shared secret                      | Shared secret — primary IPsec peer      |
-| Remote subnets         | 172.16.10.0/24, 172.16.11.0/24            | Private subnets                    | Add routes for east/west traffic flows  |
+| **Attribute**          | **Value/Address**                         | **Meraki — Applies To** | **Required to**                         |
+| ---------------------- | ----------------------------------------- | ----------------------- | --------------------------------------- |
+| IPv4 Interface Address | 169.254.250.0/31                          | Private subnets         | Support Cloudflare tunnel health checks |
+| Cloudflare Endpoint    | 162.159.135.1                             | Public IP or hostname   | Tunnel peer IP — primary IPsec peer     |
+|                        | 162.159.135.1                             | Remote ID               | IKE remote ID — primary IPsec peer      |
+| FQDN ID                | bf6c493d03<REDACTED>.ipsec.cloudflare.com | Local ID                | IKE local ID — primary IPsec peer       |
+| Pre-Shared Key         | Cloudflare-WAN-T1-PSK-1234!               | Shared secret           | Shared secret — primary IPsec peer      |
+| Remote subnets         | 172.16.10.0/24, 172.16.11.0/24            | Private subnets         | Add routes for east/west traffic flows  |
 
 ### CF\_WAN\_TUN\_02
 
-| **Attribute**          | **Value/Address**                         | **Meraki Setting**                   | **Required to**                         |
-| ---------------------- | ----------------------------------------- | ------------------------------------ | --------------------------------------- |
-| IPv4 Interface Address | 169.254.250.2/31                          | Private subnets                      | Support Cloudflare tunnel health checks |
-| Cloudflare Endpoint    | 172.64.135.1                              | Public IP or hostname                | Tunnel peer IP — secondary IPsec peer   |
-| 172.64.135.1           | Remote ID                                 | IKE remote ID — secondary IPsec peer |                                         |
-| FQDN ID                | 0287844e9d<REDACTED>.ipsec.cloudflare.com | Local ID                             | IKE local ID — secondary IPsec peer     |
-| Pre-Shared Key         | Cloudflare-WAN-T2-PSK-1234!               | Shared secret                        | Shared secret — secondary IPsec peer    |
-| Remote subnets         | 172.16.10.0/24, 172.16.11.0/24            | Private subnets                      | Add routes for east/west traffic flows  |
+| **Attribute**          | **Value/Address**                         | **Meraki Setting**    | **Required to**                         |
+| ---------------------- | ----------------------------------------- | --------------------- | --------------------------------------- |
+| IPv4 Interface Address | 169.254.250.2/31                          | Private subnets       | Support Cloudflare tunnel health checks |
+| Cloudflare Endpoint    | 172.64.135.1                              | Public IP or hostname | Tunnel peer IP — secondary IPsec peer   |
+|                        | 172.64.135.1                              | Remote ID             | IKE remote ID — secondary IPsec peer    |
+| FQDN ID                | 0287844e9d<REDACTED>.ipsec.cloudflare.com | Local ID              | IKE local ID — secondary IPsec peer     |
+| Pre-Shared Key         | Cloudflare-WAN-T2-PSK-1234!               | Shared secret         | Shared secret — secondary IPsec peer    |
+| Remote subnets         | 172.16.10.0/24, 172.16.11.0/24            | Private subnets       | Add routes for east/west traffic flows  |
 
 ### Remote subnets
 
@@ -376,12 +376,12 @@ Any IP prefixes defined as private subnets in the IPsec VPN peer configuration c
 This document considers three route topologies:
 
 1. East/west only:  
-   * Private traffic via Cloudflare WAN.  
-   * Internet via local Internet.
+  * Private traffic via Cloudflare WAN.
+  * Internet via local Internet.
 2. Internet only via Cloudflare Gateway:  
-   * Only route Internet traffic through Cloudflare WAN.
+  * Only route Internet traffic through Cloudflare WAN.
 3. All traffic via Cloudflare WAN and Gateway:  
-   * East/west and Internet traffic routed via Cloudflare WAN.
+  * East/west and Internet traffic routed via Cloudflare WAN.
 
 All three topologies are covered in the [IPsec VPN peers](#ipsec-vpn-peers) section.
 
@@ -420,9 +420,10 @@ Go to **Security & SD-WAN** \> **Site-to-site VPN** \> **Organization Wide Setti
 Configure a Layer 7 health check HTTP probe that the MX platform uses to determine reachability of resources through the IPsec VPN tunnels:
 
 1. Select **Configure Health Checks**.
-2. Provide the following values:  
-| **Name** | **Endpoint**          |  
-| -------- | --------------------- |  
+2. Provide the following values:
+
+| **Name** | **Endpoint**          |
+| -------- | --------------------- |
 | Google   | http://www.google.com |
 3. Select **OK**.
 
@@ -486,30 +487,31 @@ Meraki private subnets:
 ###### Primary IPsec VPN peer: east/west traffic only
 
 1. Select **\+ Add a peer**.
-2. Provide the following values:  
-| **Attribute**                    | **Value**                                                          |  
-| -------------------------------- | ------------------------------------------------------------------ |  
-| Name                             | cf-wan-tun-01                                                      |  
-| IKE Version                      | IKEv2                                                              |  
-| Public IP or Hostname            | 162.159.135.1                                                      |  
-| Local ID                         | bf6c493d03<REDACTED>.ipsec.cloudflare.com                          |  
-| Remote ID                        | —                                                                  |  
-| Shared Secret                    | Cloudflare-WAN-T1-PSK-1234!                                        |  
-| Routing                          | Static                                                             |  
-| Private Subnets                  | 169.254.250.0/31, 169.254.250.2/31, 172.16.10.0/24, 172.16.11.0/24 |  
-| Availability                     | Orbital\_Path\_AUS\_Office                                         |  
-| Tunnel Monitoring                | Google Health Check                                                |  
-| Failover directly to internet    | —                                                                  |  
-| IPsec Policy                     | —                                                                  |  
-| Preset                           | Custom                                                             |  
-| Phase 1 — Encryption             | AES 256                                                            |  
-| Phase 1 — Authentication         | SHA256                                                             |  
-| Phase 1 — Pseudo-Random Function | SHA256                                                             |  
-| Phase 1 — Diffie-Hellman group   | 14                                                                 |  
-| Phase 1 — Lifetime (sec)         | 28800                                                              |  
-| Phase 2 — Encryption             | AES256                                                             |  
-| Phase 2 — Authentication         | SHA256                                                             |  
-| Phase 2 — PFS Group              | 14                                                                 |  
+2. Provide the following values:
+
+| **Attribute**                    | **Value**                                                          |
+| -------------------------------- | ------------------------------------------------------------------ |
+| Name                             | cf-wan-tun-01                                                      |
+| IKE Version                      | IKEv2                                                              |
+| Public IP or Hostname            | 162.159.135.1                                                      |
+| Local ID                         | bf6c493d03<REDACTED>.ipsec.cloudflare.com                          |
+| Remote ID                        | —                                                                  |
+| Shared Secret                    | Cloudflare-WAN-T1-PSK-1234!                                        |
+| Routing                          | Static                                                             |
+| Private Subnets                  | 169.254.250.0/31, 169.254.250.2/31, 172.16.10.0/24, 172.16.11.0/24 |
+| Availability                     | Orbital\_Path\_AUS\_Office                                         |
+| Tunnel Monitoring                | Google Health Check                                                |
+| Failover directly to internet    | —                                                                  |
+| IPsec Policy                     | —                                                                  |
+| Preset                           | Custom                                                             |
+| Phase 1 — Encryption             | AES 256                                                            |
+| Phase 1 — Authentication         | SHA256                                                             |
+| Phase 1 — Pseudo-Random Function | SHA256                                                             |
+| Phase 1 — Diffie-Hellman group   | 14                                                                 |
+| Phase 1 — Lifetime (sec)         | 28800                                                              |
+| Phase 2 — Encryption             | AES256                                                             |
+| Phase 2 — Authentication         | SHA256                                                             |
+| Phase 2 — PFS Group              | 14                                                                 |
 | Phase 2 — Lifetime (sec)         | 28800                                                              |
 3. Select **Save**.
 
@@ -526,30 +528,31 @@ Note
 1. Select the `---` icon in the settings column.
 2. Select **\+ Add secondary peer**.
 3. Do not select **Inherit primary peer configurations**. This ensures the **Public IP or Hostname**, **Local ID**, **Remote ID**, and **Shared secret** are configured with the settings required to successfully negotiate an IPsec tunnel `CF_WAN_TUN_02`.
-4. Provide the following values:  
-| **Attribute**                    | **Value**                                                                      |  
-| -------------------------------- | ------------------------------------------------------------------------------ |  
-| Name                             | cf-wan-tun-02                                                                  |  
-| IKE Version                      | IKEv2 (Inherited)                                                              |  
-| Public IP or Hostname            | 172.64.135.1                                                                   |  
-| Local ID                         | 0287844e9d<REDACTED>.ipsec.cloudflare.com                                      |  
-| Remote ID                        | 172.64.135.1                                                                   |  
-| Shared Secret                    | Cloudflare-WAN-T2-PSK-1234!                                                    |  
-| Routing                          | Static (Inherited)                                                             |  
-| Private Subnets                  | 169.254.250.0/31, 169.254.250.2/31, 172.16.10.0/24, 172.16.11.0/24 (Inherited) |  
-| Availability                     | Orbital\_Path\_AUS\_Office (Inherited)                                         |  
-| Tunnel Monitoring                | Google Health Check                                                            |  
-| Failover directly to internet    | —                                                                              |  
-| IPsec Policy                     | —                                                                              |  
-| Preset                           | Custom                                                                         |  
-| Phase 1 — Encryption             | AES 256                                                                        |  
-| Phase 1 — Authentication         | SHA256                                                                         |  
-| Phase 1 — Pseudo-Random Function | SHA256                                                                         |  
-| Phase 1 — Diffie-Hellman group   | 14                                                                             |  
-| Phase 1 — Lifetime (sec)         | 28800                                                                          |  
-| Phase 2 — Encryption             | AES256                                                                         |  
-| Phase 2 — Authentication         | SHA256                                                                         |  
-| Phase 2 — PFS Group              | 14                                                                             |  
+4. Provide the following values:
+
+| **Attribute**                    | **Value**                                                                      |
+| -------------------------------- | ------------------------------------------------------------------------------ |
+| Name                             | cf-wan-tun-02                                                                  |
+| IKE Version                      | IKEv2 (Inherited)                                                              |
+| Public IP or Hostname            | 172.64.135.1                                                                   |
+| Local ID                         | 0287844e9d<REDACTED>.ipsec.cloudflare.com                                      |
+| Remote ID                        | 172.64.135.1                                                                   |
+| Shared Secret                    | Cloudflare-WAN-T2-PSK-1234!                                                    |
+| Routing                          | Static (Inherited)                                                             |
+| Private Subnets                  | 169.254.250.0/31, 169.254.250.2/31, 172.16.10.0/24, 172.16.11.0/24 (Inherited) |
+| Availability                     | Orbital\_Path\_AUS\_Office (Inherited)                                         |
+| Tunnel Monitoring                | Google Health Check                                                            |
+| Failover directly to internet    | —                                                                              |
+| IPsec Policy                     | —                                                                              |
+| Preset                           | Custom                                                                         |
+| Phase 1 — Encryption             | AES 256                                                                        |
+| Phase 1 — Authentication         | SHA256                                                                         |
+| Phase 1 — Pseudo-Random Function | SHA256                                                                         |
+| Phase 1 — Diffie-Hellman group   | 14                                                                             |
+| Phase 1 — Lifetime (sec)         | 28800                                                                          |
+| Phase 2 — Encryption             | AES256                                                                         |
+| Phase 2 — Authentication         | SHA256                                                                         |
+| Phase 2 — PFS Group              | 14                                                                             |
 | Phase 2 — Lifetime (sec)         | 28800                                                                          |
 5. Select **Save**.
 
@@ -607,29 +610,29 @@ Use the Meraki Dashboard to determine the status of the IPsec tunnels:
 
 Active tunnel: `cf-wan-tun-01`:
 
-| Status          | Name             | Public IP     | Subnets          | Tunnel monitor |
-| --------------- | ---------------- | ------------- | ---------------- | -------------- |
-| 🟢 IPsec        | cf-wan-tun-01    | 162.159.135.1 | 169.254.250.0/31 | Details (link) |
-| 🟢 Health check | 169.254.250.2/31 |               |                  |                |
-| 172.16.10.0/24  |                  |               |                  |                |
-| 172.16.11.0/24  |                  |               |                  |                |
-| 🟢 IPsec        | cf-wan-tun-02    | 172.64.135.1  | 169.254.250.0/31 | Details (link) |
-| 🟢 Health check | 169.254.250.2/31 |               |                  |                |
-| 172.16.10.0/24  |                  |               |                  |                |
-| 172.16.11.0/24  |                  |               |                  |                |
+| Status          | Name          | Public IP     | Subnets          | Tunnel monitor |
+| --------------- | ------------- | ------------- | ---------------- | -------------- |
+| 🟢 IPsec        | cf-wan-tun-01 | 162.159.135.1 | 169.254.250.0/31 | Details (link) |
+| 🟢 Health check |               |               | 169.254.250.2/31 |                |
+|                 |               |               | 172.16.10.0/24   |                |
+|                 |               |               | 172.16.11.0/24   |                |
+| 🟢 IPsec        | cf-wan-tun-02 | 172.64.135.1  | 169.254.250.0/31 | Details (link) |
+| 🟢 Health check |               |               | 169.254.250.2/31 |                |
+|                 |               |               | 172.16.10.0/24   |                |
+|                 |               |               | 172.16.11.0/24   |                |
 
 Active tunnel: `cf-wan-tun-02`:
 
-| Status          | Name             | Public IP     | Subnets          | Tunnel monitor |
-| --------------- | ---------------- | ------------- | ---------------- | -------------- |
-| 🟢 IPsec        | cf-wan-tun-01    | 162.159.135.1 | 169.254.250.0/31 | Details (link) |
-| 🔴 Health check | 169.254.250.2/31 |               |                  |                |
-| 172.16.10.0/24  |                  |               |                  |                |
-| 172.16.11.0/24  |                  |               |                  |                |
-| 🟢 IPsec        | cf-wan-tun-02    | 172.64.135.1  | 169.254.250.0/31 | Details (link) |
-| 🟢 Health check | 169.254.250.2/31 |               |                  |                |
-| 172.16.10.0/24  |                  |               |                  |                |
-| 172.16.11.0/24  |                  |               |                  |                |
+| Status          | Name          | Public IP     | Subnets          | Tunnel monitor |
+| --------------- | ------------- | ------------- | ---------------- | -------------- |
+| 🟢 IPsec        | cf-wan-tun-01 | 162.159.135.1 | 169.254.250.0/31 | Details (link) |
+| 🔴 Health check |               |               | 169.254.250.2/31 |                |
+|                 |               |               | 172.16.10.0/24   |                |
+|                 |               |               | 172.16.11.0/24   |                |
+| 🟢 IPsec        | cf-wan-tun-02 | 172.64.135.1  | 169.254.250.0/31 | Details (link) |
+| 🟢 Health check |               |               | 169.254.250.2/31 |                |
+|                 |               |               | 172.16.10.0/24   |                |
+|                 |               |               | 172.16.11.0/24   |                |
 
 ###### Internet only via Cloudflare Gateway
 
@@ -683,16 +686,16 @@ Go to **Security & SD-WAN** \> **Monitor** \> **Route Table**.
 
 VPN Status reports that the health checks are failing on both tunnels:
 
-| Status          | Name             | Public IP     | Subnets          | Tunnel monitor |
-| --------------- | ---------------- | ------------- | ---------------- | -------------- |
-| 🟢 IPsec        | cf-wan-tun-01    | 162.159.135.1 | 169.254.250.0/31 | Details (link) |
-| 🔴 Health check | 169.254.250.2/31 |               |                  |                |
-| 172.16.10.0/24  |                  |               |                  |                |
-| 172.16.11.0/24  |                  |               |                  |                |
-| 🟢 IPsec        | cf-wan-tun-02    | 172.64.135.1  | 169.254.250.0/31 | Details (link) |
-| 🔴 Health check | 169.254.250.2/31 |               |                  |                |
-| 172.16.10.0/24  |                  |               |                  |                |
-| 172.16.11.0/24  |                  |               |                  |                |
+| Status          | Name          | Public IP     | Subnets          | Tunnel monitor |
+| --------------- | ------------- | ------------- | ---------------- | -------------- |
+| 🟢 IPsec        | cf-wan-tun-01 | 162.159.135.1 | 169.254.250.0/31 | Details (link) |
+| 🔴 Health check |               |               | 169.254.250.2/31 |                |
+|                 |               |               | 172.16.10.0/24   |                |
+|                 |               |               | 172.16.11.0/24   |                |
+| 🟢 IPsec        | cf-wan-tun-02 | 172.64.135.1  | 169.254.250.0/31 | Details (link) |
+| 🔴 Health check |               |               | 169.254.250.2/31 |                |
+|                 |               |               | 172.16.10.0/24   |                |
+|                 |               |               | 172.16.11.0/24   |                |
 
 Check the Cloudflare Gateway logs and policy to determine if HTTP requests originating from `192.0.2.3/32` are being blocked.
 
@@ -708,10 +711,10 @@ Available in:
 IPsec logs can help diagnose a variety of issues related to IPsec tunnels, including:
 
 * Using unsupported Phase 1 or Phase 2 encryption or integrity settings — look for messages indicating `No proposal chosen`.  
-   * Confirm that the Phase 1 and Phase 2 encryption or integrity values defined are supported by Cloudflare WAN.  
-   * Refer to [Supported configuration parameters](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/#supported-configuration-parameters).
+  * Confirm that the Phase 1 and Phase 2 encryption or integrity values defined are supported by Cloudflare WAN.
+  * Refer to [Supported configuration parameters](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/#supported-configuration-parameters).
 * IKE/IPsec identity: local or remote identity not defined or with incorrect values.  
-   * Refer to the [Palo Alto third-party integration guide](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/palo-alto/) for an example of FQDN-based local identification.
+  * Refer to the [Palo Alto third-party integration guide](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/palo-alto/) for an example of FQDN-based local identification.
 * Authentication failures: wrong pre-shared key.
 
 Refer to [Configure tunnel endpoints](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels) for more details.

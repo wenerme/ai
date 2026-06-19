@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -46,29 +46,8 @@ These values can be configured at the instance level or overridden per request:
 TypeScript
 
 ```
-
 const instance = env.AI_SEARCH.get("my-instance");
-
-
-const results = await instance.search({
-
-  messages: [{ role: "user", content: "What is Cloudflare?" }],
-
-  ai_search_options: {
-
-    retrieval: {
-
-      match_threshold: 0.5,
-
-      max_num_results: 10,
-
-    },
-
-  },
-
-});
-
-
+const results = await instance.search({  messages: [{ role: "user", content: "What is Cloudflare?" }],  ai_search_options: {    retrieval: {      match_threshold: 0.5,      max_num_results: 10,    },  },});
 ```
 
 ```json

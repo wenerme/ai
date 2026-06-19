@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,10 +16,10 @@ Cache Analytics shows how much of your site's traffic is served from Cloudflare'
 
 ## Availability
 
-| Free             | Pro | Business | Enterprise |         |
-| ---------------- | --- | -------- | ---------- | ------- |
-| Availability     | No  | Yes      | Yes        | Yes     |
-| Retention period | N/A | 7 days   | 30 days    | 30 days |
+|                  | Free | Pro    | Business | Enterprise |
+| ---------------- | ---- | ------ | -------- | ---------- |
+| Availability     | No   | Yes    | Yes      | Yes        |
+| Retention period | N/A  | 7 days | 30 days  | 30 days    |
 
 ## Access Cache Analytics
 

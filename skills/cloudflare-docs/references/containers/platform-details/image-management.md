@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,39 +18,19 @@ When running `wrangler deploy`, if you set the `image` attribute in your [Wrangl
 
 Just provide the path to your Dockerfile:
 
-* [  wrangler.jsonc ](#tab-panel-7842)
-* [  wrangler.toml ](#tab-panel-7843)
+* [  wrangler.jsonc ](#tab-panel-7918)
+* [  wrangler.toml ](#tab-panel-7919)
 
 JSONC
 
 ```
-
-{
-
-  "containers": [
-
-    {
-
-      "image": "./Dockerfile"
-
-    }
-
-  ]
-
-}
-
-
+{  "containers": [    {      "image": "./Dockerfile"    }  ]}
 ```
 
 TOML
 
 ```
-
-[[containers]]
-
-image = "./Dockerfile"
-
-
+[[containers]]image = "./Dockerfile"
 ```
 
 And deploy your Worker with `wrangler deploy`. No other image management is necessary.
@@ -77,39 +57,19 @@ To use a public Docker Hub image, set `image` to a fully qualified Docker Hub im
 
 For example:
 
-* [  wrangler.jsonc ](#tab-panel-7844)
-* [  wrangler.toml ](#tab-panel-7845)
+* [  wrangler.jsonc ](#tab-panel-7920)
+* [  wrangler.toml ](#tab-panel-7921)
 
 JSONC
 
 ```
-
-{
-
-  "containers": [
-
-    {
-
-      "image": "docker.io/<NAMESPACE>/<REPOSITORY>:<TAG>"
-
-    }
-
-  ]
-
-}
-
-
+{  "containers": [    {      "image": "docker.io/<NAMESPACE>/<REPOSITORY>:<TAG>"    }  ]}
 ```
 
 TOML
 
 ```
-
-[[containers]]
-
-image = "docker.io/<NAMESPACE>/<REPOSITORY>:<TAG>"
-
-
+[[containers]]image = "docker.io/<NAMESPACE>/<REPOSITORY>:<TAG>"
 ```
 
 Public Docker Hub images do not require registry configuration.
@@ -166,10 +126,7 @@ CI or scripts:
 Terminal window
 
 ```
-
 printf '%s' "$DOCKERHUB_PAT" | npx wrangler containers registries configure docker.io --dockerhub-username=<YOUR_DOCKERHUB_USERNAME> --secret-name=<SECRET_NAME> --skip-confirmation
-
-
 ```
 
 After you configure the registry, use the same fully qualified Docker Hub image reference shown above.
@@ -185,54 +142,7 @@ Configure Amazon ECR in Wrangler using these values:
 Public ECR images are not supported. To generate the required credentials, create an IAM user with a read-only policy. The following example grants access to all image repositories in AWS account `123456789012` in `us-east-1`.
 
 ```
-
-{
-
-  "Version": "2012-10-17",
-
-  "Statement": [
-
-    {
-
-      "Action": ["ecr:GetAuthorizationToken"],
-
-      "Effect": "Allow",
-
-      "Resource": "*"
-
-    },
-
-    {
-
-      "Effect": "Allow",
-
-      "Action": [
-
-        "ecr:BatchCheckLayerAvailability",
-
-        "ecr:GetDownloadUrlForLayer",
-
-        "ecr:BatchGetImage"
-
-      ],
-
-      // arn:${Partition}:ecr:${Region}:${Account}:repository/${Repository-name}
-
-      "Resource": [
-
-        "arn:aws:ecr:us-east-1:123456789012:repository/*"
-
-        // "arn:aws:ecr:us-east-1:123456789012:repository/example-repo"
-
-      ]
-
-    }
-
-  ]
-
-}
-
-
+{  "Version": "2012-10-17",  "Statement": [    {      "Action": ["ecr:GetAuthorizationToken"],      "Effect": "Allow",      "Resource": "*"    },    {      "Effect": "Allow",      "Action": [        "ecr:BatchCheckLayerAvailability",        "ecr:GetDownloadUrlForLayer",        "ecr:BatchGetImage"      ],      // arn:${Partition}:ecr:${Region}:${Account}:repository/${Repository-name}      "Resource": [        "arn:aws:ecr:us-east-1:123456789012:repository/*"        // "arn:aws:ecr:us-east-1:123456789012:repository/example-repo"      ]    }  ]}
 ```
 
 After you create the IAM user, use its credentials to [configure the registry in Wrangler](https://developers.cloudflare.com/workers/wrangler/commands/containers/#containers-registries-configure). Wrangler prompts you to create a Secrets Store store if one does not already exist, then stores the secret there.
@@ -258,47 +168,24 @@ CI or scripts:
 Terminal window
 
 ```
-
 printf '%s' "$AWS_SECRET_ACCESS_KEY" | npx wrangler containers registries configure <AWS_ACCOUNT_ID>.dkr.ecr.<AWS_REGION>.amazonaws.com --aws-access-key-id=<AWS_ACCESS_KEY_ID> --secret-name=<SECRET_NAME> --skip-confirmation
-
-
 ```
 
 After you configure the registry, use the fully qualified Amazon ECR image reference in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-7846)
-* [  wrangler.toml ](#tab-panel-7847)
+* [  wrangler.jsonc ](#tab-panel-7922)
+* [  wrangler.toml ](#tab-panel-7923)
 
 JSONC
 
 ```
-
-{
-
-  "containers": [
-
-    {
-
-      "image": "<AWS_ACCOUNT_ID>.dkr.ecr.<AWS_REGION>.amazonaws.com/<REPOSITORY>:<TAG>"
-
-    }
-
-  ]
-
-}
-
-
+{  "containers": [    {      "image": "<AWS_ACCOUNT_ID>.dkr.ecr.<AWS_REGION>.amazonaws.com/<REPOSITORY>:<TAG>"    }  ]}
 ```
 
 TOML
 
 ```
-
-[[containers]]
-
-image = "<AWS_ACCOUNT_ID>.dkr.ecr.<AWS_REGION>.amazonaws.com/<REPOSITORY>:<TAG>"
-
-
+[[containers]]image = "<AWS_ACCOUNT_ID>.dkr.ecr.<AWS_REGION>.amazonaws.com/<REPOSITORY>:<TAG>"
 ```
 
 ### Use images from other registries
@@ -308,12 +195,7 @@ If you want to use a pre-built image from another registry provider, first make 
 Terminal window
 
 ```
-
-docker pull <PUBLIC_IMAGE>
-
-docker tag <PUBLIC_IMAGE> <IMAGE>:<TAG>
-
-
+docker pull <PUBLIC_IMAGE>docker tag <PUBLIC_IMAGE> <IMAGE>:<TAG>
 ```
 
 Wrangler provides a command to push images to the Cloudflare Registry:
@@ -350,39 +232,19 @@ pnpm wrangler containers build -p -t <TAG> .
 
 This will output an image registry URI that you can then use in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-7848)
-* [  wrangler.toml ](#tab-panel-7849)
+* [  wrangler.jsonc ](#tab-panel-7924)
+* [  wrangler.toml ](#tab-panel-7925)
 
 JSONC
 
 ```
-
-{
-
-  "containers": [
-
-    {
-
-      "image": "registry.cloudflare.com/<YOUR_ACCOUNT_ID>/<IMAGE>:<TAG>"
-
-    }
-
-  ]
-
-}
-
-
+{  "containers": [    {      "image": "registry.cloudflare.com/<YOUR_ACCOUNT_ID>/<IMAGE>:<TAG>"    }  ]}
 ```
 
 TOML
 
 ```
-
-[[containers]]
-
-image = "registry.cloudflare.com/<YOUR_ACCOUNT_ID>/<IMAGE>:<TAG>"
-
-
+[[containers]]image = "registry.cloudflare.com/<YOUR_ACCOUNT_ID>/<IMAGE>:<TAG>"
 ```
 
 Note

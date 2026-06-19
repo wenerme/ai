@@ -8,7 +8,7 @@ Skills are available in the Codex CLI, IDE extension, and Codex app.
 
 Skills use **progressive disclosure** to manage context efficiently: Codex starts with each skill's name, description, and file path. Codex loads the full `SKILL.md` instructions only when it decides to use a skill.
 
-Codex includes an initial list of available skills in context so it can choose the right skill for a task. To avoid crowding out the rest of the prompt, this list is capped at roughly 2% of the model’s context window, or 8,000 characters when the context window is unknown. If many skills are installed, Codex shortens skill descriptions first. For very large skill sets, some skills may be omitted from the initial list, and Codex will show a warning.
+Codex includes an initial list of available skills in context so it can choose the right skill for a task. To avoid crowding out the rest of the prompt, this list uses at most 2% of the model’s context window, or 8,000 characters when the context window is unknown. If many skills are installed, Codex shortens skill descriptions first. For large skill sets, Codex may omit some skills from the initial list and show a warning.
 
 This budget applies only to the initial skills list. When Codex selects a skill, it still reads the full SKILL.md instructions for that skill.
 
@@ -64,7 +64,11 @@ Because implicit matching depends on `description`, write concise descriptions w
 
 ## Create a skill
 
-Use the built-in creator first:
+If you already know the workflow and it's easier to show than describe, use
+[Record & Replay](https://developers.openai.com/codex/record-and-replay). Codex records the workflow,
+inspects the steps, and drafts a reusable skill from the demonstration.
+
+If you want to describe the skill instead, use the built-in creator:
 
 ```text
 $skill-creator

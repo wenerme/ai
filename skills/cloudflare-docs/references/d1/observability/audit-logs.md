@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -36,52 +36,7 @@ The following configuration actions are logged:
 Below is an example of an audit log entry showing the creation of a new database:
 
 ```
-
-{
-
-  "action": { "info": "CreateDatabase", "result": true, "type": "create" },
-
-  "actor": {
-
-    "email": "<ACTOR_EMAIL>",
-
-    "id": "b1ab1021a61b1b12612a51b128baa172",
-
-    "ip": "1b11:a1b2:12b1:12a::11a:1b",
-
-    "type": "user"
-
-  },
-
-  "id": "a123b12a-ab11-1212-ab1a-a1aa11a11abb",
-
-  "interface": "API",
-
-  "metadata": {},
-
-  "newValue": "",
-
-  "newValueJson": { "database_name": "my-db" },
-
-  "oldValue": "",
-
-  "oldValueJson": {},
-
-  "owner": { "id": "211b1a74121aa32a19121a88a712aa12" },
-
-  "resource": {
-
-    "id": "11a21122-1a11-12bb-11ab-1aa2aa1ab12a",
-
-    "type": "d1.database"
-
-  },
-
-  "when": "2024-08-09T04:53:55.752Z"
-
-}
-
-
+{  "action": { "info": "CreateDatabase", "result": true, "type": "create" },  "actor": {    "email": "<ACTOR_EMAIL>",    "id": "b1ab1021a61b1b12612a51b128baa172",    "ip": "1b11:a1b2:12b1:12a::11a:1b",    "type": "user"  },  "id": "a123b12a-ab11-1212-ab1a-a1aa11a11abb",  "interface": "API",  "metadata": {},  "newValue": "",  "newValueJson": { "database_name": "my-db" },  "oldValue": "",  "oldValueJson": {},  "owner": { "id": "211b1a74121aa32a19121a88a712aa12" },  "resource": {    "id": "11a21122-1a11-12bb-11ab-1aa2aa1ab12a",    "type": "d1.database"  },  "when": "2024-08-09T04:53:55.752Z"}
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -47,8 +47,7 @@ If you prefer to deploy step by step, scaffold the project and deploy manually.
 1. Scaffold the bridge project:  
 Terminal window  
 ```  
-npm create cloudflare -- sandbox-bridge --template=cloudflare/sandbox-sdk/bridge/worker  
-cd sandbox-bridge  
+npm create cloudflare -- sandbox-bridge --template=cloudflare/sandbox-sdk/bridge/workercd sandbox-bridge  
 ```
 2. Authenticate with Cloudflare:  
 Terminal window  
@@ -89,312 +88,75 @@ All examples assume the following environment variables are set:
 Terminal window
 
 ```
-
-export SANDBOX_API_URL=https://cloudflare-sandbox-bridge.<your-subdomain>.workers.dev
-
-export SANDBOX_API_KEY=<your-token>
-
-
+export SANDBOX_API_URL=https://cloudflare-sandbox-bridge.<your-subdomain>.workers.devexport SANDBOX_API_KEY=<your-token>
 ```
 
 ### Create a sandbox and run a command
 
-* [ curl ](#tab-panel-10199)
-* [ Node.js ](#tab-panel-10200)
-* [ Python ](#tab-panel-10201)
+* [ curl ](#tab-panel-10275)
+* [ Node.js ](#tab-panel-10276)
+* [ Python ](#tab-panel-10277)
 
 Terminal window
 
 ```
-
-# Create a sandbox
-
-SANDBOX_ID=$(curl -s -X POST "$SANDBOX_API_URL/v1/sandbox" \
-
-  -H "Authorization: Bearer $SANDBOX_API_KEY" | jq -r '.id')
-
-
+# Create a sandboxSANDBOX_ID=$(curl -s -X POST "$SANDBOX_API_URL/v1/sandbox" \  -H "Authorization: Bearer $SANDBOX_API_KEY" | jq -r '.id')
 echo "Sandbox ID: $SANDBOX_ID"
-
-
-# Run a command
-
-curl -s -X POST "$SANDBOX_API_URL/v1/sandbox/$SANDBOX_ID/exec" \
-
-  -H "Authorization: Bearer $SANDBOX_API_KEY" \
-
-  -H "Content-Type: application/json" \
-
-  -d '{"argv": ["sh", "-lc", "echo hello from the sandbox"], "timeout_ms": 10000}'
-
-
-# Destroy the sandbox when done
-
-curl -s -X DELETE "$SANDBOX_API_URL/v1/sandbox/$SANDBOX_ID" \
-
-  -H "Authorization: Bearer $SANDBOX_API_KEY"
-
-
+# Run a commandcurl -s -X POST "$SANDBOX_API_URL/v1/sandbox/$SANDBOX_ID/exec" \  -H "Authorization: Bearer $SANDBOX_API_KEY" \  -H "Content-Type: application/json" \  -d '{"argv": ["sh", "-lc", "echo hello from the sandbox"], "timeout_ms": 10000}'
+# Destroy the sandbox when donecurl -s -X DELETE "$SANDBOX_API_URL/v1/sandbox/$SANDBOX_ID" \  -H "Authorization: Bearer $SANDBOX_API_KEY"
 ```
 
 JavaScript
 
 ```
-
-const API_URL = process.env.SANDBOX_API_URL;
-
-const API_KEY = process.env.SANDBOX_API_KEY;
-
-
-const headers = {
-
-  Authorization: `Bearer ${API_KEY}`,
-
-  "Content-Type": "application/json",
-
-};
-
-
-// Create a sandbox
-
-const { id } = await fetch(`${API_URL}/v1/sandbox`, {
-
-  method: "POST",
-
-  headers,
-
-}).then((r) => r.json());
-
-
+const API_URL = process.env.SANDBOX_API_URL;const API_KEY = process.env.SANDBOX_API_KEY;
+const headers = {  Authorization: `Bearer ${API_KEY}`,  "Content-Type": "application/json",};
+// Create a sandboxconst { id } = await fetch(`${API_URL}/v1/sandbox`, {  method: "POST",  headers,}).then((r) => r.json());
 console.log(`Sandbox ID: ${id}`);
-
-
-// Run a command
-
-// Response is a text/event-stream with the following SSE events:
-
-//   event: stdout  — data is a base64-encoded output chunk
-
-//   event: stderr  — data is a base64-encoded error chunk
-
-//   event: exit    — data is JSON: {"exit_code": 0}
-
-//   event: error   — data is JSON: {"error": "...", "code": "..."}
-
-const execRes = await fetch(`${API_URL}/v1/sandbox/${id}/exec`, {
-
-  method: "POST",
-
-  headers,
-
-  body: JSON.stringify({
-
-    argv: ["sh", "-lc", "echo hello from the sandbox"],
-
-    timeout_ms: 10000,
-
-  }),
-
-});
-
-
+// Run a command// Response is a text/event-stream with the following SSE events://   event: stdout  — data is a base64-encoded output chunk//   event: stderr  — data is a base64-encoded error chunk//   event: exit    — data is JSON: {"exit_code": 0}//   event: error   — data is JSON: {"error": "...", "code": "..."}const execRes = await fetch(`${API_URL}/v1/sandbox/${id}/exec`, {  method: "POST",  headers,  body: JSON.stringify({    argv: ["sh", "-lc", "echo hello from the sandbox"],    timeout_ms: 10000,  }),});
 console.log(await execRes.text());
-
-
-// Destroy the sandbox when done
-
-await fetch(`${API_URL}/v1/sandbox/${id}`, {
-
-  method: "DELETE",
-
-  headers,
-
-});
-
-
+// Destroy the sandbox when doneawait fetch(`${API_URL}/v1/sandbox/${id}`, {  method: "DELETE",  headers,});
 ```
 
 Python
 
 ```
-
-# /// script
-
-# dependencies = ["httpx"]
-
-# ///
-
-import os
-
-import httpx
-
-
-API_URL = os.environ["SANDBOX_API_URL"]
-
-API_KEY = os.environ["SANDBOX_API_KEY"]
-
-
+# /// script# dependencies = ["httpx"]# ///import osimport httpx
+API_URL = os.environ["SANDBOX_API_URL"]API_KEY = os.environ["SANDBOX_API_KEY"]
 headers = {"Authorization": f"Bearer {API_KEY}"}
-
-
-# Create a sandbox
-
-resp = httpx.post(f"{API_URL}/v1/sandbox", headers=headers)
-
-sandbox_id = resp.json()["id"]
-
-print(f"Sandbox ID: {sandbox_id}")
-
-
-# Run a command
-
-# Response is a text/event-stream with the following SSE events:
-
-#   event: stdout  — data is a base64-encoded output chunk
-
-#   event: stderr  — data is a base64-encoded error chunk
-
-#   event: exit    — data is JSON: {"exit_code": 0}
-
-#   event: error   — data is JSON: {"error": "...", "code": "..."}
-
-exec_resp = httpx.post(
-
-    f"{API_URL}/v1/sandbox/{sandbox_id}/exec",
-
-    headers=headers,
-
-    json={
-
-        "argv": ["sh", "-lc", "echo hello from the sandbox"],
-
-        "timeout_ms": 10000,
-
-    },
-
-)
-
-print(exec_resp.text)
-
-
-# Destroy the sandbox when done
-
-httpx.delete(f"{API_URL}/v1/sandbox/{sandbox_id}", headers=headers)
-
-
+# Create a sandboxresp = httpx.post(f"{API_URL}/v1/sandbox", headers=headers)sandbox_id = resp.json()["id"]print(f"Sandbox ID: {sandbox_id}")
+# Run a command# Response is a text/event-stream with the following SSE events:#   event: stdout  — data is a base64-encoded output chunk#   event: stderr  — data is a base64-encoded error chunk#   event: exit    — data is JSON: {"exit_code": 0}#   event: error   — data is JSON: {"error": "...", "code": "..."}exec_resp = httpx.post(    f"{API_URL}/v1/sandbox/{sandbox_id}/exec",    headers=headers,    json={        "argv": ["sh", "-lc", "echo hello from the sandbox"],        "timeout_ms": 10000,    },)print(exec_resp.text)
+# Destroy the sandbox when donehttpx.delete(f"{API_URL}/v1/sandbox/{sandbox_id}", headers=headers)
 ```
 
 ### Write and read files
 
-* [ curl ](#tab-panel-10202)
-* [ Node.js ](#tab-panel-10203)
-* [ Python ](#tab-panel-10204)
+* [ curl ](#tab-panel-10278)
+* [ Node.js ](#tab-panel-10279)
+* [ Python ](#tab-panel-10280)
 
 Terminal window
 
 ```
-
-# Write a file
-
-curl -s -X PUT "$SANDBOX_API_URL/v1/sandbox/$SANDBOX_ID/file/workspace/hello.py" \
-
-  -H "Authorization: Bearer $SANDBOX_API_KEY" \
-
-  --data-binary 'print("hello world")'
-
-
-# Read a file
-
-curl -s "$SANDBOX_API_URL/v1/sandbox/$SANDBOX_ID/file/workspace/hello.py" \
-
-  -H "Authorization: Bearer $SANDBOX_API_KEY"
-
-
+# Write a filecurl -s -X PUT "$SANDBOX_API_URL/v1/sandbox/$SANDBOX_ID/file/workspace/hello.py" \  -H "Authorization: Bearer $SANDBOX_API_KEY" \  --data-binary 'print("hello world")'
+# Read a filecurl -s "$SANDBOX_API_URL/v1/sandbox/$SANDBOX_ID/file/workspace/hello.py" \  -H "Authorization: Bearer $SANDBOX_API_KEY"
 ```
 
 JavaScript
 
 ```
-
-// Write a file
-
-await fetch(`${API_URL}/v1/sandbox/${id}/file/workspace/hello.py`, {
-
-  method: "PUT",
-
-  headers,
-
-  body: 'print("hello world")',
-
-});
-
-
-// Read a file
-
-const content = await fetch(
-
-  `${API_URL}/v1/sandbox/${id}/file/workspace/hello.py`,
-
-  { headers },
-
-).then((r) => r.text());
-
-
+// Write a fileawait fetch(`${API_URL}/v1/sandbox/${id}/file/workspace/hello.py`, {  method: "PUT",  headers,  body: 'print("hello world")',});
+// Read a fileconst content = await fetch(  `${API_URL}/v1/sandbox/${id}/file/workspace/hello.py`,  { headers },).then((r) => r.text());
 console.log(content);
-
-
 ```
 
 Python
 
 ```
-
-# /// script
-
-# dependencies = ["httpx"]
-
-# ///
-
-import os
-
-import httpx
-
-
-API_URL = os.environ["SANDBOX_API_URL"]
-
-API_KEY = os.environ["SANDBOX_API_KEY"]
-
-SANDBOX_ID = os.environ["SANDBOX_ID"]  # from the "Create a sandbox" step
-
-headers = {"Authorization": f"Bearer {API_KEY}"}
-
-
-# Write a file
-
-httpx.put(
-
-    f"{API_URL}/v1/sandbox/{SANDBOX_ID}/file/workspace/hello.py",
-
-    headers=headers,
-
-    content=b'print("hello world")',
-
-)
-
-
-# Read a file
-
-content = httpx.get(
-
-    f"{API_URL}/v1/sandbox/{SANDBOX_ID}/file/workspace/hello.py",
-
-    headers=headers,
-
-).text
-
-print(content)
-
-
+# /// script# dependencies = ["httpx"]# ///import osimport httpx
+API_URL = os.environ["SANDBOX_API_URL"]API_KEY = os.environ["SANDBOX_API_KEY"]SANDBOX_ID = os.environ["SANDBOX_ID"]  # from the "Create a sandbox" stepheaders = {"Authorization": f"Bearer {API_KEY}"}
+# Write a filehttpx.put(    f"{API_URL}/v1/sandbox/{SANDBOX_ID}/file/workspace/hello.py",    headers=headers,    content=b'print("hello world")',)
+# Read a filecontent = httpx.get(    f"{API_URL}/v1/sandbox/{SANDBOX_ID}/file/workspace/hello.py",    headers=headers,).textprint(content)
 ```
 
 ## Keep the bridge updated

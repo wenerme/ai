@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,9 +22,9 @@ In the following tables, review the preinstalled versions for languages and tool
 
 ### Languages and runtime
 
-* [ v3 ](#tab-panel-9382)
-* [ v2 ](#tab-panel-9383)
-* [ v1 ](#tab-panel-9384)
+* [ v3 ](#tab-panel-9458)
+* [ v2 ](#tab-panel-9459)
+* [ v1 ](#tab-panel-9460)
 
 | Tool        | Default version | Supported versions | Environment variable | File                         |
 | ----------- | --------------- | ------------------ | -------------------- | ---------------------------- |
@@ -62,9 +62,9 @@ Under Supported versions, "Any version" refers to support for all versions of th
 
 ### Tools
 
-* [ v3 ](#tab-panel-9385)
-* [ v2 ](#tab-panel-9386)
-* [ v1 ](#tab-panel-9387)
+* [ v3 ](#tab-panel-9461)
+* [ v2 ](#tab-panel-9462)
+* [ v1 ](#tab-panel-9463)
 
 | Tool                   | Default version | Supported versions               | Environment variable          |
 | ---------------------- | --------------- | -------------------------------- | ----------------------------- |
@@ -125,14 +125,7 @@ Under Supported versions, "Any version" refers to support for all versions of th
 To use a specific version of a framework, specify it in the project's package manager configuration file. For example, if you use Gatsby, your `package.json` should include the following:
 
 ```
-
-"dependencies": {
-
-  "gatsby": "^5.13.7",
-
-}
-
-
+"dependencies": {  "gatsby": "^5.13.7",}
 ```
 
 When your build starts, if not already [cached](https://developers.cloudflare.com/pages/configuration/build-caching/), version 5.13.7 of Gatsby will be installed using `npm install`.
@@ -192,9 +185,9 @@ The following features are not currently supported when using the v3 build syste
 
 Cloudflare Pages builds are run in a [gVisor ↗](https://gvisor.dev/docs/) container.
 
-* [ v3 ](#tab-panel-9388)
-* [ v2 ](#tab-panel-9389)
-* [ v1 ](#tab-panel-9390)
+* [ v3 ](#tab-panel-9464)
+* [ v2 ](#tab-panel-9465)
+* [ v1 ](#tab-panel-9466)
 
 | **Build environment** | Ubuntu 22.04.2 |
 | --------------------- | -------------- |

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,15 +28,8 @@ A label that displays the current participant count. Automatically updates when 
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let countView = RtkParticipantCountView(meeting: rtkClient)
-
-view.addSubview(countView)
-
-
+let countView = RtkParticipantCountView(meeting: rtkClient)view.addSubview(countView)
 ```
 
 ### With custom appearance
@@ -44,29 +37,8 @@ view.addSubview(countView)
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let appearance = RtkTextAppearance(
-
-    font: UIFont.systemFont(ofSize: 14, weight: .medium),
-
-    textColor: .lightGray
-
-)
-
-let countView = RtkParticipantCountView(
-
-    meeting: rtkClient,
-
-    appearance: appearance
-
-)
-
-view.addSubview(countView)
-
-
+let appearance = RtkTextAppearance(    font: UIFont.systemFont(ofSize: 14, weight: .medium),    textColor: .lightGray)let countView = RtkParticipantCountView(    meeting: rtkClient,    appearance: appearance)view.addSubview(countView)
 ```
 
 ```json

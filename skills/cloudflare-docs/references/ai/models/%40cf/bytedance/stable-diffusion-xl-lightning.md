@@ -1,0 +1,108 @@
+---
+title: stable-diffusion-xl-lightning
+description: SDXL-Lightning is a lightning-fast text-to-image generation model. It can generate high-quality 1024px images in a few steps.
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt  
+> Use this file to discover all available pages before exploring further. 
+
+[Skip to content](#%5Ftop) 
+
+![ByteDance logo](https://developers.cloudflare.com/_astro/bytedance.T1uiROQ6.svg) 
+
+#  stable-diffusion-xl-lightning Beta 
+
+Text-to-Image • ByteDance 
+
+`@cf/bytedance/stable-diffusion-xl-lightning` 
+
+SDXL-Lightning is a lightning-fast text-to-image generation model. It can generate high-quality 1024px images in a few steps.
+
+| Model Info       |                                                           |
+| ---------------- | --------------------------------------------------------- |
+| More information | [link ↗](https://huggingface.co/ByteDance/SDXL-Lightning) |
+| Beta             | Yes                                                       |
+| Unit Pricing     | $0.00 per step                                            |
+
+## Usage
+
+* [  TypeScript ](#tab-panel-2481)
+* [  curl ](#tab-panel-2482)
+
+```
+export interface Env {  AI: Ai;}
+export default {  async fetch(request, env): Promise<Response> {
+    const inputs = {      prompt: "cyberpunk cat",    };
+    const response = await env.AI.run(      "@cf/bytedance/stable-diffusion-xl-lightning",      inputs    );
+    return new Response(response, {      headers: {        "content-type": "image/jpg",      },    });  },} satisfies ExportedHandler<Env>;
+```
+
+Terminal window
+
+```
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/bytedance/stable-diffusion-xl-lightning  \  -X POST  \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \  -d '{ "prompt": "cyberpunk cat" }'
+```
+
+## Parameters
+
+* [ Input ](#tab-panel-2483)
+* [ Output ](#tab-panel-2484)
+
+prompt
+
+`string`requiredminLength: 1A text description of the image you want to generate
+
+negative\_prompt
+
+`string`Text describing elements to avoid in the generated image
+
+height
+
+`integer`minimum: 256maximum: 2048The height of the generated image in pixels
+
+width
+
+`integer`minimum: 256maximum: 2048The width of the generated image in pixels
+
+▶image\[\]
+
+`array`For use with img2img tasks. An array of integers that represent the image data constrained to 8-bit unsigned integer values
+
+image\_b64
+
+`string`For use with img2img tasks. A base64-encoded string of the input image
+
+▶mask\[\]
+
+`array`An array representing An array of integers that represent mask image data for inpainting constrained to 8-bit unsigned integer values
+
+num\_steps
+
+`integer`default: 20maximum: 20The number of diffusion steps; higher values can improve quality but take longer
+
+strength
+
+`number`default: 1A value between 0 and 1 indicating how strongly to apply the transformation during img2img tasks; lower values make the output closer to the input image
+
+guidance
+
+`number`default: 7.5Controls how closely the generated image should adhere to the prompt; higher values make the image more aligned with the prompt
+
+seed
+
+`integer`Random seed for reproducibility of the image generation
+
+ The binding returns a `ReadableStream` with the output (check the model's output schema). 
+
+## API Schemas (Raw)
+
+Input [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-lightning/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-lightning/schema-input.json "Download") 
+
+Output [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-lightning/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-lightning/schema-output.json "Download")
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/bytedance/stable-diffusion-xl-lightning/#page","headline":"stable-diffusion-xl-lightning (ByteDance) · Cloudflare AI docs · Cloudflare AI docs","description":"SDXL-Lightning is a lightning-fast text-to-image generation model. It can generate high-quality 1024px images in a few steps.","url":"https://developers.cloudflare.com/ai/models/%40cf/bytedance/stable-diffusion-xl-lightning/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+```

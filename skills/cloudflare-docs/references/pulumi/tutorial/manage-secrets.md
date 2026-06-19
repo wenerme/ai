@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pulumi/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -44,17 +44,11 @@ Use the Pulumi ESC CLI to log into your Pulumi Cloud account.
 Terminal window
 
 ```
-
 esc login
-
-
 ```
 
 ```
-
 Logged in to pulumi.com as  ....
-
-
 ```
 
 ### b. Create a new Environment
@@ -66,19 +60,11 @@ Environment names must be unique within a Pulumi organization and may only conta
 Terminal window
 
 ```
-
-ESC_ENV=wrangler/my-dev-environment
-
-esc env init $ESC_ENV
-
-
+ESC_ENV=wrangler/my-dev-environmentesc env init $ESC_ENV
 ```
 
 ```
-
 Environment created.
-
-
 ```
 
 ## 2\. Log into Cloudflare
@@ -97,12 +83,7 @@ Replace the placeholder `123abc` with your corresponding values:
 Terminal window
 
 ```
-
-esc env set $ESC_ENV environmentVariables.CLOUDFLARE_ACCOUNT_ID 123abc
-
-esc env set $ESC_ENV environmentVariables.CLOUDFLARE_API_TOKEN  123abc --secret
-
-
+esc env set $ESC_ENV environmentVariables.CLOUDFLARE_ACCOUNT_ID 123abcesc env set $ESC_ENV environmentVariables.CLOUDFLARE_API_TOKEN  123abc --secret
 ```
 
 Note
@@ -116,17 +97,11 @@ Ensure you're not currently logged in to your Cloudflare account.
 Terminal window
 
 ```
-
 npx wrangler logout
-
-
 ```
 
 ```
-
 Not logged in, exiting...
-
-
 ```
 
 ### c. Log in
@@ -136,19 +111,11 @@ Pass ESC-stored Cloudflare credentials to Wrangler.
 Terminal window
 
 ```
-
 esc run ${ESC_ENV} npx wrangler whoami
-
-
 ```
 
 ```
-
-Getting User settings...
-
-👋 You are logged in with an API Token.
-
-
+Getting User settings...👋 You are logged in with an API Token.
 ```
 
 When you use the `esc run` command, it opens the Environment and sets the specified Environment variables into a temporary environment. After that, it uses those variables in the context of the `wrangler` command. This is especially helpful when running `wrangler` commands in a CI/CD environment but wanting to avoid storing credentials directly in your pipeline.
@@ -162,10 +129,7 @@ Pulumi ESC centralizes secrets, and Wrangler can be used to pass them on to Work
 Terminal window
 
 ```
-
 esc env set ${ESC_ENV} environmentVariables.TOP_SECRET "aliens are real" --secret
-
-
 ```
 
 ### b. Pass the secret to your Worker
@@ -173,10 +137,7 @@ esc env set ${ESC_ENV} environmentVariables.TOP_SECRET "aliens are real" --secre
 Terminal window
 
 ```
-
 esc run -i ${ESC_ENV} -- sh -c 'echo "$TOP_SECRET" | npx wrangler secret put TOP_SECRET'
-
-
 ```
 
 By using an external secrets management solution, commonly used Worker secrets can be stored in a single shared Environment that is accessed by the relevant Workers. You can use shell commands with `esc` to incorporate scripting and integrate them into deployment pipelines or `make` commands. Use `esc [command] --help` for more information about the various commands available in the CLI.
@@ -196,19 +157,11 @@ With a dedicated ESC Environment to store all the `.dev.vars` secrets, you can u
 Terminal window
 
 ```
-
-E=wrangler/my-devvars
-
-esc env init $E
-
-
+E=wrangler/my-devvarsesc env init $E
 ```
 
 ```
-
 Environment created.
-
-
 ```
 
 ### b. Add a secret
@@ -216,10 +169,7 @@ Environment created.
 Terminal window
 
 ```
-
 esc env set $E environmentVariables.TOP_SECRET  "the moon is made of cheese" --secret
-
-
 ```
 
 ### c. Generate the `.dev.vars` file
@@ -227,10 +177,7 @@ esc env set $E environmentVariables.TOP_SECRET  "the moon is made of cheese" --s
 Terminal window
 
 ```
-
 esc env open ${E} --format dotenv > .dev.vars
-
-
 ```
 
 As `.dev.vars` files may often contain secrets, they should not be committed to source control. Keeping these secrets externally ensures you can load them to a new development environment without any loss.

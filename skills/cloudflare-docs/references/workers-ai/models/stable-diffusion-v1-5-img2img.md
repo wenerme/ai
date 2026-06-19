@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,86 +29,28 @@ Stable Diffusion is a latent text-to-image diffusion model capable of generating
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-5084)
-* [  curl ](#tab-panel-5085)
+* [  TypeScript ](#tab-panel-5158)
+* [  curl ](#tab-panel-5159)
 
 ```
-
-export interface Env {
-
-  AI: Ai;
-
-}
-
-
-export default {
-
-  async fetch(request, env): Promise<Response> {
-
-
-    // Picture of a dog
-
-    const exampleInputImage = await fetch(
-
-      "https://pub-1fb693cb11cc46b2b2f656f51e015a2c.r2.dev/dog.png"
-
-    );
-
-
-    const inputs = {
-
-      prompt: "Change to a lion",
-
-      image: [...new Uint8Array(await exampleInputImage.arrayBuffer())],
-
-    };
-
-
-    const response = await env.AI.run(
-
-      "@cf/runwayml/stable-diffusion-v1-5-img2img",
-
-      inputs
-
-    );
-
-
-    return new Response(response, {
-
-      headers: {
-
-        "content-type": "image/png",
-
-      },
-
-    });
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export interface Env {  AI: Ai;}
+export default {  async fetch(request, env): Promise<Response> {
+    // Picture of a dog    const exampleInputImage = await fetch(      "https://pub-1fb693cb11cc46b2b2f656f51e015a2c.r2.dev/dog.png"    );
+    const inputs = {      prompt: "Change to a lion",      image: [...new Uint8Array(await exampleInputImage.arrayBuffer())],    };
+    const response = await env.AI.run(      "@cf/runwayml/stable-diffusion-v1-5-img2img",      inputs    );
+    return new Response(response, {      headers: {        "content-type": "image/png",      },    });  },} satisfies ExportedHandler<Env>;
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/runwayml/stable-diffusion-v1-5-img2img  \
-
-  -X POST  \
-
-  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
-
-  -d '{ "prompt": "cyberpunk cat" }'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/runwayml/stable-diffusion-v1-5-img2img  \  -X POST  \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \  -d '{ "prompt": "cyberpunk cat" }'
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-5086)
-* [ Output ](#tab-panel-5087)
+* [ Input ](#tab-panel-5160)
+* [ Output ](#tab-panel-5161)
 
 prompt
 
@@ -154,13 +96,13 @@ seed
 
 `integer`Random seed for reproducibility of the image generation
 
-The binding returns a `ReadableStream` with the output (check the model's output schema).
+ The binding returns a `ReadableStream` with the output (check the model's output schema). 
 
 ## API Schemas (Raw)
 
 Input [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-img2img/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-img2img/schema-input.json "Download") 
 
-Output [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-img2img/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-img2img/schema-output.json "Download") 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-img2img/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-img2img/schema-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-img2img/#page","headline":"stable-diffusion-v1-5-img2img (RunwayML) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Stable Diffusion is a latent text-to-image diffusion model capable of generating photo-realistic images. Img2img generate a new image from an input image with Stable Diffusion.","url":"https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-img2img/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,67 +28,12 @@ Below is an example of using [PyIceberg ↗](https://py.iceberg.apache.org/) to 
 Python
 
 ```
-
-import pyarrow as pa
-
-from pyiceberg.catalog.rest import RestCatalog
-
-from pyiceberg.exceptions import NamespaceAlreadyExistsError
-
-
-# Define catalog connection details (replace variables)
-
-WAREHOUSE = "<WAREHOUSE>"
-
-TOKEN = "<TOKEN>"
-
-CATALOG_URI = "<CATALOG_URI>"
-
-
-# Connect to R2 Data Catalog
-
-catalog = RestCatalog(
-
-    name="my_catalog",
-
-    warehouse=WAREHOUSE,
-
-    uri=CATALOG_URI,
-
-    token=TOKEN,
-
-)
-
-
-# Create default namespace
-
-catalog.create_namespace("default")
-
-
-# Create simple PyArrow table
-
-df = pa.table({
-
-    "id": [1, 2, 3],
-
-    "name": ["Alice", "Bob", "Charlie"],
-
-})
-
-
-# Create an Iceberg table
-
-test_table = ("default", "my_table")
-
-table = catalog.create_table(
-
-    test_table,
-
-    schema=df.schema,
-
-)
-
-
+import pyarrow as pafrom pyiceberg.catalog.rest import RestCatalogfrom pyiceberg.exceptions import NamespaceAlreadyExistsError
+# Define catalog connection details (replace variables)WAREHOUSE = "<WAREHOUSE>"TOKEN = "<TOKEN>"CATALOG_URI = "<CATALOG_URI>"
+# Connect to R2 Data Catalogcatalog = RestCatalog(    name="my_catalog",    warehouse=WAREHOUSE,    uri=CATALOG_URI,    token=TOKEN,)
+# Create default namespacecatalog.create_namespace("default")
+# Create simple PyArrow tabledf = pa.table({    "id": [1, 2, 3],    "name": ["Alice", "Bob", "Charlie"],})
+# Create an Iceberg tabletest_table = ("default", "my_table")table = catalog.create_table(    test_table,    schema=df.schema,)
 ```
 
 ```json

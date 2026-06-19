@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -146,10 +146,11 @@ A few configuration fields are deprecated, but their presence is not a breaking 
 * **`zone_id`**: `string`, deprecated  
 The `zone_id` field is deprecated and will be removed in a future release. It is now inferred from `route`/`routes`, and optionally from `dev.host` when using `wrangler dev`. This also makes it simpler to deploy a single Worker to multiple domains.
 * **`build.upload`**: `object`, deprecated  
-The `build.upload` field is deprecated and will be removed in a future release. Its usage results in a warning with suggestions on rewriting the configuration file to remove the warnings.  
-   * `build.upload.main`/`build.upload.dir` are replaced by the `main` fields and are applicable to both service worker format and modules format Workers.  
-   * `build.upload.rules` is replaced by the `rules` field and is applicable to both service worker format and modules format Workers.  
-   * `build.upload.format` is no longer specified and is automatically inferred by `wrangler`.
+The `build.upload` field is deprecated and will be removed in a future release. Its usage results in a warning with suggestions on rewriting the configuration file to remove the warnings.
+
+  * `build.upload.main`/`build.upload.dir` are replaced by the `main` fields and are applicable to both service worker format and modules format Workers.
+  * `build.upload.rules` is replaced by the `rules` field and is applicable to both service worker format and modules format Workers.
+  * `build.upload.format` is no longer specified and is automatically inferred by `wrangler`.
 
 #### Deprecated fields (breaking)
 
@@ -200,22 +201,17 @@ Routes are specified in the [Wrangler configuration file](https://developers.clo
 * Wrangler will no longer use `index.js` in the directory where `wrangler dev` is called as the entry point to a Worker. Use the `main` configuration field, or explicitly pass it as a command line argument, for example: `wrangler dev index.js`.
 * Wrangler will no longer assume that bare specifiers are file names if they are not represented as a path. For example, in a folder like so:  
 ```  
-project  
-├── index.js  
-└── some-dependency.js  
+project├── index.js└── some-dependency.js  
 ```  
 where the content of `index.js` is:  
 JavaScript  
 ```  
 import SomeDependency from "some-dependency.js";  
-addEventListener("fetch", (event) => {  
-  // ...  
-});  
+addEventListener("fetch", (event) => {  // ...});  
 ```  
 Wrangler v1 would resolve `import SomeDependency from "some-dependency.js";` to the file `some-dependency.js`. This will also work in Wrangler v2, but will also log a deprecation warning. In the future, this will break with an error. Instead, you should rewrite the import to specify that it is a relative path, like so:  
 ```  
-import SomeDependency from "some-dependency.js";  
-import SomeDependency from "./some-dependency.js";  
+import SomeDependency from "some-dependency.js";import SomeDependency from "./some-dependency.js";  
 ```
 
 ### Wrangler v1 and v2 comparison tables

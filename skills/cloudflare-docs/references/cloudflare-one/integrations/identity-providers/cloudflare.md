@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,8 +18,8 @@ When a user authenticates through the Cloudflare identity provider, Access verif
 
 ## Set up Cloudflare as an identity provider
 
-* [ Dashboard ](#tab-panel-7208)
-* [ API ](#tab-panel-7209)
+* [ Dashboard ](#tab-panel-7284)
+* [ API ](#tab-panel-7285)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
@@ -31,34 +31,13 @@ Make a `POST` request to the [Identity Providers](https://developers.cloudflare.
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Access: Organizations, Identity Providers, and Groups Write`
 
 Add an Access identity provider
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_providers" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "Cloudflare",
-
-    "type": "cloudflare",
-
-    "config": {
-
-        "restrict_to_account_members": true
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_providers" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Cloudflare",    "type": "cloudflare",    "config": {        "restrict_to_account_members": true    }  }'
 ```
 
 ## Configuration options

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -40,45 +40,19 @@ If you have not chosen a namespace strategy yet, use `default` in the examples t
 
 Use the same namespace name in your Wrangler binding:
 
-* [  wrangler.jsonc ](#tab-panel-6790)
-* [  wrangler.toml ](#tab-panel-6791)
+* [  wrangler.jsonc ](#tab-panel-6866)
+* [  wrangler.toml ](#tab-panel-6867)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "artifacts": [
-
-    {
-
-      "binding": "ARTIFACTS",
-
-      "namespace": "default"
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "artifacts": [    {      "binding": "ARTIFACTS",      "namespace": "default"    }  ]}
 ```
 
 TOML
 
 ```
-
-[[artifacts]]
-
-binding = "ARTIFACTS"
-
-namespace = "default"
-
-
+[[artifacts]]binding = "ARTIFACTS"namespace = "default"
 ```
 
 Use that same namespace in your REST base URL:
@@ -86,14 +60,7 @@ Use that same namespace in your REST base URL:
 Terminal window
 
 ```
-
-export ACCOUNT_ID="<YOUR_ACCOUNT_ID>"
-
-export ARTIFACTS_NAMESPACE="default"
-
-export ARTIFACTS_BASE_URL="https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/artifacts/namespaces/$ARTIFACTS_NAMESPACE"
-
-
+export ACCOUNT_ID="<YOUR_ACCOUNT_ID>"export ARTIFACTS_NAMESPACE="default"export ARTIFACTS_BASE_URL="https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/artifacts/namespaces/$ARTIFACTS_NAMESPACE"
 ```
 
 ## Split namespaces when needed

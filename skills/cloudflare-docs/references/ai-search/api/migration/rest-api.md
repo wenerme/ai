@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -34,20 +34,7 @@ How to migrate from the AutoRAG `/ai-search` endpoint to the new `/chat/completi
 Terminal window
 
 ```
-
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/autorag/rags/<INSTANCE_NAME>/ai-search" \
-
-  -H "Content-Type: application/json" \
-
-  -H "Authorization: Bearer <API_TOKEN>" \
-
-  -d '{
-
-    "query": "What is Cloudflare?"
-
-  }'
-
-
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/autorag/rags/<INSTANCE_NAME>/ai-search" \  -H "Content-Type: application/json" \  -H "Authorization: Bearer <API_TOKEN>" \  -d '{    "query": "What is Cloudflare?"  }'
 ```
 
 **After (AI Search API):**
@@ -57,30 +44,7 @@ The new API uses the `messages` array format.
 Terminal window
 
 ```
-
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/chat/completions" \
-
-  -H "Content-Type: application/json" \
-
-  -H "Authorization: Bearer <API_TOKEN>" \
-
-  -d '{
-
-    "messages": [
-
-      {
-
-        "content": "What is Cloudflare?",
-
-        "role": "user"
-
-      }
-
-    ]
-
-  }'
-
-
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/chat/completions" \  -H "Content-Type: application/json" \  -H "Authorization: Bearer <API_TOKEN>" \  -d '{    "messages": [      {        "content": "What is Cloudflare?",        "role": "user"      }    ]  }'
 ```
 
 ## Search
@@ -92,20 +56,7 @@ How to migrate from the AutoRAG `/search` endpoint to the new `/search` endpoint
 Terminal window
 
 ```
-
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/autorag/rags/<INSTANCE_NAME>/search" \
-
-  -H "Content-Type: application/json" \
-
-  -H "Authorization: Bearer <API_TOKEN>" \
-
-  -d '{
-
-    "query": "What is Cloudflare?"
-
-  }'
-
-
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/autorag/rags/<INSTANCE_NAME>/search" \  -H "Content-Type: application/json" \  -H "Authorization: Bearer <API_TOKEN>" \  -d '{    "query": "What is Cloudflare?"  }'
 ```
 
 **After (AI Search API):**
@@ -115,30 +66,7 @@ The new API uses the `messages` array format. The `query` string format is also 
 Terminal window
 
 ```
-
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/search" \
-
-  -H "Content-Type: application/json" \
-
-  -H "Authorization: Bearer <API_TOKEN>" \
-
-  -d '{
-
-    "messages": [
-
-      {
-
-        "content": "What is Cloudflare?",
-
-        "role": "user"
-
-      }
-
-    ]
-
-  }'
-
-
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/search" \  -H "Content-Type: application/json" \  -H "Authorization: Bearer <API_TOKEN>" \  -d '{    "messages": [      {        "content": "What is Cloudflare?",        "role": "user"      }    ]  }'
 ```
 
 ## Streaming behavior changes
@@ -163,8 +91,8 @@ The filter operators have been renamed to use a `$` prefix:
 | gte         | $gte              |
 | lt          | $lt               |
 | lte         | $lte              |
-| $in (new)   |                   |
-| $nin (new)  |                   |
+|             | $in (new)         |
+|             | $nin (new)        |
 
 ### Examples
 
@@ -175,43 +103,13 @@ Filter by a single metadata field using implicit equality:
 **Before (AutoRAG API):**
 
 ```
-
-{
-
-  "filters": {
-
-    "type": "eq",
-
-    "key": "folder",
-
-    "value": "customer-a/"
-
-  }
-
-}
-
-
+{  "filters": {    "type": "eq",    "key": "folder",    "value": "customer-a/"  }}
 ```
 
 **After (AI Search API):**
 
 ```
-
-{
-
-  "ai_search_options": {
-
-    "retrieval": {
-
-      "filters": { "folder": "customer-a/" }
-
-    }
-
-  }
-
-}
-
-
+{  "ai_search_options": {    "retrieval": {      "filters": { "folder": "customer-a/" }    }  }}
 ```
 
 #### Compound filter (AND)
@@ -221,53 +119,13 @@ Combine multiple conditions where all must match:
 **Before (AutoRAG API):**
 
 ```
-
-{
-
-  "filters": {
-
-    "type": "and",
-
-    "filters": [
-
-      { "type": "eq", "key": "folder", "value": "customer-a/" },
-
-      { "type": "gte", "key": "timestamp", "value": "1735689600000" }
-
-    ]
-
-  }
-
-}
-
-
+{  "filters": {    "type": "and",    "filters": [      { "type": "eq", "key": "folder", "value": "customer-a/" },      { "type": "gte", "key": "timestamp", "value": "1735689600000" }    ]  }}
 ```
 
 **After (AI Search API):**
 
 ```
-
-{
-
-  "ai_search_options": {
-
-    "retrieval": {
-
-      "filters": {
-
-        "folder": "customer-a/",
-
-        "timestamp": { "$gte": 1735689600 }
-
-      }
-
-    }
-
-  }
-
-}
-
-
+{  "ai_search_options": {    "retrieval": {      "filters": {        "folder": "customer-a/",        "timestamp": { "$gte": 1735689600 }      }    }  }}
 ```
 
 ## API references

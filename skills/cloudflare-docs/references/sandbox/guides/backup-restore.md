@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,78 +23,28 @@ Terminal window
 ```  
 npx wrangler r2 bucket create my-backup-bucket  
 ```
-2. Add the `BACKUP_BUCKET` R2 binding and presigned URL credentials to your Wrangler configuration:  
-   * [  wrangler.jsonc ](#tab-panel-10273)  
-   * [  wrangler.toml ](#tab-panel-10274)  
+2. Add the `BACKUP_BUCKET` R2 binding and presigned URL credentials to your Wrangler configuration:
+
+  * [  wrangler.jsonc ](#tab-panel-10349)
+  * [  wrangler.toml ](#tab-panel-10350)  
 JSONC  
 ```  
-{  
-  "name": "my-sandbox-worker",  
-  "main": "src/index.ts",  
-  // Set this to today's date  
-  "compatibility_date": "2026-06-17",  
-  "compatibility_flags": ["nodejs_compat"],  
-  "containers": [  
-    {  
-      "class_name": "Sandbox",  
-      "image": "./Dockerfile",  
-    },  
-  ],  
-  "durable_objects": {  
-    "bindings": [  
-      {  
-        "class_name": "Sandbox",  
-        "name": "Sandbox",  
-      },  
-    ],  
-  },  
-  "migrations": [  
-    {  
-      "new_sqlite_classes": ["Sandbox"],  
-      "tag": "v1",  
-    },  
-  ],  
-  "vars": {  
-    "BACKUP_BUCKET_NAME": "my-backup-bucket",  
-    "CLOUDFLARE_ACCOUNT_ID": "<YOUR_ACCOUNT_ID>",  
-  },  
-  "r2_buckets": [  
-    {  
-      "binding": "BACKUP_BUCKET",  
-      "bucket_name": "my-backup-bucket",  
-    },  
-  ],  
-}  
+{  "name": "my-sandbox-worker",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-18",  "compatibility_flags": ["nodejs_compat"],  "containers": [    {      "class_name": "Sandbox",      "image": "./Dockerfile",    },  ],  "durable_objects": {    "bindings": [      {        "class_name": "Sandbox",        "name": "Sandbox",      },    ],  },  "migrations": [    {      "new_sqlite_classes": ["Sandbox"],      "tag": "v1",    },  ],  "vars": {    "BACKUP_BUCKET_NAME": "my-backup-bucket",    "CLOUDFLARE_ACCOUNT_ID": "<YOUR_ACCOUNT_ID>",  },  "r2_buckets": [    {      "binding": "BACKUP_BUCKET",      "bucket_name": "my-backup-bucket",    },  ],}  
 ```  
 TOML  
 ```  
-name = "my-sandbox-worker"  
-main = "src/index.ts"  
-# Set this to today's date  
-compatibility_date = "2026-06-17"  
-compatibility_flags = [ "nodejs_compat" ]  
-[[containers]]  
-class_name = "Sandbox"  
-image = "./Dockerfile"  
-[[durable_objects.bindings]]  
-class_name = "Sandbox"  
-name = "Sandbox"  
-[[migrations]]  
-new_sqlite_classes = [ "Sandbox" ]  
-tag = "v1"  
-[vars]  
-BACKUP_BUCKET_NAME = "my-backup-bucket"  
-CLOUDFLARE_ACCOUNT_ID = "<YOUR_ACCOUNT_ID>"  
-[[r2_buckets]]  
-binding = "BACKUP_BUCKET"  
-bucket_name = "my-backup-bucket"  
+name = "my-sandbox-worker"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-18"compatibility_flags = [ "nodejs_compat" ]  
+[[containers]]class_name = "Sandbox"image = "./Dockerfile"  
+[[durable_objects.bindings]]class_name = "Sandbox"name = "Sandbox"  
+[[migrations]]new_sqlite_classes = [ "Sandbox" ]tag = "v1"  
+[vars]BACKUP_BUCKET_NAME = "my-backup-bucket"CLOUDFLARE_ACCOUNT_ID = "<YOUR_ACCOUNT_ID>"  
+[[r2_buckets]]binding = "BACKUP_BUCKET"bucket_name = "my-backup-bucket"  
 ```  
 If your R2 bucket uses a jurisdiction-specific endpoint, you can also add `BACKUP_BUCKET_ENDPOINT` to `vars` to override the default presigned URL endpoint (for example, `https://<ACCOUNT_ID>.eu.r2.cloudflarestorage.com` for an EU-region bucket).
 3. Set your R2 API credentials as secrets:  
 Terminal window  
 ```  
-npx wrangler secret put R2_ACCESS_KEY_ID  
-npx wrangler secret put R2_SECRET_ACCESS_KEY  
+npx wrangler secret put R2_ACCESS_KEY_IDnpx wrangler secret put R2_SECRET_ACCESS_KEY  
 ```  
 You can create R2 API tokens in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **R2** \> **Overview** \> **Manage R2 API Tokens**. The token needs **Object Read & Write** permissions for your backup bucket.
 
@@ -106,45 +56,23 @@ The `vars` and API secrets in steps 2 and 3 are only required for production. Fo
 
 Use `createBackup()` to snapshot a directory and upload it to R2:
 
-* [  JavaScript ](#tab-panel-10275)
-* [  TypeScript ](#tab-panel-10276)
+* [  JavaScript ](#tab-panel-10351)
+* [  TypeScript ](#tab-panel-10352)
 
 JavaScript
 
 ```
-
 import { getSandbox } from "@cloudflare/sandbox";
-
-
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
-
-// Create a backup of /workspace
-
-const backup = await sandbox.createBackup({ dir: "/workspace" });
-
-console.log(`Backup created: ${backup.id}`);
-
-
+// Create a backup of /workspaceconst backup = await sandbox.createBackup({ dir: "/workspace" });console.log(`Backup created: ${backup.id}`);
 ```
 
 TypeScript
 
 ```
-
 import { getSandbox } from "@cloudflare/sandbox";
-
-
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
-
-// Create a backup of /workspace
-
-const backup = await sandbox.createBackup({ dir: "/workspace" });
-
-console.log(`Backup created: ${backup.id}`);
-
-
+// Create a backup of /workspaceconst backup = await sandbox.createBackup({ dir: "/workspace" });console.log(`Backup created: ${backup.id}`);
 ```
 
 The SDK creates a compressed squashfs archive of the directory and uploads it directly to your R2 bucket using a presigned URL.
@@ -153,55 +81,25 @@ The SDK creates a compressed squashfs archive of the directory and uploads it di
 
 Use `restoreBackup()` to restore a directory from a backup:
 
-* [  JavaScript ](#tab-panel-10277)
-* [  TypeScript ](#tab-panel-10278)
+* [  JavaScript ](#tab-panel-10353)
+* [  TypeScript ](#tab-panel-10354)
 
 JavaScript
 
 ```
-
 import { getSandbox } from "@cloudflare/sandbox";
-
-
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
-
-// Create a backup
-
-const backup = await sandbox.createBackup({ dir: "/workspace" });
-
-
-// Restore the backup
-
-const result = await sandbox.restoreBackup(backup);
-
-console.log(`Restored: ${result.success}`);
-
-
+// Create a backupconst backup = await sandbox.createBackup({ dir: "/workspace" });
+// Restore the backupconst result = await sandbox.restoreBackup(backup);console.log(`Restored: ${result.success}`);
 ```
 
 TypeScript
 
 ```
-
 import { getSandbox } from "@cloudflare/sandbox";
-
-
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
-
-// Create a backup
-
-const backup = await sandbox.createBackup({ dir: "/workspace" });
-
-
-// Restore the backup
-
-const result = await sandbox.restoreBackup(backup);
-
-console.log(`Restored: ${result.success}`);
-
-
+// Create a backupconst backup = await sandbox.createBackup({ dir: "/workspace" });
+// Restore the backupconst result = await sandbox.restoreBackup(backup);console.log(`Restored: ${result.success}`);
 ```
 
 Ephemeral mount
@@ -212,53 +110,23 @@ In production, the FUSE mount is lost when the sandbox sleeps or the container r
 
 When backing up a directory inside a git repository, set `useGitignore: true` to exclude files matching `.gitignore` rules. This is useful for skipping large generated directories like `node_modules/`, `dist/`, or `build/` that can be recreated.
 
-* [  JavaScript ](#tab-panel-10279)
-* [  TypeScript ](#tab-panel-10280)
+* [  JavaScript ](#tab-panel-10355)
+* [  TypeScript ](#tab-panel-10356)
 
 JavaScript
 
 ```
-
 import { getSandbox } from "@cloudflare/sandbox";
-
-
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
-
-// Back up only tracked and untracked non-ignored files
-
-const backup = await sandbox.createBackup({
-
-  dir: "/workspace",
-
-  useGitignore: true,
-
-});
-
-
+// Back up only tracked and untracked non-ignored filesconst backup = await sandbox.createBackup({  dir: "/workspace",  useGitignore: true,});
 ```
 
 TypeScript
 
 ```
-
 import { getSandbox } from "@cloudflare/sandbox";
-
-
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
-
-// Back up only tracked and untracked non-ignored files
-
-const backup = await sandbox.createBackup({
-
-  dir: "/workspace",
-
-  useGitignore: true,
-
-});
-
-
+// Back up only tracked and untracked non-ignored filesconst backup = await sandbox.createBackup({  dir: "/workspace",  useGitignore: true,});
 ```
 
 The SDK uses `git ls-files` to resolve which files are ignored. Both root-level and nested `.gitignore` files are respected.
@@ -273,274 +141,94 @@ Requirements
 
 Save state before risky operations and restore if something fails:
 
-* [  JavaScript ](#tab-panel-10283)
-* [  TypeScript ](#tab-panel-10284)
+* [  JavaScript ](#tab-panel-10359)
+* [  TypeScript ](#tab-panel-10360)
 
 JavaScript
 
 ```
-
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
-
-// Save checkpoint before risky operation
-
-const checkpoint = await sandbox.createBackup({ dir: "/workspace" });
-
-
-try {
-
-  await sandbox.exec("npm install some-experimental-package");
-
-  await sandbox.exec("npm run build");
-
-} catch (error) {
-
-  // Restore to checkpoint if something goes wrong
-
-  await sandbox.restoreBackup(checkpoint);
-
-  console.log("Rolled back to checkpoint");
-
-}
-
-
+// Save checkpoint before risky operationconst checkpoint = await sandbox.createBackup({ dir: "/workspace" });
+try {  await sandbox.exec("npm install some-experimental-package");  await sandbox.exec("npm run build");} catch (error) {  // Restore to checkpoint if something goes wrong  await sandbox.restoreBackup(checkpoint);  console.log("Rolled back to checkpoint");}
 ```
 
 TypeScript
 
 ```
-
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
-
-// Save checkpoint before risky operation
-
-const checkpoint = await sandbox.createBackup({ dir: "/workspace" });
-
-
-try {
-
-  await sandbox.exec("npm install some-experimental-package");
-
-  await sandbox.exec("npm run build");
-
-} catch (error) {
-
-  // Restore to checkpoint if something goes wrong
-
-  await sandbox.restoreBackup(checkpoint);
-
-  console.log("Rolled back to checkpoint");
-
-}
-
-
+// Save checkpoint before risky operationconst checkpoint = await sandbox.createBackup({ dir: "/workspace" });
+try {  await sandbox.exec("npm install some-experimental-package");  await sandbox.exec("npm run build");} catch (error) {  // Restore to checkpoint if something goes wrong  await sandbox.restoreBackup(checkpoint);  console.log("Rolled back to checkpoint");}
 ```
 
 ## Store backup handles
 
 The `DirectoryBackup` handle is serializable. Persist it to KV, D1, or Durable Object storage for later use:
 
-* [  JavaScript ](#tab-panel-10287)
-* [  TypeScript ](#tab-panel-10288)
+* [  JavaScript ](#tab-panel-10363)
+* [  TypeScript ](#tab-panel-10364)
 
 JavaScript
 
 ```
-
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
-
-// Create a backup and store the handle in KV
-
-const backup = await sandbox.createBackup({
-
-  dir: "/workspace",
-
-  name: "deploy-v2",
-
-  ttl: 604800, // 7 days
-
-});
-
-
+// Create a backup and store the handle in KVconst backup = await sandbox.createBackup({  dir: "/workspace",  name: "deploy-v2",  ttl: 604800, // 7 days});
 await env.KV.put(`backup:${userId}`, JSON.stringify(backup));
-
-
-// Later, retrieve and restore
-
-const stored = await env.KV.get(`backup:${userId}`);
-
-if (stored) {
-
-  const backupHandle = JSON.parse(stored);
-
-  await sandbox.restoreBackup(backupHandle);
-
-}
-
-
+// Later, retrieve and restoreconst stored = await env.KV.get(`backup:${userId}`);if (stored) {  const backupHandle = JSON.parse(stored);  await sandbox.restoreBackup(backupHandle);}
 ```
 
 TypeScript
 
 ```
-
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
-
-// Create a backup and store the handle in KV
-
-const backup = await sandbox.createBackup({
-
-  dir: "/workspace",
-
-  name: "deploy-v2",
-
-  ttl: 604800, // 7 days
-
-});
-
-
+// Create a backup and store the handle in KVconst backup = await sandbox.createBackup({  dir: "/workspace",  name: "deploy-v2",  ttl: 604800, // 7 days});
 await env.KV.put(`backup:${userId}`, JSON.stringify(backup));
-
-
-// Later, retrieve and restore
-
-const stored = await env.KV.get(`backup:${userId}`);
-
-if (stored) {
-
-  const backupHandle = JSON.parse(stored);
-
-  await sandbox.restoreBackup(backupHandle);
-
-}
-
-
+// Later, retrieve and restoreconst stored = await env.KV.get(`backup:${userId}`);if (stored) {  const backupHandle = JSON.parse(stored);  await sandbox.restoreBackup(backupHandle);}
 ```
 
 ## Use named backups
 
 Add a `name` option to identify backups. Names can be up to 256 characters:
 
-* [  JavaScript ](#tab-panel-10281)
-* [  TypeScript ](#tab-panel-10282)
+* [  JavaScript ](#tab-panel-10357)
+* [  TypeScript ](#tab-panel-10358)
 
 JavaScript
 
 ```
-
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
-
-const backup = await sandbox.createBackup({
-
-  dir: "/workspace",
-
-  name: "before-migration",
-
-});
-
-
+const backup = await sandbox.createBackup({  dir: "/workspace",  name: "before-migration",});
 console.log(`Backup ID: ${backup.id}`);
-
-
 ```
 
 TypeScript
 
 ```
-
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
-
-const backup = await sandbox.createBackup({
-
-  dir: "/workspace",
-
-  name: "before-migration",
-
-});
-
-
+const backup = await sandbox.createBackup({  dir: "/workspace",  name: "before-migration",});
 console.log(`Backup ID: ${backup.id}`);
-
-
 ```
 
 ## Configure TTL
 
 Set a custom time-to-live for backups. The default TTL is 3 days (259200 seconds). The `ttl` value must be a positive number of seconds:
 
-* [  JavaScript ](#tab-panel-10291)
-* [  TypeScript ](#tab-panel-10292)
+* [  JavaScript ](#tab-panel-10367)
+* [  TypeScript ](#tab-panel-10368)
 
 JavaScript
 
 ```
-
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
-
-// Short-lived backup for a quick operation
-
-const shortBackup = await sandbox.createBackup({
-
-  dir: "/workspace",
-
-  ttl: 600, // 10 minutes
-
-});
-
-
-// Long-lived backup for extended workflows
-
-const longBackup = await sandbox.createBackup({
-
-  dir: "/workspace",
-
-  name: "daily-snapshot",
-
-  ttl: 604800, // 7 days
-
-});
-
-
+// Short-lived backup for a quick operationconst shortBackup = await sandbox.createBackup({  dir: "/workspace",  ttl: 600, // 10 minutes});
+// Long-lived backup for extended workflowsconst longBackup = await sandbox.createBackup({  dir: "/workspace",  name: "daily-snapshot",  ttl: 604800, // 7 days});
 ```
 
 TypeScript
 
 ```
-
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
-
-// Short-lived backup for a quick operation
-
-const shortBackup = await sandbox.createBackup({
-
-  dir: "/workspace",
-
-  ttl: 600, // 10 minutes
-
-});
-
-
-// Long-lived backup for extended workflows
-
-const longBackup = await sandbox.createBackup({
-
-  dir: "/workspace",
-
-  name: "daily-snapshot",
-
-  ttl: 604800, // 7 days
-
-});
-
-
+// Short-lived backup for a quick operationconst shortBackup = await sandbox.createBackup({  dir: "/workspace",  ttl: 600, // 10 minutes});
+// Long-lived backup for extended workflowsconst longBackup = await sandbox.createBackup({  dir: "/workspace",  name: "daily-snapshot",  ttl: 604800, // 7 days});
 ```
 
 ### How TTL is enforced
@@ -563,104 +251,42 @@ You can use backup and restore during local development with `wrangler dev` by p
 
 Add a `BACKUP_BUCKET` R2 binding to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-10271)
-* [  wrangler.toml ](#tab-panel-10272)
+* [  wrangler.jsonc ](#tab-panel-10347)
+* [  wrangler.toml ](#tab-panel-10348)
 
 JSONC
 
 ```
-
-{
-
-  "r2_buckets": [
-
-    {
-
-      "binding": "BACKUP_BUCKET",
-
-      "bucket_name": "my-backup-bucket"
-
-    }
-
-  ]
-
-}
-
-
+{  "r2_buckets": [    {      "binding": "BACKUP_BUCKET",      "bucket_name": "my-backup-bucket"    }  ]}
 ```
 
 TOML
 
 ```
-
-[[r2_buckets]]
-
-binding = "BACKUP_BUCKET"
-
-bucket_name = "my-backup-bucket"
-
-
+[[r2_buckets]]binding = "BACKUP_BUCKET"bucket_name = "my-backup-bucket"
 ```
 
 ### Back up and restore with `localBucket`
 
 Pass `localBucket: true` to `createBackup()` to back up and restore using the R2 binding directly:
 
-* [  JavaScript ](#tab-panel-10289)
-* [  TypeScript ](#tab-panel-10290)
+* [  JavaScript ](#tab-panel-10365)
+* [  TypeScript ](#tab-panel-10366)
 
 JavaScript
 
 ```
-
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
-
-// Create a local backup
-
-const backup = await sandbox.createBackup({
-
-  dir: "/workspace",
-
-  localBucket: true,
-
-});
-
-
-// Restore the backup
-
-const result = await sandbox.restoreBackup(backup);
-
-console.log(`Restored: ${result.success}`);
-
-
+// Create a local backupconst backup = await sandbox.createBackup({  dir: "/workspace",  localBucket: true,});
+// Restore the backupconst result = await sandbox.restoreBackup(backup);console.log(`Restored: ${result.success}`);
 ```
 
 TypeScript
 
 ```
-
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
-
-// Create a local backup
-
-const backup = await sandbox.createBackup({
-
-  dir: "/workspace",
-
-  localBucket: true,
-
-});
-
-
-// Restore the backup
-
-const result = await sandbox.restoreBackup(backup);
-
-console.log(`Restored: ${result.success}`);
-
-
+// Create a local backupconst backup = await sandbox.createBackup({  dir: "/workspace",  localBucket: true,});
+// Restore the backupconst result = await sandbox.restoreBackup(backup);console.log(`Restored: ${result.success}`);
 ```
 
 Note
@@ -670,16 +296,7 @@ You can use an environment variable to toggle `localBucket` between local develo
 TypeScript
 
 ```
-
-const backup = await sandbox.createBackup({
-
-  dir: "/workspace",
-
-  localBucket: Boolean(env.LOCAL_DEV),
-
-});
-
-
+const backup = await sandbox.createBackup({  dir: "/workspace",  localBucket: Boolean(env.LOCAL_DEV),});
 ```
 
 When `localBucket` is `true`, presigned URL credentials are not required and the SDK uses the R2 binding directly. For more information on setting environment variables, refer to [Environment variables in Wrangler configuration](https://developers.cloudflare.com/workers/configuration/environment-variables/).
@@ -702,409 +319,123 @@ Backup archives are stored in your R2 bucket under the `backups/` prefix with th
 
 If you only need the most recent backup, delete the previous one before creating a new one:
 
-* [  JavaScript ](#tab-panel-10293)
-* [  TypeScript ](#tab-panel-10294)
+* [  JavaScript ](#tab-panel-10369)
+* [  TypeScript ](#tab-panel-10370)
 
 JavaScript
 
 ```
-
 import { getSandbox } from "@cloudflare/sandbox";
-
-
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
-
-// Delete the previous backup's R2 objects before creating a new one
-
-if (previousBackup) {
-
-  await env.BACKUP_BUCKET.delete(`backups/${previousBackup.id}/data.sqsh`);
-
-  await env.BACKUP_BUCKET.delete(`backups/${previousBackup.id}/meta.json`);
-
-}
-
-
-// Create a fresh backup
-
-const backup = await sandbox.createBackup({
-
-  dir: "/workspace",
-
-  name: "latest",
-
-});
-
-
-// Store the handle so you can delete it next time
-
-await env.KV.put("latest-backup", JSON.stringify(backup));
-
-
+// Delete the previous backup's R2 objects before creating a new oneif (previousBackup) {  await env.BACKUP_BUCKET.delete(`backups/${previousBackup.id}/data.sqsh`);  await env.BACKUP_BUCKET.delete(`backups/${previousBackup.id}/meta.json`);}
+// Create a fresh backupconst backup = await sandbox.createBackup({  dir: "/workspace",  name: "latest",});
+// Store the handle so you can delete it next timeawait env.KV.put("latest-backup", JSON.stringify(backup));
 ```
 
 TypeScript
 
 ```
-
 import { getSandbox } from "@cloudflare/sandbox";
-
-
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
-
-// Delete the previous backup's R2 objects before creating a new one
-
-if (previousBackup) {
-
-  await env.BACKUP_BUCKET.delete(`backups/${previousBackup.id}/data.sqsh`);
-
-  await env.BACKUP_BUCKET.delete(`backups/${previousBackup.id}/meta.json`);
-
-}
-
-
-// Create a fresh backup
-
-const backup = await sandbox.createBackup({
-
-  dir: "/workspace",
-
-  name: "latest",
-
-});
-
-
-// Store the handle so you can delete it next time
-
-await env.KV.put("latest-backup", JSON.stringify(backup));
-
-
+// Delete the previous backup's R2 objects before creating a new oneif (previousBackup) {  await env.BACKUP_BUCKET.delete(`backups/${previousBackup.id}/data.sqsh`);  await env.BACKUP_BUCKET.delete(`backups/${previousBackup.id}/meta.json`);}
+// Create a fresh backupconst backup = await sandbox.createBackup({  dir: "/workspace",  name: "latest",});
+// Store the handle so you can delete it next timeawait env.KV.put("latest-backup", JSON.stringify(backup));
 ```
 
 ### List and delete old backups by prefix
 
 To clean up multiple old backups, list objects under the `backups/` prefix and delete them by key:
 
-* [  JavaScript ](#tab-panel-10295)
-* [  TypeScript ](#tab-panel-10296)
+* [  JavaScript ](#tab-panel-10371)
+* [  TypeScript ](#tab-panel-10372)
 
 JavaScript
 
 ```
-
-// List all backup objects in the bucket
-
-const listed = await env.BACKUP_BUCKET.list({ prefix: "backups/" });
-
-
-for (const object of listed.objects) {
-
-  // Parse the backup ID from the key (backups/{id}/data.sqsh or backups/{id}/meta.json)
-
-  const parts = object.key.split("/");
-
-  const backupId = parts[1];
-
-
-  // Delete objects older than 7 days
-
-  const ageMs = Date.now() - object.uploaded.getTime();
-
-  const sevenDaysMs = 7 * 24 * 60 * 60 * 1000;
-
-  if (ageMs > sevenDaysMs) {
-
-    await env.BACKUP_BUCKET.delete(object.key);
-
-    console.log(`Deleted expired object: ${object.key}`);
-
-  }
-
-}
-
-
+// List all backup objects in the bucketconst listed = await env.BACKUP_BUCKET.list({ prefix: "backups/" });
+for (const object of listed.objects) {  // Parse the backup ID from the key (backups/{id}/data.sqsh or backups/{id}/meta.json)  const parts = object.key.split("/");  const backupId = parts[1];
+  // Delete objects older than 7 days  const ageMs = Date.now() - object.uploaded.getTime();  const sevenDaysMs = 7 * 24 * 60 * 60 * 1000;  if (ageMs > sevenDaysMs) {    await env.BACKUP_BUCKET.delete(object.key);    console.log(`Deleted expired object: ${object.key}`);  }}
 ```
 
 TypeScript
 
 ```
-
-// List all backup objects in the bucket
-
-const listed = await env.BACKUP_BUCKET.list({ prefix: "backups/" });
-
-
-for (const object of listed.objects) {
-
-  // Parse the backup ID from the key (backups/{id}/data.sqsh or backups/{id}/meta.json)
-
-  const parts = object.key.split("/");
-
-  const backupId = parts[1];
-
-
-  // Delete objects older than 7 days
-
-  const ageMs = Date.now() - object.uploaded.getTime();
-
-  const sevenDaysMs = 7 * 24 * 60 * 60 * 1000;
-
-  if (ageMs > sevenDaysMs) {
-
-    await env.BACKUP_BUCKET.delete(object.key);
-
-    console.log(`Deleted expired object: ${object.key}`);
-
-  }
-
-}
-
-
+// List all backup objects in the bucketconst listed = await env.BACKUP_BUCKET.list({ prefix: "backups/" });
+for (const object of listed.objects) {  // Parse the backup ID from the key (backups/{id}/data.sqsh or backups/{id}/meta.json)  const parts = object.key.split("/");  const backupId = parts[1];
+  // Delete objects older than 7 days  const ageMs = Date.now() - object.uploaded.getTime();  const sevenDaysMs = 7 * 24 * 60 * 60 * 1000;  if (ageMs > sevenDaysMs) {    await env.BACKUP_BUCKET.delete(object.key);    console.log(`Deleted expired object: ${object.key}`);  }}
 ```
 
 ### Delete a specific backup by ID
 
 If you have the backup ID, delete both its archive and metadata directly:
 
-* [  JavaScript ](#tab-panel-10285)
-* [  TypeScript ](#tab-panel-10286)
+* [  JavaScript ](#tab-panel-10361)
+* [  TypeScript ](#tab-panel-10362)
 
 JavaScript
 
 ```
-
 const backupId = backup.id;
-
-
-await env.BACKUP_BUCKET.delete(`backups/${backupId}/data.sqsh`);
-
-await env.BACKUP_BUCKET.delete(`backups/${backupId}/meta.json`);
-
-
+await env.BACKUP_BUCKET.delete(`backups/${backupId}/data.sqsh`);await env.BACKUP_BUCKET.delete(`backups/${backupId}/meta.json`);
 ```
 
 TypeScript
 
 ```
-
 const backupId = backup.id;
-
-
-await env.BACKUP_BUCKET.delete(`backups/${backupId}/data.sqsh`);
-
-await env.BACKUP_BUCKET.delete(`backups/${backupId}/meta.json`);
-
-
+await env.BACKUP_BUCKET.delete(`backups/${backupId}/data.sqsh`);await env.BACKUP_BUCKET.delete(`backups/${backupId}/meta.json`);
 ```
 
 ## Copy-on-write behavior
 
 In production, restore uses FUSE overlayfs to mount the backup as a read-only lower layer. New writes go to a writable upper layer and do not affect the original backup:
 
-* [  JavaScript ](#tab-panel-10297)
-* [  TypeScript ](#tab-panel-10298)
+* [  JavaScript ](#tab-panel-10373)
+* [  TypeScript ](#tab-panel-10374)
 
 JavaScript
 
 ```
-
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
-
-// Create a backup
-
-const backup = await sandbox.createBackup({ dir: "/workspace" });
-
-
-// Restore the backup
-
-await sandbox.restoreBackup(backup);
-
-
-// New writes go to the upper layer — the backup is unchanged
-
-await sandbox.writeFile(
-
-  "/workspace/new-file.txt",
-
-  "This does not modify the backup",
-
-);
-
-
-// Restore the same backup again to discard changes
-
-await sandbox.restoreBackup(backup);
-
-
+// Create a backupconst backup = await sandbox.createBackup({ dir: "/workspace" });
+// Restore the backupawait sandbox.restoreBackup(backup);
+// New writes go to the upper layer — the backup is unchangedawait sandbox.writeFile(  "/workspace/new-file.txt",  "This does not modify the backup",);
+// Restore the same backup again to discard changesawait sandbox.restoreBackup(backup);
 ```
 
 TypeScript
 
 ```
-
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
-
-// Create a backup
-
-const backup = await sandbox.createBackup({ dir: "/workspace" });
-
-
-// Restore the backup
-
-await sandbox.restoreBackup(backup);
-
-
-// New writes go to the upper layer — the backup is unchanged
-
-await sandbox.writeFile(
-
-  "/workspace/new-file.txt",
-
-  "This does not modify the backup",
-
-);
-
-
-// Restore the same backup again to discard changes
-
-await sandbox.restoreBackup(backup);
-
-
+// Create a backupconst backup = await sandbox.createBackup({ dir: "/workspace" });
+// Restore the backupawait sandbox.restoreBackup(backup);
+// New writes go to the upper layer — the backup is unchangedawait sandbox.writeFile(  "/workspace/new-file.txt",  "This does not modify the backup",);
+// Restore the same backup again to discard changesawait sandbox.restoreBackup(backup);
 ```
 
 ## Handle errors
 
 Backup and restore operations can throw specific errors. Wrap calls in [try...catch ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) blocks:
 
-* [  JavaScript ](#tab-panel-10299)
-* [  TypeScript ](#tab-panel-10300)
+* [  JavaScript ](#tab-panel-10375)
+* [  TypeScript ](#tab-panel-10376)
 
 JavaScript
 
 ```
-
 import { getSandbox } from "@cloudflare/sandbox";
-
-
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
-
-// Handle backup errors
-
-try {
-
-  const backup = await sandbox.createBackup({ dir: "/workspace" });
-
-} catch (error) {
-
-  if (error.code === "INVALID_BACKUP_CONFIG") {
-
-    // Missing BACKUP_BUCKET binding or invalid directory path
-
-    console.error("Configuration error:", error.message);
-
-  } else if (error.code === "BACKUP_CREATE_FAILED") {
-
-    // Archive creation or upload to R2 failed
-
-    console.error("Backup failed:", error.message);
-
-  }
-
-}
-
-
-// Handle restore errors
-
-try {
-
-  await sandbox.restoreBackup(backup);
-
-} catch (error) {
-
-  if (error.code === "BACKUP_NOT_FOUND") {
-
-    console.error("Backup not found in R2:", error.message);
-
-  } else if (error.code === "BACKUP_EXPIRED") {
-
-    console.error("Backup TTL has elapsed:", error.message);
-
-  } else if (error.code === "BACKUP_RESTORE_FAILED") {
-
-    console.error("Restore failed:", error.message);
-
-  }
-
-}
-
-
+// Handle backup errorstry {  const backup = await sandbox.createBackup({ dir: "/workspace" });} catch (error) {  if (error.code === "INVALID_BACKUP_CONFIG") {    // Missing BACKUP_BUCKET binding or invalid directory path    console.error("Configuration error:", error.message);  } else if (error.code === "BACKUP_CREATE_FAILED") {    // Archive creation or upload to R2 failed    console.error("Backup failed:", error.message);  }}
+// Handle restore errorstry {  await sandbox.restoreBackup(backup);} catch (error) {  if (error.code === "BACKUP_NOT_FOUND") {    console.error("Backup not found in R2:", error.message);  } else if (error.code === "BACKUP_EXPIRED") {    console.error("Backup TTL has elapsed:", error.message);  } else if (error.code === "BACKUP_RESTORE_FAILED") {    console.error("Restore failed:", error.message);  }}
 ```
 
 TypeScript
 
 ```
-
 import { getSandbox } from "@cloudflare/sandbox";
-
-
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
-
-// Handle backup errors
-
-try {
-
-  const backup = await sandbox.createBackup({ dir: "/workspace" });
-
-} catch (error) {
-
-  if (error.code === "INVALID_BACKUP_CONFIG") {
-
-    // Missing BACKUP_BUCKET binding or invalid directory path
-
-    console.error("Configuration error:", error.message);
-
-  } else if (error.code === "BACKUP_CREATE_FAILED") {
-
-    // Archive creation or upload to R2 failed
-
-    console.error("Backup failed:", error.message);
-
-  }
-
-}
-
-
-// Handle restore errors
-
-try {
-
-  await sandbox.restoreBackup(backup);
-
-} catch (error) {
-
-  if (error.code === "BACKUP_NOT_FOUND") {
-
-    console.error("Backup not found in R2:", error.message);
-
-  } else if (error.code === "BACKUP_EXPIRED") {
-
-    console.error("Backup TTL has elapsed:", error.message);
-
-  } else if (error.code === "BACKUP_RESTORE_FAILED") {
-
-    console.error("Restore failed:", error.message);
-
-  }
-
-}
-
-
+// Handle backup errorstry {  const backup = await sandbox.createBackup({ dir: "/workspace" });} catch (error) {  if (error.code === "INVALID_BACKUP_CONFIG") {    // Missing BACKUP_BUCKET binding or invalid directory path    console.error("Configuration error:", error.message);  } else if (error.code === "BACKUP_CREATE_FAILED") {    // Archive creation or upload to R2 failed    console.error("Backup failed:", error.message);  }}
+// Handle restore errorstry {  await sandbox.restoreBackup(backup);} catch (error) {  if (error.code === "BACKUP_NOT_FOUND") {    console.error("Backup not found in R2:", error.message);  } else if (error.code === "BACKUP_EXPIRED") {    console.error("Backup TTL has elapsed:", error.message);  } else if (error.code === "BACKUP_RESTORE_FAILED") {    console.error("Restore failed:", error.message);  }}
 ```
 
 ## Path permissions
@@ -1122,12 +453,7 @@ The `createBackup()` method uses `mksquashfs` to create a compressed archive of 
 The recommended approach is to set permissions in your Dockerfile so that every container starts with the correct access. This avoids running `chmod` at runtime before every backup:
 
 ```
-
-# Ensure the backup target directory is readable
-
-RUN mkdir -p /home/sandbox && chmod -R a+rX /home/sandbox
-
-
+# Ensure the backup target directory is readableRUN mkdir -p /home/sandbox && chmod -R a+rX /home/sandbox
 ```
 
 The `a+rX` flag grants read access to all files and execute (traverse) access to all directories, without changing write permissions.
@@ -1139,12 +465,7 @@ If the restrictive permissions come from files created at runtime (for example, 
 TypeScript
 
 ```
-
-await sandbox.exec("chmod -R a+rX /home/sandbox/.claude");
-
-const backup = await sandbox.createBackup({ dir: "/home/sandbox" });
-
-
+await sandbox.exec("chmod -R a+rX /home/sandbox/.claude");const backup = await sandbox.createBackup({ dir: "/home/sandbox" });
 ```
 
 ### Example error
@@ -1152,10 +473,7 @@ const backup = await sandbox.createBackup({ dir: "/home/sandbox" });
 If the backup encounters a permission issue, you will see an error like:
 
 ```
-
 BackupCreateError: mksquashfs failed: Could not create destination file: Permission denied
-
-
 ```
 
 This means `mksquashfs` could not read one or more files inside the directory you passed to `createBackup()`. Check the permissions of all files and subdirectories within that path.

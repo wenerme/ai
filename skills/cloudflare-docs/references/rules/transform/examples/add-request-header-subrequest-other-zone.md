@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,10 +19,7 @@ The following request header transform rule adds an HTTP header to Workers subre
 Text in **Expression Editor** (replace `myappexample.com` with your domain):
 
 ```
-
 (cf.worker.upstream_zone != "" and cf.worker.upstream_zone != "myappexample.com")
-
-
 ```
 
 Selected operation under **Modify request header**: _Set static_

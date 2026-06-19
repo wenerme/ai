@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/registrar/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,9 +18,9 @@ The certificate is generated on demand and is automatically populated with your 
 
 * A certification statement confirming that Cloudflare, an ICANN-accredited registrar, is the registrar for the domain.
 * **Exhibit A**, containing the domain's registration data:  
-   * Creation date and registry expiry date.  
-   * Registrant, administrative, technical, and billing contacts.  
-   * Name servers.
+  * Creation date and registry expiry date.
+  * Registrant, administrative, technical, and billing contacts.
+  * Name servers.
 
 The contact details shown on the certificate reflect the authoritative contact information Cloudflare has on file, not the redacted values published in public WHOIS. To review or update this information, refer to [Registrant contact updates](https://developers.cloudflare.com/registrar/account-options/domain-contact-updates/).
 

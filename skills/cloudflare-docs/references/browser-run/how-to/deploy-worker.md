@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -82,12 +82,7 @@ Create two namespaces, one for production and one for development.
 Terminal window
 
 ```
-
-npx wrangler kv namespace create BROWSER_KV_DEMO
-
-npx wrangler kv namespace create BROWSER_KV_DEMO --preview
-
-
+npx wrangler kv namespace create BROWSER_KV_DEMOnpx wrangler kv namespace create BROWSER_KV_DEMO --preview
 ```
 
 Take note of the IDs for the next step.
@@ -98,156 +93,35 @@ Configure your `browser-worker` project's [Wrangler configuration file](https://
 
 Update your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the Browser Run API binding and the KV namespaces you created:
 
-* [  wrangler.jsonc ](#tab-panel-6880)
-* [  wrangler.toml ](#tab-panel-6881)
+* [  wrangler.jsonc ](#tab-panel-6956)
+* [  wrangler.toml ](#tab-panel-6957)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "browser-worker",
-
-  "main": "src/index.js",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "compatibility_flags": ["nodejs_compat"],
-
-  "browser": {
-
-    "binding": "MYBROWSER"
-
-  },
-
-  "kv_namespaces": [
-
-    {
-
-      "binding": "BROWSER_KV_DEMO",
-
-      "id": "22cf855786094a88a6906f8edac425cd",
-
-      "preview_id": "e1f8b68b68d24381b57071445f96e623"
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "browser-worker",  "main": "src/index.js",  // Set this to today's date  "compatibility_date": "2026-06-18",  "compatibility_flags": ["nodejs_compat"],  "browser": {    "binding": "MYBROWSER"  },  "kv_namespaces": [    {      "binding": "BROWSER_KV_DEMO",      "id": "22cf855786094a88a6906f8edac425cd",      "preview_id": "e1f8b68b68d24381b57071445f96e623"    }  ]}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "browser-worker"
-
-main = "src/index.js"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-compatibility_flags = [ "nodejs_compat" ]
-
-
-[browser]
-
-binding = "MYBROWSER"
-
-
-[[kv_namespaces]]
-
-binding = "BROWSER_KV_DEMO"
-
-id = "22cf855786094a88a6906f8edac425cd"
-
-preview_id = "e1f8b68b68d24381b57071445f96e623"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "browser-worker"main = "src/index.js"# Set this to today's datecompatibility_date = "2026-06-18"compatibility_flags = [ "nodejs_compat" ]
+[browser]binding = "MYBROWSER"
+[[kv_namespaces]]binding = "BROWSER_KV_DEMO"id = "22cf855786094a88a6906f8edac425cd"preview_id = "e1f8b68b68d24381b57071445f96e623"
 ```
 
 #### 5\. Code
 
-* [  JavaScript ](#tab-panel-6878)
-* [  TypeScript ](#tab-panel-6879)
+* [  JavaScript ](#tab-panel-6954)
+* [  TypeScript ](#tab-panel-6955)
 
 Update `src/index.js` with your Worker code:
 
 JavaScript
 
 ```
-
 import puppeteer from "@cloudflare/puppeteer";
-
-
-export default {
-
-  async fetch(request, env) {
-
-    const { searchParams } = new URL(request.url);
-
-    let url = searchParams.get("url");
-
-    let img;
-
-    if (url) {
-
-      url = new URL(url).toString(); // normalize
-
-      img = await env.BROWSER_KV_DEMO.get(url, { type: "arrayBuffer" });
-
-      if (img === null) {
-
-        const browser = await puppeteer.launch(env.MYBROWSER);
-
-        const page = await browser.newPage();
-
-        await page.goto(url);
-
-        img = await page.screenshot();
-
-        await env.BROWSER_KV_DEMO.put(url, img, {
-
-          expirationTtl: 60 * 60 * 24,
-
-        });
-
-        await browser.close();
-
-      }
-
-      return new Response(img, {
-
-        headers: {
-
-          "content-type": "image/jpeg",
-
-        },
-
-      });
-
-    } else {
-
-      return new Response("Please add an ?url=https://example.com/ parameter");
-
-    }
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const { searchParams } = new URL(request.url);    let url = searchParams.get("url");    let img;    if (url) {      url = new URL(url).toString(); // normalize      img = await env.BROWSER_KV_DEMO.get(url, { type: "arrayBuffer" });      if (img === null) {        const browser = await puppeteer.launch(env.MYBROWSER);        const page = await browser.newPage();        await page.goto(url);        img = await page.screenshot();        await env.BROWSER_KV_DEMO.put(url, img, {          expirationTtl: 60 * 60 * 24,        });        await browser.close();      }      return new Response(img, {        headers: {          "content-type": "image/jpeg",        },      });    } else {      return new Response("Please add an ?url=https://example.com/ parameter");    }  },};
 ```
 
 Update `src/index.ts` with your Worker code:
@@ -255,76 +129,9 @@ Update `src/index.ts` with your Worker code:
 TypeScript
 
 ```
-
 import puppeteer from "@cloudflare/puppeteer";
-
-
-interface Env {
-
-  MYBROWSER: Fetcher;
-
-  BROWSER_KV_DEMO: KVNamespace;
-
-}
-
-
-export default {
-
-  async fetch(request, env): Promise<Response> {
-
-    const { searchParams } = new URL(request.url);
-
-    let url = searchParams.get("url");
-
-    let img: Buffer;
-
-    if (url) {
-
-      url = new URL(url).toString(); // normalize
-
-      img = await env.BROWSER_KV_DEMO.get(url, { type: "arrayBuffer" });
-
-      if (img === null) {
-
-        const browser = await puppeteer.launch(env.MYBROWSER);
-
-        const page = await browser.newPage();
-
-        await page.goto(url);
-
-        img = (await page.screenshot()) as Buffer;
-
-        await env.BROWSER_KV_DEMO.put(url, img, {
-
-          expirationTtl: 60 * 60 * 24,
-
-        });
-
-        await browser.close();
-
-      }
-
-      return new Response(img, {
-
-        headers: {
-
-          "content-type": "image/jpeg",
-
-        },
-
-      });
-
-    } else {
-
-      return new Response("Please add an ?url=https://example.com/ parameter");
-
-    }
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+interface Env {  MYBROWSER: Fetcher;  BROWSER_KV_DEMO: KVNamespace;}
+export default {  async fetch(request, env): Promise<Response> {    const { searchParams } = new URL(request.url);    let url = searchParams.get("url");    let img: Buffer;    if (url) {      url = new URL(url).toString(); // normalize      img = await env.BROWSER_KV_DEMO.get(url, { type: "arrayBuffer" });      if (img === null) {        const browser = await puppeteer.launch(env.MYBROWSER);        const page = await browser.newPage();        await page.goto(url);        img = (await page.screenshot()) as Buffer;        await env.BROWSER_KV_DEMO.put(url, img, {          expirationTtl: 60 * 60 * 24,        });        await browser.close();      }      return new Response(img, {        headers: {          "content-type": "image/jpeg",        },      });    } else {      return new Response("Please add an ?url=https://example.com/ parameter");    }  },} satisfies ExportedHandler<Env>;
 ```
 
 This Worker instantiates a browser using Puppeteer, opens a new page, navigates to the location of the 'url' parameter, takes a screenshot of the page, stores the screenshot in KV, closes the browser, and responds with the JPEG image of the screenshot.
@@ -352,10 +159,7 @@ Run `npx wrangler deploy` to deploy your Worker to the Cloudflare global network
 To take your first screenshot, go to the following URL:
 
 ```
-
 <YOUR_WORKER>.<YOUR_SUBDOMAIN>.workers.dev/?url=https://example.com
-
-
 ```
 
 ## Related resources

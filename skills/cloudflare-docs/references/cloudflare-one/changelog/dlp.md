@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -309,9 +309,10 @@ You can now create [document-based](https://developers.cloudflare.com/cloudflare
 
 * **Upload documents, forms, or templates:** Easily upload .docx and .txt files (up to 10 MB) that contain sensitive information you want to protect.
 * **Granular control with similarity percentage:** Define a minimum similarity percentage (0-100%) that a document must meet to trigger a detection, reducing false positives.
-* **Comprehensive coverage:** Apply these document-based detection entries in:  
-   * **Gateway policies:** To inspect network traffic for sensitive documents as they are uploaded or shared.  
-   * **CASB (Cloud Access Security Broker):** To scan files stored in cloud applications for sensitive documents at rest.
+* **Comprehensive coverage:** Apply these document-based detection entries in:
+
+  * **Gateway policies:** To inspect network traffic for sensitive documents as they are uploaded or shared.
+  * **CASB (Cloud Access Security Broker):** To scan files stored in cloud applications for sensitive documents at rest.
 * **Identify sensitive data:** This new detection entry type is ideal for identifying sensitive data within completed forms, templates, or even small snippets of a larger document, helping you prevent data exfiltration and ensure compliance.
 
 Once uploaded and processed, you can add this new document entry into a DLP profile and policies to enhance your data protection strategy.
@@ -325,13 +326,16 @@ Zero Trust now includes **Data security analytics**, providing you with unpreced
 
 The new dashboard includes:
 
-* **Sensitive Data Movement Over Time:**  
-   * See patterns and trends in how sensitive data moves across your environment. This helps understand where data is flowing and identify common paths.
-* **Sensitive Data at Rest in SaaS & Cloud:**  
-   * View an inventory of sensitive data stored within your corporate SaaS applications (for example, Google Drive, Microsoft 365) and cloud accounts (such as AWS S3).
-* **DLP Policy Activity:**  
-   * Identify which of your Data Loss Prevention (DLP) policies are being triggered most often.  
-   * See which specific users are responsible for triggering DLP policies.
+* **Sensitive Data Movement Over Time:**
+
+  * See patterns and trends in how sensitive data moves across your environment. This helps understand where data is flowing and identify common paths.
+* **Sensitive Data at Rest in SaaS & Cloud:**
+
+  * View an inventory of sensitive data stored within your corporate SaaS applications (for example, Google Drive, Microsoft 365) and cloud accounts (such as AWS S3).
+* **DLP Policy Activity:**
+
+  * Identify which of your Data Loss Prevention (DLP) policies are being triggered most often.
+  * See which specific users are responsible for triggering DLP policies.
 ![Data Security Analytics](https://developers.cloudflare.com/_astro/cf1-data-security-analytics-v1.BGl6fYXl_H3N0P.webp) 
 
 To access the new dashboard, log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/) and go to **Insights** on the sidebar.

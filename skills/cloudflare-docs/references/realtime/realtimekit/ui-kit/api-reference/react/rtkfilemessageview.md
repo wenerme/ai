@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,45 +28,15 @@ A component which renders a file message.
 ### Basic Usage
 
 ```
-
 import { RtkFileMessageView } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return <RtkFileMessageView />;
-
-}
-
-
+function MyComponent() {  return <RtkFileMessageView />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkFileMessageView } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkFileMessageView
-
-      name="example"
-
-      size={42}
-
-      url="example"
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkFileMessageView      name="example"      size={42}      url="example"    />  );}
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,42 +25,11 @@ First, we install SoftHSMv2 and configure it to store tokens in the default loca
 Terminal window
 
 ```
-
 sudo apt-get install -y softhsm2 opensc
-
-
 #...
-
-
-cat <<EOF | sudo tee /etc/softhsm/softhsm2.conf
-
-directories.tokendir = /var/lib/softhsm/tokens
-
-objectstore.backend = file
-
-log.level = DEBUG
-
-slots.removable = false
-
-EOF
-
-
-sudo mkdir /var/lib/softhsm/tokens
-
-sudo chown root:softhsm $_
-
-sudo chmod 0770 /var/lib/softhsm/tokens
-
-sudo usermod -G softhsm keyless
-
-sudo usermod -G softhsm $(whoami)
-
-
-echo 'export SOFTHSM2_CONF=/etc/softhsm/softhsm2.conf' | tee -a ~/.profile
-
-source ~/.profile
-
-
+cat <<EOF | sudo tee /etc/softhsm/softhsm2.confdirectories.tokendir = /var/lib/softhsm/tokensobjectstore.backend = filelog.level = DEBUGslots.removable = falseEOF
+sudo mkdir /var/lib/softhsm/tokenssudo chown root:softhsm $_sudo chmod 0770 /var/lib/softhsm/tokenssudo usermod -G softhsm keylesssudo usermod -G softhsm $(whoami)
+echo 'export SOFTHSM2_CONF=/etc/softhsm/softhsm2.conf' | tee -a ~/.profilesource ~/.profile
 ```
 
 ---
@@ -72,17 +41,11 @@ Next, we create a token in slot 0 called `test-token` and secure it with a PIN o
 Terminal window
 
 ```
-
 sudo -u keyless softhsm2-util --init-token --slot 0 --label test-token --pin 1234 --so-pin 4321
-
-
 ```
 
 ```
-
 The token has been initialized.
-
-
 ```
 
 Using cfssl, we generate the [private keys and Certificate Signing Requests (CSRs) ↗](https://github.com/cloudflare/cfssl), the latter of which will be sent to a Certificate Authority (CA) for signing.
@@ -90,62 +53,12 @@ Using cfssl, we generate the [private keys and Certificate Signing Requests (CSR
 Terminal window
 
 ```
-
-cat <<EOF | tee csr.json
-
-{
-
-    "hosts": [
-
-        "keyless-softhsm.example.com"
-
-    ],
-
-    "CN": "keyless-softhsm.example.com",
-
-    "key": {
-
-        "algo": "rsa",
-
-        "size": 2048
-
-    },
-
-    "names": [{
-
-        "C": "US",
-
-        "L": "San Francisco",
-
-        "O": "TLS Fun",
-
-        "OU": "Technical Operations",
-
-        "ST": "California"
-
-    }]
-
-}
-
-EOF
-
-
+cat <<EOF | tee csr.json{    "hosts": [        "keyless-softhsm.example.com"    ],    "CN": "keyless-softhsm.example.com",    "key": {        "algo": "rsa",        "size": 2048    },    "names": [{        "C": "US",        "L": "San Francisco",        "O": "TLS Fun",        "OU": "Technical Operations",        "ST": "California"    }]}EOF
 cfssl genkey csr.json | cfssljson -bare certificate
-
-
 ```
 
 ```
-
-2018/08/12 00:52:22 [INFO] generate received request
-
-2018/08/12 00:52:22 [INFO] received CSR
-
-2018/08/12 00:52:22 [INFO] generating key: rsa-2048
-
-2018/08/12 00:52:22 [INFO] encoded CSR
-
-
+2018/08/12 00:52:22 [INFO] generate received request2018/08/12 00:52:22 [INFO] received CSR2018/08/12 00:52:22 [INFO] generating key: rsa-20482018/08/12 00:52:22 [INFO] encoded CSR
 ```
 
 ---
@@ -157,24 +70,12 @@ Now that the key has been generated, it’s time to load it into the slot we cre
 Terminal window
 
 ```
-
-openssl pkcs8 -topk8 -inform PEM -outform PEM -nocrypt -in certificate-key.pem -out certificate-key.p8
-
-sudo chown keyless certificate-key.p8
-
-
+openssl pkcs8 -topk8 -inform PEM -outform PEM -nocrypt -in certificate-key.pem -out certificate-key.p8sudo chown keyless certificate-key.p8
 sudo -u keyless softhsm2-util --pin 1234 --import ./certificate-key.p8 --token test-token --id a000 --label rsa-privkey
-
-
 ```
 
 ```
-
-Found slot 915669571 with matching token label.
-
-The key pair has been imported.
-
-
+Found slot 915669571 with matching token label.The key pair has been imported.
 ```
 
 After importing we ask `pkcs11-tool` to confirm the objects have been successfully stored in the token.
@@ -182,31 +83,11 @@ After importing we ask `pkcs11-tool` to confirm the objects have been successful
 Terminal window
 
 ```
-
 sudo -u keyless pkcs11-tool --module /usr/lib/softhsm/libsofthsm2.so -l -p 1234 --token test-token --list-objects
-
-
 ```
 
 ```
-
-Public Key Object; RSA 2048 bits
-
-  label:      rsa-privkey
-
-  ID:         a000
-
-  Usage:      verify
-
-Private Key Object; RSA
-
-  label:      rsa-privkey
-
-  ID:         a000
-
-  Usage:      sign
-
-
+Public Key Object; RSA 2048 bits  label:      rsa-privkey  ID:         a000  Usage:      verifyPrivate Key Object; RSA  label:      rsa-privkey  ID:         a000  Usage:      sign
 ```
 
 ---
@@ -220,12 +101,7 @@ Open up `/etc/keyless/gokeyless.yaml` and immediately after
 YAML
 
 ```
-
-private_key_stores:
-
-  - dir: /etc/keyless/keys
-
-
+private_key_stores:  - dir: /etc/keyless/keys
 ```
 
 add
@@ -233,10 +109,7 @@ add
 YAML
 
 ```
-
 - uri: pkcs11:token=test-token;id=%a0%00?module-path=/usr/lib/softhsm/libsofthsm2.so&pin-value=1234&max-sessions=1
-
-
 ```
 
 Save the config file, restart `gokeyless`, and verify it started successfully.
@@ -244,12 +117,7 @@ Save the config file, restart `gokeyless`, and verify it started successfully.
 Terminal window
 
 ```
-
-sudo systemctl restart gokeyless.service
-
-sudo systemctl status gokeyless.service -l
-
-
+sudo systemctl restart gokeyless.servicesudo systemctl status gokeyless.service -l
 ```
 
 ```json

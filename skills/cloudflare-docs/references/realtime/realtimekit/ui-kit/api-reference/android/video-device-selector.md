@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,18 +33,7 @@ A video device selector component which can be used to select video devices.
 ### Basic Usage
 
 ```
-
-<com.cloudflare.realtimekit.ui.view.RtkVideoDeviceSelector
-
-    android:id="@+id/videoSelector"
-
-    app:rtk_ds_label="Camera"
-
-    android:layout_width="0dp"
-
-    android:layout_height="wrap_content" />
-
-
+<com.cloudflare.realtimekit.ui.view.RtkVideoDeviceSelector    android:id="@+id/videoSelector"    app:rtk_ds_label="Camera"    android:layout_width="0dp"    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
@@ -52,12 +41,7 @@ A video device selector component which can be used to select video devices.
 Kotlin
 
 ```
-
-val videoSelector = findViewById<RtkVideoDeviceSelector>(R.id.videoSelector)
-
-videoSelector.activate(meeting)
-
-
+val videoSelector = findViewById<RtkVideoDeviceSelector>(R.id.videoSelector)videoSelector.activate(meeting)
 ```
 
 ```json

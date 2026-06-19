@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -187,27 +187,8 @@ To customize where the Vite plugin stores local data, configure the [persistStat
 vite.config.js
 
 ```
-
-import { defineConfig } from "vite";
-
-import { cloudflare } from "@cloudflare/vite-plugin";
-
-
-export default defineConfig({
-
-  plugins: [
-
-    cloudflare({
-
-      persistState: { path: "./my-custom-directory" },
-
-    }),
-
-  ],
-
-});
-
-
+import { defineConfig } from "vite";import { cloudflare } from "@cloudflare/vite-plugin";
+export default defineConfig({  plugins: [    cloudflare({      persistState: { path: "./my-custom-directory" },    }),  ],});
 ```
 
 #### Sharing state between tools

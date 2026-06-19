@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,9 +29,9 @@ This guide covers how to configure [PagerDuty ↗](https://support.pagerduty.com
 4. For the authentication protocol, select **SAML**.
 5. Select **Add application**.
 6. Fill in the following fields:  
-   * **Entity ID**: `https://<your-subdomain>.pagerduty.com`  
-   * **Assertion Consumer Service URL**: ` https://<your-subdomain>.pagerduty.com/sso/saml/consume`  
-   * **Name ID format**: _Email_
+  * **Entity ID**: `https://<your-subdomain>.pagerduty.com`
+  * **Assertion Consumer Service URL**: ` https://<your-subdomain>.pagerduty.com/sso/saml/consume`
+  * **Name ID format**: _Email_
 7. Copy the **SSO endpoint** and **Public key**.
 8. Configure [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) for the application.
 9. Save the application.

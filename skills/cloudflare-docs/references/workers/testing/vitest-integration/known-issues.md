@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -41,18 +41,7 @@ Always `await` all `Promise`s that read or write to storage services.
 TypeScript
 
 ```
-
-// Example: Seed data
-
-beforeAll(async () => {
-
-  await env.KV.put("message", "test message");
-
-  await env.R2.put("file", "hello-world");
-
-});
-
-
+// Example: Seed databeforeAll(async () => {  await env.KV.put("message", "test message");  await env.R2.put("file", "hello-world");});
 ```
 
 #### Explicitly signal resource disposal
@@ -62,10 +51,7 @@ When calling RPC methods of a Service Worker or Durable Object that return non-p
 TypeScript
 
 ```
-
 using result = await stub.getCounter();
-
-
 ```
 
 #### Consume response bodies
@@ -75,23 +61,8 @@ When making requests via `fetch` or `R2.get()`, consume the entire response body
 TypeScript
 
 ```
-
-test("check if file exists", async () => {
-
-  await env.R2.put("file", "hello-world");
-
-  const response = await env.R2.get("file");
-
-
-  expect(response).not.toBe(null);
-
-  // Consume the response body even if you are not asserting it
-
-  await response.text();
-
-});
-
-
+test("check if file exists", async () => {  await env.R2.put("file", "hello-world");  const response = await env.R2.get("file");
+  expect(response).not.toBe(null);  // Consume the response body even if you are not asserting it  await response.text();});
 ```
 
 ### Missing properties on `ctx.exports`
@@ -103,12 +74,7 @@ For example, consider a Worker that re-exports an entrypoint from a virtual modu
 TypeScript
 
 ```
-
-// index.ts
-
-export * from "@virtual-module";
-
-
+// index.tsexport * from "@virtual-module";
 ```
 
 In this case, any exports from `@virtual-module` (such as `MyEntrypoint`) cannot be automatically inferred and will be missing from `ctx.exports`.
@@ -118,33 +84,8 @@ To work around this, add the `additionalExports` option to your Vitest configura
 TypeScript
 
 ```
-
-import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
-
-import { defineConfig } from "vitest/config";
-
-
-export default defineConfig({
-
-  plugins: [
-
-    cloudflareTest({
-
-      wrangler: { configPath: "./wrangler.jsonc" },
-
-      additionalExports: {
-
-        MyEntrypoint: "WorkerEntrypoint",
-
-      },
-
-    }),
-
-  ],
-
-});
-
-
+import { cloudflareTest } from "@cloudflare/vitest-pool-workers";import { defineConfig } from "vitest/config";
+export default defineConfig({  plugins: [    cloudflareTest({      wrangler: { configPath: "./wrangler.jsonc" },      additionalExports: {        MyEntrypoint: "WorkerEntrypoint",      },    }),  ],});
 ```
 
 The `additionalExports` option is a map where keys are the export names and values are the type of export (`"WorkerEntrypoint"`, `"DurableObject"`, or `"WorkflowEntrypoint"`).
@@ -156,47 +97,8 @@ If you encounter module resolution issues such as: `Error: Cannot use require() 
 TypeScript
 
 ```
-
-import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
-
-import { defineConfig } from "vitest/config";
-
-
-export default defineConfig({
-
-  plugins: [
-
-    cloudflareTest({
-
-      // ...
-
-    }),
-
-  ],
-
-  test: {
-
-    deps: {
-
-      optimizer: {
-
-        ssr: {
-
-          enabled: true,
-
-          include: ["your-package-name"],
-
-        },
-
-      },
-
-    },
-
-  },
-
-});
-
-
+import { cloudflareTest } from "@cloudflare/vitest-pool-workers";import { defineConfig } from "vitest/config";
+export default defineConfig({  plugins: [    cloudflareTest({      // ...    }),  ],  test: {    deps: {      optimizer: {        ssr: {          enabled: true,          include: ["your-package-name"],        },      },    },  },});
 ```
 
 You can find an example in the [Recipes](https://developers.cloudflare.com/workers/testing/vitest-integration/recipes) page.
@@ -208,83 +110,17 @@ Although Vitest is set up to resolve packages for the [workerd ↗](https://gith
 TypeScript
 
 ```
-
-// File: global-setup-wrapper.ts
-
-import { createServer } from "vite";
-
-
-// Import the actual global setup file with the correct setup
-
-const mod = await viteImport("./global-setup.ts");
-
-
+// File: global-setup-wrapper.tsimport { createServer } from "vite";
+// Import the actual global setup file with the correct setupconst mod = await viteImport("./global-setup.ts");
 export default mod.default;
-
-
-// Helper to import the file with default node setup
-
-async function viteImport(file: string) {
-
-  const server = await createServer({
-
-    root: import.meta.dirname,
-
-    configFile: false,
-
-    server: { middlewareMode: true, hmr: false, watch: null, ws: false },
-
-    optimizeDeps: { noDiscovery: true },
-
-    clearScreen: false,
-
-  });
-
-  const mod = await server.ssrLoadModule(file);
-
-  await server.close();
-
-  return mod;
-
-}
-
-
+// Helper to import the file with default node setupasync function viteImport(file: string) {  const server = await createServer({    root: import.meta.dirname,    configFile: false,    server: { middlewareMode: true, hmr: false, watch: null, ws: false },    optimizeDeps: { noDiscovery: true },    clearScreen: false,  });  const mod = await server.ssrLoadModule(file);  await server.close();  return mod;}
 ```
 
 TypeScript
 
 ```
-
-// File: vitest.config.ts
-
-import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
-
-import { defineConfig } from "vitest/config";
-
-
-export default defineConfig({
-
-  plugins: [
-
-    cloudflareTest({
-
-      // ...
-
-    }),
-
-  ],
-
-  test: {
-
-    // Replace the globalSetup with the wrapper file
-
-    globalSetup: ["./global-setup-wrapper.ts"],
-
-  },
-
-});
-
-
+// File: vitest.config.tsimport { cloudflareTest } from "@cloudflare/vitest-pool-workers";import { defineConfig } from "vitest/config";
+export default defineConfig({  plugins: [    cloudflareTest({      // ...    }),  ],  test: {    // Replace the globalSetup with the wrapper file    globalSetup: ["./global-setup-wrapper.ts"],  },});
 ```
 
 ```json

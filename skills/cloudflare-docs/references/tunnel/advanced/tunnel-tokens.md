@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tunnel/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,8 +18,8 @@ A remotely-managed tunnel only requires a token to run. Anyone with the token ca
 
 To get the token for a remotely-managed tunnel:
 
-* [ Dashboard ](#tab-panel-10976)
-* [ API ](#tab-panel-10977)
+* [ Dashboard ](#tab-panel-10993)
+* [ API ](#tab-panel-10994)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Networking** \> **Tunnels**.  
 [ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
@@ -29,7 +29,7 @@ To get the token for a remotely-managed tunnel:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Cloudflare One Connectors Write`
 * `Cloudflare One Connector: cloudflared Write`
 * `Cloudflare Tunnel Write`
@@ -37,14 +37,7 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Get a Cloudflare Tunnel token
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNNEL_ID/token" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNNEL_ID/token" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ## Rotate a token
@@ -59,8 +52,7 @@ Rotate tokens regularly to reduce the risk of compromise. For tunnels with multi
 5. On each replica, reinstall the `cloudflared` service using the new token:  
 Terminal window  
 ```  
-sudo cloudflared service uninstall  
-sudo cloudflared service install <NEW_TOKEN>  
+sudo cloudflared service uninstallsudo cloudflared service install <NEW_TOKEN>  
 ```
 
 Rotate a compromised token
@@ -69,7 +61,7 @@ If your tunnel token is compromised, immediately [rotate the token](#rotate-a-to
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Cloudflare One Connectors Write`
 * `Cloudflare One Connector: cloudflared Write`
 * `Cloudflare Tunnel Write`
@@ -77,14 +69,7 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Clean up Cloudflare Tunnel connections
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNNEL_ID/connections" \
-
-  --request DELETE \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNNEL_ID/connections" \  --request DELETE \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Then reinstall the `cloudflared` service on all replicas using the new token.

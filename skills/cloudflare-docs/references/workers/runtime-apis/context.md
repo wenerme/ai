@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,68 +27,20 @@ Note that the Context API is available strictly in stateless contexts, that is, 
 
 For example, imagine that you are configuring a Worker called "frontend-worker", which must talk to another Worker called "doc-worker" in order to manipulate documents. You might configure "frontend-worker" with a [Service Binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings) like:
 
-* [  wrangler.jsonc ](#tab-panel-11984)
-* [  wrangler.toml ](#tab-panel-11985)
+* [  wrangler.jsonc ](#tab-panel-12001)
+* [  wrangler.toml ](#tab-panel-12002)
 
 JSONC
 
 ```
-
-{
-
-  "services": [
-
-    {
-
-      "binding": "DOC_SERVICE",
-
-      "service": "doc-worker",
-
-      "entrypoint": "DocServiceApi",
-
-      "props": {
-
-        "clientId": "frontend-worker",
-
-        "permissions": [
-
-          "read",
-
-          "write"
-
-        ]
-
-      }
-
-    }
-
-  ]
-
-}
-
-
+{  "services": [    {      "binding": "DOC_SERVICE",      "service": "doc-worker",      "entrypoint": "DocServiceApi",      "props": {        "clientId": "frontend-worker",        "permissions": [          "read",          "write"        ]      }    }  ]}
 ```
 
 TOML
 
 ```
-
-[[services]]
-
-binding = "DOC_SERVICE"
-
-service = "doc-worker"
-
-entrypoint = "DocServiceApi"
-
-
-  [services.props]
-
-  clientId = "frontend-worker"
-
-  permissions = [ "read", "write" ]
-
-
+[[services]]binding = "DOC_SERVICE"service = "doc-worker"entrypoint = "DocServiceApi"
+  [services.props]  clientId = "frontend-worker"  permissions = [ "read", "write" ]
 ```
 
 Now frontend-worker can make calls to doc-worker with code like `env.DOC_SERVICE.getDoc(id)`. This will make a [Remote Procedure Call](https://developers.cloudflare.com/workers/runtime-apis/rpc/) invoking the method `getDoc()` of the class `DocServiceApi`, a [WorkerEntrypoint class](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc) exported by doc-worker.
@@ -99,68 +51,20 @@ The Workers platform is designed to ensure that `ctx.props` can only be set by s
 
 `ctx.props` can also be used to configure an RPC interface to represent a _specific_ resource, thus creating a "custom binding". For example, we could configure a Service Binding to our "doc-worker" which grants access only to a specific document:
 
-* [  wrangler.jsonc ](#tab-panel-11986)
-* [  wrangler.toml ](#tab-panel-11987)
+* [  wrangler.jsonc ](#tab-panel-12003)
+* [  wrangler.toml ](#tab-panel-12004)
 
 JSONC
 
 ```
-
-{
-
-  "services": [
-
-    {
-
-      "binding": "FOO_DOCUMENT",
-
-      "service": "doc-worker",
-
-      "entrypoint": "DocumentApi",
-
-      "props": {
-
-        "docId": "e366592caec1d88dff724f74136b58b5",
-
-        "permissions": [
-
-          "read",
-
-          "write"
-
-        ]
-
-      }
-
-    }
-
-  ]
-
-}
-
-
+{  "services": [    {      "binding": "FOO_DOCUMENT",      "service": "doc-worker",      "entrypoint": "DocumentApi",      "props": {        "docId": "e366592caec1d88dff724f74136b58b5",        "permissions": [          "read",          "write"        ]      }    }  ]}
 ```
 
 TOML
 
 ```
-
-[[services]]
-
-binding = "FOO_DOCUMENT"
-
-service = "doc-worker"
-
-entrypoint = "DocumentApi"
-
-
-  [services.props]
-
-  docId = "e366592caec1d88dff724f74136b58b5"
-
-  permissions = [ "read", "write" ]
-
-
+[[services]]binding = "FOO_DOCUMENT"service = "doc-worker"entrypoint = "DocumentApi"
+  [services.props]  docId = "e366592caec1d88dff724f74136b58b5"  permissions = [ "read", "write" ]
 ```
 
 Here, we've placed a `docId` property in `ctx.props`. The `DocumentApi` class could be designed to provide an API to the specific document identified by `ctx.props.docId`, and enforcing the given permissions.
@@ -181,34 +85,9 @@ For example:
 JavaScript
 
 ```
-
 import { WorkerEntrypoint } from "cloudflare:workers";
-
-
-export class Greeter extends WorkerEntrypoint {
-
-  greet(name) {
-
-    return `Hello, ${name}!`;
-
-  }
-
-}
-
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    let greeting = await ctx.exports.Greeter.greet("World");
-
-    return new Response(greeting);
-
-  },
-
-};
-
-
+export class Greeter extends WorkerEntrypoint {  greet(name) {    return `Hello, ${name}!`;  }}
+export default {  async fetch(request, env, ctx) {    let greeting = await ctx.exports.Greeter.greet("World");    return new Response(greeting);  },};
 ```
 
 In this example, the default fetch handler calls the `Greeter` class over RPC, like how you'd use a Service Binding. However, there is no external configuration required. `ctx.exports` is populated _automatically_ from your top-level imports.
@@ -217,96 +96,28 @@ In this example, the default fetch handler calls the `Greeter` class over RPC, l
 
 Loopback Service Bindings in `ctx.exports` have an extra capability that regular Service Bindings do not: the caller can specify the value of `ctx.props` that should be delivered to the callee.
 
-* [  JavaScript ](#tab-panel-11982)
-* [  TypeScript ](#tab-panel-11983)
+* [  JavaScript ](#tab-panel-11999)
+* [  TypeScript ](#tab-panel-12000)
 
 JavaScript
 
 ```
-
 import { WorkerEntrypoint } from "cloudflare:workers";
-
-
-export class Greeter extends WorkerEntrypoint {
-
-  greet(name) {
-
-    return `${this.ctx.props.greeting}, ${name}!`;
-
-  }
-
-}
-
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    // Make a custom greeter that uses the greeting "Welcome".
-
-    let greeter = ctx.exports.Greeter({ props: { greeting: "Welcome" } });
-
-
-    // Greet the world. Returns "Welcome, World!"
-
-    let greeting = await greeter.greet("World");
-
-
-    return new Response(greeting);
-
-  },
-
-};
-
-
+export class Greeter extends WorkerEntrypoint {  greet(name) {    return `${this.ctx.props.greeting}, ${name}!`;  }}
+export default {  async fetch(request, env, ctx) {    // Make a custom greeter that uses the greeting "Welcome".    let greeter = ctx.exports.Greeter({ props: { greeting: "Welcome" } });
+    // Greet the world. Returns "Welcome, World!"    let greeting = await greeter.greet("World");
+    return new Response(greeting);  },};
 ```
 
 TypeScript
 
 ```
-
 import { WorkerEntrypoint } from "cloudflare:workers";
-
-
-type Props = {
-
-  greeting: string;
-
-};
-
-
-export class Greeter extends WorkerEntrypoint<Env, Props> {
-
-  greet(name) {
-
-    return `${this.ctx.props.greeting}, ${name}!`;
-
-  }
-
-}
-
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    // Make a custom greeter that uses the greeting "Welcome".
-
-    let greeter = ctx.exports.Greeter({ props: { greeting: "Welcome" } });
-
-
-    // Greet the world. Returns "Welcome, World!"
-
-    let greeting = await greeter.greet("World");
-
-
-    return new Response(greeting);
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+type Props = {  greeting: string;};
+export class Greeter extends WorkerEntrypoint<Env, Props> {  greet(name) {    return `${this.ctx.props.greeting}, ${name}!`;  }}
+export default {  async fetch(request, env, ctx) {    // Make a custom greeter that uses the greeting "Welcome".    let greeter = ctx.exports.Greeter({ props: { greeting: "Welcome" } });
+    // Greet the world. Returns "Welcome, World!"    let greeting = await greeter.greet("World");
+    return new Response(greeting);  },} satisfies ExportedHandler<Env>;
 ```
 
 Specifying props dynamically is permitted in this case because the caller is the same Worker, and thus can be presumed to be trusted to specify any props. The ability to customize props is particularly useful when the resulting binding is to be passed to another Worker over RPC or used in the `env` of a [dynamically-loaded worker](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/).
@@ -328,26 +139,7 @@ When declaring an entrypoint class that accepts `props`, make sure to declare it
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    return ctx.tracing.enterSpan("handleRequest", async (span) => {
-
-      span.setAttribute("url.path", new URL(request.url).pathname);
-
-      const data = await env.MY_KV.get("key");
-
-      return new Response(data);
-
-    });
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    return ctx.tracing.enterSpan("handleRequest", async (span) => {      span.setAttribute("url.path", new URL(request.url).pathname);      const data = await env.MY_KV.get("key");      return new Response(data);    });  },};
 ```
 
 For full API details, refer to [Custom spans](https://developers.cloudflare.com/workers/observability/traces/custom-spans/).
@@ -386,39 +178,10 @@ For example:
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    // Forward / proxy original request
-
-    let res = await fetch(request);
-
-
-    // Add custom header(s)
-
-    res = new Response(res.body, res);
-
-    res.headers.set("x-foo", "bar");
-
-
-    // Cache the response
-
-    // NOTE: Does NOT block / wait
-
-    ctx.waitUntil(caches.default.put(request, res.clone()));
-
-
-    // Done
-
-    return res;
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    // Forward / proxy original request    let res = await fetch(request);
+    // Add custom header(s)    res = new Response(res.body, res);    res.headers.set("x-foo", "bar");
+    // Cache the response    // NOTE: Does NOT block / wait    ctx.waitUntil(caches.default.put(request, res.clone()));
+    // Done    return res;  },};
 ```
 
 ## `passThroughOnException`
@@ -436,31 +199,8 @@ The `passThroughOnException` method allows a Worker to [fail open ↗](https://c
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    ctx.passThroughOnException();
-
-
-    try {
-
-      return await fetch(request);
-
-    } catch (error) {
-
-      console.error("Origin fetch failed", error);
-
-      return new Response("Bad Gateway", { status: 502 });
-
-    }
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    ctx.passThroughOnException();
+    try {      return await fetch(request);    } catch (error) {      console.error("Origin fetch failed", error);      return new Response("Bad Gateway", { status: 502 });    }  },};
 ```
 
 ```json

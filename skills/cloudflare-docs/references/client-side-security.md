@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/client-side-security/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -64,20 +64,20 @@ Content security rules define allowed resources on your websites. Use content se
 
 ## Availability
 
-| Free                                                 | Pro | Business | Enterprise | Advanced |     |
-| ---------------------------------------------------- | --- | -------- | ---------- | -------- | --- |
-| Availability                                         | Yes | Yes      | Yes        | Yes      | Yes |
-| Script monitoring                                    | Yes | Yes      | Yes        | Yes      | Yes |
-| Connection monitoring                                | No  | No       | Yes        | Yes      | Yes |
-| Cookie monitoring                                    | No  | No       | Yes        | Yes      | Yes |
-| Page attribution                                     | No  | No       | Yes        | Yes      | Yes |
-| New Resources Alerts and New Domain Alerts           | No  | No       | Yes        | Yes      | Yes |
-| Malicious script detection and alerting              | No  | No       | No         | No       | Yes |
-| Code change detection and alerting                   | No  | No       | No         | No       | Yes |
-| Malicious connection detection and alerting          | No  | No       | No         | No       | Yes |
-| Cookie monitoring advanced fields                    | No  | No       | No         | No       | Yes |
-| Number of content security rules (positive blocking) | 0   | 0        | 0          | 0        | 5   |
-| Number of Logpush jobs                               | 0   | 0        | 0          | 0        | 4   |
+|                                                      | Free | Pro | Business | Enterprise | Advanced |
+| ---------------------------------------------------- | ---- | --- | -------- | ---------- | -------- |
+| Availability                                         | Yes  | Yes | Yes      | Yes        | Yes      |
+| Script monitoring                                    | Yes  | Yes | Yes      | Yes        | Yes      |
+| Connection monitoring                                | No   | No  | Yes      | Yes        | Yes      |
+| Cookie monitoring                                    | No   | No  | Yes      | Yes        | Yes      |
+| Page attribution                                     | No   | No  | Yes      | Yes        | Yes      |
+| New Resources Alerts and New Domain Alerts           | No   | No  | Yes      | Yes        | Yes      |
+| Malicious script detection and alerting              | No   | No  | No       | No         | Yes      |
+| Code change detection and alerting                   | No   | No  | No       | No         | Yes      |
+| Malicious connection detection and alerting          | No   | No  | No       | No         | Yes      |
+| Cookie monitoring advanced fields                    | No   | No  | No       | No         | Yes      |
+| Number of content security rules (positive blocking) | 0    | 0   | 0        | 0          | 5        |
+| Number of Logpush jobs                               | 0    | 0   | 0        | 0          | 4        |
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/client-side-security/#page","headline":"Overview · Client-side security docs","description":"Cloudflare's client-side security is a comprehensive client-side security and privacy solution that allows you to ensure the safety of your website visitors' browsing environment.","url":"https://developers.cloudflare.com/client-side-security/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

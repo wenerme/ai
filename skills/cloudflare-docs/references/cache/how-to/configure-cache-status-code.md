@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -41,88 +41,7 @@ To set cache TTL by response status, [create a Cache Rule](https://developers.cl
 Request
 
 ```
-
-curl --request PUT \
-
-"https://api.cloudflare.com/client/v4/zones/{zone_id}/rulesets/{ruleset_id}" \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "rules": [
-
-    {
-
-      "expression": "(http.host eq \"www.example.com\")",
-
-      "description": "set cache TTL by response status",
-
-      "action": "set_cache_settings",
-
-      "action_parameters": {
-
-        "cache": true,
-
-        "edge_ttl": {
-
-          "status_code_ttl": [
-
-            {
-
-              "status_code_range": {
-
-                "to": 299
-
-              },
-
-              "value": 86400
-
-            },
-
-            {
-
-              "status_code_range": {
-
-                "from": 300,
-
-                "to": 499
-
-              },
-
-              "value": 0  // no-cache
-
-            },
-
-            {
-
-              "status_code_range": {
-
-                "from": 500
-
-              },
-
-              "value": -1  // no-store
-
-            }
-
-          ],
-
-          "mode": "respect_origin"
-
-        }
-
-      }
-
-    }
-
-  ]
-
-}'
-
-
+curl --request PUT \"https://api.cloudflare.com/client/v4/zones/{zone_id}/rulesets/{ruleset_id}" \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "rules": [    {      "expression": "(http.host eq \"www.example.com\")",      "description": "set cache TTL by response status",      "action": "set_cache_settings",      "action_parameters": {        "cache": true,        "edge_ttl": {          "status_code_ttl": [            {              "status_code_range": {                "to": 299              },              "value": 86400            },            {              "status_code_range": {                "from": 300,                "to": 499              },              "value": 0  // no-cache            },            {              "status_code_range": {                "from": 500              },              "value": -1  // no-store            }          ],          "mode": "respect_origin"        }      }    }  ]}'
 ```
 
 ### Syntax

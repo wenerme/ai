@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -62,10 +62,7 @@ This creates a `my-sandbox` directory with everything you need:
 Terminal window
 
 ```
-
 cd my-sandbox
-
-
 ```
 
 ## 2\. Explore the template
@@ -75,79 +72,14 @@ The template provides a minimal Worker that demonstrates core sandbox capabiliti
 TypeScript
 
 ```
-
 import { getSandbox, proxyToSandbox, type Sandbox } from "@cloudflare/sandbox";
-
-
 export { Sandbox } from "@cloudflare/sandbox";
-
-
-type Env = {
-
-  Sandbox: DurableObjectNamespace<Sandbox>;
-
-};
-
-
-export default {
-
-  async fetch(request: Request, env: Env): Promise<Response> {
-
-    const url = new URL(request.url);
-
-
-    // Get or create a sandbox instance. For user-facing apps,
-
-    // derive this ID from the authenticated user.
-
-    const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
-
-    // Execute Python code
-
-    if (url.pathname === "/run") {
-
-      const result = await sandbox.exec('python3 -c "print(2 + 2)"');
-
-      return Response.json({
-
-        output: result.stdout,
-
-        error: result.stderr,
-
-        exitCode: result.exitCode,
-
-        success: result.success,
-
-      });
-
-    }
-
-
-    // Work with files
-
-    if (url.pathname === "/file") {
-
-      await sandbox.writeFile("/workspace/hello.txt", "Hello, Sandbox!");
-
-      const file = await sandbox.readFile("/workspace/hello.txt");
-
-      return Response.json({
-
-        content: file.content,
-
-      });
-
-    }
-
-
-    return new Response("Try /run or /file");
-
-  },
-
-};
-
-
+type Env = {  Sandbox: DurableObjectNamespace<Sandbox>;};
+export default {  async fetch(request: Request, env: Env): Promise<Response> {    const url = new URL(request.url);
+    // Get or create a sandbox instance. For user-facing apps,    // derive this ID from the authenticated user.    const sandbox = getSandbox(env.Sandbox, "my-sandbox");
+    // Execute Python code    if (url.pathname === "/run") {      const result = await sandbox.exec('python3 -c "print(2 + 2)"');      return Response.json({        output: result.stdout,        error: result.stderr,        exitCode: result.exitCode,        success: result.success,      });    }
+    // Work with files    if (url.pathname === "/file") {      await sandbox.writeFile("/workspace/hello.txt", "Hello, Sandbox!");      const file = await sandbox.readFile("/workspace/hello.txt");      return Response.json({        content: file.content,      });    }
+    return new Response("Try /run or /file");  },};
 ```
 
 **Key concepts**:
@@ -163,12 +95,7 @@ Start the development server:
 Terminal window
 
 ```
-
-npm run dev
-
-# If you expect to have multiple sandbox instances, you can increase `max_instances`.
-
-
+npm run dev# If you expect to have multiple sandbox instances, you can increase `max_instances`.
 ```
 
 Note
@@ -180,17 +107,8 @@ Test the endpoints:
 Terminal window
 
 ```
-
-# Execute Python code
-
-curl http://localhost:8787/run
-
-
-# File operations
-
-curl http://localhost:8787/file
-
-
+# Execute Python codecurl http://localhost:8787/run
+# File operationscurl http://localhost:8787/file
 ```
 
 You should see JSON responses with the command output and file contents.
@@ -202,10 +120,7 @@ Deploy your Worker and container:
 Terminal window
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 This will:
@@ -223,10 +138,7 @@ Check deployment status:
 Terminal window
 
 ```
-
 npx wrangler containers list
-
-
 ```
 
 ## 5\. Test your deployment
@@ -236,12 +148,7 @@ Visit your Worker URL (shown in deploy output):
 Terminal window
 
 ```
-
-# Replace with your actual URL
-
-curl https://my-sandbox.YOUR_SUBDOMAIN.workers.dev/run
-
-
+# Replace with your actual URLcurl https://my-sandbox.YOUR_SUBDOMAIN.workers.dev/run
 ```
 
 Your sandbox is now deployed and can execute code in isolated containers.
@@ -250,93 +157,21 @@ Your sandbox is now deployed and can execute code in isolated containers.
 
 Your `wrangler.jsonc` connects three pieces together:
 
-* [  wrangler.jsonc ](#tab-panel-10241)
-* [  wrangler.toml ](#tab-panel-10242)
+* [  wrangler.jsonc ](#tab-panel-10317)
+* [  wrangler.toml ](#tab-panel-10318)
 
 JSONC
 
 ```
-
-{
-
-  "containers": [
-
-    {
-
-      "class_name": "Sandbox",
-
-      "image": "./Dockerfile",
-
-      "instance_type": "lite",
-
-      "max_instances": 1,
-
-    },
-
-  ],
-
-  "durable_objects": {
-
-    "bindings": [
-
-      {
-
-        "class_name": "Sandbox",
-
-        "name": "Sandbox",
-
-      },
-
-    ],
-
-  },
-
-  "migrations": [
-
-    {
-
-      "new_sqlite_classes": ["Sandbox"],
-
-      "tag": "v1",
-
-    },
-
-  ],
-
-}
-
-
+{  "containers": [    {      "class_name": "Sandbox",      "image": "./Dockerfile",      "instance_type": "lite",      "max_instances": 1,    },  ],  "durable_objects": {    "bindings": [      {        "class_name": "Sandbox",        "name": "Sandbox",      },    ],  },  "migrations": [    {      "new_sqlite_classes": ["Sandbox"],      "tag": "v1",    },  ],}
 ```
 
 TOML
 
 ```
-
-[[containers]]
-
-class_name = "Sandbox"
-
-image = "./Dockerfile"
-
-instance_type = "lite"
-
-max_instances = 1
-
-
-[[durable_objects.bindings]]
-
-class_name = "Sandbox"
-
-name = "Sandbox"
-
-
-[[migrations]]
-
-new_sqlite_classes = [ "Sandbox" ]
-
-tag = "v1"
-
-
+[[containers]]class_name = "Sandbox"image = "./Dockerfile"instance_type = "lite"max_instances = 1
+[[durable_objects.bindings]]class_name = "Sandbox"name = "Sandbox"
+[[migrations]]new_sqlite_classes = [ "Sandbox" ]tag = "v1"
 ```
 
 * **containers** \- Defines the [container image, instance type, and resource limits](https://developers.cloudflare.com/workers/wrangler/configuration/#containers) for your sandbox environment. If you expect to have multiple sandbox instances, you can increase `max_instances`.

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -41,61 +41,26 @@ Terminal window
 ```  
 wrangler dev  
 ```  
-```  
-------------------  
-wrangler dev now uses local mode by default, powered by 🔥 Miniflare and 👷 workerd.  
-To run an edge preview session for your Worker, use wrangler dev --remote  
-Your worker has access to the following bindings:  
-- D1 Databases:  
-  - DB: test-db (c020574a-5623-407b-be0c-cd192bab9545)  
-⎔ Starting local server...  
-[mf:inf] Ready on http://127.0.0.1:8787/  
-[b] open a browser, [d] open Devtools, [l] turn off local mode, [c] clear console, [x] to exit  
+```
+------------------wrangler dev now uses local mode by default, powered by 🔥 Miniflare and 👷 workerd.To run an edge preview session for your Worker, use wrangler dev --remoteYour worker has access to the following bindings:- D1 Databases:  - DB: test-db (c020574a-5623-407b-be0c-cd192bab9545)⎔ Starting local server...  
+[mf:inf] Ready on http://127.0.0.1:8787/[b] open a browser, [d] open Devtools, [l] turn off local mode, [c] clear console, [x] to exit  
 ```
 
 In this example, the Worker has access to local-only D1 database. The corresponding D1 binding in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) would resemble the following:
 
-* [  wrangler.jsonc ](#tab-panel-7860)
-* [  wrangler.toml ](#tab-panel-7861)
+* [  wrangler.jsonc ](#tab-panel-7936)
+* [  wrangler.toml ](#tab-panel-7937)
 
 JSONC
 
 ```
-
-{
-
-  "d1_databases": [
-
-    {
-
-      "binding": "DB",
-
-      "database_name": "test-db",
-
-      "database_id": "c020574a-5623-407b-be0c-cd192bab9545"
-
-    }
-
-  ]
-
-}
-
-
+{  "d1_databases": [    {      "binding": "DB",      "database_name": "test-db",      "database_id": "c020574a-5623-407b-be0c-cd192bab9545"    }  ]}
 ```
 
 TOML
 
 ```
-
-[[d1_databases]]
-
-binding = "DB"
-
-database_name = "test-db"
-
-database_id = "c020574a-5623-407b-be0c-cd192bab9545"
-
-
+[[d1_databases]]binding = "DB"database_name = "test-db"database_id = "c020574a-5623-407b-be0c-cd192bab9545"
 ```
 
 Note that `wrangler dev` separates local and production (remote) data. A local session does not have access to your production data by default. To access your production (remote) database, set `"remote" : true` in the D1 binding configuration. Refer to the [remote bindings documentation](https://developers.cloudflare.com/workers/development-testing/#remote-bindings) for more information. Any changes you make when running against a remote database cannot be undone.
@@ -112,53 +77,19 @@ It is currently not possible to develop against a _remote_ D1 database when usin
 
 Your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) should resemble the following:
 
-* [  wrangler.jsonc ](#tab-panel-7862)
-* [  wrangler.toml ](#tab-panel-7863)
+* [  wrangler.jsonc ](#tab-panel-7938)
+* [  wrangler.toml ](#tab-panel-7939)
 
 JSONC
 
 ```
-
-{
-
-  // If you are only using Pages + D1, you only need the below in your Wrangler config file to interact with D1 locally.
-
-  "d1_databases": [
-
-    {
-
-      "binding": "DB", // Should match preview_database_id
-
-      "database_name": "YOUR_DATABASE_NAME",
-
-      "database_id": "the-id-of-your-D1-database-goes-here", // wrangler d1 info YOUR_DATABASE_NAME
-
-      "preview_database_id": "DB" // Required for Pages local development
-
-    }
-
-  ]
-
-}
-
-
+{  // If you are only using Pages + D1, you only need the below in your Wrangler config file to interact with D1 locally.  "d1_databases": [    {      "binding": "DB", // Should match preview_database_id      "database_name": "YOUR_DATABASE_NAME",      "database_id": "the-id-of-your-D1-database-goes-here", // wrangler d1 info YOUR_DATABASE_NAME      "preview_database_id": "DB" // Required for Pages local development    }  ]}
 ```
 
 TOML
 
 ```
-
-[[d1_databases]]
-
-binding = "DB"
-
-database_name = "YOUR_DATABASE_NAME"
-
-database_id = "the-id-of-your-D1-database-goes-here"
-
-preview_database_id = "DB"
-
-
+[[d1_databases]]binding = "DB"database_name = "YOUR_DATABASE_NAME"database_id = "the-id-of-your-D1-database-goes-here"preview_database_id = "DB"
 ```
 
 You can then execute queries and/or run migrations against a local database as part of your local development process by passing the `--local` flag to wrangler:
@@ -166,12 +97,7 @@ You can then execute queries and/or run migrations against a local database as p
 Terminal window
 
 ```
-
-wrangler d1 execute YOUR_DATABASE_NAME \
-
-  --local --command "CREATE TABLE IF NOT EXISTS users ( user_id INTEGER PRIMARY KEY, email_address TEXT, created_at INTEGER, deleted INTEGER, settings TEXT);"
-
-
+wrangler d1 execute YOUR_DATABASE_NAME \  --local --command "CREATE TABLE IF NOT EXISTS users ( user_id INTEGER PRIMARY KEY, email_address TEXT, created_at INTEGER, deleted INTEGER, settings TEXT);"
 ```
 
 The preceding command would execute queries the **local only** version of your D1 database. Without the `--local` flag, the commands are executed against the remote version of your D1 database running on Cloudflare's network.
@@ -194,64 +120,25 @@ Users of wrangler `2.x` must use the `--persist` flag: previous versions of wran
 
 You can use Miniflare's [support for D1 ↗](https://miniflare.dev/storage/d1) to create D1 databases you can use for testing:
 
-* [  wrangler.jsonc ](#tab-panel-7864)
-* [  wrangler.toml ](#tab-panel-7865)
+* [  wrangler.jsonc ](#tab-panel-7940)
+* [  wrangler.toml ](#tab-panel-7941)
 
 JSONC
 
 ```
-
-{
-
-  "d1_databases": [
-
-    {
-
-      "binding": "DB",
-
-      "database_name": "test-db",
-
-      "database_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-
-    }
-
-  ]
-
-}
-
-
+{  "d1_databases": [    {      "binding": "DB",      "database_name": "test-db",      "database_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"    }  ]}
 ```
 
 TOML
 
 ```
-
-[[d1_databases]]
-
-binding = "DB"
-
-database_name = "test-db"
-
-database_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-
-
+[[d1_databases]]binding = "DB"database_name = "test-db"database_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
 JavaScript
 
 ```
-
-const mf = new Miniflare({
-
-  d1Databases: {
-
-    DB: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-
-  },
-
-});
-
-
+const mf = new Miniflare({  d1Databases: {    DB: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",  },});
 ```
 
 You can then use the `getD1Database()` method to retrieve the simulated database and run queries against it as if it were your real production D1 database:
@@ -259,18 +146,9 @@ You can then use the `getD1Database()` method to retrieve the simulated database
 JavaScript
 
 ```
-
 const db = await mf.getD1Database("DB");
-
-
-const stmt = db.prepare("SELECT name, age FROM users LIMIT 3");
-
-const { results } = await stmt.run();
-
-
+const stmt = db.prepare("SELECT name, age FROM users LIMIT 3");const { results } = await stmt.run();
 console.log(results);
-
-
 ```
 
 ### `unstable_dev`
@@ -279,51 +157,19 @@ Wrangler exposes an [unstable\_dev()](https://developers.cloudflare.com/workers/
 
 Given the below Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-7866)
-* [  wrangler.toml ](#tab-panel-7867)
+* [  wrangler.jsonc ](#tab-panel-7942)
+* [  wrangler.toml ](#tab-panel-7943)
 
 JSONC
 
 ```
-
-{
-
-  "d1_databases": [
-
-    {
-
-      "binding": "DB", // i.e. if you set this to "DB", it will be available in your Worker at `env.DB`
-
-      "database_name": "your-database", // the name of your D1 database, set when created
-
-      "database_id": "<UUID>", // The unique ID of your D1 database, returned when you create your database or run `
-
-      "preview_database_id": "local-test-db" // A user-defined ID for your local test database.
-
-    }
-
-  ]
-
-}
-
-
+{  "d1_databases": [    {      "binding": "DB", // i.e. if you set this to "DB", it will be available in your Worker at `env.DB`      "database_name": "your-database", // the name of your D1 database, set when created      "database_id": "<UUID>", // The unique ID of your D1 database, returned when you create your database or run `      "preview_database_id": "local-test-db" // A user-defined ID for your local test database.    }  ]}
 ```
 
 TOML
 
 ```
-
-[[d1_databases]]
-
-binding = "DB"
-
-database_name = "your-database"
-
-database_id = "<UUID>"
-
-preview_database_id = "local-test-db"
-
-
+[[d1_databases]]binding = "DB"database_name = "your-database"database_id = "<UUID>"preview_database_id = "local-test-db"
 ```
 
 Migrations can be run locally as part of your CI/CD setup by passing the `--local` flag to `wrangler`:
@@ -331,10 +177,7 @@ Migrations can be run locally as part of your CI/CD setup by passing the `--loca
 Terminal window
 
 ```
-
 wrangler d1 migrations apply your-database --local
-
-
 ```
 
 ### Usage example
@@ -348,71 +191,12 @@ The following example shows how to use Wrangler's `unstable_dev()` API to:
 TypeScript
 
 ```
-
-import { unstable_dev } from "wrangler";
-
-import type { UnstableDevWorker } from "wrangler";
-
-
-describe("Test D1 Worker endpoint", () => {
-
-  let worker: UnstableDevWorker;
-
-
-  beforeAll(async () => {
-
-    // Optional: Run any migrations to set up your `--local` database
-
-    // By default, this will default to the preview_database_id
-
-    execSync(`NO_D1_WARNING=true wrangler d1 migrations apply db --local`);
-
-
-    worker = await unstable_dev("src/index.ts", {
-
-      experimental: { disableExperimentalWarning: true },
-
-    });
-
-  });
-
-
-  afterAll(async () => {
-
-    await worker.stop();
-
-  });
-
-
-  it("should return an array of users", async () => {
-
-    // Our expected results
-
-    const expectedResults = `{"results": [{"user_id": 1234, "email": "foo@example.com"},{"user_id": 6789, "email": "bar@example.com"}]}`;
-
-    // Pass an optional URL to fetch to trigger any routing within your Worker
-
-    const resp = await worker.fetch("/api/users/?limit=2");
-
-    if (resp) {
-
-      // https://jestjs.io/docs/expect#tobevalue
-
-      expect(resp.status).toBe(200);
-
-      const data = await resp.json();
-
-      // https://jestjs.io/docs/expect#tomatchobjectobject
-
-      expect(data).toMatchObject(expectedResults);
-
-    }
-
-  });
-
-});
-
-
+import { unstable_dev } from "wrangler";import type { UnstableDevWorker } from "wrangler";
+describe("Test D1 Worker endpoint", () => {  let worker: UnstableDevWorker;
+  beforeAll(async () => {    // Optional: Run any migrations to set up your `--local` database    // By default, this will default to the preview_database_id    execSync(`NO_D1_WARNING=true wrangler d1 migrations apply db --local`);
+    worker = await unstable_dev("src/index.ts", {      experimental: { disableExperimentalWarning: true },    });  });
+  afterAll(async () => {    await worker.stop();  });
+  it("should return an array of users", async () => {    // Our expected results    const expectedResults = `{"results": [{"user_id": 1234, "email": "foo@example.com"},{"user_id": 6789, "email": "bar@example.com"}]}`;    // Pass an optional URL to fetch to trigger any routing within your Worker    const resp = await worker.fetch("/api/users/?limit=2");    if (resp) {      // https://jestjs.io/docs/expect#tobevalue      expect(resp.status).toBe(200);      const data = await resp.json();      // https://jestjs.io/docs/expect#tomatchobjectobject      expect(data).toMatchObject(expectedResults);    }  });});
 ```
 
 Review the [unstable\_dev()](https://developers.cloudflare.com/workers/wrangler/api/#usage) documentation for more details on how to use the API within your tests.

@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -24,36 +24,9 @@ Miniflare will always upgrade Web Socket connections. The Worker must respond wi
 JavaScript
 
 ```
-
-export default {
-
-  fetch(request) {
-
-    const [client, server] = Object.values(new WebSocketPair());
-
-
-    server.accept();
-
-    server.addEventListener("message", (event) => {
-
-      server.send(event.data);
-
-    });
-
-
-    return new Response(null, {
-
-      status: 101,
-
-      webSocket: client,
-
-    });
-
-  },
-
-};
-
-
+export default {  fetch(request) {    const [client, server] = Object.values(new WebSocketPair());
+    server.accept();    server.addEventListener("message", (event) => {      server.send(event.data);    });
+    return new Response(null, {      status: 101,      webSocket: client,    });  },};
 ```
 
 When using `dispatchFetch`, you are responsible for handling WebSockets by using the `webSocket` property on `Response`. As an example, if the above worker script was stored in `echo.mjs`:
@@ -61,43 +34,10 @@ When using `dispatchFetch`, you are responsible for handling WebSockets by using
 JavaScript
 
 ```
-
 import { Miniflare } from "miniflare";
-
-
-const mf = new Miniflare({
-
-  modules: true,
-
-  scriptPath: "echo.mjs",
-
-});
-
-
-const res = await mf.dispatchFetch("https://example.com", {
-
-  headers: {
-
-    Upgrade: "websocket",
-
-  },
-
-});
-
-const webSocket = res.webSocket;
-
-webSocket.accept();
-
-webSocket.addEventListener("message", (event) => {
-
-  console.log(event.data);
-
-});
-
-
+const mf = new Miniflare({  modules: true,  scriptPath: "echo.mjs",});
+const res = await mf.dispatchFetch("https://example.com", {  headers: {    Upgrade: "websocket",  },});const webSocket = res.webSocket;webSocket.accept();webSocket.addEventListener("message", (event) => {  console.log(event.data);});
 webSocket.send("Hello!"); // Above listener logs "Hello!"
-
-
 ```
 
 ```json

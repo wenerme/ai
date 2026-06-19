@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,8 +23,8 @@ Make sure that you:
 
 ## 1\. Add your domain to Cloudflare
 
-* [ Dashboard ](#tab-panel-8133)
-* [ API ](#tab-panel-8134)
+* [ Dashboard ](#tab-panel-8209)
+* [ API ](#tab-panel-8210)
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com).  
 [ Go to **Domains** ](https://dash.cloudflare.com/?to=/:account/domains/overview)
@@ -34,33 +34,14 @@ Make sure that you:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone Zone Edit`
 * `Zone DNS Edit`
 
 Create Zone
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "<YOUR_DOMAIN>",
-
-    "account": {
-
-        "id": "<YOUR_ACCOUNT_ID>"
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "<YOUR_DOMAIN>",    "account": {        "id": "<YOUR_ACCOUNT_ID>"    }  }'
 ```
 
 Note
@@ -102,13 +83,14 @@ Even if you do not require specific subdomains, you might want to set up at leas
 * [Email records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-records/)  
 More about email records  
 Depending on your business needs, you can configure DNS records so that you can use your domain to receive emails, receive and send emails from your domain, or prevent others from sending emails on your behalf (spoofing).  
-Below are some examples of what those DNS records might look like. The exact values for your DNS mail records depend on your email provider. If you have issues, review the [Troubleshooting](https://developers.cloudflare.com/dns/troubleshooting/email-issues/) and contact your email service provider to confirm your DNS records are correct.  
-| Type | Name           | Content                       | Proxy status | TTL  |  
-| ---- | -------------- | ----------------------------- | ------------ | ---- |  
-| A    | mail           | 192.0.2.1                     | DNS Only     | Auto |  
-| MX   | example.com    | 5 john.mx.example-server.test | DNS Only     | Auto |  
-| TXT  | \_dmarc        | "v=DMARC1; p=reject; sp=...   | DNS Only     | Auto |  
-| TXT  | \*.\_domainkey | "v=DKIM1; k=rsa; p=..."       | DNS Only     | Auto |  
+Below are some examples of what those DNS records might look like. The exact values for your DNS mail records depend on your email provider. If you have issues, review the [Troubleshooting](https://developers.cloudflare.com/dns/troubleshooting/email-issues/) and contact your email service provider to confirm your DNS records are correct.
+
+| Type | Name           | Content                       | Proxy status | TTL  |
+| ---- | -------------- | ----------------------------- | ------------ | ---- |
+| A    | mail           | 192.0.2.1                     | DNS Only     | Auto |
+| MX   | example.com    | 5 john.mx.example-server.test | DNS Only     | Auto |
+| TXT  | \_dmarc        | "v=DMARC1; p=reject; sp=...   | DNS Only     | Auto |
+| TXT  | \*.\_domainkey | "v=DKIM1; k=rsa; p=..."       | DNS Only     | Auto |
 | TXT  | example.com    | "v=spf1 ip4:..."              | DNS Only     | Auto |
 
 ### Proxy status
@@ -128,8 +110,8 @@ If your domain is particularly sensitive to downtime, review our suggestions to 
 
 ### 3.1\. Get nameserver names
 
-* [ Dashboard ](#tab-panel-8131)
-* [ API ](#tab-panel-8132)
+* [ Dashboard ](#tab-panel-8207)
+* [ API ](#tab-panel-8208)
 
 Your assigned nameservers are displayed as part of the onboarding flow. If you need to find them once again, go the zone **Overview** page.
 
@@ -137,7 +119,7 @@ Your assigned nameservers are displayed as part of the onboarding flow. If you n
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Trust and Safety Write`
 * `Trust and Safety Read`
 * `Zero Trust: PII Read`
@@ -181,14 +163,7 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Zone Details
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Note
@@ -297,27 +272,10 @@ When your domain is **Active**:
 * CLI commands will show your Cloudflare-assigned nameservers
 
 ```
-
 *macOS/Linux*
-
-
-whois <DOMAIN_NAME>
-
-dig ns <DOMAIN_NAME> @1.1.1.1
-
-dig ns <DOMAIN_NAME> @8.8.8.8
-
-dig <DOMAIN_NAME> +trace
-
-
+whois <DOMAIN_NAME>dig ns <DOMAIN_NAME> @1.1.1.1dig ns <DOMAIN_NAME> @8.8.8.8dig <DOMAIN_NAME> +trace
 *Windows*
-
-
-nslookup -type=ns <DOMAIN_NAME> 1.1.1.1
-
-nslookup -type=ns <DOMAIN_NAME> 8.8.8.8
-
-
+nslookup -type=ns <DOMAIN_NAME> 1.1.1.1nslookup -type=ns <DOMAIN_NAME> 8.8.8.8
 ```
 
 Note

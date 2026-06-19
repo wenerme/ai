@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -89,39 +89,19 @@ To resolve a CPU time limit error:
 
 On the Workers Paid plan, you can increase the maximum CPU time from the default 30 seconds to 5 minutes (300,000 ms).
 
-* [  wrangler.jsonc ](#tab-panel-11896)
-* [  wrangler.toml ](#tab-panel-11897)
+* [  wrangler.jsonc ](#tab-panel-11913)
+* [  wrangler.toml ](#tab-panel-11914)
 
 JSONC
 
 ```
-
-{
-
-  // ...rest of your configuration...
-
-  "limits": {
-
-    "cpu_ms": 300000, // default is 30000 (30 seconds)
-
-  },
-
-  // ...rest of your configuration...
-
-}
-
-
+{  // ...rest of your configuration...  "limits": {    "cpu_ms": 300000, // default is 30000 (30 seconds)  },  // ...rest of your configuration...}
 ```
 
 TOML
 
 ```
-
-[limits]
-
-cpu_ms = 300_000
-
-
+[limits]cpu_ms = 300_000
 ```
 
 You can also change this in the dashboard: go to **Workers & Pages** \> select your Worker > **Settings** \> adjust the CPU time limit.
@@ -237,55 +217,21 @@ Once response headers arrive for a connection, it no longer counts toward the si
 
 If you use `fetch()` but do not need the response body, calling `response.body.cancel()` is still good practice to free memory:
 
-* [  JavaScript ](#tab-panel-11898)
-* [  TypeScript ](#tab-panel-11899)
+* [  JavaScript ](#tab-panel-11915)
+* [  TypeScript ](#tab-panel-11916)
 
 src/index.js
 
 ```
-
 const response = await fetch(url);
-
-
-// Only read the response body for successful responses
-
-if (response.status <= 299) {
-
-  // Call response.json(), response.text() or otherwise process the body
-
-} else {
-
-  // Explicitly cancel it
-
-  response.body.cancel();
-
-}
-
-
+// Only read the response body for successful responsesif (response.status <= 299) {  // Call response.json(), response.text() or otherwise process the body} else {  // Explicitly cancel it  response.body.cancel();}
 ```
 
 src/index.ts
 
 ```
-
 const response = await fetch(url);
-
-
-// Only read the response body for successful responses
-
-if (response.status <= 299) {
-
-  // Call response.json(), response.text() or otherwise process the body
-
-} else {
-
-  // Explicitly cancel it
-
-  response.body.cancel();
-
-}
-
-
+// Only read the response body for successful responsesif (response.status <= 299) {  // Call response.json(), response.text() or otherwise process the body} else {  // Explicitly cancel it  response.body.cancel();}
 ```
 
 Note
@@ -316,19 +262,11 @@ Larger Worker bundles can impact startup time. To check your compressed bundle s
 Terminal window
 
 ```
-
 wrangler deploy --outdir bundled/ --dry-run
-
-
 ```
 
 ```
-
-# Output will resemble the below:
-
-Total Upload: 259.61 KiB / gzip: 47.23 KiB
-
-
+# Output will resemble the below:Total Upload: 259.61 KiB / gzip: 47.23 KiB
 ```
 
 To reduce Worker size:

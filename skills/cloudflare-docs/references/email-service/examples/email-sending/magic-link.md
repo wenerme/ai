@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,42 +18,20 @@ This example demonstrates how to send a magic link email for passwordless authen
 
 Configure the email binding in your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-8494)
-* [  wrangler.toml ](#tab-panel-8495)
+* [  wrangler.jsonc ](#tab-panel-8570)
+* [  wrangler.toml ](#tab-panel-8571)
 
 JSONC
 
 ```
-
-{
-
-  "send_email": [{ "name": "EMAIL" }],
-
-  "vars": {
-
-    "DOMAIN": "yourdomain.com",
-
-  },
-
-}
-
-
+{  "send_email": [{ "name": "EMAIL" }],  "vars": {    "DOMAIN": "yourdomain.com",  },}
 ```
 
 TOML
 
 ```
-
-[[send_email]]
-
-name = "EMAIL"
-
-
-[vars]
-
-DOMAIN = "yourdomain.com"
-
-
+[[send_email]]name = "EMAIL"
+[vars]DOMAIN = "yourdomain.com"
 ```
 
 The Worker exposes a `POST /send-magic-link` route that validates the submitted email address, generates a single-use token, and emails the recipient a time-limited login link. The following code implements that handler.
@@ -61,125 +39,18 @@ The Worker exposes a `POST /send-magic-link` route that validates the submitted 
 TypeScript
 
 ```
-
-interface Env {
-
-  EMAIL: SendEmail;
-
-  DOMAIN: string;
-
-}
-
-
-export default {
-
-  async fetch(request: Request, env: Env): Promise<Response> {
-
-    const url = new URL(request.url);
-
-
-    if (url.pathname === "/send-magic-link" && request.method === "POST") {
-
-      return handleSendMagicLink(request, env);
-
-    }
-
-
-    return new Response("Not Found", { status: 404 });
-
-  },
-
-};
-
-
-async function handleSendMagicLink(
-
-  request: Request,
-
-  env: Env,
-
-): Promise<Response> {
-
-  const { email } = await request.json();
-
-
-  if (!email || !isValidEmail(email)) {
-
-    return new Response(JSON.stringify({ error: "Invalid email" }), {
-
-      status: 400,
-
-    });
-
-  }
-
-
-  // Generate a simple secure token (you would implement proper JWT/token handling)
-
-  const token = crypto.randomUUID();
-
-  const magicUrl = `https://${env.DOMAIN}/login?token=${token}`;
-
-
-  // Send magic link email
-
-  await env.EMAIL.send({
-
-    to: email,
-
-    from: `noreply@${env.DOMAIN}`,
-
-    subject: "Your login link",
-
-    html: `
-
-      <h1>Login to your account</h1>
-
-      <p>Click the link below to log in:</p>
-
-      <p><a href="https://developers.cloudflare.com/email-service/examples/email-sending/magic-link/%3C/span%3E%3Cspan%20style="--0:#89DDFF;--1:#007474">${magicUrl}">Login Now</a></p>
-
-      <p>This link expires in 15 minutes.</p>
-
-    `,
-
-    text: `
-
-      Login to your account
-
-
+interface Env {  EMAIL: SendEmail;  DOMAIN: string;}
+export default {  async fetch(request: Request, env: Env): Promise<Response> {    const url = new URL(request.url);
+    if (url.pathname === "/send-magic-link" && request.method === "POST") {      return handleSendMagicLink(request, env);    }
+    return new Response("Not Found", { status: 404 });  },};
+async function handleSendMagicLink(  request: Request,  env: Env,): Promise<Response> {  const { email } = await request.json();
+  if (!email || !isValidEmail(email)) {    return new Response(JSON.stringify({ error: "Invalid email" }), {      status: 400,    });  }
+  // Generate a simple secure token (you would implement proper JWT/token handling)  const token = crypto.randomUUID();  const magicUrl = `https://${env.DOMAIN}/login?token=${token}`;
+  // Send magic link email  await env.EMAIL.send({    to: email,    from: `noreply@${env.DOMAIN}`,    subject: "Your login link",    html: `      <h1>Login to your account</h1>      <p>Click the link below to log in:</p>      <p><a href="https://developers.cloudflare.com/email-service/examples/email-sending/magic-link/%3C/span%3E%3Cspan%20style="--0:#89DDFF;--1:#007474">${magicUrl}">Login Now</a></p>      <p>This link expires in 15 minutes.</p>    `,    text: `      Login to your account
       Click this link to log in: ${magicUrl}
-
-
-      This link expires in 15 minutes.
-
-    `,
-
-  });
-
-
-  return new Response(
-
-    JSON.stringify({
-
-      success: true,
-
-      message: "Magic link sent to your email",
-
-    }),
-
-  );
-
-}
-
-
-function isValidEmail(email: string): boolean {
-
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-}
-
-
+      This link expires in 15 minutes.    `,  });
+  return new Response(    JSON.stringify({      success: true,      message: "Magic link sent to your email",    }),  );}
+function isValidEmail(email: string): boolean {  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);}
 ```
 
 ## Next steps

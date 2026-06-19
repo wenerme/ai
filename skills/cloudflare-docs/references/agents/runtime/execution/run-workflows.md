@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,345 +26,79 @@ Use Agents alone for chat, messaging, and quick API calls. Use Agent + Workflow 
 
 Extend `AgentWorkflow` for typed access to the originating Agent:
 
-* [  JavaScript ](#tab-panel-6115)
-* [  TypeScript ](#tab-panel-6116)
+* [  JavaScript ](#tab-panel-6189)
+* [  TypeScript ](#tab-panel-6190)
 
 JavaScript
 
 ```
-
 import { AgentWorkflow } from "agents/workflows";
-
-
-export class ProcessingWorkflow extends AgentWorkflow {
-
-  async run(event, step) {
-
-    const params = event.payload;
-
-
-    const result = await step.do("process-data", async () => {
-
-      return processData(params.data);
-
-    });
-
-
-    // Non-durable: progress reporting (may repeat on retry)
-
-    await this.reportProgress({
-
-      step: "process",
-
-      status: "complete",
-
-      percent: 0.5,
-
-    });
-
-
-    // Broadcast to connected WebSocket clients
-
-    this.broadcastToClients({ type: "update", taskId: params.taskId });
-
-
-    await step.do("save-results", async () => {
-
-      // Call Agent methods via RPC
-
-      await this.agent.saveResult(params.taskId, result);
-
-    });
-
-
-    // Durable: idempotent, won't repeat on retry
-
-    await step.reportComplete(result);
-
-    return result;
-
-  }
-
-}
-
-
+export class ProcessingWorkflow extends AgentWorkflow {  async run(event, step) {    const params = event.payload;
+    const result = await step.do("process-data", async () => {      return processData(params.data);    });
+    // Non-durable: progress reporting (may repeat on retry)    await this.reportProgress({      step: "process",      status: "complete",      percent: 0.5,    });
+    // Broadcast to connected WebSocket clients    this.broadcastToClients({ type: "update", taskId: params.taskId });
+    await step.do("save-results", async () => {      // Call Agent methods via RPC      await this.agent.saveResult(params.taskId, result);    });
+    // Durable: idempotent, won't repeat on retry    await step.reportComplete(result);    return result;  }}
 ```
 
 TypeScript
 
 ```
-
-import { AgentWorkflow } from "agents/workflows";
-
-import type { AgentWorkflowEvent, AgentWorkflowStep } from "agents/workflows";
-
-import type { MyAgent } from "./agent";
-
-
+import { AgentWorkflow } from "agents/workflows";import type { AgentWorkflowEvent, AgentWorkflowStep } from "agents/workflows";import type { MyAgent } from "./agent";
 type TaskParams = { taskId: string; data: string };
-
-
-export class ProcessingWorkflow extends AgentWorkflow<MyAgent, TaskParams> {
-
-  async run(event: AgentWorkflowEvent<TaskParams>, step: AgentWorkflowStep) {
-
-    const params = event.payload;
-
-
-    const result = await step.do("process-data", async () => {
-
-      return processData(params.data);
-
-    });
-
-
-    // Non-durable: progress reporting (may repeat on retry)
-
-    await this.reportProgress({
-
-      step: "process",
-
-      status: "complete",
-
-      percent: 0.5,
-
-    });
-
-
-    // Broadcast to connected WebSocket clients
-
-    this.broadcastToClients({ type: "update", taskId: params.taskId });
-
-
-    await step.do("save-results", async () => {
-
-      // Call Agent methods via RPC
-
-      await this.agent.saveResult(params.taskId, result);
-
-    });
-
-
-    // Durable: idempotent, won't repeat on retry
-
-    await step.reportComplete(result);
-
-    return result;
-
-  }
-
-}
-
-
+export class ProcessingWorkflow extends AgentWorkflow<MyAgent, TaskParams> {  async run(event: AgentWorkflowEvent<TaskParams>, step: AgentWorkflowStep) {    const params = event.payload;
+    const result = await step.do("process-data", async () => {      return processData(params.data);    });
+    // Non-durable: progress reporting (may repeat on retry)    await this.reportProgress({      step: "process",      status: "complete",      percent: 0.5,    });
+    // Broadcast to connected WebSocket clients    this.broadcastToClients({ type: "update", taskId: params.taskId });
+    await step.do("save-results", async () => {      // Call Agent methods via RPC      await this.agent.saveResult(params.taskId, result);    });
+    // Durable: idempotent, won't repeat on retry    await step.reportComplete(result);    return result;  }}
 ```
 
 ### 2\. Start a Workflow from an Agent
 
 Use `runWorkflow()` to start and track workflows:
 
-* [  JavaScript ](#tab-panel-6117)
-* [  TypeScript ](#tab-panel-6118)
+* [  JavaScript ](#tab-panel-6191)
+* [  TypeScript ](#tab-panel-6192)
 
 JavaScript
 
 ```
-
 import { Agent } from "agents";
-
-
-export class MyAgent extends Agent {
-
-  async startTask(taskId, data) {
-
-    const instanceId = await this.runWorkflow("PROCESSING_WORKFLOW", {
-
-      taskId,
-
-      data,
-
-    });
-
-    return { instanceId };
-
-  }
-
-
-  async onWorkflowProgress(workflowName, instanceId, progress) {
-
-    this.broadcast(JSON.stringify({ type: "workflow-progress", progress }));
-
-  }
-
-
-  async onWorkflowComplete(workflowName, instanceId, result) {
-
-    console.log(`Workflow completed:`, result);
-
-  }
-
-
-  async saveResult(taskId, result) {
-
-    this
-
-      .sql`INSERT INTO results (task_id, data) VALUES (${taskId}, ${JSON.stringify(result)})`;
-
-  }
-
-}
-
-
+export class MyAgent extends Agent {  async startTask(taskId, data) {    const instanceId = await this.runWorkflow("PROCESSING_WORKFLOW", {      taskId,      data,    });    return { instanceId };  }
+  async onWorkflowProgress(workflowName, instanceId, progress) {    this.broadcast(JSON.stringify({ type: "workflow-progress", progress }));  }
+  async onWorkflowComplete(workflowName, instanceId, result) {    console.log(`Workflow completed:`, result);  }
+  async saveResult(taskId, result) {    this      .sql`INSERT INTO results (task_id, data) VALUES (${taskId}, ${JSON.stringify(result)})`;  }}
 ```
 
 TypeScript
 
 ```
-
 import { Agent } from "agents";
-
-
-export class MyAgent extends Agent {
-
-  async startTask(taskId: string, data: string) {
-
-    const instanceId = await this.runWorkflow("PROCESSING_WORKFLOW", {
-
-      taskId,
-
-      data,
-
-    });
-
-    return { instanceId };
-
-  }
-
-
-  async onWorkflowProgress(
-
-    workflowName: string,
-
-    instanceId: string,
-
-    progress: unknown,
-
-  ) {
-
-    this.broadcast(JSON.stringify({ type: "workflow-progress", progress }));
-
-  }
-
-
-  async onWorkflowComplete(
-
-    workflowName: string,
-
-    instanceId: string,
-
-    result?: unknown,
-
-  ) {
-
-    console.log(`Workflow completed:`, result);
-
-  }
-
-
-  async saveResult(taskId: string, result: unknown) {
-
-    this
-
-      .sql`INSERT INTO results (task_id, data) VALUES (${taskId}, ${JSON.stringify(result)})`;
-
-  }
-
-}
-
-
+export class MyAgent extends Agent {  async startTask(taskId: string, data: string) {    const instanceId = await this.runWorkflow("PROCESSING_WORKFLOW", {      taskId,      data,    });    return { instanceId };  }
+  async onWorkflowProgress(    workflowName: string,    instanceId: string,    progress: unknown,  ) {    this.broadcast(JSON.stringify({ type: "workflow-progress", progress }));  }
+  async onWorkflowComplete(    workflowName: string,    instanceId: string,    result?: unknown,  ) {    console.log(`Workflow completed:`, result);  }
+  async saveResult(taskId: string, result: unknown) {    this      .sql`INSERT INTO results (task_id, data) VALUES (${taskId}, ${JSON.stringify(result)})`;  }}
 ```
 
 ### 3\. Configure Wrangler
 
-* [  wrangler.jsonc ](#tab-panel-6087)
-* [  wrangler.toml ](#tab-panel-6088)
+* [  wrangler.jsonc ](#tab-panel-6161)
+* [  wrangler.toml ](#tab-panel-6162)
 
 JSONC
 
 ```
-
-{
-
-  "name": "my-app",
-
-  "main": "src/index.ts",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "durable_objects": {
-
-    "bindings": [{ "name": "MY_AGENT", "class_name": "MyAgent" }],
-
-  },
-
-  "workflows": [
-
-    {
-
-      "name": "processing-workflow",
-
-      "binding": "PROCESSING_WORKFLOW",
-
-      "class_name": "ProcessingWorkflow",
-
-    },
-
-  ],
-
-  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["MyAgent"] }],
-
-}
-
-
+{  "name": "my-app",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-18",  "durable_objects": {    "bindings": [{ "name": "MY_AGENT", "class_name": "MyAgent" }],  },  "workflows": [    {      "name": "processing-workflow",      "binding": "PROCESSING_WORKFLOW",      "class_name": "ProcessingWorkflow",    },  ],  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["MyAgent"] }],}
 ```
 
 TOML
 
 ```
-
-name = "my-app"
-
-main = "src/index.ts"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[[durable_objects.bindings]]
-
-name = "MY_AGENT"
-
-class_name = "MyAgent"
-
-
-[[workflows]]
-
-name = "processing-workflow"
-
-binding = "PROCESSING_WORKFLOW"
-
-class_name = "ProcessingWorkflow"
-
-
-[[migrations]]
-
-tag = "v1"
-
-new_sqlite_classes = [ "MyAgent" ]
-
-
+name = "my-app"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-18"
+[[durable_objects.bindings]]name = "MY_AGENT"class_name = "MyAgent"
+[[workflows]]name = "processing-workflow"binding = "PROCESSING_WORKFLOW"class_name = "ProcessingWorkflow"
+[[migrations]]tag = "v1"new_sqlite_classes = [ "MyAgent" ]
 ```
 
 ## AgentWorkflow class
@@ -397,99 +131,57 @@ These methods may repeat on retry. Use for lightweight, frequent updates.
 
 Report progress to the Agent. Triggers `onWorkflowProgress` callback.
 
-* [  JavaScript ](#tab-panel-6091)
-* [  TypeScript ](#tab-panel-6092)
+* [  JavaScript ](#tab-panel-6165)
+* [  TypeScript ](#tab-panel-6166)
 
 JavaScript
 
 ```
-
-await this.reportProgress({
-
-  step: "processing",
-
-  status: "running",
-
-  percent: 0.5,
-
-});
-
-
+await this.reportProgress({  step: "processing",  status: "running",  percent: 0.5,});
 ```
 
 TypeScript
 
 ```
-
-await this.reportProgress({
-
-  step: "processing",
-
-  status: "running",
-
-  percent: 0.5,
-
-});
-
-
+await this.reportProgress({  step: "processing",  status: "running",  percent: 0.5,});
 ```
 
 #### broadcastToClients(message)
 
 Broadcast a message to all WebSocket clients connected to the Agent.
 
-* [  JavaScript ](#tab-panel-6089)
-* [  TypeScript ](#tab-panel-6090)
+* [  JavaScript ](#tab-panel-6163)
+* [  TypeScript ](#tab-panel-6164)
 
 JavaScript
 
 ```
-
 this.broadcastToClients({ type: "update", data: result });
-
-
 ```
 
 TypeScript
 
 ```
-
 this.broadcastToClients({ type: "update", data: result });
-
-
 ```
 
 #### waitForApproval(step, options?)
 
 Wait for an approval event. Throws `WorkflowRejectedError` if rejected.
 
-* [  JavaScript ](#tab-panel-6093)
-* [  TypeScript ](#tab-panel-6094)
+* [  JavaScript ](#tab-panel-6167)
+* [  TypeScript ](#tab-panel-6168)
 
 JavaScript
 
 ```
-
-const approval = await this.waitForApproval(step, {
-
-  timeout: "7 days",
-
-});
-
-
+const approval = await this.waitForApproval(step, {  timeout: "7 days",});
 ```
 
 TypeScript
 
 ```
-
-const approval = await this.waitForApproval<{ approvedBy: string }>(step, {
-
-  timeout: "7 days",
-
-});
-
-
+const approval = await this.waitForApproval<{ approvedBy: string }>(step, {  timeout: "7 days",});
 ```
 
 ### Step methods (durable)
@@ -510,22 +202,7 @@ These methods are idempotent and will not repeat on retry. Use for state changes
 TypeScript
 
 ```
-
-type DefaultProgress = {
-
-  step?: string;
-
-  status?: "pending" | "running" | "complete" | "error";
-
-  message?: string;
-
-  percent?: number;
-
-  [key: string]: unknown;
-
-};
-
-
+type DefaultProgress = {  step?: string;  status?: "pending" | "running" | "complete" | "error";  message?: string;  percent?: number;  [key: string]: unknown;};
 ```
 
 ## Agent workflow methods
@@ -548,261 +225,103 @@ Start a workflow instance and track it in the Agent database.
 
 **Returns:** `Promise<string>` \- Workflow instance ID
 
-* [  JavaScript ](#tab-panel-6099)
-* [  TypeScript ](#tab-panel-6100)
+* [  JavaScript ](#tab-panel-6173)
+* [  TypeScript ](#tab-panel-6174)
 
 JavaScript
 
 ```
-
-const instanceId = await this.runWorkflow(
-
-  "MY_WORKFLOW",
-
-  { taskId: "123" },
-
-  {
-
-    metadata: { userId: "user-456", priority: "high" },
-
-  },
-
-);
-
-
+const instanceId = await this.runWorkflow(  "MY_WORKFLOW",  { taskId: "123" },  {    metadata: { userId: "user-456", priority: "high" },  },);
 ```
 
 TypeScript
 
 ```
-
-const instanceId = await this.runWorkflow(
-
-  "MY_WORKFLOW",
-
-  { taskId: "123" },
-
-  {
-
-    metadata: { userId: "user-456", priority: "high" },
-
-  },
-
-);
-
-
+const instanceId = await this.runWorkflow(  "MY_WORKFLOW",  { taskId: "123" },  {    metadata: { userId: "user-456", priority: "high" },  },);
 ```
 
 ### sendWorkflowEvent(workflowName, instanceId, event)
 
 Send an event to a running workflow.
 
-* [  JavaScript ](#tab-panel-6095)
-* [  TypeScript ](#tab-panel-6096)
+* [  JavaScript ](#tab-panel-6169)
+* [  TypeScript ](#tab-panel-6170)
 
 JavaScript
 
 ```
-
-await this.sendWorkflowEvent("MY_WORKFLOW", instanceId, {
-
-  type: "custom-event",
-
-  payload: { action: "proceed" },
-
-});
-
-
+await this.sendWorkflowEvent("MY_WORKFLOW", instanceId, {  type: "custom-event",  payload: { action: "proceed" },});
 ```
 
 TypeScript
 
 ```
-
-await this.sendWorkflowEvent("MY_WORKFLOW", instanceId, {
-
-  type: "custom-event",
-
-  payload: { action: "proceed" },
-
-});
-
-
+await this.sendWorkflowEvent("MY_WORKFLOW", instanceId, {  type: "custom-event",  payload: { action: "proceed" },});
 ```
 
 ### getWorkflowStatus(workflowName, instanceId)
 
 Get the status of a workflow and update the tracking record.
 
-* [  JavaScript ](#tab-panel-6097)
-* [  TypeScript ](#tab-panel-6098)
+* [  JavaScript ](#tab-panel-6171)
+* [  TypeScript ](#tab-panel-6172)
 
 JavaScript
 
 ```
-
-const status = await this.getWorkflowStatus("MY_WORKFLOW", instanceId);
-
-// { status: 'running', output: null, error: null }
-
-
+const status = await this.getWorkflowStatus("MY_WORKFLOW", instanceId);// { status: 'running', output: null, error: null }
 ```
 
 TypeScript
 
 ```
-
-const status = await this.getWorkflowStatus("MY_WORKFLOW", instanceId);
-
-// { status: 'running', output: null, error: null }
-
-
+const status = await this.getWorkflowStatus("MY_WORKFLOW", instanceId);// { status: 'running', output: null, error: null }
 ```
 
 ### getWorkflow(instanceId)
 
 Get a tracked workflow by ID.
 
-* [  JavaScript ](#tab-panel-6101)
-* [  TypeScript ](#tab-panel-6102)
+* [  JavaScript ](#tab-panel-6175)
+* [  TypeScript ](#tab-panel-6176)
 
 JavaScript
 
 ```
-
-const workflow = this.getWorkflow(instanceId);
-
-// { instanceId, workflowName, status, metadata, error, createdAt, ... }
-
-
+const workflow = this.getWorkflow(instanceId);// { instanceId, workflowName, status, metadata, error, createdAt, ... }
 ```
 
 TypeScript
 
 ```
-
-const workflow = this.getWorkflow(instanceId);
-
-// { instanceId, workflowName, status, metadata, error, createdAt, ... }
-
-
+const workflow = this.getWorkflow(instanceId);// { instanceId, workflowName, status, metadata, error, createdAt, ... }
 ```
 
 ### getWorkflows(criteria?)
 
 Query tracked workflows with cursor-based pagination. Returns a `WorkflowPage` with workflows, total count, and cursor for the next page.
 
-* [  JavaScript ](#tab-panel-6123)
-* [  TypeScript ](#tab-panel-6124)
+* [  JavaScript ](#tab-panel-6197)
+* [  TypeScript ](#tab-panel-6198)
 
 JavaScript
 
 ```
-
-// Get running workflows (default limit is 50, max is 100)
-
-const { workflows, total } = this.getWorkflows({ status: "running" });
-
-
-// Filter by metadata
-
-const { workflows: userWorkflows } = this.getWorkflows({
-
-  metadata: { userId: "user-456" },
-
-});
-
-
-// Pagination with cursor
-
-const page1 = this.getWorkflows({
-
-  status: ["complete", "errored"],
-
-  limit: 20,
-
-  orderBy: "desc",
-
-});
-
-
+// Get running workflows (default limit is 50, max is 100)const { workflows, total } = this.getWorkflows({ status: "running" });
+// Filter by metadataconst { workflows: userWorkflows } = this.getWorkflows({  metadata: { userId: "user-456" },});
+// Pagination with cursorconst page1 = this.getWorkflows({  status: ["complete", "errored"],  limit: 20,  orderBy: "desc",});
 console.log(`Showing ${page1.workflows.length} of ${page1.total} workflows`);
-
-
-// Get next page using cursor
-
-if (page1.nextCursor) {
-
-  const page2 = this.getWorkflows({
-
-    status: ["complete", "errored"],
-
-    limit: 20,
-
-    orderBy: "desc",
-
-    cursor: page1.nextCursor,
-
-  });
-
-}
-
-
+// Get next page using cursorif (page1.nextCursor) {  const page2 = this.getWorkflows({    status: ["complete", "errored"],    limit: 20,    orderBy: "desc",    cursor: page1.nextCursor,  });}
 ```
 
 TypeScript
 
 ```
-
-// Get running workflows (default limit is 50, max is 100)
-
-const { workflows, total } = this.getWorkflows({ status: "running" });
-
-
-// Filter by metadata
-
-const { workflows: userWorkflows } = this.getWorkflows({
-
-  metadata: { userId: "user-456" },
-
-});
-
-
-// Pagination with cursor
-
-const page1 = this.getWorkflows({
-
-  status: ["complete", "errored"],
-
-  limit: 20,
-
-  orderBy: "desc",
-
-});
-
-
+// Get running workflows (default limit is 50, max is 100)const { workflows, total } = this.getWorkflows({ status: "running" });
+// Filter by metadataconst { workflows: userWorkflows } = this.getWorkflows({  metadata: { userId: "user-456" },});
+// Pagination with cursorconst page1 = this.getWorkflows({  status: ["complete", "errored"],  limit: 20,  orderBy: "desc",});
 console.log(`Showing ${page1.workflows.length} of ${page1.total} workflows`);
-
-
-// Get next page using cursor
-
-if (page1.nextCursor) {
-
-  const page2 = this.getWorkflows({
-
-    status: ["complete", "errored"],
-
-    limit: 20,
-
-    orderBy: "desc",
-
-    cursor: page1.nextCursor,
-
-  });
-
-}
-
-
+// Get next page using cursorif (page1.nextCursor) {  const page2 = this.getWorkflows({    status: ["complete", "errored"],    limit: 20,    orderBy: "desc",    cursor: page1.nextCursor,  });}
 ```
 
 The `WorkflowPage` type:
@@ -810,18 +329,7 @@ The `WorkflowPage` type:
 TypeScript
 
 ```
-
-type WorkflowPage = {
-
-  workflows: WorkflowInfo[];
-
-  total: number; // Total matching workflows
-
-  nextCursor: string | null; // null when no more pages
-
-};
-
-
+type WorkflowPage = {  workflows: WorkflowInfo[];  total: number; // Total matching workflows  nextCursor: string | null; // null when no more pages};
 ```
 
 ### deleteWorkflow(instanceId)
@@ -832,84 +340,40 @@ Delete a single workflow instance tracking record. Returns `true` if deleted, `f
 
 Delete workflow instance tracking records matching criteria.
 
-* [  JavaScript ](#tab-panel-6109)
-* [  TypeScript ](#tab-panel-6110)
+* [  JavaScript ](#tab-panel-6183)
+* [  TypeScript ](#tab-panel-6184)
 
 JavaScript
 
 ```
-
-// Delete completed workflow instances older than 7 days
-
-this.deleteWorkflows({
-
-  status: "complete",
-
-  createdBefore: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
-
-});
-
-
-// Delete all errored and terminated workflows
-
-this.deleteWorkflows({
-
-  status: ["errored", "terminated"],
-
-});
-
-
+// Delete completed workflow instances older than 7 daysthis.deleteWorkflows({  status: "complete",  createdBefore: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),});
+// Delete all errored and terminated workflowsthis.deleteWorkflows({  status: ["errored", "terminated"],});
 ```
 
 TypeScript
 
 ```
-
-// Delete completed workflow instances older than 7 days
-
-this.deleteWorkflows({
-
-  status: "complete",
-
-  createdBefore: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
-
-});
-
-
-// Delete all errored and terminated workflows
-
-this.deleteWorkflows({
-
-  status: ["errored", "terminated"],
-
-});
-
-
+// Delete completed workflow instances older than 7 daysthis.deleteWorkflows({  status: "complete",  createdBefore: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),});
+// Delete all errored and terminated workflowsthis.deleteWorkflows({  status: ["errored", "terminated"],});
 ```
 
 ### terminateWorkflow(instanceId)
 
 Terminate a running workflow immediately. Sets status to `"terminated"`.
 
-* [  JavaScript ](#tab-panel-6103)
-* [  TypeScript ](#tab-panel-6104)
+* [  JavaScript ](#tab-panel-6177)
+* [  TypeScript ](#tab-panel-6178)
 
 JavaScript
 
 ```
-
 await this.terminateWorkflow(instanceId);
-
-
 ```
 
 TypeScript
 
 ```
-
 await this.terminateWorkflow(instanceId);
-
-
 ```
 
 Note
@@ -920,25 +384,19 @@ Note
 
 Pause a running workflow. The workflow can be resumed later with `resumeWorkflow()`.
 
-* [  JavaScript ](#tab-panel-6105)
-* [  TypeScript ](#tab-panel-6106)
+* [  JavaScript ](#tab-panel-6179)
+* [  TypeScript ](#tab-panel-6180)
 
 JavaScript
 
 ```
-
 await this.pauseWorkflow(instanceId);
-
-
 ```
 
 TypeScript
 
 ```
-
 await this.pauseWorkflow(instanceId);
-
-
 ```
 
 Note
@@ -949,25 +407,19 @@ Note
 
 Resume a paused workflow.
 
-* [  JavaScript ](#tab-panel-6107)
-* [  TypeScript ](#tab-panel-6108)
+* [  JavaScript ](#tab-panel-6181)
+* [  TypeScript ](#tab-panel-6182)
 
 JavaScript
 
 ```
-
 await this.resumeWorkflow(instanceId);
-
-
 ```
 
 TypeScript
 
 ```
-
 await this.resumeWorkflow(instanceId);
-
-
 ```
 
 Note
@@ -978,39 +430,21 @@ Note
 
 Restart a workflow instance from the beginning with the same ID.
 
-* [  JavaScript ](#tab-panel-6111)
-* [  TypeScript ](#tab-panel-6112)
+* [  JavaScript ](#tab-panel-6185)
+* [  TypeScript ](#tab-panel-6186)
 
 JavaScript
 
 ```
-
-// Reset tracking (default) - clears timestamps and error fields
-
-await this.restartWorkflow(instanceId);
-
-
-// Preserve original timestamps
-
-await this.restartWorkflow(instanceId, { resetTracking: false });
-
-
+// Reset tracking (default) - clears timestamps and error fieldsawait this.restartWorkflow(instanceId);
+// Preserve original timestampsawait this.restartWorkflow(instanceId, { resetTracking: false });
 ```
 
 TypeScript
 
 ```
-
-// Reset tracking (default) - clears timestamps and error fields
-
-await this.restartWorkflow(instanceId);
-
-
-// Preserve original timestamps
-
-await this.restartWorkflow(instanceId, { resetTracking: false });
-
-
+// Reset tracking (default) - clears timestamps and error fieldsawait this.restartWorkflow(instanceId);
+// Preserve original timestampsawait this.restartWorkflow(instanceId, { resetTracking: false });
 ```
 
 Note
@@ -1021,103 +455,57 @@ Note
 
 Approve a waiting workflow. Use with `waitForApproval()` in the workflow.
 
-* [  JavaScript ](#tab-panel-6119)
-* [  TypeScript ](#tab-panel-6120)
+* [  JavaScript ](#tab-panel-6193)
+* [  TypeScript ](#tab-panel-6194)
 
 JavaScript
 
 ```
-
-await this.approveWorkflow(instanceId, {
-
-  reason: "Approved by admin",
-
-  metadata: { approvedBy: userId },
-
-});
-
-
+await this.approveWorkflow(instanceId, {  reason: "Approved by admin",  metadata: { approvedBy: userId },});
 ```
 
 TypeScript
 
 ```
-
-await this.approveWorkflow(instanceId, {
-
-  reason: "Approved by admin",
-
-  metadata: { approvedBy: userId },
-
-});
-
-
+await this.approveWorkflow(instanceId, {  reason: "Approved by admin",  metadata: { approvedBy: userId },});
 ```
 
 ### rejectWorkflow(instanceId, options?)
 
 Reject a waiting workflow. Causes `waitForApproval()` to throw `WorkflowRejectedError`.
 
-* [  JavaScript ](#tab-panel-6113)
-* [  TypeScript ](#tab-panel-6114)
+* [  JavaScript ](#tab-panel-6187)
+* [  TypeScript ](#tab-panel-6188)
 
 JavaScript
 
 ```
-
 await this.rejectWorkflow(instanceId, { reason: "Request denied" });
-
-
 ```
 
 TypeScript
 
 ```
-
 await this.rejectWorkflow(instanceId, { reason: "Request denied" });
-
-
 ```
 
 ### migrateWorkflowBinding(oldName, newName)
 
 Migrate tracked workflows after renaming a workflow binding.
 
-* [  JavaScript ](#tab-panel-6121)
-* [  TypeScript ](#tab-panel-6122)
+* [  JavaScript ](#tab-panel-6195)
+* [  TypeScript ](#tab-panel-6196)
 
 JavaScript
 
 ```
-
-class MyAgent extends Agent {
-
-  async onStart() {
-
-    this.migrateWorkflowBinding("OLD_WORKFLOW", "NEW_WORKFLOW");
-
-  }
-
-}
-
-
+class MyAgent extends Agent {  async onStart() {    this.migrateWorkflowBinding("OLD_WORKFLOW", "NEW_WORKFLOW");  }}
 ```
 
 TypeScript
 
 ```
-
-class MyAgent extends Agent {
-
-  async onStart() {
-
-    this.migrateWorkflowBinding("OLD_WORKFLOW", "NEW_WORKFLOW");
-
-  }
-
-}
-
-
+class MyAgent extends Agent {  async onStart() {    this.migrateWorkflowBinding("OLD_WORKFLOW", "NEW_WORKFLOW");  }}
 ```
 
 ## Lifecycle callbacks
@@ -1132,101 +520,23 @@ Override these methods in your Agent to handle workflow events:
 | onWorkflowEvent    | workflowName, instanceId, event    | Called when workflow sends an event   |
 | onWorkflowCallback | callback: WorkflowCallback         | Called for all callback types         |
 
-* [  JavaScript ](#tab-panel-6125)
-* [  TypeScript ](#tab-panel-6126)
+* [  JavaScript ](#tab-panel-6199)
+* [  TypeScript ](#tab-panel-6200)
 
 JavaScript
 
 ```
-
-class MyAgent extends Agent {
-
-  async onWorkflowProgress(workflowName, instanceId, progress) {
-
-    this.broadcast(
-
-      JSON.stringify({ type: "progress", workflowName, instanceId, progress }),
-
-    );
-
-  }
-
-
-  async onWorkflowComplete(workflowName, instanceId, result) {
-
-    console.log(`${workflowName}/${instanceId} completed`);
-
-  }
-
-
-  async onWorkflowError(workflowName, instanceId, error) {
-
-    console.error(`${workflowName}/${instanceId} failed:`, error);
-
-  }
-
-}
-
-
+class MyAgent extends Agent {  async onWorkflowProgress(workflowName, instanceId, progress) {    this.broadcast(      JSON.stringify({ type: "progress", workflowName, instanceId, progress }),    );  }
+  async onWorkflowComplete(workflowName, instanceId, result) {    console.log(`${workflowName}/${instanceId} completed`);  }
+  async onWorkflowError(workflowName, instanceId, error) {    console.error(`${workflowName}/${instanceId} failed:`, error);  }}
 ```
 
 TypeScript
 
 ```
-
-class MyAgent extends Agent {
-
-  async onWorkflowProgress(
-
-    workflowName: string,
-
-    instanceId: string,
-
-    progress: unknown,
-
-  ) {
-
-    this.broadcast(
-
-      JSON.stringify({ type: "progress", workflowName, instanceId, progress }),
-
-    );
-
-  }
-
-
-  async onWorkflowComplete(
-
-    workflowName: string,
-
-    instanceId: string,
-
-    result?: unknown,
-
-  ) {
-
-    console.log(`${workflowName}/${instanceId} completed`);
-
-  }
-
-
-  async onWorkflowError(
-
-    workflowName: string,
-
-    instanceId: string,
-
-    error: string,
-
-  ) {
-
-    console.error(`${workflowName}/${instanceId} failed:`, error);
-
-  }
-
-}
-
-
+class MyAgent extends Agent {  async onWorkflowProgress(    workflowName: string,    instanceId: string,    progress: unknown,  ) {    this.broadcast(      JSON.stringify({ type: "progress", workflowName, instanceId, progress }),    );  }
+  async onWorkflowComplete(    workflowName: string,    instanceId: string,    result?: unknown,  ) {    console.log(`${workflowName}/${instanceId} completed`);  }
+  async onWorkflowError(    workflowName: string,    instanceId: string,    error: string,  ) {    console.error(`${workflowName}/${instanceId} failed:`, error);  }}
 ```
 
 ## Workflow tracking
@@ -1251,793 +561,179 @@ Use the `metadata` option in `runWorkflow()` to store queryable information (lik
 
 ### Human-in-the-loop approval
 
-* [  JavaScript ](#tab-panel-6137)
-* [  TypeScript ](#tab-panel-6138)
+* [  JavaScript ](#tab-panel-6211)
+* [  TypeScript ](#tab-panel-6212)
 
 JavaScript
 
 ```
-
 import { AgentWorkflow } from "agents/workflows";
-
-
-export class ApprovalWorkflow extends AgentWorkflow {
-
-  async run(event, step) {
-
-    const request = await step.do("prepare", async () => {
-
-      return { ...event.payload, preparedAt: Date.now() };
-
-    });
-
-
-    await this.reportProgress({
-
-      step: "approval",
-
-      status: "pending",
-
-      message: "Awaiting approval",
-
-    });
-
-
-    // Throws WorkflowRejectedError if rejected
-
-    const approval = await this.waitForApproval(step, {
-
-      timeout: "7 days",
-
-    });
-
-
+export class ApprovalWorkflow extends AgentWorkflow {  async run(event, step) {    const request = await step.do("prepare", async () => {      return { ...event.payload, preparedAt: Date.now() };    });
+    await this.reportProgress({      step: "approval",      status: "pending",      message: "Awaiting approval",    });
+    // Throws WorkflowRejectedError if rejected    const approval = await this.waitForApproval(step, {      timeout: "7 days",    });
     console.log("Approved by:", approval?.approvedBy);
-
-
-    const result = await step.do("execute", async () => {
-
-      return executeRequest(request);
-
-    });
-
-
-    await step.reportComplete(result);
-
-    return result;
-
-  }
-
-}
-
-
-class MyAgent extends Agent {
-
-  async handleApproval(instanceId, userId) {
-
-    await this.approveWorkflow(instanceId, {
-
-      reason: "Approved by admin",
-
-      metadata: { approvedBy: userId },
-
-    });
-
-  }
-
-
-  async handleRejection(instanceId, reason) {
-
-    await this.rejectWorkflow(instanceId, { reason });
-
-  }
-
-}
-
-
+    const result = await step.do("execute", async () => {      return executeRequest(request);    });
+    await step.reportComplete(result);    return result;  }}
+class MyAgent extends Agent {  async handleApproval(instanceId, userId) {    await this.approveWorkflow(instanceId, {      reason: "Approved by admin",      metadata: { approvedBy: userId },    });  }
+  async handleRejection(instanceId, reason) {    await this.rejectWorkflow(instanceId, { reason });  }}
 ```
 
 TypeScript
 
 ```
-
-import { AgentWorkflow } from "agents/workflows";
-
-import type { AgentWorkflowEvent, AgentWorkflowStep } from "agents/workflows";
-
-
-export class ApprovalWorkflow extends AgentWorkflow<MyAgent, RequestParams> {
-
-  async run(event: AgentWorkflowEvent<RequestParams>, step: AgentWorkflowStep) {
-
-    const request = await step.do("prepare", async () => {
-
-      return { ...event.payload, preparedAt: Date.now() };
-
-    });
-
-
-    await this.reportProgress({
-
-      step: "approval",
-
-      status: "pending",
-
-      message: "Awaiting approval",
-
-    });
-
-
-    // Throws WorkflowRejectedError if rejected
-
-    const approval = await this.waitForApproval<{ approvedBy: string }>(step, {
-
-      timeout: "7 days",
-
-    });
-
-
+import { AgentWorkflow } from "agents/workflows";import type { AgentWorkflowEvent, AgentWorkflowStep } from "agents/workflows";
+export class ApprovalWorkflow extends AgentWorkflow<MyAgent, RequestParams> {  async run(event: AgentWorkflowEvent<RequestParams>, step: AgentWorkflowStep) {    const request = await step.do("prepare", async () => {      return { ...event.payload, preparedAt: Date.now() };    });
+    await this.reportProgress({      step: "approval",      status: "pending",      message: "Awaiting approval",    });
+    // Throws WorkflowRejectedError if rejected    const approval = await this.waitForApproval<{ approvedBy: string }>(step, {      timeout: "7 days",    });
     console.log("Approved by:", approval?.approvedBy);
-
-
-    const result = await step.do("execute", async () => {
-
-      return executeRequest(request);
-
-    });
-
-
-    await step.reportComplete(result);
-
-    return result;
-
-  }
-
-}
-
-
-class MyAgent extends Agent {
-
-  async handleApproval(instanceId: string, userId: string) {
-
-    await this.approveWorkflow(instanceId, {
-
-      reason: "Approved by admin",
-
-      metadata: { approvedBy: userId },
-
-    });
-
-  }
-
-
-  async handleRejection(instanceId: string, reason: string) {
-
-    await this.rejectWorkflow(instanceId, { reason });
-
-  }
-
-}
-
-
+    const result = await step.do("execute", async () => {      return executeRequest(request);    });
+    await step.reportComplete(result);    return result;  }}
+class MyAgent extends Agent {  async handleApproval(instanceId: string, userId: string) {    await this.approveWorkflow(instanceId, {      reason: "Approved by admin",      metadata: { approvedBy: userId },    });  }
+  async handleRejection(instanceId: string, reason: string) {    await this.rejectWorkflow(instanceId, { reason });  }}
 ```
 
 ### Retry with backoff
 
-* [  JavaScript ](#tab-panel-6131)
-* [  TypeScript ](#tab-panel-6132)
+* [  JavaScript ](#tab-panel-6205)
+* [  TypeScript ](#tab-panel-6206)
 
 JavaScript
 
 ```
-
 import { AgentWorkflow } from "agents/workflows";
-
-
-export class ResilientWorkflow extends AgentWorkflow {
-
-  async run(event, step) {
-
-    const result = await step.do(
-
-      "call-api",
-
-      {
-
-        retries: { limit: 5, delay: "10 seconds", backoff: "exponential" },
-
-        timeout: "5 minutes",
-
-      },
-
-      async () => {
-
-        const response = await fetch("https://api.example.com/process", {
-
-          method: "POST",
-
-          body: JSON.stringify(event.payload),
-
-        });
-
-        if (!response.ok) throw new Error(`API error: ${response.status}`);
-
-        return response.json();
-
-      },
-
-    );
-
-
-    await step.reportComplete(result);
-
-    return result;
-
-  }
-
-}
-
-
+export class ResilientWorkflow extends AgentWorkflow {  async run(event, step) {    const result = await step.do(      "call-api",      {        retries: { limit: 5, delay: "10 seconds", backoff: "exponential" },        timeout: "5 minutes",      },      async () => {        const response = await fetch("https://api.example.com/process", {          method: "POST",          body: JSON.stringify(event.payload),        });        if (!response.ok) throw new Error(`API error: ${response.status}`);        return response.json();      },    );
+    await step.reportComplete(result);    return result;  }}
 ```
 
 TypeScript
 
 ```
-
-import { AgentWorkflow } from "agents/workflows";
-
-import type { AgentWorkflowEvent, AgentWorkflowStep } from "agents/workflows";
-
-
-export class ResilientWorkflow extends AgentWorkflow<MyAgent, TaskParams> {
-
-  async run(event: AgentWorkflowEvent<TaskParams>, step: AgentWorkflowStep) {
-
-    const result = await step.do(
-
-      "call-api",
-
-      {
-
-        retries: { limit: 5, delay: "10 seconds", backoff: "exponential" },
-
-        timeout: "5 minutes",
-
-      },
-
-      async () => {
-
-        const response = await fetch("https://api.example.com/process", {
-
-          method: "POST",
-
-          body: JSON.stringify(event.payload),
-
-        });
-
-        if (!response.ok) throw new Error(`API error: ${response.status}`);
-
-        return response.json();
-
-      },
-
-    );
-
-
-    await step.reportComplete(result);
-
-    return result;
-
-  }
-
-}
-
-
+import { AgentWorkflow } from "agents/workflows";import type { AgentWorkflowEvent, AgentWorkflowStep } from "agents/workflows";
+export class ResilientWorkflow extends AgentWorkflow<MyAgent, TaskParams> {  async run(event: AgentWorkflowEvent<TaskParams>, step: AgentWorkflowStep) {    const result = await step.do(      "call-api",      {        retries: { limit: 5, delay: "10 seconds", backoff: "exponential" },        timeout: "5 minutes",      },      async () => {        const response = await fetch("https://api.example.com/process", {          method: "POST",          body: JSON.stringify(event.payload),        });        if (!response.ok) throw new Error(`API error: ${response.status}`);        return response.json();      },    );
+    await step.reportComplete(result);    return result;  }}
 ```
 
 ### State synchronization
 
 Workflows can update Agent state durably via `step`, which automatically broadcasts to all connected clients:
 
-* [  JavaScript ](#tab-panel-6135)
-* [  TypeScript ](#tab-panel-6136)
+* [  JavaScript ](#tab-panel-6209)
+* [  TypeScript ](#tab-panel-6210)
 
 JavaScript
 
 ```
-
 import { AgentWorkflow } from "agents/workflows";
-
-
-export class StatefulWorkflow extends AgentWorkflow {
-
-  async run(event, step) {
-
-    // Replace entire state (durable, broadcasts to clients)
-
-    await step.updateAgentState({
-
-      currentTask: {
-
-        id: event.payload.taskId,
-
-        status: "processing",
-
-        startedAt: Date.now(),
-
-      },
-
-    });
-
-
-    const result = await step.do("process", async () =>
-
-      processTask(event.payload),
-
-    );
-
-
-    // Merge partial state (durable, keeps existing fields)
-
-    await step.mergeAgentState({
-
-      currentTask: { status: "complete", result, completedAt: Date.now() },
-
-    });
-
-
-    await step.reportComplete(result);
-
-    return result;
-
-  }
-
-}
-
-
+export class StatefulWorkflow extends AgentWorkflow {  async run(event, step) {    // Replace entire state (durable, broadcasts to clients)    await step.updateAgentState({      currentTask: {        id: event.payload.taskId,        status: "processing",        startedAt: Date.now(),      },    });
+    const result = await step.do("process", async () =>      processTask(event.payload),    );
+    // Merge partial state (durable, keeps existing fields)    await step.mergeAgentState({      currentTask: { status: "complete", result, completedAt: Date.now() },    });
+    await step.reportComplete(result);    return result;  }}
 ```
 
 TypeScript
 
 ```
-
-import { AgentWorkflow } from "agents/workflows";
-
-import type { AgentWorkflowEvent, AgentWorkflowStep } from "agents/workflows";
-
-
-export class StatefulWorkflow extends AgentWorkflow<MyAgent, TaskParams> {
-
-  async run(event: AgentWorkflowEvent<TaskParams>, step: AgentWorkflowStep) {
-
-    // Replace entire state (durable, broadcasts to clients)
-
-    await step.updateAgentState({
-
-      currentTask: {
-
-        id: event.payload.taskId,
-
-        status: "processing",
-
-        startedAt: Date.now(),
-
-      },
-
-    });
-
-
-    const result = await step.do("process", async () =>
-
-      processTask(event.payload),
-
-    );
-
-
-    // Merge partial state (durable, keeps existing fields)
-
-    await step.mergeAgentState({
-
-      currentTask: { status: "complete", result, completedAt: Date.now() },
-
-    });
-
-
-    await step.reportComplete(result);
-
-    return result;
-
-  }
-
-}
-
-
+import { AgentWorkflow } from "agents/workflows";import type { AgentWorkflowEvent, AgentWorkflowStep } from "agents/workflows";
+export class StatefulWorkflow extends AgentWorkflow<MyAgent, TaskParams> {  async run(event: AgentWorkflowEvent<TaskParams>, step: AgentWorkflowStep) {    // Replace entire state (durable, broadcasts to clients)    await step.updateAgentState({      currentTask: {        id: event.payload.taskId,        status: "processing",        startedAt: Date.now(),      },    });
+    const result = await step.do("process", async () =>      processTask(event.payload),    );
+    // Merge partial state (durable, keeps existing fields)    await step.mergeAgentState({      currentTask: { status: "complete", result, completedAt: Date.now() },    });
+    await step.reportComplete(result);    return result;  }}
 ```
 
 ### Custom progress types
 
 Define custom progress types for domain-specific reporting:
 
-* [  JavaScript ](#tab-panel-6139)
-* [  TypeScript ](#tab-panel-6140)
+* [  JavaScript ](#tab-panel-6213)
+* [  TypeScript ](#tab-panel-6214)
 
 JavaScript
 
 ```
-
 import { AgentWorkflow } from "agents/workflows";
-
-
 // Custom progress type for data pipeline
-
-
-// Workflow with custom progress type (3rd type parameter)
-
-export class ETLWorkflow extends AgentWorkflow {
-
-  async run(event, step) {
-
-    await this.reportProgress({
-
-      stage: "extract",
-
-      recordsProcessed: 0,
-
-      totalRecords: 1000,
-
-      currentTable: "users",
-
-    });
-
-
-    // ... processing
-
-  }
-
-}
-
-
-// Agent receives typed progress
-
-class MyAgent extends Agent {
-
-  async onWorkflowProgress(workflowName, instanceId, progress) {
-
-    const p = progress;
-
-    console.log(`Stage: ${p.stage}, ${p.recordsProcessed}/${p.totalRecords}`);
-
-  }
-
-}
-
-
+// Workflow with custom progress type (3rd type parameter)export class ETLWorkflow extends AgentWorkflow {  async run(event, step) {    await this.reportProgress({      stage: "extract",      recordsProcessed: 0,      totalRecords: 1000,      currentTable: "users",    });
+    // ... processing  }}
+// Agent receives typed progressclass MyAgent extends Agent {  async onWorkflowProgress(workflowName, instanceId, progress) {    const p = progress;    console.log(`Stage: ${p.stage}, ${p.recordsProcessed}/${p.totalRecords}`);  }}
 ```
 
 TypeScript
 
 ```
-
-import { AgentWorkflow } from "agents/workflows";
-
-import type { AgentWorkflowEvent, AgentWorkflowStep } from "agents/workflows";
-
-
-// Custom progress type for data pipeline
-
-type PipelineProgress = {
-
-  stage: "extract" | "transform" | "load";
-
-  recordsProcessed: number;
-
-  totalRecords: number;
-
-  currentTable?: string;
-
-};
-
-
-// Workflow with custom progress type (3rd type parameter)
-
-export class ETLWorkflow extends AgentWorkflow<
-
-  MyAgent,
-
-  ETLParams,
-
-  PipelineProgress
-
-> {
-
-  async run(event: AgentWorkflowEvent<ETLParams>, step: AgentWorkflowStep) {
-
-    await this.reportProgress({
-
-      stage: "extract",
-
-      recordsProcessed: 0,
-
-      totalRecords: 1000,
-
-      currentTable: "users",
-
-    });
-
-
-    // ... processing
-
-  }
-
-}
-
-
-// Agent receives typed progress
-
-class MyAgent extends Agent {
-
-  async onWorkflowProgress(
-
-    workflowName: string,
-
-    instanceId: string,
-
-    progress: unknown,
-
-  ) {
-
-    const p = progress as PipelineProgress;
-
-    console.log(`Stage: ${p.stage}, ${p.recordsProcessed}/${p.totalRecords}`);
-
-  }
-
-}
-
-
+import { AgentWorkflow } from "agents/workflows";import type { AgentWorkflowEvent, AgentWorkflowStep } from "agents/workflows";
+// Custom progress type for data pipelinetype PipelineProgress = {  stage: "extract" | "transform" | "load";  recordsProcessed: number;  totalRecords: number;  currentTable?: string;};
+// Workflow with custom progress type (3rd type parameter)export class ETLWorkflow extends AgentWorkflow<  MyAgent,  ETLParams,  PipelineProgress> {  async run(event: AgentWorkflowEvent<ETLParams>, step: AgentWorkflowStep) {    await this.reportProgress({      stage: "extract",      recordsProcessed: 0,      totalRecords: 1000,      currentTable: "users",    });
+    // ... processing  }}
+// Agent receives typed progressclass MyAgent extends Agent {  async onWorkflowProgress(    workflowName: string,    instanceId: string,    progress: unknown,  ) {    const p = progress as PipelineProgress;    console.log(`Stage: ${p.stage}, ${p.recordsProcessed}/${p.totalRecords}`);  }}
 ```
 
 ### Cleanup strategy
 
 The internal `cf_agents_workflows` table can grow unbounded, so implement a retention policy:
 
-* [  JavaScript ](#tab-panel-6133)
-* [  TypeScript ](#tab-panel-6134)
+* [  JavaScript ](#tab-panel-6207)
+* [  TypeScript ](#tab-panel-6208)
 
 JavaScript
 
 ```
-
-class MyAgent extends Agent {
-
-  // Option 1: Delete on completion
-
-  async onWorkflowComplete(workflowName, instanceId, result) {
-
-    // Process result first, then delete
-
-    this.deleteWorkflow(instanceId);
-
-  }
-
-
-  // Option 2: Scheduled cleanup (keep recent history)
-
-  async cleanupOldWorkflows() {
-
-    this.deleteWorkflows({
-
-      status: ["complete", "errored"],
-
-      createdBefore: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
-
-    });
-
-  }
-
-
-  // Option 3: Keep all history for compliance/auditing
-
-  // Don't call deleteWorkflows() - query historical data as needed
-
-}
-
-
+class MyAgent extends Agent {  // Option 1: Delete on completion  async onWorkflowComplete(workflowName, instanceId, result) {    // Process result first, then delete    this.deleteWorkflow(instanceId);  }
+  // Option 2: Scheduled cleanup (keep recent history)  async cleanupOldWorkflows() {    this.deleteWorkflows({      status: ["complete", "errored"],      createdBefore: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),    });  }
+  // Option 3: Keep all history for compliance/auditing  // Don't call deleteWorkflows() - query historical data as needed}
 ```
 
 TypeScript
 
 ```
-
-class MyAgent extends Agent {
-
-  // Option 1: Delete on completion
-
-  async onWorkflowComplete(
-
-    workflowName: string,
-
-    instanceId: string,
-
-    result?: unknown,
-
-  ) {
-
-    // Process result first, then delete
-
-    this.deleteWorkflow(instanceId);
-
-  }
-
-
-  // Option 2: Scheduled cleanup (keep recent history)
-
-  async cleanupOldWorkflows() {
-
-    this.deleteWorkflows({
-
-      status: ["complete", "errored"],
-
-      createdBefore: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
-
-    });
-
-  }
-
-
-  // Option 3: Keep all history for compliance/auditing
-
-  // Don't call deleteWorkflows() - query historical data as needed
-
-}
-
-
+class MyAgent extends Agent {  // Option 1: Delete on completion  async onWorkflowComplete(    workflowName: string,    instanceId: string,    result?: unknown,  ) {    // Process result first, then delete    this.deleteWorkflow(instanceId);  }
+  // Option 2: Scheduled cleanup (keep recent history)  async cleanupOldWorkflows() {    this.deleteWorkflows({      status: ["complete", "errored"],      createdBefore: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),    });  }
+  // Option 3: Keep all history for compliance/auditing  // Don't call deleteWorkflows() - query historical data as needed}
 ```
 
 ## Bidirectional communication
 
 ### Workflow to Agent
 
-* [  JavaScript ](#tab-panel-6129)
-* [  TypeScript ](#tab-panel-6130)
+* [  JavaScript ](#tab-panel-6203)
+* [  TypeScript ](#tab-panel-6204)
 
 JavaScript
 
 ```
-
-// Direct RPC call (typed)
-
-await this.agent.updateTaskStatus(taskId, "processing");
-
-const data = await this.agent.getData(taskId);
-
-
-// Non-durable callbacks (may repeat on retry, use for frequent updates)
-
-await this.reportProgress({ step: "process", percent: 0.5 });
-
-this.broadcastToClients({ type: "update", data });
-
-
-// Durable callbacks via step (idempotent, won't repeat on retry)
-
-await step.reportComplete(result);
-
-await step.reportError("Something went wrong");
-
-await step.sendEvent({ type: "custom", data: {} });
-
-
-// Durable state synchronization via step (broadcasts to clients)
-
-await step.updateAgentState({ status: "processing" });
-
-await step.mergeAgentState({ progress: 0.5 });
-
-
+// Direct RPC call (typed)await this.agent.updateTaskStatus(taskId, "processing");const data = await this.agent.getData(taskId);
+// Non-durable callbacks (may repeat on retry, use for frequent updates)await this.reportProgress({ step: "process", percent: 0.5 });this.broadcastToClients({ type: "update", data });
+// Durable callbacks via step (idempotent, won't repeat on retry)await step.reportComplete(result);await step.reportError("Something went wrong");await step.sendEvent({ type: "custom", data: {} });
+// Durable state synchronization via step (broadcasts to clients)await step.updateAgentState({ status: "processing" });await step.mergeAgentState({ progress: 0.5 });
 ```
 
 TypeScript
 
 ```
-
-// Direct RPC call (typed)
-
-await this.agent.updateTaskStatus(taskId, "processing");
-
-const data = await this.agent.getData(taskId);
-
-
-// Non-durable callbacks (may repeat on retry, use for frequent updates)
-
-await this.reportProgress({ step: "process", percent: 0.5 });
-
-this.broadcastToClients({ type: "update", data });
-
-
-// Durable callbacks via step (idempotent, won't repeat on retry)
-
-await step.reportComplete(result);
-
-await step.reportError("Something went wrong");
-
-await step.sendEvent({ type: "custom", data: {} });
-
-
-// Durable state synchronization via step (broadcasts to clients)
-
-await step.updateAgentState({ status: "processing" });
-
-await step.mergeAgentState({ progress: 0.5 });
-
-
+// Direct RPC call (typed)await this.agent.updateTaskStatus(taskId, "processing");const data = await this.agent.getData(taskId);
+// Non-durable callbacks (may repeat on retry, use for frequent updates)await this.reportProgress({ step: "process", percent: 0.5 });this.broadcastToClients({ type: "update", data });
+// Durable callbacks via step (idempotent, won't repeat on retry)await step.reportComplete(result);await step.reportError("Something went wrong");await step.sendEvent({ type: "custom", data: {} });
+// Durable state synchronization via step (broadcasts to clients)await step.updateAgentState({ status: "processing" });await step.mergeAgentState({ progress: 0.5 });
 ```
 
 ### Agent to Workflow
 
-* [  JavaScript ](#tab-panel-6127)
-* [  TypeScript ](#tab-panel-6128)
+* [  JavaScript ](#tab-panel-6201)
+* [  TypeScript ](#tab-panel-6202)
 
 JavaScript
 
 ```
-
-// Send event to waiting workflow
-
-await this.sendWorkflowEvent("MY_WORKFLOW", instanceId, {
-
-  type: "custom-event",
-
-  payload: { action: "proceed" },
-
-});
-
-
-// Approve/reject workflows using convenience methods
-
-await this.approveWorkflow(instanceId, {
-
-  reason: "Approved by admin",
-
-  metadata: { approvedBy: userId },
-
-});
-
-
+// Send event to waiting workflowawait this.sendWorkflowEvent("MY_WORKFLOW", instanceId, {  type: "custom-event",  payload: { action: "proceed" },});
+// Approve/reject workflows using convenience methodsawait this.approveWorkflow(instanceId, {  reason: "Approved by admin",  metadata: { approvedBy: userId },});
 await this.rejectWorkflow(instanceId, { reason: "Request denied" });
-
-
 ```
 
 TypeScript
 
 ```
-
-// Send event to waiting workflow
-
-await this.sendWorkflowEvent("MY_WORKFLOW", instanceId, {
-
-  type: "custom-event",
-
-  payload: { action: "proceed" },
-
-});
-
-
-// Approve/reject workflows using convenience methods
-
-await this.approveWorkflow(instanceId, {
-
-  reason: "Approved by admin",
-
-  metadata: { approvedBy: userId },
-
-});
-
-
+// Send event to waiting workflowawait this.sendWorkflowEvent("MY_WORKFLOW", instanceId, {  type: "custom-event",  payload: { action: "proceed" },});
+// Approve/reject workflows using convenience methodsawait this.approveWorkflow(instanceId, {  reason: "Approved by admin",  metadata: { approvedBy: userId },});
 await this.rejectWorkflow(instanceId, { reason: "Request denied" });
-
-
 ```
 
 ## Best practices
@@ -2068,7 +764,7 @@ Workflows cannot open WebSocket connections directly. Use `broadcastToClients()`
 
 [ Schedule tasks ](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) Time-based task execution. 
 
-[ Human-in-the-loop ](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/) Approval flows and manual intervention patterns. 
+[ Human-in-the-loop ](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/) Approval flows and manual intervention patterns.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/run-workflows/#page","headline":"Run Workflows · Cloudflare Agents docs","description":"Integrate Cloudflare Workflows with Agents for durable, multi-step background processing and failure recovery.","url":"https://developers.cloudflare.com/agents/runtime/execution/run-workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

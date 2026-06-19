@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -58,17 +58,8 @@ Microsoft has recently made changes to the IP addresses used by Microsoft 365 ap
 On Windows devices in [DNS only mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#dns-only-mode), `nslookup` by default sends DNS requests to the [WARP local DNS proxy](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#dns-traffic) over IPv6\. However, because the Cloudflare One Client uses an IPv4-mapped IPv6 address (instead of a real IPv6 address), `nslookup` will not recognize this address type and the query will fail:
 
 ```
-
-C:\Users\JohnDoe>nslookup google.com
-
-Server:  UnKnown
-
-Address:  ::ffff:127.0.2.2
-
-
+C:\Users\JohnDoe>nslookup google.comServer:  UnKnownAddress:  ::ffff:127.0.2.2
 *** UnKnown can't find google.com: No response from server
-
-
 ```
 
 To work around the issue, specify the IPv4 address of the [WARP local DNS proxy](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#dns-traffic) in your query:
@@ -76,10 +67,7 @@ To work around the issue, specify the IPv4 address of the [WARP local DNS proxy]
 Terminal window
 
 ```
-
 C:\Users\JohnDoe>nslookup google.com 127.0.2.2
-
-
 ```
 
 Alternatively, use PowerShell:
@@ -87,10 +75,7 @@ Alternatively, use PowerShell:
 PowerShell
 
 ```
-
 Resolve-DnsName -Name google.com
-
-
 ```
 
 ## Comcast DNS servers
@@ -135,14 +120,7 @@ The [Windows Teredo ↗](https://learn.microsoft.com/en-us/windows/win32/teredo/
 To work around this issue, users of the Cloudflare One Client with Docker on Linux can manually reconfigure the MTU on Docker's network interface. You can either modify `/etc/docker/daemon.json` to include:
 
 ```
-
-{
-
-  "mtu": 1420
-
-}
-
-
+{  "mtu": 1420}
 ```
 
 or create a Docker network with a working MTU value:
@@ -150,10 +128,7 @@ or create a Docker network with a working MTU value:
 Terminal window
 
 ```
-
 docker network create -o "com.docker.network.driver.mtu=1420" my-docker-network
-
-
 ```
 
 The MTU value should be set to the MTU of your host's default interface minus 80 bytes for the WARP protocol overhead. Most MTUs are 1500, so 1420 should work for most users.
@@ -170,78 +145,11 @@ To enable Cloudflare One Client DNS resolution with containers:
 The following example uses a special host (`connectivity-check.warp-svc`) that is only resolvable by the local DNS proxy to show the supported Docker networking modes.
 
 ```
-
-# This host is not resolvable by default
-
-❯ docker run --rm alpine nslookup connectivity-check.warp-svc.
-
-Server:         8.8.8.8
-
-Address:        8.8.8.8:53
-
-
-** server can't find connectivity-check.warp-svc.: NXDOMAIN
-
-** server can't find connectivity-check.warp-svc.: NXDOMAIN
-
-
-# Create a bridge network called demo
-
-❯ docker network create demo
-
-e1e1943a6995a7e8c115a1c60357fe64f87a3ae90074ce6e4c3f0d2bba3fa892
-
-
-# The host is resolvable by running a container under this custom network
-
-❯ docker run --rm --net demo alpine nslookup connectivity-check.warp-svc.
-
-Server:         127.0.0.11
-
-Address:        127.0.0.11:53Non-authoritative answer:
-
-Name:   connectivity-check.warp-svc
-
-Address: ::ffff:127.0.2.2
-
-Name:   connectivity-check.warp-svc
-
-Address: ::ffff:127.0.2.3Non-authoritative answer:
-
-Name:   connectivity-check.warp-svc
-
-Address: 127.0.2.2
-
-Name:   connectivity-check.warp-svc
-
-Address: 127.0.2.3
-
-
-# The host is also resolvable by running a container using a host network
-
-❯ docker run --rm --net host alpine nslookup connectivity-check.warp-svc.
-
-Server:         127.0.0.11
-
-Address:        127.0.0.11:53Non-authoritative answer:
-
-Name:   connectivity-check.warp-svc
-
-Address: ::ffff:127.0.2.2
-
-Name:   connectivity-check.warp-svc
-
-Address: ::ffff:127.0.2.3Non-authoritative answer:
-
-Name:   connectivity-check.warp-svc
-
-Address: 127.0.2.2
-
-Name:   connectivity-check.warp-svc
-
-Address: 127.0.2.3
-
-
+# This host is not resolvable by default❯ docker run --rm alpine nslookup connectivity-check.warp-svc.Server:         8.8.8.8Address:        8.8.8.8:53
+** server can't find connectivity-check.warp-svc.: NXDOMAIN** server can't find connectivity-check.warp-svc.: NXDOMAIN
+# Create a bridge network called demo❯ docker network create demoe1e1943a6995a7e8c115a1c60357fe64f87a3ae90074ce6e4c3f0d2bba3fa892
+# The host is resolvable by running a container under this custom network❯ docker run --rm --net demo alpine nslookup connectivity-check.warp-svc.Server:         127.0.0.11Address:        127.0.0.11:53Non-authoritative answer:Name:   connectivity-check.warp-svcAddress: ::ffff:127.0.2.2Name:   connectivity-check.warp-svcAddress: ::ffff:127.0.2.3Non-authoritative answer:Name:   connectivity-check.warp-svcAddress: 127.0.2.2Name:   connectivity-check.warp-svcAddress: 127.0.2.3
+# The host is also resolvable by running a container using a host network❯ docker run --rm --net host alpine nslookup connectivity-check.warp-svc.Server:         127.0.0.11Address:        127.0.0.11:53Non-authoritative answer:Name:   connectivity-check.warp-svcAddress: ::ffff:127.0.2.2Name:   connectivity-check.warp-svcAddress: ::ffff:127.0.2.3Non-authoritative answer:Name:   connectivity-check.warp-svcAddress: 127.0.2.2Name:   connectivity-check.warp-svcAddress: 127.0.2.3
 ```
 
 ## Linux DNS domains with systemd-resolved versions earlier than 252.3
@@ -251,10 +159,7 @@ On some Linux systems with `systemd-resolved` versions earlier than `252.3`, DNS
 For example, commands that resolve the device hostname may take several seconds to start, or may print an error similar to:
 
 ```
-
 sudo: unable to resolve host <HOSTNAME>: Temporary failure in name resolution
-
-
 ```
 
 This happens because `systemd-resolved` versions earlier than `252.3` do not support the link-specific DNS configuration that the Cloudflare One Client uses on newer Linux distributions. On these systems, the Cloudflare One Client falls back to a global DNS configuration. As a result, DNS domains configured on other interfaces, such as cloud-provider or corporate network search domains, may not be routed or resolved consistently while WARP is connected.
@@ -264,10 +169,7 @@ To work around this issue, upgrade to a Linux distribution with `systemd-resolve
 Terminal window
 
 ```
-
 echo "127.0.1.1 $(hostname)" | sudo tee -a /etc/hosts
-
-
 ```
 
 Before adding the entry, check whether `/etc/hosts` already contains a mapping for the hostname. If your organization manages `/etc/hosts`, contact your administrator before changing it.
@@ -281,22 +183,7 @@ To resolve this, exclude the networks specified below from any relevant Cloudfla
 Microsoft previously provided a [PowerShell script ↗](https://github.com/microsoft/Windows365-PSScripts/tree/main/Windows%20365%20Gateway%20IP%20Lookup) to retrieve these networks, but it has since been deprecated. The relevant networks are now consolidated to the following subnets and should be excluded from any relevant Cloudflare One Client device profiles:
 
 ```
-
-40.64.144.0/20
-
-51.5.0.0/16
-
-57.156.5.248/29
-
-57.156.73.192/28
-
-172.183.252.22/32
-
-2603:1061:2010::/48
-
-2603:1061:2011::/48
-
-
+40.64.144.0/2051.5.0.0/1657.156.5.248/2957.156.73.192/28172.183.252.22/322603:1061:2010::/482603:1061:2011::/48
 ```
 
 ## Windows 10 in Microsoft 365 Cloud PC is not supported

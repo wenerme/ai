@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/web3/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -96,105 +96,13 @@ This method returns an `Array` of traces matching the given filter.
 trace\_filter Request
 
 ```
-
-curl https://web3-trial.cloudflare-eth.com/v1/mainnet \
-
--X POST \
-
--H 'Content-Type: application/json' \
-
---data '{
-
-    "jsonrpc":"2.0",
-
-    "method":"trace_filter",
-
-    "params":[
-
-        {
-
-            "count": 200,
-
-            "fromBlock": "0xccb943",
-
-            "toBlock": "0xccbc62",
-
-            "fromAddress": [
-
-                "0xEdC763b3e418cD14767b3Be02b667619a6374076"
-
-            ]
-
-        }
-
-    ],
-
-    "id":1
-
-    }'
-
-
+curl https://web3-trial.cloudflare-eth.com/v1/mainnet \-X POST \-H 'Content-Type: application/json' \--data '{    "jsonrpc":"2.0",    "method":"trace_filter",    "params":[        {            "count": 200,            "fromBlock": "0xccb943",            "toBlock": "0xccbc62",            "fromAddress": [                "0xEdC763b3e418cD14767b3Be02b667619a6374076"            ]        }    ],    "id":1    }'
 ```
 
 #### Response
 
 ```
-
-{
-
-  "jsonrpc": "2.0",
-
-  "result": [
-
-    {
-
-      "action": {
-
-        "from": "0xedc763b3e418cd14767b3be02b667619a6374076",
-
-        "callType": "call",
-
-        "gas": "0x8462",
-
-        "input": "0x095ea7b30000000000000000000000007a250d5630b4cf539739df2c5dacb4c659f2488dffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
-
-        "to": "0x7ff4169a6b5122b664c51c95727d87750ec07c84",
-
-        "value": "0x0"
-
-      },
-
-      "blockHash": "0x351e7c06ec010c8f7e7358eb580238dd23e1e129be96822aa93ebb6da08558e6",
-
-      "blockNumber": 13416771,
-
-      "result": {
-
-        "gasUsed": "0x6009",
-
-        "output": "0x0000000000000000000000000000000000000000000000000000000000000001"
-
-      },
-
-      "subtraces": 0,
-
-      "traceAddress": [],
-
-      "transactionHash": "0x054bbb9fbb855bf23f755e548c7409f45fc5eff8a824b2ad06380bc038d7b049",
-
-      "transactionPosition": 54,
-
-      "type": "call"
-
-    }
-
-  ],
-
-  "id": 1
-
-}
-
-
+{  "jsonrpc": "2.0",  "result": [    {      "action": {        "from": "0xedc763b3e418cd14767b3be02b667619a6374076",        "callType": "call",        "gas": "0x8462",        "input": "0x095ea7b30000000000000000000000007a250d5630b4cf539739df2c5dacb4c659f2488dffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",        "to": "0x7ff4169a6b5122b664c51c95727d87750ec07c84",        "value": "0x0"      },      "blockHash": "0x351e7c06ec010c8f7e7358eb580238dd23e1e129be96822aa93ebb6da08558e6",      "blockNumber": 13416771,      "result": {        "gasUsed": "0x6009",        "output": "0x0000000000000000000000000000000000000000000000000000000000000001"      },      "subtraces": 0,      "traceAddress": [],      "transactionHash": "0x054bbb9fbb855bf23f755e548c7409f45fc5eff8a824b2ad06380bc038d7b049",      "transactionPosition": 54,      "type": "call"    }  ],  "id": 1}
 ```
 
 ### Limitations

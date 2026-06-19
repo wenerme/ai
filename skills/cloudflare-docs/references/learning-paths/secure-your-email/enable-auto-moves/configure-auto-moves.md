@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,11 +20,11 @@ To configure auto-move events:
 4. Select **Moves**.
 5. Under **Auto-moves**, select **Configure**.
 6. Assign actions based on malicious, spoof, suspicious, spam, and bulk dispositions. Select among:  
-   * **Soft delete - user recoverable**: Moves the message to the user's **Recoverable Items - Deleted** folder. Messages can be recovered by the user.  
-   * **Hard delete - admin recoverable**: Completely deletes messages from a user's inbox.  
-   * **Move to trash**: Moves messages to the trash or deleted items email folder.  
-   * **Move to junk**: Moves the message to the junk or spam folder.  
-   * **No action**: Messages stay in the origin folder.
+  * **Soft delete - user recoverable**: Moves the message to the user's **Recoverable Items - Deleted** folder. Messages can be recovered by the user.
+  * **Hard delete - admin recoverable**: Completely deletes messages from a user's inbox.
+  * **Move to trash**: Moves messages to the trash or deleted items email folder.
+  * **Move to junk**: Moves the message to the junk or spam folder.
+  * **No action**: Messages stay in the origin folder.
 7. Select **Save**.
 
 ```json

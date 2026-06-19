@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -72,28 +72,7 @@ If strict isolation of assets is required, we recommend either salting with a ra
 #### Example manifest (JSON)
 
 ```
-
-{
-
-  "/index.html": {
-
-    "hash": "08f1dfda4574284ab3c21666d1ee8c7d4",
-
-    "size": 1234
-
-  },
-
-  "/styles.css": {
-
-    "hash": "36b8be012ee77df5f269b11b975611d3",
-
-    "size": 5678
-
-  }
-
-}
-
-
+{  "/index.html": {    "hash": "08f1dfda4574284ab3c21666d1ee8c7d4",    "size": 1234  },  "/styles.css": {    "hash": "36b8be012ee77df5f269b11b975611d3",    "size": 5678  }}
 ```
 
 To start the upload process, send a POST request to the Create Assets Upload Session [API endpoint](https://developers.cloudflare.com/api/resources/workers%5Ffor%5Fplatforms/subresources/dispatch/subresources/namespaces/subresources/scripts/subresources/asset%5Fupload/methods/create/).
@@ -101,10 +80,7 @@ To start the upload process, send a POST request to the Create Assets Upload Ses
 Terminal window
 
 ```
-
 POST /accounts/{account_id}/workers/dispatch/namespaces/{namespace}/scripts/{script_name}/assets-upload-session
-
-
 ```
 
 Path Parameters:
@@ -119,40 +95,7 @@ In the request body, include a JSON object listing each file path along with its
 Terminal window
 
 ```
-
-curl -X POST \
-
-  "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch/namespaces/$NAMESPACE_NAME/scripts/$SCRIPT_NAME/assets-upload-session" \
-
-  -H "Content-Type: application/json" \
-
-  -H "Authorization: Bearer $API_TOKEN" \
-
-  --data '{
-
-    "manifest": {
-
-      "/index.html": {
-
-        "hash": "08f1dfda4574284ab3c21666d1ee8c7d4",
-
-        "size": 1234
-
-      },
-
-      "/styles.css": {
-
-        "hash": "36b8be012ee77df5f269b11b975611d3",
-
-        "size": 5678
-
-      }
-
-    }
-
-  }'
-
-
+curl -X POST \  "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch/namespaces/$NAMESPACE_NAME/scripts/$SCRIPT_NAME/assets-upload-session" \  -H "Content-Type: application/json" \  -H "Authorization: Bearer $API_TOKEN" \  --data '{    "manifest": {      "/index.html": {        "hash": "08f1dfda4574284ab3c21666d1ee8c7d4",        "size": 1234      },      "/styles.css": {        "hash": "36b8be012ee77df5f269b11b975611d3",        "size": 5678      }    }  }'
 ```
 
 #### Generating the hash
@@ -189,10 +132,7 @@ Include it as a Bearer token in the header:
 Terminal window
 
 ```
-
 Authorization: Bearer <upload-session-token>
-
-
 ```
 
 This token is valid for one hour and must be supplied for each upload request to the Workers Assets Upload API.
@@ -209,20 +149,7 @@ You must send the files as multipart/form-data with base64-encoded content:
 If your Upload Session response listed a single "bucket" containing two file hashes:
 
 ```
-
-"buckets": [
-
-  [
-
-    "08f1dfda4574284ab3c21666d1ee8c7d4",
-
-    "36b8be012ee77df5f269b11b975611d3"
-
-  ]
-
-]
-
-
+"buckets": [  [    "08f1dfda4574284ab3c21666d1ee8c7d4",    "36b8be012ee77df5f269b11b975611d3"  ]]
 ```
 
 You can upload both files in one request, each as a form-data field:
@@ -230,18 +157,7 @@ You can upload both files in one request, each as a form-data field:
 Terminal window
 
 ```
-
-curl -X POST \
-
-  "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/assets/upload?base64=true" \
-
-  -H "Authorization: Bearer <upload-session-token>" \
-
-  -F "08f1dfda4574284ab3c21666d1ee8c7d4=<BASE64_OF_INDEX_HTML>" \
-
-  -F "36b8be012ee77df5f269b11b975611d3=<BASE64_OF_STYLES_CSS>"
-
-
+curl -X POST \  "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/assets/upload?base64=true" \  -H "Authorization: Bearer <upload-session-token>" \  -F "08f1dfda4574284ab3c21666d1ee8c7d4=<BASE64_OF_INDEX_HTML>" \  -F "36b8be012ee77df5f269b11b975611d3=<BASE64_OF_STYLES_CSS>"
 ```
 
 * `<upload-session-token>` is the token from step 1's assets-upload-session response
@@ -253,24 +169,7 @@ If you have multiple buckets (for example, `[["hashA"], ["hashB"], ["hashC"]]`),
 Once every file in the manifest has been uploaded, a status code of `201` will be returned, with the `jwt` field present. This JWT is a final "completion" token which can be used to create a deployment of a Worker with this set of assets. This completion token is valid for 1 hour.
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": [],
-
-  "result": {
-
-    "jwt": "<completion-token>"
-
-  }
-
-}
-
-
+{  "success": true,  "errors": [],  "messages": [],  "result": {    "jwt": "<completion-token>"  }}
 ```
 
 `<completion-token>` indicates that Cloudflare has successfully received and stored the file contents specified by your manifest. You will use this `<completion-token>` in Step 3 to finalize the attachment of these files to the Worker.
@@ -286,38 +185,7 @@ You can also specify any optional settings under the `assets.config` field to cu
 Terminal window
 
 ```
-
-curl -X PUT \
-
-  "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch/namespaces/$NAMESPACE_NAME/scripts/$SCRIPT_NAME" \
-
-  -H "Content-Type: multipart/form-data" \
-
-  -H "Authorization: Bearer $API_TOKEN" \
-
-  -F 'metadata={
-
-    "main_module": "index.js",
-
-    "assets": {
-
-      "jwt": "<completion-token>",
-
-      "config": {
-
-        "html_handling": "auto-trailing-slash"
-
-      }
-
-    },
-
-    "compatibility_date": "2025-01-24"
-
-  };type=application/json' \
-
-  -F 'index.js=@/path/to/index.js;type=application/javascript'
-
-
+curl -X PUT \  "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch/namespaces/$NAMESPACE_NAME/scripts/$SCRIPT_NAME" \  -H "Content-Type: multipart/form-data" \  -H "Authorization: Bearer $API_TOKEN" \  -F 'metadata={    "main_module": "index.js",    "assets": {      "jwt": "<completion-token>",      "config": {        "html_handling": "auto-trailing-slash"      }    },    "compatibility_date": "2025-01-24"  };type=application/json' \  -F 'index.js=@/path/to/index.js;type=application/javascript'
 ```
 
 * The `"jwt": "<completion-token>"` links the newly uploaded files to the Worker
@@ -334,60 +202,20 @@ If you prefer a CLI-based approach and your platform setup allows direct publish
 
 Create or update your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to specify where Wrangler should look for static files:
 
-* [  wrangler.jsonc ](#tab-panel-7035)
-* [  wrangler.toml ](#tab-panel-7036)
+* [  wrangler.jsonc ](#tab-panel-7111)
+* [  wrangler.toml ](#tab-panel-7112)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "my-static-site",
-
-  "main": "./src/index.js",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "assets": {
-
-    "directory": "./public",
-
-    "binding": "ASSETS",
-
-  },
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-static-site",  "main": "./src/index.js",  // Set this to today's date  "compatibility_date": "2026-06-18",  "assets": {    "directory": "./public",    "binding": "ASSETS",  },}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "my-static-site"
-
-main = "./src/index.js"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[assets]
-
-directory = "./public"
-
-binding = "ASSETS"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-static-site"main = "./src/index.js"# Set this to today's datecompatibility_date = "2026-06-18"
+[assets]directory = "./public"binding = "ASSETS"
 ```
 
 * `directory`: The local folder containing your static files (for example, `./public`).
@@ -402,18 +230,7 @@ If you need to reference these files in your Worker script to serve them dynamic
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    return env.ASSETS.fetch(request);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    return env.ASSETS.fetch(request);  },};
 ```
 
 ### 2\. Deploy the User Worker with the static assets
@@ -423,10 +240,7 @@ Run Wrangler to publish both your Worker code and the static assets:
 Terminal window
 
 ```
-
 npx wrangler deploy --name <USER_WORKER_NAME> --dispatch-namespace <NAMESPACE_NAME>
-
-
 ```
 
 Wrangler will automatically detect your static files, bundle them, and upload them to Cloudflare along with your Worker code.

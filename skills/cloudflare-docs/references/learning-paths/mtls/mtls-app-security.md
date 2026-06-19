@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,10 +35,7 @@ To generate and use your own CSR, you can run a command like the following:
 Terminal window
 
 ```
-
 openssl req -new -newkey rsa:2048 -nodes -keyout client1.key -out client1.csr -subj '/C=GB/ST=London/L=London/O=Organization/CN=CommonName'
-
-
 ```
 
 Or use a script like this one from [GitHub ↗](https://github.com/erfianugrah/rootcatest/blob/main/fullgenerator.py).
@@ -58,10 +55,7 @@ Another example is to generate a [PKCS12 (P12) certificate ↗](https://en.wikip
 Terminal window
 
 ```
-
 openssl pkcs12 -export -out certificate.p12 -inkey private-cert.pem -in cert.pem
-
-
 ```
 
 Use the values from the previous step.
@@ -71,10 +65,7 @@ Example using cURL command:
 Terminal window
 
 ```
-
 curl -v --cert cert.pem --key private-cert.pem <HOSTNAME>
-
-
 ```
 
 Use the values from the previous step.
@@ -104,19 +95,11 @@ With the Public and Private Certificates in the same directory, with this cURL c
 Terminal window
 
 ```
-
 curl -I --cert cert.pem --key private-cert.pem https://mtls-test.example.com/mtls-test
-
-
 ```
 
 ```
-
-HTTP/2 200
-
-server: cloudflare
-
-
+HTTP/2 200server: cloudflare
 ```
 
 Without the certificates, the terminal will display the following:
@@ -124,19 +107,11 @@ Without the certificates, the terminal will display the following:
 Terminal window
 
 ```
-
 curl -I https://mtls-test.example.com/mtls-test
-
-
 ```
 
 ```
-
-HTTP/2 403
-
-server: cloudflare
-
-
+HTTP/2 403server: cloudflare
 ```
 
 ```json

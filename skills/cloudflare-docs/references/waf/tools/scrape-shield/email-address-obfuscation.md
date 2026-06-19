@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,9 +30,9 @@ Cloudflare injects a small decode script (`email-decode.min.js`) into the page u
 
 Cloudflare enables email address obfuscation automatically when you sign up.
 
-* [  New dashboard ](#tab-panel-11267)
-* [ Old dashboard ](#tab-panel-11268)
-* [ API ](#tab-panel-11269)
+* [  New dashboard ](#tab-panel-11284)
+* [ Old dashboard ](#tab-panel-11285)
+* [ API ](#tab-panel-11286)
 
 To disable **Email Address Obfuscation** in the dashboard:
 
@@ -72,18 +72,18 @@ To prevent unexpected website behavior, email addresses are not obfuscated when 
 
 * Any HTML tag attribute, except for the `href` attribute of the `a` tag.
 * Other HTML tags:  
-   * `<script></script>`  
-   * `<noscript></noscript>`  
-   * `<textarea></textarea>`  
-   * `<xmp></xmp>`  
-   * `<head></head>`
+  * `<script></script>`
+  * `<noscript></noscript>`
+  * `<textarea></textarea>`
+  * `<xmp></xmp>`
+  * `<head></head>`
 * Any page that does not have a MIME type of `text/html` or `application/xhtml+xml`.
 
 Notes
 
 * Email Obfuscation will not apply in the following cases:  
-   * You are using the `Cache-Control: no-transform` header.  
-   * The HTML/JavaScript code is specifically added by a [Worker](https://developers.cloudflare.com/workers/).
+  * You are using the `Cache-Control: no-transform` header.
+  * The HTML/JavaScript code is specifically added by a [Worker](https://developers.cloudflare.com/workers/).
 * Email Obfuscation might not work as expected when the HTML page includes `<template></template>` tags.
 
 ```json

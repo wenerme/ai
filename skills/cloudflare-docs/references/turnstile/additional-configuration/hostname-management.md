@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -71,8 +71,8 @@ Use a specific subdomain when you want to restrict the widget to a narrower scop
 
 ## Add hostnames
 
-* [ Dashboard ](#tab-panel-11006)
-* [ API ](#tab-panel-11007)
+* [ Dashboard ](#tab-panel-11023)
+* [ API ](#tab-panel-11024)
 
 Existing widget
 
@@ -95,20 +95,7 @@ New widget
 cURL command
 
 ```
-
-  curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets/$WIDGET_ID" \
-
-  -H "Authorization: Bearer $API_TOKEN" \
-
-  -H "Content-Type: application/json" \
-
-  -d '{
-
-  "domains": ["example.com", "app.example.com", "api.example.com"]
-
-  }'
-
-
+  curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets/$WIDGET_ID" \  -H "Authorization: Bearer $API_TOKEN" \  -H "Content-Type: application/json" \  -d '{  "domains": ["example.com", "app.example.com", "api.example.com"]  }'
 ```
 
 ---

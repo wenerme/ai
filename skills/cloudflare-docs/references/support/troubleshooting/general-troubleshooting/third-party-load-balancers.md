@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/support/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -50,10 +50,7 @@ You can test for this issue using curl. Run multiple requests and check if the s
 Terminal window
 
 ```
-
 for i in {1..100}; do curl -sI https://example.com; done 2>&1 | grep "<COOKIE_NAME>" | wc -l
-
-
 ```
 
 If the count is significantly less than 100 when proxied through Cloudflare but equals 100 when connecting directly to the origin, you are experiencing this issue.

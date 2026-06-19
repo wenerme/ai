@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,9 +29,10 @@ Purging by prefix is useful in different scenarios, such as:
 [ Go to **Configuration** ](https://dash.cloudflare.com/?to=/:account/:zone/caching/configuration)
 2. Under **Purge Cache**, select **Custom Purge**. The **Custom Purge** window appears.
 3. Under **Purge by**, select **Prefix**.
-4. Follow the syntax instructions.  
-   * One prefix per line.  
-   * Maximum 30 prefixes per API call.
+4. Follow the syntax instructions.
+
+  * One prefix per line.
+  * Maximum 30 prefixes per API call.
 5. Enter the appropriate value(s) in the text field using the format shown in the example.
 6. Select **Purge**.
 
@@ -55,8 +56,8 @@ There are several limitations regarding purge by prefix:
 * Purge requests are limited to 30 prefixes per request.
 * [Purge rate-limits apply](https://developers.cloudflare.com/api/resources/cache/methods/purge/).
 * URI query strings & fragments cannot purge by prefix:  
-   * `www.example.com/foo?a=b` (query string)  
-   * `www.example.com/foo#bar` (fragment)
+  * `www.example.com/foo?a=b` (query string)
+  * `www.example.com/foo#bar` (fragment)
 
 Warning
 

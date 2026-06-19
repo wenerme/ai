@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,19 +26,20 @@ This Enterprise product provides the most flexibility to customers by:
 
 Bot Management is automatically enabled for Enterprise zones entitled with the add-on.
 
-* [  New dashboard ](#tab-panel-6840)
-* [ Old dashboard ](#tab-panel-6841)
+* [  New dashboard ](#tab-panel-6916)
+* [ Old dashboard ](#tab-panel-6917)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Bot traffic**.
 3. Go to **Bot management**.
 4. Turn **Bot management** on.
-5. Choose how your domain should respond to various types of traffic by selecting the associated edit icon.  
-   * For more details on verified bots, refer to [Verified Bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).  
-   * For more details on supported file types, refer to [Static resource protection](https://developers.cloudflare.com/bots/additional-configurations/static-resources/).  
-   * For more details on invisible code injection, refer to [JavaScript detections](https://developers.cloudflare.com/bots/additional-configurations/javascript-detections/).  
-   * For more details on WordPress optimization, refer to [Super Bot Fight Mode for WordPress](https://developers.cloudflare.com/bots/troubleshooting/wordpress-loopback-issue/).
+5. Choose how your domain should respond to various types of traffic by selecting the associated edit icon.
+
+  * For more details on verified bots, refer to [Verified Bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).
+  * For more details on supported file types, refer to [Static resource protection](https://developers.cloudflare.com/bots/additional-configurations/static-resources/).
+  * For more details on invisible code injection, refer to [JavaScript detections](https://developers.cloudflare.com/bots/additional-configurations/javascript-detections/).
+  * For more details on WordPress optimization, refer to [Super Bot Fight Mode for WordPress](https://developers.cloudflare.com/bots/troubleshooting/wordpress-loopback-issue/).
 
 To enable a [Bot Management ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/bots) trial on Enterprise zones without the Bot Management add-on entitled:
 
@@ -62,8 +63,8 @@ Cloudflare encourages Enterprise customers to enable auto-updates to its Machine
 
 To enable auto-updates:
 
-* [  New dashboard ](#tab-panel-6842)
-* [ Old dashboard ](#tab-panel-6843)
+* [  New dashboard ](#tab-panel-6918)
+* [ Old dashboard ](#tab-panel-6919)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

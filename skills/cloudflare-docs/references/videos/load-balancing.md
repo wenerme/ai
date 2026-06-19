@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/videos/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,18 +17,25 @@ Unexpected traffic spikes can crash your website, but Cloudflare Load Balancing 
 Chapters
 
 * ![Introduction to Load Balancing](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/ce39fdf599aed3661f60e8f780761808/thumbnails/thumbnail.jpg?fit=crop&time=0s)  
+
  **Introduction to Load Balancing** 0s
 * ![Step 1 - Select Hostname and Basic Settings](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/ce39fdf599aed3661f60e8f780761808/thumbnails/thumbnail.jpg?fit=crop&time=44s)  
+
  **Step 1 - Select Hostname and Basic Settings** 44s
 * ![Step 2 - Add or Attach an Origin Pool](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/ce39fdf599aed3661f60e8f780761808/thumbnails/thumbnail.jpg?fit=crop&time=82s)  
+
  **Step 2 - Add or Attach an Origin Pool** 01m22s
 * ![Step 3 - Attach a Health Monitor](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/ce39fdf599aed3661f60e8f780761808/thumbnails/thumbnail.jpg?fit=crop&time=105s)  
+
  **Step 3 - Attach a Health Monitor** 01m45s
 * ![Step 4 - Configure Traffic Steering](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/ce39fdf599aed3661f60e8f780761808/thumbnails/thumbnail.jpg?fit=crop&time=123s)  
+
  **Step 4 - Configure Traffic Steering** 02m03s
 * ![Step 5 - Add Custom Rules \(Optional\)](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/ce39fdf599aed3661f60e8f780761808/thumbnails/thumbnail.jpg?fit=crop&time=144s)  
+
  **Step 5 - Add Custom Rules (Optional)** 02m24s
 * ![Review and deploy](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/ce39fdf599aed3661f60e8f780761808/thumbnails/thumbnail.jpg?fit=crop&time=159s)  
+
  **Review and deploy** 02m39s
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,19 +32,13 @@ When the comparison operator returns `true`, the request matches the expression.
 This example expression returns true when a request URI path contains `/content`:
 
 ```
-
 (http.request.uri.path contains "/content")
-
-
 ```
 
 In general, simple expressions use this pattern:
 
 ```
-
 <field> <operator> <value>
-
-
 ```
 
 For more details, refer to [Supported fields and operators](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/reference/).
@@ -58,21 +52,13 @@ A compound expression uses a **logical operator** (_and_, _or_, for example) to 
 The example expression below returns true when both the HTTP request URI path contains `/content` and the query string contains `webserver`:
 
 ```
-
-(http.request.uri.path contains "/content")
-
-and (http.request.uri.query contains "webserver")
-
-
+(http.request.uri.path contains "/content")and (http.request.uri.query contains "webserver")
 ```
 
 In general, compound expressions use this pattern:
 
 ```
-
 <expression> <logical operator> <expression>
-
-
 ```
 
 A compound expression can be an operand of a logical operator. This allows multiple operators to construct a compound expression from many individual expressions.
@@ -98,12 +84,7 @@ This Expression Builder screenshot shows the example compound expression describ
 The **Expression Preview** displays the expression in text:
 
 ```
-
-(http.request.uri.path contains "/content")
-
-and (http.request.uri.query contains "webserver")
-
-
+(http.request.uri.path contains "/content")and (http.request.uri.query contains "webserver")
 ```
 
 For a walkthrough, refer to [Creating Load Balancing rules](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/create-rules/).

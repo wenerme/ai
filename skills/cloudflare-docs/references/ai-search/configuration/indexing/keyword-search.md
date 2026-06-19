@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,22 +28,7 @@ At least one of `vector` or `keyword` must be `true`. Changing `index_method` tr
 TypeScript
 
 ```
-
-const instance = await env.AI_SEARCH.create({
-
-  id: "my-instance",
-
-  index_method: {
-
-    vector: false,
-
-    keyword: true,
-
-  },
-
-});
-
-
+const instance = await env.AI_SEARCH.create({  id: "my-instance",  index_method: {    vector: false,    keyword: true,  },});
 ```
 
 ## Keyword tokenizer
@@ -69,27 +54,8 @@ You can override `keyword_match_mode` per request:
 TypeScript
 
 ```
-
 const instance = env.AI_SEARCH.get("my-instance");
-
-
-const results = await instance.search({
-
-  messages: [{ role: "user", content: "What is Cloudflare?" }],
-
-  ai_search_options: {
-
-    retrieval: {
-
-      keyword_match_mode: "or",
-
-    },
-
-  },
-
-});
-
-
+const results = await instance.search({  messages: [{ role: "user", content: "What is Cloudflare?" }],  ai_search_options: {    retrieval: {      keyword_match_mode: "or",    },  },});
 ```
 
 ## Limits

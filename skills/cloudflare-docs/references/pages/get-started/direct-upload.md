@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -55,10 +55,7 @@ Log in to Wrangler with the [wrangler login command](https://developers.cloudfla
 Terminal window
 
 ```
-
 npx wrangler pages project create
-
-
 ```
 
 You will then be prompted to specify the project name. Your project will be served at `<PROJECT_NAME>.pages.dev` (or your project name plus a few random characters if your project name is already taken). You will also be prompted to specify your production branch.
@@ -72,10 +69,7 @@ From here, you have created an empty project and can now deploy your assets for 
 Terminal window
 
 ```
-
 npx wrangler pages deploy <BUILD_OUTPUT_DIRECTORY>
-
-
 ```
 
 Find the appropriate build output directory for your project in [Build directory under Framework presets](https://developers.cloudflare.com/pages/configuration/build-configuration/#framework-presets).
@@ -91,10 +85,7 @@ To deploy assets to a preview environment, run:
 Terminal window
 
 ```
-
 npx wrangler pages deploy <OUTPUT_DIRECTORY> --branch=<BRANCH_NAME>
-
-
 ```
 
 For every branch you create, a branch alias will be available to you at `<BRANCH_NAME>.<PROJECT_NAME>.pages.dev`.
@@ -112,10 +103,7 @@ If you would like to use Wrangler to obtain a list of all available projects for
 Terminal window
 
 ```
-
 npx wrangler pages project list
-
-
 ```
 
 To get the output as JSON for programmatic use or scripting, use the `--json` flag:
@@ -123,10 +111,7 @@ To get the output as JSON for programmatic use or scripting, use the `--json` fl
 Terminal window
 
 ```
-
 npx wrangler pages project list --json
-
-
 ```
 
 If you would like to use Wrangler to obtain a list of all unique preview URLs for a particular project, use [pages deployment list](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-deployment-list):
@@ -134,10 +119,7 @@ If you would like to use Wrangler to obtain a list of all unique preview URLs fo
 Terminal window
 
 ```
-
 npx wrangler pages deployment list
-
-
 ```
 
 For step-by-step directions on how to use Wrangler and continuous integration tools like GitHub Actions, Circle CI, and Travis CI together for continuous deployment, refer to [Use Direct Upload with continuous integration](https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/).
@@ -178,18 +160,7 @@ If your project is a [Direct Upload](https://developers.cloudflare.com/pages/get
 Terminal window
 
 ```
-
-curl --request PATCH \
-
-"https://api.cloudflare.com/client/v4/accounts/{account_id}/pages/projects/{project_name}" \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Content-Type: application/json" \
-
---data "{\"production_branch\": \"main\"}"
-
-
+curl --request PATCH \"https://api.cloudflare.com/client/v4/accounts/{account_id}/pages/projects/{project_name}" \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data "{\"production_branch\": \"main\"}"
 ```
 
 ### Functions

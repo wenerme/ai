@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,10 +17,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 ## Endpoint
 
 ```
-
 https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/ideogram
-
-
 ```
 
 ## Prerequisites
@@ -39,22 +36,7 @@ When making requests to Ideogram, ensure you have the following:
 Example fetch request
 
 ```
-
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/ideogram/v1/ideogram-v3/generate \
-
-  --header 'Api-Key: {ideogram_api_key}' \
-
-  --header 'Content-Type: application/json' \
-
-  --data '{
-
-    "prompt": "A serene landscape with mountains and a lake at sunset",
-
-    "model": "V_3"
-
-  }'
-
-
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/ideogram/v1/ideogram-v3/generate \  --header 'Api-Key: {ideogram_api_key}' \  --header 'Content-Type: application/json' \  --data '{    "prompt": "A serene landscape with mountains and a lake at sunset",    "model": "V_3"  }'
 ```
 
 ### Use with JavaScript
@@ -62,44 +44,9 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/ideogram/v1/
 JavaScript
 
 ```
-
-const accountId = "{account_id}";
-
-const gatewayId = "{gateway_id}";
-
-const ideogramApiKey = "{ideogram_api_key}";
-
-const baseURL = `https://gateway.ai.cloudflare.com/v1/${accountId}/${gatewayId}/ideogram`;
-
-
-const response = await fetch(`${baseURL}/v1/ideogram-v3/generate`, {
-
-  method: "POST",
-
-  headers: {
-
-    "Api-Key": ideogramApiKey,
-
-    "Content-Type": "application/json",
-
-  },
-
-  body: JSON.stringify({
-
-    prompt: "A serene landscape with mountains and a lake at sunset",
-
-    model: "V_3",
-
-  }),
-
-});
-
-
-const result = await response.json();
-
-console.log(result);
-
-
+const accountId = "{account_id}";const gatewayId = "{gateway_id}";const ideogramApiKey = "{ideogram_api_key}";const baseURL = `https://gateway.ai.cloudflare.com/v1/${accountId}/${gatewayId}/ideogram`;
+const response = await fetch(`${baseURL}/v1/ideogram-v3/generate`, {  method: "POST",  headers: {    "Api-Key": ideogramApiKey,    "Content-Type": "application/json",  },  body: JSON.stringify({    prompt: "A serene landscape with mountains and a lake at sunset",    model: "V_3",  }),});
+const result = await response.json();console.log(result);
 ```
 
 ```json

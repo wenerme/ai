@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,76 +21,7 @@ The following API call will request IDS samples over a one hour period, and outp
 Terminal window
 
 ```
-
-echo '{ "query":
-
-  "query IDSActivity {
-
-    viewer {
-
-      accounts(filter: { accountTag: $accountTag }) {
-
-        magicIDPSNetworkAnalyticsAdaptiveGroups(
-
-          filter: $filter
-
-          limit: 10
-
-        ) {
-
-          sum {
-
-            bits
-
-            packets
-
-          }
-
-          dimensions {
-
-            datetimeFiveMinutes
-
-          }
-
-        }
-
-      }
-
-    }
-
-  }",
-
-  "variables": {
-
-    "accountTag": "<CLOUDFLARE_ACCOUNT_TAG>",
-
-    "filter": {
-
-      "datetime_geq": "2023-06-20T11:00:00.000Z",
-
-      "datetime_leq": "2023-06-20T12:00:00.000Z",
-
-      "verdict": "drop",
-
-      "outcome": "pass"
-
-    }
-
-  }
-
-}' | tr -d '\n' | curl --silent \
-
-https://api.cloudflare.com/client/v4/graphql \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Accept: application/json" \
-
---header "Content-Type: application/json" \
-
---data @-
-
-
+echo '{ "query":  "query IDSActivity {    viewer {      accounts(filter: { accountTag: $accountTag }) {        magicIDPSNetworkAnalyticsAdaptiveGroups(          filter: $filter          limit: 10        ) {          sum {            bits            packets          }          dimensions {            datetimeFiveMinutes          }        }      }    }  }",  "variables": {    "accountTag": "<CLOUDFLARE_ACCOUNT_TAG>",    "filter": {      "datetime_geq": "2023-06-20T11:00:00.000Z",      "datetime_leq": "2023-06-20T12:00:00.000Z",      "verdict": "drop",      "outcome": "pass"    }  }}' | tr -d '\n' | curl --silent \https://api.cloudflare.com/client/v4/graphql \--header "Authorization: Bearer <API_TOKEN>" \--header "Accept: application/json" \--header "Content-Type: application/json" \--data @-
 ```
 
 The returned values represent the total number of packets and bits that matched IDS rules during the five minute interval. The result will be in JSON (as requested), so piping the output to `jq` will make it easier to read, like in the following example:
@@ -98,107 +29,8 @@ The returned values represent the total number of packets and bits that matched 
 Terminal window
 
 ```
-
-... | curl --silent \
-
-https://api.cloudflare.com/client/v4/graphql \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Accept: application/json" \
-
---header "Content-Type: application/json" \
-
---data @- | jq .
-
-
-#=> {
-
-#=>   "data": {
-
-#=>     "viewer": {
-
-#=>       "accounts": [
-
-#=>         {
-
-#=>           "magicIDPSNetworkAnalyticsAdaptiveGroups": [
-
-#=>             {
-
-#=>               sum: { bits:  327680, packets: 16384 },
-
-#=>               dimensions: {
-
-#=>                 datetimeFiveMinute: '2021-05-12T22:00-00:00'
-
-#=>               }
-
-#=>             },
-
-#=>             {
-
-#=>               sum: { bits:  360448, packets: 8192 },
-
-#=>               dimensions: {
-
-#=>                 datetimeFiveMinute: '2021-05-12T22:05-00:00'
-
-#=>               }
-
-#=>             },
-
-#=>             {
-
-#=>               sum: { bits:  327680, packets: 8192 },
-
-#=>               dimensions: {
-
-#=>                 datetimeFiveMinute: '2021-05-12T22:05-00:00'
-
-#=>               }
-
-#=>             },
-
-#=>             {
-
-#=>               sum: { bits:  360448, packets: 8192 },
-
-#=>               dimensions: {
-
-#=>                 datetimeFiveMinute: '2021-05-12T22:20-00:00'
-
-#=>               }
-
-#=>             },
-
-#=>             {
-
-#=>               sum: { bits:  327680, packets: 8192 },
-
-#=>               dimensions: {
-
-#=>                 datetimeFiveMinute: '2021-05-12T22:20-00:00'
-
-#=>               }
-
-#=>             }
-
-#=>           ]
-
-#=>         }
-
-#=>       ]
-
-#=>     }
-
-#=>   },
-
-#=>   "errors": null
-
-#=> }
-
-
+... | curl --silent \https://api.cloudflare.com/client/v4/graphql \--header "Authorization: Bearer <API_TOKEN>" \--header "Accept: application/json" \--header "Content-Type: application/json" \--data @- | jq .
+#=> {#=>   "data": {#=>     "viewer": {#=>       "accounts": [#=>         {#=>           "magicIDPSNetworkAnalyticsAdaptiveGroups": [#=>             {#=>               sum: { bits:  327680, packets: 16384 },#=>               dimensions: {#=>                 datetimeFiveMinute: '2021-05-12T22:00-00:00'#=>               }#=>             },#=>             {#=>               sum: { bits:  360448, packets: 8192 },#=>               dimensions: {#=>                 datetimeFiveMinute: '2021-05-12T22:05-00:00'#=>               }#=>             },#=>             {#=>               sum: { bits:  327680, packets: 8192 },#=>               dimensions: {#=>                 datetimeFiveMinute: '2021-05-12T22:05-00:00'#=>               }#=>             },#=>             {#=>               sum: { bits:  360448, packets: 8192 },#=>               dimensions: {#=>                 datetimeFiveMinute: '2021-05-12T22:20-00:00'#=>               }#=>             },#=>             {#=>               sum: { bits:  327680, packets: 8192 },#=>               dimensions: {#=>                 datetimeFiveMinute: '2021-05-12T22:20-00:00'#=>               }#=>             }#=>           ]#=>         }#=>       ]#=>     }#=>   },#=>   "errors": null#=> }
 ```
 
 ## Footnotes

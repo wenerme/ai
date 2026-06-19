@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,14 +23,7 @@ First, install the Hexo CLI with `npm` or `yarn` by running either of the follow
 Terminal window
 
 ```
-
-npm install hexo-cli -g
-
-# or
-
-yarn global add hexo-cli
-
-
+npm install hexo-cli -g# oryarn global add hexo-cli
 ```
 
 On macOS and Linux, you can install with [brew ↗](https://brew.sh/):
@@ -38,10 +31,7 @@ On macOS and Linux, you can install with [brew ↗](https://brew.sh/):
 Terminal window
 
 ```
-
 brew install hexo
-
-
 ```
 
 ## Before you continue
@@ -59,12 +49,7 @@ With Hexo CLI installed, create a new project by running the `hexo init` command
 Terminal window
 
 ```
-
-hexo init my-hexo-site
-
-cd my-hexo-site
-
-
+hexo init my-hexo-sitecd my-hexo-site
 ```
 
 Hexo sites use themes to customize the appearance of statically built HTML sites. Hexo has a default theme automatically installed, which you can find on [Hexo's Themes page ↗](https://hexo.io/themes/).
@@ -76,10 +61,7 @@ Create a new post to give your Hexo site some initial content. Run the `hexo new
 Terminal window
 
 ```
-
 hexo new "hello hexo"
-
-
 ```
 
 Inside of `hello-hexo.md`, use Markdown to write the content of the article. You can customize the tags, categories or other variables in the article. Refer to the [Front Matter section ↗](https://hexo.io/docs/front-matter) of the [Hexo documentation ↗](https://hexo.io/docs/) for more information.
@@ -91,20 +73,7 @@ Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). Aft
 Terminal window
 
 ```
-
-git init
-
-git remote add origin https://github.com/<your-gh-username>/<repository-name>
-
-git add .
-
-git commit -m "Initial commit"
-
-git branch -M main
-
-git push -u origin main
-
-
+git initgit remote add origin https://github.com/<your-gh-username>/<repository-name>git add .git commit -m "Initial commit"git branch -M maingit push -u origin main
 ```
 
 ## Deploy with Cloudflare Pages

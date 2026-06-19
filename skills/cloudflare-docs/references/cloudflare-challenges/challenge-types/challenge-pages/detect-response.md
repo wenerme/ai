@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-challenges/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,22 +25,7 @@ To illustrate, here is a JavaScript code snippet that demonstrates how to use th
 JavaScript
 
 ```
-
-fetch("/my-api-endpoint").then((response) => {
-
-  if (response.headers.get("cf-mitigated") === "challenge") {
-
-    // Handle challenged response
-
-  } else {
-
-    // Process response as usual
-
-  }
-
-});
-
-
+fetch("/my-api-endpoint").then((response) => {  if (response.headers.get("cf-mitigated") === "challenge") {    // Handle challenged response  } else {    // Process response as usual  }});
 ```
 
 ```json

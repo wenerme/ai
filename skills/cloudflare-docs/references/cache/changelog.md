@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -192,56 +192,7 @@ You can now review detailed audit logs for cache purge events, giving you visibi
 The detailed audit payload is visible within the Cloudflare Dashboard (under **Manage Account** \> **Audit Logs**) and via the API. Below is an example of the Audit Logs v2 payload structure:
 
 ```
-
-{
-
-  "action": {
-
-    "result": "success",
-
-    "type": "create"
-
-  },
-
-  "actor": {
-
-    "id": "1234567890abcdef",
-
-    "email": "user@example.com",
-
-    "type": "user"
-
-  },
-
-  "resource": {
-
-    "product": "purge_cache",
-
-    "request": {
-
-      "files": [
-
-        "https://example.com/images/logo.png",
-
-        "https://example.com/css/styles.css"
-
-      ]
-
-    }
-
-  },
-
-  "zone": {
-
-    "id": "023e105f4ecef8ad9ca31a8372d0c353",
-
-    "name": "example.com"
-
-  }
-
-}
-
-
+{  "action": {    "result": "success",    "type": "create"  },  "actor": {    "id": "1234567890abcdef",    "email": "user@example.com",    "type": "user"  },  "resource": {    "product": "purge_cache",    "request": {      "files": [        "https://example.com/images/logo.png",        "https://example.com/css/styles.css"      ]    }  },  "zone": {    "id": "023e105f4ecef8ad9ca31a8372d0c353",    "name": "example.com"  }}
 ```
 
 #### Get started
@@ -266,38 +217,7 @@ If you have a Cache Rule that segments content based on a specific cookie (for e
 The Trace response includes the cache key in the `cache` object:
 
 ```
-
-{
-
-  "step_name": "request",
-
-  "type": "cache",
-
-  "matched": true,
-
-  "public_name": "Cache Parameters",
-
-  "cache": {
-
-    "key": {
-
-      "zone_id": "023e105f4ecef8ad9ca31a8372d0c353",
-
-      "scheme": "https",
-
-      "host": "example.com",
-
-      "uri": "/images/hero.jpg"
-
-    },
-
-    "key_string": "023e105f4ecef8ad9ca31a8372d0c353::::https://example.com/images/hero.jpg:::::"
-
-  }
-
-}
-
-
+{  "step_name": "request",  "type": "cache",  "matched": true,  "public_name": "Cache Parameters",  "cache": {    "key": {      "zone_id": "023e105f4ecef8ad9ca31a8372d0c353",      "scheme": "https",      "host": "example.com",      "uri": "/images/hero.jpg"    },    "key_string": "023e105f4ecef8ad9ca31a8372d0c353::::https://example.com/images/hero.jpg:::::"  }}
 ```
 
 #### Get started
@@ -430,8 +350,8 @@ You can now implement our **child safety tooling**, the **[CSAM Scanning Tool](h
 When enabled, the tool automatically [hashes images for enabled websites as they enter the Cloudflare cache ↗](https://blog.cloudflare.com/the-csam-scanning-tool/). These hashes are then checked against a database of **known abusive images**.
 
 * **Potential match detected?**  
-   * The **content URL is blocked**, and  
-   * **Cloudflare will notify you** about the found matches via the provided email address.
+  * The **content URL is blocked**, and
+  * **Cloudflare will notify you** about the found matches via the provided email address.
 
 **Updated Service-Specific Terms**
 
@@ -456,20 +376,7 @@ When you use [Load Balancing](https://developers.cloudflare.com/load-balancing/)
 #### Example workflow
 
 ```
-
-Load Balancing Pool: api-pool
-
-├── Origin 1: api-1.example.com
-
-├── Origin 2: api-2.example.com
-
-└── Origin 3: api-3.example.com
-
-    ↓
-
-Selected Upper Tier: [Optimal data center based on pool performance]
-
-
+Load Balancing Pool: api-pool├── Origin 1: api-1.example.com├── Origin 2: api-2.example.com└── Origin 3: api-3.example.com    ↓Selected Upper Tier: [Optimal data center based on pool performance]
 ```
 
 #### Get started
@@ -559,28 +466,7 @@ When configuring [custom cache keys](https://developers.cloudflare.com/cache/how
 #### Example configuration
 
 ```
-
-{
-
-  "cache_key": {
-
-    "custom_key": {
-
-      "header": {
-
-        "include": ["accept-language", "user-agent"],
-
-        "check_presence": ["referer"]
-
-      }
-
-    }
-
-  }
-
-}
-
-
+{  "cache_key": {    "custom_key": {      "header": {        "include": ["accept-language", "user-agent"],        "check_presence": ["referer"]      }    }  }}
 ```
 
 This configuration creates separate cache entries based on the `accept-language` and `user-agent` headers, while also considering whether the `referer` header is present.

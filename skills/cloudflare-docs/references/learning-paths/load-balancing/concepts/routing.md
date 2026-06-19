@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -52,9 +52,10 @@ With enough unhealthy endpoints, the pool itself may be considered unhealthy as 
 
 When a pool reaches **Critical** health, your load balancer will begin diverting traffic according to its [Traffic steering policy](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/):
 
-* **Off**:  
-   * If the active pool becomes unhealthy, traffic goes to the next pool in order.  
-   * If an inactive pool becomes unhealthy, traffic continues to go to the active pool (but would skip over the unhealthy pool in the failover order).
+* **Off**:
+
+  * If the active pool becomes unhealthy, traffic goes to the next pool in order.
+  * If an inactive pool becomes unhealthy, traffic continues to go to the active pool (but would skip over the unhealthy pool in the failover order).
 * **All other methods**: Traffic is distributed across all remaining pools according to the traffic steering policy.
 
 #### Fallback pools

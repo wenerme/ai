@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,93 +23,15 @@ A query should be stripped from newline symbols and sent as a single-line string
 A payload structure for GraphQL API
 
 ```
-
-{
-
-  "query": "{viewer { ... }}",
-
-  "variables": {}
-
-}
-
-
+{  "query": "{viewer { ... }}",  "variables": {}}
 ```
 
-It is still possible to use a human-friendly query though. In the example below you can see how `echo` piped together with `tr` to provide a proper payload with`curl`:
+It is still possible to use a human-friendly query though. In the example below you can see how `echo` piped together with `tr` to provide a proper payload with `curl`:
 
 Example bash script that uses curl to query Analytics API
 
 ```
-
-echo '{ "query":
-
-  "{
-
-    viewer {
-
-      zones(filter: { zoneTag: $zoneTag }) {
-
-        firewallEventsAdaptive(
-
-          filter: $filter
-
-          limit: 10
-
-          orderBy: [datetime_DESC]
-
-        ) {
-
-          action
-
-          clientAsn
-
-          clientCountryName
-
-          clientIP
-
-          clientRequestPath
-
-          clientRequestQuery
-
-          datetime
-
-          source
-
-          userAgent
-
-        }
-
-      }
-
-    }
-
-  }",
-
-  "variables": {
-
-    "zoneTag": "<zone-tag>",
-
-    "filter": {
-
-      "datetime_geq": "2022-07-24T11:00:00Z",
-
-      "datetime_leq": "2022-07-24T12:00:00Z"
-
-    }
-
-  }
-
-}' | tr -d '\n' | curl --silent \
-
-https://api.cloudflare.com/client/v4/graphql \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Content-Type: application/json" \
-
---data @-
-
-
+echo '{ "query":  "{    viewer {      zones(filter: { zoneTag: $zoneTag }) {        firewallEventsAdaptive(          filter: $filter          limit: 10          orderBy: [datetime_DESC]        ) {          action          clientAsn          clientCountryName          clientIP          clientRequestPath          clientRequestQuery          datetime          source          userAgent        }      }    }  }",  "variables": {    "zoneTag": "<zone-tag>",    "filter": {      "datetime_geq": "2022-07-24T11:00:00Z",      "datetime_leq": "2022-07-24T12:00:00Z"    }  }}' | tr -d '\n' | curl --silent \https://api.cloudflare.com/client/v4/graphql \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data @-
 ```
 
 ```json

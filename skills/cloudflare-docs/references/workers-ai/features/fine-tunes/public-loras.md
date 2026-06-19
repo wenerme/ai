@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,21 +30,14 @@ You can also list these public LoRAs with an API call:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Workers AI Write`
 * `Workers AI Read`
 
 List Public Finetunes
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai/finetunes/public" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai/finetunes/public" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ## Running inference with public LoRAs
@@ -58,30 +51,7 @@ We recommend that you use the prompt template that the LoRA was trained on. You 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/run/@cf/mistral/mistral-7b-instruct-v0.1 \
-
-  --header 'Authorization: Bearer {cf_token}' \
-
-  --data '{
-
-    "messages": [
-
-      {
-
-        "role": "user",
-
-        "content": "Write a python program to check if a number is even or odd."
-
-      }
-
-    ],
-
-    "lora": "cf-public-magicoder"
-
-  }'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/run/@cf/mistral/mistral-7b-instruct-v0.1 \  --header 'Authorization: Bearer {cf_token}' \  --data '{    "messages": [      {        "role": "user",        "content": "Write a python program to check if a number is even or odd."      }    ],    "lora": "cf-public-magicoder"  }'
 ```
 
 ### JavaScript
@@ -89,32 +59,7 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/run/@cf/mistr
 JavaScript
 
 ```
-
-const answer = await env.AI.run("@cf/mistral/mistral-7b-instruct-v0.1", {
-
-  stream: true,
-
-  raw: true,
-
-  messages: [
-
-    {
-
-      role: "user",
-
-      content:
-
-        "Summarize the following: Some newspapers, TV channels and well-known companies publish false news stories to fool people on 1 April. One of the earliest examples of this was in 1957 when a programme on the BBC, the UKs national TV channel, broadcast a report on how spaghetti grew on trees. The film showed a family in Switzerland collecting spaghetti from trees and many people were fooled into believing it, as in the 1950s British people didn't eat much pasta and many didn't know how it was made! Most British people wouldnt fall for the spaghetti trick today, but in 2008 the BBC managed to fool their audience again with their Miracles of Evolution trailer, which appeared to show some special penguins that had regained the ability to fly. Two major UK newspapers, The Daily Telegraph and the Daily Mirror, published the important story on their front pages.",
-
-    },
-
-  ],
-
-  lora: "cf-public-cnn-summarization",
-
-});
-
-
+const answer = await env.AI.run("@cf/mistral/mistral-7b-instruct-v0.1", {  stream: true,  raw: true,  messages: [    {      role: "user",      content:        "Summarize the following: Some newspapers, TV channels and well-known companies publish false news stories to fool people on 1 April. One of the earliest examples of this was in 1957 when a programme on the BBC, the UKs national TV channel, broadcast a report on how spaghetti grew on trees. The film showed a family in Switzerland collecting spaghetti from trees and many people were fooled into believing it, as in the 1950s British people didn't eat much pasta and many didn't know how it was made! Most British people wouldnt fall for the spaghetti trick today, but in 2008 the BBC managed to fool their audience again with their Miracles of Evolution trailer, which appeared to show some special penguins that had regained the ability to fly. Two major UK newspapers, The Daily Telegraph and the Daily Mirror, published the important story on their front pages.",    },  ],  lora: "cf-public-cnn-summarization",});
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,16 +31,16 @@ Cloudflare User Agent Blocking is available on all plans. However, this feature 
 
 The number of available user agent rules depends on your Cloudflare plan.
 
-| Free            | Pro | Business | Enterprise |       |
-| --------------- | --- | -------- | ---------- | ----- |
-| Availability    | Yes | Yes      | Yes        | Yes   |
-| Number of rules | 10  | 50       | 250        | 1,000 |
+|                 | Free | Pro | Business | Enterprise |
+| --------------- | ---- | --- | -------- | ---------- |
+| Availability    | Yes  | Yes | Yes      | Yes        |
+| Number of rules | 10   | 50  | 250      | 1,000      |
 
 ## Create a User Agent Blocking rule
 
-* [  New dashboard ](#tab-panel-11273)
-* [ Old dashboard ](#tab-panel-11274)
-* [ API ](#tab-panel-11275)
+* [  New dashboard ](#tab-panel-11290)
+* [ Old dashboard ](#tab-panel-11291)
+* [ API ](#tab-panel-11292)
 
 Note
 
@@ -66,36 +66,13 @@ Issue a `POST` request for the [Create a User Agent Blocking rule](https://devel
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Firewall Services Write`
 
 Create a User Agent Blocking rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/firewall/ua_rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "description": "Block Bad Bot web spider",
-
-    "mode": "block",
-
-    "configuration": {
-
-        "target": "ua",
-
-        "value": "BadBot/1.0.2 (+http://bad.bot)"
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/firewall/ua_rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "description": "Block Bad Bot web spider",    "mode": "block",    "configuration": {        "target": "ua",        "value": "BadBot/1.0.2 (+http://bad.bot)"    }  }'
 ```
 
 ## Challenge actions

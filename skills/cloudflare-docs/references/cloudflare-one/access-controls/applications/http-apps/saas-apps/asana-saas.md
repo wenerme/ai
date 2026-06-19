@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,9 +29,9 @@ This guide covers how to configure [Asana ↗](https://help.asana.com/hc/en-us/a
 4. For the authentication protocol, select **SAML**.
 5. Select **Add application**.
 6. Fill in the following fields:  
-   * **Entity ID**: `https://app.asana.com/`  
-   * **Assertion Consumer Service URL**: `https://app.asana.com/-/saml/consume`  
-   * **Name ID format**: _Email_
+  * **Entity ID**: `https://app.asana.com/`
+  * **Assertion Consumer Service URL**: `https://app.asana.com/-/saml/consume`
+  * **Name ID format**: _Email_
 7. Copy the **SSO endpoint** and **Public key**.
 8. Configure [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) for the application.
 9. Save the application.
@@ -41,8 +41,8 @@ This guide covers how to configure [Asana ↗](https://help.asana.com/hc/en-us/a
 1. In Asana, select your profile picture > **Admin console** \> **Security** \> **SAML authentication**.
 2. Under **SAML options**, select _Optional_.
 3. Fill in the following fields:  
-   * Sign-in page URL: SSO endpoint from application configuration in Cloudflare One.  
-   * X.509 certificate: Public key from application configuration in Cloudflare One. Wrap the public key in `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`.
+  * Sign-in page URL: SSO endpoint from application configuration in Cloudflare One.
+  * X.509 certificate: Public key from application configuration in Cloudflare One. Wrap the public key in `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`.
 4. Select **Save changes**.
 
 ## 3\. Test the integration and require SSO

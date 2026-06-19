@@ -6,65 +6,56 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pipelines/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
 # String functions
 
-_Cloudflare Pipelines scalar function implementations are based on[Apache DataFusion ↗](https://arrow.apache.org/datafusion/) (via [Arroyo ↗](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference._
+_Cloudflare Pipelines scalar function implementations are based on [Apache DataFusion ↗](https://arrow.apache.org/datafusion/) (via [Arroyo ↗](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference._
 
 ## `ascii`
 
 Returns the ASCII value of the first character in a string.
 
 ```
-
 ascii(str)
-
-
 ```
 
 **Arguments**
 
 * **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
 
-**Related functions**:[chr](#chr)
+**Related functions**: [chr](#chr)
 
 ## `bit_length`
 
 Returns the bit length of a string.
 
 ```
-
 bit_length(str)
-
-
 ```
 
 **Arguments**
 
 * **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
 
-**Related functions**:[length](#length),[octet\_length](#octet%5Flength)
+**Related functions**: [length](#length), [octet\_length](#octet%5Flength)
 
 ## `btrim`
 
 Trims the specified trim string from the start and end of a string. If no trim string is provided, all whitespace is removed from the start and end of the input string.
 
 ```
-
 btrim(str[, trim_str])
-
-
 ```
 
 **Arguments**
 
 * **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
-* **trim\_str**: String expression to trim from the beginning and end of the input string. Can be a constant, column, or function, and any combination of arithmetic operators._Default is whitespace characters._
+* **trim\_str**: String expression to trim from the beginning and end of the input string. Can be a constant, column, or function, and any combination of arithmetic operators. _Default is whitespace characters._
 
-**Related functions**:[ltrim](#ltrim),[rtrim](#rtrim)
+**Related functions**: [ltrim](#ltrim), [rtrim](#rtrim)
 
 **Aliases**
 
@@ -83,10 +74,7 @@ _Alias of [length](#length)._
 Concatenates multiple strings together.
 
 ```
-
 concat(str[, ..., str_n])
-
-
 ```
 
 **Arguments**
@@ -94,17 +82,14 @@ concat(str[, ..., str_n])
 * **str**: String expression to concatenate. Can be a constant, column, or function, and any combination of string operators.
 * **str\_n**: Subsequent string column or literal string to concatenate.
 
-**Related functions**:[concat\_ws](#concat%5Fws)
+**Related functions**: [concat\_ws](#concat%5Fws)
 
 ## `concat_ws`
 
 Concatenates multiple strings together with a specified separator.
 
 ```
-
 concat(separator, str[, ..., str_n])
-
-
 ```
 
 **Arguments**
@@ -113,34 +98,28 @@ concat(separator, str[, ..., str_n])
 * **str**: String expression to concatenate. Can be a constant, column, or function, and any combination of string operators.
 * **str\_n**: Subsequent string column or literal string to concatenate.
 
-**Related functions**:[concat](#concat)
+**Related functions**: [concat](#concat)
 
 ## `chr`
 
 Returns the character with the specified ASCII or Unicode code value.
 
 ```
-
 chr(expression)
-
-
 ```
 
 **Arguments**
 
 * **expression**: Expression containing the ASCII or Unicode code value to operate on. Can be a constant, column, or function, and any combination of arithmetic or string operators.
 
-**Related functions**:[ascii](#ascii)
+**Related functions**: [ascii](#ascii)
 
 ## `ends_with`
 
 Tests if a string ends with a substring.
 
 ```
-
 ends_with(str, substr)
-
-
 ```
 
 **Arguments**
@@ -153,17 +132,14 @@ ends_with(str, substr)
 Capitalizes the first character in each word in the input string. Words are delimited by non-alphanumeric characters.
 
 ```
-
 initcap(str)
-
-
 ```
 
 **Arguments**
 
 * **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
 
-**Related functions**:[lower](#lower),[upper](#upper)
+**Related functions**: [lower](#lower), [upper](#upper)
 
 ## `instr`
 
@@ -179,10 +155,7 @@ _Alias of [strpos](#strpos)._
 Returns a specified number of characters from the left side of a string.
 
 ```
-
 left(str, n)
-
-
 ```
 
 **Arguments**
@@ -190,17 +163,14 @@ left(str, n)
 * **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
 * **n**: Number of characters to return.
 
-**Related functions**:[right](#right)
+**Related functions**: [right](#right)
 
 ## `length`
 
 Returns the number of characters in a string.
 
 ```
-
 length(str)
-
-
 ```
 
 **Arguments**
@@ -212,88 +182,73 @@ length(str)
 * char\_length
 * character\_length
 
-**Related functions**:[bit\_length](#bit%5Flength),[octet\_length](#octet%5Flength)
+**Related functions**: [bit\_length](#bit%5Flength), [octet\_length](#octet%5Flength)
 
 ## `lower`
 
 Converts a string to lower-case.
 
 ```
-
 lower(str)
-
-
 ```
 
 **Arguments**
 
 * **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
 
-**Related functions**:[initcap](#initcap),[upper](#upper)
+**Related functions**: [initcap](#initcap), [upper](#upper)
 
 ## `lpad`
 
 Pads the left side of a string with another string to a specified string length.
 
 ```
-
 lpad(str, n[, padding_str])
-
-
 ```
 
 **Arguments**
 
 * **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
 * **n**: String length to pad to.
-* **padding\_str**: String expression to pad with. Can be a constant, column, or function, and any combination of string operators._Default is a space._
+* **padding\_str**: String expression to pad with. Can be a constant, column, or function, and any combination of string operators. _Default is a space._
 
-**Related functions**:[rpad](#rpad)
+**Related functions**: [rpad](#rpad)
 
 ## `ltrim`
 
 Trims the specified trim string from the beginning of a string. If no trim string is provided, all whitespace is removed from the start of the input string.
 
 ```
-
 ltrim(str[, trim_str])
-
-
 ```
 
 **Arguments**
 
 * **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
-* **trim\_str**: String expression to trim from the beginning of the input string. Can be a constant, column, or function, and any combination of arithmetic operators._Default is whitespace characters._
+* **trim\_str**: String expression to trim from the beginning of the input string. Can be a constant, column, or function, and any combination of arithmetic operators. _Default is whitespace characters._
 
-**Related functions**:[btrim](#btrim),[rtrim](#rtrim)
+**Related functions**: [btrim](#btrim), [rtrim](#rtrim)
 
 ## `octet_length`
 
 Returns the length of a string in bytes.
 
 ```
-
 octet_length(str)
-
-
 ```
 
 **Arguments**
 
 * **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
 
-**Related functions**:[bit\_length](#bit%5Flength),[length](#length)
+**Related functions**: [bit\_length](#bit%5Flength), [length](#length)
 
 ## `repeat`
 
 Returns a string with an input string repeated a specified number.
 
 ```
-
 repeat(str, n)
-
-
 ```
 
 **Arguments**
@@ -306,10 +261,7 @@ repeat(str, n)
 Replaces all occurrences of a specified substring in a string with a new substring.
 
 ```
-
 replace(str, substr, replacement)
-
-
 ```
 
 **Arguments**
@@ -323,10 +275,7 @@ replace(str, substr, replacement)
 Reverses the character order of a string.
 
 ```
-
 reverse(str)
-
-
 ```
 
 **Arguments**
@@ -338,10 +287,7 @@ reverse(str)
 Returns a specified number of characters from the right side of a string.
 
 ```
-
 right(str, n)
-
-
 ```
 
 **Arguments**
@@ -349,54 +295,45 @@ right(str, n)
 * **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
 * **n**: Number of characters to return.
 
-**Related functions**:[left](#left)
+**Related functions**: [left](#left)
 
 ## `rpad`
 
 Pads the right side of a string with another string to a specified string length.
 
 ```
-
 rpad(str, n[, padding_str])
-
-
 ```
 
 **Arguments**
 
 * **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
 * **n**: String length to pad to.
-* **padding\_str**: String expression to pad with. Can be a constant, column, or function, and any combination of string operators._Default is a space._
+* **padding\_str**: String expression to pad with. Can be a constant, column, or function, and any combination of string operators. _Default is a space._
 
-**Related functions**:[lpad](#lpad)
+**Related functions**: [lpad](#lpad)
 
 ## `rtrim`
 
 Trims the specified trim string from the end of a string. If no trim string is provided, all whitespace is removed from the end of the input string.
 
 ```
-
 rtrim(str[, trim_str])
-
-
 ```
 
 **Arguments**
 
 * **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
-* **trim\_str**: String expression to trim from the end of the input string. Can be a constant, column, or function, and any combination of arithmetic operators._Default is whitespace characters._
+* **trim\_str**: String expression to trim from the end of the input string. Can be a constant, column, or function, and any combination of arithmetic operators. _Default is whitespace characters._
 
-**Related functions**:[btrim](#btrim),[ltrim](#ltrim)
+**Related functions**: [btrim](#btrim), [ltrim](#ltrim)
 
 ## `split_part`
 
 Splits a string based on a specified delimiter and returns the substring in the specified position.
 
 ```
-
 split_part(str, delimiter, pos)
-
-
 ```
 
 **Arguments**
@@ -410,10 +347,7 @@ split_part(str, delimiter, pos)
 Tests if a string starts with a substring.
 
 ```
-
 starts_with(str, substr)
-
-
 ```
 
 **Arguments**
@@ -426,10 +360,7 @@ starts_with(str, substr)
 Returns the starting position of a specified substring in a string. Positions begin at 1\. If the substring does not exist in the string, the function returns 0.
 
 ```
-
 strpos(str, substr)
-
-
 ```
 
 **Arguments**
@@ -446,10 +377,7 @@ strpos(str, substr)
 Extracts a substring of a specified number of characters from a specific starting position in a string.
 
 ```
-
 substr(str, start_pos[, length])
-
-
 ```
 
 **Arguments**
@@ -463,10 +391,7 @@ substr(str, start_pos[, length])
 Translates characters in a string to specified translation characters.
 
 ```
-
 translate(str, chars, translation)
-
-
 ```
 
 * **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
@@ -478,10 +403,7 @@ translate(str, chars, translation)
 Converts an integer to a hexadecimal string.
 
 ```
-
 to_hex(int)
-
-
 ```
 
 **Arguments**
@@ -497,27 +419,21 @@ _Alias of [btrim](#btrim)._
 Converts a string to upper-case.
 
 ```
-
 upper(str)
-
-
 ```
 
 **Arguments**
 
 * **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
 
-**Related functions**:[initcap](#initcap),[lower](#lower)
+**Related functions**: [initcap](#initcap), [lower](#lower)
 
 ## `uuid`
 
 Returns UUID v4 string value which is unique per row.
 
 ```
-
 uuid()
-
-
 ```
 
 ## `overlay`
@@ -525,10 +441,7 @@ uuid()
 Returns the string which is replaced by another string from the specified position and specified count length. For example, `overlay('Txxxxas' placing 'hom' from 2 for 4) → Thomas`
 
 ```
-
 overlay(str PLACING substr FROM pos [FOR count])
-
-
 ```
 
 **Arguments**
@@ -543,10 +456,7 @@ overlay(str PLACING substr FROM pos [FOR count])
 Returns the Levenshtein distance between the two given strings. For example, `levenshtein('kitten', 'sitting') = 3`
 
 ```
-
 levenshtein(str1, str2)
-
-
 ```
 
 **Arguments**
@@ -559,10 +469,7 @@ levenshtein(str1, str2)
 Returns the substring from str before count occurrences of the delimiter delim. If count is positive, everything to the left of the final delimiter (counting from the left) is returned. If count is negative, everything to the right of the final delimiter (counting from the right) is returned. For example, `substr_index('www.apache.org', '.', 1) = www`, `substr_index('www.apache.org', '.', -1) = org`
 
 ```
-
 substr_index(str, delim, count)
-
-
 ```
 
 **Arguments**
@@ -576,10 +483,7 @@ substr_index(str, delim, count)
 Returns a value in the range of 1 to N if the string str is in the string list strlist consisting of N substrings. For example, `find_in_set('b', 'a,b,c,d') = 2`
 
 ```
-
 find_in_set(str, strlist)
-
-
 ```
 
 **Arguments**

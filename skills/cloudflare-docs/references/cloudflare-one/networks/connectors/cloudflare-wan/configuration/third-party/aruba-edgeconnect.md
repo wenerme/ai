@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -161,38 +161,7 @@ For additional information on creating IPsec tunnels, refer to [API documentatio
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/ipsec_tunnels?validate_only=true" \
-
---header "X-Auth-Email: <EMAIL>" \
-
---header "X-Auth-Key: <API_KEY>" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "ipsec_tunnels": [
-
-    {
-
-      "name": "EdgeConnect_IPSEC_1",
-
-      "customer_endpoint": "35.188.72.56",
-
-      "cloudflare_endpoint": "172.64.241.205",
-
-      "interface_address": "192.168.10.11/31",
-
-      "description": "Tunnel for EdgeConnect - GCP Central"
-
-    }
-
-  ]
-
-}'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/ipsec_tunnels?validate_only=true" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "ipsec_tunnels": [    {      "name": "EdgeConnect_IPSEC_1",      "customer_endpoint": "35.188.72.56",      "cloudflare_endpoint": "172.64.241.205",      "interface_address": "192.168.10.11/31",      "description": "Tunnel for EdgeConnect - GCP Central"    }  ]}'
 ```
 
 1. Create a new IPsec tunnel
@@ -200,91 +169,11 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/ipsec_tun
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/ipsec_tunnels \
-
---header "X-Auth-Email: <EMAIL>" \
-
---header "X-Auth-Key: <API_KEY>" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "ipsec_tunnels": [
-
-    {
-
-      "name": "EdgeConnect_IPSEC_1",
-
-      "customer_endpoint": "35.188.72.56",
-
-      "cloudflare_endpoint": "172.64.241.205",
-
-      "interface_address": "192.168.10.11/31",
-
-      "description": "Tunnel for EdgeConnect - GCP Central"
-
-    }
-
-  ]
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/ipsec_tunnels \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "ipsec_tunnels": [    {      "name": "EdgeConnect_IPSEC_1",      "customer_endpoint": "35.188.72.56",      "cloudflare_endpoint": "172.64.241.205",      "interface_address": "192.168.10.11/31",      "description": "Tunnel for EdgeConnect - GCP Central"    }  ]}'
 ```
 
 ```
-
-{
-
-  "result": {
-
-    "ipsec_tunnels": [
-
-      {
-
-        "id": "tunnel_id",
-
-        "interface_address": "192.168.10.11/31",
-
-        "created_on": "2022-04-14T19:57:43.938376Z",
-
-        "modified_on": "2022-04-14T19:57:43.938376Z",
-
-        "name": "EdgeConnect_IPSEC_1",
-
-        "cloudflare_endpoint": "172.64.241.205",
-
-        "customer_endpoint": "35.188.72.56",
-
-        "description": "Tunnel for EdgeConnect - GCP Central",
-
-        "health_check": {
-
-          "enabled": true,
-
-          "target": "35.188.72.56",
-
-          "type": "reply"
-
-        }
-
-      }
-
-    ]
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "ipsec_tunnels": [      {        "id": "tunnel_id",        "interface_address": "192.168.10.11/31",        "created_on": "2022-04-14T19:57:43.938376Z",        "modified_on": "2022-04-14T19:57:43.938376Z",        "name": "EdgeConnect_IPSEC_1",        "cloudflare_endpoint": "172.64.241.205",        "customer_endpoint": "35.188.72.56",        "description": "Tunnel for EdgeConnect - GCP Central",        "health_check": {          "enabled": true,          "target": "35.188.72.56",          "type": "reply"        }      }    ]  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 1. Generate Pre Shared Key (PSK) for tunnel
@@ -294,47 +183,11 @@ Use the tunnel ID from the response in Step 2\. Save the pre-shared key generate
 Terminal window
 
 ```
-
-curl --request POST \
-
-"https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/ipsec_tunnels/{tunnel_id}/psk_generate?validate_only=true" \
-
---header "X-Auth-Email: <EMAIL>" \
-
---header "X-Auth-Key: <API_KEY>"
-
-
+curl --request POST \"https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/ipsec_tunnels/{tunnel_id}/psk_generate?validate_only=true" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>"
 ```
 
 ```
-
-{
-
-  "result": {
-
-    "ipsec_id": "<ipsec_id>",
-
-    "ipsec_tunnel_id": "<tunnel_id>",
-
-    "psk": "XXXXXXXXXXXXXXXXX",
-
-    "psk_metadata": {
-
-      "last_generated_on": "2022-04-14T20:05:29.756514071Z"
-
-    }
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "ipsec_id": "<ipsec_id>",    "ipsec_tunnel_id": "<tunnel_id>",    "psk": "XXXXXXXXXXXXXXXXX",    "psk_metadata": {      "last_generated_on": "2022-04-14T20:05:29.756514071Z"    }  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 **Create an IPsec tunnel on EdgeConnect**

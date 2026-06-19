@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -50,24 +50,7 @@ To record separate audio tracks for specific participants, call [POST /recording
 Terminal window
 
 ```
-
-curl --request POST \
-
-  --url https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/kit/<app_id>/recordings/track \
-
-  --header 'Authorization: Bearer <api_token>' \
-
-  --header 'Content-Type: application/json' \
-
-  --data '{
-
-  "meeting_id": "97440c6a-140b-40a9-9499-b23fd7a3868a",
-
-  "user_ids": ["user-123", "user-456"]
-
-}'
-
-
+curl --request POST \  --url https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/kit/<app_id>/recordings/track \  --header 'Authorization: Bearer <api_token>' \  --header 'Content-Type: application/json' \  --data '{  "meeting_id": "97440c6a-140b-40a9-9499-b23fd7a3868a",  "user_ids": ["user-123", "user-456"]}'
 ```
 
 RealtimeKit records current and future participants whose `user_id` matches the allowlist. Participants whose `user_id` is not listed are not recorded.
@@ -79,53 +62,13 @@ Omit `user_ids` to record separate audio tracks for all participants in the live
 Terminal window
 
 ```
-
-curl --request POST \
-
-  --url https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/kit/<app_id>/recordings/track \
-
-  --header 'Authorization: Bearer <api_token>' \
-
-  --header 'Content-Type: application/json' \
-
-  --data '{
-
-  "meeting_id": "97440c6a-140b-40a9-9499-b23fd7a3868a"
-
-}'
-
-
+curl --request POST \  --url https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/kit/<app_id>/recordings/track \  --header 'Authorization: Bearer <api_token>' \  --header 'Content-Type: application/json' \  --data '{  "meeting_id": "97440c6a-140b-40a9-9499-b23fd7a3868a"}'
 ```
 
 The response includes a recording ID. Use this ID to stop or fetch the recording.
 
 ```
-
-{
-
-  "success": true,
-
-  "data": {
-
-    "recording": {
-
-      "id": "fff40c6a-140b-40a9-9499-b23fd7a3868a",
-
-      "meeting_id": "97440c6a-140b-40a9-9499-b23fd7a3868a",
-
-      "status": "INVOKED",
-
-      "type": "TRACK",
-
-      "output_file_name": "{{file_name_prefix}}_{{user_id}}_{{peer_id}}_{{stream_kind}}_{{media_kind}}_{{date_time}}.webm"
-
-    }
-
-  }
-
-}
-
-
+{  "success": true,  "data": {    "recording": {      "id": "fff40c6a-140b-40a9-9499-b23fd7a3868a",      "meeting_id": "97440c6a-140b-40a9-9499-b23fd7a3868a",      "status": "INVOKED",      "type": "TRACK",      "output_file_name": "{{file_name_prefix}}_{{user_id}}_{{peer_id}}_{{stream_kind}}_{{media_kind}}_{{date_time}}.webm"    }  }}
 ```
 
 ## Customize file names with prefixes
@@ -133,26 +76,7 @@ The response includes a recording ID. Use this ID to stop or fetch the recording
 Use `layers.default.file_name_prefix` to prefix every generated track recording file.
 
 ```
-
-{
-
-  "meeting_id": "97440c6a-140b-40a9-9499-b23fd7a3868a",
-
-  "layers": {
-
-    "default": {
-
-      "media_kind": "audio",
-
-      "file_name_prefix": "speaker"
-
-    }
-
-  }
-
-}
-
-
+{  "meeting_id": "97440c6a-140b-40a9-9499-b23fd7a3868a",  "layers": {    "default": {      "media_kind": "audio",      "file_name_prefix": "speaker"    }  }}
 ```
 
 If you omit `layers`, RealtimeKit uses `default` as the file name prefix.
@@ -164,22 +88,7 @@ Use the [recording update endpoint](https://developers.cloudflare.com/api/resour
 Terminal window
 
 ```
-
-curl --request PUT \
-
-  --url https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/kit/<app_id>/recordings/<recording_id> \
-
-  --header 'Authorization: Bearer <api_token>' \
-
-  --header 'Content-Type: application/json' \
-
-  --data '{
-
-  "action": "stop"
-
-}'
-
-
+curl --request PUT \  --url https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/kit/<app_id>/recordings/<recording_id> \  --header 'Authorization: Bearer <api_token>' \  --header 'Content-Type: application/json' \  --data '{  "action": "stop"}'
 ```
 
 Track recording also stops when the meeting session ends.
@@ -193,41 +102,13 @@ Track recording uses the same recording status lifecycle as composite recording.
 When the recording reaches `UPLOADED`, fetch the recording details or listen for the `recording.statusUpdate` webhook. For track recordings, `download_url` contains per-participant WebM file URLs grouped by layer.
 
 ```
-
-{
-
-  "download_url": [
-
-    {
-
-      "layer_name": "default",
-
-      "download_urls": {
-
-        "speaker_user-123_peer-456_peer_audio_1760000000000.webm": {
-
-          "download_url": "https://example.com/presigned-url"
-
-        }
-
-      }
-
-    }
-
-  ]
-
-}
-
-
+{  "download_url": [    {      "layer_name": "default",      "download_urls": {        "speaker_user-123_peer-456_peer_audio_1760000000000.webm": {          "download_url": "https://example.com/presigned-url"        }      }    }  ]}
 ```
 
 File names use this format:
 
 ```
-
 {{file_name_prefix}}_{{user_id}}_{{peer_id}}_{{stream_kind}}_{{media_kind}}_{{date_time}}.webm
-
-
 ```
 
 The `date_time` value is the Unix timestamp in milliseconds when the file was generated.

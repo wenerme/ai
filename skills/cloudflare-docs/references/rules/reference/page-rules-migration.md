@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -115,8 +115,8 @@ Also, to streamline common configurations, the Cloudflare dashboard now includes
 
 ### Migrate Always Use HTTPS
 
-* [ Dashboard ](#tab-panel-9998)
-* [ Visual guide ](#tab-panel-9999)
+* [ Dashboard ](#tab-panel-10072)
+* [ Visual guide ](#tab-panel-10073)
 
 **Context:**
 
@@ -127,13 +127,14 @@ You configured a Page Rule to perform an automatic redirect from HTTP to HTTPS f
 
 **How to migrate**:
 
-1. [Create a single redirect](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-dashboard/) to always redirect HTTP requests to HTTPS. You can select the **Redirect from HTTP to HTTPS** rule template or enter the following rule configuration:  
-   * **If incoming requests match**: Wildcard pattern  
-         * **Request URL**: `http://*`  
-   * **Then**:  
-         * **Target URL**: `https://${1}`  
-         * **Status code**: _301_  
-         * **Preserve query string**: Enabled
+1. [Create a single redirect](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-dashboard/) to always redirect HTTP requests to HTTPS. You can select the **Redirect from HTTP to HTTPS** rule template or enter the following rule configuration:
+
+  * **If incoming requests match**: Wildcard pattern  
+    * **Request URL**: `http://*`
+  * **Then**:  
+    * **Target URL**: `https://${1}`
+    * **Status code**: _301_
+    * **Preserve query string**: Enabled
 2. Turn off your existing Page Rule and validate the behavior of the redirect you created.
 3. If your tests succeed, delete the existing Page Rule.
 
@@ -143,8 +144,8 @@ You configured a Page Rule to perform an automatic redirect from HTTP to HTTPS f
 
 ### Migrate Automatic HTTPS Rewrites
 
-* [ Dashboard ](#tab-panel-10000)
-* [ Visual guide ](#tab-panel-10001)
+* [ Dashboard ](#tab-panel-10074)
+* [ Visual guide ](#tab-panel-10075)
 
 **Context:**
 
@@ -156,15 +157,16 @@ You configured a Page Rule turning on Automatic HTTPS Rewrites for all subdomain
 
 **How to migrate**:
 
-1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to always rewrite HTTP links to HTTPS for any hostname containing `example.com`:  
-   * **When incoming requests match**: Custom filter expression  
-         * Using the Expression Builder:  
-         `Hostname contains "example.com"`  
-         * Using the Expression Editor:  
-         `(http.host contains "example.com")`  
-   * **Then the settings are**:  
-         * **Setting**: Automatic HTTPS Rewrites  
-         * **Value**: On
+1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to always rewrite HTTP links to HTTPS for any hostname containing `example.com`:
+
+  * **When incoming requests match**: Custom filter expression  
+    * Using the Expression Builder:  
+      `Hostname contains "example.com"`
+    * Using the Expression Editor:  
+      `(http.host contains "example.com")`
+  * **Then the settings are**:  
+    * **Setting**: Automatic HTTPS Rewrites
+    * **Value**: On
 2. Turn off your existing Page Rule and validate the behavior of the configuration rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
@@ -174,8 +176,8 @@ You configured a Page Rule turning on Automatic HTTPS Rewrites for all subdomain
 
 ### Migrate Browser Cache TTL
 
-* [ Dashboard ](#tab-panel-10030)
-* [ Visual guide ](#tab-panel-10031)
+* [ Dashboard ](#tab-panel-10104)
+* [ Visual guide ](#tab-panel-10105)
 
 **Context:**
 
@@ -187,16 +189,17 @@ You configured a Page Rule adjusting browser cache TTL to one day for all subdom
 
 **How to migrate**:
 
-1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to adjust browser cache TTL for caching resources in the browser to one day for any hostname containing `example.com`:  
-   * **When incoming requests match**: Custom filter expression  
-         * Using the Expression Builder:  
-         `Hostname contains "example.com"`  
-         * Using the Expression Editor:  
-         `(http.host contains "example.com")`  
-   * **Then**:  
-         * **Cache eligibility**: Eligible for cache  
-         * **Browser TTL**: Override origin and use this TTL  
-         * **Input time-to-live (TTL)**: _1 day_  
+1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to adjust browser cache TTL for caching resources in the browser to one day for any hostname containing `example.com`:
+
+  * **When incoming requests match**: Custom filter expression  
+    * Using the Expression Builder:  
+      `Hostname contains "example.com"`
+    * Using the Expression Editor:  
+      `(http.host contains "example.com")`
+  * **Then**:  
+    * **Cache eligibility**: Eligible for cache
+    * **Browser TTL**: Override origin and use this TTL
+    * **Input time-to-live (TTL)**: _1 day_  
 Warning  
 The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
@@ -208,8 +211,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Browser Integrity Check
 
-* [ Dashboard ](#tab-panel-10002)
-* [ Visual guide ](#tab-panel-10003)
+* [ Dashboard ](#tab-panel-10076)
+* [ Visual guide ](#tab-panel-10077)
 
 **Context:**
 
@@ -221,15 +224,16 @@ You configured a Page Rule turning on Browser Integrity Check for all subdomains
 
 **How to migrate**:
 
-1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to turn on Browser Integrity Check for protecting against bots and threats for any hostname containing `example.com`:  
-   * **When incoming requests match**: Custom filter expression  
-         * Using the Expression Builder:  
-         `Hostname contains "example.com"`  
-         * Using the Expression Editor:  
-         `(http.host contains "example.com")`  
-   * **Then the settings are**:  
-         * **Setting**: Browser Integrity Check  
-         * **Value**: On
+1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to turn on Browser Integrity Check for protecting against bots and threats for any hostname containing `example.com`:
+
+  * **When incoming requests match**: Custom filter expression  
+    * Using the Expression Builder:  
+      `Hostname contains "example.com"`
+    * Using the Expression Editor:  
+      `(http.host contains "example.com")`
+  * **Then the settings are**:  
+    * **Setting**: Browser Integrity Check
+    * **Value**: On
 2. Turn off your existing Page Rule and validate the behavior of the configuration rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
@@ -239,8 +243,8 @@ You configured a Page Rule turning on Browser Integrity Check for all subdomains
 
 ### Migrate Bypass Cache on Cookie
 
-* [ Dashboard ](#tab-panel-10032)
-* [ Visual guide ](#tab-panel-10033)
+* [ Dashboard ](#tab-panel-10106)
+* [ Visual guide ](#tab-panel-10107)
 
 **Context:**
 
@@ -252,14 +256,15 @@ You configured a Page Rule turning on Bypass Cache on Cookie for all subdomains 
 
 **How to migrate**:
 
-1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to bypass cache for requests containing cookie `test_cookie` for any hostname containing `example.com`:  
-   * **When incoming requests match**: Custom filter expression  
-         * Using the Expression Builder:  
-         `Hostname contains "example.com" AND Cookie contains "test-cookie"`  
-         * Using the Expression Editor:  
-         `(http.host contains "example.com" and http.cookie contains "test-cookie")`  
-   * **Then**:  
-         * **Cache eligibility**: Bypass cache  
+1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to bypass cache for requests containing cookie `test_cookie` for any hostname containing `example.com`:
+
+  * **When incoming requests match**: Custom filter expression  
+    * Using the Expression Builder:  
+      `Hostname contains "example.com" AND Cookie contains "test-cookie"`
+    * Using the Expression Editor:  
+      `(http.host contains "example.com" and http.cookie contains "test-cookie")`
+  * **Then**:  
+    * **Cache eligibility**: Bypass cache  
 Warning  
 The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
@@ -271,8 +276,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Cache By Device Type
 
-* [ Dashboard ](#tab-panel-10034)
-* [ Visual guide ](#tab-panel-10035)
+* [ Dashboard ](#tab-panel-10108)
+* [ Visual guide ](#tab-panel-10109)
 
 **Context:**
 
@@ -284,16 +289,17 @@ You configured a Page Rule turning on Cache By Device Type for all subdomains of
 
 **How to migrate**:
 
-1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to cache content based on user agent or device type for any hostname containing `example.com`:  
-   * **When incoming requests match**: Custom filter expression  
-         * Using the Expression Builder:  
-         `Hostname contains "example.com"`  
-         * Using the Expression Editor:  
-         `(http.host contains "example.com")`  
-   * **Then**:  
-         * **Cache eligibility**: Eligible for cache  
-         * **Setting**: Cache key  
-                  * **Cache by device type**: On  
+1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to cache content based on user agent or device type for any hostname containing `example.com`:
+
+  * **When incoming requests match**: Custom filter expression  
+    * Using the Expression Builder:  
+      `Hostname contains "example.com"`
+    * Using the Expression Editor:  
+      `(http.host contains "example.com")`
+  * **Then**:  
+    * **Cache eligibility**: Eligible for cache
+    * **Setting**: Cache key  
+      * **Cache by device type**: On  
 Warning  
 The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
@@ -305,8 +311,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Cache Deception Armor
 
-* [ Dashboard ](#tab-panel-10036)
-* [ Visual guide ](#tab-panel-10037)
+* [ Dashboard ](#tab-panel-10110)
+* [ Visual guide ](#tab-panel-10111)
 
 **Context:**
 
@@ -317,16 +323,17 @@ You configured a Page Rule turning on Cache Deception Armor for all subdomains o
 
 **How to migrate**:
 
-1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to protect against cache deception attacks for any hostname containing `example.com`:  
-   * **When incoming requests match**: Custom filter expression  
-         * Using the Expression Builder:  
-         `Hostname contains "example.com"`  
-         * Using the Expression Editor:  
-         `(http.host contains "example.com")`  
-   * **Then**:  
-         * **Cache eligibility**: Eligible for cache  
-         * **Setting**: Cache key  
-                  * **Cache deception armor**: On  
+1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to protect against cache deception attacks for any hostname containing `example.com`:
+
+  * **When incoming requests match**: Custom filter expression  
+    * Using the Expression Builder:  
+      `Hostname contains "example.com"`
+    * Using the Expression Editor:  
+      `(http.host contains "example.com")`
+  * **Then**:  
+    * **Cache eligibility**: Eligible for cache
+    * **Setting**: Cache key  
+      * **Cache deception armor**: On  
 Warning  
 The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
@@ -338,8 +345,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Cache Level (Cache Everything)
 
-* [ Dashboard ](#tab-panel-10038)
-* [ Visual guide ](#tab-panel-10039)
+* [ Dashboard ](#tab-panel-10112)
+* [ Visual guide ](#tab-panel-10113)
 
 **Context:**
 
@@ -351,14 +358,15 @@ You configured a Page Rule turning on caching of all assets for all subdomains o
 
 **How to migrate**:
 
-1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to adjust cache level for any hostname containing `example.com`:  
-   * **When incoming requests match**: Custom filter expression  
-         * Using the Expression Builder:  
-         `Hostname contains "example.com"`  
-         * Using the Expression Editor:  
-         `(http.host contains "example.com")`  
-   * **Then**:  
-         * **Cache eligibility**: Eligible for cache  
+1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to adjust cache level for any hostname containing `example.com`:
+
+  * **When incoming requests match**: Custom filter expression  
+    * Using the Expression Builder:  
+      `Hostname contains "example.com"`
+    * Using the Expression Editor:  
+      `(http.host contains "example.com")`
+  * **Then**:  
+    * **Cache eligibility**: Eligible for cache  
 Warning  
 The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
@@ -370,8 +378,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Cache on Cookie
 
-* [ Dashboard ](#tab-panel-10040)
-* [ Visual guide ](#tab-panel-10041)
+* [ Dashboard ](#tab-panel-10114)
+* [ Visual guide ](#tab-panel-10115)
 
 **Context:**
 
@@ -383,14 +391,15 @@ You configured a Page Rule turning on caching for responses that contained cooki
 
 **How to migrate**:
 
-1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to cache responses containing cookie `test_cookie` for any hostname containing `example.com`:  
-   * **When incoming requests match**: Custom filter expression  
-         * Using the Expression Builder:  
-         `Hostname contains "example.com" AND Cookie contains "test-cookie"`  
-         * Using the Expression Editor:  
-         `(http.host contains "example.com" and http.cookie contains "test-cookie")`  
-   * **Then**:  
-         * **Cache eligibility**: Eligible for cache  
+1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to cache responses containing cookie `test_cookie` for any hostname containing `example.com`:
+
+  * **When incoming requests match**: Custom filter expression  
+    * Using the Expression Builder:  
+      `Hostname contains "example.com" AND Cookie contains "test-cookie"`
+    * Using the Expression Editor:  
+      `(http.host contains "example.com" and http.cookie contains "test-cookie")`
+  * **Then**:  
+    * **Cache eligibility**: Eligible for cache  
 Warning  
 The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
@@ -402,8 +411,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Cache TTL by status code
 
-* [ Dashboard ](#tab-panel-10042)
-* [ Visual guide ](#tab-panel-10043)
+* [ Dashboard ](#tab-panel-10116)
+* [ Visual guide ](#tab-panel-10117)
 
 **Context:**
 
@@ -416,21 +425,22 @@ You configured a Page Rule turning on caching of every response with status code
 
 **How to migrate**:
 
-1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to cache responses with status code between `200` and `599` for one day for any hostname containing `example.com`:  
-   * **When incoming requests match**: Custom filter expression  
-         * Using the Expression Builder:  
-         `Hostname contains "example.com"`  
-         * Using the Expression Editor:  
-         `(http.host contains "example.com")`  
-         * **Then**:  
-                  * **Cache eligibility**: Eligible for cache  
-                  * **Setting**: Edge TTL  
-                              * Use cache-control header if present, use default Cloudflare caching behavior if not  
-                              * **Status code TTL**:  
-                                             * **Scope**: _Range_  
-                                             * **From**: _200_  
-                                             * **To**: _599_  
-                                             * **Duration**: _1 day_  
+1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to cache responses with status code between `200` and `599` for one day for any hostname containing `example.com`:
+
+  * **When incoming requests match**: Custom filter expression  
+    * Using the Expression Builder:  
+      `Hostname contains "example.com"`
+    * Using the Expression Editor:  
+      `(http.host contains "example.com")`
+    * **Then**:  
+      * **Cache eligibility**: Eligible for cache
+      * **Setting**: Edge TTL  
+        * Use cache-control header if present, use default Cloudflare caching behavior if not
+        * **Status code TTL**:  
+          * **Scope**: _Range_
+          * **From**: _200_
+          * **To**: _599_
+          * **Duration**: _1 day_  
 Warning  
 The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
@@ -442,8 +452,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Custom Cache Key
 
-* [ Dashboard ](#tab-panel-10044)
-* [ Visual guide ](#tab-panel-10045)
+* [ Dashboard ](#tab-panel-10118)
+* [ Visual guide ](#tab-panel-10119)
 
 **Context:**
 
@@ -451,20 +461,21 @@ You configured a Page Rule setting a custom cache key for all query string param
 
 * **URL**: `*example.com/*`
 * **Setting**: _Custom Cache Key_  
-   * **Query String**: All query string parameters
+  * **Query String**: All query string parameters
 
 **How to migrate**:
 
-1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to set a custom cache key for all query string parameters, for any hostname containing `example.com`:  
-   * **When incoming requests match**: Custom filter expression  
-         * Using the Expression Builder:  
-         `Hostname contains "example.com"`  
-         * Using the Expression Editor:  
-         `(http.host contains "example.com")`  
-   * **Then**:  
-         * **Cache eligibility**: Eligible for cache  
-         * **Setting**: Cache key  
-                  * **Query string**: All query string parameters  
+1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to set a custom cache key for all query string parameters, for any hostname containing `example.com`:
+
+  * **When incoming requests match**: Custom filter expression  
+    * Using the Expression Builder:  
+      `Hostname contains "example.com"`
+    * Using the Expression Editor:  
+      `(http.host contains "example.com")`
+  * **Then**:  
+    * **Cache eligibility**: Eligible for cache
+    * **Setting**: Cache key  
+      * **Query string**: All query string parameters  
 Warning  
 The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
@@ -476,8 +487,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Disable Apps
 
-* [ Dashboard ](#tab-panel-10004)
-* [ Visual guide ](#tab-panel-10005)
+* [ Dashboard ](#tab-panel-10078)
+* [ Visual guide ](#tab-panel-10079)
 
 **Context:**
 
@@ -488,14 +499,15 @@ You configured a Page Rule turning off Cloudflare Apps (deprecated) for all subd
 
 **How to migrate**:
 
-1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to disable Cloudflare Apps (deprecated) for any hostname containing `example.com`:  
-   * **When incoming requests match**: Custom filter expression  
-         * Using the Expression Builder:  
-         `Hostname contains "example.com"`  
-         * Using the Expression Editor:  
-         `(http.host contains "example.com")`  
-   * **Then the settings are**:  
-         * **Setting**: Disable Apps
+1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to disable Cloudflare Apps (deprecated) for any hostname containing `example.com`:
+
+  * **When incoming requests match**: Custom filter expression  
+    * Using the Expression Builder:  
+      `Hostname contains "example.com"`
+    * Using the Expression Editor:  
+      `(http.host contains "example.com")`
+  * **Then the settings are**:  
+    * **Setting**: Disable Apps
 2. Turn off your existing Page Rule and validate the behavior of the configuration rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
@@ -511,8 +523,8 @@ The **Disable Performance** setting is deprecated. Any Page Rules with this sett
 
 This Page Rules setting turned off Polish and Rocket Loader. You can still turn on or off relevant Cloudflare features one by one using Configuration Rules.
 
-* [ Dashboard ](#tab-panel-10006)
-* [ Visual guide ](#tab-panel-10007)
+* [ Dashboard ](#tab-panel-10080)
+* [ Visual guide ](#tab-panel-10081)
 
 **Context:**
 
@@ -523,15 +535,16 @@ You configured a Page Rule with **Disable Performance** (deprecated) for all sub
 
 **How to replace**:
 
-1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to disable Polish and Rocket Loader for any hostname containing `example.com`:  
-   * **When incoming requests match**: Custom filter expression  
-         * Using the Expression Builder:  
-         `Hostname contains "example.com"`  
-         * Using the Expression Editor:  
-         `(http.host contains "example.com")`  
-   * **Then the settings are**:  
-         * **Polish**: _Off_  
-         * **Rocket Loader**: Off
+1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to disable Polish and Rocket Loader for any hostname containing `example.com`:
+
+  * **When incoming requests match**: Custom filter expression  
+    * Using the Expression Builder:  
+      `Hostname contains "example.com"`
+    * Using the Expression Editor:  
+      `(http.host contains "example.com")`
+  * **Then the settings are**:  
+    * **Polish**: _Off_
+    * **Rocket Loader**: Off
 2. Turn off your existing Page Rule and validate the behavior of the configuration rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
@@ -547,7 +560,7 @@ The **Disable Security** setting is deprecated. Any Page Rules with this setting
 
 This Page Rules setting turns off Email Obfuscation, Rate Limiting (previous version), Scrape Shield, URL (Zone) Lockdown, and WAF managed rules (previous version). You can still turn on or off relevant Cloudflare features one by one using Configuration Rules and WAF custom rules.
 
-* [ Dashboard ](#tab-panel-9997)
+* [ Dashboard ](#tab-panel-10071)
 
 **Context:**
 
@@ -560,9 +573,10 @@ This setting turned off a subset of Cloudflare security features: Email Obfuscat
 
 **How to replace**:
 
-1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to turn off one or more security features:  
-   * [Email Obfuscation](https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/)  
-   * [Hotlink Protection](https://developers.cloudflare.com/waf/tools/scrape-shield/hotlink-protection/)
+1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to turn off one or more security features:
+
+  * [Email Obfuscation](https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/)
+  * [Hotlink Protection](https://developers.cloudflare.com/waf/tools/scrape-shield/hotlink-protection/)
 2. If required, [create a WAF exception](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define-dashboard/) to skip one or more rules of WAF managed rulesets for requests coming from IP addresses in an allowlist.
 3. Turn off your existing Page Rule and validate the behavior of the rules you created.
 4. If your tests succeed, delete the existing Page Rule.
@@ -573,8 +587,8 @@ If you are still using [WAF managed rules (previous version)](https://developers
 
 ### Migrate Disable Zaraz
 
-* [ Dashboard ](#tab-panel-10008)
-* [ Visual guide ](#tab-panel-10009)
+* [ Dashboard ](#tab-panel-10082)
+* [ Visual guide ](#tab-panel-10083)
 
 **Context:**
 
@@ -585,14 +599,15 @@ You configured a Page Rule turning off [Zaraz](https://developers.cloudflare.com
 
 **How to migrate**:
 
-1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to turn off Zaraz for any hostname containing `example.com`:  
-   * **When incoming requests match**: Custom filter expression  
-         * Using the Expression Builder:  
-         `Hostname contains "example.com"`  
-         * Using the Expression Editor:  
-         `(http.host contains "example.com")`  
-   * **Then the settings are**:  
-         * **Setting**: Disable Zaraz
+1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to turn off Zaraz for any hostname containing `example.com`:
+
+  * **When incoming requests match**: Custom filter expression  
+    * Using the Expression Builder:  
+      `Hostname contains "example.com"`
+    * Using the Expression Editor:  
+      `(http.host contains "example.com")`
+  * **Then the settings are**:  
+    * **Setting**: Disable Zaraz
 2. Turn off your existing Page Rule and validate the behavior of the configuration rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
@@ -602,8 +617,8 @@ You configured a Page Rule turning off [Zaraz](https://developers.cloudflare.com
 
 ### Migrate Edge Cache TTL
 
-* [ Dashboard ](#tab-panel-10046)
-* [ Visual guide ](#tab-panel-10047)
+* [ Dashboard ](#tab-panel-10120)
+* [ Visual guide ](#tab-panel-10121)
 
 **Context:**
 
@@ -615,17 +630,18 @@ You configured a Page Rule adjusting Edge Cache TTL for all subdomains of `examp
 
 **How to migrate**:
 
-1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to adjust edge cache TTL for caching resources on Cloudflare edge to one day, for any hostname containing `example.com`:  
-   * **When incoming requests match**: Custom filter expression  
-         * Using the Expression Builder:  
-         `Hostname contains "example.com"`  
-         * Using the Expression Editor:  
-         `(http.host contains "example.com")`  
-   * **Then**:  
-         * **Cache eligibility**: Eligible for cache  
-         * **Setting**: Edge TTL  
-                  * Ignore cache-control header and use this TTL  
-                  * **Input time-to-live (TTL)**: _1 day_  
+1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to adjust edge cache TTL for caching resources on Cloudflare edge to one day, for any hostname containing `example.com`:
+
+  * **When incoming requests match**: Custom filter expression  
+    * Using the Expression Builder:  
+      `Hostname contains "example.com"`
+    * Using the Expression Editor:  
+      `(http.host contains "example.com")`
+  * **Then**:  
+    * **Cache eligibility**: Eligible for cache
+    * **Setting**: Edge TTL  
+      * Ignore cache-control header and use this TTL
+      * **Input time-to-live (TTL)**: _1 day_  
 Warning  
 The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
@@ -637,8 +653,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Email Obfuscation
 
-* [ Dashboard ](#tab-panel-10010)
-* [ Visual guide ](#tab-panel-10011)
+* [ Dashboard ](#tab-panel-10084)
+* [ Visual guide ](#tab-panel-10085)
 
 **Context:**
 
@@ -650,15 +666,16 @@ You configured a Page Rule turning off [Email Obfuscation](https://developers.cl
 
 **How to migrate**:
 
-1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to turn off Email Obfuscation for any hostname containing `example.com`:  
-   * **When incoming requests match**: Custom filter expression  
-         * Using the Expression Builder:  
-         `Hostname contains "example.com"`  
-         * Using the Expression Editor:  
-         `(http.host contains "example.com")`  
-   * **Then the settings are**:  
-         * **Setting**: Email Obfuscation  
-                  * **Value**: Off
+1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to turn off Email Obfuscation for any hostname containing `example.com`:
+
+  * **When incoming requests match**: Custom filter expression  
+    * Using the Expression Builder:  
+      `Hostname contains "example.com"`
+    * Using the Expression Editor:  
+      `(http.host contains "example.com")`
+  * **Then the settings are**:  
+    * **Setting**: Email Obfuscation  
+      * **Value**: Off
 2. Turn off your existing Page Rule and validate the behavior of the configuration rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
@@ -670,8 +687,8 @@ You configured a Page Rule turning off [Email Obfuscation](https://developers.cl
 
 **Example #1: Redirect `www` to root domain**
 
-* [ Dashboard ](#tab-panel-10056)
-* [ Visual guide ](#tab-panel-10057)
+* [ Dashboard ](#tab-panel-10130)
+* [ Visual guide ](#tab-panel-10131)
 
 **Context:**
 
@@ -684,13 +701,14 @@ You configured a Page Rule permanently redirecting `www.example.com` to `example
 
 **How to migrate**:
 
-1. [Create a single redirect](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-dashboard/) to permanently redirect requests from `https://www.example.com` to `https://example.com`. You can select the **Redirect from WWW to Root** rule template or enter the following rule configuration:  
-   * **If incoming requests match**: Wildcard pattern  
-         * **Request URL**: `https://www.example.com/*`  
-   * **Then**:  
-         * **Target URL**: `https://example.com/${1}`  
-         * **Status code**: _301_  
-         * **Preserve query string**: Enabled
+1. [Create a single redirect](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-dashboard/) to permanently redirect requests from `https://www.example.com` to `https://example.com`. You can select the **Redirect from WWW to Root** rule template or enter the following rule configuration:
+
+  * **If incoming requests match**: Wildcard pattern  
+    * **Request URL**: `https://www.example.com/*`
+  * **Then**:  
+    * **Target URL**: `https://example.com/${1}`
+    * **Status code**: _301_
+    * **Preserve query string**: Enabled
 2. Turn off your existing Page Rule and validate the behavior of the redirect you created.
 3. If your tests succeed, delete the existing Page Rule.
 
@@ -712,8 +730,8 @@ This would require you to also change the **Target URL** to use the second wildc
 
 **Example #2: Redirect all pages under old path to new path**
 
-* [ Dashboard ](#tab-panel-10058)
-* [ Visual guide ](#tab-panel-10059)
+* [ Dashboard ](#tab-panel-10132)
+* [ Visual guide ](#tab-panel-10133)
 
 **Context:**
 
@@ -726,13 +744,14 @@ You configured a Page Rule permanently redirecting `example.com/old-path` to `ex
 
 **How to migrate**:
 
-1. [Create a single redirect](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-dashboard/) to permanently redirect requests for `example.com/old-path` to `example.com/new-path`:  
-   * **If incoming requests match**: Wildcard pattern  
-         * **Request URL**: `https://example.com/old-path/*`  
-   * **Then**:  
-         * **Target URL**: `https://example.com/new-path/${1}`  
-         * **Status code**: _301_  
-         * **Preserve query string**: Enabled
+1. [Create a single redirect](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-dashboard/) to permanently redirect requests for `example.com/old-path` to `example.com/new-path`:
+
+  * **If incoming requests match**: Wildcard pattern  
+    * **Request URL**: `https://example.com/old-path/*`
+  * **Then**:  
+    * **Target URL**: `https://example.com/new-path/${1}`
+    * **Status code**: _301_
+    * **Preserve query string**: Enabled
 2. Turn off your existing Page Rule and validate the behavior of the redirect you created.
 3. If your tests succeed, delete the existing Page Rule.
 
@@ -754,8 +773,8 @@ This would require you to also change the **Target URL** to use the second wildc
 
 ### Migrate Host Header Override
 
-* [ Dashboard ](#tab-panel-10012)
-* [ Visual guide ](#tab-panel-10013)
+* [ Dashboard ](#tab-panel-10086)
+* [ Visual guide ](#tab-panel-10087)
 
 **Context:**
 
@@ -767,15 +786,16 @@ You configured a Page Rule changing the `Host` HTTP header to `example.saas-prov
 
 **How to migrate**:
 
-1. [Create an origin rule](https://developers.cloudflare.com/rules/origin-rules/create-dashboard/) changing the `Host` header to `example.saas-provider.com` for any hostname containing `example.com`:  
-   * **When incoming requests match**: Custom filter expression  
-         * Using the Expression Builder:  
-         `Hostname contains "example.com"`  
-         * Using the Expression Editor:  
-         `(http.host contains "example.com")`  
-   * **Then**:  
-         * **Set origin parameters**:  
-                  * **Host Header** \> **Rewrite to**: `example.saas-provider.com`
+1. [Create an origin rule](https://developers.cloudflare.com/rules/origin-rules/create-dashboard/) changing the `Host` header to `example.saas-provider.com` for any hostname containing `example.com`:
+
+  * **When incoming requests match**: Custom filter expression  
+    * Using the Expression Builder:  
+      `Hostname contains "example.com"`
+    * Using the Expression Editor:  
+      `(http.host contains "example.com")`
+  * **Then**:  
+    * **Set origin parameters**:  
+      * **Host Header** \> **Rewrite to**: `example.saas-provider.com`
 2. Turn off your existing Page Rule and validate the behavior of the origin rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
@@ -785,8 +805,8 @@ You configured a Page Rule changing the `Host` HTTP header to `example.saas-prov
 
 ### Migrate IP Geolocation Header
 
-* [ Dashboard ](#tab-panel-10014)
-* [ Visual guide ](#tab-panel-10015)
+* [ Dashboard ](#tab-panel-10088)
+* [ Visual guide ](#tab-panel-10089)
 
 **Context:**
 
@@ -808,8 +828,8 @@ You configured a Page Rule adding a `CF-IPCountry` HTTP header, for all requests
 
 ### Migrate Opportunistic Encryption
 
-* [ Dashboard ](#tab-panel-10016)
-* [ Visual guide ](#tab-panel-10017)
+* [ Dashboard ](#tab-panel-10090)
+* [ Visual guide ](#tab-panel-10091)
 
 **Context:**
 
@@ -821,15 +841,16 @@ You configured a Page Rule turning off Opportunistic Encryption for all subdomai
 
 **How to migrate**:
 
-1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to turn off Opportunistic Encryption for any hostname containing `example.com`:  
-   * **When incoming requests match**: Custom filter expression  
-         * Using the Expression Builder:  
-         `Hostname contains "example.com"`  
-         * Using the Expression Editor:  
-         `(http.host contains "example.com")`  
-   * **Then the settings are**:  
-         * **Setting**: Opportunistic Encryption  
-                  * **Value**: Off
+1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to turn off Opportunistic Encryption for any hostname containing `example.com`:
+
+  * **When incoming requests match**: Custom filter expression  
+    * Using the Expression Builder:  
+      `Hostname contains "example.com"`
+    * Using the Expression Editor:  
+      `(http.host contains "example.com")`
+  * **Then the settings are**:  
+    * **Setting**: Opportunistic Encryption  
+      * **Value**: Off
 2. Turn off your existing Page Rule and validate the behavior of the configuration rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
@@ -839,8 +860,8 @@ You configured a Page Rule turning off Opportunistic Encryption for all subdomai
 
 ### Migrate Origin Cache Control
 
-* [ Dashboard ](#tab-panel-10048)
-* [ Visual guide ](#tab-panel-10049)
+* [ Dashboard ](#tab-panel-10122)
+* [ Visual guide ](#tab-panel-10123)
 
 **Context:**
 
@@ -852,16 +873,17 @@ You configured a Page Rule turning off Origin Cache Control for all subdomains o
 
 **How to migrate**:
 
-1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to determine edge cache behavior for any hostname containing `example.com`:  
-   * **When incoming requests match**: Custom filter expression  
-         * Using the Expression Builder:  
-         `Hostname contains "example.com"`  
-         * Using the Expression Editor:  
-         `(http.host contains "example.com")`  
-   * **Then**:  
-         * **Cache eligibility**: Eligible for cache  
-         * **Setting**: Origin Cache Control  
-                  * **Enable Origin Cache Control**: Off  
+1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to determine edge cache behavior for any hostname containing `example.com`:
+
+  * **When incoming requests match**: Custom filter expression  
+    * Using the Expression Builder:  
+      `Hostname contains "example.com"`
+    * Using the Expression Editor:  
+      `(http.host contains "example.com")`
+  * **Then**:  
+    * **Cache eligibility**: Eligible for cache
+    * **Setting**: Origin Cache Control  
+      * **Enable Origin Cache Control**: Off  
 Warning  
 The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
@@ -873,8 +895,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Origin Error Page Pass-thru
 
-* [ Dashboard ](#tab-panel-10050)
-* [ Visual guide ](#tab-panel-10051)
+* [ Dashboard ](#tab-panel-10124)
+* [ Visual guide ](#tab-panel-10125)
 
 **Context:**
 
@@ -886,16 +908,17 @@ You configured a Page Rule turning on Origin Error Page Pass-thru for all subdom
 
 **How to migrate**:
 
-1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to determine edge cache behavior for any hostname containing `example.com`:  
-   * **When incoming requests match**: Custom filter expression  
-         * Using the Expression Builder:  
-         `Hostname contains "example.com"`  
-         * Using the Expression Editor:  
-         `(http.host contains "example.com")`  
-   * **Then**:  
-         * **Cache eligibility**: Eligible for cache  
-         * **Setting**: Origin error page pass-thru  
-                  * **Use Origin error page pass-thru**: On  
+1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to determine edge cache behavior for any hostname containing `example.com`:
+
+  * **When incoming requests match**: Custom filter expression  
+    * Using the Expression Builder:  
+      `Hostname contains "example.com"`
+    * Using the Expression Editor:  
+      `(http.host contains "example.com")`
+  * **Then**:  
+    * **Cache eligibility**: Eligible for cache
+    * **Setting**: Origin error page pass-thru  
+      * **Use Origin error page pass-thru**: On  
 Warning  
 The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
@@ -907,8 +930,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Polish
 
-* [ Dashboard ](#tab-panel-10018)
-* [ Visual guide ](#tab-panel-10019)
+* [ Dashboard ](#tab-panel-10092)
+* [ Visual guide ](#tab-panel-10093)
 
 **Context:**
 
@@ -920,15 +943,16 @@ You configured a Page Rule turning off [Polish](https://developers.cloudflare.co
 
 **How to migrate**:
 
-1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to turn off Polish for any hostname containing `example.com`:  
-   * **When incoming requests match**: Custom filter expression  
-         * Using the Expression Builder:  
-         `Hostname contains "example.com"`  
-         * Using the Expression Editor:  
-         `(http.host contains "example.com")`  
-   * **Then the settings are**:  
-         * **Setting**: Polish  
-                  * **Select value**: _Off_
+1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to turn off Polish for any hostname containing `example.com`:
+
+  * **When incoming requests match**: Custom filter expression  
+    * Using the Expression Builder:  
+      `Hostname contains "example.com"`
+    * Using the Expression Editor:  
+      `(http.host contains "example.com")`
+  * **Then the settings are**:  
+    * **Setting**: Polish  
+      * **Select value**: _Off_
 2. Turn off your existing Page Rule and validate the behavior of the configuration rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
@@ -938,8 +962,8 @@ You configured a Page Rule turning off [Polish](https://developers.cloudflare.co
 
 ### Migrate Query String Sort
 
-* [ Dashboard ](#tab-panel-10052)
-* [ Visual guide ](#tab-panel-10053)
+* [ Dashboard ](#tab-panel-10126)
+* [ Visual guide ](#tab-panel-10127)
 
 **Context:**
 
@@ -951,16 +975,17 @@ You configured a Page Rule turning on Query String Sort for all subdomains of `e
 
 **How to migrate**:
 
-1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to sort query string parameters for caching purposes, for any hostname containing `example.com`:  
-   * **When incoming requests match**: Custom filter expression  
-         * Using the Expression Builder:  
-         `Hostname contains "example.com"`  
-         * Using the Expression Editor:  
-         `(http.host contains "example.com")`  
-   * **Then**:  
-         * **Cache eligibility**: Eligible for cache  
-         * **Setting**: Cache key  
-                  * **Sort query string**: On  
+1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to sort query string parameters for caching purposes, for any hostname containing `example.com`:
+
+  * **When incoming requests match**: Custom filter expression  
+    * Using the Expression Builder:  
+      `Hostname contains "example.com"`
+    * Using the Expression Editor:  
+      `(http.host contains "example.com")`
+  * **Then**:  
+    * **Cache eligibility**: Eligible for cache
+    * **Setting**: Cache key  
+      * **Sort query string**: On  
 Warning  
 The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
@@ -972,8 +997,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Resolve Override
 
-* [ Dashboard ](#tab-panel-10020)
-* [ Visual guide ](#tab-panel-10021)
+* [ Dashboard ](#tab-panel-10094)
+* [ Visual guide ](#tab-panel-10095)
 
 **Context:**
 
@@ -985,14 +1010,15 @@ You configured a Page Rule changing the origin to `example.saas-provider.com`, f
 
 **How to migrate**:
 
-1. [Create an origin rule](https://developers.cloudflare.com/rules/origin-rules/create-dashboard/) overriding the origin to `example.saas-provider.com` for any hostname containing `example.com`:  
-   * **When incoming requests match**: Custom filter expression  
-         * Using the Expression Builder:  
-         `Hostname contains "example.com"`  
-         * Using the Expression Editor:  
-         `(http.host contains "example.com")`  
-   * **Then**:  
-         * **DNS Record** \> **Override to**: `example.saas-provider.com`
+1. [Create an origin rule](https://developers.cloudflare.com/rules/origin-rules/create-dashboard/) overriding the origin to `example.saas-provider.com` for any hostname containing `example.com`:
+
+  * **When incoming requests match**: Custom filter expression  
+    * Using the Expression Builder:  
+      `Hostname contains "example.com"`
+    * Using the Expression Editor:  
+      `(http.host contains "example.com")`
+  * **Then**:  
+    * **DNS Record** \> **Override to**: `example.saas-provider.com`
 2. Turn off your existing Page Rule and validate the behavior of the origin rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
@@ -1002,8 +1028,8 @@ You configured a Page Rule changing the origin to `example.saas-provider.com`, f
 
 ### Migrate Respect Strong ETags
 
-* [ Dashboard ](#tab-panel-10054)
-* [ Visual guide ](#tab-panel-10055)
+* [ Dashboard ](#tab-panel-10128)
+* [ Visual guide ](#tab-panel-10129)
 
 **Context:**
 
@@ -1015,16 +1041,17 @@ You configured a Page Rule turning on byte-for-byte equivalency checks for all s
 
 **How to migrate**:
 
-1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to respect strong ETags for any hostname containing `example.com`:  
-   * **When incoming requests match**: Custom filter expression  
-         * Using the Expression Builder:  
-         `Hostname contains "example.com"`  
-         * Using the Expression Editor:  
-         `(http.host contains "example.com")`  
-   * **Then**:  
-         * **Cache eligibility**: Eligible for cache  
-         * **Setting**: Respect strong ETags  
-                  * **Use strong ETag headers**: On  
+1. [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to respect strong ETags for any hostname containing `example.com`:
+
+  * **When incoming requests match**: Custom filter expression  
+    * Using the Expression Builder:  
+      `Hostname contains "example.com"`
+    * Using the Expression Editor:  
+      `(http.host contains "example.com")`
+  * **Then**:  
+    * **Cache eligibility**: Eligible for cache
+    * **Setting**: Respect strong ETags  
+      * **Use strong ETag headers**: On  
 Warning  
 The default behavior of Cache Rules is different from Page Rules. Refer to [Key differences](#key-differences) for more information.
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
@@ -1036,8 +1063,8 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 
 ### Migrate Rocket Loader
 
-* [ Dashboard ](#tab-panel-10022)
-* [ Visual guide ](#tab-panel-10023)
+* [ Dashboard ](#tab-panel-10096)
+* [ Visual guide ](#tab-panel-10097)
 
 **Context:**
 
@@ -1049,15 +1076,16 @@ You configured a Page Rule turning off Rocket Loader for all subdomains of `exam
 
 **How to migrate**:
 
-1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to turn off Rocket Loader for any hostname containing `example.com`:  
-   * **When incoming requests match**: Custom filter expression  
-         * Using the Expression Builder:  
-         `Hostname contains "example.com"`  
-         * Using the Expression Editor:  
-         `(http.host contains "example.com")`  
-   * **Then the settings are**:  
-         * **Setting**: Rocket Loader  
-                  * **Value**: Off
+1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to turn off Rocket Loader for any hostname containing `example.com`:
+
+  * **When incoming requests match**: Custom filter expression  
+    * Using the Expression Builder:  
+      `Hostname contains "example.com"`
+    * Using the Expression Editor:  
+      `(http.host contains "example.com")`
+  * **Then the settings are**:  
+    * **Setting**: Rocket Loader  
+      * **Value**: Off
 2. Turn off your existing Page Rule and validate the behavior of the configuration rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
@@ -1067,8 +1095,8 @@ You configured a Page Rule turning off Rocket Loader for all subdomains of `exam
 
 ### Migrate Security Level
 
-* [ Dashboard ](#tab-panel-10024)
-* [ Visual guide ](#tab-panel-10025)
+* [ Dashboard ](#tab-panel-10098)
+* [ Visual guide ](#tab-panel-10099)
 
 **Context:**
 
@@ -1080,15 +1108,16 @@ You configured a Page Rule setting Security Level to _I'm Under Attack_ for all 
 
 **How to migrate**:
 
-1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to set Security Level to _I'm Under Attack_, for any hostname containing `example.com`:  
-   * **When incoming requests match**: Custom filter expression  
-         * Using the Expression Builder:  
-         `Hostname contains "example.com"`  
-         * Using the Expression Editor:  
-         `(http.host contains "example.com")`  
-   * **Then the settings are**:  
-         * **Setting**: I'm Under Attack  
-         * **Value**: On
+1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to set Security Level to _I'm Under Attack_, for any hostname containing `example.com`:
+
+  * **When incoming requests match**: Custom filter expression  
+    * Using the Expression Builder:  
+      `Hostname contains "example.com"`
+    * Using the Expression Editor:  
+      `(http.host contains "example.com")`
+  * **Then the settings are**:  
+    * **Setting**: I'm Under Attack
+    * **Value**: On
 2. Turn off your existing Page Rule and validate the behavior of the configuration rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
@@ -1098,8 +1127,8 @@ You configured a Page Rule setting Security Level to _I'm Under Attack_ for all 
 
 ### Migrate True Client IP Header
 
-* [ Dashboard ](#tab-panel-10026)
-* [ Visual guide ](#tab-panel-10027)
+* [ Dashboard ](#tab-panel-10100)
+* [ Visual guide ](#tab-panel-10101)
 
 **Context:**
 
@@ -1121,8 +1150,8 @@ You configured a Page Rule adding a `True-Client-IP` HTTP header for all request
 
 ### Migrate SSL
 
-* [ Dashboard ](#tab-panel-10028)
-* [ Visual guide ](#tab-panel-10029)
+* [ Dashboard ](#tab-panel-10102)
+* [ Visual guide ](#tab-panel-10103)
 
 **Context:**
 
@@ -1134,15 +1163,16 @@ You configured a Page Rule setting SSL to _Strict_ for all subdomains of `exampl
 
 **How to migrate**:
 
-1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to set SSL to _Strict_, for any hostname containing `example.com`:  
-   * **When incoming requests match**: Custom filter expression  
-         * Using the Expression Builder:  
-         `Hostname contains "example.com"`  
-         * Using the Expression Editor:  
-         `(http.host contains "example.com")`  
-   * **Then the settings are**:  
-         * **Setting**: SSL  
-                  * **Select SSL/TLS encryption mode**: _Strict_
+1. [Create a configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/) to set SSL to _Strict_, for any hostname containing `example.com`:
+
+  * **When incoming requests match**: Custom filter expression  
+    * Using the Expression Builder:  
+      `Hostname contains "example.com"`
+    * Using the Expression Editor:  
+      `(http.host contains "example.com")`
+  * **Then the settings are**:  
+    * **Setting**: SSL  
+      * **Select SSL/TLS encryption mode**: _Strict_
 2. Turn off your existing Page Rule and validate the behavior of the configuration rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 

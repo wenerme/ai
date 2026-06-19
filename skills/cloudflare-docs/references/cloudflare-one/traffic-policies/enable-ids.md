@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,8 +32,8 @@ Note
 
 This feature is available for Cloudflare Advanced Network Firewall users. For access, contact your account team.
 
-* [ Dashboard ](#tab-panel-7602)
-* [ API ](#tab-panel-7603)
+* [ Dashboard ](#tab-panel-7678)
+* [ API ](#tab-panel-7679)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies**.
 2. Select **Policy settings** and turn on **IDS**.
@@ -46,48 +46,7 @@ To start using IDS via the API, first create a new ruleset in the `magic-transit
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "name": "IDS Execute ruleset",
-
-  "description": "Ruleset to enable IDS",
-
-  "kind": "root",
-
-  "phase": "magic_transit_ids_managed",
-
-  "rules": [
-
-    {
-
-      "enabled": true,
-
-      "expression": "true",
-
-      "action": "execute",
-
-      "description": "enable ids",
-
-      "action_parameters": {
-
-        "id": "${managed_ruleset_id}"
-
-      }
-
-    }
-
-  ]
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "name": "IDS Execute ruleset",  "description": "Ruleset to enable IDS",  "kind": "root",  "phase": "magic_transit_ids_managed",  "rules": [    {      "enabled": true,      "expression": "true",      "action": "execute",      "description": "enable ids",      "action_parameters": {        "id": "${managed_ruleset_id}"      }    }  ]}'
 ```
 
 With this ruleset added, IDS will start inspecting packets and report any anomalous traffic. Next, you can [configure Logpush](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/use-logpush-with-ids/) to start receiving details about the anomalous traffic.
@@ -99,32 +58,7 @@ With this ruleset added, IDS will start inspecting packets and report any anomal
 Terminal window
 
 ```
-
-curl --request PATCH \
-
-https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets/{root_ruleset_id}/rules/{rule_id} \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "enabled": false,
-
-  "expression": "true",
-
-  "action": "execute",
-
-  "action_parameters": {
-
-    "id": "${managed_ruleset_id}"
-
-  }
-
-}'
-
-
+curl --request PATCH \https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets/{root_ruleset_id}/rules/{rule_id} \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "enabled": false,  "expression": "true",  "action": "execute",  "action_parameters": {    "id": "${managed_ruleset_id}"  }}'
 ```
 
 Similarly, sending a patch request with the `enabled` field set to `true` will enable IDS.

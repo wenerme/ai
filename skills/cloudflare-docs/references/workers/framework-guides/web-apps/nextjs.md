@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -74,7 +74,7 @@ yarn create cloudflare my-next-app --framework=next
 pnpm create cloudflare@latest my-next-app --framework=next  
 ```  
 What's happening behind the scenes?  
-When you run this command, C3 creates a new project directory, initiates[Next.js's official setup tool ↗](https://nextjs.org/docs/app/api-reference/cli/create-next-app), and configures the project for Cloudflare. It then offers the option to instantly deploy your application to Cloudflare.
+When you run this command, C3 creates a new project directory, initiates [Next.js's official setup tool ↗](https://nextjs.org/docs/app/api-reference/cli/create-next-app), and configures the project for Cloudflare. It then offers the option to instantly deploy your application to Cloudflare.
 2. **Develop locally.**  
 After creating your project, run the following command in your project directory to start a local development server. The command uses the Next.js development server. It offers the best developer experience by quickly reloading your app every time the source code is updated.  
  npm  yarn  pnpm  
@@ -200,37 +200,18 @@ pnpm add -D wrangler@latest
 bun add -d wrangler@latest  
 ```
 3. **Add a Wrangler configuration file**  
-In your project root, create a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the following content:  
-   * [  wrangler.jsonc ](#tab-panel-11796)  
-   * [  wrangler.toml ](#tab-panel-11797)  
+In your project root, create a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the following content:
+
+  * [  wrangler.jsonc ](#tab-panel-11813)
+  * [  wrangler.toml ](#tab-panel-11814)  
 JSONC  
 ```  
-{  
-  "$schema": "./node_modules/wrangler/config-schema.json",  
-  "main": ".open-next/worker.js",  
-  "name": "my-app",  
-  // Set this to today's date  
-  "compatibility_date": "2026-06-17",  
-  "compatibility_flags": [  
-    "nodejs_compat"  
-  ],  
-  "assets": {  
-    "directory": ".open-next/assets",  
-    "binding": "ASSETS"  
-  }  
-}  
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "main": ".open-next/worker.js",  "name": "my-app",  // Set this to today's date  "compatibility_date": "2026-06-19",  "compatibility_flags": [    "nodejs_compat"  ],  "assets": {    "directory": ".open-next/assets",    "binding": "ASSETS"  }}  
 ```  
 TOML  
 ```  
-"$schema" = "./node_modules/wrangler/config-schema.json"  
-main = ".open-next/worker.js"  
-name = "my-app"  
-# Set this to today's date  
-compatibility_date = "2026-06-17"  
-compatibility_flags = [ "nodejs_compat" ]  
-[assets]  
-directory = ".open-next/assets"  
-binding = "ASSETS"  
+"$schema" = "./node_modules/wrangler/config-schema.json"main = ".open-next/worker.js"name = "my-app"# Set this to today's datecompatibility_date = "2026-06-19"compatibility_flags = [ "nodejs_compat" ]  
+[assets]directory = ".open-next/assets"binding = "ASSETS"  
 ```  
 Note  
 As shown above, you must enable the [nodejs\_compat compatibility flag](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) _and_ set your [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) to `2024-09-23` or later for your Next.js app to work with @opennextjs/cloudflare.
@@ -246,14 +227,13 @@ Note
 5. **Update `package.json`**  
 You can add the following scripts to your `package.json`:  
 ```  
-"preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",  
-"deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",  
-"cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"  
+"preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview","deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy","cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"  
 ```  
-Usage  
-   * `preview`: Builds your app and serves it locally, allowing you to quickly preview your app running locally in the Workers runtime, via a single command.  
-   * `deploy`: Builds your app, and then deploys it to Cloudflare  
-   * `cf-typegen`: Generates a `cloudflare-env.d.ts` file at the root of your project containing the types for the env.
+Usage
+
+  * `preview`: Builds your app and serves it locally, allowing you to quickly preview your app running locally in the Workers runtime, via a single command.
+  * `deploy`: Builds your app, and then deploys it to Cloudflare
+  * `cf-typegen`: Generates a `cloudflare-env.d.ts` file at the root of your project containing the types for the env.
 6. **Develop locally.**  
 After creating your project, run the following command in your project directory to start a local development server. The command uses the Next.js development server. It offers the best developer experience by quickly reloading your app after your source code is updated.  
  npm  yarn  pnpm  

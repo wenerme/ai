@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,45 +29,15 @@ A number picker with increment and decrement buttons.
 ### Basic Usage
 
 ```
-
 import { RtkCounter } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return <RtkCounter />;
-
-}
-
-
+function MyComponent() {  return <RtkCounter />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkCounter } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkCounter
-
-      minValue={42}
-
-      size="md"
-
-      value={42}
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkCounter      minValue={42}      size="md"      value={42}    />  );}
 ```
 
 ```json

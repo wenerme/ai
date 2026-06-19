@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,16 +18,19 @@ Detailed planning is the cornerstone of a successful DNS migration.
 
 1. Identify all DNS zones currently hosted on your BIND servers.
 2. Review all DNS records within each zone. Remove stale or unnecessary records and verify the accuracy of existing records.
-3. BIND views (split DNS): If you use BIND views to provide different DNS responses to internal versus external resolvers, Cloudflare authoritative DNS does not replicate per-client views directly.  
-   * Continue to use an internal DNS resolver (for example, BIND, Active Directory, or another internal resolver) for internal-only names, while using Cloudflare authoritative DNS for public zones.  
-   * For policy-based internal DNS, consider Cloudflare Zero Trust features such as DNS policies and Internal DNS (Beta). For more details, refer to [Cloudflare DNS](https://developers.cloudflare.com/dns/) and [Internal DNS](https://developers.cloudflare.com/dns/internal-dns/).
-4. BIND ACLs (access control lists): If you use ACLs in BIND to restrict which clients can query your authoritative DNS or perform zone transfers, plan how these controls will change:  
-   * **Authoritative DNS queries:** Cloudflare authoritative DNS nameservers are reachable on the public Internet and do not support per-resolver ACLs for standard DNS queries.  
-   * **HTTP and application access:** To restrict or filter HTTP(S) traffic to your applications, use Cloudflare security features such as the [Web Application Firewall (WAF)](https://developers.cloudflare.com/waf/) and other Application Security products. These operate at the HTTP layer, not at the DNS query layer.  
-   * Zone transfers (AXFR/IXFR): If you use AXFR/IXFR with BIND today, review Cloudflare’s zone transfer setups:  
-         * [Cloudflare as primary DNS](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-primary/)  
-         * [Cloudflare as secondary DNS](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/)  
-   These setups document how to restrict which IP addresses can perform zone transfers.
+3. BIND views (split DNS): If you use BIND views to provide different DNS responses to internal versus external resolvers, Cloudflare authoritative DNS does not replicate per-client views directly.
+
+  * Continue to use an internal DNS resolver (for example, BIND, Active Directory, or another internal resolver) for internal-only names, while using Cloudflare authoritative DNS for public zones.
+  * For policy-based internal DNS, consider Cloudflare Zero Trust features such as DNS policies and Internal DNS (Beta). For more details, refer to [Cloudflare DNS](https://developers.cloudflare.com/dns/) and [Internal DNS](https://developers.cloudflare.com/dns/internal-dns/).
+4. BIND ACLs (access control lists): If you use ACLs in BIND to restrict which clients can query your authoritative DNS or perform zone transfers, plan how these controls will change:
+
+  * **Authoritative DNS queries:** Cloudflare authoritative DNS nameservers are reachable on the public Internet and do not support per-resolver ACLs for standard DNS queries.
+  * **HTTP and application access:** To restrict or filter HTTP(S) traffic to your applications, use Cloudflare security features such as the [Web Application Firewall (WAF)](https://developers.cloudflare.com/waf/) and other Application Security products. These operate at the HTTP layer, not at the DNS query layer.
+  * Zone transfers (AXFR/IXFR): If you use AXFR/IXFR with BIND today, review Cloudflare’s zone transfer setups:
+
+    * [Cloudflare as primary DNS](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-primary/)
+    * [Cloudflare as secondary DNS](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/)  
+  These setups document how to restrict which IP addresses can perform zone transfers.
 5. Dependencies: Identify any applications or services critically dependent on specific DNS behaviors of your BIND setup.
 
 ## 2\. Define scope and objectives

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -39,10 +39,7 @@ Upload, manage, and delete hosted images from the Images API.
 The Images API endpoint uses the following format:
 
 ```
-
   https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/images/v1
-
-
 ```
 
 When uploading through the API, you can use the following features:

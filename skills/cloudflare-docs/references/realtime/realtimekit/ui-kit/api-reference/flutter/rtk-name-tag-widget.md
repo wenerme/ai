@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -34,21 +34,8 @@ Note
 Dart
 
 ```
-
 import 'package:realtimekit_ui/realtimekit_ui.dart';
-
-
-RtkNameTag(
-
-  participant: participant,
-
-  size: 14.0,
-
-  color: Colors.white,
-
-)
-
-
+RtkNameTag(  participant: participant,  size: 14.0,  color: Colors.white,)
 ```
 
 ### With Properties
@@ -56,23 +43,8 @@ RtkNameTag(
 Dart
 
 ```
-
 import 'package:realtimekit_ui/realtimekit_ui.dart';
-
-
-RtkNameTag(
-
-  participant: participant,
-
-  size: 20.0,
-
-  color: Colors.white,
-
-  factor: 5,
-
-)
-
-
+RtkNameTag(  participant: participant,  size: 20.0,  color: Colors.white,  factor: 5,)
 ```
 
 ```json

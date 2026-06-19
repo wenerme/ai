@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,54 +17,11 @@ Remove from response all headers that start with a certain name.
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request) {
-
-    // Define the prefix of the headers you want to remove
-
-    const headerPrefix = "x-header-";
-
-
-    // Receive response from the origin
-
-    const response = await fetch(request);
-
-
-    // Create a new Headers object to modify response headers
-
-    const newHeaders = new Headers(response.headers);
-
-
-    // Remove headers that start with the specified prefix
-
-    for (const [key] of newHeaders.entries()) {
-
-      if (key.startsWith(headerPrefix)) {
-
-        newHeaders.delete(key);
-
-      }
-
-    }
-
-
-    // Return the modified response with updated headers
-
-    return new Response(response.body, {
-
-      status: response.status,
-
-      headers: newHeaders,
-
-    });
-
-  },
-
-};
-
-
+export default {  async fetch(request) {    // Define the prefix of the headers you want to remove    const headerPrefix = "x-header-";
+    // Receive response from the origin    const response = await fetch(request);
+    // Create a new Headers object to modify response headers    const newHeaders = new Headers(response.headers);
+    // Remove headers that start with the specified prefix    for (const [key] of newHeaders.entries()) {      if (key.startsWith(headerPrefix)) {        newHeaders.delete(key);      }    }
+    // Return the modified response with updated headers    return new Response(response.body, {      status: response.status,      headers: newHeaders,    });  },};
 ```
 
 ```json

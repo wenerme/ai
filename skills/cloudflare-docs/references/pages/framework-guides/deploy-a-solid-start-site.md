@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -45,10 +45,7 @@ After you have installed your project dependencies, start your application:
 Terminal window
 
 ```
-
 npm run dev
-
-
 ```
 
 ## SolidStart Cloudflare configuration
@@ -60,28 +57,9 @@ If using [create-cloudflare (C3) ↗](https://www.npmjs.com/package/create-cloud
 In order to configure SolidStart so that it can be deployed to Cloudflare pages, update its config file like so:
 
 ```
-
 import { defineConfig } from "@solidjs/start/config";
-
-
-export default defineConfig({
-
-  server: {
-
-    preset: "cloudflare-pages",
-
-
-    rollupConfig: {
-
-      external: ["node:async_hooks"]
-
-    }
-
-  }
-
-});
-
-
+export default defineConfig({  server: {    preset: "cloudflare-pages",
+    rollupConfig: {      external: ["node:async_hooks"]    }  }});
 ```
 
 ## Before you continue
@@ -99,20 +77,7 @@ Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). Aft
 Terminal window
 
 ```
-
-git init
-
-git remote add origin https://github.com/<your-gh-username>/<repository-name>
-
-git add .
-
-git commit -m "Initial commit"
-
-git branch -M main
-
-git push -u origin main
-
-
+git initgit remote add origin https://github.com/<your-gh-username>/<repository-name>git add .git commit -m "Initial commit"git branch -M maingit push -u origin main
 ```
 
 ## Deploy with Cloudflare Pages

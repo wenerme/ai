@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,99 +29,29 @@ Stable Diffusion Inpainting is a latent text-to-image diffusion model capable of
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-5088)
-* [  curl ](#tab-panel-5089)
+* [  TypeScript ](#tab-panel-5162)
+* [  curl ](#tab-panel-5163)
 
 ```
-
-export interface Env {
-
-  AI: Ai;
-
-}
-
-
-export default {
-
-  async fetch(request, env): Promise<Response> {
-
-
-    // Picture of a dog
-
-    const exampleInputImage = await fetch(
-
-      "https://pub-1fb693cb11cc46b2b2f656f51e015a2c.r2.dev/dog.png"
-
-    );
-
-
-    // Mask of dog
-
-    const exampleMask = await fetch(
-
-      "https://pub-1fb693cb11cc46b2b2f656f51e015a2c.r2.dev/dog-mask.png"
-
-    );
-
-
-    const inputs = {
-
-      prompt: "Change to a lion",
-
-      image: [...new Uint8Array(await exampleInputImage.arrayBuffer())],
-
-      mask: [...new Uint8Array(await exampleMask.arrayBuffer())],
-
-    };
-
-
-    const response =
-
-      await env.AI.run(
-
-        "@cf/runwayml/stable-diffusion-v1-5-inpainting",
-
-        inputs
-
-      );
-
-
-    return new Response(response, {
-
-      headers: {
-
-        "content-type": "image/png",
-
-      },
-
-    });
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export interface Env {  AI: Ai;}
+export default {  async fetch(request, env): Promise<Response> {
+    // Picture of a dog    const exampleInputImage = await fetch(      "https://pub-1fb693cb11cc46b2b2f656f51e015a2c.r2.dev/dog.png"    );
+    // Mask of dog    const exampleMask = await fetch(      "https://pub-1fb693cb11cc46b2b2f656f51e015a2c.r2.dev/dog-mask.png"    );
+    const inputs = {      prompt: "Change to a lion",      image: [...new Uint8Array(await exampleInputImage.arrayBuffer())],      mask: [...new Uint8Array(await exampleMask.arrayBuffer())],    };
+    const response =      await env.AI.run(        "@cf/runwayml/stable-diffusion-v1-5-inpainting",        inputs      );
+    return new Response(response, {      headers: {        "content-type": "image/png",      },    });  },} satisfies ExportedHandler<Env>;
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/runwayml/stable-diffusion-v1-5-inpainting  \
-
-  -X POST  \
-
-  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
-
-  -d '{ "prompt": "cyberpunk cat" }'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/runwayml/stable-diffusion-v1-5-inpainting  \  -X POST  \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \  -d '{ "prompt": "cyberpunk cat" }'
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-5090)
-* [ Output ](#tab-panel-5091)
+* [ Input ](#tab-panel-5164)
+* [ Output ](#tab-panel-5165)
 
 prompt
 
@@ -167,13 +97,13 @@ seed
 
 `integer`Random seed for reproducibility of the image generation
 
-The binding returns a `ReadableStream` with the output (check the model's output schema).
+ The binding returns a `ReadableStream` with the output (check the model's output schema). 
 
 ## API Schemas (Raw)
 
 Input [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-inpainting/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-inpainting/schema-input.json "Download") 
 
-Output [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-inpainting/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-inpainting/schema-output.json "Download") 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-inpainting/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-inpainting/schema-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-inpainting/#page","headline":"stable-diffusion-v1-5-inpainting (RunwayML) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Stable Diffusion Inpainting is a latent text-to-image diffusion model capable of generating photo-realistic images given any text input, with the extra capability of inpainting the pictures by using a mask.","url":"https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-inpainting/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

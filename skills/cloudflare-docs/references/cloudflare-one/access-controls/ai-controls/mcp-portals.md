@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -170,10 +170,7 @@ When a user authorizes an upstream MCP server that requires per-user OAuth, the 
 For newly created MCP servers, the portal uses a shared callback URL owned by Cloudflare:
 
 ```
-
 https://oauth-callbacks.cloudflareaccess.com/cdn-cgi/access/outbound-oauth-callback
-
-
 ```
 
 Upstream MCP server vendors only need to allowlist this single Cloudflare URL rather than each individual portal hostname. This resolves issues where some vendors rejected portal-specific hostnames that were not in their redirect URI allowlists.
@@ -210,15 +207,16 @@ Cloudflare Access automatically creates an Access application for each MCP serve
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Find the portal that you want to configure, then select the three dots > **Edit**.
 3. To configure identity providers for the portal:  
-   1. Go to **Authentication**.  
-   2. Select the [identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) that you want to enable for your application.  
-   3. (Recommended) If you plan to only allow access via a single identity provider, turn on **Apply instant authentication**. End users will not be shown the [Cloudflare Access login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/). Instead, Cloudflare will redirect users directly to your SSO login event.
+  1. Go to **Authentication**.
+  2. Select the [identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) that you want to enable for your application.
+  3. (Recommended) If you plan to only allow access via a single identity provider, turn on **Apply instant authentication**. End users will not be shown the [Cloudflare Access login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/). Instead, Cloudflare will redirect users directly to your SSO login event.
 4. To customize the block page:  
-   1. Go to **Additional settings**.  
-   2. **Custom block pages**: Choose what users will see when they are denied access to the application.  
-         * **Cloudflare default**: Reload the [login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/) and display a block message below the Cloudflare Access logo. The default message is `That account does not have access`, or you can enter a custom message.  
-         * **Redirect URL**: Redirect to the specified website.  
-         * **Custom page template**: Display a [custom block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-block-page/) hosted in Cloudflare One.
+  1. Go to **Additional settings**.
+  2. **Custom block pages**: Choose what users will see when they are denied access to the application.
+
+    * **Cloudflare default**: Reload the [login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/) and display a block message below the Cloudflare Access logo. The default message is `That account does not have access`, or you can enter a custom message.
+    * **Redirect URL**: Redirect to the specified website.
+    * **Custom page template**: Display a [custom block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-block-page/) hosted in Cloudflare One.
 5. Select **Save**.
 
 ## Manage tools and prompts
@@ -246,44 +244,7 @@ To configure an allowlist via the API, set `default_disabled` to `true` on the s
 API request body (portal update)
 
 ```
-
-{
-
-  "servers": [
-
-    {
-
-      "id": "example-server",
-
-      "default_disabled": true,
-
-      "updated_tools": [
-
-        {
-
-          "name": "search_documents",
-
-          "enabled": true
-
-        },
-
-        {
-
-          "name": "list_projects",
-
-          "enabled": true
-
-        }
-
-      ]
-
-    }
-
-  ]
-
-}
-
-
+{  "servers": [    {      "id": "example-server",      "default_disabled": true,      "updated_tools": [        {          "name": "search_documents",          "enabled": true        },        {          "name": "list_projects",          "enabled": true        }      ]    }  ]}
 ```
 
 With `default_disabled` set to `true`, only `search_documents` and `list_projects` will be available to portal users. All other tools from this server will be hidden.
@@ -313,8 +274,8 @@ If no alias is set, the portal uses the original name and description from the u
 
 #### Set aliases in the dashboard
 
-* [ Portal-level alias ](#tab-panel-7085)
-* [ Server-level alias ](#tab-panel-7086)
+* [ Portal-level alias ](#tab-panel-7159)
+* [ Server-level alias ](#tab-panel-7160)
 
 To set an alias that applies to a specific portal:
 
@@ -346,60 +307,7 @@ Send a `PUT` request to the [update a MCP portal](https://developers.cloudflare.
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-controls/mcp/portals/%7Bid%7D" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "servers": [
-
-        {
-
-            "server_id": "example-server",
-
-            "updated_tools": [
-
-                {
-
-                    "name": "original_tool_name",
-
-                    "enabled": true,
-
-                    "description": "A clearer description of what this tool does.",
-
-                    "alias": "renamed_tool"
-
-                }
-
-            ],
-
-            "updated_prompts": [
-
-                {
-
-                    "name": "original_prompt_name",
-
-                    "enabled": true,
-
-                    "description": "An updated description for this prompt.",
-
-                    "alias": "renamed_prompt"
-
-                }
-
-            ]
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-controls/mcp/portals/%7Bid%7D" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "servers": [        {            "server_id": "example-server",            "updated_tools": [                {                    "name": "original_tool_name",                    "enabled": true,                    "description": "A clearer description of what this tool does.",                    "alias": "renamed_tool"                }            ],            "updated_prompts": [                {                    "name": "original_prompt_name",                    "enabled": true,                    "description": "An updated description for this prompt.",                    "alias": "renamed_prompt"                }            ]        }    ]  }'
 ```
 
 To set server-level aliases that apply across all portals, send a `PUT` request to the [update a MCP server](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/ai%5Fcontrols/subresources/mcp/subresources/servers/methods/update/) endpoint with the same `updated_tools` and `updated_prompts` fields.
@@ -514,14 +422,7 @@ Unlike the dashboard, the API does not automatically create a DNS record for you
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-controls/mcp/portals" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-controls/mcp/portals" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ### Create a portal
@@ -529,26 +430,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-c
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-controls/mcp/portals" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "Engineering Portal",
-
-    "hostname": "mcp.example.com",
-
-    "allow_code_mode": true,
-
-    "secure_web_gateway": false
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-controls/mcp/portals" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Engineering Portal",    "hostname": "mcp.example.com",    "allow_code_mode": true,    "secure_web_gateway": false  }'
 ```
 
 ### List MCP servers
@@ -556,14 +438,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-c
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-controls/mcp/servers" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-controls/mcp/servers" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ### Create an MCP server
@@ -571,24 +446,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-c
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-controls/mcp/servers" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "GitHub MCP Server",
-
-    "hostname": "https://github-mcp.example.workers.dev/mcp",
-
-    "auth_type": "oauth"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-controls/mcp/servers" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "GitHub MCP Server",    "hostname": "https://github-mcp.example.workers.dev/mcp",    "auth_type": "oauth"  }'
 ```
 
 The `auth_type` field accepts the following values:
@@ -606,14 +464,7 @@ To manually trigger a synchronization of tools and prompts from an upstream MCP 
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-controls/mcp/servers/%7Bserver_id%7D/sync" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-controls/mcp/servers/%7Bserver_id%7D/sync" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ### Delete a portal
@@ -621,14 +472,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-c
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-controls/mcp/portals/%7Bid%7D" \
-
-  --request DELETE \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-controls/mcp/portals/%7Bid%7D" \  --request DELETE \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ## Configure via Terraform
@@ -644,37 +488,8 @@ The following example creates an MCP server portal with a CNAME record:
 MCP server portal with DNS record
 
 ```
-
-# Create the MCP server portal
-
-resource "cloudflare_zero_trust_access_mcp_server_portal" "example" {
-
-  account_id = var.cloudflare_account_id
-
-  name       = "Engineering Portal"
-
-  hostname   = "mcp.example.com"
-
-}
-
-
-# Required: Create the CNAME record for the portal hostname
-
-resource "cloudflare_dns_record" "mcp_portal" {
-
-  zone_id = var.cloudflare_zone_id
-
-  name    = "mcp"
-
-  content = "gateway.agents.cloudflare.com"
-
-  type    = "CNAME"
-
-  proxied = true
-
-}
-
-
+# Create the MCP server portalresource "cloudflare_zero_trust_access_mcp_server_portal" "example" {  account_id = var.cloudflare_account_id  name       = "Engineering Portal"  hostname   = "mcp.example.com"}
+# Required: Create the CNAME record for the portal hostnameresource "cloudflare_dns_record" "mcp_portal" {  zone_id = var.cloudflare_zone_id  name    = "mcp"  content = "gateway.agents.cloudflare.com"  type    = "CNAME"  proxied = true}
 ```
 
 For the full list of supported resource arguments, refer to the [Terraform provider documentation ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).
@@ -694,10 +509,7 @@ To use code mode, append the `?codemode=search_and_execute` query string paramet
 For example, if your portal URL is `https://<subdomain>.<domain>/mcp`, connect to:
 
 ```
-
 https://<subdomain>.<domain>/mcp?codemode=search_and_execute
-
-
 ```
 
 For MCP clients with server configuration files, use the portal URL with the query string parameter:
@@ -705,32 +517,7 @@ For MCP clients with server configuration files, use the portal URL with the que
 MCP client configuration with code mode
 
 ```
-
-{
-
-  "mcpServers": {
-
-    "example-portal": {
-
-      "command": "npx",
-
-      "args": [
-
-        "-y",
-
-        "mcp-remote@latest",
-
-        "https://<subdomain>.<domain>/mcp?codemode=search_and_execute"
-
-      ]
-
-    }
-
-  }
-
-}
-
-
+{  "mcpServers": {    "example-portal": {      "command": "npx",      "args": [        "-y",        "mcp-remote@latest",        "https://<subdomain>.<domain>/mcp?codemode=search_and_execute"      ]    }  }}
 ```
 
 When code mode is active, the portal advertises a single `code` tool to connected MCP clients. The AI agent discovers available tools by inspecting the typed method signatures in the Dynamic Worker environment and composes multiple tool calls into a single code execution.
@@ -741,8 +528,8 @@ For more information on building with code mode, refer to the [code mode SDK ref
 
 To turn off code mode for a portal:
 
-* [ Dashboard ](#tab-panel-7087)
-* [ API ](#tab-panel-7088)
+* [ Dashboard ](#tab-panel-7161)
+* [ API ](#tab-panel-7162)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
 2. Find the portal you want to configure, then select the three dots > **Edit**.
@@ -751,19 +538,12 @@ To turn off code mode for a portal:
 1. Get your existing MCP portal configuration:  
 Terminal window  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-controls/mcp/portals/%7Bid%7D" \  
-  --request GET \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
+curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-controls/mcp/portals/%7Bid%7D" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
 ```
 2. Send a `PUT` request to the [Update a MCP Portal](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/ai%5Fcontrols/subresources/mcp/subresources/portals/methods/update/) endpoint with `allow_code_mode` set to `false`. To avoid overwriting your existing configuration, the `PUT` request body should contain all fields returned by the previous `GET` request.  
 Terminal window  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-controls/mcp/portals/%7Bid%7D" \  
-  --request PUT \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "allow_code_mode": false  
-  }'  
+curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-controls/mcp/portals/%7Bid%7D" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "allow_code_mode": false  }'  
 ```
 
 ## Route portal traffic through Gateway
@@ -853,32 +633,7 @@ For MCP clients with server configuration files, we recommend using the `npx` co
 MCP client configuration for MCP portals
 
 ```
-
-{
-
-  "mcpServers": {
-
-    "example-mcp-server": {
-
-      "command": "npx",
-
-      "args": [
-
-        "-y",
-
-        "mcp-remote@latest",
-
-        "https://<subdomain>.<domain>.com/mcp"
-
-      ]
-
-    }
-
-  }
-
-}
-
-
+{  "mcpServers": {    "example-mcp-server": {      "command": "npx",      "args": [        "-y",        "mcp-remote@latest",        "https://<subdomain>.<domain>.com/mcp"      ]    }  }}
 ```
 
 We do not recommend using the `serverURL` parameter since it may cause issues with portal session creation and management.
@@ -942,10 +697,7 @@ This option provides up to 5x savings in token usage, though querying tool defin
 To connect with `minimize_tools`, use the following portal URL:
 
 ```
-
 https://<subdomain>.<domain>/mcp?optimize_context=minimize_tools
-
-
 ```
 
 For MCP clients with server configuration files:
@@ -953,32 +705,7 @@ For MCP clients with server configuration files:
 MCP client configuration with minimize\_tools
 
 ```
-
-{
-
-  "mcpServers": {
-
-    "example-portal": {
-
-      "command": "npx",
-
-      "args": [
-
-        "-y",
-
-        "mcp-remote@latest",
-
-        "https://<subdomain>.<domain>/mcp?optimize_context=minimize_tools"
-
-      ]
-
-    }
-
-  }
-
-}
-
-
+{  "mcpServers": {    "example-portal": {      "command": "npx",      "args": [        "-y",        "mcp-remote@latest",        "https://<subdomain>.<domain>/mcp?optimize_context=minimize_tools"      ]    }  }}
 ```
 
 ### Search and execute
@@ -990,10 +717,7 @@ This option reduces the initial token cost of portal tools to a small constant, 
 To connect with `search_and_execute`, use the following portal URL:
 
 ```
-
 https://<subdomain>.<domain>/mcp?optimize_context=search_and_execute
-
-
 ```
 
 For MCP clients with server configuration files:
@@ -1001,32 +725,7 @@ For MCP clients with server configuration files:
 MCP client configuration with search\_and\_execute
 
 ```
-
-{
-
-  "mcpServers": {
-
-    "example-portal": {
-
-      "command": "npx",
-
-      "args": [
-
-        "-y",
-
-        "mcp-remote@latest",
-
-        "https://<subdomain>.<domain>/mcp?optimize_context=search_and_execute"
-
-      ]
-
-    }
-
-  }
-
-}
-
-
+{  "mcpServers": {    "example-portal": {      "command": "npx",      "args": [        "-y",        "mcp-remote@latest",        "https://<subdomain>.<domain>/mcp?optimize_context=search_and_execute"      ]    }  }}
 ```
 
 For more information on the code mode pattern behind `search_and_execute`, refer to the [Code mode SDK reference](https://developers.cloudflare.com/agents/model-context-protocol/protocol/codemode/).
@@ -1044,10 +743,7 @@ To manage your server connections during an active session, ask your AI agent to
 The portal returns an authorization URL. Open this URL in your web browser to access the server selection page:
 
 ```
-
 https://<subdomain>.<domain>/authorize?elicitationId=<ELICITATION_ID>
-
-
 ```
 
 From this page you can:
@@ -1078,10 +774,7 @@ This command clears credentials for all MCP servers using `mcp-remote@latest`, n
 Terminal window
 
 ```
-
 rm -rf ~/.mcp-auth
-
-
 ```
 
 After clearing credentials, reconnect to the portal from your MCP client.

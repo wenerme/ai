@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,18 +25,7 @@ A button that performs the room join operation. Displays "Join" by default and c
 ### Basic Usage
 
 ```
-
-<com.cloudflare.realtimekit.ui.view.RtkJoinButton
-
-    android:id="@+id/rtk_join_button"
-
-    android:layout_width="wrap_content"
-
-    android:layout_height="48dp"
-
-    app:rtk_btn_variant="primary" />
-
-
+<com.cloudflare.realtimekit.ui.view.RtkJoinButton    android:id="@+id/rtk_join_button"    android:layout_width="wrap_content"    android:layout_height="48dp"    app:rtk_btn_variant="primary" />
 ```
 
 ### With Methods
@@ -44,14 +33,7 @@ A button that performs the room join operation. Displays "Join" by default and c
 Kotlin
 
 ```
-
-val joinButton = findViewById<RtkJoinButton>(R.id.rtk_join_button)
-
-val nameField = findViewById<EditText>(R.id.name_field)
-
-joinButton.activate(meeting, nameField)
-
-
+val joinButton = findViewById<RtkJoinButton>(R.id.rtk_join_button)val nameField = findViewById<EditText>(R.id.name_field)joinButton.activate(meeting, nameField)
 ```
 
 ```json

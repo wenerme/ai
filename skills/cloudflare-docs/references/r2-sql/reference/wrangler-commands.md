@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2-sql/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,35 +20,26 @@ R2 SQL is currently in open beta. Report R2 SQL bugs in [GitHub ↗](https://git
 
 Execute SQL query against R2 Data Catalog
 
-* [  npm ](#tab-panel-9709)
-* [  pnpm ](#tab-panel-9710)
-* [  yarn ](#tab-panel-9711)
+* [  npm ](#tab-panel-9785)
+* [  pnpm ](#tab-panel-9786)
+* [  yarn ](#tab-panel-9787)
 
 Terminal window
 
 ```
-
 npx wrangler r2 sql query [WAREHOUSE] [QUERY]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 sql query [WAREHOUSE] [QUERY]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 sql query [WAREHOUSE] [QUERY]
-
-
 ```
 
 * `[WAREHOUSE]` ` string ` required  

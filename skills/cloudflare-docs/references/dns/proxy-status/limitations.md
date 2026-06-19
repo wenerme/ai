@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,16 +25,16 @@ If you encounter a [CNAME record](https://developers.cloudflare.com/dns/manage-d
 Non-proxiable targets
 
 * Exact match:  
-   * `dkim2.mcsv.net` ([Mailchimp documentation ↗](https://mailchimp.com/help/set-up-email-domain-authentication/))  
-   * `dkim3.mcsv.net` ([Mailchimp documentation ↗](https://mailchimp.com/help/set-up-email-domain-authentication/))  
-   * `zmverify.zoho.com` ([Zoho documentation ↗](https://www.zoho.com/mail/help/adminconsole/domain-verification.html))  
-   * `dkim.infusionmail.com` ([Keap documentation ↗](https://help.keap.com/help/dmarc))
+  * `dkim2.mcsv.net` ([Mailchimp documentation ↗](https://mailchimp.com/help/set-up-email-domain-authentication/))
+  * `dkim3.mcsv.net` ([Mailchimp documentation ↗](https://mailchimp.com/help/set-up-email-domain-authentication/))
+  * `zmverify.zoho.com` ([Zoho documentation ↗](https://www.zoho.com/mail/help/adminconsole/domain-verification.html))
+  * `dkim.infusionmail.com` ([Keap documentation ↗](https://help.keap.com/help/dmarc))
 * Exact match or subdomain of:  
-   * `dkim.amazonses.com` ([Amazon SES documentation ↗](https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#just-verify-domain-proc))
+  * `dkim.amazonses.com` ([Amazon SES documentation ↗](https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#just-verify-domain-proc))
 * Subdomain of:  
-   * `onmicrosoft.com` ([Microsoft documentation ↗](https://learn.microsoft.com/defender-office-365/email-authentication-dkim-configure))  
-   * `dkim.intercom.io` ([Intercom documentation ↗](https://www.intercom.com/help/articles/9744849-connect-your-email-support-channel))  
-   * `acm-validations.aws` ([AWS certificate manager documentation ↗](https://docs.aws.amazon.com/acm/latest/userguide/dns-validation.html))
+  * `onmicrosoft.com` ([Microsoft documentation ↗](https://learn.microsoft.com/defender-office-365/email-authentication-dkim-configure))
+  * `dkim.intercom.io` ([Intercom documentation ↗](https://www.intercom.com/help/articles/9744849-connect-your-email-support-channel))
+  * `acm-validations.aws` ([AWS certificate manager documentation ↗](https://docs.aws.amazon.com/acm/latest/userguide/dns-validation.html))
 
 ### Pre-signed DNSSEC
 

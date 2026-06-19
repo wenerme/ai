@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -14,17 +14,18 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 You can build an [API sequence rule](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/custom-rules/) via the Cloudflare dashboard.
 
-* [  New dashboard ](#tab-panel-11158)
-* [ Old dashboard ](#tab-panel-11159)
+* [  New dashboard ](#tab-panel-11175)
+* [ Old dashboard ](#tab-panel-11176)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. To create a new empty rule, select **Create rule** \> **Custom rules**.
 3. Enter a descriptive name for the rule in **Rule name**.
-4. Under **When incoming requests match**, use the **Field** drop-down list to filter by **Sequences** and select from:  
-   * Current Operation  
-   * Previous Operations  
-   * Elapsed time
+4. Under **When incoming requests match**, use the **Field** drop-down list to filter by **Sequences** and select from:
+
+  * Current Operation
+  * Previous Operations
+  * Elapsed time
 5. Under **Value**, select the edit icon to use Builder and build a sequence on the side panel.
 6. Under **Select a hostname for this sequence**, choose all or a specific hostname from the dropdown list. Optionally, you can use the search bar to search for a specific hostname.
 7. From the **Methods** dropdown list, choose all methods or a specific request method.
@@ -45,9 +46,9 @@ The fields in the custom rule are populated as a grouped sequence based on the v
 3. To create a new empty rule, select **Create rule**.
 4. Enter a descriptive name for the rule in **Rule name**.
 5. Under **When incoming requests match**, use the **Field** drop-down list and select:  
-   * Current Operation  
-   * Previous Operations  
-   * Elapsed time
+  * Current Operation
+  * Previous Operations
+  * Elapsed time
 6. Under **Value**, build a sequence by selecting a hostname for the sequence.
 7. Select the checkbox for each endpoint in the order that you want them to appear in the sequence.
 8. Set the time to complete.

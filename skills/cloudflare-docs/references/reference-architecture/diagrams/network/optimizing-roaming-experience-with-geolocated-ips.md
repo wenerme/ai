@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -48,17 +48,19 @@ Traffic from roaming devices is securely collected through the service provider'
 2. **Traffic sorting**.  
 The Internet breakout will categorize the traffic into separate buckets to identify its country of origin - in this example each country's APN is given a dedicated private IP subnet.
 3. **Connectivity options**.  
-Cloudflare supports multiple connection methods to integrate with the regional breakout architecture:  
-   * [**GRE tunnels**](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/) for ease of use.  
-   * [**IPsec tunnels**](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/) for encrypted communication.  
-   * [**Cloudflare Network Interconnect (CNI)**](https://developers.cloudflare.com/cloudflare-wan/network-interconnect/) for direct, high-performance connections.
+Cloudflare supports multiple connection methods to integrate with the regional breakout architecture:
+
+  * [**GRE tunnels**](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/) for ease of use.
+  * [**IPsec tunnels**](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/) for encrypted communication.
+  * [**Cloudflare Network Interconnect (CNI)**](https://developers.cloudflare.com/cloudflare-wan/network-interconnect/) for direct, high-performance connections.
 4. **Localized Internet breakout using [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) (formerly Magic WAN) and [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)**.  
 With Cloudflare WAN and using [dedicated egress](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/) with our [secure web gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/), Cloudflare enables Internet traffic to exit with source IPs registered in the desired country. This ensures end-users benefit from geolocalized content and services, such as access to region-specific platforms, tailored to their location.
 5. **Advanced security and filtering options**.  
-Cloudflare enhances the security of Internet breakouts with advanced features, including:  
-   * [**DNS filtering**](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/dns/) to manage and block access to unwanted, high risk domains.  
-   * [**Network firewalling**](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) for enforcing detailed security policies. For example, you can restrict vehicles to only send data over the Internet to a designated set of cloud telemetry systems while blocking all other traffic.  
-   * [**Full SSL inspection**](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/) to protect against sophisticated threats and provide traffic visibility on encrypted traffic. It enables additional protections such as antivirus scanning, malware prevention, and file sandboxing.
+Cloudflare enhances the security of Internet breakouts with advanced features, including:
+
+  * [**DNS filtering**](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/dns/) to manage and block access to unwanted, high risk domains.
+  * [**Network firewalling**](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) for enforcing detailed security policies. For example, you can restrict vehicles to only send data over the Internet to a designated set of cloud telemetry systems while blocking all other traffic.
+  * [**Full SSL inspection**](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/) to protect against sophisticated threats and provide traffic visibility on encrypted traffic. It enables additional protections such as antivirus scanning, malware prevention, and file sandboxing.
 
 # Related Resources
 

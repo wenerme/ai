@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,9 +27,10 @@ When creating an origin rule via API, make sure you:
 Follow this workflow to create an origin rule for a given zone via API:
 
 1. Use the [List zone rulesets](https://developers.cloudflare.com/api/resources/rulesets/methods/list/) operation to check if there is already a ruleset for the `http_request_origin` phase at the zone level.
-2. If the phase ruleset does not exist, create it using the [Create a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) operation. In the new ruleset properties, set the following values:  
-   * **kind**: `zone`  
-   * **phase**: `http_request_origin`
+2. If the phase ruleset does not exist, create it using the [Create a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) operation. In the new ruleset properties, set the following values:
+
+  * **kind**: `zone`
+  * **phase**: `http_request_origin`
 3. Use the [Update a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/update/) operation to add an origin rule to the list of ruleset rules. Alternatively, include the rule in the [Create a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) request mentioned in the previous step.
 
 Make sure your API token has the [required permissions](#required-api-token-permissions) to perform the API operations.
@@ -42,7 +43,7 @@ The following example sets the rules of an existing phase ruleset (`$RULESET_ID`
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Response Compression Write`
 * `Config Settings Write`
 * `Dynamic URL Redirects Write`
@@ -68,115 +69,11 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Update a zone ruleset
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "rules": [
-
-        {
-
-            "ref": "hr_app_overrides",
-
-            "expression": "starts_with(http.request.uri.path, \"/hr-app/\")",
-
-            "description": "Origin rule for the company HR application",
-
-            "action": "route",
-
-            "action_parameters": {
-
-                "host_header": "hr-server.example.com",
-
-                "origin": {
-
-                    "host": "hr-server.example.com"
-
-                }
-
-            }
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "ref": "hr_app_overrides",            "expression": "starts_with(http.request.uri.path, \"/hr-app/\")",            "description": "Origin rule for the company HR application",            "action": "route",            "action_parameters": {                "host_header": "hr-server.example.com",                "origin": {                    "host": "hr-server.example.com"                }            }        }    ]  }'
 ```
 
 ```
-
-{
-
-  "result": {
-
-    "id": "<RULESET_ID>",
-
-    "name": "Origin Rules ruleset",
-
-    "description": "Zone-level ruleset that will execute origin rules.",
-
-    "kind": "zone",
-
-    "version": "2",
-
-    "rules": [
-
-      {
-
-        "ref": "hr_app_overrides",
-
-        "id": "<RULE_ID>",
-
-        "version": "1",
-
-        "action": "route",
-
-        "action_parameters": {
-
-          "host_header": "hr-server.example.com",
-
-          "origin": {
-
-            "host": "hr-server.example.com"
-
-          }
-
-        },
-
-        "expression": "starts_with(http.request.uri.path, \"/hr-app/\")",
-
-        "description": "Origin rule for the company HR application",
-
-        "last_updated": "2022-06-03T14:42:04.219025Z",
-
-        "ref": "<RULE_REF>"
-
-      }
-
-    ],
-
-    "last_updated": "2022-06-03T14:42:04.219025Z",
-
-    "phase": "http_request_origin"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "id": "<RULESET_ID>",    "name": "Origin Rules ruleset",    "description": "Zone-level ruleset that will execute origin rules.",    "kind": "zone",    "version": "2",    "rules": [      {        "ref": "hr_app_overrides",        "id": "<RULE_ID>",        "version": "1",        "action": "route",        "action_parameters": {          "host_header": "hr-server.example.com",          "origin": {            "host": "hr-server.example.com"          }        },        "expression": "starts_with(http.request.uri.path, \"/hr-app/\")",        "description": "Origin rule for the company HR application",        "last_updated": "2022-06-03T14:42:04.219025Z",        "ref": "<RULE_REF>"      }    ],    "last_updated": "2022-06-03T14:42:04.219025Z",    "phase": "http_request_origin"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.
@@ -187,7 +84,7 @@ The following example sets the rules of an existing phase ruleset (`$RULESET_ID`
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Response Compression Write`
 * `Config Settings Write`
 * `Dynamic URL Redirects Write`
@@ -213,111 +110,11 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Update a zone ruleset
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "rules": [
-
-        {
-
-            "ref": "calendar_app_change_port",
-
-            "expression": "starts_with(http.request.uri.path, \"/team/calendar/\")",
-
-            "description": "Origin rule for the team calendar application",
-
-            "action": "route",
-
-            "action_parameters": {
-
-                "origin": {
-
-                    "port": 8081
-
-                }
-
-            }
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "ref": "calendar_app_change_port",            "expression": "starts_with(http.request.uri.path, \"/team/calendar/\")",            "description": "Origin rule for the team calendar application",            "action": "route",            "action_parameters": {                "origin": {                    "port": 8081                }            }        }    ]  }'
 ```
 
 ```
-
-{
-
-  "result": {
-
-    "id": "<RULESET_ID>",
-
-    "name": "Origin Rules ruleset",
-
-    "description": "Zone-level ruleset that will execute origin rules.",
-
-    "kind": "zone",
-
-    "version": "2",
-
-    "rules": [
-
-      {
-
-        "ref": "calendar_app_change_port",
-
-        "id": "<RULE_ID>",
-
-        "version": "1",
-
-        "action": "route",
-
-        "action_parameters": {
-
-          "origin": {
-
-            "port": 8081
-
-          }
-
-        },
-
-        "expression": "starts_with(http.request.uri.path, \"/team/calendar/\")",
-
-        "description": "Origin rule for the team calendar application",
-
-        "last_updated": "2022-06-03T14:42:04.219025Z",
-
-        "ref": "<RULE_REF>"
-
-      }
-
-    ],
-
-    "last_updated": "2022-06-03T14:42:04.219025Z",
-
-    "phase": "http_request_origin"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "id": "<RULESET_ID>",    "name": "Origin Rules ruleset",    "description": "Zone-level ruleset that will execute origin rules.",    "kind": "zone",    "version": "2",    "rules": [      {        "ref": "calendar_app_change_port",        "id": "<RULE_ID>",        "version": "1",        "action": "route",        "action_parameters": {          "origin": {            "port": 8081          }        },        "expression": "starts_with(http.request.uri.path, \"/team/calendar/\")",        "description": "Origin rule for the team calendar application",        "last_updated": "2022-06-03T14:42:04.219025Z",        "ref": "<RULE_REF>"      }    ],    "last_updated": "2022-06-03T14:42:04.219025Z",    "phase": "http_request_origin"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.
@@ -328,7 +125,7 @@ The following example sets the rules of an existing phase ruleset (`$RULESET_ID`
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Response Compression Write`
 * `Config Settings Write`
 * `Dynamic URL Redirects Write`
@@ -354,44 +151,7 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Update a zone ruleset
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "rules": [
-
-        {
-
-            "ref": "override_sni_for_admin",
-
-            "expression": "http.host eq \"admin.example.com\"",
-
-            "description": "SNI Override for the admin area",
-
-            "action": "route",
-
-            "action_parameters": {
-
-                "sni": {
-
-                    "value": "sni.example.com"
-
-                }
-
-            }
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "ref": "override_sni_for_admin",            "expression": "http.host eq \"admin.example.com\"",            "description": "SNI Override for the admin area",            "action": "route",            "action_parameters": {                "sni": {                    "value": "sni.example.com"                }            }        }    ]  }'
 ```
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.

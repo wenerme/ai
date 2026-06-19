@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -47,15 +47,15 @@ Download [OBS Studio ↗](https://obsproject.com/) for Windows, macOS, or Linux.
 When you first launch OBS, the Auto-Configuration Wizard will ask a few questions and offer recommended settings. See their [Quick Start Guide ↗](https://obsproject.com/kb/quick-start-guide) for more details. For a quick start with Stream, use these settings:
 
 * **Step 1: "Usage Information"**  
-   * Select "Optimize for streaming, recording is secondary."
+  * Select "Optimize for streaming, recording is secondary."
 * **Step 2: "Video Settings"**  
-   * **Base (Canvas) Resolution:** 1920x1080  
-   * **FPS:** "Either 60 or 30, but prefer 60 when possible"
+  * **Base (Canvas) Resolution:** 1920x1080
+  * **FPS:** "Either 60 or 30, but prefer 60 when possible"
 * **Step 3: "Stream Information"**  
-   * **Service:** "Custom"  
-   * For **Server**, enter the RTMPS URL from Stream  
-   * For **Stream Key**, enter the RTMPS Key from Stream  
-   * If available, select both **"Prefer hardware encoding"** and **"Estimate bitrate with a bandwidth test."**
+  * **Service:** "Custom"
+  * For **Server**, enter the RTMPS URL from Stream
+  * For **Stream Key**, enter the RTMPS Key from Stream
+  * If available, select both **"Prefer hardware encoding"** and **"Estimate bitrate with a bandwidth test."**
 
 ## 4\. Set up a Stage
 
@@ -87,9 +87,9 @@ _Your available options in the "Video Encoder" menu, as well as the resulting "E
 * **Rate Control:** confirm "CBR" (constant bitrate) is selected.
 * **Bitrate:** depending on the content of your stream, a bitrate between 3000 Kbps and 8000 Kbps should be sufficient. Lower bitrate is more tolerant to network congestion and is suitable for content with less detail or less motion (speaker, slides, etc.) where a higher bitrate requires a more stable network connection and is best for content with lots of motion or details (events, moving cameras, video games, screen share, higher framerates).
 * **Keyframe Interval**, sometimes referred to as _GOP Size_:  
-   * If you did _not_ select Low-Latency HLS Beta, set this to 4 seconds. Raise it to 8 if your stream has stuttering or freezing.  
-   * If you _did_ select the Low-Latency HLS Beta, set this to 2 seconds. Raise it to 4 if your stream has stuttering or freezing. Lower it to 1 if your stream has smooth playback.  
-   * In general, higher keyframe intervals make more efficient use of bandwidth and CPU for encoding, at the expense of higher glass-to-glass latency. Lower keyframe intervals reduce latency, but are more resource intensive and less tolerant to network disruptions and congestion.
+  * If you did _not_ select Low-Latency HLS Beta, set this to 4 seconds. Raise it to 8 if your stream has stuttering or freezing.
+  * If you _did_ select the Low-Latency HLS Beta, set this to 2 seconds. Raise it to 4 if your stream has stuttering or freezing. Lower it to 1 if your stream has smooth playback.
+  * In general, higher keyframe intervals make more efficient use of bandwidth and CPU for encoding, at the expense of higher glass-to-glass latency. Lower keyframe intervals reduce latency, but are more resource intensive and less tolerant to network disruptions and congestion.
 * **Profile** and **Tuning** can be left at their default settings.
 * **B Frames** (available only for some encoders) should be set to 0 for LL-HLS Beta streams.
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -68,26 +68,7 @@ Specify `boost_by` as an array of up to 3 objects when creating or updating an i
 TypeScript
 
 ```
-
-const instance = await env.AI_SEARCH.create({
-
-  id: "my-instance",
-
-  retrieval_options: {
-
-    boost_by: [
-
-      { field: "timestamp", direction: "desc" },
-
-      { field: "priority", direction: "desc" },
-
-    ],
-
-  },
-
-});
-
-
+const instance = await env.AI_SEARCH.create({  id: "my-instance",  retrieval_options: {    boost_by: [      { field: "timestamp", direction: "desc" },      { field: "priority", direction: "desc" },    ],  },});
 ```
 
 To remove boosting, set `boost_by` to an empty array when updating the instance.
@@ -99,27 +80,8 @@ You can override `boost_by` on individual requests using `ai_search_options.retr
 TypeScript
 
 ```
-
 const instance = env.AI_SEARCH.get("my-instance");
-
-
-const results = await instance.search({
-
-  messages: [{ role: "user", content: "What is Cloudflare?" }],
-
-  ai_search_options: {
-
-    retrieval: {
-
-      boost_by: [{ field: "timestamp", direction: "desc" }],
-
-    },
-
-  },
-
-});
-
-
+const results = await instance.search({  messages: [{ role: "user", content: "What is Cloudflare?" }],  ai_search_options: {    retrieval: {      boost_by: [{ field: "timestamp", direction: "desc" }],    },  },});
 ```
 
 To disable boosting for a single request, pass an empty array:
@@ -127,24 +89,7 @@ To disable boosting for a single request, pass an empty array:
 TypeScript
 
 ```
-
-const results = await instance.search({
-
-  messages: [{ role: "user", content: "What is Cloudflare?" }],
-
-  ai_search_options: {
-
-    retrieval: {
-
-      boost_by: [],
-
-    },
-
-  },
-
-});
-
-
+const results = await instance.search({  messages: [{ role: "user", content: "What is Cloudflare?" }],  ai_search_options: {    retrieval: {      boost_by: [],    },  },});
 ```
 
 ## Common patterns

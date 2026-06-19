@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,41 +27,15 @@ A component which renders an image message.
 ### Basic Usage
 
 ```
-
 import { RtkImageMessageView } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return <RtkImageMessageView />;
-
-}
-
-
+function MyComponent() {  return <RtkImageMessageView />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkImageMessageView } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkImageMessageView
-
-      url="example"
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkImageMessageView      url="example"    />  );}
 ```
 
 ```json

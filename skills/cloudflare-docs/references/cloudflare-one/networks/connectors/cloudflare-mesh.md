@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,7 +28,7 @@ Cloudflare Mesh was previously known as WARP Connector and peer-to-peer connecti
 
 Mesh has two types of participants:
 
-| Mesh nodes            | Client devices                                                                                                                                   |                                                                                                                                                |
+|                       | Mesh nodes                                                                                                                                       | Client devices                                                                                                                                 |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Runs on**           | Linux servers, VMs, containers                                                                                                                   | Laptops, phones, desktops                                                                                                                      |
 | **Client**            | [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) (warp-cli), headless | [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) (warp-cli) with UI |
@@ -68,7 +68,7 @@ For details on reserved ranges, refer to [Reserved IP addresses](https://develop
 
 Both Cloudflare Mesh and [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) connect private infrastructure to Cloudflare, but they solve different problems:
 
-| Cloudflare Mesh       | Cloudflare Tunnel                                   |                                                           |
+|                       | Cloudflare Mesh                                     | Cloudflare Tunnel                                         |
 | --------------------- | --------------------------------------------------- | --------------------------------------------------------- |
 | **Traffic direction** | Bidirectional — any participant can initiate        | Inbound to origin — clients connect to published services |
 | **Addressing**        | Every participant gets a Mesh IP                    | Server-side only, no Mesh IPs                             |

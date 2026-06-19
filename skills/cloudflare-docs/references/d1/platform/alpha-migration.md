@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,23 +31,13 @@ This guide will instruct you to recreate alpha D1 databases on our production-re
 Terminal window
 
 ```
-
 npx wrangler d1 info <database_name>
-
-
 ```
 
 If the database is alpha, the output of the command will include `version` set to `alpha`:
 
 ```
-
-...
-
-│ version           │ alpha                                 │
-
-...
-
-
+...│ version           │ alpha                                 │...
 ```
 
 ## 2\. Create a manual backup
@@ -55,10 +45,7 @@ If the database is alpha, the output of the command will include `version` set t
 Terminal window
 
 ```
-
 npx wrangler d1 backup create <alpha_database_name>
-
-
 ```
 
 ## 3\. Download the manual backup
@@ -68,10 +55,7 @@ The command below will download the manual backup of the alpha database as `.sql
 Terminal window
 
 ```
-
 npx wrangler d1 backup download <alpha_database_name> <backup_id> # See available backups with wrangler d1 backup list <database_name>
-
-
 ```
 
 ## 4\. Convert the manual backup into SQL statements
@@ -81,10 +65,7 @@ The command below will convert the manual backup of the alpha database from the 
 Terminal window
 
 ```
-
 sqlite3 db_dump.sqlite3 .dump > db.sql
-
-
 ```
 
 Once you have run the above command, you will need to edit the output SQL file to be compatible with D1:
@@ -92,10 +73,7 @@ Once you have run the above command, you will need to edit the output SQL file t
 1. Remove `BEGIN TRANSACTION` and `COMMIT;` from the file.
 2. Remove the following table creation statement:  
 ```  
-CREATE TABLE _cf_KV (  
-   key TEXT PRIMARY KEY,  
-   value BLOB  
-) WITHOUT ROWID;  
+CREATE TABLE _cf_KV (   key TEXT PRIMARY KEY,   value BLOB) WITHOUT ROWID;  
 ```
 
 ## 5\. Create a new D1 database
@@ -107,10 +85,7 @@ Run the following command to create a new database:
 Terminal window
 
 ```
-
 npx wrangler d1 create <new_database_name>
-
-
 ```
 
 ## 6\. Run SQL statements against the new D1 database
@@ -118,10 +93,7 @@ npx wrangler d1 create <new_database_name>
 Terminal window
 
 ```
-
 npx wrangler d1 execute <new_database_name> --remote --file=./db.sql
-
-
 ```
 
 ## 7\. Delete your alpha database
@@ -131,10 +103,7 @@ To delete your previous alpha database, run:
 Terminal window
 
 ```
-
 npx wrangler d1 delete <alpha_database_name>
-
-
 ```
 
 ```json

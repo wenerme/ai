@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,43 +28,15 @@ A component which loads the logo from your config, or via the `logo-url` attribu
 ### Basic Usage
 
 ```
-
 import { RtkLogo } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return <RtkLogo />;
-
-}
-
-
+function MyComponent() {  return <RtkLogo />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkLogo } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkLogo
-
-      logoUrl="example"
-
-      meeting={meeting}
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkLogo      logoUrl="example"      meeting={meeting}    />  );}
 ```
 
 ```json

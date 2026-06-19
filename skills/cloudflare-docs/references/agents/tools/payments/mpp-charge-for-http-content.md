@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,36 +31,7 @@ Define protected routes in `wrangler.jsonc`:
 JSONC
 
 ```
-
-{
-
-  "vars": {
-
-    "PAY_TO": "0xYourWalletAddress",
-
-    "TEMPO_TESTNET": false,
-
-    "PAYMENT_CURRENCY": "0x20c000000000000000000000b9537d11c60e8b50",
-
-    "PROTECTED_PATTERNS": [
-
-      {
-
-        "pattern": "/premium/*",
-
-        "amount": "0.01",
-
-        "description": "Access to premium content for 1 hour"
-
-      }
-
-    ]
-
-  }
-
-}
-
-
+{  "vars": {    "PAY_TO": "0xYourWalletAddress",    "TEMPO_TESTNET": false,    "PAYMENT_CURRENCY": "0x20c000000000000000000000b9537d11c60e8b50",    "PROTECTED_PATTERNS": [      {        "pattern": "/premium/*",        "amount": "0.01",        "description": "Access to premium content for 1 hour"      }    ]  }}
 ```
 
 Note
@@ -74,22 +45,7 @@ With [Bot Management](https://developers.cloudflare.com/bots/), the proxy can ch
 JSONC
 
 ```
-
-{
-
-  "pattern": "/content/*",
-
-  "amount": "0.25",
-
-  "description": "Content access for 1 hour",
-
-  "bot_score_threshold": 30,
-
-  "except_detection_ids": [120623194, 117479730]
-
-}
-
-
+{  "pattern": "/content/*",  "amount": "0.25",  "description": "Content access for 1 hour",  "bot_score_threshold": 30,  "except_detection_ids": [120623194, 117479730]}
 ```
 
 Requests with a bot score at or below `bot_score_threshold` are directed to the paywall. Use `except_detection_ids` to allowlist specific crawlers by [detection ID](https://developers.cloudflare.com/ai-crawl-control/reference/bots/).
@@ -101,20 +57,7 @@ Clone the template, edit `wrangler.jsonc`, and deploy:
 Terminal window
 
 ```
-
-git clone https://github.com/cloudflare/mpp-proxy
-
-cd mpp-proxy
-
-npm install
-
-npx wrangler secret put JWT_SECRET
-
-npx wrangler secret put MPP_SECRET_KEY
-
-npx wrangler deploy
-
-
+git clone https://github.com/cloudflare/mpp-proxycd mpp-proxynpm installnpx wrangler secret put JWT_SECRETnpx wrangler secret put MPP_SECRET_KEYnpx wrangler deploy
 ```
 
 For full configuration options, proxy modes, and Bot Management examples, refer to the [mpp-proxy README ↗](https://github.com/cloudflare/mpp-proxy).
@@ -126,42 +69,11 @@ For more control, add MPP middleware directly to your Worker using Hono:
 TypeScript
 
 ```
-
-import { Hono } from "hono";
-
-import { Mppx, tempo } from "mppx/hono";
-
-
+import { Hono } from "hono";import { Mppx, tempo } from "mppx/hono";
 const app = new Hono();
-
-
-const mppx = Mppx.create({
-
-  methods: [
-
-    tempo({
-
-      currency: "0x20c0000000000000000000000000000000000000",
-
-      recipient: "0xYourWalletAddress",
-
-    }),
-
-  ],
-
-});
-
-
-app.get("/premium", mppx.charge({ amount: "0.10" }), (c) =>
-
-  c.json({ data: "Thanks for paying!" }),
-
-);
-
-
+const mppx = Mppx.create({  methods: [    tempo({      currency: "0x20c0000000000000000000000000000000000000",      recipient: "0xYourWalletAddress",    }),  ],});
+app.get("/premium", mppx.charge({ amount: "0.10" }), (c) =>  c.json({ data: "Thanks for paying!" }),);
 export default app;
-
-
 ```
 
 Refer to the [Hono middleware reference ↗](https://mpp.dev/sdk/typescript/middlewares/hono) for the full API, including session payments and payer identification.

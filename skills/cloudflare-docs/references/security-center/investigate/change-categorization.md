@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security-center/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -46,37 +46,19 @@ To request recategorization via Cloudflare Radar, submit feedback in [Radar Doma
 
 To request a categorization change via the API:
 
-1. [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with permission to edit your Intel account.  
-| **Permissions** |       |      |  
-| --------------- | ----- | ---- |  
-| Account         | Intel | Edit |  
-| **Account Resources** |              |  
-| --------------------- | ------------ |  
+1. [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with permission to edit your Intel account.
+
+| **Permissions** |       |      |
+| --------------- | ----- | ---- |
+| Account         | Intel | Edit |
+
+| **Account Resources** |              |
+| --------------------- | ------------ |
 | Include               | All accounts |
 2. Make a call to the [miscategorization endpoint](https://developers.cloudflare.com/api/resources/intel/subresources/miscategorizations/methods/create/) including the domain name and any categories you would like to add or remove. For example:  
 Terminal window  
 ```  
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/intel/miscategorization \  
---header "Authorization: Bearer <API_TOKEN>" \  
---header "Content-Type: application/json" \  
---data '{  
-  "content_adds": [  
-    82  
-  ],  
-  "content_removes": [  
-    155  
-  ],  
-  "indicator_type": "domain",  
-  "ip": null,  
-  "security_adds": [  
-    117,  
-    131  
-  ],  
-  "security_removes": [  
-    83  
-  ],  
-  "url": "example.com"  
-}'  
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/intel/miscategorization \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "content_adds": [    82  ],  "content_removes": [    155  ],  "indicator_type": "domain",  "ip": null,  "security_adds": [    117,    131  ],  "security_removes": [    83  ],  "url": "example.com"}'  
 ```
 
 ```json

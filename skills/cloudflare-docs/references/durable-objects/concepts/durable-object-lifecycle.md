@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,14 +19,7 @@ To use a Durable Object you need to create a [Durable Object Stub](https://devel
 JavaScript
 
 ```
-
-const stub = env.MY_DURABLE_OBJECT.getByName("foo");
-
-// Now the request is sent to the remote Durable Object.
-
-const rpcResponse = await stub.sayHello();
-
-
+const stub = env.MY_DURABLE_OBJECT.getByName("foo");// Now the request is sent to the remote Durable Object.const rpcResponse = await stub.sayHello();
 ```
 
 ## Durable Object Lifecycle state transitions
@@ -112,24 +105,7 @@ For example, if you are processing a stream of data and need to save your progre
 JavaScript
 
 ```
-
-// Good: Write progress as you go
-
-async processData(data) {
-
-  data.forEach(async (item, index) => {
-
-    await this.processItem(item);
-
-    // Save progress frequently
-
-    await this.ctx.storage.put("lastProcessedIndex", index);
-
-  });
-
-}
-
-
+// Good: Write progress as you goasync processData(data) {  data.forEach(async (item, index) => {    await this.processItem(item);    // Save progress frequently    await this.ctx.storage.put("lastProcessedIndex", index);  });}
 ```
 
 While this may feel unintuitive, Durable Object storage writes are fast and synchronous, so you can persist state with minimal performance concerns.

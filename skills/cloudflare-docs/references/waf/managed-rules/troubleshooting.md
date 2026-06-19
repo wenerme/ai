@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -50,9 +50,10 @@ You must [deploy a managed ruleset](https://developers.cloudflare.com/waf/manage
 * Are Managed Rules being skipped via an [exception](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/)?  
 Use [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/) to search for requests being skipped. If necessary, adjust the exception expression so that it matches the attack traffic that should have been blocked.
 * Have you enabled any necessary managed rules that are not enabled by default?  
-Not all rules of WAF managed rulesets are enabled by default, so you should review individual managed rules.  
-   * For example, Cloudflare allows requests with empty user agents by default. To block requests with an empty user agent, enable the rule with ID ...0a6dbbd3  in the Cloudflare Managed Ruleset.  
-   * Another example: If you want to block unmitigated SQL injection (SQLi) attacks, make sure the relevant managed rules tagged with `sqli` are enabled in the Cloudflare Managed Ruleset.  
+Not all rules of WAF managed rulesets are enabled by default, so you should review individual managed rules.
+
+  * For example, Cloudflare allows requests with empty user agents by default. To block requests with an empty user agent, enable the rule with ID ...0a6dbbd3  in the Cloudflare Managed Ruleset.
+  * Another example: If you want to block unmitigated SQL injection (SQLi) attacks, make sure the relevant managed rules tagged with `sqli` are enabled in the Cloudflare Managed Ruleset.  
 For instructions, refer to [Configure a managed ruleset](https://developers.cloudflare.com/waf/managed-rules/deploy-zone-dashboard/#configure-a-managed-ruleset).
 * Is the attack traffic matching a custom rule [skipping all Managed Rules](https://developers.cloudflare.com/waf/custom-rules/skip/)?  
 If necessary, adjust the custom rule expression so that it does not apply to the attack traffic.

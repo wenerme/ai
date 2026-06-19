@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,39 +28,18 @@ A component which renders a file message.
 ### Basic Usage
 
 ```
-
 <rtk-file-message-view></rtk-file-message-view>
-
-
 ```
 
 ### With Properties
 
 ```
-
-<rtk-file-message-view
-
- name="example"
-
- url="example">
-
-</rtk-file-message-view>
-
-
+<rtk-file-message-view name="example" url="example"></rtk-file-message-view>
 ```
 
 ```
-
-<script>
-
-  const el = document.querySelector("rtk-file-message-view");
-
-
-  el.size= 42;
-
-</script>
-
-
+<script>  const el = document.querySelector("rtk-file-message-view");
+  el.size= 42;</script>
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -53,8 +53,8 @@ Choosing the NLWeb Website option extends a normal AI Search by tailoring it for
 Your deployed Worker provides two endpoints:
 
 * `/ask` — NLWeb’s standard conversational endpoint  
-   * Powers the conversational UI at the root (`/`)  
-   * Powers the embeddable preview widget (`/snippet.html`)
+  * Powers the conversational UI at the root (`/`)
+  * Powers the embeddable preview widget (`/snippet.html`)
 * `/mcp` — NLWeb’s MCP server endpoint for trusted AI agents
 
 These endpoints give both people and agents structured access to your content.
@@ -64,41 +64,10 @@ These endpoints give both people and agents structured access to your content.
 You can use the embeddable snippet to add a search UI directly into your website. For example:
 
 ```
-
-<!-- Add css on head -->
-
-    <link rel="stylesheet" href="https://ask.example.com/nlweb-dropdown-chat.css">
-
-    <link rel="stylesheet" href="https://ask.example.com/common-chat-styles.css">
-
-
-    <!-- Add container on body -->
-
-    <div id="docs-search-container"></div>
-
-
-    <!-- Include JavaScript -->
-
-    <script type="module">
-
-      import { NLWebDropdownChat } from 'https://ask.example.com/nlweb-dropdown-chat.js';
-
-
-      const chat = new NLWebDropdownChat({
-
-        containerId: 'docs-search-container',
-
-        site: 'https://ask.example.com',
-
-        placeholder: 'Search for docs...',
-
-        endpoint: 'https://ask.example.com'
-
-      });
-
-    </script>
-
-
+<!-- Add css on head -->    <link rel="stylesheet" href="https://ask.example.com/nlweb-dropdown-chat.css">    <link rel="stylesheet" href="https://ask.example.com/common-chat-styles.css">
+    <!-- Add container on body -->    <div id="docs-search-container"></div>
+    <!-- Include JavaScript -->    <script type="module">      import { NLWebDropdownChat } from 'https://ask.example.com/nlweb-dropdown-chat.js';
+      const chat = new NLWebDropdownChat({        containerId: 'docs-search-container',        site: 'https://ask.example.com',        placeholder: 'Search for docs...',        endpoint: 'https://ask.example.com'      });    </script>
 ```
 
 This lets you serve conversational AI search directly from your own domain, with control over how people and agents access your content.

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -113,94 +113,31 @@ Before creating breakout rooms, validate the permissions of the current particip
 JavaScript
 
 ```
-
-// Check if breakout rooms are supported
-
-const areBreakoutRoomsSupported = meeting.connectedMeetings.supportsConnectedMeetings;
-
-
-// Check if any breakout rooms are already created
-
-const areBreakoutRoomsActive = meeting.connectedMeetings.isActive;
-
-
-// Check if the current participant has permission to create breakout rooms
-
-const hasPermissionToCreateBreakoutRooms = meeting.self.permissions.connectedMeetings.canAlterConnectedMeetings;
-
-
-// Check if the current participant has permission to switch to parent meeting
-
-const hasPermissionToSwitchToParentMeeting = meeting.self.permissions.connectedMeetings.canSwitchToParentMeeting;
-
-
-// Check if the current participant has permission to switch to connected meeting
-
-const hasPermissionToSwitchToConnectedMeeting = meeting.self.permissions.connectedMeetings.canSwitchConnectedMeetings;
-
-
+// Check if breakout rooms are supportedconst areBreakoutRoomsSupported = meeting.connectedMeetings.supportsConnectedMeetings;
+// Check if any breakout rooms are already createdconst areBreakoutRoomsActive = meeting.connectedMeetings.isActive;
+// Check if the current participant has permission to create breakout roomsconst hasPermissionToCreateBreakoutRooms = meeting.self.permissions.connectedMeetings.canAlterConnectedMeetings;
+// Check if the current participant has permission to switch to parent meetingconst hasPermissionToSwitchToParentMeeting = meeting.self.permissions.connectedMeetings.canSwitchToParentMeeting;
+// Check if the current participant has permission to switch to connected meetingconst hasPermissionToSwitchToConnectedMeeting = meeting.self.permissions.connectedMeetings.canSwitchConnectedMeetings;
 ```
 
 JavaScript
 
 ```
-
-// Check if breakout rooms are supported
-
-const areBreakoutRoomsSupported = meeting.connectedMeetings.supportsConnectedMeetings;
-
-
-// Check if any breakout rooms are already created
-
-const areBreakoutRoomsActive = meeting.connectedMeetings.isActive;
-
-
-// Check if the current participant has permission to create breakout rooms
-
-const hasPermissionToCreateBreakoutRooms = meeting.self.permissions.connectedMeetings.canAlterConnectedMeetings;
-
-
-// Check if the current participant has permission to switch to parent meeting
-
-const hasPermissionToSwitchToParentMeeting = meeting.self.permissions.connectedMeetings.canSwitchToParentMeeting;
-
-
-// Check if the current participant has permission to switch to connected meeting
-
-const hasPermissionToSwitchToConnectedMeeting = meeting.self.permissions.connectedMeetings.canSwitchConnectedMeetings;
-
-
+// Check if breakout rooms are supportedconst areBreakoutRoomsSupported = meeting.connectedMeetings.supportsConnectedMeetings;
+// Check if any breakout rooms are already createdconst areBreakoutRoomsActive = meeting.connectedMeetings.isActive;
+// Check if the current participant has permission to create breakout roomsconst hasPermissionToCreateBreakoutRooms = meeting.self.permissions.connectedMeetings.canAlterConnectedMeetings;
+// Check if the current participant has permission to switch to parent meetingconst hasPermissionToSwitchToParentMeeting = meeting.self.permissions.connectedMeetings.canSwitchToParentMeeting;
+// Check if the current participant has permission to switch to connected meetingconst hasPermissionToSwitchToConnectedMeeting = meeting.self.permissions.connectedMeetings.canSwitchConnectedMeetings;
 ```
 
 JavaScript
 
 ```
-
-// Check if breakout rooms are supported
-
-const areBreakoutRoomsSupported = meeting.connectedMeetings.supportsConnectedMeetings;
-
-
-// Check if any breakout rooms are already created
-
-const areBreakoutRoomsActive = meeting.connectedMeetings.isActive;
-
-
-// Check if the current participant has permission to create breakout rooms
-
-const hasPermissionToCreateBreakoutRooms = meeting.self.permissions.connectedMeetings.canAlterConnectedMeetings;
-
-
-// Check if the current participant has permission to switch to parent meeting
-
-const hasPermissionToSwitchToParentMeeting = meeting.self.permissions.connectedMeetings.canSwitchToParentMeeting;
-
-
-// Check if the current participant has permission to switch to connected meeting
-
-const hasPermissionToSwitchToConnectedMeeting = meeting.self.permissions.connectedMeetings.canSwitchConnectedMeetings;
-
-
+// Check if breakout rooms are supportedconst areBreakoutRoomsSupported = meeting.connectedMeetings.supportsConnectedMeetings;
+// Check if any breakout rooms are already createdconst areBreakoutRoomsActive = meeting.connectedMeetings.isActive;
+// Check if the current participant has permission to create breakout roomsconst hasPermissionToCreateBreakoutRooms = meeting.self.permissions.connectedMeetings.canAlterConnectedMeetings;
+// Check if the current participant has permission to switch to parent meetingconst hasPermissionToSwitchToParentMeeting = meeting.self.permissions.connectedMeetings.canSwitchToParentMeeting;
+// Check if the current participant has permission to switch to connected meetingconst hasPermissionToSwitchToConnectedMeeting = meeting.self.permissions.connectedMeetings.canSwitchConnectedMeetings;
 ```
 
 ### Create breakout rooms
@@ -208,21 +145,8 @@ const hasPermissionToSwitchToConnectedMeeting = meeting.self.permissions.connect
 JavaScript
 
 ```
-
-const breakoutRooms = await meeting.connectedMeetings.createMeetings([
-
-  { title: "Breakout Room 1" },
-
-  { title: "Breakout Room 2" },
-
-  { title: "Breakout Room 3" },
-
-]);
-
-
+const breakoutRooms = await meeting.connectedMeetings.createMeetings([  { title: "Breakout Room 1" },  { title: "Breakout Room 2" },  { title: "Breakout Room 3" },]);
 console.log("Created Breakout Rooms: ", breakoutRooms.map((room) => "Id:: " + room.id + " --- Title:: " + room.title).join("\n"));
-
-
 ```
 
 `breakoutRooms` is an array of basic meeting information such as id and title. You can use the `id` of these objects to move participants to the breakout room.
@@ -230,21 +154,8 @@ console.log("Created Breakout Rooms: ", breakoutRooms.map((room) => "Id:: " + ro
 JavaScript
 
 ```
-
-const breakoutRooms = await meeting.connectedMeetings.createMeetings([
-
-  { title: "Breakout Room 1" },
-
-  { title: "Breakout Room 2" },
-
-  { title: "Breakout Room 3" },
-
-]);
-
-
+const breakoutRooms = await meeting.connectedMeetings.createMeetings([  { title: "Breakout Room 1" },  { title: "Breakout Room 2" },  { title: "Breakout Room 3" },]);
 console.log("Created Breakout Rooms: ", breakoutRooms.map((room) => "Id:: " + room.id + " --- Title:: " + room.title).join("\n"));
-
-
 ```
 
 `breakoutRooms` is an array of basic meeting information such as id and title. You can use the `id` of these objects to move participants to the breakout room.
@@ -252,21 +163,8 @@ console.log("Created Breakout Rooms: ", breakoutRooms.map((room) => "Id:: " + ro
 JavaScript
 
 ```
-
-const breakoutRooms = await meeting.connectedMeetings.createMeetings([
-
-  { title: "Breakout Room 1" },
-
-  { title: "Breakout Room 2" },
-
-  { title: "Breakout Room 3" },
-
-]);
-
-
+const breakoutRooms = await meeting.connectedMeetings.createMeetings([  { title: "Breakout Room 1" },  { title: "Breakout Room 2" },  { title: "Breakout Room 3" },]);
 console.log("Created Breakout Rooms: ", breakoutRooms.map((room) => "Id:: " + room.id + " --- Title:: " + room.title).join("\n"));
-
-
 ```
 
 `breakoutRooms` is an array of basic meeting information such as id and title. You can use the `id` of these objects to move participants to the breakout room.
@@ -278,10 +176,7 @@ If there are more than one host in the room creating breakouts, you can retrieve
 JavaScript
 
 ```
-
 const breakoutRoomsInfo = await meeting.connectedMeetings.getConnectedMeetings();
-
-
 ```
 
 `breakoutRoomsInfo` is an object containing the list of breakout rooms and their participants, along with details of the parent meeting.
@@ -293,30 +188,14 @@ You can also listen to `stateUpdate` event to get the latest list of breakout ro
 JavaScript
 
 ```
-
-meeting.connectedMeetings.on("stateUpdate", ({meetings, parentMeeting}) => {
-
-  console.log("stateUpdate", {meetings, parentMeeting});
-
-
-  // Alternatively, you can access the meetings and parentMeeting from the connectedMeetings object
-
-  console.log("Meetings List", meeting.connectedMeetings.meetings);
-
-  console.log("Parent Meeting", meeting.connectedMeetings.parentMeeting);
-
-});
-
-
+meeting.connectedMeetings.on("stateUpdate", ({meetings, parentMeeting}) => {  console.log("stateUpdate", {meetings, parentMeeting});
+  // Alternatively, you can access the meetings and parentMeeting from the connectedMeetings object  console.log("Meetings List", meeting.connectedMeetings.meetings);  console.log("Parent Meeting", meeting.connectedMeetings.parentMeeting);});
 ```
 
 JavaScript
 
 ```
-
 const breakoutRoomsInfo = await meeting.connectedMeetings.getConnectedMeetings();
-
-
 ```
 
 `breakoutRoomsInfo` is an object containing the list of breakout rooms and their participants, along with details of the parent meeting.
@@ -328,41 +207,15 @@ You can also listen to `stateUpdate` event to get the latest list of breakout ro
 JavaScript
 
 ```
-
-meeting.connectedMeetings.on("stateUpdate", ({meetings, parentMeeting}) => {
-
-  console.log("stateUpdate", {meetings, parentMeeting});
-
-
-  // Alternatively, you can access the meetings and parentMeeting from the connectedMeetings object
-
-  console.log("Meetings List", meeting.connectedMeetings.meetings);
-
-  console.log("Parent Meeting", meeting.connectedMeetings.parentMeeting);
-
-});
-
-
+meeting.connectedMeetings.on("stateUpdate", ({meetings, parentMeeting}) => {  console.log("stateUpdate", {meetings, parentMeeting});
+  // Alternatively, you can access the meetings and parentMeeting from the connectedMeetings object  console.log("Meetings List", meeting.connectedMeetings.meetings);  console.log("Parent Meeting", meeting.connectedMeetings.parentMeeting);});
 ```
 
 JavaScript
 
 ```
-
-const breakoutRooms = await meeting.connectedMeetings.createMeetings([
-
-  { title: "Breakout Room 1" },
-
-  { title: "Breakout Room 2" },
-
-  { title: "Breakout Room 3" },
-
-]);
-
-
+const breakoutRooms = await meeting.connectedMeetings.createMeetings([  { title: "Breakout Room 1" },  { title: "Breakout Room 2" },  { title: "Breakout Room 3" },]);
 console.log("Created Breakout Rooms: ", breakoutRooms.map((room) => "Id:: " + room.id + " --- Title:: " + room.title).join("\n"));
-
-
 ```
 
 `breakoutRooms` is an array of basic meeting information such as id and title. You can use the `id` of these objects to move participants to the breakout room.
@@ -374,100 +227,25 @@ Once you have created breakout rooms, assign participants to the rooms.
 JavaScript
 
 ```
-
-// Retrieve list of breakout rooms & participants
-
-const breakoutRoomsInfo = await meeting.connectedMeetings.getConnectedMeetings();
-
-
-/*
-
-* You can retrieve meetingIds and participantIds from the breakoutRoomsInfo object.
-
-* Based on where the participant currently is, you can decide the sourceMeetingId and targetMeetingId.
-
-*/
-
-
-// Move participants to breakout rooms
-
-const response = await meeting.connectedMeetings.moveParticipants(
-
-  "SOURCE_MEETING_ID", // sourceMeetingId, meeting id where participants are currently in
-
-  "TARGET_MEETING_ID", // targetMeetingId, meeting id where participants are to be moved
-
-  ["PARTICIPANT_ID_1", "PARTICIPANT_ID_2"], // participantIds, array of participant ids to be moved
-
-);
-
-
+// Retrieve list of breakout rooms & participantsconst breakoutRoomsInfo = await meeting.connectedMeetings.getConnectedMeetings();
+/** You can retrieve meetingIds and participantIds from the breakoutRoomsInfo object.* Based on where the participant currently is, you can decide the sourceMeetingId and targetMeetingId.*/
+// Move participants to breakout roomsconst response = await meeting.connectedMeetings.moveParticipants(  "SOURCE_MEETING_ID", // sourceMeetingId, meeting id where participants are currently in  "TARGET_MEETING_ID", // targetMeetingId, meeting id where participants are to be moved  ["PARTICIPANT_ID_1", "PARTICIPANT_ID_2"], // participantIds, array of participant ids to be moved);
 ```
 
 JavaScript
 
 ```
-
-// Retrieve list of breakout rooms & participants
-
-const breakoutRoomsInfo = await meeting.connectedMeetings.getConnectedMeetings();
-
-
-/*
-
-* You can retrieve meetingIds and participantIds from the breakoutRoomsInfo object.
-
-* Based on where the participant currently is, you can decide the sourceMeetingId and targetMeetingId.
-
-*/
-
-
-// Move participants to breakout rooms
-
-const response = await meeting.connectedMeetings.moveParticipants(
-
-  "SOURCE_MEETING_ID", // sourceMeetingId, meeting id where participants are currently in
-
-  "TARGET_MEETING_ID", // targetMeetingId, meeting id where participants are to be moved
-
-  ["PARTICIPANT_ID_1", "PARTICIPANT_ID_2"], // participantIds, array of participant ids to be moved
-
-);
-
-
+// Retrieve list of breakout rooms & participantsconst breakoutRoomsInfo = await meeting.connectedMeetings.getConnectedMeetings();
+/** You can retrieve meetingIds and participantIds from the breakoutRoomsInfo object.* Based on where the participant currently is, you can decide the sourceMeetingId and targetMeetingId.*/
+// Move participants to breakout roomsconst response = await meeting.connectedMeetings.moveParticipants(  "SOURCE_MEETING_ID", // sourceMeetingId, meeting id where participants are currently in  "TARGET_MEETING_ID", // targetMeetingId, meeting id where participants are to be moved  ["PARTICIPANT_ID_1", "PARTICIPANT_ID_2"], // participantIds, array of participant ids to be moved);
 ```
 
 JavaScript
 
 ```
-
-// Retrieve list of breakout rooms & participants
-
-const breakoutRoomsInfo = await meeting.connectedMeetings.getConnectedMeetings();
-
-
-/*
-
-* You can retrieve meetingIds and participantIds from the breakoutRoomsInfo object.
-
-* Based on where the participant currently is, you can decide the sourceMeetingId and targetMeetingId.
-
-*/
-
-
-// Move participants to breakout rooms
-
-const response = await meeting.connectedMeetings.moveParticipants(
-
-  "SOURCE_MEETING_ID", // sourceMeetingId, meeting id where participants are currently in
-
-  "TARGET_MEETING_ID", // targetMeetingId, meeting id where participants are to be moved
-
-  ["PARTICIPANT_ID_1", "PARTICIPANT_ID_2"], // participantIds, array of participant ids to be moved
-
-);
-
-
+// Retrieve list of breakout rooms & participantsconst breakoutRoomsInfo = await meeting.connectedMeetings.getConnectedMeetings();
+/** You can retrieve meetingIds and participantIds from the breakoutRoomsInfo object.* Based on where the participant currently is, you can decide the sourceMeetingId and targetMeetingId.*/
+// Move participants to breakout roomsconst response = await meeting.connectedMeetings.moveParticipants(  "SOURCE_MEETING_ID", // sourceMeetingId, meeting id where participants are currently in  "TARGET_MEETING_ID", // targetMeetingId, meeting id where participants are to be moved  ["PARTICIPANT_ID_1", "PARTICIPANT_ID_2"], // participantIds, array of participant ids to be moved);
 ```
 
 ### Move participants, with a specific preset, to breakout rooms
@@ -477,52 +255,19 @@ Once you have created breakout rooms, assign participants to the rooms.
 JavaScript
 
 ```
-
-const response = await meeting.connectedMeetings.moveParticipantsWithCustomPreset(
-
-  "SOURCE_MEETING_ID", // sourceMeetingId, meeting id where participants are currently in
-
-  "TARGET_MEETING_ID", // targetMeetingId, meeting id where participants are to be moved
-
-  [{ presetId: "PRESET_ID_1" }, { presetId: "PRESET_ID_2" }], // array of objects with presetId field
-
-);
-
-
+const response = await meeting.connectedMeetings.moveParticipantsWithCustomPreset(  "SOURCE_MEETING_ID", // sourceMeetingId, meeting id where participants are currently in  "TARGET_MEETING_ID", // targetMeetingId, meeting id where participants are to be moved  [{ presetId: "PRESET_ID_1" }, { presetId: "PRESET_ID_2" }], // array of objects with presetId field);
 ```
 
 JavaScript
 
 ```
-
-const response = await meeting.connectedMeetings.moveParticipantsWithCustomPreset(
-
-  "SOURCE_MEETING_ID", // sourceMeetingId, meeting id where participants are currently in
-
-  "TARGET_MEETING_ID", // targetMeetingId, meeting id where participants are to be moved
-
-  [{ presetId: "PRESET_ID_1" }, { presetId: "PRESET_ID_2" }], // array of objects with presetId field
-
-);
-
-
+const response = await meeting.connectedMeetings.moveParticipantsWithCustomPreset(  "SOURCE_MEETING_ID", // sourceMeetingId, meeting id where participants are currently in  "TARGET_MEETING_ID", // targetMeetingId, meeting id where participants are to be moved  [{ presetId: "PRESET_ID_1" }, { presetId: "PRESET_ID_2" }], // array of objects with presetId field);
 ```
 
 JavaScript
 
 ```
-
-const response = await meeting.connectedMeetings.moveParticipantsWithCustomPreset(
-
-  "SOURCE_MEETING_ID", // sourceMeetingId, meeting id where participants are currently in
-
-  "TARGET_MEETING_ID", // targetMeetingId, meeting id where participants are to be moved
-
-  [{ presetId: "PRESET_ID_1" }, { presetId: "PRESET_ID_2" }], // array of objects with presetId field
-
-);
-
-
+const response = await meeting.connectedMeetings.moveParticipantsWithCustomPreset(  "SOURCE_MEETING_ID", // sourceMeetingId, meeting id where participants are currently in  "TARGET_MEETING_ID", // targetMeetingId, meeting id where participants are to be moved  [{ presetId: "PRESET_ID_1" }, { presetId: "PRESET_ID_2" }], // array of objects with presetId field);
 ```
 
 ### Move local participant to breakout room
@@ -536,85 +281,22 @@ If a participant has been moved to a breakout room, the `changingMeeting` event 
 JavaScript
 
 ```
-
-// Listen to changingMeeting event to show a custom UI to indicate that a meeting switch is happening
-
-meeting.connectedMeetings.on("changingMeeting", (meetingId) => {
-
-  console.log("Switching to breakout room or main meeting with id: " + meetingId);
-
-  console.log("Show a Custom UI to indicate that a meeting switch is happening");
-
-});
-
-
-// Listen to meetingChanged event to update the meeting object reference
-
-meeting.connectedMeetings.on("meetingChanged", (newMeeting) => {
-
-  console.log("Switched to breakout room or main meeting");
-
-  console.log("Every action now should be performed on this meeting");
-
-});
-
-
+// Listen to changingMeeting event to show a custom UI to indicate that a meeting switch is happeningmeeting.connectedMeetings.on("changingMeeting", (meetingId) => {  console.log("Switching to breakout room or main meeting with id: " + meetingId);  console.log("Show a Custom UI to indicate that a meeting switch is happening");});
+// Listen to meetingChanged event to update the meeting object referencemeeting.connectedMeetings.on("meetingChanged", (newMeeting) => {  console.log("Switched to breakout room or main meeting");  console.log("Every action now should be performed on this meeting");});
 ```
 
 JavaScript
 
 ```
-
-// Listen to changingMeeting event to show a custom UI to indicate that a meeting switch is happening
-
-meeting.connectedMeetings.on("changingMeeting", (meetingId) => {
-
-  console.log("Switching to breakout room or main meeting with id: " + meetingId);
-
-  console.log("Show a Custom UI to indicate that a meeting switch is happening");
-
-});
-
-
-// Listen to meetingChanged event to update the meeting object reference
-
-meeting.connectedMeetings.on("meetingChanged", (newMeeting) => {
-
-  console.log("Switched to breakout room or main meeting");
-
-  console.log("Every action now should be performed on this meeting");
-
-});
-
-
+// Listen to changingMeeting event to show a custom UI to indicate that a meeting switch is happeningmeeting.connectedMeetings.on("changingMeeting", (meetingId) => {  console.log("Switching to breakout room or main meeting with id: " + meetingId);  console.log("Show a Custom UI to indicate that a meeting switch is happening");});
+// Listen to meetingChanged event to update the meeting object referencemeeting.connectedMeetings.on("meetingChanged", (newMeeting) => {  console.log("Switched to breakout room or main meeting");  console.log("Every action now should be performed on this meeting");});
 ```
 
 JavaScript
 
 ```
-
-// Listen to changingMeeting event to show a custom UI to indicate that a meeting switch is happening
-
-meeting.connectedMeetings.on("changingMeeting", (meetingId) => {
-
-  console.log("Switching to breakout room or main meeting with id: " + meetingId);
-
-  console.log("Show a Custom UI to indicate that a meeting switch is happening");
-
-});
-
-
-// Listen to meetingChanged event to update the meeting object reference
-
-meeting.connectedMeetings.on("meetingChanged", (newMeeting) => {
-
-  console.log("Switched to breakout room or main meeting");
-
-  console.log("Every action now should be performed on this meeting");
-
-});
-
-
+// Listen to changingMeeting event to show a custom UI to indicate that a meeting switch is happeningmeeting.connectedMeetings.on("changingMeeting", (meetingId) => {  console.log("Switching to breakout room or main meeting with id: " + meetingId);  console.log("Show a Custom UI to indicate that a meeting switch is happening");});
+// Listen to meetingChanged event to update the meeting object referencemeeting.connectedMeetings.on("meetingChanged", (newMeeting) => {  console.log("Switched to breakout room or main meeting");  console.log("Every action now should be performed on this meeting");});
 ```
 
 ### Close breakout rooms
@@ -624,16 +306,7 @@ You can close/delete the breakout rooms. This will force participants in those m
 JavaScript
 
 ```
-
-await meeting.connectedMeetings.deleteMeetings([
-
-  "MEETING_ID_TO_CLOSE_1",
-
-  "MEETING_ID_TO_CLOSE_2",
-
-]);
-
-
+await meeting.connectedMeetings.deleteMeetings([  "MEETING_ID_TO_CLOSE_1",  "MEETING_ID_TO_CLOSE_2",]);
 ```
 
 This would also trigger `stateUpdate` event updating the list of breakout rooms & participants.
@@ -641,36 +314,14 @@ This would also trigger `stateUpdate` event updating the list of breakout rooms 
 JavaScript
 
 ```
-
-meeting.connectedMeetings.on("stateUpdate", ({meetings, parentMeeting}) => {
-
-  console.log("stateUpdate", {meetings, parentMeeting});
-
-});
-
-
-// Alternatively, you can access the meetings and parentMeeting from the connectedMeetings object
-
-console.log("Meetings List", meeting.connectedMeetings.meetings);
-
-console.log("Parent Meeting", meeting.connectedMeetings.parentMeeting);
-
-
+meeting.connectedMeetings.on("stateUpdate", ({meetings, parentMeeting}) => {  console.log("stateUpdate", {meetings, parentMeeting});});
+// Alternatively, you can access the meetings and parentMeeting from the connectedMeetings objectconsole.log("Meetings List", meeting.connectedMeetings.meetings);console.log("Parent Meeting", meeting.connectedMeetings.parentMeeting);
 ```
 
 JavaScript
 
 ```
-
-await meeting.connectedMeetings.deleteMeetings([
-
-  "MEETING_ID_TO_CLOSE_1",
-
-  "MEETING_ID_TO_CLOSE_2",
-
-]);
-
-
+await meeting.connectedMeetings.deleteMeetings([  "MEETING_ID_TO_CLOSE_1",  "MEETING_ID_TO_CLOSE_2",]);
 ```
 
 This would also trigger `stateUpdate` event updating the list of breakout rooms & participants.
@@ -678,36 +329,14 @@ This would also trigger `stateUpdate` event updating the list of breakout rooms 
 JavaScript
 
 ```
-
-meeting.connectedMeetings.on("stateUpdate", ({meetings, parentMeeting}) => {
-
-  console.log("stateUpdate", {meetings, parentMeeting});
-
-});
-
-
-// Alternatively, you can access the meetings and parentMeeting from the connectedMeetings object
-
-console.log("Meetings List", meeting.connectedMeetings.meetings);
-
-console.log("Parent Meeting", meeting.connectedMeetings.parentMeeting);
-
-
+meeting.connectedMeetings.on("stateUpdate", ({meetings, parentMeeting}) => {  console.log("stateUpdate", {meetings, parentMeeting});});
+// Alternatively, you can access the meetings and parentMeeting from the connectedMeetings objectconsole.log("Meetings List", meeting.connectedMeetings.meetings);console.log("Parent Meeting", meeting.connectedMeetings.parentMeeting);
 ```
 
 JavaScript
 
 ```
-
-await meeting.connectedMeetings.deleteMeetings([
-
-  "MEETING_ID_TO_CLOSE_1",
-
-  "MEETING_ID_TO_CLOSE_2",
-
-]);
-
-
+await meeting.connectedMeetings.deleteMeetings([  "MEETING_ID_TO_CLOSE_1",  "MEETING_ID_TO_CLOSE_2",]);
 ```
 
 This would also trigger `stateUpdate` event updating the list of breakout rooms & participants.
@@ -715,21 +344,8 @@ This would also trigger `stateUpdate` event updating the list of breakout rooms 
 JavaScript
 
 ```
-
-meeting.connectedMeetings.on("stateUpdate", ({meetings, parentMeeting}) => {
-
-  console.log("stateUpdate", {meetings, parentMeeting});
-
-});
-
-
-// Alternatively, you can access the meetings and parentMeeting from the connectedMeetings object
-
-console.log("Meetings List", meeting.connectedMeetings.meetings);
-
-console.log("Parent Meeting", meeting.connectedMeetings.parentMeeting);
-
-
+meeting.connectedMeetings.on("stateUpdate", ({meetings, parentMeeting}) => {  console.log("stateUpdate", {meetings, parentMeeting});});
+// Alternatively, you can access the meetings and parentMeeting from the connectedMeetings objectconsole.log("Meetings List", meeting.connectedMeetings.meetings);console.log("Parent Meeting", meeting.connectedMeetings.parentMeeting);
 ```
 
 ## Next steps

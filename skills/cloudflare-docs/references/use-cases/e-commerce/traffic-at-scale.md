@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -43,7 +43,7 @@ Route traffic through the fastest paths across Cloudflare's network. [Learn more
 
 ## See also
 
-Cloudflare Smart Shield acts as an intermediate caching layer between Cloudflare's content delivery network and your origin server, consolidating multiple requests from various locations into a single request.[Learn more about Smart Shield](https://developers.cloudflare.com/smart-shield/).
+Cloudflare Smart Shield acts as an intermediate caching layer between Cloudflare's content delivery network and your origin server, consolidating multiple requests from various locations into a single request. [Learn more about Smart Shield](https://developers.cloudflare.com/smart-shield/).
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/e-commerce/traffic-at-scale/#page","headline":"Handle traffic at scale · Cloudflare use cases","description":"Handle flash sales and traffic spikes for e-commerce stores with load balancing, visitor queuing, and smart routing.","url":"https://developers.cloudflare.com/use-cases/e-commerce/traffic-at-scale/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,10 +17,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 ## Endpoint
 
 ```
-
 https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/azure-openai/{resource_name}/{deployment_name}
-
-
 ```
 
 ## Prerequisites
@@ -44,30 +41,7 @@ Your new base URL will use the data above in this structure: `https://gateway.ai
 Example fetch request
 
 ```
-
-curl 'https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway}/azure-openai/{resource_name}/{deployment_name}/chat/completions?api-version=2023-05-15' \
-
-  --header 'Content-Type: application/json' \
-
-  --header 'api-key: {azure_api_key}' \
-
-  --data '{
-
-  "messages": [
-
-    {
-
-      "role": "user",
-
-      "content": "What is Cloudflare?"
-
-    }
-
-  ]
-
-}'
-
-
+curl 'https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway}/azure-openai/{resource_name}/{deployment_name}/chat/completions?api-version=2023-05-15' \  --header 'Content-Type: application/json' \  --header 'api-key: {azure_api_key}' \  --data '{  "messages": [    {      "role": "user",      "content": "What is Cloudflare?"    }  ]}'
 ```
 
 ### Use `openai` JavaScript SDK
@@ -75,32 +49,9 @@ curl 'https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway}/azure-openai/{
 JavaScript
 
 ```
-
 import { AzureOpenAI } from "openai";
-
-
-const azure_openai = new AzureOpenAI({
-
-  apiKey: "{azure_api_key}",
-
-  baseURL: `https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway}/azure-openai/{resource_name}/`,
-
-  apiVersion: "2023-05-15",
-
-  defaultHeaders: { "cf-aig-authorization": "{cf-api-token}" }, // if authenticated
-
-});
-
-
-const result = await azure_openai.chat.completions.create({
-
-  model: '{deployment_name}',
-
-  messages: [{ role: "user", content: "Hello" }],
-
-});
-
-
+const azure_openai = new AzureOpenAI({  apiKey: "{azure_api_key}",  baseURL: `https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway}/azure-openai/{resource_name}/`,  apiVersion: "2023-05-15",  defaultHeaders: { "cf-aig-authorization": "{cf-api-token}" }, // if authenticated});
+const result = await azure_openai.chat.completions.create({  model: '{deployment_name}',  messages: [{ role: "user", content: "Hello" }],});
 ```
 
 ```json

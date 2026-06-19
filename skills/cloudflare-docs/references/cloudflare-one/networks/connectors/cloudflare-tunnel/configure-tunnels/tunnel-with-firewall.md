@@ -7,7 +7,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -183,8 +183,7 @@ sudo iptables -L
 8. By default, rules you add via the `iptables` command are stored only in memory and do not persist on reboot. There are many different ways to save and reload your firewall rules, depending on your Linux distribution. For example, on Debian you can use the [iptables-persistent ↗](https://packages.debian.org/sid/iptables-persistent) package:  
 Terminal window  
 ```  
-sudo apt install iptables-persistent  
-sudo netfilter-persistent save  
+sudo apt install iptables-persistentsudo netfilter-persistent save  
 ```
 
 ## Test connectivity
@@ -196,157 +195,41 @@ To test your connectivity to Cloudflare, you can use the `dig` command to query 
 Terminal window
 
 ```
-
 dig A region1.v2.argotunnel.com
-
-
 ```
 
 ```
-
-;; ANSWER SECTION:
-
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.167
-
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.67
-
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.57
-
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.107
-
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.27
-
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.7
-
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.227
-
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.47
-
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.37
-
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.77
-
-...
-
-
+;; ANSWER SECTION:region1.v2.argotunnel.com. 86400 IN  A  198.41.192.167region1.v2.argotunnel.com. 86400 IN  A  198.41.192.67region1.v2.argotunnel.com. 86400 IN  A  198.41.192.57region1.v2.argotunnel.com. 86400 IN  A  198.41.192.107region1.v2.argotunnel.com. 86400 IN  A  198.41.192.27region1.v2.argotunnel.com. 86400 IN  A  198.41.192.7region1.v2.argotunnel.com. 86400 IN  A  198.41.192.227region1.v2.argotunnel.com. 86400 IN  A  198.41.192.47region1.v2.argotunnel.com. 86400 IN  A  198.41.192.37region1.v2.argotunnel.com. 86400 IN  A  198.41.192.77...
 ```
 
 Terminal window
 
 ```
-
 dig AAAA region1.v2.argotunnel.com
-
-
 ```
 
 ```
-
-...
-
-;; ANSWER SECTION:
-
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::1
-
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::2
-
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::3
-
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::4
-
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::5
-
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::6
-
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::7
-
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::8
-
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::9
-
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::10
-
-...
-
-
+...;; ANSWER SECTION:region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::1region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::2region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::3region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::4region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::5region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::6region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::7region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::8region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::9region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::10...
 ```
 
 Terminal window
 
 ```
-
 dig A region2.v2.argotunnel.com
-
-
 ```
 
 ```
-
-;; ANSWER SECTION:
-
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.13
-
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.193
-
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.33
-
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.233
-
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.53
-
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.63
-
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.113
-
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.73
-
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.43
-
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.23
-
-...
-
-
+;; ANSWER SECTION:region2.v2.argotunnel.com. 86400 IN  A  198.41.200.13region2.v2.argotunnel.com. 86400 IN  A  198.41.200.193region2.v2.argotunnel.com. 86400 IN  A  198.41.200.33region2.v2.argotunnel.com. 86400 IN  A  198.41.200.233region2.v2.argotunnel.com. 86400 IN  A  198.41.200.53region2.v2.argotunnel.com. 86400 IN  A  198.41.200.63region2.v2.argotunnel.com. 86400 IN  A  198.41.200.113region2.v2.argotunnel.com. 86400 IN  A  198.41.200.73region2.v2.argotunnel.com. 86400 IN  A  198.41.200.43region2.v2.argotunnel.com. 86400 IN  A  198.41.200.23...
 ```
 
 Terminal window
 
 ```
-
 dig AAAA region2.v2.argotunnel.com
-
-
 ```
 
 ```
-
-...
-
-;; ANSWER SECTION:
-
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::1
-
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::2
-
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::3
-
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::4
-
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::5
-
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::6
-
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::7
-
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::8
-
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::9
-
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::10
-
-...
-
-
+...;; ANSWER SECTION:region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::1region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::2region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::3region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::4region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::5region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::6region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::7region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::8region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::9region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::10...
 ```
 
 ### Test with PowerShell
@@ -358,23 +241,11 @@ To test DNS:
 PowerShell
 
 ```
-
 Resolve-DnsName -Name _v2-origintunneld._tcp.argotunnel.com SRV
-
-
 ```
 
 ```
-
-Name                                     Type   TTL   Section    NameTarget                     Priority Weight Port
-
-----                                     ----   ---   -------    ----------                     -------- ------ ----
-
-_v2-origintunneld._tcp.argotunnel.com       SRV    112   Answer     region2.v2.argotunnel.com         2        1      7844
-
-_v2-origintunneld._tcp.argotunnel.com       SRV    112   Answer     region1.v2.argotunnel.com         1        1      7844
-
-
+Name                                     Type   TTL   Section    NameTarget                     Priority Weight Port----                                     ----   ---   -------    ----------                     -------- ------ ----_v2-origintunneld._tcp.argotunnel.com       SRV    112   Answer     region2.v2.argotunnel.com         2        1      7844_v2-origintunneld._tcp.argotunnel.com       SRV    112   Answer     region1.v2.argotunnel.com         1        1      7844
 ```
 
 To test ports:
@@ -382,53 +253,21 @@ To test ports:
 PowerShell
 
 ```
-
 tnc region1.v2.argotunnel.com -port 443
-
-
 ```
 
 ```
-
-ComputerName     : region1.v2.argotunnel.com
-
-RemoteAddress    : 198.41.192.227
-
-RemotePort       : 443
-
-InterfaceAlias   : Ethernet
-
-SourceAddress    : 10.0.2.15
-
-TcpTestSucceeded : True
-
-
+ComputerName     : region1.v2.argotunnel.comRemoteAddress    : 198.41.192.227RemotePort       : 443InterfaceAlias   : EthernetSourceAddress    : 10.0.2.15TcpTestSucceeded : True
 ```
 
 PowerShell
 
 ```
-
 tnc region1.v2.argotunnel.com -port 7844
-
-
 ```
 
 ```
-
-ComputerName     : region1.v2.argotunnel.com
-
-RemoteAddress    : 198.41.192.227
-
-RemotePort       : 7844
-
-InterfaceAlias   : Ethernet
-
-SourceAddress    : 10.0.2.15
-
-TcpTestSucceeded : True
-
-
+ComputerName     : region1.v2.argotunnel.comRemoteAddress    : 198.41.192.227RemotePort       : 7844InterfaceAlias   : EthernetSourceAddress    : 10.0.2.15TcpTestSucceeded : True
 ```
 
 ```json

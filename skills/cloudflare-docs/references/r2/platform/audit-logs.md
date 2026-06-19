@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -48,46 +48,7 @@ Logs for data access operations, such as `GetObject` and `PutObject`, are not in
 Below is an example of an audit log entry showing the creation of a new bucket:
 
 ```
-
-{
-
-  "action": { "info": "CreateBucket", "result": true, "type": "create" },
-
-  "actor": {
-
-    "email": "<ACTOR_EMAIL>",
-
-    "id": "3f7b730e625b975bc1231234cfbec091",
-
-    "ip": "fe32:43ed:12b5:526::1d2:13",
-
-    "type": "user"
-
-  },
-
-  "id": "5eaeb6be-1234-406a-87ab-1971adc1234c",
-
-  "interface": "API",
-
-  "metadata": { "zone_name": "r2.cloudflarestorage.com" },
-
-  "newValue": "",
-
-  "newValueJson": {},
-
-  "oldValue": "",
-
-  "oldValueJson": {},
-
-  "owner": { "id": "1234d848c0b9e484dfc37ec392b5fa8a" },
-
-  "resource": { "id": "my-bucket", "type": "r2.bucket" },
-
-  "when": "2024-07-15T16:32:52.412Z"
-
-}
-
-
+{  "action": { "info": "CreateBucket", "result": true, "type": "create" },  "actor": {    "email": "<ACTOR_EMAIL>",    "id": "3f7b730e625b975bc1231234cfbec091",    "ip": "fe32:43ed:12b5:526::1d2:13",    "type": "user"  },  "id": "5eaeb6be-1234-406a-87ab-1971adc1234c",  "interface": "API",  "metadata": { "zone_name": "r2.cloudflarestorage.com" },  "newValue": "",  "newValueJson": {},  "oldValue": "",  "oldValueJson": {},  "owner": { "id": "1234d848c0b9e484dfc37ec392b5fa8a" },  "resource": { "id": "my-bucket", "type": "r2.bucket" },  "when": "2024-07-15T16:32:52.412Z"}
 ```
 
 ```json

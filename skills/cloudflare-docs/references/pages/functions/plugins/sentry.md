@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -43,17 +43,8 @@ bun add @cloudflare/pages-plugin-sentry
 TypeScript
 
 ```
-
 import sentryPlugin from "@cloudflare/pages-plugin-sentry";
-
-
-export const onRequest: PagesFunction = sentryPlugin({
-
-  dsn: "https://sentry.io/welcome/xyz",
-
-});
-
-
+export const onRequest: PagesFunction = sentryPlugin({  dsn: "https://sentry.io/welcome/xyz",});
 ```
 
 The Plugin uses [Toucan ↗](https://github.com/robertcepa/toucan-js). Refer to the Toucan README to [review the options it can take ↗](https://github.com/robertcepa/toucan-js#other-options). `context`, `request`, and `event` are automatically populated and should not be manually configured.
@@ -63,41 +54,15 @@ If your [DSN ↗](https://docs.sentry.io/product/sentry-basics/dsn-explainer/) i
 TypeScript
 
 ```
-
 import sentryPlugin from "@cloudflare/pages-plugin-sentry";
-
-
-export const onRequest: PagesFunction<{
-
-  SENTRY_DSN: string;
-
-}> = (context) => {
-
-  return sentryPlugin({ dsn: context.env.SENTRY_DSN })(context);
-
-};
-
-
+export const onRequest: PagesFunction<{  SENTRY_DSN: string;}> = (context) => {  return sentryPlugin({ dsn: context.env.SENTRY_DSN })(context);};
 ```
 
 TypeScript
 
 ```
-
 import sentryPlugin from "@cloudflare/pages-plugin-sentry";
-
-
-export const onRequest: PagesFunction<{
-
-  KV: KVNamespace;
-
-}> = async (context) => {
-
-  return sentryPlugin({ dsn: await context.env.KV.get("SENTRY_DSN") })(context);
-
-};
-
-
+export const onRequest: PagesFunction<{  KV: KVNamespace;}> = async (context) => {  return sentryPlugin({ dsn: await context.env.KV.get("SENTRY_DSN") })(context);};
 ```
 
 ### Additional context
@@ -109,31 +74,10 @@ For example, you can access `data.sentry` and set user information like so:
 TypeScript
 
 ```
-
 import type { PluginData } from "@cloudflare/pages-plugin-sentry";
-
-
-export const onRequest: PagesFunction<unknown, any, PluginData> = async ({
-
-  data,
-
-  next,
-
-}) => {
-
-  // Authenticate the user from the request and extract user's email address
-
-  const email = await getEmailFromRequest(request);
-
-
+export const onRequest: PagesFunction<unknown, any, PluginData> = async ({  data,  next,}) => {  // Authenticate the user from the request and extract user's email address  const email = await getEmailFromRequest(request);
   data.sentry.setUser({ email });
-
-
-  return next();
-
-};
-
-
+  return next();};
 ```
 
 Again, the full list of features can be found in [Toucan's documentation ↗](https://github.com/robertcepa/toucan-js#features).

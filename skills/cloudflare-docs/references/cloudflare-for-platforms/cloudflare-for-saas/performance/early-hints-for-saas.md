@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,115 +30,40 @@ Before you can employ Early Hints for SaaS, you need to create a custom hostname
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `SSL and Certificates Write`
 
 Create Custom Hostname
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "hostname": "<CUSTOM_HOSTNAME>",
-
-    "ssl": {
-
-        "method": "http",
-
-        "type": "dv",
-
-        "settings": {
-
-            "http2": "on",
-
-            "min_tls_version": "1.2",
-
-            "tls_1_3": "on",
-
-            "early_hints": "on"
-
-        },
-
-        "bundle_method": "ubiquitous",
-
-        "wildcard": false
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "hostname": "<CUSTOM_HOSTNAME>",    "ssl": {        "method": "http",        "type": "dv",        "settings": {            "http2": "on",            "min_tls_version": "1.2",            "tls_1_3": "on",            "early_hints": "on"        },        "bundle_method": "ubiquitous",        "wildcard": false    }  }'
 ```
 
 1. For an existing custom hostname, locate the `id` of that hostname via a `GET` call:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `SSL and Certificates Write`
 * `SSL and Certificates Read`
 
 List Custom Hostnames
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames?hostname=%7Bhostname%7D" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames?hostname=%7Bhostname%7D" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 1. Then make an API call such as the example below, specifying `"early_hints": "on"`:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `SSL and Certificates Write`
 
 Edit Custom Hostname
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \
-
-  --request PATCH \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "ssl": {
-
-        "method": "http",
-
-        "type": "dv",
-
-        "settings": {
-
-            "http2": "on",
-
-            "min_tls_version": "1.2",
-
-            "tls_1_3": "on",
-
-            "early_hints": "on"
-
-        }
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "ssl": {        "method": "http",        "type": "dv",        "settings": {            "http2": "on",            "min_tls_version": "1.2",            "tls_1_3": "on",            "early_hints": "on"        }    }  }'
 ```
 
 Currently, all options within `settings` are required in order to prevent those options from being set to default. You can pull the current settings state prior to updating Early Hints by leveraging the output that returns the `id` for the hostname.

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,7 +18,7 @@ Origin parameters determine how `cloudflared` sends requests to the origin serve
 
 This section describes how to update origin parameters for a remotely-managed tunnel. If you are using a locally-managed tunnel, add these parameters to your [configuration file](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/configuration-file/).
 
-* [ Dashboard ](#tab-panel-7251)
+* [ Dashboard ](#tab-panel-7327)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
 2. Choose a tunnel and select **Edit**.
@@ -199,20 +199,7 @@ Requires `cloudflared` to validate the [Cloudflare Access JWT](https://developer
 To enable this security control in a [configuration file](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/configuration-file/), [get the AUD tag](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/#get-your-aud-tag) for your Access application and add the following rule to `originRequest`:
 
 ```
-
-access:
-
-  required: true
-
-  teamName: <your-team-name>
-
-  audTag:
-
-    - <Access-application-audience-tag>
-
-    - <Optional-additional-tags>
-
-
+access:  required: true  teamName: <your-team-name>  audTag:    - <Access-application-audience-tag>    - <Optional-additional-tags>
 ```
 
 ```json

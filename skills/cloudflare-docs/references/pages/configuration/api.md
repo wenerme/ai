@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,21 +31,14 @@ After creating your token, you can authenticate and make requests to the API usi
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Pages Read`
 * `Pages Write`
 
 Get deployments
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/pages/projects/$PROJECT_NAME/deployments" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/pages/projects/$PROJECT_NAME/deployments" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Try it with one of your projects by replacing `{account_id}`, `{project_name}`, and `<API_TOKEN>`. Refer to [Find your account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) for more information.
@@ -61,40 +54,9 @@ Suppose we have a CMS that pulls data from live sources to compile a static outp
 JavaScript
 
 ```
-
-const endpoint =
-
-  "https://api.cloudflare.com/client/v4/accounts/{account_id}/pages/projects/{project_name}/deployments";
-
-
-export default {
-
-  async scheduled(_, env) {
-
-    const init = {
-
-      method: "POST",
-
-      headers: {
-
-        "Content-Type": "application/json;charset=UTF-8",
-
-        // We recommend you store the API token as a secret using the Workers dashboard or using Wrangler as documented here: https://developers.cloudflare.com/workers/wrangler/commands/general/#secret
-
-        Authorization: `Bearer ${env.API_TOKEN}`,
-
-      },
-
-    };
-
-
-    await fetch(endpoint, init);
-
-  },
-
-};
-
-
+const endpoint =  "https://api.cloudflare.com/client/v4/accounts/{account_id}/pages/projects/{project_name}/deployments";
+export default {  async scheduled(_, env) {    const init = {      method: "POST",      headers: {        "Content-Type": "application/json;charset=UTF-8",        // We recommend you store the API token as a secret using the Workers dashboard or using Wrangler as documented here: https://developers.cloudflare.com/workers/wrangler/commands/general/#secret        Authorization: `Bearer ${env.API_TOKEN}`,      },    };
+    await fetch(endpoint, init);  },};
 ```
 
 After you have deployed the JavaScript Worker, set a cron trigger in your Worker to run this script periodically. Refer to [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/) for more details.
@@ -110,75 +72,10 @@ To delete individual deployments from the command line, you can use [wrangler pa
 JavaScript
 
 ```
-
-const endpoint =
-
-  "https://api.cloudflare.com/client/v4/accounts/{account_id}/pages/projects/{project_name}/deployments";
-
-const expirationDays = 7;
-
-
-export default {
-
-  async scheduled(_, env) {
-
-    const init = {
-
-      headers: {
-
-        "Content-Type": "application/json;charset=UTF-8",
-
-        // We recommend you store the API token as a secret using the Workers dashboard or using Wrangler as documented here: https://developers.cloudflare.com/workers/wrangler/commands/general/#secret
-
-        Authorization: `Bearer ${env.API_TOKEN}`,
-
-      },
-
-    };
-
-
-    const response = await fetch(endpoint, init);
-
-    const deployments = await response.json();
-
-
-    for (const deployment of deployments.result) {
-
-      // Check if the deployment was created within the last x days (as defined by `expirationDays` above)
-
-      if (
-
-        (Date.now() - new Date(deployment.created_on)) / 86400000 >
-
-        expirationDays
-
-      ) {
-
-        // Delete the deployment
-
-        await fetch(`${endpoint}/${deployment.id}`, {
-
-          method: "DELETE",
-
-          headers: {
-
-            "Content-Type": "application/json;charset=UTF-8",
-
-            Authorization: `Bearer ${env.API_TOKEN}`,
-
-          },
-
-        });
-
-      }
-
-    }
-
-  },
-
-};
-
-
+const endpoint =  "https://api.cloudflare.com/client/v4/accounts/{account_id}/pages/projects/{project_name}/deployments";const expirationDays = 7;
+export default {  async scheduled(_, env) {    const init = {      headers: {        "Content-Type": "application/json;charset=UTF-8",        // We recommend you store the API token as a secret using the Workers dashboard or using Wrangler as documented here: https://developers.cloudflare.com/workers/wrangler/commands/general/#secret        Authorization: `Bearer ${env.API_TOKEN}`,      },    };
+    const response = await fetch(endpoint, init);    const deployments = await response.json();
+    for (const deployment of deployments.result) {      // Check if the deployment was created within the last x days (as defined by `expirationDays` above)      if (        (Date.now() - new Date(deployment.created_on)) / 86400000 >        expirationDays      ) {        // Delete the deployment        await fetch(`${endpoint}/${deployment.id}`, {          method: "DELETE",          headers: {            "Content-Type": "application/json;charset=UTF-8",            Authorization: `Bearer ${env.API_TOKEN}`,          },        });      }    }  },};
 ```
 
 After you have deployed the JavaScript Worker, you can set a cron trigger in your Worker to run this script periodically. Refer to the [Cron Triggers guide](https://developers.cloudflare.com/workers/configuration/cron-triggers/) for more details.
@@ -190,107 +87,14 @@ Imagine you are working on a development team using Pages to build your websites
 JavaScript
 
 ```
-
-const deploymentsEndpoint =
-
-  "https://api.cloudflare.com/client/v4/accounts/{account_id}/pages/projects/{project_name}/deployments";
-
-const projectEndpoint =
-
-  "https://api.cloudflare.com/client/v4/accounts/{account_id}/pages/projects/{project_name}";
-
-
-export default {
-
-  async fetch(request, env) {
-
-    const init = {
-
-      headers: {
-
-        "content-type": "application/json;charset=UTF-8",
-
-        // We recommend you store the API token as a secret using the Workers dashboard or using Wrangler as documented here: https://developers.cloudflare.com/workers/wrangler/commands/general/#secret
-
-        Authorization: `Bearer ${env.API_TOKEN}`,
-
-      },
-
-    };
-
-
-    const style = `body { padding: 6em; font-family: sans-serif; } h1 { color: #f6821f }`;
-
-    let content = "<h2>Project</h2>";
-
-
-    let response = await fetch(projectEndpoint, init);
-
-    const projectResponse = await response.json();
-
-    content += `<p>Project Name: ${projectResponse.result.name}</p>`;
-
-    content += `<p>Project ID: ${projectResponse.result.id}</p>`;
-
-    content += `<p>Pages Subdomain: ${projectResponse.result.subdomain}</p>`;
-
-    content += `<p>Domains: ${projectResponse.result.domains}</p>`;
-
-    content += `<a href="https://developers.cloudflare.com/pages/configuration/api/%3C/span%3E%3Cspan%20style="--0:#89DDFF;--1:#007474">${projectResponse.result.canonical_deployment.url}"><p>Latest preview: ${projectResponse.result.canonical_deployment.url}</p></a>`;
-
-
-    content += `<h2>Deployments</h2>`;
-
-    response = await fetch(deploymentsEndpoint, init);
-
-    const deploymentsResponse = await response.json();
-
-
-    for (const deployment of deploymentsResponse.result) {
-
-      content += `<a href="https://developers.cloudflare.com/pages/configuration/api/%3C/span%3E%3Cspan%20style="--0:#89DDFF;--1:#007474">${deployment.url}"><p>Deployment: ${deployment.id}</p></a>`;
-
-    }
-
-
-    let html = `
-
-      <!DOCTYPE html>
-
-      <head>
-
-        <title>Example Pages Project</title>
-
-      </head>
-
-      <body>
-
-        <style>${style}</style>
-
-        <div id="container">
-
-          ${content}
-
-        </div>
-
-      </body>`;
-
-
-    return new Response(html, {
-
-      headers: {
-
-        "Content-Type": "text/html;charset=UTF-8",
-
-      },
-
-    });
-
-  },
-
-};
-
-
+const deploymentsEndpoint =  "https://api.cloudflare.com/client/v4/accounts/{account_id}/pages/projects/{project_name}/deployments";const projectEndpoint =  "https://api.cloudflare.com/client/v4/accounts/{account_id}/pages/projects/{project_name}";
+export default {  async fetch(request, env) {    const init = {      headers: {        "content-type": "application/json;charset=UTF-8",        // We recommend you store the API token as a secret using the Workers dashboard or using Wrangler as documented here: https://developers.cloudflare.com/workers/wrangler/commands/general/#secret        Authorization: `Bearer ${env.API_TOKEN}`,      },    };
+    const style = `body { padding: 6em; font-family: sans-serif; } h1 { color: #f6821f }`;    let content = "<h2>Project</h2>";
+    let response = await fetch(projectEndpoint, init);    const projectResponse = await response.json();    content += `<p>Project Name: ${projectResponse.result.name}</p>`;    content += `<p>Project ID: ${projectResponse.result.id}</p>`;    content += `<p>Pages Subdomain: ${projectResponse.result.subdomain}</p>`;    content += `<p>Domains: ${projectResponse.result.domains}</p>`;    content += `<a href="https://developers.cloudflare.com/pages/configuration/api/%3C/span%3E%3Cspan%20style="--0:#89DDFF;--1:#007474">${projectResponse.result.canonical_deployment.url}"><p>Latest preview: ${projectResponse.result.canonical_deployment.url}</p></a>`;
+    content += `<h2>Deployments</h2>`;    response = await fetch(deploymentsEndpoint, init);    const deploymentsResponse = await response.json();
+    for (const deployment of deploymentsResponse.result) {      content += `<a href="https://developers.cloudflare.com/pages/configuration/api/%3C/span%3E%3Cspan%20style="--0:#89DDFF;--1:#007474">${deployment.url}"><p>Deployment: ${deployment.id}</p></a>`;    }
+    let html = `      <!DOCTYPE html>      <head>        <title>Example Pages Project</title>      </head>      <body>        <style>${style}</style>        <div id="container">          ${content}        </div>      </body>`;
+    return new Response(html, {      headers: {        "Content-Type": "text/html;charset=UTF-8",      },    });  },};
 ```
 
 ## Related resources

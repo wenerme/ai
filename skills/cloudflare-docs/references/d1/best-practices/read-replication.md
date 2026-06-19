@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,165 +26,27 @@ Tip: Place your database further away for the read replication demo
 
 To simulate how read replication can improve a worst case latency scenario, set your D1 database location hint to be in a farther away region. For example, if you are in Europe create your database in Western North America (WNAM).
 
-* [  JavaScript ](#tab-panel-7874)
-* [  TypeScript ](#tab-panel-7875)
+* [  JavaScript ](#tab-panel-7950)
+* [  TypeScript ](#tab-panel-7951)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    const url = new URL(request.url);
-
-
-    // A. Create the Session.
-
-    // When we create a D1 Session, we can continue where we left off from a previous
-
-    // Session if we have that Session's last bookmark or use a constraint.
-
-    const bookmark =
-
-      request.headers.get("x-d1-bookmark") ?? "first-unconstrained";
-
-    const session = env.DB01.withSession(bookmark);
-
-
-    try {
-
-      // Use this Session for all our Workers' routes.
-
-      const response = await withTablesInitialized(
-
-        request,
-
-        session,
-
-        handleRequest,
-
-      );
-
-
-      // B. Return the bookmark so we can continue the Session in another request.
-
-      response.headers.set("x-d1-bookmark", session.getBookmark() ?? "");
-
-
-      return response;
-
-    } catch (e) {
-
-      console.error({
-
-        message: "Failed to handle request",
-
-        error: String(e),
-
-        errorProps: e,
-
-        url,
-
-        bookmark,
-
-      });
-
-      return Response.json(
-
-        { error: String(e), errorDetails: e },
-
-        { status: 500 },
-
-      );
-
-    }
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    const url = new URL(request.url);
+    // A. Create the Session.    // When we create a D1 Session, we can continue where we left off from a previous    // Session if we have that Session's last bookmark or use a constraint.    const bookmark =      request.headers.get("x-d1-bookmark") ?? "first-unconstrained";    const session = env.DB01.withSession(bookmark);
+    try {      // Use this Session for all our Workers' routes.      const response = await withTablesInitialized(        request,        session,        handleRequest,      );
+      // B. Return the bookmark so we can continue the Session in another request.      response.headers.set("x-d1-bookmark", session.getBookmark() ?? "");
+      return response;    } catch (e) {      console.error({        message: "Failed to handle request",        error: String(e),        errorProps: e,        url,        bookmark,      });      return Response.json(        { error: String(e), errorDetails: e },        { status: 500 },      );    }  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    const url = new URL(request.url);
-
-
-    // A. Create the Session.
-
-    // When we create a D1 Session, we can continue where we left off from a previous
-
-    // Session if we have that Session's last bookmark or use a constraint.
-
-    const bookmark =
-
-      request.headers.get("x-d1-bookmark") ?? "first-unconstrained";
-
-    const session = env.DB01.withSession(bookmark);
-
-
-    try {
-
-      // Use this Session for all our Workers' routes.
-
-      const response = await withTablesInitialized(
-
-        request,
-
-        session,
-
-        handleRequest,
-
-      );
-
-
-      // B. Return the bookmark so we can continue the Session in another request.
-
-      response.headers.set("x-d1-bookmark", session.getBookmark() ?? "");
-
-
-      return response;
-
-    } catch (e) {
-
-      console.error({
-
-        message: "Failed to handle request",
-
-        error: String(e),
-
-        errorProps: e,
-
-        url,
-
-        bookmark,
-
-      });
-
-      return Response.json(
-
-        { error: String(e), errorDetails: e },
-
-        { status: 500 },
-
-      );
-
-    }
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export default {  async fetch(request, env, ctx): Promise<Response> {    const url = new URL(request.url);
+    // A. Create the Session.    // When we create a D1 Session, we can continue where we left off from a previous    // Session if we have that Session's last bookmark or use a constraint.    const bookmark =      request.headers.get("x-d1-bookmark") ?? "first-unconstrained";    const session = env.DB01.withSession(bookmark);
+    try {      // Use this Session for all our Workers' routes.      const response = await withTablesInitialized(        request,        session,        handleRequest,      );
+      // B. Return the bookmark so we can continue the Session in another request.      response.headers.set("x-d1-bookmark", session.getBookmark() ?? "");
+      return response;    } catch (e) {      console.error({        message: "Failed to handle request",        error: String(e),        errorProps: e,        url,        bookmark,      });      return Response.json(        { error: String(e), errorDetails: e },        { status: 500 },      );    }  },} satisfies ExportedHandler<Env>;
 ```
 
 ## Primary database instance vs read replicas
@@ -236,18 +98,7 @@ To create a session from any available database version, use `withSession()` wit
 TypeScript
 
 ```
-
-const session = env.DB.withSession() // synchronous
-
-// query executes on either primary database or a read replica
-
-const result = await session
-
-  .prepare(`SELECT * FROM Customers WHERE CompanyName = 'Bs Beverages'`)
-
-  .run()
-
-
+const session = env.DB.withSession() // synchronous// query executes on either primary database or a read replicaconst result = await session  .prepare(`SELECT * FROM Customers WHERE CompanyName = 'Bs Beverages'`)  .run()
 ```
 
 * `withSession()` is the same as `withSession("first-unconstrained")`
@@ -261,18 +112,7 @@ To create a session from the latest database version, use `withSession("first-pr
 TypeScript
 
 ```
-
-const session = env.DB.withSession(`first-primary`) // synchronous
-
-// query executes on primary database
-
-const result = await session
-
-  .prepare(`SELECT * FROM Customers WHERE CompanyName = 'Bs Beverages'`)
-
-  .run()
-
-
+const session = env.DB.withSession(`first-primary`) // synchronous// query executes on primary databaseconst result = await session  .prepare(`SELECT * FROM Customers WHERE CompanyName = 'Bs Beverages'`)  .run()
 ```
 
 * This approach is best when your application requires the latest database version. All queries in a session ensure sequential consistency.
@@ -285,25 +125,8 @@ To create a new session from the context of a previous session, pass a `bookmark
 TypeScript
 
 ```
-
-// retrieve bookmark from previous session stored in HTTP header
-
-const bookmark = request.headers.get('x-d1-bookmark') ?? 'first-unconstrained';
-
-
-const session = env.DB.withSession(bookmark)
-
-const result = await session
-
-  .prepare(`SELECT * FROM Customers WHERE CompanyName = 'Bs Beverages'`)
-
-  .run()
-
-// store bookmark for a future session
-
-response.headers.set('x-d1-bookmark', session.getBookmark() ?? "")
-
-
+// retrieve bookmark from previous session stored in HTTP headerconst bookmark = request.headers.get('x-d1-bookmark') ?? 'first-unconstrained';
+const session = env.DB.withSession(bookmark)const result = await session  .prepare(`SELECT * FROM Customers WHERE CompanyName = 'Bs Beverages'`)  .run()// store bookmark for a future sessionresponse.headers.set('x-d1-bookmark', session.getBookmark() ?? "")
 ```
 
 * Starting a session with a `bookmark` ensures the new session will be at least as up-to-date as the previous session that generated the given `bookmark`.
@@ -316,22 +139,7 @@ To see how D1 requests are processed by the addition of read replicas, `served_b
 TypeScript
 
 ```
-
-const result = await env.DB.withSession()
-
-  .prepare(`SELECT * FROM Customers WHERE CompanyName = 'Bs Beverages'`)
-
-  .run();
-
-console.log({
-
-  servedByRegion: result.meta.served_by_region ?? "",
-
-  servedByPrimary: result.meta.served_by_primary ?? "",
-
-});
-
-
+const result = await env.DB.withSession()  .prepare(`SELECT * FROM Customers WHERE CompanyName = 'Bs Beverages'`)  .run();console.log({  servedByRegion: result.meta.served_by_region ?? "",  servedByPrimary: result.meta.served_by_primary ?? "",});
 ```
 
 * `served_by_region` and `served_by_primary` fields are present for all D1 remote requests, regardless of whether read replication is enabled or if the Sessions API is used. On local development, `npx wrangler dev`, these fields are `undefined`.
@@ -342,52 +150,20 @@ With the REST API, set `read_replication.mode: auto` to enable read replication 
 
 For this REST endpoint, you need to have an API token with `D1:Edit` permission. If you do not have an API token, follow the guide: [Create API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).
 
-* [ cURL ](#tab-panel-7868)
-* [ TypeScript ](#tab-panel-7869)
+* [ cURL ](#tab-panel-7944)
+* [ TypeScript ](#tab-panel-7945)
 
 Terminal window
 
 ```
-
-curl -X PUT "https://api.cloudflare.com/client/v4/accounts/{account_id}/d1/database/{database_id}" \
-
-  -H "Authorization: Bearer $TOKEN" \
-
-  -H "Content-Type: application/json" \
-
-  -d '{"read_replication": {"mode": "auto"}}'
-
-
+curl -X PUT "https://api.cloudflare.com/client/v4/accounts/{account_id}/d1/database/{database_id}" \  -H "Authorization: Bearer $TOKEN" \  -H "Content-Type: application/json" \  -d '{"read_replication": {"mode": "auto"}}'
 ```
 
 TypeScript
 
 ```
-
-const headers = new Headers({
-
-  "Authorization": `Bearer ${TOKEN}`
-
-});
-
-
-await fetch ("/v4/accounts/{account_id}/d1/database/{database_id}", {
-
-  method: "PUT",
-
-  headers: headers,
-
-  body: JSON.stringify(
-
-    { "read_replication": { "mode": "auto" } }
-
-  )
-
- }
-
-)
-
-
+const headers = new Headers({  "Authorization": `Bearer ${TOKEN}`});
+await fetch ("/v4/accounts/{account_id}/d1/database/{database_id}", {  method: "PUT",  headers: headers,  body: JSON.stringify(    { "read_replication": { "mode": "auto" } }  ) })
 ```
 
 ### Disable read replication via REST API
@@ -400,52 +176,20 @@ Note
 
 Disabling read replication takes up to 24 hours for replicas to stop processing requests. Sessions API works with databases that do not have read replication enabled, so it is safe to run code with Sessions API even after disabling read replication.
 
-* [ cURL ](#tab-panel-7870)
-* [ TypeScript ](#tab-panel-7871)
+* [ cURL ](#tab-panel-7946)
+* [ TypeScript ](#tab-panel-7947)
 
 Terminal window
 
 ```
-
-curl -X PUT "https://api.cloudflare.com/client/v4/accounts/{account_id}/d1/database/{database_id}" \
-
-  -H "Authorization: Bearer $TOKEN" \
-
-  -H "Content-Type: application/json" \
-
-  -d '{"read_replication": {"mode": "disabled"}}'
-
-
+curl -X PUT "https://api.cloudflare.com/client/v4/accounts/{account_id}/d1/database/{database_id}" \  -H "Authorization: Bearer $TOKEN" \  -H "Content-Type: application/json" \  -d '{"read_replication": {"mode": "disabled"}}'
 ```
 
 TypeScript
 
 ```
-
-const headers = new Headers({
-
-  "Authorization": `Bearer ${TOKEN}`
-
-});
-
-
-await fetch ("/v4/accounts/{account_id}/d1/database/{database_id}", {
-
-  method: "PUT",
-
-  headers: headers,
-
-  body: JSON.stringify(
-
-    { "read_replication": { "mode": "disabled" } }
-
-  )
-
- }
-
-)
-
-
+const headers = new Headers({  "Authorization": `Bearer ${TOKEN}`});
+await fetch ("/v4/accounts/{account_id}/d1/database/{database_id}", {  method: "PUT",  headers: headers,  body: JSON.stringify(    { "read_replication": { "mode": "disabled" } }  ) })
 ```
 
 ### Check if read replication is enabled
@@ -456,50 +200,26 @@ Alternatively, `GET` D1 database REST endpoint returns if read replication is en
 
 For this REST endpoint, you need to have an API token with `D1:Read` permission. If you do not have an API token, follow the guide: [Create API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).
 
-* [ cURL ](#tab-panel-7872)
-* [ TypeScript ](#tab-panel-7873)
+* [ cURL ](#tab-panel-7948)
+* [ TypeScript ](#tab-panel-7949)
 
 Terminal window
 
 ```
-
-curl -X GET "https://api.cloudflare.com/client/v4/accounts/{account_id}/d1/database/{database_id}" \
-
-  -H "Authorization: Bearer $TOKEN"
-
-
+curl -X GET "https://api.cloudflare.com/client/v4/accounts/{account_id}/d1/database/{database_id}" \  -H "Authorization: Bearer $TOKEN"
 ```
 
 TypeScript
 
 ```
-
-const headers = new Headers({
-
-  "Authorization": `Bearer ${TOKEN}`
-
-});
-
-
-const response = await fetch("/v4/accounts/{account_id}/d1/database/{database_id}", {
-
-  method: "GET",
-
-  headers: headers
-
-});
-
-
-const data = await response.json();
-
-console.log(data.read_replication.mode);
-
-
+const headers = new Headers({  "Authorization": `Bearer ${TOKEN}`});
+const response = await fetch("/v4/accounts/{account_id}/d1/database/{database_id}", {  method: "GET",  headers: headers});
+const data = await response.json();console.log(data.read_replication.mode);
 ```
 
 * Check the `read_replication` property of the `result` object  
-   * `"mode": "auto"` indicates read replication is enabled  
-   * `"mode": "disabled"` indicates read replication is disabled
+  * `"mode": "auto"` indicates read replication is enabled
+  * `"mode": "disabled"` indicates read replication is disabled
 
 ## Read replica locations
 
@@ -521,8 +241,8 @@ Read replica locations are subject to change at Cloudflare's discretion.
 To see the impact of read replication and check the how D1 requests are processed by additional database instances, you can use:
 
 * The `meta` object within the [D1Result](https://developers.cloudflare.com/d1/worker-api/return-object/#d1result) return object, which includes new fields:  
-   * `served_by_region`  
-   * `served_by_primary`
+  * `served_by_region`
+  * `served_by_primary`
 * The Cloudflare dashboard, where you can view your database metrics breakdown by region that processed D1 requests.
 
 ## Pricing

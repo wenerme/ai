@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -51,14 +51,7 @@ Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). Aft
 Terminal window
 
 ```
-
-git remote add origin https://github.com/<your-gh-username>/<repository-name>
-
-git branch -M main
-
-git push -u origin main
-
-
+git remote add origin https://github.com/<your-gh-username>/<repository-name>git branch -M maingit push -u origin main
 ```
 
 ## Deploy with Cloudflare Pages

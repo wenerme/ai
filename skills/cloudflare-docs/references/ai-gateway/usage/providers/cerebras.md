@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,10 +17,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 ## Endpoint
 
 ```
-
 https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/cerebras
-
-
 ```
 
 ## Prerequisites
@@ -39,32 +36,7 @@ When making requests to Cerebras, ensure you have the following:
 Example fetch request
 
 ```
-
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/cerebras/chat/completions \
-
- --header 'content-type: application/json' \
-
- --header 'Authorization: Bearer CEREBRAS_TOKEN' \
-
- --data '{
-
-    "model": "llama3.1-8b",
-
-    "messages": [
-
-        {
-
-            "role": "user",
-
-            "content": "What is Cloudflare?"
-
-        }
-
-    ]
-
-}'
-
-
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/cerebras/chat/completions \ --header 'content-type: application/json' \ --header 'Authorization: Bearer CEREBRAS_TOKEN' \ --data '{    "model": "llama3.1-8b",    "messages": [        {            "role": "user",            "content": "What is Cloudflare?"        }    ]}'
 ```
 
 ## OpenAI-Compatible Endpoint
@@ -72,23 +44,13 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/cerebras/cha
 You can also access Cerebras models using the OpenAI API schema through the [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/). Send your requests to:
 
 ```
-
 https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1/chat/completions
-
-
 ```
 
 Specify:
 
 ```
-
-{
-
-"model": "cerebras/{model}"
-
-}
-
-
+{"model": "cerebras/{model}"}
 ```
 
 ```json

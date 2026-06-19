@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,33 +30,15 @@ Full participants list panel showing on-stage participants, viewers, waitlisted 
 ### Basic Usage
 
 ```
-
 import { RtkParticipants } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkParticipants meeting={meeting} />;
-
-}
-
-
+function MyComponent() {  return <RtkParticipants meeting={meeting} />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkParticipants } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkParticipants meeting={meeting} size="md" config={customConfig} />;
-
-}
-
-
+function MyComponent() {  return <RtkParticipants meeting={meeting} size="md" config={customConfig} />;}
 ```
 
 ```json

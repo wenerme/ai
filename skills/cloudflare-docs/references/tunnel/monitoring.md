@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tunnel/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -90,18 +90,15 @@ To enable logs, [run the tunnel](https://developers.cloudflare.com/tunnel/config
 Terminal window
 
 ```
-
 cloudflared tunnel --loglevel info --logfile cloudflared.log run <UUID>
-
-
 ```
 
 ### Remote log streaming
 
 You can stream real-time logs from a running tunnel without SSH access to the server.
 
-* [ CLI ](#tab-panel-10994)
-* [ Dashboard ](#tab-panel-10995)
+* [ CLI ](#tab-panel-11011)
+* [ Dashboard ](#tab-panel-11012)
 
 The `cloudflared` daemon can stream logs from any tunnel in your account to the local command line. `cloudflared` must be installed on both your local machine and the origin server.
 
@@ -134,10 +131,7 @@ You can filter logs by event type (`--event`), event level (`--level`), or sampl
 Terminal window
 
 ```
-
 cloudflared tail --level debug <UUID>
-
-
 ```
 
 | Flag        | Description                                                                                                                                                                                                                             | Allowed values                  | Default value |
@@ -171,17 +165,14 @@ In non-containerized environments, `cloudflared` starts the metrics server on `1
 To determine the default port, check your [tunnel logs](#server-side-logs) around the time when the tunnel started. For example:
 
 ```
-
 2024-12-19T21:17:58Z INF Starting metrics server on 127.0.0.1:20241/metrics
-
-
 ```
 
 ### Configure a custom address
 
 To serve metrics on a custom IP address and port, perform these steps on the `cloudflared` host:
 
-1. [Run the tunnel](https://developers.cloudflare.com/tunnel/configuration/#update-run-parameters) using the`--metrics` flag. For example,  
+1. [Run the tunnel](https://developers.cloudflare.com/tunnel/configuration/#update-run-parameters) using the `--metrics` flag. For example,  
 Terminal window  
 ```  
 cloudflared tunnel --metrics 127.0.0.1:60123 run my-tunnel  
@@ -300,17 +291,7 @@ curl localhost:20241/diag/tunnel
 ```  
 This command should return a JSON:  
 ```  
-{  
-  "tunnelID": "ef96b330-a7f5-4bce-a00e-827ce5be077f",  
-  "connectorID": "d236670a-9f74-422f-adf1-030f5c5f0523",  
-  "connections": [  
-    { "isConnected": true, "protocol": 1, "edgeAddress": "198.41.192.167"},  
-    {"isConnected": true, "protocol": 1, "edgeAddress": "198.41.200.113", "index": 1},  
-    {"isConnected": true, "protocol": 1, "edgeAddress": "198.41.192.47", "index": 2},  
-    {"isConnected": true, "protocol": 1, "edgeAddress": "198.41.200.73", "index": 3}  
-  ],  
-  "icmp_sources": ["192.168.1.243", "fe80::c59:bd4a:e815:ed6"]  
-}  
+{  "tunnelID": "ef96b330-a7f5-4bce-a00e-827ce5be077f",  "connectorID": "d236670a-9f74-422f-adf1-030f5c5f0523",  "connections": [    { "isConnected": true, "protocol": 1, "edgeAddress": "198.41.192.167"},    {"isConnected": true, "protocol": 1, "edgeAddress": "198.41.200.113", "index": 1},    {"isConnected": true, "protocol": 1, "edgeAddress": "198.41.192.47", "index": 2},    {"isConnected": true, "protocol": 1, "edgeAddress": "198.41.200.73", "index": 3}  ],  "icmp_sources": ["192.168.1.243", "fe80::c59:bd4a:e815:ed6"]}  
 ```
 4. Run the diagnostic using the Docker container ID:  
 Terminal window  
@@ -335,10 +316,11 @@ The diagnostic feature will request data from the [tunnel metrics server](#metri
 Terminal window  
 ```  
 kubectl port-forward <pod> <diagnostic_port>:<metrics_port>  
-```  
-   * `<pod>`: Name of the pod where the tunnel is running  
-   * `<diagnostic_port>` is any local port in the range `20241` to `20245`.  
-   * `<metrics_port>` is the Kubernetes pod port for the `cloudflared` instance you want to diagnose (obtained in Step 1).  
+```
+
+  * `<pod>`: Name of the pod where the tunnel is running
+  * `<diagnostic_port>` is any local port in the range `20241` to `20245`.
+  * `<metrics_port>` is the Kubernetes pod port for the `cloudflared` instance you want to diagnose (obtained in Step 1).  
 For example, if you set the metrics server address to `0.0.0.0:12345`:  
 Terminal window  
 ```  

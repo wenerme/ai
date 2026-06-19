@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,17 +21,14 @@ In non-containerized environments, `cloudflared` starts the metrics server on `1
 To determine the default port, check your [tunnel logs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/logs/) around the time when the tunnel started. For example:
 
 ```
-
 2024-12-19T21:17:58Z INF Starting metrics server on 127.0.0.1:20241/metrics
-
-
 ```
 
 ## Configure the metrics server address
 
 To serve metrics on a custom IP address and port, perform these steps on the `cloudflared` host:
 
-1. [Run the tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/#add-run-parameters-to-tunnel-service) using the`--metrics` flag. For example,  
+1. [Run the tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/#add-run-parameters-to-tunnel-service) using the `--metrics` flag. For example,  
 Terminal window  
 ```  
 cloudflared tunnel --metrics 127.0.0.1:60123 run my-tunnel  

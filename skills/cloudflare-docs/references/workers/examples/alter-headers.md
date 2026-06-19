@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,220 +22,58 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11581)
-* [  TypeScript ](#tab-panel-11582)
-* [  Python ](#tab-panel-11583)
-* [  Hono ](#tab-panel-11584)
+* [  JavaScript ](#tab-panel-11598)
+* [  TypeScript ](#tab-panel-11599)
+* [  Python ](#tab-panel-11600)
+* [  Hono ](#tab-panel-11601)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request) {
-
-    const response = await fetch("https://example.com");
-
-
-    // Clone the response so that it's no longer immutable
-
-    const newResponse = new Response(response.body, response);
-
-
-    // Add a custom header with a value
-
-    newResponse.headers.append(
-
-      "x-workers-hello",
-
-      "Hello from Cloudflare Workers",
-
-    );
-
-
-    // Delete headers
-
-    newResponse.headers.delete("x-header-to-delete");
-
-    newResponse.headers.delete("x-header2-to-delete");
-
-
-    // Adjust the value for an existing header
-
-    newResponse.headers.set("x-header-to-change", "NewValue");
-
-
-    return newResponse;
-
-  },
-
-};
-
-
+export default {  async fetch(request) {    const response = await fetch("https://example.com");
+    // Clone the response so that it's no longer immutable    const newResponse = new Response(response.body, response);
+    // Add a custom header with a value    newResponse.headers.append(      "x-workers-hello",      "Hello from Cloudflare Workers",    );
+    // Delete headers    newResponse.headers.delete("x-header-to-delete");    newResponse.headers.delete("x-header2-to-delete");
+    // Adjust the value for an existing header    newResponse.headers.set("x-header-to-change", "NewValue");
+    return newResponse;  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request): Promise<Response> {
-
-    const response = await fetch(request);
-
-
-    // Clone the response so that it's no longer immutable
-
-    const newResponse = new Response(response.body, response);
-
-
-    // Add a custom header with a value
-
-    newResponse.headers.append(
-
-      "x-workers-hello",
-
-      "Hello from Cloudflare Workers",
-
-    );
-
-
-    // Delete headers
-
-    newResponse.headers.delete("x-header-to-delete");
-
-    newResponse.headers.delete("x-header2-to-delete");
-
-
-    // Adjust the value for an existing header
-
-    newResponse.headers.set("x-header-to-change", "NewValue");
-
-
-    return newResponse;
-
-  },
-
-} satisfies ExportedHandler;
-
-
+export default {  async fetch(request): Promise<Response> {    const response = await fetch(request);
+    // Clone the response so that it's no longer immutable    const newResponse = new Response(response.body, response);
+    // Add a custom header with a value    newResponse.headers.append(      "x-workers-hello",      "Hello from Cloudflare Workers",    );
+    // Delete headers    newResponse.headers.delete("x-header-to-delete");    newResponse.headers.delete("x-header2-to-delete");
+    // Adjust the value for an existing header    newResponse.headers.set("x-header-to-change", "NewValue");
+    return newResponse;  },} satisfies ExportedHandler;
 ```
 
 Python
 
 ```
-
 from workers import Response, fetch, WorkerEntrypoint
-
-
-class Default(WorkerEntrypoint):
-
-  async def fetch(self, request):
-
-      response = await fetch("https://example.com")
-
-
-      # Grab the response headers so they can be modified
-
-      new_headers = response.headers
-
-
-      # Add a custom header with a value
-
-      new_headers["x-workers-hello"] = "Hello from Cloudflare Workers"
-
-
-      # Delete headers
-
-      if "x-header-to-delete" in new_headers:
-
-          del new_headers["x-header-to-delete"]
-
-      if "x-header2-to-delete" in new_headers:
-
-          del new_headers["x-header2-to-delete"]
-
-
-      # Adjust the value for an existing header
-
-      new_headers["x-header-to-change"] = "NewValue"
-
-
+class Default(WorkerEntrypoint):  async def fetch(self, request):      response = await fetch("https://example.com")
+      # Grab the response headers so they can be modified      new_headers = response.headers
+      # Add a custom header with a value      new_headers["x-workers-hello"] = "Hello from Cloudflare Workers"
+      # Delete headers      if "x-header-to-delete" in new_headers:          del new_headers["x-header-to-delete"]      if "x-header2-to-delete" in new_headers:          del new_headers["x-header2-to-delete"]
+      # Adjust the value for an existing header      new_headers["x-header-to-change"] = "NewValue"
       return Response(response.body, headers=new_headers)
-
-
 ```
 
 TypeScript
 
 ```
-
 import { Hono } from 'hono';
-
-
 const app = new Hono();
-
-
-app.use('*', async (c, next) => {
-
-  // Process the request with the next middleware/handler
-
-  await next();
-
-
+app.use('*', async (c, next) => {  // Process the request with the next middleware/handler  await next();
   // After the response is generated, we can modify its headers
-
-
-  // Add a custom header with a value
-
-  c.res.headers.append(
-
-    "x-workers-hello",
-
-    "Hello from Cloudflare Workers with Hono"
-
-  );
-
-
-  // Delete headers
-
-  c.res.headers.delete("x-header-to-delete");
-
-  c.res.headers.delete("x-header2-to-delete");
-
-
-  // Adjust the value for an existing header
-
-  c.res.headers.set("x-header-to-change", "NewValue");
-
-});
-
-
-app.get('*', async (c) => {
-
-  // Fetch content from example.com
-
-  const response = await fetch("https://example.com");
-
-
-  // Return the response body with original headers
-
-  // (our middleware will modify the headers before sending)
-
-  return new Response(response.body, {
-
-    headers: response.headers
-
-  });
-
-});
-
-
+  // Add a custom header with a value  c.res.headers.append(    "x-workers-hello",    "Hello from Cloudflare Workers with Hono"  );
+  // Delete headers  c.res.headers.delete("x-header-to-delete");  c.res.headers.delete("x-header2-to-delete");
+  // Adjust the value for an existing header  c.res.headers.set("x-header-to-change", "NewValue");});
+app.get('*', async (c) => {  // Fetch content from example.com  const response = await fetch("https://example.com");
+  // Return the response body with original headers  // (our middleware will modify the headers before sending)  return new Response(response.body, {    headers: response.headers  });});
 export default app;
-
-
 ```
 
 You can also use the [custom-headers-example template ↗](https://github.com/kristianfreeman/custom-headers-example) to deploy this code to your custom domain.

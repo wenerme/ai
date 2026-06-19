@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -40,13 +40,16 @@ If you set a header override on an individual endpoint, it will take precedence 
 
 For example, you might have a load balancer for `www.example.com` with the following setup:
 
-* Pools:  
-   * Pool 1:  
-         * Endpoint 1 (`Host` header set to `lb-app-a.example.com`)  
-         * Endpoint 2  
-   * Pool 2:  
-         * Endpoint 3  
-         * Endpoint 4 (`Host` header set to `lb-app-b.example.com`)
+* Pools:
+
+  * Pool 1:
+
+    * Endpoint 1 (`Host` header set to `lb-app-a.example.com`)
+    * Endpoint 2
+  * Pool 2:
+
+    * Endpoint 3
+    * Endpoint 4 (`Host` header set to `lb-app-b.example.com`)
 * Monitor (`Host` header set to `www.example.com`)
 
 In this scenario, health monitor requests for **Endpoint 1** would use `lb-app-a.example.com`, health monitor requests for **Endpoint 4** would use `lb-app-b.example.com`, and all other health monitor requests would default to `www.example.com`. For more information on updating your custom host configuration to be compatible with Cloudflare, see [Configure Cloudflare and Heroku over HTTPS](https://developers.cloudflare.com/support/third-party-software/others/configure-cloudflare-and-heroku-over-https/).
@@ -56,7 +59,7 @@ For a list of endpoints that override a monitor's `Host` header:
 1. On a monitor, select **Edit**.
 2. Select **Advanced health monitor settings**.
 3. If you have endpoint overrides, you will see **Endpoint host header overrides**.
-![Example configuration of endpoint host header overrides](https://developers.cloudflare.com/_astro/origin-host-header-override.CJNvqMtO_RYlCt.webp) 
+![Example configuration of endpoint host header overrides](https://developers.cloudflare.com/_astro/origin-host-header-override.CJNvqMtO_RYlCt.webp)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/additional-options/override-http-host-headers/#page","headline":"Override HTTP Host headers · Cloudflare Load Balancing docs","description":"Override HTTP Host headers sent to origin servers.","url":"https://developers.cloudflare.com/load-balancing/additional-options/override-http-host-headers/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

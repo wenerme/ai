@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/resource-tagging/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,32 +21,7 @@ Use `PUT` to set tags on an account-level resource. This operation replaces all 
 Terminal window
 
 ```
-
-curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags" \
-
-  -H "Authorization: Bearer $API_TOKEN" \
-
-  -H "Content-Type: application/json" \
-
-  -d '{
-
-    "resource_type": "worker",
-
-    "resource_id": "'"$RESOURCE_ID"'",
-
-    "tags": {
-
-      "environment": "production",
-
-      "team": "platform",
-
-      "cost-center": "engineering"
-
-    }
-
-  }'
-
-
+curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags" \  -H "Authorization: Bearer $API_TOKEN" \  -H "Content-Type: application/json" \  -d '{    "resource_type": "worker",    "resource_id": "'"$RESOURCE_ID"'",    "tags": {      "environment": "production",      "team": "platform",      "cost-center": "engineering"    }  }'
 ```
 
 For zone-level resources, use the zone endpoint:
@@ -54,30 +29,7 @@ For zone-level resources, use the zone endpoint:
 Terminal window
 
 ```
-
-curl -X PUT "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/tags" \
-
-  -H "Authorization: Bearer $API_TOKEN" \
-
-  -H "Content-Type: application/json" \
-
-  -d '{
-
-    "resource_type": "zone",
-
-    "resource_id": "'"$ZONE_ID"'",
-
-    "tags": {
-
-      "environment": "production",
-
-      "customer": "acme-corp"
-
-    }
-
-  }'
-
-
+curl -X PUT "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/tags" \  -H "Authorization: Bearer $API_TOKEN" \  -H "Content-Type: application/json" \  -d '{    "resource_type": "zone",    "resource_id": "'"$ZONE_ID"'",    "tags": {      "environment": "production",      "customer": "acme-corp"    }  }'
 ```
 
 Some resource types require additional fields. Refer to [supported resource types](https://developers.cloudflare.com/resource-tagging/reference/resource-types/) for details.
@@ -89,12 +41,7 @@ Retrieve tags for a specific resource:
 Terminal window
 
 ```
-
-curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags?resource_type=worker&resource_id=$RESOURCE_ID" \
-
-  -H "Authorization: Bearer $API_TOKEN"
-
-
+curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags?resource_type=worker&resource_id=$RESOURCE_ID" \  -H "Authorization: Bearer $API_TOKEN"
 ```
 
 Note
@@ -110,32 +57,14 @@ The API does not support partial updates — `PUT` always replaces all tags. To 
 Terminal window
 
 ```
-
-curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags?resource_type=worker&resource_id=$RESOURCE_ID" \
-
-  -H "Authorization: Bearer $API_TOKEN"
-
-
+curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags?resource_type=worker&resource_id=$RESOURCE_ID" \  -H "Authorization: Bearer $API_TOKEN"
 # Response: {"result": {"tags": {"environment": "production", "team": "platform"}}}
-
-
 ```
 
 1. Merge the new tag into the existing set locally.
 
 ```
-
-{
-
-  "environment": "production",
-
-  "team": "platform",
-
-  "cost-center": "engineering"
-
-}
-
-
+{  "environment": "production",  "team": "platform",  "cost-center": "engineering"}
 ```
 
 1. `PUT` the complete merged tag set.
@@ -143,32 +72,7 @@ curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags?reso
 Terminal window
 
 ```
-
-curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags" \
-
-  -H "Authorization: Bearer $API_TOKEN" \
-
-  -H "Content-Type: application/json" \
-
-  -d '{
-
-    "resource_type": "worker",
-
-    "resource_id": "'"$RESOURCE_ID"'",
-
-    "tags": {
-
-      "environment": "production",
-
-      "team": "platform",
-
-      "cost-center": "engineering"
-
-    }
-
-  }'
-
-
+curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags" \  -H "Authorization: Bearer $API_TOKEN" \  -H "Content-Type: application/json" \  -d '{    "resource_type": "worker",    "resource_id": "'"$RESOURCE_ID"'",    "tags": {      "environment": "production",      "team": "platform",      "cost-center": "engineering"    }  }'
 ```
 
 Warning
@@ -186,22 +90,7 @@ To remove all tags from a resource:
 Terminal window
 
 ```
-
-curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags" \
-
-  -H "Authorization: Bearer $API_TOKEN" \
-
-  -H "Content-Type: application/json" \
-
-  -d '{
-
-    "resource_type": "worker",
-
-    "resource_id": "'"$RESOURCE_ID"'"
-
-  }'
-
-
+curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags" \  -H "Authorization: Bearer $API_TOKEN" \  -H "Content-Type: application/json" \  -d '{    "resource_type": "worker",    "resource_id": "'"$RESOURCE_ID"'"  }'
 ```
 
 This returns `204 No Content` on success. Only use `DELETE` when you want to remove all tags from a resource (for example, when decommissioning it).

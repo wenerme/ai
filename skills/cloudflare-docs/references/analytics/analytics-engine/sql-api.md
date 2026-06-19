@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,10 +26,10 @@ Use the dashboard to create a token with permission to read analytics data on yo
 2. Select **Create Token**.
 3. Select **Create Custom Token**.
 4. Complete the **Create Custom Token** form as follows:  
-   * Give your token a descriptive name.  
-   * For **Permissions** select _Account_ | _Account Analytics_ | _Read_  
-   * Optionally configure account and IP restrictions and TTL.  
-   * Submit and confirm the form to create the token.
+  * Give your token a descriptive name.
+  * For **Permissions** select _Account_ | _Account Analytics_ | _Read_
+  * Optionally configure account and IP restrictions and TTL.
+  * Submit and confirm the form to create the token.
 5. Make a note of the token string.
 
 ## Querying the API
@@ -41,14 +41,7 @@ You can use cURL to test the API as follows, replacing the `<account_id>` with y
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/analytics_engine/sql" \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---data "SELECT 'Hello Workers Analytics Engine' AS message"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/analytics_engine/sql" \--header "Authorization: Bearer <API_TOKEN>" \--data "SELECT 'Hello Workers Analytics Engine' AS message"
 ```
 
 If you have already published some data, you might try executing the following to confirm that the dataset has been created in the DB.
@@ -56,14 +49,7 @@ If you have already published some data, you might try executing the following t
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/analytics_engine/sql" \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---data "SHOW TABLES"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/analytics_engine/sql" \--header "Authorization: Bearer <API_TOKEN>" \--data "SHOW TABLES"
 ```
 
 Refer to the Workers Analytics Engine [SQL reference](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/), for the full supported query syntax.
@@ -106,22 +92,7 @@ Additionally, the [QUANTILEEXACTWEIGHTED](https://developers.cloudflare.com/anal
 Column aliases can be used in queries to give names to the blobs and doubles in your dataset:
 
 ```
-
-SELECT
-
-    timestamp,
-
-    blob1 AS location_id,
-
-    double1 AS inside_temp,
-
-    double2 AS outside_temp
-
-FROM temperatures
-
-WHERE timestamp > NOW() - INTERVAL '1' DAY
-
-
+SELECT    timestamp,    blob1 AS location_id,    double1 AS inside_temp,    double2 AS outside_tempFROM temperaturesWHERE timestamp > NOW() - INTERVAL '1' DAY
 ```
 
 ### Aggregation taking into account sample interval
@@ -129,39 +100,13 @@ WHERE timestamp > NOW() - INTERVAL '1' DAY
 Calculate number of readings taken at each location in the last 7 days. In this case, we are grouping by the index field so an exact count can be calculated even in the case that the data has been sampled:
 
 ```
-
-SELECT
-
-    index1 AS location_id,
-
-    SUM(_sample_interval) AS n_readings
-
-FROM temperatures
-
-WHERE timestamp > NOW() - INTERVAL '7' DAY
-
-GROUP BY index1
-
-
+SELECT    index1 AS location_id,    SUM(_sample_interval) AS n_readingsFROM temperaturesWHERE timestamp > NOW() - INTERVAL '7' DAYGROUP BY index1
 ```
 
 Calculate the average temperature over the last 7 days at each location. Sample interval is taken into account:
 
 ```
-
-SELECT
-
-    index1 AS location_id,
-
-    SUM(_sample_interval * double1) / SUM(_sample_interval) AS average_temp
-
-FROM temperatures
-
-WHERE timestamp > NOW() - INTERVAL '7' DAY
-
-GROUP BY index1
-
-
+SELECT    index1 AS location_id,    SUM(_sample_interval * double1) / SUM(_sample_interval) AS average_tempFROM temperaturesWHERE timestamp > NOW() - INTERVAL '7' DAYGROUP BY index1
 ```
 
 ```json

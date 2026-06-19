@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pipelines/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -111,357 +111,47 @@ Pipelines GraphQL datasets require an `accountTag` filter with your Cloudflare a
 This query returns the total bytes and records read by a pipeline from streams, along with any decode errors.
 
 ```
-
-query PipelineOperatorMetrics(
-
-  $accountTag: String!
-
-  $pipelineId: String!
-
-  $datetimeStart: Time!
-
-  $datetimeEnd: Time!
-
-) {
-
-  viewer {
-
-    accounts(filter: { accountTag: $accountTag }) {
-
-      pipelinesOperatorAdaptiveGroups(
-
-        limit: 10000
-
-        filter: {
-
-          pipelineId: $pipelineId
-
-          streamId_neq: ""
-
-          datetime_geq: $datetimeStart
-
-          datetime_leq: $datetimeEnd
-
-        }
-
-      ) {
-
-        sum {
-
-          bytesIn
-
-          recordsIn
-
-          decodeErrors
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
+query PipelineOperatorMetrics(  $accountTag: String!  $pipelineId: String!  $datetimeStart: Time!  $datetimeEnd: Time!) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      pipelinesOperatorAdaptiveGroups(        limit: 10000        filter: {          pipelineId: $pipelineId          streamId_neq: ""          datetime_geq: $datetimeStart          datetime_leq: $datetimeEnd        }      ) {        sum {          bytesIn          recordsIn          decodeErrors        }      }    }  }}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBACgSwA5gDYIHZgPIogQwBcB7CAWTEIgQGMBnACgCgYYASfGm4kDQgFXwBzAFwwAylUxCAhC3ZJkaTGACSAEzGTqGWfLbqilBAFswk-BEJj+psHNYGjhOwFEMmmLbNyAlDABveQA3BDAAd0hA+VZObl5CRgAzBFRCSDEAmDiePkFRdhyE-JgAX38g1iqYRRR0LDpcSCJSAEFDJBdgsABxCB4kRhjqmHQTBGsYAEYABjmZ4eqUtIzokZHa5SwNMTZN+rV1RZG6KjB8Ew0AfSxgMQAie+Pqw3SXMyuhMDv2V+MzCxWZ5VP7vMBXVDfXagtweYGlY4VYF0EAmNbrKoAIyg6ToqgwwNYEDA3Ag6jxBIxIJJxHUYFcEH6EDo8OOCOq7LKTFKQA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQAHASyYFMAbF+dqgEywgASgFEACgBl8oigHUqyABLU6jfmETtELALbsAyojAAnREIBMABgsA2ALRWHARgAcyKwFZMAFgCcvgDsAFoMIBpaOvqi8ILY1naOLu7Ozr4BPiEgAL5AA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBACgSwA5gDYIHZgPIogQwBcB7CAWTEIgQGMBnACgCgYYASfGm4kDQgFXwBzAFwwAylUxCAhC3ZJkaTGACSAEzGTqGWfLbqilBAFswk-BEJj+psHNYGjhOwFEMmmLbNyAlDABveQA3BDAAd0hA+VZObl5CRgAzBFRCSDEAmDiePkFRdhyE-JgAX38g1iqYRRR0LDpcSCJSAEFDJBdgsABxCB4kRhjqmHQTBGsYAEYABjmZ4eqUtIzokZHa5SwNMTZN+rV1RZG6KjB8Ew0AfSxgMQAie+Pqw3SXMyuhMDv2V+MzCxWZ5VP7vMBXVDfXagtweYGlY4VYF0EAmNbrKoAIyg6ToqgwwNYEDA3Ag6jxBIxIJJxHUYFcEH6EDo8OOCOq7LKTFKQA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQAHASyYFMAbF+dqgEywgASgFEACgBl8oigHUqyABLU6jfmETtELALbsAyojAAnREIBMABgsA2ALRWHARgAcyZwHZMAFm9WAZgAtBhANLR19UXhBbGs7Rxd3CwDff2CQAF8gA)
 
 ### Measure sink delivery metrics
 
 This query returns detailed metrics about data written to a specific sink, including file and compression statistics.
 
 ```
-
-query PipelineSinkMetrics(
-
-  $accountTag: String!
-
-  $pipelineId: String!
-
-  $sinkId: String!
-
-  $datetimeStart: Time!
-
-  $datetimeEnd: Time!
-
-) {
-
-  viewer {
-
-    accounts(filter: { accountTag: $accountTag }) {
-
-      pipelinesSinkAdaptiveGroups(
-
-        limit: 10000
-
-        filter: {
-
-          pipelineId: $pipelineId
-
-          sinkId: $sinkId
-
-          datetime_geq: $datetimeStart
-
-          datetime_leq: $datetimeEnd
-
-        }
-
-      ) {
-
-        sum {
-
-          bytesWritten
-
-          recordsWritten
-
-          filesWritten
-
-          rowGroupsWritten
-
-          uncompressedBytesWritten
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
+query PipelineSinkMetrics(  $accountTag: String!  $pipelineId: String!  $sinkId: String!  $datetimeStart: Time!  $datetimeEnd: Time!) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      pipelinesSinkAdaptiveGroups(        limit: 10000        filter: {          pipelineId: $pipelineId          sinkId: $sinkId          datetime_geq: $datetimeStart          datetime_leq: $datetimeEnd        }      ) {        sum {          bytesWritten          recordsWritten          filesWritten          rowGroupsWritten          uncompressedBytesWritten        }      }    }  }}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBACgSwA5gDYIHZgMqYNYCyYALhAgMYDOAFAFAwwAkAhueQPYgbEAqzA5gC4Y2Upn4BCekyTI0mMAEkAJsNFkMk6Y0r4VasZqkNGy5sRIIAtjmLMIxYT2thjTMxeIuAohlUxnGykAShgAb2kANwQwAHdIcOkGVg4uYhoAMwRUCwhhMJgUzm4+ISYitNKYAF9QiIYGmFkUdCxKXAw8AEEzJC9IsABxCE4kGiTGmHQrBEcYAEYABmXFicasnMh8tcnm+Sx9GTlWpWUdxt1Ow509M8nJj0sbAH1+MGBhU3Mn23tic4ajy8L1Q70+QJ8fgB1R2dQBlBAVkS90aACMoBZKAB1MjECwYAEMCBgDgQZTY3H4wkwDZgCmzKkohojWLDUb0vFgAlMhhcDhWJDEyiUMDKABCGLpOIZXOhOxhjQVNVo1SAA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQAHASyYFMAbF+dqgEywgASgFEACgBl8oigHUqyABLU6jAM48A1gKFipM+YpW0GIfmETtELALbsAyojAAnREIBMABg8A2ALReAQCMABzIXgCsmAAsAJyxAOwAWmYWVjb2ovCC2N5+gSHhwcGxCTEpIAC+QA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBACgSwA5gDYIHZgMqYNYCyYALhAgMYDOAFAFAwwAkAhueQPYgbEAqzA5gC4Y2Upn4BCekyTI0mMAEkAJsNFkMk6Y0r4VasZqkNGy5sRIIAtjmLMIxYT2thjTMxeIuAohlUxnGykAShgAb2kANwQwAHdIcOkGVg4uYhoAMwRUCwhhMJgUzm4+ISYitNKYAF9QiIYGmFkUdCxKXAw8AEEzJC9IsABxCE4kGiTGmHQrBEcYAEYABmXFicasnMh8tcnm+Sx9GTlWpWUdxt1Ow509M8nJj0sbAH1+MGBhU3Mn23tic4ajy8L1Q70+QJ8fgB1R2dQBlBAVkS90aACMoBZKAB1MjECwYAEMCBgDgQZTY3H4wkwDZgCmzKkohojWLDUb0vFgAlMhhcDhWJDEyiUMDKABCGLpOIZXOhOxhjQVNVo1SAA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQAHASyYFMAbF+dqgEywgASgFEACgBl8oigHUqyABLU6jAM48A1gKFipM+YpW0GIfmETtELALbsAyojAAnREIBMABg8A2ALReAQCMABzIwQDsmAAs0V4AzABaZhZWNvai8ILY3n6BIeEeCbHxySAAvkA)
 
 ### Query dropped event errors
 
 This query returns a summary of events that were dropped due to schema validation failures, grouped by error type and ordered by frequency.
 
 ```
-
-query GetPipelineUserErrors(
-
-  $accountTag: String!
-
-  $pipelineId: String!
-
-  $datetimeStart: Time!
-
-  $datetimeEnd: Time!
-
-) {
-
-  viewer {
-
-    accounts(filter: { accountTag: $accountTag }) {
-
-      pipelinesUserErrorsAdaptiveGroups(
-
-        limit: 100
-
-        filter: {
-
-          pipelineId: $pipelineId
-
-          datetime_geq: $datetimeStart
-
-          datetime_leq: $datetimeEnd
-
-        }
-
-        orderBy: [count_DESC]
-
-      ) {
-
-        count
-
-        dimensions {
-
-          date
-
-          errorFamily
-
-          errorType
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
+query GetPipelineUserErrors(  $accountTag: String!  $pipelineId: String!  $datetimeStart: Time!  $datetimeEnd: Time!) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      pipelinesUserErrorsAdaptiveGroups(        limit: 100        filter: {          pipelineId: $pipelineId          datetime_geq: $datetimeStart          datetime_leq: $datetimeEnd        }        orderBy: [count_DESC]      ) {        count        dimensions {          date          errorFamily          errorType        }      }    }  }}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA4mALgBQJYAcwBtUDswCqAzpAKIQQD2ERAFAFAwwAkAhgMbuUi6IAqrAOYAuGAGVEEPIICEjFugzY8YAJIATURKm5Z85utaIkqALZgJrCIlF8zYOUwNGT50rk0w75uQEoYAN7yAG6oYADukIHyTBxcPIh0AGaoWMYQogEwcdy8AiIsOQn5MAC+-kFMVTCKmDj4RMRkFNREAIKG6IiowWBwVCDodDHVMDimqDYwAIwADLMj1SlpkJmLo7XK+BqizJv1aurr1YbG3eYA+oJgwLunrhaIVojHVffnYBdYN3cuH+5HUZVUqvajqSAAISgogA2vFeBcACKkMQAYQAuusKq94S8gUx1PZcERUJRidF8W8XK8mJAqBAAGKsCZYKA0mB06h8KCYV4goH84HyEGlIA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQAHASyYFMAbF+dqgEywgASgFEACgBl8oigHUqyABLU6jfmETtELALbsAyojAAnREIBMABgsA2ALRWHARgAcyKwFZMAFgCcvgDsAFoMIBpaOvqi8ILY1naOLu7Ozr4BPiEgAL5AA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA4mALgBQJYAcwBtUDswCqAzpAKIQQD2ERAFAFAwwAkAhgMbuUi6IAqrAOYAuGAGVEEPIICEjFugzY8YAJIATURKm5Z85utaIkqALZgJrCIlF8zYOUwNGT50rk0w75uQEoYAN7yAG6oYADukIHyTBxcPIh0AGaoWMYQogEwcdy8AiIsOQn5MAC+-kFMVTCKmDj4RMRkFNREAIKG6IiowWBwVCDodDHVMDimqDYwAIwADLMj1SlpkJmLo7XK+BqizJv1aurr1YbG3eYA+oJgwLunrhaIVojHVffnYBdYN3cuH+5HUZVUqvajqSAAISgogA2vFeBcACKkMQAYQAuusKq94S8gUx1PZcERUJRidF8W8XK8mJAqBAAGKsCZYKA0mB06h8KCYV4goH84HyEGlIA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQAHASyYFMAbF+dqgEywgASgFEACgBl8oigHUqyABLU6jfmETtELALbsAyojAAnREIBMABgsA2ALRWHARgAcyZwHZMAFm9WAZgAtBhANLR19UXhBbGs7Rxd3CwDff2CQAF8gA)
 
 Example response:
 
 ```
-
-{
-
-  "data": {
-
-    "viewer": {
-
-      "accounts": [
-
-        {
-
-          "pipelinesUserErrorsAdaptiveGroups": [
-
-            {
-
-              "count": 679,
-
-              "dimensions": {
-
-                "date": "2026-02-19",
-
-                "errorFamily": "deserialization",
-
-                "errorType": "missing_field"
-
-              }
-
-            },
-
-            {
-
-              "count": 392,
-
-              "dimensions": {
-
-                "date": "2026-02-19",
-
-                "errorFamily": "deserialization",
-
-                "errorType": "type_mismatch"
-
-              }
-
-            },
-
-            {
-
-              "count": 363,
-
-              "dimensions": {
-
-                "date": "2026-02-19",
-
-                "errorFamily": "deserialization",
-
-                "errorType": "parse_failure"
-
-              }
-
-            },
-
-            {
-
-              "count": 44,
-
-              "dimensions": {
-
-                "date": "2026-02-19",
-
-                "errorFamily": "deserialization",
-
-                "errorType": "null_value"
-
-              }
-
-            }
-
-          ]
-
-        }
-
-      ]
-
-    }
-
-  },
-
-  "errors": null
-
-}
-
-
+{  "data": {    "viewer": {      "accounts": [        {          "pipelinesUserErrorsAdaptiveGroups": [            {              "count": 679,              "dimensions": {                "date": "2026-02-19",                "errorFamily": "deserialization",                "errorType": "missing_field"              }            },            {              "count": 392,              "dimensions": {                "date": "2026-02-19",                "errorFamily": "deserialization",                "errorType": "type_mismatch"              }            },            {              "count": 363,              "dimensions": {                "date": "2026-02-19",                "errorFamily": "deserialization",                "errorType": "parse_failure"              }            },            {              "count": 44,              "dimensions": {                "date": "2026-02-19",                "errorFamily": "deserialization",                "errorType": "null_value"              }            }          ]        }      ]    }  },  "errors": null}
 ```
 
 You can filter by a specific error type by adding `errorType` to the filter:
 
 ```
-
-pipelinesUserErrorsAdaptiveGroups(
-
-  limit: 100
-
-  filter: {
-
-    pipelineId: $pipelineId
-
-    datetime_geq: $datetimeStart
-
-    datetime_leq: $datetimeEnd
-
-    errorType: "type_mismatch"
-
-  }
-
-  orderBy: [count_DESC]
-
-)
-
-
+pipelinesUserErrorsAdaptiveGroups(  limit: 100  filter: {    pipelineId: $pipelineId    datetime_geq: $datetimeStart    datetime_leq: $datetimeEnd    errorType: "type_mismatch"  }  orderBy: [count_DESC])
 ```
 
 To query errors across all pipelines on an account, omit the `pipelineId` filter and include `pipelineId` in the dimensions:
 
 ```
-
-pipelinesUserErrorsAdaptiveGroups(
-
-  limit: 100
-
-  filter: {
-
-    datetime_geq: $datetimeStart
-
-    datetime_leq: $datetimeEnd
-
-  }
-
-  orderBy: [count_DESC]
-
-) {
-
-  count
-
-  dimensions {
-
-    pipelineId
-
-    errorFamily
-
-    errorType
-
-  }
-
-}
-
-
+pipelinesUserErrorsAdaptiveGroups(  limit: 100  filter: {    datetime_geq: $datetimeStart    datetime_leq: $datetimeEnd  }  orderBy: [count_DESC]) {  count  dimensions {    pipelineId    errorFamily    errorType  }}
 ```
 
 Note

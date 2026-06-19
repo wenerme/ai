@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,9 +25,10 @@ _Note: Labels in this image may reflect a previous product name._
 7. (Optional) Select **Keep software package up to date** to automatically update this app as updates become available.
 8. (Optional) Select **Allow end users to delay updates for up to one week** to avoid updates during a busy time.
 9. Select **save**.
-10. Select the device(s) you want to deploy the app to:  
-   * **Single device**: Go to the **Devices** tab and select the target device.  
-   * **Device group**: Go to the **Device Groups** tab and select the target device group.
+10. Select the device(s) you want to deploy the app to:
+
+  * **Single device**: Go to the **Devices** tab and select the target device.
+  * **Device group**: Go to the **Device Groups** tab and select the target device group.
 11. Select **save**.
 12. Select **save** again.
 
@@ -44,9 +45,10 @@ After deploying the Cloudflare One Client, you can check its connection progress
 _Note: Labels in this image may reflect a previous product name._
 4. In the **Software Description** field, enter a unique display name.
 5. In the **Software Package URL**, enter the URL location of the `Cloudflare_WARP_<VERSION>.pkg` file. If you do not already have the installer package, [download it here](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/#macos).
-6. Select the device(s) you want to deploy the app to:  
-   * **Single device**: Go to the **Devices** tab and select the target device. To select all devices, select the checkbox next to **Type**.  
-   * **Device group**: Go to the **Device Groups** tab and select the target device group. To select all device groups, select the checkbox next to **Type**.
+6. Select the device(s) you want to deploy the app to:
+
+  * **Single device**: Go to the **Devices** tab and select the target device. To select all devices, select the checkbox next to **Type**.
+  * **Device group**: Go to the **Device Groups** tab and select the target device group. To select all device groups, select the checkbox next to **Type**.
 7. Select **save** to install the client.
 
 Verify that the Cloudflare One Client was installed by selecting the app and viewing the **Status** tab.

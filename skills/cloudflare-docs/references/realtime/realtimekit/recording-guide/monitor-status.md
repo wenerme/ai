@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,26 +35,7 @@ RealtimeKit sends a `recording.statusUpdate` webhook when the recording transiti
 Terminal window
 
 ```
-
-curl --request POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/webhooks" \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-    "name": "Recording status webhook",
-
-    "url": "https://example.com/webhook",
-
-    "events": ["recording.statusUpdate"],
-
-    "enabled": true
-
-  }'
-
-
+curl --request POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/webhooks" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{    "name": "Recording status webhook",    "url": "https://example.com/webhook",    "events": ["recording.statusUpdate"],    "enabled": true  }'
 ```
 
 The webhook payload includes the current recording status, recording metadata, and associated meeting details. When the status is `UPLOADED`, the payload can include `downloadUrl`, `audioDownloadUrl`, and `downloadUrlExpiry` fields for accessing the uploaded files.

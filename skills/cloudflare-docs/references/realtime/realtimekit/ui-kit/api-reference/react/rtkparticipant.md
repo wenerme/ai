@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,45 +31,15 @@ A participant entry component used inside `rtk-participants` which shows data li
 ### Basic Usage
 
 ```
-
 import { RtkParticipant } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return <RtkParticipant />;
-
-}
-
-
+function MyComponent() {  return <RtkParticipant />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkParticipant } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkParticipant
-
-      meeting={meeting}
-
-      participant={participant}
-
-      view={participantviewmode}
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkParticipant      meeting={meeting}      participant={participant}      view={participantviewmode}    />  );}
 ```
 
 ```json

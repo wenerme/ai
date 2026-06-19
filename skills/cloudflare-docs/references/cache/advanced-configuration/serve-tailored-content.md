@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,13 +31,15 @@ In this example, you run an e-commerce site and want to display prices in the lo
 2. Select **Create rule** and select the option **URL Rewrite Rule**.
 3. Enter a descriptive name, such as `Vary by Country - Canada`.
 4. In **If incoming requests match...**, select **Custom filter expression**.
-5. Under **When incoming requests match...**, create the following expression:  
-   * **Field:** `Country`  
-   * **Operator:** `equals`  
-   * **Value:** `Canada`
-6. Under **Then...**  
-   * for **Path**, select **Preserve**.  
-   * for **Query**, select **Rewrite to**: **Dynamic** `loc=ca`
+5. Under **When incoming requests match...**, create the following expression:
+
+  * **Field:** `Country`
+  * **Operator:** `equals`
+  * **Value:** `Canada`
+6. Under **Then...**
+
+  * for **Path**, select **Preserve**.
+  * for **Query**, select **Rewrite to**: **Dynamic** `loc=ca`
 7. Select **Save**.
 
 Now, requests from Canada to `/products/item` will be transformed to `/products/item?loc=ca` before reaching your origin or the cache, creating a distinct cache entry.
@@ -60,45 +62,14 @@ For example, the following API call tells Cloudflare that for `.jpeg` and `.jpg`
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone Settings Write`
 * `Zone Write`
 
 Change variants setting
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \
-
-  --request PATCH \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "value": {
-
-        "jpeg": [
-
-            "image/webp",
-
-            "image/avif"
-
-        ],
-
-        "jpg": [
-
-            "image/webp",
-
-            "image/avif"
-
-        ]
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "value": {        "jpeg": [            "image/webp",            "image/avif"        ],        "jpg": [            "image/webp",            "image/avif"        ]    }  }'
 ```
 
 After creating the rule, Cloudflare will create distinct cache entries for each image variant, improving performance for users with modern browsers.
@@ -123,53 +94,10 @@ In this example, you run an A/B test controlled by a cookie named `ab-test` (wit
 JavaScript
 
 ```
-
 const CACHE_DURATION = 30 * 24 * 60 * 60; // 30 days
-
-
-export default {
-
-  async fetch(request) {
-
-    // Construct a new URL for the cache key based on the A/B cookie
-
-    const abCookie = request.headers.get('Cookie')?.match(/ab-test=([^;]+)/)?.[1] || 'control';
-
-    const url = new URL(request.url);
-
-    url.pathname = `/ab-test/${abCookie}${url.pathname}`;
-
-
-    const cacheKey = new Request(url, request);
-
-    const cache = caches.default;
-
-
-    let response = await cache.match(cacheKey);
-
-    if (!response) {
-
-      // If not in cache, fetch from origin
-
-      response = await fetch(request);
-
-      response = new Response(response.body, response);
-
-      response.headers.set("Cache-Control", `s-maxage=${CACHE_DURATION}`);
-
-      // Put the response into cache with the custom key
-
-      await cache.put(cacheKey, response.clone());
-
-    }
-
-    return response;
-
-  },
-
-};
-
-
+export default {  async fetch(request) {    // Construct a new URL for the cache key based on the A/B cookie    const abCookie = request.headers.get('Cookie')?.match(/ab-test=([^;]+)/)?.[1] || 'control';    const url = new URL(request.url);    url.pathname = `/ab-test/${abCookie}${url.pathname}`;
+    const cacheKey = new Request(url, request);    const cache = caches.default;
+    let response = await cache.match(cacheKey);    if (!response) {      // If not in cache, fetch from origin      response = await fetch(request);      response = new Response(response.body, response);      response.headers.set("Cache-Control", `s-maxage=${CACHE_DURATION}`);      // Put the response into cache with the custom key      await cache.put(cacheKey, response.clone());    }    return response;  },};
 ```
 
 1. Save and deploy the Snippet.
@@ -201,10 +129,11 @@ If your origin serves different content types (for example, `application/json` v
 3. Enter rule name, such as `Vary by Accept Header`.
 4. Set the condition for the rule to apply (for example, a specific hostname or path).
 5. Under **Cache key**, select **Use custom key**.
-6. Select **Add new**.  
-   * **Type**: `Header`  
-   * **Name**: `Accept`  
-   * **Value**: Add each `value`, or leave empty for all.
+6. Select **Add new**.
+
+  * **Type**: `Header`
+  * **Name**: `Accept`
+  * **Value**: Add each `value`, or leave empty for all.
 7. Select **Deploy**.
 
 This configuration creates separate cache entries based on the `Accept` header value, respecting your API's content negotiation.
@@ -224,51 +153,12 @@ This Worker detects whether a visitor is on a mobile or desktop device and creat
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    const userAgent = request.headers.get('User-Agent') || '';
-
-    const deviceType = userAgent.includes('Mobile') ? 'mobile' : 'desktop';
-
-
-    // Create a new URL for the cache key that includes the device type
-
-    const url = new URL(request.url);
-
-    url.pathname = `/${deviceType}${url.pathname}`;
-
-
-    const cacheKey = new Request(url, request);
-
-    const cache = caches.default;
-
-
+export default {  async fetch(request, env, ctx) {    const userAgent = request.headers.get('User-Agent') || '';    const deviceType = userAgent.includes('Mobile') ? 'mobile' : 'desktop';
+    // Create a new URL for the cache key that includes the device type    const url = new URL(request.url);    url.pathname = `/${deviceType}${url.pathname}`;
+    const cacheKey = new Request(url, request);    const cache = caches.default;
     let response = await cache.match(cacheKey);
-
-
-    if (!response) {
-
-      console.log(`Cache miss for ${deviceType} device. Fetching from origin.`);
-
-      response = await fetch(request);
-
-      let responseToCache = response.clone();
-
-      ctx.waitUntil(cache.put(cacheKey, responseToCache));
-
-    }
-
-
-    return response;
-
-  },
-
-};
-
-
+    if (!response) {      console.log(`Cache miss for ${deviceType} device. Fetching from origin.`);      response = await fetch(request);      let responseToCache = response.clone();      ctx.waitUntil(cache.put(cacheKey, responseToCache));    }
+    return response;  },};
 ```
 
 Availability
@@ -282,53 +172,10 @@ This Worker detects if a visitor is on a mobile device or a desktop and creates 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request) {
-
-    // 1. Determine the device type from the User-Agent header
-
-    const userAgent = request.headers.get('User-Agent') || '';
-
-    const deviceType = userAgent.includes('Mobile') ? 'mobile' : 'desktop';
-
-
-    // 2. Create a custom cache key by appending the device type to the URL
-
-    const customCacheKey = `${request.url}-${deviceType}`;
-
-
-    // 3. Fetch the response. Cloudflare's cache automatically uses the
-
-    //    customCacheKey for cache operations (match, put).
-
-    const response = await fetch(request, {
-
-      cf: {
-
-        cacheKey: customCacheKey,
-
-      },
-
-    });
-
-
-    // Optionally, you can modify the response before returning it
-
-    // For example, add a header to indicate which cache key was used
-
-    const newResponse = new Response(response.body, response);
-
-    newResponse.headers.set("X-Cache-Key", customCacheKey);
-
-    return newResponse;
-
-  },
-
-};
-
-
+export default {  async fetch(request) {    // 1. Determine the device type from the User-Agent header    const userAgent = request.headers.get('User-Agent') || '';    const deviceType = userAgent.includes('Mobile') ? 'mobile' : 'desktop';
+    // 2. Create a custom cache key by appending the device type to the URL    const customCacheKey = `${request.url}-${deviceType}`;
+    // 3. Fetch the response. Cloudflare's cache automatically uses the    //    customCacheKey for cache operations (match, put).    const response = await fetch(request, {      cf: {        cacheKey: customCacheKey,      },    });
+    // Optionally, you can modify the response before returning it    // For example, add a header to indicate which cache key was used    const newResponse = new Response(response.body, response);    newResponse.headers.set("X-Cache-Key", customCacheKey);    return newResponse;  },};
 ```
 
 Availability
@@ -348,11 +195,13 @@ The simplest solution is to create a [Transform Rule](https://developers.cloudfl
 2. Select **Create rule** and select the option **URL Rewrite Rule**.
 3. Enter a name, such as `Vary by RSC Header`.
 4. In **If incoming requests match**, select **Custom filter expression**.
-5. Under **When incoming requests match**, manually edit the expression so that it checks for the presence of the `RSC` header:  
-   * `has_key(http.request.headers, "rsc")`
-6. Under **Then**:  
-   * For **Path**, select **Preserve**.  
-   * For **Query**, select **Rewrite to**, select **Static**: `_rsc=1`.
+5. Under **When incoming requests match**, manually edit the expression so that it checks for the presence of the `RSC` header:
+
+  * `has_key(http.request.headers, "rsc")`
+6. Under **Then**:
+
+  * For **Path**, select **Preserve**.
+  * For **Query**, select **Rewrite to**, select **Static**: `_rsc=1`.
 7. Select **Save**.
 
 ### Method 2: Snippets or Custom Cache Keys

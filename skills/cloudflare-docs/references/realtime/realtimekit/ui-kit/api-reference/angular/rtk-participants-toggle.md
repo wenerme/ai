@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,10 +17,7 @@ A button which toggles visibility of participants. When clicked it emits a `rtkS
 TypeScript
 
 ```
-
 { activeSidebar: boolean; sidebar: 'participants' }
-
-
 ```
 
 ## Properties
@@ -39,31 +36,13 @@ TypeScript
 ### Basic Usage
 
 ```
-
-<!-- component.html -->
-
-<rtk-participants-toggle></rtk-participants-toggle>
-
-
+<!-- component.html --><rtk-participants-toggle></rtk-participants-toggle>
 ```
 
 ### With Properties
 
 ```
-
-<!-- component.html -->
-
-<rtk-participants-toggle
-
- [meeting]="meeting"
-
- size="md"
-
- variant="button">
-
-</rtk-participants-toggle>
-
-
+<!-- component.html --><rtk-participants-toggle [meeting]="meeting" size="md" variant="button"></rtk-participants-toggle>
 ```
 
 ```json

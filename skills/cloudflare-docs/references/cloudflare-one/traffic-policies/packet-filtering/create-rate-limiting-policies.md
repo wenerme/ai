@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,9 +27,9 @@ To add a policy:
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and go to **Networking** \> **Firewall policies**.
 2. In the **Rate limiting** tab, select **Add a policy**.
 3. Fill out the information for your new policy:  
-   * Select the **Field**: At the moment, you can only choose a [data center name](https://developers.cloudflare.com/cloudflare-network-firewall/reference/network-firewall-fields/) (for example, `ORD` for Chicago).  
-   * Select the **Operator**: Choose among **equals** or **is in**.  
-   * Select the **Value**.
+  * Select the **Field**: At the moment, you can only choose a [data center name](https://developers.cloudflare.com/cloudflare-network-firewall/reference/network-firewall-fields/) (for example, `ORD` for Chicago).
+  * Select the **Operator**: Choose among **equals** or **is in**.
+  * Select the **Value**.
 4. When you are done, select **Save policy**.
 
 ## Edit an existing policy

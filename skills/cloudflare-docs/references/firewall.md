@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/firewall/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,19 +27,20 @@ Cloudflare Firewall Rules has been deprecated. Cloudflare has moved existing fir
 
 This table outlines the Firewall Rules features and entitlements available with each customer plan:
 
-| Free              | Pro            | Business       | Enterprise     |       |
-| ----------------- | -------------- | -------------- | -------------- | ----- |
-| Availability      | Yes            | Yes            | Yes            | Yes   |
-| Number of rules   | 5              | 20             | 100            | 1,000 |
-| Supported actions | All except Log | All except Log | All except Log | All   |
-| Regex support     | No             | No             | Yes            | Yes   |
+|                   | Free           | Pro            | Business       | Enterprise |
+| ----------------- | -------------- | -------------- | -------------- | ---------- |
+| Availability      | Yes            | Yes            | Yes            | Yes        |
+| Number of rules   | 5              | 20             | 100            | 1,000      |
+| Supported actions | All except Log | All except Log | All except Log | All        |
+| Regex support     | No             | No             | Yes            | Yes        |
 
 ## Next steps
 
 * Unless you are already an advanced user, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/) and [Actions](https://developers.cloudflare.com/firewall/cf-firewall-rules/actions/) to learn more about the basic elements of firewall rules.
-* To start building your own firewall rules, refer to one of the following pages:  
-   * [Manage firewall rules in the dashboard](https://developers.cloudflare.com/firewall/cf-dashboard/create-edit-delete-rules/)  
-   * [Manage firewall rules via the APIs](https://developers.cloudflare.com/firewall/api/)
+* To start building your own firewall rules, refer to one of the following pages:
+
+  * [Manage firewall rules in the dashboard](https://developers.cloudflare.com/firewall/cf-dashboard/create-edit-delete-rules/)
+  * [Manage firewall rules via the APIs](https://developers.cloudflare.com/firewall/api/)
 * You can also manage firewall rules through Terraform. For more information, refer to [Getting Started with Terraform ↗](https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1/).
 
 ## Related resources

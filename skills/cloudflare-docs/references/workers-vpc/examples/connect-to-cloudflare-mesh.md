@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-vpc/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,68 +25,20 @@ When you bind to [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-
 
 Bind your Worker to Cloudflare Mesh using `network_id: "cf1:network"` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-11341)
-* [  wrangler.toml ](#tab-panel-11342)
+* [  wrangler.jsonc ](#tab-panel-11358)
+* [  wrangler.toml ](#tab-panel-11359)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "mesh-gateway",
-
-  "main": "src/index.js",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "vpc_networks": [
-
-    {
-
-      "binding": "MESH",
-
-      "network_id": "cf1:network",
-
-      "remote": true
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "mesh-gateway",  "main": "src/index.js",  // Set this to today's date  "compatibility_date": "2026-06-19",  "vpc_networks": [    {      "binding": "MESH",      "network_id": "cf1:network",      "remote": true    }  ]}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "mesh-gateway"
-
-main = "src/index.js"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[[vpc_networks]]
-
-binding = "MESH"
-
-network_id = "cf1:network"
-
-remote = true
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "mesh-gateway"main = "src/index.js"# Set this to today's datecompatibility_date = "2026-06-19"
+[[vpc_networks]]binding = "MESH"network_id = "cf1:network"remote = true
 ```
 
 With this single binding, your Worker can reach any service across all Cloudflare Tunnels, Mesh nodes, and Cloudflare WAN on-ramps in your account.
@@ -98,43 +50,8 @@ Use the VPC Network binding to access services by private IP address. Cloudflare
 index.js
 
 ```
-
-// You can target a Mesh node directly by its Mesh IP or any private IP
-
-// on a subnet route behind the node
-
-const SERVICE_IP = "10.0.1.50";
-
-const SERVICE_PORT = 8080;
-
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    try {
-
-      const response = await env.MESH.fetch(
-
-        `http://${SERVICE_IP}:${SERVICE_PORT}/api/data`,
-
-      );
-
-      return response;
-
-    } catch (error) {
-
-      // fetch() throws if the VPC Network cannot connect to the target
-
-      return new Response("Service unavailable", { status: 503 });
-
-    }
-
-  },
-
-};
-
-
+// You can target a Mesh node directly by its Mesh IP or any private IP// on a subnet route behind the nodeconst SERVICE_IP = "10.0.1.50";const SERVICE_PORT = 8080;
+export default {  async fetch(request, env, ctx) {    try {      const response = await env.MESH.fetch(        `http://${SERVICE_IP}:${SERVICE_PORT}/api/data`,      );      return response;    } catch (error) {      // fetch() throws if the VPC Network cannot connect to the target      return new Response("Service unavailable", { status: 503 });    }  },};
 ```
 
 Unlike [VPC Services](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/), the URL you pass to `fetch()` or the address you pass to `connect()` determines the actual destination. You can reach any IP and port accessible through your Mesh network without creating separate bindings for each service.
@@ -146,47 +63,10 @@ You can also use `connect()` to open raw TCP sockets to non-HTTP services throug
 index.js
 
 ```
-
-// You can target a Mesh node directly by its Mesh IP or any private IP
-
-// on a subnet route behind the node
-
-const REDIS_IP = "10.0.1.50";
-
-const REDIS_PORT = 6379;
-
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    try {
-
-      const socket = await env.MESH.connect(`${REDIS_IP}:${REDIS_PORT}`);
-
-
-      const writer = socket.writable.getWriter();
-
-      await writer.write(new TextEncoder().encode("PING\r\n"));
-
-      await writer.close();
-
-
-      return new Response(socket.readable);
-
-    } catch (error) {
-
-      // connect() throws if the VPC Network cannot connect to the target
-
-      return new Response("Service unavailable", { status: 503 });
-
-    }
-
-  },
-
-};
-
-
+// You can target a Mesh node directly by its Mesh IP or any private IP// on a subnet route behind the nodeconst REDIS_IP = "10.0.1.50";const REDIS_PORT = 6379;
+export default {  async fetch(request, env, ctx) {    try {      const socket = await env.MESH.connect(`${REDIS_IP}:${REDIS_PORT}`);
+      const writer = socket.writable.getWriter();      await writer.write(new TextEncoder().encode("PING\r\n"));      await writer.close();
+      return new Response(socket.readable);    } catch (error) {      // connect() throws if the VPC Network cannot connect to the target      return new Response("Service unavailable", { status: 503 });    }  },};
 ```
 
 ## 3\. Deploy and test
@@ -196,26 +76,14 @@ Deploy your Worker and verify it can reach your private services:
 Terminal window
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 Terminal window
 
 ```
-
-# Test accessing the internal user API
-
-curl https://mesh-gateway.workers.dev/api/users
-
-
-# Test accessing metrics by private IP
-
-curl https://mesh-gateway.workers.dev/api/metrics
-
-
+# Test accessing the internal user APIcurl https://mesh-gateway.workers.dev/api/users
+# Test accessing metrics by private IPcurl https://mesh-gateway.workers.dev/api/metrics
 ```
 
 ## Next steps

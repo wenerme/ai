@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,45 +28,45 @@ For more details, refer to [this talk ↗](https://www.infoq.com/presentations/c
 
 Beginning with a quick overview of the Workers runtime architecture:
 
-Scheduling and routing
+Scheduling and routing 
 
 Scheduling and routing 
 
-HTTP client
+HTTP client 
 
 HTTP client 
 
-HTTP server
+HTTP server 
 
 HTTP server 
 
-Inbound  
-HTTP proxy  
+Inbound   
+HTTP proxy   
 
 \[Not supported by viewer\] 
 
-Outbound  
-HTTP proxy  
+Outbound   
+HTTP proxy   
 
 \[Not supported by viewer\] 
 
-Supervisor  
+Supervisor   
 
 \[Not supported by viewer\] 
-
-Main Runtime Process
 
 Main Runtime Process 
 
-Outer Sandbox
+Main Runtime Process 
 
 Outer Sandbox 
 
-Disk
+Outer Sandbox 
 
 Disk 
 
-Control plane  
+Disk 
+
+Control plane   
 
 \[Not supported by viewer\] 
 
@@ -102,21 +102,21 @@ Control plane
 
 \[Not supported by viewer\] 
 
-Process  
-Sandbox  
+Process   
+Sandbox   
 
 \[Not supported by viewer\] 
 
  V8 Isolate 
 
 \[Not supported by viewer\] 
-
-Scheduling and routing
 
 Scheduling and routing 
 
-Process  
-Sandbox  
+Scheduling and routing 
+
+Process   
+Sandbox   
 
 \[Not supported by viewer\] 
 
@@ -124,7 +124,7 @@ Sandbox
 
 \[Not supported by viewer\] 
 
-Scheduling and routing
+Scheduling and routing 
 
 Scheduling and routing 
 
@@ -273,18 +273,7 @@ In Workers, you can get the current time using the JavaScript Date API by callin
 JavaScript
 
 ```
-
-let start = Date.now();
-
-for (let i = 0; i < 1e6; i++) {
-
-  doSpectreAttack();
-
-}
-
-let end = Date.now();
-
-
+let start = Date.now();for (let i = 0; i < 1e6; i++) {  doSpectreAttack();}let end = Date.now();
 ```
 
 The values of `start` and `end` will always be exactly the same. The attacker cannot use `Date` to measure the execution time of their code, which they would need to do to carry out an attack.

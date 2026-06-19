@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -48,7 +48,7 @@ Subrequests are requests triggered by calling `fetch` from within a Worker. A su
 
 ### Wall time per execution
 
-Wall time represents the elapsed time in milliseconds between the start of a Worker invocation, and when the Workers runtime determines that no more JavaScript needs to run. Specifically, wall time per execution chart measures the wall time that the JavaScript context remained open — including time spent waiting on I/O, and time spent executing in your Worker's[waitUntil()](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil) handler. Wall time is not the same as the time it takes your Worker to send the final byte of a response back to the client - wall time can be higher, if tasks within`waitUntil()` are still running after the response has been sent, or it can be lower. For example, when returning a response with a large body, the Workers runtime can, in some cases, determine that no more JavaScript needs to run, and closes the JavaScript context before all the bytes have passed through and been sent.
+Wall time represents the elapsed time in milliseconds between the start of a Worker invocation, and when the Workers runtime determines that no more JavaScript needs to run. Specifically, wall time per execution chart measures the wall time that the JavaScript context remained open — including time spent waiting on I/O, and time spent executing in your Worker's [waitUntil()](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil) handler. Wall time is not the same as the time it takes your Worker to send the final byte of a response back to the client - wall time can be higher, if tasks within `waitUntil()` are still running after the response has been sent, or it can be lower. For example, when returning a response with a large body, the Workers runtime can, in some cases, determine that no more JavaScript needs to run, and closes the JavaScript context before all the bytes have passed through and been sent.
 
 The Wall Time per execution chart shows historical wall time data broken down into relevant quantiles using [reservoir sampling ↗](https://en.wikipedia.org/wiki/Reservoir%5Fsampling). Learn more about [interpreting quantiles ↗](https://www.statisticshowto.com/quantile-definition-find-easy-steps/).
 
@@ -74,11 +74,11 @@ Worker invocation statuses indicate whether a Worker executed successfully or fa
 
 | Invocation status      | Definition                                                                   | Workers error code | GraphQL field        |
 | ---------------------- | ---------------------------------------------------------------------------- | ------------------ | -------------------- |
-| Success                | Worker executed successfully                                                 | success            |                      |
-| Client disconnected    | HTTP client (that is, the browser) disconnected before the request completed | clientDisconnected |                      |
+| Success                | Worker executed successfully                                                 |                    | success              |
+| Client disconnected    | HTTP client (that is, the browser) disconnected before the request completed |                    | clientDisconnected   |
 | Worker threw exception | Worker threw an unhandled JavaScript exception                               | 1101               | scriptThrewException |
 | Exceeded resources¹    | Worker exceeded runtime limits                                               | 1102, 1027         | exceededResources    |
-| Internal error²        | Workers runtime encountered an error                                         | internalError      |                      |
+| Internal error²        | Workers runtime encountered an error                                         |                    | internalError        |
 
 ¹ The Exceeded Resources status may appear when the Worker exceeds a [runtime limit](https://developers.cloudflare.com/workers/platform/limits/#request-and-response-limits). The most common cause is excessive CPU time, but is also caused by a Worker exceeding startup time or free tier limits.
 

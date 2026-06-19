@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,9 +16,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 A customer support chatbot should not engage with prompts about violent crimes or hate speech. This [custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) blocks the request and returns a JSON response that your application can parse and display to the user.
 
-* **When incoming requests match**:  
-| Field                       | Operator | Value                        |  
-| --------------------------- | -------- | ---------------------------- |  
+* **When incoming requests match**:
+
+| Field                       | Operator | Value                        |
+| --------------------------- | -------- | ---------------------------- |
 | LLM Unsafe topic categories | is in    | S1: Violent Crimes S10: Hate |  
 Expression when using the editor:  
 `(any(cf.llm.prompt.unsafe_topic_categories[*] in {"S1" "S10"}))`
@@ -78,47 +79,10 @@ Define a friendly default message that your application displays whenever it rec
 JavaScript
 
 ```
-
-// Define a user-friendly fallback message. This is what the user will see
-
-// any time the request is blocked or something unexpected happens.
-
-const FALLBACK = "Sorry, I can't process that request. Please try rephrasing.";
-
-
-const resp = await fetch("/api/chat", {
-
-  method: "POST",
-
-  headers: { "Content-Type": "application/json" },
-
-  body: JSON.stringify({ prompt: userMessage }),
-
-});
-
-
-// If the response is not 2xx, show the fallback instead of trying to parse
-
-// the body. This safely handles the default Cloudflare block page (which is
-
-// HTML) without breaking your UI.
-
-if (!resp.ok) {
-
-  await resp.text(); // consume the body so the connection is released
-
-  showError(FALLBACK);
-
-  return;
-
-}
-
-
-const data = await resp.json();
-
-showMessage(data.message);
-
-
+// Define a user-friendly fallback message. This is what the user will see// any time the request is blocked or something unexpected happens.const FALLBACK = "Sorry, I can't process that request. Please try rephrasing.";
+const resp = await fetch("/api/chat", {  method: "POST",  headers: { "Content-Type": "application/json" },  body: JSON.stringify({ prompt: userMessage }),});
+// If the response is not 2xx, show the fallback instead of trying to parse// the body. This safely handles the default Cloudflare block page (which is// HTML) without breaking your UI.if (!resp.ok) {  await resp.text(); // consume the body so the connection is released  showError(FALLBACK);  return;}
+const data = await resp.json();showMessage(data.message);
 ```
 
 ### Display custom error messages from the WAF
@@ -128,66 +92,11 @@ For more control, configure your block rules with a [custom JSON response](https
 JavaScript
 
 ```
-
 const FALLBACK = "Sorry, I can't process that request. Please try rephrasing.";
-
-
-const resp = await fetch("/api/chat", {
-
-  method: "POST",
-
-  headers: { "Content-Type": "application/json" },
-
-  body: JSON.stringify({ prompt: userMessage }),
-
-});
-
-
-if (!resp.ok) {
-
-  // Check the content type to determine if the response contains a custom
-
-  // JSON error from your WAF rule, or something else (like the default
-
-  // Cloudflare HTML block page, or a DDoS / Bot Management challenge).
-
-  const ct = (resp.headers.get("content-type") || "").toLowerCase();
-
-
-  if (ct.includes("application/json")) {
-
-    // The WAF returned your custom JSON response. Parse it and show the
-
-    // message you configured in the rule. Fall back to the default if the
-
-    // field is missing or empty.
-
-    const data = await resp.json();
-
-    showError(data.message || FALLBACK);
-
-  } else {
-
-    // The response is not JSON — most likely the default Cloudflare HTML
-
-    // block page. Discard the body and show the friendly fallback.
-
-    await resp.text();
-
-    showError(FALLBACK);
-
-  }
-
-  return;
-
-}
-
-
-const data = await resp.json();
-
-showMessage(data.message);
-
-
+const resp = await fetch("/api/chat", {  method: "POST",  headers: { "Content-Type": "application/json" },  body: JSON.stringify({ prompt: userMessage }),});
+if (!resp.ok) {  // Check the content type to determine if the response contains a custom  // JSON error from your WAF rule, or something else (like the default  // Cloudflare HTML block page, or a DDoS / Bot Management challenge).  const ct = (resp.headers.get("content-type") || "").toLowerCase();
+  if (ct.includes("application/json")) {    // The WAF returned your custom JSON response. Parse it and show the    // message you configured in the rule. Fall back to the default if the    // field is missing or empty.    const data = await resp.json();    showError(data.message || FALLBACK);  } else {    // The response is not JSON — most likely the default Cloudflare HTML    // block page. Discard the body and show the friendly fallback.    await resp.text();    showError(FALLBACK);  }  return;}
+const data = await resp.json();showMessage(data.message);
 ```
 
 ```json

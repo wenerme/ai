@@ -6,13 +6,13 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
 # RtkNotification
 
-A component which shows a notification. You need to remove the element after you receive the`rtkNotificationDismiss` event.
+A component which shows a notification. You need to remove the element after you receive the `rtkNotificationDismiss` event.
 
 ## Properties
 
@@ -29,45 +29,15 @@ A component which shows a notification. You need to remove the element after you
 ### Basic Usage
 
 ```
-
 import { RtkNotification } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return <RtkNotification />;
-
-}
-
-
+function MyComponent() {  return <RtkNotification />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkNotification } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkNotification
-
-      notification={notification}
-
-      paused={true}
-
-      size="md"
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkNotification      notification={notification}      paused={true}      size="md"    />  );}
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,10 +17,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 Usage:
 
 ```
-
 length({string})
-
-
 ```
 
 Returns the length of a string. This function is UTF-8 compatible.
@@ -28,12 +25,7 @@ Returns the length of a string. This function is UTF-8 compatible.
 Examples:
 
 ```
-
-SELECT length('a string') AS s;
-
-SELECT length(blob1) AS s FROM your_dataset;
-
-
+SELECT length('a string') AS s;SELECT length(blob1) AS s FROM your_dataset;
 ```
 
 For backwards-compatibility, this function is the equivalent of ClickHouse's `lengthUTF8` function, rather than ClickHouse's `length` function.
@@ -43,10 +35,7 @@ For backwards-compatibility, this function is the equivalent of ClickHouse's `le
 Usage:
 
 ```
-
 empty({string})
-
-
 ```
 
 Returns a boolean saying whether the string was empty. This computation can also be done as a binary operation: `{string} = ''`.
@@ -54,12 +43,7 @@ Returns a boolean saying whether the string was empty. This computation can also
 Examples:
 
 ```
-
-SELECT empty('a string') AS b;
-
-SELECT empty(blob1) AS b FROM your_dataset;
-
-
+SELECT empty('a string') AS b;SELECT empty(blob1) AS b FROM your_dataset;
 ```
 
 For backwards compatibility, this function can also be called using `empty(<string>)`.
@@ -69,10 +53,7 @@ For backwards compatibility, this function can also be called using `empty(<stri
 Usage:
 
 ```
-
 lower({string})
-
-
 ```
 
 Returns the string converted to lowercase. This function is NOT Unicode compatible - refer to `lowerUTF8` for that.
@@ -80,12 +61,7 @@ Returns the string converted to lowercase. This function is NOT Unicode compatib
 Examples:
 
 ```
-
-SELECT lower('STRING TO DOWNCASE') AS s;
-
-SELECT lower(blob1) AS s FROM your_dataset;
-
-
+SELECT lower('STRING TO DOWNCASE') AS s;SELECT lower(blob1) AS s FROM your_dataset;
 ```
 
 ## lowerUTF8 New
@@ -93,10 +69,7 @@ SELECT lower(blob1) AS s FROM your_dataset;
 Usage:
 
 ```
-
 lowerUTF8({string})
-
-
 ```
 
 Returns the string converted to lowercase. This function is Unicode compatible. This may not be perfect for all languages and users with stringent needs, should do the operation in their own code.
@@ -104,12 +77,7 @@ Returns the string converted to lowercase. This function is Unicode compatible. 
 Examples:
 
 ```
-
-SELECT lowerUTF8('STRING TO DOWNCASE') AS s;
-
-SELECT lowerUTF8(blob1) AS s FROM your_dataset;
-
-
+SELECT lowerUTF8('STRING TO DOWNCASE') AS s;SELECT lowerUTF8(blob1) AS s FROM your_dataset;
 ```
 
 For backwards compatibility, this function can also be called using `toLower({string})`.
@@ -119,10 +87,7 @@ For backwards compatibility, this function can also be called using `toLower({st
 Usage:
 
 ```
-
 upper({string})
-
-
 ```
 
 Returns the string converted to uppercase. This function is NOT Unicode compatible - refer to `upperUTF8` for that.
@@ -130,12 +95,7 @@ Returns the string converted to uppercase. This function is NOT Unicode compatib
 Examples:
 
 ```
-
-SELECT upper('string to uppercase') AS s;
-
-SELECT upper(blob1) AS s FROM your_dataset;
-
-
+SELECT upper('string to uppercase') AS s;SELECT upper(blob1) AS s FROM your_dataset;
 ```
 
 ## upperUTF8 New
@@ -143,10 +103,7 @@ SELECT upper(blob1) AS s FROM your_dataset;
 Usage:
 
 ```
-
 upperUTF8({string})
-
-
 ```
 
 Returns the string converted to uppercase. This function is Unicode compatible. The results may not be perfect for all languages and users with strict needs. These users should do the operation in their own code.
@@ -154,12 +111,7 @@ Returns the string converted to uppercase. This function is Unicode compatible. 
 Examples:
 
 ```
-
-SELECT upperUTF8('string to uppercase') AS s;
-
-SELECT upperUTF8(blob1) AS s FROM your_dataset;
-
-
+SELECT upperUTF8('string to uppercase') AS s;SELECT upperUTF8(blob1) AS s FROM your_dataset;
 ```
 
 For backwards compatibility, this function can also be called using `toUpper({string})`.
@@ -169,10 +121,7 @@ For backwards compatibility, this function can also be called using `toUpper({st
 Usage:
 
 ```
-
 startsWith({string}, {string})
-
-
 ```
 
 Returns a boolean of whether the first string has the second string at its start.
@@ -180,12 +129,7 @@ Returns a boolean of whether the first string has the second string at its start
 Examples:
 
 ```
-
-SELECT startsWith('prefix ...', 'prefix') AS b;
-
-SELECT startsWith(blob1, 'prefix') AS b FROM your_dataset;
-
-
+SELECT startsWith('prefix ...', 'prefix') AS b;SELECT startsWith(blob1, 'prefix') AS b FROM your_dataset;
 ```
 
 ## endsWith
@@ -193,10 +137,7 @@ SELECT startsWith(blob1, 'prefix') AS b FROM your_dataset;
 Usage:
 
 ```
-
 endsWith({string}, {string})
-
-
 ```
 
 Returns a boolean of whether the first string contains the second string at its end.
@@ -204,12 +145,7 @@ Returns a boolean of whether the first string contains the second string at its 
 Examples:
 
 ```
-
-SELECT endsWith('prefix suffix', 'suffix') AS b;
-
-SELECT endsWith(blob1, 'suffix') AS b FROM your_dataset;
-
-
+SELECT endsWith('prefix suffix', 'suffix') AS b;SELECT endsWith(blob1, 'suffix') AS b FROM your_dataset;
 ```
 
 ## position
@@ -217,10 +153,7 @@ SELECT endsWith(blob1, 'suffix') AS b FROM your_dataset;
 Usage:
 
 ```
-
 position({needle:string} IN {haystack:string})
-
-
 ```
 
 Returns the position of one string, `needle`, in another, `haystack`. In SQL, indexes are usually 1-based. That means that position returns `1` if your needle is at the start of the haystack. It only returns `0` if your string is not found.
@@ -228,12 +161,7 @@ Returns the position of one string, `needle`, in another, `haystack`. In SQL, in
 Examples:
 
 ```
-
-SELECT position(':' IN 'hello: world') AS p;
-
-SELECT position(':' IN blob1) AS p FROM your_dataset;
-
-
+SELECT position(':' IN 'hello: world') AS p;SELECT position(':' IN blob1) AS p FROM your_dataset;
 ```
 
 ## substring
@@ -241,10 +169,7 @@ SELECT position(':' IN blob1) AS p FROM your_dataset;
 Usage:
 
 ```
-
 substring({string}, {offset:integer}[. {length:integer}])
-
-
 ```
 
 Extracts part of a string, starting at the Unicode code point indicated by the offset and returning the number of code points requested by the length. As previously mentioned, in SQL, indexes are usually 1-based. That means that the offset provided to substring should be at least `1`.
@@ -252,12 +177,7 @@ Extracts part of a string, starting at the Unicode code point indicated by the o
 Examples:
 
 ```
-
-SELECT substring('hello world', 6) AS s;
-
-SELECT substring('hello: world', 1, position(':' IN 'hello: world')-1) AS s;
-
-
+SELECT substring('hello world', 6) AS s;SELECT substring('hello: world', 1, position(':' IN 'hello: world')-1) AS s;
 ```
 
 ## format
@@ -265,10 +185,7 @@ SELECT substring('hello: world', 1, position(':' IN 'hello: world')-1) AS s;
 Usage:
 
 ```
-
 format({string}[, ...])
-
-
 ```
 
 This function supports formatting strings, integers, floats, datetimes, intervals, etc, except `NULL`. The function does not support literal `{` and `}` characters in the format string.
@@ -276,10 +193,7 @@ This function supports formatting strings, integers, floats, datetimes, interval
 Examples:
 
 ```
-
 SELECT format('blob1: {}', blob1) AS s FROM dataset;
-
-
 ```
 
 The [formatDateTime](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/date-time-functions/#formatdatetime) function might also be useful.
@@ -289,23 +203,15 @@ The [formatDateTime](https://developers.cloudflare.com/analytics/analytics-engin
 Usage:
 
 ```
-
 extract(<time unit> from <datetime>)
-
-
 ```
 
-`extract` returns an integer number of time units from a datetime. It supports`YEAR`, `MONTH`, `DAY`, `HOUR`, `MINUTE` and `SECOND`.
+`extract` returns an integer number of time units from a datetime. It supports `YEAR`, `MONTH`, `DAY`, `HOUR`, `MINUTE` and `SECOND`.
 
 Examples:
 
 ```
-
--- extract the number of seconds from a timestamp (returns 15 in this example)
-
-extract(SECOND from toDateTime('2022-06-06 11:30:15'))
-
-
+-- extract the number of seconds from a timestamp (returns 15 in this example)extract(SECOND from toDateTime('2022-06-06 11:30:15'))
 ```
 
 ```json

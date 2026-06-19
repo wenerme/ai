@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tunnel/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,8 +20,8 @@ Run a `cloudflared` [replica](https://developers.cloudflare.com/tunnel/configura
 
 ## Port configuration
 
-* [ Linux ](#tab-panel-10986)
-* [ Windows ](#tab-panel-10987)
+* [ Linux ](#tab-panel-11003)
+* [ Windows ](#tab-panel-11004)
 
 To increase the number of ports available to `cloudflared` on Linux:
 
@@ -30,12 +30,7 @@ If your machine has a `/etc/sysctl.d/` directory:
 Terminal window
 
 ```
-
-echo 'net.ipv4.ip_local_port_range = 11000 60999' | sudo tee -a /etc/sysctl.d/99-cloudflared.conf
-
-sudo sysctl -p /etc/sysctl.d/99-cloudflared.conf
-
-
+echo 'net.ipv4.ip_local_port_range = 11000 60999' | sudo tee -a /etc/sysctl.d/99-cloudflared.confsudo sysctl -p /etc/sysctl.d/99-cloudflared.conf
 ```
 
 Otherwise:
@@ -43,27 +38,13 @@ Otherwise:
 Terminal window
 
 ```
-
-echo 'net.ipv4.ip_local_port_range = 11000 60999' | sudo tee -a /etc/sysctl.conf
-
-sudo sysctl -p /etc/sysctl.conf
-
-
+echo 'net.ipv4.ip_local_port_range = 11000 60999' | sudo tee -a /etc/sysctl.confsudo sysctl -p /etc/sysctl.conf
 ```
 
 To increase the number of ports available to `cloudflared` on Windows, set the [dynamic port range ↗](https://learn.microsoft.com/en-us/troubleshoot/windows-client/networking/tcp-ip-port-exhaustion-troubleshooting) for TCP and UDP:
 
 ```
-
-netsh int ipv4 set dynamicport tcp start=11000 num=50000
-
-netsh int ipv4 set dynamicport udp start=11000 num=50000
-
-netsh int ipv6 set dynamicport tcp start=11000 num=50000
-
-netsh int ipv6 set dynamicport udp start=11000 num=50000
-
-
+netsh int ipv4 set dynamicport tcp start=11000 num=50000netsh int ipv4 set dynamicport udp start=11000 num=50000netsh int ipv6 set dynamicport tcp start=11000 num=50000netsh int ipv6 set dynamicport udp start=11000 num=50000
 ```
 
 ## ulimits (Linux and macOS)
@@ -79,10 +60,7 @@ To view your current ulimits, open a terminal and run:
 Terminal window
 
 ```
-
 ulimit -a
-
-
 ```
 
 To set the open files `ulimit`:
@@ -90,10 +68,7 @@ To set the open files `ulimit`:
 Terminal window
 
 ```
-
 ulimit -n 70000
-
-
 ```
 
 The command above sets the open files limit only for the current terminal session and will not persist after a reboot or new login. To apply this limit permanently, configure it using the persistent method appropriate for your operating system.

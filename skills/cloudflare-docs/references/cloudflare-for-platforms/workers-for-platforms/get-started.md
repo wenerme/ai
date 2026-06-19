@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -49,32 +49,9 @@ The dispatch Worker receives incoming requests and routes them to the correct us
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    // Get the user Worker name from the URL path
-
-    const url = new URL(request.url);
-
-    const workerName = url.pathname.split("/")[1];
-
-
-    // Fetch the user Worker from the dispatch namespace
-
-    const userWorker = env.DISPATCHER.get(workerName);
-
-
-    // Forward the request to the user Worker
-
-    return userWorker.fetch(request);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    // Get the user Worker name from the URL path    const url = new URL(request.url);    const workerName = url.pathname.split("/")[1];
+    // Fetch the user Worker from the dispatch namespace    const userWorker = env.DISPATCHER.get(workerName);
+    // Forward the request to the user Worker    return userWorker.fetch(request);  },};
 ```
 
 The `env.DISPATCHER.get()` method retrieves a user Worker by name from the dispatch namespace.
@@ -104,7 +81,7 @@ Build an [AI vibe coding platform](https://developers.cloudflare.com/reference-a
 
 With [VibeSDK ↗](https://github.com/cloudflare/vibesdk), Cloudflare's open source vibe coding platform, you can get started with an example that handles AI code generation, code execution in secure sandboxes, live previews, and deployment at scale.
 
-[ View demo ](https://build.cloudflare.dev) [ View on GitHub ](https://github.com/cloudflare/vibesdk) 
+[ View demo ](https://build.cloudflare.dev) [ View on GitHub ](https://github.com/cloudflare/vibesdk)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/get-started/#page","headline":"Get started · Cloudflare for Platforms docs","description":"Deploy a Workers for Platforms starter kit and create your first multi-tenant platform on Cloudflare.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

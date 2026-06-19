@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,18 +23,7 @@ Options are organized by file type and are all optional.
 TypeScript
 
 ```
-
-{
-
-  image?: {
-
-    descriptionLanguage?: 'en' | 'it' | 'de' | 'es' | 'fr' | 'pt';
-
-  }
-
-}
-
-
+{  image?: {    descriptionLanguage?: 'en' | 'it' | 'de' | 'es' | 'fr' | 'pt';  }}
 ```
 
 * `descriptionLanguage`: controls the language of the AI-generated image descriptions.
@@ -48,20 +37,7 @@ This option works on a _best-effort_ basis: it is not guaranteed that the result
 TypeScript
 
 ```
-
-{
-
-  html?: {
-
-    hostname?: string;
-
-    cssSelector?: string;
-
-  }
-
-}
-
-
+{  html?: {    hostname?: string;    cssSelector?: string;  }}
 ```
 
 * `hostname`: string to use as a host when resolving relative links inside the HTML.
@@ -72,18 +48,7 @@ TypeScript
 TypeScript
 
 ```
-
-{
-
-  pdf?: {
-
-    metadata?: boolean;
-
-  }
-
-}
-
-
+{  pdf?: {    metadata?: boolean;  }}
 ```
 
 * `metadata`: Previously, all converted PDF files always included metadata information when converted. This option allows you to opt-out of this behavior.
@@ -97,22 +62,7 @@ To configure custom options, pass a `conversionOptions` object inside the second
 TypeScript
 
 ```
-
-await env.AI.toMarkdown(..., {
-
-  conversionOptions: {
-
-    html: { ... },
-
-    pdf: { ... },
-
-    ...
-
-   }
-
-})
-
-
+await env.AI.toMarkdown(..., {  conversionOptions: {    html: { ... },    pdf: { ... },    ...   }})
 ```
 
 ### REST API
@@ -122,18 +72,7 @@ Since the REST API uses file uploads, the request's `Content-Type` will be `mult
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/tomarkdown \
-
-  -X POST \
-
-  -H 'Authorization: Bearer {API_TOKEN}' \
-
-  ...
-
-  -F 'conversionOptions={ "html": { ... }, ... }'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/tomarkdown \  -X POST \  -H 'Authorization: Bearer {API_TOKEN}' \  ...  -F 'conversionOptions={ "html": { ... }, ... }'
 ```
 
 ```json

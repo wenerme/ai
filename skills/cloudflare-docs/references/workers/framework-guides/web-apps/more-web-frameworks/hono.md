@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -52,20 +52,22 @@ yarn create cloudflare my-hono-app --template=cloudflare/templates/vite-react-te
 pnpm create cloudflare@latest my-hono-app --template=cloudflare/templates/vite-react-template  
 ```  
 How is this project set up?  
-Below is a simplified file tree of the project.  
-   * Directorymy-hono-app  
-         * Directorysrc  
-                  * Directoryworker/  
-                              * index.ts  
-                  * Directoryreact-app/  
-                              * …  
-         * index.html  
-         * vite.config.ts  
-         * wrangler.jsonc  
-`wrangler.jsonc` is your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). In this file:  
-   * `main` points to `src/worker/index.ts`. This is your Hono app, which will run in a Worker.  
-   * `assets.not_found_handling` is set to `single-page-application`, which means that routes that are handled by your SPA do not go to the Worker, and are thus free.  
-   * If you want to add bindings to resources on Cloudflare's developer platform, you configure them here. Read more about [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/).  
+Below is a simplified file tree of the project.
+
+  * Directorymy-hono-app  
+    * Directorysrc  
+      * Directoryworker/  
+        * index.ts
+      * Directoryreact-app/
+        * …
+    * index.html
+    * vite.config.ts
+    * wrangler.jsonc  
+`wrangler.jsonc` is your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). In this file:
+
+  * `main` points to `src/worker/index.ts`. This is your Hono app, which will run in a Worker.
+  * `assets.not_found_handling` is set to `single-page-application`, which means that routes that are handled by your SPA do not go to the Worker, and are thus free.
+  * If you want to add bindings to resources on Cloudflare's developer platform, you configure them here. Read more about [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/).  
 `vite.config.ts` is set up to use the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/). This runs your Worker in the Cloudflare Workers runtime, ensuring your local development environment is as close to production as possible.  
 `src/worker/index.ts` is your Hono app, which contains a single endpoint to begin with, `/api`. At `src/react-app/src/App.tsx`, your React app calls this endpoint to get a message back and displays this in your SPA.
 2. **Develop locally with the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/)**  
@@ -105,7 +107,7 @@ The [Hono documentation ↗](https://hono.dev/docs/getting-started/cloudflare-wo
 
 With bindings, your application can be fully integrated with the Cloudflare Developer Platform, giving you access to compute, storage, AI and more.
 
-[ Bindings ](https://developers.cloudflare.com/workers/runtime-apis/bindings/) Access to compute, storage, AI and more. 
+[ Bindings ](https://developers.cloudflare.com/workers/runtime-apis/bindings/) Access to compute, storage, AI and more.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/hono/#page","headline":"Hono · Cloudflare Workers docs","description":"Create a Hono application and deploy it to Cloudflare Workers with Workers Assets.","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/hono/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Hono"]}

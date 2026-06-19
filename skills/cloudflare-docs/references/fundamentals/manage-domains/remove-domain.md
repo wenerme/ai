@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,19 +28,21 @@ If you have just added a domain and have not configured its plan yet, the domain
 
 ### Actions outside of Cloudflare
 
-* When you remove a domain from Cloudflare, it also prevents your domain from using Cloudflare for DNS resolution. To avoid DNS errors, update your nameservers at your domain registrar to use nameservers not owned by Cloudflare.  
-   * Refer to [Check if your nameservers are pointing to Cloudflare](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#35-verify-changes) to confirm that your nameservers no longer point to Cloudflare.
+* When you remove a domain from Cloudflare, it also prevents your domain from using Cloudflare for DNS resolution. To avoid DNS errors, update your nameservers at your domain registrar to use nameservers not owned by Cloudflare.
+
+  * Refer to [Check if your nameservers are pointing to Cloudflare](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#35-verify-changes) to confirm that your nameservers no longer point to Cloudflare.
 * At your registrar, make sure you do not have a **DS** DNS record. This record enables [DNSSEC](https://developers.cloudflare.com/dns/dnssec/) and could prevent your DNS records from being changed.
 
 ### Actions within Cloudflare
 
 * [Cancel active add-on subscriptions](https://developers.cloudflare.com/billing/manage/cancel-subscription/).
 * [Delete all the Logpush jobs for that domain](https://developers.cloudflare.com/logs/logpush/examples/example-logpush-curl/#optional---delete-a-job)
-* If you use Cloudflare Registrar:  
-   * [Disable domain auto-renewal](https://developers.cloudflare.com/registrar/account-options/renew-domains/) or [transfer your domain out of Cloudflare](https://developers.cloudflare.com/registrar/account-options/transfer-out-from-cloudflare/).  
-   * If the domain has already expired, it will be automatically removed from your account. Refer to [What happens when a domain expires?](https://developers.cloudflare.com/registrar/faq/#what-happens-when-a-domain-expires)  
-   * If the domain has not yet expired you can likely request deletion. Refer to [Delete a domain registration](https://developers.cloudflare.com/registrar/account-options/domain-management/#delete-a-domain-registration)  
-   * If enabled, disable DNSSEC. In your domain dashboard, go to **DNS** \> **Settings**. Within **DNSSEC**, select **Disable DNSSEC**. Select **Confirm**.
+* If you use Cloudflare Registrar:
+
+  * [Disable domain auto-renewal](https://developers.cloudflare.com/registrar/account-options/renew-domains/) or [transfer your domain out of Cloudflare](https://developers.cloudflare.com/registrar/account-options/transfer-out-from-cloudflare/).
+  * If the domain has already expired, it will be automatically removed from your account. Refer to [What happens when a domain expires?](https://developers.cloudflare.com/registrar/faq/#what-happens-when-a-domain-expires)
+  * If the domain has not yet expired you can likely request deletion. Refer to [Delete a domain registration](https://developers.cloudflare.com/registrar/account-options/domain-management/#delete-a-domain-registration)
+  * If enabled, disable DNSSEC. In your domain dashboard, go to **DNS** \> **Settings**. Within **DNSSEC**, select **Disable DNSSEC**. Select **Confirm**.
 
 ## Remove a domain activated in Cloudflare
 

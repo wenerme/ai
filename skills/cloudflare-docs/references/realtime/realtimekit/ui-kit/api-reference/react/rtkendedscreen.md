@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,43 +30,15 @@ A screen which shows a meeting has ended.
 ### Basic Usage
 
 ```
-
 import { RtkEndedScreen } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return <RtkEndedScreen />;
-
-}
-
-
+function MyComponent() {  return <RtkEndedScreen />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkEndedScreen } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkEndedScreen
-
-      meeting={meeting}
-
-      size="md"
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkEndedScreen      meeting={meeting}      size="md"    />  );}
 ```
 
 ```json

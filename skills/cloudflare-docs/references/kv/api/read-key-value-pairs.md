@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/kv/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,17 +17,8 @@ To get the value for a given key, call the `get()` method of the [KV binding](ht
 JavaScript
 
 ```
-
-// Read individual key
-
-env.NAMESPACE.get(key);
-
-
-// Read multiple keys
-
-env.NAMESPACE.get(keys);
-
-
+// Read individual keyenv.NAMESPACE.get(key);
+// Read multiple keysenv.NAMESPACE.get(keys);
 ```
 
 The `get()` method returns a promise you can `await` on to get the value.
@@ -39,56 +30,11 @@ You can also request an array of keys. The return value with be a `Map` of the k
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    try {
-
-      // Read single key, returns value or null
-
-      const value = await env.NAMESPACE.get("first-key");
-
-
-      // Read multiple keys, returns Map of values
-
-      const values = await env.NAMESPACE.get(["first-key", "second-key"]);
-
-
-      // Read single key with metadata, returns value or null
-
-      const valueWithMetadata = await env.NAMESPACE.getWithMetadata("first-key");
-
-
-      // Read multiple keys with metadata, returns Map of values
-
-      const valuesWithMetadata = await env.NAMESPACE.getWithMetadata(["first-key", "second-key"]);
-
-
-      return new Response({
-
-        value: value,
-
-        values: Object.fromEntries(values),
-
-        valueWithMetadata: valueWithMetadata,
-
-        valuesWithMetadata: Object.fromEntries(valuesWithMetadata)
-
-      });
-
-    } catch (e) {
-
-      return new Response(e.message, { status: 500 });
-
-    }
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    try {      // Read single key, returns value or null      const value = await env.NAMESPACE.get("first-key");
+      // Read multiple keys, returns Map of values      const values = await env.NAMESPACE.get(["first-key", "second-key"]);
+      // Read single key with metadata, returns value or null      const valueWithMetadata = await env.NAMESPACE.getWithMetadata("first-key");
+      // Read multiple keys with metadata, returns Map of values      const valuesWithMetadata = await env.NAMESPACE.getWithMetadata(["first-key", "second-key"]);
+      return new Response({        value: value,        values: Object.fromEntries(values),        valueWithMetadata: valueWithMetadata,        valuesWithMetadata: Object.fromEntries(valuesWithMetadata)      });    } catch (e) {      return new Response(e.message, { status: 500 });    }  },};
 ```
 
 Note
@@ -116,33 +62,26 @@ To get the value for a single key, call the `get()` method on any KV namespace y
 JavaScript
 
 ```
-
-env.NAMESPACE.get(key, type?);
-
-// OR
-
-env.NAMESPACE.get(key, options?);
-
-
+env.NAMESPACE.get(key, type?);// ORenv.NAMESPACE.get(key, options?);
 ```
 
 ##### Parameters
 
 * `key`: `string`  
-   * The key of the KV pair.
+  * The key of the KV pair.
 * `type`: `"text" | "json" | "arrayBuffer" | "stream"`  
-   * Optional. The type of the value to be returned. `text` is the default.
+  * Optional. The type of the value to be returned. `text` is the default.
 * `options`: `{ cacheTtl?: number, type?: "text" | "json" | "arrayBuffer" | "stream" }`  
-   * Optional. Object containing the optional `cacheTtl` and `type` properties. The `cacheTtl` property defines the length of time in seconds that a KV result is cached in the global network location it is accessed from (minimum: 30). The `type` property defines the type of the value to be returned.
+  * Optional. Object containing the optional `cacheTtl` and `type` properties. The `cacheTtl` property defines the length of time in seconds that a KV result is cached in the global network location it is accessed from (minimum: 30). The `type` property defines the type of the value to be returned.
 
 ##### Response
 
 * `response`: `Promise<string | Object | ArrayBuffer | ReadableStream | null>`  
-   * The value for the requested KV pair. The response type will depend on the `type` parameter provided for the `get()` command as follows:  
-   * `text`: A `string` (default).  
-   * `json`: An object decoded from a JSON string.  
-   * `arrayBuffer`: An [ArrayBuffer ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/ArrayBuffer) instance.  
-   * `stream`: A [ReadableStream ↗](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream).
+  * The value for the requested KV pair. The response type will depend on the `type` parameter provided for the `get()` command as follows:
+  * `text`: A `string` (default).
+  * `json`: An object decoded from a JSON string.
+  * `arrayBuffer`: An [ArrayBuffer ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/ArrayBuffer) instance.
+  * `stream`: A [ReadableStream ↗](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream).
 
 #### Request multiple keys with `get(keys: string[])`
 
@@ -151,24 +90,17 @@ To get the values for multiple keys, call the `get()` method on any KV namespace
 JavaScript
 
 ```
-
-env.NAMESPACE.get(keys, type?);
-
-// OR
-
-env.NAMESPACE.get(keys, options?);
-
-
+env.NAMESPACE.get(keys, type?);// ORenv.NAMESPACE.get(keys, options?);
 ```
 
 ##### Parameters
 
 * `keys`: `string[]`  
-   * The keys of the KV pairs. Max: 100 keys
+  * The keys of the KV pairs. Max: 100 keys
 * `type`: `"text" | "json"`  
-   * Optional. The type of the value to be returned. `text` is the default.
+  * Optional. The type of the value to be returned. `text` is the default.
 * `options`: `{ cacheTtl?: number, type?: "text" | "json" }`  
-   * Optional. Object containing the optional `cacheTtl` and `type` properties. The `cacheTtl` property defines the length of time in seconds that a KV result is cached in the global network location it is accessed from (minimum: 30). The `type` property defines the type of the value to be returned.
+  * Optional. Object containing the optional `cacheTtl` and `type` properties. The `cacheTtl` property defines the length of time in seconds that a KV result is cached in the global network location it is accessed from (minimum: 30). The `type` property defines the type of the value to be returned.
 
 Note
 
@@ -177,9 +109,9 @@ The `.get()` function to read multiple keys does not support `arrayBuffer` or `s
 ##### Response
 
 * `response`: `Promise<Map<string, string | Object | null>>`  
-   * The value for the requested KV pair. If no key is found, `null` is returned for the key. The response type will depend on the `type` parameter provided for the `get()` command as follows:  
-         * `text`: A `string` (default).  
-         * `json`: An object decoded from a JSON string.
+  * The value for the requested KV pair. If no key is found, `null` is returned for the key. The response type will depend on the `type` parameter provided for the `get()` command as follows:  
+    * `text`: A `string` (default).
+    * `json`: An object decoded from a JSON string.
 
 The limit of the response size is 25 MB. Responses above this size will fail with a `413 Error` error message.
 
@@ -197,14 +129,7 @@ To get the value for a given key along with its metadata, call the `getWithMetad
 JavaScript
 
 ```
-
-env.NAMESPACE.getWithMetadata(key, type?);
-
-// OR
-
-env.NAMESPACE.getWithMetadata(key, options?);
-
-
+env.NAMESPACE.getWithMetadata(key, type?);// ORenv.NAMESPACE.getWithMetadata(key, options?);
 ```
 
 Metadata is a serializable value you append to each KV entry.
@@ -212,20 +137,21 @@ Metadata is a serializable value you append to each KV entry.
 ##### Parameters
 
 * `key`: `string`  
-   * The key of the KV pair.
+  * The key of the KV pair.
 * `type`: `"text" | "json" | "arrayBuffer" | "stream"`  
-   * Optional. The type of the value to be returned. `text` is the default.
+  * Optional. The type of the value to be returned. `text` is the default.
 * `options`: `{ cacheTtl?: number, type?: "text" | "json" | "arrayBuffer" | "stream" }`  
-   * Optional. Object containing the optional `cacheTtl` and `type` properties. The `cacheTtl` property defines the length of time in seconds that a KV result is cached in the global network location it is accessed from (minimum: 30). The `type` property defines the type of the value to be returned.
+  * Optional. Object containing the optional `cacheTtl` and `type` properties. The `cacheTtl` property defines the length of time in seconds that a KV result is cached in the global network location it is accessed from (minimum: 30). The `type` property defines the type of the value to be returned.
 
 ##### Response
 
-* `response`: `Promise<{ value: string | Object | ArrayBuffer | ReadableStream | null, metadata: string | null }>`  
-   * An object containing the value and the metadata for the requested KV pair. The type of the value attribute will depend on the `type` parameter provided for the `getWithMetadata()` command as follows:  
-         * `text`: A `string` (default).  
-         * `json`: An object decoded from a JSON string.  
-         * `arrayBuffer`: An [ArrayBuffer ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/ArrayBuffer) instance.  
-         * `stream`: A [ReadableStream ↗](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream).
+* `response`: `Promise<{ value: string | Object | ArrayBuffer | ReadableStream | null, metadata: string | null }>`
+
+  * An object containing the value and the metadata for the requested KV pair. The type of the value attribute will depend on the `type` parameter provided for the `getWithMetadata()` command as follows:  
+    * `text`: A `string` (default).
+    * `json`: An object decoded from a JSON string.
+    * `arrayBuffer`: An [ArrayBuffer ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/ArrayBuffer) instance.
+    * `stream`: A [ReadableStream ↗](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream).
 
 If there is no metadata associated with the requested key-value pair, `null` will be returned for metadata.
 
@@ -236,24 +162,17 @@ To get the values for a given set of keys along with their metadata, call the `g
 JavaScript
 
 ```
-
-env.NAMESPACE.getWithMetadata(keys, type?);
-
-// OR
-
-env.NAMESPACE.getWithMetadata(keys, options?);
-
-
+env.NAMESPACE.getWithMetadata(keys, type?);// ORenv.NAMESPACE.getWithMetadata(keys, options?);
 ```
 
 ##### Parameters
 
 * `keys`: `string[]`  
-   * The keys of the KV pairs. Max: 100 keys
+  * The keys of the KV pairs. Max: 100 keys
 * `type`: `"text" | "json"`  
-   * Optional. The type of the value to be returned. `text` is the default.
+  * Optional. The type of the value to be returned. `text` is the default.
 * `options`: `{ cacheTtl?: number, type?: "text" | "json" }`  
-   * Optional. Object containing the optional `cacheTtl` and `type` properties. The `cacheTtl` property defines the length of time in seconds that a KV result is cached in the global network location it is accessed from (minimum: 30). The `type` property defines the type of the value to be returned.
+  * Optional. Object containing the optional `cacheTtl` and `type` properties. The `cacheTtl` property defines the length of time in seconds that a KV result is cached in the global network location it is accessed from (minimum: 30). The `type` property defines the type of the value to be returned.
 
 Note
 
@@ -261,11 +180,12 @@ The `.get()` function to read multiple keys does not support `arrayBuffer` or `s
 
 ##### Response
 
-* `response`: `Promise<Map<string, { value: string | Object | null, metadata: string | Object | null }>`  
-   * An object containing the value and the metadata for the requested KV pair. The type of the value attribute will depend on the `type` parameter provided for the `getWithMetadata()` command as follows:  
-         * `text`: A `string` (default).  
-         * `json`: An object decoded from a JSON string.  
-   * The type of the metadata will just depend on what is stored, which can be either a string or an object.
+* `response`: `Promise<Map<string, { value: string | Object | null, metadata: string | Object | null }>`
+
+  * An object containing the value and the metadata for the requested KV pair. The type of the value attribute will depend on the `type` parameter provided for the `getWithMetadata()` command as follows:  
+    * `text`: A `string` (default).
+    * `json`: An object decoded from a JSON string.
+  * The type of the metadata will just depend on what is stored, which can be either a string or an object.
 
 If there is no metadata associated with the requested key-value pair, `null` will be returned for metadata.
 
@@ -310,31 +230,13 @@ If you have a set of related key-value pairs that have a mixed usage pattern (so
 One coalescing technique is to make all the keys and values part of a super key-value object. An example is shown below.
 
 ```
-
-key1: value1
-
-key2: value2
-
-key3: value3
-
-
+key1: value1key2: value2key3: value3
 ```
 
 becomes
 
 ```
-
-coalesced: {
-
-  key1: value1,
-
-  key2: value2,
-
-  key3: value3,
-
-}
-
-
+coalesced: {  key1: value1,  key2: value2,  key3: value3,}
 ```
 
 By coalescing the values, the cold keys benefit from being kept warm in the cache because of access patterns of the warmer keys.

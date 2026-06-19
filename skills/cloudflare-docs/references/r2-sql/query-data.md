@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2-sql/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,10 +21,7 @@ To query data with R2 SQL, you'll need your warehouse name associated with your 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket catalog get <BUCKET_NAME>
-
-
 ```
 
 Alternatively, you can find it in the dashboard by going to the **R2 object storage** page, selecting the bucket, switching to the **Settings** tab, scrolling to **R2 Data Catalog**, and finding **Warehouse name**.
@@ -40,19 +37,13 @@ Set up your environment:
 Terminal window
 
 ```
-
 export WRANGLER_R2_SQL_AUTH_TOKEN=YOUR_API_TOKEN
-
-
 ```
 
 Or create a `.env` file with:
 
 ```
-
 WRANGLER_R2_SQL_AUTH_TOKEN=YOUR_API_TOKEN
-
-
 ```
 
 Where `YOUR_API_TOKEN` is the token you created with the [required permissions](#authentication). For more information on setting environment variables, refer to [Wrangler system environment variables](https://developers.cloudflare.com/workers/wrangler/system-environment-variables/).
@@ -62,10 +53,7 @@ To run a SQL query, run the [r2 sql query command](https://developers.cloudflare
 Terminal window
 
 ```
-
 npx wrangler r2 sql query <WAREHOUSE> "SELECT * FROM namespace.table_name limit 10;"
-
-
 ```
 
 For a full list of supported SQL commands, refer to the [R2 SQL reference](https://developers.cloudflare.com/r2-sql/sql-reference/).
@@ -77,22 +65,7 @@ Below is an example of using R2 SQL via the REST endpoint:
 Terminal window
 
 ```
-
-curl -X POST \
-
-  "https://api.sql.cloudflarestorage.com/api/v1/accounts/{ACCOUNT_ID}/r2-sql/query/{BUCKET_NAME}" \
-
-  -H "Authorization: Bearer ${WRANGLER_R2_SQL_AUTH_TOKEN}" \
-
-  -H "Content-Type: application/json" \
-
-  -d '{
-
-    "query": "SELECT * FROM namespace.table_name limit 10;"
-
-  }'
-
-
+curl -X POST \  "https://api.sql.cloudflarestorage.com/api/v1/accounts/{ACCOUNT_ID}/r2-sql/query/{BUCKET_NAME}" \  -H "Authorization: Bearer ${WRANGLER_R2_SQL_AUTH_TOKEN}" \  -H "Content-Type: application/json" \  -d '{    "query": "SELECT * FROM namespace.table_name limit 10;"  }'
 ```
 
 The API requires an API token with the appropriate permissions in the Authorization header. Refer to [Authentication](#authentication) for details on creating a token.
@@ -120,56 +93,7 @@ To create an API token programmatically for use with R2 SQL, you'll need to spec
 #### Example Access Policy
 
 ```
-
-[
-
-  {
-
-    "id": "f267e341f3dd4697bd3b9f71dd96247f",
-
-    "effect": "allow",
-
-    "resources": {
-
-      "com.cloudflare.edge.r2.bucket.4793d734c0b8e484dfc37ec392b5fa8a_default_my-bucket": "*",
-
-      "com.cloudflare.edge.r2.bucket.4793d734c0b8e484dfc37ec392b5fa8a_eu_my-eu-bucket": "*"
-
-    },
-
-    "permission_groups": [
-
-      {
-
-        "id": "f45430d92e2b4a6cb9f94f2594c141b8",
-
-        "name": "Workers R2 SQL Read"
-
-      },
-
-      {
-
-        "id": "d229766a2f7f4d299f20eaa8c9b1fde9",
-
-        "name": "Workers R2 Data Catalog Write"
-
-      },
-
-      {
-
-        "id": "bf7481a1826f439697cb59a20b22293e",
-
-        "name": "Workers R2 Storage Write"
-
-      }
-
-    ]
-
-  }
-
-]
-
-
+[  {    "id": "f267e341f3dd4697bd3b9f71dd96247f",    "effect": "allow",    "resources": {      "com.cloudflare.edge.r2.bucket.4793d734c0b8e484dfc37ec392b5fa8a_default_my-bucket": "*",      "com.cloudflare.edge.r2.bucket.4793d734c0b8e484dfc37ec392b5fa8a_eu_my-eu-bucket": "*"    },    "permission_groups": [      {        "id": "f45430d92e2b4a6cb9f94f2594c141b8",        "name": "Workers R2 SQL Read"      },      {        "id": "d229766a2f7f4d299f20eaa8c9b1fde9",        "name": "Workers R2 Data Catalog Write"      },      {        "id": "bf7481a1826f439697cb59a20b22293e",        "name": "Workers R2 Storage Write"      }    ]  }]
 ```
 
 To learn more about how to create API tokens for R2 SQL using the API, including required permission groups and usage examples, refer to the [Create API tokens via API documentation](https://developers.cloudflare.com/r2/api/tokens/#create-api-tokens-via-api).
@@ -178,7 +102,7 @@ To learn more about how to create API tokens for R2 SQL using the API, including
 
 [ Manage R2 Data Catalogs ](https://developers.cloudflare.com/r2/data-catalog/manage-catalogs/) Enable or disable R2 Data Catalog on your bucket, retrieve configuration details, and authenticate your Iceberg engine. 
 
-[ Build an end to end data pipeline ](https://developers.cloudflare.com/r2-sql/tutorials/end-to-end-pipeline) Detailed tutorial for setting up a simple fraud detection data pipeline, and generate events for it in Python. 
+[ Build an end to end data pipeline ](https://developers.cloudflare.com/r2-sql/tutorials/end-to-end-pipeline) Detailed tutorial for setting up a simple fraud detection data pipeline, and generate events for it in Python.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2-sql/query-data/#page","headline":"Query data · R2 SQL docs","description":"Understand how to query data with R2 SQL","url":"https://developers.cloudflare.com/r2-sql/query-data/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,24 +28,18 @@ With TLS decryption turned off, Gateway can only inspect and apply HTTP policies
 
 ## Enable TLS decryption
 
-* [ Dashboard ](#tab-panel-9116)
-* [ Terraform (v5) ](#tab-panel-9117)
+* [ Dashboard ](#tab-panel-9192)
+* [ Terraform (v5) ](#tab-panel-9193)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Inspect HTTPS requests with TLS decryption**.
 
-1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):  
-   * `Zero Trust Write`
+1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
+
+  * `Zero Trust Write`
 2. Configure the `tls_decrypt` argument in [cloudflare\_zero\_trust\_gateway\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fgateway%5Fsettings):  
 ```  
-resource "cloudflare_zero_trust_gateway_settings" "team_name" {  
-  account_id = var.cloudflare_account_id  
-  settings = {  
-    tls_decrypt = {  
-      enabled = true  
-    }  
-  }  
-}  
+resource "cloudflare_zero_trust_gateway_settings" "team_name" {  account_id = var.cloudflare_account_id  settings = {    tls_decrypt = {      enabled = true    }  }}  
 ```
 
 Next, choose a [user-side certificate](#configure-user-side-certificates) to use for inspection.

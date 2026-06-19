@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,41 +31,13 @@ To check your existing TTL, open a terminal window and run the following command
 Terminal window
 
 ```
-
 dig mx <YOUR_DOMAIN>
-
-
 ```
 
 ```
-
-; <<>> DiG 9.10.6 <<>> mx <YOUR_DOMAIN>
-
-;; global options: +cmd
-
-;; Got answer:
-
-;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 39938
-
-;; flags: qr rd ra; QUERY: 1, ANSWER: 5, AUTHORITY: 0, ADDITIONAL: 1
-
-
-;; OPT PSEUDOSECTION:
-
-; EDNS: version: 0, flags:; udp: 4096
-
-;; QUESTION SECTION:
-
-;<YOUR_DOMAIN>.    IN  MX
-
-
-;; ANSWER SECTION:
-
-<YOUR_DOMAIN>.    300    IN    MX    10 mxa.global.inbound.cf-emailsecurity.net.
-
-<YOUR_DOMAIN>.    300    IN    MX    10 mxb.global.inbound.cf-emailsecurity.net.
-
-
+; <<>> DiG 9.10.6 <<>> mx <YOUR_DOMAIN>;; global options: +cmd;; Got answer:;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 39938;; flags: qr rd ra; QUERY: 1, ANSWER: 5, AUTHORITY: 0, ADDITIONAL: 1
+;; OPT PSEUDOSECTION:; EDNS: version: 0, flags:; udp: 4096;; QUESTION SECTION:;<YOUR_DOMAIN>.    IN  MX
+;; ANSWER SECTION:<YOUR_DOMAIN>.    300    IN    MX    10 mxa.global.inbound.cf-emailsecurity.net.<YOUR_DOMAIN>.    300    IN    MX    10 mxb.global.inbound.cf-emailsecurity.net.
 ```
 
 In the above example, TTL is shown in seconds as `300` (or five minutes).
@@ -114,12 +86,12 @@ Go to **Compliance**, and create a [content compliance filter ↗](https://suppo
 * **Content compliance**: Add `Quarantine Email security Malicious`.
 * **Email messages to affect**: Select **Inbound**.
 * **Add expressions that describe the content you want to search for in each message**:  
-   * Select **Add** to add the condition.  
-   * In **Simple content match**, select **Advanced content match**.  
-   * In **Location**, select **Full headers**.  
-   * In **Match type**, select **Contains text**.  
-   * In **Content**, enter `X-CFEmailSecurity-Disposition: MALICIOUS`.  
-   * Select **SAVE** to save the condition.
+  * Select **Add** to add the condition.
+  * In **Simple content match**, select **Advanced content match**.
+  * In **Location**, select **Full headers**.
+  * In **Match type**, select **Contains text**.
+  * In **Content**, enter `X-CFEmailSecurity-Disposition: MALICIOUS`.
+  * Select **SAVE** to save the condition.
 * If the above expression match, do the following, select **Quarantine message** and the **Email security Malicious** quarantine that was created in the previous step.
 * Select **SAVE**.
 

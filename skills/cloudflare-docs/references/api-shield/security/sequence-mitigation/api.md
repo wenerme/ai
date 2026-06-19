@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,34 +17,7 @@ Configuring sequence mitigation via the API consists of building a rule object b
 Example of a rule object
 
 ```
-
-{
-
-    "id": "d4909253-390f-4956-89fd-92a5b0cd86d8",
-
-    "title": "<RULE_TITLE>",
-
-    "kind": "allow",
-
-    "action": "block",
-
-    "sequence": [
-
-     "0d9bf70c-92e1-4bb3-9411-34a3bcc59003",
-
-     "b704ab4d-5be0-46e0-9875-b2b3d1ab42f9"
-
-    ],
-
-    "priority": 0,
-
-    "last_updated": "2023-07-24T12:06:51.796286Z",
-
-    "created_at": "2023-07-24T12:06:51.796286Z"
-
-}
-
-
+{    "id": "d4909253-390f-4956-89fd-92a5b0cd86d8",    "title": "<RULE_TITLE>",    "kind": "allow",    "action": "block",    "sequence": [     "0d9bf70c-92e1-4bb3-9411-34a3bcc59003",     "b704ab4d-5be0-46e0-9875-b2b3d1ab42f9"    ],    "priority": 0,    "last_updated": "2023-07-24T12:06:51.796286Z",    "created_at": "2023-07-24T12:06:51.796286Z"}
 ```
 
 This rule enforces that a request to endpoint `0d9bf70c-92e1-4bb3-9411-34a3bcc59003` must come before a request to endpoint `b704ab4d-5be0-46e0-9875-b2b3d1ab42f9`.
@@ -73,10 +46,7 @@ Use the `GET` command to list rules.
 cURL command
 
 ```
-
 curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/seqrules"
-
-
 ```
 
 ### Add a single sequence rule
@@ -90,32 +60,7 @@ The response will reflect the rule that has been written with its ID. In case so
 Example using cURL
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/seqrules/rules" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "title": "string",
-
-  "kind": "block",
-
-  "action": "block",
-
-  "sequence": [
-
-    "0d9bf70c-92e1-4bb3-9411-34a3bcc59003",
-
-    "b704ab4d-5be0-46e0-9875-b2b3d1ab42f9"
-
-  ],
-
-  "priority": 0
-
-}'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/seqrules/rules" \--header "Content-Type: application/json" \--data '{  "title": "string",  "kind": "block",  "action": "block",  "sequence": [    "0d9bf70c-92e1-4bb3-9411-34a3bcc59003",    "b704ab4d-5be0-46e0-9875-b2b3d1ab42f9"  ],  "priority": 0}'
 ```
 
 ### Add multiple sequence rules
@@ -129,40 +74,7 @@ The response will reflect the rules that have been written with their IDs in cas
 Example using cURL
 
 ```
-
-curl --request PUT "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/seqrules" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "rules": [
-
-    {
-
-      "title": "<RULE_TITLE>",
-
-      "kind": "block",
-
-      "action": "block",
-
-      "sequence": [
-
-        "0d9bf70c-92e1-4bb3-9411-34a3bcc59003",
-
-        "b704ab4d-5be0-46e0-9875-b2b3d1ab42f9"
-
-      ],
-
-      "priority": 0
-
-    }
-
-  ]
-
-}'
-
-
+curl --request PUT "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/seqrules" \--header "Content-Type: application/json" \--data '{  "rules": [    {      "title": "<RULE_TITLE>",      "kind": "block",      "action": "block",      "sequence": [        "0d9bf70c-92e1-4bb3-9411-34a3bcc59003",        "b704ab4d-5be0-46e0-9875-b2b3d1ab42f9"      ],      "priority": 0    }  ]}'
 ```
 
 ### Delete a rule
@@ -172,10 +84,7 @@ Use the `DELETE` command with its rule ID to delete a rule.
 cURL command
 
 ```
-
 curl --request DELETE "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/seqrules/rules/d4909253-390f-4956-89fd-92a5b0cd86d8"
-
-
 ```
 
 ```json

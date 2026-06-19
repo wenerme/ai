@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -40,8 +40,8 @@ To turn on **Add "labels" variable**:
 
 1. Go to **Advanced settings** \> **Add "labels" variable**.
 2. Choose between:  
-   * **Use default**.  
-   * **Use custom "labels" variable**: Enter the custom label in the text box.
+  * **Use default**.
+  * **Use custom "labels" variable**: Enter the custom label in the text box.
 
 Once you have configured the subject prefix, select **Save**.
 
@@ -59,9 +59,9 @@ To turn on **Add "labels" or "threat types" variable**:
 
 1. Go to **Advanced settings**:
 2. Choose between:  
-   * **Add "labels" variable**: This option allows you to add a dynamic value that for a label that lists dispositions and allows for additional text. Choose between:  
-         * **Use default**.  
-         * **Use custom "labels" variable**: Enter the custom label in the text box.
+  * **Add "labels" variable**: This option allows you to add a dynamic value that for a label that lists dispositions and allows for additional text. Choose between:  
+    * **Use default**.
+    * **Use custom "labels" variable**: Enter the custom label in the text box.
 
 Once you have configured the body prefix, select **Save**.
 

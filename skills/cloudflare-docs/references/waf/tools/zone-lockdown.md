@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,16 +31,16 @@ Cloudflare Zone Lockdown is available on paid plans. However, this feature is on
 
 The number of available zone lockdown rules depends on your Cloudflare plan.
 
-| Free            | Pro | Business | Enterprise |     |
-| --------------- | --- | -------- | ---------- | --- |
-| Availability    | No  | Yes      | Yes        | Yes |
-| Number of rules | 0   | 3        | 10         | 200 |
+|                 | Free | Pro | Business | Enterprise |
+| --------------- | ---- | --- | -------- | ---------- |
+| Availability    | No   | Yes | Yes      | Yes        |
+| Number of rules | 0    | 3   | 10       | 200        |
 
 ## Create a zone lockdown rule
 
-* [  New dashboard ](#tab-panel-11276)
-* [ Old dashboard ](#tab-panel-11277)
-* [ API ](#tab-panel-11278)
+* [  New dashboard ](#tab-panel-11293)
+* [ Old dashboard ](#tab-panel-11294)
+* [ API ](#tab-panel-11295)
 
 Note
 
@@ -80,62 +80,13 @@ Issue a `POST` request for the [Create a Zone Lockdown rule](https://developers.
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Firewall Services Write`
 
 Create a Zone Lockdown rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/firewall/lockdowns" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "description": "Block all traffic to staging and wiki unless it comes from HQ or branch offices",
-
-    "urls": [
-
-        "staging.example.com/*",
-
-        "example.com/wiki/*"
-
-    ],
-
-    "configurations": [
-
-        {
-
-            "target": "ip_range",
-
-            "value": "192.0.2.0/24"
-
-        },
-
-        {
-
-            "target": "ip_range",
-
-            "value": "2001:DB8::/64"
-
-        },
-
-        {
-
-            "target": "ip",
-
-            "value": "203.0.133.1"
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/firewall/lockdowns" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "description": "Block all traffic to staging and wiki unless it comes from HQ or branch offices",    "urls": [        "staging.example.com/*",        "example.com/wiki/*"    ],    "configurations": [        {            "target": "ip_range",            "value": "192.0.2.0/24"        },        {            "target": "ip_range",            "value": "2001:DB8::/64"        },        {            "target": "ip",            "value": "203.0.133.1"        }    ]  }'
 ```
 
 ### Example rule
@@ -148,14 +99,11 @@ Block all traffic to staging and wiki unless it comes from HQ or branch offices
 ```
 * URLs:  
 ```  
-staging.example.com/*  
-example.com/wiki/*  
+staging.example.com/*example.com/wiki/*  
 ```
 * IP Range:  
-```  
-192.0.2.0/24  
-2001:DB8::/64  
-203.0.133.1  
+```
+192.0.2.0/242001:DB8::/64203.0.133.1  
 ```
 
 This example would not protect an internal wiki located on a different directory path such as `example.com/internal/wiki`.
@@ -170,10 +118,7 @@ A [custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashbo
 **Expression**:
 
 ```
-
 ((http.host eq "staging.example.com") or (http.host eq "example.com" and http.request.uri.path wildcard "/wiki/*")) and not ip.src in {192.0.2.0/24 2001:DB8::/64 203.0.133.1}
-
-
 ```
 
 **Action**: _Block_

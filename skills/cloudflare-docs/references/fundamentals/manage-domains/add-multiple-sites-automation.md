@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -34,35 +34,37 @@ To add multiple sites to Cloudflare via automation, you need:
 
 * An existing [Cloudflare account](https://developers.cloudflare.com/fundamentals/account/create-account/).
 * Command line with `curl`
-* A Cloudflare [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with one of the following permissions:  
-   * Zone-level `Administrator`  
-   * Zone-level `Zone: Edit` and `DNS: Edit`  
-   * Account-level `Domain Administrator`
+* A Cloudflare [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with one of the following permissions:
+
+  * Zone-level `Administrator`
+  * Zone-level `Zone: Edit` and `DNS: Edit`
+  * Account-level `Domain Administrator`
 * To have disabled [DNSSEC](https://developers.cloudflare.com/dns/concepts/#dnssec) for each domain at your registrar (where you bought your domain name).  
 Provider-specific DNSSEC instructions  
-This is not an exhaustive list, but the following links may be helpful:  
-   * [DNSimple ↗](https://support.dnsimple.com/articles/cloudflare-ds-record/)  
-   * [Domaindiscount24 ↗](https://support.domaindiscount24.com/hc/articles/4409759478161)  
-   * [DreamHost ↗](https://help.dreamhost.com/hc/en-us/articles/219539467)  
-   * [Dynadot ↗](https://www.dynadot.com/help/question/set-DNSSEC)  
-   * [Enom ↗](https://support.enom.com/support/solutions/articles/201000065386)  
-   * [Gandi ↗](https://docs.gandi.net/en/domain%5Fnames/advanced%5Fusers/dnssec.html)  
-   * [GoDaddy ↗](https://www.godaddy.com/help/add-a-ds-record-23865)  
-   * [Hostinger ↗](https://www.hostinger.com/support/3667267-how-to-use-dnssec-records-at-hostinger/)  
-   * [Hover ↗](https://support.hover.com/support/solutions/articles/201000064716)  
-   * [Infomaniak ↗](https://faq.infomaniak.com/2187)  
-   * [InMotion Hosting ↗](https://www.inmotionhosting.com/support/edu/cpanel/enable-dnssec-cloudflare/)  
-   * [INWX ↗](https://kb.inwx.com/en-us/3-nameserver/131)  
-   * [Joker.com ↗](https://joker.com/faq/books/jokercom-faq-en/page/dnssec)  
-   * [Name.com ↗](https://www.name.com/support/articles/205439058-managing-dnssec)  
-   * [Namecheap ↗](https://www.namecheap.com/support/knowledgebase/article.aspx/9722/2232/managing-dnssec-for-domains-pointed-to-custom-dns/)  
-   * [NameISP ↗](https://support.nameisp.com/knowledgebase/dns)  
-   * [Namesilo ↗](https://www.namesilo.com/support/v2/articles/domain-manager/ds-records)  
-   * [OVH ↗](https://help.ovhcloud.com/csm/en-dns-secure-domain-dnssec?id=kb%5Farticle%5Fview&sysparm%5Farticle=KB0051637)  
-   * [Squarespace ↗](https://support.squarespace.com/hc/articles/4404183898125-Nameservers-and-DNSSEC-for-Squarespace-managed-domains#toc-dnssec)  
-   * [Registro.br ↗](https://registro.br/tecnologia/dnssec/?secao=tutoriais-dns)  
-   * [Porkbun ↗](https://kb.porkbun.com/article/93-how-to-install-dnssec) (do not fill out **keyData**)  
-   * [TransIP ↗](https://www.transip.eu/knowledgebase/150-secure-domains-custom-nameservers-dnssec/)  
+This is not an exhaustive list, but the following links may be helpful:
+
+  * [DNSimple ↗](https://support.dnsimple.com/articles/cloudflare-ds-record/)
+  * [Domaindiscount24 ↗](https://support.domaindiscount24.com/hc/articles/4409759478161)
+  * [DreamHost ↗](https://help.dreamhost.com/hc/en-us/articles/219539467)
+  * [Dynadot ↗](https://www.dynadot.com/help/question/set-DNSSEC)
+  * [Enom ↗](https://support.enom.com/support/solutions/articles/201000065386)
+  * [Gandi ↗](https://docs.gandi.net/en/domain%5Fnames/advanced%5Fusers/dnssec.html)
+  * [GoDaddy ↗](https://www.godaddy.com/help/add-a-ds-record-23865)
+  * [Hostinger ↗](https://www.hostinger.com/support/3667267-how-to-use-dnssec-records-at-hostinger/)
+  * [Hover ↗](https://support.hover.com/support/solutions/articles/201000064716)
+  * [Infomaniak ↗](https://faq.infomaniak.com/2187)
+  * [InMotion Hosting ↗](https://www.inmotionhosting.com/support/edu/cpanel/enable-dnssec-cloudflare/)
+  * [INWX ↗](https://kb.inwx.com/en-us/3-nameserver/131)
+  * [Joker.com ↗](https://joker.com/faq/books/jokercom-faq-en/page/dnssec)
+  * [Name.com ↗](https://www.name.com/support/articles/205439058-managing-dnssec)
+  * [Namecheap ↗](https://www.namecheap.com/support/knowledgebase/article.aspx/9722/2232/managing-dnssec-for-domains-pointed-to-custom-dns/)
+  * [NameISP ↗](https://support.nameisp.com/knowledgebase/dns)
+  * [Namesilo ↗](https://www.namesilo.com/support/v2/articles/domain-manager/ds-records)
+  * [OVH ↗](https://help.ovhcloud.com/csm/en-dns-secure-domain-dnssec?id=kb%5Farticle%5Fview&sysparm%5Farticle=KB0051637)
+  * [Squarespace ↗](https://support.squarespace.com/hc/articles/4404183898125-Nameservers-and-DNSSEC-for-Squarespace-managed-domains#toc-dnssec)
+  * [Registro.br ↗](https://registro.br/tecnologia/dnssec/?secao=tutoriais-dns)
+  * [Porkbun ↗](https://kb.porkbun.com/article/93-how-to-install-dnssec) (do not fill out **keyData**)
+  * [TransIP ↗](https://www.transip.eu/knowledgebase/150-secure-domains-custom-nameservers-dnssec/)  
 Note  
 If your previous provider allows you to add DNSKEY records on the zone apex and use these records in responses to DNS queries, refer to this [migration tutorial](https://developers.cloudflare.com/dns/dnssec/dnssec-active-migration/) to learn how to migrate a zone with DNSSEC enabled.
 
@@ -76,38 +78,9 @@ If your previous provider allows you to add DNSKEY records on the zone apex and 
 Terminal window
 
 ```
-
-  for domain in $(cat domains.txt); do
-
-    printf "Adding ${domain}:\n"
-
-
-    curl https://api.cloudflare.com/client/v4/zones \
-
-    --header "Authorization: Bearer <API_TOKEN>" \
-
-    --header "Content-Type: application/json" \
-
-    --data '{
-
-      "account": {
-
-        "id":"<ACCOUNT_ID>"
-
-      },
-
-      "name": "'"$domain"'",
-
-      "type": "full"
-
-    }'
-
-
-    printf "\n\n"
-
-  done
-
-
+  for domain in $(cat domains.txt); do    printf "Adding ${domain}:\n"
+    curl https://api.cloudflare.com/client/v4/zones \    --header "Authorization: Bearer <API_TOKEN>" \    --header "Content-Type: application/json" \    --data '{      "account": {        "id":"<ACCOUNT_ID>"      },      "name": "'"$domain"'",      "type": "full"    }'
+    printf "\n\n"  done
 ```
 
 1. Open the command line and run:
@@ -115,10 +88,7 @@ Terminal window
 Terminal window
 
 ```
-
 bash add-multiple-zones.sh
-
-
 ```
 
 Warning
@@ -138,10 +108,7 @@ This tool is a requirement to complete any additional option steps in this tutor
 Terminal window
 
 ```
-
 echo '{"foo":{"bar":"foo","testing":"hello"}}' | jq .
-
-
 ```
 
 Refer to `jq` [documentation ↗](https://jqlang.github.io/jq/manual/#basic-filters) for more information.
@@ -160,57 +127,14 @@ Using `jq` with the first option above, modify your script `add-multiple-zones.s
 JavaScript
 
 ```
-
-  for domain in $(cat domains.txt); do
-
-    printf "Adding ${domain}:\n"
-
-
-    add_output=`curl https://api.cloudflare.com/client/v4/zones \
-
-      --header "Authorization: Bearer <API_TOKEN>" \
-
-      --header "Content-Type: application/json" \
-
-      --data '{
-
-        "account": {
-
-          "id":"<ACCOUNT_ID>"
-
-        },
-
-        "name": "'"$domain"'",
-
-        "type": "full"
-
-      }'`
-
-
+  for domain in $(cat domains.txt); do    printf "Adding ${domain}:\n"
+    add_output=`curl https://api.cloudflare.com/client/v4/zones \      --header "Authorization: Bearer <API_TOKEN>" \      --header "Content-Type: application/json" \      --data '{        "account": {          "id":"<ACCOUNT_ID>"        },        "name": "'"$domain"'",        "type": "full"      }'`
     echo $add_output | jq .
-
-
     domain_id=`echo $add_output | jq -r .result.id`
-
-
-    printf "\n\n"
-
-    printf "DNS quick scanning ${domain}:\n"
-
-
-    scan_output=`curl --request POST https://api.cloudflare.com/client/v4/zones/$domain_id/dns_records/scan \
-
-      --header "X-Auth-Email: <EMAIL>" \
-
-      --header "X-Auth-Key: <API_KEY>"`
-
-
+    printf "\n\n"    printf "DNS quick scanning ${domain}:\n"
+    scan_output=`curl --request POST https://api.cloudflare.com/client/v4/zones/$domain_id/dns_records/scan \      --header "X-Auth-Email: <EMAIL>" \      --header "X-Auth-Key: <API_KEY>"`
     echo $scan_output | jq .
-
-
   done
-
-
 ```
 
 ## 2\. Update nameservers
@@ -226,64 +150,15 @@ You can find your zones nameservers in the following locations:
 JavaScript
 
 ```
-
-  for domain in $(cat domains.txt); do
-
-    printf "Adding ${domain}:\n"
-
-
-    add_output=`curl https://api.cloudflare.com/client/v4/zones \
-
-      --header "Authorization: Bearer <API_TOKEN>" \
-
-      --header "Content-Type: application/json" \
-
-      --data '{
-
-        "account": {
-
-          "id": "<ACCOUNT_ID>"
-
-        },
-
-        "name": "'"$domain"'",
-
-        "type": "full"
-
-      }'`
-
-
-    # Create csv of nameservers
-
-    echo $add_output | jq -r '[.result.name,.result.id,.result.name_servers[]] | @csv' >> /tmp/domain_nameservers.csv
-
-
+  for domain in $(cat domains.txt); do    printf "Adding ${domain}:\n"
+    add_output=`curl https://api.cloudflare.com/client/v4/zones \      --header "Authorization: Bearer <API_TOKEN>" \      --header "Content-Type: application/json" \      --data '{        "account": {          "id": "<ACCOUNT_ID>"        },        "name": "'"$domain"'",        "type": "full"      }'`
+    # Create csv of nameservers    echo $add_output | jq -r '[.result.name,.result.id,.result.name_servers[]] | @csv' >> /tmp/domain_nameservers.csv
     domain_id=`echo $add_output | jq -r .result.id`
-
-
-    printf "\n\n"
-
-    printf "DNS quick scanning ${domain}:\n"
-
-
-    scan_output=`curl --request POST https://api.cloudflare.com/client/v4/zones/$domain_id/dns_records/scan \
-
-      --header "X-Auth-Email: <EMAIL>" \
-
-      --header "X-Auth-Key: <API_KEY>"`
-
-
+    printf "\n\n"    printf "DNS quick scanning ${domain}:\n"
+    scan_output=`curl --request POST https://api.cloudflare.com/client/v4/zones/$domain_id/dns_records/scan \      --header "X-Auth-Email: <EMAIL>" \      --header "X-Auth-Key: <API_KEY>"`
     echo $scan_output | jq .
-
-
   done
-
-
-  printf "name_servers are saved in /tmp/domain_nameservers"
-
-  cat /tmp/domain_nameservers.csv
-
-
+  printf "name_servers are saved in /tmp/domain_nameservers"  cat /tmp/domain_nameservers.csv
 ```
 
 | ID         | ZONE        | NAME SERVERS                                  |

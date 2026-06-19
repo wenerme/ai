@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,114 +20,33 @@ The `DurableObjectNamespace` interface is used to obtain a reference to new or e
 
 This interface defines several [methods](https://developers.cloudflare.com/durable-objects/api/namespace/#methods) that can be used to create an ID for a Durable Object. Note that creating an ID for a Durable Object does not create the Durable Object. The Durable Object is created lazily after calling [DurableObjectNamespace::get](https://developers.cloudflare.com/durable-objects/api/namespace/#get) to create a [DurableObjectStub](https://developers.cloudflare.com/durable-objects/api/stub) from a `DurableObjectId`. This ensures that objects are not constructed until they are actually accessed.
 
-* [  JavaScript ](#tab-panel-8202)
-* [  TypeScript ](#tab-panel-8203)
-* [  Python ](#tab-panel-8204)
+* [  JavaScript ](#tab-panel-8278)
+* [  TypeScript ](#tab-panel-8279)
+* [  Python ](#tab-panel-8280)
 
 JavaScript
 
 ```
-
 import { DurableObject } from "cloudflare:workers";
-
-
-// Durable Object
-
-export class MyDurableObject extends DurableObject {
-
-  ...
-
-}
-
-
-// Worker
-
-export default {
-
-  async fetch(request, env) {
-
-    // A stub is a client Object used to invoke methods defined by the Durable Object
-
-    const stub = env.MY_DURABLE_OBJECT.getByName("foo");
-
-    ...
-
-  }
-
-}
-
-
+// Durable Objectexport class MyDurableObject extends DurableObject {  ...}
+// Workerexport default {  async fetch(request, env) {    // A stub is a client Object used to invoke methods defined by the Durable Object    const stub = env.MY_DURABLE_OBJECT.getByName("foo");    ...  }}
 ```
 
 TypeScript
 
 ```
-
 import { DurableObject } from "cloudflare:workers";
-
-
-export interface Env {
-
-  MY_DURABLE_OBJECT: DurableObjectNamespace<MyDurableObject>;
-
-}
-
-
-// Durable Object
-
-export class MyDurableObject extends DurableObject {
-
-  ...
-
-}
-
-
-// Worker
-
-export default {
-
-  async fetch(request, env) {
-
-    // A stub is a client Object used to invoke methods defined by the Durable Object
-
-    const stub = env.MY_DURABLE_OBJECT.getByName("foo");
-
-    ...
-
-  }
-
-} satisfies ExportedHandler<Env>;
-
-
+export interface Env {  MY_DURABLE_OBJECT: DurableObjectNamespace<MyDurableObject>;}
+// Durable Objectexport class MyDurableObject extends DurableObject {  ...}
+// Workerexport default {  async fetch(request, env) {    // A stub is a client Object used to invoke methods defined by the Durable Object    const stub = env.MY_DURABLE_OBJECT.getByName("foo");    ...  }} satisfies ExportedHandler<Env>;
 ```
 
 Python
 
 ```
-
 from workers import DurableObject, WorkerEntrypoint
-
-
-# Durable Object
-
-class MyDurableObject(DurableObject):
-
-  pass
-
-
-# Worker
-
-class Default(WorkerEntrypoint):
-
-  async def fetch(self, request):
-
-    # A stub is a client Object used to invoke methods defined by the Durable Object
-
-    stub = self.env.MY_DURABLE_OBJECT.getByName("foo")
-
-    # ...
-
-
+# Durable Objectclass MyDurableObject(DurableObject):  pass
+# Workerclass Default(WorkerEntrypoint):  async def fetch(self, request):    # A stub is a client Object used to invoke methods defined by the Durable Object    stub = self.env.MY_DURABLE_OBJECT.getByName("foo")    # ...
 ```
 
 ## Methods
@@ -139,12 +58,7 @@ class Default(WorkerEntrypoint):
 JavaScript
 
 ```
-
-const fooId = env.MY_DURABLE_OBJECT.idFromName("foo");
-
-const barId = env.MY_DURABLE_OBJECT.idFromName("bar");
-
-
+const fooId = env.MY_DURABLE_OBJECT.idFromName("foo");const barId = env.MY_DURABLE_OBJECT.idFromName("bar");
 ```
 
 #### Parameters
@@ -162,12 +76,7 @@ const barId = env.MY_DURABLE_OBJECT.idFromName("bar");
 JavaScript
 
 ```
-
-const id = env.MY_DURABLE_OBJECT.newUniqueId();
-
-const euId = env.MY_DURABLE_OBJECT.newUniqueId({ jurisdiction: "eu" });
-
-
+const id = env.MY_DURABLE_OBJECT.newUniqueId();const euId = env.MY_DURABLE_OBJECT.newUniqueId({ jurisdiction: "eu" });
 ```
 
 `newUniqueId` results in lower request latency at first use
@@ -191,23 +100,8 @@ After this first use, the location of the Durable Object will be cached around t
 JavaScript
 
 ```
-
-// Create a new unique ID
-
-const id = env.MY_DURABLE_OBJECT.newUniqueId();
-
-// Convert the ID to a string to be saved elsewhere, e.g. a session cookie
-
-const session_id = id.toString();
-
-
-...
-
-// Recreate the ID from the string
-
-const id = env.MY_DURABLE_OBJECT.idFromString(session_id);
-
-
+// Create a new unique IDconst id = env.MY_DURABLE_OBJECT.newUniqueId();// Convert the ID to a string to be saved elsewhere, e.g. a session cookieconst session_id = id.toString();
+...// Recreate the ID from the stringconst id = env.MY_DURABLE_OBJECT.idFromString(session_id);
 ```
 
 #### Parameters
@@ -227,12 +121,7 @@ This method returns the stub immediately, often before a connection has been est
 JavaScript
 
 ```
-
-const id = env.MY_DURABLE_OBJECT.newUniqueId();
-
-const stub = env.MY_DURABLE_OBJECT.get(id);
-
-
+const id = env.MY_DURABLE_OBJECT.newUniqueId();const stub = env.MY_DURABLE_OBJECT.get(id);
 ```
 
 #### Parameters
@@ -253,12 +142,7 @@ This method returns the stub immediately, often before a connection has been est
 JavaScript
 
 ```
-
-const fooStub = env.MY_DURABLE_OBJECT.getByName("foo");
-
-const barStub = env.MY_DURABLE_OBJECT.getByName("bar");
-
-
+const fooStub = env.MY_DURABLE_OBJECT.getByName("foo");const barStub = env.MY_DURABLE_OBJECT.getByName("bar");
 ```
 
 #### Parameters
@@ -277,12 +161,7 @@ const barStub = env.MY_DURABLE_OBJECT.getByName("bar");
 JavaScript
 
 ```
-
-const subnamespace = env.MY_DURABLE_OBJECT.jurisdiction("eu");
-
-const euStub = subnamespace.getByName("foo");
-
-
+const subnamespace = env.MY_DURABLE_OBJECT.jurisdiction("eu");const euStub = subnamespace.getByName("foo");
 ```
 
 #### Parameters

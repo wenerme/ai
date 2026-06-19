@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -36,19 +36,8 @@ Both parameters are positional. Pass them without named arguments.
 Dart
 
 ```
-
 import 'package:realtimekit_ui/realtimekit_ui.dart';
-
-
-RtkSetupScreen(
-
-  selectedAudioDevice,
-
-  selectedVideoDevice,
-
-)
-
-
+RtkSetupScreen(  selectedAudioDevice,  selectedVideoDevice,)
 ```
 
 ### With Properties
@@ -56,24 +45,9 @@ RtkSetupScreen(
 Dart
 
 ```
-
 import 'package:realtimekit_ui/realtimekit_ui.dart';
-
-
-final selectedAudioDevice = meeting.getSelectedAudioDevice();
-
-final selectedVideoDevice = meeting.getSelectedVideoDevice();
-
-
-RtkSetupScreen(
-
-  selectedAudioDevice,
-
-  selectedVideoDevice,
-
-)
-
-
+final selectedAudioDevice = meeting.getSelectedAudioDevice();final selectedVideoDevice = meeting.getSelectedVideoDevice();
+RtkSetupScreen(  selectedAudioDevice,  selectedVideoDevice,)
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -44,31 +44,10 @@ A helper class for listening to waitlist participant events. Provides callbacks 
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let waitlistListener = RtkWaitListParticipantUpdateEventListener(
-
-    rtkClient: rtkClient
-
-)
-
-
-waitlistListener.participantJoinedCompletion = {
-
-    print("New participant in waitlist")
-
-}
-
-
-waitlistListener.participantRemovedCompletion = {
-
-    print("Participant removed from waitlist")
-
-}
-
-
+let waitlistListener = RtkWaitListParticipantUpdateEventListener(    rtkClient: rtkClient)
+waitlistListener.participantJoinedCompletion = {    print("New participant in waitlist")}
+waitlistListener.participantRemovedCompletion = {    print("Participant removed from waitlist")}
 ```
 
 ### Accept or reject requests
@@ -76,27 +55,10 @@ waitlistListener.participantRemovedCompletion = {
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let waitlistListener = RtkWaitListParticipantUpdateEventListener(
-
-    rtkClient: rtkClient
-
-)
-
-
-// Accept a waiting participant
-
-waitlistListener.acceptWaitingRequest(participant: waitingParticipant)
-
-
-// Reject a waiting participant
-
-waitlistListener.rejectWaitingRequest(participant: waitingParticipant)
-
-
+let waitlistListener = RtkWaitListParticipantUpdateEventListener(    rtkClient: rtkClient)
+// Accept a waiting participantwaitlistListener.acceptWaitingRequest(participant: waitingParticipant)
+// Reject a waiting participantwaitlistListener.rejectWaitingRequest(participant: waitingParticipant)
 ```
 
 ```json

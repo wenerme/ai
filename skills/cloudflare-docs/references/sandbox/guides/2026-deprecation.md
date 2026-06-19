@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,10 +25,7 @@ Search your codebase for deprecated configuration and APIs:
 Terminal window
 
 ```
-
 rg 'SANDBOX_TRANSPORT|transport:|exposePort\(|enableDefaultSession|execStream\(|readFileStream|writeFileStream'
-
-
 ```
 
 Also review any code that uses stream-specific file helpers or depends on shell state carrying across separate `exec()` calls.
@@ -39,35 +36,19 @@ HTTP and WebSocket transports will no longer be present in Sandbox SDK versions 
 
 To configure RPC transport for every sandbox in your Worker, set `SANDBOX_TRANSPORT` in your Worker's configuration:
 
-* [  wrangler.jsonc ](#tab-panel-10243)
-* [  wrangler.toml ](#tab-panel-10244)
+* [  wrangler.jsonc ](#tab-panel-10319)
+* [  wrangler.toml ](#tab-panel-10320)
 
 JSONC
 
 ```
-
-{
-
-  "vars": {
-
-    "SANDBOX_TRANSPORT": "rpc"
-
-  }
-
-}
-
-
+{  "vars": {    "SANDBOX_TRANSPORT": "rpc"  }}
 ```
 
 TOML
 
 ```
-
-[vars]
-
-SANDBOX_TRANSPORT = "rpc"
-
-
+[vars]SANDBOX_TRANSPORT = "rpc"
 ```
 
 To configure RPC transport for a specific sandbox, pass `transport: "rpc"` to `getSandbox()`:
@@ -75,17 +56,8 @@ To configure RPC transport for a specific sandbox, pass `transport: "rpc"` to `g
 TypeScript
 
 ```
-
 import { getSandbox } from "@cloudflare/sandbox";
-
-
-const sandbox = getSandbox(env.Sandbox, "user-123", {
-
-  transport: "rpc",
-
-});
-
-
+const sandbox = getSandbox(env.Sandbox, "user-123", {  transport: "rpc",});
 ```
 
 For more information, refer to [Transport modes](https://developers.cloudflare.com/sandbox/configuration/transport/).
@@ -105,27 +77,10 @@ Use quick tunnels for development, demos, and short-lived URLs. Use named tunnel
 TypeScript
 
 ```
-
 import { getSandbox } from "@cloudflare/sandbox";
-
-
-const sandbox = getSandbox(env.Sandbox, "my-sandbox", {
-
-  transport: "rpc",
-
-});
-
-
-const server = await sandbox.startProcess("python -m http.server 8080");
-
-await server.waitForPort(8080);
-
-
-const tunnel = await sandbox.tunnels.get(8080);
-
-return Response.json({ url: tunnel.url });
-
-
+const sandbox = getSandbox(env.Sandbox, "my-sandbox", {  transport: "rpc",});
+const server = await sandbox.startProcess("python -m http.server 8080");await server.waitForPort(8080);
+const tunnel = await sandbox.tunnels.get(8080);return Response.json({ url: tunnel.url });
 ```
 
 If your `exposePort()` flow used `proxyToSandbox()` to inject authentication or rewrite responses, account for that behavior before moving the public URL to a tunnel.
@@ -139,19 +94,8 @@ Set `enableDefaultSession: false` on `getSandbox()`. Operations without an expli
 TypeScript
 
 ```
-
 import { getSandbox } from "@cloudflare/sandbox";
-
-
-const sandbox = getSandbox(env.Sandbox, "user-123", {
-
-  enableDefaultSession: false,
-
-  transport: "rpc",
-
-});
-
-
+const sandbox = getSandbox(env.Sandbox, "user-123", {  enableDefaultSession: false,  transport: "rpc",});
 ```
 
 If your code expects commands like `cd /workspace/app` to affect later `exec()` calls, create an explicit session and run related commands through that session:
@@ -159,21 +103,8 @@ If your code expects commands like `cd /workspace/app` to affect later `exec()` 
 TypeScript
 
 ```
-
-const buildSession = await sandbox.createSession({
-
-  id: "build",
-
-  cwd: "/workspace/app",
-
-});
-
-
-await buildSession.exec("npm install");
-
-await buildSession.exec("npm test");
-
-
+const buildSession = await sandbox.createSession({  id: "build",  cwd: "/workspace/app",});
+await buildSession.exec("npm install");await buildSession.exec("npm test");
 ```
 
 For one-off commands, pass `cwd` or `env` directly to `exec()` instead of relying on persisted shell state:
@@ -181,20 +112,7 @@ For one-off commands, pass `cwd` or `env` directly to `exec()` instead of relyin
 TypeScript
 
 ```
-
-await sandbox.exec("npm test", {
-
-  cwd: "/workspace/app",
-
-  env: {
-
-    NODE_ENV: "test",
-
-  },
-
-});
-
-
+await sandbox.exec("npm test", {  cwd: "/workspace/app",  env: {    NODE_ENV: "test",  },});
 ```
 
 For more information, refer to [Sandbox options](https://developers.cloudflare.com/sandbox/configuration/sandbox-options/#enabledefaultsession) and [Sessions](https://developers.cloudflare.com/sandbox/api/sessions/).
@@ -208,20 +126,7 @@ For command output, use `exec()` with streaming callbacks:
 TypeScript
 
 ```
-
-await sandbox.exec("npm install", {
-
-  stream: true,
-
-  onOutput: (stream, data) => {
-
-    console.log(`[${stream}] ${data}`);
-
-  },
-
-});
-
-
+await sandbox.exec("npm install", {  stream: true,  onOutput: (stream, data) => {    console.log(`[${stream}] ${data}`);  },});
 ```
 
 For large or binary files, use the base file APIs with RPC transport. Pass a `ReadableStream` to `writeFile()`, or read a file as a stream with `encoding: "none"`:
@@ -229,34 +134,11 @@ For large or binary files, use the base file APIs with RPC transport. Pass a `Re
 TypeScript
 
 ```
-
 const request = await fetch("https://example.com/archive.tar.gz");
-
-
-if (!request.body) {
-
-  throw new Error("Expected archive response body");
-
-}
-
-
+if (!request.body) {  throw new Error("Expected archive response body");}
 await sandbox.writeFile("/workspace/archive.tar.gz", request.body);
-
-
-const file = await sandbox.readFile("/workspace/archive.tar.gz", {
-
-  encoding: "none",
-
-});
-
-
-return new Response(file.content, {
-
-  headers: { "Content-Type": file.mimeType },
-
-});
-
-
+const file = await sandbox.readFile("/workspace/archive.tar.gz", {  encoding: "none",});
+return new Response(file.content, {  headers: { "Content-Type": file.mimeType },});
 ```
 
 For more information, refer to [Commands](https://developers.cloudflare.com/sandbox/api/commands/) and [Files](https://developers.cloudflare.com/sandbox/api/files/).

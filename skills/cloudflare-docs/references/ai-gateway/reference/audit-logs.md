@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,80 +37,7 @@ The following configuration actions are logged:
 Below is an example of an audit log entry showing the creation of a new gateway:
 
 ```
-
-{
-
- "action": {
-
-     "info": "gateway created",
-
-     "result": true,
-
-     "type": "create"
-
- },
-
- "actor": {
-
-     "email": "<ACTOR_EMAIL>",
-
-     "id": "3f7b730e625b975bc1231234cfbec091",
-
-     "ip": "fe32:43ed:12b5:526::1d2:13",
-
-     "type": "user"
-
- },
-
- "id": "5eaeb6be-1234-406a-87ab-1971adc1234c",
-
- "interface": "UI",
-
- "metadata": {},
-
- "newValue": "",
-
- "newValueJson": {
-
-     "cache_invalidate_on_update": false,
-
-     "cache_ttl": 0,
-
-     "collect_logs": true,
-
-     "id": "test",
-
-     "rate_limiting_interval": 0,
-
-     "rate_limiting_limit": 0,
-
-     "rate_limiting_technique": "fixed"
-
- },
-
- "oldValue": "",
-
- "oldValueJson": {},
-
- "owner": {
-
-     "id": "1234d848c0b9e484dfc37ec392b5fa8a"
-
- },
-
- "resource": {
-
-     "id": "89303df8-1234-4cfa-a0f8-0bd848e831ca",
-
-     "type": "ai_gateway.gateway"
-
- },
-
- "when": "2024-07-17T14:06:11.425Z"
-
-}
-
-
+{ "action": {     "info": "gateway created",     "result": true,     "type": "create" }, "actor": {     "email": "<ACTOR_EMAIL>",     "id": "3f7b730e625b975bc1231234cfbec091",     "ip": "fe32:43ed:12b5:526::1d2:13",     "type": "user" }, "id": "5eaeb6be-1234-406a-87ab-1971adc1234c", "interface": "UI", "metadata": {}, "newValue": "", "newValueJson": {     "cache_invalidate_on_update": false,     "cache_ttl": 0,     "collect_logs": true,     "id": "test",     "rate_limiting_interval": 0,     "rate_limiting_limit": 0,     "rate_limiting_technique": "fixed" }, "oldValue": "", "oldValueJson": {}, "owner": {     "id": "1234d848c0b9e484dfc37ec392b5fa8a" }, "resource": {     "id": "89303df8-1234-4cfa-a0f8-0bd848e831ca",     "type": "ai_gateway.gateway" }, "when": "2024-07-17T14:06:11.425Z"}
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -68,58 +68,7 @@ D1's GraphQL datasets require an `accountTag` filter with your Cloudflare accoun
 To query the sum of `readQueries`, `writeQueries` for a given `$databaseId`, grouping by `databaseId` and `date`:
 
 ```
-
-query D1ObservabilitySampleQuery(
-
-  $accountTag: string!
-
-  $start: Date
-
-  $end: Date
-
-  $databaseId: string
-
-) {
-
-  viewer {
-
-    accounts(filter: { accountTag: $accountTag }) {
-
-      d1AnalyticsAdaptiveGroups(
-
-        limit: 10000
-
-        filter: { date_geq: $start, date_leq: $end, databaseId: $databaseId }
-
-        orderBy: [date_DESC]
-
-      ) {
-
-        sum {
-
-          readQueries
-
-          writeQueries
-
-        }
-
-        dimensions {
-
-          date
-
-          databaseId
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
+query D1ObservabilitySampleQuery(  $accountTag: string!  $start: Date  $end: Date  $databaseId: string) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      d1AnalyticsAdaptiveGroups(        limit: 10000        filter: { date_geq: $start, date_leq: $end, databaseId: $databaseId }        orderBy: [date_DESC]      ) {        sum {          readQueries          writeQueries        }        dimensions {          date          databaseId        }      }    }  }}
 ```
 
 [Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAIgRgPICMDOkBuBDFBLAGzwBcoBlbAWwAcCwBFcaACgCgYYASbAYx4HsQAO2IAVbAHMAXDDTEIeIRICE7LnOwRiMuNmJg1nMEIAmOvQY6cTe3NgwBJM7PmKJrAJQwA3msx4wAHdIHzUOXgFhYjRmADNCfQgZbxgIwRFxaS40qMyYAF8vXw4SmBMEAEEhbAIoYjweNAqbanrMMABxCEFqGLDSmCJKEhkEAAYJsf7S+IJE5LKLAH0JMGAZTg0tABpF-SW6da5jE12bYjtHZ2tbFHswJwLpkv4IE0gAISgZAG1zsCWcAAomQAMIAXWeRWeHDQIEooQGAwgYGwJkYkACaBhJUCCn0GIUYGxSI4+RxJjwlGMaDw-CEaERpI4-xxLNu9ycOPJSJ5JT55PyQA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXsICMAdgYgApvAAmXPoJHiAHNPlhWAIzBMZVRdgBKAUQAKAGXxmKAdSrIAEtToBfIA)
@@ -127,56 +76,7 @@ query D1ObservabilitySampleQuery(
 To query both the average `queryBatchTimeMs` and the 90th percentile `queryBatchTimeMs` per database:
 
 ```
-
-query D1ObservabilitySampleQuery2(
-
-  $accountTag: string!
-
-  $start: Date
-
-  $end: Date
-
-  $databaseId: string
-
-) {
-
-  viewer {
-
-    accounts(filter: { accountTag: $accountId }) {
-
-      d1AnalyticsAdaptiveGroups(
-
-        limit: 10000
-
-        filter: { date_geq: $start, date_leq: $end, databaseId: $databaseId }
-
-        orderBy: [date_DESC]
-
-      ) {
-
-        quantiles {
-
-          queryBatchTimeMsP90
-
-        }
-
-        dimensions {
-
-          date
-
-          databaseId
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
+query D1ObservabilitySampleQuery2(  $accountTag: string!  $start: Date  $end: Date  $databaseId: string) {  viewer {    accounts(filter: { accountTag: $accountId }) {      d1AnalyticsAdaptiveGroups(        limit: 10000        filter: { date_geq: $start, date_leq: $end, databaseId: $databaseId }        orderBy: [date_DESC]      ) {        quantiles {          queryBatchTimeMsP90        }        dimensions {          date          databaseId        }      }    }  }}
 ```
 
 [Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAIgRgPICMDOkBuBDFBLAGzwBcoBlbAWwAcCwBFcaAJgAoAoGGAEmwGM+AexAA7YgBVsAcwBcMNMQh4RUgISceC7BGJy42YmA3cwIgCZ6DRrtzMHc2DAEkL8xcqnsAlDADeGzDwwAHdIPw0ufiFRYjRWADNCQwg5Xxgo4TFJWR4MmJcYAF8ffy4ymDMEAEERbAIoYjw+NCq7akbMMABxCGFqOIjymCJKEjkEAAYpicHyxIJk1IqrAH0pMGA5bi0dABplwxW6TZ5TM327YgdnV1t7FEcwAsLZssEIM0gAISg5AG1LmAVnAAKJkADCAF1XiVXlxQNgxIQwGhwkMhqBIFAvgY+AALcR4ShgACyaAACgBOGborgvWkVImmNB4QQiVGlBkHaxcy7XJ5mOFFV70sqil6FIA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXsICMAdgYgApvAAmXPoJHiAHNPlhWAIzBMZVRdgBKAUQAKAGXxmKAdSrIAEtToBfIA)
@@ -184,48 +84,7 @@ query D1ObservabilitySampleQuery2(
 To query your account-wide `readQueries` and `writeQueries`:
 
 ```
-
-query D1ObservabilitySampleQuery3(
-
-  $accountTag: string!
-
-  $start: Date
-
-  $end: Date
-
-  $databaseId: string
-
-) {
-
-  viewer {
-
-    accounts(filter: { accountTag: $accountTag }) {
-
-      d1AnalyticsAdaptiveGroups(
-
-        limit: 10000
-
-        filter: { date_geq: $start, date_leq: $end, databaseId: $databaseId }
-
-      ) {
-
-        sum {
-
-          readQueries
-
-          writeQueries
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
+query D1ObservabilitySampleQuery3(  $accountTag: string!  $start: Date  $end: Date  $databaseId: string) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      d1AnalyticsAdaptiveGroups(        limit: 10000        filter: { date_geq: $start, date_leq: $end, databaseId: $databaseId }      ) {        sum {          readQueries          writeQueries        }      }    }  }}
 ```
 
 [Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAIgRgPICMDOkBuBDFBLAGzwBcoBlbAWwAcCwBFcaAZgAoAoGGAEmwGM+AexAA7YgBVsAcwBcMNMQh4RUgISceC7BGJy42YmA3cwIgCZ6DRrtzMHc2DAEkL8xcqnsAlDADeGzDwwAHdIPw0ufiFRYjRWADNCQwg5Xxgo4TFJWR4MmOyYAF8ffy4ymDMEAEERbAIoYjw+NCq7akbMMABxCGFqOIjymCJKEjkEAAYpicHyxIJk1IqrAH0pMGA5bi0dABplwxW6TZ5TM327YgdnV1t7FEcwFyLZmBLXrjQQSnChoYgwNgzIxIEE0B8ysElIYQUowOC-lxCq9keVUS9CkA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXsICMAdgYgApvAAmXPoJHiAHNPlhWAIzBMZVRdgBKAUQAKAGXxmKAdSrIAEtToBfIA)
@@ -256,99 +115,13 @@ To find top 3 queries by execution count:
 Terminal window
 
 ```
-
 npx wrangler d1 insights <database_name> --sort-type=sum --sort-by=count --limit=3
-
-
 ```
 
 ```
-
- ⛅️ wrangler 3.95.0
-
--------------------
-
-
--------------------
-
-🚧 `wrangler d1 insights` is an experimental command.
-
-🚧 Flags for this command, their descriptions, and output may change between wrangler versions.
-
--------------------
-
-
-[
-
-  {
-
-    "query": "SELECT tbl_name as name,\n                   (SELECT ncol FROM pragma_table_list(tbl_name)) as num_columns\n            FROM sqlite_master\n            WHERE TYPE = \"table\"\n              AND tbl_name NOT LIKE \"sqlite_%\"\n              AND tbl_name NOT LIKE \"d1_%\"\n              AND tbl_name NOT LIKE \"_cf_%\"\n            ORDER BY tbl_name ASC;",
-
-    "avgRowsRead": 2,
-
-    "totalRowsRead": 4,
-
-    "avgRowsWritten": 0,
-
-    "totalRowsWritten": 0,
-
-    "avgDurationMs": 0.49505,
-
-    "totalDurationMs": 0.9901,
-
-    "numberOfTimesRun": 2,
-
-    "queryEfficiency": 0
-
-  },
-
-  {
-
-    "query": "SELECT * FROM Customers",
-
-    "avgRowsRead": 4,
-
-    "totalRowsRead": 4,
-
-    "avgRowsWritten": 0,
-
-    "totalRowsWritten": 0,
-
-    "avgDurationMs": 0.1873,
-
-    "totalDurationMs": 0.1873,
-
-    "numberOfTimesRun": 1,
-
-    "queryEfficiency": 1
-
-  },
-
-  {
-
-    "query": "SELECT * From Customers",
-
-    "avgRowsRead": 0,
-
-    "totalRowsRead": 0,
-
-    "avgRowsWritten": 0,
-
-    "totalRowsWritten": 0,
-
-    "avgDurationMs": 1.0225,
-
-    "totalDurationMs": 1.0225,
-
-    "numberOfTimesRun": 1,
-
-    "queryEfficiency": 0
-
-  }
-
-]
-
-
+ ⛅️ wrangler 3.95.0-------------------
+-------------------🚧 `wrangler d1 insights` is an experimental command.🚧 Flags for this command, their descriptions, and output may change between wrangler versions.-------------------
+[  {    "query": "SELECT tbl_name as name,\n                   (SELECT ncol FROM pragma_table_list(tbl_name)) as num_columns\n            FROM sqlite_master\n            WHERE TYPE = \"table\"\n              AND tbl_name NOT LIKE \"sqlite_%\"\n              AND tbl_name NOT LIKE \"d1_%\"\n              AND tbl_name NOT LIKE \"_cf_%\"\n            ORDER BY tbl_name ASC;",    "avgRowsRead": 2,    "totalRowsRead": 4,    "avgRowsWritten": 0,    "totalRowsWritten": 0,    "avgDurationMs": 0.49505,    "totalDurationMs": 0.9901,    "numberOfTimesRun": 2,    "queryEfficiency": 0  },  {    "query": "SELECT * FROM Customers",    "avgRowsRead": 4,    "totalRowsRead": 4,    "avgRowsWritten": 0,    "totalRowsWritten": 0,    "avgDurationMs": 0.1873,    "totalDurationMs": 0.1873,    "numberOfTimesRun": 1,    "queryEfficiency": 1  },  {    "query": "SELECT * From Customers",    "avgRowsRead": 0,    "totalRowsRead": 0,    "avgRowsWritten": 0,    "totalRowsWritten": 0,    "avgDurationMs": 1.0225,    "totalDurationMs": 1.0225,    "numberOfTimesRun": 1,    "queryEfficiency": 0  }]
 ```
 
 To find top 3 queries by average execution time:
@@ -356,99 +129,13 @@ To find top 3 queries by average execution time:
 Terminal window
 
 ```
-
 npx wrangler d1 insights <database_name> --sort-type=avg --sort-by=time --limit=3
-
-
 ```
 
 ```
-
-⛅️ wrangler 3.95.0
-
--------------------
-
-
--------------------
-
-🚧 `wrangler d1 insights` is an experimental command.
-
-🚧 Flags for this command, their descriptions, and output may change between wrangler versions.
-
--------------------
-
-
-[
-
-  {
-
-    "query": "SELECT * From Customers",
-
-    "avgRowsRead": 0,
-
-    "totalRowsRead": 0,
-
-    "avgRowsWritten": 0,
-
-    "totalRowsWritten": 0,
-
-    "avgDurationMs": 1.0225,
-
-    "totalDurationMs": 1.0225,
-
-    "numberOfTimesRun": 1,
-
-    "queryEfficiency": 0
-
-  },
-
-  {
-
-    "query": "SELECT tbl_name as name,\n                   (SELECT ncol FROM pragma_table_list(tbl_name)) as num_columns\n            FROM sqlite_master\n            WHERE TYPE = \"table\"\n              AND tbl_name NOT LIKE \"sqlite_%\"\n              AND tbl_name NOT LIKE \"d1_%\"\n              AND tbl_name NOT LIKE \"_cf_%\"\n            ORDER BY tbl_name ASC;",
-
-    "avgRowsRead": 2,
-
-    "totalRowsRead": 4,
-
-    "avgRowsWritten": 0,
-
-    "totalRowsWritten": 0,
-
-    "avgDurationMs": 0.49505,
-
-    "totalDurationMs": 0.9901,
-
-    "numberOfTimesRun": 2,
-
-    "queryEfficiency": 0
-
-  },
-
-  {
-
-    "query": "SELECT * FROM Customers",
-
-    "avgRowsRead": 4,
-
-    "totalRowsRead": 4,
-
-    "avgRowsWritten": 0,
-
-    "totalRowsWritten": 0,
-
-    "avgDurationMs": 0.1873,
-
-    "totalDurationMs": 0.1873,
-
-    "numberOfTimesRun": 1,
-
-    "queryEfficiency": 1
-
-  }
-
-]
-
-
+⛅️ wrangler 3.95.0-------------------
+-------------------🚧 `wrangler d1 insights` is an experimental command.🚧 Flags for this command, their descriptions, and output may change between wrangler versions.-------------------
+[  {    "query": "SELECT * From Customers",    "avgRowsRead": 0,    "totalRowsRead": 0,    "avgRowsWritten": 0,    "totalRowsWritten": 0,    "avgDurationMs": 1.0225,    "totalDurationMs": 1.0225,    "numberOfTimesRun": 1,    "queryEfficiency": 0  },  {    "query": "SELECT tbl_name as name,\n                   (SELECT ncol FROM pragma_table_list(tbl_name)) as num_columns\n            FROM sqlite_master\n            WHERE TYPE = \"table\"\n              AND tbl_name NOT LIKE \"sqlite_%\"\n              AND tbl_name NOT LIKE \"d1_%\"\n              AND tbl_name NOT LIKE \"_cf_%\"\n            ORDER BY tbl_name ASC;",    "avgRowsRead": 2,    "totalRowsRead": 4,    "avgRowsWritten": 0,    "totalRowsWritten": 0,    "avgDurationMs": 0.49505,    "totalDurationMs": 0.9901,    "numberOfTimesRun": 2,    "queryEfficiency": 0  },  {    "query": "SELECT * FROM Customers",    "avgRowsRead": 4,    "totalRowsRead": 4,    "avgRowsWritten": 0,    "totalRowsWritten": 0,    "avgDurationMs": 0.1873,    "totalDurationMs": 0.1873,    "numberOfTimesRun": 1,    "queryEfficiency": 1  }]
 ```
 
 To find top 10 queries by rows written in last 7 days:
@@ -456,99 +143,13 @@ To find top 10 queries by rows written in last 7 days:
 Terminal window
 
 ```
-
 npx wrangler d1 insights <database_name> --sort-type=sum --sort-by=writes --limit=10 --timePeriod=7d
-
-
 ```
 
 ```
-
-⛅️ wrangler 3.95.0
-
--------------------
-
-
--------------------
-
-🚧 `wrangler d1 insights` is an experimental command.
-
-🚧 Flags for this command, their descriptions, and output may change between wrangler versions.
-
--------------------
-
-
-[
-
-  {
-
-    "query": "SELECT * FROM Customers",
-
-    "avgRowsRead": 4,
-
-    "totalRowsRead": 4,
-
-    "avgRowsWritten": 0,
-
-    "totalRowsWritten": 0,
-
-    "avgDurationMs": 0.1873,
-
-    "totalDurationMs": 0.1873,
-
-    "numberOfTimesRun": 1,
-
-    "queryEfficiency": 1
-
-  },
-
-  {
-
-    "query": "SELECT * From Customers",
-
-    "avgRowsRead": 0,
-
-    "totalRowsRead": 0,
-
-    "avgRowsWritten": 0,
-
-    "totalRowsWritten": 0,
-
-    "avgDurationMs": 1.0225,
-
-    "totalDurationMs": 1.0225,
-
-    "numberOfTimesRun": 1,
-
-    "queryEfficiency": 0
-
-  },
-
-  {
-
-    "query": "SELECT tbl_name as name,\n                   (SELECT ncol FROM pragma_table_list(tbl_name)) as num_columns\n            FROM sqlite_master\n            WHERE TYPE = \"table\"\n              AND tbl_name NOT LIKE \"sqlite_%\"\n              AND tbl_name NOT LIKE \"d1_%\"\n              AND tbl_name NOT LIKE \"_cf_%\"\n            ORDER BY tbl_name ASC;",
-
-    "avgRowsRead": 2,
-
-    "totalRowsRead": 4,
-
-    "avgRowsWritten": 0,
-
-    "totalRowsWritten": 0,
-
-    "avgDurationMs": 0.49505,
-
-    "totalDurationMs": 0.9901,
-
-    "numberOfTimesRun": 2,
-
-    "queryEfficiency": 0
-
-  }
-
-]
-
-
+⛅️ wrangler 3.95.0-------------------
+-------------------🚧 `wrangler d1 insights` is an experimental command.🚧 Flags for this command, their descriptions, and output may change between wrangler versions.-------------------
+[  {    "query": "SELECT * FROM Customers",    "avgRowsRead": 4,    "totalRowsRead": 4,    "avgRowsWritten": 0,    "totalRowsWritten": 0,    "avgDurationMs": 0.1873,    "totalDurationMs": 0.1873,    "numberOfTimesRun": 1,    "queryEfficiency": 1  },  {    "query": "SELECT * From Customers",    "avgRowsRead": 0,    "totalRowsRead": 0,    "avgRowsWritten": 0,    "totalRowsWritten": 0,    "avgDurationMs": 1.0225,    "totalDurationMs": 1.0225,    "numberOfTimesRun": 1,    "queryEfficiency": 0  },  {    "query": "SELECT tbl_name as name,\n                   (SELECT ncol FROM pragma_table_list(tbl_name)) as num_columns\n            FROM sqlite_master\n            WHERE TYPE = \"table\"\n              AND tbl_name NOT LIKE \"sqlite_%\"\n              AND tbl_name NOT LIKE \"d1_%\"\n              AND tbl_name NOT LIKE \"_cf_%\"\n            ORDER BY tbl_name ASC;",    "avgRowsRead": 2,    "totalRowsRead": 4,    "avgRowsWritten": 0,    "totalRowsWritten": 0,    "avgDurationMs": 0.49505,    "totalDurationMs": 0.9901,    "numberOfTimesRun": 2,    "queryEfficiency": 0  }]
 ```
 
 Note

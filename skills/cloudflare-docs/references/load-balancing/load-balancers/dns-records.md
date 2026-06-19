@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -24,18 +24,21 @@ For customers on Enterprise plans, Cloudflare supports load balancing for `A`, `
 
 For hostnames with existing DNS records, the LB record takes precedence when it is more or equally specific:
 
-* **Scenario 1**:  
-   * **A, AAAA, or CNAME**: `x.example.com`  
-   * **LB record**: `x.example.com`  
-   * **Outcome**: LB record takes precedence because it is as specific as the DNS record.
-* **Scenario 2**:  
-   * **A, AAAA, or CNAME**: `y.example.com`  
-   * **LB record**: `*.example.com` (wildcard record)  
-   * **Outcome**: DNS record takes precedence because it is more specific.
-* **Scenario 3**:  
-   * **A, AAAA, or CNAME**: `*.example.com`  
-   * **LB record**: `*.example.com`  
-   * **Outcome**: LB record takes precedence because it is as specific as the DNS record.
+* **Scenario 1**:
+
+  * **A, AAAA, or CNAME**: `x.example.com`
+  * **LB record**: `x.example.com`
+  * **Outcome**: LB record takes precedence because it is as specific as the DNS record.
+* **Scenario 2**:
+
+  * **A, AAAA, or CNAME**: `y.example.com`
+  * **LB record**: `*.example.com` (wildcard record)
+  * **Outcome**: DNS record takes precedence because it is more specific.
+* **Scenario 3**:
+
+  * **A, AAAA, or CNAME**: `*.example.com`
+  * **LB record**: `*.example.com`
+  * **Outcome**: LB record takes precedence because it is as specific as the DNS record.
 
 Note
 
@@ -44,10 +47,10 @@ This behavior only applies to [supported records](#supported-records) (determine
 If the DNS record points to a [SaaS provider](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/) and an active [custom hostname](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/) exists, the custom hostname will take precedence over the Load Balancing record:
 
 * **Scenario 4**:  
-   * **CNAME**: `x.example.com` with target to a Cloudflare for SaaS provider  
-   * **LB record**: `x.example.com`  
-   * **Active custom hostname on the SaaS provider side**: `x.example.com`  
-   * **Outcome**: Custom hostname takes precedence.
+  * **CNAME**: `x.example.com` with target to a Cloudflare for SaaS provider
+  * **LB record**: `x.example.com`
+  * **Active custom hostname on the SaaS provider side**: `x.example.com`
+  * **Outcome**: Custom hostname takes precedence.
 
 ## Disabling a load balancer
 

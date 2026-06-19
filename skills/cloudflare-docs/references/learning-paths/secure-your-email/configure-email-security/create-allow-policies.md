@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,20 +29,20 @@ To configure allow policies:
 3. Select **Settings**, then go to **Detection settings** \> **Allow policies**.
 4. On the **Detection settings** page, select **Add a policy**.
 5. On the **Add an allow policy** page, enter the policy information:  
-   * **Input method**: Choose between **Manual input**, and **Uploading an allow policy**:  
-         * **Manual input**:  
-                  * **Action**: Select one of the following to choose how Email security will handle messages that match your criteria:  
-                              * **Trust sender**: Messages will bypass all detections and link following.  
-                              * **Exempt recipient**: Message to this recipient will bypass all detections.  
-                              * **Accept sender**: Messages from this sender will be exempted from Spam, Spoof, and Bulk dispositions.  
-         * **Rule type**: Specify the scope of your policy. Choose one of the following:  
-                  * **Email addresses**: Must be a valid email.  
-                  * **IP addresses**: Can only be IPv4\. IPv6 and CIDR are invalid entries.  
-                  * **Domains**: Must be a valid domain.  
-                  * **Regular expressions**: Must be valid Java expressions. Regular expressions are matched with fields related to the sender email address (envelope from, header from, reply-to), the originating IP address, and the server name for the email.  
-         * **(Recommended) Sender verification**: This option enforces DMARC, SPF, or DKIM authentication. If you choose to enable this option, Email security will only honor policies that pass authentication.  
-                  * **Notes**: Provide additional information about your allow policy.  
-   * **Uploading an allow policy**: Upload a file no larger than 150 KB. The file can only contain `Pattern`, `Notes`, `Verify Email`, `Trusted Sender`, `Exempt Recipient`, and `Acceptable Sender` fields. The first row must be a header row.
+  * **Input method**: Choose between **Manual input**, and **Uploading an allow policy**:  
+    * **Manual input**:  
+      * **Action**: Select one of the following to choose how Email security will handle messages that match your criteria:  
+        * **Trust sender**: Messages will bypass all detections and link following.
+        * **Exempt recipient**: Message to this recipient will bypass all detections.
+        * **Accept sender**: Messages from this sender will be exempted from Spam, Spoof, and Bulk dispositions.
+    * **Rule type**: Specify the scope of your policy. Choose one of the following:  
+      * **Email addresses**: Must be a valid email.
+      * **IP addresses**: Can only be IPv4\. IPv6 and CIDR are invalid entries.
+      * **Domains**: Must be a valid domain.
+      * **Regular expressions**: Must be valid Java expressions. Regular expressions are matched with fields related to the sender email address (envelope from, header from, reply-to), the originating IP address, and the server name for the email.
+    * **(Recommended) Sender verification**: This option enforces DMARC, SPF, or DKIM authentication. If you choose to enable this option, Email security will only honor policies that pass authentication.  
+      * **Notes**: Provide additional information about your allow policy.
+  * **Uploading an allow policy**: Upload a file no larger than 150 KB. The file can only contain `Pattern`, `Notes`, `Verify Email`, `Trusted Sender`, `Exempt Recipient`, and `Acceptable Sender` fields. The first row must be a header row.
 6. Select **Save**.
 
 ```json

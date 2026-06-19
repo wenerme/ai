@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -63,22 +63,7 @@ By default, Pages automatically adds several [HTTP response headers ↗](https:/
 Headers always added
 
 ```
-
-Access-Control-Allow-Origin: *
-
-Cf-Ray: $CLOUDFLARE_RAY_ID
-
-Referrer-Policy: strict-origin-when-cross-origin
-
-Etag: $ETAG
-
-Content-Type: $CONTENT_TYPE
-
-X-Content-Type-Options: nosniff
-
-Server: cloudflare
-
-
+Access-Control-Allow-Origin: *Cf-Ray: $CLOUDFLARE_RAY_IDReferrer-Policy: strict-origin-when-cross-originEtag: $ETAGContent-Type: $CONTENT_TYPEX-Content-Type-Options: nosniffServer: cloudflare
 ```
 
 Note
@@ -88,24 +73,9 @@ The [Cf-Ray](https://developers.cloudflare.com/fundamentals/reference/cloudflare
 Headers sometimes added
 
 ```
-
-// if the asset has been encoded
-
-Cache-Control: no-transform
-
-Content-Encoding: $CONTENT_ENCODING
-
-
-// if the asset is cacheable (the request does not have an `Authorization` or `Range` header)
-
-Cache-Control: public, max-age=0, must-revalidate
-
-
-// if requesting the asset over a preview URL
-
-X-Robots-Tag: noindex
-
-
+// if the asset has been encodedCache-Control: no-transformContent-Encoding: $CONTENT_ENCODING
+// if the asset is cacheable (the request does not have an `Authorization` or `Range` header)Cache-Control: public, max-age=0, must-revalidate
+// if requesting the asset over a preview URLX-Robots-Tag: noindex
 ```
 
 To modify the headers added by Cloudflare Pages - perhaps to add [Early Hints](https://developers.cloudflare.com/pages/configuration/early-hints/) \- update the [\_headers file](https://developers.cloudflare.com/pages/configuration/headers/) in your project.

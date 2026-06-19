@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -24,17 +24,18 @@ Prior to setting up DNS Firewall, you need:
 
 ### Create a DNS Firewall cluster
 
-* [ Dashboard ](#tab-panel-8065)
-* [ API ](#tab-panel-8066)
+* [ Dashboard ](#tab-panel-8141)
+* [ API ](#tab-panel-8142)
 
 1. In the Cloudflare dashboard, go to the **DNS Firewall Clusters** page.  
 [ Go to **Clusters** ](https://dash.cloudflare.com/?to=/:account/dns-firewall/clusters)
 2. Select **Add Firewall Cluster**.
-3. Fill out the required fields, including:  
-   * **IP Addresses**: The upstream IPv4 and/or IPv6 addresses of your authoritative nameservers.  
-   * **Minimum Cache TTL**: Recommended setting of **30 seconds**.  
-   * **Maximum Cache TTL**: Recommended setting of **4 hours**. Larger values increase the cache hit ratio, but also increase the time required for DNS changes to propagate.  
-   * **ANY queries**: Recommended setting is **Off** because these are often used as part of DDoS attacks. Also refer to this [blog post ↗](https://blog.cloudflare.com/rfc8482-saying-goodbye-to-any/).
+3. Fill out the required fields, including:
+
+  * **IP Addresses**: The upstream IPv4 and/or IPv6 addresses of your authoritative nameservers.
+  * **Minimum Cache TTL**: Recommended setting of **30 seconds**.
+  * **Maximum Cache TTL**: Recommended setting of **4 hours**. Larger values increase the cache hit ratio, but also increase the time required for DNS changes to propagate.
+  * **ANY queries**: Recommended setting is **Off** because these are often used as part of DDoS attacks. Also refer to this [blog post ↗](https://blog.cloudflare.com/rfc8482-saying-goodbye-to-any/).
 4. Click **Continue**.
 5. On the following screen, save the values for **Your new DNS Firewall IP Addresses**.
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -38,12 +38,13 @@ yarn create cloudflare d1-comments-api
 ```  
 pnpm create cloudflare@latest d1-comments-api  
 ```  
-For setup, select the following options:  
-   * For _What would you like to start with?_, choose `Hello World example`.  
-   * For _Which template would you like to use?_, choose `Worker only`.  
-   * For _Which language do you want to use?_, choose `TypeScript`.  
-   * For _Do you want to use git for version control?_, choose `Yes`.  
-   * For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+For setup, select the following options:
+
+  * For _What would you like to start with?_, choose `Hello World example`.
+  * For _Which template would you like to use?_, choose `Worker only`.
+  * For _Which language do you want to use?_, choose `TypeScript`.
+  * For _Do you want to use git for version control?_, choose `Yes`.
+  * For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
 2. Move into the project directory:  
 Terminal window  
 ```  
@@ -80,36 +81,18 @@ Terminal window
 npx wrangler@latest d1 create d1-comments-api  
 ```
 2. When prompted `Would you like Wrangler to add it on your behalf?`, select `Yes`. This automatically adds the `DB` binding to your Wrangler configuration file.  
-Confirm that your Wrangler configuration file contains the `d1_databases` binding and the full project configuration:  
-   * [  wrangler.jsonc ](#tab-panel-7913)  
-   * [  wrangler.toml ](#tab-panel-7914)  
+Confirm that your Wrangler configuration file contains the `d1_databases` binding and the full project configuration:
+
+  * [  wrangler.jsonc ](#tab-panel-7989)
+  * [  wrangler.toml ](#tab-panel-7990)  
 JSONC  
 ```  
-{  
-  "$schema": "./node_modules/wrangler/config-schema.json",  
-  "name": "d1-comments-api",  
-  "main": "src/index.ts",  
-  // Set this to today's date  
-  "compatibility_date": "2026-06-17",  
-  "d1_databases": [  
-    {  
-      "binding": "DB",  
-      "database_name": "d1-comments-api",  
-      "database_id": "<YOUR_DATABASE_ID>"  
-    }  
-  ]  
-}  
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "d1-comments-api",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-18",  "d1_databases": [    {      "binding": "DB",      "database_name": "d1-comments-api",      "database_id": "<YOUR_DATABASE_ID>"    }  ]}  
 ```  
 TOML  
 ```  
-name = "d1-comments-api"  
-main = "src/index.ts"  
-# Set this to today's date  
-compatibility_date = "2026-06-17"  
-[[d1_databases]]  
-binding = "DB" # available in your Worker on env.DB  
-database_name = "d1-comments-api"  
-database_id = "<YOUR_DATABASE_ID>"  
+name = "d1-comments-api"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-18"  
+[[d1_databases]]binding = "DB" # available in your Worker on env.DBdatabase_name = "d1-comments-api"database_id = "<YOUR_DATABASE_ID>"  
 ```  
 Replace `<YOUR_DATABASE_ID>` with the ID output by the `wrangler d1 create` command.
 
@@ -119,16 +102,8 @@ Replace `<YOUR_DATABASE_ID>` with the ID output by the `wrangler d1 create` comm
 
 1. Create a `schemas/schema.sql` file with the following contents:  
 ```  
-DROP TABLE IF EXISTS comments;  
-CREATE TABLE IF NOT EXISTS comments (  
-  id INTEGER PRIMARY KEY AUTOINCREMENT,  
-  author TEXT NOT NULL,  
-  body TEXT NOT NULL,  
-  post_slug TEXT NOT NULL  
-);  
-CREATE INDEX idx_comments_post_slug ON comments (post_slug);  
--- Optionally, uncomment the below query to insert seed data  
--- INSERT INTO comments (author, body, post_slug) VALUES ('Kristian', 'Great post!', 'hello-world');  
+DROP TABLE IF EXISTS comments;CREATE TABLE IF NOT EXISTS comments (  id INTEGER PRIMARY KEY AUTOINCREMENT,  author TEXT NOT NULL,  body TEXT NOT NULL,  post_slug TEXT NOT NULL);CREATE INDEX idx_comments_post_slug ON comments (post_slug);
+-- Optionally, uncomment the below query to insert seed data-- INSERT INTO comments (author, body, post_slug) VALUES ('Kristian', 'Great post!', 'hello-world');  
 ```
 2. Run the schema against your local database first:  
 Terminal window  
@@ -141,11 +116,7 @@ Terminal window
 npx wrangler d1 execute d1-comments-api --local --command "SELECT name FROM sqlite_schema WHERE type = 'table'"  
 ```  
 ```  
-┌──────────┐  
-│ name     │  
-├──────────┤  
-│ comments │  
-└──────────┘  
+┌──────────┐│ name     │├──────────┤│ comments │└──────────┘  
 ```
 4. Once you are satisfied with the schema, apply it to your remote (production) database:  
 Terminal window  
@@ -157,137 +128,47 @@ npx wrangler d1 execute d1-comments-api --remote --file schemas/schema.sql
 
 Replace the contents of `src/index.ts` with the following code. This sets up a Hono application with a typed `Bindings` interface so that `env.DB` is correctly typed as a `D1Database`:
 
-* [  JavaScript ](#tab-panel-7919)
-* [  TypeScript ](#tab-panel-7920)
+* [  JavaScript ](#tab-panel-7995)
+* [  TypeScript ](#tab-panel-7996)
 
 JavaScript
 
 ```
-
 import { Hono } from "hono";
-
-
 const app = new Hono();
-
-
-app.get("/api/posts/:slug/comments", async (c) => {
-
-  // Do something and return an HTTP response
-
-  // Optionally, do something with c.req.param("slug")
-
-});
-
-
-app.post("/api/posts/:slug/comments", async (c) => {
-
-  // Do something and return an HTTP response
-
-  // Optionally, do something with c.req.param("slug")
-
-});
-
-
+app.get("/api/posts/:slug/comments", async (c) => {  // Do something and return an HTTP response  // Optionally, do something with c.req.param("slug")});
+app.post("/api/posts/:slug/comments", async (c) => {  // Do something and return an HTTP response  // Optionally, do something with c.req.param("slug")});
 export default app;
-
-
 ```
 
 TypeScript
 
 ```
-
 import { Hono } from "hono";
-
-
-type Bindings = {
-
-  DB: D1Database;
-
-};
-
-
+type Bindings = {  DB: D1Database;};
 const app = new Hono<{ Bindings: Bindings }>();
-
-
-app.get("/api/posts/:slug/comments", async (c) => {
-
-  // Do something and return an HTTP response
-
-  // Optionally, do something with c.req.param("slug")
-
-});
-
-
-app.post("/api/posts/:slug/comments", async (c) => {
-
-  // Do something and return an HTTP response
-
-  // Optionally, do something with c.req.param("slug")
-
-});
-
-
+app.get("/api/posts/:slug/comments", async (c) => {  // Do something and return an HTTP response  // Optionally, do something with c.req.param("slug")});
+app.post("/api/posts/:slug/comments", async (c) => {  // Do something and return an HTTP response  // Optionally, do something with c.req.param("slug")});
 export default app;
-
-
 ```
 
 ## 6\. Query comments
 
 Add the logic for the `GET` endpoint to retrieve comments for a given post. This uses the D1 [Workers Binding API](https://developers.cloudflare.com/d1/worker-api/) to prepare and execute a parameterized query:
 
-* [  JavaScript ](#tab-panel-7915)
-* [  TypeScript ](#tab-panel-7916)
+* [  JavaScript ](#tab-panel-7991)
+* [  TypeScript ](#tab-panel-7992)
 
 JavaScript
 
 ```
-
-app.get("/api/posts/:slug/comments", async (c) => {
-
-  const { slug } = c.req.param();
-
-  const { results } = await c.env.DB.prepare(
-
-    "SELECT * FROM comments WHERE post_slug = ?",
-
-  )
-
-    .bind(slug)
-
-    .run();
-
-  return c.json(results);
-
-});
-
-
+app.get("/api/posts/:slug/comments", async (c) => {  const { slug } = c.req.param();  const { results } = await c.env.DB.prepare(    "SELECT * FROM comments WHERE post_slug = ?",  )    .bind(slug)    .run();  return c.json(results);});
 ```
 
 TypeScript
 
 ```
-
-app.get("/api/posts/:slug/comments", async (c) => {
-
-  const { slug } = c.req.param();
-
-  const { results } = await c.env.DB.prepare(
-
-    "SELECT * FROM comments WHERE post_slug = ?",
-
-  )
-
-    .bind(slug)
-
-    .run();
-
-  return c.json(results);
-
-});
-
-
+app.get("/api/posts/:slug/comments", async (c) => {  const { slug } = c.req.param();  const { results } = await c.env.DB.prepare(    "SELECT * FROM comments WHERE post_slug = ?",  )    .bind(slug)    .run();  return c.json(results);});
 ```
 
 The code uses [prepare](https://developers.cloudflare.com/d1/worker-api/d1-database/#prepare) to create a parameterized statement, [bind](https://developers.cloudflare.com/d1/worker-api/prepared-statements/#bind) to safely pass the slug value (preventing SQL injection), and [run](https://developers.cloudflare.com/d1/worker-api/prepared-statements/#run) to execute the query.
@@ -296,151 +177,47 @@ The code uses [prepare](https://developers.cloudflare.com/d1/worker-api/d1-datab
 
 Add the `POST` endpoint to create new comments. This validates the request body before inserting a row:
 
-* [  JavaScript ](#tab-panel-7921)
-* [  TypeScript ](#tab-panel-7922)
+* [  JavaScript ](#tab-panel-7997)
+* [  TypeScript ](#tab-panel-7998)
 
 JavaScript
 
 ```
-
-app.post("/api/posts/:slug/comments", async (c) => {
-
-  const { slug } = c.req.param();
-
-  const { author, body } = await c.req.json();
-
-
-  if (!author) return c.text("Missing author value for new comment", 400);
-
-  if (!body) return c.text("Missing body value for new comment", 400);
-
-
-  const { success } = await c.env.DB.prepare(
-
-    "INSERT INTO comments (author, body, post_slug) VALUES (?, ?, ?)",
-
-  )
-
-    .bind(author, body, slug)
-
-    .run();
-
-
-  if (success) {
-
-    c.status(201);
-
-    return c.text("Created");
-
-  } else {
-
-    c.status(500);
-
-    return c.text("Something went wrong");
-
-  }
-
-});
-
-
+app.post("/api/posts/:slug/comments", async (c) => {  const { slug } = c.req.param();  const { author, body } = await c.req.json();
+  if (!author) return c.text("Missing author value for new comment", 400);  if (!body) return c.text("Missing body value for new comment", 400);
+  const { success } = await c.env.DB.prepare(    "INSERT INTO comments (author, body, post_slug) VALUES (?, ?, ?)",  )    .bind(author, body, slug)    .run();
+  if (success) {    c.status(201);    return c.text("Created");  } else {    c.status(500);    return c.text("Something went wrong");  }});
 ```
 
 TypeScript
 
 ```
-
-app.post("/api/posts/:slug/comments", async (c) => {
-
-  const { slug } = c.req.param();
-
-  const { author, body } = await c.req.json<{
-
-    author: string;
-
-    body: string;
-
-  }>();
-
-
-  if (!author) return c.text("Missing author value for new comment", 400);
-
-  if (!body) return c.text("Missing body value for new comment", 400);
-
-
-  const { success } = await c.env.DB.prepare(
-
-    "INSERT INTO comments (author, body, post_slug) VALUES (?, ?, ?)",
-
-  )
-
-    .bind(author, body, slug)
-
-    .run();
-
-
-  if (success) {
-
-    c.status(201);
-
-    return c.text("Created");
-
-  } else {
-
-    c.status(500);
-
-    return c.text("Something went wrong");
-
-  }
-
-});
-
-
+app.post("/api/posts/:slug/comments", async (c) => {  const { slug } = c.req.param();  const { author, body } = await c.req.json<{    author: string;    body: string;  }>();
+  if (!author) return c.text("Missing author value for new comment", 400);  if (!body) return c.text("Missing body value for new comment", 400);
+  const { success } = await c.env.DB.prepare(    "INSERT INTO comments (author, body, post_slug) VALUES (?, ?, ?)",  )    .bind(author, body, slug)    .run();
+  if (success) {    c.status(201);    return c.text("Created");  } else {    c.status(500);    return c.text("Something went wrong");  }});
 ```
 
 ## 8\. (Optional) Add CORS support
 
 If you plan to call this API from a front-end application on a different origin, add CORS middleware. Import the `cors` module from Hono and add it before your routes:
 
-* [  JavaScript ](#tab-panel-7917)
-* [  TypeScript ](#tab-panel-7918)
+* [  JavaScript ](#tab-panel-7993)
+* [  TypeScript ](#tab-panel-7994)
 
 JavaScript
 
 ```
-
-import { Hono } from "hono";
-
-import { cors } from "hono/cors";
-
-
-const app = new Hono();
-
-app.use("/api/*", cors());
-
-
+import { Hono } from "hono";import { cors } from "hono/cors";
+const app = new Hono();app.use("/api/*", cors());
 ```
 
 TypeScript
 
 ```
-
-import { Hono } from "hono";
-
-import { cors } from "hono/cors";
-
-
-type Bindings = {
-
-  DB: D1Database;
-
-};
-
-
-const app = new Hono<{ Bindings: Bindings }>();
-
-app.use("/api/*", cors());
-
-
+import { Hono } from "hono";import { cors } from "hono/cors";
+type Bindings = {  DB: D1Database;};
+const app = new Hono<{ Bindings: Bindings }>();app.use("/api/*", cors());
 ```
 
 When you make requests to `/api/*`, Hono will automatically generate and add CORS headers to responses from your API.
@@ -461,10 +238,7 @@ npx wrangler deploy
 3. Test the API by inserting and then retrieving a comment:  
 Terminal window  
 ```  
-# Replace <YOUR_SUBDOMAIN> with your workers.dev subdomain  
-curl -X POST https://d1-comments-api.<YOUR_SUBDOMAIN>.workers.dev/api/posts/hello-world/comments \  
-  -H "Content-Type: application/json" \  
-  -d '{"author": "Kristian", "body": "Great post!"}'  
+# Replace <YOUR_SUBDOMAIN> with your workers.dev subdomaincurl -X POST https://d1-comments-api.<YOUR_SUBDOMAIN>.workers.dev/api/posts/hello-world/comments \  -H "Content-Type: application/json" \  -d '{"author": "Kristian", "body": "Great post!"}'  
 ```  
 ```  
 Created  
@@ -474,190 +248,41 @@ Terminal window
 curl https://d1-comments-api.<YOUR_SUBDOMAIN>.workers.dev/api/posts/hello-world/comments  
 ```  
 ```  
-[  
-  {  
-    "id": 1,  
-    "author": "Kristian",  
-    "body": "Great post!",  
-    "post_slug": "hello-world"  
-  }  
-]  
+[  {    "id": 1,    "author": "Kristian",    "body": "Great post!",    "post_slug": "hello-world"  }]  
 ```
 
 ## Full example
 
 The complete `src/index.ts` with all routes and CORS support:
 
-* [  JavaScript ](#tab-panel-7923)
-* [  TypeScript ](#tab-panel-7924)
+* [  JavaScript ](#tab-panel-7999)
+* [  TypeScript ](#tab-panel-8000)
 
 JavaScript
 
 ```
-
-import { Hono } from "hono";
-
-import { cors } from "hono/cors";
-
-
-const app = new Hono();
-
-app.use("/api/*", cors());
-
-
-app.get("/api/posts/:slug/comments", async (c) => {
-
-  const { slug } = c.req.param();
-
-  const { results } = await c.env.DB.prepare(
-
-    "SELECT * FROM comments WHERE post_slug = ?",
-
-  )
-
-    .bind(slug)
-
-    .run();
-
-  return c.json(results);
-
-});
-
-
-app.post("/api/posts/:slug/comments", async (c) => {
-
-  const { slug } = c.req.param();
-
-  const { author, body } = await c.req.json();
-
-
-  if (!author) return c.text("Missing author value for new comment", 400);
-
-  if (!body) return c.text("Missing body value for new comment", 400);
-
-
-  const { success } = await c.env.DB.prepare(
-
-    "INSERT INTO comments (author, body, post_slug) VALUES (?, ?, ?)",
-
-  )
-
-    .bind(author, body, slug)
-
-    .run();
-
-
-  if (success) {
-
-    c.status(201);
-
-    return c.text("Created");
-
-  } else {
-
-    c.status(500);
-
-    return c.text("Something went wrong");
-
-  }
-
-});
-
-
+import { Hono } from "hono";import { cors } from "hono/cors";
+const app = new Hono();app.use("/api/*", cors());
+app.get("/api/posts/:slug/comments", async (c) => {  const { slug } = c.req.param();  const { results } = await c.env.DB.prepare(    "SELECT * FROM comments WHERE post_slug = ?",  )    .bind(slug)    .run();  return c.json(results);});
+app.post("/api/posts/:slug/comments", async (c) => {  const { slug } = c.req.param();  const { author, body } = await c.req.json();
+  if (!author) return c.text("Missing author value for new comment", 400);  if (!body) return c.text("Missing body value for new comment", 400);
+  const { success } = await c.env.DB.prepare(    "INSERT INTO comments (author, body, post_slug) VALUES (?, ?, ?)",  )    .bind(author, body, slug)    .run();
+  if (success) {    c.status(201);    return c.text("Created");  } else {    c.status(500);    return c.text("Something went wrong");  }});
 export default app;
-
-
 ```
 
 TypeScript
 
 ```
-
-import { Hono } from "hono";
-
-import { cors } from "hono/cors";
-
-
-type Bindings = {
-
-  DB: D1Database;
-
-};
-
-
-const app = new Hono<{ Bindings: Bindings }>();
-
-app.use("/api/*", cors());
-
-
-app.get("/api/posts/:slug/comments", async (c) => {
-
-  const { slug } = c.req.param();
-
-  const { results } = await c.env.DB.prepare(
-
-    "SELECT * FROM comments WHERE post_slug = ?",
-
-  )
-
-    .bind(slug)
-
-    .run();
-
-  return c.json(results);
-
-});
-
-
-app.post("/api/posts/:slug/comments", async (c) => {
-
-  const { slug } = c.req.param();
-
-  const { author, body } = await c.req.json<{
-
-    author: string;
-
-    body: string;
-
-  }>();
-
-
-  if (!author) return c.text("Missing author value for new comment", 400);
-
-  if (!body) return c.text("Missing body value for new comment", 400);
-
-
-  const { success } = await c.env.DB.prepare(
-
-    "INSERT INTO comments (author, body, post_slug) VALUES (?, ?, ?)",
-
-  )
-
-    .bind(author, body, slug)
-
-    .run();
-
-
-  if (success) {
-
-    c.status(201);
-
-    return c.text("Created");
-
-  } else {
-
-    c.status(500);
-
-    return c.text("Something went wrong");
-
-  }
-
-});
-
-
+import { Hono } from "hono";import { cors } from "hono/cors";
+type Bindings = {  DB: D1Database;};
+const app = new Hono<{ Bindings: Bindings }>();app.use("/api/*", cors());
+app.get("/api/posts/:slug/comments", async (c) => {  const { slug } = c.req.param();  const { results } = await c.env.DB.prepare(    "SELECT * FROM comments WHERE post_slug = ?",  )    .bind(slug)    .run();  return c.json(results);});
+app.post("/api/posts/:slug/comments", async (c) => {  const { slug } = c.req.param();  const { author, body } = await c.req.json<{    author: string;    body: string;  }>();
+  if (!author) return c.text("Missing author value for new comment", 400);  if (!body) return c.text("Missing body value for new comment", 400);
+  const { success } = await c.env.DB.prepare(    "INSERT INTO comments (author, body, post_slug) VALUES (?, ?, ?)",  )    .bind(author, body, slug)    .run();
+  if (success) {    c.status(201);    return c.text("Created");  } else {    c.status(500);    return c.text("Something went wrong");  }});
 export default app;
-
-
 ```
 
 ## Next steps

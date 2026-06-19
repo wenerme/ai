@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,7 +27,7 @@ Cloudflare Workers provides tracing instrumentation **out of the box** — no co
 
 * **Fetch calls** — All outbound HTTP requests, capturing timing, status codes, and request metadata. This enables you to quickly identify how external dependencies affect your application's performance.
 * **Binding calls** — Interactions with various Worker bindings such as KV reads and writes, R2 object storage operations and Durable Object invocations.
-* **Handler calls** — The complete lifecycle of each Worker invocation, including triggers such as [fetch handlers](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/),[scheduled handlers](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/), and [queue handlers](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer).
+* **Handler calls** — The complete lifecycle of each Worker invocation, including triggers such as [fetch handlers](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/), [scheduled handlers](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/), and [queue handlers](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer).
 
 For a full list of instrumented operations, refer to the [spans and attributes documentation](https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/).
 
@@ -41,45 +41,19 @@ For more information, refer to [Custom spans](https://developers.cloudflare.com/
 
 You can configure tracing by setting `observability.traces.enabled = true` in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/#observability).
 
-* [  wrangler.jsonc ](#tab-panel-11870)
-* [  wrangler.toml ](#tab-panel-11871)
+* [  wrangler.jsonc ](#tab-panel-11887)
+* [  wrangler.toml ](#tab-panel-11888)
 
 JSONC
 
 ```
-
-{
-
-  "observability": {
-
-    "traces": {
-
-      "enabled": true,
-
-      // optional sampling rate (recommended for high-traffic workloads)
-
-      "head_sampling_rate": 0.05
-
-    }
-
-  }
-
-}
-
-
+{  "observability": {    "traces": {      "enabled": true,      // optional sampling rate (recommended for high-traffic workloads)      "head_sampling_rate": 0.05    }  }}
 ```
 
 TOML
 
 ```
-
-[observability.traces]
-
-enabled = true
-
-head_sampling_rate = 0.05
-
-
+[observability.traces]enabled = truehead_sampling_rate = 0.05
 ```
 
 Note
@@ -92,7 +66,7 @@ An updated [compatibility\_date](https://developers.cloudflare.com/workers/confi
 
 ### Exporting OpenTelemetry traces to a 3rd party destination
 
-Workers tracing follows [OpenTelemetry (OTel) standards ↗](https://opentelemetry.io/). This makes it compatible with popular observability platforms, such as [Honeycomb](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/honeycomb/), [Grafana Cloud](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/grafana-cloud/), and[Axiom](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/axiom/), while requiring zero development effort from you. If your observability provider has an available OpenTelemetry endpoint, you can export traces (and logs)!
+Workers tracing follows [OpenTelemetry (OTel) standards ↗](https://opentelemetry.io/). This makes it compatible with popular observability platforms, such as [Honeycomb](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/honeycomb/), [Grafana Cloud](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/grafana-cloud/), and [Axiom](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/axiom/), while requiring zero development effort from you. If your observability provider has an available OpenTelemetry endpoint, you can export traces (and logs)!
 
 Learn more about exporting OpenTelemetry data from Workers [here](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/).
 
@@ -108,62 +82,20 @@ The valid sampling range is from `0` to `1`, where `0` indicates zero out of one
 
 If you have not specified a sampling rate, it defaults to `1`, meaning 100% of requests will be traced.
 
-* [  wrangler.jsonc ](#tab-panel-11872)
-* [  wrangler.toml ](#tab-panel-11873)
+* [  wrangler.jsonc ](#tab-panel-11889)
+* [  wrangler.toml ](#tab-panel-11890)
 
 JSONC
 
 ```
-
-{
-
-  "observability": {
-
-    "traces": {
-
-      "enabled": true,
-
-      // set tracing sampling rate to 5%
-
-      "head_sampling_rate": 0.05
-
-    },
-
-    "logs": {
-
-      "enabled": true,
-
-      // set logging sampling rate to 60%
-
-      "head_sampling_rate": 0.6
-
-    }
-
-  }
-
-}
-
-
+{  "observability": {    "traces": {      "enabled": true,      // set tracing sampling rate to 5%      "head_sampling_rate": 0.05    },    "logs": {      "enabled": true,      // set logging sampling rate to 60%      "head_sampling_rate": 0.6    }  }}
 ```
 
 TOML
 
 ```
-
-[observability.traces]
-
-enabled = true
-
-head_sampling_rate = 0.05
-
-
-[observability.logs]
-
-enabled = true
-
-head_sampling_rate = 0.6
-
-
+[observability.traces]enabled = truehead_sampling_rate = 0.05
+[observability.logs]enabled = truehead_sampling_rate = 0.6
 ```
 
 If you have `head_sampling_rate` configured for logs, you can also create a separate rate for traces.
@@ -176,10 +108,10 @@ Workers tracing is currently **free** during the initial beta period. This inclu
 
 Starting on March 1, 2026, tracing will be billed as part of your usage on the Workers Free Paid and Enterprise plans. Each span in a trace represents one observability event, sharing the same monthly quota and pricing as [Workers logs](https://developers.cloudflare.com/workers/platform/pricing/#workers-logs):
 
-| Events (trace spans or log events) | Retention                                                          |        |
-| ---------------------------------- | ------------------------------------------------------------------ | ------ |
-| **Workers Free**                   | 200,000 per day                                                    | 3 Days |
-| **Workers Paid**                   | 10 million included per month +$0.60 per additional million events | 7 Days |
+|                  | Events (trace spans or log events)                                 | Retention |
+| ---------------- | ------------------------------------------------------------------ | --------- |
+| **Workers Free** | 200,000 per day                                                    | 3 Days    |
+| **Workers Paid** | 10 million included per month +$0.60 per additional million events | 7 Days    |
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/observability/traces/#page","headline":"Traces · Cloudflare Workers docs","description":"Gain end-to-end visibility into request flows across your Workers application with automatic tracing instrumentation.","url":"https://developers.cloudflare.com/workers/observability/traces/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

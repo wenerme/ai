@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,37 +37,8 @@ Set `config` to an object to provide values that merge with defaults and Wrangle
 vite.config.ts
 
 ```
-
-import { defineConfig } from "vite";
-
-import { cloudflare } from "@cloudflare/vite-plugin";
-
-
-export default defineConfig({
-
-  plugins: [
-
-    cloudflare({
-
-      config: {
-
-        compatibility_date: "2025-01-01",
-
-        vars: {
-
-          API_URL: "https://api.example.com",
-
-        },
-
-      },
-
-    }),
-
-  ],
-
-});
-
-
+import { defineConfig } from "vite";import { cloudflare } from "@cloudflare/vite-plugin";
+export default defineConfig({  plugins: [    cloudflare({      config: {        compatibility_date: "2025-01-01",        vars: {          API_URL: "https://api.example.com",        },      },    }),  ],});
 ```
 
 These values merge with Wrangler config file values, with the `config` values taking precedence.
@@ -79,37 +50,8 @@ Use a function when configuration depends on existing config values or external 
 vite.config.ts
 
 ```
-
-import { defineConfig } from "vite";
-
-import { cloudflare } from "@cloudflare/vite-plugin";
-
-
-export default defineConfig({
-
-  plugins: [
-
-    cloudflare({
-
-      config: (userConfig) => ({
-
-        vars: {
-
-          WORKER_NAME: userConfig.name,
-
-          BUILD_TIME: new Date().toISOString(),
-
-        },
-
-      }),
-
-    }),
-
-  ],
-
-});
-
-
+import { defineConfig } from "vite";import { cloudflare } from "@cloudflare/vite-plugin";
+export default defineConfig({  plugins: [    cloudflare({      config: (userConfig) => ({        vars: {          WORKER_NAME: userConfig.name,          BUILD_TIME: new Date().toISOString(),        },      }),    }),  ],});
 ```
 
 The function receives the current configuration (defaults or loaded config file). Return an object with values to merge.
@@ -121,33 +63,8 @@ A `config` function can mutate the config object directly instead of returning o
 vite.config.ts
 
 ```
-
-import { defineConfig } from "vite";
-
-import { cloudflare } from "@cloudflare/vite-plugin";
-
-
-export default defineConfig({
-
-  plugins: [
-
-    cloudflare({
-
-      config: (userConfig) => {
-
-        // Replace all existing compatibility flags
-
-        userConfig.compatibility_flags = ["nodejs_compat"];
-
-      },
-
-    }),
-
-  ],
-
-});
-
-
+import { defineConfig } from "vite";import { cloudflare } from "@cloudflare/vite-plugin";
+export default defineConfig({  plugins: [    cloudflare({      config: (userConfig) => {        // Replace all existing compatibility flags        userConfig.compatibility_flags = ["nodejs_compat"];      },    }),  ],});
 ```
 
 Note
@@ -163,55 +80,8 @@ Define auxiliary Workers without config files using `config` inside the `auxilia
 vite.config.ts
 
 ```
-
-import { defineConfig } from "vite";
-
-import { cloudflare } from "@cloudflare/vite-plugin";
-
-
-export default defineConfig({
-
-  plugins: [
-
-    cloudflare({
-
-      config: {
-
-        name: "entry-worker",
-
-        main: "./src/entry.ts",
-
-        compatibility_date: "2025-01-01",
-
-        services: [{ binding: "API", service: "api-worker" }],
-
-      },
-
-      auxiliaryWorkers: [
-
-        {
-
-          config: {
-
-            name: "api-worker",
-
-            main: "./src/api.ts",
-
-            compatibility_date: "2025-01-01",
-
-          },
-
-        },
-
-      ],
-
-    }),
-
-  ],
-
-});
-
-
+import { defineConfig } from "vite";import { cloudflare } from "@cloudflare/vite-plugin";
+export default defineConfig({  plugins: [    cloudflare({      config: {        name: "entry-worker",        main: "./src/entry.ts",        compatibility_date: "2025-01-01",        services: [{ binding: "API", service: "api-worker" }],      },      auxiliaryWorkers: [        {          config: {            name: "api-worker",            main: "./src/api.ts",            compatibility_date: "2025-01-01",          },        },      ],    }),  ],});
 ```
 
 ### Configuration overrides
@@ -221,47 +91,8 @@ Combine a config file with `config` to override specific values:
 vite.config.ts
 
 ```
-
-import { defineConfig } from "vite";
-
-import { cloudflare } from "@cloudflare/vite-plugin";
-
-
-export default defineConfig({
-
-  plugins: [
-
-    cloudflare({
-
-      configPath: "./wrangler.jsonc",
-
-      auxiliaryWorkers: [
-
-        {
-
-          configPath: "./workers/api/wrangler.jsonc",
-
-          config: {
-
-            vars: {
-
-              ENDPOINT: "https://api.example.com/v2",
-
-            },
-
-          },
-
-        },
-
-      ],
-
-    }),
-
-  ],
-
-});
-
-
+import { defineConfig } from "vite";import { cloudflare } from "@cloudflare/vite-plugin";
+export default defineConfig({  plugins: [    cloudflare({      configPath: "./wrangler.jsonc",      auxiliaryWorkers: [        {          configPath: "./workers/api/wrangler.jsonc",          config: {            vars: {              ENDPOINT: "https://api.example.com/v2",            },          },        },      ],    }),  ],});
 ```
 
 ### Configuration inheritance
@@ -271,47 +102,8 @@ Auxiliary Workers receive the resolved entry Worker config in the second paramet
 vite.config.ts
 
 ```
-
-import { defineConfig } from "vite";
-
-import { cloudflare } from "@cloudflare/vite-plugin";
-
-
-export default defineConfig({
-
-  plugins: [
-
-    cloudflare({
-
-      auxiliaryWorkers: [
-
-        {
-
-          config: (_, { entryWorkerConfig }) => ({
-
-            name: "auxiliary-worker",
-
-            main: "./src/auxiliary-worker.ts",
-
-            // Inherit compatibility settings from entry Worker
-
-            compatibility_date: entryWorkerConfig.compatibility_date,
-
-            compatibility_flags: entryWorkerConfig.compatibility_flags,
-
-          }),
-
-        },
-
-      ],
-
-    }),
-
-  ],
-
-});
-
-
+import { defineConfig } from "vite";import { cloudflare } from "@cloudflare/vite-plugin";
+export default defineConfig({  plugins: [    cloudflare({      auxiliaryWorkers: [        {          config: (_, { entryWorkerConfig }) => ({            name: "auxiliary-worker",            main: "./src/auxiliary-worker.ts",            // Inherit compatibility settings from entry Worker            compatibility_date: entryWorkerConfig.compatibility_date,            compatibility_flags: entryWorkerConfig.compatibility_flags,          }),        },      ],    }),  ],});
 ```
 
 ## Configuration merging behavior

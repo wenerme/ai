@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -44,8 +44,8 @@ To associate an integration:
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Integrations** \> **Cloud & SaaS Integrations** \> **Integrations**
 2. Select **Connect an integration**.
 3. Select an application: Choose between **Google Workspace CASB + EMAIL**, or **Microsoft CASB + EMAIL**.  
-   * Refer to [Enable Gmail BCC integration](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/bcc-setup/gmail-bcc-setup/enable-gmail-integration/#1-create-a-service-account-in-your-gcp-project) if you select **Google Workspace CASB + EMAIL**.  
-   * Refer to [Enable Microsoft integration](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/api/m365-api/#enable-microsoft-integration) if you select **Microsoft CASB + EMAIL**.
+  * Refer to [Enable Gmail BCC integration](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/bcc-setup/gmail-bcc-setup/enable-gmail-integration/#1-create-a-service-account-in-your-gcp-project) if you select **Google Workspace CASB + EMAIL**.
+  * Refer to [Enable Microsoft integration](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/api/m365-api/#enable-microsoft-integration) if you select **Microsoft CASB + EMAIL**.
 4. After you have associated an integration, go to **Email security** \> **Set up**.
 5. Follow the instructions to [connect a domain](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/mx-inline-deployment-setup/#connect-a-domain).
 
@@ -55,20 +55,20 @@ If you have verified zones on Cloudflare, continue with the following steps:
 
 1. **Connect a domain**: Select your domain. Then, select **Continue**.
 2. **Select position**: This step allows you to choose where Email security fits into your mail flow and configure position settings:  
-   * **Select position**: Choose between:  
-         * **Sit first (hop count = 1)**: Email security is the first server that receives the email. There are no other email scanners or services between the Internet and Cloudflare.  
-         * **Sit in the middle (hop count > 1)**: Email security sits anywhere other than the first position. Other servers receive emails _before_ Email security. There are other email scanners or email services in between.  
-   * **Position settings**: Refine how Email security receives and forwards emails:  
-         * **Forwarding address**: This is your mail flow next hop after Email security. This value is auto-filled, but you can still change it.  
-         * **Outbound TLS**: Choose between:  
-                  1. **Forward all messages over TLS** (recommended).  
-                  2. **Forward all messages using opportunistic TLS**.  
-   * Select **Continue**.
+  * **Select position**: Choose between:  
+    * **Sit first (hop count = 1)**: Email security is the first server that receives the email. There are no other email scanners or services between the Internet and Cloudflare.
+    * **Sit in the middle (hop count > 1)**: Email security sits anywhere other than the first position. Other servers receive emails _before_ Email security. There are other email scanners or email services in between.
+  * **Position settings**: Refine how Email security receives and forwards emails:  
+    * **Forwarding address**: This is your mail flow next hop after Email security. This value is auto-filled, but you can still change it.
+    * **Outbound TLS**: Choose between:  
+      1. **Forward all messages over TLS** (recommended).
+      2. **Forward all messages using opportunistic TLS**.
+  * Select **Continue**.
 3. (**Optional**, select **Skip for now** to skip this step) **Configure quarantine policy**: Select dispositions to automatically prevent certain types of incoming messages from reaching a recipient's inbox.
 4. (Optional) **Update MX records**:  
-   * Email security can automatically update MX records for domains that proxy traffic through Cloudflare. Under **Your mail processing location**, select your mail processing location. You can refer to [Regional processing](https://developers.cloudflare.com/cloudflare-one/email-security/reference/regional-processing/) for more information.  
-   * You can also choose to allow Cloudflare to update MX records by selecting **I confirm that I allow Cloudflare to update to the new MX records**. When Email security updates MX records, we replace your original MX records with Email security MX records.  
-   * Select **Continue**.
+  * Email security can automatically update MX records for domains that proxy traffic through Cloudflare. Under **Your mail processing location**, select your mail processing location. You can refer to [Regional processing](https://developers.cloudflare.com/cloudflare-one/email-security/reference/regional-processing/) for more information.
+  * You can also choose to allow Cloudflare to update MX records by selecting **I confirm that I allow Cloudflare to update to the new MX records**. When Email security updates MX records, we replace your original MX records with Email security MX records.
+  * Select **Continue**.
 5. **Review details**: Review your domain, then select **Go to domains**.
 
 ## Users who do not have domains with Cloudflare

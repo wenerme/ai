@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -69,9 +69,10 @@ To allow users to access the MySQL database using an internal hostname instead o
 
 1. Go to **Traffic policies** \> **Resolver policies**.
 2. Select **Add a policy**.
-3. Create an expression to match against the private [domain](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#domain) or [hostname](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#host) of the application, like in the following example:  
-| Selector | Operator | Value              |  
-| -------- | -------- | ------------------ |  
+3. Create an expression to match against the private [domain](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#domain) or [hostname](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#host) of the application, like in the following example:
+
+| Selector | Operator | Value              |
+| -------- | -------- | ------------------ |
 | Domain   | in       | internalrecord.com |
 4. In **Select DNS resolver**, select _Configure custom DNS resolvers_.
 5. Enter the private IP address of your DNS server.

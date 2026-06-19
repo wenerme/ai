@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,41 +27,15 @@ A component which renders the draft attachment to send
 ### Basic Usage
 
 ```
-
 import { RtkDraftAttachmentView } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return <RtkDraftAttachmentView />;
-
-}
-
-
+function MyComponent() {  return <RtkDraftAttachmentView />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkDraftAttachmentView } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkDraftAttachmentView
-
-      attachment={{}}
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkDraftAttachmentView      attachment={{}}    />  );}
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,10 +31,11 @@ This guide covers how to configure [Hubspot ↗](https://knowledge.hubspot.com/a
 
 1. In Cloudflare One, go to **Access controls** \> **Applications**, select **Create new application**, and select **SaaS application**.
 2. Set the **Application type** to _Hubspot_.
-3. Use the following Hubspot field mappings:  
-| Hubspot values | Cloudflare values              |  
-| -------------- | ------------------------------ |  
-| Audience URI   | Entity ID                      |  
+3. Use the following Hubspot field mappings:
+
+| Hubspot values | Cloudflare values              |
+| -------------- | ------------------------------ |
+| Audience URI   | Entity ID                      |
 | Sign On URL    | Assertion Consumer Service URL |
 4. Set **NameID** to _Email_.
 5. Add any desired [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) to your application.
@@ -48,11 +49,12 @@ This guide covers how to configure [Hubspot ↗](https://knowledge.hubspot.com/a
 
 ## 4\. Finalize Hubspot configuration
 
-1. Use the following field mappings:  
-| Cloudflare value | Hubspot value                        |  
-| ---------------- | ------------------------------------ |  
-| SSO endpoint     | Identity Provider Single Sign-on URL |  
-| Entity ID        | Identity Provider Identifier         |  
+1. Use the following field mappings:
+
+| Cloudflare value | Hubspot value                        |
+| ---------------- | ------------------------------------ |
+| SSO endpoint     | Identity Provider Single Sign-on URL |
+| Entity ID        | Identity Provider Identifier         |
 | Public key       | Certificate                          |
 2. Select **Verify** to validate the integration.
 

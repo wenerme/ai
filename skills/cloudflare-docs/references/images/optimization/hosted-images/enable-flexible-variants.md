@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,16 +28,7 @@ Make a `PATCH` request to the [Update a variant endpoint](https://developers.clo
 Terminal window
 
 ```
-
-curl --request PATCH https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v1/config \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Content-Type: application/json" \
-
---data '{"flexible_variants": true}'
-
-
+curl --request PATCH https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v1/config \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{"flexible_variants": true}'
 ```
 
 After activation, you can use [optimization parameters](https://developers.cloudflare.com/images/optimization/features/#parameters) on any Cloudflare image. For example,

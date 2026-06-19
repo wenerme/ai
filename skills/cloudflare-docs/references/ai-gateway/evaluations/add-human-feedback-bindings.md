@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,33 +21,8 @@ Start by sending a prompt to the AI model through your AI Gateway.
 JavaScript
 
 ```
-
-const resp = await env.AI.run(
-
-  "@cf/meta/llama-3.1-8b-instruct",
-
-  {
-
-    prompt: "tell me a joke",
-
-  },
-
-  {
-
-    gateway: {
-
-      id: "my-gateway",
-
-    },
-
-  },
-
-);
-
-
+const resp = await env.AI.run(  "@cf/meta/llama-3.1-8b-instruct",  {    prompt: "tell me a joke",  },  {    gateway: {      id: "my-gateway",    },  },);
 const myLogId = env.AI.aiGatewayLogId;
-
-
 ```
 
 Let the user interact with or evaluate the AI response. This interaction will inform the feedback you send back to the AI Gateway.
@@ -59,22 +34,7 @@ Use the [patchLog()](https://developers.cloudflare.com/ai-gateway/usage/worker-b
 JavaScript
 
 ```
-
-await env.AI.gateway("my-gateway").patchLog(myLogId, {
-
-  feedback: 1, // all fields are optional; set values that fit your use case
-
-  score: 100,
-
-  metadata: {
-
-    user: "123", // Optional metadata to provide additional context
-
-  },
-
-});
-
-
+await env.AI.gateway("my-gateway").patchLog(myLogId, {  feedback: 1, // all fields are optional; set values that fit your use case  score: 100,  metadata: {    user: "123", // Optional metadata to provide additional context  },});
 ```
 
 ## Feedback parameters explanation
@@ -90,22 +50,7 @@ The `patchLog` method allows you to send feedback, score, and metadata for a spe
 JavaScript
 
 ```
-
-gateway.patchLog("my-log-id", {
-
-  feedback: 1,
-
-  score: 100,
-
-  metadata: {
-
-    user: "123",
-
-  },
-
-});
-
-
+gateway.patchLog("my-log-id", {  feedback: 1,  score: 100,  metadata: {    user: "123",  },});
 ```
 
 Returns: `Promise<void>` (Make sure to `await` the request.)

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,7 +16,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Containers are billed for every 10ms that they are actively running at the following rates, with included monthly usage as part of the $5 USD per month [Workers Paid plan](https://developers.cloudflare.com/workers/platform/pricing/):
 
-| Memory           | CPU                                                                | Disk                                                           |                                                           |
+|                  | Memory                                                             | CPU                                                            | Disk                                                      |
 | ---------------- | ------------------------------------------------------------------ | -------------------------------------------------------------- | --------------------------------------------------------- |
 | **Free**         | N/A                                                                | N/A                                                            |                                                           |
 | **Workers Paid** | 25 GiB-hours/month included  +$0.0000025 per additional GiB-second | 375 vCPU-minutes/month \+ $0.000020 per additional vCPU-second | 200 GB-hours/month  +$0.00000007 per additional GB-second |
@@ -54,7 +54,7 @@ Egress from Containers is priced at the following rates:
 
 ## Workers and Durable Objects Pricing
 
-When you use Containers, incoming requests to your containers are handled by your [Worker](https://developers.cloudflare.com/workers/platform/pricing/), and each container has its own[Durable Object](https://developers.cloudflare.com/durable-objects/platform/pricing/). You are billed for your usage of both Workers and Durable Objects.
+When you use Containers, incoming requests to your containers are handled by your [Worker](https://developers.cloudflare.com/workers/platform/pricing/), and each container has its own [Durable Object](https://developers.cloudflare.com/durable-objects/platform/pricing/). You are billed for your usage of both Workers and Durable Objects.
 
 ## Logs and Observability
 

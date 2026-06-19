@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -63,13 +63,16 @@ Besides defining rules with one of the above scopes, you must also select the [p
 
 The Advanced TCP Protection system constantly learns your TCP connections to mitigate DDoS attacks. Advanced TCP Protection rules can have one of the following execution modes: monitoring, mitigation (enabled), or disabled.
 
-* **Monitoring**  
-   * In this mode, Advanced TCP Protection will not impact any packets. Instead, the protection system will learn your legitimate TCP connections and show you what it would have mitigated. Check Network Analytics to visualize what actions Advanced TCP Protection would have taken on incoming packets, according to the current configuration.  
-   Refer to the [Analytics documentation](https://developers.cloudflare.com/analytics/network-analytics/configure/displayed-data/#view-logged-or-monitored-traffic) for more information on how to view logged or monitored traffic.
-* **​​Mitigation (Enabled)**  
-   * In this mode, Advanced TCP Protection will learn your legitimate TCP connections and perform mitigation actions on incoming TCP DDoS attacks based on the rule configuration (burst and rate sensitivity) and your [allowlist](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#allowlist).
-* **Disabled**  
-   * In this mode, a rule will not evaluate any incoming packets.
+* **Monitoring**
+
+  * In this mode, Advanced TCP Protection will not impact any packets. Instead, the protection system will learn your legitimate TCP connections and show you what it would have mitigated. Check Network Analytics to visualize what actions Advanced TCP Protection would have taken on incoming packets, according to the current configuration.  
+  Refer to the [Analytics documentation](https://developers.cloudflare.com/analytics/network-analytics/configure/displayed-data/#view-logged-or-monitored-traffic) for more information on how to view logged or monitored traffic.
+* **​​Mitigation (Enabled)**
+
+  * In this mode, Advanced TCP Protection will learn your legitimate TCP connections and perform mitigation actions on incoming TCP DDoS attacks based on the rule configuration (burst and rate sensitivity) and your [allowlist](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#allowlist).
+* **Disabled**
+
+  * In this mode, a rule will not evaluate any incoming packets.
 
 #### Burst sensitivity
 
@@ -133,9 +136,9 @@ When onboarding a new prefix, you would configure a monitoring filter for this p
 When you have both rules and filters configured, the execution mode is determined according to the following:
 
 1. If there is a match for one of the configured filters, use the filter's execution mode. The filter evaluation order is based on their mode, in the following order:  
-   1. Mitigation filter (filter with `enabled` mode)  
-   2. Monitoring filter (filter with `monitoring` mode)  
-   3. Off filter (filter with `disabled` mode)
+  1. Mitigation filter (filter with `enabled` mode)
+  2. Monitoring filter (filter with `monitoring` mode)
+  3. Off filter (filter with `disabled` mode)
 2. If no filter matched, use the execution mode determined by existing rules.
 3. If no rules match, disable Advanced TCP Protection.
 

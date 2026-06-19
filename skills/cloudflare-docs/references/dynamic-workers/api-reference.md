@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dynamic-workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -96,52 +96,11 @@ For example:
 JavaScript
 
 ```
-
 import { WorkerEntrypoint } from "cloudflare:workers";
-
-
-export class Greeter extends WorkerEntrypoint {
-
-  fetch(request) {
-
-    return new Response(`Hello, ${this.ctx.props.name}!`);
-
-  }
-
-}
-
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    let worker = env.LOADER.get("alice", () => {
-
-      return {
-
-        // Redirect the worker's global outbound to send all requests
-
-        // to the `Greeter` class, filling in `ctx.props.name` with
-
-        // the name "Alice", so that it always responds "Hello, Alice!".
-
-        globalOutbound: ctx.exports.Greeter({ props: { name: "Alice" } }),
-
-
-        // ... code ...
-
-      };
-
-    });
-
-
-    return worker.getEntrypoint().fetch(request);
-
-  },
-
-};
-
-
+export class Greeter extends WorkerEntrypoint {  fetch(request) {    return new Response(`Hello, ${this.ctx.props.name}!`);  }}
+export default {  async fetch(request, env, ctx) {    let worker = env.LOADER.get("alice", () => {      return {        // Redirect the worker's global outbound to send all requests        // to the `Greeter` class, filling in `ctx.props.name` with        // the name "Alice", so that it always responds "Hello, Alice!".        globalOutbound: ctx.exports.Greeter({ props: { name: "Alice" } }),
+        // ... code ...      };    });
+    return worker.getEntrypoint().fetch(request);  },};
 ```
 
 #### `` env ` object ` ``
@@ -162,56 +121,11 @@ Moreover, by using `ctx.exports` loopback bindings, you can further customize th
 JavaScript
 
 ```
-
 import { WorkerEntrypoint } from "cloudflare:workers";
-
-
-// Implement a binding which can be called by the dynamic Worker.
-
-export class Greeter extends WorkerEntrypoint {
-
-  greet() {
-
-    return `Hello, ${this.ctx.props.name}!`;
-
-  }
-
-}
-
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    let worker = env.LOADER.get("alice", () => {
-
-      return {
-
-        env: {
-
-          // Provide a binding which has a method greet() which can be called
-
-          // to receive a greeting. The binding knows the Worker's name.
-
-          GREETER: ctx.exports.Greeter({ props: { name: "Alice" } }),
-
-        },
-
-
-        // ... code ...
-
-      };
-
-    });
-
-
-    return worker.getEntrypoint().fetch(request);
-
-  },
-
-};
-
-
+// Implement a binding which can be called by the dynamic Worker.export class Greeter extends WorkerEntrypoint {  greet() {    return `Hello, ${this.ctx.props.name}!`;  }}
+export default {  async fetch(request, env, ctx) {    let worker = env.LOADER.get("alice", () => {      return {        env: {          // Provide a binding which has a method greet() which can be called          // to receive a greeting. The binding knows the Worker's name.          GREETER: ctx.exports.Greeter({ props: { name: "Alice" } }),        },
+        // ... code ...      };    });
+    return worker.getEntrypoint().fetch(request);  },};
 ```
 
 #### `` tails ` ServiceStub[] ` Optional ``
@@ -221,71 +135,12 @@ You may specify one or more [Tail Workers](https://developers.cloudflare.com/wor
 JavaScript
 
 ```
-
 import { WorkerEntrypoint } from "cloudflare:workers";
-
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    let worker = env.LOADER.get("alice", () => {
-
-      return {
-
-        // Send logs, errors, etc. to `LogTailer`. We pass `name` in the
-
-        // `ctx.props` so that `LogTailer` knows what generated the logs.
-
-        // (You can pass anything you want in `props`.)
-
-        tails: [ctx.exports.LogTailer({ props: { name: "alice" } })],
-
-
-        // ... code ...
-
-      };
-
-    });
-
-
-    return worker.getEntrypoint().fetch(request);
-
-  },
-
-};
-
-
-export class LogTailer extends WorkerEntrypoint {
-
-  async tail(events) {
-
-    let name = this.ctx.props.name;
-
-
-    // Send the logs off to our log endpoint, specifying the worker name in
-
-    // the URL.
-
-    //
-
-    // Note that `events` will always be an array of size 1 in this scenario,
-
-    // describing the event delivered to the dynamically-loaded Worker.
-
-    await fetch(`https://example.com/submit-logs/${name}`, {
-
-      method: "POST",
-
-      body: JSON.stringify(events),
-
-    });
-
-  }
-
-}
-
-
+export default {  async fetch(request, env, ctx) {    let worker = env.LOADER.get("alice", () => {      return {        // Send logs, errors, etc. to `LogTailer`. We pass `name` in the        // `ctx.props` so that `LogTailer` knows what generated the logs.        // (You can pass anything you want in `props`.)        tails: [ctx.exports.LogTailer({ props: { name: "alice" } })],
+        // ... code ...      };    });
+    return worker.getEntrypoint().fetch(request);  },};
+export class LogTailer extends WorkerEntrypoint {  async tail(events) {    let name = this.ctx.props.name;
+    // Send the logs off to our log endpoint, specifying the worker name in    // the URL.    //    // Note that `events` will always be an array of size 1 in this scenario,    // describing the event delivered to the dynamically-loaded Worker.    await fetch(`https://example.com/submit-logs/${name}`, {      method: "POST",      body: JSON.stringify(events),    });  }}
 ```
 
 ```json

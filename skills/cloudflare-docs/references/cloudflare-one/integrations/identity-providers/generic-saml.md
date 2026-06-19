@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -48,8 +48,8 @@ To download the SAML metadata file, copy-paste the metadata endpoint into a web 
 
 ## 2\. Add a SAML identity provider to Cloudflare One
 
-* [ Dashboard ](#tab-panel-7216)
-* [ Terraform (v5) ](#tab-panel-7217)
+* [ Dashboard ](#tab-panel-7292)
+* [ Terraform (v5) ](#tab-panel-7293)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Select **Add new identity provider** and select **SAML**.
@@ -59,23 +59,12 @@ To download the SAML metadata file, copy-paste the metadata endpoint into a web 
 6. (Optional) Under **Optional configurations**, configure [additional SAML options](#optional-configurations).
 7. Select **Save**.
 
-1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):  
-   * `Access: Organizations, Identity Providers, and Groups Write`
+1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
+
+  * `Access: Organizations, Identity Providers, and Groups Write`
 2. Configure the [cloudflare\_zero\_trust\_access\_identity\_provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fidentity%5Fprovider) resource:  
 ```  
-resource "cloudflare_zero_trust_access_identity_provider" "generic_saml_example" {  
-  account_id = var.cloudflare_account_id  
-  name       = "Generic SAML example"  
-  type       = "saml"  
-  config      = {  
-    sso_target_url = "https://example.com/1234/sso/saml"  
-    issuer_url = "https://example.com/1234"  
-    idp_public_certs = ["-----BEGIN CERTIFICATE-----\nXXXXX\n-----END CERTIFICATE-----"]  
-    sign_request = false  
-    email_attribute_name = "email"  
-    attributes = ["employeeID", "groups"]  
-  }  
-}  
+resource "cloudflare_zero_trust_access_identity_provider" "generic_saml_example" {  account_id = var.cloudflare_account_id  name       = "Generic SAML example"  type       = "saml"  config      = {    sso_target_url = "https://example.com/1234/sso/saml"    issuer_url = "https://example.com/1234"    idp_public_certs = ["-----BEGIN CERTIFICATE-----\nXXXXX\n-----END CERTIFICATE-----"]    sign_request = false    email_attribute_name = "email"    attributes = ["employeeID", "groups"]  }}  
 ```
 
 Warning
@@ -103,9 +92,9 @@ Your identity provider must support SCIM version 2.0.
 * **Enable user deprovisioning**: [Revoke a user's active session](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#per-user) when they are removed from the SCIM application in IdP. This will invalidate all active Access sessions and prompt for reauthentication for any [Cloudflare One Client session policies](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/).
 * **Remove user seat on deprovision**: [Remove a user's seat](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/seat-management/) from your Cloudflare One account when they are removed from the SCIM application in IdP.
 * **SCIM identity update behavior**: Choose what happens in Cloudflare One when the user's identity updates in IdP.  
-   * _Automatic identity updates_: Automatically update the [User Registry identity](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/users/) when IdP sends an updated identity or group membership through SCIM. This identity is used for Gateway policies and Cloudflare One Client [device profiles](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/); Access will read the user's updated identity when they reauthenticate.  
-   * _Group membership change reauthentication_: [Revoke a user's active session](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#per-user) when their group membership changes in IdP. This will invalidate all active Access sessions and prompt for reauthentication for any [Cloudflare One Client session policies](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/). Access will read the user's updated group membership when they reauthenticate.  
-   * _No action_: Update the user's identity the next time they reauthenticate to Access or the Cloudflare One Client.
+  * _Automatic identity updates_: Automatically update the [User Registry identity](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/users/) when IdP sends an updated identity or group membership through SCIM. This identity is used for Gateway policies and Cloudflare One Client [device profiles](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/); Access will read the user's updated identity when they reauthenticate.
+  * _Group membership change reauthentication_: [Revoke a user's active session](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#per-user) when their group membership changes in IdP. This will invalidate all active Access sessions and prompt for reauthentication for any [Cloudflare One Client session policies](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/). Access will read the user's updated group membership when they reauthenticate.
+  * _No action_: Update the user's identity the next time they reauthenticate to Access or the Cloudflare One Client.
 1. Select **Regenerate Secret**. Copy the **SCIM Endpoint** and **SCIM Secret**. You will need to enter these values into IdP.
 2. Select **Save**.
 

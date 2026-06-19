@@ -1,0 +1,172 @@
+---
+title: mistral-7b-instruct-v0.2
+description: The Mistral-7B-Instruct-v0.2 Large Language Model (LLM) is an instruct fine-tuned version of the Mistral-7B-v0.2. Mistral-7B-v0.2 has the following changes compared to Mistral-7B-v0.1: 32k context window (vs 8k context in v0.1), rope-theta = 1e6, and no Sliding-Window Attention.
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt  
+> Use this file to discover all available pages before exploring further. 
+
+[Skip to content](#%5Ftop) 
+
+![MistralAI logo](https://developers.cloudflare.com/_astro/mistralai.Bn9UMUMu.svg) 
+
+#  mistral-7b-instruct-v0.2 Beta 
+
+Text Generation • MistralAI 
+
+`@hf/mistral/mistral-7b-instruct-v0.2` 
+
+The Mistral-7B-Instruct-v0.2 Large Language Model (LLM) is an instruct fine-tuned version of the Mistral-7B-v0.2\. Mistral-7B-v0.2 has the following changes compared to Mistral-7B-v0.1: 32k context window (vs 8k context in v0.1), rope-theta = 1e6, and no Sliding-Window Attention.
+
+| Model Info                                                                 |                                                                     |
+| -------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| Deprecated                                                                 | 5/30/2026                                                           |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 3,072 tokens                                                        |
+| More information                                                           | [link ↗](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2) |
+| LoRA                                                                       | Yes                                                                 |
+| Beta                                                                       | Yes                                                                 |
+
+## Playground
+
+Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and an instant way to preview and test a model directly in the browser. 
+
+[ Launch the LLM Playground ](https://playground.ai.cloudflare.com/?model=@hf/mistral/mistral-7b-instruct-v0.2) 
+
+## Usage
+
+* [  Worker (Streaming) ](#tab-panel-2403)
+* [  TypeScript ](#tab-panel-2404)
+* [  Python ](#tab-panel-2405)
+* [  curl ](#tab-panel-2406)
+
+TypeScript
+
+```
+export interface Env {  AI: Ai;}
+export default {  async fetch(request, env): Promise<Response> {
+    const messages = [      { role: "system", content: "You are a friendly assistant" },      {        role: "user",        content: "What is the origin of the phrase Hello, World",      },    ];
+    const stream = await env.AI.run("@hf/mistral/mistral-7b-instruct-v0.2", {      messages,      stream: true,    });
+    return new Response(stream, {      headers: { "content-type": "text/event-stream" },    });  },} satisfies ExportedHandler<Env>;
+```
+
+```
+export interface Env {  AI: Ai;}
+export default {  async fetch(request, env): Promise<Response> {
+    const messages = [      { role: "system", content: "You are a friendly assistant" },      {        role: "user",        content: "What is the origin of the phrase Hello, World",      },    ];    const response = await env.AI.run("@hf/mistral/mistral-7b-instruct-v0.2", { messages });
+    return Response.json(response);  },} satisfies ExportedHandler<Env>;
+```
+
+```
+import osimport requests
+ACCOUNT_ID = "your-account-id"AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
+prompt = "Tell me all about PEP-8"response = requests.post(  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@hf/mistral/mistral-7b-instruct-v0.2",    headers={"Authorization": f"Bearer {AUTH_TOKEN}"},    json={      "messages": [        {"role": "system", "content": "You are a friendly assistant"},        {"role": "user", "content": prompt}      ]    })result = response.json()print(result)
+```
+
+Terminal window
+
+```
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@hf/mistral/mistral-7b-instruct-v0.2 \  -X POST \  -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \  -d '{ "messages": [{ "role": "system", "content": "You are a friendly assistant" }, { "role": "user", "content": "Why is pizza so good" }]}'
+```
+
+OpenAI compatible endpoints 
+
+Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations ](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/). 
+
+## Parameters
+
+### Input
+
+prompt
+
+`string`requiredminLength: 1The input text prompt for the model to generate a response.
+
+lora
+
+`string`Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.
+
+▶response\_format{}
+
+`object`
+
+raw
+
+`boolean`default: falseIf true, a chat template is not applied and you must adhere to the specific model's expected formatting.
+
+stream
+
+`boolean`default: falseIf true, the response will be streamed back incrementally using SSE, Server Sent Events.
+
+max\_tokens
+
+`integer`default: 256The maximum number of tokens to generate in the response.
+
+temperature
+
+`number`default: 0.6minimum: 0maximum: 5Controls the randomness of the output; higher values produce more random results.
+
+top\_p
+
+`number`minimum: 0.001maximum: 1Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.
+
+top\_k
+
+`integer`minimum: 1maximum: 50Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises.
+
+seed
+
+`integer`minimum: 1maximum: 9999999999Random seed for reproducibility of the generation.
+
+repetition\_penalty
+
+`number`minimum: 0maximum: 2Penalty for repeated tokens; higher values discourage repetition.
+
+frequency\_penalty
+
+`number`minimum: \-2maximum: 2Decreases the likelihood of the model repeating the same lines verbatim.
+
+presence\_penalty
+
+`number`minimum: \-2maximum: 2Increases the likelihood of the model introducing new topics.
+
+### Output
+
+Synchronous — Send a request and receive a complete response 
+
+response
+
+`string`The generated text response from the model
+
+▶usage{}
+
+`object`Usage statistics for the inference request
+
+▶tool\_calls\[\]
+
+`array`An array of tool calls requests made during the response generation
+
+Streaming — Send a request with \`stream: true\` and receive server-sent events 
+
+type
+
+`string`
+
+format
+
+`binary`
+
+## API Schemas (Raw)
+
+ Synchronous Input [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2/sync-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2/sync-input.json "Download") 
+
+ Synchronous Output [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2/sync-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2/sync-output.json "Download") 
+
+ Streaming Input [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2/streaming-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2/streaming-input.json "Download") 
+
+ Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2/streaming-output.json "Download")
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40hf/mistral/mistral-7b-instruct-v0.2/#page","headline":"mistral-7b-instruct-v0.2 (MistralAI) · Cloudflare AI docs · Cloudflare AI docs","description":"The Mistral-7B-Instruct-v0.2 Large Language Model (LLM) is an instruct fine-tuned version of the Mistral-7B-v0.2. Mistral-7B-v0.2 has the following changes compared to Mistral-7B-v0.1: 32k context window (vs 8k context in v0.1), rope-theta = 1e6, and no Sliding-Window Attention.","url":"https://developers.cloudflare.com/ai/models/%40hf/mistral/mistral-7b-instruct-v0.2/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+```

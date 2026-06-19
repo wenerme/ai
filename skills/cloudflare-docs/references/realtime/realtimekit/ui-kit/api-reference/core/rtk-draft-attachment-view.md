@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,35 +27,18 @@ A component which renders the draft attachment to send
 ### Basic Usage
 
 ```
-
 <rtk-draft-attachment-view></rtk-draft-attachment-view>
-
-
 ```
 
 ### With Properties
 
 ```
-
-<rtk-draft-attachment-view>
-
-</rtk-draft-attachment-view>
-
-
+<rtk-draft-attachment-view></rtk-draft-attachment-view>
 ```
 
 ```
-
-<script>
-
-  const el = document.querySelector("rtk-draft-attachment-view");
-
-
-  el.attachment= {};
-
-</script>
-
-
+<script>  const el = document.querySelector("rtk-draft-attachment-view");
+  el.attachment= {};</script>
 ```
 
 ```json

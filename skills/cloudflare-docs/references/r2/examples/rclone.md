@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -50,14 +50,7 @@ If you have already configured `rclone` in the past, you may run `rclone config 
 Terminal window
 
 ```
-
-rclone config file
-
-# Configuration file is stored at:
-
-# ~/.config/rclone/rclone.conf
-
-
+rclone config file# Configuration file is stored at:# ~/.config/rclone/rclone.conf
 ```
 
 Then use an editor (`nano` or `vim`, for example) to add or edit the new provider. This example assumes you are adding a new `r2` provider:
@@ -65,22 +58,7 @@ Then use an editor (`nano` or `vim`, for example) to add or edit the new provide
 TOML
 
 ```
-
-[r2]
-
-type = s3
-
-provider = Cloudflare
-
-access_key_id = abc123
-
-secret_access_key = xyz456
-
-endpoint = https://<accountid>.r2.cloudflarestorage.com
-
-acl = private
-
-
+[r2]type = s3provider = Cloudflareaccess_key_id = abc123secret_access_key = xyz456endpoint = https://<accountid>.r2.cloudflarestorage.comacl = private
 ```
 
 Note
@@ -96,31 +74,8 @@ The [rclone tree ↗](https://rclone.org/commands/rclone%5Ftree/) command can be
 Terminal window
 
 ```
-
-rclone tree r2:
-
-# /
-
-# ├── user-uploads
-
-# │   └── foobar.png
-
-# └── my-bucket-name
-
-#     ├── cat.png
-
-#     └── todos.txt
-
-
-rclone tree r2:my-bucket-name
-
-# /
-
-# ├── cat.png
-
-# └── todos.txt
-
-
+rclone tree r2:# /# ├── user-uploads# │   └── foobar.png# └── my-bucket-name#     ├── cat.png#     └── todos.txt
+rclone tree r2:my-bucket-name# /# ├── cat.png# └── todos.txt
 ```
 
 ## Upload and retrieve objects
@@ -130,25 +85,8 @@ The [rclone copy ↗](https://rclone.org/commands/rclone%5Fcopy/) command can be
 Terminal window
 
 ```
-
-# Upload dog.txt to the user-uploads bucket
-
-rclone copy dog.txt r2:user-uploads/
-
-rclone tree r2:user-uploads
-
-# /
-
-# ├── foobar.png
-
-# └── dog.txt
-
-
-# Download dog.txt from the user-uploads bucket
-
-rclone copy r2:user-uploads/dog.txt .
-
-
+# Upload dog.txt to the user-uploads bucketrclone copy dog.txt r2:user-uploads/rclone tree r2:user-uploads# /# ├── foobar.png# └── dog.txt
+# Download dog.txt from the user-uploads bucketrclone copy r2:user-uploads/dog.txt .
 ```
 
 ### A note about multipart upload part sizes
@@ -162,10 +100,7 @@ You can configure rclone's multipart upload part size using the `--s3-chunk-size
 Terminal window
 
 ```
-
 rclone copy long-video.mp4 r2:user-uploads/ --s3-upload-cutoff=100M --s3-chunk-size=100M
-
-
 ```
 
 ## Generate presigned URLs
@@ -175,14 +110,7 @@ You can also generate presigned links which allow you to share public access to 
 Terminal window
 
 ```
-
-# You can pass the --expire flag to determine how long the presigned link is valid. The --unlink flag isn't supported by R2.
-
-rclone link r2:my-bucket-name/cat.png --expire 3600
-
-# https://<accountid>.r2.cloudflarestorage.com/my-bucket-name/cat.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=<credential>&X-Amz-Date=<timestamp>&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=<signature>
-
-
+# You can pass the --expire flag to determine how long the presigned link is valid. The --unlink flag isn't supported by R2.rclone link r2:my-bucket-name/cat.png --expire 3600# https://<accountid>.r2.cloudflarestorage.com/my-bucket-name/cat.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=<credential>&X-Amz-Date=<timestamp>&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=<signature>
 ```
 
 ```json

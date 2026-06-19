@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,9 +27,10 @@ When creating a configuration rule via API, make sure you:
 Follow this workflow to create a configuration rule for a given zone via API:
 
 1. Use the [List zone rulesets](https://developers.cloudflare.com/api/resources/rulesets/methods/list/) operation to check if there is already a ruleset for the `http_config_settings` phase at the zone level.
-2. If the phase ruleset does not exist, create it using the [Create a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) operation. In the new ruleset properties, set the following values:  
-   * **kind**: `zone`  
-   * **phase**: `http_config_settings`
+2. If the phase ruleset does not exist, create it using the [Create a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) operation. In the new ruleset properties, set the following values:
+
+  * **kind**: `zone`
+  * **phase**: `http_config_settings`
 3. Use the [Update a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/update/) operation to add a configuration rule to the list of ruleset rules. Alternatively, include the rule in the [Create a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) request mentioned in the previous step.
 
 Make sure your API token has the [required permissions](#required-api-token-permissions) to perform the API operations.
@@ -42,7 +43,7 @@ The following example sets the rules of an existing phase ruleset (`{ruleset_id}
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Response Compression Write`
 * `Config Settings Write`
 * `Dynamic URL Redirects Write`
@@ -68,42 +69,7 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Update a zone ruleset
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "rules": [
-
-        {
-
-            "ref": "enable_email_obfuscation_bic",
-
-            "expression": "starts_with(http.request.uri.path, \"/contact-us/\")",
-
-            "description": "Obfuscates email addresses and enables BIC in contacts page",
-
-            "action": "set_config",
-
-            "action_parameters": {
-
-                "email_obfuscation": true,
-
-                "bic": true
-
-            }
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "ref": "enable_email_obfuscation_bic",            "expression": "starts_with(http.request.uri.path, \"/contact-us/\")",            "description": "Obfuscates email addresses and enables BIC in contacts page",            "action": "set_config",            "action_parameters": {                "email_obfuscation": true,                "bic": true            }        }    ]  }'
 ```
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.
@@ -114,7 +80,7 @@ The following example sets the rules of an existing phase ruleset (`{ruleset_id}
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Response Compression Write`
 * `Config Settings Write`
 * `Dynamic URL Redirects Write`
@@ -140,40 +106,7 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Update a zone ruleset
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "rules": [
-
-        {
-
-            "ref": "enable_under_attack_in_admin",
-
-            "expression": "http.host eq \"admin.example.com\"",
-
-            "description": "Turn on Under Attack mode for admin area",
-
-            "action": "set_config",
-
-            "action_parameters": {
-
-                "security_level": "under_attack"
-
-            }
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "ref": "enable_under_attack_in_admin",            "expression": "http.host eq \"admin.example.com\"",            "description": "Turn on Under Attack mode for admin area",            "action": "set_config",            "action_parameters": {                "security_level": "under_attack"            }        }    ]  }'
 ```
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.

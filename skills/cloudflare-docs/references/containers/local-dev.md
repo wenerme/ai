@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,7 +16,7 @@ You can run both your container and your Worker locally by simply running [npx w
 
 To develop Container-enabled Workers locally, you will need to first ensure that a Docker compatible CLI tool and Engine are installed. For instance, you could use [Docker Desktop ↗](https://docs.docker.com/desktop/) or [Colima ↗](https://github.com/abiosoft/colima).
 
-When you start a dev session, your container image will be built or downloaded. If your[Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration/#containers) sets the `image` attribute to a local path, the image will be built using the local Dockerfile. If the `image` attribute is set to an image reference, the image will be pulled from the referenced registry, such as the Cloudflare Registry, Docker Hub, or Amazon ECR.
+When you start a dev session, your container image will be built or downloaded. If your [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration/#containers) sets the `image` attribute to a local path, the image will be built using the local Dockerfile. If the `image` attribute is set to an image reference, the image will be pulled from the referenced registry, such as the Cloudflare Registry, Docker Hub, or Amazon ECR.
 
 Note
 
@@ -59,19 +59,13 @@ But for local development you will need to declare any ports you need to access 
 If you have not exposed any ports, you will see the following error in local development:
 
 ```
-
 The container "MyContainer" does not expose any ports. In your Dockerfile, please expose any ports you intend to connect to.
-
-
 ```
 
 And if you try to connect to any port that you have not exposed in your `Dockerfile` you will see the following error:
 
 ```
-
 connect(): Connection refused: container port not found. Make sure you exposed the port in your container definition.
-
-
 ```
 
 You may also see this while the container is starting up and no ports are available yet. You should retry until the ports become available. This retry logic should be handled for you if you are using the [containers package ↗](https://github.com/cloudflare/containers/tree/main/src).
@@ -89,10 +83,7 @@ To resolve this, you can either:
 * Disable the Cloudflare One Client or your VPN while running `wrangler dev` or `wrangler deploy`, then re-enable it afterwards.
 * Add the certificate to your Docker build context. The Cloudflare One Client exposes its certificate via the `NODE_EXTRA_CA_CERTS` and `SSL_CERT_FILE` environment variables on your host machine. You can pass the certificate into your Docker build as an environment variable, so that it is available during the build without being baked into the final image.  
 ```  
-RUN if [ -n "$SSL_CERT_FILE" ]; then \  
-    cp "$SSL_CERT_FILE" /usr/local/share/ca-certificates/Custom_CA.crt && \  
-    update-ca-certificates; \  
-    fi  
+RUN if [ -n "$SSL_CERT_FILE" ]; then \    cp "$SSL_CERT_FILE" /usr/local/share/ca-certificates/Custom_CA.crt && \    update-ca-certificates; \    fi  
 ```  
 Note  
 The above Dockerfile snippet is an example. Depending on your base image, the commands to install certificates may differ (for example, Alpine uses `apk add ca-certificates` and a different certificate path).  

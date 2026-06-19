@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/support/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,10 +23,7 @@ Cloudflare supports HTTP/2 Server Push and it can be enabled for stylesheets and
 Once the plugin is installed, you can enable HTTP/2 Server Push by adding the following line to your `wp-config.php` file:
 
 ```
-
 define('CLOUDFLARE_HTTP2_SERVER_PUSH_ACTIVE', true);
-
-
 ```
 
 You should insert this line above where it says _"/\* That's all, stop editing! Happy blogging. \*/_", like follows:|
@@ -39,7 +36,7 @@ You should then start to see requests coming in which are initiated through Serv
 
 ![Old URL: https://support.cloudflare.com/hc/en-us/article_attachments/115005787688/Screen-Shot-2016-04-26-at-15-08-59.png
 Article IDs: 115002816808 | How do I enable HTTP/2 Server Push in WordPress
-](https://developers.cloudflare.com/_astro/hc-import-screen_shot_2016_04_26_at_15_08_59.CUaoZjsJ_Z2audva.webp) 
+](https://developers.cloudflare.com/_astro/hc-import-screen_shot_2016_04_26_at_15_08_59.CUaoZjsJ_Z2audva.webp)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/third-party-software/content-management-system-cms/how-do-i-enable-http2-server-push-in-wordpress/#page","headline":"How do I enable HTTP2 Server Push in WordPress · Cloudflare Support docs","description":"Enable HTTP/2 Server Push with the WordPress plugin.","url":"https://developers.cloudflare.com/support/third-party-software/content-management-system-cms/how-do-i-enable-http2-server-push-in-wordpress/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -38,18 +38,23 @@ Perform these steps in your third-party VPN software. Refer to your VPN's docume
 Perform these steps in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 
 1. Set your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode) to **Exclude IPs and domains**.
-2. [Add the following entries](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#add-a-route) to your Split Tunnel Exclude list:  
-   * Private IP address range exposed by your third-party VPN client. For example,  
-   | Selector   | Value         |  
-   | ---------- | ------------- |  
-   | IP Address | 172.16.0.0/12 |  
-   * Server that your third-party VPN client connects to. For example,  
-   | Selector | Value                                                         |  
-   | -------- | ------------------------------------------------------------- |  
-   | Domain   | \*.cvpn-endpoint-xxxxx.prod.clientvpn.us-west-2.amazonaws.com |
+2. [Add the following entries](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#add-a-route) to your Split Tunnel Exclude list:
+
+  * Private IP address range exposed by your third-party VPN client. For example,  
+
+| Selector   | Value         |
+| ---------- | ------------- |
+| IP Address | 172.16.0.0/12 |
+|            |               |
+  * Server that your third-party VPN client connects to. For example,  
+
+| Selector | Value                                                         |
+| -------- | ------------------------------------------------------------- |
+| Domain   | \*.cvpn-endpoint-xxxxx.prod.clientvpn.us-west-2.amazonaws.com |
 1. (Optional) In [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/), add the domains that you want to resolve using your VPN's private DNS servers. For example,  
-| Domain                 | DNS Servers                  |  
-| ---------------------- | ---------------------------- |  
+
+| Domain                 | DNS Servers                  |
+| ---------------------- | ---------------------------- |
 | internal.wiki.intranet | 172.31.26.130, 172.31.23.120 |
 
 You can now [test](#test-the-configuration) if WARP runs alongside the VPN.
@@ -67,15 +72,19 @@ Enable split tunneling in your third-party VPN software. Refer to your VPN's doc
 Perform these steps in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 
 1. Set your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode) to **Exclude IPs and domains**.
-2. [Add the following entries](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#add-a-route) to your Split Tunnel Exclude list:  
-   * Private IP address range exposed by your third-party VPN client. For example,  
-   | Selector   | Value         |  
-   | ---------- | ------------- |  
-   | IP Address | 172.16.0.0/12 |  
-   * Server that your third-party VPN client connects to. For example,  
-   | Selector | Value                                                         |  
-   | -------- | ------------------------------------------------------------- |  
-   | Domain   | \*.cvpn-endpoint-xxxxx.prod.clientvpn.us-west-2.amazonaws.com |
+2. [Add the following entries](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#add-a-route) to your Split Tunnel Exclude list:
+
+  * Private IP address range exposed by your third-party VPN client. For example,  
+
+| Selector   | Value         |
+| ---------- | ------------- |
+| IP Address | 172.16.0.0/12 |
+|            |               |
+  * Server that your third-party VPN client connects to. For example,  
+
+| Selector | Value                                                         |
+| -------- | ------------------------------------------------------------- |
+| Domain   | \*.cvpn-endpoint-xxxxx.prod.clientvpn.us-west-2.amazonaws.com |
 1. In your device profile, verify that **Service mode** is set to **Traffic only mode**.
 
 ## Test the configuration

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -63,16 +63,16 @@ The time it takes for Azure to fully provision the Virtual Network Gateway depen
 
 1. Create an [IPsec tunnel](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels) in the Cloudflare dashboard.
 2. Make sure you have the following settings:  
-   1. **Interface address**: As the Azure Local Network Gateway will only permit specifying the lower IP address in a `/31` subnet, add the upper IP address within the `/31` subnet. You will configure the corresponding `/32` address in Azure in a later step (refer to [Configure Local Network Gateway for IPsec tunnel health checks](#2-configure-local-network-gateway-for-ipsec-tunnel-health-checks)). Refer to [Tunnel endpoints](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/) for more details.  
-   2. **Customer endpoint**: The Public IP associated with your Azure Virtual Network Gateway. For example, `40.xxx.xxx.xxx`.  
-   3. **Cloudflare endpoint**: Use one of the Cloudflare anycast addresses assigned to your account, available in [Leased IPs ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space). This will also be the IP address corresponding to the Local Network Gateway in Azure. For example, `162.xxx.xxx.xxx`.  
-   4. **Health check rate**: Leave the default option (Medium) selected.  
-   5. **Health check type**: Leave the default option (Reply) selected.  
-   6. **Health check direction**: Leave default option (Bidirectional) selected.  
-   7. **Health check target**: Select **Custom**.  
-   8. **Target address**: Enter the same address that is used in the **Customer endpoint** field.  
-   9. **Add pre-shared key later**: Select this option to create a PSK that will be used later in Azure.  
-   10. **Replay protection**: **Enable**.
+  1. **Interface address**: As the Azure Local Network Gateway will only permit specifying the lower IP address in a `/31` subnet, add the upper IP address within the `/31` subnet. You will configure the corresponding `/32` address in Azure in a later step (refer to [Configure Local Network Gateway for IPsec tunnel health checks](#2-configure-local-network-gateway-for-ipsec-tunnel-health-checks)). Refer to [Tunnel endpoints](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/) for more details.
+  2. **Customer endpoint**: The Public IP associated with your Azure Virtual Network Gateway. For example, `40.xxx.xxx.xxx`.
+  3. **Cloudflare endpoint**: Use one of the Cloudflare anycast addresses assigned to your account, available in [Leased IPs ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space). This will also be the IP address corresponding to the Local Network Gateway in Azure. For example, `162.xxx.xxx.xxx`.
+  4. **Health check rate**: Leave the default option (Medium) selected.
+  5. **Health check type**: Leave the default option (Reply) selected.
+  6. **Health check direction**: Leave default option (Bidirectional) selected.
+  7. **Health check target**: Select **Custom**.
+  8. **Target address**: Enter the same address that is used in the **Customer endpoint** field.
+  9. **Add pre-shared key later**: Select this option to create a PSK that will be used later in Azure.
+  10. **Replay protection**: **Enable**.
 3. If you are using the Active/Active configuration, select **Add IPsec tunnel** and repeat step 2 to create the second Cloudflare WAN IPsec tunnel. Use the same **Cloudflare endpoint** as for the first tunnel.
 4. Select **Add Tunnels** when you are finished.
 5. The Cloudflare dashboard will show you a list of your tunnels. Edit the tunnel(s) you have created > select **Generate a new pre-shared key** \> copy the generated key. If using the Active/Active configuration, select **Change to a new custom pre-shared key** on the second tunnel and use the PSK generated for the first tunnel.
@@ -145,20 +145,20 @@ Choose the following settings when creating your VPN Connection:
 3. **Use Azure Private IP Address**: **Disabled**
 4. **BGP**: **Disabled**
 5. **IPsec / IKE policy**: **Custom**  
-   1. **IKE Phase 1**  
-         1. **Encryption**: _GCMAES256_  
-         2. **Integrity/PRF**: _SHA384_  
-         3. **DH Group**: _ECP384_  
-   2. **IKE Phase 2(IPsec)**  
-         1. **IPsec Encryption**: _GCMAES256_  
-         2. **IPsec Integrity**: _GCMAES256_  
-         3. **PFS Group**: _ECP384_  
-   3. **IPsec SA lifetime in KiloBytes**: `0`  
-   4. **IPsec SA lifetime in seconds**: `28800`  
-   5. **Use policy based traffic selector**: **Disable**  
-   6. **DPD timeout in seconds**: `45`  
-   7. **Connection mode**: **InitiatorOnly**  
-   8. **Use custom traffic selectors**: **Disabled**
+  1. **IKE Phase 1**  
+    1. **Encryption**: _GCMAES256_
+    2. **Integrity/PRF**: _SHA384_
+    3. **DH Group**: _ECP384_
+  2. **IKE Phase 2(IPsec)**  
+    1. **IPsec Encryption**: _GCMAES256_
+    2. **IPsec Integrity**: _GCMAES256_
+    3. **PFS Group**: _ECP384_
+  3. **IPsec SA lifetime in KiloBytes**: `0`
+  4. **IPsec SA lifetime in seconds**: `28800`
+  5. **Use policy based traffic selector**: **Disable**
+  6. **DPD timeout in seconds**: `45`
+  7. **Connection mode**: **InitiatorOnly**
+  8. **Use custom traffic selectors**: **Disabled**
 6. After the connection is created, select **Settings** \> **Authentication**, and input your PSK (this will need to match the PSK used by the Cloudflare WAN configuration).
 
 Repeat this process to define the settings for the Connection to the Local Network Gateway that corresponds to the redundant Cloudflare anycast IP address.
@@ -185,37 +185,11 @@ Once the root CA certificate is installed, open a web browser or use curl to val
 Terminal window
 
 ```
-
 curl https://ipinfo.io
-
-
 ```
 
 ```
-
-{
-
-  "ip": "104.xxx.xxx.225",
-
-  "city": "Reston",
-
-  "region": "Virginia",
-
-  "country": "US",
-
-  "loc": "xx.xxxx,-xx.xxxx",
-
-  "org": "AS13335 Cloudflare, Inc.",
-
-  "postal": "20190",
-
-  "timezone": "America/New_York",
-
-  "readme": "https://ipinfo.io/missingauth"
-
-}
-
-
+{  "ip": "104.xxx.xxx.225",  "city": "Reston",  "region": "Virginia",  "country": "US",  "loc": "xx.xxxx,-xx.xxxx",  "org": "AS13335 Cloudflare, Inc.",  "postal": "20190",  "timezone": "America/New_York",  "readme": "https://ipinfo.io/missingauth"}
 ```
 
 Note
@@ -231,25 +205,11 @@ Once you have determined that connectivity has been established, Cloudflare reco
 PowerShell
 
 ```
-
 Get-AzAccessToken
-
-
 ```
 
 ```
-
-Token: eyJ0e<REDACTED>AH-PdSPg
-
-ExpiresOn : 04/08/2024 23:32:47 +00:00
-
-Type      : Bearer
-
-TenantId  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-
-UserId    : user@domain.com
-
-
+Token: eyJ0e<REDACTED>AH-PdSPgExpiresOn : 04/08/2024 23:32:47 +00:00Type      : BearerTenantId  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxUserId    : user@domain.com
 ```
 
 1. Issue the API call to display the details of the site-to-site VPN Connection associated with the Azure Virtual Network Gateway (`GET` request):
@@ -257,166 +217,19 @@ UserId    : user@domain.com
 Terminal window
 
 ```
-
-curl --location 'https://management.azure.com/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworkGateways/{{virtualNetworkGatewayName}}?api-version=2022-05-01' \
-
---header 'Authorization: Bearer eyJ0e<REDACTED>AH-PdSPg'
-
-
+curl --location 'https://management.azure.com/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworkGateways/{{virtualNetworkGatewayName}}?api-version=2022-05-01' \--header 'Authorization: Bearer eyJ0e<REDACTED>AH-PdSPg'
 ```
 
 1. Copy/paste the entire response into a text editor:
 
 ```
-
-{
-
-    "name": "{{virtualNetworkGatewayName}}",
-
-    "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworkGateways/{{virtualNetworkGatewayName}}",
-
-    "etag": "W/\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"",
-
-    "type": "Microsoft.Network/virtualNetworkGateways",
-
-    "location": "eastus"
-
-    },
-
-    "properties": {
-
-        "provisioningState": "Succeeded",
-
-        "resourceGuid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-
-        "packetCaptureDiagnosticState": "None",
-
-        "enablePrivateIpAddress": false,
-
-        "isMigrateToCSES": false,
-
-        "ipConfigurations": [
-
-            {
-
-                "name": "default",
-
-                "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworkGateways/{{virtualNetworkGatewayName}}/ipConfigurations/default",
-
-                "etag": "W/\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"",
-
-                "type": "Microsoft.Network/virtualNetworkGateways/ipConfigurations",
-
-                "properties": {
-
-                    "provisioningState": "Succeeded",
-
-                    "privateIPAllocationMethod": "Dynamic",
-
-                    "publicIPAddress": {
-
-                        "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/publicIPAddresses/{{virtualNetworkGatewayPublicIpAddress}}"
-
-                    },
-
-                    "subnet": {
-
-                        "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworks/{{virtualNetworkGatewayName}}/subnets/GatewaySubnet"
-
-                    }
-
-                }
-
-            }
-
-        ],
-
-        "natRules": [],
-
-        "virtualNetworkGatewayPolicyGroups": [],
-
-        "enableBgpRouteTranslationForNat": false,
-
-        "disableIPSecReplayProtection": false,
-
-        "sku": {
-
-            "name": "VpnGw2AZ",
-
-            "tier": "VpnGw2AZ",
-
-            "capacity": 2
-
-        },
-
-        "gatewayType": "Vpn",
-
-        "vpnType": "RouteBased",
-
-        "enableBgp": false,
-
-        "activeActive": false,
-
-        "bgpSettings": {
-
-            "asn": 65515,
-
-            "bgpPeeringAddress": "172.25.40.30",
-
-            "peerWeight": 0,
-
-            "bgpPeeringAddresses": [
-
-                {
-
-                    "ipconfigurationId": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworkGateways/{{virtualNetworkGatewayName}}/ipConfigurations/default",
-
-                    "defaultBgpIpAddresses": [
-
-                        "172.25.40.30"
-
-                    ],
-
-                    "customBgpIpAddresses": [],
-
-                    "tunnelIpAddresses": [
-
-                        "{{CF ANYCAST IP}}"
-
-                    ]
-
-                }
-
-            ]
-
-        },
-
-        "gatewayDefaultSite": {
-
-            "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/localNetworkGateways/{{localNetworkGatewayName}}"
-
-        },
-
-        "vpnGatewayGeneration": "Generation2",
-
-        "allowRemoteVnetTraffic": false,
-
-        "allowVirtualWanTraffic": false
-
-    }
-
-}
-
-
+{    "name": "{{virtualNetworkGatewayName}}",    "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworkGateways/{{virtualNetworkGatewayName}}",    "etag": "W/\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"",    "type": "Microsoft.Network/virtualNetworkGateways",    "location": "eastus"    },    "properties": {        "provisioningState": "Succeeded",        "resourceGuid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",        "packetCaptureDiagnosticState": "None",        "enablePrivateIpAddress": false,        "isMigrateToCSES": false,        "ipConfigurations": [            {                "name": "default",                "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworkGateways/{{virtualNetworkGatewayName}}/ipConfigurations/default",                "etag": "W/\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"",                "type": "Microsoft.Network/virtualNetworkGateways/ipConfigurations",                "properties": {                    "provisioningState": "Succeeded",                    "privateIPAllocationMethod": "Dynamic",                    "publicIPAddress": {                        "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/publicIPAddresses/{{virtualNetworkGatewayPublicIpAddress}}"                    },                    "subnet": {                        "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworks/{{virtualNetworkGatewayName}}/subnets/GatewaySubnet"                    }                }            }        ],        "natRules": [],        "virtualNetworkGatewayPolicyGroups": [],        "enableBgpRouteTranslationForNat": false,        "disableIPSecReplayProtection": false,        "sku": {            "name": "VpnGw2AZ",            "tier": "VpnGw2AZ",            "capacity": 2        },        "gatewayType": "Vpn",        "vpnType": "RouteBased",        "enableBgp": false,        "activeActive": false,        "bgpSettings": {            "asn": 65515,            "bgpPeeringAddress": "172.25.40.30",            "peerWeight": 0,            "bgpPeeringAddresses": [                {                    "ipconfigurationId": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworkGateways/{{virtualNetworkGatewayName}}/ipConfigurations/default",                    "defaultBgpIpAddresses": [                        "172.25.40.30"                    ],                    "customBgpIpAddresses": [],                    "tunnelIpAddresses": [                        "{{CF ANYCAST IP}}"                    ]                }            ]        },        "gatewayDefaultSite": {            "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/localNetworkGateways/{{localNetworkGatewayName}}"        },        "vpnGatewayGeneration": "Generation2",        "allowRemoteVnetTraffic": false,        "allowVirtualWanTraffic": false    }}
 ```
 
 1. Locate the line that controls disabling IPsec anti-replay protection, and change it from `false` to `true`:
 
 ```
-
 "disableIPSecReplayProtection": true
-
-
 ```
 
 1. Upload the entire response in a subsequent API call (`PUT` request):
@@ -424,154 +237,7 @@ curl --location 'https://management.azure.com/subscriptions/{{subscriptionId}}/r
 Terminal window
 
 ```
-
-curl --location --request PUT \
-
-'https://management.azure.com/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworkGateways/{{virtualNetworkGatewayName}}?api-version=2022-05-01' \
-
---header "Authorization: Bearer eyJ0e<REDACTED>AH-PdSPg" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-    "name": "{{virtualNetworkGatewayName}}",
-
-    "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworkGateways/{{virtualNetworkGatewayName}}",
-
-    "etag": "W/\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"",
-
-    "type": "Microsoft.Network/virtualNetworkGateways",
-
-    "location": "eastus"
-
-    },
-
-    "properties": {
-
-        "provisioningState": "Succeeded",
-
-        "resourceGuid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-
-        "packetCaptureDiagnosticState": "None",
-
-        "enablePrivateIpAddress": false,
-
-        "isMigrateToCSES": false,
-
-        "ipConfigurations": [
-
-            {
-
-                "name": "default",
-
-                "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworkGateways/{{virtualNetworkGatewayName}}/ipConfigurations/default",
-
-                "etag": "W/\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"",
-
-                "type": "Microsoft.Network/virtualNetworkGateways/ipConfigurations",
-
-                "properties": {
-
-                    "provisioningState": "Succeeded",
-
-                    "privateIPAllocationMethod": "Dynamic",
-
-                    "publicIPAddress": {
-
-                        "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/publicIPAddresses/{{virtualNetworkGatewayPublicIpAddress}}"
-
-                    },
-
-                    "subnet": {
-
-                        "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworks/{{virtualNetworkGatewayName}}/subnets/GatewaySubnet"
-
-                    }
-
-                }
-
-            }
-
-        ],
-
-        "natRules": [],
-
-        "virtualNetworkGatewayPolicyGroups": [],
-
-        "enableBgpRouteTranslationForNat": false,
-
-        "disableIPSecReplayProtection": true,
-
-        "sku": {
-
-            "name": "VpnGw2AZ",
-
-            "tier": "VpnGw2AZ",
-
-            "capacity": 2
-
-        },
-
-        "gatewayType": "Vpn",
-
-        "vpnType": "RouteBased",
-
-        "enableBgp": false,
-
-        "activeActive": false,
-
-        "bgpSettings": {
-
-            "asn": 65515,
-
-            "bgpPeeringAddress": "172.25.40.30",
-
-            "peerWeight": 0,
-
-            "bgpPeeringAddresses": [
-
-                {
-
-                    "ipconfigurationId": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworkGateways/{{virtualNetworkGatewayName}}/ipConfigurations/default",
-
-                    "defaultBgpIpAddresses": [
-
-                        "172.25.40.30"
-
-                    ],
-
-                    "customBgpIpAddresses": [],
-
-                    "tunnelIpAddresses": [
-
-                        "{{CF ANYCAST IP}}"
-
-                    ]
-
-                }
-
-            ]
-
-        },
-
-        "gatewayDefaultSite": {
-
-            "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/localNetworkGateways/{{localNetworkGatewayName}}"
-
-        },
-
-        "vpnGatewayGeneration": "Generation2",
-
-        "allowRemoteVnetTraffic": false,
-
-        "allowVirtualWanTraffic": false
-
-    }
-
-}'
-
-
+curl --location --request PUT \'https://management.azure.com/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworkGateways/{{virtualNetworkGatewayName}}?api-version=2022-05-01' \--header "Authorization: Bearer eyJ0e<REDACTED>AH-PdSPg" \--header "Content-Type: application/json" \--data '{    "name": "{{virtualNetworkGatewayName}}",    "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworkGateways/{{virtualNetworkGatewayName}}",    "etag": "W/\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"",    "type": "Microsoft.Network/virtualNetworkGateways",    "location": "eastus"    },    "properties": {        "provisioningState": "Succeeded",        "resourceGuid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",        "packetCaptureDiagnosticState": "None",        "enablePrivateIpAddress": false,        "isMigrateToCSES": false,        "ipConfigurations": [            {                "name": "default",                "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworkGateways/{{virtualNetworkGatewayName}}/ipConfigurations/default",                "etag": "W/\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"",                "type": "Microsoft.Network/virtualNetworkGateways/ipConfigurations",                "properties": {                    "provisioningState": "Succeeded",                    "privateIPAllocationMethod": "Dynamic",                    "publicIPAddress": {                        "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/publicIPAddresses/{{virtualNetworkGatewayPublicIpAddress}}"                    },                    "subnet": {                        "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworks/{{virtualNetworkGatewayName}}/subnets/GatewaySubnet"                    }                }            }        ],        "natRules": [],        "virtualNetworkGatewayPolicyGroups": [],        "enableBgpRouteTranslationForNat": false,        "disableIPSecReplayProtection": true,        "sku": {            "name": "VpnGw2AZ",            "tier": "VpnGw2AZ",            "capacity": 2        },        "gatewayType": "Vpn",        "vpnType": "RouteBased",        "enableBgp": false,        "activeActive": false,        "bgpSettings": {            "asn": 65515,            "bgpPeeringAddress": "172.25.40.30",            "peerWeight": 0,            "bgpPeeringAddresses": [                {                    "ipconfigurationId": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworkGateways/{{virtualNetworkGatewayName}}/ipConfigurations/default",                    "defaultBgpIpAddresses": [                        "172.25.40.30"                    ],                    "customBgpIpAddresses": [],                    "tunnelIpAddresses": [                        "{{CF ANYCAST IP}}"                    ]                }            ]        },        "gatewayDefaultSite": {            "id": "/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/localNetworkGateways/{{localNetworkGatewayName}}"        },        "vpnGatewayGeneration": "Generation2",        "allowRemoteVnetTraffic": false,        "allowVirtualWanTraffic": false    }}'
 ```
 
 1. Leave the replay protection setting checked in the Cloudflare dashboard, and wait several minutes before validating connectivity again.

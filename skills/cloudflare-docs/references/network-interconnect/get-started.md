@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network-interconnect/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,10 +25,10 @@ For detailed information about BGP architecture, Edge Resiliency Mode, and route
 Your Cloudflare account team determines CNI eligibility and port availability. Notably:
 
 * CNI ports are currently offered at no charge to Enterprise customers.  
-   * Non-Enterprise customers (and any third party) may peer with Cloudflare via Internet Exchange according to our [open peering policy ↗](https://www.cloudflare.com/peering-policy/).
+  * Non-Enterprise customers (and any third party) may peer with Cloudflare via Internet Exchange according to our [open peering policy ↗](https://www.cloudflare.com/peering-policy/).
 * CNI is available at select Cloudflare data centers:  
-   * The type of Dataplane offered in that location will determine specifications of the supported connection, such as the MTU.  
-   * The diversity offered in the location will vary.
+  * The type of Dataplane offered in that location will determine specifications of the supported connection, such as the MTU.
+  * The diversity offered in the location will vary.
 * Customers must have a BGP session established for CNI v1 to be operational.
 
 ### Prefix requirements
@@ -39,7 +39,7 @@ To peer with Cloudflare, advertise prefixes with a prefix length of `/24` or sho
 
 CNI provides a private point-to-point IP connection with Cloudflare. There are two Dataplanes that come with different technical specifications.
 
-| Dataplane v1                                                                                                                                                                                      | Dataplane v2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |                                                                                                                                                                           |
+|                                                                                                                                                                                                   | Dataplane v1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Dataplane v2                                                                                                                                                              |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Magic Transit Direct Server Return (DSR)**  Distributed Denial of Service (DDoS) protection for all ingress traffic from the Internet to your public network. Send egress traffic via your ISP. | Supported with or without a GRE tunnel established over the interconnect circuit.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Supported.                                                                                                                                                                |
 | **Magic Transit with Egress**  DDoS protection for all ingress traffic from the Internet to your public network. Send egress traffic via Cloudflare.                                              | Supported with a GRE tunnel established over the interconnect circuit.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Supported.                                                                                                                                                                |
@@ -52,22 +52,22 @@ For more details refer to the [prerequisites section](https://developers.cloudfl
 ## Technical specifications
 
 * **Supported port types**:  
-   * **Dataplane v1**: 10GBASE-LR (single-mode fiber) and 100GBASE-LR (single-mode fiber).  
-   * **Dataplane v2**: 10GBASE-LR (single-mode fiber) and 100GBASE-LR4 (single-mode fiber) optics are supported.
+  * **Dataplane v1**: 10GBASE-LR (single-mode fiber) and 100GBASE-LR (single-mode fiber).
+  * **Dataplane v2**: 10GBASE-LR (single-mode fiber) and 100GBASE-LR4 (single-mode fiber) optics are supported.
 * **Distance limitations:** Cloudflare does not support optical links longer than 10 km. For longer distances, you must use intermediate hardware or a third-party provider to extend the connection.
 * **IP addressing:** All CNI connections and Partner CNI connections use a `/31` subnet for point-to-point IP connectivity between your router and Cloudflare.
 * **VLAN support:**  
-   * **Dataplane v1**: CNI ports may be assigned a single 802.1Q VLAN tag.  
-   * **Dataplane v2**: VLAN tagging (802.1Q) and QinQ are not yet supported.
+  * **Dataplane v1**: CNI ports may be assigned a single 802.1Q VLAN tag.
+  * **Dataplane v2**: VLAN tagging (802.1Q) and QinQ are not yet supported.
 * **MTU considerations:**  
-   * **Dataplane v1**: Supports a native 1,500-byte MTU for traffic from Cloudflare to you (ingress), but still requires a 1,476-byte MTU for traffic from you to Cloudflare (egress).  
-   * **Dataplane v2**: Supports a maximum MTU of 1,500 bytes bidirectionally with no GRE requirement.
+  * **Dataplane v1**: Supports a native 1,500-byte MTU for traffic from Cloudflare to you (ingress), but still requires a 1,476-byte MTU for traffic from you to Cloudflare (egress).
+  * **Dataplane v2**: Supports a maximum MTU of 1,500 bytes bidirectionally with no GRE requirement.
 * **Bidirectional Forwarding Detection (BFD):**  
-   * **Dataplane v1**: BFD provides fast failure detection for BGP sessions and is supported on direct connections. To enable BFD, contact your account team. Note that BFD on a CNI does not impact the failover time for IPsec/GRE tunnels, which rely on separate health checks.  
-   * **Dataplane v2**: Not yet supported.
+  * **Dataplane v1**: BFD provides fast failure detection for BGP sessions and is supported on direct connections. To enable BFD, contact your account team. Note that BFD on a CNI does not impact the failover time for IPsec/GRE tunnels, which rely on separate health checks.
+  * **Dataplane v2**: Not yet supported.
 * **Link Aggregation Control Protocol (LACP)**:  
-   * **Dataplane v1**: To increase bandwidth and provide link resiliency, Cloudflare supports combining multiple physical CNI ports into a single logical channel using Link Aggregation Control Protocol (LACP). You can bundle multiple connections to increase total throughput and add redundancy to your private connection with Cloudflare.  
-   * **Dataplane v2**: Not yet supported. Use ECMP instead.
+  * **Dataplane v1**: To increase bandwidth and provide link resiliency, Cloudflare supports combining multiple physical CNI ports into a single logical channel using Link Aggregation Control Protocol (LACP). You can bundle multiple connections to increase total throughput and add redundancy to your private connection with Cloudflare.
+  * **Dataplane v2**: Not yet supported. Use ECMP instead.
 
 ## Performance characteristics
 
@@ -84,8 +84,8 @@ The following are the maximum throughput rates supported by the CNI connection. 
 Consider the following service levels when planning your deployment:
 
 * **No Formal SLA**:  
-   * CNI is currently offered at no charge and without a formal [Service Level Agreement (SLA) ↗](https://www.cloudflare.com/service-specific-terms-network-services/#cf-network-interconnect-terms).  
-   * Cloudflare will work to restore CNI service in the event of a Cloudflare issue. In some Cloudflare data centers the recovery time could be several days. Therefore, we always recommend backup connectivity to a different device or via an Internet tunnel.
+  * CNI is currently offered at no charge and without a formal [Service Level Agreement (SLA) ↗](https://www.cloudflare.com/service-specific-terms-network-services/#cf-network-interconnect-terms).
+  * Cloudflare will work to restore CNI service in the event of a Cloudflare issue. In some Cloudflare data centers the recovery time could be several days. Therefore, we always recommend backup connectivity to a different device or via an Internet tunnel.
 * **Observability**: There is no visibility of the interconnect config/status within the Cloudflare dashboard.
 * **Availability**: Locations that support device-level diversity can maintain connectivity during maintenance when your connections terminate on separate devices. Single-device deployments will experience full service disruption during maintenance.
 * **Backup Connectivity**: You are required to maintain alternative Internet connectivity as a backup for all CNI implementations.
@@ -108,8 +108,8 @@ The process of provisioning a CNI typically takes two to four weeks, depending o
 1. **Submit request**: Work with your account team to create a CNI request ticket, providing your desired CNI type, location, use case, and technical details. An Implementation Manager will be assigned to guide the process.
 2. **Review configuration**: For the v1 Dataplane, the Implementation Manager will provide a detailed configuration document covering IP addressing, VLANs, and other technical specifications. You must review and approve this document. For the v2 Dataplane, this step is not necessary.
 3. **Order connection**:  
-   * For a **Direct Interconnect**, you will receive a Letter of Authorization (LOA) from Cloudflare to order the physical cross-connect from the data center facility operator.  
-   * For a **Partner Interconnect**, you will use the provided details to order a virtual circuit from the partner's portal.
+  * For a **Direct Interconnect**, you will receive a Letter of Authorization (LOA) from Cloudflare to order the physical cross-connect from the data center facility operator.
+  * For a **Partner Interconnect**, you will use the provided details to order a virtual circuit from the partner's portal.
 4. **Configure network**: Both Cloudflare and your network team will configure the respective network devices according to the approved document.
 5. **Test and verify**: Once the connection is physically established, teams will perform basic connectivity tests (for example, ping) and, if applicable, verify that the BGP session can be established.
 6. Enable tunnel health checks for [Magic Transit](https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/#add-tunnels) and/or [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels).
@@ -121,10 +121,10 @@ The process of provisioning a CNI typically takes two to four weeks, depending o
 ### Provision a Direct Interconnect
 
 1. **Project Kickoff**: In an initial kickoff call, you will confirm the scope and timeline with Cloudflare. Be prepared to provide the following information:  
-   * desired colocation facility  
-   * required port speeds (10G or 100G)  
-   * BGP ASN for Peering/Magic Transit  
-   * BGP password (optional)
+  * desired colocation facility
+  * required port speeds (10G or 100G)
+  * BGP ASN for Peering/Magic Transit
+  * BGP password (optional)
 2. **Order Cross-Connect**: Cloudflare will issue a Letter of Authorization (LOA). This document grants you permission to order a physical cross-connect between your equipment and a specific port on Cloudflare's hardware within the data center. The end-to-end process for ordering a cross-connect can take one to two weeks or more, depending on the facility provider. Cloudflare's demarcation is the port that is specified in the LOA. You are responsible for the deployment, provisioning, and ongoing support and operation of this connection, and the commercial relationships with the facility provider and any third-party connectivity providers.
 
 ### Provision a Partner Interconnect
@@ -171,11 +171,11 @@ You can now select **View interconnects** for a list of all interconnects on you
 After you have configured your Google Cloud Interconnect, you will need to add routes to use the interconnect:
 
 * To create routes in the Cloudflare Virtual Network routing table to direct traffic towards GCP:  
-   * Add [static routes](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/#configure-static-routes) to your Cloudflare WAN routing table with [legacy bidirectional tunnel health checks](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#legacy-bidirectional-health-checks) to detect failures and steer traffic to alternative paths.  
-   * Note that routes advertised by BGP from GCP Cloud Router will be ignored.
+  * Add [static routes](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/#configure-static-routes) to your Cloudflare WAN routing table with [legacy bidirectional tunnel health checks](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#legacy-bidirectional-health-checks) to detect failures and steer traffic to alternative paths.
+  * Note that routes advertised by BGP from GCP Cloud Router will be ignored.
 * To create routes in GCP routing table to direct traffic towards Cloudflare, you must use the GCP Cloud Router:  
-   * Add [custom learned routes to Cloud Router ↗](https://cloud.google.com/network-connectivity/docs/router/how-to/configure-custom-learned-routes).  
-   * Use the BGP session. Reach out to your account team to request a list of one or more prefixes to advertise, and specify the interconnect ID you want to advertise over.
+  * Add [custom learned routes to Cloud Router ↗](https://cloud.google.com/network-connectivity/docs/router/how-to/configure-custom-learned-routes).
+  * Use the BGP session. Reach out to your account team to request a list of one or more prefixes to advertise, and specify the interconnect ID you want to advertise over.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-interconnect/get-started/#page","headline":"Get started · Cloudflare Network Interconnect docs","description":"Connect your network privately to Cloudflare","url":"https://developers.cloudflare.com/network-interconnect/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AWS","GCP"]}

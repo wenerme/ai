@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -58,191 +58,13 @@ The following query returns CPU time and peak memory usage for a single containe
 Terminal window
 
 ```
-
-echo '{ "query":
-
-  "query ContainersMetrics($accountTag: String, $datetimeStart: Time, $datetimeEnd: Time, $instanceId: String) {
-
-    viewer {
-
-      accounts(filter: {accountTag: $accountTag}) {
-
-        containersMetricsAdaptiveGroups(
-
-          limit: 100
-
-          filter: {
-
-            datetime_geq: $datetimeStart,
-
-            datetime_leq: $datetimeEnd,
-
-            instanceId: $instanceId
-
-          }
-
-          orderBy: [datetimeHour_ASC]
-
-        ) {
-
-          dimensions {
-
-            datetimeHour
-
-            instanceId
-
-          }
-
-          sum {
-
-            cpuTimeSec
-
-          }
-
-          max {
-
-            memory
-
-          }
-
-          quantiles {
-
-            cpuUtilizationP95
-
-            memoryP95
-
-          }
-
-        }
-
-      }
-
-    }
-
-  }",
-
-  "variables": {
-
-    "accountTag": "<CLOUDFLARE_ACCOUNT_TAG>",
-
-    "datetimeStart": "2026-04-15T00:00:00Z",
-
-    "datetimeEnd": "2026-04-16T00:00:00Z",
-
-    "instanceId": "4c9b1b3c-8e8d-4a2d-9a3f-7f2b1c0a0e55"
-
-  }
-
-}' | tr -d '\n' | curl --silent \
-
-https://api.cloudflare.com/client/v4/graphql \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Accept: application/json" \
-
---header "Content-Type: application/json" \
-
---data @- | jq .
-
-
+echo '{ "query":  "query ContainersMetrics($accountTag: String, $datetimeStart: Time, $datetimeEnd: Time, $instanceId: String) {    viewer {      accounts(filter: {accountTag: $accountTag}) {        containersMetricsAdaptiveGroups(          limit: 100          filter: {            datetime_geq: $datetimeStart,            datetime_leq: $datetimeEnd,            instanceId: $instanceId          }          orderBy: [datetimeHour_ASC]        ) {          dimensions {            datetimeHour            instanceId          }          sum {            cpuTimeSec          }          max {            memory          }          quantiles {            cpuUtilizationP95            memoryP95          }        }      }    }  }",  "variables": {    "accountTag": "<CLOUDFLARE_ACCOUNT_TAG>",    "datetimeStart": "2026-04-15T00:00:00Z",    "datetimeEnd": "2026-04-16T00:00:00Z",    "instanceId": "4c9b1b3c-8e8d-4a2d-9a3f-7f2b1c0a0e55"  }}' | tr -d '\n' | curl --silent \https://api.cloudflare.com/client/v4/graphql \--header "Authorization: Bearer <API_TOKEN>" \--header "Accept: application/json" \--header "Content-Type: application/json" \--data @- | jq .
 ```
 
 ### Response
 
 ```
-
-{
-
-  "data": {
-
-    "viewer": {
-
-      "accounts": [
-
-        {
-
-          "containersMetricsAdaptiveGroups": [
-
-            {
-
-              "dimensions": {
-
-                "datetimeHour": "2026-04-15T00:00:00Z",
-
-                "instanceId": "4c9b1b3c-8e8d-4a2d-9a3f-7f2b1c0a0e55"
-
-              },
-
-              "max": {
-
-                "memory": 312475648
-
-              },
-
-              "quantiles": {
-
-                "cpuUtilizationP95": 0.4821,
-
-                "memoryP95": 298123264
-
-              },
-
-              "sum": {
-
-                "cpuTimeSec": 128.47
-
-              }
-
-            },
-
-            {
-
-              "dimensions": {
-
-                "datetimeHour": "2026-04-15T01:00:00Z",
-
-                "instanceId": "4c9b1b3c-8e8d-4a2d-9a3f-7f2b1c0a0e55"
-
-              },
-
-              "max": {
-
-                "memory": 305135616
-
-              },
-
-              "quantiles": {
-
-                "cpuUtilizationP95": 0.3914,
-
-                "memoryP95": 291454976
-
-              },
-
-              "sum": {
-
-                "cpuTimeSec": 104.91
-
-              }
-
-            }
-
-          ]
-
-        }
-
-      ]
-
-    }
-
-  },
-
-  "errors": null
-
-}
-
-
+{  "data": {    "viewer": {      "accounts": [        {          "containersMetricsAdaptiveGroups": [            {              "dimensions": {                "datetimeHour": "2026-04-15T00:00:00Z",                "instanceId": "4c9b1b3c-8e8d-4a2d-9a3f-7f2b1c0a0e55"              },              "max": {                "memory": 312475648              },              "quantiles": {                "cpuUtilizationP95": 0.4821,                "memoryP95": 298123264              },              "sum": {                "cpuTimeSec": 128.47              }            },            {              "dimensions": {                "datetimeHour": "2026-04-15T01:00:00Z",                "instanceId": "4c9b1b3c-8e8d-4a2d-9a3f-7f2b1c0a0e55"              },              "max": {                "memory": 305135616              },              "quantiles": {                "cpuUtilizationP95": 0.3914,                "memoryP95": 291454976              },              "sum": {                "cpuTimeSec": 104.91              }            }          ]        }      ]    }  },  "errors": null}
 ```
 
 ## Query container billing usage
@@ -281,157 +103,13 @@ The following query returns daily CPU and memory usage for the last 30 days:
 Terminal window
 
 ```
-
-echo '{ "query":
-
-  "query ContainersUsage($accountTag: String, $datetimeStart: Time, $datetimeEnd: Time) {
-
-    viewer {
-
-      accounts(filter: {accountTag: $accountTag}) {
-
-        containersUsageAdaptiveGroups(
-
-          limit: 100
-
-          filter: {
-
-            date_geq: $datetimeStart,
-
-            date_leq: $datetimeEnd
-
-          }
-
-          orderBy: [date_ASC]
-
-        ) {
-
-          dimensions {
-
-            date
-
-          }
-
-          sum {
-
-            cpuTimeSec
-
-            allocatedMemory
-
-            allocatedDisk
-
-            txBytes
-
-          }
-
-        }
-
-      }
-
-    }
-
-  }",
-
-  "variables": {
-
-    "accountTag": "<CLOUDFLARE_ACCOUNT_TAG>",
-
-    "datetimeStart": "2026-03-23",
-
-    "datetimeEnd": "2026-04-22"
-
-  }
-
-}' | tr -d '\n' | curl --silent \
-
-https://api.cloudflare.com/client/v4/graphql \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Accept: application/json" \
-
---header "Content-Type: application/json" \
-
---data @- | jq .
-
-
+echo '{ "query":  "query ContainersUsage($accountTag: String, $datetimeStart: Time, $datetimeEnd: Time) {    viewer {      accounts(filter: {accountTag: $accountTag}) {        containersUsageAdaptiveGroups(          limit: 100          filter: {            date_geq: $datetimeStart,            date_leq: $datetimeEnd          }          orderBy: [date_ASC]        ) {          dimensions {            date          }          sum {            cpuTimeSec            allocatedMemory            allocatedDisk            txBytes          }        }      }    }  }",  "variables": {    "accountTag": "<CLOUDFLARE_ACCOUNT_TAG>",    "datetimeStart": "2026-03-23",    "datetimeEnd": "2026-04-22"  }}' | tr -d '\n' | curl --silent \https://api.cloudflare.com/client/v4/graphql \--header "Authorization: Bearer <API_TOKEN>" \--header "Accept: application/json" \--header "Content-Type: application/json" \--data @- | jq .
 ```
 
 ### Response
 
 ```
-
-{
-
-  "data": {
-
-    "viewer": {
-
-      "accounts": [
-
-        {
-
-          "containersUsageAdaptiveGroups": [
-
-            {
-
-              "dimensions": {
-
-                "date": "2026-04-20"
-
-              },
-
-              "sum": {
-
-                "allocatedDisk": 172800000000000,
-
-                "allocatedMemory": 22118400000000,
-
-                "cpuTimeSec": 3742.18,
-
-                "txBytes": 8471239
-
-              }
-
-            },
-
-            {
-
-              "dimensions": {
-
-                "date": "2026-04-21"
-
-              },
-
-              "sum": {
-
-                "allocatedDisk": 172800000000000,
-
-                "allocatedMemory": 22118400000000,
-
-                "cpuTimeSec": 3955.02,
-
-                "txBytes": 9023841
-
-              }
-
-            }
-
-          ]
-
-        }
-
-      ]
-
-    }
-
-  },
-
-  "errors": null
-
-}
-
-
+{  "data": {    "viewer": {      "accounts": [        {          "containersUsageAdaptiveGroups": [            {              "dimensions": {                "date": "2026-04-20"              },              "sum": {                "allocatedDisk": 172800000000000,                "allocatedMemory": 22118400000000,                "cpuTimeSec": 3742.18,                "txBytes": 8471239              }            },            {              "dimensions": {                "date": "2026-04-21"              },              "sum": {                "allocatedDisk": 172800000000000,                "allocatedMemory": 22118400000000,                "cpuTimeSec": 3955.02,                "txBytes": 9023841              }            }          ]        }      ]    }  },  "errors": null}
 ```
 
 ## Filter and group by labels
@@ -444,133 +122,15 @@ Both endpoints expose container labels through two fields:
 For example, the following query returns CPU time and memory usage for production containers, grouped by environment:
 
 ```
-
-query ContainersByLabel(
-
-  $accountTag: String
-
-  $datetimeStart: Time
-
-  $datetimeEnd: Time
-
-) {
-
-  viewer {
-
-    accounts(filter: { accountTag: $accountTag }) {
-
-      containersMetricsAdaptiveGroups(
-
-        limit: 100
-
-        filter: {
-
-          datetime_geq: $datetimeStart
-
-          datetime_leq: $datetimeEnd
-
-          labels_has: "env=production"
-
-        }
-
-      ) {
-
-        dimensions {
-
-          env: label(name: "env")
-
-          region: label(name: "region")
-
-        }
-
-        sum {
-
-          cpuTimeSec
-
-        }
-
-        max {
-
-          memory
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
+query ContainersByLabel(  $accountTag: String  $datetimeStart: Time  $datetimeEnd: Time) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      containersMetricsAdaptiveGroups(        limit: 100        filter: {          datetime_geq: $datetimeStart          datetime_leq: $datetimeEnd          labels_has: "env=production"        }      ) {        dimensions {          env: label(name: "env")          region: label(name: "region")        }        sum {          cpuTimeSec        }        max {          memory        }      }    }  }}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAwgewHYBcCGBLJkDOAhKAGTQCMwAbACgCgYYASNAYyYRFQBU0BzALhgDKKCFm60GAEzQowKDAFswQtBBT8OCsOPpSZcxQFEkE9ZuoBKGAG9xANwxgA7pGvi6zVuxQ5KAMwzkMhD8VjAebJw8-IwsEShc3DAAvpY2dOkwrKiY2BA4ALKyIkw4AIJSAA5ytmAA4hBsFT5uGTDkChhqMACMAAy9LRn+gZAhg626spoA+txgwNGT+kroquMZSzPk84vSU4bG6+nkpBQ40wAWaDj8AERgSLYAvBUNEiBMcsi3R0njqUcJJokDgMMgcK5Wq0HrZ+CcyFQkGhFHcYbdzEc6BAwNwwUg4adEciwHdsbjvhioXQ-lSYDgQPJIbTMhUQBpFAIwExfkd5GgAB5M2mKeQIaA8qE09JSv5JIA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQATMRAU0QEsBbNgZURgAToiwgATAAZxANgC0k+QEYAHMkkBWTABYAnJkkB2AFoNmrDjzYBReEzFTZC5WqVKd+o6YC+QA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAwgewHYBcCGBLJkDOAhKAGTQCMwAbACgCgYYASNAYyYRFQBU0BzALhgDKKCFm60GAEzQowKDAFswQtBBT8OCsOPpSZcxQFEkE9ZuoBKGAG9xANwxgA7pGvi6zVuxQ5KAMwzkMhD8VjAebJw8-IwsEShc3DAAvpY2dOkwrKiY2BA4ALKyIkw4AIJSAA5ytmAA4hBsFT5uGTDkChhqMACMAAy9LRn+gZAhg626spoA+txgwNGT+kroquMZSzPk84vSU4bG6+nkpBQ40wAWaDj8AERgSLYAvBUNEiBMcsi3R0njqUcJJokDgMMgcK5Wq0HrZ+CcyFQkGhFHcYbdzEc6BAwNwwUg4adEciwHdsbjvhioXQ-lSYDgQPJIbTMhUQBpFAIwExfkd5GgAB5M2mKeQIaA8qE09JSv5JIA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQATMRAU0QEsBbNgZURgAToiwgATAAZxANgC0k+QEYAHMiUB2TABYZmceIBaDZqw482AUXhMxU2QuVrxAZh16DxgL5A)
 
 The aliased dimensions appear directly on each result:
 
 ```
-
-{
-
-  "data": {
-
-    "viewer": {
-
-      "accounts": [
-
-        {
-
-          "containersMetricsAdaptiveGroups": [
-
-            {
-
-              "dimensions": {
-
-                "env": "production",
-
-                "region": "enam"
-
-              },
-
-              "max": { "memory": 412316672 },
-
-              "sum": { "cpuTimeSec": 9812.41 }
-
-            },
-
-            {
-
-              "dimensions": {
-
-                "env": "production",
-
-                "region": "weur"
-
-              },
-
-              "max": { "memory": 398458880 },
-
-              "sum": { "cpuTimeSec": 7421.08 }
-
-            }
-
-          ]
-
-        }
-
-      ]
-
-    }
-
-  },
-
-  "errors": null
-
-}
-
-
+{  "data": {    "viewer": {      "accounts": [        {          "containersMetricsAdaptiveGroups": [            {              "dimensions": {                "env": "production",                "region": "enam"              },              "max": { "memory": 412316672 },              "sum": { "cpuTimeSec": 9812.41 }            },            {              "dimensions": {                "env": "production",                "region": "weur"              },              "max": { "memory": 398458880 },              "sum": { "cpuTimeSec": 7421.08 }            }          ]        }      ]    }  },  "errors": null}
 ```
 
 ## Footnotes

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/1.1.1.1/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,9 +18,8 @@ These steps configure 1.1.1.1 as the DNS resolver for an Azure Virtual Network (
 2. From the Azure portal side menu, select **Virtual Networks**.
 3. Select the virtual network you want to configure.
 4. Select **DNS Servers** \> **Custom**, and add two entries:  
-```  
-1.1.1.1  
-1.0.0.1  
+```
+1.1.1.11.0.0.1  
 ```
 5. Select **Save**.
 

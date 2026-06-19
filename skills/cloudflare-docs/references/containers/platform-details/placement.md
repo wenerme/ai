@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -47,66 +47,20 @@ When you specify both `jurisdiction` and `regions`, the regions must be valid fo
 
 Set placement constraints in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-7854)
-* [  wrangler.toml ](#tab-panel-7855)
+* [  wrangler.jsonc ](#tab-panel-7930)
+* [  wrangler.toml ](#tab-panel-7931)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "containers": [
-
-    {
-
-      "name": "my-container",
-
-      "image": "docker.io/my-org/my-image:latest",
-
-      "constraints": {
-
-        "regions": [
-
-          "ENAM",
-
-          "WNAM"
-
-        ],
-
-        "jurisdiction": "fedramp"
-
-      }
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "containers": [    {      "name": "my-container",      "image": "docker.io/my-org/my-image:latest",      "constraints": {        "regions": [          "ENAM",          "WNAM"        ],        "jurisdiction": "fedramp"      }    }  ]}
 ```
 
 TOML
 
 ```
-
-[[containers]]
-
-name = "my-container"
-
-image = "docker.io/my-org/my-image:latest"
-
-
-[containers.constraints]
-
-regions = ["ENAM", "WNAM"]
-
-jurisdiction = "fedramp"
-
-
+[[containers]]name = "my-container"image = "docker.io/my-org/my-image:latest"
+[containers.constraints]regions = ["ENAM", "WNAM"]jurisdiction = "fedramp"
 ```
 
 Refer to [Lifecycle of a Container](https://developers.cloudflare.com/containers/platform-details/architecture/) for more details on how placement affects container startup and routing.

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,9 +20,9 @@ Use your certificate staging environment to test new custom (modern) certificate
 
 ## Availability
 
-| Free         | Pro | Business | Enterprise |                 |
-| ------------ | --- | -------- | ---------- | --------------- |
-| Availability | No  | No       | No         | Yes (open beta) |
+|              | Free | Pro | Business | Enterprise      |
+| ------------ | ---- | --- | -------- | --------------- |
+| Availability | No   | No  | No       | Yes (open beta) |
 
 ---
 
@@ -43,10 +43,7 @@ To upload custom (modern) certificates to your staging environment:
 Test your custom (modern) certificate by sending `curl` requests to the IP addresses listed on the [**Staging Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/staging-certificates) page:
 
 ```
-
 curl --resolve <HOSTNAME>:<PORT>:<STAGING_IP> https://<HOSTNAME> -iv
-
-
 ```
 
 You should confirm whether:

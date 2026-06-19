@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/data-localization/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -45,305 +45,117 @@ List all the available regions
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `DNS Read`
 * `DNS Write`
 
 List Regions
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/regional_hostnames/regions" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/regional_hostnames/regions" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Response
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "result": [
-
-    {
-
-      "key": "ca",
-
-      "label": "Canada"
-
-    },
-
-    {
-
-      "key": "eu",
-
-      "label": "Europe"
-
-    }
-
-  ],
-
-  "messages": []
-
-}
-
-
+{  "success": true,  "errors": [],  "result": [    {      "key": "ca",      "label": "Canada"    },    {      "key": "eu",      "label": "Europe"    }  ],  "messages": []}
 ```
 
 Create a new regional hostname entry
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `DNS Write`
 
 Create Regional Hostname
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/addressing/regional_hostnames" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "hostname": "ca.regional.ipam.rocks",
-
-    "region_key": "ca"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/addressing/regional_hostnames" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "hostname": "ca.regional.ipam.rocks",    "region_key": "ca"  }'
 ```
 
 Response
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "result": {
-
-    "hostname": "ca.regional.ipam.rocks",
-
-    "region_key": "ca",
-
-    "created_on": "2023-01-13T23:59:45.276558Z"
-
-  },
-
-  "messages": []
-
-}
-
-
+{  "success": true,  "errors": [],  "result": {    "hostname": "ca.regional.ipam.rocks",    "region_key": "ca",    "created_on": "2023-01-13T23:59:45.276558Z"  },  "messages": []}
 ```
 
 List all regional hostnames for a zone or get a specific one
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `DNS Read`
 * `DNS Write`
 
 List Regional Hostnames
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/addressing/regional_hostnames" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/addressing/regional_hostnames" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Response
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "result": [
-
-    {
-
-      "hostname": "ca.regional.ipam.rocks",
-
-      "region_key": "ca",
-
-      "created_on": "2023-01-14T00:47:57.060267Z"
-
-    }
-
-  ],
-
-  "messages": []
-
-}
-
-
+{  "success": true,  "errors": [],  "result": [    {      "hostname": "ca.regional.ipam.rocks",      "region_key": "ca",      "created_on": "2023-01-14T00:47:57.060267Z"    }  ],  "messages": []}
 ```
 
 List all regional hostnames for a specific zone
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `DNS Read`
 * `DNS Write`
 
 Fetch Regional Hostname
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/addressing/regional_hostnames/$HOSTNAME" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/addressing/regional_hostnames/$HOSTNAME" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Response
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "result": {
-
-    "hostname": "ca.regional.ipam.rocks",
-
-    "region_key": "ca",
-
-    "created_on": "2023-01-13T23:59:45.276558Z"
-
-  },
-
-  "messages": []
-
-}
-
-
+{  "success": true,  "errors": [],  "result": {    "hostname": "ca.regional.ipam.rocks",    "region_key": "ca",    "created_on": "2023-01-13T23:59:45.276558Z"  },  "messages": []}
 ```
 
 Patch the region for a specific hostname
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `DNS Write`
 
 Update Regional Hostname
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/addressing/regional_hostnames/$HOSTNAME" \
-
-  --request PATCH \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "region_key": "eu"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/addressing/regional_hostnames/$HOSTNAME" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "region_key": "eu"  }'
 ```
 
 Response
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "result": {
-
-    "hostname": "ca.regional.ipam.rocks",
-
-    "region_key": "eu",
-
-    "created_on": "2023-01-13T23:59:45.276558Z"
-
-  },
-
-  "messages": []
-
-}
-
-
+{  "success": true,  "errors": [],  "result": {    "hostname": "ca.regional.ipam.rocks",    "region_key": "eu",    "created_on": "2023-01-13T23:59:45.276558Z"  },  "messages": []}
 ```
 
 Delete the region configuration
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `DNS Write`
 
 Delete Regional Hostname
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/addressing/regional_hostnames/$HOSTNAME" \
-
-  --request DELETE \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/addressing/regional_hostnames/$HOSTNAME" \  --request DELETE \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Response
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "result": null,
-
-  "messages": []
-
-}
-
-
+{  "success": true,  "errors": [],  "result": null,  "messages": []}
 ```
 
 ## Verify regional map for Zero Trust

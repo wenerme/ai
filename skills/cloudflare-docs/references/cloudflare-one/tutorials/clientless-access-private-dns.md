@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -40,9 +40,10 @@ First, install `cloudflared` on a server in your private network:
 
 ## Add private network routes
 
-1. In the **CIDR** tab, add the following IP addresses:  
-   * Private IP/CIDR of your application server (for example, `10.128.0.175/32`)  
-   * Private IP/CIDR of your DNS server
+1. In the **CIDR** tab, add the following IP addresses:
+
+  * Private IP/CIDR of your application server (for example, `10.128.0.175/32`)
+  * Private IP/CIDR of your DNS server
 2. Select **Save tunnel**.
 
 The application and DNS server are now connected to Cloudflare.
@@ -53,9 +54,10 @@ The application and DNS server are now connected to Cloudflare.
 2. Turn on **Allow users to open a remote browser without the device client**.
 1. For **Permissions**, select **Manage**.
 2. Select **Add a rule**.
-3. Create an expression that defines who can open the Clientless Web Isolation browser. For example,  
-| Rule action | Rule type | Selector         | Value        | Action           |  
-| ----------- | --------- | ---------------- | ------------ | ---------------- |  
+3. Create an expression that defines who can open the Clientless Web Isolation browser. For example,
+
+| Rule action | Rule type | Selector         | Value        | Action           |
+| ----------- | --------- | ---------------- | ------------ | ---------------- |
 | Allow       | Include   | Emails ending in | @example.com | Select **Save**. |
 
 To test, open a browser and go to `https://<team-name>.cloudflareaccess.com/browser/https://<private-IP-of-application>`.
@@ -64,9 +66,10 @@ To test, open a browser and go to `https://<team-name>.cloudflareaccess.com/brow
 
 1. Go to **Traffic policies** \> **Resolver policies**.
 2. Select **Add a policy**.
-3. Create an expression to match against the private [domain](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#domain) or [hostname](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#host) of the application:  
-| Selector | Operator | Value              |  
-| -------- | -------- | ------------------ |  
+3. Create an expression to match against the private [domain](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#domain) or [hostname](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#host) of the application:
+
+| Selector | Operator | Value              |
+| -------- | -------- | ------------------ |
 | Domain   | in       | internalrecord.com |
 4. In **Select DNS resolver**, select _Configure custom DNS resolvers_.
 5. Enter the private IP address of your DNS server.
@@ -79,11 +82,12 @@ To test, open a browser and go to `https://<team-name>.cloudflareaccess.com/brow
 ## Create a Gateway network policy (recommended)
 
 1. Go to **Traffic policies** \> **Firewall policies** \> **Network**.
-2. Add a [network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) that targets the private IP address of your application. You can optionally include any ports or protocols relevant for application access. For example,  
-| Selector         | Operator      | Value          | Logic | Action |  
-| ---------------- | ------------- | -------------- | ----- | ------ |  
-| Destination IP   | in            | 10.128.0.175   | And   | Allow  |  
-| Destination Port | in            | 80             | Or    |        |  
+2. Add a [network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) that targets the private IP address of your application. You can optionally include any ports or protocols relevant for application access. For example,
+
+| Selector         | Operator      | Value          | Logic | Action |
+| ---------------- | ------------- | -------------- | ----- | ------ |
+| Destination IP   | in            | 10.128.0.175   | And   | Allow  |
+| Destination Port | in            | 80             | Or    |        |
 | User Email       | matches regex | .\*example.com |       |        |
 
 Note

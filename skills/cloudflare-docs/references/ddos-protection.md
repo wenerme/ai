@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -58,7 +58,7 @@ Deploy custom eBPF packet logic across Cloudflare's network to inspect and mitig
 
 ## Availability
 
-| Free                                                   | Pro                                                                                      | Business                                                                                 | Enterprise                                                                               | Enterprise with Advanced DDoS Protection add-on                                          |                                                                                          |
+|                                                        | Free                                                                                     | Pro                                                                                      | Business                                                                                 | Enterprise                                                                               | Enterprise with Advanced DDoS Protection add-on                                          |
 | ------------------------------------------------------ | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
 | Availability                                           | Yes                                                                                      | Yes                                                                                      | Yes                                                                                      | Yes                                                                                      | Yes                                                                                      |
 | Standard, unmetered DDoS protection (layers 3-7)       | Yes                                                                                      | Yes                                                                                      | Yes                                                                                      | Yes                                                                                      | Yes                                                                                      |

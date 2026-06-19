@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -53,22 +53,7 @@ The compression applied by the _Default_ option takes into account any configure
 The configuration object supported by the `compress_response` action has the following format:
 
 ```
-
-"action_parameters": {
-
-  "algorithms": [
-
-    { "name": "<VALUE1>" },
-
-    { "name": "<VALUE2>" },
-
-    // ...
-
-  ]
-
-}
-
-
+"action_parameters": {  "algorithms": [    { "name": "<VALUE1>" },    { "name": "<VALUE2>" },    // ...  ]}
 ```
 
 The `algorithms` list must contain at least one item.

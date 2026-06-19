@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,22 +25,20 @@ Turnstile migration is currently compatible up to reCAPTCHA v2.
 1. Update the client-side integration by inserting the Turnstile script snippet in your HTML's `<head>` element.  
 Turnstile script snippet  
 ```  
-<script  
-  src="https://challenges.cloudflare.com/turnstile/v0/api.js?compat=recaptcha"  
-  async  
-  defer  
-></script>  
+<script  src="https://challenges.cloudflare.com/turnstile/v0/api.js?compat=recaptcha"  async  defer></script>  
 ```  
 Note  
-Adding `?compat=recaptcha` runs Turnstile in compatibility mode, which enables the following features:  
-   * implicit rendering for reCAPTCHA  
-   * `g-recaptcha-response` input name for forms  
-   * register the Turnstile API as `grecaptcha`
+Adding `?compat=recaptcha` runs Turnstile in compatibility mode, which enables the following features:
+
+  * implicit rendering for reCAPTCHA
+  * `g-recaptcha-response` input name for forms
+  * register the Turnstile API as `grecaptcha`
 2. Locate the `grecaptcha.render()` calls and replace the sitekey with your Turnstile sitekey.  
 Note  
-Turnstile supports:  
-   * the `render()` call  
-   * reCAPTCHA v2 invisible mode with the `execute()` call
+Turnstile supports:
+
+  * the `render()` call
+  * reCAPTCHA v2 invisible mode with the `execute()` call
 
 ## Server-side integration
 
@@ -49,10 +47,7 @@ Update the server-side integration by replacing the Siteverify URL.
 Replace `https://www.google.com/recaptcha/api/siteverify` with the following:
 
 ```
-
 https://challenges.cloudflare.com/turnstile/v0/siteverify
-
-
 ```
 
 Differences to reCAPTCHA's Siteverify

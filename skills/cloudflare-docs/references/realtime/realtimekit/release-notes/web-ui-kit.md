@@ -6,13 +6,58 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
 # Web UI Kit
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/realtime/realtimekit/release-notes/web-ui-kit/index.xml)
+
+## 2026-06-18
+
+**RealtimeKit Web UI Kit 2.0.0**
+
+**Compatibility:** Requires RealtimeKit Web Core 2.0.0 or later.
+
+This is a major breaking release to align with the Core SDK v2.0.0 plugin redesign and removal of deprecated APIs.
+
+**Plugin components — redesigned**
+
+The `rtk-plugin-main` and `rtk-plugins` components have been updated for the new plugin model.
+
+Key changes:
+
+* `rtk-plugin-main` no longer renders an `<iframe>`. Instead, it uses a `<slot>` to project the `plugin.component` (any `HTMLElement`) you provide in the plugin config.
+* Plugin permission checks now use `plugin.permissions.canActivate` and `plugin.permissions.canDeactivate` instead of the old `meeting.self.permissions.plugins.canStart` / `canClose`.
+* Plugin list (`rtk-plugins`) now shows `plugin.icon` instead of `plugin.picture`.
+* Added an empty state message ("No plugins available") when no plugins are registered.
+* Removed iframe interaction checks (`canInteractWithPlugin`, `viewModeEnabled`) and the `block-inputs` overlay. These are no longer applicable without iframes.
+
+**Removed deprecated API usages**
+
+* `meeting.leaveRoom()` — use `meeting.leave()`.
+* `meeting.connectedMeetings.supportsConnectedMeetings` — removed. Breakout room checks use `meeting.connectedMeetings.isActive` and permission checks directly.
+* `participant.clientSpecificId` — use `participant.customParticipantId`.
+
+**Enhancements**
+
+* AI Transcriptions UI: Rewrote the search UI for transcriptions. Search now covers both participant names and transcript content. Added dedicated search placeholder and "no results" states.
+* AI Transcriptions header: Fixed typo "MeetingAI" to "Meeting AI".
+* Chat message spacing: Reduced line height in `rtk-message-view` for better vertical spacing.
+* Audio track handling: `RTKAudio.addTrack()` now removes any existing track with the same ID before adding, preventing stale tracks from accumulating (fixes double audio on reconnect).
+
+**New localization keys**
+
+* `plugins.empty` — "No plugins available"
+* `ai.transcriptions.search_placeholder` — "Search by participant name or transcript"
+* `ai.transcriptions.no_transcripts_found` — "No transcripts found. Try searching for a different participant or transcript."
+* `ai.transcriptions.no_transcripts_yet` — "No transcripts yet."
+
+**Fixes**
+
+* Fixed abrupt disconnection screen appearing incorrectly during media reconnection.
+* Fixed missing audio after reconnection due to stale tracks not being replaced.
 
 ## 2026-05-28
 
@@ -53,13 +98,13 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 **Fixes**
 
-* Corrected typos in UI strings:  
-   * `occured` → `occurred`  
-   * `On you device` → `On your device`  
-   * `Grant acess` → `Grant access`
-* Fixed default language pack keys:  
-   * `ai.chat.summerise` → `ai.chat.summarize`  
-   * `date.yesteday` → `date.yesterday`
+* Corrected typos in UI strings:
+  * `occured` → `occurred`
+  * `On you device` → `On your device`
+  * `Grant acess` → `Grant access`
+* Fixed default language pack keys:
+  * `ai.chat.summerise` → `ai.chat.summarize`
+  * `date.yesteday` → `date.yesterday`
 
 ## 2026-01-30
 
@@ -72,9 +117,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 * Chat message operations (edit, delete, pin) are now available to all participants.
 * Chat pagination with infinite scroll for improved performance in meetings with high message volume.
 * Pinned messages are now displayed in a dedicated view for easy access.
-* Added `overrides` prop support on `rtk-meeting` and `rtk-ui-provider` for easier UI customization. Available overrides include:  
-   * `disablePrivateChat` \- Disable private chat functionality.  
-   * `disableEmojiPicker` \- Hide emoji picker in chat component.  
+* Added `overrides` prop support on `rtk-meeting` and `rtk-ui-provider` for easier UI customization. Available overrides include:
+  * `disablePrivateChat` \- Disable private chat functionality.
+  * `disableEmojiPicker` \- Hide emoji picker in chat component.  
 ```tsx  
 <RtkMeeting meeting={meeting} overrides={{  
   disablePrivateChat: true,  

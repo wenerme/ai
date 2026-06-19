@@ -3151,6 +3151,35 @@ components:
           description: Video input tokens
       description: Detailed prompt token usage
       title: ChatUsagePromptTokensDetails
+    ChatUsageServerToolUseDetails:
+      type: object
+      properties:
+        tool_calls_executed:
+          type:
+            - integer
+            - 'null'
+          description: >-
+            Number of OpenRouter server tool calls that executed and produced a
+            result
+        tool_calls_requested:
+          type:
+            - integer
+            - 'null'
+          description: >-
+            Total number of OpenRouter server-orchestrated tool calls the model
+            requested, across all tool types. Provider-native tools (e.g. native
+            web search) are not counted here.
+        web_search_requests:
+          type:
+            - integer
+            - 'null'
+          description: >-
+            Number of web searches performed by server-side tools. For
+            server-orchestrated tool calls a web search is also counted in
+            tool_calls_requested; provider-native web search may report
+            web_search_requests only. Do not sum the two.
+      description: Usage for server-side tool execution (e.g., web search)
+      title: ChatUsageServerToolUseDetails
     ChatUsage:
       type: object
       properties:
@@ -3181,6 +3210,11 @@ components:
             - $ref: '#/components/schemas/ChatUsagePromptTokensDetails'
             - type: 'null'
           description: Detailed prompt token usage
+        server_tool_use_details:
+          oneOf:
+            - $ref: '#/components/schemas/ChatUsageServerToolUseDetails'
+            - type: 'null'
+          description: Usage for server-side tool execution (e.g., web search)
         total_tokens:
           type: integer
           description: Total number of tokens

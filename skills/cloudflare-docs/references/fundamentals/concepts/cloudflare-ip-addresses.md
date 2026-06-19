@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -41,17 +41,8 @@ The following example demonstrates how you could use an iptables rule to allow a
 Terminal window
 
 ```
-
-# For IPv4 addresses
-
-iptables -I INPUT -p tcp -m multiport --dports http,https -s $ip -j ACCEPT
-
-
-# For IPv6 addresses
-
-ip6tables -I INPUT -p tcp -m multiport --dports http,https -s $ip -j ACCEPT
-
-
+# For IPv4 addressesiptables -I INPUT -p tcp -m multiport --dports http,https -s $ip -j ACCEPT
+# For IPv6 addressesip6tables -I INPUT -p tcp -m multiport --dports http,https -s $ip -j ACCEPT
 ```
 
 For more specific guidance, contact your hosting provider or website administrator.
@@ -65,16 +56,7 @@ For example, you might [update your iptables ↗](https://www.linode.com/docs/gu
 Terminal window
 
 ```
-
-# For IPv4 addresses
-
-iptables -A INPUT -p tcp -m multiport --dports http,https -j DROP
-
-# For IPv6 addresses
-
-ip6tables -A INPUT -p tcp -m multiport --dports http,https -j DROP
-
-
+# For IPv4 addressesiptables -A INPUT -p tcp -m multiport --dports http,https -j DROP# For IPv6 addressesip6tables -A INPUT -p tcp -m multiport --dports http,https -j DROP
 ```
 
 For more specific guidance, contact your hosting provider or website administrator.

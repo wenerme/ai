@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,43 +29,15 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 ### Basic Usage
 
 ```
-
 import { RtkChatSelector } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return <RtkChatSelector />;
-
-}
-
-
+function MyComponent() {  return <RtkChatSelector />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkChatSelector } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkChatSelector
-
-      meeting={meeting}
-
-      size="md"
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkChatSelector      meeting={meeting}      size="md"    />  );}
 ```
 
 ```json

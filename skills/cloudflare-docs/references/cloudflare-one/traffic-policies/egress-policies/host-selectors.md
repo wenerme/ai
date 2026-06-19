@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -39,8 +39,8 @@ These selectors require additional configuration before they work.
 
 To turn on the selectors for your account:
 
-* [ Dashboard ](#tab-panel-7600)
-* [ API ](#tab-panel-7601)
+* [ Dashboard ](#tab-panel-7676)
+* [ API ](#tab-panel-7677)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. In **Policy settings**, turn on **Allow egress policy host selectors**.
@@ -50,28 +50,7 @@ Use the [Patch Zero Trust account configuration](https://developers.cloudflare.c
 Patch Zero Trust account configuration
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configuration" \
-
-  --request PATCH \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "settings": {
-
-        "host_selector": {
-
-            "enabled": true
-
-        }
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configuration" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "settings": {        "host_selector": {            "enabled": true        }    }  }'
 ```
 
 ## Prerequisites
@@ -92,24 +71,21 @@ Traffic from unsupported on-ramp methods resolves using your default Gateway set
 
 To configure your Zero Trust organization to use Host selectors with Egress policies:
 
-1. Make sure you deploy the following version of the Cloudflare One Client on your users' devices:  
-   * **Desktop**: [Cloudflare One Client version 2025.4.929.0](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) or later  
-   * **iOS**: [Cloudflare One Client version 1.11](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/#ios) or later  
-   * **Android and Chrome OS**: [Cloudflare One Client version 2.4.2](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/#android) or later.  
+1. Make sure you deploy the following version of the Cloudflare One Client on your users' devices:
+
+  * **Desktop**: [Cloudflare One Client version 2025.4.929.0](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) or later
+  * **iOS**: [Cloudflare One Client version 1.11](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/#ios) or later
+  * **Android and Chrome OS**: [Cloudflare One Client version 2.4.2](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/#android) or later.  
 If you need to support devices running prior versions of WARP, add and deploy the following key-value pair to your devices' [WARP configuration file](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/) (`mdm.xml` on Windows and Linux or `com.cloudflare.warp.plist` on macOS):  
 ```  
-<array>  
-  <dict>  
-    <key>doh_in_tunnel</key>  
-    <true/>  
-  </dict>  
-</array>  
+<array>  <dict>    <key>doh_in_tunnel</key>    <true/>  </dict></array>  
 ```
-2. In your WARP [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/), configure [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) such that the initial resolved IPs route through the WARP tunnel. Configuration depends on your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode):  
-   * **Exclude mode**: Delete `100.64.0.0/10` from your Split Tunnels list. We recommend [adding back the IP ranges](https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/#split-tunnel-configuration) that are not explicitly used for Cloudflare One services. This reduces the risk of conflicts with existing private network configurations that may use the CGNAT address space.  
-   * **Include mode**: Add Split Tunnel entries for the following IP addresses:  
-         * **IPv4**: `100.80.0.0/16`  
-         * **IPv6**: `2606:4700:0cf1:4000::/64`
+2. In your WARP [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/), configure [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) such that the initial resolved IPs route through the WARP tunnel. Configuration depends on your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode):
+
+  * **Exclude mode**: Delete `100.64.0.0/10` from your Split Tunnels list. We recommend [adding back the IP ranges](https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/#split-tunnel-configuration) that are not explicitly used for Cloudflare One services. This reduces the risk of conflicts with existing private network configurations that may use the CGNAT address space.
+  * **Include mode**: Add Split Tunnel entries for the following IP addresses:  
+    * **IPv4**: `100.80.0.0/16`
+    * **IPv6**: `2606:4700:0cf1:4000::/64`
 
 The Cloudflare One Client must be set to _Traffic and DNS mode_ for traffic affected by these selectors to route correctly.
 

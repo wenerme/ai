@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-crawl-control/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,20 +33,18 @@ Before using the Pay Per Crawl Discovery API, you must:
 All requests to the Discovery API must be authenticated using HTTP message signatures with Web Bot Auth headers. This ensures that only verified crawlers can access the list of participating domains.
 
 1. Generate your Web Bot Auth signature following the steps in [Sign your requests](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/#4-after-verification-sign-your-requests).
-2. Construct the required headers as described in [Construct the required headers](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/#43-construct-the-required-headers):  
-   * `Signature`: The cryptographic signature of the request  
-   * `Signature-Input`: The signature metadata and parameters  
-   * `Signature-Agent`: Information about the signing agent
+2. Construct the required headers as described in [Construct the required headers](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/#43-construct-the-required-headers):
+
+  * `Signature`: The cryptographic signature of the request
+  * `Signature-Input`: The signature metadata and parameters
+  * `Signature-Agent`: Information about the signing agent
 
 ## Discover participating domains
 
 ### API endpoint
 
 ```
-
 GET https://crawlers-api.ai-audit.cfdata.org/charged_zones
-
-
 ```
 
 ### Request parameters
@@ -59,14 +57,7 @@ GET https://crawlers-api.ai-audit.cfdata.org/charged_zones
 Include the HTTP message signature headers generated using Web Bot Auth:
 
 ```
-
-Signature: <your-signature>
-
-Signature-Input: <signature-metadata>
-
-Signature-Agent: <agent-information>
-
-
+Signature: <your-signature>Signature-Input: <signature-metadata>Signature-Agent: <agent-information>
 ```
 
 ### Example request
@@ -74,16 +65,7 @@ Signature-Agent: <agent-information>
 Terminal window
 
 ```
-
-curl -X GET "https://crawlers-api.ai-audit.cfdata.org/charged_zones?limit=50" \
-
-  -H "Signature: <your-signature>" \
-
-  -H "Signature-Input: <signature-metadata>" \
-
-  -H "Signature-Agent: <agent-information>"
-
-
+curl -X GET "https://crawlers-api.ai-audit.cfdata.org/charged_zones?limit=50" \  -H "Signature: <your-signature>" \  -H "Signature-Input: <signature-metadata>" \  -H "Signature-Agent: <agent-information>"
 ```
 
 ### Response format
@@ -91,38 +73,7 @@ curl -X GET "https://crawlers-api.ai-audit.cfdata.org/charged_zones?limit=50" \
 The API returns a list of zones (domains) that have Pay Per Crawl enabled and are accepting payments from your crawler.
 
 ```
-
-{
-
-  "result": {
-
-    "zones": [
-
-      {
-
-        "domain": "example.com"
-
-      },
-
-      {
-
-        "domain": "news-site.com"
-
-      }
-
-    ]
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "zones": [      {        "domain": "example.com"      },      {        "domain": "news-site.com"      }    ]  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 ### Response fields

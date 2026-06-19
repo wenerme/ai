@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,88 +21,11 @@ Wrap your `McpServer` with `withX402` and use `paidTool` for tools you want to c
 TypeScript
 
 ```
-
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-
-import { McpAgent } from "agents/mcp";
-
-import { withX402, type X402Config } from "agents/x402";
-
-import { z } from "zod";
-
-
-const X402_CONFIG: X402Config = {
-
-  network: "base",
-
-  recipient: "0xYourWalletAddress",
-
-  facilitator: { url: "https://x402.org/facilitator" }, // Payment facilitator URL
-
-  // To learn more about facilitators: https://docs.x402.org/core-concepts/facilitator
-
-};
-
-
-export class PaidMCP extends McpAgent<Env> {
-
-  server = withX402(
-
-    new McpServer({ name: "PaidMCP", version: "1.0.0" }),
-
-    X402_CONFIG,
-
-  );
-
-
-  async init() {
-
-    // Paid tool — $0.01 per call
-
-    this.server.paidTool(
-
-      "square",
-
-      "Squares a number",
-
-      0.01, // USD
-
-      { number: z.number() },
-
-      {},
-
-      async ({ number }) => {
-
-        return { content: [{ type: "text", text: String(number ** 2) }] };
-
-      },
-
-    );
-
-
-    // Free tool
-
-    this.server.tool(
-
-      "echo",
-
-      "Echo a message",
-
-      { message: z.string() },
-
-      async ({ message }) => {
-
-        return { content: [{ type: "text", text: message }] };
-
-      },
-
-    );
-
-  }
-
-}
-
-
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";import { McpAgent } from "agents/mcp";import { withX402, type X402Config } from "agents/x402";import { z } from "zod";
+const X402_CONFIG: X402Config = {  network: "base",  recipient: "0xYourWalletAddress",  facilitator: { url: "https://x402.org/facilitator" }, // Payment facilitator URL  // To learn more about facilitators: https://docs.x402.org/core-concepts/facilitator};
+export class PaidMCP extends McpAgent<Env> {  server = withX402(    new McpServer({ name: "PaidMCP", version: "1.0.0" }),    X402_CONFIG,  );
+  async init() {    // Paid tool — $0.01 per call    this.server.paidTool(      "square",      "Squares a number",      0.01, // USD      { number: z.number() },      {},      async ({ number }) => {        return { content: [{ type: "text", text: String(number ** 2) }] };      },    );
+    // Free tool    this.server.tool(      "echo",      "Echo a message",      { message: z.string() },      async ({ message }) => {        return { content: [{ type: "text", text: message }] };      },    );  }}
 ```
 
 ## Configuration
@@ -118,24 +41,7 @@ export class PaidMCP extends McpAgent<Env> {
 TypeScript
 
 ```
-
-this.server.paidTool(
-
-  name, // Tool name
-
-  description, // Tool description
-
-  price, // Price in USD (e.g., 0.01)
-
-  inputSchema, // Zod schema for inputs
-
-  annotations, // MCP annotations
-
-  handler, // Async function that executes the tool
-
-);
-
-
+this.server.paidTool(  name, // Tool name  description, // Tool description  price, // Price in USD (e.g., 0.01)  inputSchema, // Zod schema for inputs  annotations, // MCP annotations  handler, // Async function that executes the tool);
 ```
 
 When a client calls a paid tool without payment, the server returns 402 with payment requirements. The client pays via x402, retries with payment proof, and receives the result.

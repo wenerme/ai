@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tenant/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,14 +21,7 @@ To retrieve tenant details, send a `GET` request to the `/user/tenants` endpoint
 Request
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/user/tenants" \
-
---header "X-Auth-Email: <EMAIL>" \
-
---header "X-Auth-Key: <API_KEY>"
-
-
+curl "https://api.cloudflare.com/client/v4/user/tenants" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>"
 ```
 
 A successful request will return an HTTP status of `200` and a response body containing tenant information, unit information, memberships, and tenant entitlements for all tenants administered by the user.

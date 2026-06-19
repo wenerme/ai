@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,10 +19,7 @@ Cloudflare may count Workers subrequests on the same zone as separate requests, 
 To prevent this behavior, you must exclude any Workers subrequests coming from the same zone from your rate limiting rule using the [cf.worker.upstream\_zone](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.worker.upstream%5Fzone/) field. For example, you could add the following sub-expression to your [rate limiting rule expression](https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/#when-incoming-requests-match):
 
 ```
-
 and (cf.worker.upstream_zone == "" or cf.worker.upstream_zone != "<YOUR_ZONE>")
-
-
 ```
 
 The first condition (testing for an empty string) will match direct visitor requests, while the second condition will match subrequests not originating from your zone, effectively excluding subrequests from the same zone from the rate limiting rule.

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -46,103 +46,47 @@ Terminal window
 ```  
 cd my-mcp-client  
 ```  
-Your Agent is ready! The template includes a minimal Agent in `src/index.ts`:  
-   * [  JavaScript ](#tab-panel-5787)  
-   * [  TypeScript ](#tab-panel-5788)  
+Your Agent is ready! The template includes a minimal Agent in `src/index.ts`:
+
+  * [  JavaScript ](#tab-panel-5861)
+  * [  TypeScript ](#tab-panel-5862)  
 JavaScript  
 ```  
 import { Agent, routeAgentRequest } from "agents";  
-export class HelloAgent extends Agent {  
-  async onRequest(request) {  
-    return new Response("Hello, Agent!", { status: 200 });  
-  }  
-}  
-export default {  
-  async fetch(request, env) {  
-    return (  
-      (await routeAgentRequest(request, env, { cors: true })) ||  
-      new Response("Not found", { status: 404 })  
-    );  
-  },  
-};  
+export class HelloAgent extends Agent {  async onRequest(request) {    return new Response("Hello, Agent!", { status: 200 });  }}  
+export default {  async fetch(request, env) {    return (      (await routeAgentRequest(request, env, { cors: true })) ||      new Response("Not found", { status: 404 })    );  },};  
 ```  
 TypeScript  
 ```  
 import { Agent, routeAgentRequest } from "agents";  
-type Env = {  
-  HelloAgent: DurableObjectNamespace<HelloAgent>;  
-};  
-export class HelloAgent extends Agent<Env> {  
-  async onRequest(request: Request): Promise<Response> {  
-    return new Response("Hello, Agent!", { status: 200 });  
-  }  
-}  
-export default {  
-  async fetch(request: Request, env: Env) {  
-    return (  
-      (await routeAgentRequest(request, env, { cors: true })) ||  
-      new Response("Not found", { status: 404 })  
-    );  
-  },  
-} satisfies ExportedHandler<Env>;  
+type Env = {  HelloAgent: DurableObjectNamespace<HelloAgent>;};  
+export class HelloAgent extends Agent<Env> {  async onRequest(request: Request): Promise<Response> {    return new Response("Hello, Agent!", { status: 200 });  }}  
+export default {  async fetch(request: Request, env: Env) {    return (      (await routeAgentRequest(request, env, { cors: true })) ||      new Response("Not found", { status: 404 })    );  },} satisfies ExportedHandler<Env>;  
 ```
 
 ## 2\. Add MCP connection endpoint
 
-1. Add an endpoint to connect to MCP servers. Update your Agent class in `src/index.ts`:  
-   * [  JavaScript ](#tab-panel-5791)  
-   * [  TypeScript ](#tab-panel-5792)  
+1. Add an endpoint to connect to MCP servers. Update your Agent class in `src/index.ts`:
+
+  * [  JavaScript ](#tab-panel-5865)
+  * [  TypeScript ](#tab-panel-5866)  
 JavaScript  
 ```  
-export class HelloAgent extends Agent {  
-  async onRequest(request) {  
-    const url = new URL(request.url);  
-    // Connect to an MCP server  
-    if (url.pathname.endsWith("add-mcp") && request.method === "POST") {  
-      const { serverUrl, name } = await request.json();  
+export class HelloAgent extends Agent {  async onRequest(request) {    const url = new URL(request.url);  
+    // Connect to an MCP server    if (url.pathname.endsWith("add-mcp") && request.method === "POST") {      const { serverUrl, name } = await request.json();  
       const { id, authUrl } = await this.addMcpServer(name, serverUrl);  
-      if (authUrl) {  
-        // OAuth required - return auth URL  
-        return new Response(JSON.stringify({ serverId: id, authUrl }), {  
-          headers: { "Content-Type": "application/json" },  
-        });  
-      }  
-      return new Response(  
-        JSON.stringify({ serverId: id, status: "connected" }),  
-        { headers: { "Content-Type": "application/json" } },  
-      );  
-    }  
-    return new Response("Not found", { status: 404 });  
-  }  
-}  
+      if (authUrl) {        // OAuth required - return auth URL        return new Response(JSON.stringify({ serverId: id, authUrl }), {          headers: { "Content-Type": "application/json" },        });      }  
+      return new Response(        JSON.stringify({ serverId: id, status: "connected" }),        { headers: { "Content-Type": "application/json" } },      );    }  
+    return new Response("Not found", { status: 404 });  }}  
 ```  
 TypeScript  
 ```  
-export class HelloAgent extends Agent<Env> {  
-  async onRequest(request: Request): Promise<Response> {  
-    const url = new URL(request.url);  
-    // Connect to an MCP server  
-    if (url.pathname.endsWith("add-mcp") && request.method === "POST") {  
-      const { serverUrl, name } = (await request.json()) as {  
-        serverUrl: string;  
-        name: string;  
-      };  
+export class HelloAgent extends Agent<Env> {  async onRequest(request: Request): Promise<Response> {    const url = new URL(request.url);  
+    // Connect to an MCP server    if (url.pathname.endsWith("add-mcp") && request.method === "POST") {      const { serverUrl, name } = (await request.json()) as {        serverUrl: string;        name: string;      };  
       const { id, authUrl } = await this.addMcpServer(name, serverUrl);  
-      if (authUrl) {  
-        // OAuth required - return auth URL  
-        return new Response(  
-          JSON.stringify({ serverId: id, authUrl }),  
-          { headers: { "Content-Type": "application/json" } },  
-        );  
-      }  
-      return new Response(  
-        JSON.stringify({ serverId: id, status: "connected" }),  
-        { headers: { "Content-Type": "application/json" } },  
-      );  
-    }  
-    return new Response("Not found", { status: 404 });  
-  }  
-}  
+      if (authUrl) {        // OAuth required - return auth URL        return new Response(          JSON.stringify({ serverId: id, authUrl }),          { headers: { "Content-Type": "application/json" } },        );      }  
+      return new Response(        JSON.stringify({ serverId: id, status: "connected" }),        { headers: { "Content-Type": "application/json" } },      );    }  
+    return new Response("Not found", { status: 404 });  }}  
 ```
 
 The `addMcpServer()` method connects to an MCP server. If the server requires OAuth authentication, it returns an `authUrl` that users must visit to complete authorization.
@@ -157,55 +101,34 @@ npm start
 2. In a new terminal, connect to an MCP server (using a public example):  
 Terminal window  
 ```  
-curl -X POST http://localhost:8788/agents/hello-agent/default/add-mcp \  
-  -H "Content-Type: application/json" \  
-  -d '{  
-    "serverUrl": "https://docs.mcp.cloudflare.com/mcp",  
-    "name": "Example Server"  
-  }'  
+curl -X POST http://localhost:8788/agents/hello-agent/default/add-mcp \  -H "Content-Type: application/json" \  -d '{    "serverUrl": "https://docs.mcp.cloudflare.com/mcp",    "name": "Example Server"  }'  
 ```  
 You should see a response with the server ID:  
 ```  
-{  
-  "serverId": "example-server-id",  
-  "status": "connected"  
-}  
+{  "serverId": "example-server-id",  "status": "connected"}  
 ```
 
 ## 4\. List available tools
 
-1. Add an endpoint to see which tools are available from connected servers:  
-   * [  JavaScript ](#tab-panel-5789)  
-   * [  TypeScript ](#tab-panel-5790)  
+1. Add an endpoint to see which tools are available from connected servers:
+
+  * [  JavaScript ](#tab-panel-5863)
+  * [  TypeScript ](#tab-panel-5864)  
 JavaScript  
 ```  
-export class HelloAgent extends Agent {  
-  async onRequest(request) {  
-    const url = new URL(request.url);  
+export class HelloAgent extends Agent {  async onRequest(request) {    const url = new URL(request.url);  
     // ... previous add-mcp endpoint ...  
-    // List MCP state (servers, tools, etc)  
-    if (url.pathname.endsWith("mcp-state") && request.method === "GET") {  
-      const mcpState = this.getMcpServers();  
-      return Response.json(mcpState);  
-    }  
-    return new Response("Not found", { status: 404 });  
-  }  
-}  
+    // List MCP state (servers, tools, etc)    if (url.pathname.endsWith("mcp-state") && request.method === "GET") {      const mcpState = this.getMcpServers();  
+      return Response.json(mcpState);    }  
+    return new Response("Not found", { status: 404 });  }}  
 ```  
 TypeScript  
 ```  
-export class HelloAgent extends Agent<Env> {  
-  async onRequest(request: Request): Promise<Response> {  
-    const url = new URL(request.url);  
+export class HelloAgent extends Agent<Env> {  async onRequest(request: Request): Promise<Response> {    const url = new URL(request.url);  
     // ... previous add-mcp endpoint ...  
-    // List MCP state (servers, tools, etc)  
-    if (url.pathname.endsWith("mcp-state") && request.method === "GET") {  
-      const mcpState = this.getMcpServers();  
-      return Response.json(mcpState);  
-    }  
-    return new Response("Not found", { status: 404 });  
-  }  
-}  
+    // List MCP state (servers, tools, etc)    if (url.pathname.endsWith("mcp-state") && request.method === "GET") {      const mcpState = this.getMcpServers();  
+      return Response.json(mcpState);    }  
+    return new Response("Not found", { status: 404 });  }}  
 ```
 2. Test it:  
 Terminal window  
@@ -214,24 +137,7 @@ curl http://localhost:8788/agents/hello-agent/default/mcp-state
 ```  
 You'll see all connected servers, their connection states, and available tools:  
 ```  
-{  
-  "servers": {  
-    "example-server-id": {  
-      "name": "Example Server",  
-      "state": "ready",  
-      "server_url": "https://docs.mcp.cloudflare.com/mcp",  
-      ...  
-    }  
-  },  
-  "tools": [  
-    {  
-      "name": "add",  
-      "description": "Add two numbers",  
-      "serverId": "example-server-id",  
-      ...  
-    }  
-  ]  
-}  
+{  "servers": {    "example-server-id": {      "name": "Example Server",      "state": "ready",      "server_url": "https://docs.mcp.cloudflare.com/mcp",      ...    }  },  "tools": [    {      "name": "add",      "description": "Add two numbers",      "serverId": "example-server-id",      ...    }  ]}  
 ```
 
 ## Summary
@@ -249,7 +155,7 @@ Connections persist in the Agent's [SQL storage](https://developers.cloudflare.c
 
 [ Handle OAuth flows ](https://developers.cloudflare.com/agents/model-context-protocol/guides/oauth-mcp-client/) Configure OAuth callbacks and error handling. 
 
-[ MCP Client API ](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/) Complete API documentation for MCP clients. 
+[ MCP Client API ](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/) Complete API documentation for MCP clients.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/guides/connect-mcp-client/#page","headline":"Connect to an MCP server · Cloudflare Agents docs","description":"Create a Cloudflare Agent that connects to an external MCP server and uses its tools.","url":"https://developers.cloudflare.com/agents/model-context-protocol/guides/connect-mcp-client/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}

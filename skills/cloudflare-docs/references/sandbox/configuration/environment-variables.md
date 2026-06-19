@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,84 +20,54 @@ These environment variables configure how the Sandbox SDK behaves. Set these as 
 
 ### SANDBOX\_TRANSPORT
 
-| **Type**    | "http" \| "websocket" |
+|             |                       |
 | ----------- | --------------------- |
+| **Type**    | "http" \| "websocket" |
 | **Default** | "http"                |
 
 Controls the transport protocol for SDK-to-container communication. WebSocket transport multiplexes all operations over a single persistent connection, avoiding [subrequest limits](https://developers.cloudflare.com/workers/platform/limits/#subrequests) when performing many SDK operations per request.
 
-* [  wrangler.jsonc ](#tab-panel-10209)
-* [  wrangler.toml ](#tab-panel-10210)
+* [  wrangler.jsonc ](#tab-panel-10285)
+* [  wrangler.toml ](#tab-panel-10286)
 
 JSONC
 
 ```
-
-{
-
-  "vars": {
-
-    "SANDBOX_TRANSPORT": "websocket"
-
-  }
-
-}
-
-
+{  "vars": {    "SANDBOX_TRANSPORT": "websocket"  }}
 ```
 
 TOML
 
 ```
-
-[vars]
-
-SANDBOX_TRANSPORT = "websocket"
-
-
+[vars]SANDBOX_TRANSPORT = "websocket"
 ```
 
 See [Transport modes](https://developers.cloudflare.com/sandbox/configuration/transport/) for a complete guide including when to use each transport, performance considerations, and migration instructions.
 
 ### COMMAND\_TIMEOUT\_MS
 
-| **Type**    | number (milliseconds) |
+|             |                       |
 | ----------- | --------------------- |
+| **Type**    | number (milliseconds) |
 | **Default** | None (no timeout)     |
 
 Sets a global default timeout for every `exec()` call. When set, any command that exceeds this duration raises an error on the caller side and closes the connection.
 
 Per-command `timeout` on `exec()` and session-level `commandTimeoutMs` on [createSession()](https://developers.cloudflare.com/sandbox/api/sessions/#createsession) both override this value. For more details on timeout precedence, refer to [Execute commands - Timeouts](https://developers.cloudflare.com/sandbox/guides/execute-commands/#timeouts).
 
-* [  wrangler.jsonc ](#tab-panel-10211)
-* [  wrangler.toml ](#tab-panel-10212)
+* [  wrangler.jsonc ](#tab-panel-10287)
+* [  wrangler.toml ](#tab-panel-10288)
 
 JSONC
 
 ```
-
-{
-
-  "vars": {
-
-    "COMMAND_TIMEOUT_MS": "30000"
-
-  }
-
-}
-
-
+{  "vars": {    "COMMAND_TIMEOUT_MS": "30000"  }}
 ```
 
 TOML
 
 ```
-
-[vars]
-
-COMMAND_TIMEOUT_MS = "30000"
-
-
+[vars]COMMAND_TIMEOUT_MS = "30000"
 ```
 
 Note
@@ -115,37 +85,10 @@ Set environment variables globally for all commands in the sandbox:
 TypeScript
 
 ```
-
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
-
-// Set once, available for all subsequent commands
-
-await sandbox.setEnvVars({
-
-  DATABASE_URL: env.DATABASE_URL,
-
-  API_KEY: env.API_KEY,
-
-});
-
-
-await sandbox.exec("python migrate.py"); // Has DATABASE_URL and API_KEY
-
-await sandbox.exec("python seed.py"); // Has DATABASE_URL and API_KEY
-
-
-// Unset variables by passing undefined
-
-await sandbox.setEnvVars({
-
-  API_KEY: "new-key", // Updates API_KEY
-
-  OLD_SECRET: undefined, // Unsets OLD_SECRET
-
-});
-
-
+// Set once, available for all subsequent commandsawait sandbox.setEnvVars({  DATABASE_URL: env.DATABASE_URL,  API_KEY: env.API_KEY,});
+await sandbox.exec("python migrate.py"); // Has DATABASE_URL and API_KEYawait sandbox.exec("python seed.py"); // Has DATABASE_URL and API_KEY
+// Unset variables by passing undefinedawait sandbox.setEnvVars({  API_KEY: "new-key", // Updates API_KEY  OLD_SECRET: undefined, // Unsets OLD_SECRET});
 ```
 
 **Use when:** You need the same environment variables for multiple commands.
@@ -155,18 +98,7 @@ await sandbox.setEnvVars({
 TypeScript
 
 ```
-
-await sandbox.setEnvVars({
-
-  API_KEY: 'new-key',     // Sets API_KEY
-
-  OLD_SECRET: undefined,  // Unsets OLD_SECRET
-
-  DEBUG_MODE: null        // Unsets DEBUG_MODE
-
-});
-
-
+await sandbox.setEnvVars({  API_KEY: 'new-key',     // Sets API_KEY  OLD_SECRET: undefined,  // Unsets OLD_SECRET  DEBUG_MODE: null        // Unsets DEBUG_MODE});
 ```
 
 ### 2\. Per-command with exec() options
@@ -176,33 +108,8 @@ Pass environment variables for a specific command:
 TypeScript
 
 ```
-
-await sandbox.exec("node app.js", {
-
-  env: {
-
-    NODE_ENV: "production",
-
-    PORT: "3000",
-
-  },
-
-});
-
-
-// Also works with startProcess()
-
-await sandbox.startProcess("python server.py", {
-
-  env: {
-
-    DATABASE_URL: env.DATABASE_URL,
-
-  },
-
-});
-
-
+await sandbox.exec("node app.js", {  env: {    NODE_ENV: "production",    PORT: "3000",  },});
+// Also works with startProcess()await sandbox.startProcess("python server.py", {  env: {    DATABASE_URL: env.DATABASE_URL,  },});
 ```
 
 **Use when:** You need different environment variables for different commands, or want to override sandbox-level variables.
@@ -218,27 +125,8 @@ Create an isolated session with its own environment variables:
 TypeScript
 
 ```
-
-const session = await sandbox.createSession({
-
-  env: {
-
-    DATABASE_URL: env.DATABASE_URL,
-
-    SECRET_KEY: env.SECRET_KEY,
-
-  },
-
-});
-
-
-// All commands in this session have these vars
-
-await session.exec("python migrate.py");
-
-await session.exec("python seed.py");
-
-
+const session = await sandbox.createSession({  env: {    DATABASE_URL: env.DATABASE_URL,    SECRET_KEY: env.SECRET_KEY,  },});
+// All commands in this session have these varsawait session.exec("python migrate.py");await session.exec("python seed.py");
 ```
 
 **Use when:** You need isolated execution contexts with different environment variables running concurrently.
@@ -250,25 +138,8 @@ The Sandbox SDK supports unsetting environment variables by passing `undefined` 
 TypeScript
 
 ```
-
-await sandbox.setEnvVars({
-
-  // Set new values
-
-  API_KEY: 'new-key',
-
-  DATABASE_URL: env.DATABASE_URL,
-
-
-  // Unset variables (removes them from the environment)
-
-  OLD_API_KEY: undefined,
-
-  TEMP_TOKEN: null
-
-});
-
-
+await sandbox.setEnvVars({  // Set new values  API_KEY: 'new-key',  DATABASE_URL: env.DATABASE_URL,
+  // Unset variables (removes them from the environment)  OLD_API_KEY: undefined,  TEMP_TOKEN: null});
 ```
 
 **Before this change**: Passing `undefined` values would throw a runtime error.
@@ -282,19 +153,8 @@ await sandbox.setEnvVars({
 TypeScript
 
 ```
-
-// Use a temporary token
-
-await sandbox.setEnvVars({ TEMP_TOKEN: 'abc123' });
-
-await sandbox.exec('curl -H "Authorization: $TEMP_TOKEN" api.example.com');
-
-
-// Clean up the token
-
-await sandbox.setEnvVars({ TEMP_TOKEN: undefined });
-
-
+// Use a temporary tokenawait sandbox.setEnvVars({ TEMP_TOKEN: 'abc123' });await sandbox.exec('curl -H "Authorization: $TEMP_TOKEN" api.example.com');
+// Clean up the tokenawait sandbox.setEnvVars({ TEMP_TOKEN: undefined });
 ```
 
 **Conditional environment setup:**
@@ -302,18 +162,7 @@ await sandbox.setEnvVars({ TEMP_TOKEN: undefined });
 TypeScript
 
 ```
-
-await sandbox.setEnvVars({
-
-  API_KEY: env.API_KEY,
-
-  DEBUG_MODE: env.NODE_ENV === 'development' ? 'true' : undefined,
-
-  PROFILING: env.ENABLE_PROFILING ? 'true' : undefined
-
-});
-
-
+await sandbox.setEnvVars({  API_KEY: env.API_KEY,  DEBUG_MODE: env.NODE_ENV === 'development' ? 'true' : undefined,  PROFILING: env.ENABLE_PROFILING ? 'true' : undefined});
 ```
 
 **Reset to system defaults:**
@@ -321,12 +170,7 @@ await sandbox.setEnvVars({
 TypeScript
 
 ```
-
-// Unset to fall back to container's default NODE_ENV
-
-await sandbox.setEnvVars({ NODE_ENV: undefined });
-
-
+// Unset to fall back to container's default NODE_ENVawait sandbox.setEnvVars({ NODE_ENV: undefined });
 ```
 
 ## Common patterns
@@ -338,12 +182,7 @@ Securely pass secrets from your Worker to the sandbox. First, set secrets using 
 Terminal window
 
 ```
-
-wrangler secret put OPENAI_API_KEY
-
-wrangler secret put DATABASE_URL
-
-
+wrangler secret put OPENAI_API_KEYwrangler secret put DATABASE_URL
 ```
 
 Then pass them to your sandbox:
@@ -351,63 +190,12 @@ Then pass them to your sandbox:
 TypeScript
 
 ```
-
-import { getSandbox } from "@cloudflare/sandbox";
-
-export { Sandbox } from "@cloudflare/sandbox";
-
-
-interface Env {
-
-  Sandbox: DurableObjectNamespace<Sandbox>;
-
-  OPENAI_API_KEY: string;
-
-  DATABASE_URL: string;
-
-}
-
-
-export default {
-
-  async fetch(request: Request, env: Env): Promise<Response> {
-
-    const sandbox = getSandbox(env.Sandbox, "user-sandbox");
-
-
-    // Option 1: Set globally for all commands
-
-    await sandbox.setEnvVars({
-
-      OPENAI_API_KEY: env.OPENAI_API_KEY,
-
-      DATABASE_URL: env.DATABASE_URL,
-
-    });
-
-    await sandbox.exec("python analyze.py");
-
-
-    // Option 2: Pass per-command
-
-    await sandbox.exec("python analyze.py", {
-
-      env: {
-
-        OPENAI_API_KEY: env.OPENAI_API_KEY,
-
-      },
-
-    });
-
-
-    return Response.json({ success: true });
-
-  },
-
-};
-
-
+import { getSandbox } from "@cloudflare/sandbox";export { Sandbox } from "@cloudflare/sandbox";
+interface Env {  Sandbox: DurableObjectNamespace<Sandbox>;  OPENAI_API_KEY: string;  DATABASE_URL: string;}
+export default {  async fetch(request: Request, env: Env): Promise<Response> {    const sandbox = getSandbox(env.Sandbox, "user-sandbox");
+    // Option 1: Set globally for all commands    await sandbox.setEnvVars({      OPENAI_API_KEY: env.OPENAI_API_KEY,      DATABASE_URL: env.DATABASE_URL,    });    await sandbox.exec("python analyze.py");
+    // Option 2: Pass per-command    await sandbox.exec("python analyze.py", {      env: {        OPENAI_API_KEY: env.OPENAI_API_KEY,      },    });
+    return Response.json({ success: true });  },};
 ```
 
 ### Combine default and specific variables
@@ -415,17 +203,8 @@ export default {
 TypeScript
 
 ```
-
 const defaults = { NODE_ENV: "production", LOG_LEVEL: "info" };
-
-
-await sandbox.exec("npm start", {
-
-  env: { ...defaults, PORT: "3000", API_KEY: env.API_KEY },
-
-});
-
-
+await sandbox.exec("npm start", {  env: { ...defaults, PORT: "3000", API_KEY: env.API_KEY },});
 ```
 
 ### Multiple isolated sessions
@@ -435,36 +214,9 @@ Run different tasks with different environment variables concurrently:
 TypeScript
 
 ```
-
-// Production database session
-
-const prodSession = await sandbox.createSession({
-
-  env: { DATABASE_URL: env.PROD_DATABASE_URL },
-
-});
-
-
-// Staging database session
-
-const stagingSession = await sandbox.createSession({
-
-  env: { DATABASE_URL: env.STAGING_DATABASE_URL },
-
-});
-
-
-// Run migrations on both concurrently
-
-await Promise.all([
-
-  prodSession.exec("python migrate.py"),
-
-  stagingSession.exec("python migrate.py"),
-
-]);
-
-
+// Production database sessionconst prodSession = await sandbox.createSession({  env: { DATABASE_URL: env.PROD_DATABASE_URL },});
+// Staging database sessionconst stagingSession = await sandbox.createSession({  env: { DATABASE_URL: env.STAGING_DATABASE_URL },});
+// Run migrations on both concurrentlyawait Promise.all([  prodSession.exec("python migrate.py"),  stagingSession.exec("python migrate.py"),]);
 ```
 
 ### Configure transport mode
@@ -487,17 +239,8 @@ When mounting S3-compatible object storage, the SDK uses **s3fs-fuse** under the
 Terminal window
 
 ```
-
-wrangler secret put AWS_ACCESS_KEY_ID
-
-# Paste your R2 Access Key ID
-
-
-wrangler secret put AWS_SECRET_ACCESS_KEY
-
-# Paste your R2 Secret Access Key
-
-
+wrangler secret put AWS_ACCESS_KEY_ID# Paste your R2 Access Key ID
+wrangler secret put AWS_SECRET_ACCESS_KEY# Paste your R2 Secret Access Key
 ```
 
 **Mount buckets with automatic credential detection:**
@@ -505,51 +248,12 @@ wrangler secret put AWS_SECRET_ACCESS_KEY
 TypeScript
 
 ```
-
-import { getSandbox } from "@cloudflare/sandbox";
-
-export { Sandbox } from "@cloudflare/sandbox";
-
-
-interface Env {
-
-  Sandbox: DurableObjectNamespace<Sandbox>;
-
-  AWS_ACCESS_KEY_ID: string;
-
-  AWS_SECRET_ACCESS_KEY: string;
-
-}
-
-
-export default {
-
-  async fetch(request: Request, env: Env): Promise<Response> {
-
-    const sandbox = getSandbox(env.Sandbox, "data-processor");
-
-
-    // Credentials automatically detected from environment
-
-    await sandbox.mountBucket("my-r2-bucket", "/data", {
-
-      endpoint: "https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com",
-
-    });
-
-
-    // Access mounted bucket using standard file operations
-
-    await sandbox.exec("python", { args: ["process.py", "/data/input.csv"] });
-
-
-    return Response.json({ success: true });
-
-  },
-
-};
-
-
+import { getSandbox } from "@cloudflare/sandbox";export { Sandbox } from "@cloudflare/sandbox";
+interface Env {  Sandbox: DurableObjectNamespace<Sandbox>;  AWS_ACCESS_KEY_ID: string;  AWS_SECRET_ACCESS_KEY: string;}
+export default {  async fetch(request: Request, env: Env): Promise<Response> {    const sandbox = getSandbox(env.Sandbox, "data-processor");
+    // Credentials automatically detected from environment    await sandbox.mountBucket("my-r2-bucket", "/data", {      endpoint: "https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com",    });
+    // Access mounted bucket using standard file operations    await sandbox.exec("python", { args: ["process.py", "/data/input.csv"] });
+    return Response.json({ success: true });  },};
 ```
 
 The SDK automatically detects `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` from your Worker's environment when you call `mountBucket()` without explicit credentials.
@@ -559,22 +263,7 @@ The SDK automatically detects `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` fr
 TypeScript
 
 ```
-
-await sandbox.mountBucket("my-r2-bucket", "/data", {
-
-  endpoint: "https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com",
-
-  credentials: {
-
-    accessKeyId: env.R2_ACCESS_KEY_ID,
-
-    secretAccessKey: env.R2_SECRET_ACCESS_KEY,
-
-  },
-
-});
-
-
+await sandbox.mountBucket("my-r2-bucket", "/data", {  endpoint: "https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com",  credentials: {    accessKeyId: env.R2_ACCESS_KEY_ID,    secretAccessKey: env.R2_SECRET_ACCESS_KEY,  },});
 ```
 
 AWS nomenclature for R2
@@ -597,24 +286,9 @@ Example:
 TypeScript
 
 ```
-
 // In Dockerfile: ENV NODE_ENV=development
-
-
-// Sandbox-level
-
-await sandbox.setEnvVars({ NODE_ENV: "staging" });
-
-
-// Command-level overrides all
-
-await sandbox.exec("node app.js", {
-
-  env: { NODE_ENV: "production" }, // This wins
-
-});
-
-
+// Sandbox-levelawait sandbox.setEnvVars({ NODE_ENV: "staging" });
+// Command-level overrides allawait sandbox.exec("node app.js", {  env: { NODE_ENV: "production" }, // This wins});
 ```
 
 ## Related resources

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/kv/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,179 +32,33 @@ With Workers KV, the data is persisted by default to [central stores](https://de
 
 In the following `index.ts` file, the Worker fetches data from an external server and caches the response in Workers KV. If the data is already cached in Workers KV, the Worker reads the cached data from Workers KV instead of calling the external API.
 
-* [ index.ts ](#tab-panel-8949)
-* [ wrangler.jsonc ](#tab-panel-8950)
+* [ index.ts ](#tab-panel-9025)
+* [ wrangler.jsonc ](#tab-panel-9026)
 
 index.ts
 
 ```
-
-interface Env {
-
-  CACHE_KV: KVNamespace;
-
-}
-
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-
-     const EXPIRATION_TTL = 30; // Cache expiration in seconds
-
-    const url = 'https://example.com';
-
-    const cacheKey = "cache-json-example";
-
-
-    // Try to get data from KV cache first
-
-    let data = await env.CACHE_KV.get(cacheKey, { type: 'json' });
-
-    let fromCache = true;
-
-
-    // If data is not in cache, fetch it from example.com
-
-    if (!data) {
-
-      console.log('Cache miss. Fetching fresh data from example.com');
-
-      fromCache = false;
-
-
-        // In this example, we are fetching HTML content but it can also be API responses or any other data
-
-      const response = await fetch(url);
-
-        const htmlData = await response.text();
-
-
-        // In this example, we are converting HTML to JSON to demonstrate caching JSON data with Workers KV
-
-        // You could cache any type of data, or even cache the HTML data directly
-
-        data = helperConvertToJSON(htmlData);
-
-        // The expirationTtl option is used to set the expiration time for the cache entry (in seconds), otherwise it will be stored indefinitely
-
-        await env.CACHE_KV.put(cacheKey, JSON.stringify(data), { expirationTtl: EXPIRATION_TTL });
-
-    }
-
-
-    // Return the appropriate response format
-
-      return new Response(JSON.stringify({
-
-        data,
-
-        fromCache
-
-      }), {
-
-        headers: { 'Content-Type': 'application/json' }
-
-      });
-
-
-}
-
-} satisfies ExportedHandler<Env>;
-
-31 collapsed lines
-
-
-// Helper function to convert HTML to JSON
-
-function helperConvertToJSON(html: string) {
-
-// Parse HTML and extract relevant data
-
-const title = helperExtractTitle(html);
-
-const content = helperExtractContent(html);
-
-const lastUpdated = new Date().toISOString();
-
-
+interface Env {  CACHE_KV: KVNamespace;}
+export default {  async fetch(request, env, ctx): Promise<Response> {
+     const EXPIRATION_TTL = 30; // Cache expiration in seconds    const url = 'https://example.com';    const cacheKey = "cache-json-example";
+    // Try to get data from KV cache first    let data = await env.CACHE_KV.get(cacheKey, { type: 'json' });    let fromCache = true;
+    // If data is not in cache, fetch it from example.com    if (!data) {      console.log('Cache miss. Fetching fresh data from example.com');      fromCache = false;
+        // In this example, we are fetching HTML content but it can also be API responses or any other data      const response = await fetch(url);        const htmlData = await response.text();
+        // In this example, we are converting HTML to JSON to demonstrate caching JSON data with Workers KV        // You could cache any type of data, or even cache the HTML data directly        data = helperConvertToJSON(htmlData);        // The expirationTtl option is used to set the expiration time for the cache entry (in seconds), otherwise it will be stored indefinitely        await env.CACHE_KV.put(cacheKey, JSON.stringify(data), { expirationTtl: EXPIRATION_TTL });    }
+    // Return the appropriate response format      return new Response(JSON.stringify({        data,        fromCache      }), {        headers: { 'Content-Type': 'application/json' }      });
+}} satisfies ExportedHandler<Env>;31 collapsed lines
+// Helper function to convert HTML to JSONfunction helperConvertToJSON(html: string) {// Parse HTML and extract relevant dataconst title = helperExtractTitle(html);const content = helperExtractContent(html);const lastUpdated = new Date().toISOString();
     return { title, content, lastUpdated };
-
-
 }
-
-
-// Helper function to extract title from HTML
-
-function helperExtractTitle(html: string) {
-
-const titleMatch = html.match(/<title>(.\*?)<\/title>/i);
-
-return titleMatch ? titleMatch[1] : 'No title found';
-
-}
-
-
-// Helper function to extract content from HTML
-
-function helperExtractContent(html: string) {
-
-const bodyMatch = html.match(/<body>(.\*?)<\/body>/is);
-
-if (!bodyMatch) return 'No content found';
-
-
-    // Strip HTML tags for a simple text representation
-
-    const textContent = bodyMatch[1].replace(/<[^>]*>/g, ' ')
-
-      .replace(/\s+/g, ' ')
-
-      .trim();
-
-
+// Helper function to extract title from HTMLfunction helperExtractTitle(html: string) {const titleMatch = html.match(/<title>(.\*?)<\/title>/i);return titleMatch ? titleMatch[1] : 'No title found';}
+// Helper function to extract content from HTMLfunction helperExtractContent(html: string) {const bodyMatch = html.match(/<body>(.\*?)<\/body>/is);if (!bodyMatch) return 'No content found';
+    // Strip HTML tags for a simple text representation    const textContent = bodyMatch[1].replace(/<[^>]*>/g, ' ')      .replace(/\s+/g, ' ')      .trim();
     return textContent;
-
-
 }
-
-
 ```
 
 ```
-
-{
-
-  "$schema": "node_modules/wrangler/config-schema.json",
-
-  "name": "<ENTER_WORKER_NAME>",
-
-  "main": "src/index.ts",
-
-  "compatibility_date": "2025-03-03",
-
-  "observability": {
-
-    "enabled": true
-
-  },
-
-  "kv_namespaces": [
-
-    {
-
-      "binding": "CACHE_KV",
-
-      "id": "<YOUR_BINDING_ID>"
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "node_modules/wrangler/config-schema.json",  "name": "<ENTER_WORKER_NAME>",  "main": "src/index.ts",  "compatibility_date": "2025-03-03",  "observability": {    "enabled": true  },  "kv_namespaces": [    {      "binding": "CACHE_KV",      "id": "<YOUR_BINDING_ID>"    }  ]}
 ```
 
 This code snippet demonstrates how to read and update cached data in Workers KV from your Worker. If the data is not in the Workers KV cache, the Worker fetches the data from an external server and caches it in Workers KV.

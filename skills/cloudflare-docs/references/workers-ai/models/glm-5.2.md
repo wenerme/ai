@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,176 +29,56 @@ Z.ai's flagship agentic coding model
 
 ## Playground
 
-Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and an instant way to preview and test a model directly in the browser.
+Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and an instant way to preview and test a model directly in the browser. 
 
-[Launch the LLM Playground](https://playground.ai.cloudflare.com/?model=@cf/zai-org/glm-5.2) 
+[ Launch the LLM Playground ](https://playground.ai.cloudflare.com/?model=@cf/zai-org/glm-5.2) 
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-4847)
-* [  TypeScript ](#tab-panel-4848)
-* [  Python ](#tab-panel-4849)
-* [  curl ](#tab-panel-4850)
+* [  Worker (Streaming) ](#tab-panel-4921)
+* [  TypeScript ](#tab-panel-4922)
+* [  Python ](#tab-panel-4923)
+* [  curl ](#tab-panel-4924)
 
 TypeScript
 
 ```
-
-export interface Env {
-
-  AI: Ai;
-
-}
-
-
-export default {
-
-  async fetch(request, env): Promise<Response> {
-
-
-    const messages = [
-
-      { role: "system", content: "You are a friendly assistant" },
-
-      {
-
-        role: "user",
-
-        content: "What is the origin of the phrase Hello, World",
-
-      },
-
-    ];
-
-
-    const stream = await env.AI.run("@cf/zai-org/glm-5.2", {
-
-      messages,
-
-      stream: true,
-
-    });
-
-
-    return new Response(stream, {
-
-      headers: { "content-type": "text/event-stream" },
-
-    });
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export interface Env {  AI: Ai;}
+export default {  async fetch(request, env): Promise<Response> {
+    const messages = [      { role: "system", content: "You are a friendly assistant" },      {        role: "user",        content: "What is the origin of the phrase Hello, World",      },    ];
+    const stream = await env.AI.run("@cf/zai-org/glm-5.2", {      messages,      stream: true,    });
+    return new Response(stream, {      headers: { "content-type": "text/event-stream" },    });  },} satisfies ExportedHandler<Env>;
 ```
 
 ```
-
-export interface Env {
-
-  AI: Ai;
-
-}
-
-
-export default {
-
-  async fetch(request, env): Promise<Response> {
-
-
-    const messages = [
-
-      { role: "system", content: "You are a friendly assistant" },
-
-      {
-
-        role: "user",
-
-        content: "What is the origin of the phrase Hello, World",
-
-      },
-
-    ];
-
-    const response = await env.AI.run("@cf/zai-org/glm-5.2", { messages });
-
-
-    return Response.json(response);
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export interface Env {  AI: Ai;}
+export default {  async fetch(request, env): Promise<Response> {
+    const messages = [      { role: "system", content: "You are a friendly assistant" },      {        role: "user",        content: "What is the origin of the phrase Hello, World",      },    ];    const response = await env.AI.run("@cf/zai-org/glm-5.2", { messages });
+    return Response.json(response);  },} satisfies ExportedHandler<Env>;
 ```
 
 ```
-
-import os
-
-import requests
-
-
-ACCOUNT_ID = "your-account-id"
-
-AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
-
-
-prompt = "Tell me all about PEP-8"
-
-response = requests.post(
-
-  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/zai-org/glm-5.2",
-
-    headers={"Authorization": f"Bearer {AUTH_TOKEN}"},
-
-    json={
-
-      "messages": [
-
-        {"role": "system", "content": "You are a friendly assistant"},
-
-        {"role": "user", "content": prompt}
-
-      ]
-
-    }
-
-)
-
-result = response.json()
-
-print(result)
-
-
+import osimport requests
+ACCOUNT_ID = "your-account-id"AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
+prompt = "Tell me all about PEP-8"response = requests.post(  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/zai-org/glm-5.2",    headers={"Authorization": f"Bearer {AUTH_TOKEN}"},    json={      "messages": [        {"role": "system", "content": "You are a friendly assistant"},        {"role": "user", "content": prompt}      ]    })result = response.json()print(result)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/zai-org/glm-5.2 \
-
-  -X POST \
-
-  -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
-
-  -d '{ "messages": [{ "role": "system", "content": "You are a friendly assistant" }, { "role": "user", "content": "Why is pizza so good" }]}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/zai-org/glm-5.2 \  -X POST \  -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \  -d '{ "messages": [{ "role": "system", "content": "You are a friendly assistant" }, { "role": "user", "content": "Why is pizza so good" }]}'
 ```
 
 OpenAI compatible endpoints 
 
-Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
+Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations ](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/). 
 
 ## Parameters
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-4851)
-* [ Output ](#tab-panel-4852)
+* [ Input ](#tab-panel-4925)
+* [ Output ](#tab-panel-4926)
 
 Input format
 
@@ -372,8 +252,8 @@ service\_tier
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-4853)
-* [ Output ](#tab-panel-4854)
+* [ Input ](#tab-panel-4927)
+* [ Output ](#tab-panel-4928)
 
 Input format
 
@@ -527,8 +407,8 @@ format
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-4855)
-* [ Output ](#tab-panel-4856)
+* [ Input ](#tab-panel-4929)
+* [ Output ](#tab-panel-4930)
 
 ▶requests\[\]
 
@@ -578,7 +458,7 @@ service\_tier
 
  Batch Input [ ](https://developers.cloudflare.com/workers-ai/models/glm-5.2/batch-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/glm-5.2/batch-input.json "Download") 
 
- Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/glm-5.2/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/glm-5.2/batch-output.json "Download") 
+ Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/glm-5.2/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/glm-5.2/batch-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/glm-5.2/#page","headline":"glm-5.2 (Zhipu AI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Z.ai's flagship agentic coding model","url":"https://developers.cloudflare.com/workers-ai/models/glm-5.2/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

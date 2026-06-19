@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,18 +29,7 @@ To perform actions on a specific participant, you first need to retrieve their p
 TypeScript
 
 ```
-
-const joinedParticipants = meeting.participants.joined.toArray();
-
-const participant = joinedParticipants[0];
-
-if (!participant) {
-
-  // No remote participants are currently joined.
-
-}
-
-
+const joinedParticipants = meeting.participants.joined.toArray();const participant = joinedParticipants[0];if (!participant) {  // No remote participants are currently joined.}
 ```
 
 To perform actions on a specific participant, you first need to retrieve their participant object. Remote participants (other participants) are available in `meeting.participants`. The local participant is available in `meeting.self`. Refer to [Meeting Object Explained](https://developers.cloudflare.com/realtime/realtimekit/core/meeting-object-explained/) for details.
@@ -48,18 +37,7 @@ To perform actions on a specific participant, you first need to retrieve their p
 TypeScript
 
 ```
-
-const joinedParticipants = meeting.participants.joined.toArray();
-
-const participant = joinedParticipants[0];
-
-if (!participant) {
-
-  // No remote participants are currently joined.
-
-}
-
-
+const joinedParticipants = meeting.participants.joined.toArray();const participant = joinedParticipants[0];if (!participant) {  // No remote participants are currently joined.}
 ```
 
 To perform actions on a specific participant, you first need to retrieve their participant object. Remote participants (other participants) are available in `meeting.participants`. The local participant is available in `meeting.self`. Refer to [Meeting Object Explained](https://developers.cloudflare.com/realtime/realtimekit/core/meeting-object-explained/) for details.
@@ -67,18 +45,7 @@ To perform actions on a specific participant, you first need to retrieve their p
 TypeScript
 
 ```
-
-const joinedParticipants = meeting.participants.joined.toArray();
-
-const participant = joinedParticipants[0];
-
-if (!participant) {
-
-  // No remote participants are currently joined.
-
-}
-
-
+const joinedParticipants = meeting.participants.joined.toArray();const participant = joinedParticipants[0];if (!participant) {  // No remote participants are currently joined.}
 ```
 
 To perform actions on a specific participant, retrieve their participant object from the `participants` property. Remote participants are available in `meeting.participants.joined`. The local participant is available in `meeting.localUser`.
@@ -86,18 +53,7 @@ To perform actions on a specific participant, retrieve their participant object 
 Kotlin
 
 ```
-
-val joinedParticipants = meeting.participants.joined
-
-val participant = joinedParticipants.firstOrNull()
-
-if (participant == null) {
-
-  // No remote participants are currently joined.
-
-}
-
-
+val joinedParticipants = meeting.participants.joinedval participant = joinedParticipants.firstOrNull()if (participant == null) {  // No remote participants are currently joined.}
 ```
 
 To perform actions on a specific participant, retrieve their participant object from the `participants` property. Remote participants are available in `meeting.participants.joined`. The local participant is available in `meeting.localUser`.
@@ -105,18 +61,7 @@ To perform actions on a specific participant, retrieve their participant object 
 Swift
 
 ```
-
-let joinedParticipants = meeting.participants.joined
-
-guard let participant = joinedParticipants.first else {
-
-  // No remote participants are currently joined.
-
-  return
-
-}
-
-
+let joinedParticipants = meeting.participants.joinedguard let participant = joinedParticipants.first else {  // No remote participants are currently joined.  return}
 ```
 
 To perform actions on a specific participant, retrieve their participant object from the `participants` property. Remote participants are available in `meeting.participants.joined`. The local participant is available in `meeting.localUser`.
@@ -124,47 +69,20 @@ To perform actions on a specific participant, retrieve their participant object 
 Dart
 
 ```
-
-final joinedParticipants = meeting.participants.joined;
-
-final participant = joinedParticipants.firstOrNull;
-
-if (participant == null) {
-
-  // No remote participants are currently joined.
-
-}
-
-
+final joinedParticipants = meeting.participants.joined;final participant = joinedParticipants.firstOrNull;if (participant == null) {  // No remote participants are currently joined.}
 ```
 
 To perform actions on a specific participant, retrieve their participant object from the `participants` property. Remote participants are available in `meeting.participants.joined`. The local participant is available in `meeting.self`.
 
 ```
-
-const joinedParticipants = meeting.participants.joined;
-
-const participant = joinedParticipants.toArray()[0];
-
-if (!participant) {
-
-  // No remote participants are currently joined.
-
-}
-
-
+const joinedParticipants = meeting.participants.joined;const participant = joinedParticipants.toArray()[0];if (!participant) {  // No remote participants are currently joined.}
 ```
 
 Or use the `useRealtimeKitSelector` hook:
 
 ```
-
 import { useRealtimeKitSelector } from '@cloudflare/realtimekit-react-native';
-
-
 const joinedParticipants = useRealtimeKitSelector((m) => m.participants.joined);
-
-
 ```
 
 ## Mute audio
@@ -178,142 +96,79 @@ To mute a specific participant's audio:
 1. Check that the local participant has permission to mute other participants' audio.  
 TypeScript  
 ```  
-const canMuteAudio =  
-  meeting.self.permissions.canDisableParticipantAudio === true;  
-if (!canMuteAudio) {  
-  // Disable the control in your UI.  
-}  
+const canMuteAudio =  meeting.self.permissions.canDisableParticipantAudio === true;if (!canMuteAudio) {  // Disable the control in your UI.}  
 ```
 2. Call `disableAudio()` on the target participant.  
 If the local participant does not have the required permission, `disableAudio()` throws a `ClientError` with code `1201`.  
 TypeScript  
 ```  
-try {  
-  await participant.disableAudio();  
-} catch (err: any) {  
-  if (err?.code === 1201) {  
-    // The local participant does not have permission to mute other participants’ audio.  
-    return;  
-  }  
-  throw err;  
-}  
+try {  await participant.disableAudio();} catch (err: any) {  if (err?.code === 1201) {    // The local participant does not have permission to mute other participants’ audio.    return;  }  throw err;}  
 ```
 3. Handle the result by listening for updates.  
-After the call succeeds, the target participant's `audioEnabled` becomes `false`, and the SDK emits an `audioUpdate` event.  
+After the call succeeds, the target participant's `audioEnabled` becomes `false`, and the SDK emits an `audioUpdate` event.
+
 **Option A**: Listen on the participant object  
 TypeScript  
 ```  
-participant.on("audioUpdate", ({ audioEnabled, audioTrack }) => {  
-  // audioEnabled is false  
-  // Update UI for the participant  
-});  
-```  
+participant.on("audioUpdate", ({ audioEnabled, audioTrack }) => {  // audioEnabled is false  // Update UI for the participant});  
+```
+
 **Option B**: Listen on the `joined` map  
 TypeScript  
 ```  
-meeting.participants.joined.on(  
-  "audioUpdate",  
-  (participant, { audioEnabled, audioTrack }) => {  
-    if (participant.id === targetParticipantId) {  
-      // audioEnabled is false  
-      // Update UI for the participant  
-    }  
-  },  
-);  
+meeting.participants.joined.on(  "audioUpdate",  (participant, { audioEnabled, audioTrack }) => {    if (participant.id === targetParticipantId) {      // audioEnabled is false      // Update UI for the participant    }  },);  
 ```
 
 1. Check that the local participant has permission to mute other participants' audio.  
 TypeScript  
 ```  
-const canMuteAudio =  
-  meeting.self.permissions.canDisableParticipantAudio === true;  
-if (!canMuteAudio) {  
-  // Disable the control in your UI.  
-}  
+const canMuteAudio =  meeting.self.permissions.canDisableParticipantAudio === true;if (!canMuteAudio) {  // Disable the control in your UI.}  
 ```
 2. Call `disableAudio()` on the target participant.  
 If the local participant does not have the required permission, `disableAudio()` throws a `ClientError` with code `1201`.  
 TypeScript  
 ```  
-try {  
-  await participant.disableAudio();  
-} catch (err: any) {  
-  if (err?.code === 1201) {  
-    // The local participant does not have permission to mute other participants’ audio.  
-    return;  
-  }  
-  throw err;  
-}  
+try {  await participant.disableAudio();} catch (err: any) {  if (err?.code === 1201) {    // The local participant does not have permission to mute other participants’ audio.    return;  }  throw err;}  
 ```
 3. Handle the result by listening for updates.  
-After the call succeeds, the target participant's `audioEnabled` becomes `false`, and the SDK emits an `audioUpdate` event.  
+After the call succeeds, the target participant's `audioEnabled` becomes `false`, and the SDK emits an `audioUpdate` event.
+
 **Option A**: Listen on the participant object  
 TypeScript  
 ```  
-participant.on("audioUpdate", ({ audioEnabled, audioTrack }) => {  
-  // audioEnabled is false  
-  // Update UI for the participant  
-});  
-```  
+participant.on("audioUpdate", ({ audioEnabled, audioTrack }) => {  // audioEnabled is false  // Update UI for the participant});  
+```
+
 **Option B**: Listen on the `joined` map  
 TypeScript  
 ```  
-meeting.participants.joined.on(  
-  "audioUpdate",  
-  (participant, { audioEnabled, audioTrack }) => {  
-    if (participant.id === targetParticipantId) {  
-      // audioEnabled is false  
-      // Update UI for the participant  
-    }  
-  },  
-);  
+meeting.participants.joined.on(  "audioUpdate",  (participant, { audioEnabled, audioTrack }) => {    if (participant.id === targetParticipantId) {      // audioEnabled is false      // Update UI for the participant    }  },);  
 ```
 
 1. Check that the local participant has permission to mute other participants' audio.  
 TypeScript  
 ```  
-const canMuteAudio =  
-  meeting.self.permissions.canDisableParticipantAudio === true;  
-if (!canMuteAudio) {  
-  // Disable the control in your UI.  
-}  
+const canMuteAudio =  meeting.self.permissions.canDisableParticipantAudio === true;if (!canMuteAudio) {  // Disable the control in your UI.}  
 ```
 2. Call `disableAudio()` on the target participant.  
 If the local participant does not have the required permission, `disableAudio()` throws a `ClientError` with code `1201`.  
 TypeScript  
 ```  
-try {  
-  await participant.disableAudio();  
-} catch (err: any) {  
-  if (err?.code === 1201) {  
-    // The local participant does not have permission to mute other participants’ audio.  
-    return;  
-  }  
-  throw err;  
-}  
+try {  await participant.disableAudio();} catch (err: any) {  if (err?.code === 1201) {    // The local participant does not have permission to mute other participants’ audio.    return;  }  throw err;}  
 ```
 3. Handle the result by listening for updates.  
-After the call succeeds, the target participant's `audioEnabled` becomes `false`, and the SDK emits an `audioUpdate` event.  
+After the call succeeds, the target participant's `audioEnabled` becomes `false`, and the SDK emits an `audioUpdate` event.
+
 **Option A**: Listen on the participant object  
 TypeScript  
 ```  
-participant.on("audioUpdate", ({ audioEnabled, audioTrack }) => {  
-  // audioEnabled is false  
-  // Update UI for the participant  
-});  
-```  
+participant.on("audioUpdate", ({ audioEnabled, audioTrack }) => {  // audioEnabled is false  // Update UI for the participant});  
+```
+
 **Option B**: Listen on the `joined` map  
 TypeScript  
 ```  
-meeting.participants.joined.on(  
-  "audioUpdate",  
-  (participant, { audioEnabled, audioTrack }) => {  
-    if (participant.id === targetParticipantId) {  
-      // audioEnabled is false  
-      // Update UI for the participant  
-    }  
-  },  
-);  
+meeting.participants.joined.on(  "audioUpdate",  (participant, { audioEnabled, audioTrack }) => {    if (participant.id === targetParticipantId) {      // audioEnabled is false      // Update UI for the participant    }  },);  
 ```
 
 1. Check that the local participant has permission to mute other participants' audio.
@@ -321,16 +176,7 @@ meeting.participants.joined.on(
 Kotlin
 
 ```
-
-val canMuteAudio = meeting.localUser.permissions.host.canMuteAudio
-
-if (!canMuteAudio) {
-
-  // Disable the control in your UI.
-
-}
-
-
+val canMuteAudio = meeting.localUser.permissions.host.canMuteAudioif (!canMuteAudio) {  // Disable the control in your UI.}
 ```
 
 1. Call `disableAudio()` on the target participant. If the local participant does not have the required permission, `disableAudio()` returns a `HostError`.
@@ -338,16 +184,7 @@ if (!canMuteAudio) {
 Kotlin
 
 ```
-
-val error = participant.disableAudio()
-
-if (error != null) {
-
-  // Handle error - permission denied.
-
-}
-
-
+val error = participant.disableAudio()if (error != null) {  // Handle error - permission denied.}
 ```
 
 1. Handle the result by listening for updates. After the call succeeds, the target participant's `audioEnabled` becomes `false`.
@@ -355,20 +192,7 @@ if (error != null) {
 Kotlin
 
 ```
-
-meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {
-
-  override fun onAudioUpdate(participant: RtkRemoteParticipant, isEnabled: Boolean) {
-
-    // audioEnabled is false
-
-    // Update UI for the participant
-
-  }
-
-})
-
-
+meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {  override fun onAudioUpdate(participant: RtkRemoteParticipant, isEnabled: Boolean) {    // audioEnabled is false    // Update UI for the participant  }})
 ```
 
 1. Check that the local participant has permission to mute other participants' audio.
@@ -376,16 +200,7 @@ meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {
 Swift
 
 ```
-
-let canMuteAudio = meeting.localUser.permissions.host.canMuteAudio
-
-if !canMuteAudio {
-
-  // Disable the control in your UI.
-
-}
-
-
+let canMuteAudio = meeting.localUser.permissions.host.canMuteAudioif !canMuteAudio {  // Disable the control in your UI.}
 ```
 
 1. Call `disableAudio()` on the target participant. If the local participant does not have the required permission, `disableAudio()` returns a `HostError`.
@@ -393,14 +208,7 @@ if !canMuteAudio {
 Swift
 
 ```
-
-if let error = participant.disableAudio() {
-
-  // Handle error - permission denied.
-
-}
-
-
+if let error = participant.disableAudio() {  // Handle error - permission denied.}
 ```
 
 1. Handle the result by listening for updates. After the call succeeds, the target participant's `audioEnabled` becomes `false`.
@@ -408,25 +216,8 @@ if let error = participant.disableAudio() {
 Swift
 
 ```
-
-extension MeetingViewModel: RtkParticipantsEventListener {
-
-  func onAudioUpdate(participant: RtkRemoteParticipant, isEnabled: Bool) {
-
-    // audioEnabled is false
-
-    // Update UI for the participant
-
-  }
-
-}
-
-
-// Register the listener
-
-meeting.addParticipantsEventListener(participantsEventListener: self)
-
-
+extension MeetingViewModel: RtkParticipantsEventListener {  func onAudioUpdate(participant: RtkRemoteParticipant, isEnabled: Bool) {    // audioEnabled is false    // Update UI for the participant  }}
+// Register the listenermeeting.addParticipantsEventListener(participantsEventListener: self)
 ```
 
 1. Check that the local participant has permission to mute other participants' audio.
@@ -434,16 +225,7 @@ meeting.addParticipantsEventListener(participantsEventListener: self)
 Dart
 
 ```
-
-final canMuteAudio = meeting.localUser.permissions.host.canMuteAudio;
-
-if (!canMuteAudio) {
-
-  // Disable the control in your UI.
-
-}
-
-
+final canMuteAudio = meeting.localUser.permissions.host.canMuteAudio;if (!canMuteAudio) {  // Disable the control in your UI.}
 ```
 
 1. Call `disableAudio()` on the target participant.
@@ -451,26 +233,7 @@ if (!canMuteAudio) {
 Dart
 
 ```
-
-participant.disableAudio(
-
-  onResult: (error) {
-
-    if (error != null) {
-
-      // Handle error - permission denied or other issue.
-
-      return;
-
-    }
-
-    // Audio disabled successfully.
-
-  },
-
-);
-
-
+participant.disableAudio(  onResult: (error) {    if (error != null) {      // Handle error - permission denied or other issue.      return;    }    // Audio disabled successfully.  },);
 ```
 
 1. Handle the result by listening for updates. After the call succeeds, the target participant's `audioEnabled` becomes `false`.
@@ -478,76 +241,26 @@ participant.disableAudio(
 Dart
 
 ```
-
-class ParticipantsEventsListener extends RtkParticipantsEventListener {
-
-  @override
-
-  void onAudioUpdate(RtkRemoteParticipant participant, bool isEnabled) {
-
-    // audioEnabled is false
-
-    // Update UI for the participant
-
-  }
-
-}
-
-
-// Register the listener
-
-meeting.addParticipantsEventListener(ParticipantsEventsListener());
-
-
+class ParticipantsEventsListener extends RtkParticipantsEventListener {  @override  void onAudioUpdate(RtkRemoteParticipant participant, bool isEnabled) {    // audioEnabled is false    // Update UI for the participant  }}
+// Register the listenermeeting.addParticipantsEventListener(ParticipantsEventsListener());
 ```
 
 1. Check that the local participant has permission to mute other participants' audio.
 
 ```
-
-const canDisableParticipantAudio = meeting.self.permissions.canDisableParticipantAudio;
-
-if (!canDisableParticipantAudio) {
-
-  // Disable the control in your UI.
-
-}
-
-
+const canDisableParticipantAudio = meeting.self.permissions.canDisableParticipantAudio;if (!canDisableParticipantAudio) {  // Disable the control in your UI.}
 ```
 
 1. Call `disableAudio()` on the target participant.
 
 ```
-
-participant
-
-  .disableAudio()
-
-  .catch((err) => {
-
-    // Handle error - permission denied or other issue.
-
-    console.log(err);
-
-  });
-
-
+participant  .disableAudio()  .catch((err) => {    // Handle error - permission denied or other issue.    console.log(err);  });
 ```
 
 1. Handle the result by listening for updates. After the call succeeds, the target participant's `audioEnabled` becomes `false`.
 
 ```
-
-meeting.participants.joined.on('audioUpdate', (participant) => {
-
-  // participant.audioEnabled is false
-
-  // Update UI for the participant
-
-});
-
-
+meeting.participants.joined.on('audioUpdate', (participant) => {  // participant.audioEnabled is false  // Update UI for the participant});
 ```
 
 ### Mute all participants
@@ -557,136 +270,73 @@ This affects all participants, including the local participant. To mute audio fo
 1. Check that the local participant has permission to mute other participants' audio.  
 TypeScript  
 ```  
-const canMuteAudio =  
-  meeting.self.permissions.canDisableParticipantAudio === true;  
-if (!canMuteAudio) {  
-  // Disable the control in your UI.  
-}  
+const canMuteAudio =  meeting.self.permissions.canDisableParticipantAudio === true;if (!canMuteAudio) {  // Disable the control in your UI.}  
 ```
 2. Call `disableAllAudio()`.  
 If the local participant does not have the required permission, `disableAllAudio()` throws a `ClientError` with code `1201`.  
 TypeScript  
 ```  
-try {  
-  await meeting.participants.disableAllAudio();  
-} catch (err: any) {  
-  if (err?.code === 1201) {  
-    // The local participant does not have permission to mute other participants’ audio.  
-    return;  
-  }  
-  throw err;  
-}  
+try {  await meeting.participants.disableAllAudio();} catch (err: any) {  if (err?.code === 1201) {    // The local participant does not have permission to mute other participants’ audio.    return;  }  throw err;}  
 ```
 3. Handle the result by listening for updates.  
 After the call succeeds, each participant’s `audioEnabled` becomes `false`, and the SDK emits an `audioUpdate` event. The local participant also receives `audioUpdate` on `meeting.self`.  
 Listen to remote participant updates on the `joined` map:  
 TypeScript  
 ```  
-meeting.participants.joined.on(  
-  "audioUpdate",  
-  (participant, { audioEnabled, audioTrack }) => {  
-    // audioEnabled is false  
-    // Update UI for the participant  
-  },  
-);  
+meeting.participants.joined.on(  "audioUpdate",  (participant, { audioEnabled, audioTrack }) => {    // audioEnabled is false    // Update UI for the participant  },);  
 ```  
 Listen to the local participant update on `meeting.self`:  
 TypeScript  
 ```  
-meeting.self.on("audioUpdate", ({ audioEnabled, audioTrack }) => {  
-  // audioEnabled is false  
-  // Update UI for the local participant  
-});  
+meeting.self.on("audioUpdate", ({ audioEnabled, audioTrack }) => {  // audioEnabled is false  // Update UI for the local participant});  
 ```
 
 1. Check that the local participant has permission to mute other participants' audio.  
 TypeScript  
 ```  
-const canMuteAudio =  
-  meeting.self.permissions.canDisableParticipantAudio === true;  
-if (!canMuteAudio) {  
-  // Disable the control in your UI.  
-}  
+const canMuteAudio =  meeting.self.permissions.canDisableParticipantAudio === true;if (!canMuteAudio) {  // Disable the control in your UI.}  
 ```
 2. Call `disableAllAudio()`.  
 If the local participant does not have the required permission, `disableAllAudio()` throws a `ClientError` with code `1201`.  
 TypeScript  
 ```  
-try {  
-  await meeting.participants.disableAllAudio();  
-} catch (err: any) {  
-  if (err?.code === 1201) {  
-    // The local participant does not have permission to mute other participants’ audio.  
-    return;  
-  }  
-  throw err;  
-}  
+try {  await meeting.participants.disableAllAudio();} catch (err: any) {  if (err?.code === 1201) {    // The local participant does not have permission to mute other participants’ audio.    return;  }  throw err;}  
 ```
 3. Handle the result by listening for updates.  
 After the call succeeds, each participant’s `audioEnabled` becomes `false`, and the SDK emits an `audioUpdate` event. The local participant also receives `audioUpdate` on `meeting.self`.  
 Listen to remote participant updates on the `joined` map:  
 TypeScript  
 ```  
-meeting.participants.joined.on(  
-  "audioUpdate",  
-  (participant, { audioEnabled, audioTrack }) => {  
-    // audioEnabled is false  
-    // Update UI for the participant  
-  },  
-);  
+meeting.participants.joined.on(  "audioUpdate",  (participant, { audioEnabled, audioTrack }) => {    // audioEnabled is false    // Update UI for the participant  },);  
 ```  
 Listen to the local participant update on `meeting.self`:  
 TypeScript  
 ```  
-meeting.self.on("audioUpdate", ({ audioEnabled, audioTrack }) => {  
-  // audioEnabled is false  
-  // Update UI for the local participant  
-});  
+meeting.self.on("audioUpdate", ({ audioEnabled, audioTrack }) => {  // audioEnabled is false  // Update UI for the local participant});  
 ```
 
 1. Check that the local participant has permission to mute other participants' audio.  
 TypeScript  
 ```  
-const canMuteAudio =  
-  meeting.self.permissions.canDisableParticipantAudio === true;  
-if (!canMuteAudio) {  
-  // Disable the control in your UI.  
-}  
+const canMuteAudio =  meeting.self.permissions.canDisableParticipantAudio === true;if (!canMuteAudio) {  // Disable the control in your UI.}  
 ```
 2. Call `disableAllAudio()`.  
 If the local participant does not have the required permission, `disableAllAudio()` throws a `ClientError` with code `1201`.  
 TypeScript  
 ```  
-try {  
-  await meeting.participants.disableAllAudio();  
-} catch (err: any) {  
-  if (err?.code === 1201) {  
-    // The local participant does not have permission to mute other participants’ audio.  
-    return;  
-  }  
-  throw err;  
-}  
+try {  await meeting.participants.disableAllAudio();} catch (err: any) {  if (err?.code === 1201) {    // The local participant does not have permission to mute other participants’ audio.    return;  }  throw err;}  
 ```
 3. Handle the result by listening for updates.  
 After the call succeeds, each participant’s `audioEnabled` becomes `false`, and the SDK emits an `audioUpdate` event. The local participant also receives `audioUpdate` on `meeting.self`.  
 Listen to remote participant updates on the `joined` map:  
 TypeScript  
 ```  
-meeting.participants.joined.on(  
-  "audioUpdate",  
-  (participant, { audioEnabled, audioTrack }) => {  
-    // audioEnabled is false  
-    // Update UI for the participant  
-  },  
-);  
+meeting.participants.joined.on(  "audioUpdate",  (participant, { audioEnabled, audioTrack }) => {    // audioEnabled is false    // Update UI for the participant  },);  
 ```  
 Listen to the local participant update on `meeting.self`:  
 TypeScript  
 ```  
-meeting.self.on("audioUpdate", ({ audioEnabled, audioTrack }) => {  
-  // audioEnabled is false  
-  // Update UI for the local participant  
-});  
+meeting.self.on("audioUpdate", ({ audioEnabled, audioTrack }) => {  // audioEnabled is false  // Update UI for the local participant});  
 ```
 
 1. Check that the local participant has permission to mute other participants' audio.
@@ -694,16 +344,7 @@ meeting.self.on("audioUpdate", ({ audioEnabled, audioTrack }) => {
 Kotlin
 
 ```
-
-val canMuteAudio = meeting.localUser.permissions.host.canMuteAudio
-
-if (!canMuteAudio) {
-
-  // Disable the control in your UI.
-
-}
-
-
+val canMuteAudio = meeting.localUser.permissions.host.canMuteAudioif (!canMuteAudio) {  // Disable the control in your UI.}
 ```
 
 1. Call `disableAllAudio()` on the participants object. If the local participant does not have the required permission, `disableAllAudio()` returns a `HostError`.
@@ -711,16 +352,7 @@ if (!canMuteAudio) {
 Kotlin
 
 ```
-
-val error = meeting.participants.disableAllAudio()
-
-if (error != null) {
-
-  // Handle error - permission denied.
-
-}
-
-
+val error = meeting.participants.disableAllAudio()if (error != null) {  // Handle error - permission denied.}
 ```
 
 1. Handle the result by listening for updates. After the call succeeds, each participant's `audioEnabled` becomes `false`.
@@ -728,20 +360,7 @@ if (error != null) {
 Kotlin
 
 ```
-
-meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {
-
-  override fun onAudioUpdate(participant: RtkRemoteParticipant, isEnabled: Boolean) {
-
-    // audioEnabled is false
-
-    // Update UI for the participant
-
-  }
-
-})
-
-
+meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {  override fun onAudioUpdate(participant: RtkRemoteParticipant, isEnabled: Boolean) {    // audioEnabled is false    // Update UI for the participant  }})
 ```
 
 1. Check that the local participant has permission to mute other participants' audio.
@@ -749,16 +368,7 @@ meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {
 Swift
 
 ```
-
-let canMuteAudio = meeting.localUser.permissions.host.canMuteAudio
-
-if !canMuteAudio {
-
-  // Disable the control in your UI.
-
-}
-
-
+let canMuteAudio = meeting.localUser.permissions.host.canMuteAudioif !canMuteAudio {  // Disable the control in your UI.}
 ```
 
 1. Call `disableAllAudio()` on the participants object. If the local participant does not have the required permission, `disableAllAudio()` returns a `HostError`.
@@ -766,14 +376,7 @@ if !canMuteAudio {
 Swift
 
 ```
-
-if let error = meeting.participants.disableAllAudio() {
-
-  // Handle error - permission denied.
-
-}
-
-
+if let error = meeting.participants.disableAllAudio() {  // Handle error - permission denied.}
 ```
 
 1. Handle the result by listening for updates. After the call succeeds, each participant's `audioEnabled` becomes `false`.
@@ -781,25 +384,8 @@ if let error = meeting.participants.disableAllAudio() {
 Swift
 
 ```
-
-extension MeetingViewModel: RtkParticipantsEventListener {
-
-  func onAudioUpdate(participant: RtkRemoteParticipant, isEnabled: Bool) {
-
-    // audioEnabled is false
-
-    // Update UI for the participant
-
-  }
-
-}
-
-
-// Register the listener
-
-meeting.addParticipantsEventListener(participantsEventListener: self)
-
-
+extension MeetingViewModel: RtkParticipantsEventListener {  func onAudioUpdate(participant: RtkRemoteParticipant, isEnabled: Bool) {    // audioEnabled is false    // Update UI for the participant  }}
+// Register the listenermeeting.addParticipantsEventListener(participantsEventListener: self)
 ```
 
 1. Check that the local participant has permission to mute other participants' audio.
@@ -807,16 +393,7 @@ meeting.addParticipantsEventListener(participantsEventListener: self)
 Dart
 
 ```
-
-final canMuteAudio = meeting.localUser.permissions.host.canMuteAudio;
-
-if (!canMuteAudio) {
-
-  // Disable the control in your UI.
-
-}
-
-
+final canMuteAudio = meeting.localUser.permissions.host.canMuteAudio;if (!canMuteAudio) {  // Disable the control in your UI.}
 ```
 
 1. Call `disableAllAudio()` on the participants object.
@@ -824,26 +401,7 @@ if (!canMuteAudio) {
 Dart
 
 ```
-
-meeting.participants.disableAllAudio(
-
-  onResult: (error) {
-
-    if (error != null) {
-
-      // Handle error - permission denied or other issue.
-
-      return;
-
-    }
-
-    // All audio disabled successfully.
-
-  },
-
-);
-
-
+meeting.participants.disableAllAudio(  onResult: (error) {    if (error != null) {      // Handle error - permission denied or other issue.      return;    }    // All audio disabled successfully.  },);
 ```
 
 1. Handle the result by listening for updates. After the call succeeds, each participant's `audioEnabled` becomes `false`.
@@ -851,76 +409,26 @@ meeting.participants.disableAllAudio(
 Dart
 
 ```
-
-class ParticipantsEventsListener extends RtkParticipantsEventListener {
-
-  @override
-
-  void onAudioUpdate(RtkRemoteParticipant participant, bool isEnabled) {
-
-    // audioEnabled is false
-
-    // Update UI for the participant
-
-  }
-
-}
-
-
-// Register the listener
-
-meeting.addParticipantsEventListener(ParticipantsEventsListener());
-
-
+class ParticipantsEventsListener extends RtkParticipantsEventListener {  @override  void onAudioUpdate(RtkRemoteParticipant participant, bool isEnabled) {    // audioEnabled is false    // Update UI for the participant  }}
+// Register the listenermeeting.addParticipantsEventListener(ParticipantsEventsListener());
 ```
 
 1. Check that the local participant has permission to mute other participants' audio.
 
 ```
-
-const canDisableParticipantAudio = meeting.self.permissions.canDisableParticipantAudio;
-
-if (!canDisableParticipantAudio) {
-
-  // Disable the control in your UI.
-
-}
-
-
+const canDisableParticipantAudio = meeting.self.permissions.canDisableParticipantAudio;if (!canDisableParticipantAudio) {  // Disable the control in your UI.}
 ```
 
 1. Call `disableAllAudio()` on the participants object.
 
 ```
-
-meeting.participants
-
-  .disableAllAudio(true)
-
-  .catch((err) => {
-
-    // Handle error - permission denied or other issue.
-
-    console.log(err);
-
-  });
-
-
+meeting.participants  .disableAllAudio(true)  .catch((err) => {    // Handle error - permission denied or other issue.    console.log(err);  });
 ```
 
 1. Handle the result by listening for updates. After the call succeeds, each participant's `audioEnabled` becomes `false`.
 
 ```
-
-meeting.participants.joined.on('audioUpdate', (participant) => {
-
-  // participant.audioEnabled is false
-
-  // Update UI for the participant
-
-});
-
-
+meeting.participants.joined.on('audioUpdate', (participant) => {  // participant.audioEnabled is false  // Update UI for the participant});
 ```
 
 ## Disable video
@@ -934,136 +442,79 @@ To disable a specific participant's video:
 1. Check that the local participant has permission to disable other participants' video.  
 TypeScript  
 ```  
-const canDisableVideo =  
-  meeting.self.permissions.canDisableParticipantVideo === true;  
-if (!canDisableVideo) {  
-  // Disable the control in your UI.  
-}  
+const canDisableVideo =  meeting.self.permissions.canDisableParticipantVideo === true;if (!canDisableVideo) {  // Disable the control in your UI.}  
 ```
 2. Call `disableVideo()` on the target participant.  
 If the local participant does not have the required permission, `disableVideo()` throws a `ClientError` with code `1201`.  
 TypeScript  
 ```  
-try {  
-  await participant.disableVideo();  
-} catch (err: any) {  
-  if (err?.code === 1201) {  
-    // The local participant does not have permission to disable other participants’ video.  
-    return;  
-  }  
-  throw err;  
-}  
+try {  await participant.disableVideo();} catch (err: any) {  if (err?.code === 1201) {    // The local participant does not have permission to disable other participants’ video.    return;  }  throw err;}  
 ```
 3. Handle the result by listening for updates.  
-After the call succeeds, the target participant's `videoEnabled` becomes `false`, and the SDK emits a `videoUpdate` event.  
+After the call succeeds, the target participant's `videoEnabled` becomes `false`, and the SDK emits a `videoUpdate` event.
+
 **Option A**: Listen on the participant object  
 TypeScript  
 ```  
-participant.on("videoUpdate", ({ videoEnabled, videoTrack }) => {  
-  // videoEnabled is false  
-  // Update UI for the participant  
-});  
-```  
+participant.on("videoUpdate", ({ videoEnabled, videoTrack }) => {  // videoEnabled is false  // Update UI for the participant});  
+```
+
 **Option B**: Listen on the `joined` map  
 TypeScript  
 ```  
-meeting.participants.joined.on(  
-  "videoUpdate",  
-  (participant, { videoEnabled, videoTrack }) => {  
-    // videoEnabled is false  
-    // Update UI for the participant  
-  },  
-);  
+meeting.participants.joined.on(  "videoUpdate",  (participant, { videoEnabled, videoTrack }) => {    // videoEnabled is false    // Update UI for the participant  },);  
 ```
 
 1. Check that the local participant has permission to disable other participants' video.  
 TypeScript  
 ```  
-const canDisableVideo =  
-  meeting.self.permissions.canDisableParticipantVideo === true;  
-if (!canDisableVideo) {  
-  // Disable the control in your UI.  
-}  
+const canDisableVideo =  meeting.self.permissions.canDisableParticipantVideo === true;if (!canDisableVideo) {  // Disable the control in your UI.}  
 ```
 2. Call `disableVideo()` on the target participant.  
 If the local participant does not have the required permission, `disableVideo()` throws a `ClientError` with code `1201`.  
 TypeScript  
 ```  
-try {  
-  await participant.disableVideo();  
-} catch (err: any) {  
-  if (err?.code === 1201) {  
-    // The local participant does not have permission to disable other participants’ video.  
-    return;  
-  }  
-  throw err;  
-}  
+try {  await participant.disableVideo();} catch (err: any) {  if (err?.code === 1201) {    // The local participant does not have permission to disable other participants’ video.    return;  }  throw err;}  
 ```
 3. Handle the result by listening for updates.  
-After the call succeeds, the target participant's `videoEnabled` becomes `false`, and the SDK emits a `videoUpdate` event.  
+After the call succeeds, the target participant's `videoEnabled` becomes `false`, and the SDK emits a `videoUpdate` event.
+
 **Option A**: Listen on the participant object  
 TypeScript  
 ```  
-participant.on("videoUpdate", ({ videoEnabled, videoTrack }) => {  
-  // videoEnabled is false  
-  // Update UI for the participant  
-});  
-```  
+participant.on("videoUpdate", ({ videoEnabled, videoTrack }) => {  // videoEnabled is false  // Update UI for the participant});  
+```
+
 **Option B**: Listen on the `joined` map  
 TypeScript  
 ```  
-meeting.participants.joined.on(  
-  "videoUpdate",  
-  (participant, { videoEnabled, videoTrack }) => {  
-    // videoEnabled is false  
-    // Update UI for the participant  
-  },  
-);  
+meeting.participants.joined.on(  "videoUpdate",  (participant, { videoEnabled, videoTrack }) => {    // videoEnabled is false    // Update UI for the participant  },);  
 ```
 
 1. Check that the local participant has permission to disable other participants' video.  
 TypeScript  
 ```  
-const canDisableVideo =  
-  meeting.self.permissions.canDisableParticipantVideo === true;  
-if (!canDisableVideo) {  
-  // Disable the control in your UI.  
-}  
+const canDisableVideo =  meeting.self.permissions.canDisableParticipantVideo === true;if (!canDisableVideo) {  // Disable the control in your UI.}  
 ```
 2. Call `disableVideo()` on the target participant.  
 If the local participant does not have the required permission, `disableVideo()` throws a `ClientError` with code `1201`.  
 TypeScript  
 ```  
-try {  
-  await participant.disableVideo();  
-} catch (err: any) {  
-  if (err?.code === 1201) {  
-    // The local participant does not have permission to disable other participants’ video.  
-    return;  
-  }  
-  throw err;  
-}  
+try {  await participant.disableVideo();} catch (err: any) {  if (err?.code === 1201) {    // The local participant does not have permission to disable other participants’ video.    return;  }  throw err;}  
 ```
 3. Handle the result by listening for updates.  
-After the call succeeds, the target participant's `videoEnabled` becomes `false`, and the SDK emits a `videoUpdate` event.  
+After the call succeeds, the target participant's `videoEnabled` becomes `false`, and the SDK emits a `videoUpdate` event.
+
 **Option A**: Listen on the participant object  
 TypeScript  
 ```  
-participant.on("videoUpdate", ({ videoEnabled, videoTrack }) => {  
-  // videoEnabled is false  
-  // Update UI for the participant  
-});  
-```  
+participant.on("videoUpdate", ({ videoEnabled, videoTrack }) => {  // videoEnabled is false  // Update UI for the participant});  
+```
+
 **Option B**: Listen on the `joined` map  
 TypeScript  
 ```  
-meeting.participants.joined.on(  
-  "videoUpdate",  
-  (participant, { videoEnabled, videoTrack }) => {  
-    // videoEnabled is false  
-    // Update UI for the participant  
-  },  
-);  
+meeting.participants.joined.on(  "videoUpdate",  (participant, { videoEnabled, videoTrack }) => {    // videoEnabled is false    // Update UI for the participant  },);  
 ```
 
 1. Check that the local participant has permission to disable other participants' video.
@@ -1071,16 +522,7 @@ meeting.participants.joined.on(
 Kotlin
 
 ```
-
-val canMuteVideo = meeting.localUser.permissions.host.canMuteVideo
-
-if (!canMuteVideo) {
-
-  // Disable the control in your UI.
-
-}
-
-
+val canMuteVideo = meeting.localUser.permissions.host.canMuteVideoif (!canMuteVideo) {  // Disable the control in your UI.}
 ```
 
 1. Call `disableVideo()` on the target participant. If the local participant does not have the required permission, `disableVideo()` returns a `HostError`.
@@ -1088,16 +530,7 @@ if (!canMuteVideo) {
 Kotlin
 
 ```
-
-val error = participant.disableVideo()
-
-if (error != null) {
-
-  // Handle error - permission denied.
-
-}
-
-
+val error = participant.disableVideo()if (error != null) {  // Handle error - permission denied.}
 ```
 
 1. Handle the result by listening for updates. After the call succeeds, the target participant's `videoEnabled` becomes `false`.
@@ -1105,20 +538,7 @@ if (error != null) {
 Kotlin
 
 ```
-
-meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {
-
-  override fun onVideoUpdate(participant: RtkRemoteParticipant, isEnabled: Boolean) {
-
-    // videoEnabled is false
-
-    // Update UI for the participant
-
-  }
-
-})
-
-
+meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {  override fun onVideoUpdate(participant: RtkRemoteParticipant, isEnabled: Boolean) {    // videoEnabled is false    // Update UI for the participant  }})
 ```
 
 1. Check that the local participant has permission to disable other participants' video.
@@ -1126,16 +546,7 @@ meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {
 Swift
 
 ```
-
-let canMuteVideo = meeting.localUser.permissions.host.canMuteVideo
-
-if !canMuteVideo {
-
-  // Disable the control in your UI.
-
-}
-
-
+let canMuteVideo = meeting.localUser.permissions.host.canMuteVideoif !canMuteVideo {  // Disable the control in your UI.}
 ```
 
 1. Call `disableVideo()` on the target participant. If the local participant does not have the required permission, `disableVideo()` returns a `HostError`.
@@ -1143,14 +554,7 @@ if !canMuteVideo {
 Swift
 
 ```
-
-if let error = participant.disableVideo() {
-
-  // Handle error - permission denied.
-
-}
-
-
+if let error = participant.disableVideo() {  // Handle error - permission denied.}
 ```
 
 1. Handle the result by listening for updates. After the call succeeds, the target participant's `videoEnabled` becomes `false`.
@@ -1158,25 +562,8 @@ if let error = participant.disableVideo() {
 Swift
 
 ```
-
-extension MeetingViewModel: RtkParticipantsEventListener {
-
-  func onVideoUpdate(participant: RtkRemoteParticipant, isEnabled: Bool) {
-
-    // videoEnabled is false
-
-    // Update UI for the participant
-
-  }
-
-}
-
-
-// Register the listener
-
-meeting.addParticipantsEventListener(participantsEventListener: self)
-
-
+extension MeetingViewModel: RtkParticipantsEventListener {  func onVideoUpdate(participant: RtkRemoteParticipant, isEnabled: Bool) {    // videoEnabled is false    // Update UI for the participant  }}
+// Register the listenermeeting.addParticipantsEventListener(participantsEventListener: self)
 ```
 
 1. Check that the local participant has permission to disable other participants' video.
@@ -1184,16 +571,7 @@ meeting.addParticipantsEventListener(participantsEventListener: self)
 Dart
 
 ```
-
-final canMuteVideo = meeting.localUser.permissions.host.canMuteVideo;
-
-if (!canMuteVideo) {
-
-  // Disable the control in your UI.
-
-}
-
-
+final canMuteVideo = meeting.localUser.permissions.host.canMuteVideo;if (!canMuteVideo) {  // Disable the control in your UI.}
 ```
 
 1. Call `disableVideo()` on the target participant.
@@ -1201,26 +579,7 @@ if (!canMuteVideo) {
 Dart
 
 ```
-
-participant.disableVideo(
-
-  onResult: (error) {
-
-    if (error != null) {
-
-      // Handle error - permission denied or other issue.
-
-      return;
-
-    }
-
-    // Video disabled successfully.
-
-  },
-
-);
-
-
+participant.disableVideo(  onResult: (error) {    if (error != null) {      // Handle error - permission denied or other issue.      return;    }    // Video disabled successfully.  },);
 ```
 
 1. Handle the result by listening for updates. After the call succeeds, the target participant's `videoEnabled` becomes `false`.
@@ -1228,76 +587,26 @@ participant.disableVideo(
 Dart
 
 ```
-
-class ParticipantsEventsListener extends RtkParticipantsEventListener {
-
-  @override
-
-  void onVideoUpdate(RtkRemoteParticipant participant, bool isEnabled) {
-
-    // videoEnabled is false
-
-    // Update UI for the participant
-
-  }
-
-}
-
-
-// Register the listener
-
-meeting.addParticipantsEventListener(ParticipantsEventsListener());
-
-
+class ParticipantsEventsListener extends RtkParticipantsEventListener {  @override  void onVideoUpdate(RtkRemoteParticipant participant, bool isEnabled) {    // videoEnabled is false    // Update UI for the participant  }}
+// Register the listenermeeting.addParticipantsEventListener(ParticipantsEventsListener());
 ```
 
 1. Check that the local participant has permission to disable other participants' video.
 
 ```
-
-const canDisableParticipantVideo = meeting.self.permissions.canDisableParticipantVideo;
-
-if (!canDisableParticipantVideo) {
-
-  // Disable the control in your UI.
-
-}
-
-
+const canDisableParticipantVideo = meeting.self.permissions.canDisableParticipantVideo;if (!canDisableParticipantVideo) {  // Disable the control in your UI.}
 ```
 
 1. Call `disableVideo()` on the target participant.
 
 ```
-
-participant
-
-  .disableVideo()
-
-  .catch((err) => {
-
-    // Handle error - permission denied or other issue.
-
-    console.log(err);
-
-  });
-
-
+participant  .disableVideo()  .catch((err) => {    // Handle error - permission denied or other issue.    console.log(err);  });
 ```
 
 1. Handle the result by listening for updates. After the call succeeds, the target participant's `videoEnabled` becomes `false`.
 
 ```
-
-meeting.participants.joined.on('videoUpdate', (participant) => {
-
-  // participant.videoEnabled is false
-
-  // Update UI for the participant
-
-});
-
-
+meeting.participants.joined.on('videoUpdate', (participant) => {  // participant.videoEnabled is false  // Update UI for the participant});
 ```
 
 ### Disable video for all participants
@@ -1307,136 +616,73 @@ This affects all participants, including the local participant. To disable video
 1. Check that the local participant has permission to disable other participants' video.  
 TypeScript  
 ```  
-const canDisableVideo =  
-  meeting.self.permissions.canDisableParticipantVideo === true;  
-if (!canDisableVideo) {  
-  // Disable the control in your UI.  
-}  
+const canDisableVideo =  meeting.self.permissions.canDisableParticipantVideo === true;if (!canDisableVideo) {  // Disable the control in your UI.}  
 ```
 2. Call `disableAllVideo()`.  
 If the local participant does not have the required permission, `disableAllVideo()` throws a `ClientError` with code `1201`.  
 TypeScript  
 ```  
-try {  
-  await meeting.participants.disableAllVideo();  
-} catch (err: any) {  
-  if (err?.code === 1201) {  
-    // The local participant does not have permission to disable other participants’ video.  
-    return;  
-  }  
-  throw err;  
-}  
+try {  await meeting.participants.disableAllVideo();} catch (err: any) {  if (err?.code === 1201) {    // The local participant does not have permission to disable other participants’ video.    return;  }  throw err;}  
 ```
 3. Handle the result by listening for updates.  
 After the call succeeds, each participant’s `videoEnabled` becomes `false`, and the SDK emits a `videoUpdate` event. The local participant also receives `videoUpdate` on `meeting.self`.  
 Listen to remote participant updates on the `joined` map:  
 TypeScript  
 ```  
-meeting.participants.joined.on(  
-  "videoUpdate",  
-  (participant, { videoEnabled, videoTrack }) => {  
-    // videoEnabled is false  
-    // Update UI for the participant  
-  },  
-);  
+meeting.participants.joined.on(  "videoUpdate",  (participant, { videoEnabled, videoTrack }) => {    // videoEnabled is false    // Update UI for the participant  },);  
 ```  
 Listen to local participant update on `meeting.self`:  
 TypeScript  
 ```  
-meeting.self.on("videoUpdate", ({ videoEnabled, videoTrack }) => {  
-  // videoEnabled is false  
-  // Update UI for the local participant  
-});  
+meeting.self.on("videoUpdate", ({ videoEnabled, videoTrack }) => {  // videoEnabled is false  // Update UI for the local participant});  
 ```
 
 1. Check that the local participant has permission to disable other participants' video.  
 TypeScript  
 ```  
-const canDisableVideo =  
-  meeting.self.permissions.canDisableParticipantVideo === true;  
-if (!canDisableVideo) {  
-  // Disable the control in your UI.  
-}  
+const canDisableVideo =  meeting.self.permissions.canDisableParticipantVideo === true;if (!canDisableVideo) {  // Disable the control in your UI.}  
 ```
 2. Call `disableAllVideo()`.  
 If the local participant does not have the required permission, `disableAllVideo()` throws a `ClientError` with code `1201`.  
 TypeScript  
 ```  
-try {  
-  await meeting.participants.disableAllVideo();  
-} catch (err: any) {  
-  if (err?.code === 1201) {  
-    // The local participant does not have permission to disable other participants’ video.  
-    return;  
-  }  
-  throw err;  
-}  
+try {  await meeting.participants.disableAllVideo();} catch (err: any) {  if (err?.code === 1201) {    // The local participant does not have permission to disable other participants’ video.    return;  }  throw err;}  
 ```
 3. Handle the result by listening for updates.  
 After the call succeeds, each participant’s `videoEnabled` becomes `false`, and the SDK emits a `videoUpdate` event. The local participant also receives `videoUpdate` on `meeting.self`.  
 Listen to remote participant updates on the `joined` map:  
 TypeScript  
 ```  
-meeting.participants.joined.on(  
-  "videoUpdate",  
-  (participant, { videoEnabled, videoTrack }) => {  
-    // videoEnabled is false  
-    // Update UI for the participant  
-  },  
-);  
+meeting.participants.joined.on(  "videoUpdate",  (participant, { videoEnabled, videoTrack }) => {    // videoEnabled is false    // Update UI for the participant  },);  
 ```  
 Listen to local participant update on `meeting.self`:  
 TypeScript  
 ```  
-meeting.self.on("videoUpdate", ({ videoEnabled, videoTrack }) => {  
-  // videoEnabled is false  
-  // Update UI for the local participant  
-});  
+meeting.self.on("videoUpdate", ({ videoEnabled, videoTrack }) => {  // videoEnabled is false  // Update UI for the local participant});  
 ```
 
 1. Check that the local participant has permission to disable other participants' video.  
 TypeScript  
 ```  
-const canDisableVideo =  
-  meeting.self.permissions.canDisableParticipantVideo === true;  
-if (!canDisableVideo) {  
-  // Disable the control in your UI.  
-}  
+const canDisableVideo =  meeting.self.permissions.canDisableParticipantVideo === true;if (!canDisableVideo) {  // Disable the control in your UI.}  
 ```
 2. Call `disableAllVideo()`.  
 If the local participant does not have the required permission, `disableAllVideo()` throws a `ClientError` with code `1201`.  
 TypeScript  
 ```  
-try {  
-  await meeting.participants.disableAllVideo();  
-} catch (err: any) {  
-  if (err?.code === 1201) {  
-    // The local participant does not have permission to disable other participants’ video.  
-    return;  
-  }  
-  throw err;  
-}  
+try {  await meeting.participants.disableAllVideo();} catch (err: any) {  if (err?.code === 1201) {    // The local participant does not have permission to disable other participants’ video.    return;  }  throw err;}  
 ```
 3. Handle the result by listening for updates.  
 After the call succeeds, each participant’s `videoEnabled` becomes `false`, and the SDK emits a `videoUpdate` event. The local participant also receives `videoUpdate` on `meeting.self`.  
 Listen to remote participant updates on the `joined` map:  
 TypeScript  
 ```  
-meeting.participants.joined.on(  
-  "videoUpdate",  
-  (participant, { videoEnabled, videoTrack }) => {  
-    // videoEnabled is false  
-    // Update UI for the participant  
-  },  
-);  
+meeting.participants.joined.on(  "videoUpdate",  (participant, { videoEnabled, videoTrack }) => {    // videoEnabled is false    // Update UI for the participant  },);  
 ```  
 Listen to local participant update on `meeting.self`:  
 TypeScript  
 ```  
-meeting.self.on("videoUpdate", ({ videoEnabled, videoTrack }) => {  
-  // videoEnabled is false  
-  // Update UI for the local participant  
-});  
+meeting.self.on("videoUpdate", ({ videoEnabled, videoTrack }) => {  // videoEnabled is false  // Update UI for the local participant});  
 ```
 
 1. Check that the local participant has permission to disable other participants' video.
@@ -1444,16 +690,7 @@ meeting.self.on("videoUpdate", ({ videoEnabled, videoTrack }) => {
 Kotlin
 
 ```
-
-val canMuteVideo = meeting.localUser.permissions.host.canMuteVideo
-
-if (!canMuteVideo) {
-
-  // Disable the control in your UI.
-
-}
-
-
+val canMuteVideo = meeting.localUser.permissions.host.canMuteVideoif (!canMuteVideo) {  // Disable the control in your UI.}
 ```
 
 1. Call `disableAllVideo()` on the participants object. If the local participant does not have the required permission, `disableAllVideo()` returns a `HostError`.
@@ -1461,16 +698,7 @@ if (!canMuteVideo) {
 Kotlin
 
 ```
-
-val error = meeting.participants.disableAllVideo()
-
-if (error != null) {
-
-  // Handle error - permission denied.
-
-}
-
-
+val error = meeting.participants.disableAllVideo()if (error != null) {  // Handle error - permission denied.}
 ```
 
 1. Handle the result by listening for updates. After the call succeeds, each participant's `videoEnabled` becomes `false`.
@@ -1478,20 +706,7 @@ if (error != null) {
 Kotlin
 
 ```
-
-meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {
-
-  override fun onVideoUpdate(participant: RtkRemoteParticipant, isEnabled: Boolean) {
-
-    // videoEnabled is false
-
-    // Update UI for the participant
-
-  }
-
-})
-
-
+meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {  override fun onVideoUpdate(participant: RtkRemoteParticipant, isEnabled: Boolean) {    // videoEnabled is false    // Update UI for the participant  }})
 ```
 
 1. Check that the local participant has permission to disable other participants' video.
@@ -1499,16 +714,7 @@ meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {
 Swift
 
 ```
-
-let canMuteVideo = meeting.localUser.permissions.host.canMuteVideo
-
-if !canMuteVideo {
-
-  // Disable the control in your UI.
-
-}
-
-
+let canMuteVideo = meeting.localUser.permissions.host.canMuteVideoif !canMuteVideo {  // Disable the control in your UI.}
 ```
 
 1. Call `disableAllVideo()` on the participants object. If the local participant does not have the required permission, `disableAllVideo()` returns a `HostError`.
@@ -1516,14 +722,7 @@ if !canMuteVideo {
 Swift
 
 ```
-
-if let error = meeting.participants.disableAllVideo() {
-
-  // Handle error - permission denied.
-
-}
-
-
+if let error = meeting.participants.disableAllVideo() {  // Handle error - permission denied.}
 ```
 
 1. Handle the result by listening for updates. After the call succeeds, each participant's `videoEnabled` becomes `false`.
@@ -1531,25 +730,8 @@ if let error = meeting.participants.disableAllVideo() {
 Swift
 
 ```
-
-extension MeetingViewModel: RtkParticipantsEventListener {
-
-  func onVideoUpdate(participant: RtkRemoteParticipant, isEnabled: Bool) {
-
-    // videoEnabled is false
-
-    // Update UI for the participant
-
-  }
-
-}
-
-
-// Register the listener
-
-meeting.addParticipantsEventListener(participantsEventListener: self)
-
-
+extension MeetingViewModel: RtkParticipantsEventListener {  func onVideoUpdate(participant: RtkRemoteParticipant, isEnabled: Bool) {    // videoEnabled is false    // Update UI for the participant  }}
+// Register the listenermeeting.addParticipantsEventListener(participantsEventListener: self)
 ```
 
 1. Check that the local participant has permission to disable other participants' video.
@@ -1557,16 +739,7 @@ meeting.addParticipantsEventListener(participantsEventListener: self)
 Dart
 
 ```
-
-final canMuteVideo = meeting.localUser.permissions.host.canMuteVideo;
-
-if (!canMuteVideo) {
-
-  // Disable the control in your UI.
-
-}
-
-
+final canMuteVideo = meeting.localUser.permissions.host.canMuteVideo;if (!canMuteVideo) {  // Disable the control in your UI.}
 ```
 
 1. Call `disableAllVideo()` on the participants object.
@@ -1574,26 +747,7 @@ if (!canMuteVideo) {
 Dart
 
 ```
-
-meeting.participants.disableAllVideo(
-
-  onResult: (error) {
-
-    if (error != null) {
-
-      // Handle error - permission denied or other issue.
-
-      return;
-
-    }
-
-    // All video disabled successfully.
-
-  },
-
-);
-
-
+meeting.participants.disableAllVideo(  onResult: (error) {    if (error != null) {      // Handle error - permission denied or other issue.      return;    }    // All video disabled successfully.  },);
 ```
 
 1. Handle the result by listening for updates. After the call succeeds, each participant's `videoEnabled` becomes `false`.
@@ -1601,76 +755,26 @@ meeting.participants.disableAllVideo(
 Dart
 
 ```
-
-class ParticipantsEventsListener extends RtkParticipantsEventListener {
-
-  @override
-
-  void onVideoUpdate(RtkRemoteParticipant participant, bool isEnabled) {
-
-    // videoEnabled is false
-
-    // Update UI for the participant
-
-  }
-
-}
-
-
-// Register the listener
-
-meeting.addParticipantsEventListener(ParticipantsEventsListener());
-
-
+class ParticipantsEventsListener extends RtkParticipantsEventListener {  @override  void onVideoUpdate(RtkRemoteParticipant participant, bool isEnabled) {    // videoEnabled is false    // Update UI for the participant  }}
+// Register the listenermeeting.addParticipantsEventListener(ParticipantsEventsListener());
 ```
 
 1. Check that the local participant has permission to disable other participants' video.
 
 ```
-
-const canDisableParticipantVideo = meeting.self.permissions.canDisableParticipantVideo;
-
-if (!canDisableParticipantVideo) {
-
-  // Disable the control in your UI.
-
-}
-
-
+const canDisableParticipantVideo = meeting.self.permissions.canDisableParticipantVideo;if (!canDisableParticipantVideo) {  // Disable the control in your UI.}
 ```
 
 1. Call `disableAllVideo()` on the participants object.
 
 ```
-
-meeting.participants
-
-  .disableAllVideo(true)
-
-  .catch((err) => {
-
-    // Handle error - permission denied or other issue.
-
-    console.log(err);
-
-  });
-
-
+meeting.participants  .disableAllVideo(true)  .catch((err) => {    // Handle error - permission denied or other issue.    console.log(err);  });
 ```
 
 1. Handle the result by listening for updates. After the call succeeds, each participant's `videoEnabled` becomes `false`.
 
 ```
-
-meeting.participants.joined.on('videoUpdate', (participant) => {
-
-  // participant.videoEnabled is false
-
-  // Update UI for the participant
-
-});
-
-
+meeting.participants.joined.on('videoUpdate', (participant) => {  // participant.videoEnabled is false  // Update UI for the participant});
 ```
 
 ## Pin participants
@@ -1688,157 +792,109 @@ To pin a participant in a session:
 1. Check that the local participant has permission to pin participants.  
 TypeScript  
 ```  
-const canPinParticipant = meeting.self.permissions.pinParticipant === true;  
-if (!canPinParticipant) {  
-  // Disable the control in your UI.  
-}  
+const canPinParticipant = meeting.self.permissions.pinParticipant === true;if (!canPinParticipant) {  // Disable the control in your UI.}  
 ```
 2. Call `pin()` on the target participant.  
 If the local participant does not have the required permission, `pin()` throws a `ClientError` with code `1201`.  
 TypeScript  
 ```  
-try {  
-  await participant.pin();  
-} catch (err: any) {  
-  if (err?.code === 1201) {  
-    // The local participant does not have permission to pin participants.  
-    return;  
-  }  
-  throw err;  
-}  
+try {  await participant.pin();} catch (err: any) {  if (err?.code === 1201) {    // The local participant does not have permission to pin participants.    return;  }  throw err;}  
 ```
 3. Handle the result by listening for updates.  
-After the call succeeds:  
-   * The target participant's `isPinned` becomes true.  
-   * The participant is added to `meeting.participants.pinned`.  
-   * The SDK emits a `pinned` event.  
+After the call succeeds:
+
+  * The target participant's `isPinned` becomes true.
+  * The participant is added to `meeting.participants.pinned`.
+  * The SDK emits a `pinned` event.
+
 **Option A**: Listen on the participant object  
 TypeScript  
 ```  
-participant.on("pinned", (updatedParticipant) => {  
-  // updatedParticipant.isPinned is true  
-  // Update your UI.  
-});  
-```  
+participant.on("pinned", (updatedParticipant) => {  // updatedParticipant.isPinned is true  // Update your UI.});  
+```
+
 **Option B**: Listen on the `joined` map  
 TypeScript  
 ```  
-meeting.participants.joined.on("pinned", (updatedParticipant) => {  
-  // updatedParticipant.isPinned is true  
-  // Update your UI.  
-});  
+meeting.participants.joined.on("pinned", (updatedParticipant) => {  // updatedParticipant.isPinned is true  // Update your UI.});  
 ```  
 If there was an existing pinned participant before, then the SDK emits an `unpinned` event for that participant.
 4. On the target pinned participant's side, `meeting.self.isPinned` becomes `true` and `meeting.self` emits `pinned`:  
 TypeScript  
 ```  
-meeting.self.on("pinned", (selfParticipant) => {  
-  // Update the local UI to indicate the participant is pinned.  
-});  
+meeting.self.on("pinned", (selfParticipant) => {  // Update the local UI to indicate the participant is pinned.});  
 ```
 
 1. Check that the local participant has permission to pin participants.  
 TypeScript  
 ```  
-const canPinParticipant = meeting.self.permissions.pinParticipant === true;  
-if (!canPinParticipant) {  
-  // Disable the control in your UI.  
-}  
+const canPinParticipant = meeting.self.permissions.pinParticipant === true;if (!canPinParticipant) {  // Disable the control in your UI.}  
 ```
 2. Call `pin()` on the target participant.  
 If the local participant does not have the required permission, `pin()` throws a `ClientError` with code `1201`.  
 TypeScript  
 ```  
-try {  
-  await participant.pin();  
-} catch (err: any) {  
-  if (err?.code === 1201) {  
-    // The local participant does not have permission to pin participants.  
-    return;  
-  }  
-  throw err;  
-}  
+try {  await participant.pin();} catch (err: any) {  if (err?.code === 1201) {    // The local participant does not have permission to pin participants.    return;  }  throw err;}  
 ```
 3. Handle the result by listening for updates.  
-After the call succeeds:  
-   * The target participant's `isPinned` becomes true.  
-   * The participant is added to `meeting.participants.pinned`.  
-   * The SDK emits a `pinned` event.  
+After the call succeeds:
+
+  * The target participant's `isPinned` becomes true.
+  * The participant is added to `meeting.participants.pinned`.
+  * The SDK emits a `pinned` event.
+
 **Option A**: Listen on the participant object  
 TypeScript  
 ```  
-participant.on("pinned", (updatedParticipant) => {  
-  // updatedParticipant.isPinned is true  
-  // Update your UI.  
-});  
-```  
+participant.on("pinned", (updatedParticipant) => {  // updatedParticipant.isPinned is true  // Update your UI.});  
+```
+
 **Option B**: Listen on the `joined` map  
 TypeScript  
 ```  
-meeting.participants.joined.on("pinned", (updatedParticipant) => {  
-  // updatedParticipant.isPinned is true  
-  // Update your UI.  
-});  
+meeting.participants.joined.on("pinned", (updatedParticipant) => {  // updatedParticipant.isPinned is true  // Update your UI.});  
 ```  
 If there was an existing pinned participant before, then the SDK emits an `unpinned` event for that participant.
 4. On the target pinned participant's side, `meeting.self.isPinned` becomes `true` and `meeting.self` emits `pinned`:  
 TypeScript  
 ```  
-meeting.self.on("pinned", (selfParticipant) => {  
-  // Update the local UI to indicate the participant is pinned.  
-});  
+meeting.self.on("pinned", (selfParticipant) => {  // Update the local UI to indicate the participant is pinned.});  
 ```
 
 1. Check that the local participant has permission to pin participants.  
 TypeScript  
 ```  
-const canPinParticipant = meeting.self.permissions.pinParticipant === true;  
-if (!canPinParticipant) {  
-  // Disable the control in your UI.  
-}  
+const canPinParticipant = meeting.self.permissions.pinParticipant === true;if (!canPinParticipant) {  // Disable the control in your UI.}  
 ```
 2. Call `pin()` on the target participant.  
 If the local participant does not have the required permission, `pin()` throws a `ClientError` with code `1201`.  
 TypeScript  
 ```  
-try {  
-  await participant.pin();  
-} catch (err: any) {  
-  if (err?.code === 1201) {  
-    // The local participant does not have permission to pin participants.  
-    return;  
-  }  
-  throw err;  
-}  
+try {  await participant.pin();} catch (err: any) {  if (err?.code === 1201) {    // The local participant does not have permission to pin participants.    return;  }  throw err;}  
 ```
 3. Handle the result by listening for updates.  
-After the call succeeds:  
-   * The target participant's `isPinned` becomes true.  
-   * The participant is added to `meeting.participants.pinned`.  
-   * The SDK emits a `pinned` event.  
+After the call succeeds:
+
+  * The target participant's `isPinned` becomes true.
+  * The participant is added to `meeting.participants.pinned`.
+  * The SDK emits a `pinned` event.
+
 **Option A**: Listen on the participant object  
 TypeScript  
 ```  
-participant.on("pinned", (updatedParticipant) => {  
-  // updatedParticipant.isPinned is true  
-  // Update your UI.  
-});  
-```  
+participant.on("pinned", (updatedParticipant) => {  // updatedParticipant.isPinned is true  // Update your UI.});  
+```
+
 **Option B**: Listen on the `joined` map  
 TypeScript  
 ```  
-meeting.participants.joined.on("pinned", (updatedParticipant) => {  
-  // updatedParticipant.isPinned is true  
-  // Update your UI.  
-});  
+meeting.participants.joined.on("pinned", (updatedParticipant) => {  // updatedParticipant.isPinned is true  // Update your UI.});  
 ```  
 If there was an existing pinned participant before, then the SDK emits an `unpinned` event for that participant.
 4. On the target pinned participant's side, `meeting.self.isPinned` becomes `true` and `meeting.self` emits `pinned`:  
 TypeScript  
 ```  
-meeting.self.on("pinned", (selfParticipant) => {  
-  // Update the local UI to indicate the participant is pinned.  
-});  
+meeting.self.on("pinned", (selfParticipant) => {  // Update the local UI to indicate the participant is pinned.});  
 ```
 
 1. Check that the local participant has permission to pin participants.
@@ -1846,16 +902,7 @@ meeting.self.on("pinned", (selfParticipant) => {
 Kotlin
 
 ```
-
-val canPinParticipant = meeting.localUser.permissions.host.canPinParticipant
-
-if (!canPinParticipant) {
-
-  // Disable the control in your UI.
-
-}
-
-
+val canPinParticipant = meeting.localUser.permissions.host.canPinParticipantif (!canPinParticipant) {  // Disable the control in your UI.}
 ```
 
 1. Call `pin()` on the target participant. If the local participant does not have the required permission, `pin()` returns a `HostError`.
@@ -1863,16 +910,7 @@ if (!canPinParticipant) {
 Kotlin
 
 ```
-
-val error = participant.pin()
-
-if (error != null) {
-
-  // Handle error - permission denied.
-
-}
-
-
+val error = participant.pin()if (error != null) {  // Handle error - permission denied.}
 ```
 
 1. Handle the result by listening for updates. After the call succeeds, the target participant's `isPinned` becomes `true` and the participant is available in `meeting.participants.pinned`.
@@ -1880,20 +918,7 @@ if (error != null) {
 Kotlin
 
 ```
-
-meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {
-
-  override fun onParticipantPinned(participant: RtkRemoteParticipant) {
-
-    // participant.isPinned is true
-
-    // Update your UI.
-
-  }
-
-})
-
-
+meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {  override fun onParticipantPinned(participant: RtkRemoteParticipant) {    // participant.isPinned is true    // Update your UI.  }})
 ```
 
 1. Check that the local participant has permission to pin participants.
@@ -1901,16 +926,7 @@ meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {
 Swift
 
 ```
-
-let canPinParticipant = meeting.localUser.permissions.host.canPinParticipant
-
-if !canPinParticipant {
-
-  // Disable the control in your UI.
-
-}
-
-
+let canPinParticipant = meeting.localUser.permissions.host.canPinParticipantif !canPinParticipant {  // Disable the control in your UI.}
 ```
 
 1. Call `pin()` on the target participant. If the local participant does not have the required permission, `pin()` returns a `HostError`.
@@ -1918,14 +934,7 @@ if !canPinParticipant {
 Swift
 
 ```
-
-if let error = participant.pin() {
-
-  // Handle error - permission denied.
-
-}
-
-
+if let error = participant.pin() {  // Handle error - permission denied.}
 ```
 
 1. Handle the result by listening for updates. After the call succeeds, the target participant's `isPinned` becomes `true` and the participant is available in `meeting.participants.pinned`.
@@ -1933,25 +942,8 @@ if let error = participant.pin() {
 Swift
 
 ```
-
-extension MeetingViewModel: RtkParticipantsEventListener {
-
-  func onParticipantPinned(participant: RtkRemoteParticipant) {
-
-    // participant.isPinned is true
-
-    // Update your UI.
-
-  }
-
-}
-
-
-// Register the listener
-
-meeting.addParticipantsEventListener(participantsEventListener: self)
-
-
+extension MeetingViewModel: RtkParticipantsEventListener {  func onParticipantPinned(participant: RtkRemoteParticipant) {    // participant.isPinned is true    // Update your UI.  }}
+// Register the listenermeeting.addParticipantsEventListener(participantsEventListener: self)
 ```
 
 1. Check that the local participant has permission to pin participants.
@@ -1959,16 +951,7 @@ meeting.addParticipantsEventListener(participantsEventListener: self)
 Dart
 
 ```
-
-final canPinParticipant = meeting.localUser.permissions.host.canPinParticipant;
-
-if (!canPinParticipant) {
-
-  // Disable the control in your UI.
-
-}
-
-
+final canPinParticipant = meeting.localUser.permissions.host.canPinParticipant;if (!canPinParticipant) {  // Disable the control in your UI.}
 ```
 
 1. Call `pin()` on the target participant.
@@ -1976,10 +959,7 @@ if (!canPinParticipant) {
 Dart
 
 ```
-
 participant.pin();
-
-
 ```
 
 1. Handle the result by listening for updates. After the call succeeds, the target participant's `isPinned` becomes `true` and the participant is available in `meeting.participants.pinned`.
@@ -1987,66 +967,26 @@ participant.pin();
 Dart
 
 ```
-
-class ParticipantsEventsListener extends RtkParticipantsEventListener {
-
-  @override
-
-  void onParticipantPinned(RtkRemoteParticipant participant) {
-
-    // participant.isPinned is true
-
-    // Update your UI.
-
-  }
-
-}
-
-
-// Register the listener
-
-meeting.addParticipantsEventListener(ParticipantsEventsListener());
-
-
+class ParticipantsEventsListener extends RtkParticipantsEventListener {  @override  void onParticipantPinned(RtkRemoteParticipant participant) {    // participant.isPinned is true    // Update your UI.  }}
+// Register the listenermeeting.addParticipantsEventListener(ParticipantsEventsListener());
 ```
 
 1. Check that the local participant has permission to pin participants.
 
 ```
-
-const canPinParticipant = meeting.self.permissions.pinParticipant;
-
-if (!canPinParticipant) {
-
-  // Disable the control in your UI.
-
-}
-
-
+const canPinParticipant = meeting.self.permissions.pinParticipant;if (!canPinParticipant) {  // Disable the control in your UI.}
 ```
 
 1. Call `pin()` on the target participant.
 
 ```
-
 participant.pin();
-
-
 ```
 
 1. Handle the result by listening for updates. After the call succeeds, the target participant's `isPinned` becomes `true` and the participant is available in `meeting.participants.pinned`.
 
 ```
-
-meeting.participants.pinned.on('participantPinned', (participant) => {
-
-  // participant.isPinned is true
-
-  // Update your UI.
-
-});
-
-
+meeting.participants.pinned.on('participantPinned', (participant) => {  // participant.isPinned is true  // Update your UI.});
 ```
 
 ### Unpin a participant
@@ -2056,154 +996,106 @@ Unpin a participant when you need to undo the highlight and return the session t
 1. Check that the local participant has permission to unpin participants.  
 TypeScript  
 ```  
-const canUnpinParticipant = meeting.self.permissions.pinParticipant === true;  
-if (!canUnpinParticipant) {  
-  // Disable the control in your UI.  
-}  
+const canUnpinParticipant = meeting.self.permissions.pinParticipant === true;if (!canUnpinParticipant) {  // Disable the control in your UI.}  
 ```
 2. Call `unpin()` on the target participant.  
 If the local participant does not have the required permission, `unpin()` throws a `ClientError` with code `1201`.  
 TypeScript  
 ```  
-try {  
-  await participant.unpin();  
-} catch (err: any) {  
-  if (err?.code === 1201) {  
-    // The local participant does not have permission to unpin participants.  
-    return;  
-  }  
-  throw err;  
-}  
+try {  await participant.unpin();} catch (err: any) {  if (err?.code === 1201) {    // The local participant does not have permission to unpin participants.    return;  }  throw err;}  
 ```
 3. Handle the result by listening for updates.  
-After the call succeeds:  
-   * The target participant's `isPinned` becomes `false`.  
-   * The participant is removed from `meeting.participants.pinned`.  
-   * The SDK emits an `unpinned` event.  
+After the call succeeds:
+
+  * The target participant's `isPinned` becomes `false`.
+  * The participant is removed from `meeting.participants.pinned`.
+  * The SDK emits an `unpinned` event.
+
 **Option A**: Listen on the participant object  
 TypeScript  
 ```  
-participant.on("unpinned", (updatedParticipant) => {  
-  // updatedParticipant.isPinned is false  
-  // Update your UI.  
-});  
-```  
+participant.on("unpinned", (updatedParticipant) => {  // updatedParticipant.isPinned is false  // Update your UI.});  
+```
+
 **Option B**: Listen on the `joined` map  
 TypeScript  
 ```  
-meeting.participants.joined.on("unpinned", (updatedParticipant) => {  
-  // updatedParticipant.isPinned is false  
-  // Update your UI.  
-});  
+meeting.participants.joined.on("unpinned", (updatedParticipant) => {  // updatedParticipant.isPinned is false  // Update your UI.});  
 ```
 4. On the target unpinned participant's side, `meeting.self.isPinned` becomes `false` and `meeting.self` emits `unpinned`:  
 TypeScript  
 ```  
-meeting.self.on("unpinned", (selfParticipant) => {  
-  // Update the local UI to indicate the participant is no longer pinned.  
-});  
+meeting.self.on("unpinned", (selfParticipant) => {  // Update the local UI to indicate the participant is no longer pinned.});  
 ```
 
 1. Check that the local participant has permission to unpin participants.  
 TypeScript  
 ```  
-const canUnpinParticipant = meeting.self.permissions.pinParticipant === true;  
-if (!canUnpinParticipant) {  
-  // Disable the control in your UI.  
-}  
+const canUnpinParticipant = meeting.self.permissions.pinParticipant === true;if (!canUnpinParticipant) {  // Disable the control in your UI.}  
 ```
 2. Call `unpin()` on the target participant.  
 If the local participant does not have the required permission, `unpin()` throws a `ClientError` with code `1201`.  
 TypeScript  
 ```  
-try {  
-  await participant.unpin();  
-} catch (err: any) {  
-  if (err?.code === 1201) {  
-    // The local participant does not have permission to unpin participants.  
-    return;  
-  }  
-  throw err;  
-}  
+try {  await participant.unpin();} catch (err: any) {  if (err?.code === 1201) {    // The local participant does not have permission to unpin participants.    return;  }  throw err;}  
 ```
 3. Handle the result by listening for updates.  
-After the call succeeds:  
-   * The target participant's `isPinned` becomes `false`.  
-   * The participant is removed from `meeting.participants.pinned`.  
-   * The SDK emits an `unpinned` event.  
+After the call succeeds:
+
+  * The target participant's `isPinned` becomes `false`.
+  * The participant is removed from `meeting.participants.pinned`.
+  * The SDK emits an `unpinned` event.
+
 **Option A**: Listen on the participant object  
 TypeScript  
 ```  
-participant.on("unpinned", (updatedParticipant) => {  
-  // updatedParticipant.isPinned is false  
-  // Update your UI.  
-});  
-```  
+participant.on("unpinned", (updatedParticipant) => {  // updatedParticipant.isPinned is false  // Update your UI.});  
+```
+
 **Option B**: Listen on the `joined` map  
 TypeScript  
 ```  
-meeting.participants.joined.on("unpinned", (updatedParticipant) => {  
-  // updatedParticipant.isPinned is false  
-  // Update your UI.  
-});  
+meeting.participants.joined.on("unpinned", (updatedParticipant) => {  // updatedParticipant.isPinned is false  // Update your UI.});  
 ```
 4. On the target unpinned participant's side, `meeting.self.isPinned` becomes `false` and `meeting.self` emits `unpinned`:  
 TypeScript  
 ```  
-meeting.self.on("unpinned", (selfParticipant) => {  
-  // Update the local UI to indicate the participant is no longer pinned.  
-});  
+meeting.self.on("unpinned", (selfParticipant) => {  // Update the local UI to indicate the participant is no longer pinned.});  
 ```
 
 1. Check that the local participant has permission to unpin participants.  
 TypeScript  
 ```  
-const canUnpinParticipant = meeting.self.permissions.pinParticipant === true;  
-if (!canUnpinParticipant) {  
-  // Disable the control in your UI.  
-}  
+const canUnpinParticipant = meeting.self.permissions.pinParticipant === true;if (!canUnpinParticipant) {  // Disable the control in your UI.}  
 ```
 2. Call `unpin()` on the target participant.  
 If the local participant does not have the required permission, `unpin()` throws a `ClientError` with code `1201`.  
 TypeScript  
 ```  
-try {  
-  await participant.unpin();  
-} catch (err: any) {  
-  if (err?.code === 1201) {  
-    // The local participant does not have permission to unpin participants.  
-    return;  
-  }  
-  throw err;  
-}  
+try {  await participant.unpin();} catch (err: any) {  if (err?.code === 1201) {    // The local participant does not have permission to unpin participants.    return;  }  throw err;}  
 ```
 3. Handle the result by listening for updates.  
-After the call succeeds:  
-   * The target participant's `isPinned` becomes `false`.  
-   * The participant is removed from `meeting.participants.pinned`.  
-   * The SDK emits an `unpinned` event.  
+After the call succeeds:
+
+  * The target participant's `isPinned` becomes `false`.
+  * The participant is removed from `meeting.participants.pinned`.
+  * The SDK emits an `unpinned` event.
+
 **Option A**: Listen on the participant object  
 TypeScript  
 ```  
-participant.on("unpinned", (updatedParticipant) => {  
-  // updatedParticipant.isPinned is false  
-  // Update your UI.  
-});  
-```  
+participant.on("unpinned", (updatedParticipant) => {  // updatedParticipant.isPinned is false  // Update your UI.});  
+```
+
 **Option B**: Listen on the `joined` map  
 TypeScript  
 ```  
-meeting.participants.joined.on("unpinned", (updatedParticipant) => {  
-  // updatedParticipant.isPinned is false  
-  // Update your UI.  
-});  
+meeting.participants.joined.on("unpinned", (updatedParticipant) => {  // updatedParticipant.isPinned is false  // Update your UI.});  
 ```
 4. On the target unpinned participant's side, `meeting.self.isPinned` becomes `false` and `meeting.self` emits `unpinned`:  
 TypeScript  
 ```  
-meeting.self.on("unpinned", (selfParticipant) => {  
-  // Update the local UI to indicate the participant is no longer pinned.  
-});  
+meeting.self.on("unpinned", (selfParticipant) => {  // Update the local UI to indicate the participant is no longer pinned.});  
 ```
 
 1. Check that the local participant has permission to unpin participants.
@@ -2211,16 +1103,7 @@ meeting.self.on("unpinned", (selfParticipant) => {
 Kotlin
 
 ```
-
-val canPinParticipant = meeting.localUser.permissions.host.canPinParticipant
-
-if (!canPinParticipant) {
-
-  // Disable the control in your UI.
-
-}
-
-
+val canPinParticipant = meeting.localUser.permissions.host.canPinParticipantif (!canPinParticipant) {  // Disable the control in your UI.}
 ```
 
 1. Call `unpin()` on the target participant. If the local participant does not have the required permission, `unpin()` returns a `HostError`.
@@ -2228,16 +1111,7 @@ if (!canPinParticipant) {
 Kotlin
 
 ```
-
-val error = participant.unpin()
-
-if (error != null) {
-
-  // Handle error - permission denied.
-
-}
-
-
+val error = participant.unpin()if (error != null) {  // Handle error - permission denied.}
 ```
 
 1. Handle the result by listening for updates. After the call succeeds, the target participant's `isPinned` becomes `false`.
@@ -2245,20 +1119,7 @@ if (error != null) {
 Kotlin
 
 ```
-
-meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {
-
-  override fun onParticipantUnpinned(participant: RtkRemoteParticipant) {
-
-    // participant.isPinned is false
-
-    // Update your UI.
-
-  }
-
-})
-
-
+meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {  override fun onParticipantUnpinned(participant: RtkRemoteParticipant) {    // participant.isPinned is false    // Update your UI.  }})
 ```
 
 1. Check that the local participant has permission to unpin participants.
@@ -2266,16 +1127,7 @@ meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {
 Swift
 
 ```
-
-let canPinParticipant = meeting.localUser.permissions.host.canPinParticipant
-
-if !canPinParticipant {
-
-  // Disable the control in your UI.
-
-}
-
-
+let canPinParticipant = meeting.localUser.permissions.host.canPinParticipantif !canPinParticipant {  // Disable the control in your UI.}
 ```
 
 1. Call `unpin()` on the target participant. If the local participant does not have the required permission, `unpin()` returns a `HostError`.
@@ -2283,14 +1135,7 @@ if !canPinParticipant {
 Swift
 
 ```
-
-if let error = participant.unpin() {
-
-  // Handle error - permission denied.
-
-}
-
-
+if let error = participant.unpin() {  // Handle error - permission denied.}
 ```
 
 1. Handle the result by listening for updates. After the call succeeds, the target participant's `isPinned` becomes `false`.
@@ -2298,25 +1143,8 @@ if let error = participant.unpin() {
 Swift
 
 ```
-
-extension MeetingViewModel: RtkParticipantsEventListener {
-
-  func onParticipantUnpinned(participant: RtkRemoteParticipant) {
-
-    // participant.isPinned is false
-
-    // Update your UI.
-
-  }
-
-}
-
-
-// Register the listener
-
-meeting.addParticipantsEventListener(participantsEventListener: self)
-
-
+extension MeetingViewModel: RtkParticipantsEventListener {  func onParticipantUnpinned(participant: RtkRemoteParticipant) {    // participant.isPinned is false    // Update your UI.  }}
+// Register the listenermeeting.addParticipantsEventListener(participantsEventListener: self)
 ```
 
 1. Check that the local participant has permission to unpin participants.
@@ -2324,16 +1152,7 @@ meeting.addParticipantsEventListener(participantsEventListener: self)
 Dart
 
 ```
-
-final canPinParticipant = meeting.localUser.permissions.host.canPinParticipant;
-
-if (!canPinParticipant) {
-
-  // Disable the control in your UI.
-
-}
-
-
+final canPinParticipant = meeting.localUser.permissions.host.canPinParticipant;if (!canPinParticipant) {  // Disable the control in your UI.}
 ```
 
 1. Call `unpin()` on the target participant.
@@ -2341,10 +1160,7 @@ if (!canPinParticipant) {
 Dart
 
 ```
-
 participant.unpin();
-
-
 ```
 
 1. Handle the result by listening for updates. After the call succeeds, the target participant's `isPinned` becomes `false`.
@@ -2352,66 +1168,26 @@ participant.unpin();
 Dart
 
 ```
-
-class ParticipantsEventsListener extends RtkParticipantsEventListener {
-
-  @override
-
-  void onParticipantUnpinned(RtkRemoteParticipant participant) {
-
-    // participant.isPinned is false
-
-    // Update your UI.
-
-  }
-
-}
-
-
-// Register the listener
-
-meeting.addParticipantsEventListener(ParticipantsEventsListener());
-
-
+class ParticipantsEventsListener extends RtkParticipantsEventListener {  @override  void onParticipantUnpinned(RtkRemoteParticipant participant) {    // participant.isPinned is false    // Update your UI.  }}
+// Register the listenermeeting.addParticipantsEventListener(ParticipantsEventsListener());
 ```
 
 1. Check that the local participant has permission to unpin participants.
 
 ```
-
-const canPinParticipant = meeting.self.permissions.pinParticipant;
-
-if (!canPinParticipant) {
-
-  // Disable the control in your UI.
-
-}
-
-
+const canPinParticipant = meeting.self.permissions.pinParticipant;if (!canPinParticipant) {  // Disable the control in your UI.}
 ```
 
 1. Call `unpin()` on the target participant.
 
 ```
-
 participant.unpin();
-
-
 ```
 
 1. Handle the result by listening for updates. After the call succeeds, the target participant's `isPinned` becomes `false`.
 
 ```
-
-meeting.participants.pinned.on('unpinned', (participant) => {
-
-  // participant.isPinned is false
-
-  // Update your UI.
-
-});
-
-
+meeting.participants.pinned.on('unpinned', (participant) => {  // participant.isPinned is false  // Update your UI.});
 ```
 
 ## Remove participants
@@ -2425,133 +1201,85 @@ To remove a specific participant from the session:
 1. Check that the local participant has permission to remove participants.  
 TypeScript  
 ```  
-const canKickParticipant = meeting.self.permissions.kickParticipant === true;  
-if (!canKickParticipant) {  
-  // Disable the control in your UI.  
-}  
+const canKickParticipant = meeting.self.permissions.kickParticipant === true;if (!canKickParticipant) {  // Disable the control in your UI.}  
 ```
 2. Call `kick()` on the target participant.  
 If the local participant does not have the required permission, `kick()` throws a `ClientError` with code `1201`.  
 TypeScript  
 ```  
-try {  
-  await participant.kick();  
-} catch (err: any) {  
-  if (err?.code === 1201) {  
-    // The local participant does not have permission to remove participants.  
-    return;  
-  }  
-  throw err;  
-}  
+try {  await participant.kick();} catch (err: any) {  if (err?.code === 1201) {    // The local participant does not have permission to remove participants.    return;  }  throw err;}  
 ```
 3. Handle the result by listening for updates.  
-After the call succeeds:  
-   * The kicked participant is removed from `meeting.participants.joined`.  
-   * The participant is removed from other participant maps they were in (for example, `meeting.participants.pinned`).  
-   * The SDK emits `participantLeft` on `meeting.participants.joined`.  
+After the call succeeds:
+
+  * The kicked participant is removed from `meeting.participants.joined`.
+  * The participant is removed from other participant maps they were in (for example, `meeting.participants.pinned`).
+  * The SDK emits `participantLeft` on `meeting.participants.joined`.  
 TypeScript  
 ```  
-meeting.participants.joined.on("participantLeft", (participant) => {  
-  // Remove the participant tile from the UI.  
-});  
+meeting.participants.joined.on("participantLeft", (participant) => {  // Remove the participant tile from the UI.});  
 ```  
 Other participants in the session also observe the participant leaving through `participantLeft`.
 4. On the removed participant's side, the session disconnects and `meeting.self` emits `roomLeft` event with state set to `kicked`.  
 TypeScript  
 ```  
-meeting.self.on("roomLeft", ({ state }) => {  
-  if (state === "kicked") {  
-    // Show a message and navigate the user out of the meeting UI.  
-  }  
-});  
+meeting.self.on("roomLeft", ({ state }) => {  if (state === "kicked") {    // Show a message and navigate the user out of the meeting UI.  }});  
 ```
 
 1. Check that the local participant has permission to remove participants.  
 TypeScript  
 ```  
-const canKickParticipant = meeting.self.permissions.kickParticipant === true;  
-if (!canKickParticipant) {  
-  // Disable the control in your UI.  
-}  
+const canKickParticipant = meeting.self.permissions.kickParticipant === true;if (!canKickParticipant) {  // Disable the control in your UI.}  
 ```
 2. Call `kick()` on the target participant.  
 If the local participant does not have the required permission, `kick()` throws a `ClientError` with code `1201`.  
 TypeScript  
 ```  
-try {  
-  await participant.kick();  
-} catch (err: any) {  
-  if (err?.code === 1201) {  
-    // The local participant does not have permission to remove participants.  
-    return;  
-  }  
-  throw err;  
-}  
+try {  await participant.kick();} catch (err: any) {  if (err?.code === 1201) {    // The local participant does not have permission to remove participants.    return;  }  throw err;}  
 ```
 3. Handle the result by listening for updates.  
-After the call succeeds:  
-   * The kicked participant is removed from `meeting.participants.joined`.  
-   * The participant is removed from other participant maps they were in (for example, `meeting.participants.pinned`).  
-   * The SDK emits `participantLeft` on `meeting.participants.joined`.  
+After the call succeeds:
+
+  * The kicked participant is removed from `meeting.participants.joined`.
+  * The participant is removed from other participant maps they were in (for example, `meeting.participants.pinned`).
+  * The SDK emits `participantLeft` on `meeting.participants.joined`.  
 TypeScript  
 ```  
-meeting.participants.joined.on("participantLeft", (participant) => {  
-  // Remove the participant tile from the UI.  
-});  
+meeting.participants.joined.on("participantLeft", (participant) => {  // Remove the participant tile from the UI.});  
 ```  
 Other participants in the session also observe the participant leaving through `participantLeft`.
 4. On the removed participant's side, the session disconnects and `meeting.self` emits `roomLeft` event with state set to `kicked`.  
 TypeScript  
 ```  
-meeting.self.on("roomLeft", ({ state }) => {  
-  if (state === "kicked") {  
-    // Show a message and navigate the user out of the meeting UI.  
-  }  
-});  
+meeting.self.on("roomLeft", ({ state }) => {  if (state === "kicked") {    // Show a message and navigate the user out of the meeting UI.  }});  
 ```
 
 1. Check that the local participant has permission to remove participants.  
 TypeScript  
 ```  
-const canKickParticipant = meeting.self.permissions.kickParticipant === true;  
-if (!canKickParticipant) {  
-  // Disable the control in your UI.  
-}  
+const canKickParticipant = meeting.self.permissions.kickParticipant === true;if (!canKickParticipant) {  // Disable the control in your UI.}  
 ```
 2. Call `kick()` on the target participant.  
 If the local participant does not have the required permission, `kick()` throws a `ClientError` with code `1201`.  
 TypeScript  
 ```  
-try {  
-  await participant.kick();  
-} catch (err: any) {  
-  if (err?.code === 1201) {  
-    // The local participant does not have permission to remove participants.  
-    return;  
-  }  
-  throw err;  
-}  
+try {  await participant.kick();} catch (err: any) {  if (err?.code === 1201) {    // The local participant does not have permission to remove participants.    return;  }  throw err;}  
 ```
 3. Handle the result by listening for updates.  
-After the call succeeds:  
-   * The kicked participant is removed from `meeting.participants.joined`.  
-   * The participant is removed from other participant maps they were in (for example, `meeting.participants.pinned`).  
-   * The SDK emits `participantLeft` on `meeting.participants.joined`.  
+After the call succeeds:
+
+  * The kicked participant is removed from `meeting.participants.joined`.
+  * The participant is removed from other participant maps they were in (for example, `meeting.participants.pinned`).
+  * The SDK emits `participantLeft` on `meeting.participants.joined`.  
 TypeScript  
 ```  
-meeting.participants.joined.on("participantLeft", (participant) => {  
-  // Remove the participant tile from the UI.  
-});  
+meeting.participants.joined.on("participantLeft", (participant) => {  // Remove the participant tile from the UI.});  
 ```  
 Other participants in the session also observe the participant leaving through `participantLeft`.
 4. On the removed participant's side, the session disconnects and `meeting.self` emits `roomLeft` event with state set to `kicked`.  
 TypeScript  
 ```  
-meeting.self.on("roomLeft", ({ state }) => {  
-  if (state === "kicked") {  
-    // Show a message and navigate the user out of the meeting UI.  
-  }  
-});  
+meeting.self.on("roomLeft", ({ state }) => {  if (state === "kicked") {    // Show a message and navigate the user out of the meeting UI.  }});  
 ```
 
 1. Check that the local participant has permission to remove participants.
@@ -2559,16 +1287,7 @@ meeting.self.on("roomLeft", ({ state }) => {
 Kotlin
 
 ```
-
-val canKickParticipant = meeting.localUser.permissions.host.canKickParticipant
-
-if (!canKickParticipant) {
-
-  // Disable the control in your UI.
-
-}
-
-
+val canKickParticipant = meeting.localUser.permissions.host.canKickParticipantif (!canKickParticipant) {  // Disable the control in your UI.}
 ```
 
 1. Call `kick()` on the target participant. If the local participant does not have the required permission, `kick()` returns a `HostError`.
@@ -2576,16 +1295,7 @@ if (!canKickParticipant) {
 Kotlin
 
 ```
-
-val error = participant.kick()
-
-if (error != null) {
-
-  // Handle error - permission denied.
-
-}
-
-
+val error = participant.kick()if (error != null) {  // Handle error - permission denied.}
 ```
 
 1. Handle the result by listening for updates. After the call succeeds, the kicked participant is removed from `meeting.participants.joined`.
@@ -2593,18 +1303,7 @@ if (error != null) {
 Kotlin
 
 ```
-
-meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {
-
-  override fun onParticipantLeave(participant: RtkRemoteParticipant) {
-
-    // Remove the participant tile from the UI.
-
-  }
-
-})
-
-
+meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {  override fun onParticipantLeave(participant: RtkRemoteParticipant) {    // Remove the participant tile from the UI.  }})
 ```
 
 1. Check that the local participant has permission to remove participants.
@@ -2612,16 +1311,7 @@ meeting.addParticipantsEventListener(object : RtkParticipantsEventListener {
 Swift
 
 ```
-
-let canKickParticipant = meeting.localUser.permissions.host.canKickParticipant
-
-if !canKickParticipant {
-
-  // Disable the control in your UI.
-
-}
-
-
+let canKickParticipant = meeting.localUser.permissions.host.canKickParticipantif !canKickParticipant {  // Disable the control in your UI.}
 ```
 
 1. Call `kick()` on the target participant. If the local participant does not have the required permission, `kick()` returns a `HostError`.
@@ -2629,14 +1319,7 @@ if !canKickParticipant {
 Swift
 
 ```
-
-if let error = participant.kick() {
-
-  // Handle error - permission denied.
-
-}
-
-
+if let error = participant.kick() {  // Handle error - permission denied.}
 ```
 
 1. Handle the result by listening for updates. After the call succeeds, the kicked participant is removed from `meeting.participants.joined`.
@@ -2644,23 +1327,8 @@ if let error = participant.kick() {
 Swift
 
 ```
-
-extension MeetingViewModel: RtkParticipantsEventListener {
-
-  func onParticipantLeave(participant: RtkRemoteParticipant) {
-
-    // Remove the participant tile from the UI.
-
-  }
-
-}
-
-
-// Register the listener
-
-meeting.addParticipantsEventListener(participantsEventListener: self)
-
-
+extension MeetingViewModel: RtkParticipantsEventListener {  func onParticipantLeave(participant: RtkRemoteParticipant) {    // Remove the participant tile from the UI.  }}
+// Register the listenermeeting.addParticipantsEventListener(participantsEventListener: self)
 ```
 
 1. Check that the local participant has permission to remove participants.
@@ -2668,16 +1336,7 @@ meeting.addParticipantsEventListener(participantsEventListener: self)
 Dart
 
 ```
-
-final canKickParticipant = meeting.localUser.permissions.host.canKickParticipant;
-
-if (!canKickParticipant) {
-
-  // Disable the control in your UI.
-
-}
-
-
+final canKickParticipant = meeting.localUser.permissions.host.canKickParticipant;if (!canKickParticipant) {  // Disable the control in your UI.}
 ```
 
 1. Call `kick()` on the target participant.
@@ -2685,26 +1344,7 @@ if (!canKickParticipant) {
 Dart
 
 ```
-
-participant.kick(
-
-  onResult: (error) {
-
-    if (error != null) {
-
-      // Handle error - permission denied or other issue.
-
-      return;
-
-    }
-
-    // Participant removed successfully.
-
-  },
-
-);
-
-
+participant.kick(  onResult: (error) {    if (error != null) {      // Handle error - permission denied or other issue.      return;    }    // Participant removed successfully.  },);
 ```
 
 1. Handle the result by listening for updates. After the call succeeds, the kicked participant is removed from `meeting.participants.joined`.
@@ -2712,72 +1352,26 @@ participant.kick(
 Dart
 
 ```
-
-class ParticipantsEventsListener extends RtkParticipantsEventListener {
-
-  @override
-
-  void onParticipantLeave(RtkRemoteParticipant participant) {
-
-    // Remove the participant tile from the UI.
-
-  }
-
-}
-
-
-// Register the listener
-
-meeting.addParticipantsEventListener(ParticipantsEventsListener());
-
-
+class ParticipantsEventsListener extends RtkParticipantsEventListener {  @override  void onParticipantLeave(RtkRemoteParticipant participant) {    // Remove the participant tile from the UI.  }}
+// Register the listenermeeting.addParticipantsEventListener(ParticipantsEventsListener());
 ```
 
 1. Check that the local participant has permission to remove participants.
 
 ```
-
-const canKickParticipant = meeting.self.permissions.kickParticipant;
-
-if (!canKickParticipant) {
-
-  // Disable the control in your UI.
-
-}
-
-
+const canKickParticipant = meeting.self.permissions.kickParticipant;if (!canKickParticipant) {  // Disable the control in your UI.}
 ```
 
 1. Call `kick()` on the target participant.
 
 ```
-
-participant
-
-  .kick()
-
-  .catch((err) => {
-
-    // Handle error - permission denied or other issue.
-
-    console.log(err);
-
-  });
-
-
+participant  .kick()  .catch((err) => {    // Handle error - permission denied or other issue.    console.log(err);  });
 ```
 
 1. Handle the result by listening for updates. After the call succeeds, the kicked participant is removed from `meeting.participants.joined`.
 
 ```
-
-meeting.participants.joined.on('participantLeft', (participant) => {
-
-  // Remove the participant tile from the UI.
-
-});
-
-
+meeting.participants.joined.on('participantLeft', (participant) => {  // Remove the participant tile from the UI.});
 ```
 
 ### Remove all participants
@@ -2791,100 +1385,55 @@ To remove all participants from the session:
 1. Check that the local participant has permission to remove participants.  
 TypeScript  
 ```  
-const canKickParticipant = meeting.self.permissions.kickParticipant === true;  
-if (!canKickParticipant) {  
-  // Disable the control in your UI.  
-}  
+const canKickParticipant = meeting.self.permissions.kickParticipant === true;if (!canKickParticipant) {  // Disable the control in your UI.}  
 ```
 2. Call `kickAll()`.  
 If the local participant does not have the required permission, `kickAll()` throws a `ClientError` with code `1201`.  
 TypeScript  
 ```  
-try {  
-  await meeting.participants.kickAll();  
-} catch (err: any) {  
-  if (err?.code === 1201) {  
-    // The local participant does not have permission to remove participants.  
-    return;  
-  }  
-  throw err;  
-}  
+try {  await meeting.participants.kickAll();} catch (err: any) {  if (err?.code === 1201) {    // The local participant does not have permission to remove participants.    return;  }  throw err;}  
 ```
 3. Handle the result by listening for updates.  
 After the call succeeds, all participants exit the session. On each client, `meeting.self` emits `roomLeft` with state set to `ended`.  
 TypeScript  
 ```  
-meeting.self.on("roomLeft", ({ state }) => {  
-  if (state === "ended") {  
-    // Show a message and navigate the user out of the meeting UI.  
-  }  
-});  
+meeting.self.on("roomLeft", ({ state }) => {  if (state === "ended") {    // Show a message and navigate the user out of the meeting UI.  }});  
 ```
 
 1. Check that the local participant has permission to remove participants.  
 TypeScript  
 ```  
-const canKickParticipant = meeting.self.permissions.kickParticipant === true;  
-if (!canKickParticipant) {  
-  // Disable the control in your UI.  
-}  
+const canKickParticipant = meeting.self.permissions.kickParticipant === true;if (!canKickParticipant) {  // Disable the control in your UI.}  
 ```
 2. Call `kickAll()`.  
 If the local participant does not have the required permission, `kickAll()` throws a `ClientError` with code `1201`.  
 TypeScript  
 ```  
-try {  
-  await meeting.participants.kickAll();  
-} catch (err: any) {  
-  if (err?.code === 1201) {  
-    // The local participant does not have permission to remove participants.  
-    return;  
-  }  
-  throw err;  
-}  
+try {  await meeting.participants.kickAll();} catch (err: any) {  if (err?.code === 1201) {    // The local participant does not have permission to remove participants.    return;  }  throw err;}  
 ```
 3. Handle the result by listening for updates.  
 After the call succeeds, all participants exit the session. On each client, `meeting.self` emits `roomLeft` with state set to `ended`.  
 TypeScript  
 ```  
-meeting.self.on("roomLeft", ({ state }) => {  
-  if (state === "ended") {  
-    // Show a message and navigate the user out of the meeting UI.  
-  }  
-});  
+meeting.self.on("roomLeft", ({ state }) => {  if (state === "ended") {    // Show a message and navigate the user out of the meeting UI.  }});  
 ```
 
 1. Check that the local participant has permission to remove participants.  
 TypeScript  
 ```  
-const canKickParticipant = meeting.self.permissions.kickParticipant === true;  
-if (!canKickParticipant) {  
-  // Disable the control in your UI.  
-}  
+const canKickParticipant = meeting.self.permissions.kickParticipant === true;if (!canKickParticipant) {  // Disable the control in your UI.}  
 ```
 2. Call `kickAll()`.  
 If the local participant does not have the required permission, `kickAll()` throws a `ClientError` with code `1201`.  
 TypeScript  
 ```  
-try {  
-  await meeting.participants.kickAll();  
-} catch (err: any) {  
-  if (err?.code === 1201) {  
-    // The local participant does not have permission to remove participants.  
-    return;  
-  }  
-  throw err;  
-}  
+try {  await meeting.participants.kickAll();} catch (err: any) {  if (err?.code === 1201) {    // The local participant does not have permission to remove participants.    return;  }  throw err;}  
 ```
 3. Handle the result by listening for updates.  
 After the call succeeds, all participants exit the session. On each client, `meeting.self` emits `roomLeft` with state set to `ended`.  
 TypeScript  
 ```  
-meeting.self.on("roomLeft", ({ state }) => {  
-  if (state === "ended") {  
-    // Show a message and navigate the user out of the meeting UI.  
-  }  
-});  
+meeting.self.on("roomLeft", ({ state }) => {  if (state === "ended") {    // Show a message and navigate the user out of the meeting UI.  }});  
 ```
 
 1. Check that the local participant has permission to remove participants.
@@ -2892,16 +1441,7 @@ meeting.self.on("roomLeft", ({ state }) => {
 Kotlin
 
 ```
-
-val canKickParticipant = meeting.localUser.permissions.host.canKickParticipant
-
-if (!canKickParticipant) {
-
-  // Disable the control in your UI.
-
-}
-
-
+val canKickParticipant = meeting.localUser.permissions.host.canKickParticipantif (!canKickParticipant) {  // Disable the control in your UI.}
 ```
 
 1. Call `kickAll()` on the participants object. If the local participant does not have the required permission, `kickAll()` returns a `HostError`.
@@ -2909,16 +1449,7 @@ if (!canKickParticipant) {
 Kotlin
 
 ```
-
-val error = meeting.participants.kickAll()
-
-if (error != null) {
-
-  // Handle error - permission denied.
-
-}
-
-
+val error = meeting.participants.kickAll()if (error != null) {  // Handle error - permission denied.}
 ```
 
 1. Handle the result by listening for updates. After the call succeeds, all participants exit the session.
@@ -2926,18 +1457,7 @@ if (error != null) {
 Kotlin
 
 ```
-
-meeting.addMeetingRoomEventListener(object : RtkMeetingRoomEventListener {
-
-  override fun onMeetingEnded() {
-
-    // Show a message and navigate the user out of the meeting UI.
-
-  }
-
-})
-
-
+meeting.addMeetingRoomEventListener(object : RtkMeetingRoomEventListener {  override fun onMeetingEnded() {    // Show a message and navigate the user out of the meeting UI.  }})
 ```
 
 1. Check that the local participant has permission to remove participants.
@@ -2945,16 +1465,7 @@ meeting.addMeetingRoomEventListener(object : RtkMeetingRoomEventListener {
 Swift
 
 ```
-
-let canKickParticipant = meeting.localUser.permissions.host.canKickParticipant
-
-if !canKickParticipant {
-
-  // Disable the control in your UI.
-
-}
-
-
+let canKickParticipant = meeting.localUser.permissions.host.canKickParticipantif !canKickParticipant {  // Disable the control in your UI.}
 ```
 
 1. Call `kickAll()` on the participants object. If the local participant does not have the required permission, `kickAll()` returns a `HostError`.
@@ -2962,14 +1473,7 @@ if !canKickParticipant {
 Swift
 
 ```
-
-if let error = meeting.participants.kickAll() {
-
-  // Handle error - permission denied.
-
-}
-
-
+if let error = meeting.participants.kickAll() {  // Handle error - permission denied.}
 ```
 
 1. Handle the result by listening for updates. After the call succeeds, all participants exit the session.
@@ -2977,23 +1481,8 @@ if let error = meeting.participants.kickAll() {
 Swift
 
 ```
-
-extension MeetingViewModel: RtkMeetingRoomEventListener {
-
-  func onMeetingEnded() {
-
-    // Show a message and navigate the user out of the meeting UI.
-
-  }
-
-}
-
-
-// Register the listener
-
-meeting.addMeetingRoomEventListener(meetingRoomEventListener: self)
-
-
+extension MeetingViewModel: RtkMeetingRoomEventListener {  func onMeetingEnded() {    // Show a message and navigate the user out of the meeting UI.  }}
+// Register the listenermeeting.addMeetingRoomEventListener(meetingRoomEventListener: self)
 ```
 
 1. Check that the local participant has permission to remove participants.
@@ -3001,16 +1490,7 @@ meeting.addMeetingRoomEventListener(meetingRoomEventListener: self)
 Dart
 
 ```
-
-final canKickParticipant = meeting.localUser.permissions.host.canKickParticipant;
-
-if (!canKickParticipant) {
-
-  // Disable the control in your UI.
-
-}
-
-
+final canKickParticipant = meeting.localUser.permissions.host.canKickParticipant;if (!canKickParticipant) {  // Disable the control in your UI.}
 ```
 
 1. Call `kickAll()` on the participants object.
@@ -3018,26 +1498,7 @@ if (!canKickParticipant) {
 Dart
 
 ```
-
-meeting.participants.kickAll(
-
-  onResult: (error) {
-
-    if (error != null) {
-
-      // Handle error - permission denied or other issue.
-
-      return;
-
-    }
-
-    // All participants removed successfully.
-
-  },
-
-);
-
-
+meeting.participants.kickAll(  onResult: (error) {    if (error != null) {      // Handle error - permission denied or other issue.      return;    }    // All participants removed successfully.  },);
 ```
 
 1. Handle the result by listening for updates. After the call succeeds, all participants exit the session.
@@ -3045,76 +1506,26 @@ meeting.participants.kickAll(
 Dart
 
 ```
-
-class MeetingRoomEventsListener extends RtkMeetingRoomEventListener {
-
-  @override
-
-  void onMeetingEnded() {
-
-    // Show a message and navigate the user out of the meeting UI.
-
-  }
-
-}
-
-
-// Register the listener
-
-meeting.addMeetingRoomEventListener(MeetingRoomEventsListener());
-
-
+class MeetingRoomEventsListener extends RtkMeetingRoomEventListener {  @override  void onMeetingEnded() {    // Show a message and navigate the user out of the meeting UI.  }}
+// Register the listenermeeting.addMeetingRoomEventListener(MeetingRoomEventsListener());
 ```
 
 1. Check that the local participant has permission to remove participants.
 
 ```
-
-const canKickParticipant = meeting.self.permissions.kickParticipant;
-
-if (!canKickParticipant) {
-
-  // Disable the control in your UI.
-
-}
-
-
+const canKickParticipant = meeting.self.permissions.kickParticipant;if (!canKickParticipant) {  // Disable the control in your UI.}
 ```
 
 1. Call `kickAll()` on the participants object.
 
 ```
-
-meeting.participants
-
-  .kickAll()
-
-  .catch((err) => {
-
-    // Handle error - permission denied or other issue.
-
-    console.log(err);
-
-  });
-
-
+meeting.participants  .kickAll()  .catch((err) => {    // Handle error - permission denied or other issue.    console.log(err);  });
 ```
 
 1. Handle the result by listening for updates. After the call succeeds, all participants exit the session.
 
 ```
-
-meeting.self.on('roomLeft', ({ state }) => {
-
-  if (state === 'kicked') {
-
-    // Show a message and navigate the user out of the meeting UI.
-
-  }
-
-});
-
-
+meeting.self.on('roomLeft', ({ state }) => {  if (state === 'kicked') {    // Show a message and navigate the user out of the meeting UI.  }});
 ```
 
 ## Next steps

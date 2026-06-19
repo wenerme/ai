@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -34,34 +34,7 @@ In this example, if you have a negotiated price of $1 per million input tokens a
 Request with custom cost
 
 ```
-
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \
-
-  --header "Authorization: Bearer $TOKEN" \
-
-  --header 'Content-Type: application/json' \
-
-  --header 'cf-aig-custom-cost: {"per_token_in":0.000001,"per_token_out":0.000002}' \
-
-  --data ' {
-
-        "model": "gpt-4o-mini",
-
-        "messages": [
-
-          {
-
-            "role": "user",
-
-            "content": "When is Cloudflare’s Birthday Week?"
-
-          }
-
-        ]
-
-      }'
-
-
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \  --header "Authorization: Bearer $TOKEN" \  --header 'Content-Type: application/json' \  --header 'cf-aig-custom-cost: {"per_token_in":0.000001,"per_token_out":0.000002}' \  --data ' {        "model": "gpt-4o-mini",        "messages": [          {            "role": "user",            "content": "When is Cloudflare’s Birthday Week?"          }        ]      }'
 ```
 
 Note

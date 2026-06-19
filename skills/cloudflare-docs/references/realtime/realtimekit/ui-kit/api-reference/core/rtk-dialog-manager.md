@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -36,37 +36,18 @@ A component which handles all dialog elements in a component such as:
 ### Basic Usage
 
 ```
-
 <rtk-dialog-manager></rtk-dialog-manager>
-
-
 ```
 
 ### With Properties
 
 ```
-
-<rtk-dialog-manager
-
- size="md">
-
-</rtk-dialog-manager>
-
-
+<rtk-dialog-manager size="md"></rtk-dialog-manager>
 ```
 
 ```
-
-<script>
-
-  const el = document.querySelector("rtk-dialog-manager");
-
-
-  el.meeting= meeting
-
-</script>
-
-
+<script>  const el = document.querySelector("rtk-dialog-manager");
+  el.meeting= meeting</script>
 ```
 
 ```json

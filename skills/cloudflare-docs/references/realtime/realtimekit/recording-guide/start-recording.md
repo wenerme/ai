@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -14,13 +14,13 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 This topic explains how to use RealtimeKit to implement composite recording.
 
-Before getting started with this guide, we recommend that you read[Get Started with RealtimeKit](https://developers.cloudflare.com/realtime/realtimekit/quickstart/) to familiarize yourself with RealtimeKit.
+Before getting started with this guide, we recommend that you read [Get Started with RealtimeKit](https://developers.cloudflare.com/realtime/realtimekit/quickstart/) to familiarize yourself with RealtimeKit.
 
 To familiarize yourself with the RealtimeKit REST APIs, we recommend exploring the [RealtimeKit REST API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/).
 
 There are three ways to start recording a RealtimeKit meeting:
 
-* Using the `record_on_start` flag when[creating a meeting](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/create/)
+* Using the `record_on_start` flag when [creating a meeting](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/create/)
 * Using the [Start Recording API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/start%5Frecordings/)
 * Client side start recording methods on the SDK
 
@@ -40,7 +40,7 @@ When [creating a meeting](https://developers.cloudflare.com/api/resources/realti
 
 Specify storage config
 
-If you're using this method to start the recording, you must specify the`storage-config` using the Developer Portal.
+If you're using this method to start the recording, you must specify the `storage-config` using the Developer Portal.
 
 ### Request
 
@@ -49,52 +49,18 @@ Specify the `record_on_start` parameter. If this flag is true, then a recording 
 Terminal window
 
 ```
-
-curl --location 'https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/kit/<app_id>/meetings' \
-
-  --header 'Content-Type: application/json' \
-
-  --header 'Authorization: Bearer <api_token>' \
-
-  --data '{
-
-  "title": "Lorem Ipsum",
-
-  "record_on_start": true
-
-}'
-
-
+curl --location 'https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/kit/<app_id>/meetings' \  --header 'Content-Type: application/json' \  --header 'Authorization: Bearer <api_token>' \  --data '{  "title": "Lorem Ipsum",  "record_on_start": true}'
 ```
 
 ### Response
 
 ```
-
-{
-
-  "success": true,
-
-  "data": {
-
-    "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
-
-    "record_on_start": true,
-
-    "created_at": "2025-08-24T14:15:22Z",
-
-    "updated_at": "2025-08-24T14:15:22Z"
-
-  }
-
-}
-
-
+{  "success": true,  "data": {    "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",    "record_on_start": true,    "created_at": "2025-08-24T14:15:22Z",    "updated_at": "2025-08-24T14:15:22Z"  }}
 ```
 
 ## Using the Start Recording API
 
-You can also start a recording using the[Start Recording API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/start%5Frecordings/).
+You can also start a recording using the [Start Recording API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/start%5Frecordings/).
 
 Specify the `meeting ID` of the meeting that you want to record.
 
@@ -105,71 +71,13 @@ Use the [List meetings API](https://developers.cloudflare.com/api/resources/real
 Calling Start Recording API
 
 ```
-
-curl --location 'https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/kit/<app_id>/recordings' \
-
-  --header 'Content-Type: application/json' \
-
-  --header 'Authorization: Bearer <api_token>' \
-
-  --data '{
-
-  "meeting_id": "97440c6a-140b-40a9-9499-b23fd7a3868a"
-
-}'
-
-
+curl --location 'https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/kit/<app_id>/recordings' \  --header 'Content-Type: application/json' \  --header 'Authorization: Bearer <api_token>' \  --data '{  "meeting_id": "97440c6a-140b-40a9-9499-b23fd7a3868a"}'
 ```
 
 ### Response
 
 ```
-
-{
-
-  "success": true,
-
-  "data": {
-
-    "id": "97440c6a-140b-40a9-9499-b23fd7a3868a",
-
-    "download_url": "http://example.com",
-
-    "download_url_expiry": "2025-08-24T14:15:22Z",
-
-    "download_audio_url": "http://example1.com",
-
-    "file_size": 0,
-
-    "session_id": "1ffd059c-17ea-40a8-8aef-70fd0307db82",
-
-    "output_file_name": "string",
-
-    "status": "INVOKED",
-
-    "invoked_time": "2025-08-24T14:15:22Z",
-
-    "started_time": "2025-08-24T14:15:22Z",
-
-    "stopped_time": "2025-08-24T14:15:22Z",
-
-    "storage_config": {
-
-      "type": "cloudflare",
-
-      "secret_key": "string",
-
-      "bucket": "string",
-
-      "path": "string"
-
-    }
-
-  }
-
-}
-
-
+{  "success": true,  "data": {    "id": "97440c6a-140b-40a9-9499-b23fd7a3868a",    "download_url": "http://example.com",    "download_url_expiry": "2025-08-24T14:15:22Z",    "download_audio_url": "http://example1.com",    "file_size": 0,    "session_id": "1ffd059c-17ea-40a8-8aef-70fd0307db82",    "output_file_name": "string",    "status": "INVOKED",    "invoked_time": "2025-08-24T14:15:22Z",    "started_time": "2025-08-24T14:15:22Z",    "stopped_time": "2025-08-24T14:15:22Z",    "storage_config": {      "type": "cloudflare",      "secret_key": "string",      "bucket": "string",      "path": "string"    }  }}
 ```
 
 ```json

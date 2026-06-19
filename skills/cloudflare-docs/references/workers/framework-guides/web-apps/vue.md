@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -39,13 +39,13 @@ How is this project set up?
 Below is a simplified file tree of the project.
 
 * Directorymy-vue-app  
-   * Directorysrc/  
-         * App.vue  
-   * Directoryserver/  
-         * index.ts  
-   * index.html  
-   * vite.config.ts  
-   * wrangler.jsonc
+  * Directorysrc/  
+    * App.vue
+  * Directoryserver/  
+    * index.ts
+  * index.html
+  * vite.config.ts
+  * wrangler.jsonc
 
 `wrangler.jsonc` is your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). In this file:
 
@@ -77,7 +77,7 @@ pnpm run dev
 
 What's happening in local development?
 
-This project uses Vite for local development and build, and thus comes with all of Vite's features, including hot module replacement (HMR). In addition,`vite.config.ts` is set up to use the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/). This runs your application in the Cloudflare Workers runtime, just like in production, and enables access to local emulations of bindings.
+This project uses Vite for local development and build, and thus comes with all of Vite's features, including hot module replacement (HMR). In addition, `vite.config.ts` is set up to use the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/). This runs your application in the Cloudflare Workers runtime, just like in production, and enables access to local emulations of bindings.
 
 ## 3\. Deploy your project
 
@@ -115,7 +115,7 @@ Your new project also contains a Worker at `./server/index.ts`, which you can us
 
 With bindings, your application can be fully integrated with the Cloudflare Developer Platform, giving you access to compute, storage, AI and more.
 
-[ Bindings ](https://developers.cloudflare.com/workers/runtime-apis/bindings/) Access to compute, storage, AI and more. 
+[ Bindings ](https://developers.cloudflare.com/workers/runtime-apis/bindings/) Access to compute, storage, AI and more.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/vue/#page","headline":"Vue · Cloudflare Workers docs","description":"Create a Vue application and deploy it to Cloudflare Workers with Workers Assets.","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/vue/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["spa"]}

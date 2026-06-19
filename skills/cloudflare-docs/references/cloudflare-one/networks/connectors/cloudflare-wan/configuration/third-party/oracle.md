@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,24 +21,9 @@ You need a pre-shared key to establish the IPsec tunnel. You can use the followi
 JavaScript
 
 ```
-
-    const a = new Uint8Array(48);
-
-    crypto.getRandomValues(a);
-
-    let base64String = btoa(String.fromCharCode.apply(null, a));
-
-
-    base64String = base64String.replace(/\+/g, '')
-
-                   .replace(/\//g, '')
-
-                   .replace(/=/g, '');
-
-
+    const a = new Uint8Array(48);    crypto.getRandomValues(a);    let base64String = btoa(String.fromCharCode.apply(null, a));
+    base64String = base64String.replace(/\+/g, '')                   .replace(/\//g, '')                   .replace(/=/g, '');
     console.log(base64String.substring(0, 32));
-
-
 ```
 
 Warning
@@ -54,9 +39,9 @@ You can try this code in the [Workers playground ↗](https://workers.cloudflare
 1. Go to **Networking** \> **Customer connectivity**, and select **Customer-premises equipment**.
 2. Select **Create CPE**.
 3. Select the following settings (you can leave settings not mentioned here with their default values):  
-   * **Name**: Enter a name.  
-   * **IP Address**: Enter your Cloudflare anycast IP address.  
-   * **CPE vendor information**: Select **Other**.
+  * **Name**: Enter a name.
+  * **IP Address**: Enter your Cloudflare anycast IP address.
+  * **CPE vendor information**: Select **Other**.
 4. Select **Create CPE**.
 
 ### 2\. Create Oracle Cloud dynamic routing gateways
@@ -64,7 +49,7 @@ You can try this code in the [Workers playground ↗](https://workers.cloudflare
 1. Go to **Networking** \> **Customer connectivity**, and select **Dynamic routing gateways**.
 2. Select **Create Dynamic routing gateways**.
 3. Select the following settings (you can leave settings not mentioned here with their default values):  
-   * **Name**: Enter a name.
+  * **Name**: Enter a name.
 4. Select **Create Dynamic routing gateways**.
 
 ### 3\. Create an IPsec connection
@@ -72,33 +57,33 @@ You can try this code in the [Workers playground ↗](https://workers.cloudflare
 1. Go to **Networking** \> **Customer connectivity**, and select **Site-to-Site VPN**.
 2. Select **Create IPsec connection**.
 3. Select the following settings (you can leave settings not mentioned here with their default values):  
-   * **Name**: Enter a name.  
-   * **Customer-premises equipment (CPE)**: Select the CPE you created in step 1.  
-   * **Dynamic routing gateways (DRG)**: Select the DRG you created in step 2.  
-   * **Routes to your on-premises network**: Enter a CIDR (Classless Inter-Domain Routing) range you want to route to Cloudflare WAN.  
-   * **Tunnel 1**  
-         * **Name**: Enter a name.  
-         * Select **Provide custom shared secret**.  
-         * Enter the **pre-shared key** you created in the Prerequisites section.  
-         * **IKE (Internet Key Exchange) version**: **IKEv2**  
-         * **Routing type**: **Static routing**  
-         * **IPv4 inside tunnel interface - CPE**: Enter the internal tunnel IP on the Cloudflare side of the IPsec tunnel. In this example, it is `10.200.1.0/31`.  
-         * **IPv4 inside tunnel interface - Oracle**: Enter the internal tunnel IP on the Oracle side of the IPsec tunnel. In this example, it is `10.200.1.1/31`. This matches with the Cloudflare side for this tunnel.  
-                  1. Select **Show advanced options**  
-                  2. Select **Phase one (ISAKMP) configuration**  
-                              * Select **Set custom configurations**  
-                              * **Custom encryption algorithm**: **AES\_256\_CBC**  
-                              * **Custom authentication algorithm**: **SHA2\_256**  
-                              * **Custom Diffie-Hellman group**: **GROUP20**  
-                              * **IKE session key lifetime in seconds**: **86400**  
-                  3. Select **Phase two (IPsec) configuration**  
-                              * Select **Set custom configurations**  
-                              * **Custom encryption algorithm**: **AES\_256\_CBC**  
-                              * **HMAC (Hash-based Message Authentication Code)\_SHA2\_256\_128**: **HMAC\_SHA2\_256\_128**  
-                              * **IPsec session key lifetime in seconds**: **28800**  
-                              * **Perfect forward secrecy Diffie-Hellman group**: **GROUP20**  
-   * **Tunnel 2**  
-         * Repeat these steps for Tunnel 2\. Select the right IP for **IPv4 inside tunnel interface - CPE (Customer-Premises Equipment)**: `10.200.2.0/31` and **IPv4 inside tunnel interface - Oracle**: `10.200.2.1/31`
+  * **Name**: Enter a name.
+  * **Customer-premises equipment (CPE)**: Select the CPE you created in step 1.
+  * **Dynamic routing gateways (DRG)**: Select the DRG you created in step 2.
+  * **Routes to your on-premises network**: Enter a CIDR (Classless Inter-Domain Routing) range you want to route to Cloudflare WAN.
+  * **Tunnel 1**  
+    * **Name**: Enter a name.
+    * Select **Provide custom shared secret**.
+    * Enter the **pre-shared key** you created in the Prerequisites section.
+    * **IKE (Internet Key Exchange) version**: **IKEv2**
+    * **Routing type**: **Static routing**
+    * **IPv4 inside tunnel interface - CPE**: Enter the internal tunnel IP on the Cloudflare side of the IPsec tunnel. In this example, it is `10.200.1.0/31`.
+    * **IPv4 inside tunnel interface - Oracle**: Enter the internal tunnel IP on the Oracle side of the IPsec tunnel. In this example, it is `10.200.1.1/31`. This matches with the Cloudflare side for this tunnel.  
+      1. Select **Show advanced options**
+      2. Select **Phase one (ISAKMP) configuration**  
+        * Select **Set custom configurations**
+        * **Custom encryption algorithm**: **AES\_256\_CBC**
+        * **Custom authentication algorithm**: **SHA2\_256**
+        * **Custom Diffie-Hellman group**: **GROUP20**
+        * **IKE session key lifetime in seconds**: **86400**
+      3. Select **Phase two (IPsec) configuration**  
+        * Select **Set custom configurations**
+        * **Custom encryption algorithm**: **AES\_256\_CBC**
+        * **HMAC (Hash-based Message Authentication Code)\_SHA2\_256\_128**: **HMAC\_SHA2\_256\_128**
+        * **IPsec session key lifetime in seconds**: **28800**
+        * **Perfect forward secrecy Diffie-Hellman group**: **GROUP20**
+  * **Tunnel 2**  
+    * Repeat these steps for Tunnel 2\. Select the right IP for **IPv4 inside tunnel interface - CPE (Customer-Premises Equipment)**: `10.200.2.0/31` and **IPv4 inside tunnel interface - Oracle**: `10.200.2.1/31`
 4. Select **Create IPsec connection**
 
 ## Cloudflare WAN
@@ -108,15 +93,15 @@ After configuring the Oracle Site-to-site VPN connection and the tunnels, go to 
 ### IPsec tunnels
 
 1. Refer to [Add tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels) to learn how to add an IPsec tunnel. When creating your IPsec tunnel, make sure you define the following settings:  
-   * **Tunnel name**: Enter a name.  
-   * **Interface address**: Enter the internal tunnel IP on the Cloudflare side of the IPsec tunnel. In this example, it is `10.200.1.0/31`.  
-   * **Customer endpoint**: The Oracle VPN public IP address.  
-   * **Cloudflare endpoint**: Enter one of the Cloudflare anycast IP addresses assigned to your account, available in [Leased IPs ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).  
-   * **Health check type**: **Request**  
-   * **Health check direction**: **Unidirectional**  
-   * **Health check target**: **Default**  
-   * **Pre-shared key**: Choose **Use my own pre-shared key**, and enter the pre-shared key you created in the Prerequisites section.  
-   * **Replay protection**: **Enabled**.
+  * **Tunnel name**: Enter a name.
+  * **Interface address**: Enter the internal tunnel IP on the Cloudflare side of the IPsec tunnel. In this example, it is `10.200.1.0/31`.
+  * **Customer endpoint**: The Oracle VPN public IP address.
+  * **Cloudflare endpoint**: Enter one of the Cloudflare anycast IP addresses assigned to your account, available in [Leased IPs ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
+  * **Health check type**: **Request**
+  * **Health check direction**: **Unidirectional**
+  * **Health check target**: **Default**
+  * **Pre-shared key**: Choose **Use my own pre-shared key**, and enter the pre-shared key you created in the Prerequisites section.
+  * **Replay protection**: **Enabled**.
 2. Select **Add tunnels**.
 3. Repeat these steps for Tunnel 2\. Choose the same Cloudflare anycast IP address and select the right IP for **Interface address**: `10.200.2.0/31`
 

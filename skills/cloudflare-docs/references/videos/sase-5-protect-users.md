@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/videos/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,16 +17,22 @@ The Internet has become part of your corporate network; however, browsing the we
 Chapters
 
 * ![Introduction to Cloudflare's SASE and the Importance of Secure Corporate Networking](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=1s)  
+
  **Introduction to Cloudflare's SASE and the Importance of Secure Corporate Networking** 1s
 * ![Using Secure Web Gateway to Inspect and Control Internet Traffic](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=66s)  
+
  **Using Secure Web Gateway to Inspect and Control Internet Traffic** 01m06s
 * ![Protecting Users with DNS Filtering and Threat Intelligence](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=124s)  
+
  **Protecting Users with DNS Filtering and Threat Intelligence** 02m04s
 * ![Implementing Network-Level Security Policies for Private and Public Traffic](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=217s)  
+
  **Implementing Network-Level Security Policies for Private and Public Traffic** 03m37s
 * ![Advanced HTTP Filtering and Data Loss Prevention with Cloudflare](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=263s)  
+
  **Advanced HTTP Filtering and Data Loss Prevention with Cloudflare** 04m23s
 * ![Isolating Risky Websites and Preventing Data Leaks with Browser Isolation](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=348s)  
+
  **Isolating Risky Websites and Preventing Data Leaks with Browser Isolation** 05m48s
 
   

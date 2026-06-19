@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dynamic-workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -49,47 +49,21 @@ The flow:
 * `console.log` output is captured and returned alongside the result
 * Each execution gets its own Worker instance with a 30-second timeout
 
-* [  JavaScript ](#tab-panel-8415)
-* [  TypeScript ](#tab-panel-8416)
+* [  JavaScript ](#tab-panel-8491)
+* [  TypeScript ](#tab-panel-8492)
 
 JavaScript
 
 ```
-
 import { DynamicWorkerExecutor } from "@cloudflare/codemode";
-
-
-const executor = new DynamicWorkerExecutor({
-
-  loader: env.LOADER, // WorkerLoader binding from wrangler.jsonc
-
-  timeout: 30000, // default: 30s
-
-  globalOutbound: null, // null = fetch blocked
-
-});
-
-
+const executor = new DynamicWorkerExecutor({  loader: env.LOADER, // WorkerLoader binding from wrangler.jsonc  timeout: 30000, // default: 30s  globalOutbound: null, // null = fetch blocked});
 ```
 
 TypeScript
 
 ```
-
 import { DynamicWorkerExecutor } from "@cloudflare/codemode";
-
-
-const executor = new DynamicWorkerExecutor({
-
-  loader: env.LOADER, // WorkerLoader binding from wrangler.jsonc
-
-  timeout: 30000, // default: 30s
-
-  globalOutbound: null, // null = fetch blocked
-
-});
-
-
+const executor = new DynamicWorkerExecutor({  loader: env.LOADER, // WorkerLoader binding from wrangler.jsonc  timeout: 30000, // default: 30s  globalOutbound: null, // null = fetch blocked});
 ```
 
 ### `createCodeTool`
@@ -100,53 +74,23 @@ const executor = new DynamicWorkerExecutor({
 * Puts those types in the tool's description, so the LLM sees a single tool with parameter `{ code: string }` and a description that includes the full typed API surface.
 * On execution, normalizes the LLM's code (strips markdown fences, wraps bare statements in async functions, auto-returns the last expression), then passes it to the executor.
 
-* [  JavaScript ](#tab-panel-8417)
-* [  TypeScript ](#tab-panel-8418)
+* [  JavaScript ](#tab-panel-8493)
+* [  TypeScript ](#tab-panel-8494)
 
 JavaScript
 
 ```
-
 import { createCodeTool } from "@cloudflare/codemode/ai";
-
-
-const codemode = createCodeTool({
-
-  tools: myTools, // Record<string, tool()> with Zod schemas
-
-  executor, // DynamicWorkerExecutor
-
-});
-
-
-// The LLM sees: one tool called "codemode" with input { code: string }
-
-// The description includes TypeScript types for all your tools
-
-
+const codemode = createCodeTool({  tools: myTools, // Record<string, tool()> with Zod schemas  executor, // DynamicWorkerExecutor});
+// The LLM sees: one tool called "codemode" with input { code: string }// The description includes TypeScript types for all your tools
 ```
 
 TypeScript
 
 ```
-
 import { createCodeTool } from "@cloudflare/codemode/ai";
-
-
-const codemode = createCodeTool({
-
-  tools: myTools, // Record<string, tool()> with Zod schemas
-
-  executor, // DynamicWorkerExecutor
-
-});
-
-
-// The LLM sees: one tool called "codemode" with input { code: string }
-
-// The description includes TypeScript types for all your tools
-
-
+const codemode = createCodeTool({  tools: myTools, // Record<string, tool()> with Zod schemas  executor, // DynamicWorkerExecutor});
+// The LLM sees: one tool called "codemode" with input { code: string }// The description includes TypeScript types for all your tools
 ```
 
 The LLM writes an async arrow function. `createCodeTool` normalizes it and hands it to the executor. The executor builds a Worker module with a `codemode` proxy, runs the code, and returns `{ code, result, logs }`.

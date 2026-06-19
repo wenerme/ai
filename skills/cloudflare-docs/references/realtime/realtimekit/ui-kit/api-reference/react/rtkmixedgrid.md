@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -38,45 +38,15 @@ A grid component which handles screenshares, plugins and participants.
 ### Basic Usage
 
 ```
-
 import { RtkMixedGrid } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return <RtkMixedGrid />;
-
-}
-
-
+function MyComponent() {  return <RtkMixedGrid />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkMixedGrid } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkMixedGrid
-
-      aspectRatio="example"
-
-      gap={42}
-
-      gridSize="md"
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkMixedGrid      aspectRatio="example"      gap={42}      gridSize="md"    />  );}
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -34,9 +34,10 @@ Figure 1: Overall solution of user access controls to, and the discovery of, sen
 
 ## Securing user access to data at rest
 
-1. Cloudflare authenticates users attempting to access SaaS applications, whether they are initiating the request from managed or unmanaged endpoints.  
-   1. For managed endpoints, we recommend deploying our [device agent](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) to maximize visibility and control of all traffic between the end user’s device and the resources being requested.  
-   2. For unmanaged endpoints, we have [client-less solutions](https://developers.cloudflare.com/reference-architecture/diagrams/sase/sase-clientless-access-private-dns/) which all you to still have visibility over and inspection into the data accessed by users.
+1. Cloudflare authenticates users attempting to access SaaS applications, whether they are initiating the request from managed or unmanaged endpoints.
+
+  1. For managed endpoints, we recommend deploying our [device agent](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) to maximize visibility and control of all traffic between the end user’s device and the resources being requested.
+  2. For unmanaged endpoints, we have [client-less solutions](https://developers.cloudflare.com/reference-architecture/diagrams/sase/sase-clientless-access-private-dns/) which all you to still have visibility over and inspection into the data accessed by users.
 2. Cloudflare's [Zero Trust Network Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) (ZTNA) service can integrate directly with your [SaaS applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/) using standard protocols (e.g. SAML or OIDC) to become the initial enforcement point for user access. Access calls your [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) (IdP) of choice and uses additional security signals about your users and devices to make policy decisions.
 3. As an extension of what was covered in Securing data in use, Cloudflare [Remote Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) (RBI) can also be used with [dedicated egress IPs](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/), so that even remote clientless user’s traffic can arrive at the requested SaaS application from predictable and consistent IP addresses.
 

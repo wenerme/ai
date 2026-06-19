@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -87,62 +87,20 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-8807)
-* [  wrangler.toml ](#tab-panel-8808)
+* [  wrangler.jsonc ](#tab-panel-8883)
+* [  wrangler.toml ](#tab-panel-8884)
 
 JSONC
 
 ```
-
-{
-
-  // required for database drivers to function
-
-  "compatibility_flags": [
-
-    "nodejs_compat"
-
-  ],
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "hyperdrive": [
-
-    {
-
-      "binding": "HYPERDRIVE",
-
-      "id": "<your-hyperdrive-id-here>"
-
-    }
-
-  ]
-
-}
-
-
+{  // required for database drivers to function  "compatibility_flags": [    "nodejs_compat"  ],  // Set this to today's date  "compatibility_date": "2026-06-18",  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<your-hyperdrive-id-here>"    }  ]}
 ```
 
 TOML
 
 ```
-
-compatibility_flags = [ "nodejs_compat" ]
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[[hyperdrive]]
-
-binding = "HYPERDRIVE"
-
-id = "<your-hyperdrive-id-here>"
-
-
+compatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-06-18"
+[[hyperdrive]]binding = "HYPERDRIVE"id = "<your-hyperdrive-id-here>"
 ```
 
 ## 2\. Configure Prisma ORM
@@ -154,10 +112,7 @@ Initialize Prisma in your application:
 Terminal window
 
 ```
-
 npx prisma init
-
-
 ```
 
 This creates a `prisma` folder with a `schema.prisma` file and an `.env` file.
@@ -169,38 +124,9 @@ Define your database schema in the `prisma/schema.prisma` file:
 prisma/schema.prisma
 
 ```
-
-generator client {
-
-  provider        = "prisma-client-js"
-
-  previewFeatures = ["driverAdapters"]
-
-}
-
-
-datasource db {
-
-  provider = "postgresql"
-
-  url      = env("DATABASE_URL")
-
-}
-
-
-model User {
-
-  id        Int      @id @default(autoincrement())
-
-  name      String
-
-  email     String   @unique
-
-  createdAt DateTime @default(now())
-
-}
-
-
+generator client {  provider        = "prisma-client-js"  previewFeatures = ["driverAdapters"]}
+datasource db {  provider = "postgresql"  url      = env("DATABASE_URL")}
+model User {  id        Int      @id @default(autoincrement())  name      String  email     String   @unique  createdAt DateTime @default(now())}
 ```
 
 ### 2.3\. Set up environment variables
@@ -210,10 +136,7 @@ Add your database connection string to the `.env` file created by Prisma:
 .env
 
 ```
-
 DATABASE_URL="postgres://user:password@host:port/database"
-
-
 ```
 
 Add helper scripts to your `package.json`:
@@ -221,18 +144,7 @@ Add helper scripts to your `package.json`:
 package.json
 
 ```
-
-"scripts": {
-
-  "migrate": "npx prisma migrate dev",
-
-  "generate": "npx prisma generate --no-engine",
-
-  "studio": "npx prisma studio"
-
-}
-
-
+"scripts": {  "migrate": "npx prisma migrate dev",  "generate": "npx prisma generate --no-engine",  "studio": "npx prisma studio"}
 ```
 
 ### 2.4\. Generate Prisma Client
@@ -242,10 +154,7 @@ Generate the Prisma client with driver adapter support:
 Terminal window
 
 ```
-
 npm run generate
-
-
 ```
 
 ### 2.5\. Run migrations
@@ -255,10 +164,7 @@ Generate and apply the database schema:
 Terminal window
 
 ```
-
 npm run migrate
-
-
 ```
 
 When prompted, provide a name for the migration (for example, `init`).
@@ -270,61 +176,12 @@ Use your Hyperdrive configuration when using Prisma ORM. Update your `src/index.
 src/index.ts
 
 ```
-
-import { PrismaPg } from "@prisma/adapter-pg";
-
-import { PrismaClient } from "@prisma/client";
-
-
-export interface Env {
-
-  HYPERDRIVE: Hyperdrive;
-
-}
-
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    // Create Prisma client using driver adapter with Hyperdrive connection string
-
-    const adapter = new PrismaPg({ connectionString: env.HYPERDRIVE.connectionString });
-
-    const prisma = new PrismaClient({ adapter });
-
-
-    // Sample query to create and fetch users
-
-    const user = await prisma.user.create({
-
-      data: {
-
-        name: "John Doe",
-
-        email: `john.doe.${Date.now()}@example.com`,
-
-      },
-
-    });
-
-
+import { PrismaPg } from "@prisma/adapter-pg";import { PrismaClient } from "@prisma/client";
+export interface Env {  HYPERDRIVE: Hyperdrive;}
+export default {  async fetch(request, env, ctx): Promise<Response> {    // Create Prisma client using driver adapter with Hyperdrive connection string    const adapter = new PrismaPg({ connectionString: env.HYPERDRIVE.connectionString });    const prisma = new PrismaClient({ adapter });
+    // Sample query to create and fetch users    const user = await prisma.user.create({      data: {        name: "John Doe",        email: `john.doe.${Date.now()}@example.com`,      },    });
     const allUsers = await prisma.user.findMany();
-
-
-    return Response.json({
-
-      newUser: user,
-
-      allUsers: allUsers,
-
-    });
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+    return Response.json({      newUser: user,      allUsers: allUsers,    });  },} satisfies ExportedHandler<Env>;
 ```
 
 Note
@@ -338,10 +195,7 @@ Deploy your Worker:
 Terminal window
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 ## Next steps

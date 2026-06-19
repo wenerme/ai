@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -116,7 +116,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 | Cloudflare Specials             | ...e7c9a2c4 | 100519B        | Magento - CVE:CVE-2022-24086                                                                                                                                                  | 2022-03-14            | N/A        | Block      |
 | Cloudflare Specials             | ...a37c3733 | 100520         | Apache - CVE:CVE-2022-24112                                                                                                                                                   | 2022-03-14            | N/A        | Block      |
 | Cloudflare Specials             | ...664ed6fe | 100015         | Anomaly:Port - Non Standard Port (not 80 or 443)                                                                                                                              | 2022-03-14            | N/A        | Disable    |
-| Cloudflare Specials             | ...5723bcc9 | 100022         | Anomaly:Method - NotGETorPOST                                                                                                                                                 | 2022-03-14            | N/A        | Disable    |
+| Cloudflare Specials             | ...5723bcc9 | 100022         | Anomaly:Method - Not GETor POST                                                                                                                                               | 2022-03-14            | N/A        | Disable    |
 | Cloudflare Specials             | ...3fccf643 | 100519         | Magento - CVE:CVE-2022-24086                                                                                                                                                  | 2022-03-07            | N/A        | Block      |
 | Cloudflare Specials             | ...5ea3d579 | 100518         | SAP - Code Injection - CVE:CVE-2022-22532                                                                                                                                     | 2022-02-28            | N/A        | Block      |
 | Cloudflare Specials             | ...69e0b97a | 100400         | Atlassian Confluence - Code Injection - CVE:CVE-2021-26084 - Improve Rule Coverage                                                                                            | 2022-02-21            | Block      | Block      |

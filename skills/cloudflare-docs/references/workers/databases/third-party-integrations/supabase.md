@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,39 +20,31 @@ The Supabase client (`@supabase/supabase-js`) provides access to Supabase's vari
 
 If you want to connect directly to the Supabase Postgres database, connect using [Hyperdrive](https://developers.cloudflare.com/hyperdrive). Hyperdrive can provide lower latencies because it performs the database connection setup and connection pooling across Cloudflare's network. Hyperdrive supports native database drivers, libraries, and ORMs, and is included in all [Workers plans](https://developers.cloudflare.com/hyperdrive/platform/pricing/). Learn more about Hyperdrive in [How Hyperdrive Works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
 
-* [ Supabase client ](#tab-panel-11533)
-* [ Hyperdrive ](#tab-panel-11534)
+* [ Supabase client ](#tab-panel-11550)
+* [ Hyperdrive ](#tab-panel-11551)
 
 ### Supabase client setup
 
 To set up an integration with Supabase:
 
 1. You need to have an existing Supabase database to connect to. [Create a Supabase database ↗](https://supabase.com/docs/guides/database/tables#creating-tables) or [have an existing database to connect to Supabase and load data from ↗](https://supabase.com/docs/guides/database/tables#loading-data).
-2. Create a `countries` table with the following query. You can create a table in your Supabase dashboard in two ways:  
-   * Use the table editor, which allows you to set up Postgres similar to a spreadsheet.  
-   * Alternatively, use the [SQL editor ↗](https://supabase.com/docs/guides/database/overview#the-sql-editor):  
+2. Create a `countries` table with the following query. You can create a table in your Supabase dashboard in two ways:
+
+  * Use the table editor, which allows you to set up Postgres similar to a spreadsheet.
+  * Alternatively, use the [SQL editor ↗](https://supabase.com/docs/guides/database/overview#the-sql-editor):  
 ```  
-CREATE TABLE countries (  
-id SERIAL PRIMARY KEY,  
-name VARCHAR(255) NOT NULL  
-);  
+CREATE TABLE countries (id SERIAL PRIMARY KEY,name VARCHAR(255) NOT NULL);  
 ```
 3. Insert some data in your newly created table. Run the following commands to add countries to your table:  
 ```  
-INSERT INTO countries (name) VALUES ('United States');  
-INSERT INTO countries (name) VALUES ('Canada');  
-INSERT INTO countries (name) VALUES ('The Netherlands');  
+INSERT INTO countries (name) VALUES ('United States');INSERT INTO countries (name) VALUES ('Canada');INSERT INTO countries (name) VALUES ('The Netherlands');  
 ```
 4. Configure the Supabase database credentials in your Worker:  
 You need to add your Supabase URL and anon key as secrets to your Worker. Get these from your [Supabase Dashboard ↗](https://supabase.com/dashboard) under **Settings** \> **API**, then add them as secrets using Wrangler:  
 Terminal window  
 ```  
-# Add the Supabase URL as a secret  
-npx wrangler secret put SUPABASE_URL  
-# When prompted, paste your Supabase project URL  
-# Add the Supabase anon key as a secret  
-npx wrangler secret put SUPABASE_KEY  
-# When prompted, paste your Supabase anon/public key  
+# Add the Supabase URL as a secretnpx wrangler secret put SUPABASE_URL# When prompted, paste your Supabase project URL  
+# Add the Supabase anon key as a secretnpx wrangler secret put SUPABASE_KEY# When prompted, paste your Supabase anon/public key  
 ```
 5. In your Worker, install the `@supabase/supabase-js` driver to connect to your database and start manipulating data:  
  npm  yarn  pnpm  bun  
@@ -72,18 +64,7 @@ bun add @supabase/supabase-js
 JavaScript  
 ```  
 import { createClient } from "@supabase/supabase-js";  
-export default {  
-  async fetch(request, env) {  
-    const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_KEY);  
-    const { data, error } = await supabase.from("countries").select("*");  
-    if (error) throw error;  
-    return new Response(JSON.stringify(data), {  
-      headers: {  
-        "Content-Type": "application/json",  
-      },  
-    });  
-  },  
-};  
+export default {  async fetch(request, env) {    const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_KEY);    const { data, error } = await supabase.from("countries").select("*");    if (error) throw error;    return new Response(JSON.stringify(data), {      headers: {        "Content-Type": "application/json",      },    });  },};  
 ```
 
 To learn more about Supabase, refer to [Supabase's official documentation ↗](https://supabase.com/docs).
@@ -110,16 +91,13 @@ To configure Hyperdrive, you will need:
 Hyperdrive accepts the combination of these parameters in the common connection string format used by database drivers:
 
 ```
-
 postgres://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
-
-
 ```
 
 Most database providers will provide a connection string you can directly copy-and-paste directly into Hyperdrive.
 
-* [ Dashboard ](#tab-panel-11529)
-* [ Wrangler CLI ](#tab-panel-11530)
+* [ Dashboard ](#tab-panel-11546)
+* [ Wrangler CLI ](#tab-panel-11547)
 
 To create a Hyperdrive configuration with the Cloudflare dashboard:
 
@@ -136,40 +114,18 @@ Terminal window
 ```  
 npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="postgres://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name"  
 ```
-2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):  
-   * [  wrangler.jsonc ](#tab-panel-11527)  
-   * [  wrangler.toml ](#tab-panel-11528)  
+2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
+
+  * [  wrangler.jsonc ](#tab-panel-11544)
+  * [  wrangler.toml ](#tab-panel-11545)  
 JSONC  
 ```  
-{  
-  "$schema": "./node_modules/wrangler/config-schema.json",  
-  "name": "hyperdrive-example",  
-  "main": "src/index.ts",  
-  // Set this to today's date  
-  "compatibility_date": "2026-06-17",  
-  "compatibility_flags": [  
-    "nodejs_compat"  
-  ],  
-  // Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.  
-  "hyperdrive": [  
-    {  
-      "binding": "HYPERDRIVE",  
-      "id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"  
-    }  
-  ]  
-}  
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "hyperdrive-example",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-19",  "compatibility_flags": [    "nodejs_compat"  ],  // Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"    }  ]}  
 ```  
 TOML  
 ```  
-"$schema" = "./node_modules/wrangler/config-schema.json"  
-name = "hyperdrive-example"  
-main = "src/index.ts"  
-# Set this to today's date  
-compatibility_date = "2026-06-17"  
-compatibility_flags = [ "nodejs_compat" ]  
-[[hyperdrive]]  
-binding = "HYPERDRIVE"  
-id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"  
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "hyperdrive-example"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-19"compatibility_flags = [ "nodejs_compat" ]  
+[[hyperdrive]]binding = "HYPERDRIVE"id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"  
 ```
 
 Note
@@ -224,62 +180,20 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-11531)
-* [  wrangler.toml ](#tab-panel-11532)
+* [  wrangler.jsonc ](#tab-panel-11548)
+* [  wrangler.toml ](#tab-panel-11549)
 
 JSONC
 
 ```
-
-{
-
-  // required for database drivers to function
-
-  "compatibility_flags": [
-
-    "nodejs_compat"
-
-  ],
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "hyperdrive": [
-
-    {
-
-      "binding": "HYPERDRIVE",
-
-      "id": "<your-hyperdrive-id-here>"
-
-    }
-
-  ]
-
-}
-
-
+{  // required for database drivers to function  "compatibility_flags": [    "nodejs_compat"  ],  // Set this to today's date  "compatibility_date": "2026-06-19",  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<your-hyperdrive-id-here>"    }  ]}
 ```
 
 TOML
 
 ```
-
-compatibility_flags = [ "nodejs_compat" ]
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[[hyperdrive]]
-
-binding = "HYPERDRIVE"
-
-id = "<your-hyperdrive-id-here>"
-
-
+compatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-06-19"
+[[hyperdrive]]binding = "HYPERDRIVE"id = "<your-hyperdrive-id-here>"
 ```
 
 Create a new `Client` instance and pass the Hyperdrive `connectionString`:
@@ -287,69 +201,12 @@ Create a new `Client` instance and pass the Hyperdrive `connectionString`:
 TypeScript
 
 ```
-
-// filepath: src/index.ts
-
-import { Client } from "pg";
-
-
-export default {
-
-  async fetch(
-
-    request: Request,
-
-    env: Env,
-
-    ctx: ExecutionContext,
-
-  ): Promise<Response> {
-
-    // Create a new client instance for each request. Hyperdrive maintains the
-
-    // underlying database connection pool, so creating a new client is fast.
-
-    const client = new Client({
-
-      connectionString: env.HYPERDRIVE.connectionString,
-
-    });
-
-
-    try {
-
-      // Connect to the database
-
-      await client.connect();
-
-
-      // Perform a simple query
-
-      const result = await client.query("SELECT * FROM pg_tables");
-
-
-      return Response.json({
-
-        success: true,
-
-        result: result.rows,
-
-      });
-
-    } catch (error: any) {
-
-      console.error("Database error:", error.message);
-
-
-      return new Response("Internal error occurred", { status: 500 });
-
-    }
-
-  },
-
-};
-
-
+// filepath: src/index.tsimport { Client } from "pg";
+export default {  async fetch(    request: Request,    env: Env,    ctx: ExecutionContext,  ): Promise<Response> {    // Create a new client instance for each request. Hyperdrive maintains the    // underlying database connection pool, so creating a new client is fast.    const client = new Client({      connectionString: env.HYPERDRIVE.connectionString,    });
+    try {      // Connect to the database      await client.connect();
+      // Perform a simple query      const result = await client.query("SELECT * FROM pg_tables");
+      return Response.json({        success: true,        result: result.rows,      });    } catch (error: any) {      console.error("Database error:", error.message);
+      return new Response("Internal error occurred", { status: 500 });    }  },};
 ```
 
 Note

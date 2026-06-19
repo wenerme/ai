@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,10 +25,7 @@ To add an Embed to Your Website:
 4. Add a placeholder in your HTML, specifying the necessary attributes. For a generic embed, the snippet looks like this:
 
 ```
-
 <componentName-embedName attribute="value"></componentName-embedName>
-
-
 ```
 
 Replace `componentName`, `embedName` and `attribute="value"` with the specific Managed Component requirements. Zaraz automatically detects placeholders and replaces them with the content in a secure and efficient way.
@@ -38,10 +35,7 @@ Replace `componentName`, `embedName` and `attribute="value"` with the specific M
 ### X (Twitter) embed
 
 ```
-
 <twitter-post tweet-id="12345"></twitter-post>
-
-
 ```
 
 Replace `tweet-id` with the actual tweet ID for the content you wish to embed.
@@ -49,10 +43,7 @@ Replace `tweet-id` with the actual tweet ID for the content you wish to embed.
 ### Instagram embed
 
 ```
-
 <instagram-post post-url="https://www.instagram.com/p/ABC/" captions="true"></instagram-post>
-
-
 ```
 
 Replace `post-url` with the actual URL for the content you wish to embed. To include posts captions set captions attribute to `true`.

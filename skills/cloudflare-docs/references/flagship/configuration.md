@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/flagship/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,43 +18,19 @@ To use Flagship in a Cloudflare Worker, add a Flagship binding to your Wrangler 
 
 Add the `flagship` block to your Wrangler configuration file with a binding name and your app ID.
 
-* [  wrangler.jsonc ](#tab-panel-8535)
-* [  wrangler.toml ](#tab-panel-8536)
+* [  wrangler.jsonc ](#tab-panel-8611)
+* [  wrangler.toml ](#tab-panel-8612)
 
 JSONC
 
 ```
-
-{
-
-  "flagship": [
-
-    {
-
-      "binding": "FLAGS",
-
-      "app_id": "<APP_ID>",
-
-    },
-
-  ],
-
-}
-
-
+{  "flagship": [    {      "binding": "FLAGS",      "app_id": "<APP_ID>",    },  ],}
 ```
 
 TOML
 
 ```
-
-[[flagship]]
-
-binding = "FLAGS"
-
-app_id = "<APP_ID>"
-
-
+[[flagship]]binding = "FLAGS"app_id = "<APP_ID>"
 ```
 
 Replace `<APP_ID>` with the app ID from your Flagship app. If you have not created an app yet, refer to the [Get started guide](https://developers.cloudflare.com/flagship/get-started/#create-an-app-and-a-flag). The `binding` field sets the name you use to access Flagship in your Worker code (for example, `env.FLAGS`).
@@ -63,58 +39,20 @@ Replace `<APP_ID>` with the app ID from your Flagship app. If you have not creat
 
 A single Worker can bind to multiple Flagship apps. Use the array form to define more than one binding:
 
-* [  wrangler.jsonc ](#tab-panel-8537)
-* [  wrangler.toml ](#tab-panel-8538)
+* [  wrangler.jsonc ](#tab-panel-8613)
+* [  wrangler.toml ](#tab-panel-8614)
 
 JSONC
 
 ```
-
-{
-
-  "flagship": [
-
-    {
-
-      "binding": "FLAGS",
-
-      "app_id": "<APP_ID_1>",
-
-    },
-
-    {
-
-      "binding": "EXPERIMENT_FLAGS",
-
-      "app_id": "<APP_ID_2>",
-
-    },
-
-  ],
-
-}
-
-
+{  "flagship": [    {      "binding": "FLAGS",      "app_id": "<APP_ID_1>",    },    {      "binding": "EXPERIMENT_FLAGS",      "app_id": "<APP_ID_2>",    },  ],}
 ```
 
 TOML
 
 ```
-
-[[flagship]]
-
-binding = "FLAGS"
-
-app_id = "<APP_ID_1>"
-
-
-[[flagship]]
-
-binding = "EXPERIMENT_FLAGS"
-
-app_id = "<APP_ID_2>"
-
-
+[[flagship]]binding = "FLAGS"app_id = "<APP_ID_1>"
+[[flagship]]binding = "EXPERIMENT_FLAGS"app_id = "<APP_ID_2>"
 ```
 
 Each binding is available as a separate property on the `env` object (for example, `env.FLAGS` and `env.EXPERIMENT_FLAGS`).
@@ -126,71 +64,28 @@ After adding the binding, run `npx wrangler types` to generate TypeScript types.
 TypeScript
 
 ```
-
-interface Env {
-
-  FLAGS: Flagship;
-
-  EXPERIMENT_FLAGS: Flagship;
-
-}
-
-
+interface Env {  FLAGS: Flagship;  EXPERIMENT_FLAGS: Flagship;}
 ```
 
 ## Use the binding
 
 Call evaluation methods on `env.FLAGS` to resolve flag values at runtime. Each method accepts a flag key, a default value, and an optional evaluation context.
 
-* [  JavaScript ](#tab-panel-8539)
-* [  TypeScript ](#tab-panel-8540)
+* [  JavaScript ](#tab-panel-8615)
+* [  TypeScript ](#tab-panel-8616)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const isEnabled = await env.FLAGS.getBooleanValue("my-feature", false, {
-
-      userId: "user-42",
-
-    });
-
-
-    return new Response(isEnabled ? "Feature is on" : "Feature is off");
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const isEnabled = await env.FLAGS.getBooleanValue("my-feature", false, {      userId: "user-42",    });
+    return new Response(isEnabled ? "Feature is on" : "Feature is off");  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request: Request, env: Env): Promise<Response> {
-
-    const isEnabled = await env.FLAGS.getBooleanValue("my-feature", false, {
-
-      userId: "user-42",
-
-    });
-
-
-    return new Response(isEnabled ? "Feature is on" : "Feature is off");
-
-  },
-
-};
-
-
+export default {  async fetch(request: Request, env: Env): Promise<Response> {    const isEnabled = await env.FLAGS.getBooleanValue("my-feature", false, {      userId: "user-42",    });
+    return new Response(isEnabled ? "Feature is on" : "Feature is off");  },};
 ```
 
 Refer to the [binding API reference](https://developers.cloudflare.com/flagship/binding/) for the full list of methods.

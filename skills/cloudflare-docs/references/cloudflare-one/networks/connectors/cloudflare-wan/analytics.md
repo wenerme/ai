@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,9 +18,9 @@ Use these options to gather information at the start of your troubleshooting wor
 
 * View your entire network at a glance in [Network overview](#network-overview)
 * Analyze network traffic over time in [Network Analytics](#network-analytics)
-* Perform more detailed troubleshooting with:  
-   * [Traceroutes](#traceroutes)  
-   * [Packet captures](#packet-captures)
+* Perform more detailed troubleshooting with:
+  * [Traceroutes](#traceroutes)
+  * [Packet captures](#packet-captures)
 
 ## Network overview
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,10 +19,7 @@ When troubleshooting failures, use the Cloudflare API for programmatic access to
 You can get a per-data center breakdown of the health of your endpoints from the Cloudflare API from the List Health Monitor Events command:
 
 ```
-
 GET user/load_balancing_analytics/events
-
-
 ```
 
 If a health monitor request fails, the breakdown will include the reason.

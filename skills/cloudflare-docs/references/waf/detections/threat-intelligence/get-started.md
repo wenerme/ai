@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -46,8 +46,8 @@ For more examples, refer to [Example rules](https://developers.cloudflare.com/wa
 
 If you prefer to write expressions directly, you can create a rule from the dashboard or the API.
 
-* [ Dashboard ](#tab-panel-11194)
-* [ API ](#tab-panel-11195)
+* [ Dashboard ](#tab-panel-11211)
+* [ API ](#tab-panel-11212)
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login) and select your account and domain.
 2. Go to **Security** \> **Security rules**.
@@ -65,10 +65,7 @@ Threat intelligence fields work with the [Cloudflare API](https://developers.clo
 Use the following expression to match IP addresses associated with DDoS activity targeting France:
 
 ```
-
 any(cf.intel.ip.target_countries[*] == "FR") and any(cf.intel.ip.datasets[*] == "ddos")
-
-
 ```
 
 Set the action to `log` to validate matches before enforcing.

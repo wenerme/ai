@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -40,7 +40,7 @@ Expose services running in the sandbox via preview URLs. Access web servers and 
 
 [Tunnels](https://developers.cloudflare.com/sandbox/api/tunnels/) 
 
-Expose services on zero-config `*.trycloudflare.com` URLs via`sandbox.tunnels.get(port)`. Best for quick development and `.workers.dev`deployments.
+Expose services on zero-config `*.trycloudflare.com` URLs via `sandbox.tunnels.get(port)`. Best for quick development and `.workers.dev`deployments.
 
 [Storage](https://developers.cloudflare.com/sandbox/api/storage/) 
 

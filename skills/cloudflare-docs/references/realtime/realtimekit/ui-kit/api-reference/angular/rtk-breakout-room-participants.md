@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,31 +29,13 @@ A component which lists all participants, with ability to run privileged actions
 ### Basic Usage
 
 ```
-
-<!-- component.html -->
-
-<rtk-breakout-room-participants></rtk-breakout-room-participants>
-
-
+<!-- component.html --><rtk-breakout-room-participants></rtk-breakout-room-participants>
 ```
 
 ### With Properties
 
 ```
-
-<!-- component.html -->
-
-<rtk-breakout-room-participants
-
- [meeting]="meeting"
-
- participantIds="example"
-
- selectedParticipantIds="example">
-
-</rtk-breakout-room-participants>
-
-
+<!-- component.html --><rtk-breakout-room-participants [meeting]="meeting" participantIds="example" selectedParticipantIds="example"></rtk-breakout-room-participants>
 ```
 
 ```json

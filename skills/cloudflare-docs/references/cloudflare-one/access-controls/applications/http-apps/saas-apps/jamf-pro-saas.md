@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -36,9 +36,9 @@ This guide covers how to configure [Jamf Pro ↗](https://learn.jamf.com/en-US/b
 4. For the authentication protocol, select **SAML**.
 5. Select **Add application**.
 6. Fill in the following fields:  
-   * **Entity ID**: Entity ID value from Jamf Pro metadata file.  
-   * **Assertion Consumer Service URL**: Assertion Consumer Service value from Jamf Pro metadata file.  
-   * **Name ID format**: _Email_
+  * **Entity ID**: Entity ID value from Jamf Pro metadata file.
+  * **Assertion Consumer Service URL**: Assertion Consumer Service value from Jamf Pro metadata file.
+  * **Name ID format**: _Email_
 7. Copy the **SAML Metadata endpoint**.
 8. Configure [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) for the application.
 9. Save the application.
@@ -56,10 +56,10 @@ This guide covers how to configure [Jamf Pro ↗](https://learn.jamf.com/en-US/b
 2. In Identity Provider menu, select **Other**.
 3. Label **Other provider** as `Cloudflare`.
 4. Fill in the following fields:  
-   * **Entity ID**: Entity ID from Jamf Pro metadata file.  
-   * **Identity Provider Metadata Source**: Select **Metadata File** and upload the `.xml` file from step [2\. Edit Access SAML Metadata](#2-add-a-saas-application-to-cloudflare-one).  
-   * **Identity Provider User Mapping**: _Name ID_  
-   * **Jamf Pro User Mapping**: _Email_
+  * **Entity ID**: Entity ID from Jamf Pro metadata file.
+  * **Identity Provider Metadata Source**: Select **Metadata File** and upload the `.xml` file from step [2\. Edit Access SAML Metadata](#2-add-a-saas-application-to-cloudflare-one).
+  * **Identity Provider User Mapping**: _Name ID_
+  * **Jamf Pro User Mapping**: _Email_
 5. Turn on **Single Sign On**.
 
 Note

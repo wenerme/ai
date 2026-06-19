@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -46,10 +46,7 @@ The hosted UI supports two viewing modes, controlled by the `mode` parameter in 
 Because Browser Run speaks standard CDP, you can connect Chrome's built-in DevTools directly to a remote session. Replace the `https://live.browser.run/ui/inspector?wss=` prefix in the `devtoolsFrontendUrl` with the `devtools://` protocol:
 
 ```
-
 devtools://devtools/bundled/inspector.html?wss=live.browser.run/api/devtools/browser/SESSION_ID/page/TARGET_ID?jwt=...
-
-
 ```
 
 Paste this URL into Chrome's address bar to connect native DevTools to the remote browser session. You will get the same DevTools interface you use for local debugging. The `devtools://` protocol is Chrome-only and limited to inspector viewing mode.
@@ -65,49 +62,11 @@ The `devtoolsFrontendUrl` is valid for five minutes from when it was generated. 
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/browser-rendering/devtools/browser?keep_alive=600000&targets=true" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/browser-rendering/devtools/browser?keep_alive=600000&targets=true" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```
-
-{
-
-  "sessionId": "1909cef7-23e8-4394-bc31-27404bf4348f",
-
-  "targets": [
-
-    {
-
-      "description": "",
-
-      "devtoolsFrontendUrl": "https://live.browser.run/ui/inspector?wss=live.browser.run/api/devtools/browser/1909cef7-.../page/8E598E99...?jwt=...",
-
-      "id": "8E598E996530FB09E46A22B8B7754F7F",
-
-      "title": "about:blank",
-
-      "type": "page",
-
-      "url": "about:blank",
-
-      "webSocketDebuggerUrl": "wss://live.browser.run/api/devtools/browser/1909cef7-.../page/8E598E99...?jwt=..."
-
-    }
-
-  ],
-
-  "webSocketDebuggerUrl": "wss://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/devtools/browser/1909cef7-..."
-
-}
-
-
+{  "sessionId": "1909cef7-23e8-4394-bc31-27404bf4348f",  "targets": [    {      "description": "",      "devtoolsFrontendUrl": "https://live.browser.run/ui/inspector?wss=live.browser.run/api/devtools/browser/1909cef7-.../page/8E598E99...?jwt=...",      "id": "8E598E996530FB09E46A22B8B7754F7F",      "title": "about:blank",      "type": "page",      "url": "about:blank",      "webSocketDebuggerUrl": "wss://live.browser.run/api/devtools/browser/1909cef7-.../page/8E598E99...?jwt=..."    }  ],  "webSocketDebuggerUrl": "wss://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/devtools/browser/1909cef7-..."}
 ```
 
 1. Copy the `devtoolsFrontendUrl` from `targets[0]` and open it in your browser. You now have a live, interactive view of the remote browser session.
@@ -119,29 +78,15 @@ If you have a running session and want to connect to it:
 1. List your active sessions:  
 Terminal window  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/browser-rendering/devtools/session" \  
-  --request GET \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/browser-rendering/devtools/session" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
 ```
 2. Using the session ID, list the targets in that session:  
 Terminal window  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/browser-rendering/devtools/browser/$SESSION_ID/json/list" \  
-  --request GET \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/browser-rendering/devtools/browser/$SESSION_ID/json/list" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
 ```  
 ```  
-[  
-  {  
-    "id": "110850A800BDB8B593CDDA30676635CF",  
-    "type": "page",  
-    "url": "https://example.com",  
-    "title": "Example Domain",  
-    "description": "",  
-    "devtoolsFrontendUrl": "https://live.browser.run/ui/view?wss=live.browser.run/api/devtools/browser/28d75446-.../page/110850A8...?jwt=...",  
-    "webSocketDebuggerUrl": "wss://live.browser.run/api/devtools/browser/28d75446-.../page/110850A8...?jwt=..."  
-  }  
-]  
+[  {    "id": "110850A800BDB8B593CDDA30676635CF",    "type": "page",    "url": "https://example.com",    "title": "Example Domain",    "description": "",    "devtoolsFrontendUrl": "https://live.browser.run/ui/view?wss=live.browser.run/api/devtools/browser/28d75446-.../page/110850A8...?jwt=...",    "webSocketDebuggerUrl": "wss://live.browser.run/api/devtools/browser/28d75446-.../page/110850A8...?jwt=..."  }]  
 ```
 3. Copy the `devtoolsFrontendUrl` and open it in your browser.
 

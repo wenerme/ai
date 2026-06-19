@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -83,11 +83,12 @@ Figure 5: Workers for Platforms: Resources
 
 1. **Incoming Request**: Send requests to custom hostnames or a Worker using a Workers wildcard route.
 2. **Worker Invocation**: Route requests to the appropriate User Worker in the Dispatch Namespace.
-3. **Resource Access**: Interact with per-script-specific resources:  
-   * D1 for relational database storage  
-   * Durable Objects for strongly consistent data  
-   * KV for high-read, eventually consistent key-value storage  
-   * R2 for object storage
+3. **Resource Access**: Interact with per-script-specific resources:
+
+  * D1 for relational database storage
+  * Durable Objects for strongly consistent data
+  * KV for high-read, eventually consistent key-value storage
+  * R2 for object storage
 
 ## Deployment & Management Flow
 
@@ -96,10 +97,11 @@ Figure 5: Workers for Platforms: Resources
 Figure 6: Workers for Platforms: Deployment & Management Flow
 
 1. **Management Interface**: Interact with the platform through GUI, API, or CLI interfaces.
-2. **Platform Processing**: Process these interactions to:  
-   * Transform and bundle code  
-   * Perform security checks  
-   * Apply configuration
+2. **Platform Processing**: Process these interactions to:
+
+  * Transform and bundle code
+  * Perform security checks
+  * Apply configuration
 3. **Change Management**: Deploy changes to Cloudflare using the Cloudflare REST API.
 
 ## Conclusion

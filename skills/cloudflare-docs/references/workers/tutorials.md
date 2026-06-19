@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,8 +17,8 @@ View tutorials to help you get started with Workers.
 | Name                                                                                                                                                                                   | Last Updated       | Difficulty   |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ------------ |
 | [Deploy a Browser Run Worker with Durable Objects](https://developers.cloudflare.com/browser-run/how-to/browser-run-with-do/)                                                          | over 2 years ago   | Beginner     |
-| [Generate OG images for Astro sites](https://developers.cloudflare.com/browser-run/how-to/og-images-astro/)                                                                            | Intermediate       |              |
-| [Pre-render pages for crawlers](https://developers.cloudflare.com/browser-run/how-to/pre-render-pages/)                                                                                | Intermediate       |              |
+| [Generate OG images for Astro sites](https://developers.cloudflare.com/browser-run/how-to/og-images-astro/)                                                                            |                    | Intermediate |
+| [Pre-render pages for crawlers](https://developers.cloudflare.com/browser-run/how-to/pre-render-pages/)                                                                                |                    | Intermediate |
 | [Build a Comments API](https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/)                                                                                           | 3 months ago       | Intermediate |
 | [Build an Interactive ChatGPT App](https://developers.cloudflare.com/workers/demos/chatgpt-app/)                                                                                       | 7 months ago       | Advanced     |
 | [Deploy an Express.js application on Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/)                                                   | 8 months ago       | Beginner     |

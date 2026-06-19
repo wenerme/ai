@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-network-firewall/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -60,52 +60,7 @@ The example below blocks all TCP ports, but allows one port (`8080`) by using th
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "name": "Example ruleset",
-
-  "kind": "root",
-
-  "phase": "magic_transit",
-
-  "description": "Example ruleset description",
-
-  "rules": [
-
-    {
-
-      "action": "skip",
-
-      "action_parameters": { "ruleset": "current" },
-
-      "expression": "tcp.dstport in { 8080 } ",
-
-      "description": "Allow port 8080"
-
-    },
-
-    {
-
-      "action": "block",
-
-      "expression": "tcp.dstport in { 1..65535 }",
-
-      "description": "Block all TCP ports"
-
-    }
-
-  ]
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "name": "Example ruleset",  "kind": "root",  "phase": "magic_transit",  "description": "Example ruleset description",  "rules": [    {      "action": "skip",      "action_parameters": { "ruleset": "current" },      "expression": "tcp.dstport in { 8080 } ",      "description": "Allow port 8080"    },    {      "action": "block",      "expression": "tcp.dstport in { 1..65535 }",      "description": "Block all TCP ports"    }  ]}'
 ```
 
 ### Block a country
@@ -115,40 +70,7 @@ The example below blocks all packets with a source or destination IP address com
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "name": "Example ruleset",
-
-  "kind": "root",
-
-  "phase": "magic_transit",
-
-  "description": "Example ruleset description",
-
-  "rules": [
-
-    {
-
-      "action": "block",
-
-      "expression": "ip.src.country == \"BR\"",
-
-      "description": "Block traffic from Brazil"
-
-    }
-
-  ]
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "name": "Example ruleset",  "kind": "root",  "phase": "magic_transit",  "description": "Example ruleset description",  "rules": [    {      "action": "block",      "expression": "ip.src.country == \"BR\"",      "description": "Block traffic from Brazil"    }  ]}'
 ```
 
 ### Use an IP list
@@ -163,40 +85,7 @@ Cloudflare Network Firewall supports [using lists in expressions](https://develo
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "name": "Example ruleset",
-
-  "kind": "root",
-
-  "phase": "magic_transit",
-
-  "description": "Example ruleset description",
-
-  "rules": [
-
-    {
-
-      "action": "block",
-
-      "expression": "ip.src in $cf.anonymizer",
-
-      "description": "Block traffic from anonymizer proxies"
-
-    }
-
-  ]
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "name": "Example ruleset",  "kind": "root",  "phase": "magic_transit",  "description": "Example ruleset description",  "rules": [    {      "action": "block",      "expression": "ip.src in $cf.anonymizer",      "description": "Block traffic from anonymizer proxies"    }  ]}'
 ```
 
 ```json

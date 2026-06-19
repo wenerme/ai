@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,263 +26,53 @@ Prerequisites:
 
 Configure your Wrangler file as follows:
 
-* [  wrangler.jsonc ](#tab-panel-8353)
-* [  wrangler.toml ](#tab-panel-8354)
+* [  wrangler.jsonc ](#tab-panel-8429)
+* [  wrangler.toml ](#tab-panel-8430)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "my-worker",
-
-  "main": "src/index.ts",
-
-  "kv_namespaces": [
-
-    {
-
-      "binding": "YOUR_KV_NAMESPACE",
-
-      "id": "<id_of_your_namespace>"
-
-    }
-
-  ],
-
-  "durable_objects": {
-
-    "bindings": [
-
-      {
-
-        "name": "YOUR_DO_CLASS",
-
-        "class_name": "YourDurableObject"
-
-      }
-
-    ]
-
-  }
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-worker",  "main": "src/index.ts",  "kv_namespaces": [    {      "binding": "YOUR_KV_NAMESPACE",      "id": "<id_of_your_namespace>"    }  ],  "durable_objects": {    "bindings": [      {        "name": "YOUR_DO_CLASS",        "class_name": "YourDurableObject"      }    ]  }}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "my-worker"
-
-main = "src/index.ts"
-
-
-[[kv_namespaces]]
-
-binding = "YOUR_KV_NAMESPACE"
-
-id = "<id_of_your_namespace>"
-
-
-[[durable_objects.bindings]]
-
-name = "YOUR_DO_CLASS"
-
-class_name = "YourDurableObject"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-worker"main = "src/index.ts"
+[[kv_namespaces]]binding = "YOUR_KV_NAMESPACE"id = "<id_of_your_namespace>"
+[[durable_objects.bindings]]name = "YOUR_DO_CLASS"class_name = "YourDurableObject"
 ```
 
-* [  TypeScript ](#tab-panel-8351)
-* [  Python ](#tab-panel-8352)
+* [  TypeScript ](#tab-panel-8427)
+* [  Python ](#tab-panel-8428)
 
 TypeScript
 
 ```
-
 import { DurableObject } from "cloudflare:workers";
-
-
-interface Env {
-
-  YOUR_KV_NAMESPACE: KVNamespace;
-
-  YOUR_DO_CLASS: DurableObjectNamespace;
-
-}
-
-
-export default {
-
-  async fetch(req: Request, env: Env): Promise<Response> {
-
-    // Assume each Durable Object is mapped to a roomId in a query parameter
-
-    // In a production application, this will likely be a roomId defined by your application
-
-    // that you validate (and/or authenticate) first.
-
-    let url = new URL(req.url);
-
-    let roomIdParam = url.searchParams.get("roomId");
-
-
-    if (roomIdParam) {
-
-      // Get a stub that allows you to call that Durable Object
-
-      let durableObjectStub = env.YOUR_DO_CLASS.getByName(roomIdParam);
-
-
-      // Pass the request to that Durable Object and await the response
-
-      // This invokes the constructor once on your Durable Object class (defined further down)
-
-      // on the first initialization, and the fetch method on each request.
-
-      //
-
-      // You could pass the original Request to the Durable Object's fetch method
-
-      // or a simpler URL with just the roomId.
-
-      let response = await durableObjectStub.fetch(`http://do/${roomId}`);
-
-
-      // This would return the value you read from KV *within* the Durable Object.
-
-      return response;
-
-    }
-
-  },
-
-};
-
-
-export class YourDurableObject extends DurableObject {
-
-  constructor(
-
-    public state: DurableObjectState,
-
-    env: Env,
-
-  ) {
-
-    super(state, env);
-
-  }
-
-
-  async fetch(request: Request) {
-
-    // Error handling elided for brevity.
-
-    // Write to KV
-
-    await this.env.YOUR_KV_NAMESPACE.put("some-key");
-
-
-    // Fetch from KV
-
-    let val = await this.env.YOUR_KV_NAMESPACE.get("some-other-key");
-
-
-    return Response.json(val);
-
-  }
-
-}
-
-
+interface Env {  YOUR_KV_NAMESPACE: KVNamespace;  YOUR_DO_CLASS: DurableObjectNamespace;}
+export default {  async fetch(req: Request, env: Env): Promise<Response> {    // Assume each Durable Object is mapped to a roomId in a query parameter    // In a production application, this will likely be a roomId defined by your application    // that you validate (and/or authenticate) first.    let url = new URL(req.url);    let roomIdParam = url.searchParams.get("roomId");
+    if (roomIdParam) {      // Get a stub that allows you to call that Durable Object      let durableObjectStub = env.YOUR_DO_CLASS.getByName(roomIdParam);
+      // Pass the request to that Durable Object and await the response      // This invokes the constructor once on your Durable Object class (defined further down)      // on the first initialization, and the fetch method on each request.      //      // You could pass the original Request to the Durable Object's fetch method      // or a simpler URL with just the roomId.      let response = await durableObjectStub.fetch(`http://do/${roomId}`);
+      // This would return the value you read from KV *within* the Durable Object.      return response;    }  },};
+export class YourDurableObject extends DurableObject {  constructor(    public state: DurableObjectState,    env: Env,  ) {    super(state, env);  }
+  async fetch(request: Request) {    // Error handling elided for brevity.    // Write to KV    await this.env.YOUR_KV_NAMESPACE.put("some-key");
+    // Fetch from KV    let val = await this.env.YOUR_KV_NAMESPACE.get("some-other-key");
+    return Response.json(val);  }}
 ```
 
 Python
 
 ```
-
-from workers import DurableObject, Response, WorkerEntrypoint
-
-from urllib.parse import urlparse, parse_qs
-
-
-class Default(WorkerEntrypoint):
-
-  async def fetch(self, req):
-
-    # Assume each Durable Object is mapped to a roomId in a query parameter
-
-    # In a production application, this will likely be a roomId defined by your application
-
-    # that you validate (and/or authenticate) first.
-
-    url = req.url
-
-    parsed_url = urlparse(url)
-
-    room_id_param = parse_qs(parsed_url.query).get('roomId', [None])[0]
-
-
-    if room_id_param:
-
-      # Get a stub that allows you to call that Durable Object
-
-      durable_object_stub = self.env.YOUR_DO_CLASS.getByName(room_id_param)
-
-
-      # Pass the request to that Durable Object and await the response
-
-      # This invokes the constructor once on your Durable Object class (defined further down)
-
-      # on the first initialization, and the fetch method on each request.
-
-      #
-
-      # You could pass the original Request to the Durable Object's fetch method
-
-      # or a simpler URL with just the roomId.
-
-      response = await durable_object_stub.fetch(f"http://do/{room_id_param}")
-
-
-      # This would return the value you read from KV *within* the Durable Object.
-
-      return response
-
-
-class YourDurableObject(DurableObject):
-
-  def __init__(self, state, env):
-
-    super().__init__(state, env)
-
-
-  async def fetch(self, request):
-
-    # Error handling elided for brevity.
-
-    # Write to KV
-
-    await self.env.YOUR_KV_NAMESPACE.put("some-key", "some-value")
-
-
-    # Fetch from KV
-
-    val = await self.env.YOUR_KV_NAMESPACE.get("some-other-key")
-
-
+from workers import DurableObject, Response, WorkerEntrypointfrom urllib.parse import urlparse, parse_qs
+class Default(WorkerEntrypoint):  async def fetch(self, req):    # Assume each Durable Object is mapped to a roomId in a query parameter    # In a production application, this will likely be a roomId defined by your application    # that you validate (and/or authenticate) first.    url = req.url    parsed_url = urlparse(url)    room_id_param = parse_qs(parsed_url.query).get('roomId', [None])[0]
+    if room_id_param:      # Get a stub that allows you to call that Durable Object      durable_object_stub = self.env.YOUR_DO_CLASS.getByName(room_id_param)
+      # Pass the request to that Durable Object and await the response      # This invokes the constructor once on your Durable Object class (defined further down)      # on the first initialization, and the fetch method on each request.      #      # You could pass the original Request to the Durable Object's fetch method      # or a simpler URL with just the roomId.      response = await durable_object_stub.fetch(f"http://do/{room_id_param}")
+      # This would return the value you read from KV *within* the Durable Object.      return response
+class YourDurableObject(DurableObject):  def __init__(self, state, env):    super().__init__(state, env)
+  async def fetch(self, request):    # Error handling elided for brevity.    # Write to KV    await self.env.YOUR_KV_NAMESPACE.put("some-key", "some-value")
+    # Fetch from KV    val = await self.env.YOUR_KV_NAMESPACE.get("some-other-key")
     return Response.json(val)
-
-
 ```
 
 ```json

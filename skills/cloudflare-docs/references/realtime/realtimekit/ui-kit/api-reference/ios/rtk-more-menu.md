@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -36,25 +36,8 @@ A bottom sheet menu that displays meeting action options such as chat, polls, an
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let menu = RtkMoreMenu(
-
-    features: [.chat, .polls, .participants],
-
-    onSelect: { menuType in
-
-        print("Selected: \(menuType)")
-
-    }
-
-)
-
-menu.show(on: self.view)
-
-
+let menu = RtkMoreMenu(    features: [.chat, .polls, .participants],    onSelect: { menuType in        print("Selected: \(menuType)")    })menu.show(on: self.view)
 ```
 
 ### With title
@@ -62,45 +45,8 @@ menu.show(on: self.view)
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let menu = RtkMoreMenu(
-
-    title: "More Options",
-
-    features: [.chat, .polls, .participants],
-
-    onSelect: { menuType in
-
-        switch menuType {
-
-        case .chat:
-
-            print("Open chat")
-
-        case .polls:
-
-            print("Open polls")
-
-        case .participants:
-
-            print("Open participants")
-
-        default:
-
-            break
-
-        }
-
-    }
-
-)
-
-menu.show(on: self.view)
-
-
+let menu = RtkMoreMenu(    title: "More Options",    features: [.chat, .polls, .participants],    onSelect: { menuType in        switch menuType {        case .chat:            print("Open chat")        case .polls:            print("Open polls")        case .participants:            print("Open participants")        default:            break        }    })menu.show(on: self.view)
 ```
 
 ```json

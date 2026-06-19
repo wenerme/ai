@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -34,13 +34,14 @@ You do not need to be a Google Cloud Platform user to integrate Google Workspace
 6. Return to the **APIs & Services** page and go to **Credentials**.
 7. Select **Configure Consent Screen**.  
 ![Location to configure a Consent Screen in the Google Cloud Platform console.](https://developers.cloudflare.com/_astro/configure-consent-screen.ChcdZJTT_19gGur.webp)
-8. To configure the consent screen:  
-   1. Select **Get Started**.  
-   2. Enter an **App name** and a **User support email**.  
-   3. Choose **Internal** as the Audience Type. This Audience Type limits authorization requests to users in your Google Workspace and blocks users who have regular Gmail addresses.  
-   4. Enter your **Contact Information**. Google Cloud Platform requires an email in your account.  
-   5. Agree to Google's user data policy and select **Continue**.  
-   6. Select **Create**.
+8. To configure the consent screen:
+
+  1. Select **Get Started**.
+  2. Enter an **App name** and a **User support email**.
+  3. Choose **Internal** as the Audience Type. This Audience Type limits authorization requests to users in your Google Workspace and blocks users who have regular Gmail addresses.
+  4. Enter your **Contact Information**. Google Cloud Platform requires an email in your account.
+  5. Agree to Google's user data policy and select **Continue**.
+  6. Select **Create**.
 9. The OAuth overview page will load. Select **Create OAuth Client**.  
 ![Location to create an OAuth client in the Google Cloud Platform console.](https://developers.cloudflare.com/_astro/create-oauth-client.BkzE5MZU_Z1EL96B.webp)
 10. Choose _Web application_ as the **Application type** and give your OAuth Client ID a name.
@@ -82,26 +83,7 @@ To test successfully, you must [finish setup ↗](https://community.cloudflare.c
 ## Example API Configuration
 
 ```
-
-{
-
-  "config": {
-
-    "client_id": "<your client id>",
-
-    "client_secret": "<your client secret>",
-
-    "apps_domain": "mycompany.com"
-
-  },
-
-  "type": "google-apps",
-
-  "name": "my example idp"
-
-}
-
-
+{  "config": {    "client_id": "<your client id>",    "client_secret": "<your client secret>",    "apps_domain": "mycompany.com"  },  "type": "google-apps",  "name": "my example idp"}
 ```
 
 ## Troubleshooting

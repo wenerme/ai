@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,21 +30,8 @@ Base name tag view with an icon, title, and optional subtitle. Serves as the fou
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let nameTag = RtkNameTag(
-
-    image: RtkImage(image: UIImage(systemName: "mic")),
-
-    title: "John Doe"
-
-)
-
-view.addSubview(nameTag)
-
-
+let nameTag = RtkNameTag(    image: RtkImage(image: UIImage(systemName: "mic")),    title: "John Doe")view.addSubview(nameTag)
 ```
 
 ### With subtitle
@@ -52,23 +39,8 @@ view.addSubview(nameTag)
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let nameTag = RtkNameTag(
-
-    image: RtkImage(image: UIImage(systemName: "mic")),
-
-    title: "John Doe",
-
-    subtitle: "Host"
-
-)
-
-view.addSubview(nameTag)
-
-
+let nameTag = RtkNameTag(    image: RtkImage(image: UIImage(systemName: "mic")),    title: "John Doe",    subtitle: "Host")view.addSubview(nameTag)
 ```
 
 ```json

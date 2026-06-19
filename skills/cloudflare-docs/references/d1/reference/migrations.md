@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -36,118 +36,38 @@ By default, migrations are created in the `migrations/` folder in your Worker pr
 
 This location and table name can be customized in your Wrangler file, inside the D1 binding.
 
-* [  wrangler.jsonc ](#tab-panel-7909)
-* [  wrangler.toml ](#tab-panel-7910)
+* [  wrangler.jsonc ](#tab-panel-7985)
+* [  wrangler.toml ](#tab-panel-7986)
 
 JSONC
 
 ```
-
-{
-
-  "d1_databases": [
-
-    {
-
-      "binding": "<BINDING_NAME>", // i.e. if you set this to "DB", it will be available in your Worker at `env.DB`
-
-      "database_name": "<DATABASE_NAME>",
-
-      "database_id": "<UUID>",
-
-      "preview_database_id": "<UUID>",
-
-      "migrations_table": "<d1_migrations>", // Customize this value to change your applied migrations table name
-
-      "migrations_dir": "<FOLDER_NAME>", // Specify your custom migration directory
-
-      "migrations_pattern": "<GLOB>" // Optional: discover migrations using a glob pattern (see below)
-
-    }
-
-  ]
-
-}
-
-
+{  "d1_databases": [    {      "binding": "<BINDING_NAME>", // i.e. if you set this to "DB", it will be available in your Worker at `env.DB`      "database_name": "<DATABASE_NAME>",      "database_id": "<UUID>",      "preview_database_id": "<UUID>",      "migrations_table": "<d1_migrations>", // Customize this value to change your applied migrations table name      "migrations_dir": "<FOLDER_NAME>", // Specify your custom migration directory      "migrations_pattern": "<GLOB>" // Optional: discover migrations using a glob pattern (see below)    }  ]}
 ```
 
 TOML
 
 ```
-
-[[d1_databases]]
-
-binding = "<BINDING_NAME>"
-
-database_name = "<DATABASE_NAME>"
-
-database_id = "<UUID>"
-
-preview_database_id = "<UUID>"
-
-migrations_table = "<d1_migrations>"
-
-migrations_dir = "<FOLDER_NAME>"
-
-migrations_pattern = "<GLOB>"
-
-
+[[d1_databases]]binding = "<BINDING_NAME>"database_name = "<DATABASE_NAME>"database_id = "<UUID>"preview_database_id = "<UUID>"migrations_table = "<d1_migrations>"migrations_dir = "<FOLDER_NAME>"migrations_pattern = "<GLOB>"
 ```
 
 ## Nested migration layouts
 
 By default, `wrangler d1 migrations apply` looks for top-level `.sql` files inside `migrations_dir`. If you use an ORM such as [Drizzle ↗](https://orm.drizzle.team/) that writes each migration as its own subdirectory (for example, `migrations/0001_init/migration.sql`), set `migrations_pattern` to the glob that matches your layout:
 
-* [  wrangler.jsonc ](#tab-panel-7911)
-* [  wrangler.toml ](#tab-panel-7912)
+* [  wrangler.jsonc ](#tab-panel-7987)
+* [  wrangler.toml ](#tab-panel-7988)
 
 JSONC
 
 ```
-
-{
-
-  "d1_databases": [
-
-    {
-
-      "binding": "DB",
-
-      "database_name": "my-database",
-
-      "database_id": "<UUID>",
-
-      "migrations_dir": "migrations",
-
-      "migrations_pattern": "migrations/*/migration.sql"
-
-    }
-
-  ]
-
-}
-
-
+{  "d1_databases": [    {      "binding": "DB",      "database_name": "my-database",      "database_id": "<UUID>",      "migrations_dir": "migrations",      "migrations_pattern": "migrations/*/migration.sql"    }  ]}
 ```
 
 TOML
 
 ```
-
-[[d1_databases]]
-
-binding = "DB"
-
-database_name = "my-database"
-
-database_id = "<UUID>"
-
-migrations_dir = "migrations"
-
-migrations_pattern = "migrations/*/migration.sql"
-
-
+[[d1_databases]]binding = "DB"database_name = "my-database"database_id = "<UUID>"migrations_dir = "migrations"migrations_pattern = "migrations/*/migration.sql"
 ```
 
 Rules for `migrations_pattern`:

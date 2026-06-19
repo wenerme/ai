@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/support/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,10 +26,10 @@ The `413 Payload Too Large` status code often occurs when clients attempt to upl
 
 The upload limit for the Cloudflare API depends on your plan. If you exceed this limit, your API call will receive a `413 Request Entity Too Large` error.
 
-| Free            | Pro    | Business | Enterprise |         |
-| --------------- | ------ | -------- | ---------- | ------- |
-| Availability    | Yes    | Yes      | Yes        | Yes     |
-| Max upload size | 100 MB | 100 MB   | 200 MB     | 500+ MB |
+|                 | Free   | Pro    | Business | Enterprise |
+| --------------- | ------ | ------ | -------- | ---------- |
+| Availability    | Yes    | Yes    | Yes      | Yes        |
+| Max upload size | 100 MB | 100 MB | 200 MB   | 500+ MB    |
 
 Keep in mind, customers can reduce the **Maximum Upload Size** from the zone's **Network** page which can cause a `413`.
 

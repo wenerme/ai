@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,22 +35,7 @@ To create an index on a D1 table, use the `CREATE INDEX` SQL command and specify
 For example, given the following `orders` table, you may want to create an index on `customer_id`. Nearly all of your queries against that table filter on `customer_id`, and you would see a performance improvement by creating an index for it.
 
 ```
-
-CREATE TABLE IF NOT EXISTS orders (
-
-    order_id INTEGER PRIMARY KEY,
-
-    customer_id STRING NOT NULL, -- for example, a unique ID aba0e360-1e04-41b3-91a0-1f2263e1e0fb
-
-    order_date STRING NOT NULL,
-
-    status INTEGER NOT NULL,
-
-    last_updated_date STRING NOT NULL
-
-)
-
-
+CREATE TABLE IF NOT EXISTS orders (    order_id INTEGER PRIMARY KEY,    customer_id STRING NOT NULL, -- for example, a unique ID aba0e360-1e04-41b3-91a0-1f2263e1e0fb    order_date STRING NOT NULL,    status INTEGER NOT NULL,    last_updated_date STRING NOT NULL)
 ```
 
 To create the index on the `customer_id` column, execute the below statement against your database:
@@ -60,26 +45,14 @@ Note
 A common naming format for indexes is `idx_TABLE_NAME_COLUMN_NAMES`, so that you can identify the table and column(s) your indexes are for when managing your database.
 
 ```
-
 CREATE INDEX IF NOT EXISTS idx_orders_customer_id ON orders(customer_id)
-
-
 ```
 
 Queries that reference the `customer_id` column will now benefit from the index:
 
 ```
-
--- Uses the index: the indexed column is referenced by the query.
-
-SELECT * FROM orders WHERE customer_id = ?
-
-
--- Does not use the index: customer_id is not in the query.
-
-SELECT * FROM orders WHERE order_date = '2023-05-01'
-
-
+-- Uses the index: the indexed column is referenced by the query.SELECT * FROM orders WHERE customer_id = ?
+-- Does not use the index: customer_id is not in the query.SELECT * FROM orders WHERE order_date = '2023-05-01'
 ```
 
 In more complex cases, you can confirm whether an index was used by D1 by [analyzing a query](#test-an-index) directly.
@@ -97,27 +70,13 @@ For more information, refer to [PRAGMA optimize](https://developers.cloudflare.c
 List the indexes on a database, as well as the SQL definition, by querying the `sqlite_schema` system table:
 
 ```
-
 SELECT name, type, sql FROM sqlite_schema WHERE type IN ('index');
-
-
 ```
 
 This will return output resembling the below:
 
 ```
-
-┌──────────────────────────────────┬───────┬────────────────────────────────────────┐
-
-│ name                             │ type  │ sql                                    │
-
-├──────────────────────────────────┼───────┼────────────────────────────────────────┤
-
-│ idx_users_id                     │ index │ CREATE INDEX idx_users_id ON users(id) │
-
-└──────────────────────────────────┴───────┴────────────────────────────────────────┘
-
-
+┌──────────────────────────────────┬───────┬────────────────────────────────────────┐│ name                             │ type  │ sql                                    │├──────────────────────────────────┼───────┼────────────────────────────────────────┤│ idx_users_id                     │ index │ CREATE INDEX idx_users_id ON users(id) │└──────────────────────────────────┴───────┴────────────────────────────────────────┘
 ```
 
 Note that you cannot modify this table, or an existing index. To modify an index, [delete it first](#remove-indexes) and [create a new index](#create-an-index) with the updated definition.
@@ -129,14 +88,7 @@ Validate that an index was used for a query by prepending a query with [EXPLAIN 
 For example, if you assume the `users` table has an `email_address TEXT` column and you created an index `CREATE UNIQUE INDEX idx_email_address ON users(email_address)`, any query with a predicate on `email_address` should use your index.
 
 ```
-
-EXPLAIN QUERY PLAN SELECT * FROM users WHERE email_address = 'foo@example.com';
-
-QUERY PLAN
-
-`--SEARCH users USING INDEX idx_email_address (email_address=?)
-
-
+EXPLAIN QUERY PLAN SELECT * FROM users WHERE email_address = 'foo@example.com';QUERY PLAN`--SEARCH users USING INDEX idx_email_address (email_address=?)
 ```
 
 Review the `USING INDEX <INDEX_NAME>` output from the query planner, confirming the index was used.
@@ -173,10 +125,7 @@ Partial indexes are indexes over a subset of rows in a table. Partial indexes ar
 A partial index that filters out completed orders from the index would resemble the following:
 
 ```
-
 CREATE INDEX idx_order_status_not_complete ON orders(order_status) WHERE order_status != 6
-
-
 ```
 
 Partial indexes can be faster at read time (less rows in the index) and at write time (fewer writes to the index) than full indexes. You can also combine a partial index with a [multi-column index](#multi-column-indexes).

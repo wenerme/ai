@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,28 +26,25 @@ Comparison operators return `true` when a value from an HTTP request matches a v
 This is the general pattern for using comparison operators:
 
 ```
-
 <field> <comparison_operator> <value>
-
-
 ```
 
 The Rules language supports these comparison operators:
 
-| Name                                                  | Operator Notation | Supported Data Types |    |        |                                                                      |                                                             |
-| ----------------------------------------------------- | ----------------- | -------------------- | -- | ------ | -------------------------------------------------------------------- | ----------------------------------------------------------- |
-| English                                               | C-like            | String1              | IP | Number | Example (operator in bold)                                           |                                                             |
-| Equal                                                 | eq                | \==                  | ✅  | ✅      | ✅                                                                    | http.request.uri.path **eq** "/articles/2008/"              |
-| Not equal                                             | ne                | !=                   | ✅  | ✅      | ✅                                                                    | ip.src **ne** 203.0.113.0                                   |
-| Less than                                             | lt                | <                    | ✅  | ❌      | ✅                                                                    | cf.waf.score **lt** 10                                      |
-| Less thanor equal                                     | le                | <=                   | ✅  | ❌      | ✅                                                                    | cf.waf.score **le** 20                                      |
-| Greater than                                          | gt                | \>                   | ✅  | ❌      | ✅                                                                    | cf.waf.score **gt** 25                                      |
-| Greater thanor equal                                  | ge                | \>=                  | ✅  | ❌      | ✅                                                                    | cf.waf.score **ge** 60                                      |
-| Contains                                              | contains          | ✅                    | ❌  | ❌      | http.request.uri.path **contains** "/articles/"                      |                                                             |
-| [Wildcard](#wildcard-matching)(case-insensitive)      | wildcard          | ✅                    | ❌  | ❌      | http.request.uri.path **wildcard** "/articles/\*"                    |                                                             |
-| [Strict wildcard](#wildcard-matching)(case-sensitive) | strict wildcard   | ✅                    | ❌  | ❌      | http.request.uri.path **strict wildcard** "/AdminTeam/\*"            |                                                             |
-| [Matches regex](#regular-expression-matching)2        | matches           | \~                   | ✅  | ❌      | ❌                                                                    | http.request.uri.path **matches** "^/articles/200\[7-8\]/$" |
-| Is in set of values / list3                           | in                | ✅                    | ✅  | ✅      | ip.src **in** { 203.0.113.0 203.0.113.1 }ip.src.asnum **in** $<LIST> |                                                             |
+| Name                                                  | Operator Notation | Supported Data Types |         |    |        |                                                                      |
+| ----------------------------------------------------- | ----------------- | -------------------- | ------- | -- | ------ | -------------------------------------------------------------------- |
+|                                                       | English           | C-like               | String1 | IP | Number | Example (operator in bold)                                           |
+| Equal                                                 | eq                | \==                  | ✅       | ✅  | ✅      | http.request.uri.path **eq** "/articles/2008/"                       |
+| Not equal                                             | ne                | !=                   | ✅       | ✅  | ✅      | ip.src **ne** 203.0.113.0                                            |
+| Less than                                             | lt                | <                    | ✅       | ❌  | ✅      | cf.waf.score **lt** 10                                               |
+| Less thanor equal                                     | le                | <=                   | ✅       | ❌  | ✅      | cf.waf.score **le** 20                                               |
+| Greater than                                          | gt                | \>                   | ✅       | ❌  | ✅      | cf.waf.score **gt** 25                                               |
+| Greater thanor equal                                  | ge                | \>=                  | ✅       | ❌  | ✅      | cf.waf.score **ge** 60                                               |
+| Contains                                              | contains          |                      | ✅       | ❌  | ❌      | http.request.uri.path **contains** "/articles/"                      |
+| [Wildcard](#wildcard-matching)(case-insensitive)      | wildcard          |                      | ✅       | ❌  | ❌      | http.request.uri.path **wildcard** "/articles/\*"                    |
+| [Strict wildcard](#wildcard-matching)(case-sensitive) | strict wildcard   |                      | ✅       | ❌  | ❌      | http.request.uri.path **strict wildcard** "/AdminTeam/\*"            |
+| [Matches regex](#regular-expression-matching)2        | matches           | \~                   | ✅       | ❌  | ❌      | http.request.uri.path **matches** "^/articles/200\[7-8\]/$"          |
+| Is in set of values / list3                           | in                |                      | ✅       | ✅  | ✅      | ip.src **in** { 203.0.113.0 203.0.113.1 }ip.src.asnum **in** $<LIST> |
 
 1 All string operators are case-sensitive unless explicitly stated as case-insensitive, such as the `wildcard` operator.  
 2 Access to the `matches` operator requires a Cloudflare Business or Enterprise plan.  
@@ -71,17 +68,8 @@ Note
 When writing your own custom expressions, you must use the `starts_with()` and `ends_with()` functions in function calls, not as operators. For example:
 
 ```
-
-# Valid function call
-
-ends_with(http.request.uri.path, ".html")
-
-
-# Invalid use of ends_with function
-
-http.request.uri.path ends_with ".html"
-
-
+# Valid function callends_with(http.request.uri.path, ".html")
+# Invalid use of ends_with functionhttp.request.uri.path ends_with ".html"
 ```
 
 ### Comparing string values
@@ -89,10 +77,7 @@ http.request.uri.path ends_with ".html"
 String comparison in rule expressions is case-sensitive. To account for possible variations of string capitalization in an expression, you can use the [lower()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lower) function and compare the result with a lowercased string, like in the following example:
 
 ```
-
 lower(http.request.uri.path) contains "/wp-login.php"
-
-
 ```
 
 [Wildcard matching](#wildcard-matching) is only supported with the `wildcard` and `strict wildcard` operators, and [regular expression matching](#regular-expression-matching) is only supported with the `matches` operator.
@@ -106,61 +91,17 @@ When using the `wildcard`/`strict wildcard` operator, the entire field value mus
 Example A
 
 ```
-
-# The following expression:
-
-http.request.full_uri wildcard "http*://example.com/a/*"
-
-
-# Would match the following URIs:
-
-# - https://example.com/a/           (the '*' matches zero characters)
-
-# - http://example.com/a/
-
-# - https://example.com/a/page.html
-
-# - https://example.com/a/sub/folder/?name=value
-
-
-# Would NOT match the following URIs:
-
-# - https://example.com/ab/
-
-# - https://example.com/b/page.html
-
-# - https://sub.example.com/a/
-
-
+# The following expression:http.request.full_uri wildcard "http*://example.com/a/*"
+# Would match the following URIs:# - https://example.com/a/           (the '*' matches zero characters)# - http://example.com/a/# - https://example.com/a/page.html# - https://example.com/a/sub/folder/?name=value
+# Would NOT match the following URIs:# - https://example.com/ab/# - https://example.com/b/page.html# - https://sub.example.com/a/
 ```
 
 Example B
 
 ```
-
-# The following expression:
-
-http.request.full_uri wildcard "*.example.com/*/page.html"
-
-
-# Would match the following URIs:
-
-# - http://sub.example.com/folder/page.html
-
-# - https://admin.example.com/team/page.html
-
-# - https://admin.example.com/team/subteam/page.html
-
-
-# Would NOT match the following URIs:
-
-# - https://example.com/ab/page.html                   ('*.example.com' matches only subdomains)
-
-# - https://sub.example.com/folder2/page.html?s=value  (http.request.full_uri includes the query string and its full value does not match)
-
-# - https://sub.example.com/a/                         ('page.html' is missing)
-
-
+# The following expression:http.request.full_uri wildcard "*.example.com/*/page.html"
+# Would match the following URIs:# - http://sub.example.com/folder/page.html# - https://admin.example.com/team/page.html# - https://admin.example.com/team/subteam/page.html
+# Would NOT match the following URIs:# - https://example.com/ab/page.html                   ('*.example.com' matches only subdomains)# - https://sub.example.com/folder2/page.html?s=value  (http.request.full_uri includes the query string and its full value does not match)# - https://sub.example.com/a/                         ('page.html' is missing)
 ```
 
 Slashes (`/`) have no special meaning in wildcard matches. In this example, the second `*` metacharacter in the expression `http.request.full_uri wildcard "*.example.com/*/page.html"` matched `folder`, `team`, and `team/subteam`.
@@ -168,21 +109,8 @@ Slashes (`/`) have no special meaning in wildcard matches. In this example, the 
 Example C
 
 ```
-
-# The following expression:
-
-http.request.full_uri wildcard "*.example.com/*" or http.request.full_uri wildcard "http*://example.com/*"
-
-
-# Would match the following URIs:
-
-# - https://example.com/folder/list.htm
-
-# - https://admin.example.com/folder/team/app1/
-
-# - https://admin.example.com/folder/team/app1/?s=foobar
-
-
+# The following expression:http.request.full_uri wildcard "*.example.com/*" or http.request.full_uri wildcard "http*://example.com/*"
+# Would match the following URIs:# - https://example.com/folder/list.htm# - https://admin.example.com/folder/team/app1/# - https://admin.example.com/folder/team/app1/?s=foobar
 ```
 
 The matching algorithm used by the `wildcard` operator is case-insensitive. To perform case-sensitive wildcard matching, use the `strict wildcard` operator.
@@ -206,10 +134,7 @@ For more information on regular expressions, refer to [String values and regular
 Logical operators combine two or more expressions into a single compound expression. A compound expression has this general syntax:
 
 ```
-
 <expression> <logical_operator> <expression>
-
-
 ```
 
 ### Supported logical operators
@@ -234,10 +159,7 @@ When writing compound expressions, it is important to be aware of the precedence
 For example, consider the following generic expression, which uses `and` and `or` operators:
 
 ```
-
 Expression1 and Expression2 or Expression3
-
-
 ```
 
 If these operators had no order of precedence, it would not be clear which of two interpretations is correct:
@@ -260,10 +182,7 @@ Only the [Expression Editor](https://developers.cloudflare.com/ruleset-engine/ru
 Use parentheses to explicitly group expressions that should be evaluated together. In this example, the parentheses do not alter the evaluation of the expression, but they unambiguously call out which logical operators to evaluate first.
 
 ```
-
 (Expression1 and Expression2) or Expression3
-
-
 ```
 
 Because grouping symbols are so explicit, you are less likely to make errors when you use them to write compound expressions.
@@ -273,10 +192,7 @@ Because grouping symbols are so explicit, you are less likely to make errors whe
 Grouping symbols are a powerful tool to enforce precedence for grouped elements of a compound expression. In this example, parentheses force the logical `or` operator to be evaluated before the logical `and`:
 
 ```
-
 Expression1 and (Expression2 or Expression3)
-
-
 ```
 
 Without parentheses, the logical `and` operator would take precedence.
@@ -286,27 +202,13 @@ Without parentheses, the logical `and` operator would take precedence.
 You can nest expressions grouped by parentheses inside other groups to create very precise, sophisticated expressions, such as this example for a rule designed to block access to a domain:
 
 ```
-
-(
-
- (http.host eq "api.example.com" and http.request.uri.path eq "/api/v2/auth") or
-
- (http.host matches "^(www|store|blog)\.example\.com" and http.request.uri.path contains "wp-login.php") or
-
- ip.src.country in {"CN" "TH" "US" "ID" "KR" "MY" "IT" "SG" "GB"} or ip.src.asnum in {12345 54321 11111}
-
-) and not ip.src in {11.22.33.0/24}
-
-
+( (http.host eq "api.example.com" and http.request.uri.path eq "/api/v2/auth") or (http.host matches "^(www|store|blog)\.example\.com" and http.request.uri.path contains "wp-login.php") or ip.src.country in {"CN" "TH" "US" "ID" "KR" "MY" "IT" "SG" "GB"} or ip.src.asnum in {12345 54321 11111}) and not ip.src in {11.22.33.0/24}
 ```
 
 Note that when evaluating the precedence of logical operators, parentheses inside strings delimited by quotes are ignored, such as those in the following regular expression, drawn from the example above:
 
 ```
-
 "^(www|store|blog)\.example\.com"
-
-
 ```
 
 ```json

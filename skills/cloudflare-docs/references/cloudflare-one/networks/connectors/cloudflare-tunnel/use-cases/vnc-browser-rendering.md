@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,43 +33,44 @@ For demonstration purposes, we will create a TightVNC server on an Ubuntu virtua
 2. Install XFCE and TightVNC by running the following command:  
 Terminal window  
 ```  
-sudo apt update  
-sudo apt install xfce4 xfce4-goodies dbus-x11 tightvncserver -y  
+sudo apt updatesudo apt install xfce4 xfce4-goodies dbus-x11 tightvncserver -y  
 ```  
 This command installs the desktop, some helpful utilities, and the VNC server software.
-3. To initialize the VNC server:  
-   1. Create a VNC server instance:  
-   Terminal window  
-   ```  
-   vncserver  
-   ```  
-   2. You will be prompted to set a password. This password will be used to connect to your VNC server. It is limited to 8 characters.  
-   TightVNC will now create configuration files and start a VNC session on display `:1` (which uses port `5901`).  
-   3. You will be asked if you want to create a view-only password. You can press `n` for no.  
-   4. Kill this initial session so that you can edit its configuration:  
-   Terminal window  
-   ```  
-   vncserver -kill :1  
-   ```
-4. Configure VNC to launch the XFCE desktop:  
-   1. Create a VNC configuration directory if it is missing:  
+3. To initialize the VNC server:
+
+  1. Create a VNC server instance:  
+  Terminal window  
+  ```  
+  vncserver  
+  ```
+  2. You will be prompted to set a password. This password will be used to connect to your VNC server. It is limited to 8 characters.  
+  TightVNC will now create configuration files and start a VNC session on display `:1` (which uses port `5901`).
+  3. You will be asked if you want to create a view-only password. You can press `n` for no.
+  4. Kill this initial session so that you can edit its configuration:  
+  Terminal window  
+  ```  
+  vncserver -kill :1  
+  ```
+4. Configure VNC to launch the XFCE desktop:
+
+  1. Create a VNC configuration directory if it is missing:  
 Terminal window  
 ```  
 mkdir -p ~/.vnc  
-```  
-   1. Open the `xstartup` file using a text editor. For example,  
+```
+
+  1. Open the `xstartup` file using a text editor. For example,  
 Terminal window  
 ```  
 vim ~/.vnc/xstartup  
+```
+
+  1. Update the file to the following configuration:  
 ```  
-   1. Update the file to the following configuration:  
-```  
-#!/bin/sh  
-unset SESSION_MANAGER  
-unset DBUS_SESSION_BUS_ADDRESS  
-startxfce4  
-```  
-   1. Make the file executable:  
+#!/bin/shunset SESSION_MANAGERunset DBUS_SESSION_BUS_ADDRESSstartxfce4  
+```
+
+  1. Make the file executable:  
 Terminal window  
 ```  
 chmod +x ~/.vnc/xstartup  
@@ -80,74 +81,74 @@ Terminal window
 vncserver -localhost :1  
 ```  
 The `-localhost` flag ensures the VNC server only listens for connections from the VM itself, not from the public Internet. Your VNC server is now running on port `5901`, but it is only accessible from `localhost` (`127.0.0.1`) inside the VM.
-6. (Recommended) Test the VNC server with an existing VNC client to verify any missing packages or configuration changes. For example, to test a VNC server hosted on GCP:  
-   1. Open a terminal on the client machine.  
-   2. Connect to the VNC server over SSH, forwarding your local port `5901` to the VNC server's listening port:  
-   Terminal window  
-   ```  
-   gcloud compute ssh [YOUR_VM_NAME] --zone=[YOUR_ZONE] -- -L 5901:localhost:5901  
-   ```  
-   3. Open your preferred VNC viewer application.  
-   4. In the VNC viewer, connect to the address `localhost:5901` and enter your VNC server password.  
+6. (Recommended) Test the VNC server with an existing VNC client to verify any missing packages or configuration changes. For example, to test a VNC server hosted on GCP:
+
+  1. Open a terminal on the client machine.
+  2. Connect to the VNC server over SSH, forwarding your local port `5901` to the VNC server's listening port:  
+  Terminal window  
+  ```  
+  gcloud compute ssh [YOUR_VM_NAME] --zone=[YOUR_ZONE] -- -L 5901:localhost:5901  
+  ```
+  3. Open your preferred VNC viewer application.
+  4. In the VNC viewer, connect to the address `localhost:5901` and enter your VNC server password.  
 You should see the Ubuntu VM desktop.
-7. (Optional) Configure the VNC server to start on boot:  
-   1. Find the full path to the `vncserver` command:  
-   Terminal window  
-   ```  
-   which vncserver  
-   ```  
-   ```  
-   /usr/bin/vncserver  
-   ```  
-   2. Create a new service configuration file:  
+7. (Optional) Configure the VNC server to start on boot:
+
+  1. Find the full path to the `vncserver` command:  
+  Terminal window  
+  ```  
+  which vncserver  
+  ```  
+  ```  
+  /usr/bin/vncserver  
+  ```
+  2. Create a new service configuration file:  
 Terminal window  
 ```  
 sudo vim /etc/systemd/system/vncserver@.service  
-```  
-   1. Copy and paste the following content. Replace `[YOUR_USERNAME]` with the VNC server user. If needed, update `/usr/bin/vncserver` to your `vncserver` path.  
-   TOML  
-   ```  
-   [Unit]  
-   Description=Start TightVNC server at startup  
-   After=syslog.target network.target  
-   [Service]  
-   Type=forking  
-   User=[YOUR_USERNAME]  
-   WorkingDirectory=/home/[YOUR_USERNAME]  
-   PIDFile=/home/[YOUR_USERNAME]/.vnc/%H:%i.pid  
-   ExecStartPre=-/usr/bin/vncserver -kill :%i > /dev/null 2>&1  
-   ExecStart=/usr/bin/vncserver -localhost :%i  
-   ExecStop=/usr/bin/vncserver -kill :%i  
-   [Install]  
-   WantedBy=multi-user.target  
-   ```  
-         1. Reload `systemd` to read in the new service file:  
-   Terminal window  
-   ```  
-   sudo systemctl daemon-reload  
-   ```  
-         1. Enable the service to start at boot:  
-   Terminal window  
-   ```  
-   sudo systemctl enable vncserver@1.service  
-   ```  
-   The `1` variable configures the VNC service to use display `:1` (which runs on port `5901`).  
-         1. By default, `systemd` user services only run when that user is logged in. To allow your VNC service to start on boot (before you log in), enable user linger for your user:  
-   Terminal window  
-   ```  
-   sudo loginctl enable-linger [YOUR_USERNAME]  
-   ```  
-         1. Start the service:  
-   Terminal window  
-   ```  
-   sudo systemctl start vncserver@1.service  
-   ```  
-         1. Check its status:  
-   Terminal window  
-   ```  
-   sudo systemctl status vncserver@1.service  
-   ```  
-   The VNC server will now start automatically every time the VM boots.
+```
+
+  1. Copy and paste the following content. Replace `[YOUR_USERNAME]` with the VNC server user. If needed, update `/usr/bin/vncserver` to your `vncserver` path.  
+  TOML  
+  ```  
+  [Unit]Description=Start TightVNC server at startupAfter=syslog.target network.target  
+  [Service]Type=forkingUser=[YOUR_USERNAME]WorkingDirectory=/home/[YOUR_USERNAME]  
+  PIDFile=/home/[YOUR_USERNAME]/.vnc/%H:%i.pid  
+  ExecStartPre=-/usr/bin/vncserver -kill :%i > /dev/null 2>&1ExecStart=/usr/bin/vncserver -localhost :%iExecStop=/usr/bin/vncserver -kill :%i  
+  [Install]WantedBy=multi-user.target  
+  ```
+
+    1. Reload `systemd` to read in the new service file:  
+  Terminal window  
+  ```  
+  sudo systemctl daemon-reload  
+  ```
+
+    1. Enable the service to start at boot:  
+  Terminal window  
+  ```  
+  sudo systemctl enable vncserver@1.service  
+  ```  
+  The `1` variable configures the VNC service to use display `:1` (which runs on port `5901`).
+
+    1. By default, `systemd` user services only run when that user is logged in. To allow your VNC service to start on boot (before you log in), enable user linger for your user:  
+  Terminal window  
+  ```  
+  sudo loginctl enable-linger [YOUR_USERNAME]  
+  ```
+
+    1. Start the service:  
+  Terminal window  
+  ```  
+  sudo systemctl start vncserver@1.service  
+  ```
+
+    1. Check its status:  
+  Terminal window  
+  ```  
+  sudo systemctl status vncserver@1.service  
+  ```  
+  The VNC server will now start automatically every time the VM boots.
 
 ## 2\. Connect the server to Cloudflare
 

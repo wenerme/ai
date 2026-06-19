@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,45 +27,15 @@ Renders an active plugin in a WebView with fullscreen toggle and close button. H
 ### Basic Usage
 
 ```
-
 import { RtkPluginMain } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkPluginMain meeting={meeting} plugin={activePlugin} />;
-
-}
-
-
+function MyComponent() {  return <RtkPluginMain meeting={meeting} plugin={activePlugin} />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkPluginMain } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkPluginMain
-
-      meeting={meeting}
-
-      plugin={activePlugin}
-
-      iconPack={customIconPack}
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkPluginMain      meeting={meeting}      plugin={activePlugin}      iconPack={customIconPack}    />  );}
 ```
 
 ```json

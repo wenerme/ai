@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,8 +18,8 @@ If you are using an existing [Universal SSL certificate](https://developers.clou
 
 Once you order a certificate, you can review the [certificate's status](https://developers.cloudflare.com/ssl/reference/certificate-statuses/) on the [**Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page or via the API with a [GET request](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate%5Fpacks/methods/list/).
 
-* [ Dashboard ](#tab-panel-10598)
-* [ API ](#tab-panel-10599)
+* [ Dashboard ](#tab-panel-10674)
+* [ API ](#tab-panel-10675)
 
 To create a new advanced certificate in the dashboard:
 
@@ -27,12 +27,13 @@ To create a new advanced certificate in the dashboard:
 [ Go to **Edge Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. Select **Order Advanced Certificate**.
 3. If Cloudflare does not have your billing information, you will need to enter that information.
-4. Enter the following information:  
-   * Certificate authority  
-   * Certificate hostnames  
-         * For hostnames longer than 64 characters, use the API.  
-   * Validation method  
-   * Certificate validity period
+4. Enter the following information:
+
+  * Certificate authority
+  * Certificate hostnames  
+    * For hostnames longer than 64 characters, use the API.
+  * Validation method
+  * Certificate validity period
 5. Select **Save**.
 
 To create a new certificate using the API, send a [POST request](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate%5Fpacks/methods/create/) to the Cloudflare API.
@@ -47,8 +48,8 @@ The available options for **Validation method** and **Certificate Validity Perio
 
 ## Delete a certificate
 
-* [ Dashboard ](#tab-panel-10600)
-* [ API ](#tab-panel-10601)
+* [ Dashboard ](#tab-panel-10676)
+* [ API ](#tab-panel-10677)
 
 To delete an advanced certificate in the dashboard:
 

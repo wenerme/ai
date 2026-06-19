@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,14 +26,7 @@ Turnstile script snippet
 2. Locate the `hcaptcha.render()` calls and replace the sitekey with your Turnstile sitekey and the API.  
 Render  
 ```  
-  // before  
-  hcaptcha.render(element, {  
-      sitekey: "00000000-0000-0000-0000-000000000000"  
-  })  
-  // after  
-  turnstile.render(element, {  
-      sitekey: "1x00000000000000000000AA"  
-  })  
+  // before  hcaptcha.render(element, {      sitekey: "00000000-0000-0000-0000-000000000000"  })  // after  turnstile.render(element, {      sitekey: "1x00000000000000000000AA"  })  
 ```
 
 Note

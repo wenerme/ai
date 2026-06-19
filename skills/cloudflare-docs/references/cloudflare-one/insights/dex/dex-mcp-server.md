@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -54,15 +54,7 @@ You need a Claude Pro account (or higher subscription) to configure an MCP serve
 5. Select **Edit Config** and open the `claude_desktop_config.json` file in a text editor of your choice.
 6. Copy the JSON configuration for the DEX MCP server and paste it into `claude_desktop_config.json`. Save the file.  
 ```  
-{  
-  "globalShortcut": "",  
-  "mcpServers": {  
-    "cloudflare-dex-analysis": {  
-      "command": "npx",  
-      "args": ["mcp-remote", "https://dex.mcp.cloudflare.com/mcp"]  
-    }  
-  }  
-}  
+{  "globalShortcut": "",  "mcpServers": {    "cloudflare-dex-analysis": {      "command": "npx",      "args": ["mcp-remote", "https://dex.mcp.cloudflare.com/mcp"]    }  }}  
 ```
 7. Fully close Claude by using the task manager to stop any background processes related to Claude.
 8. Open Claude, and your DEX MCP server configuration should appear on the **Local MCP servers** page.
@@ -77,20 +69,12 @@ You will need to use a CLI of your choice and npm or homebrew to install and acc
 
 1. Visit the GitHub page for the [Gemini CLI ↗](https://github.com/google-gemini/gemini-cli) and follow the installation instructions.
 2. Navigate to the `settings.json` file for your Gemini CLI install and open it in a text editor of your choice.  
-File path for the `settings.json` file  
-   * Windows: `%USERPROFILE%\.gemini\settings.json`  
-   * Mac and Linux: `~/.gemini/settings.json`
+File path for the `settings.json` file
+  * Windows: `%USERPROFILE%\.gemini\settings.json`
+  * Mac and Linux: `~/.gemini/settings.json`
 3. Copy the JSON configuration for the DEX MCP server and paste it into **settings.json**. Save the file.  
 ```  
-{  
-  "globalShortcut": "",  
-  "mcpServers": {  
-    "cloudflare-dex-analysis": {  
-      "command": "npx",  
-      "args": ["mcp-remote", "https://dex.mcp.cloudflare.com/mcp"]  
-    }  
-  }  
-}  
+{  "globalShortcut": "",  "mcpServers": {    "cloudflare-dex-analysis": {      "command": "npx",      "args": ["mcp-remote", "https://dex.mcp.cloudflare.com/mcp"]    }  }}  
 ```
 4. Run Gemini in your CLI of choice.
 5. If everything is working as expected, the Gemini CLI will show the following message:  

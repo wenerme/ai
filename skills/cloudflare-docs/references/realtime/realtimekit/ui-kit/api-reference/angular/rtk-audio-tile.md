@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,31 +29,13 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 ### Basic Usage
 
 ```
-
-<!-- component.html -->
-
-<rtk-audio-tile></rtk-audio-tile>
-
-
+<!-- component.html --><rtk-audio-tile></rtk-audio-tile>
 ```
 
 ### With Properties
 
 ```
-
-<!-- component.html -->
-
-<rtk-audio-tile
-
- [config]="defaultUiConfig"
-
- [meeting]="meeting"
-
- [participant]="participant">
-
-</rtk-audio-tile>
-
-
+<!-- component.html --><rtk-audio-tile [config]="defaultUiConfig" [meeting]="meeting" [participant]="participant"></rtk-audio-tile>
 ```
 
 ```json

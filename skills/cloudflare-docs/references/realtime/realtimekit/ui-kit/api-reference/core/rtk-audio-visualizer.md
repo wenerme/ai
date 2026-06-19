@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,39 +31,18 @@ An audio visualizer component which visualizes a participants audio. Commonly us
 ### Basic Usage
 
 ```
-
 <rtk-audio-visualizer></rtk-audio-visualizer>
-
-
 ```
 
 ### With Properties
 
 ```
-
-<rtk-audio-visualizer>
-
-</rtk-audio-visualizer>
-
-
+<rtk-audio-visualizer></rtk-audio-visualizer>
 ```
 
 ```
-
-<script>
-
-  const el = document.querySelector("rtk-audio-visualizer");
-
-
-  el.hideMuted= true;
-
-  el.isScreenShare= true;
-
-  el.participant= participant
-
-</script>
-
-
+<script>  const el = document.querySelector("rtk-audio-visualizer");
+  el.hideMuted= true;  el.isScreenShare= true;  el.participant= participant</script>
 ```
 
 ```json

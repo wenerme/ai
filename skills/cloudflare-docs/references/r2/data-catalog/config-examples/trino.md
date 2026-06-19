@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,49 +30,15 @@ Create a local directory for the catalog configuration and change directories to
 Terminal window
 
 ```
-
 mkdir -p trino-catalog && cd trino-catalog/
-
-
 ```
 
 Create a configuration file called `r2.properties` for your R2 Data Catalog connection:
 
 ```
-
-# r2.properties
-
-connector.name=iceberg
-
-
-# R2 Configuration
-
-fs.native-s3.enabled=true
-
-s3.region=auto
-
-s3.aws-access-key=<Your R2 access key>
-
-s3.aws-secret-key=<Your R2 secret>
-
-s3.endpoint=<Your R2 endpoint>
-
-s3.path-style-access=true
-
-
-# R2 Data Catalog Configuration
-
-iceberg.catalog.type=rest
-
-iceberg.rest-catalog.uri=<Your R2 Data Catalog URI>
-
-iceberg.rest-catalog.warehouse=<Your R2 Data Catalog warehouse>
-
-iceberg.rest-catalog.security=OAUTH2
-
-iceberg.rest-catalog.oauth2.token=<Your R2 authentication token>
-
-
+# r2.propertiesconnector.name=iceberg
+# R2 Configurationfs.native-s3.enabled=trues3.region=autos3.aws-access-key=<Your R2 access key>s3.aws-secret-key=<Your R2 secret>s3.endpoint=<Your R2 endpoint>s3.path-style-access=true
+# R2 Data Catalog Configurationiceberg.catalog.type=resticeberg.rest-catalog.uri=<Your R2 Data Catalog URI>iceberg.rest-catalog.warehouse=<Your R2 Data Catalog warehouse>iceberg.rest-catalog.security=OAUTH2iceberg.rest-catalog.oauth2.token=<Your R2 authentication token>
 ```
 
 ## Example usage
@@ -80,44 +46,22 @@ iceberg.rest-catalog.oauth2.token=<Your R2 authentication token>
 1. Start Trino with the R2 catalog configuration:  
 Terminal window  
 ```  
-# Create a local directory for the catalog configuration  
-mkdir -p trino-catalog  
-# Place your r2.properties file in the catalog directory  
-cp r2.properties trino-catalog/  
-# Run Trino with the catalog configuration  
-docker run -d \  
-  --name trino-r2 \  
-  -p 8080:8080 \  
-  -v $(pwd)/trino-catalog:/etc/trino/catalog \  
-  trinodb/trino:latest  
+# Create a local directory for the catalog configurationmkdir -p trino-catalog  
+# Place your r2.properties file in the catalog directorycp r2.properties trino-catalog/  
+# Run Trino with the catalog configurationdocker run -d \  --name trino-r2 \  -p 8080:8080 \  -v $(pwd)/trino-catalog:/etc/trino/catalog \  trinodb/trino:latest  
 ```
 2. Connect to Trino and query your R2 Data Catalog:  
 Terminal window  
 ```  
-# Connect to the Trino CLI  
-docker exec -it trino-r2 trino  
+# Connect to the Trino CLIdocker exec -it trino-r2 trino  
 ```
 3. In the Trino CLI, run the following commands:  
-```  
--- Show all schemas in the R2 catalog  
-SHOW SCHEMAS IN r2;  
--- Show all schemas in the R2 catalog  
-CREATE SCHEMA r2.example_schema  
--- Create a table with some values in it  
-CREATE TABLE r2.example_schema.yearly_clicks (  
-    year,  
-    clicks  
-)  
-WITH (  
-   partitioning = ARRAY['year']  
-)  
-AS VALUES  
-    (2021, 10000),  
-    (2022, 20000);  
--- Show tables in a specific schema  
-SHOW TABLES IN r2.example_schema;  
--- Query your Iceberg table  
-SELECT * FROM r2.example_schema.yearly_clicks;  
+```
+-- Show all schemas in the R2 catalogSHOW SCHEMAS IN r2;
+-- Show all schemas in the R2 catalogCREATE SCHEMA r2.example_schema
+-- Create a table with some values in itCREATE TABLE r2.example_schema.yearly_clicks (    year,    clicks)WITH (   partitioning = ARRAY['year'])AS VALUES    (2021, 10000),    (2022, 20000);
+-- Show tables in a specific schemaSHOW TABLES IN r2.example_schema;
+-- Query your Iceberg tableSELECT * FROM r2.example_schema.yearly_clicks;  
 ```
 
 ```json

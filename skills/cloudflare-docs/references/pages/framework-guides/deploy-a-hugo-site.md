@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,19 +30,16 @@ Go to [Deploy with Cloudflare Pages](#deploy-with-cloudflare-pages) if you alrea
 
 Install the Hugo CLI, using the specific instructions for your operating system.
 
-* [ macos ](#tab-panel-9391)
-* [ windows ](#tab-panel-9392)
-* [ linux ](#tab-panel-9393)
+* [ macos ](#tab-panel-9467)
+* [ windows ](#tab-panel-9468)
+* [ linux ](#tab-panel-9469)
 
 If you use the package manager [Homebrew ↗](https://brew.sh), run the `brew install` command in your terminal to install Hugo:
 
 Terminal window
 
 ```
-
 brew install hugo
-
-
 ```
 
 If you use the package manager [Chocolatey ↗](https://chocolatey.org/), run the `choco install` command in your terminal to install Hugo:
@@ -50,10 +47,7 @@ If you use the package manager [Chocolatey ↗](https://chocolatey.org/), run th
 Terminal window
 
 ```
-
 choco install hugo --confirm
-
-
 ```
 
 If you use the package manager [Scoop ↗](https://scoop.sh/), run the `scoop install` command in your terminal to install Hugo:
@@ -61,10 +55,7 @@ If you use the package manager [Scoop ↗](https://scoop.sh/), run the `scoop in
 Terminal window
 
 ```
-
 scoop install hugo
-
-
 ```
 
 The package manager for your Linux distribution may include Hugo. If this is the case, install Hugo directly using the distribution's package manager — for instance, in Ubuntu, run the following command:
@@ -72,10 +63,7 @@ The package manager for your Linux distribution may include Hugo. If this is the
 Terminal window
 
 ```
-
 sudo apt-get install hugo
-
-
 ```
 
 If your package manager does not include Hugo or you would like to download a release directly, refer to the [**Manual**](https://developers.cloudflare.com/pages/framework-guides/deploy-a-hugo-site/#manual-installation) section.
@@ -93,10 +81,7 @@ With Hugo installed, refer to [Hugo's Quick Start ↗](https://gohugo.io/getting
 Terminal window
 
 ```
-
 hugo new site my-hugo-site
-
-
 ```
 
 Hugo sites use themes to customize the look and feel of the statically built HTML site. There are a number of themes available at [themes.gohugo.io ↗](https://themes.gohugo.io) — for now, use the [Ananke theme ↗](https://themes.gohugo.io/themes/gohugo-theme-ananke/) by running the following commands in your terminal:
@@ -104,16 +89,7 @@ Hugo sites use themes to customize the look and feel of the statically built HTM
 Terminal window
 
 ```
-
-cd my-hugo-site
-
-git init
-
-git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke
-
-echo "theme = 'ananke'" >> hugo.toml
-
-
+cd my-hugo-sitegit initgit submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/anankeecho "theme = 'ananke'" >> hugo.toml
 ```
 
 ## Create a post
@@ -123,10 +99,7 @@ Create a new post to give your Hugo site some initial content. Run the `hugo new
 Terminal window
 
 ```
-
 hugo new content posts/hello-world.md
-
-
 ```
 
 Inside of `hello-world.md`, add some initial content to create your post. Remove the `draft` line in your post's frontmatter when you are ready to publish the post. Any posts with `draft: true` set will be skipped by Hugo's build process.
@@ -138,14 +111,7 @@ Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). Aft
 Terminal window
 
 ```
-
-git remote add origin https://github.com/<your-gh-username>/<repository-name>
-
-git branch -M main
-
-git push -u origin main
-
-
+git remote add origin https://github.com/<your-gh-username>/<repository-name>git branch -M maingit push -u origin main
 ```
 
 ## Deploy with Cloudflare Pages
@@ -176,10 +142,7 @@ Your final build command may look like this:
 Terminal window
 
 ```
-
 hugo -b $CF_PAGES_URL
-
-
 ```
 
 After completing deployment configuration, select the **Save and Deploy**. You should see Cloudflare Pages installing `hugo` and your project dependencies, and building your site, before deploying it.

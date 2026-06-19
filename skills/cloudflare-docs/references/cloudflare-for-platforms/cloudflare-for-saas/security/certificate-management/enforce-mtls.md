@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -50,114 +50,20 @@ Check custom hostname TLS settings
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `SSL and Certificates Write`
 * `SSL and Certificates Read`
 
 Custom Hostname Details
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Response example
 
 ```
-
-  "success": true,
-
-  "result": {
-
-    "id": "<CUSTOM_HOSTNAME_ID>",
-
-    "ssl": {
-
-12 collapsed lines
-
-      "id": "<CERTIFICATE_ID>",
-
-      "bundle_method": "ubiquitous",
-
-      "certificate_authority": "<CERTIFICATE_AUTHORITY>",
-
-      "custom_certificate": "",
-
-      "custom_csr_id": "",
-
-      "custom_key": "",
-
-      "expires_on": "",
-
-      "hosts": [
-
-        "app.example.com",
-
-        "*.app.example.com"
-
-      ],
-
-      "issuer": "",
-
-      "method": "http",
-
-      "settings": {},
-
-      "signature": "SHA256WithRSA",
-
-      "type": "dv",
-
-20 collapsed lines
-
-      "uploaded_on": "2020-02-06T18:11:23.531995Z",
-
-      "validation_errors": [
-
-        {
-
-          "message": "SERVFAIL looking up CAA for app.example.com"
-
-        }
-
-      ],
-
-      "validation_records": [
-
-        {
-
-          "emails": [
-
-            "administrator@example.com",
-
-            "webmaster@example.com"
-
-          ],
-
-          "http_body": "ca3-574923932a82475cb8592200f1a2a23d",
-
-          "http_url": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt",
-
-          "txt_name": "_acme-challenge.app.example.com",
-
-          "txt_value": "810b7d5f01154524b961ba0cd578acc2"
-
-        }
-
-      ],
-
-      "wildcard": false
-
-    },
-
-  }
-
-
+  "success": true,  "result": {    "id": "<CUSTOM_HOSTNAME_ID>",    "ssl": {12 collapsed lines      "id": "<CERTIFICATE_ID>",      "bundle_method": "ubiquitous",      "certificate_authority": "<CERTIFICATE_AUTHORITY>",      "custom_certificate": "",      "custom_csr_id": "",      "custom_key": "",      "expires_on": "",      "hosts": [        "app.example.com",        "*.app.example.com"      ],      "issuer": "",      "method": "http",      "settings": {},      "signature": "SHA256WithRSA",      "type": "dv",20 collapsed lines      "uploaded_on": "2020-02-06T18:11:23.531995Z",      "validation_errors": [        {          "message": "SERVFAIL looking up CAA for app.example.com"        }      ],      "validation_records": [        {          "emails": [            "administrator@example.com",            "webmaster@example.com"          ],          "http_body": "ca3-574923932a82475cb8592200f1a2a23d",          "http_url": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt",          "txt_name": "_acme-challenge.app.example.com",          "txt_value": "810b7d5f01154524b961ba0cd578acc2"        }      ],      "wildcard": false    },  }
 ```
 
 * Whenever you make changes to a custom hostname via dashboard, the value that is set for Minimum TLS version will apply. If you have a scenario as explained in the bullet above, the dashboard change will override the zone-level configuration that was being applied.
@@ -171,8 +77,8 @@ Refer to [Minimum TLS version - SSL/TLS](https://developers.cloudflare.com/ssl/e
 
 Minimum TLS version for custom hostname
 
-* [ Dashboard ](#tab-panel-7019)
-* [ API ](#tab-panel-7020)
+* [ Dashboard ](#tab-panel-7095)
+* [ API ](#tab-panel-7096)
 
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.  
 [ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
@@ -185,152 +91,33 @@ In the API documentation, refer to [SSL properties of a custom hostname](https:/
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `SSL and Certificates Write`
 * `SSL and Certificates Read`
 
 Custom Hostname Details
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Response example
 
 ```
-
-  "success": true,
-
-  "result": {
-
-    "id": "<CUSTOM_HOSTNAME_ID>",
-
-    "ssl": {
-
-12 collapsed lines
-
-      "id": "<CERTIFICATE_ID>",
-
-      "bundle_method": "ubiquitous",
-
-      "certificate_authority": "<CERTIFICATE_AUTHORITY>",
-
-      "custom_certificate": "",
-
-      "custom_csr_id": "",
-
-      "custom_key": "",
-
-      "expires_on": "",
-
-      "hosts": [
-
-        "app.example.com",
-
-        "*.app.example.com"
-
-      ],
-
-      "issuer": "",
-
-      "method": "http",
-
-      "settings": {},
-
-      "signature": "SHA256WithRSA",
-
-      "type": "dv",
-
-20 collapsed lines
-
-      "uploaded_on": "2020-02-06T18:11:23.531995Z",
-
-      "validation_errors": [
-
-        {
-
-          "message": "SERVFAIL looking up CAA for app.example.com"
-
-        }
-
-      ],
-
-      "validation_records": [
-
-        {
-
-          "emails": [
-
-            "administrator@example.com",
-
-            "webmaster@example.com"
-
-          ],
-
-          "http_body": "ca3-574923932a82475cb8592200f1a2a23d",
-
-          "http_url": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt",
-
-          "txt_name": "_acme-challenge.app.example.com",
-
-          "txt_value": "810b7d5f01154524b961ba0cd578acc2"
-
-        }
-
-      ],
-
-      "wildcard": false
-
-    },
-
-  }
-
-
+  "success": true,  "result": {    "id": "<CUSTOM_HOSTNAME_ID>",    "ssl": {12 collapsed lines      "id": "<CERTIFICATE_ID>",      "bundle_method": "ubiquitous",      "certificate_authority": "<CERTIFICATE_AUTHORITY>",      "custom_certificate": "",      "custom_csr_id": "",      "custom_key": "",      "expires_on": "",      "hosts": [        "app.example.com",        "*.app.example.com"      ],      "issuer": "",      "method": "http",      "settings": {},      "signature": "SHA256WithRSA",      "type": "dv",20 collapsed lines      "uploaded_on": "2020-02-06T18:11:23.531995Z",      "validation_errors": [        {          "message": "SERVFAIL looking up CAA for app.example.com"        }      ],      "validation_records": [        {          "emails": [            "administrator@example.com",            "webmaster@example.com"          ],          "http_body": "ca3-574923932a82475cb8592200f1a2a23d",          "http_url": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt",          "txt_name": "_acme-challenge.app.example.com",          "txt_value": "810b7d5f01154524b961ba0cd578acc2"        }      ],      "wildcard": false    },  }
 ```
 
 1. After you take note of these values, make a `PATCH` request to the [Edit Custom Hostname](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/edit/) endpoint, providing both the minimum TLS version you want to define and the same `type` and `method` values that you obtained from the previous step.
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `SSL and Certificates Write`
 
 Edit Custom Hostname
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \
-
-  --request PATCH \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "ssl": {
-
-        "method": "http",
-
-        "type": "dv",
-
-        "settings": {
-
-            "min_tls_version:": "1.2"
-
-        }
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "ssl": {        "method": "http",        "type": "dv",        "settings": {            "min_tls_version:": "1.2"        }    }  }'
 ```
 
 ## Cipher suites
@@ -349,158 +136,33 @@ In the API documentation, refer to [SSL properties of a custom hostname](https:/
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `SSL and Certificates Write`
 * `SSL and Certificates Read`
 
 Custom Hostname Details
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Response example
 
 ```
-
-  "success": true,
-
-  "result": {
-
-    "id": "<CUSTOM_HOSTNAME_ID>",
-
-    "ssl": {
-
-12 collapsed lines
-
-      "id": "<CERTIFICATE_ID>",
-
-      "bundle_method": "ubiquitous",
-
-      "certificate_authority": "<CERTIFICATE_AUTHORITY>",
-
-      "custom_certificate": "",
-
-      "custom_csr_id": "",
-
-      "custom_key": "",
-
-      "expires_on": "",
-
-      "hosts": [
-
-        "app.example.com",
-
-        "*.app.example.com"
-
-      ],
-
-      "issuer": "",
-
-      "method": "http",
-
-      "settings": {},
-
-      "signature": "SHA256WithRSA",
-
-      "type": "dv",
-
-20 collapsed lines
-
-      "uploaded_on": "2020-02-06T18:11:23.531995Z",
-
-      "validation_errors": [
-
-        {
-
-          "message": "SERVFAIL looking up CAA for app.example.com"
-
-        }
-
-      ],
-
-      "validation_records": [
-
-        {
-
-          "emails": [
-
-            "administrator@example.com",
-
-            "webmaster@example.com"
-
-          ],
-
-          "http_body": "ca3-574923932a82475cb8592200f1a2a23d",
-
-          "http_url": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt",
-
-          "txt_name": "_acme-challenge.app.example.com",
-
-          "txt_value": "810b7d5f01154524b961ba0cd578acc2"
-
-        }
-
-      ],
-
-      "wildcard": false
-
-    },
-
-  }
-
-
+  "success": true,  "result": {    "id": "<CUSTOM_HOSTNAME_ID>",    "ssl": {12 collapsed lines      "id": "<CERTIFICATE_ID>",      "bundle_method": "ubiquitous",      "certificate_authority": "<CERTIFICATE_AUTHORITY>",      "custom_certificate": "",      "custom_csr_id": "",      "custom_key": "",      "expires_on": "",      "hosts": [        "app.example.com",        "*.app.example.com"      ],      "issuer": "",      "method": "http",      "settings": {},      "signature": "SHA256WithRSA",      "type": "dv",20 collapsed lines      "uploaded_on": "2020-02-06T18:11:23.531995Z",      "validation_errors": [        {          "message": "SERVFAIL looking up CAA for app.example.com"        }      ],      "validation_records": [        {          "emails": [            "administrator@example.com",            "webmaster@example.com"          ],          "http_body": "ca3-574923932a82475cb8592200f1a2a23d",          "http_url": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt",          "txt_name": "_acme-challenge.app.example.com",          "txt_value": "810b7d5f01154524b961ba0cd578acc2"        }      ],      "wildcard": false    },  }
 ```
 
 1. After you take note of these values, make a `PATCH` request to the [Edit Custom Hostname](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/edit/) endpoint, providing both the list of authorized cipher suites and the same `type` and `method` values that you obtained from the previous step.
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `SSL and Certificates Write`
 
 Edit Custom Hostname
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \
-
-  --request PATCH \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "ssl": {
-
-        "method": "http",
-
-        "type": "dv",
-
-        "settings": {
-
-            "ciphers": [
-
-                "ECDHE-ECDSA-AES128-GCM-SHA256",
-
-                "ECDHE-RSA-AES128-GCM-SHA256"
-
-            ]
-
-        }
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "ssl": {        "method": "http",        "type": "dv",        "settings": {            "ciphers": [                "ECDHE-ECDSA-AES128-GCM-SHA256",                "ECDHE-RSA-AES128-GCM-SHA256"            ]        }    }  }'
 ```
 
 Restrict cipher suites for custom hostname with custom certificate
@@ -511,164 +173,33 @@ In the API documentation, refer to [SSL properties of a custom hostname](https:/
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `SSL and Certificates Write`
 * `SSL and Certificates Read`
 
 Custom Hostname Details
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Response example
 
 ```
-
-  "success": true,
-
-  "result": {
-
-    "id": "<CUSTOM_HOSTNAME_ID>",
-
-    "ssl": {
-
-12 collapsed lines
-
-      "id": "<CERTIFICATE_ID>",
-
-      "bundle_method": "ubiquitous",
-
-      "certificate_authority": "<CERTIFICATE_AUTHORITY>",
-
-      "custom_certificate": "",
-
-      "custom_csr_id": "",
-
-      "custom_key": "",
-
-      "expires_on": "",
-
-      "hosts": [
-
-        "app.example.com",
-
-        "*.app.example.com"
-
-      ],
-
-      "issuer": "",
-
-      "method": "http",
-
-      "settings": {},
-
-      "signature": "SHA256WithRSA",
-
-      "type": "dv",
-
-20 collapsed lines
-
-      "uploaded_on": "2020-02-06T18:11:23.531995Z",
-
-      "validation_errors": [
-
-        {
-
-          "message": "SERVFAIL looking up CAA for app.example.com"
-
-        }
-
-      ],
-
-      "validation_records": [
-
-        {
-
-          "emails": [
-
-            "administrator@example.com",
-
-            "webmaster@example.com"
-
-          ],
-
-          "http_body": "ca3-574923932a82475cb8592200f1a2a23d",
-
-          "http_url": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt",
-
-          "txt_name": "_acme-challenge.app.example.com",
-
-          "txt_value": "810b7d5f01154524b961ba0cd578acc2"
-
-        }
-
-      ],
-
-      "wildcard": false
-
-    },
-
-  }
-
-
+  "success": true,  "result": {    "id": "<CUSTOM_HOSTNAME_ID>",    "ssl": {12 collapsed lines      "id": "<CERTIFICATE_ID>",      "bundle_method": "ubiquitous",      "certificate_authority": "<CERTIFICATE_AUTHORITY>",      "custom_certificate": "",      "custom_csr_id": "",      "custom_key": "",      "expires_on": "",      "hosts": [        "app.example.com",        "*.app.example.com"      ],      "issuer": "",      "method": "http",      "settings": {},      "signature": "SHA256WithRSA",      "type": "dv",20 collapsed lines      "uploaded_on": "2020-02-06T18:11:23.531995Z",      "validation_errors": [        {          "message": "SERVFAIL looking up CAA for app.example.com"        }      ],      "validation_records": [        {          "emails": [            "administrator@example.com",            "webmaster@example.com"          ],          "http_body": "ca3-574923932a82475cb8592200f1a2a23d",          "http_url": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt",          "txt_name": "_acme-challenge.app.example.com",          "txt_value": "810b7d5f01154524b961ba0cd578acc2"        }      ],      "wildcard": false    },  }
 ```
 
 1. After you take note of these values, make a `PATCH` request to the [Edit Custom Hostname](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/edit/) endpoint, providing both the list of authorized cipher suites and the same `type` and `method` values that you obtained from the previous step, but also the `custom_certificate` and `custom_key`.
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `SSL and Certificates Write`
 
 Edit Custom Hostname
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \
-
-  --request PATCH \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "ssl": {
-
-        "method": "http",
-
-        "type": "dv",
-
-        "custom_certificate": "<CERTIFICATE_STRING>",
-
-        "custom_key": "<CERTIFICATE_PRIVATE_KEY>",
-
-        "settings": {
-
-            "ciphers": [
-
-                "ECDHE-ECDSA-AES128-GCM-SHA256",
-
-                "ECDHE-RSA-AES128-GCM-SHA256"
-
-            ],
-
-            "min_tls_version": "1.2"
-
-        }
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "ssl": {        "method": "http",        "type": "dv",        "custom_certificate": "<CERTIFICATE_STRING>",        "custom_key": "<CERTIFICATE_PRIVATE_KEY>",        "settings": {            "ciphers": [                "ECDHE-ECDSA-AES128-GCM-SHA256",                "ECDHE-RSA-AES128-GCM-SHA256"            ],            "min_tls_version": "1.2"        }    }  }'
 ```
 
 ## Alerts for mutual TLS certificates

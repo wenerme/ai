@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -49,33 +49,33 @@ This tutorial shows you how to connect Alibaba Cloud infrastructure to Cloudflar
 2. Create a customer gateway with one of the Cloudflare anycast IP addresses assigned to your account, available in [Leased IPs ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space). This typically starts with `162.xx.xx.xx`.
 3. Now, go to **VPC** \> **IPsec Connections** \> **Create IPsec Connection**.
 4. Create an IPsec connection with the following settings:  
-   1. **Name**: give it a descriptive name, like `CF-Magic-WAN-IPsec`.  
-   2. **Associate Resource**: **VPN Gateway**.  
-   3. **VPN Gateway**: From the dropdown menu, choose the VPN gateway you created previously. In our example, `VPN-Gateway-Magic-WAN`.  
-   4. **Customer Gateway**: Select the customer gateway you created above for Cloudflare WAN.  
-   5. **Routing Mode**: **Destination Routing Mode**.  
-   6. **Effective Immediately**: **Yes**.  
-   7. **Pre-Shared Key**: This is the pre-shared key (PSK) you will have to use in the Cloudflare WAN IPsec tunnel. If you do not specify one here, the Alibaba system will generate a random pre-shared key for you.
+  1. **Name**: give it a descriptive name, like `CF-Magic-WAN-IPsec`.
+  2. **Associate Resource**: **VPN Gateway**.
+  3. **VPN Gateway**: From the dropdown menu, choose the VPN gateway you created previously. In our example, `VPN-Gateway-Magic-WAN`.
+  4. **Customer Gateway**: Select the customer gateway you created above for Cloudflare WAN.
+  5. **Routing Mode**: **Destination Routing Mode**.
+  6. **Effective Immediately**: **Yes**.
+  7. **Pre-Shared Key**: This is the pre-shared key (PSK) you will have to use in the Cloudflare WAN IPsec tunnel. If you do not specify one here, the Alibaba system will generate a random pre-shared key for you.
 5. Go to **Advanced Settings**, and expand the **Encryption Configuration** settings.
 6. In **IKE Configurations**, select the following settings to configure the IPsec connection. These settings have to match the supported configuration parameters for [Cloudflare WAN IPsec tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/gre-ipsec-tunnels/#supported-configuration-parameters):  
-   1. **Version**: _ikev2_  
-   2. **Negotiation Mode**: _main_  
-   3. **Encryption Algorithm**: _aes256_  
-   4. **Authentication Algorithm**: _sha256_  
-   5. **DH Group**: _group20_  
-   6. **Localid**: This is the customer endpoint. These are generally IP addresses provided by your ISP. For example, `47.xxx.xxx.xxx`.
+  1. **Version**: _ikev2_
+  2. **Negotiation Mode**: _main_
+  3. **Encryption Algorithm**: _aes256_
+  4. **Authentication Algorithm**: _sha256_
+  5. **DH Group**: _group20_
+  6. **Localid**: This is the customer endpoint. These are generally IP addresses provided by your ISP. For example, `47.xxx.xxx.xxx`.
 
 ## Cloudflare WAN
 
 ### 1\. IPsec tunnels
 
 1. Follow the [Add tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels) instructions to create the required IPsec tunnels with the following options:  
-   1. **Tunnel name**: Give your tunnel a descriptive name, like `Alibaba`.  
-   2. **Interface address**: Choose from the subnet in your Alibaba Cloud configuration. For example, if your Alibaba default configuration is `169.xx.xx.1/30`, you might want to choose `169.xx.xx.2/30` for your Cloudflare WAN side of the IPsec tunnel.  
-   3. **Customer endpoint**: This is the IP address you entered for **Localid** in Alibaba's IPsec connection. For example, `47.xxx.xxx.xxx`.  
-   4. **Cloudflare endpoint**: Enter the same anycast IP address provided by Cloudflare you have entered for Alibaba's Customer Gateway. Typically starts with `162.xx.xx.xx`.  
-   5. **Pre-shared key**: Select **Use my own pre-shared key**, and enter the PSK key from your Alibaba Cloud IPsec tunnel.  
-   6. **Replay protection**: **Enabled**.
+  1. **Tunnel name**: Give your tunnel a descriptive name, like `Alibaba`.
+  2. **Interface address**: Choose from the subnet in your Alibaba Cloud configuration. For example, if your Alibaba default configuration is `169.xx.xx.1/30`, you might want to choose `169.xx.xx.2/30` for your Cloudflare WAN side of the IPsec tunnel.
+  3. **Customer endpoint**: This is the IP address you entered for **Localid** in Alibaba's IPsec connection. For example, `47.xxx.xxx.xxx`.
+  4. **Cloudflare endpoint**: Enter the same anycast IP address provided by Cloudflare you have entered for Alibaba's Customer Gateway. Typically starts with `162.xx.xx.xx`.
+  5. **Pre-shared key**: Select **Use my own pre-shared key**, and enter the PSK key from your Alibaba Cloud IPsec tunnel.
+  6. **Replay protection**: **Enabled**.
 2. Select **Add tunnels** when you are done.
 
 ### 2\. Static route

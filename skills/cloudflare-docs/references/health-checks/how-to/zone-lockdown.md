@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/health-checks/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,7 +22,7 @@ To bypass zone lockdown using a WAF custom rule:
 
 1. Follow the steps to [create a custom rule in the dashboard](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/).
 2. Create a custom rule matching on **user agent**.  
-Cloudflare Health Checks have a user agent of the following format:`Mozilla/5.0 (compatible;Cloudflare-Healthchecks/1.0;+https://www.cloudflare.com/; healthcheck-id: XXX)` where `XXX` is replaced with the first 16 characters of the Health Check ID.  
+Cloudflare Health Checks have a user agent of the following format: `Mozilla/5.0 (compatible;Cloudflare-Healthchecks/1.0;+https://www.cloudflare.com/; healthcheck-id: XXX)` where `XXX` is replaced with the first 16 characters of the Health Check ID.  
 To allow a specific Health Check, verify if the user agent contains the first 16 characters of the Health Check ID.
 3. Set the action to _Skip_ and the corresponding feature to **Zone Lockdown** under **More components to skip**.
 
@@ -33,34 +33,7 @@ This example adds a new WAF custom rule to the ruleset with ID `{ruleset_id}` th
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/{zone_id}/rulesets/{ruleset_id}/rules" \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "action": "skip",
-
-  "action_parameters": {
-
-    "products": [
-
-      "zoneLockdown"
-
-    ]
-
-  },
-
-  "expression": "http.user_agent contains \"1234567890abcdef\"",
-
-  "description": "bypass zone lockdown - specific healthcheck"
-
-}'
-
-
+curl "https://api.cloudflare.com/client/v4/{zone_id}/rulesets/{ruleset_id}/rules" \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "action": "skip",  "action_parameters": {    "products": [      "zoneLockdown"    ]  },  "expression": "http.user_agent contains \"1234567890abcdef\"",  "description": "bypass zone lockdown - specific healthcheck"}'
 ```
 
 ```json

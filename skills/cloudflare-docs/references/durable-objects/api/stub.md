@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,118 +20,30 @@ Durable Objects implement E-order semantics, a concept deriving from the [E dist
 
 If an exception is thrown by a Durable Object stub all in-flight calls and future calls will fail with [exceptions](https://developers.cloudflare.com/durable-objects/observability/troubleshooting/). To continue invoking methods on a remote Durable Object a Worker must recreate the stub. There are no ordering guarantees between different stubs.
 
-* [  JavaScript ](#tab-panel-8227)
-* [  TypeScript ](#tab-panel-8228)
+* [  JavaScript ](#tab-panel-8303)
+* [  TypeScript ](#tab-panel-8304)
 
 JavaScript
 
 ```
-
 import { DurableObject } from "cloudflare:workers";
-
-
-// Durable Object
-
-export class MyDurableObject extends DurableObject {
-
-  constructor(ctx, env) {
-
-    super(ctx, env);
-
-  }
-
-
-  async sayHello() {
-
-    return "Hello, World!";
-
-  }
-
-}
-
-
-// Worker
-
-export default {
-
-  async fetch(request, env) {
-
-    // A stub is a client used to invoke methods on the Durable Object
-
-    const stub = env.MY_DURABLE_OBJECT.getByName("foo");
-
-
-    // Methods on the Durable Object are invoked via the stub
-
-    const rpcResponse = await stub.sayHello();
-
-
-    return new Response(rpcResponse);
-
-  },
-
-};
-
-
+// Durable Objectexport class MyDurableObject extends DurableObject {  constructor(ctx, env) {    super(ctx, env);  }
+  async sayHello() {    return "Hello, World!";  }}
+// Workerexport default {  async fetch(request, env) {    // A stub is a client used to invoke methods on the Durable Object    const stub = env.MY_DURABLE_OBJECT.getByName("foo");
+    // Methods on the Durable Object are invoked via the stub    const rpcResponse = await stub.sayHello();
+    return new Response(rpcResponse);  },};
 ```
 
 TypeScript
 
 ```
-
 import { DurableObject } from "cloudflare:workers";
-
-
-export interface Env {
-
-  MY_DURABLE_OBJECT: DurableObjectNamespace<MyDurableObject>;
-
-}
-
-
-// Durable Object
-
-export class MyDurableObject extends DurableObject {
-
-  constructor(ctx: DurableObjectState, env: Env) {
-
-    super(ctx, env);
-
-  }
-
-
-  async sayHello(): Promise<string> {
-
-    return "Hello, World!";
-
-  }
-
-}
-
-
-// Worker
-
-export default {
-
-  async fetch(request, env) {
-
-    // A stub is a client used to invoke methods on the Durable Object
-
-    const stub = env.MY_DURABLE_OBJECT.getByName("foo");
-
-
-    // Methods on the Durable Object are invoked via the stub
-
-    const rpcResponse = await stub.sayHello();
-
-
-    return new Response(rpcResponse);
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export interface Env {  MY_DURABLE_OBJECT: DurableObjectNamespace<MyDurableObject>;}
+// Durable Objectexport class MyDurableObject extends DurableObject {  constructor(ctx: DurableObjectState, env: Env) {    super(ctx, env);  }
+  async sayHello(): Promise<string> {    return "Hello, World!";  }}
+// Workerexport default {  async fetch(request, env) {    // A stub is a client used to invoke methods on the Durable Object    const stub = env.MY_DURABLE_OBJECT.getByName("foo");
+    // Methods on the Durable Object are invoked via the stub    const rpcResponse = await stub.sayHello();
+    return new Response(rpcResponse);  },} satisfies ExportedHandler<Env>;
 ```
 
 ## Properties
@@ -140,62 +52,38 @@ export default {
 
 `id` is a property of the `DurableObjectStub` corresponding to the [DurableObjectId](https://developers.cloudflare.com/durable-objects/api/id) used to create the stub.
 
-* [  JavaScript ](#tab-panel-8223)
-* [  Python ](#tab-panel-8224)
+* [  JavaScript ](#tab-panel-8299)
+* [  Python ](#tab-panel-8300)
 
 JavaScript
 
 ```
-
-const id = env.MY_DURABLE_OBJECT.newUniqueId();
-
-const stub = env.MY_DURABLE_OBJECT.get(id);
-
-console.assert(id.equals(stub.id), "This should always be true");
-
-
+const id = env.MY_DURABLE_OBJECT.newUniqueId();const stub = env.MY_DURABLE_OBJECT.get(id);console.assert(id.equals(stub.id), "This should always be true");
 ```
 
 Python
 
 ```
-
-id = env.MY_DURABLE_OBJECT.newUniqueId()
-
-stub = env.MY_DURABLE_OBJECT.get(id)
-
-assert id.equals(stub.id), "This should always be true"
-
-
+id = env.MY_DURABLE_OBJECT.newUniqueId()stub = env.MY_DURABLE_OBJECT.get(id)assert id.equals(stub.id), "This should always be true"
 ```
 
 ### `name`
 
 `name` is an optional property of a `DurableObjectStub`, which returns a name if it was provided upon stub creation either directly via [DurableObjectNamespace::getByName](https://developers.cloudflare.com/durable-objects/api/namespace/#getbyname) or indirectly via a [DurableObjectId](https://developers.cloudflare.com/durable-objects/api/id) created by [DurableObjectNamespace::idFromName](https://developers.cloudflare.com/durable-objects/api/namespace/#idfromname). This value is undefined if the [DurableObjectId](https://developers.cloudflare.com/durable-objects/api/id) used to create the `DurableObjectStub` was constructed using [DurableObjectNamespace::newUniqueId](https://developers.cloudflare.com/durable-objects/api/namespace/#newuniqueid).
 
-* [  JavaScript ](#tab-panel-8225)
-* [  Python ](#tab-panel-8226)
+* [  JavaScript ](#tab-panel-8301)
+* [  Python ](#tab-panel-8302)
 
 JavaScript
 
 ```
-
-const stub = env.MY_DURABLE_OBJECT.getByName("foo");
-
-console.assert(stub.name === "foo", "This should always be true");
-
-
+const stub = env.MY_DURABLE_OBJECT.getByName("foo");console.assert(stub.name === "foo", "This should always be true");
 ```
 
 Python
 
 ```
-
-stub = env.MY_DURABLE_OBJECT.getByName("foo")
-
-assert stub.name == "foo", "This should always be true"
-
-
+stub = env.MY_DURABLE_OBJECT.getByName("foo")assert stub.name == "foo", "This should always be true"
 ```
 
 ## Related resources

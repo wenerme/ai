@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -126,10 +126,7 @@ To ensure that AD FS signs the full response when communicating with Cloudflare,
 Terminal window
 
 ```
-
 Set-ADFSRelyingPartyTrust -TargetName "Name of RPT Display Name" -SamlResponseSignature "MessageAndAssertion"
-
-
 ```
 
 ## Configure Cloudflare One
@@ -172,32 +169,7 @@ In Cloudflare Access, you can find a link to this URL in the **Edit a SAML ident
 ## Example API Configuration
 
 ```
-
-{
-
-  "config": {
-
-    "issuer_url": "https://<your-team-name>.cloudflareaccess.com/",
-
-    "sso_target_url": "https://adfs.example.com/adfs/ls/",
-
-    "attributes": ["email"],
-
-    "email_attribute_name": "",
-
-    "sign_request": false,
-
-    "idp_public_cert": "MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEG\nA1UEC.....GF/Q2/MHadws97cZg\nuTnQyuOqPuHbnN83d/2l1NSYKCbHt24o"
-
-  },
-
-  "type": "saml",
-
-  "name": "adfs saml example"
-
-}
-
-
+{  "config": {    "issuer_url": "https://<your-team-name>.cloudflareaccess.com/",    "sso_target_url": "https://adfs.example.com/adfs/ls/",    "attributes": ["email"],    "email_attribute_name": "",    "sign_request": false,    "idp_public_cert": "MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEG\nA1UEC.....GF/Q2/MHadws97cZg\nuTnQyuOqPuHbnN83d/2l1NSYKCbHt24o"  },  "type": "saml",  "name": "adfs saml example"}
 ```
 
 ```json

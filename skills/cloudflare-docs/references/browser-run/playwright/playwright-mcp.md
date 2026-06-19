@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -64,102 +64,22 @@ Note
 
 Your Worker configuration must include the `nodejs_compat` compatibility flag and a `compatibility_date` of 2025-09-15 or later.
 
-* [  wrangler.jsonc ](#tab-panel-6894)
-* [  wrangler.toml ](#tab-panel-6895)
+* [  wrangler.jsonc ](#tab-panel-6970)
+* [  wrangler.toml ](#tab-panel-6971)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "playwright-mcp-example",
-
-  "main": "src/index.ts",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "compatibility_flags": ["nodejs_compat"],
-
-  "browser": {
-
-    "binding": "BROWSER",
-
-  },
-
-  "migrations": [
-
-    {
-
-      "tag": "v1",
-
-      "new_sqlite_classes": ["PlaywrightMCP"],
-
-    },
-
-  ],
-
-  "durable_objects": {
-
-    "bindings": [
-
-      {
-
-        "name": "MCP_OBJECT",
-
-        "class_name": "PlaywrightMCP",
-
-      },
-
-    ],
-
-  },
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "playwright-mcp-example",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-18",  "compatibility_flags": ["nodejs_compat"],  "browser": {    "binding": "BROWSER",  },  "migrations": [    {      "tag": "v1",      "new_sqlite_classes": ["PlaywrightMCP"],    },  ],  "durable_objects": {    "bindings": [      {        "name": "MCP_OBJECT",        "class_name": "PlaywrightMCP",      },    ],  },}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "playwright-mcp-example"
-
-main = "src/index.ts"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-compatibility_flags = [ "nodejs_compat" ]
-
-
-[browser]
-
-binding = "BROWSER"
-
-
-[[migrations]]
-
-tag = "v1"
-
-new_sqlite_classes = [ "PlaywrightMCP" ]
-
-
-[[durable_objects.bindings]]
-
-name = "MCP_OBJECT"
-
-class_name = "PlaywrightMCP"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "playwright-mcp-example"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-18"compatibility_flags = [ "nodejs_compat" ]
+[browser]binding = "BROWSER"
+[[migrations]]tag = "v1"new_sqlite_classes = [ "PlaywrightMCP" ]
+[[durable_objects.bindings]]name = "MCP_OBJECT"class_name = "PlaywrightMCP"
 ```
 
 1. Edit the code.
@@ -167,45 +87,10 @@ class_name = "PlaywrightMCP"
 src/index.ts
 
 ```
-
-import { env } from "cloudflare:workers";
-
-import { createMcpAgent } from "@cloudflare/playwright-mcp";
-
-
+import { env } from "cloudflare:workers";import { createMcpAgent } from "@cloudflare/playwright-mcp";
 export const PlaywrightMCP = createMcpAgent(env.BROWSER);
-
-
-export default {
-
-  fetch(request: Request, env: Env, ctx: ExecutionContext) {
-
-    const { pathname } = new URL(request.url);
-
-
-    switch (pathname) {
-
-      case "/sse":
-
-      case "/sse/message":
-
-        return PlaywrightMCP.serveSSE("/sse").fetch(request, env, ctx);
-
-      case "/mcp":
-
-        return PlaywrightMCP.serve("/mcp").fetch(request, env, ctx);
-
-      default:
-
-        return new Response("Not Found", { status: 404 });
-
-    }
-
-  },
-
-};
-
-
+export default {  fetch(request: Request, env: Env, ctx: ExecutionContext) {    const { pathname } = new URL(request.url);
+    switch (pathname) {      case "/sse":      case "/sse/message":        return PlaywrightMCP.serveSSE("/sse").fetch(request, env, ctx);      case "/mcp":        return PlaywrightMCP.serve("/mcp").fetch(request, env, ctx);      default:        return new Response("Not Found", { status: 404 });    }  },};
 ```
 
 1. Deploy the server.
@@ -213,10 +98,7 @@ export default {
 Terminal window
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 The server is now available at `https://[my-mcp-url].workers.dev/sse` and you can use it with any MCP client.

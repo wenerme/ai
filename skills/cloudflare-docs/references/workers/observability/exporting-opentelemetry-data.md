@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -54,10 +54,10 @@ To start sending data to your destination, you'll need to create a destination i
 1. Head to your account's [Workers Observability ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages/observability/pipelines) section of the dashboard
 2. Click add destination.
 3. Configure your destination:  
-   * **Destination Name** \- A descriptive name (e.g., "Grafana-tracing", "Honeycomb-Logs")  
-   * **Destination Type** \- Choose between "Traces" or "Logs"  
-   * **OTLP Endpoint** \- The URL where your observability platform accepts OTLP data.  
-   * **Custom Headers** (Optional) - Any authentication headers or other provider-required headers
+  * **Destination Name** \- A descriptive name (e.g., "Grafana-tracing", "Honeycomb-Logs")
+  * **Destination Type** \- Choose between "Traces" or "Logs"
+  * **OTLP Endpoint** \- The URL where your observability platform accepts OTLP data.
+  * **Custom Headers** (Optional) - Any authentication headers or other provider-required headers
 4. Save your destination
 ![Edit Destination dialog showing configuration for Honeycomb tracing with destination name, type selection, OTLP endpoint, and custom headers](https://developers.cloudflare.com/_astro/destination-setup.B8cxx8yd_Z127o0L.webp) 
 
@@ -65,89 +65,23 @@ To start sending data to your destination, you'll need to create a destination i
 
 After setting up destinations in the dashboard, configure your Worker to export telemetry data by updating your Wrangler configuration. Your destination name configured in your configuration file should be the same as the destination configured in the dashboard.
 
-* [  wrangler.jsonc ](#tab-panel-11840)
-* [  wrangler.toml ](#tab-panel-11841)
+* [  wrangler.jsonc ](#tab-panel-11857)
+* [  wrangler.toml ](#tab-panel-11858)
 
 JSONC
 
 ```
-
-{
-
-  "observability": {
-
-    "traces": {
-
-      "enabled": true,
-
-      "destinations": ["tracing-destination-name"],
-
-
-      // traces sample rate of 5%
-
-      "head_sampling_rate": 0.05,
-
-
-      // (optional) set to false to only export traces to your
-
-      // destination without persisting them in the Cloudflare dashboard
-
-      "persist": false
-
-    },
-
-    "logs": {
-
-      "enabled": true,
-
-      "destinations": ["logs-destination-name"],
-
-      // logs sample rate of 60%
-
-      "head_sampling_rate": 0.6,
-
-
-      // (optional) set to false to only export logs to your
-
-      // destination without persisting them in the Cloudflare dashboard
-
-      "persist": false
-
-    }
-
-  }
-
-}
-
-
+{  "observability": {    "traces": {      "enabled": true,      "destinations": ["tracing-destination-name"],
+      // traces sample rate of 5%      "head_sampling_rate": 0.05,
+      // (optional) set to false to only export traces to your      // destination without persisting them in the Cloudflare dashboard      "persist": false    },    "logs": {      "enabled": true,      "destinations": ["logs-destination-name"],      // logs sample rate of 60%      "head_sampling_rate": 0.6,
+      // (optional) set to false to only export logs to your      // destination without persisting them in the Cloudflare dashboard      "persist": false    }  }}
 ```
 
 TOML
 
 ```
-
-[observability.traces]
-
-enabled = true
-
-destinations = [ "tracing-destination-name" ]
-
-head_sampling_rate = 0.05
-
-persist = false
-
-
-[observability.logs]
-
-enabled = true
-
-destinations = [ "logs-destination-name" ]
-
-head_sampling_rate = 0.6
-
-persist = false
-
-
+[observability.traces]enabled = truedestinations = [ "tracing-destination-name" ]head_sampling_rate = 0.05persist = false
+[observability.logs]enabled = truedestinations = [ "logs-destination-name" ]head_sampling_rate = 0.6persist = false
 ```
 
 `persist` and pricing

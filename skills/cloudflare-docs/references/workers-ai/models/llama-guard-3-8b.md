@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,119 +28,38 @@ Llama Guard 3 is a Llama-3.1-8B pretrained model, fine-tuned for content safety 
 
 ## Playground
 
-Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and an instant way to preview and test a model directly in the browser.
+Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and an instant way to preview and test a model directly in the browser. 
 
-[Launch the LLM Playground](https://playground.ai.cloudflare.com/?model=@cf/meta/llama-guard-3-8b) 
+[ Launch the LLM Playground ](https://playground.ai.cloudflare.com/?model=@cf/meta/llama-guard-3-8b) 
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4990)
-* [  Python ](#tab-panel-4991)
-* [  curl ](#tab-panel-4992)
+* [  TypeScript ](#tab-panel-5064)
+* [  Python ](#tab-panel-5065)
+* [  curl ](#tab-panel-5066)
 
 ```
-
-export interface Env {
-
-  AI: Ai;
-
-}
-
-
-export default {
-
-  async fetch(request, env): Promise<Response> {
-
-    const messages = [
-
-      {
-
-        role: 'user',
-
-        content: 'I wanna bully someone online',
-
-      },
-
-      {
-
-        role: 'assistant',
-
-        content: 'That sounds interesting, how can I help?',
-
-      },
-
-    ];
-
-    const response = await env.AI.run("@cf/meta/llama-guard-3-8b", { messages });
-
-
-    return Response.json(response);
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export interface Env {  AI: Ai;}
+export default {  async fetch(request, env): Promise<Response> {    const messages = [      {        role: 'user',        content: 'I wanna bully someone online',      },      {        role: 'assistant',        content: 'That sounds interesting, how can I help?',      },    ];    const response = await env.AI.run("@cf/meta/llama-guard-3-8b", { messages });
+    return Response.json(response);  },} satisfies ExportedHandler<Env>;
 ```
 
 ```
-
-import os
-
-import requests
-
-
-ACCOUNT_ID = "your-account-id"
-
-AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
-
-
-response = requests.post(
-
-  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/meta/llama-guard-3-8b",
-
-    headers={"Authorization": f"Bearer {AUTH_TOKEN}"},
-
-    json={
-
-      "messages": [
-
-        {"role": "user", "content": "I want to bully somebody online"},
-
-        {"role": "assistant", "content": "Interesting. Let me know how I can be of assistance?"},
-
-      ]
-
-    }
-
-)
-
-result = response.json()
-
-print(result)
-
-
+import osimport requests
+ACCOUNT_ID = "your-account-id"AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
+response = requests.post(  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/meta/llama-guard-3-8b",    headers={"Authorization": f"Bearer {AUTH_TOKEN}"},    json={      "messages": [        {"role": "user", "content": "I want to bully somebody online"},        {"role": "assistant", "content": "Interesting. Let me know how I can be of assistance?"},      ]    })result = response.json()print(result)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/meta/llama-guard-3-8b \
-
-  -X POST \
-
-  -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
-
-  -d '{ "messages": [{ "role": "user", "content": "I want to bully someone online" }, {"role": "assistant", "content": "Interesting. How can I assist you?"}]}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/meta/llama-guard-3-8b \  -X POST \  -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \  -d '{ "messages": [{ "role": "user", "content": "I want to bully someone online" }, {"role": "assistant", "content": "Interesting. How can I assist you?"}]}'
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-4993)
-* [ Output ](#tab-panel-4994)
+* [ Input ](#tab-panel-5067)
+* [ Output ](#tab-panel-5068)
 
 ▶messages\[\]
 
@@ -170,7 +89,7 @@ temperature
 
 Input [ ](https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/schema-input.json "Download") 
 
-Output [ ](https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/schema-output.json "Download") 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/schema-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/#page","headline":"llama-guard-3-8b (Meta) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Llama Guard 3 is a Llama-3.1-8B pretrained model, fine-tuned for content safety classification. Similar to previous versions, it can be used to classify content in both LLM inputs (prompt classification) and in LLM responses (response classification). It acts as an LLM – it generates text in its output that indicates whether a given prompt or response is safe or unsafe, and if unsafe, it also lists the content categories violated.","url":"https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

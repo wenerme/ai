@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,19 +19,8 @@ The `cloudflare` plugin should be included in the Vite `plugins` array:
 vite.config.ts
 
 ```
-
-import { defineConfig } from "vite";
-
-import { cloudflare } from "@cloudflare/vite-plugin";
-
-
-export default defineConfig({
-
-  plugins: [cloudflare()],
-
-});
-
-
+import { defineConfig } from "vite";import { cloudflare } from "@cloudflare/vite-plugin";
+export default defineConfig({  plugins: [cloudflare()],});
 ```
 
 It accepts an optional `PluginConfig` parameter.
@@ -40,10 +29,11 @@ It accepts an optional `PluginConfig` parameter.
 
 * `configPath` ` string ` optional  
 An optional path to your entry Worker config file.  
-For the entry Worker, the plugin resolves the config path in this order:  
-   1. `configPath`  
-   2. `CLOUDFLARE_VITE_WRANGLER_CONFIG_PATH` (typically set by a framework or other external tool)  
-   3. `wrangler.jsonc`, `wrangler.json`, or `wrangler.toml` in the root of your application  
+For the entry Worker, the plugin resolves the config path in this order:
+
+  1. `configPath`
+  2. `CLOUDFLARE_VITE_WRANGLER_CONFIG_PATH` (typically set by a framework or other external tool)
+  3. `wrangler.jsonc`, `wrangler.json`, or `wrangler.toml` in the root of your application  
 This applies in `vite dev` and `vite build`.  
 For more information about the Worker configuration, see [Configuration](https://developers.cloudflare.com/workers/wrangler/configuration/).
 * `config` ` WorkerConfigCustomizer<true> ` optional  
@@ -61,32 +51,19 @@ An optional override for debugging your Workers. By default, the debugging inspe
 See [Debugging](https://developers.cloudflare.com/workers/vite-plugin/reference/debugging/) for more information.
 * `tunnel` ` boolean | { name?: string; autoStart?: boolean } ` optional  
 Expose your local dev server over a [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/).  
-Provide an object to configure a named tunnel or control whether the tunnel starts automatically. Press `t + Enter` to start or close the tunnel. Set `tunnel.autoStart` to `true` if you want the tunnel to open when Vite starts.  
-   * [  JavaScript ](#tab-panel-12209)  
-   * [  TypeScript ](#tab-panel-12210)  
+Provide an object to configure a named tunnel or control whether the tunnel starts automatically. Press `t + Enter` to start or close the tunnel. Set `tunnel.autoStart` to `true` if you want the tunnel to open when Vite starts.
+
+  * [  JavaScript ](#tab-panel-12226)
+  * [  TypeScript ](#tab-panel-12227)  
 vite.config.js  
 ```  
-import { defineConfig } from "vite";  
-import { cloudflare } from "@cloudflare/vite-plugin";  
-export default defineConfig({  
-  plugins: [  
-    cloudflare({  
-      tunnel: { name: "my-tunnel" },  
-    }),  
-  ],  
-});  
+import { defineConfig } from "vite";import { cloudflare } from "@cloudflare/vite-plugin";  
+export default defineConfig({  plugins: [    cloudflare({      tunnel: { name: "my-tunnel" },    }),  ],});  
 ```  
 vite.config.ts  
 ```  
-import { defineConfig } from "vite";  
-import { cloudflare } from "@cloudflare/vite-plugin";  
-export default defineConfig({  
-  plugins: [  
-    cloudflare({  
-      tunnel: { name: "my-tunnel" },  
-    }),  
-  ],  
-});  
+import { defineConfig } from "vite";import { cloudflare } from "@cloudflare/vite-plugin";  
+export default defineConfig({  plugins: [    cloudflare({      tunnel: { name: "my-tunnel" },    }),  ],});  
 ```  
 See [Share a local dev server](https://developers.cloudflare.com/workers/development-testing/local-dev-tunnels/) for more information.
 * `auxiliaryWorkers` ` Array<AuxiliaryWorkerConfig> ` optional  
@@ -98,7 +75,7 @@ Whether or not [remote bindings](https://developers.cloudflare.com/workers/devel
 
 ## `interface AuxiliaryWorkerConfig`
 
-Auxiliary Workers require a `configPath`, a `config` option, or both.`CLOUDFLARE_VITE_WRANGLER_CONFIG_PATH` only applies to the entry Worker. Auxiliary Workers do not use this environment variable. If you use a config file for an auxiliary Worker, set `configPath` explicitly.
+Auxiliary Workers require a `configPath`, a `config` option, or both. `CLOUDFLARE_VITE_WRANGLER_CONFIG_PATH` only applies to the entry Worker. Auxiliary Workers do not use this environment variable. If you use a config file for an auxiliary Worker, set `configPath` explicitly.
 
 * `configPath` ` string ` optional  
 The path to your Worker config file. This field is required unless `config` is provided.  

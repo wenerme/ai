@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,116 +30,48 @@ For **web servers, databases, or services that need to keep running**, use `star
 
 Use `exec()` for simple commands that complete quickly:
 
-* [  JavaScript ](#tab-panel-10325)
-* [  TypeScript ](#tab-panel-10326)
+* [  JavaScript ](#tab-panel-10401)
+* [  TypeScript ](#tab-panel-10402)
 
 JavaScript
 
 ```
-
 import { getSandbox } from "@cloudflare/sandbox";
-
-
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
-
-// Execute a single command
-
-const result = await sandbox.exec("python --version");
-
-
-console.log(result.stdout); // "Python 3.11.0"
-
-console.log(result.exitCode); // 0
-
-console.log(result.success); // true
-
-
+// Execute a single commandconst result = await sandbox.exec("python --version");
+console.log(result.stdout); // "Python 3.11.0"console.log(result.exitCode); // 0console.log(result.success); // true
 ```
 
 TypeScript
 
 ```
-
 import { getSandbox } from '@cloudflare/sandbox';
-
-
 const sandbox = getSandbox(env.Sandbox, 'my-sandbox');
-
-
-// Execute a single command
-
-const result = await sandbox.exec('python --version');
-
-
-console.log(result.stdout);   // "Python 3.11.0"
-
-console.log(result.exitCode); // 0
-
-console.log(result.success);  // true
-
-
+// Execute a single commandconst result = await sandbox.exec('python --version');
+console.log(result.stdout);   // "Python 3.11.0"console.log(result.exitCode); // 0console.log(result.success);  // true
 ```
 
 ## Pass arguments safely
 
 When passing user input or dynamic values, avoid string interpolation to prevent injection attacks:
 
-* [  JavaScript ](#tab-panel-10327)
-* [  TypeScript ](#tab-panel-10328)
+* [  JavaScript ](#tab-panel-10403)
+* [  TypeScript ](#tab-panel-10404)
 
 JavaScript
 
 ```
-
-// Unsafe - vulnerable to injection
-
-const filename = userInput;
-
-await sandbox.exec(`cat ${filename}`);
-
-
-// Safe - use proper escaping or validation
-
-const safeFilename = filename.replace(/[^a-zA-Z0-9_.-]/g, "");
-
-await sandbox.exec(`cat ${safeFilename}`);
-
-
-// Better - write to file and execute
-
-await sandbox.writeFile("/tmp/input.txt", userInput);
-
-await sandbox.exec("python process.py /tmp/input.txt");
-
-
+// Unsafe - vulnerable to injectionconst filename = userInput;await sandbox.exec(`cat ${filename}`);
+// Safe - use proper escaping or validationconst safeFilename = filename.replace(/[^a-zA-Z0-9_.-]/g, "");await sandbox.exec(`cat ${safeFilename}`);
+// Better - write to file and executeawait sandbox.writeFile("/tmp/input.txt", userInput);await sandbox.exec("python process.py /tmp/input.txt");
 ```
 
 TypeScript
 
 ```
-
-// Unsafe - vulnerable to injection
-
-const filename = userInput;
-
-await sandbox.exec(`cat ${filename}`);
-
-
-// Safe - use proper escaping or validation
-
-const safeFilename = filename.replace(/[^a-zA-Z0-9_.-]/g, '');
-
-await sandbox.exec(`cat ${safeFilename}`);
-
-
-// Better - write to file and execute
-
-await sandbox.writeFile('/tmp/input.txt', userInput);
-
-await sandbox.exec('python process.py /tmp/input.txt');
-
-
+// Unsafe - vulnerable to injectionconst filename = userInput;await sandbox.exec(`cat ${filename}`);
+// Safe - use proper escaping or validationconst safeFilename = filename.replace(/[^a-zA-Z0-9_.-]/g, '');await sandbox.exec(`cat ${safeFilename}`);
+// Better - write to file and executeawait sandbox.writeFile('/tmp/input.txt', userInput);await sandbox.exec('python process.py /tmp/input.txt');
 ```
 
 ## Handle errors
@@ -149,226 +81,70 @@ Commands can fail in two ways:
 1. **Non-zero exit code** \- Command ran but failed (result.success === false)
 2. **Execution error** \- Command couldn't start (throws exception)
 
-* [  JavaScript ](#tab-panel-10341)
-* [  TypeScript ](#tab-panel-10342)
+* [  JavaScript ](#tab-panel-10417)
+* [  TypeScript ](#tab-panel-10418)
 
 JavaScript
 
 ```
-
-try {
-
-  const result = await sandbox.exec("python analyze.py");
-
-
-  if (!result.success) {
-
-    // Command failed (non-zero exit code)
-
-    console.error("Analysis failed:", result.stderr);
-
-    console.log("Exit code:", result.exitCode);
-
-
-    // Handle specific exit codes
-
-    if (result.exitCode === 1) {
-
-      throw new Error("Invalid input data");
-
-    } else if (result.exitCode === 2) {
-
-      throw new Error("Missing dependencies");
-
-    }
-
-  }
-
-
-  // Success - process output
-
-  return JSON.parse(result.stdout);
-
-} catch (error) {
-
-  // Execution error (couldn't start command)
-
-  console.error("Execution failed:", error.message);
-
-  throw error;
-
-}
-
-
+try {  const result = await sandbox.exec("python analyze.py");
+  if (!result.success) {    // Command failed (non-zero exit code)    console.error("Analysis failed:", result.stderr);    console.log("Exit code:", result.exitCode);
+    // Handle specific exit codes    if (result.exitCode === 1) {      throw new Error("Invalid input data");    } else if (result.exitCode === 2) {      throw new Error("Missing dependencies");    }  }
+  // Success - process output  return JSON.parse(result.stdout);} catch (error) {  // Execution error (couldn't start command)  console.error("Execution failed:", error.message);  throw error;}
 ```
 
 TypeScript
 
 ```
-
-try {
-
-  const result = await sandbox.exec('python analyze.py');
-
-
-  if (!result.success) {
-
-    // Command failed (non-zero exit code)
-
-    console.error('Analysis failed:', result.stderr);
-
-    console.log('Exit code:', result.exitCode);
-
-
-    // Handle specific exit codes
-
-    if (result.exitCode === 1) {
-
-      throw new Error('Invalid input data');
-
-    } else if (result.exitCode === 2) {
-
-      throw new Error('Missing dependencies');
-
-    }
-
-  }
-
-
-  // Success - process output
-
-  return JSON.parse(result.stdout);
-
-
-} catch (error) {
-
-  // Execution error (couldn't start command)
-
-  console.error('Execution failed:', error.message);
-
-  throw error;
-
-}
-
-
+try {  const result = await sandbox.exec('python analyze.py');
+  if (!result.success) {    // Command failed (non-zero exit code)    console.error('Analysis failed:', result.stderr);    console.log('Exit code:', result.exitCode);
+    // Handle specific exit codes    if (result.exitCode === 1) {      throw new Error('Invalid input data');    } else if (result.exitCode === 2) {      throw new Error('Missing dependencies');    }  }
+  // Success - process output  return JSON.parse(result.stdout);
+} catch (error) {  // Execution error (couldn't start command)  console.error('Execution failed:', error.message);  throw error;}
 ```
 
 ## Execute shell commands
 
 The sandbox supports shell features like pipes, redirects, and chaining:
 
-* [  JavaScript ](#tab-panel-10331)
-* [  TypeScript ](#tab-panel-10332)
+* [  JavaScript ](#tab-panel-10407)
+* [  TypeScript ](#tab-panel-10408)
 
 JavaScript
 
 ```
-
-// Pipes and filters
-
-const result = await sandbox.exec('ls -la | grep ".py" | wc -l');
-
-console.log("Python files:", result.stdout.trim());
-
-
-// Output redirection
-
-await sandbox.exec("python generate.py > output.txt 2> errors.txt");
-
-
-// Multiple commands
-
-await sandbox.exec("cd /workspace && npm install && npm test");
-
-
+// Pipes and filtersconst result = await sandbox.exec('ls -la | grep ".py" | wc -l');console.log("Python files:", result.stdout.trim());
+// Output redirectionawait sandbox.exec("python generate.py > output.txt 2> errors.txt");
+// Multiple commandsawait sandbox.exec("cd /workspace && npm install && npm test");
 ```
 
 TypeScript
 
 ```
-
-// Pipes and filters
-
-const result = await sandbox.exec('ls -la | grep ".py" | wc -l');
-
-console.log('Python files:', result.stdout.trim());
-
-
-// Output redirection
-
-await sandbox.exec('python generate.py > output.txt 2> errors.txt');
-
-
-// Multiple commands
-
-await sandbox.exec('cd /workspace && npm install && npm test');
-
-
+// Pipes and filtersconst result = await sandbox.exec('ls -la | grep ".py" | wc -l');console.log('Python files:', result.stdout.trim());
+// Output redirectionawait sandbox.exec('python generate.py > output.txt 2> errors.txt');
+// Multiple commandsawait sandbox.exec('cd /workspace && npm install && npm test');
 ```
 
 ## Execute Python scripts
 
-* [  JavaScript ](#tab-panel-10339)
-* [  TypeScript ](#tab-panel-10340)
+* [  JavaScript ](#tab-panel-10415)
+* [  TypeScript ](#tab-panel-10416)
 
 JavaScript
 
 ```
-
-// Run inline Python
-
-const result = await sandbox.exec('python -c "print(sum([1, 2, 3, 4, 5]))"');
-
-console.log("Sum:", result.stdout.trim()); // "15"
-
-
-// Run a script file
-
-await sandbox.writeFile(
-
-  "/workspace/analyze.py",
-
-  `
-
-import sys
-
-print(f"Argument: {sys.argv[1]}")
-
-`,
-
-);
-
-
+// Run inline Pythonconst result = await sandbox.exec('python -c "print(sum([1, 2, 3, 4, 5]))"');console.log("Sum:", result.stdout.trim()); // "15"
+// Run a script fileawait sandbox.writeFile(  "/workspace/analyze.py",  `import sysprint(f"Argument: {sys.argv[1]}")`,);
 await sandbox.exec("python /workspace/analyze.py data.csv");
-
-
 ```
 
 TypeScript
 
 ```
-
-// Run inline Python
-
-const result = await sandbox.exec('python -c "print(sum([1, 2, 3, 4, 5]))"');
-
-console.log('Sum:', result.stdout.trim()); // "15"
-
-
-// Run a script file
-
-await sandbox.writeFile('/workspace/analyze.py', `
-
-import sys
-
-print(f"Argument: {sys.argv[1]}")
-
-`);
-
-
+// Run inline Pythonconst result = await sandbox.exec('python -c "print(sum([1, 2, 3, 4, 5]))"');console.log('Sum:', result.stdout.trim()); // "15"
+// Run a script fileawait sandbox.writeFile('/workspace/analyze.py', `import sysprint(f"Argument: {sys.argv[1]}")`);
 await sandbox.exec('python /workspace/analyze.py data.csv');
-
-
 ```
 
 ## Timeouts
@@ -379,86 +155,42 @@ Set a maximum execution time for commands to prevent long-running operations fro
 
 Pass `timeout` in the options to set a timeout for a single command:
 
-* [  JavaScript ](#tab-panel-10329)
-* [  TypeScript ](#tab-panel-10330)
+* [  JavaScript ](#tab-panel-10405)
+* [  TypeScript ](#tab-panel-10406)
 
 JavaScript
 
 ```
-
-const result = await sandbox.exec("npm run build", {
-
-  timeout: 30000, // 30 seconds
-
-});
-
-
+const result = await sandbox.exec("npm run build", {  timeout: 30000, // 30 seconds});
 ```
 
 TypeScript
 
 ```
-
-const result = await sandbox.exec('npm run build', {
-
-  timeout: 30000 // 30 seconds
-
-});
-
-
+const result = await sandbox.exec('npm run build', {  timeout: 30000 // 30 seconds});
 ```
 
 ### Session-level timeout
 
 Set a default timeout for all commands in a session with `commandTimeoutMs`:
 
-* [  JavaScript ](#tab-panel-10335)
-* [  TypeScript ](#tab-panel-10336)
+* [  JavaScript ](#tab-panel-10411)
+* [  TypeScript ](#tab-panel-10412)
 
 JavaScript
 
 ```
-
-const session = await sandbox.createSession({
-
-  commandTimeoutMs: 10000, // 10s default for all commands
-
-});
-
-
-await session.exec("npm install"); // Times out after 10s
-
-await session.exec("npm run build"); // Times out after 10s
-
-
-// Per-command timeout overrides the session default
-
-await session.exec("npm test", { timeout: 60000 }); // 60s for this command
-
-
+const session = await sandbox.createSession({  commandTimeoutMs: 10000, // 10s default for all commands});
+await session.exec("npm install"); // Times out after 10sawait session.exec("npm run build"); // Times out after 10s
+// Per-command timeout overrides the session defaultawait session.exec("npm test", { timeout: 60000 }); // 60s for this command
 ```
 
 TypeScript
 
 ```
-
-const session = await sandbox.createSession({
-
-  commandTimeoutMs: 10000 // 10s default for all commands
-
-});
-
-
-await session.exec('npm install');    // Times out after 10s
-
-await session.exec('npm run build');  // Times out after 10s
-
-
-// Per-command timeout overrides the session default
-
-await session.exec('npm test', { timeout: 60000 }); // 60s for this command
-
-
+const session = await sandbox.createSession({  commandTimeoutMs: 10000 // 10s default for all commands});
+await session.exec('npm install');    // Times out after 10sawait session.exec('npm run build');  // Times out after 10s
+// Per-command timeout overrides the session defaultawait session.exec('npm test', { timeout: 60000 }); // 60s for this command
 ```
 
 ### Global timeout
@@ -495,76 +227,40 @@ When a command times out, the SDK raises an error and closes the connection. The
 
 Verify the command exists in the container:
 
-* [  JavaScript ](#tab-panel-10333)
-* [  TypeScript ](#tab-panel-10334)
+* [  JavaScript ](#tab-panel-10409)
+* [  TypeScript ](#tab-panel-10410)
 
 JavaScript
 
 ```
-
-const check = await sandbox.exec("which python3");
-
-if (!check.success) {
-
-  console.error("python3 not found");
-
-}
-
-
+const check = await sandbox.exec("which python3");if (!check.success) {  console.error("python3 not found");}
 ```
 
 TypeScript
 
 ```
-
-const check = await sandbox.exec('which python3');
-
-if (!check.success) {
-
-  console.error('python3 not found');
-
-}
-
-
+const check = await sandbox.exec('which python3');if (!check.success) {  console.error('python3 not found');}
 ```
 
 ### Working directory issues
 
 Use absolute paths or change directory:
 
-* [  JavaScript ](#tab-panel-10337)
-* [  TypeScript ](#tab-panel-10338)
+* [  JavaScript ](#tab-panel-10413)
+* [  TypeScript ](#tab-panel-10414)
 
 JavaScript
 
 ```
-
-// Use absolute path
-
-await sandbox.exec("python /workspace/my-app/script.py");
-
-
-// Or change directory
-
-await sandbox.exec("cd /workspace/my-app && python script.py");
-
-
+// Use absolute pathawait sandbox.exec("python /workspace/my-app/script.py");
+// Or change directoryawait sandbox.exec("cd /workspace/my-app && python script.py");
 ```
 
 TypeScript
 
 ```
-
-// Use absolute path
-
-await sandbox.exec('python /workspace/my-app/script.py');
-
-
-// Or change directory
-
-await sandbox.exec('cd /workspace/my-app && python script.py');
-
-
+// Use absolute pathawait sandbox.exec('python /workspace/my-app/script.py');
+// Or change directoryawait sandbox.exec('cd /workspace/my-app && python script.py');
 ```
 
 ## Related resources

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,7 +30,7 @@ Transcribe audio using Deepgram’s speech-to-text model
 
 Note 
 
-The [pricing of this model](https://developers.cloudflare.com/workers-ai/platform/pricing)is different based on transport. Transport-based pricing does not apply to all models.
+The [pricing of this model](https://developers.cloudflare.com/workers-ai/platform/pricing) is different based on transport. Transport-based pricing does not apply to all models. 
 
 * WebSocket: $0.0092 per audio minute output (836.36 neurons per audio minute output)
 * Regular HTTP: $0.0052 per audio minute output (472.73 neurons per audio minute output)
@@ -58,60 +58,25 @@ If no language is specified, the model defaults to `en-US`. For best accuracy, e
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-5034)
-* [  curl ](#tab-panel-5035)
+* [  TypeScript ](#tab-panel-5108)
+* [  curl ](#tab-panel-5109)
 
 ```
+export default {  async fetch(request, env, ctx): Promise<Response> {    const URL = "https://URL_TO_MP3_FILE/audio.mp3";    const mp3 = await fetch(URL);
 
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    const URL = "https://URL_TO_MP3_FILE/audio.mp3";
-
-    const mp3 = await fetch(URL);
-
-
-    const resp = await env.AI.run("@cf/deepgram/nova-3", {
-
-      "audio": {
-
-        body: mp3.body,
-
-        contentType: "audio/mpeg"
-
-      },
-
-      "detect_language": true
-
-    }, {
-
-      returnRawResponse: true
-
-    });
-
-    return resp;
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+    const resp = await env.AI.run("@cf/deepgram/nova-3", {      "audio": {        body: mp3.body,        contentType: "audio/mpeg"      },      "detect_language": true    }, {      returnRawResponse: true    });    return resp;  },} satisfies ExportedHandler<Env>;
 ```
 
 Terminal window
 
 ```
-
 curl --request POST   --url 'https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/deepgram/nova-3?detect_language=true'   --header 'Authorization: Bearer {TOKEN}'   --header 'Content-Type: audio/mpeg'   --data-binary "@/path/to/your-mp3-file.mp3"
-
-
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-5036)
-* [ Output ](#tab-panel-5037)
+* [ Input ](#tab-panel-5110)
+* [ Output ](#tab-panel-5111)
 
 ▶audio{}
 
@@ -265,7 +230,7 @@ utterance\_end\_ms
 
 Input [ ](https://developers.cloudflare.com/workers-ai/models/nova-3/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/nova-3/schema-input.json "Download") 
 
-Output [ ](https://developers.cloudflare.com/workers-ai/models/nova-3/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/nova-3/schema-output.json "Download") 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/nova-3/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/nova-3/schema-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/nova-3/#page","headline":"nova-3 (Deepgram) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Transcribe audio using Deepgram’s speech-to-text model","url":"https://developers.cloudflare.com/workers-ai/models/nova-3/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

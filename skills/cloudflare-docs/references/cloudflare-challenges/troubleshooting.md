@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-challenges/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -39,64 +39,11 @@ You can add tracking scripts, such as the Google Tag Manager Javascript, within 
 Example JavaScript
 
 ```
-
-<script>
-
-    (function () {
-
-      const gaIds = {
-
-        "<YOUR_DOMAIN>": "<GA_TRACKING_ID>",
-
-      };
-
-
+<script>    (function () {      const gaIds = {        "<YOUR_DOMAIN>": "<GA_TRACKING_ID>",      };
       const gaId = gaIds[window.location.hostname];
-
-
-      if (gaId) {
-
-        const src = "https://www.googletagmanager.com/gtag/js?id=";
-
-
-        const gaScript = document.createElement("script");
-
-        gaScript.src = src.concat(gaId);
-
-        document.body.appendChild(gaScript);
-
-
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-
-          dataLayer.push(arguments);
-
-        }
-
-        gtag("js", new Date());
-
-        gtag("config", gaId);
-
-      } else {
-
-        console.warn(
-
-          "Google Analytics ID not found for host:",
-
-          window.location.hostname,
-
-        );
-
-      }
-
-    })();
-
-  </script>
-
-</body>
-
-
+      if (gaId) {        const src = "https://www.googletagmanager.com/gtag/js?id=";
+        const gaScript = document.createElement("script");        gaScript.src = src.concat(gaId);        document.body.appendChild(gaScript);
+        window.dataLayer = window.dataLayer || [];        function gtag() {          dataLayer.push(arguments);        }        gtag("js", new Date());        gtag("config", gaId);      } else {        console.warn(          "Google Analytics ID not found for host:",          window.location.hostname,        );      }    })();  </script></body>
 ```
 
 ### Cross-origin resource sharing (CORS) preflight requests
@@ -140,19 +87,24 @@ Example
 
 Block Amazon Web Services (AWS) and Google Cloud Platform (GCP) because of large volumes of undesired traffic, but allow Googlebot and other known bots that Cloudflare validates.
 
-* Basic rule, no exclusion:  
-   * **Expression**: `(ip.src.asnum in {16509 15169} and not cf.client.bot)`  
-   * **Action**: Block (or a challenge action)
-* Rule that excludes IP addresses from being blocked or challenged:  
-   * **Expression**: `(ip.src.asnum in {16509 15169} and not cf.client.bot) and not (ip.src in {192.0.2.1 198.51.100.42 203.0.113.0/24})`  
-   * **Action**: Block (or a challenge action)
-* Two rules to skip remaining custom rules for specific IPs and block the rest.  
-   1. Rule 1:  
-         * Expression: `ip.src in {192.0.2.1 198.51.100.42 203.0.113.0/24}`  
-         * Action: Skip > All remaining custom rules  
-   2. Rule 2:  
-         * Expression: `(ip.src.asnum in {16509 15169} and not cf.client.bot)`  
-         * Action: Block (or a challenge action)
+* Basic rule, no exclusion:
+
+  * **Expression**: `(ip.src.asnum in {16509 15169} and not cf.client.bot)`
+  * **Action**: Block (or a challenge action)
+* Rule that excludes IP addresses from being blocked or challenged:
+
+  * **Expression**: `(ip.src.asnum in {16509 15169} and not cf.client.bot) and not (ip.src in {192.0.2.1 198.51.100.42 203.0.113.0/24})`
+  * **Action**: Block (or a challenge action)
+* Two rules to skip remaining custom rules for specific IPs and block the rest.
+
+  1. Rule 1:
+
+    * Expression: `ip.src in {192.0.2.1 198.51.100.42 203.0.113.0/24}`
+    * Action: Skip > All remaining custom rules
+  2. Rule 2:
+
+    * Expression: `(ip.src.asnum in {16509 15169} and not cf.client.bot)`
+    * Action: Block (or a challenge action)
 
 #### 2\. Modify the Rule Expression
 
@@ -164,19 +116,24 @@ Example
 
 Exclude multiple IP addresses from a **Block** or **Challenge** rule that assesses attack score.
 
-* Basic rule, no exclusion:  
-   * **Expression**: `(http.host eq "example.com" and cf.waf.score lt 20)`  
-   * **Action**: Block (or a challenge action)
-* Rule that excludes IP addresses from being blocked/challenged:  
-   * **Expression**: `(http.host eq "example.com" and cf.waf.score lt 20) and not (ip.src in {192.0.2.1 198.51.100.42 203.0.113.0/24})`  
-   * **Action**: Block (or a challenge action)
-* Two rules to skip remaining custom rules for specific IPs and block the rest.  
-   1. Rule 1:  
-         * Expression: `ip.src in {192.0.2.1 198.51.100.42 203.0.113.0/24}`  
-         * Action: Skip > All remaining custom rules  
-   2. Rule 2:  
-         * Expression: `(http.host eq "example.com" and cf.waf.score lt 20)`  
-         * Action: Block (or a challenge action)
+* Basic rule, no exclusion:
+
+  * **Expression**: `(http.host eq "example.com" and cf.waf.score lt 20)`
+  * **Action**: Block (or a challenge action)
+* Rule that excludes IP addresses from being blocked/challenged:
+
+  * **Expression**: `(http.host eq "example.com" and cf.waf.score lt 20) and not (ip.src in {192.0.2.1 198.51.100.42 203.0.113.0/24})`
+  * **Action**: Block (or a challenge action)
+* Two rules to skip remaining custom rules for specific IPs and block the rest.
+
+  1. Rule 1:
+
+    * Expression: `ip.src in {192.0.2.1 198.51.100.42 203.0.113.0/24}`
+    * Action: Skip > All remaining custom rules
+  2. Rule 2:
+
+    * Expression: `(http.host eq "example.com" and cf.waf.score lt 20)`
+    * Action: Block (or a challenge action)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/troubleshooting/#page","headline":"Troubleshooting · Cloudflare challenges docs","description":"Resolve common issues with Cloudflare challenges, including loops and proxied hostnames.","url":"https://developers.cloudflare.com/cloudflare-challenges/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}

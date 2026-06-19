@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,118 +22,42 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11666)
-* [  TypeScript ](#tab-panel-11667)
-* [  Python ](#tab-panel-11668)
-* [  Hono ](#tab-panel-11669)
+* [  JavaScript ](#tab-panel-11681)
+* [  TypeScript ](#tab-panel-11682)
+* [  Python ](#tab-panel-11683)
+* [  Hono ](#tab-panel-11684)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request) {
-
-    /**
-
-     * Replace `remote` with the host you wish to send requests to
-
-     */
-
-    const remote = "https://example.com";
-
-
-    return await fetch(remote, request);
-
-  },
-
-};
-
-
+export default {  async fetch(request) {    /**     * Replace `remote` with the host you wish to send requests to     */    const remote = "https://example.com";
+    return await fetch(remote, request);  },};
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAyCArAA4ATJICcwgOyCAXCxZtgHOFxp8Bw8VImzBCgLAAoAMLoqEAKY3sAESgBnGOhdRo1xSTV4CYhIqOGBbBgAiKBpbAA8AOgArFwjSVCgwe1DwqJiE5IjzKxt7CGwAFToYW184GBgwPgIoa2REuAA3OBdeBFgIAGpgdFxwW3NzOPckElxbVDhwCBIAbzMSEm66Kl4-WwheAAsACgRbAEcQWxcIAEpV9Y2SZAAqF8enl5IAJVsGuF4thIAAMzsM7MCSAB3LyHEgQQ5Aw4eZZ0SjQ1xwiDoEguey4EhnS7XCAueHoD4bF7ISm8aw3Qm2cFAhgkCKHCAQGAuRTIZBxUINWzxOnAVJmSlnCAgBBUTZQuBePYHE5g9B2AA0jOJN1uREeAF8NWYDURzCpmGoNFoePwhKJJDJ5IIitY7A5nG4PF4WlRfP4NKQQmFImFCBpUn4MlkQxEyGB0GRCpY3aUKlUapt6o1eM1WslrBMzCsIsBFVQAPrDUaZCKKXJzfIpA3mi1WwI2nT2-RO4yCZjmIA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBWACwAOQaIBMAZnHjZ0gFwsWbYBzhcafASIlS5CpQFgAUAGF0VCAFNb2ACJQAzjHSuo0G8pIa8AmISKjhgOwYAIigaOwAPADoAK1dI0lQoMAcwiOjYxJTIi2tbBwhsABU6GDs-OBgYMD4CKBtkJLgANzhXXgRYCABqYHRccDsLC3iPJBJcO1Q4cAgSAG9zEhIeuipefzsIXgALAAoEOwBHEDtXCABKNY3NkmQAKlen59eSACU7RrgvDsJAABucRvYQSQAO7eI4kCBHYFHTwrOiUGFueEQdAkVwOXAkc5XG4QVwI9CfTavZBU3g2W5EuwQ4EMEiRI4QCAwVzKZDIeJhRp2BL04BpcxU84QEAIKhbaFwbz7Q6ncHoewAGiZJNudyITwAvprzIaiBY1MwNFodDx+EIxJIZPJFNJijZ7I4XO5PN5WlQ-AEtKRQuEouFCFo0v5Mtkw5EyGB0GQilYPWVKtValsGk1eC02ikbJNzKtIsAlVQAPojMZZSLKPLzAqpQ0Wy3WoK2vQOwzOkzSZgWIA)
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request: Request): Promise<Response> {
-
-    /**
-
-     * Replace `remote` with the host you wish to send requests to
-
-     */
-
-    const remote = "https://example.com";
-
-
-    return await fetch(remote, request);
-
-  },
-
-};
-
-
+export default {  async fetch(request: Request): Promise<Response> {    /**     * Replace `remote` with the host you wish to send requests to     */    const remote = "https://example.com";
+    return await fetch(remote, request);  },};
 ```
 
 Python
 
 ```
-
-from workers import WorkerEntrypoint
-
-from js import fetch
-
-
-class Default(WorkerEntrypoint):
-
-    async def fetch(self, request):
-
-        # Replace `remote` with the host you wish to send requests to
-
-        remote = "https://example.com"
-
-        return await fetch(remote, request)
-
-
+from workers import WorkerEntrypointfrom js import fetch
+class Default(WorkerEntrypoint):    async def fetch(self, request):        # Replace `remote` with the host you wish to send requests to        remote = "https://example.com"        return await fetch(remote, request)
 ```
 
 TypeScript
 
 ```
-
 import { Hono } from "hono";
-
-
 const app = new Hono();
-
-
-app.all("*", async (c) => {
-
-  /**
-
-   * Replace `remote` with the host you wish to send requests to
-
-   */
-
-  const remote = "https://example.com";
-
-
-  // Forward the request to the remote server
-
-  return await fetch(remote, c.req.raw);
-
-});
-
-
+app.all("*", async (c) => {  /**   * Replace `remote` with the host you wish to send requests to   */  const remote = "https://example.com";
+  // Forward the request to the remote server  return await fetch(remote, c.req.raw);});
 export default app;
-
-
 ```
 
 ```json

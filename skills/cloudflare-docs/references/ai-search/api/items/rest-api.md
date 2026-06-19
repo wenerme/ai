@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,19 +27,17 @@ All requests require an API token with **AI Search:Edit** and **AI Search:Run** 
 2. Select **Create Token**.
 3. Select **Create Custom Token**.
 4. Enter a **Token name**, for example `AI Search Manager`.
-5. Under **Permissions**, add two permissions:  
-   * **Account** \> **AI Search:Edit**  
-   * **Account** \> **AI Search:Run**
+5. Under **Permissions**, add two permissions:
+
+  * **Account** \> **AI Search:Edit**
+  * **Account** \> **AI Search:Run**
 6. Select **Continue to summary**, then select **Create Token**.
 7. Copy and save the token value. This is your `API_TOKEN`.
 
 Include the token in the `Authorization` header for all requests:
 
 ```
-
 Authorization: Bearer <API_TOKEN>
-
-
 ```
 
 ## API paths
@@ -72,14 +70,7 @@ Upload a file to an instance:
 Terminal window
 
 ```
-
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/items" \
-
-  -H "Authorization: Bearer <API_TOKEN>" \
-
-  -F "file=@/path/to/your/file.pdf"
-
-
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/items" \  -H "Authorization: Bearer <API_TOKEN>" \  -F "file=@/path/to/your/file.pdf"
 ```
 
 ### Example: List items
@@ -89,12 +80,7 @@ List all items in an instance:
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/items" \
-
-  -H "Authorization: Bearer <API_TOKEN>"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/items" \  -H "Authorization: Bearer <API_TOKEN>"
 ```
 
 ```json

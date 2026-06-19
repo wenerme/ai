@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,39 +29,18 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 ### Basic Usage
 
 ```
-
 <rtk-ui-provider></rtk-ui-provider>
-
-
 ```
 
 ### With Properties
 
 ```
-
-<rtk-ui-provider>
-
-</rtk-ui-provider>
-
-
+<rtk-ui-provider></rtk-ui-provider>
 ```
 
 ```
-
-<script>
-
-  const el = document.querySelector("rtk-ui-provider");
-
-
-  el.config= defaultUiConfig
-
-  el.mode= meeting
-
-  el.showSetupScreen= true;
-
-</script>
-
-
+<script>  const el = document.querySelector("rtk-ui-provider");
+  el.config= defaultUiConfig  el.mode= meeting  el.showSetupScreen= true;</script>
 ```
 
 ```json

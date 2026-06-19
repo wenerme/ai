@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,16 +25,7 @@ A toggle button for syncing plugin tabs.
 ### Basic Usage
 
 ```
-
-<com.cloudflare.realtimekit.ui.view.RtkTabSyncToggleButton
-
-    android:id="@+id/rtk_tab_sync"
-
-    android:layout_width="wrap_content"
-
-    android:layout_height="wrap_content" />
-
-
+<com.cloudflare.realtimekit.ui.view.RtkTabSyncToggleButton    android:id="@+id/rtk_tab_sync"    android:layout_width="wrap_content"    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
@@ -42,12 +33,7 @@ A toggle button for syncing plugin tabs.
 Kotlin
 
 ```
-
-val tabSyncButton = findViewById<RtkTabSyncToggleButton>(R.id.rtk_tab_sync)
-
-tabSyncButton.isActivated = true
-
-
+val tabSyncButton = findViewById<RtkTabSyncToggleButton>(R.id.rtk_tab_sync)tabSyncButton.isActivated = true
 ```
 
 ```json

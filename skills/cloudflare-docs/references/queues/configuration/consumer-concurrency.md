@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -85,47 +85,19 @@ Ensure you are using the latest version of [wrangler](https://developers.cloudfl
 
 To set a fixed maximum number of concurrent consumer invocations for a given queue, configure a `max_concurrency` in your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-9592)
-* [  wrangler.toml ](#tab-panel-9593)
+* [  wrangler.jsonc ](#tab-panel-9668)
+* [  wrangler.toml ](#tab-panel-9669)
 
 JSONC
 
 ```
-
-{
-
-  "queues": {
-
-    "consumers": [
-
-      {
-
-        "queue": "my-queue",
-
-        "max_concurrency": 1
-
-      }
-
-    ]
-
-  }
-
-}
-
-
+{  "queues": {    "consumers": [      {        "queue": "my-queue",        "max_concurrency": 1      }    ]  }}
 ```
 
 TOML
 
 ```
-
-[[queues.consumers]]
-
-queue = "my-queue"
-
-max_concurrency = 1
-
-
+[[queues.consumers]]queue = "my-queue"max_concurrency = 1
 ```
 
 To remove the limit, remove the `max_concurrency` setting from the `[[queues.consumers]]` configuration for a given queue and call `npx wrangler deploy` to push your configuration update.

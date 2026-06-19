@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security-center/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -118,11 +118,12 @@ When reviewing a matched domain, you have two paths to action depending on where
 [ Go to **Brand protection** ](https://dash.cloudflare.com/?to=/:account/security-center/brand-protection)
 2. Go to **Monitor Strings** and select a query to view its matched domains.
 3. Next to the domain you want to take action on, click **Generate C&D Letter**.
-4. Choose a template. You can select from three default templates or from your own saved templates:  
-   * **Registrant - Exact Match**: A cease and desist letter direct to a registrant of a domain that is an exact match to the protected trademark.  
-   * **Registrant - Similar Match**: A cease and desist letter directed to a registrant of a domain that is confusingly similar to the protected trademark (1-character distance).  
-   * **Registrar - Trademark Infringement**: A letter directed to a domain registrar regarding trademark infringement by their registrant.  
-   * **Registrar - Trademark Infringement & Phishing**: A letter directed to a domain registrar regarding trademark infringement and phishing by their registrant.
+4. Choose a template. You can select from three default templates or from your own saved templates:
+
+  * **Registrant - Exact Match**: A cease and desist letter direct to a registrant of a domain that is an exact match to the protected trademark.
+  * **Registrant - Similar Match**: A cease and desist letter directed to a registrant of a domain that is confusingly similar to the protected trademark (1-character distance).
+  * **Registrar - Trademark Infringement**: A letter directed to a domain registrar regarding trademark infringement by their registrant.
+  * **Registrar - Trademark Infringement & Phishing**: A letter directed to a domain registrar regarding trademark infringement and phishing by their registrant.
 5. Review and edit the pre-filled letter. The system auto-populates recipient data from WHOIS records.
 6. Click **Download** to save the finalized PDF.
 

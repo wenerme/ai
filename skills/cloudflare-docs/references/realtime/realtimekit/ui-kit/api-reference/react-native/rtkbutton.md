@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,51 +32,15 @@ A general-purpose button component with multiple variants and sizes.
 ### Basic Usage
 
 ```
-
 import { RtkButton } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkButton onClick={() => console.log("pressed")}>Press Me</RtkButton>;
-
-}
-
-
+function MyComponent() {  return <RtkButton onClick={() => console.log("pressed")}>Press Me</RtkButton>;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkButton } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkButton
-
-      onClick={() => console.log("pressed")}
-
-      variant="primary"
-
-      size="md"
-
-      kind="wide"
-
-    >
-
-      Join Meeting
-
-    </RtkButton>
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkButton      onClick={() => console.log("pressed")}      variant="primary"      size="md"      kind="wide"    >      Join Meeting    </RtkButton>  );}
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workflows/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -38,194 +38,64 @@ To do this, you will need to:
 
 For example, if you have a Worker called `workflows-starter`, you would create a new Service Binding in your Pages project as follows, ensuring that the `service` name matches the name of the Worker your Workflow is defined in:
 
-* [  wrangler.jsonc ](#tab-panel-12985)
-* [  wrangler.toml ](#tab-panel-12986)
+* [  wrangler.jsonc ](#tab-panel-13002)
+* [  wrangler.toml ](#tab-panel-13003)
 
 JSONC
 
 ```
-
-{
-
-  "services": [
-
-    {
-
-      "binding": "WORKFLOW_SERVICE",
-
-      "service": "workflows-starter"
-
-    }
-
-  ]
-
-}
-
-
+{  "services": [    {      "binding": "WORKFLOW_SERVICE",      "service": "workflows-starter"    }  ]}
 ```
 
 TOML
 
 ```
-
-[[services]]
-
-binding = "WORKFLOW_SERVICE"
-
-service = "workflows-starter"
-
-
+[[services]]binding = "WORKFLOW_SERVICE"service = "workflows-starter"
 ```
 
 Your Worker can expose a specific method (or methods) that only other Workers or Pages Functions can call over the Service Binding.
 
 In the following example, we expose a specific `createInstance` method that accepts our `Payload` and returns the [InstanceStatus](https://developers.cloudflare.com/workflows/build/workers-api/#instancestatus) from the Workflows API:
 
-* [  JavaScript ](#tab-panel-12993)
-* [  TypeScript ](#tab-panel-12994)
+* [  JavaScript ](#tab-panel-13010)
+* [  TypeScript ](#tab-panel-13011)
 
 index.js
 
 ```
-
 import { WorkerEntrypoint } from "cloudflare:workers";
-
-
-export default class WorkflowsService extends WorkerEntrypoint {
-
-  // Currently, entrypoints without a named handler are not supported
-
-  async fetch() {
-
-    return new Response(null, { status: 404 });
-
-  }
-
-
-  async createInstance(payload) {
-
-    let instance = await this.env.MY_WORKFLOW.create({
-
-      params: payload,
-
-    });
-
-
-    return Response.json({
-
-      id: instance.id,
-
-      details: await instance.status(),
-
-    });
-
-  }
-
-}
-
-
+export default class WorkflowsService extends WorkerEntrypoint {  // Currently, entrypoints without a named handler are not supported  async fetch() {    return new Response(null, { status: 404 });  }
+  async createInstance(payload) {    let instance = await this.env.MY_WORKFLOW.create({      params: payload,    });
+    return Response.json({      id: instance.id,      details: await instance.status(),    });  }}
 ```
 
 index.ts
 
 ```
-
 import { WorkerEntrypoint } from "cloudflare:workers";
-
-
-interface Env {
-
-  MY_WORKFLOW: Workflow;
-
-}
-
-
-type Payload = {
-
-  hello: string;
-
-};
-
-
-export default class WorkflowsService extends WorkerEntrypoint<Env> {
-
-  // Currently, entrypoints without a named handler are not supported
-
-  async fetch() {
-
-    return new Response(null, { status: 404 });
-
-  }
-
-
-  async createInstance(payload: Payload) {
-
-    let instance = await this.env.MY_WORKFLOW.create({
-
-      params: payload,
-
-    });
-
-
-    return Response.json({
-
-      id: instance.id,
-
-      details: await instance.status(),
-
-    });
-
-  }
-
-}
-
-
+interface Env {  MY_WORKFLOW: Workflow;}
+type Payload = {  hello: string;};
+export default class WorkflowsService extends WorkerEntrypoint<Env> {  // Currently, entrypoints without a named handler are not supported  async fetch() {    return new Response(null, { status: 404 });  }
+  async createInstance(payload: Payload) {    let instance = await this.env.MY_WORKFLOW.create({      params: payload,    });
+    return Response.json({      id: instance.id,      details: await instance.status(),    });  }}
 ```
 
 Your Pages Function would resemble the following:
 
-* [  JavaScript ](#tab-panel-12987)
-* [  TypeScript ](#tab-panel-12988)
+* [  JavaScript ](#tab-panel-13004)
+* [  TypeScript ](#tab-panel-13005)
 
 functions/request.js
 
 ```
-
-export const onRequest = async (context) => {
-
-  // This payload could be anything from within your app or from your frontend
-
-  let payload = { hello: "world" };
-
-  return context.env.WORKFLOWS_SERVICE.createInstance(payload);
-
-};
-
-
+export const onRequest = async (context) => {  // This payload could be anything from within your app or from your frontend  let payload = { hello: "world" };  return context.env.WORKFLOWS_SERVICE.createInstance(payload);};
 ```
 
 functions/request.ts
 
 ```
-
-interface Env {
-
-  WORKFLOW_SERVICE: Service;
-
-}
-
-
-export const onRequest: PagesFunction<Env> = async (context) => {
-
-  // This payload could be anything from within your app or from your frontend
-
-  let payload = { hello: "world" };
-
-  return context.env.WORKFLOWS_SERVICE.createInstance(payload);
-
-};
-
-
+interface Env {  WORKFLOW_SERVICE: Service;}
+export const onRequest: PagesFunction<Env> = async (context) => {  // This payload could be anything from within your app or from your frontend  let payload = { hello: "world" };  return context.env.WORKFLOWS_SERVICE.createInstance(payload);};
 ```
 
 To learn more about binding to resources from Pages Functions, including how to bind via the Cloudflare dashboard, refer to the [bindings documentation for Pages Functions](https://developers.cloudflare.com/pages/functions/bindings/#service-bindings).
@@ -240,126 +110,38 @@ Service Bindings don't require you to expose a public endpoint from your Worker,
 
 An alternative to setting up a Service Binding is to call the Worker over HTTP by using the Workflows [Workers API](https://developers.cloudflare.com/workflows/build/workers-api/#workflow) to `create` a new Workflow instance for each incoming HTTP call to the Worker:
 
-* [  JavaScript ](#tab-panel-12989)
-* [  TypeScript ](#tab-panel-12990)
+* [  JavaScript ](#tab-panel-13006)
+* [  TypeScript ](#tab-panel-13007)
 
 index.js
 
 ```
-
-// This is in the same file as your Workflow definition
-
-export default {
-
-  async fetch(req, env) {
-
-    let instance = await env.MY_WORKFLOW.create({
-
-      params: payload,
-
-    });
-
-    return Response.json({
-
-      id: instance.id,
-
-      details: await instance.status(),
-
-    });
-
-  },
-
-};
-
-
+// This is in the same file as your Workflow definitionexport default {  async fetch(req, env) {    let instance = await env.MY_WORKFLOW.create({      params: payload,    });    return Response.json({      id: instance.id,      details: await instance.status(),    });  },};
 ```
 
 index.ts
 
 ```
-
-// This is in the same file as your Workflow definition
-
-export default {
-
-  async fetch(req: Request, env: Env): Promise<Response> {
-
-    let instance = await env.MY_WORKFLOW.create({
-
-      params: payload,
-
-    });
-
-    return Response.json({
-
-      id: instance.id,
-
-      details: await instance.status(),
-
-    });
-
-  },
-
-};
-
-
+// This is in the same file as your Workflow definitionexport default {  async fetch(req: Request, env: Env): Promise<Response> {    let instance = await env.MY_WORKFLOW.create({      params: payload,    });    return Response.json({      id: instance.id,      details: await instance.status(),    });  },};
 ```
 
 Your [Pages Function](https://developers.cloudflare.com/pages/functions/get-started/) can then make a regular `fetch` call to the Worker:
 
-* [  JavaScript ](#tab-panel-12991)
-* [  TypeScript ](#tab-panel-12992)
+* [  JavaScript ](#tab-panel-13008)
+* [  TypeScript ](#tab-panel-13009)
 
 functions/request.js
 
 ```
-
-export const onRequest = async (context) => {
-
-  // Other code
-
-  let payload = { hello: "world" };
-
-  const instanceStatus = await fetch("https://YOUR_WORKER.workers.dev/", {
-
-    method: "POST",
-
-    body: JSON.stringify(payload), // Send a payload for our Worker to pass to the Workflow
-
-  });
-
-
-  return Response.json(instanceStatus);
-
-};
-
-
+export const onRequest = async (context) => {  // Other code  let payload = { hello: "world" };  const instanceStatus = await fetch("https://YOUR_WORKER.workers.dev/", {    method: "POST",    body: JSON.stringify(payload), // Send a payload for our Worker to pass to the Workflow  });
+  return Response.json(instanceStatus);};
 ```
 
 functions/request.ts
 
 ```
-
-export const onRequest: PagesFunction<Env> = async (context) => {
-
-  // Other code
-
-  let payload = { hello: "world" };
-
-  const instanceStatus = await fetch("https://YOUR_WORKER.workers.dev/", {
-
-    method: "POST",
-
-    body: JSON.stringify(payload), // Send a payload for our Worker to pass to the Workflow
-
-  });
-
-
-  return Response.json(instanceStatus);
-
-};
-
-
+export const onRequest: PagesFunction<Env> = async (context) => {  // Other code  let payload = { hello: "world" };  const instanceStatus = await fetch("https://YOUR_WORKER.workers.dev/", {    method: "POST",    body: JSON.stringify(payload), // Send a payload for our Worker to pass to the Workflow  });
+  return Response.json(instanceStatus);};
 ```
 
 You can also choose to authenticate these requests by passing a shared secret in a header and validating that in your Worker.

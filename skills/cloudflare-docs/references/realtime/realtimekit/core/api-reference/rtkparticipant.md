@@ -5,7 +5,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,53 +16,44 @@ This module represents a single participant in the meeting. The participant obje
 TypeScript
 
 ```
-
-const participant1 = meeting.participants.active.get(participantId);
-
-const participant2 = meeting.participants.joined.get(participantId);
-
-const participant3 = meeting.participants.active.toArray()[0];
-
-const participant4 = meeting.participants.active.toArray().filter((p) => p.name === 'John');
-
-
+const participant1 = meeting.participants.active.get(participantId);const participant2 = meeting.participants.joined.get(participantId);const participant3 = meeting.participants.active.toArray()[0];const participant4 = meeting.participants.active.toArray().filter((p) => p.name === 'John');
 ```
 
 * [RTKParticipant](#module%5FRTKParticipant)  
-   * [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports) ⏏  
-         * [new module.exports(context, participant, self, roomSocket)](#new%5Fmodule%5FRTKParticipant--module.exports%5Fnew)  
-         * [.id](#module%5FRTKParticipant--module.exports+id)  
-         * [.userId](#module%5FRTKParticipant--module.exports+userId)  
-         * [.name](#module%5FRTKParticipant--module.exports+name)  
-         * [.picture](#module%5FRTKParticipant--module.exports+picture)  
-         * [.customRTKParticipantId](#module%5FRTKParticipant--module.exports+customRTKParticipantId)  
-         * ~~[.clientSpecificId](#module%5FRTKParticipant--module.exports+clientSpecificId)~~  
-         * [.device](#module%5FRTKParticipant--module.exports+device)  
-         * [.videoTrack](#module%5FRTKParticipant--module.exports+videoTrack)  
-         * [.audioTrack](#module%5FRTKParticipant--module.exports+audioTrack)  
-         * [.screenShareTracks](#module%5FRTKParticipant--module.exports+screenShareTracks)  
-         * [.videoEnabled](#module%5FRTKParticipant--module.exports+videoEnabled)  
-         * [.audioEnabled](#module%5FRTKParticipant--module.exports+audioEnabled)  
-         * [.screenShareEnabled](#module%5FRTKParticipant--module.exports+screenShareEnabled)  
-         * [.producers](#module%5FRTKParticipant--module.exports+producers)  
-         * [.manualProducerConfig](#module%5FRTKParticipant--module.exports+manualProducerConfig)  
-         * [.supportsRemoteControl](#module%5FRTKParticipant--module.exports+supportsRemoteControl)  
-         * [.presetName](#module%5FRTKParticipant--module.exports+presetName)  
-         * [.stageStatus](#module%5FRTKParticipant--module.exports+stageStatus)  
-         * [.telemetry](#module%5FRTKParticipant--module.exports+telemetry)  
-         * [.isPinned](#module%5FRTKParticipant--module.exports+isPinned)  
-         * [.setVideoEnabled(videoEnabled, \[emitEvent\])](#module%5FRTKParticipant--module.exports+setVideoEnabled)  
-         * [.setAudioEnabled(audioEnabled, \[emitEvent\])](#module%5FRTKParticipant--module.exports+setAudioEnabled)  
-         * [.setScreenShareEnabled(screenShareEnabled, \[emitEvent\])](#module%5FRTKParticipant--module.exports+setScreenShareEnabled)  
-         * [.pin()](#module%5FRTKParticipant--module.exports+pin)  
-         * [.unpin()](#module%5FRTKParticipant--module.exports+unpin)  
-         * [.setIsPinned(isPinned, \[emitEvent\])](#module%5FRTKParticipant--module.exports+setIsPinned)  
-         * [.disableAudio()](#module%5FRTKParticipant--module.exports+disableAudio)  
-         * [.kick()](#module%5FRTKParticipant--module.exports+kick)  
-         * [.disableVideo()](#module%5FRTKParticipant--module.exports+disableVideo)  
-         * [.registerVideoElement(videoElem)](#module%5FRTKParticipant--module.exports+registerVideoElement)  
-         * [.deregisterVideoElement(\[videoElem\])](#module%5FRTKParticipant--module.exports+deregisterVideoElement)  
-         * [.updateVideo(e)](#module%5FRTKParticipant--module.exports+updateVideo)
+  * [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports) ⏏  
+    * [new module.exports(context, participant, self, roomSocket)](#new%5Fmodule%5FRTKParticipant--module.exports%5Fnew)
+    * [.id](#module%5FRTKParticipant--module.exports+id)
+    * [.userId](#module%5FRTKParticipant--module.exports+userId)
+    * [.name](#module%5FRTKParticipant--module.exports+name)
+    * [.picture](#module%5FRTKParticipant--module.exports+picture)
+    * [.customRTKParticipantId](#module%5FRTKParticipant--module.exports+customRTKParticipantId)
+    * ~~[.clientSpecificId](#module%5FRTKParticipant--module.exports+clientSpecificId)~~
+    * [.device](#module%5FRTKParticipant--module.exports+device)
+    * [.videoTrack](#module%5FRTKParticipant--module.exports+videoTrack)
+    * [.audioTrack](#module%5FRTKParticipant--module.exports+audioTrack)
+    * [.screenShareTracks](#module%5FRTKParticipant--module.exports+screenShareTracks)
+    * [.videoEnabled](#module%5FRTKParticipant--module.exports+videoEnabled)
+    * [.audioEnabled](#module%5FRTKParticipant--module.exports+audioEnabled)
+    * [.screenShareEnabled](#module%5FRTKParticipant--module.exports+screenShareEnabled)
+    * [.producers](#module%5FRTKParticipant--module.exports+producers)
+    * [.manualProducerConfig](#module%5FRTKParticipant--module.exports+manualProducerConfig)
+    * [.supportsRemoteControl](#module%5FRTKParticipant--module.exports+supportsRemoteControl)
+    * [.presetName](#module%5FRTKParticipant--module.exports+presetName)
+    * [.stageStatus](#module%5FRTKParticipant--module.exports+stageStatus)
+    * [.telemetry](#module%5FRTKParticipant--module.exports+telemetry)
+    * [.isPinned](#module%5FRTKParticipant--module.exports+isPinned)
+    * [.setVideoEnabled(videoEnabled, \[emitEvent\])](#module%5FRTKParticipant--module.exports+setVideoEnabled)
+    * [.setAudioEnabled(audioEnabled, \[emitEvent\])](#module%5FRTKParticipant--module.exports+setAudioEnabled)
+    * [.setScreenShareEnabled(screenShareEnabled, \[emitEvent\])](#module%5FRTKParticipant--module.exports+setScreenShareEnabled)
+    * [.pin()](#module%5FRTKParticipant--module.exports+pin)
+    * [.unpin()](#module%5FRTKParticipant--module.exports+unpin)
+    * [.setIsPinned(isPinned, \[emitEvent\])](#module%5FRTKParticipant--module.exports+setIsPinned)
+    * [.disableAudio()](#module%5FRTKParticipant--module.exports+disableAudio)
+    * [.kick()](#module%5FRTKParticipant--module.exports+kick)
+    * [.disableVideo()](#module%5FRTKParticipant--module.exports+disableVideo)
+    * [.registerVideoElement(videoElem)](#module%5FRTKParticipant--module.exports+registerVideoElement)
+    * [.deregisterVideoElement(\[videoElem\])](#module%5FRTKParticipant--module.exports+deregisterVideoElement)
+    * [.updateVideo(e)](#module%5FRTKParticipant--module.exports+updateVideo)
 
 ### module.exports ⏏
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,29 +28,13 @@ A component which loads the logo from your config, or via the `logo-url` attribu
 ### Basic Usage
 
 ```
-
-<!-- component.html -->
-
-<rtk-logo></rtk-logo>
-
-
+<!-- component.html --><rtk-logo></rtk-logo>
 ```
 
 ### With Properties
 
 ```
-
-<!-- component.html -->
-
-<rtk-logo
-
- logoUrl="example"
-
- [meeting]="meeting">
-
-</rtk-logo>
-
-
+<!-- component.html --><rtk-logo logoUrl="example" [meeting]="meeting"></rtk-logo>
 ```
 
 ```json

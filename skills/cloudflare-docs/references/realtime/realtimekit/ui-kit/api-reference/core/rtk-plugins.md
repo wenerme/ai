@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,37 +29,18 @@ A component which lists all available plugins from their preset, and ability to 
 ### Basic Usage
 
 ```
-
 <rtk-plugins></rtk-plugins>
-
-
 ```
 
 ### With Properties
 
 ```
-
-<rtk-plugins
-
- size="md">
-
-</rtk-plugins>
-
-
+<rtk-plugins size="md"></rtk-plugins>
 ```
 
 ```
-
-<script>
-
-  const el = document.querySelector("rtk-plugins");
-
-
-  el.meeting= meeting
-
-</script>
-
-
+<script>  const el = document.querySelector("rtk-plugins");
+  el.meeting= meeting</script>
 ```
 
 ```json

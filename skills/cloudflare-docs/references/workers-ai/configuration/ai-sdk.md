@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -41,12 +41,7 @@ Then, add an AI binding in your Workers project Wrangler file:
 TOML
 
 ```
-
-[ai]
-
-binding = "AI"
-
-
+[ai]binding = "AI"
 ```
 
 ## Models
@@ -56,18 +51,9 @@ The AI SDK can be configured to work with [any AI model](https://developers.clou
 JavaScript
 
 ```
-
 import { createWorkersAI } from "workers-ai-provider";
-
-
 const workersai = createWorkersAI({ binding: env.AI });
-
-
-// Choose any model: https://developers.cloudflare.com/workers-ai/models/
-
-const model = workersai("@cf/meta/llama-3.1-8b-instruct", {});
-
-
+// Choose any model: https://developers.cloudflare.com/workers-ai/models/const model = workersai("@cf/meta/llama-3.1-8b-instruct", {});
 ```
 
 ## Generate Text
@@ -77,41 +63,10 @@ Once you have selected your model, you can generate text from a given prompt.
 JavaScript
 
 ```
-
-import { createWorkersAI } from 'workers-ai-provider';
-
-import { generateText } from 'ai';
-
-
-type Env = {
-
-  AI: Ai;
-
-};
-
-
-export default {
-
-  async fetch(_: Request, env: Env) {
-
-    const workersai = createWorkersAI({ binding: env.AI });
-
-    const result = await generateText({
-
-      model: workersai('@cf/meta/llama-2-7b-chat-int8'),
-
-      prompt: 'Write a 50-word essay about hello world.',
-
-    });
-
-
-    return new Response(result.text);
-
-  },
-
-};
-
-
+import { createWorkersAI } from 'workers-ai-provider';import { generateText } from 'ai';
+type Env = {  AI: Ai;};
+export default {  async fetch(_: Request, env: Env) {    const workersai = createWorkersAI({ binding: env.AI });    const result = await generateText({      model: workersai('@cf/meta/llama-2-7b-chat-int8'),      prompt: 'Write a 50-word essay about hello world.',    });
+    return new Response(result.text);  },};
 ```
 
 ## Stream Text
@@ -121,57 +76,10 @@ For longer responses, consider streaming responses to provide as the generation 
 JavaScript
 
 ```
-
-import { createWorkersAI } from 'workers-ai-provider';
-
-import { streamText } from 'ai';
-
-
-type Env = {
-
-  AI: Ai;
-
-};
-
-
-export default {
-
-  async fetch(_: Request, env: Env) {
-
-    const workersai = createWorkersAI({ binding: env.AI });
-
-    const result = streamText({
-
-      model: workersai('@cf/meta/llama-2-7b-chat-int8'),
-
-      prompt: 'Write a 50-word essay about hello world.',
-
-    });
-
-
-    return result.toTextStreamResponse({
-
-      headers: {
-
-        // add these headers to ensure that the
-
-        // response is chunked and streamed
-
-        'Content-Type': 'text/x-unknown',
-
-        'content-encoding': 'identity',
-
-        'transfer-encoding': 'chunked',
-
-      },
-
-    });
-
-  },
-
-};
-
-
+import { createWorkersAI } from 'workers-ai-provider';import { streamText } from 'ai';
+type Env = {  AI: Ai;};
+export default {  async fetch(_: Request, env: Env) {    const workersai = createWorkersAI({ binding: env.AI });    const result = streamText({      model: workersai('@cf/meta/llama-2-7b-chat-int8'),      prompt: 'Write a 50-word essay about hello world.',    });
+    return result.toTextStreamResponse({      headers: {        // add these headers to ensure that the        // response is chunked and streamed        'Content-Type': 'text/x-unknown',        'content-encoding': 'identity',        'transfer-encoding': 'chunked',      },    });  },};
 ```
 
 ## Generate Structured Objects
@@ -181,55 +89,10 @@ You can provide a Zod schema to generate a structured JSON response.
 JavaScript
 
 ```
-
-import { createWorkersAI } from 'workers-ai-provider';
-
-import { generateObject } from 'ai';
-
-import { z } from 'zod';
-
-
-type Env = {
-
-  AI: Ai;
-
-};
-
-
-export default {
-
-  async fetch(_: Request, env: Env) {
-
-    const workersai = createWorkersAI({ binding: env.AI });
-
-    const result = await generateObject({
-
-      model: workersai('@cf/meta/llama-3.1-8b-instruct'),
-
-      prompt: 'Generate a Lasagna recipe',
-
-      schema: z.object({
-
-        recipe: z.object({
-
-          ingredients: z.array(z.string()),
-
-          description: z.string(),
-
-        }),
-
-      }),
-
-    });
-
-
-    return Response.json(result.object);
-
-  },
-
-};
-
-
+import { createWorkersAI } from 'workers-ai-provider';import { generateObject } from 'ai';import { z } from 'zod';
+type Env = {  AI: Ai;};
+export default {  async fetch(_: Request, env: Env) {    const workersai = createWorkersAI({ binding: env.AI });    const result = await generateObject({      model: workersai('@cf/meta/llama-3.1-8b-instruct'),      prompt: 'Generate a Lasagna recipe',      schema: z.object({        recipe: z.object({          ingredients: z.array(z.string()),          description: z.string(),        }),      }),    });
+    return Response.json(result.object);  },};
 ```
 
 ```json

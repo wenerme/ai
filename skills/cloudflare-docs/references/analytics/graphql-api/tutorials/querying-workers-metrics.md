@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,86 +21,7 @@ The following API call will request a Worker script's metrics over a one day per
 Terminal window
 
 ```
-
-echo '{ "query":
-
-  "query GetWorkersAnalytics($accountTag: string, $datetimeStart: string, $datetimeEnd: string, $scriptName: string) {
-
-    viewer {
-
-      accounts(filter: {accountTag: $accountTag}) {
-
-        workersInvocationsAdaptive(limit: 100, filter: {
-
-          scriptName: $scriptName,
-
-          datetime_geq: $datetimeStart,
-
-          datetime_leq: $datetimeEnd
-
-        }) {
-
-          sum {
-
-            subrequests
-
-            requests
-
-            errors
-
-          }
-
-          quantiles {
-
-            cpuTimeP50
-
-            cpuTimeP99
-
-          }
-
-          dimensions{
-
-            datetime
-
-            scriptName
-
-            status
-
-          }
-
-        }
-
-      }
-
-    }
-
-  }",
-
-  "variables": {
-
-    "accountTag": "<CLOUDFLARE_ACCOUNT_TAG>",
-
-    "datetimeStart": "2022-08-04T00:00:00.000Z",
-
-    "datetimeEnd": "2022-08-04T01:00:00.000Z",
-
-    "scriptName": "worker-subrequest-test-client"
-
-  }
-
-}' | tr -d '\n' | curl --silent \
-
-https://api.cloudflare.com/client/v4/graphql \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Accept: application/json" \
-
---header "Content-Type: application/json" \
-
---data @-
-
-
+echo '{ "query":  "query GetWorkersAnalytics($accountTag: string, $datetimeStart: string, $datetimeEnd: string, $scriptName: string) {    viewer {      accounts(filter: {accountTag: $accountTag}) {        workersInvocationsAdaptive(limit: 100, filter: {          scriptName: $scriptName,          datetime_geq: $datetimeStart,          datetime_leq: $datetimeEnd        }) {          sum {            subrequests            requests            errors          }          quantiles {            cpuTimeP50            cpuTimeP99          }          dimensions{            datetime            scriptName            status          }        }      }    }  }",  "variables": {    "accountTag": "<CLOUDFLARE_ACCOUNT_TAG>",    "datetimeStart": "2022-08-04T00:00:00.000Z",    "datetimeEnd": "2022-08-04T01:00:00.000Z",    "scriptName": "worker-subrequest-test-client"  }}' | tr -d '\n' | curl --silent \https://api.cloudflare.com/client/v4/graphql \--header "Authorization: Bearer <API_TOKEN>" \--header "Accept: application/json" \--header "Content-Type: application/json" \--data @-
 ```
 
 The results returned will be in JSON (as requested), so piping the output to `jq` will make them easier to read, like in the following example:
@@ -108,143 +29,8 @@ The results returned will be in JSON (as requested), so piping the output to `jq
 Terminal window
 
 ```
-
-... | curl --silent \
-
-https://api.cloudflare.com/client/v4/graphql \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Accept: application/json" \
-
---header "Content-Type: application/json" \
-
---data @- | jq .
-
-
-#=> {
-
-#=>   "data": {
-
-#=>     "viewer": {
-
-#=>       "accounts": [
-
-#=>         {
-
-#=>           "workersInvocationsAdaptive": [
-
-#=>             {
-
-#=>               "dimensions": {
-
-#=>                 "datetime": "2020-05-04T18:10:35Z",
-
-#=>                 "scriptName": "worker-subrequest-test-client",
-
-#=>                 "status": "success"
-
-#=>               },
-
-#=>               "quantiles": {
-
-#=>                 "cpuTimeP50": 206,
-
-#=>                 "cpuTimeP99": 206
-
-#=>               },
-
-#=>               "sum": {
-
-#=>                 "errors": 0,
-
-#=>                 "requests": 1,
-
-#=>                 "subrequests": 0
-
-#=>               }
-
-#=>             },
-
-#=>             {
-
-#=>               "dimensions": {
-
-#=>                 "datetime": "2020-05-04T18:10:34Z",
-
-#=>                 "scriptName": "worker-subrequest-test-client",
-
-#=>                 "status": "success"
-
-#=>               },
-
-#=>               "quantiles": {
-
-#=>                 "cpuTimeP50": 291,
-
-#=>                 "cpuTimeP99": 291
-
-#=>               },
-
-#=>               "sum": {
-
-#=>                 "errors": 0,
-
-#=>                 "requests": 1,
-
-#=>                 "subrequests": 0
-
-#=>               }
-
-#=>             },
-
-#=>             {
-
-#=>               "dimensions": {
-
-#=>                 "datetime": "2020-05-04T18:10:49Z",
-
-#=>                 "scriptName": "worker-subrequest-test-client",
-
-#=>                 "status": "success"
-
-#=>               },
-
-#=>               "quantiles": {
-
-#=>                 "cpuTimeP50": 212.5,
-
-#=>                 "cpuTimeP99": 261.19
-
-#=>               },
-
-#=>               "sum": {
-
-#=>                 "errors": 0,
-
-#=>                 "requests": 4,
-
-#=>                 "subrequests": 0
-
-#=>               }
-
-#=>             }
-
-#=>           ]
-
-#=>         }
-
-#=>       ]
-
-#=>     }
-
-#=>   },
-
-#=>   "errors": null
-
-#=> }
-
-
+... | curl --silent \https://api.cloudflare.com/client/v4/graphql \--header "Authorization: Bearer <API_TOKEN>" \--header "Accept: application/json" \--header "Content-Type: application/json" \--data @- | jq .
+#=> {#=>   "data": {#=>     "viewer": {#=>       "accounts": [#=>         {#=>           "workersInvocationsAdaptive": [#=>             {#=>               "dimensions": {#=>                 "datetime": "2020-05-04T18:10:35Z",#=>                 "scriptName": "worker-subrequest-test-client",#=>                 "status": "success"#=>               },#=>               "quantiles": {#=>                 "cpuTimeP50": 206,#=>                 "cpuTimeP99": 206#=>               },#=>               "sum": {#=>                 "errors": 0,#=>                 "requests": 1,#=>                 "subrequests": 0#=>               }#=>             },#=>             {#=>               "dimensions": {#=>                 "datetime": "2020-05-04T18:10:34Z",#=>                 "scriptName": "worker-subrequest-test-client",#=>                 "status": "success"#=>               },#=>               "quantiles": {#=>                 "cpuTimeP50": 291,#=>                 "cpuTimeP99": 291#=>               },#=>               "sum": {#=>                 "errors": 0,#=>                 "requests": 1,#=>                 "subrequests": 0#=>               }#=>             },#=>             {#=>               "dimensions": {#=>                 "datetime": "2020-05-04T18:10:49Z",#=>                 "scriptName": "worker-subrequest-test-client",#=>                 "status": "success"#=>               },#=>               "quantiles": {#=>                 "cpuTimeP50": 212.5,#=>                 "cpuTimeP99": 261.19#=>               },#=>               "sum": {#=>                 "errors": 0,#=>                 "requests": 4,#=>                 "subrequests": 0#=>               }#=>             }#=>           ]#=>         }#=>       ]#=>     }#=>   },#=>   "errors": null#=> }
 ```
 
 ## Footnotes

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,8 +25,8 @@ Once you have [gathered the required data](https://developers.cloudflare.com/fun
 3. Locate and select **SCIM 2.0 Test App (OAuth Bearer Token)**.
 4. Select **Add Integration** and name your integration.
 5. Enable the following options:  
-   * **Do not display application icon to users**  
-   * **Do not display application icon in the Okta Mobile App**
+  * **Do not display application icon to users**
+  * **Do not display application icon in the Okta Mobile App**
 6. Disable **Automatically log in when user lands on login page**.
 7. Select **Next**, then select **Done**.
 

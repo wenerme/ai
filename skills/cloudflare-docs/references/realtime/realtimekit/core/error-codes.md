@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,10 +37,7 @@ All Web Frameworks (Web Components, React, Angular) share the same error codes.
 JavaScript
 
 ```
-
 await meeting.join();
-
-
 ```
 
 Once the join room process completes, you'll see the `roomJoined` event is emitted on the `meeting.self` namespace.
@@ -54,10 +51,7 @@ Once the join room process completes, you'll see the `roomJoined` event is emitt
 JavaScript
 
 ```
-
 await meeting.leave();
-
-
 ```
 
 #### Error code: 0004

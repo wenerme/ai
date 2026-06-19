@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,23 +35,27 @@ To connect your devices to Cloudflare:
 By default, WARP excludes traffic bound for [RFC 1918 space ↗](https://datatracker.ietf.org/doc/html/rfc1918), which are IP addresses typically used in private networks and not reachable from the Internet. In order for the Cloudflare One Client to send traffic to your SSH server, you must configure [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) so that the IP/CIDR of your SSH server routes through the Cloudflare One Client.
 
 1. First, check whether your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode) is set to **Exclude** or **Include** mode.
-2. Edit your Split Tunnel routes depending on the mode:  
-   * [ Exclude IPs and domains ](#tab-panel-7332)  
-   * [ Include IPs and domains ](#tab-panel-7333)  
+2. Edit your Split Tunnel routes depending on the mode:
+
+  * [ Exclude IPs and domains ](#tab-panel-7408)
+  * [ Include IPs and domains ](#tab-panel-7409)  
 If you are using **Exclude** mode:  
 a. [Delete the route](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#remove-a-route) containing your SSH server's IP/CIDR range. For example, if your network uses the default AWS range of `172.31.0.0/16`, delete `172.16.0.0/12`.  
 b. [Re-add IP/CIDR ranges](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#add-a-route) that are not explicitly used by your SSH server. For the AWS example above, you would add new entries for `172.16.0.0/13`, `172.24.0.0/14`, `172.28.0.0/15`, and `172.30.0.0/16`. This ensures that only traffic to `172.31.0.0/16` routes through the Cloudflare One Client.  
-You can use the following calculator to determine which IP addresses to re-add:  
+You can use the following calculator to determine which IP addresses to re-add:
+
 **Base CIDR:** **Subtracted CIDRs:**  
 Calculate  
-Calculator instructions  
-   1. In **Base CIDR**, enter the RFC 1918 range that you deleted from Split Tunnels.  
-   2. In **Subtracted CIDRs**, enter the IP/CIDR range used by your SSH server.  
-   3. Re-add the calculator results to your Split Tunnel Exclude mode list.  
+Calculator instructions
+
+  1. In **Base CIDR**, enter the RFC 1918 range that you deleted from Split Tunnels.
+  2. In **Subtracted CIDRs**, enter the IP/CIDR range used by your SSH server.
+  3. Re-add the calculator results to your Split Tunnel Exclude mode list.  
 By tightening the private IP range included in the Cloudflare One Client, you reduce the risk of breaking a user's [access to local resources](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-users-to-enable-local-network-exclusion).  
-If you are using **Include** mode:  
-   1. Add the required [Zero Trust domains](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#cloudflare-zero-trust-domains) or [IP addresses](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#cloudflare-zero-trust-ip-addresses) to your Split Tunnel include list.  
-   2. [Add a route](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#add-a-route) to include your SSH server's IP/CIDR range.
+If you are using **Include** mode:
+
+  1. Add the required [Zero Trust domains](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#cloudflare-zero-trust-domains) or [IP addresses](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#cloudflare-zero-trust-ip-addresses) to your Split Tunnel include list.
+  2. [Add a route](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#add-a-route) to include your SSH server's IP/CIDR range.
 
 ## 4\. Add a target
 
@@ -59,18 +63,19 @@ A target represents a single resource in your infrastructure (such as a server, 
 
 Targets are protocol-agnostic, meaning that you do not need to define a new target for each protocol that runs on the server. To create a new target: 
 
-* [ Dashboard ](#tab-panel-7324)
-* [ API ](#tab-panel-7325)
-* [ Terraform ](#tab-panel-7326)
+* [ Dashboard ](#tab-panel-7400)
+* [ API ](#tab-panel-7401)
+* [ Terraform ](#tab-panel-7402)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Targets**.
 2. Select **Add a target**.
 3. In **Target hostname**, enter a user-friendly name for the target. We recommend using the server hostname, for example `production-server`. The target hostname does not need to be unique and can be reused for multiple targets. Hostnames are used to define the targets secured by an Access application; they are not used for DNS address resolution.  
-Hostname format restrictions  
-   * Case insensitive  
-   * Contain no more than 253 characters  
-   * Contain only alphanumeric characters, `-`, or `.` (no spaces allowed)  
-   * Start and end with an alphanumeric character
+Hostname format restrictions
+
+  * Case insensitive
+  * Contain no more than 253 characters
+  * Contain only alphanumeric characters, `-`, or `.` (no spaces allowed)
+  * Start and end with an alphanumeric character
 4. In **IP addresses**, enter the IPv4 and/or IPv6 address of the target resource. The dropdown menu will not populate until you type in the full IP address.
 
 Note
@@ -85,73 +90,28 @@ Make a `POST` request to the [Infrastructure Access Targets](https://developers.
 Create new target
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/infrastructure/targets" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "hostname": "infra-access-target",
-
-    "ip": {
-
-        "ipv4": {
-
-            "ip_addr": "187.26.29.249",
-
-            "virtual_network_id": "c77b744e-acc8-428f-9257-6878c046ed55"
-
-        },
-
-        "ipv6": {
-
-            "ip_addr": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
-
-            "virtual_network_id": "c77b744e-acc8-428f-9257-6878c046ed55"
-
-        }
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/infrastructure/targets" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "hostname": "infra-access-target",    "ip": {        "ipv4": {            "ip_addr": "187.26.29.249",            "virtual_network_id": "c77b744e-acc8-428f-9257-6878c046ed55"        },        "ipv6": {            "ip_addr": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",            "virtual_network_id": "c77b744e-acc8-428f-9257-6878c046ed55"        }    }  }'
 ```
 
 Provider versions
 
 The following example requires Cloudflare provider version `>=4.45.0`.
 
-1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/api%5Ftoken):  
-   * `Zero Trust Write`
+1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/api%5Ftoken):
+
+  * `Zero Trust Write`
 2. Configure the [cloudflare\_zero\_trust\_infrastructure\_access\_target ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/zero%5Ftrust%5Finfrastructure%5Faccess%5Ftarget) resource:  
 ```  
-resource "cloudflare_zero_trust_infrastructure_access_target" "infra-ssh-target" {  
-  account_id = var.cloudflare_account_id  
-    hostname   = "infra-access-target"  
-    ip = {  
-      ipv4 = {  
-        ip_addr = "187.26.29.249"  
-        virtual_network_id = "c77b744e-acc8-428f-9257-6878c046ed55"  
-      }  
-      ipv6 = {  
-        ip_addr = "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0"  
-        virtual_network_id = "c77b744e-acc8-428f-9257-6878c046ed55"  
-      }  
-    }  
-}  
+resource "cloudflare_zero_trust_infrastructure_access_target" "infra-ssh-target" {  account_id = var.cloudflare_account_id    hostname   = "infra-access-target"    ip = {      ipv4 = {        ip_addr = "187.26.29.249"        virtual_network_id = "c77b744e-acc8-428f-9257-6878c046ed55"      }      ipv6 = {        ip_addr = "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0"        virtual_network_id = "c77b744e-acc8-428f-9257-6878c046ed55"      }    }}  
 ```
 
 Next, create an Access application to secure the target.
 
 ## 5\. Add an infrastructure application
 
-* [ Dashboard ](#tab-panel-7327)
-* [ API ](#tab-panel-7328)
-* [ Terraform (v4) ](#tab-panel-7329)
+* [ Dashboard ](#tab-panel-7403)
+* [ API ](#tab-panel-7404)
+* [ Terraform (v4) ](#tab-panel-7405)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select **Create new application**.
@@ -163,147 +123,48 @@ Next, create an Access application to secure the target.
 Note  
 Access for Infrastructure only supports assigning one protocol per port. You can reuse a port/protocol pairing across infrastructure applications, but the port cannot be reassigned to another protocol.
 8. Select **Next**.
-9. To secure your targets, configure a policy that defines who can connect and how they can connect:  
-   1. Enter any name for your policy.  
-   2. Create a rule that matches the users who are allowed to reach the targets. For more information, refer to [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) and review the list of [infrastructure policy selectors](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/#infrastructure-policy-selectors).  
-   3. In **Connection context**, configure the following settings:  
-         * **SSH user**: Enter the UNIX usernames that users can log in as (for example, `root` or `ec2-user`).  
-         * **Allow users to log in as their email alias**: (Optional) When selected, users who match your policy definition will be able to access the target using their lowercased email address prefix. For example, `Jdoe@company.com` could log in as `jdoe`.  
-   Note  
-   Cloudflare will not create new users on the target. UNIX users must already be present on the server.
+9. To secure your targets, configure a policy that defines who can connect and how they can connect:
+
+  1. Enter any name for your policy.
+  2. Create a rule that matches the users who are allowed to reach the targets. For more information, refer to [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) and review the list of [infrastructure policy selectors](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/#infrastructure-policy-selectors).
+  3. In **Connection context**, configure the following settings:
+
+    * **SSH user**: Enter the UNIX usernames that users can log in as (for example, `root` or `ec2-user`).
+    * **Allow users to log in as their email alias**: (Optional) When selected, users who match your policy definition will be able to access the target using their lowercased email address prefix. For example, `Jdoe@company.com` could log in as `jdoe`.  
+  Note  
+  Cloudflare will not create new users on the target. UNIX users must already be present on the server.
 10. Select **Add application**.
 
 Make a `POST` request to the [Access applications](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/applications/methods/create/) endpoint:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Access: Apps and Policies Write`
 
 Add an Access application
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "Example infrastructure app",
-
-    "type": "infrastructure",
-
-    "target_criteria": [
-
-        {
-
-            "target_attributes": {
-
-                "hostname": [
-
-                    "infra-access-target"
-
-                ]
-
-            },
-
-            "port": 22,
-
-            "protocol": "SSH"
-
-        }
-
-    ],
-
-    "policies": [
-
-        {
-
-            "name": "Allow a specific email",
-
-            "decision": "allow",
-
-            "include": [
-
-                {
-
-                    "email": {
-
-                        "email": "jdoe@company.com"
-
-                    }
-
-                }
-
-            ],
-
-            "connection_rules": {
-
-                "ssh": {
-
-                    "usernames": [
-
-                        "root",
-
-                        "ec2-user"
-
-                    ]
-
-                }
-
-            }
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Example infrastructure app",    "type": "infrastructure",    "target_criteria": [        {            "target_attributes": {                "hostname": [                    "infra-access-target"                ]            },            "port": 22,            "protocol": "SSH"        }    ],    "policies": [        {            "name": "Allow a specific email",            "decision": "allow",            "include": [                {                    "email": {                        "email": "jdoe@company.com"                    }                }            ],            "connection_rules": {                "ssh": {                    "usernames": [                        "root",                        "ec2-user"                    ]                }            }        }    ]  }'
 ```
 
 Provider versions
 
 The following example requires Cloudflare provider version `>=4.45.0`.
 
-1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/api%5Ftoken):  
-   * `Access: Apps and Policies Write`
+1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/api%5Ftoken):
+
+  * `Access: Apps and Policies Write`
 2. Use the [cloudflare\_zero\_trust\_access\_application ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/zero%5Ftrust%5Faccess%5Fapplication) resource to create an infrastructure application:  
 ```  
-resource "cloudflare_zero_trust_access_application" "infra-app" {  
-  account_id = var.cloudflare_account_id  
-  name       = "Example infrastructure app"  
-  type       = "infrastructure"  
-  target_criteria {  
-    port     = 22  
-    protocol = "SSH"  
-    target_attributes {  
-      name = "hostname"  
-      values = ["infra-access-target"]  
-    }  
-  }  
-}  
+resource "cloudflare_zero_trust_access_application" "infra-app" {  account_id = var.cloudflare_account_id  name       = "Example infrastructure app"  type       = "infrastructure"  
+  target_criteria {    port     = 22    protocol = "SSH"    target_attributes {      name = "hostname"      values = ["infra-access-target"]    }  }}  
 ```
 3. Use the [cloudflare\_zero\_trust\_access\_policy ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/zero%5Ftrust%5Faccess%5Fpolicy) resource to add an infrastructure policy to the application:  
 ```  
-resource "cloudflare_zero_trust_access_policy" "infra-app-policy" {  
-  application_id = cloudflare_zero_trust_access_application.infra-app.id  
-  account_id = var.cloudflare_account_id  
-  name       = "Allow a specific email"  
-  decision   = "allow"  
-  precedence = 1  
-  include {  
-    email = ["jdoe@company.com"]  
-  }  
-  connection_rules {  
-    ssh {  
-      usernames = ["root", "ec2-user"]  
-    }  
-  }  
-}  
+resource "cloudflare_zero_trust_access_policy" "infra-app-policy" {  application_id = cloudflare_zero_trust_access_application.infra-app.id  account_id = var.cloudflare_account_id  name       = "Allow a specific email"  decision   = "allow"  precedence = 1  
+  include {    email = ["jdoe@company.com"]  }  
+  connection_rules {    ssh {      usernames = ["root", "ec2-user"]    }  }}  
 ```
 
 The targets in this application are now secured by your infrastructure policies.
@@ -320,9 +181,10 @@ To prevent Cloudflare One Client users from accessing your entire private networ
 
 By default, Cloudflare will evaluate Access application policies after evaluating all [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/). To evaluate Access applications before or after specific Gateway policies:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**. In **Network**, [create a Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) with the following configuration:  
-| Selector                     | Operator | Value     | Action |  
-| ---------------------------- | -------- | --------- | ------ |  
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**. In **Network**, [create a Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) with the following configuration:
+
+| Selector                     | Operator | Value     | Action |
+| ---------------------------- | -------- | --------- | ------ |
 | Access Infrastructure Target | is       | _Present_ | Allow  |
 2. Update the policy's [order of precedence](https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/#order-of-precedence)using the dashboard or API.
 
@@ -344,8 +206,8 @@ Other short-lived CAs, such as those used to [secure SSH servers behind Cloudfla
 
 To generate a Cloudflare SSH CA and get its public key:
 
-* [ Dashboard ](#tab-panel-7330)
-* [ API ](#tab-panel-7331)
+* [ Dashboard ](#tab-panel-7406)
+* [ API ](#tab-panel-7407)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Service credentials** \> **SSH**.
 2. Select **Add a certificate**.
@@ -353,49 +215,36 @@ To generate a Cloudflare SSH CA and get its public key:
 4. Select the **SSH with Access for Infrastructure** certificate.
 5. Copy its **CA public key**. You can return to copy this public key at any time.
 
-1. [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:  
-| Type    | Item                 | Permission |  
-| ------- | -------------------- | ---------- |  
+1. [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:
+
+| Type    | Item                 | Permission |
+| ------- | -------------------- | ---------- |
 | Account | Access: SSH Auditing | Edit       |
 2. If you have not yet generated a Cloudflare SSH CA, make a `POST` request to the Cloudflare API:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Access: SSH Auditing Write`
 
 Add a new SSH Certificate Authority (CA)
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/gateway_ca" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/gateway_ca" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 1. If you have already created a Cloudflare SSH CA or receive the error message `access.api.error.gateway_ca_already_exists`, make a `GET` request instead:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Access: SSH Auditing Write`
 * `Access: SSH Auditing Read`
 
 List SSH Certificate Authorities (CA)
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/gateway_ca" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/gateway_ca" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 1. Copy the `public_key` value returned in the response.
@@ -421,8 +270,7 @@ The `ca.pub` file can hold multiple keys, listed one per line. Empty lines and c
 4. Save the `ca.pub` file. In some systems, you may need to use the following command to force the file to save depending on your permissions:  
 Terminal window  
 ```  
-:w !sudo tee %  
-:q!  
+:w !sudo tee %:q!  
 ```
 
 ### Modify your `sshd_config` file
@@ -436,8 +284,7 @@ Terminal window
 ```
 2. Press `i` to enter insert mode, then add the following lines at the top of the file, above all other directives:  
 ```  
-PubkeyAuthentication yes  
-TrustedUserCAKeys /etc/ssh/ca.pub  
+PubkeyAuthentication yesTrustedUserCAKeys /etc/ssh/ca.pub  
 ```  
 Be aware of your include statements  
 If there are any include statements below these lines, the configurations in those files will not take precedence.
@@ -450,28 +297,22 @@ For certain distributions, such as Amazon Linux 1 (based on RHEL), the certifica
 Terminal window
 
 ```
-
 chmod 600 /etc/ssh/ca.pub
-
-
 ```
 
 ### Reload your SSH server
 
 Once you have modified your `sshd` configuration, reload the SSH service on the remote machine for the changes to take effect.
 
-* [ Debian/Ubuntu ](#tab-panel-7318)
-* [ CentOS/RHEL ](#tab-panel-7319)
+* [ Debian/Ubuntu ](#tab-panel-7394)
+* [ CentOS/RHEL ](#tab-panel-7395)
 
 For Debian/Ubuntu:
 
 Terminal window
 
 ```
-
 sudo systemctl reload ssh
-
-
 ```
 
 For CentOS/RHEL 7 and newer:
@@ -479,10 +320,7 @@ For CentOS/RHEL 7 and newer:
 Terminal window
 
 ```
-
 sudo systemctl reload sshd
-
-
 ```
 
 ## 8\. Connect as a user
@@ -492,10 +330,7 @@ Users can use any SSH client to connect to the target, as long as they are logge
 Terminal window
 
 ```
-
 ssh <username>@<target IP>
-
-
 ```
 
 Access for Infrastructure also supports `scp`, `sftp`, and `rsync` commands. Refer to [Known limitations](#known-limitations) for a list of unsupported SSH commands and features.
@@ -518,8 +353,7 @@ To log SSH commands, you will need to generate an HPKE key pair and upload the p
 2. Using the `ssh-log-cli` utility, generate a public and private key pair.  
 Terminal window  
 ```  
-./ssh-log-cli generate-key-pair -o sshkey  
-ls  
+./ssh-log-cli generate-key-pair -o sshkeyls  
 ```  
 ```  
 README.md    ssh-log-cli    sshkey    sshkey.pub  
@@ -534,8 +368,8 @@ All proxied SSH commands are immediately encrypted using this public key. The ma
 
 To turn off SSH command logging, delete your uploaded public key:
 
-* [ Dashboard ](#tab-panel-7322)
-* [ API ](#tab-panel-7323)
+* [ Dashboard ](#tab-panel-7398)
+* [ API ](#tab-panel-7399)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings** \> **SSH log encryption public key**.
 2. Select **Remove**.
@@ -548,20 +382,7 @@ To delete the SSH encryption public key using the [API](https://developers.cloud
 Update Zero Trust SSH settings
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/audit_ssh_settings" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "public_key": ""
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/audit_ssh_settings" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "public_key": ""  }'
 ```
 
 #### View SSH logs
@@ -634,33 +455,11 @@ As an end user, run [warp-cli target list](https://developers.cloudflare.com/clo
 Terminal window
 
 ```
-
 warp-cli target list
-
-
 ```
 
 ```
-
-╭──────────────────────────────────────┬──────────┬───────┬───────────────────────┬──────────────────────┬────────────╮
-
-│ Target ID                            │ Protocol │ Port  │ Attributes            │ IP (Virtual Network) │ Usernames  │
-
-├──────────────────────────────────────┼──────────┼───────┼───────────────────────┼──────────────────────┼────────────┤
-
-│ 0193f22a-9df3-78e3-b5bb-7ab631903306 │ SSH      │ 22    │ hostname: do-target   │ 10.116.0.3 (a1net)   │ alice      │
-
-├──────────────────────────────────────┼──────────┼───────┼───────────────────────┼──────────────────────┼────────────┤
-
-│ 0193f22a-9df3-78e3-b5bb-7ab631903306 │ SSH      │ 23    │ hostname: do-target   │ 10.116.0.3 (a1net)   │ root       │
-
-├──────────────────────────────────────┼──────────┼───────┼───────────────────────┼──────────────────────┼────────────┤
-
-│ 01943cff-6130-7989-8bff-cbc02b59a2b1 │ SSH      │ 80    │ hostname: az-target   │ 172.16.0.0 (b1net)   │ alice, bob │
-
-╰──────────────────────────────────────┴──────────┴───────┴───────────────────────┴──────────────────────┴────────────╯
-
-
+╭──────────────────────────────────────┬──────────┬───────┬───────────────────────┬──────────────────────┬────────────╮│ Target ID                            │ Protocol │ Port  │ Attributes            │ IP (Virtual Network) │ Usernames  │├──────────────────────────────────────┼──────────┼───────┼───────────────────────┼──────────────────────┼────────────┤│ 0193f22a-9df3-78e3-b5bb-7ab631903306 │ SSH      │ 22    │ hostname: do-target   │ 10.116.0.3 (a1net)   │ alice      │├──────────────────────────────────────┼──────────┼───────┼───────────────────────┼──────────────────────┼────────────┤│ 0193f22a-9df3-78e3-b5bb-7ab631903306 │ SSH      │ 23    │ hostname: do-target   │ 10.116.0.3 (a1net)   │ root       │├──────────────────────────────────────┼──────────┼───────┼───────────────────────┼──────────────────────┼────────────┤│ 01943cff-6130-7989-8bff-cbc02b59a2b1 │ SSH      │ 80    │ hostname: az-target   │ 172.16.0.0 (b1net)   │ alice, bob │╰──────────────────────────────────────┴──────────┴───────┴───────────────────────┴──────────────────────┴────────────╯
 ```
 
 * If the target appears in the list, confirm that the username you are attempting to connect with is shown in the output. If the username is not shown, an administrator must find the Access policy associated with the target and add that username to the Access policy. An administrator should have created an Access policy in [substep 9 of step 5: Add an infrastructure application](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/#5-add-an-infrastructure-application). If the username is shown, that means the Access policy should be granting access and you should ensure that the tunnel is healthy in [step 2](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/#2-check-target-machine-connection).
@@ -735,243 +534,32 @@ To rule out any issues in your `sshd_config` file, compare your existing `sshd_c
 Example `sshd_config` file
 
 ```
-
-# This is the sshd server system-wide configuration file.  See
-
-# sshd_config(5) for more information.
-
-
-# The strategy used for options in the default sshd_config shipped with
-
-# OpenSSH is to specify options with their default value where
-
-# possible, but leave them commented.  Uncommented options override the
-
-# default value.
-
-
-PubkeyAuthentication yes
-
-TrustedUserCAKeys /etc/ssh/ca.pub
-
-
+# This is the sshd server system-wide configuration file.  See# sshd_config(5) for more information.
+# The strategy used for options in the default sshd_config shipped with# OpenSSH is to specify options with their default value where# possible, but leave them commented.  Uncommented options override the# default value.
+PubkeyAuthentication yesTrustedUserCAKeys /etc/ssh/ca.pub
 Include /etc/ssh/sshd_config.d/*.conf
-
-
-# When systemd socket activation is used (the default), the socket
-
-# configuration must be re-generated after changing Port, AddressFamily, or
-
-# ListenAddress.
-
-#
-
-# For changes to take effect, run:
-
-#
-
-#   systemctl daemon-reload
-
-#   systemctl restart ssh.socket
-
-#
-
-#Port 22
-
-#AddressFamily any
-
-#ListenAddress 0.0.0.0
-
-#ListenAddress ::
-
-
-#HostKey /etc/ssh/ssh_host_rsa_key
-
-#HostKey /etc/ssh/ssh_host_ecdsa_key
-
-#HostKey /etc/ssh/ssh_host_ed25519_key
-
-
-# Ciphers and keying
-
-#RekeyLimit default none
-
-
-# Logging
-
-#SyslogFacility AUTH
-
-LogLevel DEBUG3
-
-
+# When systemd socket activation is used (the default), the socket# configuration must be re-generated after changing Port, AddressFamily, or# ListenAddress.## For changes to take effect, run:##   systemctl daemon-reload#   systemctl restart ssh.socket##Port 22#AddressFamily any#ListenAddress 0.0.0.0#ListenAddress ::
+#HostKey /etc/ssh/ssh_host_rsa_key#HostKey /etc/ssh/ssh_host_ecdsa_key#HostKey /etc/ssh/ssh_host_ed25519_key
+# Ciphers and keying#RekeyLimit default none
+# Logging#SyslogFacility AUTHLogLevel DEBUG3
 # Authentication:
+#LoginGraceTime 2mPermitRootLogin yes#StrictModes yes#MaxAuthTries 6#MaxSessions 10
 
 
-#LoginGraceTime 2m
-
-PermitRootLogin yes
-
-#StrictModes yes
-
-#MaxAuthTries 6
-
-#MaxSessions 10
-
-
-# Expect .ssh/authorized_keys2 to be disregarded by default in future.
-
-#AuthorizedKeysFile    .ssh/authorized_keys .ssh/authorized_keys2
-
-
+# Expect .ssh/authorized_keys2 to be disregarded by default in future.#AuthorizedKeysFile    .ssh/authorized_keys .ssh/authorized_keys2
 #AuthorizedPrincipalsFile none
-
-
-#AuthorizedKeysCommand none
-
-#AuthorizedKeysCommandUser nobody
-
-
-# For this to work you will also need host keys in /etc/ssh/ssh_known_hosts
-
-#HostbasedAuthentication no
-
-# Change to yes if you don't trust ~/.ssh/known_hosts for
-
-# HostbasedAuthentication
-
-#IgnoreUserKnownHosts no
-
-# Don't read the user's ~/.rhosts and ~/.shosts files
-
-#IgnoreRhosts yes
-
-
-# To disable tunneled clear text passwords, change to no here!
-
-#PasswordAuthentication yes
-
-#PermitEmptyPasswords no
-
-
-# Change to yes to enable challenge-response passwords (beware issues with
-
-# some PAM modules and threads)
-
-KbdInteractiveAuthentication no
-
-
-# Kerberos options
-
-#KerberosAuthentication no
-
-#KerberosOrLocalPasswd yes
-
-#KerberosTicketCleanup yes
-
-#KerberosGetAFSToken no
-
-
-# GSSAPI options
-
-#GSSAPIAuthentication no
-
-#GSSAPICleanupCredentials yes
-
-#GSSAPIStrictAcceptorCheck yes
-
-#GSSAPIKeyExchange no
-
-
-# Set this to 'yes' to enable PAM authentication, account processing,
-
-# and session processing. If this is enabled, PAM authentication will
-
-# be allowed through the KbdInteractiveAuthentication and
-
-# PasswordAuthentication.  Depending on your PAM configuration,
-
-# PAM authentication via KbdInteractiveAuthentication may bypass
-
-# the setting of "PermitRootLogin yes
-
-# If you just want the PAM account and session checks to run without
-
-# PAM authentication, then enable this but set PasswordAuthentication
-
-# and KbdInteractiveAuthentication to 'no'.
-
-UsePAM yes
-
-
-#AllowAgentForwarding yes
-
-#AllowTcpForwarding yes
-
-#GatewayPorts no
-
-X11Forwarding yes
-
-#X11DisplayOffset 10
-
-#X11UseLocalhost yes
-
-#PermitTTY yes
-
-PrintMotd no
-
-#PrintLastLog yes
-
-#TCPKeepAlive yes
-
-#PermitUserEnvironment no
-
-#Compression delayed
-
-#ClientAliveInterval 0
-
-#ClientAliveCountMax 3
-
-#UseDNS no
-
-#PidFile /run/sshd.pid
-
-#MaxStartups 10:30:100
-
-#PermitTunnel no
-
-#ChrootDirectory none
-
-#VersionAddendum none
-
-
-# no default banner path
-
-#Banner none
-
-
-# Allow client to pass locale environment variables
-
-AcceptEnv LANG LC_*
-
-
-# override default of no subsystems
-
-Subsystem    sftp    /usr/lib/openssh/sftp-server
-
-
-# Example of overriding settings on a per-user basis
-
-#Match User anoncvs
-
-#    X11Forwarding no
-
-#    AllowTcpForwarding no
-
-#    PermitTTY no
-
-#    ForceCommand cvs server
-
-
+#AuthorizedKeysCommand none#AuthorizedKeysCommandUser nobody
+# For this to work you will also need host keys in /etc/ssh/ssh_known_hosts#HostbasedAuthentication no# Change to yes if you don't trust ~/.ssh/known_hosts for# HostbasedAuthentication#IgnoreUserKnownHosts no# Don't read the user's ~/.rhosts and ~/.shosts files#IgnoreRhosts yes
+# To disable tunneled clear text passwords, change to no here!#PasswordAuthentication yes#PermitEmptyPasswords no
+# Change to yes to enable challenge-response passwords (beware issues with# some PAM modules and threads)KbdInteractiveAuthentication no
+# Kerberos options#KerberosAuthentication no#KerberosOrLocalPasswd yes#KerberosTicketCleanup yes#KerberosGetAFSToken no
+# GSSAPI options#GSSAPIAuthentication no#GSSAPICleanupCredentials yes#GSSAPIStrictAcceptorCheck yes#GSSAPIKeyExchange no
+# Set this to 'yes' to enable PAM authentication, account processing,# and session processing. If this is enabled, PAM authentication will# be allowed through the KbdInteractiveAuthentication and# PasswordAuthentication.  Depending on your PAM configuration,# PAM authentication via KbdInteractiveAuthentication may bypass# the setting of "PermitRootLogin yes# If you just want the PAM account and session checks to run without# PAM authentication, then enable this but set PasswordAuthentication# and KbdInteractiveAuthentication to 'no'.UsePAM yes
+#AllowAgentForwarding yes#AllowTcpForwarding yes#GatewayPorts noX11Forwarding yes#X11DisplayOffset 10#X11UseLocalhost yes#PermitTTY yesPrintMotd no#PrintLastLog yes#TCPKeepAlive yes#PermitUserEnvironment no#Compression delayed#ClientAliveInterval 0#ClientAliveCountMax 3#UseDNS no#PidFile /run/sshd.pid#MaxStartups 10:30:100#PermitTunnel no#ChrootDirectory none#VersionAddendum none
+# no default banner path#Banner none
+# Allow client to pass locale environment variablesAcceptEnv LANG LC_*
+# override default of no subsystemsSubsystem    sftp    /usr/lib/openssh/sftp-server
+# Example of overriding settings on a per-user basis#Match User anoncvs#    X11Forwarding no#    AllowTcpForwarding no#    PermitTTY no#    ForceCommand cvs server
 ```
 
 #### Replace and test with example configuration
@@ -999,9 +587,10 @@ vi /etc/ssh/sshd_config
 7. [Reload](#reload-your-ssh-server) your SSH server.  
 Do not restart  
 Restarting your `sshd` service will result in the termination of your current SSH connection. Make sure to reload instead of restarting to avoid terminating all currently open SSH sessions.  
-Once you have modified your `sshd` configuration, reload the SSH service on the remote machine for the changes to take effect.  
-   * [ Debian/Ubuntu ](#tab-panel-7320)  
-   * [ CentOS/RHEL ](#tab-panel-7321)  
+Once you have modified your `sshd` configuration, reload the SSH service on the remote machine for the changes to take effect.
+
+  * [ Debian/Ubuntu ](#tab-panel-7396)
+  * [ CentOS/RHEL ](#tab-panel-7397)  
 For Debian/Ubuntu:  
 Terminal window  
 ```  

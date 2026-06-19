@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -107,16 +107,7 @@ Restrict access to specific prefixes or objects within the bucket. Omit these fi
 JSONC
 
 ```
-
-{
-
-  "prefixes": ["uploads/user-123/"],
-
-  "objects": ["shared/manifest.json"]
-
-}
-
-
+{  "prefixes": ["uploads/user-123/"],  "objects": ["shared/manifest.json"]}
 ```
 
 **Local signing:** set `paths.prefixPaths` and `paths.objectPaths` on the JWT payload.
@@ -124,20 +115,7 @@ JSONC
 JSONC
 
 ```
-
-{
-
-  "paths": {
-
-    "prefixPaths": ["uploads/user-123/"],
-
-    "objectPaths": ["shared/manifest.json"]
-
-  }
-
-}
-
-
+{  "paths": {    "prefixPaths": ["uploads/user-123/"],    "objectPaths": ["shared/manifest.json"]  }}
 ```
 
 * `prefixes` / `prefixPaths`: keys starting with any listed prefix.
@@ -147,62 +125,24 @@ JSONC
 
 Any S3-compatible client that supports session tokens will accept R2 temporary credentials. Pass all three values (access key ID, secret access key, session token) using the client's standard credential fields.
 
-* [ JavaScript ](#tab-panel-9723)
-* [ Python ](#tab-panel-9724)
-* [ Environment variables ](#tab-panel-9725)
+* [ JavaScript ](#tab-panel-9799)
+* [ Python ](#tab-panel-9800)
+* [ Environment variables ](#tab-panel-9801)
 
 TypeScript
 
 ```
-
 import { AwsClient } from "aws4fetch";
-
-
 const R2_URL = `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`;
-
-
-const client = new AwsClient({
-
-  accessKeyId: ACCESS_KEY_ID,
-
-  secretAccessKey: SECRET_ACCESS_KEY,
-
-  sessionToken: SESSION_TOKEN,
-
-  service: "s3",
-
-});
-
-
+const client = new AwsClient({  accessKeyId: ACCESS_KEY_ID,  secretAccessKey: SECRET_ACCESS_KEY,  sessionToken: SESSION_TOKEN,  service: "s3",});
 const response = await client.fetch(`${R2_URL}/my-bucket/image.png`);
-
-
 ```
 
 Python
 
 ```
-
 import boto3
-
-
-s3 = boto3.client(
-
-    service_name="s3",
-
-    endpoint_url="https://<ACCOUNT_ID>.r2.cloudflarestorage.com",
-
-    aws_access_key_id="<ACCESS_KEY_ID>",
-
-    aws_secret_access_key="<SECRET_ACCESS_KEY>",
-
-    aws_session_token="<SESSION_TOKEN>",
-
-    region_name="auto",
-
-)
-
-
+s3 = boto3.client(    service_name="s3",    endpoint_url="https://<ACCOUNT_ID>.r2.cloudflarestorage.com",    aws_access_key_id="<ACCESS_KEY_ID>",    aws_secret_access_key="<SECRET_ACCESS_KEY>",    aws_session_token="<SESSION_TOKEN>",    region_name="auto",)
 ```
 
 Most AWS SDKs and the AWS CLI read credentials from these environment variables by default:
@@ -210,14 +150,7 @@ Most AWS SDKs and the AWS CLI read credentials from these environment variables 
 Terminal window
 
 ```
-
-AWS_ACCESS_KEY_ID=<ACCESS_KEY_ID>
-
-AWS_SECRET_ACCESS_KEY=<SECRET_ACCESS_KEY>
-
-AWS_SESSION_TOKEN=<SESSION_TOKEN>
-
-
+AWS_ACCESS_KEY_ID=<ACCESS_KEY_ID>AWS_SECRET_ACCESS_KEY=<SECRET_ACCESS_KEY>AWS_SESSION_TOKEN=<SESSION_TOKEN>
 ```
 
 ## Security considerations
@@ -237,7 +170,7 @@ Treat temporary credentials as bearer tokens. Anyone in possession of all three 
 
 [ R2 API tokens ](https://developers.cloudflare.com/r2/api/tokens/) Create the parent token that temporary credentials derive from. 
 
-[ Error codes ](https://developers.cloudflare.com/r2/api/error-codes/) Authentication and authorization error codes returned by R2. 
+[ Error codes ](https://developers.cloudflare.com/r2/api/error-codes/) Authentication and authorization error codes returned by R2.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/s3/temporary-credentials/#page","headline":"Temporary credentials · Cloudflare R2 docs","description":"Learn about temporary credentials in r2.","url":"https://developers.cloudflare.com/r2/api/s3/temporary-credentials/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

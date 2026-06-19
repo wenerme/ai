@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,35 +18,26 @@ The following [Wrangler commands](https://developers.cloudflare.com/workers/wran
 
 Create a Hyperdrive config
 
-* [  npm ](#tab-panel-8821)
-* [  pnpm ](#tab-panel-8822)
-* [  yarn ](#tab-panel-8823)
+* [  npm ](#tab-panel-8897)
+* [  pnpm ](#tab-panel-8898)
+* [  yarn ](#tab-panel-8899)
 
 Terminal window
 
 ```
-
 npx wrangler hyperdrive create [NAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler hyperdrive create [NAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler hyperdrive create [NAME]
-
-
 ```
 
 * `[NAME]` ` string ` required  
@@ -113,35 +104,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a Hyperdrive config
 
-* [  npm ](#tab-panel-8824)
-* [  pnpm ](#tab-panel-8825)
-* [  yarn ](#tab-panel-8826)
+* [  npm ](#tab-panel-8900)
+* [  pnpm ](#tab-panel-8901)
+* [  yarn ](#tab-panel-8902)
 
 Terminal window
 
 ```
-
 npx wrangler hyperdrive delete [ID]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler hyperdrive delete [ID]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler hyperdrive delete [ID]
-
-
 ```
 
 * `[ID]` ` string ` required  
@@ -170,35 +152,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get a Hyperdrive config
 
-* [  npm ](#tab-panel-8827)
-* [  pnpm ](#tab-panel-8828)
-* [  yarn ](#tab-panel-8829)
+* [  npm ](#tab-panel-8903)
+* [  pnpm ](#tab-panel-8904)
+* [  yarn ](#tab-panel-8905)
 
 Terminal window
 
 ```
-
 npx wrangler hyperdrive get [ID]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler hyperdrive get [ID]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler hyperdrive get [ID]
-
-
 ```
 
 * `[ID]` ` string ` required  
@@ -227,35 +200,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List Hyperdrive configs
 
-* [  npm ](#tab-panel-8830)
-* [  pnpm ](#tab-panel-8831)
-* [  yarn ](#tab-panel-8832)
+* [  npm ](#tab-panel-8906)
+* [  pnpm ](#tab-panel-8907)
+* [  yarn ](#tab-panel-8908)
 
 Terminal window
 
 ```
-
 npx wrangler hyperdrive list
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler hyperdrive list
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler hyperdrive list
-
-
 ```
 
 Global flags
@@ -281,35 +245,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Update a Hyperdrive config
 
-* [  npm ](#tab-panel-8833)
-* [  pnpm ](#tab-panel-8834)
-* [  yarn ](#tab-panel-8835)
+* [  npm ](#tab-panel-8909)
+* [  pnpm ](#tab-panel-8910)
+* [  yarn ](#tab-panel-8911)
 
 Terminal window
 
 ```
-
 npx wrangler hyperdrive update [ID]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler hyperdrive update [ID]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler hyperdrive update [ID]
-
-
 ```
 
 * `[ID]` ` string ` required  

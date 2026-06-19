@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,53 +29,13 @@ Make a `POST` request using the example below as reference. You can use custom I
 Terminal window
 
 ```
-
-curl --request POST https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v1 \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---form 'url=https://<REMOTE_PATH_TO_IMAGE>' \
-
---form 'id=<PATH_TO_YOUR_IMAGE>'
-
-
+curl --request POST https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v1 \--header "Authorization: Bearer <API_TOKEN>" \--form 'url=https://<REMOTE_PATH_TO_IMAGE>' \--form 'id=<PATH_TO_YOUR_IMAGE>'
 ```
 
 After successfully uploading the image, you will receive a response similar to the example below.
 
 ```
-
-{
-
-  "result": {
-
-    "id": "<PATH_TO_YOUR_IMAGE>",
-
-    "filename": "<YOUR_IMAGE>",
-
-    "uploaded": "2022-04-20T09:51:09.559Z",
-
-    "requireSignedURLs": false,
-
-    "variants": [
-
-      "https://imagedelivery.net/Vi7wi5KSItxGFsWRG2Us6Q/<PATH_TO_YOUR_IMAGE>/public"
-
-    ]
-
-  },
-
-  "result_info": null,
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "id": "<PATH_TO_YOUR_IMAGE>",    "filename": "<YOUR_IMAGE>",    "uploaded": "2022-04-20T09:51:09.559Z",    "requireSignedURLs": false,    "variants": [      "https://imagedelivery.net/Vi7wi5KSItxGFsWRG2Us6Q/<PATH_TO_YOUR_IMAGE>/public"    ]  },  "result_info": null,  "success": true,  "errors": [],  "messages": []}
 ```
 
 ```json

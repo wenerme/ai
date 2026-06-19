@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -47,10 +47,10 @@ The above diagram shows the variety of ways in which traffic can on-ramp to Clou
 2. A user, authenticated or not, is denied access to the SaaS application if their traffic is not sourced from Cloudflare.
 3. A user on a non-managed device can use browser isolation, where the browser accessing the SaaS application runs on a Cloudflare server, and the results of the rendered page are securely delivered to a user's local browser.
 4. A managed device is connected to Cloudflare using a secure tunnel and therefore all communication from device to SaaS application is filtered and secured.  
-   1. Cloudflare agent device posture can also be incorporated into authorizing traffic from these devices.
+  1. Cloudflare agent device posture can also be incorporated into authorizing traffic from these devices.
 5. A device connected to a local network, where all Internet traffic is routed to Cloudflare via a secure IPsec tunnel to Cloudflare, also ensures all traffic from network to SaaS application is filtered and secured.
 6. Traffic then passes through our secure web gateway, where DNS and HTTP policies can be applied to traffic.  
-   1. HTTP policies allow the examination of the data being both uploaded and downloaded from the SaaS application using DLP profiles.
+  1. HTTP policies allow the examination of the data being both uploaded and downloaded from the SaaS application using DLP profiles.
 7. Traffic egresses Cloudflare with a specific IP. The SaaS application is configured to allow all traffic coming from that address.
 
 XDR platform integrations

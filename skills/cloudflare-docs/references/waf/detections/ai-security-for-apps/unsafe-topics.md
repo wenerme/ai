@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -54,8 +54,8 @@ This capability uses a zero-shot classification model that evaluates prompts at 
 ### How custom topics work
 
 1. You define a list of up to 20 custom topics. Each topic consists of:  
-   * **Label**: A short, hyphenated identifier used in rule expressions and analytics (for example, `financial-advice`).  
-   * **Topic description**: The descriptive text the model uses to classify prompts (for example, `seeking financial advice`).
+  * **Label**: A short, hyphenated identifier used in rule expressions and analytics (for example, `financial-advice`).
+  * **Topic description**: The descriptive text the model uses to classify prompts (for example, `seeking financial advice`).
 2. When a request arrives at a `cf-llm` labeled endpoint, the model evaluates the prompt against all defined topic descriptions and returns a relevance score for each.
 3. Scores are written to the [cf.llm.prompt.custom\_topic\_categories](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/fields/) map field, keyed by label. You use labels (not topic descriptions) in rule expressions and analytics.
 
@@ -72,15 +72,16 @@ You can manage custom topics from two places in the dashboard:
 
 Both methods will update the same underlying topic list. Changes made in one are immediately reflected in the other.
 
-* [ Dashboard ](#tab-panel-11172)
-* [ API ](#tab-panel-11173)
+* [ Dashboard ](#tab-panel-11189)
+* [ API ](#tab-panel-11190)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)  
 Alternatively, go to the [custom rules creation page](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/), select the **LLM Custom topic** field, and select **Manage custom topics** to open the sidebar.
-2. Add a topic by providing:  
-   * **Label**: A short, hyphenated identifier (for example, `competitors`).  
-   * **Topic Description**: A descriptive English phrase the model uses for classification (for example, `seeking info on competitors`).
+2. Add a topic by providing:
+
+  * **Label**: A short, hyphenated identifier (for example, `competitors`).
+  * **Topic Description**: A descriptive English phrase the model uses for classification (for example, `seeking info on competitors`).
 3. Select **Save**.
 
 Update your custom topics list using a `PUT` request:
@@ -88,46 +89,7 @@ Update your custom topics list using a `PUT` request:
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/firewall-for-ai/custom-topics" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "topics": [
-
-      {
-
-        "label": "competitors",
-
-        "topic": "seeking info on competitors"
-
-      },
-
-      {
-
-        "label": "financial-advice",
-
-        "topic": "seeking financial advice"
-
-      },
-
-      {
-
-        "label": "hr-internal",
-
-        "topic": "asking about internal HR policies"
-
-      }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/firewall-for-ai/custom-topics" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "topics": [      {        "label": "competitors",        "topic": "seeking info on competitors"      },      {        "label": "financial-advice",        "topic": "seeking financial advice"      },      {        "label": "hr-internal",        "topic": "asking about internal HR policies"      }    ]  }'
 ```
 
 Warning
@@ -139,12 +101,7 @@ To retrieve your current topics, use a `GET` request:
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/firewall-for-ai/custom-topics" \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/firewall-for-ai/custom-topics" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ### Constraints

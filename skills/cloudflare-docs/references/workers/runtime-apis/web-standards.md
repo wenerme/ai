@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,12 +19,12 @@ The Cloudflare Workers runtime is [built on top of the V8 JavaScript and WebAsse
 All of the [standard built-in objects ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference) supported by the current Google Chrome stable release are supported, with a few notable exceptions:
 
 * For security reasons, the following are not allowed:  
-   * `eval()`  
-   * `new Function`  
-   * [WebAssembly.compile ↗](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript%5Finterface/compile%5Fstatic)  
-   * [WebAssembly.compileStreaming ↗](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript%5Finterface/compileStreaming%5Fstatic)  
-   * `WebAssembly.instantiate` with a [buffer parameter ↗](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript%5Finterface/instantiate%5Fstatic#primary%5Foverload%5F%E2%80%94%5Ftaking%5Fwasm%5Fbinary%5Fcode)  
-   * [WebAssembly.instantiateStreaming ↗](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript%5Finterface/instantiateStreaming%5Fstatic)
+  * `eval()`
+  * `new Function`
+  * [WebAssembly.compile ↗](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript%5Finterface/compile%5Fstatic)
+  * [WebAssembly.compileStreaming ↗](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript%5Finterface/compileStreaming%5Fstatic)
+  * `WebAssembly.instantiate` with a [buffer parameter ↗](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript%5Finterface/instantiate%5Fstatic#primary%5Foverload%5F%E2%80%94%5Ftaking%5Fwasm%5Fbinary%5Fcode)
+  * [WebAssembly.instantiateStreaming ↗](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript%5Finterface/instantiateStreaming%5Fstatic)
 * `Date.now()` returns the time of the last I/O; it does not advance during code execution.
 
 ---
@@ -35,23 +35,30 @@ The following methods are available per the [Worker Global Scope ↗](https://de
 
 ### Base64 utility methods
 
-* atob()  
-   * Decodes a string of data which has been encoded using base-64 encoding.
-* btoa()  
-   * Creates a base-64 encoded ASCII string from a string of binary data.
+* atob()
+
+  * Decodes a string of data which has been encoded using base-64 encoding.
+* btoa()
+
+  * Creates a base-64 encoded ASCII string from a string of binary data.
 
 ### Timers
 
-* setInterval()  
-   * Schedules a function to execute every time a given number of milliseconds elapses.
-* clearInterval()  
-   * Cancels the repeated execution set using [setInterval() ↗](https://developer.mozilla.org/en-US/docs/Web/API/setInterval).
-* setTimeout()  
-   * Schedules a function to execute in a given amount of time.
-* clearTimeout()  
-   * Cancels the delayed execution set using [setTimeout() ↗](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout).
-* [scheduler.wait()](https://developers.cloudflare.com/workers/runtime-apis/scheduler/)  
-   * Returns a Promise that resolves after a given number of milliseconds. An `await`\-able alternative to `setTimeout()`.
+* setInterval()
+
+  * Schedules a function to execute every time a given number of milliseconds elapses.
+* clearInterval()
+
+  * Cancels the repeated execution set using [setInterval() ↗](https://developer.mozilla.org/en-US/docs/Web/API/setInterval).
+* setTimeout()
+
+  * Schedules a function to execute in a given amount of time.
+* clearTimeout()
+
+  * Cancels the delayed execution set using [setTimeout() ↗](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout).
+* [scheduler.wait()](https://developers.cloudflare.com/workers/runtime-apis/scheduler/)
+
+  * Returns a Promise that resolves after a given number of milliseconds. An `await`\-able alternative to `setTimeout()`.
 
 Note
 
@@ -59,10 +66,12 @@ Timers are only available inside of [the Request Context](https://developers.clo
 
 ### `performance.timeOrigin` and `performance.now()`
 
-* performance.timeOrigin  
-   * Returns the high resolution time origin. Workers uses the UNIX epoch as the time origin, meaning that `performance.timeOrigin` will always return `0`.
-* performance.now()  
-   * Returns a `DOMHighResTimeStamp` representing the number of milliseconds elapsed since `performance.timeOrigin`. Note that Workers intentionally reduces the precision of `performance.now()` such that it returns the time of the last I/O and does not advance during code execution. Effectively, because of this, and because `performance.timeOrigin` is always, `0`, `performance.now()` will always equal `Date.now()`, yielding a consistent view of the passage of time within a Worker.
+* performance.timeOrigin
+
+  * Returns the high resolution time origin. Workers uses the UNIX epoch as the time origin, meaning that `performance.timeOrigin` will always return `0`.
+* performance.now()
+
+  * Returns a `DOMHighResTimeStamp` representing the number of milliseconds elapsed since `performance.timeOrigin`. Note that Workers intentionally reduces the precision of `performance.now()` such that it returns the time of the last I/O and does not advance during code execution. Effectively, because of this, and because `performance.timeOrigin` is always, `0`, `performance.now()` will always equal `Date.now()`, yielding a consistent view of the passage of time within a Worker.
 
 ### `EventTarget` and `Event`
 
@@ -75,7 +84,7 @@ The [AbortController ↗](https://developer.mozilla.org/en-US/docs/Web/API/Abort
 ### Fetch global
 
 * fetch()  
-   * Starts the process of fetching a resource from the network. Refer to [Fetch API](https://developers.cloudflare.com/workers/runtime-apis/fetch/).
+  * Starts the process of fetching a resource from the network. Refer to [Fetch API](https://developers.cloudflare.com/workers/runtime-apis/fetch/).
 
 Note
 
@@ -144,25 +153,8 @@ The [rejectionhandled ↗](https://developer.mozilla.org/en-US/docs/Web/API/Wind
 worker.js
 
 ```
-
-addEventListener("unhandledrejection", (event) => {
-
-  console.log(event.promise); // The promise that was rejected.
-
-  console.log(event.reason); // The value or Error with which the promise was rejected.
-
-});
-
-
-addEventListener("rejectionhandled", (event) => {
-
-  console.log(event.promise); // The promise that was rejected.
-
-  console.log(event.reason); // The value or Error with which the promise was rejected.
-
-});
-
-
+addEventListener("unhandledrejection", (event) => {  console.log(event.promise); // The promise that was rejected.  console.log(event.reason); // The value or Error with which the promise was rejected.});
+addEventListener("rejectionhandled", (event) => {  console.log(event.promise); // The promise that was rejected.  console.log(event.reason); // The value or Error with which the promise was rejected.});
 ```
 
 ---
@@ -176,18 +168,7 @@ For example, you can replace:
 JavaScript
 
 ```
-
-const promise = fetch("https://example.com", {
-
-  method: "POST",
-
-  body: "hello world",
-
-});
-
-ctx.waitUntil(promise);
-
-
+const promise = fetch("https://example.com", {  method: "POST",  body: "hello world",});ctx.waitUntil(promise);
 ```
 
 with `navigator.sendBeacon(...)`:
@@ -195,10 +176,7 @@ with `navigator.sendBeacon(...)`:
 JavaScript
 
 ```
-
 navigator.sendBeacon("https://example.com", "hello world");
-
-
 ```
 
 ## The Web File System Access API
@@ -208,35 +186,10 @@ When the `enable_web_file_system` compatibility flag is set, Workers supports th
 JavaScript
 
 ```
-
 const root = await navigator.storage.getDirectory();
-
-
-export default {
-
-  async fetch(request) {
-
-    const fileHandle = await root.getFileHandle("hello.txt", { create: true });
-
-    const writable = await fileHandle.createWritable();
-
-    await writable.write("Hello, world!");
-
-    await writable.close();
-
-
-    const file = await fileHandle.getFile();
-
-    const contents = await file.text();
-
-
-    return new Response(contents, { status: 200 });
-
-  },
-
-};
-
-
+export default {  async fetch(request) {    const fileHandle = await root.getFileHandle("hello.txt", { create: true });    const writable = await fileHandle.createWritable();    await writable.write("Hello, world!");    await writable.close();
+    const file = await fileHandle.getFile();    const contents = await file.text();
+    return new Response(contents, { status: 200 });  },};
 ```
 
 Please refer to the [MDN documentation ↗](https://developer.mozilla.org/en-US/docs/Web/API/File%5FSystem%5FAccess%5FAPI) for more information on using this API, and to the [node:fs documentation](https://developers.cloudflare.com/workers/runtime-apis/nodejs/fs/) for details on the virtual file system structure and limitations.

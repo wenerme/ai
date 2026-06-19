@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,43 +27,15 @@ Form for creating a new poll with question, dynamic options, anonymous voting, a
 ### Basic Usage
 
 ```
-
 import { RtkPollForm } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkPollForm onRtkCreatePoll={(data) => handleCreatePoll(data)} />;
-
-}
-
-
+function MyComponent() {  return <RtkPollForm onRtkCreatePoll={(data) => handleCreatePoll(data)} />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkPollForm } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkPollForm
-
-      onRtkCreatePoll={(data) => handleCreatePoll(data)}
-
-      iconPack={customIconPack}
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkPollForm      onRtkCreatePoll={(data) => handleCreatePoll(data)}      iconPack={customIconPack}    />  );}
 ```
 
 ```json

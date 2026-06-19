@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tunnel/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -38,10 +38,7 @@ Open a terminal window and run the following command:
 Terminal window
 
 ```
-
 cloudflared service install
-
-
 ```
 
 Cloudflare Tunnel will be installed as a launch agent and start whenever you log in, using your local user configuration found in `~/.cloudflared/`.
@@ -53,10 +50,7 @@ Open a terminal window and run the following command:
 Terminal window
 
 ```
-
 sudo cloudflared service install
-
-
 ```
 
 Cloudflare Tunnel will be installed as a launch daemon and start whenever your system boots, using your configuration found in `/etc/cloudflared`.
@@ -68,10 +62,7 @@ Run the following command:
 Terminal window
 
 ```
-
 sudo launchctl start com.cloudflare.cloudflared
-
-
 ```
 
 The output will be logged to `/Library/Logs/com.cloudflare.cloudflared.err.log` and `/Library/Logs/com.cloudflare.cloudflared.out.log`.
@@ -83,12 +74,7 @@ You can now [route traffic through your tunnel](https://developers.cloudflare.co
 Terminal window
 
 ```
-
-sudo launchctl stop com.cloudflare.cloudflared
-
-sudo launchctl start com.cloudflare.cloudflared
-
-
+sudo launchctl stop com.cloudflare.cloudflaredsudo launchctl start com.cloudflare.cloudflared
 ```
 
 ```json

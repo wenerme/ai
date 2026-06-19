@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,23 +30,8 @@ Learn more in the [table maintenance](https://developers.cloudflare.com/r2/data-
 Terminal window
 
 ```
-
-# Enable automatic snapshot expiration for entire catalog
-
-npx wrangler r2 bucket catalog snapshot-expiration enable my-bucket \
-
-  --older-than-days 30 \
-
-  --retain-last 5
-
-
-# Enable automatic compaction for entire catalog
-
-npx wrangler r2 bucket catalog compaction enable my-bucket \
-
-  --target-size 256
-
-
+# Enable automatic snapshot expiration for entire catalognpx wrangler r2 bucket catalog snapshot-expiration enable my-bucket \  --older-than-days 30 \  --retain-last 5
+# Enable automatic compaction for entire catalognpx wrangler r2 bucket catalog compaction enable my-bucket \  --target-size 256
 ```
 
 Refer to additional examples in the [manage catalogs](https://developers.cloudflare.com/r2/data-catalog/manage-catalogs/) documentation.
@@ -66,34 +51,9 @@ The following are basic examples using PySpark but similar operations can be per
 Python
 
 ```
-
-# Creates new snapshots and marks old files for cleanup
-
-spark.sql("""
-
-  DELETE FROM r2dc.namespace.table_name
-
-  WHERE column_name = 'value'
-
-""")
-
-
-# The following is effectively a TRUNCATE operation
-
-spark.sql("DELETE FROM r2dc.namespace.table_name")
-
-
-# For large deletes, use partitioned tables and delete entire partitions for faster performance:
-
-spark.sql("""
-
-    DELETE FROM r2dc.namespace.table_name
-
-    WHERE date_partition < '2024-01-01'
-
-""")
-
-
+# Creates new snapshots and marks old files for cleanupspark.sql("""  DELETE FROM r2dc.namespace.table_name  WHERE column_name = 'value'""")
+# The following is effectively a TRUNCATE operationspark.sql("DELETE FROM r2dc.namespace.table_name")
+# For large deletes, use partitioned tables and delete entire partitions for faster performance:spark.sql("""    DELETE FROM r2dc.namespace.table_name    WHERE date_partition < '2024-01-01'""")
 ```
 
 ### Dropping tables and namespaces
@@ -101,39 +61,10 @@ spark.sql("""
 Python
 
 ```
-
-# Removes table from catalog but keeps data files in R2 storage
-
-spark.sql("DROP TABLE r2dc.namespace.table_name")
-
-
-# ⚠️  DANGER: Permanently deletes all data files from R2
-
-# This operation cannot be undone
-
-spark.sql("DROP TABLE r2dc.namespace.table_name PURGE")
-
-
-# Use CASCADE to drop all tables within the namespace
-
-spark.sql("DROP NAMESPACE r2dc.namespace_name CASCADE")
-
-
-# You will need to PURGE the tables before running CASCADE to permanently delete data files
-
-# This can be done with a loop over all tables in the namespace
-
-tables = spark.sql("SHOW TABLES IN r2dc.namespace_name").collect()
-
-for row in tables:
-
-  table_name = row['tableName']
-
-  spark.sql(f"DROP TABLE r2dc.namespace_name.{table_name} PURGE")
-
-spark.sql("DROP NAMESPACE r2dc.namespace_name CASCADE")
-
-
+# Removes table from catalog but keeps data files in R2 storagespark.sql("DROP TABLE r2dc.namespace.table_name")
+# ⚠️  DANGER: Permanently deletes all data files from R2# This operation cannot be undonespark.sql("DROP TABLE r2dc.namespace.table_name PURGE")
+# Use CASCADE to drop all tables within the namespacespark.sql("DROP NAMESPACE r2dc.namespace_name CASCADE")
+# You will need to PURGE the tables before running CASCADE to permanently delete data files# This can be done with a loop over all tables in the namespacetables = spark.sql("SHOW TABLES IN r2dc.namespace_name").collect()for row in tables:  table_name = row['tableName']  spark.sql(f"DROP TABLE r2dc.namespace_name.{table_name} PURGE")spark.sql("DROP NAMESPACE r2dc.namespace_name CASCADE")
 ```
 
 Data loss warning
@@ -145,54 +76,9 @@ Data loss warning
 Python
 
 ```
-
-# Remove old metadata and data files marked for deletion
-
-# The following retains the last 5 snapshots and deletes files older than Nov 28, 2024
-
-spark.sql("""
-
-  CALL r2dc.system.expire_snapshots(
-
-    table => 'r2dc.namespace_name.table_name',
-
-    older_than => TIMESTAMP '2024-11-28 00:00:00',
-
-     retain_last => 5
-
-  )
-
-""")
-
-
-# Removes unreferenced data files from R2 storage (orphan files)
-
-spark.sql("""
-
-  CALL r2dc.system.remove_orphan_files(
-
-    table => 'namespace.table_name'
-
-  )
-
-""")
-
-
-# Rewrite data files with a target file size (e.g., 512 MB)
-
-spark.sql("""
-
-  CALL r2dc.system.rewrite_data_files(
-
-    table => 'r2dc.namespace_name.table_name',
-
-    options => map('target-file-size-bytes', '536870912')
-
-  )
-
-""")
-
-
+# Remove old metadata and data files marked for deletion# The following retains the last 5 snapshots and deletes files older than Nov 28, 2024spark.sql("""  CALL r2dc.system.expire_snapshots(    table => 'r2dc.namespace_name.table_name',    older_than => TIMESTAMP '2024-11-28 00:00:00',     retain_last => 5  )""")
+# Removes unreferenced data files from R2 storage (orphan files)spark.sql("""  CALL r2dc.system.remove_orphan_files(    table => 'namespace.table_name'  )""")
+# Rewrite data files with a target file size (e.g., 512 MB)spark.sql("""  CALL r2dc.system.rewrite_data_files(    table => 'r2dc.namespace_name.table_name',    options => map('target-file-size-bytes', '536870912')  )""")
 ```
 
 ## About Apache Iceberg metadata
@@ -211,29 +97,29 @@ Warning
 Manually modifying or deleting any of these files directly can lead to data catalog corruption.
 
 * Directorymetadata.json **Metadata File** \- Points to current snapshot  
-   * Table Schema  
-   * Partition Spec  
-   * Sort Order  
-   * DirectorySnapshots  
-         * Directorysnapshot-3051729675574597004.avro **Snapshot 1** (Historical)  
-                  * Directorymanifest-list-abc123.avro **Manifest List**  
-                              * Directorymanifest-file-001.avro **Manifest File**  
-                                             * data-00001.parquet (10 MB, 50K rows)  
-                                             * data-00002.parquet (12 MB, 60K rows)  
-                                             * data-00003.parquet (11 MB, 55K rows)  
-                              * Directorymanifest-file-002.avro  
-                                             * data-00004.parquet (9 MB, 45K rows)  
-                                             * data-00005.parquet (10 MB, 50K rows)  
-         * Directorysnapshot-3051729675574597005.avro **Snapshot 2** (Current)  
-                  * Directorymanifest-list-def456.avro **Manifest List**  
-                              * Directorymanifest-file-001.avro _(reused from Snapshot 1)_  
-                                             * data-00001.parquet  
-                                             * data-00002.parquet  
-                                             * data-00003.parquet  
-                              * Directorymanifest-file-003.avro _(new)_  
-                                             * data-00006.parquet (11 MB, 53K rows)  
-                                             * data-00007.parquet (10 MB, 51K rows)  
-                                             * data-00008.parquet (12 MB, 58K rows)
+  * Table Schema
+  * Partition Spec
+  * Sort Order
+  * DirectorySnapshots  
+    * Directorysnapshot-3051729675574597004.avro **Snapshot 1** (Historical)  
+      * Directorymanifest-list-abc123.avro **Manifest List**
+        * Directorymanifest-file-001.avro **Manifest File**
+          * data-00001.parquet (10 MB, 50K rows)
+          * data-00002.parquet (12 MB, 60K rows)
+          * data-00003.parquet (11 MB, 55K rows)
+        * Directorymanifest-file-002.avro  
+          * data-00004.parquet (9 MB, 45K rows)
+          * data-00005.parquet (10 MB, 50K rows)
+    * Directorysnapshot-3051729675574597005.avro **Snapshot 2** (Current)  
+      * Directorymanifest-list-def456.avro **Manifest List**
+        * Directorymanifest-file-001.avro _(reused from Snapshot 1)_
+          * data-00001.parquet
+          * data-00002.parquet
+          * data-00003.parquet
+        * Directorymanifest-file-003.avro _(new)_
+          * data-00006.parquet (11 MB, 53K rows)
+          * data-00007.parquet (10 MB, 51K rows)
+          * data-00008.parquet (12 MB, 58K rows)
 
 ### What happens during deletion
 

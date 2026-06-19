@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/kv/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,10 +17,7 @@ To list all the keys in your KV namespace, call the `list()` method of the [KV b
 JavaScript
 
 ```
-
 env.NAMESPACE.list();
-
-
 ```
 
 The `list()` method returns a promise you can `await` on to get the value.
@@ -32,37 +29,8 @@ An example of listing keys from within a Worker:
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    try {
-
-      const value = await env.NAMESPACE.list();
-
-
-      return new Response(JSON.stringify(value.keys), {
-
-        status: 200
-
-      });
-
-    }
-
-    catch (e)
-
-    {
-
-      return new Response(e.message, {status: 500});
-
-    }
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    try {      const value = await env.NAMESPACE.list();
+      return new Response(JSON.stringify(value.keys), {        status: 200      });    }    catch (e)    {      return new Response(e.message, {status: 500});    }  },};
 ```
 
 ## Reference
@@ -78,55 +46,29 @@ To list all the keys in your KV namespace, call the `list()` method of the [KV b
 TypeScript
 
 ```
-
 env.NAMESPACE.list(options?)
-
-
 ```
 
 #### Parameters
 
 * `options`: `{ prefix?: string, limit?: string, cursor?: string }`  
-   * An object with attributes `prefix` (optional), `limit` (optional), or `cursor` (optional).  
-         * `prefix` is a `string` that represents a prefix you can use to filter all keys.  
-         * `limit` is the maximum number of keys returned. The default is 1,000 keys, which is the maximum. It is unlikely that you will want to change this default but it is included for completeness.  
-         * `cursor` is a `string` used for paginating responses.
+  * An object with attributes `prefix` (optional), `limit` (optional), or `cursor` (optional).  
+    * `prefix` is a `string` that represents a prefix you can use to filter all keys.
+    * `limit` is the maximum number of keys returned. The default is 1,000 keys, which is the maximum. It is unlikely that you will want to change this default but it is included for completeness.
+    * `cursor` is a `string` used for paginating responses.
 
 #### Response
 
 * `response`: `Promise<{ keys: { name: string, expiration?: number, metadata?: object }[], list_complete: boolean, cursor: string }>`  
-   * A `Promise` that resolves to an object containing `keys`, `list_complete`, and `cursor` attributes.  
-         * `keys` is an array that contains an object for each key listed. Each object has attributes `name`, `expiration` (optional), and `metadata` (optional). If the key-value pair has an expiration set, the expiration will be present and in absolute value form (even if it was set in TTL form). If the key-value pair has non-null metadata set, the metadata will be present.  
-         * `list_complete` is a boolean, which will be `false` if there are more keys to fetch, even if the `keys` array is empty.  
-         * `cursor` is a `string` used for paginating responses.
+  * A `Promise` that resolves to an object containing `keys`, `list_complete`, and `cursor` attributes.  
+    * `keys` is an array that contains an object for each key listed. Each object has attributes `name`, `expiration` (optional), and `metadata` (optional). If the key-value pair has an expiration set, the expiration will be present and in absolute value form (even if it was set in TTL form). If the key-value pair has non-null metadata set, the metadata will be present.
+    * `list_complete` is a boolean, which will be `false` if there are more keys to fetch, even if the `keys` array is empty.
+    * `cursor` is a `string` used for paginating responses.
 
 The `list()` method returns a promise which resolves with an object that looks like the following:
 
 ```
-
-{
-
-  "keys": [
-
-    {
-
-      "name": "foo",
-
-      "expiration": 1234,
-
-      "metadata": { "someMetadataKey": "someMetadataValue" }
-
-    }
-
-  ],
-
-  "list_complete": false,
-
-  "cursor": "6Ck1la0VxJ0djhidm1MdX2FyD"
-
-}
-
-
+{  "keys": [    {      "name": "foo",      "expiration": 1234,      "metadata": { "someMetadataKey": "someMetadataValue" }    }  ],  "list_complete": false,  "cursor": "6Ck1la0VxJ0djhidm1MdX2FyD"}
 ```
 
 The `keys` property will contain an array of objects describing each key. That object will have one to three keys of its own: the `name` of the key, and optionally the key's `expiration` and `metadata` values.
@@ -140,14 +82,7 @@ Consider storing your values in metadata if your values fit in the [metadata-siz
 JavaScript
 
 ```
-
-await NAMESPACE.put(key, "", {
-
-  metadata: { value: value },
-
-});
-
-
+await NAMESPACE.put(key, "", {  metadata: { value: value },});
 ```
 
 Changes may take up to 60 seconds (or the value set with `cacheTtl` of the `get()` or `getWithMetadata()` method) to be reflected on the application calling the method on the KV namespace.
@@ -163,20 +98,7 @@ For example, you may have structured your keys with a user, a user ID, and key n
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    const value = await env.NAMESPACE.list({ prefix: "user:1:" });
-
-    return new Response(value.keys);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    const value = await env.NAMESPACE.list({ prefix: "user:1:" });    return new Response(value.keys);  },};
 ```
 
 This will return all keys starting with the `"user:1:"` prefix.
@@ -192,16 +114,9 @@ If there are more keys to fetch, the `list_complete` key will be set to `false` 
 JavaScript
 
 ```
-
 const value = await NAMESPACE.list();
-
-
 const cursor = value.cursor;
-
-
 const next_value = await NAMESPACE.list({ cursor: cursor });
-
-
 ```
 
 Checking for an empty array in `keys` is not sufficient to determine whether there are more keys to fetch. Instead, use `list_complete`.
@@ -217,14 +132,7 @@ Consider storing your values in metadata if your values fit in the [metadata-siz
 JavaScript
 
 ```
-
-await NAMESPACE.put(key, "", {
-
-  metadata: { value: value },
-
-});
-
-
+await NAMESPACE.put(key, "", {  metadata: { value: value },});
 ```
 
 ## Other methods to access KV

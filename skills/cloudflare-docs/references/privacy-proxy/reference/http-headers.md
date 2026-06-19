@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/privacy-proxy/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,19 +25,13 @@ Authenticates the client to the proxy. Required for all requests.
 Pre-shared key format:
 
 ```
-
 Proxy-Authorization: Preshared <key>
-
-
 ```
 
 Privacy Pass token format:
 
 ```
-
 Proxy-Authorization: PrivateToken token=<base64-encoded-token>
-
-
 ```
 
 | Parameter              | Description                               |
@@ -54,10 +48,7 @@ When querying Privacy Proxy metrics via the GraphQL Analytics API, send a `POST`
 Specifies the client's geographic location for egress IP selection. Optional but recommended for accurate geolocation.
 
 ```
-
 sec-ch-geohash: <geohash>-<country_code>
-
-
 ```
 
 | Parameter       | Description                                                                            |
@@ -68,10 +59,7 @@ sec-ch-geohash: <geohash>-<country_code>
 Example
 
 ```
-
 sec-ch-geohash: u4pruydqqvj-GB
-
-
 ```
 
 This example specifies a location in the United Kingdom.
@@ -87,10 +75,7 @@ Privacy Proxy includes the following headers in responses.
 Provides timing information about proxy processing. This is part of the [OpenTelemetry](https://developers.cloudflare.com/privacy-proxy/reference/metrics/opentelemetry/) observability pipeline.
 
 ```
-
 Server-Timing: proxy;dur=<milliseconds>
-
-
 ```
 
 | Parameter      | Description                                             |
@@ -100,10 +85,7 @@ Server-Timing: proxy;dur=<milliseconds>
 Example
 
 ```
-
 Server-Timing: proxy;dur=8.2
-
-
 ```
 
 ### GraphQL Analytics API response headers
@@ -117,16 +99,7 @@ For response headers returned by the GraphQL API, refer to [GraphQL Analytics AP
 A complete `CONNECT` request to Privacy Proxy looks like this:
 
 ```
-
-CONNECT example.com:443 HTTP/2
-
-Host: example.com
-
-Proxy-Authorization: Preshared abc123xyz
-
-sec-ch-geohash: 9q8yy-US
-
-
+CONNECT example.com:443 HTTP/2Host: example.comProxy-Authorization: Preshared abc123xyzsec-ch-geohash: 9q8yy-US
 ```
 
 The proxy responds with a status code indicating success or failure:

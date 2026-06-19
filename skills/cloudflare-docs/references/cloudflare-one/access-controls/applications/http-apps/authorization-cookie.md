@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -147,8 +147,8 @@ Chrome
 
 1. Go to **Settings** \> **Privacy and security** \> **Cookies and other site data**.
 2. Under **Sites that can always use cookies**, add the following URLs:  
-   * Hostname of your Access application (for example, `https://jira.site.com`)  
-   * `https://<your-team-name>.cloudflareaccess.com`
+  * Hostname of your Access application (for example, `https://jira.site.com`)
+  * `https://<your-team-name>.cloudflareaccess.com`
 
 Safari
 
@@ -168,8 +168,8 @@ Brave
 
 1. Go to `brave://settings/cookies`.
 2. Under **Sites that can always use cookies**, add the following URLs:  
-   * Hostname of your Access application (for example, `https://jira.site.com`)  
-   * `https://<your-team-name>.cloudflareaccess.com`
+  * Hostname of your Access application (for example, `https://jira.site.com`)
+  * `https://<your-team-name>.cloudflareaccess.com`
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/#page","headline":"Authorization cookie · Cloudflare One docs","description":"Learn how Cloudflare Access uses CF\\_Authorization cookies to secure self-hosted web applications.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Cookies","JSON web token (JWT)"]}

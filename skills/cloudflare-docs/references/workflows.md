@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workflows/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -34,57 +34,10 @@ An image processing workflow that fetches from R2, generates an AI description, 
 TypeScript
 
 ```
-
-export class ImageProcessingWorkflow extends WorkflowEntrypoint {
-
-  async run(event: WorkflowEvent, step: WorkflowStep) {
-
-    const imageData = await step.do('fetch image', async () => {
-
-      const object = await this.env.BUCKET.get(event.payload.imageKey);
-
-      return await object.arrayBuffer();
-
-    });
-
-
-    const description = await step.do('generate description', async () => {
-
-      const imageArray = Array.from(new Uint8Array(imageData));
-
-      return await this.env.AI.run('@cf/llava-hf/llava-1.5-7b-hf', {
-
-        image: imageArray,
-
-        prompt: 'Describe this image in one sentence',
-
-        max_tokens: 50,
-
-      });
-
-    });
-
-
-    await step.waitForEvent('await approval', {
-
-      event: 'approved',
-
-      timeout: '24 hours',
-
-    });
-
-
-    await step.do('publish', async () => {
-
-      await this.env.BUCKET.put(`public/${event.payload.imageKey}`, imageData);
-
-    });
-
-  }
-
-}
-
-
+export class ImageProcessingWorkflow extends WorkflowEntrypoint {  async run(event: WorkflowEvent, step: WorkflowStep) {    const imageData = await step.do('fetch image', async () => {      const object = await this.env.BUCKET.get(event.payload.imageKey);      return await object.arrayBuffer();    });
+    const description = await step.do('generate description', async () => {      const imageArray = Array.from(new Uint8Array(imageData));      return await this.env.AI.run('@cf/llava-hf/llava-1.5-7b-hf', {        image: imageArray,        prompt: 'Describe this image in one sentence',        max_tokens: 50,      });    });
+    await step.waitForEvent('await approval', {      event: 'approved',      timeout: '24 hours',    });
+    await step.do('publish', async () => {      await this.env.BUCKET.put(`public/${event.payload.imageKey}`, imageData);    });  }}
 ```
 
 [ Get started ](https://developers.cloudflare.com/workflows/get-started/guide/) [ Browse the examples ](https://developers.cloudflare.com/workflows/examples/) 

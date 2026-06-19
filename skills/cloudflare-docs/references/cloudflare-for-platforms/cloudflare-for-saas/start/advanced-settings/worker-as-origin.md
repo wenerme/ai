@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,23 +33,27 @@ You do not need to add individual Worker routes for each custom hostname. The wi
 
 ## Set up a Worker as your fallback origin
 
-1. In your SaaS zone, [create and set a fallback origin](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/#1-create-fallback-origin). Ensure the fallback origin only has an [originless DNS record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/#originless-setups):  
-   * **Example**: `service.example.com AAAA 100::`
+1. In your SaaS zone, [create and set a fallback origin](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/#1-create-fallback-origin). Ensure the fallback origin only has an [originless DNS record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/#originless-setups):
+
+  * **Example**: `service.example.com AAAA 100::`
 2. In that same zone, navigate to **Workers Routes**.
 3. Click **Add route**.
-4. Configure a route to send traffic to your Worker. Choose one of the following options based on your needs:  
-   * **Route all traffic to the Worker** (recommended for most SaaS applications):  
-         * **Route**: `*/*`  
-         * **Worker**: Select the Worker used for your SaaS application.  
-   This pattern routes all traffic entering your zone to the Worker, including requests from custom hostnames (for example, `mystore.customer.com`) and requests to your own subdomains (for example, `app.saasprovider.com`).  
-   * **Route all but specific routes to worker**:  
-         * **Route**: `*/*`  
-         * **Worker**: Select the Worker used for your SaaS application.  
-         * Add a second route for your zone's own hostnames with **Worker** set to **None** to exclude them.  
-   For example, if your zone is `saasprovider.com` and you want `api.saasprovider.com` to bypass the Worker, create an additional route `api.saasprovider.com/*` with no Worker assigned. More specific routes take precedence over wildcard routes.  
-   * **Route only custom hostname traffic to the Worker**:  
-   * **Route**: `vanity.customer.com`  
-   * **Worker**: Select the Worker used for your SaaS application.
+4. Configure a route to send traffic to your Worker. Choose one of the following options based on your needs:
+
+  * **Route all traffic to the Worker** (recommended for most SaaS applications):
+
+    * **Route**: `*/*`
+    * **Worker**: Select the Worker used for your SaaS application.  
+  This pattern routes all traffic entering your zone to the Worker, including requests from custom hostnames (for example, `mystore.customer.com`) and requests to your own subdomains (for example, `app.saasprovider.com`).
+  * **Route all but specific routes to worker**:
+
+    * **Route**: `*/*`
+    * **Worker**: Select the Worker used for your SaaS application.
+    * Add a second route for your zone's own hostnames with **Worker** set to **None** to exclude them.  
+  For example, if your zone is `saasprovider.com` and you want `api.saasprovider.com` to bypass the Worker, create an additional route `api.saasprovider.com/*` with no Worker assigned. More specific routes take precedence over wildcard routes.
+  * **Route only custom hostname traffic to the Worker**:
+  * **Route**: `vanity.customer.com`
+  * **Worker**: Select the Worker used for your SaaS application.
 5. Click **Save**.
 
 ---

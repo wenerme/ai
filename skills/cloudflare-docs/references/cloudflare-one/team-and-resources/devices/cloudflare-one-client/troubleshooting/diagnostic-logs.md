@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,20 +17,28 @@ The Cloudflare One Client (formerly WARP) provides diagnostic logs that you can 
 Chapters
 
 * ![Introduction](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=0s)  
+
  **Introduction** 0s
 * ![What are warp-diag files?](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=44s)  
+
  **What are warp-diag files?** 44s
 * ![How to download and navigate warp-diag files](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=76s)  
+
  **How to download and navigate warp-diag files** 1m16s
 * ![warp-status.txt](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=126s)  
+
  **warp-status.txt** 2m06s
 * ![warp-settings.txt](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=149s)  
+
  **warp-settings.txt** 2m29s
 * ![daemon.log](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=217s)  
+
  **daemon.log** 3m37s
 * ![Addition tips](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=487s)  
+
  **Addition tips** 8m07s
 * ![Conclusion](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=523s)  
+
  **Conclusion** 8m43s
 
 ## macOS/Windows/Linux
@@ -39,9 +47,9 @@ Chapters
 
 To view client logs on desktop devices:
 
-* [ macOS ](#tab-panel-7499)
-* [ Windows ](#tab-panel-7500)
-* [ Linux ](#tab-panel-7501)
+* [ macOS ](#tab-panel-7575)
+* [ Windows ](#tab-panel-7576)
+* [ Linux ](#tab-panel-7577)
 
 1. Open a Terminal window.
 2. Run the `warp-diag` tool:  
@@ -96,10 +104,11 @@ To capture data from a remote device:
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **DEX** \> **Remote captures**.
 2. Select up to 10 devices that you want to run a capture on. Devices must be [registered](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/) in your Zero Trust organization.
 3. Configure the types of captures to run.  
-   * **Packet captures (PCAP)**: Performs packet captures for traffic outside of the WARP tunnel (default network interface) and traffic inside of the WARP tunnel ([virtual interface](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#ip-traffic)).  
-   * **Device diagnostic logs**: Generates a [Cloudflare One Client diagnostic log](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/#warp-diag-logs) of the past 96 hours. To include a routing test for all IPs and domains in your [Split Tunnel configuration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/), select **Test all routes**.  
-   Note  
-   **Test all routes** will extend the time for diagnostics to run and may temporarily impact device performance during the test.
+  * **Packet captures (PCAP)**: Performs packet captures for traffic outside of the WARP tunnel (default network interface) and traffic inside of the WARP tunnel ([virtual interface](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#ip-traffic)).
+  * **Device diagnostic logs**: Generates a [Cloudflare One Client diagnostic log](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/#warp-diag-logs) of the past 96 hours. To include a routing test for all IPs and domains in your [Split Tunnel configuration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/), select **Test all routes**.  
+  Note
+
+**Test all routes** will extend the time for diagnostics to run and may temporarily impact device performance during the test.
 4. Select **Run diagnostics**.
 
 DEX will now send capture requests to the configured devices. If the Cloudflare One Client is disconnected, the capture will time out after 10 minutes.
@@ -122,17 +131,18 @@ To access the diagnostics analyzer:
 2. Locate an existing `warp-diag` log from the list or select **Run diagnostics** to generate a new `warp-diag` log.
 3. Select the three dots for the `warp-diag` log that you want to analyze, then select **View Device Diag**.  
 The **Overview** tab will display an [AI-generated summary](https://developers.cloudflare.com/fundamentals/reference/cloudy-ai-agent/) of the results, a list of detection events, and basic device information.  
-Explanation of the fields  
-| Field                         | Description                                                                                                                                                                                                                                                                                               |  
-| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |  
-| Detection type                | A common Cloudflare One Client issue that can appear in the diagnostic logs.                                                                                                                                                                                                                              |  
-| Occurrences                   | Number of times an issue was detected in the logs.                                                                                                                                                                                                                                                        |  
-| Severity level                | Indicates the impact of the issue on Cloudflare One Client functionality. The severity levels are: **Critical**: Issue causes complete loss of functionality. **Warning**: Issue causes degraded functionality but core features should still work. **No detection**: Issue was not detected in the logs. |  
-| Operating system              | OS and OS version of the device.                                                                                                                                                                                                                                                                          |  
-| Cloudflare One Client version | [Cloudflare One Client release version](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/)                                                                                                                                                      |  
-| Profile ID                    | [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) UUID                                                                                                                                                       |  
-| Service mode                  | [Client mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/)                                                                                                                                                                         |  
-| Configuration name            | Name of the [Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/switch-organizations/) that the Cloudflare One Client is connected to.                                                                  |  
+Explanation of the fields
+
+| Field                         | Description                                                                                                                                                                                                                                                                                               |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Detection type                | A common Cloudflare One Client issue that can appear in the diagnostic logs.                                                                                                                                                                                                                              |
+| Occurrences                   | Number of times an issue was detected in the logs.                                                                                                                                                                                                                                                        |
+| Severity level                | Indicates the impact of the issue on Cloudflare One Client functionality. The severity levels are: **Critical**: Issue causes complete loss of functionality. **Warning**: Issue causes degraded functionality but core features should still work. **No detection**: Issue was not detected in the logs. |
+| Operating system              | OS and OS version of the device.                                                                                                                                                                                                                                                                          |
+| Cloudflare One Client version | [Cloudflare One Client release version](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/)                                                                                                                                                      |
+| Profile ID                    | [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) UUID                                                                                                                                                       |
+| Service mode                  | [Client mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/)                                                                                                                                                                         |
+| Configuration name            | Name of the [Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/switch-organizations/) that the Cloudflare One Client is connected to.                                                                  |
 | Device ID                     | ID generated by the Cloudflare One Client.                                                                                                                                                                                                                                                                |
 4. Select a detection type for more information about the event and recommended next steps.
 
@@ -242,14 +252,14 @@ This enables a few more logging features:
 * DNS logs for [service modes with DNS filtering](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/)
 * One-shot connectivity checks (same information as `connectivity.txt`, collected when extra debug logging starts rather than when `warp-diag` runs)
 * One-shot traceroutes to:  
-   * DNS resolver IPs  
-   * DNS resolver hostname  
-   * Device API endpoint IPs  
-   * Device API endpoint hostname  
-   * Tunnel edge connection IPs
+  * DNS resolver IPs
+  * DNS resolver hostname
+  * Device API endpoint IPs
+  * Device API endpoint hostname
+  * Tunnel edge connection IPs
 * On Windows, if you are an administrator:  
-   * [netsh trace ↗](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/netsh-trace) with the `Microsoft-Windows-TCPIP` provider  
-   * [WFP capture ↗](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/netsh-wfp)
+  * [netsh trace ↗](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/netsh-trace) with the `Microsoft-Windows-TCPIP` provider
+  * [WFP capture ↗](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/netsh-wfp)
 
 If extra debug logging is enabled, the command `warp-cli debug extra reconnect` forces the tunnel connection to restart. This can be useful for collecting log information if the tunnel connection fails.
 
@@ -285,23 +295,23 @@ The Cloudflare One Client does not provide an official method to configure loggi
 
 To view client logs on mobile devices:
 
-* [ iOS ](#tab-panel-7497)
-* [ Android/ChromeOS ](#tab-panel-7498)
+* [ iOS ](#tab-panel-7573)
+* [ Android/ChromeOS ](#tab-panel-7574)
 
 1. Open the Cloudflare One Agent app.
 2. Go to **Settings** \> **Advanced** \> **Diagnostics**.
 3. Collect extension logs:  
-   1. From the **Diagnostics** page, select **Console logs** \> **Extension logs**.  
-   2. Select **Share** and choose a file sharing method.  
-   3. Enter a descriptive file name (such as `extension.log`) if available for your sharing method. Then share or save the file.
+  1. From the **Diagnostics** page, select **Console logs** \> **Extension logs**.
+  2. Select **Share** and choose a file sharing method.
+  3. Enter a descriptive file name (such as `extension.log`) if available for your sharing method. Then share or save the file.
 4. Collect application logs:  
-   1. From the **Diagnostics** page, select **Console logs** \> **Application logs**.  
-   2. Select **Share** and choose a file sharing method.  
-   3. Enter a descriptive file name (such as `application.log`) if available for your sharing method. Then share or save the file.
+  1. From the **Diagnostics** page, select **Console logs** \> **Application logs**.
+  2. Select **Share** and choose a file sharing method.
+  3. Enter a descriptive file name (such as `application.log`) if available for your sharing method. Then share or save the file.
 5. (Optional) Collect qlogs for devices using the [MASQUE tunnel protocol](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-tunnel-protocol):  
-   1. From the **Diagnostics** page, turn on **Enable qlogs**.  
-   2. Select **Export QLogs**.  
-   3. Enter a descriptive file name (such as `qlogs.zip`) if available for your sharing method. Then share or save the file.
+  1. From the **Diagnostics** page, turn on **Enable qlogs**.
+  2. Select **Export QLogs**.
+  3. Enter a descriptive file name (such as `qlogs.zip`) if available for your sharing method. Then share or save the file.
 
 1. Open the Cloudflare One Agent app.
 2. Go to **Settings** \> **Advanced** \> **Diagnostics**.

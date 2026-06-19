@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,151 +22,43 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11660)
-* [  TypeScript ](#tab-panel-11661)
-* [  Python ](#tab-panel-11662)
-* [  Hono ](#tab-panel-11663)
+* [  JavaScript ](#tab-panel-11677)
+* [  TypeScript ](#tab-panel-11678)
+* [  Python ](#tab-panel-11679)
+* [  Hono ](#tab-panel-11680)
 
 JavaScript
 
 ```
-
-import { parse } from "cookie";
-
-export default {
-
-  async fetch(request) {
-
-    // The name of the cookie
-
-    const COOKIE_NAME = "__uid";
-
-    const cookie = parse(request.headers.get("Cookie") || "");
-
-    if (cookie[COOKIE_NAME] != null) {
-
-      // Respond with the cookie value
-
-      return new Response(cookie[COOKIE_NAME]);
-
-    }
-
-    return new Response("No cookie with name: " + COOKIE_NAME);
-
-  },
-
-};
-
-
+import { parse } from "cookie";export default {  async fetch(request) {    // The name of the cookie    const COOKIE_NAME = "__uid";    const cookie = parse(request.headers.get("Cookie") || "");    if (cookie[COOKIE_NAME] != null) {      // Respond with the cookie value      return new Response(cookie[COOKIE_NAME]);    }    return new Response("No cookie with name: " + COOKIE_NAME);  },};
 ```
 
 TypeScript
 
 ```
-
-import { parse } from "cookie";
-
-export default {
-
-  async fetch(request): Promise<Response> {
-
-    // The name of the cookie
-
-    const COOKIE_NAME = "__uid";
-
-    const cookie = parse(request.headers.get("Cookie") || "");
-
-    if (cookie[COOKIE_NAME] != null) {
-
-      // Respond with the cookie value
-
-      return new Response(cookie[COOKIE_NAME]);
-
-    }
-
-    return new Response("No cookie with name: " + COOKIE_NAME);
-
-  },
-
-} satisfies ExportedHandler;
-
-
+import { parse } from "cookie";export default {  async fetch(request): Promise<Response> {    // The name of the cookie    const COOKIE_NAME = "__uid";    const cookie = parse(request.headers.get("Cookie") || "");    if (cookie[COOKIE_NAME] != null) {      // Respond with the cookie value      return new Response(cookie[COOKIE_NAME]);    }    return new Response("No cookie with name: " + COOKIE_NAME);  },} satisfies ExportedHandler;
 ```
 
 Python
 
 ```
-
-from http.cookies import SimpleCookie
-
-from workers import WorkerEntrypoint, Response
-
-
-class Default(WorkerEntrypoint):
-
-    async def fetch(self, request):
-
-        # Name of the cookie
-
-        cookie_name = "__uid"
-
-
+from http.cookies import SimpleCookiefrom workers import WorkerEntrypoint, Response
+class Default(WorkerEntrypoint):    async def fetch(self, request):        # Name of the cookie        cookie_name = "__uid"
         cookies = SimpleCookie(request.headers["Cookie"] or "")
-
-
-        if cookie_name in cookies:
-
-            # Respond with cookie value
-
-            return Response(cookies[cookie_name].value)
-
-
+        if cookie_name in cookies:            # Respond with cookie value            return Response(cookies[cookie_name].value)
         return Response("No cookie with name: " + cookie_name)
-
-
 ```
 
 TypeScript
 
 ```
-
-import { Hono } from 'hono';
-
-import { getCookie } from 'hono/cookie';
-
-
+import { Hono } from 'hono';import { getCookie } from 'hono/cookie';
 const app = new Hono();
-
-
-app.get('*', (c) => {
-
-  // The name of the cookie
-
-  const COOKIE_NAME = "__uid";
-
-
-  // Get the specific cookie value using Hono's cookie helper
-
-  const cookieValue = getCookie(c, COOKIE_NAME);
-
-
-  if (cookieValue) {
-
-    // Respond with the cookie value
-
-    return c.text(cookieValue);
-
-  }
-
-
-  return c.text("No cookie with name: " + COOKIE_NAME);
-
-});
-
-
+app.get('*', (c) => {  // The name of the cookie  const COOKIE_NAME = "__uid";
+  // Get the specific cookie value using Hono's cookie helper  const cookieValue = getCookie(c, COOKIE_NAME);
+  if (cookieValue) {    // Respond with the cookie value    return c.text(cookieValue);  }
+  return c.text("No cookie with name: " + COOKIE_NAME);});
 export default app;
-
-
 ```
 
 External dependencies

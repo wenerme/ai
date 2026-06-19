@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waiting-room/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,16 +25,16 @@ Open the **Waiting Room** dashboard to view the list of your waiting rooms.
 The **Status** column displays the current state of the waiting room:
 
 * **Not queueing**:  
-   * Waiting room enabled, but has not reached traffic threshold to send visitors to waiting room.  
-   * Shows estimated number of users in the application.
+  * Waiting room enabled, but has not reached traffic threshold to send visitors to waiting room.
+  * Shows estimated number of users in the application.
 * **Queueing**:  
-   * Waiting room enabled and sending visitors to waiting room.  
-   * Shows estimated number of users in the queue.  
-   * On hover, shows maximum wait time expected for users.
+  * Waiting room enabled and sending visitors to waiting room.
+  * Shows estimated number of users in the queue.
+  * On hover, shows maximum wait time expected for users.
 * **Disabled**: The waiting room is suspended.
 * **Queue-all**:  
-   * Forces all traffic to queue in the waiting room.  
-   * On hover, shows estimated number of users in the queue.
+  * Forces all traffic to queue in the waiting room.
+  * On hover, shows estimated number of users in the queue.
 
 ## Status in the API
 
@@ -42,21 +42,14 @@ The **Status** column displays the current state of the waiting room:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Waiting Rooms Read`
 * `Waiting Rooms Write`
 
 Get waiting room status
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms/$WAITING_ROOM_ID/status" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms/$WAITING_ROOM_ID/status" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 The response is:
@@ -68,21 +61,14 @@ To check whether a configured waiting room is suspended or whether the traffic i
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Waiting Rooms Read`
 * `Waiting Rooms Write`
 
 Waiting room details
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms/$WAITING_ROOM_ID" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms/$WAITING_ROOM_ID" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 The endpoint above [fetches all settings](https://developers.cloudflare.com/api/resources/waiting%5Frooms/methods/get/) for a configured waiting room:
@@ -90,58 +76,7 @@ The endpoint above [fetches all settings](https://developers.cloudflare.com/api/
 Terminal window
 
 ```
-
-      "success": true,
-
-      "errors": [],
-
-      "messages": [],
-
-      "result": {
-
-        "id": "REDACTED",
-
-        "created_on": "2014-01-01T05:20:00.12345Z",
-
-        "modified_on": "2014-01-01T05:20:00.12345Z",
-
-        "name": "shop_waiting_room",
-
-        "description": "Waiting room for webshop",
-
-        "suspended": false,
-
-        "host": "shop.example.com",
-
-        "path": "/shop",
-
-        "queue_all": true,
-
-        "new_users_per_minute": 200,
-
-        "total_active_users": 300,
-
-        "session_duration": 1,
-
-        "disable_session_renewal": false,
-
-        "json_response_enabled": false,
-
-        "queueing_method": "random",
-
-        "cookie_attributes": {
-
-          "samesite": "auto",
-
-          "secure": "auto"
-
-        },
-
-        "custom_page_html": "{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Queue all enabled {{/waitTimeKnown}}"
-
-      }
-
-
+      "success": true,      "errors": [],      "messages": [],      "result": {        "id": "REDACTED",        "created_on": "2014-01-01T05:20:00.12345Z",        "modified_on": "2014-01-01T05:20:00.12345Z",        "name": "shop_waiting_room",        "description": "Waiting room for webshop",        "suspended": false,        "host": "shop.example.com",        "path": "/shop",        "queue_all": true,        "new_users_per_minute": 200,        "total_active_users": 300,        "session_duration": 1,        "disable_session_renewal": false,        "json_response_enabled": false,        "queueing_method": "random",        "cookie_attributes": {          "samesite": "auto",          "secure": "auto"        },        "custom_page_html": "{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Queue all enabled {{/waitTimeKnown}}"      }
 ```
 
 The value of `suspended` indicates whether a waiting room is activated or suspended:

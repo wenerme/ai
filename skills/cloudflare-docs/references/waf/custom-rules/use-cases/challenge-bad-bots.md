@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -62,7 +62,7 @@ The following three custom rules provide baseline protection against malicious b
 
 * **Expression**: `(cf.bot_management.verified_bot)`
 * **Action**: _Skip:_  
-   * _All remaining custom rules_
+  * _All remaining custom rules_
 * Known good bots (Googlebot, Bingbot, monitoring services) bypass all custom rules. Refer to the [verified bots list](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/) and [Radar bots directory ↗](https://radar.cloudflare.com/bots/directory).
 
 **Rule 2: Block definitely automated**
@@ -103,7 +103,7 @@ If you are handling requests from your own mobile application, you could potenti
 
 * **Expression**: `(cf.bot_management.ja3_hash eq "df669e7ea913f1ac0c0cce9a201a2ec1")`
 * **Action**: _Skip:_  
-   * _All remaining custom rules_
+  * _All remaining custom rules_
 
 Otherwise, you could set lower thresholds for mobile traffic. The following rules would block definitely automated mobile traffic and challenge likely automated traffic.
 

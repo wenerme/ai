@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,7 +32,7 @@ Note
 
 If you use [Wrangler](https://developers.cloudflare.com/workers/wrangler/) or the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/), `process.env.NODE_ENV` is statically replaced at build time and is not a runtime value. Refer to [Bundling](https://developers.cloudflare.com/workers/wrangler/bundling/#node%5Fenv) for more information.
 
-When [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled and the [nodejs\_compat\_populate\_process\_env](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#enable-auto-populating-processenv) compatibility flag is set (enabled by default for compatibility dates on or after 2025-04-01), `process.env` will contain any [environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/),[secrets](https://developers.cloudflare.com/workers/configuration/secrets/), or [version metadata](https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata/) metadata that has been configured on your Worker.
+When [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled and the [nodejs\_compat\_populate\_process\_env](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#enable-auto-populating-processenv) compatibility flag is set (enabled by default for compatibility dates on or after 2025-04-01), `process.env` will contain any [environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/), [secrets](https://developers.cloudflare.com/workers/configuration/secrets/), or [version metadata](https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata/) metadata that has been configured on your Worker.
 
 Setting any value on `process.env` will coerce that value into a string.
 
@@ -43,33 +43,8 @@ Instead of using `process.env`, you can [import env from cloudflare:workers](htt
 JavaScript
 
 ```
-
 import * as process from "node:process";
-
-
-export default {
-
-  fetch(req, env) {
-
-    // Set process.env.FOO to the value of env.FOO if process.env.FOO is not already set
-
-    // and env.FOO is a string.
-
-    process.env.FOO ??= (() => {
-
-      if (typeof env.FOO === "string") {
-
-        return env.FOO;
-
-      }
-
-    })();
-
-  },
-
-};
-
-
+export default {  fetch(req, env) {    // Set process.env.FOO to the value of env.FOO if process.env.FOO is not already set    // and env.FOO is a string.    process.env.FOO ??= (() => {      if (typeof env.FOO === "string") {        return env.FOO;      }    })();  },};
 ```
 
 It is strongly recommended that you _do not_ replace the entire `process.env` object with the cloudflare `env` object. Doing so will cause you to lose any environment variables that were set previously and will cause unexpected behavior for other Workers running in the same isolate. Specifically, it would cause inconsistency with the `process.env` object when accessed via named imports.
@@ -77,24 +52,9 @@ It is strongly recommended that you _do not_ replace the entire `process.env` ob
 JavaScript
 
 ```
-
-import * as process from "node:process";
-
-import { env } from "node:process";
-
-
-process.env === env; // true! they are the same object
-
-process.env = {}; // replace the object! Do not do this!
-
-process.env === env; // false! they are no longer the same object
-
-
-// From this point forward, any changes to process.env will not be reflected in env,
-
-// and vice versa!
-
-
+import * as process from "node:process";import { env } from "node:process";
+process.env === env; // true! they are the same objectprocess.env = {}; // replace the object! Do not do this!process.env === env; // false! they are no longer the same object
+// From this point forward, any changes to process.env will not be reflected in env,// and vice versa!
 ```
 
 ## `process.nextTick()`
@@ -104,27 +64,14 @@ The Workers implementation of `process.nextTick()` is a wrapper for the standard
 JavaScript
 
 ```
-
 import { env, nextTick } from "node:process";
-
-
-env["FOO"] = "bar";
-
-console.log(env["FOO"]); // Prints: bar
-
-
-nextTick(() => {
-
-  console.log("next tick");
-
-});
-
-
+env["FOO"] = "bar";console.log(env["FOO"]); // Prints: bar
+nextTick(() => {  console.log("next tick");});
 ```
 
 ## Stdio
 
-[process.stdout ↗](https://nodejs.org/docs/latest/api/process.html#processstdout), [process.stderr ↗](https://nodejs.org/docs/latest/api/process.html#processstderr) and [process.stdin ↗](https://nodejs.org/docs/latest/api/process.html#processstdin) are supported as streams. `stdin` is treated as an empty readable stream.`stdout` and `stderr` are non-TTY writable streams, which output to normal logging output only with `stdout: ` and `stderr: ` prefixing.
+[process.stdout ↗](https://nodejs.org/docs/latest/api/process.html#processstdout), [process.stderr ↗](https://nodejs.org/docs/latest/api/process.html#processstderr) and [process.stdin ↗](https://nodejs.org/docs/latest/api/process.html#processstdin) are supported as streams. `stdin` is treated as an empty readable stream. `stdout` and `stderr` are non-TTY writable streams, which output to normal logging output only with `stdout: ` and `stderr: ` prefixing.
 
 The line buffer works by storing writes to stdout or stderr until either a newline character `\n` is encountered or until the next microtask, when the log is then flushed to the output.
 

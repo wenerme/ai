@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/resource-tagging/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,14 +27,7 @@ Test the API to confirm tagging is active on your account:
 Terminal window
 
 ```
-
-curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/keys" \
-
-  -H "Authorization: Bearer $API_TOKEN" \
-
-  -H "Content-Type: application/json"
-
-
+curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/keys" \  -H "Authorization: Bearer $API_TOKEN" \  -H "Content-Type: application/json"
 ```
 
 ### Interpreting the response
@@ -54,30 +47,7 @@ Set tags on a resource using `PUT`:
 Terminal window
 
 ```
-
-curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags" \
-
-  -H "Authorization: Bearer $API_TOKEN" \
-
-  -H "Content-Type: application/json" \
-
-  -d '{
-
-    "resource_type": "worker",
-
-    "resource_id": "'"$RESOURCE_ID"'",
-
-    "tags": {
-
-      "environment": "production",
-
-      "team": "platform"
-
-    }
-
-  }'
-
-
+curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags" \  -H "Authorization: Bearer $API_TOKEN" \  -H "Content-Type: application/json" \  -d '{    "resource_type": "worker",    "resource_id": "'"$RESOURCE_ID"'",    "tags": {      "environment": "production",      "team": "platform"    }  }'
 ```
 
 Then retrieve the tags:
@@ -85,14 +55,7 @@ Then retrieve the tags:
 Terminal window
 
 ```
-
-curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags?resource_type=worker&resource_id=$RESOURCE_ID" \
-
-  -H "Authorization: Bearer $API_TOKEN" \
-
-  -H "Content-Type: application/json"
-
-
+curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags?resource_type=worker&resource_id=$RESOURCE_ID" \  -H "Authorization: Bearer $API_TOKEN" \  -H "Content-Type: application/json"
 ```
 
 ## 3\. List tagged resources
@@ -102,21 +65,8 @@ Query all tagged resources in the account, optionally filtering by tag:
 Terminal window
 
 ```
-
-# All tagged resources
-
-curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/resources" \
-
-  -H "Authorization: Bearer $API_TOKEN"
-
-
-# Filter: only resources with environment=production
-
-curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/resources?tag=environment=production" \
-
-  -H "Authorization: Bearer $API_TOKEN"
-
-
+# All tagged resourcescurl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/resources" \  -H "Authorization: Bearer $API_TOKEN"
+# Filter: only resources with environment=productioncurl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/resources?tag=environment=production" \  -H "Authorization: Bearer $API_TOKEN"
 ```
 
 ## Next steps

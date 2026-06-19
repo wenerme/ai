@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,23 +31,8 @@ If you are experiencing an issue with a particular Durable Object, you may wish 
 JavaScript
 
 ```
-
-// Create a new unique ID
-
-const id = env.MY_DURABLE_OBJECT.newUniqueId();
-
-// Convert the ID to a string to be saved elsewhere, e.g. a session cookie
-
-const session_id = id.toString();
-
-
-...
-
-// Recreate the ID from the string
-
-const id = env.MY_DURABLE_OBJECT.idFromString(session_id);
-
-
+// Create a new unique IDconst id = env.MY_DURABLE_OBJECT.newUniqueId();// Convert the ID to a string to be saved elsewhere, e.g. a session cookieconst session_id = id.toString();
+...// Recreate the ID from the stringconst id = env.MY_DURABLE_OBJECT.idFromString(session_id);
 ```
 
 #### Parameters
@@ -62,33 +47,19 @@ const id = env.MY_DURABLE_OBJECT.idFromString(session_id);
 
 `equals` is used to compare equality between two instances of `DurableObjectId`.
 
-* [  JavaScript ](#tab-panel-8189)
-* [  Python ](#tab-panel-8190)
+* [  JavaScript ](#tab-panel-8265)
+* [  Python ](#tab-panel-8266)
 
 JavaScript
 
 ```
-
-const id1 = env.MY_DURABLE_OBJECT.newUniqueId();
-
-const id2 = env.MY_DURABLE_OBJECT.newUniqueId();
-
-console.assert(!id1.equals(id2), "Different unique ids should never be equal.");
-
-
+const id1 = env.MY_DURABLE_OBJECT.newUniqueId();const id2 = env.MY_DURABLE_OBJECT.newUniqueId();console.assert(!id1.equals(id2), "Different unique ids should never be equal.");
 ```
 
 Python
 
 ```
-
-id1 = env.MY_DURABLE_OBJECT.newUniqueId()
-
-id2 = env.MY_DURABLE_OBJECT.newUniqueId()
-
-assert not id1.equals(id2), "Different unique ids should never be equal."
-
-
+id1 = env.MY_DURABLE_OBJECT.newUniqueId()id2 = env.MY_DURABLE_OBJECT.newUniqueId()assert not id1.equals(id2), "Different unique ids should never be equal."
 ```
 
 #### Parameters
@@ -117,127 +88,53 @@ Alarms
 
 Alarms created before 2026-03-15 do not have `name` stored. When such an alarm fires, `ctx.id.name` will be `undefined`, and any new alarm scheduled from that handler will also lack a `name`. To fix this, reschedule the alarm from a `fetch()` or RPC handler where `name` is available.
 
-* [  JavaScript ](#tab-panel-8191)
-* [  TypeScript ](#tab-panel-8192)
-* [  Python ](#tab-panel-8193)
+* [  JavaScript ](#tab-panel-8267)
+* [  TypeScript ](#tab-panel-8268)
+* [  Python ](#tab-panel-8269)
 
 JavaScript
 
 ```
-
-const uniqueId = env.MY_DURABLE_OBJECT.newUniqueId();
-
-const fromNameId = env.MY_DURABLE_OBJECT.idFromName("foo");
-
-console.assert(uniqueId.name === undefined, "unique ids have no name");
-
-console.assert(
-
-  fromNameId.name === "foo",
-
-  "name matches parameter to idFromName",
-
-);
-
-
+const uniqueId = env.MY_DURABLE_OBJECT.newUniqueId();const fromNameId = env.MY_DURABLE_OBJECT.idFromName("foo");console.assert(uniqueId.name === undefined, "unique ids have no name");console.assert(  fromNameId.name === "foo",  "name matches parameter to idFromName",);
 ```
 
 TypeScript
 
 ```
-
-const uniqueId: DurableObjectId = env.MY_DURABLE_OBJECT.newUniqueId();
-
-const fromNameId: DurableObjectId = env.MY_DURABLE_OBJECT.idFromName("foo");
-
-console.assert(uniqueId.name === undefined, "unique ids have no name");
-
-console.assert(
-
-  fromNameId.name === "foo",
-
-  "name matches parameter to idFromName",
-
-);
-
-
+const uniqueId: DurableObjectId = env.MY_DURABLE_OBJECT.newUniqueId();const fromNameId: DurableObjectId = env.MY_DURABLE_OBJECT.idFromName("foo");console.assert(uniqueId.name === undefined, "unique ids have no name");console.assert(  fromNameId.name === "foo",  "name matches parameter to idFromName",);
 ```
 
 Python
 
 ```
-
-unique_id = env.MY_DURABLE_OBJECT.newUniqueId()
-
-from_name_id = env.MY_DURABLE_OBJECT.idFromName("foo")
-
-assert unique_id.name is None, "unique ids have no name"
-
-assert from_name_id.name == "foo", "name matches parameter to idFromName"
-
-
+unique_id = env.MY_DURABLE_OBJECT.newUniqueId()from_name_id = env.MY_DURABLE_OBJECT.idFromName("foo")assert unique_id.name is None, "unique ids have no name"assert from_name_id.name == "foo", "name matches parameter to idFromName"
 ```
 
 The same `name` is available inside the Durable Object via `ctx.id.name`:
 
-* [  JavaScript ](#tab-panel-8194)
-* [  TypeScript ](#tab-panel-8195)
-* [  Python ](#tab-panel-8196)
+* [  JavaScript ](#tab-panel-8270)
+* [  TypeScript ](#tab-panel-8271)
+* [  Python ](#tab-panel-8272)
 
 JavaScript
 
 ```
-
 import { DurableObject } from "cloudflare:workers";
-
-
-export class ChatRoom extends DurableObject {
-
-  async getRoomName() {
-
-    return this.ctx.id.name; // "foo" when accessed via getByName("foo")
-
-  }
-
-}
-
-
+export class ChatRoom extends DurableObject {  async getRoomName() {    return this.ctx.id.name; // "foo" when accessed via getByName("foo")  }}
 ```
 
 TypeScript
 
 ```
-
 import { DurableObject } from "cloudflare:workers";
-
-
-export class ChatRoom extends DurableObject<Env> {
-
-  async getRoomName(): Promise<string | undefined> {
-
-    return this.ctx.id.name; // "foo" when accessed via getByName("foo")
-
-  }
-
-}
-
-
+export class ChatRoom extends DurableObject<Env> {  async getRoomName(): Promise<string | undefined> {    return this.ctx.id.name; // "foo" when accessed via getByName("foo")  }}
 ```
 
 Python
 
 ```
-
 from workers import DurableObject
-
-
-class ChatRoom(DurableObject):
-
-    async def get_room_name(self):
-
-        return self.ctx.id.name  # "foo" when accessed via get_by_name("foo")
-
-
+class ChatRoom(DurableObject):    async def get_room_name(self):        return self.ctx.id.name  # "foo" when accessed via get_by_name("foo")
 ```
 
 ### `jurisdiction`
@@ -255,37 +152,19 @@ class ChatRoom(DurableObject):
 * The Durable Object was not created in a jurisdiction-restricted namespace.
 * The Durable Object's alarm was scheduled before 2026-03-15\. To backfill the value, reschedule the alarm from a `fetch()` or RPC handler.
 
-* [  JavaScript ](#tab-panel-8197)
-* [  Python ](#tab-panel-8198)
+* [  JavaScript ](#tab-panel-8273)
+* [  Python ](#tab-panel-8274)
 
 JavaScript
 
 ```
-
-const plainId = env.MY_DURABLE_OBJECT.idFromName("foo");
-
-const euId = env.MY_DURABLE_OBJECT.jurisdiction("eu").idFromName("foo");
-
-console.assert(plainId.jurisdiction === undefined, "no jurisdiction set");
-
-console.assert(euId.jurisdiction === "eu", "jurisdiction matches namespace");
-
-
+const plainId = env.MY_DURABLE_OBJECT.idFromName("foo");const euId = env.MY_DURABLE_OBJECT.jurisdiction("eu").idFromName("foo");console.assert(plainId.jurisdiction === undefined, "no jurisdiction set");console.assert(euId.jurisdiction === "eu", "jurisdiction matches namespace");
 ```
 
 Python
 
 ```
-
-plain_id = env.MY_DURABLE_OBJECT.idFromName("foo")
-
-eu_id = env.MY_DURABLE_OBJECT.jurisdiction("eu").idFromName("foo")
-
-assert plain_id.jurisdiction is None, "no jurisdiction set"
-
-assert eu_id.jurisdiction == "eu", "jurisdiction matches namespace"
-
-
+plain_id = env.MY_DURABLE_OBJECT.idFromName("foo")eu_id = env.MY_DURABLE_OBJECT.jurisdiction("eu").idFromName("foo")assert plain_id.jurisdiction is None, "no jurisdiction set"assert eu_id.jurisdiction == "eu", "jurisdiction matches namespace"
 ```
 
 ## Related resources

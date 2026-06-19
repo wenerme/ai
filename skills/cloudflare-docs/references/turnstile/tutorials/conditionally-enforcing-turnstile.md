@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,79 +37,10 @@ This tutorial will modify the existing [Turnstile demo ↗](https://github.com/c
 src/index.mjs
 
 ```
-
-export default {
-
-  async fetch(request) {
-
-    // ...
-
-
-    if (request.headers.get("x-bypass-turnstile") === "VerySecretValue") {
-
-      class RemoveHandler {
-
-        element(element) {
-
-          element.remove();
-
-        }
-
-      }
-
-
-      return new HTMLRewriter()
-
-        // Remove the script tag
-
-        .on(
-
-          'script[src="https://challenges.cloudflare.com/turnstile/v0/api.js"]',
-
-          new RemoveHandler(),
-
-        )
-
-       // Remove the container used in implicit rendering
-
-        .on(
-
-          '.cf-turnstile',
-
-          new RemoveHandler(),
-
-        )
-
-       // Remove the container used in explicit rendering
-
-        .on(
-
-          '#myWidget',
-
-          new RemoveHandler(),
-
-        )
-
-        .transform(body);
-
-    }
-
-
-    return new Response(body, {
-
-      headers: {
-
-        "Content-Type": "text/html",
-
-      },
-
-    });
-
-  },
-
-};
-
-
+export default {  async fetch(request) {    // ...
+    if (request.headers.get("x-bypass-turnstile") === "VerySecretValue") {      class RemoveHandler {        element(element) {          element.remove();        }      }
+      return new HTMLRewriter()        // Remove the script tag        .on(          'script[src="https://challenges.cloudflare.com/turnstile/v0/api.js"]',          new RemoveHandler(),        )       // Remove the container used in implicit rendering        .on(          '.cf-turnstile',          new RemoveHandler(),        )       // Remove the container used in explicit rendering        .on(          '#myWidget',          new RemoveHandler(),        )        .transform(body);    }
+    return new Response(body, {      headers: {        "Content-Type": "text/html",      },    });  },};
 ```
 
 ## Server-side integration
@@ -123,30 +54,7 @@ The same logic must be used in both the client-side and the server-side implemen
 src/index.mjs
 
 ```
-
-async function handlePost(request) {
-
-  if (request.headers.get("x-bypass-turnstile") === "VerySecretValue") {
-
-    return new Response('Turnstile not enforced on this request')
-
-  }
-
-  // Proceed with validation as normal!
-
-  const body = await request.formData();
-
-  // Turnstile injects a token in "cf-turnstile-response".
-
-  const token = body.get('cf-turnstile-response');
-
-  const ip = request.headers.get('CF-Connecting-IP');
-
-  // ...
-
-}
-
-
+async function handlePost(request) {  if (request.headers.get("x-bypass-turnstile") === "VerySecretValue") {    return new Response('Turnstile not enforced on this request')  }  // Proceed with validation as normal!  const body = await request.formData();  // Turnstile injects a token in "cf-turnstile-response".  const token = body.get('cf-turnstile-response');  const ip = request.headers.get('CF-Connecting-IP');  // ...}
 ```
 
 With these changes, Turnstile will not be enforced on requests with the header `x-bypass-turnstile: VerySecretValue` present.
@@ -158,17 +66,11 @@ After running `npm run dev` in the project folder, you can test the changes by r
 Terminal window
 
 ```
-
 curl -X POST http://localhost:8787/handler -H "x-bypass-turnstile: VerySecretValue"
-
-
 ```
 
 ```
-
 Turnstile not enforced on this request
-
-
 ```
 
 ```json

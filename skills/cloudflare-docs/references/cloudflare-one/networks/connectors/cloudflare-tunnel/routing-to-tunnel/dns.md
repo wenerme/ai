@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,16 +20,17 @@ The `cfargotunnel.com` subdomain only proxies traffic for DNS records in the sam
 
 To create a DNS record for a Cloudflare Tunnel:
 
-* [ Dashboard ](#tab-panel-7295)
-* [ CLI ](#tab-panel-7296)
+* [ Dashboard ](#tab-panel-7371)
+* [ CLI ](#tab-panel-7372)
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **DNS Records** for your domain.  
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Select **Add record**.
-3. Enter the following values:  
-   * **Type**: _CNAME_  
-   * **Name**: Subdomain of your application  
-   * **Target**: `<UUID>.cfargotunnel.com`
+3. Enter the following values:
+
+  * **Type**: _CNAME_
+  * **Name**: Subdomain of your application
+  * **Target**: `<UUID>.cfargotunnel.com`
 4. Select **Save**.
 
 ![Example of fields completed to create a new CNAME record.](https://developers.cloudflare.com/_astro/dns-record.B25etJTI_Z1p13KV.webp)
@@ -39,10 +40,7 @@ For locally-managed tunnels, run the following command to create a CNAME record 
 Terminal window
 
 ```
-
 cloudflared tunnel route dns <UUID or NAME> www.app.com
-
-
 ```
 
 This creates a CNAME record but does not proxy traffic unless the tunnel is running.

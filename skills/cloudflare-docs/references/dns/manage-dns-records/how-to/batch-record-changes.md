@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -109,114 +109,7 @@ In this example, the `proxied` field for the first record listed under `"puts"` 
 Terminal window
 
 ```
-
-{
-
-    "deletes": [
-
-        {
-
-            "id": "2bff0ebc4df64beaa44b0dca93e37a28"
-
-        },
-
-        {
-
-            "id": "31d1d6e79ce04b8d93cbc5a13401d728"
-
-        }
-
-    ],
-
-    "patches": [
-
-        {
-
-            "id": "62276440f783445380480484648c1017",
-
-            "content": "192.0.2.46"
-
-        },
-
-        {
-
-            "id": "c942d948dc2343b9b97aed78479c9fb9",
-
-            "name": "update.example.com",
-
-            "proxied": true
-
-        }
-
-    ],
-
-    "puts": [
-
-        {
-
-            "id": "a50364543094428abde0f14061d42b0e",
-
-            "content": "192.0.2.50",
-
-            "name": "change.example.com",
-
-            "type": "A",
-
-            "ttl:": 1
-
-        },
-
-        {
-
-            "id": "3bce0920f19d43949498bd067b05dfa9",
-
-            "content": "192.0.2.45",
-
-            "name": "no-change.example.com",
-
-            "type": "A",
-
-            "proxied": false,
-
-            "ttl:": 3000
-
-        }
-
-    ],
-
-    "posts": [
-
-        {
-
-            "name": "@",
-
-            "type": "A",
-
-            "content": "192.0.2.41",
-
-            "proxied": false,
-
-            "ttl": 3000
-
-        },
-
-        {
-
-            "name": "a.example.com",
-
-            "type": "A",
-
-            "content": "192.0.2.42",
-
-            "proxied": true
-
-        }
-
-    ]
-
-}
-
-
+{    "deletes": [        {            "id": "2bff0ebc4df64beaa44b0dca93e37a28"        },        {            "id": "31d1d6e79ce04b8d93cbc5a13401d728"        }    ],    "patches": [        {            "id": "62276440f783445380480484648c1017",            "content": "192.0.2.46"        },        {            "id": "c942d948dc2343b9b97aed78479c9fb9",            "name": "update.example.com",            "proxied": true        }    ],    "puts": [        {            "id": "a50364543094428abde0f14061d42b0e",            "content": "192.0.2.50",            "name": "change.example.com",            "type": "A",            "ttl:": 1        },        {            "id": "3bce0920f19d43949498bd067b05dfa9",            "content": "192.0.2.45",            "name": "no-change.example.com",            "type": "A",            "proxied": false,            "ttl:": 3000        }    ],    "posts": [        {            "name": "@",            "type": "A",            "content": "192.0.2.41",            "proxied": false,            "ttl": 3000        },        {            "name": "a.example.com",            "type": "A",            "content": "192.0.2.42",            "proxied": true        }    ]}
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,7 +19,7 @@ Tunnel permissions determine who can run and manage a Cloudflare Tunnel. Two fil
 
 Refer to the table below for a comparison between the two files and the purposes for which they are intended.
 
-| Account certificate     | Tunnel credential                                                                                                                                                          |                                                                                                                                                                            |
+|                         | Account certificate                                                                                                                                                        | Tunnel credential                                                                                                                                                          |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **File name**           | cert.pem                                                                                                                                                                   | <TUNNEL-UUID>.json                                                                                                                                                         |
 | **Purpose**             | Authenticates your instance of cloudflared against your Cloudflare account                                                                                                 | Authenticates the tunnel it is associated with                                                                                                                             |

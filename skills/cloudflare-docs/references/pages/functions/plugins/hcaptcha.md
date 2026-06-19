@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -39,38 +39,11 @@ bun add @cloudflare/pages-plugin-hcaptcha
 TypeScript
 
 ```
-
 import hCaptchaPlugin from "@cloudflare/pages-plugin-hcaptcha";
-
-
-export const onRequestPost: PagesFunction[] = [
-
-  hCaptchaPlugin({
-
-    secret: "0x0000000000000000000000000000000000000000",
-
-    sitekey: "10000000-ffff-ffff-ffff-000000000001",
-
-  }),
-
-  async (context) => {
-
-    // Request has been validated as coming from a human
-
-
+export const onRequestPost: PagesFunction[] = [  hCaptchaPlugin({    secret: "0x0000000000000000000000000000000000000000",    sitekey: "10000000-ffff-ffff-ffff-000000000001",  }),  async (context) => {    // Request has been validated as coming from a human
     const formData = await context.request.formData();
-
-
     // Store user credentials
-
-
-    return new Response("Successfully registered!");
-
-  },
-
-];
-
-
+    return new Response("Successfully registered!");  },];
 ```
 
 This Plugin only exposes a single route. It will be available wherever it is mounted. In the above example, because it is mounted in `functions/register.ts`, it will validate requests to `/register`. The Plugin is mounted with a single object parameter with the following properties.

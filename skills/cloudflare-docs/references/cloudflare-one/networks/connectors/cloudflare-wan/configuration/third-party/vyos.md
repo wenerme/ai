@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,89 +28,31 @@ This tutorial provides configuration information and a sample template for using
 
 ### Phase 1
 
-* **Encryption**  
-   * AES-GCM with 128-bit or 256-bit key length
-* **Integrity**  
-   * SHA512
+* **Encryption**
+
+  * AES-GCM with 128-bit or 256-bit key length
+* **Integrity**
+
+  * SHA512
 
 ### Phase 2
 
-* **Encryption**  
-   * AES-GCM with 128-bit or 256-bit key length
-* **Integrity**  
-   * SHA512
-* **PFS group**  
-   * DH group 20 (348-bit random ECP group)
+* **Encryption**
+
+  * AES-GCM with 128-bit or 256-bit key length
+* **Integrity**
+
+  * SHA512
+* **PFS group**
+
+  * DH group 20 (348-bit random ECP group)
 
 ## Configuration template
 
 Terminal window
 
 ```
-
-set interfaces vti <name of the vti interface> address
-
-'<PRIVATE_IP_ADDRESS_OF_IPSEC_TUNNEL_INTERFACE>'
-
-set vpn ipsec esp-group <NAME_OF_ESP_GROUP> compression 'disable'
-
-set vpn ipsec esp-group <NAME_OF_ESP_GROUP> lifetime '86400'
-
-set vpn ipsec esp-group <NAME_OF_ESP_GROUP> mode 'tunnel'
-
-set vpn ipsec esp-group <NAME_OF_ESP_GROUP> pfs 'enable'
-
-set vpn ipsec esp-group <NAME_OF_ESP_GROUP> proposal 1 encryption 'aes256gcm128'
-
-set vpn ipsec esp-group <NAME_OF_ESP_GROUP> proposal 1 hash 'sha512'
-
-set vpn ipsec ike-group <NAME_OF_IKE_GROUP> close-action 'none'
-
-set vpn ipsec ike-group <NAME_OF_IKE_GROUP> dead-peer-detection action 'restart'
-
-set vpn ipsec ike-group <NAME_OF_IKE_GROUP> dead-peer-detection interval '30'
-
-set vpn ipsec ike-group <NAME_OF_IKE_GROUP> dead-peer-detection timeout '120'
-
-set vpn ipsec ike-group <NAME_OF_IKE_GROUP> ikev2-reauth 'no'
-
-set vpn ipsec ike-group <NAME_OF_IKE_GROUP> key-exchange 'ikev2'
-
-set vpn ipsec ike-group <NAME_OF_IKE_GROUP> lifetime '28800'
-
-set vpn ipsec ike-group <NAME_OF_IKE_GROUP> mobike 'disable'
-
-set vpn ipsec ike-group <NAME_OF_IKE_GROUP> proposal 1 dh-group '20'
-
-set vpn ipsec ike-group <NAME_OF_IKE_GROUP> proposal 1 encryption 'aes256gcm128'
-
-set vpn ipsec ike-group <NAME_OF_IKE_GROUP> proposal 1 hash 'sha512'
-
-set vpn ipsec ipsec-interfaces interface '<UPLINK_INTF_TO_INTERNET/WAN>'
-
-set vpn ipsec logging log-level '2'
-
-set vpn ipsec options disable-route-autoinstall
-
-set vpn ipsec site-to-site peer <CF_ANYCAST_IP> authentication id '<IPSEC_ID_STRING_IN_RESULT_OF_PSK_KEY-GEN_VIA_CF_API>'
-
-set vpn ipsec site-to-site peer <CF_ANYCAST_IP> authentication pre-shared-secret '<PSK_KEY_STRING_GENERATED_VIA_CF_API>'
-
-set vpn ipsec site-to-site peer <CF_ANYCAST_IP> authentication remote-id '<CF_ANYCAST_IP>'
-
-set vpn ipsec site-to-site peer <CF_ANYCAST_IP> connection-type 'initiate'
-
-set vpn ipsec site-to-site peer <CF_ANYCAST_IP> ike-group '<NAME_OF_IKE_GROUP>'
-
-set vpn ipsec site-to-site peer <CF_ANYCAST_IP> ikev2-reauth 'no'
-
-set vpn ipsec site-to-site peer <CF_ANYCAST_IP> local-address '<IP_ADDR_OF_UPLINK_INTF_TO_INTERNET/WAN>'
-
-set vpn ipsec site-to-site peer <CF_ANYCAST_IP> vti bind '<NAME_OF_VTI_INTERFACE>'
-
-set vpn ipsec site-to-site peer <CF_ANYCAST_IP> vti esp-group '<NAME_OF_ESP_GROUP>'
-
-
+set interfaces vti <name of the vti interface> address'<PRIVATE_IP_ADDRESS_OF_IPSEC_TUNNEL_INTERFACE>'set vpn ipsec esp-group <NAME_OF_ESP_GROUP> compression 'disable'set vpn ipsec esp-group <NAME_OF_ESP_GROUP> lifetime '86400'set vpn ipsec esp-group <NAME_OF_ESP_GROUP> mode 'tunnel'set vpn ipsec esp-group <NAME_OF_ESP_GROUP> pfs 'enable'set vpn ipsec esp-group <NAME_OF_ESP_GROUP> proposal 1 encryption 'aes256gcm128'set vpn ipsec esp-group <NAME_OF_ESP_GROUP> proposal 1 hash 'sha512'set vpn ipsec ike-group <NAME_OF_IKE_GROUP> close-action 'none'set vpn ipsec ike-group <NAME_OF_IKE_GROUP> dead-peer-detection action 'restart'set vpn ipsec ike-group <NAME_OF_IKE_GROUP> dead-peer-detection interval '30'set vpn ipsec ike-group <NAME_OF_IKE_GROUP> dead-peer-detection timeout '120'set vpn ipsec ike-group <NAME_OF_IKE_GROUP> ikev2-reauth 'no'set vpn ipsec ike-group <NAME_OF_IKE_GROUP> key-exchange 'ikev2'set vpn ipsec ike-group <NAME_OF_IKE_GROUP> lifetime '28800'set vpn ipsec ike-group <NAME_OF_IKE_GROUP> mobike 'disable'set vpn ipsec ike-group <NAME_OF_IKE_GROUP> proposal 1 dh-group '20'set vpn ipsec ike-group <NAME_OF_IKE_GROUP> proposal 1 encryption 'aes256gcm128'set vpn ipsec ike-group <NAME_OF_IKE_GROUP> proposal 1 hash 'sha512'set vpn ipsec ipsec-interfaces interface '<UPLINK_INTF_TO_INTERNET/WAN>'set vpn ipsec logging log-level '2'set vpn ipsec options disable-route-autoinstallset vpn ipsec site-to-site peer <CF_ANYCAST_IP> authentication id '<IPSEC_ID_STRING_IN_RESULT_OF_PSK_KEY-GEN_VIA_CF_API>'set vpn ipsec site-to-site peer <CF_ANYCAST_IP> authentication pre-shared-secret '<PSK_KEY_STRING_GENERATED_VIA_CF_API>'set vpn ipsec site-to-site peer <CF_ANYCAST_IP> authentication remote-id '<CF_ANYCAST_IP>'set vpn ipsec site-to-site peer <CF_ANYCAST_IP> connection-type 'initiate'set vpn ipsec site-to-site peer <CF_ANYCAST_IP> ike-group '<NAME_OF_IKE_GROUP>'set vpn ipsec site-to-site peer <CF_ANYCAST_IP> ikev2-reauth 'no'set vpn ipsec site-to-site peer <CF_ANYCAST_IP> local-address '<IP_ADDR_OF_UPLINK_INTF_TO_INTERNET/WAN>'set vpn ipsec site-to-site peer <CF_ANYCAST_IP> vti bind '<NAME_OF_VTI_INTERFACE>'set vpn ipsec site-to-site peer <CF_ANYCAST_IP> vti esp-group '<NAME_OF_ESP_GROUP>'
 ```
 
 ```json

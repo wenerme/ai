@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -34,7 +34,7 @@ There are [multiple ways](https://developers.cloudflare.com/reference-architectu
 
 ## Comparison table
 
-| Cloudflare Mesh       | Cloudflare Tunnel                                                      |                                                                                                                                                                                                                                                   |
+|                       | Cloudflare Mesh                                                        | Cloudflare Tunnel                                                                                                                                                                                                                                 |
 | --------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Bidirectional traffic | ✅                                                                      | ❌                                                                                                                                                                                                                                                 |
 | High availability     | ✅ (active-passive)                                                     | ✅ (active-active replicas)                                                                                                                                                                                                                        |

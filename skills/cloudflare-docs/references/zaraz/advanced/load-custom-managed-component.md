@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,39 +29,10 @@ In this guide, we will use a simple example of a Custom Managed Component that c
 JavaScript
 
 ```
-
-// File: index.js
-
-export default async function (manager) {
-
-  // Add a pageview event
-
-  manager.addEventListener("pageview", event, () => {
-
-    const { client } = event;
-
-
-    // Get the variable "counter" from the client's cookies and increase by 1
-
-    let counter = parseInt(client.get("counter")) || 0;
-
-    counter += 1;
-
-
-    // Log the increased number
-
-    client.execute(`console.log('Views: ${counter}')`);
-
-
-    // Store the increased number for the next visit
-
-    client.set("counter", counter);
-
-  });
-
-}
-
-
+// File: index.jsexport default async function (manager) {  // Add a pageview event  manager.addEventListener("pageview", event, () => {    const { client } = event;
+    // Get the variable "counter" from the client's cookies and increase by 1    let counter = parseInt(client.get("counter")) || 0;    counter += 1;
+    // Log the increased number    client.execute(`console.log('Views: ${counter}')`);
+    // Store the increased number for the next visit    client.set("counter", counter);  });}
 ```
 
 ## Deploy a Managed Component to Cloudflare

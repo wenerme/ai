@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-vpc/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -36,17 +36,17 @@ Reach the full account through `cf1:network`
 
 [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) 
 
-Reach destinations through GRE, IPsec, or CNI on-ramps
+Reach destinations through GRE, IPsec, or CNI on-ramps 
 
 [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) 
 
-Mesh and WAN traffic flows through Gateway, with policies enforced and traffic [logged](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/).
+Mesh and WAN traffic flows through Gateway, with policies enforced and traffic [logged](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/). 
 
 [ DNS ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/)[ HTTP ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/)[ Network ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) 
 
 Private services 
 
-APIs, databases, hosts in your network — reachable via any on-ramp
+APIs, databases, hosts in your network — reachable via any on-ramp 
 
 Public Internet 
 
@@ -56,74 +56,20 @@ Note
 
 Workers VPC is currently in beta. Features and APIs may change before general availability. While in beta, Workers VPC is available for free to all Workers plans.
 
-* [ index.ts ](#tab-panel-11331)
-* [ wrangler.jsonc ](#tab-panel-11332)
+* [ index.ts ](#tab-panel-11348)
+* [ wrangler.jsonc ](#tab-panel-11349)
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    // Access your private API through the service binding
-
-    const response = await env.PRIVATE_API.fetch(
-
-      "http://internal-api.company.local/data",
-
-    );
-
-
-      // Process the response from your private network
-
-      const data = await response.json();
-
-
-      return new Response(JSON.stringify(data), {
-
-        headers: { "content-type": "application/json" },
-
-      });
-
-    },
-
-
+export default {  async fetch(request, env, ctx) {    // Access your private API through the service binding    const response = await env.PRIVATE_API.fetch(      "http://internal-api.company.local/data",    );
+      // Process the response from your private network      const data = await response.json();
+      return new Response(JSON.stringify(data), {        headers: { "content-type": "application/json" },      });    },
 };
-
-
 ```
 
 ```
-
-  {
-
-    "$schema": "node_modules/wrangler/config-schema.json",
-
-    "name": "WORKER-NAME",
-
-    "main": "src/index.ts",
-
-    "compatibility_date": "2025-02-04",
-
-    "vpc_services": [
-
-      {
-
-        "binding": "PRIVATE_API",
-
-        "service_id": "ENTER_SERVICE_ID",
-
-        "remote": true
-
-      }
-
-    ]
-
-  }
-
-
+  {    "$schema": "node_modules/wrangler/config-schema.json",    "name": "WORKER-NAME",    "main": "src/index.ts",    "compatibility_date": "2025-02-04",    "vpc_services": [      {        "binding": "PRIVATE_API",        "service_id": "ENTER_SERVICE_ID",        "remote": true      }    ]  }
 ```
 
 ## Use cases

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -46,74 +46,22 @@ The current version is [@cloudflare/puppeteer v1.1.0 ↗](https://github.com/clo
 
 Once the [browser binding](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings) is configured and the `@cloudflare/puppeteer` library is installed, Puppeteer can be used in a Worker:
 
-* [  JavaScript ](#tab-panel-6896)
-* [  TypeScript ](#tab-panel-6897)
+* [  JavaScript ](#tab-panel-6972)
+* [  TypeScript ](#tab-panel-6973)
 
 JavaScript
 
 ```
-
 import puppeteer from "@cloudflare/puppeteer";
-
-
-export default {
-
-  async fetch(request, env) {
-
-    const browser = await puppeteer.launch(env.MYBROWSER);
-
-    const page = await browser.newPage();
-
-    await page.goto("https://example.com");
-
-    const metrics = await page.metrics();
-
-    await browser.close();
-
-    return Response.json(metrics);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const browser = await puppeteer.launch(env.MYBROWSER);    const page = await browser.newPage();    await page.goto("https://example.com");    const metrics = await page.metrics();    await browser.close();    return Response.json(metrics);  },};
 ```
 
 TypeScript
 
 ```
-
 import puppeteer from "@cloudflare/puppeteer";
-
-
-interface Env {
-
-  MYBROWSER: Fetcher;
-
-}
-
-
-export default {
-
-  async fetch(request, env): Promise<Response> {
-
-    const browser = await puppeteer.launch(env.MYBROWSER);
-
-    const page = await browser.newPage();
-
-    await page.goto("https://example.com");
-
-    const metrics = await page.metrics();
-
-    await browser.close();
-
-    return Response.json(metrics);
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+interface Env {  MYBROWSER: Fetcher;}
+export default {  async fetch(request, env): Promise<Response> {    const browser = await puppeteer.launch(env.MYBROWSER);    const page = await browser.newPage();    await page.goto("https://example.com");    const metrics = await page.metrics();    await browser.close();    return Response.json(metrics);  },} satisfies ExportedHandler<Env>;
 ```
 
 This script [launches ↗](https://pptr.dev/api/puppeteer.puppeteernode.launch) the `env.MYBROWSER` browser, opens a [new page ↗](https://pptr.dev/api/puppeteer.browser.newpage), [goes to ↗](https://pptr.dev/api/puppeteer.page.goto) [https://example.com/ ↗](https://example.com/), gets the page load [metrics ↗](https://pptr.dev/api/puppeteer.page.metrics), [closes ↗](https://pptr.dev/api/puppeteer.browser.close) the browser and prints metrics in JSON.
@@ -125,10 +73,7 @@ If users omit the `browser.close()` statement, it will stay open, ready to be co
 JavaScript
 
 ```
-
 const browser = await puppeteer.launch(env.MYBROWSER, { keep_alive: 600000 });
-
-
 ```
 
 Using the above, the browser will stay open for up to 10 minutes, even if inactive.
@@ -144,14 +89,7 @@ To specify a custom user agent in Puppeteer, use the `page.setUserAgent()` metho
 JavaScript
 
 ```
-
-await page.setUserAgent(
-
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
-
-);
-
-
+await page.setUserAgent(  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",);
 ```
 
 Note
@@ -165,10 +103,7 @@ When developing locally with `wrangler dev` or `vite dev`, Chrome runs in headle
 Terminal window
 
 ```
-
 X_BROWSER_HEADFUL=true npx wrangler dev
-
-
 ```
 
 Or with the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/):
@@ -176,10 +111,7 @@ Or with the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/v
 Terminal window
 
 ```
-
 X_BROWSER_HEADFUL=true npx vite dev
-
-
 ```
 
 This opens a browser window so you can watch your Puppeteer automation in real time, making it easier to debug navigation, element selection, and page interactions.
@@ -193,28 +125,7 @@ Instead of using Xpath selectors, you can use CSS selectors or `page.evaluate()`
 TypeScript
 
 ```
-
-const innerHtml = await page.evaluate(() => {
-
-  return (
-
-    // @ts-ignore this runs on browser context
-
-    new XPathEvaluator()
-
-      .createExpression("/html/body/div/h1")
-
-      // @ts-ignore this runs on browser context
-
-      .evaluate(document, XPathResult.FIRST_ORDERED_NODE_TYPE).singleNodeValue
-
-      .innerHTML
-
-  );
-
-});
-
-
+const innerHtml = await page.evaluate(() => {  return (    // @ts-ignore this runs on browser context    new XPathEvaluator()      .createExpression("/html/body/div/h1")      // @ts-ignore this runs on browser context      .evaluate(document, XPathResult.FIRST_ORDERED_NODE_TYPE).singleNodeValue      .innerHTML  );});
 ```
 
 Note
@@ -230,32 +141,7 @@ In order to facilitate browser session management, we've added new methods to `p
 `puppeteer.sessions()` lists the current running sessions. It will return an output similar to this:
 
 ```
-
-[
-
-  {
-
-    "connectionId": "2a2246fa-e234-4dc1-8433-87e6cee80145",
-
-    "connectionStartTime": 1711621704607,
-
-    "sessionId": "478f4d7d-e943-40f6-a414-837d3736a1dc",
-
-    "startTime": 1711621703708
-
-  },
-
-  {
-
-    "sessionId": "565e05fb-4d2a-402b-869b-5b65b1381db7",
-
-    "startTime": 1711621703808
-
-  }
-
-]
-
-
+[  {    "connectionId": "2a2246fa-e234-4dc1-8433-87e6cee80145",    "connectionStartTime": 1711621704607,    "sessionId": "478f4d7d-e943-40f6-a414-837d3736a1dc",    "startTime": 1711621703708  },  {    "sessionId": "565e05fb-4d2a-402b-869b-5b65b1381db7",    "startTime": 1711621703808  }]
 ```
 
 Notice that the session `478f4d7d-e943-40f6-a414-837d3736a1dc` has an active worker connection (`connectionId=2a2246fa-e234-4dc1-8433-87e6cee80145`), while session `565e05fb-4d2a-402b-869b-5b65b1381db7` is free. While a connection is active, no other workers may connect to that session.
@@ -265,40 +151,7 @@ Notice that the session `478f4d7d-e943-40f6-a414-837d3736a1dc` has an active wor
 `puppeteer.history()` lists recent sessions, both open and closed. It's useful to get a sense of your current usage.
 
 ```
-
-[
-
-  {
-
-    "closeReason": 2,
-
-    "closeReasonText": "BrowserIdle",
-
-    "endTime": 1711621769485,
-
-    "sessionId": "478f4d7d-e943-40f6-a414-837d3736a1dc",
-
-    "startTime": 1711621703708
-
-  },
-
-  {
-
-    "closeReason": 1,
-
-    "closeReasonText": "NormalClosure",
-
-    "endTime": 1711123501771,
-
-    "sessionId": "2be00a21-9fb6-4bb2-9861-8cd48e40e771",
-
-    "startTime": 1711123430918
-
-  }
-
-]
-
-
+[  {    "closeReason": 2,    "closeReasonText": "BrowserIdle",    "endTime": 1711621769485,    "sessionId": "478f4d7d-e943-40f6-a414-837d3736a1dc",    "startTime": 1711621703708  },  {    "closeReason": 1,    "closeReasonText": "NormalClosure",    "endTime": 1711123501771,    "sessionId": "2be00a21-9fb6-4bb2-9861-8cd48e40e771",    "startTime": 1711123430918  }]
 ```
 
 Session `2be00a21-9fb6-4bb2-9861-8cd48e40e771` was closed explicitly with `browser.close()` by the client, while session `478f4d7d-e943-40f6-a414-837d3736a1dc` was closed due to reaching the maximum idle time (check [limits](https://developers.cloudflare.com/browser-run/limits/)).
@@ -310,26 +163,7 @@ You should also be able to access this information in the dashboard, albeit with
 `puppeteer.limits()` lists your active limits:
 
 ```
-
-{
-
-  "activeSessions": [
-
-    { "id": "478f4d7d-e943-40f6-a414-837d3736a1dc" },
-
-    { "id": "565e05fb-4d2a-402b-869b-5b65b1381db7" }
-
-  ],
-
-  "allowedBrowserAcquisitions": 1,
-
-  "maxConcurrentSessions": 2,
-
-  "timeUntilNextAllowedBrowserAcquisition": 0
-
-}
-
-
+{  "activeSessions": [    { "id": "478f4d7d-e943-40f6-a414-837d3736a1dc" },    { "id": "565e05fb-4d2a-402b-869b-5b65b1381db7" }  ],  "allowedBrowserAcquisitions": 1,  "maxConcurrentSessions": 2,  "timeUntilNextAllowedBrowserAcquisition": 0}
 ```
 
 * `activeSessions` lists the IDs of the current open sessions

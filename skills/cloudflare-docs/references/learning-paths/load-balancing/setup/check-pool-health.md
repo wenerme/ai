@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 Before directing any traffic to your pools, make sure that your pools and monitors are set up correctly. The status of your health check will be _unknown_ until the results of the first check are available.
 
-* [ Dashboard ](#tab-panel-9067)
-* [ API ](#tab-panel-9068)
+* [ Dashboard ](#tab-panel-9143)
+* [ API ](#tab-panel-9144)
 
 To confirm pool health using the dashboard:
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -823,9 +823,9 @@ Deprecation date: July 1, 2022
 
 This endpoint is deprecated in favor of using v2, which allows you to control metadata, define an access policy, and get the image ID.
 
-Deprecated API:`POST accounts/:account_identifier/images/v1/direct_upload`
+Deprecated API: `POST accounts/:account_identifier/images/v1/direct_upload`
 
-Replacement:`POST accounts/:account_identifier/images/v2/direct_upload`
+Replacement: `POST accounts/:account_identifier/images/v2/direct_upload`
 
 ## 2021-03-01
 

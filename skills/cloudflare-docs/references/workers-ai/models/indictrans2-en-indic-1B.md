@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,102 +26,35 @@ IndicTrans2 is the first open-source transformer-based multilingual NMT model th
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4883)
-* [  Python ](#tab-panel-4884)
-* [  curl ](#tab-panel-4885)
+* [  TypeScript ](#tab-panel-4957)
+* [  Python ](#tab-panel-4958)
+* [  curl ](#tab-panel-4959)
 
 ```
-
-export interface Env {
-
-  AI: Ai;
-
-}
-
-
-export default {
-
-  async fetch(request, env): Promise<Response> {
-
-
-    const response = await env.AI.run(
-
-      "@cf/ai4bharat/indictrans2-en-indic-1B",
-
-      {
-
-        text: "I'll have an order of the moule frites",
-
-        source_lang: "english", // defaults to english
-
-        target_lang: "french",
-
-      }
-
-    );
-
-
-    return new Response(JSON.stringify(response));
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export interface Env {  AI: Ai;}
+export default {  async fetch(request, env): Promise<Response> {
+    const response = await env.AI.run(      "@cf/ai4bharat/indictrans2-en-indic-1B",      {        text: "I'll have an order of the moule frites",        source_lang: "english", // defaults to english        target_lang: "french",      }    );
+    return new Response(JSON.stringify(response));  },} satisfies ExportedHandler<Env>;
 ```
 
 ```
-
 import requests
-
-
-API_BASE_URL = "https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/"
-
-headers = {"Authorization": "Bearer {API_TOKEN}"}
-
-
-def run(model, input):
-
-    response = requests.post(f"{API_BASE_URL}{model}", headers=headers, json=input)
-
-    return response.json()
-
-
-output = run('@cf/ai4bharat/indictrans2-en-indic-1B', {
-
-  "text": "I'll have an order of the moule frites",
-
-  "source_lang": "english",
-
-  "target_lang": "french"
-
-})
-
-
+API_BASE_URL = "https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/"headers = {"Authorization": "Bearer {API_TOKEN}"}
+def run(model, input):    response = requests.post(f"{API_BASE_URL}{model}", headers=headers, json=input)    return response.json()
+output = run('@cf/ai4bharat/indictrans2-en-indic-1B', {  "text": "I'll have an order of the moule frites",  "source_lang": "english",  "target_lang": "french"})
 print(output)
-
-
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/ai4bharat/indictrans2-en-indic-1B  \
-
-    -X POST  \
-
-    -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
-
-    -d '{ "text": "Ill have an order of the moule frites", "source_lang": "english", "target_lang": "french" }'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/ai4bharat/indictrans2-en-indic-1B  \    -X POST  \    -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \    -d '{ "text": "Ill have an order of the moule frites", "source_lang": "english", "target_lang": "french" }'
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-4886)
-* [ Output ](#tab-panel-4887)
+* [ Input ](#tab-panel-4960)
+* [ Output ](#tab-panel-4961)
 
 ▶text
 
@@ -139,7 +72,7 @@ target\_language
 
 Input [ ](https://developers.cloudflare.com/workers-ai/models/indictrans2-en-indic-1B/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/indictrans2-en-indic-1B/schema-input.json "Download") 
 
-Output [ ](https://developers.cloudflare.com/workers-ai/models/indictrans2-en-indic-1B/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/indictrans2-en-indic-1B/schema-output.json "Download") 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/indictrans2-en-indic-1B/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/indictrans2-en-indic-1B/schema-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/indictrans2-en-indic-1B/#page","headline":"indictrans2-en-indic-1B (ai4bharat) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"IndicTrans2 is the first open-source transformer-based multilingual NMT model that supports high-quality translations across all the 22 scheduled Indic languages","url":"https://developers.cloudflare.com/workers-ai/models/indictrans2-en-indic-1B/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

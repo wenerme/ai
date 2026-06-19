@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,7 +18,7 @@ The [env.AI.autorag() binding](https://developers.cloudflare.com/ai-search/api/m
 
 Here is a summary of the key differences between the legacy and new bindings:
 
-| Legacy              | New                    |                                                |
+|                     | Legacy                 | New                                            |
 | ------------------- | ---------------------- | ---------------------------------------------- |
 | **Wrangler config** | ai binding             | ai\_search or ai\_search\_namespaces binding   |
 | **Access pattern**  | env.AI.autorag("name") | env.MY\_INSTANCE or env.AI\_SEARCH.get("name") |
@@ -34,26 +34,7 @@ AI Search provides two new bindings:
 JSONC
 
 ```
-
-// wrangler.jsonc
-
-{
-
-  "ai_search": [
-
-    {
-
-      "binding": "MY_SEARCH",
-
-      "instance_name": "my-instance",
-
-    },
-
-  ],
-
-}
-
-
+// wrangler.jsonc{  "ai_search": [    {      "binding": "MY_SEARCH",      "instance_name": "my-instance",    },  ],}
 ```
 
 **Namespace binding (`ai_search_namespaces`)** gives you access to all instances within a namespace. Use this if you need dynamic instance management, cross-instance search, or the Items API.
@@ -61,26 +42,7 @@ JSONC
 JSONC
 
 ```
-
-// wrangler.jsonc
-
-{
-
-  "ai_search_namespaces": [
-
-    {
-
-      "binding": "AI_SEARCH",
-
-      "namespace": "default",
-
-    },
-
-  ],
-
-}
-
-
+// wrangler.jsonc{  "ai_search_namespaces": [    {      "binding": "AI_SEARCH",      "namespace": "default",    },  ],}
 ```
 
 For more details on the difference, refer to [Namespaces](https://developers.cloudflare.com/ai-search/concepts/namespaces/).
@@ -100,85 +62,37 @@ Existing instances are in the default namespace. For a simple upgrade path, use 
 
 **Before:**
 
-* [  wrangler.jsonc ](#tab-panel-6602)
-* [  wrangler.toml ](#tab-panel-6603)
+* [  wrangler.jsonc ](#tab-panel-6678)
+* [  wrangler.toml ](#tab-panel-6679)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "ai": {
-
-    "binding": "AI"
-
-  }
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "ai": {    "binding": "AI"  }}
 ```
 
 TOML
 
 ```
-
-[ai]
-
-binding = "AI"
-
-
+[ai]binding = "AI"
 ```
 
 **After:**
 
-* [  wrangler.jsonc ](#tab-panel-6604)
-* [  wrangler.toml ](#tab-panel-6605)
+* [  wrangler.jsonc ](#tab-panel-6680)
+* [  wrangler.toml ](#tab-panel-6681)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "compatibility_date": "2026-03-27",
-
-  "ai_search": [
-
-    {
-
-      "binding": "MY_INSTANCE",
-
-      "instance_name": "my-instance"
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "compatibility_date": "2026-03-27",  "ai_search": [    {      "binding": "MY_INSTANCE",      "instance_name": "my-instance"    }  ]}
 ```
 
 TOML
 
 ```
-
 compatibility_date = "2026-03-27"
-
-
-[[ai_search]]
-
-binding = "MY_INSTANCE"
-
-instance_name = "my-instance"
-
-
+[[ai_search]]binding = "MY_INSTANCE"instance_name = "my-instance"
 ```
 
 ## Step 2: Update the type definition
@@ -190,14 +104,7 @@ Update the `Env` interface to use the new binding type.
 TypeScript
 
 ```
-
-export interface Env {
-
-  AI: Ai;
-
-}
-
-
+export interface Env {  AI: Ai;}
 ```
 
 **After:**
@@ -205,14 +112,7 @@ export interface Env {
 TypeScript
 
 ```
-
-export interface Env {
-
-  MY_INSTANCE: AiSearchInstance;
-
-}
-
-
+export interface Env {  MY_INSTANCE: AiSearchInstance;}
 ```
 
 ## Step 3: Update search calls
@@ -224,14 +124,7 @@ Replace `env.AI.autorag()` calls with the new binding.
 TypeScript
 
 ```
-
-const result = await env.AI.autorag("my-instance").search({
-
-  query: "What is Cloudflare?",
-
-});
-
-
+const result = await env.AI.autorag("my-instance").search({  query: "What is Cloudflare?",});
 ```
 
 **After:**
@@ -239,14 +132,7 @@ const result = await env.AI.autorag("my-instance").search({
 TypeScript
 
 ```
-
-const result = await env.MY_INSTANCE.search({
-
-  messages: [{ role: "user", content: "What is Cloudflare?" }],
-
-});
-
-
+const result = await env.MY_INSTANCE.search({  messages: [{ role: "user", content: "What is Cloudflare?" }],});
 ```
 
 ## Step 4: Update response handling
@@ -282,8 +168,8 @@ The new binding uses Vectorize-style metadata filtering. Filters are now passed 
 | gte        | $gte              |
 | lt         | $lt               |
 | lte        | $lte              |
-| $in (new)  |                   |
-| $nin (new) |                   |
+|            | $in (new)         |
+|            | $nin (new)        |
 
 ### Examples
 
@@ -296,24 +182,7 @@ Filter by a single metadata field using implicit equality:
 TypeScript
 
 ```
-
-const result = await env.AI.autorag("my-instance").search({
-
-  query: "What is Cloudflare?",
-
-  filters: {
-
-    type: "eq",
-
-    key: "folder",
-
-    value: "customer-a/",
-
-  },
-
-});
-
-
+const result = await env.AI.autorag("my-instance").search({  query: "What is Cloudflare?",  filters: {    type: "eq",    key: "folder",    value: "customer-a/",  },});
 ```
 
 **After:**
@@ -321,24 +190,7 @@ const result = await env.AI.autorag("my-instance").search({
 TypeScript
 
 ```
-
-const result = await env.MY_INSTANCE.search({
-
-  messages: [{ role: "user", content: "What is Cloudflare?" }],
-
-  ai_search_options: {
-
-    retrieval: {
-
-      filters: { folder: "customer-a/" },
-
-    },
-
-  },
-
-});
-
-
+const result = await env.MY_INSTANCE.search({  messages: [{ role: "user", content: "What is Cloudflare?" }],  ai_search_options: {    retrieval: {      filters: { folder: "customer-a/" },    },  },});
 ```
 
 #### Compound filter (AND)
@@ -350,28 +202,7 @@ Combine multiple conditions where all must match:
 TypeScript
 
 ```
-
-const result = await env.AI.autorag("my-instance").search({
-
-  query: "What is Cloudflare?",
-
-  filters: {
-
-    type: "and",
-
-    filters: [
-
-      { type: "eq", key: "folder", value: "customer-a/" },
-
-      { type: "gte", key: "timestamp", value: "1735689600000" },
-
-    ],
-
-  },
-
-});
-
-
+const result = await env.AI.autorag("my-instance").search({  query: "What is Cloudflare?",  filters: {    type: "and",    filters: [      { type: "eq", key: "folder", value: "customer-a/" },      { type: "gte", key: "timestamp", value: "1735689600000" },    ],  },});
 ```
 
 **After:**
@@ -379,30 +210,7 @@ const result = await env.AI.autorag("my-instance").search({
 TypeScript
 
 ```
-
-const result = await env.MY_INSTANCE.search({
-
-  messages: [{ role: "user", content: "What is Cloudflare?" }],
-
-  ai_search_options: {
-
-    retrieval: {
-
-      filters: {
-
-        folder: "customer-a/",
-
-        timestamp: { $gte: 1735689600 },
-
-      },
-
-    },
-
-  },
-
-});
-
-
+const result = await env.MY_INSTANCE.search({  messages: [{ role: "user", content: "What is Cloudflare?" }],  ai_search_options: {    retrieval: {      filters: {        folder: "customer-a/",        timestamp: { $gte: 1735689600 },      },    },  },});
 ```
 
 ## Backwards compatibility

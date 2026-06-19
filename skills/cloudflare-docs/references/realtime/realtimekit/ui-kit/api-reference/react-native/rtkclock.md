@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,33 +27,15 @@ Displays elapsed meeting time as a running clock (HH:MM:SS or MM:SS).
 ### Basic Usage
 
 ```
-
 import { RtkClock } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkClock meeting={meeting} />;
-
-}
-
-
+function MyComponent() {  return <RtkClock meeting={meeting} />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkClock } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkClock meeting={meeting} iconPack={customIconPack} />;
-
-}
-
-
+function MyComponent() {  return <RtkClock meeting={meeting} iconPack={customIconPack} />;}
 ```
 
 ```json

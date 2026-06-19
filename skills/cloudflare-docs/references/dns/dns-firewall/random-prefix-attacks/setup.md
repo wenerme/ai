@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,19 +17,11 @@ In order to enable automatic mitigation of [random prefix attacks](https://devel
 1. Set up [DNS Firewall](https://developers.cloudflare.com/dns/dns-firewall/setup/).
 2. Send a [PATCH request](https://developers.cloudflare.com/api/resources/dns%5Ffirewall/methods/edit/) to update your DNS Firewall cluster.  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `DNS Firewall Write`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `DNS Firewall Write`  
 Update DNS Firewall Cluster  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/dns_firewall/$DNS_FIREWALL_ID" \  
-  --request PATCH \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "attack_mitigation": {  
-        "enabled": true,  
-        "only_when_upstream_unhealthy": true  
-    }  
-  }'  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/dns_firewall/$DNS_FIREWALL_ID" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "attack_mitigation": {        "enabled": true,        "only_when_upstream_unhealthy": true    }  }'  
 ```
 
 Once you receive a `200` success response from the API, queries identified as being part of a random prefix attack will receive a `REFUSED` response.

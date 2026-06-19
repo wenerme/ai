@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,8 +25,8 @@ Confirm the following before you start:
 * **Active Cloudflare WAN subscription**: This capability requires a Cloudflare WAN subscription on your account.
 * **Access to private origins enabled on your account**: This is a separate entitlement from standard authoritative DNS access. Contact your Cloudflare account team to request access.
 * **IPsec tunnels configured**: Set up two anycast IPsec tunnels for redundancy, each with a different Cloudflare anycast endpoint. Refer to [Configure tunnel endpoints](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/). Two settings are important for this use case:  
-   * Leave **Automatic return routing** disabled. It does not apply to the public-to-private origin traffic pattern, where requests originate on the Internet and reach your origin through Cloudflare's reverse proxy.  
-   * Keep the default **Health check** settings (type `reply`, direction `bidirectional`, rate `mid`). These defaults are required for tunnel health to track correctly in this use case.
+  * Leave **Automatic return routing** disabled. It does not apply to the public-to-private origin traffic pattern, where requests originate on the Internet and reach your origin through Cloudflare's reverse proxy.
+  * Keep the default **Health check** settings (type `reply`, direction `bidirectional`, rate `mid`). These defaults are required for tunnel health to track correctly in this use case.
 * **Static routes configured**: Add two static routes for the private prefix you want to reach — one per tunnel — with different priorities so traffic fails over to the backup tunnel if the primary goes down. For example, set priority `100` on the route through your primary tunnel and `101` on the route through your backup tunnel (lower numbers are higher priority). Refer to [Configure routes](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/).
 * **Cloudflare Source IP set to a private range**: The Cloudflare Source IP is the IP that Cloudflare uses when sending proxied requests into your private network. If it is left as a public range, your network cannot route the return traffic back through the tunnel and requests time out. Refer to [Configure Cloudflare source IPs](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/).
 
@@ -57,10 +57,7 @@ From a machine outside your private network, send an HTTPS request to the proxie
 Terminal window
 
 ```
-
 curl -v https://<YOUR_DOMAIN>/
-
-
 ```
 
 A successful response confirms that Cloudflare accepted the request, applied your proxied features, and reached the origin through the tunnel.
@@ -72,10 +69,7 @@ On the origin VM, verify that requests are arriving from the Cloudflare Source I
 Terminal window
 
 ```
-
 sudo tcpdump -n -i any 'src net 100.64.0.0/12 and dst port 443'
-
-
 ```
 
 Replace `100.64.0.0/12` with the Source IP range configured for your account, and adjust the port to match the listener on your origin.

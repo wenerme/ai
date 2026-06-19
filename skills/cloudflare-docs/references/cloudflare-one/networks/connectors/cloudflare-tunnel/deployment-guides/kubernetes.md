@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -52,21 +52,21 @@ To create a new Kubernetes cluster in Google Cloud:
 3. Name the cluster. In this example, we will name it `cloudflare-tunnel`.
 4. (Optional) Choose your desired region and other cluster specifications. For this example, we will use the default specifications.
 5. Select **Create**.
-6. To connect to the cluster:  
-   1. Select the three-dot menu.  
-   2. Select **Connect**.  
-   3. Select **Run in Cloud Shell** to open a terminal in the browser.  
-   4. Select **Authorize**.  
-   5. Press `Enter` to run the pre-populated `gcloud` command.  
-   6. (Recommended) In the Cloud Shell menu, select **Open Editor** to launch the built-in IDE.
+6. To connect to the cluster:
+
+  1. Select the three-dot menu.
+  2. Select **Connect**.
+  3. Select **Run in Cloud Shell** to open a terminal in the browser.
+  4. Select **Authorize**.
+  5. Press `Enter` to run the pre-populated `gcloud` command.
+  6. (Recommended) In the Cloud Shell menu, select **Open Editor** to launch the built-in IDE.
 7. In the Cloud Shell terminal, run the following command to check the cluster status:  
 Terminal window  
 ```  
 kubectl get all  
 ```  
 ```  
-NAME                 TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE  
-service/kubernetes   ClusterIP   34.118.224.1   <none>        443/TCP   15m  
+NAME                 TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGEservice/kubernetes   ClusterIP   34.118.224.1   <none>        443/TCP   15m  
 ```
 
 ## 2\. Create pods for the web app
@@ -86,43 +86,12 @@ cd tunnel-example
 3. In the `tunnel-example` directory, create a new file called `httpbin.yaml`. This file defines the Kubernetes deployment for the httpbin app.  
 httpbin.yaml  
 ```  
-apiVersion: apps/v1  
-kind: Deployment  
-metadata:  
-  name: httpbin-deployment  
-  namespace: default  
-spec:  
-  replicas: 2  
-  selector:  
-    matchLabels:  
-      app: httpbin  
-  template:  
-    metadata:  
-      labels:  
-        app: httpbin  
-    spec:  
-      containers:  
-        - name: httpbin  
-          image: kennethreitz/httpbin:latest  
-          imagePullPolicy: IfNotPresent  
-          ports:  
-            - containerPort: 80  
+apiVersion: apps/v1kind: Deploymentmetadata:  name: httpbin-deployment  namespace: defaultspec:  replicas: 2  selector:    matchLabels:      app: httpbin  template:    metadata:      labels:        app: httpbin    spec:      containers:        - name: httpbin          image: kennethreitz/httpbin:latest          imagePullPolicy: IfNotPresent          ports:            - containerPort: 80  
 ```
 4. Create a new `httpbinsvc.yaml` file. This file defines a Kubernetes service that allows other apps in the cluster (such as `cloudflared`) to access the set of httpbin pods.  
 httpbinsvc.yaml  
 ```  
-apiVersion: v1  
-kind: Service  
-metadata:  
-  name: httpbin-service  
-  namespace: default  
-spec:  
-  type: LoadBalancer  
-  selector:  
-    app: httpbin  
-  ports:  
-    - port: 80  
-      targetPort: 80  
+apiVersion: v1kind: Servicemetadata:  name: httpbin-service  namespace: defaultspec:  type: LoadBalancer  selector:    app: httpbin  ports:    - port: 80      targetPort: 80  
 ```
 5. Use the following command to run the application inside the cluster:  
 Terminal window  
@@ -135,16 +104,10 @@ Terminal window
 kubectl get all  
 ```  
 ```  
-NAME                                     READY   STATUS    RESTARTS   AGE  
-pod/httpbin-deployment-bc6689c5d-b5ftk   1/1     Running   0          79s  
-pod/httpbin-deployment-bc6689c5d-cbd9m   1/1     Running   0          79s  
-NAME                      TYPE           CLUSTER-IP       EXTERNAL-IP    PORT(S)        AGE  
-service/httpbin-service   LoadBalancer   34.118.225.147   34.75.201.60   80:31967/TCP   79s  
-service/kubernetes        ClusterIP      34.118.224.1     <none>         443/TCP        24h  
-NAME                                 READY   UP-TO-DATE   AVAILABLE   AGE  
-deployment.apps/httpbin-deployment   2/2     2            2           79s  
-NAME                                           DESIRED   CURRENT   READY   AGE  
-replicaset.apps/httpbin-deployment-bc6689c5d   2         2         2       79s  
+NAME                                     READY   STATUS    RESTARTS   AGEpod/httpbin-deployment-bc6689c5d-b5ftk   1/1     Running   0          79spod/httpbin-deployment-bc6689c5d-cbd9m   1/1     Running   0          79s  
+NAME                      TYPE           CLUSTER-IP       EXTERNAL-IP    PORT(S)        AGEservice/httpbin-service   LoadBalancer   34.118.225.147   34.75.201.60   80:31967/TCP   79sservice/kubernetes        ClusterIP      34.118.224.1     <none>         443/TCP        24h  
+NAME                                 READY   UP-TO-DATE   AVAILABLE   AGEdeployment.apps/httpbin-deployment   2/2     2            2           79s  
+NAME                                           DESIRED   CURRENT   READY   AGEreplicaset.apps/httpbin-deployment-bc6689c5d   2         2         2       79s  
 ```
 
 ## 3\. Create a tunnel
@@ -158,7 +121,7 @@ To create a Cloudflare Tunnel:
 5. Enter a name for your tunnel (for example, `gke-tunnel`).
 6. Select **Save tunnel**.
 7. Under **Choose an environment**, select **Docker**.  
-Applications must be packaged into a containerized image before you can run it in Kubernetes. Therefore, we will use the `cloudflared`Docker container image to deploy the tunnel in Kubernetes.
+Applications must be packaged into a containerized image before you can run it in Kubernetes. Therefore, we will use the `cloudflared` Docker container image to deploy the tunnel in Kubernetes.
 8. Instead of running the installation command, copy just the token value rather than the whole command. The token value is of the form `eyJhIjoiNWFiNGU5Z...` You will need the token for the Kubernetes manifest file.
 
 Leave the Cloudflare Tunnel browser tab open while we focus on the Kubernetes deployment.
@@ -170,12 +133,7 @@ Leave the Cloudflare Tunnel browser tab open while we focus on the Kubernetes de
 1. In GKE Cloud Shell, create a `tunnel-token.yaml` file with the following content. Make sure to replace `<YOUR_TUNNEL_TOKEN>` with your tunnel token (`eyJhIjoiNWFiNGU5Z...`).  
 tunnel-token.yaml  
 ```  
-apiVersion: v1  
-kind: Secret  
-metadata:  
-  name: tunnel-token  
-stringData:  
-  token: <YOUR_TUNNEL_TOKEN>  
+apiVersion: v1kind: Secretmetadata:  name: tunnel-tokenstringData:  token: <YOUR_TUNNEL_TOKEN>  
 ```
 2. Create the secret:  
 Terminal window  
@@ -188,8 +146,7 @@ Terminal window
 kubectl get secrets  
 ```  
 ```  
-NAME        TYPE     DATA   AGE  
-tunnel-token   Opaque   1      100s  
+NAME        TYPE     DATA   AGEtunnel-token   Opaque   1      100s  
 ```
 
 ## 5\. Create pods for cloudflared
@@ -199,55 +156,7 @@ To run the Cloudflare Tunnel in Kubernetes:
 1. Create a Kubernetes deployment for a remotely-managed Cloudflare Tunnel:  
 tunnel.yaml  
 ```  
-apiVersion: apps/v1  
-kind: Deployment  
-metadata:  
-  name: cloudflared-deployment  
-  namespace: default  
-spec:  
-  replicas: 2  
-  selector:  
-    matchLabels:  
-      pod: cloudflared  
-  template:  
-    metadata:  
-      labels:  
-        pod: cloudflared  
-    spec:  
-      securityContext:  
-        sysctls:  
-          # Allows ICMP traffic (ping, traceroute) to resources behind cloudflared.  
-          - name: net.ipv4.ping_group_range  
-            value: "65532 65532"  
-      containers:  
-        - image: cloudflare/cloudflared:latest  
-          name: cloudflared  
-          env:  
-            # Defines an environment variable for the tunnel token.  
-            - name: TUNNEL_TOKEN  
-              valueFrom:  
-                secretKeyRef:  
-                  name: tunnel-token  
-                  key: token  
-          command:  
-            # Configures tunnel run parameters  
-            - cloudflared  
-            - tunnel  
-            - --no-autoupdate  
-            - --loglevel  
-            - info  
-            - --metrics  
-            - 0.0.0.0:2000  
-            - run  
-          livenessProbe:  
-            httpGet:  
-              # Cloudflared has a /ready endpoint which returns 200 if and only if  
-              # it has an active connection to Cloudflare's network.  
-              path: /ready  
-              port: 2000  
-            failureThreshold: 1  
-            initialDelaySeconds: 10  
-            periodSeconds: 10  
+apiVersion: apps/v1kind: Deploymentmetadata:  name: cloudflared-deployment  namespace: defaultspec:  replicas: 2  selector:    matchLabels:      pod: cloudflared  template:    metadata:      labels:        pod: cloudflared    spec:      securityContext:        sysctls:          # Allows ICMP traffic (ping, traceroute) to resources behind cloudflared.          - name: net.ipv4.ping_group_range            value: "65532 65532"      containers:        - image: cloudflare/cloudflared:latest          name: cloudflared          env:            # Defines an environment variable for the tunnel token.            - name: TUNNEL_TOKEN              valueFrom:                secretKeyRef:                  name: tunnel-token                  key: token          command:            # Configures tunnel run parameters            - cloudflared            - tunnel            - --no-autoupdate            - --loglevel            - info            - --metrics            - 0.0.0.0:2000            - run          livenessProbe:            httpGet:              # Cloudflared has a /ready endpoint which returns 200 if and only if              # it has an active connection to Cloudflare's network.              path: /ready              port: 2000            failureThreshold: 1            initialDelaySeconds: 10            periodSeconds: 10  
 ```
 2. Deploy `cloudflared` to the cluster:  
 Terminal window  
@@ -261,20 +170,10 @@ Terminal window
 kubectl get all  
 ```  
 ```  
-NAME                                          READY   STATUS    RESTARTS   AGE  
-pod/cloudflared-deployment-6d5f9f9666-85l5w   1/1     Running   0          21s  
-pod/cloudflared-deployment-6d5f9f9666-wb96x   1/1     Running   0          21s  
-pod/httpbin-deployment-bc6689c5d-b5ftk        1/1     Running   0          3m36s  
-pod/httpbin-deployment-bc6689c5d-cbd9m        1/1     Running   0          3m36s  
-NAME                      TYPE           CLUSTER-IP       EXTERNAL-IP    PORT(S)        AGE  
-service/httpbin-service   LoadBalancer   34.118.225.147   34.75.201.60   80:31967/TCP   3m36s  
-service/kubernetes        ClusterIP      34.118.224.1     <none>         443/TCP        24h  
-NAME                                     READY   UP-TO-DATE   AVAILABLE   AGE  
-deployment.apps/cloudflared-deployment   2/2     2            2           22s  
-deployment.apps/httpbin-deployment       2/2     2            2           3m37s  
-NAME                                                DESIRED   CURRENT   READY   AGE  
-replicaset.apps/cloudflared-deployment-6d5f9f9666   2         2         2       22s  
-replicaset.apps/httpbin-deployment-bc6689c5d        2         2         2       3m37s  
+NAME                                          READY   STATUS    RESTARTS   AGEpod/cloudflared-deployment-6d5f9f9666-85l5w   1/1     Running   0          21spod/cloudflared-deployment-6d5f9f9666-wb96x   1/1     Running   0          21spod/httpbin-deployment-bc6689c5d-b5ftk        1/1     Running   0          3m36spod/httpbin-deployment-bc6689c5d-cbd9m        1/1     Running   0          3m36s  
+NAME                      TYPE           CLUSTER-IP       EXTERNAL-IP    PORT(S)        AGEservice/httpbin-service   LoadBalancer   34.118.225.147   34.75.201.60   80:31967/TCP   3m36sservice/kubernetes        ClusterIP      34.118.224.1     <none>         443/TCP        24h  
+NAME                                     READY   UP-TO-DATE   AVAILABLE   AGEdeployment.apps/cloudflared-deployment   2/2     2            2           22sdeployment.apps/httpbin-deployment       2/2     2            2           3m37s  
+NAME                                                DESIRED   CURRENT   READY   AGEreplicaset.apps/cloudflared-deployment-6d5f9f9666   2         2         2       22sreplicaset.apps/httpbin-deployment-bc6689c5d        2         2         2       3m37s  
 ```
 
 You should see two `cloudflared` pods and two `httpbin` pods with a `Running` status. If your `cloudflared` pods keep restarting, check the `command` syntax in `tunnel.yaml` and make sure that the [tunnel run parameters](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/) are in the correct order.
@@ -286,31 +185,11 @@ To print logs for a `cloudflared` instance:
 Terminal window
 
 ```
-
 kubectl logs pod/cloudflared-deployment-6d5f9f9666-85l5w
-
-
 ```
 
 ```
-
-2025-06-11T22:00:47Z INF Starting tunnel tunnelID=64c359b6-e111-40ec-a3a9-199c2a656613
-
-2025-06-11T22:00:47Z INF Version 2025.6.0 (Checksum 72f233bb55199093961bf099ad62d491db58819df34b071ab231f622deff33ce)
-
-2025-06-11T22:00:47Z INF GOOS: linux, GOVersion: go1.24.2, GoArch: amd64
-
-2025-06-11T22:00:47Z INF Settings: map[loglevel:debug metrics:0.0.0.0:2000 no-autoupdate:true token:*****]
-
-2025-06-11T22:00:47Z INF Generated Connector ID: aff7c4a0-85a3-4ac9-8475-1e0aa1af8d94
-
-2025-06-11T22:00:47Z DBG Fetched protocol: quic
-
-2025-06-11T22:00:47Z INF Initial protocol quic
-
-...
-
-
+2025-06-11T22:00:47Z INF Starting tunnel tunnelID=64c359b6-e111-40ec-a3a9-199c2a6566132025-06-11T22:00:47Z INF Version 2025.6.0 (Checksum 72f233bb55199093961bf099ad62d491db58819df34b071ab231f622deff33ce)2025-06-11T22:00:47Z INF GOOS: linux, GOVersion: go1.24.2, GoArch: amd642025-06-11T22:00:47Z INF Settings: map[loglevel:debug metrics:0.0.0.0:2000 no-autoupdate:true token:*****]2025-06-11T22:00:47Z INF Generated Connector ID: aff7c4a0-85a3-4ac9-8475-1e0aa1af8d942025-06-11T22:00:47Z DBG Fetched protocol: quic2025-06-11T22:00:47Z INF Initial protocol quic...
 ```
 
 ## 7\. Add a tunnel route

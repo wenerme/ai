@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,34 +21,34 @@ Cloudflare may crawl or make HTTP requests to your site to make sure its protect
 Cloudflare will crawl your site when you have specific products enabled:
 
 * [**Always Online**](https://developers.cloudflare.com/cache/how-to/always-online/)  
-   * _User-Agent_: `Mozilla/5.0 (compatible; CloudFlare-AlwaysOnline/1.0; +http://www.cloudflare.com/always-online)`
+  * _User-Agent_: `Mozilla/5.0 (compatible; CloudFlare-AlwaysOnline/1.0; +http://www.cloudflare.com/always-online)`
 * [**Health checks**](https://developers.cloudflare.com/health-checks/)  
-   * _User-Agent_: `Mozilla/5.0 (compatible; Cloudflare-Healthchecks/1.0; +https://www.cloudflare.com/; healthcheck-id: <HEALTHCHECK_ID>)`  
-   * `HEALTHCHECK_ID` is a 16-character string associated with the health check ID.
+  * _User-Agent_: `Mozilla/5.0 (compatible; Cloudflare-Healthchecks/1.0; +https://www.cloudflare.com/; healthcheck-id: <HEALTHCHECK_ID>)`
+  * `HEALTHCHECK_ID` is a 16-character string associated with the health check ID.
 * [**Load balancing monitors**](https://developers.cloudflare.com/load-balancing/monitors/)  
-   * _User-Agent_: `Mozilla/5.0 (compatible; Cloudflare-Traffic-Manager/1.0; +https://www.cloudflare.com/traffic-manager/; pool-id: <POOL_ID>)`  
-   * `POOL_ID` is a 16-character string associated with the load balancing pool ID being monitored.
+  * _User-Agent_: `Mozilla/5.0 (compatible; Cloudflare-Traffic-Manager/1.0; +https://www.cloudflare.com/traffic-manager/; pool-id: <POOL_ID>)`
+  * `POOL_ID` is a 16-character string associated with the load balancing pool ID being monitored.
 * [**Prefetch URLs**](https://developers.cloudflare.com/speed/optimization/content/prefetch-urls/)  
-   * _User-Agent_: `Mozilla/5.0 (compatible; CloudFlare-Prefetch/0.1; +http://www.cloudflare.com/)`
+  * _User-Agent_: `Mozilla/5.0 (compatible; CloudFlare-Prefetch/0.1; +http://www.cloudflare.com/)`
 * [**SSL/TLS recommender**](https://developers.cloudflare.com/ssl/origin-configuration/ssl-tls-recommender/)  
-   * _User-Agent_: `Cloudflare-SSLDetector`  
-   * This crawler ignores your `robots.txt` file unless there are rules explicitly targeting the user agent.
+  * _User-Agent_: `Cloudflare-SSLDetector`
+  * This crawler ignores your `robots.txt` file unless there are rules explicitly targeting the user agent.
 * [**Security Insights**](https://developers.cloudflare.com/security/security-insights/review-insights/)  
-   * _User-Agent_: `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)`
+  * _User-Agent_: `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 (compatible; +https://developers.cloudflare.com/security-center/)`
 
 ### Other situations
 
 Cloudflare will also crawl your site in other, specific situations:
 
 * **Speed tests**  
-   * _User-Agent_: `Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36 PTST/190628.140653`  
-   * _Triggered when_: You launch a speed test from within [the Cloudflare dashboard](https://developers.cloudflare.com/speed/observatory/run-speed-test/).
+  * _User-Agent_: `Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36 PTST/190628.140653`
+  * _Triggered when_: You launch a speed test from within [the Cloudflare dashboard](https://developers.cloudflare.com/speed/observatory/run-speed-test/).
 * **Support diagnostics**:  
-   * _User-Agent_: `Cloudflare-diagnostics`  
-   * _Triggered when_: Cloudflare Support Engineers perform error checks and by continuous monitoring used to raise intelligent alerts in the Cloudflare dashboard.
+  * _User-Agent_: `Cloudflare-diagnostics`
+  * _Triggered when_: Cloudflare Support Engineers perform error checks and by continuous monitoring used to raise intelligent alerts in the Cloudflare dashboard.
 * **Custom Hostname validation**:  
-   * _User-Agent_: `Cloudflare Custom Hostname Verification`  
-   * _Triggered when_: You choose to validate a custom hostname with an [HTTP ownership token](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/pre-validation/#http-tokens).
+  * _User-Agent_: `Cloudflare Custom Hostname Verification`
+  * _Triggered when_: You choose to validate a custom hostname with an [HTTP ownership token](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/pre-validation/#http-tokens).
 
 ## Developer product crawlers
 

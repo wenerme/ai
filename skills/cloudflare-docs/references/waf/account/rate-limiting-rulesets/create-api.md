@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,83 +37,14 @@ The following example creates a rate limiting ruleset with a single rate limitin
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Account WAF Write`
 * `Account Rulesets Write`
 
 Create an account ruleset
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "description": "",
-
-    "kind": "custom",
-
-    "name": "My rate limiting ruleset",
-
-    "rules": [
-
-        {
-
-            "description": "Rate limit API requests",
-
-            "expression": "(starts_with(http.request.uri.path, \"/my-api/\"))",
-
-            "ratelimit": {
-
-                "characteristics": [
-
-                    "ip.src",
-
-                    "cf.colo.id"
-
-                ],
-
-                "requests_to_origin": false,
-
-                "requests_per_period": 30,
-
-                "period": 60,
-
-                "mitigation_timeout": 120
-
-            },
-
-            "action": "block",
-
-            "action_parameters": {
-
-                "response": {
-
-                    "status_code": 429,
-
-                    "content_type": "application/json",
-
-                    "content": "{ \"error\": \"Your API requests have been rate limited. Wait a couple of minutes and try again.\" }"
-
-                }
-
-            },
-
-            "enabled": true
-
-        }
-
-    ],
-
-    "phase": "http_ratelimit"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "description": "",    "kind": "custom",    "name": "My rate limiting ruleset",    "rules": [        {            "description": "Rate limit API requests",            "expression": "(starts_with(http.request.uri.path, \"/my-api/\"))",            "ratelimit": {                "characteristics": [                    "ip.src",                    "cf.colo.id"                ],                "requests_to_origin": false,                "requests_per_period": 30,                "period": 60,                "mitigation_timeout": 120            },            "action": "block",            "action_parameters": {                "response": {                    "status_code": 429,                    "content_type": "application/json",                    "content": "{ \"error\": \"Your API requests have been rate limited. Wait a couple of minutes and try again.\" }"                }            },            "enabled": true        }    ],    "phase": "http_ratelimit"  }'
 ```
 
 The available characteristics depend on your Cloudflare plan and product subscriptions. Refer to [Availability](https://developers.cloudflare.com/waf/rate-limiting-rules/#availability) for more information.
@@ -126,85 +57,38 @@ To deploy the rate limiting ruleset, add a rule with `"action": "execute"` to th
 
 1. Invoke the [Get an account entry point ruleset](https://developers.cloudflare.com/api/resources/rulesets/subresources/phases/methods/get/) operation to obtain the definition of the entry point ruleset for the `http_ratelimit` phase. You will need the [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) for this task.  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Account WAF Write`  
-   * `Account WAF Read`  
-   * `Account Rulesets Read`  
-   * `Account Rulesets Write`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Account WAF Write`
+  * `Account WAF Read`
+  * `Account Rulesets Read`
+  * `Account Rulesets Write`  
 Get an account entry point ruleset  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/phases/http_ratelimit/entrypoint" \  
-  --request GET \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/phases/http_ratelimit/entrypoint" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
 ```  
 ```  
-{  
-  "result": {  
-    "description": "Account-level phase entry point",  
-    "id": "<RULESET_ID>",  
-    "kind": "root",  
-    "last_updated": "2024-03-16T15:40:08.202335Z",  
-    "name": "root",  
-    "phase": "http_ratelimit",  
-    "rules": [  
-      // ...  
-    ],  
-    "source": "firewall_managed",  
-    "version": "10"  
-  },  
-  "success": true,  
-  "errors": [],  
-  "messages": []  
-}  
+{  "result": {    "description": "Account-level phase entry point",    "id": "<RULESET_ID>",    "kind": "root",    "last_updated": "2024-03-16T15:40:08.202335Z",    "name": "root",    "phase": "http_ratelimit",    "rules": [      // ...    ],    "source": "firewall_managed",    "version": "10"  },  "success": true,  "errors": [],  "messages": []}  
 ```
 2. If the entry point ruleset already exists (that is, if you received a `200 OK` status code and the ruleset definition), take note of the ruleset ID in the response. Then, invoke the [Create an account ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/create/) operation to add an `execute` rule to the existing ruleset deploying the rate limiting ruleset. By default, the rule will be added at the end of the list of rules already in the ruleset.  
 The following request creates a rule that executes the rate limiting ruleset with ID `<RATE_LIMITING_RULESET_ID>` for all Enterprise zones in the account:  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Account WAF Write`  
-   * `Account Rulesets Write`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Account WAF Write`
+  * `Account Rulesets Write`  
 Create an account ruleset rule  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESET_ID/rules" \  
-  --request POST \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "description": "Execute rate limiting ruleset",  
-    "expression": "(cf.zone.plan eq \"ENT\")",  
-    "action": "execute",  
-    "action_parameters": {  
-        "id": "<RATE_LIMITING_RULESET_ID>"  
-    },  
-    "enabled": true  
-  }'  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESET_ID/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "description": "Execute rate limiting ruleset",    "expression": "(cf.zone.plan eq \"ENT\")",    "action": "execute",    "action_parameters": {        "id": "<RATE_LIMITING_RULESET_ID>"    },    "enabled": true  }'  
 ```  
 Warning  
 You can only apply rate limiting rulesets to incoming traffic of zones on an Enterprise plan. To enforce this requirement, you must include `cf.zone.plan eq "ENT"` in the expression of the `execute` rule deploying the rate limiting ruleset.
 3. If the entry point ruleset does not exist (that is, if you received a `404 Not Found` status code in step 1), create it using the [Create an account ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) operation. Include a single rule in the `rules` array that executes the rate limiting ruleset for all incoming requests of Enterprise zones in your account.  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Account WAF Write`  
-   * `Account Rulesets Write`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Account WAF Write`
+  * `Account Rulesets Write`  
 Create an account ruleset  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \  
-  --request POST \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "description": "",  
-    "kind": "root",  
-    "name": "Account-level phase entry point",  
-    "rules": [  
-        {  
-            "action": "execute",  
-            "expression": "(cf.zone.plan eq \"ENT\")",  
-            "action_parameters": {  
-                "id": "<RATE_LIMITING_RULESET_ID>"  
-            }  
-        }  
-    ],  
-    "phase": "http_ratelimit"  
-  }'  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "description": "",    "kind": "root",    "name": "Account-level phase entry point",    "rules": [        {            "action": "execute",            "expression": "(cf.zone.plan eq \"ENT\")",            "action_parameters": {                "id": "<RATE_LIMITING_RULESET_ID>"            }        }    ],    "phase": "http_ratelimit"  }'  
 ```
 
 For examples of rate limiting rule definitions for the API, refer to [Create a rate limiting rule via API](https://developers.cloudflare.com/waf/rate-limiting-rules/create-api/).

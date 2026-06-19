@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,8 +33,8 @@ The domain age is the time since the domain has been registered.
 To configure a domain age:
 
 1. On the **Edit additional detections** page:  
-   * Select **Malicious domain age**: Controls the threshold for a malicious disposition. Maximum of 100 days.  
-   * Select **Suspicious domain age**: Controls the threshold for a suspicious disposition. Maximum of 100 days.
+  * Select **Malicious domain age**: Controls the threshold for a malicious disposition. Maximum of 100 days.
+  * Select **Suspicious domain age**: Controls the threshold for a suspicious disposition. Maximum of 100 days.
 2. Select **Save**.
 
 ## Configure blank email detection

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,12 +29,7 @@ A sandbox is created the first time you reference its ID:
 TypeScript
 
 ```
-
-const sandbox = getSandbox(env.Sandbox, "user-123");
-
-await sandbox.exec('echo "Hello"'); // First request creates sandbox
-
-
+const sandbox = getSandbox(env.Sandbox, "user-123");await sandbox.exec('echo "Hello"'); // First request creates sandbox
 ```
 
 ### Active
@@ -54,12 +49,7 @@ Sandboxes are explicitly destroyed or automatically cleaned up:
 TypeScript
 
 ```
-
-await sandbox.destroy();
-
-// All files, processes, and state deleted permanently
-
-
+await sandbox.destroy();// All files, processes, and state deleted permanently
 ```
 
 ## Container lifetime and state
@@ -89,10 +79,7 @@ The next request creates a fresh container with a clean environment.
 TypeScript
 
 ```
-
 const sandbox = getSandbox(env.Sandbox, `user-${userId}`);
-
-
 ```
 
 Use this pattern for interactive environments, playgrounds, and notebooks where each user returns to their own active workspace.
@@ -102,16 +89,7 @@ Use this pattern for interactive environments, playgrounds, and notebooks where 
 TypeScript
 
 ```
-
-const sessionId = `session-${Date.now()}-${Math.random()}`;
-
-const sandbox = getSandbox(env.Sandbox, sessionId);
-
-// Later:
-
-await sandbox.destroy();
-
-
+const sessionId = `session-${Date.now()}-${Math.random()}`;const sandbox = getSandbox(env.Sandbox, sessionId);// Later:await sandbox.destroy();
 ```
 
 Use this pattern for one-time execution, CI/CD, and tests that need a clean environment.
@@ -121,10 +99,7 @@ Use this pattern for one-time execution, CI/CD, and tests that need a clean envi
 TypeScript
 
 ```
-
 const sandbox = getSandbox(env.Sandbox, `build-${repoName}-${commit}`);
-
-
 ```
 
 Idempotent operations with clear task-to-sandbox mapping. Good for builds, pipelines, and background jobs.
@@ -145,20 +120,7 @@ The first request to a sandbox determines its geographic location. Subsequent re
 TypeScript
 
 ```
-
-try {
-
-  const sandbox = getSandbox(env.Sandbox, sessionId);
-
-  await sandbox.exec("npm run build");
-
-} finally {
-
-  await sandbox.destroy(); // Clean up temporary sandboxes
-
-}
-
-
+try {  const sandbox = getSandbox(env.Sandbox, sessionId);  await sandbox.exec("npm run build");} finally {  await sandbox.destroy(); // Clean up temporary sandboxes}
 ```
 
 **Destroy when**: Session ends, task completes, resources no longer needed
@@ -172,23 +134,8 @@ Containers with [keepAlive: true](https://developers.cloudflare.com/sandbox/conf
 TypeScript
 
 ```
-
-const sandbox = getSandbox(env.Sandbox, 'persistent-task', {
-
-  keepAlive: true
-
-});
-
-
-// Later, when done with long-running work
-
-await sandbox.setKeepAlive(false); // Allow normal timeout behavior
-
-// Or explicitly destroy:
-
-await sandbox.destroy();
-
-
+const sandbox = getSandbox(env.Sandbox, 'persistent-task', {  keepAlive: true});
+// Later, when done with long-running workawait sandbox.setKeepAlive(false); // Allow normal timeout behavior// Or explicitly destroy:await sandbox.destroy();
 ```
 
 ### Handling container restarts
@@ -198,23 +145,8 @@ Containers restart after inactivity or failures. Design your application to hand
 TypeScript
 
 ```
-
-// Check if required files exist before using them
-
-const files = await sandbox.listFiles("/workspace");
-
-if (!files.includes("data.json")) {
-
-  // Reinitialize: container restarted and lost previous state
-
-  await sandbox.writeFile("/workspace/data.json", initialData);
-
-}
-
-
+// Check if required files exist before using themconst files = await sandbox.listFiles("/workspace");if (!files.includes("data.json")) {  // Reinitialize: container restarted and lost previous state  await sandbox.writeFile("/workspace/data.json", initialData);}
 await sandbox.exec("python process.py");
-
-
 ```
 
 ## Version compatibility
@@ -234,17 +166,8 @@ The SDK automatically checks that your npm package version matches the Docker co
 **How to fix**: Update your Dockerfile to match your npm package version. For example, if using `@cloudflare/sandbox@0.7.0`:
 
 ```
-
-# Default image (JavaScript/TypeScript)
-
-FROM docker.io/cloudflare/sandbox:0.7.0
-
-
-# Or Python image if you need Python support
-
-FROM docker.io/cloudflare/sandbox:0.7.0-python
-
-
+# Default image (JavaScript/TypeScript)FROM docker.io/cloudflare/sandbox:0.7.0
+# Or Python image if you need Python supportFROM docker.io/cloudflare/sandbox:0.7.0-python
 ```
 
 See [Dockerfile reference](https://developers.cloudflare.com/sandbox/configuration/dockerfile/) for details on image variants and extending the base image.

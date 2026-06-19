@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,31 +32,13 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 ### Basic Usage
 
 ```
-
-<!-- component.html -->
-
-<rtk-breakout-room-manager></rtk-breakout-room-manager>
-
-
+<!-- component.html --><rtk-breakout-room-manager></rtk-breakout-room-manager>
 ```
 
 ### With Properties
 
 ```
-
-<!-- component.html -->
-
-<rtk-breakout-room-manager
-
- [allowDelete]="true"
-
- [assigningParticipants]="true"
-
- [defaultExpanded]="true">
-
-</rtk-breakout-room-manager>
-
-
+<!-- component.html --><rtk-breakout-room-manager [allowDelete]="true" [assigningParticipants]="true" [defaultExpanded]="true"></rtk-breakout-room-manager>
 ```
 
 ```json

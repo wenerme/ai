@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -95,45 +95,45 @@ The reason the Cloudflare network exists is to provide services to customers to 
 
 1. [Securing public and private resources](#securing-public-and-private-resources)
 2. [Protecting public resources](#protecting-public-resources)  
-   1. [Common attacks and protection](#common-attacks-and-protection)  
-         1. [DDoS attacks](#ddos-attacks)  
-         2. [Zero-day attacks](#zero-day-attacks)  
-         3. [Unauthorized access](#unauthorized-access)  
-         4. [Client-side attacks](#client-side-attacks)  
-         5. [Data exfiltration](#data-exfiltration)  
-         6. [Credential stuffing](#credential-stuffing)  
-         7. [Brute force attacks](#brute-force-attacks)  
-         8. [Credit card skimming](#credit-card-skimming)  
-         9. [Inventory hoarding](#inventory-hoarding)  
-         10. [Fuzzing (vulnerability scanning)](#fuzzing-vulnerability-scanning)  
-         11. [Cross-Site Scripting (XSS) attacks](#cross-site-scripting-xss-attacks)  
-         12. [Remote Code Execution (RCE) attacks](#remote-code-execution-rce-attacks)  
-         13. [SQL injection (SQLi) attacks](#sql-injection-sqli-attacks)  
-         14. [Malware](#malware)  
-   2. [Cloudflare application security products](#cloudflare-application-security-products)  
-         1. [Security Analytics](#security-analytics)  
-         2. [Web Application Firewall (WAF)](#web-application-firewall-waf)  
-         3. [Rate limiting](#rate-limiting)  
-         4. [L7 DDoS](#l7-ddos)  
-         5. [API Shield](#api-shield)  
-         6. [Bot Management](#bot-management)  
-         7. [Client-side security](#client-side-security)  
-         8. [SSL/TLS](#ssltls)  
-         9. [Security Center](#security-center)  
-         10. [Cloudflare for SaaS](#cloudflare-for-saas)  
-   3. [Cloudflare network security products](#cloudflare-network-security-products)  
-         1. [Magic Transit](#magic-transit)  
-         2. [Cloudflare WAN](#cloudflare-wan)  
-         3. [Cloudflare Network Firewall](#cloudflare-network-firewall)  
-         4. [Network Flow](#network-flow)  
-         5. [Spectrum](#spectrum)
+  1. [Common attacks and protection](#common-attacks-and-protection)  
+    1. [DDoS attacks](#ddos-attacks)
+    2. [Zero-day attacks](#zero-day-attacks)
+    3. [Unauthorized access](#unauthorized-access)
+    4. [Client-side attacks](#client-side-attacks)
+    5. [Data exfiltration](#data-exfiltration)
+    6. [Credential stuffing](#credential-stuffing)
+    7. [Brute force attacks](#brute-force-attacks)
+    8. [Credit card skimming](#credit-card-skimming)
+    9. [Inventory hoarding](#inventory-hoarding)
+    10. [Fuzzing (vulnerability scanning)](#fuzzing-vulnerability-scanning)
+    11. [Cross-Site Scripting (XSS) attacks](#cross-site-scripting-xss-attacks)
+    12. [Remote Code Execution (RCE) attacks](#remote-code-execution-rce-attacks)
+    13. [SQL injection (SQLi) attacks](#sql-injection-sqli-attacks)
+    14. [Malware](#malware)
+  2. [Cloudflare application security products](#cloudflare-application-security-products)  
+    1. [Security Analytics](#security-analytics)
+    2. [Web Application Firewall (WAF)](#web-application-firewall-waf)
+    3. [Rate limiting](#rate-limiting)
+    4. [L7 DDoS](#l7-ddos)
+    5. [API Shield](#api-shield)
+    6. [Bot Management](#bot-management)
+    7. [Client-side security](#client-side-security)
+    8. [SSL/TLS](#ssltls)
+    9. [Security Center](#security-center)
+    10. [Cloudflare for SaaS](#cloudflare-for-saas)
+  3. [Cloudflare network security products](#cloudflare-network-security-products)  
+    1. [Magic Transit](#magic-transit)
+    2. [Cloudflare WAN](#cloudflare-wan)
+    3. [Cloudflare Network Firewall](#cloudflare-network-firewall)
+    4. [Network Flow](#network-flow)
+    5. [Spectrum](#spectrum)
 3. [Protecting private resources](#protecting-private-resources)  
-   1. [Securing connectivity to private resources](#securing-connectivity-to-private-resources)  
-   2. [User connectivity](#user-connectivity)  
-   3. [Integrating identity systems](#integrating-identity-systems)  
-   4. [Access control](#access-control)  
-   5. [Protecting data](#protecting-data)  
-   6. [Securing Internet access](#securing-internet-access)
+  1. [Securing connectivity to private resources](#securing-connectivity-to-private-resources)
+  2. [User connectivity](#user-connectivity)
+  3. [Integrating identity systems](#integrating-identity-systems)
+  4. [Access control](#access-control)
+  5. [Protecting data](#protecting-data)
+  6. [Securing Internet access](#securing-internet-access)
 4. [Observability](#observability)
 5. [Developer platform](#developer-platform)
 
@@ -588,8 +588,8 @@ Many of Cloudflare's security services are built on a highly optimized serverles
 The following use cases show how our customers’ security teams have used our [developer platform ↗](https://workers.cloudflare.com/):
 
 * In our ZTNA service, Cloudflare Access, when a request is made to access a private resource, that request can include a call to a Cloudflare Worker, passing in everything known about the user. Custom business logic can then be implemented to determine access. For example:  
-   * Only allow access during employee working hours. Check via API calls to employee systems.  
-   * Allow access only if an incident has been declared in PagerDuty.
+  * Only allow access during employee working hours. Check via API calls to employee systems.
+  * Allow access only if an incident has been declared in PagerDuty.
 * Implement honeypots for bots: Because Workers can be attached to routes of any Cloudflare-protected resource, you can examine the bot score of a request and then redirect or modify the request if you suspect it's not legitimate traffic. For example, execute the request but modify the response to redact information or change values to protect data.
 * Write complex web application firewall (WAF) type rules: As described above, our WAF is very powerful for protecting your public-facing applications. But with Workers, you can write incredibly complex rules based on information provided in the [IncomingRequestCfProperties](https://developers.cloudflare.com/workers/runtime-apis/request/#incomingrequestcfproperties), which expose metadata for every request. These properties contain extensive information and can be expressed as code for effective rule implementation.
 * Enhance traffic with extra security information: Your downstream application may have other security products in front of it, or maybe provides other security if certain HTTP headers exist. Using Workers, you can enhance any requests to the application and add in headers to help the downstream application implement greater security controls.

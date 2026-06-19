@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,49 +33,15 @@ A reusable button for the control bar with icon, label, loading state, and warni
 ### Basic Usage
 
 ```
-
 import { RtkControlbarButton } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkControlbarButton label="Mute" icon={muteIcon} />;
-
-}
-
-
+function MyComponent() {  return <RtkControlbarButton label="Mute" icon={muteIcon} />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkControlbarButton } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkControlbarButton
-
-      label="Mute"
-
-      icon={muteIcon}
-
-      variant="horizontal"
-
-      size="md"
-
-      onClick={() => console.log("pressed")}
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkControlbarButton      label="Mute"      icon={muteIcon}      variant="horizontal"      size="md"      onClick={() => console.log("pressed")}    />  );}
 ```
 
 ```json

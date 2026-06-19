@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,33 +21,8 @@ To obtain a token, you can use the new `images/v1/batch_token` endpoint as shown
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v1/batch_token" \
-
---header "Authorization: Bearer <API_TOKEN>"
-
-
-# Response:
-
-{
-
-  "result": {
-
-    "token": "<BATCH_TOKEN>",
-
-    "expiresAt": "2023-08-09T15:33:56.273411222Z"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v1/batch_token" \--header "Authorization: Bearer <API_TOKEN>"
+# Response:{  "result": {    "token": "<BATCH_TOKEN>",    "expiresAt": "2023-08-09T15:33:56.273411222Z"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 After getting your token, use it to make requests for:
@@ -64,23 +39,13 @@ These options use a different host and a different path with the same method, re
 Request for list images V2 against api.cloudflare.com
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v2" \
-
---header "Authorization: Bearer <API_TOKEN>"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v2" \--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 Example request using a batch token
 
 ```
-
-curl "https://batch.imagedelivery.net/images/v1" \
-
---header "Authorization: Bearer <BATCH_TOKEN>"
-
-
+curl "https://batch.imagedelivery.net/images/v1" \--header "Authorization: Bearer <BATCH_TOKEN>"
 ```
 
 ```json

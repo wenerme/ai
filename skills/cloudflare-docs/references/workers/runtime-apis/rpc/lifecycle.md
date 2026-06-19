@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,10 +19,7 @@ When you call another Worker over RPC using a Service binding, you are using mem
 JavaScript
 
 ```
-
 let user = await env.USER_SERVICE.findUser(id);
-
-
 ```
 
 Assume that `findUser()` on the server side returns an object extending `RpcTarget`, thus `user` on the client side ends up being a stub pointing to that remote object.
@@ -45,19 +42,8 @@ If a variable is declared with `using`, when the variable is no longer in scope,
 JavaScript
 
 ```
-
-function sendEmail(id, message) {
-
-  using user = await env.USER_SERVICE.findUser(id);
-
-  await user.sendEmail(message);
-
-
-  // user[Symbol.dispose]() is implicitly called at the end of the scope.
-
-}
-
-
+function sendEmail(id, message) {  using user = await env.USER_SERVICE.findUser(id);  await user.sendEmail(message);
+  // user[Symbol.dispose]() is implicitly called at the end of the scope.}
 ```
 
 `using` declarations are useful to make sure you can't forget to dispose stubs — even if your code is interrupted by an exception.
@@ -71,18 +57,7 @@ The following code:
 JavaScript
 
 ```
-
-{
-
-  using counter = await env.COUNTER_SERVICE.newCounter();
-
-  await counter.increment(2);
-
-  await counter.increment(4);
-
-}
-
-
+{  using counter = await env.COUNTER_SERVICE.newCounter();  await counter.increment(2);  await counter.increment(4);}
 ```
 
 ...is equivalent to:
@@ -90,26 +65,7 @@ JavaScript
 JavaScript
 
 ```
-
-{
-
-  const counter = await env.COUNTER_SERVICE.newCounter();
-
-  try {
-
-    await counter.increment(2);
-
-    await counter.increment(4);
-
-  } finally {
-
-    counter[Symbol.dispose]();
-
-  }
-
-}
-
-
+{  const counter = await env.COUNTER_SERVICE.newCounter();  try {    await counter.increment(2);    await counter.increment(4);  } finally {    counter[Symbol.dispose]();  }}
 ```
 
 ## Automatic disposal and execution contexts
@@ -129,33 +85,8 @@ For example, the Worker below does not make use of the `using` declaration, but 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    let authResult = await env.AUTH_SERVICE.checkCookie(
-
-      req.headers.get("Cookie"),
-
-    );
-
-    if (!authResult.authorized) {
-
-      return new Response("Not authorized", { status: 403 });
-
-    }
-
-    let profile = await authResult.user.getProfile();
-
-
-    return new Response(`Hello, ${profile.name}!`);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    let authResult = await env.AUTH_SERVICE.checkCookie(      req.headers.get("Cookie"),    );    if (!authResult.authorized) {      return new Response("Not authorized", { status: 403 });    }    let profile = await authResult.user.getProfile();
+    return new Response(`Hello, ${profile.name}!`);  },};
 ```
 
 A Worker invoked via RPC also has an execution context. The context begins when an RPC method on a `WorkerEntrypoint` is invoked. If no stubs are passed in the parameters or results of this RPC, the context ends (the event is "done") when the RPC returns. However, if any stubs are passed, then the execution context is implicitly extended until all such stubs are disposed (and all calls made through them have returned). As with HTTP, if the client disconnects, the server's execution context is canceled immediately, regardless of whether stubs still exist. A client that is itself another Worker is considered to have disconnected when its own execution context ends. Again, the context can be extended with [ctx.waitUntil()](https://developers.cloudflare.com/workers/runtime-apis/context).
@@ -173,10 +104,7 @@ This means you should almost always store the result of an RPC into a `using` de
 JavaScript
 
 ```
-
 using result = stub.foo();
-
-
 ```
 
 This way, if the result contains any stubs, they will be disposed of. Even if you don't expect the RPC to return stubs, if it returns any kind of an object, it is a good idea to store it into a `using` declaration. This way, if the RPC is extended in the future to return stubs, your code is ready.
@@ -190,18 +118,7 @@ A class that extends [RpcTarget](https://developers.cloudflare.com/workers/runti
 JavaScript
 
 ```
-
-class Foo extends RpcTarget {
-
-  [Symbol.dispose]() {
-
-    // ...
-
-  }
-
-}
-
-
+class Foo extends RpcTarget {  [Symbol.dispose]() {    // ...  }}
 ```
 
 The RpcTarget's disposer runs after the last stub is disposed. Note that the client-side call to the stub's disposer does not wait for the server-side disposer to be called; the server's disposer is called later on. Because of this, any exceptions thrown by the disposer do not propagate to the client; instead, they are reported as uncaught exceptions. Note that an `RpcTarget`'s disposer must be declared as `Symbol.dispose`. `Symbol.asyncDispose` is not supported.
@@ -213,23 +130,10 @@ Sometimes, you need to pass a stub to a function which will dispose the stub whe
 JavaScript
 
 ```
-
 let stub = await env.SOME_SERVICE.getThing();
-
-
-// Create a duplicate.
-
-let stub2 = stub.dup();
-
-
-// Call some function that will dispose the stub.
-
-await func(stub);
-
-
+// Create a duplicate.let stub2 = stub.dup();
+// Call some function that will dispose the stub.await func(stub);
 // stub2 is still valid
-
-
 ```
 
 You can think of `dup()` like the [Unix system call of the same name ↗](https://man7.org/linux/man-pages/man2/dup.2.html): it creates a new handle pointing at the same target, which must be independently closed (disposed).
@@ -241,33 +145,10 @@ In order to avoid this situation, you can manually create a stub locally, and th
 JavaScript
 
 ```
-
 import { RpcTarget, RpcStub } from "cloudflare:workers";
-
-
-class Foo extends RpcTarget {
-
-  // ...
-
-}
-
-
-let obj = new Foo();
-
-let stub = new RpcStub(obj);
-
-await rpc1(stub.dup()); // sends a dup of `stub`
-
-await rpc2(stub.dup()); // sends another dup of `stub`
-
-stub[Symbol.dispose](); // disposes the original stub
-
-
-// obj's disposer will be called when the other two stubs
-
-// are disposed remotely.
-
-
+class Foo extends RpcTarget {  // ...}
+let obj = new Foo();let stub = new RpcStub(obj);await rpc1(stub.dup()); // sends a dup of `stub`await rpc2(stub.dup()); // sends another dup of `stub`stub[Symbol.dispose](); // disposes the original stub
+// obj's disposer will be called when the other two stubs// are disposed remotely.
 ```
 
 ```json

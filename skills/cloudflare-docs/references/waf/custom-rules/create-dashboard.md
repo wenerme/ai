@@ -6,14 +6,14 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
 # Create a custom rule in the dashboard
 
-* [  New dashboard ](#tab-panel-11149)
-* [ Old dashboard ](#tab-panel-11150)
+* [  New dashboard ](#tab-panel-11166)
+* [ Old dashboard ](#tab-panel-11167)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -45,12 +45,13 @@ When you select the _Block_ action in a rule you can optionally define a custom 
 
 The custom response has three settings:
 
-* **With response type**: Choose a content type or the default WAF block response from the list. The available custom response types are the following:  
-| Dashboard value | API value          |  
-| --------------- | ------------------ |  
-| Custom HTML     | "text/html"        |  
-| Custom Text     | "text/plain"       |  
-| Custom JSON     | "application/json" |  
+* **With response type**: Choose a content type or the default WAF block response from the list. The available custom response types are the following:
+
+| Dashboard value | API value          |
+| --------------- | ------------------ |
+| Custom HTML     | "text/html"        |
+| Custom Text     | "text/plain"       |
+| Custom JSON     | "application/json" |
 | Custom XML      | "text/xml"         |
 * **With response code**: Choose an HTTP status code for the response, in the range 400-499\. The default response code is 403.
 * **Response body**: The body of the response. Configure a valid body according to the response type you selected. The maximum field size is 2 KB.

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,10 +17,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 ## Endpoint
 
 ```
-
 https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/mistral
-
-
 ```
 
 ## Prerequisites
@@ -47,32 +44,7 @@ So your final URL will come together as: `https://gateway.ai.cloudflare.com/v1/{
 Example fetch request
 
 ```
-
-curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/mistral/v1/chat/completions \
-
- --header 'content-type: application/json' \
-
- --header 'Authorization: Bearer MISTRAL_TOKEN' \
-
- --data '{
-
-    "model": "mistral-large-latest",
-
-    "messages": [
-
-        {
-
-            "role": "user",
-
-            "content": "What is Cloudflare?"
-
-        }
-
-    ]
-
-}'
-
-
+curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/mistral/v1/chat/completions \ --header 'content-type: application/json' \ --header 'Authorization: Bearer MISTRAL_TOKEN' \ --data '{    "model": "mistral-large-latest",    "messages": [        {            "role": "user",            "content": "What is Cloudflare?"        }    ]}'
 ```
 
 ### Use `@mistralai/mistralai` package with JavaScript
@@ -82,38 +54,9 @@ If you are using the `@mistralai/mistralai` package, you can set your endpoint l
 JavaScript example
 
 ```
-
 import { Mistral } from "@mistralai/mistralai";
-
-
-const client = new Mistral({
-
-  apiKey: MISTRAL_TOKEN,
-
-  serverURL: `https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/mistral`,
-
-});
-
-
-await client.chat.create({
-
-  model: "mistral-large-latest",
-
-  messages: [
-
-    {
-
-      role: "user",
-
-      content: "What is Cloudflare?",
-
-    },
-
-  ],
-
-});
-
-
+const client = new Mistral({  apiKey: MISTRAL_TOKEN,  serverURL: `https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/mistral`,});
+await client.chat.create({  model: "mistral-large-latest",  messages: [    {      role: "user",      content: "What is Cloudflare?",    },  ],});
 ```
 
 ## OpenAI-Compatible Endpoint
@@ -121,23 +64,13 @@ await client.chat.create({
 You can also access Mistral models using the OpenAI API schema through the [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/). Send your requests to:
 
 ```
-
 https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1/chat/completions
-
-
 ```
 
 Specify:
 
 ```
-
-{
-
-"model": "mistral/{model}"
-
-}
-
-
+{"model": "mistral/{model}"}
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,15 +37,17 @@ Bulk Redirects require that the incoming traffic for the hostname referenced in 
 4. You can import a CSV file containing several URL redirects or enter URL redirects one at a time in the dashboard.  
 Note  
 The source URL of each redirect cannot include a query string. For more information, refer to the [supported URL components](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/url-components/).  
-Import a CSV file  
-   1. Drag and drop a CSV file containing URL redirects or select **browse** and select a CSV file. For more information on the file format, refer to [CSV file format for Bulk Redirects](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/csv-file-format/).  
-   2. The dashboard will display the URL redirects that were successfully imported from the file. You can manually adjust the displayed records or add/remove URL redirects before proceeding.  
-   3. Select **Next**.  
-Add URL redirects manually  
-   1. Select **Or, manually add URL redirects**.  
-   2. Enter the URL redirects you wish to add to the list. You must enter at least the following three fields: **Source URL**, **Target URL**, and **Status**. To set additional options, expand **Edit parameters**.  
-   3. Add more URL redirects, if required.  
-   4. Select **Next**.
+Import a CSV file
+
+  1. Drag and drop a CSV file containing URL redirects or select **browse** and select a CSV file. For more information on the file format, refer to [CSV file format for Bulk Redirects](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/csv-file-format/).
+  2. The dashboard will display the URL redirects that were successfully imported from the file. You can manually adjust the displayed records or add/remove URL redirects before proceeding.
+  3. Select **Next**.  
+Add URL redirects manually
+
+  1. Select **Or, manually add URL redirects**.
+  2. Enter the URL redirects you wish to add to the list. You must enter at least the following three fields: **Source URL**, **Target URL**, and **Status**. To set additional options, expand **Edit parameters**.
+  3. Add more URL redirects, if required.
+  4. Select **Next**.
 5. Review and edit the URL redirects you imported or created, and select **Next**.
 6. Select **Continue to Redirect Rules** to go to the rule creation page, and follow the instructions in the next section. You must create a Bulk Redirect Rule to enable the URL redirects you defined.
 
@@ -59,10 +61,11 @@ Cloudflare will apply the following rules when you add items to an existing list
 
 ## 2\. Create a Bulk Redirect Rule
 
-1. (Optional) If you are not using the Bulk Redirect List creation wizard according to the instructions in the previous section:  
-   1. In the Cloudflare dashboard, go to the **Bulk redirects** page.  
-   [ Go to **Bulk redirects** ](https://dash.cloudflare.com/?to=/:account/bulk-redirects)  
-   2. Select **Create Bulk Redirect Rule**.
+1. (Optional) If you are not using the Bulk Redirect List creation wizard according to the instructions in the previous section:
+
+  1. In the Cloudflare dashboard, go to the **Bulk redirects** page.  
+  [ Go to **Bulk redirects** ](https://dash.cloudflare.com/?to=/:account/bulk-redirects)
+  2. Select **Create Bulk Redirect Rule**.
 2. In **Rule name**, enter a descriptive name for the rule.
 3. Select the Bulk Redirect List you previously created.
 4. (Optional) If necessary, select **Or use the expression editor** to edit the [rule expression](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/concepts/#expression) or the [rule key](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/concepts/#key).

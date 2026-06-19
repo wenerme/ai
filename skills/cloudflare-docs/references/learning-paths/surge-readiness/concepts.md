@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -36,7 +36,7 @@ We strongly advise against credential-sharing which can jeopardize the trust and
 
 * **Multi-User:** Provide role-based permissions to a group of users to better control the administration of your domains. Each user has their own role and limited API key.
 * **Enforce 2FA:** Ensure your entire dashboard is secure by [enforcing 2-factor authentication](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/) for your organization.  
-   * To disable 2FA, submit a support ticket and allow 1-2 business days to validate your request.
+  * To disable 2FA, submit a support ticket and allow 1-2 business days to validate your request.
 * **Leverage API Access:** Work easily with our system programmatically using our [API ↗](https://api.cloudflare.com).
 
 ## Additional items
@@ -45,8 +45,8 @@ We strongly advise against credential-sharing which can jeopardize the trust and
 Note  
 Certificates managed by Cloudflare are auto-renewed.
 * Review your Operational and Disaster recovery preparedness  
-   * Enable Load Balancing with smart cache strategies: Use [Cloudflare Load Balancing](https://developers.cloudflare.com/reference-architecture/architectures/load-balancing) to distribute traffic across multiple healthy origins, and increase cache-hit ratios by leveraging [custom cache rules](https://developers.cloudflare.com/cache/performance-review/cache-analytics) and [edge compute ↗](https://www.cloudflare.com/learning/cdn/caching-static-and-dynamic-content/) (e.g., Cloudflare Workers) to offload origin traffic during high-demand periods.  
-   * Configure failover pools and back up DNS with a playbook: Set up [Cloudflare Load Balancer failover pools](https://developers.cloudflare.com/reference-architecture/architectures/load-balancing) to automatically redirect traffic to healthy origins if one fails. Export DNS records for safekeeping and prepare a clear [incident response plan ↗](https://www.cloudflare.com/learning/performance/preventing-downtime) that includes steps for re-routing or recovery.
+  * Enable Load Balancing with smart cache strategies: Use [Cloudflare Load Balancing](https://developers.cloudflare.com/reference-architecture/architectures/load-balancing) to distribute traffic across multiple healthy origins, and increase cache-hit ratios by leveraging [custom cache rules](https://developers.cloudflare.com/cache/performance-review/cache-analytics) and [edge compute ↗](https://www.cloudflare.com/learning/cdn/caching-static-and-dynamic-content/) (e.g., Cloudflare Workers) to offload origin traffic during high-demand periods.
+  * Configure failover pools and back up DNS with a playbook: Set up [Cloudflare Load Balancer failover pools](https://developers.cloudflare.com/reference-architecture/architectures/load-balancing) to automatically redirect traffic to healthy origins if one fails. Export DNS records for safekeeping and prepare a clear [incident response plan ↗](https://www.cloudflare.com/learning/performance/preventing-downtime) that includes steps for re-routing or recovery.
 * Review and update your current users' access
 * Check your domain registry validity
 

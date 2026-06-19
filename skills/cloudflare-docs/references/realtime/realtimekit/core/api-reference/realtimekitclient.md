@@ -5,35 +5,35 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
 # RealtimeKitClient
 
-The RealtimeKitClient class is the main class of the web core library. An object of the RealtimeKitClient class can be created using`await RealtimeKitClient.init({ ... })`. Typically, an object of `RealtimeKitClient` is named `meeting`.
+The RealtimeKitClient class is the main class of the web core library. An object of the RealtimeKitClient class can be created using `await RealtimeKitClient.init({ ... })`. Typically, an object of `RealtimeKitClient` is named `meeting`.
 
 * [RealtimeKitClient](#module%5FRealtimeKitClient)  
-   * [module.exports](#exp%5Fmodule%5FRealtimeKitClient--module.exports) ⏏  
-         * [new module.exports(context, controller)](#new%5Fmodule%5FRealtimeKitClient--module.exports%5Fnew)  
-         * _instance_  
-                  * [.participants](#module%5FRealtimeKitClient--module.exports+participants)  
-                  * [.self](#module%5FRealtimeKitClient--module.exports+self)  
-                  * [.meta](#module%5FRealtimeKitClient--module.exports+meta)  
-                  * [.ai](#module%5FRealtimeKitClient--module.exports+ai)  
-                  * [.plugins](#module%5FRealtimeKitClient--module.exports+plugins)  
-                  * [.chat](#module%5FRealtimeKitClient--module.exports+chat)  
-                  * [.polls](#module%5FRealtimeKitClient--module.exports+polls)  
-                  * [.connectedMeetings](#module%5FRealtimeKitClient--module.exports+connectedMeetings)  
-                  * [.**internals**](#module%5FRealtimeKitClient--module.exports+%5F%5Finternals%5F%5F)  
-                  * [.join()](#module%5FRealtimeKitClient--module.exports+join)  
-                  * [.leave()](#module%5FRealtimeKitClient--module.exports+leave)  
-                  * ~~[.joinRoom()](#module%5FRealtimeKitClient--module.exports+joinRoom)~~  
-                  * ~~[.leaveRoom(\[state\])](#module%5FRealtimeKitClient--module.exports+leaveRoom)~~  
-         * _static_  
-                  * [.initMedia(\[options\], \[skipAwaits\], \[cachedUserDetails\])](#module%5FRealtimeKitClient--module.exports.initMedia)  
-                  * [.init(options)](#module%5FRealtimeKitClient--module.exports.init)  
-                  * [.setupContext(peerId, options, meetingId, args)](#module%5FRealtimeKitClient--module.exports.setupContext)
+  * [module.exports](#exp%5Fmodule%5FRealtimeKitClient--module.exports) ⏏  
+    * [new module.exports(context, controller)](#new%5Fmodule%5FRealtimeKitClient--module.exports%5Fnew)
+    * _instance_  
+      * [.participants](#module%5FRealtimeKitClient--module.exports+participants)
+      * [.self](#module%5FRealtimeKitClient--module.exports+self)
+      * [.meta](#module%5FRealtimeKitClient--module.exports+meta)
+      * [.ai](#module%5FRealtimeKitClient--module.exports+ai)
+      * [.plugins](#module%5FRealtimeKitClient--module.exports+plugins)
+      * [.chat](#module%5FRealtimeKitClient--module.exports+chat)
+      * [.polls](#module%5FRealtimeKitClient--module.exports+polls)
+      * [.connectedMeetings](#module%5FRealtimeKitClient--module.exports+connectedMeetings)
+      * [.**internals**](#module%5FRealtimeKitClient--module.exports+%5F%5Finternals%5F%5F)
+      * [.join()](#module%5FRealtimeKitClient--module.exports+join)
+      * [.leave()](#module%5FRealtimeKitClient--module.exports+leave)
+      * ~~[.joinRoom()](#module%5FRealtimeKitClient--module.exports+joinRoom)~~
+      * ~~[.leaveRoom(\[state\])](#module%5FRealtimeKitClient--module.exports+leaveRoom)~~
+    * _static_  
+      * [.initMedia(\[options\], \[skipAwaits\], \[cachedUserDetails\])](#module%5FRealtimeKitClient--module.exports.initMedia)
+      * [.init(options)](#module%5FRealtimeKitClient--module.exports.init)
+      * [.setupContext(peerId, options, meetingId, args)](#module%5FRealtimeKitClient--module.exports.setupContext)
 
 ### module.exports ⏏
 
@@ -48,7 +48,7 @@ The RealtimeKitClient class is the main class of the web core library. An object
 
 #### module.exports.participants
 
-The `participants` object consists of 4 maps of participants,`waitlisted`, `joined`, `active`, `pinned`. The maps are indexed by`peerId`s, and the values are the corresponding participant objects.
+The `participants` object consists of 4 maps of participants, `waitlisted`, `joined`, `active`, `pinned`. The maps are indexed by `peerId`s, and the values are the corresponding participant objects.
 
 **Kind**: instance property of [module.exports](#exp%5Fmodule%5FRealtimeKitClient--module.exports)  
 

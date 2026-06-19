@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,8 +33,8 @@ To view whether a domain is malicious or suspicious:
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Investigation**.
 2. Run a screen. For example, select **Run screen** for **Malicious emails**, then select **Run screen**.
 3. Under **Your matching messages**, if any message displays **Domain Age** under **Threat types**, that means that the domain age is too low, and therefore the disposition assigned is Malicious. If the domain is legitimate, you can add it as a trusted domain:  
-   * Go to **Settings** \> **Trusted Domains**.  
-   * Under **Domain Info**, add the domain, and select **New Domain**. This will mark the domain whose age is low as a trusted domain.
+  * Go to **Settings** \> **Trusted Domains**.
+  * Under **Domain Info**, add the domain, and select **New Domain**. This will mark the domain whose age is low as a trusted domain.
 
 ## Configure trusted domains
 
@@ -45,13 +45,13 @@ To configure a trusted domain:
 3. Select **Settings**, go to **Detection settings** \> **Trusted domains**.
 4. On the **Detection settings** page, select **Add a domain**.
 5. Select the **Input method**: Choose between **Manual input**, and **Upload trusted domain list**:  
-   * **Manual input**:  
-         * **Domain info**: Enter a valid domain name.  
-         * **Domain type**: Select one or both options:  
-                  * **Proximity domain**: Domains with similar spelling to your existing domain.  
-                  * **Recent domain**: Domains created recently.  
-         * **Notes**: Provide additional information about the trusted domain list.  
-   * **Upload trusted domain list**: You can upload a file no larger than 150 KB of multiple trusted domains. The file can only contain `Domain`, `Proximity`, `New` and `Notes` fields. The first row must be a header row. Refer to [CSV uploads](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/trusted-domains/#csv-uploads) for an example file.
+  * **Manual input**:  
+    * **Domain info**: Enter a valid domain name.
+    * **Domain type**: Select one or both options:  
+      * **Proximity domain**: Domains with similar spelling to your existing domain.
+      * **Recent domain**: Domains created recently.
+    * **Notes**: Provide additional information about the trusted domain list.
+  * **Upload trusted domain list**: You can upload a file no larger than 150 KB of multiple trusted domains. The file can only contain `Domain`, `Proximity`, `New` and `Notes` fields. The first row must be a header row. Refer to [CSV uploads](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/trusted-domains/#csv-uploads) for an example file.
 6. Select **Save**.
 
 ### CSV uploads
@@ -61,14 +61,7 @@ You can upload a file no larger than 150 KB of multiple trusted domains. The fil
 An example file would look like this:
 
 ```
-
-Domain, Proximity, New, Notes
-
-mydomain.com, true, true, First Person
-
-testdomain.com, false, true, New Hire
-
-
+Domain, Proximity, New, Notesmydomain.com, true, true, First Persontestdomain.com, false, true, New Hire
 ```
 
 ## Export trusted domains

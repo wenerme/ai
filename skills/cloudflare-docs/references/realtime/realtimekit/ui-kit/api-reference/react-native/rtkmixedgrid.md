@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,71 +37,15 @@ A grid layout that handles mixed content: participants, screenshares, plugins, a
 ### Basic Usage
 
 ```
-
 import { RtkMixedGrid } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkMixedGrid
-
-      meeting={meeting}
-
-      participants={participants}
-
-      pinnedParticipants={[]}
-
-      screenShareParticipants={[]}
-
-      plugins={[]}
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkMixedGrid      meeting={meeting}      participants={participants}      pinnedParticipants={[]}      screenShareParticipants={[]}      plugins={[]}    />  );}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkMixedGrid } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkMixedGrid
-
-      meeting={meeting}
-
-      participants={participants}
-
-      pinnedParticipants={pinned}
-
-      screenShareParticipants={screenshares}
-
-      plugins={activePlugins}
-
-      aspectRatio="16:9"
-
-      gap={12}
-
-      size="md"
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkMixedGrid      meeting={meeting}      participants={participants}      pinnedParticipants={pinned}      screenShareParticipants={screenshares}      plugins={activePlugins}      aspectRatio="16:9"      gap={12}      size="md"    />  );}
 ```
 
 ```json

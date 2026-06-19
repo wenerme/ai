@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,61 +21,13 @@ For the [JavaScript APIs](https://developers.cloudflare.com/queues/configuration
 JavaScript
 
 ```
-
-try {
-
-  await env.MY_QUEUE.send("message", { delaySeconds: 999999 });
-
-    return new Response("Sent message to the queue");
-
-} catch (error) {
-
-  console.error(error);
-
-  return new Response("Failed to send message to the queue", { status: 500 });
-
-}
-
-
+try {  await env.MY_QUEUE.send("message", { delaySeconds: 999999 });    return new Response("Sent message to the queue");} catch (error) {  console.error(error);  return new Response("Failed to send message to the queue", { status: 500 });}
 ```
 
 For the [Cloudflare API via HTTP](https://developers.cloudflare.com/api/resources/queues/subresources/messages/), the response will include an `errors` object which has both a `message` and `code` field:
 
 ```
-
-{
-
-  "errors": [
-
-    {
-
-      "code": 7003,
-
-      "message": "No route for the URI",
-
-      "documentation_url": "documentation_url",
-
-      "source": {
-
-        "pointer": "pointer"
-
-      }
-
-    }
-
-  ],
-
-  "messages": [
-
-    "string"
-
-  ],
-
-  "success": true
-
-}
-
-
+{  "errors": [    {      "code": 7003,      "message": "No route for the URI",      "documentation_url": "documentation_url",      "source": {        "pointer": "pointer"      }    }  ],  "messages": [    "string"  ],  "success": true}
 ```
 
 ## Error code reference

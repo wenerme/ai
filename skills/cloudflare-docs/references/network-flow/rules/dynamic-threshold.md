@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network-flow/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -38,10 +38,7 @@ Z-score compares short-term traffic patterns (five-minute window) against long-t
 Z-Score is calculated by using the following formula:
 
 ```
-
 Z = (X - μ) / σ
-
-
 ```
 
 * `X` \= Current traffic value.

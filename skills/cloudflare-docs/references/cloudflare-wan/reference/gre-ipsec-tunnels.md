@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -119,48 +119,55 @@ IKE SA (also known as Phase 1)
 
 Documentation sometimes refers to IKE SA as Phase 1 as per IKEv1 language.
 
-* **Encryption**  
-   * AES-GCM-16 with 128-bit or 256-bit key length  
-   * AES-CBC with 256-bit key length
-* **Integrity** (sometimes referred to as Authentication)  
-   * SHA2-256
-* **Key Exchange Method** (formerly Diffie-Hellman group): Cloudflare supports the following key exchange methods for the IKE SA. Note that [RFC 9370 ↗](https://datatracker.ietf.org/doc/rfc9370/) renames "DH Group" to "Key Exchange Method" to accommodate non-DH algorithms.  
-   * **Post-quantum hybrid (recommended)**: ML-KEM-768 as an additional Key Exchange to DH Group 20 (per RFC 9370 and [draft-ietf-ipsecme-ikev2-mlkem ↗](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-mlkem/))  
-   * Post-quantum hybrid: ML-KEM-1024 as an additional Key Exchange to DH Group 20 (per RFC 9370 and [draft-ietf-ipsecme-ikev2-mlkem ↗](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-mlkem/))  
-   * Classical DH group 20 (384-bit random ECP group)  
-   * Classical DH group 14 (2048-bit MODP group)  
-   * Classical DH group 5 (1536-bit MODP group)  
-   Warning  
-   Cloudflare recommends the **ML-KEM-768 + DH Group 20** hybrid exchange for post-quantum key agreement. If your appliance does not yet support RFC 9370 and draft-ietf-ipsecme-ikev2-mlkem, use DH group 20.
+* **Encryption**
+
+  * AES-GCM-16 with 128-bit or 256-bit key length
+  * AES-CBC with 256-bit key length
+* **Integrity** (sometimes referred to as Authentication)
+
+  * SHA2-256
+* **Key Exchange Method** (formerly Diffie-Hellman group): Cloudflare supports the following key exchange methods for the IKE SA. Note that [RFC 9370 ↗](https://datatracker.ietf.org/doc/rfc9370/) renames "DH Group" to "Key Exchange Method" to accommodate non-DH algorithms.
+
+  * **Post-quantum hybrid (recommended)**: ML-KEM-768 as an additional Key Exchange to DH Group 20 (per RFC 9370 and [draft-ietf-ipsecme-ikev2-mlkem ↗](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-mlkem/))
+  * Post-quantum hybrid: ML-KEM-1024 as an additional Key Exchange to DH Group 20 (per RFC 9370 and [draft-ietf-ipsecme-ikev2-mlkem ↗](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-mlkem/))
+  * Classical DH group 20 (384-bit random ECP group)
+  * Classical DH group 14 (2048-bit MODP group)
+  * Classical DH group 5 (1536-bit MODP group)  
+  Warning  
+  Cloudflare recommends the **ML-KEM-768 + DH Group 20** hybrid exchange for post-quantum key agreement. If your appliance does not yet support RFC 9370 and draft-ietf-ipsecme-ikev2-mlkem, use DH group 20.
 * **Pseudorandom function (PRF)**  
-Do not confuse this with Perfect Forward Secrecy (PFS). You often cannot configure PRF.  
-   * SHA2-256  
-   * SHA2-384  
-   * SHA2-512
+Do not confuse this with Perfect Forward Secrecy (PFS). You often cannot configure PRF.
+
+  * SHA2-256
+  * SHA2-384
+  * SHA2-512
 
 Child SA (also known as Phase 2 or IPsec SA)
 
 The Child SA. Documentation sometimes refers to this as Phase 2 as per IKEv1 language.
 
-* **Encryption**:  
-   * AES-GCM-16 with 128-bit or 256-bit key length  
-   * AES-CBC with 128-bit or 256-bit key length
-* **Integrity** (sometimes referred to as Authentication.)  
-   * SHA2-256  
-   * SHA-1  
+* **Encryption**:
+
+  * AES-GCM-16 with 128-bit or 256-bit key length
+  * AES-CBC with 128-bit or 256-bit key length
+* **Integrity** (sometimes referred to as Authentication.)
+
+  * SHA2-256
+  * SHA-1  
 Note  
 When using AES-GCM-16, you do not need an integrity algorithm because AES GCM includes integrity checking (since it is an Authenticated Encryption with Associated Data (AEAD) algorithm). Even when using an AEAD algorithm, however, some routers still require you to select an integrity algorithm.
 * **Perfect Forward Secrecy (PFS) group**  
-Documentation sometimes refers to this as Phase 2 Diffie-Hellman Group. Do not confuse this with PRF. Cloudflare supports the following Diffie-Hellman (DH) groups.  
-   * DH group 20 (384-bit random ECP group)  
-   * DH group 14 (2048-bit MODP group)  
-   * DH group 5 (1536-bit MODP group)  
-   Post-quantum security  
-   If the Child SA uses DH groups for Perfect Forward Secrecy, it is still protected against quantum threats if the parent IKE SA was established using a hybrid ML-KEM exchange.  
-   Warning  
-   Cloudflare recommends that you use only one DH group when configuring your device, specifically **DH group 20**.  
-   Note  
-   Cloudflare recommends configuring the Child SA rekey interval (SA lifetime) between 30 minutes and 8 hours.
+Documentation sometimes refers to this as Phase 2 Diffie-Hellman Group. Do not confuse this with PRF. Cloudflare supports the following Diffie-Hellman (DH) groups.
+
+  * DH group 20 (384-bit random ECP group)
+  * DH group 14 (2048-bit MODP group)
+  * DH group 5 (1536-bit MODP group)  
+  Post-quantum security  
+  If the Child SA uses DH groups for Perfect Forward Secrecy, it is still protected against quantum threats if the parent IKE SA was established using a hybrid ML-KEM exchange.  
+  Warning  
+  Cloudflare recommends that you use only one DH group when configuring your device, specifically **DH group 20**.  
+  Note  
+  Cloudflare recommends configuring the Child SA rekey interval (SA lifetime) between 30 minutes and 8 hours.
 
 Required configuration parameters
 

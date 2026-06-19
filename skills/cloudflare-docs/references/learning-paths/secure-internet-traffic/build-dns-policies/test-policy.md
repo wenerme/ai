@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,13 +19,14 @@ It is common for a misconfigured Gateway policy to accidentally block traffic to
 1. Go to **Traffic policies** \> **Firewall policies**.
 2. Turn off all existing DNS policies.
 3. Turn on any existing security policies or create a policy to block all security categories:  
-| Selector            | Operator | Value                | Action |  
-| ------------------- | -------- | -------------------- | ------ |  
+
+| Selector            | Operator | Value                | Action |
+| ------------------- | -------- | -------------------- | ------ |
 | Security Categories | in       | _All security risks_ | Block  |
 4. Ensure that your browser is not configured to use an alternate DNS resolver. For example, Chrome has a **Use secure DNS** setting that will cause the browser to send requests to 1.1.1.1 and bypass your DNS policies.
 5. In the browser, go to `malware.testcategory.com`. Your browser will display:  
-   * The Gateway block page, if your device is connected through the Cloudflare One Client in Traffic and DNS mode.  
-   * A generic error page, if your device is connected through another method, such as DNS only mode.
+  * The Gateway block page, if your device is connected through the Cloudflare One Client in Traffic and DNS mode.
+  * A generic error page, if your device is connected through another method, such as DNS only mode.
 
 Note
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,10 +25,10 @@ To create a reusable Access policy:
 5. Choose a [**Session duration**](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/) for the policy.
 6. Configure as many [**Rules**](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#rule-types) as needed.
 7. (Optional) Configure additional settings for users who match this policy:  
-   * [Isolate application](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/isolate-application/).  
-   * [Purpose justification](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/require-purpose-justification/)  
-   * [Temporary authentication](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/temporary-auth/)  
-   * [Independent MFA](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#independent-mfa)
+  * [Isolate application](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/isolate-application/).
+  * [Purpose justification](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/require-purpose-justification/)
+  * [Temporary authentication](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/temporary-auth/)
+  * [Independent MFA](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#independent-mfa)
 8. Select **Save**.
 
 You can now add this policy to an [Access application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/).
@@ -85,10 +85,11 @@ The policy tester reports the percentage of users who are allowed or denied acce
 a. If you made any changes to your policies, first save the application.  
 b. Select **testing a single user**.  
 c. Enter their email address and select **Test policies**.  
-The single user test results will show:  
-   * Whether the user is allowed or denied access to this application based on all configured policies.  
-   * The user's identity from their most recent Access login attempt.  
-   * Whether the user matches individual Allow, Block, or Bypass policies.
+The single user test results will show:
+
+  * Whether the user is allowed or denied access to this application based on all configured policies.
+  * The user's identity from their most recent Access login attempt.
+  * Whether the user matches individual Allow, Block, or Bypass policies.
 
 ## Legacy policies
 
@@ -109,20 +110,13 @@ You can use the API to convert a legacy policy into a reusable policy. To conver
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Access: Apps and Policies Write`
 
 Convert an Access application policy to a reusable policy
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_ID/policies/$POLICY_ID/make_reusable" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_ID/policies/$POLICY_ID/make_reusable" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 The policy is now removed from the applications endpoint (`/access/apps/$APP_ID/policies`) and managed using the [reusable policies endpoints](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/policies/)(`/access/policies/$POLICY_ID`).

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -42,62 +42,20 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-8699)
-* [  wrangler.toml ](#tab-panel-8700)
+* [  wrangler.jsonc ](#tab-panel-8775)
+* [  wrangler.toml ](#tab-panel-8776)
 
 JSONC
 
 ```
-
-{
-
-  // required for database drivers to function
-
-  "compatibility_flags": [
-
-    "nodejs_compat"
-
-  ],
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "hyperdrive": [
-
-    {
-
-      "binding": "HYPERDRIVE",
-
-      "id": "<your-hyperdrive-id-here>"
-
-    }
-
-  ]
-
-}
-
-
+{  // required for database drivers to function  "compatibility_flags": [    "nodejs_compat"  ],  // Set this to today's date  "compatibility_date": "2026-06-18",  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<your-hyperdrive-id-here>"    }  ]}
 ```
 
 TOML
 
 ```
-
-compatibility_flags = [ "nodejs_compat" ]
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[[hyperdrive]]
-
-binding = "HYPERDRIVE"
-
-id = "<your-hyperdrive-id-here>"
-
-
+compatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-06-18"
+[[hyperdrive]]binding = "HYPERDRIVE"id = "<your-hyperdrive-id-here>"
 ```
 
 Create a new `connection` instance and pass the Hyperdrive parameters:
@@ -105,70 +63,11 @@ Create a new `connection` instance and pass the Hyperdrive parameters:
 TypeScript
 
 ```
-
-// mysql2 v3.13.0 or later is required
-
-import { createConnection } from "mysql2/promise";
-
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    // Create a new connection on each request. Hyperdrive maintains the underlying
-
-    // database connection pool, so creating a new connection is fast.
-
-    const connection = await createConnection({
-
-      host: env.HYPERDRIVE.host,
-
-      user: env.HYPERDRIVE.user,
-
-      password: env.HYPERDRIVE.password,
-
-      database: env.HYPERDRIVE.database,
-
-      port: env.HYPERDRIVE.port,
-
-
-      // Required to enable mysql2 compatibility for Workers
-
-      disableEval: true,
-
-    });
-
-
-    try {
-
-      // Sample query
-
-      const [results, fields] = await connection.query("SHOW tables;");
-
-
-      // Return result rows as JSON
-
-      return Response.json({ results, fields });
-
-    } catch (e) {
-
-      console.error(e);
-
-      return Response.json(
-
-        { error: e instanceof Error ? e.message : e },
-
-        { status: 500 },
-
-      );
-
-    }
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+// mysql2 v3.13.0 or later is requiredimport { createConnection } from "mysql2/promise";
+export default {  async fetch(request, env, ctx): Promise<Response> {    // Create a new connection on each request. Hyperdrive maintains the underlying    // database connection pool, so creating a new connection is fast.    const connection = await createConnection({      host: env.HYPERDRIVE.host,      user: env.HYPERDRIVE.user,      password: env.HYPERDRIVE.password,      database: env.HYPERDRIVE.database,      port: env.HYPERDRIVE.port,
+      // Required to enable mysql2 compatibility for Workers      disableEval: true,    });
+    try {      // Sample query      const [results, fields] = await connection.query("SHOW tables;");
+      // Return result rows as JSON      return Response.json({ results, fields });    } catch (e) {      console.error(e);      return Response.json(        { error: e instanceof Error ? e.message : e },        { status: 500 },      );    }  },} satisfies ExportedHandler<Env>;
 ```
 
 Note

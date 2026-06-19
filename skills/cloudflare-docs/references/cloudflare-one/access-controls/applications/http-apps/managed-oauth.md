@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,8 +27,8 @@ If you run your own OAuth server behind an Access application and rely on your o
 
 ## Enable managed OAuth on a self-hosted application
 
-* [ Dashboard ](#tab-panel-7101)
-* [ API ](#tab-panel-7102)
+* [ Dashboard ](#tab-panel-7177)
+* [ API ](#tab-panel-7178)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Find the application you want to configure, then select the three dots on the right > **Edit**.
@@ -38,29 +38,20 @@ If you run your own OAuth server behind an Access application and rely on your o
 
 1. Get your existing Access application configuration:  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Access: Apps and Policies Write`  
-   * `Access: Apps and Policies Read`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Access: Apps and Policies Write`
+  * `Access: Apps and Policies Read`  
 Get an Access application  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_ID" \  
-  --request GET \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_ID" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
 ```
 2. Make a `PUT` request and set `oauth_configuration.enabled` to `true`. To avoid overwriting your existing configuration, the request body should contain all fields returned by the previous `GET` request.  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Access: Apps and Policies Write`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Access: Apps and Policies Write`  
 Update an Access application  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_ID" \  
-  --request PUT \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "oauth_configuration": {  
-        "enabled": true  
-    }  
-  }'  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "oauth_configuration": {        "enabled": true    }  }'  
 ```
 
 To test, open an RFC 8707-compliant OAuth client and make a request to your application. The client should open a browser window prompting you to log in to Access. Refer to the [Authorization flow](#authorization-flow) section for more details.
@@ -69,8 +60,8 @@ To test, open an RFC 8707-compliant OAuth client and make a request to your appl
 
 Managed OAuth is available on [MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) and is the mechanism that allows MCP clients to authenticate users through the portal without a browser cookie flow.
 
-* [ Dashboard ](#tab-panel-7103)
-* [ API ](#tab-panel-7104)
+* [ Dashboard ](#tab-panel-7179)
+* [ API ](#tab-panel-7180)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
 2. Find the portal you want to configure, then select the three dots on the right > **Edit**.
@@ -80,37 +71,28 @@ Managed OAuth is available on [MCP server portals](https://developers.cloudflare
 
 1. Get your existing configuration for the portal's underlying Access application:  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Access: Apps and Policies Write`  
-   * `Access: Apps and Policies Read`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Access: Apps and Policies Write`
+  * `Access: Apps and Policies Read`  
 Get an Access application  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_ID" \  
-  --request GET \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_ID" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
 ```
 2. Make a `PUT` request and set `oauth_configuration.enabled` to `true`. To avoid overwriting your existing configuration, the request body should contain all fields returned by the previous `GET` request.  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Access: Apps and Policies Write`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Access: Apps and Policies Write`  
 Update an Access application  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_ID" \  
-  --request PUT \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "oauth_configuration": {  
-        "enabled": true  
-    }  
-  }'  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "oauth_configuration": {        "enabled": true    }  }'  
 ```
 
 To test, open an MCP client and [connect to the MCP portal](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#connect-to-a-portal). The client should open a browser window prompting you to log in to Access. Refer to the [Authorization flow](#authorization-flow) section for more details.
 
 ## Managed OAuth settings
 
-* [ Dashboard ](#tab-panel-7105)
-* [ API ](#tab-panel-7106)
+* [ Dashboard ](#tab-panel-7181)
+* [ API ](#tab-panel-7182)
 
 Configure these settings in the **Advanced settings** tab of your [self-hosted app](#enable-managed-oauth-on-a-self-hosted-application) or [MCP server portal](#enable-managed-oauth-on-an-mcp-server-portal).
 
@@ -142,41 +124,20 @@ Configure these settings via the `oauth_configuration` object on the [Access app
 
 1. Get your existing Access application configuration:  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Access: Apps and Policies Write`  
-   * `Access: Apps and Policies Read`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Access: Apps and Policies Write`
+  * `Access: Apps and Policies Read`  
 Get an Access application  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_ID" \  
-  --request GET \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_ID" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
 ```
 2. Make a `PUT` request with your Managed OAUth settings. To avoid overwriting your existing configuration, the request body should contain all fields returned by the previous `GET` request.  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Access: Apps and Policies Write`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Access: Apps and Policies Write`  
 Update an Access application  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_ID" \  
-  --request PUT \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "oauth_configuration": {  
-        "enabled": true,  
-        "dynamic_client_registration": {  
-            "enabled": true,  
-            "allow_any_on_localhost": true,  
-            "allow_any_on_loopback": true,  
-            "allowed_uris": [  
-                "https://playground.ai.cloudflare.com/*"  
-            ]  
-        },  
-        "grant": {  
-            "access_token_lifetime": "5m",  
-            "session_duration": "24h"  
-        }  
-    }  
-  }'  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "oauth_configuration": {        "enabled": true,        "dynamic_client_registration": {            "enabled": true,            "allow_any_on_localhost": true,            "allow_any_on_loopback": true,            "allowed_uris": [                "https://playground.ai.cloudflare.com/*"            ]        },        "grant": {            "access_token_lifetime": "5m",            "session_duration": "24h"        }    }  }'  
 ```
 
 ## Authorization flow
@@ -215,7 +176,7 @@ Consolidating domains into a single Access application means all domains share t
 
 Both managed OAuth and [service tokens](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/) allow non-browser clients to authenticate with Access-protected applications, but they serve different use cases:
 
-| Managed OAuth             | Service tokens                                                                   |                                                                                                                                  |
+|                           | Managed OAuth                                                                    | Service tokens                                                                                                                   |
 | ------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | **Authentication model**  | User-based — the end user logs in through their identity provider                | Machine-based — a shared secret authenticates the service itself                                                                 |
 | **Best for**              | Interactive CLI tools, AI agents, SDKs where a human initiates the request       | Fully automated systems, cron jobs, CI/CD pipelines, server-to-server communication                                              |

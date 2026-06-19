@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,10 +21,7 @@ Install the `eleventy` CLI by running the following command in your terminal:
 Terminal window
 
 ```
-
 npm install -g @11ty/eleventy
-
-
 ```
 
 ## Creating a new project
@@ -34,14 +31,7 @@ There are a lot of [starter projects ↗](https://www.11ty.dev/docs/starter/) av
 Terminal window
 
 ```
-
-git clone https://github.com/11ty/eleventy-base-blog.git my-blog-name
-
-cd my-blog-name
-
-npm install
-
-
+git clone https://github.com/11ty/eleventy-base-blog.git my-blog-namecd my-blog-namenpm install
 ```
 
 ## Before you continue
@@ -59,14 +49,7 @@ Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). Aft
 Terminal window
 
 ```
-
-git remote set-url origin https://github.com/yourgithubusername/githubrepo
-
-git branch -M main
-
-git push -u origin main
-
-
+git remote set-url origin https://github.com/yourgithubusername/githubrepogit branch -M maingit push -u origin main
 ```
 
 ## Deploy with Cloudflare Pages

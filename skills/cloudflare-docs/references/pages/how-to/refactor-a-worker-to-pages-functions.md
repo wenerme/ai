@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -56,105 +56,14 @@ The `submitHandler` async function is called if the pathname of the work is `/su
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    const url = new URL(request.url);
-
-
-    if (url.pathname === "/submit") {
-
-      return submitHandler(request, env);
-
-    }
-
-
-    return fetch(request.url);
-
-  },
-
-};
-
-
-async function submitHandler(request, env) {
-
-  if (request.method !== "POST") {
-
-    return new Response("Method not allowed", {
-
-      status: 405,
-
-    });
-
-  }
-
-  const body = await request.formData();
-
-
-  const { first_name, last_name, email, phone, subject, message } =
-
-    Object.fromEntries(body);
-
-
-  const reqBody = {
-
-    fields: {
-
-      "First Name": first_name,
-
-      "Last Name": last_name,
-
-      Email: email,
-
-      "Phone number": phone,
-
-      Subject: subject,
-
-      Message: message,
-
-    },
-
-  };
-
-
-  return HandleAirtableData(reqBody, env);
-
-}
-
-
-const HandleAirtableData = (body, env) => {
-
-  return fetch(
-
-    `https://api.airtable.com/v0/${env.AIRTABLE_BASE_ID}/${encodeURIComponent(
-
-      env.AIRTABLE_TABLE_NAME,
-
-    )}`,
-
-    {
-
-      method: "POST",
-
-      body: JSON.stringify(body),
-
-      headers: {
-
-        Authorization: `Bearer ${env.AIRTABLE_API_KEY}`,
-
-        "Content-type": `application/json`,
-
-      },
-
-    },
-
-  );
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    const url = new URL(request.url);
+    if (url.pathname === "/submit") {      return submitHandler(request, env);    }
+    return fetch(request.url);  },};
+async function submitHandler(request, env) {  if (request.method !== "POST") {    return new Response("Method not allowed", {      status: 405,    });  }  const body = await request.formData();
+  const { first_name, last_name, email, phone, subject, message } =    Object.fromEntries(body);
+  const reqBody = {    fields: {      "First Name": first_name,      "Last Name": last_name,      Email: email,      "Phone number": phone,      Subject: subject,      Message: message,    },  };
+  return HandleAirtableData(reqBody, env);}
+const HandleAirtableData = (body, env) => {  return fetch(    `https://api.airtable.com/v0/${env.AIRTABLE_BASE_ID}/${encodeURIComponent(      env.AIRTABLE_TABLE_NAME,    )}`,    {      method: "POST",      body: JSON.stringify(body),      headers: {        Authorization: `Bearer ${env.AIRTABLE_API_KEY}`,        "Content-type": `application/json`,      },    },  );};
 ```
 
 ### Refactor your Worker
@@ -166,14 +75,7 @@ Then, in the `form.js` file, export a single `onRequestPost`:
 JavaScript
 
 ```
-
-export async function onRequestPost(context) {
-
-  return await submitHandler(context);
-
-}
-
-
+export async function onRequestPost(context) {  return await submitHandler(context);}
 ```
 
 Every Worker has an `addEventListener` to listen for `fetch` events, but you will not need this in a Pages Function. Instead, you will `export` a single `onRequest` function, and depending on the HTTPS request it handles, you will name it accordingly. Refer to [Function documentation](https://developers.cloudflare.com/pages/functions/get-started/) to select the appropriate method for your function.
@@ -185,50 +87,11 @@ Now, you will introduce the `submitHandler` function and pass the `env` paramete
 JavaScript
 
 ```
-
-export async function onRequestPost(context) {
-
-  return await submitHandler(context);
-
-}
-
-
-async function submitHandler(context) {
-
-  const body = await context.request.formData();
-
-
-  const { first_name, last_name, email, phone, subject, message } =
-
-    Object.fromEntries(body);
-
-
-  const reqBody = {
-
-    fields: {
-
-      "First Name": first_name,
-
-      "Last Name": last_name,
-
-      Email: email,
-
-      "Phone number": phone,
-
-      Subject: subject,
-
-      Message: message,
-
-    },
-
-  };
-
-
-  return HandleAirtableData({ body: reqBody, env: env });
-
-}
-
-
+export async function onRequestPost(context) {  return await submitHandler(context);}
+async function submitHandler(context) {  const body = await context.request.formData();
+  const { first_name, last_name, email, phone, subject, message } =    Object.fromEntries(body);
+  const reqBody = {    fields: {      "First Name": first_name,      "Last Name": last_name,      Email: email,      "Phone number": phone,      Subject: subject,      Message: message,    },  };
+  return HandleAirtableData({ body: reqBody, env: env });}
 ```
 
 Finally, create a `HandleAirtableData` function. This function will send a `fetch` request to Airtable with your Airtable credentials and the body of your request:
@@ -236,40 +99,7 @@ Finally, create a `HandleAirtableData` function. This function will send a `fetc
 JavaScript
 
 ```
-
-// ..
-
-const HandleAirtableData = async function onRequest({ body, env }) {
-
-  return fetch(
-
-    `https://api.airtable.com/v0/${env.AIRTABLE_BASE_ID}/${encodeURIComponent(
-
-      env.AIRTABLE_TABLE_NAME,
-
-    )}`,
-
-    {
-
-      method: "POST",
-
-      body: JSON.stringify(body),
-
-      headers: {
-
-        Authorization: `Bearer ${env.AIRTABLE_API_KEY}`,
-
-        "Content-type": `application/json`,
-
-      },
-
-    },
-
-  );
-
-};
-
-
+// ..const HandleAirtableData = async function onRequest({ body, env }) {  return fetch(    `https://api.airtable.com/v0/${env.AIRTABLE_BASE_ID}/${encodeURIComponent(      env.AIRTABLE_TABLE_NAME,    )}`,    {      method: "POST",      body: JSON.stringify(body),      headers: {        Authorization: `Bearer ${env.AIRTABLE_API_KEY}`,        "Content-type": `application/json`,      },    },  );};
 ```
 
 You can test your Function [locally using Wrangler](https://developers.cloudflare.com/pages/functions/local-development/). By completing this guide, you have successfully refactored your form submission Worker to a form submission Pages Function.

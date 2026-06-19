@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -78,10 +78,7 @@ To clean up old preview deployments, you can delete them using Wrangler:
 Terminal window
 
 ```
-
 npx wrangler pages deployment delete <DEPLOYMENT_ID> --project-name <PROJECT_NAME>
-
-
 ```
 
 Use the `--force` (or `-f`) flag to skip the confirmation prompt, and to force deletion of aliased deployments. You can find deployment IDs by running [wrangler pages deployment list](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-deployment-list).
@@ -103,10 +100,7 @@ You can easily confirm that your preview deployments are correctly configured to
 Terminal window
 
 ```
-
 curl -I https://<your-preview-url>.pages.dev
-
-
 ```
 
 Inspect the output for the x-robots-tag: noindex line to verify that your preview site is not being indexed.

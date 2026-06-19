@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,18 +21,7 @@ Compare a metadata attribute (for example, `folder` or `timestamp`) with a targe
 JavaScript
 
 ```
-
-filters: {
-
-  type: "eq",
-
-  key: "folder",
-
-  value: "customer-a/"
-
-}
-
-
+filters: {  type: "eq",  key: "folder",  value: "customer-a/"}
 ```
 
 ### Operators
@@ -53,22 +42,7 @@ Combine multiple comparison filters with a logical operator:
 JavaScript
 
 ```
-
-filters: {
-
-  type: "and",
-
-  filters: [
-
-    { type: "eq", key: "folder", value: "customer-a/" },
-
-    { type: "gte", key: "timestamp", value: "1735689600000" }
-
-  ]
-
-}
-
-
+filters: {  type: "and",  filters: [    { type: "eq", key: "folder", value: "customer-a/" },    { type: "gte", key: "timestamp", value: "1735689600000" }  ]}
 ```
 
 The available compound operators are `and` and `or`.
@@ -93,22 +67,7 @@ To match all files starting with `customer-a/`, use a compound filter:
 JavaScript
 
 ```
-
-filters: {
-
-  type: "and",
-
-  filters: [
-
-    { type: "gt", key: "folder", value: "customer-a//" },
-
-    { type: "lte", key: "folder", value: "customer-a/z" }
-
-  ]
-
-}
-
-
+filters: {  type: "and",  filters: [    { type: "gt", key: "folder", value: "customer-a//" },    { type: "lte", key: "folder", value: "customer-a/z" }  ]}
 ```
 
 This filter matches all paths starting with `customer-a/` by using:

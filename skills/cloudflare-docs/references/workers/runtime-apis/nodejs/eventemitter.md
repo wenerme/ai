@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,22 +21,9 @@ An [EventEmitter ↗](https://nodejs.org/docs/latest/api/events.html#class-event
 JavaScript
 
 ```
-
 import { EventEmitter } from "node:events";
-
-
-const emitter = new EventEmitter();
-
-emitter.on("hello", (...args) => {
-
-  console.log(...args); // 1 2 3
-
-});
-
-
+const emitter = new EventEmitter();emitter.on("hello", (...args) => {  console.log(...args); // 1 2 3});
 emitter.emit("hello", 1, 2, 3);
-
-
 ```
 
 The implementation in the Workers runtime supports the entire Node.js `EventEmitter` API. This includes the [captureRejections ↗](https://nodejs.org/docs/latest/api/events.html#capture-rejections-of-promises)option that allows improved handling of async functions as event handlers:
@@ -44,25 +31,10 @@ The implementation in the Workers runtime supports the entire Node.js `EventEmit
 JavaScript
 
 ```
-
-const emitter = new EventEmitter({ captureRejections: true });
-
-emitter.on("hello", async (...args) => {
-
-  throw new Error("boom");
-
-});
-
-emitter.on("error", (err) => {
-
-  // the async promise rejection is emitted here!
-
-});
-
-
+const emitter = new EventEmitter({ captureRejections: true });emitter.on("hello", async (...args) => {  throw new Error("boom");});emitter.on("error", (err) => {  // the async promise rejection is emitted here!});
 ```
 
-Like Node.js, when an `'error'` event is emitted on an `EventEmitter` and there is no listener for it, the error will be immediately thrown. However, in Node.js it is possible to add a handler on the `process` object for the`'uncaughtException'` event to catch globally uncaught exceptions. The`'uncaughtException'` event, however, is currently not implemented in the Workers runtime. It is strongly recommended to always add an `'error'` listener to any `EventEmitter` instance.
+Like Node.js, when an `'error'` event is emitted on an `EventEmitter` and there is no listener for it, the error will be immediately thrown. However, in Node.js it is possible to add a handler on the `process` object for the `'uncaughtException'` event to catch globally uncaught exceptions. The `'uncaughtException'` event, however, is currently not implemented in the Workers runtime. It is strongly recommended to always add an `'error'` listener to any `EventEmitter` instance.
 
 Refer to the [Node.js documentation for EventEmitter ↗](https://nodejs.org/api/events.html#class-eventemitter) for more information.
 

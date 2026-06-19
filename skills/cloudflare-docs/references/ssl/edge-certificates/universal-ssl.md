@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,9 +26,9 @@ Universal SSL certificates are issued after your domain is active on Cloudflare.
 
 ## Availability
 
-| Free         | Pro | Business | Enterprise |     |
-| ------------ | --- | -------- | ---------- | --- |
-| Availability | Yes | Yes      | Yes        | Yes |
+|              | Free | Pro | Business | Enterprise |
+| ------------ | ---- | --- | -------- | ---------- |
+| Availability | Yes  | Yes | Yes      | Yes        |
 
 ## Related resources
 

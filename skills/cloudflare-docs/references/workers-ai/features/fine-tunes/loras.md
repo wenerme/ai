@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -45,30 +45,7 @@ Right now, you can't edit a fine tune's asset files after you upload it. We will
 Before you upload your LoRA adapter, you'll need to edit your `adapter_config.json` file to include `model_type` as one of `mistral`, `gemma` or `llama` like below.
 
 ```
-
-{
-
-  "alpha_pattern": {},
-
-  "auto_mapping": null,
-
-  ...
-
-  "target_modules": [
-
-    "q_proj",
-
-    "v_proj"
-
-  ],
-
-  "task_type": "CAUSAL_LM",
-
-  "model_type": "mistral",
-
-}
-
-
+{  "alpha_pattern": {},  "auto_mapping": null,  ...  "target_modules": [    "q_proj",    "v_proj"  ],  "task_type": "CAUSAL_LM",  "model_type": "mistral",}
 ```
 
 ### Wrangler
@@ -78,31 +55,8 @@ You can create a finetune and upload your LoRA adapter via wrangler with the fol
 wrangler CLI
 
 ```
-
-npx wrangler ai finetune create <model_name> <finetune_name> <folder_path>
-
-#🌀 Creating new finetune "test-lora" for model "@cf/mistral/mistral-7b-instruct-v0.2-lora"...
-
-#🌀 Uploading file "/Users/abcd/Downloads/adapter_config.json" to "test-lora"...
-
-#🌀 Uploading file "/Users/abcd/Downloads/adapter_model.safetensors" to "test-lora"...
-
-#✅ Assets uploaded, finetune "test-lora" is ready to use.
-
-
-npx wrangler ai finetune list
-
-┌──────────────────────────────────────┬─────────────────┬─────────────┐
-
-│ finetune_id                          │ name            │ description │
-
-├──────────────────────────────────────┼─────────────────┼─────────────┤
-
-│ 00000000-0000-0000-0000-000000000000 │ test-lora       │             │
-
-└──────────────────────────────────────┴─────────────────┴─────────────┘
-
-
+npx wrangler ai finetune create <model_name> <finetune_name> <folder_path>#🌀 Creating new finetune "test-lora" for model "@cf/mistral/mistral-7b-instruct-v0.2-lora"...#🌀 Uploading file "/Users/abcd/Downloads/adapter_config.json" to "test-lora"...#🌀 Uploading file "/Users/abcd/Downloads/adapter_model.safetensors" to "test-lora"...#✅ Assets uploaded, finetune "test-lora" is ready to use.
+npx wrangler ai finetune list┌──────────────────────────────────────┬─────────────────┬─────────────┐│ finetune_id                          │ name            │ description │├──────────────────────────────────────┼─────────────────┼─────────────┤│ 00000000-0000-0000-0000-000000000000 │ test-lora       │             │└──────────────────────────────────────┴─────────────────┴─────────────┘
 ```
 
 ### REST API
@@ -113,30 +67,13 @@ Alternatively, you can use our REST API to create a finetune and upload your ada
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Workers AI Write`
 
 Create a new Finetune
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai/finetunes" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "model": "SUPPORTED_MODEL_NAME",
-
-    "name": "FINETUNE_NAME",
-
-    "description": "OPTIONAL_DESCRIPTION"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai/finetunes" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "model": "SUPPORTED_MODEL_NAME",    "name": "FINETUNE_NAME",    "description": "OPTIONAL_DESCRIPTION"  }'
 ```
 
 #### Uploading your adapter weights and config
@@ -148,23 +85,8 @@ You can either use the finetune `name` or `id` that you used when you created th
 cURL
 
 ```
-
-## Input: finetune_id, adapter_model.safetensors, then adapter_config.json
-
-## Output: success true/false
-
-
-curl -X POST https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/finetunes/{FINETUNE_ID}/finetune-assets/ \
-
-    -H 'Authorization: Bearer {API_TOKEN}' \
-
-    -H 'Content-Type: multipart/form-data' \
-
-    -F 'file_name=adapter_model.safetensors' \
-
-    -F 'file=@{PATH/TO/adapter_model.safetensors}'
-
-
+## Input: finetune_id, adapter_model.safetensors, then adapter_config.json## Output: success true/false
+curl -X POST https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/finetunes/{FINETUNE_ID}/finetune-assets/ \    -H 'Authorization: Bearer {API_TOKEN}' \    -H 'Content-Type: multipart/form-data' \    -F 'file_name=adapter_model.safetensors' \    -F 'file=@{PATH/TO/adapter_model.safetensors}'
 ```
 
 #### List fine-tunes in your account
@@ -173,64 +95,18 @@ You can call this method to confirm what fine-tunes you have created in your acc
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Workers AI Write`
 * `Workers AI Read`
 
 List Finetunes
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai/finetunes" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai/finetunes" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```
-
-{
-
-  "success": true,
-
-  "result": [
-
-    [
-
-      {
-
-        "id": "00000000-0000-0000-0000-000000000",
-
-        "model": "@cf/meta-llama/llama-2-7b-chat-hf-lora",
-
-        "name": "llama2-finetune",
-
-        "description": "test"
-
-      },
-
-      {
-
-        "id": "00000000-0000-0000-0000-000000000",
-
-        "model": "@cf/mistralai/mistral-7b-instruct-v0.2-lora",
-
-        "name": "mistral-finetune",
-
-        "description": "test"
-
-      }
-
-    ]
-
-  ]
-
-}
-
-
+{  "success": true,  "result": [    [      {        "id": "00000000-0000-0000-0000-000000000",        "model": "@cf/meta-llama/llama-2-7b-chat-hf-lora",        "name": "llama2-finetune",        "description": "test"      },      {        "id": "00000000-0000-0000-0000-000000000",        "model": "@cf/mistralai/mistral-7b-instruct-v0.2-lora",        "name": "mistral-finetune",        "description": "test"      }    ]  ]}
 ```
 
 ---
@@ -239,51 +115,19 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai/finetunes" \
 
 To make inference requests and apply the LoRA adapter, you will need your model and finetune `name` or `id`. You should use the chat template that your LoRA was trained on, but you can try running it with `raw: true` and the messages template like below.
 
-* [ workers ai sdk ](#tab-panel-11293)
-* [ rest api ](#tab-panel-11294)
+* [ workers ai sdk ](#tab-panel-11310)
+* [ rest api ](#tab-panel-11311)
 
 JavaScript
 
 ```
-
-const response = await env.AI.run(
-
-  "@cf/mistralai/mistral-7b-instruct-v0.2-lora", //the model supporting LoRAs
-
-  {
-
-    messages: [{ role: "user", content: "Hello world" }],
-
-    raw: true, //skip applying the default chat template
-
-    lora: "00000000-0000-0000-0000-000000000", //the finetune id OR name
-
-  },
-
-);
-
-
+const response = await env.AI.run(  "@cf/mistralai/mistral-7b-instruct-v0.2-lora", //the model supporting LoRAs  {    messages: [{ role: "user", content: "Hello world" }],    raw: true, //skip applying the default chat template    lora: "00000000-0000-0000-0000-000000000", //the finetune id OR name  },);
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/mistral/mistral-7b-instruct-v0.2-lora \
-
-  -H 'Authorization: Bearer {API_TOKEN}' \
-
-  -d '{
-
-    "messages": [{"role": "user", "content": "Hello world"}],
-
-    "raw": "true",
-
-    "lora": "00000000-0000-0000-0000-000000000"
-
-  }'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/mistral/mistral-7b-instruct-v0.2-lora \  -H 'Authorization: Bearer {API_TOKEN}' \  -d '{    "messages": [{"role": "user", "content": "Hello world"}],    "raw": "true",    "lora": "00000000-0000-0000-0000-000000000"  }'
 ```
 
 ```json

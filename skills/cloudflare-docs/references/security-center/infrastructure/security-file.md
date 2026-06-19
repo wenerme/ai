@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security-center/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,8 +20,8 @@ When using the API, the preferred languages field name is `preferred_languages` 
 
 To manage your security.txt file via the Cloudflare dashboard:
 
-* [  New dashboard ](#tab-panel-10536)
-* [ Old dashboard ](#tab-panel-10537)
+* [  New dashboard ](#tab-panel-10612)
+* [ Old dashboard ](#tab-panel-10613)
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), select your account and domain.
 2. Go to **Security** \> **Settings** and filter by **Web application exploits**.
@@ -35,10 +35,11 @@ From here, you can create and manage your `security.txt` file to provide the sec
 
 Fill in the following information:
 
-* **(Required) Contact**: You can enter one of the following to contact you about security issues:  
-   * An email address: The email address must start with `mailto:` (for example, `mailto:help@example.com`).  
-   * A phone number: The phone number must start with `tel:` (for example, `tel:+1 1234567890`).  
-   * A URL link: The URL link must start with `https://` (for example, `https://example.com`).  
+* **(Required) Contact**: You can enter one of the following to contact you about security issues:
+
+  * An email address: The email address must start with `mailto:` (for example, `mailto:help@example.com`).
+  * A phone number: The phone number must start with `tel:` (for example, `tel:+1 1234567890`).
+  * A URL link: The URL link must start with `https://` (for example, `https://example.com`).  
 Select **Add more** to add multiple contacts.
 * **(Required) Expires at**: Enter the expiration date and time of the `security.txt` file.
 * **Encryption**: A link to a key which security researchers can use to communicate with you.
@@ -54,24 +55,24 @@ To edit your security.txt file:
 
 * Old dashboard: Select **Security** \> **Settings** \> **Edit Security.txt**.
 * New security dashboard:  
-   1. Go to **Security** \> **Settings** and filter by **Web application exploits**.  
-   2. Under **Security.txt** \> **Configurations**, select the edit icon.
+  1. Go to **Security** \> **Settings** and filter by **Web application exploits**.
+  2. Under **Security.txt** \> **Configurations**, select the edit icon.
 
 To download your security.txt file:
 
 * Old dashboard: Select **Security** \> **Settings** \> **Download Security.txt**.
 * New security dashboard:  
-   1. Go to **Security** \> **Settings** and filter by **Web application exploits**.  
-   2. Under **Security.txt** \> **Configurations**, select the download icon.
+  1. Go to **Security** \> **Settings** and filter by **Web application exploits**.
+  2. Under **Security.txt** \> **Configurations**, select the download icon.
 
 To delete your security.txt file:
 
 * Old dashboard:  
-   * Select **Security** \> **Settings** \> **Delete Security.txt**.
+  * Select **Security** \> **Settings** \> **Delete Security.txt**.
 * New security dashboard:  
-   1. Select **Security** \> **Settings** and filter by **Web application exploits**.  
-   2. Under **Security.txt** \> **Configurations**, select the edit icon.  
-   3. Select **Delete**.
+  1. Select **Security** \> **Settings** and filter by **Web application exploits**.
+  2. Under **Security.txt** \> **Configurations**, select the edit icon.
+  3. Select **Delete**.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security-center/infrastructure/security-file/#page","headline":"Set up your security.txt file · Cloudflare Security Center docs","description":"Manage your security.txt file via the dashboard or the API.","url":"https://developers.cloudflare.com/security-center/infrastructure/security-file/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

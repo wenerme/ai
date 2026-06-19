@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -140,14 +140,15 @@ If you are not the Super Administrator of an organization with **2FA Enforcement
 1. Log in to the Cloudflare dashboard.  
 [ Go to **Account home** ](https://dash.cloudflare.com/?to=/:account/home)
 2. Select **Profile**.
-3. Select the **Authentication**.  
-   * To remove your security key:  
-         1. Select **Edit** in the **Security Key Authentication** card. A drop-down menu shows more details about your security key.  
-         2. Select **Delete**.  
-         3. Enter your Cloudflare password, then select **Remove**.  
-   * To remove your TOTP mobile application authentication:  
-         1. Select **Delete method** in the **Mobile App Authentication** card.  
-         2. Enter your Cloudflare password, authenticator application code, or a recovery code, then select **Disable**.
+3. Select the **Authentication**.
+
+  * To remove your security key:  
+    1. Select **Edit** in the **Security Key Authentication** card. A drop-down menu shows more details about your security key.
+    2. Select **Delete**.
+    3. Enter your Cloudflare password, then select **Remove**.
+  * To remove your TOTP mobile application authentication:  
+    1. Select **Delete method** in the **Mobile App Authentication** card.
+    2. Enter your Cloudflare password, authenticator application code, or a recovery code, then select **Disable**.
 ![how to disable your TOTP mobile application authentication.](https://developerdocsgifs.cloudflaretraining.com/resampled_5fps_disable_mobile_auth_v2_final.gif) 
 
 ## Use a backup code
@@ -161,9 +162,10 @@ When setting up 2FA, you should have saved your backup codes in a secure locatio
 1. Retrieve the backup code from where you stored it.
 2. Go to the [Cloudflare login page ↗](https://dash.cloudflare.com/login), enter your username and password and select **Log in**.  
 [ Go to **Account home** ](https://dash.cloudflare.com/?to=/:account/home)
-3. You should see a page titled **Two-Factor Authentication**  
-   * If it has a text box, enter one of your backup codes and select **Log in**.  
-   * If instead you see "Insert your security key and touch it", cancel any prompts from your browser that appear and select **try another authentication method or backup code**. Proceed to enter one of your backup codes and select **Log in**.
+3. You should see a page titled **Two-Factor Authentication**
+
+  * If it has a text box, enter one of your backup codes and select **Log in**.
+  * If instead you see "Insert your security key and touch it", cancel any prompts from your browser that appear and select **try another authentication method or backup code**. Proceed to enter one of your backup codes and select **Log in**.
 
 Note
 

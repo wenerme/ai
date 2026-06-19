@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-vpc/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,47 +28,19 @@ Binding directly to a Cloudflare Tunnel through a VPC Network binding requires t
 
 Reference a specific Cloudflare Tunnel directly by its UUID:
 
-* [  wrangler.jsonc ](#tab-panel-11333)
-* [  wrangler.toml ](#tab-panel-11334)
+* [  wrangler.jsonc ](#tab-panel-11350)
+* [  wrangler.toml ](#tab-panel-11351)
 
 JSONC
 
 ```
-
-{
-
-  "vpc_networks": [
-
-    {
-
-      "binding": "MY_VPC",
-
-      "tunnel_id": "550e8400-e29b-41d4-a716-446655440000",
-
-      "remote": true
-
-    }
-
-  ]
-
-}
-
-
+{  "vpc_networks": [    {      "binding": "MY_VPC",      "tunnel_id": "550e8400-e29b-41d4-a716-446655440000",      "remote": true    }  ]}
 ```
 
 TOML
 
 ```
-
-[[vpc_networks]]
-
-binding = "MY_VPC"
-
-tunnel_id = "550e8400-e29b-41d4-a716-446655440000"
-
-remote = true
-
-
+[[vpc_networks]]binding = "MY_VPC"tunnel_id = "550e8400-e29b-41d4-a716-446655440000"remote = true
 ```
 
 The `remote` flag must be set to `true` to enable remote bindings during local development.
@@ -99,47 +71,19 @@ For destinations behind Cloudflare WAN on-ramps (GRE, IPsec, or CNI), your netwo
 
 Bind to Cloudflare Mesh using `network_id: "cf1:network"`:
 
-* [  wrangler.jsonc ](#tab-panel-11335)
-* [  wrangler.toml ](#tab-panel-11336)
+* [  wrangler.jsonc ](#tab-panel-11352)
+* [  wrangler.toml ](#tab-panel-11353)
 
 JSONC
 
 ```
-
-{
-
-  "vpc_networks": [
-
-    {
-
-      "binding": "MY_VPC",
-
-      "network_id": "cf1:network",
-
-      "remote": true
-
-    }
-
-  ]
-
-}
-
-
+{  "vpc_networks": [    {      "binding": "MY_VPC",      "network_id": "cf1:network",      "remote": true    }  ]}
 ```
 
 TOML
 
 ```
-
-[[vpc_networks]]
-
-binding = "MY_VPC"
-
-network_id = "cf1:network"
-
-remote = true
-
-
+[[vpc_networks]]binding = "MY_VPC"network_id = "cf1:network"remote = true
 ```
 
 ## Runtime usage
@@ -151,28 +95,9 @@ Access any HTTP service in your network at runtime using `fetch()`:
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request: Request, env: Env) {
-
-    // Access a service by private IP
-
-    const response = await env.MY_VPC.fetch("http://10.0.1.50/data");
-
-
-    // Access another service on a different port
-
-    const dbResponse = await env.MY_VPC.fetch("http://10.0.5.42:5432");
-
-
-    return response;
-
-  },
-
-};
-
-
+export default {  async fetch(request: Request, env: Env) {    // Access a service by private IP    const response = await env.MY_VPC.fetch("http://10.0.1.50/data");
+    // Access another service on a different port    const dbResponse = await env.MY_VPC.fetch("http://10.0.5.42:5432");
+    return response;  },};
 ```
 
 When a VPC Network cannot establish a connection to your target service, `fetch()` throws an exception.
@@ -184,32 +109,9 @@ Open raw TCP connections to any private destination using [connect()](https://de
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request: Request, env: Env) {
-
-    // Open a TCP connection to a private Redis instance
-
-    const socket = await env.MY_VPC.connect("10.0.1.50:6379");
-
-
-    // Write a Redis PING command
-
-    const writer = socket.writable.getWriter();
-
-    await writer.write(new TextEncoder().encode("PING\r\n"));
-
-    await writer.close();
-
-
-    return new Response(socket.readable);
-
-  },
-
-};
-
-
+export default {  async fetch(request: Request, env: Env) {    // Open a TCP connection to a private Redis instance    const socket = await env.MY_VPC.connect("10.0.1.50:6379");
+    // Write a Redis PING command    const writer = socket.writable.getWriter();    await writer.write(new TextEncoder().encode("PING\r\n"));    await writer.close();
+    return new Response(socket.readable);  },};
 ```
 
 When a VPC Network cannot establish a TCP connection, `connect()` throws an exception.

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,8 +21,8 @@ The specific configuration steps can vary depending on your infrastructure and s
 1. [Create a tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/#1-create-a-tunnel) to connect your data center to Cloudflare.
 2. Create a [virtual network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) and assign it to the tunnel you configured in the previous step.
 
-* [ Dashboard ](#tab-panel-9333)
-* [ cli ](#tab-panel-9334)
+* [ Dashboard ](#tab-panel-9409)
+* [ cli ](#tab-panel-9410)
 
 To create a virtual network:
 
@@ -43,10 +43,7 @@ To create a virtual network:
 Terminal window
 
 ```
-
 cloudflared tunnel vnet add <VNET_NAME>
-
-
 ```
 
 To assign the virtual network to the tunnel:
@@ -54,10 +51,7 @@ To assign the virtual network to the tunnel:
 Terminal window
 
 ```
-
 cloudflared tunnel route ip add --vnet <VNET_NAME> <IP_RANGE> <TUNNEL_NAME>
-
-
 ```
 
 ## 2\. Configure Cloudflare Load Balancing

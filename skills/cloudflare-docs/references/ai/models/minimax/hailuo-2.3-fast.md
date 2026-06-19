@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,319 +29,82 @@ A lower-latency version of Hailuo 2.3 that preserves core motion quality, visual
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-836)
-* [ cURL ](#tab-panel-837)
+* [ TypeScript ](#tab-panel-832)
+* [ cURL ](#tab-panel-833)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'minimax/hailuo-2.3-fast',
-
-  {
-
-    prompt: 'Gentle movement and subtle animation, natural-looking motion',
-
-    duration: 6,
-
-    fast_pretreatment: false,
-
-    first_frame_image:
-
-      'https://replicate.delivery/xezq/MQpUhqkESIIQDlWUxtNcsznZLfUTmhEbCV3vdAZGHGPwwaMLA/tmpgl4gvv5n.jpeg',
-
-    prompt_optimizer: true,
-
-    resolution: '768P',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'minimax/hailuo-2.3-fast',  {    prompt: 'Gentle movement and subtle animation, natural-looking motion',    duration: 6,    fast_pretreatment: false,    first_frame_image:      'https://replicate.delivery/xezq/MQpUhqkESIIQDlWUxtNcsznZLfUTmhEbCV3vdAZGHGPwwaMLA/tmpgl4gvv5n.jpeg',    prompt_optimizer: true,    resolution: '768P',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "minimax/hailuo-2.3-fast",
-
-  "input": {
-
-    "prompt": "Gentle movement and subtle animation, natural-looking motion",
-
-    "duration": 6,
-
-    "fast_pretreatment": false,
-
-    "first_frame_image": "https://replicate.delivery/xezq/MQpUhqkESIIQDlWUxtNcsznZLfUTmhEbCV3vdAZGHGPwwaMLA/tmpgl4gvv5n.jpeg",
-
-    "prompt_optimizer": true,
-
-    "resolution": "768P"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "minimax/hailuo-2.3-fast",  "input": {    "prompt": "Gentle movement and subtle animation, natural-looking motion",    "duration": 6,    "fast_pretreatment": false,    "first_frame_image": "https://replicate.delivery/xezq/MQpUhqkESIIQDlWUxtNcsznZLfUTmhEbCV3vdAZGHGPwwaMLA/tmpgl4gvv5n.jpeg",    "prompt_optimizer": true,    "resolution": "768P"  }}'
 ```
 
-* [ Output ](#tab-panel-832)
-* [ Raw response ](#tab-panel-833)
+* [ Output ](#tab-panel-828)
+* [ Raw response ](#tab-panel-829)
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "status": "Success",
-
-    "task_id": "388514752192863",
-
-    "video": "https://video-product.cdn.minimax.io/inference_output/video/2026-04-17/eff40703-0339-4d1d-b66a-db050e878038/output.mp4"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "status": "Success",    "task_id": "388514752192863",    "video": "https://video-product.cdn.minimax.io/inference_output/video/2026-04-17/eff40703-0339-4d1d-b66a-db050e878038/output.mp4"  },  "state": "Completed"}
 ```
 
 ## Examples
 
 **High Resolution I2V**  — Animate a photo in 1080P 
 
-* [ TypeScript ](#tab-panel-840)
-* [ cURL ](#tab-panel-841)
+* [ TypeScript ](#tab-panel-836)
+* [ cURL ](#tab-panel-837)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'minimax/hailuo-2.3-fast',
-
-  {
-
-    prompt: 'Camera slowly pans across the scene with cinematic depth of field',
-
-    duration: 6,
-
-    fast_pretreatment: false,
-
-    first_frame_image:
-
-      'https://replicate.delivery/xezq/IeNNble3XUqhpUZTd3CkYTUf8EgkFU1fl1Jnyive3B26MsGzC/tmp51dpln4i.jpeg',
-
-    prompt_optimizer: true,
-
-    resolution: '1080P',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'minimax/hailuo-2.3-fast',  {    prompt: 'Camera slowly pans across the scene with cinematic depth of field',    duration: 6,    fast_pretreatment: false,    first_frame_image:      'https://replicate.delivery/xezq/IeNNble3XUqhpUZTd3CkYTUf8EgkFU1fl1Jnyive3B26MsGzC/tmp51dpln4i.jpeg',    prompt_optimizer: true,    resolution: '1080P',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "minimax/hailuo-2.3-fast",  "input": {    "prompt": "Camera slowly pans across the scene with cinematic depth of field",    "duration": 6,    "fast_pretreatment": false,    "first_frame_image": "https://replicate.delivery/xezq/IeNNble3XUqhpUZTd3CkYTUf8EgkFU1fl1Jnyive3B26MsGzC/tmp51dpln4i.jpeg",    "prompt_optimizer": true,    "resolution": "1080P"  }}'
+```
 
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+* [ Output ](#tab-panel-830)
+* [ Raw response ](#tab-panel-831)
 
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+```
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "status": "Success",    "task_id": "388515984507205",    "video": "https://video-product.cdn.minimax.io/inference_output/video/2026-04-17/2b6251d2-d4ae-4d58-b12f-2609c50fadc2/output.mp4"  },  "state": "Completed"}
+```
 
-  --header "Content-Type: application/json" \
+**Fast Processing**  — Quick I2V with fast pretreatment enabled 
 
-  --data '{
+* [ TypeScript ](#tab-panel-838)
+* [ cURL ](#tab-panel-839)
 
-  "model": "minimax/hailuo-2.3-fast",
+TypeScript
 
-  "input": {
+```
+const response = await env.AI.run(  'minimax/hailuo-2.3-fast',  {    prompt: 'Hair blowing in the wind, eyes blinking naturally',    duration: 6,    fast_pretreatment: true,    first_frame_image:      'https://replicate.delivery/xezq/jfh37lJpnDQhaKcAfCrxSCEh7HA7lv5cCWmJW284tYXwh1YWA/tmpw2i437qe.jpeg',    prompt_optimizer: true,    resolution: '768P',  },)console.log(response)
+```
 
-    "prompt": "Camera slowly pans across the scene with cinematic depth of field",
+Terminal window
 
-    "duration": 6,
-
-    "fast_pretreatment": false,
-
-    "first_frame_image": "https://replicate.delivery/xezq/IeNNble3XUqhpUZTd3CkYTUf8EgkFU1fl1Jnyive3B26MsGzC/tmp51dpln4i.jpeg",
-
-    "prompt_optimizer": true,
-
-    "resolution": "1080P"
-
-  }
-
-}'
-
-
+```
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "minimax/hailuo-2.3-fast",  "input": {    "prompt": "Hair blowing in the wind, eyes blinking naturally",    "duration": 6,    "fast_pretreatment": true,    "first_frame_image": "https://replicate.delivery/xezq/jfh37lJpnDQhaKcAfCrxSCEh7HA7lv5cCWmJW284tYXwh1YWA/tmpw2i437qe.jpeg",    "prompt_optimizer": true,    "resolution": "768P"  }}'
 ```
 
 * [ Output ](#tab-panel-834)
 * [ Raw response ](#tab-panel-835)
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "status": "Success",
-
-    "task_id": "388515984507205",
-
-    "video": "https://video-product.cdn.minimax.io/inference_output/video/2026-04-17/2b6251d2-d4ae-4d58-b12f-2609c50fadc2/output.mp4"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
-```
-
-**Fast Processing**  — Quick I2V with fast pretreatment enabled 
-
-* [ TypeScript ](#tab-panel-842)
-* [ cURL ](#tab-panel-843)
-
-TypeScript
-
-```
-
-const response = await env.AI.run(
-
-  'minimax/hailuo-2.3-fast',
-
-  {
-
-    prompt: 'Hair blowing in the wind, eyes blinking naturally',
-
-    duration: 6,
-
-    fast_pretreatment: true,
-
-    first_frame_image:
-
-      'https://replicate.delivery/xezq/jfh37lJpnDQhaKcAfCrxSCEh7HA7lv5cCWmJW284tYXwh1YWA/tmpw2i437qe.jpeg',
-
-    prompt_optimizer: true,
-
-    resolution: '768P',
-
-  },
-
-)
-
-console.log(response)
-
-
-```
-
-Terminal window
-
-```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "minimax/hailuo-2.3-fast",
-
-  "input": {
-
-    "prompt": "Hair blowing in the wind, eyes blinking naturally",
-
-    "duration": 6,
-
-    "fast_pretreatment": true,
-
-    "first_frame_image": "https://replicate.delivery/xezq/jfh37lJpnDQhaKcAfCrxSCEh7HA7lv5cCWmJW284tYXwh1YWA/tmpw2i437qe.jpeg",
-
-    "prompt_optimizer": true,
-
-    "resolution": "768P"
-
-  }
-
-}'
-
-
-```
-
-* [ Output ](#tab-panel-838)
-* [ Raw response ](#tab-panel-839)
-
-```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "status": "Success",
-
-    "task_id": "388515980755024",
-
-    "video": "https://video-product.cdn.minimax.io/inference_output/video/2026-04-17/b64303a0-0227-4d42-983a-dcaec397b6b1/output.mp4"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "status": "Success",    "task_id": "388515980755024",    "video": "https://video-product.cdn.minimax.io/inference_output/video/2026-04-17/b64303a0-0227-4d42-983a-dcaec397b6b1/output.mp4"  },  "state": "Completed"}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-844)
-* [ Output ](#tab-panel-845)
+* [ Input ](#tab-panel-840)
+* [ Output ](#tab-panel-841)
 
 ▶duration
 
@@ -383,7 +146,7 @@ video
 
 Input [ ](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/schema-input.json "Download") 
 
-Output [ ](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/schema-output.json "Download") 
+Output [ ](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/schema-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/#page","headline":"MiniMax Hailuo 2.3 Fast (MiniMax) · Cloudflare AI docs · Cloudflare AI docs","description":"A lower-latency version of Hailuo 2.3 that preserves core motion quality, visual consistency, and stylization while enabling faster iteration.","url":"https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

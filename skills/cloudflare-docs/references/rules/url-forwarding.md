@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -40,12 +40,12 @@ Single Redirects and Bulk Redirects are available on all Cloudflare plans. The e
 
 ### Bulk redirects
 
-| Free                       | Pro    | Business | Enterprise |           |
-| -------------------------- | ------ | -------- | ---------- | --------- |
-| Availability               | Yes    | Yes      | Yes        | Yes       |
-| Bulk Redirect Rules        | 15     | 15       | 15         | 50        |
-| Bulk Redirect Lists        | 5      | 5        | 5          | 25        |
-| URL redirects across lists | 10,000 | 25,000   | 50,000     | 1,000,000 |
+|                            | Free   | Pro    | Business | Enterprise |
+| -------------------------- | ------ | ------ | -------- | ---------- |
+| Availability               | Yes    | Yes    | Yes      | Yes        |
+| Bulk Redirect Rules        | 15     | 15     | 15       | 50         |
+| Bulk Redirect Lists        | 5      | 5      | 5        | 25         |
+| URL redirects across lists | 10,000 | 25,000 | 50,000   | 1,000,000  |
 
 For _URL redirects across lists_, this table provides the default quota for the Enterprise plan. Bulk Redirects supports several million URL redirects — to get more redirects, contact your account team.
 
@@ -53,12 +53,12 @@ Bulk Redirects features and quotas are per account and they depend on the highes
 
 ### Single Redirects
 
-| Free             | Pro | Business | Enterprise |     |
-| ---------------- | --- | -------- | ---------- | --- |
-| Availability     | Yes | Yes      | Yes        | Yes |
-| Number of rules  | 10  | 25       | 50         | 300 |
-| Wildcard support | Yes | Yes      | Yes        | Yes |
-| Regex support    | No  | No       | Yes        | Yes |
+|                  | Free | Pro | Business | Enterprise |
+| ---------------- | ---- | --- | -------- | ---------- |
+| Availability     | Yes  | Yes | Yes      | Yes        |
+| Number of rules  | 10   | 25  | 50       | 300        |
+| Wildcard support | Yes  | Yes | Yes      | Yes        |
+| Regex support    | No   | No  | Yes      | Yes        |
 
 Single Redirects features and quotas are per zone and depend on the zone plan.
 

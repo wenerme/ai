@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,18 +33,7 @@ In this scenario, there are multiple /24 or larger network prefixes that need to
 For illustration purposes, below is an example list of the locations of Internet-facing networks and their respective IP prefixes.
 
 ```
-
-AWS VPC: 192.0.2.0/24
-
-GCP VPC: 198.51.100.0/24
-
-Azure vNet: 203.0.113.0/26
-
-On-premise data center 1: 203.0.113.64/26
-
-On-premise data center 2: 203.0.113.128/25
-
-
+AWS VPC: 192.0.2.0/24GCP VPC: 198.51.100.0/24Azure vNet: 203.0.113.0/26On-premise data center 1: 203.0.113.64/26On-premise data center 2: 203.0.113.128/25
 ```
 
 ![Figure 1: Customer BYOIP for all Cloud and on-premises networks.](https://developers.cloudflare.com/_astro/figure-1.TMcvFAT6_ZcHntR.svg "Figure 1: Customer BYOIP for all Cloud and on-premises networks.")
@@ -76,18 +65,7 @@ In the case where you do not own any network prefixes that are equal to or large
 For illustration purposes, below is an example list of the locations of Internet-facing networks and their respective IP prefixes.
 
 ```
-
-AWS VPC: 192.0.2.0/28
-
-GCP VPC: 192.0.2.16/28
-
-Azure vNet: 192.0.2.32/28
-
-On-premise data center 1: 192.0.2.48/28
-
-On-premise data center 2: 192.0.2.64/28
-
-
+AWS VPC: 192.0.2.0/28GCP VPC: 192.0.2.16/28Azure vNet: 192.0.2.32/28On-premise data center 1: 192.0.2.48/28On-premise data center 2: 192.0.2.64/28
 ```
 
 ![Figure 2: Customer lease IPs from Cloudflare for both on-premise and cloud network deployments.](https://developers.cloudflare.com/_astro/figure-2.DGu8Lrrt_Z2lxTsf.svg "Figure 2: Customer lease IPs from Cloudflare for both on-premise and cloud network deployments.")
@@ -110,18 +88,7 @@ In this scenario, you can deploy larger on-premise networks and smaller cloud-ba
 For illustration purposes, below is an example list of the locations of Internet-facing networks and their respective IP prefixes.
 
 ```
-
-AWS VPC: 192.0.2.0/28
-
-GCP VPC: 192.0.2.16/28
-
-Azure vNet: 192.0.2.32/28
-
-On-premise data center 1: 198.51.100.0/24
-
-On-premise data center 2: 203.0.113.0/24
-
-
+AWS VPC: 192.0.2.0/28GCP VPC: 192.0.2.16/28Azure vNet: 192.0.2.32/28On-premise data center 1: 198.51.100.0/24On-premise data center 2: 203.0.113.0/24
 ```
 
 ![Figure 3: Customer BYOIP for on-premise networks and lease IP from Cloudflare for cloud network deployments.](https://developers.cloudflare.com/_astro/figure-3.h9hJOj7g_Z2d2T9O.svg "Figure 3: Customer BYOIP for on-premise networks and lease IP from Cloudflare for cloud network deployments.")

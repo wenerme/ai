@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,21 +35,8 @@ A control bar button that opens a bottom sheet menu with meeting actions such as
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let moreButton = RtkMoreButtonControlBar(
-
-    meeting: rtkClient,
-
-    presentingViewController: self
-
-)
-
-view.addSubview(moreButton)
-
-
+let moreButton = RtkMoreButtonControlBar(    meeting: rtkClient,    presentingViewController: self)view.addSubview(moreButton)
 ```
 
 ### With settings completion
@@ -57,27 +44,8 @@ view.addSubview(moreButton)
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let moreButton = RtkMoreButtonControlBar(
-
-    meeting: rtkClient,
-
-    presentingViewController: self,
-
-    settingViewControllerCompletion: {
-
-        print("Settings dismissed")
-
-    }
-
-)
-
-view.addSubview(moreButton)
-
-
+let moreButton = RtkMoreButtonControlBar(    meeting: rtkClient,    presentingViewController: self,    settingViewControllerCompletion: {        print("Settings dismissed")    })view.addSubview(moreButton)
 ```
 
 ```json

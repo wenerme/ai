@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -53,26 +53,7 @@ To enable browser-based access with presigned URLs:
 The following example allows browser-based uploads from `https://example.com` with a `Content-Type` header:
 
 ```
-
-[
-
-  {
-
-    "AllowedOrigins": ["https://example.com"],
-
-    "AllowedMethods": ["PUT"],
-
-    "AllowedHeaders": ["Content-Type"],
-
-    "ExposeHeaders": ["ETag"],
-
-    "MaxAgeSeconds": 3600
-
-  }
-
-]
-
-
+[  {    "AllowedOrigins": ["https://example.com"],    "AllowedMethods": ["PUT"],    "AllowedHeaders": ["Content-Type"],    "ExposeHeaders": ["ETag"],    "MaxAgeSeconds": 3600  }]
 ```
 
 ## Use CORS with a custom domain
@@ -106,28 +87,7 @@ You can configure CORS rules using the [Wrangler CLI](https://developers.cloudfl
 cors.json
 
 ```
-
-{
-
-  "rules": [
-
-    {
-
-      "allowed": {
-
-        "origins": ["https://example.com"],
-
-        "methods": ["GET"]
-
-      }
-
-    }
-
-  ]
-
-}
-
-
+{  "rules": [    {      "allowed": {        "origins": ["https://example.com"],        "methods": ["GET"]      }    }  ]}
 ```
 
 1. Apply the CORS policy to your bucket:
@@ -135,10 +95,7 @@ cors.json
 Terminal window
 
 ```
-
 npx wrangler r2 bucket cors set <BUCKET_NAME> --file cors.json
-
-
 ```
 
 1. Verify the CORS policy was applied:
@@ -146,10 +103,7 @@ npx wrangler r2 bucket cors set <BUCKET_NAME> --file cors.json
 Terminal window
 
 ```
-
 npx wrangler r2 bucket cors list <BUCKET_NAME>
-
-
 ```
 
 ## Response headers
@@ -171,20 +125,7 @@ This example shows a CORS policy added for a bucket that contains the `Roboto-Li
 The `AllowedOrigins` specify the web server being used, and `localhost:3000` is the hostname where the web server is running. The `AllowedMethods` specify that only `GET` requests are allowed and can read objects in your bucket.
 
 ```
-
-[
-
-  {
-
-    "AllowedOrigins": ["http://localhost:3000"],
-
-    "AllowedMethods": ["GET"]
-
-  }
-
-]
-
-
+[  {    "AllowedOrigins": ["http://localhost:3000"],    "AllowedMethods": ["GET"]  }]
 ```
 
 In general, a good strategy for making sure you have set the correct CORS rules is to look at the network request that is being blocked by your browser.
@@ -198,11 +139,11 @@ Also note that CORS rule propagation can, in rare cases, take up to 30 seconds.
 ## Common Issues
 
 * Only a cross-origin request will include CORS response headers.  
-   * A cross-origin request is identified by the presence of an `Origin` HTTP request header, with the value of the `Origin` representing a valid, allowed origin as defined by the `AllowedOrigins` field of your CORS policy.  
-   * A request without an `Origin` HTTP request header will _not_ return any CORS response headers. Origin values must match exactly.
+  * A cross-origin request is identified by the presence of an `Origin` HTTP request header, with the value of the `Origin` representing a valid, allowed origin as defined by the `AllowedOrigins` field of your CORS policy.
+  * A request without an `Origin` HTTP request header will _not_ return any CORS response headers. Origin values must match exactly.
 * The value(s) for `AllowedOrigins` in your CORS policy must be a valid [HTTP Origin header value ↗](https://fetch.spec.whatwg.org/#origin-header). A valid `Origin` header does _not_ include a path component and must only be comprised of a `scheme://host[:port]` (where port is optional).  
-   * Valid `AllowedOrigins` value: `https://static.example.com` \- includes the scheme and host. A port is optional and implied by the scheme.  
-   * Invalid `AllowedOrigins` value: `https://static.example.com/` or `https://static.example.com/fonts/Calibri.woff2` \- incorrectly includes the path component.
+  * Valid `AllowedOrigins` value: `https://static.example.com` \- includes the scheme and host. A port is optional and implied by the scheme.
+  * Invalid `AllowedOrigins` value: `https://static.example.com/` or `https://static.example.com/fonts/Calibri.woff2` \- incorrectly includes the path component.
 * If you need to access specific header values via JavaScript on the origin page, such as when using a video player, ensure you set `Access-Control-Expose-Headers` correctly and include the headers your JavaScript needs access to, such as `Content-Length`.
 
 ```json

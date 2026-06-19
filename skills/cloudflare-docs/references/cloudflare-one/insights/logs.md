@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,15 +21,15 @@ Review detailed logs for your Zero Trust organization.
 
 Cloudflare stores Zero Trust logs for different periods of time based on the service and plan type:
 
-| Free                    | Standard  | Access    | Gateway   | Enterprise |                                 |
-| ----------------------- | --------- | --------- | --------- | ---------- | ------------------------------- |
-| **Admin logs**          | 18 months | 18 months | 18 months | 18 months  | 18 months                       |
-| **Access logs**         | 24 hours  | 30 days   | 30 days   | 24 hours   | 180 days                        |
-| **DNS logs**            | 24 hours  | 30 days   | 24 hours  | 30 days    | 180 days[1](#user-content-fn-1) |
-| **Network logs**        | 24 hours  | 30 days   | 24 hours  | 30 days    | 30 days                         |
-| **HTTP logs**           | 24 hours  | 30 days   | 24 hours  | 30 days    | 30 days                         |
-| **DEX logs**            | 7 days    | 7 days    | 7 days    | 7 days     | 7 days                          |
-| **Device posture logs** | 30 days   | 30 days   | 30 days   | 30 days    | 30 days                         |
+|                         | Free      | Standard  | Access    | Gateway   | Enterprise                      |
+| ----------------------- | --------- | --------- | --------- | --------- | ------------------------------- |
+| **Admin logs**          | 18 months | 18 months | 18 months | 18 months | 18 months                       |
+| **Access logs**         | 24 hours  | 30 days   | 30 days   | 24 hours  | 180 days                        |
+| **DNS logs**            | 24 hours  | 30 days   | 24 hours  | 30 days   | 180 days[1](#user-content-fn-1) |
+| **Network logs**        | 24 hours  | 30 days   | 24 hours  | 30 days   | 30 days                         |
+| **HTTP logs**           | 24 hours  | 30 days   | 24 hours  | 30 days   | 30 days                         |
+| **DEX logs**            | 7 days    | 7 days    | 7 days    | 7 days    | 7 days                          |
+| **Device posture logs** | 30 days   | 30 days   | 30 days   | 30 days   | 30 days                         |
 
 ## Log Explorer Beta
 

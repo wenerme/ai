@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -34,8 +34,7 @@ vim ~/.ssh/config
 ```
 3. Input the following values; replacing `ssh.example.com` with the hostname you created.  
 ```  
-Host ssh.example.com  
-ProxyCommand /usr/local/bin/cloudflared access ssh --hostname %h  
+Host ssh.example.comProxyCommand /usr/local/bin/cloudflared access ssh --hostname %h  
 ```  
 The `cloudflared` path may be different depending on your OS and package manager. For example, if you installed `cloudflared` on macOS with Homebrew, check its path by running `brew --prefix cloudflared`.
 4. You can now test the connection by running a command to reach the service:  

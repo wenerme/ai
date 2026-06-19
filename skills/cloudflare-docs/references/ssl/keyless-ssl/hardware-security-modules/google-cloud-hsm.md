@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -65,12 +65,7 @@ With the config file saved, restart `gokeyless` and verify it started successful
 Terminal window
 
 ```
-
-sudo systemctl restart gokeyless.service
-
-sudo systemctl status gokeyless.service -l
-
-
+sudo systemctl restart gokeyless.servicesudo systemctl status gokeyless.service -l
 ```
 
 ```json

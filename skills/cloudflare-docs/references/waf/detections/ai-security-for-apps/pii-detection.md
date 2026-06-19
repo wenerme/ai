@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -84,9 +84,10 @@ Instead, build rules against `cf.llm.prompt.pii_categories` and list only the ca
 
 #### Block any request containing PII
 
-* **When incoming requests match**:  
-| Field            | Operator | Value |  
-| ---------------- | -------- | ----- |  
+* **When incoming requests match**:
+
+| Field            | Operator | Value |
+| ---------------- | -------- | ----- |
 | LLM PII Detected | equals   | True  |  
 Expression when using the editor:  
 `(cf.llm.prompt.pii_detected)`
@@ -94,9 +95,10 @@ Expression when using the editor:
 
 #### Block only specific PII categories
 
-* **When incoming requests match**:  
-| Field              | Operator | Value       |  
-| ------------------ | -------- | ----------- |  
+* **When incoming requests match**:
+
+| Field              | Operator | Value       |
+| ------------------ | -------- | ----------- |
 | LLM PII Categories | is in    | Credit Card |  
 Expression when using the editor:  
 `(any(cf.llm.prompt.pii_categories[*] in {"CREDIT_CARD"}))`
@@ -123,9 +125,10 @@ In the following example, an organization uses employee IDs in the format `EMP-`
 
 [Create a custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) with the following configuration:
 
-* **When incoming requests match**:  
-| Field            | Operator      | Value          |  
-| ---------------- | ------------- | -------------- |  
+* **When incoming requests match**:
+
+| Field            | Operator      | Value          |
+| ---------------- | ------------- | -------------- |
 | Raw request body | matches regex | EMP-\[0-9\]{6} |  
 Expression when using the editor:  
 `(http.request.body.raw matches "EMP-[0-9]{6}")`

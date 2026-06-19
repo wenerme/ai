@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -102,12 +102,7 @@ You can verify if it answers as expected by querying the new assigned secondary 
 Terminal window
 
 ```
-
-# Replace ns0123 with your actual Cloudflare nameservers
-
-dig example.com @ns0123.secondary.cloudflare.com
-
-
+# Replace ns0123 with your actual Cloudflare nameserversdig example.com @ns0123.secondary.cloudflare.com
 ```
 
 1. At your registrar, [update your nameservers](https://developers.cloudflare.com/dns/nameservers/update-nameservers/) to point to the Cloudflare nameservers.
@@ -124,8 +119,8 @@ If you keep any DNS records that still refer `cdn.cloudflare.net`, HTTP traffic 
 
 1. Enable outgoing zone transfers at your primary provider and create a peer DNS server on your Cloudflare account.
 
-* [ Dashboard ](#tab-panel-8129)
-* [ API ](#tab-panel-8130)
+* [ Dashboard ](#tab-panel-8205)
+* [ API ](#tab-panel-8206)
 
 To create a peer server using the dashboard:
 
@@ -133,19 +128,20 @@ To create a peer server using the dashboard:
 [ Go to **Configurations** ](https://dash.cloudflare.com/?to=/:account/configurations)
 2. Go to **DNS Settings**.
 3. Under **DNS Zone Transfers**, for **Peer DNS servers**, select **Create**.
-4. Enter the following information, paying particular attention to:  
-   * **IP**: Specifies where Cloudflare sends transfer requests to.  
-   * **Port**: Specifies the IP Port for the transfer IP.  
-   * **Enable incremental (IXFR) zone transfers**: Specifies if Cloudflare sends IXFR requests in addition to the default AXFR requests.  
-   * **Link an existing TSIG**: If desired, link the TSIG you [previously created](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#1-create-tsig-optional).
+4. Enter the following information, paying particular attention to:
+
+  * **IP**: Specifies where Cloudflare sends transfer requests to.
+  * **Port**: Specifies the IP Port for the transfer IP.
+  * **Enable incremental (IXFR) zone transfers**: Specifies if Cloudflare sends IXFR requests in addition to the default AXFR requests.
+  * **Link an existing TSIG**: If desired, link the TSIG you [previously created](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#1-create-tsig-optional).
 5. Select **Create**.
 
 To create a peer DNS server using the API, send a [POST request](https://developers.cloudflare.com/api/resources/dns/subresources/zone%5Ftransfers/subresources/peers/).
 
 1. Link your Cloudflare zone to the peer DNS server you just created.
 
-* [ Dashboard ](#tab-panel-8127)
-* [ API ](#tab-panel-8128)
+* [ Dashboard ](#tab-panel-8203)
+* [ API ](#tab-panel-8204)
 
 1. In the Cloudflare dashboard, go to the **DNS Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,20 +26,22 @@ To avoid errors with your domain, either [upload a custom certificate](https://d
 
 If you disable Universal SSL, you may experience errors with the following scenarios:
 
-* **Enabled features**:  
-   * [HTTP Strict Transport Security (HSTS)](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/http-strict-transport-security/)  
-   * [Always Use HTTPS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/)  
-   * [Opportunistic Encryption](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/opportunistic-encryption/)
-* **Other setups**:  
-   * [Page Rules](https://developers.cloudflare.com/rules/page-rules/) that redirect traffic to HTTPS  
-   * HTTP to HTTPS redirects at your origin web server
+* **Enabled features**:
+
+  * [HTTP Strict Transport Security (HSTS)](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/http-strict-transport-security/)
+  * [Always Use HTTPS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/)
+  * [Opportunistic Encryption](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/opportunistic-encryption/)
+* **Other setups**:
+
+  * [Page Rules](https://developers.cloudflare.com/rules/page-rules/) that redirect traffic to HTTPS
+  * HTTP to HTTPS redirects at your origin web server
 
 ## Disable Universal SSL certificate
 
 Before you disable Universal SSL/TLS, make sure you have [uploaded a custom certificate](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/) or purchased [Advanced Certificate Manager](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) to protect your domain.
 
-* [ Dashboard ](#tab-panel-10614)
-* [ API ](#tab-panel-10615)
+* [ Dashboard ](#tab-panel-10690)
+* [ API ](#tab-panel-10691)
 
 To disable Universal SSL in the dashboard:
 
@@ -53,8 +55,8 @@ To disable Universal SSL with the Cloudflare API, send a [PATCH](https://develop
 
 ## Re-enable Universal SSL
 
-* [ Dashboard ](#tab-panel-10616)
-* [ API ](#tab-panel-10617)
+* [ Dashboard ](#tab-panel-10692)
+* [ API ](#tab-panel-10693)
 
 To re-enable Universal SSL in the dashboard:
 

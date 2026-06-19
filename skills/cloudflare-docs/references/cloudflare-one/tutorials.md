@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,7 +21,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 | [Use Cloudflare Tunnels with Kubernetes client-go credential plugins](https://developers.cloudflare.com/cloudflare-one/tutorials/tunnel-kubectl/)                                | over 1 year ago    | Intermediate |
 | [Send SSO attributes to Access-protected origins with Workers](https://developers.cloudflare.com/cloudflare-one/tutorials/extend-sso-with-workers/)                              | over 1 year ago    | Advanced     |
 | [Protect an R2 Bucket with Cloudflare Access](https://developers.cloudflare.com/r2/tutorials/cloudflare-access/)                                                                 | about 2 years ago  | Intermediate |
-| [Use virtual networks to change user egress IPs](https://developers.cloudflare.com/cloudflare-one/tutorials/user-selectable-egress-ips/)                                         | about 2 years ago  | Intermediate |
+| [Use virtual networks to change user egress IPs](https://developers.cloudflare.com/cloudflare-one/tutorials/user-selectable-egress-ips/)                                         | over 2 years ago   | Intermediate |
 | [Access and secure a MySQL database using Cloudflare Tunnel and network policies](https://developers.cloudflare.com/cloudflare-one/tutorials/mysql-network-policy/)              | over 2 years ago   | Intermediate |
 | [Access a web application via its private hostname without the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/tutorials/clientless-access-private-dns/) | over 2 years ago   | Intermediate |
 | [Use Microsoft Entra ID Conditional Access policies in Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/tutorials/entra-id-conditional-access/)               | over 2 years ago   | Intermediate |

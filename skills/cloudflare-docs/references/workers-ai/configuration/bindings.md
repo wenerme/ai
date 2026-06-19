@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,35 +20,19 @@ To use Workers AI with Workers, you must create a Workers AI [binding](https://d
 
 To bind Workers AI to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-11291)
-* [  wrangler.toml ](#tab-panel-11292)
+* [  wrangler.jsonc ](#tab-panel-11308)
+* [  wrangler.toml ](#tab-panel-11309)
 
 JSONC
 
 ```
-
-{
-
-  "ai": {
-
-    "binding": "AI" // i.e. available in your Worker on env.AI
-
-  }
-
-}
-
-
+{  "ai": {    "binding": "AI" // i.e. available in your Worker on env.AI  }}
 ```
 
 TOML
 
 ```
-
-[ai]
-
-binding = "AI"
-
-
+[ai]binding = "AI"
 ```
 
 ## Pages Functions
@@ -66,44 +50,25 @@ To configure a Workers AI binding in your Pages Function, you must use the Cloud
 JavaScript
 
 ```
-
-const answer = await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {
-
-    prompt: "What is the origin of the phrase 'Hello, World'"
-
-});
-
-
+const answer = await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {    prompt: "What is the origin of the phrase 'Hello, World'"});
 ```
 
 **Parameters**
 
-* `model` ` string ` required  
-   * The model to run.  
-**Supported options**  
-   * `stream` ` boolean ` optional  
-         * Returns a stream of results as they are available.
+* `model` ` string ` required
+
+  * The model to run.
+
+**Supported options**
+
+  * `stream` ` boolean ` optional  
+    * Returns a stream of results as they are available.
 
 JavaScript
 
 ```
-
-const answer = await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {
-
-    prompt: "What is the origin of the phrase 'Hello, World'",
-
-    stream: true
-
-});
-
-
-return new Response(answer, {
-
-    headers: { "content-type": "text/event-stream" }
-
-});
-
-
+const answer = await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {    prompt: "What is the origin of the phrase 'Hello, World'",    stream: true});
+return new Response(answer, {    headers: { "content-type": "text/event-stream" }});
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,53 +22,53 @@ Connect a Ubiquiti UniFi Gateway to Cloudflare's network using Cloudflare WAN (f
 * Static public IP from your ISP
 * Admin access to both Cloudflare and UniFi
 * Gather a **Magic Anycast IPv4** address from the **Leased IPs** section in the dashboard  
-   * [ Go to **Address space** ](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space)  
-   * Contact your account team if you do not see any IP addresses listed.
+  * [ Go to **Address space** ](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space)
+  * Contact your account team if you do not see any IP addresses listed.
 
 ## 1\. Configure Cloudflare WAN
 
 1. Log in to [Cloudflare One](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** \> **Cloudflare WAN**, and select **Create**.
 1. Select **IPsec tunnel** \> **Next**, and fill in the following settings:  
-   * **Name**: `unifi-gw-primary`  
-   * **IPv4 Interface Address**: `10.252.2.28/31` or refer to the [Tunnel endpoints documentation](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/)  
-   * **Customer Endpoint**: This should be your UniFi Gateway's WAN IP (for example, `203.0.113.10`)  
-   * **Cloudflare Endpoint**: This should be one of the IPv4 addresses gathered from Leased IPs.  
-   * Under **Tunnel Health checks**, select:  
-         * **Health check rate**: Set to desired level  
-         * **Health check type**: _Request_  
-         * **Health check direction**: _Bidirectional_  
-         * **Health check target**: _Default_  
-   * Under **Pre-shared key**:  
-         * Select **Add pre-shared key later**. This key will be given during the UniFi site-to-site VPN configuration.
+  * **Name**: `unifi-gw-primary`
+  * **IPv4 Interface Address**: `10.252.2.28/31` or refer to the [Tunnel endpoints documentation](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/)
+  * **Customer Endpoint**: This should be your UniFi Gateway's WAN IP (for example, `203.0.113.10`)
+  * **Cloudflare Endpoint**: This should be one of the IPv4 addresses gathered from Leased IPs.
+  * Under **Tunnel Health checks**, select:  
+    * **Health check rate**: Set to desired level
+    * **Health check type**: _Request_
+    * **Health check direction**: _Bidirectional_
+    * **Health check target**: _Default_
+  * Under **Pre-shared key**:  
+    * Select **Add pre-shared key later**. This key will be given during the UniFi site-to-site VPN configuration.
 
 ## 2\. Configure site-to-site VPN on UniFi
 
 1. In UniFi Network, go to **Settings** \> **VPN** \> **Site-to-Site VPN**.
 2. Select **Create New**.
 3. Configure the following settings:  
-   * **VPN Type:** `IPsec`.  
-   * **Name:** `Cloudflare-Magic-WAN`.  
-   * **Pre-shared key:** Copy this key. You need it for the IPsec tunnel.  
-   * **Local IP:** Select the WAN interface (for example, `WAN1`).  
-   * **Remote IP:** Enter the Cloudflare endpoint IP from [Step 1](#1-configure-cloudflare-wan).  
-   * **VPN Method:** Route Based.  
-   * **Tunnel IP:** `10.252.2.29/31` or refer to the [Tunnel endpoints documentation](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/).  
-   * **Remote Networks:** Inside Cloudflare tunnel address (for example, `10.252.2.28/31`) and other remote subnets to access through Cloudflare WAN.
+  * **VPN Type:** `IPsec`.
+  * **Name:** `Cloudflare-Magic-WAN`.
+  * **Pre-shared key:** Copy this key. You need it for the IPsec tunnel.
+  * **Local IP:** Select the WAN interface (for example, `WAN1`).
+  * **Remote IP:** Enter the Cloudflare endpoint IP from [Step 1](#1-configure-cloudflare-wan).
+  * **VPN Method:** Route Based.
+  * **Tunnel IP:** `10.252.2.29/31` or refer to the [Tunnel endpoints documentation](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/).
+  * **Remote Networks:** Inside Cloudflare tunnel address (for example, `10.252.2.28/31`) and other remote subnets to access through Cloudflare WAN.
 4. Set Advanced settings:  
-   * **Key Exchange Version**: IKEv2.  
-   * **IKE Encryption**: AES-256.  
-   * **IKE Hash**: SHA256.  
-   * **IKE DH Group**: 14.  
-   * **IKE Lifetime**: 28800.  
-   * **ESP Encryption**: AES-256.  
-   * **ESP Hash**: SHA256.  
-   * **ESP DH Group**: 14.  
-   * **ESP Lifetime**: 28800.  
-   * **PFS**: Enabled.  
-   * **Local Authentication ID**: Auto.  
-   * **Remote Authentication ID**: Uncheck **Auto**, and enter the Cloudflare Endpoint IP from [Step 1](#1-configure-cloudflare-wan).  
-   * **MTU**: 1436.
+  * **Key Exchange Version**: IKEv2.
+  * **IKE Encryption**: AES-256.
+  * **IKE Hash**: SHA256.
+  * **IKE DH Group**: 14.
+  * **IKE Lifetime**: 28800.
+  * **ESP Encryption**: AES-256.
+  * **ESP Hash**: SHA256.
+  * **ESP DH Group**: 14.
+  * **ESP Lifetime**: 28800.
+  * **PFS**: Enabled.
+  * **Local Authentication ID**: Auto.
+  * **Remote Authentication ID**: Uncheck **Auto**, and enter the Cloudflare Endpoint IP from [Step 1](#1-configure-cloudflare-wan).
+  * **MTU**: 1436.
 5. Select **Apply**
 
 ## 3\. Add pre-shared key to Cloudflare
@@ -84,9 +84,9 @@ Connect a Ubiquiti UniFi Gateway to Cloudflare's network using Cloudflare WAN (f
 1. Log in to [Cloudflare One](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Routes** \> **WAN routes** \> **Create**.
 1. Enter the following settings:  
-   * **Prefix**: Your local network (for example, `192.168.1.0/24`).  
-   * **Tunnel/Next hop**: Select your tunnel.  
-   * **Priority**: `100`.
+  * **Prefix**: Your local network (for example, `192.168.1.0/24`).
+  * **Tunnel/Next hop**: Select your tunnel.
+  * **Priority**: `100`.
 2. Select **Add routes** to add your static route.
 
 ## Verify connections
@@ -127,14 +127,14 @@ To route only specific devices through Cloudflare (UniFi Network Application):
 1. Remove unnecessary routes from Remote Subnets in your VPN configuration.
 2. Go to **Settings** \> **Policy Table**.
 3. Under **Policy Engine** select **Create New Policy** with the following settings:  
-   * Select `Route`.  
-   * **Name**: Provide a name for the policy.  
-   * **Type**: _Policy-Based_.  
-   * **Interface/VPN Tunnel**: Select the VPN Tunnel (for example, `Cloudflare-Magic-WAN`).  
-   * **Kill Switch**: _Enabled_ (recommended).  
-   * **Source**: Select `Device/Network` and then choose the Device(s) or Network(s).  
-   * **Destination**: _Any_.  
-   * **Interface**: Your VPN tunnel.
+  * Select `Route`.
+  * **Name**: Provide a name for the policy.
+  * **Type**: _Policy-Based_.
+  * **Interface/VPN Tunnel**: Select the VPN Tunnel (for example, `Cloudflare-Magic-WAN`).
+  * **Kill Switch**: _Enabled_ (recommended).
+  * **Source**: Select `Device/Network` and then choose the Device(s) or Network(s).
+  * **Destination**: _Any_.
+  * **Interface**: Your VPN tunnel.
 
 ## Next Steps
 

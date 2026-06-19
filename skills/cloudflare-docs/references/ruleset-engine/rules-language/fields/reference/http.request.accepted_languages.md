@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,23 +27,8 @@ If the HTTP header includes the language tag `*` it will not be stored in the ar
 Example usage:
 
 ```
-
-# Example 1: Request with header "Accept-Language: fr-CH, fr;q=0.8, en;q=0.9, de;q=0.7, *;q=0.5".
-
-# In this case:
-
-http.request.accepted_languages[0] ==> "fr-CH"
-
-http.request.accepted_languages    ==> ["fr-CH", "en", "fr", "de"]
-
-
-# Example 2: Request without an `Accept-Language` HTTP header and a URI of "https://www.example.com/my-path".
-
-# In this case:
-
-concat("/", http.request.accepted_languages[0], http.request.uri.path) ==> "//my-path"
-
-
+# Example 1: Request with header "Accept-Language: fr-CH, fr;q=0.8, en;q=0.9, de;q=0.7, *;q=0.5".# In this case:http.request.accepted_languages[0] ==> "fr-CH"http.request.accepted_languages    ==> ["fr-CH", "en", "fr", "de"]
+# Example 2: Request without an `Accept-Language` HTTP header and a URI of "https://www.example.com/my-path".# In this case:concat("/", http.request.accepted_languages[0], http.request.uri.path) ==> "//my-path"
 ```
 
 Categories: 

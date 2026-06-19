@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-vpc/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -94,40 +94,9 @@ The following is an example of an HTTP VPC Service using custom HTTP and HTTPS p
 JSONC
 
 ```
-
-{
-
-  "type": "http",
-
-  "name": "human-readable-name",
-
-
-  // Port configuration (optional - defaults to 80/443)
-
-  "http_port": 80,
-
-  "https_port": 443,
-
-
-  // Host configuration
-
-  "host": {
-
-    "ipv4": "10.0.0.1",
-
-    "ipv6": "fe80::",
-
-    "network": {
-
-      "tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
-
-    },
-
-  },
-
-}
-
-
+{  "type": "http",  "name": "human-readable-name",
+  // Port configuration (optional - defaults to 80/443)  "http_port": 80,  "https_port": 443,
+  // Host configuration  "host": {    "ipv4": "10.0.0.1",    "ipv6": "fe80::",    "network": {      "tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da",    },  },}
 ```
 
 ### HTTP service with hostname
@@ -137,40 +106,9 @@ The following is an example of an HTTP VPC Service using a hostname. When using 
 JSONC
 
 ```
-
-{
-
-  "type": "http",
-
-  "name": "human-readable-name",
-
-
-  // Port configuration (optional - defaults to 80/443)
-
-  "http_port": 80,
-
-  "https_port": 443,
-
-
-  // Hostname Host (with DNS resolver)
-
-  "host": {
-
-    "hostname": "example.com",
-
-    "resolver_network": {
-
-      "tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
-
-      "resolver_ips": ["10.0.0.1"], // Optional
-
-    },
-
-  },
-
-}
-
-
+{  "type": "http",  "name": "human-readable-name",
+  // Port configuration (optional - defaults to 80/443)  "http_port": 80,  "https_port": 443,
+  // Hostname Host (with DNS resolver)  "host": {    "hostname": "example.com",    "resolver_network": {      "tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da",      "resolver_ips": ["10.0.0.1"], // Optional    },  },}
 ```
 
 ### TCP service (for example, PostgreSQL)
@@ -180,33 +118,8 @@ The following is an example of a TCP VPC Service for a PostgreSQL database.
 JSONC
 
 ```
-
-{
-
-  "type": "tcp",
-
-  "name": "my-postgres-db",
-
-  "tcp_port": 5432,
-
-  "app_protocol": "postgresql", // Optional: "postgresql" or "mysql"
-
-
-  "host": {
-
-    "ipv4": "10.0.0.5",
-
-    "network": {
-
-      "tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
-
-    },
-
-  },
-
-}
-
-
+{  "type": "tcp",  "name": "my-postgres-db",  "tcp_port": 5432,  "app_protocol": "postgresql", // Optional: "postgresql" or "mysql"
+  "host": {    "ipv4": "10.0.0.5",    "network": {      "tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da",    },  },}
 ```
 
 ### Service with TLS certificate verification
@@ -216,183 +129,48 @@ The following example creates a TCP service with `verify_ca` certificate verific
 JSONC
 
 ```
-
-{
-
-  "type": "tcp",
-
-  "name": "my-postgres-db",
-
-  "tcp_port": 5432,
-
-  "app_protocol": "postgresql",
-
-
-  "host": {
-
-    "ipv4": "10.0.0.5",
-
-    "network": {
-
-      "tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
-
-    },
-
-  },
-
-
-  "tls_settings": {
-
-    "cert_verification_mode": "verify_ca",
-
-  },
-
-}
-
-
+{  "type": "tcp",  "name": "my-postgres-db",  "tcp_port": 5432,  "app_protocol": "postgresql",
+  "host": {    "ipv4": "10.0.0.5",    "network": {      "tunnel_id": "0191dce4-9ab4-7fce-b660-8e5dec5172da",    },  },
+  "tls_settings": {    "cert_verification_mode": "verify_ca",  },}
 ```
 
 ## Workers binding configuration
 
 Once you have created a VPC Service, you can bind it to your Worker:
 
-* [  wrangler.jsonc ](#tab-panel-11337)
-* [  wrangler.toml ](#tab-panel-11338)
+* [  wrangler.jsonc ](#tab-panel-11354)
+* [  wrangler.toml ](#tab-panel-11355)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "my-worker",
-
-  "main": "src/index.js",
-
-  "vpc_services": [
-
-    {
-
-      "binding": "PRIVATE_API",
-
-      "service_id": "e6a0817c-79c5-40ca-9776-a1c019defe70",
-
-      "remote": true // When true, utilizes [remote bindings](/workers/development-testing/#remote-bindings) to allow access to the VPC Service during local development.
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-worker",  "main": "src/index.js",  "vpc_services": [    {      "binding": "PRIVATE_API",      "service_id": "e6a0817c-79c5-40ca-9776-a1c019defe70",      "remote": true // When true, utilizes [remote bindings](/workers/development-testing/#remote-bindings) to allow access to the VPC Service during local development.    }  ]}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "my-worker"
-
-main = "src/index.js"
-
-
-[[vpc_services]]
-
-binding = "PRIVATE_API"
-
-service_id = "e6a0817c-79c5-40ca-9776-a1c019defe70"
-
-remote = true
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-worker"main = "src/index.js"
+[[vpc_services]]binding = "PRIVATE_API"service_id = "e6a0817c-79c5-40ca-9776-a1c019defe70"remote = true
 ```
 
 You can have multiple VPC service bindings:
 
-* [  wrangler.jsonc ](#tab-panel-11339)
-* [  wrangler.toml ](#tab-panel-11340)
+* [  wrangler.jsonc ](#tab-panel-11356)
+* [  wrangler.toml ](#tab-panel-11357)
 
 JSONC
 
 ```
-
-{
-
-  "vpc_services": [
-
-    {
-
-      "binding": "PRIVATE_API",
-
-      "service_id": "daf43e8c-a81a-4242-9912-4a2ebe4fdd79",
-
-      "remote": true
-
-    },
-
-    {
-
-      "binding": "PRIVATE_DATABASE",
-
-      "service_id": "453b6067-1327-420d-89b3-2b6ad16e6551",
-
-      "remote": true
-
-    },
-
-    {
-
-      "binding": "INTERNAL_CACHE",
-
-      "service_id": "6c39b574-237e-49f4-852a-cea5a93ed8f9",
-
-      "remote": true
-
-    }
-
-  ]
-
-}
-
-
+{  "vpc_services": [    {      "binding": "PRIVATE_API",      "service_id": "daf43e8c-a81a-4242-9912-4a2ebe4fdd79",      "remote": true    },    {      "binding": "PRIVATE_DATABASE",      "service_id": "453b6067-1327-420d-89b3-2b6ad16e6551",      "remote": true    },    {      "binding": "INTERNAL_CACHE",      "service_id": "6c39b574-237e-49f4-852a-cea5a93ed8f9",      "remote": true    }  ]}
 ```
 
 TOML
 
 ```
-
-[[vpc_services]]
-
-binding = "PRIVATE_API"
-
-service_id = "daf43e8c-a81a-4242-9912-4a2ebe4fdd79"
-
-remote = true
-
-
-[[vpc_services]]
-
-binding = "PRIVATE_DATABASE"
-
-service_id = "453b6067-1327-420d-89b3-2b6ad16e6551"
-
-remote = true
-
-
-[[vpc_services]]
-
-binding = "INTERNAL_CACHE"
-
-service_id = "6c39b574-237e-49f4-852a-cea5a93ed8f9"
-
-remote = true
-
-
+[[vpc_services]]binding = "PRIVATE_API"service_id = "daf43e8c-a81a-4242-9912-4a2ebe4fdd79"remote = true
+[[vpc_services]]binding = "PRIVATE_DATABASE"service_id = "453b6067-1327-420d-89b3-2b6ad16e6551"remote = true
+[[vpc_services]]binding = "INTERNAL_CACHE"service_id = "6c39b574-237e-49f4-852a-cea5a93ed8f9"remote = true
 ```
 
 ## Required roles
@@ -410,12 +188,7 @@ If your roles were recently updated and commands are still failing, refresh Wran
 Terminal window
 
 ```
-
-npx wrangler logout
-
-npx wrangler login
-
-
+npx wrangler logoutnpx wrangler login
 ```
 
 If you authenticate with an API token (`CLOUDFLARE_API_TOKEN`), ensure the token belongs to a user with the required roles.

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,7 +26,7 @@ The following example uses the [Update a zone entry point ruleset](https://devel
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Response Compression Write`
 * `Config Settings Write`
 * `Dynamic URL Redirects Write`
@@ -52,52 +52,7 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Update a zone entry point ruleset
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/ddos_l7/entrypoint" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "rules": [
-
-        {
-
-            "action": "execute",
-
-            "expression": "true",
-
-            "action_parameters": {
-
-                "id": "<HTTP_DDOS_RULESET_ID>",
-
-                "overrides": {
-
-                    "rules": [
-
-                        {
-
-                            "id": "<RULE_ID>",
-
-                            "sensitivity_level": "low"
-
-                        }
-
-                    ]
-
-                }
-
-            }
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/ddos_l7/entrypoint" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "action": "execute",            "expression": "true",            "action_parameters": {                "id": "<HTTP_DDOS_RULESET_ID>",                "overrides": {                    "rules": [                        {                            "id": "<RULE_ID>",                            "sensitivity_level": "low"                        }                    ]                }            }        }    ]  }'
 ```
 
 ```json

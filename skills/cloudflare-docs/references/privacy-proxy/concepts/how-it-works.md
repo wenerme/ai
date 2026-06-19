@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/privacy-proxy/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,31 +17,8 @@ Privacy Proxy uses the MASQUE protocol suite to create encrypted tunnels between
 ## Traffic flow
 
 ```
-
-┌──────────┐      1. Connect + Auth      ┌──────────┐      4. Connect        ┌─────────────┐
-
-│          │ ──────────────────────────▶ │          │ ────────────────────▶  │             │
-
-│  Client  │      2. CONNECT request     │  Privacy │      (Egress IP)       │ Destination │
-
-│          │ ──────────────────────────▶ │  Proxy   │                        │   Server    │
-
-│          │                             │          │ ◀────────────────────  │             │
-
-│          │      3. 200 OK              │          │      5. Connected      │             │
-
-│          │ ◀────────────────────────── │          │                        │             │
-
-│          │                             │          │                        │             │
-
-│          │  ◀───── 6. Encrypted data tunnel ─────▶  ◀─────────────────────▶│             │
-
-└──────────┘                             └──────────┘                        └─────────────┘
-
-
+┌──────────┐      1. Connect + Auth      ┌──────────┐      4. Connect        ┌─────────────┐│          │ ──────────────────────────▶ │          │ ────────────────────▶  │             ││  Client  │      2. CONNECT request     │  Privacy │      (Egress IP)       │ Destination ││          │ ──────────────────────────▶ │  Proxy   │                        │   Server    ││          │                             │          │ ◀────────────────────  │             ││          │      3. 200 OK              │          │      5. Connected      │             ││          │ ◀────────────────────────── │          │                        │             ││          │                             │          │                        │             ││          │  ◀───── 6. Encrypted data tunnel ─────▶  ◀─────────────────────▶│             │└──────────┘                             └──────────┘                        └─────────────┘
            │◀──── Client IP hidden ────▶│◀──── Cloudflare Egress IP visible ──────────▶│
-
-
 ```
 
 1. The client establishes an HTTP/2 or HTTP/3 connection to Privacy Proxy and presents credentials (PSK or Privacy Pass token) in the `Proxy-Authorization` header.

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,44 +37,7 @@ Common names are restricted to 64 characters and subject alternative names (SANs
 Terminal window
 
 ```
-
-request_body=$(< <(cat <<EOF
-
-{
-
-  "country": "US",
-
-  "state": "MA",
-
-  "locality": "Boston",
-
-  "organization": "City of Boston",
-
-  "organizational_unit": "Championship Parade Detail",
-
-  "common_name": "app.example.com",
-
-  "sans": [
-
-    "app.example.com",
-
-    "www.example.com",
-
-    "blog.example.com",
-
-    "example.com"
-
-  ],
-
-  "key_type": "p256v1"
-
-}
-
-EOF
-
-))
-
-
+request_body=$(< <(cat <<EOF{  "country": "US",  "state": "MA",  "locality": "Boston",  "organization": "City of Boston",  "organizational_unit": "Championship Parade Detail",  "common_name": "app.example.com",  "sans": [    "app.example.com",    "www.example.com",    "blog.example.com",    "example.com"  ],  "key_type": "p256v1"}EOF))
 ```
 
 ### 2\. Generate a CSR
@@ -84,59 +47,8 @@ Now, you want to generate a CSR that you can provide to your customer.
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/zones/{zone_id}/custom_csrs \
-
---header "X-Auth-Email: <EMAIL>" \
-
---header "X-Auth-Key: <API_KEY>" \
-
---header "Content-Type: application/json" \
-
---data "$request_body"
-
-
-# Response:
-
-{
-
-  "result": {
-
-    "id": "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
-
-    "country": "US",
-
-    "state": "MA",
-
-    "locality": "Boston",
-
-    "organization": "City of Boston",
-
-    "organizational_unit": "Championship Parade Detail",
-
-    "common_name": "app.example.com",
-
-    "sans": [
-
-      "app.example.com",
-
-      "www.example.com",
-
-      "blog.example.com",
-
-      "example.com",
-
-    ],
-
-    "key_type": "p256v1",
-
-    "csr": "-----BEGIN CERTIFICATE REQUEST-----\nMIIBSzCB8gIBADBiMQswaQYDVQQGEwJVUzELMAkGA1UECBMCTUExDzANBgNVBAcT\nBkJvc3RvbjEaMBgGA1UEChMRQ2l0eSBvZiBDaGFtcGlvbnMxGTAXBgNVBAMTEGNz\nci1wcm9kLnRscy5mdW4wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAaTKf70NYlwr\n20P6P8xj8/4mTN5q28dbZR/gM3u4m/RPs24+PxAfMZCNvkVKAPVWYfUAadZI4Ha/\ndxLh5Q6X5bhIoC4wLAYJKoZIhvcNAQkOMR8wHTAbBqNVHREEFDASghBjc3ItcHJv\nZC50bHMuZnVuMAoGCCqGSM49BAMCA0gAMEUCIQDgtFUZav466SbT2FGBsIBlahDI\nVkg4y+u+V/K5DlY1+gIgQ9xLfUSKnSnJYbM9TwWr4Z964+lBtB9af4O5pp7/PSA=\n-----END CERTIFICATE REQUEST-----\n"
-
-  },
-
-  "success": true
-
-
+curl https://api.cloudflare.com/client/v4/zones/{zone_id}/custom_csrs \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data "$request_body"
+# Response:{  "result": {    "id": "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",    "country": "US",    "state": "MA",    "locality": "Boston",    "organization": "City of Boston",    "organizational_unit": "Championship Parade Detail",    "common_name": "app.example.com",    "sans": [      "app.example.com",      "www.example.com",      "blog.example.com",      "example.com",    ],    "key_type": "p256v1",    "csr": "-----BEGIN CERTIFICATE REQUEST-----\nMIIBSzCB8gIBADBiMQswaQYDVQQGEwJVUzELMAkGA1UECBMCTUExDzANBgNVBAcT\nBkJvc3RvbjEaMBgGA1UEChMRQ2l0eSBvZiBDaGFtcGlvbnMxGTAXBgNVBAMTEGNz\nci1wcm9kLnRscy5mdW4wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAaTKf70NYlwr\n20P6P8xj8/4mTN5q28dbZR/gM3u4m/RPs24+PxAfMZCNvkVKAPVWYfUAadZI4Ha/\ndxLh5Q6X5bhIoC4wLAYJKoZIhvcNAQkOMR8wHTAbBqNVHREEFDASghBjc3ItcHJv\nZC50bHMuZnVuMAoGCCqGSM49BAMCA0gAMEUCIQDgtFUZav466SbT2FGBsIBlahDI\nVkg4y+u+V/K5DlY1+gIgQ9xLfUSKnSnJYbM9TwWr4Z964+lBtB9af4O5pp7/PSA=\n-----END CERTIFICATE REQUEST-----\n"  },  "success": true
 ```
 
 Replace the `\n` characters with actual newlines before passing to your customer. This can be accomplished by piping the output of the prior call to a tool like jq and perl, such as:
@@ -144,18 +56,7 @@ Replace the `\n` characters with actual newlines before passing to your customer
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/zones/{zone_id}/custom_csrs \
-
---header "X-Auth-Email: <EMAIL>" \
-
---header "X-Auth-Key: <API_KEY>" \
-
---header "Content-Type: application/json" \
-
---data "$request_body" | jq .result.csr | perl -npe s'/\\n/\n/g; s/"//g' > csr.txt
-
-
+curl https://api.cloudflare.com/client/v4/zones/{zone_id}/custom_csrs \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data "$request_body" | jq .result.csr | perl -npe s'/\\n/\n/g; s/"//g' > csr.txt
 ```
 
 ### 3\. Customer obtains certificate
@@ -173,31 +74,8 @@ Cloudflare only accepts publicly trusted certificates. If you attempt to upload 
 Terminal window
 
 ```
-
 $ MYCERT="$(cat app_example_com.pem|perl -pe 's/\r?\n/\\n/'|sed -e 's/..$//')"
-
-
-$ request_body=$(< <(cat <<EOF
-
-{
-
-  "hostname": "app.example.com",
-
-  "ssl": {
-
-    "custom_csr_id": "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
-
-    "custom_certificate": "$MYCERT"
-
-  }
-
-}
-
-EOF
-
-))
-
-
+$ request_body=$(< <(cat <<EOF{  "hostname": "app.example.com",  "ssl": {    "custom_csr_id": "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",    "custom_certificate": "$MYCERT"  }}EOF))
 ```
 
 With the request body built, [create the custom hostname](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/create/) with the supplied custom certificate. If you intend to use the certificate with multiple hostnames, make multiple API calls replacing the `hostname` field.

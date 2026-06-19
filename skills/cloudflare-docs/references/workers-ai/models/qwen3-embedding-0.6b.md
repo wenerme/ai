@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,121 +27,41 @@ The Qwen3 Embedding model series is the latest proprietary model of the Qwen fam
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-5065)
-* [  Python ](#tab-panel-5066)
-* [  curl ](#tab-panel-5067)
+* [  TypeScript ](#tab-panel-5139)
+* [  Python ](#tab-panel-5140)
+* [  curl ](#tab-panel-5141)
 
 ```
-
-export interface Env {
-
-  AI: Ai;
-
-}
-
-
-export default {
-
-  async fetch(request, env): Promise<Response> {
-
-
-    // Can be a string or array of strings]
-
-    const stories = [
-
-      "This is a story about an orange cloud",
-
-      "This is a story about a llama",
-
-      "This is a story about a hugging emoji",
-
-    ];
-
-
-    const embeddings = await env.AI.run(
-
-      "@cf/qwen/qwen3-embedding-0.6b",
-
-      {
-
-        text: stories,
-
-      }
-
-    );
-
-
-    return Response.json(embeddings);
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export interface Env {  AI: Ai;}
+export default {  async fetch(request, env): Promise<Response> {
+    // Can be a string or array of strings]    const stories = [      "This is a story about an orange cloud",      "This is a story about a llama",      "This is a story about a hugging emoji",    ];
+    const embeddings = await env.AI.run(      "@cf/qwen/qwen3-embedding-0.6b",      {        text: stories,      }    );
+    return Response.json(embeddings);  },} satisfies ExportedHandler<Env>;
 ```
 
 ```
+import osimport requests
 
-import os
-
-import requests
-
-
-ACCOUNT_ID = "your-account-id"
-
-AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
-
-
-stories = [
-
-  'This is a story about an orange cloud',
-
-  'This is a story about a llama',
-
-  'This is a story about a hugging emoji'
-
-]
-
-
-response = requests.post(
-
-  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/qwen/qwen3-embedding-0.6b",
-
-  headers={"Authorization": f"Bearer {AUTH_TOKEN}"},
-
-  json={"text": stories}
-
-)
-
-
+ACCOUNT_ID = "your-account-id"AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
+stories = [  'This is a story about an orange cloud',  'This is a story about a llama',  'This is a story about a hugging emoji']
+response = requests.post(  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/qwen/qwen3-embedding-0.6b",  headers={"Authorization": f"Bearer {AUTH_TOKEN}"},  json={"text": stories})
 print(response.json())
-
-
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/qwen/qwen3-embedding-0.6b  \
-
-  -X POST  \
-
-  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
-
-  -d '{ "text": ["This is a story about an orange cloud", "This is a story about a llama", "This is a story about a hugging emoji"] }'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/qwen/qwen3-embedding-0.6b  \  -X POST  \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \  -d '{ "text": ["This is a story about an orange cloud", "This is a story about a llama", "This is a story about a hugging emoji"] }'
 ```
 
 OpenAI compatible endpoints 
 
-Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
+Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations ](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/). 
 
 ## Parameters
 
-* [ Input ](#tab-panel-5068)
-* [ Output ](#tab-panel-5069)
+* [ Input ](#tab-panel-5142)
+* [ Output ](#tab-panel-5143)
 
 ▶queries
 
@@ -171,7 +91,7 @@ instruction
 
 Input [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/schema-input.json "Download") 
 
-Output [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/schema-output.json "Download") 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/schema-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/#page","headline":"qwen3-embedding-0.6b (Qwen) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"The Qwen3 Embedding model series is the latest proprietary model of the Qwen family, specifically designed for text embedding and ranking tasks.","url":"https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

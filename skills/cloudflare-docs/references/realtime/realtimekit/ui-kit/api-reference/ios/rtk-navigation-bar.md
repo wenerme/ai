@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -40,15 +40,8 @@ A navigation bar with a title label and a close or back button. Used for modal s
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let navBar = RtkNavigationBar(title: "Participants")
-
-view.addSubview(navBar)
-
-
+let navBar = RtkNavigationBar(title: "Participants")view.addSubview(navBar)
 ```
 
 ### With back button handler
@@ -56,21 +49,8 @@ view.addSubview(navBar)
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let navBar = RtkNavigationBar(title: "Chat")
-
-navBar.setBackButtonClick {
-
-    self.dismiss(animated: true)
-
-}
-
-view.addSubview(navBar)
-
-
+let navBar = RtkNavigationBar(title: "Chat")navBar.setBackButtonClick {    self.dismiss(animated: true)}view.addSubview(navBar)
 ```
 
 ```json

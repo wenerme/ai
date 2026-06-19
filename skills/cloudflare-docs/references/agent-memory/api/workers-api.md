@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agent-memory/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,45 +18,19 @@ Use the Workers API to access Agent Memory from your [Worker](https://developers
 
 Add an `agent_memory` entry to your Wrangler configuration. The `binding` field is the variable name you use in Worker code, and the `namespace` field is the Agent Memory namespace to bind to.
 
-* [  wrangler.jsonc ](#tab-panel-5115)
-* [  wrangler.toml ](#tab-panel-5116)
+* [  wrangler.jsonc ](#tab-panel-5189)
+* [  wrangler.toml ](#tab-panel-5190)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "agent_memory": [
-
-    {
-
-      "binding": "MEMORY",
-
-      "namespace": "<NAMESPACE_NAME>"
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "agent_memory": [    {      "binding": "MEMORY",      "namespace": "<NAMESPACE_NAME>"    }  ]}
 ```
 
 TOML
 
 ```
-
-[[agent_memory]]
-
-binding = "MEMORY"
-
-namespace = "<NAMESPACE_NAME>"
-
-
+[[agent_memory]]binding = "MEMORY"namespace = "<NAMESPACE_NAME>"
 ```
 
 To bind multiple namespaces, add multiple entries to the `agent_memory` array.
@@ -68,14 +42,7 @@ Run `npx wrangler types` to generate the binding type in `worker-configuration.d
 worker-configuration.d.ts
 
 ```
-
-interface Env {
-
-  MEMORY: AgentMemoryNamespace;
-
-}
-
-
+interface Env {  MEMORY: AgentMemoryNamespace;}
 ```
 
 ## Namespace methods
@@ -105,26 +72,7 @@ Call profile methods after you get a profile from the binding.
 TypeScript
 
 ```
-
-type AgentMemoryMemory = {
-
-  id: string;
-
-  type: "fact" | "event" | "instruction" | "task";
-
-  summary: string;
-
-  content: string;
-
-  sessionId: string | null;
-
-  createdAt: Date;
-
-  updatedAt: Date;
-
-};
-
-
+type AgentMemoryMemory = {  id: string;  type: "fact" | "event" | "instruction" | "task";  summary: string;  content: string;  sessionId: string | null;  createdAt: Date;  updatedAt: Date;};
 ```
 
 ### `ingest(messages, options?)`
@@ -138,18 +86,7 @@ Processes a conversation and extracts structured memories from it. Agent Memory 
 TypeScript
 
 ```
-
-type AgentMemoryMessage = {
-
-  role: "system" | "user" | "assistant";
-
-  content: string; // Max 32 KB
-
-  timestamp?: Date;
-
-};
-
-
+type AgentMemoryMessage = {  role: "system" | "user" | "assistant";  content: string; // Max 32 KB  timestamp?: Date;};
 ```
 
 `ingest()` is idempotent. Re-ingesting the same conversation does not create duplicate memories.
@@ -175,31 +112,8 @@ Searches stored memories in the profile and returns a synthesized answer grounde
 TypeScript
 
 ```
-
-type AgentMemoryRecallResult = {
-
-  count: number;
-
-  answer: string;
-
-  candidates: AgentMemoryScoredCandidate[];
-
-};
-
-
-type AgentMemoryScoredCandidate = {
-
-  id: string;
-
-  summary: string;
-
-  sessionId: string | null;
-
-  score: number;
-
-};
-
-
+type AgentMemoryRecallResult = {  count: number;  answer: string;  candidates: AgentMemoryScoredCandidate[];};
+type AgentMemoryScoredCandidate = {  id: string;  summary: string;  sessionId: string | null;  score: number;};
 ```
 
 If no memories match the query, `recall()` returns an empty answer.
@@ -217,19 +131,8 @@ Lists memories stored in the profile. Returns a paginated, filterable view of st
 TypeScript
 
 ```
-
 type AgentMemoryMemoryListEntry = Omit<AgentMemoryMemory, "content">;
-
-
-type AgentMemoryListMemoriesResult = {
-
-  memories: AgentMemoryMemoryListEntry[];
-
-  cursor?: string;
-
-};
-
-
+type AgentMemoryListMemoriesResult = {  memories: AgentMemoryMemoryListEntry[];  cursor?: string;};
 ```
 
 List entries omit `content`. Use `get(memoryId)` to retrieve the full memory.
@@ -269,14 +172,7 @@ Generates a structured Markdown summary of everything stored in a memory profile
 TypeScript
 
 ```
-
-type AgentMemoryGetSummaryResponse = {
-
-  summary: string;
-
-};
-
-
+type AgentMemoryGetSummaryResponse = {  summary: string;};
 ```
 
 ## Limits
@@ -294,7 +190,7 @@ Refer to [Limits](https://developers.cloudflare.com/agent-memory/platform/limits
 
 [ HTTP API ](https://developers.cloudflare.com/agent-memory/api/http-api/) Use Agent Memory from services that call the Cloudflare API directly. 
 
-[ Get started ](https://developers.cloudflare.com/agent-memory/get-started/) Add durable memory recall and ingestion to an agent. 
+[ Get started ](https://developers.cloudflare.com/agent-memory/get-started/) Add durable memory recall and ingestion to an agent.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-memory/api/workers-api/#page","headline":"Workers API · Cloudflare Agent Memory docs","description":"Configure the Agent Memory binding and use memory profiles from Worker code.","url":"https://developers.cloudflare.com/agent-memory/api/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

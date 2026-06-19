@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,16 +26,7 @@ A base header view component. Provides background styling and design token suppo
 ### Basic Usage
 
 ```
-
-<com.cloudflare.realtimekit.ui.view.headers.RtkHeaderView
-
-    android:id="@+id/rtk_header"
-
-    android:layout_width="match_parent"
-
-    android:layout_height="wrap_content" />
-
-
+<com.cloudflare.realtimekit.ui.view.headers.RtkHeaderView    android:id="@+id/rtk_header"    android:layout_width="match_parent"    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
@@ -43,12 +34,7 @@ A base header view component. Provides background styling and design token suppo
 Kotlin
 
 ```
-
-val header = findViewById<RtkHeaderView>(R.id.rtk_header)
-
-header.activate(meeting)
-
-
+val header = findViewById<RtkHeaderView>(R.id.rtk_header)header.activate(meeting)
 ```
 
 ```json

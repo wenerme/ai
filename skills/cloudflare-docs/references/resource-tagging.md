@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/resource-tagging/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,18 +27,7 @@ Resource Tagging is in public beta. The API is stable, but behavior may change a
 Tags are simple key-value string pairs stored as a JSON object:
 
 ```
-
-{
-
-  "environment": "production",
-
-  "team": "platform",
-
-  "region": "us-west-1"
-
-}
-
-
+{  "environment": "production",  "team": "platform",  "region": "us-west-1"}
 ```
 
 You manage tags through the Tagging API using `GET`, `PUT`, and `DELETE` operations. The API supports [filtering resources by tags](https://developers.cloudflare.com/resource-tagging/how-to/filter-resources/) with AND/OR logic, negation, and key-only matching.

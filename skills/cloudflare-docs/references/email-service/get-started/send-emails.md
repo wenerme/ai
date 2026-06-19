@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,11 +27,12 @@ Before using Email Sending, configure your domain.
 1. In the Cloudflare dashboard, go to **Compute** \> **Email Service** \> **Email Sending**.  
 [ Go to **Email Sending** ](https://dash.cloudflare.com/?to=/:account/email-service/sending)
 2. Select **Onboard Domain**.
-3. Choose a domain from your Cloudflare account. Optionally review the DNS records that Cloudflare will add to the `cf-bounce` subdomain of your domain:  
-   * MX records to route bounce emails to Cloudflare.  
-   * TXT record for SPF to authorize sending emails.  
-   * TXT record for DKIM to provide authentication for emails sent from your domain.  
-   * TXT record for DMARC on `_dmarc.yourdomain.com`.
+3. Choose a domain from your Cloudflare account. Optionally review the DNS records that Cloudflare will add to the `cf-bounce` subdomain of your domain:
+
+  * MX records to route bounce emails to Cloudflare.
+  * TXT record for SPF to authorize sending emails.
+  * TXT record for DKIM to provide authentication for emails sent from your domain.
+  * TXT record for DMARC on `_dmarc.yourdomain.com`.
 4. Select **Done**.
 
 Note
@@ -44,9 +45,9 @@ Once your domain is onboarded, you can start sending emails.
 
 You can send your first email using the Workers binding, the REST API, or SMTP.
 
-* [ Workers ](#tab-panel-8520)
-* [ API ](#tab-panel-8521)
-* [ SMTP ](#tab-panel-8522)
+* [ Workers ](#tab-panel-8596)
+* [ API ](#tab-panel-8597)
+* [ SMTP ](#tab-panel-8598)
 
 If you are building on Cloudflare Workers, you can use the Workers binding for native email sending. Start by creating a new Worker project.
 
@@ -62,53 +63,29 @@ yarn create cloudflare email-service-tutorial
 pnpm create cloudflare@latest email-service-tutorial  
 ```  
 When prompted, select **"Hello World" Worker** as the template.
-2. Add the email binding to your Wrangler configuration file:  
-   * [  wrangler.jsonc ](#tab-panel-8518)  
-   * [  wrangler.toml ](#tab-panel-8519)  
+2. Add the email binding to your Wrangler configuration file:
+
+  * [  wrangler.jsonc ](#tab-panel-8594)
+  * [  wrangler.toml ](#tab-panel-8595)  
 JSONC  
 ```  
-{  
-  "send_email": [  
-    {  
-      "name": "EMAIL",  
-      "remote": true,  
-    },  
-  ],  
-}  
+{  "send_email": [    {      "name": "EMAIL",      "remote": true,    },  ],}  
 ```  
 TOML  
 ```  
-[[send_email]]  
-name = "EMAIL"  
-remote = true  
+[[send_email]]name = "EMAIL"remote = true  
 ```
 3. Create your Worker code in `src/index.ts`:  
 TypeScript  
 ```  
-// Configuration - Update these values  
-const YOUR_DOMAIN = "yourdomain.com"; // Replace with your verified domain  
-const RECIPIENT_EMAIL = "recipient@example.com"; // Replace with your email to receive test emails  
-export default {  
-  async fetch(request: Request, env: Env): Promise<Response> {  
-    // Send a welcome email  
-    const response = await env.EMAIL.send({  
-      to: RECIPIENT_EMAIL,  
-      from: `welcome@${YOUR_DOMAIN}`,  
-      subject: "Welcome to our service!",  
-      html: "<h1>Welcome!</h1><p>Thanks for signing up.</p>",  
-      text: "Welcome! Thanks for signing up.",  
-    });  
-    return new Response(`Email sent: ${response.messageId}`);  
-  },  
-} satisfies ExportedHandler<Env>;  
+// Configuration - Update these valuesconst YOUR_DOMAIN = "yourdomain.com"; // Replace with your verified domainconst RECIPIENT_EMAIL = "recipient@example.com"; // Replace with your email to receive test emails  
+export default {  async fetch(request: Request, env: Env): Promise<Response> {    // Send a welcome email    const response = await env.EMAIL.send({      to: RECIPIENT_EMAIL,      from: `welcome@${YOUR_DOMAIN}`,      subject: "Welcome to our service!",      html: "<h1>Welcome!</h1><p>Thanks for signing up.</p>",      text: "Welcome! Thanks for signing up.",    });  
+    return new Response(`Email sent: ${response.messageId}`);  },} satisfies ExportedHandler<Env>;  
 ```
 4. Use `npx wrangler dev` to develop your Worker project and send emails. This runs your code locally while connecting to Cloudflare Email Service (using [remote bindings](https://developers.cloudflare.com/workers/development-testing/#remote-bindings)).  
 Terminal window  
 ```  
-npx wrangler dev  
-# ⎔ Starting remote preview...  
-# Total Upload: 24.96 KiB / gzip: 6.17 KiB  
-# [wrangler:info] Ready on http://localhost:8787  
+npx wrangler dev# ⎔ Starting remote preview...# Total Upload: 24.96 KiB / gzip: 6.17 KiB# [wrangler:info] Ready on http://localhost:8787  
 ```
 5. Deploy your Worker:  
 Terminal window  
@@ -127,55 +104,13 @@ Send an email with a single `curl` command. Replace `{account_id}` with your [Cl
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send" \
-
-  --header "Authorization: Bearer <API_TOKEN>" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-    "to": "recipient@example.com",
-
-    "from": "welcome@yourdomain.com",
-
-    "subject": "Welcome to our service!",
-
-    "html": "<h1>Welcome!</h1><p>Thanks for signing up.</p>",
-
-    "text": "Welcome! Thanks for signing up."
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send" \  --header "Authorization: Bearer <API_TOKEN>" \  --header "Content-Type: application/json" \  --data '{    "to": "recipient@example.com",    "from": "welcome@yourdomain.com",    "subject": "Welcome to our service!",    "html": "<h1>Welcome!</h1><p>Thanks for signing up.</p>",    "text": "Welcome! Thanks for signing up."  }'
 ```
 
 A successful response includes the delivery status for each recipient:
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": [],
-
-  "result": {
-
-    "delivered": ["recipient@example.com"],
-
-    "permanent_bounces": [],
-
-    "queued": []
-
-  }
-
-}
-
-
+{  "success": true,  "errors": [],  "messages": [],  "result": {    "delivered": ["recipient@example.com"],    "permanent_bounces": [],    "queued": []  }}
 ```
 
 For more details, see the [REST API reference](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/).
@@ -185,34 +120,9 @@ Send an email with a single `curl` command. Replace `<API_TOKEN>` with a [Cloudf
 Terminal window
 
 ```
-
-cat > mail.txt <<EOF
-
-From: welcome@yourdomain.com
-
-To: recipient@example.com
-
-Subject: Welcome to our service!
-
-
-Thanks for signing up.
-
-EOF
-
-
-curl --ssl-reqd \
-
-  --url "smtps://smtp.mx.cloudflare.net:465" \
-
-  --user "api_token:<API_TOKEN>" \
-
-  --mail-from "welcome@yourdomain.com" \
-
-  --mail-rcpt "recipient@example.com" \
-
-  --upload-file mail.txt
-
-
+cat > mail.txt <<EOFFrom: welcome@yourdomain.comTo: recipient@example.comSubject: Welcome to our service!
+Thanks for signing up.EOF
+curl --ssl-reqd \  --url "smtps://smtp.mx.cloudflare.net:465" \  --user "api_token:<API_TOKEN>" \  --mail-from "welcome@yourdomain.com" \  --mail-rcpt "recipient@example.com" \  --upload-file mail.txt
 ```
 
 The sender domain (`welcome@yourdomain.com`) must be onboarded for [Email Sending](https://developers.cloudflare.com/email-service/configuration/domains/) on the account that owns the API token.

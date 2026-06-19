@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -15,19 +15,13 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 Image delivery is supported from all customer domains under the same Cloudflare account. To serve images through custom domains, an image URL should be adjusted to the following format:
 
 ```
-
 https://example.com/cdn-cgi/imagedelivery/<ACCOUNT_HASH>/<IMAGE_ID>/<VARIANT_NAME>
-
-
 ```
 
 Example with a custom domain:
 
 ```
-
 https://example.com/cdn-cgi/imagedelivery/ZWd9g1K7eljCn_KDTu_MWA/083eb7b2-5392-4565-b69e-aff66acddd00/public
-
-
 ```
 
 In this example, `<ACCOUNT_HASH>`, `<IMAGE_ID>` and `<VARIANT_NAME>` are the same, but the hostname and prefix path is different:
@@ -57,9 +51,10 @@ To create a rule:
 ```  
 https://example.com/images/*  
 ```
-4. Under **Then rewrite the path and/or query** \> **Path**, enter the following values (using your account hash):  
-   * **Target path**: \[`/`\] `images/*`  
-   * **Rewrite to**: \[`/`\] `cdn-cgi/imagedelivery/<ACCOUNT_HASH>/${1}`
+4. Under **Then rewrite the path and/or query** \> **Path**, enter the following values (using your account hash):
+
+  * **Target path**: \[`/`\] `images/*`
+  * **Rewrite to**: \[`/`\] `cdn-cgi/imagedelivery/<ACCOUNT_HASH>/${1}`
 5. Select **Deploy** when you are done.
 
 ### Advanced version
@@ -81,18 +76,7 @@ To create a rule:
 6. Select _Dynamic_ and enter the following in the text field.
 
 ```
-
-regex_replace(
-
-  http.request.uri.path,
-
-  "^/images/(.*)\\?w([0-9]+)&h([0-9]+)$",
-
-  "/cdn-cgi/imagedelivery/<ACCOUNT_HASH>/${1}/width=${2},height=${3}"
-
-)
-
-
+regex_replace(  http.request.uri.path,  "^/images/(.*)\\?w([0-9]+)&h([0-9]+)$",  "/cdn-cgi/imagedelivery/<ACCOUNT_HASH>/${1}/width=${2},height=${3}")
 ```
 
 ## Limitations

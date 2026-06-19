@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -40,9 +40,10 @@ Access to the _User and Password Leaked_ (`cf.waf.credential_check.username_and_
 
 [Create a custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) that challenges requests containing a previously leaked set of credentials (username and password).
 
-* **Expression**: If you use the Expression Builder, configure the following expression:  
-| Field                    | Operator | Value |  
-| ------------------------ | -------- | ----- |  
+* **Expression**: If you use the Expression Builder, configure the following expression:
+
+| Field                    | Operator | Value |
+| ------------------------ | -------- | ----- |
 | User and Password Leaked | equals   | True  |  
 If you use the Expression Editor, enter the following expression:  
 ```  

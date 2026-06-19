@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,59 +20,23 @@ The `watch()` method returns an SSE (Server-Sent Events) stream that you consume
 
 Start by watching a directory for any changes:
 
-* [  JavaScript ](#tab-panel-10367)
-* [  TypeScript ](#tab-panel-10368)
+* [  JavaScript ](#tab-panel-10443)
+* [  TypeScript ](#tab-panel-10444)
 
 JavaScript
 
 ```
-
 import { parseSSEStream } from "@cloudflare/sandbox";
-
-
 const stream = await sandbox.watch("/workspace/src");
-
-
-for await (const event of parseSSEStream(stream)) {
-
-  if (event.type === "event") {
-
-    console.log(`${event.eventType}: ${event.path}`);
-
-    console.log(`Is directory: ${event.isDirectory}`);
-
-  }
-
-}
-
-
+for await (const event of parseSSEStream(stream)) {  if (event.type === "event") {    console.log(`${event.eventType}: ${event.path}`);    console.log(`Is directory: ${event.isDirectory}`);  }}
 ```
 
 TypeScript
 
 ```
-
-import { parseSSEStream } from "@cloudflare/sandbox";
-
-import type { FileWatchSSEEvent } from "@cloudflare/sandbox";
-
-
+import { parseSSEStream } from "@cloudflare/sandbox";import type { FileWatchSSEEvent } from "@cloudflare/sandbox";
 const stream = await sandbox.watch("/workspace/src");
-
-
-for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {
-
-  if (event.type === "event") {
-
-    console.log(`${event.eventType}: ${event.path}`);
-
-    console.log(`Is directory: ${event.isDirectory}`);
-
-  }
-
-}
-
-
+for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {  if (event.type === "event") {    console.log(`${event.eventType}: ${event.path}`);    console.log(`Is directory: ${event.isDirectory}`);  }}
 ```
 
 The stream emits four lifecycle event types:
@@ -94,67 +58,23 @@ Filesystem change events (`event.eventType`) include:
 
 Use `include` patterns to watch only specific file types:
 
-* [  JavaScript ](#tab-panel-10369)
-* [  TypeScript ](#tab-panel-10370)
+* [  JavaScript ](#tab-panel-10445)
+* [  TypeScript ](#tab-panel-10446)
 
 JavaScript
 
 ```
-
 import { parseSSEStream } from "@cloudflare/sandbox";
-
-
-// Only watch TypeScript and JavaScript files
-
-const stream = await sandbox.watch("/workspace/src", {
-
-  include: ["*.ts", "*.tsx", "*.js", "*.jsx"],
-
-});
-
-
-for await (const event of parseSSEStream(stream)) {
-
-  if (event.type === "event") {
-
-    console.log(`${event.eventType}: ${event.path}`);
-
-  }
-
-}
-
-
+// Only watch TypeScript and JavaScript filesconst stream = await sandbox.watch("/workspace/src", {  include: ["*.ts", "*.tsx", "*.js", "*.jsx"],});
+for await (const event of parseSSEStream(stream)) {  if (event.type === "event") {    console.log(`${event.eventType}: ${event.path}`);  }}
 ```
 
 TypeScript
 
 ```
-
-import { parseSSEStream } from "@cloudflare/sandbox";
-
-import type { FileWatchSSEEvent } from "@cloudflare/sandbox";
-
-
-// Only watch TypeScript and JavaScript files
-
-const stream = await sandbox.watch("/workspace/src", {
-
-  include: ["*.ts", "*.tsx", "*.js", "*.jsx"],
-
-});
-
-
-for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {
-
-  if (event.type === "event") {
-
-    console.log(`${event.eventType}: ${event.path}`);
-
-  }
-
-}
-
-
+import { parseSSEStream } from "@cloudflare/sandbox";import type { FileWatchSSEEvent } from "@cloudflare/sandbox";
+// Only watch TypeScript and JavaScript filesconst stream = await sandbox.watch("/workspace/src", {  include: ["*.ts", "*.tsx", "*.js", "*.jsx"],});
+for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {  if (event.type === "event") {    console.log(`${event.eventType}: ${event.path}`);  }}
 ```
 
 Common include patterns:
@@ -169,63 +89,23 @@ Common include patterns:
 
 Use `exclude` patterns to skip certain directories or files:
 
-* [  JavaScript ](#tab-panel-10371)
-* [  TypeScript ](#tab-panel-10372)
+* [  JavaScript ](#tab-panel-10447)
+* [  TypeScript ](#tab-panel-10448)
 
 JavaScript
 
 ```
-
 import { parseSSEStream } from "@cloudflare/sandbox";
-
-
-const stream = await sandbox.watch("/workspace", {
-
-  exclude: ["node_modules", "dist", "*.log", ".git", "*.tmp"],
-
-});
-
-
-for await (const event of parseSSEStream(stream)) {
-
-  if (event.type === "event") {
-
-    console.log(`Change detected: ${event.path}`);
-
-  }
-
-}
-
-
+const stream = await sandbox.watch("/workspace", {  exclude: ["node_modules", "dist", "*.log", ".git", "*.tmp"],});
+for await (const event of parseSSEStream(stream)) {  if (event.type === "event") {    console.log(`Change detected: ${event.path}`);  }}
 ```
 
 TypeScript
 
 ```
-
-import { parseSSEStream } from "@cloudflare/sandbox";
-
-import type { FileWatchSSEEvent } from "@cloudflare/sandbox";
-
-
-const stream = await sandbox.watch("/workspace", {
-
-  exclude: ["node_modules", "dist", "*.log", ".git", "*.tmp"],
-
-});
-
-
-for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {
-
-  if (event.type === "event") {
-
-    console.log(`Change detected: ${event.path}`);
-
-  }
-
-}
-
-
+import { parseSSEStream } from "@cloudflare/sandbox";import type { FileWatchSSEEvent } from "@cloudflare/sandbox";
+const stream = await sandbox.watch("/workspace", {  exclude: ["node_modules", "dist", "*.log", ".git", "*.tmp"],});
+for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {  if (event.type === "event") {    console.log(`Change detected: ${event.path}`);  }}
 ```
 
 Default exclusions
@@ -238,313 +118,73 @@ The following patterns are excluded by default: `.git`, `node_modules`, `.DS_Sto
 
 Trigger builds automatically when source files are modified:
 
-* [  JavaScript ](#tab-panel-10383)
-* [  TypeScript ](#tab-panel-10384)
+* [  JavaScript ](#tab-panel-10459)
+* [  TypeScript ](#tab-panel-10460)
 
 JavaScript
 
 ```
-
 import { parseSSEStream } from "@cloudflare/sandbox";
-
-
-const stream = await sandbox.watch("/workspace/src", {
-
-  include: ["*.ts", "*.tsx"],
-
-});
-
-
+const stream = await sandbox.watch("/workspace/src", {  include: ["*.ts", "*.tsx"],});
 let buildInProgress = false;
-
-
-for await (const event of parseSSEStream(stream)) {
-
-  if (
-
-    event.type === "event" &&
-
-    event.eventType === "modify" &&
-
-    !buildInProgress
-
-  ) {
-
-    buildInProgress = true;
-
-    console.log(`File changed: ${event.path}, rebuilding...`);
-
-
-    try {
-
-      const result = await sandbox.exec("npm run build");
-
-      if (result.success) {
-
-        console.log("Build completed successfully");
-
-      } else {
-
-        console.error("Build failed:", result.stderr);
-
-      }
-
-    } catch (error) {
-
-      console.error("Build error:", error);
-
-    } finally {
-
-      buildInProgress = false;
-
-    }
-
-  }
-
-}
-
-
+for await (const event of parseSSEStream(stream)) {  if (    event.type === "event" &&    event.eventType === "modify" &&    !buildInProgress  ) {    buildInProgress = true;    console.log(`File changed: ${event.path}, rebuilding...`);
+    try {      const result = await sandbox.exec("npm run build");      if (result.success) {        console.log("Build completed successfully");      } else {        console.error("Build failed:", result.stderr);      }    } catch (error) {      console.error("Build error:", error);    } finally {      buildInProgress = false;    }  }}
 ```
 
 TypeScript
 
 ```
-
-import { parseSSEStream } from "@cloudflare/sandbox";
-
-import type { FileWatchSSEEvent } from "@cloudflare/sandbox";
-
-
-const stream = await sandbox.watch("/workspace/src", {
-
-  include: ["*.ts", "*.tsx"],
-
-});
-
-
+import { parseSSEStream } from "@cloudflare/sandbox";import type { FileWatchSSEEvent } from "@cloudflare/sandbox";
+const stream = await sandbox.watch("/workspace/src", {  include: ["*.ts", "*.tsx"],});
 let buildInProgress = false;
-
-
-for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {
-
-  if (
-
-    event.type === "event" &&
-
-    event.eventType === "modify" &&
-
-    !buildInProgress
-
-  ) {
-
-    buildInProgress = true;
-
-    console.log(`File changed: ${event.path}, rebuilding...`);
-
-
-    try {
-
-      const result = await sandbox.exec("npm run build");
-
-      if (result.success) {
-
-        console.log("Build completed successfully");
-
-      } else {
-
-        console.error("Build failed:", result.stderr);
-
-      }
-
-    } catch (error) {
-
-      console.error("Build error:", error);
-
-    } finally {
-
-      buildInProgress = false;
-
-    }
-
-  }
-
-}
-
-
+for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {  if (    event.type === "event" &&    event.eventType === "modify" &&    !buildInProgress  ) {    buildInProgress = true;    console.log(`File changed: ${event.path}, rebuilding...`);
+    try {      const result = await sandbox.exec("npm run build");      if (result.success) {        console.log("Build completed successfully");      } else {        console.error("Build failed:", result.stderr);      }    } catch (error) {      console.error("Build error:", error);    } finally {      buildInProgress = false;    }  }}
 ```
 
 ### Auto-run tests on change
 
 Re-run tests when test files are modified:
 
-* [  JavaScript ](#tab-panel-10373)
-* [  TypeScript ](#tab-panel-10374)
+* [  JavaScript ](#tab-panel-10449)
+* [  TypeScript ](#tab-panel-10450)
 
 JavaScript
 
 ```
-
 import { parseSSEStream } from "@cloudflare/sandbox";
-
-
-const stream = await sandbox.watch("/workspace/tests", {
-
-  include: ["*.test.ts", "*.spec.ts"],
-
-});
-
-
-for await (const event of parseSSEStream(stream)) {
-
-  if (event.type === "event" && event.eventType === "modify") {
-
-    console.log(`Test file changed: ${event.path}`);
-
-    const result = await sandbox.exec(`npm test -- ${event.path}`);
-
-    console.log(result.success ? "Tests passed" : "Tests failed");
-
-  }
-
-}
-
-
+const stream = await sandbox.watch("/workspace/tests", {  include: ["*.test.ts", "*.spec.ts"],});
+for await (const event of parseSSEStream(stream)) {  if (event.type === "event" && event.eventType === "modify") {    console.log(`Test file changed: ${event.path}`);    const result = await sandbox.exec(`npm test -- ${event.path}`);    console.log(result.success ? "Tests passed" : "Tests failed");  }}
 ```
 
 TypeScript
 
 ```
-
-import { parseSSEStream } from "@cloudflare/sandbox";
-
-import type { FileWatchSSEEvent } from "@cloudflare/sandbox";
-
-
-const stream = await sandbox.watch("/workspace/tests", {
-
-  include: ["*.test.ts", "*.spec.ts"],
-
-});
-
-
-for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {
-
-  if (event.type === "event" && event.eventType === "modify") {
-
-    console.log(`Test file changed: ${event.path}`);
-
-    const result = await sandbox.exec(`npm test -- ${event.path}`);
-
-    console.log(result.success ? "Tests passed" : "Tests failed");
-
-  }
-
-}
-
-
+import { parseSSEStream } from "@cloudflare/sandbox";import type { FileWatchSSEEvent } from "@cloudflare/sandbox";
+const stream = await sandbox.watch("/workspace/tests", {  include: ["*.test.ts", "*.spec.ts"],});
+for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {  if (event.type === "event" && event.eventType === "modify") {    console.log(`Test file changed: ${event.path}`);    const result = await sandbox.exec(`npm test -- ${event.path}`);    console.log(result.success ? "Tests passed" : "Tests failed");  }}
 ```
 
 ### Incremental indexing
 
 Re-index only changed files instead of rescanning an entire directory tree:
 
-* [  JavaScript ](#tab-panel-10377)
-* [  TypeScript ](#tab-panel-10378)
+* [  JavaScript ](#tab-panel-10453)
+* [  TypeScript ](#tab-panel-10454)
 
 JavaScript
 
 ```
-
 import { parseSSEStream } from "@cloudflare/sandbox";
-
-
-const stream = await sandbox.watch("/workspace/docs", {
-
-  include: ["*.md", "*.mdx"],
-
-});
-
-
-for await (const event of parseSSEStream(stream)) {
-
-  if (event.type === "event") {
-
-    switch (event.eventType) {
-
-      case "create":
-
-      case "modify":
-
-        console.log(`Indexing ${event.path}...`);
-
-        await indexFile(event.path);
-
-        break;
-
-      case "delete":
-
-        console.log(`Removing ${event.path} from index...`);
-
-        await removeFromIndex(event.path);
-
-        break;
-
-    }
-
-  }
-
-}
-
-
+const stream = await sandbox.watch("/workspace/docs", {  include: ["*.md", "*.mdx"],});
+for await (const event of parseSSEStream(stream)) {  if (event.type === "event") {    switch (event.eventType) {      case "create":      case "modify":        console.log(`Indexing ${event.path}...`);        await indexFile(event.path);        break;      case "delete":        console.log(`Removing ${event.path} from index...`);        await removeFromIndex(event.path);        break;    }  }}
 ```
 
 TypeScript
 
 ```
-
-import { parseSSEStream } from "@cloudflare/sandbox";
-
-import type { FileWatchSSEEvent } from "@cloudflare/sandbox";
-
-
-const stream = await sandbox.watch("/workspace/docs", {
-
-  include: ["*.md", "*.mdx"],
-
-});
-
-
-for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {
-
-  if (event.type === "event") {
-
-    switch (event.eventType) {
-
-      case "create":
-
-      case "modify":
-
-        console.log(`Indexing ${event.path}...`);
-
-        await indexFile(event.path);
-
-        break;
-
-      case "delete":
-
-        console.log(`Removing ${event.path} from index...`);
-
-        await removeFromIndex(event.path);
-
-        break;
-
-    }
-
-  }
-
-}
-
-
+import { parseSSEStream } from "@cloudflare/sandbox";import type { FileWatchSSEEvent } from "@cloudflare/sandbox";
+const stream = await sandbox.watch("/workspace/docs", {  include: ["*.md", "*.mdx"],});
+for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {  if (event.type === "event") {    switch (event.eventType) {      case "create":      case "modify":        console.log(`Indexing ${event.path}...`);        await indexFile(event.path);        break;      case "delete":        console.log(`Removing ${event.path} from index...`);        await removeFromIndex(event.path);        break;    }  }}
 ```
 
 ## Advanced patterns
@@ -553,349 +193,75 @@ for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {
 
 Extract event processing into a reusable function that handles stream lifecycle:
 
-* [  JavaScript ](#tab-panel-10393)
-* [  TypeScript ](#tab-panel-10394)
+* [  JavaScript ](#tab-panel-10469)
+* [  TypeScript ](#tab-panel-10470)
 
 JavaScript
 
 ```
-
 import { parseSSEStream } from "@cloudflare/sandbox";
-
-
-async function watchFiles(sandbox, path, options, handler) {
-
-  const stream = await sandbox.watch(path, options);
-
-
-  for await (const event of parseSSEStream(stream)) {
-
-    switch (event.type) {
-
-      case "watching":
-
-        console.log(`Watching ${event.path}`);
-
-        break;
-
-      case "event":
-
-        await handler(event.eventType, event.path, event.isDirectory);
-
-        break;
-
-      case "error":
-
-        console.error(`Watch error: ${event.error}`);
-
-        break;
-
-      case "stopped":
-
-        console.log(`Watch stopped: ${event.reason}`);
-
-        return;
-
-    }
-
-  }
-
-}
-
-
-// Usage
-
-await watchFiles(
-
-  sandbox,
-
-  "/workspace/src",
-
-  { include: ["*.ts"] },
-
-  async (eventType, filePath) => {
-
-    console.log(`${eventType}: ${filePath}`);
-
-  },
-
-);
-
-
+async function watchFiles(sandbox, path, options, handler) {  const stream = await sandbox.watch(path, options);
+  for await (const event of parseSSEStream(stream)) {    switch (event.type) {      case "watching":        console.log(`Watching ${event.path}`);        break;      case "event":        await handler(event.eventType, event.path, event.isDirectory);        break;      case "error":        console.error(`Watch error: ${event.error}`);        break;      case "stopped":        console.log(`Watch stopped: ${event.reason}`);        return;    }  }}
+// Usageawait watchFiles(  sandbox,  "/workspace/src",  { include: ["*.ts"] },  async (eventType, filePath) => {    console.log(`${eventType}: ${filePath}`);  },);
 ```
 
 TypeScript
 
 ```
-
-import { parseSSEStream } from "@cloudflare/sandbox";
-
-import type { FileWatchSSEEvent } from "@cloudflare/sandbox";
-
-
-async function watchFiles(
-
-  sandbox: any,
-
-  path: string,
-
-  options: { include?: string[]; exclude?: string[] },
-
-  handler: (
-
-    eventType: string,
-
-    filePath: string,
-
-    isDirectory: boolean,
-
-  ) => Promise<void>,
-
-) {
-
-  const stream = await sandbox.watch(path, options);
-
-
-  for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {
-
-    switch (event.type) {
-
-      case "watching":
-
-        console.log(`Watching ${event.path}`);
-
-        break;
-
-      case "event":
-
-        await handler(event.eventType, event.path, event.isDirectory);
-
-        break;
-
-      case "error":
-
-        console.error(`Watch error: ${event.error}`);
-
-        break;
-
-      case "stopped":
-
-        console.log(`Watch stopped: ${event.reason}`);
-
-        return;
-
-    }
-
-  }
-
-}
-
-
-// Usage
-
-await watchFiles(
-
-  sandbox,
-
-  "/workspace/src",
-
-  { include: ["*.ts"] },
-
-  async (eventType, filePath) => {
-
-    console.log(`${eventType}: ${filePath}`);
-
-  },
-
-);
-
-
+import { parseSSEStream } from "@cloudflare/sandbox";import type { FileWatchSSEEvent } from "@cloudflare/sandbox";
+async function watchFiles(  sandbox: any,  path: string,  options: { include?: string[]; exclude?: string[] },  handler: (    eventType: string,    filePath: string,    isDirectory: boolean,  ) => Promise<void>,) {  const stream = await sandbox.watch(path, options);
+  for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {    switch (event.type) {      case "watching":        console.log(`Watching ${event.path}`);        break;      case "event":        await handler(event.eventType, event.path, event.isDirectory);        break;      case "error":        console.error(`Watch error: ${event.error}`);        break;      case "stopped":        console.log(`Watch stopped: ${event.reason}`);        return;    }  }}
+// Usageawait watchFiles(  sandbox,  "/workspace/src",  { include: ["*.ts"] },  async (eventType, filePath) => {    console.log(`${eventType}: ${filePath}`);  },);
 ```
 
 ### Debounced file operations
 
 Avoid excessive operations by collecting changes before processing:
 
-* [  JavaScript ](#tab-panel-10387)
-* [  TypeScript ](#tab-panel-10388)
+* [  JavaScript ](#tab-panel-10463)
+* [  TypeScript ](#tab-panel-10464)
 
 JavaScript
 
 ```
-
 import { parseSSEStream } from "@cloudflare/sandbox";
-
-
-const stream = await sandbox.watch("/workspace/src");
-
-const changedFiles = new Set();
-
-let debounceTimeout = null;
-
-
-for await (const event of parseSSEStream(stream)) {
-
-  if (event.type === "event") {
-
-    changedFiles.add(event.path);
-
-
-    if (debounceTimeout) {
-
-      clearTimeout(debounceTimeout);
-
-    }
-
-
-    debounceTimeout = setTimeout(async () => {
-
-      console.log(`Processing ${changedFiles.size} changed files...`);
-
-      for (const filePath of changedFiles) {
-
-        await processFile(filePath);
-
-      }
-
-      changedFiles.clear();
-
-      debounceTimeout = null;
-
-    }, 1000);
-
-  }
-
-}
-
-
+const stream = await sandbox.watch("/workspace/src");const changedFiles = new Set();let debounceTimeout = null;
+for await (const event of parseSSEStream(stream)) {  if (event.type === "event") {    changedFiles.add(event.path);
+    if (debounceTimeout) {      clearTimeout(debounceTimeout);    }
+    debounceTimeout = setTimeout(async () => {      console.log(`Processing ${changedFiles.size} changed files...`);      for (const filePath of changedFiles) {        await processFile(filePath);      }      changedFiles.clear();      debounceTimeout = null;    }, 1000);  }}
 ```
 
 TypeScript
 
 ```
-
-import { parseSSEStream } from "@cloudflare/sandbox";
-
-import type { FileWatchSSEEvent } from "@cloudflare/sandbox";
-
-
-const stream = await sandbox.watch("/workspace/src");
-
-const changedFiles = new Set<string>();
-
-let debounceTimeout: ReturnType<typeof setTimeout> | null = null;
-
-
-for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {
-
-  if (event.type === "event") {
-
-    changedFiles.add(event.path);
-
-
-    if (debounceTimeout) {
-
-      clearTimeout(debounceTimeout);
-
-    }
-
-
-    debounceTimeout = setTimeout(async () => {
-
-      console.log(`Processing ${changedFiles.size} changed files...`);
-
-      for (const filePath of changedFiles) {
-
-        await processFile(filePath);
-
-      }
-
-      changedFiles.clear();
-
-      debounceTimeout = null;
-
-    }, 1000);
-
-  }
-
-}
-
-
+import { parseSSEStream } from "@cloudflare/sandbox";import type { FileWatchSSEEvent } from "@cloudflare/sandbox";
+const stream = await sandbox.watch("/workspace/src");const changedFiles = new Set<string>();let debounceTimeout: ReturnType<typeof setTimeout> | null = null;
+for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {  if (event.type === "event") {    changedFiles.add(event.path);
+    if (debounceTimeout) {      clearTimeout(debounceTimeout);    }
+    debounceTimeout = setTimeout(async () => {      console.log(`Processing ${changedFiles.size} changed files...`);      for (const filePath of changedFiles) {        await processFile(filePath);      }      changedFiles.clear();      debounceTimeout = null;    }, 1000);  }}
 ```
 
 ### Watch with non-recursive mode
 
 Watch only the top level of a directory, without descending into subdirectories:
 
-* [  JavaScript ](#tab-panel-10375)
-* [  TypeScript ](#tab-panel-10376)
+* [  JavaScript ](#tab-panel-10451)
+* [  TypeScript ](#tab-panel-10452)
 
 JavaScript
 
 ```
-
 import { parseSSEStream } from "@cloudflare/sandbox";
-
-
-// Only watch root-level config files
-
-const stream = await sandbox.watch("/workspace", {
-
-  include: ["package.json", "tsconfig.json", "vite.config.ts"],
-
-  recursive: false,
-
-});
-
-
-for await (const event of parseSSEStream(stream)) {
-
-  if (event.type === "event") {
-
-    console.log("Configuration changed, rebuilding project...");
-
-    await sandbox.exec("npm run build");
-
-  }
-
-}
-
-
+// Only watch root-level config filesconst stream = await sandbox.watch("/workspace", {  include: ["package.json", "tsconfig.json", "vite.config.ts"],  recursive: false,});
+for await (const event of parseSSEStream(stream)) {  if (event.type === "event") {    console.log("Configuration changed, rebuilding project...");    await sandbox.exec("npm run build");  }}
 ```
 
 TypeScript
 
 ```
-
-import { parseSSEStream } from "@cloudflare/sandbox";
-
-import type { FileWatchSSEEvent } from "@cloudflare/sandbox";
-
-
-// Only watch root-level config files
-
-const stream = await sandbox.watch("/workspace", {
-
-  include: ["package.json", "tsconfig.json", "vite.config.ts"],
-
-  recursive: false,
-
-});
-
-
-for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {
-
-  if (event.type === "event") {
-
-    console.log("Configuration changed, rebuilding project...");
-
-    await sandbox.exec("npm run build");
-
-  }
-
-}
-
-
+import { parseSSEStream } from "@cloudflare/sandbox";import type { FileWatchSSEEvent } from "@cloudflare/sandbox";
+// Only watch root-level config filesconst stream = await sandbox.watch("/workspace", {  include: ["package.json", "tsconfig.json", "vite.config.ts"],  recursive: false,});
+for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {  if (event.type === "event") {    console.log("Configuration changed, rebuilding project...");    await sandbox.exec("npm run build");  }}
 ```
 
 ## Stop a watch
@@ -906,168 +272,54 @@ The stream ends naturally when the container sleeps or shuts down. There are two
 
 Pass an `AbortSignal` to `parseSSEStream`. Aborting the signal cancels the stream reader, which propagates cleanup to the server. This is the recommended approach when you need to cancel the watch from outside the consuming loop:
 
-* [  JavaScript ](#tab-panel-10381)
-* [  TypeScript ](#tab-panel-10382)
+* [  JavaScript ](#tab-panel-10457)
+* [  TypeScript ](#tab-panel-10458)
 
 JavaScript
 
 ```
-
 import { parseSSEStream } from "@cloudflare/sandbox";
-
-
-const stream = await sandbox.watch("/workspace/src");
-
-const controller = new AbortController();
-
-
-// Cancel after 60 seconds
-
-setTimeout(() => controller.abort(), 60_000);
-
-
-for await (const event of parseSSEStream(stream, controller.signal)) {
-
-  if (event.type === "event") {
-
-    console.log(`${event.eventType}: ${event.path}`);
-
-  }
-
-}
-
-
+const stream = await sandbox.watch("/workspace/src");const controller = new AbortController();
+// Cancel after 60 secondssetTimeout(() => controller.abort(), 60_000);
+for await (const event of parseSSEStream(stream, controller.signal)) {  if (event.type === "event") {    console.log(`${event.eventType}: ${event.path}`);  }}
 console.log("Watch stopped");
-
-
 ```
 
 TypeScript
 
 ```
-
-import { parseSSEStream } from "@cloudflare/sandbox";
-
-import type { FileWatchSSEEvent } from "@cloudflare/sandbox";
-
-
-const stream = await sandbox.watch("/workspace/src");
-
-const controller = new AbortController();
-
-
-// Cancel after 60 seconds
-
-setTimeout(() => controller.abort(), 60_000);
-
-
-for await (const event of parseSSEStream<FileWatchSSEEvent>(
-
-  stream,
-
-  controller.signal,
-
-)) {
-
-  if (event.type === "event") {
-
-    console.log(`${event.eventType}: ${event.path}`);
-
-  }
-
-}
-
-
+import { parseSSEStream } from "@cloudflare/sandbox";import type { FileWatchSSEEvent } from "@cloudflare/sandbox";
+const stream = await sandbox.watch("/workspace/src");const controller = new AbortController();
+// Cancel after 60 secondssetTimeout(() => controller.abort(), 60_000);
+for await (const event of parseSSEStream<FileWatchSSEEvent>(  stream,  controller.signal,)) {  if (event.type === "event") {    console.log(`${event.eventType}: ${event.path}`);  }}
 console.log("Watch stopped");
-
-
 ```
 
 ### Break out of the loop
 
 Breaking out of the `for await` loop also cancels the stream:
 
-* [  JavaScript ](#tab-panel-10389)
-* [  TypeScript ](#tab-panel-10390)
+* [  JavaScript ](#tab-panel-10465)
+* [  TypeScript ](#tab-panel-10466)
 
 JavaScript
 
 ```
-
 import { parseSSEStream } from "@cloudflare/sandbox";
-
-
-const stream = await sandbox.watch("/workspace/src");
-
-let eventCount = 0;
-
-
-for await (const event of parseSSEStream(stream)) {
-
-  if (event.type === "event") {
-
-    console.log(`${event.eventType}: ${event.path}`);
-
-    eventCount++;
-
-
-    // Stop after 100 events
-
-    if (eventCount >= 100) {
-
-      break; // Breaking out of the loop cancels the stream
-
-    }
-
-  }
-
-}
-
-
+const stream = await sandbox.watch("/workspace/src");let eventCount = 0;
+for await (const event of parseSSEStream(stream)) {  if (event.type === "event") {    console.log(`${event.eventType}: ${event.path}`);    eventCount++;
+    // Stop after 100 events    if (eventCount >= 100) {      break; // Breaking out of the loop cancels the stream    }  }}
 console.log("Watch stopped");
-
-
 ```
 
 TypeScript
 
 ```
-
-import { parseSSEStream } from "@cloudflare/sandbox";
-
-import type { FileWatchSSEEvent } from "@cloudflare/sandbox";
-
-
-const stream = await sandbox.watch("/workspace/src");
-
-let eventCount = 0;
-
-
-for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {
-
-  if (event.type === "event") {
-
-    console.log(`${event.eventType}: ${event.path}`);
-
-    eventCount++;
-
-
-    // Stop after 100 events
-
-    if (eventCount >= 100) {
-
-      break; // Breaking out of the loop cancels the stream
-
-    }
-
-  }
-
-}
-
-
+import { parseSSEStream } from "@cloudflare/sandbox";import type { FileWatchSSEEvent } from "@cloudflare/sandbox";
+const stream = await sandbox.watch("/workspace/src");let eventCount = 0;
+for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {  if (event.type === "event") {    console.log(`${event.eventType}: ${event.path}`);    eventCount++;
+    // Stop after 100 events    if (eventCount >= 100) {      break; // Breaking out of the loop cancels the stream    }  }}
 console.log("Watch stopped");
-
-
 ```
 
 ## Best practices
@@ -1080,237 +332,71 @@ Note
 
 `include` and `exclude` are mutually exclusive. Use one or the other, not both. If you need to watch specific file types while ignoring certain directories, use `include` patterns that match the files you want.
 
-* [  JavaScript ](#tab-panel-10385)
-* [  TypeScript ](#tab-panel-10386)
+* [  JavaScript ](#tab-panel-10461)
+* [  TypeScript ](#tab-panel-10462)
 
 JavaScript
 
 ```
-
 import { parseSSEStream } from "@cloudflare/sandbox";
-
-
-// Efficient: filtering happens at the inotify level
-
-const stream = await sandbox.watch("/workspace/src", {
-
-  include: ["*.ts"],
-
-});
-
-
-// Less efficient: all events are sent and then filtered in JavaScript
-
-const stream2 = await sandbox.watch("/workspace/src");
-
-for await (const event of parseSSEStream(stream2)) {
-
-  if (event.type === "event") {
-
-    if (!event.path.endsWith(".ts")) continue;
-
-    // Handle event
-
-  }
-
-}
-
-
+// Efficient: filtering happens at the inotify levelconst stream = await sandbox.watch("/workspace/src", {  include: ["*.ts"],});
+// Less efficient: all events are sent and then filtered in JavaScriptconst stream2 = await sandbox.watch("/workspace/src");for await (const event of parseSSEStream(stream2)) {  if (event.type === "event") {    if (!event.path.endsWith(".ts")) continue;    // Handle event  }}
 ```
 
 TypeScript
 
 ```
-
-import { parseSSEStream } from "@cloudflare/sandbox";
-
-import type { FileWatchSSEEvent } from "@cloudflare/sandbox";
-
-
-// Efficient: filtering happens at the inotify level
-
-const stream = await sandbox.watch("/workspace/src", {
-
-  include: ["*.ts"],
-
-});
-
-
-// Less efficient: all events are sent and then filtered in JavaScript
-
-const stream2 = await sandbox.watch("/workspace/src");
-
-for await (const event of parseSSEStream<FileWatchSSEEvent>(stream2)) {
-
-  if (event.type === "event") {
-
-    if (!event.path.endsWith(".ts")) continue;
-
-    // Handle event
-
-  }
-
-}
-
-
+import { parseSSEStream } from "@cloudflare/sandbox";import type { FileWatchSSEEvent } from "@cloudflare/sandbox";
+// Efficient: filtering happens at the inotify levelconst stream = await sandbox.watch("/workspace/src", {  include: ["*.ts"],});
+// Less efficient: all events are sent and then filtered in JavaScriptconst stream2 = await sandbox.watch("/workspace/src");for await (const event of parseSSEStream<FileWatchSSEEvent>(stream2)) {  if (event.type === "event") {    if (!event.path.endsWith(".ts")) continue;    // Handle event  }}
 ```
 
 ### Handle errors in event processing
 
 Errors in your event handler do not stop the watch stream. Wrap handler logic in `try...catch` to prevent unhandled exceptions:
 
-* [  JavaScript ](#tab-panel-10391)
-* [  TypeScript ](#tab-panel-10392)
+* [  JavaScript ](#tab-panel-10467)
+* [  TypeScript ](#tab-panel-10468)
 
 JavaScript
 
 ```
-
 import { parseSSEStream } from "@cloudflare/sandbox";
-
-
 const stream = await sandbox.watch("/workspace/src");
-
-
-for await (const event of parseSSEStream(stream)) {
-
-  if (event.type === "event") {
-
-    try {
-
-      await handleFileChange(event.eventType, event.path);
-
-    } catch (error) {
-
-      console.error(
-
-        `Failed to handle ${event.eventType} for ${event.path}:`,
-
-        error,
-
-      );
-
-      // Continue processing events
-
-    }
-
-  }
-
-
-  if (event.type === "error") {
-
-    console.error("Watch error:", event.error);
-
-  }
-
-}
-
-
+for await (const event of parseSSEStream(stream)) {  if (event.type === "event") {    try {      await handleFileChange(event.eventType, event.path);    } catch (error) {      console.error(        `Failed to handle ${event.eventType} for ${event.path}:`,        error,      );      // Continue processing events    }  }
+  if (event.type === "error") {    console.error("Watch error:", event.error);  }}
 ```
 
 TypeScript
 
 ```
-
-import { parseSSEStream } from "@cloudflare/sandbox";
-
-import type { FileWatchSSEEvent } from "@cloudflare/sandbox";
-
-
+import { parseSSEStream } from "@cloudflare/sandbox";import type { FileWatchSSEEvent } from "@cloudflare/sandbox";
 const stream = await sandbox.watch("/workspace/src");
-
-
-for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {
-
-  if (event.type === "event") {
-
-    try {
-
-      await handleFileChange(event.eventType, event.path);
-
-    } catch (error) {
-
-      console.error(
-
-        `Failed to handle ${event.eventType} for ${event.path}:`,
-
-        error,
-
-      );
-
-      // Continue processing events
-
-    }
-
-  }
-
-
-  if (event.type === "error") {
-
-    console.error("Watch error:", event.error);
-
-  }
-
-}
-
-
+for await (const event of parseSSEStream<FileWatchSSEEvent>(stream)) {  if (event.type === "event") {    try {      await handleFileChange(event.eventType, event.path);    } catch (error) {      console.error(        `Failed to handle ${event.eventType} for ${event.path}:`,        error,      );      // Continue processing events    }  }
+  if (event.type === "error") {    console.error("Watch error:", event.error);  }}
 ```
 
 ### Ensure directories exist before watching
 
 Watching a non-existent path returns an error. Verify the path exists before starting a watch:
 
-* [  JavaScript ](#tab-panel-10379)
-* [  TypeScript ](#tab-panel-10380)
+* [  JavaScript ](#tab-panel-10455)
+* [  TypeScript ](#tab-panel-10456)
 
 JavaScript
 
 ```
-
-const watchPath = "/workspace/src";
-
-const result = await sandbox.exists(watchPath);
-
-
-if (!result.exists) {
-
-  await sandbox.mkdir(watchPath, { recursive: true });
-
-}
-
-
-const stream = await sandbox.watch(watchPath, {
-
-  include: ["*.ts"],
-
-});
-
-
+const watchPath = "/workspace/src";const result = await sandbox.exists(watchPath);
+if (!result.exists) {  await sandbox.mkdir(watchPath, { recursive: true });}
+const stream = await sandbox.watch(watchPath, {  include: ["*.ts"],});
 ```
 
 TypeScript
 
 ```
-
-const watchPath = "/workspace/src";
-
-const result = await sandbox.exists(watchPath);
-
-
-if (!result.exists) {
-
-  await sandbox.mkdir(watchPath, { recursive: true });
-
-}
-
-
-const stream = await sandbox.watch(watchPath, {
-
-  include: ["*.ts"],
-
-});
-
-
+const watchPath = "/workspace/src";const result = await sandbox.exists(watchPath);
+if (!result.exists) {  await sandbox.mkdir(watchPath, { recursive: true });}
+const stream = await sandbox.watch(watchPath, {  include: ["*.ts"],});
 ```
 
 ## Troubleshooting

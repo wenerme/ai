@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -60,10 +60,7 @@ Now, move into the newly created directory:
 Terminal window
 
 ```
-
 cd postgres-tutorial
-
-
 ```
 
 ### Enable Node.js compatibility
@@ -72,41 +69,19 @@ cd postgres-tutorial
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-12201)
-* [  wrangler.toml ](#tab-panel-12202)
+* [  wrangler.jsonc ](#tab-panel-12218)
+* [  wrangler.toml ](#tab-panel-12219)
 
 JSONC
 
 ```
-
-{
-
-  "compatibility_flags": [
-
-    "nodejs_compat"
-
-  ],
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17"
-
-}
-
-
+{  "compatibility_flags": [    "nodejs_compat"  ],  // Set this to today's date  "compatibility_date": "2026-06-19"}
 ```
 
 TOML
 
 ```
-
-compatibility_flags = [ "nodejs_compat" ]
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
+compatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-06-19"
 ```
 
 ## 2\. Add the PostgreSQL connection library
@@ -167,10 +142,7 @@ Choose one of the two methods to connect to your PostgreSQL database:
 A connection string contains all the information needed to connect to a database. It is a URL that contains the following information:
 
 ```
-
 postgresql://username:password@host:port/database
-
-
 ```
 
 Replace `username`, `password`, `host`, `port`, and `database` with the appropriate values for your PostgreSQL database.
@@ -180,23 +152,11 @@ Set your connection string as a [secret](https://developers.cloudflare.com/worke
 Terminal window
 
 ```
-
 npx wrangler secret put DB_URL
-
-
 ```
 
 ```
-
-➜  wrangler secret put DB_URL
-
--------------------------------------------------------
-
-? Enter a secret value: › ********************
-
-✨ Success! Uploaded secret DB_URL
-
-
+➜  wrangler secret put DB_URL-------------------------------------------------------? Enter a secret value: › ********************✨ Success! Uploaded secret DB_URL
 ```
 
 Set your `DB_URL` secret locally in a `.dev.vars` file as documented in [Local Development with Secrets](https://developers.cloudflare.com/workers/configuration/secrets/).
@@ -204,59 +164,26 @@ Set your `DB_URL` secret locally in a `.dev.vars` file as documented in [Local D
 .dev.vars
 
 ```
-
 DB_URL="<ENTER YOUR POSTGRESQL CONNECTION STRING>"
-
-
 ```
 
 ### Set explicit parameters
 
 Configure each database parameter as an [environment variable](https://developers.cloudflare.com/workers/configuration/environment-variables/) via the [Cloudflare dashboard](https://developers.cloudflare.com/workers/configuration/environment-variables/#add-environment-variables-via-the-dashboard) or in your Wrangler file. Refer to an example of a Wrangler file configuration:
 
-* [  wrangler.jsonc ](#tab-panel-12197)
-* [  wrangler.toml ](#tab-panel-12198)
+* [  wrangler.jsonc ](#tab-panel-12214)
+* [  wrangler.toml ](#tab-panel-12215)
 
 JSONC
 
 ```
-
-{
-
-  "vars": {
-
-    "DB_USERNAME": "postgres",
-
-    // Set your password by creating a secret so it is not stored as plain text
-
-    "DB_HOST": "ep-aged-sound-175961.us-east-2.aws.neon.tech",
-
-    "DB_PORT": 5432,
-
-    "DB_NAME": "productsdb"
-
-  }
-
-}
-
-
+{  "vars": {    "DB_USERNAME": "postgres",    // Set your password by creating a secret so it is not stored as plain text    "DB_HOST": "ep-aged-sound-175961.us-east-2.aws.neon.tech",    "DB_PORT": 5432,    "DB_NAME": "productsdb"  }}
 ```
 
 TOML
 
 ```
-
-[vars]
-
-DB_USERNAME = "postgres"
-
-DB_HOST = "ep-aged-sound-175961.us-east-2.aws.neon.tech"
-
-DB_PORT = 5_432
-
-DB_NAME = "productsdb"
-
-
+[vars]DB_USERNAME = "postgres"DB_HOST = "ep-aged-sound-175961.us-east-2.aws.neon.tech"DB_PORT = 5_432DB_NAME = "productsdb"
 ```
 
 To set your password as a [secret](https://developers.cloudflare.com/workers/configuration/secrets/) so that it is not stored as plain text, use [wrangler secret put](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret). `DB_PASSWORD` is an example variable name for this secret to be accessed in your Worker:
@@ -264,21 +191,11 @@ To set your password as a [secret](https://developers.cloudflare.com/workers/con
 Terminal window
 
 ```
-
 npx wrangler secret put DB_PASSWORD
-
-
 ```
 
 ```
-
--------------------------------------------------------
-
-? Enter a secret value: › ********************
-
-✨ Success! Uploaded secret DB_PASSWORD
-
-
+-------------------------------------------------------? Enter a secret value: › ********************✨ Success! Uploaded secret DB_PASSWORD
 ```
 
 ## 4\. Connect to the PostgreSQL database in the Worker
@@ -288,10 +205,7 @@ Open your Worker's main file (for example, `worker.ts`) and import the `Client` 
 TypeScript
 
 ```
-
 import { Client } from "pg";
-
-
 ```
 
 In the `fetch` event handler, connect to the PostgreSQL database using your chosen method, either the connection string or the explicit parameters.
@@ -301,16 +215,7 @@ In the `fetch` event handler, connect to the PostgreSQL database using your chos
 TypeScript
 
 ```
-
-// create a new Client instance using the connection string
-
-const sql = new Client({ connectionString: env.DB_URL });
-
-// connect to the PostgreSQL database
-
-await sql.connect();
-
-
+// create a new Client instance using the connection stringconst sql = new Client({ connectionString: env.DB_URL });// connect to the PostgreSQL databaseawait sql.connect();
 ```
 
 ### Set explicit parameters
@@ -318,30 +223,7 @@ await sql.connect();
 TypeScript
 
 ```
-
-// create a new Client instance using explicit parameters
-
-const sql = new Client({
-
-  username: env.DB_USERNAME,
-
-  password: env.DB_PASSWORD,
-
-  host: env.DB_HOST,
-
-  port: env.DB_PORT,
-
-  database: env.DB_NAME,
-
-  ssl: true, // Enable SSL for secure connections
-
-});
-
-// connect to the PostgreSQL database
-
-await sql.connect();
-
-
+// create a new Client instance using explicit parametersconst sql = new Client({  username: env.DB_USERNAME,  password: env.DB_PASSWORD,  host: env.DB_HOST,  port: env.DB_PORT,  database: env.DB_NAME,  ssl: true, // Enable SSL for secure connections});// connect to the PostgreSQL databaseawait sql.connect();
 ```
 
 ## 5\. Interact with the products database
@@ -353,20 +235,7 @@ Note
 If you are following along in your own PostgreSQL instance, set up the `products` using the following SQL `CREATE TABLE` statement. This statement defines the columns and their respective data types for the `products` table:
 
 ```
-
-CREATE TABLE products (
-
-  id SERIAL PRIMARY KEY,
-
-  name VARCHAR(255) NOT NULL,
-
-  description TEXT,
-
-  price DECIMAL(10, 2) NOT NULL
-
-);
-
-
+CREATE TABLE products (  id SERIAL PRIMARY KEY,  name VARCHAR(255) NOT NULL,  description TEXT,  price DECIMAL(10, 2) NOT NULL);
 ```
 
 Replace the existing code in your `worker.ts` file with the following code:
@@ -374,53 +243,10 @@ Replace the existing code in your `worker.ts` file with the following code:
 TypeScript
 
 ```
-
 import { Client } from "pg";
-
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    // Create a new Client instance using the connection string
-
-    // or explicit parameters as shown in the previous steps.
-
-    // Here, we are using the connection string method.
-
-    const sql = new Client({
-
-      connectionString: env.DB_URL,
-
-    });
-
-        // Connect to the PostgreSQL database
-
-        await sql.connect();
-
-
-        // Query the products table
-
-        const result = await sql.query("SELECT * FROM products");
-
-
-        // Return the result as JSON
-
-        return new Response(JSON.stringify(result.rows), {
-
-            headers: {
-
-                "Content-Type": "application/json",
-
-            },
-
-        });
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export default {  async fetch(request, env, ctx): Promise<Response> {    // Create a new Client instance using the connection string    // or explicit parameters as shown in the previous steps.    // Here, we are using the connection string method.    const sql = new Client({      connectionString: env.DB_URL,    });        // Connect to the PostgreSQL database        await sql.connect();
+        // Query the products table        const result = await sql.query("SELECT * FROM products");
+        // Return the result as JSON        return new Response(JSON.stringify(result.rows), {            headers: {                "Content-Type": "application/json",            },        });  },} satisfies ExportedHandler<Env>;
 ```
 
 This code establishes a connection to the PostgreSQL database within your Worker application and queries the `products` table, returning the results as a JSON response.
@@ -432,10 +258,7 @@ Run the following command to deploy your Worker:
 Terminal window
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 Your application is now live and accessible at `<YOUR_WORKER>.<YOUR_SUBDOMAIN>.workers.dev`.
@@ -453,101 +276,14 @@ Add the following code snippet inside the `fetch` event handler in your `worker.
 TypeScript
 
 ```
-
 import { Client } from "pg";
-
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    // Create a new Client instance using the connection string
-
-    // or explicit parameters as shown in the previous steps.
-
-    // Here, we are using the connection string method.
-
-    const sql = new Client({
-
-      connectionString: env.DB_URL,
-
-    });
-
-        // Connect to the PostgreSQL database
-
-        await sql.connect();
-
-
-        const url = new URL(request.url);
-
-        if (request.method === "POST" && url.pathname === "/products") {
-
-            // Parse the request's JSON payload
-
-            const productData = (await request.json()) as {
-
-                name: string;
-
-                description: string;
-
-                price: number;
-
-            };
-
-
-            const name = productData.name,
-
-                description = productData.description,
-
-                price = productData.price;
-
-
-            // Insert the new product into the products table
-
-            const insertResult = await sql.query(
-
-                `INSERT INTO products(name, description, price) VALUES($1, $2, $3)
-
-    RETURNING *`,
-
-                [name, description, price],
-
-            );
-
-
-            // Return the inserted row as JSON
-
-            return new Response(JSON.stringify(insertResult.rows), {
-
-                headers: { "Content-Type": "application/json" },
-
-            });
-
-        }
-
-
-        // Query the products table
-
-        const result = await sql.query("SELECT * FROM products");
-
-
-        // Return the result as JSON
-
-        return new Response(JSON.stringify(result.rows), {
-
-            headers: {
-
-                "Content-Type": "application/json",
-
-            },
-
-        });
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export default {  async fetch(request, env, ctx): Promise<Response> {    // Create a new Client instance using the connection string    // or explicit parameters as shown in the previous steps.    // Here, we are using the connection string method.    const sql = new Client({      connectionString: env.DB_URL,    });        // Connect to the PostgreSQL database        await sql.connect();
+        const url = new URL(request.url);        if (request.method === "POST" && url.pathname === "/products") {            // Parse the request's JSON payload            const productData = (await request.json()) as {                name: string;                description: string;                price: number;            };
+            const name = productData.name,                description = productData.description,                price = productData.price;
+            // Insert the new product into the products table            const insertResult = await sql.query(                `INSERT INTO products(name, description, price) VALUES($1, $2, $3)    RETURNING *`,                [name, description, price],            );
+            // Return the inserted row as JSON            return new Response(JSON.stringify(insertResult.rows), {                headers: { "Content-Type": "application/json" },            });        }
+        // Query the products table        const result = await sql.query("SELECT * FROM products");
+        // Return the result as JSON        return new Response(JSON.stringify(result.rows), {            headers: {                "Content-Type": "application/json",            },        });  },} satisfies ExportedHandler<Env>;
 ```
 
 This code snippet does the following:
@@ -565,27 +301,13 @@ After making these changes, deploy the Worker again by running:
 Terminal window
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 You can now use your Cloudflare Worker to insert new rows into the `products` table. To test this functionality, send a `POST` request to your Worker's URL with the `/products` path, along with a JSON payload containing the new product data:
 
 ```
-
-{
-
-  "name": "Sample Product",
-
-  "description": "This is a sample product",
-
-  "price": 19.99
-
-}
-
-
+{  "name": "Sample Product",  "description": "This is a sample product",  "price": 19.99}
 ```
 
 You have successfully created a Cloudflare Worker that connects to a PostgreSQL database and handles fetching data and inserting new rows into a products table.
@@ -597,82 +319,25 @@ Create a Hyperdrive configuration using the connection string for your PostgreSQ
 Terminal window
 
 ```
-
 npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="postgres://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name" --caching-disabled
-
-
 ```
 
 This command outputs the Hyperdrive configuration `id` that will be used for your Hyperdrive [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/). Set up your binding by specifying the `id` in the Wrangler file.
 
-* [  wrangler.jsonc ](#tab-panel-12199)
-* [  wrangler.toml ](#tab-panel-12200)
+* [  wrangler.jsonc ](#tab-panel-12216)
+* [  wrangler.toml ](#tab-panel-12217)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "hyperdrive-example",
-
-  "main": "src/index.ts",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "compatibility_flags": [
-
-    "nodejs_compat"
-
-  ],
-
-  // Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.
-
-  "hyperdrive": [
-
-    {
-
-      "binding": "HYPERDRIVE",
-
-      "id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "hyperdrive-example",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-19",  "compatibility_flags": [    "nodejs_compat"  ],  // Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"    }  ]}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "hyperdrive-example"
-
-main = "src/index.ts"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-compatibility_flags = [ "nodejs_compat" ]
-
-
-[[hyperdrive]]
-
-binding = "HYPERDRIVE"
-
-id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "hyperdrive-example"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-19"compatibility_flags = [ "nodejs_compat" ]
+[[hyperdrive]]binding = "HYPERDRIVE"id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
 ```
 
 Create the types for your Hyperdrive binding using the following command:
@@ -680,10 +345,7 @@ Create the types for your Hyperdrive binding using the following command:
 Terminal window
 
 ```
-
 npx wrangler types
-
-
 ```
 
 Replace your existing connection string in your Worker code with the Hyperdrive connection string.
@@ -691,24 +353,9 @@ Replace your existing connection string in your Worker code with the Hyperdrive 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    const sql = new Client({connectionString: env.HYPERDRIVE.connectionString})
-
-
+export default {  async fetch(request, env, ctx): Promise<Response> {    const sql = new Client({connectionString: env.HYPERDRIVE.connectionString})
     const url = new URL(request.url);
-
-
-    //rest of the routes and database queries
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+    //rest of the routes and database queries  },} satisfies ExportedHandler<Env>;
 ```
 
 ## 9\. Redeploy your Worker
@@ -718,10 +365,7 @@ Run the following command to deploy your Worker:
 Terminal window
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 Your Worker application is now live and accessible at `<YOUR_WORKER>.<YOUR_SUBDOMAIN>.workers.dev`, using Hyperdrive. Hyperdrive accelerates database queries by pooling your connections and caching your requests across the globe.

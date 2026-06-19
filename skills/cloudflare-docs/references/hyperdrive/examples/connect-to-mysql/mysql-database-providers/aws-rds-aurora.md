@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -75,43 +75,17 @@ To create a new user, log in to the database and use the `CREATE USER` command:
 Terminal window
 
 ```
-
-# Log in to the database
-
-mysql -h ENDPOINT_NAME -P PORT -u MASTER_USERNAME -p database_name
-
-
+# Log in to the databasemysql -h ENDPOINT_NAME -P PORT -u MASTER_USERNAME -p database_name
 ```
 
 Run the following SQL statements:
 
 ```
-
--- Create a role for Hyperdrive
-
-CREATE ROLE hyperdrive;
-
-
--- Allow Hyperdrive to connect
-
-GRANT USAGE ON mysql_db.* TO hyperdrive;
-
-
--- Grant database privileges to the hyperdrive role
-
-GRANT ALL PRIVILEGES ON mysql_db.* to hyperdrive;
-
-
--- Create a specific user for Hyperdrive to log in as
-
-CREATE USER 'hyperdrive_user'@'%' IDENTIFIED WITH caching_sha2_password BY 'sufficientlyRandomPassword';
-
-
--- Grant this new user the hyperdrive role privileges
-
-GRANT hyperdrive to 'hyperdrive_user'@'%';
-
-
+-- Create a role for HyperdriveCREATE ROLE hyperdrive;
+-- Allow Hyperdrive to connectGRANT USAGE ON mysql_db.* TO hyperdrive;
+-- Grant database privileges to the hyperdrive roleGRANT ALL PRIVILEGES ON mysql_db.* to hyperdrive;
+-- Create a specific user for Hyperdrive to log in asCREATE USER 'hyperdrive_user'@'%' IDENTIFIED WITH caching_sha2_password BY 'sufficientlyRandomPassword';
+-- Grant this new user the hyperdrive role privilegesGRANT hyperdrive to 'hyperdrive_user'@'%';
 ```
 
 Refer to AWS' [documentation on user roles in MySQL ↗](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.MySQL.CommonDBATasks.privilege-model.html) for more details.
@@ -130,10 +104,7 @@ To configure Hyperdrive, you will need:
 Hyperdrive accepts the combination of these parameters in the common connection string format used by database drivers:
 
 ```
-
 mysql://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
-
-
 ```
 
 Most database providers will provide a connection string you can copy-and-paste directly into Hyperdrive.
@@ -146,10 +117,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
 Terminal window
 
 ```
-
 npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="mysql://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name"
-
-
 ```
 
 Note
@@ -158,74 +126,20 @@ Hyperdrive will attempt to connect to your database with the provided credential
 
 This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-8679)
-* [  wrangler.toml ](#tab-panel-8680)
+* [  wrangler.jsonc ](#tab-panel-8755)
+* [  wrangler.toml ](#tab-panel-8756)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "hyperdrive-example",
-
-  "main": "src/index.ts",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "compatibility_flags": [
-
-    "nodejs_compat"
-
-  ],
-
-  // Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.
-
-  "hyperdrive": [
-
-    {
-
-      "binding": "HYPERDRIVE",
-
-      "id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "hyperdrive-example",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-18",  "compatibility_flags": [    "nodejs_compat"  ],  // Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"    }  ]}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "hyperdrive-example"
-
-main = "src/index.ts"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-compatibility_flags = [ "nodejs_compat" ]
-
-
-[[hyperdrive]]
-
-binding = "HYPERDRIVE"
-
-id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "hyperdrive-example"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-18"compatibility_flags = [ "nodejs_compat" ]
+[[hyperdrive]]binding = "HYPERDRIVE"id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
 ```
 
 ## 3\. Use Hyperdrive from your Worker
@@ -256,62 +170,20 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-8681)
-* [  wrangler.toml ](#tab-panel-8682)
+* [  wrangler.jsonc ](#tab-panel-8757)
+* [  wrangler.toml ](#tab-panel-8758)
 
 JSONC
 
 ```
-
-{
-
-  // required for database drivers to function
-
-  "compatibility_flags": [
-
-    "nodejs_compat"
-
-  ],
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "hyperdrive": [
-
-    {
-
-      "binding": "HYPERDRIVE",
-
-      "id": "<your-hyperdrive-id-here>"
-
-    }
-
-  ]
-
-}
-
-
+{  // required for database drivers to function  "compatibility_flags": [    "nodejs_compat"  ],  // Set this to today's date  "compatibility_date": "2026-06-18",  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<your-hyperdrive-id-here>"    }  ]}
 ```
 
 TOML
 
 ```
-
-compatibility_flags = [ "nodejs_compat" ]
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[[hyperdrive]]
-
-binding = "HYPERDRIVE"
-
-id = "<your-hyperdrive-id-here>"
-
-
+compatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-06-18"
+[[hyperdrive]]binding = "HYPERDRIVE"id = "<your-hyperdrive-id-here>"
 ```
 
 Create a new `connection` instance and pass the Hyperdrive parameters:
@@ -319,70 +191,11 @@ Create a new `connection` instance and pass the Hyperdrive parameters:
 TypeScript
 
 ```
-
-// mysql2 v3.13.0 or later is required
-
-import { createConnection } from "mysql2/promise";
-
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    // Create a new connection on each request. Hyperdrive maintains the underlying
-
-    // database connection pool, so creating a new connection is fast.
-
-    const connection = await createConnection({
-
-      host: env.HYPERDRIVE.host,
-
-      user: env.HYPERDRIVE.user,
-
-      password: env.HYPERDRIVE.password,
-
-      database: env.HYPERDRIVE.database,
-
-      port: env.HYPERDRIVE.port,
-
-
-      // Required to enable mysql2 compatibility for Workers
-
-      disableEval: true,
-
-    });
-
-
-    try {
-
-      // Sample query
-
-      const [results, fields] = await connection.query("SHOW tables;");
-
-
-      // Return result rows as JSON
-
-      return Response.json({ results, fields });
-
-    } catch (e) {
-
-      console.error(e);
-
-      return Response.json(
-
-        { error: e instanceof Error ? e.message : e },
-
-        { status: 500 },
-
-      );
-
-    }
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+// mysql2 v3.13.0 or later is requiredimport { createConnection } from "mysql2/promise";
+export default {  async fetch(request, env, ctx): Promise<Response> {    // Create a new connection on each request. Hyperdrive maintains the underlying    // database connection pool, so creating a new connection is fast.    const connection = await createConnection({      host: env.HYPERDRIVE.host,      user: env.HYPERDRIVE.user,      password: env.HYPERDRIVE.password,      database: env.HYPERDRIVE.database,      port: env.HYPERDRIVE.port,
+      // Required to enable mysql2 compatibility for Workers      disableEval: true,    });
+    try {      // Sample query      const [results, fields] = await connection.query("SHOW tables;");
+      // Return result rows as JSON      return Response.json({ results, fields });    } catch (e) {      console.error(e);      return Response.json(        { error: e instanceof Error ? e.message : e },        { status: 500 },      );    }  },} satisfies ExportedHandler<Env>;
 ```
 
 Note

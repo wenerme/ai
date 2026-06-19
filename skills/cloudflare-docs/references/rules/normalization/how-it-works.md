@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,9 +30,9 @@ For examples of the different settings and their impact on request URLs, refer t
 The URL normalization performed according to [RFC 3986 ↗](https://www.ietf.org/rfc/rfc3986.txt) is as follows:
 
 * The following unreserved characters are [percent decoded ↗](https://tools.ietf.org/html/rfc3986#section-2.1) (converted from their `%XX` encoded form back to the original character):  
-   * Alphabetical characters: `a`\-`z`, `A`\-`Z` (decoded from `%41`\-`%5A` and `%61`\-`%7A`)  
-   * Digit characters: `0`\-`9` (decoded from `%30`\-`%39`)  
-   * hyphen `-` (`%2D`), period `.` (`%2E`), underscore `_` (`%5F`), and tilde `~` (`%7E`)
+  * Alphabetical characters: `a`\-`z`, `A`\-`Z` (decoded from `%41`\-`%5A` and `%61`\-`%7A`)
+  * Digit characters: `0`\-`9` (decoded from `%30`\-`%39`)
+  * hyphen `-` (`%2D`), period `.` (`%2E`), underscore `_` (`%5F`), and tilde `~` (`%7E`)
 * These reserved characters are not encoded or decoded: `: / ? # [ ] @ ! $ & ' ( ) * + , ; =`
 * Other characters, for example literal byte values, are percent encoded.
 * Percent encoded representations are converted to upper case.

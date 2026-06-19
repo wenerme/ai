@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,205 +30,51 @@ Use Sandbox for agents that need to:
 
 Bind the Sandbox Durable Object to your Worker, then access a sandbox from your agent methods with `getSandbox()`.
 
-* [  JavaScript ](#tab-panel-6515)
-* [  TypeScript ](#tab-panel-6516)
+* [  JavaScript ](#tab-panel-6589)
+* [  TypeScript ](#tab-panel-6590)
 
 JavaScript
 
 ```
-
-import { Agent, callable } from "agents";
-
-import { getSandbox } from "@cloudflare/sandbox";
-
-
+import { Agent, callable } from "agents";import { getSandbox } from "@cloudflare/sandbox";
 export { Sandbox } from "@cloudflare/sandbox";
-
-
-export class CodeAgent extends Agent {
-
-  @callable()
-
-  async runPython(code) {
-
-    const sandbox = getSandbox(this.env.Sandbox, this.name);
-
-
-    await sandbox.writeFile("/workspace/script.py", code);
-
-    const result = await sandbox.exec("python3 /workspace/script.py");
-
-
+export class CodeAgent extends Agent {  @callable()  async runPython(code) {    const sandbox = getSandbox(this.env.Sandbox, this.name);
+    await sandbox.writeFile("/workspace/script.py", code);    const result = await sandbox.exec("python3 /workspace/script.py");
     this.setState({ lastOutput: result.stdout });
-
-
-    return {
-
-      success: result.success,
-
-      stdout: result.stdout,
-
-      stderr: result.stderr,
-
-      exitCode: result.exitCode,
-
-    };
-
-  }
-
-}
-
-
+    return {      success: result.success,      stdout: result.stdout,      stderr: result.stderr,      exitCode: result.exitCode,    };  }}
 ```
 
 TypeScript
 
 ```
-
-import { Agent, callable } from "agents";
-
-import { getSandbox } from "@cloudflare/sandbox";
-
-import type { Sandbox } from "@cloudflare/sandbox";
-
-
+import { Agent, callable } from "agents";import { getSandbox } from "@cloudflare/sandbox";import type { Sandbox } from "@cloudflare/sandbox";
 export { Sandbox } from "@cloudflare/sandbox";
-
-
-type Env = {
-
-  Sandbox: DurableObjectNamespace<Sandbox>;
-
-};
-
-
-export class CodeAgent extends Agent<Env, { lastOutput?: string }> {
-
-  @callable()
-
-  async runPython(code: string) {
-
-    const sandbox = getSandbox(this.env.Sandbox, this.name);
-
-
-    await sandbox.writeFile("/workspace/script.py", code);
-
-    const result = await sandbox.exec("python3 /workspace/script.py");
-
-
+type Env = {  Sandbox: DurableObjectNamespace<Sandbox>;};
+export class CodeAgent extends Agent<Env, { lastOutput?: string }> {  @callable()  async runPython(code: string) {    const sandbox = getSandbox(this.env.Sandbox, this.name);
+    await sandbox.writeFile("/workspace/script.py", code);    const result = await sandbox.exec("python3 /workspace/script.py");
     this.setState({ lastOutput: result.stdout });
-
-
-    return {
-
-      success: result.success,
-
-      stdout: result.stdout,
-
-      stderr: result.stderr,
-
-      exitCode: result.exitCode,
-
-    };
-
-  }
-
-}
-
-
+    return {      success: result.success,      stdout: result.stdout,      stderr: result.stderr,      exitCode: result.exitCode,    };  }}
 ```
 
 ## Configuration
 
 Configure the Sandbox container, Durable Object binding, and migration in `wrangler.jsonc`.
 
-* [  wrangler.jsonc ](#tab-panel-6513)
-* [  wrangler.toml ](#tab-panel-6514)
+* [  wrangler.jsonc ](#tab-panel-6587)
+* [  wrangler.toml ](#tab-panel-6588)
 
 JSONC
 
 ```
-
-{
-
-  "containers": [
-
-    {
-
-      "class_name": "Sandbox",
-
-      "image": "./Dockerfile",
-
-      "instance_type": "lite",
-
-      "max_instances": 1
-
-    }
-
-  ],
-
-  "durable_objects": {
-
-    "bindings": [
-
-      {
-
-        "name": "Sandbox",
-
-        "class_name": "Sandbox"
-
-      }
-
-    ]
-
-  },
-
-  "migrations": [
-
-    {
-
-      "tag": "v1",
-
-      "new_sqlite_classes": ["Sandbox"]
-
-    }
-
-  ]
-
-}
-
-
+{  "containers": [    {      "class_name": "Sandbox",      "image": "./Dockerfile",      "instance_type": "lite",      "max_instances": 1    }  ],  "durable_objects": {    "bindings": [      {        "name": "Sandbox",        "class_name": "Sandbox"      }    ]  },  "migrations": [    {      "tag": "v1",      "new_sqlite_classes": ["Sandbox"]    }  ]}
 ```
 
 TOML
 
 ```
-
-[[containers]]
-
-class_name = "Sandbox"
-
-image = "./Dockerfile"
-
-instance_type = "lite"
-
-max_instances = 1
-
-
-[[durable_objects.bindings]]
-
-name = "Sandbox"
-
-class_name = "Sandbox"
-
-
-[[migrations]]
-
-tag = "v1"
-
-new_sqlite_classes = [ "Sandbox" ]
-
-
+[[containers]]class_name = "Sandbox"image = "./Dockerfile"instance_type = "lite"max_instances = 1
+[[durable_objects.bindings]]name = "Sandbox"class_name = "Sandbox"
+[[migrations]]tag = "v1"new_sqlite_classes = [ "Sandbox" ]
 ```
 
 ## Sandbox and agent state
@@ -243,7 +89,7 @@ For long-running sandbox work, pair Sandbox with [durable execution with fibers]
 
 [ Execute commands ](https://developers.cloudflare.com/sandbox/guides/execute-commands/) Run shell commands in a sandbox environment. 
 
-[ Manage files ](https://developers.cloudflare.com/sandbox/guides/manage-files/) Read, write, upload, and download sandbox files. 
+[ Manage files ](https://developers.cloudflare.com/sandbox/guides/manage-files/) Read, write, upload, and download sandbox files.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/sandbox/#page","headline":"Sandbox · Cloudflare Agents docs","description":"Give agents isolated Linux environments for running code, managing files, and executing commands.","url":"https://developers.cloudflare.com/agents/tools/sandbox/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

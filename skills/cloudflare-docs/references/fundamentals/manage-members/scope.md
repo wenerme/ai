@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -63,10 +63,11 @@ To create a domain group:
 1. In the Cloudflare dashboard, go to the **Settings** \> **Lists** page. (You must be logged in as a **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/)).  
 [ Go to **Configurations** ](https://dash.cloudflare.com/?to=/:account/configurations)
 2. For **Domain Group Manager**, select **Create**.
-3. Create your domain group:  
-   1. Select the domains to include.  
-   2. Add a **Name**.  
-   3. Select **Create**.
+3. Create your domain group:
+
+  1. Select the domains to include.
+  2. Add a **Name**.
+  3. Select **Create**.
 
 You can also edit and delete these groups as needed.
 

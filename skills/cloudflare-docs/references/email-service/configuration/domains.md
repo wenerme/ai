@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,19 +20,20 @@ Configure your domains to work with Cloudflare Email Service. This includes DNS 
 
 Cloudflare can configure all required DNS records for you when you onboard a domain onto Email Sending or Email Routing.
 
-* [ Email Sending ](#tab-panel-8486)
-* [ Email Routing ](#tab-panel-8487)
+* [ Email Sending ](#tab-panel-8562)
+* [ Email Routing ](#tab-panel-8563)
 
 Before using Email Sending, configure your domain.
 
 1. In the Cloudflare dashboard, go to **Compute** \> **Email Service** \> **Email Sending**.  
 [ Go to **Email Sending** ](https://dash.cloudflare.com/?to=/:account/email-service/sending)
 2. Select **Onboard Domain**.
-3. Choose a domain from your Cloudflare account. Optionally review the DNS records that Cloudflare will add to the `cf-bounce` subdomain of your domain:  
-   * MX records to route bounce emails to Cloudflare.  
-   * TXT record for SPF to authorize sending emails.  
-   * TXT record for DKIM to provide authentication for emails sent from your domain.  
-   * TXT record for DMARC on `_dmarc.yourdomain.com`.
+3. Choose a domain from your Cloudflare account. Optionally review the DNS records that Cloudflare will add to the `cf-bounce` subdomain of your domain:
+
+  * MX records to route bounce emails to Cloudflare.
+  * TXT record for SPF to authorize sending emails.
+  * TXT record for DKIM to provide authentication for emails sent from your domain.
+  * TXT record for DMARC on `_dmarc.yourdomain.com`.
 4. Select **Done**.
 
 Note
@@ -46,10 +47,11 @@ Before using Email Routing, configure your domain.
 1. In the Cloudflare dashboard, go to **Compute** \> **Email Service** \> **Email Routing**.  
 [ Go to **Email Routing** ](https://dash.cloudflare.com/?to=/:account/email-service/routing)
 2. Select **Onboard Domain**.
-3. Choose a domain from your Cloudflare account. Optionally review the DNS records that Cloudflare will add to your root domain:  
-   * MX records to route incoming emails to Cloudflare.  
-   * TXT record for SPF to authorize email routing.  
-   * TXT record for DKIM to provide authentication for routed emails.
+3. Choose a domain from your Cloudflare account. Optionally review the DNS records that Cloudflare will add to your root domain:
+
+  * MX records to route incoming emails to Cloudflare.
+  * TXT record for SPF to authorize email routing.
+  * TXT record for DKIM to provide authentication for routed emails.
 4. Select **Done**.
 
 Note
@@ -66,22 +68,15 @@ Cloudflare automatically configures required DNS records for both email sending 
 
 These records authenticate your outbound emails. Email Sending creates DNS records on a `cf-bounce.` subdomain of your domain to handle bounce processing. These are separate from the records used by Email Routing.
 
-* [ MX records ](#tab-panel-8477)
-* [ SPF record ](#tab-panel-8478)
-* [ DKIM record ](#tab-panel-8479)
-* [ DMARC record ](#tab-panel-8480)
+* [ MX records ](#tab-panel-8553)
+* [ SPF record ](#tab-panel-8554)
+* [ DKIM record ](#tab-panel-8555)
+* [ DMARC record ](#tab-panel-8556)
 
 **Purpose**: Route bounce emails back to Cloudflare for processing.
 
 ```
-
-MX cf-bounce.yourdomain.com route1.mx.cloudflare.net
-
-MX cf-bounce.yourdomain.com route2.mx.cloudflare.net
-
-MX cf-bounce.yourdomain.com route3.mx.cloudflare.net
-
-
+MX cf-bounce.yourdomain.com route1.mx.cloudflare.netMX cf-bounce.yourdomain.com route2.mx.cloudflare.netMX cf-bounce.yourdomain.com route3.mx.cloudflare.net
 ```
 
 **Configuration:**
@@ -94,10 +89,7 @@ MX cf-bounce.yourdomain.com route3.mx.cloudflare.net
 **Purpose**: Authorizes Cloudflare to send emails on behalf of your domain.
 
 ```
-
 TXT cf-bounce.yourdomain.com "v=spf1 include:_spf.mx.cloudflare.net ~all"
-
-
 ```
 
 **Configuration:**
@@ -110,10 +102,7 @@ TXT cf-bounce.yourdomain.com "v=spf1 include:_spf.mx.cloudflare.net ~all"
 **Purpose**: Provides cryptographic authentication for your emails.
 
 ```
-
 TXT cf-bounce._domainkey.yourdomain.com "v=DKIM1; h=sha256; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA..."
-
-
 ```
 
 **Configuration:**
@@ -126,10 +115,7 @@ TXT cf-bounce._domainkey.yourdomain.com "v=DKIM1; h=sha256; k=rsa; p=MIIBIjANBgk
 **Purpose**: Sets policy for email authentication failures.
 
 ```
-
 TXT _dmarc.yourdomain.com "v=DMARC1; p=reject;"
-
-
 ```
 
 **Configuration:**
@@ -149,21 +135,14 @@ TXT _dmarc.yourdomain.com "v=DMARC1; p=reject;"
 
 These records route incoming emails to Cloudflare and authenticate forwarded emails. Email Routing DNS records are configured on the root domain.
 
-* [ MX records ](#tab-panel-8481)
-* [ SPF record ](#tab-panel-8482)
-* [ DKIM record ](#tab-panel-8483)
+* [ MX records ](#tab-panel-8557)
+* [ SPF record ](#tab-panel-8558)
+* [ DKIM record ](#tab-panel-8559)
 
 **Purpose**: Route incoming emails to Cloudflare's mail servers.
 
 ```
-
-MX yourdomain.com route1.mx.cloudflare.net
-
-MX yourdomain.com route2.mx.cloudflare.net
-
-MX yourdomain.com route3.mx.cloudflare.net
-
-
+MX yourdomain.com route1.mx.cloudflare.netMX yourdomain.com route2.mx.cloudflare.netMX yourdomain.com route3.mx.cloudflare.net
 ```
 
 **Configuration:**
@@ -176,10 +155,7 @@ MX yourdomain.com route3.mx.cloudflare.net
 **Purpose**: Authorizes Cloudflare to forward emails on behalf of your domain.
 
 ```
-
 TXT yourdomain.com "v=spf1 include:_spf.mx.cloudflare.net ~all"
-
-
 ```
 
 **Configuration:**
@@ -198,10 +174,7 @@ SPF records are limited to 10 DNS lookups total. If merging pushes you over the 
 **Purpose**: Provides cryptographic authentication for forwarded emails.
 
 ```
-
 TXT cf2024-1._domainkey.yourdomain.com "v=DKIM1; h=sha256; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA..."
-
-
 ```
 
 **Configuration:**
@@ -221,19 +194,19 @@ Email Sending and Email Routing have separate DNS records and separate settings 
 
 1. Go to **Compute** \> **Email Service** \> **Email Sending** \> **Settings**.
 2. The **DNS records** section shows all sending-related records:  
-   * **MX records** on `cf-bounce.yourdomain.com`  
-   * **SPF record** on `cf-bounce.yourdomain.com`  
-   * **DKIM record** on `cf-bounce._domainkey.yourdomain.com`  
-   * **DMARC record** on `_dmarc.yourdomain.com`
+  * **MX records** on `cf-bounce.yourdomain.com`
+  * **SPF record** on `cf-bounce.yourdomain.com`
+  * **DKIM record** on `cf-bounce._domainkey.yourdomain.com`
+  * **DMARC record** on `_dmarc.yourdomain.com`
 3. Each record shows either a **Locked** or **Unlocked** status. Both states indicate the record is configured correctly; the status reflects whether Email Service is managing the record. Refer to [Locked DNS records](#locked-dns-records) for more information.
 
 ### Verify Email Routing records
 
 1. Go to **Compute** \> **Email Service** \> **Email Routing** \> **Settings**.
 2. The **DNS records** section shows all routing-related records:  
-   * **MX records** on `yourdomain.com`  
-   * **SPF record** on `yourdomain.com`  
-   * **DKIM record** on `cf2024-1._domainkey.yourdomain.com`
+  * **MX records** on `yourdomain.com`
+  * **SPF record** on `yourdomain.com`
+  * **DKIM record** on `cf2024-1._domainkey.yourdomain.com`
 3. Each record shows either a **Locked** or **Unlocked** status. Both states indicate the record is configured correctly; the status reflects whether Email Service is managing the record. Refer to [Locked DNS records](#locked-dns-records) for more information.
 
 ### If records are not configured
@@ -266,8 +239,8 @@ For more information, refer to [DNS troubleshooting: \_dc- and \_dc-mx subdomain
 
 ### Verification troubleshooting
 
-* [ DNS propagation ](#tab-panel-8484)
-* [ Record conflicts ](#tab-panel-8485)
+* [ DNS propagation ](#tab-panel-8560)
+* [ Record conflicts ](#tab-panel-8561)
 
 **Issue**: Records show as "Not Found" immediately after adding.
 
@@ -282,37 +255,12 @@ For more information, refer to [DNS troubleshooting: \_dc- and \_dc-mx subdomain
 Terminal window
 
 ```
-
-# Check sending SPF record
-
-dig TXT cf-bounce.yourdomain.com | grep spf
-
-
-# Check routing SPF record
-
-dig TXT yourdomain.com | grep spf
-
-
-# Check sending DKIM record
-
-dig TXT cf-bounce._domainkey.yourdomain.com
-
-
-# Check routing DKIM record
-
-dig TXT cf2024-1._domainkey.yourdomain.com
-
-
-# Check routing MX records
-
-dig MX yourdomain.com
-
-
-# Check sending MX records (bounce handling)
-
-dig MX cf-bounce.yourdomain.com
-
-
+# Check sending SPF recorddig TXT cf-bounce.yourdomain.com | grep spf
+# Check routing SPF recorddig TXT yourdomain.com | grep spf
+# Check sending DKIM recorddig TXT cf-bounce._domainkey.yourdomain.com
+# Check routing DKIM recorddig TXT cf2024-1._domainkey.yourdomain.com
+# Check routing MX recordsdig MX yourdomain.com
+# Check sending MX records (bounce handling)dig MX cf-bounce.yourdomain.com
 ```
 
 **Issue**: Existing DNS records conflict with Email Service.

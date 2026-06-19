@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,9 +22,9 @@ Access and the Cloudflare One Client will evaluate identity based on a user's la
 
 ## Set up OTP
 
-* [ Dashboard ](#tab-panel-7222)
-* [ API ](#tab-panel-7223)
-* [ Terraform (v5) ](#tab-panel-7224)
+* [ Dashboard ](#tab-panel-7298)
+* [ API ](#tab-panel-7299)
+* [ Terraform (v5) ](#tab-panel-7300)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
@@ -34,42 +34,21 @@ Make a `POST` request to the [Identity Providers](https://developers.cloudflare.
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Access: Organizations, Identity Providers, and Groups Write`
 
 Add an Access identity provider
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_providers" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "One-time PIN login",
-
-    "type": "onetimepin",
-
-    "config": {}
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_providers" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "One-time PIN login",    "type": "onetimepin",    "config": {}  }'
 ```
 
-1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):  
-   * `Access: Organizations, Identity Providers, and Groups Write`
+1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
+
+  * `Access: Organizations, Identity Providers, and Groups Write`
 2. Configure the [cloudflare\_zero\_trust\_access\_identity\_provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fidentity%5Fprovider) resource:  
 ```  
-resource "cloudflare_zero_trust_access_identity_provider" "onetimepin_login" {  
-  account_id = var.cloudflare_account_id  
-  name       = "One-time PIN login"  
-  type       = "onetimepin"  
-  config      = {}  
-}  
+resource "cloudflare_zero_trust_access_identity_provider" "onetimepin_login" {  account_id = var.cloudflare_account_id  name       = "One-time PIN login"  type       = "onetimepin"  config      = {}}  
 ```
 
 Tip
@@ -83,17 +62,17 @@ To grant a user access to an application, simply add their email address to an [
 To log in to Access using the one-time PIN:
 
 1. Go to the application protected by Access.
-2. On the Access login page, enter your email address and select **Send login code**.![Enter email to sign in with OTP.](https://developers.cloudflare.com/_astro/otp1.CDOVB8yE_2oGUEX.webp)
+2. On the Access login page, enter your email address and select **Send login code**. ![Enter email to sign in with OTP.](https://developers.cloudflare.com/_astro/otp1.CDOVB8yE_2oGUEX.webp)
 3. If the email is allowed by an Access policy, you will receive a PIN in your inbox. This secure PIN expires 10 minutes after the initial request.
 
 Note
 
 By design, blocked users will not receive an email. The login page will always say **A code has been emailed to you**, regardless of whether or not an email was sent.
 
-1. Paste the PIN into the Access login page and select **Sign in**.![Enter PIN to sign in.](https://developers.cloudflare.com/_astro/otp2.CPS5ZkdL_2pa0u3.webp)  
-   * If the code was valid, you will be redirected to the application.  
-   * If the code was invalid, you will see **That account does not have access.**  
-   * If you see **This One-Time PIN has already been used**, the code was already consumed. This typically occurs when an email security tool on your network automatically scans the email and follows the link before you enter the code. Select **Request new code** and try again.
+1. Paste the PIN into the Access login page and select **Sign in**. ![Enter PIN to sign in.](https://developers.cloudflare.com/_astro/otp2.CPS5ZkdL_2pa0u3.webp)  
+  * If the code was valid, you will be redirected to the application.
+  * If the code was invalid, you will see **That account does not have access.**
+  * If you see **This One-Time PIN has already been used**, the code was already consumed. This typically occurs when an email security tool on your network automatically scans the email and follows the link before you enter the code. Select **Request new code** and try again.
 
 Note
 

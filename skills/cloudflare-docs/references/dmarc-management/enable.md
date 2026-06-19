@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dmarc-management/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -24,8 +24,8 @@ To enable DMARC Management:
 2. Go to **Email** \> **DMARC Management**.
 3. Select **Enable DMARC Management**.
 4. DMARC Management will scan your zone for DMARC records, and will present you with two outcomes:  
-   * If no DMARC record is found, Cloudflare will automatically invite you to add one that you can edit later. Select **Add** to continue.  
-   * If a DMARC record is found in your zone, Cloudflare will add another `rua` (Reporting URI for Aggregate data) entry to it. The `rua` tag specifies the URI (typically a `mailto:` address) where aggregate DMARC reports are sent. This additional entry uses a Cloudflare email address so that Cloudflare can receive and process DMARC reports on your behalf. Select **Next** to continue.
+  * If no DMARC record is found, Cloudflare will automatically invite you to add one that you can edit later. Select **Add** to continue.
+  * If a DMARC record is found in your zone, Cloudflare will add another `rua` (Reporting URI for Aggregate data) entry to it. The `rua` tag specifies the URI (typically a `mailto:` address) where aggregate DMARC reports are sent. This additional entry uses a Cloudflare email address so that Cloudflare can receive and process DMARC reports on your behalf. Select **Next** to continue.
 
 DMARC Management (beta) is now active. However, it may take up to 24 hours to receive your first DMARC report and to display this information in DMARC Management.
 

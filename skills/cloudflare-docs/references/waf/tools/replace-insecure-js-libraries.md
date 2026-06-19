@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -38,8 +38,8 @@ The feature is available in all Cloudflare plans, and is turned on by default on
 
 ## Configure
 
-* [ Dashboard ](#tab-panel-11265)
-* [ API ](#tab-panel-11266)
+* [ Dashboard ](#tab-panel-11282)
+* [ API ](#tab-panel-11283)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -49,26 +49,13 @@ Issue a `PATCH` request similar to the following:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone Settings Write`
 
 Edit zone setting
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/replace_insecure_js" \
-
-  --request PATCH \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "value": "on"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/replace_insecure_js" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "value": "on"  }'
 ```
 
 ---

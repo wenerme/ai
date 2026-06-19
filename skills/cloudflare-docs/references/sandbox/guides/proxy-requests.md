@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,10 +21,7 @@ For a complete multi-service implementation covering GitHub, Anthropic, and R2, 
 ## How it works
 
 ```
-
 Sandbox (short-lived JWT) → Worker proxy (validates JWT, injects real credential) → External API
-
-
 ```
 
 The proxy framework routes requests to named services. Each service is a `ServiceConfig` object with three fields:
@@ -58,12 +55,7 @@ Store the API credential and a secret for signing JWT tokens in your Worker:
 Terminal window
 
 ```
-
-wrangler secret put MY_API_KEY
-
-wrangler secret put PROXY_JWT_SECRET
-
-
+wrangler secret put MY_API_KEYwrangler secret put PROXY_JWT_SECRET
 ```
 
 Generate a strong random value for `PROXY_JWT_SECRET`:
@@ -71,10 +63,7 @@ Generate a strong random value for `PROXY_JWT_SECRET`:
 Terminal window
 
 ```
-
 openssl rand -hex 32
-
-
 ```
 
 ## 2\. Install dependencies
@@ -111,85 +100,25 @@ The framework exports:
 
 Create a `ServiceConfig` for each external API you want to proxy. This example proxies a generic HTTP API that expects a Bearer token:
 
-* [  JavaScript ](#tab-panel-10491)
-* [  TypeScript ](#tab-panel-10492)
+* [  JavaScript ](#tab-panel-10567)
+* [  TypeScript ](#tab-panel-10568)
 
 JavaScript
 
 ```
-
-export const myApi = {
-
-  // All requests to /proxy/myapi/* are forwarded to this base URL
-
-  target: "https://api.example.com",
-
-
-  // Extract the JWT from the Authorization header
-
-  validate: (req) =>
-
-    req.headers.get("Authorization")?.replace("Bearer ", "") ?? null,
-
-
-  // Replace the JWT with the real API key before forwarding
-
-  transform: async (req, ctx) => {
-
-    req.headers.set("Authorization", `Bearer ${ctx.env.MY_API_KEY}`);
-
-    return req;
-
-  },
-
-};
-
-
+export const myApi = {  // All requests to /proxy/myapi/* are forwarded to this base URL  target: "https://api.example.com",
+  // Extract the JWT from the Authorization header  validate: (req) =>    req.headers.get("Authorization")?.replace("Bearer ", "") ?? null,
+  // Replace the JWT with the real API key before forwarding  transform: async (req, ctx) => {    req.headers.set("Authorization", `Bearer ${ctx.env.MY_API_KEY}`);    return req;  },};
 ```
 
 TypeScript
 
 ```
-
 import type { ServiceConfig } from '../proxy';
-
-
-interface Env {
-
-  MY_API_KEY: string;
-
-  PROXY_JWT_SECRET: string;
-
-}
-
-
-export const myApi: ServiceConfig<Env> = {
-
-  // All requests to /proxy/myapi/* are forwarded to this base URL
-
-  target: 'https://api.example.com',
-
-
-  // Extract the JWT from the Authorization header
-
-  validate: (req) =>
-
-    req.headers.get('Authorization')?.replace('Bearer ', '') ?? null,
-
-
-  // Replace the JWT with the real API key before forwarding
-
-  transform: async (req, ctx) => {
-
-    req.headers.set('Authorization', `Bearer ${ctx.env.MY_API_KEY}`);
-
-    return req;
-
-  }
-
-};
-
-
+interface Env {  MY_API_KEY: string;  PROXY_JWT_SECRET: string;}
+export const myApi: ServiceConfig<Env> = {  // All requests to /proxy/myapi/* are forwarded to this base URL  target: 'https://api.example.com',
+  // Extract the JWT from the Authorization header  validate: (req) =>    req.headers.get('Authorization')?.replace('Bearer ', '') ?? null,
+  // Replace the JWT with the real API key before forwarding  transform: async (req, ctx) => {    req.headers.set('Authorization', `Bearer ${ctx.env.MY_API_KEY}`);    return req;  }};
 ```
 
 The `transform` function receives the outgoing request and a context object containing `ctx.env` (your Worker environment) and `ctx.jwt` (the verified token payload, including `sandboxId`). Return the modified request to forward it, or return a `Response` to short-circuit with an error.
@@ -198,180 +127,36 @@ The `transform` function receives the outgoing request and a context object cont
 
 Register your services with `createProxyHandler` and issue tokens to sandboxes using `createProxyToken`:
 
-* [  JavaScript ](#tab-panel-10493)
-* [  TypeScript ](#tab-panel-10494)
+* [  JavaScript ](#tab-panel-10569)
+* [  TypeScript ](#tab-panel-10570)
 
 JavaScript
 
 ```
-
-import { getSandbox } from "@cloudflare/sandbox";
-
-import { createProxyHandler, createProxyToken } from "./proxy";
-
-import { myApi } from "./services/myapi";
-
-
+import { getSandbox } from "@cloudflare/sandbox";import { createProxyHandler, createProxyToken } from "./proxy";import { myApi } from "./services/myapi";
 export { Sandbox } from "@cloudflare/sandbox";
-
-
-const proxyHandler = createProxyHandler({
-
-  mountPath: "/proxy",
-
-  jwtSecret: (env) => env.PROXY_JWT_SECRET,
-
-  services: { myapi: myApi },
-
-});
-
-
-export default {
-
-  async fetch(request, env) {
-
-    const url = new URL(request.url);
-
-
-    // Route all /proxy/* requests through the proxy handler
-
-    if (url.pathname.startsWith("/proxy/")) {
-
-      return proxyHandler(request, env);
-
-    }
-
-
-    // Create a sandbox and issue it a short-lived token
-
-    const sandboxId = "my-sandbox";
-
-    const sandbox = getSandbox(env.Sandbox, sandboxId);
-
-    const token = await createProxyToken({
-
-      secret: env.PROXY_JWT_SECRET,
-
-      sandboxId,
-
-      expiresIn: "15m",
-
-    });
-
-
+const proxyHandler = createProxyHandler({  mountPath: "/proxy",  jwtSecret: (env) => env.PROXY_JWT_SECRET,  services: { myapi: myApi },});
+export default {  async fetch(request, env) {    const url = new URL(request.url);
+    // Route all /proxy/* requests through the proxy handler    if (url.pathname.startsWith("/proxy/")) {      return proxyHandler(request, env);    }
+    // Create a sandbox and issue it a short-lived token    const sandboxId = "my-sandbox";    const sandbox = getSandbox(env.Sandbox, sandboxId);    const token = await createProxyToken({      secret: env.PROXY_JWT_SECRET,      sandboxId,      expiresIn: "15m",    });
     const proxyBase = `https://${url.hostname}`;
-
-
-    // Pass the token and proxy base URL to the sandbox
-
-    await sandbox.setEnvVars({
-
-      PROXY_TOKEN: token,
-
-      PROXY_BASE: proxyBase,
-
-    });
-
-
-    return Response.json({ message: "Sandbox ready" });
-
-  },
-
-};
-
-
+    // Pass the token and proxy base URL to the sandbox    await sandbox.setEnvVars({      PROXY_TOKEN: token,      PROXY_BASE: proxyBase,    });
+    return Response.json({ message: "Sandbox ready" });  },};
 ```
 
 TypeScript
 
 ```
-
-import { getSandbox } from '@cloudflare/sandbox';
-
-import { createProxyHandler, createProxyToken } from './proxy';
-
-import { myApi } from './services/myapi';
-
-
+import { getSandbox } from '@cloudflare/sandbox';import { createProxyHandler, createProxyToken } from './proxy';import { myApi } from './services/myapi';
 export { Sandbox } from '@cloudflare/sandbox';
-
-
-interface Env {
-
-  Sandbox: DurableObjectNamespace;
-
-  MY_API_KEY: string;
-
-  PROXY_JWT_SECRET: string;
-
-}
-
-
-const proxyHandler = createProxyHandler<Env>({
-
-  mountPath: '/proxy',
-
-  jwtSecret: (env) => env.PROXY_JWT_SECRET,
-
-  services: { myapi: myApi }
-
-});
-
-
-export default {
-
-  async fetch(request: Request, env: Env): Promise<Response> {
-
-    const url = new URL(request.url);
-
-
-    // Route all /proxy/* requests through the proxy handler
-
-    if (url.pathname.startsWith('/proxy/')) {
-
-      return proxyHandler(request, env);
-
-    }
-
-
-    // Create a sandbox and issue it a short-lived token
-
-    const sandboxId = 'my-sandbox';
-
-    const sandbox = getSandbox(env.Sandbox, sandboxId);
-
-    const token = await createProxyToken({
-
-      secret: env.PROXY_JWT_SECRET,
-
-      sandboxId,
-
-      expiresIn: '15m'
-
-    });
-
-
+interface Env {  Sandbox: DurableObjectNamespace;  MY_API_KEY: string;  PROXY_JWT_SECRET: string;}
+const proxyHandler = createProxyHandler<Env>({  mountPath: '/proxy',  jwtSecret: (env) => env.PROXY_JWT_SECRET,  services: { myapi: myApi }});
+export default {  async fetch(request: Request, env: Env): Promise<Response> {    const url = new URL(request.url);
+    // Route all /proxy/* requests through the proxy handler    if (url.pathname.startsWith('/proxy/')) {      return proxyHandler(request, env);    }
+    // Create a sandbox and issue it a short-lived token    const sandboxId = 'my-sandbox';    const sandbox = getSandbox(env.Sandbox, sandboxId);    const token = await createProxyToken({      secret: env.PROXY_JWT_SECRET,      sandboxId,      expiresIn: '15m'    });
     const proxyBase = `https://${url.hostname}`;
-
-
-    // Pass the token and proxy base URL to the sandbox
-
-    await sandbox.setEnvVars({
-
-      PROXY_TOKEN: token,
-
-      PROXY_BASE: proxyBase
-
-    });
-
-
-    return Response.json({ message: 'Sandbox ready' });
-
-  }
-
-};
-
-
+    // Pass the token and proxy base URL to the sandbox    await sandbox.setEnvVars({      PROXY_TOKEN: token,      PROXY_BASE: proxyBase    });
+    return Response.json({ message: 'Sandbox ready' });  }};
 ```
 
 The `mountPath` (`/proxy`) and service name (`myapi`) together form the proxy route. A request to `/proxy/myapi/some/path` is validated and forwarded to `https://api.example.com/some/path`.
@@ -383,16 +168,7 @@ Inside the sandbox, use the `PROXY_TOKEN` and `PROXY_BASE` environment variables
 Terminal window
 
 ```
-
-curl "$PROXY_BASE/proxy/myapi/v1/endpoint" \
-
-  -H "Authorization: Bearer $PROXY_TOKEN" \
-
-  -H "Content-Type: application/json" \
-
-  -d '{"input": "hello"}'
-
-
+curl "$PROXY_BASE/proxy/myapi/v1/endpoint" \  -H "Authorization: Bearer $PROXY_TOKEN" \  -H "Content-Type: application/json" \  -d '{"input": "hello"}'
 ```
 
 Or from Python running inside the sandbox:
@@ -400,23 +176,8 @@ Or from Python running inside the sandbox:
 Python
 
 ```
-
-import os
-
-import requests
-
-
-response = requests.post(
-
-    f"{os.environ['PROXY_BASE']}/proxy/myapi/v1/endpoint",
-
-    headers={"Authorization": f"Bearer {os.environ['PROXY_TOKEN']}"},
-
-    json={"input": "hello"}
-
-)
-
-
+import osimport requests
+response = requests.post(    f"{os.environ['PROXY_BASE']}/proxy/myapi/v1/endpoint",    headers={"Authorization": f"Bearer {os.environ['PROXY_TOKEN']}"},    json={"input": "hello"})
 ```
 
 The real `MY_API_KEY` is never present in the sandbox. The Worker substitutes it transparently.
@@ -430,12 +191,7 @@ For example, the Anthropic SDK reads `ANTHROPIC_BASE_URL`. Pass your proxy URL a
 Terminal window
 
 ```
-
-export ANTHROPIC_BASE_URL="$PROXY_BASE/proxy/anthropic"
-
-export ANTHROPIC_API_KEY="$PROXY_TOKEN"
-
-
+export ANTHROPIC_BASE_URL="$PROXY_BASE/proxy/anthropic"export ANTHROPIC_API_KEY="$PROXY_TOKEN"
 ```
 
 The SDK then sends all requests to your Worker proxy, which validates the token and forwards them to `api.anthropic.com` with the real key injected. Check the documentation for your API client to find the equivalent base URL setting.
@@ -444,81 +200,21 @@ The SDK then sends all requests to your Worker proxy, which validates the token 
 
 To proxy additional APIs, define another `ServiceConfig` and add it to `createProxyHandler`:
 
-* [  JavaScript ](#tab-panel-10489)
-* [  TypeScript ](#tab-panel-10490)
+* [  JavaScript ](#tab-panel-10565)
+* [  TypeScript ](#tab-panel-10566)
 
 JavaScript
 
 ```
-
-export const anotherApi = {
-
-  target: "https://api.another-service.com",
-
-  validate: (req) =>
-
-    req.headers.get("Authorization")?.replace("Bearer ", "") ?? null,
-
-  transform: async (req, ctx) => {
-
-    req.headers.set("Authorization", `Bearer ${ctx.env.ANOTHER_API_KEY}`);
-
-    return req;
-
-  },
-
-};
-
-
-// In your Worker:
-
-const proxyHandler = createProxyHandler({
-
-  mountPath: "/proxy",
-
-  jwtSecret: (env) => env.PROXY_JWT_SECRET,
-
-  services: { myapi: myApi, another: anotherApi },
-
-});
-
-
+export const anotherApi = {  target: "https://api.another-service.com",  validate: (req) =>    req.headers.get("Authorization")?.replace("Bearer ", "") ?? null,  transform: async (req, ctx) => {    req.headers.set("Authorization", `Bearer ${ctx.env.ANOTHER_API_KEY}`);    return req;  },};
+// In your Worker:const proxyHandler = createProxyHandler({  mountPath: "/proxy",  jwtSecret: (env) => env.PROXY_JWT_SECRET,  services: { myapi: myApi, another: anotherApi },});
 ```
 
 TypeScript
 
 ```
-
-export const anotherApi: ServiceConfig<Env> = {
-
-  target: 'https://api.another-service.com',
-
-  validate: (req) => req.headers.get('Authorization')?.replace('Bearer ', '') ?? null,
-
-  transform: async (req, ctx) => {
-
-    req.headers.set('Authorization', `Bearer ${ctx.env.ANOTHER_API_KEY}`);
-
-    return req;
-
-  }
-
-};
-
-
-// In your Worker:
-
-const proxyHandler = createProxyHandler<Env>({
-
-  mountPath: '/proxy',
-
-  jwtSecret: (env) => env.PROXY_JWT_SECRET,
-
-  services: { myapi: myApi, another: anotherApi }
-
-});
-
-
+export const anotherApi: ServiceConfig<Env> = {  target: 'https://api.another-service.com',  validate: (req) => req.headers.get('Authorization')?.replace('Bearer ', '') ?? null,  transform: async (req, ctx) => {    req.headers.set('Authorization', `Bearer ${ctx.env.ANOTHER_API_KEY}`);    return req;  }};
+// In your Worker:const proxyHandler = createProxyHandler<Env>({  mountPath: '/proxy',  jwtSecret: (env) => env.PROXY_JWT_SECRET,  services: { myapi: myApi, another: anotherApi }});
 ```
 
 Each service is reachable at `/proxy/<service-name>/*`. The sandbox uses the same JWT token for all of them.
@@ -535,45 +231,19 @@ The JWT is missing, expired, or signed with the wrong secret. Verify that:
 
 To issue a fresh token and pass it to the sandbox:
 
-* [  JavaScript ](#tab-panel-10485)
-* [  TypeScript ](#tab-panel-10486)
+* [  JavaScript ](#tab-panel-10561)
+* [  TypeScript ](#tab-panel-10562)
 
 JavaScript
 
 ```
-
-const freshToken = await createProxyToken({
-
-  secret: env.PROXY_JWT_SECRET,
-
-  sandboxId,
-
-  expiresIn: "15m",
-
-});
-
-await sandbox.setEnvVars({ PROXY_TOKEN: freshToken });
-
-
+const freshToken = await createProxyToken({  secret: env.PROXY_JWT_SECRET,  sandboxId,  expiresIn: "15m",});await sandbox.setEnvVars({ PROXY_TOKEN: freshToken });
 ```
 
 TypeScript
 
 ```
-
-const freshToken = await createProxyToken({
-
-  secret: env.PROXY_JWT_SECRET,
-
-  sandboxId,
-
-  expiresIn: '15m'
-
-});
-
-await sandbox.setEnvVars({ PROXY_TOKEN: freshToken });
-
-
+const freshToken = await createProxyToken({  secret: env.PROXY_JWT_SECRET,  sandboxId,  expiresIn: '15m'});await sandbox.setEnvVars({ PROXY_TOKEN: freshToken });
 ```
 
 ### Proxy returns 404 for the service
@@ -584,41 +254,19 @@ The service name in the URL must match the key in the `services` object. A reque
 
 Log the request URL in `transform` to confirm the path is being rewritten correctly:
 
-* [  JavaScript ](#tab-panel-10487)
-* [  TypeScript ](#tab-panel-10488)
+* [  JavaScript ](#tab-panel-10563)
+* [  TypeScript ](#tab-panel-10564)
 
 JavaScript
 
 ```
-
-transform: async (req, ctx) => {
-
-  console.log("Proxying to:", req.url);
-
-  req.headers.set("Authorization", `Bearer ${ctx.env.MY_API_KEY}`);
-
-  return req;
-
-};
-
-
+transform: async (req, ctx) => {  console.log("Proxying to:", req.url);  req.headers.set("Authorization", `Bearer ${ctx.env.MY_API_KEY}`);  return req;};
 ```
 
 TypeScript
 
 ```
-
-transform: async (req, ctx) => {
-
-  console.log('Proxying to:', req.url);
-
-  req.headers.set('Authorization', `Bearer ${ctx.env.MY_API_KEY}`);
-
-  return req;
-
-}
-
-
+transform: async (req, ctx) => {  console.log('Proxying to:', req.url);  req.headers.set('Authorization', `Bearer ${ctx.env.MY_API_KEY}`);  return req;}
 ```
 
 ## Related resources

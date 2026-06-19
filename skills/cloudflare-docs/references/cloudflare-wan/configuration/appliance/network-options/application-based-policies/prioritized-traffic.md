@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,56 +30,18 @@ Send a `POST` request to add new apps to your account.
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Magic WAN Write`
 * `Magic Transit Write`
 
 Create a new App
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/apps" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "managed_app_id": "<APP_ID>",
-
-    "name": "<APP_NAME>",
-
-    "type": "<APP_TYPE>"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/apps" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "managed_app_id": "<APP_ID>",    "name": "<APP_NAME>",    "type": "<APP_TYPE>"  }'
 ```
 
 ```
-
-{
-
-  "result": {
-
-    "account_app_id": "eb09v665c0784618a3e4ba9809258fd4",
-
-    "name": "<APP_NAME>",
-
-    "type": "<APP_TYPE>",
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "account_app_id": "eb09v665c0784618a3e4ba9809258fd4",    "name": "<APP_NAME>",    "type": "<APP_TYPE>",  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 You can now add this new app to the Prioritized traffic list in your Cloudflare One Appliance.
@@ -88,8 +50,8 @@ You can now add this new app to the Prioritized traffic list in your Cloudflare 
 
 You need to configure Prioritized traffic applications for each of your existing sites, as this is a per-site configuration.
 
-* [ Dashboard ](#tab-panel-7756)
-* [ API ](#tab-panel-7757)
+* [ Dashboard ](#tab-panel-7832)
+* [ API ](#tab-panel-7833)
 
 1. Go to the **Connectors** page.
 [ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
@@ -108,65 +70,36 @@ You will need your [account ID](https://developers.cloudflare.com/fundamentals/a
 
 1. Send a `GET` [request](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/apps/methods/list/) to list the applications associated with an account.  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Magic WAN Write`  
-   * `Magic WAN Read`  
-   * `Magic Transit Read`  
-   * `Magic Transit Write`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Magic WAN Write`
+  * `Magic WAN Read`
+  * `Magic Transit Read`
+  * `Magic Transit Write`  
 List Apps  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/apps" \  
-  --request GET \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/apps" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
 ```  
 ```  
-  {  
-    "result": [  
-      {  
-        "managed_app_id": "<APP_ID>",  
-        "name": "<APP_NAME>",  
-        "type": "File Sharing",  
-        "hostnames": [  
-          "<app_name.com>",  
-          "<app-name.info>"  
-        ]  
-      }  
-    ]  
-  }  
+  {    "result": [      {        "managed_app_id": "<APP_ID>",        "name": "<APP_NAME>",        "type": "File Sharing",        "hostnames": [          "<app_name.com>",          "<app-name.info>"        ]      }    ]  }  
 ```  
 Take note of the `"managed_app_id"` value for any application you want to add.
 2. Send a `POST` request to add new apps to the Prioritized traffic policy.  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Magic WAN Write`  
-   * `Magic Transit Write`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Magic WAN Write`
+  * `Magic Transit Write`  
 Create a new App Config  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/app_configs" \  
-  --request POST \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "managed_app_id": "<MANAGED_APP_ID>",  
-    "breakout": true  
-  }'  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/app_configs" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "managed_app_id": "<MANAGED_APP_ID>",    "breakout": true  }'  
 ```  
 ```  
-{  
-  "result": {  
-    "account_app_id": "<APP_ID>",  
-    "name": "<APP_NAME>",  
-    "type": "<BREAKOUT_OR_PRIORITY>"  
-  },  
-  "success": true,  
-  "errors": [],  
-  "messages": []  
-}  
+{  "result": {    "account_app_id": "<APP_ID>",    "name": "<APP_NAME>",    "type": "<BREAKOUT_OR_PRIORITY>"  },  "success": true,  "errors": [],  "messages": []}  
 ```
 
 ### Delete an application from Cloudflare One Appliance
 
-* [ Dashboard ](#tab-panel-7754)
-* [ API ](#tab-panel-7755)
+* [ Dashboard ](#tab-panel-7830)
+* [ API ](#tab-panel-7831)
 
 1. Go to the **Connectors** page.
 [ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
@@ -184,48 +117,26 @@ You need to delete Prioritized traffic applications for each of your existing si
 
 1. Send a [GET request](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/apps/methods/list/) to list the applications associated with a site.  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Magic WAN Write`  
-   * `Magic WAN Read`  
-   * `Magic Transit Read`  
-   * `Magic Transit Write`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Magic WAN Write`
+  * `Magic WAN Read`
+  * `Magic Transit Read`
+  * `Magic Transit Write`  
 List App Configs  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/app_configs" \  
-  --request GET \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/app_configs" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
 ```  
 ```  
-  {  
-    "result": [  
-      {  
-        "id": "<APP_ID>",  
-        "site_id": "<SITE_ID>",  
-        "managed_app_id": "<APP_NAME>",  
-        "breakout": true  
-      }  
-    ]  
-  }  
+  {    "result": [      {        "id": "<APP_ID>",        "site_id": "<SITE_ID>",        "managed_app_id": "<APP_NAME>",        "breakout": true      }    ]  }  
 ```  
 Take note of the `"id"` value for the application that you want to delete.
 2. Send a `DELETE` request to delete an application from the Prioritized traffic policy.  
 Terminal window  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/magic/sites/%7Bsite_id%7D/app_configs/%7Bid%7D" \  
-  --request DELETE  
+curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/magic/sites/%7Bsite_id%7D/app_configs/%7Bid%7D" \  --request DELETE  
 ```  
 ```  
-{  
-    "result": {  
-        "id": "<APP_ID>",  
-        "site_id": "<SITE_ID>",  
-        "managed_app_id": "<APP_NAME>",  
-        "breakout": true  
-    },  
-    "success": true,  
-    "errors": [],  
-    "messages": []  
-}  
+{    "result": {        "id": "<APP_ID>",        "site_id": "<SITE_ID>",        "managed_app_id": "<APP_NAME>",        "breakout": true    },    "success": true,    "errors": [],    "messages": []}  
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -34,9 +34,9 @@ In Smartsheet, SSO is configured for a domain. If you have multiple plans using 
 4. For the authentication protocol, select **SAML**.
 5. Select **Add application**.
 6. Fill in the following fields:  
-   * **Entity ID**: `urn:amazon:cognito:sp:us-east-1_xww1cbP43`  
-   * **Assertion Consumer Service URL**: `https://saml.authn.smartsheet.com/saml2/idpresponse`  
-   * **Name ID format**: _Unique ID_
+  * **Entity ID**: `urn:amazon:cognito:sp:us-east-1_xww1cbP43`
+  * **Assertion Consumer Service URL**: `https://saml.authn.smartsheet.com/saml2/idpresponse`
+  * **Name ID format**: _Unique ID_
 7. Copy the **SAML Metadata endpoint**.
 8. Configure [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) for the application.
 9. Save the application.

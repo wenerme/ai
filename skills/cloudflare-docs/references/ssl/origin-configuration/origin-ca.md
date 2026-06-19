@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,9 +22,9 @@ Users who do not have [**API Access** ↗](https://dash.cloudflare.com/?to=/:acc
 
 ## Availability
 
-| Free         | Pro | Business | Enterprise |     |
-| ------------ | --- | -------- | ---------- | --- |
-| Availability | Yes | Yes      | Yes        | Yes |
+|              | Free | Pro | Business | Enterprise |
+| ------------ | ---- | --- | -------- | ---------- |
+| Availability | Yes  | Yes | Yes      | Yes        |
 
 Note
 
@@ -45,15 +45,17 @@ To create an Origin CA certificate in the dashboard:
 1. Go to the **Origin Server** page.  
 [ Go to **Origin Server** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
 2. On the **Origin Certificates** tab, select **Create Certificate**.
-3. Choose either:  
-   * **Generate private key and CSR with Cloudflare**: Private key type can be RSA or ECC.  
-   * **Use my private key and CSR**: Paste the Certificate Signing Request into the text field.
+3. Choose either:
+
+  * **Generate private key and CSR with Cloudflare**: Private key type can be RSA or ECC.
+  * **Use my private key and CSR**: Paste the Certificate Signing Request into the text field.
 4. List the [hostnames (including wildcards)](#hostname-and-wildcard-coverage) the certificate should protect with SSL encryption. The zone apex and first level wildcard hostname are included by default.
 5. Choose a **Certificate Validity** period.
 6. Select **Create**.
-7. Choose the **Key Format**:  
-   * Servers using OpenSSL — like Apache and NGINX — generally expect PEM files (Base64-encoded ASCII), but also work with binary DER files.  
-   * Servers using Windows and Apache Tomcat require PKCS#7 (a `.p7b` file).
+7. Choose the **Key Format**:
+
+  * Servers using OpenSSL — like Apache and NGINX — generally expect PEM files (Base64-encoded ASCII), but also work with binary DER files.
+  * Servers using Windows and Apache Tomcat require PKCS#7 (a `.p7b` file).
 8. Copy the signed **Origin Certificate** and **Private Key** into separate files. For security reasons, you cannot see the **Private Key** after you exit this screen.
 9. Select **OK**.
 

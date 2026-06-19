@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,23 +35,8 @@ A control bar button for webinar stage actions. Supports requesting to join, joi
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let stageButton = RtkStageActionButtonControlBar(
-
-    rtkClient: rtkClient,
-
-    buttonState: .requestToJoinStage,
-
-    presentingViewController: self
-
-)
-
-view.addSubview(stageButton)
-
-
+let stageButton = RtkStageActionButtonControlBar(    rtkClient: rtkClient,    buttonState: .requestToJoinStage,    presentingViewController: self)view.addSubview(stageButton)
 ```
 
 ```json

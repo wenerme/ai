@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/flagship/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,113 +37,23 @@ When an evaluation error occurs, the method returns the default value you provid
 
 The following example inspects evaluation details returned by `getBooleanDetails`:
 
-* [  JavaScript ](#tab-panel-8551)
-* [  TypeScript ](#tab-panel-8552)
+* [  JavaScript ](#tab-panel-8627)
+* [  TypeScript ](#tab-panel-8628)
 
 JavaScript
 
 ```
-
-const details = await env.FLAGS.getBooleanDetails("my-feature", false, {
-
-  userId: "user-42",
-
-});
-
-
-switch (details.reason) {
-
-  case "TARGETING_MATCH":
-
-    console.log(`Matched targeting rule, variant: ${details.variant}`);
-
-    break;
-
-  case "SPLIT":
-
-    console.log(`Included in rollout, variant: ${details.variant}`);
-
-    break;
-
-  case "DEFAULT":
-
-    console.log("No rule matched, using default variation");
-
-    break;
-
-  case "DISABLED":
-
-    console.log("Flag is disabled");
-
-    break;
-
-}
-
-
-if (details.errorCode) {
-
-  console.error(
-
-    `Evaluation error: ${details.errorCode} - ${details.errorMessage}`,
-
-  );
-
-}
-
-
+const details = await env.FLAGS.getBooleanDetails("my-feature", false, {  userId: "user-42",});
+switch (details.reason) {  case "TARGETING_MATCH":    console.log(`Matched targeting rule, variant: ${details.variant}`);    break;  case "SPLIT":    console.log(`Included in rollout, variant: ${details.variant}`);    break;  case "DEFAULT":    console.log("No rule matched, using default variation");    break;  case "DISABLED":    console.log("Flag is disabled");    break;}
+if (details.errorCode) {  console.error(    `Evaluation error: ${details.errorCode} - ${details.errorMessage}`,  );}
 ```
 
 TypeScript
 
 ```
-
-const details = await env.FLAGS.getBooleanDetails("my-feature", false, {
-
-  userId: "user-42",
-
-});
-
-
-switch (details.reason) {
-
-  case "TARGETING_MATCH":
-
-    console.log(`Matched targeting rule, variant: ${details.variant}`);
-
-    break;
-
-  case "SPLIT":
-
-    console.log(`Included in rollout, variant: ${details.variant}`);
-
-    break;
-
-  case "DEFAULT":
-
-    console.log("No rule matched, using default variation");
-
-    break;
-
-  case "DISABLED":
-
-    console.log("Flag is disabled");
-
-    break;
-
-}
-
-
-if (details.errorCode) {
-
-  console.error(
-
-    `Evaluation error: ${details.errorCode} - ${details.errorMessage}`,
-
-  );
-
-}
-
-
+const details = await env.FLAGS.getBooleanDetails("my-feature", false, {  userId: "user-42",});
+switch (details.reason) {  case "TARGETING_MATCH":    console.log(`Matched targeting rule, variant: ${details.variant}`);    break;  case "SPLIT":    console.log(`Included in rollout, variant: ${details.variant}`);    break;  case "DEFAULT":    console.log("No rule matched, using default variation");    break;  case "DISABLED":    console.log("Flag is disabled");    break;}
+if (details.errorCode) {  console.error(    `Evaluation error: ${details.errorCode} - ${details.errorMessage}`,  );}
 ```
 
 ```json

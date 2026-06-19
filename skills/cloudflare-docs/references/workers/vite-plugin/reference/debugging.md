@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,50 +31,7 @@ To set up [VS Code ↗](https://code.visualstudio.com/) to support breakpoint de
 .vscode/launch.json
 
 ```
-
-{
-
-  "configurations": [
-
-    {
-
-      "name": "<NAME_OF_WORKER>",
-
-      "type": "node",
-
-      "request": "attach",
-
-      "websocketAddress": "ws://localhost:9229/<NAME_OF_WORKER>",
-
-      "resolveSourceMapLocations": null,
-
-      "attachExistingChildren": false,
-
-      "autoAttachChildProcesses": false,
-
-      "sourceMaps": true
-
-    }
-
-  ],
-
-  "compounds": [
-
-    {
-
-      "name": "Debug Workers",
-
-      "configurations": ["<NAME_OF_WORKER>"],
-
-      "stopAll": true
-
-    }
-
-  ]
-
-}
-
-
+{  "configurations": [    {      "name": "<NAME_OF_WORKER>",      "type": "node",      "request": "attach",      "websocketAddress": "ws://localhost:9229/<NAME_OF_WORKER>",      "resolveSourceMapLocations": null,      "attachExistingChildren": false,      "autoAttachChildProcesses": false,      "sourceMaps": true    }  ],  "compounds": [    {      "name": "Debug Workers",      "configurations": ["<NAME_OF_WORKER>"],      "stopAll": true    }  ]}
 ```
 
 Here, `<NAME_OF_WORKER>` indicates the name of the Worker as specified in your Worker config file. If you have used the `inspectorPort` option to set a custom port then this should be the value provided in the `websocketaddress` field.

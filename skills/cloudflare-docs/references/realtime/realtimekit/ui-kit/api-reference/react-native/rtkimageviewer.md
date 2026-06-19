@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,33 +30,15 @@ Image viewer with fullscreen toggle and download functionality for chat images.
 ### Basic Usage
 
 ```
-
 import { RtkImageViewer } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkImageViewer image={imageMessage} />;
-
-}
-
-
+function MyComponent() {  return <RtkImageViewer image={imageMessage} />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkImageViewer } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkImageViewer image={imageMessage} size="md" _id="viewer-1" />;
-
-}
-
-
+function MyComponent() {  return <RtkImageViewer image={imageMessage} size="md" _id="viewer-1" />;}
 ```
 
 ```json

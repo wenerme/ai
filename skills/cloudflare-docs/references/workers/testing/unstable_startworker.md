@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,48 +27,11 @@ This example uses `node:test`, but should apply to any testing framework:
 TypeScript
 
 ```
-
-import assert from "node:assert";
-
-import test, { after, before, describe } from "node:test";
-
-import { unstable_startWorker } from "wrangler";
-
-
-describe("worker", () => {
-
-  let worker;
-
-
-  before(async () => {
-
-    worker = await unstable_startWorker({ config: "wrangler.json" });
-
-  });
-
-
-  test("hello world", async () => {
-
-    assert.strictEqual(
-
-      await (await worker.fetch("http://example.com")).text(),
-
-      "Hello world",
-
-    );
-
-  });
-
-
-  after(async () => {
-
-    await worker.dispose();
-
-  });
-
-});
-
-
+import assert from "node:assert";import test, { after, before, describe } from "node:test";import { unstable_startWorker } from "wrangler";
+describe("worker", () => {  let worker;
+  before(async () => {    worker = await unstable_startWorker({ config: "wrangler.json" });  });
+  test("hello world", async () => {    assert.strictEqual(      await (await worker.fetch("http://example.com")).text(),      "Hello world",    );  });
+  after(async () => {    await worker.dispose();  });});
 ```
 
 ```json

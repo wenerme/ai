@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -51,19 +51,13 @@ When you add a provider key from the dashboard, AI Gateway creates and names the
 If you use the API to configure BYOK, create the Secrets Store secret before you create the provider configuration. Name the secret with this format:
 
 ```
-
 {gateway_id}_{provider_slug}_{alias}
-
-
 ```
 
 For example, for gateway `my-gateway`, provider `anthropic`, and alias `default`, create the Secrets Store secret as:
 
 ```
-
 my-gateway_anthropic_default
-
-
 ```
 
 Then create the provider configuration with the same `provider_slug` and `alias` values.
@@ -85,19 +79,12 @@ With BYOK enabled, your workflow changes from:
 1. **Traditional approach**: Include API key in every request header  
 Terminal window  
 ```  
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \  
-  -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \  
-  -H "Authorization: Bearer YOUR_OPENAI_API_KEY" \  
-  -H "Content-Type: application/json" \  
-  -d '{"model": "gpt-4", "messages": [...]}'  
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \  -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \  -H "Authorization: Bearer YOUR_OPENAI_API_KEY" \  -H "Content-Type: application/json" \  -d '{"model": "gpt-4", "messages": [...]}'  
 ```
 2. **BYOK approach**: Configure key once in dashboard, make requests without exposing keys  
 Terminal window  
 ```  
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \  
-  -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \  
-  -H "Content-Type: application/json" \  
-  -d '{"model": "gpt-4", "messages": [...]}'  
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \  -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \  -H "Content-Type: application/json" \  -d '{"model": "gpt-4", "messages": [...]}'  
 ```
 
 ## Managing API keys
@@ -153,56 +140,19 @@ If you have multiple OpenAI keys configured with different aliases (for example,
 Terminal window
 
 ```
-
-# Uses the key with alias "default" (no header needed)
-
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \
-
-  -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
-
-  -H "Content-Type: application/json" \
-
-  -d '{"model": "gpt-4", "messages": [...]}'
-
-
+# Uses the key with alias "default" (no header needed)curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \  -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \  -H "Content-Type: application/json" \  -d '{"model": "gpt-4", "messages": [...]}'
 ```
 
 Terminal window
 
 ```
-
-# Uses the key with alias "production"
-
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \
-
-  -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
-
-  -H 'cf-aig-byok-alias: production' \
-
-  -H "Content-Type: application/json" \
-
-  -d '{"model": "gpt-4", "messages": [...]}'
-
-
+# Uses the key with alias "production"curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \  -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \  -H 'cf-aig-byok-alias: production' \  -H "Content-Type: application/json" \  -d '{"model": "gpt-4", "messages": [...]}'
 ```
 
 Terminal window
 
 ```
-
-# Uses the key with alias "testing"
-
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \
-
-  -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
-
-  -H 'cf-aig-byok-alias: testing' \
-
-  -H "Content-Type: application/json" \
-
-  -d '{"model": "gpt-4", "messages": [...]}'
-
-
+# Uses the key with alias "testing"curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \  -H 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \  -H 'cf-aig-byok-alias: testing' \  -H "Content-Type: application/json" \  -d '{"model": "gpt-4", "messages": [...]}'
 ```
 
 ```json

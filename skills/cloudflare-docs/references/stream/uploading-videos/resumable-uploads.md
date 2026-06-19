@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,10 +33,7 @@ For more information, refer to the [tus Python client ↗](https://github.com/tu
 Install Python client
 
 ```
-
 pip install -U tus.py
-
-
 ```
 
 ## Upload a video using tus
@@ -44,27 +41,13 @@ pip install -U tus.py
 Upload using tus
 
 ```
-
-tus-upload --chunk-size 52428800 --header \
-
-Authorization "Bearer <API_TOKEN>"
-
-<PATH_TO_VIDEO> https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream
-
-
+tus-upload --chunk-size 52428800 --header \Authorization "Bearer <API_TOKEN>"<PATH_TO_VIDEO> https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream
 ```
 
 tus response
 
 ```
-
-INFO Creating file endpoint
-
-INFO Created: https://api.cloudflare.com/client/v4/accounts/d467d4f0fcbcd9791b613bc3a9599cdc/stream/dd5d531a12de0c724bd1275a3b2bc9c6
-
-...
-
-
+INFO Creating file endpointINFO Created: https://api.cloudflare.com/client/v4/accounts/d467d4f0fcbcd9791b613bc3a9599cdc/stream/dd5d531a12de0c724bd1275a3b2bc9c6...
 ```
 
 ### Golang example
@@ -76,76 +59,19 @@ The `go-tus` library does not return the response headers to the calling functio
 Upload with Golang
 
 ```
-
 package main
-
-
-import (
-
-  "net/http"
-
-  "os"
-
-
-  tus "github.com/eventials/go-tus"
-
-)
-
-
-func main() {
-
-  accountID := "<ACCOUNT_ID>"
-
-
+import (  "net/http"  "os"
+  tus "github.com/eventials/go-tus")
+func main() {  accountID := "<ACCOUNT_ID>"
   f, err := os.Open("videofile.mp4")
-
-
-  if err != nil {
-
-    panic(err)
-
-  }
-
-
+  if err != nil {    panic(err)  }
   defer f.Close()
-
-
-  headers := make(http.Header)
-
-  headers.Add("Authorization", "Bearer <API_TOKEN>")
-
-
-  config := &tus.Config{
-
-    ChunkSize:           50 * 1024 * 1024, // Required a minimum chunk size of 5 MB, here we use 50 MB.
-
-    Resume:              false,
-
-    OverridePatchMethod: false,
-
-    Store:               nil,
-
-    Header:              headers,
-
-    HttpClient:          nil,
-
-  }
-
-
+  headers := make(http.Header)  headers.Add("Authorization", "Bearer <API_TOKEN>")
+  config := &tus.Config{    ChunkSize:           50 * 1024 * 1024, // Required a minimum chunk size of 5 MB, here we use 50 MB.    Resume:              false,    OverridePatchMethod: false,    Store:               nil,    Header:              headers,    HttpClient:          nil,  }
   client, _ := tus.NewClient("https://api.cloudflare.com/client/v4/accounts/"+ accountID +"/stream", config)
-
-
   upload, _ := tus.NewUploadFromFile(f)
-
-
   uploader, _ := client.CreateUpload(upload)
-
-
-  uploader.Upload()
-
-}
-
-
+  uploader.Upload()}
 ```
 
 You can also get the progress of the upload if you are running the upload in a goroutine.
@@ -153,17 +79,8 @@ You can also get the progress of the upload if you are running the upload in a g
 Get progress of upload
 
 ```
-
-// returns the progress percentage.
-
-upload.Progress()
-
-
-// returns whether or not the upload is complete.
-
-upload.Finished()
-
-
+// returns the progress percentage.upload.Progress()
+// returns whether or not the upload is complete.upload.Finished()
 ```
 
 Refer to [go-tus ↗](https://github.com/eventials/go-tus) for functionality such as resuming uploads.
@@ -198,97 +115,10 @@ Create an `index.js` file and configure:
 Configure index.js
 
 ```
-
-var fs = require("fs");
-
-var tus = require("tus-js-client");
-
-
-// Specify location of file you would like to upload below
-
-var path = __dirname + "/test.mp4";
-
-var file = fs.createReadStream(path);
-
-var size = fs.statSync(path).size;
-
-var mediaId = "";
-
-
-var options = {
-
-  endpoint: "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream",
-
-  headers: {
-
-    Authorization: "Bearer <API_TOKEN>",
-
-  },
-
-  chunkSize: 50 * 1024 * 1024, // Required a minimum chunk size of 5 MB. Here we use 50 MB.
-
-  retryDelays: [0, 3000, 5000, 10000, 20000], // Indicates to tus-js-client the delays after which it will retry if the upload fails.
-
-  metadata: {
-
-    name: "test.mp4",
-
-    filetype: "video/mp4",
-
-    // Optional if you want to include a watermark
-
-    // watermark: '<WATERMARK_UID>',
-
-  },
-
-  uploadSize: size,
-
-  onError: function (error) {
-
-    throw error;
-
-  },
-
-  onProgress: function (bytesUploaded, bytesTotal) {
-
-    var percentage = ((bytesUploaded / bytesTotal) * 100).toFixed(2);
-
-    console.log(bytesUploaded, bytesTotal, percentage + "%");
-
-  },
-
-  onSuccess: function () {
-
-    console.log("Upload finished");
-
-  },
-
-  onAfterResponse: function (req, res) {
-
-    return new Promise((resolve) => {
-
-      var mediaIdHeader = res.getHeader("stream-media-id");
-
-      if (mediaIdHeader) {
-
-        mediaId = mediaIdHeader;
-
-      }
-
-      resolve();
-
-    });
-
-  },
-
-};
-
-
-var upload = new tus.Upload(file, options);
-
-upload.start();
-
-
+var fs = require("fs");var tus = require("tus-js-client");
+// Specify location of file you would like to upload belowvar path = __dirname + "/test.mp4";var file = fs.createReadStream(path);var size = fs.statSync(path).size;var mediaId = "";
+var options = {  endpoint: "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream",  headers: {    Authorization: "Bearer <API_TOKEN>",  },  chunkSize: 50 * 1024 * 1024, // Required a minimum chunk size of 5 MB. Here we use 50 MB.  retryDelays: [0, 3000, 5000, 10000, 20000], // Indicates to tus-js-client the delays after which it will retry if the upload fails.  metadata: {    name: "test.mp4",    filetype: "video/mp4",    // Optional if you want to include a watermark    // watermark: '<WATERMARK_UID>',  },  uploadSize: size,  onError: function (error) {    throw error;  },  onProgress: function (bytesUploaded, bytesTotal) {    var percentage = ((bytesUploaded / bytesTotal) * 100).toFixed(2);    console.log(bytesUploaded, bytesTotal, percentage + "%");  },  onSuccess: function () {    console.log("Upload finished");  },  onAfterResponse: function (req, res) {    return new Promise((resolve) => {      var mediaIdHeader = res.getHeader("stream-media-id");      if (mediaIdHeader) {        mediaId = mediaIdHeader;      }      resolve();    });  },};
+var upload = new tus.Upload(file, options);upload.start();
 ```
 
 ## Specify upload options
@@ -299,18 +129,24 @@ The tus protocol allows you to add optional parameters in the [Upload-Metadata h
 
 Setting arbitrary metadata values in the `Upload-Metadata` header sets values in the [meta key in Stream API](https://developers.cloudflare.com/api/resources/stream/methods/list/).
 
-* `name`  
-   * Setting this key will set `meta.name` in the API and display the value as the name of the video in the dashboard.
-* `requiresignedurls`  
-   * If this key is present, the video playback for this video will be required to use signed URLs after upload.
-* `scheduleddeletion`  
-   * Specifies a date and time when a video will be deleted. After a video is deleted, it is no longer viewable and no longer counts towards storage for billing. The specified date and time cannot be earlier than 30 days or later than 1,096 days from the video's created timestamp.
-* `allowedorigins`  
-   * An array of strings listing origins allowed to display the video. This will set the [allowed origins setting](https://developers.cloudflare.com/stream/viewing-videos/securing-your-stream/#security-considerations) for the video.
-* `thumbnailtimestamppct`  
-   * Specify the default thumbnail [timestamp percentage](https://developers.cloudflare.com/stream/viewing-videos/displaying-thumbnails/). Note that percentage is a floating point value between 0.0 and 1.0.
-* `watermark`  
-   * The watermark profile UID.
+* `name`
+
+  * Setting this key will set `meta.name` in the API and display the value as the name of the video in the dashboard.
+* `requiresignedurls`
+
+  * If this key is present, the video playback for this video will be required to use signed URLs after upload.
+* `scheduleddeletion`
+
+  * Specifies a date and time when a video will be deleted. After a video is deleted, it is no longer viewable and no longer counts towards storage for billing. The specified date and time cannot be earlier than 30 days or later than 1,096 days from the video's created timestamp.
+* `allowedorigins`
+
+  * An array of strings listing origins allowed to display the video. This will set the [allowed origins setting](https://developers.cloudflare.com/stream/viewing-videos/securing-your-stream/#security-considerations) for the video.
+* `thumbnailtimestamppct`
+
+  * Specify the default thumbnail [timestamp percentage](https://developers.cloudflare.com/stream/viewing-videos/displaying-thumbnails/). Note that percentage is a floating point value between 0.0 and 1.0.
+* `watermark`
+
+  * The watermark profile UID.
 
 ## Set creator property
 
@@ -327,10 +163,7 @@ Instead, you should use the `stream-media-id` HTTP header in the response to ret
 For example, a request made to `https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream` with the tus protocol will contain a HTTP header like the following:
 
 ```
-
 stream-media-id: cab807e0c477d01baq20f66c3d1dfc26cf
-
-
 ```
 
 ```json

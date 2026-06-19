@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network-error-logging/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,51 +25,13 @@ The last mile is the path from a user to the first point of ingress to the resou
 The Report-To header is present in all requests to Cloudflare zones that have NEL enabled: 
 
 ```
-
 report-to: {"group":"cf-nel","max_age":31536000,"endpoints":[{"url":"`[`https://a.nel.cloudflare.com/report?lkg-colo=lhr&lkg-time=1600338181`](https://gcp.nel.cloudflare.com/report?lkg-colo=lhr&lkg-time=1600338181&lkg-ip=1.1.1.1)`"}]}
-
-
 ```
 
 A sample Network Error Report payload appears as follows:
 
 ```
-
-{
-
-  "age": 20,
-
-  "type": "network-error",
-
-  "url": "https://example.com/previous-page",
-
-  "body": {
-
-    "elapsed_time": 18,
-
-    "method": "POST",
-
-    "phase": "dns",
-
-    "protocol": "http/1.1",
-
-    "referrer": "https://example.com/previous-page",
-
-    "sampling_fraction": 1,
-
-    "server_ip": "",
-
-    "status_code": 0,
-
-    "type": "dns.name_not_resolved",
-
-    "url": "https://example-host.com/"
-
-  }
-
-}
-
-
+{  "age": 20,  "type": "network-error",  "url": "https://example.com/previous-page",  "body": {    "elapsed_time": 18,    "method": "POST",    "phase": "dns",    "protocol": "http/1.1",    "referrer": "https://example.com/previous-page",    "sampling_fraction": 1,    "server_ip": "",    "status_code": 0,    "type": "dns.name_not_resolved",    "url": "https://example-host.com/"  }}
 ```
 
 ## Privacy
@@ -91,8 +53,8 @@ NEL reports contain information about the end user's network conditions, which c
 * Reports are sent to Cloudflare's infrastructure and are not shared with third parties.
 * Reports do not contain personally identifiable information (PII).
 * Customers can opt out of having their end users consume the NEL headers using one of the following methods:  
-   1. **Self-service (Zone setting)** — Use the dashboard toggle or API (`PATCH /zones/{zone_id}/settings/nel`) to disable NEL for your zone. This can be re-enabled by any zone administrator at any time.  
-   2. **Permanent opt-out via Support** — Contact Cloudflare support to have the `nel___enable` feature flag disabled at the product level. This prevents NEL from being enabled on your zone entirely and cannot be reversed by zone administrators. For Free and Pro plans, the dashboard toggle is typically sufficient. Enterprise customers with strict privacy requirements may prefer the permanent support-level opt-out.
+  1. **Self-service (Zone setting)** — Use the dashboard toggle or API (`PATCH /zones/{zone_id}/settings/nel`) to disable NEL for your zone. This can be re-enabled by any zone administrator at any time.
+  2. **Permanent opt-out via Support** — Contact Cloudflare support to have the `nel___enable` feature flag disabled at the product level. This prevents NEL from being enabled on your zone entirely and cannot be reversed by zone administrators. For Free and Pro plans, the dashboard toggle is typically sufficient. Enterprise customers with strict privacy requirements may prefer the permanent support-level opt-out.
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/network-error-logging/#page","headline":"Overview · Cloudflare Network Error Logging docs","description":"Collect reports about network errors affecting your visitors.","url":"https://developers.cloudflare.com/network-error-logging/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Privacy","Logging"]}

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Warning
 
-This page is for Wrangler v1, which has been deprecated.[Learn how to update to the latest version of Wrangler](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/).
+This page is for Wrangler v1, which has been deprecated. [Learn how to update to the latest version of Wrangler](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/).
 
 ## Background
 
@@ -39,10 +39,7 @@ To customize the authentication tokens that Wrangler uses, you may provide the `
 Terminal window
 
 ```
-
 CF_ACCOUNT_ID=accountID CF_API_TOKEN=veryLongAPIToken wrangler publish
-
-
 ```
 
 Alternatively, you may use the `CF_EMAIL` and `CF_API_KEY` environment variable combination instead:
@@ -50,10 +47,7 @@ Alternatively, you may use the `CF_EMAIL` and `CF_API_KEY` environment variable 
 Terminal window
 
 ```
-
 CF_EMAIL=cloudflareEmail CF_API_KEY=veryLongAPI wrangler publish
-
-
 ```
 
 You can also specify or override the target Zone ID by defining the `CF_ZONE_ID` environment variable.
@@ -90,19 +84,11 @@ After getting your token or key, you can set up your default credentials on your
 Terminal window
 
 ```
-
 wrangler config
-
-
 ```
 
 ```
-
-Enter API token:
-
-superlongapitoken
-
-
+Enter API token:superlongapitoken
 ```
 
 Use the `--api-key` flag to instead configure with email and global API key:
@@ -110,23 +96,11 @@ Use the `--api-key` flag to instead configure with email and global API key:
 Terminal window
 
 ```
-
 wrangler config --api-key
-
-
 ```
 
 ```
-
-Enter email:
-
-testuser@example.com
-
-Enter global API key:
-
-superlongapikey
-
-
+Enter email:testuser@example.comEnter global API key:superlongapikey
 ```
 
 ```json

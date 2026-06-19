@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -47,10 +47,10 @@ Files must be less than 30 GB, and content should be encoded and uploaded in the
 ## Recommendations for on-demand videos
 
 * Optional but ideal settings:  
-   * MP4 containers  
-   * AAC audio codec  
-   * H264 video codec  
-   * 60 or fewer frames per second
+  * MP4 containers
+  * AAC audio codec
+  * H264 video codec
+  * 60 or fewer frames per second
 * Closed GOP (_Only required for live streaming._)
 * Mono or Stereo audio. Stream will mix audio tracks with more than two channels down to stereo.
 

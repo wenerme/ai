@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/key-transparency/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,24 +17,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 Terminal window
 
 ```
-
-curl 'https://plexi.key-transparency.cloudflare.com/namespaces/{namespace}/audits/1'
-
-{
-
-  "namespace": "your.new.log.com",
-
-  "timestamp": 1717084639921,
-
-  "epoch": 1,
-
-  "digest": "1111111111111111111111111111111111111111111111111111111111111111",
-
-  "signature": "f6a51443bb6703813b330959d9d97471bc06464142165e59733fa102a18b052782a5307d59c31b8b13c1af7dfff6f6e7bf44e880d44e26e96c50a72f72a30c07"
-
-}
-
-
+curl 'https://plexi.key-transparency.cloudflare.com/namespaces/{namespace}/audits/1'{  "namespace": "your.new.log.com",  "timestamp": 1717084639921,  "epoch": 1,  "digest": "1111111111111111111111111111111111111111111111111111111111111111",  "signature": "f6a51443bb6703813b330959d9d97471bc06464142165e59733fa102a18b052782a5307d59c31b8b13c1af7dfff6f6e7bf44e880d44e26e96c50a72f72a30c07"}
 ```
 
 ## Publish a new epoch
@@ -46,30 +29,7 @@ This API is authenticated via [mTLS ↗](https://www.cloudflare.com/learning/acc
 Terminal window
 
 ```
-
-curl 'https://plexi.key-transparency.cloudflare.com/namespaces/{namespace}/audits' \
-
-      --header 'Content-Type: application/json' \
-
-      --data '{"epoch": 1, "digest": "1111111111111111111111111111111111111111111111111111111111111111"}'
-
-{
-
-  "namespace": "your.new.log.com",
-
-  "timestamp": 1717084639921,
-
-  "epoch": 1,
-
-  "digest": "1111111111111111111111111111111111111111111111111111111111111111",
-
-  "signature": "f6a51443bb6703813b330959d9d97471bc06464142165e59733fa102a18b052782a5307d59c31b8b13c1af7dfff6f6e7bf44e880d44e26e96c50a72f72a30c07",
-
-  "key_id": 74,
-
-}
-
-
+curl 'https://plexi.key-transparency.cloudflare.com/namespaces/{namespace}/audits' \      --header 'Content-Type: application/json' \      --data '{"epoch": 1, "digest": "1111111111111111111111111111111111111111111111111111111111111111"}'{  "namespace": "your.new.log.com",  "timestamp": 1717084639921,  "epoch": 1,  "digest": "1111111111111111111111111111111111111111111111111111111111111111",  "signature": "f6a51443bb6703813b330959d9d97471bc06464142165e59733fa102a18b052782a5307d59c31b8b13c1af7dfff6f6e7bf44e880d44e26e96c50a72f72a30c07",  "key_id": 74,}
 ```
 
 ### Constraints
@@ -83,12 +43,7 @@ curl 'https://plexi.key-transparency.cloudflare.com/namespaces/{namespace}/audit
 If a namespace is disabled, you receive the following error:
 
 ```
-
-HTTP 400 Bad Request
-
-Namespace is disabled and read-only.
-
-
+HTTP 400 Bad RequestNamespace is disabled and read-only.
 ```
 
 ```json

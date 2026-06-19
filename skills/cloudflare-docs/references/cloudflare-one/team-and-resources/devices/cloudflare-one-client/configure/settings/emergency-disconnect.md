@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -34,14 +34,7 @@ Emergency disconnect can also be used in combination with the dashboard-initiate
 Both the external endpoint response payload and the local signal file content must be valid JSON with the following format:
 
 ```
-
-{
-
-  "emergency_disconnect": false | true
-
-}
-
-
+{  "emergency_disconnect": false | true}
 ```
 
 * If `emergency_disconnect` is set to `true`, the device will initiate an emergency disconnect.
@@ -99,33 +92,14 @@ The command will output a certificate in PEM format and its private key. Store t
 a. Create an nginx configuration file called `nginx.conf`:  
 nginx.conf  
 ```  
-events {  
-  worker_connections  1024;  
-}  
-http {  
-    server {  
-        listen              443 ssl;  
-        ssl_certificate     /certs/cert.pem;  
-        ssl_certificate_key /certs/key.pem;  
-        location /status/disconnect {  
-            default_type application/json;  
-            return 200 '{"emergency_disconnect": false}';  
-        }  
-    }  
-}  
+events {  worker_connections  1024;}  
+http {    server {        listen              443 ssl;        ssl_certificate     /certs/cert.pem;        ssl_certificate_key /certs/key.pem;        location /status/disconnect {            default_type application/json;            return 200 '{"emergency_disconnect": false}';        }    }}  
 ```  
 If needed, replace `/certs/cert.pem` and `/certs/key.pem` with the locations of your certificate and key.  
 b. Add the nginx image to your Docker compose file:  
 docker-compose.yml  
 ```  
-services:  
-  nginx:  
-    image: nginx:latest  
-    ports:  
-      - 3333:443  
-    volumes:  
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro  
-      - ./certs:/certs:ro  
+services:  nginx:    image: nginx:latest    ports:      - 3333:443    volumes:      - ./nginx.conf:/etc/nginx/nginx.conf:ro      - ./certs:/certs:ro  
 ```  
 If needed, replace `./nginx.conf` and `./certs` with the locations of your nginx configuration file and certificate.  
 c. Start the server:  
@@ -144,27 +118,21 @@ curl --insecure https://<server-ip>:3333/status/disconnect
 
 ### 2\. Extract the SHA-256 fingerprint
 
-* [ Local certificate ](#tab-panel-7474)
-* [ Remote server ](#tab-panel-7475)
+* [ Local certificate ](#tab-panel-7550)
+* [ Remote server ](#tab-panel-7551)
 
 To obtain the SHA-256 fingerprint of a local certificate:
 
 Terminal window
 
 ```
-
 openssl x509 -noout -fingerprint -sha256 -inform pem -in cert.pem | tr -d :
-
-
 ```
 
 The output will look something like:
 
 ```
-
 SHA256 Fingerprint=DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8662
-
-
 ```
 
 To test connectivity and obtain the SHA-256 fingerprint of a remote server:
@@ -172,26 +140,20 @@ To test connectivity and obtain the SHA-256 fingerprint of a remote server:
 Terminal window
 
 ```
-
 openssl s_client -connect <private-server-IP>:443 < /dev/null 2> /dev/null | openssl x509 -noout -fingerprint -sha256 | tr -d :
-
-
 ```
 
 The output will look something like:
 
 ```
-
 SHA256 Fingerprint=DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8662
-
-
 ```
 
 ### 3\. Turn on External Emergency Disconnect
 
-* [ Dashboard ](#tab-panel-7468)
-* [ API ](#tab-panel-7469)
-* [ MDM ](#tab-panel-7470)
+* [ Dashboard ](#tab-panel-7544)
+* [ API ](#tab-panel-7545)
+* [ MDM ](#tab-panel-7546)
 
 To configure External Emergency Disconnect using the dashboard:
 
@@ -199,9 +161,9 @@ To configure External Emergency Disconnect using the dashboard:
 2. Select **Global disconnection settings**.
 3. Find **Manage device connection using an external signal** and select **Edit**.
 4. Configure the following fields:  
-   * **Endpoint IP address and port**: Enter the HTTPS URL from which to fetch the external disconnect signal (for example, `https://192.0.2.1:3333/status/disconnect`). The endpoint must use HTTPS and have an IPv4 or IPv6 address as the host.  
-   * **Polling frequency**: Choose how often the Cloudflare One Client should fetch the external disconnect signal.  
-   * **Certificate fingerprint**: Enter the [SHA-256 fingerprint](#2-extract-the-sha-256-fingerprint) of the HTTPS server certificate (for example, `DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8662`).
+  * **Endpoint IP address and port**: Enter the HTTPS URL from which to fetch the external disconnect signal (for example, `https://192.0.2.1:3333/status/disconnect`). The endpoint must use HTTPS and have an IPv4 or IPv6 address as the host.
+  * **Polling frequency**: Choose how often the Cloudflare One Client should fetch the external disconnect signal.
+  * **Certificate fingerprint**: Enter the [SHA-256 fingerprint](#2-extract-the-sha-256-fingerprint) of the HTTPS server certificate (for example, `DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8662`).
 5. Select **Save**.
 6. Turn on **Manage device connection using an external signal**.
 
@@ -211,51 +173,19 @@ To configure External Emergency Disconnect using the API, send a `PATCH` request
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zero Trust Write`
 
 Patch device settings for a Zero Trust account
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/settings" \
-
-  --request PATCH \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "external_emergency_signal_enabled": true,
-
-    "external_emergency_signal_url": "https://192.0.2.1:3333/status/disconnect",
-
-    "external_emergency_signal_fingerprint": "DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8662",
-
-    "external_emergency_signal_interval": "1m"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/settings" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "external_emergency_signal_enabled": true,    "external_emergency_signal_url": "https://192.0.2.1:3333/status/disconnect",    "external_emergency_signal_fingerprint": "DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8662",    "external_emergency_signal_interval": "1m"  }'
 ```
 
 To configure External Emergency Disconnect using an MDM, add the following parameters to your [MDM file](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/):
 
 ```
-
-<key>external_emergency_signal_url</key>
-
-<string>https://192.0.2.1:3333/status/disconnect</string>
-
-<key>external_emergency_signal_fingerprint</key>
-
-<string>DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8662</string>
-
-<key>external_emergency_signal_interval</key>
-
-<integer>60</integer>
-
-
+<key>external_emergency_signal_url</key><string>https://192.0.2.1:3333/status/disconnect</string><key>external_emergency_signal_fingerprint</key><string>DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8662</string><key>external_emergency_signal_interval</key><integer>60</integer>
 ```
 
 Split Tunnels in Include mode
@@ -314,12 +244,7 @@ The signal file uses the same [JSON format](#signal-format) as the external HTTP
 To enable the feature, deploy the `local_emergency_signal_enabled` parameter via your MDM. Add the following to your [MDM file](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/):
 
 ```
-
-<key>local_emergency_signal_enabled</key>
-
-<true />
-
-
+<key>local_emergency_signal_enabled</key><true />
 ```
 
 The Cloudflare One Client will begin monitoring the [signal file path](#signal-file-path) once the MDM setting is applied. Configuration changes take effect without requiring a client restart.
@@ -330,68 +255,50 @@ The Cloudflare One Client will begin monitoring the [signal file path](#signal-f
 2. Ensure that Local Emergency Disconnect is [turned on](#1-turn-on-local-emergency-disconnect).
 3. Create the signal file at the [appropriate path](#signal-file-path) for your operating system with the following content:
 
-* [ macOS ](#tab-panel-7462)
-* [ Windows ](#tab-panel-7463)
-* [ Linux ](#tab-panel-7464)
+* [ macOS ](#tab-panel-7538)
+* [ Windows ](#tab-panel-7539)
+* [ Linux ](#tab-panel-7540)
 
 Terminal window
 
 ```
-
 sudo tee "/Library/Application Support/Cloudflare/emergency_disconnect.json" <<< '{"emergency_disconnect": true}'
-
-
 ```
 
 Open an elevated PowerShell prompt and run:
 
 ```
-
 Set-Content -Path "$env:PROGRAMDATA\Cloudflare\emergency_disconnect.json" -Value '{"emergency_disconnect": true}'
-
-
 ```
 
 Terminal window
 
 ```
-
 sudo tee /var/lib/cloudflare-warp/emergency_disconnect.json <<< '{"emergency_disconnect": true}'
-
-
 ```
 
 The Cloudflare One Client will automatically disconnect within 30 seconds, and the Cloudflare One Client GUI will display [Admin directed disconnect](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/client-errors/#admin-directed-disconnect).
 
 To reconnect, change `emergency_disconnect` to `false` or remove the file:
 
-* [ macOS ](#tab-panel-7465)
-* [ Windows ](#tab-panel-7466)
-* [ Linux ](#tab-panel-7467)
+* [ macOS ](#tab-panel-7541)
+* [ Windows ](#tab-panel-7542)
+* [ Linux ](#tab-panel-7543)
 
 Terminal window
 
 ```
-
 sudo rm "/Library/Application Support/Cloudflare/emergency_disconnect.json"
-
-
 ```
 
 ```
-
 Remove-Item "$env:PROGRAMDATA\Cloudflare\emergency_disconnect.json"
-
-
 ```
 
 Terminal window
 
 ```
-
 sudo rm /var/lib/cloudflare-warp/emergency_disconnect.json
-
-
 ```
 
 ## Logs
@@ -403,19 +310,11 @@ To get the current emergency disconnect status on a device, run:
 Terminal window
 
 ```
-
 warp-cli settings
-
-
 ```
 
 ```
-
-Merged configuration:
-
-(override)  Emergency disconnect: true (issued @ 2025-12-09T13:57:42.597864Z)
-
-
+Merged configuration:(override)  Emergency disconnect: true (issued @ 2025-12-09T13:57:42.597864Z)
 ```
 
 The current status is also available in [client diagnostic logs](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/#macoswindowslinux) in `warp-settings.txt`.
@@ -426,9 +325,9 @@ The current status is also available in [client diagnostic logs](https://develop
 
 If the external endpoint becomes unavailable or serves an invalid configuration, Cloudflare One Clients can get stuck in the emergency disconnect state. You can recover clients by removing their External Emergency Disconnect configuration:
 
-* [ Dashboard ](#tab-panel-7471)
-* [ API ](#tab-panel-7472)
-* [ MDM ](#tab-panel-7473)
+* [ Dashboard ](#tab-panel-7547)
+* [ API ](#tab-panel-7548)
+* [ MDM ](#tab-panel-7549)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Management**.
 2. Select **Global disconnection settings**.
@@ -440,32 +339,13 @@ Send a `PATCH` request with the endpoint URL and fingerprint set to empty string
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zero Trust Write`
 
 Patch device settings for a Zero Trust account
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/settings" \
-
-  --request PATCH \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "external_emergency_signal_enabled": false,
-
-    "external_emergency_signal_url": "",
-
-    "external_emergency_signal_fingerprint": "",
-
-    "external_emergency_signal_interval": "1m"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/settings" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "external_emergency_signal_enabled": false,    "external_emergency_signal_url": "",    "external_emergency_signal_fingerprint": "",    "external_emergency_signal_interval": "1m"  }'
 ```
 
 Cloudflare will propagate the new settings to clients, instructing them to stop polling and discard the cached emergency state.
@@ -488,10 +368,7 @@ As a last resort, you can use the CLI to reset emergency disconnect on an indivi
 Terminal window
 
 ```
-
 warp-cli registration delete
-
-
 ```
 
 This command will clear the client registration, clear the local policy, and discard the cached emergency state. To reconnect, you will need to [turn off External Emergency Disconnect](#clear-external-emergency-disconnect) and then [re-enroll the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/) with your Zero Trust organization.

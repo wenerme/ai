@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,11 +22,12 @@ A wildcard URL redirect has the following configuration parameters:
 
 * **Request URL**: Enter the [wildcard pattern](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#wildcard-matching) using the asterisk (`*`) character to match multiple requests. For example, `https://*.example.com/files/*`.
 * **Target URL**: Enter the target URL, which can be static (for example, `https://example.com`) or dynamic (for example, `https://example.com/${1}/files/${2}`). Use [wildcard replacement](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#wildcard%5Freplace) like `${1}`, `${2}`, etc., to define dynamic targets.
-* **Status code**: The HTTP status code of the redirect response (_301 - Permanent Redirect_ by default). Must be one of the following:  
-   * **301 - Permanent Redirect**: The page has permanently moved to a new address. For `POST` requests, the client or browser might switch the HTTP method to `GET` when following the redirect.  
-   * **302 - Temporary Redirect**: The page has temporarily moved to a new address. For `POST` requests, the client or browser might switch the HTTP method to `GET` when following the redirect.  
-   * **307 - Advanced: Temporary, HTTP method preserved**: The page has temporarily moved to a new address. The client or browser must preserve the original HTTP method (for example, `POST`) when following the redirect.  
-   * **308 - Advanced: Permanent, HTTP method preserved**: The page has permanently moved to a new address. The client or browser must preserve the original HTTP method (for example, `POST`) when following the redirect.
+* **Status code**: The HTTP status code of the redirect response (_301 - Permanent Redirect_ by default). Must be one of the following:
+
+  * **301 - Permanent Redirect**: The page has permanently moved to a new address. For `POST` requests, the client or browser might switch the HTTP method to `GET` when following the redirect.
+  * **302 - Temporary Redirect**: The page has temporarily moved to a new address. For `POST` requests, the client or browser might switch the HTTP method to `GET` when following the redirect.
+  * **307 - Advanced: Temporary, HTTP method preserved**: The page has temporarily moved to a new address. The client or browser must preserve the original HTTP method (for example, `POST`) when following the redirect.
+  * **308 - Advanced: Permanent, HTTP method preserved**: The page has permanently moved to a new address. The client or browser must preserve the original HTTP method (for example, `POST`) when following the redirect.
 * **Preserve query string**: Whether to preserve the query string when redirecting (disabled by default).
 
 API information
@@ -36,26 +37,7 @@ Wildcard URL redirects are regular [dynamic URL redirects](#dynamic-url-redirect
 The full syntax of the `"action_parameters"` field for a redirect rule performing a wildcard URL redirect is the following:
 
 ```
-
-"action_parameters": {
-
-  "from_value": {
-
-    "target_url": {
-
-      "expression": "wildcard_replace(http.request.full_uri, r\"<REQUEST_URL_PATTERN>\", r\"<TARGET_URL_PATTERN>\")"
-
-    },
-
-    "status_code": <STATUS_CODE>,
-
-    "preserve_query_string": <BOOLEAN_VALUE>
-
-  }
-
-}
-
-
+"action_parameters": {  "from_value": {    "target_url": {      "expression": "wildcard_replace(http.request.full_uri, r\"<REQUEST_URL_PATTERN>\", r\"<TARGET_URL_PATTERN>\")"    },    "status_code": <STATUS_CODE>,    "preserve_query_string": <BOOLEAN_VALUE>  }}
 ```
 
 The required parameters are `<REQUEST_URL_PATTERN>` and `<TARGET_URL_PATTERN>`.
@@ -63,10 +45,10 @@ The required parameters are `<REQUEST_URL_PATTERN>` and `<TARGET_URL_PATTERN>`.
 The optional parameters can have the following values:
 
 * `"status_code"` (integer):  
-   * `301` (permanent redirect)  
-   * `302` (temporary redirect)  
-   * `307` (temporary redirect, preserving original HTTP method)  
-   * `308` (permanent redirect, preserving original HTTP method)
+  * `301` (permanent redirect)
+  * `302` (temporary redirect)
+  * `307` (temporary redirect, preserving original HTTP method)
+  * `308` (permanent redirect, preserving original HTTP method)
 * `"preserve_query_string"` (boolean): `true` or `false`
 
 ## Static URL redirect
@@ -76,11 +58,12 @@ Performs a static URL redirect with a given HTTP status code and optionally pres
 A static URL redirect has the following configuration parameters:
 
 * **URL**: A literal string that will be used in the `Location` HTTP header returned in the redirect response.
-* **Status code**: The HTTP status code of the redirect response (_301 - Permanent Redirect_ by default). Must be one of the following:  
-   * **301 - Permanent Redirect**: The page has permanently moved to a new address. For `POST` requests, the client or browser might switch the HTTP method to `GET` when following the redirect.  
-   * **302 - Temporary Redirect**: The page has temporarily moved to a new address. For `POST` requests, the client or browser might switch the HTTP method to `GET` when following the redirect.  
-   * **307 - Advanced: Temporary, HTTP method preserved**: The page has temporarily moved to a new address. The client or browser must preserve the original HTTP method (for example, `POST`) when following the redirect.  
-   * **308 - Advanced: Permanent, HTTP method preserved**: The page has permanently moved to a new address. The client or browser must preserve the original HTTP method (for example, `POST`) when following the redirect.
+* **Status code**: The HTTP status code of the redirect response (_301 - Permanent Redirect_ by default). Must be one of the following:
+
+  * **301 - Permanent Redirect**: The page has permanently moved to a new address. For `POST` requests, the client or browser might switch the HTTP method to `GET` when following the redirect.
+  * **302 - Temporary Redirect**: The page has temporarily moved to a new address. For `POST` requests, the client or browser might switch the HTTP method to `GET` when following the redirect.
+  * **307 - Advanced: Temporary, HTTP method preserved**: The page has temporarily moved to a new address. The client or browser must preserve the original HTTP method (for example, `POST`) when following the redirect.
+  * **308 - Advanced: Permanent, HTTP method preserved**: The page has permanently moved to a new address. The client or browser must preserve the original HTTP method (for example, `POST`) when following the redirect.
 * **Preserve query string**: Whether to preserve the query string when redirecting (disabled by default).
 
 API information
@@ -88,26 +71,7 @@ API information
 The full syntax of the `"action_parameters"` field for a redirect rule performing a static URL redirect is the following:
 
 ```
-
-"action_parameters": {
-
-  "from_value": {
-
-    "target_url": {
-
-      "value": "<STATIC_URL_VALUE>"
-
-    },
-
-    "status_code": <STATUS_CODE>,
-
-    "preserve_query_string": <BOOLEAN_VALUE>
-
-  }
-
-}
-
-
+"action_parameters": {  "from_value": {    "target_url": {      "value": "<STATIC_URL_VALUE>"    },    "status_code": <STATUS_CODE>,    "preserve_query_string": <BOOLEAN_VALUE>  }}
 ```
 
 The only required parameter is `<STATIC_URL_VALUE>`.
@@ -115,10 +79,10 @@ The only required parameter is `<STATIC_URL_VALUE>`.
 The optional parameters can have the following values:
 
 * `"status_code"` (integer):  
-   * `301` (permanent redirect)  
-   * `302` (temporary redirect)  
-   * `307` (temporary redirect, preserving original HTTP method)  
-   * `308` (permanent redirect, preserving original HTTP method)
+  * `301` (permanent redirect)
+  * `302` (temporary redirect)
+  * `307` (temporary redirect, preserving original HTTP method)
+  * `308` (permanent redirect, preserving original HTTP method)
 * `"preserve_query_string"` (boolean): `true` or `false`
 
 ## Dynamic URL redirect
@@ -128,11 +92,12 @@ Performs a dynamic URL redirect, where the target URL is determined by an expres
 A dynamic URL redirect has the following configuration parameters:
 
 * **Expression**: An [expression](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/) that defines the target URL of the redirect. The result of evaluating this expression will be used in the `Location` HTTP header returned in the redirect response. Refer to the [fields](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/) and [functions](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/) you can use in expressions.
-* **Status code**: The HTTP status code of the redirect response (_301 - Permanent Redirect_ by default). Must be one of the following:  
-   * **301 - Permanent Redirect**: The page has permanently moved to a new address. For `POST` requests, the client or browser might switch the HTTP method to `GET` when following the redirect.  
-   * **302 - Temporary Redirect**: The page has temporarily moved to a new address. For `POST` requests, the client or browser might switch the HTTP method to `GET` when following the redirect.  
-   * **307 - Advanced: Temporary, HTTP method preserved**: The page has temporarily moved to a new address. The client or browser must preserve the original HTTP method (for example, `POST`) when following the redirect.  
-   * **308 - Advanced: Permanent, HTTP method preserved**: The page has permanently moved to a new address. The client or browser must preserve the original HTTP method (for example, `POST`) when following the redirect.
+* **Status code**: The HTTP status code of the redirect response (_301 - Permanent Redirect_ by default). Must be one of the following:
+
+  * **301 - Permanent Redirect**: The page has permanently moved to a new address. For `POST` requests, the client or browser might switch the HTTP method to `GET` when following the redirect.
+  * **302 - Temporary Redirect**: The page has temporarily moved to a new address. For `POST` requests, the client or browser might switch the HTTP method to `GET` when following the redirect.
+  * **307 - Advanced: Temporary, HTTP method preserved**: The page has temporarily moved to a new address. The client or browser must preserve the original HTTP method (for example, `POST`) when following the redirect.
+  * **308 - Advanced: Permanent, HTTP method preserved**: The page has permanently moved to a new address. The client or browser must preserve the original HTTP method (for example, `POST`) when following the redirect.
 * **Preserve query string**: Whether to preserve the query string when redirecting (disabled by default).
 
 API information
@@ -140,26 +105,7 @@ API information
 The full syntax of the `"action_parameters"` field for a redirect rule performing a dynamic URL redirect is the following:
 
 ```
-
-"action_parameters": {
-
-  "from_value": {
-
-    "target_url": {
-
-      "expression": "<DYNAMIC_URL_EXPRESSION>"
-
-    },
-
-    "status_code": <STATUS_CODE>,
-
-    "preserve_query_string": <BOOLEAN_VALUE>
-
-  }
-
-}
-
-
+"action_parameters": {  "from_value": {    "target_url": {      "expression": "<DYNAMIC_URL_EXPRESSION>"    },    "status_code": <STATUS_CODE>,    "preserve_query_string": <BOOLEAN_VALUE>  }}
 ```
 
 The only required parameter is `<DYNAMIC_URL_EXPRESSION>`.
@@ -167,10 +113,10 @@ The only required parameter is `<DYNAMIC_URL_EXPRESSION>`.
 The optional parameters can have the following values:
 
 * `"status_code"` (integer):  
-   * `301` (permanent redirect)  
-   * `302` (temporary redirect)  
-   * `307` (temporary redirect, preserving original HTTP method)  
-   * `308` (permanent redirect, preserving original HTTP method)
+  * `301` (permanent redirect)
+  * `302` (temporary redirect)
+  * `307` (temporary redirect, preserving original HTTP method)
+  * `308` (permanent redirect, preserving original HTTP method)
 * `"preserve_query_string"` (boolean): `true` or `false`
 
 ```json

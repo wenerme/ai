@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,67 +32,13 @@ You should generate short-lived credentials for each TURN user. In order to crea
 Terminal window
 
 ```
-
-curl https://rtc.live.cloudflare.com/v1/turn/keys/$TURN_KEY_ID/credentials/generate-ice-servers \
-
---header "Authorization: Bearer $TURN_KEY_API_TOKEN" \
-
---header "Content-Type: application/json" \
-
---data '{"ttl": 86400}'
-
-
+curl https://rtc.live.cloudflare.com/v1/turn/keys/$TURN_KEY_ID/credentials/generate-ice-servers \--header "Authorization: Bearer $TURN_KEY_API_TOKEN" \--header "Content-Type: application/json" \--data '{"ttl": 86400}'
 ```
 
 The **201 (Created)** response below can then be passed on to your front-end application:
 
 ```
-
-{
-
-  "iceServers": [
-
-    {
-
-      "urls": [
-
-        "stun:stun.cloudflare.com:3478",
-
-        "stun:stun.cloudflare.com:53"
-
-      ]
-
-    },
-
-    {
-
-      "urls": [
-
-        "turn:turn.cloudflare.com:3478?transport=udp",
-
-        "turn:turn.cloudflare.com:53?transport=udp",
-
-        "turn:turn.cloudflare.com:3478?transport=tcp",
-
-        "turn:turn.cloudflare.com:80?transport=tcp",
-
-        "turns:turn.cloudflare.com:5349?transport=tcp",
-
-        "turns:turn.cloudflare.com:443?transport=tcp"
-
-      ],
-
-      "username": "bc91b63e2b5d759f8eb9f3b58062439e0a0e15893d76317d833265ad08d6631099ce7c7087caabb31ad3e1c386424e3e",
-
-      "credential": "ebd71f1d3edbc2b0edae3cd5a6d82284aeb5c3b8fdaa9b8e3bf9cec683e0d45fe9f5b44e5145db3300f06c250a15b4a0"
-
-    }
-
-  ]
-
-}
-
-
+{  "iceServers": [    {      "urls": [        "stun:stun.cloudflare.com:3478",        "stun:stun.cloudflare.com:53"      ]    },    {      "urls": [        "turn:turn.cloudflare.com:3478?transport=udp",        "turn:turn.cloudflare.com:53?transport=udp",        "turn:turn.cloudflare.com:3478?transport=tcp",        "turn:turn.cloudflare.com:80?transport=tcp",        "turns:turn.cloudflare.com:5349?transport=tcp",        "turns:turn.cloudflare.com:443?transport=tcp"      ],      "username": "bc91b63e2b5d759f8eb9f3b58062439e0a0e15893d76317d833265ad08d6631099ce7c7087caabb31ad3e1c386424e3e",      "credential": "ebd71f1d3edbc2b0edae3cd5a6d82284aeb5c3b8fdaa9b8e3bf9cec683e0d45fe9f5b44e5145db3300f06c250a15b4a0"    }  ]}
 ```
 
 Note
@@ -104,52 +50,7 @@ Use `iceServers` as follows when instantiating the `RTCPeerConnection`:
 JavaScript
 
 ```
-
-const myPeerConnection = new RTCPeerConnection({
-
-  iceServers: [
-
-    {
-
-      urls: [
-
-        "stun:stun.cloudflare.com:3478",
-
-        "stun:stun.cloudflare.com:53"
-
-      ]
-
-    },
-
-    {
-
-      urls: [
-
-        "turn:turn.cloudflare.com:3478?transport=udp",
-
-        "turn:turn.cloudflare.com:53?transport=udp",
-
-        "turn:turn.cloudflare.com:3478?transport=tcp",
-
-        "turn:turn.cloudflare.com:80?transport=tcp",
-
-        "turns:turn.cloudflare.com:5349?transport=tcp",
-
-        "turns:turn.cloudflare.com:443?transport=tcp"
-
-      ],
-
-      "username": "bc91b63e2b5d759f8eb9f3b58062439e0a0e15893d76317d833265ad08d6631099ce7c7087caabb31ad3e1c386424e3e",
-
-      "credential": "ebd71f1d3edbc2b0edae3cd5a6d82284aeb5c3b8fdaa9b8e3bf9cec683e0d45fe9f5b44e5145db3300f06c250a15b4a0"
-
-    },
-
-  ],
-
-});
-
-
+const myPeerConnection = new RTCPeerConnection({  iceServers: [    {      urls: [        "stun:stun.cloudflare.com:3478",        "stun:stun.cloudflare.com:53"      ]    },    {      urls: [        "turn:turn.cloudflare.com:3478?transport=udp",        "turn:turn.cloudflare.com:53?transport=udp",        "turn:turn.cloudflare.com:3478?transport=tcp",        "turn:turn.cloudflare.com:80?transport=tcp",        "turns:turn.cloudflare.com:5349?transport=tcp",        "turns:turn.cloudflare.com:443?transport=tcp"      ],      "username": "bc91b63e2b5d759f8eb9f3b58062439e0a0e15893d76317d833265ad08d6631099ce7c7087caabb31ad3e1c386424e3e",      "credential": "ebd71f1d3edbc2b0edae3cd5a6d82284aeb5c3b8fdaa9b8e3bf9cec683e0d45fe9f5b44e5145db3300f06c250a15b4a0"    },  ],});
 ```
 
 The `ttl` value can be adjusted to expire the short lived key in a certain amount of time. This value should be larger than the time you'd expect the users to use the TURN service. For example, if you're using TURN for a video conferencing app, the value should be set to the longest video call you'd expect to happen in the app.
@@ -163,14 +64,7 @@ Short lived credentials can also be revoked before their TTL expires with a API 
 Terminal window
 
 ```
-
-curl --request POST \
-
-https://rtc.live.cloudflare.com/v1/turn/keys/$TURN_KEY_ID/credentials/$USERNAME/revoke \
-
---header "Authorization: Bearer $TURN_KEY_API_TOKEN"
-
-
+curl --request POST \https://rtc.live.cloudflare.com/v1/turn/keys/$TURN_KEY_ID/credentials/$USERNAME/revoke \--header "Authorization: Bearer $TURN_KEY_API_TOKEN"
 ```
 
 A **204 (No Content)** response is returned if the credential is successfully revoked.

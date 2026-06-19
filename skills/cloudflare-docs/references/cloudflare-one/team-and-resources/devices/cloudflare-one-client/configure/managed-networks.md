@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -70,32 +70,14 @@ The Cloudflare One Client requires certificates to include `CN` and `subjectAltN
 a. Create an nginx configuration file called `nginx.conf`:  
 nginx.conf  
 ```  
-events {  
-worker_connections  1024;  
-}  
-http {  
-    server {  
-      listen              443 ssl;  
-      ssl_certificate     /certs/cert.pem;  
-      ssl_certificate_key /certs/key.pem;  
-      location / {  
-            return 200;  
-      }  
-    }  
-}  
+events {worker_connections  1024;}  
+http {    server {      listen              443 ssl;      ssl_certificate     /certs/cert.pem;      ssl_certificate_key /certs/key.pem;      location / {            return 200;      }    }}  
 ```  
 If needed, replace `/certs/cert.pem` and `/certs/key.pem` with the locations of your certificate and key.  
 b. Add the nginx image to your Docker compose file:  
 docker-compose.yml  
 ```  
-services:  
-  nginx:  
-    image: nginx:latest  
-    ports:  
-      - 3333:443  
-    volumes:  
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro  
-      - ./certs:/certs:ro  
+services:  nginx:    image: nginx:latest    ports:      - 3333:443    volumes:      - ./nginx.conf:/etc/nginx/nginx.conf:ro      - ./certs:/certs:ro  
 ```  
 If needed, replace `./nginx.conf` and `./certs` with the locations of your nginx configuration file and certificate.  
 c. Start the server:  
@@ -122,9 +104,7 @@ New-SelfSignedCertificate -CertStoreLocation Cert:\LocalMachine\My -DnsName "off
 ```  
 ```  
   PSParentPath: Microsoft.PowerShell.Security\Certificate::LocalMachine\My  
-Thumbprint                                Subject  
-----------                                -------  
-0660C4FCD15F69C49BD080FEEA4136B3D302B41B  CN=office-name.example.internal  
+Thumbprint                                Subject----------                                -------0660C4FCD15F69C49BD080FEEA4136B3D302B41B  CN=office-name.example.internal  
 ```
 3. Extract the certificate's SHA-256 fingerprint:  
 PowerShell  
@@ -139,13 +119,14 @@ You will need the SHA-256 fingerprint to [configure the managed network in Zero 
 5. In the **Connections** pane, right-click the **Sites** node and select **Add Website**.
 6. In **Site name**, enter any name for the TLS server (for example, `Managed Network Server`).
 7. In **Physical path**, enter any directory that contains a `.htm` or `html` file, such as `C:\inetpub\wwwroot`. Cloudflare does not validate the content within the directory.
-8. Under **Binding**, configure the following fields:  
-   * **Type**: _https_  
-   * **IP address**: _All Unassigned_  
-   * **Port**: `443`  
-   * **Host name**: Enter the certificate's Common Name (CN). The CN of our example certificate is `office-name.example.internal`.  
-   * **Require Server Name Indication**: Enabled  
-   * **SSL certificate**: Select the name of your TLS certificate. Our example certificate is called `Cloudflare Managed Network Certificate`.
+8. Under **Binding**, configure the following fields:
+
+  * **Type**: _https_
+  * **IP address**: _All Unassigned_
+  * **Port**: `443`
+  * **Host name**: Enter the certificate's Common Name (CN). The CN of our example certificate is `office-name.example.internal`.
+  * **Require Server Name Indication**: Enabled
+  * **SSL certificate**: Select the name of your TLS certificate. Our example certificate is called `Cloudflare Managed Network Certificate`.
 9. To test that the TLS server is working, run a curl command from the end user's device:  
 Terminal window  
 ```  
@@ -161,27 +142,21 @@ The Cloudflare One Client establishes a TLS connection using [Rustls ↗](https:
 
 The SHA-256 fingerprint is only required if your TLS endpoint uses a self-signed certificate.
 
-* [ Local certificate ](#tab-panel-7430)
-* [ Remote server ](#tab-panel-7431)
+* [ Local certificate ](#tab-panel-7506)
+* [ Remote server ](#tab-panel-7507)
 
 To obtain the SHA-256 fingerprint of a local certificate:
 
 Terminal window
 
 ```
-
 openssl x509 -noout -fingerprint -sha256 -inform pem -in cert.pem | tr -d :
-
-
 ```
 
 The output will look something like:
 
 ```
-
 SHA256 Fingerprint=DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8662
-
-
 ```
 
 To test connectivity and obtain the SHA-256 fingerprint of a remote server:
@@ -189,25 +164,19 @@ To test connectivity and obtain the SHA-256 fingerprint of a remote server:
 Terminal window
 
 ```
-
 openssl s_client -connect <private-server-IP>:443 < /dev/null 2> /dev/null | openssl x509 -noout -fingerprint -sha256 | tr -d :
-
-
 ```
 
 The output will look something like:
 
 ```
-
 SHA256 Fingerprint=DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8662
-
-
 ```
 
 ## 3\. Add managed network to Cloudflare One
 
-* [ Dashboard ](#tab-panel-7426)
-* [ Terraform (v5) ](#tab-panel-7427)
+* [ Dashboard ](#tab-panel-7502)
+* [ Terraform (v5) ](#tab-panel-7503)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles**.
 2. Select **Managed networks** and select **Add new managed network**.
@@ -218,19 +187,12 @@ We recommend using the private IP of your managed network endpoint and not a hos
 5. (Optional) In **TLS Cert SHA-256**, enter the [SHA-256 fingerprint](#2-extract-the-sha-256-fingerprint) of the TLS certificate. This field is only needed for self-signed certificates. If a TLS fingerprint is not supplied, the Cloudflare One Client validates the certificate against the local certificate store and checks that it is signed by a public certificate authority.
 6. Select **Save**.
 
-1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):  
-   * `Zero Trust Write`
+1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
+
+  * `Zero Trust Write`
 2. Add a managed network using the [cloudflare\_zero\_trust\_device\_managed\_network ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fmanaged%5Fnetwork) resource:  
 ```  
-resource "cloudflare_zero_trust_device_managed_networks" "office" {  
-  account_id = var.cloudflare_account_id  
-  name       = "Office managed network"  
-  type       = "tls"  
-  config = {  
-    tls_sockaddr = "192.168.185.198:3333"  
-    sha256       = "DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8662"  
-  }  
-}  
+resource "cloudflare_zero_trust_device_managed_networks" "office" {  account_id = var.cloudflare_account_id  name       = "Office managed network"  type       = "tls"  config = {    tls_sockaddr = "192.168.185.198:3333"    sha256       = "DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8662"  }}  
 ```
 
 The Cloudflare One Client will automatically exclude the TLS endpoint from all device profiles if it is specified as a private IP address. This exclusion prevents remote users from accessing the endpoint through the WARP tunnel on any port. If the TLS endpoint is specified as a hostname instead of a private IP, the Cloudflare One Client will not automatically exclude it.
@@ -241,45 +203,23 @@ If a device profile uses [Split Tunnels](https://developers.cloudflare.com/cloud
 
 ## 4\. Configure device profile
 
-* [ Dashboard ](#tab-panel-7428)
-* [ Terraform (v5) ](#tab-panel-7429)
+* [ Dashboard ](#tab-panel-7504)
+* [ Terraform (v5) ](#tab-panel-7505)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Create a [new profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) or edit an existing profile.
-3. To apply this profile whenever a device connects to your network, add the following rule:  
-| Selector        | Operator | Value          |  
-| --------------- | -------- | -------------- |  
+3. To apply this profile whenever a device connects to your network, add the following rule:
+
+| Selector        | Operator | Value          |
+| --------------- | -------- | -------------- |
 | Managed network | is       | <NETWORK-NAME> |
 4. Save the profile.
 
 In [cloudflare\_zero\_trust\_device\_custom\_profile ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fcustom%5Fprofile), configure a `match` expression using the `network` selector. For example, the following device profile will match all devices connected a specific managed network:
 
 ```
-
-resource "cloudflare_zero_trust_device_custom_profile" "office" {
-
-  account_id            = var.cloudflare_account_id
-
-  name                  = "Office"
-
-  description           = "Devices connected to the office network"
-
-  precedence            = 1
-
-  service_mode_v2       = {mode = "warp"}
-
-
-  match = trimspace(replace(<<-EOT
-
-    network == "${cloudflare_zero_trust_device_managed_networks.office.name}"
-
-  EOT
-
-  , "\n", " "))
-
-}
-
-
+resource "cloudflare_zero_trust_device_custom_profile" "office" {  account_id            = var.cloudflare_account_id  name                  = "Office"  description           = "Devices connected to the office network"  precedence            = 1  service_mode_v2       = {mode = "warp"}
+  match = trimspace(replace(<<-EOT    network == "${cloudflare_zero_trust_device_managed_networks.office.name}"  EOT  , "\n", " "))}
 ```
 
 Managed networks are now enabled. Every time a device in your organization connects to a network (for example, when waking up the device or changing Wi-Fi networks), the Cloudflare One Client will determine its network location and apply the corresponding settings profile.

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -34,60 +34,19 @@ Generated columns can be defined during table creation in a `CREATE TABLE` state
 To create a table that defines a generated column, you use the `AS` keyword:
 
 ```
-
-CREATE TABLE some_table (
-
-    -- other columns omitted
-
-    some_generated_column AS <function_that_generates_the_column_data>
-
-)
-
-
+CREATE TABLE some_table (    -- other columns omitted    some_generated_column AS <function_that_generates_the_column_data>)
 ```
 
 As a concrete example, to automatically extract the `location` value from the following JSON sensor data, you can define a generated column called `location` (of type `TEXT`), based on a `raw_data` column that stores the raw representation of our JSON data.
 
 ```
-
-{
-
-    "measurement": {
-
-        "temp_f": "77.4",
-
-        "aqi": [21, 42, 58],
-
-        "o3": [18, 500],
-
-        "wind_mph": "13",
-
-        "location": "US-NY"
-
-    }
-
-}
-
-
+{    "measurement": {        "temp_f": "77.4",        "aqi": [21, 42, 58],        "o3": [18, 500],        "wind_mph": "13",        "location": "US-NY"    }}
 ```
 
 To define a generated column with the value of `$.measurement.location`, you can use the [json\_extract](https://developers.cloudflare.com/d1/sql-api/query-json/#extract-values) function to extract the value from the `raw_data` column each time you write to that row:
 
 ```
-
-CREATE TABLE sensor_readings (
-
-    event_id INTEGER PRIMARY KEY,
-
-    timestamp INTEGER NOT NULL,
-
-    raw_data TEXT,
-
-    location as (json_extract(raw_data, '$.measurement.location')) STORED
-
-);
-
-
+CREATE TABLE sensor_readings (    event_id INTEGER PRIMARY KEY,    timestamp INTEGER NOT NULL,    raw_data TEXT,    location as (json_extract(raw_data, '$.measurement.location')) STORED);
 ```
 
 Generated columns can optionally be specified with the `column_name GENERATED ALWAYS AS <function> [STORED|VIRTUAL]` syntax. The `GENERATED ALWAYS` syntax is optional and does not change the behavior of the generated column when omitted.
@@ -97,12 +56,7 @@ Generated columns can optionally be specified with the `column_name GENERATED AL
 A generated column can also be added to an existing table. If the `sensor_readings` table did not have the generated `location` column, you could add it by running an `ALTER TABLE` statement:
 
 ```
-
-ALTER TABLE sensor_readings
-
-ADD COLUMN location as (json_extract(raw_data, '$.measurement.location'));
-
-
+ALTER TABLE sensor_readingsADD COLUMN location as (json_extract(raw_data, '$.measurement.location'));
 ```
 
 This defines a `VIRTUAL` generated column that runs `json_extract` on each read query.
@@ -116,31 +70,13 @@ Generated columns are not just limited to JSON functions like `json_extract`: yo
 For example, you could generate a `date` column based on the `timestamp` column from the previous `sensor_reading` table, automatically converting a Unix timestamp into a `YYYY-MM-dd` format within your database:
 
 ```
-
-ALTER TABLE your_table
-
--- date(timestamp, 'unixepoch') converts a Unix timestamp to a YYYY-MM-dd formatted date
-
-ADD COLUMN formatted_date AS (date(timestamp, 'unixepoch'))
-
-
+ALTER TABLE your_table-- date(timestamp, 'unixepoch') converts a Unix timestamp to a YYYY-MM-dd formatted dateADD COLUMN formatted_date AS (date(timestamp, 'unixepoch'))
 ```
 
 Alternatively, you could define an `expires_at` column that calculates a future date, and filter on that date in your queries:
 
 ```
-
--- Filter out "expired" results based on your generated column:
-
--- SELECT * FROM your_table WHERE current_date() > expires_at
-
-ALTER TABLE your_table
-
--- calculates a date (YYYY-MM-dd) 30 days from the timestamp.
-
-ADD COLUMN expires_at AS (date(timestamp, '+30 days'));
-
-
+-- Filter out "expired" results based on your generated column:-- SELECT * FROM your_table WHERE current_date() > expires_atALTER TABLE your_table-- calculates a date (YYYY-MM-dd) 30 days from the timestamp.ADD COLUMN expires_at AS (date(timestamp, '+30 days'));
 ```
 
 ## Additional considerations

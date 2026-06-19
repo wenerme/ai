@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waiting-room/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,43 +37,13 @@ Make a request to your waiting room endpoint with the header `Accept: applicatio
 Request
 
 ```
-
-curl "https://example.com/waitingroom" \
-
---header "Accept: application/json"
-
-
+curl "https://example.com/waitingroom" \--header "Accept: application/json"
 ```
 
 Response
 
 ```
-
-{
-
-  "cfWaitingRoom": {
-
-    "inWaitingRoom": true,
-
-    "waitTime": 5,
-
-    "waitTimeKnown": true,
-
-    "waitTimeFormatted": "5 minutes",
-
-    "queueIsFull": false,
-
-    "queueAll": false,
-
-    "lastUpdated": "2021-08-03T23:46:00.000Z",
-
-    "refreshIntervalSeconds": 20
-
-  }
-
-}
-
-
+{  "cfWaitingRoom": {    "inWaitingRoom": true,    "waitTime": 5,    "waitTimeKnown": true,    "waitTimeFormatted": "5 minutes",    "queueIsFull": false,    "queueAll": false,    "lastUpdated": "2021-08-03T23:46:00.000Z",    "refreshIntervalSeconds": 20  }}
 ```
 
 ## Cookies in the request header
@@ -88,62 +58,25 @@ In a browser environment, the page automatically refreshes every `refreshInterva
 
 These are some of the places where the JSON-friendly response can be consumed (this list is not exhaustive):
 
-1. In a mobile app traffic  
-   * **Integrate Waiting Room variables** – Create a new template in your mobile app to receive the JSON response. For a full list of these variables, refer to the `json_response_enabled` parameter in the [Cloudflare API docs](https://developers.cloudflare.com/api/resources/waiting%5Frooms/methods/create/).  
-   * **Allow cookies** – As mentioned above, a waiting room [requires cookies](https://developers.cloudflare.com/waiting-room/reference/waiting-room-cookie/), and your mobile app will need to support cookies. For ease of use, consider using a cookie manager like [CookieJar ↗](https://pkg.go.dev/net/http#CookieJar).  
-   * **Consume JSON data** \- Make a request to the Waiting Room endpoint with the `Accept: application/json` header.
-2. Inside Cloudflare Workers (or in your own backend service)  
-   * **Integrate Waiting Room variables** – Expect a JSON response in your backend API. For a full list of these variables, refer to the `json_response_enabled` parameter in the [Cloudflare API docs](https://developers.cloudflare.com/api/resources/waiting%5Frooms/methods/create/).  
-   * **Include cookies in the request header** – As mentioned above, a waiting room [requires cookies](https://developers.cloudflare.com/waiting-room/reference/waiting-room-cookie/), and your backend API will need to support cookies. For ease of use, consider using a cookie manager like [CookieJar ↗](https://pkg.go.dev/net/http#CookieJar).  
-   * **Enable JSON response** \- Via the dashboard or via the API.  
-   * **Consume JSON data** \- Make a request to the Waiting Room endpoint with the `Accept: application/json` header.  
-   Here is an example, demonstrating the usage of the waiting room endpoint inside a Worker. The request headers include the necessary `accept` and `cookie` header values that are required by the Waiting Room API. The accept header ensures that a JSON-friendly response is returned, if a user is queued. Otherwise, if the request is sent to the origin, then whatever the response origin returns gets returned back. In this example, a hardcoded `__cfwaitingroom` value is embedded in the cookie field. In a real-life application, however, we expect that a cookie returned by the Waiting Room API is used in each of the subsequent requests to ensure that the user is placed accordingly in the queue and let through to the origin when it is the users turn.
+1. In a mobile app traffic
+
+  * **Integrate Waiting Room variables** – Create a new template in your mobile app to receive the JSON response. For a full list of these variables, refer to the `json_response_enabled` parameter in the [Cloudflare API docs](https://developers.cloudflare.com/api/resources/waiting%5Frooms/methods/create/).
+  * **Allow cookies** – As mentioned above, a waiting room [requires cookies](https://developers.cloudflare.com/waiting-room/reference/waiting-room-cookie/), and your mobile app will need to support cookies. For ease of use, consider using a cookie manager like [CookieJar ↗](https://pkg.go.dev/net/http#CookieJar).
+  * **Consume JSON data** \- Make a request to the Waiting Room endpoint with the `Accept: application/json` header.
+2. Inside Cloudflare Workers (or in your own backend service)
+
+  * **Integrate Waiting Room variables** – Expect a JSON response in your backend API. For a full list of these variables, refer to the `json_response_enabled` parameter in the [Cloudflare API docs](https://developers.cloudflare.com/api/resources/waiting%5Frooms/methods/create/).
+  * **Include cookies in the request header** – As mentioned above, a waiting room [requires cookies](https://developers.cloudflare.com/waiting-room/reference/waiting-room-cookie/), and your backend API will need to support cookies. For ease of use, consider using a cookie manager like [CookieJar ↗](https://pkg.go.dev/net/http#CookieJar).
+  * **Enable JSON response** \- Via the dashboard or via the API.
+  * **Consume JSON data** \- Make a request to the Waiting Room endpoint with the `Accept: application/json` header.  
+  Here is an example, demonstrating the usage of the waiting room endpoint inside a Worker. The request headers include the necessary `accept` and `cookie` header values that are required by the Waiting Room API. The accept header ensures that a JSON-friendly response is returned, if a user is queued. Otherwise, if the request is sent to the origin, then whatever the response origin returns gets returned back. In this example, a hardcoded `__cfwaitingroom` value is embedded in the cookie field. In a real-life application, however, we expect that a cookie returned by the Waiting Room API is used in each of the subsequent requests to ensure that the user is placed accordingly in the queue and let through to the origin when it is the users turn.
 
 JavaScript
 
 ```
-
 const waitingroomSite = "https://examples.cloudflareworkers.com/waiting-room";
-
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    const init = {
-
-      headers: {
-
-        accept: "application/json",
-
-        cookie: "__cfwaitingroom=F)J@NcRfUjXnZr4u7x!A%D*G-KaPdSgV",
-
-      },
-
-    };
-
-
-    return fetch(waitingroomSite, init)
-
-      .then((response) => response.json())
-
-      .then((response) => {
-
-        if (response.cfWaitingRoom.inWaitingRoom) {
-
-          return Response("in waiting room", { "content-type": "text/html" });
-
-        }
-
-        return new Response(response);
-
-      });
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    const init = {      headers: {        accept: "application/json",        cookie: "__cfwaitingroom=F)J@NcRfUjXnZr4u7x!A%D*G-KaPdSgV",      },    };
+    return fetch(waitingroomSite, init)      .then((response) => response.json())      .then((response) => {        if (response.cfWaitingRoom.inWaitingRoom) {          return Response("in waiting room", { "content-type": "text/html" });        }        return new Response(response);      });  },};
 ```
 
 Note

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,9 +20,10 @@ Links to applications not protected by Access can be added as bookmarks. You can
 2. Select **Create new application** \> **Bookmarks**.
 3. Name your application.
 4. Enter your **Application URL**, for example `https://mybookmark.com`.
-5. (Optional) To restrict who can see the bookmark, select an existing policy or create a new one. If you do not add any policies, the bookmark is visible to all users in your organization.  
-   * To use an existing policy, select **Select existing policies** and choose the policies you want to apply. Refer to [supported policies](#supported-policies) for policy limitations.  
-   * To create a new policy, select **Create new policy** and [build your policy rules](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/).
+5. (Optional) To restrict who can see the bookmark, select an existing policy or create a new one. If you do not add any policies, the bookmark is visible to all users in your organization.
+
+  * To use an existing policy, select **Select existing policies** and choose the policies you want to apply. Refer to [supported policies](#supported-policies) for policy limitations.
+  * To create a new policy, select **Create new policy** and [build your policy rules](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/).
 6. Select **Next**.
 7. Turn on **App Launcher visibility** if you want the application to be visible in the App Launcher. The toggle does not impact the ability for users to reach the application.
 8. (Optional) To add a custom logo for your application, select **Custom** and enter the image URL.  

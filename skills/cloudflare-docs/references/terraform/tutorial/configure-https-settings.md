@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/terraform/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,55 +30,15 @@ Create a new branch and add zone settings:
 Terminal window
 
 ```
-
 git checkout -b step3-zone-settings
-
-
 ```
 
 Add the following to your `main.tf` file:
 
 ```
-
-# Enable TLS 1.3
-
-resource "cloudflare_zone_setting" "tls_1_3" {
-
-  zone_id    = var.zone_id
-
-  setting_id = "tls_1_3"
-
-  value      = "on"
-
-}
-
-
-# Enable automatic HTTPS rewrites
-
-resource "cloudflare_zone_setting" "automatic_https_rewrites" {
-
-  zone_id    = var.zone_id
-
-  setting_id = "automatic_https_rewrites"
-
-  value      = "on"
-
-}
-
-
-# Set SSL mode to strict
-
-resource "cloudflare_zone_setting" "ssl" {
-
-  zone_id    = var.zone_id
-
-  setting_id = "ssl"
-
-  value      = "strict"
-
-}
-
-
+# Enable TLS 1.3resource "cloudflare_zone_setting" "tls_1_3" {  zone_id    = var.zone_id  setting_id = "tls_1_3"  value      = "on"}
+# Enable automatic HTTPS rewritesresource "cloudflare_zone_setting" "automatic_https_rewrites" {  zone_id    = var.zone_id  setting_id = "automatic_https_rewrites"  value      = "on"}
+# Set SSL mode to strictresource "cloudflare_zone_setting" "ssl" {  zone_id    = var.zone_id  setting_id = "ssl"  value      = "strict"}
 ```
 
 ## 2\. Preview and apply the changes
@@ -88,61 +48,17 @@ Review the proposed changes:
 Terminal window
 
 ```
-
 terraform plan
-
-
 ```
 
 Expected output
 
 ```
-
 Plan: 3 to add, 0 to change, 0 to destroy.
-
-
 Terraform will perform the following actions:
-
-
-  # cloudflare_zone_setting.automatic_https_rewrites will be created
-
-  + resource "cloudflare_zone_setting" "automatic_https_rewrites" {
-
-      + setting_id = "automatic_https_rewrites"
-
-      + value      = "on"
-
-      + zone_id    = "your-zone-id"
-
-    }
-
-
-  # cloudflare_zone_setting.ssl will be created
-
-  + resource "cloudflare_zone_setting" "ssl" {
-
-      + setting_id = "ssl"
-
-      + value      = "strict"
-
-      + zone_id    = "your-zone-id"
-
-    }
-
-
-  # cloudflare_zone_setting.tls_1_3 will be created
-
-  + resource "cloudflare_zone_setting" "tls_1_3" {
-
-      + setting_id = "tls_1_3"
-
-      + value      = "on"
-
-      + zone_id    = "your-zone-id"
-
-    }
-
-
+  # cloudflare_zone_setting.automatic_https_rewrites will be created  + resource "cloudflare_zone_setting" "automatic_https_rewrites" {      + setting_id = "automatic_https_rewrites"      + value      = "on"      + zone_id    = "your-zone-id"    }
+  # cloudflare_zone_setting.ssl will be created  + resource "cloudflare_zone_setting" "ssl" {      + setting_id = "ssl"      + value      = "strict"      + zone_id    = "your-zone-id"    }
+  # cloudflare_zone_setting.tls_1_3 will be created  + resource "cloudflare_zone_setting" "tls_1_3" {      + setting_id = "tls_1_3"      + value      = "on"      + zone_id    = "your-zone-id"    }
 ```
 
 Commit and merge the changes:
@@ -150,18 +66,7 @@ Commit and merge the changes:
 Terminal window
 
 ```
-
-git add main.tf
-
-git commit -m "Step 3 - Enable TLS 1.3, automatic HTTPS rewrites, and strict SSL"
-
-git checkout main
-
-git merge step3-zone-settings
-
-git push
-
-
+git add main.tfgit commit -m "Step 3 - Enable TLS 1.3, automatic HTTPS rewrites, and strict SSL"git checkout maingit merge step3-zone-settingsgit push
 ```
 
 Before applying the changes, try to connect with TLS 1.3\. Technically, you should not be able to with default settings. To follow along with this test, you will need to [compile curl against BoringSSL ↗](https://everything.curl.dev/source/build/tls/boringssl#build-boringssl).
@@ -169,10 +74,7 @@ Before applying the changes, try to connect with TLS 1.3\. Technically, you shou
 Terminal window
 
 ```
-
 curl -v --tlsv1.3 https://www.example.com 2>&1 | grep "SSL connection\|error"
-
-
 ```
 
 As shown above, you should receive an error because TLS 1.3 is not yet enabled on your zone. Enable it by running `terraform apply` and try again.
@@ -182,10 +84,7 @@ Apply the configuration:
 Terminal window
 
 ```
-
 terraform apply
-
-
 ```
 
 Type `yes` when prompted.
@@ -197,10 +96,7 @@ Try the same command as before. The command will now succeed.
 Terminal window
 
 ```
-
 curl -v --tlsv1.3 https://www.example.com 2>&1 | grep "SSL connection\|error"
-
-
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,123 +30,43 @@ BAAI general embedding (Large) model that transforms any given text into a 1024-
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4740)
-* [  Python ](#tab-panel-4741)
-* [  curl ](#tab-panel-4742)
+* [  TypeScript ](#tab-panel-4814)
+* [  Python ](#tab-panel-4815)
+* [  curl ](#tab-panel-4816)
 
 ```
-
-export interface Env {
-
-  AI: Ai;
-
-}
-
-
-export default {
-
-  async fetch(request, env): Promise<Response> {
-
-
-    // Can be a string or array of strings]
-
-    const stories = [
-
-      "This is a story about an orange cloud",
-
-      "This is a story about a llama",
-
-      "This is a story about a hugging emoji",
-
-    ];
-
-
-    const embeddings = await env.AI.run(
-
-      "@cf/baai/bge-large-en-v1.5",
-
-      {
-
-        text: stories,
-
-      }
-
-    );
-
-
-    return Response.json(embeddings);
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export interface Env {  AI: Ai;}
+export default {  async fetch(request, env): Promise<Response> {
+    // Can be a string or array of strings]    const stories = [      "This is a story about an orange cloud",      "This is a story about a llama",      "This is a story about a hugging emoji",    ];
+    const embeddings = await env.AI.run(      "@cf/baai/bge-large-en-v1.5",      {        text: stories,      }    );
+    return Response.json(embeddings);  },} satisfies ExportedHandler<Env>;
 ```
 
 ```
+import osimport requests
 
-import os
-
-import requests
-
-
-ACCOUNT_ID = "your-account-id"
-
-AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
-
-
-stories = [
-
-  'This is a story about an orange cloud',
-
-  'This is a story about a llama',
-
-  'This is a story about a hugging emoji'
-
-]
-
-
-response = requests.post(
-
-  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/baai/bge-large-en-v1.5",
-
-  headers={"Authorization": f"Bearer {AUTH_TOKEN}"},
-
-  json={"text": stories}
-
-)
-
-
+ACCOUNT_ID = "your-account-id"AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
+stories = [  'This is a story about an orange cloud',  'This is a story about a llama',  'This is a story about a hugging emoji']
+response = requests.post(  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/baai/bge-large-en-v1.5",  headers={"Authorization": f"Bearer {AUTH_TOKEN}"},  json={"text": stories})
 print(response.json())
-
-
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/baai/bge-large-en-v1.5  \
-
-  -X POST  \
-
-  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
-
-  -d '{ "text": ["This is a story about an orange cloud", "This is a story about a llama", "This is a story about a hugging emoji"] }'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/baai/bge-large-en-v1.5  \  -X POST  \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \  -d '{ "text": ["This is a story about an orange cloud", "This is a story about a llama", "This is a story about a hugging emoji"] }'
 ```
 
 OpenAI compatible endpoints 
 
-Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
+Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations ](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/). 
 
 ## Parameters
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-4743)
-* [ Output ](#tab-panel-4744)
+* [ Input ](#tab-panel-4817)
+* [ Output ](#tab-panel-4818)
 
 ▶text
 
@@ -170,8 +90,8 @@ pooling
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-4745)
-* [ Output ](#tab-panel-4746)
+* [ Input ](#tab-panel-4819)
+* [ Output ](#tab-panel-4820)
 
 ▶requests\[\]
 
@@ -197,7 +117,7 @@ pooling
 
  Batch Input [ ](https://developers.cloudflare.com/workers-ai/models/bge-large-en-v1.5/batch-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/bge-large-en-v1.5/batch-input.json "Download") 
 
- Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/bge-large-en-v1.5/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/bge-large-en-v1.5/batch-output.json "Download") 
+ Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/bge-large-en-v1.5/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/bge-large-en-v1.5/batch-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/bge-large-en-v1.5/#page","headline":"bge-large-en-v1.5 (BAAI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"BAAI general embedding (Large) model that transforms any given text into a 1024-dimensional vector","url":"https://developers.cloudflare.com/workers-ai/models/bge-large-en-v1.5/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

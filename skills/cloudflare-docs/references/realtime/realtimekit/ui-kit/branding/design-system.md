@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,257 +31,63 @@ Each mobile platform exposes a design token system that controls colors, borders
 ### Import
 
 ```
-
-<script type="module">
-
-  import { provideRtkDesignSystem } from "https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit-ui@latest/dist/index.js";
-
-</script>
-
-
+<script type="module">  import { provideRtkDesignSystem } from "https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit-ui@latest/dist/index.js";</script>
 ```
 
 JavaScript
 
 ```
-
 import { provideRtkDesignSystem } from "@cloudflare/realtimekit-react-ui";
-
-
 ```
 
 JavaScript
 
 ```
-
 import { provideRtkDesignSystem } from "@cloudflare/realtimekit-angular-ui";
-
-
 ```
 
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
 ```
 
 Kotlin
 
 ```
-
-import com.cloudflare.realtimekit.ui.RealtimeKitUIBuilder
-
-import com.cloudflare.realtimekit.ui.RealtimeKitUIInfo
-
-import com.cloudflare.realtimekit.ui.token.*
-
-import com.cloudflare.realtimekit.models.RtkMeetingInfo
-
-
+import com.cloudflare.realtimekit.ui.RealtimeKitUIBuilderimport com.cloudflare.realtimekit.ui.RealtimeKitUIInfoimport com.cloudflare.realtimekit.ui.token.*import com.cloudflare.realtimekit.models.RtkMeetingInfo
 ```
 
 Dart
 
 ```
-
-import 'package:realtimekit_ui/realtimekit_ui.dart';
-
-import 'package:flutter/material.dart';
-
-
+import 'package:realtimekit_ui/realtimekit_ui.dart';import 'package:flutter/material.dart';
 ```
 
 TypeScript
 
 ```
-
-import {
-
-  RtkUIProvider,
-
-  provideRtkDesignSystem,
-
-  generateBrandColors,
-
-  generateBackgroundColors,
-
-} from "@cloudflare/realtimekit-react-native-ui";
-
-
+import {  RtkUIProvider,  provideRtkDesignSystem,  generateBrandColors,  generateBackgroundColors,} from "@cloudflare/realtimekit-react-native-ui";
 ```
 
 ### Usage
 
 ```
-
 <div id="app"></div>
-
-
-<script>
-
-  provideRtkDesignSystem(document.getElementById("app"), {
-
-    googleFont: "Lobster",
-
-    // sets light background colors
-
-    theme: "light",
-
-    colors: {
-
-      danger: "#ffac00",
-
-      brand: {
-
-        300: "#00FFE1",
-
-        400: "#00FFFF",
-
-        500: "#00E1D4",
-
-        600: "#007B74",
-
-        700: "#00655F",
-
-      },
-
-      text: "#071428",
-
-      "text-on-brand": "#ffffff",
-
-      "video-bg": "#E5E7EB",
-
-    },
-
-    borderRadius: "extra-rounded",
-
-  });
-
-</script>
-
-
+<script>  provideRtkDesignSystem(document.getElementById("app"), {    googleFont: "Lobster",    // sets light background colors    theme: "light",    colors: {      danger: "#ffac00",      brand: {        300: "#00FFE1",        400: "#00FFFF",        500: "#00E1D4",        600: "#007B74",        700: "#00655F",      },      text: "#071428",      "text-on-brand": "#ffffff",      "video-bg": "#E5E7EB",    },    borderRadius: "extra-rounded",  });</script>
 ```
 
 ```
-
 <div id="app"></div>
-
-
-<script>
-
-  provideRtkDesignSystem(document.getElementById("app"), {
-
-    googleFont: "Lobster",
-
-    // sets light background colors
-
-    theme: "light",
-
-    colors: {
-
-      danger: "#ffac00",
-
-      brand: {
-
-        300: "#00FFE1",
-
-        400: "#00FFFF",
-
-        500: "#00E1D4",
-
-        600: "#007B74",
-
-        700: "#00655F",
-
-      },
-
-      text: "#071428",
-
-      "text-on-brand": "#ffffff",
-
-      "video-bg": "#E5E7EB",
-
-    },
-
-    borderRadius: "extra-rounded",
-
-  });
-
-</script>
-
-
+<script>  provideRtkDesignSystem(document.getElementById("app"), {    googleFont: "Lobster",    // sets light background colors    theme: "light",    colors: {      danger: "#ffac00",      brand: {        300: "#00FFE1",        400: "#00FFFF",        500: "#00E1D4",        600: "#007B74",        700: "#00655F",      },      text: "#071428",      "text-on-brand": "#ffffff",      "video-bg": "#E5E7EB",    },    borderRadius: "extra-rounded",  });</script>
 ```
 
 JavaScript
 
 ```
-
-function Example() {
-
-  const meetingEl = useRef();
-
-  const { meeting } = useRealtimeKitMeeting();
-
-
-  useEffect(() => {
-
-    provideRtkDesignSystem(meetingEl.current, {
-
-      googleFont: "Lobster",
-
-      // sets light background colors
-
-      theme: "light",
-
-      colors: {
-
-        danger: "#ffac00",
-
-        brand: {
-
-          300: "#00FFE1",
-
-          400: "#00FFFF",
-
-          500: "#00E1D4",
-
-          600: "#007B74",
-
-          700: "#00655F",
-
-        },
-
-        text: "#071428",
-
-        "text-on-brand": "#ffffff",
-
-        "video-bg": "#E5E7EB",
-
-      },
-
-      borderRadius: "extra-rounded",
-
-    });
-
-  }, []);
-
-
-  return (
-
-    <div style={{ height: "400px" }}>
-
-      <RtkMeeting meeting={meeting} ref={meetingEl} mode="fill" />
-
-    </div>
-
-  );
-
-}
-
-
+function Example() {  const meetingEl = useRef();  const { meeting } = useRealtimeKitMeeting();
+  useEffect(() => {    provideRtkDesignSystem(meetingEl.current, {      googleFont: "Lobster",      // sets light background colors      theme: "light",      colors: {        danger: "#ffac00",        brand: {          300: "#00FFE1",          400: "#00FFFF",          500: "#00E1D4",          600: "#007B74",          700: "#00655F",        },        text: "#071428",        "text-on-brand": "#ffffff",        "video-bg": "#E5E7EB",      },      borderRadius: "extra-rounded",    });  }, []);
+  return (    <div style={{ height: "400px" }}>      <RtkMeeting meeting={meeting} ref={meetingEl} mode="fill" />    </div>  );}
 ```
 
 Construct an `RtkDesignTokens` object and pass it to `RealtimeKitUIInfo`. Then call `RealtimeKitUIBuilder.build()` to launch the meeting.
@@ -289,99 +95,10 @@ Construct an `RtkDesignTokens` object and pass it to `RealtimeKitUIInfo`. Then c
 Kotlin
 
 ```
-
 import android.graphics.Color
-
-
-val customColors = RtkColorTokens(
-
-    brand = BrandColor(
-
-        shade300 = Color.parseColor("#FF9A6C"),
-
-        shade400 = Color.parseColor("#FF8552"),
-
-        shade500 = Color.parseColor("#FF6B35"),
-
-        shade600 = Color.parseColor("#E55A24"),
-
-        shade700 = Color.parseColor("#CC4A14"),
-
-    ),
-
-    background = BackgroundColor(
-
-        shade600 = Color.parseColor("#666666"),
-
-        shade700 = Color.parseColor("#4C4C4C"),
-
-        shade800 = Color.parseColor("#333333"),
-
-        shade900 = Color.parseColor("#1A1A1A"),
-
-        shade1000 = Color.parseColor("#080808"),
-
-    ),
-
-    text = TextColor(
-
-        onBrand = TextColor.TextColorOnBrand(
-
-            shade1000 = Color.parseColor("#FF111111"),
-
-            shade900 = Color.parseColor("#E0111111"),
-
-            shade800 = Color.parseColor("#C2111111"),
-
-            shade700 = Color.parseColor("#A3111111"),
-
-            shade600 = Color.parseColor("#85111111"),
-
-        ),
-
-        onBackground = TextColor.TextColorOnBackground(
-
-            shade1000 = Color.parseColor("#FFFFFFFF"),
-
-            shade900 = Color.parseColor("#E0FFFFFF"),
-
-            shade800 = Color.parseColor("#C2FFFFFF"),
-
-            shade700 = Color.parseColor("#A3FFFFFF"),
-
-            shade600 = Color.parseColor("#85FFFFFF"),
-
-        ),
-
-    ),
-
-)
-
-
-val designTokens = RtkDesignTokens(
-
-    colors = customColors,
-
-    borderRadius = RtkBorderRadiusToken.Rounded,
-
-    borderWidth = RtkBorderWidthToken.Thin,
-
-)
-
-
-val uiKitInfo = RealtimeKitUIInfo(
-
-    activity = this,
-
-    rtkMeetingInfo = RtkMeetingInfo(authToken = "<auth_token>"),
-
-    designTokens = designTokens,
-
-)
-
-RealtimeKitUIBuilder.build(uiKitInfo).startMeeting()
-
-
+val customColors = RtkColorTokens(    brand = BrandColor(        shade300 = Color.parseColor("#FF9A6C"),        shade400 = Color.parseColor("#FF8552"),        shade500 = Color.parseColor("#FF6B35"),        shade600 = Color.parseColor("#E55A24"),        shade700 = Color.parseColor("#CC4A14"),    ),    background = BackgroundColor(        shade600 = Color.parseColor("#666666"),        shade700 = Color.parseColor("#4C4C4C"),        shade800 = Color.parseColor("#333333"),        shade900 = Color.parseColor("#1A1A1A"),        shade1000 = Color.parseColor("#080808"),    ),    text = TextColor(        onBrand = TextColor.TextColorOnBrand(            shade1000 = Color.parseColor("#FF111111"),            shade900 = Color.parseColor("#E0111111"),            shade800 = Color.parseColor("#C2111111"),            shade700 = Color.parseColor("#A3111111"),            shade600 = Color.parseColor("#85111111"),        ),        onBackground = TextColor.TextColorOnBackground(            shade1000 = Color.parseColor("#FFFFFFFF"),            shade900 = Color.parseColor("#E0FFFFFF"),            shade800 = Color.parseColor("#C2FFFFFF"),            shade700 = Color.parseColor("#A3FFFFFF"),            shade600 = Color.parseColor("#85FFFFFF"),        ),    ),)
+val designTokens = RtkDesignTokens(    colors = customColors,    borderRadius = RtkBorderRadiusToken.Rounded,    borderWidth = RtkBorderWidthToken.Thin,)
+val uiKitInfo = RealtimeKitUIInfo(    activity = this,    rtkMeetingInfo = RtkMeetingInfo(authToken = "<auth_token>"),    designTokens = designTokens,)RealtimeKitUIBuilder.build(uiKitInfo).startMeeting()
 ```
 
 Construct an `RtkDesignTokens` object and pass it to `RealtimeKitUIInfo` via the `designToken` parameter.
@@ -396,35 +113,8 @@ Flutter supports two approaches for color configuration:
 Dart
 
 ```
-
-final designTokens = RtkDesignTokens(
-
-  colorToken: RtkColorToken(
-
-    backgroundColor: const Color(0xFF0B0B0B),
-
-    brandColor: const Color(0xFFF17F1F),
-
-    textOnBrand: Colors.white,
-
-    textOnBackground: Colors.white,
-
-  ),
-
-  borderRadius: RtkBorderRadius.rounded,
-
-  borderWidth: RtkBorderWidth.none,
-
-);
-
-
-final uiKitInfo = RealtimeKitUIInfo(meetingInfo, designToken: designTokens);
-
-final rtkUI = RealtimeKitUIBuilder.build(uiKitInfo: uiKitInfo);
-
-Navigator.push(context, MaterialPageRoute(builder: (_) => rtkUI));
-
-
+final designTokens = RtkDesignTokens(  colorToken: RtkColorToken(    backgroundColor: const Color(0xFF0B0B0B),    brandColor: const Color(0xFFF17F1F),    textOnBrand: Colors.white,    textOnBackground: Colors.white,  ),  borderRadius: RtkBorderRadius.rounded,  borderWidth: RtkBorderWidth.none,);
+final uiKitInfo = RealtimeKitUIInfo(meetingInfo, designToken: designTokens);final rtkUI = RealtimeKitUIBuilder.build(uiKitInfo: uiKitInfo);Navigator.push(context, MaterialPageRoute(builder: (_) => rtkUI));
 ```
 
 **Advanced color configuration** — use `RtkColorSwatch` for precise control over each shade:
@@ -432,52 +122,7 @@ Navigator.push(context, MaterialPageRoute(builder: (_) => rtkUI));
 Dart
 
 ```
-
-final designTokens = RtkDesignTokens(
-
-  colorToken: RtkColorToken(
-
-    brandColorSwatch: RtkColorSwatch(500, {
-
-      300: const Color(0xFFFF9A6C),
-
-      400: const Color(0xFFFF8552),
-
-      500: const Color(0xFFFF6B35),
-
-      600: const Color(0xFFE55A24),
-
-      700: const Color(0xFFCC4A14),
-
-    }),
-
-    backgroundColorSwatch: RtkColorSwatch(1000, {
-
-      600: const Color(0xFF666666),
-
-      700: const Color(0xFF4C4C4C),
-
-      800: const Color(0xFF333333),
-
-      900: const Color(0xFF1A1A1A),
-
-      1000: const Color(0xFF080808),
-
-    }),
-
-    textOnBrand: Colors.white,
-
-    textOnBackground: Colors.white,
-
-  ),
-
-  borderRadius: RtkBorderRadius.extrarounded,
-
-  borderWidth: RtkBorderWidth.thin,
-
-);
-
-
+final designTokens = RtkDesignTokens(  colorToken: RtkColorToken(    brandColorSwatch: RtkColorSwatch(500, {      300: const Color(0xFFFF9A6C),      400: const Color(0xFFFF8552),      500: const Color(0xFFFF6B35),      600: const Color(0xFFE55A24),      700: const Color(0xFFCC4A14),    }),    backgroundColorSwatch: RtkColorSwatch(1000, {      600: const Color(0xFF666666),      700: const Color(0xFF4C4C4C),      800: const Color(0xFF333333),      900: const Color(0xFF1A1A1A),      1000: const Color(0xFF080808),    }),    textOnBrand: Colors.white,    textOnBackground: Colors.white,  ),  borderRadius: RtkBorderRadius.extrarounded,  borderWidth: RtkBorderWidth.thin,);
 ```
 
 Note
@@ -489,50 +134,9 @@ Call `provideRtkDesignSystem()` with a `DesignTokens` object before or during re
 TypeScript
 
 ```
-
 import { useEffect } from 'react';
-
-
-function App() {
-
-  useEffect(() => {
-
-    provideRtkDesignSystem({
-
-      theme: 'darkest',
-
-      colors: {
-
-        brand: generateBrandColors('#FF6B35'),
-
-        text: '#FFFFFF',
-
-      },
-
-      borderRadius: 'rounded',
-
-      borderWidth: 'thin',
-
-      fontFamily: 'Helvetica',
-
-    });
-
-  }, []);
-
-
-  return (
-
-    <RtkUIProvider>
-
-      {/* Your meeting components */}
-
-    </RtkUIProvider>
-
-  );
-
-}
-
-
+function App() {  useEffect(() => {    provideRtkDesignSystem({      theme: 'darkest',      colors: {        brand: generateBrandColors('#FF6B35'),        text: '#FFFFFF',      },      borderRadius: 'rounded',      borderWidth: 'thin',      fontFamily: 'Helvetica',    });  }, []);
+  return (    <RtkUIProvider>      {/* Your meeting components */}    </RtkUIProvider>  );}
 ```
 
 The `generateBrandColors()` helper derives five brand shades from a single hex value. Use `generateBackgroundColors()` for the same behavior with background colors.
@@ -542,48 +146,13 @@ The iOS UI Kit uses `DesignLibrary.shared` as its central design token registry.
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-class CustomConfigurator: DesignLibraryConfiguratorProtocol {
-
-    let colorBrandBase: BrandColorToken.Shade = .init(hex: "#FF6B35")!
-
-    let colorBackgroundBase: BackgroundColorToken.Shade = .init(hex: "#080808")!
-
-
-    let textColorBackgroundBase: TextColorToken.Background.Shade = .init(hex: "#FFFFFF")!
-
-    let textColorBrandBase: TextColorToken.Brand.Shade = .init(hex: "#111111")!
-
-
-    let statusDangerColor: StatusColor.Shade = .init(hex: "#FF2D2D")!
-
-    let statusSuccessColor: StatusColor.Shade = .init(hex: "#83D017")!
-
-    let statusWarningColor: StatusColor.Shade = .init(hex: "#FFCD07")!
-
-
-    let cornerRadiusRoundFactor: CGFloat = 4.0
-
-    let cornerRadiusExtraRoundFactor: CGFloat = 8.0
-
-    let cornerRadiusCircularFactor: CGFloat = 8.0
-
-
-    let borderSizeThinFactor: CGFloat = 1.0
-
-    let borderSizeFatFactor: CGFloat = 2.0
-
-}
-
-
-// Apply the custom configurator
-
-DesignLibrary.shared.setConfigurator(configurator: CustomConfigurator())
-
-
+class CustomConfigurator: DesignLibraryConfiguratorProtocol {    let colorBrandBase: BrandColorToken.Shade = .init(hex: "#FF6B35")!    let colorBackgroundBase: BackgroundColorToken.Shade = .init(hex: "#080808")!
+    let textColorBackgroundBase: TextColorToken.Background.Shade = .init(hex: "#FFFFFF")!    let textColorBrandBase: TextColorToken.Brand.Shade = .init(hex: "#111111")!
+    let statusDangerColor: StatusColor.Shade = .init(hex: "#FF2D2D")!    let statusSuccessColor: StatusColor.Shade = .init(hex: "#83D017")!    let statusWarningColor: StatusColor.Shade = .init(hex: "#FFCD07")!
+    let cornerRadiusRoundFactor: CGFloat = 4.0    let cornerRadiusExtraRoundFactor: CGFloat = 8.0    let cornerRadiusCircularFactor: CGFloat = 8.0
+    let borderSizeThinFactor: CGFloat = 1.0    let borderSizeFatFactor: CGFloat = 2.0}
+// Apply the custom configuratorDesignLibrary.shared.setConfigurator(configurator: CustomConfigurator())
 ```
 
 The SDK auto-generates shade variations from each base color. Brand shades run 300–700 and background shades run 600–1000, derived by lightening the base color.
@@ -613,10 +182,7 @@ The token system covers colors, borders, typography, and spacing. The table belo
 You can tweak the font family used in your UI Kit components easily with this token. You can edit this value in two ways with the provideRtkDesignSystem utility.
 
 ```
-
 --rtk-font-family: Inter;
-
-
 ```
 
 #### Usage
@@ -629,18 +195,7 @@ Set either of these values in your design tokens.
 JavaScript
 
 ```
-
-const designTokens = {
-
-  fontFamily: "Custom Font",
-
-  // or
-
-  googleFont: "A Google Font",
-
-};
-
-
+const designTokens = {  fontFamily: "Custom Font",  // or  googleFont: "A Google Font",};
 ```
 
 Font customization is not available through the `RtkDesignTokens` API. The UI Kit uses the system font by default.
@@ -652,14 +207,7 @@ Pass a `fontFamily` string to `provideRtkDesignSystem()` to use a custom font. Y
 TypeScript
 
 ```
-
-provideRtkDesignSystem({
-
-  fontFamily: "Helvetica",
-
-});
-
-
+provideRtkDesignSystem({  fontFamily: "Helvetica",});
 ```
 
 The iOS UI Kit uses the system font (`UIFont.systemFont`) by default. Font customization is not exposed through the `DesignLibraryConfiguratorProtocol`. To change fonts, create a custom `AppThemeProtocol` implementation and override the appearance properties for individual components.
@@ -667,26 +215,7 @@ The iOS UI Kit uses the system font (`UIFont.systemFont`) by default. Font custo
 Swift
 
 ```
-
-class CustomTheme: AppThemeProtocol {
-
-    // ...
-
-    var clockViewAppearance: RtkTextAppearance {
-
-        let model = RtkTextAppearanceModel()
-
-        model.font = UIFont(name: "Helvetica", size: 12) ?? .systemFont(ofSize: 12)
-
-        return model
-
-    }
-
-    // ...
-
-}
-
-
+class CustomTheme: AppThemeProtocol {    // ...    var clockViewAppearance: RtkTextAppearance {        let model = RtkTextAppearanceModel()        model.font = UIFont(name: "Helvetica", size: 12) ?? .systemFont(ofSize: 12)        return model    }    // ...}
 ```
 
 ### Colours
@@ -696,14 +225,7 @@ CSS Variables are set in the format: `R G B`.
 Here are all the color tokens, along with their default values.
 
 ```
-
---rtk-colors-brand-500: 33 96 253;
-
---rtk-colors-background-1000: 8 8 8;
-
-/* ... rest of the shades */
-
-
+--rtk-colors-brand-500: 33 96 253;--rtk-colors-background-1000: 8 8 8;/* ... rest of the shades */
 ```
 
 #### Usage
@@ -725,28 +247,7 @@ Edit color tokens like this. Only the colors you specify will be set.
 JavaScript
 
 ```
-
-const designTokens = {
-
-  theme: "darkest",
-
-  colors: {
-
-    brand: { 500: "#0D51FD" },
-
-    background: { 1000: "#080808" },
-
-    text: "#ffffff",
-
-    "text-on-brand": "#ffffff",
-
-    "video-bg": "#181818",
-
-  },
-
-};
-
-
+const designTokens = {  theme: "darkest",  colors: {    brand: { 500: "#0D51FD" },    background: { 1000: "#080808" },    text: "#ffffff",    "text-on-brand": "#ffffff",    "video-bg": "#181818",  },};
 ```
 
 Brand color shades run from 300 (lightest) to 700 (darkest), with 500 as the primary shade. Background shades run from 600 (lightest) to 1000 (deepest).
@@ -758,41 +259,10 @@ iOS also exposes a `video` property on `BackgroundColorToken` that controls the 
 Swift
 
 ```
-
-class CustomConfigurator: DesignLibraryConfiguratorProtocol {
-
-    let colorBrandBase: BrandColorToken.Shade = .init(hex: "#FF6B35")!
-
-    let colorBackgroundBase: BackgroundColorToken.Shade = .init(hex: "#1A1A1A")!
-
-
-    let textColorBackgroundBase: TextColorToken.Background.Shade = .init(hex: "#FFFFFF")!
-
-    let textColorBrandBase: TextColorToken.Brand.Shade = .init(hex: "#111111")!
-
-
-    let statusDangerColor: StatusColor.Shade = .init(hex: "#FF2D2D")!
-
-    let statusSuccessColor: StatusColor.Shade = .init(hex: "#83D017")!
-
-    let statusWarningColor: StatusColor.Shade = .init(hex: "#FFCD07")!
-
-
-    // Border properties (required by protocol)
-
-    let cornerRadiusRoundFactor: CGFloat = 4.0
-
-    let cornerRadiusExtraRoundFactor: CGFloat = 8.0
-
-    let cornerRadiusCircularFactor: CGFloat = 8.0
-
-    let borderSizeThinFactor: CGFloat = 1.0
-
-    let borderSizeFatFactor: CGFloat = 2.0
-
-}
-
-
+class CustomConfigurator: DesignLibraryConfiguratorProtocol {    let colorBrandBase: BrandColorToken.Shade = .init(hex: "#FF6B35")!    let colorBackgroundBase: BackgroundColorToken.Shade = .init(hex: "#1A1A1A")!
+    let textColorBackgroundBase: TextColorToken.Background.Shade = .init(hex: "#FFFFFF")!    let textColorBrandBase: TextColorToken.Brand.Shade = .init(hex: "#111111")!
+    let statusDangerColor: StatusColor.Shade = .init(hex: "#FF2D2D")!    let statusSuccessColor: StatusColor.Shade = .init(hex: "#83D017")!    let statusWarningColor: StatusColor.Shade = .init(hex: "#FFCD07")!
+    // Border properties (required by protocol)    let cornerRadiusRoundFactor: CGFloat = 4.0    let cornerRadiusExtraRoundFactor: CGFloat = 8.0    let cornerRadiusCircularFactor: CGFloat = 8.0    let borderSizeThinFactor: CGFloat = 1.0    let borderSizeFatFactor: CGFloat = 2.0}
 ```
 
 Android provides a `videoBackground` field on `RtkColorTokens` to set the color shown behind video tiles when no video stream is active. The default value is `#333333`.
@@ -800,20 +270,7 @@ Android provides a `videoBackground` field on `RtkColorTokens` to set the color 
 Kotlin
 
 ```
-
-val customColors = RtkColorTokens(
-
-    brand = BrandColor( /* ... */ ),
-
-    background = BackgroundColor( /* ... */ ),
-
-    text = TextColor( /* ... */ ),
-
-    videoBackground = Color.parseColor("#1A1A1A"),
-
-)
-
-
+val customColors = RtkColorTokens(    brand = BrandColor( /* ... */ ),    background = BackgroundColor( /* ... */ ),    text = TextColor( /* ... */ ),    videoBackground = Color.parseColor("#1A1A1A"),)
 ```
 
 React Native provides three preset themes that set a coordinated background color palette.
@@ -829,20 +286,7 @@ Pass the `theme` property to `provideRtkDesignSystem()`. You can combine a prese
 TypeScript
 
 ```
-
-provideRtkDesignSystem({
-
-  theme: "dark",
-
-  colors: {
-
-    brand: generateBrandColors("#0246FD"),
-
-  },
-
-});
-
-
+provideRtkDesignSystem({  theme: "dark",  colors: {    brand: generateBrandColors("#0246FD"),  },});
 ```
 
 ### Spacing
@@ -854,12 +298,7 @@ The spacing scale is used for setting width, height, margins, paddings, position
 * Current spacing scale ranges from 0 to 96.
 
 ```
-
---rtk-space-1: 4px;
-
-/* ... rest of the spacing scale */
-
-
+--rtk-space-1: 4px;/* ... rest of the spacing scale */
 ```
 
 #### Usage
@@ -869,14 +308,7 @@ Set the base of the spacing scale with `spacingBase` property.
 JavaScript
 
 ```
-
-const designTokens = {
-
-  spacingBase: 4, // value in px
-
-};
-
-
+const designTokens = {  spacingBase: 4, // value in px};
 ```
 
 The `spacingBase` property sets the base unit for the spacing scale in pixels. All spacing values in the UI Kit derive from this base.
@@ -884,14 +316,7 @@ The `spacingBase` property sets the base unit for the spacing scale in pixels. A
 TypeScript
 
 ```
-
-provideRtkDesignSystem({
-
-  spacingBase: 4, // default: 4px
-
-});
-
-
+provideRtkDesignSystem({  spacingBase: 4, // default: 4px});
 ```
 
 Spacing configuration is not available through the design token API on this platform.
@@ -912,16 +337,7 @@ Border Width and Border Radius properties can also be customized with design tok
 JavaScript
 
 ```
-
-const designTokens = {
-
-  borderWidth: "thin",
-
-  borderRadius: "rounded",
-
-};
-
-
+const designTokens = {  borderWidth: "thin",  borderRadius: "rounded",};
 ```
 
 All mobile platforms support the same border radius and border width options.
@@ -940,18 +356,7 @@ Pass `borderRadius` and `borderWidth` directly to the `RtkDesignTokens` construc
 Kotlin
 
 ```
-
-val designTokens = RtkDesignTokens(
-
-    colors = customColors,
-
-    borderRadius = RtkBorderRadiusToken.Circular,
-
-    borderWidth = RtkBorderWidthToken.Thin,
-
-)
-
-
+val designTokens = RtkDesignTokens(    colors = customColors,    borderRadius = RtkBorderRadiusToken.Circular,    borderWidth = RtkBorderWidthToken.Thin,)
 ```
 
 Pass `borderRadius` and `borderWidth` to the `RtkDesignTokens` constructor.
@@ -959,18 +364,7 @@ Pass `borderRadius` and `borderWidth` to the `RtkDesignTokens` constructor.
 Dart
 
 ```
-
-final designTokens = RtkDesignTokens(
-
-  colorToken: colorToken,
-
-  borderRadius: RtkBorderRadius.rounded,
-
-  borderWidth: RtkBorderWidth.thin,
-
-);
-
-
+final designTokens = RtkDesignTokens(  colorToken: colorToken,  borderRadius: RtkBorderRadius.rounded,  borderWidth: RtkBorderWidth.thin,);
 ```
 
 Pass `borderRadius` and `borderWidth` to `provideRtkDesignSystem()`.
@@ -978,16 +372,7 @@ Pass `borderRadius` and `borderWidth` to `provideRtkDesignSystem()`.
 TypeScript
 
 ```
-
-provideRtkDesignSystem({
-
-  borderRadius: "extra-rounded",
-
-  borderWidth: "fat",
-
-});
-
-
+provideRtkDesignSystem({  borderRadius: "extra-rounded",  borderWidth: "fat",});
 ```
 
 Set `cornerRadiusRoundFactor`, `cornerRadiusExtraRoundFactor`, `cornerRadiusCircularFactor`, `borderSizeThinFactor`, and `borderSizeFatFactor` in your `DesignLibraryConfiguratorProtocol` implementation. These factors control the multiplier used for each border style.
@@ -995,29 +380,10 @@ Set `cornerRadiusRoundFactor`, `cornerRadiusExtraRoundFactor`, `cornerRadiusCirc
 Swift
 
 ```
-
-class CustomConfigurator: DesignLibraryConfiguratorProtocol {
-
-    // ... color properties ...
-
-
-    let cornerRadiusRoundFactor: CGFloat = 4.0
-
-    let cornerRadiusExtraRoundFactor: CGFloat = 8.0
-
-    let cornerRadiusCircularFactor: CGFloat = 8.0
-
-
-    let borderSizeThinFactor: CGFloat = 1.0
-
-    let borderSizeFatFactor: CGFloat = 2.0
-
-}
-
-
+class CustomConfigurator: DesignLibraryConfiguratorProtocol {    // ... color properties ...
+    let cornerRadiusRoundFactor: CGFloat = 4.0    let cornerRadiusExtraRoundFactor: CGFloat = 8.0    let cornerRadiusCircularFactor: CGFloat = 8.0
+    let borderSizeThinFactor: CGFloat = 1.0    let borderSizeFatFactor: CGFloat = 2.0}
 DesignLibrary.shared.setConfigurator(configurator: CustomConfigurator())
-
-
 ```
 
 iOS uses `BorderRadiusToken.RadiusType` with values `.sharp`, `.rounded`, `.extrarounded`, and `.circular`. Border width uses `BorderWidthToken.Width` with values `.none`, `.thin`, and `.fat`.

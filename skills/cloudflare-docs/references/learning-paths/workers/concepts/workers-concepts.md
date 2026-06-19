@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -38,45 +38,45 @@ A single instance of the runtime can run hundreds or thousands of isolates, seam
 
 Unlike other serverless providers which use [containerized processes ↗](https://www.cloudflare.com/learning/serverless/serverless-vs-containers/) each running an instance of a language runtime, Workers pays the overhead of a JavaScript runtime once on the start of a container. Workers processes are able to run essentially limitless scripts with almost no individual overhead. Any given isolate can start around a hundred times faster than a Node process on a container or virtual machine. Notably, on startup isolates consume an order of magnitude less memory.
 
-Scheduling and routing
+Scheduling and routing 
 
 Scheduling and routing 
 
-HTTP client
+HTTP client 
 
 HTTP client 
 
-HTTP server
+HTTP server 
 
 HTTP server 
 
-Inbound  
-HTTP proxy  
+Inbound   
+HTTP proxy   
 
 \[Not supported by viewer\] 
 
-Outbound  
-HTTP proxy  
+Outbound   
+HTTP proxy   
 
 \[Not supported by viewer\] 
 
-Supervisor  
+Supervisor   
 
 \[Not supported by viewer\] 
-
-Main Runtime Process
 
 Main Runtime Process 
 
-Outer Sandbox
+Main Runtime Process 
 
 Outer Sandbox 
 
-Disk
+Outer Sandbox 
 
 Disk 
 
-Control plane  
+Disk 
+
+Control plane   
 
 \[Not supported by viewer\] 
 
@@ -112,21 +112,21 @@ Control plane
 
 \[Not supported by viewer\] 
 
-Process  
-Sandbox  
+Process   
+Sandbox   
 
 \[Not supported by viewer\] 
 
  V8 Isolate 
 
 \[Not supported by viewer\] 
-
-Scheduling and routing
 
 Scheduling and routing 
 
-Process  
-Sandbox  
+Scheduling and routing 
+
+Process   
+Sandbox   
 
 \[Not supported by viewer\] 
 
@@ -134,7 +134,7 @@ Sandbox
 
 \[Not supported by viewer\] 
 
-Scheduling and routing
+Scheduling and routing 
 
 Scheduling and routing 
 
@@ -142,41 +142,19 @@ Scheduling and routing
 
 Most Workers are a variation on the default Workers flow:
 
-* [  JavaScript ](#tab-panel-9294)
-* [  TypeScript ](#tab-panel-9295)
+* [  JavaScript ](#tab-panel-9370)
+* [  TypeScript ](#tab-panel-9371)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    return new Response('Hello World!');
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    return new Response('Hello World!');  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    return new Response('Hello World!');
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export default {  async fetch(request, env, ctx): Promise<Response> {    return new Response('Hello World!');  },} satisfies ExportedHandler<Env>;
 ```
 
 For Workers written in [ES modules syntax](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/), when a request to your `*.workers.dev` subdomain or to your Cloudflare-managed domain is received by any of Cloudflare's data centers, the request invokes the [fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) defined in your Worker code with the given request. You can respond to the request by returning a [Response](https://developers.cloudflare.com/workers/runtime-apis/response/) object.

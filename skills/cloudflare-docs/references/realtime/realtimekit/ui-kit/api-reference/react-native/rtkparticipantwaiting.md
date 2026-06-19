@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,45 +28,15 @@ A waiting participant card with accept/reject buttons for waitlist and stage req
 ### Basic Usage
 
 ```
-
 import { RtkParticipantWaiting } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkParticipantWaiting participant={waitingParticipant} />;
-
-}
-
-
+function MyComponent() {  return <RtkParticipantWaiting participant={waitingParticipant} />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkParticipantWaiting } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkParticipantWaiting
-
-      participant={waitingParticipant}
-
-      meeting={meeting}
-
-      iconPack={customIconPack}
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkParticipantWaiting      participant={waitingParticipant}      meeting={meeting}      iconPack={customIconPack}    />  );}
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -14,12 +14,14 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 This tutorial shows you how to use Cloudflare WAN (formerly Magic WAN) with the following versions of the Sophos Firewall:
 
-* **Sophos form factor tested:**  
-   * Sophos Firewall XGS and XG series hardware  
-   * Sophos Firewall virtual appliance on VMware
-* **Sophos software versions tested:**  
-   * SFOS Version 19.0 MR2-Build 472  
-   * SFOS Version 19.5.1 MR1-Build 278
+* **Sophos form factor tested:**
+
+  * Sophos Firewall XGS and XG series hardware
+  * Sophos Firewall virtual appliance on VMware
+* **Sophos software versions tested:**
+
+  * SFOS Version 19.0 MR2-Build 472
+  * SFOS Version 19.5.1 MR1-Build 278
 
 You can connect through [Generic Routing Encapsulation (GRE) or IPsec tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/) to Cloudflare WAN.
 
@@ -32,18 +34,18 @@ The following instructions show how to setup an IPsec connection on your Sophos 
 1. Go to **System** \> **Profiles**.
 2. In **IPsec profiles**, select **Add**.
 3. In the **General settings** group, make sure you have the following settings:  
-   * **Name**: Give your profile a descriptive name.  
-   * **Key exchange**: **IKEv2**  
-   * **Authentication mode**: **Main mode**
+  * **Name**: Give your profile a descriptive name.
+  * **Key exchange**: **IKEv2**
+  * **Authentication mode**: **Main mode**
 4. In the **Phase 1** group, make sure you have the following settings:  
-   * **DH group (key group)**: _20_  
-   * **Encryption**: _AES256_  
-   * **Authentication**: _SHA2 256_
+  * **DH group (key group)**: _20_
+  * **Encryption**: _AES256_
+  * **Authentication**: _SHA2 256_
 5. In the **Phase 2** group, select the following:  
-   * **PFS group (DH group)**: _Same as phase-1_  
-   * **Key life**: _28800_  
-   * **Encryption**: _AES256_  
-   * **Authentication**: _SHA2 256_
+  * **PFS group (DH group)**: _Same as phase-1_
+  * **Key life**: _28800_
+  * **Encryption**: _AES256_
+  * **Authentication**: _SHA2 256_
 6. Enable **Dead Peer Detection**.
 7. In **When peer unreachable**, select _Re-initiate_.
 8. Select **Save**.
@@ -55,14 +57,14 @@ The next step involves configuring a site-to-site IPsec VPN connection on your S
 1. Go to **Configure** \> **Site-to-site VPN**.
 2. In **IPsec**, select **Add**.
 3. In the **General settings** group, make sure you have the following settings:  
-   * **Name**: Give your site-to-site VPN a descriptive name.  
-   * **Connection type**: _Tunnel interface_  
-   * **Gateway type**: _Initiate the connection_
+  * **Name**: Give your site-to-site VPN a descriptive name.
+  * **Connection type**: _Tunnel interface_
+  * **Gateway type**: _Initiate the connection_
 4. In the **Encryption** group, make sure you have the following settings:  
-   * **Authentication type**: **Preshared key**
+  * **Authentication type**: **Preshared key**
 5. In **Gateway settings**, make sure you have the following settings:  
-   * **Gateway address**: Enter one of the Cloudflare anycast IP addresses assigned to your account, available in [Leased IPs ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).  
-   * **Local ID type**: Add the [IKE ID](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/gre-ipsec-tunnels/#supported-ike-id-formats) provided by Cloudflare.
+  * **Gateway address**: Enter one of the Cloudflare anycast IP addresses assigned to your account, available in [Leased IPs ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
+  * **Local ID type**: Add the [IKE ID](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/gre-ipsec-tunnels/#supported-ike-id-formats) provided by Cloudflare.
 ![Configure an IPsec tunnel.](https://developers.cloudflare.com/_astro/2-ipsec-tunnel.EuRwmMGh_Z2fRf19.webp) 
 
 _Note: Labels in this image may reflect a previous product name._
@@ -175,10 +177,7 @@ Add the route on the CLI.
 Terminal window
 
 ```
-
 system gre route add net <IP_ADDRESS> tunnelname <TUNNEL_NAME>
-
-
 ```
 
 ![Add the route on the CLI.](https://developers.cloudflare.com/_astro/gre-route-cli.eRcqLJze_2kJjaG.webp) 
@@ -201,34 +200,7 @@ The Cloudflare dashboard monitors the health of all anycast tunnels on your acco
 Terminal window
 
 ```
-
-curl --request PUT \
-
-https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/ipsec_tunnels/{tunnel_id} \
-
---header "X-Auth-Email: <EMAIL>" \
-
---header "X-Auth-Key: <API_KEY>" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "health_check": {
-
-    "enabled": true,
-
-    "target": "172.64.240.252",
-
-    "type": "request",
-
-    "rate": "mid"
-
-  }
-
-}'
-
-
+curl --request PUT \https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/ipsec_tunnels/{tunnel_id} \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "health_check": {    "enabled": true,    "target": "172.64.240.252",    "type": "request",    "rate": "mid"  }}'
 ```
 
 1. Go to **Configure** \> **Network** \> **Interfaces** \> **Add alias**. Add the IP address provided by Cloudflare for the ICMP probe traffic. This is needed to prevent Sophos firewall from dropping them as spoof packets. This is not the same IP used to create VPN. This is the special IP address for probe traffic only.
@@ -241,29 +213,13 @@ Packet flow will look like the following:
 Terminal window
 
 ```
-
 tcpdump -nn proto 1
-
-
 ```
 
 ```
-
-tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
-
-listening on any, link-type LINUX_SLL (Linux cooked v1), capture size 262144 bytes
-
-
-13:09:55.500453 xfrm1, IN: IP 172.70.51.31 > 172.64.240.252: ICMP echo request, id 33504, seq 0, length 64
-
-13:09:55.500480 xfrm1, OUT: IP 172.64.240.252 > 172.70.51.31: ICMP echo reply, id 33504, seq 0, length 64
-
-
-13:09:55.504669 xfrm1, IN: IP 172.71.29.66 > 172.64.240.252: ICMP echo request, id 60828, seq 0, length 64
-
-13:09:55.504695 xfrm1, OUT: IP 172.64.240.252 > 172.71.29.66: ICMP echo reply, id 60828, seq 0, length 64
-
-
+tcpdump: verbose output suppressed, use -v or -vv for full protocol decodelistening on any, link-type LINUX_SLL (Linux cooked v1), capture size 262144 bytes
+13:09:55.500453 xfrm1, IN: IP 172.70.51.31 > 172.64.240.252: ICMP echo request, id 33504, seq 0, length 6413:09:55.500480 xfrm1, OUT: IP 172.64.240.252 > 172.70.51.31: ICMP echo reply, id 33504, seq 0, length 64
+13:09:55.504669 xfrm1, IN: IP 172.71.29.66 > 172.64.240.252: ICMP echo request, id 60828, seq 0, length 6413:09:55.504695 xfrm1, OUT: IP 172.64.240.252 > 172.71.29.66: ICMP echo reply, id 60828, seq 0, length 64
 ```
 
 ## Verify tunnel status on Sophos Firewall dashboard

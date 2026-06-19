@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,44 +25,7 @@ Set `summarize_on_end: true` when [creating a meeting](https://developers.cloudf
 Terminal window
 
 ```
-
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/meetings" \
-
-  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  -H "Content-Type: application/json" \
-
-  -d '{
-
-    "title": "Product Review",
-
-    "transcribe_on_end": true,
-
-    "summarize_on_end": true,
-
-    "ai_config": {
-
-      "transcription": {
-
-        "language": "en-US"
-
-      },
-
-      "summarization": {
-
-        "word_limit": 500,
-
-        "text_format": "markdown",
-
-        "summary_type": "team_meeting"
-
-      }
-
-    }
-
-  }'
-
-
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/meetings" \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  -H "Content-Type: application/json" \  -d '{    "title": "Product Review",    "transcribe_on_end": true,    "summarize_on_end": true,    "ai_config": {      "transcription": {        "language": "en-US"      },      "summarization": {        "word_limit": 500,        "text_format": "markdown",        "summary_type": "team_meeting"      }    }  }'
 ```
 
 ## Configuration
@@ -96,34 +59,7 @@ Choose a type that matches your meeting for better results:
 Configure the `meeting.summary` event in [RealtimeKit webhooks](https://developers.cloudflare.com/realtime/realtimekit/webhooks/#meetingsummary) to receive the summary download URL when it is ready:
 
 ```
-
-{
-
-  "event": "meeting.summary",
-
-  "meeting": {
-
-    "id": "bbb8940e-1b97-402a-97d6-2708b7feca41",
-
-    "sessionId": "05e57591-d89e-45c9-ae44-08dc1eaad0e0",
-
-    "organizedBy": {
-
-      "id": "c94c437b-592a-4a39-b9e2-47ef1451e43b",
-
-      "name": "Example organization"
-
-    }
-
-  },
-
-  "summaryDownloadUrl": "https://example.com/summary.txt",
-
-  "summaryDownloadUrlExpiry": "2026-06-10T10:30:00.000Z"
-
-}
-
-
+{  "event": "meeting.summary",  "meeting": {    "id": "bbb8940e-1b97-402a-97d6-2708b7feca41",    "sessionId": "05e57591-d89e-45c9-ae44-08dc1eaad0e0",    "organizedBy": {      "id": "c94c437b-592a-4a39-b9e2-47ef1451e43b",      "name": "Example organization"    }  },  "summaryDownloadUrl": "https://example.com/summary.txt",  "summaryDownloadUrlExpiry": "2026-06-10T10:30:00.000Z"}
 ```
 
 ### REST API
@@ -135,12 +71,7 @@ Refer to [Fetch summary of transcripts for a session](https://developers.cloudfl
 Terminal window
 
 ```
-
-curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/sessions/$SESSION_ID/summary" \
-
-  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/sessions/$SESSION_ID/summary" \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 #### Trigger manually
@@ -150,12 +81,7 @@ Use the [Generate summary of transcripts for the session](https://developers.clo
 Terminal window
 
 ```
-
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/sessions/$SESSION_ID/summary" \
-
-  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/sessions/$SESSION_ID/summary" \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ## Example output
@@ -163,38 +89,13 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime
 With `text_format: "markdown"` and `summary_type: "team_meeting"`:
 
 ```
-
 ## Meeting Summary
-
-
 ### Key Discussion Points
-
-
-- Reviewed Q4 roadmap priorities
-
-- Discussed deployment timeline for v2.0
-
-- Identified blockers for the auth migration
-
-
+- Reviewed Q4 roadmap priorities- Discussed deployment timeline for v2.0- Identified blockers for the auth migration
 ### Action Items
-
-
-- @alice: Update design specs by Friday
-
-- @bob: Schedule security review
-
-- @charlie: Create migration runbook
-
-
+- @alice: Update design specs by Friday- @bob: Schedule security review- @charlie: Create migration runbook
 ### Decisions Made
-
-
-- Approved moving forward with Kubernetes migration
-
-- Delayed analytics dashboard to next sprint
-
-
+- Approved moving forward with Kubernetes migration- Delayed analytics dashboard to next sprint
 ```
 
 ## Retention

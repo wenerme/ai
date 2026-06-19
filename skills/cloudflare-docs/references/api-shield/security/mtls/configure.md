@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -60,10 +60,7 @@ Cloudflare recommends also validating the issuer Subject Key Identifier (SKI) ha
 You can implement this by using an expression similar to the following:
 
 ```
-
 not (cf.tls_client_auth.cert_verified and cf.tls_client_auth.cert_issuer_ski eq "A5AC554235DBA6D963B9CDE0185CFAD6E3F55E9F")
-
-
 ```
 
 To obtain the issuer Subject Key Identifier (SKI) hash of a client certificate stored in the `mtls.crt` file, you can run the following OpenSSL command:
@@ -71,17 +68,11 @@ To obtain the issuer Subject Key Identifier (SKI) hash of a client certificate s
 Terminal window
 
 ```
-
 openssl x509 -noout -ext authorityKeyIdentifier -in mtls.crt | tail -n1 | tr -d ': '
-
-
 ```
 
 ```
-
 A5AC554235DBA6D963B9CDE0185CFAD6E3F55E9F
-
-
 ```
 
 ### Check for revoked certificates
@@ -91,10 +82,7 @@ To check for [revoked client certificates](https://developers.cloudflare.com/ssl
 When a request includes a revoked certificate, the `cf.tls_client_auth.cert_revoked` field is set to `true`. If you combined this with the [default mTLS rule](#expression-builder), it would look similar to the following:
 
 ```
-
 ((not cf.tls_client_auth.cert_verified or cf.tls_client_auth.cert_revoked) and http.request.uri.path in {"/admin"})
-
-
 ```
 
 Warning

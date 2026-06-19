@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,429 +22,63 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11672)
-* [  TypeScript ](#tab-panel-11673)
-* [  Hono ](#tab-panel-11674)
-* [  Python ](#tab-panel-11675)
+* [  JavaScript ](#tab-panel-11689)
+* [  TypeScript ](#tab-panel-11690)
+* [  Hono ](#tab-panel-11691)
+* [  Python ](#tab-panel-11692)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request) {
-
-    let endpoint = "https://api.waqi.info/feed/geo:";
-
-    const token = ""; //Use a token from https://aqicn.org/api/
-
-    let html_style = `body{padding:6em; font-family: sans-serif;} h1{color:#f6821f}`;
-
-
+export default {  async fetch(request) {    let endpoint = "https://api.waqi.info/feed/geo:";    const token = ""; //Use a token from https://aqicn.org/api/    let html_style = `body{padding:6em; font-family: sans-serif;} h1{color:#f6821f}`;
     let html_content = "<h1>Weather 🌦</h1>";
-
-
-    const latitude = request.cf.latitude;
-
-    const longitude = request.cf.longitude;
-
-    endpoint += `${latitude};${longitude}/?token=${token}`;
-
-    const init = {
-
-      headers: {
-
-        "content-type": "application/json;charset=UTF-8",
-
-      },
-
-    };
-
-
-    const response = await fetch(endpoint, init);
-
-    const content = await response.json();
-
-
-    html_content += `<p>This is a demo using Workers geolocation data. </p>`;
-
-    html_content += `You are located at: ${latitude},${longitude}.</p>`;
-
-    html_content += `<p>Based off sensor data from <a href="https://developers.cloudflare.com/workers/examples/geolocation-app-weather/%3C/span%3E%3Cspan%20style="--0:#89DDFF;--1:#007474">${content.data.city.url}">${content.data.city.name}</a>:</p>`;
-
-    html_content += `<p>The AQI level is: ${content.data.aqi}.</p>`;
-
-    html_content += `<p>The N02 level is: ${content.data.iaqi.no2?.v}.</p>`;
-
-    html_content += `<p>The O3 level is: ${content.data.iaqi.o3?.v}.</p>`;
-
-    html_content += `<p>The temperature is: ${content.data.iaqi.t?.v}°C.</p>`;
-
-
-    let html = `
-
-      <!DOCTYPE html>
-
-      <head>
-
-        <title>Geolocation: Weather</title>
-
-      </head>
-
-      <body>
-
-        <style>${html_style}</style>
-
-        <div id="container">
-
-        ${html_content}
-
-        </div>
-
-      </body>`;
-
-
-    return new Response(html, {
-
-      headers: {
-
-        "content-type": "text/html;charset=UTF-8",
-
-      },
-
-    });
-
-  },
-
-};
-
-
+    const latitude = request.cf.latitude;    const longitude = request.cf.longitude;    endpoint += `${latitude};${longitude}/?token=${token}`;    const init = {      headers: {        "content-type": "application/json;charset=UTF-8",      },    };
+    const response = await fetch(endpoint, init);    const content = await response.json();
+    html_content += `<p>This is a demo using Workers geolocation data. </p>`;    html_content += `You are located at: ${latitude},${longitude}.</p>`;    html_content += `<p>Based off sensor data from <a href="https://developers.cloudflare.com/workers/examples/geolocation-app-weather/%3C/span%3E%3Cspan%20style="--0:#89DDFF;--1:#007474">${content.data.city.url}">${content.data.city.name}</a>:</p>`;    html_content += `<p>The AQI level is: ${content.data.aqi}.</p>`;    html_content += `<p>The N02 level is: ${content.data.iaqi.no2?.v}.</p>`;    html_content += `<p>The O3 level is: ${content.data.iaqi.o3?.v}.</p>`;    html_content += `<p>The temperature is: ${content.data.iaqi.t?.v}°C.</p>`;
+    let html = `      <!DOCTYPE html>      <head>        <title>Geolocation: Weather</title>      </head>      <body>        <style>${html_style}</style>        <div id="container">        ${html_content}        </div>      </body>`;
+    return new Response(html, {      headers: {        "content-type": "text/html;charset=UTF-8",      },    });  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request): Promise<Response> {
-
-    let endpoint = "https://api.waqi.info/feed/geo:";
-
-    const token = ""; //Use a token from https://aqicn.org/api/
-
-    let html_style = `body{padding:6em; font-family: sans-serif;} h1{color:#f6821f}`;
-
-
+export default {  async fetch(request): Promise<Response> {    let endpoint = "https://api.waqi.info/feed/geo:";    const token = ""; //Use a token from https://aqicn.org/api/    let html_style = `body{padding:6em; font-family: sans-serif;} h1{color:#f6821f}`;
     let html_content = "<h1>Weather 🌦</h1>";
-
-
-    const latitude = request.cf.latitude;
-
-    const longitude = request.cf.longitude;
-
-    endpoint += `${latitude};${longitude}/?token=${token}`;
-
-    const init = {
-
-      headers: {
-
-        "content-type": "application/json;charset=UTF-8",
-
-      },
-
-    };
-
-
-    const response = await fetch(endpoint, init);
-
-    const content = await response.json();
-
-
-    html_content += `<p>This is a demo using Workers geolocation data. </p>`;
-
-    html_content += `You are located at: ${latitude},${longitude}.</p>`;
-
-    html_content += `<p>Based off sensor data from <a href="https://developers.cloudflare.com/workers/examples/geolocation-app-weather/%3C/span%3E%3Cspan%20style="--0:#89DDFF;--1:#007474">${content.data.city.url}">${content.data.city.name}</a>:</p>`;
-
-    html_content += `<p>The AQI level is: ${content.data.aqi}.</p>`;
-
-    html_content += `<p>The N02 level is: ${content.data.iaqi.no2?.v}.</p>`;
-
-    html_content += `<p>The O3 level is: ${content.data.iaqi.o3?.v}.</p>`;
-
-    html_content += `<p>The temperature is: ${content.data.iaqi.t?.v}°C.</p>`;
-
-
-    let html = `
-
-      <!DOCTYPE html>
-
-      <head>
-
-        <title>Geolocation: Weather</title>
-
-      </head>
-
-      <body>
-
-        <style>${html_style}</style>
-
-        <div id="container">
-
-        ${html_content}
-
-        </div>
-
-      </body>`;
-
-
-    return new Response(html, {
-
-      headers: {
-
-        "content-type": "text/html;charset=UTF-8",
-
-      },
-
-    });
-
-  },
-
-} satisfies ExportedHandler;
-
-
+    const latitude = request.cf.latitude;    const longitude = request.cf.longitude;    endpoint += `${latitude};${longitude}/?token=${token}`;    const init = {      headers: {        "content-type": "application/json;charset=UTF-8",      },    };
+    const response = await fetch(endpoint, init);    const content = await response.json();
+    html_content += `<p>This is a demo using Workers geolocation data. </p>`;    html_content += `You are located at: ${latitude},${longitude}.</p>`;    html_content += `<p>Based off sensor data from <a href="https://developers.cloudflare.com/workers/examples/geolocation-app-weather/%3C/span%3E%3Cspan%20style="--0:#89DDFF;--1:#007474">${content.data.city.url}">${content.data.city.name}</a>:</p>`;    html_content += `<p>The AQI level is: ${content.data.aqi}.</p>`;    html_content += `<p>The N02 level is: ${content.data.iaqi.no2?.v}.</p>`;    html_content += `<p>The O3 level is: ${content.data.iaqi.o3?.v}.</p>`;    html_content += `<p>The temperature is: ${content.data.iaqi.t?.v}°C.</p>`;
+    let html = `      <!DOCTYPE html>      <head>        <title>Geolocation: Weather</title>      </head>      <body>        <style>${html_style}</style>        <div id="container">        ${html_content}        </div>      </body>`;
+    return new Response(html, {      headers: {        "content-type": "text/html;charset=UTF-8",      },    });  },} satisfies ExportedHandler;
 ```
 
 TypeScript
 
 ```
-
-import { Hono } from 'hono';
-
-import { html } from 'hono/html';
-
-
+import { Hono } from 'hono';import { html } from 'hono/html';
 type Bindings = {};
-
-
-interface WeatherApiResponse {
-
-  data: {
-
-    aqi: number;
-
-    city: {
-
-      name: string;
-
-      url: string;
-
-    };
-
-    iaqi: {
-
-      no2?: { v: number };
-
-      o3?: { v: number };
-
-      t?: { v: number };
-
-    };
-
-  };
-
-}
-
-
+interface WeatherApiResponse {  data: {    aqi: number;    city: {      name: string;      url: string;    };    iaqi: {      no2?: { v: number };      o3?: { v: number };      t?: { v: number };    };  };}
 const app = new Hono<{ Bindings: Bindings }>();
-
-
-app.get('*', async (c) => {
-
-  // Get API endpoint
-
-  let endpoint = "https://api.waqi.info/feed/geo:";
-
-  const token = ""; // Use a token from https://aqicn.org/api/
-
-
-  // Define styles
-
-  const html_style = `body{padding:6em; font-family: sans-serif;} h1{color:#f6821f}`;
-
-
-  // Get geolocation from Cloudflare request
-
-  const req = c.req.raw;
-
-  const latitude = req.cf?.latitude;
-
-  const longitude = req.cf?.longitude;
-
-
-  // Create complete API endpoint with coordinates
-
-  endpoint += `${latitude};${longitude}/?token=${token}`;
-
-
-  // Fetch weather data
-
-  const init = {
-
-    headers: {
-
-      "content-type": "application/json;charset=UTF-8",
-
-    },
-
-  };
-
-  const response = await fetch(endpoint, init);
-
-  const content = await response.json() as WeatherApiResponse;
-
-
-  // Build HTML content
-
-  const weatherContent = html`
-
-    <h1>Weather 🌦</h1>
-
-    <p>This is a demo using Workers geolocation data.</p>
-
-    <p>You are located at: ${latitude},${longitude}.</p>
-
-    <p>Based off sensor data from <a href="https://developers.cloudflare.com/workers/examples/geolocation-app-weather/%3C/span%3E%3Cspan%20style="--0:#89DDFF;--1:#007474">${content.data.city.url}">${content.data.city.name}</a>:</p>
-
-    <p>The AQI level is: ${content.data.aqi}.</p>
-
-    <p>The N02 level is: ${content.data.iaqi.no2?.v}.</p>
-
-    <p>The O3 level is: ${content.data.iaqi.o3?.v}.</p>
-
-    <p>The temperature is: ${content.data.iaqi.t?.v}°C.</p>
-
-  `;
-
-
-  // Complete HTML document
-
-  const htmlDocument = html`
-
-    <!DOCTYPE html>
-
-    <head>
-
-      <title>Geolocation: Weather</title>
-
-    </head>
-
-    <body>
-
-      <style>${html_style}</style>
-
-      <div id="container">
-
-        ${weatherContent}
-
-      </div>
-
-    </body>
-
-  `;
-
-
-  // Return HTML response
-
-  return c.html(htmlDocument);
-
-});
-
-
+app.get('*', async (c) => {  // Get API endpoint  let endpoint = "https://api.waqi.info/feed/geo:";  const token = ""; // Use a token from https://aqicn.org/api/
+  // Define styles  const html_style = `body{padding:6em; font-family: sans-serif;} h1{color:#f6821f}`;
+  // Get geolocation from Cloudflare request  const req = c.req.raw;  const latitude = req.cf?.latitude;  const longitude = req.cf?.longitude;
+  // Create complete API endpoint with coordinates  endpoint += `${latitude};${longitude}/?token=${token}`;
+  // Fetch weather data  const init = {    headers: {      "content-type": "application/json;charset=UTF-8",    },  };  const response = await fetch(endpoint, init);  const content = await response.json() as WeatherApiResponse;
+  // Build HTML content  const weatherContent = html`    <h1>Weather 🌦</h1>    <p>This is a demo using Workers geolocation data.</p>    <p>You are located at: ${latitude},${longitude}.</p>    <p>Based off sensor data from <a href="https://developers.cloudflare.com/workers/examples/geolocation-app-weather/%3C/span%3E%3Cspan%20style="--0:#89DDFF;--1:#007474">${content.data.city.url}">${content.data.city.name}</a>:</p>    <p>The AQI level is: ${content.data.aqi}.</p>    <p>The N02 level is: ${content.data.iaqi.no2?.v}.</p>    <p>The O3 level is: ${content.data.iaqi.o3?.v}.</p>    <p>The temperature is: ${content.data.iaqi.t?.v}°C.</p>  `;
+  // Complete HTML document  const htmlDocument = html`    <!DOCTYPE html>    <head>      <title>Geolocation: Weather</title>    </head>    <body>      <style>${html_style}</style>      <div id="container">        ${weatherContent}      </div>    </body>  `;
+  // Return HTML response  return c.html(htmlDocument);});
 export default app;
-
-
 ```
 
 Python
 
 ```
-
 from workers import WorkerEntrypoint, Response, fetch
-
-
-class Default(WorkerEntrypoint):
-
-    async def fetch(self, request):
-
-        endpoint = "https://api.waqi.info/feed/geo:"
-
-        token = "" # Use a token from https://aqicn.org/api/
-
-        html_style = "body{padding:6em; font-family: sans-serif;} h1{color:#f6821f}"
-
-        html_content = "<h1>Weather 🌦</h1>"
-
-
-        latitude = request.cf.latitude
-
-        longitude = request.cf.longitude
-
-
-        endpoint += f"{latitude};{longitude}/?token={token}"
-
-        response = await fetch(endpoint)
-
-        content = await response.json()
-
-
-        html_content += "<p>This is a demo using Workers geolocation data. </p>"
-
-        html_content += f"You are located at: {latitude},{longitude}.</p>"
-
-        html_content += f"<p>Based off sensor data from <a href='{content['data']['city']['url']}'>{content['data']['city']['name']}</a>:</p>"
-
-        html_content += f"<p>The AQI level is: {content['data']['aqi']}.</p>"
-
-        html_content += f"<p>The N02 level is: {content['data']['iaqi']['no2']['v']}.</p>"
-
-        html_content += f"<p>The O3 level is: {content['data']['iaqi']['o3']['v']}.</p>"
-
-        html_content += f"<p>The temperature is: {content['data']['iaqi']['t']['v']}°C.</p>"
-
-
-        html = f"""
-
-        <!DOCTYPE html>
-
-          <head>
-
-            <title>Geolocation: Weather</title>
-
-          </head>
-
-          <body>
-
-            <style>{html_style}</style>
-
-            <div id="container">
-
-            {html_content}
-
-            </div>
-
-          </body>
-
-        """
-
-
-        headers = {"content-type": "text/html;charset=UTF-8"}
-
-        return Response(html, headers=headers)
-
-
+class Default(WorkerEntrypoint):    async def fetch(self, request):        endpoint = "https://api.waqi.info/feed/geo:"        token = "" # Use a token from https://aqicn.org/api/        html_style = "body{padding:6em; font-family: sans-serif;} h1{color:#f6821f}"        html_content = "<h1>Weather 🌦</h1>"
+        latitude = request.cf.latitude        longitude = request.cf.longitude
+        endpoint += f"{latitude};{longitude}/?token={token}"        response = await fetch(endpoint)        content = await response.json()
+        html_content += "<p>This is a demo using Workers geolocation data. </p>"        html_content += f"You are located at: {latitude},{longitude}.</p>"        html_content += f"<p>Based off sensor data from <a href='{content['data']['city']['url']}'>{content['data']['city']['name']}</a>:</p>"        html_content += f"<p>The AQI level is: {content['data']['aqi']}.</p>"        html_content += f"<p>The N02 level is: {content['data']['iaqi']['no2']['v']}.</p>"        html_content += f"<p>The O3 level is: {content['data']['iaqi']['o3']['v']}.</p>"        html_content += f"<p>The temperature is: {content['data']['iaqi']['t']['v']}°C.</p>"
+        html = f"""        <!DOCTYPE html>          <head>            <title>Geolocation: Weather</title>          </head>          <body>            <style>{html_style}</style>            <div id="container">            {html_content}            </div>          </body>        """
+        headers = {"content-type": "text/html;charset=UTF-8"}        return Response(html, headers=headers)
 ```
 
 ```json

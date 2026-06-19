@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -66,26 +66,14 @@ Access the development server in your browser at `http://localhost:5173`, where 
 The entry point of your application is `src/worker.tsx`. Open that file in your editor.  
 You will see the `defineApp` function, which handles requests by returning responses to the client:  
 ```  
-import { defineApp } from "rwsdk/worker";  
-import { route, render } from "rwsdk/router";  
-import { Document } from "@/app/Document";  
-import { Home } from "@/app/pages/Home";  
-export default defineApp([  
-  render(Document, [route("/", () => new Response("Hello, World!"))]),  
-]);  
+import { defineApp } from "rwsdk/worker";import { route, render } from "rwsdk/router";  
+import { Document } from "@/app/Document";import { Home } from "@/app/pages/Home";  
+export default defineApp([  render(Document, [route("/", () => new Response("Hello, World!"))]),]);  
 ```  
 Add a `/ping` route handler:  
 ```  
-import { defineApp } from "rwsdk/worker";  
-import { route, render } from "rwsdk/router";  
-export default defineApp([  
-  render(Document, [  
-    route("/", () => new Response("Hello, World!")),  
-    route("/ping", function () {  
-      return <h1>Pong!</h1>;  
-    }),  
-  ]),  
-]);  
+import { defineApp } from "rwsdk/worker";import { route, render } from "rwsdk/router";  
+export default defineApp([  render(Document, [    route("/", () => new Response("Hello, World!")),    route("/ping", function () {      return <h1>Pong!</h1>;    }),  ]),]);  
 ```  
 Navigate to `http://localhost:5173/ping` to see "Pong!" displayed on the page.  
 Routes can return JSX directly. RedwoodSDK has support for React Server Components, which renders JSX on the server and sends HTML to the client.

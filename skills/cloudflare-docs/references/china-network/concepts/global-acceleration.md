@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/china-network/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,14 +21,19 @@ Organizations that serve content or connect employees in Mainland China face con
 Chapters
 
 * ![Introduction](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/18457868eb13222051618b0d138e0225/thumbnails/thumbnail.jpg?fit=crop&time=17s)  
+
  **Introduction** 17s
 * ![Dynamic content outside of Mainland China](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/18457868eb13222051618b0d138e0225/thumbnails/thumbnail.jpg?fit=crop&time=38s)  
+
  **Dynamic content outside of Mainland China** 38s
 * ![Access to global services](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/18457868eb13222051618b0d138e0225/thumbnails/thumbnail.jpg?fit=crop&time=103s)  
+
  **Access to global services** 1m43s
 * ![Private network connectivity](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/18457868eb13222051618b0d138e0225/thumbnails/thumbnail.jpg?fit=crop&time=174s)  
+
  **Private network connectivity** 2m54s
 * ![Summary](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/18457868eb13222051618b0d138e0225/thumbnails/thumbnail.jpg?fit=crop&time=223s)  
+
  **Summary** 3m43s
 
 Global Acceleration can support the following scenarios:

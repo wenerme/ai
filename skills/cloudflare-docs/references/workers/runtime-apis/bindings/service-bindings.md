@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,43 +35,19 @@ You add a Service binding by modifying the [Wrangler configuration file](https:/
 
 For example, if you want Worker A to be able to call Worker B — you'd add the following to the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) for Worker A:
 
-* [  wrangler.jsonc ](#tab-panel-11938)
-* [  wrangler.toml ](#tab-panel-11939)
+* [  wrangler.jsonc ](#tab-panel-11955)
+* [  wrangler.toml ](#tab-panel-11956)
 
 JSONC
 
 ```
-
-{
-
-  "services": [
-
-    {
-
-      "binding": "<BINDING_NAME>",
-
-      "service": "<WORKER_NAME>"
-
-    }
-
-  ]
-
-}
-
-
+{  "services": [    {      "binding": "<BINDING_NAME>",      "service": "<WORKER_NAME>"    }  ]}
 ```
 
 TOML
 
 ```
-
-[[services]]
-
-binding = "<BINDING_NAME>"
-
-service = "<WORKER_NAME>"
-
-
+[[services]]binding = "<BINDING_NAME>"service = "<WORKER_NAME>"
 ```
 
 * `binding`: The name of the key you want to expose on the `env` object.
@@ -88,139 +64,51 @@ Worker A that declares a Service binding to Worker B can call Worker B in two di
 
 This example [extends the WorkerEntrypoint class](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#the-workerentrypoint-class) to support RPC-based Service bindings. First, create the Worker that you want to communicate with. Let's call this "Worker B". Worker B exposes the public method, `add(a, b)`:
 
-* [  wrangler.jsonc ](#tab-panel-11936)
-* [  wrangler.toml ](#tab-panel-11937)
+* [  wrangler.jsonc ](#tab-panel-11953)
+* [  wrangler.toml ](#tab-panel-11954)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "worker_b",
-
-  "main": "./src/workerB.js"
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "worker_b",  "main": "./src/workerB.js"}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "worker_b"
-
-main = "./src/workerB.js"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "worker_b"main = "./src/workerB.js"
 ```
 
 JavaScript
 
 ```
-
 import { WorkerEntrypoint } from "cloudflare:workers";
-
-
-export default class WorkerB extends WorkerEntrypoint {
-
-  // Currently, entrypoints without a named handler are not supported
-
-  async fetch() {
-
-    return new Response(null, { status: 404 });
-
-  }
-
-
-  async add(a, b) {
-
-    return a + b;
-
-  }
-
-}
-
-
+export default class WorkerB extends WorkerEntrypoint {  // Currently, entrypoints without a named handler are not supported  async fetch() {    return new Response(null, { status: 404 });  }
+  async add(a, b) {    return a + b;  }}
 ```
 
 Next, create the Worker that will call Worker B. Let's call this "Worker A". Worker A declares a binding to Worker B. This is what gives it permission to call public methods on Worker B.
 
-* [  wrangler.jsonc ](#tab-panel-11940)
-* [  wrangler.toml ](#tab-panel-11941)
+* [  wrangler.jsonc ](#tab-panel-11957)
+* [  wrangler.toml ](#tab-panel-11958)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "worker_a",
-
-  "main": "./src/workerA.js",
-
-  "services": [
-
-    {
-
-      "binding": "WORKER_B",
-
-      "service": "worker_b"
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "worker_a",  "main": "./src/workerA.js",  "services": [    {      "binding": "WORKER_B",      "service": "worker_b"    }  ]}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "worker_a"
-
-main = "./src/workerA.js"
-
-
-[[services]]
-
-binding = "WORKER_B"
-
-service = "worker_b"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "worker_a"main = "./src/workerA.js"
+[[services]]binding = "WORKER_B"service = "worker_b"
 ```
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const result = await env.WORKER_B.add(1, 2);
-
-    return new Response(result);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const result = await env.WORKER_B.add(1, 2);    return new Response(result);  },};
 ```
 
 To run both Worker A and Worker B in local development, you must run two instances of [Wrangler](https://developers.cloudflare.com/workers/wrangler) in your terminal. For each Worker, open a new terminal and run [npx wrangler@latest dev](https://developers.cloudflare.com/workers/wrangler/commands#dev).
@@ -240,20 +128,7 @@ Local development is supported for Service bindings. For each Worker, open a new
 Terminal window
 
 ```
-
-$ wrangler dev
-
-...
-
-Your worker has access to the following bindings:
-
-- Services:
-
-  - SOME_OTHER_WORKER: some-other-worker [connected]
-
-  - ANOTHER_WORKER: another-worker [not connected]
-
-
+$ wrangler dev...Your worker has access to the following bindings:- Services:  - SOME_OTHER_WORKER: some-other-worker [connected]  - ANOTHER_WORKER: another-worker [not connected]
 ```
 
 Wrangler also supports running multiple Workers at once with one command. To try it out, pass multiple `-c` flags to Wrangler, like this: `wrangler dev -c wrangler.json -c ../other-worker/wrangler.json`. The first config will be treated as the _primary_ worker, which will be exposed over HTTP as usual at `http://localhost:8787`. The remaining config files will be treated as _secondary_ and will only be accessible via a service binding from the primary worker.

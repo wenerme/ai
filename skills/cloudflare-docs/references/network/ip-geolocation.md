@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,9 +18,9 @@ Cloudflare automatically updates its IP geolocation database multiple times per 
 
 ## Availability
 
-| Free         | Pro | Business | Enterprise |     |
-| ------------ | --- | -------- | ---------- | --- |
-| Availability | Yes | Yes      | Yes        | Yes |
+|              | Free | Pro | Business | Enterprise |
+| ------------ | ---- | --- | -------- | ---------- |
+| Availability | Yes  | Yes | Yes      | Yes        |
 
 ## Add IP geolocation information
 
@@ -28,8 +28,8 @@ The recommended procedure to enable IP geolocation information is to [enable the
 
 If you only want the request header for the visitor's country, you can enable **IP Geolocation**.
 
-* [ Dashboard ](#tab-panel-9372)
-* [ API ](#tab-panel-9373)
+* [ Dashboard ](#tab-panel-9448)
+* [ API ](#tab-panel-9449)
 
 To enable **IP Geolocation** in the dashboard:
 

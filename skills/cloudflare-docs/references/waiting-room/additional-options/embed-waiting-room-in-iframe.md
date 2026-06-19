@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waiting-room/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,15 +26,17 @@ To customize how your waiting room responds to cookies, include the `cookie_attr
 
 Available options include:
 
-* `samesite`: Configures the `SameSite` attribute on the waiting room cookie:  
-   * **auto** (default): Meant to be as flexible as possible, defaulting to **lax** but becoming **none** if you have enabled [**Always Use HTTPS**](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/).  
-   * **lax**: Cookies are not sent on typical cross-site subrequests (for example to load images or frames into a third party site), but are sent when a user is navigating to the origin site  
-   * **strict**: Cookies will only be sent in a first-party context.  
-   * **none**: Cookies will always be sent.
-* `secure`: Configures the `Secure` attribute on the waiting room cookie, which requires the request to be made over `https`:  
-   * **auto** (default): Meant to be as flexible as possible, defaulting to **never** but becoming **always** if you have enabled [**Always Use HTTPS**](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/).  
-   * **always**: Cookies can only be sent using `https` requests.  
-   * **never**: Cookies can be sent using `http` or `https` requests.
+* `samesite`: Configures the `SameSite` attribute on the waiting room cookie:
+
+  * **auto** (default): Meant to be as flexible as possible, defaulting to **lax** but becoming **none** if you have enabled [**Always Use HTTPS**](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/).
+  * **lax**: Cookies are not sent on typical cross-site subrequests (for example to load images or frames into a third party site), but are sent when a user is navigating to the origin site
+  * **strict**: Cookies will only be sent in a first-party context.
+  * **none**: Cookies will always be sent.
+* `secure`: Configures the `Secure` attribute on the waiting room cookie, which requires the request to be made over `https`:
+
+  * **auto** (default): Meant to be as flexible as possible, defaulting to **never** but becoming **always** if you have enabled [**Always Use HTTPS**](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/).
+  * **always**: Cookies can only be sent using `https` requests.
+  * **never**: Cookies can be sent using `http` or `https` requests.
 
 ## Allow cookies to pass through iFrames
 
@@ -49,115 +51,19 @@ Request
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Waiting Rooms Write`
 
 Create waiting room
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "shop_waiting_room",
-
-    "description": "Waiting room for webshop",
-
-    "host": "shop.example.com",
-
-    "path": "/shop",
-
-    "queue_all": true,
-
-    "new_users_per_minute": 200,
-
-    "total_active_users": 300,
-
-    "session_duration": 1,
-
-    "disable_session_renewal": false,
-
-    "json_response_enabled": false,
-
-    "queueing_method": "FIFO",
-
-    "cookie_attributes": {
-
-        "samesite": "none",
-
-        "secure": "auto"
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "shop_waiting_room",    "description": "Waiting room for webshop",    "host": "shop.example.com",    "path": "/shop",    "queue_all": true,    "new_users_per_minute": 200,    "total_active_users": 300,    "session_duration": 1,    "disable_session_renewal": false,    "json_response_enabled": false,    "queueing_method": "FIFO",    "cookie_attributes": {        "samesite": "none",        "secure": "auto"    }  }'
 ```
 
 Response
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": [],
-
-  "result": [
-
-    {
-
-      "id": "1111111111111111111111",
-
-      "created_on": "2021-01-01T05:20:00.12345Z",
-
-      "modified_on": "2021-01-01T05:20:00.12345Z",
-
-      "name": "shop_waiting_room",
-
-      "description": "Waiting room for webshop",
-
-      "host": "shop.example.com",
-
-      "path": "/shop",
-
-      "queue_all": true,
-
-      "new_users_per_minute": 200,
-
-      "total_active_users": 300,
-
-      "session_duration": 1,
-
-      "disable_session_renewal": false,
-
-      "json_response_enabled": false,
-
-      "queueing_method": "FIFO",
-
-      "cookie_attributes": {
-
-        "samesite": "none",
-
-        "secure": "auto"
-
-      }
-
-    }
-
-  ]
-
-}
-
-
+{  "success": true,  "errors": [],  "messages": [],  "result": [    {      "id": "1111111111111111111111",      "created_on": "2021-01-01T05:20:00.12345Z",      "modified_on": "2021-01-01T05:20:00.12345Z",      "name": "shop_waiting_room",      "description": "Waiting room for webshop",      "host": "shop.example.com",      "path": "/shop",      "queue_all": true,      "new_users_per_minute": 200,      "total_active_users": 300,      "session_duration": 1,      "disable_session_renewal": false,      "json_response_enabled": false,      "queueing_method": "FIFO",      "cookie_attributes": {        "samesite": "none",        "secure": "auto"      }    }  ]}
 ```
 
 ## Limitations

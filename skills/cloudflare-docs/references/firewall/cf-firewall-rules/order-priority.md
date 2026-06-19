@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/firewall/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -70,10 +70,11 @@ While your priority numbering scheme can be arbitrary, keep the following in min
 * **The evaluation sequence starts from the lowest priority number** and goes to the highest.
 * **Rules without a priority number are evaluated last**, in order of their action precedence. For example, a rule with the _Log_ action is evaluated before a rule that has the _Block_ action. For more on action precedence, refer to [Firewall rules actions](https://developers.cloudflare.com/firewall/cf-firewall-rules/actions/).
 * **Avoid using the number `1` as a priority** to make rule order modification easier in the future.
-* **Consider grouping ranges of priority numbers into categories** that have some meaning for your deployment. Here are some examples:  
-   * 5000-9999: Trusted IP addresses  
-   * 10000-19999: Blocking rules for bad crawlers  
-   * 20000-29999: Blocking rules for abusive users/spam
+* **Consider grouping ranges of priority numbers into categories** that have some meaning for your deployment. Here are some examples:
+
+  * 5000-9999: Trusted IP addresses
+  * 10000-19999: Blocking rules for bad crawlers
+  * 20000-29999: Blocking rules for abusive users/spam
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/firewall/cf-firewall-rules/order-priority/#page","headline":"Order and priority · Cloudflare Firewall Rules (deprecated) docs","description":"Understand firewall rule evaluation order and priority.","url":"https://developers.cloudflare.com/firewall/cf-firewall-rules/order-priority/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

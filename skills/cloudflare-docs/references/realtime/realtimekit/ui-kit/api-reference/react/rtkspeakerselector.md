@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,18 +17,7 @@ A component which lets to manage your audio devices and audio preferences. Emits
 TypeScript
 
 ```
-
-{
-
- prefs: {
-
-   muteNotificationSounds: boolean
-
- }
-
-}
-
-
+{ prefs: {   muteNotificationSounds: boolean }}
 ```
 
 ## Properties
@@ -47,45 +36,15 @@ TypeScript
 ### Basic Usage
 
 ```
-
 import { RtkSpeakerSelector } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return <RtkSpeakerSelector />;
-
-}
-
-
+function MyComponent() {  return <RtkSpeakerSelector />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkSpeakerSelector } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkSpeakerSelector
-
-      meeting={meeting}
-
-      size="md"
-
-      variant={'full' | 'inline'}
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkSpeakerSelector      meeting={meeting}      size="md"      variant={'full' | 'inline'}    />  );}
 ```
 
 ```json

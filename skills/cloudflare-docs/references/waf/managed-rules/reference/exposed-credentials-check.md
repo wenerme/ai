@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -68,100 +68,23 @@ This example deploys the Cloudflare Exposed Credentials Check Managed Ruleset to
 1. Invoke the [Get a zone entry point ruleset](https://developers.cloudflare.com/api/resources/rulesets/subresources/phases/methods/get/) operation to obtain the definition of the entry point ruleset for the `http_request_firewall_managed` phase. You will need the [zone ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) for this task.  
 Get a zone entry point ruleset  
 ```  
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \  
-  --request GET \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
 ```  
 ```  
-{  
-  "result": {  
-    "description": "Zone-level phase entry point",  
-    "id": "<ENTRY_POINT_RULESET_ID>",  
-    "kind": "zone",  
-    "last_updated": "2024-03-16T15:40:08.202335Z",  
-    "name": "zone",  
-    "phase": "http_request_firewall_managed",  
-    "rules": [  
-      // ...  
-    ],  
-    "source": "firewall_managed",  
-    "version": "10"  
-  },  
-  "success": true,  
-  "errors": [],  
-  "messages": []  
-}  
+{  "result": {    "description": "Zone-level phase entry point",    "id": "<ENTRY_POINT_RULESET_ID>",    "kind": "zone",    "last_updated": "2024-03-16T15:40:08.202335Z",    "name": "zone",    "phase": "http_request_firewall_managed",    "rules": [      // ...    ],    "source": "firewall_managed",    "version": "10"  },  "success": true,  "errors": [],  "messages": []}  
 ```
 2. If the entry point ruleset already exists (that is, if you received a `200 OK` status code and the ruleset definition), take note of the ruleset ID in the response. Then, invoke the [Create a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/create/) operation to add an `execute` rule to the existing ruleset deploying the Cloudflare Exposed Credentials Check Managed Ruleset (with ID `c2e184081120413c86c3ab7e14069605`). By default, the rule will be added at the end of the list of rules already in the ruleset.  
 Create a zone ruleset rule  
 ```  
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$ENTRY_POINT_RULESET_ID/rules" \  
-  --request POST \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "action": "execute",  
-    "action_parameters": {  
-        "id": "c2e184081120413c86c3ab7e14069605"  
-    },  
-    "expression": "true",  
-    "description": "Execute the Cloudflare Exposed Credentials Check Managed Ruleset"  
-  }'  
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$ENTRY_POINT_RULESET_ID/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "action": "execute",    "action_parameters": {        "id": "c2e184081120413c86c3ab7e14069605"    },    "expression": "true",    "description": "Execute the Cloudflare Exposed Credentials Check Managed Ruleset"  }'  
 ```  
 ```  
-{  
-  "result": {  
-    "id": "<ENTRY_POINT_RULESET_ID>",  
-    "name": "Zone-level phase entry point",  
-    "description": "",  
-    "kind": "zone",  
-    "version": "11",  
-    "rules": [  
-      // ... any existing rules  
-      {  
-        "id": "<RULE_ID>",  
-        "version": "1",  
-        "action": "execute",  
-        "action_parameters": {  
-          "id": "c2e184081120413c86c3ab7e14069605",  
-          "version": "latest"  
-        },  
-        "expression": "true",  
-        "description": "Execute the Cloudflare Exposed Credentials Check Managed Ruleset",  
-        "last_updated": "2024-03-18T18:08:14.003361Z",  
-        "ref": "<RULE_REF>",  
-        "enabled": true  
-      }  
-    ],  
-    "last_updated": "2024-03-18T18:08:14.003361Z",  
-    "phase": "http_request_firewall_managed"  
-  },  
-  "success": true,  
-  "errors": [],  
-  "messages": []  
-}  
+{  "result": {    "id": "<ENTRY_POINT_RULESET_ID>",    "name": "Zone-level phase entry point",    "description": "",    "kind": "zone",    "version": "11",    "rules": [      // ... any existing rules      {        "id": "<RULE_ID>",        "version": "1",        "action": "execute",        "action_parameters": {          "id": "c2e184081120413c86c3ab7e14069605",          "version": "latest"        },        "expression": "true",        "description": "Execute the Cloudflare Exposed Credentials Check Managed Ruleset",        "last_updated": "2024-03-18T18:08:14.003361Z",        "ref": "<RULE_REF>",        "enabled": true      }    ],    "last_updated": "2024-03-18T18:08:14.003361Z",    "phase": "http_request_firewall_managed"  },  "success": true,  "errors": [],  "messages": []}  
 ```
 3. If the entry point ruleset does not exist (that is, if you received a `404 Not Found` status code in step 1), create it using the [Create a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) operation. Include a single rule in the `rules` array that executes the Cloudflare Exposed Credentials Check Managed Ruleset (with ID `c2e184081120413c86c3ab7e14069605`) for all incoming requests in the zone.  
 Create a zone ruleset  
 ```  
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \  
-  --request POST \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "name": "My ruleset",  
-    "description": "Entry point ruleset for WAF managed rulesets",  
-    "kind": "zone",  
-    "phase": "http_request_firewall_managed",  
-    "rules": [  
-        {  
-            "action": "execute",  
-            "action_parameters": {  
-                "id": "c2e184081120413c86c3ab7e14069605"  
-            },  
-            "expression": "true",  
-            "description": "Execute the Cloudflare Exposed Credentials Check Managed Ruleset"  
-        }  
-    ]  
-  }'  
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "My ruleset",    "description": "Entry point ruleset for WAF managed rulesets",    "kind": "zone",    "phase": "http_request_firewall_managed",    "rules": [        {            "action": "execute",            "action_parameters": {                "id": "c2e184081120413c86c3ab7e14069605"            },            "expression": "true",            "description": "Execute the Cloudflare Exposed Credentials Check Managed Ruleset"        }    ]  }'  
 ```
 
 ### Next steps

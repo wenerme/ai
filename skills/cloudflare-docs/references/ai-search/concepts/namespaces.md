@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,45 +27,19 @@ The namespace binding requires the following minimum package versions for TypeSc
 
 When you add an `ai_search_namespaces` binding to your Wrangler configuration, you specify which namespace the binding has access to. The binding grants full access to all instances within that namespace. You can get, list, create, and delete instances at runtime.
 
-* [  wrangler.jsonc ](#tab-panel-6610)
-* [  wrangler.toml ](#tab-panel-6611)
+* [  wrangler.jsonc ](#tab-panel-6686)
+* [  wrangler.toml ](#tab-panel-6687)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "ai_search_namespaces": [
-
-    {
-
-      "binding": "AI_SEARCH",
-
-      "namespace": "my-namespace"
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "ai_search_namespaces": [    {      "binding": "AI_SEARCH",      "namespace": "my-namespace"    }  ]}
 ```
 
 TOML
 
 ```
-
-[[ai_search_namespaces]]
-
-binding = "AI_SEARCH"
-
-namespace = "my-namespace"
-
-
+[[ai_search_namespaces]]binding = "AI_SEARCH"namespace = "my-namespace"
 ```
 
 At runtime, `env.AI_SEARCH` is the namespace handle. Use `env.AI_SEARCH.get("my-instance")` to get a handle to a specific instance:
@@ -73,16 +47,7 @@ At runtime, `env.AI_SEARCH` is the namespace handle. Use `env.AI_SEARCH.get("my-
 TypeScript
 
 ```
-
-const instance = env.AI_SEARCH.get("my-instance");
-
-const results = await instance.search({
-
-  messages: [{ role: "user", content: "How does caching work?" }],
-
-});
-
-
+const instance = env.AI_SEARCH.get("my-instance");const results = await instance.search({  messages: [{ role: "user", content: "How does caching work?" }],});
 ```
 
 The `get()` method is synchronous and does not make a network call. The instance is resolved lazily when you call a method like `search()` or `chatCompletions()`.
@@ -93,60 +58,20 @@ A `default` namespace is automatically created for every account. If you do not 
 
 You can also bind directly to specific instances in the default namespace using the `ai_search` binding. This binds each entry to a single pre-existing instance without needing to call `get()`.
 
-* [  wrangler.jsonc ](#tab-panel-6612)
-* [  wrangler.toml ](#tab-panel-6613)
+* [  wrangler.jsonc ](#tab-panel-6688)
+* [  wrangler.toml ](#tab-panel-6689)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "ai_search": [
-
-    {
-
-      "binding": "PROD_SEARCH",
-
-      "instance_name": "production"
-
-    },
-
-    {
-
-      "binding": "STAGING_SEARCH",
-
-      "instance_name": "staging"
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "ai_search": [    {      "binding": "PROD_SEARCH",      "instance_name": "production"    },    {      "binding": "STAGING_SEARCH",      "instance_name": "staging"    }  ]}
 ```
 
 TOML
 
 ```
-
-[[ai_search]]
-
-binding = "PROD_SEARCH"
-
-instance_name = "production"
-
-
-[[ai_search]]
-
-binding = "STAGING_SEARCH"
-
-instance_name = "staging"
-
-
+[[ai_search]]binding = "PROD_SEARCH"instance_name = "production"
+[[ai_search]]binding = "STAGING_SEARCH"instance_name = "staging"
 ```
 
 The `ai_search` binding provides the same instance methods (`search()`, `chatCompletions()`, `info()`, `stats()`, `items`) but does not support namespace-level operations like `list()`, `create()`, or `delete()`.
@@ -155,60 +80,20 @@ The `ai_search` binding provides the same instance methods (`search()`, `chatCom
 
 You can declare multiple namespace bindings in the same Worker. Each binding maps to a different namespace and provides isolated access to its instances.
 
-* [  wrangler.jsonc ](#tab-panel-6614)
-* [  wrangler.toml ](#tab-panel-6615)
+* [  wrangler.jsonc ](#tab-panel-6690)
+* [  wrangler.toml ](#tab-panel-6691)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "ai_search_namespaces": [
-
-    {
-
-      "binding": "BLOG_SEARCH",
-
-      "namespace": "blog"
-
-    },
-
-    {
-
-      "binding": "SUPPORT_SEARCH",
-
-      "namespace": "support"
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "ai_search_namespaces": [    {      "binding": "BLOG_SEARCH",      "namespace": "blog"    },    {      "binding": "SUPPORT_SEARCH",      "namespace": "support"    }  ]}
 ```
 
 TOML
 
 ```
-
-[[ai_search_namespaces]]
-
-binding = "BLOG_SEARCH"
-
-namespace = "blog"
-
-
-[[ai_search_namespaces]]
-
-binding = "SUPPORT_SEARCH"
-
-namespace = "support"
-
-
+[[ai_search_namespaces]]binding = "BLOG_SEARCH"namespace = "blog"
+[[ai_search_namespaces]]binding = "SUPPORT_SEARCH"namespace = "support"
 ```
 
 ### Common reasons to use multiple namespaces

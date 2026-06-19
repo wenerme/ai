@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -39,42 +39,13 @@ You may add custom metadata to Cloudflare via the Custom Hostnames API. This dat
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `SSL and Certificates Write`
 
 Edit Custom Hostname
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \
-
-  --request PATCH \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "ssl": {
-
-        "method": "http",
-
-        "type": "dv"
-
-    },
-
-    "custom_metadata": {
-
-        "customer_id": "12345",
-
-        "redirect_to_https": true,
-
-        "security_tag": "low"
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "ssl": {        "method": "http",        "type": "dv"    },    "custom_metadata": {        "customer_id": "12345",        "redirect_to_https": true,        "security_tag": "low"    }  }'
 ```
 
 Changes to metadata will propagate across Cloudflare's edge within 30 seconds.
@@ -87,87 +58,21 @@ The metadata object will be accessible on each request using the `request.cf.hos
 
 In the example below we will use the user\_id in the Worker that was submitted using the API call above `"custom_metadata":{"customer_id":"12345","redirect_to_https": true,"security_tag":"low"}`, and set a request header to send the `customer_id` to the origin:
 
-* [  JavaScript ](#tab-panel-7013)
-* [  TypeScript ](#tab-panel-7014)
+* [  JavaScript ](#tab-panel-7089)
+* [  TypeScript ](#tab-panel-7090)
 
 JavaScript
 
 ```
-
-export default {
-
-  /**
-
-   * Fetch and add a X-Customer-Id header to the origin based on hostname
-
-   * @param {Request} request
-
-   */
-
-  async fetch(request, env, ctx) {
-
-    const customer_id = request.cf.hostMetadata.customer_id;
-
-    const newHeaders = new Headers(request.headers);
-
-    newHeaders.append("X-Customer-Id", customer_id);
-
-
-    const init = {
-
-      headers: newHeaders,
-
-      method: request.method,
-
-    };
-
-    return fetch(request.url, init);
-
-  },
-
-};
-
-
+export default {  /**   * Fetch and add a X-Customer-Id header to the origin based on hostname   * @param {Request} request   */  async fetch(request, env, ctx) {    const customer_id = request.cf.hostMetadata.customer_id;    const newHeaders = new Headers(request.headers);    newHeaders.append("X-Customer-Id", customer_id);
+    const init = {      headers: newHeaders,      method: request.method,    };    return fetch(request.url, init);  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  /**
-
-   * Fetch and add a X-Customer-Id header to the origin based on hostname
-
-   * @param {Request} request
-
-   */
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    const customer_id = request.cf.hostMetadata.customer_id;
-
-    const newHeaders = new Headers(request.headers);
-
-    newHeaders.append("X-Customer-Id", customer_id);
-
-
-    const init = {
-
-      headers: newHeaders,
-
-      method: request.method,
-
-    };
-
-    return fetch(request.url, init);
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export default {  /**   * Fetch and add a X-Customer-Id header to the origin based on hostname   * @param {Request} request   */  async fetch(request, env, ctx): Promise<Response> {    const customer_id = request.cf.hostMetadata.customer_id;    const newHeaders = new Headers(request.headers);    newHeaders.append("X-Customer-Id", customer_id);
+    const init = {      headers: newHeaders,      method: request.method,    };    return fetch(request.url, init);  },} satisfies ExportedHandler<Env>;
 ```
 
 ## Accessing custom metadata in a rule expression
@@ -177,10 +82,7 @@ Use the [cf.hostname.metadata](https://developers.cloudflare.com/ruleset-engine/
 The following rule expression defines that there will be a rule match if the `security_tag` value in custom metadata contains the value `low`:
 
 ```
-
 lookup_json_string(cf.hostname.metadata, "security_tag") eq "low"
-
-
 ```
 
 ---

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,14 +30,7 @@ A confirmation dialog screen shown when the user's request to join stage is appr
 Kotlin
 
 ```
-
-val rtkJoinStage = RtkJoinStageDialog(requireContext())
-
-rtkJoinStage.show()
-
-rtkJoinStage.activate(meeting)
-
-
+val rtkJoinStage = RtkJoinStageDialog(requireContext())rtkJoinStage.show()rtkJoinStage.activate(meeting)
 ```
 
 ```json

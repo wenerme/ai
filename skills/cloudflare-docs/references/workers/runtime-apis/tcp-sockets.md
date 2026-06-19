@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,93 +33,68 @@ The `connect()` function returns a TCP socket, with both a [readable](https://de
 TypeScript
 
 ```
-
 import { connect } from 'cloudflare:sockets';
-
-
-export default {
-
-  async fetch(req): Promise<Response> {
-
-    const gopherAddr = { hostname: "gopher.floodgap.com", port: 70 };
-
-    const url = new URL(req.url);
-
-
-    try {
-
-      const socket = connect(gopherAddr);
-
-
-      const writer = socket.writable.getWriter()
-
-      const encoder = new TextEncoder();
-
-      const encoded = encoder.encode(url.pathname + "\r\n");
-
-      await writer.write(encoded);
-
-      await writer.close();
-
-
-      return new Response(socket.readable, { headers: { "Content-Type": "text/plain" } });
-
-    } catch (error) {
-
-      return new Response("Socket connection failed: " + error, { status: 500 });
-
-    }
-
-  }
-
-} satisfies ExportedHandler;
-
-
+export default {  async fetch(req): Promise<Response> {    const gopherAddr = { hostname: "gopher.floodgap.com", port: 70 };    const url = new URL(req.url);
+    try {      const socket = connect(gopherAddr);
+      const writer = socket.writable.getWriter()      const encoder = new TextEncoder();      const encoded = encoder.encode(url.pathname + "\r\n");      await writer.write(encoded);      await writer.close();
+      return new Response(socket.readable, { headers: { "Content-Type": "text/plain" } });    } catch (error) {      return new Response("Socket connection failed: " + error, { status: 500 });    }  }} satisfies ExportedHandler;
 ```
 
 * `connect(address: SocketAddress | string, options?: optional SocketOptions)` : `Socket`  
-   * `connect()` accepts either a URL string or [SocketAddress](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#socketaddress) to define the hostname and port number to connect to, and an optional configuration object, [SocketOptions](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#socketoptions). It returns an instance of a [Socket](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#socket).
+  * `connect()` accepts either a URL string or [SocketAddress](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#socketaddress) to define the hostname and port number to connect to, and an optional configuration object, [SocketOptions](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#socketoptions). It returns an instance of a [Socket](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#socket).
 
 ### `SocketAddress`
 
-* `hostname` string  
-   * The hostname to connect to. Example: `cloudflare.com`.
-* `port` number  
-   * The port number to connect to. Example: `5432`.
+* `hostname` string
+
+  * The hostname to connect to. Example: `cloudflare.com`.
+* `port` number
+
+  * The port number to connect to. Example: `5432`.
 
 ### `SocketOptions`
 
-* `secureTransport` "off" | "on" | "starttls" — Defaults to `off`  
-   * Specifies whether or not to use [TLS ↗](https://www.cloudflare.com/learning/ssl/transport-layer-security-tls/) when creating the TCP socket.  
-   * `off` — Do not use TLS.  
-   * `on` — Use TLS.  
-   * `starttls` — Do not use TLS initially, but allow the socket to be upgraded to use TLS by calling [startTls()](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#opportunistic-tls-starttls).
-* `allowHalfOpen` boolean — Defaults to `false`  
-   * Defines whether the writable side of the TCP socket will automatically close on end-of-file (EOF). When set to `false`, the writable side of the TCP socket will automatically close on EOF. When set to `true`, the writable side of the TCP socket will remain open on EOF.  
-   * This option is similar to that offered by the Node.js [net module ↗](https://nodejs.org/api/net.html) and allows interoperability with code which utilizes it.
+* `secureTransport` "off" | "on" | "starttls" — Defaults to `off`
+
+  * Specifies whether or not to use [TLS ↗](https://www.cloudflare.com/learning/ssl/transport-layer-security-tls/) when creating the TCP socket.
+  * `off` — Do not use TLS.
+  * `on` — Use TLS.
+  * `starttls` — Do not use TLS initially, but allow the socket to be upgraded to use TLS by calling [startTls()](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#opportunistic-tls-starttls).
+* `allowHalfOpen` boolean — Defaults to `false`
+
+  * Defines whether the writable side of the TCP socket will automatically close on end-of-file (EOF). When set to `false`, the writable side of the TCP socket will automatically close on EOF. When set to `true`, the writable side of the TCP socket will remain open on EOF.
+  * This option is similar to that offered by the Node.js [net module ↗](https://nodejs.org/api/net.html) and allows interoperability with code which utilizes it.
 
 ### `SocketInfo`
 
-* `remoteAddress` string | null  
-   * The address of the remote peer the socket is connected to. May not always be set.
-* `localAddress` string | null  
-   * The address of the local network endpoint for this socket. May not always be set.
+* `remoteAddress` string | null
+
+  * The address of the remote peer the socket is connected to. May not always be set.
+* `localAddress` string | null
+
+  * The address of the local network endpoint for this socket. May not always be set.
 
 ### `Socket`
 
-* `readable` : ReadableStream  
-   * Returns the readable side of the TCP socket.
-* `writable` : WritableStream  
-   * Returns the writable side of the TCP socket.  
-   * The `WritableStream` returned only accepts chunks of `Uint8Array` or its views.
-* `opened` `Promise<SocketInfo>`  
-   * This promise is resolved when the socket connection is established and is rejected if the socket encounters an error.
-* `closed` `Promise<void>`  
-   * This promise is resolved when the socket is closed and is rejected if the socket encounters an error.
-* `close()` `Promise<void>`  
-   * Closes the TCP socket. Both the readable and writable streams are forcibly closed.
-* `startTls()` : Socket  
-   * Upgrades an insecure socket to a secure one that uses TLS, returning a new [Socket](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets#socket). Note that in order to call `startTls()`, you must set [secureTransport](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#socketoptions) to `starttls` when initially calling `connect()` to create the socket.
+* `readable` : ReadableStream
+
+  * Returns the readable side of the TCP socket.
+* `writable` : WritableStream
+
+  * Returns the writable side of the TCP socket.
+  * The `WritableStream` returned only accepts chunks of `Uint8Array` or its views.
+* `opened` `Promise<SocketInfo>`
+
+  * This promise is resolved when the socket connection is established and is rejected if the socket encounters an error.
+* `closed` `Promise<void>`
+
+  * This promise is resolved when the socket is closed and is rejected if the socket encounters an error.
+* `close()` `Promise<void>`
+
+  * Closes the TCP socket. Both the readable and writable streams are forcibly closed.
+* `startTls()` : Socket
+
+  * Upgrades an insecure socket to a secure one that uses TLS, returning a new [Socket](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets#socket). Note that in order to call `startTls()`, you must set [secureTransport](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#socketoptions) to `starttls` when initially calling `connect()` to create the socket.
 
 ## Opportunistic TLS (StartTLS)
 
@@ -128,23 +103,8 @@ Many TCP-based systems, including databases and email servers, require that clie
 TypeScript
 
 ```
-
 import { connect } from "cloudflare:sockets"
-
-
-const address = {
-
-  hostname: "example-postgres-db.com",
-
-  port: 5432
-
-};
-
-const socket = connect(address, { secureTransport: "starttls" });
-
-const secureSocket = socket.startTls();
-
-
+const address = {  hostname: "example-postgres-db.com",  port: 5432};const socket = connect(address, { secureTransport: "starttls" });const secureSocket = socket.startTls();
 ```
 
 * `startTls()` can only be called if `secureTransport` is set to `starttls` when creating the initial TCP socket.
@@ -158,45 +118,8 @@ To handle errors when creating a new TCP socket, reading from a socket, or writi
 TypeScript
 
 ```
-
-import { connect } from 'cloudflare:sockets';
-
-const connectionUrl = { hostname: "google.com", port: 80 };
-
-export interface Env { }
-
-export default {
-
-  async fetch(req, env, ctx): Promise<Response> {
-
-    try {
-
-      const socket = connect(connectionUrl);
-
-      const writer = socket.writable.getWriter();
-
-      const encoder = new TextEncoder();
-
-      const encoded = encoder.encode("GET / HTTP/1.0\r\n\r\n");
-
-      await writer.write(encoded);
-
-      await writer.close();
-
-
-      return new Response(socket.readable, { headers: { "Content-Type": "text/plain" } });
-
-    } catch (error) {
-
-      return new Response(`Socket connection failed: ${error}`, { status: 500 });
-
-    }
-
-  }
-
-} satisfies ExportedHandler<Env>;
-
-
+import { connect } from 'cloudflare:sockets';const connectionUrl = { hostname: "google.com", port: 80 };export interface Env { }export default {  async fetch(req, env, ctx): Promise<Response> {    try {      const socket = connect(connectionUrl);      const writer = socket.writable.getWriter();      const encoder = new TextEncoder();      const encoded = encoder.encode("GET / HTTP/1.0\r\n\r\n");      await writer.write(encoded);      await writer.close();
+      return new Response(socket.readable, { headers: { "Content-Type": "text/plain" } });    } catch (error) {      return new Response(`Socket connection failed: ${error}`, { status: 500 });    }  }} satisfies ExportedHandler<Env>;
 ```
 
 ## Close TCP connections
@@ -206,22 +129,9 @@ You can close a TCP connection by calling `close()` on the socket. This will clo
 TypeScript
 
 ```
-
 import { connect } from "cloudflare:sockets"
-
-
-const socket = connect({ hostname: "my-url.com", port: 70 });
-
-const reader = socket.readable.getReader();
-
-socket.close();
-
-
-// After close() is called, you can no longer read from the readable side of the socket
-
-const reader = socket.readable.getReader(); // This fails
-
-
+const socket = connect({ hostname: "my-url.com", port: 70 });const reader = socket.readable.getReader();socket.close();
+// After close() is called, you can no longer read from the readable side of the socketconst reader = socket.readable.getReader(); // This fails
 ```
 
 ## Considerations

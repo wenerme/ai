@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -38,129 +38,16 @@ This example demonstrates retrying requests using the recommended exponential ba
 TypeScript
 
 ```
-
 import { DurableObject } from "cloudflare:workers";
-
-
-export interface Env {
-
-  ErrorThrowingObject: DurableObjectNamespace;
-
-}
-
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    let userId = new URL(request.url).searchParams.get("userId") || "";
-
-
-    // Retry behavior can be adjusted to fit your application.
-
-    let maxAttempts = 3;
-
-    let baseBackoffMs = 100;
-
-    let maxBackoffMs = 20000;
-
-
-    let attempt = 0;
-
-    while (true) {
-
-      // Try sending the request
-
-      try {
-
-        // Create a Durable Object stub for each attempt, because certain types of
-
-        // errors will break the Durable Object stub.
-
-        const doStub = env.ErrorThrowingObject.getByName(userId);
-
-        const resp = await doStub.fetch("http://your-do/");
-
-
-        return Response.json(resp);
-
-      } catch (e: any) {
-
-        if (!e.retryable) {
-
-          // Failure was not a transient internal error, so don't retry.
-
-          break;
-
-        }
-
-      }
-
-      let backoffMs = Math.min(
-
-        maxBackoffMs,
-
-        baseBackoffMs * Math.random() * Math.pow(2, attempt),
-
-      );
-
-      attempt += 1;
-
-      if (attempt >= maxAttempts) {
-
-        // Reached max attempts, so don't retry.
-
-        break;
-
-      }
-
-      await scheduler.wait(backoffMs);
-
-    }
-
-    return new Response("server error", { status: 500 });
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
-export class ErrorThrowingObject extends DurableObject {
-
-  constructor(state: DurableObjectState, env: Env) {
-
-    super(state, env);
-
-
-    // Any exceptions that are raised in your constructor will also set the
-
-    // .remote property to True
-
-    throw new Error("no good");
-
-  }
-
-
-  async fetch(req: Request) {
-
-    // Generate an uncaught exception
-
-    // A .remote property will be added to the exception propagated to the caller
-
-    // and will be set to True
-
-    throw new Error("example error");
-
-
-    // We never reach this
-
-    return Response.json({});
-
-  }
-
-}
-
-
+export interface Env {  ErrorThrowingObject: DurableObjectNamespace;}
+export default {  async fetch(request, env, ctx) {    let userId = new URL(request.url).searchParams.get("userId") || "";
+    // Retry behavior can be adjusted to fit your application.    let maxAttempts = 3;    let baseBackoffMs = 100;    let maxBackoffMs = 20000;
+    let attempt = 0;    while (true) {      // Try sending the request      try {        // Create a Durable Object stub for each attempt, because certain types of        // errors will break the Durable Object stub.        const doStub = env.ErrorThrowingObject.getByName(userId);        const resp = await doStub.fetch("http://your-do/");
+        return Response.json(resp);      } catch (e: any) {        if (!e.retryable) {          // Failure was not a transient internal error, so don't retry.          break;        }      }      let backoffMs = Math.min(        maxBackoffMs,        baseBackoffMs * Math.random() * Math.pow(2, attempt),      );      attempt += 1;      if (attempt >= maxAttempts) {        // Reached max attempts, so don't retry.        break;      }      await scheduler.wait(backoffMs);    }    return new Response("server error", { status: 500 });  },} satisfies ExportedHandler<Env>;
+export class ErrorThrowingObject extends DurableObject {  constructor(state: DurableObjectState, env: Env) {    super(state, env);
+    // Any exceptions that are raised in your constructor will also set the    // .remote property to True    throw new Error("no good");  }
+  async fetch(req: Request) {    // Generate an uncaught exception    // A .remote property will be added to the exception propagated to the caller    // and will be set to True    throw new Error("example error");
+    // We never reach this    return Response.json({});  }}
 ```
 
 ```json

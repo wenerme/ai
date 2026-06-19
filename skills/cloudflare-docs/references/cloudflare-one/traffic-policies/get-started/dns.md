@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -58,49 +58,33 @@ To confirm that your device's DNS queries are flowing through Gateway:
 
 A DNS policy has two parts: a **traffic condition** that defines which queries to match (for example, all queries to gambling sites) and an **action** that defines what to do with matching queries (for example, block them). To create a new DNS policy:
 
-* [ Dashboard ](#tab-panel-7604)
-* [ API ](#tab-panel-7605)
+* [ Dashboard ](#tab-panel-7680)
+* [ API ](#tab-panel-7681)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
 2. In the **DNS** tab, select **Add a policy**.
 3. Name the policy.
 4. Under **Traffic**, use the condition builder to define which DNS queries this policy applies to. Select a selector (such as **Security Categories**), an operator (such as **in**), and one or more values.
 5. Choose an **Action** to take when traffic matches the condition. For example, we recommend adding a policy to block all [security categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#security-categories):  
-| Selector            | Operator | Value                | Action |  
-| ------------------- | -------- | -------------------- | ------ |  
+
+| Selector            | Operator | Value                | Action |
+| ------------------- | -------- | -------------------- | ------ |
 | Security Categories | in       | _All security risks_ | Block  |
 6. Select **Create policy**.
 
-1. [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:  
-| Type    | Item       | Permission |  
-| ------- | ---------- | ---------- |  
+1. [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:
+
+| Type    | Item       | Permission |
+| ------- | ---------- | ---------- |
 | Account | Zero Trust | Edit       |
 2. (Optional) Configure your API environment variables to include your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and API token.
 3. Send a `POST` request to the [Create a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/rules/methods/create/) endpoint. For example, the following request creates a policy that blocks all default [security categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#security-categories). The numeric IDs in the `traffic` field (such as `68`, `178`, `80`) correspond to Cloudflare's predefined security threat categories — refer to [domain categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#security-categories) for the full mapping. The `precedence` field controls evaluation order when multiple policies match (`0` means this policy is evaluated first).  
 Create a Zero Trust Gateway rule  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  
-  --request POST \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "name": "Block security threats",  
-    "description": "Block all default Cloudflare DNS security categories",  
-    "precedence": 0,  
-    "enabled": true,  
-    "action": "block",  
-    "filters": [  
-        "dns"  
-    ],  
-    "traffic": "any(dns.security_category[*] in {68 178 80 83 176 175 117 131 134 151 153})",  
-    "identity": ""  
-  }'  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Block security threats",    "description": "Block all default Cloudflare DNS security categories",    "precedence": 0,    "enabled": true,    "action": "block",    "filters": [        "dns"    ],    "traffic": "any(dns.security_category[*] in {68 178 80 83 176 175 117 131 134 151 153})",    "identity": ""  }'  
 ```  
 ```  
-{  
-   "success": true,  
-   "errors": [],  
-   "messages": []  
-}  
+{   "success": true,   "errors": [],   "messages": []}  
 ```  
 The API will respond with a summary of the policy and the result of your request.
 

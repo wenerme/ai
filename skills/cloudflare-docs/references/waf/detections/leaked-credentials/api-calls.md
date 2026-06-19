@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,27 +26,14 @@ To turn on leaked credentials detection, use a `POST` request similar to the fol
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone WAF Write`
 * `Account WAF Write`
 
 Set Leaked Credential Checks Status
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "enabled": true
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "enabled": true  }'
 ```
 
 ### Turn off leaked credentials detection
@@ -55,27 +42,14 @@ To turn off leaked credentials detection, use a `POST` request similar to the fo
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone WAF Write`
 * `Account WAF Write`
 
 Set Leaked Credential Checks Status
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "enabled": false
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "enabled": false  }'
 ```
 
 ### Get status of leaked credentials detection
@@ -84,7 +58,7 @@ To obtain the current status of the leaked credentials detection, use a `GET` re
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone WAF Write`
 * `Zone WAF Read`
 * `Account WAF Write`
@@ -93,35 +67,11 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Get Leaked Credential Checks Status
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```
-
-{
-
-  "result": {
-
-    "enabled": true
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "enabled": true  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 ## Custom detection location operations
@@ -134,29 +84,14 @@ To add a custom detection location, use a `POST` request similar to the followin
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone WAF Write`
 * `Account WAF Write`
 
 Create Leaked Credential Checks Custom Detection
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks/detections" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "username": "lookup_json_string(http.request.body.raw, \"user\")",
-
-    "password": "lookup_json_string(http.request.body.raw, \"secret\")"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks/detections" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "username": "lookup_json_string(http.request.body.raw, \"user\")",    "password": "lookup_json_string(http.request.body.raw, \"secret\")"  }'
 ```
 
 ### Get existing custom detection locations
@@ -165,7 +100,7 @@ To get a list of existing custom detection locations, use a `GET` request simila
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone WAF Write`
 * `Zone WAF Read`
 * `Account WAF Write`
@@ -174,45 +109,11 @@ At least one of the following [token permissions](https://developers.cloudflare.
 List Leaked Credential Checks Custom Detections
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks/detections" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks/detections" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```
-
-{
-
-  "result": [
-
-    {
-
-      "id": "<DETECTION_ID>",
-
-      "username": "lookup_json_string(http.request.body.raw, \"user\")",
-
-      "password": "lookup_json_string(http.request.body.raw, \"secret\")"
-
-    }
-
-    // (...)
-
-  ],
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": [    {      "id": "<DETECTION_ID>",      "username": "lookup_json_string(http.request.body.raw, \"user\")",      "password": "lookup_json_string(http.request.body.raw, \"secret\")"    }    // (...)  ],  "success": true,  "errors": [],  "messages": []}
 ```
 
 ### Delete a custom detection location
@@ -221,21 +122,14 @@ To delete a custom detection location, use a `DELETE` request similar to the fol
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone WAF Write`
 * `Account WAF Write`
 
 Delete Leaked Credential Checks Custom Detection
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks/detections/$DETECTION_ID" \
-
-  --request DELETE \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks/detections/$DETECTION_ID" \  --request DELETE \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,169 +28,49 @@ The Llama 3.2 instruction-tuned text only models are optimized for multilingual 
 
 ## Playground
 
-Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and an instant way to preview and test a model directly in the browser.
+Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and an instant way to preview and test a model directly in the browser. 
 
-[Launch the LLM Playground](https://playground.ai.cloudflare.com/?model=@cf/meta/llama-3.2-1b-instruct) 
+[ Launch the LLM Playground ](https://playground.ai.cloudflare.com/?model=@cf/meta/llama-3.2-1b-instruct) 
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-4962)
-* [  TypeScript ](#tab-panel-4963)
-* [  Python ](#tab-panel-4964)
-* [  curl ](#tab-panel-4965)
+* [  Worker (Streaming) ](#tab-panel-5036)
+* [  TypeScript ](#tab-panel-5037)
+* [  Python ](#tab-panel-5038)
+* [  curl ](#tab-panel-5039)
 
 TypeScript
 
 ```
-
-export interface Env {
-
-  AI: Ai;
-
-}
-
-
-export default {
-
-  async fetch(request, env): Promise<Response> {
-
-
-    const messages = [
-
-      { role: "system", content: "You are a friendly assistant" },
-
-      {
-
-        role: "user",
-
-        content: "What is the origin of the phrase Hello, World",
-
-      },
-
-    ];
-
-
-    const stream = await env.AI.run("@cf/meta/llama-3.2-1b-instruct", {
-
-      messages,
-
-      stream: true,
-
-    });
-
-
-    return new Response(stream, {
-
-      headers: { "content-type": "text/event-stream" },
-
-    });
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export interface Env {  AI: Ai;}
+export default {  async fetch(request, env): Promise<Response> {
+    const messages = [      { role: "system", content: "You are a friendly assistant" },      {        role: "user",        content: "What is the origin of the phrase Hello, World",      },    ];
+    const stream = await env.AI.run("@cf/meta/llama-3.2-1b-instruct", {      messages,      stream: true,    });
+    return new Response(stream, {      headers: { "content-type": "text/event-stream" },    });  },} satisfies ExportedHandler<Env>;
 ```
 
 ```
-
-export interface Env {
-
-  AI: Ai;
-
-}
-
-
-export default {
-
-  async fetch(request, env): Promise<Response> {
-
-
-    const messages = [
-
-      { role: "system", content: "You are a friendly assistant" },
-
-      {
-
-        role: "user",
-
-        content: "What is the origin of the phrase Hello, World",
-
-      },
-
-    ];
-
-    const response = await env.AI.run("@cf/meta/llama-3.2-1b-instruct", { messages });
-
-
-    return Response.json(response);
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export interface Env {  AI: Ai;}
+export default {  async fetch(request, env): Promise<Response> {
+    const messages = [      { role: "system", content: "You are a friendly assistant" },      {        role: "user",        content: "What is the origin of the phrase Hello, World",      },    ];    const response = await env.AI.run("@cf/meta/llama-3.2-1b-instruct", { messages });
+    return Response.json(response);  },} satisfies ExportedHandler<Env>;
 ```
 
 ```
-
-import os
-
-import requests
-
-
-ACCOUNT_ID = "your-account-id"
-
-AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
-
-
-prompt = "Tell me all about PEP-8"
-
-response = requests.post(
-
-  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/meta/llama-3.2-1b-instruct",
-
-    headers={"Authorization": f"Bearer {AUTH_TOKEN}"},
-
-    json={
-
-      "messages": [
-
-        {"role": "system", "content": "You are a friendly assistant"},
-
-        {"role": "user", "content": prompt}
-
-      ]
-
-    }
-
-)
-
-result = response.json()
-
-print(result)
-
-
+import osimport requests
+ACCOUNT_ID = "your-account-id"AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
+prompt = "Tell me all about PEP-8"response = requests.post(  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/meta/llama-3.2-1b-instruct",    headers={"Authorization": f"Bearer {AUTH_TOKEN}"},    json={      "messages": [        {"role": "system", "content": "You are a friendly assistant"},        {"role": "user", "content": prompt}      ]    })result = response.json()print(result)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/meta/llama-3.2-1b-instruct \
-
-  -X POST \
-
-  -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
-
-  -d '{ "messages": [{ "role": "system", "content": "You are a friendly assistant" }, { "role": "user", "content": "Why is pizza so good" }]}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/meta/llama-3.2-1b-instruct \  -X POST \  -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \  -d '{ "messages": [{ "role": "system", "content": "You are a friendly assistant" }, { "role": "user", "content": "Why is pizza so good" }]}'
 ```
 
 OpenAI compatible endpoints 
 
-Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
+Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations ](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/). 
 
 ## Parameters
 
@@ -282,7 +162,7 @@ format
 
  Streaming Input [ ](https://developers.cloudflare.com/workers-ai/models/llama-3.2-1b-instruct/streaming-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-3.2-1b-instruct/streaming-input.json "Download") 
 
- Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/llama-3.2-1b-instruct/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-3.2-1b-instruct/streaming-output.json "Download") 
+ Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/llama-3.2-1b-instruct/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-3.2-1b-instruct/streaming-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/llama-3.2-1b-instruct/#page","headline":"llama-3.2-1b-instruct (Meta) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"The Llama 3.2 instruction-tuned text only models are optimized for multilingual dialogue use cases, including agentic retrieval and summarization tasks.","url":"https://developers.cloudflare.com/workers-ai/models/llama-3.2-1b-instruct/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

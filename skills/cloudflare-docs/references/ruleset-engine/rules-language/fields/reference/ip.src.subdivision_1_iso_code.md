@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,10 +29,7 @@ _GeoIP is the registered trademark of MaxMind, Inc._
 Example value:
 
 ```
-
 "GB-ENG"
-
-
 ```
 
 Categories: 

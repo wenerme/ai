@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,10 +32,11 @@ To create an outbound DLP policy:
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Email security** \> **Outbound DLP**.
 2. Select **Add a policy**.
 3. Name your policy.
-4. Build an expression to match specific email traffic. For example, you can create a policy that blocks outbound emails containing identifying numbers:  
-| Selector            | Operator | Value                                                     | Logic | Action |  
-| ------------------- | -------- | --------------------------------------------------------- | ----- | ------ |  
-| Recipient email     | not in   | example.com                                               | And   | Block  |  
+4. Build an expression to match specific email traffic. For example, you can create a policy that blocks outbound emails containing identifying numbers:
+
+| Selector            | Operator | Value                                                     | Logic | Action |
+| ------------------- | -------- | --------------------------------------------------------- | ----- | ------ |
+| Recipient email     | not in   | example.com                                               | And   | Block  |
 | Matched DLP profile | in       | _Social Security, Insurance, Tax, and Identifier Numbers_ |       |        |
 5. (Optional) Choose whether to use the default block message or a custom message.
 6. Select **Create policy**.
@@ -59,10 +60,10 @@ To set up DLP Assist add-in:
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Email security** \> **Outbound DLP**.
 2. Select **View Microsoft add-in instructions** \> Select **Download add-in**. This downloads a `.xml` file necessary to install the add-in on the client side.
 3. Set up the add-in in Microsoft 365:  
-   * Log in to the [Microsoft admin panel ↗](https://security.microsoft.com/homepage) and go to **Microsoft 365 Admin Center** \> **Settings** \> **Integrated Apps**.  
-   * Choose **Upload custom apps** and select **Office Add-in** for the application type.  
-   * Select **Upload manifest file (.xml) from device**.  
-   * Upload the Cloudflare add-in file you downloaded in step three. Then, verify and complete the wizard. It can take up to 24 hours for an add-in to propagate.
+  * Log in to the [Microsoft admin panel ↗](https://security.microsoft.com/homepage) and go to **Microsoft 365 Admin Center** \> **Settings** \> **Integrated Apps**.
+  * Choose **Upload custom apps** and select **Office Add-in** for the application type.
+  * Select **Upload manifest file (.xml) from device**.
+  * Upload the Cloudflare add-in file you downloaded in step three. Then, verify and complete the wizard. It can take up to 24 hours for an add-in to propagate.
 
 The add-in works by inserting headers into the [EML ↗](https://en.wikipedia.org/wiki/EML) on the client side before the message is sent out.
 
@@ -73,14 +74,14 @@ To block, encrypt, or send approval, you can configure rules within Microsoft Pu
 3. Do not choose any templates or custom policy. Select **Next**.
 4. Choose a name and description for the policy: You can choose any name. However, this guide will use `Cloudflare Assist Block`.
 5. Select **Next** on **Admin Units**:  
-   * Choose to only apply to **Exchange Email**.  
-   * Choose **Create or customize advanced DLP Rules**.
+  * Choose to only apply to **Exchange Email**.
+  * Choose **Create or customize advanced DLP Rules**.
 6. Select **Create rule**:  
-   * Create a policy name.  
-   * Add the following conditions:  
-         * **Header contains words or phrases**: `Key: cf_outbound_dlp with Value: BLOCK`  
-         * Select **AND**.  
-         * **Content is shared from Microsoft 365**: Select **with people from outside my organization**.
+  * Create a policy name.
+  * Add the following conditions:  
+    * **Header contains words or phrases**: `Key: cf_outbound_dlp with Value: BLOCK`
+    * Select **AND**.
+    * **Content is shared from Microsoft 365**: Select **with people from outside my organization**.
 7. Under **Actions**, the admin can choose what to do with the message. You can use the **Restrict access or encrypt the content in Microsoft 365 locations** to block the message or encrypt it.
 8. Under **User notifications**, turn on notifications. Admins can also edit the message if they want to. You can also configure if the admin wants to receive a notification under **Incident reports** \> **Use this severity level in admin alerts and reports**.
 9. Select **Save**.

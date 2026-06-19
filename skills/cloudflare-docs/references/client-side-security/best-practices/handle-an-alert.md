@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/client-side-security/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,14 +18,17 @@ If you receive a [client-side resource alert](https://developers.cloudflare.com/
 
 Start by identifying the [detection system](https://developers.cloudflare.com/client-side-security/how-it-works/malicious-script-detection/) that triggered the alert. A link is provided in the alert that will send you directly to the Cloudflare dashboard to the relevant resource that needs reviewing. Alternatively, do the following:
 
-1. Navigate to the client-side resources page:  
-   * [  New dashboard ](#tab-panel-6965)  
-   * [ Old dashboard ](#tab-panel-6966)  
-   1. In the Cloudflare dashboard, go to the **Web assets** page.  
-   [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)  
-   2. Select the **Client-side resources** tab.  
-   1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.  
-   2. Go to **Security** \> **Client-side security**.
+1. Navigate to the client-side resources page:
+
+  * [  New dashboard ](#tab-panel-7041)
+  * [ Old dashboard ](#tab-panel-7042)
+
+  1. In the Cloudflare dashboard, go to the **Web assets** page.  
+  [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+  2. Select the **Client-side resources** tab.
+
+  1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
+  2. Go to **Security** \> **Client-side security**.
 2. Select **Scripts** or **Connections** and search for the resource mentioned on the alert you received.
 3. Select **Details** next to the resource you identified. The example screenshot below shows a malicious script resource.  
 ![Dialog box showing the details of a script considered malicious.](https://developers.cloudflare.com/_astro/handle-alert-malicious-script-example.DqLS6vtx_ZFsQFA.webp)

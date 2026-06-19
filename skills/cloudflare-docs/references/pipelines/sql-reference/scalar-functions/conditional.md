@@ -6,23 +6,20 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pipelines/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
 # Conditional functions
 
-_Cloudflare Pipelines scalar function implementations are based on[Apache DataFusion ↗](https://arrow.apache.org/datafusion/) (via [Arroyo ↗](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference._
+_Cloudflare Pipelines scalar function implementations are based on [Apache DataFusion ↗](https://arrow.apache.org/datafusion/) (via [Arroyo ↗](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference._
 
 ## `coalesce`
 
 Returns the first of its arguments that is not _null_. Returns _null_ if all arguments are _null_. This function is often used to substitute a default value for _null_ values.
 
 ```
-
 coalesce(expression1[, ..., expression_n])
-
-
 ```
 
 **Arguments**
@@ -34,10 +31,7 @@ coalesce(expression1[, ..., expression_n])
 Returns _null_ if _expression1_ equals _expression2_; otherwise it returns _expression1_. This can be used to perform the inverse operation of [coalesce](#coalesce).
 
 ```
-
 nullif(expression1, expression2)
-
-
 ```
 
 **Arguments**
@@ -50,10 +44,7 @@ nullif(expression1, expression2)
 Returns _expression2_ if _expression1_ is NULL; otherwise it returns _expression1_.
 
 ```
-
 nvl(expression1, expression2)
-
-
 ```
 
 **Arguments**
@@ -66,10 +57,7 @@ nvl(expression1, expression2)
 Returns _expression2_ if _expression1_ is not NULL; otherwise it returns _expression3_.
 
 ```
-
 nvl2(expression1, expression2, expression3)
-
-
 ```
 
 **Arguments**

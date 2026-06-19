@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,8 +26,8 @@ To obtain an updated list of token permissions, including the permission ID and 
 
 The applicable scope of user permissions is `com.cloudflare.api.user`.
 
-* [ Dashboard ](#tab-panel-8577)
-* [ API ](#tab-panel-8578)
+* [ Dashboard ](#tab-panel-8651)
+* [ API ](#tab-panel-8652)
 
 | Name              | Description                                                                                                                   |
 | ----------------- | ----------------------------------------------------------------------------------------------------------------------------- |
@@ -55,8 +55,8 @@ Note
 
 The `AI Gateway Read`, `Run`, and `Edit` permissions are account-scoped only — they cannot be restricted to a single gateway. For details, refer to [Authenticated Gateway](https://developers.cloudflare.com/ai-gateway/configuration/authentication/).
 
-* [ Dashboard ](#tab-panel-8579)
-* [ API ](#tab-panel-8580)
+* [ Dashboard ](#tab-panel-8653)
+* [ API ](#tab-panel-8654)
 
 | Name                                                         | Description                                                                                                                                                                                                                                                                                                                                                                                                       |
 | ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -414,8 +414,8 @@ The `AI Gateway Read`, `Run`, and `Edit` permissions are account-scoped only —
 
 The applicable scope of zone permissions is `com.cloudflare.api.account.zone`.
 
-* [ Dashboard ](#tab-panel-8581)
-* [ API ](#tab-panel-8582)
+* [ Dashboard ](#tab-panel-8655)
+* [ API ](#tab-panel-8656)
 
 | Name                               | Description                                                                                                                                                  |
 | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |

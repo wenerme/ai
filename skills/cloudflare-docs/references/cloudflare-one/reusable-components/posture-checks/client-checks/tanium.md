@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -49,10 +49,10 @@ You can now build [Access policies](https://developers.cloudflare.com/cloudflare
 
 This example will only grant access to users who are part of your team's email domain and running the Tanium agent.
 
-| Action  | Rule type               | Selector         | Value     |
-| ------- | ----------------------- | ---------------- | --------- |
-| Allow   | Include                 | Emails Ending in | @team.com |
-| Require | Device Posture - Tanium | Managed          |           |
+| Action | Rule type | Selector                | Value     |
+| ------ | --------- | ----------------------- | --------- |
+| Allow  | Include   | Emails Ending in        | @team.com |
+|        | Require   | Device Posture - Tanium | Managed   |
 
 The Tanium rule will require that the device connecting is managed in your Tanium deployment and has checked into the Tanium server in the last 7 days.
 

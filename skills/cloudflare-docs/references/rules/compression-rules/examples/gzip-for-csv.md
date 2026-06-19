@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -14,15 +14,15 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Create a compression rule to set Gzip compression as the preferred compression method for CSV files.
 
-* [ Dashboard ](#tab-panel-9971)
-* [ API ](#tab-panel-9972)
+* [ Dashboard ](#tab-panel-10047)
+* [ API ](#tab-panel-10048)
 
 The following example rule will configure Gzip compression as the preferred compression method for CSV files. If the visitor does not support this algorithm, Cloudflare will try to compress the response using a different algorithm supported by the visitor.
 
 **When incoming requests match**
 
 * Custom filter expression:  
-   * _File extension_ _equals_ `csv`
+  * _File extension_ _equals_ `csv`
 
 **Then**
 
@@ -33,7 +33,7 @@ The following example sets the rules of an existing [entry point ruleset](https:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Response Compression Write`
 * `Config Settings Write`
 * `Dynamic URL Redirects Write`
@@ -59,52 +59,7 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Update a zone ruleset
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "rules": [
-
-        {
-
-            "ref": "use_gzip_for_csv",
-
-            "expression": "http.request.uri.path.extension eq \"csv\"",
-
-            "action": "compress_response",
-
-            "action_parameters": {
-
-                "algorithms": [
-
-                    {
-
-                        "name": "gzip"
-
-                    },
-
-                    {
-
-                        "name": "auto"
-
-                    }
-
-                ]
-
-            }
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "ref": "use_gzip_for_csv",            "expression": "http.request.uri.path.extension eq \"csv\"",            "action": "compress_response",            "action_parameters": {                "algorithms": [                    {                        "name": "gzip"                    },                    {                        "name": "auto"                    }                ]            }        }    ]  }'
 ```
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.

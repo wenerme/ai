@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -50,13 +50,13 @@ The integration between Cloudflare and CrowdStrike establishes a comprehensive s
 The architecture is defined by the following key flows:
 
 * **Zero trust access control:**  
-   * The user's endpoint runs both the Cloudflare One Client and the CrowdStrike Falcon agent.  
-   * CrowdStrike Falcon Device Posture and ZTA scores are shared with Cloudflare via a service-to-service API.  
-   * Cloudflare uses this real-time device health information as a critical factor in its Cloudflare Access decisions, enforcing zero trust policies for both public and private applications.
+  * The user's endpoint runs both the Cloudflare One Client and the CrowdStrike Falcon agent.
+  * CrowdStrike Falcon Device Posture and ZTA scores are shared with Cloudflare via a service-to-service API.
+  * Cloudflare uses this real-time device health information as a critical factor in its Cloudflare Access decisions, enforcing zero trust policies for both public and private applications.
 * **Unified security telemetry:**  
-   * Cloudflare sends network and security logs (via Logpush) to CrowdStrike Falcon NextGen SIEM for centralized correlation, analysis, and threat detection.
+  * Cloudflare sends network and security logs (via Logpush) to CrowdStrike Falcon NextGen SIEM for centralized correlation, analysis, and threat detection.
 * **Automated remediation:**  
-   * Security events and threat detections within the CrowdStrike platform trigger automated containment and response workflows, orchestrated via Falcon Fusion SOAR (security orchestration, automation, and response), which leverages API automation to take bi-directional action across both platforms.
+  * Security events and threat detections within the CrowdStrike platform trigger automated containment and response workflows, orchestrated via Falcon Fusion SOAR (security orchestration, automation, and response), which leverages API automation to take bi-directional action across both platforms.
 
 This integrated approach enables secure access to various application types:
 
@@ -235,68 +235,68 @@ The integration between Cloudflare and CrowdStrike leverages several key compone
 ### Cloudflare components
 
 1. **Zero Trust Network Access (ZTNA)**: Controls access to applications based on identity, device posture, and other contextual signals  
-   * Application access policies  
-   * Private network access  
-   * Service token authentication  
-   * Device posture verification
+  * Application access policies
+  * Private network access
+  * Service token authentication
+  * Device posture verification
 2. **Secure Web Gateway (SWG)**: Inspects and filters Internet-bound traffic  
-   * URL filtering  
-   * Malware protection  
-   * Content categories  
-   * File type controls
+  * URL filtering
+  * Malware protection
+  * Content categories
+  * File type controls
 3. **Data Loss Prevention (DLP)**: Prevents unauthorized data exfiltration  
-   * Built-in data profiles (PII, financial data, secrets)  
-   * Custom data patterns  
-   * Exact data matching  
-   * Context awareness
+  * Built-in data profiles (PII, financial data, secrets)
+  * Custom data patterns
+  * Exact data matching
+  * Context awareness
 4. **Remote Browser Isolation (RBI)**: Executes web content in a secure cloud environment  
-   * File upload/download controls  
-   * Clipboard restrictions  
-   * Keyboard input controls  
-   * Visual presentation only
+  * File upload/download controls
+  * Clipboard restrictions
+  * Keyboard input controls
+  * Visual presentation only
 5. **Email Security**: Prevents email-based threats  
-   * Phishing protection  
-   * Malicious attachment scanning  
-   * Business email compromise detection  
-   * Link isolation
+  * Phishing protection
+  * Malicious attachment scanning
+  * Business email compromise detection
+  * Link isolation
 6. **API-driven Cloud Access Security Broker (CASB)**: Monitors SaaS usage and security  
-   * SaaS posture management  
-   * Permission monitoring  
-   * Data security scanning  
-   * Public share detection
+  * SaaS posture management
+  * Permission monitoring
+  * Data security scanning
+  * Public share detection
 7. **Web Application Firewall (WAF)**  
-   * Machine learning (ML) detection and blocking  
-   * Custom rule creation  
-   * Managed rule sets  
-   * Rate limiting
+  * Machine learning (ML) detection and blocking
+  * Custom rule creation
+  * Managed rule sets
+  * Rate limiting
 
 ### CrowdStrike components
 
 1. **Falcon Endpoint Agent**: Provides comprehensive endpoint protection  
-   * Behavior monitoring  
-   * Malware prevention  
-   * Device security posture assessment  
-   * Vulnerability management
+  * Behavior monitoring
+  * Malware prevention
+  * Device security posture assessment
+  * Vulnerability management
 2. **Zero Trust Assessment (ZTA)**: Evaluates device security in real time  
-   * OS security assessment  
-   * Sensor status monitoring  
-   * Overall device health scoring  
-   * Continuous evaluation
+  * OS security assessment
+  * Sensor status monitoring
+  * Overall device health scoring
+  * Continuous evaluation
 3. **Falcon Next-Gen SIEM**: Centralizes security monitoring and analysis  
-   * Log ingestion, correlation, and real-time searching  
-   * Threat detection rules and alert triggering  
-   * Security visualization with customizable dashboards  
-   * Alert management and long-term data storage
+  * Log ingestion, correlation, and real-time searching
+  * Threat detection rules and alert triggering
+  * Security visualization with customizable dashboards
+  * Alert management and long-term data storage
 4. **Falcon Insight XDR**: Provides extended detection and response capabilities  
-   * Cross-domain detection  
-   * Automated investigation  
-   * Threat hunting  
-   * Guided remediation
+  * Cross-domain detection
+  * Automated investigation
+  * Threat hunting
+  * Guided remediation
 5. **Falcon Fusion SOAR:** Orchestrates and automates complex security workflows across the Cloudflare and CrowdStrike platforms for unified incident response  
-   * Security orchestration  
-   * Playbook execution  
-   * Automated containment and enrichment  
-   * Bi-directional actioning
+  * Security orchestration
+  * Playbook execution
+  * Automated containment and enrichment
+  * Bi-directional actioning
 
 ## Summary
 

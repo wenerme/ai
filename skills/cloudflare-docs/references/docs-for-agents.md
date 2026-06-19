@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/docs-for-agents/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -83,10 +83,7 @@ On any documentation page, select **Copy as Markdown** to copy the current page 
 Add `/index.md` to the end of any page URL. For example:
 
 ```
-
 https://developers.cloudflare.com/workers/get-started/index.md
-
-
 ```
 
 ### Send an `Accept: text/markdown` header
@@ -96,12 +93,7 @@ Request any page with the `Accept: text/markdown` header, which tells the server
 Terminal window
 
 ```
-
-curl "https://developers.cloudflare.com/workers/get-started/" \
-
-  --header "Accept: text/markdown"
-
-
+curl "https://developers.cloudflare.com/workers/get-started/" \  --header "Accept: text/markdown"
 ```
 
 The response includes `x-markdown-tokens` and `x-original-tokens` headers with estimated token counts for the Markdown document and original HTML document, useful for context window planning (a context window is the maximum number of tokens an AI model can consider at once).

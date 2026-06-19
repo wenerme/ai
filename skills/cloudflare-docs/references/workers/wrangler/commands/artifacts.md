@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,35 +18,26 @@ Manage [Artifacts](https://developers.cloudflare.com/artifacts/) namespaces, rep
 
 List Artifacts namespaces
 
-* [  npm ](#tab-panel-12235)
-* [  pnpm ](#tab-panel-12236)
-* [  yarn ](#tab-panel-12237)
+* [  npm ](#tab-panel-12252)
+* [  pnpm ](#tab-panel-12253)
+* [  yarn ](#tab-panel-12254)
 
 Terminal window
 
 ```
-
 npx wrangler artifacts namespaces list
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler artifacts namespaces list
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler artifacts namespaces list
-
-
 ```
 
 * `--json` ` boolean ` default: false  
@@ -75,35 +66,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get an Artifacts namespace
 
-* [  npm ](#tab-panel-12238)
-* [  pnpm ](#tab-panel-12239)
-* [  yarn ](#tab-panel-12240)
+* [  npm ](#tab-panel-12255)
+* [  pnpm ](#tab-panel-12256)
+* [  yarn ](#tab-panel-12257)
 
 Terminal window
 
 ```
-
 npx wrangler artifacts namespaces get [NAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler artifacts namespaces get [NAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler artifacts namespaces get [NAME]
-
-
 ```
 
 * `[NAME]` ` string ` required  
@@ -134,35 +116,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Create an Artifacts repository
 
-* [  npm ](#tab-panel-12241)
-* [  pnpm ](#tab-panel-12242)
-* [  yarn ](#tab-panel-12243)
+* [  npm ](#tab-panel-12258)
+* [  pnpm ](#tab-panel-12259)
+* [  yarn ](#tab-panel-12260)
 
 Terminal window
 
 ```
-
 npx wrangler artifacts repos create [NAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler artifacts repos create [NAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler artifacts repos create [NAME]
-
-
 ```
 
 * `[NAME]` ` string ` required  
@@ -201,35 +174,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List Artifacts repositories in a namespace
 
-* [  npm ](#tab-panel-12244)
-* [  pnpm ](#tab-panel-12245)
-* [  yarn ](#tab-panel-12246)
+* [  npm ](#tab-panel-12261)
+* [  pnpm ](#tab-panel-12262)
+* [  yarn ](#tab-panel-12263)
 
 Terminal window
 
 ```
-
 npx wrangler artifacts repos list
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler artifacts repos list
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler artifacts repos list
-
-
 ```
 
 * `--namespace` ` string ` required  
@@ -260,35 +224,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get an Artifacts repository
 
-* [  npm ](#tab-panel-12247)
-* [  pnpm ](#tab-panel-12248)
-* [  yarn ](#tab-panel-12249)
+* [  npm ](#tab-panel-12264)
+* [  pnpm ](#tab-panel-12265)
+* [  yarn ](#tab-panel-12266)
 
 Terminal window
 
 ```
-
 npx wrangler artifacts repos get [NAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler artifacts repos get [NAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler artifacts repos get [NAME]
-
-
 ```
 
 * `[NAME]` ` string ` required  
@@ -321,35 +276,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete an Artifacts repository
 
-* [  npm ](#tab-panel-12250)
-* [  pnpm ](#tab-panel-12251)
-* [  yarn ](#tab-panel-12252)
+* [  npm ](#tab-panel-12267)
+* [  pnpm ](#tab-panel-12268)
+* [  yarn ](#tab-panel-12269)
 
 Terminal window
 
 ```
-
 npx wrangler artifacts repos delete [NAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler artifacts repos delete [NAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler artifacts repos delete [NAME]
-
-
 ```
 
 * `[NAME]` ` string ` required  
@@ -384,35 +330,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Issue a repo-scoped Artifacts token
 
-* [  npm ](#tab-panel-12253)
-* [  pnpm ](#tab-panel-12254)
-* [  yarn ](#tab-panel-12255)
+* [  npm ](#tab-panel-12270)
+* [  pnpm ](#tab-panel-12271)
+* [  yarn ](#tab-panel-12272)
 
 Terminal window
 
 ```
-
 npx wrangler artifacts repos issue-token [REPO]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler artifacts repos issue-token [REPO]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler artifacts repos issue-token [REPO]
-
-
 ```
 
 * `[REPO]` ` string ` required  

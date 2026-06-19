@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,46 +17,7 @@ If origin responded with `403 Forbidden` error code, redirect to different page.
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request) {
-
-    // Send original request to the origin
-
-    const response = await fetch(request);
-
-    // Check if origin responded with 403 status code
-
-    if (response.status == 403) {
-
-      // If so, redirect to this URL
-
-      const destinationURL = "https://example.com";
-
-      // With this status code
-
-      const statusCode = 301;
-
-      // Serve redirect
-
-      return Response.redirect(destinationURL, statusCode);
-
-    }
-
-    // Otherwise, serve origin's response
-
-    else {
-
-      return response;
-
-    }
-
-  },
-
-};
-
-
+export default {  async fetch(request) {    // Send original request to the origin    const response = await fetch(request);    // Check if origin responded with 403 status code    if (response.status == 403) {      // If so, redirect to this URL      const destinationURL = "https://example.com";      // With this status code      const statusCode = 301;      // Serve redirect      return Response.redirect(destinationURL, statusCode);    }    // Otherwise, serve origin's response    else {      return response;    }  },};
 ```
 
 ```json

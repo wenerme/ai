@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -24,9 +24,9 @@ Subdomain setups are also useful when different subdomains require entirely diff
 
 ## Availability
 
-| Free         | Pro | Business | Enterprise |     |
-| ------------ | --- | -------- | ---------- | --- |
-| Availability | No  | No       | No         | Yes |
+|              | Free | Pro | Business | Enterprise |
+| ------------ | ---- | --- | -------- | ---------- |
+| Availability | No   | No  | No       | Yes        |
 
 Setup combinations
 

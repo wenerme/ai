@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/china-network/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -41,17 +41,20 @@ After you [enable the Cloudflare China Network service](https://developers.cloud
 
 1. Contact your Cloudflare sales team to enable the feature. Currently you cannot enable it in the Cloudflare dashboard.  
 The current China Network supports both a [full setup](https://developers.cloudflare.com/dns/zone-setups/full-setup/) and a [partial setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/).
-2. Update your domain registrar with the assigned in-China nameservers.  
-   * For a full setup: These nameservers are displayed in the Cloudflare dashboard.  
-   * For a partial setup: Create a `CNAME` record pointing to `<hostname>.cdn.cloudflareanycast.net` for global default DNS setting and `<hostname>.cdn.cloudflarecn.net` for In-China DNS.  
+2. Update your domain registrar with the assigned in-China nameservers.
+
+  * For a full setup: These nameservers are displayed in the Cloudflare dashboard.
+  * For a partial setup: Create a `CNAME` record pointing to `<hostname>.cdn.cloudflareanycast.net` for global default DNS setting and `<hostname>.cdn.cloudflarecn.net` for In-China DNS.  
 Example 1: China Network zone named `example.cn` that requires In-China DNS  
-If you have two DNS records, `www` and `media`, pointing to two different origin servers, your Authoritative DNS server will have the following DNS records:  
-   * CNAME `www.example.cn` to `www.example.cn.cdn.cloudflarecn.net`  
-   * CNAME `media.example.cn` to `media.example.cn.cdn.cloudflarecn.net`  
+If you have two DNS records, `www` and `media`, pointing to two different origin servers, your Authoritative DNS server will have the following DNS records:
+
+  * CNAME `www.example.cn` to `www.example.cn.cdn.cloudflarecn.net`
+  * CNAME `media.example.cn` to `media.example.cn.cdn.cloudflarecn.net`  
 Example 2: China Network zone named `example.com` that requires global default DNS setting  
-If you have two DNS records, `www` and `media`, pointing to two different origin servers, your Authoritative DNS server will have the following DNS records:  
-   * CNAME `www.example.com` to `www.example.com.cdn.cloudflareanycast.net`  
-   * CNAME `media.example.com` to `media.example.com.cdn.cloudflareanycast.net`
+If you have two DNS records, `www` and `media`, pointing to two different origin servers, your Authoritative DNS server will have the following DNS records:
+
+  * CNAME `www.example.com` to `www.example.com.cdn.cloudflareanycast.net`
+  * CNAME `media.example.com` to `media.example.com.cdn.cloudflareanycast.net`
 3. Test your configuration by checking if the domain resolves correctly.
 
 For further assistance, contact your account team.

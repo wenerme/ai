@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,43 +20,19 @@ Note
 
 You do not need to manually create a dataset in the Cloudflare dashboard. Workers Analytics Engine datasets are created automatically the first time you write to them after defining the binding in your Wrangler configuration.
 
-* [  wrangler.jsonc ](#tab-panel-6667)
-* [  wrangler.toml ](#tab-panel-6668)
+* [  wrangler.jsonc ](#tab-panel-6743)
+* [  wrangler.toml ](#tab-panel-6744)
 
 JSONC
 
 ```
-
-{
-
-  "analytics_engine_datasets": [
-
-    {
-
-      "binding": "<BINDING_NAME>",
-
-      "dataset": "<DATASET_NAME>"
-
-    }
-
-  ]
-
-}
-
-
+{  "analytics_engine_datasets": [    {      "binding": "<BINDING_NAME>",      "dataset": "<DATASET_NAME>"    }  ]}
 ```
 
 TOML
 
 ```
-
-[[analytics_engine_datasets]]
-
-binding = "<BINDING_NAME>"
-
-dataset = "<DATASET_NAME>"
-
-
+[[analytics_engine_datasets]]binding = "<BINDING_NAME>"dataset = "<DATASET_NAME>"
 ```
 
 ## 2\. Write data points from your Worker
@@ -66,24 +42,7 @@ You can write data points to your Worker by calling the `writeDataPoint()` metho
 JavaScript
 
 ```
-
-async fetch(request, env) {
-
-  env.WEATHER.writeDataPoint({
-
-    'blobs': ["Seattle", "USA", "pro_sensor_9000"], // City, State
-
-    'doubles': [25, 0.5],
-
-    'indexes': ["a3cd45"]
-
-  });
-
-  return new Response("OK!");
-
-}
-
-
+async fetch(request, env) {  env.WEATHER.writeDataPoint({    'blobs': ["Seattle", "USA", "pro_sensor_9000"], // City, State    'doubles': [25, 0.5],    'indexes': ["a3cd45"]  });  return new Response("OK!");}
 ```
 
 Note
@@ -118,24 +77,7 @@ Create an [API Token ↗](https://dash.cloudflare.com/profile/api-tokens) that h
 The following query returns the top 10 cities that had the highest average humidity readings when the temperature was above zero:
 
 ```
-
-SELECT
-
-  blob1 AS city,
-
-  SUM(_sample_interval * double2) / SUM(_sample_interval) AS avg_humidity
-
-FROM WEATHER
-
-WHERE double1 > 0
-
-GROUP BY city
-
-ORDER BY avg_humidity DESC
-
-LIMIT 10
-
-
+SELECT  blob1 AS city,  SUM(_sample_interval * double2) / SUM(_sample_interval) AS avg_humidityFROM WEATHERWHERE double1 > 0GROUP BY cityORDER BY avg_humidity DESCLIMIT 10
 ```
 
 Note
@@ -147,14 +89,7 @@ You can run this query by making an HTTP request to the SQL API:
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/analytics_engine/sql" \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---data "SELECT blob1 AS city, SUM(_sample_interval * double2) / SUM(_sample_interval) AS avg_humidity FROM WEATHER WHERE double1 > 0 GROUP BY city ORDER BY avg_humidity DESC LIMIT 10"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/analytics_engine/sql" \--header "Authorization: Bearer <API_TOKEN>" \--data "SELECT blob1 AS city, SUM(_sample_interval * double2) / SUM(_sample_interval) AS avg_humidity FROM WEATHER WHERE double1 > 0 GROUP BY city ORDER BY avg_humidity DESC LIMIT 10"
 ```
 
 Refer to the [Workers Analytics Engine SQL Reference](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/) for a full list of supported SQL functionality.
@@ -164,28 +99,7 @@ Refer to the [Workers Analytics Engine SQL Reference](https://developers.cloudfl
 Workers Analytics Engine is optimized for powering time series analytics that can be visualized using tools like Grafana. Every event written from the runtime is automatically populated with a `timestamp` field. It is expected that most time series will round, and then `GROUP BY` the `timestamp`. For example:
 
 ```
-
-SELECT
-
-  intDiv(toUInt32(timestamp), 300) * 300 AS t,
-
-  blob1 AS city,
-
-  SUM(_sample_interval * double2) / SUM(_sample_interval) AS avg_humidity
-
-FROM WEATHER
-
-WHERE
-
-  timestamp >= NOW() - INTERVAL '1' DAY
-
-  AND double1 > 0
-
-GROUP BY t, city
-
-ORDER BY t, avg_humidity DESC
-
-
+SELECT  intDiv(toUInt32(timestamp), 300) * 300 AS t,  blob1 AS city,  SUM(_sample_interval * double2) / SUM(_sample_interval) AS avg_humidityFROM WEATHERWHERE  timestamp >= NOW() - INTERVAL '1' DAY  AND double1 > 0GROUP BY t, cityORDER BY t, avg_humidity DESC
 ```
 
 This query first rounds the `timestamp` field to the nearest five minutes. Then, it groups by that field and city and calculates the average humidity in each city for a five minute period.

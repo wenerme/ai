@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,9 +23,9 @@ The source code for our key server (what you will run) and keyless client (what 
 
 ## Availability
 
-| Free         | Pro | Business | Enterprise |             |
-| ------------ | --- | -------- | ---------- | ----------- |
-| Availability | No  | No       | No         | Paid add-on |
+|              | Free | Pro | Business | Enterprise  |
+| ------------ | ---- | --- | -------- | ----------- |
+| Availability | No   | No  | No       | Paid add-on |
 
 Keyless SSL is only available to Enterprise customers that maintain their own SSL certificate purchased from a valid Certificate Authority. Cloudflare does not supply any certificates for use with Keyless SSL.
 

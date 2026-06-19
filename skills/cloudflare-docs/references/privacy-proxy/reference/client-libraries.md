@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/privacy-proxy/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -34,12 +34,7 @@ Add tokio-quiche to your `Cargo.toml`:
 TOML
 
 ```
-
-[dependencies]
-
-tokio-quiche = "0.1"
-
-
+[dependencies]tokio-quiche = "0.1"
 ```
 
 ### Resources
@@ -82,16 +77,7 @@ Chaussette is useful for integrating applications that support SOCKS5 but not HT
 Terminal window
 
 ```
-
-MASQUE_PRESHARED_KEY=<YOUR_PSK> chaussette \
-
-  --listen 127.0.0.1:1987 \
-
-  --proxy https://your-proxy.example.com:443 \
-
-  --geohash xn76c-JP
-
-
+MASQUE_PRESHARED_KEY=<YOUR_PSK> chaussette \  --listen 127.0.0.1:1987 \  --proxy https://your-proxy.example.com:443 \  --geohash xn76c-JP
 ```
 
 Then configure your application to use `socks5://127.0.0.1:1987` as its proxy.
@@ -109,16 +95,7 @@ For basic testing over HTTP/2, standard curl supports CONNECT proxying:
 Terminal window
 
 ```
-
-curl -v \
-
-  --proxy https://your-proxy.example.com \
-
-  --proxy-header "Proxy-Authorization: Preshared <YOUR_PSK>" \
-
-  https://example.com
-
-
+curl -v \  --proxy https://your-proxy.example.com \  --proxy-header "Proxy-Authorization: Preshared <YOUR_PSK>" \  https://example.com
 ```
 
 curl can also be [built with quiche ↗](https://github.com/curl/curl/blob/master/docs/HTTP3.md#quiche-version) for HTTP/3 support.
@@ -140,10 +117,7 @@ curl can also be [built with quiche ↗](https://github.com/curl/curl/blob/maste
 Terminal window
 
 ```
-
 npm install @cloudflare/privacypass-ts
-
-
 ```
 
 ### Resources

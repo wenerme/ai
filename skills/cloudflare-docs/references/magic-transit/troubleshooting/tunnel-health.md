@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/magic-transit/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -213,9 +213,9 @@ For more information, refer to [Cloudflare Network Firewall rules and endpoint h
 * Intermittent packet loss on the tunnel
 * Traffic works for a period then stops without configuration changes
 * Router logs show packets dropped due to:  
-   * "replay check failed"  
-   * "invalid sequence number"  
-   * "invalid SPI" (Security Parameter Index)
+  * "replay check failed"
+  * "invalid sequence number"
+  * "invalid SPI" (Security Parameter Index)
 
 #### Cause
 
@@ -250,14 +250,7 @@ Enable replay protection in the Cloudflare dashboard. This routes all tunnel tra
 Enable ISAKMP invalid SPI recovery to help the router resynchronize Security Associations:
 
 ```
-
-configure terminal
-
-crypto isakmp invalid-spi-recovery
-
-exit
-
-
+configure terminalcrypto isakmp invalid-spi-recoveryexit
 ```
 
 Warning
@@ -289,11 +282,12 @@ This behavior is expected and the tunnel will automatically recover. To minimize
 
 1. **Configure Dead Peer Detection (DPD) with restart**: Set your tunnel endpoint's DPD action to "restart" so it automatically re-establishes the IKE session if a rekey fails with TEMPORARY\_FAILURE. Without DPD restart, the device can get stuck in a loop of failed rekeys.
 2. **Increase rekey intervals**: Configure longer SA lifetimes on your tunnel endpoint to reduce rekey frequency. Common values are 8-24 hours for IKE SA and 1-8 hours for IPsec SA.
-3. **Adjust health check sensitivity**: If brief degradation during rekeys triggers alerts, consider lowering the health check rate:  
-   1. Go to the **Connectors** page.  
+3. **Adjust health check sensitivity**: If brief degradation during rekeys triggers alerts, consider lowering the health check rate:
+
+  1. Go to the **Connectors** page.  
 [ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)  
-   1. In **IPsec/GRE tunnels**, select **Edit** on the tunnel.  
-   2. Change **Health check rate** to _Low_.
+  1. In **IPsec/GRE tunnels**, select **Edit** on the tunnel.
+  2. Change **Health check rate** to _Low_.
 4. **Stagger rekey times**: If you have multiple tunnels, configure different SA lifetimes so they do not rekey simultaneously.
 
 ---
@@ -353,7 +347,8 @@ IPsec tunnel establishment can fail due to several configuration mismatches:
 
 #### Solution
 
-1. **Verify crypto parameters match Cloudflare's supported configuration:**  
+1. **Verify crypto parameters match Cloudflare's supported configuration:**
+
 **Phase 1 (IKE)**
 
 | Parameter      | Supported values            |
@@ -371,15 +366,17 @@ IPsec tunnel establishment can fail due to several configuration mismatches:
 | Authentication | SHA-256, SHA-512            |
 | PFS Group      | DH group 14, 15, 16, 19, 20 |
 
-1. **Verify the Pre-Shared Key (PSK):**  
-   * Regenerate the PSK in the Cloudflare dashboard  
-   * Copy the new PSK exactly (no extra spaces or characters)  
-   * Update your router with the new PSK
+1. **Verify the Pre-Shared Key (PSK):**
+
+  * Regenerate the PSK in the Cloudflare dashboard
+  * Copy the new PSK exactly (no extra spaces or characters)
+  * Update your router with the new PSK
 2. **Check the IKE ID format:** Cloudflare uses FQDN format for the IKE ID. Ensure your router is configured to accept an FQDN peer identity. The FQDN is displayed in the tunnel details in the Cloudflare dashboard.
-3. **Verify firewall rules:** Ensure your edge firewall permits:  
-   * UDP port `500` (IKE)  
-   * UDP port `4500` (IKE NAT-T)  
-   * IP protocol `50` (ESP)
+3. **Verify firewall rules:** Ensure your edge firewall permits:
+
+  * UDP port `500` (IKE)
+  * UDP port `4500` (IKE NAT-T)
+  * IP protocol `50` (ESP)
 
 For the complete list of supported parameters, refer to [Supported configuration parameters](https://developers.cloudflare.com/magic-transit/reference/gre-ipsec-tunnels/#supported-configuration-parameters).
 
@@ -403,8 +400,8 @@ Additionally, some firewalls (such as Check Point) may flag Reply-style health c
 
 1. Change the health check type from _Reply_ to _Request_.
 2. Configure a loopback address on your tunnel endpoint as the health check target. The target must be:  
-   * Routable from the tunnel endpoint  
-   * Covered by the tunnel's traffic selectors (encryption domain)
+  * Routable from the tunnel endpoint
+  * Covered by the tunnel's traffic selectors (encryption domain)
 3. For bidirectional health checks, ensure the health check source (the tunnel Interface Address configured in the Cloudflare dashboard) is also covered by a traffic selector.
 
 Note
@@ -436,18 +433,18 @@ If you have worked through this guide and still experience tunnel health issues,
 1. **Account ID** and **Tunnel name(s)** affected
 2. **Timestamps** (in UTC) when the issue occurred
 3. **Tunnel configuration details:**  
-   * Tunnel type (GRE or IPsec)  
-   * Health check type (Request or Reply)  
-   * Health check direction (Bidirectional or Unidirectional)  
-   * Health check rate (Low, Medium, or High)
+  * Tunnel type (GRE or IPsec)
+  * Health check type (Request or Reply)
+  * Health check direction (Bidirectional or Unidirectional)
+  * Health check rate (Low, Medium, or High)
 4. **Router information:**  
-   * Vendor and model  
-   * Firmware/software version  
-   * IPsec configuration (sanitized to remove PSK)
+  * Vendor and model
+  * Firmware/software version
+  * IPsec configuration (sanitized to remove PSK)
 5. **Symptoms observed:**  
-   * Dashboard tunnel health status  
-   * Whether user traffic is affected  
-   * Error messages from router logs
+  * Dashboard tunnel health status
+  * Whether user traffic is affected
+  * Error messages from router logs
 
 ### Helpful diagnostic data
 

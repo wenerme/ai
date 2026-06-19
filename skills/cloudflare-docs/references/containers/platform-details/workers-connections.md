@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,41 +23,8 @@ Define an `outboundByHost` handler for each virtual hostname. The `env` argument
 JavaScript
 
 ```
-
 export class MyContainer extends Container {}
-
-
-MyContainer.outboundByHost = {
-
-  "my.kv": async (request, env, ctx) => {
-
-    const url = new URL(request.url);
-
-    const key = url.pathname.slice(1);
-
-    const value = await env.KV.get(key);
-
-    return new Response(value);
-
-  },
-
-  "my.r2": async (request, env, ctx) => {
-
-    const url = new URL(request.url);
-
-    // Scope access to this container's ID
-
-    const path = `${ctx.containerId}${url.pathname}`;
-
-    const object = await env.R2.get(path);
-
-    return new Response(object?.body ?? null, { status: object ? 200 : 404 });
-
-  },
-
-};
-
-
+MyContainer.outboundByHost = {  "my.kv": async (request, env, ctx) => {    const url = new URL(request.url);    const key = url.pathname.slice(1);    const value = await env.KV.get(key);    return new Response(value);  },  "my.r2": async (request, env, ctx) => {    const url = new URL(request.url);    // Scope access to this container's ID    const path = `${ctx.containerId}${url.pathname}`;    const object = await env.R2.get(path);    return new Response(object?.body ?? null, { status: object ? 200 : 404 });  },};
 ```
 
 The container calls `http://my.kv/some-key` and the handler resolves it using the KV binding. A call to `http://my.r2/file.png` reads from R2, scoped to the current container instance.
@@ -73,20 +40,7 @@ The `ctx` argument exposes `containerId`, which lets you interact with the conta
 JavaScript
 
 ```
-
-"get-state.do": async (request, env, ctx) => {
-
-  const id = env.MY_CONTAINER.idFromString(ctx.containerId);
-
-  const stub = env.MY_CONTAINER.get(id);
-
-  // Assumes getStateForKey is defined on your DO
-
-  return stub.getStateForKey(request.body);
-
-},
-
-
+"get-state.do": async (request, env, ctx) => {  const id = env.MY_CONTAINER.idFromString(ctx.containerId);  const stub = env.MY_CONTAINER.get(id);  // Assumes getStateForKey is defined on your DO  return stub.getStateForKey(request.body);},
 ```
 
 ## Related resources

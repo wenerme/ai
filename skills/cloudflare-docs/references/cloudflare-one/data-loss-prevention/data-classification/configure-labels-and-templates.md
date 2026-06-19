@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -40,8 +40,8 @@ When creating a sensitivity schema, you can either create a custom schema from s
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Data loss prevention** \> **Data classification** \> **Labels**.
 2. Select **Create labels**.
 3. In **Sensitivity schema**, choose one of the following:  
-   * **Create a custom schema** to define the schema from scratch  
-   * **Choose a template** to start from a Cloudflare-managed template
+  * **Create a custom schema** to define the schema from scratch
+  * **Choose a template** to start from a Cloudflare-managed template
 4. Enter or review the name and description.
 5. Add or update the sensitivity levels you want to include, in order.
 6. Select **Save**.
@@ -59,8 +59,8 @@ When creating a data tag group, you can either create a custom group from scratc
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Data loss prevention** \> **Data classification** \> **Labels**.
 2. Select **Create labels**.
 3. In **Data tag group**, choose one of the following:  
-   * **Create a custom group** to define the group from scratch  
-   * **Choose a template** to start from a Cloudflare-managed template
+  * **Create a custom group** to define the group from scratch
+  * **Choose a template** to start from a Cloudflare-managed template
 4. Enter or review the name and description.
 5. Add or update the data tags you want to include.
 6. Select **Save**.

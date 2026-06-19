@@ -99,7 +99,7 @@ The ClickStack UI relies on the user defining a source for each of the Observabi
 
 This configuration can be performed inside the application from `Team Settings -> Sources`, as shown below for logs:
 
-<Image img={hyperdx_25} alt="HyperDX Source configuration" size="lg"/>
+<Image img={hyperdx_25} alt="HyperDX Source configuration" size="md"/>
 
 Each of these sources require at least one table specified on creation and a set of columns which allow HyperDX to query the data.
 
@@ -114,6 +114,7 @@ The following settings are available for each source:
 | Setting                        | Description                                                                                                             | Required | Inferred in Default Schema | Inferred Value                                      |
 |-------------------------------|-------------------------------------------------------------------------------------------------------------------------|----------|-----------------------------|-----------------------------------------------------|
 | `Name`                        | Source name.                                                                                                            | Yes      | No                          | –                                                   |
+| `Section`                     | Optional label for grouping sources in the source selector. Sources that share a section appear together, and search matches the section name in addition to the source name. | No       | No                          | –                                                   |
 | `Server Connection`           | Server connection name.                                                                                                | Yes      | No                          | `Default`                                             |
 | `Database`                    | ClickHouse database name.                                                                                              | Yes      | Yes                         | `default`                                             |
 | `Table`                       | Target table name. Set to `otel_logs` if default schema is used.                                                                                                     | Yes      | No                         |                                            |
@@ -138,6 +139,7 @@ The following settings are available for each source:
 | Setting                          | Description                                                                                                             | Required | Inferred in Default Schema | Inferred Value         |
 |----------------------------------|-------------------------------------------------------------------------------------------------------------------------|----------|-----------------------------|------------------------|
 | `Name`                           | Source name.                                                                                                            | Yes      | No                          | –                      |
+| `Section`                        | Optional label for grouping sources in the source selector. Sources that share a section appear together, and search matches the section name in addition to the source name. | No       | No                          | –                      |
 | `Server Connection`              | Server connection name.                                                                                                | Yes      | No                          | `Default`              |
 | `Database`                       | ClickHouse database name.                                                                                              | Yes      | Yes                         | `default`                |
 | `Table`                          | Target table name. Set to `otel_traces` if using the default schema.                                                                                                    | Yes      | Yes                         |      -       |
@@ -169,6 +171,7 @@ The following settings are available for each source:
 | Setting               | Description                                                                                   | Required | Inferred in Default Schema | Inferred Value              |
 |------------------------|-----------------------------------------------------------------------------------------------|----------|-----------------------------|-----------------------------|
 | `Name`                 | Source name.                                                                                  | Yes      | No                          | –                           |
+| `Section`              | Optional label for grouping sources in the source selector. Sources that share a section appear together, and search matches the section name in addition to the source name. | No       | No                          | –                           |
 | `Server Connection`    | Server connection name.                                                                        | Yes      | No                          | `Default`                   |
 | `Database`             | ClickHouse database name.                                                                      | Yes      | Yes                         | `default`                   |
 | `Gauge Table`          | Table storing gauge-type metrics.                                                              | Yes      | No                         | `otel_metrics_gauge`        |
@@ -181,6 +184,7 @@ The following settings are available for each source:
 | Setting                        | Description                                                                                         | Required | Inferred in Default Schema | Inferred Value         |
 |-------------------------------|-----------------------------------------------------------------------------------------------------|----------|-----------------------------|------------------------|
 | `Name`                        | Source name.                                                                                        | Yes      | No                          | –                      |
+| `Section`                     | Optional label for grouping sources in the source selector. Sources that share a section appear together, and search matches the section name in addition to the source name. | No       | No                          | –                      |
 | `Server Connection`           | Server connection name.                                                                             | Yes      | No                          | `Default`              |
 | `Database`                    | ClickHouse database name.                                                                           | Yes      | Yes                         | `default`              |
 | `Table`                       | Target table for session data. Target table name. Set to `hyperdx_sessions` if using the default schema.                                                                          | Yes      | Yes                         | -      |

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,14 +17,14 @@ Foundation DNS is the Cloudflare DNS offering for enterprise customers.
 With Foundation DNS, you get access to increased reliability, security, and insights. Features include the following:
 
 * [Advanced nameservers](https://developers.cloudflare.com/dns/foundation-dns/advanced-nameservers/) that provide:  
-   * Strategically distributed IPs to enhance resiliency  
-   * Reduced exposure to incidents or software regression  
-   * More consistent nameserver assignment
+  * Strategically distributed IPs to enhance resiliency
+  * Reduced exposure to incidents or software regression
+  * More consistent nameserver assignment
 * [DNSSEC keys](https://developers.cloudflare.com/dns/foundation-dns/dnssec-keys/) unique to your account
 * Additional DNS settings, including:  
-   * [Zone defaults](https://developers.cloudflare.com/dns/additional-options/dns-zone-defaults/)  
-   * [Account custom nameservers](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/account-custom-nameservers/)  
-   * Custom [SOA record](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#soa) and [Nameserver TTL](https://developers.cloudflare.com/dns/nameservers/nameserver-options/#nameserver-ttl)
+  * [Zone defaults](https://developers.cloudflare.com/dns/additional-options/dns-zone-defaults/)
+  * [Account custom nameservers](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/account-custom-nameservers/)
+  * Custom [SOA record](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#soa) and [Nameserver TTL](https://developers.cloudflare.com/dns/nameservers/nameserver-options/#nameserver-ttl)
 
 ## Availability
 

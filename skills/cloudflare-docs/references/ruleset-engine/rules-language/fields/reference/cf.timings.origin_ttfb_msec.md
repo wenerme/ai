@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,21 +25,13 @@ If the request was served from the Cloudflare CDN cache and the origin server wa
 Example value:
 
 ```
-
 150
-
-
 ```
 
 Example usage:
 
 ```
-
-# Matches requests where the origin response time (TTFB) was greater than 2 seconds:
-
-cf.timings.origin_ttfb_msec > 2000
-
-
+# Matches requests where the origin response time (TTFB) was greater than 2 seconds:cf.timings.origin_ttfb_msec > 2000
 ```
 
 Categories: 

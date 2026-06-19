@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,12 +25,13 @@ To create a rule:
 6. (Optional) To define a custom expression, use the Expression Builder (specifying one or more values for **Field**, **Operator**, and **Value**) or manually enter an expression using the Expression Editor. For more information, refer to [Edit expressions in the dashboard](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/).  
 Note  
 Check the [available fields and functions](https://developers.cloudflare.com/rules/transform/response-header-modification/reference/fields-functions/).
-7. For **Modify response header**, select one of the following operations:  
-   * _Add static_ — Adds an HTTP response header with a static string value. This operation will not remove any existing response headers with the same name.  
-   * _Add dynamic_ — Adds an HTTP response header according to the provided expression. This operation will not remove any existing response headers with the same name.  
-   * _Set static_ — Sets the value of an HTTP response header to a static string value. Overrides the value of any existing headers with the same name or adds a new header if it does not exist.  
-   * _Set dynamic_ — Sets the value of an HTTP response header according to the provided expression. Overrides the value of any existing headers with the same name or adds a new header if it does not exist.  
-   * _Remove_ — Removes the HTTP response header with the provided name, if it exists.
+7. For **Modify response header**, select one of the following operations:
+
+  * _Add static_ — Adds an HTTP response header with a static string value. This operation will not remove any existing response headers with the same name.
+  * _Add dynamic_ — Adds an HTTP response header according to the provided expression. This operation will not remove any existing response headers with the same name.
+  * _Set static_ — Sets the value of an HTTP response header to a static string value. Overrides the value of any existing headers with the same name or adds a new header if it does not exist.
+  * _Set dynamic_ — Sets the value of an HTTP response header according to the provided expression. Overrides the value of any existing headers with the same name or adds a new header if it does not exist.
+  * _Remove_ — Removes the HTTP response header with the provided name, if it exists.
 8. Enter the name of the HTTP response header to modify in **Header name** and the static value or expression in **Value**, if you are setting the header value.
 9. To modify another HTTP response header in the same rule, select **Set new header**. You can modify up to 30 HTTP response headers in a single rule.  
 The following example includes the modification of three response headers:  

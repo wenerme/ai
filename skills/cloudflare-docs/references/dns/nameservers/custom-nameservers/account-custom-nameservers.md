@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -45,8 +45,8 @@ Account owners that want to [use their own IP prefix](https://developers.cloudfl
 
 1. Create ACNS names and sets:
 
-* [ Dashboard ](#tab-panel-8111)
-* [ API ](#tab-panel-8112)
+* [ Dashboard ](#tab-panel-8187)
+* [ API ](#tab-panel-8188)
 
 1. In the Cloudflare dashboard, go to the account **Settings** page.  
 [ Go to **Configurations** ](https://dash.cloudflare.com/?to=/:account/configurations)
@@ -63,23 +63,23 @@ If the parameter `ns_set` is omitted, the default set `1` will be assigned.
 Cloudflare will assign an IPv4 and an IPv6 address to each ACNS name, and these nameservers will be listed as options that you can [use on existing zones](#2-use-acns-on-existing-zones) or [set up as default for new zones in the account](#3-optional-make-acns-default-for-new-zones).
 
 1. Make sure `A/AAAA` records with the assigned IPv4 and IPv6 exist at the authoritative DNS of the domain that provides the ACNS names.  
-   * If the domain uses Cloudflare DNS, the respective `A` and `AAAA` records are automatically created.  
-   * If the domain or domains that are used for the account custom nameservers do not exist within the same account, you must manually create the `A/AAAA` records on the configured nameserver names (for example, `ns1.example.com`) at the authoritative DNS provider.
+  * If the domain uses Cloudflare DNS, the respective `A` and `AAAA` records are automatically created.
+  * If the domain or domains that are used for the account custom nameservers do not exist within the same account, you must manually create the `A/AAAA` records on the configured nameserver names (for example, `ns1.example.com`) at the authoritative DNS provider.
 
 | Type | Name            | Content |
 | ---- | --------------- | ------- |
 | A    | ns1.example.com | <IPv4>  |
 
 1. Update the registrar of the domain that provides the ACNS names. This step depends on whether you are using [Cloudflare Registrar](https://developers.cloudflare.com/registrar/):  
-   * If you are using Cloudflare Registrar for the domain that provides the ACNS names, [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) to add the account custom nameservers and IP addresses as glue records to the domain.  
-   * If you are not using Cloudflare Registrar for the domain that provides the ACNS names, add the account custom nameservers and IP addresses to your domain's registrar as glue records ([RFC 1912 ↗](https://www.rfc-editor.org/rfc/rfc1912.html)). If you do not add these records, DNS lookups for your domain will fail.
+  * If you are using Cloudflare Registrar for the domain that provides the ACNS names, [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) to add the account custom nameservers and IP addresses as glue records to the domain.
+  * If you are not using Cloudflare Registrar for the domain that provides the ACNS names, add the account custom nameservers and IP addresses to your domain's registrar as glue records ([RFC 1912 ↗](https://www.rfc-editor.org/rfc/rfc1912.html)). If you do not add these records, DNS lookups for your domain will fail.
 
 ### 2\. Use ACNS on existing zones
 
 1. Choose an ACNS set as custom nameservers for a zone:
 
-* [ Dashboard ](#tab-panel-8105)
-* [ API ](#tab-panel-8106)
+* [ Dashboard ](#tab-panel-8181)
+* [ API ](#tab-panel-8182)
 
 1. In the Cloudflare dashboard, go to the **DNS Records** page.  
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
@@ -98,8 +98,8 @@ Use the endpoint [Update DNS Settings for a Zone](https://developers.cloudflare.
 
 To make ACNS the default option for all new zones added to your account from now on:
 
-* [ Dashboard ](#tab-panel-8109)
-* [ API ](#tab-panel-8110)
+* [ Dashboard ](#tab-panel-8185)
+* [ API ](#tab-panel-8186)
 
 1. In the Cloudflare dashboard, go to the account **Settings** page.  
 [ Go to **Configurations** ](https://dash.cloudflare.com/?to=/:account/configurations)
@@ -112,18 +112,7 @@ Refer to [DNS zone defaults](https://developers.cloudflare.com/dns/nameservers/n
 Use the endpoint [Update DNS Settings for an Account](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/account/methods/edit/). Within the `zone_defaults` object, set the following:
 
 ```
-
-"zone_defaults": {
-
-  "nameservers": {
-
-    "type": "custom.account"
-
-  }
-
-}
-
-
+"zone_defaults": {  "nameservers": {    "type": "custom.account"  }}
 ```
 
 ## Disable account custom nameservers
@@ -132,8 +121,8 @@ Use the endpoint [Update DNS Settings for an Account](https://developers.cloudfl
 
 To remove ACNS from a zone, first update your nameservers to stop using ACNS:
 
-* [ Dashboard ](#tab-panel-8103)
-* [ API ](#tab-panel-8104)
+* [ Dashboard ](#tab-panel-8179)
+* [ API ](#tab-panel-8180)
 
 * If you are using [Cloudflare Registrar](https://developers.cloudflare.com/registrar/), [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) to set your nameservers back to the regular Cloudflare branded nameservers.
 * If you are not using [Cloudflare Registrar](https://developers.cloudflare.com/registrar/), modify the domain's registrar to use your regular Cloudflare branded nameservers.
@@ -145,8 +134,8 @@ To remove ACNS from a zone, first update your nameservers to stop using ACNS:
 
 Following the [configuration conditions](#configuration-conditions), each set must have between two and five different nameserver names. When you delete all names or leave a set with only one nameserver name, the set will no longer be listed as an option for the zones in your account.
 
-* [ Dashboard ](#tab-panel-8107)
-* [ API ](#tab-panel-8108)
+* [ Dashboard ](#tab-panel-8183)
+* [ API ](#tab-panel-8184)
 
 1. In the Cloudflare dashboard, go to the account **Settings** page.  
 [ Go to **Configurations** ](https://dash.cloudflare.com/?to=/:account/configurations)

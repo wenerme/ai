@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -24,79 +24,21 @@ In advanced mode, your Function will assume full control of all incoming HTTP re
 
 After making a `_worker.js` file in your output directory, add the following code snippet:
 
-* [  JavaScript ](#tab-panel-9396)
-* [  TypeScript ](#tab-panel-9397)
+* [  JavaScript ](#tab-panel-9472)
+* [  TypeScript ](#tab-panel-9473)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const url = new URL(request.url);
-
-    if (url.pathname.startsWith("/api/")) {
-
-      // TODO: Add your custom /api/* logic here.
-
-      return new Response("Ok");
-
-    }
-
-    // Otherwise, serve the static assets.
-
-    // Without this, the Worker will error and no assets will be served.
-
-    return env.ASSETS.fetch(request);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const url = new URL(request.url);    if (url.pathname.startsWith("/api/")) {      // TODO: Add your custom /api/* logic here.      return new Response("Ok");    }    // Otherwise, serve the static assets.    // Without this, the Worker will error and no assets will be served.    return env.ASSETS.fetch(request);  },};
 ```
 
 TypeScript
 
 ```
-
 // Note: You would need to compile your TS into JS and output it as a `_worker.js` file. We do not read `_worker.ts`
-
-
-interface Env {
-
-  ASSETS: Fetcher;
-
-}
-
-
-export default {
-
-  async fetch(request, env): Promise<Response> {
-
-    const url = new URL(request.url);
-
-    if (url.pathname.startsWith("/api/")) {
-
-      // TODO: Add your custom /api/* logic here.
-
-      return new Response("Ok");
-
-    }
-
-    // Otherwise, serve the static assets.
-
-    // Without this, the Worker will error and no assets will be served.
-
-    return env.ASSETS.fetch(request);
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+interface Env {  ASSETS: Fetcher;}
+export default {  async fetch(request, env): Promise<Response> {    const url = new URL(request.url);    if (url.pathname.startsWith("/api/")) {      // TODO: Add your custom /api/* logic here.      return new Response("Ok");    }    // Otherwise, serve the static assets.    // Without this, the Worker will error and no assets will be served.    return env.ASSETS.fetch(request);  },} satisfies ExportedHandler<Env>;
 ```
 
 In the above code, you have configured your Function to return a response under all requests headed for `/api/`. Otherwise, your Function will fallback to returning static assets.
@@ -113,10 +55,7 @@ To migrate an existing Worker to your Pages project, copy your Worker code and p
 TypeScript
 
 ```
-
 return env.ASSETS.fetch(request);
-
-
 ```
 
 ## Deploy your Function

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -44,9 +44,10 @@ For more information on how Cloudflare calculates the request rate of incoming t
 
 1. In the Cloudflare dashboard, go to the **Analytics** page.  
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
-2. In the **Traffic analysis** tab, select a specific time period:  
-   * To look at the regular rate distribution, specify a period with non-peak traffic.  
-   * To analyze the rate of offending visitors/bots, select a period corresponding to an attack.
+2. In the **Traffic analysis** tab, select a specific time period:
+
+  * To look at the regular rate distribution, specify a period with non-peak traffic.
+  * To analyze the rate of offending visitors/bots, select a period corresponding to an attack.
 3. Apply filters to analyze a particular situation in your application where you want to apply rate limiting (for example, filter by `/login` URL path).
 4. (Optional) To focus on non-automated/human traffic, use the bot score quick filter in the sidebar.
 

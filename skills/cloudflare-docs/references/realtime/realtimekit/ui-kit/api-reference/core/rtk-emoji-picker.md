@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,35 +27,18 @@ A very simple emoji picker component.
 ### Basic Usage
 
 ```
-
 <rtk-emoji-picker></rtk-emoji-picker>
-
-
 ```
 
 ### With Properties
 
 ```
-
-<rtk-emoji-picker>
-
-</rtk-emoji-picker>
-
-
+<rtk-emoji-picker></rtk-emoji-picker>
 ```
 
 ```
-
-<script>
-
-  const el = document.querySelector("rtk-emoji-picker");
-
-
-  el.focusWhenOpened= true;
-
-</script>
-
-
+<script>  const el = document.querySelector("rtk-emoji-picker");
+  el.focusWhenOpened= true;</script>
 ```
 
 ```json

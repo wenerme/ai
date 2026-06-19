@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,9 +19,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 To set up an integration with Upstash:
 
 1. You need an existing Upstash database to connect to. [Create an Upstash database ↗](https://docs.upstash.com/redis#create-a-database) or [load data from an existing database to Upstash ↗](https://docs.upstash.com/redis/howto/connectclient).
-2. Insert some data to your Upstash database. You can add data to your Upstash database in two ways:  
-   * Use the CLI directly from your Upstash console.  
-   * Alternatively, install [redis-cli ↗](https://redis.io/docs/getting-started/installation/) locally and run the following commands.  
+2. Insert some data to your Upstash database. You can add data to your Upstash database in two ways:
+
+  * Use the CLI directly from your Upstash console.
+  * Alternatively, install [redis-cli ↗](https://redis.io/docs/getting-started/installation/) locally and run the following commands.  
 Terminal window  
 ```  
 set GB "Ey up?"  
@@ -47,12 +48,8 @@ OK
 You need to add your Upstash Redis database URL and token as secrets to your Worker. Get these from your [Upstash Console ↗](https://console.upstash.com) under your database details, then add them as secrets using Wrangler:  
 Terminal window  
 ```  
-# Add the Upstash Redis URL as a secret  
-npx wrangler secret put UPSTASH_REDIS_REST_URL  
-# When prompted, paste your Upstash Redis REST URL  
-# Add the Upstash Redis token as a secret  
-npx wrangler secret put UPSTASH_REDIS_REST_TOKEN  
-# When prompted, paste your Upstash Redis REST token  
+# Add the Upstash Redis URL as a secretnpx wrangler secret put UPSTASH_REDIS_REST_URL# When prompted, paste your Upstash Redis REST URL  
+# Add the Upstash Redis token as a secretnpx wrangler secret put UPSTASH_REDIS_REST_TOKEN# When prompted, paste your Upstash Redis REST token  
 ```
 4. In your Worker, install the `@upstash/redis`, a HTTP client to connect to your database and start manipulating data:  
  npm  yarn  pnpm  bun  
@@ -72,19 +69,9 @@ bun add @upstash/redis
 JavaScript  
 ```  
 import { Redis } from "@upstash/redis/cloudflare";  
-export default {  
-  async fetch(request, env) {  
-    const redis = Redis.fromEnv(env);  
-    const country = request.headers.get("cf-ipcountry");  
-    if (country) {  
-      const greeting = await redis.get(country);  
-      if (greeting) {  
-        return new Response(greeting);  
-      }  
-    }  
-    return new Response("Hello What's up!");  
-  },  
-};  
+export default {  async fetch(request, env) {    const redis = Redis.fromEnv(env);  
+    const country = request.headers.get("cf-ipcountry");    if (country) {      const greeting = await redis.get(country);      if (greeting) {        return new Response(greeting);      }    }  
+    return new Response("Hello What's up!");  },};  
 ```  
 Note  
 `Redis.fromEnv(env)` automatically picks up the default `url` and `token` names created in the integration.  
@@ -101,9 +88,7 @@ To set up an integration with Upstash QStash:
 You need to add your Upstash QStash token as a secret to your Worker. Get your token from your [Upstash Console ↗](https://console.upstash.com) under QStash settings, then add it as a secret using Wrangler:  
 Terminal window  
 ```  
-# Add the QStash token as a secret  
-npx wrangler secret put QSTASH_TOKEN  
-# When prompted, paste your QStash token  
+# Add the QStash token as a secretnpx wrangler secret put QSTASH_TOKEN# When prompted, paste your QStash token  
 ```
 3. In your Worker, install the `@upstash/qstash`, a HTTP client to connect to your database QStash endpoint:  
  npm  yarn  pnpm  bun  

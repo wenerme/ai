@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -14,15 +14,15 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Create a compression rule to set Brotli as the only supported compression algorithm for a specific URI path.
 
-* [ Dashboard ](#tab-panel-9973)
-* [ API ](#tab-panel-9974)
+* [ Dashboard ](#tab-panel-10049)
+* [ API ](#tab-panel-10050)
 
 The following example rule will configure only Brotli compression for a specific URI path.
 
 **When incoming requests match**
 
 * Custom filter expression:  
-   * _URI Path_ _equals_ `/download/assets.tar`
+  * _URI Path_ _equals_ `/download/assets.tar`
 
 **Then**
 
@@ -35,7 +35,7 @@ The following example sets the rules of an existing [entry point ruleset](https:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Response Compression Write`
 * `Config Settings Write`
 * `Dynamic URL Redirects Write`
@@ -61,46 +61,7 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Update a zone ruleset
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "rules": [
-
-        {
-
-            "ref": "use_only_brotli_for_assets_tar",
-
-            "expression": "http.request.uri.path eq \"/download/assets.tar\"",
-
-            "action": "compress_response",
-
-            "action_parameters": {
-
-                "algorithms": [
-
-                    {
-
-                        "name": "brotli"
-
-                    }
-
-                ]
-
-            }
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "ref": "use_only_brotli_for_assets_tar",            "expression": "http.request.uri.path eq \"/download/assets.tar\"",            "action": "compress_response",            "action_parameters": {                "algorithms": [                    {                        "name": "brotli"                    }                ]            }        }    ]  }'
 ```
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.

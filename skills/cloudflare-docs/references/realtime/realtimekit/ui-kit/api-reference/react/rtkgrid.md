@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,45 +35,15 @@ The main grid component which abstracts all the grid handling logic and renders 
 ### Basic Usage
 
 ```
-
 import { RtkGrid } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return <RtkGrid />;
-
-}
-
-
+function MyComponent() {  return <RtkGrid />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkGrid } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkGrid
-
-      aspectRatio="example"
-
-      gap={42}
-
-      gridSize="md"
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkGrid      aspectRatio="example"      gap={42}      gridSize="md"    />  );}
 ```
 
 ```json

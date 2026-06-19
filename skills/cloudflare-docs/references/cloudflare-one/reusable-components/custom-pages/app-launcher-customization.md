@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,22 +23,23 @@ To customize the App Launcher appearance:
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Custom pages**.
 2. Find the **App Launcher customization** setting and select **Manage**.
 3. Give the App Launcher the look and feel of your organization by adding:  
-   * Your organization's name  
-   * A logo  
-   * A preferred background color for the header  
-   * A preferred background color for the page  
-   * A custom footer with links to your organization's help desk or other internal resources.
+  * Your organization's name
+  * A logo
+  * A preferred background color for the header
+  * A preferred background color for the page
+  * A custom footer with links to your organization's help desk or other internal resources.
 
 Note
 
 We recommend lighter background colors because the font defaults to black.
 
-1. Next, customize the landing page that users will see when they login to the App Launcher. Available properties include:  
-   * A custom title  
-   * A custom subtitle  
-   * An image  
-   * A preferred color for the **Log in** button  
-   * A preferred color for the **Log in** button text  
+1. Next, customize the landing page that users will see when they login to the App Launcher. Available properties include:
+
+  * A custom title
+  * A custom subtitle
+  * An image
+  * A preferred color for the **Log in** button
+  * A preferred color for the **Log in** button text  
 All of the properties configured in Step 3 will also apply to the landing page.
 2. Once you are satisfied with your customization, select **Save**.
 

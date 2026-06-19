@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,10 +32,11 @@ Adjust how the Cloudflare dashboard appears on your device.
 1. Log in to the Cloudflare dashboard.  
 [ Go to **Account home** ](https://dash.cloudflare.com/?to=/:account/home)
 2. Go to **Profile**.
-3. From **Settings** \> **Dashboard appearance**, choose a value:  
-   * **Dark**: Defaults to darker colors.  
-   * **Light**: Defaults to lighter colors.  
-   * **Use system setting**: Defaults to the option used on your device.
+3. From **Settings** \> **Dashboard appearance**, choose a value:
+
+  * **Dark**: Defaults to darker colors.
+  * **Light**: Defaults to lighter colors.
+  * **Use system setting**: Defaults to the option used on your device.
 
 Your dashboard display will update to the new appearance setting automatically.
 

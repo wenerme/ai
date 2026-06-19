@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/radar/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,57 +23,13 @@ In the following example, we will access the global percentage distribution of d
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/radar/http/summary/device_type?dateRange=7d&format=json" \
-
---header "Authorization: Bearer <API_TOKEN>"
-
-
+curl "https://api.cloudflare.com/client/v4/radar/http/summary/device_type?dateRange=7d&format=json" \--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 A successful response will look similar to the following:
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "result": {
-
-    "summary_0": {
-
-      "desktop": "58.223483",
-
-      "mobile": "41.725833",
-
-      "other": "0.050684"
-
-    },
-
-    "meta": {
-
-      "dateRange": {
-
-        "startTime": "2022-10-26T14:00:00Z",
-
-        "endTime": "2022-11-02T14:00:00Z"
-
-      },
-
-      "normalization": "PERCENTAGE",
-
-      ...
-
-    }
-
-  }
-
-}
-
-
+{  "success": true,  "errors": [],  "result": {    "summary_0": {      "desktop": "58.223483",      "mobile": "41.725833",      "other": "0.050684"    },    "meta": {      "dateRange": {        "startTime": "2022-10-26T14:00:00Z",        "endTime": "2022-11-02T14:00:00Z"      },      "normalization": "PERCENTAGE",      ...    }  }}
 ```
 
 This response means that 41% of the requests are classified as coming from mobile devices, while 58% are desktop traffic.
@@ -87,12 +43,7 @@ The previous example returns all traffic from bots and humans. However, you can 
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/radar/http/summary/device_type?dateRange=7d&botClass=LIKELY_AUTOMATED&format=json" \
-
---header "Authorization: Bearer <API_TOKEN>"
-
-
+curl "https://api.cloudflare.com/client/v4/radar/http/summary/device_type?dateRange=7d&botClass=LIKELY_AUTOMATED&format=json" \--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 Running the above, can you find any differences between both in the distribution of mobile versus desktop traffic?
@@ -112,29 +63,8 @@ When present, `meta.confidenceInfo.level` will also provide an indication of how
 Python
 
 ```
-
-import io
-
-import requests
-
-import pandas as pd
-
-
-cf_api_url = "https://api.cloudflare.com/client/v4"
-
-params = "dateRange=7d&format=csv"
-
-my_token = "xxx" # TODO replace
-
-r = requests.get(f"{cf_api_url}/radar/http/summary/device_type?{params}",
-
-                 headers={"Authorization": f"Bearer {my_token}"})
-
-df = pd.read_csv(io.StringIO(r.text))
-
-df.plot(kind="bar", stacked=True)
-
-
+import ioimport requestsimport pandas as pd
+cf_api_url = "https://api.cloudflare.com/client/v4"params = "dateRange=7d&format=csv"my_token = "xxx" # TODO replacer = requests.get(f"{cf_api_url}/radar/http/summary/device_type?{params}",                 headers={"Authorization": f"Bearer {my_token}"})df = pd.read_csv(io.StringIO(r.text))df.plot(kind="bar", stacked=True)
 ```
 
 ### Notebooks

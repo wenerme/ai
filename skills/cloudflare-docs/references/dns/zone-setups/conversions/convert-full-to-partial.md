@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -41,24 +41,24 @@ To avoid downtime, replace your Universal SSL certificates with an [advanced cer
 
 ## 1\. Prepare new DNS provider
 
-1. Export a zone file  
-   * [ Dashboard ](#tab-panel-8121)  
-   * [ API ](#tab-panel-8122)  
-To export records using the dashboard:  
-   1. In the Cloudflare dashboard, go to the **DNS Records** page.  
-   [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)  
-   2. Select **Import and Export**.  
-   3. Select **Export**.  
+1. Export a zone file
+
+  * [ Dashboard ](#tab-panel-8197)
+  * [ API ](#tab-panel-8198)  
+To export records using the dashboard:
+
+  1. In the Cloudflare dashboard, go to the **DNS Records** page.  
+  [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+  2. Select **Import and Export**.
+  3. Select **Export**.  
 To export records using the API, send a [GET request](https://developers.cloudflare.com/api/resources/dns/subresources/records/methods/export/).  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `DNS Read`  
-   * `DNS Write`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `DNS Read`
+  * `DNS Write`  
 Export DNS Records  
 ```  
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/export" \  
-  --request GET \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/export" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
 ```
 2. Import the zone file into your new primary DNS provider.
 3. At your new authoritative DNS provider, create or update records so that you have CNAME records pointing to `{your-hostname}.cdn.cloudflare.net` for every hostname you wish to proxy through Cloudflare.  
@@ -70,24 +70,26 @@ www.example.com CNAME www.example.com.cdn.cloudflare.net
 
 ## 2\. Convert the zone
 
-* [ Dashboard ](#tab-panel-8119)
-* [ API ](#tab-panel-8120)
+* [ Dashboard ](#tab-panel-8195)
+* [ API ](#tab-panel-8196)
 
 1. On the Cloudflare dashboard, go to the zone's **Overview** page.
 2. Select **Convert to CNAME DNS Setup** and then **Convert** to confirm.
 3. Save the information from the **Verification TXT Record** and add the record at your new authoritative DNS provider. If you lose the information, you can also access it on the [**DNS Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page, under **Verification TXT Record**.  
 Example verification record  
-A verification record for `example.com` might be:  
-| Type | Name                          | Content             |  
-| ---- | ----------------------------- | ------------------- |  
+A verification record for `example.com` might be:
+
+| Type | Name                          | Content             |
+| ---- | ----------------------------- | ------------------- |
 | TXT  | cloudflare-verify.example.com | 966215192-518620144 |
 
 1. Use the [Edit Zone endpoint](https://developers.cloudflare.com/api/resources/zones/methods/edit/) with `type` set to `partial` to convert the zone type.
 2. Take note of the value returned under `verification_key` in the API response and add the corresponding TXT record at your new authoritative DNS provider.  
 Example verification record  
-A verification record for `example.com` might be:  
-| Type | Name                          | Content             |  
-| ---- | ----------------------------- | ------------------- |  
+A verification record for `example.com` might be:
+
+| Type | Name                          | Content             |
+| ---- | ----------------------------- | ------------------- |
 | TXT  | cloudflare-verify.example.com | 966215192-518620144 |
 
 Note

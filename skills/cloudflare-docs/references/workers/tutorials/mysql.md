@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -66,10 +66,7 @@ Now, move into the newly created directory:
 Terminal window
 
 ```
-
 cd mysql-tutorial
-
-
 ```
 
 ## 2\. Enable Node.js compatibility
@@ -78,41 +75,19 @@ cd mysql-tutorial
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-12193)
-* [  wrangler.toml ](#tab-panel-12194)
+* [  wrangler.jsonc ](#tab-panel-12210)
+* [  wrangler.toml ](#tab-panel-12211)
 
 JSONC
 
 ```
-
-{
-
-  "compatibility_flags": [
-
-    "nodejs_compat"
-
-  ],
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17"
-
-}
-
-
+{  "compatibility_flags": [    "nodejs_compat"  ],  // Set this to today's date  "compatibility_date": "2026-06-19"}
 ```
 
 TOML
 
 ```
-
-compatibility_flags = [ "nodejs_compat" ]
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
+compatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-06-19"
 ```
 
 ## 3\. Create a Hyperdrive configuration
@@ -122,82 +97,25 @@ Create a Hyperdrive configuration using the connection string for your MySQL dat
 Terminal window
 
 ```
-
 npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="mysql://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name"
-
-
 ```
 
 This command outputs the Hyperdrive configuration `id` that will be used for your Hyperdrive [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/). Set up your binding by specifying the `id` in the Wrangler file.
 
-* [  wrangler.jsonc ](#tab-panel-12191)
-* [  wrangler.toml ](#tab-panel-12192)
+* [  wrangler.jsonc ](#tab-panel-12208)
+* [  wrangler.toml ](#tab-panel-12209)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "hyperdrive-example",
-
-  "main": "src/index.ts",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "compatibility_flags": [
-
-    "nodejs_compat"
-
-  ],
-
-  // Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.
-
-  "hyperdrive": [
-
-    {
-
-      "binding": "HYPERDRIVE",
-
-      "id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "hyperdrive-example",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-19",  "compatibility_flags": [    "nodejs_compat"  ],  // Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"    }  ]}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "hyperdrive-example"
-
-main = "src/index.ts"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-compatibility_flags = [ "nodejs_compat" ]
-
-
-[[hyperdrive]]
-
-binding = "HYPERDRIVE"
-
-id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "hyperdrive-example"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-19"compatibility_flags = [ "nodejs_compat" ]
+[[hyperdrive]]binding = "HYPERDRIVE"id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
 ```
 
 ## 4\. Query your database from your Worker
@@ -228,62 +146,20 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-12195)
-* [  wrangler.toml ](#tab-panel-12196)
+* [  wrangler.jsonc ](#tab-panel-12212)
+* [  wrangler.toml ](#tab-panel-12213)
 
 JSONC
 
 ```
-
-{
-
-  // required for database drivers to function
-
-  "compatibility_flags": [
-
-    "nodejs_compat"
-
-  ],
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "hyperdrive": [
-
-    {
-
-      "binding": "HYPERDRIVE",
-
-      "id": "<your-hyperdrive-id-here>"
-
-    }
-
-  ]
-
-}
-
-
+{  // required for database drivers to function  "compatibility_flags": [    "nodejs_compat"  ],  // Set this to today's date  "compatibility_date": "2026-06-19",  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<your-hyperdrive-id-here>"    }  ]}
 ```
 
 TOML
 
 ```
-
-compatibility_flags = [ "nodejs_compat" ]
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[[hyperdrive]]
-
-binding = "HYPERDRIVE"
-
-id = "<your-hyperdrive-id-here>"
-
-
+compatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-06-19"
+[[hyperdrive]]binding = "HYPERDRIVE"id = "<your-hyperdrive-id-here>"
 ```
 
 Create a new `connection` instance and pass the Hyperdrive parameters:
@@ -291,70 +167,11 @@ Create a new `connection` instance and pass the Hyperdrive parameters:
 TypeScript
 
 ```
-
-// mysql2 v3.13.0 or later is required
-
-import { createConnection } from "mysql2/promise";
-
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    // Create a new connection on each request. Hyperdrive maintains the underlying
-
-    // database connection pool, so creating a new connection is fast.
-
-    const connection = await createConnection({
-
-      host: env.HYPERDRIVE.host,
-
-      user: env.HYPERDRIVE.user,
-
-      password: env.HYPERDRIVE.password,
-
-      database: env.HYPERDRIVE.database,
-
-      port: env.HYPERDRIVE.port,
-
-
-      // Required to enable mysql2 compatibility for Workers
-
-      disableEval: true,
-
-    });
-
-
-    try {
-
-      // Sample query
-
-      const [results, fields] = await connection.query("SHOW tables;");
-
-
-      // Return result rows as JSON
-
-      return Response.json({ results, fields });
-
-    } catch (e) {
-
-      console.error(e);
-
-      return Response.json(
-
-        { error: e instanceof Error ? e.message : e },
-
-        { status: 500 },
-
-      );
-
-    }
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+// mysql2 v3.13.0 or later is requiredimport { createConnection } from "mysql2/promise";
+export default {  async fetch(request, env, ctx): Promise<Response> {    // Create a new connection on each request. Hyperdrive maintains the underlying    // database connection pool, so creating a new connection is fast.    const connection = await createConnection({      host: env.HYPERDRIVE.host,      user: env.HYPERDRIVE.user,      password: env.HYPERDRIVE.password,      database: env.HYPERDRIVE.database,      port: env.HYPERDRIVE.port,
+      // Required to enable mysql2 compatibility for Workers      disableEval: true,    });
+    try {      // Sample query      const [results, fields] = await connection.query("SHOW tables;");
+      // Return result rows as JSON      return Response.json({ results, fields });    } catch (e) {      console.error(e);      return Response.json(        { error: e instanceof Error ? e.message : e },        { status: 500 },      );    }  },} satisfies ExportedHandler<Env>;
 ```
 
 Note
@@ -368,10 +185,7 @@ Run the following command to deploy your Worker:
 Terminal window
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 Your application is now live and accessible at `<YOUR_WORKER>.<YOUR_SUBDOMAIN>.workers.dev`.

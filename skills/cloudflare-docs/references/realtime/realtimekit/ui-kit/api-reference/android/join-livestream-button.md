@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,16 +25,7 @@ A button for joining or leaving the livestream stage.
 ### Basic Usage
 
 ```
-
-<com.cloudflare.realtimekit.ui.view.RtkJoinLivestreamButton
-
-    android:id="@+id/rtk_join_livestream"
-
-    android:layout_width="wrap_content"
-
-    android:layout_height="wrap_content" />
-
-
+<com.cloudflare.realtimekit.ui.view.RtkJoinLivestreamButton    android:id="@+id/rtk_join_livestream"    android:layout_width="wrap_content"    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
@@ -42,12 +33,7 @@ A button for joining or leaving the livestream stage.
 Kotlin
 
 ```
-
-val joinLivestreamButton = findViewById<RtkJoinLivestreamButton>(R.id.rtk_join_livestream)
-
-joinLivestreamButton.activate(meeting)
-
-
+val joinLivestreamButton = findViewById<RtkJoinLivestreamButton>(R.id.rtk_join_livestream)joinLivestreamButton.activate(meeting)
 ```
 
 ```json

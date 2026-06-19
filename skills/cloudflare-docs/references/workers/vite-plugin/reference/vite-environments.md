@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,77 +28,26 @@ The default Vite environment name for a Worker is always the top-level Worker na
 
 In the following example we have a Worker named `my-worker` that is associated with a Vite environment named `my_worker`. We use the Vite config to set global constant replacements for this environment:
 
-* [  wrangler.jsonc ](#tab-panel-12217)
-* [  wrangler.toml ](#tab-panel-12218)
+* [  wrangler.jsonc ](#tab-panel-12234)
+* [  wrangler.toml ](#tab-panel-12235)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "my-worker",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "main": "./src/index.ts"
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-worker",  // Set this to today's date  "compatibility_date": "2026-06-19",  "main": "./src/index.ts"}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "my-worker"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-main = "./src/index.ts"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-worker"# Set this to today's datecompatibility_date = "2026-06-19"main = "./src/index.ts"
 ```
 
 vite.config.ts
 
 ```
-
-import { defineConfig } from "vite";
-
-import { cloudflare } from "@cloudflare/vite-plugin";
-
-
-export default defineConfig({
-
-  environments: {
-
-    my_worker: {
-
-      define: {
-
-        __APP_VERSION__: JSON.stringify("v1.0.0"),
-
-      },
-
-    },
-
-  },
-
-  plugins: [cloudflare()],
-
-});
-
-
+import { defineConfig } from "vite";import { cloudflare } from "@cloudflare/vite-plugin";
+export default defineConfig({  environments: {    my_worker: {      define: {        __APP_VERSION__: JSON.stringify("v1.0.0"),      },    },  },  plugins: [cloudflare()],});
 ```
 
 For more information about Vite's configuration options, see [Configuring Vite ↗](https://vite.dev/config/).
@@ -112,21 +61,8 @@ If you are using the Cloudflare Vite plugin with [TanStack Start ↗](https://ta
 vite.config.ts
 
 ```
-
-import { defineConfig } from "vite";
-
-import { cloudflare } from "@cloudflare/vite-plugin";
-
-import { reactRouter } from "@react-router/dev/vite";
-
-
-export default defineConfig({
-
-  plugins: [cloudflare({ viteEnvironment: { name: "ssr" } }), reactRouter()],
-
-});
-
-
+import { defineConfig } from "vite";import { cloudflare } from "@cloudflare/vite-plugin";import { reactRouter } from "@react-router/dev/vite";
+export default defineConfig({  plugins: [cloudflare({ viteEnvironment: { name: "ssr" } }), reactRouter()],});
 ```
 
 This merges the Worker's environment configuration with the framework's SSR configuration and ensures that the Worker is included as part of the framework's build output.

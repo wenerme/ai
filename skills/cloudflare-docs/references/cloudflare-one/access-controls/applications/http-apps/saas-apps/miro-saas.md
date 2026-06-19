@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,23 +30,23 @@ This guide covers how to configure [Miro ↗](https://help.miro.com/hc/articles/
 4. For the authentication protocol, select **SAML**.
 5. Select **Add application**.
 6. Fill in the following fields:  
-   * **Entity ID**: `https://miro.com/`  
-   * **Assertion Consumer Service URL**: `https://miro.com/sso/saml`  
-   * **Name ID format**: _Email_
+  * **Entity ID**: `https://miro.com/`
+  * **Assertion Consumer Service URL**: `https://miro.com/sso/saml`
+  * **Name ID format**: _Email_
 7. Copy the **SSO endpoint** and **Public key**.
 8. Configure [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) for the application.
 9. Save the application.
 
 ## 2\. Add a SAML SSO provider to Miro
 
-* [ business plan ](#tab-panel-7107)
-* [ enterprise plan ](#tab-panel-7108)
+* [ business plan ](#tab-panel-7183)
+* [ enterprise plan ](#tab-panel-7184)
 
 1. In Miro, select your profile picture > **Settings** \> **\*\*Security\*\***.
 2. Turn on **SSO/SAML**.
 3. Fill in the following fields:  
-   * **SAML Sign-in URL**: SSO endpoint from application configuration in Cloudflare One  
-   * **Key x509 Certificate**: Public key from application configuration in Cloudflare One
+  * **SAML Sign-in URL**: SSO endpoint from application configuration in Cloudflare One
+  * **Key x509 Certificate**: Public key from application configuration in Cloudflare One
 4. In **Domain**, enter the domain you want to configure SSO for and select **Enter**.
 5. Enter an email address from that domain and select **send verification**.
 6. Once you receive a verification email, select the link in the email, then select **Save**. When the domain is successfully configured, the **VERIFY EMAIL** label next to the domain in the SSO/SAML configuration page will disappear.
@@ -55,8 +55,8 @@ This guide covers how to configure [Miro ↗](https://help.miro.com/hc/articles/
 1. In Miro, select your profile picture > **Settings** \> **\*\*Security and Compliance\*\* > \*\*Authentication\*\* > \*\*Single sign-on\*\***.
 2. Turn on **SSO/SAML**.
 3. Fill in the following fields:  
-   * **SAML Sign-in URL**: SSO endpoint from application configuration in Cloudflare One  
-   * **Key x509 Certificate**: Public key from application configuration in Cloudflare One
+  * **SAML Sign-in URL**: SSO endpoint from application configuration in Cloudflare One
+  * **Key x509 Certificate**: Public key from application configuration in Cloudflare One
 4. In **Domain**, enter the domain you want to configure SSO for and select **Enter**.
 5. If you have not previously \[verified the domain\](https://help.miro.com/hc/articles/360034831793-Domain-control), enter an email address from that domain and select **send verification**.
 6. Once you receive a verification email, select the link in the email, then select **Save**. When the domain is successfully configured, the **VERIFY EMAIL** label next to the domain in the SSO/SAML configuration page will disappear.

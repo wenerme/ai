@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,25 +30,25 @@ In the Cloudflare dashboard, go to the **AI Gateway** page.
 
 1. Go to **Logs**.
 2. The Logs tab displays all logs associated with your datasets. These logs show key information, including:  
-   * Timestamp: When the interaction occurred.  
-   * Status: Whether the request was successful, cached, or failed.  
-   * Model: The model used in the request.  
-   * Tokens: The number of tokens consumed by the response.  
-   * Cost: The cost based on token usage.  
-   * Duration: The time taken to complete the response.  
-   * Feedback: Where you can provide human feedback on each log.
+  * Timestamp: When the interaction occurred.
+  * Status: Whether the request was successful, cached, or failed.
+  * Model: The model used in the request.
+  * Tokens: The number of tokens consumed by the response.
+  * Cost: The cost based on token usage.
+  * Duration: The time taken to complete the response.
+  * Feedback: Where you can provide human feedback on each log.
 
 ## 3\. Provide human feedback
 
 1. Click on the log entry you want to review. This expands the log, allowing you to see more detailed information.
 2. In the expanded log, you can view additional details such as:  
-   * The user prompt.  
-   * The model response.  
-   * HTTP response details.  
-   * Endpoint information.
+  * The user prompt.
+  * The model response.
+  * HTTP response details.
+  * Endpoint information.
 3. You will see two icons:  
-   * Thumbs up: Indicates positive feedback.  
-   * Thumbs down: Indicates negative feedback.
+  * Thumbs up: Indicates positive feedback.
+  * Thumbs down: Indicates negative feedback.
 4. Click either the thumbs up or thumbs down icon based on how you rate the model response for that particular log entry.
 
 ## 4\. Evaluate human feedback

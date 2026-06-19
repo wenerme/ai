@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,21 +23,8 @@ With `unstable_dev`, to trigger a `fetch` event, you would do this:
 JavaScript
 
 ```
-
 import { unstable_dev } from "wrangler"
-
-
-it("dispatches fetch event", () => {
-
-  const worker = await unstable_dev("src/index.ts");
-
-  const resp = await worker.fetch("http://example.com");
-
-  ...
-
-})
-
-
+it("dispatches fetch event", () => {  const worker = await unstable_dev("src/index.ts");  const resp = await worker.fetch("http://example.com");  ...})
 ```
 
 With the Workers Vitest integration, you can accomplish the same goal using `exports` from `cloudflare:workers`. `exports.default` refers to the default export defined by the `main` option in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). This `main` Worker runs in the same isolate as tests so any global mocks will apply to it too.
@@ -45,21 +32,8 @@ With the Workers Vitest integration, you can accomplish the same goal using `exp
 JavaScript
 
 ```
-
-import { exports } from "cloudflare:workers";
-
-import "../src/"; // Currently required to automatically rerun tests when `main` changes
-
-
-it("dispatches fetch event", async () => {
-
-  const response = await exports.default.fetch("http://example.com");
-
-  ...
-
-});
-
-
+import { exports } from "cloudflare:workers";import "../src/"; // Currently required to automatically rerun tests when `main` changes
+it("dispatches fetch event", async () => {  const response = await exports.default.fetch("http://example.com");  ...});
 ```
 
 ## Stop a Worker
@@ -73,14 +47,7 @@ Via the `unstable_dev` API, you can reference a [Wrangler configuration file](ht
 JavaScript
 
 ```
-
-await unstable_dev("src/index.ts", {
-
-  config: "wrangler.toml",
-
-});
-
-
+await unstable_dev("src/index.ts", {  config: "wrangler.toml",});
 ```
 
 With the Workers Vitest integration, you can now set this reference to a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) in `vitest.config.js` for all of your tests:
@@ -88,31 +55,8 @@ With the Workers Vitest integration, you can now set this reference to a [Wrangl
 JavaScript
 
 ```
-
-import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
-
-import { defineConfig } from "vitest/config";
-
-
-export default defineConfig({
-
-  plugins: [
-
-    cloudflareTest({
-
-      wrangler: {
-
-        configPath: "wrangler.jsonc",
-
-      },
-
-    }),
-
-  ],
-
-});
-
-
+import { cloudflareTest } from "@cloudflare/vitest-pool-workers";import { defineConfig } from "vitest/config";
+export default defineConfig({  plugins: [    cloudflareTest({      wrangler: {        configPath: "wrangler.jsonc",      },    }),  ],});
 ```
 
 ## Test service Workers
@@ -124,23 +68,8 @@ Unlike the `unstable_dev` API, the Workers Vitest integration does not support t
 You can remove `UnstableDevWorker` imports from your code. Instead, follow the [Write your first test guide](https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/#define-types) to define types for all of your tests.
 
 ```
-
-import { unstable_dev } from "wrangler";
-
-import type { UnstableDevWorker } from "wrangler";
-
-import worker from "src/index.ts";
-
-
-describe("Worker", () => {
-
-  let worker: UnstableDevWorker;
-
-  ...
-
-});
-
-
+import { unstable_dev } from "wrangler";import type { UnstableDevWorker } from "wrangler";import worker from "src/index.ts";
+describe("Worker", () => {  let worker: UnstableDevWorker;  ...});
 ```
 
 ## Related resources

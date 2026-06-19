@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -61,50 +61,7 @@ After you create the VPC endpoint, a new entry in the VPC route table with the t
 4. In **Bucket policy**, add the following policy:
 
 ```
-
-{
-
-  "Version": "2012-10-17",
-
-  "Id": "VPCe",
-
-  "Statement": [
-
-    {
-
-      "Sid": "VPCe",
-
-      "Effect": "Allow",
-
-      "Principal": "*",
-
-      "Action": "s3:*",
-
-      "Resource": [
-
-        "arn:aws:s3:::<your-S3-bucket01>",
-
-        "arn:aws:s3:::<your-S3-bucket01>/*"
-
-      ],
-
-      "Condition": {
-
-        "StringEquals": {
-
-          "aws:SourceVpce": "<your-vpc-endpoint>"
-
-        }
-
-      }
-
-    }
-
-  ]
-
-}
-
-
+{  "Version": "2012-10-17",  "Id": "VPCe",  "Statement": [    {      "Sid": "VPCe",      "Effect": "Allow",      "Principal": "*",      "Action": "s3:*",      "Resource": [        "arn:aws:s3:::<your-S3-bucket01>",        "arn:aws:s3:::<your-S3-bucket01>/*"      ],      "Condition": {        "StringEquals": {          "aws:SourceVpce": "<your-vpc-endpoint>"        }      }    }  ]}
 ```
 
 Your bucket policy will allow your VPC to access your S3 bucket.
@@ -172,50 +129,7 @@ flowchart TB
 4. In **Bucket policy**, add the following policy:
 
 ```
-
-{
-
-  "Version": "2012-10-17",
-
-  "Id": "SourceIP",
-
-  "Statement": [
-
-    {
-
-      "Sid": "SourceIP",
-
-      "Effect": "Allow",
-
-      "Principal": "*",
-
-      "Action": "s3:*",
-
-      "Resource": [
-
-        "arn:aws:s3:::<your-S3-bucket02>",
-
-        "arn:aws:s3:::<your-S3-bucket02>/*"
-
-      ],
-
-      "Condition": {
-
-        "IpAddress": {
-
-          "aws:SourceIp": "<your-dedicated-ip>/32"
-
-        }
-
-      }
-
-    }
-
-  ]
-
-}
-
-
+{  "Version": "2012-10-17",  "Id": "SourceIP",  "Statement": [    {      "Sid": "SourceIP",      "Effect": "Allow",      "Principal": "*",      "Action": "s3:*",      "Resource": [        "arn:aws:s3:::<your-S3-bucket02>",        "arn:aws:s3:::<your-S3-bucket02>/*"      ],      "Condition": {        "IpAddress": {          "aws:SourceIp": "<your-dedicated-ip>/32"        }      }    }  ]}
 ```
 
 ### 2\. Enable static website hosting for the S3 bucket

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,105 +20,23 @@ The Session API is under `agents/experimental/memory/session`. The API surface i
 
 ## Quick start
 
-* [  JavaScript ](#tab-panel-6315)
-* [  TypeScript ](#tab-panel-6316)
+* [  JavaScript ](#tab-panel-6389)
+* [  TypeScript ](#tab-panel-6390)
 
 JavaScript
 
 ```
-
-import { Agent } from "agents";
-
-import { Session } from "agents/experimental/memory/session";
-
-
-class MyAgent extends Agent {
-
-  session = Session.create(this)
-
-    .withContext("soul", {
-
-      provider: { get: async () => "You are a helpful assistant." },
-
-    })
-
-    .withContext("memory", {
-
-      description: "Learned facts about the user",
-
-      maxTokens: 1100,
-
-    })
-
-    .withCachedPrompt();
-
-
-  async onMessage(message) {
-
-    await this.session.appendMessage(message);
-
-    const history = await this.session.getHistory();
-
-    const system = await this.session.freezeSystemPrompt();
-
-    const tools = await this.session.tools();
-
-    // Pass history, system prompt, and tools to your LLM
-
-  }
-
-}
-
-
+import { Agent } from "agents";import { Session } from "agents/experimental/memory/session";
+class MyAgent extends Agent {  session = Session.create(this)    .withContext("soul", {      provider: { get: async () => "You are a helpful assistant." },    })    .withContext("memory", {      description: "Learned facts about the user",      maxTokens: 1100,    })    .withCachedPrompt();
+  async onMessage(message) {    await this.session.appendMessage(message);    const history = await this.session.getHistory();    const system = await this.session.freezeSystemPrompt();    const tools = await this.session.tools();    // Pass history, system prompt, and tools to your LLM  }}
 ```
 
 TypeScript
 
 ```
-
-import { Agent } from "agents";
-
-import { Session } from "agents/experimental/memory/session";
-
-
-class MyAgent extends Agent {
-
-  session = Session.create(this)
-
-    .withContext("soul", {
-
-      provider: { get: async () => "You are a helpful assistant." },
-
-    })
-
-    .withContext("memory", {
-
-      description: "Learned facts about the user",
-
-      maxTokens: 1100,
-
-    })
-
-    .withCachedPrompt();
-
-
-  async onMessage(message: unknown) {
-
-    await this.session.appendMessage(message);
-
-    const history = await this.session.getHistory();
-
-    const system = await this.session.freezeSystemPrompt();
-
-    const tools = await this.session.tools();
-
-    // Pass history, system prompt, and tools to your LLM
-
-  }
-
-}
-
-
+import { Agent } from "agents";import { Session } from "agents/experimental/memory/session";
+class MyAgent extends Agent {  session = Session.create(this)    .withContext("soul", {      provider: { get: async () => "You are a helpful assistant." },    })    .withContext("memory", {      description: "Learned facts about the user",      maxTokens: 1100,    })    .withCachedPrompt();
+  async onMessage(message: unknown) {    await this.session.appendMessage(message);    const history = await this.session.getHistory();    const system = await this.session.freezeSystemPrompt();    const tools = await this.session.tools();    // Pass history, system prompt, and tools to your LLM  }}
 ```
 
 ## Creating a session
@@ -127,132 +45,40 @@ class MyAgent extends Agent {
 
 Use `Session.create(agent)` with a chainable builder. Context providers without an explicit `provider` option are auto-wired to SQLite.
 
-* [  JavaScript ](#tab-panel-6301)
-* [  TypeScript ](#tab-panel-6302)
+* [  JavaScript ](#tab-panel-6375)
+* [  TypeScript ](#tab-panel-6376)
 
 JavaScript
 
 ```
-
-const session = Session.create(this)
-
-  .withContext("soul", { provider: { get: async () => "You are helpful." } })
-
-  .withContext("memory", { description: "Learned facts", maxTokens: 1100 })
-
-  .withCachedPrompt()
-
-  .onCompaction(myCompactFn)
-
-  .compactAfter(100_000);
-
-
+const session = Session.create(this)  .withContext("soul", { provider: { get: async () => "You are helpful." } })  .withContext("memory", { description: "Learned facts", maxTokens: 1100 })  .withCachedPrompt()  .onCompaction(myCompactFn)  .compactAfter(100_000);
 ```
 
 TypeScript
 
 ```
-
-const session = Session.create(this)
-
-  .withContext("soul", { provider: { get: async () => "You are helpful." } })
-
-  .withContext("memory", { description: "Learned facts", maxTokens: 1100 })
-
-  .withCachedPrompt()
-
-  .onCompaction(myCompactFn)
-
-  .compactAfter(100_000);
-
-
+const session = Session.create(this)  .withContext("soul", { provider: { get: async () => "You are helpful." } })  .withContext("memory", { description: "Learned facts", maxTokens: 1100 })  .withCachedPrompt()  .onCompaction(myCompactFn)  .compactAfter(100_000);
 ```
 
 ### Direct constructor
 
 For full control over providers:
 
-* [  JavaScript ](#tab-panel-6311)
-* [  TypeScript ](#tab-panel-6312)
+* [  JavaScript ](#tab-panel-6385)
+* [  TypeScript ](#tab-panel-6386)
 
 JavaScript
 
 ```
-
-import {
-
-  Session,
-
-  AgentSessionProvider,
-
-  AgentContextProvider,
-
-} from "agents/experimental/memory/session";
-
-
-const session = new Session(new AgentSessionProvider(this), {
-
-  context: [
-
-    {
-
-      label: "memory",
-
-      description: "Notes",
-
-      maxTokens: 500,
-
-      provider: new AgentContextProvider(this, "memory"),
-
-    },
-
-    { label: "soul", provider: { get: async () => "You are helpful." } },
-
-  ],
-
-});
-
-
+import {  Session,  AgentSessionProvider,  AgentContextProvider,} from "agents/experimental/memory/session";
+const session = new Session(new AgentSessionProvider(this), {  context: [    {      label: "memory",      description: "Notes",      maxTokens: 500,      provider: new AgentContextProvider(this, "memory"),    },    { label: "soul", provider: { get: async () => "You are helpful." } },  ],});
 ```
 
 TypeScript
 
 ```
-
-import {
-
-  Session,
-
-  AgentSessionProvider,
-
-  AgentContextProvider,
-
-} from "agents/experimental/memory/session";
-
-
-const session = new Session(new AgentSessionProvider(this), {
-
-  context: [
-
-    {
-
-      label: "memory",
-
-      description: "Notes",
-
-      maxTokens: 500,
-
-      provider: new AgentContextProvider(this, "memory"),
-
-    },
-
-    { label: "soul", provider: { get: async () => "You are helpful." } },
-
-  ],
-
-});
-
-
+import {  Session,  AgentSessionProvider,  AgentContextProvider,} from "agents/experimental/memory/session";
+const session = new Session(new AgentSessionProvider(this), {  context: [    {      label: "memory",      description: "Notes",      maxTokens: 500,      provider: new AgentContextProvider(this, "memory"),    },    { label: "soul", provider: { get: async () => "You are helpful." } },  ],});
 ```
 
 ### Builder methods
@@ -273,63 +99,25 @@ All builder methods return `this` for chaining. Order does not matter — provid
 
 Messages use the `SessionMessage` type — a minimal shape with `id`, `role`, `parts`, and optional `createdAt`. The AI SDK's `UIMessage` is structurally compatible and can be passed directly. The session stores messages in a tree structure via `parent_id`, enabling branching conversations.
 
-* [  JavaScript ](#tab-panel-6309)
-* [  TypeScript ](#tab-panel-6310)
+* [  JavaScript ](#tab-panel-6383)
+* [  TypeScript ](#tab-panel-6384)
 
 JavaScript
 
 ```
-
-// Append — auto-parents to the latest leaf unless parentId is specified
-
-await session.appendMessage(message);
-
-await session.appendMessage(message, parentId);
-
-
-// Update an existing message (matched by message.id)
-
-await session.updateMessage(message);
-
-
-// Delete specific messages
-
-await session.deleteMessages(["msg-1", "msg-2"]);
-
-
-// Clear all messages and skill state
-
-await session.clearMessages();
-
-
+// Append — auto-parents to the latest leaf unless parentId is specifiedawait session.appendMessage(message);await session.appendMessage(message, parentId);
+// Update an existing message (matched by message.id)await session.updateMessage(message);
+// Delete specific messagesawait session.deleteMessages(["msg-1", "msg-2"]);
+// Clear all messages and skill stateawait session.clearMessages();
 ```
 
 TypeScript
 
 ```
-
-// Append — auto-parents to the latest leaf unless parentId is specified
-
-await session.appendMessage(message);
-
-await session.appendMessage(message, parentId);
-
-
-// Update an existing message (matched by message.id)
-
-await session.updateMessage(message);
-
-
-// Delete specific messages
-
-await session.deleteMessages(["msg-1", "msg-2"]);
-
-
-// Clear all messages and skill state
-
-await session.clearMessages();
-
-
+// Append — auto-parents to the latest leaf unless parentId is specifiedawait session.appendMessage(message);await session.appendMessage(message, parentId);
+// Update an existing message (matched by message.id)await session.updateMessage(message);
+// Delete specific messagesawait session.deleteMessages(["msg-1", "msg-2"]);
+// Clear all messages and skill stateawait session.clearMessages();
 ```
 
 Note
@@ -338,98 +126,46 @@ Session methods are async. SQLite-backed sessions are usually fast, but external
 
 ### Reading history
 
-* [  JavaScript ](#tab-panel-6317)
-* [  TypeScript ](#tab-panel-6318)
+* [  JavaScript ](#tab-panel-6391)
+* [  TypeScript ](#tab-panel-6392)
 
 JavaScript
 
 ```
-
-// Linear history from root to the latest leaf
-
-const messages = await session.getHistory();
-
-
-// History to a specific leaf (for branching)
-
-const branch = await session.getHistory(leafId);
-
-
-// Get a single message
-
-const msg = await session.getMessage("msg-1");
-
-
-// Get the newest message
-
-const latest = await session.getLatestLeaf();
-
-
-// Count messages in path
-
-const count = await session.getPathLength();
-
-
+// Linear history from root to the latest leafconst messages = await session.getHistory();
+// History to a specific leaf (for branching)const branch = await session.getHistory(leafId);
+// Get a single messageconst msg = await session.getMessage("msg-1");
+// Get the newest messageconst latest = await session.getLatestLeaf();
+// Count messages in pathconst count = await session.getPathLength();
 ```
 
 TypeScript
 
 ```
-
-// Linear history from root to the latest leaf
-
-const messages = await session.getHistory();
-
-
-// History to a specific leaf (for branching)
-
-const branch = await session.getHistory(leafId);
-
-
-// Get a single message
-
-const msg = await session.getMessage("msg-1");
-
-
-// Get the newest message
-
-const latest = await session.getLatestLeaf();
-
-
-// Count messages in path
-
-const count = await session.getPathLength();
-
-
+// Linear history from root to the latest leafconst messages = await session.getHistory();
+// History to a specific leaf (for branching)const branch = await session.getHistory(leafId);
+// Get a single messageconst msg = await session.getMessage("msg-1");
+// Get the newest messageconst latest = await session.getLatestLeaf();
+// Count messages in pathconst count = await session.getPathLength();
 ```
 
 ### Branching
 
 Messages form a tree. When you `appendMessage` with a `parentId` that already has children, you create a branch. Use `getBranches()` to get all child messages branching from a given point:
 
-* [  JavaScript ](#tab-panel-6303)
-* [  TypeScript ](#tab-panel-6304)
+* [  JavaScript ](#tab-panel-6377)
+* [  TypeScript ](#tab-panel-6378)
 
 JavaScript
 
 ```
-
-// Get all child messages that branch from messageId
-
-const branches = await session.getBranches(messageId);
-
-
+// Get all child messages that branch from messageIdconst branches = await session.getBranches(messageId);
 ```
 
 TypeScript
 
 ```
-
-// Get all child messages that branch from messageId
-
-const branches = await session.getBranches(messageId);
-
-
+// Get all child messages that branch from messageIdconst branches = await session.getBranches(messageId);
 ```
 
 This powers features like response regeneration — pass the user message ID to get both the original and regenerated responses. `getHistory(leafId)` walks the chosen path.
@@ -438,29 +174,19 @@ This powers features like response regeneration — pass the user message ID to 
 
 Full-text search over the conversation history using SQLite FTS5:
 
-* [  JavaScript ](#tab-panel-6305)
-* [  TypeScript ](#tab-panel-6306)
+* [  JavaScript ](#tab-panel-6379)
+* [  TypeScript ](#tab-panel-6380)
 
 JavaScript
 
 ```
-
-const results = await session.search("deployment Friday", { limit: 10 });
-
-// Returns: Array<{ id, role, content, createdAt? }>
-
-
+const results = await session.search("deployment Friday", { limit: 10 });// Returns: Array<{ id, role, content, createdAt? }>
 ```
 
 TypeScript
 
 ```
-
-const results = await session.search("deployment Friday", { limit: 10 });
-
-// Returns: Array<{ id, role, content, createdAt? }>
-
-
+const results = await session.search("deployment Friday", { limit: 10 });// Returns: Array<{ id, role, content, createdAt? }>
 ```
 
 SQLite-backed sessions use FTS5 with porter stemming and unicode tokenization. Postgres-backed sessions use the provider's Postgres full-text index. `search()` throws if the session provider does not support search.
@@ -484,170 +210,82 @@ There are four provider types, detected by duck-typing:
 
 **`AgentContextProvider`** — SQLite-backed writable context. This is the default when using the builder without an explicit provider.
 
-* [  JavaScript ](#tab-panel-6307)
-* [  TypeScript ](#tab-panel-6308)
+* [  JavaScript ](#tab-panel-6381)
+* [  TypeScript ](#tab-panel-6382)
 
 JavaScript
 
 ```
-
 import { AgentContextProvider } from "agents/experimental/memory/session";
-
-
 new AgentContextProvider(this, "memory");
-
-
 ```
 
 TypeScript
 
 ```
-
 import { AgentContextProvider } from "agents/experimental/memory/session";
-
-
 new AgentContextProvider(this, "memory");
-
-
 ```
 
 **`R2SkillProvider`** — Cloudflare R2 bucket for on-demand document loading. Skills are listed in the system prompt as metadata; the model loads full content on demand via `load_context`.
 
-* [  JavaScript ](#tab-panel-6313)
-* [  TypeScript ](#tab-panel-6314)
+* [  JavaScript ](#tab-panel-6387)
+* [  TypeScript ](#tab-panel-6388)
 
 JavaScript
 
 ```
-
 import { R2SkillProvider } from "agents/experimental/memory/session";
-
-
-Session.create(this).withContext("skills", {
-
-  provider: new R2SkillProvider(env.SKILLS_BUCKET, { prefix: "skills/" }),
-
-});
-
-
+Session.create(this).withContext("skills", {  provider: new R2SkillProvider(env.SKILLS_BUCKET, { prefix: "skills/" }),});
 ```
 
 TypeScript
 
 ```
-
 import { R2SkillProvider } from "agents/experimental/memory/session";
-
-
-Session.create(this).withContext("skills", {
-
-  provider: new R2SkillProvider(env.SKILLS_BUCKET, { prefix: "skills/" }),
-
-});
-
-
+Session.create(this).withContext("skills", {  provider: new R2SkillProvider(env.SKILLS_BUCKET, { prefix: "skills/" }),});
 ```
 
 **`AgentSearchProvider`** — SQLite FTS5 searchable context. Entries are indexed and searchable by the model via `search_context`.
 
-* [  JavaScript ](#tab-panel-6319)
-* [  TypeScript ](#tab-panel-6320)
+* [  JavaScript ](#tab-panel-6393)
+* [  TypeScript ](#tab-panel-6394)
 
 JavaScript
 
 ```
-
 import { AgentSearchProvider } from "agents/experimental/memory/session";
-
-
-Session.create(this).withContext("knowledge", {
-
-  description: "Searchable knowledge base",
-
-  provider: new AgentSearchProvider(this),
-
-});
-
-
+Session.create(this).withContext("knowledge", {  description: "Searchable knowledge base",  provider: new AgentSearchProvider(this),});
 ```
 
 TypeScript
 
 ```
-
 import { AgentSearchProvider } from "agents/experimental/memory/session";
-
-
-Session.create(this).withContext("knowledge", {
-
-  description: "Searchable knowledge base",
-
-  provider: new AgentSearchProvider(this),
-
-});
-
-
+Session.create(this).withContext("knowledge", {  description: "Searchable knowledge base",  provider: new AgentSearchProvider(this),});
 ```
 
 ### Adding and removing context at runtime
 
 Blocks can be added and removed dynamically after initialization:
 
-* [  JavaScript ](#tab-panel-6325)
-* [  TypeScript ](#tab-panel-6326)
+* [  JavaScript ](#tab-panel-6399)
+* [  TypeScript ](#tab-panel-6400)
 
 JavaScript
 
 ```
-
-// Add a new block (auto-wires to SQLite if no provider given)
-
-await session.addContext("extension-notes", {
-
-  description: "From extension X",
-
-  maxTokens: 500,
-
-});
-
-
-// Remove it
-
-session.removeContext("extension-notes");
-
-
-// Rebuild the system prompt to reflect changes
-
-await session.refreshSystemPrompt();
-
-
+// Add a new block (auto-wires to SQLite if no provider given)await session.addContext("extension-notes", {  description: "From extension X",  maxTokens: 500,});
+// Remove itsession.removeContext("extension-notes");
+// Rebuild the system prompt to reflect changesawait session.refreshSystemPrompt();
 ```
 
 TypeScript
 
 ```
-
-// Add a new block (auto-wires to SQLite if no provider given)
-
-await session.addContext("extension-notes", {
-
-  description: "From extension X",
-
-  maxTokens: 500,
-
-});
-
-
-// Remove it
-
-session.removeContext("extension-notes");
-
-
-// Rebuild the system prompt to reflect changes
-
-await session.refreshSystemPrompt();
-
-
+// Add a new block (auto-wires to SQLite if no provider given)await session.addContext("extension-notes", {  description: "From extension X",  maxTokens: 500,});
+// Remove itsession.removeContext("extension-notes");
+// Rebuild the system prompt to reflect changesawait session.refreshSystemPrompt();
 ```
 
 Note
@@ -656,63 +294,25 @@ Note
 
 ### Reading and writing context
 
-* [  JavaScript ](#tab-panel-6327)
-* [  TypeScript ](#tab-panel-6328)
+* [  JavaScript ](#tab-panel-6401)
+* [  TypeScript ](#tab-panel-6402)
 
 JavaScript
 
 ```
-
-// Read a single block
-
-const block = session.getContextBlock("memory");
-
-// { label, description?, content, tokens, maxTokens?, writable, isSkill, isSearchable }
-
-
-// Read all blocks
-
-const blocks = session.getContextBlocks();
-
-
-// Replace content entirely
-
-await session.replaceContextBlock("memory", "User likes coffee.");
-
-
-// Append content
-
-await session.appendContextBlock("memory", "\nUser prefers dark roast.");
-
-
+// Read a single blockconst block = session.getContextBlock("memory");// { label, description?, content, tokens, maxTokens?, writable, isSkill, isSearchable }
+// Read all blocksconst blocks = session.getContextBlocks();
+// Replace content entirelyawait session.replaceContextBlock("memory", "User likes coffee.");
+// Append contentawait session.appendContextBlock("memory", "\nUser prefers dark roast.");
 ```
 
 TypeScript
 
 ```
-
-// Read a single block
-
-const block = session.getContextBlock("memory");
-
-// { label, description?, content, tokens, maxTokens?, writable, isSkill, isSearchable }
-
-
-// Read all blocks
-
-const blocks = session.getContextBlocks();
-
-
-// Replace content entirely
-
-await session.replaceContextBlock("memory", "User likes coffee.");
-
-
-// Append content
-
-await session.appendContextBlock("memory", "\nUser prefers dark roast.");
-
-
+// Read a single blockconst block = session.getContextBlock("memory");// { label, description?, content, tokens, maxTokens?, writable, isSkill, isSearchable }
+// Read all blocksconst blocks = session.getContextBlocks();
+// Replace content entirelyawait session.replaceContextBlock("memory", "User likes coffee.");
+// Append contentawait session.appendContextBlock("memory", "\nUser prefers dark roast.");
 ```
 
 ### System prompt
@@ -720,62 +320,25 @@ await session.appendContextBlock("memory", "\nUser prefers dark roast.");
 The system prompt is built from all context blocks with headers and metadata:
 
 ```
-
-══════════════════════════════════════════════
-
-SOUL (Identity) [readonly]
-
-══════════════════════════════════════════════
-
-You are a helpful assistant.
-
-
-══════════════════════════════════════════════
-
-MEMORY (Learned facts) [45% — 495/1100 tokens]
-
-══════════════════════════════════════════════
-
-User likes coffee.
-
-User prefers dark roast.
-
-
+══════════════════════════════════════════════SOUL (Identity) [readonly]══════════════════════════════════════════════You are a helpful assistant.
+══════════════════════════════════════════════MEMORY (Learned facts) [45% — 495/1100 tokens]══════════════════════════════════════════════User likes coffee.User prefers dark roast.
 ```
 
-* [  JavaScript ](#tab-panel-6323)
-* [  TypeScript ](#tab-panel-6324)
+* [  JavaScript ](#tab-panel-6397)
+* [  TypeScript ](#tab-panel-6398)
 
 JavaScript
 
 ```
-
-// Freeze — first call renders and persists; subsequent calls return cached value
-
-const prompt = await session.freezeSystemPrompt();
-
-
-// Refresh — re-render from current block state and persist
-
-const updated = await session.refreshSystemPrompt();
-
-
+// Freeze — first call renders and persists; subsequent calls return cached valueconst prompt = await session.freezeSystemPrompt();
+// Refresh — re-render from current block state and persistconst updated = await session.refreshSystemPrompt();
 ```
 
 TypeScript
 
 ```
-
-// Freeze — first call renders and persists; subsequent calls return cached value
-
-const prompt = await session.freezeSystemPrompt();
-
-
-// Refresh — re-render from current block state and persist
-
-const updated = await session.refreshSystemPrompt();
-
-
+// Freeze — first call renders and persists; subsequent calls return cached valueconst prompt = await session.freezeSystemPrompt();
+// Refresh — re-render from current block state and persistconst updated = await session.refreshSystemPrompt();
 ```
 
 The frozen prompt survives Durable Object hibernation and eviction when `withCachedPrompt()` is enabled.
@@ -784,29 +347,19 @@ The frozen prompt survives Durable Object hibernation and eviction when `withCac
 
 Session automatically generates tools based on the provider types of your context blocks. Pass these to your LLM alongside your own tools.
 
-* [  JavaScript ](#tab-panel-6321)
-* [  TypeScript ](#tab-panel-6322)
+* [  JavaScript ](#tab-panel-6395)
+* [  TypeScript ](#tab-panel-6396)
 
 JavaScript
 
 ```
-
-const tools = await session.tools();
-
-const allTools = { ...tools, ...myTools };
-
-
+const tools = await session.tools();const allTools = { ...tools, ...myTools };
 ```
 
 TypeScript
 
 ```
-
-const tools = await session.tools();
-
-const allTools = { ...tools, ...myTools };
-
-
+const tools = await session.tools();const allTools = { ...tools, ...myTools };
 ```
 
 ### set\_context
@@ -835,79 +388,21 @@ Compaction summarizes older messages to keep conversations within token limits. 
 
 ### Setup
 
-* [  JavaScript ](#tab-panel-6333)
-* [  TypeScript ](#tab-panel-6334)
+* [  JavaScript ](#tab-panel-6407)
+* [  TypeScript ](#tab-panel-6408)
 
 JavaScript
 
 ```
-
 import { createCompactFunction } from "agents/experimental/memory/utils/compaction-helpers";
-
-
-const session = Session.create(this)
-
-  .withContext("memory", { maxTokens: 1100 })
-
-  .onCompaction(
-
-    createCompactFunction({
-
-      summarize: (prompt) =>
-
-        generateText({ model: myModel, prompt }).then((r) => r.text),
-
-      protectHead: 3,
-
-      tailTokenBudget: 20000,
-
-      minTailMessages: 2,
-
-      tokenCounter: async (messages) => estimateWithYourTokenizer({ messages }),
-
-    }),
-
-  )
-
-  .compactAfter(100_000);
-
-
+const session = Session.create(this)  .withContext("memory", { maxTokens: 1100 })  .onCompaction(    createCompactFunction({      summarize: (prompt) =>        generateText({ model: myModel, prompt }).then((r) => r.text),      protectHead: 3,      tailTokenBudget: 20000,      minTailMessages: 2,      tokenCounter: async (messages) => estimateWithYourTokenizer({ messages }),    }),  )  .compactAfter(100_000);
 ```
 
 TypeScript
 
 ```
-
 import { createCompactFunction } from "agents/experimental/memory/utils/compaction-helpers";
-
-
-const session = Session.create(this)
-
-  .withContext("memory", { maxTokens: 1100 })
-
-  .onCompaction(
-
-    createCompactFunction({
-
-      summarize: (prompt) =>
-
-        generateText({ model: myModel, prompt }).then((r) => r.text),
-
-      protectHead: 3,
-
-      tailTokenBudget: 20000,
-
-      minTailMessages: 2,
-
-      tokenCounter: async (messages) => estimateWithYourTokenizer({ messages }),
-
-    }),
-
-  )
-
-  .compactAfter(100_000);
-
-
+const session = Session.create(this)  .withContext("memory", { maxTokens: 1100 })  .onCompaction(    createCompactFunction({      summarize: (prompt) =>        generateText({ model: myModel, prompt }).then((r) => r.text),      protectHead: 3,      tailTokenBudget: 20000,      minTailMessages: 2,      tokenCounter: async (messages) => estimateWithYourTokenizer({ messages }),    }),  )  .compactAfter(100_000);
 ```
 
 ### How compaction works
@@ -923,39 +418,21 @@ When `getHistory()` is called, compaction overlays are applied transparently —
 
 ### Manual compaction
 
-* [  JavaScript ](#tab-panel-6329)
-* [  TypeScript ](#tab-panel-6330)
+* [  JavaScript ](#tab-panel-6403)
+* [  TypeScript ](#tab-panel-6404)
 
 JavaScript
 
 ```
-
 const result = await session.compact();
-
-
-// Or manage overlays directly
-
-await session.addCompaction("Summary of messages 1-50", "msg-1", "msg-50");
-
-const overlays = await session.getCompactions();
-
-
+// Or manage overlays directlyawait session.addCompaction("Summary of messages 1-50", "msg-1", "msg-50");const overlays = await session.getCompactions();
 ```
 
 TypeScript
 
 ```
-
 const result = await session.compact();
-
-
-// Or manage overlays directly
-
-await session.addCompaction("Summary of messages 1-50", "msg-1", "msg-50");
-
-const overlays = await session.getCompactions();
-
-
+// Or manage overlays directlyawait session.addCompaction("Summary of messages 1-50", "msg-1", "msg-50");const overlays = await session.getCompactions();
 ```
 
 ### Auto-compaction
@@ -981,77 +458,19 @@ The flowed counter is invoked **per message** during the boundary walk. A tokeni
 
 Use a custom counter when you have model-reported usage or your own tokenizer:
 
-* [  JavaScript ](#tab-panel-6339)
-* [  TypeScript ](#tab-panel-6340)
+* [  JavaScript ](#tab-panel-6413)
+* [  TypeScript ](#tab-panel-6414)
 
 JavaScript
 
 ```
-
-const session = Session.create(this)
-
-  .onCompaction(myCompactFn)
-
-  .compactAfter(100_000, {
-
-    tokenCounter: async ({ messages, systemPrompt, contextBlocks }) => {
-
-      return estimateWithYourTokenizer({
-
-        messages,
-
-        systemPrompt,
-
-        contextBlocks,
-
-      });
-
-    },
-
-  })
-
-  .onCompactionError((err) => {
-
-    console.warn("Auto-compaction failed", err);
-
-  });
-
-
+const session = Session.create(this)  .onCompaction(myCompactFn)  .compactAfter(100_000, {    tokenCounter: async ({ messages, systemPrompt, contextBlocks }) => {      return estimateWithYourTokenizer({        messages,        systemPrompt,        contextBlocks,      });    },  })  .onCompactionError((err) => {    console.warn("Auto-compaction failed", err);  });
 ```
 
 TypeScript
 
 ```
-
-const session = Session.create(this)
-
-  .onCompaction(myCompactFn)
-
-  .compactAfter(100_000, {
-
-    tokenCounter: async ({ messages, systemPrompt, contextBlocks }) => {
-
-      return estimateWithYourTokenizer({
-
-        messages,
-
-        systemPrompt,
-
-        contextBlocks,
-
-      });
-
-    },
-
-  })
-
-  .onCompactionError((err) => {
-
-    console.warn("Auto-compaction failed", err);
-
-  });
-
-
+const session = Session.create(this)  .onCompaction(myCompactFn)  .compactAfter(100_000, {    tokenCounter: async ({ messages, systemPrompt, contextBlocks }) => {      return estimateWithYourTokenizer({        messages,        systemPrompt,        contextBlocks,      });    },  })  .onCompactionError((err) => {    console.warn("Auto-compaction failed", err);  });
 ```
 
 Note
@@ -1064,55 +483,21 @@ The default token estimation is heuristic (not tiktoken). It uses `max(chars/4, 
 
 ### Creating a SessionManager
 
-* [  JavaScript ](#tab-panel-6335)
-* [  TypeScript ](#tab-panel-6336)
+* [  JavaScript ](#tab-panel-6409)
+* [  TypeScript ](#tab-panel-6410)
 
 JavaScript
 
 ```
-
 import { SessionManager } from "agents/experimental/memory/session";
-
-
-const manager = SessionManager.create(this)
-
-  .withContext("soul", { provider: { get: async () => "You are helpful." } })
-
-  .withContext("memory", { description: "Learned facts", maxTokens: 1100 })
-
-  .withCachedPrompt()
-
-  .onCompaction(myCompactFn)
-
-  .compactAfter(100_000)
-
-  .withSearchableHistory("history");
-
-
+const manager = SessionManager.create(this)  .withContext("soul", { provider: { get: async () => "You are helpful." } })  .withContext("memory", { description: "Learned facts", maxTokens: 1100 })  .withCachedPrompt()  .onCompaction(myCompactFn)  .compactAfter(100_000)  .withSearchableHistory("history");
 ```
 
 TypeScript
 
 ```
-
 import { SessionManager } from "agents/experimental/memory/session";
-
-
-const manager = SessionManager.create(this)
-
-  .withContext("soul", { provider: { get: async () => "You are helpful." } })
-
-  .withContext("memory", { description: "Learned facts", maxTokens: 1100 })
-
-  .withCachedPrompt()
-
-  .onCompaction(myCompactFn)
-
-  .compactAfter(100_000)
-
-  .withSearchableHistory("history");
-
-
+const manager = SessionManager.create(this)  .withContext("soul", { provider: { get: async () => "You are helpful." } })  .withContext("memory", { description: "Learned facts", maxTokens: 1100 })  .withCachedPrompt()  .onCompaction(myCompactFn)  .compactAfter(100_000)  .withSearchableHistory("history");
 ```
 
 Context blocks, prompt caching, and compaction settings are propagated to all sessions created through the manager. Provider keys are automatically namespaced by session ID.
@@ -1131,655 +516,197 @@ Context blocks, prompt caching, and compaction settings are propagated to all se
 
 ### Session lifecycle
 
-* [  JavaScript ](#tab-panel-6347)
-* [  TypeScript ](#tab-panel-6348)
+* [  JavaScript ](#tab-panel-6421)
+* [  TypeScript ](#tab-panel-6422)
 
 JavaScript
 
 ```
-
-// Create a new session
-
-const info = await manager.create("My Chat");
-
-
-// Create with metadata
-
-const info2 = await manager.create("My Chat", {
-
-  parentSessionId: "parent-id",
-
-  model: "claude-sonnet-4-20250514",
-
-  source: "web",
-
-});
-
-
-// Get session metadata (null if not found)
-
-const session = await manager.get(sessionId);
-
-
-// List all sessions (ordered by updated_at DESC)
-
-const sessions = await manager.list();
-
-
-// Rename
-
-await manager.rename(sessionId, "New Name");
-
-
-// Delete (clears messages too)
-
-await manager.delete(sessionId);
-
-
+// Create a new sessionconst info = await manager.create("My Chat");
+// Create with metadataconst info2 = await manager.create("My Chat", {  parentSessionId: "parent-id",  model: "claude-sonnet-4-20250514",  source: "web",});
+// Get session metadata (null if not found)const session = await manager.get(sessionId);
+// List all sessions (ordered by updated_at DESC)const sessions = await manager.list();
+// Renameawait manager.rename(sessionId, "New Name");
+// Delete (clears messages too)await manager.delete(sessionId);
 ```
 
 TypeScript
 
 ```
-
-// Create a new session
-
-const info = await manager.create("My Chat");
-
-
-// Create with metadata
-
-const info2 = await manager.create("My Chat", {
-
-  parentSessionId: "parent-id",
-
-  model: "claude-sonnet-4-20250514",
-
-  source: "web",
-
-});
-
-
-// Get session metadata (null if not found)
-
-const session = await manager.get(sessionId);
-
-
-// List all sessions (ordered by updated_at DESC)
-
-const sessions = await manager.list();
-
-
-// Rename
-
-await manager.rename(sessionId, "New Name");
-
-
-// Delete (clears messages too)
-
-await manager.delete(sessionId);
-
-
+// Create a new sessionconst info = await manager.create("My Chat");
+// Create with metadataconst info2 = await manager.create("My Chat", {  parentSessionId: "parent-id",  model: "claude-sonnet-4-20250514",  source: "web",});
+// Get session metadata (null if not found)const session = await manager.get(sessionId);
+// List all sessions (ordered by updated_at DESC)const sessions = await manager.list();
+// Renameawait manager.rename(sessionId, "New Name");
+// Delete (clears messages too)await manager.delete(sessionId);
 ```
 
 ### Accessing sessions
 
-* [  JavaScript ](#tab-panel-6331)
-* [  TypeScript ](#tab-panel-6332)
+* [  JavaScript ](#tab-panel-6405)
+* [  TypeScript ](#tab-panel-6406)
 
 JavaScript
 
 ```
-
-// Get or create the Session instance for an ID
-
-// Lazy — creates on first access, caches for subsequent calls
-
-const session = manager.getSession(sessionId);
-
-
+// Get or create the Session instance for an ID// Lazy — creates on first access, caches for subsequent callsconst session = manager.getSession(sessionId);
 ```
 
 TypeScript
 
 ```
-
-// Get or create the Session instance for an ID
-
-// Lazy — creates on first access, caches for subsequent calls
-
-const session = manager.getSession(sessionId);
-
-
+// Get or create the Session instance for an ID// Lazy — creates on first access, caches for subsequent callsconst session = manager.getSession(sessionId);
 ```
 
 ### Message convenience methods
 
 These delegate to the underlying Session and update the session's `updated_at` timestamp:
 
-* [  JavaScript ](#tab-panel-6349)
-* [  TypeScript ](#tab-panel-6350)
+* [  JavaScript ](#tab-panel-6423)
+* [  TypeScript ](#tab-panel-6424)
 
 JavaScript
 
 ```
-
-// Append a single message
-
-await manager.append(sessionId, message, parentId);
-
-
-// Add or update (upsert)
-
-await manager.upsert(sessionId, message, parentId);
-
-
-// Batch append (auto-chains parent IDs)
-
-await manager.appendAll(sessionId, messages, parentId);
-
-
-// Read history
-
-const history = await manager.getHistory(sessionId, leafId);
-
-
-// Message count
-
-const count = await manager.getMessageCount(sessionId);
-
-
-// Clear messages
-
-await manager.clearMessages(sessionId);
-
-
-// Delete specific messages
-
-await manager.deleteMessages(sessionId, ["msg-1"]);
-
-
+// Append a single messageawait manager.append(sessionId, message, parentId);
+// Add or update (upsert)await manager.upsert(sessionId, message, parentId);
+// Batch append (auto-chains parent IDs)await manager.appendAll(sessionId, messages, parentId);
+// Read historyconst history = await manager.getHistory(sessionId, leafId);
+// Message countconst count = await manager.getMessageCount(sessionId);
+// Clear messagesawait manager.clearMessages(sessionId);
+// Delete specific messagesawait manager.deleteMessages(sessionId, ["msg-1"]);
 ```
 
 TypeScript
 
 ```
-
-// Append a single message
-
-await manager.append(sessionId, message, parentId);
-
-
-// Add or update (upsert)
-
-await manager.upsert(sessionId, message, parentId);
-
-
-// Batch append (auto-chains parent IDs)
-
-await manager.appendAll(sessionId, messages, parentId);
-
-
-// Read history
-
-const history = await manager.getHistory(sessionId, leafId);
-
-
-// Message count
-
-const count = await manager.getMessageCount(sessionId);
-
-
-// Clear messages
-
-await manager.clearMessages(sessionId);
-
-
-// Delete specific messages
-
-await manager.deleteMessages(sessionId, ["msg-1"]);
-
-
+// Append a single messageawait manager.append(sessionId, message, parentId);
+// Add or update (upsert)await manager.upsert(sessionId, message, parentId);
+// Batch append (auto-chains parent IDs)await manager.appendAll(sessionId, messages, parentId);
+// Read historyconst history = await manager.getHistory(sessionId, leafId);
+// Message countconst count = await manager.getMessageCount(sessionId);
+// Clear messagesawait manager.clearMessages(sessionId);
+// Delete specific messagesawait manager.deleteMessages(sessionId, ["msg-1"]);
 ```
 
 ### Forking
 
 Fork a session at a specific message — copies history up to that point into a new session:
 
-* [  JavaScript ](#tab-panel-6337)
-* [  TypeScript ](#tab-panel-6338)
+* [  JavaScript ](#tab-panel-6411)
+* [  TypeScript ](#tab-panel-6412)
 
 JavaScript
 
 ```
-
-const forked = await manager.fork(sessionId, atMessageId, "Forked Chat");
-
-// forked.parent_session_id === sessionId
-
-
+const forked = await manager.fork(sessionId, atMessageId, "Forked Chat");// forked.parent_session_id === sessionId
 ```
 
 TypeScript
 
 ```
-
-const forked = await manager.fork(sessionId, atMessageId, "Forked Chat");
-
-// forked.parent_session_id === sessionId
-
-
+const forked = await manager.fork(sessionId, atMessageId, "Forked Chat");// forked.parent_session_id === sessionId
 ```
 
 ### Compaction helpers
 
-* [  JavaScript ](#tab-panel-6345)
-* [  TypeScript ](#tab-panel-6346)
+* [  JavaScript ](#tab-panel-6419)
+* [  TypeScript ](#tab-panel-6420)
 
 JavaScript
 
 ```
-
-// Add a compaction overlay
-
-await manager.addCompaction(sessionId, summary, fromId, toId);
-
-
-// Get overlays
-
-const compactions = await manager.getCompactions(sessionId);
-
-
-// Compact and split — marks old session as ended, creates a continuation
-
-const continuation = await manager.compactAndSplit(
-
-  sessionId,
-
-  summary,
-
-  "Continued Chat",
-
-);
-
-
+// Add a compaction overlayawait manager.addCompaction(sessionId, summary, fromId, toId);
+// Get overlaysconst compactions = await manager.getCompactions(sessionId);
+// Compact and split — marks old session as ended, creates a continuationconst continuation = await manager.compactAndSplit(  sessionId,  summary,  "Continued Chat",);
 ```
 
 TypeScript
 
 ```
-
-// Add a compaction overlay
-
-await manager.addCompaction(sessionId, summary, fromId, toId);
-
-
-// Get overlays
-
-const compactions = await manager.getCompactions(sessionId);
-
-
-// Compact and split — marks old session as ended, creates a continuation
-
-const continuation = await manager.compactAndSplit(
-
-  sessionId,
-
-  summary,
-
-  "Continued Chat",
-
-);
-
-
+// Add a compaction overlayawait manager.addCompaction(sessionId, summary, fromId, toId);
+// Get overlaysconst compactions = await manager.getCompactions(sessionId);
+// Compact and split — marks old session as ended, creates a continuationconst continuation = await manager.compactAndSplit(  sessionId,  summary,  "Continued Chat",);
 ```
 
 `compactAndSplit()` creates a new session with a summary message instead of an in-place overlay. The original session is marked with `end_reason: "compaction"`.
 
 ### Usage tracking
 
-* [  JavaScript ](#tab-panel-6341)
-* [  TypeScript ](#tab-panel-6342)
+* [  JavaScript ](#tab-panel-6415)
+* [  TypeScript ](#tab-panel-6416)
 
 JavaScript
 
 ```
-
 await manager.addUsage(sessionId, inputTokens, outputTokens, cost);
-
-
 ```
 
 TypeScript
 
 ```
-
 await manager.addUsage(sessionId, inputTokens, outputTokens, cost);
-
-
 ```
 
 ### Cross-session search
 
-* [  JavaScript ](#tab-panel-6343)
-* [  TypeScript ](#tab-panel-6344)
+* [  JavaScript ](#tab-panel-6417)
+* [  TypeScript ](#tab-panel-6418)
 
 JavaScript
 
 ```
-
-// Search across all sessions (FTS5)
-
-const results = await manager.search("deployment Friday", { limit: 20 });
-
-
-// Get tools for the model (includes session_search)
-
-const tools = await manager.tools();
-
-
+// Search across all sessions (FTS5)const results = await manager.search("deployment Friday", { limit: 20 });
+// Get tools for the model (includes session_search)const tools = await manager.tools();
 ```
 
 TypeScript
 
 ```
-
-// Search across all sessions (FTS5)
-
-const results = await manager.search("deployment Friday", { limit: 20 });
-
-
-// Get tools for the model (includes session_search)
-
-const tools = await manager.tools();
-
-
+// Search across all sessions (FTS5)const results = await manager.search("deployment Friday", { limit: 20 });
+// Get tools for the model (includes session_search)const tools = await manager.tools();
 ```
 
 ## Custom providers
 
 Implement any of the four provider interfaces to plug in your own storage:
 
-* [  JavaScript ](#tab-panel-6351)
-* [  TypeScript ](#tab-panel-6352)
+* [  JavaScript ](#tab-panel-6425)
+* [  TypeScript ](#tab-panel-6426)
 
 JavaScript
 
 ```
-
-// Read-only context
-
-const myProvider = {
-
-  get: async () => "Static content here",
-
-};
-
-
-// Writable context (enables set_context tool)
-
-const myWritable = {
-
-  get: async () => fetchFromMyDB(),
-
-  set: async (content) => saveToMyDB(content),
-
-};
-
-
-// Skill provider (enables load_context tool)
-
-const mySkills = {
-
-  get: async () => "- api-ref: API Reference\n- guide: User Guide",
-
-  load: async (key) => fetchDocument(key),
-
-  set: async (key, content, description) =>
-
-    saveDocument(key, content, description),
-
-};
-
-
-// Search provider (enables search_context tool)
-
-const mySearch = {
-
-  get: async () => "42 entries indexed",
-
-  search: async (query) => searchMyIndex(query),
-
-  set: async (key, content) => indexContent(key, content),
-
-};
-
-
+// Read-only contextconst myProvider = {  get: async () => "Static content here",};
+// Writable context (enables set_context tool)const myWritable = {  get: async () => fetchFromMyDB(),  set: async (content) => saveToMyDB(content),};
+// Skill provider (enables load_context tool)const mySkills = {  get: async () => "- api-ref: API Reference\n- guide: User Guide",  load: async (key) => fetchDocument(key),  set: async (key, content, description) =>    saveDocument(key, content, description),};
+// Search provider (enables search_context tool)const mySearch = {  get: async () => "42 entries indexed",  search: async (query) => searchMyIndex(query),  set: async (key, content) => indexContent(key, content),};
 ```
 
 TypeScript
 
 ```
-
-// Read-only context
-
-const myProvider: ContextProvider = {
-
-  get: async () => "Static content here",
-
-};
-
-
-// Writable context (enables set_context tool)
-
-const myWritable: WritableContextProvider = {
-
-  get: async () => fetchFromMyDB(),
-
-  set: async (content) => saveToMyDB(content),
-
-};
-
-
-// Skill provider (enables load_context tool)
-
-const mySkills: SkillProvider = {
-
-  get: async () => "- api-ref: API Reference\n- guide: User Guide",
-
-  load: async (key) => fetchDocument(key),
-
-  set: async (key, content, description) =>
-
-    saveDocument(key, content, description),
-
-};
-
-
-// Search provider (enables search_context tool)
-
-const mySearch: SearchProvider = {
-
-  get: async () => "42 entries indexed",
-
-  search: async (query) => searchMyIndex(query),
-
-  set: async (key, content) => indexContent(key, content),
-
-};
-
-
+// Read-only contextconst myProvider: ContextProvider = {  get: async () => "Static content here",};
+// Writable context (enables set_context tool)const myWritable: WritableContextProvider = {  get: async () => fetchFromMyDB(),  set: async (content) => saveToMyDB(content),};
+// Skill provider (enables load_context tool)const mySkills: SkillProvider = {  get: async () => "- api-ref: API Reference\n- guide: User Guide",  load: async (key) => fetchDocument(key),  set: async (key, content, description) =>    saveDocument(key, content, description),};
+// Search provider (enables search_context tool)const mySearch: SearchProvider = {  get: async () => "42 entries indexed",  search: async (query) => searchMyIndex(query),  set: async (key, content) => indexContent(key, content),};
 ```
 
 You can also implement `SessionProvider` to replace the SQLite storage entirely:
 
-* [  JavaScript ](#tab-panel-6353)
-* [  TypeScript ](#tab-panel-6354)
+* [  JavaScript ](#tab-panel-6427)
+* [  TypeScript ](#tab-panel-6428)
 
 JavaScript
 
 ```
-
-const myStorage = {
-
-  async getMessage(id) {
-
-    /* ... */
-
-  },
-
-  async getHistory(leafId) {
-
-    /* ... */
-
-  },
-
-  async getLatestLeaf() {
-
-    /* ... */
-
-  },
-
-  async getBranches(messageId) {
-
-    /* ... */
-
-  },
-
-  async getPathLength(leafId) {
-
-    /* ... */
-
-  },
-
-  async appendMessage(message, parentId) {
-
-    /* ... */
-
-  },
-
-  async updateMessage(message) {
-
-    /* ... */
-
-  },
-
-  async deleteMessages(messageIds) {
-
-    /* ... */
-
-  },
-
-  async clearMessages() {
-
-    /* ... */
-
-  },
-
-  async addCompaction(summary, fromId, toId) {
-
-    /* ... */
-
-  },
-
-  async getCompactions() {
-
-    /* ... */
-
-  },
-
-  async searchMessages(query, limit) {
-
-    /* ... */
-
-  },
-
-};
-
-
+const myStorage = {  async getMessage(id) {    /* ... */  },  async getHistory(leafId) {    /* ... */  },  async getLatestLeaf() {    /* ... */  },  async getBranches(messageId) {    /* ... */  },  async getPathLength(leafId) {    /* ... */  },  async appendMessage(message, parentId) {    /* ... */  },  async updateMessage(message) {    /* ... */  },  async deleteMessages(messageIds) {    /* ... */  },  async clearMessages() {    /* ... */  },  async addCompaction(summary, fromId, toId) {    /* ... */  },  async getCompactions() {    /* ... */  },  async searchMessages(query, limit) {    /* ... */  },};
 ```
 
 TypeScript
 
 ```
-
-const myStorage: SessionProvider = {
-
-  async getMessage(id) {
-
-    /* ... */
-
-  },
-
-  async getHistory(leafId?) {
-
-    /* ... */
-
-  },
-
-  async getLatestLeaf() {
-
-    /* ... */
-
-  },
-
-  async getBranches(messageId) {
-
-    /* ... */
-
-  },
-
-  async getPathLength(leafId?) {
-
-    /* ... */
-
-  },
-
-  async appendMessage(message, parentId?) {
-
-    /* ... */
-
-  },
-
-  async updateMessage(message) {
-
-    /* ... */
-
-  },
-
-  async deleteMessages(messageIds) {
-
-    /* ... */
-
-  },
-
-  async clearMessages() {
-
-    /* ... */
-
-  },
-
-  async addCompaction(summary, fromId, toId) {
-
-    /* ... */
-
-  },
-
-  async getCompactions() {
-
-    /* ... */
-
-  },
-
-  async searchMessages(query, limit) {
-
-    /* ... */
-
-  },
-
-};
-
-
+const myStorage: SessionProvider = {  async getMessage(id) {    /* ... */  },  async getHistory(leafId?) {    /* ... */  },  async getLatestLeaf() {    /* ... */  },  async getBranches(messageId) {    /* ... */  },  async getPathLength(leafId?) {    /* ... */  },  async appendMessage(message, parentId?) {    /* ... */  },  async updateMessage(message) {    /* ... */  },  async deleteMessages(messageIds) {    /* ... */  },  async clearMessages() {    /* ... */  },  async addCompaction(summary, fromId, toId) {    /* ... */  },  async getCompactions() {    /* ... */  },  async searchMessages(query, limit) {    /* ... */  },};
 ```
 
 ## Postgres providers
@@ -1795,75 +722,26 @@ Create a Hyperdrive config for your Postgres database:
 Terminal window
 
 ```
-
-npx wrangler hyperdrive create my-session-db \
-
-  --connection-string="postgresql://user:password@host:port/dbname"
-
-
+npx wrangler hyperdrive create my-session-db \  --connection-string="postgresql://user:password@host:port/dbname"
 ```
 
 Then add the Hyperdrive binding to `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-6299)
-* [  wrangler.toml ](#tab-panel-6300)
+* [  wrangler.jsonc ](#tab-panel-6373)
+* [  wrangler.toml ](#tab-panel-6374)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "compatibility_flags": [
-
-    "nodejs_compat"
-
-  ],
-
-  "hyperdrive": [
-
-    {
-
-      "binding": "HYPERDRIVE",
-
-      "id": "<your-hyperdrive-id>"
-
-    }
-
-  ],
-
-  "placement": {
-
-    "mode": "smart"
-
-  }
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "compatibility_flags": [    "nodejs_compat"  ],  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<your-hyperdrive-id>"    }  ],  "placement": {    "mode": "smart"  }}
 ```
 
 TOML
 
 ```
-
 compatibility_flags = ["nodejs_compat"]
-
-
-[[hyperdrive]]
-
-binding = "HYPERDRIVE"
-
-id = "<your-hyperdrive-id>"
-
-
-[placement]
-
-mode = "smart"
-
-
+[[hyperdrive]]binding = "HYPERDRIVE"id = "<your-hyperdrive-id>"
+[placement]mode = "smart"
 ```
 
 If you know your database region, configure placement close to the database to reduce query latency.
@@ -1873,95 +751,12 @@ If you know your database region, configure placement close to the database to r
 The Postgres user may not have permission to create tables at runtime. Run the schema once in your database console:
 
 ```
-
-CREATE TABLE IF NOT EXISTS assistant_messages (
-
-  id TEXT NOT NULL,
-
-  session_id TEXT NOT NULL DEFAULT '',
-
-  parent_id TEXT,
-
-  role TEXT NOT NULL,
-
-  content TEXT NOT NULL,
-
-  text_content TEXT NOT NULL DEFAULT '',
-
-  created_at TIMESTAMPTZ DEFAULT NOW(),
-
-  content_tsv TSVECTOR GENERATED ALWAYS AS (to_tsvector('english', text_content)) STORED,
-
-  PRIMARY KEY (session_id, id)
-
-);
-
-
-CREATE INDEX IF NOT EXISTS idx_assistant_msg_parent
-
-  ON assistant_messages (parent_id);
-
-CREATE INDEX IF NOT EXISTS idx_assistant_msg_session
-
-  ON assistant_messages (session_id);
-
-CREATE INDEX IF NOT EXISTS idx_assistant_msg_fts
-
-  ON assistant_messages USING GIN (content_tsv);
-
-
-CREATE TABLE IF NOT EXISTS assistant_compactions (
-
-  id TEXT PRIMARY KEY,
-
-  session_id TEXT NOT NULL DEFAULT '',
-
-  summary TEXT NOT NULL,
-
-  from_message_id TEXT NOT NULL,
-
-  to_message_id TEXT NOT NULL,
-
-  created_at TIMESTAMPTZ DEFAULT NOW()
-
-);
-
-
-CREATE TABLE IF NOT EXISTS cf_agents_context_blocks (
-
-  label TEXT PRIMARY KEY,
-
-  content TEXT NOT NULL,
-
-  updated_at TIMESTAMPTZ DEFAULT NOW()
-
-);
-
-
-CREATE TABLE IF NOT EXISTS cf_agents_search_entries (
-
-  label TEXT NOT NULL,
-
-  key TEXT NOT NULL,
-
-  content TEXT NOT NULL,
-
-  content_tsv TSVECTOR GENERATED ALWAYS AS (to_tsvector('english', content)) STORED,
-
-  created_at TIMESTAMPTZ DEFAULT NOW(),
-
-  updated_at TIMESTAMPTZ DEFAULT NOW(),
-
-  PRIMARY KEY (label, key)
-
-);
-
-
-CREATE INDEX IF NOT EXISTS idx_search_entries_fts
-
-  ON cf_agents_search_entries USING GIN (content_tsv);
-
-
+CREATE TABLE IF NOT EXISTS assistant_messages (  id TEXT NOT NULL,  session_id TEXT NOT NULL DEFAULT '',  parent_id TEXT,  role TEXT NOT NULL,  content TEXT NOT NULL,  text_content TEXT NOT NULL DEFAULT '',  created_at TIMESTAMPTZ DEFAULT NOW(),  content_tsv TSVECTOR GENERATED ALWAYS AS (to_tsvector('english', text_content)) STORED,  PRIMARY KEY (session_id, id));
+CREATE INDEX IF NOT EXISTS idx_assistant_msg_parent  ON assistant_messages (parent_id);CREATE INDEX IF NOT EXISTS idx_assistant_msg_session  ON assistant_messages (session_id);CREATE INDEX IF NOT EXISTS idx_assistant_msg_fts  ON assistant_messages USING GIN (content_tsv);
+CREATE TABLE IF NOT EXISTS assistant_compactions (  id TEXT PRIMARY KEY,  session_id TEXT NOT NULL DEFAULT '',  summary TEXT NOT NULL,  from_message_id TEXT NOT NULL,  to_message_id TEXT NOT NULL,  created_at TIMESTAMPTZ DEFAULT NOW());
+CREATE TABLE IF NOT EXISTS cf_agents_context_blocks (  label TEXT PRIMARY KEY,  content TEXT NOT NULL,  updated_at TIMESTAMPTZ DEFAULT NOW());
+CREATE TABLE IF NOT EXISTS cf_agents_search_entries (  label TEXT NOT NULL,  key TEXT NOT NULL,  content TEXT NOT NULL,  content_tsv TSVECTOR GENERATED ALWAYS AS (to_tsvector('english', content)) STORED,  created_at TIMESTAMPTZ DEFAULT NOW(),  updated_at TIMESTAMPTZ DEFAULT NOW(),  PRIMARY KEY (label, key));
+CREATE INDEX IF NOT EXISTS idx_search_entries_fts  ON cf_agents_search_entries USING GIN (content_tsv);
 ```
 
 ### 3\. Wire it up
@@ -1986,187 +781,25 @@ pnpm add pg
 bun add pg
 ```
 
-* [  JavaScript ](#tab-panel-6355)
-* [  TypeScript ](#tab-panel-6356)
+* [  JavaScript ](#tab-panel-6429)
+* [  TypeScript ](#tab-panel-6430)
 
 JavaScript
 
 ```
-
-import { Agent } from "agents";
-
-import {
-
-  PostgresContextProvider,
-
-  PostgresSearchProvider,
-
-  PostgresSessionProvider,
-
-  Session,
-
-} from "agents/experimental/memory/session";
-
-import { Client } from "pg";
-
-
-export class MyAgent extends Agent {
-
-  session;
-
-  pgClient;
-
-
-  async onStart() {
-
-    const client = new Client({
-
-      connectionString: this.env.HYPERDRIVE.connectionString,
-
-    });
-
-    await client.connect();
-
-    this.pgClient = client;
-
-
-    const sessionId = this.ctx.id.toString();
-
-    this.session = Session.create(
-
-      new PostgresSessionProvider(client, sessionId),
-
-    )
-
-      .withContext("soul", {
-
-        provider: {
-
-          get: async () => "You are a helpful assistant.",
-
-        },
-
-      })
-
-      .withContext("memory", {
-
-        description: "Short facts",
-
-        maxTokens: 1100,
-
-        provider: new PostgresContextProvider(client, `memory_${sessionId}`),
-
-      })
-
-      .withContext("knowledge", {
-
-        description: "Searchable knowledge base",
-
-        provider: new PostgresSearchProvider(client),
-
-      })
-
-      .withCachedPrompt(
-
-        new PostgresContextProvider(client, `_prompt_${sessionId}`),
-
-      );
-
-  }
-
-}
-
-
+import { Agent } from "agents";import {  PostgresContextProvider,  PostgresSearchProvider,  PostgresSessionProvider,  Session,} from "agents/experimental/memory/session";import { Client } from "pg";
+export class MyAgent extends Agent {  session;  pgClient;
+  async onStart() {    const client = new Client({      connectionString: this.env.HYPERDRIVE.connectionString,    });    await client.connect();    this.pgClient = client;
+    const sessionId = this.ctx.id.toString();    this.session = Session.create(      new PostgresSessionProvider(client, sessionId),    )      .withContext("soul", {        provider: {          get: async () => "You are a helpful assistant.",        },      })      .withContext("memory", {        description: "Short facts",        maxTokens: 1100,        provider: new PostgresContextProvider(client, `memory_${sessionId}`),      })      .withContext("knowledge", {        description: "Searchable knowledge base",        provider: new PostgresSearchProvider(client),      })      .withCachedPrompt(        new PostgresContextProvider(client, `_prompt_${sessionId}`),      );  }}
 ```
 
 TypeScript
 
 ```
-
-import { Agent } from "agents";
-
-import {
-
-  PostgresContextProvider,
-
-  PostgresSearchProvider,
-
-  PostgresSessionProvider,
-
-  Session,
-
-} from "agents/experimental/memory/session";
-
-import { Client } from "pg";
-
-
-export class MyAgent extends Agent<Env> {
-
-  private session?: Session;
-
-  private pgClient?: Client;
-
-
-  async onStart(): Promise<void> {
-
-    const client = new Client({
-
-      connectionString: this.env.HYPERDRIVE.connectionString,
-
-    });
-
-    await client.connect();
-
-    this.pgClient = client;
-
-
-    const sessionId = this.ctx.id.toString();
-
-    this.session = Session.create(
-
-      new PostgresSessionProvider(client, sessionId),
-
-    )
-
-      .withContext("soul", {
-
-        provider: {
-
-          get: async () => "You are a helpful assistant.",
-
-        },
-
-      })
-
-      .withContext("memory", {
-
-        description: "Short facts",
-
-        maxTokens: 1100,
-
-        provider: new PostgresContextProvider(client, `memory_${sessionId}`),
-
-      })
-
-      .withContext("knowledge", {
-
-        description: "Searchable knowledge base",
-
-        provider: new PostgresSearchProvider(client),
-
-      })
-
-      .withCachedPrompt(
-
-        new PostgresContextProvider(client, `_prompt_${sessionId}`),
-
-      );
-
-  }
-
-}
-
-
+import { Agent } from "agents";import {  PostgresContextProvider,  PostgresSearchProvider,  PostgresSessionProvider,  Session,} from "agents/experimental/memory/session";import { Client } from "pg";
+export class MyAgent extends Agent<Env> {  private session?: Session;  private pgClient?: Client;
+  async onStart(): Promise<void> {    const client = new Client({      connectionString: this.env.HYPERDRIVE.connectionString,    });    await client.connect();    this.pgClient = client;
+    const sessionId = this.ctx.id.toString();    this.session = Session.create(      new PostgresSessionProvider(client, sessionId),    )      .withContext("soul", {        provider: {          get: async () => "You are a helpful assistant.",        },      })      .withContext("memory", {        description: "Short facts",        maxTokens: 1100,        provider: new PostgresContextProvider(client, `memory_${sessionId}`),      })      .withContext("knowledge", {        description: "Searchable knowledge base",        provider: new PostgresSearchProvider(client),      })      .withCachedPrompt(        new PostgresContextProvider(client, `_prompt_${sessionId}`),      );  }}
 ```
 
 ### Behavior differences

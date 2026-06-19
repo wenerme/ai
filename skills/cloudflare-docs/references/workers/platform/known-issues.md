@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,25 +21,8 @@ Below are some known bugs and issues to be aware of when using Cloudflare Worker
 Consider two different Workers, each deployed to the same zone. Worker A is assigned the `example.com/images/*` route and Worker B is given the `example.com/images*` route pattern. With these in place, here are how the following URLs will be resolved:
 
 ```
-
-// (A) example.com/images/*
-
-// (B) example.com/images*
-
-
-"example.com/images"
-
-// -> B
-
-"example.com/images123"
-
-// -> B
-
-"example.com/images/hello"
-
-// -> B
-
-
+// (A) example.com/images/*// (B) example.com/images*
+"example.com/images"// -> B"example.com/images123"// -> B"example.com/images/hello"// -> B
 ```
 
 You will notice that all examples trigger Worker B. This includes the final example, which exemplifies the unexpected behavior.
@@ -47,17 +30,8 @@ You will notice that all examples trigger Worker B. This includes the final exam
 When adding a wildcard on a subdomain, here are how the following URLs will be resolved:
 
 ```
-
-// (A) *.example.com/a
-
-// (B) a.example.com/*
-
-
-"a.example.com/a"
-
-// -> B
-
-
+// (A) *.example.com/a// (B) a.example.com/*
+"a.example.com/a"// -> B
 ```
 
 ## wrangler dev
@@ -67,14 +41,7 @@ When adding a wildcard on a subdomain, here are how the following URLs will be r
 JavaScript
 
 ```
-
-const request = new Request(url, incomingRequest);
-
-request.headers.delete('cf-workers-preview-token');
-
-return await fetch(request);
-
-
+const request = new Request(url, incomingRequest);request.headers.delete('cf-workers-preview-token');return await fetch(request);
 ```
 
 ## Fetch API in CNAME setup
@@ -84,45 +51,15 @@ When you make a subrequest using [fetch()](https://developers.cloudflare.com/wor
 Setup with missing DNS records in Cloudflare DNS
 
 ```
-
-// Zone in partial setup: example.com
-
-// DNS records at Authoritative DNS: sub1.example.com, sub2.example.com, ...
-
-// DNS records at Cloudflare DNS: sub1.example.com
-
-
-"sub1.example.com/"
-
-// -> Can be resolved by Fetch API
-
-"sub2.example.com/"
-
-// -> Cannot be resolved by Fetch API, will lead to 530 status code
-
-
+// Zone in partial setup: example.com// DNS records at Authoritative DNS: sub1.example.com, sub2.example.com, ...// DNS records at Cloudflare DNS: sub1.example.com
+"sub1.example.com/"// -> Can be resolved by Fetch API"sub2.example.com/"// -> Cannot be resolved by Fetch API, will lead to 530 status code
 ```
 
 After adding `sub2.example.com` to Cloudflare DNS
 
 ```
-
-// Zone in partial setup: example.com
-
-// DNS records at Authoritative DNS: sub1.example.com, sub2.example.com, ...
-
-// DNS records at Cloudflare DNS: sub1.example.com, sub2.example.com
-
-
-"sub1.example.com/"
-
-// -> Can be resolved by Fetch API
-
-"sub2.example.com/"
-
-// -> Can be resolved by Fetch API
-
-
+// Zone in partial setup: example.com// DNS records at Authoritative DNS: sub1.example.com, sub2.example.com, ...// DNS records at Cloudflare DNS: sub1.example.com, sub2.example.com
+"sub1.example.com/"// -> Can be resolved by Fetch API"sub2.example.com/"// -> Can be resolved by Fetch API
 ```
 
 ## Fetch to IP addresses
@@ -134,10 +71,7 @@ For example, in the zone `example.com` create a record of type `A` with the name
 JavaScript
 
 ```
-
 await fetch('http://server.example.com')
-
-
 ```
 
 Do not use:
@@ -145,10 +79,7 @@ Do not use:
 JavaScript
 
 ```
-
 await fetch('http://192.0.2.1')
-
-
 ```
 
 ```json

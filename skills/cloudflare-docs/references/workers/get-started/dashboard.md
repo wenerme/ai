@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,10 +28,11 @@ To get started with a new Workers application:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.  
 [ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
-2. Select **Create application**. From here, you can:  
-   * Select from the gallery of production-ready templates  
-   * Import an existing Git repository on your own account  
-   * Let Cloudflare clone and bootstrap a public repository containing a Workers application.
+2. Select **Create application**. From here, you can:
+
+  * Select from the gallery of production-ready templates
+  * Import an existing Git repository on your own account
+  * Let Cloudflare clone and bootstrap a public repository containing a Workers application.
 3. Once you have connected to your chosen [Git provider](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/), configure your project and select **Deploy**.
 4. Cloudflare will kick off a new build and deployment. Once deployed, preview your Worker at its provided `workers.dev` subdomain.
 
@@ -42,17 +43,8 @@ Applications started in the dashboard are set up with Git to help kickstart your
 Terminal window
 
 ```
-
-# clone your repository locally
-
-git clone <git repo URL>
-
-
-# make sure you are in the root directory
-
-cd <directory>
-
-
+# clone your repository locallygit clone <git repo URL>
+# make sure you are in the root directorycd <directory>
 ```
 
 Now, you can preview and test your changes by [running Wrangler in your local development environment](https://developers.cloudflare.com/workers/development-testing/). Once you are ready to deploy you can run:
@@ -60,22 +52,9 @@ Now, you can preview and test your changes by [running Wrangler in your local de
 Terminal window
 
 ```
-
-# adds the files to git tracking
-
-git add .
-
-
-# commits the changes
-
-git commit -m "your message"
-
-
-# push the changes to your Git provider
-
-git push origin main
-
-
+# adds the files to git trackinggit add .
+# commits the changesgit commit -m "your message"
+# push the changes to your Git providergit push origin main
 ```
 
 To do more:

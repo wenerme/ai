@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -60,26 +60,7 @@ Call any model listed in the [model catalog](https://developers.cloudflare.com/a
 TypeScript
 
 ```
-
-const resp = await env.AI.run(
-
-  "openai/gpt-4.1-mini",
-
-  {
-
-    messages: [{ role: "user", content: "What is Cloudflare?" }],
-
-  },
-
-  {
-
-    gateway: { id: "my-gateway" },
-
-  },
-
-);
-
-
+const resp = await env.AI.run(  "openai/gpt-4.1-mini",  {    messages: [{ role: "user", content: "What is Cloudflare?" }],  },  {    gateway: { id: "my-gateway" },  },);
 ```
 
 Refer to the [binding reference](https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/) for the full API surface.
@@ -95,26 +76,7 @@ Use the Cloudflare API to call third-party models. Pass your Cloudflare API toke
 Terminal window
 
 ```
-
-# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
-
-# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
-
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-    "model": "openai/gpt-4.1-mini",
-
-    "messages": [{"role": "user", "content": "What is Cloudflare?"}]
-
-  }'
-
-
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{    "model": "openai/gpt-4.1-mini",    "messages": [{"role": "user", "content": "What is Cloudflare?"}]  }'
 ```
 
 Refer to [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/) for more details on all available endpoints.
@@ -134,12 +96,7 @@ The HTTP API supports the following providers:
 
 ### Spend limits
 
-You can set spend limits at two levels:
-
-* **Account-level** — Set a spend limit on your loaded credits on this page to cap total Unified Billing spend across all gateways.
-* **Per-gateway** — Set [granular spend limit rules](https://developers.cloudflare.com/ai-gateway/features/spend-limits/) on individual gateways, scoped by model, provider, or custom metadata dimensions like user or team.
-
-Both limits are enforced independently. Whichever one is reached first will block requests.
+Set [spend limit rules](https://developers.cloudflare.com/ai-gateway/features/spend-limits/) on individual gateways to cap spend, scoped by model, provider, or custom metadata dimensions like user or team.
 
 ### Zero Data Retention (ZDR)
 
@@ -156,8 +113,8 @@ If ZDR is enabled for a provider that does not support it, AI Gateway falls back
 
 #### Default configuration
 
-* [ Dashboard ](#tab-panel-6546)
-* [ API ](#tab-panel-6547)
+* [ Dashboard ](#tab-panel-6620)
+* [ API ](#tab-panel-6621)
 
 To set ZDR as the default for Unified Billing in the dashboard:
 
@@ -169,8 +126,8 @@ To set ZDR as the default for Unified Billing in the dashboard:
 To set ZDR as the default for Unified Billing using the API:
 
 1. [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:  
-   * `AI Gateway - Read`  
-   * `AI Gateway - Edit`
+  * `AI Gateway - Read`
+  * `AI Gateway - Edit`
 2. Get your [Account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
 3. Send a [PUT request](https://developers.cloudflare.com/api/resources/ai%5Fgateway/methods/update/) to update the gateway and include `zdr: true` or `zdr: false` in the request body.
 
@@ -181,41 +138,10 @@ Use the `cf-aig-zdr` header to override the gateway default for a single Unified
 Unified Billing request with ZDR
 
 ```
-
-# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
-
-# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
-
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --header "cf-aig-zdr: true" \
-
-  --data '{
-
-    "model": "openai/gpt-4.1-mini",
-
-    "messages": [
-
-      {
-
-        "role": "user",
-
-        "content": "Explain Zero Data Retention."
-
-      }
-
-    ]
-
-  }'
-
-
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --header "cf-aig-zdr: true" \  --data '{    "model": "openai/gpt-4.1-mini",    "messages": [      {        "role": "user",        "content": "Explain Zero Data Retention."      }    ]  }'
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/unified-billing/#page","headline":"Unified Billing · Cloudflare AI Gateway docs","description":"Use the Cloudflare billing to pay for and authenticate your inference requests.","url":"https://developers.cloudflare.com/ai-gateway/features/unified-billing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/unified-billing/#page","headline":"Unified Billing · Cloudflare AI Gateway docs","description":"Use the Cloudflare billing to pay for and authenticate your inference requests.","url":"https://developers.cloudflare.com/ai-gateway/features/unified-billing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/features/unified-billing/","name":"Unified Billing"}}]}
 ```

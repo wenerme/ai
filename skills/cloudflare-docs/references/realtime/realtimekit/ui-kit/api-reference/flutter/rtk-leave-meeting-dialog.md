@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,17 +28,8 @@ A dialog widget for confirming the action of leaving a RealtimeKit meeting. Prov
 Dart
 
 ```
-
 import 'package:realtimekit_ui/realtimekit_ui.dart';
-
-
-RtkLeaveMeetingDialog(
-
-  meeting: yourMeetingInstance,
-
-)
-
-
+RtkLeaveMeetingDialog(  meeting: yourMeetingInstance,)
 ```
 
 ### With Properties
@@ -46,19 +37,8 @@ RtkLeaveMeetingDialog(
 Dart
 
 ```
-
 import 'package:realtimekit_ui/realtimekit_ui.dart';
-
-
-RtkLeaveMeetingDialog(
-
-  meeting: yourMeetingInstance,
-
-  designToken: yourDesignToken,
-
-)
-
-
+RtkLeaveMeetingDialog(  meeting: yourMeetingInstance,  designToken: yourDesignToken,)
 ```
 
 ```json

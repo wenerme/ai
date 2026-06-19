@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -39,23 +39,8 @@ Base control bar view with a More menu button and an End Call button. Serves as 
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let controlBar = RtkControlBar(
-
-    meeting: rtkClient,
-
-    delegate: self,
-
-    presentingViewController: self
-
-)
-
-view.addSubview(controlBar)
-
-
+let controlBar = RtkControlBar(    meeting: rtkClient,    delegate: self,    presentingViewController: self)view.addSubview(controlBar)
 ```
 
 ### With completion handlers
@@ -63,29 +48,8 @@ view.addSubview(controlBar)
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let controlBar = RtkControlBar(
-
-    meeting: rtkClient,
-
-    delegate: self,
-
-    presentingViewController: self,
-
-    onLeaveMeetingCompletion: {
-
-        self.dismiss(animated: true)
-
-    }
-
-)
-
-view.addSubview(controlBar)
-
-
+let controlBar = RtkControlBar(    meeting: rtkClient,    delegate: self,    presentingViewController: self,    onLeaveMeetingCompletion: {        self.dismiss(animated: true)    })view.addSubview(controlBar)
 ```
 
 ```json

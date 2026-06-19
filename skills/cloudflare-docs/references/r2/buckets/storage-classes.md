@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -86,20 +86,7 @@ An example of switching an object from `STANDARD` to `STANDARD_IA` using `aws cl
 Terminal window
 
 ```
-
-aws s3api copy-object \
-
-  --endpoint-url https://<ACCOUNT_ID>.r2.cloudflarestorage.com \
-
-  --bucket bucket-name \
-
-  --key path/to/object.txt \
-
-  --copy-source /bucket-name/path/to/object.txt \
-
-  --storage-class STANDARD_IA
-
-
+aws s3api copy-object \  --endpoint-url https://<ACCOUNT_ID>.r2.cloudflarestorage.com \  --bucket bucket-name \  --key path/to/object.txt \  --copy-source /bucket-name/path/to/object.txt \  --storage-class STANDARD_IA
 ```
 
 * Refer to [aws CLI](https://developers.cloudflare.com/r2/examples/aws/aws-cli/) for more information on using `aws CLI`.

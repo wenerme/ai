@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/firewall/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,38 +17,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 A JSON response for the [Firewall Rules API](https://developers.cloudflare.com/api/resources/firewall/subresources/rules/methods/list/) has this structure:
 
 ```
-
-{
-
-  "id": "772bf1026a72c400ea576db1ffa16407",
-
-  "filter": {
-
-    "id": "6f58318e7fa2477a23112e8118c66f61",
-
-    "expression": "http.request.uri.path ~ \"^.*/wp-login.php$\" or http.request.uri.path ~ \"^.*/xmlrpc.php$\"",
-
-    "paused": false,
-
-    "description": "WordPress login paths",
-
-    "ref": ""
-
-  },
-
-  "action": "challenge",
-
-  "priority": 1000,
-
-  "paused": false,
-
-  "description": "Protect blog login page",
-
-  "ref": ""
-
-}
-
-
+{  "id": "772bf1026a72c400ea576db1ffa16407",  "filter": {    "id": "6f58318e7fa2477a23112e8118c66f61",    "expression": "http.request.uri.path ~ \"^.*/wp-login.php$\" or http.request.uri.path ~ \"^.*/xmlrpc.php$\"",    "paused": false,    "description": "WordPress login paths",    "ref": ""  },  "action": "challenge",  "priority": 1000,  "paused": false,  "description": "Protect blog login page",  "ref": ""}
 ```
 
 This table summarizes the object properties:

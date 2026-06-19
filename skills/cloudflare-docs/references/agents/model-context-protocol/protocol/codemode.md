@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,29 +19,8 @@ Codemode lets a model use external systems by **writing TypeScript** instead of 
 TypeScript
 
 ```
-
-// The developer configures one tool:
-
-const runtime = createCodemodeRuntime({ ctx, executor, connectors });
-
-const tools = { codemode: runtime.tool() };
-
-
-// The model writes code against typed globals:
-
-const matches = await codemode.search("pull request");
-
-const docs = await codemode.describe(matches.results[0].path);
-
-const prs = await github.list_pull_requests({
-
-  owner: "cloudflare",
-
-  repo: "agents",
-
-});
-
-
+// The developer configures one tool:const runtime = createCodemodeRuntime({ ctx, executor, connectors });const tools = { codemode: runtime.tool() };
+// The model writes code against typed globals:const matches = await codemode.search("pull request");const docs = await codemode.describe(matches.results[0].path);const prs = await github.list_pull_requests({  owner: "cloudflare",  repo: "agents",});
 ```
 
 Warning
@@ -69,10 +48,7 @@ The sandbox has **no network access**. Model code cannot `fetch`; every effect g
 Terminal window
 
 ```
-
 npm install @cloudflare/codemode
-
-
 ```
 
 ## Configure Codemode
@@ -81,361 +57,91 @@ npm install @cloudflare/codemode
 
 The plugin discovers connector files and wires up the Worker exports the runtime needs:
 
-* [  JavaScript ](#tab-panel-5821)
-* [  TypeScript ](#tab-panel-5822)
+* [  JavaScript ](#tab-panel-5895)
+* [  TypeScript ](#tab-panel-5896)
 
 JavaScript
 
 ```
-
-// vite.config.ts
-
-import codemode from "@cloudflare/codemode/vite";
-
-import agents from "agents/vite";
-
-import { cloudflare } from "@cloudflare/vite-plugin";
-
-
+// vite.config.tsimport codemode from "@cloudflare/codemode/vite";import agents from "agents/vite";import { cloudflare } from "@cloudflare/vite-plugin";
 export default { plugins: [agents(), codemode(), cloudflare()] };
-
-
 ```
 
 TypeScript
 
 ```
-
-// vite.config.ts
-
-import codemode from "@cloudflare/codemode/vite";
-
-import agents from "agents/vite";
-
-import { cloudflare } from "@cloudflare/vite-plugin";
-
-
+// vite.config.tsimport codemode from "@cloudflare/codemode/vite";import agents from "agents/vite";import { cloudflare } from "@cloudflare/vite-plugin";
 export default { plugins: [agents(), codemode(), cloudflare()] };
-
-
 ```
 
 Add a `worker_loaders` binding to your `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-5819)
-* [  wrangler.toml ](#tab-panel-5820)
+* [  wrangler.jsonc ](#tab-panel-5893)
+* [  wrangler.toml ](#tab-panel-5894)
 
 JSONC
 
 ```
-
-{
-
-  "compatibility_flags": ["nodejs_compat"],
-
-  "worker_loaders": [{ "binding": "LOADER" }]
-
-}
-
-
+{  "compatibility_flags": ["nodejs_compat"],  "worker_loaders": [{ "binding": "LOADER" }]}
 ```
 
 TOML
 
 ```
-
 compatibility_flags = [ "nodejs_compat" ]
-
-
-[[worker_loaders]]
-
-binding = "LOADER"
-
-
+[[worker_loaders]]binding = "LOADER"
 ```
 
 ### 2\. Write a connector
 
 Write a class per service, in a `*.codemode.ts` file. Mark only the tools that need a human; everything else executes immediately:
 
-* [  JavaScript ](#tab-panel-5833)
-* [  TypeScript ](#tab-panel-5834)
+* [  JavaScript ](#tab-panel-5907)
+* [  TypeScript ](#tab-panel-5908)
 
 JavaScript
 
 ```
-
-// github.codemode.ts
-
-import { McpConnector } from "@cloudflare/codemode";
-
-
-export class GithubConnector extends McpConnector {
-
-  conn;
-
-
-  constructor(ctx, env, conn) {
-
-    super(ctx, env);
-
-    this.conn = conn;
-
-  }
-
-
-  name() {
-
-    return "github";
-
-  }
-
-  instructions() {
-
-    return "Use for GitHub repositories, issues, and pull requests.";
-
-  }
-
-  createConnection() {
-
-    return this.conn;
-
-  }
-
-  tool(name, t) {
-
-    return name === "create_issue" ? { ...t, requiresApproval: true } : t;
-
-  }
-
-}
-
-
+// github.codemode.tsimport { McpConnector } from "@cloudflare/codemode";
+export class GithubConnector extends McpConnector {  conn;
+  constructor(ctx, env, conn) {    super(ctx, env);    this.conn = conn;  }
+  name() {    return "github";  }  instructions() {    return "Use for GitHub repositories, issues, and pull requests.";  }  createConnection() {    return this.conn;  }  tool(name, t) {    return name === "create_issue" ? { ...t, requiresApproval: true } : t;  }}
 ```
 
 TypeScript
 
 ```
-
-// github.codemode.ts
-
-import {
-
-  McpConnector,
-
-  type McpConnectionLike,
-
-  type ConnectorTool,
-
-} from "@cloudflare/codemode";
-
-
-export class GithubConnector extends McpConnector<Env> {
-
-  private conn: McpConnectionLike;
-
-
-  constructor(ctx: ExecutionContext, env: Env, conn: McpConnectionLike) {
-
-    super(ctx, env);
-
-    this.conn = conn;
-
-  }
-
-
-  name() {
-
-    return "github";
-
-  }
-
-  protected instructions() {
-
-    return "Use for GitHub repositories, issues, and pull requests.";
-
-  }
-
-  protected createConnection() {
-
-    return this.conn;
-
-  }
-
-  protected tool(name: string, t: ConnectorTool): ConnectorTool {
-
-    return name === "create_issue" ? { ...t, requiresApproval: true } : t;
-
-  }
-
-}
-
-
+// github.codemode.tsimport {  McpConnector,  type McpConnectionLike,  type ConnectorTool,} from "@cloudflare/codemode";
+export class GithubConnector extends McpConnector<Env> {  private conn: McpConnectionLike;
+  constructor(ctx: ExecutionContext, env: Env, conn: McpConnectionLike) {    super(ctx, env);    this.conn = conn;  }
+  name() {    return "github";  }  protected instructions() {    return "Use for GitHub repositories, issues, and pull requests.";  }  protected createConnection() {    return this.conn;  }  protected tool(name: string, t: ConnectorTool): ConnectorTool {    return name === "create_issue" ? { ...t, requiresApproval: true } : t;  }}
 ```
 
 ### 3\. Create a runtime in your agent
 
 Create a runtime and hand the model `runtime.tool()`. Approval handling is two `@callable` methods:
 
-* [  JavaScript ](#tab-panel-5837)
-* [  TypeScript ](#tab-panel-5838)
+* [  JavaScript ](#tab-panel-5911)
+* [  TypeScript ](#tab-panel-5912)
 
 JavaScript
 
 ```
-
-// server.ts
-
-import {
-
-  createCodemodeRuntime,
-
-  DynamicWorkerExecutor,
-
-} from "@cloudflare/codemode";
-
-import { GithubConnector } from "./github.codemode" with { type: "connectors" };
-
-
-export class Chat extends AIChatAgent {
-
-  codemode() {
-
-    const conn = this.mcp.mcpConnections[this.githubServerId];
-
-    return createCodemodeRuntime({
-
-      ctx: this.ctx,
-
-      executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),
-
-      connectors: [new GithubConnector(this.ctx, this.env, conn)],
-
-    });
-
-  }
-
-
-  async onChatMessage() {
-
-    return streamText({
-
-      model,
-
-      messages: await convertToModelMessages(this.messages),
-
-      tools: { codemode: this.codemode().tool() },
-
-    });
-
-  }
-
-
-  @callable()
-
-  listPending() {
-
-    return this.codemode().pending();
-
-  }
-
-
-  @callable()
-
-  approve(executionId) {
-
-    return this.codemode().approve({ executionId });
-
-  }
-
-}
-
-
+// server.tsimport {  createCodemodeRuntime,  DynamicWorkerExecutor,} from "@cloudflare/codemode";import { GithubConnector } from "./github.codemode" with { type: "connectors" };
+export class Chat extends AIChatAgent {  codemode() {    const conn = this.mcp.mcpConnections[this.githubServerId];    return createCodemodeRuntime({      ctx: this.ctx,      executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),      connectors: [new GithubConnector(this.ctx, this.env, conn)],    });  }
+  async onChatMessage() {    return streamText({      model,      messages: await convertToModelMessages(this.messages),      tools: { codemode: this.codemode().tool() },    });  }
+  @callable()  listPending() {    return this.codemode().pending();  }
+  @callable()  approve(executionId) {    return this.codemode().approve({ executionId });  }}
 ```
 
 TypeScript
 
 ```
-
-// server.ts
-
-import {
-
-  createCodemodeRuntime,
-
-  DynamicWorkerExecutor,
-
-} from "@cloudflare/codemode";
-
-import { GithubConnector } from "./github.codemode" with { type: "connectors" };
-
-
-export class Chat extends AIChatAgent<Env> {
-
-  codemode() {
-
-    const conn = this.mcp.mcpConnections[this.githubServerId];
-
-    return createCodemodeRuntime({
-
-      ctx: this.ctx,
-
-      executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),
-
-      connectors: [
-
-        new GithubConnector(
-
-          this.ctx as unknown as ExecutionContext,
-
-          this.env,
-
-          conn,
-
-        ),
-
-      ],
-
-    });
-
-  }
-
-
-  async onChatMessage() {
-
-    return streamText({
-
-      model,
-
-      messages: await convertToModelMessages(this.messages),
-
-      tools: { codemode: this.codemode().tool() },
-
-    });
-
-  }
-
-
-  @callable()
-
-  listPending() {
-
-    return this.codemode().pending();
-
-  }
-
-
-  @callable()
-
-  approve(executionId?: string) {
-
-    return this.codemode().approve({ executionId });
-
-  }
-
-}
-
-
+// server.tsimport {  createCodemodeRuntime,  DynamicWorkerExecutor,} from "@cloudflare/codemode";import { GithubConnector } from "./github.codemode" with { type: "connectors" };
+export class Chat extends AIChatAgent<Env> {  codemode() {    const conn = this.mcp.mcpConnections[this.githubServerId];    return createCodemodeRuntime({      ctx: this.ctx,      executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),      connectors: [        new GithubConnector(          this.ctx as unknown as ExecutionContext,          this.env,          conn,        ),      ],    });  }
+  async onChatMessage() {    return streamText({      model,      messages: await convertToModelMessages(this.messages),      tools: { codemode: this.codemode().tool() },    });  }
+  @callable()  listPending() {    return this.codemode().pending();  }
+  @callable()  approve(executionId?: string) {    return this.codemode().approve({ executionId });  }}
 ```
 
 That is the whole developer surface: a connector class, `createCodemodeRuntime`, and the runtime handle. The handle is the control plane — `tool()` for the model, `pending()`/`approve()`/`reject()`/`rollback()` for approvals, `executions()` for the audit trail, and `saveSnippet()`/`snippets()`/`deleteSnippet()` for curating what the model gets to reuse.
@@ -447,42 +153,11 @@ The sandbox SDK is four methods — discover, learn, do once, reuse — plus one
 TypeScript
 
 ```
-
-async () => {
-
-  // Discover: ranked search over connector methods and saved snippets.
-
-  const matches = await codemode.search("open pull requests");
-
-
-  // Learn: TypeScript docs for one method — fetched on demand, not pre-dumped.
-
-  const docs = await codemode.describe(matches.results[0].path);
-
-
-  // Act: connector methods are typed globals.
-
-  const prs = await github.list_pull_requests({
-
-    owner: "cloudflare",
-
-    repo: "agents",
-
-    state: "open",
-
-  });
-
-
-  // Do once: anything nondeterministic goes in a step so replay is exact.
-
-  const stamp = await codemode.step("now", () => Date.now());
-
-
-  return { count: prs.length, stamp };
-
-};
-
-
+async () => {  // Discover: ranked search over connector methods and saved snippets.  const matches = await codemode.search("open pull requests");
+  // Learn: TypeScript docs for one method — fetched on demand, not pre-dumped.  const docs = await codemode.describe(matches.results[0].path);
+  // Act: connector methods are typed globals.  const prs = await github.list_pull_requests({    owner: "cloudflare",    repo: "agents",    state: "open",  });
+  // Do once: anything nondeterministic goes in a step so replay is exact.  const stamp = await codemode.step("now", () => Date.now());
+  return { count: prs.length, stamp };};
 ```
 
 Once the developer promotes a run with `runtime.saveSnippet("open-prs")`, the model finds it via `codemode.search` and re-runs it by name with `codemode.run("open-prs", { owner, repo })`.
@@ -507,30 +182,9 @@ When the model's code runs, every tool call is recorded in a durable log:
 3. On **continue**, the same code re-runs. Every call already in the log is served from it (a no-op replay — reads return their recorded result, applied actions return theirs). The newly-approved action executes for real. The run proceeds to the next pause or to completion.
 
 ```
-
-run 1:  search() ──exec──> "results"        [logged: applied]
-
-        list_prs() ──exec──> [pr1, pr2]      [logged: applied]
-
-        create_issue() ──PAUSE──             [logged: pending]
-
-        ✗ run aborts
-
-
+run 1:  search() ──exec──> "results"        [logged: applied]        list_prs() ──exec──> [pr1, pr2]      [logged: applied]        create_issue() ──PAUSE──             [logged: pending]        ✗ run aborts
 user approves
-
-
-run 2:  search() ──replay──> "results"       (from log, no re-exec)
-
-        list_prs() ──replay──> [pr1, pr2]     (from log, no re-exec)
-
-        create_issue() ──exec──> { number }   (approved, runs for real)
-
-        post_comment() ──exec──> ok            (continues)
-
-        ✓ run completes
-
-
+run 2:  search() ──replay──> "results"       (from log, no re-exec)        list_prs() ──replay──> [pr1, pr2]     (from log, no re-exec)        create_issue() ──exec──> { number }   (approved, runs for real)        post_comment() ──exec──> ok            (continues)        ✓ run completes
 ```
 
 ### Determinism requirement
@@ -545,155 +199,25 @@ Note
 
 Connectors are class-based integrations that bridge external services into the sandbox. Each connector extends `WorkerEntrypoint`, making it serializable, RPC-callable, and available as `ctx.exports.ConnectorName`. A connector answers three questions: what global name the model uses (`name`), what guidance the model gets (`instructions`), and what tools exist (`tools`).
 
-* [  JavaScript ](#tab-panel-5835)
-* [  TypeScript ](#tab-panel-5836)
+* [  JavaScript ](#tab-panel-5909)
+* [  TypeScript ](#tab-panel-5910)
 
 JavaScript
 
 ```
-
 import { CodemodeConnector } from "@cloudflare/codemode";
-
-
-export class MyConnector extends CodemodeConnector {
-
-  name() {
-
-    return "myService";
-
-  }
-
-
-  instructions() {
-
-    return "Use for interacting with My Service.";
-
-  }
-
-
-  tools() {
-
-    return {
-
-      listItems: {
-
-        description: "List all items.",
-
-        inputSchema: {
-
-          type: "object",
-
-          properties: { limit: { type: "number" } },
-
-        },
-
-        execute: (args) => this.env.MY_SERVICE.list(args),
-
-      },
-
-      createItem: {
-
-        description: "Create an item.",
-
-        inputSchema: {
-
-          type: "object",
-
-          properties: { title: { type: "string" } },
-
-          required: ["title"],
-
-        },
-
-        requiresApproval: true,
-
-        execute: (args) => this.env.MY_SERVICE.create(args),
-
-        revert: (_args, result) => this.env.MY_SERVICE.delete(result.id),
-
-      },
-
-    };
-
-  }
-
-}
-
-
+export class MyConnector extends CodemodeConnector {  name() {    return "myService";  }
+  instructions() {    return "Use for interacting with My Service.";  }
+  tools() {    return {      listItems: {        description: "List all items.",        inputSchema: {          type: "object",          properties: { limit: { type: "number" } },        },        execute: (args) => this.env.MY_SERVICE.list(args),      },      createItem: {        description: "Create an item.",        inputSchema: {          type: "object",          properties: { title: { type: "string" } },          required: ["title"],        },        requiresApproval: true,        execute: (args) => this.env.MY_SERVICE.create(args),        revert: (_args, result) => this.env.MY_SERVICE.delete(result.id),      },    };  }}
 ```
 
 TypeScript
 
 ```
-
 import { CodemodeConnector } from "@cloudflare/codemode";
-
-
-export class MyConnector extends CodemodeConnector<Env> {
-
-  name() {
-
-    return "myService";
-
-  }
-
-
-  protected instructions() {
-
-    return "Use for interacting with My Service.";
-
-  }
-
-
-  protected tools() {
-
-    return {
-
-      listItems: {
-
-        description: "List all items.",
-
-        inputSchema: {
-
-          type: "object",
-
-          properties: { limit: { type: "number" } },
-
-        },
-
-        execute: (args) => this.env.MY_SERVICE.list(args),
-
-      },
-
-      createItem: {
-
-        description: "Create an item.",
-
-        inputSchema: {
-
-          type: "object",
-
-          properties: { title: { type: "string" } },
-
-          required: ["title"],
-
-        },
-
-        requiresApproval: true,
-
-        execute: (args) => this.env.MY_SERVICE.create(args),
-
-        revert: (_args, result) => this.env.MY_SERVICE.delete(result.id),
-
-      },
-
-    };
-
-  }
-
-}
-
-
+export class MyConnector extends CodemodeConnector<Env> {  name() {    return "myService";  }
+  protected instructions() {    return "Use for interacting with My Service.";  }
+  protected tools() {    return {      listItems: {        description: "List all items.",        inputSchema: {          type: "object",          properties: { limit: { type: "number" } },        },        execute: (args) => this.env.MY_SERVICE.list(args),      },      createItem: {        description: "Create an item.",        inputSchema: {          type: "object",          properties: { title: { type: "string" } },          required: ["title"],        },        requiresApproval: true,        execute: (args) => this.env.MY_SERVICE.create(args),        revert: (_args, result) => this.env.MY_SERVICE.delete(result.id),      },    };  }}
 ```
 
 Each tool carries its own documentation, schema, approval requirement, execution, and optional revert — everything about a tool lives in one place:
@@ -701,38 +225,7 @@ Each tool carries its own documentation, schema, approval requirement, execution
 TypeScript
 
 ```
-
-type ConnectorTool = {
-
-  description?: string;
-
-  inputSchema?: JSONSchema7; // Defaults to an open object.
-
-  outputSchema?: JSONSchema7;
-
-  requiresApproval?: boolean; // Omit to execute immediately.
-
-  execute: (
-
-    args: unknown,
-
-    ctx?: { executionId: string },
-
-  ) => Promise<unknown> | unknown;
-
-  revert?: (
-
-    args: unknown,
-
-    result: unknown,
-
-    ctx?: { executionId: string },
-
-  ) => Promise<void> | void;
-
-};
-
-
+type ConnectorTool = {  description?: string;  inputSchema?: JSONSchema7; // Defaults to an open object.  outputSchema?: JSONSchema7;  requiresApproval?: boolean; // Omit to execute immediately.  execute: (    args: unknown,    ctx?: { executionId: string },  ) => Promise<unknown> | unknown;  revert?: (    args: unknown,    result: unknown,    ctx?: { executionId: string },  ) => Promise<void> | void;};
 ```
 
 AI SDK tools are shape-compatible — an existing `ToolSet` can be returned from `tools()` directly.
@@ -751,25 +244,19 @@ AI SDK tools are shape-compatible — an existing `ToolSet` can be returned from
 
 Connector files use the `*.codemode.ts` extension. The Vite plugin discovers them and auto-exports the classes from the Worker entry. Import them with the `type: "connectors"` attribute:
 
-* [  JavaScript ](#tab-panel-5823)
-* [  TypeScript ](#tab-panel-5824)
+* [  JavaScript ](#tab-panel-5897)
+* [  TypeScript ](#tab-panel-5898)
 
 JavaScript
 
 ```
-
 import { GithubConnector } from "./github.codemode" with { type: "connectors" };
-
-
 ```
 
 TypeScript
 
 ```
-
 import { GithubConnector } from "./github.codemode" with { type: "connectors" };
-
-
 ```
 
 ### Per-execution resources
@@ -781,24 +268,9 @@ Some connectors own a resource that must live for the lifetime of one run — a 
 A tool with `requiresApproval: true` pauses the run when the model's code calls it (the run aborts), the action is recorded as pending, and the user is asked to approve. On approval the execution **continues via replay**.
 
 ```
-
-Model calls codemode({ code }) where code calls github.create_issue(...)
-
-  → runtime logs calls; create_issue requires approval → run pauses
-
-  → tool returns { status: "paused", executionId, pending: [...] }
-
-
+Model calls codemode({ code }) where code calls github.create_issue(...)  → runtime logs calls; create_issue requires approval → run pauses  → tool returns { status: "paused", executionId, pending: [...] }
 Agent shows the pending action to the user. User approves.
-
-
-Agent calls runtime.approve({ executionId })
-
-  → runtime replays the log, runs create_issue for real, continues
-
-  → returns { status: "completed", result } (or pauses again at the next action)
-
-
+Agent calls runtime.approve({ executionId })  → runtime replays the log, runs create_issue for real, continues  → returns { status: "completed", result } (or pauses again at the next action)
 ```
 
 Execution outcomes are returned, not thrown — a sandbox error or a replay divergence comes back as `{ status: "error" }` (and is recorded on the execution), so the agent loop is never broken by an exception:
@@ -806,97 +278,32 @@ Execution outcomes are returned, not thrown — a sandbox error or a replay dive
 TypeScript
 
 ```
-
-type ProxyToolOutput =
-
-  | {
-
-      status: "completed";
-
-      executionId: string;
-
-      result: unknown;
-
-      logs?: string[];
-
-    }
-
-  | { status: "paused"; executionId: string; pending: PendingAction[] }
-
-  | { status: "error"; executionId: string; error: string; logs?: string[] };
-
-
+type ProxyToolOutput =  | {      status: "completed";      executionId: string;      result: unknown;      logs?: string[];    }  | { status: "paused"; executionId: string; pending: PendingAction[] }  | { status: "error"; executionId: string; error: string; logs?: string[] };
 ```
 
 Drive resolution through the runtime handle, wired to `@callable` agent methods so the client UI can approve or reject:
 
-* [  JavaScript ](#tab-panel-5829)
-* [  TypeScript ](#tab-panel-5830)
+* [  JavaScript ](#tab-panel-5903)
+* [  TypeScript ](#tab-panel-5904)
 
 JavaScript
 
 ```
-
 const runtime = createCodemodeRuntime({ ctx: this.ctx, connectors, executor });
-
-
-// List actions awaiting approval. With no executionId this aggregates across
-
-// every paused run, so concurrent approvals all show up.
-
-await runtime.pending();
-
-
-// Approve the pending action(s) and continue.
-
-await runtime.approve({ executionId });
-
-
-// Reject — ends the execution. Does NOT undo actions already applied earlier
-
-// in the same run; call rollback() for that.
-
-await runtime.reject({ seq, executionId });
-
-
-// Roll back applied actions in reverse order via each tool's revert().
-
-await runtime.rollback({ executionId });
-
-
+// List actions awaiting approval. With no executionId this aggregates across// every paused run, so concurrent approvals all show up.await runtime.pending();
+// Approve the pending action(s) and continue.await runtime.approve({ executionId });
+// Reject — ends the execution. Does NOT undo actions already applied earlier// in the same run; call rollback() for that.await runtime.reject({ seq, executionId });
+// Roll back applied actions in reverse order via each tool's revert().await runtime.rollback({ executionId });
 ```
 
 TypeScript
 
 ```
-
 const runtime = createCodemodeRuntime({ ctx: this.ctx, connectors, executor });
-
-
-// List actions awaiting approval. With no executionId this aggregates across
-
-// every paused run, so concurrent approvals all show up.
-
-await runtime.pending();
-
-
-// Approve the pending action(s) and continue.
-
-await runtime.approve({ executionId });
-
-
-// Reject — ends the execution. Does NOT undo actions already applied earlier
-
-// in the same run; call rollback() for that.
-
-await runtime.reject({ seq, executionId });
-
-
-// Roll back applied actions in reverse order via each tool's revert().
-
-await runtime.rollback({ executionId });
-
-
+// List actions awaiting approval. With no executionId this aggregates across// every paused run, so concurrent approvals all show up.await runtime.pending();
+// Approve the pending action(s) and continue.await runtime.approve({ executionId });
+// Reject — ends the execution. Does NOT undo actions already applied earlier// in the same run; call rollback() for that.await runtime.reject({ seq, executionId });
+// Roll back applied actions in reverse order via each tool's revert().await runtime.rollback({ executionId });
 ```
 
 Note
@@ -909,77 +316,23 @@ Rollback walks the log backward and calls the `revert` of **every** applied acti
 
 A **snippet** is a saved sandbox script — a reusable pattern that already ran and worked. Snippets are durable: they live on the runtime facet, are addressable by name, and accumulate over time. Connectors provide raw capability; snippets are recipes that worked. The split is deliberate — the model writes and reuses scripts, and the developer decides which ones are worth keeping.
 
-* [  JavaScript ](#tab-panel-5831)
-* [  TypeScript ](#tab-panel-5832)
+* [  JavaScript ](#tab-panel-5905)
+* [  TypeScript ](#tab-panel-5906)
 
 JavaScript
 
 ```
-
-// 1. The model writes and runs a script (one execution).
-
-const prs = await github.list_pull_requests({ owner, repo, state: "open" });
-
-
-// 2. The developer reviews the run and promotes it — for example from a @callable.
-
-const runs = await runtime.executions(); // Newest first.
-
-await runtime.saveSnippet("list-open-prs", {
-
-  executionId: runs[0].id, // Defaults to the current execution.
-
-  description: "List open pull requests for a repository.",
-
-});
-
-
-// 3. The model finds it via codemode.search and runs it by name.
-
-const saved = await codemode.run("list-open-prs", {
-
-  owner: "cloudflare",
-
-  repo: "agents",
-
-});
-
-
+// 1. The model writes and runs a script (one execution).const prs = await github.list_pull_requests({ owner, repo, state: "open" });
+// 2. The developer reviews the run and promotes it — for example from a @callable.const runs = await runtime.executions(); // Newest first.await runtime.saveSnippet("list-open-prs", {  executionId: runs[0].id, // Defaults to the current execution.  description: "List open pull requests for a repository.",});
+// 3. The model finds it via codemode.search and runs it by name.const saved = await codemode.run("list-open-prs", {  owner: "cloudflare",  repo: "agents",});
 ```
 
 TypeScript
 
 ```
-
-// 1. The model writes and runs a script (one execution).
-
-const prs = await github.list_pull_requests({ owner, repo, state: "open" });
-
-
-// 2. The developer reviews the run and promotes it — for example from a @callable.
-
-const runs = await runtime.executions(); // Newest first.
-
-await runtime.saveSnippet("list-open-prs", {
-
-  executionId: runs[0].id, // Defaults to the current execution.
-
-  description: "List open pull requests for a repository.",
-
-});
-
-
-// 3. The model finds it via codemode.search and runs it by name.
-
-const saved = await codemode.run("list-open-prs", {
-
-  owner: "cloudflare",
-
-  repo: "agents",
-
-});
-
-
+// 1. The model writes and runs a script (one execution).const prs = await github.list_pull_requests({ owner, repo, state: "open" });
+// 2. The developer reviews the run and promotes it — for example from a @callable.const runs = await runtime.executions(); // Newest first.await runtime.saveSnippet("list-open-prs", {  executionId: runs[0].id, // Defaults to the current execution.  description: "List open pull requests for a repository.",});
+// 3. The model finds it via codemode.search and runs it by name.const saved = await codemode.run("list-open-prs", {  owner: "cloudflare",  repo: "agents",});
 ```
 
 Each snippet records the connector names its source execution ran with. `codemode.run(name)` checks them against the runtime's current connector set and returns a clear error — naming the missing connector — instead of failing partway through the script. This lets a runtime gain or lose connectors without orphaning its snippets.
@@ -1009,55 +362,21 @@ Terminal executions (completed or errored) are auto-pruned as new runs begin, ke
 
 A run's final result can be large enough to crowd the model's context. Pass `transformResult` to reshape the **model-facing** result of a completed run — most often to truncate it. It runs after the raw result is recorded, so the audit trail keeps the full value while the model sees the shaped one:
 
-* [  JavaScript ](#tab-panel-5827)
-* [  TypeScript ](#tab-panel-5828)
+* [  JavaScript ](#tab-panel-5901)
+* [  TypeScript ](#tab-panel-5902)
 
 JavaScript
 
 ```
-
 import { createCodemodeRuntime, truncateResult } from "@cloudflare/codemode";
-
-
-const runtime = createCodemodeRuntime({
-
-  ctx,
-
-  executor,
-
-  connectors,
-
-  // Cap response size; small structured results pass through unchanged.
-
-  transformResult: (result) => truncateResult(result),
-
-});
-
-
+const runtime = createCodemodeRuntime({  ctx,  executor,  connectors,  // Cap response size; small structured results pass through unchanged.  transformResult: (result) => truncateResult(result),});
 ```
 
 TypeScript
 
 ```
-
 import { createCodemodeRuntime, truncateResult } from "@cloudflare/codemode";
-
-
-const runtime = createCodemodeRuntime({
-
-  ctx,
-
-  executor,
-
-  connectors,
-
-  // Cap response size; small structured results pass through unchanged.
-
-  transformResult: (result) => truncateResult(result),
-
-});
-
-
+const runtime = createCodemodeRuntime({  ctx,  executor,  connectors,  // Cap response size; small structured results pass through unchanged.  transformResult: (result) => truncateResult(result),});
 ```
 
 ### Runtime identity
@@ -1068,33 +387,19 @@ The runtime facet's identity is an explicit `name` (default `"default"`). The co
 
 Connectors extend `WorkerEntrypoint` and must be exported from the Worker entry module to be reachable over Workers RPC, and the `CodemodeRuntime` facet class must be exported for facet spawning. The `@cloudflare/codemode/vite` plugin derives this from the `*.codemode.ts` file convention instead of hand-maintained wrangler configuration. It discovers `*.codemode.{ts,js,tsx,jsx}` files in `src/`, resolves `with { type: "connectors" }` imports through a virtual module, and appends the required re-exports to your Worker entry:
 
-* [  JavaScript ](#tab-panel-5825)
-* [  TypeScript ](#tab-panel-5826)
+* [  JavaScript ](#tab-panel-5899)
+* [  TypeScript ](#tab-panel-5900)
 
 JavaScript
 
 ```
-
-// Auto-generated by @cloudflare/codemode/vite
-
-export { CodemodeRuntime } from "@cloudflare/codemode";
-
-export * from "/abs/path/to/github.codemode.ts";
-
-
+// Auto-generated by @cloudflare/codemode/viteexport { CodemodeRuntime } from "@cloudflare/codemode";export * from "/abs/path/to/github.codemode.ts";
 ```
 
 TypeScript
 
 ```
-
-// Auto-generated by @cloudflare/codemode/vite
-
-export { CodemodeRuntime } from "@cloudflare/codemode";
-
-export * from "/abs/path/to/github.codemode.ts";
-
-
+// Auto-generated by @cloudflare/codemode/viteexport { CodemodeRuntime } from "@cloudflare/codemode";export * from "/abs/path/to/github.codemode.ts";
 ```
 
 For import attributes to work, your `tsconfig.json` needs `"module": "esnext"` (the `agents/tsconfig` base sets the rest).
@@ -1120,7 +425,7 @@ For import attributes to work, your `tsconfig.json` needs `"module": "esnext"` (
 
 [ Using AI models ](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/) Use AI models with your Agent. 
 
-[ MCP client ](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/) Connect to MCP servers and expose their tools as codemode connectors. 
+[ MCP client ](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/) Connect to MCP servers and expose their tools as codemode connectors.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/codemode/#page","headline":"Codemode · Cloudflare Agents docs","description":"Let LLMs use external systems by writing TypeScript in a secure sandbox, backed by a durable runtime with discovery, approvals, and reusable snippets.","url":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/codemode/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}

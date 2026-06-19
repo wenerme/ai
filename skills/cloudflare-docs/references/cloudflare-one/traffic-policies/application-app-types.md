@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -142,52 +142,9 @@ All future Microsoft 365 traffic will bypass Gateway logging and filtering. To d
 Terraform users can retrieve the app types list with the `cloudflare_zero_trust_gateway_app_types_list` data source. This allows you to create Gateway policies with the application's name rather than its numeric ID. For example:
 
 ```
-
-data "cloudflare_zero_trust_gateway_app_types_list" "gateway_apptypes" {
-
-  account_id = var.cloudflare_account_id
-
-}
-
-
-locals {
-
-  apptypes_map = merge([
-
-    for c in data.cloudflare_zero_trust_gateway_app_types_list.gateway_apptypes.result :
-
-    { (c.name) = c.id }
-
-  ]...)
-
-}
-
-
-resource "cloudflare_zero_trust_gateway_policy" "zt_block_dns_apps" {
-
-  account_id = var.cloudflare_account_id
-
-  name       = "DNS Blocked apps"
-
-  action     = "block"
-
-  traffic    = "any(app.ids[*] in {${join(" ", [
-
-    local.apptypes_map["Discord"],
-
-    local.apptypes_map["GoToMeeting"],
-
-    local.apptypes_map["Greenhouse"],
-
-    local.apptypes_map["Zelle"],
-
-    local.apptypes_map["Microsoft Visual Studio"]
-
-  ])}})"
-
-}
-
-
+data "cloudflare_zero_trust_gateway_app_types_list" "gateway_apptypes" {  account_id = var.cloudflare_account_id}
+locals {  apptypes_map = merge([    for c in data.cloudflare_zero_trust_gateway_app_types_list.gateway_apptypes.result :    { (c.name) = c.id }  ]...)}
+resource "cloudflare_zero_trust_gateway_policy" "zt_block_dns_apps" {  account_id = var.cloudflare_account_id  name       = "DNS Blocked apps"  action     = "block"  traffic    = "any(app.ids[*] in {${join(" ", [    local.apptypes_map["Discord"],    local.apptypes_map["GoToMeeting"],    local.apptypes_map["Greenhouse"],    local.apptypes_map["Zelle"],    local.apptypes_map["Microsoft Visual Studio"]  ])}})"}
 ```
 
 ```json

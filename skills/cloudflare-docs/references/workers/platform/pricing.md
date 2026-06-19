@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,12 +26,12 @@ All [Pages Functions](https://developers.cloudflare.com/pages/functions/) are bi
 
 Users on the Workers Paid plan have access to the Standard usage model. Workers Enterprise accounts are billed based on the usage model specified in their contract. To switch to the Standard usage model, contact your Account Manager.
 
-| Requests1, 2, 3 | Duration                                                     | CPU time                        |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| --------------- | ------------------------------------------------------------ | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Free**        | 100,000 per day                                              | No charge for duration          | 10 milliseconds of CPU time per invocation                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| **Standard**    | 10 million included per month  +$0.30 per additional million | No charge or limit for duration | 30 million CPU milliseconds included per month +$0.02 per additional million CPU milliseconds Max of [5 minutes of CPU time](https://developers.cloudflare.com/workers/platform/limits/#account-plan-limits) per invocation (default: 30 seconds) Max of 15 minutes of CPU time per [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/) or [Queue Consumer](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) invocation |
+|              | Requests1, 2, 3                                              | Duration                        | CPU time                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| ------------ | ------------------------------------------------------------ | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Free**     | 100,000 per day                                              | No charge for duration          | 10 milliseconds of CPU time per invocation                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| **Standard** | 10 million included per month  +$0.30 per additional million | No charge or limit for duration | 30 million CPU milliseconds included per month +$0.02 per additional million CPU milliseconds Max of [5 minutes of CPU time](https://developers.cloudflare.com/workers/platform/limits/#account-plan-limits) per invocation (default: 30 seconds) Max of 15 minutes of CPU time per [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/) or [Queue Consumer](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) invocation |
 
-1 Inbound requests to your Worker. Cloudflare does not bill for[subrequests](https://developers.cloudflare.com/workers/platform/limits/#subrequests) you make from your Worker.
+1 Inbound requests to your Worker. Cloudflare does not bill for [subrequests](https://developers.cloudflare.com/workers/platform/limits/#subrequests) you make from your Worker.
 
 2 WebSocket connections made to a Worker are charged as a request, representing the initial `Upgrade` connection made to establish the WebSocket. WebSocket messages routed through a Worker do not count as requests.
 
@@ -43,12 +43,12 @@ Users on the Workers Paid plan have access to the Standard usage model. Workers 
 
 A Worker that serves 15 million requests per month, and uses an average of 7 milliseconds (ms) of CPU time per request, would have the following estimated costs:
 
-| Monthly Costs    | Formula |                                                                                                           |
-| ---------------- | ------- | --------------------------------------------------------------------------------------------------------- |
-| **Subscription** | $5.00   |                                                                                                           |
-| **Requests**     | $1.50   | (15,000,000 requests - 10,000,000 included requests) / 1,000,000 \* $0.30                                 |
-| **CPU time**     | $1.50   | ((7 ms of CPU time per request \* 15,000,000 requests) - 30,000,000 included CPU ms) / 1,000,000 \* $0.02 |
-| **Total**        | $8.00   |                                                                                                           |
+|                  | Monthly Costs | Formula                                                                                                   |
+| ---------------- | ------------- | --------------------------------------------------------------------------------------------------------- |
+| **Subscription** | $5.00         |                                                                                                           |
+| **Requests**     | $1.50         | (15,000,000 requests - 10,000,000 included requests) / 1,000,000 \* $0.30                                 |
+| **CPU time**     | $1.50         | ((7 ms of CPU time per request \* 15,000,000 requests) - 30,000,000 included CPU ms) / 1,000,000 \* $0.02 |
+| **Total**        | $8.00         |                                                                                                           |
 
 #### Example 2
 
@@ -56,13 +56,14 @@ A project that serves 15 million requests per month, with 80% (12 million) reque
 
 Requests to static assets are free and unlimited. This project would have the following estimated costs:
 
-| Monthly Costs                 | Formula |    |
-| ----------------------------- | ------- | -- |
-| **Subscription**              | $5.00   |    |
-| **Requests to static assets** | $0      | \- |
-| **Requests to Worker**        | $0      | \- |
-| **CPU time**                  | $0      | \- |
-| **Total**                     | $5.00   |    |
+|                               | Monthly Costs | Formula |
+| ----------------------------- | ------------- | ------- |
+| **Subscription**              | $5.00         |         |
+| **Requests to static assets** | $0            | \-      |
+| **Requests to Worker**        | $0            | \-      |
+| **CPU time**                  | $0            | \-      |
+| **Total**                     | $5.00         |         |
+|                               |               |         |
 
 #### Example 3
 
@@ -73,23 +74,24 @@ A Worker that runs on a [Cron Trigger](https://developers.cloudflare.com/workers
 
 In this scenario, the estimated monthly cost would be calculated as:
 
-| Monthly Costs    | Formula |                                                                                                          |
-| ---------------- | ------- | -------------------------------------------------------------------------------------------------------- |
-| **Subscription** | $5.00   |                                                                                                          |
-| **Requests**     | $0.00   | \-                                                                                                       |
-| **CPU time**     | $1.99   | ((180,000 ms of CPU time per request \* 720 requests) - 30,000,000 included CPU ms) / 1,000,000 \* $0.02 |
-| **Total**        | $6.99   |                                                                                                          |
+|                  | Monthly Costs | Formula                                                                                                  |
+| ---------------- | ------------- | -------------------------------------------------------------------------------------------------------- |
+| **Subscription** | $5.00         |                                                                                                          |
+| **Requests**     | $0.00         | \-                                                                                                       |
+| **CPU time**     | $1.99         | ((180,000 ms of CPU time per request \* 720 requests) - 30,000,000 included CPU ms) / 1,000,000 \* $0.02 |
+| **Total**        | $6.99         |                                                                                                          |
+|                  |               |                                                                                                          |
 
 #### Example 4
 
 A high traffic Worker that serves 100 million requests per month, and uses an average of 7 milliseconds (ms) of CPU time per request, would have the following estimated costs:
 
-| Monthly Costs    | Formula |                                                                                                            |
-| ---------------- | ------- | ---------------------------------------------------------------------------------------------------------- |
-| **Subscription** | $5.00   |                                                                                                            |
-| **Requests**     | $27.00  | (100,000,000 requests - 10,000,000 included requests) / 1,000,000 \* $0.30                                 |
-| **CPU time**     | $13.40  | ((7 ms of CPU time per request \* 100,000,000 requests) - 30,000,000 included CPU ms) / 1,000,000 \* $0.02 |
-| **Total**        | $45.40  |                                                                                                            |
+|                  | Monthly Costs | Formula                                                                                                    |
+| ---------------- | ------------- | ---------------------------------------------------------------------------------------------------------- |
+| **Subscription** | $5.00         |                                                                                                            |
+| **Requests**     | $27.00        | (100,000,000 requests - 10,000,000 included requests) / 1,000,000 \* $0.30                                 |
+| **CPU time**     | $13.40        | ((7 ms of CPU time per request \* 100,000,000 requests) - 30,000,000 included CPU ms) / 1,000,000 \* $0.02 |
+| **Total**        | $45.40        |                                                                                                            |
 
 Custom limits
 
@@ -123,10 +125,10 @@ Existing Workers will not be impacted when changing the default usage model. You
 
 Workers Logs is included in both the Free and Paid [Workers plans](https://developers.cloudflare.com/workers/platform/pricing/).
 
-| Log Events Written | Retention                                                    |        |
-| ------------------ | ------------------------------------------------------------ | ------ |
-| **Workers Free**   | 200,000 per day                                              | 3 Days |
-| **Workers Paid**   | 20 million included per month  +$0.60 per additional million | 7 Days |
+|                  | Log Events Written                                           | Retention |
+| ---------------- | ------------------------------------------------------------ | --------- |
+| **Workers Free** | 200,000 per day                                              | 3 Days    |
+| **Workers Paid** | 20 million included per month  +$0.60 per additional million | 7 Days    |
 
 Workers Logs documentation
 
@@ -136,7 +138,7 @@ For more information and [examples of Workers Logs billing](https://developers.c
 
 Workers Logpush is only available on the Workers Paid plan.
 
-| Paid plan  |                                    |
+|            | Paid plan                          |
 | ---------- | ---------------------------------- |
 | Requests 1 | 10 million / month, +$0.05/million |
 
@@ -146,7 +148,7 @@ Workers Logpush is only available on the Workers Paid plan.
 
 Workers KV is included in both the Free and Paid [Workers plans](https://developers.cloudflare.com/workers/platform/pricing/).
 
-| Free plan1    | Paid plan     |                                   |
+|               | Free plan1    | Paid plan                         |
 | ------------- | ------------- | --------------------------------- |
 | Keys read     | 100,000 / day | 10 million/month, + $0.50/million |
 | Keys written  | 1,000 / day   | 1 million/month, + $5.00/million  |
@@ -168,9 +170,9 @@ To learn more about KV, refer to the [KV documentation](https://developers.cloud
 
 Hyperdrive is included in both the Free and Paid [Workers plans](https://developers.cloudflare.com/workers/platform/pricing/).
 
-| Free plan[1](#user-content-fn-1)        | Paid plan     |           |
-| --------------------------------------- | ------------- | --------- |
-| Database queries[2](#user-content-fn-2) | 100,000 / day | Unlimited |
+|                                         | Free plan[1](#user-content-fn-1) | Paid plan |
+| --------------------------------------- | -------------------------------- | --------- |
+| Database queries[2](#user-content-fn-2) | 100,000 / day                    | Unlimited |
 
 Footnotes
 
@@ -197,7 +199,7 @@ Cloudflare Queues charges for the total number of operations against each of you
 * Operations are per message, not per batch. A batch of 10 messages (the default batch size), if processed, would incur 10x write, 10x read, and 10x delete operations: one for each message in the batch.
 * There are no data transfer (egress) or throughput (bandwidth) charges.
 
-| Workers Free        | Workers Paid                   |                                                                |
+|                     | Workers Free                   | Workers Paid                                                   |
 | ------------------- | ------------------------------ | -------------------------------------------------------------- |
 | Standard operations | 10,000 operations/day included | 1,000,000 operations/month included + $0.40/million operations |
 | Message retention   | 24 hours (non-configurable)    | 4 days default, configurable up to 14 days                     |
@@ -205,10 +207,7 @@ Cloudflare Queues charges for the total number of operations against each of you
 In most cases, it takes 3 operations to deliver a message: 1 write, 1 read, and 1 delete. Therefore, you can use the following formula to estimate your monthly bill:
 
 ```
-
 ((Number of Messages * 3) - 1,000,000) / 1,000,000  * $0.40
-
-
 ```
 
 Additionally:
@@ -225,11 +224,11 @@ To learn more about Queues pricing and review billing examples, refer to [Queues
 
 D1 is available on both the Workers Free and Workers Paid plans.
 
-| [Workers Free](https://developers.cloudflare.com/workers/platform/pricing/#workers) | [Workers Paid](https://developers.cloudflare.com/workers/platform/pricing/#workers) |                                                           |
-| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | --------------------------------------------------------- |
-| Rows read                                                                           | 5 million / day                                                                     | First 25 billion / month included + $0.001 / million rows |
-| Rows written                                                                        | 100,000 / day                                                                       | First 50 million / month included + $1.00 / million rows  |
-| Storage (per GB stored)                                                             | 5 GB (total)                                                                        | First 5 GB included + $0.75 / GB-mo                       |
+|                         | [Workers Free](https://developers.cloudflare.com/workers/platform/pricing/#workers) | [Workers Paid](https://developers.cloudflare.com/workers/platform/pricing/#workers) |
+| ----------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| Rows read               | 5 million / day                                                                     | First 25 billion / month included + $0.001 / million rows                           |
+| Rows written            | 100,000 / day                                                                       | First 50 million / month included + $1.00 / million rows                            |
+| Storage (per GB stored) | 5 GB (total)                                                                        | First 5 GB included + $0.75 / GB-mo                                                 |
 
 Track your D1 usage
 
@@ -267,7 +266,7 @@ If you wish to downgrade from a Workers Paid plan to a Workers Free plan, you mu
 
 Durable Objects are billed for compute duration (wall-clock time) while the Durable Object is actively running or is idle in memory but unable to [hibernate](https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/). Durable Objects that are idle and eligible for hibernation are not billed for duration, even before the runtime has hibernated them. Requests to a Durable Object keep it active or create the object if it was inactive.
 
-| Free plan | Paid plan         |                                                                                                                      |
+|           | Free plan         | Paid plan                                                                                                            |
 | --------- | ----------------- | -------------------------------------------------------------------------------------------------------------------- |
 | Requests  | 100,000 / day     | 1 million / month, + $0.15/million Includes HTTP requests, RPC sessions1, WebSocket messages2, and alarm invocations |
 | Duration3 | 13,000 GB-s / day | 400,000 GB-s / month, + $12.50/million GB-s4,5                                                                       |
@@ -281,16 +280,7 @@ RPC method calls can return objects (stubs) extending [RpcTarget](https://develo
 JavaScript
 
 ```
-
-let durableObjectStub = OBJECT_NAMESPACE.get(id); // retrieve Durable Object stub
-
-using foo = await durableObjectStub.bar(); // billed as a request
-
-await foo.baz(); // treated as part of the same RPC session created by calling bar(), not billed as a request
-
-await durableObjectStub.cat(); // billed as a request
-
-
+let durableObjectStub = OBJECT_NAMESPACE.get(id); // retrieve Durable Object stubusing foo = await durableObjectStub.bar(); // billed as a requestawait foo.baz(); // treated as part of the same RPC session created by calling bar(), not billed as a requestawait durableObjectStub.cat(); // billed as a request
 ```
 
 2 A request is needed to create a WebSocket connection. There is no charge for outgoing WebSocket messages, nor for incoming [WebSocket protocol pings ↗](https://www.rfc-editor.org/rfc/rfc6455#section-5.5.2). For compute requests billing-only, a 20:1 ratio is applied to incoming WebSocket messages to factor in smaller messages for real-time communication. For example, 100 WebSocket incoming messages would be charged as 5 requests for billing purposes. The 20:1 ratio does not affect Durable Object metrics and analytics, which reflect actual usage.
@@ -314,7 +304,7 @@ Storage billing on SQLite-backed Durable Objects
 
 Storage billing for SQLite-backed Durable Objects will be enabled in January 2026, with a target date of January 7, 2026 (no earlier). Only SQLite storage usage on and after the billing target date will incur charges. For more information, refer to [Billing for SQLite Storage](https://developers.cloudflare.com/changelog/2025-12-12-durable-objects-sqlite-storage-billing/).
 
-| Workers Free plan    | Workers Paid plan |                                                           |
+|                      | Workers Free plan | Workers Paid plan                                         |
 | -------------------- | ----------------- | --------------------------------------------------------- |
 | Rows reads 1,2       | 5 million / day   | First 25 billion / month included + $0.001 / million rows |
 | Rows written 1,2,3,4 | 100,000 / day     | First 50 million / month included + $1.00 / million rows  |
@@ -334,7 +324,7 @@ Footnotes
 
 #### Key-value storage backend
 
-| Workers Paid plan     |                            |
+|                       | Workers Paid plan          |
 | --------------------- | -------------------------- |
 | Read request units1,2 | 1 million, + $0.20/million |
 | Write request units3  | 1 million, + $1.00/million |
@@ -363,10 +353,10 @@ For more information and [examples of Durable Objects billing](https://developer
 
 Vectorize is currently only available on the Workers paid plan.
 
-| [Workers Free](https://developers.cloudflare.com/workers/platform/pricing/#workers) | [Workers Paid](https://developers.cloudflare.com/workers/platform/pricing/#workers) |                                                                                 |
-| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| **Total queried vector dimensions**                                                 | 30 million queried vector dimensions / month                                        | First 50 million queried vector dimensions / month included + $0.01 per million |
-| **Total stored vector dimensions**                                                  | 5 million stored vector dimensions                                                  | First 10 million stored vector dimensions + $0.05 per 100 million               |
+|                                     | [Workers Free](https://developers.cloudflare.com/workers/platform/pricing/#workers) | [Workers Paid](https://developers.cloudflare.com/workers/platform/pricing/#workers) |
+| ----------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| **Total queried vector dimensions** | 30 million queried vector dimensions / month                                        | First 50 million queried vector dimensions / month included + $0.01 per million     |
+| **Total stored vector dimensions**  | 5 million stored vector dimensions                                                  | First 10 million stored vector dimensions + $0.05 per 100 million                   |
 
 ### Calculating vector dimensions
 
@@ -384,13 +374,13 @@ R2 charges based on the total volume of data stored, along with two classes of o
 
 There are no charges for egress bandwidth.
 
-| Free                               | Standard storage            | Infrequent Access storage |                          |
-| ---------------------------------- | --------------------------- | ------------------------- | ------------------------ |
-| Storage                            | 10 GB-month / month         | $0.015 / GB-month         | $0.01 / GB-month         |
-| Class A Operations                 | 1 million requests / month  | $4.50 / million requests  | $9.00 / million requests |
-| Class B Operations                 | 10 million requests / month | $0.36 / million requests  | $0.90 / million requests |
-| Data Retrieval (processing)        | None                        | None                      | $0.01 / GB               |
-| Egress (data transfer to Internet) | Free                        | Free                      | Free                     |
+|                                    | Free                        | Standard storage         | Infrequent Access storage |
+| ---------------------------------- | --------------------------- | ------------------------ | ------------------------- |
+| Storage                            | 10 GB-month / month         | $0.015 / GB-month        | $0.01 / GB-month          |
+| Class A Operations                 | 1 million requests / month  | $4.50 / million requests | $9.00 / million requests  |
+| Class B Operations                 | 10 million requests / month | $0.36 / million requests | $0.90 / million requests  |
+| Data Retrieval (processing)        | None                        | None                     | $0.01 / GB                |
+| Egress (data transfer to Internet) | Free                        | Free                     | Free                      |
 
 R2 documentation
 
@@ -400,7 +390,7 @@ To learn more about R2 pricing, including billing examples, refer to [R2 Pricing
 
 Containers are billed for every 10ms that they are actively running at the following rates, with included monthly usage as part of the $5 USD per month [Workers Paid plan](https://developers.cloudflare.com/workers/platform/pricing/):
 
-| Memory           | CPU                                                                | Disk                                                           |                                                           |
+|                  | Memory                                                             | CPU                                                            | Disk                                                      |
 | ---------------- | ------------------------------------------------------------------ | -------------------------------------------------------------- | --------------------------------------------------------- |
 | **Free**         | N/A                                                                | N/A                                                            | N/A                                                       |
 | **Workers Paid** | 25 GiB-hours/month included  +$0.0000025 per additional GiB-second | 375 vCPU-minutes/month \+ $0.000020 per additional vCPU-second | 200 GB-hours/month  +$0.00000007 per additional GB-second |

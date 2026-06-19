@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,16 +22,17 @@ Rule groups are distinct from groups in your identity provider, like Okta groups
 
 To create an Access rule group:
 
-* [ Dashboard ](#tab-panel-7167)
-* [ API ](#tab-panel-7168)
+* [ Dashboard ](#tab-panel-7243)
+* [ API ](#tab-panel-7244)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Policies**, and select the **Rule groups** tab.
 2. Select **Add a group**.
 3. Enter a name for the group (for example, `Lisbon-team`).
-4. Specify as many rules as needed to define your user group. For example, the following rules define a team based in Lisbon, Portugal:  
-| Rule type | Selector         | Value     |  
-| --------- | ---------------- | --------- |  
-| Include   | Country          | Portugal  |  
+4. Specify as many rules as needed to define your user group. For example, the following rules define a team based in Lisbon, Portugal:
+
+| Rule type | Selector         | Value     |
+| --------- | ---------------- | --------- |
+| Include   | Country          | Portugal  |
 | Require   | Emails Ending In | @team.com |
 5. Select **Save**.
 
@@ -39,58 +40,13 @@ Send a `POST` request to the [/access/groups](https://developers.cloudflare.com/
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Access: Organizations, Identity Providers, and Groups Write`
 
 Create an Access group
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/groups" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "Lisbon-team",
-
-    "include": [
-
-        {
-
-            "geo": {
-
-                "country_code": "PT"
-
-            }
-
-        }
-
-    ],
-
-    "exclude": [],
-
-    "require": [
-
-        {
-
-            "email_domain": {
-
-                "domain": "team.com"
-
-            }
-
-        }
-
-    ],
-
-    "is_default": false
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/groups" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Lisbon-team",    "include": [        {            "geo": {                "country_code": "PT"            }        }    ],    "exclude": [],    "require": [        {            "email_domain": {                "domain": "team.com"            }        }    ],    "is_default": false  }'
 ```
 
 You can now add this group to an Access policy using the _Rule groups_ selector.

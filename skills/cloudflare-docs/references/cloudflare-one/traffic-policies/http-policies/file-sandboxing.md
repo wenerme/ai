@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -64,9 +64,10 @@ To test if file sandboxing is working, you can create a Quarantine policy that m
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **HTTP**.
 2. Select **Add a policy**.
-3. Add the following expression:  
-| Selector | Operator | Value                       | Action     |  
-| -------- | -------- | --------------------------- | ---------- |  
+3. Add the following expression:
+
+| Selector | Operator | Value                       | Action     |
+| -------- | -------- | --------------------------- | ---------- |
 | Host     | is       | sandbox.cloudflaredemos.com | Quarantine |
 4. In **Sandbox file types**, select _ZIP Archive (zip)_.
 5. From a device [connected to your Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/), open a browser and go to the [Cloudflare Sandbox Test ↗](https://sandbox.cloudflaredemos.com/).

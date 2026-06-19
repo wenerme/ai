@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -50,10 +50,11 @@ For each region where you have a private DNS server:
 1. Go to **Traffic policies** \> **Resolver policies**.
 2. Select **Add a policy**.
 3. Name your policy based on the region (for example, `US Internal DNS`).
-4. Create an expression to match internal domains and users in that region. For example, to match users in the United States:  
-| Selector                      | Operator | Value                | Logic |  
-| ----------------------------- | -------- | -------------------- | ----- |  
-| Domain                        | in       | internal.example.com | And   |  
+4. Create an expression to match internal domains and users in that region. For example, to match users in the United States:
+
+| Selector                      | Operator | Value                | Logic |
+| ----------------------------- | -------- | -------------------- | ----- |
+| Domain                        | in       | internal.example.com | And   |
 | Source Country IP Geolocation | in       | _United States_      |       |
 5. In **Select DNS resolver**, select _Configure custom DNS resolvers_.
 6. Enter the private IP address of your regional DNS server (for example, `10.0.1.53` for US or `10.1.1.53` for EU).
@@ -74,9 +75,10 @@ Create a catch-all policy for users in regions without a dedicated DNS server, o
 1. Go to **Traffic policies** \> **Resolver policies**.
 2. Select **Add a policy**.
 3. Name your policy (for example, `Internal DNS Fallback`).
-4. Create an expression to match internal domains:  
-| Selector | Operator | Value                |  
-| -------- | -------- | -------------------- |  
+4. Create an expression to match internal domains:
+
+| Selector | Operator | Value                |
+| -------- | -------- | -------------------- |
 | Domain   | in       | internal.example.com |
 5. In **Select DNS resolver**, select _Configure custom DNS resolvers_.
 6. Enter the private IP address of your primary DNS server.
@@ -88,8 +90,8 @@ Gateway will apply resolver policies based on [order of precedence](https://deve
 
 1. Go to **Traffic policies** \> **Resolver policies**.
 2. Use the drag handle to reorder policies:  
-   * Resolver policies with regional coverage first  
-   * Your fallback resolver policy last
+  * Resolver policies with regional coverage first
+  * Your fallback resolver policy last
 
 Gateway will apply the first matching policy. If no policies match your traffic, Gateway will apply the fallback resolver policy. The order between resolver policies with regional coverage does not matter.
 

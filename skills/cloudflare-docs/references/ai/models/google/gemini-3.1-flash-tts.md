@@ -5,7 +5,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -24,296 +24,106 @@ Text-to-Speech • Google
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-572)
-* [ cURL ](#tab-panel-573)
+* [ TypeScript ](#tab-panel-550)
+* [ cURL ](#tab-panel-551)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'google/gemini-3.1-flash-tts',
-
-  { text: 'Hello, welcome to Cloudflare AI Gateway!' },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'google/gemini-3.1-flash-tts',  { text: 'Hello, welcome to Cloudflare AI Gateway!' },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "google/gemini-3.1-flash-tts",
-
-  "input": {
-
-    "text": "Hello, welcome to Cloudflare AI Gateway!"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "google/gemini-3.1-flash-tts",  "input": {    "text": "Hello, welcome to Cloudflare AI Gateway!"  }}'
 ```
 
-* [ Output ](#tab-panel-568)
-* [ Raw response ](#tab-panel-569)
+* [ Output ](#tab-panel-546)
+* [ Raw response ](#tab-panel-547)
 
 ```
-
-{
-
-  "audio": "data:audio/l16;base64,...",
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
-
-}
-
-
+{  "audio": "data:audio/l16;base64,...",  "gatewayMetadata": {    "keySource": "Unified"  }}
 ```
 
 ## Examples
 
 **Custom Voice**  — Generate speech with a specific voice 
 
-* [ TypeScript ](#tab-panel-576)
-* [ cURL ](#tab-panel-577)
+* [ TypeScript ](#tab-panel-554)
+* [ cURL ](#tab-panel-555)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'google/gemini-3.1-flash-tts',
-
-  { text: 'The quick brown fox jumps over the lazy dog.', voice: 'Puck' },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'google/gemini-3.1-flash-tts',  { text: 'The quick brown fox jumps over the lazy dog.', voice: 'Puck' },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "google/gemini-3.1-flash-tts",
-
-  "input": {
-
-    "text": "The quick brown fox jumps over the lazy dog.",
-
-    "voice": "Puck"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "google/gemini-3.1-flash-tts",  "input": {    "text": "The quick brown fox jumps over the lazy dog.",    "voice": "Puck"  }}'
 ```
 
-* [ Output ](#tab-panel-570)
-* [ Raw response ](#tab-panel-571)
+* [ Output ](#tab-panel-548)
+* [ Raw response ](#tab-panel-549)
 
 ```
-
-{
-
-  "audio": "data:audio/l16;base64,...",
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
-
-}
-
-
+{  "audio": "data:audio/l16;base64,...",  "gatewayMetadata": {    "keySource": "Unified"  }}
 ```
 
 **Longer Text**  — Convert longer text to speech 
 
-* [ TypeScript ](#tab-panel-580)
-* [ cURL ](#tab-panel-581)
+* [ TypeScript ](#tab-panel-558)
+* [ cURL ](#tab-panel-559)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'google/gemini-3.1-flash-tts',
-
-  {
-
-    text: 'Artificial intelligence has transformed the way we interact with technology. From voice assistants to autonomous vehicles, AI is reshaping our daily lives and creating new possibilities for innovation.',
-
-    voice: 'Charon',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'google/gemini-3.1-flash-tts',  {    text: 'Artificial intelligence has transformed the way we interact with technology. From voice assistants to autonomous vehicles, AI is reshaping our daily lives and creating new possibilities for innovation.',    voice: 'Charon',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "google/gemini-3.1-flash-tts",
-
-  "input": {
-
-    "text": "Artificial intelligence has transformed the way we interact with technology. From voice assistants to autonomous vehicles, AI is reshaping our daily lives and creating new possibilities for innovation.",
-
-    "voice": "Charon"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "google/gemini-3.1-flash-tts",  "input": {    "text": "Artificial intelligence has transformed the way we interact with technology. From voice assistants to autonomous vehicles, AI is reshaping our daily lives and creating new possibilities for innovation.",    "voice": "Charon"  }}'
 ```
 
-* [ Output ](#tab-panel-574)
-* [ Raw response ](#tab-panel-575)
+* [ Output ](#tab-panel-552)
+* [ Raw response ](#tab-panel-553)
 
 ```
-
-{
-
-  "audio": "data:audio/l16;base64,...",
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
-
-}
-
-
+{  "audio": "data:audio/l16;base64,...",  "gatewayMetadata": {    "keySource": "Unified"  }}
 ```
 
 **Narrative Voice**  — Generate speech with a narrative voice style 
 
-* [ TypeScript ](#tab-panel-582)
-* [ cURL ](#tab-panel-583)
+* [ TypeScript ](#tab-panel-560)
+* [ cURL ](#tab-panel-561)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'google/gemini-3.1-flash-tts',
-
-  {
-
-    text: 'Once upon a time, in a kingdom far away, there lived a brave knight who sought to protect the realm from all dangers.',
-
-    voice: 'Kore',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'google/gemini-3.1-flash-tts',  {    text: 'Once upon a time, in a kingdom far away, there lived a brave knight who sought to protect the realm from all dangers.',    voice: 'Kore',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "google/gemini-3.1-flash-tts",
-
-  "input": {
-
-    "text": "Once upon a time, in a kingdom far away, there lived a brave knight who sought to protect the realm from all dangers.",
-
-    "voice": "Kore"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "google/gemini-3.1-flash-tts",  "input": {    "text": "Once upon a time, in a kingdom far away, there lived a brave knight who sought to protect the realm from all dangers.",    "voice": "Kore"  }}'
 ```
 
-* [ Output ](#tab-panel-578)
-* [ Raw response ](#tab-panel-579)
+* [ Output ](#tab-panel-556)
+* [ Raw response ](#tab-panel-557)
 
 ```
-
-{
-
-  "audio": "data:audio/l16;base64,...",
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
-
-}
-
-
+{  "audio": "data:audio/l16;base64,...",  "gatewayMetadata": {    "keySource": "Unified"  }}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-584)
-* [ Output ](#tab-panel-585)
+* [ Input ](#tab-panel-562)
+* [ Output ](#tab-panel-563)
 
 maxOutputTokens
 
@@ -351,7 +161,7 @@ audio
 
 Input [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-tts/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-tts/schema-input.json "Download") 
 
-Output [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-tts/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-tts/schema-output.json "Download") 
+Output [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-tts/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-tts/schema-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-tts/#page","headline":"Gemini 3.1 Flash TTS (Google) · Cloudflare AI docs · Cloudflare AI docs","url":"https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-tts/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

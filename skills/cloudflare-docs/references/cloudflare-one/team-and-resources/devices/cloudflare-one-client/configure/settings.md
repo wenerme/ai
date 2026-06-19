@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -68,8 +68,8 @@ The user will have an unlimited amount of time to activate their code.
 
 To activate the override code on a user device:
 
-* [ Version 2026.2+ ](#tab-panel-7455)
-* [ Version 2026.1 and earlier ](#tab-panel-7456)
+* [ Version 2026.2+ ](#tab-panel-7531)
+* [ Version 2026.1 and earlier ](#tab-panel-7532)
 
 1. Open the Cloudflare One Client and go to **Settings**.
 2. In **Temporarily disconnect Cloudflare One Client**, select **Enter admin code**.
@@ -402,9 +402,9 @@ Enabling this setting comes with two major consequences:
 
 To turn on local network access in the Cloudflare One Client:
 
-* [ Windows and macOS ](#tab-panel-7457)
-* [ Linux ](#tab-panel-7458)
-* [ Android and ChromeOS ](#tab-panel-7459)
+* [ Windows and macOS ](#tab-panel-7533)
+* [ Linux ](#tab-panel-7534)
+* [ Android and ChromeOS ](#tab-panel-7535)
 
 1. Open the Cloudflare One Client and go to **Settings**.
 2. In **Temporarily access local network resources**, select **Access resources**.
@@ -499,25 +499,14 @@ ipconfig /all
 Windows IP Configuration  
 ...  
 Unknown adapter CloudflareWARP:  
-  Connection-specific DNS Suffix  . :  
-  Description . . . . . . . . . . . : (SCCM) Cloudflare WARP Interface Tunnel  
-  Physical Address. . . . . . . . . :  
-  DHCP Enabled. . . . . . . . . . . : No  
-  Autoconfiguration Enabled . . . . : Yes  
-  IPv6 Address. . . . . . . . . . . : 2001:db8:110:8f79:145:f180:fc4:8106(Preferred)  
-  Link-local IPv6 Address . . . . . : fe80::83b:d647:4bed:d388%49(Preferred)  
-  IPv4 Address. . . . . . . . . . . : 172.16.0.2(Preferred)  
-  Subnet Mask . . . . . . . . . . . : 255.255.255.255  
-  Default Gateway . . . . . . . . . :  
-  DNS Servers . . . . . . . . . . . : 127.0.2.2  
-                                      127.0.2.3  
-  NetBIOS over Tcpip. . . . . . . . : Disabled  
+  Connection-specific DNS Suffix  . :  Description . . . . . . . . . . . : (SCCM) Cloudflare WARP Interface Tunnel  Physical Address. . . . . . . . . :  DHCP Enabled. . . . . . . . . . . : No  Autoconfiguration Enabled . . . . : Yes  IPv6 Address. . . . . . . . . . . : 2001:db8:110:8f79:145:f180:fc4:8106(Preferred)  Link-local IPv6 Address . . . . . : fe80::83b:d647:4bed:d388%49(Preferred)  IPv4 Address. . . . . . . . . . . : 172.16.0.2(Preferred)  Subnet Mask . . . . . . . . . . . : 255.255.255.255  Default Gateway . . . . . . . . . :  DNS Servers . . . . . . . . . . . : 127.0.2.2                                      127.0.2.3  NetBIOS over Tcpip. . . . . . . . : Disabled  
 ```
 2. In Microsoft SCCM:  
-a. [Create a boundary ↗](https://learn.microsoft.com/en-us/intune/configmgr/core/servers/deploy/configure/boundaries#create-a-boundary) with the following settings:  
-   * **Description**: `Remote Cloudflare One Clients`  
-   * **Type**: _VPN_  
-   * **Connection description**: `(SCCM) Cloudflare WARP Interface Tunnel`  
+a. [Create a boundary ↗](https://learn.microsoft.com/en-us/intune/configmgr/core/servers/deploy/configure/boundaries#create-a-boundary) with the following settings:
+
+  * **Description**: `Remote Cloudflare One Clients`
+  * **Type**: _VPN_
+  * **Connection description**: `(SCCM) Cloudflare WARP Interface Tunnel`  
 b. Assign this boundary to one or more boundary groups.
 
 When the device is remote, the client interface description changes to `(SCCM) Cloudflare WARP Interface Tunnel` and the SCCM server will determine that the device belongs to the VPN boundary group. The device can now download updates from the distribution point assigned to this boundary group. When a network change occurs and the Cloudflare One Client detects a managed network, it will revert the interface description to `Cloudflare WARP Interface Tunnel` and the boundary condition will no longer be satisfied. The device will match your local IP range and be considered as on-prem.
@@ -556,63 +545,21 @@ Otherwise, the recommendation is to always disable **NetBIOS over TCPIP**. You c
 To check if **NetBIOS over TCPIP** is enabled on the client tunnel interface, run the following command:
 
 ```
-
 warp-cli settings | findstr "NetBT"
-
-
 ```
 
 ```
-
 (network policy) NetBT: true
-
-
 ```
 
 You can also verify network interface details for the `CloudflareWARP` adapter:
 
 ```
-
 ipconfig /all
-
-
 ```
 
 ```
-
-Windows IP Configuration
-
-...
-
-Unknown adapter CloudflareWARP:
-
-    Connection-specific DNS Suffix  . :
-
-    Description . . . . . . . . . . . : Cloudflare WARP Interface Tunnel
-
-    Physical Address. . . . . . . . . :
-
-    DHCP Enabled. . . . . . . . . . . : No
-
-    Autoconfiguration Enabled . . . . : Yes
-
-    IPv6 Address. . . . . . . . . . . : 2001:db8:110:8f79:145:f180:fc4:8106(Preferred)
-
-    Link-local IPv6 Address . . . . . : fe80::83b:d647:4bed:d388%49(Preferred)
-
-    IPv4 Address. . . . . . . . . . . : 172.16.0.2(Preferred)
-
-    Subnet Mask . . . . . . . . . . . : 255.255.255.255
-
-    Default Gateway . . . . . . . . . :
-
-    DNS Servers . . . . . . . . . . . : 127.0.2.2
-
-                                        127.0.2.3
-
-    NetBIOS over Tcpip. . . . . . . . : Enabled
-
-
+Windows IP Configuration...Unknown adapter CloudflareWARP:    Connection-specific DNS Suffix  . :    Description . . . . . . . . . . . : Cloudflare WARP Interface Tunnel    Physical Address. . . . . . . . . :    DHCP Enabled. . . . . . . . . . . : No    Autoconfiguration Enabled . . . . : Yes    IPv6 Address. . . . . . . . . . . : 2001:db8:110:8f79:145:f180:fc4:8106(Preferred)    Link-local IPv6 Address . . . . . : fe80::83b:d647:4bed:d388%49(Preferred)    IPv4 Address. . . . . . . . . . . : 172.16.0.2(Preferred)    Subnet Mask . . . . . . . . . . . : 255.255.255.255    Default Gateway . . . . . . . . . :    DNS Servers . . . . . . . . . . . : 127.0.2.2                                        127.0.2.3    NetBIOS over Tcpip. . . . . . . . : Enabled
 ```
 
 ### VNET availability Beta

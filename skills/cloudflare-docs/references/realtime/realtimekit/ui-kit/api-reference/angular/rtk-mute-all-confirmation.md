@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,27 +26,13 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 ### Basic Usage
 
 ```
-
-<!-- component.html -->
-
-<rtk-mute-all-confirmation></rtk-mute-all-confirmation>
-
-
+<!-- component.html --><rtk-mute-all-confirmation></rtk-mute-all-confirmation>
 ```
 
 ### With Properties
 
 ```
-
-<!-- component.html -->
-
-<rtk-mute-all-confirmation
-
- [meeting]="meeting">
-
-</rtk-mute-all-confirmation>
-
-
+<!-- component.html --><rtk-mute-all-confirmation [meeting]="meeting"></rtk-mute-all-confirmation>
 ```
 
 ```json

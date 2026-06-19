@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,8 +37,7 @@ openssl pkey -in private-key.pem -pubout -out public-key.pem
 3. Convert the public key to JSON Web Key (JWK) using a tool of your choice. This example uses [jwker ↗](https://github.com/jphastings/jwker) command line application.  
 Terminal window  
 ```  
-go install github.com/jphastings/jwker/cmd/jwker@latest  
-jwker public-key.pem public-key.jwk  
+go install github.com/jphastings/jwker/cmd/jwker@latestjwker public-key.pem public-key.jwk  
 ```
 
 By following these steps, you have generated a private key and a public key, then converted the public key to a JWK.
@@ -56,34 +55,23 @@ You need to host a key directory which creates a way for your bot to authenticat
 1. Host a key directory at `/.well-known/http-message-signatures-directory` (note that this is a requirement). This key directory should serve a JSON Web Key Set (JWKS) including the public key derived from your signing key.
 2. Serve the web page over HTTPS (not HTTP).
 3. [Calculate the base64 URL-encoded JWK thumbprint ↗](https://www.rfc-editor.org/rfc/rfc8037.html#appendix-A.3) associated with your Ed25519 public key.
-4. Sign your HTTP response using the HTTP message signature specification by attaching one signature per key in your key directory. This ensures no one else can mirror your directory and attempt to register on your behalf. Your response must include the following headers:  
-   * `Content-Type`: This header must have the value `application/http-message-signatures-directory+json`.  
-   * `Signature`: Construct a [Signature header ↗](https://www.rfc-editor.org/rfc/rfc9421#name-the-signature-http-field) over your chosen components.  
-   * `Signature-Input`: Construct a [Signature-Input header ↗](https://www.rfc-editor.org/rfc/rfc9421#name-the-signature-input-http-fi) over your chosen components. The header must meet the following requirements.  
-   | Required component / parameter | Requirement                                                                                                                                                                                       |  
-   | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |  
-   | tag                            | This should be equal to http-message-signatures-directory.                                                                                                                                        |  
-   | keyid                          | JWK thumbprint of the corresponding key in your directory.                                                                                                                                        |  
-   | created                        | This should be equal to a Unix timestamp associated with when the message was sent by your application.                                                                                           |  
-   | expires                        | This should be equal to a Unix timestamp associated with when Cloudflare should no longer attempt to verify the message.                                                                          |  
-   | @authority                     | This should be equal to the value of the Host header sent by the request. You should set the [req component parameter ↗](https://datatracker.ietf.org/doc/html/rfc9421#content-request-response). |  
+4. Sign your HTTP response using the HTTP message signature specification by attaching one signature per key in your key directory. This ensures no one else can mirror your directory and attempt to register on your behalf. Your response must include the following headers:
+
+  * `Content-Type`: This header must have the value `application/http-message-signatures-directory+json`.
+  * `Signature`: Construct a [Signature header ↗](https://www.rfc-editor.org/rfc/rfc9421#name-the-signature-http-field) over your chosen components.
+  * `Signature-Input`: Construct a [Signature-Input header ↗](https://www.rfc-editor.org/rfc/rfc9421#name-the-signature-input-http-fi) over your chosen components. The header must meet the following requirements.  
+
+| Required component / parameter | Requirement                                                                                                                                                                                       |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| tag                            | This should be equal to http-message-signatures-directory.                                                                                                                                        |
+| keyid                          | JWK thumbprint of the corresponding key in your directory.                                                                                                                                        |
+| created                        | This should be equal to a Unix timestamp associated with when the message was sent by your application.                                                                                           |
+| expires                        | This should be equal to a Unix timestamp associated with when Cloudflare should no longer attempt to verify the message.                                                                          |
+| @authority                     | This should be equal to the value of the Host header sent by the request. You should set the [req component parameter ↗](https://datatracker.ietf.org/doc/html/rfc9421#content-request-response). |  
 The following example shows the annotated request and response with required headers against `https://example.com`. The value of `Signature` here is purely for illustrative purposes, and not the actual generated signature.  
 ```  
-GET /.well-known/http-message-signatures-directory HTTP/1.1  
-Host: example.com  
-Accept: application/http-message-signatures-directory+json  
-HTTP/1.1 200 OK  
-Content-Type: application/http-message-signatures-directory+json  
-Signature: sig1=:TD5arhV1ved6xtx63cUIFCMONT248cpDeVUAljLgkdozbjMNpJGr/WAx4PzHj+WeG0xMHQF1BOdFLDsfjdjvBA==:  
-Signature-Input: sig1=("@authority";req);alg="ed25519";keyid="poqkLGiymh_W0uP6PZFw-dvez3QJT5SolqXBCW38r0U";nonce="ZO3/XMEZjrvSnLtAP9M7jK0WGQf3J+pbmQRUpKDhF9/jsNCWqUh2sq+TH4WTX3/GpNoSZUa8eNWMKqxWp2/c2g==";tag="http-message-signatures-directory";created=1750105829;expires=1750105839  
-Cache-Control: max-age=86400  
-{  
-  "keys": [{  
-    "kty": "OKP",  
-    "crv": "Ed25519",  
-    "x": "JrQLj5P_89iXES9-vFgrIy29clF9CC_oPPsw3c5D0bs", // Base64 URL-encoded public key, with no padding  
-  }]  
-}  
+GET /.well-known/http-message-signatures-directory HTTP/1.1Host: example.comAccept: application/http-message-signatures-directory+json  
+HTTP/1.1 200 OKContent-Type: application/http-message-signatures-directory+jsonSignature: sig1=:TD5arhV1ved6xtx63cUIFCMONT248cpDeVUAljLgkdozbjMNpJGr/WAx4PzHj+WeG0xMHQF1BOdFLDsfjdjvBA==:Signature-Input: sig1=("@authority";req);alg="ed25519";keyid="poqkLGiymh_W0uP6PZFw-dvez3QJT5SolqXBCW38r0U";nonce="ZO3/XMEZjrvSnLtAP9M7jK0WGQf3J+pbmQRUpKDhF9/jsNCWqUh2sq+TH4WTX3/GpNoSZUa8eNWMKqxWp2/c2g==";tag="http-message-signatures-directory";created=1750105829;expires=1750105839Cache-Control: max-age=86400{  "keys": [{    "kty": "OKP",    "crv": "Ed25519",    "x": "JrQLj5P_89iXES9-vFgrIy29clF9CC_oPPsw3c5D0bs", // Base64 URL-encoded public key, with no padding  }]}  
 ```
 
 Note
@@ -178,26 +166,7 @@ Attach these three headers to your bot's requests.
 An example request may look like this:
 
 ```
-
-Signature-Agent: "https://signature-agent.test"
-
-Signature-Input: sig2=("@authority" "signature-agent")
-
- ;created=1735689600
-
- ;keyid="poqkLGiymh_W0uP6PZFw-dvez3QJT5SolqXBCW38r0U"
-
- ;alg="ed25519"
-
- ;expires=1735693200
-
- ;nonce="e8N7S2MFd/qrd6T2R3tdfAuuANngKI7LFtKYI/vowzk4lAZYadIX6wW25MwG7DCT9RUKAJ0qVkU0mEeLElW1qg=="
-
- ;tag="web-bot-auth"
-
-Signature: sig2=:jdq0SqOwHdyHr9+r5jw3iYZH6aNGKijYp/EstF4RQTQdi5N5YYKrD+mCT1HA1nZDsi6nJKuHxUi/5Syp3rLWBA==:
-
-
+Signature-Agent: "https://signature-agent.test"Signature-Input: sig2=("@authority" "signature-agent") ;created=1735689600 ;keyid="poqkLGiymh_W0uP6PZFw-dvez3QJT5SolqXBCW38r0U" ;alg="ed25519" ;expires=1735693200 ;nonce="e8N7S2MFd/qrd6T2R3tdfAuuANngKI7LFtKYI/vowzk4lAZYadIX6wW25MwG7DCT9RUKAJ0qVkU0mEeLElW1qg==" ;tag="web-bot-auth"Signature: sig2=:jdq0SqOwHdyHr9+r5jw3iYZH6aNGKijYp/EstF4RQTQdi5N5YYKrD+mCT1HA1nZDsi6nJKuHxUi/5Syp3rLWBA==:
 ```
 
 Note

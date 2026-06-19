@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/byoip/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,8 +23,10 @@ It is important to note that traffic routed to the CDN pipeline is protected at 
 * Make sure your contract includes CDN according to your needs. If you find any issues related to subscription when following the steps below, reach out to your account team.
 * Plan for what IPs will be used:  
 Cloudflare **strongly** recommends implementing service bindings through an **aggregated** CIDR block, as it is more efficient than adding discrete bindings for non-contiguous CIDR blocks.  
-Example  
-**Magic Transit protected prefix:** `203.0.113.0/24`  
+Example
+
+**Magic Transit protected prefix:** `203.0.113.0/24`
+
 **IPs to upgrade to CDN:**  
 `203.0.113.16`  
 `203.0.113.17`  
@@ -56,23 +58,14 @@ At this point, continuing the [example](#before-you-begin), you should have a ma
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `IP Prefixes: Write`
 * `IP Prefixes: Read`
 
 List Service Bindings
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bindings" \
-
-  --request GET \
-
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bindings" \  --request GET \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
 ```
 
 ## 2\. Create service bindings
@@ -89,65 +82,19 @@ Replace the `{prefix_id}` in the URI with your prefix ID from previous steps. Wi
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `IP Prefixes: Write`
 
 Create Service Binding
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bindings" \
-
-  --request POST \
-
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
-
-  --json '{
-
-    "cidr": "203.0.113.100/32",
-
-    "service_id": "<SERVICE_ID>"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bindings" \  --request POST \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \  --json '{    "cidr": "203.0.113.100/32",    "service_id": "<SERVICE_ID>"  }'
 ```
 
 In the response body, the initial provisioning state should be `provisioning`.
 
 ```
-
-{
-
-  "errors": [],
-
-  "messages": [],
-
-  "success": true,
-
-  "result": {
-
-    "cidr": "203.0.113.100/32",
-
-    "id": "<SERVICE_BINDING_ID>",
-
-    "provisioning": {
-
-      "state": "provisioning"
-
-      },
-
-    "service_id": "<SERVICE_ID>",
-
-    "service_name": "<SERVICE_NAME>"
-
-  }
-
-}
-
-
+{  "errors": [],  "messages": [],  "success": true,  "result": {    "cidr": "203.0.113.100/32",    "id": "<SERVICE_BINDING_ID>",    "provisioning": {      "state": "provisioning"      },    "service_id": "<SERVICE_ID>",    "service_name": "<SERVICE_NAME>"  }}
 ```
 
 You can periodically check the service binding status using the [List Service Bindings](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/service%5Fbindings/methods/list/) endpoint.
@@ -165,8 +112,8 @@ Tip
 
 If you need to map only specific subdomains (and not all proxied DNS records) to specific IP addresses, you can use a zone on [Subdomain setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/).
 
-* [ Dashboard ](#tab-panel-6953)
-* [ API ](#tab-panel-6954)
+* [ Dashboard ](#tab-panel-7029)
+* [ API ](#tab-panel-7030)
 
 1. In the Cloudflare dashboard, go to the **Address Maps** page.  
 [ Go to **Address maps** ](https://dash.cloudflare.com/?to=/:account/ip-addresses/proxy-ips)
@@ -182,8 +129,8 @@ Make sure you have the correct Key/Token and permissions.
 
 ## 4\. Create DNS records
 
-* [ Dashboard ](#tab-panel-6955)
-* [ API ](#tab-panel-6956)
+* [ Dashboard ](#tab-panel-7031)
+* [ API ](#tab-panel-7032)
 
 To create a DNS record in the dashboard:
 
@@ -212,9 +159,10 @@ At this point, if an address map for a zone `example.com` specifies that Cloudfl
 
 1. Cloudflare responds to DNS requests with `203.0.113.100`.
 2. Cloudflare proxies requests through the CDN and then routes the requests via [GRE](https://developers.cloudflare.com/magic-transit/reference/gre-ipsec-tunnels/) or [CNI](https://developers.cloudflare.com/magic-transit/network-interconnect/) to the origin server `203.0.113.150` (which is within the Magic Transit protected prefix).
-3. Depending on whether Magic Transit is implemented with [direct server return model or with Magic Transit egress](https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/#bidirectional-vs-unidirectional-health-checks), the origin server responds back to Cloudflare either:  
-   * Directly over the Internet in a Magic Transit direct server return model  
-   * Back through the Magic GRE tunnel(s) in a Magic Transit egress model
+3. Depending on whether Magic Transit is implemented with [direct server return model or with Magic Transit egress](https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/#bidirectional-vs-unidirectional-health-checks), the origin server responds back to Cloudflare either:
+
+  * Directly over the Internet in a Magic Transit direct server return model
+  * Back through the Magic GRE tunnel(s) in a Magic Transit egress model
 4. As the HTTP response egresses the Cloudflare network back to the client side, the source IP address of the response becomes `203.0.113.100` (the IP address that the HTTP request originally landed on).
 
 Note

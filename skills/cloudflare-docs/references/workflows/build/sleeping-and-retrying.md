@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workflows/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,10 +29,7 @@ Use `step.sleep` to have a Workflow sleep for a relative period of time:
 TypeScript
 
 ```
-
 await step.sleep("sleep for a bit", "1 hour");
-
-
 ```
 
 The second argument to `step.sleep` accepts both `number` (milliseconds) or a human-readable format, such as "1 minute" or "26 hours". The accepted units for `step.sleep` when used this way are as follows:
@@ -40,22 +37,7 @@ The second argument to `step.sleep` accepts both `number` (milliseconds) or a hu
 TypeScript
 
 ```
-
-| "second"
-
-| "minute"
-
-| "hour"
-
-| "day"
-
-| "week"
-
-| "month"
-
-| "year"
-
-
+| "second"| "minute"| "hour"| "day"| "week"| "month"| "year"
 ```
 
 ### Sleep until a fixed date
@@ -65,14 +47,7 @@ Use `step.sleepUntil` to have a Workflow sleep to a specific `Date`: this can be
 TypeScript
 
 ```
-
-// sleepUntil accepts a Date object as its second argument
-
-const workflowsLaunchDate = Date.parse("24 Oct 2024 13:00:00 UTC");
-
-await step.sleepUntil("sleep until X times out", workflowsLaunchDate);
-
-
+// sleepUntil accepts a Date object as its second argumentconst workflowsLaunchDate = Date.parse("24 Oct 2024 13:00:00 UTC");await step.sleepUntil("sleep until X times out", workflowsLaunchDate);
 ```
 
 You can also provide a UNIX timestamp (milliseconds since the UNIX epoch) directly to `sleepUntil`.
@@ -86,24 +61,7 @@ If you do not provide your own retry configuration, Workflows applies the follow
 TypeScript
 
 ```
-
-const defaultConfig: WorkflowStepConfig = {
-
-  retries: {
-
-    limit: 5,
-
-    delay: 10000,
-
-    backoff: "exponential",
-
-  },
-
-  timeout: "10 minutes",
-
-};
-
-
+const defaultConfig: WorkflowStepConfig = {  retries: {    limit: 5,    delay: 10000,    backoff: "exponential",  },  timeout: "10 minutes",};
 ```
 
 When providing your own `StepConfig`, you can configure:
@@ -118,36 +76,7 @@ For example, to limit a step to 10 retries and have it apply an exponential dela
 TypeScript
 
 ```
-
-let someState = await step.do(
-
-  "call an API",
-
-  {
-
-    retries: {
-
-      limit: 10, // The total number of attempts
-
-      delay: "10 seconds", // Delay between each retry
-
-      backoff: "exponential", // Any of "constant" | "linear" | "exponential";
-
-    },
-
-    timeout: "30 minutes",
-
-  },
-
-  async () => {
-
-    /* Step code goes here */
-
-  },
-
-);
-
-
+let someState = await step.do(  "call an API",  {    retries: {      limit: 10, // The total number of attempts      delay: "10 seconds", // Delay between each retry      backoff: "exponential", // Any of "constant" | "linear" | "exponential";    },    timeout: "30 minutes",  },  async () => {    /* Step code goes here */  },);
 ```
 
 ## Force a Workflow instance to fail
@@ -159,47 +88,8 @@ This can be useful when you detect a terminal (permanent) error from an upstream
 TypeScript
 
 ```
-
-// Import the NonRetryableError definition
-
-import {
-
-  WorkflowEntrypoint,
-
-  WorkflowStep,
-
-  WorkflowEvent,
-
-} from "cloudflare:workers";
-
-import { NonRetryableError } from "cloudflare:workflows";
-
-
-// In your step code:
-
-export class MyWorkflow extends WorkflowEntrypoint<Env, Params> {
-
-  async run(event: WorkflowEvent<Params>, step: WorkflowStep) {
-
-    await step.do("some step", async () => {
-
-      if (!event.payload.data) {
-
-        throw new NonRetryableError(
-
-          "event.payload.data did not contain the expected payload",
-
-        );
-
-      }
-
-    });
-
-  }
-
-}
-
-
+// Import the NonRetryableError definitionimport {  WorkflowEntrypoint,  WorkflowStep,  WorkflowEvent,} from "cloudflare:workers";import { NonRetryableError } from "cloudflare:workflows";
+// In your step code:export class MyWorkflow extends WorkflowEntrypoint<Env, Params> {  async run(event: WorkflowEvent<Params>, step: WorkflowStep) {    await step.do("some step", async () => {      if (!event.payload.data) {        throw new NonRetryableError(          "event.payload.data did not contain the expected payload",        );      }    });  }}
 ```
 
 The Workflow instance itself will fail immediately, no further steps will be invoked, and the Workflow will not be retried.
@@ -212,137 +102,23 @@ You can attach a rollback handler to `step.do()` to implement saga-style compens
 
 A failed step with rollback options can also participate in rollback alongside any completed steps which have a rollback handler registered. For example, if a steps throws a `NonRetryableError` after registering rollback, its rollback handler runs with `output` set to `undefined`.
 
-* [  JavaScript ](#tab-panel-13035)
-* [  TypeScript ](#tab-panel-13036)
+* [  JavaScript ](#tab-panel-13052)
+* [  TypeScript ](#tab-panel-13053)
 
 JavaScript
 
 ```
-
-import { WorkflowEntrypoint } from "cloudflare:workers";
-
-import { NonRetryableError } from "cloudflare:workflows";
-
-
-export class OrderWorkflow extends WorkflowEntrypoint {
-
-  async run(_event, step) {
-
-    await step.do(
-
-      "reserve inventory",
-
-      async () => {
-
-        const reservation = await reserveInventory();
-
-        return { reservationId: reservation.id };
-
-      },
-
-      {
-
-        rollback: async ({ output }) => {
-
-          const { reservationId } = output;
-
-          await releaseInventory(reservationId);
-
-        },
-
-        rollbackConfig: {
-
-          retries: { limit: 3, delay: "10 seconds", backoff: "linear" },
-
-          timeout: "2 minutes",
-
-        },
-
-      },
-
-    );
-
-
-    await step.do("charge card", async () => {
-
-      throw new NonRetryableError("payment processor rejected the charge");
-
-    });
-
-  }
-
-}
-
-
+import { WorkflowEntrypoint } from "cloudflare:workers";import { NonRetryableError } from "cloudflare:workflows";
+export class OrderWorkflow extends WorkflowEntrypoint {  async run(_event, step) {    await step.do(      "reserve inventory",      async () => {        const reservation = await reserveInventory();        return { reservationId: reservation.id };      },      {        rollback: async ({ output }) => {          const { reservationId } = output;          await releaseInventory(reservationId);        },        rollbackConfig: {          retries: { limit: 3, delay: "10 seconds", backoff: "linear" },          timeout: "2 minutes",        },      },    );
+    await step.do("charge card", async () => {      throw new NonRetryableError("payment processor rejected the charge");    });  }}
 ```
 
 TypeScript
 
 ```
-
-import {
-
-  WorkflowEntrypoint,
-
-  type WorkflowEvent,
-
-  type WorkflowStep,
-
-} from "cloudflare:workers";
-
-import { NonRetryableError } from "cloudflare:workflows";
-
-
-export class OrderWorkflow extends WorkflowEntrypoint<Env> {
-
-  async run(_event: WorkflowEvent<unknown>, step: WorkflowStep) {
-
-    await step.do(
-
-      "reserve inventory",
-
-      async () => {
-
-        const reservation = await reserveInventory();
-
-        return { reservationId: reservation.id };
-
-      },
-
-      {
-
-        rollback: async ({ output }) => {
-
-          const { reservationId } = output as { reservationId: string };
-
-          await releaseInventory(reservationId);
-
-        },
-
-        rollbackConfig: {
-
-          retries: { limit: 3, delay: "10 seconds", backoff: "linear" },
-
-          timeout: "2 minutes",
-
-        },
-
-      },
-
-    );
-
-
-    await step.do("charge card", async () => {
-
-      throw new NonRetryableError("payment processor rejected the charge");
-
-    });
-
-  }
-
-}
-
-
+import {  WorkflowEntrypoint,  type WorkflowEvent,  type WorkflowStep,} from "cloudflare:workers";import { NonRetryableError } from "cloudflare:workflows";
+export class OrderWorkflow extends WorkflowEntrypoint<Env> {  async run(_event: WorkflowEvent<unknown>, step: WorkflowStep) {    await step.do(      "reserve inventory",      async () => {        const reservation = await reserveInventory();        return { reservationId: reservation.id };      },      {        rollback: async ({ output }) => {          const { reservationId } = output as { reservationId: string };          await releaseInventory(reservationId);        },        rollbackConfig: {          retries: { limit: 3, delay: "10 seconds", backoff: "linear" },          timeout: "2 minutes",        },      },    );
+    await step.do("charge card", async () => {      throw new NonRetryableError("payment processor rejected the charge");    });  }}
 ```
 
 Rollback handlers receive:
@@ -363,51 +139,10 @@ To allow the Workflow to continue its execution, surround the intended steps tha
 TypeScript
 
 ```
-
-...
-
-await step.do('task', async () => {
-
-  // work to be done
-
-});
-
-
-try {
-
-    await step.do('non-retryable-task', async () => {
-
-    // work not to be retried
-
-        throw new NonRetryableError('oh no');
-
-    });
-
-} catch (e) {
-
-    console.log(`Step failed: ${e.message}`);
-
-    await step.do('clean-up-task', async () => {
-
-      // Clean up code here
-
-    });
-
-}
-
-
+...await step.do('task', async () => {  // work to be done});
+try {    await step.do('non-retryable-task', async () => {    // work not to be retried        throw new NonRetryableError('oh no');    });} catch (e) {    console.log(`Step failed: ${e.message}`);    await step.do('clean-up-task', async () => {      // Clean up code here    });}
 // the Workflow will not fail and will continue its execution
-
-
-await step.do('next-task', async() => {
-
-  // more work to be done
-
-});
-
-...
-
-
+await step.do('next-task', async() => {  // more work to be done});...
 ```
 
 ```json

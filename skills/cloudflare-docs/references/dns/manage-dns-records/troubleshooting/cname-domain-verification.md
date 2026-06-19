@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -15,10 +15,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 When configuring services from external providers - such as email services, for example - it is possible that they require you to verify your domain by placing a CNAME record at your zone, similar to the following:
 
 ```
-
 <value>._domainkey.example.com CNAME <hostname>.<service provider domain>
-
-
 ```
 
 Consider the sections below if this is not working correctly for you.
@@ -39,8 +36,8 @@ Make sure that:
 * In your zone DNS settings: [**CNAME flattening for all CNAME records**](https://developers.cloudflare.com/dns/cname-flattening/) is turned off.
 * On the DNS records table: you have filled in the CNAME record fields correctly, proxy status is set to **DNS only**, and **Flatten** is turned off.
 * You have the correct NS configuration, and either:  
-   * Make sure that the CNAME record is set as expected with the DNS provider that the NS record points to.  
-   * Review your configuration for other DNS records that may be affected by the NS record. Once you are aware of any consequences or have made any necessary adjustments, remove the NS record so that the CNAME is resolved to the target you configured on Cloudflare.
+  * Make sure that the CNAME record is set as expected with the DNS provider that the NS record points to.
+  * Review your configuration for other DNS records that may be affected by the NS record. Once you are aware of any consequences or have made any necessary adjustments, remove the NS record so that the CNAME is resolved to the target you configured on Cloudflare.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/cname-domain-verification/#page","headline":"Cannot verify a domain with CNAME · Cloudflare DNS docs","description":"Troubleshoot domain verification failures caused by proxied CNAME records, CNAME flattening, or NS record conflicts.","url":"https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/cname-domain-verification/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

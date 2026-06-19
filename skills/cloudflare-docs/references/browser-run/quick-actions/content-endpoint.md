@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -24,10 +24,7 @@ For more information, refer to [Quick Actions: Before you begin](https://develop
 ## Endpoint
 
 ```
-
 https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/content
-
-
 ```
 
 ## Required fields
@@ -46,81 +43,32 @@ You must provide either `url` or `html`:
 
 ### Fetch rendered HTML from a URL
 
-* [ curl ](#tab-panel-6898)
-* [ TypeScript SDK ](#tab-panel-6899)
-* [ Workers binding ](#tab-panel-6900)
+* [ curl ](#tab-panel-6974)
+* [ TypeScript SDK ](#tab-panel-6975)
+* [ Workers binding ](#tab-panel-6976)
 
 Go to `https://developers.cloudflare.com/` and return the rendered HTML.
 
 Terminal window
 
 ```
-
-curl -X 'POST' 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/content' \
-
-  -H 'Content-Type: application/json' \
-
-  -H 'Authorization: Bearer <apiToken>' \
-
-  -d '{"url": "https://developers.cloudflare.com/"}'
-
-
+curl -X 'POST' 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/content' \  -H 'Content-Type: application/json' \  -H 'Authorization: Bearer <apiToken>' \  -d '{"url": "https://developers.cloudflare.com/"}'
 ```
 
 TypeScript
 
 ```
-
 import Cloudflare from "cloudflare";
-
-
-const client = new Cloudflare({
-
-  apiToken: process.env["CLOUDFLARE_API_TOKEN"],
-
-});
-
-
-const content = await client.browserRendering.content.create({
-
-  account_id: process.env["CLOUDFLARE_ACCOUNT_ID"],
-
-  url: "https://developers.cloudflare.com/",
-
-});
-
-
+const client = new Cloudflare({  apiToken: process.env["CLOUDFLARE_API_TOKEN"],});
+const content = await client.browserRendering.content.create({  account_id: process.env["CLOUDFLARE_ACCOUNT_ID"],  url: "https://developers.cloudflare.com/",});
 console.log(content);
-
-
 ```
 
 TypeScript
 
 ```
-
-interface Env {
-
-  BROWSER: BrowserRun;
-
-}
-
-
-export default {
-
-  async fetch(request, env): Promise<Response> {
-
-    return await env.BROWSER.quickAction("content", {
-
-      url: "https://developers.cloudflare.com/",
-
-    });
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+interface Env {  BROWSER: BrowserRun;}
+export default {  async fetch(request, env): Promise<Response> {    return await env.BROWSER.quickAction("content", {      url: "https://developers.cloudflare.com/",    });  },} satisfies ExportedHandler<Env>;
 ```
 
 ## Advanced usage
@@ -136,24 +84,7 @@ Navigate to `https://cloudflare.com/` but block images and stylesheets from load
 Terminal window
 
 ```
-
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/content' \
-
-  -H 'Authorization: Bearer <apiToken>' \
-
-  -H 'Content-Type: application/json' \
-
-  -d '{
-
-      "url": "https://cloudflare.com/",
-
-      "rejectResourceTypes": ["image"],
-
-      "rejectRequestPattern": ["/^.*\\.(css)"]
-
-    }'
-
-
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/content' \  -H 'Authorization: Bearer <apiToken>' \  -H 'Content-Type: application/json' \  -d '{      "url": "https://cloudflare.com/",      "rejectResourceTypes": ["image"],      "rejectRequestPattern": ["/^.*\\.(css)"]    }'
 ```
 
 Many more options exist, like setting HTTP headers using `setExtraHTTPHeaders`, setting `cookies`, and using `gotoOptions` to control page load behaviour - check the endpoint [reference](https://developers.cloudflare.com/api/resources/browser%5Frendering/subresources/content/methods/create/) for all available parameters.
@@ -165,20 +96,7 @@ For JavaScript-heavy pages or Single Page Applications (SPAs), the default page 
 The simplest solution is to use the `gotoOptions.waitUntil` parameter set to `networkidle0` or `networkidle2`:
 
 ```
-
-{
-
-  "url": "https://example.com",
-
-  "gotoOptions": {
-
-    "waitUntil": "networkidle0"
-
-  }
-
-}
-
-
+{  "url": "https://example.com",  "gotoOptions": {    "waitUntil": "networkidle0"  }}
 ```
 
 For faster responses, advanced users can use `waitForSelector` to wait for a specific element instead of waiting for all network activity to stop. This requires knowing which CSS selector indicates the content you need has loaded. For more details, refer to [Quick Actions timeouts](https://developers.cloudflare.com/browser-run/reference/timeouts/).

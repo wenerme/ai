@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,22 +25,7 @@ In `_middleware.js` files, you may export an `onRequest` handler or any of its m
 JavaScript
 
 ```
-
-export async function onRequest(context) {
-
-  try {
-
-    return await context.next();
-
-  } catch (err) {
-
-    return new Response(`${err.message}\n${err.stack}`, { status: 500 });
-
-  }
-
-}
-
-
+export async function onRequest(context) {  try {    return await context.next();  } catch (err) {    return new Response(`${err.message}\n${err.stack}`, { status: 500 });  }}
 ```
 
 ## Chain middleware
@@ -50,39 +35,10 @@ You can export an array of Pages Functions as your middleware handler. This allo
 JavaScript
 
 ```
-
-async function errorHandling(context) {
-
-  try {
-
-    return await context.next();
-
-  } catch (err) {
-
-    return new Response(`${err.message}\n${err.stack}`, { status: 500 });
-
-  }
-
-}
-
-
-function authentication(context) {
-
-  if (context.request.headers.get("x-email") != "admin@example.com") {
-
-    return new Response("Unauthorized", { status: 403 });
-
-  }
-
-
-  return context.next();
-
-}
-
-
+async function errorHandling(context) {  try {    return await context.next();  } catch (err) {    return new Response(`${err.message}\n${err.stack}`, { status: 500 });  }}
+function authentication(context) {  if (context.request.headers.get("x-email") != "admin@example.com") {    return new Response("Unauthorized", { status: 403 });  }
+  return context.next();}
 export const onRequest = [errorHandling, authentication];
-
-
 ```
 
 In the above example, the `errorHandling` function will run first. It will capture any errors in the `authentication` function and any errors in any other subsequent Pages Functions.

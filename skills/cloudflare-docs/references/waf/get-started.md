@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,8 +32,8 @@ If you are on a Free plan, you may skip to [5\. Review traffic in security dashb
 
 The [Cloudflare Managed Ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/) protects against Common Vulnerabilities and Exposures (CVEs) and known attack vectors. This ruleset is designed to identify common attacks using signatures, while generating low false positives. Rule changes are published on a weekly basis in the [WAF changelog](https://developers.cloudflare.com/waf/change-log/). Cloudflare may also add rules at any time during emergency releases for high profile zero-day protection.
 
-* [  New dashboard ](#tab-panel-11200)
-* [ Old dashboard ](#tab-panel-11201)
+* [  New dashboard ](#tab-panel-11217)
+* [ Old dashboard ](#tab-panel-11218)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -68,12 +68,14 @@ WAF attack score is only available to Business customers (limited access to a si
 If you are an Enterprise customer, do the following:
 
 1. Reach out to your account team to get access to WAF attack score.
-2. [Create a custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) using the Attack Score field:  
-   * **When incoming requests match**:  
-   | Field            | Operator  | Value |  
-   | ---------------- | --------- | ----- |  
-   | WAF Attack Score | less than | 20    |  
-   * **Choose action**: Block
+2. [Create a custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) using the Attack Score field:
+
+  * **When incoming requests match**:
+
+| Field            | Operator  | Value |
+| ---------------- | --------- | ----- |
+| WAF Attack Score | less than | 20    |
+  * **Choose action**: Block
 
 If you are on a Business plan, create a custom rule as mentioned above but use the [WAF Attack Score Class](https://developers.cloudflare.com/waf/detections/attack-score/#available-scores) field instead. For example, you could use the following rule expression: `WAF Attack Score Class equals Attack`.
 
@@ -96,10 +98,11 @@ These built-in settings auto-update with new bot signatures and do not count tow
 
 Optionally, if you need more granular control — for example, a different score threshold or rules that combine bot score with other fields — [create a custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) using the Bot Score and Verified Bot fields:
 
-* **When incoming requests match**:  
-| Field        | Operator  | Value | Logic |  
-| ------------ | --------- | ----- | ----- |  
-| Bot Score    | less than | 20    | And   |  
+* **When incoming requests match**:
+
+| Field        | Operator  | Value | Logic |
+| ------------ | --------- | ----- | ----- |
+| Bot Score    | less than | 20    | And   |
 | Verified Bot | equals    | Off   |       |
 * **Choose action**: Managed Challenge
 
@@ -119,8 +122,8 @@ Warning
 
 The Cloudflare OWASP Core Ruleset is prone to false positives and offers only marginal benefits when added on top of Cloudflare Managed Ruleset and WAF attack score. If you decide to deploy this managed ruleset, you will need to monitor and adjust its settings based on your traffic to prevent false positives.
 
-* [  New dashboard ](#tab-panel-11202)
-* [ Old dashboard ](#tab-panel-11203)
+* [  New dashboard ](#tab-panel-11219)
+* [ Old dashboard ](#tab-panel-11220)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

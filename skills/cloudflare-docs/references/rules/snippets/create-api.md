@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,10 +29,7 @@ A token with this permission is only valid for the Snippets endpoints described 
 To obtain the complete endpoint, append the Snippets endpoints listed below to the Cloudflare API base URL:
 
 ```
-
 https://api.cloudflare.com/client/v4
-
-
 ```
 
 The `{zone_id}` argument is the [zone ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) (a hexadecimal string). You can find this value in the Cloudflare dashboard.
@@ -58,24 +55,13 @@ To create or update a Snippet, use the following `PUT` request. The snippet is n
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Snippets Write`
 
 Update a zone snippet
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/snippets/$SNIPPET_NAME" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --form "files=@example.js" \
-
-  --form "metadata={\"main_module\": \"example.js\"}"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/snippets/$SNIPPET_NAME" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --form "files=@example.js" \  --form "metadata={\"main_module\": \"example.js\"}"
 ```
 
 The name of a snippet can only contain the characters `a-z`, `0-9`, and `_` (underscore). The name must be unique in the context of the zone. You cannot change the snippet name after creating the snippet.
@@ -90,28 +76,7 @@ To make this example work, save your JavaScript code in a file named `example.js
 Example response
 
 ```
-
-{
-
-  "errors": [],
-
-  "messages": [],
-
-  "success": true,
-
-  "result": {
-
-    "created_on": "2023-07-24-00:00:00",
-
-    "modified_on": "2023-07-24-00:00:00",
-
-    "snippet_name": "snippet_name_01"
-
-  }
-
-}
-
-
+{  "errors": [],  "messages": [],  "success": true,  "result": {    "created_on": "2023-07-24-00:00:00",    "modified_on": "2023-07-24-00:00:00",    "snippet_name": "snippet_name_01"  }}
 ```
 
 To deploy a new snippet you must [create a snippet rule](#createupdatedelete-snippet-rules). The expression of the snippet rule defines when the snippet code will run.
@@ -126,40 +91,13 @@ Once you have created a code snippet, you can link it to rules. This is done via
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Snippets Write`
 
 Update zone snippet rules
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/snippets/snippet_rules" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "rules": [
-
-        {
-
-            "description": "Trigger snippet on specific cookie",
-
-            "enabled": true,
-
-            "expression": "http.cookie eq \"a=b\"",
-
-            "snippet_name": "snippet_name_01"
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/snippets/snippet_rules" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "description": "Trigger snippet on specific cookie",            "enabled": true,            "expression": "http.cookie eq \"a=b\"",            "snippet_name": "snippet_name_01"        }    ]  }'
 ```
 
 ```json

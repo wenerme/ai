@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,71 +27,27 @@ DEtection TRansformer (DETR) model trained end-to-end on COCO 2017 object detect
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4770)
-* [  curl ](#tab-panel-4771)
+* [  TypeScript ](#tab-panel-4844)
+* [  curl ](#tab-panel-4845)
 
 ```
-
-export interface Env {
-
-  AI: Ai;
-
-}
-
-
-export default {
-
-  async fetch(request, env): Promise<Response> {
-
-    const res = await fetch("https://cataas.com/cat");
-
-    const blob = await res.arrayBuffer();
-
-
-    const inputs = {
-
-      image: [...new Uint8Array(blob)],
-
-    };
-
-
-    const response = await env.AI.run(
-
-      "@cf/facebook/detr-resnet-50",
-
-      inputs
-
-    );
-
-
-    return new Response(JSON.stringify({ inputs: { image: [] }, response }));
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export interface Env {  AI: Ai;}
+export default {  async fetch(request, env): Promise<Response> {    const res = await fetch("https://cataas.com/cat");    const blob = await res.arrayBuffer();
+    const inputs = {      image: [...new Uint8Array(blob)],    };
+    const response = await env.AI.run(      "@cf/facebook/detr-resnet-50",      inputs    );
+    return new Response(JSON.stringify({ inputs: { image: [] }, response }));  },} satisfies ExportedHandler<Env>;
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/facebook/detr-resnet-50  \
-
-    -X POST  \
-
-    -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
-
-    --data-binary "@pedestrian-boulevard-manhattan-crossing.jpg"
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/facebook/detr-resnet-50  \    -X POST  \    -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \    --data-binary "@pedestrian-boulevard-manhattan-crossing.jpg"
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-4772)
-* [ Output ](#tab-panel-4773)
+* [ Input ](#tab-panel-4846)
+* [ Output ](#tab-panel-4847)
 
 Option 1
 
@@ -123,7 +79,7 @@ items
 
 Input [ ](https://developers.cloudflare.com/workers-ai/models/detr-resnet-50/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/detr-resnet-50/schema-input.json "Download") 
 
-Output [ ](https://developers.cloudflare.com/workers-ai/models/detr-resnet-50/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/detr-resnet-50/schema-output.json "Download") 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/detr-resnet-50/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/detr-resnet-50/schema-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/detr-resnet-50/#page","headline":"detr-resnet-50 (Meta) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"DEtection TRansformer (DETR) model trained end-to-end on COCO 2017 object detection (118k annotated images).","url":"https://developers.cloudflare.com/workers-ai/models/detr-resnet-50/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

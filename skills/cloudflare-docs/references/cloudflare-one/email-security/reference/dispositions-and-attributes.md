@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,34 +29,28 @@ You can use disposition values when [setting up auto-moves](https://developers.c
 The following disposition values follow an order of maliciousness:
 
 * **Malicious**: Traffic associated with active threat campaigns. Malicious messages invoked multiple phishing verdict triggers and met thresholds for bad behavior.  
-   * **Recommendation**: Block.
+  * **Recommendation**: Block.
 * **Spam**: Traffic associated with non-malicious, commercial campaigns.  
-   * **Recommendation**: Route to existing Spam quarantine folder.
+  * **Recommendation**: Route to existing Spam quarantine folder.
 * **Bulk**: Traffic often associated with newsletters or marketing campaigns. Refer to [Graymail ↗](https://en.wikipedia.org/wiki/Graymail%5F%28email%29) for more details.  
-   * **Recommendation**: Monitor or tag.
+  * **Recommendation**: Monitor or tag.
 * **Suspicious**: Traffic associated with phishing campaigns (and is under further analysis by our automated systems).  
-   * **Recommendation**: Research these messages internally to evaluate legitimacy.
+  * **Recommendation**: Research these messages internally to evaluate legitimacy.
 * **Spoof**: Traffic associated with phishing campaigns that is either non-compliant with your email authentication policies ([SPF ↗](https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-spf-record/), [DKIM ↗](https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dkim-record/), [DMARC ↗](https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dmarc-record/)) or has mismatching `Envelope From` and `Header From` values.  
-   * **Recommendation**: Block after investigating (can be triggered by third-party mail services).
+  * **Recommendation**: Block after investigating (can be triggered by third-party mail services).
 
 ### Header structure
 
 When Email security adds a disposition header to an email message, that header matches the following format:
 
 ```
-
 X-CFEmailSecurity-Disposition: [Value]
-
-
 ```
 
 Note that emails with a disposition of `SPAM` will be tagged with `UCE` (unsolicited commercial emails) in their headers:
 
 ```
-
 X-CFEmailSecurity-Disposition: UCE
-
-
 ```
 
 ## Attributes
@@ -79,12 +73,7 @@ Traffic that flows through Email security can also receive one or more Attribute
 When Email security adds a disposition header to an email message, that header matches the following format:
 
 ```
-
-X-CFEmailSecurity-Attribute: [Value]
-
-X-CFEmailSecurity-Attribute: [Value2]
-
-
+X-CFEmailSecurity-Attribute: [Value]X-CFEmailSecurity-Attribute: [Value2]
 ```
 
 ```json

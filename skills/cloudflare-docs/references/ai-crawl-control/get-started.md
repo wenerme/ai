@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-crawl-control/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,8 +32,8 @@ This guide instructs you on how to:
 
 ## 2\. Block specific AI crawlers
 
-* [ All plans ](#tab-panel-6522)
-* [ Paid plans ](#tab-panel-6523)
+* [ All plans ](#tab-panel-6596)
+* [ Paid plans ](#tab-panel-6597)
 
 To block specific AI crawlers:
 
@@ -61,7 +61,7 @@ You can also create more complex rules when taking action on AI crawlers, using 
 
 ## 3\. Explore detailed metrics
 
-* [ All plans ](#tab-panel-6521)
+* [ All plans ](#tab-panel-6595)
 
 For more detailed analytics, use the **Metrics** tab.
 

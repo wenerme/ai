@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,37 +28,15 @@ Join stage confirmation dialog with video preview and mic/camera toggles for web
 ### Basic Usage
 
 ```
-
 import { RtkJoinStage } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkJoinStage meeting={meeting} />;
-
-}
-
-
+function MyComponent() {  return <RtkJoinStage meeting={meeting} />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkJoinStage } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkJoinStage meeting={meeting} iconPack={customIconPack} states={states} />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkJoinStage meeting={meeting} iconPack={customIconPack} states={states} />  );}
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/spectrum/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -15,54 +15,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 The client source IP and port is encoded in a fixed-length, 38-octet long header and prepended to the payload of each proxied UDP datagram in the format described below.
 
 ```
-
- 0                   1                   2                   3
-
- 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
-|          Magic Number         |                               |
-
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                               +
-
-|                                                               |
-
-+                                                               +
-
-|                                                               |
-
-+                         Client Address                        +
-
-|                                                               |
-
-+                               +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
-|                               |                               |
-
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                               +
-
-|                                                               |
-
-+                                                               +
-
-|                                                               |
-
-+                         Proxy Address                         +
-
-|                                                               |
-
-+                               +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
-|                               |         Client Port           |
-
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
-|           Proxy Port          |          Payload...           |
-
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
-
+ 0                   1                   2                   3 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+|          Magic Number         |                               |+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                               +|                                                               |+                                                               +|                                                               |+                         Client Address                        +|                                                               |+                               +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+|                               |                               |+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                               +|                                                               |+                                                               +|                                                               |+                         Proxy Address                         +|                                                               |+                               +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+|                               |         Client Port           |+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+|           Proxy Port          |          Payload...           |+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
 
 The contents of the header are below.
@@ -94,22 +47,7 @@ Data following the header carried by the datagram. Magic number, addresses, and 
 A corresponding C structure describing the header is:
 
 ```
-
-struct {
-
-    uint16_t magic;
-
-    uint8_t  client_addr[16];
-
-    uint8_t  proxy_addr[16];
-
-    uint16_t client_port;
-
-    uint16_t proxy_port;
-
-};
-
-
+struct {    uint16_t magic;    uint8_t  client_addr[16];    uint8_t  proxy_addr[16];    uint16_t client_port;    uint16_t proxy_port;};
 ```
 
 ```json

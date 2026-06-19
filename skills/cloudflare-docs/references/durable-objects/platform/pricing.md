@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,7 +32,7 @@ On Workers Free plan:
 
 Durable Objects are billed for compute duration (wall-clock time) while the Durable Object is actively running or is idle in memory but unable to [hibernate](https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/). Durable Objects that are idle and eligible for hibernation are not billed for duration, even before the runtime has hibernated them. Requests to a Durable Object keep it active or create the object if it was inactive.
 
-| Free plan | Paid plan         |                                                                                                                      |
+|           | Free plan         | Paid plan                                                                                                            |
 | --------- | ----------------- | -------------------------------------------------------------------------------------------------------------------- |
 | Requests  | 100,000 / day     | 1 million / month, + $0.15/million Includes HTTP requests, RPC sessions1, WebSocket messages2, and alarm invocations |
 | Duration3 | 13,000 GB-s / day | 400,000 GB-s / month, + $12.50/million GB-s4,5                                                                       |
@@ -46,16 +46,7 @@ RPC method calls can return objects (stubs) extending [RpcTarget](https://develo
 JavaScript
 
 ```
-
-let durableObjectStub = OBJECT_NAMESPACE.get(id); // retrieve Durable Object stub
-
-using foo = await durableObjectStub.bar(); // billed as a request
-
-await foo.baz(); // treated as part of the same RPC session created by calling bar(), not billed as a request
-
-await durableObjectStub.cat(); // billed as a request
-
-
+let durableObjectStub = OBJECT_NAMESPACE.get(id); // retrieve Durable Object stubusing foo = await durableObjectStub.bar(); // billed as a requestawait foo.baz(); // treated as part of the same RPC session created by calling bar(), not billed as a requestawait durableObjectStub.cat(); // billed as a request
 ```
 
 2 A request is needed to create a WebSocket connection. There is no charge for outgoing WebSocket messages, nor for incoming [WebSocket protocol pings ↗](https://www.rfc-editor.org/rfc/rfc6455#section-5.5.2). For compute requests billing-only, a 20:1 ratio is applied to incoming WebSocket messages to factor in smaller messages for real-time communication. For example, 100 WebSocket incoming messages would be charged as 5 requests for billing purposes. The 20:1 ratio does not affect Durable Object metrics and analytics, which reflect actual usage.
@@ -79,7 +70,7 @@ Storage billing on SQLite-backed Durable Objects
 
 Storage billing for SQLite-backed Durable Objects will be enabled in January 2026, with a target date of January 7, 2026 (no earlier). Only SQLite storage usage on and after the billing target date will incur charges. For more information, refer to [Billing for SQLite Storage](https://developers.cloudflare.com/changelog/2025-12-12-durable-objects-sqlite-storage-billing/).
 
-| Workers Free plan    | Workers Paid plan |                                                           |
+|                      | Workers Free plan | Workers Paid plan                                         |
 | -------------------- | ----------------- | --------------------------------------------------------- |
 | Rows reads 1,2       | 5 million / day   | First 25 billion / month included + $0.001 / million rows |
 | Rows written 1,2,3,4 | 100,000 / day     | First 50 million / month included + $1.00 / million rows  |
@@ -99,7 +90,7 @@ Footnotes
 
 ### Key-value storage backend
 
-| Workers Paid plan     |                            |
+|                       | Workers Paid plan          |
 | --------------------- | -------------------------- |
 | Read request units1,2 | 1 million, + $0.20/million |
 | Write request units3  | 1 million, + $1.00/million |

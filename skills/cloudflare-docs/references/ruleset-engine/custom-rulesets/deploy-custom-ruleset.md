@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -38,7 +38,7 @@ In the `PUT` request, you must include the IDs of all existing rules you want to
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Mass URL Redirects Write`
 * `Magic Firewall Write`
 * `L4 DDoS Managed Ruleset Write`
@@ -51,167 +51,11 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Update an account entry point ruleset
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/phases/http_request_firewall_custom/entrypoint" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "rules": [
-
-        {
-
-            "action": "execute",
-
-            "description": "Execute custom ruleset",
-
-            "expression": "(cf.zone.name == \"example.com\") and cf.zone.plan eq \"ENT\"",
-
-            "action_parameters": {
-
-                "id": "<CUSTOM_RULESET_ID>"
-
-            }
-
-        },
-
-        {
-
-            "id": "<EXISTING_PHASE_RULE_ID_1>"
-
-        },
-
-        {
-
-            "id": "<EXISTING_PHASE_RULE_ID_2>"
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/phases/http_request_firewall_custom/entrypoint" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "action": "execute",            "description": "Execute custom ruleset",            "expression": "(cf.zone.name == \"example.com\") and cf.zone.plan eq \"ENT\"",            "action_parameters": {                "id": "<CUSTOM_RULESET_ID>"            }        },        {            "id": "<EXISTING_PHASE_RULE_ID_1>"        },        {            "id": "<EXISTING_PHASE_RULE_ID_2>"        }    ]  }'
 ```
 
 ```
-
-{
-
-  "result": {
-
-    "id": "<ACCOUNT_PHASE_RULESET_ID>",
-
-    "name": "http_request_firewall_custom phase entry point ruleset for my account",
-
-    "description": "Execute several rulesets",
-
-    "kind": "root",
-
-    "version": "3",
-
-    "rules": [
-
-      {
-
-        "id": "<PHASE_RULE_ID>",
-
-        "version": "1",
-
-        "action": "execute",
-
-        "description": "Execute custom ruleset",
-
-        "action_parameters": {
-
-          "id": "<CUSTOM_RULESET_ID>",
-
-          "version": "latest"
-
-        },
-
-        "expression": "(cf.zone.name == \"example.com\") and cf.zone.plan eq \"ENT\"",
-
-        "last_updated": "2021-03-18T18:35:14.135697Z",
-
-        "ref": "<PHASE_RULE_REF>",
-
-        "enabled": true
-
-      },
-
-      {
-
-        "id": "<EXISTING_PHASE_RULE_ID_1>",
-
-        "version": "1",
-
-        "action": "execute",
-
-        "action_parameters": {
-
-          "id": "<EXECUTED_RULESET_ID_1>",
-
-          "version": "latest"
-
-        },
-
-        "expression": "(cf.zone.name eq \"example.com\") and cf.zone.plan eq \"ENT\"",
-
-        "last_updated": "2021-03-16T15:51:49.180378Z",
-
-        "ref": "<EXISTING_PHASE_RULE_REF_1>",
-
-        "enabled": true
-
-      },
-
-      {
-
-        "id": "<EXISTING_PHASE_RULE_ID_2>",
-
-        "version": "1",
-
-        "action": "execute",
-
-        "action_parameters": {
-
-          "id": "<EXECUTED_RULESET_ID_2>",
-
-          "version": "latest"
-
-        },
-
-        "expression": "(cf.zone.name eq \"example.com\") and cf.zone.plan eq \"ENT\"",
-
-        "last_updated": "2021-03-16T15:50:29.861157Z",
-
-        "ref": "<EXISTING_PHASE_RULE_REF_2>",
-
-        "enabled": true
-
-      }
-
-    ],
-
-    "last_updated": "2021-03-18T18:35:14.135697Z",
-
-    "phase": "http_request_firewall_custom"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "id": "<ACCOUNT_PHASE_RULESET_ID>",    "name": "http_request_firewall_custom phase entry point ruleset for my account",    "description": "Execute several rulesets",    "kind": "root",    "version": "3",    "rules": [      {        "id": "<PHASE_RULE_ID>",        "version": "1",        "action": "execute",        "description": "Execute custom ruleset",        "action_parameters": {          "id": "<CUSTOM_RULESET_ID>",          "version": "latest"        },        "expression": "(cf.zone.name == \"example.com\") and cf.zone.plan eq \"ENT\"",        "last_updated": "2021-03-18T18:35:14.135697Z",        "ref": "<PHASE_RULE_REF>",        "enabled": true      },      {        "id": "<EXISTING_PHASE_RULE_ID_1>",        "version": "1",        "action": "execute",        "action_parameters": {          "id": "<EXECUTED_RULESET_ID_1>",          "version": "latest"        },        "expression": "(cf.zone.name eq \"example.com\") and cf.zone.plan eq \"ENT\"",        "last_updated": "2021-03-16T15:51:49.180378Z",        "ref": "<EXISTING_PHASE_RULE_REF_1>",        "enabled": true      },      {        "id": "<EXISTING_PHASE_RULE_ID_2>",        "version": "1",        "action": "execute",        "action_parameters": {          "id": "<EXECUTED_RULESET_ID_2>",          "version": "latest"        },        "expression": "(cf.zone.name eq \"example.com\") and cf.zone.plan eq \"ENT\"",        "last_updated": "2021-03-16T15:50:29.861157Z",        "ref": "<EXISTING_PHASE_RULE_REF_2>",        "enabled": true      }    ],    "last_updated": "2021-03-18T18:35:14.135697Z",    "phase": "http_request_firewall_custom"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 Warning
@@ -226,7 +70,7 @@ You must include in the `PUT` request the IDs of all existing rules you want to 
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Response Compression Write`
 * `Config Settings Write`
 * `Dynamic URL Redirects Write`
@@ -252,127 +96,11 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Update a zone entry point ruleset
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_custom/entrypoint" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "rules": [
-
-        {
-
-            "action": "execute",
-
-            "description": "Execute custom ruleset (zone)",
-
-            "expression": "(http.request.uri.path eq \"/login\")",
-
-            "action_parameters": {
-
-                "id": "<CUSTOM_RULESET_ID>"
-
-            }
-
-        },
-
-        {
-
-            "id": "<EXISTING_PHASE_RULE_ID_1>"
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_custom/entrypoint" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "action": "execute",            "description": "Execute custom ruleset (zone)",            "expression": "(http.request.uri.path eq \"/login\")",            "action_parameters": {                "id": "<CUSTOM_RULESET_ID>"            }        },        {            "id": "<EXISTING_PHASE_RULE_ID_1>"        }    ]  }'
 ```
 
 ```
-
-{
-
-  "result": {
-
-    "id": "<ZONE_PHASE_RULESET_ID>",
-
-    "name": "http_request_firewall_custom phase entry point ruleset for my zone",
-
-    "description": "",
-
-    "kind": "zone",
-
-    "version": "3",
-
-    "rules": [
-
-      {
-
-        "id": "<PHASE_RULE_ID>",
-
-        "version": "1",
-
-        "action": "execute",
-
-        "description": "Execute custom ruleset (zone)",
-
-        "action_parameters": {
-
-          "id": "<CUSTOM_RULESET_ID>",
-
-          "version": "latest"
-
-        },
-
-        "expression": "(http.request.uri.path eq \"/login\")",
-
-        "last_updated": "2025-08-18T18:35:14.135697Z",
-
-        "ref": "<PHASE_RULE_REF>",
-
-        "enabled": true
-
-      },
-
-      {
-
-        "id": "<EXISTING_PHASE_RULE_ID_1>",
-
-        "version": "1",
-
-        "action": "managed_challenge",
-
-        "expression": "(cf.waf.score lt 20 and http.request.uri.path wildcard \"/admin/*\")",
-
-        "last_updated": "2025-08-16T15:51:49.180378Z",
-
-        "ref": "<EXISTING_PHASE_RULE_REF_1>",
-
-        "enabled": true
-
-      }
-
-    ],
-
-    "last_updated": "2025-08-18T18:35:14.135697Z",
-
-    "phase": "http_request_firewall_custom"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "id": "<ZONE_PHASE_RULESET_ID>",    "name": "http_request_firewall_custom phase entry point ruleset for my zone",    "description": "",    "kind": "zone",    "version": "3",    "rules": [      {        "id": "<PHASE_RULE_ID>",        "version": "1",        "action": "execute",        "description": "Execute custom ruleset (zone)",        "action_parameters": {          "id": "<CUSTOM_RULESET_ID>",          "version": "latest"        },        "expression": "(http.request.uri.path eq \"/login\")",        "last_updated": "2025-08-18T18:35:14.135697Z",        "ref": "<PHASE_RULE_REF>",        "enabled": true      },      {        "id": "<EXISTING_PHASE_RULE_ID_1>",        "version": "1",        "action": "managed_challenge",        "expression": "(cf.waf.score lt 20 and http.request.uri.path wildcard \"/admin/*\")",        "last_updated": "2025-08-16T15:51:49.180378Z",        "ref": "<EXISTING_PHASE_RULE_REF_1>",        "enabled": true      }    ],    "last_updated": "2025-08-18T18:35:14.135697Z",    "phase": "http_request_firewall_custom"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 Note

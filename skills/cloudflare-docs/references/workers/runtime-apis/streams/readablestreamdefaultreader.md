@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,31 +21,30 @@ A `ReadableStreamDefaultReader` is not instantiated via its constructor. Rather,
 JavaScript
 
 ```
-
-const { readable, writable } = new TransformStream();
-
-const reader = readable.getReader();
-
-
+const { readable, writable } = new TransformStream();const reader = readable.getReader();
 ```
 
 ---
 
 ## Properties
 
-* `reader.closed` : Promise  
-   * A promise indicating if the reader is closed. The promise is fulfilled when the reader stream closes and is rejected if there is an error in the stream.
+* `reader.closed` : Promise
+
+  * A promise indicating if the reader is closed. The promise is fulfilled when the reader stream closes and is rejected if there is an error in the stream.
 
 ## Methods
 
-* `read()` : Promise  
-   * A promise that returns the next available chunk of data being passed through the reader queue.
-* `cancel(reasonstringoptional)` : void  
-   * Cancels the stream. `reason` is an optional human-readable string indicating the reason for cancellation. `reason` will be passed to the underlying source’s cancel algorithm -- if this readable stream is one side of a [TransformStream](https://developers.cloudflare.com/workers/runtime-apis/streams/transformstream/), then its cancel algorithm causes the transform’s writable side to become errored with `reason`.  
+* `read()` : Promise
+
+  * A promise that returns the next available chunk of data being passed through the reader queue.
+* `cancel(reasonstringoptional)` : void
+
+  * Cancels the stream. `reason` is an optional human-readable string indicating the reason for cancellation. `reason` will be passed to the underlying source’s cancel algorithm -- if this readable stream is one side of a [TransformStream](https://developers.cloudflare.com/workers/runtime-apis/streams/transformstream/), then its cancel algorithm causes the transform’s writable side to become errored with `reason`.  
 Warning  
 Any data not yet read is lost.
-* `releaseLock()` : void  
-   * Releases the lock on the readable stream. A lock cannot be released if the reader has pending read operations. A `TypeError` is thrown and the reader remains locked.
+* `releaseLock()` : void
+
+  * Releases the lock on the readable stream. A lock cannot be released if the reader has pending read operations. A `TypeError` is thrown and the reader remains locked.
 
 ---
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,9 +26,9 @@ The following resources are available to configure through Terraform:
 
 **Schema validation**
 
-* [cloudflare\_schema\_validation\_schemas ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/schema%5Fvalidation%5Fschemas) for configuring a schema in [Schema validation](https://developers.cloudflare.com/api-shield/security/schema-validation/).~~[api\_shield\_schema ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Fshield%5Fschema)~~ has been deprecated and will be removed in a future version of the terraform provider.
-* [cloudflare\_schema\_validation\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/schema%5Fvalidation%5Fsettings) for configuring zone-level Schema validation settings.~~[api\_shield\_schema\_validation\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Fshield%5Fschema%5Fvalidation%5Fsettings)~~ has been deprecated and will be removed in a future version of the terraform provider.
-* [cloudflare\_schema\_validation\_operation\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/schema%5Fvalidation%5Foperation%5Fsettings) for configuring operation-level Schema validation settings.~~[api\_shield\_operation\_schema\_validation\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Fshield%5Foperation%5Fschema%5Fvalidation%5Fsettings)~~ has been deprecated and will be removed in a future version of the terraform provider.
+* [cloudflare\_schema\_validation\_schemas ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/schema%5Fvalidation%5Fschemas) for configuring a schema in [Schema validation](https://developers.cloudflare.com/api-shield/security/schema-validation/). ~~[api\_shield\_schema ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Fshield%5Fschema)~~ has been deprecated and will be removed in a future version of the terraform provider.
+* [cloudflare\_schema\_validation\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/schema%5Fvalidation%5Fsettings) for configuring zone-level Schema validation settings. ~~[api\_shield\_schema\_validation\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Fshield%5Fschema%5Fvalidation%5Fsettings)~~ has been deprecated and will be removed in a future version of the terraform provider.
+* [cloudflare\_schema\_validation\_operation\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/schema%5Fvalidation%5Foperation%5Fsettings) for configuring operation-level Schema validation settings. ~~[api\_shield\_operation\_schema\_validation\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Fshield%5Foperation%5Fschema%5Fvalidation%5Fsettings)~~ has been deprecated and will be removed in a future version of the terraform provider.
 
 **JWT Validation**
 
@@ -42,22 +42,7 @@ Refer to the example configuration below to set up [session identifiers](https:/
 Example configuration
 
 ```
-
-resource "cloudflare_api_shield" "session_identifiers" {
-
-  zone_id = var.zone_id
-
-  auth_id_characteristics = [{
-
-    name = "authorization"
-
-    type = "header"
-
-  }]
-
-}
-
-
+resource "cloudflare_api_shield" "session_identifiers" {  zone_id = var.zone_id  auth_id_characteristics = [{    name = "authorization"    type = "header"  }]}
 ```
 
 ## Manage API Shield Endpoint Management
@@ -67,33 +52,8 @@ Refer to the example configuration below to [manage endpoints](https://developer
 Example configuration
 
 ```
-
-resource "cloudflare_api_shield_operation" "get_image" {
-
-  zone_id  = var.zone_id
-
-  method   = "GET"
-
-  host     = "example.com"
-
-  endpoint = "/api/images/{var1}"
-
-}
-
-
-resource "cloudflare_api_shield_operation" "post_image" {
-
-  zone_id  = var.zone_id
-
-  method   = "POST"
-
-  host     = "example.com"
-
-  endpoint = "/api/images/{var1}"
-
-}
-
-
+resource "cloudflare_api_shield_operation" "get_image" {  zone_id  = var.zone_id  method   = "GET"  host     = "example.com"  endpoint = "/api/images/{var1}"}
+resource "cloudflare_api_shield_operation" "post_image" {  zone_id  = var.zone_id  method   = "POST"  host     = "example.com"  endpoint = "/api/images/{var1}"}
 ```
 
 ## Manage Schema validation
@@ -107,50 +67,9 @@ Refer to the example configuration below to manage [Schema validation](https://d
 Example configuration
 
 ```
-
-# Schema that should be used for Schema validation
-
-resource "cloudflare_schema_validation_schemas" "example_schema" {
-
-  zone_id            = var.zone_id
-
-  kind               = "openapi_v3"
-
-  name               = "example-schema.yaml"
-
-  # In this example, we assume that the `example-schema.yaml` includes `get_image` and `post_image` operations from above
-
-  source             = file("./schemas/example-schema.yaml")
-
-  validation_enabled = true
-
-}
-
-
-# Block all requests that violate schema by default
-
-resource "cloudflare_schema_validation_settings" "zone_level_settings" {
-
-  zone_id                              = var.zone_id
-
-  validation_default_mitigation_action = "block"
-
-}
-
-
-# For endpoint post_image - only log requests that violate schema
-
-resource "cloudflare_schema_validation_operation_settings" "post_image_log_only" {
-
-  zone_id           = var.zone_id
-
-  operation_id      = cloudflare_api_shield_operation.post_image.id
-
-  mitigation_action = "log"
-
-}
-
-
+# Schema that should be used for Schema validationresource "cloudflare_schema_validation_schemas" "example_schema" {  zone_id            = var.zone_id  kind               = "openapi_v3"  name               = "example-schema.yaml"  # In this example, we assume that the `example-schema.yaml` includes `get_image` and `post_image` operations from above  source             = file("./schemas/example-schema.yaml")  validation_enabled = true}
+# Block all requests that violate schema by defaultresource "cloudflare_schema_validation_settings" "zone_level_settings" {  zone_id                              = var.zone_id  validation_default_mitigation_action = "block"}
+# For endpoint post_image - only log requests that violate schemaresource "cloudflare_schema_validation_operation_settings" "post_image_log_only" {  zone_id           = var.zone_id  operation_id      = cloudflare_api_shield_operation.post_image.id  mitigation_action = "log"}
 ```
 
 ## Validate JWTs
@@ -160,122 +79,9 @@ Refer to the example configuration below to perform [JWT Validation](https://dev
 Example configuration
 
 ```
-
-# Setting up JWT validation with specific keying material and location of the token
-
-resource "cloudflare_token_validation_config" "example_es256_config" {
-
-  zone_id       = var.zone_id
-
-  token_type    = "JWT"
-
-  title         = "ES256 Example"
-
-  description   = "An example configuration that validates ES256 JWTs with `b0078548-c9bc-46e5-a678-06fb72443427` key ID in the authorization header"
-
-  token_sources = ["http.request.headers[\"authorization\"][0]"]
-
-  credentials   = {
-
-    keys = [
-
-      {
-
-        alg = "ES256"
-
-        kid = "b0078548-c9bc-46e5-a678-06fb72443427"
-
-        kty = "EC"
-
-        crv = "P-256"
-
-        x   = "yl_BZSxUG5II7kJCMxDfWImiU6zkcJcBYaTgzV3Jgnk"
-
-        y   = "0qAzLQe_YGEdotb54qWq00k74QdiTOiWnuw_YzuIqr0"
-
-      }
-
-    ]
-
-  }
-
-}
-
-
-# Setting up JWT rules for all configured endpoints on `example.com` except for `get_image`
-
-resource "cloudflare_token_validation_rules" "example_com" {
-
- zone_id      = var.zone_id
-
- title        = "Validate JWTs on example.com"
-
- description  = "This actions JWT validation results for requests to example.com except for the get_image endpoint"
-
- action       = "block"
-
- enabled      = true
-
- # Require that the JWT described through the example_es256_config is valid.
-
- # Reference the ID of the generated token config, this constructs: is_jwt_valid("<id>")
-
- # If the expression is >not true<, Cloudflare will perform the configured action on the request
-
- expression   = format("(is_jwt_valid(%q))", cloudflare_token_validation_config.example_es256_config.id)
-
- selector     = {
-
-    # all current and future operations matching this include selector will perform the described action when the expression fails to match
-
-    include = [
-
-      {
-
-        host          = ["example.com"]
-
-      }
-
-    ]
-
-    exclude = [
-
-      {
-
-        # reference the ID of the get_image operation to exclude it
-
-        operation_ids = ["${cloudflare_api_shield_operation.get_image.id}"]
-
-      }
-
-    ]
-
- }
-
-}
-
-
-# With JWT validation, we can also refine session identifiers to use claims from the JWT
-
-resource "cloudflare_api_shield" "session_identifiers" {
-
-  zone_id = var.zone_id
-
-  auth_id_characteristics = [{
-
-    # select the JWT's `sub` claim as an extremely stable session identifier
-
-    # this is "<token_config_id:json_path>" format
-
-    name = "${cloudflare_token_validation_config.example_es256_config.id}:$.sub"
-
-    type = "jwt"
-
-  }]
-
-}
-
-
+# Setting up JWT validation with specific keying material and location of the tokenresource "cloudflare_token_validation_config" "example_es256_config" {  zone_id       = var.zone_id  token_type    = "JWT"  title         = "ES256 Example"  description   = "An example configuration that validates ES256 JWTs with `b0078548-c9bc-46e5-a678-06fb72443427` key ID in the authorization header"  token_sources = ["http.request.headers[\"authorization\"][0]"]  credentials   = {    keys = [      {        alg = "ES256"        kid = "b0078548-c9bc-46e5-a678-06fb72443427"        kty = "EC"        crv = "P-256"        x   = "yl_BZSxUG5II7kJCMxDfWImiU6zkcJcBYaTgzV3Jgnk"        y   = "0qAzLQe_YGEdotb54qWq00k74QdiTOiWnuw_YzuIqr0"      }    ]  }}
+# Setting up JWT rules for all configured endpoints on `example.com` except for `get_image`resource "cloudflare_token_validation_rules" "example_com" { zone_id      = var.zone_id title        = "Validate JWTs on example.com" description  = "This actions JWT validation results for requests to example.com except for the get_image endpoint" action       = "block" enabled      = true # Require that the JWT described through the example_es256_config is valid. # Reference the ID of the generated token config, this constructs: is_jwt_valid("<id>") # If the expression is >not true<, Cloudflare will perform the configured action on the request expression   = format("(is_jwt_valid(%q))", cloudflare_token_validation_config.example_es256_config.id) selector     = {    # all current and future operations matching this include selector will perform the described action when the expression fails to match    include = [      {        host          = ["example.com"]      }    ]    exclude = [      {        # reference the ID of the get_image operation to exclude it        operation_ids = ["${cloudflare_api_shield_operation.get_image.id}"]      }    ] }}
+# With JWT validation, we can also refine session identifiers to use claims from the JWTresource "cloudflare_api_shield" "session_identifiers" {  zone_id = var.zone_id  auth_id_characteristics = [{    # select the JWT's `sub` claim as an extremely stable session identifier    # this is "<token_config_id:json_path>" format    name = "${cloudflare_token_validation_config.example_es256_config.id}:$.sub"    type = "jwt"  }]}
 ```
 
 ```json

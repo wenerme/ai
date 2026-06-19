@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -39,10 +39,7 @@ Create a new Worker project that will receive webhook requests:
 Terminal window
 
 ```
-
 npm create cloudflare@latest stream-webhook-handler
-
-
 ```
 
 ## 2\. Start a Cloudflare Tunnel
@@ -52,19 +49,13 @@ Before registering a webhook URL, you need a public URL that points to your loca
 Terminal window
 
 ```
-
 npx cloudflared tunnel --url http://localhost:8787
-
-
 ```
 
 `cloudflared` will output a public URL similar to:
 
 ```
-
 https://example-words-here.trycloudflare.com
-
-
 ```
 
 Copy this URL. It changes every time you restart the tunnel.
@@ -75,26 +66,13 @@ Use the Stream API to set the tunnel URL as your webhook notification URL. The A
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Stream Write`
 
 Create webhooks
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/stream/webhook" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "notificationUrl": "https://example-words-here.trycloudflare.com"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/stream/webhook" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "notificationUrl": "https://example-words-here.trycloudflare.com"  }'
 ```
 
 The response will include a `secret` field:
@@ -102,28 +80,7 @@ The response will include a `secret` field:
 Example response
 
 ```
-
-{
-
-  "result": {
-
-    "notificationUrl": "https://example-words-here.trycloudflare.com",
-
-    "modified": "2024-01-01T00:00:00.000000Z",
-
-    "secret": "85011ed3a913c6ad5f9cf6c5573cc0a7"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "notificationUrl": "https://example-words-here.trycloudflare.com",    "modified": "2024-01-01T00:00:00.000000Z",    "secret": "85011ed3a913c6ad5f9cf6c5573cc0a7"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 Save the `secret` value. You will use it in the next step.
@@ -135,10 +92,7 @@ Create a `.dev.vars` file in the root of your Worker project and add the webhook
 .dev.vars
 
 ```
-
 WEBHOOK_SECRET=85011ed3a913c6ad5f9cf6c5573cc0a7
-
-
 ```
 
 Replace the value with the actual secret from step 3\. Wrangler automatically loads `.dev.vars` when running `wrangler dev`.
@@ -154,191 +108,28 @@ Replace the contents of `src/index.ts` in your Worker project with the following
 src/index.ts
 
 ```
-
-export interface Env {
-
-  WEBHOOK_SECRET: string;
-
-}
-
-
-async function verifyWebhookSignature(
-
-  request: Request,
-
-  secret: string,
-
-): Promise<{ valid: boolean; body: string }> {
-
-  const signatureHeader = request.headers.get("Webhook-Signature");
-
-  if (!signatureHeader) {
-
-    return { valid: false, body: "" };
-
-  }
-
-
+export interface Env {  WEBHOOK_SECRET: string;}
+async function verifyWebhookSignature(  request: Request,  secret: string,): Promise<{ valid: boolean; body: string }> {  const signatureHeader = request.headers.get("Webhook-Signature");  if (!signatureHeader) {    return { valid: false, body: "" };  }
   const body = await request.text();
-
-
-  // Parse "time=<unix_ts>,sig1=<hex_signature>"
-
-  const parts = Object.fromEntries(
-
-    signatureHeader.split(",").map((part) => {
-
-      const [key, value] = part.split("=");
-
-      return [key, value];
-
-    }),
-
-  );
-
-
-  const time = parts["time"];
-
-  const receivedSig = parts["sig1"];
-
-
-  if (!time || !receivedSig) {
-
-    return { valid: false, body };
-
-  }
-
-
-  // Build the source string: "<time>.<body>"
-
-  const sourceString = `${time}.${body}`;
-
-  const encoder = new TextEncoder();
-
-
-  const key = await crypto.subtle.importKey(
-
-    "raw",
-
-    encoder.encode(secret),
-
-    { name: "HMAC", hash: "SHA-256" },
-
-    false,
-
-    ["sign"],
-
-  );
-
-
-  const signature = await crypto.subtle.sign(
-
-    "HMAC",
-
-    key,
-
-    encoder.encode(sourceString),
-
-  );
-
-
-  const expectedSig = [...new Uint8Array(signature)]
-
-    .map((b) => b.toString(16).padStart(2, "0"))
-
-    .join("");
-
-
-  // Use a timing-safe comparison.
-
-  // Do not return early when lengths differ — that leaks the expected
-
-  // signature's length through timing.  Compare against self and negate instead.
-
-  const expectedBytes = encoder.encode(expectedSig);
-
-  const receivedBytes = encoder.encode(receivedSig);
-
-
-  const lengthsMatch = expectedBytes.byteLength === receivedBytes.byteLength;
-
-  const signaturesMatch = lengthsMatch
-
-    ? crypto.subtle.timingSafeEqual(expectedBytes, receivedBytes)
-
-    : !crypto.subtle.timingSafeEqual(expectedBytes, expectedBytes);
-
-
-  return { valid: signaturesMatch, body };
-
-}
-
-
-export default {
-
-  async fetch(request: Request, env: Env): Promise<Response> {
-
-    if (request.method !== "POST") {
-
-      return new Response("Method not allowed", { status: 405 });
-
-    }
-
-
-    if (!env.WEBHOOK_SECRET) {
-
-      console.error("WEBHOOK_SECRET is not set");
-
-      return new Response("Server misconfigured", { status: 500 });
-
-    }
-
-
-    const { valid, body } = await verifyWebhookSignature(
-
-      request,
-
-      env.WEBHOOK_SECRET,
-
-    );
-
-
-    if (!valid) {
-
-      console.error("Invalid webhook signature");
-
-      return new Response("Invalid signature", { status: 403 });
-
-    }
-
-
+  // Parse "time=<unix_ts>,sig1=<hex_signature>"  const parts = Object.fromEntries(    signatureHeader.split(",").map((part) => {      const [key, value] = part.split("=");      return [key, value];    }),  );
+  const time = parts["time"];  const receivedSig = parts["sig1"];
+  if (!time || !receivedSig) {    return { valid: false, body };  }
+  // Build the source string: "<time>.<body>"  const sourceString = `${time}.${body}`;  const encoder = new TextEncoder();
+  const key = await crypto.subtle.importKey(    "raw",    encoder.encode(secret),    { name: "HMAC", hash: "SHA-256" },    false,    ["sign"],  );
+  const signature = await crypto.subtle.sign(    "HMAC",    key,    encoder.encode(sourceString),  );
+  const expectedSig = [...new Uint8Array(signature)]    .map((b) => b.toString(16).padStart(2, "0"))    .join("");
+  // Use a timing-safe comparison.  // Do not return early when lengths differ — that leaks the expected  // signature's length through timing.  Compare against self and negate instead.  const expectedBytes = encoder.encode(expectedSig);  const receivedBytes = encoder.encode(receivedSig);
+  const lengthsMatch = expectedBytes.byteLength === receivedBytes.byteLength;  const signaturesMatch = lengthsMatch    ? crypto.subtle.timingSafeEqual(expectedBytes, receivedBytes)    : !crypto.subtle.timingSafeEqual(expectedBytes, expectedBytes);
+  return { valid: signaturesMatch, body };}
+export default {  async fetch(request: Request, env: Env): Promise<Response> {    if (request.method !== "POST") {      return new Response("Method not allowed", { status: 405 });    }
+    if (!env.WEBHOOK_SECRET) {      console.error("WEBHOOK_SECRET is not set");      return new Response("Server misconfigured", { status: 500 });    }
+    const { valid, body } = await verifyWebhookSignature(      request,      env.WEBHOOK_SECRET,    );
+    if (!valid) {      console.error("Invalid webhook signature");      return new Response("Invalid signature", { status: 403 });    }
     console.log("Webhook signature verified successfully");
-
-
     const payload = JSON.parse(body);
-
-
-    console.log("Stream webhook received:", JSON.stringify(payload, null, 2));
-
-    console.log("Video UID:", payload.uid);
-
-    console.log("Status:", payload.status?.state);
-
-    console.log("Ready to stream:", payload.readyToStream);
-
-
-    // Add your own processing logic here — for example, update a database
-
-    // or notify a downstream service.
-
-
-    return new Response("OK", { status: 200 });
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+    console.log("Stream webhook received:", JSON.stringify(payload, null, 2));    console.log("Video UID:", payload.uid);    console.log("Status:", payload.status?.state);    console.log("Ready to stream:", payload.readyToStream);
+    // Add your own processing logic here — for example, update a database    // or notify a downstream service.
+    return new Response("OK", { status: 200 });  },} satisfies ExportedHandler<Env>;
 ```
 
 ## 6\. Start the local dev server
@@ -348,10 +139,7 @@ In a separate terminal (keep the tunnel running), start the Worker locally with 
 Terminal window
 
 ```
-
 npx wrangler dev
-
-
 ```
 
 Wrangler will load the `WEBHOOK_SECRET` from your `.dev.vars` file automatically.
@@ -367,36 +155,20 @@ When you are done testing locally, deploy the Worker and update the webhook URL 
 Terminal window
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 Then update the webhook subscription to point to your deployed Worker URL:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Stream Write`
 
 Create webhooks
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/stream/webhook" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "notificationUrl": "https://your-worker.your-subdomain.workers.dev"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/stream/webhook" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "notificationUrl": "https://your-worker.your-subdomain.workers.dev"  }'
 ```
 
 Warning
@@ -406,10 +178,7 @@ Updating the webhook URL rotates the signing secret. After you update the URL to
 Terminal window
 
 ```
-
 npx wrangler secret put WEBHOOK_SECRET
-
-
 ```
 
 If you restart the tunnel later for additional local testing, you will need to repeat steps 3 and 4 to register the new tunnel URL and update the secret in `.dev.vars`.

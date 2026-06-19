@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,455 +28,140 @@ xAI's higher-fidelity text-to-image model optimized for sharper details, more ac
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1942)
-* [ cURL ](#tab-panel-1943)
+* [ TypeScript ](#tab-panel-2016)
+* [ cURL ](#tab-panel-2017)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'xai/grok-imagine-image-quality',
-
-  { prompt: 'A golden retriever puppy playing in autumn leaves' },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'xai/grok-imagine-image-quality',  { prompt: 'A golden retriever puppy playing in autumn leaves' },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "xai/grok-imagine-image-quality",
-
-  "input": {
-
-    "prompt": "A golden retriever puppy playing in autumn leaves"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "xai/grok-imagine-image-quality",  "input": {    "prompt": "A golden retriever puppy playing in autumn leaves"  }}'
 ```
 
-* [ Output ](#tab-panel-1940)
-* [ Raw response ](#tab-panel-1941)
+* [ Output ](#tab-panel-2014)
+* [ Raw response ](#tab-panel-2015)
 
 ![Simple Generation](https://examples.aig.cloudflare.com/xai/grok-imagine-image-quality/simple-generation.jpeg) 
 
 ```
-
-{
-
-  "state": "Completed",
-
-  "result": {
-
-    "image": "https://examples.aig.cloudflare.com/xai/grok-imagine-image-quality/simple-generation.jpeg"
-
-  },
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
-
-}
-
-
+{  "state": "Completed",  "result": {    "image": "https://examples.aig.cloudflare.com/xai/grok-imagine-image-quality/simple-generation.jpeg"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
 ```
 
 ## Examples
 
 **High Quality Portrait**  — High-quality portrait-orientation render at 2K resolution 
 
-* [ TypeScript ](#tab-panel-1948)
-* [ cURL ](#tab-panel-1949)
+* [ TypeScript ](#tab-panel-2022)
+* [ cURL ](#tab-panel-2023)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'xai/grok-imagine-image-quality',
-
-  {
-
-    prompt:
-
-      'A detailed botanical illustration of exotic tropical flowers with fine line work and watercolor textures',
-
-    aspect_ratio: '3:4',
-
-    quality: 'high',
-
-    resolution: '2k',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'xai/grok-imagine-image-quality',  {    prompt:      'A detailed botanical illustration of exotic tropical flowers with fine line work and watercolor textures',    aspect_ratio: '3:4',    quality: 'high',    resolution: '2k',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "xai/grok-imagine-image-quality",
-
-  "input": {
-
-    "prompt": "A detailed botanical illustration of exotic tropical flowers with fine line work and watercolor textures",
-
-    "aspect_ratio": "3:4",
-
-    "quality": "high",
-
-    "resolution": "2k"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "xai/grok-imagine-image-quality",  "input": {    "prompt": "A detailed botanical illustration of exotic tropical flowers with fine line work and watercolor textures",    "aspect_ratio": "3:4",    "quality": "high",    "resolution": "2k"  }}'
 ```
 
-* [ Output ](#tab-panel-1944)
-* [ Raw response ](#tab-panel-1945)
+* [ Output ](#tab-panel-2018)
+* [ Raw response ](#tab-panel-2019)
 
 ![High Quality Portrait](https://examples.aig.cloudflare.com/xai/grok-imagine-image-quality/high-quality-portrait.png) 
 
 ```
-
-{
-
-  "state": "Completed",
-
-  "result": {
-
-    "image": "https://examples.aig.cloudflare.com/xai/grok-imagine-image-quality/high-quality-portrait.png"
-
-  },
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
-
-}
-
-
+{  "state": "Completed",  "result": {    "image": "https://examples.aig.cloudflare.com/xai/grok-imagine-image-quality/high-quality-portrait.png"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
 ```
 
 **Cinematic Widescreen**  — Widescreen cinematic composition 
 
-* [ TypeScript ](#tab-panel-1952)
-* [ cURL ](#tab-panel-1953)
+* [ TypeScript ](#tab-panel-2026)
+* [ cURL ](#tab-panel-2027)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'xai/grok-imagine-image-quality',
-
-  {
-
-    prompt:
-
-      'A neon-lit cyberpunk figure standing in the rain beneath a holographic billboard, cinematic lighting',
-
-    aspect_ratio: '16:9',
-
-    quality: 'high',
-
-    resolution: '2k',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'xai/grok-imagine-image-quality',  {    prompt:      'A neon-lit cyberpunk figure standing in the rain beneath a holographic billboard, cinematic lighting',    aspect_ratio: '16:9',    quality: 'high',    resolution: '2k',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "xai/grok-imagine-image-quality",
-
-  "input": {
-
-    "prompt": "A neon-lit cyberpunk figure standing in the rain beneath a holographic billboard, cinematic lighting",
-
-    "aspect_ratio": "16:9",
-
-    "quality": "high",
-
-    "resolution": "2k"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "xai/grok-imagine-image-quality",  "input": {    "prompt": "A neon-lit cyberpunk figure standing in the rain beneath a holographic billboard, cinematic lighting",    "aspect_ratio": "16:9",    "quality": "high",    "resolution": "2k"  }}'
 ```
 
-* [ Output ](#tab-panel-1946)
-* [ Raw response ](#tab-panel-1947)
+* [ Output ](#tab-panel-2020)
+* [ Raw response ](#tab-panel-2021)
 
 ![Cinematic Widescreen](https://examples.aig.cloudflare.com/xai/grok-imagine-image-quality/cinematic-widescreen.png) 
 
 ```
-
-{
-
-  "state": "Completed",
-
-  "result": {
-
-    "image": "https://examples.aig.cloudflare.com/xai/grok-imagine-image-quality/cinematic-widescreen.png"
-
-  },
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
-
-}
-
-
+{  "state": "Completed",  "result": {    "image": "https://examples.aig.cloudflare.com/xai/grok-imagine-image-quality/cinematic-widescreen.png"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
 ```
 
 **Medium Quality Landscape**  — Balanced quality landscape render 
 
-* [ TypeScript ](#tab-panel-1956)
-* [ cURL ](#tab-panel-1957)
+* [ TypeScript ](#tab-panel-2030)
+* [ cURL ](#tab-panel-2031)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'xai/grok-imagine-image-quality',
-
-  {
-
-    prompt:
-
-      'A panoramic view of the northern lights over a snowy mountain range, vivid greens and purples dancing across the sky',
-
-    aspect_ratio: '16:9',
-
-    quality: 'medium',
-
-    resolution: '1k',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'xai/grok-imagine-image-quality',  {    prompt:      'A panoramic view of the northern lights over a snowy mountain range, vivid greens and purples dancing across the sky',    aspect_ratio: '16:9',    quality: 'medium',    resolution: '1k',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "xai/grok-imagine-image-quality",
-
-  "input": {
-
-    "prompt": "A panoramic view of the northern lights over a snowy mountain range, vivid greens and purples dancing across the sky",
-
-    "aspect_ratio": "16:9",
-
-    "quality": "medium",
-
-    "resolution": "1k"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "xai/grok-imagine-image-quality",  "input": {    "prompt": "A panoramic view of the northern lights over a snowy mountain range, vivid greens and purples dancing across the sky",    "aspect_ratio": "16:9",    "quality": "medium",    "resolution": "1k"  }}'
 ```
 
-* [ Output ](#tab-panel-1950)
-* [ Raw response ](#tab-panel-1951)
+* [ Output ](#tab-panel-2024)
+* [ Raw response ](#tab-panel-2025)
 
 ![Medium Quality Landscape](https://examples.aig.cloudflare.com/xai/grok-imagine-image-quality/medium-quality-landscape.jpeg) 
 
 ```
-
-{
-
-  "state": "Completed",
-
-  "result": {
-
-    "image": "https://examples.aig.cloudflare.com/xai/grok-imagine-image-quality/medium-quality-landscape.jpeg"
-
-  },
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
-
-}
-
-
+{  "state": "Completed",  "result": {    "image": "https://examples.aig.cloudflare.com/xai/grok-imagine-image-quality/medium-quality-landscape.jpeg"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
 ```
 
 **Square Low Quality Draft**  — Fast, rough draft for iteration 
 
-* [ TypeScript ](#tab-panel-1958)
-* [ cURL ](#tab-panel-1959)
+* [ TypeScript ](#tab-panel-2032)
+* [ cURL ](#tab-panel-2033)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'xai/grok-imagine-image-quality',
-
-  {
-
-    prompt: 'A quiet Japanese garden in morning mist with a stone lantern and koi pond',
-
-    aspect_ratio: '1:1',
-
-    quality: 'low',
-
-    resolution: '1k',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'xai/grok-imagine-image-quality',  {    prompt: 'A quiet Japanese garden in morning mist with a stone lantern and koi pond',    aspect_ratio: '1:1',    quality: 'low',    resolution: '1k',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "xai/grok-imagine-image-quality",
-
-  "input": {
-
-    "prompt": "A quiet Japanese garden in morning mist with a stone lantern and koi pond",
-
-    "aspect_ratio": "1:1",
-
-    "quality": "low",
-
-    "resolution": "1k"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "xai/grok-imagine-image-quality",  "input": {    "prompt": "A quiet Japanese garden in morning mist with a stone lantern and koi pond",    "aspect_ratio": "1:1",    "quality": "low",    "resolution": "1k"  }}'
 ```
 
-* [ Output ](#tab-panel-1954)
-* [ Raw response ](#tab-panel-1955)
+* [ Output ](#tab-panel-2028)
+* [ Raw response ](#tab-panel-2029)
 
 ![Square Low Quality Draft](https://examples.aig.cloudflare.com/xai/grok-imagine-image-quality/square-low-quality-draft.jpeg) 
 
 ```
-
-{
-
-  "state": "Completed",
-
-  "result": {
-
-    "image": "https://examples.aig.cloudflare.com/xai/grok-imagine-image-quality/square-low-quality-draft.jpeg"
-
-  },
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
-
-}
-
-
+{  "state": "Completed",  "result": {    "image": "https://examples.aig.cloudflare.com/xai/grok-imagine-image-quality/square-low-quality-draft.jpeg"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-1960)
-* [ Output ](#tab-panel-1961)
+* [ Input ](#tab-panel-2034)
+* [ Output ](#tab-panel-2035)
 
 aspect\_ratio
 
@@ -526,7 +211,7 @@ image
 
 Input [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image-quality/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image-quality/schema-input.json "Download") 
 
-Output [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image-quality/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image-quality/schema-output.json "Download") 
+Output [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image-quality/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image-quality/schema-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/xai/grok-imagine-image-quality/#page","headline":"Grok Imagine Image Quality (xAI) · Cloudflare AI docs · Cloudflare AI docs","description":"xAI's higher-fidelity text-to-image model optimized for sharper details, more accurate compositions, and stronger text rendering. Supports image editing via reference images and masks. Trades speed for quality compared to grok-imagine-image. Default output at 2k resolution.","url":"https://developers.cloudflare.com/ai/models/xai/grok-imagine-image-quality/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

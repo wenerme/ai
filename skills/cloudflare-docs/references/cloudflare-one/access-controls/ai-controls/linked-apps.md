@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,8 +37,8 @@ accTitle: Self-hosted MCP server accessing internal applications
 
 On each self-hosted application that the MCP server needs to access (for example, the `Internal API` and `Company wiki` apps), create a Linked App Token policy:
 
-* [ Dashboard ](#tab-panel-7079)
-* [ API ](#tab-panel-7080)
+* [ Dashboard ](#tab-panel-7155)
+* [ API ](#tab-panel-7156)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select the downstream application and select **Edit**.
@@ -47,9 +47,10 @@ On each self-hosted application that the MCP server needs to access (for example
 Note  
 The Linked App Token selector only works with the [Service Auth](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#service-auth) action, similar to service token rules.
 5. For **Selector**, select _Linked App Token_.
-6. For **Value**, select the MCP server application. For example,  
-| Action       | Rule type | Selector         | Value          |  
-| ------------ | --------- | ---------------- | -------------- |  
+6. For **Value**, select the MCP server application. For example,
+
+| Action       | Rule type | Selector         | Value          |
+| ------------ | --------- | ---------------- | -------------- |
 | Service Auth | Include   | Linked App Token | mcp-server-app |
 7. Save the policy.
 8. In the downstream application, add the policy to the **Access policies** list.
@@ -57,46 +58,25 @@ The Linked App Token selector only works with the [Service Auth](https://develop
 
 1. Get the `uid` of the MCP server application:  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Access: Apps and Policies Revoke`  
-   * `Access: Apps and Policies Write`  
-   * `Access: Apps and Policies Read`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Access: Apps and Policies Revoke`
+  * `Access: Apps and Policies Write`
+  * `Access: Apps and Policies Read`  
 List Access applications  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps" \  
-  --request GET \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
 ```  
 Response  
 ```  
-{  
-  "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",  
-  "uid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",  
-  "type": "self_hosted",  
-  "name": "mcp-server-app",  
-  ...  
-}  
+{  "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",  "uid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",  "type": "self_hosted",  "name": "mcp-server-app",  ...}  
 ```
 2. Create an Access policy on the downstream application, replacing the `app_uid` value with the `uid` of the MCP server application:  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Access: Apps and Policies Write`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Access: Apps and Policies Write`  
 Create an Access reusable policy  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies" \  
-  --request POST \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "name": "Allow requests from MCP server",  
-    "decision": "non_identity",  
-    "include": [  
-        {  
-            "linked_app_token": {  
-                "app_uid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"  
-            }  
-        }  
-    ]  
-  }'  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Allow requests from MCP server",    "decision": "non_identity",    "include": [        {            "linked_app_token": {                "app_uid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"            }        }    ]  }'  
 ```  
 Note  
 The `linked_app_token` rule type only works with [non\_identity decisions](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#service-auth), similar to service token rules.
@@ -106,10 +86,7 @@ The `linked_app_token` rule type only works with [non\_identity decisions](https
 In your MCP server code, forward the `Cf-Access-Jwt-Assertion` header from incoming requests as the `Cf-Access-Token` header on outgoing requests to the downstream application:
 
 ```
-
 Cf-Access-Token: <JWT from Cf-Access-Jwt-Assertion>
-
-
 ```
 
 Access will now validate the JWT token against the Linked App Token rule and propagate the user's identity to the downstream application.
@@ -137,8 +114,8 @@ accTitle: SaaS MCP server accessing internal applications
 
 On each self-hosted application that the MCP server needs to access (for example, the `Internal API` and `Company wiki` apps), create a Linked App Token policy:
 
-* [ Dashboard ](#tab-panel-7081)
-* [ API ](#tab-panel-7082)
+* [ Dashboard ](#tab-panel-7157)
+* [ API ](#tab-panel-7158)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select the downstream application and select **Edit**.
@@ -147,9 +124,10 @@ On each self-hosted application that the MCP server needs to access (for example
 Note  
 The Linked App Token selector only works with the [Service Auth](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#service-auth) action, similar to service token rules.
 5. For **Selector**, select _Linked App Token_.
-6. For **Value**, select the MCP server application. For example,  
-| Action       | Rule type | Selector         | Value          |  
-| ------------ | --------- | ---------------- | -------------- |  
+6. For **Value**, select the MCP server application. For example,
+
+| Action       | Rule type | Selector         | Value          |
+| ------------ | --------- | ---------------- | -------------- |
 | Service Auth | Include   | Linked App Token | mcp-server-app |
 7. Save the policy.
 8. In the downstream application, add the policy to the **Access policies** list.
@@ -157,46 +135,25 @@ The Linked App Token selector only works with the [Service Auth](https://develop
 
 1. Get the `uid` of the MCP server application:  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Access: Apps and Policies Revoke`  
-   * `Access: Apps and Policies Write`  
-   * `Access: Apps and Policies Read`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Access: Apps and Policies Revoke`
+  * `Access: Apps and Policies Write`
+  * `Access: Apps and Policies Read`  
 List Access applications  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps" \  
-  --request GET \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
 ```  
 Response  
 ```  
-{  
-  "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",  
-  "uid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",  
-  "type": "saas",  
-  "name": "mcp-server-app",  
-  ...  
-}  
+{  "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",  "uid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",  "type": "saas",  "name": "mcp-server-app",  ...}  
 ```
 2. Create an Access policy on the downstream application, replacing the `app_uid` value with the `uid` of the MCP server application:  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Access: Apps and Policies Write`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Access: Apps and Policies Write`  
 Create an Access reusable policy  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies" \  
-  --request POST \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "name": "Allow requests from MCP server",  
-    "decision": "non_identity",  
-    "include": [  
-        {  
-            "linked_app_token": {  
-                "app_uid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"  
-            }  
-        }  
-    ]  
-  }'  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Allow requests from MCP server",    "decision": "non_identity",    "include": [        {            "linked_app_token": {                "app_uid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"            }        }    ]  }'  
 ```  
 Note  
 The `linked_app_token` rule type only works with [non\_identity decisions](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#service-auth), similar to service token rules.
@@ -206,10 +163,7 @@ The `linked_app_token` rule type only works with [non\_identity decisions](https
 Configure the MCP server to forward the `access_token` in outgoing requests:
 
 ```
-
 Authorization: Bearer ACCESS_TOKEN
-
-
 ```
 
 ## Known limitations

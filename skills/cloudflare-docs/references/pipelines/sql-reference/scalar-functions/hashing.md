@@ -6,47 +6,41 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pipelines/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
 # Hashing functions
 
-_Cloudflare Pipelines scalar function implementations are based on[Apache DataFusion ↗](https://arrow.apache.org/datafusion/) (via [Arroyo ↗](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference._
+_Cloudflare Pipelines scalar function implementations are based on [Apache DataFusion ↗](https://arrow.apache.org/datafusion/) (via [Arroyo ↗](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference._
 
 ## `digest`
 
 Computes the binary hash of an expression using the specified algorithm.
 
 ```
-
 digest(expression, algorithm)
-
-
 ```
 
 **Arguments**
 
 * **expression**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
 * **algorithm**: String expression specifying algorithm to use. Must be one of:  
-   * md5  
-   * sha224  
-   * sha256  
-   * sha384  
-   * sha512  
-   * blake2s  
-   * blake2b  
-   * blake3
+  * md5
+  * sha224
+  * sha256
+  * sha384
+  * sha512
+  * blake2s
+  * blake2b
+  * blake3
 
 ## `md5`
 
 Computes an MD5 128-bit checksum for a string expression.
 
 ```
-
 md5(expression)
-
-
 ```
 
 **Arguments**
@@ -58,10 +52,7 @@ md5(expression)
 Computes the SHA-224 hash of a binary string.
 
 ```
-
 sha224(expression)
-
-
 ```
 
 **Arguments**
@@ -73,10 +64,7 @@ sha224(expression)
 Computes the SHA-256 hash of a binary string.
 
 ```
-
 sha256(expression)
-
-
 ```
 
 **Arguments**
@@ -88,10 +76,7 @@ sha256(expression)
 Computes the SHA-384 hash of a binary string.
 
 ```
-
 sha384(expression)
-
-
 ```
 
 **Arguments**
@@ -103,10 +88,7 @@ sha384(expression)
 Computes the SHA-512 hash of a binary string.
 
 ```
-
 sha512(expression)
-
-
 ```
 
 **Arguments**

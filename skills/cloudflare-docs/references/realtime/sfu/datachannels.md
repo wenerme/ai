@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -42,28 +42,7 @@ By default, a subscriber starts receiving messages as soon as it pulls a remote 
 Create a remote DataChannel with the gate enabled by calling `POST /apps/{appId}/sessions/{sessionId}/datachannels/new` on the subscriber session:
 
 ```
-
-{
-
-  "dataChannels": [
-
-    {
-
-      "location": "remote",
-
-      "sessionId": "<publisherSessionId>",
-
-      "dataChannelName": "my-channel",
-
-      "waitForAck": true
-
-    }
-
-  ]
-
-}
-
-
+{  "dataChannels": [    {      "location": "remote",      "sessionId": "<publisherSessionId>",      "dataChannelName": "my-channel",      "waitForAck": true    }  ]}
 ```
 
 Then, on the subscriber, send the acknowledgment once the DataChannel is open:
@@ -71,50 +50,9 @@ Then, on the subscriber, send the acknowledgment once the DataChannel is open:
 TypeScript
 
 ```
-
-const resp = await fetch(`${API_BASE}/sessions/${subscriberId}/datachannels/new`, {
-
-  method: "POST",
-
-  headers,
-
-  body: JSON.stringify({
-
-    dataChannels: [
-
-      {
-
-        location: "remote",
-
-        sessionId: publisherId,
-
-        dataChannelName: "my-channel",
-
-        waitForAck: true,
-
-      },
-
-    ],
-
-  }),
-
-}).then((r) => r.json());
-
-
-const dc = pc.createDataChannel("my-channel-subscribed", {
-
-  negotiated: true,
-
-  id: resp.dataChannels[0].id,
-
-});
-
-
-await waitForOpen(dc);
-
-dc.send("ack"); // The first frame opens the gate; later frames are your application data.
-
-
+const resp = await fetch(`${API_BASE}/sessions/${subscriberId}/datachannels/new`, {  method: "POST",  headers,  body: JSON.stringify({    dataChannels: [      {        location: "remote",        sessionId: publisherId,        dataChannelName: "my-channel",        waitForAck: true,      },    ],  }),}).then((r) => r.json());
+const dc = pc.createDataChannel("my-channel-subscribed", {  negotiated: true,  id: resp.dataChannels[0].id,});
+await waitForOpen(dc);dc.send("ack"); // The first frame opens the gate; later frames are your application data.
 ```
 
 ### Unidirectional DataChannels

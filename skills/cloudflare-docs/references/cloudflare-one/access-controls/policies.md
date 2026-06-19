@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -39,20 +39,20 @@ You can add a Require rule in the same policy action to enforce additional check
 
 For example, the following table shows an Allow policy with Require and Exclude rules. This configuration lets any user from Portugal with an `@team.com` email address, as validated against an IdP, reach the application, except for `user-1` and `user-2`:
 
-| Action  | Rule type        | Selector                         | Value    |
-| ------- | ---------------- | -------------------------------- | -------- |
-| Allow   | Include          | Country                          | Portugal |
-| Require | Emails Ending In | @team.com                        |          |
-| Exclude | Email            | user-1@team.com, user-2@team.com |          |
+| Action | Rule type | Selector         | Value                            |
+| ------ | --------- | ---------------- | -------------------------------- |
+| Allow  | Include   | Country          | Portugal                         |
+|        | Require   | Emails Ending In | @team.com                        |
+|        | Exclude   | Email            | user-1@team.com, user-2@team.com |
 
 ### Block
 
 The Block action in Cloudflare Access prevents users who meet certain criteria from reaching an application. For example, the following table shows a Block policy that blocks requests from Russian source IPs that are not on your [list of approved IPs](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/).
 
-| Action  | Rule type | Selector               | Value              |
-| ------- | --------- | ---------------------- | ------------------ |
-| Block   | Include   | Country                | Russian Federation |
-| Exclude | IP list   | Corporate IP allowlist |                    |
+| Action | Rule type | Selector | Value                  |
+| ------ | --------- | -------- | ---------------------- |
+| Block  | Include   | Country  | Russian Federation     |
+|        | Exclude   | IP list  | Corporate IP allowlist |
 
 Block policies are best used in conjunction with [Allow policies](#allow) as a way to carve out exceptions in those Allow policies. Since Access is deny by default, users who do not match a Block policy will still be denied access unless they explicitly match an Allow policy.
 
@@ -119,24 +119,26 @@ The Require rule in Cloudflare Access works like an AND logical operator. A user
 
 By default, any values added to a Require rule are concatenated by an AND operator. For example, let's say you want to grant access to an application to both the full-time employees and the contractors, and only the ones based in specific countries — say Portugal and the United States. If you set up a rule with the following configuration:
 
-| Action  | Rule type        | Selector                          | Value                   |
-| ------- | ---------------- | --------------------------------- | ----------------------- |
-| Allow   | Require          | Country                           | United States, Portugal |
-| Require | Emails ending in | @cloudflare.com, @contractors.com |                         |
+| Action | Rule type | Selector         | Value                             |
+| ------ | --------- | ---------------- | --------------------------------- |
+| Allow  | Require   | Country          | United States, Portugal           |
+|        | Require   | Emails ending in | @cloudflare.com, @contractors.com |
 
 This policy requires the user to be in the United States AND Portugal simultaneously, and have an email ending in both `@cloudflare.com` AND `@contractors.com`. Therefore, nobody will have access to the application.
 
 **Solution:** Use a [rule group](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/groups/) to convert AND logic to OR logic within a Require rule.
 
-1. Create a rule group called `Country requirements` that includes users in Portugal OR the United States:  
-| Rule type | Selector | Value                   |  
-| --------- | -------- | ----------------------- |  
+1. Create a rule group called `Country requirements` that includes users in Portugal OR the United States:
+
+| Rule type | Selector | Value                   |
+| --------- | -------- | ----------------------- |
 | Include   | Country  | United States, Portugal |
-2. Create a policy that requires the rule group, and that also includes users with emails ending in either `@cloudflare.com` OR `@contractors.com`:  
-| Action  | Rule type        | Selector                          | Value                |  
-| ------- | ---------------- | --------------------------------- | -------------------- |  
-| Allow   | Require          | Rule group                        | Country requirements |  
-| Include | Emails ending in | @cloudflare.com, @contractors.com |                      |
+2. Create a policy that requires the rule group, and that also includes users with emails ending in either `@cloudflare.com` OR `@contractors.com`:
+
+| Action | Rule type | Selector         | Value                             |
+| ------ | --------- | ---------------- | --------------------------------- |
+| Allow  | Require   | Rule group       | Country requirements              |
+|        | Include   | Emails ending in | @cloudflare.com, @contractors.com |
 
 ## Cloudflare Access selectors
 

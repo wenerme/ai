@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -75,16 +75,18 @@ Token claim expressions
 ![Finding your Client credentials in Okta](https://developers.cloudflare.com/_astro/okta-3.BzGr0OXt_293BnQ.webp)
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**. Select **Okta** as your identity provider.
-3. Fill in the following information:  
-   * **Name**: Name your identity provider.  
-   * **App ID**: Enter your Okta client ID.  
-   * **Client secret**: Enter your Okta client secret.  
-   * **Okta account URL**: Enter your [Okta domain ↗](https://developer.okta.com/docs/guides/find-your-domain/main/), for example `https://my-company.okta.com`.
+3. Fill in the following information:
+
+  * **Name**: Name your identity provider.
+  * **App ID**: Enter your Okta client ID.
+  * **Client secret**: Enter your Okta client secret.
+  * **Okta account URL**: Enter your [Okta domain ↗](https://developer.okta.com/docs/guides/find-your-domain/main/), for example `https://my-company.okta.com`.
 4. (Optional) Create an Okta API token and enter it in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Zero Trust** \> **Integrations** \> **Identity providers** (the token can be read-only). This will prevent your Okta groups from failing if you have more than 100 groups.
-5. (Optional) To configure [custom OIDC claims](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/#custom-oidc-claims):  
-   1. In Okta, create a [custom authorization server ↗](https://developer.okta.com/docs/guides/customize-authz-server/main/) and ensure that the `groups` scope is enabled.  
-   2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), enter the **Authorization Server ID** obtained from Okta.  
-   3. Under **Optional configurations**, enter the claims that you wish to add to your users' identity.
+5. (Optional) To configure [custom OIDC claims](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/#custom-oidc-claims):
+
+  1. In Okta, create a [custom authorization server ↗](https://developer.okta.com/docs/guides/customize-authz-server/main/) and ensure that the `groups` scope is enabled.
+  2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), enter the **Authorization Server ID** obtained from Okta.
+  3. Under **Optional configurations**, enter the claims that you wish to add to your users' identity.
 6. (Optional) Enable [Proof of Key Exchange (PKCE) ↗](https://www.oauth.com/oauth2-servers/pkce/). PKCE will be performed on all login attempts.
 7. Select **Save**.
 
@@ -110,9 +112,9 @@ If you would like to only maintain one Okta app instance, Okta does support SAML
 * **Enable user deprovisioning**: [Revoke a user's active session](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#per-user) when they are removed from the SCIM application in Okta. This will invalidate all active Access sessions and prompt for reauthentication for any [Cloudflare One Client session policies](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/).
 * **Remove user seat on deprovision**: [Remove a user's seat](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/seat-management/) from your Cloudflare One account when they are removed from the SCIM application in Okta.
 * **SCIM identity update behavior**: Choose what happens in Cloudflare One when the user's identity updates in Okta.  
-   * _Automatic identity updates_: Automatically update the [User Registry identity](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/users/) when Okta sends an updated identity or group membership through SCIM. This identity is used for Gateway policies and Cloudflare One Client [device profiles](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/); Access will read the user's updated identity when they reauthenticate.  
-   * _Group membership change reauthentication_: [Revoke a user's active session](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#per-user) when their group membership changes in Okta. This will invalidate all active Access sessions and prompt for reauthentication for any [Cloudflare One Client session policies](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/). Access will read the user's updated group membership when they reauthenticate.  
-   * _No action_: Update the user's identity the next time they reauthenticate to Access or the Cloudflare One Client.
+  * _Automatic identity updates_: Automatically update the [User Registry identity](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/users/) when Okta sends an updated identity or group membership through SCIM. This identity is used for Gateway policies and Cloudflare One Client [device profiles](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/); Access will read the user's updated identity when they reauthenticate.
+  * _Group membership change reauthentication_: [Revoke a user's active session](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#per-user) when their group membership changes in Okta. This will invalidate all active Access sessions and prompt for reauthentication for any [Cloudflare One Client session policies](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/). Access will read the user's updated group membership when they reauthenticate.
+  * _No action_: Update the user's identity the next time they reauthenticate to Access or the Cloudflare One Client.
 1. Select **Regenerate Secret**. Copy the **SCIM Endpoint** and **SCIM Secret**. You will need to enter these values into Okta.
 2. Select **Save**.
 
@@ -136,10 +138,11 @@ The `userName` attribute must match the user's email address in Cloudflare One.
 12. In the **API Token** field, enter the **SCIM Secret** obtained from Cloudflare One.  
 ![Enter SCIM values into Okta](https://developers.cloudflare.com/_astro/enter-scim-values.CxQEosHF_1P1ybq.webp)
 13. Select **Test API Credentials** to ensure that the credentials were entered correctly. Select **Save**.
-14. On the **Provisioning** tab, select **Edit** and enable:  
-   * **Create Users**  
-   * **Update User Attributes**  
-   * **Deactivate Users**  
+14. On the **Provisioning** tab, select **Edit** and enable:
+
+  * **Create Users**
+  * **Update User Attributes**
+  * **Deactivate Users**  
 ![Configure provisioning settings in Okta](https://developers.cloudflare.com/_astro/enable-provisioning.CUZPrFdg_1mHfaq.webp)
 15. In the **Assignments** tab, add the users you want to synchronize with Cloudflare Access. You can add users in batches by assigning a group. If a user is removed from the application assignment via a either direct user assignment or removed from the group that was assigned to the app, this will trigger a deprovisioning event from Okta to Cloudflare.
 16. In the **Push Groups** tab, add the Okta groups you want to synchronize with Cloudflare Access. These groups will display in the Access policy builder and are the group memberships that will be added and removed upon membership change in Okta.  
@@ -157,26 +160,7 @@ New users must first [register the Cloudflare One Client](https://developers.clo
 ## Example API Configuration
 
 ```
-
-{
-
-  "config": {
-
-    "client_id": "<your client id>",
-
-    "client_secret": "<your client secret>",
-
-    "okta_account": "https://dev-abc123.oktapreview.com"
-
-  },
-
-  "type": "okta",
-
-  "name": "my example idp"
-
-}
-
-
+{  "config": {    "client_id": "<your client id>",    "client_secret": "<your client secret>",    "okta_account": "https://dev-abc123.oktapreview.com"  },  "type": "okta",  "name": "my example idp"}
 ```
 
 ## Troubleshooting
@@ -195,10 +179,7 @@ If Okta's [Enhanced Dynamic Zone ↗](https://help.okta.com/oie/en-us/content/to
 In the Okta system logs, this appears as:
 
 ```
-
 Blocked request from IP: <BLOCKED_IP>, IPServiceCategory: WARP_VPN
-
-
 ```
 
 This setting is configured in the Okta admin panel under **Security** \> **Network**.

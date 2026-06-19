@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,12 +29,7 @@ Custom headers defined in the `_headers` file are not applied to responses gener
 Header rules are defined in multi-line blocks. The first line of a block is the URL or URL pattern where the rule's headers should be applied. On the next line, an indented list of header names and header values must be written:
 
 ```
-
-[url]
-
-  [name]: [value]
-
-
+[url]  [name]: [value]
 ```
 
 Using absolute URLs is supported, though be aware that absolute URLs must begin with `https` and specifying a port is not supported. `_headers` rules ignore the incoming request's port and protocol when matching against an incoming request. For example, a rule like `https://example.com/path` would match against requests to `other://example.com:1234/path`.
@@ -42,30 +37,9 @@ Using absolute URLs is supported, though be aware that absolute URLs must begin 
 You can define as many `[name]: [value]` pairs as you require on subsequent lines. For example:
 
 ```
-
-# This is a comment
-
-/secure/page
-
-  X-Frame-Options: DENY
-
-  X-Content-Type-Options: nosniff
-
-  Referrer-Policy: no-referrer
-
-
-/static/*
-
-  Access-Control-Allow-Origin: *
-
-  X-Robots-Tag: nosnippet
-
-
-https://myproject.pages.dev/*
-
-  X-Robots-Tag: noindex
-
-
+# This is a comment/secure/page  X-Frame-Options: DENY  X-Content-Type-Options: nosniff  Referrer-Policy: no-referrer
+/static/*  Access-Control-Allow-Origin: *  X-Robots-Tag: nosnippet
+https://myproject.pages.dev/*  X-Robots-Tag: noindex
 ```
 
 An incoming request which matches multiple rules' URL patterns will inherit all rules' headers. Using the previous `_headers` file, the following requests will have the following headers applied:
@@ -87,17 +61,8 @@ If a header is applied twice in the `_headers` file, the values are joined with 
 You may wish to remove a default header or a header which has been added by a more pervasive rule. This can be done by prepending the header name with an exclamation mark and space (`! `).
 
 ```
-
-/*
-
-  Content-Security-Policy: default-src 'self';
-
-
-/*.jpg
-
-  ! Content-Security-Policy
-
-
+/*  Content-Security-Policy: default-src 'self';
+/*.jpg  ! Content-Security-Policy
 ```
 
 ### Match a path
@@ -117,12 +82,7 @@ A placeholder can be defined with `:placeholder_name`. A colon (`:`) followed by
 Similarly, the matched value can be used in the header values with `:placeholder_name`.
 
 ```
-
-/movies/:title
-
-  x-movie-name: You are watching ":title"
-
-
+/movies/:title  x-movie-name: You are watching ":title"
 ```
 
 #### Examples
@@ -132,23 +92,13 @@ Similarly, the matched value can be used in the header values with `:placeholder
 To enable other domains to fetch every static asset from your Pages project, the following can be added to the `_headers` file:
 
 ```
-
-/*
-
-  Access-Control-Allow-Origin: *
-
-
+/*  Access-Control-Allow-Origin: *
 ```
 
 This applies the \`Access-Control-Allow-Origin\` header to any incoming URL. To be more restrictive, you can define a URL pattern that applies to a `*.pages.dev` subdomain, which then only allows access from its `staging` branch's subdomain:
 
 ```
-
-https://:project.pages.dev/*
-
-  Access-Control-Allow-Origin: https://staging.:project.pages.dev/
-
-
+https://:project.pages.dev/*  Access-Control-Allow-Origin: https://staging.:project.pages.dev/
 ```
 
 ##### Prevent your workers.dev URLs showing in search results
@@ -158,17 +108,8 @@ https://:project.pages.dev/*
 For example, to prevent your `\*.pages.dev` and `\*.\*.pages.dev` URLs from being indexed, add the following to your `_headers` file:
 
 ```
-
-https://:project.pages.dev/*
-
-  X-Robots-Tag: noindex
-
-
-https://:version.:project.pages.dev/*
-
-  X-Robots-Tag: noindex
-
-
+https://:project.pages.dev/*  X-Robots-Tag: noindex
+https://:version.:project.pages.dev/*  X-Robots-Tag: noindex
 ```
 
 ##### Configure custom browser cache behavior
@@ -176,12 +117,7 @@ https://:version.:project.pages.dev/*
 If you have a folder of fingerprinted assets (assets which have a hash in their filename), you can configure more aggressive caching behavior in the browser to improve performance for repeat visitors:
 
 ```
-
-/static/*
-
-  Cache-Control: public, max-age=31556952, immutable
-
-
+/static/*  Cache-Control: public, max-age=31556952, immutable
 ```
 
 ##### Harden security for an application
@@ -201,20 +137,7 @@ Browser features can be disabled to varying degrees with the [Permissions-Policy
 If you need fine-grained control over your application's content, the [Content-Security-Policy ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy) header allows you to configure a number of security settings, including similar controls to the `X-Frame-Options` header.
 
 ```
-
-/app/*
-
-  X-Frame-Options: DENY
-
-  X-Content-Type-Options: nosniff
-
-  Referrer-Policy: no-referrer
-
-  Permissions-Policy: document-domain=()
-
-  Content-Security-Policy: script-src 'self'; frame-ancestors 'none';
-
-
+/app/*  X-Frame-Options: DENY  X-Content-Type-Options: nosniff  Referrer-Policy: no-referrer  Permissions-Policy: document-domain=()  Content-Security-Policy: script-src 'self'; frame-ancestors 'none';
 ```
 
 ```json

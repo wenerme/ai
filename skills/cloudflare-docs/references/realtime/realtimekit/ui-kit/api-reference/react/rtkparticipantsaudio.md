@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,43 +28,15 @@ A component which plays all the audio from participants and screenshares.
 ### Basic Usage
 
 ```
-
 import { RtkParticipantsAudio } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return <RtkParticipantsAudio />;
-
-}
-
-
+function MyComponent() {  return <RtkParticipantsAudio />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkParticipantsAudio } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkParticipantsAudio
-
-      meeting={meeting}
-
-      preloadedAudioElem={htmlaudioelement}
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkParticipantsAudio      meeting={meeting}      preloadedAudioElem={htmlaudioelement}    />  );}
 ```
 
 ```json

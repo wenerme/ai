@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/notifications/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -66,14 +66,7 @@ When Cloudflare sends you a webhook, it will have the following schema:
 Example schema
 
 ```
-
-{
-
-  "text": "Hello World! This is a test message sent from https://cloudflare.com. If you can see this, your webhook is configured properly."
-
-}
-
-
+{  "text": "Hello World! This is a test message sent from https://cloudflare.com. If you can see this, your webhook is configured properly."}
 ```
 
 For the full payload structure and examples for different alert types, refer to the [webhook payload schema reference](https://developers.cloudflare.com/notifications/reference/webhook-payload-schema/).
@@ -133,10 +126,10 @@ For [Splunk ↗](https://docs.splunk.com/Documentation/Splunk/latest/Data/Usethe
 
 * **Secret**: The secret is required and has to be entered by the user. This is what Splunk refers to as `token`. Refer to [Splunk’s documentation ↗](https://docs.splunk.com/Documentation/Splunk/latest/Data/UsetheHTTPEventCollector#How%5Fthe%5FSplunk%5Fplatform%5Fuses%5FHTTP%5FEvent%5FCollector%5Ftokens%5Fto%5Fget%5Fdata%5Fin) for details.
 * **URL**:  
-   1. We only support three Splunk endpoints: services/collector, services/collector/raw, and services/collector/event.  
-   2. If SSL is enabled on the token, the port must be 443\. If SSL is not enabled on the token, the port must be 8088.  
-   3. SSL must be enabled on the server.  
-   4. **Enable indexer acknowledgement** must be disabled on the Splunk HTTP Event Collector.
+  1. We only support three Splunk endpoints: services/collector, services/collector/raw, and services/collector/event.
+  2. If SSL is enabled on the token, the port must be 443\. If SSL is not enabled on the token, the port must be 8088.
+  3. SSL must be enabled on the server.
+  4. **Enable indexer acknowledgement** must be disabled on the Splunk HTTP Event Collector.
 
 ### Feishu
 
@@ -175,20 +168,7 @@ This can be useful when defining your webhook infrastructure as code using Terra
 Terraform example
 
 ```
-
-resource "cloudflare_notification_policy_webhooks" "example" {
-
-  account_id = "<ACCOUNT_ID>"
-
-  name       = "Slack Webhook"
-
-  url        = "https://hooks.slack.com/services/T00000000/B00000000"
-
-  secret     = "<secret>"
-
-}
-
-
+resource "cloudflare_notification_policy_webhooks" "example" {  account_id = "<ACCOUNT_ID>"  name       = "Slack Webhook"  url        = "https://hooks.slack.com/services/T00000000/B00000000"  secret     = "<secret>"}
 ```
 
 ```json

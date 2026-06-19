@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -70,10 +70,7 @@ If your database requires authentication, use Wrangler secrets to securely store
 Terminal window
 
 ```
-
 wrangler secret put <SECRET_NAME>
-
-
 ```
 
 Then, retrieve the secret value in your code using the following code snippet:
@@ -81,10 +78,7 @@ Then, retrieve the secret value in your code using the following code snippet:
 JavaScript
 
 ```
-
 const secretValue = env.<SECRET_NAME>;
-
-
 ```
 
 Use the secret value to authenticate with the external service. For example, if the external service requires an API key or database username and password for authentication, include these in using the relevant service's library or API.

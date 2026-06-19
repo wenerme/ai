@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,9 +20,9 @@ To allow IPv6-only clients to connect to IPv4-only origin web servers, keep [IPv
 
 ## Availability
 
-| Free         | Pro | Business | Enterprise |     |
-| ------------ | --- | -------- | ---------- | --- |
-| Availability | Yes | Yes      | Yes        | Yes |
+|              | Free | Pro | Business | Enterprise |
+| ------------ | ---- | --- | -------- | ---------- |
+| Availability | Yes  | Yes | Yes      | Yes        |
 
 ## Background
 
@@ -52,8 +52,8 @@ When using _Overwrite Headers_, no software changes are necessary in your origin
 
 To configure **Pseudo IPv4**:
 
-* [ Dashboard ](#tab-panel-9378)
-* [ API ](#tab-panel-9379)
+* [ Dashboard ](#tab-panel-9454)
+* [ API ](#tab-panel-9455)
 
 To change the **Pseudo IPv4** setting in the dashboard:
 

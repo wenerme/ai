@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,10 +17,7 @@ You can use `zaraz.set()` anywhere inside the `<body>` tag of a page:
 JavaScript
 
 ```
-
 zaraz.set(key, value, [options])
-
-
 ```
 
 Set is useful if you want to make a variable available in all your events without manually setting it every time you are using `zaraz.track()`. For the purpose of this example, assume users in your system have a unique identifier that you want to send to your tools. You might have many `zaraz.track()` calls all sharing this one parameter:
@@ -28,28 +25,19 @@ Set is useful if you want to make a variable available in all your events withou
 JavaScript
 
 ```
-
 zaraz.track("form completed", {userId: "ABC-123"})
-
-
 ```
 
 JavaScript
 
 ```
-
 zaraz.track("button clicked", {userId: "ABC-123", value: 200})
-
-
 ```
 
 JavaScript
 
 ```
-
 zaraz.track("cart viewed", {items: 3, userId: "ABC-123"})
-
-
 ```
 
 Here, all the events are collecting the `userId` key, and the code for setting that key repeats itself. With `zaraz.set()` you can avoid repetition by setting the key once when the page loads. Zaraz will then attach this key to all future `zaraz.track()` calls.
@@ -61,10 +49,7 @@ Another example:
 JavaScript
 
 ```
-
 zaraz.set('product_name', 't-shirt', {scope: 'page'})
-
-
 ```
 
 Keys that are sent using `zaraz.set()` can be used inside tool actions exactly like keys in the `eventProperties` of `zaraz.track()`. So, the above `product` key is accessible through the Cloudflare dashboard with the variable _Track Property name:_, and setting its name as `product_name`. Zaraz will then replace it with `t-shirt`.
@@ -84,10 +69,7 @@ To unset a variable, set it to `undefined`. The variable will then be removed fr
 JavaScript
 
 ```
-
 zaraz.set('product_name', undefined)
-
-
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,79 +18,32 @@ To enable built-in Node.js APIs and polyfills, add the nodejs\_compat compatibil
 
 You can use [node:fs ↗](https://nodejs.org/api/fs.html) to access a virtual file system in Workers.
 
-The `node:fs` module is available in Workers runtimes that support Node.js compatibility using the `nodejs_compat` compatibility flag. Any Worker running with `nodejs_compat` enabled and with a compatibility date of`2025-09-01` or later will have access to `node:fs` by default. It is also possible to enable `node:fs` on Workers with an earlier compatibility date using a combination of the `nodejs_compat` and `enable_nodejs_fs_module`flags. To disable `node:fs` you can set the `disable_nodejs_fs_module` flag.
+The `node:fs` module is available in Workers runtimes that support Node.js compatibility using the `nodejs_compat` compatibility flag. Any Worker running with `nodejs_compat` enabled and with a compatibility date of `2025-09-01` or later will have access to `node:fs` by default. It is also possible to enable `node:fs` on Workers with an earlier compatibility date using a combination of the `nodejs_compat` and `enable_nodejs_fs_module`flags. To disable `node:fs` you can set the `disable_nodejs_fs_module` flag.
 
 JavaScript
 
 ```
-
 import { readFileSync, writeFileSync } from "node:fs";
-
-
 const config = readFileSync("/bundle/config.txt", "utf8");
-
-
 writeFileSync("/tmp/abc.txt", "Hello, world!");
-
-
 ```
 
-The Workers Virtual File System (VFS) is a memory-based file system that allows you to read modules included in your Worker bundle as read-only files, access a directory for writing temporary files, or access common[character devices ↗](https://linux-kernel-labs.github.io/refs/heads/master/labs/device%5Fdrivers.html) like`/dev/null`, `/dev/random`, `/dev/full`, and `/dev/zero`.
+The Workers Virtual File System (VFS) is a memory-based file system that allows you to read modules included in your Worker bundle as read-only files, access a directory for writing temporary files, or access common [character devices ↗](https://linux-kernel-labs.github.io/refs/heads/master/labs/device%5Fdrivers.html) like `/dev/null`, `/dev/random`, `/dev/full`, and `/dev/zero`.
 
 The directory structure initially looks like:
 
 ```
-
-/bundle
-
-└── (one file for each module in your Worker bundle)
-
-/tmp
-
-└── (empty, but you can write files, create directories, symlinks, etc)
-
-/dev
-
-├── null
-
-├── random
-
-├── full
-
-└── zero
-
-
+/bundle└── (one file for each module in your Worker bundle)/tmp└── (empty, but you can write files, create directories, symlinks, etc)/dev├── null├── random├── full└── zero
 ```
 
-The `/bundle` directory contains the files for all modules included in your Worker bundle, which you can read using APIs like `readFileSync` or`read(...)`, etc. These are always read-only. Reading from the bundle can be useful when you need to read a config file or a template.
+The `/bundle` directory contains the files for all modules included in your Worker bundle, which you can read using APIs like `readFileSync` or `read(...)`, etc. These are always read-only. Reading from the bundle can be useful when you need to read a config file or a template.
 
 JavaScript
 
 ```
-
 import { readFileSync } from "node:fs";
-
-
-// The config.txt file would be included in your Worker bundle.
-
-// Refer to the Wrangler documentation for details on how to
-
-// include additional files.
-
-const config = readFileSync("/bundle/config.txt", "utf8");
-
-
-export default {
-
-  async fetch(request) {
-
-    return new Response(`Config contents: ${config}`);
-
-  },
-
-};
-
-
+// The config.txt file would be included in your Worker bundle.// Refer to the Wrangler documentation for details on how to// include additional files.const config = readFileSync("/bundle/config.txt", "utf8");
+export default {  async fetch(request) {    return new Response(`Config contents: ${config}`);  },};
 ```
 
 The `/tmp` directory is writable, and you can use it to create temporary files or directories. You can also create symlinks in this directory. However, the contents of `/tmp` are not persistent and are unique to each request. This means that files created in `/tmp` within the context of one request will not be available in other concurrent or subsequent requests.
@@ -98,29 +51,8 @@ The `/tmp` directory is writable, and you can use it to create temporary files o
 JavaScript
 
 ```
-
 import { writeFileSync, readFileSync } from "node:fs";
-
-
-export default {
-
-  fetch(request) {
-
-    // The file `/tmp/hello.txt` will only exist for the duration
-
-    // of this request.
-
-    writeFileSync("/tmp/hello.txt", "Hello, world!");
-
-    const contents = readFileSync("/tmp/hello.txt", "utf8");
-
-    return new Response(`File contents: ${contents}`);
-
-  },
-
-};
-
-
+export default {  fetch(request) {    // The file `/tmp/hello.txt` will only exist for the duration    // of this request.    writeFileSync("/tmp/hello.txt", "Hello, world!");    const contents = readFileSync("/tmp/hello.txt", "utf8");    return new Response(`File contents: ${contents}`);  },};
 ```
 
 The `/dev` directory contains common character devices:

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -14,49 +14,19 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 By default, [Workers](https://developers.cloudflare.com/workers/) and [Pages Functions](https://developers.cloudflare.com/pages/functions/) run in a data center closest to where the request was received. If your Worker makes requests to back-end infrastructure such as databases or APIs, it may be more performant to run that Worker closer to your back-end than the end user.
 
-* [  wrangler.jsonc ](#tab-panel-11459)
-* [  wrangler.toml ](#tab-panel-11460)
+* [  wrangler.jsonc ](#tab-panel-11476)
+* [  wrangler.toml ](#tab-panel-11477)
 
 JSONC
 
 ```
-
-{
-
-  "placement": {
-
-    // Use one of the following options (mutually exclusive):
-
-    "mode": "smart", // Cloudflare automatically places your Worker closest to the upstream with the most requests
-
-    "region": "gcp:us-east4", // Explicit cloud region to run your Worker closest to - e.g. "gcp:us-east4" or "aws:us-east-1"
-
-    "host": "db.example.com:5432", // A host to probe (TCP/layer 4) - e.g. a database host - and place your Worker closest to
-
-    "hostname": "api.example.com", // A hostname to probe (HTTP/layer 7) - e.g. an API endpoint - and place your Worker closest to
-
-  },
-
-}
-
-
+{  "placement": {    // Use one of the following options (mutually exclusive):    "mode": "smart", // Cloudflare automatically places your Worker closest to the upstream with the most requests    "region": "gcp:us-east4", // Explicit cloud region to run your Worker closest to - e.g. "gcp:us-east4" or "aws:us-east-1"    "host": "db.example.com:5432", // A host to probe (TCP/layer 4) - e.g. a database host - and place your Worker closest to    "hostname": "api.example.com", // A hostname to probe (HTTP/layer 7) - e.g. an API endpoint - and place your Worker closest to  },}
 ```
 
 TOML
 
 ```
-
-[placement]
-
-mode = "smart"
-
-region = "gcp:us-east4"
-
-host = "db.example.com:5432"
-
-hostname = "api.example.com"
-
-
+[placement]mode = "smart"region = "gcp:us-east4"host = "db.example.com:5432"hostname = "api.example.com"
 ```
 
 Placement can reduce the overall latency of a Worker request by minimizing roundtrip latency of requests between your Worker and back-end services. You can achieve single-digit millisecond latency to databases, APIs, and other services running in legacy cloud infrastructure.
@@ -105,35 +75,19 @@ Smart Placement is available on all Workers plans.
 
 Add the following to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-11457)
-* [  wrangler.toml ](#tab-panel-11458)
+* [  wrangler.jsonc ](#tab-panel-11474)
+* [  wrangler.toml ](#tab-panel-11475)
 
 JSONC
 
 ```
-
-{
-
-  "placement": {
-
-    "mode": "smart",
-
-  },
-
-}
-
-
+{  "placement": {    "mode": "smart",  },}
 ```
 
 TOML
 
 ```
-
-[placement]
-
-mode = "smart"
-
-
+[placement]mode = "smart"
 ```
 
 Smart Placement may take up to 15 minutes to analyze your Worker after deployment.
@@ -155,14 +109,7 @@ Query your Worker's placement status through the Workers API:
 Terminal window
 
 ```
-
-curl -X GET https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/services/$WORKER_NAME \
-
--H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
--H "Content-Type: application/json" | jq .
-
-
+curl -X GET https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/services/$WORKER_NAME \-H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \-H "Content-Type: application/json" | jq .
 ```
 
 Possible placement states:
@@ -211,35 +158,19 @@ Workers run on [Cloudflare's global network ↗](https://www.cloudflare.com/netw
 
 If your infrastructure runs in AWS, GCP, or Azure, set the `placement.region` property using the format `{provider}:{region}`:
 
-* [  wrangler.jsonc ](#tab-panel-11461)
-* [  wrangler.toml ](#tab-panel-11462)
+* [  wrangler.jsonc ](#tab-panel-11478)
+* [  wrangler.toml ](#tab-panel-11479)
 
 JSONC
 
 ```
-
-{
-
-  "placement": {
-
-    "region": "aws:us-east-1", // Explicit cloud region to run your Worker closest to - e.g. "gcp:us-east4" or "aws:us-east-1"
-
-  },
-
-}
-
-
+{  "placement": {    "region": "aws:us-east-1", // Explicit cloud region to run your Worker closest to - e.g. "gcp:us-east4" or "aws:us-east-1"  },}
 ```
 
 TOML
 
 ```
-
-[placement]
-
-region = "aws:us-east-1"
-
-
+[placement]region = "aws:us-east-1"
 ```
 
 Cloudflare maps your specified cloud region to the data center with the lowest latency to that region. Cloudflare automatically adjusts placement to account for network maintenance or changes, so you do not need to specify failover regions.
@@ -254,68 +185,36 @@ Host-based placement is experimental.
 
 Set `placement.host` to identify a layer 4 service. Cloudflare uses TCP CONNECT checks to measure latency and selects the best data center.
 
-* [  wrangler.jsonc ](#tab-panel-11463)
-* [  wrangler.toml ](#tab-panel-11464)
+* [  wrangler.jsonc ](#tab-panel-11480)
+* [  wrangler.toml ](#tab-panel-11481)
 
 JSONC
 
 ```
-
-{
-
-  "placement": {
-
-    "host": "my_database_host.com:5432", // A host to probe (TCP/layer 4) - e.g. a database host - and place your Worker closest to
-
-  },
-
-}
-
-
+{  "placement": {    "host": "my_database_host.com:5432", // A host to probe (TCP/layer 4) - e.g. a database host - and place your Worker closest to  },}
 ```
 
 TOML
 
 ```
-
-[placement]
-
-host = "my_database_host.com:5432"
-
-
+[placement]host = "my_database_host.com:5432"
 ```
 
 Set `placement.hostname` to identify a layer 7 service. Cloudflare uses HTTP HEAD checks to measure latency and selects the best data center.
 
-* [  wrangler.jsonc ](#tab-panel-11465)
-* [  wrangler.toml ](#tab-panel-11466)
+* [  wrangler.jsonc ](#tab-panel-11482)
+* [  wrangler.toml ](#tab-panel-11483)
 
 JSONC
 
 ```
-
-{
-
-  "placement": {
-
-    "hostname": "my_api_server.com", // A hostname to probe (HTTP/layer 7) - e.g. an API endpoint - and place your Worker closest to
-
-  },
-
-}
-
-
+{  "placement": {    "hostname": "my_api_server.com", // A hostname to probe (HTTP/layer 7) - e.g. an API endpoint - and place your Worker closest to  },}
 ```
 
 TOML
 
 ```
-
-[placement]
-
-hostname = "my_api_server.com"
-
-
+[placement]hostname = "my_api_server.com"
 ```
 
 Probes are sent from public IP ranges, not Cloudflare IP ranges. Cloudflare rechecks service location at regular intervals. These probes locate single-homed resources and do not work correctly for broadcast, anycast, multicast, or replicated resources.
@@ -341,8 +240,8 @@ Workers placement behaves in similar fashion when either Smart Placement or Plac
 The following limitations apply to both Smart Placement and Placement Hints:
 
 * Placement only affects the execution of [fetch event handlers](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/). It does not affect [RPC methods](https://developers.cloudflare.com/workers/runtime-apis/rpc/) or [named entrypoints](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#named-entrypoints).  
-   * Workers without a fetch event handler are ignored by placement.  
-   * [Static assets](https://developers.cloudflare.com/workers/static-assets/) are always served from the location nearest to the incoming request. If your code retrieves assets via the [static assets binding](https://developers.cloudflare.com/workers/static-assets/binding/), assets are served from the location where your Worker runs.
+  * Workers without a fetch event handler are ignored by placement.
+  * [Static assets](https://developers.cloudflare.com/workers/static-assets/) are always served from the location nearest to the incoming request. If your code retrieves assets via the [static assets binding](https://developers.cloudflare.com/workers/static-assets/binding/), assets are served from the location where your Worker runs.
 
 ### `cf-placement` header
 
@@ -372,220 +271,60 @@ This example shows two Workers:
 * `auth-worker` — runs at the edge (no placement), handles authentication
 * `app-worker` — placed near your database, handles data queries
 
-* [ auth-worker ](#tab-panel-11471)
-* [ app-worker ](#tab-panel-11472)
+* [ auth-worker ](#tab-panel-11488)
+* [ app-worker ](#tab-panel-11489)
 
-* [  wrangler.jsonc ](#tab-panel-11467)
-* [  wrangler.toml ](#tab-panel-11468)
+* [  wrangler.jsonc ](#tab-panel-11484)
+* [  wrangler.toml ](#tab-panel-11485)
 
 JSONC
 
 ```
-
-{
-
-  "name": "auth-worker",
-
-  "main": "src/index.ts",
-
-  "services": [{ "binding": "APP", "service": "app-worker" }],
-
-}
-
-
+{  "name": "auth-worker",  "main": "src/index.ts",  "services": [{ "binding": "APP", "service": "app-worker" }],}
 ```
 
 TOML
 
 ```
-
-name = "auth-worker"
-
-main = "src/index.ts"
-
-
-[[services]]
-
-binding = "APP"
-
-service = "app-worker"
-
-
+name = "auth-worker"main = "src/index.ts"
+[[services]]binding = "APP"service = "app-worker"
 ```
 
 auth-worker/src/index.ts
 
 ```
-
 import { AppWorker } from "../app-worker/src/index";
-
-
-interface Env {
-
-  APP: Service<AppWorker>;
-
-}
-
-
-export default {
-
-  async fetch(request: Request, env: Env): Promise<Response> {
-
-    const authHeader = request.headers.get("Authorization");
-
-    if (!authHeader?.startsWith("Bearer ")) {
-
-      return new Response("Unauthorized", { status: 401 });
-
-    }
-
-
-    const userId = await validateToken(authHeader.slice(7));
-
-    if (!userId) {
-
-      return new Response("Invalid token", { status: 403 });
-
-    }
-
-
-    // Call the placed back-end Worker via RPC
-
-    const data = await env.APP.getUser(userId);
-
-    return Response.json(data);
-
-  },
-
-};
-
-
-async function validateToken(token: string): Promise<string | null> {
-
-  return token === "valid" ? "user-123" : null;
-
-}
-
-
+interface Env {  APP: Service<AppWorker>;}
+export default {  async fetch(request: Request, env: Env): Promise<Response> {    const authHeader = request.headers.get("Authorization");    if (!authHeader?.startsWith("Bearer ")) {      return new Response("Unauthorized", { status: 401 });    }
+    const userId = await validateToken(authHeader.slice(7));    if (!userId) {      return new Response("Invalid token", { status: 403 });    }
+    // Call the placed back-end Worker via RPC    const data = await env.APP.getUser(userId);    return Response.json(data);  },};
+async function validateToken(token: string): Promise<string | null> {  return token === "valid" ? "user-123" : null;}
 ```
 
-* [  wrangler.jsonc ](#tab-panel-11469)
-* [  wrangler.toml ](#tab-panel-11470)
+* [  wrangler.jsonc ](#tab-panel-11486)
+* [  wrangler.toml ](#tab-panel-11487)
 
 JSONC
 
 ```
-
-{
-
-  "name": "app-worker",
-
-  "main": "src/index.ts",
-
-  "placement": {
-
-    // Use one of the following options (mutually exclusive):
-
-    // "mode": "smart", // Cloudflare automatically places your Worker closest to the upstream with the most requests
-
-    "region": "aws:us-east-1", // Explicit cloud region to run your Worker closest to - e.g. "gcp:us-east4" or "aws:us-east-1"
-
-    // "host": "db.example.com:5432", // A host to probe (TCP/layer 4) - e.g. a database host - and place your Worker closest to
-
-    // "hostname": "api.example.com", // A hostname to probe (HTTP/layer 7) - e.g. an API endpoint - and place your Worker closest to
-
-  },
-
-}
-
-
+{  "name": "app-worker",  "main": "src/index.ts",  "placement": {    // Use one of the following options (mutually exclusive):    // "mode": "smart", // Cloudflare automatically places your Worker closest to the upstream with the most requests    "region": "aws:us-east-1", // Explicit cloud region to run your Worker closest to - e.g. "gcp:us-east4" or "aws:us-east-1"    // "host": "db.example.com:5432", // A host to probe (TCP/layer 4) - e.g. a database host - and place your Worker closest to    // "hostname": "api.example.com", // A hostname to probe (HTTP/layer 7) - e.g. an API endpoint - and place your Worker closest to  },}
 ```
 
 TOML
 
 ```
-
-name = "app-worker"
-
-main = "src/index.ts"
-
-
-[placement]
-
-region = "aws:us-east-1"
-
-
+name = "app-worker"main = "src/index.ts"
+[placement]region = "aws:us-east-1"
 ```
 
 app-worker/src/index.ts
 
 ```
-
 import { WorkerEntrypoint } from "cloudflare:workers";
-
-
-export default class AppWorker extends WorkerEntrypoint {
-
-  async fetch() {
-
-    return new Response(null, { status: 404 });
-
-  }
-
-
-  // Each method runs near your database - multiple queries stay fast
-
-  async getUser(userId: string) {
-
-    const user = await this.env.DB.prepare("SELECT * FROM users WHERE id = ?")
-
-      .bind(userId)
-
-      .first();
-
-    return user;
-
-  }
-
-
-  async getUserListings(userId: string) {
-
-    // Multiple round-trips to the DB are low-latency when placed nearby
-
-    const user = await this.env.DB.prepare("SELECT * FROM users WHERE id = ?")
-
-      .bind(userId)
-
-      .first();
-
-    const listings = await this.env.DB.prepare(
-
-      "SELECT * FROM listings WHERE owner_id = ?",
-
-    )
-
-      .bind(userId)
-
-      .all();
-
-    const reviews = await this.env.DB.prepare(
-
-      "SELECT * FROM reviews WHERE listing_id IN (SELECT id FROM listings WHERE owner_id = ?)",
-
-    )
-
-      .bind(userId)
-
-      .all();
-
-
-    return { user, listings: listings.results, reviews: reviews.results };
-
-  }
-
-}
-
-
+export default class AppWorker extends WorkerEntrypoint {  async fetch() {    return new Response(null, { status: 404 });  }
+  // Each method runs near your database - multiple queries stay fast  async getUser(userId: string) {    const user = await this.env.DB.prepare("SELECT * FROM users WHERE id = ?")      .bind(userId)      .first();    return user;  }
+  async getUserListings(userId: string) {    // Multiple round-trips to the DB are low-latency when placed nearby    const user = await this.env.DB.prepare("SELECT * FROM users WHERE id = ?")      .bind(userId)      .first();    const listings = await this.env.DB.prepare(      "SELECT * FROM listings WHERE owner_id = ?",    )      .bind(userId)      .all();    const reviews = await this.env.DB.prepare(      "SELECT * FROM reviews WHERE listing_id IN (SELECT id FROM listings WHERE owner_id = ?)",    )      .bind(userId)      .all();
+    return { user, listings: listings.results, reviews: reviews.results };  }}
 ```
 
 The `auth-worker` runs at the edge to reject unauthorized requests quickly. Authenticated requests are forwarded via RPC to `app-worker`, which runs near your database for fast queries.
@@ -599,57 +338,10 @@ Do as much work as possible within the Durable Object and return a composite res
 src/index.ts
 
 ```
-
 import { DurableObject } from "cloudflare:workers";
-
-
-type Session = { id: string; user_id: string; created_at: number };
-
-type PromptHistory = {
-
-  id: string;
-
-  session_id: string;
-
-  role: string;
-
-  content: string;
-
-};
-
-
-export class AgentHistory extends DurableObject {
-
-  async getSessionContext(sessionId: string) {
-
-    // All queries execute with zero network latency — compute and data are colocated
-
-    const session = this.ctx.storage.sql
-
-      .exec<Session>("SELECT * FROM sessions WHERE id = ?", sessionId)
-
-      .one();
-
-    const prompts = this.ctx.storage.sql
-
-      .exec<PromptHistory>(
-
-        "SELECT * FROM prompt_history WHERE session_id = ? ORDER BY created_at",
-
-        sessionId,
-
-      )
-
-      .toArray();
-
-
-    return { session, prompts };
-
-  }
-
-}
-
-
+type Session = { id: string; user_id: string; created_at: number };type PromptHistory = {  id: string;  session_id: string;  role: string;  content: string;};
+export class AgentHistory extends DurableObject {  async getSessionContext(sessionId: string) {    // All queries execute with zero network latency — compute and data are colocated    const session = this.ctx.storage.sql      .exec<Session>("SELECT * FROM sessions WHERE id = ?", sessionId)      .one();    const prompts = this.ctx.storage.sql      .exec<PromptHistory>(        "SELECT * FROM prompt_history WHERE session_id = ? ORDER BY created_at",        sessionId,      )      .toArray();
+    return { session, prompts };  }}
 ```
 
 ```json

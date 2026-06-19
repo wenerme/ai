@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,16 +26,7 @@ A pre-built meeting header that contains meeting title, clock, recording indicat
 ### Basic Usage
 
 ```
-
-<com.cloudflare.realtimekit.ui.view.headers.RtkMeetingHeaderView
-
-    android:id="@+id/rtk_meeting_header"
-
-    android:layout_width="match_parent"
-
-    android:layout_height="wrap_content" />
-
-
+<com.cloudflare.realtimekit.ui.view.headers.RtkMeetingHeaderView    android:id="@+id/rtk_meeting_header"    android:layout_width="match_parent"    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
@@ -43,12 +34,7 @@ A pre-built meeting header that contains meeting title, clock, recording indicat
 Kotlin
 
 ```
-
-val header = findViewById<RtkMeetingHeaderView>(R.id.rtk_meeting_header)
-
-header.activate(meeting)
-
-
+val header = findViewById<RtkMeetingHeaderView>(R.id.rtk_meeting_header)header.activate(meeting)
 ```
 
 ```json

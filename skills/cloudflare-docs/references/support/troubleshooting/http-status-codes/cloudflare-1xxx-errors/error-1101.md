@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/support/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,10 +26,10 @@ To identify the specific JavaScript exception:
 
 1. Check your Workers logs in the Cloudflare dashboard under **Workers & Pages** \> **Your Worker** \> **Logs**.
 2. Review the Workers code for potential runtime errors such as:  
-   * Undefined variables or functions  
-   * Type errors  
-   * Promise rejections  
-   * Network request failures
+  * Undefined variables or functions
+  * Type errors
+  * Promise rejections
+  * Network request failures
 3. Test the [Worker locally](https://developers.cloudflare.com/workers/development-testing/#local-development) with sample requests to reproduce the error.
 4. Refer to [Workers error handling](https://developers.cloudflare.com/workers/observability/errors/) for more details on debugging Workers.
 

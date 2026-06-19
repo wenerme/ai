@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -24,33 +24,14 @@ Worker-to-Worker `fetch` requests are possible with [Service bindings](https://d
 
 ## Syntax
 
-* [  Module Worker ](#tab-panel-11988)
-* [  Service Worker ](#tab-panel-11989)
-* [  Python Worker ](#tab-panel-11990)
+* [  Module Worker ](#tab-panel-12005)
+* [  Service Worker ](#tab-panel-12006)
+* [  Python Worker ](#tab-panel-12007)
 
 JavaScript
 
 ```
-
-export default {
-
-  async scheduled(controller, env, ctx) {
-
-    return await fetch("https://example.com", {
-
-      headers: {
-
-        "X-Source": "Cloudflare-Workers",
-
-      },
-
-    });
-
-  },
-
-};
-
-
+export default {  async scheduled(controller, env, ctx) {    return await fetch("https://example.com", {      headers: {        "X-Source": "Cloudflare-Workers",      },    });  },};
 ```
 
 Service Workers are deprecated
@@ -60,43 +41,15 @@ Service Workers are deprecated, but still supported. We recommend using [Module 
 JavaScript
 
 ```
-
-addEventListener("fetch", (event) => {
-
-  // NOTE: can’t use fetch here, as we’re not in an async scope yet
-
-  event.respondWith(eventHandler(event));
-
-});
-
-
-async function eventHandler(event) {
-
-  // fetch can be awaited here since `event.respondWith()` waits for the Promise it receives to settle
-
-  const resp = await fetch(event.request);
-
-  return resp;
-
-}
-
-
+addEventListener("fetch", (event) => {  // NOTE: can’t use fetch here, as we’re not in an async scope yet  event.respondWith(eventHandler(event));});
+async function eventHandler(event) {  // fetch can be awaited here since `event.respondWith()` waits for the Promise it receives to settle  const resp = await fetch(event.request);  return resp;}
 ```
 
 Python
 
 ```
-
 from workers import WorkerEntrypoint, Response, fetch
-
-
-class Default(WorkerEntrypoint):
-
-    async def scheduled(self, controller, env, ctx):
-
-        return await fetch("https://example.com", headers={"X-Source": "Cloudflare-Workers"})
-
-
+class Default(WorkerEntrypoint):    async def scheduled(self, controller, env, ctx):        return await fetch("https://example.com", headers={"X-Source": "Cloudflare-Workers"})
 ```
 
 * `fetch(resource, options optional)` : Promise`<Response>`
@@ -105,10 +58,11 @@ class Default(WorkerEntrypoint):
 ### Parameters
 
 * [resource ↗](https://developer.mozilla.org/en-US/docs/Web/API/fetch#resource) Request | string | URL
-* `options` options  
-   * `cache` `undefined | 'no-store' | 'no-cache'` optional  
-         * Standard HTTP `cache` header. Only `cache: 'no-store'` and `cache: 'no-cache'` are supported. Any other `cache` header will result in a `TypeError` with the message `Unsupported cache mode: <attempted-cache-mode>`. \_ For all requests this forwards the `Pragma: no-cache` and `Cache-Control: no-cache` headers to the origin. \_ For `no-store`, requests to origins not hosted by Cloudflare bypass the use of Cloudflare's caches. \_ For `no-cache`, requests to origins not hosted by Cloudflare are forced to revalidate with the origin before resonding.  
-   * An object that defines the content and behavior of the request.
+* `options` options
+
+  * `cache` `undefined | 'no-store' | 'no-cache'` optional  
+    * Standard HTTP `cache` header. Only `cache: 'no-store'` and `cache: 'no-cache'` are supported. Any other `cache` header will result in a `TypeError` with the message `Unsupported cache mode: <attempted-cache-mode>`. \_ For all requests this forwards the `Pragma: no-cache` and `Cache-Control: no-cache` headers to the origin. \_ For `no-store`, requests to origins not hosted by Cloudflare bypass the use of Cloudflare's caches. \_ For `no-cache`, requests to origins not hosted by Cloudflare are forced to revalidate with the origin before resonding.
+  * An object that defines the content and behavior of the request.
 
 ---
 
@@ -129,47 +83,8 @@ In addition to a change in the content encoding, recompression is also needed wh
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request) {
-
-    // Accept brotli or gzip compression
-
-    const headers = new Headers({
-
-      "Accept-Encoding": "br, gzip",
-
-    });
-
-    let response = await fetch("https://developers.cloudflare.com", {
-
-      method: "GET",
-
-      headers,
-
-    });
-
-
-    // As long as the original response body is returned and the Content-Encoding header is
-
-    // preserved, the same encoded data will be returned without needing to be compressed again.
-
-    return new Response(response.body, {
-
-      status: response.status,
-
-      statusText: response.statusText,
-
-      headers: response.headers,
-
-    });
-
-  },
-
-};
-
-
+export default {  async fetch(request) {    // Accept brotli or gzip compression    const headers = new Headers({      "Accept-Encoding": "br, gzip",    });    let response = await fetch("https://developers.cloudflare.com", {      method: "GET",      headers,    });
+    // As long as the original response body is returned and the Content-Encoding header is    // preserved, the same encoded data will be returned without needing to be compressed again.    return new Response(response.body, {      status: response.status,      statusText: response.statusText,      headers: response.headers,    });  },};
 ```
 
 ## Related resources

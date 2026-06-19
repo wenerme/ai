@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security-center/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,63 +22,13 @@ This guide will show you how to manage miscategorization of reports. To complete
 Example of a POST request to miscategorization API
 
 ```
-
-export URL="https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/intel/miscategorization"
-
-curl -X POST "$URL" \
-
-     -H "Authorization: Bearer $TOKEN" \
-
-     -H "Content-Type:application/json" \
-
---data '{
-
-  "content_adds": [
-
-  ],
-
-  "content_removes": [
-
-  ],
-
-  "indicator_type": "domain",
-
-  "ip": null,
-
-  "security_adds": [
-
-    115
-
-  ],
-
-  "security_removes": [
-
-  ],
-
-  "url": "cloudflare.com"
-
-}'
-
-
+export URL="https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/intel/miscategorization"curl -X POST "$URL" \     -H "Authorization: Bearer $TOKEN" \     -H "Content-Type:application/json" \--data '{  "content_adds": [  ],  "content_removes": [  ],  "indicator_type": "domain",  "ip": null,  "security_adds": [    115  ],  "security_removes": [  ],  "url": "cloudflare.com"}'
 ```
 
 You should receive a response with the value `"success": true`:
 
 ```
-
-{
-
-  "result": "",
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": "",  "success": true,  "errors": [],  "messages": []}
 ```
 
 Once you send the request, the Cloudflare Support team will receive it and will be able to take action.

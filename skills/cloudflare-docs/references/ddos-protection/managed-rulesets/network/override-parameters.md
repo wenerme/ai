@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,16 +25,19 @@ API property name: `"action"`.
 
 The action performed for packets that match specific rules of Cloudflare's DDoS mitigation services. The available actions are:
 
-* **Log**  
-   * API value: `"log"`.  
-   * Only available on Enterprise plans. Logs requests that match the expression of a rule detecting network layer DDoS attacks. Recommended for validating a rule before committing to a more severe action.  
-   Refer to the [Analytics documentation](https://developers.cloudflare.com/analytics/network-analytics/configure/displayed-data/#view-logged-or-monitored-traffic) for more information on how to view logged or monitored traffic.
-* **Block**  
-   * API value: `"block"`.  
-   * Blocks IP packets that match the rule expression given the sensitivity levels.
-* **DDoS Dynamic**  
-   * API value: _N/A_ (internal rule action that you cannot use in overrides).  
-   * Performs a specific action according to a set of internal guidelines defined by Cloudflare. The executed action can be _Block_ or an undisclosed mitigation action.
+* **Log**
+
+  * API value: `"log"`.
+  * Only available on Enterprise plans. Logs requests that match the expression of a rule detecting network layer DDoS attacks. Recommended for validating a rule before committing to a more severe action.  
+  Refer to the [Analytics documentation](https://developers.cloudflare.com/analytics/network-analytics/configure/displayed-data/#view-logged-or-monitored-traffic) for more information on how to view logged or monitored traffic.
+* **Block**
+
+  * API value: `"block"`.
+  * Blocks IP packets that match the rule expression given the sensitivity levels.
+* **DDoS Dynamic**
+
+  * API value: _N/A_ (internal rule action that you cannot use in overrides).
+  * Performs a specific action according to a set of internal guidelines defined by Cloudflare. The executed action can be _Block_ or an undisclosed mitigation action.
 
 ## Sensitivity Level
 

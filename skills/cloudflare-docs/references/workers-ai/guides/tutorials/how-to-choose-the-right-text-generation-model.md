@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,59 +31,25 @@ In an effort to aid you in your journey of finding the right model, this noteboo
 Python
 
 ```
-
-import sys
-
-!{sys.executable} -m pip install requests python-dotenv
-
-
+import sys!{sys.executable} -m pip install requests python-dotenv
 ```
 
 ```
-
-Requirement already satisfied: requests in ./venv/lib/python3.12/site-packages (2.31.0)
-
-Requirement already satisfied: python-dotenv in ./venv/lib/python3.12/site-packages (1.0.1)
-
-Requirement already satisfied: charset-normalizer<4,>=2 in ./venv/lib/python3.12/site-packages (from requests) (3.3.2)
-
-Requirement already satisfied: idna<4,>=2.5 in ./venv/lib/python3.12/site-packages (from requests) (3.6)
-
-Requirement already satisfied: urllib3<3,>=1.21.1 in ./venv/lib/python3.12/site-packages (from requests) (2.1.0)
-
-Requirement already satisfied: certifi>=2017.4.17 in ./venv/lib/python3.12/site-packages (from requests) (2023.11.17)
-
-
+Requirement already satisfied: requests in ./venv/lib/python3.12/site-packages (2.31.0)Requirement already satisfied: python-dotenv in ./venv/lib/python3.12/site-packages (1.0.1)Requirement already satisfied: charset-normalizer<4,>=2 in ./venv/lib/python3.12/site-packages (from requests) (3.3.2)Requirement already satisfied: idna<4,>=2.5 in ./venv/lib/python3.12/site-packages (from requests) (3.6)Requirement already satisfied: urllib3<3,>=1.21.1 in ./venv/lib/python3.12/site-packages (from requests) (2.1.0)Requirement already satisfied: certifi>=2017.4.17 in ./venv/lib/python3.12/site-packages (from requests) (2023.11.17)
 ```
 
 Python
 
 ```
-
-import os
-
-from getpass import getpass
-
-from timeit import default_timer as timer
-
-
+import osfrom getpass import getpassfrom timeit import default_timer as timer
 from IPython.display import display, Image, Markdown, Audio
-
-
 import requests
-
-
 ```
 
 Python
 
 ```
-
-%load_ext dotenv
-
-%dotenv
-
-
+%load_ext dotenv%dotenv
 ```
 
 ### Configuring your environment
@@ -95,106 +61,26 @@ If you want to add these files to your environment, you can create a new file na
 Terminal window
 
 ```
-
-CLOUDFLARE_API_TOKEN="YOUR-TOKEN"
-
-CLOUDFLARE_ACCOUNT_ID="YOUR-ACCOUNT-ID"
-
-
+CLOUDFLARE_API_TOKEN="YOUR-TOKEN"CLOUDFLARE_ACCOUNT_ID="YOUR-ACCOUNT-ID"
 ```
 
 Python
 
 ```
-
-if "CLOUDFLARE_API_TOKEN" in os.environ:
-
-    api_token = os.environ["CLOUDFLARE_API_TOKEN"]
-
-else:
-
-    api_token = getpass("Enter your Cloudflare API Token")
-
-
+if "CLOUDFLARE_API_TOKEN" in os.environ:    api_token = os.environ["CLOUDFLARE_API_TOKEN"]else:    api_token = getpass("Enter your Cloudflare API Token")
 ```
 
 Python
 
 ```
-
-if "CLOUDFLARE_ACCOUNT_ID" in os.environ:
-
-    account_id = os.environ["CLOUDFLARE_ACCOUNT_ID"]
-
-else:
-
-    account_id = getpass("Enter your account id")
-
-
+if "CLOUDFLARE_ACCOUNT_ID" in os.environ:    account_id = os.environ["CLOUDFLARE_ACCOUNT_ID"]else:    account_id = getpass("Enter your account id")
 ```
 
 Python
 
 ```
-
-# Given a set of models and questions, display in the cell each response to the question, from each model
-
-# Include full completion timing
-
-def speed_date(models, questions):
-
-    for model in models:
-
-        display(Markdown(f"---\n #### {model}"))
-
-        for question in questions:
-
-            quoted_question = "\n".join(f"> {line}" for line in question.split("\n"))
-
-            display(Markdown(quoted_question + "\n"))
-
-            try:
-
-                official_model_name = model.split("/")[-1]
-
-                start = timer()
-
-                response = requests.post(
-
-                    f"https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/run/{model}",
-
-                    headers={"Authorization": f"Bearer {api_token}"},
-
-                    json={"messages": [
-
-                        {"role": "system", "content": f"You are a self-aware language model ({official_model_name}) who is honest and direct about any direct question from the user. You know your strengths and weaknesses."},
-
-                        {"role": "user", "content": question}
-
-                    ]}
-
-                )
-
-                elapsed = timer() - start
-
-                inference = response.json()
-
-                display(Markdown(inference["result"]["response"]))
-
-                display(Markdown(f"_Generated in *{elapsed:.2f}* seconds_"))
-
-            except Exception as ex:
-
-                print("uh oh")
-
-                print(ex)
-
-                print(inference)
-
-
+# Given a set of models and questions, display in the cell each response to the question, from each model# Include full completion timingdef speed_date(models, questions):    for model in models:        display(Markdown(f"---\n #### {model}"))        for question in questions:            quoted_question = "\n".join(f"> {line}" for line in question.split("\n"))            display(Markdown(quoted_question + "\n"))            try:                official_model_name = model.split("/")[-1]                start = timer()                response = requests.post(                    f"https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/run/{model}",                    headers={"Authorization": f"Bearer {api_token}"},                    json={"messages": [                        {"role": "system", "content": f"You are a self-aware language model ({official_model_name}) who is honest and direct about any direct question from the user. You know your strengths and weaknesses."},                        {"role": "user", "content": question}                    ]}                )                elapsed = timer() - start                inference = response.json()                display(Markdown(inference["result"]["response"]))                display(Markdown(f"_Generated in *{elapsed:.2f}* seconds_"))            except Exception as ex:                print("uh oh")                print(ex)                print(inference)
         display(Markdown("\n\n---"))
-
-
 ```
 
 ### Getting to know your models
@@ -206,34 +92,9 @@ The timing here is specific to the entire completion, but remember all Text Gene
 Python
 
 ```
-
-models = [
-
-    "@hf/thebloke/zephyr-7b-beta-awq",
-
-    "@hf/thebloke/mistral-7b-instruct-v0.1-awq",
-
-    "@hf/thebloke/openhermes-2.5-mistral-7b-awq",
-
-    "@hf/thebloke/neural-chat-7b-v3-1-awq",
-
-    "@hf/thebloke/llama-2-13b-chat-awq",
-
-]
-
-
-questions = [
-
-    "What are the top 3 tasks where you excel? Please keep things brief.",
-
-    "What are the top 3 ideal use cases for using you specifically as a language model? Please keep things brief.",
-
-]
-
-
+models = [    "@hf/thebloke/zephyr-7b-beta-awq",    "@hf/thebloke/mistral-7b-instruct-v0.1-awq",    "@hf/thebloke/openhermes-2.5-mistral-7b-awq",    "@hf/thebloke/neural-chat-7b-v3-1-awq",    "@hf/thebloke/llama-2-13b-chat-awq",]
+questions = [    "What are the top 3 tasks where you excel? Please keep things brief.",    "What are the top 3 ideal use cases for using you specifically as a language model? Please keep things brief.",]
 speed_date(models, questions)
-
-
 ```
 
 ---
@@ -365,40 +226,11 @@ Even though not every model bragged about how good they were at this, you'll fin
 Python
 
 ```
-
-proud_translator_models = [
-
-    "@hf/thebloke/neural-chat-7b-v3-1-awq",
-
-    "@hf/thebloke/mistral-7b-instruct-v0.1-awq"
-
-]
-
-
-phrases = [
-
-    "Excuse me, which way to the restroom?",
-
-    "I just wanted to say that I appreciate you, just the way you are!",
-
-    "I am so stoked and pumped to see this work with slang! It should be killer and rad."
-
-]
-
-
+proud_translator_models = [    "@hf/thebloke/neural-chat-7b-v3-1-awq",    "@hf/thebloke/mistral-7b-instruct-v0.1-awq"]
+phrases = [    "Excuse me, which way to the restroom?",    "I just wanted to say that I appreciate you, just the way you are!",    "I am so stoked and pumped to see this work with slang! It should be killer and rad."]
 languages = ["Spanish", "French", "British Slang", "Heavy New York accent from the Bronx"]
-
-
-questions = [f"""Translate "{phrase}" from "English" to "{language}" """
-
-             for phrase in phrases
-
-             for language in languages]
-
-
+questions = [f"""Translate "{phrase}" from "English" to "{language}" """             for phrase in phrases             for language in languages]
 speed_date(proud_translator_models, questions)
-
-
 ```
 
 ---
@@ -578,37 +410,11 @@ Again, most models are relatively good at this, but I've pulled out those that s
 Python
 
 ```
-
-proud_summarizers = [
-
-    "@hf/thebloke/llama-2-13b-chat-awq",
-
-    "@hf/thebloke/neural-chat-7b-v3-1-awq",
-
-    "@hf/thebloke/openhermes-2.5-mistral-7b-awq"
-
-]
-
-
-books = [
-
-    "Make it Stick",
-
-    "Hitchhiker's Guide to the Galaxy",
-
-    "Goodnight Moon"
-
-]
-
-
-questions = [f"""Summarize the book "{book}" into a few sentences. Ensure to include the author and the year it was published. """
-
-             for book in books]
-
+proud_summarizers = [    "@hf/thebloke/llama-2-13b-chat-awq",    "@hf/thebloke/neural-chat-7b-v3-1-awq",    "@hf/thebloke/openhermes-2.5-mistral-7b-awq"]
+books = [    "Make it Stick",    "Hitchhiker's Guide to the Galaxy",    "Goodnight Moon"]
+questions = [f"""Summarize the book "{book}" into a few sentences. Ensure to include the author and the year it was published. """             for book in books]
 
 speed_date(proud_summarizers, questions)
-
-
 ```
 
 ---
@@ -696,32 +502,9 @@ Your needs here will vary, so please make use of changing the questions.
 Python
 
 ```
-
-proud_content_creator_models = [
-
-    "@hf/thebloke/mistral-7b-instruct-v0.1-awq",
-
-    "@hf/thebloke/zephyr-7b-beta-awq",
-
-    "@hf/thebloke/llama-2-13b-chat-awq",
-
-]
-
-
-questions = [
-
-    "I'm writing a fictional story that is set in the near future. It's a love story about star crossed lovers. I need a name for the lead characters and why they can't be together, give me your most creative suggestion. Only one please.",
-
-    "I want to create a new tech product that helps keep cables arranged. Can you help me come up with a title and a tagline? Only your best suggestion please.",
-
-    "Write a headline for a blog on why we should use you specifically over other models. Keep it succinct, but make your point."
-
-]
-
-
+proud_content_creator_models = [    "@hf/thebloke/mistral-7b-instruct-v0.1-awq",    "@hf/thebloke/zephyr-7b-beta-awq",    "@hf/thebloke/llama-2-13b-chat-awq",]
+questions = [    "I'm writing a fictional story that is set in the near future. It's a love story about star crossed lovers. I need a name for the lead characters and why they can't be together, give me your most creative suggestion. Only one please.",    "I want to create a new tech product that helps keep cables arranged. Can you help me come up with a title and a tagline? Only your best suggestion please.",    "Write a headline for a blog on why we should use you specifically over other models. Keep it succinct, but make your point."]
 speed_date(proud_content_creator_models, questions)
-
-
 ```
 
 ---
@@ -848,46 +631,12 @@ Workers AI provides models that are specific for [Text Classification](https://d
 Python
 
 ```
-
-proud_classifiers = [
-
-    "@hf/thebloke/openhermes-2.5-mistral-7b-awq",
-
-    "@hf/thebloke/mistral-7b-instruct-v0.1-awq"
-
-]
-
-
-sentiment_prompt_template = """
-
-Classify the text into neutral, negative, or positive
-
-Text: {text}
-
-Sentiment: """
-
-
-comments = [
-
-    "Wow there are a ton of text generation models on Cloudflare Workers AI!",
-
-    "Sometimes choosing things is hard",
-
-    "I cannot wait to build! 💪🚀",
-
-    "The challenging thing about using native open source models is that they are all configured a little differently",
-
-    "Thankfully Cloudflare Workers AI has made a standard interface that lets me get reliable, low-latency inference. So quick too!"
-
-]
-
-
+proud_classifiers = [    "@hf/thebloke/openhermes-2.5-mistral-7b-awq",    "@hf/thebloke/mistral-7b-instruct-v0.1-awq"]
+sentiment_prompt_template = """Classify the text into neutral, negative, or positiveText: {text}Sentiment: """
+comments = [    "Wow there are a ton of text generation models on Cloudflare Workers AI!",    "Sometimes choosing things is hard",    "I cannot wait to build! 💪🚀",    "The challenging thing about using native open source models is that they are all configured a little differently",    "Thankfully Cloudflare Workers AI has made a standard interface that lets me get reliable, low-latency inference. So quick too!"]
 sentiment_questions = [sentiment_prompt_template.format(text=comment) for comment in comments]
 
-
 speed_date(proud_classifiers, sentiment_questions)
-
-
 ```
 
 ---

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,31 +32,8 @@ For example, providing an `OrderRow` type as a type parameter to [D1PreparedStat
 TypeScript
 
 ```
-
-// Row definition
-
-type OrderRow = {
-
-  Id: string;
-
-  CustomerName: string;
-
-  OrderDate: number;
-
-};
-
-
-// Elsewhere in your application
-
-// env.MY_DB is the D1 database binding from your Wrangler configuration file
-
-const result = await env.MY_DB.prepare(
-
-  "SELECT Id, CustomerName, OrderDate FROM [Order] ORDER BY ShippedDate DESC LIMIT 100",
-
-).run<OrderRow>();
-
-
+// Row definitiontype OrderRow = {  Id: string;  CustomerName: string;  OrderDate: number;};
+// Elsewhere in your application// env.MY_DB is the D1 database binding from your Wrangler configuration fileconst result = await env.MY_DB.prepare(  "SELECT Id, CustomerName, OrderDate FROM [Order] ORDER BY ShippedDate DESC LIMIT 100",).run<OrderRow>();
 ```
 
 ## Type conversion
@@ -82,11 +59,11 @@ The type conversion during writes is as follows:
 
 1 D1 types correspond to the underlying [SQLite types ↗](https://www.sqlite.org/datatype3.html).
 
-2 D1 supports 64-bit signed `INTEGER` values internally, however[BigInts ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/BigInt)are not currently supported in the API yet. JavaScript integers are safe up to[Number.MAX\_SAFE\_INTEGER ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Number/MAX%5FSAFE%5FINTEGER).
+2 D1 supports 64-bit signed `INTEGER` values internally, however [BigInts ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/BigInt)are not currently supported in the API yet. JavaScript integers are safe up to [Number.MAX\_SAFE\_INTEGER ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Number/MAX%5FSAFE%5FINTEGER).
 
-3 Booleans will be cast to an `INTEGER` type where `1` is `TRUE` and`0` is `FALSE`.
+3 Booleans will be cast to an `INTEGER` type where `1` is `TRUE` and `0` is `FALSE`.
 
-4 `ArrayBuffer` and [ArrayBufferviews ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/ArrayBuffer/isView)are converted using[Array.from ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Array/from).
+4 `ArrayBuffer` and [ArrayBufferviews ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/ArrayBuffer/isView)are converted using [Array.from ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Array/from).
 
 5 Queries with `undefined` values will return a `D1_TYPE_ERROR`.
 
@@ -111,116 +88,17 @@ index.js
 JavaScript
 
 ```
-
-// D1 API Playground - Test each D1 Worker Binding API method
-
-// Change the URL pathname to test different methods (e.g., /RUN, /RAW, /FIRST)
-
-export default {
-
-  async fetch(request, env) {
-
-    const { pathname } = new URL(request.url);
-
-
-    // Sample data for testing
-
-    const companyName1 = `Bs Beverages`;
-
-    const companyName2 = `Around the Horn`;
-
-
-    // Prepare reusable statements
-
-    const stmt = env.DB.prepare(`SELECT * FROM Customers WHERE CompanyName = ?`);
-
-    const stmtMulti = env.DB.prepare(`SELECT * FROM Customers; SELECT * FROM Customers WHERE CompanyName = ?`);
-
-    const session = env.DB.withSession("first-primary")
-
-    const sessionStmt = session.prepare(`SELECT * FROM Customers WHERE CompanyName = ?`);
-
-
-      // Test D1PreparedStatement::run - returns full D1Result object
-
-      if (pathname === `/RUN`){
-
-      const returnValue = await stmt.bind(companyName1).run();
-
-      return Response.json(returnValue);
-
-
-      // Test D1PreparedStatement::raw - returns array of arrays
-
-    } else if (pathname === `/RAW`){
-
-      const returnValue = await stmt.bind(companyName1).raw();
-
-      return Response.json(returnValue);
-
-
-      // Test D1PreparedStatement::first - returns first row only
-
-    } else if (pathname === `/FIRST`){
-
-      const returnValue = await stmt.bind(companyName1).first();
-
-      return Response.json(returnValue);
-
-
-      // Test D1Database::batch - execute multiple statements
-
-    } else if (pathname === `/BATCH`) {
-
-      const batchResult = await env.DB.batch([
-
-        stmt.bind(companyName1),
-
-        stmt.bind(companyName2)
-
-      ]);
-
-      return Response.json(batchResult);
-
-
-      // Test D1Database::exec - execute raw SQL without parameters
-
-    } else if (pathname === `/EXEC`){
-
-      const returnValue = await env.DB.exec(`SELECT * FROM Customers WHERE CompanyName = "Bs Beverages"`);
-
-      return Response.json(returnValue);
-
-
-      // Test D1 Sessions API with read replication
-
-    } else if (pathname === `/WITHSESSION`){
-
-      const returnValue = await sessionStmt.bind(companyName1).run();
-
-      console.log("You're now using D1 Sessions!")
-
-      return Response.json(returnValue);
-
-    }
-
-
-      // Default response with instructions
-
-      return new Response(
-
-      `Welcome to the D1 API Playground!
-
-      \nChange the URL to test the various methods inside your index.js file.`,
-
-      );
-
-    },
-
-
+// D1 API Playground - Test each D1 Worker Binding API method// Change the URL pathname to test different methods (e.g., /RUN, /RAW, /FIRST)export default {  async fetch(request, env) {    const { pathname } = new URL(request.url);
+    // Sample data for testing    const companyName1 = `Bs Beverages`;    const companyName2 = `Around the Horn`;
+    // Prepare reusable statements    const stmt = env.DB.prepare(`SELECT * FROM Customers WHERE CompanyName = ?`);    const stmtMulti = env.DB.prepare(`SELECT * FROM Customers; SELECT * FROM Customers WHERE CompanyName = ?`);    const session = env.DB.withSession("first-primary")    const sessionStmt = session.prepare(`SELECT * FROM Customers WHERE CompanyName = ?`);
+      // Test D1PreparedStatement::run - returns full D1Result object      if (pathname === `/RUN`){      const returnValue = await stmt.bind(companyName1).run();      return Response.json(returnValue);
+      // Test D1PreparedStatement::raw - returns array of arrays    } else if (pathname === `/RAW`){      const returnValue = await stmt.bind(companyName1).raw();      return Response.json(returnValue);
+      // Test D1PreparedStatement::first - returns first row only    } else if (pathname === `/FIRST`){      const returnValue = await stmt.bind(companyName1).first();      return Response.json(returnValue);
+      // Test D1Database::batch - execute multiple statements    } else if (pathname === `/BATCH`) {      const batchResult = await env.DB.batch([        stmt.bind(companyName1),        stmt.bind(companyName2)      ]);      return Response.json(batchResult);
+      // Test D1Database::exec - execute raw SQL without parameters    } else if (pathname === `/EXEC`){      const returnValue = await env.DB.exec(`SELECT * FROM Customers WHERE CompanyName = "Bs Beverages"`);      return Response.json(returnValue);
+      // Test D1 Sessions API with read replication    } else if (pathname === `/WITHSESSION`){      const returnValue = await sessionStmt.bind(companyName1).run();      console.log("You're now using D1 Sessions!")      return Response.json(returnValue);    }
+      // Default response with instructions      return new Response(      `Welcome to the D1 API Playground!      \nChange the URL to test the various methods inside your index.js file.`,      );    },
 };
-
-
 ```
 
 ### 3\. Deploy the Worker
@@ -232,16 +110,8 @@ Terminal window
 npx wrangler deploy  
 ```  
 ```  
-⛅️ wrangler 3.112.0  
---------------------  
-Total Upload: 1.90 KiB / gzip: 0.59 KiB  
-Your worker has access to the following bindings:  
-- D1 Databases:  
-  - DB: DATABASE_NAME (<DATABASE_ID>)  
-Uploaded WORKER_NAME (7.01 sec)  
-Deployed WORKER_NAME triggers (1.25 sec)  
-  https://jun-d1-rr.d1-sandbox.workers.dev  
-Current Version ID: VERSION_ID  
+⛅️ wrangler 3.112.0--------------------  
+Total Upload: 1.90 KiB / gzip: 0.59 KiBYour worker has access to the following bindings:- D1 Databases:  - DB: DATABASE_NAME (<DATABASE_ID>)Uploaded WORKER_NAME (7.01 sec)Deployed WORKER_NAME triggers (1.25 sec)  https://jun-d1-rr.d1-sandbox.workers.devCurrent Version ID: VERSION_ID  
 ```
 3. Open a browser at the specified address.
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,16 +28,7 @@ To limit results, add the `limit` parameter as an integer. For example, query th
 JavaScript
 
 ```
-
-firewallEventsAdaptive (limit: 2, orderBy: [datetime_ASC, clientCountryName_ASC]) {
-
-    datetime
-
-    clientCountryName
-
-}
-
-
+firewallEventsAdaptive (limit: 2, orderBy: [datetime_ASC, clientCountryName_ASC]) {    datetime    clientCountryName}
 ```
 
 Note
@@ -49,32 +40,7 @@ Specifying a sort order by date returns less specific results than specifying a 
 JavaScript
 
 ```
-
-{
-
-  "firewallEventsAdaptive" : [
-
-    {
-
-      "datetime": "2018-11-12T00:00:00Z",
-
-      "clientCountryName": "UM"
-
-    },
-
-    {
-
-      "datetime": "2018-11-12T00:00:00Z",
-
-      "clientCountryName": "US"
-
-    }
-
-  ]
-
-}
-
-
+{  "firewallEventsAdaptive" : [    {      "datetime": "2018-11-12T00:00:00Z",      "clientCountryName": "UM"    },    {      "datetime": "2018-11-12T00:00:00Z",      "clientCountryName": "US"    }  ]}
 ```
 
 ### Query for the next page using filters
@@ -84,16 +50,7 @@ To get the next _n_ results, specify a filter to exclude the last result from th
 JavaScript
 
 ```
-
-firewallEventsAdaptive (limit: 2, orderBy: [datetime_ASC, clientCountryName_ASC], filter: {datetime_geq: "2018-11-12T00:00:00Z", clientCountryName_gt: "US"}) {
-
-    datetime
-
-    clientCountryName
-
-}
-
-
+firewallEventsAdaptive (limit: 2, orderBy: [datetime_ASC, clientCountryName_ASC], filter: {datetime_geq: "2018-11-12T00:00:00Z", clientCountryName_gt: "US"}) {    datetime    clientCountryName}
 ```
 
 **Response**
@@ -101,32 +58,7 @@ firewallEventsAdaptive (limit: 2, orderBy: [datetime_ASC, clientCountryName_ASC]
 JavaScript
 
 ```
-
-{
-
-  "firewallEventsAdaptive" : [
-
-    {
-
-      "datetime": "2018-11-12T00:00:00Z",
-
-      "clientCountryName": "UY"
-
-    },
-
-    {
-
-      "datetime": "2018-11-12T00:00:00Z",
-
-      "clientCountryName": "UZ"
-
-    }
-
-  ]
-
-}
-
-
+{  "firewallEventsAdaptive" : [    {      "datetime": "2018-11-12T00:00:00Z",      "clientCountryName": "UY"    },    {      "datetime": "2018-11-12T00:00:00Z",      "clientCountryName": "UZ"    }  ]}
 ```
 
 ### Query the previous page
@@ -136,16 +68,7 @@ To get the previous _n_ results, reverse the filters and sort order.
 JavaScript
 
 ```
-
-firewallEventsAdaptive (limit: 2, orderBy: [datetime_DESC, clientCountryName_DESC, filter: {datetime_leq: "2018-11-12T00:00:00Z", clientCountryName_lt: "UY"}]) {
-
-  datetime
-
-  clientCountryName
-
-}
-
-
+firewallEventsAdaptive (limit: 2, orderBy: [datetime_DESC, clientCountryName_DESC, filter: {datetime_leq: "2018-11-12T00:00:00Z", clientCountryName_lt: "UY"}]) {  datetime  clientCountryName}
 ```
 
 **Response**
@@ -153,32 +76,7 @@ firewallEventsAdaptive (limit: 2, orderBy: [datetime_DESC, clientCountryName_DES
 JavaScript
 
 ```
-
-{
-
-  "firewallEventsAdaptive" : [
-
-    {
-
-      "datetime": "2018-11-12T00:00:00Z",
-
-      "clientCountryName": "US"
-
-    },
-
-    {
-
-      "datetime": "2018-11-12T00:00:00Z",
-
-      "clientCountryName": "UM"
-
-    }
-
-  ]
-
-}
-
-
+{  "firewallEventsAdaptive" : [    {      "datetime": "2018-11-12T00:00:00Z",      "clientCountryName": "US"    },    {      "datetime": "2018-11-12T00:00:00Z",      "clientCountryName": "UM"    }  ]}
 ```
 
 ```json

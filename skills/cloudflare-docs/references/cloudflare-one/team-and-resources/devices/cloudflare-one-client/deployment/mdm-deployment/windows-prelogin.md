@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,9 +35,9 @@ With Cloudflare Zero Trust, you can use an on-premise Active Directory (or simil
 
 ## 1\. Create a service token
 
-* [ Dashboard ](#tab-panel-7488)
-* [ API ](#tab-panel-7489)
-* [ Terraform (v5) ](#tab-panel-7490)
+* [ Dashboard ](#tab-panel-7564)
+* [ API ](#tab-panel-7565)
+* [ Terraform (v5) ](#tab-panel-7566)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Service credentials** \> **Service Tokens**.
 2. Select **Create Service Token**.
@@ -50,84 +50,54 @@ This is the only time Cloudflare Access will display the Client Secret. If you l
 
 1. Make a `POST` request to the [Access Service Tokens](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/service%5Ftokens/methods/create/) endpoint:  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Access: Service Tokens Write`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Access: Service Tokens Write`  
 Create a service token  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/service_tokens" \  
-  --request POST \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "name": "CI/CD token",  
-    "duration": "8760h"  
-  }'  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/service_tokens" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "CI/CD token",    "duration": "8760h"  }'  
 ```
 2. Copy the `client_id` and `client_secret` values returned in the response.  
 Response  
 ```  
-"result": {  
-  "client_id": "88bf3b6d86161464f6509f7219099e57.access",  
-  "client_secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5",  
-  "created_at": "2025-09-25T22:26:26Z",  
-  "expires_at": "2026-09-25T22:26:26Z",  
-  "id": "3537a672-e4d8-4d89-aab9-26cb622918a1",  
-  "name": "CI/CD token",  
-  "updated_at": "2025-09-25T22:26:26Z",  
-  "duration": "8760h",  
-  "client_secret_version": 1  
-}  
+"result": {  "client_id": "88bf3b6d86161464f6509f7219099e57.access",  "client_secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5",  "created_at": "2025-09-25T22:26:26Z",  "expires_at": "2026-09-25T22:26:26Z",  "id": "3537a672-e4d8-4d89-aab9-26cb622918a1",  "name": "CI/CD token",  "updated_at": "2025-09-25T22:26:26Z",  "duration": "8760h",  "client_secret_version": 1}  
 ```  
 Warning  
 This is the only time Cloudflare Access will display the Client Secret. If you lose the Client Secret, you must generate a new service token.
 
-1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):  
-   * `Access: Service Tokens Write`
+1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
+
+  * `Access: Service Tokens Write`
 2. Configure the [cloudflare\_zero\_trust\_access\_service\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fservice%5Ftoken) resource:  
 ```  
-resource "cloudflare_zero_trust_access_service_token" "example_service_token" {  
-  account_id = var.cloudflare_account_id  
-  name       = "Example service token"  
-  duration  = "8760h"  
-  lifecycle {  
-    create_before_destroy = true  
-  }  
-}  
+resource "cloudflare_zero_trust_access_service_token" "example_service_token" {  account_id = var.cloudflare_account_id  name       = "Example service token"  duration  = "8760h"  
+  lifecycle {    create_before_destroy = true  }}  
 ```
 3. Get the Client ID and Client Secret of the service token:  
-Example: Output to CLI  
-   1. Output the Client ID and Client Secret to the Terraform state file:  
-   ```  
-   output "example_service_token_client_id" {  
-     value     = cloudflare_zero_trust_access_service_token.example_service_token.client_id  
-   }  
-   output "example_service_token_client_secret" {  
-     value     = cloudflare_zero_trust_access_service_token.example_service_token.client_secret  
-     sensitive = true  
-   }  
-   ```  
-   2. Apply the configuration:  
-   Terminal window  
-   ```  
-   terraform apply  
-   ```  
-   3. Read the Client ID and Client Secret:  
-   Terminal window  
-   ```  
-   terraform output -raw example_service_token_client_id  
-   ```  
-   Terminal window  
-   ```  
-   terraform output -raw example_service_token_client_secret  
-   ```  
+Example: Output to CLI
+
+  1. Output the Client ID and Client Secret to the Terraform state file:  
+  ```  
+  output "example_service_token_client_id" {  value     = cloudflare_zero_trust_access_service_token.example_service_token.client_id}  
+  output "example_service_token_client_secret" {  value     = cloudflare_zero_trust_access_service_token.example_service_token.client_secret  sensitive = true}  
+  ```
+  2. Apply the configuration:  
+  Terminal window  
+  ```  
+  terraform apply  
+  ```
+  3. Read the Client ID and Client Secret:  
+  Terminal window  
+  ```  
+  terraform output -raw example_service_token_client_id  
+  ```  
+  Terminal window  
+  ```  
+  terraform output -raw example_service_token_client_secret  
+  ```  
 Example: Store in HashiCorp Vault  
 ```  
-  resource "vault_generic_secret" "example_service_token" {  
-    path         = "kv/cloudflare/example_service_token"  
-    data_json = jsonencode({  
-      "CLIENT_ID"     = cloudflare_access_service_token.example_service_token.client_id  
-      "CLIENT_SECRET" = cloudflare_access_service_token.example_service_token.client_secret  
-    })  
-  }  
+  resource "vault_generic_secret" "example_service_token" {    path         = "kv/cloudflare/example_service_token"  
+    data_json = jsonencode({      "CLIENT_ID"     = cloudflare_access_service_token.example_service_token.client_id      "CLIENT_SECRET" = cloudflare_access_service_token.example_service_token.client_secret    })  }  
 ```
 
 ## 2\. Create a device enrollment policy
@@ -166,48 +136,7 @@ Example Gateway network policy
 To enable the Windows pre-login feature, an MDM file in the following format must be [deployed](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/#windows) on the device. In the following example, the `pre_login` key allows the device to connect using the service token, while `configs` contains your default Zero Trust configuration.
 
 ```
-
-<dict>
-
-  <key>pre_login</key>
-
-  <dict>
-
-    <key>organization</key>
-
-    <string>mycompany</string>
-
-    <key>auth_client_id</key>
-
-    <string>TOKEN-ID</string>
-
-    <key>auth_client_secret</key>
-
-    <string>TOKEN-SECRET</string>
-
-  </dict>
-
-  <key>configs</key>
-
-  <array>
-
-    <dict>
-
-      <key>organization</key>
-
-      <string>mycompany</string>
-
-      <key>display_name</key>
-
-      <string>Default</string>
-
-    </dict>
-
-  </array>
-
-</dict>
-
-
+<dict>  <key>pre_login</key>  <dict>    <key>organization</key>    <string>mycompany</string>    <key>auth_client_id</key>    <string>TOKEN-ID</string>    <key>auth_client_secret</key>    <string>TOKEN-SECRET</string>  </dict>  <key>configs</key>  <array>    <dict>      <key>organization</key>      <string>mycompany</string>      <key>display_name</key>      <string>Default</string>    </dict>  </array></dict>
 ```
 
 The Cloudflare One Client will apply the pre-login configuration when no other Cloudflare One Client registration exists and the user has not yet logged into Windows. When the pre-login configuration is in effect, the device will appear on **Team & Resources** \> **Devices** with the email `non_identity@<team-name>.cloudflareaccess.com`.

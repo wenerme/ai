@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -14,86 +14,39 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 The `DurableObject` base class is an abstract class which all Durable Objects inherit from. This base class provides a set of optional methods, frequently referred to as handler methods, which can respond to events, for example a `webSocketMessage` when using the [WebSocket Hibernation API](https://developers.cloudflare.com/durable-objects/best-practices/websockets/#durable-objects-hibernation-websocket-api). To provide a concrete example, here is a Durable Object `MyDurableObject` which extends `DurableObject` and implements the fetch handler to return "Hello, World!" to the calling Worker.
 
-* [  JavaScript ](#tab-panel-8169)
-* [  TypeScript ](#tab-panel-8170)
-* [  Python ](#tab-panel-8171)
+* [  JavaScript ](#tab-panel-8245)
+* [  TypeScript ](#tab-panel-8246)
+* [  Python ](#tab-panel-8247)
 
 JavaScript
 
 ```
-
-export class MyDurableObject extends DurableObject {
-
-  constructor(ctx, env) {
-
-    super(ctx, env);
-
-  }
-
-
-  async fetch(request) {
-
-    return new Response("Hello, World!");
-
-  }
-
-}
-
-
+export class MyDurableObject extends DurableObject {  constructor(ctx, env) {    super(ctx, env);  }
+  async fetch(request) {    return new Response("Hello, World!");  }}
 ```
 
 TypeScript
 
 ```
-
-export class MyDurableObject extends DurableObject {
-
-  constructor(ctx: DurableObjectState, env: Env) {
-
-    super(ctx, env);
-
-  }
-
-
-    async fetch(request: Request) {
-
-      return new Response("Hello, World!");
-
-    }
-
-
+export class MyDurableObject extends DurableObject {  constructor(ctx: DurableObjectState, env: Env) {    super(ctx, env);  }
+    async fetch(request: Request) {      return new Response("Hello, World!");    }
 }
-
-
 ```
 
 Python
 
 ```
-
 from workers import DurableObject, Response
-
-
-class MyDurableObject(DurableObject):
-
-  def __init__(self, ctx, env):
-
-    super().__init__(ctx, env)
-
-
-  async def fetch(self, request):
-
-    return Response("Hello, World!")
-
-
+class MyDurableObject(DurableObject):  def __init__(self, ctx, env):    super().__init__(ctx, env)
+  async def fetch(self, request):    return Response("Hello, World!")
 ```
 
 ## Methods
 
 ### `fetch`
 
-* `` fetch(request ` Request `) ``: ` Response ` | ` Promise<Response> `\- Takes an HTTP[Request ↗](https://developers.cloudflare.com/workers/runtime-apis/request/) and returns an HTTP[Response ↗](https://developers.cloudflare.com/workers/runtime-apis/response/). This method allows the Durable Object to emulate an HTTP server where a Worker with a binding to that object is the client. - This method can be `async`.  
-   * Durable Objects support [RPC calls](https://developers.cloudflare.com/durable-objects/best-practices/create-durable-object-stubs-and-send-requests/) as of compatibility date [2024-04-03](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#durable-object-stubs-and-service-bindings-support-rpc). RPC methods are preferred over `fetch()` when your application does not follow HTTP request/response flow.
+* `` fetch(request ` Request `) ``: ` Response ` | ` Promise<Response> `\- Takes an HTTP [Request ↗](https://developers.cloudflare.com/workers/runtime-apis/request/) and returns an HTTP [Response ↗](https://developers.cloudflare.com/workers/runtime-apis/response/). This method allows the Durable Object to emulate an HTTP server where a Worker with a binding to that object is the client. - This method can be `async`.  
+  * Durable Objects support [RPC calls](https://developers.cloudflare.com/durable-objects/best-practices/create-durable-object-stubs-and-send-requests/) as of compatibility date [2024-04-03](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#durable-object-stubs-and-service-bindings-support-rpc). RPC methods are preferred over `fetch()` when your application does not follow HTTP request/response flow.
 
 #### Parameters
 
@@ -105,97 +58,42 @@ class MyDurableObject(DurableObject):
 
 #### Example
 
-* [  JavaScript ](#tab-panel-8172)
-* [  TypeScript ](#tab-panel-8173)
-* [  Python ](#tab-panel-8174)
+* [  JavaScript ](#tab-panel-8248)
+* [  TypeScript ](#tab-panel-8249)
+* [  Python ](#tab-panel-8250)
 
 JavaScript
 
 ```
-
-export class MyDurableObject extends DurableObject {
-
-  async fetch(request) {
-
-    const url = new URL(request.url);
-
-    if (url.pathname === "/hello") {
-
-      return new Response("Hello, World!");
-
-    }
-
-    return new Response("Not found", { status: 404 });
-
-  }
-
-}
-
-
+export class MyDurableObject extends DurableObject {  async fetch(request) {    const url = new URL(request.url);    if (url.pathname === "/hello") {      return new Response("Hello, World!");    }    return new Response("Not found", { status: 404 });  }}
 ```
 
 TypeScript
 
 ```
-
-export class MyDurableObject extends DurableObject<Env> {
-
-  async fetch(request: Request): Promise<Response> {
-
-    const url = new URL(request.url);
-
-    if (url.pathname === "/hello") {
-
-      return new Response("Hello, World!");
-
-    }
-
-    return new Response("Not found", { status: 404 });
-
-  }
-
-}
-
-
+export class MyDurableObject extends DurableObject<Env> {  async fetch(request: Request): Promise<Response> {    const url = new URL(request.url);    if (url.pathname === "/hello") {      return new Response("Hello, World!");    }    return new Response("Not found", { status: 404 });  }}
 ```
 
 Python
 
 ```
-
-from workers import DurableObject, Response
-
-from urllib.parse import urlparse
-
-
-class MyDurableObject(DurableObject):
-
-    async def fetch(self, request):
-
-        path = urlparse(request.url).path
-
-        if path == "/hello":
-
-            return Response("Hello, World!")
-
-        return Response("Not found", status=404)
-
-
+from workers import DurableObject, Responsefrom urllib.parse import urlparse
+class MyDurableObject(DurableObject):    async def fetch(self, request):        path = urlparse(request.url).path        if path == "/hello":            return Response("Hello, World!")        return Response("Not found", status=404)
 ```
 
 ### `alarm`
 
 * `` alarm(alarmInfo? ` AlarmInvocationInfo `) ``: ` void ` | ` Promise<void> `  
-   * Called by the system when a scheduled alarm time is reached.  
-   * The `alarm()` handler has guaranteed at-least-once execution and will be retried upon failure using exponential backoff, starting at two second delays for up to six retries. Retries will be performed if the method fails with an uncaught exception.  
-   * This method can be `async`.  
-   * Refer to [Alarms](https://developers.cloudflare.com/durable-objects/api/alarms/) for more information.
+  * Called by the system when a scheduled alarm time is reached.
+  * The `alarm()` handler has guaranteed at-least-once execution and will be retried upon failure using exponential backoff, starting at two second delays for up to six retries. Retries will be performed if the method fails with an uncaught exception.
+  * This method can be `async`.
+  * Refer to [Alarms](https://developers.cloudflare.com/durable-objects/api/alarms/) for more information.
 
 #### Parameters
 
 * `alarmInfo` ` AlarmInvocationInfo ` (optional) - an object containing retry information:  
-   * `retryCount` ` number ` \- the number of times this alarm event has been retried.  
-   * `isRetry` ` boolean ` \- `true` if this alarm event is a retry, `false` otherwise.
+  * `retryCount` ` number ` \- the number of times this alarm event has been retried.
+  * `isRetry` ` boolean ` \- `true` if this alarm event is a retry, `false` otherwise.
 
 #### Return values
 
@@ -203,80 +101,33 @@ class MyDurableObject(DurableObject):
 
 #### Example
 
-* [  JavaScript ](#tab-panel-8175)
-* [  TypeScript ](#tab-panel-8176)
-* [  Python ](#tab-panel-8177)
+* [  JavaScript ](#tab-panel-8251)
+* [  TypeScript ](#tab-panel-8252)
+* [  Python ](#tab-panel-8253)
 
 JavaScript
 
 ```
-
-export class MyDurableObject extends DurableObject {
-
-  async alarm(alarmInfo) {
-
-    if (alarmInfo?.isRetry) {
-
-      console.log(`Alarm retry attempt ${alarmInfo.retryCount}`);
-
-    }
-
-    await this.processScheduledTask();
-
-  }
-
-}
-
-
+export class MyDurableObject extends DurableObject {  async alarm(alarmInfo) {    if (alarmInfo?.isRetry) {      console.log(`Alarm retry attempt ${alarmInfo.retryCount}`);    }    await this.processScheduledTask();  }}
 ```
 
 TypeScript
 
 ```
-
-export class MyDurableObject extends DurableObject<Env> {
-
-  async alarm(alarmInfo?: AlarmInvocationInfo): Promise<void> {
-
-    if (alarmInfo?.isRetry) {
-
-      console.log(`Alarm retry attempt ${alarmInfo.retryCount}`);
-
-    }
-
-    await this.processScheduledTask();
-
-  }
-
-}
-
-
+export class MyDurableObject extends DurableObject<Env> {  async alarm(alarmInfo?: AlarmInvocationInfo): Promise<void> {    if (alarmInfo?.isRetry) {      console.log(`Alarm retry attempt ${alarmInfo.retryCount}`);    }    await this.processScheduledTask();  }}
 ```
 
 Python
 
 ```
-
 from workers import DurableObject
-
-
-class MyDurableObject(DurableObject):
-
-    async def alarm(self, alarm_info=None):
-
-        if alarm_info and alarm_info.isRetry:
-
-            print(f"Alarm retry attempt {alarm_info.retryCount}")
-
-        await self.process_scheduled_task()
-
-
+class MyDurableObject(DurableObject):    async def alarm(self, alarm_info=None):        if alarm_info and alarm_info.isRetry:            print(f"Alarm retry attempt {alarm_info.retryCount}")        await self.process_scheduled_task()
 ```
 
 ### `webSocketMessage`
 
 * `` webSocketMessage(ws ` WebSocket `, message ` string | ArrayBuffer `) ``: ` void ` | ` Promise<void> `\- Called by the system when an accepted WebSocket receives a message. - This method is not called for WebSocket control frames. The system will respond to an incoming [WebSocket protocol ping ↗](https://www.rfc-editor.org/rfc/rfc6455#section-5.5.2)automatically without interrupting hibernation.  
-   * This method can be `async`.
+  * This method can be `async`.
 
 #### Parameters
 
@@ -289,88 +140,35 @@ class MyDurableObject(DurableObject):
 
 #### Example
 
-* [  JavaScript ](#tab-panel-8178)
-* [  TypeScript ](#tab-panel-8179)
-* [  Python ](#tab-panel-8180)
+* [  JavaScript ](#tab-panel-8254)
+* [  TypeScript ](#tab-panel-8255)
+* [  Python ](#tab-panel-8256)
 
 JavaScript
 
 ```
-
-export class MyDurableObject extends DurableObject {
-
-  async webSocketMessage(ws, message) {
-
-    if (typeof message === "string") {
-
-      ws.send(`Received: ${message}`);
-
-    } else {
-
-      ws.send(`Received ${message.byteLength} bytes`);
-
-    }
-
-  }
-
-}
-
-
+export class MyDurableObject extends DurableObject {  async webSocketMessage(ws, message) {    if (typeof message === "string") {      ws.send(`Received: ${message}`);    } else {      ws.send(`Received ${message.byteLength} bytes`);    }  }}
 ```
 
 TypeScript
 
 ```
-
-export class MyDurableObject extends DurableObject<Env> {
-
-  async webSocketMessage(ws: WebSocket, message: string | ArrayBuffer) {
-
-    if (typeof message === "string") {
-
-      ws.send(`Received: ${message}`);
-
-    } else {
-
-      ws.send(`Received ${message.byteLength} bytes`);
-
-    }
-
-  }
-
-}
-
-
+export class MyDurableObject extends DurableObject<Env> {  async webSocketMessage(ws: WebSocket, message: string | ArrayBuffer) {    if (typeof message === "string") {      ws.send(`Received: ${message}`);    } else {      ws.send(`Received ${message.byteLength} bytes`);    }  }}
 ```
 
 Python
 
 ```
-
 from workers import DurableObject
-
-
-class MyDurableObject(DurableObject):
-
-    async def webSocketMessage(self, ws, message):
-
-        if isinstance(message, str):
-
-            ws.send(f"Received: {message}")
-
-        else:
-
-            ws.send(f"Received {len(message)} bytes")
-
-
+class MyDurableObject(DurableObject):    async def webSocketMessage(self, ws, message):        if isinstance(message, str):            ws.send(f"Received: {message}")        else:            ws.send(f"Received {len(message)} bytes")
 ```
 
 ### `webSocketClose`
 
 * `` webSocketClose(ws ` WebSocket `, code ` number `, reason ` string `, wasClean ` boolean `) ``: ` void ` | ` Promise<void> `\- Called by the system when a WebSocket connection is closed.  
-   * With the [web\_socket\_auto\_reply\_to\_close](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#websocket-auto-reply-to-close) compatibility flag (enabled by default on compatibility dates on or after `2026-04-07`), the runtime automatically sends a reciprocal Close frame and transitions `readyState` to `CLOSED` before this handler is called. You do not need to call `ws.close()` — but doing so is safe (the call is silently ignored).  
-   * On older compatibility dates (before `2026-04-07`), you **must** call `ws.close(code, reason)` inside this handler to complete the WebSocket close handshake. Failing to reciprocate the close will result in `1006` errors on the client, representing an abnormal closure per the WebSocket specification.  
-   * This method can be `async`.
+  * With the [web\_socket\_auto\_reply\_to\_close](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#websocket-auto-reply-to-close) compatibility flag (enabled by default on compatibility dates on or after `2026-04-07`), the runtime automatically sends a reciprocal Close frame and transitions `readyState` to `CLOSED` before this handler is called. You do not need to call `ws.close()` — but doing so is safe (the call is silently ignored).
+  * On older compatibility dates (before `2026-04-07`), you **must** call `ws.close(code, reason)` inside this handler to complete the WebSocket close handshake. Failing to reciprocate the close will result in `1006` errors on the client, representing an abnormal closure per the WebSocket specification.
+  * This method can be `async`.
 
 #### Parameters
 
@@ -385,76 +183,27 @@ class MyDurableObject(DurableObject):
 
 #### Example
 
-* [  JavaScript ](#tab-panel-8184)
-* [  TypeScript ](#tab-panel-8185)
-* [  Python ](#tab-panel-8186)
+* [  JavaScript ](#tab-panel-8260)
+* [  TypeScript ](#tab-panel-8261)
+* [  Python ](#tab-panel-8262)
 
 JavaScript
 
 ```
-
-export class MyDurableObject extends DurableObject {
-
-  async webSocketClose(ws, code, reason, wasClean) {
-
-    // With web_socket_auto_reply_to_close (compat date >= 2026-04-07),
-
-    // the runtime has already completed the close handshake.
-
-    // On older compat dates, call ws.close(code, reason) here.
-
-    ws.close(code, reason);
-
-    console.log(`WebSocket closed: code=${code}, reason=${reason}`);
-
-  }
-
-}
-
-
+export class MyDurableObject extends DurableObject {  async webSocketClose(ws, code, reason, wasClean) {    // With web_socket_auto_reply_to_close (compat date >= 2026-04-07),    // the runtime has already completed the close handshake.    // On older compat dates, call ws.close(code, reason) here.    ws.close(code, reason);    console.log(`WebSocket closed: code=${code}, reason=${reason}`);  }}
 ```
 
 TypeScript
 
 ```
-
-export class MyDurableObject extends DurableObject<Env> {
-
-  async webSocketClose(ws: WebSocket, code: number, reason: string, wasClean: boolean) {
-
-    // With web_socket_auto_reply_to_close (compat date >= 2026-04-07),
-
-    // the runtime has already completed the close handshake.
-
-    // On older compat dates, call ws.close(code, reason) here.
-
-    ws.close(code, reason);
-
-    console.log(`WebSocket closed: code=${code}, reason=${reason}`);
-
-  }
-
-}
-
-
+export class MyDurableObject extends DurableObject<Env> {  async webSocketClose(ws: WebSocket, code: number, reason: string, wasClean: boolean) {    // With web_socket_auto_reply_to_close (compat date >= 2026-04-07),    // the runtime has already completed the close handshake.    // On older compat dates, call ws.close(code, reason) here.    ws.close(code, reason);    console.log(`WebSocket closed: code=${code}, reason=${reason}`);  }}
 ```
 
 Python
 
 ```
-
 from workers import DurableObject
-
-
-class MyDurableObject(DurableObject):
-
-    async def webSocketClose(self, ws, code, reason, was_clean):
-
-        ws.close(code, reason)
-
-        print(f"WebSocket closed: code={code}, reason={reason}")
-
-
+class MyDurableObject(DurableObject):    async def webSocketClose(self, ws, code, reason, was_clean):        ws.close(code, reason)        print(f"WebSocket closed: code={code}, reason={reason}")
 ```
 
 ### `webSocketError`
@@ -472,62 +221,27 @@ class MyDurableObject(DurableObject):
 
 #### Example
 
-* [  JavaScript ](#tab-panel-8181)
-* [  TypeScript ](#tab-panel-8182)
-* [  Python ](#tab-panel-8183)
+* [  JavaScript ](#tab-panel-8257)
+* [  TypeScript ](#tab-panel-8258)
+* [  Python ](#tab-panel-8259)
 
 JavaScript
 
 ```
-
-export class MyDurableObject extends DurableObject {
-
-  async webSocketError(ws, error) {
-
-    const message = error instanceof Error ? error.message : String(error);
-
-    console.error(`WebSocket error: ${message}`);
-
-  }
-
-}
-
-
+export class MyDurableObject extends DurableObject {  async webSocketError(ws, error) {    const message = error instanceof Error ? error.message : String(error);    console.error(`WebSocket error: ${message}`);  }}
 ```
 
 TypeScript
 
 ```
-
-export class MyDurableObject extends DurableObject<Env> {
-
-  async webSocketError(ws: WebSocket, error: unknown) {
-
-    const message = error instanceof Error ? error.message : String(error);
-
-    console.error(`WebSocket error: ${message}`);
-
-  }
-
-}
-
-
+export class MyDurableObject extends DurableObject<Env> {  async webSocketError(ws: WebSocket, error: unknown) {    const message = error instanceof Error ? error.message : String(error);    console.error(`WebSocket error: ${message}`);  }}
 ```
 
 Python
 
 ```
-
 from workers import DurableObject
-
-
-class MyDurableObject(DurableObject):
-
-    async def webSocketError(self, ws, error):
-
-        print(f"WebSocket error: {error}")
-
-
+class MyDurableObject(DurableObject):    async def webSocketError(self, ws, error):        print(f"WebSocket error: {error}")
 ```
 
 ## Properties

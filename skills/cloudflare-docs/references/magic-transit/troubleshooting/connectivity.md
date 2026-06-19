@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/magic-transit/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -57,25 +57,11 @@ Run a `traceroute` from the source network to your Magic Transit prefix. Look fo
 Terminal window
 
 ```
-
 traceroute 203.0.113.1
-
-
 ```
 
 ```
-
- 1  192.168.1.1 (192.168.1.1)  1.234 ms
-
- 2  10.0.0.1 (10.0.0.1)  5.678 ms
-
- 3  198.51.100.1 (198.51.100.1)  10.123 ms
-
- 4  198.51.100.10 (198.51.100.10)  12.345 ms
-
- 5  lhr01.cf (198.51.100.11)  15.678 ms
-
-
+ 1  192.168.1.1 (192.168.1.1)  1.234 ms 2  10.0.0.1 (10.0.0.1)  5.678 ms 3  198.51.100.1 (198.51.100.1)  10.123 ms 4  198.51.100.10 (198.51.100.10)  12.345 ms 5  lhr01.cf (198.51.100.11)  15.678 ms
 ```
 
 In this example, `lhr` indicates that traffic enters Cloudflare at the London (Heathrow) data center.
@@ -109,9 +95,9 @@ If you have worked through this guide and cannot resolve the issue, gather the f
 2. **Timestamps** (in UTC) when the issue started
 3. **Ingress data center** you identified (airport code, for example `LHR`, `IAD`)
 4. **Symptoms observed:**  
-   * Whether user traffic is affected or only health check alerts fired  
-   * Which tunnels and data centers show degraded or down status  
-   * Whether the issue is intermittent or persistent
+  * Whether user traffic is affected or only health check alerts fired
+  * Which tunnels and data centers show degraded or down status
+  * Whether the issue is intermittent or persistent
 
 ### Helpful diagnostic data
 

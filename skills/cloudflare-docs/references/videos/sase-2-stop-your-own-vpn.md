@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/videos/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,16 +17,22 @@ Cloudflare's SASE platform can replace your traditional, expensive VPN appliance
 Chapters
 
 * ![Introduction to Corporate Network Security and Access Challenges](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/0410c73fe3fdd36142ec08bac77e8f97/thumbnails/thumbnail.jpg?fit=crop&time=0s)  
+
  **Introduction to Corporate Network Security and Access Challenges** 0s
 * ![Cloudflare's SASE Approach to Securing Internal Applications](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/0410c73fe3fdd36142ec08bac77e8f97/thumbnails/thumbnail.jpg?fit=crop&time=75s)  
+
  **Cloudflare's SASE Approach to Securing Internal Applications** 01m15s
 * ![Connecting Internal Applications to Cloudflare with Secure Tunnels](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/0410c73fe3fdd36142ec08bac77e8f97/thumbnails/thumbnail.jpg?fit=crop&time=114s)  
+
  **Connecting Internal Applications to Cloudflare with Secure Tunnels** 01m54s
 * ![Implementing Identity-Based, Clientless Access Control Access Control](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/0410c73fe3fdd36142ec08bac77e8f97/thumbnails/thumbnail.jpg?fit=crop&time=162s)  
+
  **Implementing Identity-Based, Clientless Access Control Access Control** 02m42s
 * ![Leveraging Anycast Networking for Faster and More Secure Application Access](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/0410c73fe3fdd36142ec08bac77e8f97/thumbnails/thumbnail.jpg?fit=crop&time=336s)  
+
  **Leveraging Anycast Networking for Faster and More Secure Application Access** 05m36s
 * ![Enhancing Security with Micro-Segmentation and Cloudflare's Global Network](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/0410c73fe3fdd36142ec08bac77e8f97/thumbnails/thumbnail.jpg?fit=crop&time=419s)  
+
  **Enhancing Security with Micro-Segmentation and Cloudflare's Global Network** 06m59s
 
   

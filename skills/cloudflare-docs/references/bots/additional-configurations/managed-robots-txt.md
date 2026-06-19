@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,19 +33,8 @@ For example, without this feature enabled, the `robots.txt` content of `crawlsto
 Feature not enabled
 
 ```
-
-User-agent: *
-
-Disallow: /lp
-
-Disallow: /feedback
-
-Disallow: /langtest
-
-
+User-agent: *Disallow: /lpDisallow: /feedbackDisallow: /langtest
 Sitemap: https://www.crawlstop.com/sitemap.xml
-
-
 ```
 
 With the managed `robots.txt` enabled, Cloudflare will prepend our managed content before your original content, resulting in what you can view at [https://www.crawlstop.com/robots.txt ↗](https://www.crawlstop.com/robots.txt).
@@ -53,116 +42,23 @@ With the managed `robots.txt` enabled, Cloudflare will prepend our managed conte
 Feature enabled
 
 ```
-
-# As a condition of accessing this website, you agree to abide by the
-
-# following content signals:
-
-
-# (a)  If a content-signal = yes, you may collect content for the
-
-#      corresponding use.
-
-# (b)  If a content-signal = no, you may not collect content for the
-
-#      corresponding use.
-
-# (c)  If the website operator does not include a content signal for a
-
-#      corresponding use, the website operator neither grants nor restricts
-
-#      permission via content signal with respect to the corresponding use.
-
-
+# As a condition of accessing this website, you agree to abide by the# following content signals:
+# (a)  If a content-signal = yes, you may collect content for the#      corresponding use.# (b)  If a content-signal = no, you may not collect content for the#      corresponding use.# (c)  If the website operator does not include a content signal for a#      corresponding use, the website operator neither grants nor restricts#      permission via content signal with respect to the corresponding use.
 # The content signals and their meanings are:
-
-
-# search: building a search index and providing search results (e.g., returning
-
-#         hyperlinks and short excerpts from your website's contents). Search
-
-#         does not include providing AI-generated search summaries.
-
-# ai-input: inputting content into one or more AI models (e.g., retrieval
-
-#           augmented generation, grounding, or other real-time taking of
-
-#           content for generative AI search answers).
-
-# ai-train: training or fine-tuning AI models.
-
-
-# ANY RESTRICTIONS EXPRESSED VIA CONTENT SIGNALS ARE EXPRESS RESERVATIONS OF
-
-# RIGHTS UNDER ARTICLE 4 OF THE EUROPEAN UNION DIRECTIVE 2019/790 ON COPYRIGHT
-
-# AND RELATED RIGHTS IN THE DIGITAL SINGLE MARKET.
-
-
+# search: building a search index and providing search results (e.g., returning#         hyperlinks and short excerpts from your website's contents). Search#         does not include providing AI-generated search summaries.# ai-input: inputting content into one or more AI models (e.g., retrieval#           augmented generation, grounding, or other real-time taking of#           content for generative AI search answers).# ai-train: training or fine-tuning AI models.
+# ANY RESTRICTIONS EXPRESSED VIA CONTENT SIGNALS ARE EXPRESS RESERVATIONS OF# RIGHTS UNDER ARTICLE 4 OF THE EUROPEAN UNION DIRECTIVE 2019/790 ON COPYRIGHT# AND RELATED RIGHTS IN THE DIGITAL SINGLE MARKET.
 # BEGIN Cloudflare Managed content
-
-
-User-Agent: *
-
-Content-signal: search=yes, ai-train=no
-
-Allow: /
-
-
-User-agent: Amazonbot
-
-Disallow: /
-
-
-User-agent: Applebot-Extended
-
-Disallow: /
-
-
-User-agent: Bytespider
-
-Disallow: /
-
-
-User-agent: CCBot
-
-Disallow: /
-
-
-User-agent: ClaudeBot
-
-Disallow: /
-
-
-User-agent: Google-Extended
-
-Disallow: /
-
-
-User-agent: GPTBot
-
-Disallow: /
-
-
-User-agent: meta-externalagent
-
-Disallow: /
-
-
-# END Cloudflare Managed Content
-
-User-agent: *
-
-Disallow: /lp
-
-Disallow: /feedback
-
-Disallow: /langtest
-
-
+User-Agent: *Content-signal: search=yes, ai-train=noAllow: /
+User-agent: AmazonbotDisallow: /
+User-agent: Applebot-ExtendedDisallow: /
+User-agent: BytespiderDisallow: /
+User-agent: CCBotDisallow: /
+User-agent: ClaudeBotDisallow: /
+User-agent: Google-ExtendedDisallow: /
+User-agent: GPTBotDisallow: /
+User-agent: meta-externalagentDisallow: /
+# END Cloudflare Managed ContentUser-agent: *Disallow: /lpDisallow: /feedbackDisallow: /langtest
 Sitemap: https://www.crawlstop.com/sitemap.xml
-
-
 ```
 
 ### No robots.txt file
@@ -173,8 +69,8 @@ If your website does not have a `robots.txt` file, Cloudflare creates a new file
 
 To implement a `robots.txt` file on your domain:
 
-* [  New dashboard ](#tab-panel-6828)
-* [ Old dashboard ](#tab-panel-6829)
+* [  New dashboard ](#tab-panel-6904)
+* [ Old dashboard ](#tab-panel-6905)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -198,52 +94,11 @@ The Content Signals Policy defines these categories but does not express any spe
 Content Signals Policy
 
 ```
-
-# As a condition of accessing this website, you agree to abide by the
-
-# following content signals:
-
-
-# (a)  If a content-signal = yes, you may collect content for the
-
-#      corresponding use.
-
-# (b)  If a content-signal = no, you may not collect content for the
-
-#      corresponding use.
-
-# (c)  If the website operator does not include a content signal for a
-
-#      corresponding use, the website operator neither grants nor restricts
-
-#      permission via content signal with respect to the corresponding use.
-
-
+# As a condition of accessing this website, you agree to abide by the# following content signals:
+# (a)  If a content-signal = yes, you may collect content for the#      corresponding use.# (b)  If a content-signal = no, you may not collect content for the#      corresponding use.# (c)  If the website operator does not include a content signal for a#      corresponding use, the website operator neither grants nor restricts#      permission via content signal with respect to the corresponding use.
 # The content signals and their meanings are:
-
-
-# search: building a search index and providing search results (e.g., returning
-
-#         hyperlinks and short excerpts from your website's contents). Search
-
-#         does not include providing AI-generated search summaries.
-
-# ai-input: inputting content into one or more AI models (e.g., retrieval
-
-#           augmented generation, grounding, or other real-time taking of
-
-#           content for generative AI search answers).
-
-# ai-train: training or fine-tuning AI models.
-
-
-# ANY RESTRICTIONS EXPRESSED VIA CONTENT SIGNALS ARE EXPRESS RESERVATIONS OF
-
-# RIGHTS UNDER ARTICLE 4 OF THE EUROPEAN UNION DIRECTIVE 2019/790 ON COPYRIGHT
-
-# AND RELATED RIGHTS IN THE DIGITAL SINGLE MARKET.
-
-
+# search: building a search index and providing search results (e.g., returning#         hyperlinks and short excerpts from your website's contents). Search#         does not include providing AI-generated search summaries.# ai-input: inputting content into one or more AI models (e.g., retrieval#           augmented generation, grounding, or other real-time taking of#           content for generative AI search answers).# ai-train: training or fine-tuning AI models.
+# ANY RESTRICTIONS EXPRESSED VIA CONTENT SIGNALS ARE EXPRESS RESERVATIONS OF# RIGHTS UNDER ARTICLE 4 OF THE EUROPEAN UNION DIRECTIVE 2019/790 ON COPYRIGHT# AND RELATED RIGHTS IN THE DIGITAL SINGLE MARKET.
 ```
 
 Cloudflare's Content Signals Policy is included by default in the `robots.txt` file when you turn on **robots.txt setting**.

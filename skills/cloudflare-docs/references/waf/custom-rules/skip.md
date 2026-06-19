@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,9 +20,9 @@ You can skip [rate limiting rules](https://developers.cloudflare.com/waf/rate-li
 
 For more information on the available options, refer to [Available skip options](https://developers.cloudflare.com/waf/custom-rules/skip/options/).
 
-* [  New dashboard ](#tab-panel-11151)
-* [ Old dashboard ](#tab-panel-11152)
-* [ API ](#tab-panel-11153)
+* [  New dashboard ](#tab-panel-11168)
+* [ Old dashboard ](#tab-panel-11169)
+* [ API ](#tab-panel-11170)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

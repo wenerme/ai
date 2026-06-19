@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,37 +26,18 @@ A component which renders a text message from chat.
 ### Basic Usage
 
 ```
-
 <rtk-text-message-view></rtk-text-message-view>
-
-
 ```
 
 ### With Properties
 
 ```
-
-<rtk-text-message-view
-
- text="example">
-
-</rtk-text-message-view>
-
-
+<rtk-text-message-view text="example"></rtk-text-message-view>
 ```
 
 ```
-
-<script>
-
-  const el = document.querySelector("rtk-text-message-view");
-
-
-  el.isMarkdown= true;
-
-</script>
-
-
+<script>  const el = document.querySelector("rtk-text-message-view");
+  el.isMarkdown= true;</script>
 ```
 
 ```json

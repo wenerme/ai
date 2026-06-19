@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -36,129 +36,35 @@ Expose ports when you need to:
 
 The typical workflow is: start service → wait for ready → expose port → handle requests with `proxyToSandbox`.
 
-* [  JavaScript ](#tab-panel-10363)
-* [  TypeScript ](#tab-panel-10364)
+* [  JavaScript ](#tab-panel-10439)
+* [  TypeScript ](#tab-panel-10440)
 
 JavaScript
 
 ```
-
 import { getSandbox, proxyToSandbox } from "@cloudflare/sandbox";
-
-
 export { Sandbox } from "@cloudflare/sandbox";
-
-
-export default {
-
-  async fetch(request, env) {
-
-    // Proxy requests to exposed ports first
-
-    const proxyResponse = await proxyToSandbox(request, env);
-
-    if (proxyResponse) return proxyResponse;
-
-
-    // Extract hostname from request
-
-    const { hostname } = new URL(request.url);
-
-    const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
-
-    // 1. Start a web server
-
-    await sandbox.startProcess("python -m http.server 8000");
-
-
-    // 2. Wait for service to start
-
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-
-
-    // 3. Expose the port
-
-    const exposed = await sandbox.exposePort(8000, { hostname });
-
-
-    // 4. Preview URL is now available (public by default)
-
-    console.log("Server accessible at:", exposed.url);
-
-    // Production: https://8000-abc123.yourdomain.com
-
-    // Local dev: http://localhost:8787/...
-
-
-    return Response.json({ url: exposed.url });
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    // Proxy requests to exposed ports first    const proxyResponse = await proxyToSandbox(request, env);    if (proxyResponse) return proxyResponse;
+    // Extract hostname from request    const { hostname } = new URL(request.url);    const sandbox = getSandbox(env.Sandbox, "my-sandbox");
+    // 1. Start a web server    await sandbox.startProcess("python -m http.server 8000");
+    // 2. Wait for service to start    await new Promise((resolve) => setTimeout(resolve, 2000));
+    // 3. Expose the port    const exposed = await sandbox.exposePort(8000, { hostname });
+    // 4. Preview URL is now available (public by default)    console.log("Server accessible at:", exposed.url);    // Production: https://8000-abc123.yourdomain.com    // Local dev: http://localhost:8787/...
+    return Response.json({ url: exposed.url });  },};
 ```
 
 TypeScript
 
 ```
-
 import { getSandbox, proxyToSandbox } from '@cloudflare/sandbox';
-
-
 export { Sandbox } from '@cloudflare/sandbox';
-
-
-export default {
-
-  async fetch(request: Request, env: Env): Promise<Response> {
-
-    // Proxy requests to exposed ports first
-
-    const proxyResponse = await proxyToSandbox(request, env);
-
-    if (proxyResponse) return proxyResponse;
-
-
-    // Extract hostname from request
-
-    const { hostname } = new URL(request.url);
-
-    const sandbox = getSandbox(env.Sandbox, 'my-sandbox');
-
-
-    // 1. Start a web server
-
-    await sandbox.startProcess('python -m http.server 8000');
-
-
-    // 2. Wait for service to start
-
-    await new Promise(resolve => setTimeout(resolve, 2000));
-
-
-    // 3. Expose the port
-
-    const exposed = await sandbox.exposePort(8000, { hostname });
-
-
-    // 4. Preview URL is now available (public by default)
-
-    console.log('Server accessible at:', exposed.url);
-
-    // Production: https://8000-abc123.yourdomain.com
-
-    // Local dev: http://localhost:8787/...
-
-
-    return Response.json({ url: exposed.url });
-
-  }
-
-};
-
-
+export default {  async fetch(request: Request, env: Env): Promise<Response> {    // Proxy requests to exposed ports first    const proxyResponse = await proxyToSandbox(request, env);    if (proxyResponse) return proxyResponse;
+    // Extract hostname from request    const { hostname } = new URL(request.url);    const sandbox = getSandbox(env.Sandbox, 'my-sandbox');
+    // 1. Start a web server    await sandbox.startProcess('python -m http.server 8000');
+    // 2. Wait for service to start    await new Promise(resolve => setTimeout(resolve, 2000));
+    // 3. Expose the port    const exposed = await sandbox.exposePort(8000, { hostname });
+    // 4. Preview URL is now available (public by default)    console.log('Server accessible at:', exposed.url);    // Production: https://8000-abc123.yourdomain.com    // Local dev: http://localhost:8787/...
+    return Response.json({ url: exposed.url });  }};
 ```
 
 Warning
@@ -178,10 +84,7 @@ To fix this, use `normalizeId: true` when creating sandboxes for port exposure:
 TypeScript
 
 ```
-
 const sandbox = getSandbox(env.Sandbox, 'MyProject-123', { normalizeId: true });
-
-
 ```
 
 This lowercases the ID during creation so it matches preview URL routing. Without this, `exposePort()` throws an error.
@@ -194,91 +97,25 @@ See [Sandbox options](https://developers.cloudflare.com/sandbox/configuration/sa
 
 For production deployments or when sharing URLs with users, use custom tokens to maintain consistent preview URLs across container restarts:
 
-* [  JavaScript ](#tab-panel-10345)
-* [  TypeScript ](#tab-panel-10346)
+* [  JavaScript ](#tab-panel-10421)
+* [  TypeScript ](#tab-panel-10422)
 
 JavaScript
 
 ```
-
-// Extract hostname from request
-
-const { hostname } = new URL(request.url);
-
-
-// Without custom token - URL changes on restart
-
-const exposed = await sandbox.exposePort(8080, { hostname });
-
-// https://8080-sandbox-id-random16chars12.yourdomain.com
-
-
-// With custom token - URL stays the same across restarts
-
-const stable = await sandbox.exposePort(8080, {
-
-  hostname,
-
-  token: "api-v1",
-
-});
-
-// https://8080-sandbox-id-api-v1.yourdomain.com
-
-// Same URL after container restart ✓
-
-
-return Response.json({
-
-  "Temporary URL (changes on restart)": exposed.url,
-
-  "Stable URL (consistent)": stable.url,
-
-});
-
-
+// Extract hostname from requestconst { hostname } = new URL(request.url);
+// Without custom token - URL changes on restartconst exposed = await sandbox.exposePort(8080, { hostname });// https://8080-sandbox-id-random16chars12.yourdomain.com
+// With custom token - URL stays the same across restartsconst stable = await sandbox.exposePort(8080, {  hostname,  token: "api-v1",});// https://8080-sandbox-id-api-v1.yourdomain.com// Same URL after container restart ✓
+return Response.json({  "Temporary URL (changes on restart)": exposed.url,  "Stable URL (consistent)": stable.url,});
 ```
 
 TypeScript
 
 ```
-
-// Extract hostname from request
-
-const { hostname } = new URL(request.url);
-
-
-// Without custom token - URL changes on restart
-
-const exposed = await sandbox.exposePort(8080, { hostname });
-
-// https://8080-sandbox-id-random16chars12.yourdomain.com
-
-
-// With custom token - URL stays the same across restarts
-
-const stable = await sandbox.exposePort(8080, {
-
-  hostname,
-
-  token: 'api-v1'
-
-});
-
-// https://8080-sandbox-id-api-v1.yourdomain.com
-
-// Same URL after container restart ✓
-
-
-return Response.json({
-
-  'Temporary URL (changes on restart)': exposed.url,
-
-  'Stable URL (consistent)': stable.url
-
-});
-
-
+// Extract hostname from requestconst { hostname } = new URL(request.url);
+// Without custom token - URL changes on restartconst exposed = await sandbox.exposePort(8080, { hostname });// https://8080-sandbox-id-random16chars12.yourdomain.com
+// With custom token - URL stays the same across restartsconst stable = await sandbox.exposePort(8080, {  hostname,  token: 'api-v1'});// https://8080-sandbox-id-api-v1.yourdomain.com// Same URL after container restart ✓
+return Response.json({  'Temporary URL (changes on restart)': exposed.url,  'Stable URL (consistent)': stable.url});
 ```
 
 **Token requirements:**
@@ -298,460 +135,144 @@ return Response.json({
 
 When exposing multiple ports, use names to stay organized:
 
-* [  JavaScript ](#tab-panel-10361)
-* [  TypeScript ](#tab-panel-10362)
+* [  JavaScript ](#tab-panel-10437)
+* [  TypeScript ](#tab-panel-10438)
 
 JavaScript
 
 ```
-
-// Extract hostname from request
-
-const { hostname } = new URL(request.url);
-
-
-// Start and expose API server with stable token
-
-await sandbox.startProcess("node api.js", { env: { PORT: "8080" } });
-
-await new Promise((resolve) => setTimeout(resolve, 2000));
-
-const api = await sandbox.exposePort(8080, {
-
-  hostname,
-
-  name: "api",
-
-  token: "api-prod",
-
-});
-
-
-// Start and expose frontend with stable token
-
-await sandbox.startProcess("npm run dev", { env: { PORT: "5173" } });
-
-await new Promise((resolve) => setTimeout(resolve, 2000));
-
-const frontend = await sandbox.exposePort(5173, {
-
-  hostname,
-
-  name: "frontend",
-
-  token: "web-app",
-
-});
-
-
-console.log("Services:");
-
-console.log("- API:", api.url);
-
-console.log("- Frontend:", frontend.url);
-
-
+// Extract hostname from requestconst { hostname } = new URL(request.url);
+// Start and expose API server with stable tokenawait sandbox.startProcess("node api.js", { env: { PORT: "8080" } });await new Promise((resolve) => setTimeout(resolve, 2000));const api = await sandbox.exposePort(8080, {  hostname,  name: "api",  token: "api-prod",});
+// Start and expose frontend with stable tokenawait sandbox.startProcess("npm run dev", { env: { PORT: "5173" } });await new Promise((resolve) => setTimeout(resolve, 2000));const frontend = await sandbox.exposePort(5173, {  hostname,  name: "frontend",  token: "web-app",});
+console.log("Services:");console.log("- API:", api.url);console.log("- Frontend:", frontend.url);
 ```
 
 TypeScript
 
 ```
-
-// Extract hostname from request
-
-const { hostname } = new URL(request.url);
-
-
-// Start and expose API server with stable token
-
-await sandbox.startProcess('node api.js', { env: { PORT: '8080' } });
-
-await new Promise(resolve => setTimeout(resolve, 2000));
-
-const api = await sandbox.exposePort(8080, {
-
-  hostname,
-
-  name: 'api',
-
-  token: 'api-prod'
-
-});
-
-
-// Start and expose frontend with stable token
-
-await sandbox.startProcess('npm run dev', { env: { PORT: '5173' } });
-
-await new Promise(resolve => setTimeout(resolve, 2000));
-
-const frontend = await sandbox.exposePort(5173, {
-
-  hostname,
-
-  name: 'frontend',
-
-  token: 'web-app'
-
-});
-
-
-console.log('Services:');
-
-console.log('- API:', api.url);
-
-console.log('- Frontend:', frontend.url);
-
-
+// Extract hostname from requestconst { hostname } = new URL(request.url);
+// Start and expose API server with stable tokenawait sandbox.startProcess('node api.js', { env: { PORT: '8080' } });await new Promise(resolve => setTimeout(resolve, 2000));const api = await sandbox.exposePort(8080, {  hostname,  name: 'api',  token: 'api-prod'});
+// Start and expose frontend with stable tokenawait sandbox.startProcess('npm run dev', { env: { PORT: '5173' } });await new Promise(resolve => setTimeout(resolve, 2000));const frontend = await sandbox.exposePort(5173, {  hostname,  name: 'frontend',  token: 'web-app'});
+console.log('Services:');console.log('- API:', api.url);console.log('- Frontend:', frontend.url);
 ```
 
 ## Wait for service readiness
 
 Always verify a service is ready before exposing. Use a simple delay for most cases:
 
-* [  JavaScript ](#tab-panel-10343)
-* [  TypeScript ](#tab-panel-10344)
+* [  JavaScript ](#tab-panel-10419)
+* [  TypeScript ](#tab-panel-10420)
 
 JavaScript
 
 ```
-
-// Extract hostname from request
-
-const { hostname } = new URL(request.url);
-
-
-// Start service
-
-await sandbox.startProcess("npm run dev", { env: { PORT: "8080" } });
-
-
-// Wait 2-3 seconds
-
-await new Promise((resolve) => setTimeout(resolve, 2000));
-
-
-// Now expose
-
-await sandbox.exposePort(8080, { hostname });
-
-
+// Extract hostname from requestconst { hostname } = new URL(request.url);
+// Start serviceawait sandbox.startProcess("npm run dev", { env: { PORT: "8080" } });
+// Wait 2-3 secondsawait new Promise((resolve) => setTimeout(resolve, 2000));
+// Now exposeawait sandbox.exposePort(8080, { hostname });
 ```
 
 TypeScript
 
 ```
-
-// Extract hostname from request
-
-const { hostname } = new URL(request.url);
-
-
-// Start service
-
-await sandbox.startProcess('npm run dev', { env: { PORT: '8080' } });
-
-
-// Wait 2-3 seconds
-
-await new Promise(resolve => setTimeout(resolve, 2000));
-
-
-// Now expose
-
-await sandbox.exposePort(8080, { hostname });
-
-
+// Extract hostname from requestconst { hostname } = new URL(request.url);
+// Start serviceawait sandbox.startProcess('npm run dev', { env: { PORT: '8080' } });
+// Wait 2-3 secondsawait new Promise(resolve => setTimeout(resolve, 2000));
+// Now exposeawait sandbox.exposePort(8080, { hostname });
 ```
 
 For critical services, poll the health endpoint:
 
-* [  JavaScript ](#tab-panel-10357)
-* [  TypeScript ](#tab-panel-10358)
+* [  JavaScript ](#tab-panel-10433)
+* [  TypeScript ](#tab-panel-10434)
 
 JavaScript
 
 ```
-
-// Extract hostname from request
-
-const { hostname } = new URL(request.url);
-
-
+// Extract hostname from requestconst { hostname } = new URL(request.url);
 await sandbox.startProcess("node api-server.js", { env: { PORT: "8080" } });
-
-
-// Wait for health check
-
-for (let i = 0; i < 10; i++) {
-
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-
-
-  const check = await sandbox.exec(
-
-    'curl -f http://localhost:8080/health || echo "not ready"',
-
-  );
-
-  if (check.stdout.includes("ok")) {
-
-    break;
-
-  }
-
-}
-
-
+// Wait for health checkfor (let i = 0; i < 10; i++) {  await new Promise((resolve) => setTimeout(resolve, 1000));
+  const check = await sandbox.exec(    'curl -f http://localhost:8080/health || echo "not ready"',  );  if (check.stdout.includes("ok")) {    break;  }}
 await sandbox.exposePort(8080, { hostname });
-
-
 ```
 
 TypeScript
 
 ```
-
-// Extract hostname from request
-
-const { hostname } = new URL(request.url);
-
-
+// Extract hostname from requestconst { hostname } = new URL(request.url);
 await sandbox.startProcess('node api-server.js', { env: { PORT: '8080' } });
-
-
-// Wait for health check
-
-for (let i = 0; i < 10; i++) {
-
-  await new Promise(resolve => setTimeout(resolve, 1000));
-
-
-  const check = await sandbox.exec('curl -f http://localhost:8080/health || echo "not ready"');
-
-  if (check.stdout.includes('ok')) {
-
-    break;
-
-  }
-
-}
-
-
+// Wait for health checkfor (let i = 0; i < 10; i++) {  await new Promise(resolve => setTimeout(resolve, 1000));
+  const check = await sandbox.exec('curl -f http://localhost:8080/health || echo "not ready"');  if (check.stdout.includes('ok')) {    break;  }}
 await sandbox.exposePort(8080, { hostname });
-
-
 ```
 
 ## Multiple services
 
 Expose multiple ports for full-stack applications:
 
-* [  JavaScript ](#tab-panel-10365)
-* [  TypeScript ](#tab-panel-10366)
+* [  JavaScript ](#tab-panel-10441)
+* [  TypeScript ](#tab-panel-10442)
 
 JavaScript
 
 ```
-
-// Extract hostname from request
-
-const { hostname } = new URL(request.url);
-
-
-// Start backend
-
-await sandbox.startProcess("node api/server.js", {
-
-  env: { PORT: "8080" },
-
-});
-
-await new Promise((resolve) => setTimeout(resolve, 2000));
-
-
-// Start frontend
-
-await sandbox.startProcess("npm run dev", {
-
-  cwd: "/workspace/frontend",
-
-  env: { PORT: "5173", API_URL: "http://localhost:8080" },
-
-});
-
-await new Promise((resolve) => setTimeout(resolve, 3000));
-
-
-// Expose both
-
-const api = await sandbox.exposePort(8080, { hostname, name: "api" });
-
-const frontend = await sandbox.exposePort(5173, { hostname, name: "frontend" });
-
-
-return Response.json({
-
-  api: api.url,
-
-  frontend: frontend.url,
-
-});
-
-
+// Extract hostname from requestconst { hostname } = new URL(request.url);
+// Start backendawait sandbox.startProcess("node api/server.js", {  env: { PORT: "8080" },});await new Promise((resolve) => setTimeout(resolve, 2000));
+// Start frontendawait sandbox.startProcess("npm run dev", {  cwd: "/workspace/frontend",  env: { PORT: "5173", API_URL: "http://localhost:8080" },});await new Promise((resolve) => setTimeout(resolve, 3000));
+// Expose bothconst api = await sandbox.exposePort(8080, { hostname, name: "api" });const frontend = await sandbox.exposePort(5173, { hostname, name: "frontend" });
+return Response.json({  api: api.url,  frontend: frontend.url,});
 ```
 
 TypeScript
 
 ```
-
-// Extract hostname from request
-
-const { hostname } = new URL(request.url);
-
-
-// Start backend
-
-await sandbox.startProcess('node api/server.js', {
-
-  env: { PORT: '8080' }
-
-});
-
-await new Promise(resolve => setTimeout(resolve, 2000));
-
-
-// Start frontend
-
-await sandbox.startProcess('npm run dev', {
-
-  cwd: '/workspace/frontend',
-
-  env: { PORT: '5173', API_URL: 'http://localhost:8080' }
-
-});
-
-await new Promise(resolve => setTimeout(resolve, 3000));
-
-
-// Expose both
-
-const api = await sandbox.exposePort(8080, { hostname, name: 'api' });
-
-const frontend = await sandbox.exposePort(5173, { hostname, name: 'frontend' });
-
-
-return Response.json({
-
-  api: api.url,
-
-  frontend: frontend.url
-
-});
-
-
+// Extract hostname from requestconst { hostname } = new URL(request.url);
+// Start backendawait sandbox.startProcess('node api/server.js', {  env: { PORT: '8080' }});await new Promise(resolve => setTimeout(resolve, 2000));
+// Start frontendawait sandbox.startProcess('npm run dev', {  cwd: '/workspace/frontend',  env: { PORT: '5173', API_URL: 'http://localhost:8080' }});await new Promise(resolve => setTimeout(resolve, 3000));
+// Expose bothconst api = await sandbox.exposePort(8080, { hostname, name: 'api' });const frontend = await sandbox.exposePort(5173, { hostname, name: 'frontend' });
+return Response.json({  api: api.url,  frontend: frontend.url});
 ```
 
 ## Manage exposed ports
 
 ### List currently exposed ports
 
-* [  JavaScript ](#tab-panel-10349)
-* [  TypeScript ](#tab-panel-10350)
+* [  JavaScript ](#tab-panel-10425)
+* [  TypeScript ](#tab-panel-10426)
 
 JavaScript
 
 ```
-
 const { ports, count } = await sandbox.getExposedPorts();
-
-
 console.log(`${count} ports currently exposed:`);
-
-
-for (const port of ports) {
-
-  console.log(`  Port ${port.port}: ${port.url}`);
-
-  if (port.name) {
-
-    console.log(`    Name: ${port.name}`);
-
-  }
-
-}
-
-
+for (const port of ports) {  console.log(`  Port ${port.port}: ${port.url}`);  if (port.name) {    console.log(`    Name: ${port.name}`);  }}
 ```
 
 TypeScript
 
 ```
-
 const { ports, count } = await sandbox.getExposedPorts();
-
-
 console.log(`${count} ports currently exposed:`);
-
-
-for (const port of ports) {
-
-  console.log(`  Port ${port.port}: ${port.url}`);
-
-  if (port.name) {
-
-    console.log(`    Name: ${port.name}`);
-
-  }
-
-}
-
-
+for (const port of ports) {  console.log(`  Port ${port.port}: ${port.url}`);  if (port.name) {    console.log(`    Name: ${port.name}`);  }}
 ```
 
 ### Unexpose ports
 
-* [  JavaScript ](#tab-panel-10347)
-* [  TypeScript ](#tab-panel-10348)
+* [  JavaScript ](#tab-panel-10423)
+* [  TypeScript ](#tab-panel-10424)
 
 JavaScript
 
 ```
-
-// Unexpose a single port
-
-await sandbox.unexposePort(8000);
-
-
-// Unexpose multiple ports
-
-for (const port of [3000, 5173, 8080]) {
-
-  await sandbox.unexposePort(port);
-
-}
-
-
+// Unexpose a single portawait sandbox.unexposePort(8000);
+// Unexpose multiple portsfor (const port of [3000, 5173, 8080]) {  await sandbox.unexposePort(port);}
 ```
 
 TypeScript
 
 ```
-
-// Unexpose a single port
-
-await sandbox.unexposePort(8000);
-
-
-// Unexpose multiple ports
-
-for (const port of [3000, 5173, 8080]) {
-
-  await sandbox.unexposePort(port);
-
-}
-
-
+// Unexpose a single portawait sandbox.unexposePort(8000);
+// Unexpose multiple portsfor (const port of [3000, 5173, 8080]) {  await sandbox.unexposePort(port);}
 ```
 
 ## Best practices
@@ -768,19 +289,8 @@ When developing locally with `wrangler dev`, you must expose ports in your Docke
 Dockerfile
 
 ```
-
 FROM docker.io/cloudflare/sandbox:0.3.3
-
-
-# Expose ports you plan to use
-
-EXPOSE 8000
-
-EXPOSE 8080
-
-EXPOSE 5173
-
-
+# Expose ports you plan to useEXPOSE 8000EXPOSE 8080EXPOSE 5173
 ```
 
 Update `wrangler.jsonc` to use your Dockerfile:
@@ -788,24 +298,7 @@ Update `wrangler.jsonc` to use your Dockerfile:
 wrangler.jsonc
 
 ```
-
-{
-
-  "containers": [
-
-    {
-
-      "class_name": "Sandbox",
-
-      "image": "./Dockerfile"
-
-    }
-
-  ]
-
-}
-
-
+{  "containers": [    {      "class_name": "Sandbox",      "image": "./Dockerfile"    }  ]}
 ```
 
 In production, all ports are available and controlled programmatically via `exposePort()` / `unexposePort()`.
@@ -816,143 +309,65 @@ In production, all ports are available and controlled programmatically via `expo
 
 Port 3000 is used by the internal Bun server and cannot be exposed:
 
-* [  JavaScript ](#tab-panel-10353)
-* [  TypeScript ](#tab-panel-10354)
+* [  JavaScript ](#tab-panel-10429)
+* [  TypeScript ](#tab-panel-10430)
 
 JavaScript
 
 ```
-
-// Extract hostname from request
-
-const { hostname } = new URL(request.url);
-
-
-// ❌ This will fail
-
-await sandbox.exposePort(3000, { hostname }); // Error: Port 3000 is reserved
-
-
-// ✅ Use a different port
-
-await sandbox.startProcess("node server.js", { env: { PORT: "8080" } });
-
-await sandbox.exposePort(8080, { hostname });
-
-
+// Extract hostname from requestconst { hostname } = new URL(request.url);
+// ❌ This will failawait sandbox.exposePort(3000, { hostname }); // Error: Port 3000 is reserved
+// ✅ Use a different portawait sandbox.startProcess("node server.js", { env: { PORT: "8080" } });await sandbox.exposePort(8080, { hostname });
 ```
 
 TypeScript
 
 ```
-
-// Extract hostname from request
-
-const { hostname } = new URL(request.url);
-
-
-// ❌ This will fail
-
-await sandbox.exposePort(3000, { hostname });  // Error: Port 3000 is reserved
-
-
-// ✅ Use a different port
-
-await sandbox.startProcess('node server.js', { env: { PORT: '8080' } });
-
-await sandbox.exposePort(8080, { hostname });
-
-
+// Extract hostname from requestconst { hostname } = new URL(request.url);
+// ❌ This will failawait sandbox.exposePort(3000, { hostname });  // Error: Port 3000 is reserved
+// ✅ Use a different portawait sandbox.startProcess('node server.js', { env: { PORT: '8080' } });await sandbox.exposePort(8080, { hostname });
 ```
 
 ### Port not ready
 
 Wait for the service to start before exposing:
 
-* [  JavaScript ](#tab-panel-10351)
-* [  TypeScript ](#tab-panel-10352)
+* [  JavaScript ](#tab-panel-10427)
+* [  TypeScript ](#tab-panel-10428)
 
 JavaScript
 
 ```
-
-// Extract hostname from request
-
-const { hostname } = new URL(request.url);
-
-
-await sandbox.startProcess("npm run dev");
-
-await new Promise((resolve) => setTimeout(resolve, 3000));
-
-await sandbox.exposePort(8080, { hostname });
-
-
+// Extract hostname from requestconst { hostname } = new URL(request.url);
+await sandbox.startProcess("npm run dev");await new Promise((resolve) => setTimeout(resolve, 3000));await sandbox.exposePort(8080, { hostname });
 ```
 
 TypeScript
 
 ```
-
-// Extract hostname from request
-
-const { hostname } = new URL(request.url);
-
-
-await sandbox.startProcess('npm run dev');
-
-await new Promise(resolve => setTimeout(resolve, 3000));
-
-await sandbox.exposePort(8080, { hostname });
-
-
+// Extract hostname from requestconst { hostname } = new URL(request.url);
+await sandbox.startProcess('npm run dev');await new Promise(resolve => setTimeout(resolve, 3000));await sandbox.exposePort(8080, { hostname });
 ```
 
 ### Port already exposed
 
 Check before exposing to avoid errors:
 
-* [  JavaScript ](#tab-panel-10359)
-* [  TypeScript ](#tab-panel-10360)
+* [  JavaScript ](#tab-panel-10435)
+* [  TypeScript ](#tab-panel-10436)
 
 JavaScript
 
 ```
-
-// Extract hostname from request
-
-const { hostname } = new URL(request.url);
-
-
-const { ports } = await sandbox.getExposedPorts();
-
-if (!ports.some((p) => p.port === 8080)) {
-
-  await sandbox.exposePort(8080, { hostname });
-
-}
-
-
+// Extract hostname from requestconst { hostname } = new URL(request.url);
+const { ports } = await sandbox.getExposedPorts();if (!ports.some((p) => p.port === 8080)) {  await sandbox.exposePort(8080, { hostname });}
 ```
 
 TypeScript
 
 ```
-
-// Extract hostname from request
-
-const { hostname } = new URL(request.url);
-
-
-const { ports } = await sandbox.getExposedPorts();
-
-if (!ports.some(p => p.port === 8080)) {
-
-  await sandbox.exposePort(8080, { hostname });
-
-}
-
-
+// Extract hostname from requestconst { hostname } = new URL(request.url);
+const { ports } = await sandbox.getExposedPorts();if (!ports.some(p => p.port === 8080)) {  await sandbox.exposePort(8080, { hostname });}
 ```
 
 ### Uppercase sandbox ID error
@@ -963,33 +378,19 @@ if (!ports.some(p => p.port === 8080)) {
 
 **Solution**:
 
-* [  JavaScript ](#tab-panel-10355)
-* [  TypeScript ](#tab-panel-10356)
+* [  JavaScript ](#tab-panel-10431)
+* [  TypeScript ](#tab-panel-10432)
 
 JavaScript
 
 ```
-
-// Create sandbox with normalization
-
-const sandbox = getSandbox(env.Sandbox, "MyProject-123", { normalizeId: true });
-
-await sandbox.exposePort(8080, { hostname });
-
-
+// Create sandbox with normalizationconst sandbox = getSandbox(env.Sandbox, "MyProject-123", { normalizeId: true });await sandbox.exposePort(8080, { hostname });
 ```
 
 TypeScript
 
 ```
-
-// Create sandbox with normalization
-
-const sandbox = getSandbox(env.Sandbox, 'MyProject-123', { normalizeId: true });
-
-await sandbox.exposePort(8080, { hostname });
-
-
+// Create sandbox with normalizationconst sandbox = getSandbox(env.Sandbox, 'MyProject-123', { normalizeId: true });await sandbox.exposePort(8080, { hostname });
 ```
 
 This creates the Durable Object with ID `"myproject-123"`, matching the preview URL routing.

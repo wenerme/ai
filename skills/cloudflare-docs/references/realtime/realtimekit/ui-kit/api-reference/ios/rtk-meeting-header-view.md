@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,15 +35,8 @@ Meeting header view that displays the meeting title, participant count, elapsed 
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let headerView = RtkMeetingHeaderView(meeting: rtkClient)
-
-view.addSubview(headerView)
-
-
+let headerView = RtkMeetingHeaderView(meeting: rtkClient)view.addSubview(headerView)
 ```
 
 ### With page navigation
@@ -51,25 +44,8 @@ view.addSubview(headerView)
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let headerView = RtkMeetingHeaderView(meeting: rtkClient)
-
-headerView.setClicks(
-
-    nextButton: { print("Next page") },
-
-    previousButton: { print("Previous page") }
-
-)
-
-headerView.refreshNextPreviousButtonState()
-
-view.addSubview(headerView)
-
-
+let headerView = RtkMeetingHeaderView(meeting: rtkClient)headerView.setClicks(    nextButton: { print("Next page") },    previousButton: { print("Previous page") })headerView.refreshNextPreviousButtonState()view.addSubview(headerView)
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,9 +25,10 @@ The Firewall device posture attribute ensures that a firewall is running on a de
 3. Select **Firewall**.
 4. Enter a descriptive name for the check.
 5. Select your operating system.
-6. Configure **Enable firewall check** based on your desired security policy:  
-   * **Enabled**: (Recommended) The posture check passes only if the firewall is running.  
-   * **Disabled**: The posture check passes only if the firewall is turned off.  
+6. Configure **Enable firewall check** based on your desired security policy:
+
+  * **Enabled**: (Recommended) The posture check passes only if the firewall is running.
+  * **Disabled**: The posture check passes only if the firewall is turned off.  
 Note  
 The **Enable firewall check** toggle does not turn the posture check on or off; rather, the toggle determines whether the Cloudflare One Client looks for an active or inactive firewall.
 7. Select **Save**.

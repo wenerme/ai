@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,13 +16,13 @@ Functions utilize file-based routing. Your `/functions` directory structure dete
 
 * ...
 * Directoryfunctions  
-   * index.js  
-   * helloworld.js  
-   * howdyworld.js  
-   * Directoryfruits  
-         * index.js  
-         * apple.js  
-         * banana.js
+  * index.js
+  * helloworld.js
+  * howdyworld.js
+  * Directoryfruits  
+    * index.js
+    * apple.js
+    * banana.js
 
 The following routes will be generated based on the above file structure. These routes map the URL pattern to the `/functions` file that will be invoked when a visitor goes to the URL:
 
@@ -80,11 +80,11 @@ Review the following `/functions/` directory structure:
 
 * ...
 * Directoryfunctions  
-   * date.js  
-   * Directoryusers  
-         * special.js  
-         * \[user\].js  
-         * \[\[catchall\]\].js
+  * date.js
+  * Directoryusers  
+    * special.js
+    * \[user\].js
+    * \[\[catchall\]\].js
 
 The following requests will match the following files:
 
@@ -104,14 +104,7 @@ For files which match a single URL segment (use a single set of brackets), the v
 JavaScript
 
 ```
-
-export function onRequest(context) {
-
-  return new Response(context.params.user);
-
-}
-
-
+export function onRequest(context) {  return new Response(context.params.user);}
 ```
 
 The above logic will return `daniel` for requests to `/users/daniel`.
@@ -121,14 +114,7 @@ For files which match against multiple URL segments (use a double set of bracket
 JavaScript
 
 ```
-
-export function onRequest(context) {
-
-  return new Response(JSON.stringify(context.params.catchall));
-
-}
-
-
+export function onRequest(context) {  return new Response(JSON.stringify(context.params.catchall));}
 ```
 
 The above logic will return `["daniel", "xyz", "123"]` for requests to `/users/daniel/xyz/123`.
@@ -196,18 +182,7 @@ Wildcards match any number of path segments (slashes). For example, `/users/*` w
 Below is an example of a `_routes.json`.
 
 ```
-
-{
-
-  "version": 1,
-
-  "include": ["/*"],
-
-  "exclude": []
-
-}
-
-
+{  "version": 1,  "include": ["/*"],  "exclude": []}
 ```
 
 This `_routes.json` will invoke your Functions on all routes.
@@ -215,18 +190,7 @@ This `_routes.json` will invoke your Functions on all routes.
 Below is another example of a `_routes.json` file. Any route inside the `/build` directory will not invoke the Function and will not incur a Functions invocation charge.
 
 ```
-
-{
-
-  "version": 1,
-
-  "include": ["/*"],
-
-  "exclude": ["/build/*"]
-
-}
-
-
+{  "version": 1,  "include": ["/*"],  "exclude": ["/build/*"]}
 ```
 
 ## Fail open / closed

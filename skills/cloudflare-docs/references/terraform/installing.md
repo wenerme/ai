@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/terraform/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,12 +29,7 @@ The easiest way to install Terraform on macOS is with Homebrew.
 Terminal window
 
 ```
-
-brew tap hashicorp/tap
-
-brew install hashicorp/tap/terraform
-
-
+brew tap hashicorp/tapbrew install hashicorp/tap/terraform
 ```
 
 ## Linux
@@ -44,10 +39,7 @@ You can install the `terraform` binary via your distribution's package manager. 
 Terminal window
 
 ```
-
 sudo apt install terraform
-
-
 ```
 
 Alternatively, you can fetch a specific version directly and place the binary in your `PATH`:
@@ -55,41 +47,23 @@ Alternatively, you can fetch a specific version directly and place the binary in
 Terminal window
 
 ```
-
 wget -q https://releases.hashicorp.com/terraform/1.4.5/terraform_1.4.5_linux_amd64.zip
-
-
 unzip terraform_1.4.5_linux_amd64.zip
-
-
 ```
 
 ```
-
-Archive:  terraform_1.4.5_linux_amd64.zip
-
-  inflating: terraform
-
-
+Archive:  terraform_1.4.5_linux_amd64.zip  inflating: terraform
 ```
 
 Terminal window
 
 ```
-
 sudo mv terraform /usr/local/bin/terraform
-
-
 terraform version
-
-
 ```
 
 ```
-
 Terraform v1.4.5
-
-
 ```
 
 ## Windows

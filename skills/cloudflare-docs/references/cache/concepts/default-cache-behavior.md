@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -15,12 +15,12 @@ image: https://developers.cloudflare.com/core-services-preview.png
 Cloudflare respects the origin web server’s cache headers in the following order unless an [Edge Cache TTL cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#edge-ttl) overrides the headers. Refer to the [Edge TTL](https://developers.cloudflare.com/cache/how-to/configure-cache-status-code/#edge-ttl) section for details on default TTL behavior.
 
 * Cloudflare **does not** cache the resource when:  
-   * The `Cache-Control` header is set to `private`, `no-store`, `no-cache`, or `max-age=0`.  
-   * The [Set-Cookie header](https://developers.cloudflare.com/cache/concepts/cache-behavior/#interaction-of-set-cookie-response-header-with-cache) exists.  
-   * The HTTP request method is anything other than a `GET`.
+  * The `Cache-Control` header is set to `private`, `no-store`, `no-cache`, or `max-age=0`.
+  * The [Set-Cookie header](https://developers.cloudflare.com/cache/concepts/cache-behavior/#interaction-of-set-cookie-response-header-with-cache) exists.
+  * The HTTP request method is anything other than a `GET`.
 * Cloudflare **does** cache the resource when:  
-   * The `Cache-Control` header is set to `public` and `max-age` is greater than 0.  
-   * The `Expires` header is set to a future date.
+  * The `Cache-Control` header is set to `public` and `max-age` is greater than 0.
+  * The `Expires` header is set to a future date.
 
 Note
 
@@ -49,8 +49,9 @@ The cache lock ensures that Cloudflare only sends one request at a time to the o
 
 Cloudflare only caches based on file extension and not by MIME type. The Cloudflare CDN does not cache HTML or JSON by default. Additionally, by default Cloudflare caches a website's robots.txt.
 
-| 7Z    | CSV  | GIF  | MIDI | PNG  | TIF   | ZIP |
+|       |      |      |      |      |       |     |
 | ----- | ---- | ---- | ---- | ---- | ----- | --- |
+| 7Z    | CSV  | GIF  | MIDI | PNG  | TIF   | ZIP |
 | AVI   | DOC  | GZ   | MKV  | PPT  | TIFF  | ZST |
 | AVIF  | DOCX | ICO  | MP3  | PPTX | TTF   |     |
 | APK   | DMG  | ISO  | MP4  | PS   | WEBM  |     |
@@ -86,10 +87,10 @@ Cloudflare’s CDN provides several cache customization options:
 
 ### Upload limits
 
-| Free            | Pro    | Business | Enterprise |         |
-| --------------- | ------ | -------- | ---------- | ------- |
-| Availability    | Yes    | Yes      | Yes        | Yes     |
-| Max upload size | 100 MB | 100 MB   | 200 MB     | 500+ MB |
+|                 | Free   | Pro    | Business | Enterprise |
+| --------------- | ------ | ------ | -------- | ---------- |
+| Availability    | Yes    | Yes    | Yes      | Yes        |
+| Max upload size | 100 MB | 100 MB | 200 MB   | 500+ MB    |
 
 Customers can reduce the **Maximum Upload Size** from the zone's **Network** page.
 

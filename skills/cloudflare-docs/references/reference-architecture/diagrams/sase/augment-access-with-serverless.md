@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -69,34 +69,7 @@ Here is an example of a JWT sent to an origin (use [JWT.io ↗](http://jwt.io) t
 JWT content
 
 ```
-
-{
-
-  "aud": ["264063895705477af73bfbaed1bf401981f4812eefcdb9fea33f5e10e666e282"],
-
-  "email": "john.doe@cloudflare.com",
-
-  "exp": 1728551137,
-
-  "iat": 1728464737,
-
-  "nbf": 1728464737,
-
-  "iss": "https://myorg.cloudflareaccess.com",
-
-  "type": "app",
-
-  "identity_nonce": "IA0hPRvwILtbUXSQ",
-
-  "sub": "ce40d564-c72f-475f-a9b8-f395f19ad986",
-
-  "device_id": "8469d7c4-83a9-11ee-b559-76e6e80876db",
-
-  "country": "FR"
-
-}
-
-
+{  "aud": ["264063895705477af73bfbaed1bf401981f4812eefcdb9fea33f5e10e666e282"],  "email": "john.doe@cloudflare.com",  "exp": 1728551137,  "iat": 1728464737,  "nbf": 1728464737,  "iss": "https://myorg.cloudflareaccess.com",  "type": "app",  "identity_nonce": "IA0hPRvwILtbUXSQ",  "sub": "ce40d564-c72f-475f-a9b8-f395f19ad986",  "device_id": "8469d7c4-83a9-11ee-b559-76e6e80876db",  "country": "FR"}
 ```
 
 Cloudflare exposes a specific [endpoint](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/#%5Ftop) to allow anyone to validate and expand a Cloudflare signed JWT.
@@ -120,134 +93,7 @@ When a JSON Web Token (JWT) is expanded, the details of the attached authenticat
 Expanded JWT
 
 ```
-
-{
-
-  "id": "P51Tuu01fWHMBjIBvrCK1lK-eUDWs2aQMv03WDqT5oY",
-
-  "name": "John Doe",
-
-  "email": "john.doe@cloudflare.com",
-
-  "amr": [
-
-    "pwd"
-
-  ],
-
-  "oidc_fields": {
-
-    "principalName": "john.doe_cloudflare.com#EXT#@XXXXXXcloudflare.onmicrosoft.com"
-
-  },
-
-  "groups": [
-
-    {
-
-      "id": "fdaedb59-e9be-4ab7-8001-3e069da54185",
-
-      "name": "Security Team"
-
-    }
-
-  ],
-
-  "idp": {
-
-    "id": "b9f4d68e-dac1-48b0-b728-ae05a5f0d4b2",
-
-    "type": "azureAD"
-
-  },
-
-  "geo": {
-
-    "country": "FR"
-
-  },
-
-  "user_uuid": "ce40d564-c72f-475f-a9b8-f395f19ad986",
-
-  "account_id": "121287a0c6e6260ec930655e6b39a3a8",
-
-  "iat": 1724056537,
-
-  "devicePosture": {
-
-    "f6f9391e-6776-4878-9c60-0cc807dc7dc8": {
-
-      "id": "f6f9391e-6776-4878-9c60-0cc807dc7dc8",
-
-      "schedule": "5m",
-
-      "timestamp": "2024-08-19T08:31:59.274Z",
-
-      "description": "",
-
-      "type": "disk_encryption",
-
-      "check": {
-
-        "drives": {
-
-          "C": {
-
-            "encrypted": true
-
-          }
-
-        }
-
-      },
-
-      "success": false,
-
-      "rule_name": "Disk Encryption - Windows",
-
-      "input": {
-
-        "requireAll": true,
-
-        "checkDisks": []
-
-    },
-
-    "a0a8e83d-be75-4aa6-bfa0-5791da6e9186": {
-
-      "id": "a0a8e83d-be75-4aa6-bfa0-5791da6e9186",
-
-      "schedule": "5m",
-
-      "timestamp": "2024-08-19T08:31:59.274Z",
-
-      "description": "",
-
-      "type": "firewall",
-
-      "check": {
-
-        "firewall": false
-
-      },
-
-      "success": false,
-
-      "rule_name": "Local Firewall Check - Windows",
-
-      "input": {
-
-        "enabled": true
-
-      }
-
-    }
-
-    ...
-
-  }
-
-
+{  "id": "P51Tuu01fWHMBjIBvrCK1lK-eUDWs2aQMv03WDqT5oY",  "name": "John Doe",  "email": "john.doe@cloudflare.com",  "amr": [    "pwd"  ],  "oidc_fields": {    "principalName": "john.doe_cloudflare.com#EXT#@XXXXXXcloudflare.onmicrosoft.com"  },  "groups": [    {      "id": "fdaedb59-e9be-4ab7-8001-3e069da54185",      "name": "Security Team"    }  ],  "idp": {    "id": "b9f4d68e-dac1-48b0-b728-ae05a5f0d4b2",    "type": "azureAD"  },  "geo": {    "country": "FR"  },  "user_uuid": "ce40d564-c72f-475f-a9b8-f395f19ad986",  "account_id": "121287a0c6e6260ec930655e6b39a3a8",  "iat": 1724056537,  "devicePosture": {    "f6f9391e-6776-4878-9c60-0cc807dc7dc8": {      "id": "f6f9391e-6776-4878-9c60-0cc807dc7dc8",      "schedule": "5m",      "timestamp": "2024-08-19T08:31:59.274Z",      "description": "",      "type": "disk_encryption",      "check": {        "drives": {          "C": {            "encrypted": true          }        }      },      "success": false,      "rule_name": "Disk Encryption - Windows",      "input": {        "requireAll": true,        "checkDisks": []    },    "a0a8e83d-be75-4aa6-bfa0-5791da6e9186": {      "id": "a0a8e83d-be75-4aa6-bfa0-5791da6e9186",      "schedule": "5m",      "timestamp": "2024-08-19T08:31:59.274Z",      "description": "",      "type": "firewall",      "check": {        "firewall": false      },      "success": false,      "rule_name": "Local Firewall Check - Windows",      "input": {        "enabled": true      }    }    ...  }
 ```
 
 Using the details in the JWT, you can use a Worker to extract the details of the device posture and then reinsert them into HTTP headers which the application uses for its own authorization logic. Below is a guided tutorial explaining how this request modification can be performed with Cloudflare Developer platform.

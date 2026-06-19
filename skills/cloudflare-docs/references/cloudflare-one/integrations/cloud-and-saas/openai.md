@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,10 +37,10 @@ If Compliance API access is not yet turned on for your organization, refer to [E
 Compliance API access is required to use the OpenAI CASB integration. To enable Compliance API access:
 
 1. Contact `support@openai.com` to request access to the Compliance API for your organization and for the API key you will use with Cloudflare CASB. In your request, include:  
-   * The last four characters of the API key  
-   * The name of the API key  
-   * The name of the user who created the key  
-   * The requested scope (`read`, `write`, or both)
+  * The last four characters of the API key
+  * The name of the API key
+  * The name of the user who created the key
+  * The requested scope (`read`, `write`, or both)
 2. OpenAI will verify the key and grant the requested Compliance API scopes.
 3. After the scopes are granted, [add the OpenAI integration to CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/). When prompted, enter your Open AI Admin API key, Organization ID, and Workspace ID (available at `https://chatgpt.com/admin/settings`).
 

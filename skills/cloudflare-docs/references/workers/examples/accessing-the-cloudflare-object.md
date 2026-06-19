@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,143 +22,41 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11573)
-* [  TypeScript ](#tab-panel-11574)
-* [  Hono ](#tab-panel-11575)
-* [  Python ](#tab-panel-11576)
+* [  JavaScript ](#tab-panel-11590)
+* [  TypeScript ](#tab-panel-11591)
+* [  Hono ](#tab-panel-11592)
+* [  Python ](#tab-panel-11593)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(req) {
-
-    const data =
-
-      req.cf !== undefined
-
-        ? req.cf
-
-        : { error: "The `cf` object is not available inside the preview." };
-
-
-    return new Response(JSON.stringify(data, null, 2), {
-
-      headers: {
-
-        "content-type": "application/json;charset=UTF-8",
-
-      },
-
-    });
-
-  },
-
-};
-
-
+export default {  async fetch(req) {    const data =      req.cf !== undefined        ? req.cf        : { error: "The `cf` object is not available inside the preview." };
+    return new Response(JSON.stringify(data, null, 2), {      headers: {        "content-type": "application/json;charset=UTF-8",      },    });  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(req): Promise<Response> {
-
-    const data =
-
-      req.cf !== undefined
-
-        ? req.cf
-
-        : { error: "The `cf` object is not available inside the preview." };
-
-
-    return new Response(JSON.stringify(data, null, 2), {
-
-      headers: {
-
-        "content-type": "application/json;charset=UTF-8",
-
-      },
-
-    });
-
-  },
-
-} satisfies ExportedHandler;
-
-
+export default {  async fetch(req): Promise<Response> {    const data =      req.cf !== undefined        ? req.cf        : { error: "The `cf` object is not available inside the preview." };
+    return new Response(JSON.stringify(data, null, 2), {      headers: {        "content-type": "application/json;charset=UTF-8",      },    });  },} satisfies ExportedHandler;
 ```
 
 TypeScript
 
 ```
-
 import { Hono } from "hono";
-
-
 const app = new Hono();
-
-
-app.get("*", async (c) => {
-
-  // Access the raw request to get the cf object
-
-  const req = c.req.raw;
-
-
-  // Check if the cf object is available
-
-  const data =
-
-    req.cf !== undefined
-
-      ? req.cf
-
-      : { error: "The `cf` object is not available inside the preview." };
-
-
-  // Return the data formatted with 2-space indentation
-
-  return c.json(data);
-
-});
-
-
+app.get("*", async (c) => {  // Access the raw request to get the cf object  const req = c.req.raw;
+  // Check if the cf object is available  const data =    req.cf !== undefined      ? req.cf      : { error: "The `cf` object is not available inside the preview." };
+  // Return the data formatted with 2-space indentation  return c.json(data);});
 export default app;
-
-
 ```
 
 Python
 
 ```
-
-import json
-
-from workers import Response, WorkerEntrypoint
-
-from js import JSON
-
-
-class Default(WorkerEntrypoint):
-
-  async def fetch(self, request):
-
-    error = json.dumps({ "error": "The `cf` object is not available inside the preview." })
-
-    data = request.cf if request.cf is not None else error
-
-    headers = {"content-type":"application/json"}
-
-    return Response(JSON.stringify(data, None, 2), headers=headers)
-
-
+import jsonfrom workers import Response, WorkerEntrypointfrom js import JSON
+class Default(WorkerEntrypoint):  async def fetch(self, request):    error = json.dumps({ "error": "The `cf` object is not available inside the preview." })    data = request.cf if request.cf is not None else error    headers = {"content-type":"application/json"}    return Response(JSON.stringify(data, None, 2), headers=headers)
 ```
 
 ```json

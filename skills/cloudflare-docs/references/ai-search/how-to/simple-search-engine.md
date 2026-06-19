@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,80 +19,24 @@ To replicate this example:
 * Disable query rewriting so that the original user query is matched directly
 * Configure your AI Search instance to have small chunk sizes (256 tokens is usually enough)
 
-* [  JavaScript ](#tab-panel-6629)
-* [  TypeScript ](#tab-panel-6630)
+* [  JavaScript ](#tab-panel-6705)
+* [  TypeScript ](#tab-panel-6706)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const url = new URL(request.url);
-
-    const userQuery = url.searchParams.get("query") ?? "What is Cloudflare?";
-
-
-    const searchResult = await env.AI_SEARCH.get("my-instance").search({
-
-      messages: [{ role: "user", content: userQuery }],
-
-    });
-
-
-    return Response.json({
-
-      files: searchResult.chunks.map((chunk) => chunk.item.key),
-
-    });
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const url = new URL(request.url);    const userQuery = url.searchParams.get("query") ?? "What is Cloudflare?";
+    const searchResult = await env.AI_SEARCH.get("my-instance").search({      messages: [{ role: "user", content: userQuery }],    });
+    return Response.json({      files: searchResult.chunks.map((chunk) => chunk.item.key),    });  },};
 ```
 
 TypeScript
 
 ```
-
-export interface Env {
-
-  AI_SEARCH: AiSearchNamespace;
-
-}
-
-
-export default {
-
-  async fetch(request, env): Promise<Response> {
-
-    const url = new URL(request.url);
-
-    const userQuery = url.searchParams.get("query") ?? "What is Cloudflare?";
-
-
-    const searchResult = await env.AI_SEARCH.get("my-instance").search({
-
-      messages: [{ role: "user", content: userQuery }],
-
-    });
-
-
-    return Response.json({
-
-      files: searchResult.chunks.map((chunk) => chunk.item.key),
-
-    });
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export interface Env {  AI_SEARCH: AiSearchNamespace;}
+export default {  async fetch(request, env): Promise<Response> {    const url = new URL(request.url);    const userQuery = url.searchParams.get("query") ?? "What is Cloudflare?";
+    const searchResult = await env.AI_SEARCH.get("my-instance").search({      messages: [{ role: "user", content: userQuery }],    });
+    return Response.json({      files: searchResult.chunks.map((chunk) => chunk.item.key),    });  },} satisfies ExportedHandler<Env>;
 ```
 
 ```json

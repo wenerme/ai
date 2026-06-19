@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,39 +28,18 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 ### Basic Usage
 
 ```
-
 <rtk-stage-toggle></rtk-stage-toggle>
-
-
 ```
 
 ### With Properties
 
 ```
-
-<rtk-stage-toggle
-
- size="md"
-
- variant"button">
-
-</rtk-stage-toggle>
-
-
+<rtk-stage-toggle size="md" variant"button"></rtk-stage-toggle>
 ```
 
 ```
-
-<script>
-
-  const el = document.querySelector("rtk-stage-toggle");
-
-
-  el.meeting= meeting
-
-</script>
-
-
+<script>  const el = document.querySelector("rtk-stage-toggle");
+  el.meeting= meeting</script>
 ```
 
 ```json

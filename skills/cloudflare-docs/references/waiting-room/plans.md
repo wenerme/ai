@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waiting-room/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,22 +16,22 @@ The features available for a waiting room depend on your plan type. You can only
 
 One basic waiting room is included in all Business and Enterprise plans. On an Enterprise plan, you can purchase advanced waiting room(s) to unlock all of the additional advanced features.
 
-| Free                                   | Pro | Business | Enterprise                |                                                                                       |
-| -------------------------------------- | --- | -------- | ------------------------- | ------------------------------------------------------------------------------------- |
-| Availability                           | No  | No       | Yes                       | Yes                                                                                   |
-| Number of rooms                        | 0   | 0        | 1                         | 1 (default) _With advanced:_Custom (can purchase more)                                |
-| Customized templates                   | No  | No       | No                        | Advanced add-on                                                                       |
-| Queueing methods                       | No  | No       | First In First Out (FIFO) | First In First Out (FIFO) (default) _With advanced:_FIFO, Random, Reject, Passthrough |
-| Configure multiple hostnames and paths | No  | No       | No                        | Advanced add-on                                                                       |
-| Disable session renewal                | No  | No       | No                        | Advanced add-on                                                                       |
-| JSON-friendly response                 | No  | No       | No                        | Advanced add-on                                                                       |
-| Customize queuing status code          | No  | No       | Yes                       | Yes                                                                                   |
-| Scheduled events                       | No  | No       | No                        | Advanced add-on                                                                       |
-| Waiting Room rules                     | No  | No       | No                        | Advanced add-on                                                                       |
-| Session Revocation                     | No  | No       | No                        | Advanced add-on                                                                       |
-| SEO Crawler Bypassing                  | No  | No       | Yes                       | Yes                                                                                   |
-| Turnstile Widget Mode                  | No  | No       | Invisible only            | Invisible (default) _With advanced:_Invisible, Managed, Non Interactive               |
-| Turnstile Fail Action                  | No  | No       | Log only                  | Log only (default) _With advanced:_Log only & Infinite queue                          |
+|                                        | Free | Pro | Business                  | Enterprise                                                                            |
+| -------------------------------------- | ---- | --- | ------------------------- | ------------------------------------------------------------------------------------- |
+| Availability                           | No   | No  | Yes                       | Yes                                                                                   |
+| Number of rooms                        | 0    | 0   | 1                         | 1 (default) _With advanced:_Custom (can purchase more)                                |
+| Customized templates                   | No   | No  | No                        | Advanced add-on                                                                       |
+| Queueing methods                       | No   | No  | First In First Out (FIFO) | First In First Out (FIFO) (default) _With advanced:_FIFO, Random, Reject, Passthrough |
+| Configure multiple hostnames and paths | No   | No  | No                        | Advanced add-on                                                                       |
+| Disable session renewal                | No   | No  | No                        | Advanced add-on                                                                       |
+| JSON-friendly response                 | No   | No  | No                        | Advanced add-on                                                                       |
+| Customize queuing status code          | No   | No  | Yes                       | Yes                                                                                   |
+| Scheduled events                       | No   | No  | No                        | Advanced add-on                                                                       |
+| Waiting Room rules                     | No   | No  | No                        | Advanced add-on                                                                       |
+| Session Revocation                     | No   | No  | No                        | Advanced add-on                                                                       |
+| SEO Crawler Bypassing                  | No   | No  | Yes                       | Yes                                                                                   |
+| Turnstile Widget Mode                  | No   | No  | Invisible only            | Invisible (default) _With advanced:_Invisible, Managed, Non Interactive               |
+| Turnstile Fail Action                  | No   | No  | Log only                  | Log only (default) _With advanced:_Log only & Infinite queue                          |
 
 Note
 

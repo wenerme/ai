@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/client-side-security/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,14 +22,17 @@ You can configure a notification for [code change alerts](https://developers.clo
 
 When you receive such a notification:
 
-1. Go to the client-side resources page:  
-   * [  New dashboard ](#tab-panel-6975)  
-   * [ Old dashboard ](#tab-panel-6976)  
-   1. In the Cloudflare dashboard, go to the **Web assets** page.  
-   [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)  
-   2. Select the **Client-side resources** tab.  
-   1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.  
-   2. Go to **Security** \> **Client-side security**.
+1. Go to the client-side resources page:
+
+  * [  New dashboard ](#tab-panel-7051)
+  * [ Old dashboard ](#tab-panel-7052)
+
+  1. In the Cloudflare dashboard, go to the **Web assets** page.  
+  [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+  2. Select the **Client-side resources** tab.
+
+  1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
+  2. Go to **Security** \> **Client-side security**.
 2. Check the details of each changed script and validate if it is an expected change.
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -41,9 +41,10 @@ To identify false negatives, review the HTTP logs on your origin web server. To 
 
 * Are WAF managed rules enabled in **Security** \> **WAF** \> **Managed rules**?
 * Are WAF managed rules being disabled via [Page Rules](https://developers.cloudflare.com/rules/page-rules/)?
-* Not all managed rules are enabled by default, so review individual managed rule default actions.  
-   * For example, Cloudflare allows requests with empty user agents by default. To block requests with an empty user agent, change the rule **Mode** to _Block_.  
-   * Another example: if you are looking to block unmitigated SQL injection attacks, make sure the relevant SQLi rules are enabled and set to _Block_ under the **Cloudflare Specials** group.
+* Not all managed rules are enabled by default, so review individual managed rule default actions.
+
+  * For example, Cloudflare allows requests with empty user agents by default. To block requests with an empty user agent, change the rule **Mode** to _Block_.
+  * Another example: if you are looking to block unmitigated SQL injection attacks, make sure the relevant SQLi rules are enabled and set to _Block_ under the **Cloudflare Specials** group.
 * Are DNS records that serve HTTP traffic proxied through Cloudflare?
 * Is a firewall rule [bypassing](https://developers.cloudflare.com/firewall/cf-firewall-rules/actions/#supported-actions) managed rules?
 * Does an allowed country, ASN, IP range, or IP address in [IP Access rules](https://developers.cloudflare.com/waf/tools/ip-access-rules/) or [firewall rules](https://developers.cloudflare.com/firewall/cf-firewall-rules/) match the attack traffic?

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,52 +22,31 @@ Wrangler runs [esbuild ↗](https://esbuild.github.io/) by default as part of th
 
 Custom builds are configured by adding a `[build]` section in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and using the following options for configuring your custom build.
 
-* `command` ` string ` optional  
-   * The command used to build your Worker. On Linux and macOS, the command is executed in the `sh` shell and the `cmd` shell for Windows. The `&&` and `||` shell operators may be used. This command will be run as part of `wrangler dev` and `npx wrangler deploy`.
-* `cwd` ` string ` optional  
-   * The directory in which the command is executed.
-* `watch_dir` ` string | string\[] ` optional  
-   * The directory to watch for changes while using `wrangler dev`. Defaults to the current working directory.
+* `command` ` string ` optional
+
+  * The command used to build your Worker. On Linux and macOS, the command is executed in the `sh` shell and the `cmd` shell for Windows. The `&&` and `||` shell operators may be used. This command will be run as part of `wrangler dev` and `npx wrangler deploy`.
+* `cwd` ` string ` optional
+
+  * The directory in which the command is executed.
+* `watch_dir` ` string | string\[] ` optional
+
+  * The directory to watch for changes while using `wrangler dev`. Defaults to the current working directory.
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-12927)
-* [  wrangler.toml ](#tab-panel-12928)
+* [  wrangler.jsonc ](#tab-panel-12944)
+* [  wrangler.toml ](#tab-panel-12945)
 
 JSONC
 
 ```
-
-{
-
-  "build": {
-
-    "command": "npm run build",
-
-    "cwd": "build_cwd",
-
-    "watch_dir": "build_watch_dir"
-
-  }
-
-}
-
-
+{  "build": {    "command": "npm run build",    "cwd": "build_cwd",    "watch_dir": "build_watch_dir"  }}
 ```
 
 TOML
 
 ```
-
-[build]
-
-command = "npm run build"
-
-cwd = "build_cwd"
-
-watch_dir = "build_watch_dir"
-
-
+[build]command = "npm run build"cwd = "build_cwd"watch_dir = "build_watch_dir"
 ```
 
 ## `WRANGLER_COMMAND` environment variable
@@ -86,24 +65,7 @@ The possible values are:
 For example, you can use this to apply different build settings for development and production:
 
 ```
-
-#!/bin/bash
-
-if [ "$WRANGLER_COMMAND" = "dev" ]; then
-
-  echo "Building for development..."
-
-  # run a development build
-
-else
-
-  echo "Building for production..."
-
-  # run a production build
-
-fi
-
-
+#!/bin/bashif [ "$WRANGLER_COMMAND" = "dev" ]; then  echo "Building for development..."  # run a development buildelse  echo "Building for production..."  # run a production buildfi
 ```
 
 ```json

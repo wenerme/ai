@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,47 +31,15 @@ Displays a participant's name with optional child content (such as an audio visu
 ### Basic Usage
 
 ```
-
 import { RtkNameTag } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkNameTag participant={participant} />;
-
-}
-
-
+function MyComponent() {  return <RtkNameTag participant={participant} />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkNameTag } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkNameTag
-
-      participant={participant}
-
-      meeting={meeting}
-
-      size="md"
-
-      maxLength={25}
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkNameTag      participant={participant}      meeting={meeting}      size="md"      maxLength={25}    />  );}
 ```
 
 ```json

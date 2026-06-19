@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,30 +37,9 @@ With the Service Worker syntax, the example Worker looks like:
 JavaScript
 
 ```
-
-async function handler(request) {
-
-  const base = 'https://example.com';
-
-  const statusCode = 301;
-
-
-  const destination = new URL(request.url, base);
-
-  return Response.redirect(destination.toString(), statusCode);
-
-}
-
-
-// Initialize Worker
-
-addEventListener('fetch', event => {
-
-  event.respondWith(handler(event.request));
-
-});
-
-
+async function handler(request) {  const base = 'https://example.com';  const statusCode = 301;
+  const destination = new URL(request.url, base);  return Response.redirect(destination.toString(), statusCode);}
+// Initialize WorkeraddEventListener('fetch', event => {  event.respondWith(handler(event.request));});
 ```
 
 Workers using ES modules format replace the `addEventListener` syntax with an object definition, which must be the file's default export (via `export default`). The previous example code becomes:
@@ -68,27 +47,8 @@ Workers using ES modules format replace the `addEventListener` syntax with an ob
 JavaScript
 
 ```
-
-export default {
-
-  fetch(request) {
-
-    const base = "https://example.com";
-
-    const statusCode = 301;
-
-
-    const source = new URL(request.url);
-
-    const destination = new URL(source.pathname, base);
-
-    return Response.redirect(destination.toString(), statusCode);
-
-  },
-
-};
-
-
+export default {  fetch(request) {    const base = "https://example.com";    const statusCode = 301;
+    const source = new URL(request.url);    const destination = new URL(source.pathname, base);    return Response.redirect(destination.toString(), statusCode);  },};
 ```
 
 ## Bindings
@@ -103,43 +63,19 @@ To understand bindings, refer the following `TODO` KV namespace binding example.
 2. Create a Worker.
 3. Find your Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) and add a KV namespace binding:
 
-* [  wrangler.jsonc ](#tab-panel-11902)
-* [  wrangler.toml ](#tab-panel-11903)
+* [  wrangler.jsonc ](#tab-panel-11919)
+* [  wrangler.toml ](#tab-panel-11920)
 
 JSONC
 
 ```
-
-{
-
-  "kv_namespaces": [
-
-    {
-
-      "binding": "TODO",
-
-      "id": "<ID>"
-
-    }
-
-  ]
-
-}
-
-
+{  "kv_namespaces": [    {      "binding": "TODO",      "id": "<ID>"    }  ]}
 ```
 
 TOML
 
 ```
-
-[[kv_namespaces]]
-
-binding = "TODO"
-
-id = "<ID>"
-
-
+[[kv_namespaces]]binding = "TODO"id = "<ID>"
 ```
 
 In the following sections, you will use your binding in Service Worker and ES modules format.
@@ -155,30 +91,9 @@ In Service Worker syntax, your `TODO` KV namespace binding is defined in the glo
 JavaScript
 
 ```
-
-addEventListener("fetch", async (event) => {
-
-  return await getTodos()
-
-});
-
-
-async function getTodos() {
-
-  // Get the value for the "to-do:123" key
-
-  // NOTE: Relies on the TODO KV binding that maps to the "My Tasks" namespace.
-
-  let value = await TODO.get("to-do:123");
-
-
-  // Return the value, as is, for the Response
-
-  event.respondWith(new Response(value));
-
-}
-
-
+addEventListener("fetch", async (event) => {  return await getTodos()});
+async function getTodos() {  // Get the value for the "to-do:123" key  // NOTE: Relies on the TODO KV binding that maps to the "My Tasks" namespace.  let value = await TODO.get("to-do:123");
+  // Return the value, as is, for the Response  event.respondWith(new Response(value));}
 ```
 
 ### Bindings in ES modules format
@@ -190,25 +105,8 @@ To access the `TODO` KV namespace binding in your Worker code, the `env` paramet
 JavaScript
 
 ```
-
 import { getTodos } from './todos'
-
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    // Passing the env parameter so other functions
-
-    // can reference the bindings available in the Workers application
-
-    return await getTodos(env)
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    // Passing the env parameter so other functions    // can reference the bindings available in the Workers application    return await getTodos(env)  },};
 ```
 
 The following code represents a `getTodos` function that calls the `get` function on the `TODO` KV binding.
@@ -216,23 +114,8 @@ The following code represents a `getTodos` function that calls the `get` functio
 JavaScript
 
 ```
-
-async function getTodos(env) {
-
-  // NOTE: Relies on the TODO KV binding which has been provided inside of
-
-  // the env parameter of the `getTodos` function
-
-  let value = await env.TODO.get("to-do:123");
-
-  return new Response(value);
-
-}
-
-
+async function getTodos(env) {  // NOTE: Relies on the TODO KV binding which has been provided inside of  // the env parameter of the `getTodos` function  let value = await env.TODO.get("to-do:123");  return new Response(value);}
 export { getTodos }
-
-
 ```
 
 ## Environment variables
@@ -241,48 +124,20 @@ export { getTodos }
 
 Review the following example environment variable configuration in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-11904)
-* [  wrangler.toml ](#tab-panel-11905)
+* [  wrangler.jsonc ](#tab-panel-11921)
+* [  wrangler.toml ](#tab-panel-11922)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "my-worker-dev",
-
-  // Define top-level environment variables
-
-  // using the {"vars": "key": "value"} format
-
-  "vars": {
-
-    "API_ACCOUNT_ID": "<EXAMPLE-ACCOUNT-ID>"
-
-  }
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-worker-dev",  // Define top-level environment variables  // using the {"vars": "key": "value"} format  "vars": {    "API_ACCOUNT_ID": "<EXAMPLE-ACCOUNT-ID>"  }}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "my-worker-dev"
-
-
-[vars]
-
-API_ACCOUNT_ID = "<EXAMPLE-ACCOUNT-ID>"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-worker-dev"
+[vars]API_ACCOUNT_ID = "<EXAMPLE-ACCOUNT-ID>"
 ```
 
 ### Environment variables in Service Worker format
@@ -292,16 +147,7 @@ In Service Worker format, the `API_ACCOUNT_ID` is defined in the global scope of
 JavaScript
 
 ```
-
-addEventListener("fetch", async (event) => {
-
-  console.log(API_ACCOUNT_ID) // Logs "<EXAMPLE-ACCOUNT-ID>"
-
-  return new Response("Hello, world!")
-
-})
-
-
+addEventListener("fetch", async (event) => {  console.log(API_ACCOUNT_ID) // Logs "<EXAMPLE-ACCOUNT-ID>"  return new Response("Hello, world!")})
 ```
 
 ### Environment variables in ES modules format
@@ -311,79 +157,28 @@ In ES modules format, environment variables are available through the `env` para
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    console.log(env.API_ACCOUNT_ID) // Logs "<EXAMPLE-ACCOUNT-ID>"
-
-    return new Response("Hello, world!")
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    console.log(env.API_ACCOUNT_ID) // Logs "<EXAMPLE-ACCOUNT-ID>"    return new Response("Hello, world!")  },};
 ```
 
 You can also import `env` from `cloudflare:workers` to access environment variables from anywhere in your code, including the top-level scope:
 
-* [  JavaScript ](#tab-panel-11906)
-* [  TypeScript ](#tab-panel-11907)
+* [  JavaScript ](#tab-panel-11923)
+* [  TypeScript ](#tab-panel-11924)
 
 JavaScript
 
 ```
-
 import { env } from "cloudflare:workers";
-
-
-// Access environment variables at the top level
-
-const accountId = env.API_ACCOUNT_ID;
-
-
-export default {
-
-  async fetch(request) {
-
-    console.log(accountId); // Logs "<EXAMPLE-ACCOUNT-ID>"
-
-    return new Response("Hello, world!");
-
-  },
-
-};
-
-
+// Access environment variables at the top levelconst accountId = env.API_ACCOUNT_ID;
+export default {  async fetch(request) {    console.log(accountId); // Logs "<EXAMPLE-ACCOUNT-ID>"    return new Response("Hello, world!");  },};
 ```
 
 TypeScript
 
 ```
-
 import { env } from "cloudflare:workers";
-
-
-// Access environment variables at the top level
-
-const accountId = env.API_ACCOUNT_ID;
-
-
-export default {
-
-  async fetch(request: Request): Promise<Response> {
-
-    console.log(accountId) // Logs "<EXAMPLE-ACCOUNT-ID>"
-
-    return new Response("Hello, world!")
-
-  },
-
-};
-
-
+// Access environment variables at the top levelconst accountId = env.API_ACCOUNT_ID;
+export default {  async fetch(request: Request): Promise<Response> {    console.log(accountId) // Logs "<EXAMPLE-ACCOUNT-ID>"    return new Response("Hello, world!")  },};
 ```
 
 This approach is useful for initializing configuration or accessing environment variables from deeply nested functions without passing `env` through every function call. For more details, refer to [Importing env as a global](https://developers.cloudflare.com/workers/runtime-apis/bindings/#importing-env-as-a-global).
@@ -397,14 +192,7 @@ This example code:
 JavaScript
 
 ```
-
-addEventListener("scheduled", (event) => {
-
-  // ...
-
-});
-
-
+addEventListener("scheduled", (event) => {  // ...});
 ```
 
 Then becomes:
@@ -412,18 +200,7 @@ Then becomes:
 JavaScript
 
 ```
-
-export default {
-
-  async scheduled(event, env, ctx) {
-
-    // ...
-
-  },
-
-};
-
-
+export default {  async scheduled(event, env, ctx) {    // ...  },};
 ```
 
 ## Access `event` or `context` data
@@ -435,25 +212,8 @@ This example code:
 JavaScript
 
 ```
-
-async function triggerEvent(event) {
-
-  // Fetch some data
-
-  console.log('cron processed', event.scheduledTime);
-
-}
-
-
-// Initialize Worker
-
-addEventListener('scheduled', event => {
-
-  event.waitUntil(triggerEvent(event));
-
-});
-
-
+async function triggerEvent(event) {  // Fetch some data  console.log('cron processed', event.scheduledTime);}
+// Initialize WorkeraddEventListener('scheduled', event => {  event.waitUntil(triggerEvent(event));});
 ```
 
 Then becomes:
@@ -461,27 +221,8 @@ Then becomes:
 JavaScript
 
 ```
-
-async function triggerEvent(event) {
-
-  // Fetch some data
-
-  console.log('cron processed', event.scheduledTime);
-
-}
-
-
-export default {
-
-  async scheduled(event, env, ctx) {
-
-    ctx.waitUntil(triggerEvent(event));
-
-  },
-
-};
-
-
+async function triggerEvent(event) {  // Fetch some data  console.log('cron processed', event.scheduledTime);}
+export default {  async scheduled(event, env, ctx) {    ctx.waitUntil(triggerEvent(event));  },};
 ```
 
 ## Service Worker syntax
@@ -496,48 +237,37 @@ When a request is received on one of Cloudflare’s global network servers for a
 JavaScript
 
 ```
-
-addEventListener('fetch', event => {
-
-  event.respondWith(handleRequest(event.request));
-
-});
-
-
-async function handleRequest(request) {
-
-  return new Response('Hello worker!', {
-
-    headers: { 'content-type': 'text/plain' },
-
-  });
-
-}
-
-
+addEventListener('fetch', event => {  event.respondWith(handleRequest(event.request));});
+async function handleRequest(request) {  return new Response('Hello worker!', {    headers: { 'content-type': 'text/plain' },  });}
 ```
 
 Below is an example of the request response workflow:
 
 1. An event listener for the `FetchEvent` tells the script to listen for any request coming to your Worker. The event handler is passed the `event` object, which includes `event.request`, a [Request](https://developers.cloudflare.com/workers/runtime-apis/request/) object which is a representation of the HTTP request that triggered the `FetchEvent`.
-2. The call to `.respondWith()` lets the Workers runtime intercept the request in order to send back a custom response (in this example, the plain text `'Hello worker!'`).  
-   * The `FetchEvent` handler typically culminates in a call to the method `.respondWith()` with either a [Response](https://developers.cloudflare.com/workers/runtime-apis/response/) or `Promise<Response>` that determines the response.  
-   * The `FetchEvent` object also provides [two other methods](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) to handle unexpected exceptions and operations that may complete after a response is returned.
+2. The call to `.respondWith()` lets the Workers runtime intercept the request in order to send back a custom response (in this example, the plain text `'Hello worker!'`).
+
+  * The `FetchEvent` handler typically culminates in a call to the method `.respondWith()` with either a [Response](https://developers.cloudflare.com/workers/runtime-apis/response/) or `Promise<Response>` that determines the response.
+  * The `FetchEvent` object also provides [two other methods](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) to handle unexpected exceptions and operations that may complete after a response is returned.
 
 Learn more about [the lifecycle methods of the fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle/).
 
 ### Supported `FetchEvent` properties
 
-* `event.type` string  
-   * The type of event. This will always return `"fetch"`.
-* `event.request` Request  
-   * The incoming HTTP request.
-* `event.respondWith(responseResponse|Promise)` : void  
-   * Refer to [respondWith](#respondwith).
-* `event.waitUntil(promisePromise)` : void  
-   * Refer to [waitUntil](#waituntil).
-* `event.passThroughOnException()` : void  
-   * Refer to [passThroughOnException](#passthroughonexception).
+* `event.type` string
+
+  * The type of event. This will always return `"fetch"`.
+* `event.request` Request
+
+  * The incoming HTTP request.
+* `event.respondWith(responseResponse|Promise)` : void
+
+  * Refer to [respondWith](#respondwith).
+* `event.waitUntil(promisePromise)` : void
+
+  * Refer to [waitUntil](#waituntil).
+* `event.passThroughOnException()` : void
+
+  * Refer to [passThroughOnException](#passthroughonexception).
 
 ### `respondWith`
 
@@ -550,26 +280,9 @@ If no `fetch` event handler calls `respondWith`, then the runtime forwards the r
 JavaScript
 
 ```
-
-// Format: Service Worker
-
-addEventListener('fetch', event => {
-
-  let { pathname } = new URL(event.request.url);
-
-
-  // Allow "/ignore/*" URLs to hit origin
-
-  if (pathname.startsWith('/ignore/')) return;
-
-
-  // Otherwise, respond with something
-
-  event.respondWith(handler(event));
-
-});
-
-
+// Format: Service WorkeraddEventListener('fetch', event => {  let { pathname } = new URL(event.request.url);
+  // Allow "/ignore/*" URLs to hit origin  if (pathname.startsWith('/ignore/')) return;
+  // Otherwise, respond with something  event.respondWith(handler(event));});
 ```
 
 ### `waitUntil`
@@ -583,44 +296,11 @@ With the ES modules format, `waitUntil` is moved and available on the `context` 
 JavaScript
 
 ```
-
-// Format: Service Worker
-
-addEventListener('fetch', event => {
-
-  event.respondWith(handler(event));
-
-});
-
-
-async function handler(event) {
-
-  // Forward / Proxy original request
-
-  let res = await fetch(event.request);
-
-
-  // Add custom header(s)
-
-  res = new Response(res.body, res);
-
-  res.headers.set('x-foo', 'bar');
-
-
-  // Cache the response
-
-  // NOTE: Does NOT block / wait
-
-  event.waitUntil(caches.default.put(event.request, res.clone()));
-
-
-  // Done
-
-  return res;
-
-}
-
-
+// Format: Service WorkeraddEventListener('fetch', event => {  event.respondWith(handler(event));});
+async function handler(event) {  // Forward / Proxy original request  let res = await fetch(event.request);
+  // Add custom header(s)  res = new Response(res.body, res);  res.headers.set('x-foo', 'bar');
+  // Cache the response  // NOTE: Does NOT block / wait  event.waitUntil(caches.default.put(event.request, res.clone()));
+  // Done  return res;}
 ```
 
 ### `passThroughOnException`
@@ -636,20 +316,7 @@ With the ES modules format, `passThroughOnException` is available on the `contex
 JavaScript
 
 ```
-
-// Format: Service Worker
-
-addEventListener('fetch', event => {
-
-  // Proxy to origin on unhandled/uncaught exceptions
-
-  event.passThroughOnException();
-
-  throw new Error('Oops');
-
-});
-
-
+// Format: Service WorkeraddEventListener('fetch', event => {  // Proxy to origin on unhandled/uncaught exceptions  event.passThroughOnException();  throw new Error('Oops');});
 ```
 
 ```json

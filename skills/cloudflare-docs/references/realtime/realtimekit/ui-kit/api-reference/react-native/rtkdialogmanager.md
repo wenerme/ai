@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,47 +31,15 @@ Manages and renders modal dialogs for leave confirmation, settings, join stage c
 ### Basic Usage
 
 ```
-
 import { RtkDialogManager } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkDialogManager meeting={meeting} />;
-
-}
-
-
+function MyComponent() {  return <RtkDialogManager meeting={meeting} />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkDialogManager } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkDialogManager
-
-      meeting={meeting}
-
-      config={customConfig}
-
-      size="md"
-
-      onRtkStateUpdate={(e) => handleStateUpdate(e)}
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkDialogManager      meeting={meeting}      config={customConfig}      size="md"      onRtkStateUpdate={(e) => handleStateUpdate(e)}    />  );}
 ```
 
 ```json

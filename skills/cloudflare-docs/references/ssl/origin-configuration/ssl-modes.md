@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -49,9 +49,10 @@ Flexible → Full/Strict transitions are handled with extra caution since the or
 
 #### Additional details
 
-* **Scan frequency**: Automatic scans currently occur approximately once per month, though they may happen more frequently in some cases (for example, configuration changes or upgrades). Scans stop when:  
-   * The site is already using the most secure mode (for example, **Full (strict)**), or  
-   * You switch from auto mode to **Custom SSL/TLS**.
+* **Scan frequency**: Automatic scans currently occur approximately once per month, though they may happen more frequently in some cases (for example, configuration changes or upgrades). Scans stop when:
+
+  * The site is already using the most secure mode (for example, **Full (strict)**), or
+  * You switch from auto mode to **Custom SSL/TLS**.
 * **Error checking before upgrades**: To prevent disruptions, Cloudflare checks for `5XX` errors (like `502` or `503`) and evaluates whether the HTTP and HTTPS content is consistent before upgrading a zone's encryption mode.
 * **Upgrade notifications**: Cloudflare sends weekly digest emails listing which zones have been upgraded. These emails are currently sent to Super Admins only.
 
@@ -61,56 +62,36 @@ If you want to opt a zone out via the API, you can make this API call on or befo
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone Settings Write`
 
 Edit zone setting
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/ssl_automatic_mode" \
-
-  --request PATCH \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "value": "custom"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/ssl_automatic_mode" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "value": "custom"  }'
 ```
 
 #### Opt out multiple zones
 
 If you wanted to opt out multiple zones:
 
-1. Create an API token with the following permissions:  
-   * `Zone - Zone - Read`  
-   * `Zone - Zone Settings - Read`  
-   * `Zone - Zone Settings - Edit`
+1. Create an API token with the following permissions:
+
+  * `Zone - Zone - Read`
+  * `Zone - Zone Settings - Read`
+  * `Zone - Zone Settings - Edit`
 2. Make a [GET request](https://developers.cloudflare.com/api/resources/zones/methods/list/) to get a list of zones (you can filter this list by `account.id`).  
 Terminal window  
 ```  
-curl 'https://api.cloudflare.com/client/v4/zones?account.id=<ACCOUNT_ID>' \  
---header 'Authorization: Bearer <CF_API_TOKEN>' \  
---header 'Content-Type: application/json'  
+curl 'https://api.cloudflare.com/client/v4/zones?account.id=<ACCOUNT_ID>' \--header 'Authorization: Bearer <CF_API_TOKEN>' \--header 'Content-Type: application/json'  
 ```
 3. Create a list of zone IDs you want to opt-out with each zone ID on a separate line (newline separate), stored in a file such as `zones.txt`.
 4. Create a bash script for `opt-out-multiple-zones.sh` and add the following. Add `zones.txt` to the same directory or update the path accordingly.  
 opt-out-multiple-zones.sh  
 ```  
-for zoneID in $(cat zone.txt); do  
-  printf "Opting out ${zoneID}:\n"  
-  curl --request PATCH \  
-    --url https://api.cloudflare.com/client/v4/zones/$zoneID/settings/ssl_automatic_mode \  
-    --header 'Authorization: Bearer <CF_API_TOKEN>' \  
-    --header 'Content-Type: application/json' \  
-    --data '{"value":"custom"}'  
-  printf "\n\n"  
-done  
+for zoneID in $(cat zone.txt); do  printf "Opting out ${zoneID}:\n"  
+  curl --request PATCH \    --url https://api.cloudflare.com/client/v4/zones/$zoneID/settings/ssl_automatic_mode \    --header 'Authorization: Bearer <CF_API_TOKEN>' \    --header 'Content-Type: application/json' \    --data '{"value":"custom"}'  
+  printf "\n\n"done  
 ```
 5. Open your command line and run:  
 Terminal window  
@@ -130,8 +111,8 @@ To use Custom SSL/TLS, select the custom option (if you prefer to manually set t
 
 ## Update your encryption mode
 
-* [ Dashboard ](#tab-panel-10650)
-* [ API ](#tab-panel-10651)
+* [ Dashboard ](#tab-panel-10726)
+* [ API ](#tab-panel-10727)
 
 To change your encryption mode in the dashboard:
 

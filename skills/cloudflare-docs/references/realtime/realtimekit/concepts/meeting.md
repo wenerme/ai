@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -132,22 +132,7 @@ If you do not have them yet, refer to the [Getting Started](https://developers.c
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/realtime/kit/{APP_ID}/meetings \
-
-  --request POST \
-
-  --header "Authorization: Bearer <CLOUDFLARE_API_TOKEN>" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-    "title": "My First Cloudflare RealtimeKit meeting"
-
-    }'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/realtime/kit/{APP_ID}/meetings \  --request POST \  --header "Authorization: Bearer <CLOUDFLARE_API_TOKEN>" \  --header "Content-Type: application/json" \  --data '{    "title": "My First Cloudflare RealtimeKit meeting"    }'
 ```
 
 A successful response includes a unique `id` for the created meeting. Save this ID, as it is required for all future operations on this specific meeting, such as adding participants or disabling it.

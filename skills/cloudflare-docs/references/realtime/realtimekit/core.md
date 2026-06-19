@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,10 +27,7 @@ Install the client SDK
 Terminal window
 
 ```
-
 npm i @cloudflare/realtimekit-react
-
-
 ```
 
 Use the `useRealtimeKitClient` hook to initialise the SDK.
@@ -38,52 +35,13 @@ Use the `useRealtimeKitClient` hook to initialise the SDK.
 App.tsx
 
 ```
-
-import { useEffect } from 'react';
-
-import { useRealtimeKitClient } from '@cloudflare/realtimekit-react';
-
-
-export default function App() {
-
-  const [meeting, initMeeting] = useRealtimeKitClient();
-
-
-    useEffect(() => {
-
-      const meetingDefaultOptions = {
-
-        audio: true,
-
-        video: true,
-
-      };
-
-
-      initMeeting({
-
-        authToken: "<auth-token>",
-
-        defaults: meetingDefaultOptions, // optional
-
-      });
-
-    }, []);
-
-
-    useEffect(() => {
-
-      // next - if (meeting) meeting.join();
-
-    }, [meeting])
-
-
+import { useEffect } from 'react';import { useRealtimeKitClient } from '@cloudflare/realtimekit-react';
+export default function App() {  const [meeting, initMeeting] = useRealtimeKitClient();
+    useEffect(() => {      const meetingDefaultOptions = {        audio: true,        video: true,      };
+      initMeeting({        authToken: "<auth-token>",        defaults: meetingDefaultOptions, // optional      });    }, []);
+    useEffect(() => {      // next - if (meeting) meeting.join();    }, [meeting])
     return <div></div>;
-
-
 }
-
-
 ```
 
 Use the [Add participant API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/add%5Fparticipant/) to fetch the `authToken`.
@@ -93,19 +51,13 @@ Install the client SDK.
 Terminal window
 
 ```
-
 npm i @cloudflare/realtimekit
-
-
 ```
 
 Alternatively, you can also use the CDN.
 
 ```
-
 <script src="https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit@latest/dist/browser.js"></script>
-
-
 ```
 
 You can initialise the SDK using `RealtimeKitClient.init`.
@@ -113,32 +65,9 @@ You can initialise the SDK using `RealtimeKitClient.init`.
 JavaScript
 
 ```
-
   const authToken = <auth-token>;
-
-
-  const meetingDefaultOptions = {
-
-    audio: true,
-
-    video: true,
-
-  };
-
-
-  RealtimeKitClient.init({
-
-    authToken,
-
-    defaults: meetingDefaultOptions, // optional
-
-  }).then((meeting) => {
-
-    // next - meeting.join();
-
-  });
-
-
+  const meetingDefaultOptions = {    audio: true,    video: true,  };
+  RealtimeKitClient.init({    authToken,    defaults: meetingDefaultOptions, // optional  }).then((meeting) => {    // next - meeting.join();  });
 ```
 
 Use the [Add participant API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/add%5Fparticipant/) to fetch the `authToken`.
@@ -148,10 +77,7 @@ Install the client SDK.
 Terminal window
 
 ```
-
 npm i @cloudflare/realtimekit-angular
-
-
 ```
 
 You can initialise the SDK using `RealtimeKitClient.init`.
@@ -159,41 +85,8 @@ You can initialise the SDK using `RealtimeKitClient.init`.
 TypeScript
 
 ```
-
-class AppComponent {
-
-  title = "MyProject";
-
-  @ViewChild("myid") meetingComponent: RtkMeeting;
-
-  rtkMeeting: RealtimeKitClient;
-
-
-  async ngAfterViewInit() {
-
-    const meetingDefaultOptions = {
-
-      audio: true,
-
-      video: true,
-
-    };
-
-    const meeting = await RealtimeKitClient.init({
-
-      authToken: "<auth-token>",
-
-      defaults: meetingDefaultOptions, // optional
-
-    });
-
-    // next - meeting.join();
-
-  }
-
-}
-
-
+class AppComponent {  title = "MyProject";  @ViewChild("myid") meetingComponent: RtkMeeting;  rtkMeeting: RealtimeKitClient;
+  async ngAfterViewInit() {    const meetingDefaultOptions = {      audio: true,      video: true,    };    const meeting = await RealtimeKitClient.init({      authToken: "<auth-token>",      defaults: meetingDefaultOptions, // optional    });    // next - meeting.join();  }}
 ```
 
 Use the [Add participant API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/add%5Fparticipant/) to fetch the `authToken`.
@@ -203,10 +96,7 @@ Initialize the RealtimeKit SDK by obtaining an instance of `RealtimeKitClient` u
 Kotlin
 
 ```
-
 val meeting = RealtimeKitMeetingBuilder.build(activity)
-
-
 ```
 
 Configure the meeting properties in the `RtkMeetingInfo` class with a valid participant `authToken` from the [Add participant API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/add%5Fparticipant/).
@@ -214,20 +104,7 @@ Configure the meeting properties in the `RtkMeetingInfo` class with a valid part
 Kotlin
 
 ```
-
-val meetingInfo =
-
-  RtkMeetingInfo(
-
-    authToken = authToken,
-
-    enableAudio = true,
-
-    enableVideo = true,
-
-  )
-
-
+val meetingInfo =  RtkMeetingInfo(    authToken = authToken,    enableAudio = true,    enableVideo = true,  )
 ```
 
 Initialize the meeting by calling the `init()` method. This establishes a connection with the RealtimeKit meeting server.
@@ -235,18 +112,7 @@ Initialize the meeting by calling the `init()` method. This establishes a connec
 Kotlin
 
 ```
-
-meeting.init(
-
-  meetingInfo,
-
-  onInitCompleted = { ... },
-
-  onInitFailed = { ... },
-
-)
-
-
+meeting.init(  meetingInfo,  onInitCompleted = { ... },  onInitFailed = { ... },)
 ```
 
 Initialize the RealtimeKit SDK by creating an instance of `RealtimeKitClient`.
@@ -254,10 +120,7 @@ Initialize the RealtimeKit SDK by creating an instance of `RealtimeKitClient`.
 Swift
 
 ```
-
 let meeting = RealtimeKitiOSClientBuilder().build()
-
-
 ```
 
 Add the required listeners to receive callbacks for meeting events.
@@ -265,14 +128,7 @@ Add the required listeners to receive callbacks for meeting events.
 Swift
 
 ```
-
-meeting.addMeetingRoomEventListener(meetingRoomEventListener: self)
-
-meeting.addParticipantsEventListener(participantsEventListener: self)
-
-meeting.addSelfEventListener(selfEventListener: self)
-
-
+meeting.addMeetingRoomEventListener(meetingRoomEventListener: self)meeting.addParticipantsEventListener(participantsEventListener: self)meeting.addSelfEventListener(selfEventListener: self)
 ```
 
 Configure the meeting properties in the `RtkMeetingInfo` class with a valid participant `authToken` from the [Add participant API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/add%5Fparticipant/).
@@ -280,14 +136,7 @@ Configure the meeting properties in the `RtkMeetingInfo` class with a valid part
 Swift
 
 ```
-
-let meetingInfo = RtkMeetingInfo(authToken: authToken,
-
-                                  enableAudio: true,
-
-                                  enableVideo: true)
-
-
+let meetingInfo = RtkMeetingInfo(authToken: authToken,                                  enableAudio: true,                                  enableVideo: true)
 ```
 
 Initialize the meeting by calling the `doInit()` method. This establishes a connection with the RealtimeKit meeting server.
@@ -295,10 +144,7 @@ Initialize the meeting by calling the `doInit()` method. This establishes a conn
 Swift
 
 ```
-
 meeting.doInit(meetingInfo: meetingInfo, onSuccess: {}, onFailure: {_ in})
-
-
 ```
 
 Initialize the RealtimeKit SDK by creating an instance of `RealtimeKitClient`.
@@ -306,10 +152,7 @@ Initialize the RealtimeKit SDK by creating an instance of `RealtimeKitClient`.
 Dart
 
 ```
-
 final meeting = RealtimeKitClient();
-
-
 ```
 
 Configure the meeting properties in the `RtkMeetingInfo` class with a valid participant `authToken` from the [Add participant API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/add%5Fparticipant/).
@@ -317,18 +160,7 @@ Configure the meeting properties in the `RtkMeetingInfo` class with a valid part
 Dart
 
 ```
-
-final meetingInfo = RtkMeetingInfo(
-
-                    authToken: authToken,
-
-                    enableAudio: false,
-
-                    enableVideo: false,
-
-                  );
-
-
+final meetingInfo = RtkMeetingInfo(                    authToken: authToken,                    enableAudio: false,                    enableVideo: false,                  );
 ```
 
 Initialize the connection by calling the `init()` method. This establishes a connection with the RealtimeKit meeting server.
@@ -336,10 +168,7 @@ Initialize the connection by calling the `init()` method. This establishes a con
 Dart
 
 ```
-
 meeting.init(meetingInfo);
-
-
 ```
 
 Subscribe to the `RtkMeetingRoomEventListener` to receive callbacks for meeting events.
@@ -347,10 +176,7 @@ Subscribe to the `RtkMeetingRoomEventListener` to receive callbacks for meeting 
 Dart
 
 ```
-
 meeting.addMeetingRoomEventListener(RoomStateNotifier());
-
-
 ```
 
 Initialize the RealtimeKit SDK using the `useRealtimeKitClient` hook.
@@ -358,76 +184,9 @@ Initialize the RealtimeKit SDK using the `useRealtimeKitClient` hook.
 JavaScript
 
 ```
-
-import React from 'react';
-
-import { View, Text } from 'react-native';
-
-import { useRealtimeKitClient, RealtimeKitProvider } from '@cloudflare/realtimekit-react-native';
-
-
-export default function App() {
-
-  const [meeting, initMeeting] = useRealtimeKitClient();
-
-  React.useEffect(() => {
-
-    const init = async () => {
-
-      const meetingOptions = {
-
-        audio: true,
-
-        video: true,
-
-      };
-
-      await initMeeting({
-
-        authToken: 'YourAuthToken',
-
-        defaults: meetingOptions,
-
-      });
-
-    };
-
-    init();
-
-    // next - if (meeting) meeting.joinRoom();
-
-  }, []);
-
-
-  if (meeting) {
-
-    return (
-
-      <RealtimeKitProvider value={meeting}>
-
-        {/* Render your components here */}
-
-      </RealtimeKitProvider>
-
-    );
-
-  } else {
-
-    return (
-
-      <View>
-
-        <Text>Loading...</Text>
-
-      <View>
-
-    )
-
-  }
-
-}
-
-
+import React from 'react';import { View, Text } from 'react-native';import { useRealtimeKitClient, RealtimeKitProvider } from '@cloudflare/realtimekit-react-native';
+export default function App() {  const [meeting, initMeeting] = useRealtimeKitClient();  React.useEffect(() => {    const init = async () => {      const meetingOptions = {        audio: true,        video: true,      };      await initMeeting({        authToken: 'YourAuthToken',        defaults: meetingOptions,      });    };    init();    // next - if (meeting) meeting.joinRoom();  }, []);
+  if (meeting) {    return (      <RealtimeKitProvider value={meeting}>        {/* Render your components here */}      </RealtimeKitProvider>    );  } else {    return (      <View>        <Text>Loading...</Text>      <View>    )  }}
 ```
 
 Use the [Add participant API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/add%5Fparticipant/) to fetch the `authToken`.
@@ -439,112 +198,7 @@ You can **optionally** configure meeting defaults, media quality, screen share p
 TypeScript
 
 ```
-
-init({
-
-  authToken: "<auth_token>",
-
-  defaults: {
-
-    video: true,
-
-    audio: true,
-
-    mediaConfiguration: {
-
-      // Configure custom video quality (e.g., 1080p). Disable simulcast using `simulcastConfig` override for single-layer streaming.
-
-      video: {
-
-        width: { ideal: 1920 },
-
-        height: { ideal: 1080 },
-
-        frameRate: { ideal: 15 },
-
-      },
-
-      screenshare: {
-
-        frameRate: { ideal: 15, max: 30 }, // Default 5
-
-        displaySurface: "monitor", // Given surface is suggested to the end user
-
-      },
-
-    },
-
-  },
-
-  overrides: {
-
-    simulcastConfig: {
-
-      // If you want to disable simulcast
-
-      disable: false,
-
-      // If you want to pass custom simulcast encodings
-
-      encodings: [
-
-        {
-
-          rid: "f", // full / highest quality
-
-          scaleResolutionDownBy: 1.0,
-
-          maxBitrate: 2500000, // ~2.5 Mbps
-
-        },
-
-        {
-
-          rid: "h", // half
-
-          scaleResolutionDownBy: 2.0,
-
-          maxBitrate: 900000, // ~0.9 Mbps
-
-        },
-
-        {
-
-          rid: "q", // quarter
-
-          scaleResolutionDownBy: 4.0,
-
-          maxBitrate: 250000, // ~0.25 Mbps
-
-        },
-
-      ],
-
-    },
-
-    forceRelay: false, // forceRelay, if true, TURN will be preferred over STUN
-
-  },
-
-  modules: {
-
-    devTools: {
-
-      logs: true, // Prints SDK logs to console, Useful in initial integration phase
-
-    },
-
-  },
-
-  onError: (error) => {
-
-    console.error(error); // SDK errors, Useful in detecting common issues
-
-  },
-
-});
-
-
+init({  authToken: "<auth_token>",  defaults: {    video: true,    audio: true,    mediaConfiguration: {      // Configure custom video quality (e.g., 1080p). Disable simulcast using `simulcastConfig` override for single-layer streaming.      video: {        width: { ideal: 1920 },        height: { ideal: 1080 },        frameRate: { ideal: 15 },      },      screenshare: {        frameRate: { ideal: 15, max: 30 }, // Default 5        displaySurface: "monitor", // Given surface is suggested to the end user      },    },  },  overrides: {    simulcastConfig: {      // If you want to disable simulcast      disable: false,      // If you want to pass custom simulcast encodings      encodings: [        {          rid: "f", // full / highest quality          scaleResolutionDownBy: 1.0,          maxBitrate: 2500000, // ~2.5 Mbps        },        {          rid: "h", // half          scaleResolutionDownBy: 2.0,          maxBitrate: 900000, // ~0.9 Mbps        },        {          rid: "q", // quarter          scaleResolutionDownBy: 4.0,          maxBitrate: 250000, // ~0.25 Mbps        },      ],    },    forceRelay: false, // forceRelay, if true, TURN will be preferred over STUN  },  modules: {    devTools: {      logs: true, // Prints SDK logs to console, Useful in initial integration phase    },  },  onError: (error) => {    console.error(error); // SDK errors, Useful in detecting common issues  },});
 ```
 
 Tip
@@ -569,114 +223,13 @@ Reference for the types:
 TypeScript
 
 ```
-
-interface AudioQualityConstraints {
-
-  echoCancellation?: boolean;
-
-  noiseSuppression?: boolean;
-
-  autoGainControl?: boolean;
-
-  enableStereo?: boolean;
-
-  enableHighBitrate?: boolean;
-
-}
-
-
-interface VideoQualityConstraints {
-
-  width: { ideal: number };
-
-  height: { ideal: number };
-
-  frameRate?: { ideal: number };
-
-}
-
-
-interface ScreenshareQualityConstraints {
-
-  width?: { max: number };
-
-  height?: { max: number };
-
-  frameRate?: {
-
-    ideal: number;
-
-    max: number;
-
-  };
-
-  displaySurface?: "window" | "monitor" | "browser";
-
-  selfBrowserSurface?: "include" | "exclude";
-
-}
-
-
-interface MediaConfiguration {
-
-  video?: VideoQualityConstraints;
-
-  audio?: AudioQualityConstraints;
-
-  screenshare?: ScreenshareQualityConstraints;
-
-}
-
-
-interface RecordingConfig {
-
-  fileNamePrefix?: string;
-
-  videoConfig?: {
-
-    height?: number;
-
-    width?: number;
-
-    codec?: string;
-
-  };
-
-}
-
-
-interface DefaultOptions {
-
-  video?: boolean;
-
-  audio?: boolean;
-
-  mediaConfiguration?: MediaConfiguration;
-
-  isNonPreferredDevice?: (device: MediaDeviceInfo) => boolean;
-
-  autoSwitchAudioDevice?: boolean;
-
-  recording?: RecordingConfig;
-
-}
-
-
-interface Overrides {
-
-  simulcastConfig?: {
-
-    disable?: boolean;
-
-    encodings?: RTCRtpEncodingParameters[];
-
-  };
-
-  forceRelay?: boolean;
-
-}
-
-
+interface AudioQualityConstraints {  echoCancellation?: boolean;  noiseSuppression?: boolean;  autoGainControl?: boolean;  enableStereo?: boolean;  enableHighBitrate?: boolean;}
+interface VideoQualityConstraints {  width: { ideal: number };  height: { ideal: number };  frameRate?: { ideal: number };}
+interface ScreenshareQualityConstraints {  width?: { max: number };  height?: { max: number };  frameRate?: {    ideal: number;    max: number;  };  displaySurface?: "window" | "monitor" | "browser";  selfBrowserSurface?: "include" | "exclude";}
+interface MediaConfiguration {  video?: VideoQualityConstraints;  audio?: AudioQualityConstraints;  screenshare?: ScreenshareQualityConstraints;}
+interface RecordingConfig {  fileNamePrefix?: string;  videoConfig?: {    height?: number;    width?: number;    codec?: string;  };}
+interface DefaultOptions {  video?: boolean;  audio?: boolean;  mediaConfiguration?: MediaConfiguration;  isNonPreferredDevice?: (device: MediaDeviceInfo) => boolean;  autoSwitchAudioDevice?: boolean;  recording?: RecordingConfig;}
+interface Overrides {  simulcastConfig?: {    disable?: boolean;    encodings?: RTCRtpEncodingParameters[];  };  forceRelay?: boolean;}
 ```
 
 You can configure meeting defaults using `enableAudio` and `enableVideo` parameters.

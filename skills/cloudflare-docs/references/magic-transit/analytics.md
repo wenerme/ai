@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/magic-transit/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -15,9 +15,9 @@ image: https://developers.cloudflare.com/core-services-preview.png
 Use these options to gather information at the start of your troubleshooting workflow. Then, use more detailed network data collection and analysis to identify the root cause.
 
 * Analyze network traffic over time in [Network Analytics](#network-analytics)
-* Perform more detailed troubleshooting with:  
-   * [Traceroutes](#traceroutes)  
-   * [Packet captures](#packet-captures)
+* Perform more detailed troubleshooting with:
+  * [Traceroutes](#traceroutes)
+  * [Packet captures](#packet-captures)
 
 ## Network Analytics
 

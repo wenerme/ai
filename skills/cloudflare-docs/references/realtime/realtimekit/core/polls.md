@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,10 +25,7 @@ The meetings polls object can be accessed using `meeting.polls`. It provides met
 JavaScript
 
 ```
-
 console.log("Polls object:", meeting.polls);
-
-
 ```
 
 The `meeting.polls.items` property returns an array of all polls created in a meeting, where each element is an object of type `Poll`.
@@ -36,28 +33,19 @@ The `meeting.polls.items` property returns an array of all polls created in a me
 JavaScript
 
 ```
-
 console.log("All polls:", meeting.polls.items);
-
-
 ```
 
 The meetings polls object can be accessed using `meeting.polls`. It provides methods to create polls, vote, and more.
 
 ```
-
 console.log("Polls object:", meeting.polls);
-
-
 ```
 
 The `meeting.polls.items` property returns an array of all polls created in a meeting, where each element is an object of type `Poll`.
 
 ```
-
 console.log("All polls:", meeting.polls.items);
-
-
 ```
 
 You can access the polls functionality in a meeting using the `meeting.polls` object. This object provides methods to create polls, vote, and perform other poll-related actions.
@@ -83,45 +71,8 @@ The `Poll` type is defined as follows:
 TypeScript
 
 ```
-
-interface Poll {
-
-  id: string;
-
-  question: string;
-
-  options: PollOption[];
-
-  anonymous: boolean;
-
-  hideVotes: boolean;
-
-  createdBy: string;
-
-  createdByUserId: string;
-
-  voted: string[]; // stores participant ID
-
-}
-
-
-interface PollOption {
-
-  text: string;
-
-  votes: {
-
-    id: string; // stores participant ID
-
-    name: string;
-
-  }[];
-
-  count: number;
-
-}
-
-
+interface Poll {  id: string;  question: string;  options: PollOption[];  anonymous: boolean;  hideVotes: boolean;  createdBy: string;  createdByUserId: string;  voted: string[]; // stores participant ID}
+interface PollOption {  text: string;  votes: {    id: string; // stores participant ID    name: string;  }[];  count: number;}
 ```
 
 The `Poll` type is defined as follows:
@@ -129,45 +80,8 @@ The `Poll` type is defined as follows:
 TypeScript
 
 ```
-
-interface Poll {
-
-  id: string;
-
-  question: string;
-
-  options: PollOption[];
-
-  anonymous: boolean;
-
-  hideVotes: boolean;
-
-  createdBy: string;
-
-  createdByUserId: string;
-
-  voted: string[]; // stores participant ID
-
-}
-
-
-interface PollOption {
-
-  text: string;
-
-  votes: {
-
-    id: string; // stores participant ID
-
-    name: string;
-
-  }[];
-
-  count: number;
-
-}
-
-
+interface Poll {  id: string;  question: string;  options: PollOption[];  anonymous: boolean;  hideVotes: boolean;  createdBy: string;  createdByUserId: string;  voted: string[]; // stores participant ID}
+interface PollOption {  text: string;  votes: {    id: string; // stores participant ID    name: string;  }[];  count: number;}
 ```
 
 The `Poll` type represents a poll within a meeting:
@@ -175,26 +89,7 @@ The `Poll` type represents a poll within a meeting:
 Kotlin
 
 ```
-
-class Poll(
-
-  val id: String,
-
-  val question: String,
-
-  val anonymous: Boolean,
-
-  val hideVotes: Boolean,
-
-  val createdBy: String,
-
-  val options: List<PollOption>,
-
-  val voted: List<String>,
-
-)
-
-
+class Poll(  val id: String,  val question: String,  val anonymous: Boolean,  val hideVotes: Boolean,  val createdBy: String,  val options: List<PollOption>,  val voted: List<String>,)
 ```
 
 Each poll contains a list of `PollOption` objects, representing the available options for that poll.
@@ -204,33 +99,13 @@ Every `PollOption` includes a list of `PollVote` objects, where each vote contai
 Kotlin
 
 ```
-
-class PollOption(
-
-  val text: String,
-
-  val votes: List<PollVote>,
-
-  val count: Int
-
-)
-
-
+class PollOption(  val text: String,  val votes: List<PollVote>,  val count: Int)
 ```
 
 Kotlin
 
 ```
-
-class PollVote(
-
-  val id: String,
-
-  val name: String
-
-)
-
-
+class PollVote(  val id: String,  val name: String)
 ```
 
 The `Poll` type is defined as follows:
@@ -238,26 +113,7 @@ The `Poll` type is defined as follows:
 Swift
 
 ```
-
-class Poll {
-
-  let id: String
-
-  let question: String
-
-  let anonymous: Bool
-
-  let hideVotes: Bool
-
-  let createdBy: String
-
-  let options: [PollOption]
-
-  let voted: [String]
-
-}
-
-
+class Poll {  let id: String  let question: String  let anonymous: Bool  let hideVotes: Bool  let createdBy: String  let options: [PollOption]  let voted: [String]}
 ```
 
 The type `Poll` is the main class for any poll in RealtimeKit. It also contains list of `PollOption` which are options for a given poll. And every `PollOption` has list of votes inside of it. Votes are objects of class `PollVote` which internally has id and name of the vote.
@@ -265,27 +121,8 @@ The type `Poll` is the main class for any poll in RealtimeKit. It also contains 
 Swift
 
 ```
-
-class PollOption {
-
-  let text: String
-
-  let votes: [PollVote]
-
-  let count: Int
-
-}
-
-
-class PollVote {
-
-  let id: String
-
-  let name: String
-
-}
-
-
+class PollOption {  let text: String  let votes: [PollVote]  let count: Int}
+class PollVote {  let id: String  let name: String}
 ```
 
 The `Poll` type is defined as follows:
@@ -293,26 +130,7 @@ The `Poll` type is defined as follows:
 Dart
 
 ```
-
-class Poll {
-
-  final String id;
-
-  final String question;
-
-  final bool anonymous;
-
-  final bool hideVotes;
-
-  final String createdBy;
-
-  final List<PollOption> options;
-
-  final List<String> voted;
-
-}
-
-
+class Poll {  final String id;  final String question;  final bool anonymous;  final bool hideVotes;  final String createdBy;  final List<PollOption> options;  final List<String> voted;}
 ```
 
 The `Poll` class has the following properties:
@@ -330,27 +148,8 @@ The type `Poll` represents a poll in a RealtimeKit meeting. It also contains lis
 Dart
 
 ```
-
-class PollOption(
-
-  final String text;   // Option text.
-
-  final List<PollVote> votes;   // List of votes.
-
-  final int count;    // Number of votes.
-
-);
-
-
-class PollVote {
-
-  final String id;    // ID of the voter.
-
-  final String name;  // Name of the voter.
-
-}
-
-
+class PollOption(  final String text;   // Option text.  final List<PollVote> votes;   // List of votes.  final int count;    // Number of votes.);
+class PollVote {  final String id;    // ID of the voter.  final String name;  // Name of the voter.}
 ```
 
 The `Poll` type is defined as follows:
@@ -358,45 +157,8 @@ The `Poll` type is defined as follows:
 TypeScript
 
 ```
-
-interface Poll {
-
-  id: string;
-
-  question: string;
-
-  options: PollOption[];
-
-  anonymous: boolean;
-
-  hideVotes: boolean;
-
-  createdBy: string;
-
-  createdByUserId: string;
-
-  voted: string[]; // stores participant ID
-
-}
-
-
-interface PollOption {
-
-  text: string;
-
-  votes: {
-
-    id: string; // stores participant ID
-
-    name: string;
-
-  }[];
-
-  count: number;
-
-}
-
-
+interface Poll {  id: string;  question: string;  options: PollOption[];  anonymous: boolean;  hideVotes: boolean;  createdBy: string;  createdByUserId: string;  voted: string[]; // stores participant ID}
+interface PollOption {  text: string;  votes: {    id: string; // stores participant ID    name: string;  }[];  count: number;}
 ```
 
 ## Creating a Poll
@@ -413,18 +175,7 @@ The following snippet creates a poll where votes are anonymous:
 JavaScript
 
 ```
-
-await meeting.polls.create(
-
-  "Are you an early bird or a night owl?",
-
-  ["Early bird", "Night owl"],
-
-  true,
-
-);
-
-
+await meeting.polls.create(  "Are you an early bird or a night owl?",  ["Early bird", "Night owl"],  true,);
 ```
 
 A new poll can be created using the `create` method from the `meeting.polls` object. The `meeting.polls.create()` method accepts the following parameters:
@@ -437,18 +188,7 @@ A new poll can be created using the `create` method from the `meeting.polls` obj
 The following snippet creates a poll where votes are anonymous:
 
 ```
-
-await meeting.polls.create(
-
-  "Are you an early bird or a night owl?",
-
-  ["Early bird", "Night owl"],
-
-  true,
-
-);
-
-
+await meeting.polls.create(  "Are you an early bird or a night owl?",  ["Early bird", "Night owl"],  true,);
 ```
 
 To create a new poll, use the `create` method available on the `meeting.polls` object. The `meeting.polls.create()` function requires the following parameters:
@@ -465,20 +205,7 @@ The following snippet creates a poll where votes are anonymous.
 Kotlin
 
 ```
-
-val pollsCreateError: PollsError? = meeting.polls.create(
-
-  question = "Are you an early bird or a night owl?",
-
-  options = listOf("Early bird", "Night owl"),
-
-  anonymous = true,
-
-  hideVotes = false
-
-)
-
-
+val pollsCreateError: PollsError? = meeting.polls.create(  question = "Are you an early bird or a night owl?",  options = listOf("Early bird", "Night owl"),  anonymous = true,  hideVotes = false)
 ```
 
 A new poll can be created using the `create` method from the `meeting.polls` object. The `meeting.polls.createPoll()` method accepts the following parameters:
@@ -495,20 +222,7 @@ The following snippet creates a poll where votes are anonymous.
 Swift
 
 ```
-
-let pollsCreateError: PollsError? = meeting.polls.createPoll(
-
-    question: "Are you an early bird or a night owl?",
-
-    options: ["Early bird", "Night owl"],
-
-    anonymous: true,
-
-    hideVotes: false
-
-)
-
-
+let pollsCreateError: PollsError? = meeting.polls.createPoll(    question: "Are you an early bird or a night owl?",    options: ["Early bird", "Night owl"],    anonymous: true,    hideVotes: false)
 ```
 
 A new poll can be created using the `create` method from the `meeting.polls` object. The `meeting.polls.create(...)` method accepts the following parameters:
@@ -525,20 +239,7 @@ The following snippet creates a poll where votes are anonymous.
 Dart
 
 ```
-
-meeting.polls.create(
-
-    question: "Are you an early bird or a night owl?",
-
-    options: ["Early bird", "Night owl"],
-
-    anonymous: true,
-
-    hideVotes: false,
-
-);
-
-
+meeting.polls.create(    question: "Are you an early bird or a night owl?",    options: ["Early bird", "Night owl"],    anonymous: true,    hideVotes: false,);
 ```
 
 A new poll can be created using the `create` method from the `meeting.polls` object. The `meeting.polls.create()` method accepts the following parameters:
@@ -555,18 +256,7 @@ The following snippet creates a poll where votes are anonymous.
 TypeScript
 
 ```
-
-await meeting.poll.create(
-
-  "Are you an early bird or a night owl?",
-
-  ["Early bird", "Night owl"],
-
-  true,
-
-);
-
-
+await meeting.poll.create(  "Are you an early bird or a night owl?",  ["Early bird", "Night owl"],  true,);
 ```
 
 ## Voting on a Poll
@@ -581,12 +271,7 @@ The following snippet votes for the first option on the first poll created in th
 JavaScript
 
 ```
-
-const poll = meeting.polls.items[0];
-
-await meeting.polls.vote(poll.id, 0);
-
-
+const poll = meeting.polls.items[0];await meeting.polls.vote(poll.id, 0);
 ```
 
 The `meeting.polls.vote()` method can be used to register a vote on a poll. It accepts the following parameters:
@@ -597,12 +282,7 @@ The `meeting.polls.vote()` method can be used to register a vote on a poll. It a
 The following snippet votes for the first option on the first poll created in the meeting:
 
 ```
-
-const poll = meeting.polls.items[0];
-
-await meeting.polls.vote(poll.id, 0);
-
-
+const poll = meeting.polls.items[0];await meeting.polls.vote(poll.id, 0);
 ```
 
 To register a vote on a poll, use the `meeting.polls.vote()` method. This method requires the following parameters:
@@ -617,15 +297,8 @@ The following snippet votes for the first option on the first poll created in th
 Kotlin
 
 ```
-
-val poll: Poll = meeting.polls.items.first()
-
-val selectedPollOption: PollOption = poll.options.first()
-
-
+val poll: Poll = meeting.polls.items.first()val selectedPollOption: PollOption = poll.options.first()
 val pollsError: PollsError? = meeting.polls.vote(poll.id, selectedPollOption)
-
-
 ```
 
 The `meeting.polls.vote()` method can be used to register a vote on a poll. It accepts the following parameters:
@@ -640,15 +313,8 @@ The following snippet votes for the first option on the first poll created in th
 Swift
 
 ```
-
-let poll: Poll = meeting.polls.items[0]
-
-let selectedPollOption: PollOption = poll.options[0]
-
-
+let poll: Poll = meeting.polls.items[0]let selectedPollOption: PollOption = poll.options[0]
 meeting.poll.vote(poll, selectedPollOption)
-
-
 ```
 
 The `meeting.polls.vote()` method can be used to register a vote on a poll. It accepts the following parameters:
@@ -663,15 +329,8 @@ The following snippet votes for the first option on the first poll created in th
 Dart
 
 ```
-
-final poll = meeting.polls.items[0];
-
-final selectedPollOption = poll.options[0];
-
-
+final poll = meeting.polls.items[0];final selectedPollOption = poll.options[0];
 meeting.polls.vote(poll: poll, pollOption: selectedPollOption);
-
-
 ```
 
 The `meeting.polls.vote()` method can be used to register a vote on a poll. It accepts the following parameters:
@@ -686,12 +345,7 @@ The following snippet votes for the first option on the first poll created in th
 TypeScript
 
 ```
-
-const poll = meeting.polls.items[0];
-
-await meeting.poll.vote(poll.id, 0);
-
-
+const poll = meeting.polls.items[0];await meeting.poll.vote(poll.id, 0);
 ```
 
 ## Other Poll Functions
@@ -703,12 +357,7 @@ The total votes on a poll can be accessed in the following manner:
 JavaScript
 
 ```
-
-const poll = meeting.polls.items[0];
-
-const votes = poll.voted;
-
-
+const poll = meeting.polls.items[0];const votes = poll.voted;
 ```
 
 `votes` is an array of participant IDs (`meeting.participant.id`).
@@ -718,12 +367,7 @@ The total votes on a poll option can be accessed in the following manner:
 JavaScript
 
 ```
-
-const poll = meeting.polls.items[0];
-
-const options = poll.options;
-
-
+const poll = meeting.polls.items[0];const options = poll.options;
 ```
 
 `options` returns an array of objects, where each object is of type `PollOption`.
@@ -731,12 +375,7 @@ const options = poll.options;
 The total votes on a poll can be accessed in the following manner:
 
 ```
-
-const poll = meeting.polls.items[0];
-
-const votes = poll.voted;
-
-
+const poll = meeting.polls.items[0];const votes = poll.voted;
 ```
 
 `votes` is an array of participant IDs (`meeting.participant.id`).
@@ -744,12 +383,7 @@ const votes = poll.voted;
 The total votes on a poll option can be accessed in the following manner:
 
 ```
-
-const poll = meeting.polls.items[0];
-
-const options = poll.options;
-
-
+const poll = meeting.polls.items[0];const options = poll.options;
 ```
 
 `options` returns an array of objects, where each object is of type `PollOption`.
@@ -759,12 +393,7 @@ The total votes on a poll can be accessed in the following manner:
 Kotlin
 
 ```
-
-val poll = meeting.polls.items[0]
-
-val votes = poll.voted
-
-
+val poll = meeting.polls.items[0]val votes = poll.voted
 ```
 
 `votes` is an array of participant IDs (`meeting.participant.id`).
@@ -774,12 +403,7 @@ The total votes on a poll option can be accessed in the following manner:
 Kotlin
 
 ```
-
-val poll = meeting.polls.items[0]
-
-val options = poll.options
-
-
+val poll = meeting.polls.items[0]val options = poll.options
 ```
 
 `options` returns an array of objects, where each object is of type `PollOption`.
@@ -789,12 +413,7 @@ The total votes on a poll can be accessed in the following manner:
 Swift
 
 ```
-
-let poll = meeting.polls.items[0]
-
-let votes = poll.voted
-
-
+let poll = meeting.polls.items[0]let votes = poll.voted
 ```
 
 `votes` is an array of participant IDs (`meeting.participant.id`).
@@ -804,12 +423,7 @@ The total votes on a poll option can be accessed in the following manner:
 Swift
 
 ```
-
-let poll = meeting.polls.items[0]
-
-let options = poll.options
-
-
+let poll = meeting.polls.items[0]let options = poll.options
 ```
 
 `options` returns an array of objects, where each object is of type `PollOption`.
@@ -819,12 +433,7 @@ The total votes on a poll can be accessed in the following manner:
 Dart
 
 ```
-
-final poll = meeting.polls.items.first;
-
-final votes = poll.voted;
-
-
+final poll = meeting.polls.items.first;final votes = poll.voted;
 ```
 
 `votes` is an array of participant IDs (`meeting.participant.id`).
@@ -834,12 +443,7 @@ The total votes on a poll option can be accessed in the following manner:
 Dart
 
 ```
-
-final poll = meeting.polls.items.first;
-
-final options = poll.options;
-
-
+final poll = meeting.polls.items.first;final options = poll.options;
 ```
 
 `options` returns an array of objects, where each object is of type `PollOption`.
@@ -849,12 +453,7 @@ The total votes on a poll can be accessed in the following manner:
 TypeScript
 
 ```
-
-const poll = meeting.polls.items[0];
-
-const votes = poll.voted;
-
-
+const poll = meeting.polls.items[0];const votes = poll.voted;
 ```
 
 `votes` is an array of participant IDs (`meeting.participant.id`).
@@ -864,12 +463,7 @@ The total votes on a poll option can be accessed in the following manner:
 TypeScript
 
 ```
-
-const poll = meeting.polls.items[0];
-
-const options = poll.options;
-
-
+const poll = meeting.polls.items[0];const options = poll.options;
 ```
 
 `options` returns an array of objects, where each object is of type `PollOption`.
@@ -884,16 +478,7 @@ An event is fired each time `meeting.polls.items` is updated or created. You can
 JavaScript
 
 ```
-
-meeting.polls.on("pollsUpdate", ({ polls, newPoll }) => {
-
-  console.log("Polls updated:", polls);
-
-  console.log("Is new poll:", newPoll);
-
-});
-
-
+meeting.polls.on("pollsUpdate", ({ polls, newPoll }) => {  console.log("Polls updated:", polls);  console.log("Is new poll:", newPoll);});
 ```
 
 An event is fired each time `meeting.polls.items` is updated or created. You can listen for this to get the updated list of polls. The response object contains the following properties:
@@ -902,30 +487,14 @@ An event is fired each time `meeting.polls.items` is updated or created. You can
 * `newPoll` \- A boolean variable which is `true` when a new poll has been created
 
 ```
-
-meeting.polls.on("pollsUpdate", ({ polls, newPoll }) => {
-
-  console.log("Polls updated:", polls);
-
-  console.log("Is new poll:", newPoll);
-
-});
-
-
+meeting.polls.on("pollsUpdate", ({ polls, newPoll }) => {  console.log("Polls updated:", polls);  console.log("Is new poll:", newPoll);});
 ```
 
 Alternatively, you can use React hooks to listen for poll updates:
 
 ```
-
 import { useRealtimeKitSelector } from "@cloudflare/realtimekit-react";
-
-
-// useRealtimeKitSelector hook only works when `RealtimeKitProvider` is used.
-
-const polls = useRealtimeKitSelector((m) => m.polls.items);
-
-
+// useRealtimeKitSelector hook only works when `RealtimeKitProvider` is used.const polls = useRealtimeKitSelector((m) => m.polls.items);
 ```
 
 An event is fired each time `meeting.polls.items` is updated or created. You can listen for this to get the updated list of polls. The response object contains the following properties:
@@ -936,14 +505,7 @@ An event is fired each time `meeting.polls.items` is updated or created. You can
 TypeScript
 
 ```
-
-meeting.polls.on("pollsUpdate", ({ polls, newPoll }) => {
-
-  console.log(polls, newPoll);
-
-});
-
-
+meeting.polls.on("pollsUpdate", ({ polls, newPoll }) => {  console.log(polls, newPoll);});
 ```
 
 To receive updates about new polls or poll changes during a meeting, implement the `RtkPollsEventListener` interface. Register your listener using `meeting.addPollsEventListener(rtkPollsEventListener)`.
@@ -955,28 +517,9 @@ The `onPollUpdate()` method is invoked when a specific poll is updated, such as 
 Kotlin
 
 ```
-
-meeting.addPollsEventListener(object : RtkPollsEventListener {
-
-    override fun onNewPoll(poll: Poll) {
-
-    }
-
-
-    override fun onPollUpdate(poll: Poll) {
-
-    }
-
-
-    override fun onPollUpdates(pollItems: List<Poll>) {
-
-    }
-
-  }
-
-)
-
-
+meeting.addPollsEventListener(object : RtkPollsEventListener {    override fun onNewPoll(poll: Poll) {    }
+    override fun onPollUpdate(poll: Poll) {    }
+    override fun onPollUpdates(pollItems: List<Poll>) {    }  })
 ```
 
 To be able to receive new poll messages you need to implement a method `onPollUpdates()` method from callback `RtkPollsEventListener`. You can subscribe to this events by calling `meeting.addPollsEventListener(meetingViewModel)`
@@ -984,28 +527,9 @@ To be able to receive new poll messages you need to implement a method `onPollUp
 Swift
 
 ```
-
-extension MeetingViewModel: RtkPollsEventListener {
-
-  func onNewPoll(poll: Poll) {
-
-    // code to handle new poll
-
-  }
-
-
-  func onPollUpdates(pollItems: [Poll]) {
-
-    // code to handle polls and their vote updates.
-
-  }
-
-
-  func onPollUpdate(poll: Poll) {}
-
-}
-
-
+extension MeetingViewModel: RtkPollsEventListener {  func onNewPoll(poll: Poll) {    // code to handle new poll  }
+  func onPollUpdates(pollItems: [Poll]) {    // code to handle polls and their vote updates.  }
+  func onPollUpdate(poll: Poll) {}}
 ```
 
 To be able to receive new poll messages you need to implement a method `onPollUpdates()` method from callback `RtkPollsEventListener`:
@@ -1015,29 +539,8 @@ To get poll updates, listen to `onPollUpdates()` callback:
 Dart
 
 ```
-
-class PollEventsListener extends RtkPollsEventListener {
-
-  @override
-
-  void onPollUpdates(List<Poll> pollItems) {
-
-    /// code to handle polls
-
-  }
-
-
-  @override
-
-  void onNewPoll(Poll poll) {
-
-    /// code to handle new poll
-
-  }
-
-}
-
-
+class PollEventsListener extends RtkPollsEventListener {  @override  void onPollUpdates(List<Poll> pollItems) {    /// code to handle polls  }
+  @override  void onNewPoll(Poll poll) {    /// code to handle new poll  }}
 ```
 
 You can subscribe to these events as follows:
@@ -1045,10 +548,7 @@ You can subscribe to these events as follows:
 Dart
 
 ```
-
 meeting.addPollsEventListener(PollEventsListener());
-
-
 ```
 
 ```json

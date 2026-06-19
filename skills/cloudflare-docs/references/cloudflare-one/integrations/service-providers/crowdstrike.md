@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -39,9 +39,10 @@ To retrieve those values:
 2. Go to **Support and resources** \> **API Clients and Keys**.
 3. Select **Create API client** and enter any name for the client.
 4. Turn on the following API permissions:  
-| Scope                 | Permission |  
-| --------------------- | ---------- |  
-| Hosts                 | Read       |  
+
+| Scope                 | Permission |
+| --------------------- | ---------- |
+| Hosts                 | Read       |
 | Zero Trust Assessment | Read       |
 5. Select **Create**.
 6. Copy the **Client ID**, **Client Secret**, and **Base URL** to a safe place.

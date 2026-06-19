@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/terraform/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,9 +37,9 @@ If you are upgrading from v4, review the [migration guide ↗](https://github.co
 
 * Add load balancing rules.
 * Resources covered:  
-   * [cloudflare\_load\_balancer ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/load%5Fbalancer)  
-   * [cloudflare\_load\_balancer\_pool ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/load%5Fbalancer%5Fpool)  
-   * [cloudflare\_load\_balancer\_monitor ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/load%5Fbalancer%5Fmonitor)
+  * [cloudflare\_load\_balancer ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/load%5Fbalancer)
+  * [cloudflare\_load\_balancer\_pool ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/load%5Fbalancer%5Fpool)
+  * [cloudflare\_load\_balancer\_monitor ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/load%5Fbalancer%5Fmonitor)
 
 ## [5 – Add exceptions with page rules](https://developers.cloudflare.com/terraform/tutorial/add-page-rules/)
 

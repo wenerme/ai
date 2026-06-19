@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -48,38 +48,11 @@ If Cloudflare has automatically added CAA records on your behalf, these records 
 Terminal window
 
 ```
-
 ➜  ~ dig example.com caa +short
-
-
-# CAA records added by Google Trust Services
-
-0 issue "pki.goog; cansignhttpexchanges=yes"
-
-0 issuewild "pki.goog; cansignhttpexchanges=yes"
-
-
-# CAA records added by Let's Encrypt
-
-0 issue "letsencrypt.org"
-
-0 issuewild "letsencrypt.org"
-
-
-# CAA records added by SSL.com
-
-0 issue "ssl.com"
-
-0 issuewild "ssl.com"
-
-
-# CAA records added by Sectigo
-
-0 issue "sectigo.com"
-
-0 issuewild "sectigo.com"
-
-
+# CAA records added by Google Trust Services0 issue "pki.goog; cansignhttpexchanges=yes"0 issuewild "pki.goog; cansignhttpexchanges=yes"
+# CAA records added by Let's Encrypt0 issue "letsencrypt.org"0 issuewild "letsencrypt.org"
+# CAA records added by SSL.com0 issue "ssl.com"0 issuewild "ssl.com"
+# CAA records added by Sectigo0 issue "sectigo.com"0 issuewild "sectigo.com"
 ```
 
 Note
@@ -90,8 +63,8 @@ This list is not exhaustive, and other CAs might be added or removed for operati
 
 Create a CAA record for each Certificate Authority (CA) that you plan to use for your domain.
 
-* [ Dashboard ](#tab-panel-10602)
-* [ API ](#tab-panel-10603)
+* [ Dashboard ](#tab-panel-10678)
+* [ API ](#tab-panel-10679)
 
 To add a CAA record in the dashboard,
 
@@ -122,12 +95,7 @@ Check CAA at all levels of your CNAME chain:
 Terminal window
 
 ```
-
-dig yourdomain.com CAA +short
-
-dig cname-target.com CAA +short
-
-
+dig yourdomain.com CAA +shortdig cname-target.com CAA +short
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,10 +27,7 @@ Developers can use the TryCloudflare tool to experiment with Cloudflare Tunnel w
 Terminal window
 
 ```
-
 cloudflared tunnel --url http://localhost:8080
-
-
 ```
 
 `cloudflared` will generate a random subdomain when connecting to the Cloudflare network and print it in the terminal for you to use and share. The output will serve traffic from the server on your local machine to the public Internet at a public URL.

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/1.1.1.1/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,10 +19,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 Terminal window
 
 ```
-
 dig @1.1.1.1 example.com A
-
-
 ```
 
 | Code number | Code name                    | Example output                                                                                                                                             | Next steps                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |

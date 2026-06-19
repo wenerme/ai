@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,10 +33,7 @@ OpenSSL example
 Terminal window
 
 ```
-
 openssl genrsa -aes256 -out rootca.key 4096
-
-
 ```
 
 1. Create the CA root certificate. When prompted, fill in the information to be included in the certificate. For the `Common Name` field, use the domain name as value, not the hostname.
@@ -44,10 +41,7 @@ openssl genrsa -aes256 -out rootca.key 4096
 Terminal window
 
 ```
-
 openssl req -x509 -new -nodes -key rootca.key -sha256 -days 1826 -out rootca.crt
-
-
 ```
 
 1. Create a Certificate Signing Request (CSR). When prompted, fill in the information to be included in the request. For the `Common Name` field, use the hostname as value.
@@ -55,10 +49,7 @@ openssl req -x509 -new -nodes -key rootca.key -sha256 -days 1826 -out rootca.crt
 Terminal window
 
 ```
-
 openssl req -new -nodes -out cert.csr -newkey rsa:4096 -keyout cert.key
-
-
 ```
 
 1. Sign the certificate using the `rootca.key` and `rootca.crt` created in previous steps.
@@ -66,25 +57,19 @@ openssl req -new -nodes -out cert.csr -newkey rsa:4096 -keyout cert.key
 Terminal window
 
 ```
-
 openssl x509 -req -in cert.csr -CA rootca.crt -CAkey rootca.key -CAcreateserial -out cert.crt -days 730 -sha256 -extfile ./cert.v3.ext
-
-
 ```
 
 1. Make sure the certificate extensions file `cert.v3.ext` specifies the following:
 
 ```
-
 basicConstraints=CA:FALSE
-
-
 ```
 
 ## 1\. Upload your certificate to Cloudflare
 
-* [ Dashboard ](#tab-panel-10646)
-* [ API ](#tab-panel-10647)
+* [ Dashboard ](#tab-panel-10722)
+* [ API ](#tab-panel-10723)
 
 1. Go to the **Origin Server** page.  
 [ Go to **Origin Server** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
@@ -114,10 +99,7 @@ Check the examples below for Apache and NGINX or refer to your origin web server
 Apache example
 
 ```
-
 SSLCACertificateFile /path/to/origin-pull-ca.pem
-
-
 ```
 
 For this example, you would have saved your certificate to `/path/to/origin-pull-ca.pem`.
@@ -125,12 +107,7 @@ For this example, you would have saved your certificate to `/path/to/origin-pull
 NGINX example
 
 ```
-
-ssl_verify_client optional;
-
-ssl_client_certificate /etc/nginx/certs/cloudflare.crt;
-
-
+ssl_verify_client optional;ssl_client_certificate /etc/nginx/certs/cloudflare.crt;
 ```
 
 For this example, you would have saved your certificate to `/etc/nginx/certs/cloudflare.crt`.
@@ -139,8 +116,8 @@ At this point, you may also want to enable logging on your origin so that you ca
 
 ## 4\. Enable zone-level Authenticated Origin Pulls
 
-* [ Dashboard ](#tab-panel-10648)
-* [ API ](#tab-panel-10649)
+* [ Dashboard ](#tab-panel-10724)
+* [ API ](#tab-panel-10725)
 
 1. Go to the **Origin Server** page.  
 [ Go to **Origin Server** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
@@ -160,19 +137,13 @@ Once you can confirm everything is working as expected for your specific origin 
 Apache example
 
 ```
-
 SSLVerifyClient require
-
-
 ```
 
 NGINX example
 
 ```
-
 ssl_verify_client on;
-
-
 ```
 
 After completing the process, you can use `curl` to send requests directly to your origin IPs, verifying that the requests fail due to certificate validation being enforced.

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,15 +23,15 @@ To add a user to the impersonation registry:
 3. Select **Settings** \> **Impersonation registry**.
 4. Select **Add a user**.
 5. Select **Input method**: Choose between **Manual input**, **Upload manual list**, and **Select from existing directories**:  
-   * **Manual input**: Enter the following information:  
-         * **User info**: enter a valid **Display name**.  
-         * **User email**: Enter one of the following:  
-                  * **Email address**: Enter all known email addresses, separated by a comma.  
-                  * **Regular expressions**: Must be valid Java expressions.  
-   * **Upload manual list**: You can upload a file no larger than 150 KB containing all variables of potential emails. The file must contain `Display_Name` and `Email`, and the first row must be the header row.  
-   * **Select from existing directories**:  
-         * **Select directory**: Select your directory.  
-         * **Add users or groups**: Choose the users or groups you want to register.
+  * **Manual input**: Enter the following information:  
+    * **User info**: enter a valid **Display name**.
+    * **User email**: Enter one of the following:  
+      * **Email address**: Enter all known email addresses, separated by a comma.
+      * **Regular expressions**: Must be valid Java expressions.
+  * **Upload manual list**: You can upload a file no larger than 150 KB containing all variables of potential emails. The file must contain `Display_Name` and `Email`, and the first row must be the header row.
+  * **Select from existing directories**:  
+    * **Select directory**: Select your directory.
+    * **Add users or groups**: Choose the users or groups you want to register.
 6. Select **Save**.
 
 For more information on how to edit and remove users, refer to [Impersonation Registry](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/impersonation-registry/#edit-users).

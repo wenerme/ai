@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,143 +31,43 @@ You must use version 4.36.0 or later of the [Wrangler CLI](https://developers.cl
 
 First, add a [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings) to your Worker that gives it access to the Rate Limiting API:
 
-* [  wrangler.jsonc ](#tab-panel-11932)
-* [  wrangler.toml ](#tab-panel-11933)
+* [  wrangler.jsonc ](#tab-panel-11949)
+* [  wrangler.toml ](#tab-panel-11950)
 
 JSONC
 
 ```
-
-{
-
-  "main": "src/index.js",
-
-  "ratelimits": [
-
-    {
-
-      "name": "MY_RATE_LIMITER",
-
-      // An identifier you define, that is unique to your Cloudflare account.
-
-      // Must be an integer.
-
-      "namespace_id": "1001",
-
-      // Limit: the number of tokens allowed within a given period in a single
-
-      // Cloudflare location
-
-      // Period: the duration of the period, in seconds. Must be either 10 or 60
-
-      "simple": {
-
-        "limit": 100,
-
-        "period": 60
-
-      }
-
-    }
-
-  ]
-
-}
-
-
+{  "main": "src/index.js",  "ratelimits": [    {      "name": "MY_RATE_LIMITER",      // An identifier you define, that is unique to your Cloudflare account.      // Must be an integer.      "namespace_id": "1001",      // Limit: the number of tokens allowed within a given period in a single      // Cloudflare location      // Period: the duration of the period, in seconds. Must be either 10 or 60      "simple": {        "limit": 100,        "period": 60      }    }  ]}
 ```
 
 TOML
 
 ```
-
 main = "src/index.js"
-
-
-[[ratelimits]]
-
-name = "MY_RATE_LIMITER"
-
-namespace_id = "1001"
-
-
-  [ratelimits.simple]
-
-  limit = 100
-
-  period = 60
-
-
+[[ratelimits]]name = "MY_RATE_LIMITER"namespace_id = "1001"
+  [ratelimits.simple]  limit = 100  period = 60
 ```
 
 This binding makes the `MY_RATE_LIMITER` binding available, which provides a `limit()` method:
 
-* [  JavaScript ](#tab-panel-11928)
-* [  TypeScript ](#tab-panel-11929)
+* [  JavaScript ](#tab-panel-11945)
+* [  TypeScript ](#tab-panel-11946)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const { pathname } = new URL(request.url)
-
-
-    const { success } = await env.MY_RATE_LIMITER.limit({ key: pathname }) // key can be any string of your choosing
-
-    if (!success) {
-
-      return new Response(`429 Failure – rate limit exceeded for ${pathname}`, { status: 429 })
-
-    }
-
-
-    return new Response(`Success!`)
-
-  }
-
-}
-
-
+export default {  async fetch(request, env) {    const { pathname } = new URL(request.url)
+    const { success } = await env.MY_RATE_LIMITER.limit({ key: pathname }) // key can be any string of your choosing    if (!success) {      return new Response(`429 Failure – rate limit exceeded for ${pathname}`, { status: 429 })    }
+    return new Response(`Success!`)  }}
 ```
 
 TypeScript
 
 ```
-
-interface Env {
-
-  MY_RATE_LIMITER: RateLimit;
-
-}
-
-
-export default {
-
-  async fetch(request, env): Promise<Response> {
-
-    const { pathname } = new URL(request.url)
-
-
-    const { success } = await env.MY_RATE_LIMITER.limit({ key: pathname }) // key can be any string of your choosing
-
-    if (!success) {
-
-      return new Response(`429 Failure – rate limit exceeded for ${pathname}`, { status: 429 })
-
-    }
-
-
-    return new Response(`Success!`)
-
-  }
-
-} satisfies ExportedHandler<Env>;
-
-
+interface Env {  MY_RATE_LIMITER: RateLimit;}
+export default {  async fetch(request, env): Promise<Response> {    const { pathname } = new URL(request.url)
+    const { success } = await env.MY_RATE_LIMITER.limit({ key: pathname }) // key can be any string of your choosing    if (!success) {      return new Response(`429 Failure – rate limit exceeded for ${pathname}`, { status: 429 })    }
+    return new Response(`Success!`)  }} satisfies ExportedHandler<Env>;
 ```
 
 The `limit()` API accepts a single argument — a configuration object with the `key` field.
@@ -179,97 +79,23 @@ You can define and configure multiple rate limiting configurations per Worker, w
 
 For example, here is how you can define two rate limiting configurations for free and paid tier users:
 
-* [  wrangler.jsonc ](#tab-panel-11934)
-* [  wrangler.toml ](#tab-panel-11935)
+* [  wrangler.jsonc ](#tab-panel-11951)
+* [  wrangler.toml ](#tab-panel-11952)
 
 JSONC
 
 ```
-
-{
-
-  "main": "src/index.js",
-
-  "ratelimits": [
-
-    // Free user rate limiting
-
-    {
-
-      "name": "FREE_USER_RATE_LIMITER",
-
-      "namespace_id": "1001",
-
-      "simple": {
-
-        "limit": 100,
-
-        "period": 60
-
-      }
-
-    },
-
-    // Paid user rate limiting
-
-    {
-
-      "name": "PAID_USER_RATE_LIMITER",
-
-      "namespace_id": "1002",
-
-      "simple": {
-
-        "limit": 1000,
-
-        "period": 60
-
-      }
-
-    }
-
-  ]
-
-}
-
-
+{  "main": "src/index.js",  "ratelimits": [    // Free user rate limiting    {      "name": "FREE_USER_RATE_LIMITER",      "namespace_id": "1001",      "simple": {        "limit": 100,        "period": 60      }    },    // Paid user rate limiting    {      "name": "PAID_USER_RATE_LIMITER",      "namespace_id": "1002",      "simple": {        "limit": 1000,        "period": 60      }    }  ]}
 ```
 
 TOML
 
 ```
-
 main = "src/index.js"
-
-
-[[ratelimits]]
-
-name = "FREE_USER_RATE_LIMITER"
-
-namespace_id = "1001"
-
-
-  [ratelimits.simple]
-
-  limit = 100
-
-  period = 60
-
-
-[[ratelimits]]
-
-name = "PAID_USER_RATE_LIMITER"
-
-namespace_id = "1002"
-
-
-  [ratelimits.simple]
-
-  limit = 1_000
-
-  period = 60
-
-
+[[ratelimits]]name = "FREE_USER_RATE_LIMITER"namespace_id = "1001"
+  [ratelimits.simple]  limit = 100  period = 60
+[[ratelimits]]name = "PAID_USER_RATE_LIMITER"namespace_id = "1002"
+  [ratelimits.simple]  limit = 1_000  period = 60
 ```
 
 ## Configuration
@@ -291,60 +117,20 @@ If you do not want to share rate limit state between bindings, use a unique `nam
 
 For example, to apply a rate limit of 1500 requests per minute, you would define a rate limiting configuration as follows:
 
-* [  wrangler.jsonc ](#tab-panel-11930)
-* [  wrangler.toml ](#tab-panel-11931)
+* [  wrangler.jsonc ](#tab-panel-11947)
+* [  wrangler.toml ](#tab-panel-11948)
 
 JSONC
 
 ```
-
-{
-
-  "ratelimits": [
-
-    {
-
-      "name": "MY_RATE_LIMITER",
-
-      "namespace_id": "1001",
-
-      // 1500 requests - calls to limit() increment this
-
-      "simple": {
-
-        "limit": 1500,
-
-        "period": 60
-
-      }
-
-    }
-
-  ]
-
-}
-
-
+{  "ratelimits": [    {      "name": "MY_RATE_LIMITER",      "namespace_id": "1001",      // 1500 requests - calls to limit() increment this      "simple": {        "limit": 1500,        "period": 60      }    }  ]}
 ```
 
 TOML
 
 ```
-
-[[ratelimits]]
-
-name = "MY_RATE_LIMITER"
-
-namespace_id = "1001"
-
-
-  [ratelimits.simple]
-
-  limit = 1_500
-
-  period = 60
-
-
+[[ratelimits]]name = "MY_RATE_LIMITER"namespace_id = "1001"
+  [ratelimits.simple]  limit = 1_500  period = 60
 ```
 
 ## Best practices
@@ -357,25 +143,8 @@ The `key` passed to the `limit` function, that determines what to rate limit on,
 TypeScript
 
 ```
-
-// Recommended: use a key that represents a specific user or class of user
-
-const url = new URL(req.url)
-
-const userId = url.searchParams.get("userId") || ""
-
-const { success } = await env.MY_RATE_LIMITER.limit({ key: userId })
-
-
-// Not recommended:  many users may share a single IP, especially on mobile networks
-
-// or when using privacy-enabling proxies
-
-const ipAddress = req.headers.get("cf-connecting-ip") || ""
-
-const { success } = await env.MY_RATE_LIMITER.limit({ key: ipAddress })
-
-
+// Recommended: use a key that represents a specific user or class of userconst url = new URL(req.url)const userId = url.searchParams.get("userId") || ""const { success } = await env.MY_RATE_LIMITER.limit({ key: userId })
+// Not recommended:  many users may share a single IP, especially on mobile networks// or when using privacy-enabling proxiesconst ipAddress = req.headers.get("cf-connecting-ip") || ""const { success } = await env.MY_RATE_LIMITER.limit({ key: ipAddress })
 ```
 
 ## Locality
@@ -395,10 +164,7 @@ This means that while in your code you `await` a call to the `limit()` method:
 JavaScript
 
 ```
-
 const { success } = await env.MY_RATE_LIMITER.limit({ key: customerId })
-
-
 ```
 
 You are not waiting on a network request. You can use the Rate Limiting API without introducing any meaningful latency to your Worker.

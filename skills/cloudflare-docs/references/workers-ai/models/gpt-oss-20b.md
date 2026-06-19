@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,99 +29,40 @@ OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and 
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4866)
-* [  Python ](#tab-panel-4867)
-* [  curl ](#tab-panel-4868)
+* [  TypeScript ](#tab-panel-4940)
+* [  Python ](#tab-panel-4941)
+* [  curl ](#tab-panel-4942)
 
 ```
-
-export default {
-
-  async fetch(request, env): Promise<Response> {
-
-    const response = await env.AI.run('@cf/openai/gpt-oss-20b', {
-
-      instructions: 'You are a concise assistant.',
-
-      input: 'What is the origin of the phrase Hello, World?',
-
-    });
-
-
-    return Response.json(response);
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export default {  async fetch(request, env): Promise<Response> {    const response = await env.AI.run('@cf/openai/gpt-oss-20b', {      instructions: 'You are a concise assistant.',      input: 'What is the origin of the phrase Hello, World?',    });
+    return Response.json(response);  },} satisfies ExportedHandler<Env>;
 ```
 
 ```
-
-import os
-
-import requests
-
-
-ACCOUNT_ID = os.environ.get("CLOUDFLARE_ACCOUNT_ID")
-
-AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
-
-
-prompt = "Tell me all about PEP-8"
-
-response = requests.post(
-
-  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/v1/responses",
-
-    headers={"Authorization": f"Bearer {AUTH_TOKEN}"},
-
-    json={
-
-      "model": "@cf/openai/gpt-oss-20b",
-
-      "input": "Tell me all about PEP-8"
-
-    }
-
-)
-
-result = response.json()
-
-print(result)
-
-
+import osimport requests
+ACCOUNT_ID = os.environ.get("CLOUDFLARE_ACCOUNT_ID")AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
+prompt = "Tell me all about PEP-8"response = requests.post(  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/v1/responses",    headers={"Authorization": f"Bearer {AUTH_TOKEN}"},    json={      "model": "@cf/openai/gpt-oss-20b",      "input": "Tell me all about PEP-8"    })result = response.json()print(result)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/responses   -H "Content-Type: application/json"   -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN"   -d '{
-
-    "model": "@cf/openai/gpt-oss-20b",
-
-    "input": "What are the benefits of open-source models?"
-
-  }'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/responses   -H "Content-Type: application/json"   -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN"   -d '{    "model": "@cf/openai/gpt-oss-20b",    "input": "What are the benefits of open-source models?"  }'
 ```
 
 Multiple API format support 
 
-This model supports three different API formats:
+This model supports three different API formats: 
 * **Responses API** (`/ai/v1/responses`) - Native OpenAI responses format shown above with `input` parameter
 * **Workers AI Run** (`/ai/run`) - Dynamic format detection, accepts Chat Completions (`messages`), legacy Completions (`prompt`), or Responses API (`input`)
-* **Chat Completions** (`/v1/chat/completions`) - OpenAI-compatible endpoint with `messages` array. Refer to [OpenAI Compatibility](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/)for details.
+* **Chat Completions** (`/v1/chat/completions`) - OpenAI-compatible endpoint with `messages` array. Refer to [OpenAI Compatibility ](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/) for details.
 
 ## Parameters
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-4869)
-* [ Output ](#tab-panel-4870)
+* [ Input ](#tab-panel-4943)
+* [ Output ](#tab-panel-4944)
 
 Input format
 
@@ -199,8 +140,8 @@ response
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-4871)
-* [ Output ](#tab-panel-4872)
+* [ Input ](#tab-panel-4945)
+* [ Output ](#tab-panel-4946)
 
 Input format
 
@@ -286,8 +227,8 @@ format
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-4873)
-* [ Output ](#tab-panel-4874)
+* [ Input ](#tab-panel-4947)
+* [ Output ](#tab-panel-4948)
 
 ▶requests\[\]
 
@@ -317,7 +258,7 @@ response
 
  Batch Input [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/batch-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/batch-input.json "Download") 
 
- Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/batch-output.json "Download") 
+ Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/batch-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/#page","headline":"gpt-oss-20b (OpenAI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-20b is for lower latency, and local or specialized use-cases.","url":"https://developers.cloudflare.com/workers-ai/models/gpt-oss-20b/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -24,35 +24,8 @@ This example uses version 3 of the [aws-sdk-net ↗](https://www.nuget.org/packa
 In this example, you will pass credentials explicitly to the `IAmazonS3` initialization. If you wish, use a shared AWS credentials file or the SDK store in-line with other AWS SDKs. Refer to [Configure AWS credentials ↗](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-config-creds.html) for more details.
 
 ```
-
 private static IAmazonS3 s3Client;
-
-
-public static void Main(string[] args)
-
-{
-
-  // Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)
-
-  var accessKey = "<ACCESS_KEY_ID>";
-
-  var secretKey = "<SECRET_ACCESS_KEY>";
-
-  var credentials = new BasicAWSCredentials(accessKey, secretKey);
-
-  s3Client = new AmazonS3Client(credentials, new AmazonS3Config
-
-    {
-
-      // Provide your Cloudflare account ID
-
-      ServiceURL = "https://<ACCOUNT_ID>.r2.cloudflarestorage.com",
-
-    });
-
-}
-
-
+public static void Main(string[] args){  // Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)  var accessKey = "<ACCESS_KEY_ID>";  var secretKey = "<SECRET_ACCESS_KEY>";  var credentials = new BasicAWSCredentials(accessKey, secretKey);  s3Client = new AmazonS3Client(credentials, new AmazonS3Config    {      // Provide your Cloudflare account ID      ServiceURL = "https://<ACCOUNT_ID>.r2.cloudflarestorage.com",    });}
 ```
 
 ## List buckets and objects
@@ -60,74 +33,22 @@ public static void Main(string[] args)
 The [ListBucketsAsync ↗](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/S3/MIS3ListBucketsAsyncListBucketsRequestCancellationToken.html) and [ListObjectsAsync ↗](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/S3/MIS3ListObjectsV2AsyncListObjectsV2RequestCancellationToken.html) methods can be used to list buckets under your account and the contents of those buckets respectively.
 
 ```
-
-static async Task ListBuckets()
-
-{
-
-  var response = await s3Client.ListBucketsAsync();
-
-
-  foreach (var s3Bucket in response.Buckets)
-
-  {
-
-    Console.WriteLine("{0}", s3Bucket.BucketName);
-
-  }
-
-}
-
-
+static async Task ListBuckets(){  var response = await s3Client.ListBucketsAsync();
+  foreach (var s3Bucket in response.Buckets)  {    Console.WriteLine("{0}", s3Bucket.BucketName);  }}
 ```
 
 ```
-
-sdk-example
-
-my-bucket
-
-
+sdk-examplemy-bucket
 ```
 
 ```
-
-static async Task ListObjectsV2()
-
-{
-
-  var request = new ListObjectsV2Request
-
-  {
-
-    BucketName = "my-bucket"
-
-  };
-
-
+static async Task ListObjectsV2(){  var request = new ListObjectsV2Request  {    BucketName = "my-bucket"  };
   var response = await s3Client.ListObjectsV2Async(request);
-
-
-  foreach (var s3Object in response.S3Objects)
-
-  {
-
-    Console.WriteLine("{0}", s3Object.Key);
-
-  }
-
-}
-
-
+  foreach (var s3Object in response.S3Objects)  {    Console.WriteLine("{0}", s3Object.Key);  }}
 ```
 
 ```
-
-dog.png
-
-cat.png
-
-
+dog.pngcat.png
 ```
 
 ## Upload and retrieve objects
@@ -139,69 +60,23 @@ Warning
 `DisablePayloadSigning = true` and `DisableDefaultChecksumValidation = true` must be passed as Cloudflare R2 does not currently support the Streaming SigV4 implementation used by AWSSDK.S3.
 
 ```
-
-static async Task PutObject()
-
-{
-
-  var request = new PutObjectRequest
-
-  {
-
-    FilePath = @"/path/file.txt",
-
-    BucketName = "my-bucket",
-
-    DisablePayloadSigning = true,
-
-    DisableDefaultChecksumValidation = true
-
-  };
-
-
+static async Task PutObject(){  var request = new PutObjectRequest  {    FilePath = @"/path/file.txt",    BucketName = "my-bucket",    DisablePayloadSigning = true,    DisableDefaultChecksumValidation = true  };
   var response = await s3Client.PutObjectAsync(request);
-
-
-  Console.WriteLine("ETag: {0}", response.ETag);
-
-}
-
-
+  Console.WriteLine("ETag: {0}", response.ETag);}
 ```
 
 ```
-
 ETag: "186a71ee365d9686c3b98b6976e1f196"
-
-
 ```
 
 ```
-
-static async Task GetObject()
-
-{
-
-  var bucket = "my-bucket";
-
-  var key = "file.txt";
-
-
+static async Task GetObject(){  var bucket = "my-bucket";  var key = "file.txt";
   var response = await s3Client.GetObjectAsync(bucket, key);
-
-
-  Console.WriteLine("ETag: {0}", response.ETag);
-
-}
-
-
+  Console.WriteLine("ETag: {0}", response.ETag);}
 ```
 
 ```
-
 ETag: "186a71ee365d9686c3b98b6976e1f196"
-
-
 ```
 
 ## Generate presigned URLs
@@ -209,46 +84,14 @@ ETag: "186a71ee365d9686c3b98b6976e1f196"
 The [GetPreSignedURL ↗](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/S3/MIS3GetPreSignedURLGetPreSignedUrlRequest.html) method allows you to sign ahead of time, giving temporary access to a specific operation. In this case, presigning a `PutObject` request for `sdk-example/file.txt`.
 
 ```
-
-static string? GeneratePresignedUrl()
-
-{
-
-  AWSConfigsS3.UseSignatureVersion4 = true;
-
-  var presign = new GetPreSignedUrlRequest
-
-  {
-
-    BucketName = "my-bucket",
-
-    Key = "file.txt",
-
-    Verb = HttpVerb.GET,
-
-    Expires = DateTime.Now.AddDays(7),
-
-  };
-
-
+static string? GeneratePresignedUrl(){  AWSConfigsS3.UseSignatureVersion4 = true;  var presign = new GetPreSignedUrlRequest  {    BucketName = "my-bucket",    Key = "file.txt",    Verb = HttpVerb.GET,    Expires = DateTime.Now.AddDays(7),  };
   var presignedUrl = s3Client.GetPreSignedURL(presign);
-
-
   Console.WriteLine(presignedUrl);
-
-
-  return presignedUrl;
-
-}
-
-
+  return presignedUrl;}
 ```
 
 ```
-
 https://<ACCOUNT_ID>.r2.cloudflarestorage.com/my-bucket/file.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=<credential>&X-Amz-Date=<timestamp>&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=<signature>
-
-
 ```
 
 ```json

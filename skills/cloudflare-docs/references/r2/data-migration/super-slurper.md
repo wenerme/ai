@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -89,28 +89,7 @@ To create credentials with the correct permissions:
 2. Create a policy with the following format and replace `<BUCKET_NAME>` with the bucket you want to grant access to:
 
 ```
-
-{
-
-  "Version": "2012-10-17",
-
-  "Statement": [
-
-    {
-
-      "Effect": "Allow",
-
-      "Action": ["s3:Get*", "s3:List*"],
-
-      "Resource": ["arn:aws:s3:::<BUCKET_NAME>", "arn:aws:s3:::<BUCKET_NAME>/*"]
-
-    }
-
-  ]
-
-}
-
-
+{  "Version": "2012-10-17",  "Statement": [    {      "Effect": "Allow",      "Action": ["s3:Get*", "s3:List*"],      "Resource": ["arn:aws:s3:::<BUCKET_NAME>", "arn:aws:s3:::<BUCKET_NAME>/*"]    }  ]}
 ```
 
 1. Create a new user and attach the created policy to that user.

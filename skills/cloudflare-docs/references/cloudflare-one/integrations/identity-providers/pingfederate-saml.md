@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -48,10 +48,7 @@ This file shares several fields with Cloudflare Access so you do not have to inp
 4. In the **IdP Entity ID** field, enter the following URL:
 
 ```
-
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
-
-
 ```
 
 You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
@@ -64,32 +61,7 @@ To test that your connection is working, go to **Authentication** \> **Login met
 ## Example API configuration
 
 ```
-
-{
-
-  "config": {
-
-    "issuer_url": "https://example.cloudflareaccess.com/cdn-cgi/access/callback",
-
-    "sso_target_url": "https://sso.connect.pingidentity.com/sso/idp/SSO.saml2?idpid=aebe6668-32fe-4a87-8c2b-avcd3599a123",
-
-    "attributes": ["PingOne.AuthenticatingAuthority", "PingOne.idpid"],
-
-    "email_attribute_name": "",
-
-    "sign_request": false,
-
-    "idp_public_cert": "MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEG\nA1UEC.....GF/Q2/MHadws97cZg\nuTnQyuOqPuHbnN83d/2l1NSYKCbHt24o"
-
-  },
-
-  "type": "saml",
-
-  "name": "ping saml example"
-
-}
-
-
+{  "config": {    "issuer_url": "https://example.cloudflareaccess.com/cdn-cgi/access/callback",    "sso_target_url": "https://sso.connect.pingidentity.com/sso/idp/SSO.saml2?idpid=aebe6668-32fe-4a87-8c2b-avcd3599a123",    "attributes": ["PingOne.AuthenticatingAuthority", "PingOne.idpid"],    "email_attribute_name": "",    "sign_request": false,    "idp_public_cert": "MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEG\nA1UEC.....GF/Q2/MHadws97cZg\nuTnQyuOqPuHbnN83d/2l1NSYKCbHt24o"  },  "type": "saml",  "name": "ping saml example"}
 ```
 
 ```json

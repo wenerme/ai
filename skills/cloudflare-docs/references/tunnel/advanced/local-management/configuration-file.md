@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tunnel/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,25 +27,8 @@ In the absence of a configuration file, `cloudflared` will proxy outbound traffi
 If you are exposing local services to the Internet, you can assign a public hostname to each service:
 
 ```
-
-tunnel: 6ff42ae2-765d-4adf-8112-31c55c1551ef
-
-credentials-file: /root/.cloudflared/6ff42ae2-765d-4adf-8112-31c55c1551ef.json
-
-
-ingress:
-
-  - hostname: gitlab.widgetcorp.tech
-
-    service: http://localhost:80
-
-  - hostname: gitlab-ssh.widgetcorp.tech
-
-    service: ssh://localhost:22
-
-  - service: http_status:404
-
-
+tunnel: 6ff42ae2-765d-4adf-8112-31c55c1551efcredentials-file: /root/.cloudflared/6ff42ae2-765d-4adf-8112-31c55c1551ef.json
+ingress:  - hostname: gitlab.widgetcorp.tech    service: http://localhost:80  - hostname: gitlab-ssh.widgetcorp.tech    service: ssh://localhost:22  - service: http_status:404
 ```
 
 Configuration files that contain ingress rules must always include a catch-all rule that concludes the file. In this example, `cloudflared` will respond with a `404` status code when the request does not match any of the previous hostnames.
@@ -59,39 +42,8 @@ The last ingress rule must be a catch-all rule that matches all traffic.
 Here is an example configuration file that specifies several rules:
 
 ```
-
-tunnel: 6ff42ae2-765d-4adf-8112-31c55c1551ef
-
-credentials-file: /root/.cloudflared/6ff42ae2-765d-4adf-8112-31c55c1551ef.json
-
-
-ingress:
-
-  # Rules map traffic from a hostname to a local service:
-
-  - hostname: example.com
-
-    service: https://localhost:8000
-
-  # Rules can match the request's path to a regular expression:
-
-  - hostname: static.example.com
-
-    path: \.(jpg|png|css|js)$
-
-    service: https://localhost:8001
-
-  # Rules can match the request's hostname to a wildcard character:
-
-  - hostname: "*.example.com"
-
-    service: https://localhost:8002
-
-  # An example of a catch-all rule:
-
-  - service: https://localhost:8003
-
-
+tunnel: 6ff42ae2-765d-4adf-8112-31c55c1551efcredentials-file: /root/.cloudflared/6ff42ae2-765d-4adf-8112-31c55c1551ef.json
+ingress:  # Rules map traffic from a hostname to a local service:  - hostname: example.com    service: https://localhost:8000  # Rules can match the request's path to a regular expression:  - hostname: static.example.com    path: \.(jpg|png|css|js)$    service: https://localhost:8001  # Rules can match the request's hostname to a wildcard character:  - hostname: "*.example.com"    service: https://localhost:8002  # An example of a catch-all rule:  - service: https://localhost:8003
 ```
 
 #### Wildcards
@@ -105,37 +57,8 @@ You can also enter regular expressions for the `path` key. For example, if `host
 In addition to HTTP, `cloudflared` supports protocols like SSH, RDP, arbitrary TCP services, and Unix sockets. You can also route traffic to the built-in `hello_world` test server or respond to traffic with an HTTP status. For a full list of supported service types, refer to [Protocols for published applications](https://developers.cloudflare.com/tunnel/routing/#supported-protocols).
 
 ```
-
-tunnel: 6ff42ae2-765d-4adf-8112-31c55c1551ef
-
-credentials-file: /root/.cloudflared/6ff42ae2-765d-4adf-8112-31c55c1551ef.json
-
-
-ingress:
-
-  # Example of a request over TCP:
-
-  - hostname: example.com
-
-    service: tcp://localhost:8000
-
-  # Example of an HTTP request over a Unix socket:
-
-  - hostname: staging.example.com
-
-    service: unix:/home/production/echo.sock
-
-  # Example of a request mapping to the Hello World test server:
-
-  - hostname: test.example.com
-
-    service: hello_world
-
-  # Example of a rule responding to traffic with an HTTP status:
-
-  - service: http_status:404
-
-
+tunnel: 6ff42ae2-765d-4adf-8112-31c55c1551efcredentials-file: /root/.cloudflared/6ff42ae2-765d-4adf-8112-31c55c1551ef.json
+ingress:  # Example of a request over TCP:  - hostname: example.com    service: tcp://localhost:8000  # Example of an HTTP request over a Unix socket:  - hostname: staging.example.com    service: unix:/home/production/echo.sock  # Example of a request mapping to the Hello World test server:  - hostname: test.example.com    service: hello_world  # Example of a rule responding to traffic with an HTTP status:  - service: http_status:404
 ```
 
 ### Origin configuration
@@ -145,47 +68,8 @@ If you need to proxy traffic to multiple origins within one instance of `cloudfl
 In the following example, the top-level configuration `connectTimeout: 30s` sets a 30-second connection timeout for all services within that instance of `cloudflared`. The ingress rule for `service: localhost:8002` then configures an exception to the top-level configuration by setting `connectTimeout` for that service at `10s`. The 30-second connection timeout still applies to all other services.
 
 ```
-
-tunnel: 6ff42ae2-765d-4adf-8112-31c55c1551ef
-
-credentials-file: /root/.cloudflared/6ff42ae2-765d-4adf-8112-31c55c1551ef.json
-
-originRequest: # Top-level configuration
-
-  connectTimeout: 30s
-
-
-ingress:
-
-  # The localhost:8000 service inherits all root-level configuration.
-
-  # In other words, it will use a connectTimeout of 30 seconds.
-
-  - hostname: example.com
-
-    service: localhost:8000
-
-  - hostname: example2.com
-
-    service: localhost:8001
-
-  # The localhost:8002 service overrides some root-level config.
-
-  - service: localhost:8002
-
-    originRequest:
-
-      connectTimeout: 10s
-
-      disableChunkedEncoding: true
-
-  # Some built-in services such as `http_status` do not use any configuration.
-
-  # The service below will simply respond with HTTP 404.
-
-  - service: http_status:404
-
-
+tunnel: 6ff42ae2-765d-4adf-8112-31c55c1551efcredentials-file: /root/.cloudflared/6ff42ae2-765d-4adf-8112-31c55c1551ef.jsonoriginRequest: # Top-level configuration  connectTimeout: 30s
+ingress:  # The localhost:8000 service inherits all root-level configuration.  # In other words, it will use a connectTimeout of 30 seconds.  - hostname: example.com    service: localhost:8000  - hostname: example2.com    service: localhost:8001  # The localhost:8002 service overrides some root-level config.  - service: localhost:8002    originRequest:      connectTimeout: 10s      disableChunkedEncoding: true  # Some built-in services such as `http_status` do not use any configuration.  # The service below will simply respond with HTTP 404.  - service: http_status:404
 ```
 
 ### Validate ingress rules
@@ -195,10 +79,7 @@ To validate the ingress rules in your configuration file, run:
 Terminal window
 
 ```
-
 cloudflared tunnel ingress validate
-
-
 ```
 
 This will ensure that the set of ingress rules specified in your config file is valid.
@@ -210,23 +91,11 @@ To verify that `cloudflared` will proxy the right traffic to the right local ser
 Terminal window
 
 ```
-
 cloudflared tunnel ingress rule https://foo.example.com
-
-
 ```
 
 ```
-
-Using rules from /usr/local/etc/cloudflared/config.yml
-
-Matched rule #3
-
-  hostname: *.example.com
-
-  service: https://localhost:8000
-
-
+Using rules from /usr/local/etc/cloudflared/config.ymlMatched rule #3  hostname: *.example.com  service: https://localhost:8000
 ```
 
 ## Update a configuration file

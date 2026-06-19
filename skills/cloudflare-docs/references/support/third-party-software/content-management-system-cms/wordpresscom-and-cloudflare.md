@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/support/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -118,21 +118,11 @@ In a terminal, use the following cURL. The header `'accept: text/html'` is impor
 Terminal window
 
 ```
-
 curl -svo /dev/null -A "CF" 'https://example.com/' -H 'accept: text/html' 2>&1 | grep 'cf-cache-status\|cf-edge\|cf-apo-via'
-
-
 ```
 
 ```
-
-< cf-cache-status: HIT
-
-< cf-apo-via: cache
-
-< cf-edge-cache: cache,platform=wordpress
-
-
+< cf-cache-status: HIT< cf-apo-via: cache< cf-edge-cache: cache,platform=wordpress
 ```
 
 As always, `cf-cache-status` displays if the asset hit the cache or was considered dynamic and served from the origin.

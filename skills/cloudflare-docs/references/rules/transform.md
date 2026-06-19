@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -55,11 +55,11 @@ Cloudflare Transform Rules are available to all customers. Support for regular e
 
 This table outlines the Transform Rules features available with each customer plan:
 
-| Free                   | Pro | Business | Enterprise |     |
-| ---------------------- | --- | -------- | ---------- | --- |
-| Availability           | Yes | Yes      | Yes        | Yes |
-| Active Transform Rules | 10  | 25       | 50         | 300 |
-| Regex support          | No  | No       | Yes        | Yes |
+|                        | Free | Pro | Business | Enterprise |
+| ---------------------- | ---- | --- | -------- | ---------- |
+| Availability           | Yes  | Yes | Yes      | Yes        |
+| Active Transform Rules | 10   | 25  | 50       | 300        |
+| Regex support          | No   | No  | Yes      | Yes        |
 
 A Cloudflare user must have the [Firewall role](https://developers.cloudflare.com/fundamentals/manage-members/roles/) or one of the Administrator roles to access Transform Rules.
 

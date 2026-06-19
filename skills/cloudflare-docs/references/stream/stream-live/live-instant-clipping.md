@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,10 +33,7 @@ To help users replay and seek recent content, request a preview manifest by addi
 Preview Manifest
 
 ```
-
 https://customer-<CODE>.cloudflarestream.com/<VIDEO_ID||INPUT_ID>/manifest/video.m3u8?duration=5m
-
-
 ```
 
 * `duration` string duration of the preview, up to 5 minutes as either a number of seconds ("30s") or minutes ("3m")
@@ -55,78 +52,13 @@ Reading headers when loading a manifest requires adjusting how players handle th
 JavaScript
 
 ```
-
-let currentPreviewStart;
-
-let currentPreviewVideoID;
-
-
-// Override the pLoader (playlist loader) to read the manifest headers:
-
-class pLoader extends Hls.DefaultConfig.loader {
-
-  constructor(config) {
-
-    super(config);
-
-    var load = this.load.bind(this);
-
-    this.load = function (context, config, callbacks) {
-
-      if (context.type == 'manifest') {
-
-        var onSuccess = callbacks.onSuccess;
-
-        // copy the existing onSuccess handler to fire it later.
-
-
-        callbacks.onSuccess = function (response, stats, context, networkDetails) {
-
-          // The fourth argument here is undocumented in HLS.js but contains
-
-          // the response object for the manifest fetch, which gives us headers:
-
-
-          currentPreviewStart =
-
-            parseFloat(networkDetails.getResponseHeader('preview-start-seconds'));
-
-          // Save the start time of the preview manifest
-
-
-          currentPreviewVideoID =
-
-            networkDetails.getResponseHeader('stream-media-id');
-
-          // Save the video ID in case the preview was loaded with an input ID
-
-
-          onSuccess(response, stats, context);
-
-          // And fire the existing success handler.
-
-        };
-
-      }
-
-      load(context, config, callbacks);
-
-    };
-
-  }
-
-}
-
-
-// Specify the new loader class when setting up HLS
-
-const hls = new Hls({
-
-  pLoader: pLoader,
-
-});
-
-
+let currentPreviewStart;let currentPreviewVideoID;
+// Override the pLoader (playlist loader) to read the manifest headers:class pLoader extends Hls.DefaultConfig.loader {  constructor(config) {    super(config);    var load = this.load.bind(this);    this.load = function (context, config, callbacks) {      if (context.type == 'manifest') {        var onSuccess = callbacks.onSuccess;        // copy the existing onSuccess handler to fire it later.
+        callbacks.onSuccess = function (response, stats, context, networkDetails) {          // The fourth argument here is undocumented in HLS.js but contains          // the response object for the manifest fetch, which gives us headers:
+          currentPreviewStart =            parseFloat(networkDetails.getResponseHeader('preview-start-seconds'));          // Save the start time of the preview manifest
+          currentPreviewVideoID =            networkDetails.getResponseHeader('stream-media-id');          // Save the video ID in case the preview was loaded with an input ID
+          onSuccess(response, stats, context);          // And fire the existing success handler.        };      }      load(context, config, callbacks);    };  }}
+// Specify the new loader class when setting up HLSconst hls = new Hls({  pLoader: pLoader,});
 ```
 
 ## Clip manifest
@@ -136,10 +68,7 @@ To play a clip of a live stream or recording, request a clip manifest with a dur
 Clip Manifest
 
 ```
-
 https://customer-<CODE>.cloudflarestream.com/<VIDEO_ID>/manifest/clip.m3u8?time=600s&duration=30s
-
-
 ```
 
 * `time` string start time of the clip in seconds, from the start of the live stream or recording
@@ -154,10 +83,7 @@ An MP4 of the clip can also be generated dynamically to be saved and shared on o
 Clip MP4 Download
 
 ```
-
 https://customer-<CODE>.cloudflarestream.com/<VIDEO_ID>/clip.mp4?time=600s&duration=30s&filename=clip.mp4
-
-
 ```
 
 * `time` string start time of the clip in seconds, from the start of the live stream or recording (example: "500s")

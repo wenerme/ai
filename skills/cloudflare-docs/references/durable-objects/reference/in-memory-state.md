@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,44 +21,9 @@ A common pattern is to initialize a Durable Object from [persistent storage](htt
 JavaScript
 
 ```
-
 import { DurableObject } from "cloudflare:workers";
-
-
-export class Counter extends DurableObject {
-
-  constructor(ctx, env) {
-
-    super(ctx, env);
-
-    // `blockConcurrencyWhile()` ensures no requests are delivered until
-
-    // initialization completes.
-
-    this.ctx.blockConcurrencyWhile(async () => {
-
-      let stored = await this.ctx.storage.get("value");
-
-      // After initialization, future reads do not need to access storage.
-
-      this.value = stored || 0;
-
-    });
-
-  }
-
-
-  // Handle HTTP requests from clients.
-
-  async fetch(request) {
-
-    // use this.value rather than storage
-
-  }
-
-}
-
-
+export class Counter extends DurableObject {  constructor(ctx, env) {    super(ctx, env);    // `blockConcurrencyWhile()` ensures no requests are delivered until    // initialization completes.    this.ctx.blockConcurrencyWhile(async () => {      let stored = await this.ctx.storage.get("value");      // After initialization, future reads do not need to access storage.      this.value = stored || 0;    });  }
+  // Handle HTTP requests from clients.  async fetch(request) {    // use this.value rather than storage  }}
 ```
 
 A given instance of a Durable Object may share global memory with other instances defined in the same Worker code.

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,14 +29,7 @@ The same origin rule can have different types of overrides. Refer to [Configurin
 The full syntax of the `action_parameters` field for overriding the HTTP `Host` header is the following:
 
 ```
-
-"action_parameters": {
-
-  "host_header": "<HOST_HEADER_VALUE>"
-
-}
-
-
+"action_parameters": {  "host_header": "<HOST_HEADER_VALUE>"}
 ```
 
 ## SNI override parameters
@@ -44,18 +37,7 @@ The full syntax of the `action_parameters` field for overriding the HTTP `Host` 
 The full syntax of the `action_parameters` field for overriding the SNI value of incoming requests is the following:
 
 ```
-
-"action_parameters": {
-
-  "sni": {
-
-    "value": "<SNI_VALUE>"
-
-  }
-
-}
-
-
+"action_parameters": {  "sni": {    "value": "<SNI_VALUE>"  }}
 ```
 
 ## DNS record override and destination port override parameters
@@ -63,20 +45,7 @@ The full syntax of the `action_parameters` field for overriding the SNI value of
 The full syntax of the `action_parameters` field for overriding both the hostname and the destination port of incoming requests is the following:
 
 ```
-
-"action_parameters": {
-
-  "origin": {
-
-    "host": "<HOSTNAME>",
-
-    "port": <PORT>
-
-  }
-
-}
-
-
+"action_parameters": {  "origin": {    "host": "<HOSTNAME>",    "port": <PORT>  }}
 ```
 
 If you are only overriding the hostname or the port, omit the `port` or `host` parameter, respectively.
@@ -86,20 +55,7 @@ If you are only overriding the hostname or the port, omit the `port` or `host` p
 The same origin rule can have different types of overrides. For example, a single origin rule can perform an HTTP `Host` header override and a destination port override. The syntax of such a rule would be the following:
 
 ```
-
-"action_parameters": {
-
-  "host_header": "<HOST_HEADER_VALUE>",
-
-  "origin": {
-
-    "port": <PORT>
-
-  }
-
-}
-
-
+"action_parameters": {  "host_header": "<HOST_HEADER_VALUE>",  "origin": {    "port": <PORT>  }}
 ```
 
 ```json

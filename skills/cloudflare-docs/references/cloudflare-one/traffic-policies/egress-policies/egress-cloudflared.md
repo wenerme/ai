@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -115,8 +115,8 @@ In your WARP [device profile](https://developers.cloudflare.com/cloudflare-one/t
 
 * **Exclude mode**: Delete `100.64.0.0/10` from your Split Tunnels list. We recommend [adding back the IP ranges](https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/#split-tunnel-configuration) that are not explicitly used for Cloudflare One services. This reduces the risk of conflicts with existing private network configurations that may use the CGNAT address space.
 * **Include mode**: Add Split Tunnel entries for the following IP addresses:  
-   * **IPv4**: `100.80.0.0/16`  
-   * **IPv6**: `2606:4700:0cf1:4000::/64`
+  * **IPv4**: `100.80.0.0/16`
+  * **IPv6**: `2606:4700:0cf1:4000::/64`
 
 ### Private network IPs
 
@@ -126,14 +126,16 @@ Your private network's CIDR block should also route through the WARP tunnel. For
 
 You can build [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) to filter HTTPS traffic to your public hostname on port `443`. For example, to restrict `app.bank.com` so that only certain users or groups can access it through your AWS egress IP, create two policies: one to allow authorized users, and one to block everyone else.
 
-1. Allow company employees:  
-| Selector   | Operator      | Value           | Logic | Action |  
-| ---------- | ------------- | --------------- | ----- | ------ |  
-| SNI        | in            | app.bank.com    | And   | Allow  |  
+1. Allow company employees:
+
+| Selector   | Operator      | Value           | Logic | Action |
+| ---------- | ------------- | --------------- | ----- | ------ |
+| SNI        | in            | app.bank.com    | And   | Allow  |
 | User Email | matches regex | .\*@example.com |       |        |
-2. Block everyone else on port `443`:  
-| Selector | Operator | Value        | Action |  
-| -------- | -------- | ------------ | ------ |  
+2. Block everyone else on port `443`:
+
+| Selector | Operator | Value        | Action |
+| -------- | -------- | ------------ | ------ |
 | SNI      | in       | app.bank.com | Block  |
 
 Gateway does not support hostname-based filtering for traffic on non-`443` ports. To block traffic to `app.bank.com` on all ports, use the [Destination IP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/#destination-ip) selector and specify the public IP range of `app.bank.com`.

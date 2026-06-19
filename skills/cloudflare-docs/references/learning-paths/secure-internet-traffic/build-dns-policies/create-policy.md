@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,17 +18,18 @@ You can filter DNS traffic based on query or response parameters (such as domain
 
 To create a new DNS policy:
 
-* [ Dashboard ](#tab-panel-9155)
-* [ API ](#tab-panel-9156)
-* [ Terraform ](#tab-panel-9157)
+* [ Dashboard ](#tab-panel-9231)
+* [ API ](#tab-panel-9232)
+* [ Terraform ](#tab-panel-9233)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
 2. In the **DNS** tab, select **Add a policy**.
 3. Name the policy.
 4. Under **Traffic**, build a logical expression that defines the traffic you want to allow or block.
 5. Choose an **Action** to take when traffic matches the logical expression. For example, we recommend adding a policy to block all [security categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#security-categories):  
-| Selector            | Operator | Value                | Action |  
-| ------------------- | -------- | -------------------- | ------ |  
+
+| Selector            | Operator | Value                | Action |
+| ------------------- | -------- | -------------------- | ------ |
 | Security Categories | in       | _All security risks_ | Block  |
 6. Select **Create policy**.
 
@@ -39,79 +40,13 @@ To create a new DNS policy using cURL:
 Create a Zero Trust Gateway rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "All-DNS-SecurityCategories-Blocklist",
-
-    "description": "Block known security risks based on Cloudflare'\''s threat intelligence",
-
-    "precedence": 0,
-
-    "enabled": true,
-
-    "action": "block",
-
-    "filters": [
-
-        "dns"
-
-    ],
-
-    "traffic": "any(dns.security_category[*] in {68 178 80 83 176 175 117 131 134 151 153})",
-
-    "rule_settings": {
-
-        "block_page_enabled": true,
-
-        "block_reason": "This domain was blocked due to being classified as a security risk to your organization"
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "All-DNS-SecurityCategories-Blocklist",    "description": "Block known security risks based on Cloudflare'\''s threat intelligence",    "precedence": 0,    "enabled": true,    "action": "block",    "filters": [        "dns"    ],    "traffic": "any(dns.security_category[*] in {68 178 80 83 176 175 117 131 134 151 153})",    "rule_settings": {        "block_page_enabled": true,        "block_reason": "This domain was blocked due to being classified as a security risk to your organization"    }  }'
 ```
 
 To create a new DNS policy using **Terraform**:
 
 ```
-
-resource "cloudflare_zero_trust_gateway_policy" "security_risks_dns_policy" {
-
-  account_id  = var.cloudflare_account_id
-
-  name        = "All-DNS-SecurityCategories-Blocklist"
-
-  description = "Block known security risks based on Cloudflare's threat intelligence"
-
-  precedence  = 0
-
-  enabled     = true
-
-  action      = "block"
-
-  filters     = ["dns"]
-
-  traffic     = "any(dns.security_category[*] in {68 178 80 83 176 175 117 131 134 151 153})"
-
-  rule_settings {
-
-      block_page_enabled = true
-
-      block_page_reason = "This domain was blocked due to being classified as a security risk to your organization"
-
-    }
-
-}
-
-
+resource "cloudflare_zero_trust_gateway_policy" "security_risks_dns_policy" {  account_id  = var.cloudflare_account_id  name        = "All-DNS-SecurityCategories-Blocklist"  description = "Block known security risks based on Cloudflare's threat intelligence"  precedence  = 0  enabled     = true  action      = "block"  filters     = ["dns"]  traffic     = "any(dns.security_category[*] in {68 178 80 83 176 175 117 131 134 151 153})"  rule_settings {      block_page_enabled = true      block_page_reason = "This domain was blocked due to being classified as a security risk to your organization"    }}
 ```
 
 ```json

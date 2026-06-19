@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -24,7 +24,7 @@ This feed contains entries for all Cloudflare products in the changelog: [ Subsc
 
 ### Area-specific feeds
 
-Cloudflare also offers RSS feeds scoped to specific product areas or products in the [changelog](https://developers.cloudflare.com/changelog/).
+Cloudflare also offers RSS feeds scoped to specific product areas or products in the [changelog](https://developers.cloudflare.com/changelog/). 
 
 #### Application performance
 
@@ -66,11 +66,11 @@ Included products
 
 DDoS ruleset feeds 
 
-For [DDoS Protection](https://developers.cloudflare.com/ddos-protection/) updates to managed rulesets, please refer to their independent feeds:
+For [DDoS Protection](https://developers.cloudflare.com/ddos-protection/) updates to managed rulesets, please refer to their independent feeds: 
 
-* [Network-layer DDoS managed ruleset](https://developers.cloudflare.com/ddos-protection/change-log/network/)  
+* [Network-layer DDoS managed ruleset ](https://developers.cloudflare.com/ddos-protection/change-log/network/)  
 [ Subscribe to RSS ](https://developers.cloudflare.com/ddos-protection/change-log/network/index.xml)
-* [HTTP DDoS managed ruleset](https://developers.cloudflare.com/ddos-protection/change-log/http/)  
+* [HTTP DDoS managed ruleset ](https://developers.cloudflare.com/ddos-protection/change-log/http/)  
 [ Subscribe to RSS ](https://developers.cloudflare.com/ddos-protection/change-log/http/index.xml)
 
 #### Cloudflare One
@@ -160,7 +160,7 @@ Included products
 
 API deprecations feed 
 
-Cloudflare also maintains a separate [API deprecations page.](https://developers.cloudflare.com/fundamentals/api/reference/deprecations/)   
+Cloudflare also maintains a separate [API deprecations page. ](https://developers.cloudflare.com/fundamentals/api/reference/deprecations/)   
 [ Subscribe to RSS ](https://developers.cloudflare.com/fundamentals/api/reference/deprecations/index.xml) 
 
 #### Developer platform

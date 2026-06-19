@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -49,42 +49,37 @@ The template project contains the following files and directories:
 
 ## Customize the `wrangler.jsonc` file:
 
-* Change the `name` property to the name of your project:  
-   * [  wrangler.jsonc ](#tab-panel-11503)  
-   * [  wrangler.toml ](#tab-panel-11504)  
+* Change the `name` property to the name of your project:
+
+  * [  wrangler.jsonc ](#tab-panel-11520)
+  * [  wrangler.toml ](#tab-panel-11521)  
 JSONC  
 ```  
-{  
-  "$schema": "./node_modules/wrangler/config-schema.json",  
-  "name": "my-site"  
-}  
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-site"}  
 ```  
 TOML  
 ```  
-"$schema" = "./node_modules/wrangler/config-schema.json"  
-name = "my-site"  
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-site"  
 ```
-* Consider updating`compatibility_date` to today's date to get access to the most recent Workers features:  
-   * [  wrangler.jsonc ](#tab-panel-11505)  
-   * [  wrangler.toml ](#tab-panel-11506)  
+* Consider updating`compatibility_date` to today's date to get access to the most recent Workers features:
+
+  * [  wrangler.jsonc ](#tab-panel-11522)
+  * [  wrangler.toml ](#tab-panel-11523)  
 JSONC  
 ```  
-{  
-  "compatibility_date": "yyyy-mm-dd"  
-}  
+{  "compatibility_date": "yyyy-mm-dd"}  
 ```  
 TOML  
 ```  
 compatibility_date = "yyyy-mm-dd"  
 ```
-* Deploy your site to a [custom domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) that you own and have already attached as a Cloudflare zone:  
-   * [  wrangler.jsonc ](#tab-panel-11507)  
-   * [  wrangler.toml ](#tab-panel-11508)  
+* Deploy your site to a [custom domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) that you own and have already attached as a Cloudflare zone:
+
+  * [  wrangler.jsonc ](#tab-panel-11524)
+  * [  wrangler.toml ](#tab-panel-11525)  
 JSONC  
 ```  
-{  
-  "route": "https://example.com/*"  
-}  
+{  "route": "https://example.com/*"}  
 ```  
 TOML  
 ```  

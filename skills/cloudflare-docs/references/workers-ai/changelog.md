@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,25 +30,25 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 * We are refreshing the Workers AI model catalog to make room for newer releases. Please update your apps to remove references to the models listed below before the deprecation date. Refer to the [changelog](https://developers.cloudflare.com/changelog/post/2026-05-08-planned-model-deprecations/) for full details.
 * We recommend migrating to newer models such as [@cf/zai-org/glm-4.7-flash](https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/) for fast tool-calling, [@cf/google/gemma-4-26b-a4b-it](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/) for an efficient open model, or [@cf/moonshotai/kimi-k2.6](https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/) for a capable tool-calling and vision model.
 * On May 30, 2026, requests to [@cf/moonshotai/kimi-k2.5](https://developers.cloudflare.com/workers-ai/models/kimi-k2.5/) will be automatically aliased to [@cf/moonshotai/kimi-k2.6](https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/), which has a higher price. The deprecation date was extended from May 10, 2026\. Please review the [K2.6 pricing and model capabilities](https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/) prior to May 30, 2026.
-* On May 30, 2026, the following models will be deprecated:  
-   * `@cf/moonshotai/kimi-k2.5` \--> `@cf/moonshotai/kimi-k2.6`  
-   * `@hf/meta-llama/meta-llama-3-8b-instruct`  
-   * `@cf/meta/llama-3-8b-instruct`  
-   * `@cf/meta/llama-3-8b-instruct-awq`  
-   * `@cf/meta/llama-3.1-8b-instruct`  
-   * `@cf/meta/llama-3.1-8b-instruct-awq`  
-   * `@cf/meta/llama-3.1-70b-instruct`  
-   * `@cf/meta/llama-2-7b-chat-int8`  
-   * `@cf/meta/llama-2-7b-chat-fp16`  
-   * `@cf/mistral/mistral-7b-instruct-v0.1`  
-   * `@hf/mistral/mistral-7b-instruct-v0.2`  
-   * `@hf/google/gemma-7b-it`  
-   * `@cf/google/gemma-3-12b-it`  
-   * `@hf/nousresearch/hermes-2-pro-mistral-7b`  
-   * `@cf/microsoft/phi-2`  
-   * `@cf/defog/sqlcoder-7b-2`  
-   * `@cf/unum/uform-gen2-qwen-500m`  
-   * `@cf/facebook/bart-large-cnn`
+* On May 30, 2026, the following models will be deprecated:
+  * `@cf/moonshotai/kimi-k2.5` \--> `@cf/moonshotai/kimi-k2.6`
+  * `@hf/meta-llama/meta-llama-3-8b-instruct`
+  * `@cf/meta/llama-3-8b-instruct`
+  * `@cf/meta/llama-3-8b-instruct-awq`
+  * `@cf/meta/llama-3.1-8b-instruct`
+  * `@cf/meta/llama-3.1-8b-instruct-awq`
+  * `@cf/meta/llama-3.1-70b-instruct`
+  * `@cf/meta/llama-2-7b-chat-int8`
+  * `@cf/meta/llama-2-7b-chat-fp16`
+  * `@cf/mistral/mistral-7b-instruct-v0.1`
+  * `@hf/mistral/mistral-7b-instruct-v0.2`
+  * `@hf/google/gemma-7b-it`
+  * `@cf/google/gemma-3-12b-it`
+  * `@hf/nousresearch/hermes-2-pro-mistral-7b`
+  * `@cf/microsoft/phi-2`
+  * `@cf/defog/sqlcoder-7b-2`
+  * `@cf/unum/uform-gen2-qwen-500m`
+  * `@cf/facebook/bart-large-cnn`
 * The `-fast` and `-lora` variants of models will remain active. LoRA models may be deprecated in the future, and we will communicate when new LoRA models come online to give users time to train new LoRAs before we deprecate old ones.
 
 ## 2026-04-20
@@ -153,26 +153,26 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 **Model Catalog updates (types, EmbeddingGemma, model deprecation)**
 * Workers AI types got updated in the upcoming wrangler release, please use `npm i -D wrangler@latest` to update your packages.
 * EmbeddingGemma model accuracy has been improved, we recommend re-indexing data to take advantage of the improved accuracy
-* Some older Workers AI models are being deprecated on October 1st, 2025\. We reccommend you use the newer models such as [Llama 4](https://developers.cloudflare.com/workers-ai/models/llama-4-scout-17b-16e-instruct/) and [gpt-oss](https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/). The following models are being deprecated:  
-   * @hf/thebloke/zephyr-7b-beta-awq  
-   * @hf/thebloke/mistral-7b-instruct-v0.1-awq  
-   * @hf/thebloke/llama-2-13b-chat-awq  
-   * @hf/thebloke/openhermes-2.5-mistral-7b-awq  
-   * @hf/thebloke/neural-chat-7b-v3-1-awq  
-   * @hf/thebloke/llamaguard-7b-awq  
-   * @hf/thebloke/deepseek-coder-6.7b-base-awq  
-   * @hf/thebloke/deepseek-coder-6.7b-instruct-awq  
-   * @cf/deepseek-ai/deepseek-math-7b-instruct  
-   * @cf/openchat/openchat-3.5-0106  
-   * @cf/tiiuae/falcon-7b-instruct  
-   * @cf/thebloke/discolm-german-7b-v1-awq  
-   * @cf/qwen/qwen1.5-0.5b-chat  
-   * @cf/qwen/qwen1.5-7b-chat-awq  
-   * @cf/qwen/qwen1.5-14b-chat-awq  
-   * @cf/tinyllama/tinyllama-1.1b-chat-v1.0  
-   * @cf/qwen/qwen1.5-1.8b-chat  
-   * @hf/nexusflow/starling-lm-7b-beta  
-   * @cf/fblgit/una-cybertron-7b-v2-bf16
+* Some older Workers AI models are being deprecated on October 1st, 2025\. We reccommend you use the newer models such as [Llama 4](https://developers.cloudflare.com/workers-ai/models/llama-4-scout-17b-16e-instruct/) and [gpt-oss](https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/). The following models are being deprecated:
+  * @hf/thebloke/zephyr-7b-beta-awq
+  * @hf/thebloke/mistral-7b-instruct-v0.1-awq
+  * @hf/thebloke/llama-2-13b-chat-awq
+  * @hf/thebloke/openhermes-2.5-mistral-7b-awq
+  * @hf/thebloke/neural-chat-7b-v3-1-awq
+  * @hf/thebloke/llamaguard-7b-awq
+  * @hf/thebloke/deepseek-coder-6.7b-base-awq
+  * @hf/thebloke/deepseek-coder-6.7b-instruct-awq
+  * @cf/deepseek-ai/deepseek-math-7b-instruct
+  * @cf/openchat/openchat-3.5-0106
+  * @cf/tiiuae/falcon-7b-instruct
+  * @cf/thebloke/discolm-german-7b-v1-awq
+  * @cf/qwen/qwen1.5-0.5b-chat
+  * @cf/qwen/qwen1.5-7b-chat-awq
+  * @cf/qwen/qwen1.5-14b-chat-awq
+  * @cf/tinyllama/tinyllama-1.1b-chat-v1.0
+  * @cf/qwen/qwen1.5-1.8b-chat
+  * @hf/nexusflow/starling-lm-7b-beta
+  * @cf/fblgit/una-cybertron-7b-v2-bf16
 
 ## 2025-09-05
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,258 +22,56 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11609)
-* [  TypeScript ](#tab-panel-11610)
-* [  Python ](#tab-panel-11611)
-* [  Hono ](#tab-panel-11612)
+* [  JavaScript ](#tab-panel-11626)
+* [  TypeScript ](#tab-panel-11627)
+* [  Python ](#tab-panel-11628)
+* [  Hono ](#tab-panel-11629)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    const cacheUrl = new URL(request.url);
-
-
-    // Construct the cache key from the cache URL
-
-    const cacheKey = new Request(cacheUrl.toString(), request);
-
-    const cache = caches.default;
-
-
-    // Check whether the value is already available in the cache
-
-    // if not, you will need to fetch it from origin, and store it in the cache
-
-    let response = await cache.match(cacheKey);
-
-
-    if (!response) {
-
-      console.log(
-
-        `Response for request url: ${request.url} not present in cache. Fetching and caching request.`,
-
-      );
-
-      // If not in cache, get it from origin
-
-      response = await fetch(request);
-
-
-      // Must use Response constructor to inherit all of response's fields
-
-      response = new Response(response.body, response);
-
-
-      // Cache API respects Cache-Control headers. Setting s-maxage to 10
-
-      // will limit the response to be in cache for 10 seconds max
-
-
-      // Any changes made to the response here will be reflected in the cached value
-
-      response.headers.append("Cache-Control", "s-maxage=10");
-
-
-      ctx.waitUntil(cache.put(cacheKey, response.clone()));
-
-    } else {
-
-      console.log(`Cache hit for: ${request.url}.`);
-
-    }
-
-    return response;
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    const cacheUrl = new URL(request.url);
+    // Construct the cache key from the cache URL    const cacheKey = new Request(cacheUrl.toString(), request);    const cache = caches.default;
+    // Check whether the value is already available in the cache    // if not, you will need to fetch it from origin, and store it in the cache    let response = await cache.match(cacheKey);
+    if (!response) {      console.log(        `Response for request url: ${request.url} not present in cache. Fetching and caching request.`,      );      // If not in cache, get it from origin      response = await fetch(request);
+      // Must use Response constructor to inherit all of response's fields      response = new Response(response.body, response);
+      // Cache API respects Cache-Control headers. Setting s-maxage to 10      // will limit the response to be in cache for 10 seconds max
+      // Any changes made to the response here will be reflected in the cached value      response.headers.append("Cache-Control", "s-maxage=10");
+      ctx.waitUntil(cache.put(cacheKey, response.clone()));    } else {      console.log(`Cache hit for: ${request.url}.`);    }    return response;  },};
 ```
 
 TypeScript
 
 ```
-
-interface Env {}
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    const cacheUrl = new URL(request.url);
-
-
-    // Construct the cache key from the cache URL
-
-    const cacheKey = new Request(cacheUrl.toString(), request);
-
-    const cache = caches.default;
-
-
-    // Check whether the value is already available in the cache
-
-    // if not, you will need to fetch it from origin, and store it in the cache
-
-    let response = await cache.match(cacheKey);
-
-
-    if (!response) {
-
-      console.log(
-
-        `Response for request url: ${request.url} not present in cache. Fetching and caching request.`,
-
-      );
-
-      // If not in cache, get it from origin
-
-      response = await fetch(request);
-
-
-      // Must use Response constructor to inherit all of response's fields
-
-      response = new Response(response.body, response);
-
-
-      // Cache API respects Cache-Control headers. Setting s-maxage to 10
-
-      // will limit the response to be in cache for 10 seconds max
-
-
-      // Any changes made to the response here will be reflected in the cached value
-
-      response.headers.append("Cache-Control", "s-maxage=10");
-
-
-      ctx.waitUntil(cache.put(cacheKey, response.clone()));
-
-    } else {
-
-      console.log(`Cache hit for: ${request.url}.`);
-
-    }
-
-    return response;
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+interface Env {}export default {  async fetch(request, env, ctx): Promise<Response> {    const cacheUrl = new URL(request.url);
+    // Construct the cache key from the cache URL    const cacheKey = new Request(cacheUrl.toString(), request);    const cache = caches.default;
+    // Check whether the value is already available in the cache    // if not, you will need to fetch it from origin, and store it in the cache    let response = await cache.match(cacheKey);
+    if (!response) {      console.log(        `Response for request url: ${request.url} not present in cache. Fetching and caching request.`,      );      // If not in cache, get it from origin      response = await fetch(request);
+      // Must use Response constructor to inherit all of response's fields      response = new Response(response.body, response);
+      // Cache API respects Cache-Control headers. Setting s-maxage to 10      // will limit the response to be in cache for 10 seconds max
+      // Any changes made to the response here will be reflected in the cached value      response.headers.append("Cache-Control", "s-maxage=10");
+      ctx.waitUntil(cache.put(cacheKey, response.clone()));    } else {      console.log(`Cache hit for: ${request.url}.`);    }    return response;  },} satisfies ExportedHandler<Env>;
 ```
 
 Python
 
 ```
-
-from workers import WorkerEntrypoint
-
-from pyodide.ffi import create_proxy
-
-from js import Response, Request, URL, caches, fetch
-
-
-class Default(WorkerEntrypoint):
-
-    async def fetch(self, request):
-
-        cache_url = request.url
-
-
-        # Construct the cache key from the cache URL
-
-        cache_key = Request.new(cache_url, request)
-
-        cache = caches.default
-
-
-        # Check whether the value is already available in the cache
-
-        # if not, you will need to fetch it from origin, and store it in the cache
-
-        response = await cache.match(cache_key)
-
-
-        if response is None:
-
-            print(f"Response for request url: {request.url} not present in cache. Fetching and caching request.")
-
-            # If not in cache, get it from origin
-
-            response = await fetch(request)
-
-            # Must use Response constructor to inherit all of response's fields
-
-            response = Response.new(response.body, response)
-
-
-            # Cache API respects Cache-Control headers. Setting s-max-age to 10
-
-            # will limit the response to be in cache for 10 seconds s-maxage
-
-            # Any changes made to the response here will be reflected in the cached value
-
-            response.headers.append("Cache-Control", "s-maxage=10")
-
-            self.ctx.waitUntil(create_proxy(cache.put(cache_key, response.clone())))
-
-        else:
-
-            print(f"Cache hit for: {request.url}.")
-
-        return response
-
-
+from workers import WorkerEntrypointfrom pyodide.ffi import create_proxyfrom js import Response, Request, URL, caches, fetch
+class Default(WorkerEntrypoint):    async def fetch(self, request):        cache_url = request.url
+        # Construct the cache key from the cache URL        cache_key = Request.new(cache_url, request)        cache = caches.default
+        # Check whether the value is already available in the cache        # if not, you will need to fetch it from origin, and store it in the cache        response = await cache.match(cache_key)
+        if response is None:            print(f"Response for request url: {request.url} not present in cache. Fetching and caching request.")            # If not in cache, get it from origin            response = await fetch(request)            # Must use Response constructor to inherit all of response's fields            response = Response.new(response.body, response)
+            # Cache API respects Cache-Control headers. Setting s-max-age to 10            # will limit the response to be in cache for 10 seconds s-maxage            # Any changes made to the response here will be reflected in the cached value            response.headers.append("Cache-Control", "s-maxage=10")            self.ctx.waitUntil(create_proxy(cache.put(cache_key, response.clone())))        else:            print(f"Cache hit for: {request.url}.")        return response
 ```
 
 TypeScript
 
 ```
-
-import { Hono } from "hono";
-
-import { cache } from "hono/cache";
-
-
+import { Hono } from "hono";import { cache } from "hono/cache";
 const app = new Hono();
-
-
-// We leverage hono built-in cache helper here
-
-app.get(
-
-  "*",
-
-  cache({
-
-    cacheName: "my-cache",
-
-    cacheControl: "max-age=3600", // 1 hour
-
-  }),
-
-);
-
-
-// Add a route to handle the request if it's not in cache
-
-app.get("*", (c) => {
-
-  return c.text("Hello from Hono!");
-
-});
-
-
+// We leverage hono built-in cache helper hereapp.get(  "*",  cache({    cacheName: "my-cache",    cacheControl: "max-age=3600", // 1 hour  }),);
+// Add a route to handle the request if it's not in cacheapp.get("*", (c) => {  return c.text("Hello from Hono!");});
 export default app;
-
-
 ```
 
 ```json

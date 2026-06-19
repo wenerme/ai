@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -106,66 +106,12 @@ API configuration object name: `"edge_ttl"`.
 | respect\_origin     | Use cache-control header if present, use default [Cloudflare caching behavior](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/) if not. |
 | override\_origin    | Ignore cache-control header and use this TTL.                                                                                                                    |
 | bypass\_by\_default | Use cache control-header if present, bypass cache if not.                                                                                                        |
+|                     |                                                                                                                                                                  |
 
 API configuration example
 
 ```
-
-"action_parameters": {
-
-    "cache": true,
-
-    "edge_ttl": {
-
-        "status_code_ttl": [
-
-            {
-
-                "status_code_range": {
-
-                    "to": 299
-
-                },
-
-                "value": 86400
-
-            },
-
-            {
-
-                "status_code_range": {
-
-                    "from": 300,
-
-                    "to": 499
-
-                },
-
-                "value": 0  // no-cache
-
-            },
-
-            {
-
-                "status_code_range": {
-
-                    "from": 500
-
-                },
-
-                "value": -1  // no-store
-
-            }
-
-        ],
-
-        "mode": "respect_origin"
-
-    }
-
-}
-
-
+"action_parameters": {    "cache": true,    "edge_ttl": {        "status_code_ttl": [            {                "status_code_range": {                    "to": 299                },                "value": 86400            },            {                "status_code_range": {                    "from": 300,                    "to": 499                },                "value": 0  // no-cache            },            {                "status_code_range": {                    "from": 500                },                "value": -1  // no-store            }        ],        "mode": "respect_origin"    }}
 ```
 
 Refer to [Create a cache rule via API](https://developers.cloudflare.com/cache/how-to/cache-rules/create-api/#example-requests) for complete API examples.
@@ -187,22 +133,7 @@ API values for the `"default"` property (integer): values available depend on yo
 API configuration example
 
 ```
-
-"action_parameters": {
-
-  "cache": true,
-
-  "browser_ttl" : {
-
-    "mode": "override_origin",
-
-    "default": 1000
-
-  }
-
-}
-
-
+"action_parameters": {  "cache": true,  "browser_ttl" : {    "mode": "override_origin",    "default": 1000  }}
 ```
 
 Refer to [Create a cache rule via API](https://developers.cloudflare.com/cache/how-to/cache-rules/create-api/#example-requests) for complete API examples.
@@ -218,14 +149,15 @@ Define the request components used to define a [custom Cache Key](https://develo
 Enterprise customers have these additional options for custom Cache Keys:
 
 * In the **Query string** section, you can select **All query string parameters**, **All query string parameters except** and enter an exception, **No query parameters except** and enter the parameters, or **Ignore query string** (also available for Pay-as-you-go customers).
-* In the **Headers** section, you can specify header names along with their values. For custom headers, values are optional; however, for the following restricted headers, you must include one to three specific values:  
-   * `accept`  
-   * `accept-charset`  
-   * `accept-encoding`  
-   * `accept-datetime`  
-   * `accept-language`  
-   * `referer`  
-   * `user-agent`  
+* In the **Headers** section, you can specify header names along with their values. For custom headers, values are optional; however, for the following restricted headers, you must include one to three specific values:
+
+  * `accept`
+  * `accept-charset`
+  * `accept-encoding`
+  * `accept-datetime`
+  * `accept-language`
+  * `referer`
+  * `user-agent`  
 To check for a header's presence without including its value, use the **Check presence of** option. You can also choose whether to **Include origin header**.
 * In the **Cookie** section, you can include cookie names and their values, and check for the presence of another cookie.
 * In the **Host** section, you can select **Use original host** and **Resolved host**. In the **User** section, you can select **Device type**, **Country**, and **Language**. Using **Resolved host** means the Cache Key will contain whatever hostname was used to resolve the origin IP which can be different depending on whether the [resolve override](https://developers.cloudflare.com/rules/origin-rules/features/#dns-record) feature is on or not.
@@ -243,90 +175,7 @@ API values: `"ignore_query_strings_order"`, `"cache_deception_armor"`, `"cache_b
 API configuration example
 
 ```
-
-"action_parameters": {
-
-  "cache": true,
-
-  "cache_key": {
-
-    "ignore_query_strings_order": true,
-
-    "cache_deception_armor": true,
-
-    "custom_key": {
-
-      "query_string": {
-
-        "include": [
-
-          "*"
-
-        ]
-
-      },
-
-      "header": {
-
-        "include": [
-
-          "header1"
-
-        ],
-
-        "check_presence": [
-
-          "header_1"
-
-        ],
-
-        "contains": {
-
-          "accept-encoding": ["br", "zstd"]
-
-        }
-
-      },
-
-      "cookie": {
-
-        "include": [
-
-          "cookieName1"
-
-        ],
-
-        "check_presence": [
-
-          "cookie_1"
-
-        ]
-
-      },
-
-      "user": {
-
-        "device_type": true,
-
-        "geo": true,
-
-        "lang": true
-
-      },
-
-      "host": {
-
-        "resolved": false
-
-      }
-
-    }
-
-  }
-
-}
-
-
+"action_parameters": {  "cache": true,  "cache_key": {    "ignore_query_strings_order": true,    "cache_deception_armor": true,    "custom_key": {      "query_string": {        "include": [          "*"        ]      },      "header": {        "include": [          "header1"        ],        "check_presence": [          "header_1"        ],        "contains": {          "accept-encoding": ["br", "zstd"]        }      },      "cookie": {        "include": [          "cookieName1"        ],        "check_presence": [          "cookie_1"        ]      },      "user": {        "device_type": true,        "geo": true,        "lang": true      },      "host": {        "resolved": false      }    }  }}
 ```
 
 Refer to [Create a cache rule via API](https://developers.cloudflare.com/cache/how-to/cache-rules/create-api/#example-requests) for complete API examples.
@@ -350,22 +199,7 @@ API property name for enabling Cache Reserve: `"eligible"` (boolean).
 API configuration example
 
 ```
-
-"action_parameters": {
-
-  "cache": true
-
-  "cache_reserve": {
-
-    "eligible": true,
-
-    "minimum_file_size": 100000
-
-  }
-
-}
-
-
+"action_parameters": {  "cache": true  "cache_reserve": {    "eligible": true,    "minimum_file_size": 100000  }}
 ```
 
 Note
@@ -389,18 +223,7 @@ API configuration property name: `"additional_cacheable_ports"` (array of intege
 API configuration example
 
 ```
-
-"action_parameters": {
-
-    "cache": true
-
-    "additional_cacheable_ports": [8443, 8080]
-
-  }
-
-}
-
-
+"action_parameters": {    "cache": true    "additional_cacheable_ports": [8443, 8080]  }}
 ```
 
 Refer to [Create a cache rule via API](https://developers.cloudflare.com/cache/how-to/cache-rules/create-api/#example-requests) for complete API examples.
@@ -416,16 +239,7 @@ API configuration property name: `"read_timeout"` (integer).
 API configuration example
 
 ```
-
-"action_parameters": {
-
-  "cache": true,
-
-  "read_timeout": 900
-
-}
-
-
+"action_parameters": {  "cache": true,  "read_timeout": 900}
 ```
 
 Refer to [Create a cache rule via API](https://developers.cloudflare.com/cache/how-to/cache-rules/create-api/#example-requests) for complete API examples.
@@ -441,20 +255,7 @@ API configuration property name: `"serve_stale"` \> `"disable_stale_while_updati
 API configuration example
 
 ```
-
-"action_parameters": {
-
-  "cache": true,
-
-  "serve_stale": {
-
-    "disable_stale_while_updating": true
-
-  }
-
-}
-
-
+"action_parameters": {  "cache": true,  "serve_stale": {    "disable_stale_while_updating": true  }}
 ```
 
 Refer to [Create a cache rule via API](https://developers.cloudflare.com/cache/how-to/cache-rules/create-api/#example-requests) for complete API examples.
@@ -470,16 +271,7 @@ API configuration property name: `"respect_strong_etags"` (boolean).
 API configuration example
 
 ```
-
-"action_parameters": {
-
-  "cache": true,
-
-  "respect_strong_etags": true
-
-}
-
-
+"action_parameters": {  "cache": true,  "respect_strong_etags": true}
 ```
 
 Refer to [Create a cache rule via API](https://developers.cloudflare.com/cache/how-to/cache-rules/create-api/#example-requests) for complete API examples.
@@ -495,16 +287,7 @@ API configuration property name: `"origin_error_page_passthru"` (boolean).
 API configuration example
 
 ```
-
-"action_parameters": {
-
-  "cache": true,
-
-  "origin_error_page_passthru": true
-
-}
-
-
+"action_parameters": {  "cache": true,  "origin_error_page_passthru": true}
 ```
 
 Refer to [Create a cache rule via API](https://developers.cloudflare.com/cache/how-to/cache-rules/create-api/#example-requests) for complete API examples.
@@ -520,16 +303,7 @@ API configuration property name: `"origin_cache_control"` (boolean).
 API configuration example
 
 ```
-
-"action_parameters": {
-
-  "cache": true
-
-  "origin_cache_control": true
-
-}
-
-
+"action_parameters": {  "cache": true  "origin_cache_control": true}
 ```
 
 Refer to [Create a cache rule via API](https://developers.cloudflare.com/cache/how-to/cache-rules/create-api/#example-requests) for complete API examples.

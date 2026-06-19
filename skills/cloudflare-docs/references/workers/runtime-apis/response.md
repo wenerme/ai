@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,83 +21,90 @@ The `Response` interface represents an HTTP response and is part of the Fetch AP
 JavaScript
 
 ```
-
 let response = new Response(body, init);
-
-
 ```
 
 ### Parameters
 
-* `body` optional  
-   * An object that defines the body text for the response. Can be `null` or any one of the following types:  
-         * BufferSource  
-         * FormData  
-         * ReadableStream  
-         * URLSearchParams  
-         * USVString
-* `init` optional  
-   * An `options` object that contains custom settings to apply to the response.
+* `body` optional
+
+  * An object that defines the body text for the response. Can be `null` or any one of the following types:
+
+    * BufferSource
+    * FormData
+    * ReadableStream
+    * URLSearchParams
+    * USVString
+* `init` optional
+
+  * An `options` object that contains custom settings to apply to the response.
 
 Valid options for the `options` object include:
 
 * `cf` any | null  
-   * An object that contains Cloudflare-specific information. This object is not part of the Fetch API standard and is only available in Cloudflare Workers. This field is only used by consumers of the Response for informational purposes and does not have any impact on Workers behavior.
+  * An object that contains Cloudflare-specific information. This object is not part of the Fetch API standard and is only available in Cloudflare Workers. This field is only used by consumers of the Response for informational purposes and does not have any impact on Workers behavior.
 * `encodeBody` string  
-   * Workers have to compress data according to the `content-encoding` header when transmitting, to serve data that is already compressed, this property has to be set to `"manual"`, otherwise the default is `"automatic"`.
+  * Workers have to compress data according to the `content-encoding` header when transmitting, to serve data that is already compressed, this property has to be set to `"manual"`, otherwise the default is `"automatic"`.
 * `headers` Headers | ByteString  
-   * Any headers to add to your response that are contained within a [Headers](https://developers.cloudflare.com/workers/runtime-apis/request/#parameters) object or object literal of [ByteString ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/String) key-value pairs.
+  * Any headers to add to your response that are contained within a [Headers](https://developers.cloudflare.com/workers/runtime-apis/request/#parameters) object or object literal of [ByteString ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/String) key-value pairs.
 * `status` int  
-   * The status code for the response, such as `200`.
+  * The status code for the response, such as `200`.
 * `statusText` string  
-   * The status message associated with the status code, such as, `OK`.
+  * The status message associated with the status code, such as, `OK`.
 * `webSocket` WebSocket | null  
-   * This is present in successful WebSocket handshake responses. For example, if a client sends a WebSocket upgrade request to an origin and a Worker intercepts the request and then forwards it to the origin and the origin replies with a successful WebSocket upgrade response, the Worker sees `response.webSocket`. This establishes a WebSocket connection proxied through a Worker. Note that you cannot intercept data flowing over a WebSocket connection.
+  * This is present in successful WebSocket handshake responses. For example, if a client sends a WebSocket upgrade request to an origin and a Worker intercepts the request and then forwards it to the origin and the origin replies with a successful WebSocket upgrade response, the Worker sees `response.webSocket`. This establishes a WebSocket connection proxied through a Worker. Note that you cannot intercept data flowing over a WebSocket connection.
 
 ## Properties
 
 * `response.body` Readable Stream  
-   * A getter to get the body contents.
+  * A getter to get the body contents.
 * `response.bodyUsed` boolean  
-   * A boolean indicating if the body was used in the response.
+  * A boolean indicating if the body was used in the response.
 * `response.headers` Headers  
-   * The headers for the response.
+  * The headers for the response.
 * `response.ok` boolean  
-   * A boolean indicating if the response was successful (status in the range `200`\-`299`).
+  * A boolean indicating if the response was successful (status in the range `200`\-`299`).
 * `response.redirected` boolean  
-   * A boolean indicating if the response is the result of a redirect. If so, its URL list has more than one entry.
+  * A boolean indicating if the response is the result of a redirect. If so, its URL list has more than one entry.
 * `response.status` int  
-   * The status code of the response (for example, `200` to indicate success).
+  * The status code of the response (for example, `200` to indicate success).
 * `response.statusText` string  
-   * The status message corresponding to the status code (for example, `OK` for `200`).
+  * The status message corresponding to the status code (for example, `OK` for `200`).
 * `response.url` string  
-   * The URL of the response. The value is the final URL obtained after any redirects.
+  * The URL of the response. The value is the final URL obtained after any redirects.
 * `response.webSocket` WebSocket?  
-   * This is present in successful WebSocket handshake responses. For example, if a client sends a WebSocket upgrade request to an origin and a Worker intercepts the request and then forwards it to the origin and the origin replies with a successful WebSocket upgrade response, the Worker sees `response.webSocket`. This establishes a WebSocket connection proxied through a Worker. Note that you cannot intercept data flowing over a WebSocket connection.
+  * This is present in successful WebSocket handshake responses. For example, if a client sends a WebSocket upgrade request to an origin and a Worker intercepts the request and then forwards it to the origin and the origin replies with a successful WebSocket upgrade response, the Worker sees `response.webSocket`. This establishes a WebSocket connection proxied through a Worker. Note that you cannot intercept data flowing over a WebSocket connection.
 
 ## Methods
 
 ### Instance methods
 
-* `clone()` : Response  
-   * Creates a clone of a [Response](#response) object.
-* `json()` : Response  
-   * Creates a new response with a JSON-serialized payload.
-* `redirect()` : Response  
-   * Creates a new response with a different URL.
+* `clone()` : Response
+
+  * Creates a clone of a [Response](#response) object.
+* `json()` : Response
+
+  * Creates a new response with a JSON-serialized payload.
+* `redirect()` : Response
+
+  * Creates a new response with a different URL.
 
 ### Additional instance methods
 
 `Response` implements the [Body ↗](https://developer.mozilla.org/en-US/docs/Web/API/Fetch%5FAPI/Using%5FFetch#body) mixin of the [Fetch API ↗](https://developer.mozilla.org/en-US/docs/Web/API/Fetch%5FAPI), and therefore `Response` instances additionally have the following methods available:
 
-* `arrayBuffer()` : Promise<ArrayBuffer>  
-   * Takes a [Response](#response) stream, reads it to completion, and returns a promise that resolves with an [ArrayBuffer ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/ArrayBuffer).
-* `formData()` : Promise<FormData>  
-   * Takes a [Response](#response) stream, reads it to completion, and returns a promise that resolves with a [FormData ↗](https://developer.mozilla.org/en-US/docs/Web/API/FormData) object.
-* `json()` : Promise<JSON>  
-   * Takes a [Response](#response) stream, reads it to completion, and returns a promise that resolves with the result of parsing the body text as [JSON ↗](https://developer.mozilla.org/en-US/docs/Web/).
-* `text()` : Promise<USVString>  
-   * Takes a [Response](#response) stream, reads it to completion, and returns a promise that resolves with a [USVString ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/String) (text).
+* `arrayBuffer()` : Promise<ArrayBuffer>
+
+  * Takes a [Response](#response) stream, reads it to completion, and returns a promise that resolves with an [ArrayBuffer ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/ArrayBuffer).
+* `formData()` : Promise<FormData>
+
+  * Takes a [Response](#response) stream, reads it to completion, and returns a promise that resolves with a [FormData ↗](https://developer.mozilla.org/en-US/docs/Web/API/FormData) object.
+* `json()` : Promise<JSON>
+
+  * Takes a [Response](#response) stream, reads it to completion, and returns a promise that resolves with the result of parsing the body text as [JSON ↗](https://developer.mozilla.org/en-US/docs/Web/).
+* `text()` : Promise<USVString>
+
+  * Takes a [Response](#response) stream, reads it to completion, and returns a promise that resolves with a [USVString ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/String) (text).
 
 ### Set the `Content-Length` header
 
@@ -108,22 +115,9 @@ A `FixedLengthStream` is an identity `TransformStream` that permits only a fixed
 JavaScript
 
 ```
-
   const { writable, readable } = new FixedLengthStream(11);
-
-
-  const enc = new TextEncoder();
-
-  const writer = writable.getWriter();
-
-  writer.write(enc.encode("hello world"));
-
-  writer.end();
-
-
+  const enc = new TextEncoder();  const writer = writable.getWriter();  writer.write(enc.encode("hello world"));  writer.end();
   return new Response(readable);
-
-
 ```
 
 Using any other type of `ReadableStream` as the body of a response will result in chunked encoding being used.

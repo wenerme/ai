@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,14 +29,14 @@ In the Resolve insights page, if you choose to update a configuration based on t
 The following insights follow a different yet straightforward workflow to be resolved:
 
 * **Minimum Version of TLS 1.2 not enforced**: To resolve this insight:  
-   * Go to **SSL/TLS** \> **Edge Certificates**.  
-   * Select **TLS 1.2**.
+  * Go to **SSL/TLS** \> **Edge Certificates**.
+  * Select **TLS 1.2**.
 * **Domains without "Always use HTTPS"**: To resolve this insight:  
-   * Go to **SSL/TLS** \> **Edge Certificates**.  
-   * Select **Always Use HTTPS**.
+  * Go to **SSL/TLS** \> **Edge Certificates**.
+  * Select **Always Use HTTPS**.
 * **Turn on JavaScript Detections**: To resolve this insight:  
-   * Go to **Security** \> **Bots** \> Select **Configure Bot Management**.  
-   * Select **JavaScript Detections**.
+  * Go to **Security** \> **Bots** \> Select **Configure Bot Management**.
+  * Select **JavaScript Detections**.
 
 ## Export insights
 

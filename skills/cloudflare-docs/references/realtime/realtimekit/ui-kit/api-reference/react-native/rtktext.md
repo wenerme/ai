@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,41 +29,15 @@ Themed text component that applies the design system's colors, font family, and 
 ### Basic Usage
 
 ```
-
 import { RtkText } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkText>Hello World</RtkText>;
-
-}
-
-
+function MyComponent() {  return <RtkText>Hello World</RtkText>;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkText } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkText size="lg" fontWeight="bold" onBrand={true}>
-
-      Meeting Title
-
-    </RtkText>
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkText size="lg" fontWeight="bold" onBrand={true}>      Meeting Title    </RtkText>  );}
 ```
 
 ```json

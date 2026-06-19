@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,85 +35,20 @@ OpenAI's text-to-speech model optimized for real-time use with low latency.
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'openai/tts-1',
-
-  {
-
-    response_format: 'mp3',
-
-    speed: 1,
-
-    text: 'Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.',
-
-    voice: 'alloy',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'openai/tts-1',  {    response_format: 'mp3',    speed: 1,    text: 'Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.',    voice: 'alloy',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "openai/tts-1",
-
-  "input": {
-
-    "response_format": "mp3",
-
-    "speed": 1,
-
-    "text": "Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.",
-
-    "voice": "alloy"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "openai/tts-1",  "input": {    "response_format": "mp3",    "speed": 1,    "text": "Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.",    "voice": "alloy"  }}'
 ```
 
 * [ Output ](#tab-panel-1442)
 * [ Raw response ](#tab-panel-1443)
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__tts-1/simple-speech.mp3"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__tts-1/simple-speech.mp3"  },  "state": "Completed"}
 ```
 
 ## Examples
@@ -126,85 +61,20 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'openai/tts-1',
-
-  {
-
-    response_format: 'mp3',
-
-    speed: 1,
-
-    text: 'The weather today is sunny with a high of 72 degrees. Perfect for a walk in the park.',
-
-    voice: 'nova',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'openai/tts-1',  {    response_format: 'mp3',    speed: 1,    text: 'The weather today is sunny with a high of 72 degrees. Perfect for a walk in the park.',    voice: 'nova',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "openai/tts-1",
-
-  "input": {
-
-    "response_format": "mp3",
-
-    "speed": 1,
-
-    "text": "The weather today is sunny with a high of 72 degrees. Perfect for a walk in the park.",
-
-    "voice": "nova"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "openai/tts-1",  "input": {    "response_format": "mp3",    "speed": 1,    "text": "The weather today is sunny with a high of 72 degrees. Perfect for a walk in the park.",    "voice": "nova"  }}'
 ```
 
 * [ Output ](#tab-panel-1444)
 * [ Raw response ](#tab-panel-1445)
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__tts-1/different-voice.mp3"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__tts-1/different-voice.mp3"  },  "state": "Completed"}
 ```
 
 **Narration**  — Slower narration style with the Onyx voice 
@@ -215,85 +85,20 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'openai/tts-1',
-
-  {
-
-    response_format: 'mp3',
-
-    speed: 0.85,
-
-    text: 'In the beginning, the universe was a singularity of infinite density. Then, in a fraction of a second, it expanded into everything we know today.',
-
-    voice: 'onyx',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'openai/tts-1',  {    response_format: 'mp3',    speed: 0.85,    text: 'In the beginning, the universe was a singularity of infinite density. Then, in a fraction of a second, it expanded into everything we know today.',    voice: 'onyx',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "openai/tts-1",
-
-  "input": {
-
-    "response_format": "mp3",
-
-    "speed": 0.85,
-
-    "text": "In the beginning, the universe was a singularity of infinite density. Then, in a fraction of a second, it expanded into everything we know today.",
-
-    "voice": "onyx"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "openai/tts-1",  "input": {    "response_format": "mp3",    "speed": 0.85,    "text": "In the beginning, the universe was a singularity of infinite density. Then, in a fraction of a second, it expanded into everything we know today.",    "voice": "onyx"  }}'
 ```
 
 * [ Output ](#tab-panel-1448)
 * [ Raw response ](#tab-panel-1449)
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__tts-1/narration.mp3"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__tts-1/narration.mp3"  },  "state": "Completed"}
 ```
 
 **Echo Voice**  — Use the Echo voice for a deeper tone 
@@ -304,85 +109,20 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'openai/tts-1',
-
-  {
-
-    response_format: 'mp3',
-
-    speed: 1,
-
-    text: 'Welcome back to the podcast. Today we are going to talk about the future of artificial intelligence and its impact on creative work.',
-
-    voice: 'echo',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'openai/tts-1',  {    response_format: 'mp3',    speed: 1,    text: 'Welcome back to the podcast. Today we are going to talk about the future of artificial intelligence and its impact on creative work.',    voice: 'echo',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "openai/tts-1",
-
-  "input": {
-
-    "response_format": "mp3",
-
-    "speed": 1,
-
-    "text": "Welcome back to the podcast. Today we are going to talk about the future of artificial intelligence and its impact on creative work.",
-
-    "voice": "echo"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "openai/tts-1",  "input": {    "response_format": "mp3",    "speed": 1,    "text": "Welcome back to the podcast. Today we are going to talk about the future of artificial intelligence and its impact on creative work.",    "voice": "echo"  }}'
 ```
 
 * [ Output ](#tab-panel-1452)
 * [ Raw response ](#tab-panel-1453)
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__tts-1/echo-voice.mp3"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__tts-1/echo-voice.mp3"  },  "state": "Completed"}
 ```
 
 **Fast Playback**  — Speed up speech for quick listening 
@@ -393,85 +133,20 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'openai/tts-1',
-
-  {
-
-    response_format: 'mp3',
-
-    speed: 1.5,
-
-    text: 'This is a fast-paced summary of the key findings from the quarterly report. Revenue is up fifteen percent, user growth exceeded expectations, and infrastructure costs remain stable.',
-
-    voice: 'shimmer',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'openai/tts-1',  {    response_format: 'mp3',    speed: 1.5,    text: 'This is a fast-paced summary of the key findings from the quarterly report. Revenue is up fifteen percent, user growth exceeded expectations, and infrastructure costs remain stable.',    voice: 'shimmer',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "openai/tts-1",
-
-  "input": {
-
-    "response_format": "mp3",
-
-    "speed": 1.5,
-
-    "text": "This is a fast-paced summary of the key findings from the quarterly report. Revenue is up fifteen percent, user growth exceeded expectations, and infrastructure costs remain stable.",
-
-    "voice": "shimmer"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "openai/tts-1",  "input": {    "response_format": "mp3",    "speed": 1.5,    "text": "This is a fast-paced summary of the key findings from the quarterly report. Revenue is up fifteen percent, user growth exceeded expectations, and infrastructure costs remain stable.",    "voice": "shimmer"  }}'
 ```
 
 * [ Output ](#tab-panel-1456)
 * [ Raw response ](#tab-panel-1457)
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__tts-1/fast-playback.mp3"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__tts-1/fast-playback.mp3"  },  "state": "Completed"}
 ```
 
 ## Parameters
@@ -503,7 +178,7 @@ audio
 
 Input [ ](https://developers.cloudflare.com/ai/models/openai/tts-1/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/tts-1/schema-input.json "Download") 
 
-Output [ ](https://developers.cloudflare.com/ai/models/openai/tts-1/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/tts-1/schema-output.json "Download") 
+Output [ ](https://developers.cloudflare.com/ai/models/openai/tts-1/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/tts-1/schema-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/tts-1/#page","headline":"TTS-1 (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"OpenAI's text-to-speech model optimized for real-time use with low latency.","url":"https://developers.cloudflare.com/ai/models/openai/tts-1/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

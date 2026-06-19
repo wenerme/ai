@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/radar/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,123 +21,13 @@ In the following example, we will query the [BGP hijack events API](https://deve
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/radar/bgp/hijacks/events?invlovedAsn=64512&format=json&per_page=10" \
-
---header "Authorization: Bearer <API_TOKEN>"
-
-
+curl "https://api.cloudflare.com/client/v4/radar/bgp/hijacks/events?invlovedAsn=64512&format=json&per_page=10" \--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 The result shows the most recent 10 BGP hijack events that affects `AS64512`.
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "result": {
-
-    "asn_info": [
-
-      {
-
-        "asn": 64512,
-
-        "org_name": "XXXXX",
-
-        "country_code": "XX"
-
-      },
-
-      ...
-
-    ],
-
-    "events": [
-
-      {
-
-        "duration": 0,
-
-        "event_type": 0,
-
-        "hijack_msgs_count": 1,
-
-        "hijacker_asn": 64512,
-
-        "id": 1234,
-
-        "is_stale": false,
-
-        "max_hijack_ts": "2023-04-27T14:01:55.952",
-
-        "max_msg_ts": "2023-04-27T14:01:55.952",
-
-        "min_hijack_ts": "2023-04-27T14:01:55.952",
-
-        "on_going_count": 1,
-
-        "peer_asns": [
-
-          8455
-
-        ],
-
-        "peer_ip_count": 1,
-
-        "prefixes": [
-
-          "192.0.2.0/24"
-
-        ],
-
-        "tags": [
-
-          {
-
-            "name": "irr_new_origin_invalid",
-
-            "score": 4
-
-          },
-
-          {
-
-            "name": "irr_old_origin_valid",
-
-            "score": 0
-
-          },
-
-          ...
-
-        ],
-
-        "victim_asns": [
-
-          64513
-
-        ],
-
-        "confidence_score": 4
-
-      },
-
-    ],
-
-    "total_monitors": 163
-
-  },
-
-  ...
-
-}
-
-
+{  "success": true,  "errors": [],  "result": {    "asn_info": [      {        "asn": 64512,        "org_name": "XXXXX",        "country_code": "XX"      },      ...    ],    "events": [      {        "duration": 0,        "event_type": 0,        "hijack_msgs_count": 1,        "hijacker_asn": 64512,        "id": 1234,        "is_stale": false,        "max_hijack_ts": "2023-04-27T14:01:55.952",        "max_msg_ts": "2023-04-27T14:01:55.952",        "min_hijack_ts": "2023-04-27T14:01:55.952",        "on_going_count": 1,        "peer_asns": [          8455        ],        "peer_ip_count": 1,        "prefixes": [          "192.0.2.0/24"        ],        "tags": [          {            "name": "irr_new_origin_invalid",            "score": 4          },          {            "name": "irr_old_origin_valid",            "score": 0          },          ...        ],        "victim_asns": [          64513        ],        "confidence_score": 4      },    ],    "total_monitors": 163  },  ...}
 ```
 
 In the response we can learn about the following information about each event:
@@ -147,24 +37,19 @@ In the response we can learn about the following information about each event:
 * `prefixes`: the affected prefixes.
 * `hijacker_asn` and `victim_asns`: the potential hijacker ASN and victim ASNs.
 * `confidence_score`: a quantitative score describing how confident the system is for this event being a hijack:  
-   * 1-3: low confidence.  
-   * 4-7: medium confidence.  
-   * 8-above: high confidence.
+  * 1-3: low confidence.
+  * 4-7: medium confidence.
+  * 8-above: high confidence.
 * `tags`: the evidence collected for the events. Each `tag` is also associated with a score that affects the overall confidence score:  
-   * a positive score indicates that the event is _more likely_ to be a hijack.  
-   * a negative score indicates that the event is _less likely_ to be a hijack.
+  * a positive score indicates that the event is _more likely_ to be a hijack.
+  * a negative score indicates that the event is _less likely_ to be a hijack.
 
 Users can further filter out low-confidence events by attaching a `minConfidence=8` parameter, which will return only events with a `confidence_score` of `8` or higher.
 
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/radar/bgp/hijacks/events?invlovedAsn=64512&format=json&per_page=10&minConfidence=8" \
-
---header "Authorization: Bearer <API_TOKEN>"
-
-
+curl "https://api.cloudflare.com/client/v4/radar/bgp/hijacks/events?invlovedAsn=64512&format=json&per_page=10&minConfidence=8" \--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 ## Search BGP route leak events
@@ -176,91 +61,13 @@ In the following example, we will query the [BGP route leak events API](https://
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/radar/bgp/leaks/events?invlovedAsn=64512&format=json&per_page=10" \
-
---header "Authorization: Bearer <API_TOKEN>"
-
-
+curl "https://api.cloudflare.com/client/v4/radar/bgp/leaks/events?invlovedAsn=64512&format=json&per_page=10" \--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 The result shows the most recent 10 BGP route leak events that affects `AS64512`.
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "result": {
-
-    "asn_info": [
-
-      {
-
-        "asn": 64512,
-
-        "org_name": "XXXXXXX",
-
-        "country_code": "XX"
-
-      },
-
-      ...
-
-    ],
-
-    "events": [
-
-      {
-
-        "detected_ts": "2023-04-21T23:10:06",
-
-        "finished": false,
-
-        "id": 1234,
-
-        "leak_asn": 64512,
-
-        "leak_count": 14,
-
-        "leak_seg": [
-
-          64514,
-
-          64512,
-
-          64513
-
-        ],
-
-        "leak_type": 1,
-
-        "max_ts": "2023-04-21T23:10:56",
-
-        "min_ts": "2023-04-21T23:09:46",
-
-        "origin_count": 1,
-
-        "peer_count": 13,
-
-        "prefix_count": 1
-
-      },
-
-      ...
-
-    ]
-
-  },
-
-  ...
-
-}
-
-
+{  "success": true,  "errors": [],  "result": {    "asn_info": [      {        "asn": 64512,        "org_name": "XXXXXXX",        "country_code": "XX"      },      ...    ],    "events": [      {        "detected_ts": "2023-04-21T23:10:06",        "finished": false,        "id": 1234,        "leak_asn": 64512,        "leak_count": 14,        "leak_seg": [          64514,          64512,          64513        ],        "leak_type": 1,        "max_ts": "2023-04-21T23:10:56",        "min_ts": "2023-04-21T23:09:46",        "origin_count": 1,        "peer_count": 13,        "prefix_count": 1      },      ...    ]  },  ...}
 ```
 
 In the response we can learn about the following information about each event:
@@ -317,113 +124,42 @@ To start developing your Worker, `cd` into your new project directory:
 Terminal window
 
 ```
-
 cd hijack-alerts
-
-
 ```
 
 In your Wrangler file, change the default checking frequency (once per hour) to what you like. Here is an example of configuring the workers to run the script five minutes.
 
-* [  wrangler.jsonc ](#tab-panel-9934)
-* [  wrangler.toml ](#tab-panel-9935)
+* [  wrangler.jsonc ](#tab-panel-10010)
+* [  wrangler.toml ](#tab-panel-10011)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "hijack-alerts",
-
-  "main": "src/index.js",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "triggers": {
-
-    "crons": [
-
-      "*/5 * * * *"
-
-    ]
-
-  }
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "hijack-alerts",  "main": "src/index.js",  // Set this to today's date  "compatibility_date": "2026-06-18",  "triggers": {    "crons": [      "*/5 * * * *"    ]  }}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "hijack-alerts"
-
-main = "src/index.js"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[triggers]
-
-crons = [ "*/5 * * * *" ]
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "hijack-alerts"main = "src/index.js"# Set this to today's datecompatibility_date = "2026-06-18"
+[triggers]crons = [ "*/5 * * * *" ]
 ```
 
 In this example, we will also need to use Cloudflare KV to save the latest checked event IDs which allows us to know what events are new. Once you have created a KV, you can head back to the `wrangler.jsonc` file and add the following sections:
 
-* [  wrangler.jsonc ](#tab-panel-9932)
-* [  wrangler.toml ](#tab-panel-9933)
+* [  wrangler.jsonc ](#tab-panel-10008)
+* [  wrangler.toml ](#tab-panel-10009)
 
 JSONC
 
 ```
-
-{
-
-  "kv_namespaces": [
-
-    {
-
-      "binding": "HIJACKS_KV",
-
-      "id": "KV_ID_FOR_PRODUCTION",
-
-      "preview_id": "TEMPORARY_KV_FOR_DEV_ENVIRONMENT"
-
-    }
-
-  ]
-
-}
-
-
+{  "kv_namespaces": [    {      "binding": "HIJACKS_KV",      "id": "KV_ID_FOR_PRODUCTION",      "preview_id": "TEMPORARY_KV_FOR_DEV_ENVIRONMENT"    }  ]}
 ```
 
 TOML
 
 ```
-
-[[kv_namespaces]]
-
-binding = "HIJACKS_KV"
-
-id = "KV_ID_FOR_PRODUCTION"
-
-preview_id = "TEMPORARY_KV_FOR_DEV_ENVIRONMENT"
-
-
+[[kv_namespaces]]binding = "HIJACKS_KV"id = "KV_ID_FOR_PRODUCTION"preview_id = "TEMPORARY_KV_FOR_DEV_ENVIRONMENT"
 ```
 
 ### Fetch for newly detected BGP hijacks
@@ -435,41 +171,8 @@ The following `apiFetch(env, paramsStr)` handles taking in a request parameters 
 JavaScript
 
 ```
-
-async function apiFetch(env, paramsStr) {
-
-  const config = {
-
-    headers: {
-
-      Authorization: `Bearer ${env.CF_API_TOKEN}`,
-
-    },
-
-  };
-
-  const res = await fetch(
-
-    `https://api.cloudflare.com/client/v4/radar/bgp/hijacks/events?${paramsStr}`,
-
-    config,
-
-  );
-
-
-  if (!res.ok) {
-
-    console.log(JSON.stringify(res));
-
-    return null;
-
-  }
-
-  return await res.json();
-
-}
-
-
+async function apiFetch(env, paramsStr) {  const config = {    headers: {      Authorization: `Bearer ${env.CF_API_TOKEN}`,    },  };  const res = await fetch(    `https://api.cloudflare.com/client/v4/radar/bgp/hijacks/events?${paramsStr}`,    config,  );
+  if (!res.ok) {    console.log(JSON.stringify(res));    return null;  }  return await res.json();}
 ```
 
 The `env` parameter is passed in from the caller, and we do not need to worry about construct it. The `paramsStr` is a string variable that holds the query parameters in a query URL.
@@ -479,18 +182,7 @@ Now in our main cron trigger function, we will need to construct the query param
 JavaScript
 
 ```
-
-export default {
-
-    async scheduled(controller, env, ctx) {
-
-    ...
-
-    }
-
-}
-
-
+export default {    async scheduled(controller, env, ctx) {    ...    }}
 ```
 
 In our example, we use the `env` variables to get the runtime variables like the TOKEN and ASN of interest, and Cloudflare KV bindings. We do not use the `controller` and `ctx` variables in this example.
@@ -500,12 +192,7 @@ First, we will need to learn about what are the new events. We define new events
 JavaScript
 
 ```
-
-let kv_latest_id = parseInt(await env.HIJACKS_KV.get("latest_id"));
-
-const first_batch = isNaN(kv_latest_id);
-
-
+let kv_latest_id = parseInt(await env.HIJACKS_KV.get("latest_id"));const first_batch = isNaN(kv_latest_id);
 ```
 
 The main loop that checks for the most recent events looks like this (some of the validation code is skipped):
@@ -513,65 +200,10 @@ The main loop that checks for the most recent events looks like this (some of th
 JavaScript
 
 ```
-
-let new_events = [];
-
-let page = 1;
-
-while (true) {
-
-  // query for events
-
-  const query_params = `per_page=10&page=${page}&involvedAsn=${env.TARGET_ASN}&sortBy=ID&sortOrder=DESC`;
-
-  const data = await apiFetch(env, query_params);
-
-
-  // first batch, save KV value only
-
-  if (first_batch) {
-
-    await env.HIJACKS_KV.put("latest_id", events[0].id.toString());
-
-    return;
-
-  }
-
-
-  // some validation skipped
-
-  // ...
-
-
-  let reached_last = false;
-
-  for (const event of data.result.events) {
-
-    if (event.id <= kv_latest_id) {
-
-      // reached the latest events
-
-      reached_last = true;
-
-      break;
-
-    }
-
-    new_events.push(event);
-
-  }
-
-  if (reached_last) {
-
-    break;
-
-  }
-
-  page += 1;
-
-}
-
-
+let new_events = [];let page = 1;while (true) {  // query for events  const query_params = `per_page=10&page=${page}&involvedAsn=${env.TARGET_ASN}&sortBy=ID&sortOrder=DESC`;  const data = await apiFetch(env, query_params);
+  // first batch, save KV value only  if (first_batch) {    await env.HIJACKS_KV.put("latest_id", events[0].id.toString());    return;  }
+  // some validation skipped  // ...
+  let reached_last = false;  for (const event of data.result.events) {    if (event.id <= kv_latest_id) {      // reached the latest events      reached_last = true;      break;    }    new_events.push(event);  }  if (reached_last) {    break;  }  page += 1;}
 ```
 
 Now that we have all the newly detected events saved in `new_events` variable, we can then send out alerts:
@@ -579,26 +211,7 @@ Now that we have all the newly detected events saved in `new_events` variable, w
 JavaScript
 
 ```
-
-// sort events by increasing ID order
-
-new_events.sort((a, b) => a.id - b.id);
-
-const kv_latest_id = new_events[new_events.length - 1].id;
-
-// push new events
-
-for (const event of new_events) {
-
-  await send_alert(env, event);
-
-}
-
-// update latest_id KV value
-
-await env.HIJACKS_KV.put("latest_id", kv_latest_id.toString());
-
-
+// sort events by increasing ID ordernew_events.sort((a, b) => a.id - b.id);const kv_latest_id = new_events[new_events.length - 1].id;// push new eventsfor (const event of new_events) {  await send_alert(env, event);}// update latest_id KV valueawait env.HIJACKS_KV.put("latest_id", kv_latest_id.toString());
 ```
 
 ### Send alerts using webhook
@@ -608,49 +221,8 @@ The function `send_alert` handles constructing alert message and sending out ale
 JavaScript
 
 ```
-
-async function send_hangout_alert(env, event) {
-
-  const webhook_url = `${env.WEBHOOK_URL}&threadKey=bgp-hijacks-event-${event.id}`;
-
-
-  const data = JSON.stringify({
-
-    text: `Detected BGP hijack event (${event.id}):
-
-Detected time: *${event.min_hijack_ts} UTC*
-
-Detected ASN: *${event.hijacker_asn}*
-
-Expected ASN(s): *${event.victim_asns.join(" ")}*
-
-Prefixes: *${event.prefixes.join(" ")}*
-
-Tags: *${event.tags.map((tag) => tag.name).join(" ")}*
-
-Peer Count: *${event.peer_ip_count}*
-
-`,
-
-  });
-
-  await fetch(webhook_url, {
-
-    method: "POST",
-
-    headers: {
-
-      "Content-Type": "application/json; charset=UTF-8",
-
-    },
-
-    body: data,
-
-  });
-
-}
-
-
+async function send_hangout_alert(env, event) {  const webhook_url = `${env.WEBHOOK_URL}&threadKey=bgp-hijacks-event-${event.id}`;
+  const data = JSON.stringify({    text: `Detected BGP hijack event (${event.id}):Detected time: *${event.min_hijack_ts} UTC*Detected ASN: *${event.hijacker_asn}*Expected ASN(s): *${event.victim_asns.join(" ")}*Prefixes: *${event.prefixes.join(" ")}*Tags: *${event.tags.map((tag) => tag.name).join(" ")}*Peer Count: *${event.peer_ip_count}*`,  });  await fetch(webhook_url, {    method: "POST",    headers: {      "Content-Type": "application/json; charset=UTF-8",    },    body: data,  });}
 ```
 
 Note that the webhook is considered secret and should be set to the environment via `wrangler secret put WEBHOOK_URL` command.
@@ -663,47 +235,19 @@ If you have [Email Routing](https://developers.cloudflare.com/email-service/) en
 
 For this alert to work, you will need to configure the proper email bindings in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/#email-bindings).
 
-* [  wrangler.jsonc ](#tab-panel-9936)
-* [  wrangler.toml ](#tab-panel-9937)
+* [  wrangler.jsonc ](#tab-panel-10012)
+* [  wrangler.toml ](#tab-panel-10013)
 
 JSONC
 
 ```
-
-{
-
-  "send_email": [
-
-    {
-
-      "type": "send_email",
-
-      "name": "SEND_EMAIL_BINDING",
-
-      "destination_address": "<YOUR_EMAIL>@example.com"
-
-    }
-
-  ]
-
-}
-
-
+{  "send_email": [    {      "type": "send_email",      "name": "SEND_EMAIL_BINDING",      "destination_address": "<YOUR_EMAIL>@example.com"    }  ]}
 ```
 
 TOML
 
 ```
-
-[[send_email]]
-
-type = "send_email"
-
-name = "SEND_EMAIL_BINDING"
-
-destination_address = "<YOUR_EMAIL>@example.com"
-
-
+[[send_email]]type = "send_email"name = "SEND_EMAIL_BINDING"destination_address = "<YOUR_EMAIL>@example.com"
 ```
 
 Then, you can create an email-sending function to send alert emails to your configured destination address:
@@ -711,63 +255,8 @@ Then, you can create an email-sending function to send alert emails to your conf
 JavaScript
 
 ```
-
-async function send_email_alert(hijacker, prefixes, victims) {
-
-  const msg = createMimeMessage();
-
-  msg.setSender({
-
-    name: "BGP Hijack Alerter",
-
-    addr: "<YOUR_APP>@<YOUR_APP_DOMAIN>",
-
-  });
-
-  msg.setRecipient("<YOUR_EMAIL>@example.com");
-
-  msg.setSubject("BGP hijack alert");
-
-  msg.addMessage({
-
-    contentType: "text/plain",
-
-    data: `BGP hijack detected:
-
-    Detected origin: ${hijacker}
-
-    Expected origins: ${victims.join(" ")}
-
-    Prefixes: ${prefixes.join(" ")}
-
-    `,
-
-  });
-
-
-  var message = new EmailMessage(
-
-    "<YOUR_APP>@<YOUR_APP_DOMAIN>",
-
-    "<YOUR_EMAIL>@example.com",
-
-    msg.asRaw(),
-
-  );
-
-  try {
-
-    await env.SEND_EMAIL_BINDING.send(message);
-
-  } catch (e) {
-
-    return new Response(e.message);
-
-  }
-
-}
-
-
+async function send_email_alert(hijacker, prefixes, victims) {  const msg = createMimeMessage();  msg.setSender({    name: "BGP Hijack Alerter",    addr: "<YOUR_APP>@<YOUR_APP_DOMAIN>",  });  msg.setRecipient("<YOUR_EMAIL>@example.com");  msg.setSubject("BGP hijack alert");  msg.addMessage({    contentType: "text/plain",    data: `BGP hijack detected:    Detected origin: ${hijacker}    Expected origins: ${victims.join(" ")}    Prefixes: ${prefixes.join(" ")}    `,  });
+  var message = new EmailMessage(    "<YOUR_APP>@<YOUR_APP_DOMAIN>",    "<YOUR_EMAIL>@example.com",    msg.asRaw(),  );  try {    await env.SEND_EMAIL_BINDING.send(message);  } catch (e) {    return new Response(e.message);  }}
 ```
 
 ## Next steps

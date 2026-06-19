@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,17 +30,18 @@ Organizations can migrate their teams with minimal disruption in one of two mode
 
 If you downloaded and installed the 1.1.1.1 app manually, here are the recommended migration steps:
 
-* [ android ](#tab-panel-7491)
-* [ ios ](#tab-panel-7492)
+* [ android ](#tab-panel-7567)
+* [ ios ](#tab-panel-7568)
 
 1. Update the **1.1.1.1** app to version 6.29 or above. The update ensures that 1.1.1.1 can [co-exist](#what-to-do-with-the-old-app) with the new Cloudflare One Agent app.
-2. If you have enabled [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/), ensure that you have a [Do Not Inspect policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/http/) in place for the following applications:  
-   * _Google Services (Do Not Inspect)_  
-   * _Google Play Store (Do Not Inspect)_  
-   * _Google (Do Not Inspect)_  
-   * _Google Drive (Do Not Inspect)_  
-   * _Google Chat (Do Not Inspect)_  
-   * _Google Meet (Do Not Inspect)_  
+2. If you have enabled [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/), ensure that you have a [Do Not Inspect policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/http/) in place for the following applications:
+
+  * _Google Services (Do Not Inspect)_
+  * _Google Play Store (Do Not Inspect)_
+  * _Google (Do Not Inspect)_
+  * _Google Drive (Do Not Inspect)_
+  * _Google Chat (Do Not Inspect)_
+  * _Google Meet (Do Not Inspect)_  
 This prevents certificate pinning issues when performing the Android migration.
 3. Follow [these instructions](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/#ios-android-and-chromeos) to install and enroll the Cloudflare One Agent.
 
@@ -64,8 +65,8 @@ If you do not wish to use the old 1.1.1.1 app for personal browsing, you may [un
 
 If you deployed the 1.1.1.1 app with an [MDM provider](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/), perform the migration as follows:
 
-* [ android ](#tab-panel-7493)
-* [ ios ](#tab-panel-7494)
+* [ android ](#tab-panel-7569)
+* [ ios ](#tab-panel-7570)
 
 1. Using your MDM tool, update the **1.1.1.1** app to version 6.29 or above. The update ensures that 1.1.1.1 can co-exist with the new Cloudflare One Agent app during the migration.
 2. Add the **Cloudflare One Agent** app from the Google Play store. Its application ID is `com.cloudflare.cloudflareoneagent`.

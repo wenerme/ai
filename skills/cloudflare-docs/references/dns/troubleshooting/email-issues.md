@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,10 +21,7 @@ To check that your MX records are resolving correctly, run the following `dig` c
 Terminal window
 
 ```
-
 dig example.com mx +short
-
-
 ```
 
 Alternatively, you can use a third-party tool to look up your MX records. For a list of options, refer to [Recommended third-party tools](https://developers.cloudflare.com/dns/reference/recommended-third-party-tools/).

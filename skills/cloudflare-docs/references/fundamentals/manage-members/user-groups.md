@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,8 +37,8 @@ Cloudflare is actively working on improving this experience to make inherited an
 
 With your Group created, you can now add a [Permission Policy](https://developers.cloudflare.com/fundamentals/manage-members/policies/) to your Group.
 
-* [ Dashboard ](#tab-panel-8599)
-* [ API ](#tab-panel-8600)
+* [ Dashboard ](#tab-panel-8675)
+* [ API ](#tab-panel-8676)
 
 1. In the **Groups** tab under **Permission policies**, select **Add a Policy**.
 2. Specify the scope and permissions you want applied to the members of the group.
@@ -51,40 +51,7 @@ Using the role identifiers from the previous section, you can create a permissio
 Example request
 
 ```
-
-$ cat <<-PAYLOAD | curl -XPUT  -H "Authorization: Bearer $AOT" -H "Content-type: application/json" --data-binary @- https://api.cloudflare.com/client/v4/accounts/$ACCT/iam/user_groups/$PUSHED_GROUP  | jq .
-
-{
-
-    "policies": [
-
-        {
-
-            "access": "allow",
-
-            "permission_groups": [{"id": "$ADMIN_ROLE"}],
-
-            "resource_groups": [{
-
-                "scope": {
-
-                    "key": "com.cloudflare.api.account.$ACCT",
-
-                    "objects": [{"key":"*"}]
-
-                }
-
-            }]
-
-        }
-
-    ]
-
-}
-
-PAYLOAD
-
-
+$ cat <<-PAYLOAD | curl -XPUT  -H "Authorization: Bearer $AOT" -H "Content-type: application/json" --data-binary @- https://api.cloudflare.com/client/v4/accounts/$ACCT/iam/user_groups/$PUSHED_GROUP  | jq .{    "policies": [        {            "access": "allow",            "permission_groups": [{"id": "$ADMIN_ROLE"}],            "resource_groups": [{                "scope": {                    "key": "com.cloudflare.api.account.$ACCT",                    "objects": [{"key":"*"}]                }            }]        }    ]}PAYLOAD
 ```
 
 **Reset a policy to an empty state**
@@ -92,18 +59,7 @@ PAYLOAD
 If you made a mistake while creating the group policy or need to reset the policy to an empty state, send another PUT request to the group API with an empty policy array to overwrite with your new policy.
 
 ```
-
-$ cat <<-PAYLOAD | curl -XPUT  -H "Authorization: Bearer $AOT" -H "Content-type: application/json" --data-binary @- https://api.cloudflare.com/client/v4/accounts/$ACCT/iam/user_groups/$PUSHED_GROUP  | jq .
-
-{
-
-    "policies": []
-
-}
-
-PAYLOAD
-
-
+$ cat <<-PAYLOAD | curl -XPUT  -H "Authorization: Bearer $AOT" -H "Content-type: application/json" --data-binary @- https://api.cloudflare.com/client/v4/accounts/$ACCT/iam/user_groups/$PUSHED_GROUP  | jq .{    "policies": []}PAYLOAD
 ```
 
 ## Create a User Group with SCIM
@@ -126,8 +82,8 @@ To set up a user group with SCIM, refer to the [Provisioning with SCIM guide](ht
 
 After a user group is created either manually in Cloudflare dashboard or through SCIM integration the final step is to attach permissions to it.
 
-* [ Dashboard ](#tab-panel-8601)
-* [ API ](#tab-panel-8602)
+* [ Dashboard ](#tab-panel-8677)
+* [ API ](#tab-panel-8678)
 
 1. Go to **Manage members** \> **Members** \> **User groups**.
 2. Select the user group you want to attach permissions to.
@@ -142,151 +98,13 @@ Before you begin, confirm the groups that were created internally or have been p
 Example request
 
 ```
-
 $ curl -X GET -H "Authorization: Bearer $AOT" https://api.cloudflare.com/client/v4/accounts/$ACCT/iam/user_groups | jq .
-
-
 ```
 
 Example response
 
 ```
-
-{
-
-    "errors": [],
-
-    "messages": [],
-
-    "result": [
-
-        {
-
-            "created_on": "2025-01-24T15:31:36.759979Z",
-
-            "id": "f234f49f66df4db8864c5189fe78c87f",
-
-            "modified_on": "2025-01-24T15:35:50.151764Z",
-
-            "name": "My Cool Demo Group",
-
-            "status": "V"
-
-        },
-
-        {
-
-            "created_on": "2025-01-16T20:43:01.019311Z",
-
-            "id": "7148c1e4d9f247f5b6dcd3ef20f998f9",
-
-            "modified_on": "2025-01-16T20:44:07.627233Z",
-
-            "name": "My Cool Demo Group, now with policies!",
-
-            "policies": [
-
-                {
-
-                    "access": "allow",
-
-                    "created_on": "2025-01-16T20:44:07.627233Z",
-
-                    "id": "8d82cf8c15c64e07a4bee58e00d80bca",
-
-                    "modified_on": "2025-01-16T20:44:07.627233Z",
-
-                    "permission_groups": [
-
-                        {
-
-                            "created_on": "2023-06-21T18:58:29.907496Z",
-
-                            "id": "a1a099e3256942259bfde18c688b67d5",
-
-                            "meta": {
-
-                                "description": "Grants write access to Page Shield for domain",
-
-                                "editable": "false",
-
-                                "label": "domain_page_shield",
-
-                                "scopes": "com.cloudflare.api.account.zone"
-
-                            },
-
-                            "modified_on": "2023-06-21T18:58:29.907496Z",
-
-                            "name": "Domain Page Shield",
-
-                            "permissions": ["dev note: snipped for length"],
-
-                            "status": "V"
-
-                        }
-
-                    ],
-
-                    "resource_groups": [
-
-                        {
-
-                            "created_on": "2025-01-16T20:44:07.627233Z",
-
-                            "modified_on": "2025-01-16T20:44:07.627233Z",
-
-                            "scope": {
-
-                                "key": "com.cloudflare.api.account.a3324a084cd290080b563ab39c91545a",
-
-                                "objects": [
-
-                                    {
-
-                                        "key": "*"
-
-                                    }
-
-                                ]
-
-                            }
-
-                        }
-
-                    ],
-
-                    "status": "V"
-
-                }
-
-            ],
-
-            "status": "V"
-
-        }
-
-    ],
-
-    "result_info": {
-
-        "count": 2,
-
-        "page": 1,
-
-        "per_page": 100,
-
-        "total_count": 2,
-
-        "total_pages": 1
-
-    },
-
-    "success": true
-
-}
-
-
+{    "errors": [],    "messages": [],    "result": [        {            "created_on": "2025-01-24T15:31:36.759979Z",            "id": "f234f49f66df4db8864c5189fe78c87f",            "modified_on": "2025-01-24T15:35:50.151764Z",            "name": "My Cool Demo Group",            "status": "V"        },        {            "created_on": "2025-01-16T20:43:01.019311Z",            "id": "7148c1e4d9f247f5b6dcd3ef20f998f9",            "modified_on": "2025-01-16T20:44:07.627233Z",            "name": "My Cool Demo Group, now with policies!",            "policies": [                {                    "access": "allow",                    "created_on": "2025-01-16T20:44:07.627233Z",                    "id": "8d82cf8c15c64e07a4bee58e00d80bca",                    "modified_on": "2025-01-16T20:44:07.627233Z",                    "permission_groups": [                        {                            "created_on": "2023-06-21T18:58:29.907496Z",                            "id": "a1a099e3256942259bfde18c688b67d5",                            "meta": {                                "description": "Grants write access to Page Shield for domain",                                "editable": "false",                                "label": "domain_page_shield",                                "scopes": "com.cloudflare.api.account.zone"                            },                            "modified_on": "2023-06-21T18:58:29.907496Z",                            "name": "Domain Page Shield",                            "permissions": ["dev note: snipped for length"],                            "status": "V"                        }                    ],                    "resource_groups": [                        {                            "created_on": "2025-01-16T20:44:07.627233Z",                            "modified_on": "2025-01-16T20:44:07.627233Z",                            "scope": {                                "key": "com.cloudflare.api.account.a3324a084cd290080b563ab39c91545a",                                "objects": [                                    {                                        "key": "*"                                    }                                ]                            }                        }                    ],                    "status": "V"                }            ],            "status": "V"        }    ],    "result_info": {        "count": 2,        "page": 1,        "per_page": 100,        "total_count": 2,        "total_pages": 1    },    "success": true}
 ```
 
 **2\. Make a query against the resource ID**
@@ -298,10 +116,7 @@ Locate the tag of the group you pushed from the IdP and use it to make a direct 
 Example request
 
 ```
-
 $ curl -XGET -H "Authorization: Bearer $AOT" https://api.cloudflare.com/client/v4/accounts/$ACCT/iam/user_groups/$PUSHED_GROUP | jq .
-
-
 ```
 
 The response for this should have the group name that was specified in the identity provider with no attached policies.
@@ -313,83 +128,13 @@ Before you modify the group's policies, review the available permission groups (
 Example request
 
 ```
-
 $ curl -XGET -H "Authorization: Bearer $DEMO_AOT" https://api.cloudflare.com/client/v4/accounts/$ACCT/iam/permission_groups | jq .
-
-
 ```
 
 Example response
 
 ```
-
-{
-
-  "result": [
-
-    {
-
-      "id": "1a0fc8bdeae24387b64d5b8de1ad052a",
-
-      "name": "Administrator Read Only",
-
-      "status": "V",
-
-      "meta": {
-
-        "description": "Can access the full account in read-only mode.",
-
-        "editable": "false",
-
-        "label": "admin_readonly",
-
-        "scopes": "com.cloudflare.api.account"
-
-      },
-
-      "created_on": "2020-07-06T12:19:13.099114Z",
-
-      "modified_on": "2020-10-13T11:18:00.208228Z"
-
-    },
-
-    {
-
-      "id": "ce2c69b09baf4ca38223910a8b7e07a9",
-
-      "name": "Administrator",
-
-      "status": "V",
-
-      "meta": {
-
-        "description": "Can access the full account, except for membership management and billing.",
-
-        "editable": "false",
-
-        "label": "admin",
-
-        "scopes": "com.cloudflare.api.account"
-
-      },
-
-      "created_on": "2020-07-06T12:19:13.099114Z",
-
-      "modified_on": "2020-10-13T11:18:00.208228Z"
-
-    }
-
-  ],
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": [    {      "id": "1a0fc8bdeae24387b64d5b8de1ad052a",      "name": "Administrator Read Only",      "status": "V",      "meta": {        "description": "Can access the full account in read-only mode.",        "editable": "false",        "label": "admin_readonly",        "scopes": "com.cloudflare.api.account"      },      "created_on": "2020-07-06T12:19:13.099114Z",      "modified_on": "2020-10-13T11:18:00.208228Z"    },    {      "id": "ce2c69b09baf4ca38223910a8b7e07a9",      "name": "Administrator",      "status": "V",      "meta": {        "description": "Can access the full account, except for membership management and billing.",        "editable": "false",        "label": "admin",        "scopes": "com.cloudflare.api.account"      },      "created_on": "2020-07-06T12:19:13.099114Z",      "modified_on": "2020-10-13T11:18:00.208228Z"    }  ],  "success": true,  "errors": [],  "messages": []}
 ```
 
 Note
@@ -403,61 +148,13 @@ To verify the IdP synchronized the group and user members pushed in the SCIM ope
 Example request
 
 ```
-
 $ curl -XGET -H "Authorization: Bearer $DEMO_AOT" https://api.cloudflare.com/client/v4/accounts/$ACCT/iam/user_groups/$PUSHED_GROUP/members | jq .
-
-
 ```
 
 Example response
 
 ```
-
-{
-
-  "result": [
-
-    {
-
-      "id": "a4366a09c43a0b0c4606dc5528472bb6",
-
-      "email": "luke.skywalker@rebelalliance.net"
-
-    },
-
-    {
-
-      "id": "0329c17f6c13f5202dc38d2036efb1a9",
-
-      "email": "arya.stark@winterfell.place"
-
-    }
-
-  ],
-
-  "result_info": {
-
-    "page": 1,
-
-    "per_page": 100,
-
-    "total_pages": 1,
-
-    "count": 2,
-
-    "total_count": 2
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": [    {      "id": "a4366a09c43a0b0c4606dc5528472bb6",      "email": "luke.skywalker@rebelalliance.net"    },    {      "id": "0329c17f6c13f5202dc38d2036efb1a9",      "email": "arya.stark@winterfell.place"    }  ],  "result_info": {    "page": 1,    "per_page": 100,    "total_pages": 1,    "count": 2,    "total_count": 2  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 ```json

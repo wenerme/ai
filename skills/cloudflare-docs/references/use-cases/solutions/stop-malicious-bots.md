@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,8 +30,8 @@ Bot Analytics requires a Business plan or above
 
 Bot score distribution data and detailed bot analytics are available on Business and Enterprise plans. Free and Pro plan users can review basic security metrics through [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/). For full bot analytics capabilities, refer to [Bot Analytics](https://developers.cloudflare.com/bots/bot-analytics/).
 
-* [  New dashboard ](#tab-panel-11077)
-* [ Old dashboard ](#tab-panel-11078)
+* [  New dashboard ](#tab-panel-11094)
+* [ Old dashboard ](#tab-panel-11095)
 
 1. In the Cloudflare dashboard, go to the **Analytics** page.  
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
@@ -73,8 +73,8 @@ For more details, refer to [Bot Fight Mode considerations](https://developers.cl
 
 ### Turn on Bot Fight Mode (Free plan)
 
-* [  New dashboard ](#tab-panel-11091)
-* [ Old dashboard ](#tab-panel-11092)
+* [  New dashboard ](#tab-panel-11108)
+* [ Old dashboard ](#tab-panel-11109)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -97,28 +97,30 @@ If you are upgrading from Bot Fight Mode to Super Bot Fight Mode, you must disab
 * Old dashboard: **Security** \> **Bots**, and select **Configure Bot Fight Mode**.
 * New dashboard: **Security** \> **Settings**. Filter by **Bot traffic** and turn **Bot fight mode** off.
 
-* [  New dashboard ](#tab-panel-11093)
-* [ Old dashboard ](#tab-panel-11094)
+* [  New dashboard ](#tab-panel-11110)
+* [ Old dashboard ](#tab-panel-11111)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Bot traffic**.
 3. Go to **Super Bot fight mode**.
 4. Turn **Super Bot fight mode** on.
-5. Choose how your domain should respond to various types of traffic by selecting the associated edit icon:  
-   * For more details on verified bots, refer to [Verified Bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).  
-   * For more details on supported file types, refer to [Static resource protection](https://developers.cloudflare.com/bots/additional-configurations/static-resources/).  
-   * For more details on invisible code injection, refer to [JavaScript detections](https://developers.cloudflare.com/bots/additional-configurations/javascript-detections/).  
-   * For more details on WordPress optimization, refer to [Super Bot Fight Mode for WordPress](https://developers.cloudflare.com/bots/troubleshooting/wordpress-loopback-issue/).
+5. Choose how your domain should respond to various types of traffic by selecting the associated edit icon:
+
+  * For more details on verified bots, refer to [Verified Bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).
+  * For more details on supported file types, refer to [Static resource protection](https://developers.cloudflare.com/bots/additional-configurations/static-resources/).
+  * For more details on invisible code injection, refer to [JavaScript detections](https://developers.cloudflare.com/bots/additional-configurations/javascript-detections/).
+  * For more details on WordPress optimization, refer to [Super Bot Fight Mode for WordPress](https://developers.cloudflare.com/bots/troubleshooting/wordpress-loopback-issue/).
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login), and select your account and domain.
 2. Go to **Security** \> **Bots**.
 3. Select **Configure Super Bot Fight Mode**.
-4. Choose how your domain should respond to various types of traffic:  
-   * For more details on verified bots, refer to [Verified Bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).  
-   * For more details on supported file types, refer to [Static resource protection](https://developers.cloudflare.com/bots/additional-configurations/static-resources/).  
-   * For more details on invisible code injection, refer to [JavaScript detections](https://developers.cloudflare.com/bots/additional-configurations/javascript-detections/).  
-   * For more details on WordPress optimization, refer to [Super Bot Fight Mode for WordPress](https://developers.cloudflare.com/bots/troubleshooting/wordpress-loopback-issue/).
+4. Choose how your domain should respond to various types of traffic:
+
+  * For more details on verified bots, refer to [Verified Bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).
+  * For more details on supported file types, refer to [Static resource protection](https://developers.cloudflare.com/bots/additional-configurations/static-resources/).
+  * For more details on invisible code injection, refer to [JavaScript detections](https://developers.cloudflare.com/bots/additional-configurations/javascript-detections/).
+  * For more details on WordPress optimization, refer to [Super Bot Fight Mode for WordPress](https://developers.cloudflare.com/bots/troubleshooting/wordpress-loopback-issue/).
 
 Plan availability
 
@@ -151,10 +153,11 @@ Turnstile is configured at the account level.
 1. In the Cloudflare dashboard, go to the **Turnstile** page.  
 [ Go to **Turnstile** ](https://dash.cloudflare.com/?to=/:account/turnstile)
 2. Select **Add widget**.
-3. Fill out the required information:  
-   * **Widget name**: A descriptive name for your widget.  
-   * **Hostname management**: Domains where the widget will be used.  
-   * **Widget mode**: Choose from Managed, Non-Interactive, or Invisible.
+3. Fill out the required information:
+
+  * **Widget name**: A descriptive name for your widget.
+  * **Hostname management**: Domains where the widget will be used.
+  * **Widget mode**: Choose from Managed, Non-Interactive, or Invisible.
 4. (Optional) Configure **Pre-clearance support** for single-page applications.
 5. Select **Create** to save your widget.
 6. Copy your sitekey and secret key, and store the secret key securely.
@@ -166,29 +169,8 @@ You need both the sitekey and secret key in the following steps.
 Add the Turnstile script and widget container to your form HTML:
 
 ```
-
-<script
-
-  src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-
-  async
-
-  defer
-
-></script>
-
-
-<form action="/submit" method="POST">
-
-  <!-- Your existing form fields -->
-
-  <div class="cf-turnstile" data-sitekey="<YOUR_SITE_KEY>"></div>
-
-  <button type="submit">Submit</button>
-
-</form>
-
-
+<script  src="https://challenges.cloudflare.com/turnstile/v0/api.js"  async  defer></script>
+<form action="/submit" method="POST">  <!-- Your existing form fields -->  <div class="cf-turnstile" data-sitekey="<YOUR_SITE_KEY>"></div>  <button type="submit">Submit</button></form>
 ```
 
 Replace `<YOUR_SITE_KEY>` with the sitekey from the previous step. The widget renders inside the `div` and produces a token when the visitor passes the challenge.
@@ -200,20 +182,7 @@ Before processing the form submission, send the token to the Turnstile siteverif
 Terminal window
 
 ```
-
-curl https://challenges.cloudflare.com/turnstile/v0/siteverify \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "secret": "<YOUR_SECRET_KEY>",
-
-  "response": "<TURNSTILE_RESPONSE_TOKEN>"
-
-}'
-
-
+curl https://challenges.cloudflare.com/turnstile/v0/siteverify \  --header "Content-Type: application/json" \  --data '{  "secret": "<YOUR_SECRET_KEY>",  "response": "<TURNSTILE_RESPONSE_TOKEN>"}'
 ```
 
 Replace `<YOUR_SECRET_KEY>` with your secret key and `<TURNSTILE_RESPONSE_TOKEN>` with the `cf-turnstile-response` value from the form submission. The endpoint returns a JSON object with a `success` field. Only process the form submission if `success` is `true`.
@@ -230,8 +199,8 @@ Rules that use counting expressions with response codes (such as counting only `
 
 **Short-window rule:** Challenge an IP that sends too many failed login requests in a short window.
 
-* [  New dashboard ](#tab-panel-11081)
-* [ Old dashboard ](#tab-panel-11082)
+* [  New dashboard ](#tab-panel-11098)
+* [ Old dashboard ](#tab-panel-11099)
 
 1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -257,8 +226,8 @@ Rules that use counting expressions with response codes (such as counting only `
 
 **Long-window rule:** Block an IP that accumulates failed login attempts over a longer period.
 
-* [  New dashboard ](#tab-panel-11083)
-* [ Old dashboard ](#tab-panel-11084)
+* [  New dashboard ](#tab-panel-11100)
+* [ Old dashboard ](#tab-panel-11101)
 
 1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -304,8 +273,8 @@ If the built-in settings do not cover your needs, create custom rules. Start by 
 
 Navigate to custom rules, then create both rules:
 
-* [  New dashboard ](#tab-panel-11085)
-* [ Old dashboard ](#tab-panel-11086)
+* [  New dashboard ](#tab-panel-11102)
+* [ Old dashboard ](#tab-panel-11103)
 
 1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -349,8 +318,8 @@ Rate limiting options vary by plan
 
 Available periods, actions, and counting options vary by plan. The example below uses a 1-minute period with Managed Challenge. Refer to [Rate limiting rules availability](https://developers.cloudflare.com/waf/rate-limiting-rules/#availability) for your plan's options.
 
-* [  New dashboard ](#tab-panel-11087)
-* [ Old dashboard ](#tab-panel-11088)
+* [  New dashboard ](#tab-panel-11104)
+* [ Old dashboard ](#tab-panel-11105)
 
 1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -392,8 +361,8 @@ After you deploy bot protection rules, use [Security Events](https://developers.
 
 Security Events displays requests that Cloudflare security products acted on or flagged, including blocks, challenges, and flags.
 
-* [  New dashboard ](#tab-panel-11079)
-* [ Old dashboard ](#tab-panel-11080)
+* [  New dashboard ](#tab-panel-11096)
+* [ Old dashboard ](#tab-panel-11097)
 
 1. In the Cloudflare dashboard, go to the **Analytics** page.  
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
@@ -426,14 +395,15 @@ After reviewing Security Events, adjust your rules based on the results.
 
 Internal monitoring tools, health check services, or partner APIs appear in blocked events. The fix depends on which feature is blocking them:
 
-* If [Super Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/super-bot-fight-mode/) (Pro and above) is blocking the traffic, create a custom rule with a Skip action matching the tool IP address or user agent:  
-   1. Go to the **Security rules** page.  
-   [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)  
-   2. Select **Create rule** \> **Custom rules**.  
-   3. Enter a descriptive name.  
-   4. Under **When incoming requests match**, select **Edit expression** and enter: `(ip.src eq 192.0.2.1)` (replace with your tool's IP address).  
-   5. Under **Then take action**, select _Skip_. Then select **All Super Bot Fight Mode rules**.  
-   6. Select **Deploy**.
+* If [Super Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/super-bot-fight-mode/) (Pro and above) is blocking the traffic, create a custom rule with a Skip action matching the tool IP address or user agent:
+
+  1. Go to the **Security rules** page.  
+  [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+  2. Select **Create rule** \> **Custom rules**.
+  3. Enter a descriptive name.
+  4. Under **When incoming requests match**, select **Edit expression** and enter: `(ip.src eq 192.0.2.1)` (replace with your tool's IP address).
+  5. Under **Then take action**, select _Skip_. Then select **All Super Bot Fight Mode rules**.
+  6. Select **Deploy**.
 * If [Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/) (Free) is blocking the traffic, turn off Bot Fight Mode or upgrade to [Super Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/super-bot-fight-mode/) for granular exception rules.
 
 For details on Skip action configuration, refer to [Configure a rule with the Skip action](https://developers.cloudflare.com/waf/custom-rules/skip/).
@@ -442,8 +412,8 @@ For details on Skip action configuration, refer to [Configure a rule with the Sk
 
 Bot activity appears in Security Events that your current rules do not catch. Bots that stay under rate limits or evade single-signal rules require combining multiple signals. For example, to challenge `POST` requests to `/login` that are not from verified bots:
 
-* [  New dashboard ](#tab-panel-11089)
-* [ Old dashboard ](#tab-panel-11090)
+* [  New dashboard ](#tab-panel-11106)
+* [ Old dashboard ](#tab-panel-11107)
 
 1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

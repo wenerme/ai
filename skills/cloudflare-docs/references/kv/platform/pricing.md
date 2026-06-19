@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/kv/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Workers KV is included in both the Free and Paid [Workers plans](https://developers.cloudflare.com/workers/platform/pricing/).
 
-| Free plan1    | Paid plan     |                                   |
+|               | Free plan1    | Paid plan                         |
 | ------------- | ------------- | --------------------------------- |
 | Keys read     | 100,000 / day | 10 million/month, + $0.50/million |
 | Keys written  | 1,000 / day   | 1 million/month, + $5.00/million  |

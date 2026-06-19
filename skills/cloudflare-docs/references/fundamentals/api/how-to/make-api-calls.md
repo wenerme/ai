@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,12 +17,7 @@ Once you [create your API token](https://developers.cloudflare.com/fundamentals/
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID" \
-
---header "Authorization: Bearer YQSn-xWAQiiEh9qM58wZNnyQS7FUdoqGIUAbrh7T"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID" \--header "Authorization: Bearer YQSn-xWAQiiEh9qM58wZNnyQS7FUdoqGIUAbrh7T"
 ```
 
 Never send or store your API token secret in plaintext. Also be sure not to check it into code repositories, especially public ones.
@@ -36,12 +31,7 @@ The following example will format the curl JSON output using `jq`:
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID" \
-
---header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" | jq .
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID" \--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" | jq .
 ```
 
 ## Using Cloudflare's APIs
@@ -63,12 +53,7 @@ When adding those query parameters, make sure you enclose the URL in double quot
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones?account.id=$ACCOUNT_ID" \
-
---header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones?account.id=$ACCOUNT_ID" \--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 You can enclose strings using either single quotes (`''`) or double quotes (`""`). However, using single quotes prevents variable substitution in shells like `bash`. In the previous example, this would mean that the `$ACCOUNT_ID` and `$CLOUDFLARE_API_TOKEN` [environment variables](#environment-variables) would not be replaced with their values.
@@ -78,16 +63,7 @@ You can enclose strings using either single quotes (`''`) or double quotes (`""`
 Sometimes there will be too many results to display via the default page size, for example you might receive the following:
 
 ```
-
-"count": 1,
-
-"page": 1,
-
-"per_page": 20,
-
-"total_count": 200,
-
-
+"count": 1,"page": 1,"per_page": 20,"total_count": 200,
 ```
 
 Two query parameter options exist, which can be combined to paginate across the results.
@@ -115,10 +91,7 @@ To use the Cloudflare API with curl on a Command Prompt window, you must use dou
 A typical `PATCH` request will be similar to the following:
 
 ```
-
 C:\>curl --request PATCH "https://api.cloudflare.com/client/v4/user/invites/{id}" --header "X-Auth-Email: <EMAIL>" --header "X-Auth-Key: <API_KEY>" --data "{""status"": ""accepted""}"
-
-
 ```
 
 To escape a double quote character in a request body (for example, a body specified with `-d` or `--data` in a `POST`/`PATCH` request), prepend it with another double quote (`"`) or a backslash (`\`) character.
@@ -126,18 +99,7 @@ To escape a double quote character in a request body (for example, a body specif
 To break a single command in two or more lines, use `^` as the line continuation character at the end of a line:
 
 ```
-
-C:\>curl --request PATCH ^
-
-"https://api.cloudflare.com/client/v4/user/invites/{id}" ^
-
---header "X-Auth-Email: <EMAIL>" ^
-
---header "X-Auth-Key: <API_KEY>" ^
-
---data "{""status"": ""accepted""}"
-
-
+C:\>curl --request PATCH ^"https://api.cloudflare.com/client/v4/user/invites/{id}" ^--header "X-Auth-Email: <EMAIL>" ^--header "X-Auth-Key: <API_KEY>" ^--data "{""status"": ""accepted""}"
 ```
 
 ### Using PowerShell
@@ -153,31 +115,11 @@ The following example uses the `Invoke-RestMethod` cmdlet:
 PowerShell
 
 ```
-
 Invoke-RestMethod -URI "https://api.cloudflare.com/client/v4/zones/$Env:ZONE_ID/ssl/certificate_packs?ssl_status=all" -Method 'GET' -Headers @{'X-Auth-Email'=$Env:CLOUDFLARE_EMAIL;'X-Auth-Key'=$Env:CLOUDFLARE_API_KEY}
-
-
 ```
 
 ```
-
-result      : {@{id=78411cfa-5727-4dc1-8d4a-773d01f17c7c; type=universal; hosts=System.Object[];
-
-              primary_certificate=c173c8a1-9724-4e96-a748-2c4494186098; status=active; certificates=System.Object[];
-
-              created_on=2022-12-09T23:11:06.010263Z; validity_days=90; validation_method=txt;
-
-              certificate_authority=lets_encrypt}}
-
-result_info : @{page=1; per_page=20; total_pages=1; count=1; total_count=1}
-
-success     : True
-
-errors      : {}
-
-messages    : {}
-
-
+result      : {@{id=78411cfa-5727-4dc1-8d4a-773d01f17c7c; type=universal; hosts=System.Object[];              primary_certificate=c173c8a1-9724-4e96-a748-2c4494186098; status=active; certificates=System.Object[];              created_on=2022-12-09T23:11:06.010263Z; validity_days=90; validation_method=txt;              certificate_authority=lets_encrypt}}result_info : @{page=1; per_page=20; total_pages=1; count=1; total_count=1}success     : Trueerrors      : {}messages    : {}
 ```
 
 The command assumes that the environment variables `ZONE_ID`, `CLOUDFLARE_EMAIL`, and `CLOUDFLARE_API_KEY` have been previously defined. For more information, refer to [Environment variables](#environment-variables).
@@ -187,77 +129,11 @@ By default, the output will only contain the first level of the JSON object hier
 PowerShell
 
 ```
-
 Invoke-RestMethod -URI "https://api.cloudflare.com/client/v4/zones/$Env:ZONE_ID/ssl/certificate_packs?ssl_status=all" -Method 'GET' -Headers @{'X-Auth-Email'=$Env:CLOUDFLARE_EMAIL;'X-Auth-Key'=$Env:CLOUDFLARE_API_KEY} | ConvertTo-Json -Depth 5
-
-
 ```
 
 ```
-
-{
-
-  "result": [
-
-    {
-
-      "id": "78411cfa-5727-4dc1-8d4a-773d01f17c7c",
-
-      "type": "universal",
-
-      "hosts": ["*.example.com", "example.com"],
-
-      "primary_certificate": "c173c8a1-9724-4e96-a748-2c4494186098",
-
-      "status": "active",
-
-      "certificates": [
-
-        {
-
-          "id": "c173c8a1-9724-4e96-a748-2c4494186098",
-
-          "hosts": ["*.example.com", "example.com"],
-
-          "issuer": "LetsEncrypt",
-
-          "signature": "ECDSAWithSHA384",
-
-          "status": "active",
-
-          "bundle_method": "ubiquitous",
-
-          "zone_id": "<ZONE_ID>",
-
-          "uploaded_on": "2023-02-02T11:20:25.403338Z",
-
-          "modified_on": "2022-12-08T00:26:15.577555Z",
-
-          "expires_on": "2023-03-07T23:26:12.000000Z",
-
-          "priority": null
-
-        }
-
-      ],
-
-      "created_on": "2022-12-09T23:11:06.010263Z",
-
-      "validity_days": 90,
-
-      "validation_method": "txt",
-
-      "certificate_authority": "lets_encrypt"
-
-    }
-
-  ]
-
-  // (...)
-
-}
-
-
+{  "result": [    {      "id": "78411cfa-5727-4dc1-8d4a-773d01f17c7c",      "type": "universal",      "hosts": ["*.example.com", "example.com"],      "primary_certificate": "c173c8a1-9724-4e96-a748-2c4494186098",      "status": "active",      "certificates": [        {          "id": "c173c8a1-9724-4e96-a748-2c4494186098",          "hosts": ["*.example.com", "example.com"],          "issuer": "LetsEncrypt",          "signature": "ECDSAWithSHA384",          "status": "active",          "bundle_method": "ubiquitous",          "zone_id": "<ZONE_ID>",          "uploaded_on": "2023-02-02T11:20:25.403338Z",          "modified_on": "2022-12-08T00:26:15.577555Z",          "expires_on": "2023-03-07T23:26:12.000000Z",          "priority": null        }      ],      "created_on": "2022-12-09T23:11:06.010263Z",      "validity_days": 90,      "validation_method": "txt",      "certificate_authority": "lets_encrypt"    }  ]  // (...)}
 ```
 
 ConvertFrom-Json handling of DateTime values
@@ -271,10 +147,7 @@ A typical `PATCH` request with curl will be similar to the following:
 PowerShell
 
 ```
-
 curl.exe --request PATCH "https://api.cloudflare.com/client/v4/user/invites/{id}" --header "Authorization: Bearer $Env:CLOUDFLARE_API_TOKEN" --data '{\"status\": \"accepted\"}'
-
-
 ```
 
 To escape a double quote (`"`) character in a request body (specified with `-d` or `--data`), prepend it with another double quote (`"`) or a backslash (`\`). You must escape double quotes even when using single quotes (`'`) as string delimiters.
@@ -284,18 +157,7 @@ To break a single command in two or more lines, use a backtick (`` ` ``) charact
 PowerShell
 
 ```
-
-curl.exe --request PATCH `
-
-"https://api.cloudflare.com/client/v4/user/invites/{id}" `
-
---header "X-Auth-Email: $Env:CLOUDFLARE_EMAIL" `
-
---header "X-Auth-Key: $Env:CLOUDFLARE_API_KEY" `
-
---data '{\"status\": \"accepted\"}'
-
-
+curl.exe --request PATCH `"https://api.cloudflare.com/client/v4/user/invites/{id}" `--header "X-Auth-Email: $Env:CLOUDFLARE_EMAIL" `--header "X-Auth-Key: $Env:CLOUDFLARE_API_KEY" `--data '{\"status\": \"accepted\"}'
 ```
 
 ## Environment variables
@@ -308,19 +170,16 @@ The procedure for setting and referencing environment variables depends on your 
 
 ### Define an environment variable
 
-* [ Linux and macOS ](#tab-panel-8569)
-* [ PowerShell ](#tab-panel-8570)
-* [ Windows Command Prompt ](#tab-panel-8571)
+* [ Linux and macOS ](#tab-panel-8645)
+* [ PowerShell ](#tab-panel-8646)
+* [ Windows Command Prompt ](#tab-panel-8647)
 
 To define a `ZONE_ID` environment variable for the current shell session, run the following command:
 
 Terminal window
 
 ```
-
 export ZONE_ID='f2ea6707005a4da1af1b431202e96ac5'
-
-
 ```
 
 To define the variable for all new shell sessions for the current user, add the command above at the end of your shell configuration file (for example, `~/.bashrc` for the `bash` shell and `~/.zshrc` for the `zsh` shell).
@@ -330,10 +189,7 @@ To define a `ZONE_ID` environment variable for the current PowerShell session, r
 PowerShell
 
 ```
-
 $Env:ZONE_ID='f2ea6707005a4da1af1b431202e96ac5'
-
-
 ```
 
 To define the environment variable for all new PowerShell sessions of the current user, set the variable in your PowerShell profile. You can get the path to your PowerShell profile by running `echo $PROFILE`.
@@ -343,10 +199,7 @@ Alternatively, set the variable for all new PowerShell sessions of the current u
 PowerShell
 
 ```
-
 [Environment]::SetEnvironmentVariable("ZONE_ID", "f2ea6707005a4da1af1b431202e96ac5", "User")
-
-
 ```
 
 Running this command will not affect the current session. You will need to close and start a new PowerShell session.
@@ -356,10 +209,7 @@ To define a `ZONE_ID` environment variable for the current Command Prompt sessio
 Terminal window
 
 ```
-
 set ZONE_ID=f2ea6707005a4da1af1b431202e96ac5
-
-
 ```
 
 To define an environment variable for all future Command Prompt sessions of the current user, run the following command:
@@ -367,19 +217,16 @@ To define an environment variable for all future Command Prompt sessions of the 
 Terminal window
 
 ```
-
 setx ZONE_ID f2ea6707005a4da1af1b431202e96ac5
-
-
 ```
 
 Running this command will not affect the current window. You will need to either run the `set` command or close and start a new Command Prompt window.
 
 ### Reference an environment variable
 
-* [ Linux and macOS ](#tab-panel-8572)
-* [ PowerShell ](#tab-panel-8573)
-* [ Windows Command Prompt ](#tab-panel-8574)
+* [ Linux and macOS ](#tab-panel-8648)
+* [ PowerShell ](#tab-panel-8649)
+* [ Windows Command Prompt ](#tab-panel-8650)
 
 When referencing an environment variable in a command, add a `$` prefix to the variable name (for example, `$ZONE_ID`). Make sure that the full string referencing the variable is either unquoted (if it does not contain spaces) or enclosed in double quotes (`""`).
 
@@ -388,12 +235,7 @@ For example:
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID" \
-
---header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID" \--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 When referencing an environment variable in a command, add an `$Env:` prefix to the variable name (for example, `$Env:ZONE_ID`). Make sure that the full string referencing the variable is either unquoted or enclosed in double quotes (`""`).
@@ -403,10 +245,7 @@ For example:
 PowerShell
 
 ```
-
 Invoke-RestMethod -URI "https://api.cloudflare.com/client/v4/zones/$Env:ZONE_ID" -Method 'GET' -Headers @{'Authorization'="Bearer $Env:CLOUDFLARE_API_TOKEN"}
-
-
 ```
 
 When referencing an environment variable in a command, enclose the variable name in `%` characters (for example, `%ZONE_ID%`).
@@ -416,10 +255,7 @@ For example:
 Terminal window
 
 ```
-
 curl "https://api.cloudflare.com/client/v4/zones/%ZONE_ID%" --header "Authorization: Bearer %CLOUDFLARE_API_TOKEN%"
-
-
 ```
 
 ```json

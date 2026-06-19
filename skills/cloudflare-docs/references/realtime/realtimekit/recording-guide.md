@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,17 +33,18 @@ RealtimeKit can record the audio and video of multiple users in a meeting, as we
 
 ## How composite recording works
 
-Composite recordings are powered by anonymous virtual bot users who join your meeting, record it, and then upload it to RealtimeKit's Cloudflare R2 bucket. For video files, we currently support the[H.264 ↗](https://en.wikipedia.org/wiki/Advanced%5FVideo%5FCoding) and[VP8 ↗](https://en.wikipedia.org/wiki/VP8) codecs.
+Composite recordings are powered by anonymous virtual bot users who join your meeting, record it, and then upload it to RealtimeKit's Cloudflare R2 bucket. For video files, we currently support the [H.264 ↗](https://en.wikipedia.org/wiki/Advanced%5FVideo%5FCoding) and [VP8 ↗](https://en.wikipedia.org/wiki/VP8) codecs.
 
 1. When the recording is finished, it is stored in RealtimeKit's Cloudflare R2 bucket.
-2. RealtimeKit generates a downloadable link from which the recording can be downloaded. You can get the download URL using the[Fetch details of a recording API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/get%5Fone%5Frecording/)or from the Developer Portal.  
-You can receive notifications of recording status in any of the following ways:  
-   * Using the `recording.statusUpdate` webhook. RealtimeKit uses webhooks to notify your application when an event happens.  
-   * Using the [Fetch active recording API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/get%5Factive%5Frecordings/).  
-   * You can also view the states of recording from the Developer Portal.
+2. RealtimeKit generates a downloadable link from which the recording can be downloaded. You can get the download URL using the [Fetch details of a recording API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/get%5Fone%5Frecording/)or from the Developer Portal.  
+You can receive notifications of recording status in any of the following ways:
+
+  * Using the `recording.statusUpdate` webhook. RealtimeKit uses webhooks to notify your application when an event happens.
+  * Using the [Fetch active recording API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/get%5Factive%5Frecordings/).
+  * You can also view the states of recording from the Developer Portal.
 3. Download the recording from the download url and store it to your cloud storage. The file is kept on RealtimeKit's server for seven days before being deleted.  
-You can get the download URL using the[Fetch active recording API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/get%5Factive%5Frecordings/) or from the Developer Portal.  
-We support transferring recordings to AWS, Azure, and DigitalOcean storage buckets. You can also choose to preconfigure the storage configurations using the Developer Portal or the[Start recording a meeting API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/start%5Frecordings/).
+You can get the download URL using the [Fetch active recording API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/get%5Factive%5Frecordings/) or from the Developer Portal.  
+We support transferring recordings to AWS, Azure, and DigitalOcean storage buckets. You can also choose to preconfigure the storage configurations using the Developer Portal or the [Start recording a meeting API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/start%5Frecordings/).
 
 ## Workflow
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -39,58 +39,9 @@ bun add @cloudflare/pages-plugin-graphql
 TypeScript
 
 ```
-
-import graphQLPlugin from "@cloudflare/pages-plugin-graphql";
-
-import {
-
-  graphql,
-
-  GraphQLSchema,
-
-  GraphQLObjectType,
-
-  GraphQLString,
-
-} from "graphql";
-
-
-const schema = new GraphQLSchema({
-
-  query: new GraphQLObjectType({
-
-    name: "RootQueryType",
-
-    fields: {
-
-      hello: {
-
-        type: GraphQLString,
-
-        resolve() {
-
-          return "Hello, world!";
-
-        },
-
-      },
-
-    },
-
-  }),
-
-});
-
-
-export const onRequest: PagesFunction = graphQLPlugin({
-
-  schema,
-
-  graphql,
-
-});
-
-
+import graphQLPlugin from "@cloudflare/pages-plugin-graphql";import {  graphql,  GraphQLSchema,  GraphQLObjectType,  GraphQLString,} from "graphql";
+const schema = new GraphQLSchema({  query: new GraphQLObjectType({    name: "RootQueryType",    fields: {      hello: {        type: GraphQLString,        resolve() {          return "Hello, world!";        },      },    },  }),});
+export const onRequest: PagesFunction = graphQLPlugin({  schema,  graphql,});
 ```
 
 This Plugin only exposes a single route, so wherever it is mounted is wherever it will be available. In the above example, because it is mounted in `functions/graphql.ts`, the server will be available on `/graphql` of your Pages project.

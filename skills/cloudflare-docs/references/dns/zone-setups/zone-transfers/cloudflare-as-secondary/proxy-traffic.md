@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,8 +32,8 @@ If you use Secondary DNS override and keep other nameservers at your registrar, 
 
 ## Set up Secondary DNS override
 
-* [ Dashboard ](#tab-panel-8157)
-* [ API ](#tab-panel-8158)
+* [ Dashboard ](#tab-panel-8233)
+* [ API ](#tab-panel-8234)
 
 1. In the Cloudflare dashboard, go to the **DNS Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
@@ -44,31 +44,18 @@ If you use Secondary DNS override and keep other nameservers at your registrar, 
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone DNS Settings Write`
 * `DNS Write`
 
 Update DNS Settings
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_settings" \
-
-  --request PATCH \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "secondary_overrides": true
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_settings" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "secondary_overrides": true  }'
 ```
 
 1. For specific A, AAAA, or CNAME records, send a [POST](https://developers.cloudflare.com/api/resources/dns/subresources/records/methods/create/) request with the `proxied` status as `true`.  
-   * Make sure the added record has the same name as the transferred record you intend to proxy. Cloudflare only looks at the name and the proxy status, so the record content does not matter.
+  * Make sure the added record has the same name as the transferred record you intend to proxy. Cloudflare only looks at the name and the proxy status, so the record content does not matter.
 
 Zone transfers interaction
 

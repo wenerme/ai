@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -42,10 +42,7 @@ If you leave each endpoint with the default setting and choose a **Random** endp
 To customize weights when you [create or edit a pool](https://developers.cloudflare.com/load-balancing/pools/create-pool/), set the **Weight** to a number between 0 and 1 (expressed in increments of .01). Cloudflare will then send traffic to that pool based on a combination of your endpoint steering policy and the following formula.
 
 ```
-
 % of traffic to endpoint = endpoint weight ÷ sum of all weights in the pool
-
-
 ```
 
 Endpoint weight example

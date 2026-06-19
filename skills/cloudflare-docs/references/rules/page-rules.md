@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,10 +18,10 @@ Page Rules trigger one or more actions whenever a certain URL pattern is matched
 
 The default number of allowed page rules depends on the domain plan as shown below.
 
-| Free            | Pro | Business | Enterprise |     |
-| --------------- | --- | -------- | ---------- | --- |
-| Availability    | Yes | Yes      | Yes        | Yes |
-| Number of rules | 3   | 20       | 50         | 125 |
+|                 | Free | Pro | Business | Enterprise |
+| --------------- | ---- | --- | -------- | ---------- |
+| Availability    | Yes  | Yes | Yes      | Yes        |
+| Number of rules | 3    | 20  | 50       | 125        |
 
 ---
 
@@ -36,14 +36,7 @@ Page Rules require a [proxied](https://developers.cloudflare.com/dns/proxy-statu
 If you are creating a Page Rule for a hostname that does not have a real origin server, you still need a proxied DNS record. You can use a reserved IP address or domain as a placeholder. The record only needs to exist so that Cloudflare proxies traffic for that hostname. Create one of the following:
 
 ```
-
-www.example.com  A      192.0.2.1
-
-www.example.com  AAAA   2001:DB8::1
-
-www.example.com  CNAME  domain.example
-
-
+www.example.com  A      192.0.2.1www.example.com  AAAA   2001:DB8::1www.example.com  CNAME  domain.example
 ```
 
 Cloudflare recommends using only reserved IP addresses or domain names for placeholder records to avoid accidentally routing traffic to infrastructure you do not own.
@@ -63,19 +56,13 @@ Page Rules are prioritized in descending order in the Cloudflare dashboard, with
 A page rule matches a URL pattern based on the following format (comprised of five segments):
 
 ```
-
 <SCHEME>://<HOSTNAME>:<PORT>/<PATH>?<QUERY_STRING>
-
-
 ```
 
 An example URL with all the segments looks like the following:
 
 ```
-
 https://www.example.com:443/image.png?parameter1=value1
-
-
 ```
 
 The `<SCHEME>` and `<PORT>` segments are optional. If omitted, `<SCHEME>` matches both `http://` and `https://` protocols. If no `<PORT>` is specified, the rule will match all ports.

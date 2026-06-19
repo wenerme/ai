@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -24,56 +24,32 @@ You can also create a dispatch Worker from the Cloudflare dashboard. Go to **Wor
 
 * **Scale**: Route requests to millions of hostnames to different Workers, without defining [Workers Routes](https://developers.cloudflare.com/workers/configuration/routing/routes/) configuration for each one
 * **Custom routing logic**: Write code to determine exactly how requests should be routed. For example:  
-   * Store hostname-to-Worker mappings in [Workers KV](https://developers.cloudflare.com/kv/) and look them up dynamically  
-   * Route requests based on subdomain, path, headers, or other request properties  
-   * Use [custom metadata](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/custom-metadata/) attached to [custom hostnames](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/) for routing decisions
+  * Store hostname-to-Worker mappings in [Workers KV](https://developers.cloudflare.com/kv/) and look them up dynamically
+  * Route requests based on subdomain, path, headers, or other request properties
+  * Use [custom metadata](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/custom-metadata/) attached to [custom hostnames](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/) for routing decisions
 * **Add platform functionality**: Build additional features at the routing layer:  
-   * Run authentication checks before requests reach user Workers  
-   * Remove or add headers or metadata from incoming requests  
-   * Attach useful context like user IDs or account information  
-   * Transform requests or responses as needed
+  * Run authentication checks before requests reach user Workers
+  * Remove or add headers or metadata from incoming requests
+  * Attach useful context like user IDs or account information
+  * Transform requests or responses as needed
 
 ### Configure the dispatch namespace binding
 
 To allow your dynamic dispatch Worker to dynamically route requests to Workers in a namespace, you need to configure a dispatch namespace [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/). This binding enables your dynamic dispatch Worker to call any user Worker within that namespace using `env.dispatcher.get()`.
 
-* [  wrangler.jsonc ](#tab-panel-7031)
-* [  wrangler.toml ](#tab-panel-7032)
+* [  wrangler.jsonc ](#tab-panel-7107)
+* [  wrangler.toml ](#tab-panel-7108)
 
 JSONC
 
 ```
-
-{
-
-  "dispatch_namespaces": [
-
-    {
-
-      "binding": "DISPATCHER",
-
-      "namespace": "my-dispatch-namespace"
-
-    }
-
-  ]
-
-}
-
-
+{  "dispatch_namespaces": [    {      "binding": "DISPATCHER",      "namespace": "my-dispatch-namespace"    }  ]}
 ```
 
 TOML
 
 ```
-
-[[dispatch_namespaces]]
-
-binding = "DISPATCHER"
-
-namespace = "my-dispatch-namespace"
-
-
+[[dispatch_namespaces]]binding = "DISPATCHER"namespace = "my-dispatch-namespace"
 ```
 
 Once the binding is configured, your dynamic dispatch Worker can route requests to any Worker in the namespace. Below are common routing patterns you can implement in your dispatcher.
@@ -89,56 +65,11 @@ Store the routing mappings in [Workers KV](https://developers.cloudflare.com/kv/
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    try {
-
-      const url = new URL(request.url);
-
-
-      // Use hostname, path, or any combination as the routing key
-
-      const routingKey = url.hostname;
-
-
-      // Lookup user Worker name from KV store
-
-      const userWorkerName = await env.USER_ROUTING.get(routingKey);
-
-
-      if (!userWorkerName) {
-
-        return new Response("Route not configured", { status: 404 });
-
-      }
-
-
-      // Optional: Cache the KV lookup result
-
-      const userWorker = env.DISPATCHER.get(userWorkerName);
-
-      return await userWorker.fetch(request);
-
-    } catch (e) {
-
-      if (e.message.startsWith("Worker not found")) {
-
-        return new Response("", { status: 404 });
-
-      }
-
-      return new Response(e.message, { status: 500 });
-
-    }
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    try {      const url = new URL(request.url);
+      // Use hostname, path, or any combination as the routing key      const routingKey = url.hostname;
+      // Lookup user Worker name from KV store      const userWorkerName = await env.USER_ROUTING.get(routingKey);
+      if (!userWorkerName) {        return new Response("Route not configured", { status: 404 });      }
+      // Optional: Cache the KV lookup result      const userWorker = env.DISPATCHER.get(userWorkerName);      return await userWorker.fetch(request);    } catch (e) {      if (e.message.startsWith("Worker not found")) {        return new Response("", { status: 404 });      }      return new Response(e.message, { status: 500 });    }  },};
 ```
 
 #### Subdomain-Based Routing
@@ -148,49 +79,8 @@ Route subdomains to the corresponding Worker. For example, `my-customer.example.
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    try {
-
-      // Extract user Worker name from subdomain
-
-      // Example: customer1.example.com -> customer1
-
-      const url = new URL(request.url);
-
-      const userWorkerName = url.hostname.split(".")[0];
-
-
-      // Get user Worker from dispatch namespace
-
-      const userWorker = env.DISPATCHER.get(userWorkerName);
-
-      return await userWorker.fetch(request);
-
-    } catch (e) {
-
-      if (e.message.startsWith("Worker not found")) {
-
-        // User Worker doesn't exist in dispatch namespace
-
-        return new Response("", { status: 404 });
-
-      }
-
-      // Could be any other exception from fetch() or from the dispatched Worker
-
-      return new Response(e.message, { status: 500 });
-
-    }
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    try {      // Extract user Worker name from subdomain      // Example: customer1.example.com -> customer1      const url = new URL(request.url);      const userWorkerName = url.hostname.split(".")[0];
+      // Get user Worker from dispatch namespace      const userWorker = env.DISPATCHER.get(userWorkerName);      return await userWorker.fetch(request);    } catch (e) {      if (e.message.startsWith("Worker not found")) {        // User Worker doesn't exist in dispatch namespace        return new Response("", { status: 404 });      }      // Could be any other exception from fetch() or from the dispatched Worker      return new Response(e.message, { status: 500 });    }  },};
 ```
 
 #### Path-Based routing
@@ -200,51 +90,10 @@ Route URL paths to the corresponding Worker. For example, `example.com/customer-
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    try {
-
-      const url = new URL(request.url);
-
-      const pathParts = url.pathname.split("/").filter(Boolean);
-
-
-      if (pathParts.length === 0) {
-
-        return new Response("Invalid path", { status: 400 });
-
-      }
-
-
-      // example.com/customer-1 -> routes to 'customer-1' worker
-
-      const userWorkerName = pathParts[0];
-
-
-      const userWorker = env.DISPATCHER.get(userWorkerName);
-
-      return await userWorker.fetch(request);
-
-    } catch (e) {
-
-      if (e.message.startsWith("Worker not found")) {
-
-        return new Response("", { status: 404 });
-
-      }
-
-      return new Response(e.message, { status: 500 });
-
-    }
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    try {      const url = new URL(request.url);      const pathParts = url.pathname.split("/").filter(Boolean);
+      if (pathParts.length === 0) {        return new Response("Invalid path", { status: 400 });      }
+      // example.com/customer-1 -> routes to 'customer-1' worker      const userWorkerName = pathParts[0];
+      const userWorker = env.DISPATCHER.get(userWorkerName);      return await userWorker.fetch(request);    } catch (e) {      if (e.message.startsWith("Worker not found")) {        return new Response("", { status: 404 });      }      return new Response(e.message, { status: 500 });    }  },};
 ```
 
 ### Enforce custom limits
@@ -254,75 +103,10 @@ Use [custom limits](https://developers.cloudflare.com/cloudflare-for-platforms/w
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    try {
-
-      const url = new URL(request.url);
-
-      const userWorkerName = url.hostname.split(".")[0];
-
-
-      // Look up customer plan from your database or KV
-
-      const customerPlan = await env.CUSTOMERS.get(userWorkerName);
-
-
-      // Set limits based on plan type
-
-      const plans = {
-
-        enterprise: { cpuMs: 50, subRequests: 50 },
-
-        pro: { cpuMs: 20, subRequests: 20 },
-
-        free: { cpuMs: 10, subRequests: 5 },
-
-      };
-
-      const limits = plans[customerPlan] || plans.free;
-
-
-      const userWorker = env.DISPATCHER.get(userWorkerName, {}, { limits });
-
-      return await userWorker.fetch(request);
-
-    } catch (e) {
-
-      if (e.message.startsWith("Worker not found")) {
-
-        return new Response("", { status: 404 });
-
-      }
-
-      if (e.message.includes("CPU time limit")) {
-
-        // Track limit violations with Analytics Engine
-
-        env.ANALYTICS.writeDataPoint({
-
-          indexes: [userWorkerName],
-
-          blobs: ["cpu_limit_exceeded"],
-
-        });
-
-        return new Response("CPU limit exceeded", { status: 429 });
-
-      }
-
-      return new Response(e.message, { status: 500 });
-
-    }
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    try {      const url = new URL(request.url);      const userWorkerName = url.hostname.split(".")[0];
+      // Look up customer plan from your database or KV      const customerPlan = await env.CUSTOMERS.get(userWorkerName);
+      // Set limits based on plan type      const plans = {        enterprise: { cpuMs: 50, subRequests: 50 },        pro: { cpuMs: 20, subRequests: 20 },        free: { cpuMs: 10, subRequests: 5 },      };      const limits = plans[customerPlan] || plans.free;
+      const userWorker = env.DISPATCHER.get(userWorkerName, {}, { limits });      return await userWorker.fetch(request);    } catch (e) {      if (e.message.startsWith("Worker not found")) {        return new Response("", { status: 404 });      }      if (e.message.includes("CPU time limit")) {        // Track limit violations with Analytics Engine        env.ANALYTICS.writeDataPoint({          indexes: [userWorkerName],          blobs: ["cpu_limit_exceeded"],        });        return new Response("CPU limit exceeded", { status: 429 });      }      return new Response(e.message, { status: 500 });    }  },};
 ```
 
 For more details on available limits, refer to [Custom limits](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/custom-limits/).

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -38,9 +38,10 @@ At this point, your zone will be read-only.
 1. Plan for [DNSSEC settings](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/dnssec-for-secondary/). If you were previously using [Pre-signed DNSSEC](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/dnssec-for-secondary/#set-up-pre-signed-dnssec), consider disabling DNSSEC before starting the conversion.  
 Warning  
 Leaving Pre-signed DNSSEC enabled after converting to a full zone can prevent DNS records from propagating to Cloudflare's edge, causing your zone to return `REFUSED` responses. If you experience this after converting, verify by querying your assigned nameservers using [digwebinterface.com ↗](https://digwebinterface.com/), then check the [DNSSEC Details endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/dnssec/methods/get/) for `dnssec_presigned: true` and disable it using the [Edit DNSSEC Status endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/dnssec/methods/edit/) with `dnssec_presigned` set to `false`.
-2. Make sure the [proxy statuses](https://developers.cloudflare.com/dns/proxy-status/) of your DNS records are consistently set:  
-   * If you have [Secondary DNS override](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/proxy-traffic/), confirm each record has the appropriate setting (**Proxied** or **DNS only**).  
-   * If [Secondary DNS override](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/proxy-traffic/) is disabled, make sure all of your DNS records are listed as **DNS only**.
+2. Make sure the [proxy statuses](https://developers.cloudflare.com/dns/proxy-status/) of your DNS records are consistently set:
+
+  * If you have [Secondary DNS override](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/proxy-traffic/), confirm each record has the appropriate setting (**Proxied** or **DNS only**).
+  * If [Secondary DNS override](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/proxy-traffic/) is disabled, make sure all of your DNS records are listed as **DNS only**.
 3. (Optional) For consistency, use the [Update DNS Settings](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/zone/methods/edit/) endpoint to specify SOA record fields according to your needs. Once Cloudflare automatically generates an SOA record for your zone on primary setup (full), the field overrides will be considered.
 
 ## 3\. Convert your zone

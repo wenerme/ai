@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,24 +27,7 @@ To begin, create a new React project on your local machine with `create-react-ap
 Terminal window
 
 ```
-
-# create new project with create-react-app
-
-npx create-react-app new-app
-
-# enter new directory
-
-cd new-app
-
-# attach git remote
-
-git remote add origin git@github.com:<username>/<repo>.git
-
-# change default branch name
-
-git branch -M main
-
-
+# create new project with create-react-appnpx create-react-app new-app# enter new directorycd new-app# attach git remotegit remote add origin git@github.com:<username>/<repo>.git# change default branch namegit branch -M main
 ```
 
 You may now modify the React application in the `new-app` directory you created.
@@ -56,20 +39,7 @@ The starting point for `create-react-app` includes a simple Hello World website.
 First, create a new react component called `ContactForm.js` and place it in the `src` folder alongside `App.js`.
 
 ```
-
-project-root/
-
-├─ package.json
-
-└─ src/
-
-   ├─ ContactForm.js
-
-   ├─ App.js
-
-   └─ ...
-
-
+project-root/├─ package.json└─ src/   ├─ ContactForm.js   ├─ App.js   └─ ...
 ```
 
 Next, you will build the form component using a helper library from Formspree, [@formspree/react ↗](https://github.com/formspree/formspree-react). This library contains a `useForm` hook to simplify the process of handling form submission events and managing form state.
@@ -97,62 +67,13 @@ bun add @formspree/react
 Then paste the following code snippet into the `ContactForm.js` file:
 
 ```
-
 import { useForm, ValidationError } from "@formspree/react";
-
-
-export default function ContactForm() {
-
-  const [state, handleSubmit] = useForm("YOUR_FORM_ID");
-
-
-  if (state.succeeded) {
-
-    return <p>Thanks for your submission!</p>;
-
-  }
-
-
-  return (
-
-    <form method="POST" onSubmit={handleSubmit}>
-
-      <label htmlFor="name">Full Name</label>
-
-      <input id="name" type="text" name="name" required />
-
-      <ValidationError prefix="Name" field="name" errors={state.errors} />
-
-
-      <label htmlFor="email">Email Address</label>
-
-      <input id="email" type="email" name="email" required />
-
-      <ValidationError prefix="Email" field="email" errors={state.errors} />
-
-
-      <label htmlFor="message">Message</label>
-
-      <textarea id="message" name="message" required></textarea>
-
-      <ValidationError prefix="Message" field="message" errors={state.errors} />
-
-
-      <button type="submit" disabled={state.submitting}>
-
-        Submit
-
-      </button>
-
-      <ValidationError errors={state.errors} />
-
-    </form>
-
-  );
-
-}
-
-
+export default function ContactForm() {  const [state, handleSubmit] = useForm("YOUR_FORM_ID");
+  if (state.succeeded) {    return <p>Thanks for your submission!</p>;  }
+  return (    <form method="POST" onSubmit={handleSubmit}>      <label htmlFor="name">Full Name</label>      <input id="name" type="text" name="name" required />      <ValidationError prefix="Name" field="name" errors={state.errors} />
+      <label htmlFor="email">Email Address</label>      <input id="email" type="email" name="email" required />      <ValidationError prefix="Email" field="email" errors={state.errors} />
+      <label htmlFor="message">Message</label>      <textarea id="message" name="message" required></textarea>      <ValidationError prefix="Message" field="message" errors={state.errors} />
+      <button type="submit" disabled={state.submitting}>        Submit      </button>      <ValidationError errors={state.errors} />    </form>  );}
 ```
 
 Currently, the form contains a placeholder `YOUR_FORM_ID`. You replace this with your own form endpoint later in this tutorial.
@@ -168,81 +89,22 @@ Note
 To add this form to your website, import the component:
 
 ```
-
 import ContactForm from "./ContactForm";
-
-
 ```
 
 Then insert the form into the page as a react component:
 
 ```
-
 <ContactForm />
-
-
 ```
 
 For example, you can update your `src/App.js` file to add the form:
 
 ```
-
-import ContactForm from "./ContactForm"; // <-- import the form component
-
-import logo from "./logo.svg";
-
-import "./App.css";
-
-
-function App() {
-
-  return (
-
-    <div className="App">
-
-      <header className="App-header">
-
-        <img src={logo} className="App-logo" alt="logo" />
-
-        <p>
-
-          Edit <code>src/App.js</code> and save to reload.
-
-        </p>
-
-        <a
-
-          className="App-link"
-
-          href="https://reactjs.org"
-
-          target="_blank"
-
-          rel="noopener noreferrer"
-
-        >
-
-          Learn React
-
-        </a>
-
-
-        {/* your contact form component goes here */}
-
-        <ContactForm />
-
-      </header>
-
-    </div>
-
-  );
-
-}
-
-
+import ContactForm from "./ContactForm"; // <-- import the form componentimport logo from "./logo.svg";import "./App.css";
+function App() {  return (    <div className="App">      <header className="App-header">        <img src={logo} className="App-logo" alt="logo" />        <p>          Edit <code>src/App.js</code> and save to reload.        </p>        <a          className="App-link"          href="https://reactjs.org"          target="_blank"          rel="noopener noreferrer"        >          Learn React        </a>
+        {/* your contact form component goes here */}        <ContactForm />      </header>    </div>  );}
 export default App;
-
-
 ```
 
 Now you have a single-page application containing a Contact Us form with several fields for the user to fill out. However, you have not set up the form to submit to a valid form endpoint yet. You will do that in the [next section](#the-formspree-back-end).
@@ -266,13 +128,8 @@ You will be presented with instructions on how to integrate your new form. Copy 
 Your component should now have a line like this:
 
 ```
-
 const [state, handleSubmit] = useForm("mqldaqwx");
-
-
 /* replace the random-like string above with your own form's ID */
-
-
 ```
 
 Now when you submit your form, you should be shown a Thank You message. The form data will be submitted to your account on [Formspree.io ↗](https://formspree.io/).
@@ -294,20 +151,7 @@ If you have not already done so, save your progress within `git` and then push t
 Terminal window
 
 ```
-
-# Add all files
-
-git add -A
-
-# Commit w/ message
-
-git commit -m "working example"
-
-# Push commit(s) to remote
-
-git push -u origin main
-
-
+# Add all filesgit add -A# Commit w/ messagegit commit -m "working example"# Push commit(s) to remotegit push -u origin main
 ```
 
 Your work now resides within the GitHub repository, which means that Pages is able to access it too.
@@ -331,10 +175,7 @@ To set up production and development forms first create a second form in Formspr
 Then change the `useForm` hook in your `ContactForm.js` file so that it is initialized with an environment variable, rather than a string:
 
 ```
-
 const [state, handleSubmit] = useForm(process.env.REACT_APP_FORM_ID);
-
-
 ```
 
 In your Cloudflare Pages project settings, add the `REACT_APP_FORM_ID` environment variable to both the Production and Preview environments. Use your original form's `hashid` for Production, and the new test form's `hashid` for the Preview environment:

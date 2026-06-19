@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,56 +20,44 @@ This chapter documents the various ways you can run and retrieve the results of 
 
 Binds a parameter to the prepared statement.
 
-* [  JavaScript ](#tab-panel-7969)
-* [  Python ](#tab-panel-7970)
+* [  JavaScript ](#tab-panel-8045)
+* [  Python ](#tab-panel-8046)
 
 JavaScript
 
 ```
-
-const someVariable = `Bs Beverages`;
-
-const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(someVariable);
-
-
+const someVariable = `Bs Beverages`;const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(someVariable);
 ```
 
 Python
 
 ```
-
-some_variable = "Bs Beverages"
-
-stmt = self.env.DB.prepare(
-
-  "SELECT * FROM Customers WHERE CompanyName = ?"
-
-).bind(some_variable)
-
-
+some_variable = "Bs Beverages"stmt = self.env.DB.prepare(  "SELECT * FROM Customers WHERE CompanyName = ?").bind(some_variable)
 ```
 
 #### Parameter
 
 * `Variable`: ` string `  
-   * The variable to be appended into the prepared statement. See [guidance](#guidance) below.
+  * The variable to be appended into the prepared statement. See [guidance](#guidance) below.
 
 #### Return values
 
 * `D1PreparedStatement`: ` Object `  
-   * A `D1PreparedStatement` where the input parameter has been included in the statement.
+  * A `D1PreparedStatement` where the input parameter has been included in the statement.
 
 #### Guidance
 
-* D1 follows the [SQLite convention ↗](https://www.sqlite.org/lang%5Fexpr.html#varparam) for prepared statements parameter binding. Currently, D1 only supports Ordered (`?NNNN`) and Anonymous (`?`) parameters. In the future, D1 will support named parameters as well.  
-| Syntax | Type      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |  
-| ------ | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |  
-| ?NNN   | Ordered   | A question mark followed by a number NNN holds a spot for the NNN\-th parameter. NNN must be between 1 and SQLITE\_MAX\_VARIABLE\_NUMBER                                                                                                                                                                                                                                                                                                                                                                                                            |  
+* D1 follows the [SQLite convention ↗](https://www.sqlite.org/lang%5Fexpr.html#varparam) for prepared statements parameter binding. Currently, D1 only supports Ordered (`?NNNN`) and Anonymous (`?`) parameters. In the future, D1 will support named parameters as well.
+
+| Syntax | Type      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| ------ | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ?NNN   | Ordered   | A question mark followed by a number NNN holds a spot for the NNN\-th parameter. NNN must be between 1 and SQLITE\_MAX\_VARIABLE\_NUMBER                                                                                                                                                                                                                                                                                                                                                                                                            |
 | ?      | Anonymous | A question mark that is not followed by a number creates a parameter with a number one greater than the largest parameter number already assigned. If this means the parameter number is greater than SQLITE\_MAX\_VARIABLE\_NUMBER, it is an error. This parameter format is provided for compatibility with other database engines. But because it is easy to miscount the question marks, the use of this parameter format is discouraged. Programmers are encouraged to use one of the symbolic formats below or the ?NNN format above instead. |  
 To bind a parameter, use the `.bind` method.  
-Order and anonymous examples:  
-   * [  JavaScript ](#tab-panel-7971)  
-   * [  Python ](#tab-panel-7972)  
+Order and anonymous examples:
+
+  * [  JavaScript ](#tab-panel-8047)
+  * [  Python ](#tab-panel-8048)  
 JavaScript  
 ```  
 const stmt = db.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind("");  
@@ -77,29 +65,24 @@ const stmt = db.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(""
 Python  
 ```  
 stmt = db.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind("")  
-```  
-   * [  JavaScript ](#tab-panel-7973)  
-   * [  Python ](#tab-panel-7974)  
+```
+
+  * [  JavaScript ](#tab-panel-8049)
+  * [  Python ](#tab-panel-8050)  
 JavaScript  
 ```  
-const stmt = db  
-  .prepare("SELECT * FROM Customers WHERE CompanyName = ? AND CustomerId = ?")  
-  .bind("Alfreds Futterkiste", 1);  
+const stmt = db  .prepare("SELECT * FROM Customers WHERE CompanyName = ? AND CustomerId = ?")  .bind("Alfreds Futterkiste", 1);  
 ```  
 Python  
 ```  
-stmt = db.prepare(  
-"SELECT * FROM Customers WHERE CompanyName = ? AND CustomerId = ?"  
-).bind("Alfreds Futterkiste", 1)  
-```  
-   * [  JavaScript ](#tab-panel-7975)  
-   * [  Python ](#tab-panel-7976)  
+stmt = db.prepare("SELECT * FROM Customers WHERE CompanyName = ? AND CustomerId = ?").bind("Alfreds Futterkiste", 1)  
+```
+
+  * [  JavaScript ](#tab-panel-8051)
+  * [  Python ](#tab-panel-8052)  
 JavaScript  
 ```  
-const stmt = db  
-  .prepare(  
-  "SELECT * FROM Customers WHERE CompanyName = ?2 AND CustomerId = ?1"  
-).bind(1, "Alfreds Futterkiste");  
+const stmt = db  .prepare(  "SELECT * FROM Customers WHERE CompanyName = ?2 AND CustomerId = ?1").bind(1, "Alfreds Futterkiste");  
 ```  
 Python  
 ```  
@@ -116,93 +99,55 @@ The recommended approach is to use [prepared statements](https://developers.clou
 
 Example of a prepared statement with dynamically bound value:
 
-* [  JavaScript ](#tab-panel-7977)
-* [  Python ](#tab-panel-7978)
+* [  JavaScript ](#tab-panel-8053)
+* [  Python ](#tab-panel-8054)
 
 JavaScript
 
 ```
-
-const someVariable = `Bs Beverages`;
-
-const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(someVariable);
-
-// A variable (someVariable) will replace the placeholder '?' in the query.
-
-// `stmt` is a prepared statement.
-
-
+const someVariable = `Bs Beverages`;const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(someVariable);// A variable (someVariable) will replace the placeholder '?' in the query.// `stmt` is a prepared statement.
 ```
 
 Python
 
 ```
-
-some_variable = "Bs Beverages"
-
-stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(some_variable)
-
-# A variable (some_variable) will replace the placeholder '?' in the query.
-
-# `stmt` is a prepared statement.
-
-
+some_variable = "Bs Beverages"stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(some_variable)# A variable (some_variable) will replace the placeholder '?' in the query.# `stmt` is a prepared statement.
 ```
 
 Example of a static statement:
 
-* [  JavaScript ](#tab-panel-7979)
-* [  Python ](#tab-panel-7980)
+* [  JavaScript ](#tab-panel-8055)
+* [  Python ](#tab-panel-8056)
 
 JavaScript
 
 ```
-
-const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = 'Bs Beverages'");
-
-// "Bs Beverages" is hard-coded into the query.
-
-// `stmt` is a static statement.
-
-
+const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = 'Bs Beverages'");// "Bs Beverages" is hard-coded into the query.// `stmt` is a static statement.
 ```
 
 Python
 
 ```
-
-stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = 'Bs Beverages'")
-
-# "Bs Beverages" is hard-coded into the query.
-
-# `stmt` is a static statement.
-
-
+stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = 'Bs Beverages'")# "Bs Beverages" is hard-coded into the query.# `stmt` is a static statement.
 ```
 
 ### `run()`
 
 Runs the prepared query (or queries) and returns results. The returned results includes metadata.
 
-* [  JavaScript ](#tab-panel-7981)
-* [  Python ](#tab-panel-7982)
+* [  JavaScript ](#tab-panel-8057)
+* [  Python ](#tab-panel-8058)
 
 JavaScript
 
 ```
-
 const returnValue = await stmt.run();
-
-
 ```
 
 Python
 
 ```
-
 return_value = await stmt.run()
-
-
 ```
 
 #### Parameter
@@ -212,100 +157,29 @@ return_value = await stmt.run()
 #### Return values
 
 * `D1Result`: ` Object `  
-   * An object containing the success status, a meta object, and an array of objects containing the query results.  
-   * For more information on the object, refer to [D1Result](https://developers.cloudflare.com/d1/worker-api/return-object/#d1result).
+  * An object containing the success status, a meta object, and an array of objects containing the query results.
+  * For more information on the object, refer to [D1Result](https://developers.cloudflare.com/d1/worker-api/return-object/#d1result).
 
 Example of return values
 
-* [  JavaScript ](#tab-panel-7983)
-* [  Python ](#tab-panel-7984)
+* [  JavaScript ](#tab-panel-8059)
+* [  Python ](#tab-panel-8060)
 
 JavaScript
 
 ```
-
-const someVariable = `Bs Beverages`;
-
-const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(someVariable);
-
-const returnValue = await stmt.run();
-
-return Response.json(returnValue);
-
-
+const someVariable = `Bs Beverages`;const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(someVariable);const returnValue = await stmt.run();return Response.json(returnValue);
 ```
 
 Python
 
 ```
-
 from workers import Response
-
-
-some_variable = "Bs Beverages"
-
-stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(some_variable)
-
-return_value = await stmt.run()
-
-return Response.json(return_value)
-
-
+some_variable = "Bs Beverages"stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(some_variable)return_value = await stmt.run()return Response.json(return_value)
 ```
 
 ```
-
-{
-
-  "success": true,
-
-  "meta": {
-
-    "served_by": "miniflare.db",
-
-    "duration": 1,
-
-    "changes": 0,
-
-    "last_row_id": 0,
-
-    "changed_db": false,
-
-    "size_after": 8192,
-
-    "rows_read": 4,
-
-    "rows_written": 0
-
-  },
-
-  "results": [
-
-    {
-
-      "CustomerId": 11,
-
-      "CompanyName": "Bs Beverages",
-
-      "ContactName": "Victoria Ashworth"
-
-    },
-
-    {
-
-      "CustomerId": 13,
-
-      "CompanyName": "Bs Beverages",
-
-      "ContactName": "Random Name"
-
-    }
-
-  ]
-
-}
-
-
+{  "success": true,  "meta": {    "served_by": "miniflare.db",    "duration": 1,    "changes": 0,    "last_row_id": 0,    "changed_db": false,    "size_after": 8192,    "rows_read": 4,    "rows_written": 0  },  "results": [    {      "CustomerId": 11,      "CompanyName": "Bs Beverages",      "ContactName": "Victoria Ashworth"    },    {      "CustomerId": 13,      "CompanyName": "Bs Beverages",      "ContactName": "Random Name"    }  ]}
 ```
 
 #### Guidance
@@ -317,57 +191,24 @@ return Response.json(return_value)
 
 Example of returning only the `results`
 
-* [  JavaScript ](#tab-panel-7985)
-* [  Python ](#tab-panel-7986)
+* [  JavaScript ](#tab-panel-8061)
+* [  Python ](#tab-panel-8062)
 
 JavaScript
 
 ```
-
 return Response.json(returnValue.results);
-
-
 ```
 
 Python
 
 ```
-
 from workers import Response
-
-
 return Response.json(return_value.results)
-
-
 ```
 
 ```
-
-[
-
-  {
-
-    "CustomerId": 11,
-
-    "CompanyName": "Bs Beverages",
-
-    "ContactName": "Victoria Ashworth"
-
-  },
-
-  {
-
-    "CustomerId": 13,
-
-    "CompanyName": "Bs Beverages",
-
-    "ContactName": "Random Name"
-
-  }
-
-]
-
-
+[  {    "CustomerId": 11,    "CompanyName": "Bs Beverages",    "ContactName": "Victoria Ashworth"  },  {    "CustomerId": 13,    "CompanyName": "Bs Beverages",    "ContactName": "Random Name"  }]
 ```
 
 ### `raw()`
@@ -376,165 +217,73 @@ Runs the prepared query (or queries), and returns the results as an array of arr
 
 Column names are not included in the result set by default. To include column names as the first row of the result array, set `.raw({columnNames: true})`.
 
-* [  JavaScript ](#tab-panel-7987)
-* [  Python ](#tab-panel-7988)
+* [  JavaScript ](#tab-panel-8063)
+* [  Python ](#tab-panel-8064)
 
 JavaScript
 
 ```
-
 const returnValue = await stmt.raw();
-
-
 ```
 
 Python
 
 ```
-
 return_value = await stmt.raw()
-
-
 ```
 
 #### Parameters
 
 * `columnNames`: ` Object ` Optional  
-   * A boolean object which includes column names as the first row of the result array.
+  * A boolean object which includes column names as the first row of the result array.
 
 #### Return values
 
 * `Array`: ` Array `  
-   * An array of arrays. Each sub-array represents a row.
+  * An array of arrays. Each sub-array represents a row.
 
 Example of return values
 
-* [  JavaScript ](#tab-panel-7989)
-* [  Python ](#tab-panel-7990)
+* [  JavaScript ](#tab-panel-8065)
+* [  Python ](#tab-panel-8066)
 
 JavaScript
 
 ```
-
-const someVariable = `Bs Beverages`;
-
-const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(someVariable);
-
-const returnValue = await stmt.raw();
-
-return Response.json(returnValue);
-
-
+const someVariable = `Bs Beverages`;const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(someVariable);const returnValue = await stmt.raw();return Response.json(returnValue);
 ```
 
 Python
 
 ```
-
 from workers import Response
-
-
-some_variable = "Bs Beverages"
-
-stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(some_variable)
-
-return_value = await stmt.raw()
-
-return Response.json(return_value)
-
-
+some_variable = "Bs Beverages"stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(some_variable)return_value = await stmt.raw()return Response.json(return_value)
 ```
 
 ```
-
-[
-
-  [11, "Bs Beverages",
-
-    "Victoria Ashworth"
-
-  ],
-
-  [13, "Bs Beverages",
-
-    "Random Name"
-
-  ]
-
-]
-
-
+[  [11, "Bs Beverages",    "Victoria Ashworth"  ],  [13, "Bs Beverages",    "Random Name"  ]]
 ```
 
 With parameter `columnNames: true`:
 
-* [  JavaScript ](#tab-panel-7991)
-* [  Python ](#tab-panel-7992)
+* [  JavaScript ](#tab-panel-8067)
+* [  Python ](#tab-panel-8068)
 
 JavaScript
 
 ```
-
-const someVariable = `Bs Beverages`;
-
-const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(someVariable);
-
-const returnValue = await stmt.raw({columnNames:true});
-
-return Response.json(returnValue)
-
-
+const someVariable = `Bs Beverages`;const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(someVariable);const returnValue = await stmt.raw({columnNames:true});return Response.json(returnValue)
 ```
 
 Python
 
 ```
-
-from pyodide.ffi import to_js
-
-from workers import Response
-
-
-some_variable = "Bs Beverages"
-
-stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(some_variable)
-
-return_value = await stmt.raw(columnNames=True)
-
-return Response.json(return_value)
-
-
+from pyodide.ffi import to_jsfrom workers import Response
+some_variable = "Bs Beverages"stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(some_variable)return_value = await stmt.raw(columnNames=True)return Response.json(return_value)
 ```
 
 ```
-
-[
-
-  [
-
-    "CustomerId",
-
-    "CompanyName",
-
-    "ContactName"
-
-  ],
-
-  [11, "Bs Beverages",
-
-    "Victoria Ashworth"
-
-  ],
-
-  [13, "Bs Beverages",
-
-    "Random Name"
-
-  ]
-
-]
-
-
+[  [    "CustomerId",    "CompanyName",    "ContactName"  ],  [11, "Bs Beverages",    "Victoria Ashworth"  ],  [13, "Bs Beverages",    "Random Name"  ]]
 ```
 
 #### Guidance
@@ -545,140 +294,82 @@ return Response.json(return_value)
 
 Runs the prepared query (or queries), and returns the first row of the query result as an object. This does not return any metadata. Instead, it directly returns the object.
 
-* [  JavaScript ](#tab-panel-7993)
-* [  Python ](#tab-panel-7994)
+* [  JavaScript ](#tab-panel-8069)
+* [  Python ](#tab-panel-8070)
 
 JavaScript
 
 ```
-
 const values = await stmt.first();
-
-
 ```
 
 Python
 
 ```
-
 values = await stmt.first()
-
-
 ```
 
 #### Parameters
 
 * `columnName`: ` String ` Optional  
-   * Specify a `columnName` to return a value from a specific column in the first row of the query result.
+  * Specify a `columnName` to return a value from a specific column in the first row of the query result.
 * None.  
-   * Do not pass a parameter to obtain all columns from the first row.
+  * Do not pass a parameter to obtain all columns from the first row.
 
 #### Return values
 
-* `firstRow`: ` Object ` Optional  
-   * An object containing the first row of the query result.  
-   * The return value will be further filtered to a specific attribute if `columnName` was specified.
-* `null`: ` null `  
-   * If the query returns no rows.
+* `firstRow`: ` Object ` Optional
+
+  * An object containing the first row of the query result.
+  * The return value will be further filtered to a specific attribute if `columnName` was specified.
+* `null`: ` null `
+
+  * If the query returns no rows.
 
 Example of return values
 
 Get all the columns from the first row:
 
-* [  JavaScript ](#tab-panel-7995)
-* [  Python ](#tab-panel-7996)
+* [  JavaScript ](#tab-panel-8071)
+* [  Python ](#tab-panel-8072)
 
 JavaScript
 
 ```
-
-const someVariable = `Bs Beverages`;
-
-const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(someVariable);
-
-const returnValue = await stmt.first();
-
-return Response.json(returnValue)
-
-
+const someVariable = `Bs Beverages`;const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(someVariable);const returnValue = await stmt.first();return Response.json(returnValue)
 ```
 
 Python
 
 ```
-
 from workers import Response
-
-
-some_variable = "Bs Beverages"
-
-stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(some_variable)
-
-return_value = await stmt.first()
-
-return Response.json(return_value)
-
-
+some_variable = "Bs Beverages"stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(some_variable)return_value = await stmt.first()return Response.json(return_value)
 ```
 
 ```
-
-{
-
-  "CustomerId": 11,
-
-  "CompanyName": "Bs Beverages",
-
-  "ContactName": "Victoria Ashworth"
-
-}
-
-
+{  "CustomerId": 11,  "CompanyName": "Bs Beverages",  "ContactName": "Victoria Ashworth"}
 ```
 
 Get a specific column from the first row:
 
-* [  JavaScript ](#tab-panel-7997)
-* [  Python ](#tab-panel-7998)
+* [  JavaScript ](#tab-panel-8073)
+* [  Python ](#tab-panel-8074)
 
 JavaScript
 
 ```
-
-const someVariable = `Bs Beverages`;
-
-const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(someVariable);
-
-const returnValue = await stmt.first("CustomerId");
-
-return Response.json(returnValue)
-
-
+const someVariable = `Bs Beverages`;const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(someVariable);const returnValue = await stmt.first("CustomerId");return Response.json(returnValue)
 ```
 
 Python
 
 ```
-
 from workers import Response
-
-
-some_variable = "Bs Beverages"
-
-stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(some_variable)
-
-return_value = await stmt.first("CustomerId")
-
-return Response.json(return_value)
-
-
+some_variable = "Bs Beverages"stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(some_variable)return_value = await stmt.first("CustomerId")return Response.json(return_value)
 ```
 
 ```
-
 11
-
-
 ```
 
 #### Guidance

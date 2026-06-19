@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,19 +23,11 @@ For instance, `dig` can ask a DNS resolver for the IP address of `www.cloudflare
 Terminal window
 
 ```
-
 dig www.cloudflare.com +short
-
-
 ```
 
 ```
-
-198.41.215.162
-
-198.41.214.162
-
-
+198.41.215.162198.41.214.162
 ```
 
 The option `+short` outputs the result only.
@@ -45,21 +37,11 @@ Use `+dnssec` to verify that the DNS records are signed:
 Terminal window
 
 ```
-
 dig www.cloudflare.com +dnssec +short
-
-
 ```
 
 ```
-
-198.41.214.162
-
-198.41.215.162
-
-A 13 3 300 20180927180434 20180925160434 35273 cloudflare.com. DYYZ/bhHSAIlpvu/HEUsxlzkC9NsswbCQ7dcfcuiNBrbhYV7k3AI8t46 QMnOlfhwT6jqsfN7ePV6Fwpym3B0pg==
-
-
+198.41.214.162198.41.215.162A 13 3 300 20180927180434 20180925160434 35273 cloudflare.com. DYYZ/bhHSAIlpvu/HEUsxlzkC9NsswbCQ7dcfcuiNBrbhYV7k3AI8t46 QMnOlfhwT6jqsfN7ePV6Fwpym3B0pg==
 ```
 
 In this example, the last line of output is the `RRSIG` record. `RRSIG` is the DNSSEC signature attached to the record. With the `RRSIG`, a DNS resolver determines whether a DNS response is trusted.
@@ -69,19 +51,11 @@ In this example, the last line of output is the `RRSIG` record. `RRSIG` is the D
 Terminal window
 
 ```
-
 dig DNSKEY cloudflare.com +short
-
-
 ```
 
 ```
-
-257 3 13 mdsswUyr3DPW132mOi8V9xESWE8jTo0dxCjjnopKl+GqJxpVXckHAeF+ KkxLbxILfDLUT0rAK9iUzy1L53eKGQ==
-
-256 3 13 koPbw9wmYZ7ggcjnQ6ayHyhHaDNMYELKTqT+qRGrZpWSccr/lBcrm10Z 1PuQHB3Azhii+sb0PYFkH1ruxLhe5g==
-
-
+257 3 13 mdsswUyr3DPW132mOi8V9xESWE8jTo0dxCjjnopKl+GqJxpVXckHAeF+ KkxLbxILfDLUT0rAK9iUzy1L53eKGQ==256 3 13 koPbw9wmYZ7ggcjnQ6ayHyhHaDNMYELKTqT+qRGrZpWSccr/lBcrm10Z 1PuQHB3Azhii+sb0PYFkH1ruxLhe5g==
 ```
 
 A domain's DNS records are all signed with the same public key. Therefore, query for the apex domain (`cloudflare.com`) public key, not the subdomain (`www.cloudflare.com`) public key.
@@ -100,35 +74,11 @@ When not using the `+short` option with `dig`, a DNS response is DNSSEC authenti
 Terminal window
 
 ```
-
 dig www.cloudflare.com
-
-
 ```
 
 ```
-
-[...]
-
-;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 65326
-
-;; flags: qr rd ra ad; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
-
-[...]
-
-;; QUESTION SECTION:
-
-;www.cloudflare.com.        IN  A
-
-[...]
-
-;; ANSWER SECTION:
-
-www.cloudflare.com. 15  IN  A   198.41.215.162
-
-www.cloudflare.com. 15  IN  A   198.41.214.162
-
-
+[...];; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 65326;; flags: qr rd ra ad; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1[...];; QUESTION SECTION:;www.cloudflare.com.        IN  A[...];; ANSWER SECTION:www.cloudflare.com. 15  IN  A   198.41.215.162www.cloudflare.com. 15  IN  A   198.41.214.162
 ```
 
 ---
@@ -167,17 +117,11 @@ Use `dig` to find a `DS` record:
 Terminal window
 
 ```
-
 dig +short DS cloudflare.com
-
-
 ```
 
 ```
-
 2371 13 2 32996839A6D808AFE3EB4A795A0E6A7A39A76FC52FF228B22B76F6D6 3826F2B9
-
-
 ```
 
 When using the `+trace` option, `dig` confirms whether an answer is returned by the nameserver for `cloudflare.com` or the nameserver for `.com`. In this example, the `DS` record for `cloudflare.com` is returned by `e.gtld-servers.net`:
@@ -185,27 +129,11 @@ When using the `+trace` option, `dig` confirms whether an answer is returned by 
 Terminal window
 
 ```
-
 dig DS cloudflare.com +trace
-
-
 ```
 
 ```
-
-[...]
-
-cloudflare.com.     86400   IN  DS  2371 13 2 32996839A6D808AFE3EB4A795A0E6A7A39A76FC52FF228B22B76F6D6 3826F2B9
-
-[...]
-
-com.            172800  IN  NS  e.gtld-servers.net.
-
-[...]
-
-;; Received 1213 bytes from 2001:502:1ca1::30#53(e.gtld-servers.net) in 37 ms
-
-
+[...]cloudflare.com.     86400   IN  DS  2371 13 2 32996839A6D808AFE3EB4A795A0E6A7A39A76FC52FF228B22B76F6D6 3826F2B9[...]com.            172800  IN  NS  e.gtld-servers.net.[...];; Received 1213 bytes from 2001:502:1ca1::30#53(e.gtld-servers.net) in 37 ms
 ```
 
 An easier alternative to manually running the steps above is to use the third-party tool [DNSViz](#troubleshoot-dnssec-validation-using-dnsviz).
@@ -219,19 +147,11 @@ Issues occur if authoritative DNS providers are changed without updating or remo
 Terminal window
 
 ```
-
 dig A brokendnssec.net @1.0.0.1
-
-
 ```
 
 ```
-
-;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
-
-;; ->>HEADER<<- opcode: QUERY, status: SERVFAIL, id: 10663
-
-
+;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0;; ->>HEADER<<- opcode: QUERY, status: SERVFAIL, id: 10663
 ```
 
 Confirm whether a `SERVFAIL` response is related to DNSSEC by running `dig` with the `+cd` option. The `+cd` option provides DNS results without any DNSSEC validation in place.
@@ -239,19 +159,11 @@ Confirm whether a `SERVFAIL` response is related to DNSSEC by running `dig` with
 Terminal window
 
 ```
-
 dig A brokendnssec.net @1.0.0.1 +dnssec +cd +short
-
-
 ```
 
 ```
-
-104.20.49.61
-
-104.20.48.61
-
-
+104.20.49.61104.20.48.61
 ```
 
 In this example, DNSSEC is misconfigured if a proper DNS response is received when using the `+cd` option but queries using DNSSEC return a `SERVFAIL` response. This issue often happens when authoritative nameservers are changed but `DS` records are not updated. The issue can also occur if an attacker attempts to forge a response to a query.
@@ -276,20 +188,13 @@ Use the [Delete DNSSEC API](https://developers.cloudflare.com/api/resources/dns/
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `DNS Write`
 
 Delete DNSSEC records
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dnssec" \
-
-  --request DELETE \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dnssec" \  --request DELETE \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 For more information on DNSSEC states, refer to [DNSSEC states](https://developers.cloudflare.com/dns/dnssec/dnssec-states/).
@@ -301,10 +206,7 @@ After removing the DNSKEY records, verify they no longer appear in DNS responses
 Terminal window
 
 ```
-
 dig DNSKEY example.com +short
-
-
 ```
 
 If DNSKEY records still appear, wait for the [time-to-live (TTL)](https://developers.cloudflare.com/dns/manage-dns-records/reference/ttl/) to expire. DNSKEY records typically have longer TTL values (often 3600 seconds or more), so propagation may take one hour or longer.

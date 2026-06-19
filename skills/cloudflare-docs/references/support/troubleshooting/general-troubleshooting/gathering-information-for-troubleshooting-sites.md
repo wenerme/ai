@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/support/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -195,7 +195,7 @@ When to use
 
 Use this when you need to **determine which Cloudflare Point of Presence (PoP) is serving your requests**. This is helpful when troubleshooting regional issues or verifying traffic routing.
 
-[A map of our data centers ↗](https://www.cloudflare.com/network-map) is listed on the [Cloudflare status page ↗](https://www.cloudflarestatus.com/), sorted by continent. The three-letter code in the data center name is the [IATA code ↗](http://en.wikipedia.org/wiki/IATA%5Fairport%5Fcode) of the nearest major international airport. Determine the Cloudflare data center serving requests for your browser by visiting:``` http://``_www.example.com_``/cdn-cgi/trace. ```
+[A map of our data centers ↗](https://www.cloudflare.com/network-map) is listed on the [Cloudflare status page ↗](https://www.cloudflarestatus.com/), sorted by continent. The three-letter code in the data center name is the [IATA code ↗](http://en.wikipedia.org/wiki/IATA%5Fairport%5Fcode) of the nearest major international airport. Determine the Cloudflare data center serving requests for your browser by visiting: ``` http://``_www.example.com_``/cdn-cgi/trace. ```
 
 Replace `www.example.com` with your domain and hostname. Note the `colo` field from the output.
 
@@ -216,17 +216,14 @@ Use curl when you need to **test HTTP requests without browser interference**, m
 
 Note
 
-If you are using Windows, you can find more details on how to use curl on Windows in our [Making API calls on Windows](https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/#making-api-calls-on-windows) article.
+If you are using Windows, you can find more details on how to use curl on Windows in our [Making API calls on Windows ](https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/#making-api-calls-on-windows) article.
 
 Run the following command to send a standard HTTP GET request to your website (replace `www.example.com` with your hostname):
 
 Terminal window
 
 ```
-
 curl -svo /dev/null http://www.example.com/
-
-
 ```
 
 This example curl command returns output detailing the HTTP response and request headers but discards the page body output. curl output confirms the HTTP response and whether Cloudflare is currently proxying traffic for the site.
@@ -244,10 +241,7 @@ When troubleshooting HTTP errors in responses from Cloudflare, test whether your
 Terminal window
 
 ```
-
 curl -svo /dev/null http://example.com --connect-to ::203.0.113.34
-
-
 ```
 
 Note
@@ -261,42 +255,7 @@ curl measures latency or performance degradation for HTTP/HTTPS requests via the
 Terminal window
 
 ```
-
-curl -svo /dev/null https://example.com/ -w "\nContent Type: %{content_type} \
-
-\nHTTP Code: %{http_code} \
-
-\nHTTP Connect:%{http_connect} \
-
-\nNumber Connects: %{num_connects} \
-
-\nNumber Redirects: %{num_redirects} \
-
-\nRedirect URL: %{redirect_url} \
-
-\nSize Download: %{size_download} \
-
-\nSize Upload: %{size_upload} \
-
-\nSSL Verify: %{ssl_verify_result} \
-
-\nTime Handshake: %{time_appconnect} \
-
-\nTime Connect: %{time_connect} \
-
-\nName Lookup Time: %{time_namelookup} \
-
-\nTime Pretransfer: %{time_pretransfer} \
-
-\nTime Redirect: %{time_redirect} \
-
-\nTime Start Transfer: %{time_starttransfer} \
-
-\nTime Total: %{time_total} \
-
-\nEffective URL: %{url_effective}\n" 2>&1
-
-
+curl -svo /dev/null https://example.com/ -w "\nContent Type: %{content_type} \\nHTTP Code: %{http_code} \\nHTTP Connect:%{http_connect} \\nNumber Connects: %{num_connects} \\nNumber Redirects: %{num_redirects} \\nRedirect URL: %{redirect_url} \\nSize Download: %{size_download} \\nSize Upload: %{size_upload} \\nSSL Verify: %{ssl_verify_result} \\nTime Handshake: %{time_appconnect} \\nTime Connect: %{time_connect} \\nName Lookup Time: %{time_namelookup} \\nTime Pretransfer: %{time_pretransfer} \\nTime Redirect: %{time_redirect} \\nTime Start Transfer: %{time_starttransfer} \\nTime Total: %{time_total} \\nEffective URL: %{url_effective}\n" 2>&1
 ```
 
 [Explanation of this timing output ↗](https://blog.cloudflare.com/a-question-of-timing/) is found on the Cloudflare blog.
@@ -328,10 +287,7 @@ The following curl command shows the SSL certificate served by Cloudflare during
 Terminal window
 
 ```
-
 curl -svo /dev/null https://www.example.com/ 2>&1 | egrep -v "^{.*$|^}.*$|^* http.*$"
-
-
 ```
 
 Note
@@ -343,10 +299,7 @@ To display the origin certificate (assuming one is installed), replace `203.0.11
 Terminal window
 
 ```
-
 curl -svo /dev/null https://www.example.com --connect-to ::203.0.113.34 2>&1 | egrep -v "^{.*$|^}.*$|^* http.*$"
-
-
 ```
 
 #### Testing TLS Versions
@@ -398,10 +351,7 @@ For IPv4 -
 Terminal window
 
 ```
-
 tracert www.example.com
-
-
 ```
 
 For IPv6 -
@@ -409,10 +359,7 @@ For IPv6 -
 Terminal window
 
 ```
-
 tracert -6 www.example.com
-
-
 ```
 
 1. Press **Enter**.
@@ -428,10 +375,7 @@ For IPv4 -
 Terminal window
 
 ```
-
 traceroute www.example.com
-
-
 ```
 
 For IPv6 -
@@ -439,10 +383,7 @@ For IPv6 -
 Terminal window
 
 ```
-
 traceroute -6 www.example.com
-
-
 ```
 
 1. You can copy the results to save in a file or paste in another program.
@@ -467,25 +408,13 @@ The **CF-RAY** header traces a website request through Cloudflare's network. Pro
 #### For Apache web servers, add `%{CF-Ray}i` to LogFormat
 
 ```
-
 LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-agent}i\" %{CF-Ray}i" cf_custom
-
-
 ```
 
 #### For Nginx web servers, add '$http\_cf\_ray' to log\_format
 
 ```
-
-log_format cf_custom '$remote_addr - $remote_user [$time_local] '
-
-'"$request" $status $body_bytes_sent '
-
-'"$http_referer" "$http_user_agent" '
-
-'$http_cf_ray';
-
-
+log_format cf_custom '$remote_addr - $remote_user [$time_local] ''"$request" $status $body_bytes_sent ''"$http_referer" "$http_user_agent" ''$http_cf_ray';
 ```
 
 ### Perform a MTR
@@ -513,10 +442,7 @@ Generally, we'd use MTR as the following:
 Terminal window
 
 ```
-
 mtr -rw <dest_hostname> e.g.: mtr -rw one.one.one.one
-
-
 ```
 
 or with destination IP:
@@ -524,10 +450,7 @@ or with destination IP:
 Terminal window
 
 ```
-
 mtr -rw <dest_IP> e.g.: mtr -rw 1.1.1.1
-
-
 ```
 
 with TCP port
@@ -535,10 +458,7 @@ with TCP port
 Terminal window
 
 ```
-
 mtr -P <tcp port> -T <destination ip>
-
-
 ```
 
 Please refer to this documentation, which explains more about analysing MTR: [How to read MTR ↗](https://www.cloudflare.com/en-gb/learning/network-layer/what-is-mtr/).

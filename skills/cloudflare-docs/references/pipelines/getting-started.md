@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pipelines/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -47,64 +47,15 @@ This token also includes the R2 SQL Read permission, which allows you to query y
 
 ## 2\. Create your first pipeline
 
-* [ Wrangler CLI ](#tab-panel-9447)
-* [ Dashboard ](#tab-panel-9448)
+* [ Wrangler CLI ](#tab-panel-9523)
+* [ Dashboard ](#tab-panel-9524)
 
 First, create a schema file that defines your ecommerce data structure:
 
 **Create `schema.json`:**
 
 ```
-
-{
-
-  "fields": [
-
-    {
-
-      "name": "user_id",
-
-      "type": "string",
-
-      "required": true
-
-    },
-
-    {
-
-      "name": "event_type",
-
-      "type": "string",
-
-      "required": true
-
-    },
-
-    {
-
-      "name": "product_id",
-
-      "type": "string",
-
-      "required": false
-
-    },
-
-    {
-
-      "name": "amount",
-
-      "type": "float64",
-
-      "required": false
-
-    }
-
-  ]
-
-}
-
-
+{  "fields": [    {      "name": "user_id",      "type": "string",      "required": true    },    {      "name": "event_type",      "type": "string",      "required": true    },    {      "name": "product_id",      "type": "string",      "required": false    },    {      "name": "amount",      "type": "float64",      "required": false    }  ]}
 ```
 
 Use the interactive setup to create a pipeline that writes to R2 Data Catalog:
@@ -112,10 +63,7 @@ Use the interactive setup to create a pipeline that writes to R2 Data Catalog:
 Terminal window
 
 ```
-
 npx wrangler pipelines setup
-
-
 ```
 
 Note
@@ -125,18 +73,20 @@ The setup command automatically creates the [R2 bucket](https://developers.cloud
 Follow the prompts:
 
 1. **Pipeline name**: Enter `ecommerce`
-2. **Stream configuration**:  
-   * Enable HTTP endpoint: `yes`  
-   * Require authentication: `no` (for simplicity)  
-   * Configure custom CORS origins: `no`  
-   * Schema definition: `Load from file`  
-   * Schema file path: `schema.json` (or your file path)
-3. **Sink configuration**:  
-   * Destination type: `Data Catalog (Iceberg)`  
-   * Setup mode: `Simple (recommended defaults)`  
-   * R2 bucket name: `pipelines-tutorial` (created automatically if it does not exist)  
-   * Table name: `ecommerce`  
-   * Catalog API token: Enter your token from step 1
+2. **Stream configuration**:
+
+  * Enable HTTP endpoint: `yes`
+  * Require authentication: `no` (for simplicity)
+  * Configure custom CORS origins: `no`
+  * Schema definition: `Load from file`
+  * Schema file path: `schema.json` (or your file path)
+3. **Sink configuration**:
+
+  * Destination type: `Data Catalog (Iceberg)`
+  * Setup mode: `Simple (recommended defaults)`
+  * R2 bucket name: `pipelines-tutorial` (created automatically if it does not exist)
+  * Table name: `ecommerce`
+  * Catalog API token: Enter your token from step 1
 4. **Review**: Confirm the summary and select `Create resources`
 5. **SQL transformation**: Choose `Simple ingestion (SELECT * FROM stream)`
 
@@ -161,10 +111,7 @@ You can also pre-set the pipeline name using the `--name` flag:
 Terminal window
 
 ```
-
 npx wrangler pipelines setup --name ecommerce
-
-
 ```
 
 1. In the Cloudflare dashboard, go to **R2 object storage**.  
@@ -176,58 +123,40 @@ npx wrangler pipelines setup --name ecommerce
 6. Go to **Pipelines** \> **Pipelines**.  
 [ Go to **Pipelines** ](https://dash.cloudflare.com/?to=/:account/pipelines/overview)
 7. Select **Create Pipeline**.
-8. **Connect to a Stream**:  
-   * Pipeline name: `ecommerce`  
-   * Enable HTTP endpoint for sending data: Enabled  
-   * HTTP authentication: Disabled (default)  
-   * Select **Next**
-9. **Define Input Schema**:  
-   * Select **JSON editor**  
-   * Copy in the schema:  
-   ```  
-   {  
-     "fields": [  
-       {  
-         "name": "user_id",  
-         "type": "string",  
-         "required": true  
-       },  
-       {  
-         "name": "event_type",  
-         "type": "string",  
-         "required": true  
-       },  
-       {  
-         "name": "product_id",  
-         "type": "string",  
-         "required": false  
-       },  
-       {  
-         "name": "amount",  
-         "type": "float64",  
-         "required": false  
-       }  
-     ]  
-   }  
-   ```  
-   * Select **Next**
-10. **Define Sink**:  
-   * Select your R2 bucket: `pipelines-tutorial`  
-   * Storage type: **R2 Data Catalog**  
-   * Namespace: `default`  
-   * Table name: `ecommerce`  
-   * **Advanced Settings**: Change **Maximum Time Interval** to `10 seconds`  
-   * Select **Next**
-11. **Credentials**:  
-   * Disable **Automatically create an Account API token for your sink**  
-   * Enter **Catalog Token** from step 1  
-   * Select **Next**
-12. **Pipeline Definition**:  
-   * Leave the default SQL query:  
-   ```  
-   INSERT INTO ecommerce_sink SELECT * FROM ecommerce_stream;  
-   ```  
-   * Select **Create Pipeline**
+8. **Connect to a Stream**:
+
+  * Pipeline name: `ecommerce`
+  * Enable HTTP endpoint for sending data: Enabled
+  * HTTP authentication: Disabled (default)
+  * Select **Next**
+9. **Define Input Schema**:
+
+  * Select **JSON editor**
+  * Copy in the schema:  
+  ```  
+  {  "fields": [    {      "name": "user_id",      "type": "string",      "required": true    },    {      "name": "event_type",      "type": "string",      "required": true    },    {      "name": "product_id",      "type": "string",      "required": false    },    {      "name": "amount",      "type": "float64",      "required": false    }  ]}  
+  ```
+  * Select **Next**
+10. **Define Sink**:
+
+  * Select your R2 bucket: `pipelines-tutorial`
+  * Storage type: **R2 Data Catalog**
+  * Namespace: `default`
+  * Table name: `ecommerce`
+  * **Advanced Settings**: Change **Maximum Time Interval** to `10 seconds`
+  * Select **Next**
+11. **Credentials**:
+
+  * Disable **Automatically create an Account API token for your sink**
+  * Enter **Catalog Token** from step 1
+  * Select **Next**
+12. **Pipeline Definition**:
+
+  * Leave the default SQL query:  
+  ```  
+  INSERT INTO ecommerce_sink SELECT * FROM ecommerce_stream;  
+  ```
+  * Select **Create Pipeline**
 13. After pipeline creation, note the **Stream ID** for the next step.
 
 ## 3\. Send sample data
@@ -237,50 +166,7 @@ Send ecommerce events to your pipeline's HTTP endpoint:
 Terminal window
 
 ```
-
-curl -X POST https://{stream-id}.ingest.cloudflare.com \
-
-  -H "Content-Type: application/json" \
-
-  -d '[
-
-    {
-
-      "user_id": "user_12345",
-
-      "event_type": "purchase",
-
-      "product_id": "widget-001",
-
-      "amount": 29.99
-
-    },
-
-    {
-
-      "user_id": "user_67890",
-
-      "event_type": "view_product",
-
-      "product_id": "widget-002"
-
-    },
-
-    {
-
-      "user_id": "user_12345",
-
-      "event_type": "add_to_cart",
-
-      "product_id": "widget-003",
-
-      "amount": 15.50
-
-    }
-
-  ]'
-
-
+curl -X POST https://{stream-id}.ingest.cloudflare.com \  -H "Content-Type: application/json" \  -d '[    {      "user_id": "user_12345",      "event_type": "purchase",      "product_id": "widget-001",      "amount": 29.99    },    {      "user_id": "user_67890",      "event_type": "view_product",      "product_id": "widget-002"    },    {      "user_id": "user_12345",      "event_type": "add_to_cart",      "product_id": "widget-003",      "amount": 15.50    }  ]'
 ```
 
 Replace `{stream-id}` with your actual stream endpoint from the pipeline setup.
@@ -299,19 +185,13 @@ Set up your environment to use R2 SQL:
 Terminal window
 
 ```
-
 export WRANGLER_R2_SQL_AUTH_TOKEN=YOUR_API_TOKEN
-
-
 ```
 
 Or create a `.env` file with:
 
 ```
-
 WRANGLER_R2_SQL_AUTH_TOKEN=YOUR_API_TOKEN
-
-
 ```
 
 Where `YOUR_API_TOKEN` is the token you created in step 1\. For more information on setting environment variables, refer to [Wrangler system environment variables](https://developers.cloudflare.com/workers/wrangler/system-environment-variables/).
@@ -321,26 +201,7 @@ Query your data:
 Terminal window
 
 ```
-
-npx wrangler r2 sql query "YOUR_WAREHOUSE_NAME" "
-
-SELECT
-
-    user_id,
-
-    event_type,
-
-    product_id,
-
-    amount
-
-FROM default.ecommerce
-
-WHERE event_type = 'purchase'
-
-LIMIT 10"
-
-
+npx wrangler r2 sql query "YOUR_WAREHOUSE_NAME" "SELECT    user_id,    event_type,    product_id,    amountFROM default.ecommerceWHERE event_type = 'purchase'LIMIT 10"
 ```
 
 Replace `YOUR_WAREHOUSE_NAME` with the warehouse name noted during pipeline setup. You can find it in the Cloudflare dashboard under **R2 object storage** \> your bucket > **Settings** \> **R2 Data Catalog**.
@@ -353,7 +214,7 @@ You can also query this table with any engine that supports Apache Iceberg. To l
 
 [ Pipelines ](https://developers.cloudflare.com/pipelines/pipelines/) Understand SQL transformations and pipeline configuration. 
 
-[ Sinks ](https://developers.cloudflare.com/pipelines/sinks/) Configure data destinations and output formats. 
+[ Sinks ](https://developers.cloudflare.com/pipelines/sinks/) Configure data destinations and output formats.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/getting-started/#page","headline":"Getting started · Cloudflare Pipelines Docs","description":"Create your first pipeline to ingest streaming data and write to R2 Data Catalog as an Apache Iceberg table.","url":"https://developers.cloudflare.com/pipelines/getting-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

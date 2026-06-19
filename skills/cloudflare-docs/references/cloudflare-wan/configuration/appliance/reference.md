@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -70,12 +70,12 @@ The Cloudflare One Appliance's health can be in one of three states:
 
 * **Good** : All health parameters are good
 * **Degraded** : One of the following is true:  
-   * Health of at least one configured tunnel is `DOWN`  
-   * At least one of the LAN links is disconnected (physically unplugged)
+  * Health of at least one configured tunnel is `DOWN`
+  * At least one of the LAN links is disconnected (physically unplugged)
 * **Down** : If one of the following is true:  
-   * Health of all tunnels is `DOWN`  
-   * All LAN interfaces are disconnected  
-   * Cloudflare One Appliance's software is not healthy
+  * Health of all tunnels is `DOWN`
+  * All LAN interfaces are disconnected
+  * Cloudflare One Appliance's software is not healthy
 
 A failover happens when the active node's health declines to a level lower than that of the standby node. For example, from `GOOD` to `DEGRADED`, or from `DEGRADED` to `DOWN`. In the case of a failover where one Cloudflare One Appliance is acting as a DHCP server, DHCP leases will be synchronized.
 

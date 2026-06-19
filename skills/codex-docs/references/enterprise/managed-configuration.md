@@ -269,7 +269,7 @@ For example, `allowed_web_search_modes = ["cached"]` prevents live web search ev
 
 Use `[experimental_network]` in `requirements.toml` when administrators should
 define network access requirements centrally. These requirements are separate
-from the user `features.network_proxy` toggle: they can configure sandboxed
+from the user `features.network_proxy` toggle: they can configure sandbox
 networking without that feature flag, but they don't grant command network
 access when the active sandbox keeps networking off.
 
@@ -291,7 +291,7 @@ exclusive. If it's `true` without managed allow rules, user-added domain allow
 rules don't remain effective.
 
 The domain syntax, local/private destination rules, deny-over-allow behavior,
-and DNS rebinding limitations are the same as the sandboxed networking behavior
+and DNS rebinding limitations are the same as the sandbox networking behavior
 described in [Agent approvals & security](https://developers.openai.com/codex/agent-approvals-security#network-isolation).
 
 ### Pin feature flags
@@ -319,7 +319,7 @@ Use the canonical feature keys from `config.toml`'s `[features]` table. Codex no
 - `browser_use = false` disables Browser Use and Browser Agent availability.
 - `browser_use_full_cdp_access = false` prevents users from enabling full CDP
   access in Browser Developer mode.
-- `computer_use = false` disables Computer Use availability and related
+- `computer_use = false` disables Computer Use, Record & Replay, and related
   install or setup flows.
 
 If omitted, these features are allowed by policy, subject to normal client,

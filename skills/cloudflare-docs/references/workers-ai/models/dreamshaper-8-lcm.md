@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,75 +26,27 @@ Stable Diffusion model that has been fine-tuned to be better at photorealism wit
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4779)
-* [  curl ](#tab-panel-4780)
+* [  TypeScript ](#tab-panel-4853)
+* [  curl ](#tab-panel-4854)
 
 ```
-
-export interface Env {
-
-  AI: Ai;
-
-}
-
-
-export default {
-
-  async fetch(request, env): Promise<Response> {
-
-
-    const inputs = {
-
-      prompt: "cyberpunk cat",
-
-    };
-
-
-    const response = await env.AI.run(
-
-      "@cf/lykon/dreamshaper-8-lcm",
-
-      inputs
-
-    );
-
-
-    return new Response(response, {
-
-      headers: {
-
-        "content-type": "image/jpg",
-
-      },
-
-    });
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export interface Env {  AI: Ai;}
+export default {  async fetch(request, env): Promise<Response> {
+    const inputs = {      prompt: "cyberpunk cat",    };
+    const response = await env.AI.run(      "@cf/lykon/dreamshaper-8-lcm",      inputs    );
+    return new Response(response, {      headers: {        "content-type": "image/jpg",      },    });  },} satisfies ExportedHandler<Env>;
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/lykon/dreamshaper-8-lcm  \
-
-  -X POST  \
-
-  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
-
-  -d '{ "prompt": "cyberpunk cat" }'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/lykon/dreamshaper-8-lcm  \  -X POST  \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \  -d '{ "prompt": "cyberpunk cat" }'
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-4781)
-* [ Output ](#tab-panel-4782)
+* [ Input ](#tab-panel-4855)
+* [ Output ](#tab-panel-4856)
 
 prompt
 
@@ -140,13 +92,13 @@ seed
 
 `integer`Random seed for reproducibility of the image generation
 
-The binding returns a `ReadableStream` with the output (check the model's output schema).
+ The binding returns a `ReadableStream` with the output (check the model's output schema). 
 
 ## API Schemas (Raw)
 
 Input [ ](https://developers.cloudflare.com/workers-ai/models/dreamshaper-8-lcm/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/dreamshaper-8-lcm/schema-input.json "Download") 
 
-Output [ ](https://developers.cloudflare.com/workers-ai/models/dreamshaper-8-lcm/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/dreamshaper-8-lcm/schema-output.json "Download") 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/dreamshaper-8-lcm/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/dreamshaper-8-lcm/schema-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/dreamshaper-8-lcm/#page","headline":"dreamshaper-8-lcm (lykon) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Stable Diffusion model that has been fine-tuned to be better at photorealism without sacrificing range.","url":"https://developers.cloudflare.com/workers-ai/models/dreamshaper-8-lcm/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

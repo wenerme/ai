@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -58,8 +58,8 @@ HTTP Adaptive DDoS Protection rules calculate the traffic profile at the zone-le
 
 To view traffic flagged by HTTP Adaptive DDoS Protection rules:
 
-* [  New dashboard ](#tab-panel-8047)
-* [ Old dashboard ](#tab-panel-8048)
+* [  New dashboard ](#tab-panel-8123)
+* [ Old dashboard ](#tab-panel-8124)
 
 1. In the Cloudflare dashboard, go to the **Security Analytics** page.  
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
@@ -72,8 +72,8 @@ To view traffic flagged by HTTP Adaptive DDoS Protection rules:
 
 To view traffic flagged by L3/4 Adaptive DDoS Protection rules:
 
-* [  New dashboard ](#tab-panel-8049)
-* [ Old dashboard ](#tab-panel-8050)
+* [  New dashboard ](#tab-panel-8125)
+* [ Old dashboard ](#tab-panel-8126)
 
 1. In the Cloudflare dashboard, go to the **Security Analytics** page.  
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)

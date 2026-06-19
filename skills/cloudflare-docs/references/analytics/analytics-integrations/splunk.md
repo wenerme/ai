@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,31 +31,31 @@ To install the [Cloudflare App for Splunk ↗](https://splunkbase.splunk.com/app
 3. Click **Install**.
 ![Splunk website with Apps menu expanded and Search & Reporting menu item along with Cloudflare App for Splunk](https://developers.cloudflare.com/_astro/splunk-cloudflare-app-for-splunk.CSImDJTK_Z1O8qyE.webp) 
 1. Restart and reopen your Splunk instance.
-2. Edit the `cloudflare:json` source type in the Cloudflare App for Splunk. To edit the source type:  
-   1. Click the **Settings** dropdown and select **Source types**.  
-   2. Uncheck **Show only popular** and search for _cloudflare_.  
-   3. Click **Edit** and change the Regex expression to `([\r\n]+)`.  
-   4. Save your edits.
-3. Create an index on Splunk to store the HTTP Event logs. To create an index:  
-   1. Open the setup screen by clicking the **Settings** dropdown, then click **Indexes**.  
-   2. Select **New Index**. Note that the **Indexes** page also gives you the status of all your existing indexes so that you can see whether you're about to use up your licensed amount of space.  
-   3. Name the index **cloudflare**, which is the default index that the Cloudflare App will use.
-4. Set up the HTTP Event Collector (HEC) on Splunk. To create an HEC:  
-   1. Click the **Settings** dropdown and select **Data inputs**.  
-   2. Click **+Add new** and follow the wizard. When prompted, submit the following responses:  
-         * Name: Cloudflare  
-         * Source Type: Select > "cloudflare:json"  
-         * App Context: Cloudflare App for Splunk (cloudflare)  
-         * Index: cloudflare  
-   3. At the end of the wizard you will see a **Token Value**. This token authorizes the Cloudflare Logpush job to send data to your Splunk instance. If you forget to copy it now, Splunk allows you to get the value at any time.
+2. Edit the `cloudflare:json` source type in the Cloudflare App for Splunk. To edit the source type:
+
+  1. Click the **Settings** dropdown and select **Source types**.
+  2. Uncheck **Show only popular** and search for _cloudflare_.
+  3. Click **Edit** and change the Regex expression to `([\r\n]+)`.
+  4. Save your edits.
+3. Create an index on Splunk to store the HTTP Event logs. To create an index:
+
+  1. Open the setup screen by clicking the **Settings** dropdown, then click **Indexes**.
+  2. Select **New Index**. Note that the **Indexes** page also gives you the status of all your existing indexes so that you can see whether you're about to use up your licensed amount of space.
+  3. Name the index **cloudflare**, which is the default index that the Cloudflare App will use.
+4. Set up the HTTP Event Collector (HEC) on Splunk. To create an HEC:
+
+  1. Click the **Settings** dropdown and select **Data inputs**.
+  2. Click **+Add new** and follow the wizard. When prompted, submit the following responses:  
+    * Name: Cloudflare
+    * Source Type: Select > "cloudflare:json"
+    * App Context: Cloudflare App for Splunk (cloudflare)
+    * Index: cloudflare
+  3. At the end of the wizard you will see a **Token Value**. This token authorizes the Cloudflare Logpush job to send data to your Splunk instance. If you forget to copy it now, Splunk allows you to get the value at any time.
 5. Verify whether Splunk is using a self-signed certificate. You'll need this information when creating the Logpush job.
 6. Determine the endpoint to use to send the data to. The endpoint should be:
 
 ```
-
 "<protocol>://input-<host>:<port>/<endpoint>" or "<protocol>://http-inputs-<host>:<port>/<endpoint>"
-
-
 ```
 
 Where:

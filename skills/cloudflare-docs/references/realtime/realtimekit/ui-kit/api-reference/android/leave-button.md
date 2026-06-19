@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,16 +25,7 @@ A button which toggles visibility of the leave confirmation dialog.
 ### Basic Usage
 
 ```
-
-<com.cloudflare.realtimekit.ui.view.controlbarbuttons.RtkLeaveButton
-
-    android:id="@+id/rtk_leave_button"
-
-    android:layout_width="48dp"
-
-    android:layout_height="48dp" />
-
-
+<com.cloudflare.realtimekit.ui.view.controlbarbuttons.RtkLeaveButton    android:id="@+id/rtk_leave_button"    android:layout_width="48dp"    android:layout_height="48dp" />
 ```
 
 ### With Methods
@@ -42,12 +33,7 @@ A button which toggles visibility of the leave confirmation dialog.
 Kotlin
 
 ```
-
-val leaveButton = findViewById<RtkLeaveButton>(R.id.rtk_leave_button)
-
-leaveButton.activate(meeting)
-
-
+val leaveButton = findViewById<RtkLeaveButton>(R.id.rtk_leave_button)leaveButton.activate(meeting)
 ```
 
 ```json

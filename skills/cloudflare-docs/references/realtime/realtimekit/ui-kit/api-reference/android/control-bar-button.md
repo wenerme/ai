@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -39,20 +39,7 @@ A skeleton component used for composing custom controlbar buttons.
 ### Basic Usage
 
 ```
-
-<com.cloudflare.realtimekit.ui.view.controlbarbuttons.RtkControlBarButton
-
-    android:id="@+id/rtk_control_bar_button"
-
-    android:layout_width="wrap_content"
-
-    android:layout_height="wrap_content"
-
-    app:rtk_cbb_showText="true"
-
-    app:rtk_cbb_variant="button" />
-
-
+<com.cloudflare.realtimekit.ui.view.controlbarbuttons.RtkControlBarButton    android:id="@+id/rtk_control_bar_button"    android:layout_width="wrap_content"    android:layout_height="wrap_content"    app:rtk_cbb_showText="true"    app:rtk_cbb_variant="button" />
 ```
 
 ### With Methods
@@ -60,12 +47,7 @@ A skeleton component used for composing custom controlbar buttons.
 Kotlin
 
 ```
-
-val buttonView = findViewById<RtkControlBarButton>(R.id.rtk_control_bar_button)
-
-buttonView.setOnClickListener { }
-
-
+val buttonView = findViewById<RtkControlBarButton>(R.id.rtk_control_bar_button)buttonView.setOnClickListener { }
 ```
 
 ```json

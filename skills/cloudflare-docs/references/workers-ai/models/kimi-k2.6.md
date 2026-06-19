@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,176 +31,56 @@ Kimi K2.6 is a frontier-scale open-source 1T parameter model with a 262.1k conte
 
 ## Playground
 
-Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and an instant way to preview and test a model directly in the browser.
+Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and an instant way to preview and test a model directly in the browser. 
 
-[Launch the LLM Playground](https://playground.ai.cloudflare.com/?model=@cf/moonshotai/kimi-k2.6) 
+[ Launch the LLM Playground ](https://playground.ai.cloudflare.com/?model=@cf/moonshotai/kimi-k2.6) 
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-4898)
-* [  TypeScript ](#tab-panel-4899)
-* [  Python ](#tab-panel-4900)
-* [  curl ](#tab-panel-4901)
+* [  Worker (Streaming) ](#tab-panel-4972)
+* [  TypeScript ](#tab-panel-4973)
+* [  Python ](#tab-panel-4974)
+* [  curl ](#tab-panel-4975)
 
 TypeScript
 
 ```
-
-export interface Env {
-
-  AI: Ai;
-
-}
-
-
-export default {
-
-  async fetch(request, env): Promise<Response> {
-
-
-    const messages = [
-
-      { role: "system", content: "You are a friendly assistant" },
-
-      {
-
-        role: "user",
-
-        content: "What is the origin of the phrase Hello, World",
-
-      },
-
-    ];
-
-
-    const stream = await env.AI.run("@cf/moonshotai/kimi-k2.6", {
-
-      messages,
-
-      stream: true,
-
-    });
-
-
-    return new Response(stream, {
-
-      headers: { "content-type": "text/event-stream" },
-
-    });
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export interface Env {  AI: Ai;}
+export default {  async fetch(request, env): Promise<Response> {
+    const messages = [      { role: "system", content: "You are a friendly assistant" },      {        role: "user",        content: "What is the origin of the phrase Hello, World",      },    ];
+    const stream = await env.AI.run("@cf/moonshotai/kimi-k2.6", {      messages,      stream: true,    });
+    return new Response(stream, {      headers: { "content-type": "text/event-stream" },    });  },} satisfies ExportedHandler<Env>;
 ```
 
 ```
-
-export interface Env {
-
-  AI: Ai;
-
-}
-
-
-export default {
-
-  async fetch(request, env): Promise<Response> {
-
-
-    const messages = [
-
-      { role: "system", content: "You are a friendly assistant" },
-
-      {
-
-        role: "user",
-
-        content: "What is the origin of the phrase Hello, World",
-
-      },
-
-    ];
-
-    const response = await env.AI.run("@cf/moonshotai/kimi-k2.6", { messages });
-
-
-    return Response.json(response);
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export interface Env {  AI: Ai;}
+export default {  async fetch(request, env): Promise<Response> {
+    const messages = [      { role: "system", content: "You are a friendly assistant" },      {        role: "user",        content: "What is the origin of the phrase Hello, World",      },    ];    const response = await env.AI.run("@cf/moonshotai/kimi-k2.6", { messages });
+    return Response.json(response);  },} satisfies ExportedHandler<Env>;
 ```
 
 ```
-
-import os
-
-import requests
-
-
-ACCOUNT_ID = "your-account-id"
-
-AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
-
-
-prompt = "Tell me all about PEP-8"
-
-response = requests.post(
-
-  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/moonshotai/kimi-k2.6",
-
-    headers={"Authorization": f"Bearer {AUTH_TOKEN}"},
-
-    json={
-
-      "messages": [
-
-        {"role": "system", "content": "You are a friendly assistant"},
-
-        {"role": "user", "content": prompt}
-
-      ]
-
-    }
-
-)
-
-result = response.json()
-
-print(result)
-
-
+import osimport requests
+ACCOUNT_ID = "your-account-id"AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
+prompt = "Tell me all about PEP-8"response = requests.post(  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/moonshotai/kimi-k2.6",    headers={"Authorization": f"Bearer {AUTH_TOKEN}"},    json={      "messages": [        {"role": "system", "content": "You are a friendly assistant"},        {"role": "user", "content": prompt}      ]    })result = response.json()print(result)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/moonshotai/kimi-k2.6 \
-
-  -X POST \
-
-  -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
-
-  -d '{ "messages": [{ "role": "system", "content": "You are a friendly assistant" }, { "role": "user", "content": "Why is pizza so good" }]}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/moonshotai/kimi-k2.6 \  -X POST \  -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \  -d '{ "messages": [{ "role": "system", "content": "You are a friendly assistant" }, { "role": "user", "content": "Why is pizza so good" }]}'
 ```
 
 OpenAI compatible endpoints 
 
-Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
+Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations ](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/). 
 
 ## Parameters
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-4902)
-* [ Output ](#tab-panel-4903)
+* [ Input ](#tab-panel-4976)
+* [ Output ](#tab-panel-4977)
 
 Input format
 
@@ -374,8 +254,8 @@ service\_tier
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-4904)
-* [ Output ](#tab-panel-4905)
+* [ Input ](#tab-panel-4978)
+* [ Output ](#tab-panel-4979)
 
 Input format
 
@@ -529,8 +409,8 @@ format
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-4906)
-* [ Output ](#tab-panel-4907)
+* [ Input ](#tab-panel-4980)
+* [ Output ](#tab-panel-4981)
 
 ▶requests\[\]
 
@@ -580,7 +460,7 @@ service\_tier
 
  Batch Input [ ](https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/batch-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/batch-input.json "Download") 
 
- Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/batch-output.json "Download") 
+ Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/batch-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/#page","headline":"kimi-k2.6 (Moonshot AI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Kimi K2.6 is a frontier-scale open-source 1T parameter model with a 262.1k context window, multi-turn tool calling, vision inputs, and structured outputs for agentic workloads.","url":"https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

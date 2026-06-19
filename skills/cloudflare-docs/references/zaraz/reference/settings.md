@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -69,19 +69,13 @@ When toggled on, the Zaraz script will also be injected into `iframe` elements.
 Specify custom URLs for Zaraz's scripts. You need to use a valid pathname:
 
 ```
-
 /<PATHNAME>/<FILE.JS>
-
-
 ```
 
 This is an example of a custom pathname to host Zaraz's initialization script:
 
 ```
-
 /my-server/my-scripts/start.js
-
-
 ```
 
 ### HTTP Events API

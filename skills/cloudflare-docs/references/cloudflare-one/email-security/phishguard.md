@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -98,10 +98,10 @@ Under Reports, you can review reports of threats discovered and resolved by the 
 If you select the three dots, you can:
 
 * **View report details**: Report Details gives you the following information about each report:  
-   * **Overview**: An Overview of the report. This includes date and time of the report, type of attack performed, and more.  
-   * **Target and victimology**: Company targeted.  
-   * **Details**: Displays information such as delivery disposition, current disposition, ES Alert ID, Message-ID, Timestamp, Subject, and Attempted Fraudulent Amount.  
-   * **Indicators of compromise (IOC)**: [Indicators of compromise (IOC) ↗](https://www.cloudflare.com/en-gb/learning/security/what-are-indicators-of-compromise/) are information about a specific security breach that can help security teams determine if an attack has taken place.
+  * **Overview**: An Overview of the report. This includes date and time of the report, type of attack performed, and more.
+  * **Target and victimology**: Company targeted.
+  * **Details**: Displays information such as delivery disposition, current disposition, ES Alert ID, Message-ID, Timestamp, Subject, and Attempted Fraudulent Amount.
+  * **Indicators of compromise (IOC)**: [Indicators of compromise (IOC) ↗](https://www.cloudflare.com/en-gb/learning/security/what-are-indicators-of-compromise/) are information about a specific security breach that can help security teams determine if an attack has taken place.
 * Preview email.
 * [Move email](https://developers.cloudflare.com/cloudflare-one/email-security/settings/auto-moves/).
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -60,10 +60,7 @@ Move into the newly created directory:
 Terminal window
 
 ```
-
 cd producer-worker
-
-
 ```
 
 ## 2\. Create a queue
@@ -75,10 +72,7 @@ To create a queue, run:
 Terminal window
 
 ```
-
 npx wrangler queues create <MY-QUEUE-NAME>
-
-
 ```
 
 Choose a name that is descriptive and relates to the types of messages you intend to use this queue for. Descriptive queue names look like: `debug-logs`, `user-clickstream-data`, or `password-reset-prod`.
@@ -93,47 +87,19 @@ To expose your queue to the code inside your Worker, you need to connect your qu
 
 To create a binding, open your newly generated `wrangler.jsonc` file and add the following:
 
-* [  wrangler.jsonc ](#tab-panel-9617)
-* [  wrangler.toml ](#tab-panel-9618)
+* [  wrangler.jsonc ](#tab-panel-9693)
+* [  wrangler.toml ](#tab-panel-9694)
 
 JSONC
 
 ```
-
-{
-
-  "queues": {
-
-    "producers": [
-
-      {
-
-        "queue": "MY-QUEUE-NAME",
-
-        "binding": "MY_QUEUE"
-
-      }
-
-    ]
-
-  }
-
-}
-
-
+{  "queues": {    "producers": [      {        "queue": "MY-QUEUE-NAME",        "binding": "MY_QUEUE"      }    ]  }}
 ```
 
 TOML
 
 ```
-
-[[queues.producers]]
-
-queue = "MY-QUEUE-NAME"
-
-binding = "MY_QUEUE"
-
-
+[[queues.producers]]queue = "MY-QUEUE-NAME"binding = "MY_QUEUE"
 ```
 
 Replace `MY-QUEUE-NAME` with the name of the queue you created in [step 2](https://developers.cloudflare.com/queues/get-started/#2-create-a-queue). Next, replace `MY_QUEUE` with the name you want for your `binding`. The binding must be a valid JavaScript variable name. This is the variable you will use to reference this queue in your Worker.
@@ -151,30 +117,7 @@ In your Worker project directory, open the `src` folder and add the following to
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    const log = {
-
-      url: request.url,
-
-      method: request.method,
-
-      headers: Object.fromEntries(request.headers),
-
-    };
-
-    await env.<MY_QUEUE>.send(log);
-
-    return new Response("Success!");
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export default {  async fetch(request, env, ctx): Promise<Response> {    const log = {      url: request.url,      method: request.method,      headers: Object.fromEntries(request.headers),    };    await env.<MY_QUEUE>.send(log);    return new Response("Success!");  },} satisfies ExportedHandler<Env>;
 ```
 
 Replace `MY_QUEUE` with the name you have set for your binding from your `wrangler.jsonc` file.
@@ -184,14 +127,7 @@ Also add the queue to `Env` interface in `index.ts`.
 TypeScript
 
 ```
-
-export interface Env {
-
-   <MY_QUEUE>: Queue;
-
-}
-
-
+export interface Env {   <MY_QUEUE>: Queue;}
 ```
 
 If this write fails, your Worker will return an error (raise an exception). If this write works, it will return `Success` back with a HTTP `200` status code to the browser.
@@ -205,23 +141,13 @@ With your Wrangler file and `index.ts` file configured, you are ready to publish
 Terminal window
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 You should see output that resembles the below, with a `*.workers.dev` URL by default.
 
 ```
-
-Uploaded <YOUR-WORKER-NAME> (0.76 sec)
-
-Published <YOUR-WORKER-NAME> (0.29 sec)
-
-  https://<YOUR-WORKER-NAME>.<YOUR-ACCOUNT>.workers.dev
-
-
+Uploaded <YOUR-WORKER-NAME> (0.76 sec)Published <YOUR-WORKER-NAME> (0.29 sec)  https://<YOUR-WORKER-NAME>.<YOUR-ACCOUNT>.workers.dev
 ```
 
 Copy your `*.workers.dev` subdomain and paste it into a new browser tab. Refresh the page a few times to start publishing requests to your queue. Your browser should return the `Success` response after writing the request to the queue each time.
@@ -243,40 +169,7 @@ To create a consumer Worker, open your `index.ts` file and add the following `qu
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    const log = {
-
-      url: request.url,
-
-      method: request.method,
-
-      headers: Object.fromEntries(request.headers),
-
-    };
-
-    await env.<MY_QUEUE>.send(log);
-
-    return new Response("Success!");
-
-  },
-
-  async queue(batch, env, ctx): Promise<void> {
-
-    for (const message of batch.messages) {
-
-      console.log("consumed from our queue:", JSON.stringify(message.body));
-
-    }
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export default {  async fetch(request, env, ctx): Promise<Response> {    const log = {      url: request.url,      method: request.method,      headers: Object.fromEntries(request.headers),    };    await env.<MY_QUEUE>.send(log);    return new Response("Success!");  },  async queue(batch, env, ctx): Promise<void> {    for (const message of batch.messages) {      console.log("consumed from our queue:", JSON.stringify(message.body));    }  },} satisfies ExportedHandler<Env>;
 ```
 
 Replace `MY_QUEUE` with the name you have set for your binding from your `wrangler.jsonc` file.
@@ -295,55 +188,19 @@ Each queue can only have one consumer Worker connected to it. If you try to conn
 
 To connect your queue to your consumer Worker, open your Wrangler file and add this to the bottom:
 
-* [  wrangler.jsonc ](#tab-panel-9619)
-* [  wrangler.toml ](#tab-panel-9620)
+* [  wrangler.jsonc ](#tab-panel-9695)
+* [  wrangler.toml ](#tab-panel-9696)
 
 JSONC
 
 ```
-
-{
-
-  "queues": {
-
-    "consumers": [
-
-      {
-
-        "queue": "<MY-QUEUE-NAME>",
-
-        // Required: this should match the name of the queue you created in step 3.
-
-        // If you misspell the name, you will receive an error when attempting to publish your Worker.
-
-        "max_batch_size": 10, // optional: defaults to 10
-
-        "max_batch_timeout": 5 // optional: defaults to 5 seconds
-
-      }
-
-    ]
-
-  }
-
-}
-
-
+{  "queues": {    "consumers": [      {        "queue": "<MY-QUEUE-NAME>",        // Required: this should match the name of the queue you created in step 3.        // If you misspell the name, you will receive an error when attempting to publish your Worker.        "max_batch_size": 10, // optional: defaults to 10        "max_batch_timeout": 5 // optional: defaults to 5 seconds      }    ]  }}
 ```
 
 TOML
 
 ```
-
-[[queues.consumers]]
-
-queue = "<MY-QUEUE-NAME>"
-
-max_batch_size = 10
-
-max_batch_timeout = 5
-
-
+[[queues.consumers]]queue = "<MY-QUEUE-NAME>"max_batch_size = 10max_batch_timeout = 5
 ```
 
 Replace `MY-QUEUE-NAME` with the queue you created in [step 2](https://developers.cloudflare.com/queues/get-started/#2-create-a-queue).
@@ -361,10 +218,7 @@ With your Wrangler file and `index.ts` file configured, publish your consumer Wo
 Terminal window
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 ## 5\. Read messages from your queue
@@ -376,10 +230,7 @@ Run `wrangler tail` to start waiting for our consumer to log the messages it rec
 Terminal window
 
 ```
-
 npx wrangler tail
-
-
 ```
 
 With `wrangler tail` running, open the Worker URL you opened in [step 3](https://developers.cloudflare.com/queues/get-started/#3-set-up-your-producer-worker).

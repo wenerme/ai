@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/client-side-security/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,8 +16,8 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 To enable client-side resource monitoring:
 
-* [  New dashboard ](#tab-panel-6983)
-* [ Old dashboard ](#tab-panel-6984)
+* [  New dashboard ](#tab-panel-7059)
+* [ Old dashboard ](#tab-panel-7060)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -37,17 +37,21 @@ When you enable client-side resource monitoring, it may take a while to get the 
 
 To review the scripts detected by Cloudflare:
 
-1. Go to the client-side resources page:  
-   * [  New dashboard ](#tab-panel-6981)  
-   * [ Old dashboard ](#tab-panel-6982)  
-   1. In the Cloudflare dashboard, go to the **Web assets** page.  
-   [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)  
-   2. Select the **Client-side resources** tab.  
-   1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.  
-   2. Go to **Security** \> **Client-side security**.
-2. Review the list of detected scripts, checking for any unknown or unexpected scripts. [Depending on your plan and subscriptions](https://developers.cloudflare.com/client-side-security/#availability), Cloudflare will also:  
-   * Inform you if a script is [considered malicious](https://developers.cloudflare.com/client-side-security/how-it-works/malicious-script-detection/).  
-   * [Show the details](https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/#view-details) about each detected script.
+1. Go to the client-side resources page:
+
+  * [  New dashboard ](#tab-panel-7057)
+  * [ Old dashboard ](#tab-panel-7058)
+
+  1. In the Cloudflare dashboard, go to the **Web assets** page.  
+  [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+  2. Select the **Client-side resources** tab.
+
+  1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
+  2. Go to **Security** \> **Client-side security**.
+2. Review the list of detected scripts, checking for any unknown or unexpected scripts. [Depending on your plan and subscriptions](https://developers.cloudflare.com/client-side-security/#availability), Cloudflare will also:
+
+  * Inform you if a script is [considered malicious](https://developers.cloudflare.com/client-side-security/how-it-works/malicious-script-detection/).
+  * [Show the details](https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/#view-details) about each detected script.
 
 Depending on your Cloudflare plan, you may be able to also review the connections made by scripts in your domain's pages and check them for malicious activity.
 
@@ -84,19 +88,20 @@ Note
 
 Only available to customers with Client-Side Security Advanced.
 
-* [  New dashboard ](#tab-panel-6987)
-* [ Old dashboard ](#tab-panel-6988)
+* [  New dashboard ](#tab-panel-7063)
+* [ Old dashboard ](#tab-panel-7064)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Select **Create** \> **Content security rules**.
 3. Enter a descriptive name for the rule in **Description**.
 4. Under **If incoming requests match**, define the scope of the content security rule (or policy). You can use the Expression Builder (specifying one or more values for **Field**, **Operator**, and **Value**) or manually enter an expression using the Expression Editor. For more information, refer to [Edit expressions in the dashboard](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/).
-5. Under **Allow these directives**, select the desired [CSP directives](https://developers.cloudflare.com/client-side-security/rules/csp-directives/) for the content security rule by enabling one or more checkboxes.  
-   * To manually enter an allowed source, select **Add source**.  
-   * To refresh the displayed sources based on detected resources, select **Refresh suggestions**.  
-   Note  
-   Cloudflare provides suggestions for **Default**, **Scripts**, and **Connections** directives. For the **Default** directive, suggestions are based on monitored scripts and connections resources.
+5. Under **Allow these directives**, select the desired [CSP directives](https://developers.cloudflare.com/client-side-security/rules/csp-directives/) for the content security rule by enabling one or more checkboxes.
+
+  * To manually enter an allowed source, select **Add source**.
+  * To refresh the displayed sources based on detected resources, select **Refresh suggestions**.  
+  Note  
+  Cloudflare provides suggestions for **Default**, **Scripts**, and **Connections** directives. For the **Default** directive, suggestions are based on monitored scripts and connections resources.
 6. Under **Then take action**, select _Log_.
 7. To save and deploy your rule, select **Deploy**.
 
@@ -105,11 +110,12 @@ Only available to customers with Client-Side Security Advanced.
 3. Select **Create rule**.
 4. Enter a descriptive name for the rule in **Description**.
 5. Under **If incoming requests match**, define the rule scope. You can use the Expression Builder (specifying one or more values for **Field**, **Operator**, and **Value**) or manually enter an expression using the Expression Editor. For more information, refer to [Edit expressions in the dashboard](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/).
-6. Under **Allow these directives**, select the desired [CSP directives](https://developers.cloudflare.com/client-side-security/rules/csp-directives/) for the rule by enabling one or more checkboxes.  
-   * To manually enter an allowed source, select **Add source**.  
-   * To refresh the displayed sources based on detected resources, select **Refresh suggestions**.  
-   Note  
-   Cloudflare provides suggestions for **Default**, **Scripts**, and **Connections** directives. For the **Default** directive, suggestions are based on monitored scripts and connections resources.
+6. Under **Allow these directives**, select the desired [CSP directives](https://developers.cloudflare.com/client-side-security/rules/csp-directives/) for the rule by enabling one or more checkboxes.
+
+  * To manually enter an allowed source, select **Add source**.
+  * To refresh the displayed sources based on detected resources, select **Refresh suggestions**.  
+  Note  
+  Cloudflare provides suggestions for **Default**, **Scripts**, and **Connections** directives. For the **Default** directive, suggestions are based on monitored scripts and connections resources.
 7. Under **Then take action**, select _Log_.
 8. To save and deploy your rule, select **Deploy**.
 
@@ -119,8 +125,8 @@ Resources not covered by the content security rule you created will be reported 
 
 To view rule violation information:
 
-* [  New dashboard ](#tab-panel-6985)
-* [ Old dashboard ](#tab-panel-6986)
+* [  New dashboard ](#tab-panel-7061)
+* [ Old dashboard ](#tab-panel-7062)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

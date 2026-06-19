@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,10 +17,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 Usage:
 
 ```
-
 bitAnd(a, b)
-
-
 ```
 
 `bitAnd` returns the bitwise AND of expressions `a` and `b`.
@@ -28,16 +25,7 @@ bitAnd(a, b)
 Examples:
 
 ```
-
--- perform 0b1 & 0b11
-
-bitAnd(1, 3)
-
--- extract the least significant bit of the integer value of double1
-
-bitAnd(toUInt8(double1), 1)
-
-
+-- perform 0b1 & 0b11bitAnd(1, 3)-- extract the least significant bit of the integer value of double1bitAnd(toUInt8(double1), 1)
 ```
 
 ## bitCount New
@@ -45,10 +33,7 @@ bitAnd(toUInt8(double1), 1)
 Usage:
 
 ```
-
 bitCount(a)
-
-
 ```
 
 `bitCount` returns the number of bits set to one in the binary representation of `a`.
@@ -56,20 +41,7 @@ bitCount(a)
 Examples:
 
 ```
-
--- get the number of 1 bits in the binary representation of the float `double1`
-
-bitCount(double1)
-
--- get the number of 1 bits in the binary representation of `double1` as an integer
-
-bitCount(toUInt32(double1))
-
--- select rows where at least 5 bits are 1
-
-SELECT * WHERE bitCount(double1) > 5
-
-
+-- get the number of 1 bits in the binary representation of the float `double1`bitCount(double1)-- get the number of 1 bits in the binary representation of `double1` as an integerbitCount(toUInt32(double1))-- select rows where at least 5 bits are 1SELECT * WHERE bitCount(double1) > 5
 ```
 
 ## bitHammingDistance New
@@ -77,10 +49,7 @@ SELECT * WHERE bitCount(double1) > 5
 Usage:
 
 ```
-
 bitHammingDistance(x, y)
-
-
 ```
 
 `bitHammingDistance` returns the number of bits that differ between `x` and `y`.
@@ -88,16 +57,7 @@ bitHammingDistance(x, y)
 Examples:
 
 ```
-
--- returns zero
-
-bitHammingDistance(1, 1)
-
--- returns 2
-
-bitHammingDistance(3, 0)
-
-
+-- returns zerobitHammingDistance(1, 1)-- returns 2bitHammingDistance(3, 0)
 ```
 
 ## bitNot New
@@ -105,10 +65,7 @@ bitHammingDistance(3, 0)
 Usage:
 
 ```
-
 bitNot(a)
-
-
 ```
 
 `bitNot` returns `a` with all bits flipped.
@@ -116,10 +73,7 @@ bitNot(a)
 Examples:
 
 ```
-
 bitNot(1)
-
-
 ```
 
 ## bitOr New
@@ -127,10 +81,7 @@ bitNot(1)
 Usage:
 
 ```
-
 bitOr(a, b)
-
-
 ```
 
 `bitOr` returns the inclusive bitwise or of `a` and `b`.
@@ -138,12 +89,7 @@ bitOr(a, b)
 Examples:
 
 ```
-
--- returns 3
-
-bitOr(1, 2)
-
-
+-- returns 3bitOr(1, 2)
 ```
 
 ## bitRotateLeft New
@@ -151,10 +97,7 @@ bitOr(1, 2)
 Usage:
 
 ```
-
 bitRotateLeft(a, n)
-
-
 ```
 
 `bitRotateLeft` rotates all bits in `a` left by `n` positions.
@@ -162,16 +105,7 @@ bitRotateLeft(a, n)
 Examples:
 
 ```
-
--- returns 2
-
-bitRotateLeft(1, 1)
-
--- returns 1
-
-bitRotateLeft(128, 1)
-
-
+-- returns 2bitRotateLeft(1, 1)-- returns 1bitRotateLeft(128, 1)
 ```
 
 ## bitRotateRight New
@@ -179,10 +113,7 @@ bitRotateLeft(128, 1)
 Usage:
 
 ```
-
 bitRotateRight(a, n)
-
-
 ```
 
 `bitRotateRight` rotates all bits in `a` right by `n` positions.
@@ -190,16 +121,7 @@ bitRotateRight(a, n)
 Examples:
 
 ```
-
--- returns 128
-
-bitRotateRight(1, 1)
-
--- returns 3
-
-bitRotateRight(12, 2)
-
-
+-- returns 128bitRotateRight(1, 1)-- returns 3bitRotateRight(12, 2)
 ```
 
 ## bitShiftLeft New
@@ -207,10 +129,7 @@ bitRotateRight(12, 2)
 Usage:
 
 ```
-
 bitShiftLeft(a, n)
-
-
 ```
 
 `bitShiftLeft` shifts all bits in `a` left by `n` positions.
@@ -218,16 +137,7 @@ bitShiftLeft(a, n)
 Examples:
 
 ```
-
--- returns 2
-
-bitShiftLeft(1, 1)
-
--- returns 0
-
-bitShiftLeft(128, 1)
-
-
+-- returns 2bitShiftLeft(1, 1)-- returns 0bitShiftLeft(128, 1)
 ```
 
 ## bitShiftRight New
@@ -235,10 +145,7 @@ bitShiftLeft(128, 1)
 Usage:
 
 ```
-
 bitShiftRight(a, n)
-
-
 ```
 
 `bitShiftRight` shifts all bits in `a` right by `n` positions.
@@ -246,16 +153,7 @@ bitShiftRight(a, n)
 Examples:
 
 ```
-
--- returns 0
-
-bitShiftRight(1, 1)
-
--- returns 3
-
-bitShiftRight(12, 2)
-
-
+-- returns 0bitShiftRight(1, 1)-- returns 3bitShiftRight(12, 2)
 ```
 
 ## bitTest New
@@ -263,10 +161,7 @@ bitShiftRight(12, 2)
 Usage:
 
 ```
-
 bitTest(a, n)
-
-
 ```
 
 `bitTest` returns the value of bit `n` in number `a`.
@@ -274,20 +169,7 @@ bitTest(a, n)
 Examples:
 
 ```
-
--- returns 1
-
-bitTest(3, 1)
-
--- return 0
-
-bitTest(2, 1)
-
--- select rows where a particular bit is 1
-
-SELECT * WHERE bitTest(double1, 2)
-
-
+-- returns 1bitTest(3, 1)-- return 0bitTest(2, 1)-- select rows where a particular bit is 1SELECT * WHERE bitTest(double1, 2)
 ```
 
 ## bitXor New
@@ -295,10 +177,7 @@ SELECT * WHERE bitTest(double1, 2)
 Usage:
 
 ```
-
 bitXor(a, b)
-
-
 ```
 
 `bitXor` returns the bitwise exclusive-or of `a` and `b`.
@@ -306,16 +185,7 @@ bitXor(a, b)
 Examples:
 
 ```
-
--- returns 3
-
-bitXor(1, 2)
-
--- returns 0
-
-bitXor(3, 3)
-
-
+-- returns 3bitXor(1, 2)-- returns 0bitXor(3, 3)
 ```
 
 ```json

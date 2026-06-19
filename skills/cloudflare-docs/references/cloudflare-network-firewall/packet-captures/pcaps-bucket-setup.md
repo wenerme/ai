@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-network-firewall/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,8 +20,8 @@ You can configure an Amazon S3 or Google Cloud Platform bucket to use as a targe
 
 Learn how to set up a bucket for use with full packet captures.
 
-* [ Dashboard ](#tab-panel-7061)
-* [ API ](#tab-panel-7062)
+* [ Dashboard ](#tab-panel-7137)
+* [ API ](#tab-panel-7138)
 
 1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. Select the **Diagnostics** tab > **Buckets**.
@@ -42,8 +42,8 @@ Next, validate the bucket and confirm ownership.
 
 After the initial bucket set up, you need to confirm you own the bucket via an ownership challenge. After you validate your bucket, you can begin using it to collect full packet captures.
 
-* [ Dashboard ](#tab-panel-7063)
-* [ API ](#tab-panel-7064)
+* [ Dashboard ](#tab-panel-7139)
+* [ API ](#tab-panel-7140)
 
 1. From the **Prove ownership** step of the **Bucket configuration**, locate the **Ownership token** field.
 2. In the **Ownership token** field, enter the ownership token for your service provider.
@@ -56,22 +56,7 @@ The `bucket` field should be the URI of the bucket. For Amazon S3, the `bucket` 
 Ownership challenge request example
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/ownership \
-
---header "X-Auth-Email: <EMAIL>" \
-
---header "X-Auth-Key: <API_KEY>" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "destination_conf": "'${bucket}'"
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/ownership \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "destination_conf": "'${bucket}'"}'
 ```
 
 The response has a `"filename"` parameter which contains the content of the `ownership-challenge` text. Find the file in your bucket and copy the contents of the file.
@@ -79,34 +64,7 @@ The response has a `"filename"` parameter which contains the content of the `own
 Ownership challenge response example
 
 ```
-
-{
-
-  "result": {
-
-    "id": "cc20c2d6c62e11ecbe646b173af3b6b9",
-
-    "status": "pending",
-
-    "submitted": "2022-04-22T18:54:13.397413Z",
-
-    "validated": "",
-
-    "destination_conf": "gs://bucket-test", // Ensure you use a bucket that you created and registered in the Cloudflare dashboard.
-
-    "filename": "ownership-challenge-1234.txt"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "id": "cc20c2d6c62e11ecbe646b173af3b6b9",    "status": "pending",    "submitted": "2022-04-22T18:54:13.397413Z",    "validated": "",    "destination_conf": "gs://bucket-test", // Ensure you use a bucket that you created and registered in the Cloudflare dashboard.    "filename": "ownership-challenge-1234.txt"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 Validate the bucket by inserting the copied text in the `ownership_text` below:
@@ -114,57 +72,13 @@ Validate the bucket by inserting the copied text in the `ownership_text` below:
 Bucket validation example
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/ownership/validate \
-
---header "X-Auth-Email: <EMAIL>" \
-
---header "X-Auth-Key: <API_KEY>" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "destination_conf": "'${bucket}'",
-
-  "ownership_challenge": "'${ownership_text}'"
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/ownership/validate \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "destination_conf": "'${bucket}'",  "ownership_challenge": "'${ownership_text}'"}'
 ```
 
 Bucket validation response
 
 ```
-
-{
-
-  "result": {
-
-    "id": "cc20c2d6c62e11ecbe646b173af3b6b9",
-
-    "status": "success",
-
-    "submitted": "2022-04-22T18:54:13.397413Z",
-
-    "validated": "2022-04-27T14:54:46.440548Z",
-
-    "destination_conf": "gs://<bucket-name>", // Ensure you use a bucket that you created and registered in the Cloudflare dashboard
-
-    "filename": "ownership-challenge-1234.txt"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "id": "cc20c2d6c62e11ecbe646b173af3b6b9",    "status": "success",    "submitted": "2022-04-22T18:54:13.397413Z",    "validated": "2022-04-27T14:54:46.440548Z",    "destination_conf": "gs://<bucket-name>", // Ensure you use a bucket that you created and registered in the Cloudflare dashboard    "filename": "ownership-challenge-1234.txt"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 If the `status` shows `success`, the bucket is configured and ready to use.
@@ -179,8 +93,8 @@ The bucket status displays one of the following options:
 
 View a list of all buckets configured on your account.
 
-* [ Dashboard ](#tab-panel-7065)
-* [ API ](#tab-panel-7066)
+* [ Dashboard ](#tab-panel-7141)
+* [ API ](#tab-panel-7142)
 
 1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. In **Diagnostics**, select **Buckets**.
@@ -190,51 +104,13 @@ The list of buckets associated with your account displays.
 Bucket list request example
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/ownership \
-
---header "X-Auth-Email: <EMAIL>" \
-
---header "X-Auth-Key: <API_KEY>"
-
-
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/ownership \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>"
 ```
 
 Bucket list response example
 
 ```
-
-{
-
-  "result": [
-
-    {
-
-      "id": "9a993aa6c58711ec89d3037647342e63",
-
-      "status": "success",
-
-      "submitted": "2022-04-26T16:58:24.550762Z",
-
-      "validated": "2022-04-26T17:01:18.426458Z",
-
-      "destination_conf": "s3://test-bucket?region=us-east-1",
-
-      "filename": "ownership-challenge-1234.txt"
-
-    }
-
-  ],
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": [    {      "id": "9a993aa6c58711ec89d3037647342e63",      "status": "success",      "submitted": "2022-04-26T16:58:24.550762Z",      "validated": "2022-04-26T17:01:18.426458Z",      "destination_conf": "s3://test-bucket?region=us-east-1",      "filename": "ownership-challenge-1234.txt"    }  ],  "success": true,  "errors": [],  "messages": []}
 ```
 
 To learn how to collect packet captures, refer to [Collect packet captures](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/collect-pcaps/).
@@ -262,55 +138,13 @@ Create your initial request to R2:
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/ownership \
-
---header "X-Auth-Email: <EMAIL>" \
-
---header "X-Auth-Key: <API_KEY>" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "destination_conf": "r2://<BUCKET_NAME>?account-id=<ACCOUNT_ID>&access-key-id=<R2_ACCESS_KEY_ID>&secret-access-key=<R2_SECRET_ACCESS_KEY>"
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/ownership \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "destination_conf": "r2://<BUCKET_NAME>?account-id=<ACCOUNT_ID>&access-key-id=<R2_ACCESS_KEY_ID>&secret-access-key=<R2_SECRET_ACCESS_KEY>"}'
 ```
 
 The [response](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/pcaps/subresources/ownership/methods/create/) has a `"filename"` parameter with the name of a file that Cloudflare wrote to your R2 bucket. You need to download it for the next step. Example:
 
 ```
-
-{
-
-  "errors": [],
-
-  "messages": [],
-
-  "result": {
-
-    "destination_conf": "<YOUR_R2_BUCKET>",
-
-    "filename": "ownership-challenge-9883874ecac311ec8475433579a6bf5f.txt",
-
-    "id": "9883874ecac311ec8475433579a6bf5f",
-
-    "status": "success",
-
-    "submitted": "2020-01-01T08:00:00Z",
-
-    "validated": "2020-01-01T08:00:00Z"
-
-  },
-
-  "success": true
-
-}
-
-
+{  "errors": [],  "messages": [],  "result": {    "destination_conf": "<YOUR_R2_BUCKET>",    "filename": "ownership-challenge-9883874ecac311ec8475433579a6bf5f.txt",    "id": "9883874ecac311ec8475433579a6bf5f",    "status": "success",    "submitted": "2020-01-01T08:00:00Z",    "validated": "2020-01-01T08:00:00Z"  },  "success": true}
 ```
 
 ### Validate bucket ownership

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/vectorize/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -68,20 +68,9 @@ Here's a typical pattern for processing all vectors in an index:
 Terminal window
 
 ```
-
-# Start iteration
-
-wrangler vectorize list-vectors my-index --count=1000
-
-
-# Continue with cursor from response
-
-wrangler vectorize list-vectors my-index --count=1000 --cursor="<cursor-from-response>"
-
-
+# Start iterationwrangler vectorize list-vectors my-index --count=1000
+# Continue with cursor from responsewrangler vectorize list-vectors my-index --count=1000 --cursor="<cursor-from-response>"
 # Repeat until no more results
-
-
 ```
 
 ```json

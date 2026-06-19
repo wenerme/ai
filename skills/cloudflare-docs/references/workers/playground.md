@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,51 +29,10 @@ When you arrive in the Playground, you will see this default code:
 JavaScript
 
 ```
-
 import welcome from "welcome.html";
-
-
-/**
-
- * @typedef {Object} Env
-
- */
-
-
-export default {
-
-  /**
-
-   * @param {Request} request
-
-   * @param {Env} env
-
-   * @param {ExecutionContext} ctx
-
-   * @returns {Response}
-
-   */
-
-  fetch(request, env, ctx) {
-
-    console.log("Hello Cloudflare Workers!");
-
-
-    return new Response(welcome, {
-
-      headers: {
-
-        "content-type": "text/html",
-
-      },
-
-    });
-
-  },
-
-};
-
-
+/** * @typedef {Object} Env */
+export default {  /**   * @param {Request} request   * @param {Env} env   * @param {ExecutionContext} ctx   * @returns {Response}   */  fetch(request, env, ctx) {    console.log("Hello Cloudflare Workers!");
+    return new Response(welcome, {      headers: {        "content-type": "text/html",      },    });  },};
 ```
 
 This is an example of a multi-module Worker that is receiving a [request](https://developers.cloudflare.com/workers/runtime-apis/request/), logging a message to the console, and then returning a [response](https://developers.cloudflare.com/workers/runtime-apis/response/) body containing the content from `welcome.html`.

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -46,9 +46,10 @@ To add a published application when creating a new tunnel:
 2. Enter a subdomain and select a **Domain** from the drop-down menu. Specify any subdomain or path information.  
 Note  
 If you add a multi-level subdomain (more than one level of subdomain), you must [order an Advanced Certificate for the hostname](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/common-errors/#i-see-this-site-cant-provide-a-secure-connection).
-3. Under **Service**, choose a [service type](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/protocols/) and specify its URL. For example,  
-   * **Type**: _HTTP_  
-   * **URL**: `localhost:8000`
+3. Under **Service**, choose a [service type](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/protocols/) and specify its URL. For example,
+
+  * **Type**: _HTTP_
+  * **URL**: `localhost:8000`
 4. Under **Additional application settings**, specify any [parameters](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/origin-parameters/) you would like to add to your tunnel configuration.  
 ![Example of a published application route in the Cloudflare One dashboard](https://developers.cloudflare.com/_astro/published-app.CZQbD1Bb_ZFOOUB.webp)
 5. Select **Save**.

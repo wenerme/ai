@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -24,8 +24,8 @@ To configure health checks frequency in Cloudflare One Appliance, refer to [Conf
 
 ## Manual configuration
 
-* [ Dashboard ](#tab-panel-7772)
-* [ API ](#tab-panel-7773)
+* [ Dashboard ](#tab-panel-7848)
+* [ API ](#tab-panel-7849)
 
 1. To create or edit your tunnel, refer to [Add tunnels](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels).
 2. Change the **Health check rate** to your desired rate. For example, _Low_.
@@ -38,22 +38,7 @@ The following example adjusts tunnel health check frequency to `low`. Note that 
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/magic/ipsec_tunnels/%7Bipsec_tunnel_id%7D" \
-
-  --request PUT \
-
-  --json '{
-
-    "health_check": {
-
-        "rate": "low"
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/magic/ipsec_tunnels/%7Bipsec_tunnel_id%7D" \  --request PUT \  --json '{    "health_check": {        "rate": "low"    }  }'
 ```
 
 ## Configure Connector

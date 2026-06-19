@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -40,27 +40,14 @@ This setting affects all outbound connections from the zone you specify in the A
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone Settings Write`
 * `Zone Write`
 
 Change Origin Post-Quantum Encryption setting
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/origin_post_quantum_encryption" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "value": "<YOUR_CHOSEN_SETTING>"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/origin_post_quantum_encryption" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "value": "<YOUR_CHOSEN_SETTING>"  }'
 ```
 
 The possible values are:
@@ -76,10 +63,7 @@ To make sure that your origin server prefers the post-quantum key agreement, use
 Terminal window
 
 ```
-
 $ bssl client -connect (your server):443 -curves X25519MLKEM768
-
-
 ```
 
 Verify that the `ECDHE curve` in the handshake output indicates `X25519MLKEM768`.

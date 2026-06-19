@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,7 +27,7 @@ Cloudflare provides the following detections:
 
 ## Availability
 
-| Free                                 | Pro             | Business                                  | Enterprise                                |                               |
+|                                      | Free            | Pro                                       | Business                                  | Enterprise                    |
 | ------------------------------------ | --------------- | ----------------------------------------- | ----------------------------------------- | ----------------------------- |
 | Availability                         | Yes             | Yes                                       | Yes                                       | Yes                           |
 | Malicious uploads detection          | No              | No                                        | No                                        | Paid add-on                   |
@@ -43,8 +43,8 @@ For more information on bot score, refer to [Bot scores](https://developers.clou
 
 To turn on a traffic detection:
 
-* [  New dashboard ](#tab-panel-11160)
-* [ Old dashboard ](#tab-panel-11161)
+* [  New dashboard ](#tab-panel-11177)
+* [ Old dashboard ](#tab-panel-11178)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

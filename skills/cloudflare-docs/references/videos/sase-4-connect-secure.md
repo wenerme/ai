@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/videos/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,14 +17,19 @@ Build your new corporate network with Cloudflare, connecting any network into ou
 Chapters
 
 * ![Introduction to SASE and the Need for Modern, Secure Corporate Networking](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/86f22d1f760b77cdc349f89b25b63c3e/thumbnails/thumbnail.jpg?fit=crop&time=0s)  
+
  **Introduction to SASE and the Need for Modern, Secure Corporate Networking** 0s
 * ![Using Cloudflare to Unify and Secure Corporate Networks Across Multiple Locations](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/86f22d1f760b77cdc349f89b25b63c3e/thumbnails/thumbnail.jpg?fit=crop&time=117s)  
+
  **Using Cloudflare to Unify and Secure Corporate Networks Across Multiple Locations** 01m57s
 * ![Enabling Secure Remote Access for Distributed Teams with Cloudflare's Zero Trust Approach](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/86f22d1f760b77cdc349f89b25b63c3e/thumbnails/thumbnail.jpg?fit=crop&time=167s)  
+
  **Enabling Secure Remote Access for Distributed Teams with Cloudflare's Zero Trust Approach** 02m47s
 * ![Integrating Private Networks and Data Centers using various methods](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/86f22d1f760b77cdc349f89b25b63c3e/thumbnails/thumbnail.jpg?fit=crop&time=257s)  
+
  **Integrating Private Networks and Data Centers using various methods** 04m17s
 * ![Cloudflare's Connectivity Cloud: Security, Performance, and Simplified Network Management](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/86f22d1f760b77cdc349f89b25b63c3e/thumbnails/thumbnail.jpg?fit=crop&time=317s)  
+
  **Cloudflare's Connectivity Cloud: Security, Performance, and Simplified Network Management** 05m17s
 
   

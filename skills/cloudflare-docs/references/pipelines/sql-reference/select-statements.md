@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pipelines/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -15,16 +15,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 SELECT statements are used to transform data in Cloudflare Pipelines. The general form is:
 
 ```
-
-[WITH with_query [, ...]]
-
-SELECT select_expr [, ...]
-
-FROM from_item
-
-[WHERE condition]
-
-
+[WITH with_query [, ...]]SELECT select_expr [, ...]FROM from_item[WHERE condition]
 ```
 
 ## WITH clause
@@ -34,29 +25,13 @@ The WITH clause allows you to define named subqueries that can be referenced in 
 Syntax:
 
 ```
-
 WITH query_name AS (subquery) [, ...]
-
-
 ```
 
 Simple example:
 
 ```
-
-WITH filtered_events AS
-
-    (SELECT user_id, event_type, amount
-
-        FROM user_events WHERE amount > 50)
-
-SELECT user_id, amount * 1.1 as amount_with_tax
-
-FROM filtered_events
-
-WHERE event_type = 'purchase';
-
-
+WITH filtered_events AS    (SELECT user_id, event_type, amount        FROM user_events WHERE amount > 50)SELECT user_id, amount * 1.1 as amount_with_taxFROM filtered_eventsWHERE event_type = 'purchase';
 ```
 
 ## SELECT clause
@@ -64,39 +39,15 @@ WHERE event_type = 'purchase';
 The SELECT clause is a comma-separated list of expressions, with optional aliases. Column names must be unique.
 
 ```
-
 SELECT select_expr [, ...]
-
-
 ```
 
 Examples:
 
 ```
-
--- Select specific columns
-
-SELECT user_id, event_type, amount FROM events
-
-
--- Use expressions and aliases
-
-SELECT
-
-    user_id,
-
-    amount * 1.1 as amount_with_tax,
-
-    UPPER(event_type) as event_type_upper
-
-FROM events
-
-
--- Select all columns
-
-SELECT * FROM events
-
-
+-- Select specific columnsSELECT user_id, event_type, amount FROM events
+-- Use expressions and aliasesSELECT    user_id,    amount * 1.1 as amount_with_tax,    UPPER(event_type) as event_type_upperFROM events
+-- Select all columnsSELECT * FROM events
 ```
 
 ## FROM clause
@@ -104,23 +55,13 @@ SELECT * FROM events
 The FROM clause specifies the data source for the query. It will be either a table name or subquery. The table name can be either a stream name or a table created in the WITH clause.
 
 ```
-
 FROM from_item
-
-
 ```
 
 Tables can be given aliases:
 
 ```
-
-SELECT e.user_id, e.amount
-
-FROM user_events e
-
-WHERE e.event_type = 'purchase'
-
-
+SELECT e.user_id, e.amountFROM user_events eWHERE e.event_type = 'purchase'
 ```
 
 ## WHERE clause
@@ -128,42 +69,16 @@ WHERE e.event_type = 'purchase'
 The WHERE clause filters data using boolean conditions. Predicates are applied to input rows.
 
 ```
-
 WHERE condition
-
-
 ```
 
 Examples:
 
 ```
-
--- Filter by field value
-
-SELECT * FROM events WHERE event_type = 'purchase'
-
-
--- Multiple conditions
-
-SELECT * FROM events
-
-WHERE event_type = 'purchase' AND amount > 50
-
-
--- String operations
-
-SELECT * FROM events
-
-WHERE user_id LIKE 'user_%'
-
-
--- Null checks
-
-SELECT * FROM events
-
-WHERE description IS NOT NULL
-
-
+-- Filter by field valueSELECT * FROM events WHERE event_type = 'purchase'
+-- Multiple conditionsSELECT * FROM eventsWHERE event_type = 'purchase' AND amount > 50
+-- String operationsSELECT * FROM eventsWHERE user_id LIKE 'user_%'
+-- Null checksSELECT * FROM eventsWHERE description IS NOT NULL
 ```
 
 ## UNNEST operator
@@ -178,35 +93,13 @@ UNNEST restrictions:
 Example:
 
 ```
-
-SELECT
-
-    UNNEST([1, 2, 3]) as numbers
-
-FROM events;
-
-
+SELECT    UNNEST([1, 2, 3]) as numbersFROM events;
 ```
 
 This will produce:
 
 ```
-
-+---------+
-
-| numbers |
-
-+---------+
-
-|       1 |
-
-|       2 |
-
-|       3 |
-
-+---------+
-
-
++---------+| numbers |+---------+|       1 ||       2 ||       3 |+---------+
 ```
 
 ```json

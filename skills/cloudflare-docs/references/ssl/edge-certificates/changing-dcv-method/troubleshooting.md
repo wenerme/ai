@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -48,19 +48,13 @@ In a [Partial (CNAME) setup](https://developers.cloudflare.com/ssl/edge-certific
 When using [Redirect Rules](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/), exclude the `/.well-known/*` path from redirections by adding a condition to your rule:
 
 ```
-
 not starts_with(http.request.uri.path, "/.well-known/")
-
-
 ```
 
 For example, if you have a rule that redirects all HTTP traffic to HTTPS, modify the rule expression to:
 
 ```
-
 (http.request.scheme eq "http") and not starts_with(http.request.uri.path, "/.well-known/")
-
-
 ```
 
 ## DNS settings and records
@@ -84,25 +78,19 @@ Consider the following when troubleshooting:
 
 You can check the CAA records by running the following command:
 
-* [ macOS and Linux ](#tab-panel-10606)
-* [ Windows ](#tab-panel-10607)
+* [ macOS and Linux ](#tab-panel-10682)
+* [ Windows ](#tab-panel-10683)
 
 Terminal window
 
 ```
-
 dig example.com CAA +short
-
-
 ```
 
 PowerShell
 
 ```
-
 Resolve-DnsName -Name example.com -Type CAA
-
-
 ```
 
 ## Certificate authority (CA) errors

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -114,18 +114,7 @@ API action: `set_cache_settings`.
 API configuration example
 
 ```
-
-"action_parameters": {
-
-  "strip_etags": true,
-
-  "strip_set_cookie": true,
-
-  "strip_last_modified": true
-
-}
-
-
+"action_parameters": {  "strip_etags": true,  "strip_set_cookie": true,  "strip_last_modified": true}
 ```
 
 Refer to [Create a rule via API](https://developers.cloudflare.com/cache/how-to/cache-response-rules/create-api/) for complete API examples.
@@ -149,31 +138,13 @@ API action: `set_cache_tags`.
 API configuration example (static values)
 
 ```
-
-"action_parameters": {
-
-  "operation": "set",
-
-  "values": ["api-response", "dynamic-content"]
-
-}
-
-
+"action_parameters": {  "operation": "set",  "values": ["api-response", "dynamic-content"]}
 ```
 
 API configuration example (expression)
 
 ```
-
-"action_parameters": {
-
-  "operation": "add",
-
-  "expression": "split(http.response.headers[\"Surrogate-Keys\"][0], \",\", 1)"
-
-}
-
-
+"action_parameters": {  "operation": "add",  "expression": "split(http.response.headers[\"Surrogate-Keys\"][0], \",\", 1)"}
 ```
 
 Refer to [Create a rule via API](https://developers.cloudflare.com/cache/how-to/cache-response-rules/create-api/) for complete API examples.
@@ -248,28 +219,7 @@ API action: `set_cache_control`.
 API configuration example
 
 ```
-
-"action_parameters": {
-
-  "max-age": {
-
-    "operation": "set",
-
-    "value": 3600,
-
-    "cloudflare_only": true
-
-  },
-
-  "stale-if-error": {
-
-    "operation": "remove"
-
-  }
-
-}
-
-
+"action_parameters": {  "max-age": {    "operation": "set",    "value": 3600,    "cloudflare_only": true  },  "stale-if-error": {    "operation": "remove"  }}
 ```
 
 Refer to [Create a rule via API](https://developers.cloudflare.com/cache/how-to/cache-response-rules/create-api/) for complete API examples.

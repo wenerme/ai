@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,58 +27,11 @@ When using the Any Hostname feature, it is essential to implement additional val
 Example response
 
 ```
-
-async function validateTurnstileWithHostname(token, expectedHostnames = []) {
-
-  const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-
-    method: 'POST',
-
-    headers: { 'Content-Type': 'application/json' },
-
-    body: JSON.stringify({
-
-      secret: process.env.TURNSTILE_SECRET,
-
-      response: token
-
-    })
-
-  });
-
-
+async function validateTurnstileWithHostname(token, expectedHostnames = []) {  const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {    method: 'POST',    headers: { 'Content-Type': 'application/json' },    body: JSON.stringify({      secret: process.env.TURNSTILE_SECRET,      response: token    })  });
   const result = await response.json();
-
-
-  if (!result.success) {
-
-    return { valid: false, error: 'Token validation failed' };
-
-  }
-
-
-  // Additional hostname validation when using Any Hostname
-
-  if (expectedHostnames.length > 0 && !expectedHostnames.includes(result.hostname)) {
-
-    return {
-
-      valid: false,
-
-      error: 'Hostname not in allowed list',
-
-      hostname: result.hostname
-
-    };
-
-  }
-
-
-  return { valid: true, data: result };
-
-}
-
-
+  if (!result.success) {    return { valid: false, error: 'Token validation failed' };  }
+  // Additional hostname validation when using Any Hostname  if (expectedHostnames.length > 0 && !expectedHostnames.includes(result.hostname)) {    return {      valid: false,      error: 'Hostname not in allowed list',      hostname: result.hostname    };  }
+  return { valid: true, data: result };}
 ```
 
 You should regularly review Turnstile Analytics for unexpected usage patterns and monitor the hostname field in Siteverify responses. You can set up alerts for widget usage on unexpected domains.
@@ -86,18 +39,7 @@ You should regularly review Turnstile Analytics for unexpected usage patterns an
 Use `action` and `cData` parameters to track widget usage sources.
 
 ```
-
-<!-- Widget with tracking information -->
-
-<div class="cf-turnstile"
-
-     data-sitekey="your-site-key"
-
-     data-action="customer-portal"
-
-     data-cdata="tenant-123"></div>
-
-
+<!-- Widget with tracking information --><div class="cf-turnstile"     data-sitekey="your-site-key"     data-action="customer-portal"     data-cdata="tenant-123"></div>
 ```
 
 ---

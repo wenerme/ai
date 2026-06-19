@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,75 +28,27 @@ SDXL-Lightning is a lightning-fast text-to-image generation model. It can genera
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-5096)
-* [  curl ](#tab-panel-5097)
+* [  TypeScript ](#tab-panel-5170)
+* [  curl ](#tab-panel-5171)
 
 ```
-
-export interface Env {
-
-  AI: Ai;
-
-}
-
-
-export default {
-
-  async fetch(request, env): Promise<Response> {
-
-
-    const inputs = {
-
-      prompt: "cyberpunk cat",
-
-    };
-
-
-    const response = await env.AI.run(
-
-      "@cf/bytedance/stable-diffusion-xl-lightning",
-
-      inputs
-
-    );
-
-
-    return new Response(response, {
-
-      headers: {
-
-        "content-type": "image/jpg",
-
-      },
-
-    });
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export interface Env {  AI: Ai;}
+export default {  async fetch(request, env): Promise<Response> {
+    const inputs = {      prompt: "cyberpunk cat",    };
+    const response = await env.AI.run(      "@cf/bytedance/stable-diffusion-xl-lightning",      inputs    );
+    return new Response(response, {      headers: {        "content-type": "image/jpg",      },    });  },} satisfies ExportedHandler<Env>;
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/bytedance/stable-diffusion-xl-lightning  \
-
-  -X POST  \
-
-  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
-
-  -d '{ "prompt": "cyberpunk cat" }'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/bytedance/stable-diffusion-xl-lightning  \  -X POST  \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \  -d '{ "prompt": "cyberpunk cat" }'
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-5098)
-* [ Output ](#tab-panel-5099)
+* [ Input ](#tab-panel-5172)
+* [ Output ](#tab-panel-5173)
 
 prompt
 
@@ -142,13 +94,13 @@ seed
 
 `integer`Random seed for reproducibility of the image generation
 
-The binding returns a `ReadableStream` with the output (check the model's output schema).
+ The binding returns a `ReadableStream` with the output (check the model's output schema). 
 
 ## API Schemas (Raw)
 
 Input [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-lightning/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-lightning/schema-input.json "Download") 
 
-Output [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-lightning/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-lightning/schema-output.json "Download") 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-lightning/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-lightning/schema-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-lightning/#page","headline":"stable-diffusion-xl-lightning (ByteDance) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"SDXL-Lightning is a lightning-fast text-to-image generation model. It can generate high-quality 1024px images in a few steps.","url":"https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-lightning/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

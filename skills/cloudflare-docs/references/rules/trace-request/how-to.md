@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,14 +25,15 @@ image: https://developers.cloudflare.com/core-services-preview.png
 [ Go to **Trace** ](https://dash.cloudflare.com/?to=/:account/trace)
 2. Enter a URL to trace. The URL must include a hostname that belongs to your account.
 3. Select an HTTP method. If you select _POST_, _PUT_, or _PATCH_, you should enter a value in **Request Body**.
-4. (Optional) Define any custom request properties to simulate the conditions of a specific HTTP/S request. You can customize the following request properties:  
-   * **Protocol** (HTTP protocol version)  
-   * **User Agent and Request Headers**  
-   * **Cookies**  
-   * **Geolocation** (request source [country](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/ip.src.country/), [region](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/ip.src.region/), and [city](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/ip.src.city/))  
-   * [**Bot Score**](https://developers.cloudflare.com/bots/concepts/bot-score/)  
-   * **Request Body** (for `POST`, `PUT`, and `PATCH` requests)  
-   * **Skip Challenge** (skips a Cloudflare-issued [challenge](https://developers.cloudflare.com/cloudflare-challenges/), if any, allowing the trace to continue)
+4. (Optional) Define any custom request properties to simulate the conditions of a specific HTTP/S request. You can customize the following request properties:
+
+  * **Protocol** (HTTP protocol version)
+  * **User Agent and Request Headers**
+  * **Cookies**
+  * **Geolocation** (request source [country](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/ip.src.country/), [region](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/ip.src.region/), and [city](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/ip.src.city/))
+  * [**Bot Score**](https://developers.cloudflare.com/bots/concepts/bot-score/)
+  * **Request Body** (for `POST`, `PUT`, and `PATCH` requests)
+  * **Skip Challenge** (skips a Cloudflare-issued [challenge](https://developers.cloudflare.com/cloudflare-challenges/), if any, allowing the trace to continue)
 5. Select **Send Trace**.
 
 ### 3\. Assess results

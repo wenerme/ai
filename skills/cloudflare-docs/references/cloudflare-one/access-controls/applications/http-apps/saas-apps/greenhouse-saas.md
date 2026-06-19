@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -47,9 +47,9 @@ This guide covers how to configure [Greenhouse Recruiting ↗](https://support.g
 ## 4\. Finish adding a SaaS application to Cloudflare One
 
 1. In your open Cloudflare One window, fill in the following fields:  
-   * **Entity ID**: `greenhouse.io`  
-   * **Assertion Consumer Service URL**: SSO Assertion Consumer URL from SSO configuration in Greenhouse Recruiting.  
-   * **Name ID format**: _Email_
+  * **Entity ID**: `greenhouse.io`
+  * **Assertion Consumer Service URL**: SSO Assertion Consumer URL from SSO configuration in Greenhouse Recruiting.
+  * **Name ID format**: _Email_
 2. Configure [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) for the application.
 3. Save the application.
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,20 +29,7 @@ Use R2 [bindings](https://developers.cloudflare.com/workers/runtime-apis/binding
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request: Request, env: Env, ctx: ExecutionContext) {
-
-    const object = await env.MY_BUCKET.get("image.png");
-
-    return new Response(object.body);
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export default {  async fetch(request: Request, env: Env, ctx: ExecutionContext) {    const object = await env.MY_BUCKET.get("image.png");    return new Response(object.body);  },} satisfies ExportedHandler<Env>;
 ```
 
 For complete documentation, refer to [Workers API](https://developers.cloudflare.com/r2/api/workers/workers-api-usage/).
@@ -51,83 +38,23 @@ For complete documentation, refer to [Workers API](https://developers.cloudflare
 
 Use S3-compatible SDKs to download objects. You'll need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [R2 API token](https://developers.cloudflare.com/r2/api/tokens/).
 
-* [ JavaScript ](#tab-panel-9781)
-* [ Python ](#tab-panel-9782)
+* [ JavaScript ](#tab-panel-9857)
+* [ Python ](#tab-panel-9858)
 
 TypeScript
 
 ```
-
 import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
-
-
-const S3 = new S3Client({
-
-  region: "auto", // Required by SDK but not used by R2
-
-  // Provide your Cloudflare account ID
-
-  endpoint: `https://<ACCOUNT_ID>.r2.cloudflarestorage.com`,
-
-  // Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)
-
-  credentials: {
-
-    accessKeyId: '<ACCESS_KEY_ID>',
-
-    secretAccessKey: '<SECRET_ACCESS_KEY>',
-
-  },
-
-});
-
-
-const response = await S3.send(
-
-  new GetObjectCommand({
-
-    Bucket: "my-bucket",
-
-    Key: "image.png",
-
-  }),
-
-);
-
-
+const S3 = new S3Client({  region: "auto", // Required by SDK but not used by R2  // Provide your Cloudflare account ID  endpoint: `https://<ACCOUNT_ID>.r2.cloudflarestorage.com`,  // Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)  credentials: {    accessKeyId: '<ACCESS_KEY_ID>',    secretAccessKey: '<SECRET_ACCESS_KEY>',  },});
+const response = await S3.send(  new GetObjectCommand({    Bucket: "my-bucket",    Key: "image.png",  }),);
 ```
 
 Python
 
 ```
-
 import boto3
-
-
-s3 = boto3.client(
-
-  service_name="s3",
-
-  # Provide your Cloudflare account ID
-
-  endpoint_url=f"https://{ACCOUNT_ID}.r2.cloudflarestorage.com",
-
-  # Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)
-
-  aws_access_key_id=ACCESS_KEY_ID,
-
-  aws_secret_access_key=SECRET_ACCESS_KEY,
-
-  region_name="auto", # Required by SDK but not used by R2
-
-)
-
-
-response = s3.get_object(Bucket="my-bucket", Key="image.png")
-
-image_data = response["Body"].read()
-
-
+s3 = boto3.client(  service_name="s3",  # Provide your Cloudflare account ID  endpoint_url=f"https://{ACCOUNT_ID}.r2.cloudflarestorage.com",  # Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)  aws_access_key_id=ACCESS_KEY_ID,  aws_secret_access_key=SECRET_ACCESS_KEY,  region_name="auto", # Required by SDK but not used by R2)
+response = s3.get_object(Bucket="my-bucket", Key="image.png")image_data = response["Body"].read()
 ```
 
 Refer to R2's [S3 API documentation](https://developers.cloudflare.com/r2/api/s3/api/) for all S3 API methods.
@@ -149,10 +76,7 @@ Use [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-up
 Terminal window
 
 ```
-
 wrangler r2 object get test-bucket/image.png
-
-
 ```
 
 The file will be downloaded into the current working directory. You can also use the `--file` flag to set a new name for the object as it is downloaded, and the `--pipe` flag to pipe the download to standard output (stdout).

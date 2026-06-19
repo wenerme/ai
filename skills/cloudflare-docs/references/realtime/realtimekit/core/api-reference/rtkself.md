@@ -5,7 +5,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -14,32 +14,32 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 The RTKSelf module represents the current user, and allows to modify the state of the user in the meeting. The audio and video streams of the user can be retrieved from this module.
 
 * [RTKSelf](#module%5FRTKSelf)  
-   * [.telemetry](#module%5FRTKSelf+telemetry)  
-   * [.peerId](#module%5FRTKSelf+peerId)  
-   * [.roomState](#module%5FRTKSelf+roomState)  
-   * [.permissions](#module%5FRTKSelf+permissions)  
-   * [.config](#module%5FRTKSelf+config)  
-   * [.roomJoined](#module%5FRTKSelf+roomJoined)  
-   * [.isPinned](#module%5FRTKSelf+isPinned)  
-   * [.cleanupEvents()](#module%5FRTKSelf+cleanupEvents)  
-   * [.setName(name)](#module%5FRTKSelf+setName)  
-   * [.setupTracks(options)](#module%5FRTKSelf+setupTracks)  
-   * [.enableAudio()](#module%5FRTKSelf+enableAudio)  
-   * [.enableVideo()](#module%5FRTKSelf+enableVideo)  
-   * [.updateVideoConstraints()](#module%5FRTKSelf+updateVideoConstraints)  
-   * [.enableScreenShare()](#module%5FRTKSelf+enableScreenShare)  
-   * [.updateScreenshareConstraints()](#module%5FRTKSelf+updateScreenshareConstraints)  
-   * [.disableAudio()](#module%5FRTKSelf+disableAudio)  
-   * [.disableVideo()](#module%5FRTKSelf+disableVideo)  
-   * [.disableScreenShare()](#module%5FRTKSelf+disableScreenShare)  
-   * [.getAllDevices()](#module%5FRTKSelf+getAllDevices)  
-   * [.setIsPinned()](#module%5FRTKSelf+setIsPinned)  
-   * [.pin()](#module%5FRTKSelf+pin)  
-   * [.unpin()](#module%5FRTKSelf+unpin)  
-   * [.hide()](#module%5FRTKSelf+hide)  
-   * [.show()](#module%5FRTKSelf+show)  
-   * [.setDevice(device)](#module%5FRTKSelf+setDevice)  
-   * [.updateVideo()](#module%5FRTKSelf+updateVideo)
+  * [.telemetry](#module%5FRTKSelf+telemetry)
+  * [.peerId](#module%5FRTKSelf+peerId)
+  * [.roomState](#module%5FRTKSelf+roomState)
+  * [.permissions](#module%5FRTKSelf+permissions)
+  * [.config](#module%5FRTKSelf+config)
+  * [.roomJoined](#module%5FRTKSelf+roomJoined)
+  * [.isPinned](#module%5FRTKSelf+isPinned)
+  * [.cleanupEvents()](#module%5FRTKSelf+cleanupEvents)
+  * [.setName(name)](#module%5FRTKSelf+setName)
+  * [.setupTracks(options)](#module%5FRTKSelf+setupTracks)
+  * [.enableAudio()](#module%5FRTKSelf+enableAudio)
+  * [.enableVideo()](#module%5FRTKSelf+enableVideo)
+  * [.updateVideoConstraints()](#module%5FRTKSelf+updateVideoConstraints)
+  * [.enableScreenShare()](#module%5FRTKSelf+enableScreenShare)
+  * [.updateScreenshareConstraints()](#module%5FRTKSelf+updateScreenshareConstraints)
+  * [.disableAudio()](#module%5FRTKSelf+disableAudio)
+  * [.disableVideo()](#module%5FRTKSelf+disableVideo)
+  * [.disableScreenShare()](#module%5FRTKSelf+disableScreenShare)
+  * [.getAllDevices()](#module%5FRTKSelf+getAllDevices)
+  * [.setIsPinned()](#module%5FRTKSelf+setIsPinned)
+  * [.pin()](#module%5FRTKSelf+pin)
+  * [.unpin()](#module%5FRTKSelf+unpin)
+  * [.hide()](#module%5FRTKSelf+hide)
+  * [.show()](#module%5FRTKSelf+show)
+  * [.setDevice(device)](#module%5FRTKSelf+setDevice)
+  * [.updateVideo()](#module%5FRTKSelf+updateVideo)
 
 ### meeting.self.telemetry
 

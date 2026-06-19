@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,40 +31,7 @@ Then, follow the rest of the setup instructions in the [Chat UI GitHub repositor
 When setting up your models, specify the `cloudflare` endpoint.
 
 ```
-
-{
-
-  "name" : "nousresearch/hermes-2-pro-mistral-7b",
-
-  "tokenizer": "nousresearch/hermes-2-pro-mistral-7b",
-
-  "parameters": {
-
-    "stop": ["<|im_end|>"]
-
-  },
-
-  "endpoints" : [
-
-    {
-
-      "type": "cloudflare",
-
-      // optionally specify these if not included in .env.local
-
-      "accountId": "your-account-id",
-
-      "apiToken": "your-api-token"
-
-      //
-
-    }
-
-  ]
-
-}
-
-
+{  "name" : "nousresearch/hermes-2-pro-mistral-7b",  "tokenizer": "nousresearch/hermes-2-pro-mistral-7b",  "parameters": {    "stop": ["<|im_end|>"]  },  "endpoints" : [    {      "type": "cloudflare",      // optionally specify these if not included in .env.local      "accountId": "your-account-id",      "apiToken": "your-api-token"      //    }  ]}
 ```
 
 ## Supported models

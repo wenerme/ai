@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -41,94 +41,48 @@ To start a live stream programmatically, make a `POST` request to the `/live_inp
 Request
 
 ```
-
-curl -X POST \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---data '{"meta": {"name":"test stream"},"recording": { "mode": "automatic" }}' \
-
-https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs
-
-
+curl -X POST \--header "Authorization: Bearer <API_TOKEN>" \--data '{"meta": {"name":"test stream"},"recording": { "mode": "automatic" }}' \https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs
 ```
 
 Response
 
 ```
-
-{
-
-  "uid": "f256e6ea9341d51eea64c9454659e576",
-
-  "rtmps": {
-
-    "url": "rtmps://live.cloudflare.com:443/live/",
-
-    "streamKey": "MTQ0MTcjM3MjI1NDE3ODIyNTI1MjYyMjE4NTI2ODI1NDcxMzUyMzcf256e6ea9351d51eea64c9454659e576"
-
-  },
-
-  "created": "2021-09-23T05:05:53.451415Z",
-
-  "modified": "2021-09-23T05:05:53.451415Z",
-
-  "meta": {
-
-    "name": "test stream"
-
-  },
-
-  "status": null,
-
-  "recording": {
-
-    "mode": "automatic",
-
-    "requireSignedURLs": false,
-
-    "allowedOrigins": null,
-
-    "hideLiveViewerCount": false
-
-  },
-
-  "enabled": true,
-
-  "deleteRecordingAfterDays": null,
-
-  "preferLowLatency": false
-
-}
-
-
+{  "uid": "f256e6ea9341d51eea64c9454659e576",  "rtmps": {    "url": "rtmps://live.cloudflare.com:443/live/",    "streamKey": "MTQ0MTcjM3MjI1NDE3ODIyNTI1MjYyMjE4NTI2ODI1NDcxMzUyMzcf256e6ea9351d51eea64c9454659e576"  },  "created": "2021-09-23T05:05:53.451415Z",  "modified": "2021-09-23T05:05:53.451415Z",  "meta": {    "name": "test stream"  },  "status": null,  "recording": {    "mode": "automatic",    "requireSignedURLs": false,    "allowedOrigins": null,    "hideLiveViewerCount": false  },  "enabled": true,  "deleteRecordingAfterDays": null,  "preferLowLatency": false}
 ```
 
 #### Optional API parameters
 
 [API Reference Docs for /live\_inputs](https://developers.cloudflare.com/api/resources/stream/subresources/live%5Finputs/methods/create/)
 
-* `enabled` boolean default: `true`  
-   * Controls whether the live input accepts incoming broadcasts. When set to `false`, the live input will reject any incoming RTMPS or SRT connections. Use this property to programmatically end creator broadcasts or prevent new broadcasts from starting on a specific input.
-* `preferLowLatency` boolean default: `false` Beta  
-   * When set to true, this live input will be enabled for the beta Low-Latency HLS pipeline. The Stream built-in player will automatically use LL-HLS when possible. (Recording `mode` property must also be set to `automatic`.)
-* `deleteRecordingAfterDays` integer default: `null` (any)  
-   * Specifies a date and time when the recording, not the input, will be deleted. This property applies from the time the recording is made available and ready to stream. After the recording is deleted, it is no longer viewable and no longer counts towards storage for billing. Minimum value is `30`, maximum value is `1096`.  
-   When the stream ends, a `scheduledDeletion` timestamp is calculated using the `deleteRecordingAfterDays` value if present.  
-   Note that if the value is added to a live input while a stream is live, the property will only apply to future streams.
-* `timeoutSeconds` integer default: `0`  
-   * The `timeoutSeconds` property specifies how long a live feed can be disconnected before it results in a new video being created.
+* `enabled` boolean default: `true`
+
+  * Controls whether the live input accepts incoming broadcasts. When set to `false`, the live input will reject any incoming RTMPS or SRT connections. Use this property to programmatically end creator broadcasts or prevent new broadcasts from starting on a specific input.
+* `preferLowLatency` boolean default: `false` Beta
+
+  * When set to true, this live input will be enabled for the beta Low-Latency HLS pipeline. The Stream built-in player will automatically use LL-HLS when possible. (Recording `mode` property must also be set to `automatic`.)
+* `deleteRecordingAfterDays` integer default: `null` (any)
+
+  * Specifies a date and time when the recording, not the input, will be deleted. This property applies from the time the recording is made available and ready to stream. After the recording is deleted, it is no longer viewable and no longer counts towards storage for billing. Minimum value is `30`, maximum value is `1096`.  
+  When the stream ends, a `scheduledDeletion` timestamp is calculated using the `deleteRecordingAfterDays` value if present.  
+  Note that if the value is added to a live input while a stream is live, the property will only apply to future streams.
+* `timeoutSeconds` integer default: `0`
+
+  * The `timeoutSeconds` property specifies how long a live feed can be disconnected before it results in a new video being created.
 
 The following four properties are nested under the `recording` object.
 
-* `mode` string default: `off`  
-   * When the mode property is set to `automatic`, the live stream will be automatically available for viewing using HLS/DASH. In addition, the live stream will be automatically recorded for later replays. By default, recording mode is set to `off`, and the input will not be recorded or available for playback.
-* `requireSignedURLs` boolean default: `false`  
-   * The `requireSignedURLs` property indicates if signed URLs are required to view the video. This setting is applied by default to all videos recorded from the input. In addition, if viewing a video via the live input ID, this field takes effect over any video-level settings.
-* `allowedOrigins` integer default: `null` (any)  
-   * The `allowedOrigins` property can optionally be invoked to provide a list of allowed origins. This setting is applied by default to all videos recorded from the input. In addition, if viewing a video via the live input ID, this field takes effect over any video-level settings.
-* `hideLiveViewerCount` boolean default: `false`  
-   * Restrict access to the live viewer count and remove the value from the player.
+* `mode` string default: `off`
+
+  * When the mode property is set to `automatic`, the live stream will be automatically available for viewing using HLS/DASH. In addition, the live stream will be automatically recorded for later replays. By default, recording mode is set to `off`, and the input will not be recorded or available for playback.
+* `requireSignedURLs` boolean default: `false`
+
+  * The `requireSignedURLs` property indicates if signed URLs are required to view the video. This setting is applied by default to all videos recorded from the input. In addition, if viewing a video via the live input ID, this field takes effect over any video-level settings.
+* `allowedOrigins` integer default: `null` (any)
+
+  * The `allowedOrigins` property can optionally be invoked to provide a list of allowed origins. This setting is applied by default to all videos recorded from the input. In addition, if viewing a video via the live input ID, this field takes effect over any video-level settings.
+* `hideLiveViewerCount` boolean default: `false`
+
+  * Restrict access to the live viewer count and remove the value from the player.
 
 ## Manage live inputs
 
@@ -137,16 +91,7 @@ You can update live inputs by making a `PUT` request:
 Request
 
 ```
-
-curl --request PUT \
-
-https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs/{input_id} \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---data '{"meta": {"name":"test stream 1"},"recording": { "mode": "automatic", "timeoutSeconds": 10 }}'
-
-
+curl --request PUT \https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs/{input_id} \--header "Authorization: Bearer <API_TOKEN>" \--data '{"meta": {"name":"test stream 1"},"recording": { "mode": "automatic", "timeoutSeconds": 10 }}'
 ```
 
 Delete a live input by making a `DELETE` request:
@@ -154,14 +99,7 @@ Delete a live input by making a `DELETE` request:
 Request
 
 ```
-
-curl --request DELETE \
-
-https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs/{input_id} \
-
---header "Authorization: Bearer <API_TOKEN>"
-
-
+curl --request DELETE \https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs/{input_id} \--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 ## Recommendations, requirements and limitations

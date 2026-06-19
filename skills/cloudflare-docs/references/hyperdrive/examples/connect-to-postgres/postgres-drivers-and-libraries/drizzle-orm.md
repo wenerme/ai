@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,72 +29,25 @@ Install the Drizzle ORM and its dependencies such as the [node-postgres ↗](htt
 Terminal window
 
 ```
-
-npm i drizzle-orm pg dotenv
-
-npm i -D drizzle-kit tsx @types/pg @types/node
-
-
+npm i drizzle-orm pg dotenvnpm i -D drizzle-kit tsx @types/pg @types/node
 ```
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-8801)
-* [  wrangler.toml ](#tab-panel-8802)
+* [  wrangler.jsonc ](#tab-panel-8877)
+* [  wrangler.toml ](#tab-panel-8878)
 
 JSONC
 
 ```
-
-{
-
-  // required for database drivers to function
-
-  "compatibility_flags": [
-
-    "nodejs_compat"
-
-  ],
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "hyperdrive": [
-
-    {
-
-      "binding": "HYPERDRIVE",
-
-      "id": "<your-hyperdrive-id-here>"
-
-    }
-
-  ]
-
-}
-
-
+{  // required for database drivers to function  "compatibility_flags": [    "nodejs_compat"  ],  // Set this to today's date  "compatibility_date": "2026-06-18",  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<your-hyperdrive-id-here>"    }  ]}
 ```
 
 TOML
 
 ```
-
-compatibility_flags = [ "nodejs_compat" ]
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[[hyperdrive]]
-
-binding = "HYPERDRIVE"
-
-id = "<your-hyperdrive-id-here>"
-
-
+compatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-06-18"
+[[hyperdrive]]binding = "HYPERDRIVE"id = "<your-hyperdrive-id-here>"
 ```
 
 ## 2\. Configure Drizzle
@@ -108,14 +61,8 @@ With Drizzle ORM, we define the schema in TypeScript rather than writing raw SQL
 3. In `schema.ts`, define a `users` table as shown below.  
 src/db/schema.ts  
 ```  
-// src/db/schema.ts  
-import { pgTable, serial, varchar, timestamp } from "drizzle-orm/pg-core";  
-export const users = pgTable("users", {  
-  id: serial("id").primaryKey(),  
-  name: varchar("name", { length: 255 }).notNull(),  
-  email: varchar("email", { length: 255 }).notNull().unique(),  
-  createdAt: timestamp("created_at").defaultNow(),  
-});  
+// src/db/schema.tsimport { pgTable, serial, varchar, timestamp } from "drizzle-orm/pg-core";  
+export const users = pgTable("users", {  id: serial("id").primaryKey(),  name: varchar("name", { length: 255 }).notNull(),  email: varchar("email", { length: 255 }).notNull().unique(),  createdAt: timestamp("created_at").defaultNow(),});  
 ```
 
 ### 2.2\. Connect Drizzle ORM to the database with Hyperdrive
@@ -127,58 +74,13 @@ Populate your `index.ts` file as shown below.
 src/index.ts
 
 ```
-
-// src/index.ts
-
-import { Client } from "pg";
-
-import { drizzle } from "drizzle-orm/node-postgres";
-
-import { users } from "./db/schema";
-
-
-export interface Env {
-
-  HYPERDRIVE: Hyperdrive;
-
-}
-
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    // Create a new client instance for each request.
-
-    const client = new Client({
-
-      connectionString: env.HYPERDRIVE.connectionString,
-
-    });
-
-
-    // Connect to the database
-
-    await client.connect();
-
-
-    // Create the Drizzle client with the node-postgres connection
-
-    const db = drizzle(client);
-
-
-    // Sample query to get all users
-
-    const allUsers = await db.select().from(users);
-
-
-    return Response.json(allUsers);
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+// src/index.tsimport { Client } from "pg";import { drizzle } from "drizzle-orm/node-postgres";import { users } from "./db/schema";
+export interface Env {  HYPERDRIVE: Hyperdrive;}
+export default {  async fetch(request, env, ctx): Promise<Response> {    // Create a new client instance for each request.    const client = new Client({      connectionString: env.HYPERDRIVE.connectionString,    });
+    // Connect to the database    await client.connect();
+    // Create the Drizzle client with the node-postgres connection    const db = drizzle(client);
+    // Sample query to get all users    const allUsers = await db.select().from(users);
+    return Response.json(allUsers);  },} satisfies ExportedHandler<Env>;
 ```
 
 Note
@@ -198,24 +100,12 @@ You can generate and run SQL migrations on your database based on your schema us
 1. Create a `.env` file the root folder of your project, and add your database connection string. The Drizzle Kit CLI will use this connection string to create and apply the migrations.  
 .env  
 ```  
-# .env  
-# Replace with your direct database connection string  
-DATABASE_URL='postgres://user:password@db-host.cloud/database-name'  
+# .env# Replace with your direct database connection stringDATABASE_URL='postgres://user:password@db-host.cloud/database-name'  
 ```
 2. Create a `drizzle.config.ts` file in the root folder of your project to configure Drizzle Kit and add the following content:  
 drizzle.config.ts  
 ```  
-// drizzle.config.ts  
-import "dotenv/config";  
-import { defineConfig } from "drizzle-kit";  
-export default defineConfig({  
-  out: "./drizzle",  
-  schema: "./src/db/schema.ts",  
-  dialect: "postgresql",  
-  dbCredentials: {  
-    url: process.env.DATABASE_URL!,  
-  },  
-});  
+// drizzle.config.tsimport "dotenv/config";import { defineConfig } from "drizzle-kit";export default defineConfig({  out: "./drizzle",  schema: "./src/db/schema.ts",  dialect: "postgresql",  dbCredentials: {    url: process.env.DATABASE_URL!,  },});  
 ```
 3. Generate the migration file for your database according to your schema files and apply the migrations to your database.  
 Run the following two commands:  
@@ -224,10 +114,7 @@ Terminal window
 npx drizzle-kit generate  
 ```  
 ```  
-No config path provided, using default 'drizzle.config.ts'  
-Reading config file 'drizzle.config.ts'  
-1 tables  
-users 4 columns 0 indexes 0 fks  
+No config path provided, using default 'drizzle.config.ts'Reading config file 'drizzle.config.ts'1 tablesusers 4 columns 0 indexes 0 fks  
 [✓] Your SQL migration file ➜ drizzle/0000_mysterious_queen_noir.sql 🚀  
 ```  
 Terminal window  
@@ -235,9 +122,7 @@ Terminal window
 npx drizzle-kit migrate  
 ```  
 ```  
-No config path provided, using default 'drizzle.config.ts'  
-Reading config file 'drizzle.config.ts'  
-Using 'postgres' driver for database querying  
+No config path provided, using default 'drizzle.config.ts'Reading config file 'drizzle.config.ts'Using 'postgres' driver for database querying  
 ```
 
 ## 3\. Deploy your Worker
@@ -247,10 +132,7 @@ Deploy your Worker.
 Terminal window
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 ## Next steps

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,122 +32,27 @@ The following example shows you how to create a server endpoint configured to qu
 
 The example also shows you how to configure both your app-wide types within `src/app.d.ts` to recognize your `D1Database` binding, import the `@sveltejs/adapter-cloudflare` adapter into `svelte.config.js`, and configure it to apply to all of your routes.
 
-* [  TypeScript ](#tab-panel-7885)
+* [  TypeScript ](#tab-panel-7961)
 
 TypeScript
 
 ```
-
 import type { RequestHandler } from "@sveltejs/kit";
-
-
-export async function GET({ request, platform }) {
-
-  try {
-
-    let result = await platform.env.DB.prepare(
-
-      "SELECT * FROM users LIMIT 5",
-
-    ).run();
-
-    return new Response(JSON.stringify(result), {
-
-      headers: { "Content-Type": "application/json" },
-
-    });
-
-  } catch (error) {
-
-    return Response.json({ error: "Failed to fetch users" }, {
-
-      status: 500
-
-    });
-
-  }
-
-}
-
-
+export async function GET({ request, platform }) {  try {    let result = await platform.env.DB.prepare(      "SELECT * FROM users LIMIT 5",    ).run();    return new Response(JSON.stringify(result), {      headers: { "Content-Type": "application/json" },    });  } catch (error) {    return Response.json({ error: "Failed to fetch users" }, {      status: 500    });  }}
 ```
 
 TypeScript
 
 ```
-
-// See https://kit.svelte.dev/docs/types#app
-
-// for information about these interfaces
-
-declare global {
-
-  namespace App {
-
-    // interface Error {}
-
-    // interface Locals {}
-
-    // interface PageData {}
-
-    interface Platform {
-
-      env: {
-
-        DB: D1Database;
-
-      };
-
-      context: {
-
-        waitUntil(promise: Promise<any>): void;
-
-      };
-
-      caches: CacheStorage & { default: Cache };
-
-    }
-
-  }
-
-}
-
-
+// See https://kit.svelte.dev/docs/types#app// for information about these interfacesdeclare global {  namespace App {    // interface Error {}    // interface Locals {}    // interface PageData {}    interface Platform {      env: {        DB: D1Database;      };      context: {        waitUntil(promise: Promise<any>): void;      };      caches: CacheStorage & { default: Cache };    }  }}
 export {};
-
-
 ```
 
 JavaScript
 
 ```
-
 import adapter from "@sveltejs/adapter-cloudflare";
-
-
-export default {
-
-  kit: {
-
-    adapter: adapter({
-
-      // See below for an explanation of these options
-
-      routes: {
-
-        include: ["/*"],
-
-        exclude: ["<all>"],
-
-      },
-
-    }),
-
-  },
-
-};
-
-
+export default {  kit: {    adapter: adapter({      // See below for an explanation of these options      routes: {        include: ["/*"],        exclude: ["<all>"],      },    }),  },};
 ```
 
 ```json

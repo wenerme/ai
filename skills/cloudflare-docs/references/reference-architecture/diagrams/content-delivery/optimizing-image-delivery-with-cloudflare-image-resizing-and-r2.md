@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -47,10 +47,7 @@ You can easily convert and resize images by requesting them through a specifical
 The final URL used in the request would look like this:
 
 ```
-
 https://www.mywebsite.com/cdn-cgi/image/width=80,quality=75/uploads/image.jpg
-
-
 ```
 
 ## Related Resources

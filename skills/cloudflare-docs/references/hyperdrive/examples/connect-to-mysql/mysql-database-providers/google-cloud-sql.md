@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -60,10 +60,7 @@ To configure Hyperdrive, you will need:
 Hyperdrive accepts the combination of these parameters in the common connection string format used by database drivers:
 
 ```
-
 mysql://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
-
-
 ```
 
 Most database providers will provide a connection string you can copy-and-paste directly into Hyperdrive.
@@ -76,10 +73,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
 Terminal window
 
 ```
-
 npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="mysql://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name"
-
-
 ```
 
 Note
@@ -88,74 +82,20 @@ Hyperdrive will attempt to connect to your database with the provided credential
 
 This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-8687)
-* [  wrangler.toml ](#tab-panel-8688)
+* [  wrangler.jsonc ](#tab-panel-8763)
+* [  wrangler.toml ](#tab-panel-8764)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "hyperdrive-example",
-
-  "main": "src/index.ts",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "compatibility_flags": [
-
-    "nodejs_compat"
-
-  ],
-
-  // Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.
-
-  "hyperdrive": [
-
-    {
-
-      "binding": "HYPERDRIVE",
-
-      "id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "hyperdrive-example",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-18",  "compatibility_flags": [    "nodejs_compat"  ],  // Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"    }  ]}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "hyperdrive-example"
-
-main = "src/index.ts"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-compatibility_flags = [ "nodejs_compat" ]
-
-
-[[hyperdrive]]
-
-binding = "HYPERDRIVE"
-
-id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "hyperdrive-example"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-18"compatibility_flags = [ "nodejs_compat" ]
+[[hyperdrive]]binding = "HYPERDRIVE"id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
 ```
 
 ## 3\. Use Hyperdrive from your Worker
@@ -186,62 +126,20 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-8689)
-* [  wrangler.toml ](#tab-panel-8690)
+* [  wrangler.jsonc ](#tab-panel-8765)
+* [  wrangler.toml ](#tab-panel-8766)
 
 JSONC
 
 ```
-
-{
-
-  // required for database drivers to function
-
-  "compatibility_flags": [
-
-    "nodejs_compat"
-
-  ],
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "hyperdrive": [
-
-    {
-
-      "binding": "HYPERDRIVE",
-
-      "id": "<your-hyperdrive-id-here>"
-
-    }
-
-  ]
-
-}
-
-
+{  // required for database drivers to function  "compatibility_flags": [    "nodejs_compat"  ],  // Set this to today's date  "compatibility_date": "2026-06-18",  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<your-hyperdrive-id-here>"    }  ]}
 ```
 
 TOML
 
 ```
-
-compatibility_flags = [ "nodejs_compat" ]
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[[hyperdrive]]
-
-binding = "HYPERDRIVE"
-
-id = "<your-hyperdrive-id-here>"
-
-
+compatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-06-18"
+[[hyperdrive]]binding = "HYPERDRIVE"id = "<your-hyperdrive-id-here>"
 ```
 
 Create a new `connection` instance and pass the Hyperdrive parameters:
@@ -249,70 +147,11 @@ Create a new `connection` instance and pass the Hyperdrive parameters:
 TypeScript
 
 ```
-
-// mysql2 v3.13.0 or later is required
-
-import { createConnection } from "mysql2/promise";
-
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    // Create a new connection on each request. Hyperdrive maintains the underlying
-
-    // database connection pool, so creating a new connection is fast.
-
-    const connection = await createConnection({
-
-      host: env.HYPERDRIVE.host,
-
-      user: env.HYPERDRIVE.user,
-
-      password: env.HYPERDRIVE.password,
-
-      database: env.HYPERDRIVE.database,
-
-      port: env.HYPERDRIVE.port,
-
-
-      // Required to enable mysql2 compatibility for Workers
-
-      disableEval: true,
-
-    });
-
-
-    try {
-
-      // Sample query
-
-      const [results, fields] = await connection.query("SHOW tables;");
-
-
-      // Return result rows as JSON
-
-      return Response.json({ results, fields });
-
-    } catch (e) {
-
-      console.error(e);
-
-      return Response.json(
-
-        { error: e instanceof Error ? e.message : e },
-
-        { status: 500 },
-
-      );
-
-    }
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+// mysql2 v3.13.0 or later is requiredimport { createConnection } from "mysql2/promise";
+export default {  async fetch(request, env, ctx): Promise<Response> {    // Create a new connection on each request. Hyperdrive maintains the underlying    // database connection pool, so creating a new connection is fast.    const connection = await createConnection({      host: env.HYPERDRIVE.host,      user: env.HYPERDRIVE.user,      password: env.HYPERDRIVE.password,      database: env.HYPERDRIVE.database,      port: env.HYPERDRIVE.port,
+      // Required to enable mysql2 compatibility for Workers      disableEval: true,    });
+    try {      // Sample query      const [results, fields] = await connection.query("SHOW tables;");
+      // Return result rows as JSON      return Response.json({ results, fields });    } catch (e) {      console.error(e);      return Response.json(        { error: e instanceof Error ? e.message : e },        { status: 500 },      );    }  },} satisfies ExportedHandler<Env>;
 ```
 
 Note

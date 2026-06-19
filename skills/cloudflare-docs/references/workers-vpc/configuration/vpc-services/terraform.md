@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-vpc/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,67 +29,15 @@ The `cloudflare_connectivity_directory_service` resource creates a VPC Service i
 When using a hostname, provide `host.hostname` with a `resolver_network` block. This parallels the hostname-based [JSON configuration example](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/#configuration-examples).
 
 ```
-
-resource "cloudflare_connectivity_directory_service" "my_private_api" {
-
-  account_id = var.account_id
-
-  name       = "my-private-api"
-
-  type       = "http"
-
-  http_port  = 80
-
-  https_port = 443
-
-
-  host = {
-
-    hostname = "internal-api.example.com"
-
-    resolver_network = {
-
-      tunnel_id = var.tunnel_id
-
-    }
-
-  }
-
-}
-
-
+resource "cloudflare_connectivity_directory_service" "my_private_api" {  account_id = var.account_id  name       = "my-private-api"  type       = "http"  http_port  = 80  https_port = 443
+  host = {    hostname = "internal-api.example.com"    resolver_network = {      tunnel_id = var.tunnel_id    }  }}
 ```
 
 To use a custom DNS resolver within your private network, add `resolver_ips`:
 
 ```
-
-resource "cloudflare_connectivity_directory_service" "my_private_api" {
-
-  account_id = var.account_id
-
-  name       = "my-private-api"
-
-  type       = "http"
-
-
-  host = {
-
-    hostname = "internal-api.example.com"
-
-    resolver_network = {
-
-      tunnel_id    = var.tunnel_id
-
-      resolver_ips = ["10.0.0.53"]
-
-    }
-
-  }
-
-}
-
-
+resource "cloudflare_connectivity_directory_service" "my_private_api" {  account_id = var.account_id  name       = "my-private-api"  type       = "http"
+  host = {    hostname = "internal-api.example.com"    resolver_network = {      tunnel_id    = var.tunnel_id      resolver_ips = ["10.0.0.53"]    }  }}
 ```
 
 ### IP-based configuration
@@ -97,37 +45,8 @@ resource "cloudflare_connectivity_directory_service" "my_private_api" {
 When using IP addresses, provide `host.ipv4` and/or `host.ipv6` with a `network` block. This parallels the IP-based [JSON configuration example](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/#configuration-examples).
 
 ```
-
-resource "cloudflare_connectivity_directory_service" "my_private_api" {
-
-  account_id = var.account_id
-
-  name       = "my-private-api"
-
-  type       = "http"
-
-  http_port  = 8080
-
-  https_port = 8443
-
-
-  host = {
-
-    ipv4 = "10.0.1.50"
-
-    ipv6 = "fe80::1"
-
-    network = {
-
-      tunnel_id = var.tunnel_id
-
-    }
-
-  }
-
-}
-
-
+resource "cloudflare_connectivity_directory_service" "my_private_api" {  account_id = var.account_id  name       = "my-private-api"  type       = "http"  http_port  = 8080  https_port = 8443
+  host = {    ipv4 = "10.0.1.50"    ipv6 = "fe80::1"    network = {      tunnel_id = var.tunnel_id    }  }}
 ```
 
 ### TCP service configuration
@@ -135,35 +54,8 @@ resource "cloudflare_connectivity_directory_service" "my_private_api" {
 For TCP services (for example, databases), set `type = "tcp"` and provide a `tcp_port`. You can optionally specify an `app_protocol` of `postgresql` or `mysql`.
 
 ```
-
-resource "cloudflare_connectivity_directory_service" "my_database" {
-
-  account_id   = var.account_id
-
-  name         = "my-postgres-db"
-
-  type         = "tcp"
-
-  tcp_port     = 5432
-
-  app_protocol = "postgresql"
-
-
-  host = {
-
-    ipv4 = "10.0.0.5"
-
-    network = {
-
-      tunnel_id = var.tunnel_id
-
-    }
-
-  }
-
-}
-
-
+resource "cloudflare_connectivity_directory_service" "my_database" {  account_id   = var.account_id  name         = "my-postgres-db"  type         = "tcp"  tcp_port     = 5432  app_protocol = "postgresql"
+  host = {    ipv4 = "10.0.0.5"    network = {      tunnel_id = var.tunnel_id    }  }}
 ```
 
 ### TLS certificate verification
@@ -171,42 +63,9 @@ resource "cloudflare_connectivity_directory_service" "my_database" {
 To configure the TLS certificate verification mode for the connection to the origin, add a `tls_settings` block:
 
 ```
-
-resource "cloudflare_connectivity_directory_service" "my_database" {
-
-  account_id   = var.account_id
-
-  name         = "my-postgres-db"
-
-  type         = "tcp"
-
-  tcp_port     = 5432
-
-  app_protocol = "postgresql"
-
-
-  host = {
-
-    ipv4 = "10.0.0.5"
-
-    network = {
-
-      tunnel_id = var.tunnel_id
-
-    }
-
-  }
-
-
-  tls_settings = {
-
-    cert_verification_mode = "verify_ca"
-
-  }
-
-}
-
-
+resource "cloudflare_connectivity_directory_service" "my_database" {  account_id   = var.account_id  name         = "my-postgres-db"  type         = "tcp"  tcp_port     = 5432  app_protocol = "postgresql"
+  host = {    ipv4 = "10.0.0.5"    network = {      tunnel_id = var.tunnel_id    }  }
+  tls_settings = {    cert_verification_mode = "verify_ca"  }}
 ```
 
 Valid values for `cert_verification_mode` are:
@@ -228,73 +87,15 @@ For TCP services, `tcp_port` is required.
 Once a VPC Service exists, bind it to a Worker using the `vpc_service` binding type in the `bindings` array of a `cloudflare_worker_version` resource. This is equivalent to the [vpc\_services array in Wrangler configuration](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/#workers-binding-configuration).
 
 ```
-
-resource "cloudflare_worker_version" "my_worker_version" {
-
-  account_id         = var.account_id
-
-  worker_id          = cloudflare_worker.my_worker.id
-
-  compatibility_date = "2025-02-21" # Set this to today's date
-
-  main_module        = "worker.js"
-
-
-  modules = [{
-
-    name         = "worker.js"
-
-    content_type = "application/javascript+module"
-
-    content_file = "build/worker.js"
-
-  }]
-
-
-  bindings = [{
-
-    type       = "vpc_service"
-
-    name       = "PRIVATE_API"
-
-    service_id = cloudflare_connectivity_directory_service.my_private_api.service_id
-
-  }]
-
-}
-
-
+resource "cloudflare_worker_version" "my_worker_version" {  account_id         = var.account_id  worker_id          = cloudflare_worker.my_worker.id  compatibility_date = "2025-02-21" # Set this to today's date  main_module        = "worker.js"
+  modules = [{    name         = "worker.js"    content_type = "application/javascript+module"    content_file = "build/worker.js"  }]
+  bindings = [{    type       = "vpc_service"    name       = "PRIVATE_API"    service_id = cloudflare_connectivity_directory_service.my_private_api.service_id  }]}
 ```
 
 Multiple VPC Service bindings can be added to the same Worker:
 
 ```
-
-bindings = [
-
-  {
-
-    type       = "vpc_service"
-
-    name       = "PRIVATE_API"
-
-    service_id = cloudflare_connectivity_directory_service.api.service_id
-
-  },
-
-  {
-
-    type       = "vpc_service"
-
-    name       = "PRIVATE_DATABASE"
-
-    service_id = cloudflare_connectivity_directory_service.database.service_id
-
-  }
-
-]
-
-
+bindings = [  {    type       = "vpc_service"    name       = "PRIVATE_API"    service_id = cloudflare_connectivity_directory_service.api.service_id  },  {    type       = "vpc_service"    name       = "PRIVATE_DATABASE"    service_id = cloudflare_connectivity_directory_service.database.service_id  }]
 ```
 
 The Worker code accesses each binding through `env.PRIVATE_API.fetch()` and `env.PRIVATE_DATABASE.fetch()`, as described in the [Workers Binding API](https://developers.cloudflare.com/workers-vpc/api/).
@@ -308,16 +109,7 @@ The Terraform provider includes data sources for reading existing VPC Services w
 ### Look up a single VPC Service
 
 ```
-
-data "cloudflare_connectivity_directory_service" "existing" {
-
-  account_id = var.account_id
-
-  service_id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
-
-}
-
-
+data "cloudflare_connectivity_directory_service" "existing" {  account_id = var.account_id  service_id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"}
 ```
 
 This is useful for binding to a VPC Service that is managed outside of your Terraform configuration (for example, created through the dashboard or Wrangler CLI).
@@ -325,111 +117,21 @@ This is useful for binding to a VPC Service that is managed outside of your Terr
 ### List VPC Services
 
 ```
-
-data "cloudflare_connectivity_directory_services" "all_http" {
-
-  account_id = var.account_id
-
-  type       = "http"
-
-}
-
-
-data "cloudflare_connectivity_directory_services" "all_tcp" {
-
-  account_id = var.account_id
-
-  type       = "tcp"
-
-}
-
-
+data "cloudflare_connectivity_directory_services" "all_http" {  account_id = var.account_id  type       = "http"}
+data "cloudflare_connectivity_directory_services" "all_tcp" {  account_id = var.account_id  type       = "tcp"}
 ```
 
 ## Resource schema reference
 
 ```
-
-resource "cloudflare_connectivity_directory_service" "example" {
-
-  # Required
-
-  account_id = "your-account-id"        # Account identifier
-
-  name       = "my-private-api"         # Human-readable name
-
-  type       = "http"                   # Service type: "http" or "tcp"
-
-
-  # HTTP-specific (optional, defaults to 80/443)
-
-  http_port  = 80                       # HTTP port
-
-  https_port = 443                      # HTTPS port
-
-
-  # TCP-specific (tcp_port is required when type = "tcp")
-
-  # tcp_port     = 5432                 # TCP port
-
-  # app_protocol = "postgresql"         # Optional: "postgresql" or "mysql"
-
-
-  host = {
-
-    # Use hostname OR ipv4/ipv6, not both
-
-
-    # Option A: Hostname-based
-
-    hostname = "internal-api.example.com"
-
-    resolver_network = {
-
-      tunnel_id    = "tunnel-uuid"      # Required — Cloudflare Tunnel ID
-
-      resolver_ips = ["10.0.0.53"]      # Optional — custom DNS resolver IPs
-
-    }
-
-
-    # Option B: IP-based
-
-    # ipv4 = "10.0.1.50"               # IPv4 address
-
-    # ipv6 = "fe80::1"                 # IPv6 address
-
-    # network = {
-
-    #   tunnel_id = "tunnel-uuid"      # Required — Cloudflare Tunnel ID
-
-    # }
-
-  }
-
-
-  # Optional TLS settings
-
-  # tls_settings = {
-
-  #   cert_verification_mode = "verify_full"  # "verify_full", "verify_ca", or "disabled"
-
-  # }
-
-
-  # Read-only (computed by the API)
-
-  # id         — Terraform resource ID
-
-  # service_id — VPC Service ID (use this for Worker bindings)
-
-  # created_at — Creation timestamp
-
-  # updated_at — Last update timestamp
-
-}
-
-
+resource "cloudflare_connectivity_directory_service" "example" {  # Required  account_id = "your-account-id"        # Account identifier  name       = "my-private-api"         # Human-readable name  type       = "http"                   # Service type: "http" or "tcp"
+  # HTTP-specific (optional, defaults to 80/443)  http_port  = 80                       # HTTP port  https_port = 443                      # HTTPS port
+  # TCP-specific (tcp_port is required when type = "tcp")  # tcp_port     = 5432                 # TCP port  # app_protocol = "postgresql"         # Optional: "postgresql" or "mysql"
+  host = {    # Use hostname OR ipv4/ipv6, not both
+    # Option A: Hostname-based    hostname = "internal-api.example.com"    resolver_network = {      tunnel_id    = "tunnel-uuid"      # Required — Cloudflare Tunnel ID      resolver_ips = ["10.0.0.53"]      # Optional — custom DNS resolver IPs    }
+    # Option B: IP-based    # ipv4 = "10.0.1.50"               # IPv4 address    # ipv6 = "fe80::1"                 # IPv6 address    # network = {    #   tunnel_id = "tunnel-uuid"      # Required — Cloudflare Tunnel ID    # }  }
+  # Optional TLS settings  # tls_settings = {  #   cert_verification_mode = "verify_full"  # "verify_full", "verify_ca", or "disabled"  # }
+  # Read-only (computed by the API)  # id         — Terraform resource ID  # service_id — VPC Service ID (use this for Worker bindings)  # created_at — Creation timestamp  # updated_at — Last update timestamp}
 ```
 
 For the full schema, refer to the [Terraform registry documentation ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/connectivity%5Fdirectory%5Fservice).

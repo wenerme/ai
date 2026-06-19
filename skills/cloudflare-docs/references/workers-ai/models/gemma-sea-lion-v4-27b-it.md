@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,176 +27,56 @@ SEA-LION stands for Southeast Asian Languages In One Network, which is a collect
 
 ## Playground
 
-Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and an instant way to preview and test a model directly in the browser.
+Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and an instant way to preview and test a model directly in the browser. 
 
-[Launch the LLM Playground](https://playground.ai.cloudflare.com/?model=@cf/aisingapore/gemma-sea-lion-v4-27b-it) 
+[ Launch the LLM Playground ](https://playground.ai.cloudflare.com/?model=@cf/aisingapore/gemma-sea-lion-v4-27b-it) 
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-4833)
-* [  TypeScript ](#tab-panel-4834)
-* [  Python ](#tab-panel-4835)
-* [  curl ](#tab-panel-4836)
+* [  Worker (Streaming) ](#tab-panel-4907)
+* [  TypeScript ](#tab-panel-4908)
+* [  Python ](#tab-panel-4909)
+* [  curl ](#tab-panel-4910)
 
 TypeScript
 
 ```
-
-export interface Env {
-
-  AI: Ai;
-
-}
-
-
-export default {
-
-  async fetch(request, env): Promise<Response> {
-
-
-    const messages = [
-
-      { role: "system", content: "You are a friendly assistant" },
-
-      {
-
-        role: "user",
-
-        content: "What is the origin of the phrase Hello, World",
-
-      },
-
-    ];
-
-
-    const stream = await env.AI.run("@cf/aisingapore/gemma-sea-lion-v4-27b-it", {
-
-      messages,
-
-      stream: true,
-
-    });
-
-
-    return new Response(stream, {
-
-      headers: { "content-type": "text/event-stream" },
-
-    });
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export interface Env {  AI: Ai;}
+export default {  async fetch(request, env): Promise<Response> {
+    const messages = [      { role: "system", content: "You are a friendly assistant" },      {        role: "user",        content: "What is the origin of the phrase Hello, World",      },    ];
+    const stream = await env.AI.run("@cf/aisingapore/gemma-sea-lion-v4-27b-it", {      messages,      stream: true,    });
+    return new Response(stream, {      headers: { "content-type": "text/event-stream" },    });  },} satisfies ExportedHandler<Env>;
 ```
 
 ```
-
-export interface Env {
-
-  AI: Ai;
-
-}
-
-
-export default {
-
-  async fetch(request, env): Promise<Response> {
-
-
-    const messages = [
-
-      { role: "system", content: "You are a friendly assistant" },
-
-      {
-
-        role: "user",
-
-        content: "What is the origin of the phrase Hello, World",
-
-      },
-
-    ];
-
-    const response = await env.AI.run("@cf/aisingapore/gemma-sea-lion-v4-27b-it", { messages });
-
-
-    return Response.json(response);
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export interface Env {  AI: Ai;}
+export default {  async fetch(request, env): Promise<Response> {
+    const messages = [      { role: "system", content: "You are a friendly assistant" },      {        role: "user",        content: "What is the origin of the phrase Hello, World",      },    ];    const response = await env.AI.run("@cf/aisingapore/gemma-sea-lion-v4-27b-it", { messages });
+    return Response.json(response);  },} satisfies ExportedHandler<Env>;
 ```
 
 ```
-
-import os
-
-import requests
-
-
-ACCOUNT_ID = "your-account-id"
-
-AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
-
-
-prompt = "Tell me all about PEP-8"
-
-response = requests.post(
-
-  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/aisingapore/gemma-sea-lion-v4-27b-it",
-
-    headers={"Authorization": f"Bearer {AUTH_TOKEN}"},
-
-    json={
-
-      "messages": [
-
-        {"role": "system", "content": "You are a friendly assistant"},
-
-        {"role": "user", "content": prompt}
-
-      ]
-
-    }
-
-)
-
-result = response.json()
-
-print(result)
-
-
+import osimport requests
+ACCOUNT_ID = "your-account-id"AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
+prompt = "Tell me all about PEP-8"response = requests.post(  f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/aisingapore/gemma-sea-lion-v4-27b-it",    headers={"Authorization": f"Bearer {AUTH_TOKEN}"},    json={      "messages": [        {"role": "system", "content": "You are a friendly assistant"},        {"role": "user", "content": prompt}      ]    })result = response.json()print(result)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/aisingapore/gemma-sea-lion-v4-27b-it \
-
-  -X POST \
-
-  -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
-
-  -d '{ "messages": [{ "role": "system", "content": "You are a friendly assistant" }, { "role": "user", "content": "Why is pizza so good" }]}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/aisingapore/gemma-sea-lion-v4-27b-it \  -X POST \  -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \  -d '{ "messages": [{ "role": "system", "content": "You are a friendly assistant" }, { "role": "user", "content": "Why is pizza so good" }]}'
 ```
 
 OpenAI compatible endpoints 
 
-Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
+Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations ](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/). 
 
 ## Parameters
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-4837)
-* [ Output ](#tab-panel-4838)
+* [ Input ](#tab-panel-4911)
+* [ Output ](#tab-panel-4912)
 
 prompt
 
@@ -280,8 +160,8 @@ prompt\_logprobs{}
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-4839)
-* [ Output ](#tab-panel-4840)
+* [ Input ](#tab-panel-4913)
+* [ Output ](#tab-panel-4914)
 
 prompt
 
@@ -349,8 +229,8 @@ format
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-4841)
-* [ Output ](#tab-panel-4842)
+* [ Input ](#tab-panel-4915)
+* [ Output ](#tab-panel-4916)
 
 ▶requests\[\]
 
@@ -396,7 +276,7 @@ prompt\_logprobs{}
 
  Batch Input [ ](https://developers.cloudflare.com/workers-ai/models/gemma-sea-lion-v4-27b-it/batch-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-sea-lion-v4-27b-it/batch-input.json "Download") 
 
- Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/gemma-sea-lion-v4-27b-it/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-sea-lion-v4-27b-it/batch-output.json "Download") 
+ Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/gemma-sea-lion-v4-27b-it/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-sea-lion-v4-27b-it/batch-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/gemma-sea-lion-v4-27b-it/#page","headline":"gemma-sea-lion-v4-27b-it (aisingapore) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"SEA-LION stands for Southeast Asian Languages In One Network, which is a collection of Large Language Models (LLMs) which have been pretrained and instruct-tuned for the Southeast Asia (SEA) region.","url":"https://developers.cloudflare.com/workers-ai/models/gemma-sea-lion-v4-27b-it/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

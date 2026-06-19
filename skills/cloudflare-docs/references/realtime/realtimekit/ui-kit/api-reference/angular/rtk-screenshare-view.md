@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,41 +32,13 @@ A component which plays a participant's screenshared video. It also allows for p
 ### Basic Usage
 
 ```
-
-<!-- component.html -->
-
-<rtk-screenshare-view></rtk-screenshare-view>
-
-
+<!-- component.html --><rtk-screenshare-view></rtk-screenshare-view>
 ```
 
 ### With Properties
 
 ```
-
-<!-- component.html -->
-
-<rtk-screenshare-view
-
- [hideFullScreenButton]="true"
-
- [meeting]="meeting"
-
- [nameTagPosition]="| 'bottom-left'
-
-    | 'bottom-right'
-
-    | 'bottom-center'
-
-    | 'top-left'
-
-    | 'top-right'
-
-    | 'top-center'">
-
-</rtk-screenshare-view>
-
-
+<!-- component.html --><rtk-screenshare-view [hideFullScreenButton]="true" [meeting]="meeting" [nameTagPosition]="| 'bottom-left'    | 'bottom-right'    | 'bottom-center'    | 'top-left'    | 'top-right'    | 'top-center'"></rtk-screenshare-view>
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,10 +16,11 @@ If an attack compromises the administrative area of your website, the consequenc
 
 This example [custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) limits access to the WordPress admin area, `/wp-admin/`, by blocking requests that do not originate from a specified set of IP addresses:
 
-* **When incoming requests match**:  
-| Field             | Operator  | Value                      | Logic |  
-| ----------------- | --------- | -------------------------- | ----- |  
-| IP Source Address | is not in | 10.20.30.40 192.168.1.0/24 | And   |  
+* **When incoming requests match**:
+
+| Field             | Operator  | Value                      | Logic |
+| ----------------- | --------- | -------------------------- | ----- |
+| IP Source Address | is not in | 10.20.30.40 192.168.1.0/24 | And   |
 | URI Path          | wildcard  | /wp-admin/\*               |       |  
 If you are using the expression editor:  
 `(not ip.src in {10.20.30.40 192.168.1.0/24} and http.request.uri.path wildcard "/wp-admin/*")`

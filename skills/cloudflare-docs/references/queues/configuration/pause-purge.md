@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,28 +27,22 @@ The following command will pause message delivery from your queue:
 Terminal window
 
 ```
-
 $ npx wrangler queues pause-delivery <QUEUE-NAME>
-
-
 ```
 
 * `queue-name` ` string ` required  
-   * The name of the queue for which delivery should be paused.
+  * The name of the queue for which delivery should be paused.
 
 The following command will resume message delivery:
 
 Terminal window
 
 ```
-
 $ npx wrangler queues resume-delivery <QUEUE-NAME>
-
-
 ```
 
 * `queue-name` ` string ` required  
-   * The name of the queue for which delivery should be resumed.
+  * The name of the queue for which delivery should be resumed.
 
 ### What happens to HTTP Pull consumers with a paused queue?
 
@@ -71,13 +65,8 @@ The following command will purge messages from your queue. You will be prompted 
 Terminal window
 
 ```
-
 $ npx wrangler queues purge <QUEUE-NAME>
-
-
 This operation will permanently delete all the messages in Queue <QUEUE-NAME>. Type <QUEUE-NAME> to proceed.
-
-
 ```
 
 ### Does purging a Queue affect my bill?

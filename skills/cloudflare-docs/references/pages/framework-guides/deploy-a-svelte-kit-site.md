@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -45,10 +45,7 @@ After you have installed your project dependencies, start your application:
 Terminal window
 
 ```
-
 npm run dev
-
-
 ```
 
 ## Before you continue
@@ -66,20 +63,7 @@ Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). Aft
 Terminal window
 
 ```
-
-git init
-
-git remote add origin https://github.com/<your-gh-username>/<repository-name>
-
-git add .
-
-git commit -m "Initial commit"
-
-git branch -M main
-
-git push -u origin main
-
-
+git initgit remote add origin https://github.com/<your-gh-username>/<repository-name>git add .git commit -m "Initial commit"git branch -M maingit push -u origin main
 ```
 
 ## SvelteKit Cloudflare configuration
@@ -94,68 +78,18 @@ If using [create-cloudflare (C3) ↗](https://www.npmjs.com/package/create-cloud
 2. Include the adapter in `svelte.config.js`:
 
 ```
-
- import adapter from '@sveltejs/adapter-auto';
-
- import adapter from '@sveltejs/adapter-cloudflare';
-
-
-/** @type {import('@sveltejs/kit').Config} */
-
-const config = {
-
-  kit: {
-
-    adapter: adapter(),
-
-    // ... truncated ...
-
-  }
-
-};
-
-
+ import adapter from '@sveltejs/adapter-auto'; import adapter from '@sveltejs/adapter-cloudflare';
+/** @type {import('@sveltejs/kit').Config} */const config = {  kit: {    adapter: adapter(),    // ... truncated ...  }};
 export default config;
-
-
 ```
 
 1. (Needed if you are using TypeScript) Include support for environment variables. The `env` object, containing KV namespaces and other storage objects, is passed to SvelteKit via the platform property along with context and caches, meaning you can access it in hooks and endpoints. For example:
 
 ```
-
-declare namespace App {
-
-    interface Locals {}
-
-
-   interface Platform {
-
-       env: {
-
-           COUNTER: DurableObjectNamespace;
-
-       };
-
-       context: {
-
-           waitUntil(promise: Promise<any>): void;
-
-       };
-
-       caches: CacheStorage & { default: Cache }
-
-   }
-
-
+declare namespace App {    interface Locals {}
+   interface Platform {       env: {           COUNTER: DurableObjectNamespace;       };       context: {           waitUntil(promise: Promise<any>): void;       };       caches: CacheStorage & { default: Cache }   }
     interface Session {}
-
-
-    interface Stuff {}
-
-}
-
-
+    interface Stuff {}}
 ```
 
 1. Access the added KV or Durable objects (or generally any [binding](https://developers.cloudflare.com/pages/functions/bindings/)) in your endpoint with `env`:
@@ -163,14 +97,7 @@ declare namespace App {
 JavaScript
 
 ```
-
-export async function post(context) {
-
-  const counter = context.platform.env.COUNTER.idFromName("A");
-
-}
-
-
+export async function post(context) {  const counter = context.platform.env.COUNTER.idFromName("A");}
 ```
 
 Note
@@ -234,17 +161,8 @@ To have the functionality equivalent to Pages Functions [onRequests](https://dev
 TypeScript
 
 ```
-
 import type { RequestHandler } from "./$types";
-
-
-export const GET = (({ url }) => {
-
-  return new Response(String(Math.random()));
-
-}) satisfies RequestHandler;
-
-
+export const GET = (({ url }) => {  return new Response(String(Math.random()));}) satisfies RequestHandler;
 ```
 
 SvelteKit API Routes

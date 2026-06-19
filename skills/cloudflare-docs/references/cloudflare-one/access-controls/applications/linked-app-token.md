@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,8 +37,8 @@ accTitle: Self-hosted to self-hosted linked app token flow
 
 Create a policy on Application B (the downstream application that will receive forwarded requests):
 
-* [ Dashboard ](#tab-panel-7111)
-* [ API ](#tab-panel-7112)
+* [ Dashboard ](#tab-panel-7187)
+* [ API ](#tab-panel-7188)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select Application B and select **Edit**.
@@ -47,9 +47,10 @@ Create a policy on Application B (the downstream application that will receive f
 Note  
 The Linked App Token selector only works with the [Service Auth](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#service-auth) action, similar to service token rules.
 5. For **Selector**, select _Linked App Token_.
-6. For **Value**, select Application A. For example,  
-| Action       | Rule type | Selector         | Value         |  
-| ------------ | --------- | ---------------- | ------------- |  
+6. For **Value**, select Application A. For example,
+
+| Action       | Rule type | Selector         | Value         |
+| ------------ | --------- | ---------------- | ------------- |
 | Service Auth | Include   | Linked App Token | application-a |
 7. Save the policy.
 8. In Application B, add the policy to the **Access policies** list.
@@ -57,46 +58,25 @@ The Linked App Token selector only works with the [Service Auth](https://develop
 
 1. Get the `uid` of Application A:  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Access: Apps and Policies Revoke`  
-   * `Access: Apps and Policies Write`  
-   * `Access: Apps and Policies Read`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Access: Apps and Policies Revoke`
+  * `Access: Apps and Policies Write`
+  * `Access: Apps and Policies Read`  
 List Access applications  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps" \  
-  --request GET \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
 ```  
 Response  
 ```  
-{  
-  "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",  
-  "uid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",  
-  "type": "self_hosted",  
-  "name": "application-a",  
-  ...  
-}  
+{  "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",  "uid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",  "type": "self_hosted",  "name": "application-a",  ...}  
 ```
 2. Create an Access policy on the downstream application, replacing the `app_uid` value with the `uid` of Application A:  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Access: Apps and Policies Write`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Access: Apps and Policies Write`  
 Create an Access reusable policy  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies" \  
-  --request POST \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "name": "Allow requests from Application A",  
-    "decision": "non_identity",  
-    "include": [  
-        {  
-            "linked_app_token": {  
-                "app_uid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"  
-            }  
-        }  
-    ]  
-  }'  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Allow requests from Application A",    "decision": "non_identity",    "include": [        {            "linked_app_token": {                "app_uid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"            }        }    ]  }'  
 ```  
 Note  
 The `linked_app_token` rule type only works with [non\_identity decisions](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#service-auth), similar to service token rules.
@@ -106,10 +86,7 @@ The `linked_app_token` rule type only works with [non\_identity decisions](https
 When Cloudflare Access authenticates a user to Application A, it sends a signed JWT in the `Cf-Access-Jwt-Assertion` request header. Application A must forward this token to Application B in the `Cf-Access-Token` header:
 
 ```
-
 Cf-Access-Token: <JWT from Cf-Access-Jwt-Assertion>
-
-
 ```
 
 When Access receives the request to Application B, it will:
@@ -137,8 +114,8 @@ accTitle: SaaS to self-hosted linked app token flow
 
 Create a policy on the self-hosted application (Application B):
 
-* [ Dashboard ](#tab-panel-7113)
-* [ API ](#tab-panel-7114)
+* [ Dashboard ](#tab-panel-7189)
+* [ API ](#tab-panel-7190)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select the self-hosted app (Application B) and select **Edit**.
@@ -147,9 +124,10 @@ Create a policy on the self-hosted application (Application B):
 Note  
 The Linked App Token selector only works with the [Service Auth](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#service-auth) action, similar to service token rules.
 5. For **Selector**, select _Linked App Token_.
-6. For **Value**, select the Access for SaaS app (Application A). For example,  
-| Action       | Rule type | Selector         | Value         |  
-| ------------ | --------- | ---------------- | ------------- |  
+6. For **Value**, select the Access for SaaS app (Application A). For example,
+
+| Action       | Rule type | Selector         | Value         |
+| ------------ | --------- | ---------------- | ------------- |
 | Service Auth | Include   | Linked App Token | application-a |
 7. Save the policy.
 8. In the self-hosted app (Application B), add the policy to the **Access policies** list.
@@ -157,46 +135,25 @@ The Linked App Token selector only works with the [Service Auth](https://develop
 
 1. Get the `uid` of the Access for SaaS app (Application A):  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Access: Apps and Policies Revoke`  
-   * `Access: Apps and Policies Write`  
-   * `Access: Apps and Policies Read`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Access: Apps and Policies Revoke`
+  * `Access: Apps and Policies Write`
+  * `Access: Apps and Policies Read`  
 List Access applications  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps" \  
-  --request GET \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
 ```  
 Response  
 ```  
-{  
-  "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",  
-  "uid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",  
-  "type": "saas",  
-  "name": "my-saas-app",  
-  ...  
-}  
+{  "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",  "uid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",  "type": "saas",  "name": "my-saas-app",  ...}  
 ```
 2. Create an Access policy on the downstream application, replacing the `app_uid` value with the `uid` of the Access for SaaS app (Application A):  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Access: Apps and Policies Write`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Access: Apps and Policies Write`  
 Create an Access reusable policy  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies" \  
-  --request POST \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "name": "Allow requests from SaaS app",  
-    "decision": "non_identity",  
-    "include": [  
-        {  
-            "linked_app_token": {  
-                "app_uid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"  
-            }  
-        }  
-    ]  
-  }'  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Allow requests from SaaS app",    "decision": "non_identity",    "include": [        {            "linked_app_token": {                "app_uid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"            }        }    ]  }'  
 ```  
 Note  
 The `linked_app_token` rule type only works with [non\_identity decisions](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#service-auth), similar to service token rules.
@@ -206,10 +163,7 @@ The `linked_app_token` rule type only works with [non\_identity decisions](https
 The SaaS application must forward the OAuth `access_token` to the self-hosted application in an HTTP header:
 
 ```
-
 Authorization: Bearer ACCESS_TOKEN
-
-
 ```
 
 The end-to-end flow is:

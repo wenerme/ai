@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,9 +26,9 @@ Hotlink protection has no impact on crawling, but it will prevent the images fro
 
 ## Enable Hotlink Protection
 
-* [  New dashboard ](#tab-panel-11270)
-* [ Old dashboard ](#tab-panel-11271)
-* [ API ](#tab-panel-11272)
+* [  New dashboard ](#tab-panel-11287)
+* [ Old dashboard ](#tab-panel-11288)
+* [ API ](#tab-panel-11289)
 
 To enable **Hotlink Protection** in the dashboard:
 

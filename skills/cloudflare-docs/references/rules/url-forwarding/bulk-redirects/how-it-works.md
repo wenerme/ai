@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,18 +20,22 @@ If there is a match for a URL redirect according to the [URL matching algorithm]
 
 The following URL redirect parameters control the matching behavior between the request URL and source URLs of the configured (and enabled) URL redirects:
 
-* **Subpath matching** (default: false)  
-   * When `true`, the URL redirect applies not only to the exact source path, but also to all paths under it. For example, consider the following source and target URLs of a URL redirect:  
-         * Source URL: `https://example.com/foo/`  
-         * Target URL: `https://example.com/qux/`  
-   * With this configuration and **Subpath matching** enabled, an incoming request to `example.com/foo/bar` will be redirected to `https://example.com/qux/bar`.  
+* **Subpath matching** (default: false)
+
+  * When `true`, the URL redirect applies not only to the exact source path, but also to all paths under it. For example, consider the following source and target URLs of a URL redirect:
+
+    * Source URL: `https://example.com/foo/`
+    * Target URL: `https://example.com/qux/`
+  * With this configuration and **Subpath matching** enabled, an incoming request to `example.com/foo/bar` will be redirected to `https://example.com/qux/bar`.  
 Note  
 URL redirects with **Subpath matching** enabled cannot contain more than 16 `/` (slash) characters in the source URL path.
-* **Include subdomains** (default: false)  
-   * When `true`, the URL redirect matches not only the exact hostname in the source URL, but also any of its subdomains. For example, consider the following source and target URLs of a URL redirect:  
-         * Source URL: `https://example.com/about`  
-         * Target URL: `https://example.com/newpage`  
-   * With this configuration and **Includes subdomains** enabled, incoming requests to `http://a.example.com/about` and `http://a.b.example.com/about` would also match, in addition to the specified domain with no subdomain (`https://example.com/about`).
+* **Include subdomains** (default: false)
+
+  * When `true`, the URL redirect matches not only the exact hostname in the source URL, but also any of its subdomains. For example, consider the following source and target URLs of a URL redirect:
+
+    * Source URL: `https://example.com/about`
+    * Target URL: `https://example.com/newpage`
+  * With this configuration and **Includes subdomains** enabled, incoming requests to `http://a.example.com/about` and `http://a.b.example.com/about` would also match, in addition to the specified domain with no subdomain (`https://example.com/about`).
 
 For detailed information on these parameters, refer to [URL redirect parameters](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/parameters/).
 
@@ -39,18 +43,22 @@ For detailed information on these parameters, refer to [URL redirect parameters]
 
 The following parameters configure how Cloudflare determines the path and query string of the final target URL:
 
-* **Preserve query string** (default: false)  
-   * When `true`, the final target URL keeps the query string of the original request. For example, consider the following source and target URLs of a URL redirect:  
-         * Source URL: `https://example.com/about`  
-         * Target URL: `https://example.com/newpage`  
-   * With this configuration and **Preserve query string** enabled, an incoming request to `http://example.com/about?q=term` would be redirected to `https://example.com/newpage?q=term`. If **Preserve query string** is disabled, the same incoming request would be redirected to `https://example.com/newpage`.
-* **Preserve path suffix** (default: true)  
-   * When `true`, the final target URL includes the remaining path segments (the parts of the request path that did not match the URL redirect's source URL).  
-   * When **Subpath matching** is enabled, the path that was not matched is copied over to the final target URL. For example, consider the following source and target URLs of a URL redirect:  
-         * Source URL: `https://example.com/a/`  
-         * Target URL: `https://example.com/b/`  
-   * An incoming request to `https://example.com/a/foo` will be redirected to `https://example.com/b/foo`.  
-   * If you set **Preserve path suffix** to `false`, the same request will still match the redirect, but it will be redirected to `https://example.com/b/`.
+* **Preserve query string** (default: false)
+
+  * When `true`, the final target URL keeps the query string of the original request. For example, consider the following source and target URLs of a URL redirect:
+
+    * Source URL: `https://example.com/about`
+    * Target URL: `https://example.com/newpage`
+  * With this configuration and **Preserve query string** enabled, an incoming request to `http://example.com/about?q=term` would be redirected to `https://example.com/newpage?q=term`. If **Preserve query string** is disabled, the same incoming request would be redirected to `https://example.com/newpage`.
+* **Preserve path suffix** (default: true)
+
+  * When `true`, the final target URL includes the remaining path segments (the parts of the request path that did not match the URL redirect's source URL).
+  * When **Subpath matching** is enabled, the path that was not matched is copied over to the final target URL. For example, consider the following source and target URLs of a URL redirect:
+
+    * Source URL: `https://example.com/a/`
+    * Target URL: `https://example.com/b/`
+  * An incoming request to `https://example.com/a/foo` will be redirected to `https://example.com/b/foo`.
+  * If you set **Preserve path suffix** to `false`, the same request will still match the redirect, but it will be redirected to `https://example.com/b/`.
 
 For detailed information on these parameters, refer to [URL redirect parameters](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/parameters/).
 

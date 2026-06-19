@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,45 +31,15 @@ An audio visualizer component which visualizes a participants audio. Commonly us
 ### Basic Usage
 
 ```
-
 import { RtkAudioVisualizer } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return <RtkAudioVisualizer />;
-
-}
-
-
+function MyComponent() {  return <RtkAudioVisualizer />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkAudioVisualizer } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkAudioVisualizer
-
-      hideMuted={true}
-
-      isScreenShare={true}
-
-      participant={participant}
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkAudioVisualizer      hideMuted={true}      isScreenShare={true}      participant={participant}    />  );}
 ```
 
 ```json

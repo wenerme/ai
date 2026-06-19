@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -52,10 +52,7 @@ Find the [URL ↗](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-
 Then, [create a CNAME record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) in Cloudflare. For example, if the full host URL of the bucket is `files.example.com.s3.amazonaws.com`, you would add a `CNAME` record similar to the following:
 
 ```
-
 files  CNAME  files.example.com.s3.amazonaws.com
-
-
 ```
 
 Warning
@@ -185,9 +182,9 @@ Then, set up your Squarespace DNS records:
 
 1. Get your Squarespace DNS information by following [these instructions ↗](https://support.squarespace.com/hc/articles/213469948).
 2. In Cloudflare, [add those records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/):  
-   * All `A` records should be [Proxied](https://developers.cloudflare.com/dns/proxy-status/)  
-   * The `CNAME` record for `www` should also be **Proxied**.  
-   * The `CNAME` record for `verify.squarespace.com` should be **DNS-only**.
+  * All `A` records should be [Proxied](https://developers.cloudflare.com/dns/proxy-status/)
+  * The `CNAME` record for `www` should also be **Proxied**.
+  * The `CNAME` record for `verify.squarespace.com` should be **DNS-only**.
 3. If set up properly, your Squarespace DNS Settings page will now indicate that your 'Settings contain problems.' **This is the expected behavior**.
 ![Screenshot of error warnings in squarespace](https://developers.cloudflare.com/_astro/hc-import-squarespace_dns_settings-test-2.9_-CHey0_1nttwE.webp) 
 

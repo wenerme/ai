@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,50 +23,13 @@ This example demonstrates how to use Cloudflare Snippets to:
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request) {
-
-    // Clone the original request to create a new request object
-
-    const newRequest = new Request(request);
-
-
-    // Add a header to identify a rerouted request at the new origin
-
-    newRequest.headers.set("X-Rerouted", "1");
-
-
-    // Clone and parse the original URL
-
-    const url = new URL(request.url);
-
-
-    // Step 1: Reroute to a different origin
-
-    url.hostname = "example.com"; // Change the hostname to the new origin
-
-
-    // Step 2: Append a directory to the path
-
-    url.pathname = `/new-path${url.pathname}`; // Prepend "/new-path" to the current path
-
-
-    // Step 3: Remove a specific segment from the path
-
-    url.pathname = url.pathname.replace("/remove-me", ""); // Rewrite `/remove-me/something` to `/something`
-
-
-    // Fetch the modified request from the updated URL
-
-    return await fetch(url, newRequest);
-
-  },
-
-};
-
-
+export default {  async fetch(request) {    // Clone the original request to create a new request object    const newRequest = new Request(request);
+    // Add a header to identify a rerouted request at the new origin    newRequest.headers.set("X-Rerouted", "1");
+    // Clone and parse the original URL    const url = new URL(request.url);
+    // Step 1: Reroute to a different origin    url.hostname = "example.com"; // Change the hostname to the new origin
+    // Step 2: Append a directory to the path    url.pathname = `/new-path${url.pathname}`; // Prepend "/new-path" to the current path
+    // Step 3: Remove a specific segment from the path    url.pathname = url.pathname.replace("/remove-me", ""); // Rewrite `/remove-me/something` to `/something`
+    // Fetch the modified request from the updated URL    return await fetch(url, newRequest);  },};
 ```
 
 This configuration will perform the following rewrites:

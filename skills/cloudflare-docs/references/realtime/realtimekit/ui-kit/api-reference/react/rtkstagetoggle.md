@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,45 +28,15 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 ### Basic Usage
 
 ```
-
 import { RtkStageToggle } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return <RtkStageToggle />;
-
-}
-
-
+function MyComponent() {  return <RtkStageToggle />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkStageToggle } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkStageToggle
-
-      meeting={meeting}
-
-      size="md"
-
-      variant="button"
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkStageToggle      meeting={meeting}      size="md"      variant="button"    />  );}
 ```
 
 ```json

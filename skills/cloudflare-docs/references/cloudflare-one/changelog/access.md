@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -190,10 +190,7 @@ To get started with Independent MFA, refer to [Independent MFA](https://develope
 To return to the server selection page, ask your AI agent with a prompt like "take me back to the server selection page." The portal responds with an authorization URL via [MCP elicitation ↗](https://modelcontextprotocol.io/specification/2025-03-26/server/elicitation) that you open in your browser:
 
 ```
-
 https://<subdomain>.<domain>/authorize?elicitationId=<ELICITATION_ID>
-
-
 ```
 
 From the server selection page you can:
@@ -239,10 +236,7 @@ When code mode is active, the portal exposes a single `code` tool instead of lis
 To use code mode, append `?codemode=search_and_execute` to your portal URL when connecting from an MCP client:
 
 ```
-
 https://<subdomain>.<domain>/mcp?codemode=search_and_execute
-
-
 ```
 
 For more information, refer to [code mode](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#code-mode).
@@ -259,10 +253,7 @@ For more information, refer to [code mode](https://developers.cloudflare.com/clo
 Strips tool descriptions and input schemas from all upstream tools, leaving only their names. The portal exposes a special `query` tool that agents use to retrieve full definitions on demand. This provides up to 5x savings in token usage.
 
 ```
-
 https://<subdomain>.<domain>/mcp?optimize_context=minimize_tools
-
-
 ```
 
 #### `search_and_execute`
@@ -270,10 +261,7 @@ https://<subdomain>.<domain>/mcp?optimize_context=minimize_tools
 Hides all upstream tools and exposes only two tools: `query` and `execute`. The `query` tool searches and retrieves tool definitions. The `execute` tool runs the upstream tools in an isolated [Dynamic Worker](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/) environment. This reduces the initial token cost to a small constant, regardless of how many tools are available through the portal.
 
 ```
-
 https://<subdomain>.<domain>/mcp?optimize_context=search_and_execute
-
-
 ```
 
 For more information, refer to [Optimize context](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#optimize-context).

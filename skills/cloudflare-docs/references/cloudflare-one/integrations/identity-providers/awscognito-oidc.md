@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -36,23 +36,25 @@ To retrieve those values:
 2. Go to **User pools** and select your user pool.
 3. Select the **App integration** tab.
 4. Under **Domain**, copy your user pool domain or [configure a new domain ↗](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-assign-domain.html).
-5. Make note of the following [Amazon Cognito OIDC endpoints ↗](https://docs.aws.amazon.com/cognito/latest/developerguide/federation-endpoints.html):  
-   * **Auth URL**: `https://<your user pool domain>/oauth2/authorize`  
-   * **Token URL**: `https://<your user pool domain>/oauth2/token`  
-   * **Certificate (key) URL**: `https://cognito-idp.<region>.amazonaws.com/<your user pool ID>/.well-known/jwks.json` (This is the **Token signing key URL** shown in **User pool overview**.)
+5. Make note of the following [Amazon Cognito OIDC endpoints ↗](https://docs.aws.amazon.com/cognito/latest/developerguide/federation-endpoints.html):
+
+  * **Auth URL**: `https://<your user pool domain>/oauth2/authorize`
+  * **Token URL**: `https://<your user pool domain>/oauth2/token`
+  * **Certificate (key) URL**: `https://cognito-idp.<region>.amazonaws.com/<your user pool ID>/.well-known/jwks.json` (This is the **Token signing key URL** shown in **User pool overview**.)
 6. Under **App client list**, select **Create app client**.
 7. For **App type**, select **Confidential client**.
 8. Enter an **App client name** for your application.
 9. Ensure that **Generate a client secret** is selected.
-10. Configure the following **Hosted UI settings**:  
-   1. In **Allowed callback URLs**, add the following URL:  
-   ```  
-   https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback  
-   ```  
-   You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.  
-   2. Select **Identity providers** to use with this app client. At minimum, enable **Cognito user pool** as a provider.  
-   3. For **OAuth 2.0 grant types**, select **Authorization code grant**.  
-   4. For **OpenID Connect scopes**, select **OpenID**, **Email**, and **Profile**.
+10. Configure the following **Hosted UI settings**:
+
+  1. In **Allowed callback URLs**, add the following URL:  
+  ```  
+  https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback  
+  ```  
+  You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
+  2. Select **Identity providers** to use with this app client. At minimum, enable **Cognito user pool** as a provider.
+  3. For **OAuth 2.0 grant types**, select **Authorization code grant**.
+  4. For **OpenID Connect scopes**, select **OpenID**, **Email**, and **Profile**.
 11. Select **Create app client**.
 12. Next, select the app client you just created.
 13. Copy its **Client ID** and **Client secret**.
@@ -72,34 +74,7 @@ To [test](https://developers.cloudflare.com/cloudflare-one/integrations/identity
 ## Example API Configuration
 
 ```
-
-{
-
-  "config": {
-
-    "client_id": "<your client id>",
-
-    "client_secret": "<your client secret>",
-
-    "auth_url": "https://<your user pool domain>/oauth2/authorize",
-
-    "token_url": "https://<your user pool domain>/oauth2/token",
-
-    "certs_url": "https://cognito-idp.<region>.amazonaws.com/<your user pool ID>/.well-known/jwks.json",
-
-    "scopes": ["openid", "email", "profile"],
-
-    "claims": ["sub", "cognito:username", "name", "cognito:groups"]
-
-  },
-
-  "type": "oidc",
-
-  "name": "Amazon Cognito example"
-
-}
-
-
+{  "config": {    "client_id": "<your client id>",    "client_secret": "<your client secret>",    "auth_url": "https://<your user pool domain>/oauth2/authorize",    "token_url": "https://<your user pool domain>/oauth2/token",    "certs_url": "https://cognito-idp.<region>.amazonaws.com/<your user pool ID>/.well-known/jwks.json",    "scopes": ["openid", "email", "profile"],    "claims": ["sub", "cognito:username", "name", "cognito:groups"]  },  "type": "oidc",  "name": "Amazon Cognito example"}
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,9 +29,9 @@ This guide covers how to configure [Braintree ↗](https://developer.paypal.com/
 4. For the authentication protocol, select **SAML**.
 5. Select **Add application**.
 6. Fill in the following fields with temporary values:  
-   * **Entity ID**: `placeholder`  
-   * **Assertion Consumer Service URL**: `https://www.placeholder.com`  
-   * **Name ID format**: _Email_
+  * **Entity ID**: `placeholder`
+  * **Assertion Consumer Service URL**: `https://www.placeholder.com`
+  * **Name ID format**: _Email_
 7. Copy the **SSO endpoint** and **Public key**.
 8. Configure [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) for the application.
 9. Save the application.
@@ -41,10 +41,10 @@ This guide covers how to configure [Braintree ↗](https://developer.paypal.com/
 1. In Braintree, create a [support ticket ↗](https://developer.paypal.com/braintree/help).
 2. In **Search Issues**, enter `Login and password issues` and select the corresponding value.
 3. In **Issue Details**, fill in the following:  
-   * **Merchant ID**: Your Braintree Merchant ID. This is the 16-digit value that follows `/merchants/`in your Braintree Control Panel URL.  
-   * **Email domain(s) to be used in user IDs**: The email domain(s) that should be allowed to sign in to your account via SSO.  
-   * **Single Sign-on HTTP POST Binding URL**: SSO endpoint from application configuration in Cloudflare One  
-   * **Certificate for validation**: Public key from application configuration in Cloudflare One.
+  * **Merchant ID**: Your Braintree Merchant ID. This is the 16-digit value that follows `/merchants/`in your Braintree Control Panel URL.
+  * **Email domain(s) to be used in user IDs**: The email domain(s) that should be allowed to sign in to your account via SSO.
+  * **Single Sign-on HTTP POST Binding URL**: SSO endpoint from application configuration in Cloudflare One
+  * **Certificate for validation**: Public key from application configuration in Cloudflare One.
 4. Select whether you are using a **Production** or **Sandbox** account.
 5. Fill out the **Your contact information** fields and select **Submit a help request**.
 6. When you receive an email stating SSO has been successfully configured for your account, you can proceed to the next step.
@@ -61,7 +61,7 @@ This guide covers how to configure [Braintree ↗](https://developer.paypal.com/
 1. In your Braintree Control Panel, select the **settings** icon > **Team**.
 2. Select your desired test user.
 3. Under **Single Sign-On**, select **Enable**.
-4. Open an incognito browser window. In the address bar, paste `https://id.sandbox.braintreegateway.com` for a sandbox account or`https://id.braintreegateway.com` for a production account.
+4. Open an incognito browser window. In the address bar, paste `https://id.sandbox.braintreegateway.com` for a sandbox account or `https://id.braintreegateway.com` for a production account.
 5. In **Your corporate email address** field, type your test user's email. You will be redirected to the Cloudflare Access login screen and prompted to sign in with your identity provider.
 6. Upon successful sign-in, you can enable SSO for other users using steps 4.1 - 4.3.
 

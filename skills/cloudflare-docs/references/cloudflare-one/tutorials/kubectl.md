@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -54,10 +54,7 @@ Run the following command to authenticate cloudflared into your Cloudflare accou
 Terminal window
 
 ```
-
 cloudflared tunnel login
-
-
 ```
 
 `cloudflared` will open a browser window and prompt you to log in to your Cloudflare account. If you are working on a machine that does not have a browser, or a browser window does not launch, you can copy the URL from the command-line output and visit the URL in a browser on any machine.
@@ -71,10 +68,7 @@ Next, create a tunnel with the command below.
 Terminal window
 
 ```
-
 cloudflared tunnel create <NAME>
-
-
 ```
 
 Replacing `<NAME>` with a name for the Tunnel. This name can be any value. A single Tunnel can also serve traffic for multiple hostnames to multiple services in your environment, including a mix of connection types like SSH and HTTP.
@@ -84,10 +78,7 @@ The command will output an ID for the Tunnel and generate an associated credenti
 Terminal window
 
 ```
-
 cloudflared tunnel list
-
-
 ```
 
 ## Configure the Tunnel
@@ -99,10 +90,7 @@ Create a `YAML` file that `cloudflared` can reach. By default, `cloudflared` wil
 Terminal window
 
 ```
-
 vim ~/.cloudflared/config.yml
-
-
 ```
 
 Next, configure the Tunnel, replacing the example ID below with the ID of the Tunnel created above. Additionally, replace the hostname in this example with the hostname of the application configured with Cloudflare Access.
@@ -110,29 +98,8 @@ Next, configure the Tunnel, replacing the example ID below with the ID of the Tu
 YAML
 
 ```
-
-tunnel: 6ff42ae2-765d-4adf-8112-31c55c1551ef
-
-credentials-file: /root/.cloudflared/6ff42ae2-765d-4adf-8112-31c55c1551ef.json
-
-
-ingress:
-
-  - hostname: azure.widgetcorp.tech
-
-    service: tcp://kubernetes.docker.internal:6443
-
-    originRequest:
-
-      proxyType: socks
-
-  - service: http_status:404
-
-  # Catch-all rule, which responds with 404 if traffic doesn't match any of
-
-  # the earlier rules
-
-
+tunnel: 6ff42ae2-765d-4adf-8112-31c55c1551efcredentials-file: /root/.cloudflared/6ff42ae2-765d-4adf-8112-31c55c1551ef.json
+ingress:  - hostname: azure.widgetcorp.tech    service: tcp://kubernetes.docker.internal:6443    originRequest:      proxyType: socks  - service: http_status:404  # Catch-all rule, which responds with 404 if traffic doesn't match any of  # the earlier rules
 ```
 
 ## Route to the Tunnel
@@ -145,10 +112,7 @@ You can now create a DNS record that will route traffic to this Tunnel. Multiple
 3. For **Target**, input the ID of your Tunnel followed by `.cfargotunnel.com`. For example:
 
 ```
-
   6ff42ae2-765d-4adf-8112-31c55c1551ef.cfargotunnel.com
-
-
 ```
 
 1. Select **Save**.
@@ -160,10 +124,7 @@ You can now run the Tunnel to connect the target service to Cloudflare. Use the 
 Terminal window
 
 ```
-
 cloudflared tunnel run <NAME>
-
-
 ```
 
 We recommend that you run `cloudflared` [as a service](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/as-a-service/) that is configured to launch on start.
@@ -177,10 +138,7 @@ This example uses a macOS laptop. On macOS, you can install `cloudflared` with t
 Terminal window
 
 ```
-
 brew install cloudflared
-
-
 ```
 
 Run the following command to create a connection from the device to Cloudflare. Any available port can be specified.
@@ -188,10 +146,7 @@ Run the following command to create a connection from the device to Cloudflare. 
 Terminal window
 
 ```
-
 cloudflared access tcp --hostname azure.widgetcorp.tech --url 127.0.0.1:1234
-
-
 ```
 
 With this service running, you can run a `kubectl` command and `cloudflared` will launch a browser window and prompt the user to authenticate with your SSO provider. Once authenticated, `cloudflared` will expose the connection to the client machine at the local URL specified in the command.
@@ -201,10 +156,7 @@ With this service running, you can run a `kubectl` command and `cloudflared` wil
 Terminal window
 
 ```
-
 alias kubeone="env HTTPS_PROXY=socks5://127.0.0.1:1234 kubectl"
-
-
 ```
 
 ```json

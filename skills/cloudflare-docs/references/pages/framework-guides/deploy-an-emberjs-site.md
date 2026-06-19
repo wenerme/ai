@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,10 +21,7 @@ To begin, install Ember:
 Terminal window
 
 ```
-
 npm install -g ember-cli
-
-
 ```
 
 ## Create an Ember project
@@ -34,10 +31,7 @@ Use the `ember new` command to create a new application:
 Terminal window
 
 ```
-
 npx ember new ember-quickstart --lang en
-
-
 ```
 
 After the application is generated, change the directory to your project and run your project by running the following commands:
@@ -45,12 +39,7 @@ After the application is generated, change the directory to your project and run
 Terminal window
 
 ```
-
-cd ember-quickstart
-
-npm start
-
-
+cd ember-quickstartnpm start
 ```
 
 ## Before you continue
@@ -68,14 +57,7 @@ Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). Aft
 Terminal window
 
 ```
-
-git remote add origin https://github.com/<your-gh-username>/<repository-name>
-
-git branch -M main
-
-git push -u origin main
-
-
+git remote add origin https://github.com/<your-gh-username>/<repository-name>git branch -M maingit push -u origin main
 ```
 
 ## Deploy with Cloudflare Pages

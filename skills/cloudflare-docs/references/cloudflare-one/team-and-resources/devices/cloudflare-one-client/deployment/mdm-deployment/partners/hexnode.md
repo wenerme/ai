@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,23 +17,11 @@ image: https://developers.cloudflare.com/zt-preview.png
 1. Create a script file with `.bat`, `.cmd`, and `.ps1` file formats to download, install and configure the Cloudflare One Client (formerly WARP) Windows application on the device. Listed below is a sample script with all of the configurable parameters:  
 Python  
 ```  
-<# Choose file name for downloading application #>  
-$filename = filename.msi'  
-<# Download URL of the installer. #>  
-$url = 'https://downloads.cloudflareclient.com/v1/download/windows/ga'  
-Write-Host 'Downloading App from' $url  
-Invoke-WebRequest -Uri $url -OutFile $filename  
-<# Run the installer and wait for the installation to finish #>  
-$arguments = "ORGANIZATION="exampleorg" SERVICE_MODE="warp" GATEWAY_UNIQUE_ID="fmxk762nrj" SUPPORT_URL="http://support.example.com""  
+<# Choose file name for downloading application #>$filename = filename.msi'  
+<# Download URL of the installer. #>$url = 'https://downloads.cloudflareclient.com/v1/download/windows/ga'Write-Host 'Downloading App from' $urlInvoke-WebRequest -Uri $url -OutFile $filename  
+<# Run the installer and wait for the installation to finish #>$arguments = "ORGANIZATION="exampleorg" SERVICE_MODE="warp" GATEWAY_UNIQUE_ID="fmxk762nrj" SUPPORT_URL="http://support.example.com""  
 $installProcess = (Start-Process $filename -ArgumentList $arguments -PassThru -Wait)  
-<# Check if installation was successful #>  
-if ($installProcess.ExitCode -ne 0) {  
-    Write-Host "Installation failed!"  
-    exit $installProcess.ExitCode  
-}  
-else {  
-    Write-Host "Installation completed successfully!"  
-}  
+<# Check if installation was successful #>if ($installProcess.ExitCode -ne 0) {    Write-Host "Installation failed!"    exit $installProcess.ExitCode}else {    Write-Host "Installation completed successfully!"}  
 ```
 2. Push the script file to the devices using Hexnode.
 3. On your Hexnode console, go to **Manage** \> **Devices**.
@@ -53,22 +41,7 @@ After deploying the Cloudflare One Client, you can check its connection progress
 5. Upload the `Cloudflare_WARP_<VERSION>.pkg` file and select **Add**.
 6. Set up an XML file with the supported app configurations for the app. Here is a sample XML file with the accepted parameters.  
 ```  
-<?xml version="1.0" encoding="UTF-8"?>  
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">  
-<plist version="1.0">  
-<dict>  
-<key>organization</key>  
-<string>organizationname</string>  
-<key>auto_connect</key>  
-<integer>1</integer>  
-<key>switch_locked</key>  
-<false />  
-<key>service_mode</key>  
-<string>warp</string>  
-<key>support_url</key>  
-<string>https://support.example.com</string>  
-</dict>  
-</plist>  
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"><plist version="1.0"><dict><key>organization</key><string>organizationname</string><key>auto_connect</key><integer>1</integer><key>switch_locked</key><false /><key>service_mode</key><string>warp</string><key>support_url</key><string>https://support.example.com</string></dict></plist>  
 ```
 7. On your Hexnode console, go to **Policies**.
 8. Create a new policy and provide a policy name.
@@ -89,31 +62,22 @@ After deploying the Cloudflare One Client, you can check its connection progress
 3. Search for [**Cloudflare One Agent** ↗](https://apps.apple.com/us/app/cloudflare-one-agent/id6443476492) and **Add** the app.
 4. Set up an XML file with the supported app configurations for the app. Refer this sample XML code to identify the supported arguments:  
 ```  
-<dict>  
-<key>organization</key>  
-<string>yourorganization</string>  
-<key>auto_connect</key>  
-<integer>1</integer>  
-<key>switch_locked</key>  
-<false />  
-<key>service_mode</key>  
-<string>warp</string>  
-<key>support_url</key  
-<string>https://support.example.com</string>  
-</dict>  
+<dict><key>organization</key><string>yourorganization</string><key>auto_connect</key><integer>1</integer><key>switch_locked</key><false /><key>service_mode</key><string>warp</string><key>support_url</key<string>https://support.example.com</string></dict>  
 ```
-5. Upload the app configurations in Hexnode:  
-   1. On your Hexnode console, go to the **Apps** tab.  
-   2. Find the Cloudflare One Agent app and select its name.  
-   3. Select the settings icon and choose **App Configuration**.  
-   4. Upload the XML file in the corresponding field.  
-   5. Select **Save**.
-6. Push the app to the target devices using Hexnode.  
-   1. On your Hexnode console, go to **Policies** and create a new policy.  
-   2. Provide a name for the policy and go to **iOS**.  
-   3. Go to **Mandatory Apps** \> **Configure**.  
-   4. Select **Add** \> **Add app**, check the required app, and select **Done**.  
-   5. Go to **Policy Targets** and associate the policy with the required target devices.
+5. Upload the app configurations in Hexnode:
+
+  1. On your Hexnode console, go to the **Apps** tab.
+  2. Find the Cloudflare One Agent app and select its name.
+  3. Select the settings icon and choose **App Configuration**.
+  4. Upload the XML file in the corresponding field.
+  5. Select **Save**.
+6. Push the app to the target devices using Hexnode.
+
+  1. On your Hexnode console, go to **Policies** and create a new policy.
+  2. Provide a name for the policy and go to **iOS**.
+  3. Go to **Mandatory Apps** \> **Configure**.
+  4. Select **Add** \> **Add app**, check the required app, and select **Done**.
+  5. Go to **Policy Targets** and associate the policy with the required target devices.
 
 This will push the app along with the configurations to the selected devices.
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -89,12 +89,12 @@ This applies to all Email Security packages:
 
 We have updated the Monitoring page to provide a more streamlined and insightful experience for administrators, improving both data visualization and dashboard accessibility.
 
-* **Enhanced Visual Layout**: Optimized contrast and the introduction of stacked bar charts for clearer data visualization and trend analysis.![visual-example](https://developers.cloudflare.com/_astro/monitoring-bar-charts.Bi-4BuXC_xiAlF.webp)
+* **Enhanced Visual Layout**: Optimized contrast and the introduction of stacked bar charts for clearer data visualization and trend analysis. ![visual-example](https://developers.cloudflare.com/_astro/monitoring-bar-charts.Bi-4BuXC_xiAlF.webp)
 * **Improved Accessibility & Usability**:  
-   * **Widget Search**: Added search functionality to multiple widgets, including Policies, Submitters, and Impersonation.  
-   * **Actionable UI**: All available actions are now accessible via dedicated buttons.  
-   * **State Indicators**: Improved UI states to clearly communicate loading, empty datasets, and error conditions.![buttons-example](https://developers.cloudflare.com/_astro/monitoring-buttons.DORPJvP__1JBNhu.webp)
-* **Granular Data Breakdowns**: New views for dispositions by month, malicious email details, link actions, and impersonations.![monthly-example](https://developers.cloudflare.com/_astro/monitoring-monthly-dispositions.CYuI5d9y_ZSVir3.webp)
+  * **Widget Search**: Added search functionality to multiple widgets, including Policies, Submitters, and Impersonation.
+  * **Actionable UI**: All available actions are now accessible via dedicated buttons.
+  * **State Indicators**: Improved UI states to clearly communicate loading, empty datasets, and error conditions. ![buttons-example](https://developers.cloudflare.com/_astro/monitoring-buttons.DORPJvP__1JBNhu.webp)
+* **Granular Data Breakdowns**: New views for dispositions by month, malicious email details, link actions, and impersonations. ![monthly-example](https://developers.cloudflare.com/_astro/monitoring-monthly-dispositions.CYuI5d9y_ZSVir3.webp)
 
 This applies to all Email Security packages:
 

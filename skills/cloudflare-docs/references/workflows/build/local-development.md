@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workflows/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,19 +31,11 @@ Open your terminal and run the following commands to start a local development s
 Terminal window
 
 ```
-
-# Confirm we are using wrangler v3.89.0+
-
-npx wrangler --version
-
-
+# Confirm we are using wrangler v3.89.0+npx wrangler --version
 ```
 
 ```
-
 ⛅️ wrangler 3.89.0
-
-
 ```
 
 Start a local dev session
@@ -51,29 +43,11 @@ Start a local dev session
 Terminal window
 
 ```
-
-# Start a local dev session:
-
-npx wrangler dev
-
-
+# Start a local dev session:npx wrangler dev
 ```
 
 ```
-
-------------------
-
-Your worker has access to the following bindings:
-
-- Workflows:
-
-  - MY_WORKFLOW: MyWorkflow
-
-⎔ Starting local server...
-
-[wrangler:inf] Ready on http://127.0.0.1:8787/
-
-
+------------------Your worker has access to the following bindings:- Workflows:  - MY_WORKFLOW: MyWorkflow⎔ Starting local server...[wrangler:inf] Ready on http://127.0.0.1:8787/
 ```
 
 Local development sessions create a standalone, local-only environment that mirrors the production environment Workflows runs in so you can test your Workflows _before_ you deploy to production.
@@ -93,10 +67,7 @@ For example, to list your local Workflows:
 Terminal window
 
 ```
-
 npx wrangler workflows list --local
-
-
 ```
 
 To trigger a Workflow locally:
@@ -104,10 +75,7 @@ To trigger a Workflow locally:
 Terminal window
 
 ```
-
 npx wrangler workflows trigger my-workflow --local
-
-
 ```
 
 To inspect a specific instance:
@@ -115,10 +83,7 @@ To inspect a specific instance:
 Terminal window
 
 ```
-
 npx wrangler workflows instances describe my-workflow <INSTANCE_ID> --local
-
-
 ```
 
 All commands accept `--port` to target a specific `wrangler dev` session (defaults to `8787`).

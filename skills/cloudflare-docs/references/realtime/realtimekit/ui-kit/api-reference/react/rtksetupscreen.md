@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,43 +30,15 @@ A screen shown before joining the meeting, where you can edit your display name,
 ### Basic Usage
 
 ```
-
 import { RtkSetupScreen } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return <RtkSetupScreen />;
-
-}
-
-
+function MyComponent() {  return <RtkSetupScreen />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkSetupScreen } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkSetupScreen
-
-      meeting={meeting}
-
-      size="md"
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkSetupScreen      meeting={meeting}      size="md"    />  );}
 ```
 
 ```json

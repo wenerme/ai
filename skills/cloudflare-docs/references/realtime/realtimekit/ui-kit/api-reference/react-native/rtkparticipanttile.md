@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,49 +35,15 @@ A video tile for a single participant showing their video feed, name tag with au
 ### Basic Usage
 
 ```
-
 import { RtkParticipantTile } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkParticipantTile meeting={meeting} participant={participant} />;
-
-}
-
-
+function MyComponent() {  return <RtkParticipantTile meeting={meeting} participant={participant} />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkParticipantTile } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkParticipantTile
-
-      meeting={meeting}
-
-      participant={participant}
-
-      nameTagPosition="bottom-left"
-
-      isPreview={false}
-
-      size="md"
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkParticipantTile      meeting={meeting}      participant={participant}      nameTagPosition="bottom-left"      isPreview={false}      size="md"    />  );}
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -70,10 +70,7 @@ With your project created, you can navigate into the folder and start up the stu
 Terminal window
 
 ```
-
 cd my-sanity-project
-
-
 ```
 
  npm  yarn  pnpm 
@@ -148,10 +145,7 @@ After you have completed your project, `cd` into your new project, and start a l
 Terminal window
 
 ```
-
 cd blog
-
-
 ```
 
  npm  yarn  pnpm 
@@ -195,10 +189,7 @@ To configure the plugin in your Nuxt.js application, you will need to provide so
 Adding sanity.json
 
 ```
-
 cp ../my-sanity-project/sanity.json .
-
-
 ```
 
 Finally, add `@nuxtjs/sanity` as a **build module** in your Nuxt configuration:
@@ -206,14 +197,7 @@ Finally, add `@nuxtjs/sanity` as a **build module** in your Nuxt configuration:
 nuxt.config.js
 
 ```
-
-{
-
-  buildModules: ["@nuxtjs/sanity"];
-
-}
-
-
+{  buildModules: ["@nuxtjs/sanity"];}
 ```
 
 ### Setting up components
@@ -227,73 +211,10 @@ To begin, update the `index` page, which will be rendered when you visit the roo
 pages/index.vue
 
 ```
-
-<template>
-
-  <div class="container">
-
-    <div>
-
-      <h1 class="title">My Blog</h1>
-
-    </div>
-
-    <div class="posts">
-
-      <div v-for="post in posts" :key="post._id">
-
-        <h2><a v-bind:href="post.slug.current" v-text="post.title" /></h2>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</template>
-
-
-<script>
-
-  import { groq } from "@nuxtjs/sanity";
-
-
-  export default {
-
-    async asyncData({ $sanity }) {
-
-      const query = groq`*[_type == "post"]`;
-
-      const posts = await $sanity.fetch(query);
-
-      return { posts };
-
-    },
-
-  };
-
-</script>
-
-
-<style>
-
-  .container {
-
-    margin: 2rem;
-
-    min-height: 100vh;
-
-  }
-
-  .posts {
-
-    margin: 2rem 0;
-
-  }
-
-</style>
-
-
+<template>  <div class="container">    <div>      <h1 class="title">My Blog</h1>    </div>    <div class="posts">      <div v-for="post in posts" :key="post._id">        <h2><a v-bind:href="post.slug.current" v-text="post.title" /></h2>      </div>    </div>  </div></template>
+<script>  import { groq } from "@nuxtjs/sanity";
+  export default {    async asyncData({ $sanity }) {      const query = groq`*[_type == "post"]`;      const posts = await $sanity.fetch(query);      return { posts };    },  };</script>
+<style>  .container {    margin: 2rem;    min-height: 100vh;  }  .posts {    margin: 2rem 0;  }</style>
 ```
 
 Vue SFCs, or _single file components_, are a unique Vue feature that allow you to combine JavaScript, HTML and CSS into a single file. In `pages/index.vue`, a `template` tag is provided, which represents the Vue component.
@@ -303,14 +224,7 @@ Importantly, `v-for` is used as a directive to tell Vue to render HTML for each 
 Inspecting the v-for directive
 
 ```
-
-<div v-for="post in posts" :key="post._id">
-
-  <h2><a v-bind:href="post.slug.current" v-text="post.title" /></h2>
-
-</div>
-
-
+<div v-for="post in posts" :key="post._id">  <h2><a v-bind:href="post.slug.current" v-text="post.title" /></h2></div>
 ```
 
 To populate that `posts` array, the `asyncData` function is used, which is provided by Nuxt to make asynchronous calls (for example, network requests) to populate the page's data.
@@ -322,12 +236,7 @@ If you have not used Sanity before, you will probably be unfamiliar with GROQ, t
 A basic GROQ query
 
 ```
-
-const query = groq`*[_type == "post"]`;
-
-const posts = await $sanity.fetch(query);
-
-
+const query = groq`*[_type == "post"]`;const posts = await $sanity.fetch(query);
 ```
 
 ### Setting up the blog post page
@@ -339,22 +248,7 @@ Nuxt has built-in support for these kind of pages, by creating a new file in `pa
 pages/\_slug.vue
 
 ```
-
-<script>
-
-  export default {
-
-    async asyncData({ params, $sanity }) {
-
-      console.log(params); // { slug: "hello-world" }
-
-    },
-
-  };
-
-</script>
-
-
+<script>  export default {    async asyncData({ params, $sanity }) {      console.log(params); // { slug: "hello-world" }    },  };</script>
 ```
 
 With that in mind, you can build `pages/_slug.vue` to take the incoming `slug` value, make a query to Sanity to find the matching blog post, and render the `post` title for the blog post:
@@ -362,77 +256,12 @@ With that in mind, you can build `pages/_slug.vue` to take the incoming `slug` v
 pages/\_slug.vue
 
 ```
-
-<template>
-
-  <div class="container">
-
-    <div v-if="post">
-
-      <h1 class="title" v-text="post.title" />
-
-      <div class="content"></div>
-
-    </div>
-
-    <h4><a href="/">← Go back</a></h4>
-
-  </div>
-
-</template>
-
-
-<script>
-
-  import { groq } from "@nuxtjs/sanity";
-
-
-  export default {
-
-    async asyncData({ params, $sanity }) {
-
-      const query = groq`*[_type == "post" && slug.current == "${params.slug}"][0]`;
-
-      const post = await $sanity.fetch(query);
-
-      return { post };
-
-    },
-
-  };
-
-</script>
-
-
-<style>
-
-  .container {
-
-    margin: 2rem;
-
-    min-height: 100vh;
-
-  }
-
-
-  .content {
-
-    margin: 2rem 0;
-
-    max-width: 38rem;
-
-  }
-
-
-  p {
-
-    margin: 1rem 0;
-
-  }
-
-</style>
-
-
+<template>  <div class="container">    <div v-if="post">      <h1 class="title" v-text="post.title" />      <div class="content"></div>    </div>    <h4><a href="/">← Go back</a></h4>  </div></template>
+<script>  import { groq } from "@nuxtjs/sanity";
+  export default {    async asyncData({ params, $sanity }) {      const query = groq`*[_type == "post" && slug.current == "${params.slug}"][0]`;      const post = await $sanity.fetch(query);      return { post };    },  };</script>
+<style>  .container {    margin: 2rem;    min-height: 100vh;  }
+  .content {    margin: 2rem 0;    max-width: 38rem;  }
+  p {    margin: 1rem 0;  }</style>
 ```
 
 When visiting, for example, `/hello-world`, Nuxt will take the incoming slug `hello-world`, and make a GROQ query to Sanity for any objects with a `_type` of `post`, as well as a slug that matches the value `/hello-world`. From that set, you can get the first object in the array (using the array index operator you would find in JavaScript – `[0]`) and set it as `post` in your page data.
@@ -466,14 +295,7 @@ After the package is installed, create `plugins/sanity-blocks.js`, which will im
 plugins/sanity-blocks.js
 
 ```
-
-import Vue from "vue";
-
-import BlockContent from "sanity-blocks-vue-component";
-
-Vue.component("block-content", BlockContent);
-
-
+import Vue from "vue";import BlockContent from "sanity-blocks-vue-component";Vue.component("block-content", BlockContent);
 ```
 
 In your Nuxt configuration, `nuxt.config.js`, import that file as part of the `plugins` directive:
@@ -481,14 +303,7 @@ In your Nuxt configuration, `nuxt.config.js`, import that file as part of the `p
 nuxt.config.js
 
 ```
-
-{
-
-  plugins: ["@/plugins/sanity-blocks.js"];
-
-}
-
-
+{  plugins: ["@/plugins/sanity-blocks.js"];}
 ```
 
 In `pages/_slug.vue`, you can now use the `<block-content>` component to render your content. This takes the format of a custom HTML component, and takes three arguments: `:blocks`, which indicates what to render (in our case, `child`), `v-for`, which accepts an iterator of where to get `child` from (in our case, `post.body`), and `:key`, which helps Vue [keep track of state rendering ↗](https://vuejs.org/v2/guide/list.html#Maintaining-State) by providing a unique value for each post: that is, the `_id` value.
@@ -496,89 +311,12 @@ In `pages/_slug.vue`, you can now use the `<block-content>` component to render 
 pages/\_slug.vue
 
 ```
-
-<template>
-
-  <div class="container">
-
-    <div v-if="post">
-
-      <h1 class="title" v-text="post.title" />
-
-      <div class="content">
-
-        <block-content
-
-          :blocks="child"
-
-          v-for="child in post.body"
-
-          :key="child._id"
-
-        />
-
-      </div>
-
-    </div>
-
-    <h4><a href="/">← Go back</a></h4>
-
-  </div>
-
-</template>
-
-
-<script>
-
-  import { groq } from "@nuxtjs/sanity";
-
-
-  export default {
-
-    async asyncData({ params, $sanity }) {
-
-      const query = groq`*[_type == "post" && slug.current == "${params.slug}"][0]`;
-
-      const post = await $sanity.fetch(query);
-
-      return { post };
-
-    },
-
-  };
-
-</script>
-
-
-<style>
-
-  .container {
-
-    margin: 2rem;
-
-    min-height: 100vh;
-
-  }
-
-
-  .content {
-
-    margin: 2rem 0;
-
-    max-width: 38rem;
-
-  }
-
-
-  p {
-
-    margin: 1rem 0;
-
-  }
-
-</style>
-
-
+<template>  <div class="container">    <div v-if="post">      <h1 class="title" v-text="post.title" />      <div class="content">        <block-content          :blocks="child"          v-for="child in post.body"          :key="child._id"        />      </div>    </div>    <h4><a href="/">← Go back</a></h4>  </div></template>
+<script>  import { groq } from "@nuxtjs/sanity";
+  export default {    async asyncData({ params, $sanity }) {      const query = groq`*[_type == "post" && slug.current == "${params.slug}"][0]`;      const post = await $sanity.fetch(query);      return { post };    },  };</script>
+<style>  .container {    margin: 2rem;    min-height: 100vh;  }
+  .content {    margin: 2rem 0;    max-width: 38rem;  }
+  p {    margin: 1rem 0;  }</style>
 ```
 
 In `pages/index.vue`, you can use the `block-content` component to render a summary of the content, by taking the first block in your blog post content and rendering it:
@@ -586,93 +324,10 @@ In `pages/index.vue`, you can use the `block-content` component to render a summ
 pages/index.vue
 
 ```
-
-<template>
-
-  <div class="container">
-
-    <div>
-
-      <h1 class="title">My Blog</h1>
-
-    </div>
-
-    <div class="posts">
-
-      <div v-for="post in posts" :key="post._id">
-
-        <h2><a v-bind:href="post.slug.current" v-text="post.title" /></h2>
-
-        <div class="summary">
-
-          <block-content
-
-            :blocks="post.body[0]"
-
-            v-bind:key="post.body[0]._id"
-
-            v-if="post.body.length"
-
-          />
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</template>
-
-
-<script>
-
-  import { groq } from "@nuxtjs/sanity";
-
-
-  export default {
-
-    async asyncData({ $sanity }) {
-
-      const query = groq`*[_type == "post"]`;
-
-      const posts = await $sanity.fetch(query);
-
-      return { posts };
-
-    },
-
-  };
-
-</script>
-
-
-<style>
-
-  .container {
-
-    margin: 2rem;
-
-    min-height: 100vh;
-
-  }
-
-  .posts {
-
-    margin: 2rem 0;
-
-  }
-
-  .summary {
-
-    margin-top: 0.5rem;
-
-  }
-
-</style>
-
-
+<template>  <div class="container">    <div>      <h1 class="title">My Blog</h1>    </div>    <div class="posts">      <div v-for="post in posts" :key="post._id">        <h2><a v-bind:href="post.slug.current" v-text="post.title" /></h2>        <div class="summary">          <block-content            :blocks="post.body[0]"            v-bind:key="post.body[0]._id"            v-if="post.body.length"          />        </div>      </div>    </div>  </div></template>
+<script>  import { groq } from "@nuxtjs/sanity";
+  export default {    async asyncData({ $sanity }) {      const query = groq`*[_type == "post"]`;      const posts = await $sanity.fetch(query);      return { posts };    },  };</script>
+<style>  .container {    margin: 2rem;    min-height: 100vh;  }  .posts {    margin: 2rem 0;  }  .summary {    margin-top: 0.5rem;  }</style>
 ```
 
 There are many other things inside of your blog schema that you can add to your project. As an exercise, consider one of the following to continue developing your understanding of how to build with a headless CMS:

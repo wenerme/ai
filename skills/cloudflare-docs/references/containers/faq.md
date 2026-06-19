@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,35 +16,19 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 To get logs in the Dashboard, including live tailing of logs, toggle `observability` to true in your Worker's wrangler config:
 
-* [  wrangler.jsonc ](#tab-panel-7838)
-* [  wrangler.toml ](#tab-panel-7839)
+* [  wrangler.jsonc ](#tab-panel-7914)
+* [  wrangler.toml ](#tab-panel-7915)
 
 JSONC
 
 ```
-
-{
-
-  "observability": {
-
-    "enabled": true
-
-  }
-
-}
-
-
+{  "observability": {    "enabled": true  }}
 ```
 
 TOML
 
 ```
-
-[observability]
-
-enabled = true
-
-
+[observability]enabled = true
 ```
 
 Logs are subject to the same [limits as Worker logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#limits), which means that they are retained for 3 days on Free plans and 7 days on Paid plans.
@@ -135,15 +119,8 @@ You must disable iptables when starting the Docker daemon because Containers do 
 Dockerfile
 
 ```
-
 FROM docker:dind-rootless
-
-
-# Start dockerd with iptables disabled, then run your app
-
-ENTRYPOINT ["sh", "-c", "dockerd-entrypoint.sh dockerd --iptables=false --ip6tables=false & exec /path/to/your-app"]
-
-
+# Start dockerd with iptables disabled, then run your appENTRYPOINT ["sh", "-c", "dockerd-entrypoint.sh dockerd --iptables=false --ip6tables=false & exec /path/to/your-app"]
 ```
 
 If your application needs to wait for dockerd to become ready before using Docker, use an entrypoint script instead of the inline command above:
@@ -151,24 +128,9 @@ If your application needs to wait for dockerd to become ready before using Docke
 entrypoint.sh
 
 ```
-
-#!/bin/sh
-
-set -eu
-
-
-# Wait for dockerd to be ready
-
-until docker version >/dev/null 2>&1; do
-
-  sleep 0.2
-
-done
-
-
+#!/bin/shset -eu
+# Wait for dockerd to be readyuntil docker version >/dev/null 2>&1; do  sleep 0.2done
 exec /path/to/your-app
-
-
 ```
 
 Working with disabled iptables

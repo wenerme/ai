@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -46,8 +46,8 @@ Otherwise, your visitors may experience a [526 error](https://developers.cloudfl
 
 ### Process
 
-* [ Dashboard ](#tab-panel-10656)
-* [ API ](#tab-panel-10657)
+* [ Dashboard ](#tab-panel-10732)
+* [ API ](#tab-panel-10733)
 
 To change your encryption mode in the dashboard:
 

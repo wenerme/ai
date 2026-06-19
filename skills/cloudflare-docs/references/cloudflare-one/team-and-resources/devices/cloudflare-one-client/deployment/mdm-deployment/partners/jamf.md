@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -52,16 +52,16 @@ Every time a new Cloudflare One Client version is released, you must repeat this
 3. Scroll through the **Options** list and select **Application & Custom Settings** \> **Upload**.
 4. In **Preference Domain**, enter `com.cloudflare.warp`.
 5. To configure the **Property List**:  
-   1. [Create a plist file](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/#plist-file) with your desired deployment parameters.  
-   2. Upload your `plist` file to Jamf and select **Save**.
+  1. [Create a plist file](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/#plist-file) with your desired deployment parameters.
+  2. Upload your `plist` file to Jamf and select **Save**.
 6. (Recommended) Advanced security features require deploying a [user-side certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/) so that devices can establish trust with Cloudflare when their traffic is inspected. To deploy a user-side certificate using Jamf:  
-   1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), [generate and activate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/#generate-a-cloudflare-root-certificate) a Cloudflare root certificate.  
-   2. [Download the Cloudflare root certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/manual-deployment/#download-a-cloudflare-root-certificate) in `.pem` format.  
-   3. [Convert](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/manual-deployment/#convert-the-certificate) the certificate to `.cer` format.  
-   4. In your Jamf configuration profile, scroll down the **Options** list and select **Certificate** \> **Configure**.  
-   5. Enter a **Display name** for the certificate such as `Cloudflare root certificate`.  
-   6. In the **Select Certificate Option** dropdown, select _Upload_.  
-   7. Upload your `.cer` file and select **Save**.
+  1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), [generate and activate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/#generate-a-cloudflare-root-certificate) a Cloudflare root certificate.
+  2. [Download the Cloudflare root certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/manual-deployment/#download-a-cloudflare-root-certificate) in `.pem` format.
+  3. [Convert](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/manual-deployment/#convert-the-certificate) the certificate to `.cer` format.
+  4. In your Jamf configuration profile, scroll down the **Options** list and select **Certificate** \> **Configure**.
+  5. Enter a **Display name** for the certificate such as `Cloudflare root certificate`.
+  6. In the **Select Certificate Option** dropdown, select _Upload_.
+  7. Upload your `.cer` file and select **Save**.
 7. Go to **Scope** to configure which devices in your organization will receive this profile.
 8. Select **Save**.
 
@@ -109,9 +109,9 @@ To configure per-app VPN:
 1. Log in to the Jamf dashboard for your organization.
 2. Go to **Devices** \> **Configuration Policies** \> select **\+ New**.
 3. Under **Options**, select **VPN**. Then:  
-   * Give the VPN a **Connection Name**.  
-   * Select _Per-App VPN_ from the **VPN Type** dropdown menu.  
-   * Check the box for **Automatically start Per-App VPN connection**.
+  * Give the VPN a **Connection Name**.
+  * Select _Per-App VPN_ from the **VPN Type** dropdown menu.
+  * Check the box for **Automatically start Per-App VPN connection**.
 4. Under Per-App VPN Connection Type, set the **Connection Type** to _Custom SSL_ via the dropdown menu. Then, enter `com.cloudflare.cloudflareoneagent` as the **Identifier**, `1.1.1.1` as the **Server**, and `com.cloudflare.cloudflareoneagent.worker` as the **Provider Bundle Identifier**.
 5. Set the **Provider Type** to _Packet-Tunnel_ and select the checkboxes for **Include All Networks** and **Enable VPN on Demand**.
 6. Go to the **Scope** tab and add the devices that will use the Per-App VPN.

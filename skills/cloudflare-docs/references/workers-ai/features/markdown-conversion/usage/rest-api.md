@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,20 +25,7 @@ This endpoint lets you convert any file given to us into markdown.
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/tomarkdown \
-
-  -X POST \
-
-  -H 'Authorization: Bearer {API_TOKEN}' \
-
-  -F "files=@cat.jpeg" \
-
-  -F "files=@somatosensory.pdf" \
-
-  -F 'conversionOptions={ ... }'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/tomarkdown \  -X POST \  -H 'Authorization: Bearer {API_TOKEN}' \  -F "files=@cat.jpeg" \  -F "files=@somatosensory.pdf" \  -F 'conversionOptions={ ... }'
 ```
 
 Note
@@ -58,48 +45,7 @@ Options that allow you to control how your files are converted. Refer to [Conver
 ### Response
 
 ```
-
-{
-
-  "success": true,
-
-  "result": [
-
-    {
-
-      "id": "...",
-
-      "name": "good.html",
-
-      "mimeType": "text/html",
-
-      "format": "markdown",
-
-      "tokens": 49,
-
-      "data": "# Image Embedded with a Data URI\n\nThis _image_ is directly encoded in the HTML:\n\n\n\nAn image description\n\n \n\nIt's a tiny 5x5 pixel PNG, scaled up to 50x50px.\n\n"
-
-    },
-
-    {
-
-      "id": "...",
-
-      "name": "bad.pdf",
-
-      "mimeType": "application/pdf",
-
-      "format": "error",
-
-      "error": "Some error that prevented this image from being converted"
-
-    }
-
-  ]
-
-}
-
-
+{  "success": true,  "result": [    {      "id": "...",      "name": "good.html",      "mimeType": "text/html",      "format": "markdown",      "tokens": 49,      "data": "# Image Embedded with a Data URI\n\nThis _image_ is directly encoded in the HTML:\n\n\n\nAn image description\n\n \n\nIt's a tiny 5x5 pixel PNG, scaled up to 50x50px.\n\n"    },    {      "id": "...",      "name": "bad.pdf",      "mimeType": "application/pdf",      "format": "error",      "error": "Some error that prevented this image from being converted"    }  ]}
 ```
 
 ## Supported
@@ -109,12 +55,7 @@ This endpoint lets you programmatically retrieve the full set of rich formats th
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/tomarkdown/supported \
-
-  -H 'Authorization: Bearer {API_TOKEN}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/tomarkdown/supported \  -H 'Authorization: Bearer {API_TOKEN}'
 ```
 
 Note
@@ -124,36 +65,7 @@ You can get your `ACCOUNT_ID` by going to [Workers & Pages on the dashboard](htt
 ### Response
 
 ```
-
-{
-
-  "success": true,
-
-  "result": [
-
-    {
-
-      "extension": ".html",
-
-      "mimeType": "text/html"
-
-    },
-
-    {
-
-      "extension": ".pdf",
-
-      "mimeType": "application/pdf"
-
-    },
-
-    ...
-
-  ]
-
-}
-
-
+{  "success": true,  "result": [    {      "extension": ".html",      "mimeType": "text/html"    },    {      "extension": ".pdf",      "mimeType": "application/pdf"    },    ...  ]}
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,144 +29,48 @@ To serve images from a custom domain:
 2. Select **Create application** \> **Workers** \> **Create Worker** and create your Worker.
 3. In your Worker, select **Quick edit** and paste the following code.
 
-* [  JavaScript ](#tab-panel-11687)
-* [  TypeScript ](#tab-panel-11688)
-* [  Hono ](#tab-panel-11689)
-* [  Python ](#tab-panel-11690)
+* [  JavaScript ](#tab-panel-11704)
+* [  TypeScript ](#tab-panel-11705)
+* [  Hono ](#tab-panel-11706)
+* [  Python ](#tab-panel-11707)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request) {
-
-    // You can find this in the dashboard, it should look something like this: ZWd9g1K7eljCn_KDTu_MWA
-
-    const accountHash = "";
-
-
+export default {  async fetch(request) {    // You can find this in the dashboard, it should look something like this: ZWd9g1K7eljCn_KDTu_MWA    const accountHash = "";
     const { pathname } = new URL(request.url);
-
-
-    // A request to something like cdn.example.com/83eb7b2-5392-4565-b69e-aff66acddd00/public
-
-    // will fetch "https://imagedelivery.net/<accountHash>/83eb7b2-5392-4565-b69e-aff66acddd00/public"
-
-
-    return fetch(`https://imagedelivery.net/${accountHash}${pathname}`);
-
-  },
-
-};
-
-
+    // A request to something like cdn.example.com/83eb7b2-5392-4565-b69e-aff66acddd00/public    // will fetch "https://imagedelivery.net/<accountHash>/83eb7b2-5392-4565-b69e-aff66acddd00/public"
+    return fetch(`https://imagedelivery.net/${accountHash}${pathname}`);  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request): Promise<Response> {
-
-    // You can find this in the dashboard, it should look something like this: ZWd9g1K7eljCn_KDTu_MWA
-
-    const accountHash = "";
-
-
+export default {  async fetch(request): Promise<Response> {    // You can find this in the dashboard, it should look something like this: ZWd9g1K7eljCn_KDTu_MWA    const accountHash = "";
     const { pathname } = new URL(request.url);
-
-
-    // A request to something like cdn.example.com/83eb7b2-5392-4565-b69e-aff66acddd00/public
-
-    // will fetch "https://imagedelivery.net/<accountHash>/83eb7b2-5392-4565-b69e-aff66acddd00/public"
-
-
-    return fetch(`https://imagedelivery.net/${accountHash}${pathname}`);
-
-  },
-
-} satisfies ExportedHandler;
-
-
+    // A request to something like cdn.example.com/83eb7b2-5392-4565-b69e-aff66acddd00/public    // will fetch "https://imagedelivery.net/<accountHash>/83eb7b2-5392-4565-b69e-aff66acddd00/public"
+    return fetch(`https://imagedelivery.net/${accountHash}${pathname}`);  },} satisfies ExportedHandler;
 ```
 
 TypeScript
 
 ```
-
 import { Hono } from 'hono';
-
-
-interface Env {
-
-  // You can store your account hash as a binding variable
-
-  ACCOUNT_HASH?: string;
-
-}
-
-
+interface Env {  // You can store your account hash as a binding variable  ACCOUNT_HASH?: string;}
 const app = new Hono<{ Bindings: Env }>();
-
-
-app.get('*', async (c) => {
-
-  // You can find this in the dashboard, it should look something like this: ZWd9g1K7eljCn_KDTu_MWA
-
-  // Either get it from environment or hardcode it here
-
-  const accountHash = c.env.ACCOUNT_HASH || "";
-
-
+app.get('*', async (c) => {  // You can find this in the dashboard, it should look something like this: ZWd9g1K7eljCn_KDTu_MWA  // Either get it from environment or hardcode it here  const accountHash = c.env.ACCOUNT_HASH || "";
   const url = new URL(c.req.url);
-
-
-  // A request to something like cdn.example.com/83eb7b2-5392-4565-b69e-aff66acddd00/public
-
-  // will fetch "https://imagedelivery.net/<accountHash>/83eb7b2-5392-4565-b69e-aff66acddd00/public"
-
-
-  return fetch(`https://imagedelivery.net/${accountHash}${url.pathname}`);
-
-});
-
-
+  // A request to something like cdn.example.com/83eb7b2-5392-4565-b69e-aff66acddd00/public  // will fetch "https://imagedelivery.net/<accountHash>/83eb7b2-5392-4565-b69e-aff66acddd00/public"
+  return fetch(`https://imagedelivery.net/${accountHash}${url.pathname}`);});
 export default app;
-
-
 ```
 
 Python
 
 ```
-
-from workers import WorkerEntrypoint
-
-from js import URL, fetch
-
-
-class Default(WorkerEntrypoint):
-
-    async def fetch(self, request):
-
-        # You can find this in the dashboard, it should look something like this: ZWd9g1K7eljCn_KDTu_MWA
-
-        account_hash = ""
-
-        url = URL.new(request.url)
-
-
-        # A request to something like cdn.example.com/83eb7b2-5392-4565-b69e-aff66acddd00/public
-
-        # will fetch "https://imagedelivery.net/<accountHash>/83eb7b2-5392-4565-b69e-aff66acddd00/public"
-
-        return fetch(f'https://imagedelivery.net/{account_hash}{url.pathname}')
-
-
+from workers import WorkerEntrypointfrom js import URL, fetch
+class Default(WorkerEntrypoint):    async def fetch(self, request):        # You can find this in the dashboard, it should look something like this: ZWd9g1K7eljCn_KDTu_MWA        account_hash = ""        url = URL.new(request.url)
+        # A request to something like cdn.example.com/83eb7b2-5392-4565-b69e-aff66acddd00/public        # will fetch "https://imagedelivery.net/<accountHash>/83eb7b2-5392-4565-b69e-aff66acddd00/public"        return fetch(f'https://imagedelivery.net/{account_hash}{url.pathname}')
 ```
 
 Another way you can serve images from a custom domain is by using the `cdn-cgi/imagedelivery` prefix path which is used as path to trigger `cdn-cgi` image proxy.
@@ -176,10 +80,7 @@ Below is an example showing the hostname as a Cloudflare proxied domain under th
 JavaScript
 
 ```
-
 https://example.com/cdn-cgi/imagedelivery/<ACCOUNT_HASH>/<IMAGE_ID>/<VARIANT_NAME>
-
-
 ```
 
 ```json

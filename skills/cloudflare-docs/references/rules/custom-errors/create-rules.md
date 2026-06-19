@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,9 +20,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 [ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
 2. Select **Create rule** \> **Custom Error Rule**.
 3. Enter a descriptive name for the rule in **Rule name**.
-4. Under **If incoming requests match**, select one of the following options:  
-   * **Custom filter expression**: The rule will only apply to traffic matching a custom expression. Define the [rule expression](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/) to configure which requests should be rewritten. Use either the Expression Builder or the Expression Editor to define the custom expression. For more information, refer to [Edit expressions in the dashboard](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/).  
-   * **All incoming requests**: The rule will apply to all responses with a `400` status code or above, except for block and challenge actions issued by Cloudflare’s security products.
+4. Under **If incoming requests match**, select one of the following options:
+
+  * **Custom filter expression**: The rule will only apply to traffic matching a custom expression. Define the [rule expression](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/) to configure which requests should be rewritten. Use either the Expression Builder or the Expression Editor to define the custom expression. For more information, refer to [Edit expressions in the dashboard](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/).
+  * **All incoming requests**: The rule will apply to all responses with a `400` status code or above, except for block and challenge actions issued by Cloudflare’s security products.
 5. In **Deliver a custom error response**, select the response type (either _Custom error asset_ or one of the available inline responses).  
 If you select _Custom error asset_, select an existing custom error asset in **Asset**, or select **Create new asset** to [create a new custom error asset](#create-a-custom-error-asset-dashboard).  
 If you select _JSON response_, _HTML response_, _Text response_, or _XML response_, enter the custom error response you want to send to web site visitors in **JSON response**, **HTML response**, **Text response**, or **XML response**, respectively. The response can include [error tokens](https://developers.cloudflare.com/rules/custom-errors/reference/error-tokens/) that Cloudflare will replace with real values before sending the response to the visitor. The maximum response size is 10 KB.
@@ -53,47 +54,11 @@ The following `POST` request creates new a custom error asset in a zone based on
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_pages/assets" \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---json '{
-
-  "name": "500_error_template",
-
-  "description": "Standard 5xx error template page",
-
-  "url": "https://example.com/errors/500_template.html"
-
-}'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_pages/assets" \--header "Authorization: Bearer <API_TOKEN>" \--json '{  "name": "500_error_template",  "description": "Standard 5xx error template page",  "url": "https://example.com/errors/500_template.html"}'
 ```
 
 ```
-
-{
-
-  "result": {
-
-    "name": "500_error_template",
-
-    "description": "Standard 5xx error template page",
-
-    "url": "https://example.com/errors/500_template.html",
-
-    "last_updated": "2025-02-10T11:36:07.810215Z",
-
-    "size_bytes": 2048
-
-  },
-
-  "success": true
-
-}
-
-
+{  "result": {    "name": "500_error_template",    "description": "Standard 5xx error template page",    "url": "https://example.com/errors/500_template.html",    "last_updated": "2025-02-10T11:36:07.810215Z",    "size_bytes": 2048  },  "success": true}
 ```
 
 ### Create a custom error rule
@@ -122,7 +87,7 @@ This example configures a custom error rule returning a [previously created cust
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Response Compression Write`
 * `Config Settings Write`
 * `Dynamic URL Redirects Write`
@@ -148,42 +113,7 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Update a zone entry point ruleset
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_custom_errors/entrypoint" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "rules": [
-
-        {
-
-            "ref": "serve_500_template",
-
-            "action": "serve_error",
-
-            "action_parameters": {
-
-                "asset_name": "500_error_template",
-
-                "content_type": "text/html"
-
-            },
-
-            "expression": "http.response.code eq 500",
-
-            "enabled": true
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_custom_errors/entrypoint" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "ref": "serve_500_template",            "action": "serve_error",            "action_parameters": {                "asset_name": "500_error_template",                "content_type": "text/html"            },            "expression": "http.response.code eq 500",            "enabled": true        }    ]  }'
 ```
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.

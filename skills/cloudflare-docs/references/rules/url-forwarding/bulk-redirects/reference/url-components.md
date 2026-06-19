@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,10 +17,7 @@ The source and target URLs of a URL redirect support different URL components.
 The provided URL component examples in the reference table are based on the following URL:
 
 ```
-
 https://user:password@www.example.com:443/search?q=term#results
-
-
 ```
 
 | URL component                                 | Supported in source URL [1](#user-content-fn-1) | Supported in target URL                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
@@ -36,10 +33,7 @@ https://user:password@www.example.com:443/search?q=term#results
 Bulk Redirects also support target URLs without an authority component [2](#user-content-fn-2), like the following URL:
 
 ```
-
 magnet:?xt=urn:btih:2bd9d334e8d1e5bd7768755173222db5c6dea13b&dn=archlinux-2021.07.01-x86_64.iso
-
-
 ```
 
 ## Footnotes

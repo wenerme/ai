@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -59,10 +59,7 @@ Hugo does not use `.cache` by default. To use build caching with Hugo, set `--ca
 Terminal window
 
 ```
-
 hugo --minify --cacheDir=$PWD/.cache
-
-
 ```
 
 Pages detects Hugo projects via the presence of a `hugo.toml`, `hugo.yaml`, `hugo.yml`, or `hugo.json` config file.

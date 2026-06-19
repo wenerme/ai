@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,30 +25,7 @@ The invocations of tools can be logged as in any Worker using `console.log()`:
 Logging tool invocations
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    const sum = (args: { a: number; b: number }): Promise<string> => {
-
-      const { a, b } = args;
-
-      // Logging from within embedded function invocations
-
-      console.log(`The sum function has been invoked with the arguments a: ${a} and b: ${b}`)
-
-      return Promise.resolve((a + b).toString());
-
-    };
-
-    ...
-
-  }
-
-}
-
-
+export default {  async fetch(request, env, ctx) {    const sum = (args: { a: number; b: number }): Promise<string> => {      const { a, b } = args;      // Logging from within embedded function invocations      console.log(`The sum function has been invoked with the arguments a: ${a} and b: ${b}`)      return Promise.resolve((a + b).toString());    };    ...  }}
 ```
 
 ### Logging within `runWithTools`
@@ -58,36 +35,7 @@ The `runWithTools` function has a `verbose` mode that emits helpful logs for deb
 Enabled verbose mode
 
 ```
-
-const response = await runWithTools(
-
-  env.AI,
-
-  '@hf/nousresearch/hermes-2-pro-mistral-7b',
-
-  {
-
-    messages: [
-
-      ...
-
-    ],
-
-    tools: [
-
-      ...
-
-    ],
-
-  },
-
-  // Enable verbose mode
-
-  { verbose: true }
-
-);
-
-
+const response = await runWithTools(  env.AI,  '@hf/nousresearch/hermes-2-pro-mistral-7b',  {    messages: [      ...    ],    tools: [      ...    ],  },  // Enable verbose mode  { verbose: true });
 ```
 
 ## Performance
@@ -103,57 +51,8 @@ Consider the following to improve performance:
 Streamed response example
 
 ```
-
-async fetch(request, env, ctx) {
-
-  const response = (await runWithTools(
-
-    env.AI,
-
-    '@hf/nousresearch/hermes-2-pro-mistral-7b',
-
-    {
-
-      messages: [
-
-        ...
-
-      ],
-
-      tools: [
-
-        ...
-
-      ],
-
-    },
-
-    {
-
-      // Enable response streaming
-
-      streamFinalResponse: true,
-
-    }
-
-  )) as ReadableStream;
-
-
-  // Set response headers for streaming
-
-  return new Response(response, {
-
-    headers: {
-
-      'content-type': 'text/event-stream',
-
-    },
-
-  });
-
-}
-
-
+async fetch(request, env, ctx) {  const response = (await runWithTools(    env.AI,    '@hf/nousresearch/hermes-2-pro-mistral-7b',    {      messages: [        ...      ],      tools: [        ...      ],    },    {      // Enable response streaming      streamFinalResponse: true,    }  )) as ReadableStream;
+  // Set response headers for streaming  return new Response(response, {    headers: {      'content-type': 'text/event-stream',    },  });}
 ```
 
 ## Common Errors

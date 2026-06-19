@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -75,10 +75,7 @@ The rule expression, or filter expression, specifies the conditions that must be
 The default expression of a Bulk Redirect Rule is the following:
 
 ```
-
 http.request.full_uri in $<LIST_NAME>
-
-
 ```
 
 This expression means that the request URL, after some basic normalization (if [URL normalization](https://developers.cloudflare.com/rules/normalization/) is enabled), should match the source URL of a URL redirect in the list `<LIST_NAME>` for the redirect to be applied.
@@ -86,10 +83,7 @@ This expression means that the request URL, after some basic normalization (if [
 You can use an expression different from the default one to increase the specificity of URL redirect matches. For example, if you set the expression of a Bulk Redirect Rule to the following expression, there will only be a match for requests coming from the United Kingdom:
 
 ```
-
 ip.src.country == "GB" and http.request.full_uri in $<LIST_NAME>
-
-
 ```
 
 For more information on the available fields, refer to [Available fields and functions](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/fields-functions/).

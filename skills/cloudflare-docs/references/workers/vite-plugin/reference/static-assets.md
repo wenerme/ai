@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,35 +27,19 @@ On running `vite build`, an output `wrangler.json` configuration file is generat
 
 The `assets` configuration should be used, however, if you wish to set [routing configuration](https://developers.cloudflare.com/workers/static-assets/routing/) or enable the [assets binding](https://developers.cloudflare.com/workers/static-assets/binding/#binding). The following example configures the `not_found_handling` for a single-page application so that the fallback will always be the root `index.html` file.
 
-* [  wrangler.jsonc ](#tab-panel-12215)
-* [  wrangler.toml ](#tab-panel-12216)
+* [  wrangler.jsonc ](#tab-panel-12232)
+* [  wrangler.toml ](#tab-panel-12233)
 
 JSONC
 
 ```
-
-{
-
-  "assets": {
-
-    "not_found_handling": "single-page-application"
-
-  }
-
-}
-
-
+{  "assets": {    "not_found_handling": "single-page-application"  }}
 ```
 
 TOML
 
 ```
-
-[assets]
-
-not_found_handling = "single-page-application"
-
-
+[assets]not_found_handling = "single-page-application"
 ```
 
 ## Features
@@ -67,21 +51,8 @@ Assets [imported as URLs ↗](https://vite.dev/guide/assets#importing-asset-as-u
 TypeScript
 
 ```
-
 import myImage from "./my-image.png";
-
-
-export default {
-
-  fetch(request, env) {
-
-    return env.ASSETS.fetch(new URL(myImage, request.url));
-
-  },
-
-};
-
-
+export default {  fetch(request, env) {    return env.ASSETS.fetch(new URL(myImage, request.url));  },};
 ```
 
 Assets imported as URLs in your Worker will automatically be moved to the client build output. When running `vite build` the paths of any moved assets will be displayed in the console.

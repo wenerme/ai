@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/resource-tagging/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,10 +37,7 @@ The error message text references `:` as the tag filter separator (for example, 
 In the current beta, `GET /accounts/{account_id}/tags` returns `500 Internal Server Error` for resources that do not exist or have never been tagged:
 
 ```
-
 "resource not found: type={resource_type} id={resource_id}"
-
-
 ```
 
 List endpoints (`/tags/resources`, `/tags/keys`, `/tags/values/{key}`) return `200 OK` with an empty result array when no matches are found -- this is expected, not an error.

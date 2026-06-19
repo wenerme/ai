@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -63,10 +63,7 @@ DMARC ensures that emails claiming to be from your domain actually pass SPF and 
 **DMARC record example:**
 
 ```
-
 TXT _dmarc.yourdomain.com "v=DMARC1; p=quarantine; rua=mailto:dmarc@yourdomain.com"
-
-
 ```
 
 Note

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,33 +29,15 @@ Toggle button to open the settings dialog. Hides if no audio or video permission
 ### Basic Usage
 
 ```
-
 import { RtkSettingsToggle } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkSettingsToggle />;
-
-}
-
-
+function MyComponent() {  return <RtkSettingsToggle />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkSettingsToggle } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkSettingsToggle size="md" variant="button" states={states} />;
-
-}
-
-
+function MyComponent() {  return <RtkSettingsToggle size="md" variant="button" states={states} />;}
 ```
 
 ```json

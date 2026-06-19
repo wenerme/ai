@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -14,85 +14,23 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 When you build MCP Servers on Cloudflare, you extend the [McpAgent class ↗](https://github.com/cloudflare/agents/blob/main/packages/agents/src/mcp.ts), from the Agents SDK:
 
-* [  JavaScript ](#tab-panel-5703)
-* [  TypeScript ](#tab-panel-5704)
+* [  JavaScript ](#tab-panel-5777)
+* [  TypeScript ](#tab-panel-5778)
 
 JavaScript
 
 ```
-
-import { McpAgent } from "agents/mcp";
-
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-
-import { z } from "zod";
-
-
-export class MyMCP extends McpAgent {
-
-  server = new McpServer({ name: "Demo", version: "1.0.0" });
-
-
-  async init() {
-
-    this.server.tool(
-
-      "add",
-
-      { a: z.number(), b: z.number() },
-
-      async ({ a, b }) => ({
-
-        content: [{ type: "text", text: String(a + b) }],
-
-      }),
-
-    );
-
-  }
-
-}
-
-
+import { McpAgent } from "agents/mcp";import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";import { z } from "zod";
+export class MyMCP extends McpAgent {  server = new McpServer({ name: "Demo", version: "1.0.0" });
+  async init() {    this.server.tool(      "add",      { a: z.number(), b: z.number() },      async ({ a, b }) => ({        content: [{ type: "text", text: String(a + b) }],      }),    );  }}
 ```
 
 TypeScript
 
 ```
-
-import { McpAgent } from "agents/mcp";
-
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-
-import { z } from "zod";
-
-
-export class MyMCP extends McpAgent {
-
-  server = new McpServer({ name: "Demo", version: "1.0.0" });
-
-
-  async init() {
-
-    this.server.tool(
-
-      "add",
-
-      { a: z.number(), b: z.number() },
-
-      async ({ a, b }) => ({
-
-        content: [{ type: "text", text: String(a + b) }],
-
-      }),
-
-    );
-
-  }
-
-}
-
-
+import { McpAgent } from "agents/mcp";import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";import { z } from "zod";
+export class MyMCP extends McpAgent {  server = new McpServer({ name: "Demo", version: "1.0.0" });
+  async init() {    this.server.tool(      "add",      { a: z.number(), b: z.number() },      async ({ a, b }) => ({        content: [{ type: "text", text: String(a + b) }],      }),    );  }}
 ```
 
 This means that each instance of your MCP server has its own durable state, backed by a [Durable Object](https://developers.cloudflare.com/durable-objects/), with its own [SQL database](https://developers.cloudflare.com/agents/runtime/lifecycle/state/).
@@ -126,79 +64,25 @@ You can use the APIs below in order to do so.
 
 The `McpAgent.serve()` static method creates a Worker handler that routes requests to your MCP server:
 
-* [  JavaScript ](#tab-panel-5705)
-* [  TypeScript ](#tab-panel-5706)
+* [  JavaScript ](#tab-panel-5779)
+* [  TypeScript ](#tab-panel-5780)
 
 JavaScript
 
 ```
-
-import { McpAgent } from "agents/mcp";
-
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-
-import { z } from "zod";
-
-
-export class MyMCP extends McpAgent {
-
-  server = new McpServer({ name: "my-server", version: "1.0.0" });
-
-
-  async init() {
-
-    this.server.tool("square", { n: z.number() }, async ({ n }) => ({
-
-      content: [{ type: "text", text: String(n * n) }],
-
-    }));
-
-  }
-
-}
-
-
-// Export the Worker handler
-
-export default MyMCP.serve("/mcp");
-
-
+import { McpAgent } from "agents/mcp";import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";import { z } from "zod";
+export class MyMCP extends McpAgent {  server = new McpServer({ name: "my-server", version: "1.0.0" });
+  async init() {    this.server.tool("square", { n: z.number() }, async ({ n }) => ({      content: [{ type: "text", text: String(n * n) }],    }));  }}
+// Export the Worker handlerexport default MyMCP.serve("/mcp");
 ```
 
 TypeScript
 
 ```
-
-import { McpAgent } from "agents/mcp";
-
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-
-import { z } from "zod";
-
-
-export class MyMCP extends McpAgent {
-
-  server = new McpServer({ name: "my-server", version: "1.0.0" });
-
-
-  async init() {
-
-    this.server.tool("square", { n: z.number() }, async ({ n }) => ({
-
-      content: [{ type: "text", text: String(n * n) }],
-
-    }));
-
-  }
-
-}
-
-
-// Export the Worker handler
-
-export default MyMCP.serve("/mcp");
-
-
+import { McpAgent } from "agents/mcp";import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";import { z } from "zod";
+export class MyMCP extends McpAgent {  server = new McpServer({ name: "my-server", version: "1.0.0" });
+  async init() {    this.server.tool("square", { n: z.number() }, async ({ n }) => ({      content: [{ type: "text", text: String(n * n) }],    }));  }}
+// Export the Worker handlerexport default MyMCP.serve("/mcp");
 ```
 
 This is the simplest way to deploy an MCP server — about 15 lines of code. The `serve()` method handles Streamable HTTP transport automatically.
@@ -207,127 +91,57 @@ This is the simplest way to deploy an MCP server — about 15 lines of code. The
 
 When using the [OAuth Provider Library ↗](https://github.com/cloudflare/workers-oauth-provider), pass your MCP server to `apiHandlers`:
 
-* [  JavaScript ](#tab-panel-5697)
-* [  TypeScript ](#tab-panel-5698)
+* [  JavaScript ](#tab-panel-5771)
+* [  TypeScript ](#tab-panel-5772)
 
 JavaScript
 
 ```
-
 import { OAuthProvider } from "@cloudflare/workers-oauth-provider";
-
-
-export default new OAuthProvider({
-
-  apiHandlers: { "/mcp": MyMCP.serve("/mcp") },
-
-  authorizeEndpoint: "/authorize",
-
-  tokenEndpoint: "/token",
-
-  clientRegistrationEndpoint: "/register",
-
-  defaultHandler: AuthHandler,
-
-});
-
-
+export default new OAuthProvider({  apiHandlers: { "/mcp": MyMCP.serve("/mcp") },  authorizeEndpoint: "/authorize",  tokenEndpoint: "/token",  clientRegistrationEndpoint: "/register",  defaultHandler: AuthHandler,});
 ```
 
 TypeScript
 
 ```
-
 import { OAuthProvider } from "@cloudflare/workers-oauth-provider";
-
-
-export default new OAuthProvider({
-
-  apiHandlers: { "/mcp": MyMCP.serve("/mcp") },
-
-  authorizeEndpoint: "/authorize",
-
-  tokenEndpoint: "/token",
-
-  clientRegistrationEndpoint: "/register",
-
-  defaultHandler: AuthHandler,
-
-});
-
-
+export default new OAuthProvider({  apiHandlers: { "/mcp": MyMCP.serve("/mcp") },  authorizeEndpoint: "/authorize",  tokenEndpoint: "/token",  clientRegistrationEndpoint: "/register",  defaultHandler: AuthHandler,});
 ```
 
 ## Data jurisdiction
 
 For GDPR and data residency compliance, specify a jurisdiction to ensure your MCP server instances run in specific regions:
 
-* [  JavaScript ](#tab-panel-5695)
-* [  TypeScript ](#tab-panel-5696)
+* [  JavaScript ](#tab-panel-5769)
+* [  TypeScript ](#tab-panel-5770)
 
 JavaScript
 
 ```
-
-// EU jurisdiction for GDPR compliance
-
-export default MyMCP.serve("/mcp", { jurisdiction: "eu" });
-
-
+// EU jurisdiction for GDPR complianceexport default MyMCP.serve("/mcp", { jurisdiction: "eu" });
 ```
 
 TypeScript
 
 ```
-
-// EU jurisdiction for GDPR compliance
-
-export default MyMCP.serve("/mcp", { jurisdiction: "eu" });
-
-
+// EU jurisdiction for GDPR complianceexport default MyMCP.serve("/mcp", { jurisdiction: "eu" });
 ```
 
 With OAuth:
 
-* [  JavaScript ](#tab-panel-5701)
-* [  TypeScript ](#tab-panel-5702)
+* [  JavaScript ](#tab-panel-5775)
+* [  TypeScript ](#tab-panel-5776)
 
 JavaScript
 
 ```
-
-export default new OAuthProvider({
-
-  apiHandlers: {
-
-    "/mcp": MyMCP.serve("/mcp", { jurisdiction: "eu" }),
-
-  },
-
-  // ... other OAuth config
-
-});
-
-
+export default new OAuthProvider({  apiHandlers: {    "/mcp": MyMCP.serve("/mcp", { jurisdiction: "eu" }),  },  // ... other OAuth config});
 ```
 
 TypeScript
 
 ```
-
-export default new OAuthProvider({
-
-  apiHandlers: {
-
-    "/mcp": MyMCP.serve("/mcp", { jurisdiction: "eu" }),
-
-  },
-
-  // ... other OAuth config
-
-});
-
-
+export default new OAuthProvider({  apiHandlers: {    "/mcp": MyMCP.serve("/mcp", { jurisdiction: "eu" }),  },  // ... other OAuth config});
 ```
 
 When you specify `jurisdiction: "eu"`:
@@ -353,31 +167,21 @@ Hibernation is enabled by default and requires no additional configuration.
 
 `DurableObjectEventStore` is exported from `agents/mcp` for stateful `WorkerTransport` callers that embed the transport inside an Agent or Durable Object:
 
-* [  JavaScript ](#tab-panel-5699)
-* [  TypeScript ](#tab-panel-5700)
+* [  JavaScript ](#tab-panel-5773)
+* [  TypeScript ](#tab-panel-5774)
 
 JavaScript
 
 ```
-
 import { DurableObjectEventStore } from "agents/mcp";
-
-
 const eventStore = new DurableObjectEventStore(this.ctx.storage);
-
-
 ```
 
 TypeScript
 
 ```
-
 import { DurableObjectEventStore } from "agents/mcp";
-
-
 const eventStore = new DurableObjectEventStore(this.ctx.storage);
-
-
 ```
 
 Refer to [MCP Transport](https://developers.cloudflare.com/agents/model-context-protocol/protocol/transport/) for transport configuration.
@@ -409,188 +213,32 @@ Currently, each client session is backed by an instance of the `McpAgent` class.
 
 For example, the following code implements an MCP server that remembers a counter value, and updates the counter when the `add` tool is called:
 
-* [  JavaScript ](#tab-panel-5709)
-* [  TypeScript ](#tab-panel-5710)
+* [  JavaScript ](#tab-panel-5783)
+* [  TypeScript ](#tab-panel-5784)
 
 JavaScript
 
 ```
-
-import { McpAgent } from "agents/mcp";
-
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-
-import { z } from "zod";
-
-
-export class MyMCP extends McpAgent {
-
-  server = new McpServer({
-
-    name: "Demo",
-
-    version: "1.0.0",
-
-  });
-
-
-  initialState = {
-
-    counter: 1,
-
-  };
-
-
-  async init() {
-
-    this.server.resource(`counter`, `mcp://resource/counter`, (uri) => {
-
-      return {
-
-        contents: [{ uri: uri.href, text: String(this.state.counter) }],
-
-      };
-
-    });
-
-
-    this.server.tool(
-
-      "add",
-
-      "Add to the counter, stored in the MCP",
-
-      { a: z.number() },
-
-      async ({ a }) => {
-
-        this.setState({ ...this.state, counter: this.state.counter + a });
-
-
-        return {
-
-          content: [
-
-            {
-
-              type: "text",
-
-              text: String(`Added ${a}, total is now ${this.state.counter}`),
-
-            },
-
-          ],
-
-        };
-
-      },
-
-    );
-
-  }
-
-
-  onStateChanged(state) {
-
-    console.log({ stateUpdate: state });
-
-  }
-
-}
-
-
+import { McpAgent } from "agents/mcp";import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";import { z } from "zod";
+export class MyMCP extends McpAgent {  server = new McpServer({    name: "Demo",    version: "1.0.0",  });
+  initialState = {    counter: 1,  };
+  async init() {    this.server.resource(`counter`, `mcp://resource/counter`, (uri) => {      return {        contents: [{ uri: uri.href, text: String(this.state.counter) }],      };    });
+    this.server.tool(      "add",      "Add to the counter, stored in the MCP",      { a: z.number() },      async ({ a }) => {        this.setState({ ...this.state, counter: this.state.counter + a });
+        return {          content: [            {              type: "text",              text: String(`Added ${a}, total is now ${this.state.counter}`),            },          ],        };      },    );  }
+  onStateChanged(state) {    console.log({ stateUpdate: state });  }}
 ```
 
 TypeScript
 
 ```
-
-import { McpAgent } from "agents/mcp";
-
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-
-import { z } from "zod";
-
-
+import { McpAgent } from "agents/mcp";import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";import { z } from "zod";
 type State = { counter: number };
-
-
-export class MyMCP extends McpAgent<Env, State, {}> {
-
-  server = new McpServer({
-
-    name: "Demo",
-
-    version: "1.0.0",
-
-  });
-
-
-  initialState: State = {
-
-    counter: 1,
-
-  };
-
-
-  async init() {
-
-    this.server.resource(`counter`, `mcp://resource/counter`, (uri) => {
-
-      return {
-
-        contents: [{ uri: uri.href, text: String(this.state.counter) }],
-
-      };
-
-    });
-
-
-    this.server.tool(
-
-      "add",
-
-      "Add to the counter, stored in the MCP",
-
-      { a: z.number() },
-
-      async ({ a }) => {
-
-        this.setState({ ...this.state, counter: this.state.counter + a });
-
-
-        return {
-
-          content: [
-
-            {
-
-              type: "text",
-
-              text: String(`Added ${a}, total is now ${this.state.counter}`),
-
-            },
-
-          ],
-
-        };
-
-      },
-
-    );
-
-  }
-
-
-  onStateChanged(state: State) {
-
-    console.log({ stateUpdate: state });
-
-  }
-
-}
-
-
+export class MyMCP extends McpAgent<Env, State, {}> {  server = new McpServer({    name: "Demo",    version: "1.0.0",  });
+  initialState: State = {    counter: 1,  };
+  async init() {    this.server.resource(`counter`, `mcp://resource/counter`, (uri) => {      return {        contents: [{ uri: uri.href, text: String(this.state.counter) }],      };    });
+    this.server.tool(      "add",      "Add to the counter, stored in the MCP",      { a: z.number() },      async ({ a }) => {        this.setState({ ...this.state, counter: this.state.counter + a });
+        return {          content: [            {              type: "text",              text: String(`Added ${a}, total is now ${this.state.counter}`),            },          ],        };      },    );  }
+  onStateChanged(state: State) {    console.log({ stateUpdate: state });  }}
 ```
 
 ## Elicitation (human-in-the-loop)
@@ -617,270 +265,34 @@ Request structured input from the user during tool execution.
 
 **Returns:** `Promise<{ action: "accept" | "decline", content?: object }>`
 
-* [  JavaScript ](#tab-panel-5711)
-* [  TypeScript ](#tab-panel-5712)
+* [  JavaScript ](#tab-panel-5785)
+* [  TypeScript ](#tab-panel-5786)
 
 JavaScript
 
 ```
-
-import { McpAgent } from "agents/mcp";
-
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-
-import { z } from "zod";
-
-
-export class CounterMCP extends McpAgent {
-
-  server = new McpServer({
-
-    name: "counter-server",
-
-    version: "1.0.0",
-
-  });
-
-
+import { McpAgent } from "agents/mcp";import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";import { z } from "zod";
+export class CounterMCP extends McpAgent {  server = new McpServer({    name: "counter-server",    version: "1.0.0",  });
   initialState = { counter: 0 };
-
-
-  async init() {
-
-    this.server.tool(
-
-      "increase-counter",
-
-      "Increase the counter by a user-specified amount",
-
-      { confirm: z.boolean().describe("Do you want to increase the counter?") },
-
-      async ({ confirm }, extra) => {
-
-        if (!confirm) {
-
-          return { content: [{ type: "text", text: "Cancelled." }] };
-
-        }
-
-
-        // Request additional input from the user
-
-        const userInput = await this.server.server.elicitInput(
-
-          {
-
-            message: "By how much do you want to increase the counter?",
-
-            requestedSchema: {
-
-              type: "object",
-
-              properties: {
-
-                amount: {
-
-                  type: "number",
-
-                  title: "Amount",
-
-                  description: "The amount to increase the counter by",
-
-                },
-
-              },
-
-              required: ["amount"],
-
-            },
-
-          },
-
-          { relatedRequestId: extra.requestId },
-
-        );
-
-
-        // Check if user accepted or cancelled
-
-        if (userInput.action !== "accept" || !userInput.content) {
-
-          return { content: [{ type: "text", text: "Cancelled." }] };
-
-        }
-
-
-        // Use the input
-
-        const amount = Number(userInput.content.amount);
-
-        this.setState({
-
-          ...this.state,
-
-          counter: this.state.counter + amount,
-
-        });
-
-
-        return {
-
-          content: [
-
-            {
-
-              type: "text",
-
-              text: `Counter increased by ${amount}, now at ${this.state.counter}`,
-
-            },
-
-          ],
-
-        };
-
-      },
-
-    );
-
-  }
-
-}
-
-
+  async init() {    this.server.tool(      "increase-counter",      "Increase the counter by a user-specified amount",      { confirm: z.boolean().describe("Do you want to increase the counter?") },      async ({ confirm }, extra) => {        if (!confirm) {          return { content: [{ type: "text", text: "Cancelled." }] };        }
+        // Request additional input from the user        const userInput = await this.server.server.elicitInput(          {            message: "By how much do you want to increase the counter?",            requestedSchema: {              type: "object",              properties: {                amount: {                  type: "number",                  title: "Amount",                  description: "The amount to increase the counter by",                },              },              required: ["amount"],            },          },          { relatedRequestId: extra.requestId },        );
+        // Check if user accepted or cancelled        if (userInput.action !== "accept" || !userInput.content) {          return { content: [{ type: "text", text: "Cancelled." }] };        }
+        // Use the input        const amount = Number(userInput.content.amount);        this.setState({          ...this.state,          counter: this.state.counter + amount,        });
+        return {          content: [            {              type: "text",              text: `Counter increased by ${amount}, now at ${this.state.counter}`,            },          ],        };      },    );  }}
 ```
 
 TypeScript
 
 ```
-
-import { McpAgent } from "agents/mcp";
-
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-
-import { z } from "zod";
-
-
+import { McpAgent } from "agents/mcp";import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";import { z } from "zod";
 type State = { counter: number };
-
-
-export class CounterMCP extends McpAgent<Env, State, {}> {
-
-  server = new McpServer({
-
-    name: "counter-server",
-
-    version: "1.0.0",
-
-  });
-
-
+export class CounterMCP extends McpAgent<Env, State, {}> {  server = new McpServer({    name: "counter-server",    version: "1.0.0",  });
   initialState: State = { counter: 0 };
-
-
-  async init() {
-
-    this.server.tool(
-
-      "increase-counter",
-
-      "Increase the counter by a user-specified amount",
-
-      { confirm: z.boolean().describe("Do you want to increase the counter?") },
-
-      async ({ confirm }, extra) => {
-
-        if (!confirm) {
-
-          return { content: [{ type: "text", text: "Cancelled." }] };
-
-        }
-
-
-        // Request additional input from the user
-
-        const userInput = await this.server.server.elicitInput(
-
-          {
-
-            message: "By how much do you want to increase the counter?",
-
-            requestedSchema: {
-
-              type: "object",
-
-              properties: {
-
-                amount: {
-
-                  type: "number",
-
-                  title: "Amount",
-
-                  description: "The amount to increase the counter by",
-
-                },
-
-              },
-
-              required: ["amount"],
-
-            },
-
-          },
-
-          { relatedRequestId: extra.requestId },
-
-        );
-
-
-        // Check if user accepted or cancelled
-
-        if (userInput.action !== "accept" || !userInput.content) {
-
-          return { content: [{ type: "text", text: "Cancelled." }] };
-
-        }
-
-
-        // Use the input
-
-        const amount = Number(userInput.content.amount);
-
-        this.setState({
-
-          ...this.state,
-
-          counter: this.state.counter + amount,
-
-        });
-
-
-        return {
-
-          content: [
-
-            {
-
-              type: "text",
-
-              text: `Counter increased by ${amount}, now at ${this.state.counter}`,
-
-            },
-
-          ],
-
-        };
-
-      },
-
-    );
-
-  }
-
-}
-
-
+  async init() {    this.server.tool(      "increase-counter",      "Increase the counter by a user-specified amount",      { confirm: z.boolean().describe("Do you want to increase the counter?") },      async ({ confirm }, extra) => {        if (!confirm) {          return { content: [{ type: "text", text: "Cancelled." }] };        }
+        // Request additional input from the user        const userInput = await this.server.server.elicitInput(          {            message: "By how much do you want to increase the counter?",            requestedSchema: {              type: "object",              properties: {                amount: {                  type: "number",                  title: "Amount",                  description: "The amount to increase the counter by",                },              },              required: ["amount"],            },          },          { relatedRequestId: extra.requestId },        );
+        // Check if user accepted or cancelled        if (userInput.action !== "accept" || !userInput.content) {          return { content: [{ type: "text", text: "Cancelled." }] };        }
+        // Use the input        const amount = Number(userInput.content.amount);        this.setState({          ...this.state,          counter: this.state.counter + amount,        });
+        return {          content: [            {              type: "text",              text: `Counter increased by ${amount}, now at ${this.state.counter}`,            },          ],        };      },    );  }}
 ```
 
 ### JSON Schema for forms
@@ -890,147 +302,28 @@ The `requestedSchema` defines the form structure shown to the user:
 TypeScript
 
 ```
-
-const schema = {
-
-  type: "object",
-
-  properties: {
-
-    // Text input
-
-    name: {
-
-      type: "string",
-
-      title: "Name",
-
-      description: "Enter your name",
-
-    },
-
-    // Number input
-
-    amount: {
-
-      type: "number",
-
-      title: "Amount",
-
-      minimum: 1,
-
-      maximum: 100,
-
-    },
-
-    // Boolean (checkbox)
-
-    confirm: {
-
-      type: "boolean",
-
-      title: "I confirm this action",
-
-    },
-
-    // Enum (dropdown)
-
-    priority: {
-
-      type: "string",
-
-      enum: ["low", "medium", "high"],
-
-      title: "Priority",
-
-    },
-
-  },
-
-  required: ["name", "amount"],
-
-};
-
-
+const schema = {  type: "object",  properties: {    // Text input    name: {      type: "string",      title: "Name",      description: "Enter your name",    },    // Number input    amount: {      type: "number",      title: "Amount",      minimum: 1,      maximum: 100,    },    // Boolean (checkbox)    confirm: {      type: "boolean",      title: "I confirm this action",    },    // Enum (dropdown)    priority: {      type: "string",      enum: ["low", "medium", "high"],      title: "Priority",    },  },  required: ["name", "amount"],};
 ```
 
 ### Handling responses
 
-* [  JavaScript ](#tab-panel-5707)
-* [  TypeScript ](#tab-panel-5708)
+* [  JavaScript ](#tab-panel-5781)
+* [  TypeScript ](#tab-panel-5782)
 
 JavaScript
 
 ```
-
-const result = await this.server.server.elicitInput(
-
-  { message: "Confirm action", requestedSchema: schema },
-
-  { relatedRequestId: extra.requestId },
-
-);
-
-
-switch (result.action) {
-
-  case "accept":
-
-    // User submitted the form
-
-    const { name, amount } = result.content;
-
-    // Process the input...
-
-    break;
-
-
-  case "decline":
-
-    // User cancelled
-
-    return { content: [{ type: "text", text: "Operation cancelled." }] };
-
-}
-
-
+const result = await this.server.server.elicitInput(  { message: "Confirm action", requestedSchema: schema },  { relatedRequestId: extra.requestId },);
+switch (result.action) {  case "accept":    // User submitted the form    const { name, amount } = result.content;    // Process the input...    break;
+  case "decline":    // User cancelled    return { content: [{ type: "text", text: "Operation cancelled." }] };}
 ```
 
 TypeScript
 
 ```
-
-const result = await this.server.server.elicitInput(
-
-  { message: "Confirm action", requestedSchema: schema },
-
-  { relatedRequestId: extra.requestId },
-
-);
-
-
-switch (result.action) {
-
-  case "accept":
-
-    // User submitted the form
-
-    const { name, amount } = result.content as { name: string; amount: number };
-
-    // Process the input...
-
-    break;
-
-
-  case "decline":
-
-    // User cancelled
-
-    return { content: [{ type: "text", text: "Operation cancelled." }] };
-
-}
-
-
+const result = await this.server.server.elicitInput(  { message: "Confirm action", requestedSchema: schema },  { relatedRequestId: extra.requestId },);
+switch (result.action) {  case "accept":    // User submitted the form    const { name, amount } = result.content as { name: string; amount: number };    // Process the input...    break;
+  case "decline":    // User cancelled    return { content: [{ type: "text", text: "Operation cancelled." }] };}
 ```
 
 MCP client support
@@ -1049,7 +342,7 @@ For more human-in-the-loop patterns including workflow-based approval, refer to 
 
 [ Securing MCP servers ](https://developers.cloudflare.com/agents/model-context-protocol/guides/securing-mcp-server/) Security best practices for production. 
 
-[ createMcpHandler ](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/) Build stateless MCP servers. 
+[ createMcpHandler ](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/) Build stateless MCP servers.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/#page","headline":"McpAgent · Cloudflare Agents docs","description":"Build stateful MCP servers on Cloudflare by extending the McpAgent class with persistent storage and agent capabilities.","url":"https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}

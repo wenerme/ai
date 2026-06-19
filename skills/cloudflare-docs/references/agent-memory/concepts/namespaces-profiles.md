@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agent-memory/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,22 +33,7 @@ Sessions are scoped to a profile. Two different profiles can use the same sessio
 Conceptually, memories are scoped as `namespace > profile > memory`. No data crosses these boundaries:
 
 ```
-
-Namespace: my-assistant-prod
-
-  Profile: alice
-
-    Memories
-
-    Messages
-
-  Profile: bob
-
-    Memories
-
-    Messages
-
-
+Namespace: my-assistant-prod  Profile: alice    Memories    Messages  Profile: bob    Memories    Messages
 ```
 
 A `recall()` on Alice's profile never returns memories from Bob's profile. Each profile is a self-contained memory system.

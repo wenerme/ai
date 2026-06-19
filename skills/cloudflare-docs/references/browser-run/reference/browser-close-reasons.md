@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -39,36 +39,7 @@ Sessions can close at any time due to infrastructure events, network issues, or 
 JavaScript
 
 ```
-
-async function runBrowser(env) {
-
-  let browser;
-
-  try {
-
-    browser = await puppeteer.launch(env.MYBROWSER);
-
-    const page = await browser.newPage();
-
-    await page.goto("https://example.com");
-
-    // Your browser automation logic
-
-  } catch (error) {
-
-    console.error("Browser session ended unexpectedly:", error.message);
-
-    // Retry or return an error response
-
-  } finally {
-
-    await browser?.close();
-
-  }
-
-}
-
-
+async function runBrowser(env) {  let browser;  try {    browser = await puppeteer.launch(env.MYBROWSER);    const page = await browser.newPage();    await page.goto("https://example.com");    // Your browser automation logic  } catch (error) {    console.error("Browser session ended unexpectedly:", error.message);    // Retry or return an error response  } finally {    await browser?.close();  }}
 ```
 
 For long-running or critical workflows, consider adding retry logic:
@@ -76,28 +47,7 @@ For long-running or critical workflows, consider adding retry logic:
 JavaScript
 
 ```
-
-async function runWithRetry(env, maxRetries = 3) {
-
-  for (let attempt = 1; attempt <= maxRetries; attempt++) {
-
-    try {
-
-      return await runBrowser(env);
-
-    } catch (error) {
-
-      if (attempt === maxRetries) throw error;
-
-      console.log(`Attempt ${attempt} failed, retrying...`);
-
-    }
-
-  }
-
-}
-
-
+async function runWithRetry(env, maxRetries = 3) {  for (let attempt = 1; attempt <= maxRetries; attempt++) {    try {      return await runBrowser(env);    } catch (error) {      if (attempt === maxRetries) throw error;      console.log(`Attempt ${attempt} failed, retrying...`);    }  }}
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -40,72 +40,34 @@ What you get by default:
 * **Visibility.** Worker egress shows up in Gateway [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/), [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/), and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) logs alongside your other traffic, so you can audit what your Workers are calling and when.
 * **Enforcement.** Any existing Gateway policy whose selectors match a Worker request will apply — including allow / block lists, DNS category filtering, and HTTP destination rules. If you have already blocked a category for your workforce, your Workers inherit that block.
 
-* [  wrangler.jsonc ](#tab-panel-7178)
-* [  wrangler.toml ](#tab-panel-7179)
+* [  wrangler.jsonc ](#tab-panel-7254)
+* [  wrangler.toml ](#tab-panel-7255)
 
 JSONC
 
 ```
-
-{
-
-  "vpc_networks": [
-
-    {
-
-      "binding": "EGRESS",
-
-      "network_id": "cf1:network",
-
-      "remote": true,
-
-    },
-
-  ],
-
-}
-
-
+{  "vpc_networks": [    {      "binding": "EGRESS",      "network_id": "cf1:network",      "remote": true,    },  ],}
 ```
 
 TOML
 
 ```
-
-[[vpc_networks]]
-
-binding = "EGRESS"
-
-network_id = "cf1:network"
-
-remote = true
-
-
+[[vpc_networks]]binding = "EGRESS"network_id = "cf1:network"remote = true
 ```
 
-* [  JavaScript ](#tab-panel-7180)
-* [  TypeScript ](#tab-panel-7181)
+* [  JavaScript ](#tab-panel-7256)
+* [  TypeScript ](#tab-panel-7257)
 
 JavaScript
 
 ```
-
-// Egress to a public destination — subject to your Gateway policies and logged
-
-const response = await env.EGRESS.fetch("https://api.example.com/data");
-
-
+// Egress to a public destination — subject to your Gateway policies and loggedconst response = await env.EGRESS.fetch("https://api.example.com/data");
 ```
 
 TypeScript
 
 ```
-
-// Egress to a public destination — subject to your Gateway policies and logged
-
-const response = await env.EGRESS.fetch("https://api.example.com/data");
-
-
+// Egress to a public destination — subject to your Gateway policies and loggedconst response = await env.EGRESS.fetch("https://api.example.com/data");
 ```
 
 For configuration options, refer to [VPC Networks](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/). For policy authoring, refer to [Cloudflare Gateway traffic policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/).
@@ -233,7 +195,7 @@ We're announcing the public beta of **Organizations** for enterprise customers, 
 
 **Self-serve onboarding**: Enterprise customers can [create an Organization](https://developers.cloudflare.com/fundamentals/organizations/setup/) in the dashboard and assign accounts where they are already Super Administrators.
 
-**Centralized Account Management**: At launch, every Organization member has the Organization Super Admin role. Organization Super Admins can invite other users and manage any child account under the Organization implicitly.**Shared policies**: Share [WAF](https://developers.cloudflare.com/waf/custom-rules/) or [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/tiered-policies/organizations/) policies across multiple accounts within your Organization to simplify centralized policy management.**Implicit access**: Members of an Organization automatically receive Super Administrator permissions across child accounts, removing the need for explicit membership on each account. Additional Org-level roles will be available over the course of the year.
+**Centralized Account Management**: At launch, every Organization member has the Organization Super Admin role. Organization Super Admins can invite other users and manage any child account under the Organization implicitly. **Shared policies**: Share [WAF](https://developers.cloudflare.com/waf/custom-rules/) or [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/tiered-policies/organizations/) policies across multiple accounts within your Organization to simplify centralized policy management. **Implicit access**: Members of an Organization automatically receive Super Administrator permissions across child accounts, removing the need for explicit membership on each account. Additional Org-level roles will be available over the course of the year.
 
 **Unified analytics**: View, filter, and download aggregate HTTP analytics across all Organization child accounts from a single dashboard for centralized visibility into traffic patterns and security events.
 
@@ -733,7 +695,7 @@ Cloudflare One administrators can now control which egress IP is used based on a
 
 * Host, Domain, Content Categories, and Application selectors are now available in the Gateway Egress policy builder in beta.
 * During the beta period, you can use these selectors with traffic on-ramped to Gateway with the WARP client, proxy endpoints (commonly deployed with PAC files), or Cloudflare Browser Isolation.  
-   * For WARP client support, additional configuration is required. For more information, refer to the [WARP client configuration documentation](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/#limitations).
+  * For WARP client support, additional configuration is required. For more information, refer to the [WARP client configuration documentation](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/#limitations).
 ![Egress by FQDN and Hostname](https://developers.cloudflare.com/_astro/Gateway-Egress-FQDN-Policy-preview.Civon5p8_Z2hcuQE.webp) 
 
 This will help apply egress IPs to your users' traffic when an upstream application or network requires it, while the rest of their traffic can take the most performant egress path.

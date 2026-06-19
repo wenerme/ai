@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,20 +33,7 @@ If that is not what your website needs, and instead you want to set the default 
 JavaScript
 
 ```
-
-zaraz.set("google_consent_default",  {
-
-  'ad_storage': 'denied',
-
-  'ad_user_data': 'denied',
-
-  'ad_personalization': 'denied',
-
-  'analytics_storage': 'denied'
-
-})
-
-
+zaraz.set("google_consent_default",  {  'ad_storage': 'denied',  'ad_user_data': 'denied',  'ad_personalization': 'denied',  'analytics_storage': 'denied'})
 ```
 
 After the above code is executed, the consent status will be saved to `localStorage` and will be included with every subsequent Zaraz event.
@@ -60,20 +47,7 @@ After the user has provided their consent preferences you can set the new status
 JavaScript
 
 ```
-
-zaraz.set("google_consent_update",  {
-
-  'ad_storage': 'granted',
-
-  'ad_user_data': 'denied',
-
-  'ad_personalization': 'granted',
-
-  'analytics_storage': 'denied'
-
-})
-
-
+zaraz.set("google_consent_update",  {  'ad_storage': 'granted',  'ad_user_data': 'denied',  'ad_personalization': 'granted',  'analytics_storage': 'denied'})
 ```
 
 All subsequent events will include the information about both the default and the updated consent status.

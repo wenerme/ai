@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,57 +28,8 @@ Each entry in the array specifies an overlay and its options, including [optimiz
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request) {
-
-    const imageURL = "https://example.com/image.png";
-
-
-    return fetch(imageURL, {
-
-      cf: {
-
-        image: {
-
-          width: 800,
-
-          height: 600,
-
-          draw: [
-
-            {
-
-              url: "https://example.com/branding/logo.png",
-
-              bottom: 5,
-
-              right: 5,
-
-              fit: "contain",
-
-              width: 100,
-
-              height: 50,
-
-              opacity: 0.8,
-
-            },
-
-          ],
-
-        },
-
-      },
-
-    });
-
-  },
-
-};
-
-
+export default {  async fetch(request) {    const imageURL = "https://example.com/image.png";
+    return fetch(imageURL, {      cf: {        image: {          width: 800,          height: 600,          draw: [            {              url: "https://example.com/branding/logo.png",              bottom: 5,              right: 5,              fit: "contain",              width: 100,              height: 50,              opacity: 0.8,            },          ],        },      },    });  },};
 ```
 
 ## Draw with the Images binding
@@ -90,42 +41,9 @@ Pass the overlay image as the first argument, then the draw options as the secon
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const img = await fetch("https://zzzdna.com/blue.png");
-
-    const watermark = await fetch("https://zzzdna.com/purple.png");
-
-
-    const response = (
-
-      await env.IMAGES
-
-        .input(img.body)
-
-        .draw(
-
-          env.IMAGES.input(watermark.body).transform({ width: 100 }),
-
-          { bottom: 10, right: 10, opacity: 0.5 }
-
-        )
-
-        .output({ format: "image/avif" })
-
-    ).response();
-
-
-    return response;
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const img = await fetch("https://zzzdna.com/blue.png");    const watermark = await fetch("https://zzzdna.com/purple.png");
+    const response = (      await env.IMAGES        .input(img.body)        .draw(          env.IMAGES.input(watermark.body).transform({ width: 100 }),          { bottom: 10, right: 10, opacity: 0.5 }        )        .output({ format: "image/avif" })    ).response();
+    return response;  },};
 ```
 
 ## Options
@@ -227,34 +145,7 @@ Tile a semitransparent watermark across the entire image using `cf.image`.
 JavaScript
 
 ```
-
-fetch(imageURL, {
-
-  cf: {
-
-    image: {
-
-      draw: [
-
-        {
-
-          url: "https://example.com/watermark.png",
-
-          repeat: true,
-
-          opacity: 0.2,
-
-        },
-
-      ],
-
-    },
-
-  },
-
-});
-
-
+fetch(imageURL, {  cf: {    image: {      draw: [        {          url: "https://example.com/watermark.png",          repeat: true,          opacity: 0.2,        },      ],    },  },});
 ```
 
 ### Logo in the corner
@@ -264,34 +155,7 @@ Position a logo at the bottom-right corner using `cf.image`.
 JavaScript
 
 ```
-
-fetch(imageURL, {
-
-  cf: {
-
-    image: {
-
-      draw: [
-
-        {
-
-          url: "https://example.com/logo.png",
-
-          bottom: 5,
-
-          right: 5,
-
-        },
-
-      ],
-
-    },
-
-  },
-
-});
-
-
+fetch(imageURL, {  cf: {    image: {      draw: [        {          url: "https://example.com/logo.png",          bottom: 5,          right: 5,        },      ],    },  },});
 ```
 
 ### Multiple overlays
@@ -301,30 +165,7 @@ Combine multiple overlays in one request using `cf.image`. They are drawn in ord
 JavaScript
 
 ```
-
-fetch(imageURL, {
-
-  cf: {
-
-    image: {
-
-      draw: [
-
-        { url: "https://example.com/watermark.png", repeat: true, opacity: 0.2 },
-
-        { url: "https://example.com/play-button.png" },
-
-        { url: "https://example.com/logo.png", bottom: 5, right: 5 },
-
-      ],
-
-    },
-
-  },
-
-});
-
-
+fetch(imageURL, {  cf: {    image: {      draw: [        { url: "https://example.com/watermark.png", repeat: true, opacity: 0.2 },        { url: "https://example.com/play-button.png" },        { url: "https://example.com/logo.png", bottom: 5, right: 5 },      ],    },  },});
 ```
 
 ### Rounded corners
@@ -336,71 +177,10 @@ The example below shows how this can be done using the [Images binding](https://
 TypeScript
 
 ```
-
-const image = await fetch("https://example.com/photo.png");
-
-const mask = await fetch("https://example.com/corner-mask.png");
-
-
-let [topLeft, topRight] = mask.body.tee();
-
-let bottomLeft, bottomRight;
-
-[topLeft, bottomLeft] = topLeft.tee();
-
-[topLeft, bottomRight] = topLeft.tee();
-
-
-const output = await env.IMAGES
-
-  .input(image.body)
-
-  .draw(env.IMAGES.input(topLeft).transform({ rotate: 0 }), {
-
-    left: 0,
-
-    top: 0,
-
-    composite: "xor",
-
-  })
-
-  .draw(env.IMAGES.input(topRight).transform({ rotate: 90 }), {
-
-    right: 0,
-
-    top: 0,
-
-    composite: "xor",
-
-  })
-
-  .draw(env.IMAGES.input(bottomRight).transform({ rotate: 180 }), {
-
-    bottom: 0,
-
-    right: 0,
-
-    composite: "xor",
-
-  })
-
-  .draw(env.IMAGES.input(bottomLeft).transform({ rotate: 270 }), {
-
-    bottom: 0,
-
-    left: 0,
-
-    composite: "xor",
-
-  })
-
-  .output({ format: "image/png" });
-
-
+const image = await fetch("https://example.com/photo.png");const mask = await fetch("https://example.com/corner-mask.png");
+let [topLeft, topRight] = mask.body.tee();let bottomLeft, bottomRight;[topLeft, bottomLeft] = topLeft.tee();[topLeft, bottomRight] = topLeft.tee();
+const output = await env.IMAGES  .input(image.body)  .draw(env.IMAGES.input(topLeft).transform({ rotate: 0 }), {    left: 0,    top: 0,    composite: "xor",  })  .draw(env.IMAGES.input(topRight).transform({ rotate: 90 }), {    right: 0,    top: 0,    composite: "xor",  })  .draw(env.IMAGES.input(bottomRight).transform({ rotate: 180 }), {    bottom: 0,    right: 0,    composite: "xor",  })  .draw(env.IMAGES.input(bottomLeft).transform({ rotate: 270 }), {    bottom: 0,    left: 0,    composite: "xor",  })  .output({ format: "image/png" });
 return output.response();
-
-
 ```
 
 ```json

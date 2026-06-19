@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -72,8 +72,8 @@ AWS users can configure a [compute account](https://developers.cloudflare.com/cl
 
 File findings for some integrations (such as [Microsoft 365](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/#file-sharing) and [Box](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/box/#file-sharing)) may link to an inaccessible file. To access the actual shared file:
 
-* [ Posture finding ](#tab-panel-7182)
-* [ Content finding ](#tab-panel-7183)
+* [ Posture finding ](#tab-panel-7258)
+* [ Content finding ](#tab-panel-7259)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** \> **Posture Findings**.
 2. Choose **SaaS** or **Cloud**.

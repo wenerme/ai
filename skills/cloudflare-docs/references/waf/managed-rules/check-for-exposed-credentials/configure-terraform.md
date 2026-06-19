@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,57 +35,8 @@ Note
 Terraform code snippets below refer to the v4 SDK only.
 
 ```
-
-resource "cloudflare_ruleset" "account_firewall_custom_ruleset_exposed_creds" {
-
-  account_id  = "<ACCOUNT_ID>"
-
-  name        = "Custom ruleset checking for exposed credentials"
-
-  description = ""
-
-  kind        = "custom"
-
-  phase       = "http_request_firewall_custom"
-
-
-  rules {
-
-    ref         = "check_for_exposed_creds_add_header"
-
-    description = "Add header when there is a rule match and exposed credentials are detected"
-
-    expression  = "http.request.method == \"POST\" && http.request.uri == \"/login.php\""
-
-    action      = "rewrite"
-
-    action_parameters {
-
-      headers {
-
-        name      = "Exposed-Credential-Check"
-
-        operation = "set"
-
-        value     = "1"
-
-      }
-
-    }
-
-    exposed_credential_check {
-
-      username_expression = "url_decode(http.request.body.form[\"username\"][0])"
-
-      password_expression = "url_decode(http.request.body.form[\"password\"][0])"
-
-    }
-
-  }
-
-}
-
-
+resource "cloudflare_ruleset" "account_firewall_custom_ruleset_exposed_creds" {  account_id  = "<ACCOUNT_ID>"  name        = "Custom ruleset checking for exposed credentials"  description = ""  kind        = "custom"  phase       = "http_request_firewall_custom"
+  rules {    ref         = "check_for_exposed_creds_add_header"    description = "Add header when there is a rule match and exposed credentials are detected"    expression  = "http.request.method == \"POST\" && http.request.uri == \"/login.php\""    action      = "rewrite"    action_parameters {      headers {        name      = "Exposed-Credential-Check"        operation = "set"        value     = "1"      }    }    exposed_credential_check {      username_expression = "url_decode(http.request.body.form[\"username\"][0])"      password_expression = "url_decode(http.request.body.form[\"password\"][0])"    }  }}
 ```
 
 To create another rule, add a new `rules` object to the same `cloudflare_ruleset` resource.
@@ -97,44 +48,9 @@ Note
 Terraform code snippets below refer to the v4 SDK only.
 
 ```
-
-resource "cloudflare_ruleset" "account_firewall_custom_entrypoint" {
-
-  account_id  = "<ACCOUNT_ID>"
-
-  name        = "Account-level entry point ruleset for the http_request_firewall_custom phase deploying a custom ruleset checking for exposed credentials"
-
-  description = ""
-
-  kind        = "root"
-
-  phase       = "http_request_firewall_custom"
-
-
+resource "cloudflare_ruleset" "account_firewall_custom_entrypoint" {  account_id  = "<ACCOUNT_ID>"  name        = "Account-level entry point ruleset for the http_request_firewall_custom phase deploying a custom ruleset checking for exposed credentials"  description = ""  kind        = "root"  phase       = "http_request_firewall_custom"
   depends_on = [cloudflare_ruleset.account_firewall_custom_ruleset_exposed_creds]
-
-
-  rules {
-
-    ref         = "deploy_custom_ruleset_example_com"
-
-    description = "Deploy custom ruleset for example.com"
-
-    expression  = "(cf.zone.name eq \"example.com\")"
-
-    action      = "execute"
-
-    action_parameters {
-
-      id = cloudflare_ruleset.account_firewall_custom_ruleset_exposed_creds.id
-
-    }
-
-  }
-
-}
-
-
+  rules {    ref         = "deploy_custom_ruleset_example_com"    description = "Deploy custom ruleset for example.com"    expression  = "(cf.zone.name eq \"example.com\")"    action      = "execute"    action_parameters {      id = cloudflare_ruleset.account_firewall_custom_ruleset_exposed_creds.id    }  }}
 ```
 
 ## More resources

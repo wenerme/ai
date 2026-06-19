@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,14 +18,15 @@ When using Cloudflare DNS, you have a few options for your DNS zone setup:
 * [CNAME setup (Partial)](https://developers.cloudflare.com/dns/zone-setups/partial-setup/): Keep your primary DNS provider and only use Cloudflare's reverse proxy for individual subdomains.
 * [Zone transfers](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/): Use Cloudflare and another DNS provider together across your entire zone to increase availability and fault tolerance. DNS records will be transferred between providers using [AXFR ↗](https://datatracker.ietf.org/doc/html/rfc5936) or [IXFR ↗](https://datatracker.ietf.org/doc/html/rfc1995).
 * [Subdomain setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/): With your apex domain (`example.com`) on a CNAME setup (partial) or primary setup (full), independently manage the settings for a delegated subdomain (`blog.example.com`) within a separate zone and, potentially, a separate account.  
-When configuring a subdomain setup, its availability will depend on both the parent zone setup and the setup used for the child zone. A child zone holds DNS management for a delegated subdomain.  
-| Parent zone                                                                                                                                                                     | Child zone                                                                                             | Available |  
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ | --------- |  
-| [Full](https://developers.cloudflare.com/dns/zone-setups/full-setup/) or [Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/) | [Full](https://developers.cloudflare.com/dns/zone-setups/full-setup/)                                  | Yes       |  
-| [Full](https://developers.cloudflare.com/dns/zone-setups/full-setup/) or [Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/) | [Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/) | Yes       |  
-| [Full](https://developers.cloudflare.com/dns/zone-setups/full-setup/) or [Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/) | [Partial](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)                            | No        |  
-| [Partial](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)                                                                                                     | [Full](https://developers.cloudflare.com/dns/zone-setups/full-setup/)                                  | Yes       |  
-| [Partial](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)                                                                                                     | [Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/) | Yes       |  
+When configuring a subdomain setup, its availability will depend on both the parent zone setup and the setup used for the child zone. A child zone holds DNS management for a delegated subdomain.
+
+| Parent zone                                                                                                                                                                     | Child zone                                                                                             | Available |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ | --------- |
+| [Full](https://developers.cloudflare.com/dns/zone-setups/full-setup/) or [Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/) | [Full](https://developers.cloudflare.com/dns/zone-setups/full-setup/)                                  | Yes       |
+| [Full](https://developers.cloudflare.com/dns/zone-setups/full-setup/) or [Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/) | [Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/) | Yes       |
+| [Full](https://developers.cloudflare.com/dns/zone-setups/full-setup/) or [Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/) | [Partial](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)                            | No        |
+| [Partial](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)                                                                                                     | [Full](https://developers.cloudflare.com/dns/zone-setups/full-setup/)                                  | Yes       |
+| [Partial](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)                                                                                                     | [Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/) | Yes       |
 | [Partial](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)                                                                                                     | [Partial](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)                            | Yes       |  
     
 For details, refer to [setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/setup/).

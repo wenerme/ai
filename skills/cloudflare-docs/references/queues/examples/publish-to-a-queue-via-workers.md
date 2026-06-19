@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,56 +25,20 @@ The following example shows you how to publish messages to a Queue from a Worker
 
 Configure your Wrangler file as follows:
 
-* [  wrangler.jsonc ](#tab-panel-9611)
-* [  wrangler.toml ](#tab-panel-9612)
+* [  wrangler.jsonc ](#tab-panel-9687)
+* [  wrangler.toml ](#tab-panel-9688)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "my-worker",
-
-  "queues": {
-
-    "producers": [
-
-      {
-
-        "queue": "my-queue",
-
-        "binding": "YOUR_QUEUE"
-
-      }
-
-    ]
-
-  }
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-worker",  "queues": {    "producers": [      {        "queue": "my-queue",        "binding": "YOUR_QUEUE"      }    ]  }}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "my-worker"
-
-
-[[queues.producers]]
-
-queue = "my-queue"
-
-binding = "YOUR_QUEUE"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-worker"
+[[queues.producers]]queue = "my-queue"binding = "YOUR_QUEUE"
 ```
 
 ### 1\. Create the Worker
@@ -87,67 +51,10 @@ The following Worker script:
 TypeScript
 
 ```
-
-interface Env {
-
-  YOUR_QUEUE: Queue;
-
-}
-
-
-export default {
-
-  async fetch(req, env, ctx): Promise<Response> {
-
-    // Validate the payload is JSON
-
-    // In a production application, we may more robustly validate the payload
-
-    // against a schema using a library like 'zod'
-
-    let messages;
-
-    try {
-
-      messages = await req.json();
-
-    } catch {
-
-      // Return a HTTP 400 (Bad Request) if the payload isn't JSON
-
-      return Response.json({ error: "payload not valid JSON" }, { status: 400 });
-
-    }
-
-
-    // Publish to the Queue
-
-    try {
-
-      await env.YOUR_QUEUE.send(messages);
-
-    } catch (e) {
-
-      const message = e instanceof Error ? e.message : "Unknown error";
-
-      console.error(`failed to send to the queue: ${message}`);
-
-      // Return a HTTP 500 (Internal Error) if our publish operation fails
-
-      return Response.json({ error: message }, { status: 500 });
-
-    }
-
-
-    // Return a HTTP 200 if the send succeeded!
-
-    return Response.json({ success: true });
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+interface Env {  YOUR_QUEUE: Queue;}
+export default {  async fetch(req, env, ctx): Promise<Response> {    // Validate the payload is JSON    // In a production application, we may more robustly validate the payload    // against a schema using a library like 'zod'    let messages;    try {      messages = await req.json();    } catch {      // Return a HTTP 400 (Bad Request) if the payload isn't JSON      return Response.json({ error: "payload not valid JSON" }, { status: 400 });    }
+    // Publish to the Queue    try {      await env.YOUR_QUEUE.send(messages);    } catch (e) {      const message = e instanceof Error ? e.message : "Unknown error";      console.error(`failed to send to the queue: ${message}`);      // Return a HTTP 500 (Internal Error) if our publish operation fails      return Response.json({ error: message }, { status: 500 });    }
+    // Return a HTTP 200 if the send succeeded!    return Response.json({ success: true });  },} satisfies ExportedHandler<Env>;
 ```
 
 To deploy this Worker:
@@ -155,10 +62,7 @@ To deploy this Worker:
 Terminal window
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 ### 2\. Send a test message
@@ -168,19 +72,11 @@ To make sure you successfully write a message to your queue, use `curl` on the c
 Terminal window
 
 ```
-
-# Make sure to replace the placeholder with your shared secret
-
-curl -XPOST "https://YOUR_WORKER.YOUR_ACCOUNT.workers.dev" --data '{"messages": [{"msg":"hello world"}]}'
-
-
+# Make sure to replace the placeholder with your shared secretcurl -XPOST "https://YOUR_WORKER.YOUR_ACCOUNT.workers.dev" --data '{"messages": [{"msg":"hello world"}]}'
 ```
 
 ```
-
 {"success":true}
-
-
 ```
 
 This will issue a HTTP POST request, and if successful, return a HTTP 200 with a `success: true` response body.

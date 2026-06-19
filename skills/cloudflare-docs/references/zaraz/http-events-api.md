@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,28 +33,7 @@ To avoid getting the API used by unwanted actors, Cloudflare recommends choosing
 The endpoint you have configured for the API will receive `POST` requests with a JSON payload. Below, there is an example payload:
 
 ```
-
-{
-
-  "events": [
-
-    {
-
-      "client": {
-
-        "__zarazTrack": "transaction successful",
-
-        "value": "200"
-
-      }
-
-    }
-
-  ]
-
-}
-
-
+{  "events": [    {      "client": {        "__zarazTrack": "transaction successful",        "value": "200"      }    }  ]}
 ```
 
 The payload must contain an `events` array. Each Event Object in this array corresponds to one event you want Zaraz to process. The above example is similar to calling `zaraz.track('transaction successful', { value: "200" })` using the Web API.
@@ -73,48 +52,7 @@ In addition to the `client` key, you can use the `system` key to include informa
 The same payload from before will resemble the following example, when we add the `system` information:
 
 ```
-
-{
-
-  "events": [
-
-    {
-
-      "client": {
-
-        "__zarazTrack": "transaction successful",
-
-        "value": "200"
-
-      },
-
-      "system": {
-
-        "page": {
-
-          "url": "https://example.com",
-
-          "title": "My website"
-
-        },
-
-        "device": {
-
-          "language": "en-US",
-
-          "ip": "192.168.0.1"
-
-        }
-
-      }
-
-    }
-
-  ]
-
-}
-
-
+{  "events": [    {      "client": {        "__zarazTrack": "transaction successful",        "value": "200"      },      "system": {        "page": {          "url": "https://example.com",          "title": "My website"        },        "device": {          "language": "en-US",          "ip": "192.168.0.1"        }      }    }  ]}
 ```
 
 For all available system keys, refer to the table below:

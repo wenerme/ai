@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,10 +27,7 @@ Create a bucket with the [r2 bucket create](https://developers.cloudflare.com/wo
 Terminal window
 
 ```
-
 wrangler r2 bucket create your-bucket-name
-
-
 ```
 
 Note
@@ -46,10 +43,7 @@ List buckets in the current account with the [r2 bucket list](https://developers
 Terminal window
 
 ```
-
 wrangler r2 bucket list
-
-
 ```
 
 To delete a bucket, you must first empty it and then delete it. For detailed instructions, refer to [Delete buckets](https://developers.cloudflare.com/r2/buckets/delete-buckets/).

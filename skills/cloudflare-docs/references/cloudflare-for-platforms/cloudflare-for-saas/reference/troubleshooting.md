@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -67,27 +67,14 @@ In some circumstances, custom hostnames can also enter a **Moved** state if your
 
 The `caa_error` in the status of a custom hostname means that the CAA records configured on the domain prevented the Certificate Authority to issue the certificate.
 
-You can check which CAA records are configured on a domain using the `dig` command:`dig CAA example.com`
+You can check which CAA records are configured on a domain using the `dig` command: `dig CAA example.com`
 
 You will need to ensure that the required CAA records for the selected Certificate Authority are configured. For example, here are the records required to issue [Let's Encrypt ↗](https://letsencrypt.org/docs/caa/) and [Google Trust Services ↗](https://pki.goog/faq/#caa) certificates:
 
 ```
-
-example.com CAA 0 issue "pki.goog; cansignhttpexchanges=yes"
-
-example.com CAA 0 issuewild "pki.goog; cansignhttpexchanges=yes"
-
-
-example.com CAA 0 issue "letsencrypt.org"
-
-example.com CAA 0 issuewild "letsencrypt.org"
-
-
-example.com CAA 0 issue "ssl.com"
-
-example.com CAA 0 issuewild "ssl.com"
-
-
+example.com CAA 0 issue "pki.goog; cansignhttpexchanges=yes"example.com CAA 0 issuewild "pki.goog; cansignhttpexchanges=yes"
+example.com CAA 0 issue "letsencrypt.org"example.com CAA 0 issuewild "letsencrypt.org"
+example.com CAA 0 issue "ssl.com"example.com CAA 0 issuewild "ssl.com"
 ```
 
 For more details, refer to [CAA records FAQ](https://developers.cloudflare.com/ssl/faq/#caa-records).
@@ -112,18 +99,7 @@ Consider the following solutions:
 Example API call  
 Terminal window  
 ```  
-curl --request PATCH \  
-"https://api.cloudflare.com/client/v4/zones/{zone_id}/custom_hostnames/{custom_hostname_id}" \  
---header "X-Auth-Email: <EMAIL>" \  
---header "X-Auth-Key: <API_KEY>" \  
---header "Content-Type: application/json" \  
---data '{  
-  "ssl": {  
-      "method": "txt",  
-      "type": "dv",  
-      "certificate_authority": ""  
-  }  
-}'  
+curl --request PATCH \"https://api.cloudflare.com/client/v4/zones/{zone_id}/custom_hostnames/{custom_hostname_id}" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "ssl": {      "method": "txt",      "type": "dv",      "certificate_authority": ""  }}'  
 ```
 * Use the [Edit Custom Hostname](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/edit/) endpoint to set the `certificate_authority` parameter to `google`: this sets Google Trust Services as the CA for your custom hostnames. In your API call, make sure to also include `method` and `type` in the `ssl` object.
 * If you are using a custom certificate for your custom hostname, refer to the [custom certificates troubleshooting](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/troubleshooting/#lets-encrypt-chain-update).
@@ -137,10 +113,7 @@ The [zone hold feature](https://developers.cloudflare.com/fundamentals/account/a
 The Common Name (CN) restriction establishes a limit of 64 characters ([RFC 5280 ↗](https://www.rfc-editor.org/rfc/rfc5280.html)). If you have a hostname that exceeds this length, you may find the following error:
 
 ```
-
 Since no host is 64 characters or fewer, Cloudflare Branding is required. Please check your input and try again. (1469)
-
-
 ```
 
 To solve this, you can set `cloudflare_branding` to `true` when [creating your custom hostnames](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/create-custom-hostnames/#hostnames-over-64-characters) via API.

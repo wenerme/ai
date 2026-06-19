@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,18 +33,21 @@ Make sure you have:
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Egress policies**.
 2. Select **Add a policy**.
-3. Name your policy, then add conditions to check users are configured in Microsoft Entra ID. For example, you can check for [identity conditions](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/):  
-| Selector         | Operator | Value                                   |  
-| ---------------- | -------- | --------------------------------------- |  
+3. Name your policy, then add conditions to check users are configured in Microsoft Entra ID. For example, you can check for [identity conditions](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/):
+
+| Selector         | Operator | Value                                   |
+| ---------------- | -------- | --------------------------------------- |
 | User Group Names | in       | Sales and Marketing, Retail, U.S. Sales |  
-Additionally, you can check for [device posture conditions](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/):  
-| Selector                    | Operator | Value                                           | Logic |  
-| --------------------------- | -------- | ----------------------------------------------- | ----- |  
-| Passed Device Posture Check | is       | CrowdStrike Overall ZTA score (Crowdstrike s2s) | And   |  
+Additionally, you can check for [device posture conditions](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/):
+
+| Selector                    | Operator | Value                                           | Logic |
+| --------------------------- | -------- | ----------------------------------------------- | ----- |
+| Passed Device Posture Check | is       | CrowdStrike Overall ZTA score (Crowdstrike s2s) | And   |
 | Passed Device Posture Check | is       | AppCheckMac - Required Software (Application)   |       |
-4. Enable **Use dedicated Cloudflare egress IPs**. Select your desired IPv4 and IPv6 addresses. For example:  
-| Primary IPv4 address | IPv6 address  |  
-| -------------------- | ------------- |  
+4. Enable **Use dedicated Cloudflare egress IPs**. Select your desired IPv4 and IPv6 addresses. For example:
+
+| Primary IPv4 address | IPv6 address  |
+| -------------------- | ------------- |
 | 203.0.113.0          | 2001:db8::/32 |
 
 ## Create a named IP range location in Microsoft Entra ID

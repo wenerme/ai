@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -61,60 +61,20 @@ Before you set up a route, make sure you have a DNS record set up for the [domai
 
 To configure a route using your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), refer to the following example.
 
-* [  wrangler.jsonc ](#tab-panel-11483)
-* [  wrangler.toml ](#tab-panel-11484)
+* [  wrangler.jsonc ](#tab-panel-11500)
+* [  wrangler.toml ](#tab-panel-11501)
 
 JSONC
 
 ```
-
-{
-
-  "routes": [
-
-    {
-
-      "pattern": "subdomain.example.com/*",
-
-      "zone_name": "example.com"
-
-    },
-
-    // or
-
-    {
-
-      "pattern": "subdomain.example.com/*",
-
-      "zone_id": "<YOUR_ZONE_ID>"
-
-    }
-
-  ]
-
-}
-
-
+{  "routes": [    {      "pattern": "subdomain.example.com/*",      "zone_name": "example.com"    },    // or    {      "pattern": "subdomain.example.com/*",      "zone_id": "<YOUR_ZONE_ID>"    }  ]}
 ```
 
 TOML
 
 ```
-
-[[routes]]
-
-pattern = "subdomain.example.com/*"
-
-zone_name = "example.com"
-
-
-[[routes]]
-
-pattern = "subdomain.example.com/*"
-
-zone_id = "<YOUR_ZONE_ID>"
-
-
+[[routes]]pattern = "subdomain.example.com/*"zone_name = "example.com"
+[[routes]]pattern = "subdomain.example.com/*"zone_id = "<YOUR_ZONE_ID>"
 ```
 
 Add the `zone_name` or `zone_id` option after each route. The `zone_name` and `zone_id` options are interchangeable. If using `zone_id`, find your zone ID by:
@@ -125,58 +85,20 @@ Add the `zone_name` or `zone_id` option after each route. The `zone_name` and `z
 
 To add multiple routes:
 
-* [  wrangler.jsonc ](#tab-panel-11485)
-* [  wrangler.toml ](#tab-panel-11486)
+* [  wrangler.jsonc ](#tab-panel-11502)
+* [  wrangler.toml ](#tab-panel-11503)
 
 JSONC
 
 ```
-
-{
-
-  "routes": [
-
-    {
-
-      "pattern": "subdomain.example.com/*",
-
-      "zone_name": "example.com"
-
-    },
-
-    {
-
-      "pattern": "subdomain-two.example.com/example",
-
-      "zone_id": "<YOUR_ZONE_ID>"
-
-    }
-
-  ]
-
-}
-
-
+{  "routes": [    {      "pattern": "subdomain.example.com/*",      "zone_name": "example.com"    },    {      "pattern": "subdomain-two.example.com/example",      "zone_id": "<YOUR_ZONE_ID>"    }  ]}
 ```
 
 TOML
 
 ```
-
-[[routes]]
-
-pattern = "subdomain.example.com/*"
-
-zone_name = "example.com"
-
-
-[[routes]]
-
-pattern = "subdomain-two.example.com/example"
-
-zone_id = "<YOUR_ZONE_ID>"
-
-
+[[routes]]pattern = "subdomain.example.com/*"zone_name = "example.com"
+[[routes]]pattern = "subdomain-two.example.com/example"zone_id = "<YOUR_ZONE_ID>"
 ```
 
 ## Matching behavior
@@ -184,10 +106,7 @@ zone_id = "<YOUR_ZONE_ID>"
 Route patterns look like this:
 
 ```
-
 https://*.example.com/images/*
-
-
 ```
 
 This pattern would match all HTTPS requests destined for a subhost of example.com and whose paths are prefixed by `/images/`.
@@ -195,10 +114,7 @@ This pattern would match all HTTPS requests destined for a subhost of example.co
 A pattern to match all requests looks like this:
 
 ```
-
 *example.com/*
-
-
 ```
 
 While they look similar to a [regex ↗](https://en.wikipedia.org/wiki/Regular%5Fexpression) pattern, route patterns follow specific rules:
@@ -214,12 +130,7 @@ While they look similar to a [regex ↗](https://en.wikipedia.org/wiki/Regular%5
 A route can be specified without being associated with a Worker. This will act to negate any less specific patterns. For example, consider this pair of route patterns, one with a Workers script and one without:
 
 ```
-
-*example.com/images/cat.png -> <no script>
-
-*example.com/images/*       -> worker-script
-
-
+*example.com/images/cat.png -> <no script>*example.com/images/*       -> worker-script
 ```
 
 In this example, all requests destined for example.com and whose paths are prefixed by `/images/` would be routed to `worker-script`, _except_ for `/images/cat.png`, which would bypass Workers completely. Requests with a path of `/images/cat.png?foo=bar` would be routed to `worker-script`, due to the presence of the query string.

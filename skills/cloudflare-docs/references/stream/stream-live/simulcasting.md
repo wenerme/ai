@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,43 +21,13 @@ Add an Output to start retransmitting live video. You can add or remove Outputs 
 Request
 
 ```
-
-curl -X POST \
-
---data '{"url": "rtmp://a.rtmp.youtube.com/live2","streamKey": "<redacted>"}' \
-
--H "Authorization: Bearer <API_TOKEN>" \
-
-https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/live_inputs/<INPUT_UID>/outputs
-
-
+curl -X POST \--data '{"url": "rtmp://a.rtmp.youtube.com/live2","streamKey": "<redacted>"}' \-H "Authorization: Bearer <API_TOKEN>" \https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/live_inputs/<INPUT_UID>/outputs
 ```
 
 Response
 
 ```
-
-{
-
-  "result": {
-
-    "uid": "6f8339ed45fe87daa8e7f0fe4e4ef776",
-
-    "url": "rtmp://a.rtmp.youtube.com/live2",
-
-    "streamKey": "<redacted>"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "uid": "6f8339ed45fe87daa8e7f0fe4e4ef776",    "url": "rtmp://a.rtmp.youtube.com/live2",    "streamKey": "<redacted>"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 ## Control when you start and stop simulcasting

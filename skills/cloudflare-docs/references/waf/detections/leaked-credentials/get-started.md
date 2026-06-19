@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,10 +16,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 On Free plans, the leaked credentials detection is enabled by default, and no action is required. On paid plans, you can turn on the detection in the Cloudflare dashboard, via API, or using Terraform.
 
-* [  New dashboard ](#tab-panel-11178)
-* [ Old dashboard ](#tab-panel-11179)
-* [ API ](#tab-panel-11180)
-* [ Terraform ](#tab-panel-11181)
+* [  New dashboard ](#tab-panel-11195)
+* [ Old dashboard ](#tab-panel-11196)
+* [ API ](#tab-panel-11197)
+* [ Terraform ](#tab-panel-11198)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -34,42 +34,20 @@ Use a `POST` request similar to the following:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone WAF Write`
 * `Account WAF Write`
 
 Set Leaked Credential Checks Status
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "enabled": true
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "enabled": true  }'
 ```
 
 Use the `cloudflare_leaked_credential_check` resource to enable leaked credentials detection for a zone. For example:
 
 ```
-
-resource "cloudflare_leaked_credential_check" "zone_lcc_example" {
-
-  zone_id = var.cloudflare_zone_id
-
-  enabled = true
-
-}
-
-
+resource "cloudflare_leaked_credential_check" "zone_lcc_example" {  zone_id = var.cloudflare_zone_id  enabled = true}
 ```
 
 Note
@@ -102,10 +80,7 @@ Paid plans have access to more granular controls when creating a rule. If you ar
 If you use the Expression Editor, enter the following expression:
 
 ```
-
 (cf.waf.credential_check.username_and_password_leaked)
-
-
 ```
 
 Rule action: _Managed Challenge_
@@ -116,17 +91,19 @@ Combine with other Rules language fields
 
 You can combine the previous expression with other [fields](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/) and [functions](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/) of the Rules language. This allows you to customize the rule scope or combine leaked credential checking with other security features. For example:
 
-* The following expression will match requests containing leaked credentials addressed at an authentication endpoint:  
-| Field                    | Operator | Value            | Logic |  
-| ------------------------ | -------- | ---------------- | ----- |  
-| User and Password Leaked | equals   | True             | And   |  
+* The following expression will match requests containing leaked credentials addressed at an authentication endpoint:
+
+| Field                    | Operator | Value            | Logic |
+| ------------------------ | -------- | ---------------- | ----- |
+| User and Password Leaked | equals   | True             | And   |
 | URI Path                 | contains | /admin/login.php |       |  
 Expression when using the editor:  
 `(cf.waf.credential_check.username_and_password_leaked and http.request.uri.path contains "/admin/login.php")`
-* The following expression will match requests coming from bots that include authentication credentials:  
-| Field                   | Operator  | Value | Logic |  
-| ----------------------- | --------- | ----- | ----- |  
-| Authentication detected | equals    | True  | And   |  
+* The following expression will match requests coming from bots that include authentication credentials:
+
+| Field                   | Operator  | Value | Logic |
+| ----------------------- | --------- | ----- | ----- |
+| Authentication detected | equals    | True  | And   |
 | Bot Score               | less than | 10    |       |  
 Expression when using the editor:  
 `(cf.waf.auth_detected and cf.bot_management.score lt 10)`
@@ -148,21 +125,22 @@ Only available for Enterprise customers.
 
 To check for leaked credentials in a way that is not covered by the default configuration, add a [custom detection location](https://developers.cloudflare.com/waf/detections/leaked-credentials/#custom-detection-locations).
 
-* [  New dashboard ](#tab-panel-11174)
-* [ Old dashboard ](#tab-panel-11175)
-* [ API ](#tab-panel-11176)
-* [ Terraform ](#tab-panel-11177)
+* [  New dashboard ](#tab-panel-11191)
+* [ Old dashboard ](#tab-panel-11192)
+* [ API ](#tab-panel-11193)
+* [ Terraform ](#tab-panel-11194)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. (Optional) Filter by **Detection tools**.
 3. Under **Leaked credential detection** \> **Configurations**, select the edit icon.
 4. Select **Add custom username and password location**.
-5. In **Username location** and **Password location** (optional), enter expressions for obtaining the username and the password from the HTTP request. For example, you could use the following expressions:  
-   * Username location:  
-   `lookup_json_string(http.request.body.raw, "user")`  
-   * Password location:  
-   `lookup_json_string(http.request.body.raw, "secret")`  
+5. In **Username location** and **Password location** (optional), enter expressions for obtaining the username and the password from the HTTP request. For example, you could use the following expressions:
+
+  * Username location:  
+  `lookup_json_string(http.request.body.raw, "user")`
+  * Password location:  
+  `lookup_json_string(http.request.body.raw, "secret")`  
 This configuration will scan incoming HTTP requests containing a JSON body with a structure similar to the following:  
 JavaScript  
 ```  
@@ -174,11 +152,12 @@ Refer to the [lookup\_json\_string()](https://developers.cloudflare.com/ruleset-
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
 2. Go to **Security** \> **Settings**.
 3. Under **Incoming traffic detections**, select **Leaked credentials** and then select **Add custom username and password location**.
-4. In **Username location** and **Password location** (optional), enter expressions for obtaining the username and the password from the HTTP request. For example, you could use the following expressions:  
-   * Username location:  
-   `lookup_json_string(http.request.body.raw, "user")`  
-   * Password location:  
-   `lookup_json_string(http.request.body.raw, "secret")`  
+4. In **Username location** and **Password location** (optional), enter expressions for obtaining the username and the password from the HTTP request. For example, you could use the following expressions:
+
+  * Username location:  
+  `lookup_json_string(http.request.body.raw, "user")`
+  * Password location:  
+  `lookup_json_string(http.request.body.raw, "secret")`  
 This configuration will scan incoming HTTP requests containing a JSON body with a structure similar to the following:  
 JavaScript  
 ```  
@@ -191,29 +170,14 @@ Use a `POST` request similar to the following:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone WAF Write`
 * `Account WAF Write`
 
 Create Leaked Credential Checks Custom Detection
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks/detections" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "username": "lookup_json_string(http.request.body.raw, \"user\")",
-
-    "password": "lookup_json_string(http.request.body.raw, \"secret\")"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks/detections" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "username": "lookup_json_string(http.request.body.raw, \"user\")",    "password": "lookup_json_string(http.request.body.raw, \"secret\")"  }'
 ```
 
 This pair of lookup expressions (for username and password) will scan incoming HTTP requests containing a JSON body with a structure similar to the following:
@@ -221,10 +185,7 @@ This pair of lookup expressions (for username and password) will scan incoming H
 JavaScript
 
 ```
-
 {"user": "<USERNAME>", "secret": "<PASSWORD>"}
-
-
 ```
 
 Refer to the [lookup\_json\_string()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lookup%5Fjson%5Fstring) documentation for more information on this function.
@@ -232,18 +193,7 @@ Refer to the [lookup\_json\_string()](https://developers.cloudflare.com/ruleset-
 Use the `cloudflare_leaked_credential_check_rule` resource to add a custom detection location. For example:
 
 ```
-
-resource "cloudflare_leaked_credential_check_rule" "custom_location_example" {
-
-  zone_id = var.cloudflare_zone_id
-
-  username = "lookup_json_string(http.request.body.raw, \"user\")"
-
-  password = "lookup_json_string(http.request.body.raw, \"secret\")"
-
-}
-
-
+resource "cloudflare_leaked_credential_check_rule" "custom_location_example" {  zone_id = var.cloudflare_zone_id  username = "lookup_json_string(http.request.body.raw, \"user\")"  password = "lookup_json_string(http.request.body.raw, \"secret\")"}
 ```
 
 Refer to the [lookup\_json\_string()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lookup%5Fjson%5Fstring) documentation for more information on this function.

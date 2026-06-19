@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,9 +18,9 @@ For example, users in one identity provider group (signifying a specific office 
 
 ## Create a new profile
 
-* [ Dashboard ](#tab-panel-7423)
-* [ API ](#tab-panel-7424)
-* [ Terraform (v5) ](#tab-panel-7425)
+* [ Dashboard ](#tab-panel-7499)
+* [ API ](#tab-panel-7500)
+* [ Terraform (v5) ](#tab-panel-7501)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Select **Create new profile**. This will make a copy of the **Default** profile.
@@ -40,88 +40,22 @@ Send a `POST` request to the [Devices API](https://developers.cloudflare.com/api
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zero Trust Write`
 
 Create a device settings profile
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "allow_mode_switch": false,
-
-    "allow_updates": false,
-
-    "allowed_to_leave": false,
-
-    "auto_connect": 600,
-
-    "captive_portal": 180,
-
-    "description": "Example device profile recommended in the implementation documentation. For details, refer to https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/device-profiles/",
-
-    "disable_auto_fallback": true,
-
-    "enabled": true,
-
-    "exclude_office_ips": false,
-
-    "match": "identity.email in {\"jdoe@example.com\"} or any(identity.groups.name[*] in {\"developers\" \"admin\"}) and os.name == \"windows\"",
-
-    "name": "Example device profile",
-
-    "precedence": 101,
-
-    "service_mode_v2": {
-
-        "mode": "warp"
-
-    },
-
-    "support_url": "https://support.example.com",
-
-    "switch_locked": true
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "allow_mode_switch": false,    "allow_updates": false,    "allowed_to_leave": false,    "auto_connect": 600,    "captive_portal": 180,    "description": "Example device profile recommended in the implementation documentation. For details, refer to https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/device-profiles/",    "disable_auto_fallback": true,    "enabled": true,    "exclude_office_ips": false,    "match": "identity.email in {\"jdoe@example.com\"} or any(identity.groups.name[*] in {\"developers\" \"admin\"}) and os.name == \"windows\"",    "name": "Example device profile",    "precedence": 101,    "service_mode_v2": {        "mode": "warp"    },    "support_url": "https://support.example.com",    "switch_locked": true  }'
 ```
 
-1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):  
-   * `Zero Trust Write`
+1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
+
+  * `Zero Trust Write`
 2. Create a new profile using the [cloudflare\_zero\_trust\_device\_custom\_profile ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fcustom%5Fprofile) resource:  
 ```  
-resource "cloudflare_zero_trust_device_custom_profile" "example" {  
-  account_id            = var.cloudflare_account_id  
-  name                  = "Example device profile"  
-  description           = "Example device profile recommended in the implementation documentation. For details, refer to https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/device-profiles/"  
-  allow_mode_switch     = false  
-  allow_updates         = false  
-  allowed_to_leave      = false  
-  auto_connect          = 600  
-  captive_portal        = 180  
-  disable_auto_fallback = true  
-  enabled               = true  
-  exclude_office_ips    = false  
-  precedence            = 101  
-  service_mode_v2       = {mode = "warp"}  
-  support_url           = "https://support.example.com"  
-  switch_locked         = true  
-  tunnel_protocol       = "wireguard"  
-  match = trimspace(replace(<<-EOT  
-    identity.email in {"jdoe@example.com"}  
-    or any(identity.groups.name[*] in {"developers" "admin"})  
-    and os.name == "windows"  
-  EOT  
-  , "\n", " "))  
-}  
+resource "cloudflare_zero_trust_device_custom_profile" "example" {  account_id            = var.cloudflare_account_id  name                  = "Example device profile"  description           = "Example device profile recommended in the implementation documentation. For details, refer to https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/device-profiles/"  allow_mode_switch     = false  allow_updates         = false  allowed_to_leave      = false  auto_connect          = 600  captive_portal        = 180  disable_auto_fallback = true  enabled               = true  exclude_office_ips    = false  precedence            = 101  service_mode_v2       = {mode = "warp"}  support_url           = "https://support.example.com"  switch_locked         = true  tunnel_protocol       = "wireguard"  
+  match = trimspace(replace(<<-EOT    identity.email in {"jdoe@example.com"}    or any(identity.groups.name[*] in {"developers" "admin"})    and os.name == "windows"  EOT  , "\n", " "))}  
 ```
 
 ## Edit profile settings
@@ -130,10 +64,11 @@ resource "cloudflare_zero_trust_device_custom_profile" "example" {
 2. Locate the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) you would like to update and select **Configure**.
 3. Use [selectors](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/#selectors) to add or adjust match rules, and modify [device client settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-settings) for this profile as needed.  
 Note  
-Changing any of the settings below will cause the client connection to restart. The user may experience a brief period of connectivity loss while the new settings are being applied.  
-   * [Service mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#service-mode)  
-   * [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#local-domain-fallback)  
-   * [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#split-tunnels)
+Changing any of the settings below will cause the client connection to restart. The user may experience a brief period of connectivity loss while the new settings are being applied.
+
+  * [Service mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#service-mode)
+  * [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#local-domain-fallback)
+  * [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#split-tunnels)
 4. Select **Save profile**.
 
 It may take up to 10 minutes for newly updated settings to propagate to devices.
@@ -164,10 +99,7 @@ To check which device profile and profile settings are currently on a device, op
 Terminal window
 
 ```
-
 warp-cli settings
-
-
 ```
 
 The device profile UUID is shown in the `Profile ID` field.

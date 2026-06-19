@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,10 +17,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 ## Endpoint
 
 ```
-
 https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/parallel
-
-
 ```
 
 ## URL structure
@@ -28,10 +25,7 @@ https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/parallel
 When making requests to Parallel, you can route to any Parallel endpoint through AI Gateway by appending the path after `parallel`. For example, to access the Tasks API at `/v1/tasks/runs`, use:
 
 ```
-
 https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/parallel/v1/tasks/runs
-
-
 ```
 
 ## Prerequisites
@@ -53,22 +47,7 @@ The [Tasks API ↗](https://docs.parallel.ai/task-api/task-quickstart) allows yo
 Terminal window
 
 ```
-
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/parallel/v1/tasks/runs \
-
-  --header 'x-api-key: {parallel_api_key}' \
-
-  --header 'Content-Type: application/json' \
-
-  --data '{
-
-    "input": "Create a comprehensive market research report on the HVAC industry in the USA including an analysis of recent M&A activity and other relevant details.",
-
-    "processor": "ultra"
-
-  }'
-
-
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/parallel/v1/tasks/runs \  --header 'x-api-key: {parallel_api_key}' \  --header 'Content-Type: application/json' \  --data '{    "input": "Create a comprehensive market research report on the HVAC industry in the USA including an analysis of recent M&A activity and other relevant details.",    "processor": "ultra"  }'
 ```
 
 ### Search API
@@ -80,34 +59,7 @@ The [Search API ↗](https://docs.parallel.ai/search-api/search-quickstart) enab
 Terminal window
 
 ```
-
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/parallel/v1beta/search \
-
-  --header 'x-api-key: {parallel_api_key}' \
-
-  --header 'Content-Type: application/json' \
-
-  --data '{
-
-    "objective": "When was the United Nations established? Prefer UN'\''s websites.",
-
-    "search_queries": [
-
-      "Founding year UN",
-
-      "Year of founding United Nations"
-
-    ],
-
-    "processor": "base",
-
-    "max_results": 10,
-
-    "max_chars_per_result": 6000
-
-  }'
-
-
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/parallel/v1beta/search \  --header 'x-api-key: {parallel_api_key}' \  --header 'Content-Type: application/json' \  --data '{    "objective": "When was the United Nations established? Prefer UN'\''s websites.",    "search_queries": [      "Founding year UN",      "Year of founding United Nations"    ],    "processor": "base",    "max_results": 10,    "max_chars_per_result": 6000  }'
 ```
 
 ## Chat API
@@ -119,23 +71,13 @@ The [Chat API ↗](https://docs.parallel.ai/chat-api/chat-quickstart) is support
 You can also access Parallel models using the OpenAI API schema through the [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/). Send your requests to:
 
 ```
-
 https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1/chat/completions
-
-
 ```
 
 Specify:
 
 ```
-
-{
-
-"model": "parallel/{model}"
-
-}
-
-
+{"model": "parallel/{model}"}
 ```
 
 #### JavaScript SDK example
@@ -143,53 +85,10 @@ Specify:
 JavaScript
 
 ```
-
 import OpenAI from "openai";
-
-
-const apiKey = "{parallel_api_key}";
-
-const accountId = "{account_id}";
-
-const gatewayId = "{gateway_id}";
-
-const baseURL = `https://gateway.ai.cloudflare.com/v1/${accountId}/${gatewayId}/compat`;
-
-
-const client = new OpenAI({
-
-  apiKey,
-
-  baseURL,
-
-});
-
-
-try {
-
-  const model = "parallel/speed";
-
-  const messages = [{ role: "user", content: "Hello!" }];
-
-  const chatCompletion = await client.chat.completions.create({
-
-    model,
-
-    messages,
-
-  });
-
-  const response = chatCompletion.choices[0].message;
-
-  console.log(response);
-
-} catch (e) {
-
-  console.error(e);
-
-}
-
-
+const apiKey = "{parallel_api_key}";const accountId = "{account_id}";const gatewayId = "{gateway_id}";const baseURL = `https://gateway.ai.cloudflare.com/v1/${accountId}/${gatewayId}/compat`;
+const client = new OpenAI({  apiKey,  baseURL,});
+try {  const model = "parallel/speed";  const messages = [{ role: "user", content: "Hello!" }];  const chatCompletion = await client.chat.completions.create({    model,    messages,  });  const response = chatCompletion.choices[0].message;  console.log(response);} catch (e) {  console.error(e);}
 ```
 
 ### FindAll API
@@ -201,20 +100,7 @@ The [FindAll API ↗](https://docs.parallel.ai/findall-api/findall-quickstart) e
 Terminal window
 
 ```
-
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/parallel/v1beta/findall/ingest \
-
-  --header 'x-api-key: {parallel_api_key}' \
-
-  --header 'Content-Type: application/json' \
-
-  --data '{
-
-    "query": "Find all AI companies that recently raised money and get their website, CEO name, and CTO name."
-
-  }'
-
-
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/parallel/v1beta/findall/ingest \  --header 'x-api-key: {parallel_api_key}' \  --header 'Content-Type: application/json' \  --data '{    "query": "Find all AI companies that recently raised money and get their website, CEO name, and CTO name."  }'
 ```
 
 ```json

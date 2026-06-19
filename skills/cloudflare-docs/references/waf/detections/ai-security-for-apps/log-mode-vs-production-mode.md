@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -59,8 +59,8 @@ In log mode:
 
 ### Enable log mode
 
-* [ Dashboard ](#tab-panel-11170)
-* [ API ](#tab-panel-11171)
+* [ Dashboard ](#tab-panel-11187)
+* [ API ](#tab-panel-11188)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -73,43 +73,14 @@ Deploy the managed ruleset using a `PUT` request:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone WAF Write`
 * `Account WAF Write`
 
 Update a zone entry point ruleset
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "rules": [
-
-        {
-
-            "action": "execute",
-
-            "action_parameters": {
-
-                "id": "b7cd52df92f74c848cec0c2ed385e336"
-
-            },
-
-            "expression": "true"
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "action": "execute",            "action_parameters": {                "id": "b7cd52df92f74c848cec0c2ed385e336"            },            "expression": "true"        }    ]  }'
 ```
 
 The ID of the AI Security Log Mode Ruleset is ...d385e336 .

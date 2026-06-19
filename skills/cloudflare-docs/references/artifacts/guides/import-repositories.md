@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,55 +35,15 @@ This example uses `jq` to extract the returned fields.
 Terminal window
 
 ```
-
-export ACCOUNT_ID="<YOUR_ACCOUNT_ID>"
-
-export ARTIFACTS_NAMESPACE="default"
-
-export ARTIFACTS_REPO="workers-sdk-baseline"
-
-export CLOUDFLARE_API_TOKEN="<YOUR_API_TOKEN>"
-
-export ARTIFACTS_BASE_URL="https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/artifacts/namespaces/$ARTIFACTS_NAMESPACE"
-
-
+export ACCOUNT_ID="<YOUR_ACCOUNT_ID>"export ARTIFACTS_NAMESPACE="default"export ARTIFACTS_REPO="workers-sdk-baseline"export CLOUDFLARE_API_TOKEN="<YOUR_API_TOKEN>"export ARTIFACTS_BASE_URL="https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/artifacts/namespaces/$ARTIFACTS_NAMESPACE"
 ```
 
 Terminal window
 
 ```
-
-IMPORT_RESPONSE=$(curl --silent --request POST "$ARTIFACTS_BASE_URL/repos/$ARTIFACTS_REPO/import" \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-     "url": "https://github.com/cloudflare/workers-sdk",
-
-     "branch": "main",
-
-     "depth": 100
-
-   }')
-
-
-if ! printf '%s' "$IMPORT_RESPONSE" | jq -e '.success == true' > /dev/null; then
-
-  printf '%s\n' "$IMPORT_RESPONSE" | jq .
-
-  exit 1
-
-fi
-
-
-export ARTIFACTS_REMOTE=$(printf '%s' "$IMPORT_RESPONSE" | jq -r '.result.remote')
-
-export ARTIFACTS_TOKEN=$(printf '%s' "$IMPORT_RESPONSE" | jq -r '.result.token')
-
-
+IMPORT_RESPONSE=$(curl --silent --request POST "$ARTIFACTS_BASE_URL/repos/$ARTIFACTS_REPO/import" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{     "url": "https://github.com/cloudflare/workers-sdk",     "branch": "main",     "depth": 100   }')
+if ! printf '%s' "$IMPORT_RESPONSE" | jq -e '.success == true' > /dev/null; then  printf '%s\n' "$IMPORT_RESPONSE" | jq .  exit 1fi
+export ARTIFACTS_REMOTE=$(printf '%s' "$IMPORT_RESPONSE" | jq -r '.result.remote')export ARTIFACTS_TOKEN=$(printf '%s' "$IMPORT_RESPONSE" | jq -r '.result.token')
 ```
 
 The response includes the new Artifacts repo metadata, including `result.remote` and `result.token`.

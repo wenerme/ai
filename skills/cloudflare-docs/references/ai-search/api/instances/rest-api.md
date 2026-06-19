@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,19 +23,17 @@ All requests require an API token with **AI Search:Edit** and **AI Search:Run** 
 2. Select **Create Token**.
 3. Select **Create Custom Token**.
 4. Enter a **Token name**, for example `AI Search Manager`.
-5. Under **Permissions**, add two permissions:  
-   * **Account** \> **AI Search:Edit**  
-   * **Account** \> **AI Search:Run**
+5. Under **Permissions**, add two permissions:
+
+  * **Account** \> **AI Search:Edit**
+  * **Account** \> **AI Search:Run**
 6. Select **Continue to summary**, then select **Create Token**.
 7. Copy and save the token value. This is your `API_TOKEN`.
 
 Include the token in the `Authorization` header for all requests:
 
 ```
-
 Authorization: Bearer <API_TOKEN>
-
-
 ```
 
 ## API paths
@@ -69,20 +67,7 @@ Create an instance in the default namespace:
 Terminal window
 
 ```
-
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances" \
-
-  -H "Authorization: Bearer <API_TOKEN>" \
-
-  -H "Content-Type: application/json" \
-
-  -d '{
-
-    "id": "my-instance"
-
-  }'
-
-
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances" \  -H "Authorization: Bearer <API_TOKEN>" \  -H "Content-Type: application/json" \  -d '{    "id": "my-instance"  }'
 ```
 
 ## Jobs
@@ -103,12 +88,7 @@ Start a new sync job for an instance:
 Terminal window
 
 ```
-
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/jobs" \
-
-  -H "Authorization: Bearer <API_TOKEN>"
-
-
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/jobs" \  -H "Authorization: Bearer <API_TOKEN>"
 ```
 
 ```json

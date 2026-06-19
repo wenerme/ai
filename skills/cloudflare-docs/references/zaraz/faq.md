@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -140,18 +140,7 @@ Conversion ID and Conversion Label are usually provided by Google Ads as a "gtag
 JavaScript
 
 ```
-
-gtag("event", "conversion", {
-
-  send_to: "AW-123456789/AbC-D_efG-h12_34-567",
-
-  value: 1.0,
-
-  currency: "USD",
-
-});
-
-
+gtag("event", "conversion", {  send_to: "AW-123456789/AbC-D_efG-h12_34-567",  value: 1.0,  currency: "USD",});
 ```
 
 The Conversion ID is the first part of `send_to` parameter, without the `AW-`. In the above example it would be `123456789`. The Conversion Label is the second part of the `send_to` parameter, therefore `AbC-D_efG-h12_34-567` in the above example. When setting up your Google Ads conversions through Zaraz, take the information from the original scripts you were asked to implement.

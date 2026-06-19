@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -66,7 +66,7 @@ The [wrangler versions upload](https://developers.cloudflare.com/workers/wrangle
 
 ### Aliased preview URLs
 
-Aliased preview URLs let you assign a persistent, readable alias to a specific Worker version. These are useful for linking to stable previews across many versions (e.g. to share an upcoming but still actively being developed new feature). A common workflow would be to assign an alias for the branch that you're working on. These types of preview URLs follow the same pattern as other preview URLs:`<ALIAS>-<WORKER_NAME>.<SUBDOMAIN>.workers.dev`
+Aliased preview URLs let you assign a persistent, readable alias to a specific Worker version. These are useful for linking to stable previews across many versions (e.g. to share an upcoming but still actively being developed new feature). A common workflow would be to assign an alias for the branch that you're working on. These types of preview URLs follow the same pattern as other preview URLs: `<ALIAS>-<WORKER_NAME>.<SUBDOMAIN>.workers.dev`
 
 Note
 
@@ -79,13 +79,10 @@ Aliases may be created during `versions upload`, by providing the `--preview-ali
 Terminal window
 
 ```
-
 wrangler versions upload --preview-alias staging
-
-
 ```
 
-The resulting alias would be associated with this version, and immediately available at:`staging-<WORKER_NAME>.<SUBDOMAIN>.workers.dev`
+The resulting alias would be associated with this version, and immediately available at: `staging-<WORKER_NAME>.<SUBDOMAIN>.workers.dev`
 
 #### Rules and limitations
 
@@ -140,54 +137,34 @@ Older Wrangler versions will default to Preview URLs being enabled.
 
 To toggle Preview URLs for a Worker, include any of the following in your Worker's Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-11473)
-* [  wrangler.toml ](#tab-panel-11474)
+* [  wrangler.jsonc ](#tab-panel-11490)
+* [  wrangler.toml ](#tab-panel-11491)
 
 JSONC
 
 ```
-
-{
-
-  "preview_urls": true
-
-}
-
-
+{  "preview_urls": true}
 ```
 
 TOML
 
 ```
-
 preview_urls = true
-
-
 ```
 
-* [  wrangler.jsonc ](#tab-panel-11475)
-* [  wrangler.toml ](#tab-panel-11476)
+* [  wrangler.jsonc ](#tab-panel-11492)
+* [  wrangler.toml ](#tab-panel-11493)
 
 JSONC
 
 ```
-
-{
-
-  "preview_urls": false
-
-}
-
-
+{  "preview_urls": false}
 ```
 
 TOML
 
 ```
-
 preview_urls = false
-
-
 ```
 
 If not given, `preview_urls = workers_dev` is the default.

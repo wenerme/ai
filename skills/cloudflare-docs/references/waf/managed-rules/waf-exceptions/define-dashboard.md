@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,8 +16,8 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 To add an exception at the zone level:
 
-* [  New dashboard ](#tab-panel-11252)
-* [ Old dashboard ](#tab-panel-11253)
+* [  New dashboard ](#tab-panel-11269)
+* [ Old dashboard ](#tab-panel-11270)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -42,19 +42,23 @@ To add an exception at the account level (Enterprise plans only):
 
 ## 3\. Select the rules to skip
 
-1. In **Then**, select the [exception type](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/#types-of-exceptions) that determines which rules to skip:  
-   * **Skip all remaining rules**: Skips all remaining rules of WAF managed rulesets. If you select this option, proceed to [4\. Create the exception](#4-create-the-exception).  
-   * **Skip specific rules from a Managed Ruleset**: Skips one or more rules of a managed ruleset.
+1. In **Then**, select the [exception type](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/#types-of-exceptions) that determines which rules to skip:
+
+  * **Skip all remaining rules**: Skips all remaining rules of WAF managed rulesets. If you select this option, proceed to [4\. Create the exception](#4-create-the-exception).
+  * **Skip specific rules from a Managed Ruleset**: Skips one or more rules of a managed ruleset.
 2. Select **Select ruleset**.
 3. Next to the ruleset containing the rule(s) you wish to skip, select **Select rules**.
-4. **A) To skip one or more rules in the ruleset:**  
-   1. Search for a rule using the available filters. You can search by description, rule ID, or tag. For example, in the Cloudflare OWASP Core Ruleset you can search for `920460` to find the rule `920460: Abnormal character escapes in request`.  
-   2. Select the checkbox next to the rule(s) you want to skip.  
-   3. If required, search for other rules and select them. The dashboard keeps a list of the rules you selected between searches.  
-**B) To skip all the rules in the ruleset:**  
-   1. Select all the rules in the current page by selecting the checkbox in the table header, near **Description/Rule ID**. The table header will display `10 rules selected (of <TOTAL> rules)`.  
-   ![Rule selection page showing the option to select all the rules in the ruleset](https://developers.cloudflare.com/_astro/waf-exception-select-all-rules.CBp6LP58_19ddVJ.webp)  
-   2. Select **Select all <TOTAL> rules** in the table header to select all the rules across all pages.
+4. **A) To skip one or more rules in the ruleset:**
+
+  1. Search for a rule using the available filters. You can search by description, rule ID, or tag. For example, in the Cloudflare OWASP Core Ruleset you can search for `920460` to find the rule `920460: Abnormal character escapes in request`.
+  2. Select the checkbox next to the rule(s) you want to skip.
+  3. If required, search for other rules and select them. The dashboard keeps a list of the rules you selected between searches.
+
+**B) To skip all the rules in the ruleset:**
+
+  1. Select all the rules in the current page by selecting the checkbox in the table header, near **Description/Rule ID**. The table header will display `10 rules selected (of <TOTAL> rules)`.  
+  ![Rule selection page showing the option to select all the rules in the ruleset](https://developers.cloudflare.com/_astro/waf-exception-select-all-rules.CBp6LP58_19ddVJ.webp)
+  2. Select **Select all <TOTAL> rules** in the table header to select all the rules across all pages.
 5. Select **Next**.
 
 ## 4\. Create the exception
@@ -66,8 +70,8 @@ To add an exception at the account level (Enterprise plans only):
 
 To edit an exception at the zone level:
 
-* [  New dashboard ](#tab-panel-11254)
-* [ Old dashboard ](#tab-panel-11255)
+* [  New dashboard ](#tab-panel-11271)
+* [ Old dashboard ](#tab-panel-11272)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

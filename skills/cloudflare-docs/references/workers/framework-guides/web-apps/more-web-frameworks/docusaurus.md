@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -86,28 +86,18 @@ pnpm run deploy
 If your Docusaurus project is entirely pre-rendered (which it usually is), follow these steps:
 
 1. **Add a Wrangler configuration file.**  
-In your project root, create a Wrangler configuration file with the following content:  
-   * [  wrangler.jsonc ](#tab-panel-11794)  
-   * [  wrangler.toml ](#tab-panel-11795)  
+In your project root, create a Wrangler configuration file with the following content:
+
+  * [  wrangler.jsonc ](#tab-panel-11811)
+  * [  wrangler.toml ](#tab-panel-11812)  
 JSONC  
 ```  
-  {  
-    "name": "my-docusaurus-app",  
-    // Update to today's date  
-    // Set this to today's date  
-    "compatibility_date": "2026-06-17",  
-    "assets": {  
-      "directory": "./build"  
-    }  
-  }  
+  {    "name": "my-docusaurus-app",    // Update to today's date    // Set this to today's date    "compatibility_date": "2026-06-19",    "assets": {      "directory": "./build"    }  }  
 ```  
 TOML  
 ```  
-name = "my-docusaurus-app"  
-# Set this to today's date  
-compatibility_date = "2026-06-17"  
-[assets]  
-directory = "./build"  
+name = "my-docusaurus-app"# Set this to today's datecompatibility_date = "2026-06-19"  
+[assets]directory = "./build"  
 ```  
 What's this configuration doing?  
 The key part of this config is the `assets` field, which tells Wrangler where to find your static assets. In this case, we're telling Wrangler to look in the `./build` directory. If your assets are in a different directory, update the `directory` value accordingly. Refer to other [asset configuration options](https://developers.cloudflare.com/workers/static-assets/routing/).  
@@ -141,7 +131,7 @@ Bindings are a way to connect your Docusaurus project to other Cloudflare servic
 
 With bindings, your application can be fully integrated with the Cloudflare Developer Platform, giving you access to compute, storage, AI and more.
 
-[ Bindings ](https://developers.cloudflare.com/workers/runtime-apis/bindings/) Access to compute, storage, AI and more. 
+[ Bindings ](https://developers.cloudflare.com/workers/runtime-apis/bindings/) Access to compute, storage, AI and more.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/docusaurus/#page","headline":"Docusaurus · Cloudflare Workers docs","description":"Create a Docusaurus application and deploy it to Cloudflare Workers with Workers Assets.","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/docusaurus/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["ssg"]}

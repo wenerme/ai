@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -42,22 +42,7 @@ To convert a namespace from untrusted to trusted:
 Terminal window
 
 ```
-
-curl -X PUT "https://api.cloudflare.com/client/v4/accounts/{account_id}/workers/dispatch/namespaces/{namespace_name}" \
-
-  -H "Authorization: Bearer {api_token}" \
-
-  -H "Content-Type: application/json" \
-
-  -d '{
-
-    "name": "{namespace_name}",
-
-    "trusted_workers": true
-
-  }'
-
-
+curl -X PUT "https://api.cloudflare.com/client/v4/accounts/{account_id}/workers/dispatch/namespaces/{namespace_name}" \  -H "Authorization: Bearer {api_token}" \  -H "Content-Type: application/json" \  -d '{    "name": "{namespace_name}",    "trusted_workers": true  }'
 ```
 
 If you enable trusted mode for a namespace that already has deployed Workers, you'll need to redeploy those Workers for the `request.cf` object to become available. Any new Workers you deploy after enabling trusted mode will automatically have access to it.

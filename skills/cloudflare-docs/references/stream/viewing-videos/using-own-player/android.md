@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,21 +29,10 @@ Play a video from Cloudflare Stream using ExoPlayer:
 Kotlin
 
 ```
-
 implementation 'com.google.android.exoplayer:exoplayer-hls:2.X.X'
-
-
 SimpleExoPlayer player = new SimpleExoPlayer.Builder(context).build();
-
-
-// Set the media item to the Cloudflare Stream HLS Manifest URL:
-
-player.setMediaItem(MediaItem.fromUri("https://customer-9cbb9x7nxdw5hb57.cloudflarestream.com/8f92fe7d2c1c0983767649e065e691fc/manifest/video.m3u8"));
-
-
+// Set the media item to the Cloudflare Stream HLS Manifest URL:player.setMediaItem(MediaItem.fromUri("https://customer-9cbb9x7nxdw5hb57.cloudflarestream.com/8f92fe7d2c1c0983767649e065e691fc/manifest/video.m3u8"));
 player.prepare();
-
-
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -34,9 +34,10 @@ Here are some known bugs and issues with Cloudflare Pages:
 
 ## Custom Domains
 
-* It is currently not possible to add a custom domain with  
-   * a wildcard, for example, `*.domain.com`.  
-   * a Worker already routed on that domain.
+* It is currently not possible to add a custom domain with
+
+  * a wildcard, for example, `*.domain.com`.
+  * a Worker already routed on that domain.
 * It is currently not possible to add a custom domain with a Cloudflare Access policy already enabled on that domain.
 * Cloudflare's Load Balancer does not work with `*.pages.dev` projects; an `Error 1000: DNS points to prohibited IP` will appear.
 * When adding a custom domain, the domain will not verify if Cloudflare cannot validate a request for an SSL certificate on that hostname. In order for the SSL to validate, ensure Cloudflare Access or a Cloudflare Worker is allowing requests to the validation path: `http://{domain_name}/.well-known/acme-challenge/*`.
@@ -88,10 +89,7 @@ As a workaround, you can use [wrangler pages deployment delete](https://develope
 Terminal window
 
 ```
-
 npx wrangler pages deployment delete <DEPLOYMENT_ID> --project-name <PROJECT_NAME>
-
-
 ```
 
 Use the `--force` flag to skip the confirmation prompt and to force deletion of aliased deployments.
@@ -101,32 +99,7 @@ To delete _all_ your deployments for a particular project name, you could run th
 Terminal window
 
 ```
-
-prod_id=""
-
-while :; do
-
-  ids=$(npx wrangler pages deployment list --project-name <PROJECT_NAME> --json | jq -r '.[].Id')
-
-  to_delete=$(echo "$ids" | grep -v -F -x "$prod_id" | grep .)
-
-  [ -z "$to_delete" ] && { echo "Done. Production: $prod_id"; break; }
-
-  echo "Deleting $(echo "$to_delete" | wc -l | tr -d ' ') deployments..."
-
-  while IFS= read -r id; do
-
-    if ! npx wrangler pages deployment delete "$id" --project-name <PROJECT_NAME> --force 2>&1 | tee /tmp/wrangler-del.log | grep -q "Successfully deleted"; then
-
-      grep -q "active production deployment" /tmp/wrangler-del.log && prod_id="$id"
-
-    fi
-
-  done <<< "$to_delete"
-
-done
-
-
+prod_id=""while :; do  ids=$(npx wrangler pages deployment list --project-name <PROJECT_NAME> --json | jq -r '.[].Id')  to_delete=$(echo "$ids" | grep -v -F -x "$prod_id" | grep .)  [ -z "$to_delete" ] && { echo "Done. Production: $prod_id"; break; }  echo "Deleting $(echo "$to_delete" | wc -l | tr -d ' ') deployments..."  while IFS= read -r id; do    if ! npx wrangler pages deployment delete "$id" --project-name <PROJECT_NAME> --force 2>&1 | tee /tmp/wrangler-del.log | grep -q "Successfully deleted"; then      grep -q "active production deployment" /tmp/wrangler-del.log && prod_id="$id"    fi  done <<< "$to_delete"done
 ```
 
 Note that this will not delete the active production deployment if one exists.

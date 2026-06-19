@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,7 +18,7 @@ The Model Context Protocol (MCP) endpoint allows AI agents to discover and inter
 
 Enable public endpoints for your AI Search instance:
 
-1. Go to **AI Search** in the Cloudflare dashboard.[ Go to **AI Search** ](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
+1. Go to **AI Search** in the Cloudflare dashboard. [ Go to **AI Search** ](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
 2. Select your AI Search instance.
 3. Go to **Settings** \> **Public Endpoint**.
 4. Turn on **Enable Public Endpoint**.
@@ -41,36 +41,7 @@ Send a request to the `/mcp` endpoint with the `Accept: application/json, text/e
 Terminal window
 
 ```
-
-curl https://<INSTANCE_ID>.search.ai.cloudflare.com/mcp \
-
-  -H "Content-Type: application/json" \
-
-  -H "Accept: application/json, text/event-stream" \
-
-  -d '{
-
-    "jsonrpc": "2.0",
-
-    "id": 1,
-
-    "method": "tools/call",
-
-    "params": {
-
-      "name": "search",
-
-      "arguments": {
-
-        "query": "How do I configure AI Search?"
-
-      }
-
-    }
-
-  }'
-
-
+curl https://<INSTANCE_ID>.search.ai.cloudflare.com/mcp \  -H "Content-Type: application/json" \  -H "Accept: application/json, text/event-stream" \  -d '{    "jsonrpc": "2.0",    "id": 1,    "method": "tools/call",    "params": {      "name": "search",      "arguments": {        "query": "How do I configure AI Search?"      }    }  }'
 ```
 
 ```json

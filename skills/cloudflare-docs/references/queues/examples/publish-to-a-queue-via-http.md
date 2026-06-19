@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,19 +32,11 @@ To make sure you successfully authenticate and write a message to your queue, us
 Terminal window
 
 ```
-
-# Make sure to replace the placeholder with your shared secret
-
-curl -XPOST -H "Authorization: Bearer <paste-your-api-token-here>" "https://api.cloudflare.com/client/v4/accounts/<paste-your-account-id-here>/queues/<paste-your-queue-id-here>/messages" --data '{ "body": { "greeting": "hello" } }'
-
-
+# Make sure to replace the placeholder with your shared secretcurl -XPOST -H "Authorization: Bearer <paste-your-api-token-here>" "https://api.cloudflare.com/client/v4/accounts/<paste-your-account-id-here>/queues/<paste-your-queue-id-here>/messages" --data '{ "body": { "greeting": "hello" } }'
 ```
 
 ```
-
 {"success":true}
-
-
 ```
 
 This will issue a HTTP POST request, and if successful, return a HTTP 200 with a `success: true` response body.

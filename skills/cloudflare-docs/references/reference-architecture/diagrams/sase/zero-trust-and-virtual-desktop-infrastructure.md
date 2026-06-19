@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,8 +22,8 @@ In other cases, a full virtualized desktop may be necessary for legacy apps, yet
 
 * Replacing your VDI for secure remote access to web-based applications. Accessing a full blown desktop environment to just use a web browser isn't the best experience for users. Cloudflare offers a vast improvement over remote access to web applications and can do so with greater security.
 * Securing your VDI desktops...  
-   * From unauthorized access.  
-   * From risky public Internet destinations.
+  * From unauthorized access.
+  * From risky public Internet destinations.
 
 ### Who is this document for and what will you learn?
 

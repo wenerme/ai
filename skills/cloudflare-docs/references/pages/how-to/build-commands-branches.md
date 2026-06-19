@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,39 +25,12 @@ In the following script, you will use the `CF_PAGES_BRANCH` environment variable
 Terminal window
 
 ```
-
 # !/bin/bash
-
-
-if [ "$CF_PAGES_BRANCH" == "production" ]; then
-
-  # Run the "production" script in `package.json` on the "production" branch
-
-  # "production" should be replaced with the name of your Production branch
-
-
+if [ "$CF_PAGES_BRANCH" == "production" ]; then  # Run the "production" script in `package.json` on the "production" branch  # "production" should be replaced with the name of your Production branch
   npm run production
-
-
-elif [ "$CF_PAGES_BRANCH" == "staging" ]; then
-
-  # Run the "staging" script in `package.json` on the "staging" branch
-
-  # "staging" should be replaced with the name of your specific branch
-
-
+elif [ "$CF_PAGES_BRANCH" == "staging" ]; then  # Run the "staging" script in `package.json` on the "staging" branch  # "staging" should be replaced with the name of your specific branch
   npm run staging
-
-
-else
-
-  # Else run the dev script
-
-  npm run dev
-
-fi
-
-
+else  # Else run the dev script  npm run devfi
 ```
 
 ## Publish your changes

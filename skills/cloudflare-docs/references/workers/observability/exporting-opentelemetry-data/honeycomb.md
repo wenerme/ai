@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,8 +37,8 @@ Before you begin, ensure you have:
 5. Find your environment (e.g., `production`, `test`) or create a new one
 6. Under **API Keys**, click **Create Ingest API Key**
 7. Configure your API key:  
-   * **Name**: Enter a descriptive name (e.g., `cloudflare-workers-otel`)  
-   * **Permissions**: Select **Can create services/datasets** (required for OTLP ingestion)
+  * **Name**: Enter a descriptive name (e.g., `cloudflare-workers-otel`)
+  * **Permissions**: Select **Can create services/datasets** (required for OTLP ingestion)
 8. Click **Create**
 9. **Important**: Copy the API key immediately and store it securely - you won't be able to see it again
 
@@ -60,12 +60,12 @@ Honeycomb provides separate OTLP endpoints for traces and logs:
 1. Navigate to your Cloudflare account's [Workers Observability ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages/observability/pipelines) section
 2. Click **Add destination**
 3. Configure your trace destination:  
-   * **Destination Name**: `honeycomb-traces` (or any descriptive name)  
-   * **Destination Type**: Select **Traces**  
-   * **OTLP Endpoint**: `https://api.honeycomb.io/v1/traces`  
-   * **Custom Headers**: Add the authentication header:  
-         * Header name: `x-honeycomb-team`  
-         * Header value: Your Honeycomb API key (e.g., `hcaik_01hq...`)
+  * **Destination Name**: `honeycomb-traces` (or any descriptive name)
+  * **Destination Type**: Select **Traces**
+  * **OTLP Endpoint**: `https://api.honeycomb.io/v1/traces`
+  * **Custom Headers**: Add the authentication header:  
+    * Header name: `x-honeycomb-team`
+    * Header value: Your Honeycomb API key (e.g., `hcaik_01hq...`)
 4. Click **Save**
 
 ### Configure logs destination
@@ -74,74 +74,32 @@ Repeat the process for logs:
 
 1. Click **Add destination** again
 2. Configure your logs destination:  
-   * **Destination Name**: `honeycomb-logs` (or any descriptive name)  
-   * **Destination Type**: Select **Logs**  
-   * **OTLP Endpoint**: `https://api.honeycomb.io/v1/logs`  
-   * **Custom Headers**: Add the authentication header:  
-         * Header name: `x-honeycomb-team`  
-         * Header value: Your Honeycomb API key (same as above)
+  * **Destination Name**: `honeycomb-logs` (or any descriptive name)
+  * **Destination Type**: Select **Logs**
+  * **OTLP Endpoint**: `https://api.honeycomb.io/v1/logs`
+  * **Custom Headers**: Add the authentication header:  
+    * Header name: `x-honeycomb-team`
+    * Header value: Your Honeycomb API key (same as above)
 3. Click **Save**
 
 ## Step 3: Configure your Worker
 
 With your destinations created in the Cloudflare dashboard, update your Worker's configuration to enable telemetry export.
 
-* [  wrangler.jsonc ](#tab-panel-11846)
-* [  wrangler.toml ](#tab-panel-11847)
+* [  wrangler.jsonc ](#tab-panel-11863)
+* [  wrangler.toml ](#tab-panel-11864)
 
 JSONC
 
 ```
-
-{
-
-  "observability": {
-
-    "traces": {
-
-      "enabled": true,
-
-      // Must match the destination name in the dashboard
-
-      "destinations": ["honeycomb-traces"]
-
-    },
-
-    "logs": {
-
-      "enabled": true,
-
-      // Must match the destination name in the dashboard
-
-      "destinations": ["honeycomb-logs"]
-
-    }
-
-  }
-
-}
-
-
+{  "observability": {    "traces": {      "enabled": true,      // Must match the destination name in the dashboard      "destinations": ["honeycomb-traces"]    },    "logs": {      "enabled": true,      // Must match the destination name in the dashboard      "destinations": ["honeycomb-logs"]    }  }}
 ```
 
 TOML
 
 ```
-
-[observability.traces]
-
-enabled = true
-
-destinations = [ "honeycomb-traces" ]
-
-
-[observability.logs]
-
-enabled = true
-
-destinations = [ "honeycomb-logs" ]
-
-
+[observability.traces]enabled = truedestinations = [ "honeycomb-traces" ]
+[observability.logs]enabled = truedestinations = [ "honeycomb-logs" ]
 ```
 
 After updating your configuration, deploy your Worker for the changes to take effect.

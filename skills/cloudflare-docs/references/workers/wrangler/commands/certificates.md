@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,35 +28,26 @@ These certificates can be used in [mtls\_certificate bindings](https://developer
 
 Upload an mTLS certificate
 
-* [  npm ](#tab-panel-12268)
-* [  pnpm ](#tab-panel-12269)
-* [  yarn ](#tab-panel-12270)
+* [  npm ](#tab-panel-12285)
+* [  pnpm ](#tab-panel-12286)
+* [  yarn ](#tab-panel-12287)
 
 Terminal window
 
 ```
-
 npx wrangler mtls-certificate upload
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler mtls-certificate upload
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler mtls-certificate upload
-
-
 ```
 
 * `--cert` ` string ` required  
@@ -90,66 +81,28 @@ The following is an example of using the `upload` command to upload an mTLS cert
 Terminal window
 
 ```
-
 npx wrangler mtls-certificate upload --cert cert.pem --key key.pem --name my-origin-cert
-
-
 ```
 
 ```
-
-Uploading mTLS Certificate my-origin-cert...
-
-Success! Uploaded mTLS Certificate my-origin-cert
-
-ID: 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d
-
-Issuer: CN=my-secured-origin.com,OU=my-team,O=my-org,L=San Francisco,ST=California,C=US
-
-Expires: 1/01/2025
-
-
+Uploading mTLS Certificate my-origin-cert...Success! Uploaded mTLS Certificate my-origin-certID: 99f5fef1-6cc1-46b8-bd79-44a0d5082b8dIssuer: CN=my-secured-origin.com,OU=my-team,O=my-org,L=San Francisco,ST=California,C=USExpires: 1/01/2025
 ```
 
 You can then add this certificate as a [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-12289)
-* [  wrangler.toml ](#tab-panel-12290)
+* [  wrangler.jsonc ](#tab-panel-12306)
+* [  wrangler.toml ](#tab-panel-12307)
 
 JSONC
 
 ```
-
-{
-
-  "mtls_certificates": [
-
-    {
-
-      "binding": "MY_CERT",
-
-      "certificate_id": "99f5fef1-6cc1-46b8-bd79-44a0d5082b8d",
-
-    },
-
-  ],
-
-}
-
-
+{  "mtls_certificates": [    {      "binding": "MY_CERT",      "certificate_id": "99f5fef1-6cc1-46b8-bd79-44a0d5082b8d",    },  ],}
 ```
 
 TOML
 
 ```
-
-[[mtls_certificates]]
-
-binding = "MY_CERT"
-
-certificate_id = "99f5fef1-6cc1-46b8-bd79-44a0d5082b8d"
-
-
+[[mtls_certificates]]binding = "MY_CERT"certificate_id = "99f5fef1-6cc1-46b8-bd79-44a0d5082b8d"
 ```
 
 Note that the certificate and private keys must be in separate (typically `.pem`) files when uploading.
@@ -158,35 +111,26 @@ Note that the certificate and private keys must be in separate (typically `.pem`
 
 List uploaded mTLS certificates
 
-* [  npm ](#tab-panel-12271)
-* [  pnpm ](#tab-panel-12272)
-* [  yarn ](#tab-panel-12273)
+* [  npm ](#tab-panel-12288)
+* [  pnpm ](#tab-panel-12289)
+* [  yarn ](#tab-panel-12290)
 
 Terminal window
 
 ```
-
 npx wrangler mtls-certificate list
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler mtls-certificate list
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler mtls-certificate list
-
-
 ```
 
 Global flags
@@ -213,69 +157,38 @@ The following is an example of using the `list` command to upload an mTLS certif
 Terminal window
 
 ```
-
 npx wrangler mtls-certificate list
-
-
 ```
 
 ```
-
-ID: 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d
-
-Name: my-origin-cert
-
-Issuer: CN=my-secured-origin.com,OU=my-team,O=my-org,L=San Francisco,ST=California,C=US
-
-Created on: 1/01/2023
-
-Expires: 1/01/2025
-
-
-ID: c5d004d1-8312-402c-b8ed-6194328d5cbe
-
-Issuer: CN=another-origin.com,OU=my-team,O=my-org,L=San Francisco,ST=California,C=US
-
-Created on: 1/01/2023
-
-Expires: 1/01/2025
-
-
+ID: 99f5fef1-6cc1-46b8-bd79-44a0d5082b8dName: my-origin-certIssuer: CN=my-secured-origin.com,OU=my-team,O=my-org,L=San Francisco,ST=California,C=USCreated on: 1/01/2023Expires: 1/01/2025
+ID: c5d004d1-8312-402c-b8ed-6194328d5cbeIssuer: CN=another-origin.com,OU=my-team,O=my-org,L=San Francisco,ST=California,C=USCreated on: 1/01/2023Expires: 1/01/2025
 ```
 
 ### `mtls-certificate delete`
 
 Delete an mTLS certificate
 
-* [  npm ](#tab-panel-12274)
-* [  pnpm ](#tab-panel-12275)
-* [  yarn ](#tab-panel-12276)
+* [  npm ](#tab-panel-12291)
+* [  pnpm ](#tab-panel-12292)
+* [  yarn ](#tab-panel-12293)
 
 Terminal window
 
 ```
-
 npx wrangler mtls-certificate delete
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler mtls-certificate delete
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler mtls-certificate delete
-
-
 ```
 
 * `--id` ` string `  
@@ -307,23 +220,11 @@ The following is an example of using the `delete` command to delete an mTLS cert
 Terminal window
 
 ```
-
 npx wrangler mtls-certificate delete --id 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d
-
-
 ```
 
 ```
-
-Are you sure you want to delete certificate 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d (my-origin-cert)? [y/n]
-
-yes
-
-Deleting certificate 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d...
-
-Deleted certificate 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d successfully
-
-
+Are you sure you want to delete certificate 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d (my-origin-cert)? [y/n]yesDeleting certificate 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d...Deleted certificate 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d successfully
 ```
 
 ---
@@ -338,35 +239,26 @@ These certificates can be used in Hyperdrive configurations, enabling them to pr
 
 Upload an mTLS certificate
 
-* [  npm ](#tab-panel-12277)
-* [  pnpm ](#tab-panel-12278)
-* [  yarn ](#tab-panel-12279)
+* [  npm ](#tab-panel-12294)
+* [  pnpm ](#tab-panel-12295)
+* [  yarn ](#tab-panel-12296)
 
 Terminal window
 
 ```
-
 npx wrangler cert upload mtls-certificate
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler cert upload mtls-certificate
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler cert upload mtls-certificate
-
-
 ```
 
 * `--cert` ` string ` required  
@@ -400,25 +292,11 @@ The following is an example of using the `upload` command to upload an mTLS cert
 Terminal window
 
 ```
-
 npx wrangler cert upload --cert cert.pem --key key.pem --name my-origin-cert
-
-
 ```
 
 ```
-
-Uploading mTLS Certificate my-origin-cert...
-
-Success! Uploaded mTLS Certificate my-origin-cert
-
-ID: 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d
-
-Issuer: CN=my-secured-origin.com,OU=my-team,O=my-org,L=San Francisco,ST=California,C=US
-
-Expires: 1/01/2025
-
-
+Uploading mTLS Certificate my-origin-cert...Success! Uploaded mTLS Certificate my-origin-certID: 99f5fef1-6cc1-46b8-bd79-44a0d5082b8dIssuer: CN=my-secured-origin.com,OU=my-team,O=my-org,L=San Francisco,ST=California,C=USExpires: 1/01/2025
 ```
 
 Note that the certificate and private keys must be in separate (typically `.pem`) files when uploading.
@@ -427,35 +305,26 @@ Note that the certificate and private keys must be in separate (typically `.pem`
 
 Upload a CA certificate chain
 
-* [  npm ](#tab-panel-12280)
-* [  pnpm ](#tab-panel-12281)
-* [  yarn ](#tab-panel-12282)
+* [  npm ](#tab-panel-12297)
+* [  pnpm ](#tab-panel-12298)
+* [  yarn ](#tab-panel-12299)
 
 Terminal window
 
 ```
-
 npx wrangler cert upload certificate-authority
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler cert upload certificate-authority
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler cert upload certificate-authority
-
-
 ```
 
 * `--name` ` string `  
@@ -487,60 +356,37 @@ The following is an example of using the `upload` command to upload an CA certif
 Terminal window
 
 ```
-
 npx wrangler cert upload certificate-authority --ca-cert server-ca-chain.pem --name SERVER_CA_CHAIN
-
-
 ```
 
 ```
-
-Uploading CA Certificate SERVER_CA_CHAIN...
-
-Success! Uploaded CA Certificate SERVER_CA_CHAIN
-
-ID: 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d
-
-Issuer: CN=my-secured-origin.com,OU=my-team,O=my-org,L=San Francisco,ST=California,C=US
-
-Expires: 1/01/2025
-
-
+Uploading CA Certificate SERVER_CA_CHAIN...Success! Uploaded CA Certificate SERVER_CA_CHAINID: 99f5fef1-6cc1-46b8-bd79-44a0d5082b8dIssuer: CN=my-secured-origin.com,OU=my-team,O=my-org,L=San Francisco,ST=California,C=USExpires: 1/01/2025
 ```
 
 ### `cert list`
 
 List uploaded mTLS certificates
 
-* [  npm ](#tab-panel-12283)
-* [  pnpm ](#tab-panel-12284)
-* [  yarn ](#tab-panel-12285)
+* [  npm ](#tab-panel-12300)
+* [  pnpm ](#tab-panel-12301)
+* [  yarn ](#tab-panel-12302)
 
 Terminal window
 
 ```
-
 npx wrangler cert list
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler cert list
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler cert list
-
-
 ```
 
 Global flags
@@ -567,69 +413,38 @@ The following is an example of using the `list` command to upload an mTLS or CA 
 Terminal window
 
 ```
-
 npx wrangler cert list
-
-
 ```
 
 ```
-
-ID: 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d
-
-Name: my-origin-cert
-
-Issuer: CN=my-secured-origin.com,OU=my-team,O=my-org,L=San Francisco,ST=California,C=US
-
-Created on: 1/01/2023
-
-Expires: 1/01/2025
-
-
-ID: c5d004d1-8312-402c-b8ed-6194328d5cbe
-
-Issuer: CN=another-origin.com,OU=my-team,O=my-org,L=San Francisco,ST=California,C=US
-
-Created on: 1/01/2023
-
-Expires: 1/01/2025
-
-
+ID: 99f5fef1-6cc1-46b8-bd79-44a0d5082b8dName: my-origin-certIssuer: CN=my-secured-origin.com,OU=my-team,O=my-org,L=San Francisco,ST=California,C=USCreated on: 1/01/2023Expires: 1/01/2025
+ID: c5d004d1-8312-402c-b8ed-6194328d5cbeIssuer: CN=another-origin.com,OU=my-team,O=my-org,L=San Francisco,ST=California,C=USCreated on: 1/01/2023Expires: 1/01/2025
 ```
 
 ### `cert delete`
 
 Delete an mTLS certificate
 
-* [  npm ](#tab-panel-12286)
-* [  pnpm ](#tab-panel-12287)
-* [  yarn ](#tab-panel-12288)
+* [  npm ](#tab-panel-12303)
+* [  pnpm ](#tab-panel-12304)
+* [  yarn ](#tab-panel-12305)
 
 Terminal window
 
 ```
-
 npx wrangler cert delete
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler cert delete
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler cert delete
-
-
 ```
 
 * `--id` ` string `  
@@ -661,23 +476,11 @@ The following is an example of using the `delete` command to delete an mTLS or C
 Terminal window
 
 ```
-
 npx wrangler cert delete --id 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d
-
-
 ```
 
 ```
-
-Are you sure you want to delete certificate 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d (my-origin-cert)? [y/n]
-
-yes
-
-Deleting certificate 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d...
-
-Deleted certificate 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d successfully
-
-
+Are you sure you want to delete certificate 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d (my-origin-cert)? [y/n]yesDeleting certificate 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d...Deleted certificate 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d successfully
 ```
 
 ```json

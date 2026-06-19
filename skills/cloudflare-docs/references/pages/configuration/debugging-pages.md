@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -56,14 +56,7 @@ Example of a valid configuration:
 JavaScript
 
 ```
-
-[submodule "example"]
-
-  path = example/path
-
-  url = git://github.com/example/repo.git
-
-
+[submodule "example"]  path = example/path  url = git://github.com/example/repo.git
 ```
 
 Example of an invalid configuration:
@@ -71,12 +64,7 @@ Example of an invalid configuration:
 JavaScript
 
 ```
-
-[submodule "example"]
-
-  path = example/path
-
-
+[submodule "example"]  path = example/path
 ```
 
 or
@@ -84,12 +72,7 @@ or
 JavaScript
 
 ```
-
-[submodule "example"]
-
-        url = git://github.com/example/repo.git
-
-
+[submodule "example"]        url = git://github.com/example/repo.git
 ```
 
 ### Building application
@@ -127,29 +110,11 @@ To check this, run a `curl` command against your domain hitting `/.well-known/ac
 Terminal window
 
 ```
-
 curl -s -o /dev/null -D - https://example.com/.well-known/acme-challenge/randomstring
-
-
 ```
 
 ```
-
-HTTP/2 302
-
-date: Mon, 03 Apr 2023 08:37:39 GMT
-
-location: https://example.cloudflareaccess.com/cdn-cgi/access/login/example.com?kid=...&redirect_url=%2F.well-known%2Facme-challenge%2F...
-
-access-control-allow-credentials: true
-
-cache-control: private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0
-
-server: cloudflare
-
-cf-ray: 7b1ffdaa8ad60693-MAN
-
-
+HTTP/2 302date: Mon, 03 Apr 2023 08:37:39 GMTlocation: https://example.cloudflareaccess.com/cdn-cgi/access/login/example.com?kid=...&redirect_url=%2F.well-known%2Facme-challenge%2F...access-control-allow-credentials: truecache-control: private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0server: cloudflarecf-ray: 7b1ffdaa8ad60693-MAN
 ```
 
 In the example above, you are redirecting to Cloudflare Access (as shown by the `Location` header). In this case, you need to disable Access over the domain until the domain is verified. After the domain is verified, Access can be re-enabled.
@@ -167,48 +132,14 @@ To check this, run a `dig` on the custom domain's apex (or zone, if this is a [s
 Terminal window
 
 ```
-
 dig CAA example.com
-
-
 ```
 
 ```
-
-; <<>> DiG 9.10.6 <<>> CAA example.com
-
-;; global options: +cmd
-
-;; Got answer:
-
-;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 59018
-
-;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
-
-
-;; OPT PSEUDOSECTION:
-
-; EDNS: version: 0, flags:; udp: 4096
-
-;; QUESTION SECTION:
-
-;example.com.    IN  CAA
-
-
-;; ANSWER SECTION:
-
-example.com.  300  IN  CAA  0 issue "amazon.com"
-
-
-;; Query time: 92 msec
-
-;; SERVER: 127.0.2.2#53(127.0.2.2)
-
-;; WHEN: Mon Apr 03 10:15:51 BST 2023
-
-;; MSG SIZE  rcvd: 76
-
-
+; <<>> DiG 9.10.6 <<>> CAA example.com;; global options: +cmd;; Got answer:;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 59018;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+;; OPT PSEUDOSECTION:; EDNS: version: 0, flags:; udp: 4096;; QUESTION SECTION:;example.com.    IN  CAA
+;; ANSWER SECTION:example.com.  300  IN  CAA  0 issue "amazon.com"
+;; Query time: 92 msec;; SERVER: 127.0.2.2#53(127.0.2.2);; WHEN: Mon Apr 03 10:15:51 BST 2023;; MSG SIZE  rcvd: 76
 ```
 
 In the above example, there is only a single CAA record which is allowing Amazon to issue certificates.
@@ -216,20 +147,7 @@ In the above example, there is only a single CAA record which is allowing Amazon
 To resolve this, you will need to add the following CAA records which allows all of the Certificate Authorities (CAs) Cloudflare uses to issue certificates:
 
 ```
-
-example.com.            300     IN      CAA     0 issue "letsencrypt.org"
-
-example.com.            300     IN      CAA     0 issue "pki.goog; cansignhttpexchanges=yes"
-
-example.com.            300     IN      CAA     0 issue "ssl.com"
-
-example.com.            300     IN      CAA     0 issuewild "letsencrypt.org"
-
-example.com.            300     IN      CAA     0 issuewild "pki.goog; cansignhttpexchanges=yes"
-
-example.com.            300     IN      CAA     0 issuewild "ssl.com"
-
-
+example.com.            300     IN      CAA     0 issue "letsencrypt.org"example.com.            300     IN      CAA     0 issue "pki.goog; cansignhttpexchanges=yes"example.com.            300     IN      CAA     0 issue "ssl.com"example.com.            300     IN      CAA     0 issuewild "letsencrypt.org"example.com.            300     IN      CAA     0 issuewild "pki.goog; cansignhttpexchanges=yes"example.com.            300     IN      CAA     0 issuewild "ssl.com"
 ```
 
 ### Zone holds

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,22 +31,7 @@ For example:
 JavaScript
 
 ```
-
-class MyContainer extends Container {
-
-  defaultPort = 4000;
-
-  envVars = {
-
-    MY_CUSTOM_VAR: "value",
-
-    ANOTHER_VAR: "another_value",
-
-  };
-
-}
-
-
+class MyContainer extends Container {  defaultPort = 4000;  envVars = {    MY_CUSTOM_VAR: "value",    ANOTHER_VAR: "another_value",  };}
 ```
 
 More details about defining environment variables and secrets can be found in [this example](https://developers.cloudflare.com/containers/examples/env-vars-and-secrets).

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/web3/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,7 +20,7 @@ These interactions take place through the official [Ethereum JSON-RPC API ↗](h
 
 ## Availability
 
-| Free                                          | Pro                       | Business                  | Enterprise                |                           |
+|                                               | Free                      | Pro                       | Business                  | Enterprise                |
 | --------------------------------------------- | ------------------------- | ------------------------- | ------------------------- | ------------------------- |
 | Availability                                  | Yes (Usage-based billing) | Yes (Usage-based billing) | Yes (Usage-based billing) | Yes (Usage-based billing) |
 | Total gateways                                | 15                        | 15                        | 15                        | Unlimited                 |

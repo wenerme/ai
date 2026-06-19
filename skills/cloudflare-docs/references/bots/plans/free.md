@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,8 +16,9 @@ To learn more about features and functionality, select a plan.
 
 [ Free ](https://developers.cloudflare.com/bots/plans/free/) [ Pro ](https://developers.cloudflare.com/bots/plans/pro/) [ Business ](https://developers.cloudflare.com/bots/plans/biz-and-ent/) [ Bot Management for Enterprise ](https://developers.cloudflare.com/bots/plans/bm-subscription/) 
 
-| **Plan name**             | Bot Fight Mode                                                                                                                                                                                                                                                                                                                    |
+|                           |                                                                                                                                                                                                                                                                                                                                   |
 | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Plan name**             | Bot Fight Mode                                                                                                                                                                                                                                                                                                                    |
 | **Availability**          | All Free customers                                                                                                                                                                                                                                                                                                                |
 | **Type of bots detected** | Simple bots from cloud hosting providers and headless browsers                                                                                                                                                                                                                                                                    |
 | **Actions**               | Cloudflare issues a computationally expensive challenge                                                                                                                                                                                                                                                                           |

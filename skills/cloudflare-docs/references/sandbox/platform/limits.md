@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Since the Sandbox SDK is built on top of the [Containers](https://developers.cloudflare.com/containers/) platform, it shares the same underlying platform characteristics. Refer to these pages to understand how pricing and limits work for your sandbox deployments.
 
-Sandbox also inherits current Containers lifecycle, placement, and routing behavior. For more detail, refer to [Lifecycle of a Container](https://developers.cloudflare.com/containers/platform-details/architecture/) and[Scaling and Routing](https://developers.cloudflare.com/containers/platform-details/scaling-and-routing/).
+Sandbox also inherits current Containers lifecycle, placement, and routing behavior. For more detail, refer to [Lifecycle of a Container](https://developers.cloudflare.com/containers/platform-details/architecture/) and [Scaling and Routing](https://developers.cloudflare.com/containers/platform-details/scaling-and-routing/).
 
 ## Container limits
 
@@ -37,35 +37,19 @@ When using the Sandbox SDK from Workers or Durable Objects, you are subject to [
 
 Enable WebSocket transport to multiplex all SDK calls over a single persistent connection:
 
-* [  wrangler.jsonc ](#tab-panel-10517)
-* [  wrangler.toml ](#tab-panel-10518)
+* [  wrangler.jsonc ](#tab-panel-10593)
+* [  wrangler.toml ](#tab-panel-10594)
 
 JSONC
 
 ```
-
-{
-
-  "vars": {
-
-    "SANDBOX_TRANSPORT": "websocket"
-
-  },
-
-}
-
-
+{  "vars": {    "SANDBOX_TRANSPORT": "websocket"  },}
 ```
 
 TOML
 
 ```
-
-[vars]
-
-SANDBOX_TRANSPORT = "websocket"
-
-
+[vars]SANDBOX_TRANSPORT = "websocket"
 ```
 
 With WebSocket transport enabled:

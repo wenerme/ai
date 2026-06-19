@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pulumi/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,9 +25,9 @@ You will provision resources that qualify under free tier offerings for both Pul
 Ensure you have:
 
 * A Cloudflare account and API Token with permission to edit the resources in this tutorial. If you need to, sign up for a [Cloudflare account ↗](https://www.cloudflare.com/sign-up) before continuing. Your token must have:  
-   * `Zone-Zone-Edit` permission  
-   * `Zone-DNS-Edit` permission  
-   * `include-All zones from an account-<your account>` zone resource
+  * `Zone-Zone-Edit` permission
+  * `Zone-DNS-Edit` permission
+  * `include-All zones from an account-<your account>` zone resource
 * A Pulumi Cloud account. You can sign up for an [always-free individual tier ↗](https://app.pulumi.com/signup).
 * The [Pulumi CLI](https://developers.cloudflare.com/pulumi/installing/) is installed on your machine.
 * A [Pulumi-supported programming language ↗](https://github.com/pulumi/pulumi?tab=readme-ov-file#languages) is configured. (TypeScript, JavaScript, Python, Go, .NET, Java, or use YAML)
@@ -44,12 +44,7 @@ Use a new and empty directory for this tutorial.
 Terminal window
 
 ```
-
-mkdir addsite-cloudflare
-
-cd addsite-cloudflare
-
-
+mkdir addsite-cloudflarecd addsite-cloudflare
 ```
 
 ### b. Login to Pulumi Cloud
@@ -61,10 +56,7 @@ At the prompt, press Enter to log into your Pulumi Cloud account via the browser
 Terminal window
 
 ```
-
 pulumi login
-
-
 ```
 
 ### c. Create a new program
@@ -73,87 +65,54 @@ A Pulumi program is code written in a [supported programming language ↗](https
 
 To create a program, select your language of choice and run the `pulumi` command:
 
-* [  JavaScript ](#tab-panel-9495)
-* [  TypeScript ](#tab-panel-9496)
-* [  Python ](#tab-panel-9497)
-* [ go ](#tab-panel-9498)
-* [ Java ](#tab-panel-9499)
-* [ .NET ](#tab-panel-9500)
-* [ YAML ](#tab-panel-9501)
+* [  JavaScript ](#tab-panel-9571)
+* [  TypeScript ](#tab-panel-9572)
+* [  Python ](#tab-panel-9573)
+* [ go ](#tab-panel-9574)
+* [ Java ](#tab-panel-9575)
+* [ .NET ](#tab-panel-9576)
+* [ YAML ](#tab-panel-9577)
 
 Terminal window
 
 ```
-
-pulumi new javascript --name addsite-cloudflare --yes
-
-# wait a few seconds while the project is initialized
-
-
+pulumi new javascript --name addsite-cloudflare --yes# wait a few seconds while the project is initialized
 ```
 
 Terminal window
 
 ```
-
-pulumi new typescript --name addsite-cloudflare --yes
-
-# wait a few seconds while the project is initialized
-
-
+pulumi new typescript --name addsite-cloudflare --yes# wait a few seconds while the project is initialized
 ```
 
 Terminal window
 
 ```
-
-pulumi new python --name addsite-cloudflare --yes
-
-# wait a few seconds while the project is initialized
-
-
+pulumi new python --name addsite-cloudflare --yes# wait a few seconds while the project is initialized
 ```
 
 Terminal window
 
 ```
-
-pulumi new go --name addsite-cloudflare --yes
-
-# wait a few seconds while the project is initialized
-
-
+pulumi new go --name addsite-cloudflare --yes# wait a few seconds while the project is initialized
 ```
 
 Terminal window
 
 ```
-
-pulumi new java --name addsite-cloudflare --yes
-
-# wait a few seconds while the project is initialized
-
-
+pulumi new java --name addsite-cloudflare --yes# wait a few seconds while the project is initialized
 ```
 
 Terminal window
 
 ```
-
-pulumi new csharp --name addsite-cloudflare --yes
-
-# wait a few seconds while the project is initialized
-
-
+pulumi new csharp --name addsite-cloudflare --yes# wait a few seconds while the project is initialized
 ```
 
 Terminal window
 
 ```
-
 pulumi new yaml --name addsite-cloudflare --yes
-
-
 ```
 
 ### d. Create a stack
@@ -165,12 +124,7 @@ To instantiate your `dev` stack, run:
 Terminal window
 
 ```
-
-pulumi up --yes
-
-# wait a few seconds for the stack to be instantiated.
-
-
+pulumi up --yes# wait a few seconds for the stack to be instantiated.
 ```
 
 You have not defined any resources at this point, so you'll have an empty stack.
@@ -186,45 +140,20 @@ In this step, you will store your settings in a Pulumi [ESC Environment ↗](htt
 Terminal window
 
 ```
-
-# Define an ESC Environment name
-
-E=cloudflare/my-dev-env
-
-
-# Create a new Pulumi ESC Environment
-
-pulumi config env init --env $E --yes
-
-
+# Define an ESC Environment nameE=cloudflare/my-dev-env
+# Create a new Pulumi ESC Environmentpulumi config env init --env $E --yes
 ```
 
 ```
-
 Creating environment cloudflare/my-dev-env for stack dev...
-
-
 ```
 
 Terminal window
 
 ```
-
-# Replace abc123 with your Cloudflare Account ID
-
-pulumi env set $E --plaintext pulumiConfig.accountId abc123
-
-
-# Replace API_TOKEN with your Cloudflare API Token
-
-pulumi env set $E --secret  pulumiConfig.cloudflare:apiToken API_TOKEN
-
-
-# Replace example.com with your registered domain, or leave as is
-
-pulumi env set $E --plaintext pulumiConfig.domain example.com
-
-
+# Replace abc123 with your Cloudflare Account IDpulumi env set $E --plaintext pulumiConfig.accountId abc123
+# Replace API_TOKEN with your Cloudflare API Tokenpulumi env set $E --secret  pulumiConfig.cloudflare:apiToken API_TOKEN
+# Replace example.com with your registered domain, or leave as ispulumi env set $E --plaintext pulumiConfig.domain example.com
 ```
 
 ### f. Install the Cloudflare package
@@ -233,80 +162,52 @@ You need to install the Cloudflare package for your language of choice in order 
 
 Install the Cloudflare package by running the following command:
 
-* [  JavaScript ](#tab-panel-9502)
-* [  TypeScript ](#tab-panel-9503)
-* [  Python ](#tab-panel-9504)
-* [ go ](#tab-panel-9505)
-* [ Java ](#tab-panel-9506)
-* [ .NET ](#tab-panel-9507)
-* [ YAML ](#tab-panel-9508)
+* [  JavaScript ](#tab-panel-9578)
+* [  TypeScript ](#tab-panel-9579)
+* [  Python ](#tab-panel-9580)
+* [ go ](#tab-panel-9581)
+* [ Java ](#tab-panel-9582)
+* [ .NET ](#tab-panel-9583)
+* [ YAML ](#tab-panel-9584)
 
 Terminal window
 
 ```
-
 npm install @pulumi/cloudflare
-
-
 ```
 
 ```
-
 added 1 package ...
-
-
 ```
 
 Terminal window
 
 ```
-
 npm install @pulumi/cloudflare
-
-
 ```
 
 ```
-
 added 1 package ...
-
-
 ```
 
 Terminal window
 
 ```
-
-echo "pulumi_cloudflare>=5.38,<6.0.0" >> requirements.txt
-
-source venv/bin/activate
-
-pip install -r requirements.txt
-
-
+echo "pulumi_cloudflare>=5.38,<6.0.0" >> requirements.txtsource venv/bin/activatepip install -r requirements.txt
 ```
 
 ```
-
 ...Collecting pulumi-cloudflare...
-
-
 ```
 
 Terminal window
 
 ```
-
 go get github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare
-
-
 ```
 
 ```
-
 go: downloading github.com/pulumi/pulumi-cloudflare ...
-
-
 ```
 
 Below are Apache Maven instructions. For other Java project managers such as Gradle, see the official [Maven repository ↗](https://central.sonatype.com/artifact/com.pulumi/cloudflare/overview)
@@ -315,18 +216,7 @@ Below are Apache Maven instructions. For other Java project managers such as Gra
 2. Add the Pulumi Cloudflare dependency inside the `<dependencies>` section.
 
 ```
-
-<dependency>
-
-    <groupId>com.pulumi</groupId>
-
-    <artifactId>cloudflare</artifactId>
-
-    <version>5.38.0</version>
-
-</dependency>
-
-
+<dependency>    <groupId>com.pulumi</groupId>    <artifactId>cloudflare</artifactId>    <version>5.38.0</version></dependency>
 ```
 
 1. Run:
@@ -334,37 +224,21 @@ Below are Apache Maven instructions. For other Java project managers such as Gra
 Terminal window
 
 ```
-
 mvn clean install
-
-
 ```
 
 ```
-
 ...[INFO] BUILD SUCCESS...
-
-
 ```
 
 Terminal window
 
 ```
-
 dotnet add package Pulumi.Cloudflare
-
-
 ```
 
 ```
-
-...
-
-info : Adding PackageReference for package 'Pulumi.Cloudflare' into project
-
-...
-
-
+...info : Adding PackageReference for package 'Pulumi.Cloudflare' into project...
 ```
 
 There are no dependencies to download for YAML. Skip ahead.
@@ -379,56 +253,23 @@ A domain, or site, is known as a Zone in Cloudflare. In Pulumi, the [Zone resour
 
 Replace the contents of your entrypoint file with the following:
 
-* [  JavaScript ](#tab-panel-9509)
-* [  TypeScript ](#tab-panel-9510)
-* [  Python ](#tab-panel-9511)
-* [ go ](#tab-panel-9512)
-* [ Java ](#tab-panel-9513)
-* [ .NET ](#tab-panel-9514)
-* [ YAML ](#tab-panel-9515)
+* [  JavaScript ](#tab-panel-9585)
+* [  TypeScript ](#tab-panel-9586)
+* [  Python ](#tab-panel-9587)
+* [ go ](#tab-panel-9588)
+* [ Java ](#tab-panel-9589)
+* [ .NET ](#tab-panel-9590)
+* [ YAML ](#tab-panel-9591)
 
 **Filename: `index.js`**
 
 JavaScript
 
 ```
-
-"use strict";
-
-const pulumi = require("@pulumi/pulumi");
-
-const cloudflare = require("@pulumi/cloudflare");
-
-
-const config = new pulumi.Config();
-
-const accountId = config.require("accountId");
-
-const domain = config.require("domain");
-
-
-// Create a Cloudflare resource (Zone)
-
-const zone = new cloudflare.Zone("my-zone", {
-
-  zone: domain,
-
-  accountId: accountId,
-
-  plan: "free",
-
-  jumpStart: true,
-
-});
-
-
-exports.zoneId = zone.id;
-
-exports.nameservers = zone.nameServers;
-
-exports.status = zone.status;
-
-
+"use strict";const pulumi = require("@pulumi/pulumi");const cloudflare = require("@pulumi/cloudflare");
+const config = new pulumi.Config();const accountId = config.require("accountId");const domain = config.require("domain");
+// Create a Cloudflare resource (Zone)const zone = new cloudflare.Zone("my-zone", {  zone: domain,  accountId: accountId,  plan: "free",  jumpStart: true,});
+exports.zoneId = zone.id;exports.nameservers = zone.nameServers;exports.status = zone.status;
 ```
 
 **Filename: `index.ts`**
@@ -436,41 +277,10 @@ exports.status = zone.status;
 TypeScript
 
 ```
-
-import * as pulumi from "@pulumi/pulumi";
-
-import * as cloudflare from "@pulumi/cloudflare";
-
-
-const config = new pulumi.Config();
-
-const accountId = config.require("accountId");
-
-const domain = config.require("domain");
-
-
-// Create a Cloudflare resource (Zone)
-
-const zone = new cloudflare.Zone("my-zone", {
-
-  zone: domain,
-
-  accountId: accountId,
-
-  plan: "free",
-
-  jumpStart: true,
-
-});
-
-
-export const zoneId = zone.id;
-
-export const nameservers = zone.nameServers;
-
-export const status = zone.status;
-
-
+import * as pulumi from "@pulumi/pulumi";import * as cloudflare from "@pulumi/cloudflare";
+const config = new pulumi.Config();const accountId = config.require("accountId");const domain = config.require("domain");
+// Create a Cloudflare resource (Zone)const zone = new cloudflare.Zone("my-zone", {  zone: domain,  accountId: accountId,  plan: "free",  jumpStart: true,});
+export const zoneId = zone.id;export const nameservers = zone.nameServers;export const status = zone.status;
 ```
 
 **Filename: `__main__.py`**
@@ -478,226 +288,43 @@ export const status = zone.status;
 Python
 
 ```
-
-import pulumi
-
-import pulumi_cloudflare as cloudflare
-
-
-account_id = pulumi.Config().require("accountId")
-
-domain = pulumi.Config().require("domain")
-
-
-# Create a Cloudflare resource (Zone)
-
-zone = cloudflare.Zone("my-zone",
-
-    zone=domain,
-
-    account_id=account_id,
-
-    plan="free",
-
-    jump_start=True)
-
-
-pulumi.export("zoneId", zone.id)
-
-pulumi.export('nameservers', zone.name_servers)
-
-pulumi.export('status', zone.status)
-
-
+import pulumiimport pulumi_cloudflare as cloudflare
+account_id = pulumi.Config().require("accountId")domain = pulumi.Config().require("domain")
+# Create a Cloudflare resource (Zone)zone = cloudflare.Zone("my-zone",    zone=domain,    account_id=account_id,    plan="free",    jump_start=True)
+pulumi.export("zoneId", zone.id)pulumi.export('nameservers', zone.name_servers)pulumi.export('status', zone.status)
 ```
 
 **Filename: `main.go`**
 
 ```
-
 package main
-
-
-import (
-
-    "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-
-    cloudflare "github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare"
-
-)
-
-
-func main() {
-
-    pulumi.Run(func(ctx *pulumi.Context) error {
-
-        domain, _ := ctx.GetConfig("domain")
-
-
-        // Create a Cloudflare resource (Zone)
-
-        zone, err := cloudflare.NewZone(ctx, "my-zone", &cloudflare.ZoneArgs{
-
-            Zone:      pulumi.String(domain),
-
-            Plan:      pulumi.String("free"),
-
-            JumpStart: pulumi.Bool(true),
-
-        })
-
-        if err != nil {
-
-            return err
-
-        }
-
-
-        ctx.Export("zoneId", zone.ID())
-
-        ctx.Export("nameservers", zone.NameServers)
-
-        ctx.Export("status", zone.Status)
-
-        return nil
-
-    })
-
-}
-
-
+import (    "github.com/pulumi/pulumi/sdk/v3/go/pulumi"    cloudflare "github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare")
+func main() {    pulumi.Run(func(ctx *pulumi.Context) error {        domain, _ := ctx.GetConfig("domain")
+        // Create a Cloudflare resource (Zone)        zone, err := cloudflare.NewZone(ctx, "my-zone", &cloudflare.ZoneArgs{            Zone:      pulumi.String(domain),            Plan:      pulumi.String("free"),            JumpStart: pulumi.Bool(true),        })        if err != nil {            return err        }
+        ctx.Export("zoneId", zone.ID())        ctx.Export("nameservers", zone.NameServers)        ctx.Export("status", zone.Status)        return nil    })}
 ```
 
 **Filename: `src/main/java/myproject/App.java`**
 
 ```
-
 package myproject;
+import com.pulumi.Pulumi;import com.pulumi.Context;import com.pulumi.cloudflare.ZoneArgs;import com.pulumi.cloudflare.Zone;
 
-
-import com.pulumi.Pulumi;
-
-import com.pulumi.Context;
-
-import com.pulumi.cloudflare.ZoneArgs;
-
-import com.pulumi.cloudflare.Zone;
-
-
-public class App {
-
-    public static void main(String[] args) {
-
-        Pulumi.run(ctx -> {
-
-            var config = ctx.config();
-
-
-            String accountId = config.require("accountId");
-
-            String domain = config.require("domain");
-
-
-            var zone = new Zone("my-zone", ZoneArgs.builder()
-
-                .zone(domain)
-
-                .accountId(accountId)
-
-                .plan("free")
-
-                .jumpStart(true)
-
-                .build());
-
-
-            ctx.export("zoneId", zone.id());
-
-            ctx.export("nameservers", zone.nameServers());
-
-            ctx.export("status", zone.status());
-
-        });
-
-    }
-
-}
-
-
+public class App {    public static void main(String[] args) {        Pulumi.run(ctx -> {            var config = ctx.config();
+            String accountId = config.require("accountId");            String domain = config.require("domain");
+            var zone = new Zone("my-zone", ZoneArgs.builder()                .zone(domain)                .accountId(accountId)                .plan("free")                .jumpStart(true)                .build());
+            ctx.export("zoneId", zone.id());            ctx.export("nameservers", zone.nameServers());            ctx.export("status", zone.status());        });    }}
 ```
 
 **Filename: `Program.cs`**
 
 ```
-
-using System.Threading.Tasks;
-
-using System.Collections.Immutable;
-
-using Pulumi;
-
-using Pulumi.Cloudflare;
-
-
-class Program
-
-{
-
-    static Task<int> Main() => Deployment.RunAsync<MyStack>();
-
-
-    class MyStack : Stack
-
-    {
-
-        public MyStack()
-
-        {
-
-            var config = new Pulumi.Config();
-
-            var accountId = config.Require("accountId");
-
-            var domain = config.Require("domain");
-
-
-            var zone = new Zone("my-zone", new ZoneArgs
-
-            {
-
-                ZoneName = domain,
-
-                AccountId = accountId,
-
-                Plan = "free",
-
-                JumpStart = true
-
-            });
-
-
-            this.ZoneId = zone.Id;
-
-            this.Nameservers = zone.NameServers;
-
-            this.Status = zone.Status;
-
-        }
-
-
-        [Output]
-
-        public Output<string> ZoneId { get; set; }
-
-        public Output<ImmutableArray<string>> Nameservers { get; set; }
-
-        public Output<string> Status { get; set; }
-
-    }
-
-}
-
-
+using System.Threading.Tasks;using System.Collections.Immutable;using Pulumi;using Pulumi.Cloudflare;
+class Program{    static Task<int> Main() => Deployment.RunAsync<MyStack>();
+    class MyStack : Stack    {        public MyStack()        {            var config = new Pulumi.Config();            var accountId = config.Require("accountId");            var domain = config.Require("domain");
+            var zone = new Zone("my-zone", new ZoneArgs            {                ZoneName = domain,                AccountId = accountId,                Plan = "free",                JumpStart = true            });
+            this.ZoneId = zone.Id;            this.Nameservers = zone.NameServers;            this.Status = zone.Status;        }
+        [Output]        public Output<string> ZoneId { get; set; }        public Output<ImmutableArray<string>> Nameservers { get; set; }        public Output<string> Status { get; set; }    }}
 ```
 
 **Filename: `Pulumi.yaml`**
@@ -705,37 +332,8 @@ class Program
 YAML
 
 ```
-
-name: addsite-cloudflare
-
-runtime: yaml
-
-resources:
-
-  myZone:
-
-    type: cloudflare:Zone
-
-    properties:
-
-      zone: ${domain}
-
-      accountId: ${accountId}
-
-      plan: "free"
-
-      jumpStart: true
-
-
-outputs:
-
-  zoneId: ${myZone.id}
-
-  nameservers: ${exampleZone.nameServers}
-
-  status: ${exampleZone.status}
-
-
+name: addsite-cloudflareruntime: yamlresources:  myZone:    type: cloudflare:Zone    properties:      zone: ${domain}      accountId: ${accountId}      plan: "free"      jumpStart: true
+outputs:  zoneId: ${myZone.id}  nameservers: ${exampleZone.nameServers}  status: ${exampleZone.status}
 ```
 
 Notice that the code also outputs several properties from the Zone resource, such as the `zoneId`, `nameservers`, and `status`, so that they can easily be accessed in subsequent steps.
@@ -746,35 +344,20 @@ You will now add a DNS [Record resource ↗](https://www.pulumi.com/registry/pac
 
 Add the following code snippet to your entrypoint file **after** the Zone resource definition:
 
-* [  JavaScript ](#tab-panel-9516)
-* [  TypeScript ](#tab-panel-9517)
-* [  Python ](#tab-panel-9518)
-* [ go ](#tab-panel-9519)
-* [ Java ](#tab-panel-9520)
-* [ .NET ](#tab-panel-9521)
-* [ YAML ](#tab-panel-9522)
+* [  JavaScript ](#tab-panel-9592)
+* [  TypeScript ](#tab-panel-9593)
+* [  Python ](#tab-panel-9594)
+* [ go ](#tab-panel-9595)
+* [ Java ](#tab-panel-9596)
+* [ .NET ](#tab-panel-9597)
+* [ YAML ](#tab-panel-9598)
 
 **Filename: `index.js`**
 
 JavaScript
 
 ```
-
-const record = new cloudflare.Record("my-record", {
-
-  zoneId: zone.id,
-
-  name: domain,
-
-  content: "192.0.2.1",
-
-  type: "A",
-
-  proxied: true,
-
-});
-
-
+const record = new cloudflare.Record("my-record", {  zoneId: zone.id,  name: domain,  content: "192.0.2.1",  type: "A",  proxied: true,});
 ```
 
 **Filename: `index.ts`**
@@ -782,22 +365,7 @@ const record = new cloudflare.Record("my-record", {
 TypeScript
 
 ```
-
-const record = new cloudflare.Record("my-record", {
-
-  zoneId: zone.id,
-
-  name: domain,
-
-  content: "192.0.2.1",
-
-  type: "A",
-
-  proxied: true,
-
-});
-
-
+const record = new cloudflare.Record("my-record", {  zoneId: zone.id,  name: domain,  content: "192.0.2.1",  type: "A",  proxied: true,});
 ```
 
 **Filename: `__main__.py`**
@@ -805,102 +373,26 @@ const record = new cloudflare.Record("my-record", {
 Python
 
 ```
-
-record = cloudflare.Record("my-record",
-
-    zone_id=zone.id,
-
-    name=domain,
-
-    content="192.0.2.1",
-
-    type="A",
-
-    proxied=True
-
-)
-
-
+record = cloudflare.Record("my-record",    zone_id=zone.id,    name=domain,    content="192.0.2.1",    type="A",    proxied=True)
 ```
 
 **Filename: `main.go`**
 
 ```
-
-    _, err = cloudflare.NewRecord(ctx, "my-record", &cloudflare.RecordArgs{
-
-      ZoneId:  zone.ID(),
-
-      Name:    pulumi.String(domain),
-
-      Content:   pulumi.String("192.0.2.1"),
-
-      Type:    pulumi.String("A"),
-
-      Proxied: pulumi.Bool(true),
-
-    })
-
-    if err != nil {
-
-      return err
-
-    }
-
-
+    _, err = cloudflare.NewRecord(ctx, "my-record", &cloudflare.RecordArgs{      ZoneId:  zone.ID(),      Name:    pulumi.String(domain),      Content:   pulumi.String("192.0.2.1"),      Type:    pulumi.String("A"),      Proxied: pulumi.Bool(true),    })    if err != nil {      return err    }
 ```
 
 **Filename: `src/main/java/myproject/App.java`**
 
 ```
-
-// Add imports
-
-import com.pulumi.cloudflare.Record;
-
-import com.pulumi.cloudflare.RecordArgs;
-
-
-// Below the Zone resource, add
-
-new Record("my-record", RecordArgs.builder()
-
-.zoneId(zone.id())
-
-.name(domain)
-
-.content("192.0.2.1")
-
-.type("A")
-
-.proxied(true)
-
-.build());
-
-
+// Add importsimport com.pulumi.cloudflare.Record;import com.pulumi.cloudflare.RecordArgs;
+// Below the Zone resource, addnew Record("my-record", RecordArgs.builder().zoneId(zone.id()).name(domain).content("192.0.2.1").type("A").proxied(true).build());
 ```
 
 **Filename: `Program.cs`**
 
 ```
-
-new Record("my-record", new RecordArgs
-
-{
-
-    ZoneId = zone.Id,
-
-    Name = domain,
-
-    Content = "192.0.2.1",
-
-    Type = "A",
-
-    Proxied = true
-
-});
-
-
+new Record("my-record", new RecordArgs{    ZoneId = zone.Id,    Name = domain,    Content = "192.0.2.1",    Type = "A",    Proxied = true});
 ```
 
 **Filename: `Pulumi.yaml`**
@@ -908,24 +400,7 @@ new Record("my-record", new RecordArgs
 YAML
 
 ```
-
-myRecord:
-
-  type: cloudflare:Record
-
-  properties:
-
-    zoneId: ${myZone.id}
-
-    name: ${domain}
-
-    content: 192.0.2.1
-
-    type: A
-
-    proxied: true
-
-
+myRecord:  type: cloudflare:Record  properties:    zoneId: ${myZone.id}    name: ${domain}    content: 192.0.2.1    type: A    proxied: true
 ```
 
 ## 3\. Deploy your changes
@@ -937,17 +412,11 @@ To deploy the changes, run:
 Terminal window
 
 ```
-
 pulumi up --yes
-
-
 ```
 
 ```
-
 wait for the dev stack to become ready
-
-
 ```
 
 ## 4\. Configure your DNS provider
@@ -971,10 +440,7 @@ To retrieve the assigned `nameservers`, run:
 Terminal window
 
 ```
-
 pulumi stack output
-
-
 ```
 
 ### b. Update your registrar
@@ -992,10 +458,7 @@ Once successfully registered, your domain `status` will change to `active`.
 Terminal window
 
 ```
-
 pulumi stack output
-
-
 ```
 
 ## 5\. Test your site
@@ -1007,18 +470,7 @@ To test your site, run:
 Terminal window
 
 ```
-
-DOMAIN=$(pulumi config get domain)
-
-NS1=$(pulumi stack output nameservers | jq '.[0]' -r)
-
-NS2=$(pulumi stack output nameservers | jq '.[1]' -r)
-
-nslookup $DOMAIN $NS1
-
-nslookup $DOMAIN $NS2
-
-
+DOMAIN=$(pulumi config get domain)NS1=$(pulumi stack output nameservers | jq '.[0]' -r)NS2=$(pulumi stack output nameservers | jq '.[1]' -r)nslookup $DOMAIN $NS1nslookup $DOMAIN $NS2
 ```
 
 For .NET, use `Nameservers` as the Output.
@@ -1038,10 +490,7 @@ In this last step, you will remove the resources and stack used throughout the t
 Terminal window
 
 ```
-
 pulumi destroy --yes
-
-
 ```
 
 ### b. Remove the stack
@@ -1049,10 +498,7 @@ pulumi destroy --yes
 Terminal window
 
 ```
-
 pulumi stack rm dev
-
-
 ```
 
 ## Next steps

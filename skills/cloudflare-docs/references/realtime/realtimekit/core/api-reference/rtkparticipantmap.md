@@ -5,7 +5,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -14,11 +14,11 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 This is a map of participants, indexed by `participant.id` (a participant's peer ID). This map emits an event whenever a participant present in the map emits an event. For example, when a participant is added to this map, a `participantJoined` event is emitted from the map. When a participant object emits an event `videoUpdate`, the map re-emits that event (provided the participant is present in the map).
 
 * [RTKParticipantMap](#module%5FRTKParticipantMap)  
-   * [module.exports](#exp%5Fmodule%5FRTKParticipantMap--module.exports) ⏏  
-         * [new module.exports(logger, \[options\])](#new%5Fmodule%5FRTKParticipantMap--module.exports%5Fnew)  
-         * [.add(participant, \[emitEvent\])](#module%5FRTKParticipantMap--module.exports+add)  
-         * [.clear(\[emitEvent\], \[removeListeners\])](#module%5FRTKParticipantMap--module.exports+clear)  
-         * [.delete(participantId, \[emitEvent\], \[removeListeners\])](#module%5FRTKParticipantMap--module.exports+delete)
+  * [module.exports](#exp%5Fmodule%5FRTKParticipantMap--module.exports) ⏏  
+    * [new module.exports(logger, \[options\])](#new%5Fmodule%5FRTKParticipantMap--module.exports%5Fnew)
+    * [.add(participant, \[emitEvent\])](#module%5FRTKParticipantMap--module.exports+add)
+    * [.clear(\[emitEvent\], \[removeListeners\])](#module%5FRTKParticipantMap--module.exports+clear)
+    * [.delete(participantId, \[emitEvent\], \[removeListeners\])](#module%5FRTKParticipantMap--module.exports+delete)
 
 ### module.exports ⏏
 

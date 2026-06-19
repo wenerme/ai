@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,45 +31,15 @@ A component which shows a participant's name.
 ### Basic Usage
 
 ```
-
 import { RtkNameTag } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return <RtkNameTag />;
-
-}
-
-
+function MyComponent() {  return <RtkNameTag />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkNameTag } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkNameTag
-
-      isScreenShare={true}
-
-      meeting={meeting}
-
-      participant={participant}
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkNameTag      isScreenShare={true}      meeting={meeting}      participant={participant}    />  );}
 ```
 
 ```json

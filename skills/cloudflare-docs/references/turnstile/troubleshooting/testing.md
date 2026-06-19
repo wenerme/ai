@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -63,17 +63,8 @@ Cloudflare recommends that sitekeys used in production do not allow local domain
 Replace your production sitekey with a test sitekey.
 
 ```
-
-<!-- Development/Testing -->
-
-<div class="cf-turnstile" data-sitekey="1x00000000000000000000AA"></div>
-
-
-<!-- Production -->
-
-<div class="cf-turnstile" data-sitekey="your-real-sitekey"></div>
-
-
+<!-- Development/Testing --><div class="cf-turnstile" data-sitekey="1x00000000000000000000AA"></div>
+<!-- Production --><div class="cf-turnstile" data-sitekey="your-real-sitekey"></div>
 ```
 
 ### Server-side testing
@@ -83,21 +74,8 @@ Replace your production secret key with a test secret key.
 JavaScript
 
 ```
-
-// Environment-based configuration
-
-const SECRET_KEY = process.env.NODE_ENV === 'production'
-
-  ? process.env.TURNSTILE_SECRET_KEY
-
-  : '1x0000000000000000000000000000000AA';
-
-
-// Use in validation
-
-const validation = await validateTurnstile(token, SECRET_KEY);
-
-
+// Environment-based configurationconst SECRET_KEY = process.env.NODE_ENV === 'production'  ? process.env.TURNSTILE_SECRET_KEY  : '1x0000000000000000000000000000000AA';
+// Use in validationconst validation = await validateTurnstile(token, SECRET_KEY);
 ```
 
 ### Environment configuration
@@ -107,28 +85,9 @@ Set up different keys for different environments.
 Terminal window
 
 ```
-
-# .env.development
-
-TURNSTILE_SITEKEY=1x00000000000000000000AA
-
-TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA
-
-
-# .env.test
-
-TURNSTILE_SITEKEY=2x00000000000000000000AB
-
-TURNSTILE_SECRET_KEY=2x0000000000000000000000000000000AA
-
-
-# .env.production
-
-TURNSTILE_SITEKEY=your-real-sitekey
-
-TURNSTILE_SECRET_KEY=your-real-secret-key
-
-
+# .env.developmentTURNSTILE_SITEKEY=1x00000000000000000000AATURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA
+# .env.testTURNSTILE_SITEKEY=2x00000000000000000000ABTURNSTILE_SECRET_KEY=2x0000000000000000000000000000000AA
+# .env.productionTURNSTILE_SITEKEY=your-real-sitekeyTURNSTILE_SECRET_KEY=your-real-secret-key
 ```
 
 ---
@@ -153,54 +112,19 @@ Production secret keys will reject the dummy token. You must also use a dummy se
 Success response
 
 ```
-
-{
-
-  "success": true,
-
-  "challenge_ts": "2022-02-28T15:14:30.096Z",
-
-  "hostname": "localhost",
-
-  "error-codes": [],
-
-  "action": "test",
-
-  "cdata": "test-data"
-
-}
-
-
+{  "success": true,  "challenge_ts": "2022-02-28T15:14:30.096Z",  "hostname": "localhost",  "error-codes": [],  "action": "test",  "cdata": "test-data"}
 ```
 
 Failure response
 
 ```
-
-{
-
-  "success": false,
-
-  "error-codes": ["invalid-input-response"]
-
-}
-
-
+{  "success": false,  "error-codes": ["invalid-input-response"]}
 ```
 
 Token already redeemed
 
 ```
-
-{
-
-  "success": false,
-
-  "error-codes": ["timeout-or-duplicate"]
-
-}
-
-
+{  "success": false,  "error-codes": ["timeout-or-duplicate"]}
 ```
 
 ---

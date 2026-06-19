@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,14 +22,15 @@ To add a new Sender Group:
 
 1. Go to **Mail Policies** \> **HAT Overview**.
 2. Select the **Add Sender Group** button.
-3. Configure the new Sender Group as follows:  
-   * **Name**: `Email security`.  
-   * **Order**: Order above the existing **WHITELIST** sender group.  
-   * **Comment**: `Email security Email Protection egress IP Addresses`.  
-   * **Policy**: `TRUSTED` (by default, spam detection is disabled for this mail flow policy).  
-   * **SBRS**: Leave blank.  
-   * **DNS Lists**: Leave blank.  
-   * **Connecting Host DNS Verification**: Leave all options unchecked.
+3. Configure the new Sender Group as follows:
+
+  * **Name**: `Email security`.
+  * **Order**: Order above the existing **WHITELIST** sender group.
+  * **Comment**: `Email security Email Protection egress IP Addresses`.
+  * **Policy**: `TRUSTED` (by default, spam detection is disabled for this mail flow policy).
+  * **SBRS**: Leave blank.
+  * **DNS Lists**: Leave blank.
+  * **Connecting Host DNS Verification**: Leave all options unchecked.
 4. Select **Submit and Add Senders**, and add the IP addresses mentioned in [Egress IPs](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/egress-ips/). If you need to process emails in the EU or India regions for compliance purposes, add those IP addresses as well.
 
 ## 2\. Add SMTP route for the Email security Email Protection Hosts
@@ -38,9 +39,10 @@ To add a new SMTP Route:
 
 1. Go to **Network** \> **SMTP Routes**.
 2. Select **Add Route**.
-3. Configure the new SMTP Route as follows:  
-   * **Receiving Domain**: `a1s.mailstream`  
-   * In **Destination Hosts**, select **Add Row**, and add the Email security MX hosts. Refer to the [Geographic locations](#5-geographic-locations) table for more information on which MX hosts to use.
+3. Configure the new SMTP Route as follows:
+
+  * **Receiving Domain**: `a1s.mailstream`
+  * In **Destination Hosts**, select **Add Row**, and add the Email security MX hosts. Refer to the [Geographic locations](#5-geographic-locations) table for more information on which MX hosts to use.
 
 ## 3\. Create Incoming Content Filters
 
@@ -55,14 +57,15 @@ To create a new Content Filter:
 
 1. Go to **Mail Policies** \> **Incoming Content Filters**.
 2. Select **Add Filter** to create a new filter.
-3. Configure the new Incoming Content Filter as follows:  
-   * **Name**: `ESA_to_A1S`  
-   * **Description**: `Redirect messages to Email security for anti-phishing inspection`  
-   * **Order**: This will depend on your other filters.  
-   * **Condition**: No conditions.  
-   * **Actions**:  
-         * For **Action** select **Send to Alternate Destination Host**.  
-         * For **Mail Host** input `a1s.mailstream` (the SMTP route configured in step 2).
+3. Configure the new Incoming Content Filter as follows:
+
+  * **Name**: `ESA_to_A1S`
+  * **Description**: `Redirect messages to Email security for anti-phishing inspection`
+  * **Order**: This will depend on your other filters.
+  * **Condition**: No conditions.
+  * **Actions**:  
+    * For **Action** select **Send to Alternate Destination Host**.
+    * For **Mail Host** input `a1s.mailstream` (the SMTP route configured in step 2).
 
 ### Incoming Content Filter - From Email security
 
@@ -70,25 +73,29 @@ To create a new Content Filter:
 
 1. Go to **Mail Policies** \> **Incoming Content Filters**.
 2. Select the **Add Filter** button to create a new filter.
-3. Configure the new Incoming Content Filter as follows:  
-   * **Name**: `A1S_to_ESA`  
-   * **Description**: `Email security inspected messages for final delivery`  
-   * **Order**: This filter must come before the previously created filter.  
-   * **Conditions**: Add conditions of type **Remote IP/Hostname** with all the IP addresses mentioned in [Egress IPs](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/egress-ips/). For example:  
-| Order | Condition          | Rule               |  
-| ----- | ------------------ | ------------------ |  
-| 1     | Remote IP/Hostname | Remote IP/Hostname |  
-| 2     | Remote IP/Hostname | 52.89.255.11       |  
-| 3     | Remote IP/Hostname | 52.0.67.109        |  
-| 4     | Remote IP/Hostname | 54.173.50.115      |  
-| 5     | Remote IP/Hostname | 104.30.32.0/19     |  
-| 6     | Remote IP/Hostname | 158.51.64.0/26     |  
-| 7     | Remote IP/Hostname | 158.51.65.0/26     |  
-   * Ensure that the _Apply rule:_ dropdown is set to **If one or more conditions match**.  
-   * **Actions**: Select **Add Action**, and add the following:  
-   | Order | Action                                        | Rule           |  
-   | ----- | --------------------------------------------- | -------------- |  
-   | \--1  | Skip Remaining Content Filters (Final Action) | skip-filters() |
+3. Configure the new Incoming Content Filter as follows:
+
+  * **Name**: `A1S_to_ESA`
+  * **Description**: `Email security inspected messages for final delivery`
+  * **Order**: This filter must come before the previously created filter.
+  * **Conditions**: Add conditions of type **Remote IP/Hostname** with all the IP addresses mentioned in [Egress IPs](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/egress-ips/). For example:
+
+| Order | Condition          | Rule               |
+| ----- | ------------------ | ------------------ |
+| 1     | Remote IP/Hostname | Remote IP/Hostname |
+| 2     | Remote IP/Hostname | 52.89.255.11       |
+| 3     | Remote IP/Hostname | 52.0.67.109        |
+| 4     | Remote IP/Hostname | 54.173.50.115      |
+| 5     | Remote IP/Hostname | 104.30.32.0/19     |
+| 6     | Remote IP/Hostname | 158.51.64.0/26     |
+| 7     | Remote IP/Hostname | 158.51.65.0/26     |
+
+  * Ensure that the _Apply rule:_ dropdown is set to **If one or more conditions match**.
+  * **Actions**: Select **Add Action**, and add the following:  
+
+| Order | Action                                        | Rule           |
+| ----- | --------------------------------------------- | -------------- |
+| \--1  | Skip Remaining Content Filters (Final Action) | skip-filters() |
 
 ## 4\. Add the Incoming Content Filter to the Inbound Policy table
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/web3/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -45,19 +45,13 @@ It's common for people who run an IPFS node on their home Wi-Fi to have very lon
 If several minutes have passed since files were uploaded to an IPFS node and they're still not discoverable by other gateways, it's possible the node is having trouble announcing the files to the rest of the network. You can make sure the node with the content has pinned it by running:
 
 ```
-
 ipfs pin -r <content id>
-
-
 ```
 
 And you can force the actual announcement by running:
 
 ```
-
 ipfs dht provide -rv <content id>
-
-
 ```
 
 The second command will run indefinitely and has quite complicated output, so you may want to run it in the background and omit the `-v` flag.

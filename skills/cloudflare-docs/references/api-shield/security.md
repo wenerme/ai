@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -14,13 +14,13 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Cloudflare offers the following features to help secure your APIs:
 
-| Discovery & management                                                                                                         | Posture management                                                                                                  | Runtime protection                                                                                |
-| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| [API Discovery](https://developers.cloudflare.com/api-shield/security/api-discovery/)                                          | [Volumetric Abuse Detection](https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/)     | [Schema validation](https://developers.cloudflare.com/api-shield/security/schema-validation/)     |
-| [Schema learning](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/) | [Authentication Posture](https://developers.cloudflare.com/api-shield/security/authentication-posture/)             | [JWT validation](https://developers.cloudflare.com/api-shield/security/jwt-validation/)           |
-| [Sequence Analytics](https://developers.cloudflare.com/api-shield/security/sequence-analytics/)                                | [BOLA vulnerability detection](https://developers.cloudflare.com/api-shield/security/bola-vulnerability-detection/) | [Sequence mitigation](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/) |
-| [Risk labels](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/#risk-labels)             | [Mutual TLS (mTLS)](https://developers.cloudflare.com/api-shield/security/mtls/)                                    |                                                                                                   |
-| [Vulnerability Scanner](https://developers.cloudflare.com/api-shield/security/vulnerability-scanner/)                          | [GraphQL query protection](https://developers.cloudflare.com/api-shield/security/graphql-protection/)               |                                                                                                   |
+| Discovery & management                                                                                                         | Posture management                                                                                                  | Runtime protection                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| [API Discovery](https://developers.cloudflare.com/api-shield/security/api-discovery/)                                          | [Volumetric Abuse Detection](https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/)     | [Schema validation](https://developers.cloudflare.com/api-shield/security/schema-validation/)         |
+| [Schema learning](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/) | [Authentication Posture](https://developers.cloudflare.com/api-shield/security/authentication-posture/)             | [JWT validation](https://developers.cloudflare.com/api-shield/security/jwt-validation/)               |
+| [Sequence Analytics](https://developers.cloudflare.com/api-shield/security/sequence-analytics/)                                | [BOLA vulnerability detection](https://developers.cloudflare.com/api-shield/security/bola-vulnerability-detection/) | [Sequence mitigation](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/)     |
+|                                                                                                                                | [Risk labels](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/#risk-labels)  | [Mutual TLS (mTLS)](https://developers.cloudflare.com/api-shield/security/mtls/)                      |
+|                                                                                                                                | [Vulnerability Scanner](https://developers.cloudflare.com/api-shield/security/vulnerability-scanner/)               | [GraphQL query protection](https://developers.cloudflare.com/api-shield/security/graphql-protection/) |
 
 ## Example Cloudflare solutions
 

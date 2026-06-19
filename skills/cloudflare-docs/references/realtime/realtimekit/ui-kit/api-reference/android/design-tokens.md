@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,48 +29,7 @@ The top-level design token container for customizing the look and feel of all UI
 Kotlin
 
 ```
-
-val designTokens = RtkDesignTokens(
-
-    colors = RtkColorTokens(
-
-        brand = BrandColor(
-
-            shade300 = Color.parseColor("#497CFD"),
-
-            shade400 = Color.parseColor("#356EFD"),
-
-            shade500 = Color.parseColor("#2160FD"),
-
-            shade600 = Color.parseColor("#0D52FD"),
-
-            shade700 = Color.parseColor("#0046E5")
-
-        ),
-
-        background = BackgroundColor(
-
-            shade600 = Color.parseColor("#2C2C2C"),
-
-            shade700 = Color.parseColor("#242424"),
-
-            shade800 = Color.parseColor("#1C1C1C"),
-
-            shade900 = Color.parseColor("#141414"),
-
-            shade1000 = Color.parseColor("#0C0C0C")
-
-        )
-
-    ),
-
-    borderRadius = RtkBorderRadiusToken.Rounded,
-
-    borderWidth = RtkBorderWidthToken.Thin
-
-)
-
-
+val designTokens = RtkDesignTokens(    colors = RtkColorTokens(        brand = BrandColor(            shade300 = Color.parseColor("#497CFD"),            shade400 = Color.parseColor("#356EFD"),            shade500 = Color.parseColor("#2160FD"),            shade600 = Color.parseColor("#0D52FD"),            shade700 = Color.parseColor("#0046E5")        ),        background = BackgroundColor(            shade600 = Color.parseColor("#2C2C2C"),            shade700 = Color.parseColor("#242424"),            shade800 = Color.parseColor("#1C1C1C"),            shade900 = Color.parseColor("#141414"),            shade1000 = Color.parseColor("#0C0C0C")        )    ),    borderRadius = RtkBorderRadiusToken.Rounded,    borderWidth = RtkBorderWidthToken.Thin)
 ```
 
 ```json

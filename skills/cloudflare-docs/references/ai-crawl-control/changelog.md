@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-crawl-control/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -303,27 +303,8 @@ For users on paid plans, when blocking AI crawlers you can configure:
 Example 402 response:
 
 ```
-
-HTTP 402 Payment Required
-
-Date: Mon, 24 Aug 2025 12:56:49 GMT
-
-Content-type: application/json
-
-Server: cloudflare
-
-Cf-Ray: 967e8da599d0c3fa-EWR
-
-Cf-Team: 2902f6db750000c3fa1e2ef400000001
-
-
-{
-
-  "message": "Please contact the site owner for access."
-
-}
-
-
+HTTP 402 Payment RequiredDate: Mon, 24 Aug 2025 12:56:49 GMTContent-type: application/jsonServer: cloudflareCf-Ray: 967e8da599d0c3fa-EWRCf-Team: 2902f6db750000c3fa1e2ef400000001
+{  "message": "Please contact the site owner for access."}
 ```
 
 ## 2025-07-01

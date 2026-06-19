@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,8 +28,8 @@ When setting up internal zones, observe the following conditions:
 
 ## Create an internal zone
 
-* [ Dashboard ](#tab-panel-8087)
-* [ API ](#tab-panel-8088)
+* [ Dashboard ](#tab-panel-8163)
+* [ API ](#tab-panel-8164)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.  
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)
@@ -50,35 +50,14 @@ Example
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone Zone Edit`
 * `Zone DNS Edit`
 
 Create Zone
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "account": {
-
-        "id": "<ACCOUNT_ID>"
-
-    },
-
-    "name": "<ZONE_NAME>",
-
-    "type": "internal"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "account": {        "id": "<ACCOUNT_ID>"    },    "name": "<ZONE_NAME>",    "type": "internal"  }'
 ```
 
 1. Add DNS records to your internal zone using your preferred option:

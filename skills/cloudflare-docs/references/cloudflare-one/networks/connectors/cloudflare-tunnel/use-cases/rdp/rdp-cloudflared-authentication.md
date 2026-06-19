@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -42,11 +42,11 @@ Note
 If the client machine is running Windows, port `3389` may already be consumed locally. Select an alternative port to `3389` that is not being used.
 
 1. While `cloudflared access` is running, connect from an RDP client such as Microsoft Remote Desktop:  
-   1. Open Microsoft Remote Desktop and select **Add a PC**.  
-   2. For **PC name**, enter `localhost:3389`.  
-   3. For **User account**, enter your RDP server username and password.  
-   4. Double-click the newly added PC.  
-   5. When asked if you want to continue, select **Continue**.
+  1. Open Microsoft Remote Desktop and select **Add a PC**.
+  2. For **PC name**, enter `localhost:3389`.
+  3. For **User account**, enter your RDP server username and password.
+  4. Double-click the newly added PC.
+  5. When asked if you want to continue, select **Continue**.
 
 When the client launches, a browser window will open and prompt the user to authenticate with Cloudflare Access.
 

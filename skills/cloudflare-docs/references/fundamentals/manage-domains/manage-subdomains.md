@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,9 +26,10 @@ If you have already added a subdomain at your host, create a corresponding [DNS 
 
 Sometimes, you might want all traffic to a subdomain (`www.example.com`) to actually go to your apex domain (`example.com`).
 
-1. Create a [proxied DNS A record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) for your subdomain. This record can point to any IP address since all traffic will be redirected prior to reaching the address.  
-| **Type** | **Name** | **IPv4 address** | **Proxy status** |  
-| -------- | -------- | ---------------- | ---------------- |  
+1. Create a [proxied DNS A record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) for your subdomain. This record can point to any IP address since all traffic will be redirected prior to reaching the address.
+
+| **Type** | **Name** | **IPv4 address** | **Proxy status** |
+| -------- | -------- | ---------------- | ---------------- |
 | A        | www      | 192.0.2.1        | Proxied          |
 2. Create a [Single Redirect](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-dashboard/) to forward traffic from your subdomain to your apex domain.
 
@@ -48,9 +49,10 @@ Using the Expression Editor:
 Sometimes, you might want all traffic to your apex domain (`example.com`) to actually go to a subdomain (`www.example.com`).
 
 1. If you have already added that subdomain at your host, create a corresponding [DNS A or CNAME record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) for that subdomain.
-2. Create a proxied DNS A record for your apex domain. This record can point to any IP address since all traffic will be redirected prior to reaching the address.  
-| **Type** | **Name** | **IPv4 address** | **Proxy status** |  
-| -------- | -------- | ---------------- | ---------------- |  
+2. Create a proxied DNS A record for your apex domain. This record can point to any IP address since all traffic will be redirected prior to reaching the address.
+
+| **Type** | **Name** | **IPv4 address** | **Proxy status** |
+| -------- | -------- | ---------------- | ---------------- |
 | A        | @        | 192.0.2.1        | Proxied          |
 3. Create a [Single Redirect](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-dashboard/) to forward traffic from your apex domain to your subdomain.
 

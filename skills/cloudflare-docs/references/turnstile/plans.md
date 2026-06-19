@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,7 +32,7 @@ The Enterprise plan is best for:
 * Organizations requiring custom branding, companies with strict compliance requirements
 * Multi-domain or complex hosting environments
 
-| Free                                                    | Enterprise              |                                     |
+|                                                         | Free                    | Enterprise                          |
 | ------------------------------------------------------- | ----------------------- | ----------------------------------- |
 | Pricing                                                 | Free                    | Contact Sales                       |
 | Number of widgets                                       | Up to 20 widgets        | Unlimited                           |

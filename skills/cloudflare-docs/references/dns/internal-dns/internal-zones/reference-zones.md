@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,8 +27,8 @@ A wildcard record (`*.example.local`) in the matching internal zone will take pr
 
 ## Set up
 
-* [ Dashboard ](#tab-panel-8085)
-* [ API ](#tab-panel-8086)
+* [ Dashboard ](#tab-panel-8161)
+* [ API ](#tab-panel-8162)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.  
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)
@@ -43,31 +43,14 @@ In the following example, internal zone A (ID `8a904aeb565c42cfa207d98f6edea2f3`
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone DNS Settings Write`
 * `DNS Write`
 
 Update DNS Settings
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/8a904aeb565c42cfa207d98f6edea2f3/dns_settings" \
-
-  --request PATCH \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "internal_dns": {
-
-        "reference_zone_id": "8e64c6fb4b514f3faf64de81efc11e51"
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/8a904aeb565c42cfa207d98f6edea2f3/dns_settings" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "internal_dns": {        "reference_zone_id": "8e64c6fb4b514f3faf64de81efc11e51"    }  }'
 ```
 
 A third zone (C) could also point to zone B as a reference, but zone A cannot add another zone as a reference while also having zone B configured as its reference zone.

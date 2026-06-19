@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,82 +20,28 @@ You can use [node:net ↗](https://nodejs.org/api/net.html) to create a direct c
 
 These functions use [connect](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#connect) functionality from the built-in `cloudflare:sockets` module.
 
-* [  JavaScript ](#tab-panel-12013)
-* [  TypeScript ](#tab-panel-12014)
+* [  JavaScript ](#tab-panel-12030)
+* [  TypeScript ](#tab-panel-12031)
 
 index.js
 
 ```
-
 import net from "node:net";
-
-
 const exampleIP = "127.0.0.1";
-
-
-export default {
-
-  async fetch(req) {
-
-    const socket = new net.Socket();
-
-    socket.connect(4000, exampleIP, function () {
-
-      console.log("Connected");
-
-    });
-
-
-    socket.write("Hello, Server!");
-
-    socket.end();
-
-
-    return new Response("Wrote to server", { status: 200 });
-
-  },
-
-};
-
-
+export default {  async fetch(req) {    const socket = new net.Socket();    socket.connect(4000, exampleIP, function () {      console.log("Connected");    });
+    socket.write("Hello, Server!");    socket.end();
+    return new Response("Wrote to server", { status: 200 });  },};
 ```
 
 index.ts
 
 ```
-
 import net from "node:net";
-
-
 const exampleIP = "127.0.0.1";
-
-
-export default {
-
-  async fetch(req): Promise<Response> {
-
-    const socket = new net.Socket();
-
-    socket.connect(4000, exampleIP, function () {
-
-      console.log("Connected");
-
-    });
-
-
-    socket.write("Hello, Server!");
-
-    socket.end();
-
-
+export default {  async fetch(req): Promise<Response> {    const socket = new net.Socket();    socket.connect(4000, exampleIP, function () {      console.log("Connected");    });
+    socket.write("Hello, Server!");    socket.end();
     return new Response("Wrote to server", { status: 200 });
-
-
-},
-
-} satisfies ExportedHandler;
-
-
+},} satisfies ExportedHandler;
 ```
 
 Additionally, other APIs such as [net.BlockList ↗](https://nodejs.org/api/net.html#class-netblocklist)and [net.SocketAddress ↗](https://nodejs.org/api/net.html#class-netsocketaddress) are available.

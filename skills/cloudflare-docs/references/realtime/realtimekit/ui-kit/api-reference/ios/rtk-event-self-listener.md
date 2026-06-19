@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -46,27 +46,10 @@ A helper class that wraps self-participant and meeting event listeners with clos
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
 let listener = RtkEventSelfListener(rtkClient: rtkClient)
-
-
-listener.observeSelfAudio { isEnabled in
-
-    print("Audio enabled: \(isEnabled)")
-
-}
-
-
-listener.observeSelfVideo { isEnabled in
-
-    print("Video enabled: \(isEnabled)")
-
-}
-
-
+listener.observeSelfAudio { isEnabled in    print("Audio enabled: \(isEnabled)")}
+listener.observeSelfVideo { isEnabled in    print("Video enabled: \(isEnabled)")}
 ```
 
 ### Toggle audio and video
@@ -74,27 +57,10 @@ listener.observeSelfVideo { isEnabled in
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
 let listener = RtkEventSelfListener(rtkClient: rtkClient)
-
-
-listener.toggleLocalAudio { success in
-
-    print("Audio toggled: \(success)")
-
-}
-
-
-listener.toggleLocalVideo { success in
-
-    print("Video toggled: \(success)")
-
-}
-
-
+listener.toggleLocalAudio { success in    print("Audio toggled: \(success)")}
+listener.toggleLocalVideo { success in    print("Video toggled: \(success)")}
 ```
 
 ### Observe meeting end
@@ -102,33 +68,10 @@ listener.toggleLocalVideo { success in
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let listener = RtkEventSelfListener(
-
-    rtkClient: rtkClient,
-
-    identifier: "MeetingObserver"
-
-)
-
-
-listener.observeSelfRemoved {
-
-    print("Removed from meeting")
-
-}
-
-
-listener.observeSelfMeetingEndForAll {
-
-    print("Meeting ended for all")
-
-}
-
-
+let listener = RtkEventSelfListener(    rtkClient: rtkClient,    identifier: "MeetingObserver")
+listener.observeSelfRemoved {    print("Removed from meeting")}
+listener.observeSelfMeetingEndForAll {    print("Meeting ended for all")}
 ```
 
 ```json

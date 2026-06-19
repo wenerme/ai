@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,9 +31,9 @@ When you complete the [setup process](https://developers.cloudflare.com/cloudfla
 The Email security overview provides you with:
 
 * **Quick actions**, where you can:  
-   * View [submissions](https://developers.cloudflare.com/cloudflare-one/email-security/submissions/)  
-   * Manage detection settings: manage [allow policies](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/allow-policies/), [blocked senders](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/blocked-senders/), [trusted domains](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/trusted-domains/), [impersonation registry](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/impersonation-registry/) and [additional detections](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/additional-detections/).  
-   * [Run screens](https://developers.cloudflare.com/cloudflare-one/email-security/investigation/search-email/#screen-criteria): Search, filter, reclassify, and bulk-move emails
+  * View [submissions](https://developers.cloudflare.com/cloudflare-one/email-security/submissions/)
+  * Manage detection settings: manage [allow policies](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/allow-policies/), [blocked senders](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/blocked-senders/), [trusted domains](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/trusted-domains/), [impersonation registry](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/impersonation-registry/) and [additional detections](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/additional-detections/).
+  * [Run screens](https://developers.cloudflare.com/cloudflare-one/email-security/investigation/search-email/#screen-criteria): Search, filter, reclassify, and bulk-move emails
 * **Recommendations**: Suggested next steps to improve your configuration. For example, submitting misclassified emails for reclassification, creating policies, or protecting users at risk of [impersonation](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/impersonation-registry/).
 * **Email security metrics**: Activity from the last seven days.
 * **Recently modified policies**: A list of recently changed policies.

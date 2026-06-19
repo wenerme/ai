@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -51,9 +51,9 @@ A 5% fee is applied to all credits purchased through [Unified Billing](https://d
 
 Logpush is only available on the Workers Paid plan.
 
-| Paid plan |                                    |
-| --------- | ---------------------------------- |
-| Requests  | 10 million / month, +$0.05/million |
+|          | Paid plan                          |
+| -------- | ---------------------------------- |
+| Requests | 10 million / month, +$0.05/million |
 
 ## Pricing notes
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,9 +16,9 @@ With Enhanced HTTP/2 Prioritization, Cloudflare delivers resources in the optima
 
 ## Availability
 
-| Free         | Pro | Business | Enterprise |     |
-| ------------ | --- | -------- | ---------- | --- |
-| Availability | No  | Yes      | Yes        | Yes |
+|              | Free | Pro | Business | Enterprise |
+| ------------ | ---- | --- | -------- | ---------- |
+| Availability | No   | Yes | Yes      | Yes        |
 
 ## How it works
 
@@ -30,8 +30,8 @@ For more details, refer to [the introductory blog post ↗](https://blog.cloudfl
 
 ## Enable Enhanced HTTP/2 Prioritization
 
-* [ Dashboard ](#tab-panel-10552)
-* [ API ](#tab-panel-10553)
+* [ Dashboard ](#tab-panel-10628)
+* [ API ](#tab-panel-10629)
 
 To enable **Enhanced HTTP/2 Prioritization** in the Cloudflare dashboard:
 

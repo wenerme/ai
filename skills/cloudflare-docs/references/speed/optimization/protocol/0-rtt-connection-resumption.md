@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,16 +22,16 @@ For more information on 0-RTT, including its functionality and potential limitat
 
 ## Availability
 
-| Free         | Pro | Business | Enterprise |     |
-| ------------ | --- | -------- | ---------- | --- |
-| Availability | Yes | Yes      | Yes        | Yes |
+|              | Free | Pro | Business | Enterprise |
+| ------------ | ---- | --- | -------- | ---------- |
+| Availability | Yes  | Yes | Yes      | Yes        |
 
 ## Enable 0-RTT Connection Resumption
 
 By default, 0-RTT Connection Resumption is not enabled on your Cloudflare application.
 
-* [ Dashboard ](#tab-panel-10550)
-* [ API ](#tab-panel-10551)
+* [ Dashboard ](#tab-panel-10626)
+* [ API ](#tab-panel-10627)
 
 To enable 0-RTT Connection Resumption in the dashboard:
 

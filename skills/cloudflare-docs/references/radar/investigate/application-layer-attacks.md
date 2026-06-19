@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/radar/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,65 +37,13 @@ Let us examine the global distribution of mitigated requests by product.
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/radar/attacks/layer7/timeseries_groups/mitigation_product?aggInterval=1h&dateRange=1d&name=attacks&format=json" \
-
---header "Authorization: Bearer <API_TOKEN>"
-
-
+curl "https://api.cloudflare.com/client/v4/radar/attacks/layer7/timeseries_groups/mitigation_product?aggInterval=1h&dateRange=1d&name=attacks&format=json" \--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 From the abbreviated response below, we can conclude that distributed denial-of-service (DDoS) attacks make up the majority of the requests — which makes sense since DDoS attacks, by their very nature, will perform more requests. This is followed by WAF and then I reputation requests.
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "result": {
-
-    "attacks": {
-
-      "timestamps": ["2022-11-05T11:00:00Z", ".."],
-
-      "ddos": ["53.824302", "54.305823",  ".."],
-
-      "waf": ["39.760956", "39.31228",  ".."],
-
-      "ip_reputation": ["5.623487", "5.485468",  ".."],
-
-      "access_rules": ["0.648368", "0.676456",  ".."],
-
-      "bot_management": ["0.139733", "0.217155",  ".."],
-
-      "api_shield": ["0.003154", "0.002819",  ".."],
-
-      "data_loss_prevention": ["0.0", "0.0",  ".."]
-
-    },
-
-    "meta": {
-
-      "dateRange": {
-
-        "startTime": "2022-11-05T11:00:00Z",
-
-        "endTime": "2022-11-06T11:00:00Z"
-
-      },
-
-      // ...
-
-    }
-
-  }
-
-}
-
-
+{  "success": true,  "errors": [],  "result": {    "attacks": {      "timestamps": ["2022-11-05T11:00:00Z", ".."],      "ddos": ["53.824302", "54.305823",  ".."],      "waf": ["39.760956", "39.31228",  ".."],      "ip_reputation": ["5.623487", "5.485468",  ".."],      "access_rules": ["0.648368", "0.676456",  ".."],      "bot_management": ["0.139733", "0.217155",  ".."],      "api_shield": ["0.003154", "0.002819",  ".."],      "data_loss_prevention": ["0.0", "0.0",  ".."]    },    "meta": {      "dateRange": {        "startTime": "2022-11-05T11:00:00Z",        "endTime": "2022-11-06T11:00:00Z"      },      // ...    }  }}
 ```
 
 For more information refer to [Get layer 7 attacks by mitigation technique, over time](https://developers.cloudflare.com/api/resources/radar/subresources/attacks/subresources/layer7/subresources/timeseries%5Fgroups/).
@@ -109,53 +57,11 @@ We can also filter by source location and examine attacks coming from a specific
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/radar/attacks/layer7/summary?location=GB&name=attacks_gb&aggInterval=1h&dateRange=1d&format=json" \
-
---header "Authorization: Bearer <API_TOKEN>"
-
-
+curl "https://api.cloudflare.com/client/v4/radar/attacks/layer7/summary?location=GB&name=attacks_gb&aggInterval=1h&dateRange=1d&format=json" \--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "result": {
-
-    "attacks_gb": {
-
-      "waf": "75.012138",
-
-      "ddos": "18.539149",
-
-      "ip_reputation": "5.721021",
-
-      "access_rules": "0.592515",
-
-      "bot_management": "0.131998",
-
-      "api_shield": "0.003178",
-
-      "data_loss_prevention": "0.0"
-
-    },
-
-    "meta": {
-
-      // ...
-
-    }
-
-  }
-
-}
-
-
+{  "success": true,  "errors": [],  "result": {    "attacks_gb": {      "waf": "75.012138",      "ddos": "18.539149",      "ip_reputation": "5.721021",      "access_rules": "0.592515",      "bot_management": "0.131998",      "api_shield": "0.003178",      "data_loss_prevention": "0.0"    },    "meta": {      // ...    }  }}
 ```
 
 This response means that 75% of all mitigated requests coming from Great Britain were mitigated by the [WAF](https://developers.cloudflare.com/waf/) product.
@@ -171,107 +77,11 @@ In the following example, we will examine the top locations being targeted in ap
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/radar/attacks/layer7/top/locations/target?name=attacks_target&limit=5&dateRange=1d&format=json" \
-
---header "Authorization: Bearer <API_TOKEN>"
-
-
+curl "https://api.cloudflare.com/client/v4/radar/attacks/layer7/top/locations/target?name=attacks_target&limit=5&dateRange=1d&format=json" \--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "result": {
-
-    "attacks_target": [
-
-      {
-
-        "targetCountryName": "Belgium",
-
-        "targetCountryAlpha2": "BE",
-
-        "value": "18.536740",
-
-        "rank": 1
-
-      },
-
-      {
-
-        "targetCountryName": "United States",
-
-        "targetCountryAlpha2": "US",
-
-        "value": "16.116210",
-
-        "rank": 2
-
-      },
-
-      {
-
-        "targetCountryName": "China",
-
-        "targetCountryAlpha2": "CN",
-
-        "value": "13.864696",
-
-        "rank": 3
-
-      },
-
-      {
-
-        "targetCountryName": "India",
-
-        "targetCountryAlpha2": "IN",
-
-        "value": "4.344139",
-
-        "rank": 4
-
-      },
-
-      {
-
-        "targetCountryName": "Germany",
-
-        "targetCountryAlpha2": "DE",
-
-        "value": "4.182777",
-
-        "rank": 5
-
-      }
-
-    ],
-
-    "meta": {
-
-      "dateRange": {
-
-        "startTime": "2022-11-05T12:00:00Z",
-
-        "endTime": "2022-11-06T12:00:00Z"
-
-      },
-
-      // ...
-
-    }
-
-  }
-
-}
-
-
+{  "success": true,  "errors": [],  "result": {    "attacks_target": [      {        "targetCountryName": "Belgium",        "targetCountryAlpha2": "BE",        "value": "18.536740",        "rank": 1      },      {        "targetCountryName": "United States",        "targetCountryAlpha2": "US",        "value": "16.116210",        "rank": 2      },      {        "targetCountryName": "China",        "targetCountryAlpha2": "CN",        "value": "13.864696",        "rank": 3      },      {        "targetCountryName": "India",        "targetCountryAlpha2": "IN",        "value": "4.344139",        "rank": 4      },      {        "targetCountryName": "Germany",        "targetCountryAlpha2": "DE",        "value": "4.182777",        "rank": 5      }    ],    "meta": {      "dateRange": {        "startTime": "2022-11-05T12:00:00Z",        "endTime": "2022-11-06T12:00:00Z"      },      // ...    }  }}
 ```
 
 During the specified date range, mitigation requests to zones with a billing address located in Belgium represent 18%.
@@ -285,121 +95,13 @@ Which source-target location pairs constitute the biggest attacks in the last 24
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/radar/attacks/layer7/top/attacks?limit=5&dateRange=1d&format=json" \
-
---header "Authorization: Bearer <API_TOKEN>"
-
-
+curl "https://api.cloudflare.com/client/v4/radar/attacks/layer7/top/attacks?limit=5&dateRange=1d&format=json" \--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 A typical response will be similar to the following:
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "result": {
-
-    "top_0": [
-
-      {
-
-        "originCountryName": "United States",
-
-        "originCountryAlpha2": "US",
-
-        "targetCountryName": "United States",
-
-        "targetCountryAlpha2": "US",
-
-        "value": "3.790724",
-
-        "rank": 1
-
-      },
-
-      {
-
-        "originCountryName": "United States",
-
-        "originCountryAlpha2": "US",
-
-        "targetCountryName": "Belgium",
-
-        "targetCountryAlpha2": "BE",
-
-        "value": "3.602177",
-
-        "rank": 2
-
-      },
-
-      {
-
-        "originCountryName": "China",
-
-        "originCountryAlpha2": "CN",
-
-        "targetCountryName": "Netherlands",
-
-        "targetCountryAlpha2": "NL",
-
-        "value": "3.017341",
-
-        "rank": 3
-
-      },
-
-      {
-
-        "originCountryName": "China",
-
-        "originCountryAlpha2": "CN",
-
-        "targetCountryName": "China",
-
-        "targetCountryAlpha2": "CN",
-
-        "value": "2.472068",
-
-        "rank": 4
-
-      },
-
-      {
-
-        "originCountryName": "Indonesia",
-
-        "originCountryAlpha2": "ID",
-
-        "targetCountryName": "China",
-
-        "targetCountryAlpha2": "CN",
-
-        "value": "2.056729",
-
-        "rank": 5
-
-      }
-
-    ],
-
-    "meta": {
-
-      // ...
-
-    }
-
-  }
-
-}
-
-
+{  "success": true,  "errors": [],  "result": {    "top_0": [      {        "originCountryName": "United States",        "originCountryAlpha2": "US",        "targetCountryName": "United States",        "targetCountryAlpha2": "US",        "value": "3.790724",        "rank": 1      },      {        "originCountryName": "United States",        "originCountryAlpha2": "US",        "targetCountryName": "Belgium",        "targetCountryAlpha2": "BE",        "value": "3.602177",        "rank": 2      },      {        "originCountryName": "China",        "originCountryAlpha2": "CN",        "targetCountryName": "Netherlands",        "targetCountryAlpha2": "NL",        "value": "3.017341",        "rank": 3      },      {        "originCountryName": "China",        "originCountryAlpha2": "CN",        "targetCountryName": "China",        "targetCountryAlpha2": "CN",        "value": "2.472068",        "rank": 4      },      {        "originCountryName": "Indonesia",        "originCountryAlpha2": "ID",        "targetCountryName": "China",        "targetCountryAlpha2": "CN",        "value": "2.056729",        "rank": 5      }    ],    "meta": {      // ...    }  }}
 ```
 
 This means that 3.79% of all mitigated requests are from and to the US, 3.6% of all mitigated requests are from the US to Belgium, etc..

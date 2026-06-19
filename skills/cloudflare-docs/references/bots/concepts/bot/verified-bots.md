@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,8 +26,8 @@ For a bot to be verified, it must meet the following requirements:
 
 1. The bot must follow [verified bots policy](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/policy/).
 2. The bot must be verified using one of the following verification methods:  
-   * [Web Bot Auth](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/)  
-   * [IP validation](https://developers.cloudflare.com/bots/reference/bot-verification/ip-validation/)
+  * [Web Bot Auth](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/)
+  * [IP validation](https://developers.cloudflare.com/bots/reference/bot-verification/ip-validation/)
 
 Once Cloudflare approves a verified bot, it should appear on [Cloudflare Radar's bots and agents directory ↗](https://radar.cloudflare.com/verified-bots).
 

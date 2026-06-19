@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -94,70 +94,7 @@ R2 Data Catalog GraphQL datasets require an `accountTag` filter with your Cloudf
 This query returns the total number of Iceberg REST API requests and total request duration, grouped by operation, for a specific warehouse.
 
 ```
-
-query CatalogDataOperations(
-
-  $accountTag: String!
-
-  $warehouseName: String!
-
-  $datetimeStart: Time!
-
-  $datetimeEnd: Time!
-
-) {
-
-  viewer {
-
-    accounts(filter: { accountTag: $accountTag }) {
-
-      r2CatalogDataOperationsAdaptiveGroups(
-
-        limit: 10000
-
-        filter: {
-
-          warehouseName: $warehouseName
-
-          datetime_geq: $datetimeStart
-
-          datetime_leq: $datetimeEnd
-
-        }
-
-      ) {
-
-        count
-
-        dimensions {
-
-          operation
-
-        }
-
-        sum {
-
-          requestBodyBytes
-
-          requestDurationMs
-
-        }
-
-        avg {
-
-          requestDurationMs
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
+query CatalogDataOperations(  $accountTag: String!  $warehouseName: String!  $datetimeStart: Time!  $datetimeEnd: Time!) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      r2CatalogDataOperationsAdaptiveGroups(        limit: 10000        filter: {          warehouseName: $warehouseName          datetime_geq: $datetimeStart          datetime_leq: $datetimeEnd        }      ) {        count        dimensions {          operation        }        sum {          requestBodyBytes          requestDurationMs        }        avg {          requestDurationMs        }      }    }  }}
 ```
 
 ### Measure request latency percentiles
@@ -165,66 +102,7 @@ query CatalogDataOperations(
 This query returns request duration percentiles for a specific warehouse, which is useful for understanding latency distribution.
 
 ```
-
-query CatalogLatencyPercentiles(
-
-  $accountTag: String!
-
-  $warehouseName: String!
-
-  $datetimeStart: Time!
-
-  $datetimeEnd: Time!
-
-) {
-
-  viewer {
-
-    accounts(filter: { accountTag: $accountTag }) {
-
-      r2CatalogDataOperationsAdaptiveGroups(
-
-        limit: 10000
-
-        filter: {
-
-          warehouseName: $warehouseName
-
-          datetime_geq: $datetimeStart
-
-          datetime_leq: $datetimeEnd
-
-        }
-
-      ) {
-
-        count
-
-        dimensions {
-
-          operation
-
-        }
-
-        quantiles {
-
-          requestDurationMsP50
-
-          requestDurationMsP90
-
-          requestDurationMsP99
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
+query CatalogLatencyPercentiles(  $accountTag: String!  $warehouseName: String!  $datetimeStart: Time!  $datetimeEnd: Time!) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      r2CatalogDataOperationsAdaptiveGroups(        limit: 10000        filter: {          warehouseName: $warehouseName          datetime_geq: $datetimeStart          datetime_leq: $datetimeEnd        }      ) {        count        dimensions {          operation        }        quantiles {          requestDurationMsP50          requestDurationMsP90          requestDurationMsP99        }      }    }  }}
 ```
 
 ### Query table maintenance job metrics
@@ -232,74 +110,7 @@ query CatalogLatencyPercentiles(
 This query returns a summary of compaction and snapshot expiration jobs for a specific warehouse, including files processed, bytes read and written, and success or failure status.
 
 ```
-
-query CatalogMaintenanceMetrics(
-
-  $accountTag: String!
-
-  $warehouseName: String!
-
-  $datetimeStart: Time!
-
-  $datetimeEnd: Time!
-
-) {
-
-  viewer {
-
-    accounts(filter: { accountTag: $accountTag }) {
-
-      r2CatalogTableMaintenanceAdaptiveGroups(
-
-        limit: 10000
-
-        filter: {
-
-          warehouseName: $warehouseName
-
-          datetime_geq: $datetimeStart
-
-          datetime_leq: $datetimeEnd
-
-        }
-
-      ) {
-
-        count
-
-        dimensions {
-
-          jobType
-
-          tableName
-
-          success
-
-        }
-
-        sum {
-
-          filesProcessed
-
-          filesOutput
-
-          inputBytes
-
-          outputBytes
-
-          jobDurationMs
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
+query CatalogMaintenanceMetrics(  $accountTag: String!  $warehouseName: String!  $datetimeStart: Time!  $datetimeEnd: Time!) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      r2CatalogTableMaintenanceAdaptiveGroups(        limit: 10000        filter: {          warehouseName: $warehouseName          datetime_geq: $datetimeStart          datetime_leq: $datetimeEnd        }      ) {        count        dimensions {          jobType          tableName          success        }        sum {          filesProcessed          filesOutput          inputBytes          outputBytes          jobDurationMs        }      }    }  }}
 ```
 
 ### Filter by operation or table
@@ -307,115 +118,13 @@ query CatalogMaintenanceMetrics(
 You can narrow results to a specific Iceberg operation or table. For example, to query only `load-table` operations for a specific table:
 
 ```
-
-query CatalogFilterByOperation(
-
-  $accountTag: String!
-
-  $datetimeStart: Time!
-
-  $datetimeEnd: Time!
-
-) {
-
-  viewer {
-
-    accounts(filter: { accountTag: $accountTag }) {
-
-      r2CatalogDataOperationsAdaptiveGroups(
-
-        limit: 10000
-
-        filter: {
-
-          warehouseName: "my-warehouse"
-
-          operation: "load-table"
-
-          tableName: "my_table"
-
-          datetime_geq: $datetimeStart
-
-          datetime_leq: $datetimeEnd
-
-        }
-
-      ) {
-
-        count
-
-        sum {
-
-          requestDurationMs
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
+query CatalogFilterByOperation(  $accountTag: String!  $datetimeStart: Time!  $datetimeEnd: Time!) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      r2CatalogDataOperationsAdaptiveGroups(        limit: 10000        filter: {          warehouseName: "my-warehouse"          operation: "load-table"          tableName: "my_table"          datetime_geq: $datetimeStart          datetime_leq: $datetimeEnd        }      ) {        count        sum {          requestDurationMs        }      }    }  }}
 ```
 
 To query only failed maintenance jobs:
 
 ```
-
-query CatalogFailedMaintenanceJobs(
-
-  $accountTag: String!
-
-  $datetimeStart: Time!
-
-  $datetimeEnd: Time!
-
-) {
-
-  viewer {
-
-    accounts(filter: { accountTag: $accountTag }) {
-
-      r2CatalogTableMaintenanceAdaptiveGroups(
-
-        limit: 10000
-
-        filter: {
-
-          warehouseName: "my-warehouse"
-
-          success: 0
-
-          datetime_geq: $datetimeStart
-
-          datetime_leq: $datetimeEnd
-
-        }
-
-      ) {
-
-        count
-
-        dimensions {
-
-          jobType
-
-          tableName
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
+query CatalogFailedMaintenanceJobs(  $accountTag: String!  $datetimeStart: Time!  $datetimeEnd: Time!) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      r2CatalogTableMaintenanceAdaptiveGroups(        limit: 10000        filter: {          warehouseName: "my-warehouse"          success: 0          datetime_geq: $datetimeStart          datetime_leq: $datetimeEnd        }      ) {        count        dimensions {          jobType          tableName        }      }    }  }}
 ```
 
 ### Query across all warehouses
@@ -423,54 +132,7 @@ query CatalogFailedMaintenanceJobs(
 To query metrics across all warehouses on an account, omit the `warehouseName` filter and include `warehouseName` in the dimensions:
 
 ```
-
-query CatalogAllWarehouses(
-
-  $accountTag: String!
-
-  $datetimeStart: Time!
-
-  $datetimeEnd: Time!
-
-) {
-
-  viewer {
-
-    accounts(filter: { accountTag: $accountTag }) {
-
-      r2CatalogDataOperationsAdaptiveGroups(
-
-        limit: 10000
-
-        filter: { datetime_geq: $datetimeStart, datetime_leq: $datetimeEnd }
-
-      ) {
-
-        count
-
-        dimensions {
-
-          warehouseName
-
-          operation
-
-        }
-
-        sum {
-
-          requestDurationMs
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
+query CatalogAllWarehouses(  $accountTag: String!  $datetimeStart: Time!  $datetimeEnd: Time!) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      r2CatalogDataOperationsAdaptiveGroups(        limit: 10000        filter: { datetime_geq: $datetimeStart, datetime_leq: $datetimeEnd }      ) {        count        dimensions {          warehouseName          operation        }        sum {          requestDurationMs        }      }    }  }}
 ```
 
 ```json

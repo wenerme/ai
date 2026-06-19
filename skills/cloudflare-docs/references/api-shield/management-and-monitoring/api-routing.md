@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -24,8 +24,8 @@ You must add Source Endpoints to Endpoint Management through established methods
 
 To create a route, you will need the operation ID of the Source Endpoint. To find the operation ID in the dashboard:
 
-* [  New dashboard ](#tab-panel-6673)
-* [ Old dashboard ](#tab-panel-6674)
+* [  New dashboard ](#tab-panel-6749)
+* [ Old dashboard ](#tab-panel-6750)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -43,8 +43,8 @@ Once your Source Endpoints are added to Endpoint Management, use the following s
 
 ### Create a route
 
-* [  New dashboard ](#tab-panel-6675)
-* [ Old dashboard ](#tab-panel-6676)
+* [  New dashboard ](#tab-panel-6751)
+* [ Old dashboard ](#tab-panel-6752)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)

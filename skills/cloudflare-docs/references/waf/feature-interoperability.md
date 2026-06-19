@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -109,8 +109,8 @@ A Pro or Business plan adds Super Bot Fight Mode, custom rules, and Managed Rule
 * Turn on **Super Bot Fight Mode** to block automated and likely automated traffic.
 * Deploy **Managed Rules** for protection against known vulnerabilities like SQL injection and cross-site scripting.
 * Create custom rules with the _Skip_ action to allow legitimate automated traffic while SBFM blocks bad bots everywhere else. Use the following rule configuration:  
-   * Set the rule expression to match the IP addresses or user agents of your payment processor.  
-   * Set the action to _Skip_, and select **Super Bot Fight Mode**.
+  * Set the rule expression to match the IP addresses or user agents of your payment processor.
+  * Set the action to _Skip_, and select **Super Bot Fight Mode**.
 
 ### Enterprise API and website (Enterprise plan)
 
@@ -130,8 +130,8 @@ When security features interfere with legitimate traffic, use the following step
 
 Use [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/) to identify the feature that blocked a request:
 
-* [  New dashboard ](#tab-panel-11196)
-* [ Old dashboard ](#tab-panel-11197)
+* [  New dashboard ](#tab-panel-11213)
+* [ Old dashboard ](#tab-panel-11214)
 
 1. In the Cloudflare dashboard, go to the **Analytics** page.  
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
@@ -157,8 +157,8 @@ For more information, refer to [Handle false positives from Bot Fight Mode or Su
 
 Create a custom rule with the _Skip_ action to bypass SBFM for the affected traffic:
 
-* [  New dashboard ](#tab-panel-11198)
-* [ Old dashboard ](#tab-panel-11199)
+* [  New dashboard ](#tab-panel-11215)
+* [ Old dashboard ](#tab-panel-11216)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

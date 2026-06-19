@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,20 +29,7 @@ Setting the Browser TTL per account overrides the default TTL.
 Example
 
 ```
-
-curl --request PATCH 'https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v1/config' \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "browser_ttl": 31536000
-
-}'
-
-
+curl --request PATCH 'https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v1/config' \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "browser_ttl": 31536000}'
 ```
 
 When the Browser TTL is set to one year for all images, the response for the `cache-control` header is essentially `public`, `max-age=31536000`, `stale-while-revalidate=7200`.
@@ -54,28 +41,7 @@ Setting the Browser TTL for a named variant is a more granular option that overr
 Example
 
 ```
-
-curl 'https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_TAG>/images/v1/variants' \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "id":"avatar",
-
-  "options": {
-
-    "width":100,
-
-    "browser_ttl": 86400
-
-  }
-
-}'
-
-
+curl 'https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_TAG>/images/v1/variants' \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "id":"avatar",  "options": {    "width":100,    "browser_ttl": 86400  }}'
 ```
 
 When the Browser TTL is set to one day for images requested with this variant, the response for the `cache-control` header is essentially `public`, `max-age=86400`, `stale-while-revalidate=7200`.

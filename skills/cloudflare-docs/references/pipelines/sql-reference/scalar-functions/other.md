@@ -6,23 +6,20 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pipelines/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
 # Other functions
 
-_Cloudflare Pipelines scalar function implementations are based on[Apache DataFusion ↗](https://arrow.apache.org/datafusion/) (via [Arroyo ↗](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference._
+_Cloudflare Pipelines scalar function implementations are based on [Apache DataFusion ↗](https://arrow.apache.org/datafusion/) (via [Arroyo ↗](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference._
 
 ## `arrow_cast`
 
 Casts a value to a specific Arrow data type:
 
 ```
-
 arrow_cast(expression, datatype)
-
-
 ```
 
 **Arguments**
@@ -33,30 +30,7 @@ arrow_cast(expression, datatype)
 **Example**
 
 ```
-
-> select arrow_cast(-5, 'Int8') as a,
-
-  arrow_cast('foo', 'Dictionary(Int32, Utf8)') as b,
-
-  arrow_cast('bar', 'LargeUtf8') as c,
-
-  arrow_cast('2023-01-02T12:53:02', 'Timestamp(Microsecond, Some("+08:00"))') as d
-
-  ;
-
-+----+-----+-----+---------------------------+
-
-| a  | b   | c   | d                         |
-
-+----+-----+-----+---------------------------+
-
-| -5 | foo | bar | 2023-01-02T12:53:02+08:00 |
-
-+----+-----+-----+---------------------------+
-
-1 row in set. Query took 0.001 seconds.
-
-
+> select arrow_cast(-5, 'Int8') as a,  arrow_cast('foo', 'Dictionary(Int32, Utf8)') as b,  arrow_cast('bar', 'LargeUtf8') as c,  arrow_cast('2023-01-02T12:53:02', 'Timestamp(Microsecond, Some("+08:00"))') as d  ;+----+-----+-----+---------------------------+| a  | b   | c   | d                         |+----+-----+-----+---------------------------+| -5 | foo | bar | 2023-01-02T12:53:02+08:00 |+----+-----+-----+---------------------------+1 row in set. Query took 0.001 seconds.
 ```
 
 ## `arrow_typeof`
@@ -64,10 +38,7 @@ arrow_cast(expression, datatype)
 Returns the name of the underlying [Arrow data type ↗](https://docs.rs/arrow/latest/arrow/datatypes/enum.DataType.html) of the expression:
 
 ```
-
 arrow_typeof(expression)
-
-
 ```
 
 **Arguments**
@@ -77,22 +48,7 @@ arrow_typeof(expression)
 **Example**
 
 ```
-
-> select arrow_typeof('foo'), arrow_typeof(1);
-
-+---------------------------+------------------------+
-
-| arrow_typeof(Utf8("foo")) | arrow_typeof(Int64(1)) |
-
-+---------------------------+------------------------+
-
-| Utf8                      | Int64                  |
-
-+---------------------------+------------------------+
-
-1 row in set. Query took 0.001 seconds.
-
-
+> select arrow_typeof('foo'), arrow_typeof(1);+---------------------------+------------------------+| arrow_typeof(Utf8("foo")) | arrow_typeof(Int64(1)) |+---------------------------+------------------------+| Utf8                      | Int64                  |+---------------------------+------------------------+1 row in set. Query took 0.001 seconds.
 ```
 
 ```json

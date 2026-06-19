@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,9 +25,10 @@ To create quarantine policies:
 5. Select **Add custom policy**.
 6. Set the **Policy name** to `UserNotifyUserRelease`.
 7. Select **Next**.
-8. In **Recipient message access**, select **Set specific access (Advanced)**, and then:  
-   * In **Select release action preference**, choose _Allow recipients to release a message from quarantine_.  
-   * In **Select additional actions recipients can take on quarantined messages**, select the **Delete** and **Preview** checkboxes.
+8. In **Recipient message access**, select **Set specific access (Advanced)**, and then:
+
+  * In **Select release action preference**, choose _Allow recipients to release a message from quarantine_.
+  * In **Select additional actions recipients can take on quarantined messages**, select the **Delete** and **Preview** checkboxes.
 9. Select **Next**.
 10. In **Quarantine notification**, select **Enable**.
 11. Select **Next**.
@@ -36,9 +37,10 @@ To create quarantine policies:
 14. Select **Add custom policy**.
 15. Set the **Policy name** to `UserNotifyAdminRelease`.
 16. Select **Next**.
-17. In **Recipient message access**, select **Set specific access (Advanced)**, and then:  
-   * In **Select release action preference**, from the drop-down menu, choose _Allow recipients to request a message to be released from quarantine_.  
-   * In **Select additional actions recipients can take on quarantined messages**, select the **Delete** and **Preview** checkboxes.
+17. In **Recipient message access**, select **Set specific access (Advanced)**, and then:
+
+  * In **Select release action preference**, from the drop-down menu, choose _Allow recipients to request a message to be released from quarantine_.
+  * In **Select additional actions recipients can take on quarantined messages**, select the **Delete** and **Preview** checkboxes.
 18. Select **Next**.
 19. In **Quarantine notification**, select **Enable**.
 20. Select **Next**.
@@ -70,13 +72,13 @@ To configure anti-spam policies:
 7. Set the following conditions and actions (you might need to scroll up or down to find them):
 * **Spam**: _Move messages to Junk Email folder_.
 * **High confidence spam**: _Quarantine message_.  
-   * **Select quarantine policy**: \_UserNotifyUserRelease\_.
+  * **Select quarantine policy**: \_UserNotifyUserRelease\_.
 * **Phishing**: _Quarantine message_.  
-   * **Select quarantine policy**: \_UserNotifyAdminRelease\_.
+  * **Select quarantine policy**: \_UserNotifyAdminRelease\_.
 * **High confidence phishing**: _Quarantine message_.  
-   * **Select quarantine policy**: \_UserNotifyAdminRelease\_.
+  * **Select quarantine policy**: \_UserNotifyAdminRelease\_.
 * **Retain spam in quarantine for this many days**: Default is 15 days. Email security recommends 15-30 days.  
-   * Select the spam actions in the above step.
+  * Select the spam actions in the above step.
 1. Select **Save**.
 
 ## Create transport rules
@@ -86,27 +88,29 @@ To create the transport rules that will send emails with certain [disposition](h
 1. Open the new [Exchange admin center ↗](https://admin.exchange.microsoft.com/#/homepage).
 2. Go to **Mail flow** \> **Rules**.
 3. Select **Add a Rule** \> **Create a new rule**.
-4. Set the following rule conditions:  
-   * **Name**: _\`Email security Deliver to Junk Email folder\`_.  
-   * **Apply this rule if**: _The message headers_ \> _includes any of these words_.  
-         * **Enter text**: `X-CFEmailSecurity-Disposition` \> **Save**.  
-         * **Enter words**: `BULK` \> **Add** \> **Save**.  
-   * **Apply this rule if**: Select **+** to add a second condition.  
-   * **And**: _The sender_ \> _IP address is in any of these ranges or exactly matches_ \> enter the egress IPs in the [Egress IPs](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/egress-ips/) page.  
-   * **Do the following** \- _\_Modify the message properties\_ > \_Set the Spam Confidence Level (SCL)\_ > \_5\__.
+4. Set the following rule conditions:
+
+  * **Name**: _\`Email security Deliver to Junk Email folder\`_.
+  * **Apply this rule if**: _The message headers_ \> _includes any of these words_.  
+    * **Enter text**: `X-CFEmailSecurity-Disposition` \> **Save**.
+    * **Enter words**: `BULK` \> **Add** \> **Save**.
+  * **Apply this rule if**: Select **+** to add a second condition.
+  * **And**: _The sender_ \> _IP address is in any of these ranges or exactly matches_ \> enter the egress IPs in the [Egress IPs](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/egress-ips/) page.
+  * **Do the following** \- _\_Modify the message properties\_ > \_Set the Spam Confidence Level (SCL)\_ > \_5\__.
 5. Select **Next**.
 6. You can use the default values on this screen. Select **Next**.
 7. Review your settings and select **Finish** \> **Done**.
 8. Select the rule \`Email security Deliver to Junk Email folder\` you have just created, and **Enable**.
 9. Select **Add a Rule** \> **Create a new rule**.
-10. Set the following rule conditions:  
-   * **Name**: _\`Email security User Quarantine Message\`_.  
-   * **Apply this rule if**: _The message headers_ \> _includes any of these words_.  
-         * **Enter text**: `X-CFEmailSecurity-Disposition` \> **Save**.  
-         * **Enter words**: _\`UCE\`, \`SPOOF\`_ \> **Add** \> **Save**.  
-   * **Apply this rule if**: Select **+** to add a second condition.  
-   * **And**: _The sender_ \> _IP address is in any of these ranges or exactly matches_ \> enter the egress IPs in the [Egress IPs](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/egress-ips/) page.  
-   * **Do the following**: _\_Modify the message properties\_ > \_Set the Spam Confidence Level (SCL)\_ > \_9\__.
+10. Set the following rule conditions:
+
+  * **Name**: _\`Email security User Quarantine Message\`_.
+  * **Apply this rule if**: _The message headers_ \> _includes any of these words_.  
+    * **Enter text**: `X-CFEmailSecurity-Disposition` \> **Save**.
+    * **Enter words**: _\`UCE\`, \`SPOOF\`_ \> **Add** \> **Save**.
+  * **Apply this rule if**: Select **+** to add a second condition.
+  * **And**: _The sender_ \> _IP address is in any of these ranges or exactly matches_ \> enter the egress IPs in the [Egress IPs](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/egress-ips/) page.
+  * **Do the following**: _\_Modify the message properties\_ > \_Set the Spam Confidence Level (SCL)\_ > \_9\__.
 11. Select **Next**.
 12. You can use the default values on this screen. Select **Next**.
 13. Review your settings and select **Finish** \> **Done**.

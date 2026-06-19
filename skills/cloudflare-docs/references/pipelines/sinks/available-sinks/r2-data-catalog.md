@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pipelines/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,20 +19,7 @@ To create an R2 Data Catalog sink, run the [pipelines sinks create](https://deve
 Terminal window
 
 ```
-
-npx wrangler pipelines sinks create my-sink \
-
-  --type r2-data-catalog \
-
-  --bucket my-bucket \
-
-  --namespace my_namespace \
-
-  --table my_table \
-
-  --catalog-token YOUR_CATALOG_TOKEN
-
-
+npx wrangler pipelines sinks create my-sink \  --type r2-data-catalog \  --bucket my-bucket \  --namespace my_namespace \  --table my_table \  --catalog-token YOUR_CATALOG_TOKEN
 ```
 
 The sink will create the specified namespace and table if they do not exist. Sinks cannot be created for existing Iceberg tables.
@@ -48,10 +35,7 @@ Configure Parquet compression for optimal storage and query performance:
 Terminal window
 
 ```
-
 --compression zstd
-
-
 ```
 
 **Available compression options:**
@@ -69,10 +53,7 @@ Terminal window
 Terminal window
 
 ```
-
 --target-row-group-size 256
-
-
 ```
 
 ## Batching and rolling policy
@@ -89,10 +70,7 @@ Set how often files are written (default: 300 seconds, minimum: 60 seconds):
 Terminal window
 
 ```
-
 --roll-interval 60  # Write files every 60 seconds
-
-
 ```
 
 The minimum interval for R2 Data Catalog sinks is 60 seconds to prevent compaction issues. Iceberg tables require periodic compaction to merge small files into larger ones for optimal query performance. Writing too often creates merge conflicts with the compaction process.
@@ -104,10 +82,7 @@ Set maximum file size in MB before creating a new file:
 Terminal window
 
 ```
-
 --roll-size 100  # Create new file after 100MB
-
-
 ```
 
 ## Authentication
@@ -117,10 +92,7 @@ R2 Data Catalog sinks require an API token with [R2 Admin Read & Write permissio
 Terminal window
 
 ```
-
 --catalog-token YOUR_CATALOG_TOKEN
-
-
 ```
 
 ```json

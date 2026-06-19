@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,9 +17,9 @@ A Cache Key is an identifier that Cloudflare uses for a file in our cache, and t
 A default cache key includes:
 
 1. Full URL:  
-   * scheme - could be HTTP or HTTPS.  
-   * host - for example, `www.cloudflare.com`  
-   * URI with query string - for example, `/logo.jpg?utm_source=newsletter`
+  * scheme - could be HTTP or HTTPS.
+  * host - for example, `www.cloudflare.com`
+  * URI with query string - for example, `/logo.jpg?utm_source=newsletter`
 2. Origin header sent by client (for CORS support).
 3. `x-http-method-override`, `x-http-method`, and `x-method-override` headers.
 4. `x-forwarded-host`, `x-host`, `x-forwarded-scheme` (unless http or https), `x-original-url`, `x-rewrite-url`, and `forwarded` headers.
@@ -109,18 +109,18 @@ Currently, you can only exclude the `Origin` header. The `Origin` header is alwa
 Additionally, you cannot include the following headers:
 
 * Headers that re-implement cache or proxy features  
-   * `connection`  
-   * `content-length`  
-   * `cache-control`  
-   * `if-match`  
-   * `if-modified-since`  
-   * `if-none-match`  
-   * `if-unmodified-since`  
-   * `range`  
-   * `upgrade`
+  * `connection`
+  * `content-length`
+  * `cache-control`
+  * `if-match`
+  * `if-modified-since`
+  * `if-none-match`
+  * `if-unmodified-since`
+  * `range`
+  * `upgrade`
 * Headers that are covered by other Cache Key features  
-   * `cookie`  
-   * `host`
+  * `cookie`
+  * `host`
 * Headers that are specific to Cloudflare and prefixed with `cf-`, for example, `cf-ray`
 * Headers that are already included in the custom Cache Key template, for example, `origin`
 
@@ -151,17 +151,17 @@ User feature fields add features about the end-user (client) into the Cache Key.
 
 Cache keys options availability varies according to your plan.
 
-| Free                  | Pro | Business | Enterprise |     |
-| --------------------- | --- | -------- | ---------- | --- |
-| Cache deception armor | Yes | Yes      | Yes        | Yes |
-| Cache by device type  | Yes | Yes      | Yes        | Yes |
-| Ignore query string   | Yes | Yes      | Yes        | Yes |
-| Sort query string     | Yes | Yes      | Yes        | Yes |
-| Query string          | No  | No       | No         | Yes |
-| Headers               | No  | No       | No         | Yes |
-| Cookie                | No  | No       | No         | Yes |
-| Host                  | No  | No       | No         | Yes |
-| User features         | No  | No       | No         | Yes |
+|                       | Free | Pro | Business | Enterprise |
+| --------------------- | ---- | --- | -------- | ---------- |
+| Cache deception armor | Yes  | Yes | Yes      | Yes        |
+| Cache by device type  | Yes  | Yes | Yes      | Yes        |
+| Ignore query string   | Yes  | Yes | Yes      | Yes        |
+| Sort query string     | Yes  | Yes | Yes      | Yes        |
+| Query string          | No   | No  | No       | Yes        |
+| Headers               | No   | No  | No       | Yes        |
+| Cookie                | No   | No  | No       | Yes        |
+| Host                  | No   | No  | No       | Yes        |
+| User features         | No   | No  | No       | Yes        |
 
 ## Troubleshooting
 

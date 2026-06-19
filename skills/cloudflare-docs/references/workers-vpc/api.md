@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-vpc/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -38,20 +38,17 @@ Makes an HTTP request to the private service through the bound Cloudflare Tunnel
 JavaScript
 
 ```
-
 const response = await env.MY_BINDING.fetch(resource, options);
-
-
 ```
 
 ### Parameters
 
 * `resource` (string | URL | Request) — The URL to fetch. Must be an absolute URL including protocol, host, and path (for example, `http://internal-api/api/users`).
 * `options` (optional RequestInit) — Standard fetch options including:  
-   * `method` — HTTP method (GET, POST, PUT, DELETE, etc.)  
-   * `headers` — Request headers  
-   * `body` — Request body  
-   * `signal` — AbortSignal for request cancellation
+  * `method` — HTTP method (GET, POST, PUT, DELETE, etc.)
+  * `headers` — Request headers
+  * `body` — Request body
+  * `signal` — AbortSignal for request cancellation
 
 Absolute URLs required
 
@@ -70,33 +67,8 @@ The following examples apply to both VPC Service and VPC Network bindings.
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const privateRequest = new Request(
-
-      "http://internal-api.company.local/users",
-
-    );
-
-    const response = await env.MY_BINDING.fetch(privateRequest);
-
-    const users = await response.json();
-
-
-    return new Response(JSON.stringify(users), {
-
-      headers: { "Content-Type": "application/json" },
-
-    });
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const privateRequest = new Request(      "http://internal-api.company.local/users",    );    const response = await env.MY_BINDING.fetch(privateRequest);    const users = await response.json();
+    return new Response(JSON.stringify(users), {      headers: { "Content-Type": "application/json" },    });  },};
 ```
 
 #### POST request with body
@@ -104,63 +76,10 @@ export default {
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const privateRequest = new Request(
-
-      "http://internal-api.company.local/users",
-
-      {
-
-        method: "POST",
-
-        headers: {
-
-          "Content-Type": "application/json",
-
-          Authorization: `Bearer ${env.API_TOKEN}`,
-
-        },
-
-        body: JSON.stringify({
-
-          name: "John Doe",
-
-          email: "john@example.com",
-
-        }),
-
-      },
-
-    );
-
-
+export default {  async fetch(request, env) {    const privateRequest = new Request(      "http://internal-api.company.local/users",      {        method: "POST",        headers: {          "Content-Type": "application/json",          Authorization: `Bearer ${env.API_TOKEN}`,        },        body: JSON.stringify({          name: "John Doe",          email: "john@example.com",        }),      },    );
     const response = await env.MY_BINDING.fetch(privateRequest);
-
-
-    if (!response.ok) {
-
-      return new Response("Failed to create user", { status: response.status });
-
-    }
-
-
-    const user = await response.json();
-
-    return new Response(JSON.stringify(user), {
-
-      headers: { "Content-Type": "application/json" },
-
-    });
-
-  },
-
-};
-
-
+    if (!response.ok) {      return new Response("Failed to create user", { status: response.status });    }
+    const user = await response.json();    return new Response(JSON.stringify(user), {      headers: { "Content-Type": "application/json" },    });  },};
 ```
 
 #### Request with HTTPS and IP address
@@ -168,23 +87,8 @@ export default {
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const privateRequest = new Request("https://10.0.1.50/api/data");
-
-    const response = await env.MY_BINDING.fetch(privateRequest);
-
-
-    return response;
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const privateRequest = new Request("https://10.0.1.50/api/data");    const response = await env.MY_BINDING.fetch(privateRequest);
+    return response;  },};
 ```
 
 ## connect()
@@ -194,10 +98,7 @@ Opens a raw TCP connection to a private destination through the bound Cloudflare
 JavaScript
 
 ```
-
 const socket = await env.MY_BINDING.connect(address);
-
-
 ```
 
 ### Parameters
@@ -219,28 +120,9 @@ Note
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const socket = await env.MY_BINDING.connect("10.0.1.50:6379");
-
-
-    const writer = socket.writable.getWriter();
-
-    await writer.write(new TextEncoder().encode("PING\r\n"));
-
-    await writer.close();
-
-
-    return new Response(socket.readable);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const socket = await env.MY_BINDING.connect("10.0.1.50:6379");
+    const writer = socket.writable.getWriter();    await writer.write(new TextEncoder().encode("PING\r\n"));    await writer.close();
+    return new Response(socket.readable);  },};
 ```
 
 #### Connect using a SocketAddress object
@@ -248,34 +130,9 @@ export default {
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const socket = await env.MY_BINDING.connect({
-
-      hostname: "10.0.1.50",
-
-      port: 6379,
-
-    });
-
-
-    const writer = socket.writable.getWriter();
-
-    await writer.write(new TextEncoder().encode("PING\r\n"));
-
-    await writer.close();
-
-
-    return new Response(socket.readable);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const socket = await env.MY_BINDING.connect({      hostname: "10.0.1.50",      port: 6379,    });
+    const writer = socket.writable.getWriter();    await writer.write(new TextEncoder().encode("PING\r\n"));    await writer.close();
+    return new Response(socket.readable);  },};
 ```
 
 ## Required roles

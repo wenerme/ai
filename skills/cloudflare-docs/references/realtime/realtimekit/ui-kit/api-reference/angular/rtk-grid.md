@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,31 +35,13 @@ The main grid component which abstracts all the grid handling logic and renders 
 ### Basic Usage
 
 ```
-
-<!-- component.html -->
-
-<rtk-grid></rtk-grid>
-
-
+<!-- component.html --><rtk-grid></rtk-grid>
 ```
 
 ### With Properties
 
 ```
-
-<!-- component.html -->
-
-<rtk-grid
-
- aspectRatio="example"
-
- gap="42"
-
- gridSize="md">
-
-</rtk-grid>
-
-
+<!-- component.html --><rtk-grid aspectRatio="example" gap="42" gridSize="md"></rtk-grid>
 ```
 
 ```json

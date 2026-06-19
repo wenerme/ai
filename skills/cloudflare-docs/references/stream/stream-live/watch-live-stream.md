@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,10 +35,7 @@ Stream's URLs are all templatized for easy generation:
 **Stream built-in Player URL format:**
 
 ```
-
 https://customer-<CODE>.cloudflarestream.com/<INPUT_ID|VIDEO_ID>/iframe
-
-
 ```
 
 A full embed code can be generated in Dash or with the API.
@@ -46,10 +43,7 @@ A full embed code can be generated in Dash or with the API.
 **HLS Manifest URL format:**
 
 ```
-
 https://customer-<CODE>.cloudflarestream.com/<INPUT_ID|VIDEO_ID>/manifest/video.m3u8
-
-
 ```
 
 You can also retrieve the embed code or manifest URLs from Dash or the API.
@@ -73,17 +67,10 @@ To retrieve the player code or manifest URLs via the API, fetch the Live Input's
 Request
 
 ```
-
-curl -X GET \
-
--H "Authorization: Bearer <API_TOKEN>" \
-
-https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/live_inputs/<LIVE_INPUT_UID>/videos
-
-
+curl -X GET \-H "Authorization: Bearer <API_TOKEN>" \https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/live_inputs/<LIVE_INPUT_UID>/videos
 ```
 
-A live input will have multiple videos associated with it, one for each broadcast. If there is an active broadcast, the first video in the response will have a`live-inprogress` status. Other videos in the response represent recordings which can be played on-demand.
+A live input will have multiple videos associated with it, one for each broadcast. If there is an active broadcast, the first video in the response will have a `live-inprogress` status. Other videos in the response represent recordings which can be played on-demand.
 
 Each video in the response, including the active broadcast if there is one, contains the HLS and DASH URLs and a link to the Stream player. Noteworthy properties include:
 
@@ -96,110 +83,9 @@ In the example below, the state of the live video is `live-inprogress` and the s
 Response
 
 ```
-
-{
-
-  "result": [
-
-    {
-
-      "uid": "6b9e68b07dfee8cc2d116e4c51d6a957",
-
-      "thumbnail": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/thumbnails/thumbnail.jpg",
-
-
-      "status": {
-
-        "state": "live-inprogress",
-
-        "errorReasonCode": "",
-
-        "errorReasonText": ""
-
-      },
-
-      "meta": {
-
-        "name": "Stream Live Test 23 Sep 21 05:44 UTC"
-
-      },
-
-      "created": "2021-09-23T05:44:30.453838Z",
-
-      "modified": "2021-09-23T05:44:30.453838Z",
-
-      "size": 0,
-
-      "preview": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/watch",
-
-      ...
-
-
-      "playback": {
-
-        "hls": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/manifest/video.m3u8",
-
-        "dash": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/manifest/video.mpd"
-
-      },
-
-      ...
-
-    },
-
-    {
-
-      "uid": "6b9e68b07dfee8cc2d116e4c51d6a957",
-
-      "thumbnail": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/thumbnails/thumbnail.jpg",
-
-      "thumbnailTimestampPct": 0,
-
-      "readyToStream": true,
-
-      "status": {
-
-        "state": "ready",
-
-        "pctComplete": "100.000000",
-
-        "errorReasonCode": "",
-
-        "errorReasonText": ""
-
-      },
-
-      "meta": {
-
-        "name": "CFTV Staging 22 Sep 21 22:12 UTC"
-
-      },
-
-      "created": "2021-09-22T22:12:53.587306Z",
-
-      "modified": "2021-09-23T00:14:05.591333Z",
-
-      "size": 0,
-
-      "preview": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/watch",
-
-      ...
-
-      "playback": {
-
-        "hls": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/manifest/video.m3u8",
-
-        "dash": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/manifest/video.mpd"
-
-      },
-
-    }
-
-  ],
-
-}
-
-
+{  "result": [    {      "uid": "6b9e68b07dfee8cc2d116e4c51d6a957",      "thumbnail": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/thumbnails/thumbnail.jpg",
+      "status": {        "state": "live-inprogress",        "errorReasonCode": "",        "errorReasonText": ""      },      "meta": {        "name": "Stream Live Test 23 Sep 21 05:44 UTC"      },      "created": "2021-09-23T05:44:30.453838Z",      "modified": "2021-09-23T05:44:30.453838Z",      "size": 0,      "preview": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/watch",      ...
+      "playback": {        "hls": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/manifest/video.m3u8",        "dash": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/manifest/video.mpd"      },      ...    },    {      "uid": "6b9e68b07dfee8cc2d116e4c51d6a957",      "thumbnail": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/thumbnails/thumbnail.jpg",      "thumbnailTimestampPct": 0,      "readyToStream": true,      "status": {        "state": "ready",        "pctComplete": "100.000000",        "errorReasonCode": "",        "errorReasonText": ""      },      "meta": {        "name": "CFTV Staging 22 Sep 21 22:12 UTC"      },      "created": "2021-09-22T22:12:53.587306Z",      "modified": "2021-09-23T00:14:05.591333Z",      "size": 0,      "preview": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/watch",      ...      "playback": {        "hls": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/manifest/video.m3u8",        "dash": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/manifest/video.mpd"      },    }  ],}
 ```
 
 These will reference the Video ID.
@@ -211,46 +97,17 @@ You can check whether a live input is currently streaming and what its active vi
 Terminal window
 
 ```
-
-curl -X GET \
-
--H "Authorization: Bearer <API_TOKEN>" \
-
-https://customer-<CODE>.cloudflarestream.com/<INPUT_ID>/lifecycle
-
-
+curl -X GET \-H "Authorization: Bearer <API_TOKEN>" \https://customer-<CODE>.cloudflarestream.com/<INPUT_ID>/lifecycle
 ```
 
 In the example below, the response indicates the `ID` is for an input with an active `videoUID`. The `live` status value indicates the input is actively streaming.
 
 ```
-
-{
-
-  "isInput": true,
-
-  "videoUID": "55b9b5ce48c3968c6b514c458959d6a",
-
-  "live": true
-
-}
-
-
+{  "isInput": true,  "videoUID": "55b9b5ce48c3968c6b514c458959d6a",  "live": true}
 ```
 
 ```
-
-{
-
-  "isInput": true,
-
-  "videoUID": null,
-
-  "live": false
-
-}
-
-
+{  "isInput": true,  "videoUID": null,  "live": false}
 ```
 
 When viewing a live stream via the live input ID, the `requireSignedURLs` and `allowedOrigins` options in the live input recording settings are used. These settings are independent of the video-level settings.

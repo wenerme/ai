@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,10 +37,7 @@ This parameter enables you to add timed metadata to your recordings, which is ma
 TypeScript
 
 ```
-
 meeting.participants.broadcastMessage(“ID3Data”, yourData);
-
-
 ```
 
 Note
@@ -54,10 +51,7 @@ The recommended time to perform this action is after the recording indicator has
 TypeScript
 
 ```
-
 meeting.participants.broadcastMessage(“ID3Data”,”CLOSE_TRANSPORT”)
-
-
 ```
 
 If you do not pass this parameter, the ID3 metadata stream will automatically be closed when the recording is stopped.
@@ -72,58 +66,7 @@ It's also important to note that the length of each segment depends on the frame
 JavaScript
 
 ```
-
-const onFragChanged = (_) => {
-
-  // We first try to find the right metadata track.
-
-  // https://developer.mozilla.org/en-US/docs/Web/API/TextTrack
-
-  const textTrackListCount = videoEl.textTracks.length;
-
-  let metaTextTrack;
-
-  for (let trackIndex = 0; trackIndex < textTrackListCount; trackIndex++) {
-
-    const textTrack = videoEl.textTracks[trackIndex];
-
-    if (textTrack.kind !== 'metadata') {
-
-      continue;
-
-    }
-
-    textTrack.mode = 'showing';
-
-    metaTextTrack = textTrack;
-
-    break;
-
-  }
-
-  if (!metaTextTrack) {
-
-    return;
-
-  }
-
-  // Add an oncuechange listener on that track.
-
-  metaTextTrack.oncuechange = (event) => {
-
-    let cue = metaTextTrack.activeCues[metaTextTrack.activeCues.length - 1];
-
-    console.log(cue.value.data);
-
-  };
-
-};
-
-// listen on Hls.Events.FRAG_CHANGED from hls.js
-
-hls.on(Hls.Events.FRAG_CHANGED, onFragChanged);
-
-
+const onFragChanged = (_) => {  // We first try to find the right metadata track.  // https://developer.mozilla.org/en-US/docs/Web/API/TextTrack  const textTrackListCount = videoEl.textTracks.length;  let metaTextTrack;  for (let trackIndex = 0; trackIndex < textTrackListCount; trackIndex++) {    const textTrack = videoEl.textTracks[trackIndex];    if (textTrack.kind !== 'metadata') {      continue;    }    textTrack.mode = 'showing';    metaTextTrack = textTrack;    break;  }  if (!metaTextTrack) {    return;  }  // Add an oncuechange listener on that track.  metaTextTrack.oncuechange = (event) => {    let cue = metaTextTrack.activeCues[metaTextTrack.activeCues.length - 1];    console.log(cue.value.data);  };};// listen on Hls.Events.FRAG_CHANGED from hls.jshls.on(Hls.Events.FRAG_CHANGED, onFragChanged);
 ```
 
 ```json

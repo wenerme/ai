@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/spectrum/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -59,12 +59,7 @@ Note that the semicolon is a reserved character in URLs ([RFC 1738 ↗](https://
 ## Analytics request structure
 
 ```
-
-/api/v4/zones/{zone_id}/spectrum/analytics/events/summary?metrics=METRICS&dimensions=DIMENSIONS&filters=FILTERS&since=FROM_TS&sort=SORT&until=TO_TS&limit=LIMIT
-
-/api/v4/zones/{zone_id}/spectrum/analytics/events/bytime?metrics=METRICS&dimensions=DIMENSIONS&filters=FILTERS&since=FROM_TS&sort=SORT&until=TO_TS&limit=LIMIT
-
-
+/api/v4/zones/{zone_id}/spectrum/analytics/events/summary?metrics=METRICS&dimensions=DIMENSIONS&filters=FILTERS&since=FROM_TS&sort=SORT&until=TO_TS&limit=LIMIT/api/v4/zones/{zone_id}/spectrum/analytics/events/bytime?metrics=METRICS&dimensions=DIMENSIONS&filters=FILTERS&since=FROM_TS&sort=SORT&until=TO_TS&limit=LIMIT
 ```
 
 * METRICS is one or more metrics (such as count) to compute
@@ -75,31 +70,24 @@ Note that the semicolon is a reserved character in URLs ([RFC 1738 ↗](https://
 * FROM\_TS is that start of time interval to query, defaults to TO\_TS - 6 hours
 * STEP is used to select time series resolution when using endpoint:
 * auto or omitted - selects time step most appropriate to time interval  
-   * year  
-   * quarter  
-   * month  
-   * week  
-   * day  
-   * hour
+  * year
+  * quarter
+  * month
+  * week
+  * day
+  * hour
 
 ## Analytics query example
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Analytics Read`
 
 Get analytics summary
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/analytics/events/summary" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/analytics/events/summary" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Refer to the [Spectrum API documentation](https://developers.cloudflare.com/api/resources/spectrum/subresources/analytics/subresources/aggregates/subresources/currents/methods/get/) for more examples of API requests.

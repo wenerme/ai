@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -24,9 +24,9 @@ Hyperdrive does have a limit of _origin_ connections that can be made from Hyper
 
 You can configure the connection pool size using the Cloudflare dashboard, the Wrangler CLI, or the Cloudflare API.
 
-* [ Dashboard ](#tab-panel-8668)
-* [ Wrangler ](#tab-panel-8669)
-* [ API ](#tab-panel-8670)
+* [ Dashboard ](#tab-panel-8744)
+* [ Wrangler ](#tab-panel-8745)
+* [ API ](#tab-panel-8746)
 
 To configure connection pool size via the dashboard:
 
@@ -43,10 +43,7 @@ Use the [wrangler hyperdrive update](https://developers.cloudflare.com/hyperdriv
 Terminal window
 
 ```
-
 npx wrangler hyperdrive update <HYPERDRIVE_ID> --origin-connection-limit=<MAX_CONNECTIONS>
-
-
 ```
 
 Use the [Hyperdrive REST API](https://developers.cloudflare.com/api/resources/hyperdrive/subresources/configs/methods/update/) to update your configuration:
@@ -54,22 +51,7 @@ Use the [Hyperdrive REST API](https://developers.cloudflare.com/api/resources/hy
 Terminal window
 
 ```
-
-curl --request PATCH \
-
-  --url https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/hyperdrive/configs/<HYPERDRIVE_ID> \
-
-  --header 'Content-Type: application/json' \
-
-  --header 'Authorization: Bearer <API_TOKEN>' \
-
-  --data '{
-
-    "origin_connection_limit": <MAX_CONNECTIONS>
-
-  }'
-
-
+curl --request PATCH \  --url https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/hyperdrive/configs/<HYPERDRIVE_ID> \  --header 'Content-Type: application/json' \  --header 'Authorization: Bearer <API_TOKEN>' \  --data '{    "origin_connection_limit": <MAX_CONNECTIONS>  }'
 ```
 
 All Hyperdrive configurations have a minimum of 5 connections. The maximum connection count depends on your [Workers plan](https://developers.cloudflare.com/hyperdrive/platform/limits/).

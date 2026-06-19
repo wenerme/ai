@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,7 +29,7 @@ If versioning is active on your zone and multiple environments are configured, y
 
 ## Availability and limits
 
-| Free          | Pro                                              | Business                                         | Enterprise                                       |                                                  |
+|               | Free                                             | Pro                                              | Business                                         | Enterprise                                       |
 | ------------- | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
 | Availability  | Yes                                              | Yes                                              | Yes                                              | Yes                                              |
 | Purge options | URL, Hostname, Tag, Prefix, and Purge Everything | URL, Hostname, Tag, Prefix, and Purge Everything | URL, Hostname, Tag, Prefix, and Purge Everything | URL, Hostname, Tag, Prefix, and Purge Everything |
@@ -38,7 +38,7 @@ If versioning is active on your zone and multiple environments are configured, y
 
 The current purge limits are applied per **account**:
 
-| Free                       | Pro                   | Business              | Enterprise             |                        |
+|                            | Free                  | Pro                   | Business               | Enterprise             |
 | -------------------------- | --------------------- | --------------------- | ---------------------- | ---------------------- |
 | Requests                   | 5 requests per minute | 5 requests per second | 10 requests per second | 50 requests per second |
 | Bucket size                | 25                    | 25                    | 50                     | 500                    |
@@ -50,7 +50,7 @@ If your account includes zones with different Cloudflare plans, the above limits
 
 The current purge limits are applied per **account**:
 
-| Free                       | Pro                 | Business             | Enterprise           |                      |
+|                            | Free                | Pro                  | Business             | Enterprise           |
 | -------------------------- | ------------------- | -------------------- | -------------------- | -------------------- |
 | URLs                       | 800 URLs per second | 1500 URLs per second | 1500 URLs per second | 3000 URLs per second |
 | Max operations per request | 100                 | 100                  | 100                  | 500                  |

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -24,8 +24,8 @@ A JWT validation configuration has two parts: a token validation configuration t
 
 ### Add a token validation configuration
 
-* [  New dashboard ](#tab-panel-6705)
-* [ Old dashboard ](#tab-panel-6706)
+* [  New dashboard ](#tab-panel-6781)
+* [ Old dashboard ](#tab-panel-6782)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -48,8 +48,8 @@ To automatically keep your JWKS up to date when your identity provider refreshes
 
 ### Add a JWT validation rule
 
-* [  New dashboard ](#tab-panel-6707)
-* [ Old dashboard ](#tab-panel-6708)
+* [  New dashboard ](#tab-panel-6783)
+* [ Old dashboard ](#tab-panel-6784)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -58,9 +58,10 @@ To automatically keep your JWKS up to date when your identity provider refreshes
 4. Select a hostname to protect requests with saved endpoints using the rule.
 5. Deselect any endpoints that you want JWT validation to ignore (for example, an endpoint used to generate a JWT).
 6. Select the token validation configuration that corresponds to the incoming requests.
-7. Choose whether to strictly enforce token presence on these endpoints.  
-   * You may not expect 100% of clients to send in JWTs with their requests. If this is the case, choose _Ignore_. JWT validation will still validate JWTs that are present.  
-   * You may otherwise expect all requests to the selected hostname and endpoints to contain JWTs. If this is the case, choose _Mark as non-compliant_.
+7. Choose whether to strictly enforce token presence on these endpoints.
+
+  * You may not expect 100% of clients to send in JWTs with their requests. If this is the case, choose _Ignore_. JWT validation will still validate JWTs that are present.
+  * You may otherwise expect all requests to the selected hostname and endpoints to contain JWTs. If this is the case, choose _Mark as non-compliant_.
 8. Choose an action to take for non-compliant requests. For example, JWTs that do not pass validation (expired, tampered with, or bad signature tokens) or requests with missing JWTs when _Mark as non-compliant_ is selected in the previous step.
 9. Select **Save**.
 
@@ -71,8 +72,8 @@ To automatically keep your JWKS up to date when your identity provider refreshes
 5. Deselect any endpoints that you want JWT validation to ignore (for example, an endpoint used to generate a JWT).
 6. Select the token validation configuration that corresponds to the incoming requests.
 7. Choose whether to strictly enforce token presence on these endpoints.  
-   * You may not expect 100% of clients to send in JWTs with their requests. If this is the case, choose _Ignore_. JWT validation will still validate JWTs that are present.  
-   * You may otherwise expect all requests to the selected hostname and endpoints to contain JWTs. If this is the case, choose _Mark as non-compliant_.
+  * You may not expect 100% of clients to send in JWTs with their requests. If this is the case, choose _Ignore_. JWT validation will still validate JWTs that are present.
+  * You may otherwise expect all requests to the selected hostname and endpoints to contain JWTs. If this is the case, choose _Mark as non-compliant_.
 8. Choose an action to take for non-compliant requests. For example, JWTs that do not pass validation (expired, tampered with, or bad signature tokens) or requests with missing JWTs when _Mark as non-compliant_ is selected in the previous step.
 9. Select **Save**.
 
@@ -119,16 +120,7 @@ You can follow the rate limiting rule example below:
 Example rule expression
 
 ```
-
-(http.request.method eq "GET" and
-
-http.host eq "<YOUR_DOMAIN>" and
-
-http.request.uri.path matches "</EXAMPLE_PATH>" and
-
-lookup_json_string(http.request.jwt.claims["<JWT_TOKEN_CONFIGURATION_ID>"][0], "aud") eq "free-tier"
-
-
+(http.request.method eq "GET" andhttp.host eq "<YOUR_DOMAIN>" andhttp.request.uri.path matches "</EXAMPLE_PATH>" andlookup_json_string(http.request.jwt.claims["<JWT_TOKEN_CONFIGURATION_ID>"][0], "aud") eq "free-tier"
 ```
 
 ### Ignore `OPTIONS` pre-flight CORS requests

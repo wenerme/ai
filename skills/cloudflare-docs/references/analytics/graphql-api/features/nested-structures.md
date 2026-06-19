@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,27 +30,8 @@ For example, given arrays like this:
 JavaScript
 
 ```
-
-type SubRequest {
-
-    url: String!
-
-    status: Int
-
-}
-
-
-type Request {
-
-    date: Date!
-
-    datetime: DateTime!
-
-    subRequests: [SubRequest!]!
-
-}
-
-
+type SubRequest {    url: String!    status: Int}
+type Request {    date: Date!    datetime: DateTime!    subRequests: [SubRequest!]!}
 ```
 
 You can run a query to get the status by subrequest:
@@ -58,26 +39,7 @@ You can run a query to get the status by subrequest:
 JavaScript
 
 ```
-
-{
-
-    requests {
-
-        date
-
-        subRequests {
-
-            # discard the url, only need the status
-
-            status
-
-        }
-
-    }
-
-}
-
-
+{    requests {        date        subRequests {            # discard the url, only need the status            status        }    }}
 ```
 
 The results would be:
@@ -85,32 +47,7 @@ The results would be:
 JavaScript
 
 ```
-
-{
-
-    "requests": [
-
-        {
-
-            "date": "2018-01-01",
-
-            "subRequests": [{"status": 404}, {"status": 200}, {"status": 404}]
-
-        },
-
-        {
-
-            "date": "2018-01-01",
-
-            "subRequests": [{"status": 200}]
-
-        }
-
-    ]
-
-}
-
-
+{    "requests": [        {            "date": "2018-01-01",            "subRequests": [{"status": 404}, {"status": 200}, {"status": 404}]        },        {            "date": "2018-01-01",            "subRequests": [{"status": 200}]        }    ]}
 ```
 
 ## Maps
@@ -122,29 +59,8 @@ Example maps:
 JavaScript
 
 ```
-
-type URLStatsMapElem {
-
-    url: String!
-
-    requests: Int
-
-    bytes: Int
-
-}
-
-
-type Request {
-
-    date: Date!
-
-    datetime: DateTime!
-
-    urlStatsMap: [URLStatsMapElem!]!
-
-}
-
-
+type URLStatsMapElem {    url: String!    requests: Int    bytes: Int}
+type Request {    date: Date!    datetime: DateTime!    urlStatsMap: [URLStatsMapElem!]!}
 ```
 
 Query:
@@ -152,36 +68,7 @@ Query:
 JavaScript
 
 ```
-
-{
-
-    requests {
-
-        sum {
-
-            urlStatsMap {
-
-                url
-
-                requests
-
-                bytes
-
-            }
-
-        }
-
-        dimensions {
-
-            date
-
-        }
-
-    }
-
-}
-
-
+{    requests {        sum {            urlStatsMap {                url                requests                bytes            }        }        dimensions {            date        }    }}
 ```
 
 Response:
@@ -189,56 +76,7 @@ Response:
 JavaScript
 
 ```
-
-{
-
-    "requests": [
-
-        {
-
-            "sum": {
-
-                "urlStatsMap": [
-
-                    {
-
-                        "url": "hello-world.org/1",
-
-                        "requests": 123,
-
-                        "bytes": 1024
-
-                    },
-
-                    {
-
-                        "url": "hello-world.org/10",
-
-                        "requests": 1230,
-
-                        "bytes": 10240
-
-                    }
-
-                ]
-
-            }
-
-            "dimensions" {
-
-                "date": "2018-10-19"
-
-            }
-
-        },
-
-        ...
-
-    ]
-
-}
-
-
+{    "requests": [        {            "sum": {                "urlStatsMap": [                    {                        "url": "hello-world.org/1",                        "requests": 123,                        "bytes": 1024                    },                    {                        "url": "hello-world.org/10",                        "requests": 1230,                        "bytes": 10240                    }                ]            }            "dimensions" {                "date": "2018-10-19"            }        },        ...    ]}
 ```
 
 ## Examples
@@ -246,253 +84,33 @@ JavaScript
 Query array fields in raw datasets:
 
 ```
-
-query NestedFields($zoneTag: string, $start: Time, $end: Time) {
-
-  viewer {
-
-    zones(filter: { zoneTag: $zoneTag }) {
-
-      events(limit: 2, filter: { datetime_geq: $start, datetime_leq: $end }) {
-
-        matches {
-
-          ruleId
-
-          action
-
-          source
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
+query NestedFields($zoneTag: string, $start: Time, $end: Time) {  viewer {    zones(filter: { zoneTag: $zoneTag }) {      events(limit: 2, filter: { datetime_geq: $start, datetime_leq: $end }) {        matches {          ruleId          action          source        }      }    }  }}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAcmAzgFzAEwGIEswBs2IAUAJAF4D2AdmACoCGA5gFwwoRaUMA0MxKdEZCxpYAtmB7EwlNMLFgAlDADeAKBgwAbjgDukFeo0wK1IgDMsuVBBbLjVWoxZkH9BjAC+StUaNhN0shEuGJYQjAATDwWVpC2MGh0qMjyAPoMYMDO-II8iclpuJnO0mie3oa+GqJJAMYAFkgGVVUQIEUAkmiVLTB0tSlUPS2I5CAQtWDDRh7Ts77znqoeQA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2eBGABxw2AVlQAWAJyo2AdgwUQMKABNm7LrwHD+-STPmKAvkA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAcmAzgFzAEwGIEswBs2IAUAJAF4D2AdmACoCGA5gFwwoRaUMA0MxKdEZCxpYAtmB7EwlNMLFgAlDADeAKBgwAbjgDukFeo0wK1IgDMsuVBBbLjVWoxZkH9BjAC+StUaNhN0shEuGJYQjAATDwWVpC2MGh0qMjyAPoMYMDO-II8iclpuJnO0mie3oa+GqJJAMYAFkgGVVUQIEUAkmiVLTB0tSlUPS2I5CAQtWDDRh7Ts77znqoeQA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2eBGABxx+AdlQAWTqhb8MFEDCgATZuy68BwlgGZJ02fIC+QA)
 
 Example response:
 
 JavaScript
 
 ```
-
-{
-
-  "data": {
-
-    "viewer": {
-
-      "zones": [
-
-        {
-
-          "events": [
-
-            {
-
-              "matches": [
-
-                {
-
-                  "action": "allow",
-
-                  "ruleId": "rule-id-one",
-
-                  "source": "asn"
-
-                },
-
-                {
-
-                  "action": "block",
-
-                  "ruleId": "rule-id-two",
-
-                  "source": "asn"
-
-                }
-
-              ]
-
-            }
-
-          ]
-
-        }
-
-      ]
-
-    }
-
-  },
-
-  "errors": null
-
-}
-
-
+{  "data": {    "viewer": {      "zones": [        {          "events": [            {              "matches": [                {                  "action": "allow",                  "ruleId": "rule-id-one",                  "source": "asn"                },                {                  "action": "block",                  "ruleId": "rule-id-two",                  "source": "asn"                }              ]            }          ]        }      ]    }  },  "errors": null}
 ```
 
 Query maps fields in aggregated datasets:
 
 ```
-
-query MapCapacity(
-
-  $zoneTag: string
-
-  $dateStart: Date
-
-  $dateEnd: Date
-
-  $start: Time
-
-  $end: Time
-
-) {
-
-  viewer {
-
-    zones(filter: { zoneTag: $zoneTag }) {
-
-      httpRequests1mGroups(
-
-        limit: 10
-
-        filter: {
-
-          date_geq: $dateStart
-
-          date_leq: $dateEnd
-
-          datetime_geq: $start
-
-          datetime_lt: $end
-
-        }
-
-      ) {
-
-        sum {
-
-          countryMap {
-
-            clientCountryName
-
-            requests
-
-            bytes
-
-            threats
-
-          }
-
-        }
-
-        dimensions {
-
-          datetimeHour
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
+query MapCapacity(  $zoneTag: string  $dateStart: Date  $dateEnd: Date  $start: Time  $end: Time) {  viewer {    zones(filter: { zoneTag: $zoneTag }) {      httpRequests1mGroups(        limit: 10        filter: {          date_geq: $dateStart          date_leq: $dateEnd          datetime_geq: $start          datetime_lt: $end        }      ) {        sum {          countryMap {            clientCountryName            requests            bytes            threats          }        }        dimensions {          datetimeHour        }      }    }  }}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAsgQwA4GFkIMYEsAuUAUAUDDACQBeA9gHZgAqCA5gFwwDOOEW1jxZAJghxgAyjgQQcrACJCwfUoOEBRavxlyFHCVJh0sAW3klSYNa31HCAShgBvPgDcsYAO6R7fElVpt8AMywAG2EIVjsYH3omVgoaaMYYAF9bBxJ0mAALHBwkACUwUDAONgBGAwBxCEoQJD8vDJggw1xWUoAGBozAkMhwrsalMAB9RkLYobEdAYyh4aDxgTlVfhn0oZxDEbHgWO1JNZINrfndUzU1pIHUtbYQA09Gxowa6k4oRCRHp+fmsxwUK93gA5BBWH6NCCFcAlQ7pABGUGEbDhJBwmShQhREJIVwheJ+-C21DYWBobG+EOORgAEjUIJcBgTcXwrkkgA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABMEAXGAZVoQCda0QAmABk4DYAtN0EBGAOwVqdGHihUOPfkNEAOSQGdmbBb0HCBIlXG4BWVABYAnKm5iMkmHJ1L9huCJEXrt+wF8gA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAsgQwA4GFkIMYEsAuUAUAUDDACQBeA9gHZgAqCA5gFwwDOOEW1jxZAJghxgAyjgQQcrACJCwfUoOEBRavxlyFHCVJh0sAW3klSYNa31HCAShgBvPgDcsYAO6R7fElVpt8AMywAG2EIVjsYH3omVgoaaMYYAF9bBxJ0mAALHBwkACUwUDAONgBGAwBxCEoQJD8vDJggw1xWUoAGBozAkMhwrsalMAB9RkLYobEdAYyh4aDxgTlVfhn0oZxDEbHgWO1JNZINrfndUzU1pIHUtbYQA09Gxowa6k4oRCRHp+fmsxwUK93gA5BBWH6NCCFcAlQ7pABGUGEbDhJBwmShQhREJIVwheJ+-C21DYWBobG+EOORgAEjUIJcBgTcXwrkkgA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABMEAXGAZVoQCda0QAmABk4DYAtN0EBGAOwVqdGHihUOPfkNEAOSQGdmbBb0HCBIlXHGoALH1ScRGSTDk6l+w3E4BmMxas2AvkA)
 
 Example response:
 
 JavaScript
 
 ```
-
-{
-
-  "data": {
-
-    "viewer": {
-
-      "zones": [
-
-        {
-
-          "httpRequests1mGroups": [
-
-            {
-
-              "dimensions": {
-
-                "datetime": "2019-03-08T17:00:00Z"
-
-              },
-
-              "sum": {
-
-                "countryMap": [
-
-                  {
-
-                    "bytes": 51911317,
-
-                    "clientCountryName": "XK",
-
-                    "requests": 4492,
-
-                    "threats": 0
-
-                  },
-
-                  {
-
-                    "bytes": 1816103586,
-
-                    "clientCountryName": "T1",
-
-                    "requests": 132423,
-
-                    "threats": 0
-
-                  },
-
-                  ...
-
-                ]
-
-              }
-
-            }
-
-          ]
-
-        }
-
-      ]
-
-    }
-
-  },
-
-  "errors": null
-
-}
-
-
+{  "data": {    "viewer": {      "zones": [        {          "httpRequests1mGroups": [            {              "dimensions": {                "datetime": "2019-03-08T17:00:00Z"              },              "sum": {                "countryMap": [                  {                    "bytes": 51911317,                    "clientCountryName": "XK",                    "requests": 4492,                    "threats": 0                  },                  {                    "bytes": 1816103586,                    "clientCountryName": "T1",                    "requests": 132423,                    "threats": 0                  },                  ...                ]              }            }          ]        }      ]    }  },  "errors": null}
 ```
 
 ```json

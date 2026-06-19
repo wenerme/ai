@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/spectrum/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,44 +33,7 @@ Spectrum UDP applications are [not supported](https://developers.cloudflare.com/
 To use an IP, it must be assigned to a Spectrum app to create the appropriate A (IPv4) or AAAA (IPv6) records. This is done by specifying one or more IP addresses when creating an application through the API. Any change to the application's properties also needs to be done via API. In addition, you must update the DNS `"type"` field to `"ADDRESS"` to create a Spectrum app using BYOIP.
 
 ```
-
-{
-
-  "id": "4590376cf2994d72cee36828ec4eff19",
-
-  "protocol": "tcp/22",
-
-  "dns": {
-
-    "type": "ADDRESS",
-
-    "name": "ssh.example.com"
-
-  },
-
-  "origin_direct": ["tcp://192.0.2.1:22"],
-
-  "ip_firewall": true,
-
-  "proxy_protocol": false,
-
-  "spp": false,
-
-  "tls": "off",
-
-  "traffic_type": "direct",
-
-  "edge_ips": {
-
-    "type": "static",
-
-    "ips": ["198.51.100.10", "2001:DB8::1"]
-
-  }
-
-}
-
-
+{  "id": "4590376cf2994d72cee36828ec4eff19",  "protocol": "tcp/22",  "dns": {    "type": "ADDRESS",    "name": "ssh.example.com"  },  "origin_direct": ["tcp://192.0.2.1:22"],  "ip_firewall": true,  "proxy_protocol": false,  "spp": false,  "tls": "off",  "traffic_type": "direct",  "edge_ips": {    "type": "static",    "ips": ["198.51.100.10", "2001:DB8::1"]  }}
 ```
 
 ## Example
@@ -79,58 +42,13 @@ In the example below, the application routes traffic through Cloudflare’s HTTP
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone Settings Write`
 
 Create Spectrum application using a name for the origin
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "protocol": "tcp/80",
-
-    "dns": {
-
-        "type": "ADDRESS",
-
-        "name": "www.example.com"
-
-    },
-
-    "origin_direct": [
-
-        "tcp://192.0.2.1:80"
-
-    ],
-
-    "tls": "off",
-
-    "traffic_type": "http",
-
-    "edge_ips": {
-
-        "type": "static",
-
-        "ips": [
-
-            "198.51.100.10",
-
-            "2001:DB8::1"
-
-        ]
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "protocol": "tcp/80",    "dns": {        "type": "ADDRESS",        "name": "www.example.com"    },    "origin_direct": [        "tcp://192.0.2.1:80"    ],    "tls": "off",    "traffic_type": "http",    "edge_ips": {        "type": "static",        "ips": [            "198.51.100.10",            "2001:DB8::1"        ]    }  }'
 ```
 
 ```json

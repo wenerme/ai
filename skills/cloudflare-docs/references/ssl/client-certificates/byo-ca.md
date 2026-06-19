@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -50,8 +50,8 @@ Uploading the CA private key is only required if you wish to use [Zero Trust's b
 
 ## Set up mTLS with your CA
 
-* [ Dashboard ](#tab-panel-10570)
-* [ API ](#tab-panel-10571)
+* [ Dashboard ](#tab-panel-10646)
+* [ API ](#tab-panel-10647)
 
 1. In the Cloudflare dashboard, go to the **Client Certificates** page.  
 [ Go to **Client Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates)
@@ -63,35 +63,36 @@ Uploading the CA private key is only required if you wish to use [Zero Trust's b
 7. Select **Save** to confirm.
 
 1. Use the [Upload mTLS certificate endpoint](https://developers.cloudflare.com/api/resources/mtls%5Fcertificates/methods/create/) to upload the CA root certificate.
-* `ca` boolean required  
-   * Set to `true` to indicate that the certificate is a CA certificate.
-* `certificates` string required  
-   * Insert content from the `.pem` file associated with the CA certificate, formatted as a single string with `\n` replacing the line breaks.
-* `name` string optional  
-   * Indicate a unique name for your CA certificate.
-* `private_key` string optional  
-   * Insert content from the `.pem` file associated with the private key for the certificate, formatted as a single string with `\n` replacing the line breaks.
+* `ca` boolean required
+
+  * Set to `true` to indicate that the certificate is a CA certificate.
+* `certificates` string required
+
+  * Insert content from the `.pem` file associated with the CA certificate, formatted as a single string with `\n` replacing the line breaks.
+* `name` string optional
+
+  * Indicate a unique name for your CA certificate.
+* `private_key` string optional
+
+  * Insert content from the `.pem` file associated with the private key for the certificate, formatted as a single string with `\n` replacing the line breaks.
 1. Take note of the certificate ID (`id`) that is returned in the API response.
 2. Use the [Replace Hostname Associations endpoint](https://developers.cloudflare.com/api/resources/certificate%5Fauthorities/subresources/hostname%5Fassociations/methods/update/) to enable mTLS in each hostname that should use the CA for mTLS validation. Use the following parameters:
-* `hostnames` array required  
-   * List the hostnames that will be using the CA for client certificate validation.  
-   Warning  
-   Submitting an empty array will remove all hostname associations.
-* `mtls_certificate_id` string required  
-   * Indicate the certificate ID obtained from the previous step.  
-   Warning  
-   If no `mtls_certificate_id` is provided, the action will be performed against the [Cloudflare-managed CA](https://developers.cloudflare.com/ssl/client-certificates/).
+* `hostnames` array required
+
+  * List the hostnames that will be using the CA for client certificate validation.  
+  Warning  
+  Submitting an empty array will remove all hostname associations.
+* `mtls_certificate_id` string required
+
+  * Indicate the certificate ID obtained from the previous step.  
+  Warning  
+  If no `mtls_certificate_id` is provided, the action will be performed against the [Cloudflare-managed CA](https://developers.cloudflare.com/ssl/client-certificates/).
 1. (Optional) Make a [GET request](#list-ca-hostname-associations) to confirm the CA hostname associations.
 
 After uploading the CA and associating hostnames, create a custom rule to enforce client certificate validation. You can do this [via the dashboard](https://developers.cloudflare.com/learning-paths/mtls/mtls-app-security/#3-validate-the-client-certificate-in-the-waf) or [via API](https://developers.cloudflare.com/waf/custom-rules/create-api/).
 
 ```
-
-  "expression": "(http.host in {\"<HOSTNAME_1>\" \"<HOSTNAME_2>\"} and not cf.tls_client_auth.cert_verified)",
-
-  "action": "block"
-
-
+  "expression": "(http.host in {\"<HOSTNAME_1>\" \"<HOSTNAME_2>\"} and not cf.tls_client_auth.cert_verified)",  "action": "block"
 ```
 
 Note
@@ -104,8 +105,8 @@ There can be multiple CAs (Cloudflare-managed or BYOCA) associated with the same
 
 If you wish to remove the association from the Cloudflare-managed certificate and only use your BYOCA certificate(s):
 
-* [ Dashboard ](#tab-panel-10576)
-* [ API ](#tab-panel-10577)
+* [ Dashboard ](#tab-panel-10652)
+* [ API ](#tab-panel-10653)
 
 1. In the Cloudflare dashboard, go to the **Client Certificates** page.  
 [ Go to **Client Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates)
@@ -117,21 +118,14 @@ If you wish to remove the association from the Cloudflare-managed certificate an
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `SSL and Certificates Write`
 * `SSL and Certificates Read`
 
 List Hostname Associations
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/certificate_authorities/hostname_associations" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/certificate_authorities/hostname_associations" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 1. Copy the `hostnames` array returned by the API and update it, removing the hostname that should no longer use the Cloudflare-managed CA.
@@ -139,38 +133,21 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/certificate_authoritie
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `SSL and Certificates Write`
 
 Replace Hostname Associations
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/certificate_authorities/hostname_associations" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "hostnames": [
-
-        "<UPDATED_HOSTNAME_ASSOCIATIONS>"
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/certificate_authorities/hostname_associations" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "hostnames": [        "<UPDATED_HOSTNAME_ASSOCIATIONS>"    ]  }'
 ```
 
 ## Delete an uploaded CA
 
 If you want to remove a CA that you have previously uploaded, you must first remove any hostname associations that it has.
 
-* [ Dashboard ](#tab-panel-10572)
-* [ API ](#tab-panel-10573)
+* [ Dashboard ](#tab-panel-10648)
+* [ API ](#tab-panel-10649)
 
 1. In the Cloudflare dashboard, go to the **Client Certificates** page.  
 [ Go to **Client Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates)
@@ -182,20 +159,15 @@ If you want to remove a CA that you have previously uploaded, you must first rem
 1. Make a request to the [Replace Hostname Associations endpoint](https://developers.cloudflare.com/api/resources/certificate%5Fauthorities/subresources/hostname%5Fassociations/methods/update/), with an empty array for `hostnames` and specifying your CA certificate ID in `mtls_certificate_id`:
 
 ```
-
-  "hostnames": [],
-
-  "mtls_certificate_id": "<CERTIFICATE_ID>"
-
-
+  "hostnames": [],  "mtls_certificate_id": "<CERTIFICATE_ID>"
 ```
 
 1. Use the [Delete mTLS certificate endpoint](https://developers.cloudflare.com/api/resources/mtls%5Fcertificates/methods/delete/) to delete the certificate.
 
 ## List CA hostname associations
 
-* [ Dashboard ](#tab-panel-10574)
-* [ API ](#tab-panel-10575)
+* [ Dashboard ](#tab-panel-10650)
+* [ API ](#tab-panel-10651)
 
 1. In the Cloudflare dashboard, go to the **Client Certificates** page.  
 [ Go to **Client Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates)
@@ -207,21 +179,14 @@ Use the [List Hostname Associations endpoint](https://developers.cloudflare.com/
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `SSL and Certificates Write`
 * `SSL and Certificates Read`
 
 List Hostname Associations
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/certificate_authorities/hostname_associations?mtls_certificate_id=ID_FROM_STEP_2" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/certificate_authorities/hostname_associations?mtls_certificate_id=ID_FROM_STEP_2" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```json

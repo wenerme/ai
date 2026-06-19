@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -38,10 +38,7 @@ To enable transformations on your zone:
 You can convert and resize videos by requesting them via a specially-formatted URL, without writing any code. The URL format is:
 
 ```
-
 https://example.com/cdn-cgi/media/<OPTIONS>/<SOURCE-VIDEO>
-
-
 ```
 
 * `example.com`: Your website or zone on Cloudflare, with Transformations enabled.
@@ -52,10 +49,7 @@ https://example.com/cdn-cgi/media/<OPTIONS>/<SOURCE-VIDEO>
 For example, this URL will source an HD video from an R2 bucket, shorten it, crop and resize it as a square, and remove the audio.
 
 ```
-
 https://example.com/cdn-cgi/media/mode=video,time=5s,duration=5s,width=500,height=500,fit=crop,audio=false/https://pub-8613b7f94d6146408add8fefb52c52e8.r2.dev/aus-mobile-demo.mp4
-
-
 ```
 
 The result is an MP4 that can be used in an HTML video element without a player library.
@@ -135,8 +129,8 @@ If `mode` is `audio`, specifies the audio output format.
 Specifies the filename to use in the returned Content-Disposition header. If not specified, the filename will be derived from the source URL.
 
 * Acceptable values:  
-   * Maximum of 120 characters in length.  
-   * Can only contain lowercase letters (a-z), numbers (0-9), hyphens (-), underscores (\_), and an optional extension. A valid name satisfies this regular expression: `^[a-zA-Z0-9-_]+.?[a-zA-Z0-9-_]+$`.
+  * Maximum of 120 characters in length.
+  * Can only contain lowercase letters (a-z), numbers (0-9), hyphens (-), underscores (\_), and an optional extension. A valid name satisfies this regular expression: `^[a-zA-Z0-9-_]+.?[a-zA-Z0-9-_]+$`.
 * Examples: `default.mp4`, `shortened-clip_5s`
 
 ## Source video requirements

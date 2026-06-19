@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,39 +32,18 @@ A component that houses all the header components.
 ### Basic Usage
 
 ```
-
 <rtk-header></rtk-header>
-
-
 ```
 
 ### With Properties
 
 ```
-
-<rtk-header
-
- size="md">
-
-</rtk-header>
-
-
+<rtk-header size="md"></rtk-header>
 ```
 
 ```
-
-<script>
-
-  const el = document.querySelector("rtk-header");
-
-
-  el.disableRender= true;
-
-  el.meeting= meeting
-
-</script>
-
-
+<script>  const el = document.querySelector("rtk-header");
+  el.disableRender= true;  el.meeting= meeting</script>
 ```
 
 ```json

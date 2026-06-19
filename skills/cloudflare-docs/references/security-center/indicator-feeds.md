@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security-center/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -44,89 +44,33 @@ Providers can create and manage a Custom Indicator Feed with the [Custom Indicat
 2. Create a feed with the [Create new indicator feed endpoint](https://developers.cloudflare.com/api/resources/intel/subresources/indicator%5Ffeeds/methods/create/). Make note of the `feed_id` generated for your feed. For example:  
 Create new indicator feed  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/intel/indicator-feeds" \  
-  --header 'Content-Type: application/json' \  
-  --header 'X-Auth-Email: <EMAIL>' \  
-  --header 'X-Auth-Key: <API_KEY>' \  
-  --data '{  
-  "description": "Custom indicator feed to detect threats",  
-  "name": "threat_indicator_feed"  
-}'  
+curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/intel/indicator-feeds" \  --header 'Content-Type: application/json' \  --header 'X-Auth-Email: <EMAIL>' \  --header 'X-Auth-Key: <API_KEY>' \  --data '{  "description": "Custom indicator feed to detect threats",  "name": "threat_indicator_feed"}'  
 ```  
 ```  
-{  
-  "result": {  
-    "id": 10,  
-    "name": "threat_indicator_feed",  
-    "description": "Custom indicator feed to detect threats",  
-    "created_on": "2024-09-17T21:16:09.412Z",  
-    "modified_on": "2024-09-17T21:16:09.412Z"  
-  },  
-  "success": true,  
-  "errors": [],  
-  "messages": []  
-}  
+{  "result": {    "id": 10,    "name": "threat_indicator_feed",    "description": "Custom indicator feed to detect threats",    "created_on": "2024-09-17T21:16:09.412Z",    "modified_on": "2024-09-17T21:16:09.412Z"  },  "success": true,  "errors": [],  "messages": []}  
 ```
 3. Upload data to the feed with the [Update indicator feed data endpoint](https://developers.cloudflare.com/api/resources/intel/subresources/indicator%5Ffeeds/subresources/snapshots/methods/update/). Uploaded indicator data must be in a [.stix2 ↗](https://oasis-open.github.io/cti-documentation/stix/intro) formatted file. The [maximum upload file size](https://developers.cloudflare.com/r2/platform/limits/) is 4.995 GiB.  
 Update indicator feed data  
 ```  
-curl --request PUT \  
-  "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/intel/indicator-feeds/<FEED_ID>/snapshot" \  
-  --header 'Content-Type: multipart/form-data' \  
-  --header 'X-Auth-Email: <EMAIL>' \  
-  --header 'X-Auth-Key: <API_KEY>' \  
-  --form 'source=@/path/to/file'  
+curl --request PUT \  "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/intel/indicator-feeds/<FEED_ID>/snapshot" \  --header 'Content-Type: multipart/form-data' \  --header 'X-Auth-Email: <EMAIL>' \  --header 'X-Auth-Key: <API_KEY>' \  --form 'source=@/path/to/file'  
 ```  
 ```  
-{  
-  "result": {  
-    "file_id": 1,  
-    "filename": "snapshot_file.unified",  
-    "status": "unified"  
-  },  
-  "errors": [],  
-  "messages": [],  
-  "success": true  
-}  
+{  "result": {    "file_id": 1,    "filename": "snapshot_file.unified",    "status": "unified"  },  "errors": [],  "messages": [],  "success": true}  
 ```  
 Note  
 Indicator feeds use a snapshot system. To update feeds with new data, providers must upload a file containing all previous and new indicators.
 4. (Optional) Verify the status of your feed upload with the [Get indicator feed data endpoint](https://developers.cloudflare.com/api/resources/intel/subresources/indicator%5Ffeeds/methods/data/). For example:  
 Get indicator feed data  
 ```  
-curl --request GET \  
-  "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/intel/indicator-feeds/<FEED_ID>/data" \  
-  --header 'Content-Type: application/json' \  
-  --header 'X-Auth-Email: <EMAIL>' \  
-  --header 'X-Auth-Key: <API_KEY>'  
+curl --request GET \  "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/intel/indicator-feeds/<FEED_ID>/data" \  --header 'Content-Type: application/json' \  --header 'X-Auth-Email: <EMAIL>' \  --header 'X-Auth-Key: <API_KEY>'  
 ```  
 ```  
-{  
-  "result": {  
-    "id": 10,  
-    "name": "threat_indicator_feed",  
-    "description": "Custom indicator feed to detect threats",  
-    "created_on": "2023-08-01T18:00:26.65715Z",  
-    "modified_on": "2023-08-01T18:00:26.65715Z",  
-    "latest_upload_status": "Complete"  
-  },  
-  "success": true,  
-  "errors": [],  
-  "messages": []  
-}  
+{  "result": {    "id": 10,    "name": "threat_indicator_feed",    "description": "Custom indicator feed to detect threats",    "created_on": "2023-08-01T18:00:26.65715Z",    "modified_on": "2023-08-01T18:00:26.65715Z",    "latest_upload_status": "Complete"  },  "success": true,  "errors": [],  "messages": []}  
 ```
 5. Grant access to subscribers with the [Grant permission to indicator feed endpoint](https://developers.cloudflare.com/api/resources/intel/subresources/indicator%5Ffeeds/subresources/permissions/methods/create/). You can add subscribers to the feed's allowed subscribers list using their [account IDs](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/). For example:  
 Update indicator feed data  
 ```  
-curl --request PUT \  
-  "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/intel/indicator-feeds/<FEED_ID>/snapshot" \  
-  --header 'Content-Type: multipart/form-data' \  
-  --header 'X-Auth-Email: <EMAIL>' \  
-  --header 'X-Auth-Key: <API_KEY>' \  
-  --data '{  
-  "account_tag": "823f45f16fd2f7e21e1e054aga4d2859",  
-  "feed_id": 10  
-}'  
+curl --request PUT \  "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/intel/indicator-feeds/<FEED_ID>/snapshot" \  --header 'Content-Type: multipart/form-data' \  --header 'X-Auth-Email: <EMAIL>' \  --header 'X-Auth-Key: <API_KEY>' \  --data '{  "account_tag": "823f45f16fd2f7e21e1e054aga4d2859",  "feed_id": 10}'  
 ```
 
 ### Use a feed in Gateway
@@ -136,9 +80,10 @@ Once an account is granted access to a feed, it will be available to match traff
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Firewall policies**. Select **DNS**.
 2. To create a new DNS policy, select **Add a policy**.
 3. Name your policy.
-4. In **Traffic**, add a condition with the **Indicator Feeds** selector. If your account has been granted access to a Custom Indicator Feed, Gateway will list the feed in **Value**. For example, you can block sites that appear in a feed:  
-| Selector        | Operator | Value               | Action |  
-| --------------- | -------- | ------------------- | ------ |  
+4. In **Traffic**, add a condition with the **Indicator Feeds** selector. If your account has been granted access to a Custom Indicator Feed, Gateway will list the feed in **Value**. For example, you can block sites that appear in a feed:
+
+| Selector        | Operator | Value               | Action |
+| --------------- | -------- | ------------------- | ------ |
 | Indicator Feeds | in       | _Threat Intel Feed_ | Block  |
 5. Select **Create policy**.
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/resource-tagging/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -75,41 +75,8 @@ Include the `worker_id` field:
 Terminal window
 
 ```
-
-# GET
-
-curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags?resource_type=worker_version&resource_id=$VERSION_ID&worker_id=$WORKER_ID" \
-
-  -H "Authorization: Bearer $API_TOKEN"
-
-
-# PUT
-
-curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags" \
-
-  -H "Authorization: Bearer $API_TOKEN" \
-
-  -H "Content-Type: application/json" \
-
-  -d '{
-
-    "resource_type": "worker_version",
-
-    "resource_id": "'"$VERSION_ID"'",
-
-    "worker_id": "'"$WORKER_ID"'",
-
-    "tags": {
-
-      "version": "1.2.3",
-
-      "environment": "staging"
-
-    }
-
-  }'
-
-
+# GETcurl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags?resource_type=worker_version&resource_id=$VERSION_ID&worker_id=$WORKER_ID" \  -H "Authorization: Bearer $API_TOKEN"
+# PUTcurl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags" \  -H "Authorization: Bearer $API_TOKEN" \  -H "Content-Type: application/json" \  -d '{    "resource_type": "worker_version",    "resource_id": "'"$VERSION_ID"'",    "worker_id": "'"$WORKER_ID"'",    "tags": {      "version": "1.2.3",      "environment": "staging"    }  }'
 ```
 
 ### `access_application_policy`
@@ -119,41 +86,8 @@ Include the `access_application_id` field:
 Terminal window
 
 ```
-
-# GET
-
-curl -X GET "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/tags?resource_type=access_application_policy&resource_id=$POLICY_ID&access_application_id=$APP_ID" \
-
-  -H "Authorization: Bearer $API_TOKEN"
-
-
-# PUT
-
-curl -X PUT "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/tags" \
-
-  -H "Authorization: Bearer $API_TOKEN" \
-
-  -H "Content-Type: application/json" \
-
-  -d '{
-
-    "resource_type": "access_application_policy",
-
-    "resource_id": "'"$POLICY_ID"'",
-
-    "access_application_id": "'"$APP_ID"'",
-
-    "tags": {
-
-      "sensitivity": "high",
-
-      "team": "security"
-
-    }
-
-  }'
-
-
+# GETcurl -X GET "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/tags?resource_type=access_application_policy&resource_id=$POLICY_ID&access_application_id=$APP_ID" \  -H "Authorization: Bearer $API_TOKEN"
+# PUTcurl -X PUT "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/tags" \  -H "Authorization: Bearer $API_TOKEN" \  -H "Content-Type: application/json" \  -d '{    "resource_type": "access_application_policy",    "resource_id": "'"$POLICY_ID"'",    "access_application_id": "'"$APP_ID"'",    "tags": {      "sensitivity": "high",      "team": "security"    }  }'
 ```
 
 ```json

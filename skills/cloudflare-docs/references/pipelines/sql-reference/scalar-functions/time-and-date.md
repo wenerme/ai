@@ -6,13 +6,13 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pipelines/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
 # Time and date functions
 
-_Cloudflare Pipelines scalar function implementations are based on[Apache DataFusion ↗](https://arrow.apache.org/datafusion/) (via [Arroyo ↗](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference._
+_Cloudflare Pipelines scalar function implementations are based on [Apache DataFusion ↗](https://arrow.apache.org/datafusion/) (via [Arroyo ↗](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference._
 
 ## `date_bin`
 
@@ -21,10 +21,7 @@ Calculates time intervals and returns the start of the interval nearest to the s
 For example, if you "bin" or "window" data into 15 minute intervals, an input timestamp of `2023-01-01T18:18:18Z` will be updated to the start time of the 15 minute bin it is in: `2023-01-01T18:15:00Z`.
 
 ```
-
 date_bin(interval, expression, origin-timestamp)
-
-
 ```
 
 **Arguments**
@@ -52,23 +49,21 @@ The following intervals are supported:
 Truncates a timestamp value to a specified precision.
 
 ```
-
 date_trunc(precision, expression)
-
-
 ```
 
 **Arguments**
 
-* **precision**: Time precision to truncate to. The following precisions are supported:  
-   * year / YEAR  
-   * quarter / QUARTER  
-   * month / MONTH  
-   * week / WEEK  
-   * day / DAY  
-   * hour / HOUR  
-   * minute / MINUTE  
-   * second / SECOND
+* **precision**: Time precision to truncate to. The following precisions are supported:
+
+  * year / YEAR
+  * quarter / QUARTER
+  * month / MONTH
+  * week / WEEK
+  * day / DAY
+  * hour / HOUR
+  * minute / MINUTE
+  * second / SECOND
 * **expression**: Time expression to operate on. Can be a constant, column, or function.
 
 **Aliases**
@@ -84,29 +79,27 @@ _Alias of [date\_trunc](#date%5Ftrunc)._
 Returns the specified part of the date as an integer.
 
 ```
-
 date_part(part, expression)
-
-
 ```
 
 **Arguments**
 
-* **part**: Part of the date to return. The following date parts are supported:  
-   * year  
-   * quarter _(emits value in inclusive range \[1, 4\] based on which quartile of the year the date is in)_  
-   * month  
-   * week _(week of the year)_  
-   * day _(day of the month)_  
-   * hour  
-   * minute  
-   * second  
-   * millisecond  
-   * microsecond  
-   * nanosecond  
-   * dow _(day of the week)_  
-   * doy _(day of the year)_  
-   * epoch _(seconds since Unix epoch)_
+* **part**: Part of the date to return. The following date parts are supported:
+
+  * year
+  * quarter _(emits value in inclusive range \[1, 4\] based on which quartile of the year the date is in)_
+  * month
+  * week _(week of the year)_
+  * day _(day of the month)_
+  * hour
+  * minute
+  * second
+  * millisecond
+  * microsecond
+  * nanosecond
+  * dow _(day of the week)_
+  * doy _(day of the year)_
+  * epoch _(seconds since Unix epoch)_
 * **expression**: Time expression to operate on. Can be a constant, column, or function.
 
 **Aliases**
@@ -122,21 +115,13 @@ _Alias of [date\_part](#date%5Fpart)._
 Returns a sub-field from a time value as an integer.
 
 ```
-
 extract(field FROM source)
-
-
 ```
 
 Equivalent to calling `date_part('field', source)`. For example, these are equivalent:
 
 ```
-
-extract(day FROM '2024-04-13'::date)
-
-date_part('day', '2024-04-13'::date)
-
-
+extract(day FROM '2024-04-13'::date)date_part('day', '2024-04-13'::date)
 ```
 
 See [date\_part](#date%5Fpart).
@@ -146,10 +131,7 @@ See [date\_part](#date%5Fpart).
 Make a date from year/month/day component parts.
 
 ```
-
 make_date(year, month, day)
-
-
 ```
 
 **Arguments**
@@ -161,32 +143,7 @@ make_date(year, month, day)
 **Example**
 
 ```
-
-> select make_date(2023, 1, 31);
-
-+-------------------------------------------+
-
-| make_date(Int64(2023),Int64(1),Int64(31)) |
-
-+-------------------------------------------+
-
-| 2023-01-31                                |
-
-+-------------------------------------------+
-
-> select make_date('2023', '01', '31');
-
-+-----------------------------------------------+
-
-| make_date(Utf8("2023"),Utf8("01"),Utf8("31")) |
-
-+-----------------------------------------------+
-
-| 2023-01-31                                    |
-
-+-----------------------------------------------+
-
-
+> select make_date(2023, 1, 31);+-------------------------------------------+| make_date(Int64(2023),Int64(1),Int64(31)) |+-------------------------------------------+| 2023-01-31                                |+-------------------------------------------+> select make_date('2023', '01', '31');+-----------------------------------------------+| make_date(Utf8("2023"),Utf8("01"),Utf8("31")) |+-----------------------------------------------+| 2023-01-31                                    |+-----------------------------------------------+
 ```
 
 ## `to_char`
@@ -194,10 +151,7 @@ make_date(year, month, day)
 Returns a string representation of a date, time, timestamp or duration based on a [Chrono format ↗](https://docs.rs/chrono/latest/chrono/format/strftime/index.html). Unlike the PostgreSQL equivalent of this function numerical formatting is not supported.
 
 ```
-
 to_char(expression, format)
-
-
 ```
 
 **Arguments**
@@ -208,20 +162,7 @@ to_char(expression, format)
 **Example**
 
 ```
-
-> > select to_char('2023-03-01'::date, '%d-%m-%Y');
-
-+----------------------------------------------+
-
-| to_char(Utf8("2023-03-01"),Utf8("%d-%m-%Y")) |
-
-+----------------------------------------------+
-
-| 01-03-2023                                   |
-
-+----------------------------------------------+
-
-
+> > select to_char('2023-03-01'::date, '%d-%m-%Y');+----------------------------------------------+| to_char(Utf8("2023-03-01"),Utf8("%d-%m-%Y")) |+----------------------------------------------+| 01-03-2023                                   |+----------------------------------------------+
 ```
 
 **Aliases**
@@ -235,10 +176,7 @@ Converts a value to a timestamp (`YYYY-MM-DDT00:00:00Z`). Supports strings, inte
 Note: `to_timestamp` returns `Timestamp(Nanosecond)`. The supported range for integer input is between `-9223372037` and `9223372036`. Supported range for string input is between `1677-09-21T00:12:44.0` and `2262-04-11T23:47:16.0`. Please use `to_timestamp_seconds`for the input outside of supported bounds.
 
 ```
-
 to_timestamp(expression[, ..., format_n])
-
-
 ```
 
 **Arguments**
@@ -249,32 +187,7 @@ to_timestamp(expression[, ..., format_n])
 **Example**
 
 ```
-
-> select to_timestamp('2023-01-31T09:26:56.123456789-05:00');
-
-+-----------------------------------------------------------+
-
-| to_timestamp(Utf8("2023-01-31T09:26:56.123456789-05:00")) |
-
-+-----------------------------------------------------------+
-
-| 2023-01-31T14:26:56.123456789                             |
-
-+-----------------------------------------------------------+
-
-> select to_timestamp('03:59:00.123456789 05-17-2023', '%c', '%+', '%H:%M:%S%.f %m-%d-%Y');
-
-+--------------------------------------------------------------------------------------------------------+
-
-| to_timestamp(Utf8("03:59:00.123456789 05-17-2023"),Utf8("%c"),Utf8("%+"),Utf8("%H:%M:%S%.f %m-%d-%Y")) |
-
-+--------------------------------------------------------------------------------------------------------+
-
-| 2023-05-17T03:59:00.123456789                                                                          |
-
-+--------------------------------------------------------------------------------------------------------+
-
-
+> select to_timestamp('2023-01-31T09:26:56.123456789-05:00');+-----------------------------------------------------------+| to_timestamp(Utf8("2023-01-31T09:26:56.123456789-05:00")) |+-----------------------------------------------------------+| 2023-01-31T14:26:56.123456789                             |+-----------------------------------------------------------+> select to_timestamp('03:59:00.123456789 05-17-2023', '%c', '%+', '%H:%M:%S%.f %m-%d-%Y');+--------------------------------------------------------------------------------------------------------+| to_timestamp(Utf8("03:59:00.123456789 05-17-2023"),Utf8("%c"),Utf8("%+"),Utf8("%H:%M:%S%.f %m-%d-%Y")) |+--------------------------------------------------------------------------------------------------------+| 2023-05-17T03:59:00.123456789                                                                          |+--------------------------------------------------------------------------------------------------------+
 ```
 
 ## `to_timestamp_millis`
@@ -282,10 +195,7 @@ to_timestamp(expression[, ..., format_n])
 Converts a value to a timestamp (`YYYY-MM-DDT00:00:00.000Z`). Supports strings, integer, and unsigned integer types as input. Strings are parsed as RFC3339 (e.g. '2023-07-20T05:44:00') if no [Chrono format ↗](https://docs.rs/chrono/latest/chrono/format/strftime/index.html)s are provided. Integers and unsigned integers are interpreted as milliseconds since the unix epoch (`1970-01-01T00:00:00Z`). Returns the corresponding timestamp.
 
 ```
-
 to_timestamp_millis(expression[, ..., format_n])
-
-
 ```
 
 **Arguments**
@@ -296,32 +206,7 @@ to_timestamp_millis(expression[, ..., format_n])
 **Example**
 
 ```
-
-> select to_timestamp_millis('2023-01-31T09:26:56.123456789-05:00');
-
-+------------------------------------------------------------------+
-
-| to_timestamp_millis(Utf8("2023-01-31T09:26:56.123456789-05:00")) |
-
-+------------------------------------------------------------------+
-
-| 2023-01-31T14:26:56.123                                          |
-
-+------------------------------------------------------------------+
-
-> select to_timestamp_millis('03:59:00.123456789 05-17-2023', '%c', '%+', '%H:%M:%S%.f %m-%d-%Y');
-
-+---------------------------------------------------------------------------------------------------------------+
-
-| to_timestamp_millis(Utf8("03:59:00.123456789 05-17-2023"),Utf8("%c"),Utf8("%+"),Utf8("%H:%M:%S%.f %m-%d-%Y")) |
-
-+---------------------------------------------------------------------------------------------------------------+
-
-| 2023-05-17T03:59:00.123                                                                                       |
-
-+---------------------------------------------------------------------------------------------------------------+
-
-
+> select to_timestamp_millis('2023-01-31T09:26:56.123456789-05:00');+------------------------------------------------------------------+| to_timestamp_millis(Utf8("2023-01-31T09:26:56.123456789-05:00")) |+------------------------------------------------------------------+| 2023-01-31T14:26:56.123                                          |+------------------------------------------------------------------+> select to_timestamp_millis('03:59:00.123456789 05-17-2023', '%c', '%+', '%H:%M:%S%.f %m-%d-%Y');+---------------------------------------------------------------------------------------------------------------+| to_timestamp_millis(Utf8("03:59:00.123456789 05-17-2023"),Utf8("%c"),Utf8("%+"),Utf8("%H:%M:%S%.f %m-%d-%Y")) |+---------------------------------------------------------------------------------------------------------------+| 2023-05-17T03:59:00.123                                                                                       |+---------------------------------------------------------------------------------------------------------------+
 ```
 
 ## `to_timestamp_micros`
@@ -329,10 +214,7 @@ to_timestamp_millis(expression[, ..., format_n])
 Converts a value to a timestamp (`YYYY-MM-DDT00:00:00.000000Z`). Supports strings, integer, and unsigned integer types as input. Strings are parsed as RFC3339 (e.g. '2023-07-20T05:44:00') if no [Chrono format ↗](https://docs.rs/chrono/latest/chrono/format/strftime/index.html)s are provided. Integers and unsigned integers are interpreted as microseconds since the unix epoch (`1970-01-01T00:00:00Z`) Returns the corresponding timestamp.
 
 ```
-
 to_timestamp_micros(expression[, ..., format_n])
-
-
 ```
 
 **Arguments**
@@ -343,32 +225,7 @@ to_timestamp_micros(expression[, ..., format_n])
 **Example**
 
 ```
-
-> select to_timestamp_micros('2023-01-31T09:26:56.123456789-05:00');
-
-+------------------------------------------------------------------+
-
-| to_timestamp_micros(Utf8("2023-01-31T09:26:56.123456789-05:00")) |
-
-+------------------------------------------------------------------+
-
-| 2023-01-31T14:26:56.123456                                       |
-
-+------------------------------------------------------------------+
-
-> select to_timestamp_micros('03:59:00.123456789 05-17-2023', '%c', '%+', '%H:%M:%S%.f %m-%d-%Y');
-
-+---------------------------------------------------------------------------------------------------------------+
-
-| to_timestamp_micros(Utf8("03:59:00.123456789 05-17-2023"),Utf8("%c"),Utf8("%+"),Utf8("%H:%M:%S%.f %m-%d-%Y")) |
-
-+---------------------------------------------------------------------------------------------------------------+
-
-| 2023-05-17T03:59:00.123456                                                                                    |
-
-+---------------------------------------------------------------------------------------------------------------+
-
-
+> select to_timestamp_micros('2023-01-31T09:26:56.123456789-05:00');+------------------------------------------------------------------+| to_timestamp_micros(Utf8("2023-01-31T09:26:56.123456789-05:00")) |+------------------------------------------------------------------+| 2023-01-31T14:26:56.123456                                       |+------------------------------------------------------------------+> select to_timestamp_micros('03:59:00.123456789 05-17-2023', '%c', '%+', '%H:%M:%S%.f %m-%d-%Y');+---------------------------------------------------------------------------------------------------------------+| to_timestamp_micros(Utf8("03:59:00.123456789 05-17-2023"),Utf8("%c"),Utf8("%+"),Utf8("%H:%M:%S%.f %m-%d-%Y")) |+---------------------------------------------------------------------------------------------------------------+| 2023-05-17T03:59:00.123456                                                                                    |+---------------------------------------------------------------------------------------------------------------+
 ```
 
 ## `to_timestamp_nanos`
@@ -376,10 +233,7 @@ to_timestamp_micros(expression[, ..., format_n])
 Converts a value to a timestamp (`YYYY-MM-DDT00:00:00.000000000Z`). Supports strings, integer, and unsigned integer types as input. Strings are parsed as RFC3339 (e.g. '2023-07-20T05:44:00') if no \[Chrono formats\] are provided. Integers and unsigned integers are interpreted as nanoseconds since the unix epoch (`1970-01-01T00:00:00Z`). Returns the corresponding timestamp.
 
 ```
-
 to_timestamp_nanos(expression[, ..., format_n])
-
-
 ```
 
 **Arguments**
@@ -390,32 +244,7 @@ to_timestamp_nanos(expression[, ..., format_n])
 **Example**
 
 ```
-
-> select to_timestamp_nanos('2023-01-31T09:26:56.123456789-05:00');
-
-+-----------------------------------------------------------------+
-
-| to_timestamp_nanos(Utf8("2023-01-31T09:26:56.123456789-05:00")) |
-
-+-----------------------------------------------------------------+
-
-| 2023-01-31T14:26:56.123456789                                   |
-
-+-----------------------------------------------------------------+
-
-> select to_timestamp_nanos('03:59:00.123456789 05-17-2023', '%c', '%+', '%H:%M:%S%.f %m-%d-%Y');
-
-+--------------------------------------------------------------------------------------------------------------+
-
-| to_timestamp_nanos(Utf8("03:59:00.123456789 05-17-2023"),Utf8("%c"),Utf8("%+"),Utf8("%H:%M:%S%.f %m-%d-%Y")) |
-
-+--------------------------------------------------------------------------------------------------------------+
-
-| 2023-05-17T03:59:00.123456789                                                                                |
-
-+---------------------------------------------------------------------------------------------------------------+
-
-
+> select to_timestamp_nanos('2023-01-31T09:26:56.123456789-05:00');+-----------------------------------------------------------------+| to_timestamp_nanos(Utf8("2023-01-31T09:26:56.123456789-05:00")) |+-----------------------------------------------------------------+| 2023-01-31T14:26:56.123456789                                   |+-----------------------------------------------------------------+> select to_timestamp_nanos('03:59:00.123456789 05-17-2023', '%c', '%+', '%H:%M:%S%.f %m-%d-%Y');+--------------------------------------------------------------------------------------------------------------+| to_timestamp_nanos(Utf8("03:59:00.123456789 05-17-2023"),Utf8("%c"),Utf8("%+"),Utf8("%H:%M:%S%.f %m-%d-%Y")) |+--------------------------------------------------------------------------------------------------------------+| 2023-05-17T03:59:00.123456789                                                                                |+---------------------------------------------------------------------------------------------------------------+
 ```
 
 ## `to_timestamp_seconds`
@@ -423,10 +252,7 @@ to_timestamp_nanos(expression[, ..., format_n])
 Converts a value to a timestamp (`YYYY-MM-DDT00:00:00.000Z`). Supports strings, integer, and unsigned integer types as input. Strings are parsed as RFC3339 (e.g. '2023-07-20T05:44:00') if no [Chrono format ↗](https://docs.rs/chrono/latest/chrono/format/strftime/index.html)s are provided. Integers and unsigned integers are interpreted as seconds since the unix epoch (`1970-01-01T00:00:00Z`). Returns the corresponding timestamp.
 
 ```
-
 to_timestamp_seconds(expression[, ..., format_n])
-
-
 ```
 
 **Arguments**
@@ -437,32 +263,7 @@ to_timestamp_seconds(expression[, ..., format_n])
 **Example**
 
 ```
-
-> select to_timestamp_seconds('2023-01-31T09:26:56.123456789-05:00');
-
-+-------------------------------------------------------------------+
-
-| to_timestamp_seconds(Utf8("2023-01-31T09:26:56.123456789-05:00")) |
-
-+-------------------------------------------------------------------+
-
-| 2023-01-31T14:26:56                                               |
-
-+-------------------------------------------------------------------+
-
-> select to_timestamp_seconds('03:59:00.123456789 05-17-2023', '%c', '%+', '%H:%M:%S%.f %m-%d-%Y');
-
-+----------------------------------------------------------------------------------------------------------------+
-
-| to_timestamp_seconds(Utf8("03:59:00.123456789 05-17-2023"),Utf8("%c"),Utf8("%+"),Utf8("%H:%M:%S%.f %m-%d-%Y")) |
-
-+----------------------------------------------------------------------------------------------------------------+
-
-| 2023-05-17T03:59:00                                                                                            |
-
-+----------------------------------------------------------------------------------------------------------------+
-
-
+> select to_timestamp_seconds('2023-01-31T09:26:56.123456789-05:00');+-------------------------------------------------------------------+| to_timestamp_seconds(Utf8("2023-01-31T09:26:56.123456789-05:00")) |+-------------------------------------------------------------------+| 2023-01-31T14:26:56                                               |+-------------------------------------------------------------------+> select to_timestamp_seconds('03:59:00.123456789 05-17-2023', '%c', '%+', '%H:%M:%S%.f %m-%d-%Y');+----------------------------------------------------------------------------------------------------------------+| to_timestamp_seconds(Utf8("03:59:00.123456789 05-17-2023"),Utf8("%c"),Utf8("%+"),Utf8("%H:%M:%S%.f %m-%d-%Y")) |+----------------------------------------------------------------------------------------------------------------+| 2023-05-17T03:59:00                                                                                            |+----------------------------------------------------------------------------------------------------------------+
 ```
 
 ## `from_unixtime`
@@ -470,10 +271,7 @@ to_timestamp_seconds(expression[, ..., format_n])
 Converts an integer to RFC3339 timestamp format (`YYYY-MM-DDT00:00:00.000000000Z`). Integers and unsigned integers are interpreted as nanoseconds since the unix epoch (`1970-01-01T00:00:00Z`) return the corresponding timestamp.
 
 ```
-
 from_unixtime(expression)
-
-
 ```
 
 **Arguments**

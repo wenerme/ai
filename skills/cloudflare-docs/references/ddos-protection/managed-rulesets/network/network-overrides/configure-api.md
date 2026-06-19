@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -43,70 +43,7 @@ The overrides apply to all packets matching the rule expression: `ip.dst in { 1.
 Request
 
 ```
-
-curl --request PUT \
-
-https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets/phases/ddos_l4/entrypoint \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "description": "Define overrides for the Network-layer DDoS Attack Protection managed ruleset",
-
-  "rules": [
-
-    {
-
-      "action": "execute",
-
-      "expression": "ip.dst in { 1.1.1.0/24 }",
-
-      "action_parameters": {
-
-        "id": "<MANAGED_RULESET_ID>",
-
-        "overrides": {
-
-          "sensitivity_level": "medium",
-
-          "categories": [
-
-            {
-
-              "category": "<TAG_NAME>",
-
-              "sensitivity_level": "low"
-
-            }
-
-          ],
-
-          "rules": [
-
-            {
-
-              "id": "<MANAGED_RULESET_RULE_ID>",
-
-              "action": "block"
-
-            }
-
-          ]
-
-        }
-
-      }
-
-    }
-
-  ]
-
-}'
-
-
+curl --request PUT \https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets/phases/ddos_l4/entrypoint \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "description": "Define overrides for the Network-layer DDoS Attack Protection managed ruleset",  "rules": [    {      "action": "execute",      "expression": "ip.dst in { 1.1.1.0/24 }",      "action_parameters": {        "id": "<MANAGED_RULESET_ID>",        "overrides": {          "sensitivity_level": "medium",          "categories": [            {              "category": "<TAG_NAME>",              "sensitivity_level": "low"            }          ],          "rules": [            {              "id": "<MANAGED_RULESET_RULE_ID>",              "action": "block"            }          ]        }      }    }  ]}'
 ```
 
 The response returns the created (or updated) phase entry point ruleset.
@@ -114,90 +51,7 @@ The response returns the created (or updated) phase entry point ruleset.
 Response
 
 ```
-
-{
-
-  "result": {
-
-    "id": "<PHASE_ENTRY_POINT_RULESET_ID>",
-
-    "name": "default",
-
-    "description": "Define overrides for the Network-layer DDoS Attack Protection managed ruleset",
-
-    "kind": "root",
-
-    "version": "1",
-
-    "rules": [
-
-      {
-
-        "id": "<RULE_ID>",
-
-        "version": "1",
-
-        "action": "execute",
-
-        "action_parameters": {
-
-          "id": "<MANAGED_RULESET_ID>",
-
-          "version": "latest",
-
-          "overrides": {
-
-            "categories": [
-
-              {
-
-                "category": "<TAG_NAME>",
-
-                "sensitivity_level": "low"
-
-              }
-
-            ],
-
-            "rules": [
-
-              {
-
-                "id": "<MANAGED_RULESET_RULE_ID>",
-
-                "action": "block"
-
-              }
-
-            ],
-
-            "sensitivity_level": "medium"
-
-          }
-
-        },
-
-        "expression": "ip.dst in { 1.1.1.0/24 }",
-
-        "last_updated": "2021-08-16T04:14:47.977741Z",
-
-        "ref": "<RULE_REF>",
-
-        "enabled": true
-
-      }
-
-    ],
-
-    "last_updated": "2021-08-16T04:14:47.977741Z",
-
-    "phase": "ddos_l4"
-
-  }
-
-}
-
-
+{  "result": {    "id": "<PHASE_ENTRY_POINT_RULESET_ID>",    "name": "default",    "description": "Define overrides for the Network-layer DDoS Attack Protection managed ruleset",    "kind": "root",    "version": "1",    "rules": [      {        "id": "<RULE_ID>",        "version": "1",        "action": "execute",        "action_parameters": {          "id": "<MANAGED_RULESET_ID>",          "version": "latest",          "overrides": {            "categories": [              {                "category": "<TAG_NAME>",                "sensitivity_level": "low"              }            ],            "rules": [              {                "id": "<MANAGED_RULESET_RULE_ID>",                "action": "block"              }            ],            "sensitivity_level": "medium"          }        },        "expression": "ip.dst in { 1.1.1.0/24 }",        "last_updated": "2021-08-16T04:14:47.977741Z",        "ref": "<RULE_REF>",        "enabled": true      }    ],    "last_updated": "2021-08-16T04:14:47.977741Z",    "phase": "ddos_l4"  }}
 ```
 
 For more information on defining overrides for managed rulesets using the Rulesets API, refer to [Override a managed ruleset](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-managed-ruleset/).

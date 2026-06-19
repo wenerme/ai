@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -62,17 +62,7 @@ curl localhost:20241/diag/tunnel
 ```  
 This command should return a JSON:  
 ```  
-{  
-  "tunnelID": "ef96b330-a7f5-4bce-a00e-827ce5be077f",  
-  "connectorID": "d236670a-9f74-422f-adf1-030f5c5f0523",  
-  "connections": [  
-    { "isConnected": true, "protocol": 1, "edgeAddress": "198.41.192.167"},  
-    {"isConnected": true, "protocol": 1, "edgeAddress": "198.41.200.113", "index": 1},  
-    {"isConnected": true, "protocol": 1, "edgeAddress": "198.41.192.47", "index": 2},  
-    {"isConnected": true, "protocol": 1, "edgeAddress": "198.41.200.73", "index": 3}  
-  ],  
-  "icmp_sources": ["192.168.1.243", "fe80::c59:bd4a:e815:ed6"]  
-}  
+{  "tunnelID": "ef96b330-a7f5-4bce-a00e-827ce5be077f",  "connectorID": "d236670a-9f74-422f-adf1-030f5c5f0523",  "connections": [    { "isConnected": true, "protocol": 1, "edgeAddress": "198.41.192.167"},    {"isConnected": true, "protocol": 1, "edgeAddress": "198.41.200.113", "index": 1},    {"isConnected": true, "protocol": 1, "edgeAddress": "198.41.192.47", "index": 2},    {"isConnected": true, "protocol": 1, "edgeAddress": "198.41.200.73", "index": 3}  ],  "icmp_sources": ["192.168.1.243", "fe80::c59:bd4a:e815:ed6"]}  
 ```
 4. Run the diagnostic using the Docker container ID:  
 Terminal window  
@@ -97,10 +87,11 @@ The diagnostic feature will request data from the [tunnel metrics server](https:
 Terminal window  
 ```  
 kubectl port-forward <pod> <diagnostic_port>:<metrics_port>  
-```  
-   * `<pod>`: Name of the pod where the tunnel is running  
-   * `<diagnostic_port>` is any local port in the range `20241` to `20245`.  
-   * `<metrics_port>` is the Kubernetes pod port for the `cloudflared` instance you want to diagnose (obtained in Step 1).  
+```
+
+  * `<pod>`: Name of the pod where the tunnel is running
+  * `<diagnostic_port>` is any local port in the range `20241` to `20245`.
+  * `<metrics_port>` is the Kubernetes pod port for the `cloudflared` instance you want to diagnose (obtained in Step 1).  
 For example, if you set the metrics server address to `0.0.0.0:12345`:  
 Terminal window  
 ```  

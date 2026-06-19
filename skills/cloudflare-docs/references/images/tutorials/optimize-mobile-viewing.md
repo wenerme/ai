@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -40,10 +40,7 @@ Lazy loading is recommended for most images. With Lazy loading, resources like i
 Example of modifying the `loading` attribute of your `<img>` tags to be `"lazy"`:
 
 ```
-
 <img src="example.com/cdn-cgi/width=300/image.png" loading="lazy" />
-
-
 ```
 
 ### Eager loading
@@ -53,10 +50,7 @@ If you have images that are in the viewport, eager loading, instead of lazy load
 Example of modifying the `loading` attribute of your `<img>` tags to be `"eager"`:
 
 ```
-
 <img src="example.com/cdn-cgi/width=300/image.png" loading="eager" />
-
-
 ```
 
 ```json

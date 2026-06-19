@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -42,10 +42,7 @@ For testing purposes, you can run the following command to generate a Unix user 
 Terminal window
 
 ```
-
 sudo adduser jdoe
-
-
 ```
 
 Advanced setup: Differing usernames
@@ -63,14 +60,7 @@ If you would like to use short-lived certificates with the browser-based termina
 To allow `jdoe@example.com` to log in as the user `johndoe`, add the following to the server's `/etc/ssh/sshd_config`:
 
 ```
-
-Match user johndoe
-
-  AuthorizedPrincipalsCommand /bin/echo 'jdoe'
-
-  AuthorizedPrincipalsCommandUser nobody
-
-
+Match user johndoe  AuthorizedPrincipalsCommand /bin/echo 'jdoe'  AuthorizedPrincipalsCommandUser nobody
 ```
 
 This tells the SSH server that, when someone tries to authenticate as the user `johndoe`, check their certificate for the principal `jdoe`. This would allow the user `jdoe@example.com` to sign into the server with a command such as:
@@ -78,10 +68,7 @@ This tells the SSH server that, when someone tries to authenticate as the user `
 Terminal window
 
 ```
-
 ssh johndoe@server
-
-
 ```
 
 **Username matches multiple emails**
@@ -89,25 +76,13 @@ ssh johndoe@server
 To allow multiple email addresses to log in as `vmuser`, add the following to the server's `/etc/ssh/sshd_config`:
 
 ```
-
-Match user vmuser
-
-  AuthorizedPrincipalsFile /etc/ssh/vmusers-list.txt
-
-
+Match user vmuser  AuthorizedPrincipalsFile /etc/ssh/vmusers-list.txt
 ```
 
 This tells the SSH server to load a list of principles from a file. Then, in `/etc/ssh/vmusers-list.txt`, list the email prefixes that can log in as `vmuser`, one per line:
 
 ```
-
-jdoe
-
-bwayne
-
-robin
-
-
+jdoebwaynerobin
 ```
 
 **Username matches all users**
@@ -115,14 +90,7 @@ robin
 To allow any Access user to log in as `vmuser`, add the following command to the server's `/etc/ssh/sshd_config`:
 
 ```
-
-Match user vmuser
-
-  AuthorizedPrincipalsCommand /bin/bash -c "echo '%t %k' | ssh-keygen -L -f - | grep -A1 Principals"
-
-  AuthorizedPrincipalsCommandUser nobody
-
-
+Match user vmuser  AuthorizedPrincipalsCommand /bin/bash -c "echo '%t %k' | ssh-keygen -L -f - | grep -A1 Principals"  AuthorizedPrincipalsCommandUser nobody
 ```
 
 This command takes the certificate presented by the user and authorizes whatever principal is listed on it.
@@ -132,12 +100,7 @@ This command takes the certificate presented by the user and authorizes whatever
 To allow any Access user to log in with any username, add the following to the server's `/etc/ssh/sshd_config`:
 
 ```
-
-AuthorizedPrincipalsCommand /bin/bash -c "echo '%t %k' | ssh-keygen -L -f - | grep -A1 Principals"
-
-AuthorizedPrincipalsCommandUser nobody
-
-
+AuthorizedPrincipalsCommand /bin/bash -c "echo '%t %k' | ssh-keygen -L -f - | grep -A1 Principals"AuthorizedPrincipalsCommandUser nobody
 ```
 
 Since this will put the security of your server entirely dependent on your Access configuration, make sure your [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/) are correctly configured.
@@ -173,8 +136,7 @@ The `ca.pub` file can hold multiple keys, listed one per line. Empty lines and c
 4. Save the `ca.pub` file. In some systems, you may need to use the following command to force the file to save depending on your permissions:  
 Terminal window  
 ```  
-:w !sudo tee %  
-:q!  
+:w !sudo tee %:q!  
 ```
 
 ## 5\. Modify your `sshd_config` file
@@ -188,8 +150,7 @@ Terminal window
 ```
 2. Press `i` to enter insert mode, then add the following lines at the top of the file, above all other directives:  
 ```  
-PubkeyAuthentication yes  
-TrustedUserCAKeys /etc/ssh/ca.pub  
+PubkeyAuthentication yesTrustedUserCAKeys /etc/ssh/ca.pub  
 ```  
 Be aware of your include statements  
 If there are any include statements below these lines, the configurations in those files will not take precedence.
@@ -199,18 +160,15 @@ If there are any include statements below these lines, the configurations in tho
 
 Once you have modified your `sshd` configuration, reload the SSH service on the remote machine for the changes to take effect.
 
-* [ Debian/Ubuntu ](#tab-panel-7121)
-* [ CentOS/RHEL ](#tab-panel-7122)
+* [ Debian/Ubuntu ](#tab-panel-7197)
+* [ CentOS/RHEL ](#tab-panel-7198)
 
 For Debian/Ubuntu:
 
 Terminal window
 
 ```
-
 sudo systemctl reload ssh
-
-
 ```
 
 For CentOS/RHEL 7 and newer:
@@ -218,10 +176,7 @@ For CentOS/RHEL 7 and newer:
 Terminal window
 
 ```
-
 sudo systemctl reload sshd
-
-
 ```
 
 ## 7\. Connect as a user
@@ -235,27 +190,13 @@ To save time, you can use the following cloudflared command to print the require
 Terminal window
 
 ```
-
 cloudflared access ssh-config --hostname vm.example.com --short-lived-cert
-
-
 ```
 
 If you prefer to configure manually, this is an example of the generated SSH config:
 
 ```
-
-Match host vm.example.com exec "/usr/local/bin/cloudflared access ssh-gen --hostname %h"
-
-    HostName vm.example.com
-
-    ProxyCommand /usr/local/bin/cloudflared access ssh --hostname %h
-
-    IdentityFile ~/.cloudflared/vm.example.com-cf_key
-
-    CertificateFile ~/.cloudflared/vm.example.com-cf_key-cert.pub
-
-
+Match host vm.example.com exec "/usr/local/bin/cloudflared access ssh-gen --hostname %h"    HostName vm.example.com    ProxyCommand /usr/local/bin/cloudflared access ssh --hostname %h    IdentityFile ~/.cloudflared/vm.example.com-cf_key    CertificateFile ~/.cloudflared/vm.example.com-cf_key-cert.pub
 ```
 
 ### Connect through a browser-based terminal

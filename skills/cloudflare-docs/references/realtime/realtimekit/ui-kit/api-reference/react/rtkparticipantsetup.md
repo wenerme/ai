@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,55 +31,15 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 ### Basic Usage
 
 ```
-
 import { RtkParticipantSetup } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return <RtkParticipantSetup />;
-
-}
-
-
+function MyComponent() {  return <RtkParticipantSetup />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkParticipantSetup } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkParticipantSetup
-
-      isPreview={true}
-
-      nameTagPosition={| 'bottom-left'
-
-    | 'bottom-right'
-
-    | 'bottom-center'
-
-    | 'top-left'
-
-    | 'top-right'
-
-    | 'top-center'}
-
-      participant={participant}
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkParticipantSetup      isPreview={true}      nameTagPosition={| 'bottom-left'    | 'bottom-right'    | 'bottom-center'    | 'top-left'    | 'top-right'    | 'top-center'}      participant={participant}    />  );}
 ```
 
 ```json

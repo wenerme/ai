@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -74,8 +74,8 @@ This section covers how to enable remote access to a private hostname applicatio
 
 Before you can connect to private hostnames, you must enable the Gateway proxy.
 
-* [ Dashboard ](#tab-panel-7286)
-* [ Terraform (v5) ](#tab-panel-7287)
+* [ Dashboard ](#tab-panel-7362)
+* [ Terraform (v5) ](#tab-panel-7363)
 
 1. Go to **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Allow Secure Web Gateway to proxy traffic**.
@@ -83,15 +83,12 @@ Before you can connect to private hostnames, you must enable the Gateway proxy.
 4. Select **UDP** (required to proxy traffic to internal DNS resolvers).
 5. (Recommended) To proxy traffic for diagnostic tools such as `ping` and `traceroute`, select **ICMP**. You may also need to [update your system](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/#icmp) to allow ICMP traffic through `cloudflared`.
 
-1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):  
-   * `Zero Trust Write`
+1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
+
+  * `Zero Trust Write`
 2. Turn on the TCP and/or UDP proxy using the [cloudflare\_zero\_trust\_device\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fsettings) resource:  
 ```  
-resource "cloudflare_zero_trust_device_settings "global_warp_settings" {  
-  account_id            = var.cloudflare_account_id  
-  gateway_proxy_enabled = true  
-  gateway_udp_proxy_enabled = true  
-}  
+resource "cloudflare_zero_trust_device_settings "global_warp_settings" {  account_id            = var.cloudflare_account_id  gateway_proxy_enabled = true  gateway_udp_proxy_enabled = true}  
 ```
 
 Cloudflare will now proxy traffic from enrolled devices, except for the traffic excluded in your [split tunnel settings](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/#3-route-private-network-ips-through-the-cloudflare-one-client). For more information on how Gateway forwards traffic, refer to [Gateway proxy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/).
@@ -99,19 +96,20 @@ Cloudflare will now proxy traffic from enrolled devices, except for the traffic 
 Your devices must also forward the following traffic to Cloudflare:
 
 * Initial resolved IPs:  
-   * **IPv4**: `100.80.0.0/16`  
-   * **IPv6**: `2606:4700:0cf1:4000::/64`
+  * **IPv4**: `100.80.0.0/16`
+  * **IPv6**: `2606:4700:0cf1:4000::/64`
 * DNS queries for your private hostname
 
 Configuration steps vary depending on your [device on-ramp](#device-connectivity):
 
 Cloudflare One Clients
 
-1. In your WARP [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/), configure [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) such that the initial resolved IPs route through the WARP tunnel. Configuration depends on your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode):  
-   * **Exclude mode**: Delete `100.64.0.0/10` from your Split Tunnels list. We recommend [adding back the IP ranges](https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/#split-tunnel-configuration) that are not explicitly used for Cloudflare One services. This reduces the risk of conflicts with existing private network configurations that may use the CGNAT address space.  
-   * **Include mode**: Add Split Tunnel entries for the following IP addresses:  
-         * **IPv4**: `100.80.0.0/16`  
-         * **IPv6**: `2606:4700:0cf1:4000::/64`
+1. In your WARP [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/), configure [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) such that the initial resolved IPs route through the WARP tunnel. Configuration depends on your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode):
+
+  * **Exclude mode**: Delete `100.64.0.0/10` from your Split Tunnels list. We recommend [adding back the IP ranges](https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/#split-tunnel-configuration) that are not explicitly used for Cloudflare One services. This reduces the risk of conflicts with existing private network configurations that may use the CGNAT address space.
+  * **Include mode**: Add Split Tunnel entries for the following IP addresses:  
+    * **IPv4**: `100.80.0.0/16`
+    * **IPv6**: `2606:4700:0cf1:4000::/64`
 2. In [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/), delete the top-level domain for your private hostname. This configures WARP to send the DNS query to Cloudflare Gateway for resolution.
 
 Cloudflare Mesh
@@ -136,15 +134,16 @@ Cloudflare WAN
 ![Connector appearing in the UI after cloudflared has run](https://developers.cloudflare.com/_astro/connector.BnVS4T_M_ZxLFu6.webp)
 8. Select **Next**.
 1. In the **Hostname routes** tab, enter the fully qualified domain name (FQDN) that represents your application (for example, `wiki.internal.local`).  
-Hostname format restrictions  
-   * **Character limit:** Must be less than 255 characters.  
-   * **Supported wildcards:** A single wildcard (`*`) is allowed, and it must represent a full DNS label. Example: `*.internal.local`  
-   * **Unsupported wildcards:** The following wildcard formats are not supported:  
-         * Partial wildcards such as `*-dev.internal.local` or `dev-*.internal.local`.  
-         * Wildcards in the middle, such as `foo*bar.internal.local` or `foo.*.internal.local`.  
-         * Multiple wildcards in the hostname, such as `*.*.internal.local`.  
-   * **Wildcard trimming**: Leading wildcards (`*`) are trimmed off and an implicit dot (`.`) is assumed. For example, `*.internal.local` is saved as `internal.local` but will match all subdomains at the wildcard level (covers `foo.internal.local` but not `foo.bar.internal.local`).  
-   * **Dot trimming:** Leading and ending dots (`.`) are allowed but trimmed off.
+Hostname format restrictions
+
+  * **Character limit:** Must be less than 255 characters.
+  * **Supported wildcards:** A single wildcard (`*`) is allowed, and it must represent a full DNS label. Example: `*.internal.local`
+  * **Unsupported wildcards:** The following wildcard formats are not supported:  
+    * Partial wildcards such as `*-dev.internal.local` or `dev-*.internal.local`.
+    * Wildcards in the middle, such as `foo*bar.internal.local` or `foo.*.internal.local`.
+    * Multiple wildcards in the hostname, such as `*.*.internal.local`.
+  * **Wildcard trimming**: Leading wildcards (`*`) are trimmed off and an implicit dot (`.`) is assumed. For example, `*.internal.local` is saved as `internal.local` but will match all subdomains at the wildcard level (covers `foo.internal.local` but not `foo.bar.internal.local`).
+  * **Dot trimming:** Leading and ending dots (`.`) are allowed but trimmed off.
 2. Select **Complete setup**.
 
 ### 2\. Configure DNS resolution
@@ -161,22 +160,25 @@ If the machine running `cloudflared` can already resolve `wiki.internal.local` t
 
 If you need `cloudflared` to use a specific internal DNS server that is different from the host's default resolver, you must explicitly connect that DNS server to Cloudflare via an [IP/CIDR route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/). You will also need to configure a [Gateway resolver policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/) to route queries to this specific private DNS server.
 
-1. To create an IP/CIDR route for the DNS server:  
-   1. Go to **Networks** \> **Routes** \> **CIDR**.  
-   2. Select **Add CIDR route**.  
-   3. Enter the private IP address of your internal DNS resolver.  
-   4. Select the Cloudflare Tunnel that connects to the network where this DNS server resides.  
-   5. Select **Create**.
-2. To create a resolver policy:  
-   1. Go to **Traffic policies** \> **Resolver policies**.  
-   2. Select **Create a policy**.  
-   3. Create an expression that matches the private hostname:  
-   | Selector | Operator | Value               |  
-   | -------- | -------- | ------------------- |  
-   | Host     | in       | wiki.internal.local |  
-   4. Under **Configure custom DNS resolvers**, enter the private IP address of your internal DNS server.  
-   5. From the dropdown menu, select the `- Private` routing option and the [virtual network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) assigned to the tunnel you selected in the previous step.  
-   6. Select **Create policy**.
+1. To create an IP/CIDR route for the DNS server:
+
+  1. Go to **Networks** \> **Routes** \> **CIDR**.
+  2. Select **Add CIDR route**.
+  3. Enter the private IP address of your internal DNS resolver.
+  4. Select the Cloudflare Tunnel that connects to the network where this DNS server resides.
+  5. Select **Create**.
+2. To create a resolver policy:
+
+  1. Go to **Traffic policies** \> **Resolver policies**.
+  2. Select **Create a policy**.
+  3. Create an expression that matches the private hostname:  
+
+| Selector | Operator | Value               |
+| -------- | -------- | ------------------- |
+| Host     | in       | wiki.internal.local |
+  4. Under **Configure custom DNS resolvers**, enter the private IP address of your internal DNS server.
+  5. From the dropdown menu, select the `- Private` routing option and the [virtual network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) assigned to the tunnel you selected in the previous step.
+  6. Select **Create policy**.
 
 ### 3\. (Recommended) Filter network traffic with Gateway
 
@@ -236,11 +238,8 @@ Terminal window
 nslookup wiki.internal.local  
 ```  
 ```  
-Server:    127.0.2.2  
-Address:  127.0.2.2#53  
-Non-authoritative answer:  
-Name:  wiki.internal.local  
-Address: 100.80.200.48  
+Server:    127.0.2.2Address:  127.0.2.2#53  
+Non-authoritative answer:Name:  wiki.internal.localAddress: 100.80.200.48  
 ```  
 The query should resolve using [WARP's DNS proxy](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#dns-traffic) and return a Gateway initial resolved IP. If the query fails to resolve or returns a different IP, check your [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) configuration and [Gateway resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/).
 2. **Check Gateway logs** \- Review your [Gateway network logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/) to see if the connection is being blocked by a policy.
@@ -250,10 +249,8 @@ Terminal window
 ```  
 curl -v4 http://wiki.internal.local  
 ```  
-```  
-* Trying 100.80.200.48:80...  
-* Connected to wiki.internal.local (100.80.200.48) port 80  
-...  
+```
+* Trying 100.80.200.48:80...* Connected to wiki.internal.local (100.80.200.48) port 80...  
 ```  
 If the request fails, confirm that the initial resolved IP [routes through the WARP tunnel](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/). You can also check your [tunnel logs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/logs/) to confirm that requests are routing to the application's private IP.
 

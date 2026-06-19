@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,45 +29,15 @@ Avatar component which renders a participant's image or their initials.
 ### Basic Usage
 
 ```
-
 import { RtkAvatar } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return <RtkAvatar />;
-
-}
-
-
+function MyComponent() {  return <RtkAvatar />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkAvatar } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkAvatar
-
-      participant="example"
-
-      size="md"
-
-      variant="circular"
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkAvatar      participant="example"      size="md"      variant="circular"    />  );}
 ```
 
 ```json

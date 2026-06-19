@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,17 +35,9 @@ Terminal window
 dig example.com  
 ```  
 ```  
-; <<>> DiG 9.10.6 <<>> example.com  
-;; global options: +cmd  
-;; Got answer:  
-;; ->>HEADER<<- opcode: QUERY, status: REFUSED, id: 6503  
-;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0  
-;; QUESTION SECTION:  
-;example.com.                   IN      A  
-;; Query time: 46 msec  
-;; SERVER: 172.64.36.1#53(172.64.36.1)  
-;; WHEN: Tue Mar 10 20:22:18 CDT 2020  
-;; MSG SIZE  rcvd: 29  
+; <<>> DiG 9.10.6 <<>> example.com;; global options: +cmd;; Got answer:;; ->>HEADER<<- opcode: QUERY, status: REFUSED, id: 6503;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0  
+;; QUESTION SECTION:;example.com.                   IN      A  
+;; Query time: 46 msec;; SERVER: 172.64.36.1#53(172.64.36.1);; WHEN: Tue Mar 10 20:22:18 CDT 2020;; MSG SIZE  rcvd: 29  
 ```  
 If the [block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/) is enabled for the policy, you should see `NOERROR` (meaning the query was resolved) in the header with `162.159.36.12` and `162.159.46.12` as the answers. These are Cloudflare's block page IP addresses:  
 Terminal window  
@@ -53,22 +45,10 @@ Terminal window
 dig example.com  
 ```  
 ```  
-; <<>> DiG 9.10.6 <<>> example.com  
-;; global options: +cmd  
-;; Got answer:  
-;; ->>HEADER<<- opcode: QUERY, status: NOERROR id: 14531  
-;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1  
-;; OPT PSEUDOSECTION:  
-; EDNS: version: 0, flags:; udp: 1452  
-;; QUESTION SECTION:  
-;example.com.                   IN      A  
-;;ANSWER SECTION:  
-example.com.            60      IN      A                  162.159.36.12  
-example.com.            60      IN      A                  162.159.46.12  
-;; Query time: 53 msec  
-;; SERVER: 172.64.36.1#53(172.64.36.1)  
-;; WHEN: Tue Mar 10 20:19:52 CDT 2020  
-;; MSG SIZE  rcvd: 83  
+; <<>> DiG 9.10.6 <<>> example.com;; global options: +cmd;; Got answer:;; ->>HEADER<<- opcode: QUERY, status: NOERROR id: 14531;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1  
+;; OPT PSEUDOSECTION:; EDNS: version: 0, flags:; udp: 1452;; QUESTION SECTION:;example.com.                   IN      A  
+;;ANSWER SECTION:example.com.            60      IN      A                  162.159.36.12example.com.            60      IN      A                  162.159.46.12  
+;; Query time: 53 msec;; SERVER: 172.64.36.1#53(172.64.36.1);; WHEN: Tue Mar 10 20:19:52 CDT 2020;; MSG SIZE  rcvd: 83  
 ```
 
 ### Test a security or content category
@@ -83,10 +63,11 @@ Once you have configured your Gateway policy to block the category, the test dom
 ```  
 <NAME_OF_CATEGORY>.testcategory.com  
 ```
-* **Multi-word category** — For categories with multiple words in the name (for example, _Parked & For Sale Domains_), the test domain uses the following format:  
-   * Remove any spaces between the words  
-   * Replace `&` with `and`  
-   * Lowercase all letters
+* **Multi-word category** — For categories with multiple words in the name (for example, _Parked & For Sale Domains_), the test domain uses the following format:
+
+  * Remove any spaces between the words
+  * Replace `&` with `and`
+  * Lowercase all letters
 
 #### Common test domains
 
@@ -110,10 +91,11 @@ Once you have configured your Gateway policy to block the category, the test dom
 
 EDNS client subnet (ECS) is a DNS extension that sends a portion of the user's IP address to authoritative DNS nameservers, allowing them to return geographically optimal answers. Cloudflare sends the first `/24` of the user's IP address to preserve privacy while still providing location information. If you [enabled EDNS client subnet](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/) for your DNS location, you can validate it as follows:
 
-1. Obtain your DNS location's DoH (DNS over HTTPS) subdomain:  
-   1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Networks** \> **Resolvers & Proxies** \> **DNS locations**.  
-   2. Select the DNS location you are testing.  
-   3. Note the value of **DNS over HTTPS**.
+1. Obtain your DNS location's DoH (DNS over HTTPS) subdomain:
+
+  1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Networks** \> **Resolvers & Proxies** \> **DNS locations**.
+  2. Select the DNS location you are testing.
+  3. Note the value of **DNS over HTTPS**.
 2. Open a terminal and run the following command:  
 Terminal window  
 ```  
@@ -121,41 +103,14 @@ curl 'https://<DOH_SUBDOMAIN>.cloudflare-gateway.com/dns-query?type=TXT&name=o-o
 ```  
 The output should contain your EDNS client subnet:  
 ```  
-{  
-  "AD": false,  
-  "Answer": [  
-    {  
-      "TTL": 60,  
-      "data": "\"108.162.218.211\"",  
-      "name": "o-o.myaddr.google.com",  
-      "type": 16  
-    },  
-    {  
-      "TTL": 60,  
-      "data": "\"edns0-client-subnet 136.62.0.0/24\"",  
-      "name": "o-o.myaddr.google.com",  
-      "type": 16  
-    }  
-  ],  
-  "CD": false,  
-  "Question": [  
-    {  
-      "name": "o-o.myaddr.google.com",  
-      "type": 16  
-    }  
-  ],  
-  "RA": true,  
-  "RD": true,  
-  "Status": 0,  
-  "TC": false  
-}  
+{  "AD": false,  "Answer": [    {      "TTL": 60,      "data": "\"108.162.218.211\"",      "name": "o-o.myaddr.google.com",      "type": 16    },    {      "TTL": 60,      "data": "\"edns0-client-subnet 136.62.0.0/24\"",      "name": "o-o.myaddr.google.com",      "type": 16    }  ],  "CD": false,  "Question": [    {      "name": "o-o.myaddr.google.com",      "type": 16    }  ],  "RA": true,  "RD": true,  "Status": 0,  "TC": false}  
 ```
 3. To verify your EDNS client subnet, obtain your source IP address:  
 Terminal window  
 ```  
 curl ifconfig.me  
 ```  
-```  
+```
 136.62.12.156%  
 ```  
 The source IP address should fall within the /24 range specified by your EDNS client subnet.
@@ -179,10 +134,7 @@ Windows
 Terminal window
 
 ```
-
 ipconfig /flushdns
-
-
 ```
 
 macOS
@@ -193,14 +145,7 @@ macOS
 Terminal window
 
 ```
-
-sudo killall -HUP mDNSResponder
-
-sudo killall mDNSResponderHelper
-
-sudo dscacheutil -flushcache
-
-
+sudo killall -HUP mDNSRespondersudo killall mDNSResponderHelpersudo dscacheutil -flushcache
 ```
 
 ```json

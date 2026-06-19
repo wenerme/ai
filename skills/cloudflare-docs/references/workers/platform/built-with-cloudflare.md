@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -24,29 +24,20 @@ The "Built with Cloudflare" button can be used to share that you're using Cloudf
 
 The Built with Cloudflare button is an SVG and can be embedded anywhere. Use the following snippet to paste the button into your README, blog post, or documentation.
 
-* [ Markdown ](#tab-panel-11880)
-* [ HTML ](#tab-panel-11881)
-* [ URL ](#tab-panel-11882)
+* [ Markdown ](#tab-panel-11897)
+* [ HTML ](#tab-panel-11898)
+* [ URL ](#tab-panel-11899)
 
 ```
-
 [![Built with Cloudflare](https://workers.cloudflare.com/built-with-cloudflare.svg)](https://cloudflare.com)
-
-
 ```
 
 ```
-
 <a href="https://cloudflare.com"><img src="https://workers.cloudflare.com/built-with-cloudflare.svg" alt="Built with Cloudflare"/></a>
-
-
 ```
 
 ```
-
 https://workers.cloudflare.com/built-with-cloudflare.svg
-
-
 ```
 
 ```json

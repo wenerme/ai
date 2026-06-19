@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -39,8 +39,8 @@ Use CIDR routes to forward traffic from your mesh node to devices on your local 
 
 ### Add a route
 
-* [ Dashboard ](#tab-panel-7245)
-* [ API ](#tab-panel-7246)
+* [ Dashboard ](#tab-panel-7321)
+* [ API ](#tab-panel-7322)
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.  
 [ Go to **Mesh** ](https://dash.cloudflare.com/?to=/:account/mesh)
@@ -53,37 +53,20 @@ Use CIDR routes to forward traffic from your mesh node to devices on your local 
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Cloudflare One Networks Write`
 * `Cloudflare Tunnel Write`
 
 Create a tunnel route
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "network": "10.0.0.0/24",
-
-    "tunnel_id": "{mesh_node_id}",
-
-    "comment": "Staging subnet"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "network": "10.0.0.0/24",    "tunnel_id": "{mesh_node_id}",    "comment": "Staging subnet"  }'
 ```
 
 ### Edit a route
 
-* [ Dashboard ](#tab-panel-7247)
-* [ API ](#tab-panel-7248)
+* [ Dashboard ](#tab-panel-7323)
+* [ API ](#tab-panel-7324)
 
 1. Go to **Networking** \> **Mesh** \> select your node > **Routes** tab.
 2. Select the edit icon next to the route you want to modify.
@@ -92,35 +75,20 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes" 
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Cloudflare One Networks Write`
 * `Cloudflare Tunnel Write`
 
 Update a tunnel route
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes/$ROUTE_ID" \
-
-  --request PATCH \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "network": "10.0.0.0/24",
-
-    "comment": "Updated description"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes/$ROUTE_ID" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "network": "10.0.0.0/24",    "comment": "Updated description"  }'
 ```
 
 ### Delete a route
 
-* [ Dashboard ](#tab-panel-7243)
-* [ API ](#tab-panel-7244)
+* [ Dashboard ](#tab-panel-7319)
+* [ API ](#tab-panel-7320)
 
 1. Go to **Networking** \> **Mesh** \> select your node > **Routes** tab.
 2. Select the delete icon next to the route.
@@ -128,21 +96,14 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes/$
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Cloudflare One Networks Write`
 * `Cloudflare Tunnel Write`
 
 Delete a tunnel route
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes/$ROUTE_ID" \
-
-  --request DELETE \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes/$ROUTE_ID" \  --request DELETE \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ## Configure Split Tunnels
@@ -222,15 +183,18 @@ For production site-to-site deployments, consider enabling [high availability](h
 
 To filter DNS queries from the subnet using [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/):
 
-1. **Configure DNS on your router**: Point your router's DNS to the Gateway resolver IPs:  
-   * `172.64.36.1`  
-   * `172.64.36.2`
-2. **Add IP routes to your router**: On your router, add static routes pointing the Gateway resolver IPs to your Mesh node's local IP. This allows DNS traffic to reach Cloudflare through the node.  
-   * **Destination**: `172.64.36.1` → **Next hop**: `10.0.0.1` (local Mesh node)  
-   * **Destination**: `172.64.36.2` → **Next hop**: `10.0.0.1`
-3. **Configure Split Tunnels**: Ensure the following IPs route through the Mesh node in your [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) configuration:  
-   * The subnet's internal DNS resolver IP  
-   * Gateway initial resolved IP range: `100.80.0.0/16` (IPv4) and `2606:4700:0cf1:4000::/64` (IPv6)
+1. **Configure DNS on your router**: Point your router's DNS to the Gateway resolver IPs:
+
+  * `172.64.36.1`
+  * `172.64.36.2`
+2. **Add IP routes to your router**: On your router, add static routes pointing the Gateway resolver IPs to your Mesh node's local IP. This allows DNS traffic to reach Cloudflare through the node.
+
+  * **Destination**: `172.64.36.1` → **Next hop**: `10.0.0.1` (local Mesh node)
+  * **Destination**: `172.64.36.2` → **Next hop**: `10.0.0.1`
+3. **Configure Split Tunnels**: Ensure the following IPs route through the Mesh node in your [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) configuration:
+
+  * The subnet's internal DNS resolver IP
+  * Gateway initial resolved IP range: `100.80.0.0/16` (IPv4) and `2606:4700:0cf1:4000::/64` (IPv6)
 
 Gateway logs DNS queries with the private source IP of the originating device. You can use this to create [resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/) for internal DNS records.
 

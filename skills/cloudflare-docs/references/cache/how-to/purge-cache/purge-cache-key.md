@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,40 +26,13 @@ Refer to the example API request below to instantly purge all mobile assets on t
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Cache Purge`
 
 Purge Cached Content
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/purge_cache" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "files": [
-
-        {
-
-            "url": "http://my.website.com/",
-
-            "headers": {
-
-                "CF-Device-Type": "mobile"
-
-            }
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/purge_cache" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "files": [        {            "url": "http://my.website.com/",            "headers": {                "CF-Device-Type": "mobile"            }        }    ]  }'
 ```
 
 ## Purge by geo
@@ -68,40 +41,13 @@ Instantly purge resources for a location-based Cache Key by specifying the two-l
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Cache Purge`
 
 Purge Cached Content
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/purge_cache" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "files": [
-
-        {
-
-            "url": "http://my.website.com/",
-
-            "headers": {
-
-                "CF-IPCountry": "ES"
-
-            }
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/purge_cache" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "files": [        {            "url": "http://my.website.com/",            "headers": {                "CF-IPCountry": "ES"            }        }    ]  }'
 ```
 
 ## Purge by language
@@ -110,40 +56,13 @@ For a Cache Key based on language, purge the asset by passing the `accept-langua
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Cache Purge`
 
 Purge Cached Content
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/purge_cache" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "files": [
-
-        {
-
-            "url": "http://my.website.com/",
-
-            "headers": {
-
-                "accept-language": "zh-CN"
-
-            }
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/purge_cache" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "files": [        {            "url": "http://my.website.com/",            "headers": {                "accept-language": "zh-CN"            }        }    ]  }'
 ```
 
 ```json

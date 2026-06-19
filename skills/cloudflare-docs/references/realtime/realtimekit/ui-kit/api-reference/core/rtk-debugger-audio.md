@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,37 +27,18 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 ### Basic Usage
 
 ```
-
 <rtk-debugger-audio></rtk-debugger-audio>
-
-
 ```
 
 ### With Properties
 
 ```
-
-<rtk-debugger-audio
-
- size="md">
-
-</rtk-debugger-audio>
-
-
+<rtk-debugger-audio size="md"></rtk-debugger-audio>
 ```
 
 ```
-
-<script>
-
-  const el = document.querySelector("rtk-debugger-audio");
-
-
-  el.meeting= meeting
-
-</script>
-
-
+<script>  const el = document.querySelector("rtk-debugger-audio");
+  el.meeting= meeting</script>
 ```
 
 ```json

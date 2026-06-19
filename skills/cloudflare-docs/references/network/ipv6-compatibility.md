@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,10 +20,10 @@ For [proxied DNS records](https://developers.cloudflare.com/dns/proxy-status/) t
 
 ## Availability
 
-| Free          | Pro | Business | Enterprise |     |
-| ------------- | --- | -------- | ---------- | --- |
-| Availability  | Yes | Yes      | Yes        | Yes |
-| Can customize | No  | No       | No         | Yes |
+|               | Free | Pro | Business | Enterprise |
+| ------------- | ---- | --- | -------- | ---------- |
+| Availability  | Yes  | Yes | Yes      | Yes        |
+| Can customize | No   | No  | No       | Yes        |
 
 ## Enable IPv6 compatibility
 
@@ -43,8 +43,8 @@ Note
 
 To allow IPv6-only clients to connect to IPv4-only origin web servers, keep IPv6 compatibility enabled and configure [Pseudo IPv4](https://developers.cloudflare.com/network/pseudo-ipv4/).
 
-* [ Dashboard ](#tab-panel-9374)
-* [ API ](#tab-panel-9375)
+* [ Dashboard ](#tab-panel-9450)
+* [ API ](#tab-panel-9451)
 
 To turn off IPv6 compatibility in the dashboard:
 

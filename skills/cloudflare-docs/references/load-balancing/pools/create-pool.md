@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,24 +28,26 @@ On the [Load Balancing API](https://developers.cloudflare.com/api/resources/load
 
 ## Create a pool
 
-* [ Dashboard ](#tab-panel-9331)
-* [ API ](#tab-panel-9332)
+* [ Dashboard ](#tab-panel-9407)
+* [ API ](#tab-panel-9408)
 
 You can create a pool within the [load balancer workflow](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/) or in the **Pools** tab:
 
 1. Go to **Load Balancing**.
 2. Select the **Pools** tab and then **Create pool**.
-3. For your pool, enter the following information:  
-   * A name (must be unique)  
-   * A description to provide more detail on the name  
-   * A choice for [**Endpoint Steering**](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/origin-level-steering/), which affects how your pool routes traffic to each endpoint
-4. For each endpoint, enter the following information:  
-   * A name (must be unique)  
-   * The endpoint address or associated hostname  
-   * (Optional) A [**Virtual Network**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/). Required when the endpoint has a private IP address.  
-   * A [**Weight**](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/origin-level-steering/#weights)  
-   * (Optional) A [hostname](https://developers.cloudflare.com/load-balancing/additional-options/override-http-host-headers/) by clicking **Add host header**  
-   * (Optional) The destination port to which the traffic will be served.
+3. For your pool, enter the following information:
+
+  * A name (must be unique)
+  * A description to provide more detail on the name
+  * A choice for [**Endpoint Steering**](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/origin-level-steering/), which affects how your pool routes traffic to each endpoint
+4. For each endpoint, enter the following information:
+
+  * A name (must be unique)
+  * The endpoint address or associated hostname
+  * (Optional) A [**Virtual Network**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/). Required when the endpoint has a private IP address.
+  * A [**Weight**](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/origin-level-steering/#weights)
+  * (Optional) A [hostname](https://developers.cloudflare.com/load-balancing/additional-options/override-http-host-headers/) by clicking **Add host header**
+  * (Optional) The destination port to which the traffic will be served.
 
 Note
 
@@ -53,118 +55,26 @@ If your endpoint is a website or application hosted on [Cloudflare Pages](https:
 
 1. Repeat this process for additional endpoints in the pool.
 2. (Optional) Set up coordinates for [Proximity Steering](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/proximity-steering/) on the pool.
-3. On the pool, update the following information:  
-   * **Health Threshold**:  
-   The Health Threshold is the number of healthy endpoints for the pool as a whole to be considered _Healthy_ and receive traffic based on pool order in a load balancer. Increasing this number makes the pool more reliable, but also more likely to become unhealthy.  
-   * **Monitor**: Attach a [monitor](https://developers.cloudflare.com/load-balancing/monitors/create-monitor/)  
-   * **Health Monitor Regions**: Choose whether to check pool health from [multiple locations](https://developers.cloudflare.com/load-balancing/monitors/#health-monitor-regions), which increases accuracy but can lead to probe traffic to your endpoint  
-   * **Pool Notifications**: You can set up new alerts - and view existing alerts - to be notified when pools are enabled or disabled, or pools or endpoints have changes in their [health status](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/).
+3. On the pool, update the following information:
+
+  * **Health Threshold**:  
+  The Health Threshold is the number of healthy endpoints for the pool as a whole to be considered _Healthy_ and receive traffic based on pool order in a load balancer. Increasing this number makes the pool more reliable, but also more likely to become unhealthy.
+  * **Monitor**: Attach a [monitor](https://developers.cloudflare.com/load-balancing/monitors/create-monitor/)
+  * **Health Monitor Regions**: Choose whether to check pool health from [multiple locations](https://developers.cloudflare.com/load-balancing/monitors/#health-monitor-regions), which increases accuracy but can lead to probe traffic to your endpoint
+  * **Pool Notifications**: You can set up new alerts - and view existing alerts - to be notified when pools are enabled or disabled, or pools or endpoints have changes in their [health status](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/).
 4. When finished, select **Save**.
 
 For a full list of properties, refer to [Create Pool](https://developers.cloudflare.com/api/resources/load%5Fbalancers/subresources/pools/methods/create/). If you need help with API authentication, refer to [Cloudflare API documentation](https://developers.cloudflare.com/fundamentals/api/).
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Load Balancing: Monitors and Pools Write`
 
 Create Pool
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/pools" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "description": "Primary data center - Provider XYZ",
-
-    "name": "primary-dc-1",
-
-    "enabled": false,
-
-    "load_shedding": {
-
-        "default_percent": 0,
-
-        "default_policy": "random",
-
-        "session_percent": 0,
-
-        "session_policy": "hash"
-
-    },
-
-    "minimum_origins": 2,
-
-    "monitor": "f1aba936b94213e5b8dca0c0dbf1f9cc",
-
-    "check_regions": [
-
-        "WEU",
-
-        "ENAM"
-
-    ],
-
-    "origins": [
-
-        {
-
-            "name": "app-server-1",
-
-            "address": "0.0.0.0",
-
-            "enabled": true,
-
-            "weight": 0.56,
-
-            "header": {
-
-                "Host": [
-
-                    "example.com"
-
-                ]
-
-            }
-
-        }
-
-    ],
-
-    "origin_steering": {
-
-        "policy": "random"
-
-    },
-
-    "notification_filter": {
-
-        "origin": {
-
-            "disable": false,
-
-            "healthy": null
-
-        },
-
-        "pool": {
-
-            "disable": false,
-
-            "healthy": null
-
-        }
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/pools" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "description": "Primary data center - Provider XYZ",    "name": "primary-dc-1",    "enabled": false,    "load_shedding": {        "default_percent": 0,        "default_policy": "random",        "session_percent": 0,        "session_policy": "hash"    },    "minimum_origins": 2,    "monitor": "f1aba936b94213e5b8dca0c0dbf1f9cc",    "check_regions": [        "WEU",        "ENAM"    ],    "origins": [        {            "name": "app-server-1",            "address": "0.0.0.0",            "enabled": true,            "weight": 0.56,            "header": {                "Host": [                    "example.com"                ]            }        }    ],    "origin_steering": {        "policy": "random"    },    "notification_filter": {        "origin": {            "disable": false,            "healthy": null        },        "pool": {            "disable": false,            "healthy": null        }    }  }'
 ```
 
 The response contains the complete definition of the new pool.
@@ -172,137 +82,21 @@ The response contains the complete definition of the new pool.
 Response
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": [],
-
-  "result": {
-
-    "id": "17b5962d775c646f3f9725cbc7a53df4",
-
-    "created_on": "2021-01-01T05:20:00.12345Z",
-
-    "modified_on": "2021-01-01T05:20:00.12345Z",
-
-    "description": "Primary data center - Provider XYZ",
-
-    "name": "primary-dc-1",
-
-    "enabled": false,
-
-    "load_shedding": {
-
-      "default_percent": 0,
-
-      "default_policy": "random",
-
-      "session_percent": 0,
-
-      "session_policy": "hash"
-
-    },
-
-    "minimum_origins": 2,
-
-    "monitor": "f1aba936b94213e5b8dca0c0dbf1f9cc",
-
-    "check_regions": [
-
-      "WEU",
-
-      "ENAM"
-
-    ],
-
-    "origins": [
-
-      {
-
-        "name": "app-server-1",
-
-        "address": "0.0.0.0",
-
-        "enabled": true,
-
-        "weight": 0.56,
-
-        "header": {
-
-          "Host": [
-
-            "example.com"
-
-          ]
-
-        }
-
-      }
-
-    ],
-
-    "origin_steering": {
-
-      "policy": "random"
-
-    },
-
-    "notification_filter": {
-
-      "origin": {
-
-        "disable": false,
-
-        "healthy": null
-
-      },
-
-      "pool": {
-
-        "disable": false,
-
-        "healthy": null
-
-      }
-
-    }
-
-  }
-
-}
-
-
+{  "success": true,  "errors": [],  "messages": [],  "result": {    "id": "17b5962d775c646f3f9725cbc7a53df4",    "created_on": "2021-01-01T05:20:00.12345Z",    "modified_on": "2021-01-01T05:20:00.12345Z",    "description": "Primary data center - Provider XYZ",    "name": "primary-dc-1",    "enabled": false,    "load_shedding": {      "default_percent": 0,      "default_policy": "random",      "session_percent": 0,      "session_policy": "hash"    },    "minimum_origins": 2,    "monitor": "f1aba936b94213e5b8dca0c0dbf1f9cc",    "check_regions": [      "WEU",      "ENAM"    ],    "origins": [      {        "name": "app-server-1",        "address": "0.0.0.0",        "enabled": true,        "weight": 0.56,        "header": {          "Host": [            "example.com"          ]        }      }    ],    "origin_steering": {      "policy": "random"    },    "notification_filter": {      "origin": {        "disable": false,        "healthy": null      },      "pool": {        "disable": false,        "healthy": null      }    }  }}
 ```
 
 After creating the pool, you would also want to [create a new notification](https://developers.cloudflare.com/api/resources/alerting/subresources/policies/methods/create/) with the following parameters specified:
 
 ```
-
-"alert_type": "load_balancing_health_alert",
-
-"filters": {
-
-  "pool_id": <<ARRAY_OF_INCLUDED_POOL_IDS>>,
-
-  "new_health": <<ARRAY_OF_STATUS_TRIGGERS>> ["Unhealthy", "Healthy"],
-
-  "event_source": <<ARRAY_OF_OBJECTS_WATCHED>> ["pool", "origin"]
-
-}
-
-
+"alert_type": "load_balancing_health_alert","filters": {  "pool_id": <<ARRAY_OF_INCLUDED_POOL_IDS>>,  "new_health": <<ARRAY_OF_STATUS_TRIGGERS>> ["Unhealthy", "Healthy"],  "event_source": <<ARRAY_OF_OBJECTS_WATCHED>> ["pool", "origin"]}
 ```
 
 ---
 
 ## Edit a pool
 
-* [ Dashboard ](#tab-panel-9327)
-* [ API ](#tab-panel-9328)
+* [ Dashboard ](#tab-panel-9403)
+* [ API ](#tab-panel-9404)
 
 To edit a pool in the dashboard:
 
@@ -328,8 +122,8 @@ Note
 
 If the pool is referenced by geo steering, the configuration is **not** automatically removed when you change to a different **Traffic Steering** method. To make sure you remove it, select **Geo Steering**, remove the pool, and then apply and save any other necessary changes.
 
-* [ Dashboard ](#tab-panel-9329)
-* [ API ](#tab-panel-9330)
+* [ Dashboard ](#tab-panel-9405)
+* [ API ](#tab-panel-9406)
 
 To delete a pool in the dashboard:
 

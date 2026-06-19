@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,10 +17,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 ## Endpoint
 
 ```
-
 https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/elevenlabs
-
-
 ```
 
 ## Prerequisites
@@ -39,22 +36,7 @@ When making requests to ElevenLabs, ensure you have the following:
 Request
 
 ```
-
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/elevenlabs/v1/text-to-speech/JBFqnCBsd6RMkjVDRZzb?output_format=mp3_44100_128 \
-
-  --header 'Content-Type: application/json' \
-
-  --header 'xi-api-key: {elevenlabs_api_token}' \
-
-  --data '{
-
-    "text": "Welcome to Cloudflare - AI Gateway!",
-
-    "model_id": "eleven_multilingual_v2"
-
-}'
-
-
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/elevenlabs/v1/text-to-speech/JBFqnCBsd6RMkjVDRZzb?output_format=mp3_44100_128 \  --header 'Content-Type: application/json' \  --header 'xi-api-key: {elevenlabs_api_token}' \  --data '{    "text": "Welcome to Cloudflare - AI Gateway!",    "model_id": "eleven_multilingual_v2"}'
 ```
 
 ```json

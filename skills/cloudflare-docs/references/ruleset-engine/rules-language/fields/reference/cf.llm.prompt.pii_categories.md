@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -67,12 +67,7 @@ Requires a Cloudflare Enterprise plan. You must also enable [AI Security for App
 Example usage:
 
 ```
-
-# Matches requests where PII categorized as "EMAIL_ADDRESS" or "IBAN_CODE" was detected:
-
-(cf.llm.prompt.pii_detected and any(cf.llm.prompt.pii_categories[*] in {"EMAIL_ADDRESS" "IBAN_CODE"}))
-
-
+# Matches requests where PII categorized as "EMAIL_ADDRESS" or "IBAN_CODE" was detected:(cf.llm.prompt.pii_detected and any(cf.llm.prompt.pii_categories[*] in {"EMAIL_ADDRESS" "IBAN_CODE"}))
 ```
 
 Categories: 

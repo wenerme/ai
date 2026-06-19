@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -52,11 +52,11 @@ This lets you examine traffic from specific Source tunnels and/or Destination tu
 
 ## Feature notes
 
-* For Cloudflare WAN, `Non-Tunnel traffic` refers to traffic outside GRE or IPsec tunnels. This can include traffic from:  
-   * [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)  
-   * [CNIs](https://developers.cloudflare.com/network-interconnect/)  
-   * Traffic destined for the public Internet via [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)  
-   * Traffic destined for applications behind [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+* For Cloudflare WAN, `Non-Tunnel traffic` refers to traffic outside GRE or IPsec tunnels. This can include traffic from:
+  * [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+  * [CNIs](https://developers.cloudflare.com/network-interconnect/)
+  * Traffic destined for the public Internet via [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+  * Traffic destined for applications behind [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
 
 The label `Non-Tunnel traffic` is a placeholder, and Cloudflare will apply more specific labels to this category of traffic in the future.
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/kv/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,176 +26,46 @@ For example, you can use Workers KV for:
 
 Access your Workers KV namespace from Cloudflare Workers using [Workers Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) or from your external application using the REST API:
 
-* [ Workers Binding API ](#tab-panel-8941)
-* [ REST API ](#tab-panel-8942)
+* [ Workers Binding API ](#tab-panel-9017)
+* [ REST API ](#tab-panel-9018)
 
-* [ index.ts ](#tab-panel-8937)
-* [ wrangler.jsonc ](#tab-panel-8938)
+* [ index.ts ](#tab-panel-9013)
+* [ wrangler.jsonc ](#tab-panel-9014)
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    // write a key-value pair
-
-    await env.KV.put('KEY', 'VALUE');
-
-
-    // read a key-value pair
-
-    const value = await env.KV.get('KEY');
-
-
-    // list all key-value pairs
-
-    const allKeys = await env.KV.list();
-
-
-    // delete a key-value pair
-
-    await env.KV.delete('KEY');
-
-
-    // return a Workers response
-
-    return new Response(
-
-      JSON.stringify({
-
-        value: value,
-
-        allKeys: allKeys,
-
-      }),
-
-    );
-
-  },
-
-
+export default {  async fetch(request, env, ctx): Promise<Response> {    // write a key-value pair    await env.KV.put('KEY', 'VALUE');
+    // read a key-value pair    const value = await env.KV.get('KEY');
+    // list all key-value pairs    const allKeys = await env.KV.list();
+    // delete a key-value pair    await env.KV.delete('KEY');
+    // return a Workers response    return new Response(      JSON.stringify({        value: value,        allKeys: allKeys,      }),    );  },
 } satisfies ExportedHandler<{ KV: KVNamespace }>;
-
-
 ```
 
 ```
-
-{
-
-  "$schema": "node_modules/wrangler/config-schema.json",
-
-  "name": "<ENTER_WORKER_NAME>",
-
-  "main": "src/index.ts",
-
-  "compatibility_date": "2025-02-04",
-
-  "observability": {
-
-    "enabled": true
-
-  },
-
-
-  "kv_namespaces": [
-
-    {
-
-      "binding": "KV",
-
-      "id": "<YOUR_BINDING_ID>"
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "node_modules/wrangler/config-schema.json",  "name": "<ENTER_WORKER_NAME>",  "main": "src/index.ts",  "compatibility_date": "2025-02-04",  "observability": {    "enabled": true  },
+  "kv_namespaces": [    {      "binding": "KV",      "id": "<YOUR_BINDING_ID>"    }  ]}
 ```
 
 See the full [Workers KV binding API reference](https://developers.cloudflare.com/kv/api/read-key-value-pairs/).
 
-* [ cURL ](#tab-panel-8939)
-* [ TypeScript ](#tab-panel-8940)
+* [ cURL ](#tab-panel-9015)
+* [ TypeScript ](#tab-panel-9016)
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/storage/kv/namespaces/$NAMESPACE_ID/values/$KEY_NAME \
-
-    -X PUT \
-
-    -H 'Content-Type: multipart/form-data' \
-
-    -H "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-
-    -H "X-Auth-Key: $CLOUDFLARE_API_KEY" \
-
-    -d '{
-
-      "value": "Some Value"
-
-    }'
-
-
-curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/storage/kv/namespaces/$NAMESPACE_ID/values/$KEY_NAME \
-
-    -H "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-
-    -H "X-Auth-Key: $CLOUDFLARE_API_KEY"
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/storage/kv/namespaces/$NAMESPACE_ID/values/$KEY_NAME \    -X PUT \    -H 'Content-Type: multipart/form-data' \    -H "X-Auth-Email: $CLOUDFLARE_EMAIL" \    -H "X-Auth-Key: $CLOUDFLARE_API_KEY" \    -d '{      "value": "Some Value"    }'
+curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/storage/kv/namespaces/$NAMESPACE_ID/values/$KEY_NAME \    -H "X-Auth-Email: $CLOUDFLARE_EMAIL" \    -H "X-Auth-Key: $CLOUDFLARE_API_KEY"
 ```
 
 TypeScript
 
 ```
-
-const client = new Cloudflare({
-
-  apiEmail: process.env['CLOUDFLARE_EMAIL'], // This is the default and can be omitted
-
-  apiKey: process.env['CLOUDFLARE_API_KEY'], // This is the default and can be omitted
-
-});
-
-
-const value = await client.kv.namespaces.values.update('<KV_NAMESPACE_ID>', 'KEY', {
-
-  account_id: '<ACCOUNT_ID>',
-
-  value: 'VALUE',
-
-});
-
-
-const value = await client.kv.namespaces.values.get('<KV_NAMESPACE_ID>', 'KEY', {
-
-  account_id: '<ACCOUNT_ID>',
-
-});
-
-
-const value = await client.kv.namespaces.values.delete('<KV_NAMESPACE_ID>', 'KEY', {
-
-  account_id: '<ACCOUNT_ID>',
-
-});
-
-
-// Automatically fetches more pages as needed.
-
-for await (const namespace of client.kv.namespaces.list({ account_id: '<ACCOUNT_ID>' })) {
-
-  console.log(namespace.id);
-
-}
-
-
+const client = new Cloudflare({  apiEmail: process.env['CLOUDFLARE_EMAIL'], // This is the default and can be omitted  apiKey: process.env['CLOUDFLARE_API_KEY'], // This is the default and can be omitted});
+const value = await client.kv.namespaces.values.update('<KV_NAMESPACE_ID>', 'KEY', {  account_id: '<ACCOUNT_ID>',  value: 'VALUE',});
+const value = await client.kv.namespaces.values.get('<KV_NAMESPACE_ID>', 'KEY', {  account_id: '<ACCOUNT_ID>',});
+const value = await client.kv.namespaces.values.delete('<KV_NAMESPACE_ID>', 'KEY', {  account_id: '<ACCOUNT_ID>',});
+// Automatically fetches more pages as needed.for await (const namespace of client.kv.namespaces.list({ account_id: '<ACCOUNT_ID>' })) {  console.log(namespace.id);}
 ```
 
 See the full Workers KV [REST API and SDK reference](https://developers.cloudflare.com/api/resources/kv/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.

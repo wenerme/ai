@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -38,98 +38,38 @@ For each case, be sure to update the `<your-project-name>` value with the name o
 
 For a **static site**, you will need to add the following to your wrangler file.
 
-* [  wrangler.jsonc ](#tab-panel-12125)
-* [  wrangler.toml ](#tab-panel-12126)
+* [  wrangler.jsonc ](#tab-panel-12142)
+* [  wrangler.toml ](#tab-panel-12143)
 
 JSONC
 
 ```
-
-{
-
-  "name": "<your-project-name>",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "assets": {
-
-    "directory": "<your-build-directory>",
-
-  },
-
-}
-
-
+{  "name": "<your-project-name>",  // Set this to today's date  "compatibility_date": "2026-06-19",  "assets": {    "directory": "<your-build-directory>",  },}
 ```
 
 TOML
 
 ```
-
-name = "<your-project-name>"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[assets]
-
-directory = "<your-build-directory>"
-
-
+name = "<your-project-name>"# Set this to today's datecompatibility_date = "2026-06-19"
+[assets]directory = "<your-build-directory>"
 ```
 
 For a **single page application**, you will need to add the following to your wrangler file, which includes the `not_found_handling` field.
 
-* [  wrangler.jsonc ](#tab-panel-12127)
-* [  wrangler.toml ](#tab-panel-12128)
+* [  wrangler.jsonc ](#tab-panel-12144)
+* [  wrangler.toml ](#tab-panel-12145)
 
 JSONC
 
 ```
-
-{
-
-  "name": "<your-project-name>",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "assets": {
-
-    "directory": "<your-build-directory>",
-
-    "not_found_handling": "single-page-application",
-
-  },
-
-}
-
-
+{  "name": "<your-project-name>",  // Set this to today's date  "compatibility_date": "2026-06-19",  "assets": {    "directory": "<your-build-directory>",    "not_found_handling": "single-page-application",  },}
 ```
 
 TOML
 
 ```
-
-name = "<your-project-name>"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[assets]
-
-directory = "<your-build-directory>"
-
-not_found_handling = "single-page-application"
-
-
+name = "<your-project-name>"# Set this to today's datecompatibility_date = "2026-06-19"
+[assets]directory = "<your-build-directory>"not_found_handling = "single-page-application"
 ```
 
 Some frameworks provide specific guides for migrating to Cloudflare Workers. Please refer to our [framework guides](https://developers.cloudflare.com/workers/framework-guides/) for more information. If your framework includes a “Deploy an existing project on Workers” guide, follow it for detailed instructions.

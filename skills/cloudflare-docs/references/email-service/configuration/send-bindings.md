@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,100 +23,22 @@ Each entry in `send_email` can be configured to restrict what the binding can do
 * **`allowed_destination_addresses`**: The binding can only send to addresses listed in this allowlist.
 * **`allowed_sender_addresses`**: The binding can only send from the addresses listed in this allowlist.
 
-* [  wrangler.jsonc ](#tab-panel-8488)
-* [  wrangler.toml ](#tab-panel-8489)
+* [  wrangler.jsonc ](#tab-panel-8564)
+* [  wrangler.toml ](#tab-panel-8565)
 
 JSONC
 
 ```
-
-{
-
-  "send_email": [
-
-    // Send to any verified destination
-
-    { "name": "EMAIL" },
-
-    // Send only to a single fixed destination
-
-    {
-
-      "name": "NOTIFY_OPS",
-
-      "destination_address": "ops@yourdomain.com",
-
-    },
-
-    // Send only to addresses on an allowlist
-
-    {
-
-      "name": "EMAIL_TEAM",
-
-      "allowed_destination_addresses": [
-
-        "alice@yourdomain.com",
-
-        "bob@yourdomain.com",
-
-      ],
-
-    },
-
-    // Send only from addresses on an allowlist
-
-    {
-
-      "name": "RESTRICTED_EMAIL",
-
-      "allowed_sender_addresses": [
-
-        "noreply@yourdomain.com",
-
-        "support@yourdomain.com",
-
-      ],
-
-    },
-
-  ],
-
-}
-
-
+{  "send_email": [    // Send to any verified destination    { "name": "EMAIL" },    // Send only to a single fixed destination    {      "name": "NOTIFY_OPS",      "destination_address": "ops@yourdomain.com",    },    // Send only to addresses on an allowlist    {      "name": "EMAIL_TEAM",      "allowed_destination_addresses": [        "alice@yourdomain.com",        "bob@yourdomain.com",      ],    },    // Send only from addresses on an allowlist    {      "name": "RESTRICTED_EMAIL",      "allowed_sender_addresses": [        "noreply@yourdomain.com",        "support@yourdomain.com",      ],    },  ],}
 ```
 
 TOML
 
 ```
-
-[[send_email]]
-
-name = "EMAIL"
-
-
-[[send_email]]
-
-name = "NOTIFY_OPS"
-
-destination_address = "ops@yourdomain.com"
-
-
-[[send_email]]
-
-name = "EMAIL_TEAM"
-
-allowed_destination_addresses = [ "alice@yourdomain.com", "bob@yourdomain.com" ]
-
-
-[[send_email]]
-
-name = "RESTRICTED_EMAIL"
-
-allowed_sender_addresses = [ "noreply@yourdomain.com", "support@yourdomain.com" ]
-
-
+[[send_email]]name = "EMAIL"
+[[send_email]]name = "NOTIFY_OPS"destination_address = "ops@yourdomain.com"
+[[send_email]]name = "EMAIL_TEAM"allowed_destination_addresses = [ "alice@yourdomain.com", "bob@yourdomain.com" ]
+[[send_email]]name = "RESTRICTED_EMAIL"allowed_sender_addresses = [ "noreply@yourdomain.com", "support@yourdomain.com" ]
 ```
 
 ## Next steps

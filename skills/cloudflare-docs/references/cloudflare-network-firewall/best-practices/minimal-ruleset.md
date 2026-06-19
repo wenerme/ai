@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-network-firewall/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -69,11 +69,11 @@ The list below is a common list of traffic types you should also consider blocki
 * RCP
 * SMCP
 * NTP  
-   * Common vector for reflection attacks. Consider using [Cloudflare Gateway](https://developers.cloudflare.com/web3/), [1.1.1.1's DNS over HTTPS (DoH)](https://developers.cloudflare.com/1.1.1.1/), or an internal DNS service if possible. Consider restricting your firewall rules to only allow the source and destination of DNS traffic.
+  * Common vector for reflection attacks. Consider using [Cloudflare Gateway](https://developers.cloudflare.com/web3/), [1.1.1.1's DNS over HTTPS (DoH)](https://developers.cloudflare.com/1.1.1.1/), or an internal DNS service if possible. Consider restricting your firewall rules to only allow the source and destination of DNS traffic.
 * MS-SQL  
-   * Common vector and [increasingly used as vector for DDoS attacks ↗](https://blog.cloudflare.com/ddos-attack-trends-for-2021-q4/). Block if unused or consider restricting only to the required source IP addresses.
+  * Common vector and [increasingly used as vector for DDoS attacks ↗](https://blog.cloudflare.com/ddos-attack-trends-for-2021-q4/). Block if unused or consider restricting only to the required source IP addresses.
 * HTTP and HTTPS  
-   * If you only have servers on your Magic Transit prefixes, consider blocking ingress traffic on TCP source ports 80 and 443 from outside. If you have endpoints on your Magic Transit prefixes, you can allow traffic on the source ports but consider creating a disabled rule you can activate to respond to reflection attacks as needed.
+  * If you only have servers on your Magic Transit prefixes, consider blocking ingress traffic on TCP source ports 80 and 443 from outside. If you have endpoints on your Magic Transit prefixes, you can allow traffic on the source ports but consider creating a disabled rule you can activate to respond to reflection attacks as needed.
 
 If relevant to your environment, consider blocking based on geolocation data, which blocks traffic based on the country or user when an end user's IP address is registered in the geolocation database.
 

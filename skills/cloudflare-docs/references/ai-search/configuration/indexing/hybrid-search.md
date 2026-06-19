@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,24 +21,7 @@ Set both `index_method.vector` and `index_method.keyword` to `true`:
 TypeScript
 
 ```
-
-const instance = await env.AI_SEARCH.create({
-
-  id: "my-instance",
-
-  index_method: {
-
-    vector: true,
-
-    keyword: true,
-
-  },
-
-  fusion_method: "rrf",
-
-});
-
-
+const instance = await env.AI_SEARCH.create({  id: "my-instance",  index_method: {    vector: true,    keyword: true,  },  fusion_method: "rrf",});
 ```
 
 To disable hybrid search, set `index_method.keyword` to `false`. The keyword index is deleted.
@@ -75,29 +58,8 @@ Override search settings on individual requests using `ai_search_options.retriev
 TypeScript
 
 ```
-
 const instance = env.AI_SEARCH.get("my-instance");
-
-
-const results = await instance.search({
-
-  messages: [{ role: "user", content: "What is Cloudflare?" }],
-
-  ai_search_options: {
-
-    retrieval: {
-
-      retrieval_type: "hybrid",
-
-      fusion_method: "rrf",
-
-    },
-
-  },
-
-});
-
-
+const results = await instance.search({  messages: [{ role: "user", content: "What is Cloudflare?" }],  ai_search_options: {    retrieval: {      retrieval_type: "hybrid",      fusion_method: "rrf",    },  },});
 ```
 
 Note

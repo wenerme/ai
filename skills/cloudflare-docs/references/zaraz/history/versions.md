@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,10 +20,11 @@ To access Version History you need to enable [Preview & Publish mode](https://de
 
 1. In the Cloudflare dashboard, go to the **History** page.  
 [ Go to **History** ](https://dash.cloudflare.com/?to=/:account/tag-management/history)
-2. If this is your first time using this feature, this page will be empty. Otherwise, you will have a list of changes made to your account with the following information:  
-   * Date of change  
-   * User who made the change  
-   * Description of the change
+2. If this is your first time using this feature, this page will be empty. Otherwise, you will have a list of changes made to your account with the following information:
+
+  * Date of change
+  * User who made the change
+  * Description of the change
 
 ## Revert changes
 

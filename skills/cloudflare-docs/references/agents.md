@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,7 +28,7 @@ Controls planning, tool use, and response flow.
 
 Agents SDK runtime
 
-Durable identity, state, connections, scheduling, and recovery.
+Durable identity, state, connections, scheduling, and recovery. 
 
 [Agent class](https://developers.cloudflare.com/agents/runtime/agents-api/) 
 
@@ -52,14 +52,7 @@ Three commands to a running agent. No API keys required — the starter uses [Wo
 Terminal window
 
 ```
-
-npx create-cloudflare@latest --template cloudflare/agents-starter
-
-cd agents-starter && npm install
-
-npm run dev
-
-
+npx create-cloudflare@latest --template cloudflare/agents-startercd agents-starter && npm installnpm run dev
 ```
 
 The starter includes streaming AI chat, server-side and client-side tools, human-in-the-loop approval, and task scheduling — a foundation you can build on or tear apart. You can also swap in [OpenAI, Anthropic, Google Gemini, or any other provider](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/).

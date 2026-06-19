@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,96 +31,32 @@ Restricting viewing can be done by updating the video's metadata.
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/{video_uid}" \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Content-Type: application/json"
-
---data "{\"uid\": \"<VIDEO_UID>\", \"requireSignedURLs\": true }"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/{video_uid}" \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json"--data "{\"uid\": \"<VIDEO_UID>\", \"requireSignedURLs\": true }"
 ```
 
 Response:
 
 ```
-
-{
-
-  "result": {
-
-    "uid": "<VIDEO_UID>",
-
-    ...
-
-    "requireSignedURLs": true
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "uid": "<VIDEO_UID>",    ...    "requireSignedURLs": true  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 #### Workers binding
 
 You can also require signed URLs using the Stream binding in your Worker. Refer to [Bind to Workers API](https://developers.cloudflare.com/stream/manage-video-library/bindings/) for setup instructions.
 
-* [  JavaScript ](#tab-panel-10849)
-* [  TypeScript ](#tab-panel-10850)
+* [  JavaScript ](#tab-panel-10925)
+* [  TypeScript ](#tab-panel-10926)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const video = await env.STREAM.video("VIDEO_ID").update({
-
-      requireSignedURLs: true,
-
-    });
-
-    return Response.json(video);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const video = await env.STREAM.video("VIDEO_ID").update({      requireSignedURLs: true,    });    return Response.json(video);  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const video = await env.STREAM.video("VIDEO_ID").update({
-
-      requireSignedURLs: true,
-
-    });
-
-    return Response.json(video);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const video = await env.STREAM.video("VIDEO_ID").update({      requireSignedURLs: true,    });    return Response.json(video);  },};
 ```
 
 ## Three Ways to Generate Signed Tokens
@@ -138,105 +74,38 @@ You can call the `/token` endpoint for any video that is marked private to get a
 Terminal window
 
 ```
-
-curl --request POST \
-
-https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/{video_uid}/token \
-
---header "Authorization: Bearer <API_TOKEN>"
-
-
+curl --request POST \https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/{video_uid}/token \--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 You will see a response similar to this if the request succeeds:
 
 ```
-
-{
-
-  "result": {
-
-    "token": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImNkYzkzNTk4MmY4MDc1ZjJlZjk2MTA2ZDg1ZmNkODM4In0.eyJraWQiOiJjZGM5MzU5ODJmODA3NWYyZWY5NjEwNmQ4NWZjZDgzOCIsImV4cCI6IjE2MjE4ODk2NTciLCJuYmYiOiIxNjIxODgyNDU3In0.iHGMvwOh2-SuqUG7kp2GeLXyKvMavP-I2rYCni9odNwms7imW429bM2tKs3G9INms8gSc7fzm8hNEYWOhGHWRBaaCs3U9H4DRWaFOvn0sJWLBitGuF_YaZM5O6fqJPTAwhgFKdikyk9zVzHrIJ0PfBL0NsTgwDxLkJjEAEULQJpiQU1DNm0w5ctasdbw77YtDwdZ01g924Dm6jIsWolW0Ic0AevCLyVdg501Ki9hSF7kYST0egcll47jmoMMni7ujQCJI1XEAOas32DdjnMvU8vXrYbaHk1m1oXlm319rDYghOHed9kr293KM7ivtZNlhYceSzOpyAmqNFS7mearyQ"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "token": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImNkYzkzNTk4MmY4MDc1ZjJlZjk2MTA2ZDg1ZmNkODM4In0.eyJraWQiOiJjZGM5MzU5ODJmODA3NWYyZWY5NjEwNmQ4NWZjZDgzOCIsImV4cCI6IjE2MjE4ODk2NTciLCJuYmYiOiIxNjIxODgyNDU3In0.iHGMvwOh2-SuqUG7kp2GeLXyKvMavP-I2rYCni9odNwms7imW429bM2tKs3G9INms8gSc7fzm8hNEYWOhGHWRBaaCs3U9H4DRWaFOvn0sJWLBitGuF_YaZM5O6fqJPTAwhgFKdikyk9zVzHrIJ0PfBL0NsTgwDxLkJjEAEULQJpiQU1DNm0w5ctasdbw77YtDwdZ01g924Dm6jIsWolW0Ic0AevCLyVdg501Ki9hSF7kYST0egcll47jmoMMni7ujQCJI1XEAOas32DdjnMvU8vXrYbaHk1m1oXlm319rDYghOHed9kr293KM7ivtZNlhYceSzOpyAmqNFS7mearyQ"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 #### Workers binding
 
 You can generate a signed token using the Stream binding:
 
-* [  JavaScript ](#tab-panel-10851)
-* [  TypeScript ](#tab-panel-10852)
+* [  JavaScript ](#tab-panel-10927)
+* [  TypeScript ](#tab-panel-10928)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const token = await env.STREAM.video("VIDEO_ID").generateToken();
-
-    return Response.json({ token });
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const token = await env.STREAM.video("VIDEO_ID").generateToken();    return Response.json({ token });  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const token = await env.STREAM.video("VIDEO_ID").generateToken();
-
-    return Response.json({ token });
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const token = await env.STREAM.video("VIDEO_ID").generateToken();    return Response.json({ token });  },};
 ```
 
 To render the video or use assets like manifests or thumbnails, use the `token` value in place of the video/input ID. For example, to use the Stream player, replace the ID between `cloudflarestream.com/` and `/iframe` with the token: `https://customer-<CODE>.cloudflarestream.com/<TOKEN>/iframe`.
 
 ```
-
-<iframe
-
-  src="https://customer-<CODE>.cloudflarestream.com/eyJhbGciOiJSUzI1NiIsImtpZCI6ImNkYzkzNTk4MmY4MDc1ZjJlZjk2MTA2ZDg1ZmNkODM4In0.eyJraWQiOiJjZGM5MzU5ODJmODA3NWYyZWY5NjEwNmQ4NWZjZDgzOCIsImV4cCI6IjE2MjE4ODk2NTciLCJuYmYiOiIxNjIxODgyNDU3In0.iHGMvwOh2-SuqUG7kp2GeLXyKvMavP-I2rYCni9odNwms7imW429bM2tKs3G9INms8gSc7fzm8hNEYWOhGHWRBaaCs3U9H4DRWaFOvn0sJWLBitGuF_YaZM5O6fqJPTAwhgFKdikyk9zVzHrIJ0PfBL0NsTgwDxLkJjEAEULQJpiQU1DNm0w5ctasdbw77YtDwdZ01g924Dm6jIsWolW0Ic0AevCLyVdg501Ki9hSF7kYST0egcll47jmoMMni7ujQCJI1XEAOas32DdjnMvU8vXrYbaHk1m1oXlm319rDYghOHed9kr293KM7ivtZNlhYceSzOpyAmqNFS7mearyQ/iframe"
-
-  style="border: none;"
-
-  height="720"
-
-  width="1280"
-
-  allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-
-  allowfullscreen="true"
-
-></iframe>
-
-
+<iframe  src="https://customer-<CODE>.cloudflarestream.com/eyJhbGciOiJSUzI1NiIsImtpZCI6ImNkYzkzNTk4MmY4MDc1ZjJlZjk2MTA2ZDg1ZmNkODM4In0.eyJraWQiOiJjZGM5MzU5ODJmODA3NWYyZWY5NjEwNmQ4NWZjZDgzOCIsImV4cCI6IjE2MjE4ODk2NTciLCJuYmYiOiIxNjIxODgyNDU3In0.iHGMvwOh2-SuqUG7kp2GeLXyKvMavP-I2rYCni9odNwms7imW429bM2tKs3G9INms8gSc7fzm8hNEYWOhGHWRBaaCs3U9H4DRWaFOvn0sJWLBitGuF_YaZM5O6fqJPTAwhgFKdikyk9zVzHrIJ0PfBL0NsTgwDxLkJjEAEULQJpiQU1DNm0w5ctasdbw77YtDwdZ01g924Dm6jIsWolW0Ic0AevCLyVdg501Ki9hSF7kYST0egcll47jmoMMni7ujQCJI1XEAOas32DdjnMvU8vXrYbaHk1m1oXlm319rDYghOHed9kr293KM7ivtZNlhYceSzOpyAmqNFS7mearyQ/iframe"  style="border: none;"  height="720"  width="1280"  allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"  allowfullscreen="true"></iframe>
 ```
 
 Similarly, if you are using your own player, retrieve the HLS or DASH manifest by replacing the video ID in the manifest URL with the `token` value:
@@ -251,63 +120,10 @@ If you call the `/token` endpoint without any body, it will return a token that 
 JavaScript
 
 ```
-
-  const signed_url_restrictions = {
-
-    // Extend the lifetime of the token to 12 hours:
-
-    exp: Math.floor(Date.now() / 1000) + 12 * 60 * 60,
-
-    // Allow access to MP4 or Audio Download URLs:
-
-    downloadable: true,
-
-    // Geo or IP access restrictions:
-
-    accessRules: {
-
-      // ... see examples below
-
-    }
-
-  };
-
-
-  const init = {
-
-    method: "POST",
-
-    headers: {
-
-      Authorization: "Bearer <API_TOKEN>",
-
-      "content-type": "application/json;charset=UTF-8",
-
-    },
-
-    body: JSON.stringify(signed_url_restrictions),
-
-  };
-
-
-  const signedurl_service_response = await fetch(
-
-    "https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/{video_uid}/token",
-
-    init,
-
-  );
-
-
-  return new Response(
-
-    JSON.stringify(await signedurl_service_response.json()),
-
-    { status: 200 },
-
-  );
-
-
+  const signed_url_restrictions = {    // Extend the lifetime of the token to 12 hours:    exp: Math.floor(Date.now() / 1000) + 12 * 60 * 60,    // Allow access to MP4 or Audio Download URLs:    downloadable: true,    // Geo or IP access restrictions:    accessRules: {      // ... see examples below    }  };
+  const init = {    method: "POST",    headers: {      Authorization: "Bearer <API_TOKEN>",      "content-type": "application/json;charset=UTF-8",    },    body: JSON.stringify(signed_url_restrictions),  };
+  const signedurl_service_response = await fetch(    "https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/{video_uid}/token",    init,  );
+  return new Response(    JSON.stringify(await signedurl_service_response.json()),    { status: 200 },  );
 ```
 
 However, if you are generating tokens programmatically or adding customizations like these, it is faster and more scalable to use a signing key and generate the token within your application entirely.
@@ -318,45 +134,19 @@ If you are using the Stream binding in your Worker, you can generate signed toke
 
 Refer to [Bind to Workers API](https://developers.cloudflare.com/stream/manage-video-library/bindings/) for setup instructions.
 
-* [  JavaScript ](#tab-panel-10853)
-* [  TypeScript ](#tab-panel-10854)
+* [  JavaScript ](#tab-panel-10929)
+* [  TypeScript ](#tab-panel-10930)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const token = await env.STREAM.video("VIDEO_ID").generateToken();
-
-    return Response.json({ token });
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const token = await env.STREAM.video("VIDEO_ID").generateToken();    return Response.json({ token });  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const token = await env.STREAM.video("VIDEO_ID").generateToken();
-
-    return Response.json({ token });
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const token = await env.STREAM.video("VIDEO_ID").generateToken();    return Response.json({ token });  },};
 ```
 
 The token generated by the binding expires in one hour by default. If you need to customize restrictions such as expiration time, geolocation, or download access, use [a signing key](#option-3-using-a-signing-key-to-create-signed-tokens) to create tokens with custom claims.
@@ -370,43 +160,13 @@ If you are generating a high-volume of tokens, using [Live WebRTC](https://devel
 Terminal window
 
 ```
-
-curl --request POST \
-
-"https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/keys" \
-
---header "Authorization: Bearer <API_TOKEN>"
-
-
+curl --request POST \"https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/keys" \--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 The response will return `pem` and `jwk` values.
 
 ```
-
-{
-
-  "result": {
-
-    "id": "8f926b2b01f383510025a78a4dcbf6a",
-
-    "pem": "LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFcEFJQkFBS0NBUUVBemtHbXhCekFGMnBIMURiWmgyVGoyS3ZudlBVTkZmUWtNeXNCbzJlZzVqemRKTmRhCmtwMEphUHhoNkZxOTYveTBVd0lBNjdYeFdHb3kxcW1CRGhpdTVqekdtYW13NVgrYkR3TEdTVldGMEx3QnloMDYKN01Rb0xySHA3MDEycXBVNCtLODUyT1hMRVVlWVBrOHYzRlpTQ2VnMVdLRW5URC9oSmhVUTFsTmNKTWN3MXZUbQpHa2o0empBUTRBSFAvdHFERHFaZ3lMc1Vma2NsRDY3SVRkZktVZGtFU3lvVDVTcnFibHNFelBYcm9qaFlLWGk3CjFjak1yVDlFS0JCenhZSVEyOVRaZitnZU5ya0t4a2xMZTJzTUFML0VWZkFjdGkrc2ZqMkkyeEZKZmQ4aklmL2UKdHBCSVJZVDEza2FLdHUyYmk0R2IrV1BLK0toQjdTNnFGODlmTHdJREFRQUJBb0lCQUYzeXFuNytwNEtpM3ZmcgpTZmN4ZmRVV0xGYTEraEZyWk1mSHlaWEFJSnB1MDc0eHQ2ZzdqbXM3Tm0rTFVhSDV0N3R0bUxURTZacy91RXR0CjV3SmdQTjVUaFpTOXBmMUxPL3BBNWNmR2hFN1pMQ2wvV2ZVNXZpSFMyVDh1dGlRcUYwcXpLZkxCYk5kQW1MaWQKQWl4blJ6UUxDSzJIcmlvOW1KVHJtSUUvZENPdG80RUhYdHpZWjByOVordHRxMkZrd3pzZUdaK0tvd09JaWtvTgp2NWFOMVpmRGhEVG0wdG1Vd0tLbjBWcmZqalhRdFdjbFYxTWdRejhwM2xScWhISmJSK29PL1NMSXZqUE16dGxOCm5GV1ZEdTRmRHZsSjMyazJzSllNL2tRVUltT3V5alY3RTBBcm5vR2lBREdGZXFxK1UwajluNUFpNTJ6aTBmNloKdFdvwdju39xOFJWQkwxL2tvWFVmYk00S04ydVFadUdjaUdGNjlCRDJ1S3o1eGdvTwowVTBZNmlFNG9Cek5GUW5hWS9kayt5U1dsQWp2MkgraFBrTGpvZlRGSGlNTmUycUVNaUFaeTZ5cmRkSDY4VjdIClRNRllUQlZQaHIxT0dxZlRmc00vRktmZVhWY1FvMTI1RjBJQm5iWjNSYzRua1pNS0hzczUyWE1DZ1lFQTFQRVkKbGIybDU4blVianRZOFl6Uk1vQVo5aHJXMlhwM3JaZjE0Q0VUQ1dsVXFZdCtRN0NyN3dMQUVjbjdrbFk1RGF3QgpuTXJsZXl3S0crTUEvU0hlN3dQQkpNeDlVUGV4Q3YyRW8xT1loMTk3SGQzSk9zUythWWljemJsYmJqU0RqWXVjCkdSNzIrb1FlMzJjTXhjczJNRlBWcHVibjhjalBQbnZKd0k5aUpGVUNnWUVBMjM3UmNKSEdCTjVFM2FXLzd3ekcKbVBuUm1JSUczeW9UU0U3OFBtbHo2bXE5eTVvcSs5aFpaNE1Fdy9RbWFPMDF5U0xRdEY4QmY2TFN2RFh4QWtkdwpWMm5ra0svWWNhWDd3RHo0eWxwS0cxWTg3TzIwWWtkUXlxdjMybG1lN1JuVDhwcVBDQTRUWDloOWFVaXh6THNoCkplcGkvZFhRWFBWeFoxYXV4YldGL3VzQ2dZRUFxWnhVVWNsYVlYS2dzeUN3YXM0WVAxcEwwM3h6VDR5OTBOYXUKY05USFhnSzQvY2J2VHFsbGVaNCtNSzBxcGRmcDM5cjIrZFdlemVvNUx4YzBUV3Z5TDMxVkZhT1AyYk5CSUpqbwpVbE9ldFkwMitvWVM1NjJZWVdVQVNOandXNnFXY21NV2RlZjFIM3VuUDVqTVVxdlhRTTAxNjVnV2ZiN09YRjJyClNLYXNySFVDZ1lCYmRvL1orN1M3dEZSaDZlamJib2h3WGNDRVd4eXhXT2ZMcHdXNXdXT3dlWWZwWTh4cm5pNzQKdGRObHRoRXM4SHhTaTJudEh3TklLSEVlYmJ4eUh1UG5pQjhaWHBwNEJRNTYxczhjR1Z1ZSszbmVFUzBOTDcxZApQL1ZxUWpySFJrd3V5ckRFV2VCeEhUL0FvVEtEeSt3OTQ2SFM5V1dPTGJvbXQrd3g0NytNdWc9PQotLS0tLUVORCBSU0EgUFJJVkFURSBLRVktLS0tLQo=",
-
-    "jwk": "eyJ1c2UiOiJzaWciLCJrdHkiOiJSU0EiLCJraWQiOiI4ZjkyNmIyYjAxZjM4MzUxNzAwMjVhNzhhNGRjYmY2YSIsImFsZyI6IlJTMjU2IiwibiI6InprR214QnpBRjJwSDFEYlpoMlRqMkt2bnZQVU5GZlFrTXlzQm8yZWc1anpkSk5kYWtwMEphUHhoNkZxOTZfeTBVd0lBNjdYeFdHb3kxcW1CRGhpdTVqekdtYW13NVgtYkR3TEdTVldGMEx3QnloMDY3TVFvTHJIcDcwMTJxcFU0LUs4NTJPWExFVWVZUGs4djNGWlNDZWcxV0tFblREX2hKaFVRMWxOY0pNY3cxdlRtR2tqNHpqQVE0QUhQX3RxRERxWmd5THNVZmtjbEQ2N0lUZGZLVWRrRVN5b1Q1U3JxYmxzRXpQWHJvamhZS1hpNzFjak1yVDlFS0JCenhZSVEyOVRaZi1nZU5ya0t4a2xMZTJzTUFMX0VWZkFjdGktc2ZqMkkyeEZKZmQ4aklmX2V0cEJJUllUMTNrYUt0dTJiaTRHYi1XUEstS2hCN1M2cUY4OWZMdyIsImUiOiJBUUFCIiwiZCI6IlhmS3FmdjZuZ3FMZTktdEo5ekY5MVJZc1ZyWDZFV3RreDhmSmxjQWdtbTdUdmpHM3FEdU9henMyYjR0Um9mbTN1MjJZdE1UcG16LTRTMjNuQW1BODNsT0ZsTDJsX1VzNy1rRGx4OGFFVHRrc0tYOVo5VG0tSWRMWlB5NjJKQ29YU3JNcDhzRnMxMENZdUowQ0xHZEhOQXNJcllldUtqMllsT3VZZ1Q5MEk2MmpnUWRlM05oblN2MW42MjJyWVdURE94NFpuNHFqQTRpS1NnMl9sbzNWbDhPRU5PYlMyWlRBb3FmUld0LU9OZEMxWnlWWFV5QkRQeW5lVkdxRWNsdEg2Zzc5SXNpLU04ek8yVTJjVlpVTzdoOE8tVW5mYVRhd2xnei1SQlFpWTY3S05Yc1RRQ3VlZ2FJQU1ZVjZxcjVUU1Ai2odx5iT0xSX3BtMWFpdktyUSIsInAiOiI5X1o5ZUpGTWI5X3E4UlZCTDFfa29YVWZiTTRLTjJ1UVp1R2NpR0Y2OUJEMnVLejV4Z29PMFUwWTZpRTRvQnpORlFuYVlfZGsteVNXbEFqdjJILWhQa0xqb2ZURkhpTU5lMnFFTWlBWnk2eXJkZEg2OFY3SFRNRllUQlZQaHIxT0dxZlRmc01fRktmZVhWY1FvMTI1RjBJQm5iWjNSYzRua1pNS0hzczUyWE0iLCJxIjoiMVBFWWxiMmw1OG5VYmp0WThZelJNb0FaOWhyVzJYcDNyWmYxNENFVENXbFVxWXQtUTdDcjd3TEFFY243a2xZNURhd0JuTXJsZXl3S0ctTUFfU0hlN3dQQkpNeDlVUGV4Q3YyRW8xT1loMTk3SGQzSk9zUy1hWWljemJsYmJqU0RqWXVjR1I3Mi1vUWUzMmNNeGNzMk1GUFZwdWJuOGNqUFBudkp3STlpSkZVIiwiZHAiOiIyMzdSY0pIR0JONUUzYVdfN3d6R21QblJtSUlHM3lvVFNFNzhQbWx6Nm1xOXk1b3EtOWhaWjRNRXdfUW1hTzAxeVNMUXRGOEJmNkxTdkRYeEFrZHdWMm5ra0tfWWNhWDd3RHo0eWxwS0cxWTg3TzIwWWtkUXlxdjMybG1lN1JuVDhwcVBDQTRUWDloOWFVaXh6THNoSmVwaV9kWFFYUFZ4WjFhdXhiV0ZfdXMiLCJkcSI6InFaeFVVY2xhWVhLZ3N5Q3dhczRZUDFwTDAzeHpUNHk5ME5hdWNOVEhYZ0s0X2NidlRxbGxlWjQtTUswcXBkZnAzOXIyLWRXZXplbzVMeGMwVFd2eUwzMVZGYU9QMmJOQklKam9VbE9ldFkwMi1vWVM1NjJZWVdVQVNOandXNnFXY21NV2RlZjFIM3VuUDVqTVVxdlhRTTAxNjVnV2ZiN09YRjJyU0thc3JIVSIsInFpIjoiVzNhUDJmdTB1N1JVWWVubzIyNkljRjNBaEZzY3NWam55NmNGdWNGanNIbUg2V1BNYTU0dS1MWFRaYllSTFBCOFVvdHA3UjhEU0NoeEhtMjhjaDdqNTRnZkdWNmFlQVVPZXRiUEhCbGJudnQ1M2hFdERTLTlYVF8xYWtJNngwWk1Mc3F3eEZuZ2NSMF93S0V5Zzh2c1BlT2gwdlZsamkyNkpyZnNNZU9fakxvIn0=",
-
-    "created": "2021-06-15T21:06:54.763937286Z"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "id": "8f926b2b01f383510025a78a4dcbf6a",    "pem": "LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFcEFJQkFBS0NBUUVBemtHbXhCekFGMnBIMURiWmgyVGoyS3ZudlBVTkZmUWtNeXNCbzJlZzVqemRKTmRhCmtwMEphUHhoNkZxOTYveTBVd0lBNjdYeFdHb3kxcW1CRGhpdTVqekdtYW13NVgrYkR3TEdTVldGMEx3QnloMDYKN01Rb0xySHA3MDEycXBVNCtLODUyT1hMRVVlWVBrOHYzRlpTQ2VnMVdLRW5URC9oSmhVUTFsTmNKTWN3MXZUbQpHa2o0empBUTRBSFAvdHFERHFaZ3lMc1Vma2NsRDY3SVRkZktVZGtFU3lvVDVTcnFibHNFelBYcm9qaFlLWGk3CjFjak1yVDlFS0JCenhZSVEyOVRaZitnZU5ya0t4a2xMZTJzTUFML0VWZkFjdGkrc2ZqMkkyeEZKZmQ4aklmL2UKdHBCSVJZVDEza2FLdHUyYmk0R2IrV1BLK0toQjdTNnFGODlmTHdJREFRQUJBb0lCQUYzeXFuNytwNEtpM3ZmcgpTZmN4ZmRVV0xGYTEraEZyWk1mSHlaWEFJSnB1MDc0eHQ2ZzdqbXM3Tm0rTFVhSDV0N3R0bUxURTZacy91RXR0CjV3SmdQTjVUaFpTOXBmMUxPL3BBNWNmR2hFN1pMQ2wvV2ZVNXZpSFMyVDh1dGlRcUYwcXpLZkxCYk5kQW1MaWQKQWl4blJ6UUxDSzJIcmlvOW1KVHJtSUUvZENPdG80RUhYdHpZWjByOVordHRxMkZrd3pzZUdaK0tvd09JaWtvTgp2NWFOMVpmRGhEVG0wdG1Vd0tLbjBWcmZqalhRdFdjbFYxTWdRejhwM2xScWhISmJSK29PL1NMSXZqUE16dGxOCm5GV1ZEdTRmRHZsSjMyazJzSllNL2tRVUltT3V5alY3RTBBcm5vR2lBREdGZXFxK1UwajluNUFpNTJ6aTBmNloKdFdvwdju39xOFJWQkwxL2tvWFVmYk00S04ydVFadUdjaUdGNjlCRDJ1S3o1eGdvTwowVTBZNmlFNG9Cek5GUW5hWS9kayt5U1dsQWp2MkgraFBrTGpvZlRGSGlNTmUycUVNaUFaeTZ5cmRkSDY4VjdIClRNRllUQlZQaHIxT0dxZlRmc00vRktmZVhWY1FvMTI1RjBJQm5iWjNSYzRua1pNS0hzczUyWE1DZ1lFQTFQRVkKbGIybDU4blVianRZOFl6Uk1vQVo5aHJXMlhwM3JaZjE0Q0VUQ1dsVXFZdCtRN0NyN3dMQUVjbjdrbFk1RGF3QgpuTXJsZXl3S0crTUEvU0hlN3dQQkpNeDlVUGV4Q3YyRW8xT1loMTk3SGQzSk9zUythWWljemJsYmJqU0RqWXVjCkdSNzIrb1FlMzJjTXhjczJNRlBWcHVibjhjalBQbnZKd0k5aUpGVUNnWUVBMjM3UmNKSEdCTjVFM2FXLzd3ekcKbVBuUm1JSUczeW9UU0U3OFBtbHo2bXE5eTVvcSs5aFpaNE1Fdy9RbWFPMDF5U0xRdEY4QmY2TFN2RFh4QWtkdwpWMm5ra0svWWNhWDd3RHo0eWxwS0cxWTg3TzIwWWtkUXlxdjMybG1lN1JuVDhwcVBDQTRUWDloOWFVaXh6THNoCkplcGkvZFhRWFBWeFoxYXV4YldGL3VzQ2dZRUFxWnhVVWNsYVlYS2dzeUN3YXM0WVAxcEwwM3h6VDR5OTBOYXUKY05USFhnSzQvY2J2VHFsbGVaNCtNSzBxcGRmcDM5cjIrZFdlemVvNUx4YzBUV3Z5TDMxVkZhT1AyYk5CSUpqbwpVbE9ldFkwMitvWVM1NjJZWVdVQVNOandXNnFXY21NV2RlZjFIM3VuUDVqTVVxdlhRTTAxNjVnV2ZiN09YRjJyClNLYXNySFVDZ1lCYmRvL1orN1M3dEZSaDZlamJib2h3WGNDRVd4eXhXT2ZMcHdXNXdXT3dlWWZwWTh4cm5pNzQKdGRObHRoRXM4SHhTaTJudEh3TklLSEVlYmJ4eUh1UG5pQjhaWHBwNEJRNTYxczhjR1Z1ZSszbmVFUzBOTDcxZApQL1ZxUWpySFJrd3V5ckRFV2VCeEhUL0FvVEtEeSt3OTQ2SFM5V1dPTGJvbXQrd3g0NytNdWc9PQotLS0tLUVORCBSU0EgUFJJVkFURSBLRVktLS0tLQo=",    "jwk": "eyJ1c2UiOiJzaWciLCJrdHkiOiJSU0EiLCJraWQiOiI4ZjkyNmIyYjAxZjM4MzUxNzAwMjVhNzhhNGRjYmY2YSIsImFsZyI6IlJTMjU2IiwibiI6InprR214QnpBRjJwSDFEYlpoMlRqMkt2bnZQVU5GZlFrTXlzQm8yZWc1anpkSk5kYWtwMEphUHhoNkZxOTZfeTBVd0lBNjdYeFdHb3kxcW1CRGhpdTVqekdtYW13NVgtYkR3TEdTVldGMEx3QnloMDY3TVFvTHJIcDcwMTJxcFU0LUs4NTJPWExFVWVZUGs4djNGWlNDZWcxV0tFblREX2hKaFVRMWxOY0pNY3cxdlRtR2tqNHpqQVE0QUhQX3RxRERxWmd5THNVZmtjbEQ2N0lUZGZLVWRrRVN5b1Q1U3JxYmxzRXpQWHJvamhZS1hpNzFjak1yVDlFS0JCenhZSVEyOVRaZi1nZU5ya0t4a2xMZTJzTUFMX0VWZkFjdGktc2ZqMkkyeEZKZmQ4aklmX2V0cEJJUllUMTNrYUt0dTJiaTRHYi1XUEstS2hCN1M2cUY4OWZMdyIsImUiOiJBUUFCIiwiZCI6IlhmS3FmdjZuZ3FMZTktdEo5ekY5MVJZc1ZyWDZFV3RreDhmSmxjQWdtbTdUdmpHM3FEdU9henMyYjR0Um9mbTN1MjJZdE1UcG16LTRTMjNuQW1BODNsT0ZsTDJsX1VzNy1rRGx4OGFFVHRrc0tYOVo5VG0tSWRMWlB5NjJKQ29YU3JNcDhzRnMxMENZdUowQ0xHZEhOQXNJcllldUtqMllsT3VZZ1Q5MEk2MmpnUWRlM05oblN2MW42MjJyWVdURE94NFpuNHFqQTRpS1NnMl9sbzNWbDhPRU5PYlMyWlRBb3FmUld0LU9OZEMxWnlWWFV5QkRQeW5lVkdxRWNsdEg2Zzc5SXNpLU04ek8yVTJjVlpVTzdoOE8tVW5mYVRhd2xnei1SQlFpWTY3S05Yc1RRQ3VlZ2FJQU1ZVjZxcjVUU1Ai2odx5iT0xSX3BtMWFpdktyUSIsInAiOiI5X1o5ZUpGTWI5X3E4UlZCTDFfa29YVWZiTTRLTjJ1UVp1R2NpR0Y2OUJEMnVLejV4Z29PMFUwWTZpRTRvQnpORlFuYVlfZGsteVNXbEFqdjJILWhQa0xqb2ZURkhpTU5lMnFFTWlBWnk2eXJkZEg2OFY3SFRNRllUQlZQaHIxT0dxZlRmc01fRktmZVhWY1FvMTI1RjBJQm5iWjNSYzRua1pNS0hzczUyWE0iLCJxIjoiMVBFWWxiMmw1OG5VYmp0WThZelJNb0FaOWhyVzJYcDNyWmYxNENFVENXbFVxWXQtUTdDcjd3TEFFY243a2xZNURhd0JuTXJsZXl3S0ctTUFfU0hlN3dQQkpNeDlVUGV4Q3YyRW8xT1loMTk3SGQzSk9zUy1hWWljemJsYmJqU0RqWXVjR1I3Mi1vUWUzMmNNeGNzMk1GUFZwdWJuOGNqUFBudkp3STlpSkZVIiwiZHAiOiIyMzdSY0pIR0JONUUzYVdfN3d6R21QblJtSUlHM3lvVFNFNzhQbWx6Nm1xOXk1b3EtOWhaWjRNRXdfUW1hTzAxeVNMUXRGOEJmNkxTdkRYeEFrZHdWMm5ra0tfWWNhWDd3RHo0eWxwS0cxWTg3TzIwWWtkUXlxdjMybG1lN1JuVDhwcVBDQTRUWDloOWFVaXh6THNoSmVwaV9kWFFYUFZ4WjFhdXhiV0ZfdXMiLCJkcSI6InFaeFVVY2xhWVhLZ3N5Q3dhczRZUDFwTDAzeHpUNHk5ME5hdWNOVEhYZ0s0X2NidlRxbGxlWjQtTUswcXBkZnAzOXIyLWRXZXplbzVMeGMwVFd2eUwzMVZGYU9QMmJOQklKam9VbE9ldFkwMi1vWVM1NjJZWVdVQVNOandXNnFXY21NV2RlZjFIM3VuUDVqTVVxdlhRTTAxNjVnV2ZiN09YRjJyU0thc3JIVSIsInFpIjoiVzNhUDJmdTB1N1JVWWVubzIyNkljRjNBaEZzY3NWam55NmNGdWNGanNIbUg2V1BNYTU0dS1MWFRaYllSTFBCOFVvdHA3UjhEU0NoeEhtMjhjaDdqNTRnZkdWNmFlQVVPZXRiUEhCbGJudnQ1M2hFdERTLTlYVF8xYWtJNngwWk1Mc3F3eEZuZ2NSMF93S0V5Zzh2c1BlT2gwdlZsamkyNkpyZnNNZU9fakxvIn0=",    "created": "2021-06-15T21:06:54.763937286Z"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 These values will not be shown again so we recommend saving them securely right away. If you are using Cloudflare Workers, you can store them using [Secrets](https://developers.cloudflare.com/workers/configuration/secrets/). If you are using another platform, store them in secure environment variables.
@@ -422,145 +182,16 @@ Here's an example Cloudflare Worker script which generates tokens that expire in
 JavaScript
 
 ```
-
-// Global variables
-
-const jwkKey = "{PRIVATE-KEY-IN-JWK-FORMAT}";
-
-const keyID = "<KEY_ID>";
-
-const videoUID = "<VIDEO_UID>";
-
-// expiresTimeInS is the expired time in second of the video
-
-const expiresTimeInS = 3600;
-
-
-// Main function
-
-async function streamSignedUrl() {
-
-  const encoder = new TextEncoder();
-
-  const expiresIn = Math.floor(Date.now() / 1000) + expiresTimeInS;
-
-  const headers = {
-
-    alg: "RS256",
-
-    kid: keyID,
-
-  };
-
-  const data = {
-
-    sub: videoUID,
-
-    kid: keyID,
-
-    exp: expiresIn,
-
-    // Add `downloadable` boolean for access to MP4 or Audio Downloads:
-
-    // downloadable: true,
-
-    accessRules: [
-
-      {
-
-        type: "ip.geoip.country",
-
-        action: "allow",
-
-        country: ["GB"],
-
-      },
-
-      {
-
-        type: "any",
-
-        action: "block",
-
-      },
-
-    ],
-
-  };
-
-
+// Global variablesconst jwkKey = "{PRIVATE-KEY-IN-JWK-FORMAT}";const keyID = "<KEY_ID>";const videoUID = "<VIDEO_UID>";// expiresTimeInS is the expired time in second of the videoconst expiresTimeInS = 3600;
+// Main functionasync function streamSignedUrl() {  const encoder = new TextEncoder();  const expiresIn = Math.floor(Date.now() / 1000) + expiresTimeInS;  const headers = {    alg: "RS256",    kid: keyID,  };  const data = {    sub: videoUID,    kid: keyID,    exp: expiresIn,    // Add `downloadable` boolean for access to MP4 or Audio Downloads:    // downloadable: true,    accessRules: [      {        type: "ip.geoip.country",        action: "allow",        country: ["GB"],      },      {        type: "any",        action: "block",      },    ],  };
   const token = `${objectToBase64url(headers)}.${objectToBase64url(data)}`;
-
-
   const jwk = JSON.parse(atob(jwkKey));
-
-
-  const key = await crypto.subtle.importKey(
-
-    "jwk",
-
-    jwk,
-
-    {
-
-      name: "RSASSA-PKCS1-v1_5",
-
-      hash: "SHA-256",
-
-    },
-
-    false,
-
-    ["sign"],
-
-  );
-
-
-  const signature = await crypto.subtle.sign(
-
-    { name: "RSASSA-PKCS1-v1_5" },
-
-    key,
-
-    encoder.encode(token),
-
-  );
-
-
+  const key = await crypto.subtle.importKey(    "jwk",    jwk,    {      name: "RSASSA-PKCS1-v1_5",      hash: "SHA-256",    },    false,    ["sign"],  );
+  const signature = await crypto.subtle.sign(    { name: "RSASSA-PKCS1-v1_5" },    key,    encoder.encode(token),  );
   const signedToken = `${token}.${arrayBufferToBase64Url(signature)}`;
-
-
-  return signedToken;
-
-}
-
-
-// Utilities functions
-
-function arrayBufferToBase64Url(buffer) {
-
-  return btoa(String.fromCharCode(...new Uint8Array(buffer)))
-
-    .replace(/=/g, "")
-
-    .replace(/\+/g, "-")
-
-    .replace(/\//g, "_");
-
-}
-
-
-function objectToBase64url(payload) {
-
-  return arrayBufferToBase64Url(
-
-    new TextEncoder().encode(JSON.stringify(payload)),
-
-  );
-
-}
-
-
+  return signedToken;}
+// Utilities functionsfunction arrayBufferToBase64Url(buffer) {  return btoa(String.fromCharCode(...new Uint8Array(buffer)))    .replace(/=/g, "")    .replace(/\+/g, "-")    .replace(/\//g, "_");}
+function objectToBase64url(payload) {  return arrayBufferToBase64Url(    new TextEncoder().encode(JSON.stringify(payload)),  );}
 ```
 
 ### Step 3: Rendering the video
@@ -568,24 +199,7 @@ function objectToBase64url(payload) {
 If you are using the Stream Player, insert the `token` value returned by the Worker in Step 2 in place of the `video id`, replacing the entire string located between `cloudflarestream.com/` and `/iframe`:
 
 ```
-
-<iframe
-
-  src="https://customer-<CODE>.cloudflarestream.com/eyJhbGciOiJSUzI1NiIsImtpZCI6ImNkYzkzNTk4MmY4MDc1ZjJlZjk2MTA2ZDg1ZmNkODM4In0.eyJraWQiOiJjZGM5MzU5ODJmODA3NWYyZWY5NjEwNmQ4NWZjZDgzOCIsImV4cCI6IjE2MjE4ODk2NTciLCJuYmYiOiIxNjIxODgyNDU3In0.iHGMvwOh2-SuqUG7kp2GeLXyKvMavP-I2rYCni9odNwms7imW429bM2tKs3G9INms8gSc7fzm8hNEYWOhGHWRBaaCs3U9H4DRWaFOvn0sJWLBitGuF_YaZM5O6fqJPTAwhgFKdikyk9zVzHrIJ0PfBL0NsTgwDxLkJjEAEULQJpiQU1DNm0w5ctasdbw77YtDwdZ01g924Dm6jIsWolW0Ic0AevCLyVdg501Ki9hSF7kYST0egcll47jmoMMni7ujQCJI1XEAOas32DdjnMvU8vXrYbaHk1m1oXlm319rDYghOHed9kr293KM7ivtZNlhYceSzOpyAmqNFS7mearyQ/iframe"
-
-  style="border: none;"
-
-  height="720"
-
-  width="1280"
-
-  allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-
-  allowfullscreen="true"
-
-></iframe>
-
-
+<iframe  src="https://customer-<CODE>.cloudflarestream.com/eyJhbGciOiJSUzI1NiIsImtpZCI6ImNkYzkzNTk4MmY4MDc1ZjJlZjk2MTA2ZDg1ZmNkODM4In0.eyJraWQiOiJjZGM5MzU5ODJmODA3NWYyZWY5NjEwNmQ4NWZjZDgzOCIsImV4cCI6IjE2MjE4ODk2NTciLCJuYmYiOiIxNjIxODgyNDU3In0.iHGMvwOh2-SuqUG7kp2GeLXyKvMavP-I2rYCni9odNwms7imW429bM2tKs3G9INms8gSc7fzm8hNEYWOhGHWRBaaCs3U9H4DRWaFOvn0sJWLBitGuF_YaZM5O6fqJPTAwhgFKdikyk9zVzHrIJ0PfBL0NsTgwDxLkJjEAEULQJpiQU1DNm0w5ctasdbw77YtDwdZ01g924Dm6jIsWolW0Ic0AevCLyVdg501Ki9hSF7kYST0egcll47jmoMMni7ujQCJI1XEAOas32DdjnMvU8vXrYbaHk1m1oXlm319rDYghOHed9kr293KM7ivtZNlhYceSzOpyAmqNFS7mearyQ/iframe"  style="border: none;"  height="720"  width="1280"  allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"  allowfullscreen="true"></iframe>
 ```
 
 If you are using your own player, replace the video id in the manifest url with the `token` value:
@@ -603,39 +217,18 @@ You can create up to 1,000 keys and rotate them at your convenience. Once revoke
 Terminal window
 
 ```
-
-curl --request DELETE \
-
-"https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/keys/{key_id}" \
-
---header "Authorization: Bearer <API_TOKEN>"
-
-
-# Response:
-
-{
-
-  "result": "Revoked",
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+curl --request DELETE \"https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/keys/{key_id}" \--header "Authorization: Bearer <API_TOKEN>"
+# Response:{  "result": "Revoked",  "success": true,  "errors": [],  "messages": []}
 ```
 
 ## Supported Restrictions
 
-| Property Name | Description                                                                                                                                                                                                                                                |
-| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| exp           | Expiration. A unix epoch timestamp after which the token will stop working. Cannot be greater than 24 hours in the future from when the token is signed                                                                                                    |
-| nbf           | _Not Before_ value. A unix epoch timestamp before which the token will not work                                                                                                                                                                            |
-| downloadable  | if true, the token can be used to download the mp4 (assuming the video has downloads enabled)                                                                                                                                                              |
-| accessRules   | An array that specifies one or more ip and geo restrictions. accessRules are evaluated first-to-last. If a Rule matches, the associated action is applied and no further rules are evaluated. A token may have at most 5 members in the accessRules array. |
+| Property Name | Description                                                                                                                                                                                                                                                |  |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |  |
+| exp           | Expiration. A unix epoch timestamp after which the token will stop working. Cannot be greater than 24 hours in the future from when the token is signed                                                                                                    |  |
+| nbf           | _Not Before_ value. A unix epoch timestamp before which the token will not work                                                                                                                                                                            |  |
+| downloadable  | if true, the token can be used to download the mp4 (assuming the video has downloads enabled)                                                                                                                                                              |  |
+| accessRules   | An array that specifies one or more ip and geo restrictions. accessRules are evaluated first-to-last. If a Rule matches, the associated action is applied and no further rules are evaluated. A token may have at most 5 members in the accessRules array. |  |
 
 ### accessRules Schema
 
@@ -652,24 +245,7 @@ Depending on the rule type, accessRules support 2 additional properties:
 **_Example 1: Block views from a specific country_**
 
 ```
-
-...
-
-"accessRules": [
-
-  {
-
-    "type": "ip.geoip.country",
-
-    "action": "block",
-
-    "country": ["US", "DE", "MX"],
-
-  },
-
-]
-
-
+..."accessRules": [  {    "type": "ip.geoip.country",    "action": "block",    "country": ["US", "DE", "MX"],  },]
 ```
 
 The first rule matches on country, US, DE, and MX here. When that rule matches, the block action will have the token considered invalid. If the first rule doesn't match, there are no further rules to evaluate. The behavior in this situation is to consider the token valid.
@@ -677,42 +253,7 @@ The first rule matches on country, US, DE, and MX here. When that rule matches, 
 **_Example 2: Allow only views from specific country or IPs_**
 
 ```
-
-...
-
-"accessRules": [
-
-  {
-
-    "type": "ip.geoip.country",
-
-    "country": ["US", "MX"],
-
-    "action": "allow",
-
-  },
-
-  {
-
-    "type": "ip.src",
-
-    "ip": ["93.184.216.0/24", "2400:cb00::/32"],
-
-    "action": "allow",
-
-  },
-
-  {
-
-    "type": "any",
-
-    "action": "block",
-
-  },
-
-]
-
-
+..."accessRules": [  {    "type": "ip.geoip.country",    "country": ["US", "MX"],    "action": "allow",  },  {    "type": "ip.src",    "ip": ["93.184.216.0/24", "2400:cb00::/32"],    "action": "allow",  },  {    "type": "any",    "action": "block",  },]
 ```
 
 The first rule matches on country, US and MX here. When that rule matches, the allow action will have the token considered valid. If it doesn't match we continue evaluating rules
@@ -739,65 +280,24 @@ You can also control embed limitation programmatically using the Stream API. `ui
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/{video_uid} \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---data "{\"uid\": \"<VIDEO_UID>\", \"allowedOrigins\": [\"example.com\"]}"
-
-
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/{video_uid} \--header "Authorization: Bearer <API_TOKEN>" \--data "{\"uid\": \"<VIDEO_UID>\", \"allowedOrigins\": [\"example.com\"]}"
 ```
 
 You can also set allowed origins using the Stream binding:
 
-* [  JavaScript ](#tab-panel-10855)
-* [  TypeScript ](#tab-panel-10856)
+* [  JavaScript ](#tab-panel-10931)
+* [  TypeScript ](#tab-panel-10932)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const video = await env.STREAM.video("VIDEO_ID").update({
-
-      allowedOrigins: ["example.com"],
-
-    });
-
-    return Response.json(video);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const video = await env.STREAM.video("VIDEO_ID").update({      allowedOrigins: ["example.com"],    });    return Response.json(video);  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const video = await env.STREAM.video("VIDEO_ID").update({
-
-      allowedOrigins: ["example.com"],
-
-    });
-
-    return Response.json(video);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const video = await env.STREAM.video("VIDEO_ID").update({      allowedOrigins: ["example.com"],    });    return Response.json(video);  },};
 ```
 
 ### Allowed Origins

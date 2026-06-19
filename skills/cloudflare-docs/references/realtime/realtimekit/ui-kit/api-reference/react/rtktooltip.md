@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,45 +32,15 @@ Tooltip component which follows RTK Design System.
 ### Basic Usage
 
 ```
-
 import { RtkTooltip } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return <RtkTooltip />;
-
-}
-
-
+function MyComponent() {  return <RtkTooltip />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkTooltip } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkTooltip
-
-      delay={42}
-
-      disabled={true}
-
-      kind={tooltipkind}
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkTooltip      delay={42}      disabled={true}      kind={tooltipkind}    />  );}
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,8 +22,9 @@ No LTS releases are currently available, as Cloudflare is still rolling out our 
 
 ## Windows
 
-| **OS version**             | Windows 10 LTSC, Windows 11, Windows 365 Cloud PC running Windows 11 |
+|                            |                                                                      |
 | -------------------------- | -------------------------------------------------------------------- |
+| **OS version**             | Windows 10 LTSC, Windows 11, Windows 365 Cloud PC running Windows 11 |
 | **Processor**              | AMD64 / x86-64 or ARM64 / AArch64                                    |
 | **.NET Framework version** | 4.7.2 or later                                                       |
 | **HD space**               | 184 MB                                                               |
@@ -37,8 +38,9 @@ No LTS releases are currently available, as Cloudflare is still rolling out our 
 
 ## macOS
 
-| **OS version**             | Sonoma 14.0+, Sequoia 15.1+ (15.0.x is not supported), Tahoe 26.0+ |
+|                            |                                                                    |
 | -------------------------- | ------------------------------------------------------------------ |
+| **OS version**             | Sonoma 14.0+, Sequoia 15.1+ (15.0.x is not supported), Tahoe 26.0+ |
 | **Processor**              | Intel or M series                                                  |
 | **HD space**               | 75 MB                                                              |
 | **Memory**                 | 35 MB                                                              |
@@ -51,8 +53,9 @@ No LTS releases are currently available, as Cloudflare is still rolling out our 
 
 ## Linux
 
-| **OS version**             | CentOS 8, RHEL 8, RHEL 9 [1](#user-content-fn-1), Debian 12, Debian 13, Fedora 34, Fedora 35, Ubuntu 22.04 LTS, Ubuntu 24.04 LTS |
+|                            |                                                                                                                                  |
 | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| **OS version**             | CentOS 8, RHEL 8, RHEL 9 [1](#user-content-fn-1), Debian 12, Debian 13, Fedora 34, Fedora 35, Ubuntu 22.04 LTS, Ubuntu 24.04 LTS |
 | **Processor**              | AMD64 / x86-64 or ARM64 / AArch64                                                                                                |
 | **HD space**               | 75 MB                                                                                                                            |
 | **Memory**                 | 35 MB                                                                                                                            |

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,10 +21,7 @@ The server is powered by [@discourse/mcp ↗](https://www.npmjs.com/package/@dis
 Terminal window
 
 ```
-
 npx @discourse/mcp@latest
-
-
 ```
 
 ## Configure
@@ -34,18 +31,7 @@ npx @discourse/mcp@latest
 Add to `~/.config/opencode/opencode.jsonc` inside the `"mcp"` block:
 
 ```
-
-"discourse": {
-
-  "type": "local",
-
-  "command": ["npx", "-y", "@discourse/mcp@latest"],
-
-  "enabled": true
-
-}
-
-
+"discourse": {  "type": "local",  "command": ["npx", "-y", "@discourse/mcp@latest"],  "enabled": true}
 ```
 
 ### Claude Desktop
@@ -53,24 +39,7 @@ Add to `~/.config/opencode/opencode.jsonc` inside the `"mcp"` block:
 Add to `claude_desktop_config.json`:
 
 ```
-
-{
-
-  "mcpServers": {
-
-    "discourse": {
-
-      "command": "npx",
-
-      "args": ["-y", "@discourse/mcp@latest"]
-
-    }
-
-  }
-
-}
-
-
+{  "mcpServers": {    "discourse": {      "command": "npx",      "args": ["-y", "@discourse/mcp@latest"]    }  }}
 ```
 
 ### Cursor
@@ -78,24 +47,7 @@ Add to `claude_desktop_config.json`:
 Add to `.cursor/mcp.json` in your project root:
 
 ```
-
-{
-
-  "mcpServers": {
-
-    "discourse": {
-
-      "command": "npx",
-
-      "args": ["-y", "@discourse/mcp@latest"]
-
-    }
-
-  }
-
-}
-
-
+{  "mcpServers": {    "discourse": {      "command": "npx",      "args": ["-y", "@discourse/mcp@latest"]    }  }}
 ```
 
 ## Connect to the Cloudflare Community
@@ -103,10 +55,7 @@ Add to `.cursor/mcp.json` in your project root:
 After configuring your client, use the `discourse_select_site` tool with:
 
 ```
-
 https://community.cloudflare.com
-
-
 ```
 
 No API key is needed for reading public data. An API key is only required for write operations (posting, moderation).

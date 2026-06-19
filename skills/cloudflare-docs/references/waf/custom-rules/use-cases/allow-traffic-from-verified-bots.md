@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,10 +16,11 @@ This example [custom rule](https://developers.cloudflare.com/waf/custom-rules/cr
 
 The rule expression uses the [cf.client.bot](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.client.bot/) field to determine if the request originated from a known good bot or crawler.
 
-* **When incoming requests match**:  
-| Field      | Operator | Value                 | Logic |  
-| ---------- | -------- | --------------------- | ----- |  
-| Country    | is in    | Mexico, United States | And   |  
+* **When incoming requests match**:
+
+| Field      | Operator | Value                 | Logic |
+| ---------- | -------- | --------------------- | ----- |
+| Country    | is in    | Mexico, United States | And   |
 | Known Bots | equals   | false                 |       |  
 If you are using the expression editor:  
 `(ip.src.country in {"US" "MX"} and not cf.client.bot)`

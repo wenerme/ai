@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,49 +27,15 @@ A pressable menu item within a menu.
 ### Basic Usage
 
 ```
-
 import { RtkMenuItem } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkMenuItem onClick={() => ({})}>
-
-      <Text>Option 1</Text>
-
-    </RtkMenuItem>
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkMenuItem onClick={() => ({})}>      <Text>Option 1</Text>    </RtkMenuItem>  );}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkMenuItem } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkMenuItem onClick={(ev) => ({})} size="md">
-
-      <Text>Option 1</Text>
-
-    </RtkMenuItem>
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkMenuItem onClick={(ev) => ({})} size="md">      <Text>Option 1</Text>    </RtkMenuItem>  );}
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,14 +16,15 @@ Device enrollment permissions determine which users can connect new devices to y
 
 ## Set device enrollment permissions
 
-* [ Dashboard ](#tab-panel-7476)
-* [ Terraform (v5) ](#tab-panel-7477)
+* [ Dashboard ](#tab-panel-7552)
+* [ Terraform (v5) ](#tab-panel-7553)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **Management**.
 2. In **Device enrollment** \> **Device enrollment permissions**, select **Manage**.
-3. In the **Policies** tab, configure one or more [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) to define who can join their device. For example, you could allow all users with a company email address:  
-| Rule type | Selector         | Value        |  
-| --------- | ---------------- | ------------ |  
+3. In the **Policies** tab, configure one or more [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) to define who can join their device. For example, you could allow all users with a company email address:
+
+| Rule type | Selector         | Value        |
+| --------- | ---------------- | ------------ |
 | Include   | Emails ending in | @company.com |
 
 Note
@@ -35,39 +36,16 @@ a. Select the [identity providers](https://developers.cloudflare.com/cloudflare-
 b. (Optional) If you plan to only allow access via a single IdP, turn on **Apply instant authentication**. End users will not be shown the Cloudflare Access login page. Instead, Cloudflare will redirect users directly to your SSO login event.
 2. Select **Save**.
 
-1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):  
-   * `Access: Apps and Policies Write`
+1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
+
+  * `Access: Apps and Policies Write`
 2. Create a reusable Access policy using the [cloudflare\_zero\_trust\_access\_policy ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fpolicy) resource:  
 ```  
-resource "cloudflare_zero_trust_access_policy" "allow_company_emails" {  
-  account_id   = var.cloudflare_account_id  
-  name         = "Allow company emails"  
-  decision     = "allow"  
-  include      = [  
-    {  
-      email_domain = {  
-        domain = "@example.com"  
-      }  
-    }  
-  ]  
-}  
+resource "cloudflare_zero_trust_access_policy" "allow_company_emails" {  account_id   = var.cloudflare_account_id  name         = "Allow company emails"  decision     = "allow"  include      = [    {      email_domain = {        domain = "@example.com"      }    }  ]}  
 ```
 3. Use the [cloudflare\_zero\_trust\_access\_application ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fapplication) resource to create an application with type `warp`.  
 ```  
-resource "cloudflare_zero_trust_access_application" "device_enrollment" {  
-  account_id       = var.cloudflare_account_id  
-  type             = "warp"  
-  name             = "Warp device enrollment"  
-  allowed_idps              = [cloudflare_zero_trust_access_identity_provider.microsoft_entra_id.id]  
-  auto_redirect_to_identity = true  
-  app_launcher_visible      = false  
-  policies = [  
-    {  
-      id = cloudflare_zero_trust_access_policy.allow_company_emails.id  
-      precedence = 1  
-    }  
-  ]  
-}  
+resource "cloudflare_zero_trust_access_application" "device_enrollment" {  account_id       = var.cloudflare_account_id  type             = "warp"  name             = "Warp device enrollment"  allowed_idps              = [cloudflare_zero_trust_access_identity_provider.microsoft_entra_id.id]  auto_redirect_to_identity = true  app_launcher_visible      = false  policies = [    {      id = cloudflare_zero_trust_access_policy.allow_company_emails.id      precedence = 1    }  ]}  
 ```
 
 Users can now [enroll their device](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/) by logging in to your identity provider. To prevent users from logging out of your organization after they enroll, disable [Allow devices to leave organization](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-device-to-leave-organization) in your device client settings.
@@ -80,44 +58,37 @@ Instead of requiring users to authenticate with their credentials, you can use a
 
 To enroll devices using a service token:
 
-* [ Dashboard ](#tab-panel-7478)
-* [ Terraform (v5) ](#tab-panel-7479)
+* [ Dashboard ](#tab-panel-7554)
+* [ Terraform (v5) ](#tab-panel-7555)
 
 1. [Create a service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/#create-a-service-token).
 2. Copy the token's **Client ID** and **Client Secret**.
-3. Go to **Access controls** \> **Policies** and create the following policy:  
-| Rule Action  | Rule type | Selector      | Value        |  
-| ------------ | --------- | ------------- | ------------ |  
+3. Go to **Access controls** \> **Policies** and create the following policy:
+
+| Rule Action  | Rule type | Selector      | Value        |
+| ------------ | --------- | ------------- | ------------ |
 | Service Auth | Include   | Service Token | <TOKEN-NAME> |  
 Make sure to set **Action** to _Service Auth_ instead of _Allow_.
 4. Add the Access policy to your [device enrollment permissions](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/#set-device-enrollment-permissions).
-5. In your MDM [deployment parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/), add the following fields:  
-   * `auth_client_id`: The **Client ID** of your service token.  
-   * `auth_client_secret`: The **Client Secret** of your service token.
+5. In your MDM [deployment parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/), add the following fields:
 
-1. Add the following permissions to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):  
-   * `Access: Apps and Policies Write`  
-   * `Access: Service Tokens Write`
+  * `auth_client_id`: The **Client ID** of your service token.
+  * `auth_client_secret`: The **Client Secret** of your service token.
+
+1. Add the following permissions to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
+
+  * `Access: Apps and Policies Write`
+  * `Access: Service Tokens Write`
 2. [Create a service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/#create-a-service-token) and copy its **Client ID** and **Client Secret**.
 3. Create the following Access policy:  
 ```  
-resource "cloudflare_zero_trust_access_policy" "warp_enrollment_service_token" {  
-  account_id     = var.cloudflare_account_id  
-  name           = "Allow service token"  
-  decision       = "non_identity"  
-  include = [  
-    {  
-      service_token = {  
-        token_id = cloudflare_zero_trust_access_service_token.example_service_token.id  
-      }  
-    }  
-  ]  
-}  
+resource "cloudflare_zero_trust_access_policy" "warp_enrollment_service_token" {  account_id     = var.cloudflare_account_id  name           = "Allow service token"  decision       = "non_identity"  include = [    {      service_token = {        token_id = cloudflare_zero_trust_access_service_token.example_service_token.id      }    }  ]}  
 ```
 4. Add the policy to your [cloudflared\_zero\_trust\_access\_application for the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/#set-device-enrollment-permissions).
-5. In your MDM [deployment parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/), add the following fields:  
-   * `auth_client_id`: The **Client ID** of your service token.  
-   * `auth_client_secret`: The **Client Secret** of your service token.
+5. In your MDM [deployment parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/), add the following fields:
+
+  * `auth_client_id`: The **Client ID** of your service token.
+  * `auth_client_secret`: The **Client Secret** of your service token.
 
 When you deploy the Cloudflare One Client with your MDM provider, the Cloudflare One Client will automatically connect the device to your Zero Trust organization.
 
@@ -144,72 +115,37 @@ Allowed signature algorithms
 
 To check for an mTLS certificate:
 
-* [ Dashboard ](#tab-panel-7480)
-* [ Terraform (v5) ](#tab-panel-7481)
+* [ Dashboard ](#tab-panel-7556)
+* [ Terraform (v5) ](#tab-panel-7557)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Service credentials** \> **Mutual TLS**.
 2. Select **Add mTLS Certificate**.
 3. Enter any name for the root CA.
 4. In **Certificate content**, paste the contents of your root CA.  
 If the client certificate is directly signed by the root CA, you only need to upload the root. If the client certificate is signed by an intermediate certificate, you must upload the entire CA chain (intermediate and root). For example:  
-```  
------BEGIN CERTIFICATE-----  
-<intermediate.pem>  
------END CERTIFICATE-----  
------BEGIN CERTIFICATE-----  
-<rootCA.pem>  
------END CERTIFICATE-----  
+```
+-----BEGIN CERTIFICATE-----<intermediate.pem>-----END CERTIFICATE----------BEGIN CERTIFICATE-----<rootCA.pem>-----END CERTIFICATE-----  
 ```
 1. In **Associated hostnames**, enter your Zero Trust team domain: `<team-name>.cloudflareaccess.com`
-2. In your [device enrollment permissions](#set-device-enrollment-permissions), add a _Common Name_ or _Valid Certificate_ rule. For example, the following policy requires a client certificate with a specific common name:  
-| Action | Rule type | Selector    | Value              |  
-| ------ | --------- | ----------- | ------------------ |  
+2. In your [device enrollment permissions](#set-device-enrollment-permissions), add a _Common Name_ or _Valid Certificate_ rule. For example, the following policy requires a client certificate with a specific common name:
+
+| Action | Rule type | Selector    | Value              |
+| ------ | --------- | ----------- | ------------------ |
 | Allow  | Require   | Common Name | <CERT-COMMON-NAME> |
 3. On your device, add the client certificate to the [system keychain](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/#test-in-the-browser).
 
-1. Add the following permissions to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):  
-   * `Access: Mutual TLS Certificates Write`  
-   * `Access: Apps and Policies Write`
+1. Add the following permissions to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
+
+  * `Access: Mutual TLS Certificates Write`
+  * `Access: Apps and Policies Write`
 2. Use the [cloudflare\_zero\_trust\_access\_mtls\_certificate ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fmtls%5Fcertificate) resource to add an mTLS certificate to your account:  
 ```  
-resource "cloudflare_zero_trust_access_mtls_certificate" "example_mtls_cert" {  
-  account_id     = var.cloudflare_account_id  
-  name           = "WARP enrollment mTLS cert"  
-  certificate    = <<EOT  
-  -----BEGIN CERTIFICATE-----  
-  xxxx  
-  xxxx  
-  -----END CERTIFICATE-----  
-  EOT  
-  associated_hostnames = ["your-team-name.cloudflareaccess.com"]  
-}  
+resource "cloudflare_zero_trust_access_mtls_certificate" "example_mtls_cert" {  account_id     = var.cloudflare_account_id  name           = "WARP enrollment mTLS cert"  certificate    = <<EOT  -----BEGIN CERTIFICATE-----  xxxx  xxxx  -----END CERTIFICATE-----  EOT  associated_hostnames = ["your-team-name.cloudflareaccess.com"]}  
 ```
 3. Create the following Access policy:  
 ```  
-resource "cloudflare_zero_trust_access_policy" "warp_enrollment_mtls" {  
-  account_id     = var.cloudflare_account_id  
-  name           = "Allow employees with mTLS cert"  
-  decision       = "allow"  
-  include = [  
-    {  
-      email_domain = {  
-        domain = "@example.com"  
-      }  
-    }  
-  ]  
-  require = [  
-    {  
-      common_name = {  
-        common_name = "Common name 1"  
-      }  
-    },  
-        {  
-      common_name = {  
-        common_name = "Common name 2"  
-      }  
-    }  
-  ]  
-}  
+resource "cloudflare_zero_trust_access_policy" "warp_enrollment_mtls" {  account_id     = var.cloudflare_account_id  name           = "Allow employees with mTLS cert"  decision       = "allow"  include = [    {      email_domain = {        domain = "@example.com"      }    }  ]  
+  require = [    {      common_name = {        common_name = "Common name 1"      }    },        {      common_name = {        common_name = "Common name 2"      }    }  ]}  
 ```
 4. Add the policy to your [cloudflared\_zero\_trust\_access\_application for the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/#set-device-enrollment-permissions).
 5. On your device, add the client certificate to the [system keychain](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/#test-in-the-browser).

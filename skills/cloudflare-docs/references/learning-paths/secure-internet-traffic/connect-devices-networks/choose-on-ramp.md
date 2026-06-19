@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -34,13 +34,13 @@ Cloudflare supports filtering HTTP/S traffic sent via a PAC file on a user devic
 
 Cloudflare Browser Isolation runs a headless, Chromium-based browser for your users to accomplish their secure browsing needs. It can be activated via an Access application, a Gateway policy, or by using link-based isolation (reverse proxy). In this model, your users can connect from any device to a proxy website to browse the Internet while applying all your Gateway HTTP policies and inspection requirements.
 
-| Cloudflare One Client                                                                                                                  | PAC Files                            | Clientless Browser Isolation |                                       |
-| -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ | ---------------------------- | ------------------------------------- |
-| Supported OS                                                                                                                           | macOS, Windows, Linux, iOS, Android  | All desktop OS               | All OS (with HTML5 compliant browser) |
-| Configurable via MDM                                                                                                                   | Yes                                  | Yes                          | N/A                                   |
-| Gateway policy types supported                                                                                                         | DNS, Network, HTTP, Resolver, Egress | HTTP                         | DNS, Network, HTTP, Resolver, Egress  |
-| Identity-based policies supported                                                                                                      | Yes                                  | No                           | Yes                                   |
-| [Network Session Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero%5Ftrust%5Fnetwork%5Fsessions/) | Yes                                  | Yes                          | Yes                                   |
+|                                                                                                                                        | Cloudflare One Client                | PAC Files      | Clientless Browser Isolation          |
+| -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ | -------------- | ------------------------------------- |
+| Supported OS                                                                                                                           | macOS, Windows, Linux, iOS, Android  | All desktop OS | All OS (with HTML5 compliant browser) |
+| Configurable via MDM                                                                                                                   | Yes                                  | Yes            | N/A                                   |
+| Gateway policy types supported                                                                                                         | DNS, Network, HTTP, Resolver, Egress | HTTP           | DNS, Network, HTTP, Resolver, Egress  |
+| Identity-based policies supported                                                                                                      | Yes                                  | No             | Yes                                   |
+| [Network Session Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero%5Ftrust%5Fnetwork%5Fsessions/) | Yes                                  | Yes            | Yes                                   |
 
 ## Network on-ramps
 
@@ -74,7 +74,7 @@ The fastest way to start filtering DNS queries from a location is by changing th
 
 For more information on setting up DNS locations, refer to [Add locations](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/).
 
-| Cloudflare WAN                 | Cloudflare Mesh       | DNS Locations         |               |
+|                                | Cloudflare WAN        | Cloudflare Mesh       | DNS Locations |
 | ------------------------------ | --------------------- | --------------------- | ------------- |
 | Gateway policy types supported | Network, HTTP, Egress | Network, HTTP, Egress | DNS, Resolver |
 

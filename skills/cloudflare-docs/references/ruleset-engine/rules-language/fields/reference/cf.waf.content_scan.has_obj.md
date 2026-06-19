@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,12 +21,7 @@ Requires a Cloudflare Enterprise plan with [malicious uploads detection](https:/
 Example usage:
 
 ```
-
-# Check if requests to a specific endpoint include any content objects
-
-cf.waf.content_scan.has_obj and http.request.uri.path eq "/upload"
-
-
+# Check if requests to a specific endpoint include any content objectscf.waf.content_scan.has_obj and http.request.uri.path eq "/upload"
 ```
 
 Categories: 

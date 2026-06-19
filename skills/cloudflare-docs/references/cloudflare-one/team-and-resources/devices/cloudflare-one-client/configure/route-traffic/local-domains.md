@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -60,8 +60,8 @@ To view the fallback domains applied to a device, you can:
 
 To add a domain to the Local Domain Fallback list:
 
-* [ Dashboard ](#tab-panel-7447)
-* [ Terraform (v5) ](#tab-panel-7448)
+* [ Dashboard ](#tab-panel-7523)
+* [ Terraform (v5) ](#tab-panel-7524)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Locate the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) you would like to view or modify and select **Configure**.
@@ -72,78 +72,19 @@ To add a domain to the Local Domain Fallback list:
 
 A Local Domain Fallback list is scoped to a specific [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/). If a device profile does not have a corresponding Local Domain Fallback resource, those devices will use the default local domains shown in Step 2.
 
-1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):  
-   * `Zero Trust Write`
+1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
+
+  * `Zero Trust Write`
 2. (Optional) Create a list of domains that you can reuse across multiple device profiles. For example, you can declare a local value in the same module as your device profiles:  
 local-domains.local.tf  
 ```  
-locals {  
-  default_local_domains = [  
-    # Default Local Domain Fallback entries recommended by Cloudflare  
-    {  
-  suffix = "corp"  
-},  
-{  
-  suffix = "domain"  
-},  
-{  
-  suffix = "home"  
-},  
-{  
-  suffix = "home.arpa"  
-},  
-{  
-  suffix = "host"  
-},  
-{  
-  suffix = "internal"  
-},  
-{  
-  suffix = "intranet"  
-},  
-{  
-  suffix = "invalid"  
-},  
-{  
-  suffix = "lan"  
-},  
-{  
-  suffix = "local"  
-},  
-{  
-  suffix = "localdomain"  
-},  
-{  
-  suffix = "localhost"  
-},  
-{  
-  suffix = "private"  
-},  
-{  
-  suffix = "test"  
-}  
-  ]  
-}  
+locals {  default_local_domains = [    # Default Local Domain Fallback entries recommended by Cloudflare    {  suffix = "corp"},{  suffix = "domain"},{  suffix = "home"},{  suffix = "home.arpa"},{  suffix = "host"},{  suffix = "internal"},{  suffix = "intranet"},{  suffix = "invalid"},{  suffix = "lan"},{  suffix = "local"},{  suffix = "localdomain"},{  suffix = "localhost"},{  suffix = "private"},{  suffix = "test"}  ]}  
 ```
 3. To configure Local Domain Fallback for the default device profile, use the [cloudflare\_zero\_trust\_device\_default\_profile\_local\_domain\_fallback ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fdefault%5Fprofile%5Flocal%5Fdomain%5Ffallback) resource. To configure Local Domain Fallback for a custom device profile, use[cloudflare\_zero\_trust\_device\_custom\_profile\_local\_domain\_fallback ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fcustom%5Fprofile%5Flocal%5Fdomain%5Ffallback). For example:  
 device-profiles.tf  
 ```  
-resource "cloudflare_zero_trust_device_custom_profile_local_domain_fallback" "example" {  
-  account_id = var.cloudflare_account_id  
-  policy_id  = cloudflare_zero_trust_device_custom_profile.example.id  
-  domains = concat(  
-    # Global entries  
-    local.default_local_domains,  
-    # Profile-specific entries  
-    [  
-      {  
-      suffix = "example.com"  
-      description = "Domain for local development"  
-      dns_server = ["1.1.1.1", "192.168.0.1"]  
-      }  
-    ]  
-  )  
-}  
+resource "cloudflare_zero_trust_device_custom_profile_local_domain_fallback" "example" {  account_id = var.cloudflare_account_id  policy_id  = cloudflare_zero_trust_device_custom_profile.example.id  domains = concat(    # Global entries    local.default_local_domains,  
+    # Profile-specific entries    [      {      suffix = "example.com"      description = "Domain for local development"      dns_server = ["1.1.1.1", "192.168.0.1"]      }    ]  )}  
 ```
 
 For `suffix`, specify the apex domain (`example.com`) that you want to resolve using your private DNS server. All prefixes under the apex domain are subject to Local Domain Fallback (in other words, `example.com` is interpreted as `*.example.com`). For `dns_server`, enter the IP address of the DNS servers that should resolve that domain name.
@@ -154,9 +95,10 @@ The Cloudflare One Client tries all servers and always uses the fastest response
 
 The Cloudflare One Client routes DNS traffic to your [Local Domain Fallback server](#add-a-domain) according to your [Split Tunnel configuration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/). To ensure that queries can reach your private DNS server:
 
-* If your DNS server is only reachable inside of the WARP tunnel (for example, via `cloudflared` or Cloudflare WAN):  
-   1. Go to **Networks** \> **Routes** and verify that the DNS server is connected to Cloudflare. To connect a DNS server, refer to [Private networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/).  
-   2. In your [Split Tunnel configuration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/), verify that the DNS server IP routes through the WARP tunnel.
+* If your DNS server is only reachable inside of the WARP tunnel (for example, via `cloudflared` or Cloudflare WAN):
+
+  1. Go to **Networks** \> **Routes** and verify that the DNS server is connected to Cloudflare. To connect a DNS server, refer to [Private networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/).
+  2. In your [Split Tunnel configuration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/), verify that the DNS server IP routes through the WARP tunnel.
 * If your DNS server is only reachable outside of the WARP tunnel (for example, via a third-party VPN), verify that the DNS server IP is [excluded from the WARP tunnel](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/).
 
 For more information, refer to [How the Cloudflare One Client handles DNS requests](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/#how-the-warp-client-handles-dns-requests).

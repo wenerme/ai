@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-crawl-control/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,18 +28,7 @@ When an AI crawler tries to access content protected by pay per crawl, it receiv
 For example, the response header may look like below:
 
 ```
-
-HTTP/2 402
-
-date: Fri, 06 Jun 2025 08:42:38 GMT
-
-content-type: text/plain; charset=utf-8
-
-crawler-price: USD 0.01
-
-server: cloudflare
-
-
+HTTP/2 402date: Fri, 06 Jun 2025 08:42:38 GMTcontent-type: text/plain; charset=utf-8crawler-price: USD 0.01server: cloudflare
 ```
 
 To access this content, you must verify your AI crawler.
@@ -61,11 +50,12 @@ Submit a form to add your AI crawler to Cloudflare's list of verified bots.
 1. In the Cloudflare dashboard, go to **Manage Account** \> **Settings**.  
 [ Go to **Configurations** ](https://dash.cloudflare.com/?to=/:account/configurations)
 2. Go to the **Bot Submission Form** tab.
-3. Fill out the form with the following required information:  
-   * **Select bot type**: Choose either **Verified Bot** or **Signed Agent**.  
-   * **Verification Method**: Select **Request Signature**.  
-   * **User-Agents header values**: Provide the User-Agent string(s) your bot uses.  
-   * **User-Agents Match Pattern**: Provide substring patterns that match your User-Agent (for example, `GoogleBot | GoogleScraper`).
+3. Fill out the form with the following required information:
+
+  * **Select bot type**: Choose either **Verified Bot** or **Signed Agent**.
+  * **Verification Method**: Select **Request Signature**.
+  * **User-Agents header values**: Provide the User-Agent string(s) your bot uses.
+  * **User-Agents Match Pattern**: Provide substring patterns that match your User-Agent (for example, `GoogleBot | GoogleScraper`).
 4. Select **Submit**.
 
 ```json

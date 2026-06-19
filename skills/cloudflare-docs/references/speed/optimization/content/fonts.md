@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,26 +23,7 @@ Cloudflare Fonts works by rewriting your webpage’s HTML. It removes Google Fon
 Cloudflare Fonts is compatible with browsers that support Unicode-range subsetting and WOFF or WOFF2 formats, including:
 
 ```
-
-Chrome 36+
-
-Edge 16+
-
-Safari 10+
-
-Firefox 44+
-
-Opera 22+
-
-IE 9+
-
-Chrome for Android 115+
-
-Safari on iOS 10+
-
-Samsung Internet 5+
-
-
+Chrome 36+Edge 16+Safari 10+Firefox 44+Opera 22+IE 9+Chrome for Android 115+Safari on iOS 10+Samsung Internet 5+
 ```
 
 ## Get started

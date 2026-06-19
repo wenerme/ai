@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,20 +30,22 @@ NAT is static and 1:1 between equal-sized prefixes. When you enable NAT for a su
 * The **local prefix** is the subnet on the LAN side of the Appliance.
 * The **NAT prefix** is a WAN-facing prefix of the same size.
 * The Appliance translates addresses 1:1 between the two prefixes:  
-   * For traffic leaving the site towards Cloudflare WAN, it replaces local addresses with the corresponding NAT addresses.  
-   * For traffic arriving at the site from Cloudflare WAN, it replaces NAT addresses with the corresponding local addresses.
+  * For traffic leaving the site towards Cloudflare WAN, it replaces local addresses with the corresponding NAT addresses.
+  * For traffic arriving at the site from Cloudflare WAN, it replaces NAT addresses with the corresponding local addresses.
 
 ## Addressing rules
 
 To avoid overlapping addresses in the overlay, Cloudflare WAN enforces the following rules:
 
-* **Uniqueness within a LAN**  
-   * The local prefix for each subnet must be unique within that LAN on the Appliance.  
-   * You can reuse the same local prefix on a different LAN or on a different site.
-* **Uniqueness in the Cloudflare WAN overlay**  
-   * Every **overlay-facing prefix** must be unique across all sites in your Cloudflare WAN deployment.  
-   * For a subnet **with NAT enabled**, the overlay-facing prefix is the **NAT prefix**.  
-   * For a subnet **without NAT**, the overlay-facing prefix is the **local prefix**.
+* **Uniqueness within a LAN**
+
+  * The local prefix for each subnet must be unique within that LAN on the Appliance.
+  * You can reuse the same local prefix on a different LAN or on a different site.
+* **Uniqueness in the Cloudflare WAN overlay**
+
+  * Every **overlay-facing prefix** must be unique across all sites in your Cloudflare WAN deployment.
+  * For a subnet **with NAT enabled**, the overlay-facing prefix is the **NAT prefix**.
+  * For a subnet **without NAT**, the overlay-facing prefix is the **local prefix**.
 
 These rules allow you to reuse local space at multiple sites, as long as each subnet in the Cloudflare WAN overlay has a unique overlay-facing prefix.
 

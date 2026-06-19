@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,15 +17,15 @@ Cloudflare Realtime simplifies the management of peer connections and media trac
 ## API Endpoints
 
 * **Create a New Session**: Initiates a new session on Cloudflare Realtime, which can be modified with other endpoints below.  
-   * `POST /apps/{appId}/sessions/new`
+  * `POST /apps/{appId}/sessions/new`
 * **Add a New Track**: Adds a media track (audio or video) to an existing session.  
-   * `POST /apps/{appId}/sessions/{sessionId}/tracks/new`
+  * `POST /apps/{appId}/sessions/{sessionId}/tracks/new`
 * **Renegotiate a Session**: Updates the session's negotiation state to accommodate new tracks or changes in the existing ones.  
-   * `PUT /apps/{appId}/sessions/{sessionId}/renegotiate`
+  * `PUT /apps/{appId}/sessions/{sessionId}/renegotiate`
 * **Close a Track**: Removes a specified track from the session.  
-   * `PUT /apps/{appId}/sessions/{sessionId}/tracks/close`
+  * `PUT /apps/{appId}/sessions/{sessionId}/tracks/close`
 * **Retrieve Session Information**: Fetches detailed information about a specific session.  
-   * `GET /apps/{appId}/sessions/{sessionId}`
+  * `GET /apps/{appId}/sessions/{sessionId}`
 
 [View full API and schema (OpenAPI format)](https://developers.cloudflare.com/realtime/static/realtime-api-2024-05-21.yaml)
 

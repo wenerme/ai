@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -60,10 +60,7 @@ Make note of the URL that your application was deployed to. You will be using it
 Terminal window
 
 ```
-
 cd github-twilio-notifications
-
-
 ```
 
 Inside of your new `github-sms-notifications` directory, `src/index.js` represents the entry point to your Cloudflare Workers application. You will configure this file for most of the tutorial.
@@ -99,18 +96,7 @@ Initially, your generated `index.js` should look like this:
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    return new Response("Hello World!");
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    return new Response("Hello World!");  },};
 ```
 
 Use the `request.method` property of [Request](https://developers.cloudflare.com/workers/runtime-apis/request/) to check if the request coming to your application is a `POST` request, and send an error response if the request is not a `POST` request.
@@ -118,22 +104,7 @@ Use the `request.method` property of [Request](https://developers.cloudflare.com
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    if (request.method !== "POST") {
-
-      return new Response("Please send a POST request!");
-
-    }
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    if (request.method !== "POST") {      return new Response("Please send a POST request!");    }  },};
 ```
 
 Next, validate that the request is sent with the right secret key. GitHub attaches a hash signature for [each payload using the secret key ↗](https://docs.github.com/en/developers/webhooks-and-events/webhooks/securing-your-webhooks). Use a helper function called `checkSignature` on the request to ensure the hash is correct. Then, you can access data from the webhook by parsing the request as JSON.
@@ -141,35 +112,8 @@ Next, validate that the request is sent with the right secret key. GitHub attach
 JavaScript
 
 ```
-
-async fetch(request, env, ctx) {
-
-  if(request.method !== 'POST') {
-
-    return new Response('Please send a POST request!');
-
-  }
-
-  try {
-
-    const rawBody = await request.text();
-
-
-    if (!checkSignature(rawBody, request.headers, env.GITHUB_SECRET_TOKEN)) {
-
-      return new Response("Wrong password, try again", {status: 403});
-
-    }
-
-  } catch (e) {
-
-    return new Response(`Error:  ${e}`);
-
-  }
-
-},
-
-
+async fetch(request, env, ctx) {  if(request.method !== 'POST') {    return new Response('Please send a POST request!');  }  try {    const rawBody = await request.text();
+    if (!checkSignature(rawBody, request.headers, env.GITHUB_SECRET_TOKEN)) {      return new Response("Wrong password, try again", {status: 403});    }  } catch (e) {    return new Response(`Error:  ${e}`);  }},
 ```
 
 The `checkSignature` function will use the Node.js crypto library to hash the received payload with your known secret key to ensure it matches the request hash. GitHub uses an HMAC hexdigest to compute the hash in the SHA-256 format. You will place this function at the top of your `index.js` file, before your export.
@@ -177,39 +121,10 @@ The `checkSignature` function will use the Node.js crypto library to hash the re
 JavaScript
 
 ```
-
-import { createHmac, timingSafeEqual } from "node:crypto";
-
-import { Buffer } from "node:buffer";
-
-
-function checkSignature(text, headers, githubSecretToken) {
-
-  const hmac = createHmac("sha256", githubSecretToken);
-
-  hmac.update(text);
-
-  const expectedSignature = hmac.digest("hex");
-
-  const actualSignature = headers.get("x-hub-signature-256");
-
-
-  const trusted = Buffer.from(`sha256=${expectedSignature}`, "ascii");
-
-  const untrusted = Buffer.from(actualSignature, "ascii");
-
-
-  return (
-
-    trusted.byteLength == untrusted.byteLength &&
-
-    timingSafeEqual(trusted, untrusted)
-
-  );
-
-}
-
-
+import { createHmac, timingSafeEqual } from "node:crypto";import { Buffer } from "node:buffer";
+function checkSignature(text, headers, githubSecretToken) {  const hmac = createHmac("sha256", githubSecretToken);  hmac.update(text);  const expectedSignature = hmac.digest("hex");  const actualSignature = headers.get("x-hub-signature-256");
+  const trusted = Buffer.from(`sha256=${expectedSignature}`, "ascii");  const untrusted = Buffer.from(actualSignature, "ascii");
+  return (    trusted.byteLength == untrusted.byteLength &&    timingSafeEqual(trusted, untrusted)  );}
 ```
 
 To make this work, you need to use [wrangler secret put](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret-put) to set your `GITHUB_SECRET_TOKEN`. This token is the secret you picked earlier when configuring you GitHub webhook:
@@ -217,41 +132,24 @@ To make this work, you need to use [wrangler secret put](https://developers.clou
 Terminal window
 
 ```
-
 npx wrangler secret put GITHUB_SECRET_TOKEN
-
-
 ```
 
 Add the nodejs\_compat flag to your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-12187)
-* [  wrangler.toml ](#tab-panel-12188)
+* [  wrangler.jsonc ](#tab-panel-12204)
+* [  wrangler.toml ](#tab-panel-12205)
 
 JSONC
 
 ```
-
-{
-
-  "compatibility_flags": [
-
-    "nodejs_compat"
-
-  ]
-
-}
-
-
+{  "compatibility_flags": [    "nodejs_compat"  ]}
 ```
 
 TOML
 
 ```
-
 compatibility_flags = [ "nodejs_compat" ]
-
-
 ```
 
 ---
@@ -267,53 +165,12 @@ Create a new function called `sendText()` that will handle making the request to
 JavaScript
 
 ```
-
-async function sendText(accountSid, authToken, message) {
-
-  const endpoint = `https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`;
-
-
-  const encoded = new URLSearchParams({
-
-    To: "%YOUR_PHONE_NUMBER%",
-
-    From: "%YOUR_TWILIO_NUMBER%",
-
-    Body: message,
-
-  });
-
-
+async function sendText(accountSid, authToken, message) {  const endpoint = `https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`;
+  const encoded = new URLSearchParams({    To: "%YOUR_PHONE_NUMBER%",    From: "%YOUR_TWILIO_NUMBER%",    Body: message,  });
   const token = btoa(`${accountSid}:${authToken}`);
-
-
-  const request = {
-
-    body: encoded,
-
-    method: "POST",
-
-    headers: {
-
-      Authorization: `Basic ${token}`,
-
-      "Content-Type": "application/x-www-form-urlencoded",
-
-    },
-
-  };
-
-
-  const response = await fetch(endpoint, request);
-
-  const result = await response.json();
-
-
-  return Response.json(result);
-
-}
-
-
+  const request = {    body: encoded,    method: "POST",    headers: {      Authorization: `Basic ${token}`,      "Content-Type": "application/x-www-form-urlencoded",    },  };
+  const response = await fetch(endpoint, request);  const result = await response.json();
+  return Response.json(result);}
 ```
 
 To make this work, you need to set some secrets to hide your `ACCOUNT_SID` and `AUTH_TOKEN` from the source code. You can set secrets with [wrangler secret put](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret-put) in your command line.
@@ -321,12 +178,7 @@ To make this work, you need to set some secrets to hide your `ACCOUNT_SID` and `
 Terminal window
 
 ```
-
-npx wrangler secret put TWILIO_ACCOUNT_SID
-
-npx wrangler secret put TWILIO_AUTH_TOKEN
-
-
+npx wrangler secret put TWILIO_ACCOUNT_SIDnpx wrangler secret put TWILIO_AUTH_TOKEN
 ```
 
 Modify your `githubWebhookHandler` to send a text message using the `sendText` function you just made.
@@ -334,54 +186,9 @@ Modify your `githubWebhookHandler` to send a text message using the `sendText` f
 JavaScript
 
 ```
-
-async fetch(request, env, ctx) {
-
-  if(request.method !== 'POST') {
-
-    return new Response('Please send a POST request!');
-
-  }
-
-  try {
-
-    const rawBody = await request.text();
-
-    if (!checkSignature(rawBody, request.headers, env.GITHUB_SECRET_TOKEN)) {
-
-      return new Response('Wrong password, try again', {status: 403});
-
-    }
-
-
-    const action = request.headers.get('X-GitHub-Event');
-
-    const json = JSON.parse(rawBody);
-
-    const repoName = json.repository.full_name;
-
-    const senderName = json.sender.login;
-
-
-    return await sendText(
-
-      env.TWILIO_ACCOUNT_SID,
-
-      env.TWILIO_AUTH_TOKEN,
-
-      `${senderName} completed ${action} onto your repo ${repoName}`
-
-    );
-
-  } catch (e) {
-
-    return new Response(`Error:  ${e}`);
-
-  }
-
-};
-
-
+async fetch(request, env, ctx) {  if(request.method !== 'POST') {    return new Response('Please send a POST request!');  }  try {    const rawBody = await request.text();    if (!checkSignature(rawBody, request.headers, env.GITHUB_SECRET_TOKEN)) {      return new Response('Wrong password, try again', {status: 403});    }
+    const action = request.headers.get('X-GitHub-Event');    const json = JSON.parse(rawBody);    const repoName = json.repository.full_name;    const senderName = json.sender.login;
+    return await sendText(      env.TWILIO_ACCOUNT_SID,      env.TWILIO_AUTH_TOKEN,      `${senderName} completed ${action} onto your repo ${repoName}`    );  } catch (e) {    return new Response(`Error:  ${e}`);  }};
 ```
 
 Run the `npx wrangler deploy` command to redeploy your Worker project:
@@ -389,10 +196,7 @@ Run the `npx wrangler deploy` command to redeploy your Worker project:
 Terminal window
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 ![Video of receiving a text after pushing to a repo](https://developers.cloudflare.com/images/workers/tutorials/github-sms/video-of-receiving-a-text-after-pushing-to-a-repo.gif) 

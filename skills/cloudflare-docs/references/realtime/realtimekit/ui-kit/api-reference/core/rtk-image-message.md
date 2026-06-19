@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,35 +30,18 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 ### Basic Usage
 
 ```
-
 <rtk-image-message></rtk-image-message>
-
-
 ```
 
 ### With Properties
 
 ```
-
-<rtk-image-message>
-
-</rtk-image-message>
-
-
+<rtk-image-message></rtk-image-message>
 ```
 
 ```
-
-<script>
-
-  const el = document.querySelector("rtk-image-message");
-
-
-  el.isContinued= true;
-
-</script>
-
-
+<script>  const el = document.querySelector("rtk-image-message");
+  el.isContinued= true;</script>
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pipelines/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -36,10 +36,7 @@ To create a stream, run the [pipelines streams create](https://developers.cloudf
 Terminal window
 
 ```
-
 npx wrangler pipelines streams create <STREAM_NAME>
-
-
 ```
 
 Alternatively, to use the interactive setup wizard that helps you configure a stream, sink, and pipeline, run the [pipelines setup](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-setup) command:
@@ -47,10 +44,7 @@ Alternatively, to use the interactive setup wizard that helps you configure a st
 Terminal window
 
 ```
-
 npx wrangler pipelines setup
-
-
 ```
 
 ### Schema configuration
@@ -65,95 +59,13 @@ To create a structured stream, provide a schema file:
 Terminal window
 
 ```
-
 npx wrangler pipelines streams create my-stream --schema-file schema.json
-
-
 ```
 
 Example schema file:
 
 ```
-
-{
-
-  "fields": [
-
-    {
-
-      "name": "user_id",
-
-      "type": "string",
-
-      "required": true
-
-    },
-
-    {
-
-      "name": "amount",
-
-      "type": "float64",
-
-      "required": false
-
-    },
-
-    {
-
-      "name": "tags",
-
-      "type": "list",
-
-      "required": false,
-
-      "items": {
-
-        "type": "string"
-
-      }
-
-    },
-
-    {
-
-      "name": "metadata",
-
-      "type": "struct",
-
-      "required": false,
-
-      "fields": [
-
-        {
-
-          "name": "source",
-
-          "type": "string",
-
-          "required": false
-
-        },
-
-        {
-
-          "name": "priority",
-
-          "type": "int32",
-
-          "required": false
-
-        }
-
-      ]
-
-    }
-
-  ]
-
-}
-
-
+{  "fields": [    {      "name": "user_id",      "type": "string",      "required": true    },    {      "name": "amount",      "type": "float64",      "required": false    },    {      "name": "tags",      "type": "list",      "required": false,      "items": {        "type": "string"      }    },    {      "name": "metadata",      "type": "struct",      "required": false,      "fields": [        {          "name": "source",          "type": "string",          "required": false        },        {          "name": "priority",          "type": "int32",          "required": false        }      ]    }  ]}
 ```
 
 **Supported data types:**
@@ -186,10 +98,7 @@ To view a specific stream, run the [pipelines streams get](https://developers.cl
 Terminal window
 
 ```
-
 npx wrangler pipelines streams get <STREAM_NAME_OR_ID>
-
-
 ```
 
 To list all streams in your account, run the [pipelines streams list](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-streams-list) command:
@@ -197,10 +106,7 @@ To list all streams in your account, run the [pipelines streams list](https://de
 Terminal window
 
 ```
-
 npx wrangler pipelines streams list
-
-
 ```
 
 ## Update HTTP ingest settings
@@ -235,10 +141,7 @@ To delete a stream, run the [pipelines streams delete](https://developers.cloudf
 Terminal window
 
 ```
-
 npx wrangler pipelines streams delete <STREAM_ID>
-
-
 ```
 
 Warning

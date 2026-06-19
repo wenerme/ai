@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -80,66 +80,7 @@ You can query Artifacts analytics with the [GraphQL Analytics API](https://devel
 Use this query to find the busiest repos in one namespace over a time range. It also returns average operation duration so you can compare activity and latency together.
 
 ```
-
-query ArtifactsOperationsByRepo(
-
-  $accountTag: String!
-
-  $datetimeStart: Time
-
-  $datetimeEnd: Time
-
-  $repositoryNamespace: String!
-
-) {
-
-  viewer {
-
-    accounts(filter: { accountTag: $accountTag }) {
-
-      artifactsEventsAdaptiveGroups(
-
-        limit: 100
-
-        filter: {
-
-          datetime_geq: $datetimeStart
-
-          datetime_leq: $datetimeEnd
-
-          repositoryNamespace: $repositoryNamespace
-
-          eventKind: "action"
-
-        }
-
-        orderBy: [count_DESC]
-
-      ) {
-
-        count
-
-        avg {
-
-          durationMs
-
-        }
-
-        dimensions {
-
-          repositoryName
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
+query ArtifactsOperationsByRepo(  $accountTag: String!  $datetimeStart: Time  $datetimeEnd: Time  $repositoryNamespace: String!) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      artifactsEventsAdaptiveGroups(        limit: 100        filter: {          datetime_geq: $datetimeStart          datetime_leq: $datetimeEnd          repositoryNamespace: $repositoryNamespace          eventKind: "action"        }        orderBy: [count_DESC]      ) {        count        avg {          durationMs        }        dimensions {          repositoryName        }      }    }  }}
 ```
 
 ### Errors by repo, descending
@@ -147,58 +88,7 @@ query ArtifactsOperationsByRepo(
 Use this query to rank repos by error volume. It helps you spot which repos fail most often and which error types are driving those failures.
 
 ```
-
-query ArtifactsErrorsByRepo(
-
-  $accountTag: String!
-
-  $datetimeStart: Time
-
-  $datetimeEnd: Time
-
-) {
-
-  viewer {
-
-    accounts(filter: { accountTag: $accountTag }) {
-
-      artifactsEventsAdaptiveGroups(
-
-        limit: 100
-
-        filter: {
-
-          datetime_geq: $datetimeStart
-
-          datetime_leq: $datetimeEnd
-
-          eventKind: "error"
-
-        }
-
-        orderBy: [count_DESC]
-
-      ) {
-
-        count
-
-        dimensions {
-
-          repository
-
-          eventType
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
+query ArtifactsErrorsByRepo(  $accountTag: String!  $datetimeStart: Time  $datetimeEnd: Time) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      artifactsEventsAdaptiveGroups(        limit: 100        filter: {          datetime_geq: $datetimeStart          datetime_leq: $datetimeEnd          eventKind: "error"        }        orderBy: [count_DESC]      ) {        count        dimensions {          repository          eventType        }      }    }  }}
 ```
 
 ### Repos by pushes, descending
@@ -206,58 +96,7 @@ query ArtifactsErrorsByRepo(
 Use this query to see which repos receive the most pushes in a time window. It is useful for identifying active write-heavy repos across an account.
 
 ```
-
-query ArtifactsPushesByRepo(
-
-  $accountTag: String!
-
-  $datetimeStart: Time
-
-  $datetimeEnd: Time
-
-) {
-
-  viewer {
-
-    accounts(filter: { accountTag: $accountTag }) {
-
-      artifactsEventsAdaptiveGroups(
-
-        limit: 100
-
-        filter: {
-
-          datetime_geq: $datetimeStart
-
-          datetime_leq: $datetimeEnd
-
-          eventKind: "action"
-
-          eventType: "push"
-
-        }
-
-        orderBy: [count_DESC]
-
-      ) {
-
-        count
-
-        dimensions {
-
-          repository
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
+query ArtifactsPushesByRepo(  $accountTag: String!  $datetimeStart: Time  $datetimeEnd: Time) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      artifactsEventsAdaptiveGroups(        limit: 100        filter: {          datetime_geq: $datetimeStart          datetime_leq: $datetimeEnd          eventKind: "action"          eventType: "push"        }        orderBy: [count_DESC]      ) {        count        dimensions {          repository        }      }    }  }}
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -14,11 +14,12 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 This example [custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) blocks requests by autonomous system number (ASN), continent, or country of origin.
 
-* **When incoming requests match**:  
-| Field     | Operator | Value        | Logic |  
-| --------- | -------- | ------------ | ----- |  
-| AS Num    | equals   | 131279       | Or    |  
-| Continent | equals   | Asia         | Or    |  
+* **When incoming requests match**:
+
+| Field     | Operator | Value        | Logic |
+| --------- | -------- | ------------ | ----- |
+| AS Num    | equals   | 131279       | Or    |
+| Continent | equals   | Asia         | Or    |
 | Country   | equals   | Korea, North |       |  
 If you are using the expression editor:  
 `(ip.src.asnum eq 131279) or (ip.src.continent eq "AS") or (ip.src.country eq "KP")`

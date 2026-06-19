@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,7 +33,7 @@ The following request creates a new custom ruleset at the account level. The res
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Mass URL Redirects Write`
 * `Magic Firewall Write`
 * `L4 DDoS Managed Ruleset Write`
@@ -46,59 +46,11 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Create an account ruleset
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "Custom Ruleset 1",
-
-    "description": "My First Custom Ruleset (account)",
-
-    "kind": "custom",
-
-    "phase": "http_request_firewall_custom"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Custom Ruleset 1",    "description": "My First Custom Ruleset (account)",    "kind": "custom",    "phase": "http_request_firewall_custom"  }'
 ```
 
 ```
-
-{
-
-  "result": {
-
-    "id": "f82ccda3d21f4a02825d3fe45b5e1c10",
-
-    "name": "Custom Ruleset 1",
-
-    "description": "My First Custom Ruleset (account)",
-
-    "kind": "custom",
-
-    "version": "1",
-
-    "last_updated": "2025-08-09T10:27:30.636197Z",
-
-    "phase": "http_request_firewall_custom"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "id": "f82ccda3d21f4a02825d3fe45b5e1c10",    "name": "Custom Ruleset 1",    "description": "My First Custom Ruleset (account)",    "kind": "custom",    "version": "1",    "last_updated": "2025-08-09T10:27:30.636197Z",    "phase": "http_request_firewall_custom"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 You can include a list of rules in the custom ruleset creation request. If you have not added any rules, refer to [Add rules to a custom ruleset](https://developers.cloudflare.com/ruleset-engine/custom-rulesets/add-rules-ruleset/) for more information.
@@ -109,7 +61,7 @@ The following request creates a new custom ruleset at the zone level. The respon
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Response Compression Write`
 * `Config Settings Write`
 * `Dynamic URL Redirects Write`
@@ -135,59 +87,11 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Create a zone ruleset
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "Custom Ruleset 1",
-
-    "description": "My First Custom Ruleset (zone)",
-
-    "kind": "custom",
-
-    "phase": "http_request_firewall_custom"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Custom Ruleset 1",    "description": "My First Custom Ruleset (zone)",    "kind": "custom",    "phase": "http_request_firewall_custom"  }'
 ```
 
 ```
-
-{
-
-  "result": {
-
-    "id": "f82ccda3d21f4a02825d3fe45b5e1c10",
-
-    "name": "Custom Ruleset 1",
-
-    "description": "My First Custom Ruleset (zone)",
-
-    "kind": "custom",
-
-    "version": "1",
-
-    "last_updated": "2025-08-09T10:27:30.636197Z",
-
-    "phase": "http_request_firewall_custom"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "id": "f82ccda3d21f4a02825d3fe45b5e1c10",    "name": "Custom Ruleset 1",    "description": "My First Custom Ruleset (zone)",    "kind": "custom",    "version": "1",    "last_updated": "2025-08-09T10:27:30.636197Z",    "phase": "http_request_firewall_custom"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 You can include a list of rules in the custom ruleset creation request. If you have not added any rules, refer to [Add rules to a custom ruleset](https://developers.cloudflare.com/ruleset-engine/custom-rulesets/add-rules-ruleset/) for more information.

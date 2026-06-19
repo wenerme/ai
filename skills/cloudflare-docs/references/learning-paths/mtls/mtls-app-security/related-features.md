@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,19 +27,13 @@ Example WAF Custom Rule with action block:
 ![Example expression for certification revocation using a WAF custom rule in the Cloudflare dashboard](https://developers.cloudflare.com/_astro/certification-revocation-custom-rule.Dl80dwDN_J2GCH.webp) 
 
 ```
-
 (cf.tls_client_auth.cert_revoked)
-
-
 ```
 
 A better approach may be to check for unverified or revoked client certificates:
 
 ```
-
 (not cf.tls_client_auth.cert_verified) or cf.tls_client_auth.cert_revoked
-
-
 ```
 
 Generally, ensure client certificates are rotated regularly and safely to reduce the risk of compromise.
@@ -120,10 +114,7 @@ Example WAF Custom Rule with action block:
 ![Example expression for configure a WAF Custom Rule with action block ](https://developers.cloudflare.com/_astro/configure-waf-custom-rule.BGsSBYj1_Otwj6.webp) 
 
 ```
-
 (http.host in {"mtls.example.com" "mtls2.example.com"} and (not cf.tls_client_auth.cert_verified or cf.tls_client_auth.cert_revoked))
-
-
 ```
 
 This expression will check if the request is coming from one of the hostnames and will block the request if the Client Certificate is either not verified or revoked.
@@ -133,10 +124,7 @@ Another example WAF Custom Rule with action block, using the [cf.tls\_client\_au
 ![Example expression of a WAF Custom Rule with action block using the cf.tls_client_auth.cert_fingerprint_sha256 field](https://developers.cloudflare.com/_astro/waf-client-certificates-fingerprint.BqsBG7GT_hgTk0.webp) 
 
 ```
-
 (http.request.uri.path in {"/headers"} and http.host in {"mtls.example.com" "mtls2.example.com"} and not cf.tls_client_auth.cert_verified and cf.tls_client_auth.cert_fingerprint_sha256 ne "ADD_STRING_OF_CLIENT_CERT_SHA256_FINGERPRINT")
-
-
 ```
 
 Here is another example of a WAF custom rule to associate a serial number with a hostname:
@@ -144,10 +132,7 @@ Here is another example of a WAF custom rule to associate a serial number with a
 ![Example expression of a WAF Custom Rule to associate a serial number with a hostname](https://developers.cloudflare.com/_astro/waf-custom-rule.BVo7j0Y-_CKTwN.webp) 
 
 ```
-
 (http.host in {"mtls.example.com" "mtls2.example.com"} and cf.tls_client_auth.cert_serial ne "ADD_STRING_OF_CLIENT_CERT_SERIAL")
-
-
 ```
 
 This expression will check for a specific [Client Certificate serial number](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls%5Fclient%5Fauth.cert%5Fserial/) linked to specific hostnames, allowing for more granular control.
@@ -166,15 +151,8 @@ Example [Rate Limiting Rule](https://developers.cloudflare.com/waf/rate-limiting
 ![Example exmpression of a rate limiting rule from the Cloudflare dashboard](https://developers.cloudflare.com/_astro/rate-limiting-rule.DDXdodgO_1uReTg.webp) 
 
 ```
-
 (http.host in {"mtls.example.com" "mtls2.example.com"} and cf.tls_client_auth.cert_verified)
-
-
-With the same characteristics...
-
-"Header value of": "Cf-Client-Cert-Sha256"
-
-
+With the same characteristics..."Header value of": "Cf-Client-Cert-Sha256"
 ```
 
 ## Cloudflare API Shield

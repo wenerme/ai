@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,45 +30,15 @@ A component which allows you to change current page and view mode of active part
 ### Basic Usage
 
 ```
-
 import { RtkGridPagination } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return <RtkGridPagination />;
-
-}
-
-
+function MyComponent() {  return <RtkGridPagination />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkGridPagination } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkGridPagination
-
-      meeting={meeting}
-
-      size="md"
-
-      variant={gridpaginationvariants}
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkGridPagination      meeting={meeting}      size="md"      variant={gridpaginationvariants}    />  );}
 ```
 
 ```json

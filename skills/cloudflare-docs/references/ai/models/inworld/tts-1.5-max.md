@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,394 +29,106 @@ Highest-quality text-to-speech with under 200ms latency, emotion control, and 15
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-764)
-* [ cURL ](#tab-panel-765)
+* [ TypeScript ](#tab-panel-742)
+* [ cURL ](#tab-panel-743)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'inworld/tts-1.5-max',
-
-  {
-
-    output_format: 'mp3',
-
-    temperature: 1,
-
-    text: 'Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.',
-
-    timestamp_type: 'none',
-
-    voice_id: 'Dennis',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'inworld/tts-1.5-max',  {    output_format: 'mp3',    temperature: 1,    text: 'Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.',    timestamp_type: 'none',    voice_id: 'Dennis',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "inworld/tts-1.5-max",
-
-  "input": {
-
-    "output_format": "mp3",
-
-    "temperature": 1,
-
-    "text": "Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.",
-
-    "timestamp_type": "none",
-
-    "voice_id": "Dennis"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "inworld/tts-1.5-max",  "input": {    "output_format": "mp3",    "temperature": 1,    "text": "Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.",    "timestamp_type": "none",    "voice_id": "Dennis"  }}'
 ```
 
-* [ Output ](#tab-panel-760)
-* [ Raw response ](#tab-panel-761)
+* [ Output ](#tab-panel-738)
+* [ Raw response ](#tab-panel-739)
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/inworld__tts-1.5-max/simple-speech.mp3"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/inworld__tts-1.5-max/simple-speech.mp3"  },  "state": "Completed"}
 ```
 
 ## Examples
 
 **Slow Narration**  — Slower speech for narration 
 
-* [ TypeScript ](#tab-panel-768)
-* [ cURL ](#tab-panel-769)
+* [ TypeScript ](#tab-panel-746)
+* [ cURL ](#tab-panel-747)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'inworld/tts-1.5-max',
-
-  {
-
-    output_format: 'mp3',
-
-    speaking_rate: 0.85,
-
-    temperature: 1,
-
-    text: 'In the beginning, the universe was a singularity of infinite density. Then, in a fraction of a second, it expanded into everything we know today.',
-
-    timestamp_type: 'none',
-
-    voice_id: 'Dennis',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'inworld/tts-1.5-max',  {    output_format: 'mp3',    speaking_rate: 0.85,    temperature: 1,    text: 'In the beginning, the universe was a singularity of infinite density. Then, in a fraction of a second, it expanded into everything we know today.',    timestamp_type: 'none',    voice_id: 'Dennis',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "inworld/tts-1.5-max",
-
-  "input": {
-
-    "output_format": "mp3",
-
-    "speaking_rate": 0.85,
-
-    "temperature": 1,
-
-    "text": "In the beginning, the universe was a singularity of infinite density. Then, in a fraction of a second, it expanded into everything we know today.",
-
-    "timestamp_type": "none",
-
-    "voice_id": "Dennis"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "inworld/tts-1.5-max",  "input": {    "output_format": "mp3",    "speaking_rate": 0.85,    "temperature": 1,    "text": "In the beginning, the universe was a singularity of infinite density. Then, in a fraction of a second, it expanded into everything we know today.",    "timestamp_type": "none",    "voice_id": "Dennis"  }}'
 ```
 
-* [ Output ](#tab-panel-762)
-* [ Raw response ](#tab-panel-763)
+* [ Output ](#tab-panel-740)
+* [ Raw response ](#tab-panel-741)
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/inworld__tts-1.5-max/slow-narration.mp3"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/inworld__tts-1.5-max/slow-narration.mp3"  },  "state": "Completed"}
 ```
 
 **High Quality Audio**  — Higher sample rate for studio quality 
 
-* [ TypeScript ](#tab-panel-772)
-* [ cURL ](#tab-panel-773)
+* [ TypeScript ](#tab-panel-750)
+* [ cURL ](#tab-panel-751)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'inworld/tts-1.5-max',
-
-  {
-
-    output_format: 'mp3',
-
-    sample_rate: 48000,
-
-    temperature: 1,
-
-    text: 'This recording is generated at studio quality for the best possible listening experience.',
-
-    timestamp_type: 'none',
-
-    voice_id: 'Dennis',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'inworld/tts-1.5-max',  {    output_format: 'mp3',    sample_rate: 48000,    temperature: 1,    text: 'This recording is generated at studio quality for the best possible listening experience.',    timestamp_type: 'none',    voice_id: 'Dennis',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "inworld/tts-1.5-max",
-
-  "input": {
-
-    "output_format": "mp3",
-
-    "sample_rate": 48000,
-
-    "temperature": 1,
-
-    "text": "This recording is generated at studio quality for the best possible listening experience.",
-
-    "timestamp_type": "none",
-
-    "voice_id": "Dennis"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "inworld/tts-1.5-max",  "input": {    "output_format": "mp3",    "sample_rate": 48000,    "temperature": 1,    "text": "This recording is generated at studio quality for the best possible listening experience.",    "timestamp_type": "none",    "voice_id": "Dennis"  }}'
 ```
 
-* [ Output ](#tab-panel-766)
-* [ Raw response ](#tab-panel-767)
+* [ Output ](#tab-panel-744)
+* [ Raw response ](#tab-panel-745)
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/inworld__tts-1.5-max/high-quality-audio.mp3"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/inworld__tts-1.5-max/high-quality-audio.mp3"  },  "state": "Completed"}
 ```
 
 **With Text Normalization**  — Expand numbers and abbreviations before synthesis 
 
-* [ TypeScript ](#tab-panel-774)
-* [ cURL ](#tab-panel-775)
+* [ TypeScript ](#tab-panel-752)
+* [ cURL ](#tab-panel-753)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'inworld/tts-1.5-max',
-
-  {
-
-    apply_text_normalization: true,
-
-    output_format: 'mp3',
-
-    temperature: 1,
-
-    text: 'The meeting is at 3:30 PM on Jan 15th, 2026. Please confirm by calling 555-0123.',
-
-    timestamp_type: 'none',
-
-    voice_id: 'Dennis',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'inworld/tts-1.5-max',  {    apply_text_normalization: true,    output_format: 'mp3',    temperature: 1,    text: 'The meeting is at 3:30 PM on Jan 15th, 2026. Please confirm by calling 555-0123.',    timestamp_type: 'none',    voice_id: 'Dennis',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "inworld/tts-1.5-max",
-
-  "input": {
-
-    "apply_text_normalization": true,
-
-    "output_format": "mp3",
-
-    "temperature": 1,
-
-    "text": "The meeting is at 3:30 PM on Jan 15th, 2026. Please confirm by calling 555-0123.",
-
-    "timestamp_type": "none",
-
-    "voice_id": "Dennis"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "inworld/tts-1.5-max",  "input": {    "apply_text_normalization": true,    "output_format": "mp3",    "temperature": 1,    "text": "The meeting is at 3:30 PM on Jan 15th, 2026. Please confirm by calling 555-0123.",    "timestamp_type": "none",    "voice_id": "Dennis"  }}'
 ```
 
-* [ Output ](#tab-panel-770)
-* [ Raw response ](#tab-panel-771)
+* [ Output ](#tab-panel-748)
+* [ Raw response ](#tab-panel-749)
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/inworld__tts-1.5-max/with-text-normalization.mp3"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/inworld__tts-1.5-max/with-text-normalization.mp3"  },  "state": "Completed"}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-776)
-* [ Output ](#tab-panel-777)
+* [ Input ](#tab-panel-754)
+* [ Output ](#tab-panel-755)
 
 apply\_text\_normalization
 
@@ -462,7 +174,7 @@ audio
 
 Input [ ](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-max/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-max/schema-input.json "Download") 
 
-Output [ ](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-max/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-max/schema-output.json "Download") 
+Output [ ](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-max/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-max/schema-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/inworld/tts-1.5-max/#page","headline":"Inworld TTS 1.5 Max (Inworld) · Cloudflare AI docs · Cloudflare AI docs","description":"Highest-quality text-to-speech with under 200ms latency, emotion control, and 15-language support.","url":"https://developers.cloudflare.com/ai/models/inworld/tts-1.5-max/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

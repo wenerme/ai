@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/warp-client/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,8 +20,8 @@ You have two ways of installing WARP on Linux, depending on the distro you are u
 
 * Find the latest WARP client in the [package repository ↗](https://pkg.cloudflareclient.com/).
 * Install the `cloudflare-warp` package that suits your distro:  
-   * **apt-based OS** (like Ubuntu): `sudo apt install cloudflare-warp`.  
-   * **yum-based OS** (like CentOS or RHEL): `sudo yum install cloudflare-warp`.
+  * **apt-based OS** (like Ubuntu): `sudo apt install cloudflare-warp`.
+  * **yum-based OS** (like CentOS or RHEL): `sudo yum install cloudflare-warp`.
 
 Note
 
@@ -84,8 +84,7 @@ Terminal window
 warp-cli registration show  
 ```  
 ```  
-Account type: Unlimited  
-...  
+Account type: Unlimited...  
 ```
 
 Your WARP+ Unlimited subscription is now active on this device.
@@ -97,10 +96,7 @@ A complete list of all supported commands can be found by running:
 Terminal window
 
 ```
-
 warp-cli --help
-
-
 ```
 
 ## Feedback

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/1.1.1.1/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -78,19 +78,13 @@ To configure an encrypted DoH connection to 1.1.1.1 for Families, enter one of t
 Block malware
 
 ```
-
 https://security.cloudflare-dns.com/dns-query
-
-
 ```
 
 Block malware and adult content
 
 ```
-
 https://family.cloudflare-dns.com/dns-query
-
-
 ```
 
 ### DNS over TLS (DoT)
@@ -102,19 +96,13 @@ To configure an encrypted DoT connection to 1.1.1.1 for Families, enter one of t
 Block malware
 
 ```
-
 security.cloudflare-dns.com
-
-
 ```
 
 Block malware and adult content
 
 ```
-
 family.cloudflare-dns.com
-
-
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/kv/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,10 +17,7 @@ To create a new key-value pair, or to update the value for a particular key, cal
 JavaScript
 
 ```
-
 env.NAMESPACE.put(key, value);
-
-
 ```
 
 #### Example
@@ -30,33 +27,8 @@ An example of writing a key-value pair from within a Worker:
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    try {
-
-      await env.NAMESPACE.put("first-key", "This is the value for the key");
-
-
-      return new Response("Successful write", {
-
-        status: 201,
-
-      });
-
-    } catch (e) {
-
-      return new Response(e.message, { status: 500 });
-
-    }
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    try {      await env.NAMESPACE.put("first-key", "This is the value for the key");
+      return new Response("Successful write", {        status: 201,      });    } catch (e) {      return new Response(e.message, { status: 500 });    }  },};
 ```
 
 ## Reference
@@ -72,28 +44,28 @@ To create a new key-value pair, or to update the value for a particular key, cal
 JavaScript
 
 ```
-
 env.NAMESPACE.put(key, value, options?);
-
-
 ```
 
 #### Parameters
 
-* `key`: `string`  
-   * The key to associate with the value. A key cannot be empty or be exactly equal to `.` or `..`. All other keys are valid. Keys have a maximum length of 512 bytes.
-* `value`: `string` | `ReadableStream` | `ArrayBuffer`  
-   * The value to store. The type is inferred. The maximum size of a value is 25 MiB.
-* `options`: `{ expiration?: number, expirationTtl?: number, metadata?: object }`  
-   * Optional. An object containing the `expiration` (optional), `expirationTtl` (optional), and `metadata` (optional) attributes.  
-         * `expiration` is the number that represents when to expire the key-value pair in seconds since epoch.  
-         * `expirationTtl` is the number that represents when to expire the key-value pair in seconds from now. The minimum value is 60.  
-         * `metadata` is an object that must serialize to JSON. The maximum size of the serialized JSON representation of the metadata object is 1024 bytes.
+* `key`: `string`
+
+  * The key to associate with the value. A key cannot be empty or be exactly equal to `.` or `..`. All other keys are valid. Keys have a maximum length of 512 bytes.
+* `value`: `string` | `ReadableStream` | `ArrayBuffer`
+
+  * The value to store. The type is inferred. The maximum size of a value is 25 MiB.
+* `options`: `{ expiration?: number, expirationTtl?: number, metadata?: object }`
+
+  * Optional. An object containing the `expiration` (optional), `expirationTtl` (optional), and `metadata` (optional) attributes.  
+    * `expiration` is the number that represents when to expire the key-value pair in seconds since epoch.
+    * `expirationTtl` is the number that represents when to expire the key-value pair in seconds from now. The minimum value is 60.
+    * `metadata` is an object that must serialize to JSON. The maximum size of the serialized JSON representation of the metadata object is 1024 bytes.
 
 #### Response
 
 * `response`: `Promise<void>`  
-   * A `Promise` that resolves if the update is successful.
+  * A `Promise` that resolves if the update is successful.
 
 The put() method returns a Promise that you should `await` on to verify a successful update.
 
@@ -141,21 +113,8 @@ To create expiring keys, set `expiration` in the `put()` options to a number rep
 JavaScript
 
 ```
-
-await env.NAMESPACE.put(key, value, {
-
-  expiration: secondsSinceEpoch,
-
-});
-
-
-await env.NAMESPACE.put(key, value, {
-
-  expirationTtl: secondsFromNow,
-
-});
-
-
+await env.NAMESPACE.put(key, value, {  expiration: secondsSinceEpoch,});
+await env.NAMESPACE.put(key, value, {  expirationTtl: secondsFromNow,});
 ```
 
 These assume that `secondsSinceEpoch` and `secondsFromNow` are variables defined elsewhere in your Worker code.
@@ -167,14 +126,7 @@ To associate metadata with a key-value pair, set `metadata` in the `put()` optio
 JavaScript
 
 ```
-
-await env.NAMESPACE.put(key, value, {
-
-  metadata: { someMetadataKey: "someMetadataValue" },
-
-});
-
-
+await env.NAMESPACE.put(key, value, {  metadata: { someMetadataKey: "someMetadataValue" },});
 ```
 
 ### Limits to KV writes to the same key
@@ -188,108 +140,11 @@ The following example serves as a demonstration of how multiple writes to the sa
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    // Rest of code omitted
-
-    const key = "common-key";
-
-    const parallelWritesCount = 20;
-
-
-    // Helper function to attempt a write to KV and handle errors
-
-    const attemptWrite = async (i: number) => {
-
-      try {
-
-        await env.YOUR_KV_NAMESPACE.put(key, `Write attempt #${i}`);
-
-        return { attempt: i, success: true };
-
-      } catch (error) {
-
-        // An error may be thrown if a write to the same key is made within 1 second with a message. For example:
-
-        // error: {
-
-        //  "message": "KV PUT failed: 429 Too Many Requests"
-
-        // }
-
-
-        return {
-
-          attempt: i,
-
-          success: false,
-
-          error: { message: (error as Error).message },
-
-        };
-
-      }
-
-    };
-
-
-    // Send all requests in parallel and collect results
-
-    const results = await Promise.all(
-
-      Array.from({ length: parallelWritesCount }, (_, i) =>
-
-        attemptWrite(i + 1),
-
-      ),
-
-    );
-
-    // Results will look like:
-
-    // [
-
-    //     {
-
-    //       "attempt": 1,
-
-    //       "success": true
-
-    //     },
-
-    //    {
-
-    //       "attempt": 2,
-
-    //       "success": false,
-
-    //       "error": {
-
-    //         "message": "KV PUT failed: 429 Too Many Requests"
-
-    //       }
-
-    //     },
-
-    //     ...
-
-    // ]
-
-
-    return new Response(JSON.stringify(results), {
-
-      headers: { "Content-Type": "application/json" },
-
-    });
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx): Promise<Response> {    // Rest of code omitted    const key = "common-key";    const parallelWritesCount = 20;
+    // Helper function to attempt a write to KV and handle errors    const attemptWrite = async (i: number) => {      try {        await env.YOUR_KV_NAMESPACE.put(key, `Write attempt #${i}`);        return { attempt: i, success: true };      } catch (error) {        // An error may be thrown if a write to the same key is made within 1 second with a message. For example:        // error: {        //  "message": "KV PUT failed: 429 Too Many Requests"        // }
+        return {          attempt: i,          success: false,          error: { message: (error as Error).message },        };      }    };
+    // Send all requests in parallel and collect results    const results = await Promise.all(      Array.from({ length: parallelWritesCount }, (_, i) =>        attemptWrite(i + 1),      ),    );    // Results will look like:    // [    //     {    //       "attempt": 1,    //       "success": true    //     },    //    {    //       "attempt": 2,    //       "success": false,    //       "error": {    //         "message": "KV PUT failed: 429 Too Many Requests"    //       }    //     },    //     ...    // ]
+    return new Response(JSON.stringify(results), {      headers: { "Content-Type": "application/json" },    });  },};
 ```
 
 To handle these errors, we recommend implementing a retry logic, with exponential backoff. Here is a simple approach to add retries to the above code.
@@ -297,129 +152,14 @@ To handle these errors, we recommend implementing a retry logic, with exponentia
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    // Rest of code omitted
-
-    const key = "common-key";
-
-    const parallelWritesCount = 20;
-
-
-    // Helper function to attempt a write to KV with retries
-
-    const attemptWrite = async (i: number) => {
-
-      return await retryWithBackoff(async () => {
-
-        await env.YOUR_KV_NAMESPACE.put(key, `Write attempt #${i}`);
-
-        return { attempt: i, success: true };
-
-      });
-
-    };
-
-
-    // Send all requests in parallel and collect results
-
-    const results = await Promise.all(
-
-      Array.from({ length: parallelWritesCount }, (_, i) =>
-
-        attemptWrite(i + 1),
-
-      ),
-
-    );
-
-
-    return new Response(JSON.stringify(results), {
-
-      headers: { "Content-Type": "application/json" },
-
-    });
-
-  },
-
-};
-
-
-async function retryWithBackoff(
-
-  fn: Function,
-
-  maxAttempts = 5,
-
-  initialDelay = 1000,
-
-) {
-
-  let attempts = 0;
-
-  let delay = initialDelay;
-
-
-  while (attempts < maxAttempts) {
-
-    try {
-
-      // Attempt the function
-
-      return await fn();
-
-    } catch (error) {
-
-      // Check if the error is a rate limit error
-
-      if (
-
-        (error as Error).message.includes(
-
-          "KV PUT failed: 429 Too Many Requests",
-
-        )
-
-      ) {
-
-        attempts++;
-
-        if (attempts >= maxAttempts) {
-
-          throw new Error("Max retry attempts reached");
-
-        }
-
-
-        // Wait for the backoff period
-
-        console.warn(`Attempt ${attempts} failed. Retrying in ${delay} ms...`);
-
-        await new Promise((resolve) => setTimeout(resolve, delay));
-
-
-        // Exponential backoff
-
-        delay *= 2;
-
-      } else {
-
-        // If it's a different error, rethrow it
-
-        throw error;
-
-      }
-
-    }
-
-  }
-
-}
-
-
+export default {  async fetch(request, env, ctx): Promise<Response> {    // Rest of code omitted    const key = "common-key";    const parallelWritesCount = 20;
+    // Helper function to attempt a write to KV with retries    const attemptWrite = async (i: number) => {      return await retryWithBackoff(async () => {        await env.YOUR_KV_NAMESPACE.put(key, `Write attempt #${i}`);        return { attempt: i, success: true };      });    };
+    // Send all requests in parallel and collect results    const results = await Promise.all(      Array.from({ length: parallelWritesCount }, (_, i) =>        attemptWrite(i + 1),      ),    );
+    return new Response(JSON.stringify(results), {      headers: { "Content-Type": "application/json" },    });  },};
+async function retryWithBackoff(  fn: Function,  maxAttempts = 5,  initialDelay = 1000,) {  let attempts = 0;  let delay = initialDelay;
+  while (attempts < maxAttempts) {    try {      // Attempt the function      return await fn();    } catch (error) {      // Check if the error is a rate limit error      if (        (error as Error).message.includes(          "KV PUT failed: 429 Too Many Requests",        )      ) {        attempts++;        if (attempts >= maxAttempts) {          throw new Error("Max retry attempts reached");        }
+        // Wait for the backoff period        console.warn(`Attempt ${attempts} failed. Retrying in ${delay} ms...`);        await new Promise((resolve) => setTimeout(resolve, delay));
+        // Exponential backoff        delay *= 2;      } else {        // If it's a different error, rethrow it        throw error;      }    }  }}
 ```
 
 ## Other methods to access KV

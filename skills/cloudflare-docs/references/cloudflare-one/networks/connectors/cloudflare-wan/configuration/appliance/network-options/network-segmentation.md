@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -45,8 +45,8 @@ The following guide assumes you have already created a site and configured your 
 
 ## Create a policy
 
-* [ Dashboard ](#tab-panel-7360)
-* [ API ](#tab-panel-7361)
+* [ Dashboard ](#tab-panel-7436)
+* [ API ](#tab-panel-7437)
 
 Follow these steps to create a new LAN policy to segment your network. Only the fields marked **required** are mandatory.
 
@@ -62,10 +62,10 @@ Follow these steps to create a new LAN policy to segment your network. Only the 
 8. In **Destination (required)**, select the destination LAN and repeat the above process to configure it.
 9. In **Protocols**, select the type of traffic you want to allow. You can choose **TCP**, **UDP**, and **ICMP**. You can also select **Any** to choose all types of traffic.
 10. In **Traffic direction** you can choose between bidirectional traffic (the default) and unidirectional traffic. What you can choose depends on the protocol that you chose for the policy:  
-   * **Any**: If **Any** is selected and you choose **Unidirectional**, the system will alert you that this will break TCP traffic.  
-   * **TCP**: You can only select **Bidirectional**.  
-   * **UDP**: The system defaults to **Bidirectional** but you can choose **Unidirectional**.  
-   * **ICMP**: The system defaults to **Bidirectional** but you can choose **Unidirectional**.
+  * **Any**: If **Any** is selected and you choose **Unidirectional**, the system will alert you that this will break TCP traffic.
+  * **TCP**: You can only select **Bidirectional**.
+  * **UDP**: The system defaults to **Bidirectional** but you can choose **Unidirectional**.
+  * **ICMP**: The system defaults to **Bidirectional** but you can choose **Unidirectional**.
 11. In **Traffic path**, select **Forwarded via Cloudflare** if you want traffic to be forwarded to Cloudflare to be processed. If you do not select this option, traffic will flow locally in your premises, without passing through Cloudflare.
 12. Select **Save**.
 
@@ -79,184 +79,18 @@ Example:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Magic WAN Write`
 * `Magic Transit Write`
 
 Create a new Site ACL
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/acls" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "description": "<POLICY_DESCRIPTION>",
-
-    "forward_locally": true,
-
-    "lan_1": {
-
-        "lan_id": "<LAN_ID>",
-
-        "lan_name": "<LAN_NAME>",
-
-        "ports": [
-
-            1
-
-        ],
-
-        "subnets": [
-
-            "192.0.2.1"
-
-        ]
-
-    },
-
-    "lan_2": {
-
-        "lan_id": "<LAN_ID>",
-
-        "lan_name": "<LAN_NAME",
-
-        "ports": [
-
-            1
-
-        ],
-
-        "subnets": [
-
-            "192.0.2.1"
-
-        ]
-
-    },
-
-    "name": "<POLICY_NAME>",
-
-    "protocols": [
-
-        "tcp"
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/acls" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "description": "<POLICY_DESCRIPTION>",    "forward_locally": true,    "lan_1": {        "lan_id": "<LAN_ID>",        "lan_name": "<LAN_NAME>",        "ports": [            1        ],        "subnets": [            "192.0.2.1"        ]    },    "lan_2": {        "lan_id": "<LAN_ID>",        "lan_name": "<LAN_NAME",        "ports": [            1        ],        "subnets": [            "192.0.2.1"        ]    },    "name": "<POLICY_NAME>",    "protocols": [        "tcp"    ]  }'
 ```
 
 ```
-
-{
-
-  "errors": [
-
-    {
-
-      "code": 1000,
-
-      "message": "message"
-
-    }
-
-  ],
-
-  "messages": [
-
-    {
-
-      "code": 1000,
-
-      "message": "message"
-
-    }
-
-  ],
-
-  "result": {
-
-    "id": "023e105f4ecef8ad9ca31a8372d0c353",
-
-    "description": "Allows local traffic between PIN pads and cash register.",
-
-    "forward_locally": true,
-
-    "lan_1": {
-
-      "lan_id": "lan_id",
-
-      "lan_name": "lan_name",
-
-      "port_ranges": [
-
-        "8080-9000"
-
-      ],
-
-      "ports": [
-
-        1
-
-      ],
-
-      "subnets": [
-
-        "192.0.2.1"
-
-      ]
-
-    },
-
-    "lan_2": {
-
-      "lan_id": "lan_id",
-
-      "lan_name": "lan_name",
-
-      "port_ranges": [
-
-        "8080-9000"
-
-      ],
-
-      "ports": [
-
-        1
-
-      ],
-
-      "subnets": [
-
-        "192.0.2.1"
-
-      ]
-
-    },
-
-    "name": "PIN Pad - Cash Register",
-
-    "protocols": [
-
-      "tcp"
-
-    ],
-
-    "unidirectional": true
-
-  },
-
-  "success": true
-
-}
-
-
+{  "errors": [    {      "code": 1000,      "message": "message"    }  ],  "messages": [    {      "code": 1000,      "message": "message"    }  ],  "result": {    "id": "023e105f4ecef8ad9ca31a8372d0c353",    "description": "Allows local traffic between PIN pads and cash register.",    "forward_locally": true,    "lan_1": {      "lan_id": "lan_id",      "lan_name": "lan_name",      "port_ranges": [        "8080-9000"      ],      "ports": [        1      ],      "subnets": [        "192.0.2.1"      ]    },    "lan_2": {      "lan_id": "lan_id",      "lan_name": "lan_name",      "port_ranges": [        "8080-9000"      ],      "ports": [        1      ],      "subnets": [        "192.0.2.1"      ]    },    "name": "PIN Pad - Cash Register",    "protocols": [      "tcp"    ],    "unidirectional": true  },  "success": true}
 ```
 
 Take note of the `id` parameter, as you will need it to edit or delete network policies.
@@ -265,8 +99,8 @@ The new policy will ensure that traffic between the specified LANs flows locally
 
 ## Edit a policy
 
-* [ Dashboard ](#tab-panel-7362)
-* [ API ](#tab-panel-7363)
+* [ Dashboard ](#tab-panel-7438)
+* [ API ](#tab-panel-7439)
 
 1. Log in to [Cloudflare One](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** \> **Appliances** \> **Profiles**.
@@ -286,142 +120,24 @@ Example:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Magic WAN Write`
 * `Magic Transit Write`
 
 Update Site ACL
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/acls/$ACL_ID" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "description": "<POLICY_DESCRIPTION>",
-
-    "forward_locally": true,
-
-    "lan_1": {
-
-        "lan_id": "<LAN_ID>",
-
-        "lan_name": "<LAN_NAME>",
-
-        "ports": [
-
-            1
-
-        ],
-
-        "subnets": [
-
-            "192.0.2.1"
-
-        ]
-
-    },
-
-    "lan_2": {
-
-        "lan_id": "<LAN_ID>",
-
-        "lan_name": "<LAN_NAME>",
-
-        "ports": [
-
-            1
-
-        ],
-
-        "subnets": [
-
-            "192.0.2.1"
-
-        ]
-
-    },
-
-    "name": "<POLICY_NAME>",
-
-    "protocols": [
-
-        "tcp"
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/acls/$ACL_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "description": "<POLICY_DESCRIPTION>",    "forward_locally": true,    "lan_1": {        "lan_id": "<LAN_ID>",        "lan_name": "<LAN_NAME>",        "ports": [            1        ],        "subnets": [            "192.0.2.1"        ]    },    "lan_2": {        "lan_id": "<LAN_ID>",        "lan_name": "<LAN_NAME>",        "ports": [            1        ],        "subnets": [            "192.0.2.1"        ]    },    "name": "<POLICY_NAME>",    "protocols": [        "tcp"    ]  }'
 ```
 
 ```
-
-{
-
-  "errors": [
-
-    {
-
-      "code": 1000,
-
-      "message": "message"
-
-    }
-
-  ],
-
-  "messages": [
-
-    {
-
-      "code": 1000,
-
-      "message": "message"
-
-    }
-
-  ],
-
-  "result": {
-
-    "id": "023e105f4ecef8ad9ca31a8372d0c353",
-
-    "connector_id": "ac60d3d0435248289d446cedd870bcf4",
-
-    "description": "description",
-
-    "ha_mode": true,
-
-    "location": {
-
-      "lat": "37.6192",
-
-      "lon": "122.3816"
-
-    },
-
-    "name": "site_1",
-
-    "secondary_connector_id": "8d67040d3835dbcf46ce29da440dc482"
-
-  },
-
-  "success": true
-
-}
-
-
+{  "errors": [    {      "code": 1000,      "message": "message"    }  ],  "messages": [    {      "code": 1000,      "message": "message"    }  ],  "result": {    "id": "023e105f4ecef8ad9ca31a8372d0c353",    "connector_id": "ac60d3d0435248289d446cedd870bcf4",    "description": "description",    "ha_mode": true,    "location": {      "lat": "37.6192",      "lon": "122.3816"    },    "name": "site_1",    "secondary_connector_id": "8d67040d3835dbcf46ce29da440dc482"  },  "success": true}
 ```
 
 ## Delete a policy
 
-* [ Dashboard ](#tab-panel-7358)
-* [ API ](#tab-panel-7359)
+* [ Dashboard ](#tab-panel-7434)
+* [ API ](#tab-panel-7435)
 
 1. Log in to [Cloudflare One](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** \> **Appliances** \> **Profiles**.
@@ -442,21 +158,14 @@ Example:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Magic WAN Write`
 * `Magic Transit Write`
 
 Delete Site ACL
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/acls/$ACL_ID" \
-
-  --request DELETE \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/acls/$ACL_ID" \  --request DELETE \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```json

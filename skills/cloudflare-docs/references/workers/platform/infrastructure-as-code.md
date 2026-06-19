@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,10 +29,7 @@ Generally, you'd run this bundling step before applying your Terraform plan or u
 Terminal window
 
 ```
-
 wrangler deploy --dry-run --outdir build
-
-
 ```
 
 When using Wrangler for building and a different method for uploading, make sure to copy all of your config from `wrangler.json` into your Terraform config or API request. This is especially important with `compatibility_date` or flags your script relies on.
@@ -42,77 +39,10 @@ When using Wrangler for building and a different method for uploading, make sure
 In this example, you need a local file named `my-script.mjs` with script content similar to the below examples. Learn more about the [Cloudflare Terraform Provider](https://developers.cloudflare.com/terraform/), and refer to the [Workers script resource example ↗](https://github.com/cloudflare/terraform-provider-cloudflare/blob/main/examples/resources/cloudflare%5Fworkers%5Fscript/resource.tf) for all available resource settings.
 
 ```
-
-variable "account_id" {
-
-  default = "replace_me"
-
-}
-
-
-resource "cloudflare_worker" "my_worker" {
-
-  account_id = var.account_id
-
-  name = "my-worker"
-
-  observability = {
-
-    enabled = true
-
-  }
-
-}
-
-
-resource "cloudflare_worker_version" "my_worker_version" {
-
-  account_id = var.account_id
-
-  worker_id = cloudflare_worker.my_worker.id
-
-  compatibility_date = "2025-02-21" # Set this to today's date
-
-  main_module = "my-script.mjs"
-
-  modules = [
-
-    {
-
-      name = "my-script.mjs"
-
-      content_type = "application/javascript+module"
-
-      # Replacement (version creation) is triggered whenever this file changes
-
-      content_file = "my-script.mjs"
-
-    }
-
-  ]
-
-}
-
-
-resource "cloudflare_workers_deployment" "my_worker_deployment" {
-
-  account_id = var.account_id
-
-  script_name = cloudflare_worker.my_worker.name
-
-  strategy = "percentage"
-
-  versions = [{
-
-    percentage = 100
-
-    version_id = cloudflare_worker_version.my_worker_version.id
-
-  }]
-
-}
-
-
+variable "account_id" {  default = "replace_me"}
+resource "cloudflare_worker" "my_worker" {  account_id = var.account_id  name = "my-worker"  observability = {    enabled = true  }}
+resource "cloudflare_worker_version" "my_worker_version" {  account_id = var.account_id  worker_id = cloudflare_worker.my_worker.id  compatibility_date = "2025-02-21" # Set this to today's date  main_module = "my-script.mjs"  modules = [    {      name = "my-script.mjs"      content_type = "application/javascript+module"      # Replacement (version creation) is triggered whenever this file changes      content_file = "my-script.mjs"    }  ]}
+resource "cloudflare_workers_deployment" "my_worker_deployment" {  account_id = var.account_id  script_name = cloudflare_worker.my_worker.name  strategy = "percentage"  versions = [{    percentage = 100    version_id = cloudflare_worker_version.my_worker_version.id  }]}
 ```
 
 Notice how you do not have to manage all of these resources in Terraform. For example, you could use just the `cloudflare_worker` resource and seamlessly use Wrangler or your own deployment tools for Versions or Deployments.
@@ -128,18 +58,7 @@ Below are examples of each binding type and their required properties:
 Bind to a [KV namespace](https://developers.cloudflare.com/kv/api/) for key-value storage:
 
 ```
-
-bindings = [{
-
-  type = "kv_namespace"
-
-  name = "MY_KV"
-
-  namespace_id = "your-kv-namespace-id"
-
-}]
-
-
+bindings = [{  type = "kv_namespace"  name = "MY_KV"  namespace_id = "your-kv-namespace-id"}]
 ```
 
 **Properties:**
@@ -153,18 +72,7 @@ bindings = [{
 Bind to an [R2 bucket](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/) for object storage:
 
 ```
-
-bindings = [{
-
-  type = "r2_bucket"
-
-  name = "MY_BUCKET"
-
-  bucket_name = "my-bucket-name"
-
-}]
-
-
+bindings = [{  type = "r2_bucket"  name = "MY_BUCKET"  bucket_name = "my-bucket-name"}]
 ```
 
 **Properties:**
@@ -178,18 +86,7 @@ bindings = [{
 Bind to a [D1 database](https://developers.cloudflare.com/d1/worker-api/) for SQL storage:
 
 ```
-
-bindings = [{
-
-  type = "d1"
-
-  name = "DB"
-
-  id = "your-database-id"
-
-}]
-
-
+bindings = [{  type = "d1"  name = "DB"  id = "your-database-id"}]
 ```
 
 **Properties:**
@@ -203,18 +100,7 @@ bindings = [{
 Bind to a [Durable Object](https://developers.cloudflare.com/durable-objects/api/) class:
 
 ```
-
-bindings = [{
-
-  type = "durable_object_namespace"
-
-  name = "MY_DURABLE_OBJECT"
-
-  class_name = "MyDurableObjectClass"
-
-}]
-
-
+bindings = [{  type = "durable_object_namespace"  name = "MY_DURABLE_OBJECT"  class_name = "MyDurableObjectClass"}]
 ```
 
 **Properties:**
@@ -229,18 +115,7 @@ bindings = [{
 Bind to another [Worker](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) for Worker-to-Worker communication:
 
 ```
-
-bindings = [{
-
-  type = "service"
-
-  name = "MY_SERVICE"
-
-  service = "other-worker-name"
-
-}]
-
-
+bindings = [{  type = "service"  name = "MY_SERVICE"  service = "other-worker-name"}]
 ```
 
 **Properties:**
@@ -257,18 +132,7 @@ Bind to a [Queue](https://developers.cloudflare.com/queues/configuration/javascr
 For producing messages:
 
 ```
-
-bindings = [{
-
-  type = "queue"
-
-  name = "MY_QUEUE"
-
-  queue_name = "my-queue"
-
-}]
-
-
+bindings = [{  type = "queue"  name = "MY_QUEUE"  queue_name = "my-queue"}]
 ```
 
 **Properties:**
@@ -284,18 +148,7 @@ For consuming messages, configure your Worker as a consumer in the queue resourc
 Bind to a [Vectorize index](https://developers.cloudflare.com/vectorize/) for vector search:
 
 ```
-
-bindings = [{
-
-  type = "vectorize"
-
-  name = "VECTORIZE_INDEX"
-
-  index_name = "my-index"
-
-}]
-
-
+bindings = [{  type = "vectorize"  name = "VECTORIZE_INDEX"  index_name = "my-index"}]
 ```
 
 **Properties:**
@@ -309,16 +162,7 @@ bindings = [{
 Bind to [Workers AI](https://developers.cloudflare.com/workers-ai/) for AI inference:
 
 ```
-
-bindings = [{
-
-  type = "ai"
-
-  name = "AI"
-
-}]
-
-
+bindings = [{  type = "ai"  name = "AI"}]
 ```
 
 **Properties:**
@@ -331,18 +175,7 @@ bindings = [{
 Bind to a [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) configuration for database connection pooling:
 
 ```
-
-bindings = [{
-
-  type = "hyperdrive"
-
-  name = "HYPERDRIVE"
-
-  id = "your-hyperdrive-config-id"
-
-}]
-
-
+bindings = [{  type = "hyperdrive"  name = "HYPERDRIVE"  id = "your-hyperdrive-config-id"}]
 ```
 
 **Properties:**
@@ -356,18 +189,7 @@ bindings = [{
 Bind to a [VPC Service](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/) for accessing resources in your private network:
 
 ```
-
-bindings = [{
-
-  type = "vpc_service"
-
-  name = "PRIVATE_API"
-
-  service_id = "your-vpc-service-id"
-
-}]
-
-
+bindings = [{  type = "vpc_service"  name = "PRIVATE_API"  service_id = "your-vpc-service-id"}]
 ```
 
 **Properties:**
@@ -383,18 +205,7 @@ You can create the VPC Service with Terraform using the `cloudflare_connectivity
 Bind to an [Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/) dataset:
 
 ```
-
-bindings = [{
-
-  type = "analytics_engine"
-
-  name = "ANALYTICS"
-
-  dataset = "my_dataset"
-
-}]
-
-
+bindings = [{  type = "analytics_engine"  name = "ANALYTICS"  dataset = "my_dataset"}]
 ```
 
 **Properties:**
@@ -408,18 +219,7 @@ bindings = [{
 For plain text environment variables, use the `plain_text` binding type:
 
 ```
-
-bindings = [{
-
-  type = "plain_text"
-
-  name = "MY_VARIABLE"
-
-  text = "my-value"
-
-}]
-
-
+bindings = [{  type = "plain_text"  name = "MY_VARIABLE"  text = "my-value"}]
 ```
 
 **Properties:**
@@ -433,18 +233,7 @@ bindings = [{
 For encrypted secrets, use the `secret_text` binding type:
 
 ```
-
-bindings = [{
-
-  type = "secret_text"
-
-  name = "API_KEY"
-
-  text = var.api_key
-
-}]
-
-
+bindings = [{  type = "secret_text"  name = "API_KEY"  text = var.api_key}]
 ```
 
 **Properties:**
@@ -458,712 +247,67 @@ bindings = [{
 Here's an example combining multiple binding types:
 
 ```
-
-resource "cloudflare_worker_version" "my_worker_version" {
-
-  account_id = var.account_id
-
-  worker_id = cloudflare_worker.my_worker.id
-
-  compatibility_date = "2025-08-06"
-
-  main_module = "worker.js"
-
-
-  modules = [{
-
-    name = "worker.js"
-
-    content_type = "application/javascript+module"
-
-    content_file = "worker.js"
-
-  }]
-
-
-  bindings = [
-
-    {
-
-      type = "kv_namespace"
-
-      name = "MY_KV"
-
-      namespace_id = var.kv_namespace_id
-
-    },
-
-    {
-
-      type = "r2_bucket"
-
-      name = "MY_BUCKET"
-
-      bucket_name = "my-bucket"
-
-    },
-
-    {
-
-      type = "d1"
-
-      name = "DB"
-
-      id = var.d1_database_id
-
-    },
-
-    {
-
-      type = "service"
-
-      name = "AUTH_SERVICE"
-
-      service = "auth-worker"
-
-    },
-
-    {
-
-      type = "plain_text"
-
-      name = "ENVIRONMENT"
-
-      text = "production"
-
-    },
-
-    {
-
-      type = "secret_text"
-
-      name = "API_KEY"
-
-      text = var.api_key
-
-    },
-
-    {
-
-      type = "vpc_service"
-
-      name = "PRIVATE_API"
-
-      service_id = var.vpc_service_id
-
-    }
-
-  ]
-
-}
-
-
+resource "cloudflare_worker_version" "my_worker_version" {  account_id = var.account_id  worker_id = cloudflare_worker.my_worker.id  compatibility_date = "2025-08-06"  main_module = "worker.js"
+  modules = [{    name = "worker.js"    content_type = "application/javascript+module"    content_file = "worker.js"  }]
+  bindings = [    {      type = "kv_namespace"      name = "MY_KV"      namespace_id = var.kv_namespace_id    },    {      type = "r2_bucket"      name = "MY_BUCKET"      bucket_name = "my-bucket"    },    {      type = "d1"      name = "DB"      id = var.d1_database_id    },    {      type = "service"      name = "AUTH_SERVICE"      service = "auth-worker"    },    {      type = "plain_text"      name = "ENVIRONMENT"      text = "production"    },    {      type = "secret_text"      name = "API_KEY"      text = var.api_key    },    {      type = "vpc_service"      name = "PRIVATE_API"      service_id = var.vpc_service_id    }  ]}
 ```
 
 ## Cloudflare API Libraries
 
 This example uses the [cloudflare-typescript ↗](https://github.com/cloudflare/cloudflare-typescript) SDK which provides convenient access to the Cloudflare REST API from server-side JavaScript or TypeScript.
 
-* [  JavaScript ](#tab-panel-11894)
-* [  TypeScript ](#tab-panel-11895)
+* [  JavaScript ](#tab-panel-11911)
+* [  TypeScript ](#tab-panel-11912)
 
 JavaScript
 
 ```
-
 #!/usr/bin/env -S npm run tsn -T
-
-
-/**
-
- * Create and deploy a Worker
-
- *
-
- * Docs:
-
- * - https://developers.cloudflare.com/workers/configuration/versions-and-deployments/
-
- * - https://developers.cloudflare.com/workers/platform/infrastructure-as-code/
-
- *
-
- * Prerequisites:
-
- * 1. Generate an API token: https://developers.cloudflare.com/fundamentals/api/get-started/create-token/
-
- * 2. Find your account ID: https://developers.cloudflare.com/fundamentals/setup/find-account-and-zone-ids/
-
- * 3. Find your workers.dev subdomain: https://developers.cloudflare.com/workers/configuration/routing/workers-dev/
-
- *
-
- * Environment variables:
-
- *   - CLOUDFLARE_API_TOKEN (required)
-
- *   - CLOUDFLARE_ACCOUNT_ID (required)
-
- *   - CLOUDFLARE_SUBDOMAIN (optional)
-
- *
-
- * Usage:
-
- *   Run this script to deploy a simple "Hello World" Worker.
-
- *   Access it at: my-hello-world-worker.$subdomain.workers.dev
-
- */
-
-
+/** * Create and deploy a Worker * * Docs: * - https://developers.cloudflare.com/workers/configuration/versions-and-deployments/ * - https://developers.cloudflare.com/workers/platform/infrastructure-as-code/ * * Prerequisites: * 1. Generate an API token: https://developers.cloudflare.com/fundamentals/api/get-started/create-token/ * 2. Find your account ID: https://developers.cloudflare.com/fundamentals/setup/find-account-and-zone-ids/ * 3. Find your workers.dev subdomain: https://developers.cloudflare.com/workers/configuration/routing/workers-dev/ * * Environment variables: *   - CLOUDFLARE_API_TOKEN (required) *   - CLOUDFLARE_ACCOUNT_ID (required) *   - CLOUDFLARE_SUBDOMAIN (optional) * * Usage: *   Run this script to deploy a simple "Hello World" Worker. *   Access it at: my-hello-world-worker.$subdomain.workers.dev */
 import { exit } from "node:process";
-
-
 import Cloudflare from "cloudflare";
-
-
-const WORKER_NAME = "my-hello-world-worker";
-
-const SCRIPT_FILENAME = `${WORKER_NAME}.mjs`;
-
-
-function loadConfig() {
-
-  const apiToken = process.env["CLOUDFLARE_API_TOKEN"];
-
-  if (!apiToken) {
-
-    throw new Error(
-
-      "Missing required environment variable: CLOUDFLARE_API_TOKEN",
-
-    );
-
-  }
-
-
-  const accountId = process.env["CLOUDFLARE_ACCOUNT_ID"];
-
-  if (!accountId) {
-
-    throw new Error(
-
-      "Missing required environment variable: CLOUDFLARE_ACCOUNT_ID",
-
-    );
-
-  }
-
-
+const WORKER_NAME = "my-hello-world-worker";const SCRIPT_FILENAME = `${WORKER_NAME}.mjs`;
+function loadConfig() {  const apiToken = process.env["CLOUDFLARE_API_TOKEN"];  if (!apiToken) {    throw new Error(      "Missing required environment variable: CLOUDFLARE_API_TOKEN",    );  }
+  const accountId = process.env["CLOUDFLARE_ACCOUNT_ID"];  if (!accountId) {    throw new Error(      "Missing required environment variable: CLOUDFLARE_ACCOUNT_ID",    );  }
   const subdomain = process.env["CLOUDFLARE_SUBDOMAIN"];
-
-
-  return {
-
-    apiToken,
-
-    accountId,
-
-    subdomain: subdomain || undefined,
-
-    workerName: WORKER_NAME,
-
-  };
-
-}
-
-
-const config = loadConfig();
-
-const client = new Cloudflare({
-
-  apiToken: config.apiToken,
-
-});
-
-
-async function main() {
-
-  try {
-
-    console.log("🚀 Starting Worker creation and deployment...");
-
-
-    const scriptContent = `
-
-      export default {
-
-        async fetch(request, env, ctx) {
-
-          return new Response(env.MESSAGE, { status: 200 });
-
-        },
-
-      }`.trim();
-
-
-    let worker;
-
-    try {
-
-      worker = await client.workers.beta.workers.get(config.workerName, {
-
-        account_id: config.accountId,
-
-      });
-
-      console.log(`♻️  Worker ${config.workerName} already exists. Using it.`);
-
-    } catch (error) {
-
-      if (!(error instanceof Cloudflare.NotFoundError)) {
-
-        throw error;
-
-      }
-
-      console.log(`✏️  Creating Worker ${config.workerName}...`);
-
-      worker = await client.workers.beta.workers.create({
-
-        account_id: config.accountId,
-
-        name: config.workerName,
-
-        subdomain: {
-
-          enabled: config.subdomain !== undefined,
-
-        },
-
-        observability: {
-
-          enabled: true,
-
-        },
-
-      });
-
-    }
-
-
-    console.log(`⚙️  Worker id: ${worker.id}`);
-
-    console.log("✏️  Creating Worker version...");
-
-
-    // Create the first version of the Worker
-
-    const version = await client.workers.beta.workers.versions.create(
-
-      worker.id,
-
-      {
-
-        account_id: config.accountId,
-
-        main_module: SCRIPT_FILENAME,
-
-        compatibility_date: new Date().toISOString().split("T")[0],
-
-        bindings: [
-
-          {
-
-            type: "plain_text",
-
-            name: "MESSAGE",
-
-            text: "Hello World!",
-
-          },
-
-        ],
-
-        modules: [
-
-          {
-
-            name: SCRIPT_FILENAME,
-
-            content_type: "application/javascript+module",
-
-            content_base64: Buffer.from(scriptContent).toString("base64"),
-
-          },
-
-        ],
-
-      },
-
-    );
-
-
-    console.log(`⚙️  Version id: ${version.id}`);
-
-    console.log("🚚 Creating Worker deployment...");
-
-
-    // Create a deployment and point all traffic to the version we created
-
-    await client.workers.scripts.deployments.create(config.workerName, {
-
-      account_id: config.accountId,
-
-      strategy: "percentage",
-
-      versions: [
-
-        {
-
-          percentage: 100,
-
-          version_id: version.id,
-
-        },
-
-      ],
-
-    });
-
-
+  return {    apiToken,    accountId,    subdomain: subdomain || undefined,    workerName: WORKER_NAME,  };}
+const config = loadConfig();const client = new Cloudflare({  apiToken: config.apiToken,});
+async function main() {  try {    console.log("🚀 Starting Worker creation and deployment...");
+    const scriptContent = `      export default {        async fetch(request, env, ctx) {          return new Response(env.MESSAGE, { status: 200 });        },      }`.trim();
+    let worker;    try {      worker = await client.workers.beta.workers.get(config.workerName, {        account_id: config.accountId,      });      console.log(`♻️  Worker ${config.workerName} already exists. Using it.`);    } catch (error) {      if (!(error instanceof Cloudflare.NotFoundError)) {        throw error;      }      console.log(`✏️  Creating Worker ${config.workerName}...`);      worker = await client.workers.beta.workers.create({        account_id: config.accountId,        name: config.workerName,        subdomain: {          enabled: config.subdomain !== undefined,        },        observability: {          enabled: true,        },      });    }
+    console.log(`⚙️  Worker id: ${worker.id}`);    console.log("✏️  Creating Worker version...");
+    // Create the first version of the Worker    const version = await client.workers.beta.workers.versions.create(      worker.id,      {        account_id: config.accountId,        main_module: SCRIPT_FILENAME,        compatibility_date: new Date().toISOString().split("T")[0],        bindings: [          {            type: "plain_text",            name: "MESSAGE",            text: "Hello World!",          },        ],        modules: [          {            name: SCRIPT_FILENAME,            content_type: "application/javascript+module",            content_base64: Buffer.from(scriptContent).toString("base64"),          },        ],      },    );
+    console.log(`⚙️  Version id: ${version.id}`);    console.log("🚚 Creating Worker deployment...");
+    // Create a deployment and point all traffic to the version we created    await client.workers.scripts.deployments.create(config.workerName, {      account_id: config.accountId,      strategy: "percentage",      versions: [        {          percentage: 100,          version_id: version.id,        },      ],    });
     console.log("✅ Deployment successful!");
-
-
-    if (config.subdomain) {
-
-      console.log(`
-
-🌍 Your Worker is live!
-
-📍 URL: https://${config.workerName}.${config.subdomain}.workers.dev/
-
-`);
-
-    } else {
-
-      console.log(`
-
-⚠️  Set up a route, custom domain, or workers.dev subdomain to access your Worker.
-
-Add CLOUDFLARE_SUBDOMAIN to your environment variables to set one up automatically.
-
-`);
-
-    }
-
-  } catch (error) {
-
-    console.error("❌ Deployment failed:", error);
-
-    exit(1);
-
-  }
-
-}
-
-
+    if (config.subdomain) {      console.log(`🌍 Your Worker is live!📍 URL: https://${config.workerName}.${config.subdomain}.workers.dev/`);    } else {      console.log(`⚠️  Set up a route, custom domain, or workers.dev subdomain to access your Worker.Add CLOUDFLARE_SUBDOMAIN to your environment variables to set one up automatically.`);    }  } catch (error) {    console.error("❌ Deployment failed:", error);    exit(1);  }}
 main();
-
-
 ```
 
 TypeScript
 
 ```
-
 #!/usr/bin/env -S npm run tsn -T
-
-
-/**
-
- * Create and deploy a Worker
-
- *
-
- * Docs:
-
- * - https://developers.cloudflare.com/workers/configuration/versions-and-deployments/
-
- * - https://developers.cloudflare.com/workers/platform/infrastructure-as-code/
-
- *
-
- * Prerequisites:
-
- * 1. Generate an API token: https://developers.cloudflare.com/fundamentals/api/get-started/create-token/
-
- * 2. Find your account ID: https://developers.cloudflare.com/fundamentals/setup/find-account-and-zone-ids/
-
- * 3. Find your workers.dev subdomain: https://developers.cloudflare.com/workers/configuration/routing/workers-dev/
-
- *
-
- * Environment variables:
-
- *   - CLOUDFLARE_API_TOKEN (required)
-
- *   - CLOUDFLARE_ACCOUNT_ID (required)
-
- *   - CLOUDFLARE_SUBDOMAIN (optional)
-
- *
-
- * Usage:
-
- *   Run this script to deploy a simple "Hello World" Worker.
-
- *   Access it at: my-hello-world-worker.$subdomain.workers.dev
-
- */
-
-
+/** * Create and deploy a Worker * * Docs: * - https://developers.cloudflare.com/workers/configuration/versions-and-deployments/ * - https://developers.cloudflare.com/workers/platform/infrastructure-as-code/ * * Prerequisites: * 1. Generate an API token: https://developers.cloudflare.com/fundamentals/api/get-started/create-token/ * 2. Find your account ID: https://developers.cloudflare.com/fundamentals/setup/find-account-and-zone-ids/ * 3. Find your workers.dev subdomain: https://developers.cloudflare.com/workers/configuration/routing/workers-dev/ * * Environment variables: *   - CLOUDFLARE_API_TOKEN (required) *   - CLOUDFLARE_ACCOUNT_ID (required) *   - CLOUDFLARE_SUBDOMAIN (optional) * * Usage: *   Run this script to deploy a simple "Hello World" Worker. *   Access it at: my-hello-world-worker.$subdomain.workers.dev */
 import { exit } from 'node:process';
-
-
 import Cloudflare from 'cloudflare';
-
-
-interface Config {
-
-  apiToken: string;
-
-  accountId: string;
-
-  subdomain: string | undefined;
-
-  workerName: string;
-
-}
-
-
-const WORKER_NAME = 'my-hello-world-worker';
-
-const SCRIPT_FILENAME = `${WORKER_NAME}.mjs`;
-
-
-function loadConfig(): Config {
-
-  const apiToken = process.env['CLOUDFLARE_API_TOKEN'];
-
-  if (!apiToken) {
-
-    throw new Error('Missing required environment variable: CLOUDFLARE_API_TOKEN');
-
-  }
-
-
-  const accountId = process.env['CLOUDFLARE_ACCOUNT_ID'];
-
-  if (!accountId) {
-
-    throw new Error('Missing required environment variable: CLOUDFLARE_ACCOUNT_ID');
-
-  }
-
-
+interface Config {  apiToken: string;  accountId: string;  subdomain: string | undefined;  workerName: string;}
+const WORKER_NAME = 'my-hello-world-worker';const SCRIPT_FILENAME = `${WORKER_NAME}.mjs`;
+function loadConfig(): Config {  const apiToken = process.env['CLOUDFLARE_API_TOKEN'];  if (!apiToken) {    throw new Error('Missing required environment variable: CLOUDFLARE_API_TOKEN');  }
+  const accountId = process.env['CLOUDFLARE_ACCOUNT_ID'];  if (!accountId) {    throw new Error('Missing required environment variable: CLOUDFLARE_ACCOUNT_ID');  }
   const subdomain = process.env['CLOUDFLARE_SUBDOMAIN'];
-
-
-  return {
-
-    apiToken,
-
-    accountId,
-
-    subdomain: subdomain || undefined,
-
-    workerName: WORKER_NAME,
-
-  };
-
-}
-
-
-const config = loadConfig();
-
-const client = new Cloudflare({
-
-  apiToken: config.apiToken,
-
-});
-
-
-async function main(): Promise<void> {
-
-  try {
-
-    console.log('🚀 Starting Worker creation and deployment...');
-
-
-    const scriptContent = `
-
-      export default {
-
-        async fetch(request, env, ctx) {
-
-          return new Response(env.MESSAGE, { status: 200 });
-
-        },
-
-      }`.trim();
-
-
-    let worker;
-
-    try {
-
-      worker = await client.workers.beta.workers.get(config.workerName, {
-
-        account_id: config.accountId,
-
-      });
-
-      console.log(`♻️  Worker ${config.workerName} already exists. Using it.`);
-
-    } catch (error) {
-
-      if (!(error instanceof Cloudflare.NotFoundError)) { throw error; }
-
-      console.log(`✏️  Creating Worker ${config.workerName}...`);
-
-      worker = await client.workers.beta.workers.create({
-
-        account_id: config.accountId,
-
-        name: config.workerName,
-
-        subdomain: {
-
-          enabled: config.subdomain !== undefined,
-
-        },
-
-        observability: {
-
-          enabled: true,
-
-        },
-
-      });
-
-    }
-
-
-    console.log(`⚙️  Worker id: ${worker.id}`);
-
-    console.log('✏️  Creating Worker version...');
-
-
-    // Create the first version of the Worker
-
-    const version = await client.workers.beta.workers.versions.create(worker.id, {
-
-      account_id: config.accountId,
-
-      main_module: SCRIPT_FILENAME,
-
-      compatibility_date: new Date().toISOString().split('T')[0]!,
-
-      bindings: [
-
-        {
-
-          type: 'plain_text',
-
-          name: 'MESSAGE',
-
-          text: 'Hello World!',
-
-        },
-
-      ],
-
-      modules: [
-
-        {
-
-          name: SCRIPT_FILENAME,
-
-          content_type: 'application/javascript+module',
-
-          content_base64: Buffer.from(scriptContent).toString('base64'),
-
-        },
-
-      ],
-
-    });
-
-
-    console.log(`⚙️  Version id: ${version.id}`);
-
-    console.log('🚚 Creating Worker deployment...');
-
-
-    // Create a deployment and point all traffic to the version we created
-
-    await client.workers.scripts.deployments.create(config.workerName, {
-
-      account_id: config.accountId,
-
-      strategy: 'percentage',
-
-      versions: [
-
-        {
-
-            percentage: 100,
-
-            version_id: version.id,
-
-          },
-
-        ],
-
-    });
-
-
+  return {    apiToken,    accountId,    subdomain: subdomain || undefined,    workerName: WORKER_NAME,  };}
+const config = loadConfig();const client = new Cloudflare({  apiToken: config.apiToken,});
+async function main(): Promise<void> {  try {    console.log('🚀 Starting Worker creation and deployment...');
+    const scriptContent = `      export default {        async fetch(request, env, ctx) {          return new Response(env.MESSAGE, { status: 200 });        },      }`.trim();
+    let worker;    try {      worker = await client.workers.beta.workers.get(config.workerName, {        account_id: config.accountId,      });      console.log(`♻️  Worker ${config.workerName} already exists. Using it.`);    } catch (error) {      if (!(error instanceof Cloudflare.NotFoundError)) { throw error; }      console.log(`✏️  Creating Worker ${config.workerName}...`);      worker = await client.workers.beta.workers.create({        account_id: config.accountId,        name: config.workerName,        subdomain: {          enabled: config.subdomain !== undefined,        },        observability: {          enabled: true,        },      });    }
+    console.log(`⚙️  Worker id: ${worker.id}`);    console.log('✏️  Creating Worker version...');
+    // Create the first version of the Worker    const version = await client.workers.beta.workers.versions.create(worker.id, {      account_id: config.accountId,      main_module: SCRIPT_FILENAME,      compatibility_date: new Date().toISOString().split('T')[0]!,      bindings: [        {          type: 'plain_text',          name: 'MESSAGE',          text: 'Hello World!',        },      ],      modules: [        {          name: SCRIPT_FILENAME,          content_type: 'application/javascript+module',          content_base64: Buffer.from(scriptContent).toString('base64'),        },      ],    });
+    console.log(`⚙️  Version id: ${version.id}`);    console.log('🚚 Creating Worker deployment...');
+    // Create a deployment and point all traffic to the version we created    await client.workers.scripts.deployments.create(config.workerName, {      account_id: config.accountId,      strategy: 'percentage',      versions: [        {            percentage: 100,            version_id: version.id,          },        ],    });
     console.log('✅ Deployment successful!');
-
-
-    if (config.subdomain) {
-
-      console.log(`
-
-🌍 Your Worker is live!
-
-📍 URL: https://${config.workerName}.${config.subdomain}.workers.dev/
-
-`);
-
-    } else {
-
-      console.log(`
-
-⚠️  Set up a route, custom domain, or workers.dev subdomain to access your Worker.
-
-Add CLOUDFLARE_SUBDOMAIN to your environment variables to set one up automatically.
-
-`);
-
-    }
-
-  } catch (error) {
-
-    console.error('❌ Deployment failed:', error);
-
-    exit(1);
-
-  }
-
-}
-
-
+    if (config.subdomain) {      console.log(`🌍 Your Worker is live!📍 URL: https://${config.workerName}.${config.subdomain}.workers.dev/`);    } else {      console.log(`⚠️  Set up a route, custom domain, or workers.dev subdomain to access your Worker.Add CLOUDFLARE_SUBDOMAIN to your environment variables to set one up automatically.`);    }  } catch (error) {    console.error('❌ Deployment failed:', error);    exit(1);  }}
 main();
-
-
 ```
 
 ## Cloudflare REST API
@@ -1174,158 +318,21 @@ Warning
 
 This API is in beta. See the multipart/form-data API below for the stable API.
 
-* [ ES Module ](#tab-panel-11890)
-* [ Python ](#tab-panel-11891)
+* [ ES Module ](#tab-panel-11907)
+* [ Python ](#tab-panel-11908)
 
 Terminal window
 
 ```
-
-account_id="replace_me"
-
-api_token="replace_me"
-
-worker_name="my-hello-world-worker"
-
-
-worker_script_base64=$(echo '
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    return new Response(env.MESSAGE, { status: 200 });
-
-  }
-
-};
-
-' | base64)
-
-
-# Note the below will fail if the worker already exists!
-
-# Here's how to delete the Worker
-
-#
-
-# worker_id="replace-me"
-
-# curl "https://api.cloudflare.com/client/v4/accounts/$account_id/workers/workers/$worker_id" \
-
-#   -X DELETE \
-
-#   -H "Authorization: Bearer $api_token"
-
-
-# Create the Worker
-
-worker_id=$(curl "https://api.cloudflare.com/client/v4/accounts/$account_id/workers/workers" \
-
-  -X POST \
-
-  -H "Authorization: Bearer $api_token" \
-
-  -H "Content-Type: application/json" \
-
-  -d '{
-
-    "name": "'$worker_name'"
-
-  }' \
-
-  | jq -r '.result.id')
-
-
+account_id="replace_me"api_token="replace_me"worker_name="my-hello-world-worker"
+worker_script_base64=$(echo 'export default {  async fetch(request, env, ctx) {    return new Response(env.MESSAGE, { status: 200 });  }};' | base64)
+# Note the below will fail if the worker already exists!# Here's how to delete the Worker## worker_id="replace-me"# curl "https://api.cloudflare.com/client/v4/accounts/$account_id/workers/workers/$worker_id" \#   -X DELETE \#   -H "Authorization: Bearer $api_token"
+# Create the Workerworker_id=$(curl "https://api.cloudflare.com/client/v4/accounts/$account_id/workers/workers" \  -X POST \  -H "Authorization: Bearer $api_token" \  -H "Content-Type: application/json" \  -d '{    "name": "'$worker_name'"  }' \  | jq -r '.result.id')
 echo "\nWorker ID: $worker_id\n"
-
-
-# Upload the Worker's first version
-
-version_id=$(curl "https://api.cloudflare.com/client/v4/accounts/$account_id/workers/workers/$worker_id/versions" \
-
-  -X POST \
-
-  -H "Authorization: Bearer $api_token" \
-
-  -H "Content-Type: application/json" \
-
-  -d '{
-
-    "compatibility_date": "2025-08-06",
-
-    "main_module": "'$worker_name'.mjs",
-
-    "modules": [
-
-      {
-
-        "name": "'$worker_name'.mjs",
-
-        "content_type": "application/javascript+module",
-
-        "content_base64": "'$worker_script_base64'"
-
-      }
-
-    ],
-
-    "bindings": [
-
-      {
-
-        "type": "plain_text",
-
-        "name": "MESSAGE",
-
-        "text": "Hello World!"
-
-      }
-
-    ]
-
-  }' \
-
-  | jq -r '.result.id')
-
-
+# Upload the Worker's first versionversion_id=$(curl "https://api.cloudflare.com/client/v4/accounts/$account_id/workers/workers/$worker_id/versions" \  -X POST \  -H "Authorization: Bearer $api_token" \  -H "Content-Type: application/json" \  -d '{    "compatibility_date": "2025-08-06",    "main_module": "'$worker_name'.mjs",    "modules": [      {        "name": "'$worker_name'.mjs",        "content_type": "application/javascript+module",        "content_base64": "'$worker_script_base64'"      }    ],    "bindings": [      {        "type": "plain_text",        "name": "MESSAGE",        "text": "Hello World!"      }    ]  }' \  | jq -r '.result.id')
 echo "\nVersion ID: $version_id\n"
-
-
-# Create a deployment for the Worker
-
-deployment_id=$(curl "https://api.cloudflare.com/client/v4/accounts/$account_id/workers/scripts/$worker_name/deployments" \
-
-  -X POST \
-
-  -H "Authorization: Bearer $api_token" \
-
-  -H "Content-Type: application/json" \
-
-  -d '{
-
-    "strategy": "percentage",
-
-    "versions": [
-
-      {
-
-        "percentage": 100,
-
-        "version_id": "'$version_id'"
-
-      }
-
-    ]
-
-  }' \
-
-  | jq -r '.result.id')
-
-
+# Create a deployment for the Workerdeployment_id=$(curl "https://api.cloudflare.com/client/v4/accounts/$account_id/workers/scripts/$worker_name/deployments" \  -X POST \  -H "Authorization: Bearer $api_token" \  -H "Content-Type: application/json" \  -d '{    "strategy": "percentage",    "versions": [      {        "percentage": 100,        "version_id": "'$version_id'"      }    ]  }' \  | jq -r '.result.id')
 echo "\nDeployment ID: $deployment_id\n"
-
-
 ```
 
 [Python Workers](https://developers.cloudflare.com/workers/languages/python/) have their own special `text/x-python` content type and `python_workers` compatibility flag.
@@ -1333,225 +340,31 @@ echo "\nDeployment ID: $deployment_id\n"
 Terminal window
 
 ```
-
-account_id="replace_me"
-
-api_token="replace_me"
-
-worker_name="my-hello-world-worker"
-
-
-worker_script_base64=$(echo '
-
-from workers import WorkerEntrypoint, Response
-
-
-class Default(WorkerEntrypoint):
-
-    async def fetch(self, request):
-
-        return Response(self.env.MESSAGE)
-
-' | base64)
-
-
-# Note the below will fail if the worker already exists!
-
-# Here's how to delete the Worker
-
-#
-
-# worker_id="replace-me"
-
-# curl "https://api.cloudflare.com/client/v4/accounts/$account_id/workers/workers/$worker_id" \
-
-#   -X DELETE \
-
-#   -H "Authorization: Bearer $api_token"
-
-
-# Create the Worker
-
-worker_id=$(curl "https://api.cloudflare.com/client/v4/accounts/$account_id/workers/workers" \
-
-  -X POST \
-
-  -H "Authorization: Bearer $api_token" \
-
-  -H "Content-Type: application/json" \
-
-  -d '{
-
-    "name": "'$worker_name'"
-
-  }' \
-
-  | jq -r '.result.id')
-
-
+account_id="replace_me"api_token="replace_me"worker_name="my-hello-world-worker"
+worker_script_base64=$(echo 'from workers import WorkerEntrypoint, Response
+class Default(WorkerEntrypoint):    async def fetch(self, request):        return Response(self.env.MESSAGE)' | base64)
+# Note the below will fail if the worker already exists!# Here's how to delete the Worker## worker_id="replace-me"# curl "https://api.cloudflare.com/client/v4/accounts/$account_id/workers/workers/$worker_id" \#   -X DELETE \#   -H "Authorization: Bearer $api_token"
+# Create the Workerworker_id=$(curl "https://api.cloudflare.com/client/v4/accounts/$account_id/workers/workers" \  -X POST \  -H "Authorization: Bearer $api_token" \  -H "Content-Type: application/json" \  -d '{    "name": "'$worker_name'"  }' \  | jq -r '.result.id')
 echo "\nWorker ID: $worker_id\n"
-
-
-# Upload the Worker's first version
-
-version_id=$(curl "https://api.cloudflare.com/client/v4/accounts/$account_id/workers/workers/$worker_id/versions" \
-
-  -X POST \
-
-  -H "Authorization: Bearer $api_token" \
-
-  -H "Content-Type: application/json" \
-
-  -d '{
-
-    "compatibility_date": "2025-08-06",
-
-    "compatibility_flags": [
-
-      "python_workers"
-
-    ],
-
-    "main_module": "'$worker_name'.py",
-
-    "modules": [
-
-      {
-
-        "name": "'$worker_name'.py",
-
-        "content_type": "text/x-python",
-
-        "content_base64": "'$worker_script_base64'"
-
-      }
-
-    ],
-
-    "bindings": [
-
-      {
-
-        "type": "plain_text",
-
-        "name": "MESSAGE",
-
-        "text": "Hello World!"
-
-      }
-
-    ]
-
-  }' \
-
-  | jq -r '.result.id')
-
-
+# Upload the Worker's first versionversion_id=$(curl "https://api.cloudflare.com/client/v4/accounts/$account_id/workers/workers/$worker_id/versions" \  -X POST \  -H "Authorization: Bearer $api_token" \  -H "Content-Type: application/json" \  -d '{    "compatibility_date": "2025-08-06",    "compatibility_flags": [      "python_workers"    ],    "main_module": "'$worker_name'.py",    "modules": [      {        "name": "'$worker_name'.py",        "content_type": "text/x-python",        "content_base64": "'$worker_script_base64'"      }    ],    "bindings": [      {        "type": "plain_text",        "name": "MESSAGE",        "text": "Hello World!"      }    ]  }' \  | jq -r '.result.id')
 echo "\nVersion ID: $version_id\n"
-
-
-# Create a deployment for the Worker
-
-deployment_id=$(curl "https://api.cloudflare.com/client/v4/accounts/$account_id/workers/scripts/$worker_name/deployments" \
-
-  -X POST \
-
-  -H "Authorization: Bearer $api_token" \
-
-  -H "Content-Type: application/json" \
-
-  -d '{
-
-    "strategy": "percentage",
-
-    "versions": [
-
-      {
-
-        "percentage": 100,
-
-        "version_id": "'$version_id'"
-
-      }
-
-    ]
-
-  }' \
-
-  | jq -r '.result.id')
-
-
+# Create a deployment for the Workerdeployment_id=$(curl "https://api.cloudflare.com/client/v4/accounts/$account_id/workers/scripts/$worker_name/deployments" \  -X POST \  -H "Authorization: Bearer $api_token" \  -H "Content-Type: application/json" \  -d '{    "strategy": "percentage",    "versions": [      {        "percentage": 100,        "version_id": "'$version_id'"      }    ]  }' \  | jq -r '.result.id')
 echo "\nDeployment ID: $deployment_id\n"
-
-
 ```
 
 ### multipart/form-data upload API
 
 This API uses [multipart/form-data ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/POST) to upload a Worker and will implicitly create a version and deployment. The above API is recommended for direct management of versions and deployments.
 
-* [ Workers ](#tab-panel-11892)
-* [ Workers for Platforms ](#tab-panel-11893)
+* [ Workers ](#tab-panel-11909)
+* [ Workers for Platforms ](#tab-panel-11910)
 
 Terminal window
 
 ```
-
-account_id="replace_me"
-
-api_token="replace_me"
-
-worker_name="my-hello-world-script"
-
-
-script_content='export default {
-
-  async fetch(request, env, ctx) {
-
-    return new Response(env.MESSAGE, { status: 200 });
-
-  }
-
-};'
-
-
-# Upload the Worker
-
-curl "https://api.cloudflare.com/client/v4/accounts/$account_id/workers/scripts/$worker_name" \
-
-  -X PUT \
-
-  -H "Authorization: Bearer $api_token" \
-
-  -F "metadata={
-
-    'main_module': '"$worker_name".mjs',
-
-    'bindings': [
-
-      {
-
-        'type': 'plain_text',
-
-        'name': 'MESSAGE',
-
-        'text': 'Hello World!'
-
-      }
-
-    ],
-
-    'compatibility_date': '$today'
-
-  };type=application/json" \
-
-  -F "$worker_name.mjs=@-;filename=$worker_name.mjs;type=application/javascript+module" <<EOF
-
-$script_content
-
-EOF
-
-
+account_id="replace_me"api_token="replace_me"worker_name="my-hello-world-script"
+script_content='export default {  async fetch(request, env, ctx) {    return new Response(env.MESSAGE, { status: 200 });  }};'
+# Upload the Workercurl "https://api.cloudflare.com/client/v4/accounts/$account_id/workers/scripts/$worker_name" \  -X PUT \  -H "Authorization: Bearer $api_token" \  -F "metadata={    'main_module': '"$worker_name".mjs',    'bindings': [      {        'type': 'plain_text',        'name': 'MESSAGE',        'text': 'Hello World!'      }    ],    'compatibility_date': '$today'  };type=application/json" \  -F "$worker_name.mjs=@-;filename=$worker_name.mjs;type=application/javascript+module" <<EOF$script_contentEOF
 ```
 
 For [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms), you can upload a [User Worker](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#user-workers) to a [dispatch namespace](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#dispatch-namespace). Note the [API endpoint](https://developers.cloudflare.com/api/resources/workers%5Ffor%5Fplatforms/subresources/dispatch/subresources/namespaces/subresources/scripts/methods/update/) is on `/workers/dispatch/namespaces/$DISPATCH_NAMESPACE/scripts/$SCRIPT_NAME`.
@@ -1559,81 +372,10 @@ For [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-pla
 Terminal window
 
 ```
-
-account_id="replace_me"
-
-api_token="replace_me"
-
-dispatch_namespace="replace_me"
-
-worker_name="my-hello-world-script"
-
-
-script_content='export default {
-
-  async fetch(request, env, ctx) {
-
-    return new Response(env.MESSAGE, { status: 200 });
-
-  }
-
-};'
-
-
-# Create a dispatch namespace
-
-curl https://api.cloudflare.com/client/v4/accounts/$account_id/workers/dispatch/namespaces \
-
-  -X POST \
-
-  -H 'Content-Type: application/json' \
-
-  -H "Authorization: Bearer $api_token" \
-
-  -d '{
-
-    "name": "'$dispatch_namespace'"
-
-  }'
-
-
-# Upload the Worker
-
-curl "https://api.cloudflare.com/client/v4/accounts/$account_id/workers/dispatch/namespaces/$dispatch_namespace/scripts/$worker_name" \
-
-  -X PUT \
-
-  -H "Authorization: Bearer $api_token" \
-
-  -F "metadata={
-
-    'main_module': '"$worker_name".mjs',
-
-    'bindings': [
-
-      {
-
-        'type': 'plain_text',
-
-        'name': 'MESSAGE',
-
-        'text': 'Hello World!'
-
-      }
-
-    ],
-
-    'compatibility_date': '$today'
-
-  };type=application/json" \
-
-  -F "$worker_name.mjs=@-;filename=$worker_name.mjs;type=application/javascript+module" <<EOF
-
-$script_content
-
-EOF
-
-
+account_id="replace_me"api_token="replace_me"dispatch_namespace="replace_me"worker_name="my-hello-world-script"
+script_content='export default {  async fetch(request, env, ctx) {    return new Response(env.MESSAGE, { status: 200 });  }};'
+# Create a dispatch namespacecurl https://api.cloudflare.com/client/v4/accounts/$account_id/workers/dispatch/namespaces \  -X POST \  -H 'Content-Type: application/json' \  -H "Authorization: Bearer $api_token" \  -d '{    "name": "'$dispatch_namespace'"  }'
+# Upload the Workercurl "https://api.cloudflare.com/client/v4/accounts/$account_id/workers/dispatch/namespaces/$dispatch_namespace/scripts/$worker_name" \  -X PUT \  -H "Authorization: Bearer $api_token" \  -F "metadata={    'main_module': '"$worker_name".mjs',    'bindings': [      {        'type': 'plain_text',        'name': 'MESSAGE',        'text': 'Hello World!'      }    ],    'compatibility_date': '$today'  };type=application/json" \  -F "$worker_name.mjs=@-;filename=$worker_name.mjs;type=application/javascript+module" <<EOF$script_contentEOF
 ```
 
 ### Python Workers
@@ -1643,55 +385,8 @@ EOF
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/<account_id>/workers/scripts/my-hello-world-script \
-
-  -X PUT \
-
-  -H 'Authorization: Bearer <api_token>' \
-
-  -F 'metadata={
-
-        "main_module": "my-hello-world-script.py",
-
-        "bindings": [
-
-          {
-
-            "type": "plain_text",
-
-            "name": "MESSAGE",
-
-            "text": "Hello World!"
-
-          }
-
-        ],
-
-        "compatibility_date": "$today",
-
-        "compatibility_flags": [
-
-          "python_workers"
-
-        ]
-
-      };type=application/json' \
-
-  -F 'my-hello-world-script.py=@-;filename=my-hello-world-script.py;type=text/x-python' <<EOF
-
-from workers import WorkerEntrypoint, Response
-
-
-class Default(WorkerEntrypoint):
-
-    async def fetch(self, request):
-
-        return Response(self.env.MESSAGE)
-
-EOF
-
-
+curl https://api.cloudflare.com/client/v4/accounts/<account_id>/workers/scripts/my-hello-world-script \  -X PUT \  -H 'Authorization: Bearer <api_token>' \  -F 'metadata={        "main_module": "my-hello-world-script.py",        "bindings": [          {            "type": "plain_text",            "name": "MESSAGE",            "text": "Hello World!"          }        ],        "compatibility_date": "$today",        "compatibility_flags": [          "python_workers"        ]      };type=application/json' \  -F 'my-hello-world-script.py=@-;filename=my-hello-world-script.py;type=text/x-python' <<EOFfrom workers import WorkerEntrypoint, Response
+class Default(WorkerEntrypoint):    async def fetch(self, request):        return Response(self.env.MESSAGE)EOF
 ```
 
 ## Considerations with Durable Objects
@@ -1699,58 +394,9 @@ EOF
 [Durable Object](https://developers.cloudflare.com/durable-objects/) migrations are applied with deployments. This means you can't bind to a Durable Object in a Version if a deployment doesn't exist i.e. migrations haven't been applied. For example, running this in Terraform will fail the first time the plan is applied:
 
 ```
-
-resource "cloudflare_worker" "my_worker" {
-
-  account_id = var.account_id
-
-  name = "my-worker"
-
-}
-
-
-resource "cloudflare_worker_version" "my_worker_version" {
-
-  account_id = var.account_id
-
-  worker_id = cloudflare_worker.my_worker.id
-
-  bindings = [
-
-    {
-
-      type = "durable_object_namespace"
-
-      name = "my_durable_object"
-
-      class_name = "MyDurableObjectClass"
-
-    }
-
-  ]
-
-  migrations = {
-
-    new_sqlite_classes = [
-
-      "MyDurableObjectClass"
-
-    ]
-
-  }
-
-  # ...version props omitted for brevity
-
-}
-
-
-resource "cloudflare_workers_deployment" "my_worker_deployment" {
-
-  # ...deployment props omitted for brevity
-
-}
-
-
+resource "cloudflare_worker" "my_worker" {  account_id = var.account_id  name = "my-worker"}
+resource "cloudflare_worker_version" "my_worker_version" {  account_id = var.account_id  worker_id = cloudflare_worker.my_worker.id  bindings = [    {      type = "durable_object_namespace"      name = "my_durable_object"      class_name = "MyDurableObjectClass"    }  ]  migrations = {    new_sqlite_classes = [      "MyDurableObjectClass"    ]  }  # ...version props omitted for brevity}
+resource "cloudflare_workers_deployment" "my_worker_deployment" {  # ...deployment props omitted for brevity}
 ```
 
 To make this succeed, you first have to comment out the `durable_object` binding block, apply the plan, uncomment it, comment out the `migrations` block, then apply again. This time the plan will succeed. This also applies to the API or SDKs. This is an example where it makes sense to just manage the `cloudflare_worker` and/or `cloudflare_workers_deployment` resources while using Wrangler for build and Version management.
@@ -1777,10 +423,7 @@ In both cases, changes to the underlying content are tracked using the computed 
 Terminal window
 
 ```
-
 terraform import cloudflare_worker_version.my_worker_version <account_id>/<worker_id>/<version_id>
-
-
 ```
 
 If your config uses `content_file`, there will be a mismatch after import (state uses `content_base64`, config uses `content_file`). This is expected.
@@ -1794,55 +437,13 @@ If Terraform instead wants to replace the resource, citing a difference in compu
 **Using `content_file`:**
 
 ```
-
-resource "cloudflare_worker_version" "content_file_example" {
-
-  account_id  = var.account_id
-
-  worker_id   = cloudflare_worker.example.id
-
-  main_module = "worker.js"
-
-  modules = [{
-
-    name         = "worker.js"
-
-    content_type = "application/javascript+module"
-
-    content_file = "build/worker.js"
-
-  }]
-
-}
-
-
+resource "cloudflare_worker_version" "content_file_example" {  account_id  = var.account_id  worker_id   = cloudflare_worker.example.id  main_module = "worker.js"  modules = [{    name         = "worker.js"    content_type = "application/javascript+module"    content_file = "build/worker.js"  }]}
 ```
 
 **Using `content_base64`:**
 
 ```
-
-resource "cloudflare_worker_version" "content_base64_example" {
-
-  account_id  = var.account_id
-
-  worker_id   = cloudflare_worker.example.id
-
-  main_module = "worker.js"
-
-  modules = [{
-
-    name           = "worker.js"
-
-    content_type   = "application/javascript+module"
-
-    content_base64 = base64encode("export default { async fetch() { return new Response('Hello world!') } }")
-
-  }]
-
-}
-
-
+resource "cloudflare_worker_version" "content_base64_example" {  account_id  = var.account_id  worker_id   = cloudflare_worker.example.id  main_module = "worker.js"  modules = [{    name           = "worker.js"    content_type   = "application/javascript+module"    content_base64 = base64encode("export default { async fetch() { return new Response('Hello world!') } }")  }]}
 ```
 
 ```json

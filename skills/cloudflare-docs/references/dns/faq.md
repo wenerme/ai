@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -60,17 +60,11 @@ Also, the IP address associated with a specific Cloudflare nameserver can be ret
 Terminal window
 
 ```
-
 dig kate.ns.cloudflare.com
-
-
 ```
 
 ```
-
 kate.ns.cloudflare.com.    68675    IN    A    173.245.58.124.
-
-
 ```
 
 ### Where do I change my nameservers to point to Cloudflare?

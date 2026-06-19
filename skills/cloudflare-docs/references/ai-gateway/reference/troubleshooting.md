@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,12 +21,14 @@ This page covers common issues when using AI Gateway. For provider-specific trou
 If you receive authentication errors from your AI provider, AI Gateway did not pass valid credentials upstream. Check the following:
 
 1. **Verify header placement**: Make sure your Cloudflare token is in `cf-aig-authorization`, not `Authorization`. The `Authorization` header is reserved for provider credentials.
-2. **Check your configuration based on endpoint type**:  
-   * **Provider-specific endpoints**: Confirm your request URL includes the provider path (for example, `/google-vertex-ai/` or `/openai/`). AI Gateway uses this to identify the provider and apply the correct stored credentials.  
-   * **Unified `/compat/chat/completions` endpoint**: Confirm your `model` name starts with the provider prefix (for example, `google-vertex-ai/google/gemini-2.5-flash` or `openai/gpt-4o`). AI Gateway uses this prefix to route the request and select the correct stored credentials.
-3. **Verify BYOK key selection**: If you have multiple keys configured for a provider, ensure either:  
-   * You are using the key with alias `default`, or  
-   * You include the `cf-aig-byok-alias` header with the correct alias name
+2. **Check your configuration based on endpoint type**:
+
+  * **Provider-specific endpoints**: Confirm your request URL includes the provider path (for example, `/google-vertex-ai/` or `/openai/`). AI Gateway uses this to identify the provider and apply the correct stored credentials.
+  * **Unified `/compat/chat/completions` endpoint**: Confirm your `model` name starts with the provider prefix (for example, `google-vertex-ai/google/gemini-2.5-flash` or `openai/gpt-4o`). AI Gateway uses this prefix to route the request and select the correct stored credentials.
+3. **Verify BYOK key selection**: If you have multiple keys configured for a provider, ensure either:
+
+  * You are using the key with alias `default`, or
+  * You include the `cf-aig-byok-alias` header with the correct alias name
 4. **Verify BYOK configuration**: If using BYOK, confirm in the dashboard that your credentials were saved correctly.
 
 For provider-specific authentication issues:

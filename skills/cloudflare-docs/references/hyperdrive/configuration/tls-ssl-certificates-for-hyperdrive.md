@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -42,24 +42,9 @@ Using Wrangler, you can upload your root certificate authority (CA) certificate:
 Terminal window
 
 ```
-
-# requires Wrangler 4.9.0 or greater
-
-npx wrangler cert upload certificate-authority --ca-cert \<ROUTE_TO_CA_PEM_FILE\>.pem --name \<CUSTOM_NAME_FOR_CA_CERT\>
-
-
+# requires Wrangler 4.9.0 or greaternpx wrangler cert upload certificate-authority --ca-cert \<ROUTE_TO_CA_PEM_FILE\>.pem --name \<CUSTOM_NAME_FOR_CA_CERT\>
 ---
-
-
-Uploading CA Certificate tmp-cert...
-
-Success! Uploaded CA Certificate <CUSTOM_NAME_FOR_CA_CERT>
-
-ID: <YOUR_ID_FOR_THE_CA_CERTIFICATE>
-
-...
-
-
+Uploading CA Certificate tmp-cert...Success! Uploaded CA Certificate <CUSTOM_NAME_FOR_CA_CERT>ID: <YOUR_ID_FOR_THE_CA_CERTIFICATE>...
 ```
 
 Note
@@ -70,25 +55,16 @@ You must use the CA certificate bundle that is for your specific region. You can
 
 Once your CA certificate has been created, you can create a Hyperdrive configuration with the newly created certificates using either the dashboard or Wrangler. You must also specify the SSL mode to use (`verify-ca`/`verify-full` for PostgreSQL or `VERIFY_CA`/`VERIFY_IDENTITY` for MySQL).
 
-* [ Wrangler ](#tab-panel-8664)
-* [ Dashboard ](#tab-panel-8665)
+* [ Wrangler ](#tab-panel-8740)
+* [ Dashboard ](#tab-panel-8741)
 
 Using Wrangler, enter the following command in your terminal to create a Hyperdrive configuration with the CA certificate and SSL mode:
 
 Terminal window
 
 ```
-
-# PostgreSQL with verify-full
-
-npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="postgres://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name" --ca-certificate-id <YOUR_CA_CERT_ID> --sslmode verify-full
-
-
-# MySQL with VERIFY_IDENTITY
-
-npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="mysql://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name" --ca-certificate-id <YOUR_CA_CERT_ID> --sslmode VERIFY_IDENTITY
-
-
+# PostgreSQL with verify-fullnpx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="postgres://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name" --ca-certificate-id <YOUR_CA_CERT_ID> --sslmode verify-full
+# MySQL with VERIFY_IDENTITYnpx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="mysql://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name" --ca-certificate-id <YOUR_CA_CERT_ID> --sslmode VERIFY_IDENTITY
 ```
 
 From the dashboard, follow these steps to create a Hyperdrive configuration with server certificates:
@@ -119,49 +95,25 @@ Upload your client certificates to be used by Hyperdrive using Wrangler:
 Terminal window
 
 ```
-
-# requires Wrangler 4.9.0 or greater
-
-npx wrangler cert upload mtls-certificate --cert client-cert.pem --key client-key.pem --name <CUSTOM_NAME_FOR_CLIENT_CERTIFICATE>
-
-
+# requires Wrangler 4.9.0 or greaternpx wrangler cert upload mtls-certificate --cert client-cert.pem --key client-key.pem --name <CUSTOM_NAME_FOR_CLIENT_CERTIFICATE>
 ---
-
-
-Uploading client certificate <CUSTOM_NAME_FOR_CLIENT_CERTIFICATE>...
-
-Success! Uploaded client certificate <CUSTOM_NAME_FOR_CLIENT_CERTIFICATE>
-
-ID: <YOUR_ID_FOR_THE_CLIENT_CERTIFICATE_PAIR>
-
-...
-
-
+Uploading client certificate <CUSTOM_NAME_FOR_CLIENT_CERTIFICATE>...Success! Uploaded client certificate <CUSTOM_NAME_FOR_CLIENT_CERTIFICATE>ID: <YOUR_ID_FOR_THE_CLIENT_CERTIFICATE_PAIR>...
 ```
 
 ### Step 2: Create a Hyperdrive configuration
 
 You can now create a Hyperdrive configuration using the newly created client certificate bundle using the dashboard or Wrangler.
 
-* [ Wrangler ](#tab-panel-8666)
-* [ Dashboard ](#tab-panel-8667)
+* [ Wrangler ](#tab-panel-8742)
+* [ Dashboard ](#tab-panel-8743)
 
 Using Wrangler, enter the following command in your terminal to create a Hyperdrive configuration with the client certificate pair:
 
 Terminal window
 
 ```
-
-# PostgreSQL
-
-npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="postgres://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name" --mtls-certificate-id <YOUR_CLIENT_CERT_PAIR_ID>
-
-
-# MySQL
-
-npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="mysql://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name" --mtls-certificate-id <YOUR_CLIENT_CERT_PAIR_ID>
-
-
+# PostgreSQLnpx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="postgres://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name" --mtls-certificate-id <YOUR_CLIENT_CERT_PAIR_ID>
+# MySQLnpx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="mysql://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name" --mtls-certificate-id <YOUR_CLIENT_CERT_PAIR_ID>
 ```
 
 From the dashboard, follow these steps to create a Hyperdrive configuration with server certificates:

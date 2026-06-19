@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,8 +29,8 @@ If you are using certain record types — for example, `CNAME`, `DNAME`, `MX`, `
 
 ### Import zone file to Cloudflare
 
-* [ Dashboard ](#tab-panel-8099)
-* [ API ](#tab-panel-8100)
+* [ Dashboard ](#tab-panel-8175)
+* [ API ](#tab-panel-8176)
 
 To import a zone file using the dashboard:
 
@@ -44,22 +44,13 @@ To import records using the API, send a [POST request](https://developers.cloudf
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `DNS Write`
 
 Import DNS Records
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/import" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --form "file=@your_formatted_file.txt"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/import" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --form "file=@your_formatted_file.txt"
 ```
 
 ---
@@ -68,8 +59,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/import" \
 
 You can also bulk export records from Cloudflare.
 
-* [ Dashboard ](#tab-panel-8101)
-* [ API ](#tab-panel-8102)
+* [ Dashboard ](#tab-panel-8177)
+* [ API ](#tab-panel-8178)
 
 To export records using the dashboard:
 
@@ -82,21 +73,14 @@ To export records using the API, send a [GET request](https://developers.cloudfl
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `DNS Read`
 * `DNS Write`
 
 Export DNS Records
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/export" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/export" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ---
@@ -115,33 +99,10 @@ When exporting or importing a zone file, Cloudflare formats [comments and tags](
 Example zone file
 
 ```
-
-; Only tags
-
-a.example.com.  60  IN  A   1.1.1.1 ;   cf_tags=awesome
-
-b.example.com.  60  IN  A   1.1.1.1 ;   cf_tags=tag1,tag2:value2,tag3:"value,with,commas",tag4:"value with \"escaped\" quotation marks"
-
-
-; Only a comment
-
-c.example.com.  60  IN  A   1.1.1.1 ; just a comment without tags
-
-d.example.com.  60  IN  A   1.1.1.1 ; this comment contains cf_tags= as text cf_tags=
-
-
-; Comments and tags
-
-e.example.com.  60  IN  A   1.1.1.1 ; simple example cf_tags=important,ticket:THIS-12345
-
-f.example.com.  60  IN  A   1.1.1.1 ; this is the comment cf_tags=tag1:value1,tag2:value2,tag-without-value,another-tag-without-value,tag-with-quoted-value:"because of the comma, quotes are needed"
-
-
-; Neither attribute
-
-g.example.com.  60  IN  A   1.1.1.1
-
-
+; Only tagsa.example.com.  60  IN  A   1.1.1.1 ;   cf_tags=awesomeb.example.com.  60  IN  A   1.1.1.1 ;   cf_tags=tag1,tag2:value2,tag3:"value,with,commas",tag4:"value with \"escaped\" quotation marks"
+; Only a commentc.example.com.  60  IN  A   1.1.1.1 ; just a comment without tagsd.example.com.  60  IN  A   1.1.1.1 ; this comment contains cf_tags= as text cf_tags=
+; Comments and tagse.example.com.  60  IN  A   1.1.1.1 ; simple example cf_tags=important,ticket:THIS-12345f.example.com.  60  IN  A   1.1.1.1 ; this is the comment cf_tags=tag1:value1,tag2:value2,tag-without-value,another-tag-without-value,tag-with-quoted-value:"because of the comma, quotes are needed"
+; Neither attributeg.example.com.  60  IN  A   1.1.1.1
 ```
 
 ### Reserved cf- tags
@@ -151,16 +112,7 @@ When exporting and importing, special tags starting by `cf-` allow you to contro
 Records with cf- tags example
 
 ```
-
-;; CNAME Records
-
-a.cloudflaredocs.com.  1  IN  CNAME  example.com. ; cf_tags=test:1,cf-flatten-cname
-
-b.cloudflaredocs.com.  1  IN  CNAME  example.com. ; cf_tags=cf-proxied:false
-
-c.cloudflaredocs.com.  1  IN  CNAME  example.com. ; cf_tags=tag-without-value,cf-proxied:true
-
-
+;; CNAME Recordsa.cloudflaredocs.com.  1  IN  CNAME  example.com. ; cf_tags=test:1,cf-flatten-cnameb.cloudflaredocs.com.  1  IN  CNAME  example.com. ; cf_tags=cf-proxied:falsec.cloudflaredocs.com.  1  IN  CNAME  example.com. ; cf_tags=tag-without-value,cf-proxied:true
 ```
 
 #### cf-proxied

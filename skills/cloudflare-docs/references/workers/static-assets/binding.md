@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,52 +20,20 @@ Only one collection of static assets can be configured in each Worker.
 
 The folder of static assets to be served. For many frameworks, this is the `./public/`, `./dist/`, or `./build/` folder.
 
-* [  wrangler.jsonc ](#tab-panel-12081)
-* [  wrangler.toml ](#tab-panel-12082)
+* [  wrangler.jsonc ](#tab-panel-12098)
+* [  wrangler.toml ](#tab-panel-12099)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "my-worker",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "assets": {
-
-    "directory": "./public/",
-
-  },
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-worker",  // Set this to today's date  "compatibility_date": "2026-06-19",  "assets": {    "directory": "./public/",  },}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "my-worker"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[assets]
-
-directory = "./public/"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-worker"# Set this to today's datecompatibility_date = "2026-06-19"
+[assets]directory = "./public/"
 ```
 
 ### Ignoring assets
@@ -81,14 +49,7 @@ Wrangler will not upload asset files that match lines in this file.
 You are migrating from a Pages project where the assets directory is `dist`. You do not want to upload the server-side Worker code nor Pages configuration files as public client-side assets. Add the following `.assetsignore` file:
 
 ```
-
-_worker.js
-
-_redirects
-
-_headers
-
-
+_worker.js_redirects_headers
 ```
 
 Now Wrangler will not upload these files as client-side assets when deploying the Worker.
@@ -97,68 +58,20 @@ Now Wrangler will not upload these files as client-side assets when deploying th
 
 Controls whether to invoke the Worker script regardless of a request which would have otherwise matched an asset. `run_worker_first = false` (default) will serve any static asset matching a request, while `run_worker_first = true` will unconditionally [invoke your Worker script](https://developers.cloudflare.com/workers/static-assets/routing/worker-script/#run-your-worker-script-first).
 
-* [  wrangler.jsonc ](#tab-panel-12083)
-* [  wrangler.toml ](#tab-panel-12084)
+* [  wrangler.jsonc ](#tab-panel-12100)
+* [  wrangler.toml ](#tab-panel-12101)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "my-worker",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "main": "src/index.ts",
-
-  // The following configuration unconditionally invokes the Worker script at
-
-  // `src/index.ts`, which can programmatically fetch assets via the ASSETS binding
-
-  "assets": {
-
-    "directory": "./public/",
-
-    "binding": "ASSETS",
-
-    "run_worker_first": true,
-
-  },
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-worker",  // Set this to today's date  "compatibility_date": "2026-06-19",  "main": "src/index.ts",  // The following configuration unconditionally invokes the Worker script at  // `src/index.ts`, which can programmatically fetch assets via the ASSETS binding  "assets": {    "directory": "./public/",    "binding": "ASSETS",    "run_worker_first": true,  },}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "my-worker"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-main = "src/index.ts"
-
-
-[assets]
-
-directory = "./public/"
-
-binding = "ASSETS"
-
-run_worker_first = true
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-worker"# Set this to today's datecompatibility_date = "2026-06-19"main = "src/index.ts"
+[assets]directory = "./public/"binding = "ASSETS"run_worker_first = true
 ```
 
 You can also specify `run_worker_first` as an array of route patterns to selectively run the Worker script first only for specific routes.
@@ -171,64 +84,20 @@ The order in which the patterns are listed is not significant.
 
 `run_worker_first` is often paired with the [not\_found\_handling = "single-page-application" setting](https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/#advanced-routing-control):
 
-* [  wrangler.jsonc ](#tab-panel-12085)
-* [  wrangler.toml ](#tab-panel-12086)
+* [  wrangler.jsonc ](#tab-panel-12102)
+* [  wrangler.toml ](#tab-panel-12103)
 
 JSONC
 
 ```
-
-{
-
-  "name": "my-spa-worker",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "main": "./src/index.ts",
-
-  "assets": {
-
-    "directory": "./dist/",
-
-    "not_found_handling": "single-page-application",
-
-    "binding": "ASSETS",
-
-    "run_worker_first": ["/api/*", "!/api/docs/*"]
-
-  }
-
-}
-
-
+{  "name": "my-spa-worker",  // Set this to today's date  "compatibility_date": "2026-06-19",  "main": "./src/index.ts",  "assets": {    "directory": "./dist/",    "not_found_handling": "single-page-application",    "binding": "ASSETS",    "run_worker_first": ["/api/*", "!/api/docs/*"]  }}
 ```
 
 TOML
 
 ```
-
-name = "my-spa-worker"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-main = "./src/index.ts"
-
-
-[assets]
-
-directory = "./dist/"
-
-not_found_handling = "single-page-application"
-
-binding = "ASSETS"
-
-run_worker_first = [ "/api/*", "!/api/docs/*" ]
-
-
+name = "my-spa-worker"# Set this to today's datecompatibility_date = "2026-06-19"main = "./src/index.ts"
+[assets]directory = "./dist/"not_found_handling = "single-page-application"binding = "ASSETS"run_worker_first = [ "/api/*", "!/api/docs/*" ]
 ```
 
 In this configuration, requests to `/api/*` routes will invoke the Worker script first, except for `/api/docs/*` which will follow the default asset-first routing behavior.
@@ -239,60 +108,20 @@ Common uses for `run_worker_first` include authentication checks, A/B testing, a
 
 Configuring the optional [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings) gives you access to the collection of assets from within your Worker script.
 
-* [  wrangler.jsonc ](#tab-panel-12087)
-* [  wrangler.toml ](#tab-panel-12088)
+* [  wrangler.jsonc ](#tab-panel-12104)
+* [  wrangler.toml ](#tab-panel-12105)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "my-worker",
-
-  "main": "./src/index.js",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "assets": {
-
-    "directory": "./public/",
-
-    "binding": "ASSETS",
-
-  },
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-worker",  "main": "./src/index.js",  // Set this to today's date  "compatibility_date": "2026-06-19",  "assets": {    "directory": "./public/",    "binding": "ASSETS",  },}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "my-worker"
-
-main = "./src/index.js"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[assets]
-
-directory = "./public/"
-
-binding = "ASSETS"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-worker"main = "./src/index.js"# Set this to today's datecompatibility_date = "2026-06-19"
+[assets]directory = "./public/"binding = "ASSETS"
 ```
 
 In the example above, assets would be available through `env.ASSETS`.
@@ -319,76 +148,20 @@ If you need to fetch assets from within an [RPC method](https://developers.cloud
 
 Take the following example that configures a Worker script to return a response under all requests headed for `/api/`. Otherwise, the Worker script will pass the incoming request through to the asset binding. In this case, because a Worker script is only invoked when the requested route has not matched any static assets, this will always evaluate [not\_found\_handling](https://developers.cloudflare.com/workers/static-assets/#routing-behavior) behavior.
 
-* [  JavaScript ](#tab-panel-12079)
-* [  TypeScript ](#tab-panel-12080)
+* [  JavaScript ](#tab-panel-12096)
+* [  TypeScript ](#tab-panel-12097)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const url = new URL(request.url);
-
-    if (url.pathname.startsWith("/api/")) {
-
-      // TODO: Add your custom /api/* logic here.
-
-      return new Response("Ok");
-
-    }
-
-    // Passes the incoming request through to the assets binding.
-
-    // No asset matched this request, so this will evaluate `not_found_handling` behavior.
-
-    return env.ASSETS.fetch(request);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const url = new URL(request.url);    if (url.pathname.startsWith("/api/")) {      // TODO: Add your custom /api/* logic here.      return new Response("Ok");    }    // Passes the incoming request through to the assets binding.    // No asset matched this request, so this will evaluate `not_found_handling` behavior.    return env.ASSETS.fetch(request);  },};
 ```
 
 TypeScript
 
 ```
-
-interface Env {
-
-  ASSETS: Fetcher;
-
-}
-
-
-export default {
-
-  async fetch(request, env): Promise<Response> {
-
-    const url = new URL(request.url);
-
-    if (url.pathname.startsWith("/api/")) {
-
-      // TODO: Add your custom /api/* logic here.
-
-      return new Response("Ok");
-
-    }
-
-    // Passes the incoming request through to the assets binding.
-
-    // No asset matched this request, so this will evaluate `not_found_handling` behavior.
-
-    return env.ASSETS.fetch(request);
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+interface Env {  ASSETS: Fetcher;}
+export default {  async fetch(request, env): Promise<Response> {    const url = new URL(request.url);    if (url.pathname.startsWith("/api/")) {      // TODO: Add your custom /api/* logic here.      return new Response("Ok");    }    // Passes the incoming request through to the assets binding.    // No asset matched this request, so this will evaluate `not_found_handling` behavior.    return env.ASSETS.fetch(request);  },} satisfies ExportedHandler<Env>;
 ```
 
 ## Routing configuration

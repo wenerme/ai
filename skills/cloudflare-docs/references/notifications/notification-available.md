@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/notifications/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -442,11 +442,11 @@ Zero Trust customers who want to be notified when Cloudflare detects a spike or 
 **Other options / filters**
 
 * **Alert configuration**: Choose when to trigger a notification. Available options are _Connectivity spike_, _Connectivity drop_, and _Connectivity spike or drop_.
-* Filters:  
-   * **Colo**: Cloudflare data center that the device is connected to.  
-   * **Platform**: Operating system of the device.  
-   * **Version**: WARP client version (for example, `2024.3.409.0`).  
-   * **Mode**: [WARP mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) deployed on the device.
+* Filters:
+  * **Colo**: Cloudflare data center that the device is connected to.
+  * **Platform**: Operating system of the device.
+  * **Version**: WARP client version (for example, `2024.3.409.0`).
+  * **Mode**: [WARP mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) deployed on the device.
 
 **Included with**
 
@@ -469,11 +469,11 @@ Zero Trust customers who wish to receive alerts when there is a spike or drop in
 **Other options / filters**
 
 * **Alert configuration**: Choose when to trigger a notification. Available options are _Latency spike_, _Latency drop_, and _Latency spike or drop_.
-* Filters:  
-   * **Colo**: Cloudflare data center that the device is connected to.  
-   * **Platform**: Operating system of the device.  
-   * **Version**: WARP client version (for example, `2024.3.409.0`).  
-   * **Test name**: Choose which DEX test the alert should monitor. You will receive individual notifications for each test.
+* Filters:
+  * **Colo**: Cloudflare data center that the device is connected to.
+  * **Platform**: Operating system of the device.
+  * **Version**: WARP client version (for example, `2024.3.409.0`).
+  * **Test name**: Choose which DEX test the alert should monitor. You will receive individual notifications for each test.
 
 **Included with**
 
@@ -496,11 +496,11 @@ Zero Trust customers who wish to receive alerts when the percentage of successfu
 **Other options / filters**
 
 * **Service Level Objective (SLO)**: Specify the availability threshold that will trigger an alert. Enter a percentage in `xx.x` format (for example, `98.0`).
-* Filters:  
-   * **Colo**: Cloudflare data center that the device is connected to.  
-   * **Platform**: Operating system of the device.  
-   * **Version**: WARP client version (for example, `2024.3.409.0`).  
-   * **Test name**: Choose which DEX test the alert should monitor. You will receive individual notifications for each test.
+* Filters:
+  * **Colo**: Cloudflare data center that the device is connected to.
+  * **Platform**: Operating system of the device.
+  * **Version**: WARP client version (for example, `2024.3.409.0`).
+  * **Test name**: Choose which DEX test the alert should monitor. You will receive individual notifications for each test.
 
 **Included with**
 

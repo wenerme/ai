@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -86,8 +86,8 @@ Local uploads are not supported for buckets with [jurisdictional restrictions](h
 
 When you enable Local Uploads, existing uploads will complete as expected with no interruption to traffic.
 
-* [ Dashboard ](#tab-panel-9737)
-* [ Wrangler ](#tab-panel-9738)
+* [ Dashboard ](#tab-panel-9813)
+* [ Wrangler ](#tab-panel-9814)
 
 1. Log in to the Cloudflare dashboard, and go to R2 Overview.  
 [ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
@@ -100,18 +100,15 @@ Run the following command:
 Terminal window
 
 ```
-
 npx wrangler r2 bucket local-uploads enable <BUCKET_NAME>
-
-
 ```
 
 ## Disable local uploads
 
 You can disable local uploads at any time. Existing requests made with local uploads will complete replication with no interruption to your traffic.
 
-* [ Dashboard ](#tab-panel-9739)
-* [ Wrangler ](#tab-panel-9740)
+* [ Dashboard ](#tab-panel-9815)
+* [ Wrangler ](#tab-panel-9816)
 
 1. Log in to the Cloudflare dashboard, and go to R2 Overview.  
 [ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
@@ -124,10 +121,7 @@ Run the following command:
 Terminal window
 
 ```
-
 npx wrangler r2 bucket local-uploads disable <BUCKET_NAME>
-
-
 ```
 
 ## Pricing

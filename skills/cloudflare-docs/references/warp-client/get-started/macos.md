@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/warp-client/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -46,9 +46,9 @@ The following is a list of options you can configure in the **Connection** tab:
 
 * **Disable for all Wi-Fi / wired networks**: Check the box corresponding to the network where you want to prevent WARP from working on.
 * **DNS Protocol**: The available options depend on the WARP mode you have enabled:  
-   * **WARP**: Only available when you have the WARP mode enabled. All DNS traffic encrypted and [sent to Cloudflare's global network](https://developers.cloudflare.com/warp-client/warp-modes/#1111-with-warp).  
-   * **HTTPS**: All DNS traffic is sent outside the tunnel via [DNS over HTTPS](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/).  
-   * **TLS**: All DNS traffic is sent outside the tunnel via [encrypted TLS](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-tls/).
+  * **WARP**: Only available when you have the WARP mode enabled. All DNS traffic encrypted and [sent to Cloudflare's global network](https://developers.cloudflare.com/warp-client/warp-modes/#1111-with-warp).
+  * **HTTPS**: All DNS traffic is sent outside the tunnel via [DNS over HTTPS](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/).
+  * **TLS**: All DNS traffic is sent outside the tunnel via [encrypted TLS](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-tls/).
 * **1.1.1.1 for Families**: Allows you to [enable 1.1.1.1 for Families](https://developers.cloudflare.com/1.1.1.1/setup/#1111-for-families) and choose between blocking malware, or blocking malware and adult content.
 
 For the **Advanced** options, refer to [Exclude or include network traffic with WARP](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/) for more information.
@@ -80,12 +80,7 @@ We include an uninstall script as part of the macOS package you install. Type th
 Terminal window
 
 ```
-
-cd /Applications/Cloudflare\ WARP.app/Contents/Resources
-
-./uninstall.sh
-
-
+cd /Applications/Cloudflare\ WARP.app/Contents/Resources./uninstall.sh
 ```
 
 Note

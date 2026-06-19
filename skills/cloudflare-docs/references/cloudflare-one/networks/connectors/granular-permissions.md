@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,8 +33,8 @@ Granular permissions are assigned through the standard [member management](https
 2. Add a permission policy and choose a [resource-scoped role](https://developers.cloudflare.com/fundamentals/manage-members/roles/#resource-scoped-roles) that targets Tunnels or Mesh nodes.
 3. In the **Scope** section, choose **Specific resources**.
 4. Set **Resource type** to one of:  
-   * **Cloudflare Tunnel instances** — for individual [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) instances.  
-   * **Cloudflare Mesh nodes** — for individual [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) nodes.
+  * **Cloudflare Tunnel instances** — for individual [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) instances.
+  * **Cloudflare Mesh nodes** — for individual [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) nodes.
 5. Select one or more specific Tunnels or Mesh nodes from the resource picker.
 6. Save the policy.
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -40,21 +40,27 @@ To set up a reverse zone, you need to create a reverse DNS zone and add PTR reco
 ### 1\. Create a reverse DNS zone
 
 1. Within your account, click **Add** \> **Connect a domain**.
-2. For your site name, use the reverse IP address:  
-   * For IPv4 /24 prefixes, the pattern is:  
-         * **IP prefix**: `<octet_1>.<octet_2>.<octet_3>.0/24`  
-         * **Reverse zone address**: `<octet_3>.<octet_2>.<octet_1>.in-addr.arpa`  
-   * For IPv4 /16 prefixes, the pattern is:  
-         * **IP prefix**: `<octet_1>.<octet_2>.0.0/16`  
-         * **Reverse zone address**: `<octet_2>.<octet_1>.in-addr.arpa`  
-Example  
-   * **IPv4 prefix**: `198.51.100.0/24`  
-   * **Reverse zone**: `100.51.198.in-addr.arpa`  
-   * For IPv6, consider the following examples:  
-   * **IPv6 prefix**: `2001:DB8::0/32`  
-   * **Reverse zone**: `8.b.d.0.1.0.0.2.ip6.arpa`  
-   * **IPv6 prefix**: `2001:DB8::0/48`  
-   * **Reverse zone**: `0.0.0.0.8.b.d.0.1.0.0.2.ip6.arpa`
+2. For your site name, use the reverse IP address:
+
+  * For IPv4 /24 prefixes, the pattern is:
+
+    * **IP prefix**: `<octet_1>.<octet_2>.<octet_3>.0/24`
+    * **Reverse zone address**: `<octet_3>.<octet_2>.<octet_1>.in-addr.arpa`
+  * For IPv4 /16 prefixes, the pattern is:
+
+    * **IP prefix**: `<octet_1>.<octet_2>.0.0/16`
+    * **Reverse zone address**: `<octet_2>.<octet_1>.in-addr.arpa`  
+Example
+
+  * **IPv4 prefix**: `198.51.100.0/24`
+  * **Reverse zone**: `100.51.198.in-addr.arpa`
+  * For IPv6, consider the following examples:
+
+  * **IPv6 prefix**: `2001:DB8::0/32`
+  * **Reverse zone**: `8.b.d.0.1.0.0.2.ip6.arpa`
+
+  * **IPv6 prefix**: `2001:DB8::0/48`
+  * **Reverse zone**: `0.0.0.0.8.b.d.0.1.0.0.2.ip6.arpa`
 3. If you are adding less than 200 PTR records, select the **Free** plan. If you are adding more, select a paid plan.
 4. Skip the rest of the onboarding process.
 

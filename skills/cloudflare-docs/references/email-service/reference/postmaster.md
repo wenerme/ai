@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -41,17 +41,8 @@ Email Sending and Email Routing use separate DKIM selectors. You can find the DK
 Terminal window
 
 ```
-
-# Email Sending DKIM
-
-dig TXT cf-bounce._domainkey.example.com +short
-
-
-# Email Routing DKIM
-
-dig TXT cf2024-1._domainkey.example.com +short
-
-
+# Email Sending DKIMdig TXT cf-bounce._domainkey.example.com +short
+# Email Routing DKIMdig TXT cf2024-1._domainkey.example.com +short
 ```
 
 For forwarded emails, Email Routing adds two DKIM signatures: one for `email.cloudflare.net`, which covers [sender rewriting](#sender-rewriting), and one for the recipient domain configured by the customer. You can query the Cloudflare sender rewriting key directly:
@@ -59,10 +50,7 @@ For forwarded emails, Email Routing adds two DKIM signatures: one for `email.clo
 Terminal window
 
 ```
-
 dig TXT cf2024-1._domainkey.email.cloudflare.net +short
-
-
 ```
 
 ### DMARC enforcing
@@ -86,12 +74,7 @@ You can verify IPv6 connectivity for any destination using `dig`:
 Terminal window
 
 ```
-
-dig mx gmail.com
-
-dig AAAA gmail-smtp-in.l.google.com
-
-
+dig mx gmail.comdig AAAA gmail-smtp-in.l.google.com
 ```
 
 ### MX and SPF records
@@ -101,23 +84,13 @@ When using Email Service for sending emails, no special MX records are required 
 For SPF records, Email Service uses `_spf.mx.cloudflare.net`. Email Sending configures SPF on the `cf-bounce` subdomain, while Email Routing configures SPF on the root domain:
 
 ```
-
 v=spf1 include:_spf.mx.cloudflare.net ~all
-
-
 ```
 
 For inbound mail, Email Routing announces multiple MX servers under the `*.mx.cloudflare.net` zone with different priorities. For example:
 
 ```
-
-example.com.    IN    MX    13 amir.mx.cloudflare.net.
-
-example.com.    IN    MX    86 linda.mx.cloudflare.net.
-
-example.com.    IN    MX    24 isaac.mx.cloudflare.net.
-
-
+example.com.    IN    MX    13 amir.mx.cloudflare.net.example.com.    IN    MX    86 linda.mx.cloudflare.net.example.com.    IN    MX    24 isaac.mx.cloudflare.net.
 ```
 
 ### Outbound prefixes
@@ -139,10 +112,7 @@ To verify the current authoritative ranges, query the SPF record directly:
 Terminal window
 
 ```
-
 dig TXT _spf.mx.cloudflare.net +short
-
-
 ```
 
 ### Outbound hostnames
@@ -158,33 +128,21 @@ PTR records (reverse DNS) ensure that each hostname has a corresponding IP. For 
 Terminal window
 
 ```
-
 dig a-h.cloudflare-email.net +short
-
-
 ```
 
 ```
-
 104.30.0.7
-
-
 ```
 
 Terminal window
 
 ```
-
 dig -x 104.30.0.7 +short
-
-
 ```
 
 ```
-
 a-h.cloudflare-email.net.
-
-
 ```
 
 ### Sender rewriting
@@ -202,10 +160,7 @@ Email Service monitors sender reputation and may temporarily delay or block emai
 For Email Routing, inbound mail from senders on RBLs is rejected with an SMTP error similar to:
 
 ```
-
 554 <YOUR_IP_ADDRESS> found on one or more RBLs (abusixip). Refer to https://developers.cloudflare.com/email-service/reference/postmaster/#realtime-block-lists
-
-
 ```
 
 You can use tools like [MxToolbox ↗](https://mxtoolbox.com/blacklists.aspx) to check a sending IP against multiple block lists at once. If you believe your emails are being incorrectly blocked, contact the RBL maintainer directly or reach out through Cloudflare support channels.
@@ -217,19 +172,13 @@ Email Service publishes its SPF data under `_spf.mx.cloudflare.net`. You can res
 Terminal window
 
 ```
-
 dig TXT _spf.mx.cloudflare.net +short
-
-
 ```
 
 The record uses the format defined in [RFC 7208 ↗](https://datatracker.ietf.org/doc/html/rfc7208):
 
 ```
-
 "v=spf1 ip4:104.30.0.0/20 ~all"
-
-
 ```
 
 The `~all` mechanism is a SoftFail. Receiving servers should treat mail from IPs not listed in the record as suspicious but should not reject it outright on SPF alone.

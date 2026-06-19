@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -52,24 +52,24 @@ Use the Cloudflare dashboard or API to [configure two IPsec tunnels](https://dev
 ### Add IPsec tunnels
 
 1. Follow the [Add tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels) instructions to create the required IPsec tunnels with the following options:  
-   * **Tunnel name**: `PF_TUNNEL_01`  
-   * **Interface address**: `10.252.2.26/31`  
-   * **Customer endpoint**: `203.0.113.254`  
-   * **Cloudflare endpoint**: Enter one of the anycast IP addresses assigned to your account, available in [Leased IPs ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).  
-   * **Health check rate**: _Medium_  
-   * **Health check type**: _Request_  
-   * **Health check direction**: _Bidirectional_  
-   * **Turn on replay protection**: Enable
+  * **Tunnel name**: `PF_TUNNEL_01`
+  * **Interface address**: `10.252.2.26/31`
+  * **Customer endpoint**: `203.0.113.254`
+  * **Cloudflare endpoint**: Enter one of the anycast IP addresses assigned to your account, available in [Leased IPs ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
+  * **Health check rate**: _Medium_
+  * **Health check type**: _Request_
+  * **Health check direction**: _Bidirectional_
+  * **Turn on replay protection**: Enable
 2. Select **Add pre-shared key later** \> **Add tunnels**.
 3. Repeat the process to create a second IPsec tunnel with the following options:  
-   * **Tunnel name**: `PF_TUNNEL_02`  
-   * **Interface address**: `10.252.2.28/31`  
-   * **Customer endpoint**: `203.0.113.254`  
-   * **Cloudflare endpoint**: Enter the second anycast IP address assigned to your account.  
-   * **Health check rate**: _Medium_  
-   * **Health check type**: _Request_  
-   * **Health check direction**: _Bidirectional_  
-   * **Turn on replay protection**: Enable
+  * **Tunnel name**: `PF_TUNNEL_02`
+  * **Interface address**: `10.252.2.28/31`
+  * **Customer endpoint**: `203.0.113.254`
+  * **Cloudflare endpoint**: Enter the second anycast IP address assigned to your account.
+  * **Health check rate**: _Medium_
+  * **Health check type**: _Request_
+  * **Health check direction**: _Bidirectional_
+  * **Turn on replay protection**: Enable
 4. Select **Add pre-shared key later** \> **Add tunnels**.
 
 Note
@@ -127,41 +127,41 @@ Install pfSense and boot up. Then, assign and set LAN and WAN interfaces, as wel
 Add a new IPsec tunnel [Phase 1 entry ↗](https://docs.netgate.com/pfsense/en/latest/vpn/ipsec/configure-p1.html), with the following settings:
 
 * **General Information**  
-   * **Description**: `CF1_IPsec_P1`
+  * **Description**: `CF1_IPsec_P1`
 * **IKE Endpoint Configuration**  
-   * **Key exchange version**: _IKE\_v2_  
-   * **Internet Protocol**: _IPv4_  
-   * **Interface**: _WAN_  
-   * **Remote gateway**: Enter the Cloudflare Anycast IP address.
+  * **Key exchange version**: _IKE\_v2_
+  * **Internet Protocol**: _IPv4_
+  * **Interface**: _WAN_
+  * **Remote gateway**: Enter the Cloudflare Anycast IP address.
 * **Phase 1 Proposal (Authentication)**  
-   * **Authentication method**: _Mutual PSK_  
-   * **My identifier**: _User Fully qualified domain name_ \> `ipsec@long_string_of_letters_and_numbers`  
-    (Find this identifier in the Cloudflare IPsec tunnel configuration > **User ID**)  
-   * **Peer identifier**: _Peer IP Address_ (Cloudflare Anycast IP)  
-   * **Pre-Shared Key (PSK)**: Enter the pre-shared key from the Cloudflare IPsec tunnel.
+  * **Authentication method**: _Mutual PSK_
+  * **My identifier**: _User Fully qualified domain name_ \> `ipsec@long_string_of_letters_and_numbers`  
+   (Find this identifier in the Cloudflare IPsec tunnel configuration > **User ID**)
+  * **Peer identifier**: _Peer IP Address_ (Cloudflare Anycast IP)
+  * **Pre-Shared Key (PSK)**: Enter the pre-shared key from the Cloudflare IPsec tunnel.
 * **Phase 1 proposal (Encryption algorithm)**  
-   * **Encryption algorithm**: _AES 256 bits_  
-   * **Key length**: _256 bits_  
-   * **Hash algorithm**: _SHA256_  
-   * **DH key group**: _20_  
-   * **Lifetime**: `86400`
+  * **Encryption algorithm**: _AES 256 bits_
+  * **Key length**: _256 bits_
+  * **Hash algorithm**: _SHA256_
+  * **DH key group**: _20_
+  * **Lifetime**: `86400`
 
 ### Configure IPsec Phase 2
 
 Add a new IPsec tunnel [Phase 2 entry ↗](https://docs.netgate.com/pfsense/en/latest/vpn/ipsec/configure-p2.html), with the following settings. Create two separate Phase 2 entries (one for tunnel 1 and one for tunnel 2), adjusting the IP addresses for local and remote networks accordingly:
 
 * **General Information**  
-   * **Description**: `CF1_IPsec_P2`  
-   * **Mode**: _Routed (VTI)_ (Virtual Tunnel Interface)
+  * **Description**: `CF1_IPsec_P2`
+  * **Mode**: _Routed (VTI)_ (Virtual Tunnel Interface)
 * **Networks**  
-   * **Local Network**: _Address_ \> Higher IP address in the `/31` assigned in Cloudflare tunnel. For example, `10.252.2.27` for tunnel 1 and `10.252.2.29` for tunnel 2.  
-   * **Remote Network**: _Address_ \> Lower IP address in the `/31` for Cloudflare side. For example, `10.252.2.26` for tunnel 1, and `10.252.2.28` for tunnel 2.
+  * **Local Network**: _Address_ \> Higher IP address in the `/31` assigned in Cloudflare tunnel. For example, `10.252.2.27` for tunnel 1 and `10.252.2.29` for tunnel 2.
+  * **Remote Network**: _Address_ \> Lower IP address in the `/31` for Cloudflare side. For example, `10.252.2.26` for tunnel 1, and `10.252.2.28` for tunnel 2.
 * **Phase 2 Proposal (SA/Key Exchange)**  
-   * **Protocol**: _ESP_ (Encapsulating Security Payload)  
-   * **Encryption algorithm**: _AES 256 bits_  
-   * **Hash algorithm**: _SHA256_  
-   * **DH key group**: _20_  
-   * **Lifetime**: `28800`
+  * **Protocol**: _ESP_ (Encapsulating Security Payload)
+  * **Encryption algorithm**: _AES 256 bits_
+  * **Hash algorithm**: _SHA256_
+  * **DH key group**: _20_
+  * **Lifetime**: `28800`
 
 Apply the changes. Navigate to **Status** \> **IPsec** to verify that both Phase 1 and Phase 2 are connected.
 
@@ -172,12 +172,12 @@ Apply the changes. Navigate to **Status** \> **IPsec** to verify that both Phase
 In **Interfaces** \> **Assignments** \> **Add**, create a new interface to assign to the first IPsec tunnel, with the following settings:
 
 * **General configuration**  
-   * **Description**: `CF1_IPsec_1`  
-   * **MSS**: `1446`
+  * **Description**: `CF1_IPsec_1`
+  * **MSS**: `1446`
 * **Interface Assignments**  
-   * **WAN**: Add the WAN interface. For example, `vnet1`.  
-   * **LAN**: Add the LAN interface. For example, `vnet0`.  
-   * Add the **CF\_IPsec\_1** interface from Phase 1 above.
+  * **WAN**: Add the WAN interface. For example, `vnet1`.
+  * **LAN**: Add the LAN interface. For example, `vnet0`.
+  * Add the **CF\_IPsec\_1** interface from Phase 1 above.
 
 Select **Save** to apply the changes.
 

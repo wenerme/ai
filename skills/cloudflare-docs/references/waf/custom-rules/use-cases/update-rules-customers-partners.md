@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -36,15 +36,17 @@ This example uses:
 
 Example custom rule:
 
-* **When incoming requests match**:  
-| Field     | Operator     | Value | Logic |  
-| --------- | ------------ | ----- | ----- |  
-| AS Num    | equals       | 64496 | And   |  
+* **When incoming requests match**:
+
+| Field     | Operator     | Value | Logic |
+| --------- | ------------ | ----- | ----- |
+| AS Num    | equals       | 64496 | And   |
 | Bot Score | greater than | 30    |       |  
 If you are using the expression editor:  
 `(ip.src.asnum eq 64496 and cf.bot_management.score gt 30)`
-* **Then take action**: _Skip:_  
-   * _All remaining custom rules_
+* **Then take action**: _Skip:_
+
+  * _All remaining custom rules_
 
 Note
 
@@ -59,15 +61,17 @@ This example custom rule uses:
 
 If a request meets these criteria, the custom rule will skip [User Agent Blocking](https://developers.cloudflare.com/waf/tools/user-agent-blocking/) rules.
 
-* **When incoming requests match**:  
-| Field     | Operator     | Value | Logic |  
-| --------- | ------------ | ----- | ----- |  
-| AS Num    | equals       | 64496 | And   |  
+* **When incoming requests match**:
+
+| Field     | Operator     | Value | Logic |
+| --------- | ------------ | ----- | ----- |
+| AS Num    | equals       | 64496 | And   |
 | Bot Score | greater than | 50    |       |  
 If you are using the expression editor:  
 `(ip.src.asnum eq 64496 and cf.bot_management.score gt 50)`
-* **Then take action**: _Skip:_  
-   * _User Agent Blocking_
+* **Then take action**: _Skip:_
+
+  * _User Agent Blocking_
 
 ## Use IP addresses in custom rules
 
@@ -82,16 +86,18 @@ This example:
 
 Example custom rule:
 
-* **When incoming requests match**:  
-| Field             | Operator     | Value       | Logic |  
-| ----------------- | ------------ | ----------- | ----- |  
-| IP Source Address | equals       | 203.0.113.1 | And   |  
-| Hostname          | equals       | example.com | And   |  
+* **When incoming requests match**:
+
+| Field             | Operator     | Value       | Logic |
+| ----------------- | ------------ | ----------- | ----- |
+| IP Source Address | equals       | 203.0.113.1 | And   |
+| Hostname          | equals       | example.com | And   |
 | Bot Score         | greater than | 30          |       |  
 If you are using the expression editor:  
 `(ip.src eq 203.0.113.1 and http.host eq "example.com" and cf.bot_management.score gt 30)`
-* **Then take action**: _Skip:_  
-   * _All remaining custom rules_
+* **Then take action**: _Skip:_
+
+  * _All remaining custom rules_
 
 ### Adjust rules by IP address
 
@@ -99,15 +105,17 @@ This example custom rule specifies the source IP address and the host.
 
 If a request meets these criteria, the custom rule will skip [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/).
 
-* **When incoming requests match**:  
-| Field             | Operator | Value       | Logic |  
-| ----------------- | -------- | ----------- | ----- |  
-| IP Source Address | equals   | 203.0.113.1 | And   |  
+* **When incoming requests match**:
+
+| Field             | Operator | Value       | Logic |
+| ----------------- | -------- | ----------- | ----- |
+| IP Source Address | equals   | 203.0.113.1 | And   |
 | Hostname          | equals   | example.com |       |  
 If you are using the expression editor:  
 `(ip.src eq 203.0.113.1 and http.host eq "example.com")`
-* **Then take action**: _Skip:_  
-   * _All remaining custom rules_
+* **Then take action**: _Skip:_
+
+  * _All remaining custom rules_
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/custom-rules/use-cases/update-rules-customers-partners/#page","headline":"Update custom rules for customers or partners · Cloudflare Web Application Firewall (WAF) docs","description":"Manage custom rules for customer and partner traffic.","url":"https://developers.cloudflare.com/waf/custom-rules/use-cases/update-rules-customers-partners/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

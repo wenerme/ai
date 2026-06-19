@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -47,56 +47,7 @@ To apply an override for a managed ruleset:
 2. Specify the `overrides` in the `action_parameters` of the rule that executes your managed ruleset.
 
 ```
-
-"action_parameters": {
-
-  "id": "<RULESET_ID>",
-
-  "overrides": {
-
-    // ruleset overrides
-
-    "property-to-modify": "value",
-
-    "property-to-modify": "value",
-
-    // tag overrides
-
-    "categories": [
-
-      {
-
-        "category": "<TAG_NAME>",
-
-        "property-to-modify": "value",
-
-        "property-to-modify": "value"
-
-      }
-
-    ],
-
-    // rule overrides
-
-    "rules": [
-
-      {
-
-        "id": "<RULE_ID>",
-
-        "property-to-modify": "value",
-
-        "property-to-modify": "value"
-
-      }
-
-    ]
-
-  }
-
-}
-
-
+"action_parameters": {  "id": "<RULESET_ID>",  "overrides": {    // ruleset overrides    "property-to-modify": "value",    "property-to-modify": "value",    // tag overrides    "categories": [      {        "category": "<TAG_NAME>",        "property-to-modify": "value",        "property-to-modify": "value"      }    ],    // rule overrides    "rules": [      {        "id": "<RULE_ID>",        "property-to-modify": "value",        "property-to-modify": "value"      }    ]  }}
 ```
 
 You can override the following rule properties:
@@ -118,7 +69,7 @@ The following `PUT` request adds a rule that executes a managed ruleset in the `
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Response Compression Write`
 * `Config Settings Write`
 * `Dynamic URL Redirects Write`
@@ -144,56 +95,7 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Update a zone entry point ruleset
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "description": "Deploy managed ruleset, enabling a specific rule with log action",
-
-    "rules": [
-
-        {
-
-            "action": "execute",
-
-            "expression": "true",
-
-            "action_parameters": {
-
-                "id": "<MANAGED_RULESET_ID>",
-
-                "overrides": {
-
-                    "rules": [
-
-                        {
-
-                            "id": "<RULE_ID>",
-
-                            "enabled": true,
-
-                            "action": "log"
-
-                        }
-
-                    ]
-
-                }
-
-            }
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "description": "Deploy managed ruleset, enabling a specific rule with log action",    "rules": [        {            "action": "execute",            "expression": "true",            "action_parameters": {                "id": "<MANAGED_RULESET_ID>",                "overrides": {                    "rules": [                        {                            "id": "<RULE_ID>",                            "enabled": true,                            "action": "log"                        }                    ]                }            }        }    ]  }'
 ```
 
 ### Ruleset override example
@@ -202,7 +104,7 @@ The following `PUT` request adds a rule that executes a managed ruleset in the `
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Mass URL Redirects Write`
 * `Magic Firewall Write`
 * `L4 DDoS Managed Ruleset Write`
@@ -215,44 +117,7 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Update an account entry point ruleset
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "description": "Deploy managed ruleset for example.com, overriding the rules action to log",
-
-    "rules": [
-
-        {
-
-            "action": "execute",
-
-            "expression": "(cf.zone.name eq \"example.com\") and cf.zone.plan eq \"ENT\"",
-
-            "action_parameters": {
-
-                "id": "<MANAGED_RULESET_ID>",
-
-                "overrides": {
-
-                    "action": "log"
-
-                }
-
-            }
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "description": "Deploy managed ruleset for example.com, overriding the rules action to log",    "rules": [        {            "action": "execute",            "expression": "(cf.zone.name eq \"example.com\") and cf.zone.plan eq \"ENT\"",            "action_parameters": {                "id": "<MANAGED_RULESET_ID>",                "overrides": {                    "action": "log"                }            }        }    ]  }'
 ```
 
 ## More resources

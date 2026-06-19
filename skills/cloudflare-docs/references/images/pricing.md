@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -65,9 +65,9 @@ The `format` parameter counts as only one billable transformation, even if multi
 
 If you serve 2,000 remote images in five different sizes each month, then this results in 10,000 unique transformations. Your estimated cost for the month would be:
 
-| Usage           | Included                                              | Billable quantity | Price |                               |
-| --------------- | ----------------------------------------------------- | ----------------- | ----- | ----------------------------- |
-| Transformations | 10,000 unique transformations [1](#user-content-fn-5) | 5,000             | 5,000 | $2.50 [2](#user-content-fn-6) |
+|                 | Usage                                                 | Included | Billable quantity | Price                         |
+| --------------- | ----------------------------------------------------- | -------- | ----------------- | ----------------------------- |
+| Transformations | 10,000 unique transformations [1](#user-content-fn-5) | 5,000    | 5,000             | $2.50 [2](#user-content-fn-6) |
 
 #### Example #2
 
@@ -75,13 +75,13 @@ If you use [R2](https://developers.cloudflare.com/r2/) for storage then your est
 
 For example, if you upload 5,000 images to R2 with an average size of 5 MB, and serve 2,000 of those images in five different sizes, then your estimated cost for the month would be:
 
-| Usage              | Included                                              | Billable quantity | Price |                                 |
-| ------------------ | ----------------------------------------------------- | ----------------- | ----- | ------------------------------- |
-| Storage            | 25 GB [3](#user-content-fn-1)                         | 10 GB             | 15 GB | $0.22 [4](#user-content-fn-7)   |
-| Class A operations | 5,000 writes [5](#user-content-fn-2)                  | 1 million         | 0     | $0.00 [6](#user-content-fn-8)   |
-| Class B operations | 10,000 reads [7](#user-content-fn-3)                  | 10 million        | 0     | $0.00 [8](#user-content-fn-9)   |
-| Transformations    | 10,000 unique transformations [9](#user-content-fn-4) | 5,000             | 5,000 | $2.50 [10](#user-content-fn-10) |
-| **Total**          | **$2.72**                                             |                   |       |                                 |
+|                    | Usage                                                 | Included   | Billable quantity | Price                           |
+| ------------------ | ----------------------------------------------------- | ---------- | ----------------- | ------------------------------- |
+| Storage            | 25 GB [3](#user-content-fn-1)                         | 10 GB      | 15 GB             | $0.22 [4](#user-content-fn-7)   |
+| Class A operations | 5,000 writes [5](#user-content-fn-2)                  | 1 million  | 0                 | $0.00 [6](#user-content-fn-8)   |
+| Class B operations | 10,000 reads [7](#user-content-fn-3)                  | 10 million | 0                 | $0.00 [8](#user-content-fn-9)   |
+| Transformations    | 10,000 unique transformations [9](#user-content-fn-4) | 5,000      | 5,000             | $2.50 [10](#user-content-fn-10) |
+| **Total**          |                                                       |            |                   | **$2.72**                       |
 
 ### Images Stored
 

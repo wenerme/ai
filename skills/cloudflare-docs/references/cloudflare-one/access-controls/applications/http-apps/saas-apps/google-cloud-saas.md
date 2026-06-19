@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,9 +37,9 @@ When configuring Google Cloud with Access, the following limitations apply:
 4. For the authentication protocol, select **SAML**.
 5. Select **Add application**.
 6. Fill in the following fields:  
-   * **Entity ID**: `google.com`  
-   * **Assertion Consumer Service URL**: `https://www.google.com/a/<your_domain.com>/acs`  
-   * **Name ID format**: _Email_
+  * **Entity ID**: `google.com`
+  * **Assertion Consumer Service URL**: `https://www.google.com/a/<your_domain.com>/acs`
+  * **Name ID format**: _Email_
 7. Copy the **SSO endpoint**, **Access Entity ID or Issuer**, and **Public key**.
 8. Configure [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) for the application.
 9. Save the application.
@@ -56,9 +56,9 @@ When configuring Google Cloud with Access, the following limitations apply:
 2. Select **Third-party SSO profile for your organization** \> **Add SSO Profile**.
 3. Turn on **Set up SSO with third-party identity provider**.
 4. Fill in the following information:  
-   * **Sign-in page URL**: SSO endpoint from application configuration in Cloudflare One.  
-   * **Sign-out page URL**: `https://<team-name>.cloudflareaccess.com/cdn-cgi/access/logout`, where `<team-name>` is your Cloudflare One team name.  
-   * **Verification certificate**: Upload the `.crt` certificate file from step [2\. Create a x.509 certificate](#2-create-a-x509-certificate).
+  * **Sign-in page URL**: SSO endpoint from application configuration in Cloudflare One.
+  * **Sign-out page URL**: `https://<team-name>.cloudflareaccess.com/cdn-cgi/access/logout`, where `<team-name>` is your Cloudflare One team name.
+  * **Verification certificate**: Upload the `.crt` certificate file from step [2\. Create a x.509 certificate](#2-create-a-x509-certificate).
 5. (Optional) Turn on **Use a domain specific issuer**. If you select this option, Google will send an issuer specific to your Google Cloud domain (`google.com/a/<your_domain.com>` instead of the standard `google.com`).
 
 ## 4\. Test the integration

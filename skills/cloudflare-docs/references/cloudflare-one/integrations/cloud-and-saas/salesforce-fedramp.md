@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,8 +22,8 @@ The Salesforce (FedRAMP) integration detects a variety of data loss prevention, 
 
 * A FedRAMP-compliant Salesforce environment (most editions are compatible)
 * Permissions to a Salesforce organization with either:  
-   * System Administrator permission  
-   * Permissions for View Setup and Configuration, Customize Applications, and Modify All Data
+  * System Administrator permission
+  * Permissions for View Setup and Configuration, Customize Applications, and Modify All Data
 
 ## Integration permissions
 

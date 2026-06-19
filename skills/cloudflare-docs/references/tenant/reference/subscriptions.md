@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tenant/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -83,20 +83,7 @@ The following table lists sample values for various network services subscriptio
 If your reseller plan does not have access to a specific subscription, you will receive the following error when making an API call:
 
 ```
-
-"errors": [
-
-        {
-
-            "code": 1225,
-
-            "message": "Your account does not have access to this product. Contact billing@cloudflare.com for assistance."
-
-        }
-
-]
-
-
+"errors": [        {            "code": 1225,            "message": "Your account does not have access to this product. Contact billing@cloudflare.com for assistance."        }]
 ```
 
 To change your program or - in some cases - get a specific subscription added to your reseller plan, contact `partners@cloudflare.com`. Agency Partners should contact [agency@cloudflare.com](mailto:agency@cloudflare.com)

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,75 +27,27 @@ Whisper is a general-purpose speech recognition model. It is trained on a large 
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-5102)
-* [  curl ](#tab-panel-5103)
+* [  TypeScript ](#tab-panel-5176)
+* [  curl ](#tab-panel-5177)
 
 ```
-
-export interface Env {
-
-  AI: Ai;
-
-}
-
-
-export default {
-
-  async fetch(request, env): Promise<Response> {
-
-    const res = await fetch(
-
-      "https://github.com/Azure-Samples/cognitive-services-speech-sdk/raw/master/samples/cpp/windows/console/samples/enrollment_audio_katie.wav"
-
-    );
-
-    const blob = await res.arrayBuffer();
-
-
-    const input = {
-
-      audio: [...new Uint8Array(blob)],
-
-    };
-
-
-    const response = await env.AI.run(
-
-      "@cf/openai/whisper",
-
-      input
-
-    );
-
-
-    return Response.json({ input: { audio: [] }, response });
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export interface Env {  AI: Ai;}
+export default {  async fetch(request, env): Promise<Response> {    const res = await fetch(      "https://github.com/Azure-Samples/cognitive-services-speech-sdk/raw/master/samples/cpp/windows/console/samples/enrollment_audio_katie.wav"    );    const blob = await res.arrayBuffer();
+    const input = {      audio: [...new Uint8Array(blob)],    };
+    const response = await env.AI.run(      "@cf/openai/whisper",      input    );
+    return Response.json({ input: { audio: [] }, response });  },} satisfies ExportedHandler<Env>;
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/openai/whisper  \
-
-  -X POST  \
-
-  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
-
-  --data-binary "@talking-llama.mp3"
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/openai/whisper  \  -X POST  \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \  --data-binary "@talking-llama.mp3"
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-5104)
-* [ Output ](#tab-panel-5105)
+* [ Input ](#tab-panel-5178)
+* [ Output ](#tab-panel-5179)
 
 Option 1
 
@@ -125,7 +77,7 @@ vtt
 
 Input [ ](https://developers.cloudflare.com/workers-ai/models/whisper/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/whisper/schema-input.json "Download") 
 
-Output [ ](https://developers.cloudflare.com/workers-ai/models/whisper/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/whisper/schema-output.json "Download") 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/whisper/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/whisper/schema-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/whisper/#page","headline":"whisper (OpenAI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Whisper is a general-purpose speech recognition model. It is trained on a large dataset of diverse audio and is also a multitasking model that can perform multilingual speech recognition, speech translation, and language identification.","url":"https://developers.cloudflare.com/workers-ai/models/whisper/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

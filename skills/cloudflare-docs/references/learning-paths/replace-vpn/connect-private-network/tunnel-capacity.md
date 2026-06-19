@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,9 +23,9 @@ If you have exhausted the ports on a single machine, you will need to add additi
 To determine how many `cloudflared` host servers you need:
 
 1. Start with our baseline recommendations:  
-   * Run a [cloudflared replica](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/#cloudflared-replicas) on two dedicated host machines per network location. Using two hosts enables server-side redundancy and traffic balancing.  
-   * Size each host with minimum 4GB of RAM and 4 CPU cores.  
-   * Allocate 50,000 [ports](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/system-requirements/#number-of-ports) to the `cloudflared` process on each host.  
+  * Run a [cloudflared replica](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/#cloudflared-replicas) on two dedicated host machines per network location. Using two hosts enables server-side redundancy and traffic balancing.
+  * Size each host with minimum 4GB of RAM and 4 CPU cores.
+  * Allocate 50,000 [ports](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/system-requirements/#number-of-ports) to the `cloudflared` process on each host.  
 This setup is usually sufficient to handle traffic from 8,000 users (4,000 per host).
 2. After you have completed this learning path and have users actively engaging with the network, [calculate](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/system-requirements/#calculate-your-tunnel-capacity) your actual tunnel usage.
 3. Decide how much headroom you want to include and [resize the tunnel](#scale-the-tunnel) if needed.

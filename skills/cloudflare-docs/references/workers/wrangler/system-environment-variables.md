@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,10 +31,7 @@ For example, if you set `API_HOST="localhost:3000"` in your `.env` file, you can
 JavaScript
 
 ```
-
 const apiHost = env.API_HOST;
-
-
 ```
 
 See the [Environment variables and secrets](https://developers.cloudflare.com/workers/development-testing/environment-variables/) page for more information on how to use `.env` files in local development.
@@ -43,70 +40,91 @@ See the [Environment variables and secrets](https://developers.cloudflare.com/wo
 
 Wrangler supports the following environment variables:
 
-* `CLOUDFLARE_ACCOUNT_ID` ` string ` optional  
-   * The [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) for the Workers related account.
-* `CLOUDFLARE_API_TOKEN` ` string ` optional  
-   * The [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) for your Cloudflare account, can be used for authentication for situations like CI/CD, and other automation.
-* `CLOUDFLARE_API_KEY` ` string ` optional  
-   * The API key for your Cloudflare account, usually used for older authentication method with `CLOUDFLARE_EMAIL=`.
-* `CLOUDFLARE_EMAIL` ` string ` optional  
-   * The email address associated with your Cloudflare account, usually used for older authentication method with `CLOUDFLARE_API_KEY=`.
-* `CLOUDFLARE_ACCESS_CLIENT_ID` ` string ` optional  
-   * The Client ID of a [Cloudflare Access Service Token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/), used to authenticate with Access-protected domains in non-interactive environments such as CI/CD pipelines. Must be set together with `CLOUDFLARE_ACCESS_CLIENT_SECRET`. When both variables are set, Wrangler authenticates using the service token instead of launching `cloudflared access login`. For the full Access policy and service token setup, refer to [Connect to Access-protected Workers](https://developers.cloudflare.com/workers/development-testing/#connect-to-access-protected-workers).
-* `CLOUDFLARE_ACCESS_CLIENT_SECRET` ` string ` optional  
-   * The Client Secret of a [Cloudflare Access Service Token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/), used together with `CLOUDFLARE_ACCESS_CLIENT_ID` to authenticate with Access-protected domains in non-interactive environments. For the full Access policy and service token setup, refer to [Connect to Access-protected Workers](https://developers.cloudflare.com/workers/development-testing/#connect-to-access-protected-workers).
-* `CLOUDFLARE_ENV` ` string ` optional  
-   * The [environment](https://developers.cloudflare.com/workers/wrangler/environments/) to use for Wrangler commands. This allows you to select an environment without using the `--env` flag. For example, `CLOUDFLARE_ENV=production wrangler deploy` will deploy to the `production` environment. The `--env` command line argument takes precedence over this environment variable.
-* `NODE_ENV` ` string ` optional  
-   * Sets the value of `process.env.NODE_ENV` in your Worker code. Defaults to `"development"` for `wrangler dev` and `"production"` for `wrangler deploy` and `wrangler versions upload`. Refer to [Bundling](https://developers.cloudflare.com/workers/wrangler/bundling/#node%5Fenv) for more information.
-* `WRANGLER_SEND_METRICS` ` boolean ` optional  
-   * Options for this are `true` and `false`. Defaults to `true`. Controls whether Wrangler can send anonymous usage data to Cloudflare for this project. You can learn more about this in our [data policy ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler/telemetry.md).
-* `WRANGLER_SEND_ERROR_REPORTS` ` boolean ` optional  
-   * Options for this are `true` and `false`. Defaults to `undefined`. Controls whether Wrangler can send non-user error reports to Cloudflare for this project. If `undefined`, Wrangler will ask the user whether to send an error report each time there is a non-user error.
-* `CLOUDFLARE_HYPERDRIVE_LOCAL_CONNECTION_STRING_<BINDING_NAME>` ` string ` optional  
-   * The [local connection string](https://developers.cloudflare.com/hyperdrive/configuration/local-development/) for your database to use in local development with [Hyperdrive](https://developers.cloudflare.com/hyperdrive/). For example, if the binding for your Hyperdrive is named `PROD_DB`, this would be `CLOUDFLARE_HYPERDRIVE_LOCAL_CONNECTION_STRING_PROD_DB="postgres://user:password@127.0.0.1:5432/testdb"`. Each Hyperdrive is uniquely distinguished by the binding name.
-* `CLOUDFLARE_API_BASE_URL` ` string ` optional  
-   * The default value is `"https://api.cloudflare.com/client/v4"`.
-* `WRANGLER_LOG` ` string ` optional  
-   * Options for Logging levels are `"none"`, `"error"`, `"warn"`, `"info"`, `"log"` and `"debug"`. Levels are case-insensitive and default to `"log"`. If an invalid level is specified, Wrangler will fallback to the default. Logs can include requests to Cloudflare's API, any usage data being collected, and more verbose error logs.
-* `WRANGLER_LOG_PATH` ` string ` optional  
-   * A file or directory path where Wrangler will write debug logs. If the path ends in `.log`, Wrangler will consider this the path to a file where all logs will be written. Otherwise, Wrangler will treat the path as a directory where it will write one or more log files using a timestamp for the filenames.
-* `WRANGLER_LOG_SANITIZE` ` boolean ` optional  
-   * Options for this are `true` and `false`. Defaults to `true`. Controls whether Wrangler will sanitize any sensitive information from logs written to the console or to a log file. Sensitive information includes API tokens, email addresses, account IDs, and more.
-* `FORCE_COLOR` ` string ` optional  
-   * By setting this to `0`, you can disable Wrangler's colorised output, which makes it easier to read with some terminal setups. For example, `FORCE_COLOR=0`.
-* `WRANGLER_HTTPS_KEY_PATH` ` string ` optional  
-   * Path to a custom HTTPS certificate key when running `wrangler dev`, to be used with `WRANGLER_HTTPS_CERT_PATH`.
-* `WRANGLER_HTTPS_CERT_PATH` ` string ` optional  
-   * Path to a custom HTTPS certificate when running `wrangler dev`, to be used with `WRANGLER_HTTPS_KEY_PATH`.
-* `DOCKER_HOST` ` string ` optional  
-   * Used for local development of [Containers](https://developers.cloudflare.com/containers/local-dev). Wrangler will attempt to automatically find the correct socket to use to communicate with your container engine. If that does not work (usually surfacing as an `internal error` when attempting to connect to your Container), you can try setting the socket path using this environment variable.
-* `WRANGLER_R2_SQL_AUTH_TOKEN` ` string ` optional  
-   * API token used for executing queries with [R2 SQL](https://developers.cloudflare.com/r2-sql).
-* `WRANGLER_OUTPUT_FILE_PATH` ` string ` optional  
-   * Specifies a file path where Wrangler will write output data in [ND-JSON ↗](https://github.com/ndjson/ndjson-spec) (newline-delimited JSON) format. Each line in the file is a separate JSON object containing information about Wrangler operations such as deployments, version uploads, and errors. This is useful for CI/CD pipelines and automation tools that need to programmatically access deployment information. If both `WRANGLER_OUTPUT_FILE_PATH` and `WRANGLER_OUTPUT_FILE_DIRECTORY` are set, `WRANGLER_OUTPUT_FILE_PATH` takes precedence.
-* `WRANGLER_OUTPUT_FILE_DIRECTORY` ` string ` optional  
-   * Specifies a directory where Wrangler will create a randomly-named file (format: `wrangler-output-<timestamp>-<random>.json`) to write output data in [ND-JSON ↗](https://github.com/ndjson/ndjson-spec) format. This is useful when you want to keep output files organized in a specific directory but do not need to control the exact filename. If both `WRANGLER_OUTPUT_FILE_PATH` and `WRANGLER_OUTPUT_FILE_DIRECTORY` are set, `WRANGLER_OUTPUT_FILE_PATH` takes precedence.
-* `WRANGLER_CACHE_DIR` ` string ` optional  
-   * Custom directory for Wrangler's cache files. When set, this overrides the default cache location (`node_modules/.cache/wrangler`). Useful for environments that do not use a traditional `node_modules` directory, such as Yarn PnP.
-* `MINIFLARE_CACHE_DIR` ` string ` optional  
-   * Custom directory for Miniflare's `cf.json` cache file, used during local development with `wrangler dev`. When set, this overrides the default cache location (`node_modules/.mf`). Useful for environments that do not use a traditional `node_modules` directory, such as Yarn PnP.
-* `CLOUDFLARE_CF_FETCH_ENABLED` ` string ` optional  
-   * Controls whether [Miniflare](https://developers.cloudflare.com/workers/testing/miniflare/) fetches the `cf.json` file containing [Request.cf](https://developers.cloudflare.com/workers/runtime-apis/request/#the-cf-property-requestinitcfproperties) properties from Cloudflare during local development. Set to `"false"` or `"0"` to disable fetching entirely and use fallback data. No `node_modules/.mf/cf.json` file will be created when disabled. Defaults to `"true"`. This is particularly useful for non-JavaScript projects (such as Rust or Go Workers) that do not want a `node_modules` directory created automatically. The explicit `cf` option in the [Miniflare API](https://developers.cloudflare.com/workers/testing/miniflare/get-started/#requestcf-object) takes precedence over this environment variable.
-* `CLOUDFLARE_CF_FETCH_PATH` ` string ` optional  
-   * Specifies a custom path for caching the `cf.json` file, overriding the default `node_modules/.mf/cf.json` location. This is useful for multi-project setups where you want a shared cache location, or for projects that want to store the cache outside of `node_modules`. The explicit `cf` option in the [Miniflare API](https://developers.cloudflare.com/workers/testing/miniflare/get-started/#requestcf-object) takes precedence over this environment variable, and `CLOUDFLARE_CF_FETCH_ENABLED=false` takes precedence over this variable.
+* `CLOUDFLARE_ACCOUNT_ID` ` string ` optional
+
+  * The [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) for the Workers related account.
+* `CLOUDFLARE_API_TOKEN` ` string ` optional
+
+  * The [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) for your Cloudflare account, can be used for authentication for situations like CI/CD, and other automation.
+* `CLOUDFLARE_API_KEY` ` string ` optional
+
+  * The API key for your Cloudflare account, usually used for older authentication method with `CLOUDFLARE_EMAIL=`.
+* `CLOUDFLARE_EMAIL` ` string ` optional
+
+  * The email address associated with your Cloudflare account, usually used for older authentication method with `CLOUDFLARE_API_KEY=`.
+* `CLOUDFLARE_ACCESS_CLIENT_ID` ` string ` optional
+
+  * The Client ID of a [Cloudflare Access Service Token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/), used to authenticate with Access-protected domains in non-interactive environments such as CI/CD pipelines. Must be set together with `CLOUDFLARE_ACCESS_CLIENT_SECRET`. When both variables are set, Wrangler authenticates using the service token instead of launching `cloudflared access login`. For the full Access policy and service token setup, refer to [Connect to Access-protected Workers](https://developers.cloudflare.com/workers/development-testing/#connect-to-access-protected-workers).
+* `CLOUDFLARE_ACCESS_CLIENT_SECRET` ` string ` optional
+
+  * The Client Secret of a [Cloudflare Access Service Token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/), used together with `CLOUDFLARE_ACCESS_CLIENT_ID` to authenticate with Access-protected domains in non-interactive environments. For the full Access policy and service token setup, refer to [Connect to Access-protected Workers](https://developers.cloudflare.com/workers/development-testing/#connect-to-access-protected-workers).
+* `CLOUDFLARE_ENV` ` string ` optional
+
+  * The [environment](https://developers.cloudflare.com/workers/wrangler/environments/) to use for Wrangler commands. This allows you to select an environment without using the `--env` flag. For example, `CLOUDFLARE_ENV=production wrangler deploy` will deploy to the `production` environment. The `--env` command line argument takes precedence over this environment variable.
+* `NODE_ENV` ` string ` optional
+
+  * Sets the value of `process.env.NODE_ENV` in your Worker code. Defaults to `"development"` for `wrangler dev` and `"production"` for `wrangler deploy` and `wrangler versions upload`. Refer to [Bundling](https://developers.cloudflare.com/workers/wrangler/bundling/#node%5Fenv) for more information.
+* `WRANGLER_SEND_METRICS` ` boolean ` optional
+
+  * Options for this are `true` and `false`. Defaults to `true`. Controls whether Wrangler can send anonymous usage data to Cloudflare for this project. You can learn more about this in our [data policy ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler/telemetry.md).
+* `WRANGLER_SEND_ERROR_REPORTS` ` boolean ` optional
+
+  * Options for this are `true` and `false`. Defaults to `undefined`. Controls whether Wrangler can send non-user error reports to Cloudflare for this project. If `undefined`, Wrangler will ask the user whether to send an error report each time there is a non-user error.
+* `CLOUDFLARE_HYPERDRIVE_LOCAL_CONNECTION_STRING_<BINDING_NAME>` ` string ` optional
+
+  * The [local connection string](https://developers.cloudflare.com/hyperdrive/configuration/local-development/) for your database to use in local development with [Hyperdrive](https://developers.cloudflare.com/hyperdrive/). For example, if the binding for your Hyperdrive is named `PROD_DB`, this would be `CLOUDFLARE_HYPERDRIVE_LOCAL_CONNECTION_STRING_PROD_DB="postgres://user:password@127.0.0.1:5432/testdb"`. Each Hyperdrive is uniquely distinguished by the binding name.
+* `CLOUDFLARE_API_BASE_URL` ` string ` optional
+
+  * The default value is `"https://api.cloudflare.com/client/v4"`.
+* `WRANGLER_LOG` ` string ` optional
+
+  * Options for Logging levels are `"none"`, `"error"`, `"warn"`, `"info"`, `"log"` and `"debug"`. Levels are case-insensitive and default to `"log"`. If an invalid level is specified, Wrangler will fallback to the default. Logs can include requests to Cloudflare's API, any usage data being collected, and more verbose error logs.
+* `WRANGLER_LOG_PATH` ` string ` optional
+
+  * A file or directory path where Wrangler will write debug logs. If the path ends in `.log`, Wrangler will consider this the path to a file where all logs will be written. Otherwise, Wrangler will treat the path as a directory where it will write one or more log files using a timestamp for the filenames.
+* `WRANGLER_LOG_SANITIZE` ` boolean ` optional
+
+  * Options for this are `true` and `false`. Defaults to `true`. Controls whether Wrangler will sanitize any sensitive information from logs written to the console or to a log file. Sensitive information includes API tokens, email addresses, account IDs, and more.
+* `FORCE_COLOR` ` string ` optional
+
+  * By setting this to `0`, you can disable Wrangler's colorised output, which makes it easier to read with some terminal setups. For example, `FORCE_COLOR=0`.
+* `WRANGLER_HTTPS_KEY_PATH` ` string ` optional
+
+  * Path to a custom HTTPS certificate key when running `wrangler dev`, to be used with `WRANGLER_HTTPS_CERT_PATH`.
+* `WRANGLER_HTTPS_CERT_PATH` ` string ` optional
+
+  * Path to a custom HTTPS certificate when running `wrangler dev`, to be used with `WRANGLER_HTTPS_KEY_PATH`.
+* `DOCKER_HOST` ` string ` optional
+
+  * Used for local development of [Containers](https://developers.cloudflare.com/containers/local-dev). Wrangler will attempt to automatically find the correct socket to use to communicate with your container engine. If that does not work (usually surfacing as an `internal error` when attempting to connect to your Container), you can try setting the socket path using this environment variable.
+* `WRANGLER_R2_SQL_AUTH_TOKEN` ` string ` optional
+
+  * API token used for executing queries with [R2 SQL](https://developers.cloudflare.com/r2-sql).
+* `WRANGLER_OUTPUT_FILE_PATH` ` string ` optional
+
+  * Specifies a file path where Wrangler will write output data in [ND-JSON ↗](https://github.com/ndjson/ndjson-spec) (newline-delimited JSON) format. Each line in the file is a separate JSON object containing information about Wrangler operations such as deployments, version uploads, and errors. This is useful for CI/CD pipelines and automation tools that need to programmatically access deployment information. If both `WRANGLER_OUTPUT_FILE_PATH` and `WRANGLER_OUTPUT_FILE_DIRECTORY` are set, `WRANGLER_OUTPUT_FILE_PATH` takes precedence.
+* `WRANGLER_OUTPUT_FILE_DIRECTORY` ` string ` optional
+
+  * Specifies a directory where Wrangler will create a randomly-named file (format: `wrangler-output-<timestamp>-<random>.json`) to write output data in [ND-JSON ↗](https://github.com/ndjson/ndjson-spec) format. This is useful when you want to keep output files organized in a specific directory but do not need to control the exact filename. If both `WRANGLER_OUTPUT_FILE_PATH` and `WRANGLER_OUTPUT_FILE_DIRECTORY` are set, `WRANGLER_OUTPUT_FILE_PATH` takes precedence.
+* `WRANGLER_CACHE_DIR` ` string ` optional
+
+  * Custom directory for Wrangler's cache files. When set, this overrides the default cache location (`node_modules/.cache/wrangler`). Useful for environments that do not use a traditional `node_modules` directory, such as Yarn PnP.
+* `MINIFLARE_CACHE_DIR` ` string ` optional
+
+  * Custom directory for Miniflare's `cf.json` cache file, used during local development with `wrangler dev`. When set, this overrides the default cache location (`node_modules/.mf`). Useful for environments that do not use a traditional `node_modules` directory, such as Yarn PnP.
+* `CLOUDFLARE_CF_FETCH_ENABLED` ` string ` optional
+
+  * Controls whether [Miniflare](https://developers.cloudflare.com/workers/testing/miniflare/) fetches the `cf.json` file containing [Request.cf](https://developers.cloudflare.com/workers/runtime-apis/request/#the-cf-property-requestinitcfproperties) properties from Cloudflare during local development. Set to `"false"` or `"0"` to disable fetching entirely and use fallback data. No `node_modules/.mf/cf.json` file will be created when disabled. Defaults to `"true"`. This is particularly useful for non-JavaScript projects (such as Rust or Go Workers) that do not want a `node_modules` directory created automatically. The explicit `cf` option in the [Miniflare API](https://developers.cloudflare.com/workers/testing/miniflare/get-started/#requestcf-object) takes precedence over this environment variable.
+* `CLOUDFLARE_CF_FETCH_PATH` ` string ` optional
+
+  * Specifies a custom path for caching the `cf.json` file, overriding the default `node_modules/.mf/cf.json` location. This is useful for multi-project setups where you want a shared cache location, or for projects that want to store the cache outside of `node_modules`. The explicit `cf` option in the [Miniflare API](https://developers.cloudflare.com/workers/testing/miniflare/get-started/#requestcf-object) takes precedence over this environment variable, and `CLOUDFLARE_CF_FETCH_ENABLED=false` takes precedence over this variable.
 
 ### Example output file
 
 When these environment variables are set, Wrangler writes one JSON object per line to the output file. Each entry includes a `timestamp` field and a `type` field indicating the kind of operation. Here is an example of what the file might contain after running `wrangler deploy`:
 
 ```
-
-{"type":"wrangler-session","version":1,"wrangler_version":"3.78.0","command_line_args":["deploy"],"log_file_path":"/path/to/logs/wrangler-2024-11-03_12-00-00_abc.log","timestamp":"2024-11-03T12:00:00.000Z"}
-
-{"type":"deploy","version":1,"worker_name":"my-worker","worker_tag":"abc123def456","version_id":"v1-abc123","targets":["https://my-worker.example.workers.dev"],"worker_name_overridden":false,"wrangler_environment":"production","timestamp":"2024-11-03T12:00:05.000Z"}
-
-
+{"type":"wrangler-session","version":1,"wrangler_version":"3.78.0","command_line_args":["deploy"],"log_file_path":"/path/to/logs/wrangler-2024-11-03_12-00-00_abc.log","timestamp":"2024-11-03T12:00:00.000Z"}{"type":"deploy","version":1,"worker_name":"my-worker","worker_tag":"abc123def456","version_id":"v1-abc123","targets":["https://my-worker.example.workers.dev"],"worker_name_overridden":false,"wrangler_environment":"production","timestamp":"2024-11-03T12:00:05.000Z"}
 ```
 
 The `wrangler-session` entry is written when Wrangler starts and contains information about the command being run. The `deploy` entry is written when a deployment completes successfully and includes the worker name, version ID, and deployment URLs.
@@ -125,26 +143,7 @@ The following is an example `.env` file:
 Terminal window
 
 ```
-
-CLOUDFLARE_ACCOUNT_ID=<YOUR_ACCOUNT_ID_VALUE>
-
-CLOUDFLARE_API_TOKEN=<YOUR_API_TOKEN_VALUE>
-
-CLOUDFLARE_EMAIL=<YOUR_EMAIL>
-
-WRANGLER_SEND_METRICS=true
-
-CLOUDFLARE_API_BASE_URL=https://api.cloudflare.com/client/v4
-
-WRANGLER_LOG=debug
-
-WRANGLER_LOG_PATH=../Desktop/my-logs/my-log-file.log
-
-WRANGLER_R2_SQL_AUTH_TOKEN=<YOUR_R2_API_TOKEN_VALUE>
-
-CLOUDFLARE_CF_FETCH_ENABLED=false
-
-
+CLOUDFLARE_ACCOUNT_ID=<YOUR_ACCOUNT_ID_VALUE>CLOUDFLARE_API_TOKEN=<YOUR_API_TOKEN_VALUE>CLOUDFLARE_EMAIL=<YOUR_EMAIL>WRANGLER_SEND_METRICS=trueCLOUDFLARE_API_BASE_URL=https://api.cloudflare.com/client/v4WRANGLER_LOG=debugWRANGLER_LOG_PATH=../Desktop/my-logs/my-log-file.logWRANGLER_R2_SQL_AUTH_TOKEN=<YOUR_R2_API_TOKEN_VALUE>CLOUDFLARE_CF_FETCH_ENABLED=false
 ```
 
 ## Deprecated global variables

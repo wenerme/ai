@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -24,35 +24,26 @@ The `r2 bucket` commands allow you to manage application data in the Cloudflare 
 
 Create a new R2 bucket
 
-* [  npm ](#tab-panel-9805)
-* [  pnpm ](#tab-panel-9806)
-* [  yarn ](#tab-panel-9807)
+* [  npm ](#tab-panel-9881)
+* [  pnpm ](#tab-panel-9882)
+* [  yarn ](#tab-panel-9883)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket create [NAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket create [NAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket create [NAME]
-
-
 ```
 
 * `[NAME]` ` string ` required  
@@ -93,35 +84,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get information about an R2 bucket
 
-* [  npm ](#tab-panel-9808)
-* [  pnpm ](#tab-panel-9809)
-* [  yarn ](#tab-panel-9810)
+* [  npm ](#tab-panel-9884)
+* [  pnpm ](#tab-panel-9885)
+* [  yarn ](#tab-panel-9886)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket info [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket info [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket info [BUCKET]
-
-
 ```
 
 * `[BUCKET]` ` string ` required  
@@ -154,35 +136,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete an R2 bucket
 
-* [  npm ](#tab-panel-9811)
-* [  pnpm ](#tab-panel-9812)
-* [  yarn ](#tab-panel-9813)
+* [  npm ](#tab-panel-9887)
+* [  pnpm ](#tab-panel-9888)
+* [  yarn ](#tab-panel-9889)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket delete [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket delete [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket delete [BUCKET]
-
-
 ```
 
 * `[BUCKET]` ` string ` required  
@@ -213,35 +186,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List R2 buckets
 
-* [  npm ](#tab-panel-9814)
-* [  pnpm ](#tab-panel-9815)
-* [  yarn ](#tab-panel-9816)
+* [  npm ](#tab-panel-9890)
+* [  pnpm ](#tab-panel-9891)
+* [  yarn ](#tab-panel-9892)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket list
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket list
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket list
-
-
 ```
 
 * `--jurisdiction` ` string ` alias: --J  
@@ -270,35 +234,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Enable the data catalog on an R2 bucket
 
-* [  npm ](#tab-panel-9817)
-* [  pnpm ](#tab-panel-9818)
-* [  yarn ](#tab-panel-9819)
+* [  npm ](#tab-panel-9893)
+* [  pnpm ](#tab-panel-9894)
+* [  yarn ](#tab-panel-9895)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket catalog enable [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket catalog enable [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket catalog enable [BUCKET]
-
-
 ```
 
 * `[BUCKET]` ` string ` required  
@@ -327,35 +282,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Disable the data catalog for an R2 bucket
 
-* [  npm ](#tab-panel-9820)
-* [  pnpm ](#tab-panel-9821)
-* [  yarn ](#tab-panel-9822)
+* [  npm ](#tab-panel-9896)
+* [  pnpm ](#tab-panel-9897)
+* [  yarn ](#tab-panel-9898)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket catalog disable [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket catalog disable [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket catalog disable [BUCKET]
-
-
 ```
 
 * `[BUCKET]` ` string ` required  
@@ -384,35 +330,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get the status of the data catalog for an R2 bucket
 
-* [  npm ](#tab-panel-9823)
-* [  pnpm ](#tab-panel-9824)
-* [  yarn ](#tab-panel-9825)
+* [  npm ](#tab-panel-9899)
+* [  pnpm ](#tab-panel-9900)
+* [  yarn ](#tab-panel-9901)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket catalog get [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket catalog get [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket catalog get [BUCKET]
-
-
 ```
 
 * `[BUCKET]` ` string ` required  
@@ -441,35 +378,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Enable automatic file compaction for your R2 data catalog or a specific table
 
-* [  npm ](#tab-panel-9826)
-* [  pnpm ](#tab-panel-9827)
-* [  yarn ](#tab-panel-9828)
+* [  npm ](#tab-panel-9902)
+* [  pnpm ](#tab-panel-9903)
+* [  yarn ](#tab-panel-9904)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket catalog compaction enable [BUCKET] [NAMESPACE] [TABLE]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket catalog compaction enable [BUCKET] [NAMESPACE] [TABLE]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket catalog compaction enable [BUCKET] [NAMESPACE] [TABLE]
-
-
 ```
 
 * `[BUCKET]` ` string ` required  
@@ -507,52 +435,34 @@ Examples:
 Terminal window
 
 ```
-
-# Enable catalog-level compaction (requires token)
-
-npx wrangler r2 bucket catalog compaction enable my-bucket --token <TOKEN>
-
-
-# Enable table-level compaction
-
-npx wrangler r2 bucket catalog compaction enable my-bucket my-namespace my-table --target-size 256
-
-
+# Enable catalog-level compaction (requires token)npx wrangler r2 bucket catalog compaction enable my-bucket --token <TOKEN>
+# Enable table-level compactionnpx wrangler r2 bucket catalog compaction enable my-bucket my-namespace my-table --target-size 256
 ```
 
 ### `r2 bucket catalog compaction disable`
 
 Disable automatic file compaction for your R2 data catalog or a specific table
 
-* [  npm ](#tab-panel-9829)
-* [  pnpm ](#tab-panel-9830)
-* [  yarn ](#tab-panel-9831)
+* [  npm ](#tab-panel-9905)
+* [  pnpm ](#tab-panel-9906)
+* [  yarn ](#tab-panel-9907)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket catalog compaction disable [BUCKET] [NAMESPACE] [TABLE]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket catalog compaction disable [BUCKET] [NAMESPACE] [TABLE]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket catalog compaction disable [BUCKET] [NAMESPACE] [TABLE]
-
-
 ```
 
 * `[BUCKET]` ` string ` required  
@@ -586,52 +496,34 @@ Examples:
 Terminal window
 
 ```
-
-# Disable catalog-level compaction
-
-npx wrangler r2 bucket catalog compaction disable my-bucket
-
-
-# Disable table-level compaction
-
-npx wrangler r2 bucket catalog compaction disable my-bucket my-namespace my-table
-
-
+# Disable catalog-level compactionnpx wrangler r2 bucket catalog compaction disable my-bucket
+# Disable table-level compactionnpx wrangler r2 bucket catalog compaction disable my-bucket my-namespace my-table
 ```
 
 ### `r2 bucket catalog snapshot-expiration enable`
 
 Enable automatic snapshot expiration for your R2 data catalog or a specific table
 
-* [  npm ](#tab-panel-9832)
-* [  pnpm ](#tab-panel-9833)
-* [  yarn ](#tab-panel-9834)
+* [  npm ](#tab-panel-9908)
+* [  pnpm ](#tab-panel-9909)
+* [  yarn ](#tab-panel-9910)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket catalog snapshot-expiration enable [BUCKET] [NAMESPACE] [TABLE]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket catalog snapshot-expiration enable [BUCKET] [NAMESPACE] [TABLE]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket catalog snapshot-expiration enable [BUCKET] [NAMESPACE] [TABLE]
-
-
 ```
 
 * `[BUCKET]` ` string ` required  
@@ -670,35 +562,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Disable automatic snapshot expiration for your R2 data catalog or a specific table
 
-* [  npm ](#tab-panel-9835)
-* [  pnpm ](#tab-panel-9836)
-* [  yarn ](#tab-panel-9837)
+* [  npm ](#tab-panel-9911)
+* [  pnpm ](#tab-panel-9912)
+* [  yarn ](#tab-panel-9913)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket catalog snapshot-expiration disable [BUCKET] [NAMESPACE] [TABLE]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket catalog snapshot-expiration disable [BUCKET] [NAMESPACE] [TABLE]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket catalog snapshot-expiration disable [BUCKET] [NAMESPACE] [TABLE]
-
-
 ```
 
 * `[BUCKET]` ` string ` required  
@@ -733,35 +616,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Set the CORS configuration for an R2 bucket from a JSON file
 
-* [  npm ](#tab-panel-9838)
-* [  pnpm ](#tab-panel-9839)
-* [  yarn ](#tab-panel-9840)
+* [  npm ](#tab-panel-9914)
+* [  pnpm ](#tab-panel-9915)
+* [  yarn ](#tab-panel-9916)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket cors set [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket cors set [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket cors set [BUCKET]
-
-
 ```
 
 * `[BUCKET]` ` string ` required  
@@ -796,35 +670,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Clear the CORS configuration for an R2 bucket
 
-* [  npm ](#tab-panel-9841)
-* [  pnpm ](#tab-panel-9842)
-* [  yarn ](#tab-panel-9843)
+* [  npm ](#tab-panel-9917)
+* [  pnpm ](#tab-panel-9918)
+* [  yarn ](#tab-panel-9919)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket cors delete [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket cors delete [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket cors delete [BUCKET]
-
-
 ```
 
 * `[BUCKET]` ` string ` required  
@@ -857,35 +722,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List the CORS rules for an R2 bucket
 
-* [  npm ](#tab-panel-9844)
-* [  pnpm ](#tab-panel-9845)
-* [  yarn ](#tab-panel-9846)
+* [  npm ](#tab-panel-9920)
+* [  pnpm ](#tab-panel-9921)
+* [  yarn ](#tab-panel-9922)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket cors list [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket cors list [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket cors list [BUCKET]
-
-
 ```
 
 * `[BUCKET]` ` string ` required  
@@ -916,35 +772,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Enable public access via the r2.dev URL for an R2 bucket
 
-* [  npm ](#tab-panel-9847)
-* [  pnpm ](#tab-panel-9848)
-* [  yarn ](#tab-panel-9849)
+* [  npm ](#tab-panel-9923)
+* [  pnpm ](#tab-panel-9924)
+* [  yarn ](#tab-panel-9925)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket dev-url enable [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket dev-url enable [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket dev-url enable [BUCKET]
-
-
 ```
 
 * `[BUCKET]` ` string ` required  
@@ -977,35 +824,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Disable public access via the r2.dev URL for an R2 bucket
 
-* [  npm ](#tab-panel-9850)
-* [  pnpm ](#tab-panel-9851)
-* [  yarn ](#tab-panel-9852)
+* [  npm ](#tab-panel-9926)
+* [  pnpm ](#tab-panel-9927)
+* [  yarn ](#tab-panel-9928)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket dev-url disable [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket dev-url disable [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket dev-url disable [BUCKET]
-
-
 ```
 
 * `[BUCKET]` ` string ` required  
@@ -1038,35 +876,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get the r2.dev URL and status for an R2 bucket
 
-* [  npm ](#tab-panel-9853)
-* [  pnpm ](#tab-panel-9854)
-* [  yarn ](#tab-panel-9855)
+* [  npm ](#tab-panel-9929)
+* [  pnpm ](#tab-panel-9930)
+* [  yarn ](#tab-panel-9931)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket dev-url get [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket dev-url get [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket dev-url get [BUCKET]
-
-
 ```
 
 * `[BUCKET]` ` string ` required  
@@ -1097,35 +926,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Connect a custom domain to an R2 bucket
 
-* [  npm ](#tab-panel-9856)
-* [  pnpm ](#tab-panel-9857)
-* [  yarn ](#tab-panel-9858)
+* [  npm ](#tab-panel-9932)
+* [  pnpm ](#tab-panel-9933)
+* [  yarn ](#tab-panel-9934)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket domain add [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket domain add [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket domain add [BUCKET]
-
-
 ```
 
 * `[BUCKET]` ` string ` required  
@@ -1164,35 +984,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Remove a custom domain from an R2 bucket
 
-* [  npm ](#tab-panel-9859)
-* [  pnpm ](#tab-panel-9860)
-* [  yarn ](#tab-panel-9861)
+* [  npm ](#tab-panel-9935)
+* [  pnpm ](#tab-panel-9936)
+* [  yarn ](#tab-panel-9937)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket domain remove [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket domain remove [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket domain remove [BUCKET]
-
-
 ```
 
 * `[BUCKET]` ` string ` required  
@@ -1227,35 +1038,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Update settings for a custom domain connected to an R2 bucket
 
-* [  npm ](#tab-panel-9862)
-* [  pnpm ](#tab-panel-9863)
-* [  yarn ](#tab-panel-9864)
+* [  npm ](#tab-panel-9938)
+* [  pnpm ](#tab-panel-9939)
+* [  yarn ](#tab-panel-9940)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket domain update [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket domain update [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket domain update [BUCKET]
-
-
 ```
 
 * `[BUCKET]` ` string ` required  
@@ -1290,35 +1092,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get custom domain connected to an R2 bucket
 
-* [  npm ](#tab-panel-9865)
-* [  pnpm ](#tab-panel-9866)
-* [  yarn ](#tab-panel-9867)
+* [  npm ](#tab-panel-9941)
+* [  pnpm ](#tab-panel-9942)
+* [  yarn ](#tab-panel-9943)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket domain get [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket domain get [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket domain get [BUCKET]
-
-
 ```
 
 * `[BUCKET]` ` string ` required  
@@ -1351,35 +1144,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List custom domains for an R2 bucket
 
-* [  npm ](#tab-panel-9868)
-* [  pnpm ](#tab-panel-9869)
-* [  yarn ](#tab-panel-9870)
+* [  npm ](#tab-panel-9944)
+* [  pnpm ](#tab-panel-9945)
+* [  yarn ](#tab-panel-9946)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket domain list [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket domain list [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket domain list [BUCKET]
-
-
 ```
 
 * `[BUCKET]` ` string ` required  
@@ -1410,35 +1194,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Add a lifecycle rule to an R2 bucket
 
-* [  npm ](#tab-panel-9871)
-* [  pnpm ](#tab-panel-9872)
-* [  yarn ](#tab-panel-9873)
+* [  npm ](#tab-panel-9947)
+* [  pnpm ](#tab-panel-9948)
+* [  yarn ](#tab-panel-9949)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket lifecycle add [BUCKET] [NAME] [PREFIX]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket lifecycle add [BUCKET] [NAME] [PREFIX]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket lifecycle add [BUCKET] [NAME] [PREFIX]
-
-
 ```
 
 * `[BUCKET]` ` string ` required  
@@ -1485,35 +1260,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Remove a lifecycle rule from an R2 bucket
 
-* [  npm ](#tab-panel-9874)
-* [  pnpm ](#tab-panel-9875)
-* [  yarn ](#tab-panel-9876)
+* [  npm ](#tab-panel-9950)
+* [  pnpm ](#tab-panel-9951)
+* [  yarn ](#tab-panel-9952)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket lifecycle remove [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket lifecycle remove [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket lifecycle remove [BUCKET]
-
-
 ```
 
 * `[BUCKET]` ` string ` required  
@@ -1546,35 +1312,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List lifecycle rules for an R2 bucket
 
-* [  npm ](#tab-panel-9877)
-* [  pnpm ](#tab-panel-9878)
-* [  yarn ](#tab-panel-9879)
+* [  npm ](#tab-panel-9953)
+* [  pnpm ](#tab-panel-9954)
+* [  yarn ](#tab-panel-9955)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket lifecycle list [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket lifecycle list [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket lifecycle list [BUCKET]
-
-
 ```
 
 * `[BUCKET]` ` string ` required  
@@ -1605,35 +1362,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Set the lifecycle configuration for an R2 bucket from a JSON file
 
-* [  npm ](#tab-panel-9880)
-* [  pnpm ](#tab-panel-9881)
-* [  yarn ](#tab-panel-9882)
+* [  npm ](#tab-panel-9956)
+* [  pnpm ](#tab-panel-9957)
+* [  yarn ](#tab-panel-9958)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket lifecycle set [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket lifecycle set [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket lifecycle set [BUCKET]
-
-
 ```
 
 * `[BUCKET]` ` string ` required  
@@ -1668,35 +1416,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Add a lock rule to an R2 bucket
 
-* [  npm ](#tab-panel-9883)
-* [  pnpm ](#tab-panel-9884)
-* [  yarn ](#tab-panel-9885)
+* [  npm ](#tab-panel-9959)
+* [  pnpm ](#tab-panel-9960)
+* [  yarn ](#tab-panel-9961)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket lock add [BUCKET] [NAME] [PREFIX]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket lock add [BUCKET] [NAME] [PREFIX]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket lock add [BUCKET] [NAME] [PREFIX]
-
-
 ```
 
 * `[BUCKET]` ` string ` required  
@@ -1739,35 +1478,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Remove a bucket lock rule from an R2 bucket
 
-* [  npm ](#tab-panel-9886)
-* [  pnpm ](#tab-panel-9887)
-* [  yarn ](#tab-panel-9888)
+* [  npm ](#tab-panel-9962)
+* [  pnpm ](#tab-panel-9963)
+* [  yarn ](#tab-panel-9964)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket lock remove [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket lock remove [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket lock remove [BUCKET]
-
-
 ```
 
 * `[BUCKET]` ` string ` required  
@@ -1800,35 +1530,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List lock rules for an R2 bucket
 
-* [  npm ](#tab-panel-9889)
-* [  pnpm ](#tab-panel-9890)
-* [  yarn ](#tab-panel-9891)
+* [  npm ](#tab-panel-9965)
+* [  pnpm ](#tab-panel-9966)
+* [  yarn ](#tab-panel-9967)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket lock list [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket lock list [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket lock list [BUCKET]
-
-
 ```
 
 * `[BUCKET]` ` string ` required  
@@ -1859,35 +1580,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Set the lock configuration for an R2 bucket from a JSON file
 
-* [  npm ](#tab-panel-9892)
-* [  pnpm ](#tab-panel-9893)
-* [  yarn ](#tab-panel-9894)
+* [  npm ](#tab-panel-9968)
+* [  pnpm ](#tab-panel-9969)
+* [  yarn ](#tab-panel-9970)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket lock set [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket lock set [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket lock set [BUCKET]
-
-
 ```
 
 * `[BUCKET]` ` string ` required  
@@ -1922,35 +1634,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Create an event notification rule for an R2 bucket
 
-* [  npm ](#tab-panel-9895)
-* [  pnpm ](#tab-panel-9896)
-* [  yarn ](#tab-panel-9897)
+* [  npm ](#tab-panel-9971)
+* [  pnpm ](#tab-panel-9972)
+* [  yarn ](#tab-panel-9973)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket notification create [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket notification create [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket notification create [BUCKET]
-
-
 ```
 
 * `[BUCKET]` ` string ` required  
@@ -1991,35 +1694,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete an event notification rule from an R2 bucket
 
-* [  npm ](#tab-panel-9898)
-* [  pnpm ](#tab-panel-9899)
-* [  yarn ](#tab-panel-9900)
+* [  npm ](#tab-panel-9974)
+* [  pnpm ](#tab-panel-9975)
+* [  yarn ](#tab-panel-9976)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket notification delete [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket notification delete [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket notification delete [BUCKET]
-
-
 ```
 
 * `[BUCKET]` ` string ` required  
@@ -2054,35 +1748,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List event notification rules for an R2 bucket
 
-* [  npm ](#tab-panel-9901)
-* [  pnpm ](#tab-panel-9902)
-* [  yarn ](#tab-panel-9903)
+* [  npm ](#tab-panel-9977)
+* [  pnpm ](#tab-panel-9978)
+* [  yarn ](#tab-panel-9979)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket notification list [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket notification list [BUCKET]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket notification list [BUCKET]
-
-
 ```
 
 * `[BUCKET]` ` string ` required  
@@ -2113,35 +1798,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Enable Sippy on an R2 bucket
 
-* [  npm ](#tab-panel-9904)
-* [  pnpm ](#tab-panel-9905)
-* [  yarn ](#tab-panel-9906)
+* [  npm ](#tab-panel-9980)
+* [  pnpm ](#tab-panel-9981)
+* [  yarn ](#tab-panel-9982)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket sippy enable [NAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket sippy enable [NAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket sippy enable [NAME]
-
-
 ```
 
 * `[NAME]` ` string ` required  
@@ -2191,35 +1867,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Disable Sippy on an R2 bucket
 
-* [  npm ](#tab-panel-9907)
-* [  pnpm ](#tab-panel-9908)
-* [  yarn ](#tab-panel-9909)
+* [  npm ](#tab-panel-9983)
+* [  pnpm ](#tab-panel-9984)
+* [  yarn ](#tab-panel-9985)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket sippy disable [NAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket sippy disable [NAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket sippy disable [NAME]
-
-
 ```
 
 * `[NAME]` ` string ` required  
@@ -2250,35 +1917,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Check the status of Sippy on an R2 bucket
 
-* [  npm ](#tab-panel-9910)
-* [  pnpm ](#tab-panel-9911)
-* [  yarn ](#tab-panel-9912)
+* [  npm ](#tab-panel-9986)
+* [  pnpm ](#tab-panel-9987)
+* [  yarn ](#tab-panel-9988)
 
 Terminal window
 
 ```
-
 npx wrangler r2 bucket sippy get [NAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 bucket sippy get [NAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 bucket sippy get [NAME]
-
-
 ```
 
 * `[NAME]` ` string ` required  
@@ -2317,35 +1975,26 @@ The `r2 object` commands allow you to manage application data in the Cloudflare 
 
 Fetch an object from an R2 bucket
 
-* [  npm ](#tab-panel-9913)
-* [  pnpm ](#tab-panel-9914)
-* [  yarn ](#tab-panel-9915)
+* [  npm ](#tab-panel-9989)
+* [  pnpm ](#tab-panel-9990)
+* [  yarn ](#tab-panel-9991)
 
 Terminal window
 
 ```
-
 npx wrangler r2 object get [OBJECTPATH]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 object get [OBJECTPATH]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 object get [OBJECTPATH]
-
-
 ```
 
 * `[OBJECTPATH]` ` string ` required  
@@ -2386,35 +2035,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Create an object in an R2 bucket
 
-* [  npm ](#tab-panel-9916)
-* [  pnpm ](#tab-panel-9917)
-* [  yarn ](#tab-panel-9918)
+* [  npm ](#tab-panel-9992)
+* [  pnpm ](#tab-panel-9993)
+* [  yarn ](#tab-panel-9994)
 
 Terminal window
 
 ```
-
 npx wrangler r2 object put [OBJECTPATH]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 object put [OBJECTPATH]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 object put [OBJECTPATH]
-
-
 ```
 
 * `[OBJECTPATH]` ` string ` required  
@@ -2471,35 +2111,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete an object in an R2 bucket
 
-* [  npm ](#tab-panel-9919)
-* [  pnpm ](#tab-panel-9920)
-* [  yarn ](#tab-panel-9921)
+* [  npm ](#tab-panel-9995)
+* [  pnpm ](#tab-panel-9996)
+* [  yarn ](#tab-panel-9997)
 
 Terminal window
 
 ```
-
 npx wrangler r2 object delete [OBJECTPATH]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler r2 object delete [OBJECTPATH]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler r2 object delete [OBJECTPATH]
-
-
 ```
 
 * `[OBJECTPATH]` ` string ` required  

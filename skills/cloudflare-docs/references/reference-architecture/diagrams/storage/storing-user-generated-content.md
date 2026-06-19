@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -48,9 +48,9 @@ Use Case 1: Secure User Uploads to R2 via Signed URLs
 3. **Worker returns a signed PUT URL to R2:** A signed URL allows the frontend to upload directly to R2 for a limited time, under a specific key or namespace. There is no need for the Worker to handle large files directly.
 4. **Frontend uploads the file directly to R2:** The file is streamed directly from the client to R2.
 5. **(Optional) Trigger post-upload workflows:** R2 offers [event notifications](https://developers.cloudflare.com/r2/buckets/event-notifications/) to send messages to a queue when data in your R2 bucket changes, like a new upload. Example post-processing:  
-   * Scan, moderate, or transform the file.  
-   * Write metadata (for example, `user_id`, `file_path`, `timestamp`) to [D1](https://developers.cloudflare.com/d1/), Cloudflare's serverless SQL database.  
-   * Notify the user or update a dashboard/UI.
+  * Scan, moderate, or transform the file.
+  * Write metadata (for example, `user_id`, `file_path`, `timestamp`) to [D1](https://developers.cloudflare.com/d1/), Cloudflare's serverless SQL database.
+  * Notify the user or update a dashboard/UI.
 
 For more information on uploading data directly from the client to R2, refer to the documentation on [presigned URLs](https://developers.cloudflare.com/r2/api/s3/presigned-urls/).
 

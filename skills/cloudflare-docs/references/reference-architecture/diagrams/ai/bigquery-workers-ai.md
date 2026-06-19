@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -43,13 +43,13 @@ Figure 2: Ingesting Google BigQuery Data into Workers AI (cron-triggered)
 3. Worker receives the data from BigQuery and [transforms it into a format](https://developers.cloudflare.com/workers-ai/guides/tutorials/using-bigquery-with-workers-ai/#6-format-results-from-the-query) that will make it easier to iterate when interacting with Workers AI.
 4. Using its [native integration](https://developers.cloudflare.com/workers-ai/configuration/bindings/) with Workers AI, the Worker forwards the data from BigQuery to generate some content related to it.
 5. Optionally, you can store the BigQuery data and the AI-generated data in a variety of different Cloudflare services.  
-   * Into [D1](https://developers.cloudflare.com/d1/), a SQL database.  
-   * If in step four you used Workers AI to generate embeddings, you can store them in [Vectorize](https://developers.cloudflare.com/vectorize/). To learn more about this type of solution, please consider reviewing the reference architecture diagram on [Retrieval Augmented Generation](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-rag/).  
-   * To [Workers KV](https://developers.cloudflare.com/kv/) if the output of your data will be stored and consumed in a key/value fashion.  
-   * If you prefer to save the data fetched from BigQuery and Workers AI into objects (such as images, files, JSONs), you can use [R2](https://developers.cloudflare.com/r2/), our egress-free object storage to do so.
+  * Into [D1](https://developers.cloudflare.com/d1/), a SQL database.
+  * If in step four you used Workers AI to generate embeddings, you can store them in [Vectorize](https://developers.cloudflare.com/vectorize/). To learn more about this type of solution, please consider reviewing the reference architecture diagram on [Retrieval Augmented Generation](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-rag/).
+  * To [Workers KV](https://developers.cloudflare.com/kv/) if the output of your data will be stored and consumed in a key/value fashion.
+  * If you prefer to save the data fetched from BigQuery and Workers AI into objects (such as images, files, JSONs), you can use [R2](https://developers.cloudflare.com/r2/), our egress-free object storage to do so.
 6. You can set up an integration so a system or a user gets notified whenever a new result is available or if an error occurs. It's also worth mentioning that Workers by themselves can already provide additional [observability](https://developers.cloudflare.com/workers/observability/).  
-   * Sending an email with all the data retrieved and generated in the previous step is possible using [Email Routing](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/).  
-   * Since Workers allows you to issue HTTP requests, you can notify a webhook or API endpoint once the process finishes or if there's an error.
+  * Sending an email with all the data retrieved and generated in the previous step is possible using [Email Routing](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/).
+  * Since Workers allows you to issue HTTP requests, you can notify a webhook or API endpoint once the process finishes or if there's an error.
 
 ## Related resources
 

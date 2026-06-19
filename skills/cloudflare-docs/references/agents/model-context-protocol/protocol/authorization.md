@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -44,31 +44,8 @@ When you use a third-party OAuth provider, you must provide a handler to the `OA
 TypeScript
 
 ```
-
 import MyAuthHandler from "./auth-handler";
-
-
-export default new OAuthProvider({
-
-  apiRoute: "/mcp",
-
-  // Your MCP server:
-
-  apiHandler: MyMCPServer.serve("/mcp"),
-
-  // Replace this handler with your own handler for authentication and authorization with the third-party provider:
-
-  defaultHandler: MyAuthHandler,
-
-  authorizeEndpoint: "/authorize",
-
-  tokenEndpoint: "/token",
-
-  clientRegistrationEndpoint: "/register",
-
-});
-
-
+export default new OAuthProvider({  apiRoute: "/mcp",  // Your MCP server:  apiHandler: MyMCPServer.serve("/mcp"),  // Replace this handler with your own handler for authentication and authorization with the third-party provider:  defaultHandler: MyAuthHandler,  authorizeEndpoint: "/authorize",  tokenEndpoint: "/token",  clientRegistrationEndpoint: "/register",});
 ```
 
 Note that as [defined in the Model Context Protocol specification ↗](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#authorization-flow-steps) when you use a third-party OAuth provider, the MCP Server (your Worker) generates and issues its own token to the MCP client:
@@ -151,28 +128,7 @@ You provide your own handlers for your MCP Server's API, and authentication and 
 TypeScript
 
 ```
-
-export default new OAuthProvider({
-
-  apiRoute: "/mcp",
-
-  // Your MCP server:
-
-  apiHandler: MyMCPServer.serve("/mcp"),
-
-  // Your handler for authentication and authorization:
-
-  defaultHandler: MyAuthHandler,
-
-  authorizeEndpoint: "/authorize",
-
-  tokenEndpoint: "/token",
-
-  clientRegistrationEndpoint: "/register",
-
-});
-
-
+export default new OAuthProvider({  apiRoute: "/mcp",  // Your MCP server:  apiHandler: MyMCPServer.serve("/mcp"),  // Your handler for authentication and authorization:  defaultHandler: MyAuthHandler,  authorizeEndpoint: "/authorize",  tokenEndpoint: "/token",  clientRegistrationEndpoint: "/register",});
 ```
 
 Refer to the [getting started example](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/) for a complete example of the `OAuthProvider` in use, with a mock authentication flow.
@@ -210,39 +166,10 @@ The third type parameter on `McpAgent` defines the shape of the authentication c
 TypeScript
 
 ```
-
-import { McpAgent } from "agents/mcp";
-
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-
-
-type AuthContext = {
-
-  claims: { sub: string; name: string; email: string };
-
-  permissions: string[];
-
-};
-
-
-export class MyMCP extends McpAgent<Env, unknown, AuthContext> {
-
-  server = new McpServer({ name: "Auth Demo", version: "1.0.0" });
-
-
-  async init() {
-
-    this.server.tool("whoami", "Get the current user", {}, async () => ({
-
-      content: [{ type: "text", text: `Hello, ${this.props.claims.name}!` }],
-
-    }));
-
-  }
-
-}
-
-
+import { McpAgent } from "agents/mcp";import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+type AuthContext = {  claims: { sub: string; name: string; email: string };  permissions: string[];};
+export class MyMCP extends McpAgent<Env, unknown, AuthContext> {  server = new McpServer({ name: "Auth Demo", version: "1.0.0" });
+  async init() {    this.server.tool("whoami", "Get the current user", {}, async () => ({      content: [{ type: "text", text: `Hello, ${this.props.claims.name}!` }],    }));  }}
 ```
 
 ### With createMcpHandler
@@ -252,37 +179,10 @@ Use `getMcpAuthContext()` to access the same information from within a tool hand
 TypeScript
 
 ```
-
-import { createMcpHandler, getMcpAuthContext } from "agents/mcp";
-
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-
-
-function createServer() {
-
-  const server = new McpServer({ name: "Auth Demo", version: "1.0.0" });
-
-
-  server.tool("whoami", "Get the current user", {}, async () => {
-
-    const auth = getMcpAuthContext();
-
-    const name = (auth?.props?.name as string) ?? "anonymous";
-
-    return {
-
-      content: [{ type: "text", text: `Hello, ${name}!` }],
-
-    };
-
-  });
-
-
-  return server;
-
-}
-
-
+import { createMcpHandler, getMcpAuthContext } from "agents/mcp";import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+function createServer() {  const server = new McpServer({ name: "Auth Demo", version: "1.0.0" });
+  server.tool("whoami", "Get the current user", {}, async () => {    const auth = getMcpAuthContext();    const name = (auth?.props?.name as string) ?? "anonymous";    return {      content: [{ type: "text", text: `Hello, ${name}!` }],    };  });
+  return server;}
 ```
 
 ## Permission-based tool access
@@ -292,71 +192,10 @@ You can control which tools are available based on user permissions. There are t
 TypeScript
 
 ```
-
-export class MyMCP extends McpAgent<Env, unknown, AuthContext> {
-
-  server = new McpServer({ name: "Permissions Demo", version: "1.0.0" });
-
-
-  async init() {
-
-    this.server.tool("publicTool", "Available to all users", {}, async () => ({
-
-      content: [{ type: "text", text: "Public result" }],
-
-    }));
-
-
-    this.server.tool(
-
-      "adminAction",
-
-      "Requires admin permission",
-
-      {},
-
-      async () => {
-
-        if (!this.props.permissions?.includes("admin")) {
-
-          return {
-
-            content: [
-
-              { type: "text", text: "Permission denied: requires admin" },
-
-            ],
-
-          };
-
-        }
-
-        return {
-
-          content: [{ type: "text", text: "Admin action completed" }],
-
-        };
-
-      },
-
-    );
-
-
-    if (this.props.permissions?.includes("special_feature")) {
-
-      this.server.tool("specialTool", "Special feature", {}, async () => ({
-
-        content: [{ type: "text", text: "Special feature result" }],
-
-      }));
-
-    }
-
-  }
-
-}
-
-
+export class MyMCP extends McpAgent<Env, unknown, AuthContext> {  server = new McpServer({ name: "Permissions Demo", version: "1.0.0" });
+  async init() {    this.server.tool("publicTool", "Available to all users", {}, async () => ({      content: [{ type: "text", text: "Public result" }],    }));
+    this.server.tool(      "adminAction",      "Requires admin permission",      {},      async () => {        if (!this.props.permissions?.includes("admin")) {          return {            content: [              { type: "text", text: "Permission denied: requires admin" },            ],          };        }        return {          content: [{ type: "text", text: "Admin action completed" }],        };      },    );
+    if (this.props.permissions?.includes("special_feature")) {      this.server.tool("specialTool", "Special feature", {}, async () => ({        content: [{ type: "text", text: "Special feature result" }],      }));    }  }}
 ```
 
 Checking inside the handler returns an error message to the LLM, which can explain the denial to the user. Conditionally registering tools means the LLM never sees tools the user cannot access — it cannot attempt to call them at all.
@@ -365,7 +204,7 @@ Checking inside the handler returns an error message to the LLM, which can expla
 
 [ Workers OAuth Provider ](https://github.com/cloudflare/workers-oauth-provider) OAuth provider library for Workers. 
 
-[ MCP portals ](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) Set up MCP portals to provide governance and security. 
+[ MCP portals ](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) Set up MCP portals to provide governance and security.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/#page","headline":"Authorization · Cloudflare Agents docs","description":"Add OAuth 2.1 authorization to your MCP server using Cloudflare Access, third-party providers, or your own identity system.","url":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}

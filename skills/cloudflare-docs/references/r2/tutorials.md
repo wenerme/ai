@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,7 +17,7 @@ View tutorials to help you get started with R2.
 | Name                                                                                                                                                | Last Updated       | Difficulty   |
 | --------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ------------ |
 | [Deploy a Browser Run Worker with Durable Objects](https://developers.cloudflare.com/browser-run/how-to/browser-run-with-do/)                       | over 2 years ago   | Beginner     |
-| [Generate OG images for Astro sites](https://developers.cloudflare.com/browser-run/how-to/og-images-astro/)                                         | Intermediate       |              |
+| [Generate OG images for Astro sites](https://developers.cloudflare.com/browser-run/how-to/og-images-astro/)                                         |                    | Intermediate |
 | [Data persistence with R2](https://developers.cloudflare.com/sandbox/tutorials/persistent-storage/)                                                 | 7 months ago       | Intermediate |
 | [Build an end to end data pipeline](https://developers.cloudflare.com/r2-sql/tutorials/end-to-end-pipeline/)                                        | 9 months ago       | Intermediate |
 | [Point to R2 bucket with a custom domain](https://developers.cloudflare.com/rules/origin-rules/tutorials/point-to-r2-bucket-with-custom-domain/)    | about 1 year ago   | Beginner     |

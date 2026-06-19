@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,10 +25,7 @@ If you are issuing a [challenge](https://developers.cloudflare.com/cloudflare-ch
 For example, define a compound expression for your rule using the `and` operator and the [starts\_with()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#starts%5Fwith) function:
 
 ```
-
 <OTHER_RULE_CONDITIONS> and not starts_with(http.request.uri, "/cdn-cgi/challenge-platform/")
-
-
 ```
 
 ## Interaction between redirects and verification procedures like HTTP DCV
@@ -51,10 +48,7 @@ If your rule expression is matching a hostname for which you have neither create
 If you choose to create a new DNS record, the new record will have a `rules` tag and the following associated comment:
 
 ```
-
 Created during Cloudflare Rules deployment process for <RULE_NAME>
-
-
 ```
 
 ## URL rewrites affect other Rules features executed later

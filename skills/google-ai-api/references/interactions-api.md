@@ -17,74 +17,6 @@ api_version string (optional) Which version of the API to use.
 The request body contains data with the following structure:
 model ModelOption (optional) The name of the \`Model\` used for generating the interaction.   
 **Required if \`agent\` is not provided.**
-
-Possible
-values:
-
-- `gemini-2.5-computer-use-preview-10-2025`
-
-  An agentic capability model designed for direct interface interaction, allowing Gemini to perceive and navigate digital environments.
-- `gemini-2.5-flash`
-
-  Our first hybrid reasoning model which supports a 1M token context window and has thinking budgets.
-- `gemini-2.5-flash-image`
-
-  Our native image generation model, optimized for speed, flexibility, and contextual understanding. Text input and output is priced the same as 2.5 Flash.
-- `gemini-2.5-flash-lite`
-
-  Our smallest and most cost effective model, built for at scale usage.
-- `gemini-2.5-flash-lite-preview-09-2025`
-
-  The latest model based on Gemini 2.5 Flash lite optimized for cost-efficiency, high throughput and high quality.
-- `gemini-2.5-flash-native-audio-preview-12-2025`
-
-  Our native audio models optimized for higher quality audio outputs with better pacing, voice naturalness, verbosity, and mood.
-- `gemini-2.5-flash-preview-09-2025`
-
-  The latest model based on the 2.5 Flash model. 2.5 Flash Preview is best for large scale processing, low-latency, high volume tasks that require thinking, and agentic use cases.
-- `gemini-2.5-flash-preview-tts`
-
-  Our 2.5 Flash text-to-speech model optimized for powerful, low-latency controllable speech generation.
-- `gemini-2.5-pro`
-
-  Our state-of-the-art multipurpose model, which excels at coding and complex reasoning tasks.
-- `gemini-2.5-pro-preview-tts`
-
-  Our 2.5 Pro text-to-speech audio model optimized for powerful, low-latency speech generation for more natural outputs and easier to steer prompts.
-- `gemini-3-flash-preview`
-
-  Our most intelligent model built for speed, combining frontier intelligence with superior search and grounding.
-- `gemini-3-pro-image-preview`
-
-  State-of-the-art image generation and editing model.
-- `gemini-3-pro-preview`
-
-  Our most intelligent model with SOTA reasoning and multimodal understanding, and powerful agentic and vibe coding capabilities.
-- `gemini-3.1-pro-preview`
-
-  Our latest SOTA reasoning model with unprecedented depth and nuance, and powerful multimodal understanding and coding capabilities.
-- `gemini-3.1-flash-image-preview`
-
-  Pro-level visual intelligence with Flash-speed efficiency and reality-grounded generation capabilities.
-- `gemini-3.1-flash-lite`
-
-  Our most cost-efficient model, optimized for high-volume agentic tasks, translation, and simple data processing.
-- `gemini-3.1-flash-lite-preview`
-
-  Our most cost-efficient model, optimized for high-volume agentic tasks, translation, and simple data processing.
-- `gemini-3.1-flash-tts-preview`
-
-  Gemini 3.1 Flash TTS: Powerful, low-latency speech generation. Enjoy natural outputs, steerable prompts, and new expressive audio tags for precise narration control.
-- `lyria-3-clip-preview`
-
-  Our low-latency, music generation model optimized for high-fidelity audio clips and precise rhythmic control.
-- `lyria-3-pro-preview`
-
-  Our advanced, full-song generative model with deep compositional understanding, optimized for precise structural control and complex transitions across diverse musical styles.
-- `gemini-3.5-flash`
-
-  Our most intelligent model for sustained frontier performance in agentic and coding tasks.
-
 The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.dev/gemini-api/docs/models) for additional details.
 
 #### Possible values
@@ -154,23 +86,6 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
   Our most intelligent model for sustained frontier performance in agentic and coding tasks.
 agent AgentOption (optional) The name of the \`Agent\` used for generating the interaction.   
 **Required if \`model\` is not provided.**
-
-Possible
-values:
-
-- `deep-research-pro-preview-12-2025`
-
-  Gemini Deep Research Agent
-- `deep-research-preview-04-2026`
-
-  Gemini Deep Research Agent
-- `deep-research-max-preview-04-2026`
-
-  Gemini Deep Research Max Agent
-- `antigravity-preview-05-2026`
-
-  Use the Antigravity managed agent to perform multi-step tasks that require reasoning, file operations, and tool use.
-
 The agent to interact with.
 
 #### Possible values
@@ -206,23 +121,6 @@ top_p number (optional) The maximum cumulative probability of tokens to consider
 seed integer (optional) Seed used in decoding for reproducibility.
 stop_sequences array (string) (optional) A list of character sequences that will stop output interaction.
 thinking_level ThinkingLevel (optional) The level of thought tokens that the model should generate.
-
-Possible
-values:
-
-- `minimal`
-
-  Little to no thinking.
-- `low`
-
-  Low thinking level.
-- `medium`
-
-  Medium thinking level.
-- `high`
-
-  High thinking level.
-
 <br />
 
 #### Possible values
@@ -240,17 +138,6 @@ values:
 
   High thinking level.
 thinking_summaries ThinkingSummaries (optional) Whether to include thought summaries in the response.
-
-Possible
-values:
-
-- `auto`
-
-  Auto thinking summaries.
-- `none`
-
-  No thinking summaries.
-
 <br />
 
 #### Possible values
@@ -309,17 +196,6 @@ type object (required) No description provided.
 
 Always set to `"deep-research"`.
 thinking_summaries ThinkingSummaries (optional) Whether to include thought summaries in the response.
-
-Possible
-values:
-
-- `auto`
-
-  Auto thinking summaries.
-- `none`
-
-  No thinking summaries.
-
 <br />
 
 #### Possible values
@@ -352,28 +228,15 @@ caching (e.g. what content to cache) and enjoy guaranteed cost savings.
 Format:
 \`projects/{project}/locations/{location}/cachedContents/{cachedContent}\`
 environment [EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) or string (optional) The environment configuration for the interaction. Can be an object specifying remote environment sources or a string referencing an existing environment ID.
+labels object (optional) Optional. The labels with user-defined metadata for the request. It is used for
+billing and reporting only.
+
+Label keys and values can be no longer than 63 characters
+(Unicode codepoints) and can only contain lowercase letters, numeric
+characters, underscores, and dashes. International characters are allowed.
+Label values are optional. Label keys must start with a letter.
 previous_interaction_id string (optional) The ID of the previous interaction, if any.
 response_modalities ResponseModality (optional) The requested modalities of the response (TEXT, IMAGE, AUDIO).
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -393,21 +256,87 @@ values:
 - `document`
 
   Indicates the model should return documents.
-service_tier ServiceTier (optional) The service tier for the interaction.
+safety_settings SafetySetting (optional) Safety settings for the interaction.
+A safety setting that affects the safety-blocking behavior.
+
+A SafetySetting consists of a
+harm category and a
+threshold for that
+category.
+
+#### Fields
+
+category HarmCategory (optional) Required. The harm category to be blocked.
+<br />
+
+#### Possible values
+
+- `hate_speech`
+
+  Content that promotes violence or incites hatred against individuals or
+  groups based on certain attributes.
+- `dangerous_content`
+
+  Content that promotes, facilitates, or enables dangerous activities.
+- `harassment`
+
+  Abusive, threatening, or content intended to bully, torment, or ridicule.
+- `sexually_explicit`
+
+  Content that contains sexually explicit material.
+- `civic_integrity`
+
+  Deprecated: Election filter is not longer supported.
+  The harm category is civic integrity.
+- `image_hate`
+
+  Images that contain hate speech.
+- `image_dangerous_content`
+
+  Images that contain dangerous content.
+- `image_harassment`
+
+  Images that contain harassment.
+- `image_sexually_explicit`
+
+  Images that contain sexually explicit content.
+- `jailbreak`
+
+  Prompts designed to bypass safety filters.
+threshold enum (string) (optional) Required. The threshold for blocking content. If the harm probability
+exceeds this threshold, the content will be blocked.
 
 Possible
 values:
 
-- `flex`
+- `block_low_and_above`
 
-  Flex service tier.
-- `standard`
+  Block content with a low harm probability or higher.
+- `block_medium_and_above`
 
-  Standard service tier.
-- `priority`
+  Block content with a medium harm probability or higher.
+- `block_only_high`
 
-  Priority service tier.
+  Block content with a high harm probability.
+- `block_none`
 
+  Do not block any content, regardless of its harm probability.
+- `off`
+
+  Turn off the safety filter entirely.
+method enum (string) (optional) Optional. The method for blocking content. If not specified, the default
+behavior is to use the probability score.
+
+Possible
+values:
+
+- `severity`
+
+  The harm block method uses both probability and severity scores.
+- `probability`
+
+  The harm block method uses the probability score.
+service_tier ServiceTier (optional) The service tier for the interaction.
 <br />
 
 #### Possible values
@@ -850,74 +779,6 @@ The Interaction resource.
 #### Fields
 
 model ModelOption (optional) The name of the \`Model\` used for generating the interaction.
-
-Possible
-values:
-
-- `gemini-2.5-computer-use-preview-10-2025`
-
-  An agentic capability model designed for direct interface interaction, allowing Gemini to perceive and navigate digital environments.
-- `gemini-2.5-flash`
-
-  Our first hybrid reasoning model which supports a 1M token context window and has thinking budgets.
-- `gemini-2.5-flash-image`
-
-  Our native image generation model, optimized for speed, flexibility, and contextual understanding. Text input and output is priced the same as 2.5 Flash.
-- `gemini-2.5-flash-lite`
-
-  Our smallest and most cost effective model, built for at scale usage.
-- `gemini-2.5-flash-lite-preview-09-2025`
-
-  The latest model based on Gemini 2.5 Flash lite optimized for cost-efficiency, high throughput and high quality.
-- `gemini-2.5-flash-native-audio-preview-12-2025`
-
-  Our native audio models optimized for higher quality audio outputs with better pacing, voice naturalness, verbosity, and mood.
-- `gemini-2.5-flash-preview-09-2025`
-
-  The latest model based on the 2.5 Flash model. 2.5 Flash Preview is best for large scale processing, low-latency, high volume tasks that require thinking, and agentic use cases.
-- `gemini-2.5-flash-preview-tts`
-
-  Our 2.5 Flash text-to-speech model optimized for powerful, low-latency controllable speech generation.
-- `gemini-2.5-pro`
-
-  Our state-of-the-art multipurpose model, which excels at coding and complex reasoning tasks.
-- `gemini-2.5-pro-preview-tts`
-
-  Our 2.5 Pro text-to-speech audio model optimized for powerful, low-latency speech generation for more natural outputs and easier to steer prompts.
-- `gemini-3-flash-preview`
-
-  Our most intelligent model built for speed, combining frontier intelligence with superior search and grounding.
-- `gemini-3-pro-image-preview`
-
-  State-of-the-art image generation and editing model.
-- `gemini-3-pro-preview`
-
-  Our most intelligent model with SOTA reasoning and multimodal understanding, and powerful agentic and vibe coding capabilities.
-- `gemini-3.1-pro-preview`
-
-  Our latest SOTA reasoning model with unprecedented depth and nuance, and powerful multimodal understanding and coding capabilities.
-- `gemini-3.1-flash-image-preview`
-
-  Pro-level visual intelligence with Flash-speed efficiency and reality-grounded generation capabilities.
-- `gemini-3.1-flash-lite`
-
-  Our most cost-efficient model, optimized for high-volume agentic tasks, translation, and simple data processing.
-- `gemini-3.1-flash-lite-preview`
-
-  Our most cost-efficient model, optimized for high-volume agentic tasks, translation, and simple data processing.
-- `gemini-3.1-flash-tts-preview`
-
-  Gemini 3.1 Flash TTS: Powerful, low-latency speech generation. Enjoy natural outputs, steerable prompts, and new expressive audio tags for precise narration control.
-- `lyria-3-clip-preview`
-
-  Our low-latency, music generation model optimized for high-fidelity audio clips and precise rhythmic control.
-- `lyria-3-pro-preview`
-
-  Our advanced, full-song generative model with deep compositional understanding, optimized for precise structural control and complex transitions across diverse musical styles.
-- `gemini-3.5-flash`
-
-  Our most intelligent model for sustained frontier performance in agentic and coding tasks.
-
 The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.dev/gemini-api/docs/models) for additional details.
 
 #### Possible values
@@ -986,23 +847,6 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
 
   Our most intelligent model for sustained frontier performance in agentic and coding tasks.
 agent AgentOption (optional) The name of the \`Agent\` used for generating the interaction.
-
-Possible
-values:
-
-- `deep-research-pro-preview-12-2025`
-
-  Gemini Deep Research Agent
-- `deep-research-preview-04-2026`
-
-  Gemini Deep Research Agent
-- `deep-research-max-preview-04-2026`
-
-  Gemini Deep Research Max Agent
-- `antigravity-preview-05-2026`
-
-  Use the Antigravity managed agent to perform multi-step tasks that require reasoning, file operations, and tool use.
-
 The agent to interact with.
 
 #### Possible values
@@ -1065,26 +909,6 @@ The token count for a single response modality.
 #### Fields
 
 modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -1112,26 +936,6 @@ The token count for a single response modality.
 #### Fields
 
 modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -1159,26 +963,6 @@ The token count for a single response modality.
 #### Fields
 
 modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -1206,26 +990,6 @@ The token count for a single response modality.
 #### Fields
 
 modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -1271,26 +1035,6 @@ values:
   Grounding with customer's data, for example, VertexAISearch.
 count integer (optional) The number of grounding tool counts.
 response_modalities ResponseModality (optional) The requested modalities of the response (TEXT, IMAGE, AUDIO).
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -1314,20 +1058,6 @@ previous_interaction_id string (optional) The ID of the previous interaction, if
 environment_id string (optional) Output only. The environment ID for the interaction. Only populated if environment
 config is set in the request.
 service_tier ServiceTier (optional) The service tier for the interaction.
-
-Possible
-values:
-
-- `flex`
-
-  Flex service tier.
-- `standard`
-
-  Standard service tier.
-- `priority`
-
-  Priority service tier.
-
 <br />
 
 #### Possible values
@@ -1352,6 +1082,93 @@ registered webhooks.
 user_metadata object (optional) Optional. The user metadata that will be returned on each event emission to the
 webhooks.
 steps array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) (optional) Required. Output only. The steps that make up the interaction.
+safety_settings SafetySetting (optional) Safety settings for the interaction.
+A safety setting that affects the safety-blocking behavior.
+
+A SafetySetting consists of a
+harm category and a
+threshold for that
+category.
+
+#### Fields
+
+category HarmCategory (optional) Required. The harm category to be blocked.
+<br />
+
+#### Possible values
+
+- `hate_speech`
+
+  Content that promotes violence or incites hatred against individuals or
+  groups based on certain attributes.
+- `dangerous_content`
+
+  Content that promotes, facilitates, or enables dangerous activities.
+- `harassment`
+
+  Abusive, threatening, or content intended to bully, torment, or ridicule.
+- `sexually_explicit`
+
+  Content that contains sexually explicit material.
+- `civic_integrity`
+
+  Deprecated: Election filter is not longer supported.
+  The harm category is civic integrity.
+- `image_hate`
+
+  Images that contain hate speech.
+- `image_dangerous_content`
+
+  Images that contain dangerous content.
+- `image_harassment`
+
+  Images that contain harassment.
+- `image_sexually_explicit`
+
+  Images that contain sexually explicit content.
+- `jailbreak`
+
+  Prompts designed to bypass safety filters.
+threshold enum (string) (optional) Required. The threshold for blocking content. If the harm probability
+exceeds this threshold, the content will be blocked.
+
+Possible
+values:
+
+- `block_low_and_above`
+
+  Block content with a low harm probability or higher.
+- `block_medium_and_above`
+
+  Block content with a medium harm probability or higher.
+- `block_only_high`
+
+  Block content with a high harm probability.
+- `block_none`
+
+  Do not block any content, regardless of its harm probability.
+- `off`
+
+  Turn off the safety filter entirely.
+method enum (string) (optional) Optional. The method for blocking content. If not specified, the default
+behavior is to use the probability score.
+
+Possible
+values:
+
+- `severity`
+
+  The harm block method uses both probability and severity scores.
+- `probability`
+
+  The harm block method uses the probability score.
+labels object (optional) Optional. The labels with user-defined metadata for the request. It is used for
+billing and reporting only.
+
+Label keys and values can be no longer than 63 characters
+(Unicode codepoints) and can only contain lowercase letters, numeric
+characters, underscores, and dashes. International characters are allowed.
+Label values are optional. Label keys must start with a letter.
 input [Content](https://ai.google.dev/api/interactions-api#Resource:Content) or array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) or string (optional) The input for the interaction.
 response_format [ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat) or array ([ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat)) (optional) Enforces that the generated response is a JSON object that complies with the JSON schema specified in this field.
 environment [EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) or string (optional) The environment configuration for the interaction. Can be an object specifying remote environment sources or a string referencing an existing environment ID.
@@ -1374,17 +1191,6 @@ type object (required) No description provided.
 
 Always set to `"deep-research"`.
 thinking_summaries ThinkingSummaries (optional) Whether to include thought summaries in the response.
-
-Possible
-values:
-
-- `auto`
-
-  Auto thinking summaries.
-- `none`
-
-  No thinking summaries.
-
 <br />
 
 #### Possible values
@@ -1553,23 +1359,6 @@ values:
 
   TIFF image format
 resolution MediaResolution (optional) The resolution of the media.
-
-Possible
-values:
-
-- `low`
-
-  Low resolution.
-- `medium`
-
-  Medium resolution.
-- `high`
-
-  High resolution.
-- `ultra_high`
-
-  Ultra high resolution.
-
 <br />
 
 #### Possible values
@@ -1691,23 +1480,6 @@ values:
 
   3GPP video format
 resolution MediaResolution (optional) The resolution of the media.
-
-Possible
-values:
-
-- `low`
-
-  Low resolution.
-- `medium`
-
-  Medium resolution.
-- `high`
-
-  High resolution.
-- `ultra_high`
-
-  Ultra high resolution.
-
 <br />
 
 #### Possible values
@@ -2017,26 +1789,6 @@ The token count for a single response modality.
 #### Fields
 
 modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -2064,26 +1816,6 @@ The token count for a single response modality.
 #### Fields
 
 modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -2111,26 +1843,6 @@ The token count for a single response modality.
 #### Fields
 
 modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -2158,26 +1870,6 @@ The token count for a single response modality.
 #### Fields
 
 modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -2248,26 +1940,6 @@ The token count for a single response modality.
 #### Fields
 
 modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -2295,26 +1967,6 @@ The token count for a single response modality.
 #### Fields
 
 modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -2342,26 +1994,6 @@ The token count for a single response modality.
 #### Fields
 
 modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -2389,26 +2021,6 @@ The token count for a single response modality.
 #### Fields
 
 modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -2505,26 +2117,6 @@ The token count for a single response modality.
 #### Fields
 
 modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -2552,26 +2144,6 @@ The token count for a single response modality.
 #### Fields
 
 modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -2599,26 +2171,6 @@ The token count for a single response modality.
 #### Fields
 
 modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -2646,26 +2198,6 @@ The token count for a single response modality.
 #### Fields
 
 modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -2741,26 +2273,6 @@ The token count for a single response modality.
 #### Fields
 
 modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -2788,26 +2300,6 @@ The token count for a single response modality.
 #### Fields
 
 modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -2835,26 +2327,6 @@ The token count for a single response modality.
 #### Fields
 
 modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -2882,26 +2354,6 @@ The token count for a single response modality.
 #### Fields
 
 modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -2972,26 +2424,6 @@ The token count for a single response modality.
 #### Fields
 
 modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -3019,26 +2451,6 @@ The token count for a single response modality.
 #### Fields
 
 modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -3066,26 +2478,6 @@ The token count for a single response modality.
 #### Fields
 
 modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -3113,26 +2505,6 @@ The token count for a single response modality.
 #### Fields
 
 modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -3232,23 +2604,6 @@ values:
 
   TIFF image format
 resolution MediaResolution (optional) The resolution of the media.
-
-Possible
-values:
-
-- `low`
-
-  Low resolution.
-- `medium`
-
-  Medium resolution.
-- `high`
-
-  High resolution.
-- `ultra_high`
-
-  Ultra high resolution.
-
 <br />
 
 #### Possible values
@@ -3373,23 +2728,6 @@ values:
 
   3GPP video format
 resolution MediaResolution (optional) The resolution of the media.
-
-Possible
-values:
-
-- `low`
-
-  Low resolution.
-- `medium`
-
-  Medium resolution.
-- `high`
-
-  High resolution.
-- `ultra_high`
-
-  Ultra high resolution.
-
 <br />
 
 #### Possible values
@@ -3675,26 +3013,6 @@ The token count for a single response modality.
 #### Fields
 
 modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -3722,26 +3040,6 @@ The token count for a single response modality.
 #### Fields
 
 modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -3769,26 +3067,6 @@ The token count for a single response modality.
 #### Fields
 
 modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -3816,26 +3094,6 @@ The token count for a single response modality.
 #### Fields
 
 modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -3905,26 +3163,6 @@ The token count for a single response modality.
 #### Fields
 
 modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -3952,26 +3190,6 @@ The token count for a single response modality.
 #### Fields
 
 modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -3999,26 +3217,6 @@ The token count for a single response modality.
 #### Fields
 
 modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -4046,26 +3244,6 @@ The token count for a single response modality.
 #### Fields
 
 modality ResponseModality (optional) The modality associated with the token count.
-
-Possible
-values:
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-
 <br />
 
 #### Possible values
@@ -4522,23 +3700,6 @@ values:
 
   TIFF image format
 resolution MediaResolution (optional) The resolution of the media.
-
-Possible
-values:
-
-- `low`
-
-  Low resolution.
-- `medium`
-
-  Medium resolution.
-- `high`
-
-  High resolution.
-- `ultra_high`
-
-  Ultra high resolution.
-
 <br />
 
 #### Possible values
@@ -5237,23 +4398,6 @@ values:
 
   TIFF image format
 resolution MediaResolution (optional) The resolution of the media.
-
-Possible
-values:
-
-- `low`
-
-  Low resolution.
-- `medium`
-
-  Medium resolution.
-- `high`
-
-  High resolution.
-- `ultra_high`
-
-  Ultra high resolution.
-
 <br />
 
 #### Possible values

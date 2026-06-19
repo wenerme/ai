@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,7 +20,7 @@ Before you begin, ensure you have the following:
 
 1. A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up) with Workers and Workers AI enabled.
 2. Your `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_AUTH_TOKEN`.  
-   * You can generate an API token in your Cloudflare dashboard under API Tokens.
+  * You can generate an API token in your Cloudflare dashboard under API Tokens.
 3. Node.js installed for working with Cloudflare Workers (optional but recommended).
 
 ## 1\. Agree to Meta's license
@@ -30,16 +30,7 @@ The first time you use the [Llama 3.2 11B Vision Instruct](https://developers.cl
 curl
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/meta/llama-3.2-11b-vision-instruct \
-
-  -X POST \
-
-  -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
-
-  -d '{ "prompt": "agree" }'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/meta/llama-3.2-11b-vision-instruct \  -X POST \  -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \  -d '{ "prompt": "agree" }'
 ```
 
 Replace `$CLOUDFLARE_ACCOUNT_ID` and `$CLOUDFLARE_AUTH_TOKEN` with your actual account ID and token.
@@ -78,9 +69,10 @@ Terminal window
 ```  
 cd llama-vision-tutorial  
 ```
-2. Project structure Your `llama-vision-tutorial` directory will include:  
-   * A "Hello World" Worker at `src/index.ts`.  
-   * A `wrangler.json` configuration file for managing deployment settings.
+2. Project structure Your `llama-vision-tutorial` directory will include:
+
+  * A "Hello World" Worker at `src/index.ts`.
+  * A `wrangler.json` configuration file for managing deployment settings.
 
 ## 3\. Write the Worker code
 
@@ -89,88 +81,31 @@ Edit the `src/index.ts` (or `index.js` if you are not using TypeScript) file and
 JavaScript
 
 ```
-
-export interface Env {
-
-  AI: Ai;
-
-}
-
-
-export default {
-
-  async fetch(request, env): Promise<Response> {
-
-    const messages = [
-
-      { role: "system", content: "You are a helpful assistant." },
-
-      { role: "user", content: "Describe the image I'm providing." },
-
-    ];
-
-
-    // Replace this with your image data encoded as base64 or a URL
-
-    const imageBase64 = "data:image/png;base64,IMAGE_DATA_HERE";
-
-
-    const response = await env.AI.run("@cf/meta/llama-3.2-11b-vision-instruct", {
-
-      messages,
-
-      image: imageBase64,
-
-    });
-
-
-    return Response.json(response);
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export interface Env {  AI: Ai;}
+export default {  async fetch(request, env): Promise<Response> {    const messages = [      { role: "system", content: "You are a helpful assistant." },      { role: "user", content: "Describe the image I'm providing." },    ];
+    // Replace this with your image data encoded as base64 or a URL    const imageBase64 = "data:image/png;base64,IMAGE_DATA_HERE";
+    const response = await env.AI.run("@cf/meta/llama-3.2-11b-vision-instruct", {      messages,      image: imageBase64,    });
+    return Response.json(response);  },} satisfies ExportedHandler<Env>;
 ```
 
 ## 4\. Bind Workers AI to your Worker
 
 1. Open the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) and add the following configuration:
 
-* [  wrangler.jsonc ](#tab-panel-11327)
-* [  wrangler.toml ](#tab-panel-11328)
+* [  wrangler.jsonc ](#tab-panel-11344)
+* [  wrangler.toml ](#tab-panel-11345)
 
 JSONC
 
 ```
-
-{
-
-  "env": {},
-
-  "ai": {
-
-    "binding": "AI"
-
-  }
-
-}
-
-
+{  "env": {},  "ai": {    "binding": "AI"  }}
 ```
 
 TOML
 
 ```
-
 env = { }
-
-
-[ai]
-
-binding = "AI"
-
-
+[ai]binding = "AI"
 ```
 
 1. Save the file.
@@ -182,10 +117,7 @@ Run the following command to deploy your Worker:
 Terminal window
 
 ```
-
 wrangler deploy
-
-
 ```
 
 ## 6\. Test Your Worker
@@ -196,12 +128,7 @@ wrangler deploy
 Terminal window
 
 ```
-
-curl -X POST https://llama-vision-tutorial.<your-subdomain>.workers.dev \
-
-  -d '{ "image": "BASE64_ENCODED_IMAGE" }'
-
-
+curl -X POST https://llama-vision-tutorial.<your-subdomain>.workers.dev \  -d '{ "image": "BASE64_ENCODED_IMAGE" }'
 ```
 
 Replace `BASE64_ENCODED_IMAGE` with an actual base64-encoded image string.
@@ -213,14 +140,7 @@ The response will include the output from the model, such as a description or an
 Example response:
 
 ```
-
-{
-
-  "result": "This is a golden retriever sitting in a grassy park."
-
-}
-
-
+{  "result": "This is a golden retriever sitting in a grassy park."}
 ```
 
 ```json

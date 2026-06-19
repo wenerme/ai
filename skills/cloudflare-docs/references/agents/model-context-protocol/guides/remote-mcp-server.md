@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -73,25 +73,24 @@ Terminal window
 npm start  
 ```  
 ```  
-⎔ Starting local server...  
-[wrangler:info] Ready on http://localhost:8788  
+⎔ Starting local server...[wrangler:info] Ready on http://localhost:8788  
 ```  
 Check the command output for the local port. In this example, the MCP server runs on port `8788`, and the MCP endpoint URL is `http://localhost:8788/mcp`.  
 Note  
 You cannot interact with the MCP server by opening the `/mcp` URL directly in a web browser. The `/mcp` endpoint expects an MCP client to send MCP protocol messages, which a browser does not do by default. In the next step, we will demonstrate how to connect to the server using an MCP client.
-4. To test the server locally:  
-   1. In a new terminal, run the [MCP inspector ↗](https://github.com/modelcontextprotocol/inspector). The MCP inspector is an interactive MCP client that allows you to connect to your MCP server and invoke tools from a web browser.  
-   Terminal window  
-   ```  
-   npx @modelcontextprotocol/inspector@latest  
-   ```  
-   ```  
-   🚀 MCP Inspector is up and running at:  
-     http://localhost:5173/?MCP_PROXY_AUTH_TOKEN=46ab..cd3  
-   🌐 Opening browser...  
-   ```  
-   The MCP Inspector will launch in your web browser. You can also launch it manually by opening a browser and going to `http://localhost:<PORT>`. Check the command output for the local port where MCP Inspector is running. In this example, MCP Inspector is served on port `5173`.  
-   2. In the MCP inspector, enter the URL of your MCP server (`http://localhost:8788/mcp`), and select **Connect**. Select **List Tools** to show the tools that your MCP server exposes.
+4. To test the server locally:
+
+  1. In a new terminal, run the [MCP inspector ↗](https://github.com/modelcontextprotocol/inspector). The MCP inspector is an interactive MCP client that allows you to connect to your MCP server and invoke tools from a web browser.  
+  Terminal window  
+  ```  
+  npx @modelcontextprotocol/inspector@latest  
+  ```  
+  ```  
+  🚀 MCP Inspector is up and running at:  http://localhost:5173/?MCP_PROXY_AUTH_TOKEN=46ab..cd3  
+  🌐 Opening browser...  
+  ```  
+  The MCP Inspector will launch in your web browser. You can also launch it manually by opening a browser and going to `http://localhost:<PORT>`. Check the command output for the local port where MCP Inspector is running. In this example, MCP Inspector is served on port `5173`.
+  2. In the MCP inspector, enter the URL of your MCP server (`http://localhost:8788/mcp`), and select **Connect**. Select **List Tools** to show the tools that your MCP server exposes.
 5. You can now deploy your MCP server to Cloudflare. From your project directory, run:  
 Terminal window  
 ```  
@@ -111,17 +110,7 @@ For example, to connect from Claude Desktop:
 
 1. Update your Claude Desktop configuration to point to the URL of your MCP server:  
 ```  
-{  
-  "mcpServers": {  
-    "math": {  
-      "command": "npx",  
-      "args": [  
-        "mcp-remote",  
-        "https://remote-mcp-server-authless.your-account.workers.dev/mcp"  
-      ]  
-    }  
-  }  
-}  
+{  "mcpServers": {    "math": {      "command": "npx",      "args": [        "mcp-remote",        "https://remote-mcp-server-authless.your-account.workers.dev/mcp"      ]    }  }}  
 ```
 2. Restart Claude Desktop to load the MCP Server. Once this is done, Claude will be able to make calls to your remote MCP server.
 3. To test, ask Claude to use one of your tools. For example:  
@@ -171,10 +160,7 @@ Now, you have the MCP server setup, with dependencies installed. Move into that 
 Terminal window
 
 ```
-
 cd my-mcp-server-github-auth
-
-
 ```
 
 You'll notice that in the example MCP server, if you open `src/index.ts`, the primary difference is that the `defaultHandler` is set to the `GitHubHandler`:
@@ -182,27 +168,8 @@ You'll notice that in the example MCP server, if you open `src/index.ts`, the pr
 TypeScript
 
 ```
-
 import GitHubHandler from "./github-handler";
-
-
-export default new OAuthProvider({
-
-  apiRoute: "/mcp",
-
-  apiHandler: MyMCP.serve("/mcp"),
-
-  defaultHandler: GitHubHandler,
-
-  authorizeEndpoint: "/authorize",
-
-  tokenEndpoint: "/token",
-
-  clientRegistrationEndpoint: "/register",
-
-});
-
-
+export default new OAuthProvider({  apiRoute: "/mcp",  apiHandler: MyMCP.serve("/mcp"),  defaultHandler: GitHubHandler,  authorizeEndpoint: "/authorize",  tokenEndpoint: "/token",  clientRegistrationEndpoint: "/register",});
 ```
 
 This ensures that your users are redirected to GitHub to authenticate. To get this working though, you need to create OAuth client apps in the steps below.
@@ -213,17 +180,15 @@ You'll need to create two [GitHub OAuth Apps ↗](https://docs.github.com/en/app
 
 #### Step 2.1 — Create a new OAuth App for local development
 
-1. Navigate to [github.com/settings/developers ↗](https://github.com/settings/developers) to create a new OAuth App with the following settings:  
-   * **Application name**: `My MCP Server (local)`  
-   * **Homepage URL**: `http://localhost:8788`  
-   * **Authorization callback URL**: `http://localhost:8788/callback`
+1. Navigate to [github.com/settings/developers ↗](https://github.com/settings/developers) to create a new OAuth App with the following settings:
+
+  * **Application name**: `My MCP Server (local)`
+  * **Homepage URL**: `http://localhost:8788`
+  * **Authorization callback URL**: `http://localhost:8788/callback`
 2. For the OAuth app you just created, add the client ID of the OAuth app as `GITHUB_CLIENT_ID` and generate a client secret, adding it as `GITHUB_CLIENT_SECRET` to a `.env` file in the root of your project, which [will be used to set secrets in local development](https://developers.cloudflare.com/workers/configuration/secrets/).  
 Terminal window  
 ```  
-touch .env  
-echo 'GITHUB_CLIENT_ID="your-client-id"' >> .env  
-echo 'GITHUB_CLIENT_SECRET="your-client-secret"' >> .env  
-cat .env  
+touch .envecho 'GITHUB_CLIENT_ID="your-client-id"' >> .envecho 'GITHUB_CLIENT_SECRET="your-client-secret"' >> .envcat .env  
 ```
 3. Run the following command to start the development server:  
 Terminal window  
@@ -259,28 +224,19 @@ You'll need to repeat [Step 2.1](#step-21--create-a-new-oauth-app-for-local-deve
 Terminal window
 
 ```
-
 npx wrangler secret put GITHUB_CLIENT_ID
-
-
 ```
 
 Terminal window
 
 ```
-
 npx wrangler secret put GITHUB_CLIENT_SECRET
-
-
 ```
 
 Terminal window
 
 ```
-
 npx wrangler secret put COOKIE_ENCRYPTION_KEY
-
-
 ```
 
 Use any random string for `COOKIE_ENCRYPTION_KEY`, for example the output of `openssl rand -hex 32`.
@@ -297,14 +253,7 @@ npx wrangler kv namespace create "OAUTH_KV"
 ```  
 b. Update the `wrangler.jsonc` file with the resulting KV ID:  
 ```  
-{  
-  "kvNamespaces": [  
-    {  
-      "binding": "OAUTH_KV",  
-      "id": "<YOUR_KV_NAMESPACE_ID>"  
-    }  
-  ]  
-}  
+{  "kvNamespaces": [    {      "binding": "OAUTH_KV",      "id": "<YOUR_KV_NAMESPACE_ID>"    }  ]}  
 ```
 2. Deploy the MCP server to your Cloudflare `workers.dev` domain:  
 Terminal window  
@@ -317,7 +266,7 @@ npm run deploy
 
 [ MCP Tools ](https://developers.cloudflare.com/agents/model-context-protocol/protocol/tools/) Add tools to your MCP server. 
 
-[ Authorization ](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/) Customize authentication and authorization. 
+[ Authorization ](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/) Customize authentication and authorization.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/#page","headline":"Build a Remote MCP server · Cloudflare Agents docs","description":"Deploy a remote MCP server on Cloudflare with optional authentication using Streamable HTTP transport.","url":"https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}

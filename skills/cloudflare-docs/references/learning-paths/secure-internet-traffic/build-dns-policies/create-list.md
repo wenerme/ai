@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,9 +18,9 @@ Gateway supports creating [lists](https://developers.cloudflare.com/cloudflare-o
 
 ## Example list policy
 
-* [ Dashboard ](#tab-panel-9152)
-* [ API ](#tab-panel-9153)
-* [ Terraform ](#tab-panel-9154)
+* [ Dashboard ](#tab-panel-9228)
+* [ API ](#tab-panel-9229)
+* [ Terraform ](#tab-panel-9230)
 
 The following DNS policy will allow access to all approved corporate domains included in a list called **Corporate Domains**.
 
@@ -31,63 +31,13 @@ The following DNS policy will allow access to all approved corporate domains inc
 Create a Zero Trust Gateway rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "All-DNS-CorporateDomain-AllowList",
-
-    "description": "Allow access to the corporate domains defined under the Corporate Domains list",
-
-    "precedence": 1,
-
-    "enabled": true,
-
-    "action": "allow",
-
-    "filters": [
-
-        "dns"
-
-    ],
-
-    "traffic": "any(dns.domains[*] in $<CORPORATE_DOMAINS_LIST_UUID>)"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "All-DNS-CorporateDomain-AllowList",    "description": "Allow access to the corporate domains defined under the Corporate Domains list",    "precedence": 1,    "enabled": true,    "action": "allow",    "filters": [        "dns"    ],    "traffic": "any(dns.domains[*] in $<CORPORATE_DOMAINS_LIST_UUID>)"  }'
 ```
 
 To create a new DNS policy using **Terraform** to allow access to all approved corporate domains included in a list called **Corporate Domains**.
 
 ```
-
-resource "cloudflare_zero_trust_gateway_policy" "allow_corporate_domain_access" {
-
-  account_id  = var.cloudflare_account_id
-
-  name        = "All-DNS-CorporateDomain-AllowList"
-
-  description = "Allow access to the corporate domains defined under the Corporate Domains list"
-
-  precedence  = 1
-
-  enabled     = false
-
-  action      = "allow"
-
-  filters     = ["dns"]
-
-  traffic     = "any(dns.domains[*] in $<Corporate Domains List UUID>)"
-
-}
-
-
+resource "cloudflare_zero_trust_gateway_policy" "allow_corporate_domain_access" {  account_id  = var.cloudflare_account_id  name        = "All-DNS-CorporateDomain-AllowList"  description = "Allow access to the corporate domains defined under the Corporate Domains list"  precedence  = 1  enabled     = false  action      = "allow"  filters     = ["dns"]  traffic     = "any(dns.domains[*] in $<Corporate Domains List UUID>)"}
 ```
 
 ```json

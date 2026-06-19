@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/byoip/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -59,16 +59,7 @@ You can use address maps to set up [non-SNI support](https://developers.cloudfla
 However, to control what IP address Cloudflare will use when responding to requests for your Spectrum applications, you should first refer to their respective configuration and set the `edge_ips` field as `static`, e.g.:
 
 ```
-
-"edge_ips": {
-
-  "type": "static",
-
-  "ips": ["1.2.3.4"]
-
-}
-
-
+"edge_ips": {  "type": "static",  "ips": ["1.2.3.4"]}
 ```
 
 For details, refer to the [Spectrum API](https://developers.cloudflare.com/api/resources/spectrum#%28resource%29%20spectrum%20%3E%20%28model%29%20edge%5Fips%20%3E%20%28schema%29%20%3E%20%28variant%29%201).

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,10 +18,11 @@ Purging by hostname means that all assets at URLs with a host that matches one o
 [ Go to **Configuration** ](https://dash.cloudflare.com/?to=/:account/:zone/caching/configuration)
 2. Under **Purge Cache**, select **Custom Purge**. The **Custom Purge** window appears.
 3. Under **Purge by**, select **Hostname**.
-4. Follow the syntax instructions:  
-   * One hostname per line.  
-   * Separated by commas.  
-   * You can purge up to 30 hostnames at a time.
+4. Follow the syntax instructions:
+
+  * One hostname per line.
+  * Separated by commas.
+  * You can purge up to 30 hostnames at a time.
 5. Enter the appropriate value(s) in the text field using the format shown in the example.
 6. Select **Purge**.
 

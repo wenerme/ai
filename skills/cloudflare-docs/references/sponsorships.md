@@ -7,29 +7,29 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sponsorships/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
 # Sponsorships
 
-Cloudflare powers over 20 million Internet properties, including these world-changing open-source projects.
+Cloudflare powers over 20 million Internet properties, including these world-changing open-source projects. 
 
 [ ](https://yarnpkg.com/en/) [ Yarn ](https://yarnpkg.com/en/) 
 
-A package manager for Node that creates a lockfile for dependencies and cache’s packages for future projects.
+A package manager for Node that creates a lockfile for dependencies and cache’s packages for future projects. 
 
 [Visit site](https://yarnpkg.com/en/) [Code on GitHub](https://github.com/yarnpkg/yarn) 
 
 [ ](https://momentjs.com/) [ Moment.js ](https://momentjs.com/) 
 
-A library for Parsing, validating, manipulating, and displaying dates and times in JavaScript.
+A library for Parsing, validating, manipulating, and displaying dates and times in JavaScript. 
 
 [Visit site](https://momentjs.com/) [Code on GitHub](https://github.com/moment/moment/) 
 
 [ ](https://d3js.org/) [ D3 ](https://d3js.org/) 
 
-A way to bind data to the DOM, and then apply data-driven transformations to the document.
+A way to bind data to the DOM, and then apply data-driven transformations to the document. 
 
 [Visit site](https://d3js.org/) [Code on GitHub](https://github.com/d3/d3) 
 
@@ -65,13 +65,13 @@ A JavaScript runtime built on Chrome’s V8 JavaScript engine.
 
 [ ](https://reactjs.org/) [ React ](https://reactjs.org/) 
 
-A JavaScript library for building user interfaces created by facebook.
+A JavaScript library for building user interfaces created by facebook. 
 
 [Visit site](https://reactjs.org/) [Code on GitHub](https://github.com/facebook/react/) 
 
 [ ](https://git-scm.com/) [ git ](https://git-scm.com/) 
 
-A version control system that allows millions people across the world to collaborate on coding projects.
+A version control system that allows millions people across the world to collaborate on coding projects. 
 
 [Visit site](https://git-scm.com/) [Code on GitHub](https://github.com/git/git) 
 
@@ -95,7 +95,7 @@ Phalcon is a full-stack PHP framework delivered as a C-extension
 
 [ ](https://www.jsdelivr.com/) [ JsDelivr ](https://www.jsdelivr.com/) 
 
-JsDelivr is a public, open-source CDN (Content Delivery Network) developed by ProspectOne, focused on performance, reliability, and security.
+JsDelivr is a public, open-source CDN (Content Delivery Network) developed by ProspectOne, focused on performance, reliability, and security. 
 
 [Visit site](https://www.jsdelivr.com/) [Code on GitHub](https://github.com/jsdelivr/jsdelivr) 
 
@@ -107,13 +107,13 @@ An online coding bootcamp that teaches you to code for free.
 
 [ uppy-dog-full-2 ](https://uppy.io/) [ Uppy ](https://uppy.io/) 
 
-A sleek, modular file uploader that integrates seamlessly with any application.
+A sleek, modular file uploader that integrates seamlessly with any application. 
 
 [Visit site](https://uppy.io/) [Code on GitHub](https://github.com/transloadit/uppy) 
 
 [ ](https://redux.js.org/) [ Redux ](https://redux.js.org/) 
 
-A predictable state container for JavaScript apps. It’s commonly used with React to make state management simple.
+A predictable state container for JavaScript apps. It’s commonly used with React to make state management simple. 
 
 [Visit site](https://redux.js.org/) [Code on GitHub](https://github.com/reactjs/redux/) 
 
@@ -125,19 +125,19 @@ The Write Less, Do More, JavaScript Library.
 
 [ ](https://select2.org/) [ Select2 ](https://select2.org/) 
 
-A jQuery based replacement for select boxes. It supports searching, remote data sets, and infinite scrolling of results.
+A jQuery based replacement for select boxes. It supports searching, remote data sets, and infinite scrolling of results. 
 
 [Visit site](https://select2.org/) [Code on GitHub](https://github.com/select2/select2) 
 
 [ ](https://gulpjs.com/) [ Gulp ](https://gulpjs.com/) 
 
-A toolkit for automating painful or time-consuming tasks in your development workflow, so you can stop messing around and build something.
+A toolkit for automating painful or time-consuming tasks in your development workflow, so you can stop messing around and build something. 
 
 [Visit site](https://gulpjs.com/) [Code on GitHub](https://github.com/gulpjs/gulp) 
 
 [ ](https://impress.js.org/) [ impress.js ](https://impress.js.org/) 
 
-A presentation tool made to leverage the power of css3 transforms and transitions.
+A presentation tool made to leverage the power of css3 transforms and transitions. 
 
 [Visit site](https://impress.js.org/) [Code on GitHub](https://github.com/impress/impress.js) 
 
@@ -149,13 +149,13 @@ A fast, minimalist web framework for Node.js.
 
 [ ](https://revealjs.com/#/) [ REVEAL.JS ](https://revealjs.com/#/) 
 
-A framework for making powerpoint-like presentations using HTML, CSS and JS.
+A framework for making powerpoint-like presentations using HTML, CSS and JS. 
 
 [Visit site](https://revealjs.com/#/) [Code on GitHub](https://github.com/hakimel/reveal.js) 
 
 [ ](https://threejs.org/) [ three.js ](https://threejs.org/) 
 
-A JavaScript library used to create and display animated 3D computer graphics in a web browser.
+A JavaScript library used to create and display animated 3D computer graphics in a web browser. 
 
 [Visit site](https://threejs.org/) [Code on GitHub](https://github.com/mrdoob/three.js/) 
 
@@ -163,7 +163,7 @@ A JavaScript library used to create and display animated 3D computer graphics in
 
 A responsive, mobile-first HTML, CSS and JS styling library.
 
-[Visit site](https://getbootstrap.com/) [Code on GitHub](https://github.com/twbs/bootstrap) 
+[Visit site](https://getbootstrap.com/) [Code on GitHub](https://github.com/twbs/bootstrap)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sponsorships/#page","headline":"Sponsorships | Cloudflare Docs","description":"Cloudflare powers over 20 million Internet properties, including these\n\t\tworld-changing open-source projects.","url":"https://developers.cloudflare.com/sponsorships/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

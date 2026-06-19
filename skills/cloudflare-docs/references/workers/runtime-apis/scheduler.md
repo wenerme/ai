@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,22 +25,20 @@ Like other [timers in Workers](https://developers.cloudflare.com/workers/runtime
 JavaScript
 
 ```
-
-await scheduler.wait(delay);
-
-await scheduler.wait(delay, options);
-
-
+await scheduler.wait(delay);await scheduler.wait(delay, options);
 ```
 
 ## Parameters
 
-* `delay` number  
-   * The number of milliseconds to wait before the returned Promise resolves.
-* `options` object optional  
-   * Optional configuration for the wait operation.  
-   * `signal` AbortSignal optional  
-         * An [AbortSignal](https://developers.cloudflare.com/workers/runtime-apis/web-standards/#abortcontroller-and-abortsignal) that cancels the wait. When the signal is aborted, the returned Promise rejects with an `AbortError`.
+* `delay` number
+
+  * The number of milliseconds to wait before the returned Promise resolves.
+* `options` object optional
+
+  * Optional configuration for the wait operation.
+  * `signal` AbortSignal optional
+
+    * An [AbortSignal](https://developers.cloudflare.com/workers/runtime-apis/web-standards/#abortcontroller-and-abortsignal) that cancels the wait. When the signal is aborted, the returned Promise rejects with an `AbortError`.
 
 ## Return value
 
@@ -52,263 +50,65 @@ A `Promise<void>` that resolves after `delay` milliseconds. If an `AbortSignal` 
 
 Use `scheduler.wait()` to pause execution for a specified duration.
 
-* [  JavaScript ](#tab-panel-12057)
-* [  TypeScript ](#tab-panel-12058)
+* [  JavaScript ](#tab-panel-12074)
+* [  TypeScript ](#tab-panel-12075)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request) {
-
-    // Wait for 1 second
-
-    await scheduler.wait(1000);
-
-    return new Response("Delayed response");
-
-  },
-
-};
-
-
+export default {  async fetch(request) {    // Wait for 1 second    await scheduler.wait(1000);    return new Response("Delayed response");  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request): Promise<Response> {
-
-    // Wait for 1 second
-
-    await scheduler.wait(1000);
-
-    return new Response("Delayed response");
-
-  },
-
-} satisfies ExportedHandler;
-
-
+export default {  async fetch(request): Promise<Response> {    // Wait for 1 second    await scheduler.wait(1000);    return new Response("Delayed response");  },} satisfies ExportedHandler;
 ```
 
 ### Retry with exponential backoff
 
 Use `scheduler.wait()` to implement a delay between retry attempts. This example uses exponential backoff with jitter.
 
-* [  JavaScript ](#tab-panel-12061)
-* [  TypeScript ](#tab-panel-12062)
+* [  JavaScript ](#tab-panel-12078)
+* [  TypeScript ](#tab-panel-12079)
 
 JavaScript
 
 ```
-
-async function fetchWithRetry(url, maxAttempts = 3) {
-
-  const baseBackoffMs = 100;
-
-  const maxBackoffMs = 10000;
-
-
-  for (let attempt = 0; attempt < maxAttempts; attempt++) {
-
-    try {
-
-      return await fetch(url);
-
-    } catch (err) {
-
-      if (attempt + 1 >= maxAttempts) {
-
-        throw err;
-
-      }
-
-      const backoffMs = Math.min(
-
-        maxBackoffMs,
-
-        baseBackoffMs * Math.random() * Math.pow(2, attempt),
-
-      );
-
-      await scheduler.wait(backoffMs);
-
-    }
-
-  }
-
-  throw new Error("unreachable");
-
-}
-
-
-export default {
-
-  async fetch(request) {
-
-    const response = await fetchWithRetry("https://example.com/api");
-
-    return new Response(response.body, response);
-
-  },
-
-};
-
-
+async function fetchWithRetry(url, maxAttempts = 3) {  const baseBackoffMs = 100;  const maxBackoffMs = 10000;
+  for (let attempt = 0; attempt < maxAttempts; attempt++) {    try {      return await fetch(url);    } catch (err) {      if (attempt + 1 >= maxAttempts) {        throw err;      }      const backoffMs = Math.min(        maxBackoffMs,        baseBackoffMs * Math.random() * Math.pow(2, attempt),      );      await scheduler.wait(backoffMs);    }  }  throw new Error("unreachable");}
+export default {  async fetch(request) {    const response = await fetchWithRetry("https://example.com/api");    return new Response(response.body, response);  },};
 ```
 
 TypeScript
 
 ```
-
-async function fetchWithRetry(url: string, maxAttempts = 3): Promise<Response> {
-
-  const baseBackoffMs = 100;
-
-  const maxBackoffMs = 10000;
-
-
-  for (let attempt = 0; attempt < maxAttempts; attempt++) {
-
-    try {
-
-      return await fetch(url);
-
-    } catch (err) {
-
-      if (attempt + 1 >= maxAttempts) {
-
-        throw err;
-
-      }
-
-      const backoffMs = Math.min(
-
-        maxBackoffMs,
-
-        baseBackoffMs * Math.random() * Math.pow(2, attempt),
-
-      );
-
-      await scheduler.wait(backoffMs);
-
-    }
-
-  }
-
-  throw new Error("unreachable");
-
-}
-
-
-export default {
-
-  async fetch(request): Promise<Response> {
-
-    const response = await fetchWithRetry("https://example.com/api");
-
-    return new Response(response.body, response);
-
-  },
-
-} satisfies ExportedHandler;
-
-
+async function fetchWithRetry(url: string, maxAttempts = 3): Promise<Response> {  const baseBackoffMs = 100;  const maxBackoffMs = 10000;
+  for (let attempt = 0; attempt < maxAttempts; attempt++) {    try {      return await fetch(url);    } catch (err) {      if (attempt + 1 >= maxAttempts) {        throw err;      }      const backoffMs = Math.min(        maxBackoffMs,        baseBackoffMs * Math.random() * Math.pow(2, attempt),      );      await scheduler.wait(backoffMs);    }  }  throw new Error("unreachable");}
+export default {  async fetch(request): Promise<Response> {    const response = await fetchWithRetry("https://example.com/api");    return new Response(response.body, response);  },} satisfies ExportedHandler;
 ```
 
 ### Cancel with AbortSignal
 
 Use an [AbortController](https://developers.cloudflare.com/workers/runtime-apis/web-standards/#abortcontroller-and-abortsignal) to cancel a pending wait.
 
-* [  JavaScript ](#tab-panel-12059)
-* [  TypeScript ](#tab-panel-12060)
+* [  JavaScript ](#tab-panel-12076)
+* [  TypeScript ](#tab-panel-12077)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request) {
-
-    const controller = new AbortController();
-
-
-    // Cancel the wait after 500ms
-
-    setTimeout(() => controller.abort(), 500);
-
-
-    try {
-
-      await scheduler.wait(5000, { signal: controller.signal });
-
-      return new Response("Wait completed");
-
-    } catch (err) {
-
-      if (err instanceof DOMException && err.name === "AbortError") {
-
-        return new Response("Wait was cancelled", { status: 408 });
-
-      }
-
-      throw err;
-
-    }
-
-  },
-
-};
-
-
+export default {  async fetch(request) {    const controller = new AbortController();
+    // Cancel the wait after 500ms    setTimeout(() => controller.abort(), 500);
+    try {      await scheduler.wait(5000, { signal: controller.signal });      return new Response("Wait completed");    } catch (err) {      if (err instanceof DOMException && err.name === "AbortError") {        return new Response("Wait was cancelled", { status: 408 });      }      throw err;    }  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request): Promise<Response> {
-
-    const controller = new AbortController();
-
-
-    // Cancel the wait after 500ms
-
-    setTimeout(() => controller.abort(), 500);
-
-
-    try {
-
-      await scheduler.wait(5000, { signal: controller.signal });
-
-      return new Response("Wait completed");
-
-    } catch (err) {
-
-      if (err instanceof DOMException && err.name === "AbortError") {
-
-        return new Response("Wait was cancelled", { status: 408 });
-
-      }
-
-      throw err;
-
-    }
-
-  },
-
-} satisfies ExportedHandler;
-
-
+export default {  async fetch(request): Promise<Response> {    const controller = new AbortController();
+    // Cancel the wait after 500ms    setTimeout(() => controller.abort(), 500);
+    try {      await scheduler.wait(5000, { signal: controller.signal });      return new Response("Wait completed");    } catch (err) {      if (err instanceof DOMException && err.name === "AbortError") {        return new Response("Wait was cancelled", { status: 408 });      }      throw err;    }  },} satisfies ExportedHandler;
 ```
 
 ## Related resources

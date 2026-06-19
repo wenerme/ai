@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,60 +21,28 @@ Like with any other Worker, [you can configure a Worker with assets to run on a 
 For example, to serve assets from `example.com/blog/*`, create a `blog` directory in your asset directory.
 
 * Directorydist  
-   * Directoryblog  
-         * index.html  
-         * Directoryposts  
-                  * post1.html  
-                  * post2.html
+  * Directoryblog  
+    * index.html
+    * Directoryposts  
+      * post1.html
+      * post2.html
 
 With a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) like so:
 
-* [  wrangler.jsonc ](#tab-panel-12137)
-* [  wrangler.toml ](#tab-panel-12138)
+* [  wrangler.jsonc ](#tab-panel-12154)
+* [  wrangler.toml ](#tab-panel-12155)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "assets-on-a-path-example",
-
-  "main": "src/index.js",
-
-  "route": "example.com/blog/*",
-
-  "assets": {
-
-    "directory": "dist"
-
-  }
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "assets-on-a-path-example",  "main": "src/index.js",  "route": "example.com/blog/*",  "assets": {    "directory": "dist"  }}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "assets-on-a-path-example"
-
-main = "src/index.js"
-
-route = "example.com/blog/*"
-
-
-[assets]
-
-directory = "dist"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "assets-on-a-path-example"main = "src/index.js"route = "example.com/blog/*"
+[assets]directory = "dist"
 ```
 
 In this example, requests to `example.com/blog/` will serve the `index.html` file, and requests to `example.com/blog/posts/post1` will serve the `post1.html` file.

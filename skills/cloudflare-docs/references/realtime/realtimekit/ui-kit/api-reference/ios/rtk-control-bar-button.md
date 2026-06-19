@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -44,21 +44,8 @@ Base button class for control bar items. Supports normal and selected states, no
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let button = RtkControlBarButton(
-
-    image: RtkImage(image: UIImage(systemName: "mic")),
-
-    title: "Mute"
-
-)
-
-view.addSubview(button)
-
-
+let button = RtkControlBarButton(    image: RtkImage(image: UIImage(systemName: "mic")),    title: "Mute")view.addSubview(button)
 ```
 
 ### With state changes
@@ -66,43 +53,10 @@ view.addSubview(button)
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let button = RtkControlBarButton(
-
-    image: RtkImage(image: UIImage(systemName: "mic")),
-
-    title: "Mute"
-
-)
-
-
-// Switch to selected state
-
-button.setSelected(
-
-    image: RtkImage(image: UIImage(systemName: "mic.slash")),
-
-    title: "Unmute"
-
-)
-
-
-// Switch back to default state
-
-button.setDefault(
-
-    image: RtkImage(image: UIImage(systemName: "mic")),
-
-    title: "Mute"
-
-)
-
-view.addSubview(button)
-
-
+let button = RtkControlBarButton(    image: RtkImage(image: UIImage(systemName: "mic")),    title: "Mute")
+// Switch to selected statebutton.setSelected(    image: RtkImage(image: UIImage(systemName: "mic.slash")),    title: "Unmute")
+// Switch back to default statebutton.setDefault(    image: RtkImage(image: UIImage(systemName: "mic")),    title: "Mute")view.addSubview(button)
 ```
 
 ```json

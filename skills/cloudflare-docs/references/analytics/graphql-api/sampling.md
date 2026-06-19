@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,7 +20,7 @@ In a small number of cases, the analytics provided on the Cloudflare dashboard a
 
 ## Sampled datasets
 
-Cloudflare GraphQL API exposes datasets that powered by adaptive sampling. These nodes have **Adaptive** in the name and can be discovered through[introspection](https://developers.cloudflare.com/analytics/graphql-api/features/discovery/introspection/).
+Cloudflare GraphQL API exposes datasets that powered by adaptive sampling. These nodes have **Adaptive** in the name and can be discovered through [introspection](https://developers.cloudflare.com/analytics/graphql-api/features/discovery/introspection/).
 
 The presence of sampled data is also called out in the Cloudflare dashboard and in the description of the dataset in the API.
 

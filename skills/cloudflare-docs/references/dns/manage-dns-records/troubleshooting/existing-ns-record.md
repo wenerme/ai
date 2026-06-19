@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -15,10 +15,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 As you try to create a new DNS record, Cloudflare displays the following error:
 
 ```
-
 NS records with that host already exist. (Code:81056)
-
-
 ```
 
 ## Causes

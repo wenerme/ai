@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/support/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,13 +33,13 @@ Before notifying Cloudflare of an issue with your site, refer to the [Cloudflare
 
 As a Cloudflare customer, you can contact Cloudflare for support via the community portal or by [opening a support case](#submit-a-support-case), live chat, or phone. Support options can vary depending on your plan.
 
-| Enterprise                                                                                                                                                                                                        | Business | Pro | Free        |                           |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | --- | ----------- | ------------------------- |
-| [Community ↗](https://community.cloudflare.com/)Join the community to ask basic troubleshooting questions and to view the latest resources (such as tips for resolving common issues and configuration guidance). | Yes      | Yes | Recommended | Recommended               |
-| [Discord ↗](https://discord.cloudflare.com/)Join the Discord community to ask basic troubleshooting questions (mainly focused on the Developer Platform).                                                         | Yes      | Yes | Recommended | Recommended               |
-| [Support case](#getting-help-with-an-issue)Use to troubleshoot specific issues or errors. Response times depend on your plan.                                                                                     | Yes      | Yes | Yes         | No[1](#user-content-fn-1) |
-| **Chat**Use to troubleshoot specific issues or errors. Response times depend on your plan.                                                                                                                        | Yes      | Yes | No          | No                        |
-| **Emergency Phone** Use phone support to reach out during emergencies such as site outages or DDoS attacks.                                                                                                       | Yes      | No  | No          | No                        |
+|                                                                                                                                                                                                                   | Enterprise | Business | Pro         | Free                      |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | -------- | ----------- | ------------------------- |
+| [Community ↗](https://community.cloudflare.com/)Join the community to ask basic troubleshooting questions and to view the latest resources (such as tips for resolving common issues and configuration guidance). | Yes        | Yes      | Recommended | Recommended               |
+| [Discord ↗](https://discord.cloudflare.com/)Join the Discord community to ask basic troubleshooting questions (mainly focused on the Developer Platform).                                                         | Yes        | Yes      | Recommended | Recommended               |
+| [Support case](#getting-help-with-an-issue)Use to troubleshoot specific issues or errors. Response times depend on your plan.                                                                                     | Yes        | Yes      | Yes         | No[1](#user-content-fn-1) |
+| **Chat**Use to troubleshoot specific issues or errors. Response times depend on your plan.                                                                                                                        | Yes        | Yes      | No          | No                        |
+| **Emergency Phone** Use phone support to reach out during emergencies such as site outages or DDoS attacks.                                                                                                       | Yes        | No       | No          | No                        |
 
 ---
 
@@ -99,18 +99,19 @@ To submit a support case, follow these steps:
 2. Choose the category and subcategories that best define your issue.
 3. Choose the affected domains (if applicable).
 4. Enter a detailed summary of the issue you’re experiencing.
-5. Complete the case submission fields as completely as possible with the following information. _(**Please note** that missing information will increase the time it takes to resolve your issue and our team may not be able to investigate without enough information. Please review [Gathering information for troubleshooting sites](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/) and make sure you include all needed information.)_\- A detailed description of the issue with the following information:  
-   * Timestamp (UTC)  
-   * ZoneName/ZoneID  
-   * Problem frequency  
-   * Steps to reproduce the issue, with actual results vs expected results - Any necessary information for a technical investigation  
-   * A description of the actual results vs expected results  
-   * Steps to reproduce the issue, with example URLs  
-   * Exact error messages  
-   * [HAR files](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/#generate-a-har-file)  
-   * Screenshots  
-   * Relevant logs from the origin web server  
-   * Output from [test tools](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/) such as MTR, traceroute, dig/nslookup, and cURL - Priority level, impact to service / production - Any collaborators whom you wish to be cc'd on the case
+5. Complete the case submission fields as completely as possible with the following information. _(**Please note** that missing information will increase the time it takes to resolve your issue and our team may not be able to investigate without enough information. Please review [Gathering information for troubleshooting sites](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/) and make sure you include all needed information.)_\- A detailed description of the issue with the following information:
+
+  * Timestamp (UTC)
+  * ZoneName/ZoneID
+  * Problem frequency
+  * Steps to reproduce the issue, with actual results vs expected results - Any necessary information for a technical investigation
+  * A description of the actual results vs expected results
+  * Steps to reproduce the issue, with example URLs
+  * Exact error messages
+  * [HAR files](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/#generate-a-har-file)
+  * Screenshots
+  * Relevant logs from the origin web server
+  * Output from [test tools](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/) such as MTR, traceroute, dig/nslookup, and cURL - Priority level, impact to service / production - Any collaborators whom you wish to be cc'd on the case
 6. Click **Submit Case**.
 
 ### Accepted attachment file formats
@@ -195,17 +196,17 @@ Below are definitions of the priority levels Cloudflare assigns to cases and the
 ### Priority definitions
 
 * P1 Urgent- Critical Business Impact: Severe disruption to your business operations. This issue requires immediate and ongoing attention from both Cloudflare as well as yourself as it directly affects revenue, users, or business continuity.  
-   * _Example_: Your websites, applications, or services are completely unavailable or severely impaired across multiple regions or ISPs.  
-   * _Example_: A confirmed, active security attack is causing major disruptions, such as denial of service, data breaches, or account compromises.
+  * _Example_: Your websites, applications, or services are completely unavailable or severely impaired across multiple regions or ISPs.
+  * _Example_: A confirmed, active security attack is causing major disruptions, such as denial of service, data breaches, or account compromises.
 * P2 High - High Business Impact: Significant but localized service or security disruption. While not a full outage, this issue affects business operations and requires urgent resolution.  
-   * _Example_: A recurring or persistent issue is affecting a portion of your users, such as degraded performance, intermittent outages, or limited accessibility.  
-   * _Example_: A past, confirmed security attack has resulted in measurable impact, requiring investigation and mitigation to prevent recurrence.
+  * _Example_: A recurring or persistent issue is affecting a portion of your users, such as degraded performance, intermittent outages, or limited accessibility.
+  * _Example_: A past, confirmed security attack has resulted in measurable impact, requiring investigation and mitigation to prevent recurrence.
 * P3 Normal - Moderate Business Impact: Limited service impact or suspected security concerns. The issue does not pose an immediate risk but requires attention for continued reliability.  
-   * _Example_: Your service is operational, but you are experiencing minor disruptions, such as performance fluctuations, unexpected behavior, or non-critical bugs.  
-   * _Example_: A suspected security threat has been detected but is currently mitigated (e.g., an attack that Cloudflare successfully blocked).
+  * _Example_: Your service is operational, but you are experiencing minor disruptions, such as performance fluctuations, unexpected behavior, or non-critical bugs.
+  * _Example_: A suspected security threat has been detected but is currently mitigated (e.g., an attack that Cloudflare successfully blocked).
 * P4 Low - Low Business Impact: General inquiries and non-urgent requests. The issue does not impact your service availability or business operations.  
-   * _Example_: You are requesting feature enhancements or recommendations for improving security or performance.  
-   * _Example_: You have questions about Cloudflare’s products, documentation, or best practices.
+  * _Example_: You are requesting feature enhancements or recommendations for improving security or performance.
+  * _Example_: You have questions about Cloudflare’s products, documentation, or best practices.
 
 ### Premium SLA
 

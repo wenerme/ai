@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,55 +21,11 @@ The following example retrieves the currently configured rules for Advanced DNS 
 Request
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/advanced_dns_protection/configs/dns_protection/rules" \
-
---header "Authorization: Bearer <API_TOKEN>"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/advanced_dns_protection/configs/dns_protection/rules" \--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 ```
-
----
-
-{
-
-  "result": [
-
-    {
-
-      "id": "<RULE_ID>",
-
-      "scope": "<SCOPE>",
-
-      "name": "<NAME>",
-
-      "mode": "<MODE>",
-
-      "profile_sensitivity": "<SENSITIVITY>",
-
-      "rate_sensitivity": "<RATE>",
-
-      "burst_sensitivity": "<BURST>",
-
-      "created_on": "2023-10-01T13:10:38.762503+01:00",
-
-      "modified_on": "2023-10-01T13:10:38.762503+01:00",
-
-      }
-
-    ],
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+---{  "result": [    {      "id": "<RULE_ID>",      "scope": "<SCOPE>",      "name": "<NAME>",      "mode": "<MODE>",      "profile_sensitivity": "<SENSITIVITY>",      "rate_sensitivity": "<RATE>",      "burst_sensitivity": "<BURST>",      "created_on": "2023-10-01T13:10:38.762503+01:00",      "modified_on": "2023-10-01T13:10:38.762503+01:00",      }    ],  "success": true,  "errors": [],  "messages": []}
 ```
 
 ### Create DNS protection rule
@@ -79,65 +35,11 @@ The following example creates an Advanced DNS Protection rule with a global scop
 Request
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/advanced_dns_protection/configs/dns_protection/rules" \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---data '{
-
-  "scope": "global",
-
-  "name": "global",
-
-  "mode": "<MODE>",
-
-  "rate_sensitivity": "<RATE>",
-
-  "burst_sensitivity": "<BURST>",
-
-  "profile_sensitivity": "<SENSITIVITY>"
-
-}'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/advanced_dns_protection/configs/dns_protection/rules" \--header "Authorization: Bearer <API_TOKEN>" \--data '{  "scope": "global",  "name": "global",  "mode": "<MODE>",  "rate_sensitivity": "<RATE>",  "burst_sensitivity": "<BURST>",  "profile_sensitivity": "<SENSITIVITY>"}'
 ```
 
 ```
-
-{
-
-  "result": {
-
-    "id": "<RULE_ID>",
-
-    "scope": "global",
-
-    "name": "global",
-
-    "mode": "<MODE>",
-
-    "rate_sensitivity": "<RATE>",
-
-    "burst_sensitivity": "<BURST>",
-
-    "profile_sensitivity": "<SENSITIVITY>",
-
-    "created_on": "2023-10-01T13:10:38.762503+01:00",
-
-    "modified_on": "2023-10-01T13:10:38.762503+01:00",
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "id": "<RULE_ID>",    "scope": "global",    "name": "global",    "mode": "<MODE>",    "rate_sensitivity": "<RATE>",    "burst_sensitivity": "<BURST>",    "profile_sensitivity": "<SENSITIVITY>",    "created_on": "2023-10-01T13:10:38.762503+01:00",    "modified_on": "2023-10-01T13:10:38.762503+01:00",  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 Refer to [JSON objects](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/dns-protection/json-objects/) for more information on the fields in the JSON body.
@@ -151,63 +53,11 @@ The request body can contain only the fields you want to update (from `mode`, `p
 Request
 
 ```
-
-curl --request PATCH \
-
-"https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/advanced_dns_protection/configs/dns_protection/rules/{rule_id}" \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---data '{
-
-  "mode": "<NEW_MODE>",
-
-  "profile_sensitivity": "<NEW_SENSITIVITY>",
-
-  "rate_sensitivity": "<NEW_RATE>",
-
-  "burst_sensitivity": "<NEW_BURST>"
-
-}'
-
-
+curl --request PATCH \"https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/advanced_dns_protection/configs/dns_protection/rules/{rule_id}" \--header "Authorization: Bearer <API_TOKEN>" \--data '{  "mode": "<NEW_MODE>",  "profile_sensitivity": "<NEW_SENSITIVITY>",  "rate_sensitivity": "<NEW_RATE>",  "burst_sensitivity": "<NEW_BURST>"}'
 ```
 
 ```
-
-{
-
-  "result": {
-
-    "id": "<RULE_ID>",
-
-    "scope": "<SCOPE>",
-
-    "name": "<NAME>",
-
-    "mode": "<NEW_MODE>",
-
-    "profile_sensitivity": "<NEW_SENSITIVITY>",
-
-    "rate_sensitivity": "<NEW_RATE>",
-
-    "burst_sensitivity": "<NEW_BURST>",
-
-    "created_on": "2023-10-01T13:10:38.762503+01:00",
-
-    "modified_on": "2023-10-01T13:10:38.762503+01:00",
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "id": "<RULE_ID>",    "scope": "<SCOPE>",    "name": "<NAME>",    "mode": "<NEW_MODE>",    "profile_sensitivity": "<NEW_SENSITIVITY>",    "rate_sensitivity": "<NEW_RATE>",    "burst_sensitivity": "<NEW_BURST>",    "created_on": "2023-10-01T13:10:38.762503+01:00",    "modified_on": "2023-10-01T13:10:38.762503+01:00",  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 Refer to [JSON objects](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/dns-protection/json-objects/) for more information on the fields in the JSON body.

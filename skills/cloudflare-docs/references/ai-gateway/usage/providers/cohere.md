@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,10 +17,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 ## Endpoint
 
 ```
-
 https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/cohere
-
-
 ```
 
 ## URL structure
@@ -43,30 +40,7 @@ When making requests to Cohere, ensure you have the following:
 Request
 
 ```
-
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/cohere/v1/chat \
-
-  --header 'Authorization: Token {cohere_api_token}' \
-
-  --header 'Content-Type: application/json' \
-
-  --data '{
-
-  "chat_history": [
-
-    {"role": "USER", "message": "Who discovered gravity?"},
-
-    {"role": "CHATBOT", "message": "The man who is widely credited with discovering gravity is Sir Isaac Newton"}
-
-  ],
-
-  "message": "What year was he born?",
-
-  "connectors": [{"id": "web-search"}]
-
-}'
-
-
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/cohere/v1/chat \  --header 'Authorization: Token {cohere_api_token}' \  --header 'Content-Type: application/json' \  --data '{  "chat_history": [    {"role": "USER", "message": "Who discovered gravity?"},    {"role": "CHATBOT", "message": "The man who is widely credited with discovering gravity is Sir Isaac Newton"}  ],  "message": "What year was he born?",  "connectors": [{"id": "web-search"}]}'
 ```
 
 ### Use Cohere SDK with Python
@@ -76,47 +50,12 @@ If using the [cohere-python-sdk ↗](https://github.com/cohere-ai/cohere-python)
 Python
 
 ```
-
-import cohere
-
-import os
-
-
-api_key = os.getenv('API_KEY')
-
-account_id = '{account_id}'
-
-gateway_id = '{gateway_id}'
-
-base_url = f"https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/cohere/v1"
-
-
-co = cohere.Client(
-
-  api_key=api_key,
-
-  base_url=base_url,
-
-)
-
-
-message = "hello world!"
-
-model = "command-r-plus"
-
-
-chat = co.chat(
-
-  message=message,
-
-  model=model
-
-)
-
-
+import cohereimport os
+api_key = os.getenv('API_KEY')account_id = '{account_id}'gateway_id = '{gateway_id}'base_url = f"https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/cohere/v1"
+co = cohere.Client(  api_key=api_key,  base_url=base_url,)
+message = "hello world!"model = "command-r-plus"
+chat = co.chat(  message=message,  model=model)
 print(chat)
-
-
 ```
 
 ## OpenAI-Compatible Endpoint
@@ -124,23 +63,13 @@ print(chat)
 You can also access Cohere models using the OpenAI API schema through the [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/). Send your requests to:
 
 ```
-
 https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1/chat/completions
-
-
 ```
 
 Specify:
 
 ```
-
-{
-
-"model": "cohere/{model}"
-
-}
-
-
+{"model": "cohere/{model}"}
 ```
 
 ```json

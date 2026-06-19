@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -41,8 +41,8 @@ Auto-creation only applies to the gateway ID `default`. Using any other gateway 
 
 ### Create a gateway manually
 
-* [ Dashboard ](#tab-panel-6540)
-* [ API ](#tab-panel-6541)
+* [ Dashboard ](#tab-panel-6614)
+* [ API ](#tab-panel-6615)
 
 [ Go to **AI Gateway** ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
@@ -53,16 +53,17 @@ Auto-creation only applies to the gateway ID `default`. Using any other gateway 
 
 To set up an AI Gateway using the API:
 
-1. [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:  
-   * `AI Gateway - Read`  
-   * `AI Gateway - Edit`
+1. [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:
+
+  * `AI Gateway - Read`
+  * `AI Gateway - Edit`
 2. Get your [Account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
 3. Using that API token and Account ID, send a [POST request](https://developers.cloudflare.com/api/resources/ai%5Fgateway/methods/create/) to the Cloudflare API.
 
 ## Edit gateway
 
-* [ Dashboard ](#tab-panel-6536)
-* [ API ](#tab-panel-6537)
+* [ Dashboard ](#tab-panel-6610)
+* [ API ](#tab-panel-6611)
 
 To edit an AI Gateway in the dashboard:
 
@@ -88,9 +89,9 @@ To configure retry settings:
 3. Go to **Settings** and find the **Retry Requests** section.
 4. Turn on the toggle to turn on automatic retries.
 5. Configure the following settings:  
-   * **Retry count** — the maximum number of retry attempts (up to 5).  
-   * **Delay** — the base delay between retries. Available values: 100ms, 500ms, 1 second, 2 seconds, 3 seconds, or 5 seconds.  
-   * **Backoff** — the backoff strategy for subsequent retries: Constant, Linear, or Exponential.
+  * **Retry count** — the maximum number of retry attempts (up to 5).
+  * **Delay** — the base delay between retries. Available values: 100ms, 500ms, 1 second, 2 seconds, 3 seconds, or 5 seconds.
+  * **Backoff** — the backoff strategy for subsequent retries: Constant, Linear, or Exponential.
 6. Select **Save**.
 ![Retry Requests settings in the AI Gateway dashboard](https://developers.cloudflare.com/_astro/auto-retry-settings.UcvmkohL_Z2r7tSz.webp) 
 
@@ -102,8 +103,8 @@ For more complex failover scenarios where you need to fail across different prov
 
 Deleting your gateway is permanent and can not be undone.
 
-* [ Dashboard ](#tab-panel-6538)
-* [ API ](#tab-panel-6539)
+* [ Dashboard ](#tab-panel-6612)
+* [ API ](#tab-panel-6613)
 
 To delete an AI Gateway in the dashboard:
 

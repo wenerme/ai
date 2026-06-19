@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,28 +22,13 @@ Use the [Edit DNSSEC Status endpoint](https://developers.cloudflare.com/api/reso
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `DNS Write`
 
 Edit DNSSEC Status
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dnssec" \
-
-  --request PATCH \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "dnssec_use_nsec3": true,
-
-    "status": "active"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dnssec" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "dnssec_use_nsec3": true,    "status": "active"  }'
 ```
 
 ### Pre-signed DNSSEC
@@ -63,10 +48,7 @@ A command like the following would trigger a signed negative response using NSEC
 Terminal window
 
 ```
-
 dig +dnssec doesnotexist.example.com
-
-
 ```
 
 ### Non-existent record type at an existing name
@@ -76,10 +58,7 @@ If the name `www` exists but the type TXT does not, the example below would trig
 Terminal window
 
 ```
-
 dig +dnssec www.example.com TXT
-
-
 ```
 
 ## Availability

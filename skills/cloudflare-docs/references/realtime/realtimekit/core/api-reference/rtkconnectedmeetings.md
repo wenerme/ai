@@ -5,7 +5,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -14,14 +14,14 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 This consists of the methods to facilitate connected meetings
 
 * [RTKConnectedMeetings](#module%5FRTKConnectedMeetings)  
-   * [module.exports](#exp%5Fmodule%5FRTKConnectedMeetings--module.exports) ⏏  
-         * [new module.exports(context)](#new%5Fmodule%5FRTKConnectedMeetings--module.exports%5Fnew)  
-         * [.getRTKConnectedMeetings()](#module%5FRTKConnectedMeetings--module.exports+getRTKConnectedMeetings)  
-         * [.createMeetings(request)](#module%5FRTKConnectedMeetings--module.exports+createMeetings)  
-         * [.updateMeetings(request)](#module%5FRTKConnectedMeetings--module.exports+updateMeetings)  
-         * [.deleteMeetings(meetingIds)](#module%5FRTKConnectedMeetings--module.exports+deleteMeetings)  
-         * [.moveParticipants(sourceMeetingId, destinationMeetingId, participantIds)](#module%5FRTKConnectedMeetings--module.exports+moveParticipants)  
-         * [.moveParticipantsWithCustomPreset(sourceMeetingId, destinationMeetingId, participants)](#module%5FRTKConnectedMeetings--module.exports+moveParticipantsWithCustomPreset)
+  * [module.exports](#exp%5Fmodule%5FRTKConnectedMeetings--module.exports) ⏏  
+    * [new module.exports(context)](#new%5Fmodule%5FRTKConnectedMeetings--module.exports%5Fnew)
+    * [.getRTKConnectedMeetings()](#module%5FRTKConnectedMeetings--module.exports+getRTKConnectedMeetings)
+    * [.createMeetings(request)](#module%5FRTKConnectedMeetings--module.exports+createMeetings)
+    * [.updateMeetings(request)](#module%5FRTKConnectedMeetings--module.exports+updateMeetings)
+    * [.deleteMeetings(meetingIds)](#module%5FRTKConnectedMeetings--module.exports+deleteMeetings)
+    * [.moveParticipants(sourceMeetingId, destinationMeetingId, participantIds)](#module%5FRTKConnectedMeetings--module.exports+moveParticipants)
+    * [.moveParticipantsWithCustomPreset(sourceMeetingId, destinationMeetingId, participants)](#module%5FRTKConnectedMeetings--module.exports+moveParticipantsWithCustomPreset)
 
 ### module.exports ⏏
 

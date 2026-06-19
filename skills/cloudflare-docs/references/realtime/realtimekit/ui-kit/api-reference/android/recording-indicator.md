@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,16 +26,7 @@ A component which indicates the recording status of a meeting. It does not rende
 ### Basic Usage
 
 ```
-
-<com.cloudflare.realtimekit.ui.view.RtkRecordingIndicator
-
-    android:id="@+id/rtk_recording_indicator"
-
-    android:layout_width="wrap_content"
-
-    android:layout_height="wrap_content" />
-
-
+<com.cloudflare.realtimekit.ui.view.RtkRecordingIndicator    android:id="@+id/rtk_recording_indicator"    android:layout_width="wrap_content"    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
@@ -43,12 +34,7 @@ A component which indicates the recording status of a meeting. It does not rende
 Kotlin
 
 ```
-
-val recordingIndicator = findViewById<RtkRecordingIndicator>(R.id.rtk_recording_indicator)
-
-recordingIndicator.activate(meeting)
-
-
+val recordingIndicator = findViewById<RtkRecordingIndicator>(R.id.rtk_recording_indicator)recordingIndicator.activate(meeting)
 ```
 
 ```json

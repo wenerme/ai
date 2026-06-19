@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,29 +22,19 @@ Source maps translate compiled and minified code back to the original code that 
 
 To enable source maps, add the following to your Worker's [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-11868)
-* [  wrangler.toml ](#tab-panel-11869)
+* [  wrangler.jsonc ](#tab-panel-11885)
+* [  wrangler.toml ](#tab-panel-11886)
 
 JSONC
 
 ```
-
-{
-
-  "upload_source_maps": true
-
-}
-
-
+{  "upload_source_maps": true}
 ```
 
 TOML
 
 ```
-
 upload_source_maps = true
-
-
 ```
 
 When `upload_source_maps` is set to `true`, Wrangler will automatically generate and upload source map files when you run [wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) or [wrangler versions deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#versions-deploy). ​​
@@ -82,8 +72,8 @@ Consider a simple project. `src/index.ts` serves as the entrypoint of the applic
 * wrangler.jsonc
 * tsconfig.json
 * Directorysrc  
-   * calculator.ts  
-   * index.ts
+  * calculator.ts
+  * index.ts
 
 Let's see how source maps can simplify debugging an error in the ComplexCalculator class.
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,54 +31,7 @@ Triggered when a repository is created.
 **Example:**
 
 ```
-
-{
-
-  "type": "cf.artifacts.repo.created",
-
-  "source": {
-
-    "type": "artifacts",
-
-    "namespace": "my-namespace",
-
-    "repoName": "my-repo"
-
-  },
-
-  "payload": {
-
-    "repoId": "0tvugavnogssnwzk",
-
-    "defaultBranch": "main",
-
-    "description": "My Artifacts repository",
-
-    "readOnly": false,
-
-    "createdAt": "2026-05-18T15:53:46.833Z",
-
-    "updatedAt": "2026-05-18T15:53:46.833Z",
-
-    "lastPushAt": null
-
-  },
-
-  "metadata": {
-
-    "accountId": "f9f79265f388666de8122cfb508d7776",
-
-    "eventSubscriptionId": "1830c4bb612e43c3af7f4cada31fbf3f",
-
-    "eventSchemaVersion": 1,
-
-    "eventTimestamp": "2026-05-18T15:53:48.187Z"
-
-  }
-
-}
-
-
+{  "type": "cf.artifacts.repo.created",  "source": {    "type": "artifacts",    "namespace": "my-namespace",    "repoName": "my-repo"  },  "payload": {    "repoId": "0tvugavnogssnwzk",    "defaultBranch": "main",    "description": "My Artifacts repository",    "readOnly": false,    "createdAt": "2026-05-18T15:53:46.833Z",    "updatedAt": "2026-05-18T15:53:46.833Z",    "lastPushAt": null  },  "metadata": {    "accountId": "f9f79265f388666de8122cfb508d7776",    "eventSubscriptionId": "1830c4bb612e43c3af7f4cada31fbf3f",    "eventSchemaVersion": 1,    "eventTimestamp": "2026-05-18T15:53:48.187Z"  }}
 ```
 
 #### `repo.deleted`
@@ -88,54 +41,7 @@ Triggered when a repository is deleted.
 **Example:**
 
 ```
-
-{
-
-  "type": "cf.artifacts.repo.deleted",
-
-  "source": {
-
-    "type": "artifacts",
-
-    "namespace": "my-namespace",
-
-    "repoName": "my-repo"
-
-  },
-
-  "payload": {
-
-    "repoId": "0tvugavnogssnwzk",
-
-    "defaultBranch": "main",
-
-    "description": "My Artifacts repository",
-
-    "readOnly": false,
-
-    "createdAt": "2026-05-18T15:53:46.833Z",
-
-    "updatedAt": "2026-05-18T15:53:46.833Z",
-
-    "lastPushAt": null
-
-  },
-
-  "metadata": {
-
-    "accountId": "f9f79265f388666de8122cfb508d7776",
-
-    "eventSubscriptionId": "1830c4bb612e43c3af7f4cada31fbf3f",
-
-    "eventSchemaVersion": 1,
-
-    "eventTimestamp": "2026-05-18T15:53:59.914Z"
-
-  }
-
-}
-
-
+{  "type": "cf.artifacts.repo.deleted",  "source": {    "type": "artifacts",    "namespace": "my-namespace",    "repoName": "my-repo"  },  "payload": {    "repoId": "0tvugavnogssnwzk",    "defaultBranch": "main",    "description": "My Artifacts repository",    "readOnly": false,    "createdAt": "2026-05-18T15:53:46.833Z",    "updatedAt": "2026-05-18T15:53:46.833Z",    "lastPushAt": null  },  "metadata": {    "accountId": "f9f79265f388666de8122cfb508d7776",    "eventSubscriptionId": "1830c4bb612e43c3af7f4cada31fbf3f",    "eventSchemaVersion": 1,    "eventTimestamp": "2026-05-18T15:53:59.914Z"  }}
 ```
 
 #### `repo.forked`
@@ -145,58 +51,7 @@ Triggered when a repository is forked.
 **Example:**
 
 ```
-
-{
-
-  "type": "cf.artifacts.repo.forked",
-
-  "source": {
-
-    "type": "artifacts",
-
-    "namespace": "source-namespace",
-
-    "repoName": "source-repo"
-
-  },
-
-  "payload": {
-
-    "namespace": "target-namespace",
-
-    "repoName": "target-repo",
-
-    "repoId": "5ankv1vhl4xnw7wq",
-
-    "defaultBranch": "main",
-
-    "description": "Fork of source-repo",
-
-    "readOnly": false,
-
-    "createdAt": "2026-05-18T15:53:52.384Z",
-
-    "updatedAt": "2026-05-18T15:53:54.579Z",
-
-    "lastPushAt": null
-
-  },
-
-  "metadata": {
-
-    "accountId": "f9f79265f388666de8122cfb508d7776",
-
-    "eventSubscriptionId": "1830c4bb612e43c3af7f4cada31fbf3f",
-
-    "eventSchemaVersion": 1,
-
-    "eventTimestamp": "2026-05-18T15:53:54.641Z"
-
-  }
-
-}
-
-
+{  "type": "cf.artifacts.repo.forked",  "source": {    "type": "artifacts",    "namespace": "source-namespace",    "repoName": "source-repo"  },  "payload": {    "namespace": "target-namespace",    "repoName": "target-repo",    "repoId": "5ankv1vhl4xnw7wq",    "defaultBranch": "main",    "description": "Fork of source-repo",    "readOnly": false,    "createdAt": "2026-05-18T15:53:52.384Z",    "updatedAt": "2026-05-18T15:53:54.579Z",    "lastPushAt": null  },  "metadata": {    "accountId": "f9f79265f388666de8122cfb508d7776",    "eventSubscriptionId": "1830c4bb612e43c3af7f4cada31fbf3f",    "eventSchemaVersion": 1,    "eventTimestamp": "2026-05-18T15:53:54.641Z"  }}
 ```
 
 #### `repo.imported`
@@ -206,58 +61,7 @@ Triggered when a repository is imported from an external Git remote.
 **Example:**
 
 ```
-
-{
-
-  "type": "cf.artifacts.repo.imported",
-
-  "source": {
-
-    "type": "artifacts",
-
-    "namespace": "my-namespace",
-
-    "repoName": "my-repo"
-
-  },
-
-  "payload": {
-
-    "repoId": "d7nd72k964cv9kub",
-
-    "defaultBranch": "main",
-
-    "description": null,
-
-    "readOnly": false,
-
-    "createdAt": "2026-05-18T15:53:54.864Z",
-
-    "updatedAt": "2026-05-18T15:53:57.737Z",
-
-    "lastPushAt": null,
-
-    "sourceUrl": "https://github.com/example/repo.git",
-
-    "branch": "main"
-
-  },
-
-  "metadata": {
-
-    "accountId": "f9f79265f388666de8122cfb508d7776",
-
-    "eventSubscriptionId": "1830c4bb612e43c3af7f4cada31fbf3f",
-
-    "eventSchemaVersion": 1,
-
-    "eventTimestamp": "2026-05-18T15:53:58.195Z"
-
-  }
-
-}
-
-
+{  "type": "cf.artifacts.repo.imported",  "source": {    "type": "artifacts",    "namespace": "my-namespace",    "repoName": "my-repo"  },  "payload": {    "repoId": "d7nd72k964cv9kub",    "defaultBranch": "main",    "description": null,    "readOnly": false,    "createdAt": "2026-05-18T15:53:54.864Z",    "updatedAt": "2026-05-18T15:53:57.737Z",    "lastPushAt": null,    "sourceUrl": "https://github.com/example/repo.git",    "branch": "main"  },  "metadata": {    "accountId": "f9f79265f388666de8122cfb508d7776",    "eventSubscriptionId": "1830c4bb612e43c3af7f4cada31fbf3f",    "eventSchemaVersion": 1,    "eventTimestamp": "2026-05-18T15:53:58.195Z"  }}
 ```
 
 **Repository-level events** — Subscribe to the `artifacts.repo` source with a `namespace` and `repo_name` to receive events scoped to a single repository.
@@ -269,88 +73,7 @@ Triggered when commits are pushed to a repository.
 **Example:**
 
 ```
-
-{
-
-  "type": "cf.artifacts.repo.pushed",
-
-  "source": {
-
-    "type": "artifacts.repo",
-
-    "namespace": "my-namespace",
-
-    "repoName": "my-repo"
-
-  },
-
-  "payload": {
-
-    "ref": "refs/heads/main",
-
-    "before": "abc123def456abc123def456abc123def456abc1",
-
-    "after": "def789ghi012def789ghi012def789ghi012def7",
-
-    "commits": [
-
-      {
-
-        "id": "def789ghi012def789ghi012def789ghi012def7",
-
-        "message": "Fix bug in authentication",
-
-        "messageTruncated": false,
-
-        "timestamp": "2025-05-01T02:48:57.000Z",
-
-        "author": {
-
-          "name": "Developer Name",
-
-          "email": "developer@example.com"
-
-        },
-
-        "committer": {
-
-          "name": "Developer Name",
-
-          "email": "developer@example.com"
-
-        },
-
-        "parents": [
-
-          "abc123def456abc123def456abc123def456abc1"
-
-        ]
-
-      }
-
-    ],
-
-    "totalCommitsCount": 1,
-
-    "commitsTruncated": false
-
-  },
-
-  "metadata": {
-
-    "accountId": "f9f79265f388666de8122cfb508d7776",
-
-    "eventSubscriptionId": "1830c4bb612e43c3af7f4cada31fbf3f",
-
-    "eventSchemaVersion": 1,
-
-    "eventTimestamp": "2025-05-01T02:48:57.132Z"
-
-  }
-
-}
-
-
+{  "type": "cf.artifacts.repo.pushed",  "source": {    "type": "artifacts.repo",    "namespace": "my-namespace",    "repoName": "my-repo"  },  "payload": {    "ref": "refs/heads/main",    "before": "abc123def456abc123def456abc123def456abc1",    "after": "def789ghi012def789ghi012def789ghi012def7",    "commits": [      {        "id": "def789ghi012def789ghi012def789ghi012def7",        "message": "Fix bug in authentication",        "messageTruncated": false,        "timestamp": "2025-05-01T02:48:57.000Z",        "author": {          "name": "Developer Name",          "email": "developer@example.com"        },        "committer": {          "name": "Developer Name",          "email": "developer@example.com"        },        "parents": [          "abc123def456abc123def456abc123def456abc1"        ]      }    ],    "totalCommitsCount": 1,    "commitsTruncated": false  },  "metadata": {    "accountId": "f9f79265f388666de8122cfb508d7776",    "eventSubscriptionId": "1830c4bb612e43c3af7f4cada31fbf3f",    "eventSchemaVersion": 1,    "eventTimestamp": "2025-05-01T02:48:57.132Z"  }}
 ```
 
 #### `cloned`
@@ -360,38 +83,7 @@ Triggered when a repository is cloned.
 **Example:**
 
 ```
-
-{
-
-  "type": "cf.artifacts.repo.cloned",
-
-  "source": {
-
-    "type": "artifacts.repo",
-
-    "namespace": "my-namespace",
-
-    "repoName": "my-repo"
-
-  },
-
-  "payload": {},
-
-  "metadata": {
-
-    "accountId": "f9f79265f388666de8122cfb508d7776",
-
-    "eventSubscriptionId": "0ab4c7b45a39491ba5da2973f3d093a6",
-
-    "eventSchemaVersion": 1,
-
-    "eventTimestamp": "2026-05-18T15:53:51.358Z"
-
-  }
-
-}
-
-
+{  "type": "cf.artifacts.repo.cloned",  "source": {    "type": "artifacts.repo",    "namespace": "my-namespace",    "repoName": "my-repo"  },  "payload": {},  "metadata": {    "accountId": "f9f79265f388666de8122cfb508d7776",    "eventSubscriptionId": "0ab4c7b45a39491ba5da2973f3d093a6",    "eventSchemaVersion": 1,    "eventTimestamp": "2026-05-18T15:53:51.358Z"  }}
 ```
 
 #### `fetched`
@@ -401,38 +93,7 @@ Triggered when updates are fetched from a repository.
 **Example:**
 
 ```
-
-{
-
-  "type": "cf.artifacts.repo.fetched",
-
-  "source": {
-
-    "type": "artifacts.repo",
-
-    "namespace": "my-namespace",
-
-    "repoName": "my-repo"
-
-  },
-
-  "payload": {},
-
-  "metadata": {
-
-    "accountId": "f9f79265f388666de8122cfb508d7776",
-
-    "eventSubscriptionId": "0ab4c7b45a39491ba5da2973f3d093a6",
-
-    "eventSchemaVersion": 1,
-
-    "eventTimestamp": "2026-05-18T15:53:51.358Z"
-
-  }
-
-}
-
-
+{  "type": "cf.artifacts.repo.fetched",  "source": {    "type": "artifacts.repo",    "namespace": "my-namespace",    "repoName": "my-repo"  },  "payload": {},  "metadata": {    "accountId": "f9f79265f388666de8122cfb508d7776",    "eventSubscriptionId": "0ab4c7b45a39491ba5da2973f3d093a6",    "eventSchemaVersion": 1,    "eventTimestamp": "2026-05-18T15:53:51.358Z"  }}
 ```
 
 #### `token.created`
@@ -442,46 +103,7 @@ Triggered when a repo-scoped token is created. Includes the token ID, scope, and
 **Example:**
 
 ```
-
-{
-
-  "type": "cf.artifacts.repo.token.created",
-
-  "source": {
-
-    "type": "artifacts.repo",
-
-    "namespace": "default",
-
-    "repoName": "token-evt-repo"
-
-  },
-
-  "payload": {
-
-    "tokenId": "7ngdf3ww3u84t33x",
-
-    "scope": "read",
-
-    "expiresAt": "2026-05-20T16:58:14.548Z"
-
-  },
-
-  "metadata": {
-
-    "accountId": "f9f79265f388666de8122cfb508d7776",
-
-    "eventSubscriptionId": "0ab4c7b45a39491ba5da2973f3d093a6",
-
-    "eventSchemaVersion": 1,
-
-    "eventTimestamp": "2026-05-20T16:58:14.548Z"
-
-  }
-
-}
-
-
+{  "type": "cf.artifacts.repo.token.created",  "source": {    "type": "artifacts.repo",    "namespace": "default",    "repoName": "token-evt-repo"  },  "payload": {    "tokenId": "7ngdf3ww3u84t33x",    "scope": "read",    "expiresAt": "2026-05-20T16:58:14.548Z"  },  "metadata": {    "accountId": "f9f79265f388666de8122cfb508d7776",    "eventSubscriptionId": "0ab4c7b45a39491ba5da2973f3d093a6",    "eventSchemaVersion": 1,    "eventTimestamp": "2026-05-20T16:58:14.548Z"  }}
 ```
 
 #### `token.revoked`
@@ -491,42 +113,7 @@ Triggered when a repo-scoped token is revoked. Includes the token ID.
 **Example:**
 
 ```
-
-{
-
-  "type": "cf.artifacts.repo.token.revoked",
-
-  "source": {
-
-    "type": "artifacts.repo",
-
-    "namespace": "default",
-
-    "repoName": "token-evt-repo"
-
-  },
-
-  "payload": {
-
-    "tokenId": "7ngdf3ww3u84t33x"
-
-  },
-
-  "metadata": {
-
-    "accountId": "f9f79265f388666de8122cfb508d7776",
-
-    "eventSubscriptionId": "0ab4c7b45a39491ba5da2973f3d093a6",
-
-    "eventSchemaVersion": 1,
-
-    "eventTimestamp": "2026-05-20T16:58:14.548Z"
-
-  }
-
-}
-
-
+{  "type": "cf.artifacts.repo.token.revoked",  "source": {    "type": "artifacts.repo",    "namespace": "default",    "repoName": "token-evt-repo"  },  "payload": {    "tokenId": "7ngdf3ww3u84t33x"  },  "metadata": {    "accountId": "f9f79265f388666de8122cfb508d7776",    "eventSubscriptionId": "0ab4c7b45a39491ba5da2973f3d093a6",    "eventSchemaVersion": 1,    "eventTimestamp": "2026-05-20T16:58:14.548Z"  }}
 ```
 
 ```json

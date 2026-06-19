@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,384 +29,114 @@ Generate production-ready SVG vector graphics from text prompts with a general-p
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1680)
-* [ cURL ](#tab-panel-1681)
+* [ TypeScript ](#tab-panel-1736)
+* [ cURL ](#tab-panel-1737)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'recraft/recraftv4-1-utility-vector',
-
-  { prompt: 'A simple flat icon of a calendar with a date marked' },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'recraft/recraftv4-1-utility-vector',  { prompt: 'A simple flat icon of a calendar with a date marked' },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "recraft/recraftv4-1-utility-vector",
-
-  "input": {
-
-    "prompt": "A simple flat icon of a calendar with a date marked"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "recraft/recraftv4-1-utility-vector",  "input": {    "prompt": "A simple flat icon of a calendar with a date marked"  }}'
 ```
 
-* [ Output ](#tab-panel-1678)
-* [ Raw response ](#tab-panel-1679)
+* [ Output ](#tab-panel-1734)
+* [ Raw response ](#tab-panel-1735)
 
 ![Simple Icon](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility-vector/simple-icon.jpg) 
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility-vector/simple-icon.jpg"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility-vector/simple-icon.jpg"  },  "state": "Completed"}
 ```
 
 ## Examples
 
 **App Icon**  — Mobile app icon in vector format 
 
-* [ TypeScript ](#tab-panel-1684)
-* [ cURL ](#tab-panel-1685)
+* [ TypeScript ](#tab-panel-1740)
+* [ cURL ](#tab-panel-1741)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'recraft/recraftv4-1-utility-vector',
-
-  { prompt: 'A clean app icon featuring a magnifying glass over a document', size: '1024x1024' },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'recraft/recraftv4-1-utility-vector',  { prompt: 'A clean app icon featuring a magnifying glass over a document', size: '1024x1024' },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "recraft/recraftv4-1-utility-vector",
-
-  "input": {
-
-    "prompt": "A clean app icon featuring a magnifying glass over a document",
-
-    "size": "1024x1024"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "recraft/recraftv4-1-utility-vector",  "input": {    "prompt": "A clean app icon featuring a magnifying glass over a document",    "size": "1024x1024"  }}'
 ```
 
-* [ Output ](#tab-panel-1682)
-* [ Raw response ](#tab-panel-1683)
+* [ Output ](#tab-panel-1738)
+* [ Raw response ](#tab-panel-1739)
 
 ![App Icon](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility-vector/app-icon.jpg) 
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility-vector/app-icon.jpg"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility-vector/app-icon.jpg"  },  "state": "Completed"}
 ```
 
 **Illustration**  — Vector illustration for general use 
 
-* [ TypeScript ](#tab-panel-1688)
-* [ cURL ](#tab-panel-1689)
+* [ TypeScript ](#tab-panel-1744)
+* [ cURL ](#tab-panel-1745)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'recraft/recraftv4-1-utility-vector',
-
-  {
-
-    prompt:
-
-      'A flat vector illustration of a team of people collaborating around a table with laptops',
-
-    size: '1024x1024',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'recraft/recraftv4-1-utility-vector',  {    prompt:      'A flat vector illustration of a team of people collaborating around a table with laptops',    size: '1024x1024',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "recraft/recraftv4-1-utility-vector",
-
-  "input": {
-
-    "prompt": "A flat vector illustration of a team of people collaborating around a table with laptops",
-
-    "size": "1024x1024"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "recraft/recraftv4-1-utility-vector",  "input": {    "prompt": "A flat vector illustration of a team of people collaborating around a table with laptops",    "size": "1024x1024"  }}'
 ```
 
-* [ Output ](#tab-panel-1686)
-* [ Raw response ](#tab-panel-1687)
+* [ Output ](#tab-panel-1742)
+* [ Raw response ](#tab-panel-1743)
 
 ![Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility-vector/illustration.jpg) 
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility-vector/illustration.jpg"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility-vector/illustration.jpg"  },  "state": "Completed"}
 ```
 
 **With Brand Colors**  — Vector with specific color palette 
 
-* [ TypeScript ](#tab-panel-1692)
-* [ cURL ](#tab-panel-1693)
+* [ TypeScript ](#tab-panel-1748)
+* [ cURL ](#tab-panel-1749)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'recraft/recraftv4-1-utility-vector',
-
-  {
-
-    prompt: 'A simple shield icon representing protection and security',
-
-    controls: {
-
-      background_color: { rgb: [245, 245, 245] },
-
-      colors: [{ rgb: [34, 139, 87] }, { rgb: [255, 255, 255] }],
-
-    },
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'recraft/recraftv4-1-utility-vector',  {    prompt: 'A simple shield icon representing protection and security',    controls: {      background_color: { rgb: [245, 245, 245] },      colors: [{ rgb: [34, 139, 87] }, { rgb: [255, 255, 255] }],    },  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "recraft/recraftv4-1-utility-vector",
-
-  "input": {
-
-    "prompt": "A simple shield icon representing protection and security",
-
-    "controls": {
-
-      "background_color": {
-
-        "rgb": [
-
-          245,
-
-          245,
-
-          245
-
-        ]
-
-      },
-
-      "colors": [
-
-        {
-
-          "rgb": [
-
-            34,
-
-            139,
-
-            87
-
-          ]
-
-        },
-
-        {
-
-          "rgb": [
-
-            255,
-
-            255,
-
-            255
-
-          ]
-
-        }
-
-      ]
-
-    }
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "recraft/recraftv4-1-utility-vector",  "input": {    "prompt": "A simple shield icon representing protection and security",    "controls": {      "background_color": {        "rgb": [          245,          245,          245        ]      },      "colors": [        {          "rgb": [            34,            139,            87          ]        },        {          "rgb": [            255,            255,            255          ]        }      ]    }  }}'
 ```
 
-* [ Output ](#tab-panel-1690)
-* [ Raw response ](#tab-panel-1691)
+* [ Output ](#tab-panel-1746)
+* [ Raw response ](#tab-panel-1747)
 
 ![With Brand Colors](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility-vector/with-brand-colors.jpg) 
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility-vector/with-brand-colors.jpg"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility-vector/with-brand-colors.jpg"  },  "state": "Completed"}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-1694)
-* [ Output ](#tab-panel-1695)
+* [ Input ](#tab-panel-1750)
+* [ Output ](#tab-panel-1751)
 
 ▶controls{}
 
@@ -436,7 +166,7 @@ image
 
 Input [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility-vector/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility-vector/schema-input.json "Download") 
 
-Output [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility-vector/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility-vector/schema-output.json "Download") 
+Output [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility-vector/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility-vector/schema-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility-vector/#page","headline":"Recraft V4.1 Utility SVG (Recraft) · Cloudflare AI docs · Cloudflare AI docs","description":"Generate production-ready SVG vector graphics from text prompts with a general-purpose model suited for a wide range of design and illustration tasks.","url":"https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility-vector/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

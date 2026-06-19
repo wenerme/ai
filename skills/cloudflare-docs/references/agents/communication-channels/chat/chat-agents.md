@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -41,244 +41,53 @@ Built on the [AI SDK ↗](https://ai-sdk.dev) and Cloudflare Durable Objects, yo
 Terminal window
 
 ```
-
 npm install @cloudflare/ai-chat agents ai workers-ai-provider
-
-
 ```
 
 ### Server
 
-* [  JavaScript ](#tab-panel-5143)
-* [  TypeScript ](#tab-panel-5144)
+* [  JavaScript ](#tab-panel-5217)
+* [  TypeScript ](#tab-panel-5218)
 
 JavaScript
 
 ```
-
-import { AIChatAgent } from "@cloudflare/ai-chat";
-
-import { createWorkersAI } from "workers-ai-provider";
-
-import { streamText, convertToModelMessages } from "ai";
-
-
-export class ChatAgent extends AIChatAgent {
-
-  async onChatMessage() {
-
-    // Use any provider such as workers-ai-provider, openai, anthropic, google, etc.
-
-    const workersai = createWorkersAI({ binding: this.env.AI });
-
-
-    const result = streamText({
-
-      model: workersai("@cf/zai-org/glm-4.7-flash"),
-
-      messages: await convertToModelMessages(this.messages),
-
-    });
-
-
-    return result.toUIMessageStreamResponse();
-
-  }
-
-}
-
-
+import { AIChatAgent } from "@cloudflare/ai-chat";import { createWorkersAI } from "workers-ai-provider";import { streamText, convertToModelMessages } from "ai";
+export class ChatAgent extends AIChatAgent {  async onChatMessage() {    // Use any provider such as workers-ai-provider, openai, anthropic, google, etc.    const workersai = createWorkersAI({ binding: this.env.AI });
+    const result = streamText({      model: workersai("@cf/zai-org/glm-4.7-flash"),      messages: await convertToModelMessages(this.messages),    });
+    return result.toUIMessageStreamResponse();  }}
 ```
 
 TypeScript
 
 ```
-
-import { AIChatAgent } from "@cloudflare/ai-chat";
-
-import { createWorkersAI } from "workers-ai-provider";
-
-import { streamText, convertToModelMessages } from "ai";
-
-
-export class ChatAgent extends AIChatAgent {
-
-  async onChatMessage() {
-
-    // Use any provider such as workers-ai-provider, openai, anthropic, google, etc.
-
-    const workersai = createWorkersAI({ binding: this.env.AI });
-
-
-    const result = streamText({
-
-      model: workersai("@cf/zai-org/glm-4.7-flash"),
-
-      messages: await convertToModelMessages(this.messages),
-
-    });
-
-
-    return result.toUIMessageStreamResponse();
-
-  }
-
-}
-
-
+import { AIChatAgent } from "@cloudflare/ai-chat";import { createWorkersAI } from "workers-ai-provider";import { streamText, convertToModelMessages } from "ai";
+export class ChatAgent extends AIChatAgent {  async onChatMessage() {    // Use any provider such as workers-ai-provider, openai, anthropic, google, etc.    const workersai = createWorkersAI({ binding: this.env.AI });
+    const result = streamText({      model: workersai("@cf/zai-org/glm-4.7-flash"),      messages: await convertToModelMessages(this.messages),    });
+    return result.toUIMessageStreamResponse();  }}
 ```
 
 ### Client
 
-* [  JavaScript ](#tab-panel-5169)
-* [  TypeScript ](#tab-panel-5170)
+* [  JavaScript ](#tab-panel-5243)
+* [  TypeScript ](#tab-panel-5244)
 
 JavaScript
 
 ```
-
-import { useAgent } from "agents/react";
-
-import { useAgentChat } from "@cloudflare/ai-chat/react";
-
-
-function Chat() {
-
-  const agent = useAgent({ agent: "ChatAgent" });
-
-  const { messages, sendMessage, status } = useAgentChat({ agent });
-
-
-  return (
-
-    <div>
-
-      {messages.map((msg) => (
-
-        <div key={msg.id}>
-
-          <strong>{msg.role}:</strong>
-
-          {msg.parts.map((part, i) =>
-
-            part.type === "text" ? <span key={i}>{part.text}</span> : null,
-
-          )}
-
-        </div>
-
-      ))}
-
-
-      <form
-
-        onSubmit={(e) => {
-
-          e.preventDefault();
-
-          const input = e.currentTarget.elements.namedItem("input");
-
-          sendMessage({ text: input.value });
-
-          input.value = "";
-
-        }}
-
-      >
-
-        <input name="input" placeholder="Type a message..." />
-
-        <button type="submit" disabled={status !== "ready"}>
-
-          Send
-
-        </button>
-
-      </form>
-
-    </div>
-
-  );
-
-}
-
-
+import { useAgent } from "agents/react";import { useAgentChat } from "@cloudflare/ai-chat/react";
+function Chat() {  const agent = useAgent({ agent: "ChatAgent" });  const { messages, sendMessage, status } = useAgentChat({ agent });
+  return (    <div>      {messages.map((msg) => (        <div key={msg.id}>          <strong>{msg.role}:</strong>          {msg.parts.map((part, i) =>            part.type === "text" ? <span key={i}>{part.text}</span> : null,          )}        </div>      ))}
+      <form        onSubmit={(e) => {          e.preventDefault();          const input = e.currentTarget.elements.namedItem("input");          sendMessage({ text: input.value });          input.value = "";        }}      >        <input name="input" placeholder="Type a message..." />        <button type="submit" disabled={status !== "ready"}>          Send        </button>      </form>    </div>  );}
 ```
 
 TypeScript
 
 ```
-
-import { useAgent } from "agents/react";
-
-import { useAgentChat } from "@cloudflare/ai-chat/react";
-
-
-function Chat() {
-
-  const agent = useAgent({ agent: "ChatAgent" });
-
-  const { messages, sendMessage, status } = useAgentChat({ agent });
-
-
-  return (
-
-    <div>
-
-      {messages.map((msg) => (
-
-        <div key={msg.id}>
-
-          <strong>{msg.role}:</strong>
-
-          {msg.parts.map((part, i) =>
-
-            part.type === "text" ? <span key={i}>{part.text}</span> : null,
-
-          )}
-
-        </div>
-
-      ))}
-
-
-      <form
-
-        onSubmit={(e) => {
-
-          e.preventDefault();
-
-          const input = e.currentTarget.elements.namedItem(
-
-            "input",
-
-          ) as HTMLInputElement;
-
-          sendMessage({ text: input.value });
-
-          input.value = "";
-
-        }}
-
-      >
-
-        <input name="input" placeholder="Type a message..." />
-
-        <button type="submit" disabled={status !== "ready"}>
-
-          Send
-
-        </button>
-
-      </form>
-
-    </div>
-
-  );
-
-}
-
-
+import { useAgent } from "agents/react";import { useAgentChat } from "@cloudflare/ai-chat/react";
+function Chat() {  const agent = useAgent({ agent: "ChatAgent" });  const { messages, sendMessage, status } = useAgentChat({ agent });
+  return (    <div>      {messages.map((msg) => (        <div key={msg.id}>          <strong>{msg.role}:</strong>          {msg.parts.map((part, i) =>            part.type === "text" ? <span key={i}>{part.text}</span> : null,          )}        </div>      ))}
+      <form        onSubmit={(e) => {          e.preventDefault();          const input = e.currentTarget.elements.namedItem(            "input",          ) as HTMLInputElement;          sendMessage({ text: input.value });          input.value = "";        }}      >        <input name="input" placeholder="Type a message..." />        <button type="submit" disabled={status !== "ready"}>          Send        </button>      </form>    </div>  );}
 ```
 
 ### Wrangler configuration
@@ -286,24 +95,7 @@ function Chat() {
 JSONC
 
 ```
-
-// wrangler.jsonc
-
-{
-
-  "ai": { "binding": "AI" },
-
-  "durable_objects": {
-
-    "bindings": [{ "name": "ChatAgent", "class_name": "ChatAgent" }],
-
-  },
-
-  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["ChatAgent"] }],
-
-}
-
-
+// wrangler.jsonc{  "ai": { "binding": "AI" },  "durable_objects": {    "bindings": [{ "name": "ChatAgent", "class_name": "ChatAgent" }],  },  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["ChatAgent"] }],}
 ```
 
 The `new_sqlite_classes` migration is required — `AIChatAgent` uses SQLite for message persistence and stream chunk buffering.
@@ -337,83 +129,25 @@ sequenceDiagram
 
 Extends `Agent` from the `agents` package. Manages conversation state, persistence, and streaming.
 
-* [  JavaScript ](#tab-panel-5149)
-* [  TypeScript ](#tab-panel-5150)
+* [  JavaScript ](#tab-panel-5223)
+* [  TypeScript ](#tab-panel-5224)
 
 JavaScript
 
 ```
-
 import { AIChatAgent } from "@cloudflare/ai-chat";
-
-
-export class ChatAgent extends AIChatAgent {
-
-  // Access current messages
-
-  // this.messages: UIMessage[]
-
-
-  // Limit stored messages (optional)
-
-  maxPersistedMessages = 200;
-
-
-  async onChatMessage(onFinish, options) {
-
-    // onFinish: callback for streamText (cleanup is automatic)
-
-    // options.abortSignal: cancel signal
-
-    // options.body: custom data from client
-
-    // options.continuation: true for continuation turns
-
-    // Return a Response (streaming or plain text)
-
-  }
-
-}
-
-
+export class ChatAgent extends AIChatAgent {  // Access current messages  // this.messages: UIMessage[]
+  // Limit stored messages (optional)  maxPersistedMessages = 200;
+  async onChatMessage(onFinish, options) {    // onFinish: callback for streamText (cleanup is automatic)    // options.abortSignal: cancel signal    // options.body: custom data from client    // options.continuation: true for continuation turns    // Return a Response (streaming or plain text)  }}
 ```
 
 TypeScript
 
 ```
-
 import { AIChatAgent } from "@cloudflare/ai-chat";
-
-
-export class ChatAgent extends AIChatAgent {
-
-  // Access current messages
-
-  // this.messages: UIMessage[]
-
-
-  // Limit stored messages (optional)
-
-  maxPersistedMessages = 200;
-
-
-  async onChatMessage(onFinish, options?) {
-
-    // onFinish: callback for streamText (cleanup is automatic)
-
-    // options.abortSignal: cancel signal
-
-    // options.body: custom data from client
-
-    // options.continuation: true for continuation turns
-
-    // Return a Response (streaming or plain text)
-
-  }
-
-}
-
-
+export class ChatAgent extends AIChatAgent {  // Access current messages  // this.messages: UIMessage[]
+  // Limit stored messages (optional)  maxPersistedMessages = 200;
+  async onChatMessage(onFinish, options?) {    // onFinish: callback for streamText (cleanup is automatic)    // options.abortSignal: cancel signal    // options.body: custom data from client    // options.continuation: true for continuation turns    // Return a Response (streaming or plain text)  }}
 ```
 
 ### `onChatMessage`
@@ -422,69 +156,23 @@ This is the main method you override. It receives the conversation context and s
 
 **Streaming response** (most common):
 
-* [  JavaScript ](#tab-panel-5147)
-* [  TypeScript ](#tab-panel-5148)
+* [  JavaScript ](#tab-panel-5221)
+* [  TypeScript ](#tab-panel-5222)
 
 JavaScript
 
 ```
-
-export class ChatAgent extends AIChatAgent {
-
-  async onChatMessage() {
-
-    const workersai = createWorkersAI({ binding: this.env.AI });
-
-
-    const result = streamText({
-
-      model: workersai("@cf/zai-org/glm-4.7-flash"),
-
-      system: "You are a helpful assistant.",
-
-      messages: await convertToModelMessages(this.messages),
-
-    });
-
-
-    return result.toUIMessageStreamResponse();
-
-  }
-
-}
-
-
+export class ChatAgent extends AIChatAgent {  async onChatMessage() {    const workersai = createWorkersAI({ binding: this.env.AI });
+    const result = streamText({      model: workersai("@cf/zai-org/glm-4.7-flash"),      system: "You are a helpful assistant.",      messages: await convertToModelMessages(this.messages),    });
+    return result.toUIMessageStreamResponse();  }}
 ```
 
 TypeScript
 
 ```
-
-export class ChatAgent extends AIChatAgent {
-
-  async onChatMessage() {
-
-    const workersai = createWorkersAI({ binding: this.env.AI });
-
-
-    const result = streamText({
-
-      model: workersai("@cf/zai-org/glm-4.7-flash"),
-
-      system: "You are a helpful assistant.",
-
-      messages: await convertToModelMessages(this.messages),
-
-    });
-
-
-    return result.toUIMessageStreamResponse();
-
-  }
-
-}
-
-
+export class ChatAgent extends AIChatAgent {  async onChatMessage() {    const workersai = createWorkersAI({ binding: this.env.AI });
+    const result = streamText({      model: workersai("@cf/zai-org/glm-4.7-flash"),      system: "You are a helpful assistant.",      messages: await convertToModelMessages(this.messages),    });
+    return result.toUIMessageStreamResponse();  }}
 ```
 
 **Plain text response**:
@@ -492,22 +180,7 @@ export class ChatAgent extends AIChatAgent {
 TypeScript
 
 ```
-
-export class ChatAgent extends AIChatAgent {
-
-  async onChatMessage() {
-
-    return new Response("Hello! I am a simple agent.", {
-
-      headers: { "Content-Type": "text/plain" },
-
-    });
-
-  }
-
-}
-
-
+export class ChatAgent extends AIChatAgent {  async onChatMessage() {    return new Response("Hello! I am a simple agent.", {      headers: { "Content-Type": "text/plain" },    });  }}
 ```
 
 **Accessing custom body data and request ID**:
@@ -515,36 +188,9 @@ export class ChatAgent extends AIChatAgent {
 TypeScript
 
 ```
-
-export class ChatAgent extends AIChatAgent {
-
-  async onChatMessage(_onFinish, options) {
-
-    const { timezone, userId } = options?.body ?? {};
-
-    // Use these values in your LLM call or business logic
-
-
-    // options.requestId — unique identifier for this chat request,
-
-    // useful for logging and correlating events
-
-    console.log("Request ID:", options?.requestId);
-
-
-    if (options?.continuation) {
-
-      // This turn continues a previous assistant message after a tool result,
-
-      // continueLastTurn(), or recovery.
-
-    }
-
-  }
-
-}
-
-
+export class ChatAgent extends AIChatAgent {  async onChatMessage(_onFinish, options) {    const { timezone, userId } = options?.body ?? {};    // Use these values in your LLM call or business logic
+    // options.requestId — unique identifier for this chat request,    // useful for logging and correlating events    console.log("Request ID:", options?.requestId);
+    if (options?.continuation) {      // This turn continues a previous assistant message after a tool result,      // continueLastTurn(), or recovery.    }  }}
 ```
 
 `options.continuation` is `true` for automatic continuations after tool results or approvals, calls to `continueLastTurn()`, and recovered turns. Use it to choose a different model, adjust your system prompt, or skip expensive context assembly for continuation turns.
@@ -557,118 +203,42 @@ The current conversation history, loaded from SQLite. This is an array of `UIMes
 
 Cap the number of messages stored in SQLite. When the limit is exceeded, the oldest messages are deleted. This controls storage only — it does not affect what is sent to the LLM.
 
-* [  JavaScript ](#tab-panel-5141)
-* [  TypeScript ](#tab-panel-5142)
+* [  JavaScript ](#tab-panel-5215)
+* [  TypeScript ](#tab-panel-5216)
 
 JavaScript
 
 ```
-
-export class ChatAgent extends AIChatAgent {
-
-  maxPersistedMessages = 200;
-
-}
-
-
+export class ChatAgent extends AIChatAgent {  maxPersistedMessages = 200;}
 ```
 
 TypeScript
 
 ```
-
-export class ChatAgent extends AIChatAgent {
-
-  maxPersistedMessages = 200;
-
-}
-
-
+export class ChatAgent extends AIChatAgent {  maxPersistedMessages = 200;}
 ```
 
 To control what is sent to the model, use the AI SDK's `pruneMessages()`:
 
-* [  JavaScript ](#tab-panel-5157)
-* [  TypeScript ](#tab-panel-5158)
+* [  JavaScript ](#tab-panel-5231)
+* [  TypeScript ](#tab-panel-5232)
 
 JavaScript
 
 ```
-
 import { streamText, convertToModelMessages, pruneMessages } from "ai";
-
-
-export class ChatAgent extends AIChatAgent {
-
-  async onChatMessage() {
-
-    const workersai = createWorkersAI({ binding: this.env.AI });
-
-
-    const result = streamText({
-
-      model: workersai("@cf/zai-org/glm-4.7-flash"),
-
-      messages: pruneMessages({
-
-        messages: await convertToModelMessages(this.messages),
-
-        reasoning: "before-last-message",
-
-        toolCalls: "before-last-2-messages",
-
-      }),
-
-    });
-
-
-    return result.toUIMessageStreamResponse();
-
-  }
-
-}
-
-
+export class ChatAgent extends AIChatAgent {  async onChatMessage() {    const workersai = createWorkersAI({ binding: this.env.AI });
+    const result = streamText({      model: workersai("@cf/zai-org/glm-4.7-flash"),      messages: pruneMessages({        messages: await convertToModelMessages(this.messages),        reasoning: "before-last-message",        toolCalls: "before-last-2-messages",      }),    });
+    return result.toUIMessageStreamResponse();  }}
 ```
 
 TypeScript
 
 ```
-
 import { streamText, convertToModelMessages, pruneMessages } from "ai";
-
-
-export class ChatAgent extends AIChatAgent {
-
-  async onChatMessage() {
-
-    const workersai = createWorkersAI({ binding: this.env.AI });
-
-
-    const result = streamText({
-
-      model: workersai("@cf/zai-org/glm-4.7-flash"),
-
-      messages: pruneMessages({
-
-        messages: await convertToModelMessages(this.messages),
-
-        reasoning: "before-last-message",
-
-        toolCalls: "before-last-2-messages",
-
-      }),
-
-    });
-
-
-    return result.toUIMessageStreamResponse();
-
-  }
-
-}
-
-
+export class ChatAgent extends AIChatAgent {  async onChatMessage() {    const workersai = createWorkersAI({ binding: this.env.AI });
+    const result = streamText({      model: workersai("@cf/zai-org/glm-4.7-flash"),      messages: pruneMessages({        messages: await convertToModelMessages(this.messages),        reasoning: "before-last-message",        toolCalls: "before-last-2-messages",      }),    });
+    return result.toUIMessageStreamResponse();  }}
 ```
 
 ### `waitForMcpConnections`
@@ -682,57 +252,23 @@ Controls whether `AIChatAgent` waits for MCP server connections to settle before
 | true                 | Wait indefinitely until all connections ready |
 | false                | Do not wait (old behavior before 0.2.0)       |
 
-* [  JavaScript ](#tab-panel-5153)
-* [  TypeScript ](#tab-panel-5154)
+* [  JavaScript ](#tab-panel-5227)
+* [  TypeScript ](#tab-panel-5228)
 
 JavaScript
 
 ```
-
-export class ChatAgent extends AIChatAgent {
-
-  // Default — waits up to 10 seconds
-
-  // waitForMcpConnections = { timeout: 10_000 };
-
-
-  // Wait forever
-
-  waitForMcpConnections = true;
-
-
-  // Disable waiting
-
-  waitForMcpConnections = false;
-
-}
-
-
+export class ChatAgent extends AIChatAgent {  // Default — waits up to 10 seconds  // waitForMcpConnections = { timeout: 10_000 };
+  // Wait forever  waitForMcpConnections = true;
+  // Disable waiting  waitForMcpConnections = false;}
 ```
 
 TypeScript
 
 ```
-
-export class ChatAgent extends AIChatAgent {
-
-  // Default — waits up to 10 seconds
-
-  // waitForMcpConnections = { timeout: 10_000 };
-
-
-  // Wait forever
-
-  waitForMcpConnections = true;
-
-
-  // Disable waiting
-
-  waitForMcpConnections = false;
-
-}
-
-
+export class ChatAgent extends AIChatAgent {  // Default — waits up to 10 seconds  // waitForMcpConnections = { timeout: 10_000 };
+  // Wait forever  waitForMcpConnections = true;
+  // Disable waiting  waitForMcpConnections = false;}
 ```
 
 For lower-level control, call `this.mcp.waitForConnections()` directly inside your `onChatMessage` instead.
@@ -741,33 +277,19 @@ For lower-level control, call `this.mcp.waitForConnections()` directly inside yo
 
 Controls how overlapping user submissions behave when a chat turn is already active or queued.
 
-* [  JavaScript ](#tab-panel-5145)
-* [  TypeScript ](#tab-panel-5146)
+* [  JavaScript ](#tab-panel-5219)
+* [  TypeScript ](#tab-panel-5220)
 
 JavaScript
 
 ```
-
-export class ChatAgent extends AIChatAgent {
-
-  messageConcurrency = "queue";
-
-}
-
-
+export class ChatAgent extends AIChatAgent {  messageConcurrency = "queue";}
 ```
 
 TypeScript
 
 ```
-
-export class ChatAgent extends AIChatAgent {
-
-  messageConcurrency = "queue";
-
-}
-
-
+export class ChatAgent extends AIChatAgent {  messageConcurrency = "queue";}
 ```
 
 | Strategy                                      | Behavior                                                                                                                            |
@@ -786,151 +308,61 @@ This setting only applies to `sendMessage()` submissions. Regenerations, tool co
 
 `saveMessages` persists messages **and** triggers `onChatMessage()` for a new response. It waits for any active chat turn to finish before starting, so scheduled or programmatic messages never overlap an in-flight stream.
 
-* [  JavaScript ](#tab-panel-5151)
-* [  TypeScript ](#tab-panel-5152)
+* [  JavaScript ](#tab-panel-5225)
+* [  TypeScript ](#tab-panel-5226)
 
 JavaScript
 
 ```
-
-// Store messages without triggering a response
-
-await this.persistMessages(messages);
-
-
-// Store messages AND trigger onChatMessage
-
-const { requestId, status } = await this.saveMessages(messages);
-
-
+// Store messages without triggering a responseawait this.persistMessages(messages);
+// Store messages AND trigger onChatMessageconst { requestId, status } = await this.saveMessages(messages);
 ```
 
 TypeScript
 
 ```
-
-// Store messages without triggering a response
-
-await this.persistMessages(messages);
-
-
-// Store messages AND trigger onChatMessage
-
-const { requestId, status } = await this.saveMessages(messages);
-
-
+// Store messages without triggering a responseawait this.persistMessages(messages);
+// Store messages AND trigger onChatMessageconst { requestId, status } = await this.saveMessages(messages);
 ```
 
 `saveMessages` accepts either an array of messages or a function that derives the next message list from the latest persisted `this.messages`. Use the function form to avoid stale baselines when multiple calls queue up:
 
-* [  JavaScript ](#tab-panel-5155)
-* [  TypeScript ](#tab-panel-5156)
+* [  JavaScript ](#tab-panel-5229)
+* [  TypeScript ](#tab-panel-5230)
 
 JavaScript
 
 ```
-
-await this.saveMessages((messages) => [
-
-  ...messages,
-
-  {
-
-    id: crypto.randomUUID(),
-
-    role: "user",
-
-    parts: [{ type: "text", text: "Summarize the latest data" }],
-
-    createdAt: new Date(),
-
-  },
-
-]);
-
-
+await this.saveMessages((messages) => [  ...messages,  {    id: crypto.randomUUID(),    role: "user",    parts: [{ type: "text", text: "Summarize the latest data" }],    createdAt: new Date(),  },]);
 ```
 
 TypeScript
 
 ```
-
-await this.saveMessages((messages) => [
-
-  ...messages,
-
-  {
-
-    id: crypto.randomUUID(),
-
-    role: "user",
-
-    parts: [{ type: "text", text: "Summarize the latest data" }],
-
-    createdAt: new Date(),
-
-  },
-
-]);
-
-
+await this.saveMessages((messages) => [  ...messages,  {    id: crypto.randomUUID(),    role: "user",    parts: [{ type: "text", text: "Summarize the latest data" }],    createdAt: new Date(),  },]);
 ```
 
 `saveMessages` returns `{ requestId, status, error? }` where `status` is `"completed"` if the turn ran, `"error"` if the stream reported an error, `"skipped"` if the chat was cleared before it started, or `"aborted"` if an external `AbortSignal` cancelled it before completion. When `status` is `"error"`, `error` contains the stream error message when available.
 
 Pass `options.signal` to cancel a programmatic turn from outside the chat agent. This is useful when a parent tool call needs to cancel a child agent turn without knowing the internally generated request ID:
 
-* [  JavaScript ](#tab-panel-5161)
-* [  TypeScript ](#tab-panel-5162)
+* [  JavaScript ](#tab-panel-5235)
+* [  TypeScript ](#tab-panel-5236)
 
 JavaScript
 
 ```
-
 const controller = new AbortController();
-
-
-const result = await this.saveMessages(
-
-  (messages) => [...messages, syntheticUserMessage],
-
-  { signal: controller.signal },
-
-);
-
-
-if (result.status === "aborted") {
-
-  // Partial chunks already streamed are persisted.
-
-}
-
-
+const result = await this.saveMessages(  (messages) => [...messages, syntheticUserMessage],  { signal: controller.signal },);
+if (result.status === "aborted") {  // Partial chunks already streamed are persisted.}
 ```
 
 TypeScript
 
 ```
-
 const controller = new AbortController();
-
-
-const result = await this.saveMessages(
-
-  (messages) => [...messages, syntheticUserMessage],
-
-  { signal: controller.signal },
-
-);
-
-
-if (result.status === "aborted") {
-
-  // Partial chunks already streamed are persisted.
-
-}
-
-
+const result = await this.saveMessages(  (messages) => [...messages, syntheticUserMessage],  { signal: controller.signal },);
+if (result.status === "aborted") {  // Partial chunks already streamed are persisted.}
 ```
 
 `continueLastTurn()` accepts the same `options.signal` argument. `AbortSignal` objects cannot cross Durable Object RPC boundaries, so construct the controller inside the Durable Object that calls `saveMessages()` or `continueLastTurn()`. The signal is in memory only; if the Durable Object hibernates mid-turn and `chatRecovery` is enabled, the recovered turn runs without the original signal.
@@ -939,64 +371,20 @@ if (result.status === "aborted") {
 
 Called after a chat turn produces and persists an assistant message. The turn lock is released before this hook runs, so it is safe to call `saveMessages` from inside. Fires for turn paths that persist an assistant message: WebSocket chat requests, `saveMessages`, and auto-continuation. If a turn fails before producing any assistant parts, the error is surfaced through the original request instead.
 
-* [  JavaScript ](#tab-panel-5167)
-* [  TypeScript ](#tab-panel-5168)
+* [  JavaScript ](#tab-panel-5241)
+* [  TypeScript ](#tab-panel-5242)
 
 JavaScript
 
 ```
-
-export class ChatAgent extends AIChatAgent {
-
-  async onChatResponse(result) {
-
-    if (result.status === "completed") {
-
-      console.log("Turn completed:", result.requestId);
-
-    }
-
-    if (result.status === "error") {
-
-      console.error("Turn failed:", result.error);
-
-    }
-
-  }
-
-}
-
-
+export class ChatAgent extends AIChatAgent {  async onChatResponse(result) {    if (result.status === "completed") {      console.log("Turn completed:", result.requestId);    }    if (result.status === "error") {      console.error("Turn failed:", result.error);    }  }}
 ```
 
 TypeScript
 
 ```
-
 import type { ChatResponseResult } from "@cloudflare/ai-chat";
-
-
-export class ChatAgent extends AIChatAgent {
-
-  protected async onChatResponse(result: ChatResponseResult) {
-
-    if (result.status === "completed") {
-
-      console.log("Turn completed:", result.requestId);
-
-    }
-
-    if (result.status === "error") {
-
-      console.error("Turn failed:", result.error);
-
-    }
-
-  }
-
-}
-
-
+export class ChatAgent extends AIChatAgent {  protected async onChatResponse(result: ChatResponseResult) {    if (result.status === "completed") {      console.log("Turn completed:", result.requestId);    }    if (result.status === "error") {      console.error("Turn failed:", result.error);    }  }}
 ```
 
 The `ChatResponseResult` contains:
@@ -1017,89 +405,19 @@ Responses triggered from inside `onChatResponse` (for example, via `saveMessages
 
 Override this method to apply custom transformations to messages before they are persisted to storage. This hook runs **after** the built-in sanitization (OpenAI metadata stripping, Anthropic provider-executed tool payload truncation, empty reasoning part filtering).
 
-* [  JavaScript ](#tab-panel-5173)
-* [  TypeScript ](#tab-panel-5174)
+* [  JavaScript ](#tab-panel-5247)
+* [  TypeScript ](#tab-panel-5248)
 
 JavaScript
 
 ```
-
-export class ChatAgent extends AIChatAgent {
-
-  sanitizeMessageForPersistence(message) {
-
-    return {
-
-      ...message,
-
-      parts: message.parts.map((part) => {
-
-        if (
-
-          "output" in part &&
-
-          typeof part.output === "string" &&
-
-          part.output.length > 1000
-
-        ) {
-
-          return { ...part, output: "[redacted]" };
-
-        }
-
-        return part;
-
-      }),
-
-    };
-
-  }
-
-}
-
-
+export class ChatAgent extends AIChatAgent {  sanitizeMessageForPersistence(message) {    return {      ...message,      parts: message.parts.map((part) => {        if (          "output" in part &&          typeof part.output === "string" &&          part.output.length > 1000        ) {          return { ...part, output: "[redacted]" };        }        return part;      }),    };  }}
 ```
 
 TypeScript
 
 ```
-
-export class ChatAgent extends AIChatAgent {
-
-  protected sanitizeMessageForPersistence(message: UIMessage): UIMessage {
-
-    return {
-
-      ...message,
-
-      parts: message.parts.map((part) => {
-
-        if (
-
-          "output" in part &&
-
-          typeof part.output === "string" &&
-
-          part.output.length > 1000
-
-        ) {
-
-          return { ...part, output: "[redacted]" };
-
-        }
-
-        return part;
-
-      }),
-
-    };
-
-  }
-
-}
-
-
+export class ChatAgent extends AIChatAgent {  protected sanitizeMessageForPersistence(message: UIMessage): UIMessage {    return {      ...message,      parts: message.parts.map((part) => {        if (          "output" in part &&          typeof part.output === "string" &&          part.output.length > 1000        ) {          return { ...part, output: "[redacted]" };        }        return part;      }),    };  }}
 ```
 
 ### Turn lifecycle helpers
@@ -1110,101 +428,55 @@ These methods help you coordinate programmatic turns and wait for pending intera
 
 Returns `true` when an assistant message is waiting on a client tool result or approval.
 
-* [  JavaScript ](#tab-panel-5159)
-* [  TypeScript ](#tab-panel-5160)
+* [  JavaScript ](#tab-panel-5233)
+* [  TypeScript ](#tab-panel-5234)
 
 JavaScript
 
 ```
-
-if (this.hasPendingInteraction()) {
-
-  console.log("Waiting for user to approve or provide tool output");
-
-}
-
-
+if (this.hasPendingInteraction()) {  console.log("Waiting for user to approve or provide tool output");}
 ```
 
 TypeScript
 
 ```
-
-if (this.hasPendingInteraction()) {
-
-  console.log("Waiting for user to approve or provide tool output");
-
-}
-
-
+if (this.hasPendingInteraction()) {  console.log("Waiting for user to approve or provide tool output");}
 ```
 
 #### `waitUntilStable()`
 
 Waits until the conversation is fully stable — no active stream, no pending client-tool interactions, and no queued continuation turns. Returns `true` when stable, or `false` if the timeout expires before a pending interaction resolves.
 
-* [  JavaScript ](#tab-panel-5163)
-* [  TypeScript ](#tab-panel-5164)
+* [  JavaScript ](#tab-panel-5237)
+* [  TypeScript ](#tab-panel-5238)
 
 JavaScript
 
 ```
-
-const stable = await this.waitUntilStable({ timeout: 30_000 });
-
-if (stable) {
-
-  console.log("All turns complete, safe to proceed");
-
-}
-
-
+const stable = await this.waitUntilStable({ timeout: 30_000 });if (stable) {  console.log("All turns complete, safe to proceed");}
 ```
 
 TypeScript
 
 ```
-
-const stable = await this.waitUntilStable({ timeout: 30_000 });
-
-if (stable) {
-
-  console.log("All turns complete, safe to proceed");
-
-}
-
-
+const stable = await this.waitUntilStable({ timeout: 30_000 });if (stable) {  console.log("All turns complete, safe to proceed");}
 ```
 
 This is especially useful with `saveMessages` for server-driven flows:
 
-* [  JavaScript ](#tab-panel-5165)
-* [  TypeScript ](#tab-panel-5166)
+* [  JavaScript ](#tab-panel-5239)
+* [  TypeScript ](#tab-panel-5240)
 
 JavaScript
 
 ```
-
-await this.saveMessages((messages) => [...messages, syntheticUserMessage]);
-
-await this.waitUntilStable({ timeout: 60_000 });
-
-// The assistant has finished responding
-
-
+await this.saveMessages((messages) => [...messages, syntheticUserMessage]);await this.waitUntilStable({ timeout: 60_000 });// The assistant has finished responding
 ```
 
 TypeScript
 
 ```
-
-await this.saveMessages((messages) => [...messages, syntheticUserMessage]);
-
-await this.waitUntilStable({ timeout: 60_000 });
-
-// The assistant has finished responding
-
-
+await this.saveMessages((messages) => [...messages, syntheticUserMessage]);await this.waitUntilStable({ timeout: 60_000 });// The assistant has finished responding
 ```
 
 #### `resetTurnState()`
@@ -1215,67 +487,21 @@ Aborts the active turn and invalidates queued continuations. The built-in `CF_AG
 
 Override `onConnect` and `onClose` to add custom logic. Stream resumption and message sync are handled for you:
 
-* [  JavaScript ](#tab-panel-5175)
-* [  TypeScript ](#tab-panel-5176)
+* [  JavaScript ](#tab-panel-5249)
+* [  TypeScript ](#tab-panel-5250)
 
 JavaScript
 
 ```
-
-export class ChatAgent extends AIChatAgent {
-
-  async onConnect(connection, ctx) {
-
-    // Your custom logic (e.g., logging, auth checks)
-
-    console.log("Client connected:", connection.id);
-
-    // Stream resumption and message sync are handled automatically
-
-  }
-
-
-  async onClose(connection, code, reason, wasClean) {
-
-    console.log("Client disconnected:", connection.id);
-
-    // Connection cleanup is handled automatically
-
-  }
-
-}
-
-
+export class ChatAgent extends AIChatAgent {  async onConnect(connection, ctx) {    // Your custom logic (e.g., logging, auth checks)    console.log("Client connected:", connection.id);    // Stream resumption and message sync are handled automatically  }
+  async onClose(connection, code, reason, wasClean) {    console.log("Client disconnected:", connection.id);    // Connection cleanup is handled automatically  }}
 ```
 
 TypeScript
 
 ```
-
-export class ChatAgent extends AIChatAgent {
-
-  async onConnect(connection, ctx) {
-
-    // Your custom logic (e.g., logging, auth checks)
-
-    console.log("Client connected:", connection.id);
-
-    // Stream resumption and message sync are handled automatically
-
-  }
-
-
-  async onClose(connection, code, reason, wasClean) {
-
-    console.log("Client disconnected:", connection.id);
-
-    // Connection cleanup is handled automatically
-
-  }
-
-}
-
-
+export class ChatAgent extends AIChatAgent {  async onConnect(connection, ctx) {    // Your custom logic (e.g., logging, auth checks)    console.log("Client connected:", connection.id);    // Stream resumption and message sync are handled automatically  }
+  async onClose(connection, code, reason, wasClean) {    console.log("Client disconnected:", connection.id);    // Connection cleanup is handled automatically  }}
 ```
 
 The `destroy()` method cancels any pending chat requests and cleans up stream state. It is called automatically when the Durable Object is evicted, but you can call it manually if needed.
@@ -1284,63 +510,21 @@ The `destroy()` method cancels any pending chat requests and cleans up stream st
 
 When a user clicks "stop" in the chat UI, the client sends a `CF_AGENT_CHAT_REQUEST_CANCEL` message. The server propagates this to the `abortSignal` in `options`:
 
-* [  JavaScript ](#tab-panel-5177)
-* [  TypeScript ](#tab-panel-5178)
+* [  JavaScript ](#tab-panel-5251)
+* [  TypeScript ](#tab-panel-5252)
 
 JavaScript
 
 ```
-
-export class ChatAgent extends AIChatAgent {
-
-  async onChatMessage(_onFinish, options) {
-
-    const result = streamText({
-
-      model: workersai("@cf/zai-org/glm-4.7-flash"),
-
-      messages: await convertToModelMessages(this.messages),
-
-      abortSignal: options?.abortSignal, // Pass through for cancellation
-
-    });
-
-
-    return result.toUIMessageStreamResponse();
-
-  }
-
-}
-
-
+export class ChatAgent extends AIChatAgent {  async onChatMessage(_onFinish, options) {    const result = streamText({      model: workersai("@cf/zai-org/glm-4.7-flash"),      messages: await convertToModelMessages(this.messages),      abortSignal: options?.abortSignal, // Pass through for cancellation    });
+    return result.toUIMessageStreamResponse();  }}
 ```
 
 TypeScript
 
 ```
-
-export class ChatAgent extends AIChatAgent {
-
-  async onChatMessage(_onFinish, options) {
-
-    const result = streamText({
-
-      model: workersai("@cf/zai-org/glm-4.7-flash"),
-
-      messages: await convertToModelMessages(this.messages),
-
-      abortSignal: options?.abortSignal, // Pass through for cancellation
-
-    });
-
-
-    return result.toUIMessageStreamResponse();
-
-  }
-
-}
-
-
+export class ChatAgent extends AIChatAgent {  async onChatMessage(_onFinish, options) {    const result = streamText({      model: workersai("@cf/zai-org/glm-4.7-flash"),      messages: await convertToModelMessages(this.messages),      abortSignal: options?.abortSignal, // Pass through for cancellation    });
+    return result.toUIMessageStreamResponse();  }}
 ```
 
 Warning
@@ -1352,12 +536,7 @@ Subclasses can also cancel turns from inside the Durable Object:
 TypeScript
 
 ```
-
-protected abortRequest(requestId: string, reason?: unknown): void
-
-protected abortAllRequests(): void
-
-
+protected abortRequest(requestId: string, reason?: unknown): voidprotected abortAllRequests(): void
 ```
 
 Use `abortRequest()` when you know the request ID. Use `abortAllRequests()` for single-purpose helpers that should cancel whatever turn is currently running. Prefer `SaveMessagesOptions.signal` for programmatic turns when you can pass a signal at the call site.
@@ -1368,33 +547,19 @@ Automatic stream resumption (the `resume` option on `useAgentChat`) is **client 
 
 When a Durable Object is evicted mid-stream (code update, inactivity timeout, resource limit), the LLM connection is severed permanently and the in-memory streaming state is lost. `chatRecovery` wraps each chat turn in a [runFiber()](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/), providing automatic `keepAlive` during streaming and a recovery hook on restart.
 
-* [  JavaScript ](#tab-panel-5171)
-* [  TypeScript ](#tab-panel-5172)
+* [  JavaScript ](#tab-panel-5245)
+* [  TypeScript ](#tab-panel-5246)
 
 JavaScript
 
 ```
-
-export class ChatAgent extends AIChatAgent {
-
-  chatRecovery = true;
-
-}
-
-
+export class ChatAgent extends AIChatAgent {  chatRecovery = true;}
 ```
 
 TypeScript
 
 ```
-
-export class ChatAgent extends AIChatAgent {
-
-  override chatRecovery = true;
-
-}
-
-
+export class ChatAgent extends AIChatAgent {  override chatRecovery = true;}
 ```
 
 `AIChatAgent` defaults `chatRecovery` to `false`, so existing chat agents only get client reconnect and resumable-stream behavior unless they opt in. [Think](https://developers.cloudflare.com/agents/harnesses/think/) defaults it to `true`.
@@ -1403,117 +568,19 @@ When enabled, every `onChatMessage` call runs inside a fiber. If the agent is ev
 
 `chatRecovery` can also be set to a configuration object to bound recovery and customize the terminal experience when recovery cannot succeed:
 
-* [  JavaScript ](#tab-panel-5185)
-* [  TypeScript ](#tab-panel-5186)
+* [  JavaScript ](#tab-panel-5259)
+* [  TypeScript ](#tab-panel-5260)
 
 JavaScript
 
 ```
-
-export class ChatAgent extends AIChatAgent {
-
-  chatRecovery = {
-
-    maxAttempts: 10,
-
-    stableTimeoutMs: 10_000,
-
-    terminalMessage: "The assistant was interrupted and could not recover.",
-
-    // Primary stuck-turn bound. Resets on every progress-bearing attempt, so a
-
-    // turn that keeps producing content survives unbounded interruption.
-
-    noProgressTimeoutMs: 5 * 60 * 1000,
-
-    // Runaway-loop guard. Defaults to Infinity (no cap). Set a finite value to
-
-    // seal a turn that keeps emitting content but never converges.
-
-    maxRecoveryWork: 200,
-
-    // Caller policy consulted from the second recovery attempt onward. Return
-
-    // false to stop recovery. This is where you enforce a token/cost budget.
-
-    // Note: this is called as `config.shouldKeepRecovering(ctx)`, so it is not
-
-    // bound to the agent instance — track spend in your own store keyed by the
-
-    // incident.
-
-    async shouldKeepRecovering(ctx) {
-
-      return (await getSpendForTurn(ctx.recoveryRootRequestId)) < MAX_SPEND;
-
-    },
-
-    async onExhausted(ctx) {
-
-      console.warn("Chat recovery exhausted", ctx.incidentId, ctx.reason);
-
-    },
-
-  };
-
-}
-
-
+export class ChatAgent extends AIChatAgent {  chatRecovery = {    maxAttempts: 10,    stableTimeoutMs: 10_000,    terminalMessage: "The assistant was interrupted and could not recover.",    // Primary stuck-turn bound. Resets on every progress-bearing attempt, so a    // turn that keeps producing content survives unbounded interruption.    noProgressTimeoutMs: 5 * 60 * 1000,    // Runaway-loop guard. Defaults to Infinity (no cap). Set a finite value to    // seal a turn that keeps emitting content but never converges.    maxRecoveryWork: 200,    // Caller policy consulted from the second recovery attempt onward. Return    // false to stop recovery. This is where you enforce a token/cost budget.    // Note: this is called as `config.shouldKeepRecovering(ctx)`, so it is not    // bound to the agent instance — track spend in your own store keyed by the    // incident.    async shouldKeepRecovering(ctx) {      return (await getSpendForTurn(ctx.recoveryRootRequestId)) < MAX_SPEND;    },    async onExhausted(ctx) {      console.warn("Chat recovery exhausted", ctx.incidentId, ctx.reason);    },  };}
 ```
 
 TypeScript
 
 ```
-
-export class ChatAgent extends AIChatAgent {
-
-  override chatRecovery = {
-
-    maxAttempts: 10,
-
-    stableTimeoutMs: 10_000,
-
-    terminalMessage: "The assistant was interrupted and could not recover.",
-
-    // Primary stuck-turn bound. Resets on every progress-bearing attempt, so a
-
-    // turn that keeps producing content survives unbounded interruption.
-
-    noProgressTimeoutMs: 5 * 60 * 1000,
-
-    // Runaway-loop guard. Defaults to Infinity (no cap). Set a finite value to
-
-    // seal a turn that keeps emitting content but never converges.
-
-    maxRecoveryWork: 200,
-
-    // Caller policy consulted from the second recovery attempt onward. Return
-
-    // false to stop recovery. This is where you enforce a token/cost budget.
-
-    // Note: this is called as `config.shouldKeepRecovering(ctx)`, so it is not
-
-    // bound to the agent instance — track spend in your own store keyed by the
-
-    // incident.
-
-    async shouldKeepRecovering(ctx) {
-
-      return (await getSpendForTurn(ctx.recoveryRootRequestId)) < MAX_SPEND;
-
-    },
-
-    async onExhausted(ctx) {
-
-      console.warn("Chat recovery exhausted", ctx.incidentId, ctx.reason);
-
-    },
-
-  };
-
-}
-
-
+export class ChatAgent extends AIChatAgent {  override chatRecovery = {    maxAttempts: 10,    stableTimeoutMs: 10_000,    terminalMessage: "The assistant was interrupted and could not recover.",    // Primary stuck-turn bound. Resets on every progress-bearing attempt, so a    // turn that keeps producing content survives unbounded interruption.    noProgressTimeoutMs: 5 * 60 * 1000,    // Runaway-loop guard. Defaults to Infinity (no cap). Set a finite value to    // seal a turn that keeps emitting content but never converges.    maxRecoveryWork: 200,    // Caller policy consulted from the second recovery attempt onward. Return    // false to stop recovery. This is where you enforce a token/cost budget.    // Note: this is called as `config.shouldKeepRecovering(ctx)`, so it is not    // bound to the agent instance — track spend in your own store keyed by the    // incident.    async shouldKeepRecovering(ctx) {      return (await getSpendForTurn(ctx.recoveryRootRequestId)) < MAX_SPEND;    },    async onExhausted(ctx) {      console.warn("Chat recovery exhausted", ctx.incidentId, ctx.reason);    },  };}
 ```
 
 The `chatRecovery` object accepts the following configuration options:
@@ -1563,117 +630,45 @@ This exemption is client-only. A server tool whose `execute()` was killed mid-fl
 
 Monitor terminal exhaustion through observability:
 
-* [  JavaScript ](#tab-panel-5179)
-* [  TypeScript ](#tab-panel-5180)
+* [  JavaScript ](#tab-panel-5253)
+* [  TypeScript ](#tab-panel-5254)
 
 JavaScript
 
 ```
-
 import { subscribe } from "agents/observability";
-
-
-const unsubscribe = subscribe("chat", (event) => {
-
-  if (event.type === "chat:recovery:exhausted") {
-
-    console.error("Chat recovery exhausted", event.payload);
-
-  }
-
-});
-
-
+const unsubscribe = subscribe("chat", (event) => {  if (event.type === "chat:recovery:exhausted") {    console.error("Chat recovery exhausted", event.payload);  }});
 ```
 
 TypeScript
 
 ```
-
 import { subscribe } from "agents/observability";
-
-
-const unsubscribe = subscribe("chat", (event) => {
-
-  if (event.type === "chat:recovery:exhausted") {
-
-    console.error("Chat recovery exhausted", event.payload);
-
-  }
-
-});
-
-
+const unsubscribe = subscribe("chat", (event) => {  if (event.type === "chat:recovery:exhausted") {    console.error("Chat recovery exhausted", event.payload);  }});
 ```
 
 #### `onChatRecovery`
 
 Override to implement provider-specific recovery. The default behavior persists the partial response and schedules a continuation via `continueLastTurn()`.
 
-* [  JavaScript ](#tab-panel-5183)
-* [  TypeScript ](#tab-panel-5184)
+* [  JavaScript ](#tab-panel-5257)
+* [  TypeScript ](#tab-panel-5258)
 
 JavaScript
 
 ```
-
-export class ChatAgent extends AIChatAgent {
-
-  chatRecovery = true;
-
-
-  async onChatRecovery(ctx) {
-
-    console.log(`Recovered ${ctx.partialText.length} chars of partial text`);
-
-
-    // Default: persist partial + schedule continuation
-
-    return {};
-
-  }
-
-}
-
-
+export class ChatAgent extends AIChatAgent {  chatRecovery = true;
+  async onChatRecovery(ctx) {    console.log(`Recovered ${ctx.partialText.length} chars of partial text`);
+    // Default: persist partial + schedule continuation    return {};  }}
 ```
 
 TypeScript
 
 ```
-
-import type {
-
-  ChatRecoveryContext,
-
-  ChatRecoveryOptions,
-
-} from "@cloudflare/ai-chat";
-
-
-export class ChatAgent extends AIChatAgent {
-
-  override chatRecovery = true;
-
-
-  override async onChatRecovery(
-
-    ctx: ChatRecoveryContext,
-
-  ): Promise<ChatRecoveryOptions> {
-
-    console.log(`Recovered ${ctx.partialText.length} chars of partial text`);
-
-
-    // Default: persist partial + schedule continuation
-
-    return {};
-
-  }
-
-}
-
-
+import type {  ChatRecoveryContext,  ChatRecoveryOptions,} from "@cloudflare/ai-chat";
+export class ChatAgent extends AIChatAgent {  override chatRecovery = true;
+  override async onChatRecovery(    ctx: ChatRecoveryContext,  ): Promise<ChatRecoveryOptions> {    console.log(`Recovered ${ctx.partialText.length} chars of partial text`);
+    // Default: persist partial + schedule continuation    return {};  }}
 ```
 
 **`ChatRecoveryContext`:**
@@ -1716,24 +711,7 @@ Use `ctx.createdAt` to skip stale recoveries:
 TypeScript
 
 ```
-
-override async onChatRecovery(
-
-  ctx: ChatRecoveryContext,
-
-): Promise<ChatRecoveryOptions> {
-
-  if (Date.now() - ctx.createdAt > 2 * 60 * 1000) {
-
-    return { continue: false };
-
-  }
-
-  return {};
-
-}
-
-
+override async onChatRecovery(  ctx: ChatRecoveryContext,): Promise<ChatRecoveryOptions> {  if (Date.now() - ctx.createdAt > 2 * 60 * 1000) {    return { continue: false };  }  return {};}
 ```
 
 #### `continueLastTurn`
@@ -1743,16 +721,7 @@ Appends to the last assistant message by re-calling `onChatMessage` with the sav
 TypeScript
 
 ```
-
-protected continueLastTurn(
-
-  body?: Record<string, unknown>,
-
-  options?: SaveMessagesOptions,
-
-): Promise<SaveMessagesResult>;
-
-
+protected continueLastTurn(  body?: Record<string, unknown>,  options?: SaveMessagesOptions,): Promise<SaveMessagesResult>;
 ```
 
 Called automatically by the default recovery path. Can also be called manually from scheduled callbacks or other entry points. The optional `body` parameter overrides the saved request body for this continuation. Pass `options.signal` to cancel the continuation while it is running.
@@ -1761,110 +730,22 @@ Called automatically by the default recovery path. Can also be called manually f
 
 Use `this.stash()` inside `onChatMessage` to persist provider-specific data for recovery. The stash is stored in the fiber's SQLite row, separate from agent state, and available as `ctx.recoveryData` in `onChatRecovery`.
 
-* [  JavaScript ](#tab-panel-5199)
-* [  TypeScript ](#tab-panel-5200)
+* [  JavaScript ](#tab-panel-5273)
+* [  TypeScript ](#tab-panel-5274)
 
 JavaScript
 
 ```
-
-export class ChatAgent extends AIChatAgent {
-
-  chatRecovery = true;
-
-
-  async onChatMessage(_onFinish, options) {
-
-    const result = streamText({
-
-      model: openai("gpt-5.4"),
-
-      messages: await convertToModelMessages(this.messages),
-
-      providerOptions: { openai: { store: true } },
-
-      includeRawChunks: true,
-
-      onChunk: ({ chunk }) => {
-
-        if (chunk.type === "raw") {
-
-          const raw = chunk.rawValue;
-
-
-          if (raw?.type === "response.created" && raw.response?.id) {
-
-            this.stash({ responseId: raw.response.id });
-
-          }
-
-        }
-
-      },
-
-    });
-
-    return result.toUIMessageStreamResponse();
-
-  }
-
-}
-
-
+export class ChatAgent extends AIChatAgent {  chatRecovery = true;
+  async onChatMessage(_onFinish, options) {    const result = streamText({      model: openai("gpt-5.4"),      messages: await convertToModelMessages(this.messages),      providerOptions: { openai: { store: true } },      includeRawChunks: true,      onChunk: ({ chunk }) => {        if (chunk.type === "raw") {          const raw = chunk.rawValue;
+          if (raw?.type === "response.created" && raw.response?.id) {            this.stash({ responseId: raw.response.id });          }        }      },    });    return result.toUIMessageStreamResponse();  }}
 ```
 
 TypeScript
 
 ```
-
-export class ChatAgent extends AIChatAgent {
-
-  override chatRecovery = true;
-
-
-  async onChatMessage(_onFinish, options) {
-
-    const result = streamText({
-
-      model: openai("gpt-5.4"),
-
-      messages: await convertToModelMessages(this.messages),
-
-      providerOptions: { openai: { store: true } },
-
-      includeRawChunks: true,
-
-      onChunk: ({ chunk }) => {
-
-        if (chunk.type === "raw") {
-
-          const raw = chunk.rawValue as {
-
-            type?: string;
-
-            response?: { id?: string };
-
-          };
-
-          if (raw?.type === "response.created" && raw.response?.id) {
-
-            this.stash({ responseId: raw.response.id });
-
-          }
-
-        }
-
-      },
-
-    });
-
-    return result.toUIMessageStreamResponse();
-
-  }
-
-}
-
-
+export class ChatAgent extends AIChatAgent {  override chatRecovery = true;
+  async onChatMessage(_onFinish, options) {    const result = streamText({      model: openai("gpt-5.4"),      messages: await convertToModelMessages(this.messages),      providerOptions: { openai: { store: true } },      includeRawChunks: true,      onChunk: ({ chunk }) => {        if (chunk.type === "raw") {          const raw = chunk.rawValue as {            type?: string;            response?: { id?: string };          };          if (raw?.type === "response.created" && raw.response?.id) {            this.stash({ responseId: raw.response.id });          }        }      },    });    return result.toUIMessageStreamResponse();  }}
 ```
 
 #### Recovery strategies by provider
@@ -1895,101 +776,23 @@ For how chat recovery fits into the broader long-running agents story, refer to 
 
 React hook that connects to an `AIChatAgent` over WebSocket. Wraps the AI SDK's `useChat` with a native WebSocket transport.
 
-* [  JavaScript ](#tab-panel-5197)
-* [  TypeScript ](#tab-panel-5198)
+* [  JavaScript ](#tab-panel-5271)
+* [  TypeScript ](#tab-panel-5272)
 
 JavaScript
 
 ```
-
-import { useAgent } from "agents/react";
-
-import { useAgentChat } from "@cloudflare/ai-chat/react";
-
-
-function Chat() {
-
-  const agent = useAgent({ agent: "ChatAgent" });
-
-  const {
-
-    messages,
-
-    sendMessage,
-
-    clearHistory,
-
-    addToolOutput,
-
-    addToolApprovalResponse,
-
-    setMessages,
-
-    status,
-
-    isStreaming,
-
-    isServerStreaming,
-
-    isToolContinuation,
-
-    isRecovering,
-
-  } = useAgentChat({ agent });
-
-
-  // ...
-
-}
-
-
+import { useAgent } from "agents/react";import { useAgentChat } from "@cloudflare/ai-chat/react";
+function Chat() {  const agent = useAgent({ agent: "ChatAgent" });  const {    messages,    sendMessage,    clearHistory,    addToolOutput,    addToolApprovalResponse,    setMessages,    status,    isStreaming,    isServerStreaming,    isToolContinuation,    isRecovering,  } = useAgentChat({ agent });
+  // ...}
 ```
 
 TypeScript
 
 ```
-
-import { useAgent } from "agents/react";
-
-import { useAgentChat } from "@cloudflare/ai-chat/react";
-
-
-function Chat() {
-
-  const agent = useAgent({ agent: "ChatAgent" });
-
-  const {
-
-    messages,
-
-    sendMessage,
-
-    clearHistory,
-
-    addToolOutput,
-
-    addToolApprovalResponse,
-
-    setMessages,
-
-    status,
-
-    isStreaming,
-
-    isServerStreaming,
-
-    isToolContinuation,
-
-    isRecovering,
-
-  } = useAgentChat({ agent });
-
-
-  // ...
-
-}
-
-
+import { useAgent } from "agents/react";import { useAgentChat } from "@cloudflare/ai-chat/react";
+function Chat() {  const agent = useAgent({ agent: "ChatAgent" });  const {    messages,    sendMessage,    clearHistory,    addToolOutput,    addToolApprovalResponse,    setMessages,    status,    isStreaming,    isServerStreaming,    isToolContinuation,    isRecovering,  } = useAgentChat({ agent });
+  // ...}
 ```
 
 ### Options
@@ -2038,117 +841,23 @@ Use `isToolContinuation` when your UI should distinguish a fresh user submit fro
 
 Tools with an `execute` function run automatically on the server:
 
-* [  JavaScript ](#tab-panel-5203)
-* [  TypeScript ](#tab-panel-5204)
+* [  JavaScript ](#tab-panel-5277)
+* [  TypeScript ](#tab-panel-5278)
 
 JavaScript
 
 ```
-
-import { streamText, convertToModelMessages, tool, stepCountIs } from "ai";
-
-import { z } from "zod";
-
-export class ChatAgent extends AIChatAgent {
-
-  async onChatMessage() {
-
-    const workersai = createWorkersAI({ binding: this.env.AI });
-
-
-    const result = streamText({
-
-      model: workersai("@cf/zai-org/glm-4.7-flash"),
-
-      messages: await convertToModelMessages(this.messages),
-
-      tools: {
-
-        getWeather: tool({
-
-          description: "Get weather for a city",
-
-          inputSchema: z.object({ city: z.string() }),
-
-          execute: async ({ city }) => {
-
-            const data = await fetchWeather(city);
-
-            return { temperature: data.temp, condition: data.condition };
-
-          },
-
-        }),
-
-      },
-
-      stopWhen: stepCountIs(5),
-
-    });
-
-
-    return result.toUIMessageStreamResponse();
-
-  }
-
-}
-
-
+import { streamText, convertToModelMessages, tool, stepCountIs } from "ai";import { z } from "zod";export class ChatAgent extends AIChatAgent {  async onChatMessage() {    const workersai = createWorkersAI({ binding: this.env.AI });
+    const result = streamText({      model: workersai("@cf/zai-org/glm-4.7-flash"),      messages: await convertToModelMessages(this.messages),      tools: {        getWeather: tool({          description: "Get weather for a city",          inputSchema: z.object({ city: z.string() }),          execute: async ({ city }) => {            const data = await fetchWeather(city);            return { temperature: data.temp, condition: data.condition };          },        }),      },      stopWhen: stepCountIs(5),    });
+    return result.toUIMessageStreamResponse();  }}
 ```
 
 TypeScript
 
 ```
-
-import { streamText, convertToModelMessages, tool, stepCountIs } from "ai";
-
-import { z } from "zod";
-
-export class ChatAgent extends AIChatAgent {
-
-  async onChatMessage() {
-
-    const workersai = createWorkersAI({ binding: this.env.AI });
-
-
-    const result = streamText({
-
-      model: workersai("@cf/zai-org/glm-4.7-flash"),
-
-      messages: await convertToModelMessages(this.messages),
-
-      tools: {
-
-        getWeather: tool({
-
-          description: "Get weather for a city",
-
-          inputSchema: z.object({ city: z.string() }),
-
-          execute: async ({ city }) => {
-
-            const data = await fetchWeather(city);
-
-            return { temperature: data.temp, condition: data.condition };
-
-          },
-
-        }),
-
-      },
-
-      stopWhen: stepCountIs(5),
-
-    });
-
-
-    return result.toUIMessageStreamResponse();
-
-  }
-
-}
-
-
+import { streamText, convertToModelMessages, tool, stepCountIs } from "ai";import { z } from "zod";export class ChatAgent extends AIChatAgent {  async onChatMessage() {    const workersai = createWorkersAI({ binding: this.env.AI });
+    const result = streamText({      model: workersai("@cf/zai-org/glm-4.7-flash"),      messages: await convertToModelMessages(this.messages),      tools: {        getWeather: tool({          description: "Get weather for a city",          inputSchema: z.object({ city: z.string() }),          execute: async ({ city }) => {            const data = await fetchWeather(city);            return { temperature: data.temp, condition: data.condition };          },        }),      },      stopWhen: stepCountIs(5),    });
+    return result.toUIMessageStreamResponse();  }}
 ```
 
 ### Client-side tools
@@ -2157,124 +866,36 @@ Define a tool on the server without `execute`, then handle it on the client with
 
 **Server:**
 
-* [  JavaScript ](#tab-panel-5181)
-* [  TypeScript ](#tab-panel-5182)
+* [  JavaScript ](#tab-panel-5255)
+* [  TypeScript ](#tab-panel-5256)
 
 JavaScript
 
 ```
-
-tools: {
-
-  getLocation: tool({
-
-    description: "Get the user's location from the browser",
-
-    inputSchema: z.object({}),
-
-    // No execute — the client handles it
-
-  });
-
-}
-
-
+tools: {  getLocation: tool({    description: "Get the user's location from the browser",    inputSchema: z.object({}),    // No execute — the client handles it  });}
 ```
 
 TypeScript
 
 ```
-
-tools: {
-
-  getLocation: tool({
-
-    description: "Get the user's location from the browser",
-
-    inputSchema: z.object({}),
-
-    // No execute — the client handles it
-
-  });
-
-}
-
-
+tools: {  getLocation: tool({    description: "Get the user's location from the browser",    inputSchema: z.object({}),    // No execute — the client handles it  });}
 ```
 
 **Client:**
 
-* [  JavaScript ](#tab-panel-5193)
-* [  TypeScript ](#tab-panel-5194)
+* [  JavaScript ](#tab-panel-5267)
+* [  TypeScript ](#tab-panel-5268)
 
 JavaScript
 
 ```
-
-const { messages, sendMessage } = useAgentChat({
-
-  agent,
-
-  onToolCall: async ({ toolCall, addToolOutput }) => {
-
-    if (toolCall.toolName === "getLocation") {
-
-      const pos = await new Promise((resolve, reject) =>
-
-        navigator.geolocation.getCurrentPosition(resolve, reject),
-
-      );
-
-      addToolOutput({
-
-        toolCallId: toolCall.toolCallId,
-
-        output: { lat: pos.coords.latitude, lng: pos.coords.longitude },
-
-      });
-
-    }
-
-  },
-
-});
-
-
+const { messages, sendMessage } = useAgentChat({  agent,  onToolCall: async ({ toolCall, addToolOutput }) => {    if (toolCall.toolName === "getLocation") {      const pos = await new Promise((resolve, reject) =>        navigator.geolocation.getCurrentPosition(resolve, reject),      );      addToolOutput({        toolCallId: toolCall.toolCallId,        output: { lat: pos.coords.latitude, lng: pos.coords.longitude },      });    }  },});
 ```
 
 TypeScript
 
 ```
-
-const { messages, sendMessage } = useAgentChat({
-
-  agent,
-
-  onToolCall: async ({ toolCall, addToolOutput }) => {
-
-    if (toolCall.toolName === "getLocation") {
-
-      const pos = await new Promise((resolve, reject) =>
-
-        navigator.geolocation.getCurrentPosition(resolve, reject),
-
-      );
-
-      addToolOutput({
-
-        toolCallId: toolCall.toolCallId,
-
-        output: { lat: pos.coords.latitude, lng: pos.coords.longitude },
-
-      });
-
-    }
-
-  },
-
-});
-
-
+const { messages, sendMessage } = useAgentChat({  agent,  onToolCall: async ({ toolCall, addToolOutput }) => {    if (toolCall.toolName === "getLocation") {      const pos = await new Promise((resolve, reject) =>        navigator.geolocation.getCurrentPosition(resolve, reject),      );      addToolOutput({        toolCallId: toolCall.toolCallId,        output: { lat: pos.coords.latitude, lng: pos.coords.longitude },      });    }  },});
 ```
 
 When the LLM invokes `getLocation`, the stream pauses. The `onToolCall` callback fires, your code provides the output, and the conversation continues.
@@ -2290,30 +911,7 @@ Use `needsApproval` for tools that require user confirmation before executing.
 TypeScript
 
 ```
-
-tools: {
-
-  processPayment: tool({
-
-    description: "Process a payment",
-
-    inputSchema: z.object({
-
-      amount: z.coerce.number(),
-
-      recipient: z.string(),
-
-    }),
-
-    needsApproval: async ({ amount }) => amount > 100,
-
-    execute: async ({ amount, recipient }) => charge(amount, recipient),
-
-  });
-
-}
-
-
+tools: {  processPayment: tool({    description: "Process a payment",    inputSchema: z.object({      amount: z.coerce.number(),      recipient: z.string(),    }),    needsApproval: async ({ amount }) => amount > 100,    execute: async ({ amount, recipient }) => charge(amount, recipient),  });}
 ```
 
 **Client:**
@@ -2321,153 +919,30 @@ tools: {
 TypeScript
 
 ```
-
-import { getToolName, isToolUIPart } from "ai";
-
-import {
-
-  getToolApproval,
-
-  getToolCallId,
-
-  getToolPartState,
-
-} from "@cloudflare/ai-chat/react";
-
-
+import { getToolName, isToolUIPart } from "ai";import {  getToolApproval,  getToolCallId,  getToolPartState,} from "@cloudflare/ai-chat/react";
 const { messages, addToolApprovalResponse } = useAgentChat({ agent });
-
-
-// Render pending approvals from message parts
-
-{
-
-  messages.map((msg) =>
-
-    msg.parts
-
-      .filter(
-
-        (part) =>
-
-          isToolUIPart(part) && getToolPartState(part) === "waiting-approval",
-
-      )
-
-      .map((part) => (
-
-        <div key={getToolCallId(part)}>
-
-          <p>Approve {getToolName(part)}?</p>
-
-          <button
-
-            onClick={() => {
-
-              const approval = getToolApproval(part);
-
-              if (!approval) return;
-
-              addToolApprovalResponse({
-
-                id: approval.id,
-
-                approved: true,
-
-              });
-
-            }}
-
-          >
-
-            Approve
-
-          </button>
-
-          <button
-
-            onClick={() => {
-
-              const approval = getToolApproval(part);
-
-              if (!approval) return;
-
-              addToolApprovalResponse({
-
-                id: approval.id,
-
-                approved: false,
-
-              });
-
-            }}
-
-          >
-
-            Reject
-
-          </button>
-
-        </div>
-
-      )),
-
-  );
-
-}
-
-
+// Render pending approvals from message parts{  messages.map((msg) =>    msg.parts      .filter(        (part) =>          isToolUIPart(part) && getToolPartState(part) === "waiting-approval",      )      .map((part) => (        <div key={getToolCallId(part)}>          <p>Approve {getToolName(part)}?</p>          <button            onClick={() => {              const approval = getToolApproval(part);              if (!approval) return;              addToolApprovalResponse({                id: approval.id,                approved: true,              });            }}          >            Approve          </button>          <button            onClick={() => {              const approval = getToolApproval(part);              if (!approval) return;              addToolApprovalResponse({                id: approval.id,                approved: false,              });            }}          >            Reject          </button>        </div>      )),  );}
 ```
 
 #### Custom denial messages with `addToolOutput`
 
 When a user rejects a tool, `addToolApprovalResponse({ id, approved: false })` sets the tool state to `output-denied` with a generic message. To give the LLM a more specific reason for the denial, use `addToolOutput` with `state: "output-error"` instead:
 
-* [  JavaScript ](#tab-panel-5187)
-* [  TypeScript ](#tab-panel-5188)
+* [  JavaScript ](#tab-panel-5261)
+* [  TypeScript ](#tab-panel-5262)
 
 JavaScript
 
 ```
-
 const { addToolOutput } = useAgentChat({ agent });
-
-
-// Reject with a custom error message
-
-addToolOutput({
-
-  toolCallId: part.toolCallId,
-
-  state: "output-error",
-
-  errorText: "User declined: insufficient budget for this quarter",
-
-});
-
-
+// Reject with a custom error messageaddToolOutput({  toolCallId: part.toolCallId,  state: "output-error",  errorText: "User declined: insufficient budget for this quarter",});
 ```
 
 TypeScript
 
 ```
-
 const { addToolOutput } = useAgentChat({ agent });
-
-
-// Reject with a custom error message
-
-addToolOutput({
-
-  toolCallId: part.toolCallId,
-
-  state: "output-error",
-
-  errorText: "User declined: insufficient budget for this quarter",
-
-});
-
-
+// Reject with a custom error messageaddToolOutput({  toolCallId: part.toolCallId,  state: "output-error",  errorText: "User declined: insufficient budget for this quarter",});
 ```
 
 This sends a `tool_result` to the LLM with your custom error text, so it can respond appropriately (for example, suggest an alternative or ask clarifying questions).
@@ -2480,174 +955,70 @@ For more patterns, refer to [Human-in-the-loop](https://developers.cloudflare.co
 
 Include custom data with every chat request using the `body` option:
 
-* [  JavaScript ](#tab-panel-5191)
-* [  TypeScript ](#tab-panel-5192)
+* [  JavaScript ](#tab-panel-5265)
+* [  TypeScript ](#tab-panel-5266)
 
 JavaScript
 
 ```
-
-const { messages, sendMessage } = useAgentChat({
-
-  agent,
-
-  body: {
-
-    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-
-    userId: currentUser.id,
-
-  },
-
-});
-
-
+const { messages, sendMessage } = useAgentChat({  agent,  body: {    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,    userId: currentUser.id,  },});
 ```
 
 TypeScript
 
 ```
-
-const { messages, sendMessage } = useAgentChat({
-
-  agent,
-
-  body: {
-
-    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-
-    userId: currentUser.id,
-
-  },
-
-});
-
-
+const { messages, sendMessage } = useAgentChat({  agent,  body: {    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,    userId: currentUser.id,  },});
 ```
 
 For dynamic values, use a function:
 
-* [  JavaScript ](#tab-panel-5189)
-* [  TypeScript ](#tab-panel-5190)
+* [  JavaScript ](#tab-panel-5263)
+* [  TypeScript ](#tab-panel-5264)
 
 JavaScript
 
 ```
-
-body: () => ({
-
-  token: getAuthToken(),
-
-  timestamp: Date.now(),
-
-});
-
-
+body: () => ({  token: getAuthToken(),  timestamp: Date.now(),});
 ```
 
 TypeScript
 
 ```
-
-body: () => ({
-
-  token: getAuthToken(),
-
-  timestamp: Date.now(),
-
-});
-
-
+body: () => ({  token: getAuthToken(),  timestamp: Date.now(),});
 ```
 
 Access these fields on the server:
 
-* [  JavaScript ](#tab-panel-5195)
-* [  TypeScript ](#tab-panel-5196)
+* [  JavaScript ](#tab-panel-5269)
+* [  TypeScript ](#tab-panel-5270)
 
 JavaScript
 
 ```
-
-export class ChatAgent extends AIChatAgent {
-
-  async onChatMessage(_onFinish, options) {
-
-    const { timezone, userId } = options?.body ?? {};
-
-    // ...
-
-  }
-
-}
-
-
+export class ChatAgent extends AIChatAgent {  async onChatMessage(_onFinish, options) {    const { timezone, userId } = options?.body ?? {};    // ...  }}
 ```
 
 TypeScript
 
 ```
-
-export class ChatAgent extends AIChatAgent {
-
-  async onChatMessage(_onFinish, options) {
-
-    const { timezone, userId } = options?.body ?? {};
-
-    // ...
-
-  }
-
-}
-
-
+export class ChatAgent extends AIChatAgent {  async onChatMessage(_onFinish, options) {    const { timezone, userId } = options?.body ?? {};    // ...  }}
 ```
 
 For advanced per-request customization (custom headers, different body per request), use `prepareSendMessagesRequest`:
 
-* [  JavaScript ](#tab-panel-5201)
-* [  TypeScript ](#tab-panel-5202)
+* [  JavaScript ](#tab-panel-5275)
+* [  TypeScript ](#tab-panel-5276)
 
 JavaScript
 
 ```
-
-const { messages, sendMessage } = useAgentChat({
-
-  agent,
-
-  prepareSendMessagesRequest: async ({ messages, trigger }) => ({
-
-    headers: { Authorization: `Bearer ${await getToken()}` },
-
-    body: { requestedAt: Date.now() },
-
-  }),
-
-});
-
-
+const { messages, sendMessage } = useAgentChat({  agent,  prepareSendMessagesRequest: async ({ messages, trigger }) => ({    headers: { Authorization: `Bearer ${await getToken()}` },    body: { requestedAt: Date.now() },  }),});
 ```
 
 TypeScript
 
 ```
-
-const { messages, sendMessage } = useAgentChat({
-
-  agent,
-
-  prepareSendMessagesRequest: async ({ messages, trigger }) => ({
-
-    headers: { Authorization: `Bearer ${await getToken()}` },
-
-    body: { requestedAt: Date.now() },
-
-  }),
-
-});
-
-
+const { messages, sendMessage } = useAgentChat({  agent,  prepareSendMessagesRequest: async ({ messages, trigger }) => ({    headers: { Authorization: `Bearer ${await getToken()}` },    body: { requestedAt: Date.now() },  }),});
 ```
 
 ## Data parts
@@ -2658,185 +1029,31 @@ Data parts let you attach typed JSON to messages alongside text — progress ind
 
 Use `createUIMessageStream` with `writer.write()` to send data parts from the server:
 
-* [  JavaScript ](#tab-panel-5225)
-* [  TypeScript ](#tab-panel-5226)
+* [  JavaScript ](#tab-panel-5299)
+* [  TypeScript ](#tab-panel-5300)
 
 JavaScript
 
 ```
-
-import {
-
-  streamText,
-
-  convertToModelMessages,
-
-  createUIMessageStream,
-
-  createUIMessageStreamResponse,
-
-} from "ai";
-
-
-export class ChatAgent extends AIChatAgent {
-
-  async onChatMessage() {
-
-    const workersai = createWorkersAI({ binding: this.env.AI });
-
-
-    const stream = createUIMessageStream({
-
-      execute: async ({ writer }) => {
-
-        const result = streamText({
-
-          model: workersai("@cf/zai-org/glm-4.7-flash"),
-
-          messages: await convertToModelMessages(this.messages),
-
-        });
-
-
-        // Merge the LLM stream
-
-        writer.merge(result.toUIMessageStream());
-
-
-        // Write a data part — persisted to message.parts
-
-        writer.write({
-
-          type: "data-sources",
-
-          id: "src-1",
-
-          data: { query: "agents", status: "searching", results: [] },
-
-        });
-
-
-        // Later: update the same part in-place (same type + id)
-
-        writer.write({
-
-          type: "data-sources",
-
-          id: "src-1",
-
-          data: {
-
-            query: "agents",
-
-            status: "found",
-
-            results: ["Agents SDK docs", "Durable Objects guide"],
-
-          },
-
-        });
-
-      },
-
-    });
-
-
-    return createUIMessageStreamResponse({ stream });
-
-  }
-
-}
-
-
+import {  streamText,  convertToModelMessages,  createUIMessageStream,  createUIMessageStreamResponse,} from "ai";
+export class ChatAgent extends AIChatAgent {  async onChatMessage() {    const workersai = createWorkersAI({ binding: this.env.AI });
+    const stream = createUIMessageStream({      execute: async ({ writer }) => {        const result = streamText({          model: workersai("@cf/zai-org/glm-4.7-flash"),          messages: await convertToModelMessages(this.messages),        });
+        // Merge the LLM stream        writer.merge(result.toUIMessageStream());
+        // Write a data part — persisted to message.parts        writer.write({          type: "data-sources",          id: "src-1",          data: { query: "agents", status: "searching", results: [] },        });
+        // Later: update the same part in-place (same type + id)        writer.write({          type: "data-sources",          id: "src-1",          data: {            query: "agents",            status: "found",            results: ["Agents SDK docs", "Durable Objects guide"],          },        });      },    });
+    return createUIMessageStreamResponse({ stream });  }}
 ```
 
 TypeScript
 
 ```
-
-import {
-
-  streamText,
-
-  convertToModelMessages,
-
-  createUIMessageStream,
-
-  createUIMessageStreamResponse,
-
-} from "ai";
-
-
-export class ChatAgent extends AIChatAgent {
-
-  async onChatMessage() {
-
-    const workersai = createWorkersAI({ binding: this.env.AI });
-
-
-    const stream = createUIMessageStream({
-
-      execute: async ({ writer }) => {
-
-        const result = streamText({
-
-          model: workersai("@cf/zai-org/glm-4.7-flash"),
-
-          messages: await convertToModelMessages(this.messages),
-
-        });
-
-
-        // Merge the LLM stream
-
-        writer.merge(result.toUIMessageStream());
-
-
-        // Write a data part — persisted to message.parts
-
-        writer.write({
-
-          type: "data-sources",
-
-          id: "src-1",
-
-          data: { query: "agents", status: "searching", results: [] },
-
-        });
-
-
-        // Later: update the same part in-place (same type + id)
-
-        writer.write({
-
-          type: "data-sources",
-
-          id: "src-1",
-
-          data: {
-
-            query: "agents",
-
-            status: "found",
-
-            results: ["Agents SDK docs", "Durable Objects guide"],
-
-          },
-
-        });
-
-      },
-
-    });
-
-
-    return createUIMessageStreamResponse({ stream });
-
-  }
-
-}
-
-
+import {  streamText,  convertToModelMessages,  createUIMessageStream,  createUIMessageStreamResponse,} from "ai";
+export class ChatAgent extends AIChatAgent {  async onChatMessage() {    const workersai = createWorkersAI({ binding: this.env.AI });
+    const stream = createUIMessageStream({      execute: async ({ writer }) => {        const result = streamText({          model: workersai("@cf/zai-org/glm-4.7-flash"),          messages: await convertToModelMessages(this.messages),        });
+        // Merge the LLM stream        writer.merge(result.toUIMessageStream());
+        // Write a data part — persisted to message.parts        writer.write({          type: "data-sources",          id: "src-1",          data: { query: "agents", status: "searching", results: [] },        });
+        // Later: update the same part in-place (same type + id)        writer.write({          type: "data-sources",          id: "src-1",          data: {            query: "agents",            status: "found",            results: ["Agents SDK docs", "Durable Objects guide"],          },        });      },    });
+    return createUIMessageStreamResponse({ stream });  }}
 ```
 
 ### Three patterns
@@ -2853,180 +1070,62 @@ Transient parts are broadcast to connected clients in real time but excluded fro
 
 Non-transient data parts appear in `message.parts`. Use the `UIMessage` generic to type them:
 
-* [  JavaScript ](#tab-panel-5215)
-* [  TypeScript ](#tab-panel-5216)
+* [  JavaScript ](#tab-panel-5289)
+* [  TypeScript ](#tab-panel-5290)
 
 JavaScript
 
 ```
-
 import { useAgentChat } from "@cloudflare/ai-chat/react";
-
-
 const { messages } = useAgentChat({ agent });
-
-
-// Typed access — no casts needed
-
-for (const msg of messages) {
-
-  for (const part of msg.parts) {
-
-    if (part.type === "data-sources") {
-
-      console.log(part.data.results); // string[]
-
-    }
-
-  }
-
-}
-
-
+// Typed access — no casts neededfor (const msg of messages) {  for (const part of msg.parts) {    if (part.type === "data-sources") {      console.log(part.data.results); // string[]    }  }}
 ```
 
 TypeScript
 
 ```
-
-import { useAgentChat } from "@cloudflare/ai-chat/react";
-
-import type { UIMessage } from "ai";
-
-
-type ChatMessage = UIMessage<
-
-  unknown,
-
-  {
-
-    sources: { query: string; status: string; results: string[] };
-
-    usage: { model: string; inputTokens: number; outputTokens: number };
-
-  }
-
->;
-
-
+import { useAgentChat } from "@cloudflare/ai-chat/react";import type { UIMessage } from "ai";
+type ChatMessage = UIMessage<  unknown,  {    sources: { query: string; status: string; results: string[] };    usage: { model: string; inputTokens: number; outputTokens: number };  }>;
 const { messages } = useAgentChat<unknown, ChatMessage>({ agent });
-
-
-// Typed access — no casts needed
-
-for (const msg of messages) {
-
-  for (const part of msg.parts) {
-
-    if (part.type === "data-sources") {
-
-      console.log(part.data.results); // string[]
-
-    }
-
-  }
-
-}
-
-
+// Typed access — no casts neededfor (const msg of messages) {  for (const part of msg.parts) {    if (part.type === "data-sources") {      console.log(part.data.results); // string[]    }  }}
 ```
 
 ### Transient parts with `onData`
 
 Transient data parts are not in `message.parts`. Use the `onData` callback instead:
 
-* [  JavaScript ](#tab-panel-5211)
-* [  TypeScript ](#tab-panel-5212)
+* [  JavaScript ](#tab-panel-5285)
+* [  TypeScript ](#tab-panel-5286)
 
 JavaScript
 
 ```
-
 const [thinking, setThinking] = useState(false);
-
-
-const { messages } = useAgentChat({
-
-  agent,
-
-  onData(part) {
-
-    if (part.type === "data-thinking") {
-
-      setThinking(true);
-
-    }
-
-  },
-
-});
-
-
+const { messages } = useAgentChat({  agent,  onData(part) {    if (part.type === "data-thinking") {      setThinking(true);    }  },});
 ```
 
 TypeScript
 
 ```
-
 const [thinking, setThinking] = useState(false);
-
-
-const { messages } = useAgentChat<unknown, ChatMessage>({
-
-  agent,
-
-  onData(part) {
-
-    if (part.type === "data-thinking") {
-
-      setThinking(true);
-
-    }
-
-  },
-
-});
-
-
+const { messages } = useAgentChat<unknown, ChatMessage>({  agent,  onData(part) {    if (part.type === "data-thinking") {      setThinking(true);    }  },});
 ```
 
 On the server, write transient parts with `transient: true`:
 
-* [  JavaScript ](#tab-panel-5205)
-* [  TypeScript ](#tab-panel-5206)
+* [  JavaScript ](#tab-panel-5279)
+* [  TypeScript ](#tab-panel-5280)
 
 JavaScript
 
 ```
-
-writer.write({
-
-  transient: true,
-
-  type: "data-thinking",
-
-  data: { model: "glm-4.7-flash", startedAt: new Date().toISOString() },
-
-});
-
-
+writer.write({  transient: true,  type: "data-thinking",  data: { model: "glm-4.7-flash", startedAt: new Date().toISOString() },});
 ```
 
 TypeScript
 
 ```
-
-writer.write({
-
-  transient: true,
-
-  type: "data-thinking",
-
-  data: { model: "glm-4.7-flash", startedAt: new Date().toISOString() },
-
-});
-
-
+writer.write({  transient: true,  type: "data-thinking",  data: { model: "glm-4.7-flash", startedAt: new Date().toISOString() },});
 ```
 
 `onData` fires on all code paths — new messages, stream resumption, and cross-tab broadcasts.
@@ -3043,56 +1142,40 @@ When streaming is active:
 
 Generic client stream abort or cleanup stays local to the browser by default, so the server turn keeps running and can be resumed later. Calling `stop()` explicitly still cancels the server turn:
 
-* [  JavaScript ](#tab-panel-5207)
-* [  TypeScript ](#tab-panel-5208)
+* [  JavaScript ](#tab-panel-5281)
+* [  TypeScript ](#tab-panel-5282)
 
 JavaScript
 
 ```
-
 const { messages, stop } = useAgentChat({ agent });
-
-
 return <button onClick={stop}>Stop</button>;
-
-
 ```
 
 TypeScript
 
 ```
-
 const { messages, stop } = useAgentChat({ agent });
-
-
 return <button onClick={stop}>Stop</button>;
-
-
 ```
 
 Set `cancelOnClientAbort: true` when your app intentionally wants the browser lifecycle to own the server lifecycle, such as request-lifetime or token-saving flows. Explicit `stop()` always cancels server work regardless of this option.
 
 Disable with `resume: false`:
 
-* [  JavaScript ](#tab-panel-5209)
-* [  TypeScript ](#tab-panel-5210)
+* [  JavaScript ](#tab-panel-5283)
+* [  TypeScript ](#tab-panel-5284)
 
 JavaScript
 
 ```
-
 const { messages } = useAgentChat({ agent, resume: false });
-
-
 ```
 
 TypeScript
 
 ```
-
 const { messages } = useAgentChat({ agent, resume: false });
-
-
 ```
 
 ## Storage management
@@ -3116,79 +1199,21 @@ Storage (`maxPersistedMessages`) and LLM context are independent:
 | What the model sees             | pruneMessages()      | LLM context |
 | Row size limits                 | Automatic compaction | Per-message |
 
-* [  JavaScript ](#tab-panel-5221)
-* [  TypeScript ](#tab-panel-5222)
+* [  JavaScript ](#tab-panel-5295)
+* [  TypeScript ](#tab-panel-5296)
 
 JavaScript
 
 ```
-
-export class ChatAgent extends AIChatAgent {
-
-  async onChatMessage() {
-
-    const result = streamText({
-
-      model: workersai("@cf/zai-org/glm-4.7-flash"),
-
-      messages: pruneMessages({
-
-        // LLM context limit
-
-        messages: await convertToModelMessages(this.messages),
-
-        reasoning: "before-last-message",
-
-        toolCalls: "before-last-2-messages",
-
-      }),
-
-    });
-
-
-    return result.toUIMessageStreamResponse();
-
-  }
-
-}
-
-
+export class ChatAgent extends AIChatAgent {  async onChatMessage() {    const result = streamText({      model: workersai("@cf/zai-org/glm-4.7-flash"),      messages: pruneMessages({        // LLM context limit        messages: await convertToModelMessages(this.messages),        reasoning: "before-last-message",        toolCalls: "before-last-2-messages",      }),    });
+    return result.toUIMessageStreamResponse();  }}
 ```
 
 TypeScript
 
 ```
-
-export class ChatAgent extends AIChatAgent {
-
-  async onChatMessage() {
-
-    const result = streamText({
-
-      model: workersai("@cf/zai-org/glm-4.7-flash"),
-
-      messages: pruneMessages({
-
-        // LLM context limit
-
-        messages: await convertToModelMessages(this.messages),
-
-        reasoning: "before-last-message",
-
-        toolCalls: "before-last-2-messages",
-
-      }),
-
-    });
-
-
-    return result.toUIMessageStreamResponse();
-
-  }
-
-}
-
-
+export class ChatAgent extends AIChatAgent {  async onChatMessage() {    const result = streamText({      model: workersai("@cf/zai-org/glm-4.7-flash"),      messages: pruneMessages({        // LLM context limit        messages: await convertToModelMessages(this.messages),        reasoning: "before-last-message",        toolCalls: "before-last-2-messages",      }),    });
+    return result.toUIMessageStreamResponse();  }}
 ```
 
 ## Using different AI providers
@@ -3197,137 +1222,59 @@ export class ChatAgent extends AIChatAgent {
 
 ### Workers AI (Cloudflare)
 
-* [  JavaScript ](#tab-panel-5213)
-* [  TypeScript ](#tab-panel-5214)
+* [  JavaScript ](#tab-panel-5287)
+* [  TypeScript ](#tab-panel-5288)
 
 JavaScript
 
 ```
-
 import { createWorkersAI } from "workers-ai-provider";
-
-
-const workersai = createWorkersAI({ binding: this.env.AI });
-
-const result = streamText({
-
-  model: workersai("@cf/zai-org/glm-4.7-flash"),
-
-  messages: await convertToModelMessages(this.messages),
-
-});
-
-
+const workersai = createWorkersAI({ binding: this.env.AI });const result = streamText({  model: workersai("@cf/zai-org/glm-4.7-flash"),  messages: await convertToModelMessages(this.messages),});
 ```
 
 TypeScript
 
 ```
-
 import { createWorkersAI } from "workers-ai-provider";
-
-
-const workersai = createWorkersAI({ binding: this.env.AI });
-
-const result = streamText({
-
-  model: workersai("@cf/zai-org/glm-4.7-flash"),
-
-  messages: await convertToModelMessages(this.messages),
-
-});
-
-
+const workersai = createWorkersAI({ binding: this.env.AI });const result = streamText({  model: workersai("@cf/zai-org/glm-4.7-flash"),  messages: await convertToModelMessages(this.messages),});
 ```
 
 ### OpenAI
 
-* [  JavaScript ](#tab-panel-5217)
-* [  TypeScript ](#tab-panel-5218)
+* [  JavaScript ](#tab-panel-5291)
+* [  TypeScript ](#tab-panel-5292)
 
 JavaScript
 
 ```
-
 import { createOpenAI } from "@ai-sdk/openai";
-
-
-const openai = createOpenAI({ apiKey: this.env.OPENAI_API_KEY });
-
-const result = streamText({
-
-  model: openai.chat("gpt-4o"),
-
-  messages: await convertToModelMessages(this.messages),
-
-});
-
-
+const openai = createOpenAI({ apiKey: this.env.OPENAI_API_KEY });const result = streamText({  model: openai.chat("gpt-4o"),  messages: await convertToModelMessages(this.messages),});
 ```
 
 TypeScript
 
 ```
-
 import { createOpenAI } from "@ai-sdk/openai";
-
-
-const openai = createOpenAI({ apiKey: this.env.OPENAI_API_KEY });
-
-const result = streamText({
-
-  model: openai.chat("gpt-4o"),
-
-  messages: await convertToModelMessages(this.messages),
-
-});
-
-
+const openai = createOpenAI({ apiKey: this.env.OPENAI_API_KEY });const result = streamText({  model: openai.chat("gpt-4o"),  messages: await convertToModelMessages(this.messages),});
 ```
 
 ### Anthropic
 
-* [  JavaScript ](#tab-panel-5219)
-* [  TypeScript ](#tab-panel-5220)
+* [  JavaScript ](#tab-panel-5293)
+* [  TypeScript ](#tab-panel-5294)
 
 JavaScript
 
 ```
-
 import { createAnthropic } from "@ai-sdk/anthropic";
-
-
-const anthropic = createAnthropic({ apiKey: this.env.ANTHROPIC_API_KEY });
-
-const result = streamText({
-
-  model: anthropic("claude-sonnet-4-20250514"),
-
-  messages: await convertToModelMessages(this.messages),
-
-});
-
-
+const anthropic = createAnthropic({ apiKey: this.env.ANTHROPIC_API_KEY });const result = streamText({  model: anthropic("claude-sonnet-4-20250514"),  messages: await convertToModelMessages(this.messages),});
 ```
 
 TypeScript
 
 ```
-
 import { createAnthropic } from "@ai-sdk/anthropic";
-
-
-const anthropic = createAnthropic({ apiKey: this.env.ANTHROPIC_API_KEY });
-
-const result = streamText({
-
-  model: anthropic("claude-sonnet-4-20250514"),
-
-  messages: await convertToModelMessages(this.messages),
-
-});
-
-
+const anthropic = createAnthropic({ apiKey: this.env.ANTHROPIC_API_KEY });const result = streamText({  model: anthropic("claude-sonnet-4-20250514"),  messages: await convertToModelMessages(this.messages),});
 ```
 
 ## Advanced patterns
@@ -3338,169 +1285,27 @@ Since `onChatMessage` gives you full control over the `streamText` call, you can
 
 Use [prepareStep ↗](https://ai-sdk.dev/docs/agents/loop-control) to change the model, available tools, or system prompt between steps in a multi-step agent loop:
 
-* [  JavaScript ](#tab-panel-5229)
-* [  TypeScript ](#tab-panel-5230)
+* [  JavaScript ](#tab-panel-5303)
+* [  TypeScript ](#tab-panel-5304)
 
 JavaScript
 
 ```
-
-import { streamText, convertToModelMessages, tool, stepCountIs } from "ai";
-
-import { z } from "zod";
-
-
-export class ChatAgent extends AIChatAgent {
-
-  async onChatMessage() {
-
-    const result = streamText({
-
-      model: cheapModel, // Default model for simple steps
-
-      messages: await convertToModelMessages(this.messages),
-
-      tools: {
-
-        search: searchTool,
-
-        analyze: analyzeTool,
-
-        summarize: summarizeTool,
-
-      },
-
-      stopWhen: stepCountIs(10),
-
-      prepareStep: async ({ stepNumber, messages }) => {
-
-        // Phase 1: Search (steps 0-2)
-
-        if (stepNumber <= 2) {
-
-          return {
-
-            activeTools: ["search"],
-
-            toolChoice: "required", // Force tool use
-
-          };
-
-        }
-
-
-        // Phase 2: Analyze with a stronger model (steps 3-5)
-
-        if (stepNumber <= 5) {
-
-          return {
-
-            model: expensiveModel,
-
-            activeTools: ["analyze"],
-
-          };
-
-        }
-
-
-        // Phase 3: Summarize
-
-        return { activeTools: ["summarize"] };
-
-      },
-
-    });
-
-
-    return result.toUIMessageStreamResponse();
-
-  }
-
-}
-
-
+import { streamText, convertToModelMessages, tool, stepCountIs } from "ai";import { z } from "zod";
+export class ChatAgent extends AIChatAgent {  async onChatMessage() {    const result = streamText({      model: cheapModel, // Default model for simple steps      messages: await convertToModelMessages(this.messages),      tools: {        search: searchTool,        analyze: analyzeTool,        summarize: summarizeTool,      },      stopWhen: stepCountIs(10),      prepareStep: async ({ stepNumber, messages }) => {        // Phase 1: Search (steps 0-2)        if (stepNumber <= 2) {          return {            activeTools: ["search"],            toolChoice: "required", // Force tool use          };        }
+        // Phase 2: Analyze with a stronger model (steps 3-5)        if (stepNumber <= 5) {          return {            model: expensiveModel,            activeTools: ["analyze"],          };        }
+        // Phase 3: Summarize        return { activeTools: ["summarize"] };      },    });
+    return result.toUIMessageStreamResponse();  }}
 ```
 
 TypeScript
 
 ```
-
-import { streamText, convertToModelMessages, tool, stepCountIs } from "ai";
-
-import { z } from "zod";
-
-
-export class ChatAgent extends AIChatAgent {
-
-  async onChatMessage() {
-
-    const result = streamText({
-
-      model: cheapModel, // Default model for simple steps
-
-      messages: await convertToModelMessages(this.messages),
-
-      tools: {
-
-        search: searchTool,
-
-        analyze: analyzeTool,
-
-        summarize: summarizeTool,
-
-      },
-
-      stopWhen: stepCountIs(10),
-
-      prepareStep: async ({ stepNumber, messages }) => {
-
-        // Phase 1: Search (steps 0-2)
-
-        if (stepNumber <= 2) {
-
-          return {
-
-            activeTools: ["search"],
-
-            toolChoice: "required", // Force tool use
-
-          };
-
-        }
-
-
-        // Phase 2: Analyze with a stronger model (steps 3-5)
-
-        if (stepNumber <= 5) {
-
-          return {
-
-            model: expensiveModel,
-
-            activeTools: ["analyze"],
-
-          };
-
-        }
-
-
-        // Phase 3: Summarize
-
-        return { activeTools: ["summarize"] };
-
-      },
-
-    });
-
-
-    return result.toUIMessageStreamResponse();
-
-  }
-
-}
-
-
+import { streamText, convertToModelMessages, tool, stepCountIs } from "ai";import { z } from "zod";
+export class ChatAgent extends AIChatAgent {  async onChatMessage() {    const result = streamText({      model: cheapModel, // Default model for simple steps      messages: await convertToModelMessages(this.messages),      tools: {        search: searchTool,        analyze: analyzeTool,        summarize: summarizeTool,      },      stopWhen: stepCountIs(10),      prepareStep: async ({ stepNumber, messages }) => {        // Phase 1: Search (steps 0-2)        if (stepNumber <= 2) {          return {            activeTools: ["search"],            toolChoice: "required", // Force tool use          };        }
+        // Phase 2: Analyze with a stronger model (steps 3-5)        if (stepNumber <= 5) {          return {            model: expensiveModel,            activeTools: ["analyze"],          };        }
+        // Phase 3: Summarize        return { activeTools: ["summarize"] };      },    });
+    return result.toUIMessageStreamResponse();  }}
 ```
 
 `prepareStep` runs before each step and can return overrides for `model`, `activeTools`, `toolChoice`, `system`, and `messages`. Use it to:
@@ -3514,119 +1319,27 @@ export class ChatAgent extends AIChatAgent {
 
 Use [wrapLanguageModel ↗](https://ai-sdk.dev/docs/ai-sdk-core/middleware) to add guardrails, RAG, caching, or logging without modifying your chat logic:
 
-* [  JavaScript ](#tab-panel-5227)
-* [  TypeScript ](#tab-panel-5228)
+* [  JavaScript ](#tab-panel-5301)
+* [  TypeScript ](#tab-panel-5302)
 
 JavaScript
 
 ```
-
 import { streamText, convertToModelMessages, wrapLanguageModel } from "ai";
-
-
-const guardrailMiddleware = {
-
-  wrapGenerate: async ({ doGenerate }) => {
-
-    const { text, ...rest } = await doGenerate();
-
-    // Filter PII or sensitive content from the response
-
-    const cleaned = text?.replace(/\b\d{3}-\d{2}-\d{4}\b/g, "[REDACTED]");
-
-    return { text: cleaned, ...rest };
-
-  },
-
-};
-
-
-export class ChatAgent extends AIChatAgent {
-
-  async onChatMessage() {
-
-    const model = wrapLanguageModel({
-
-      model: baseModel,
-
-      middleware: [guardrailMiddleware],
-
-    });
-
-
-    const result = streamText({
-
-      model,
-
-      messages: await convertToModelMessages(this.messages),
-
-    });
-
-
-    return result.toUIMessageStreamResponse();
-
-  }
-
-}
-
-
+const guardrailMiddleware = {  wrapGenerate: async ({ doGenerate }) => {    const { text, ...rest } = await doGenerate();    // Filter PII or sensitive content from the response    const cleaned = text?.replace(/\b\d{3}-\d{2}-\d{4}\b/g, "[REDACTED]");    return { text: cleaned, ...rest };  },};
+export class ChatAgent extends AIChatAgent {  async onChatMessage() {    const model = wrapLanguageModel({      model: baseModel,      middleware: [guardrailMiddleware],    });
+    const result = streamText({      model,      messages: await convertToModelMessages(this.messages),    });
+    return result.toUIMessageStreamResponse();  }}
 ```
 
 TypeScript
 
 ```
-
-import { streamText, convertToModelMessages, wrapLanguageModel } from "ai";
-
-import type { LanguageModelV3Middleware } from "@ai-sdk/provider";
-
-
-const guardrailMiddleware: LanguageModelV3Middleware = {
-
-  wrapGenerate: async ({ doGenerate }) => {
-
-    const { text, ...rest } = await doGenerate();
-
-    // Filter PII or sensitive content from the response
-
-    const cleaned = text?.replace(/\b\d{3}-\d{2}-\d{4}\b/g, "[REDACTED]");
-
-    return { text: cleaned, ...rest };
-
-  },
-
-};
-
-
-export class ChatAgent extends AIChatAgent {
-
-  async onChatMessage() {
-
-    const model = wrapLanguageModel({
-
-      model: baseModel,
-
-      middleware: [guardrailMiddleware],
-
-    });
-
-
-    const result = streamText({
-
-      model,
-
-      messages: await convertToModelMessages(this.messages),
-
-    });
-
-
-    return result.toUIMessageStreamResponse();
-
-  }
-
-}
-
-
+import { streamText, convertToModelMessages, wrapLanguageModel } from "ai";import type { LanguageModelV3Middleware } from "@ai-sdk/provider";
+const guardrailMiddleware: LanguageModelV3Middleware = {  wrapGenerate: async ({ doGenerate }) => {    const { text, ...rest } = await doGenerate();    // Filter PII or sensitive content from the response    const cleaned = text?.replace(/\b\d{3}-\d{2}-\d{4}\b/g, "[REDACTED]");    return { text: cleaned, ...rest };  },};
+export class ChatAgent extends AIChatAgent {  async onChatMessage() {    const model = wrapLanguageModel({      model: baseModel,      middleware: [guardrailMiddleware],    });
+    const result = streamText({      model,      messages: await convertToModelMessages(this.messages),    });
+    return result.toUIMessageStreamResponse();  }}
 ```
 
 The AI SDK includes built-in middlewares:
@@ -3641,181 +1354,23 @@ Multiple middlewares compose in order: `middleware: [first, second]` applies as 
 
 Use [generateObject ↗](https://ai-sdk.dev/docs/ai-sdk-core/generating-structured-data) inside tools for structured data extraction:
 
-* [  JavaScript ](#tab-panel-5231)
-* [  TypeScript ](#tab-panel-5232)
+* [  JavaScript ](#tab-panel-5305)
+* [  TypeScript ](#tab-panel-5306)
 
 JavaScript
 
 ```
-
-import {
-
-  streamText,
-
-  generateObject,
-
-  convertToModelMessages,
-
-  tool,
-
-  stepCountIs,
-
-} from "ai";
-
-import { z } from "zod";
-
-
-export class ChatAgent extends AIChatAgent {
-
-  async onChatMessage() {
-
-    const result = streamText({
-
-      model: myModel,
-
-      messages: await convertToModelMessages(this.messages),
-
-      tools: {
-
-        extractContactInfo: tool({
-
-          description:
-
-            "Extract structured contact information from the conversation",
-
-          inputSchema: z.object({
-
-            text: z.string().describe("The text to extract contact info from"),
-
-          }),
-
-          execute: async ({ text }) => {
-
-            const { object } = await generateObject({
-
-              model: myModel,
-
-              schema: z.object({
-
-                name: z.string(),
-
-                email: z.string().email(),
-
-                phone: z.string().optional(),
-
-              }),
-
-              prompt: `Extract contact information from: ${text}`,
-
-            });
-
-            return object;
-
-          },
-
-        }),
-
-      },
-
-      stopWhen: stepCountIs(5),
-
-    });
-
-
-    return result.toUIMessageStreamResponse();
-
-  }
-
-}
-
-
+import {  streamText,  generateObject,  convertToModelMessages,  tool,  stepCountIs,} from "ai";import { z } from "zod";
+export class ChatAgent extends AIChatAgent {  async onChatMessage() {    const result = streamText({      model: myModel,      messages: await convertToModelMessages(this.messages),      tools: {        extractContactInfo: tool({          description:            "Extract structured contact information from the conversation",          inputSchema: z.object({            text: z.string().describe("The text to extract contact info from"),          }),          execute: async ({ text }) => {            const { object } = await generateObject({              model: myModel,              schema: z.object({                name: z.string(),                email: z.string().email(),                phone: z.string().optional(),              }),              prompt: `Extract contact information from: ${text}`,            });            return object;          },        }),      },      stopWhen: stepCountIs(5),    });
+    return result.toUIMessageStreamResponse();  }}
 ```
 
 TypeScript
 
 ```
-
-import {
-
-  streamText,
-
-  generateObject,
-
-  convertToModelMessages,
-
-  tool,
-
-  stepCountIs,
-
-} from "ai";
-
-import { z } from "zod";
-
-
-export class ChatAgent extends AIChatAgent {
-
-  async onChatMessage() {
-
-    const result = streamText({
-
-      model: myModel,
-
-      messages: await convertToModelMessages(this.messages),
-
-      tools: {
-
-        extractContactInfo: tool({
-
-          description:
-
-            "Extract structured contact information from the conversation",
-
-          inputSchema: z.object({
-
-            text: z.string().describe("The text to extract contact info from"),
-
-          }),
-
-          execute: async ({ text }) => {
-
-            const { object } = await generateObject({
-
-              model: myModel,
-
-              schema: z.object({
-
-                name: z.string(),
-
-                email: z.string().email(),
-
-                phone: z.string().optional(),
-
-              }),
-
-              prompt: `Extract contact information from: ${text}`,
-
-            });
-
-            return object;
-
-          },
-
-        }),
-
-      },
-
-      stopWhen: stepCountIs(5),
-
-    });
-
-
-    return result.toUIMessageStreamResponse();
-
-  }
-
-}
-
-
+import {  streamText,  generateObject,  convertToModelMessages,  tool,  stepCountIs,} from "ai";import { z } from "zod";
+export class ChatAgent extends AIChatAgent {  async onChatMessage() {    const result = streamText({      model: myModel,      messages: await convertToModelMessages(this.messages),      tools: {        extractContactInfo: tool({          description:            "Extract structured contact information from the conversation",          inputSchema: z.object({            text: z.string().describe("The text to extract contact info from"),          }),          execute: async ({ text }) => {            const { object } = await generateObject({              model: myModel,              schema: z.object({                name: z.string(),                email: z.string().email(),                phone: z.string().optional(),              }),              prompt: `Extract contact information from: ${text}`,            });            return object;          },        }),      },      stopWhen: stepCountIs(5),    });
+    return result.toUIMessageStreamResponse();  }}
 ```
 
 ### In-process subagent delegation
@@ -3826,183 +1381,25 @@ This section covers **in-process** subagents using the AI SDK's `ToolLoopAgent`.
 
 Tools can delegate work to focused sub-calls with their own context. Use [ToolLoopAgent ↗](https://ai-sdk.dev/docs/reference/ai-sdk-core/tool-loop-agent) to define a reusable agent, then call it from a tool's `execute`:
 
-* [  JavaScript ](#tab-panel-5233)
-* [  TypeScript ](#tab-panel-5234)
+* [  JavaScript ](#tab-panel-5307)
+* [  TypeScript ](#tab-panel-5308)
 
 JavaScript
 
 ```
-
-import {
-
-  ToolLoopAgent,
-
-  streamText,
-
-  convertToModelMessages,
-
-  tool,
-
-  stepCountIs,
-
-} from "ai";
-
-import { z } from "zod";
-
-
-// Define a reusable research agent with its own tools and instructions
-
-const researchAgent = new ToolLoopAgent({
-
-  model: researchModel,
-
-  instructions: "You are a research assistant. Be thorough and cite sources.",
-
-  tools: { webSearch: webSearchTool },
-
-  stopWhen: stepCountIs(10),
-
-});
-
-
-export class ChatAgent extends AIChatAgent {
-
-  async onChatMessage() {
-
-    const result = streamText({
-
-      model: orchestratorModel,
-
-      messages: await convertToModelMessages(this.messages),
-
-      tools: {
-
-        deepResearch: tool({
-
-          description: "Research a topic in depth",
-
-          inputSchema: z.object({
-
-            topic: z.string().describe("The topic to research"),
-
-          }),
-
-          execute: async ({ topic }) => {
-
-            const { text } = await researchAgent.generate({
-
-              prompt: topic,
-
-            });
-
-            return { summary: text };
-
-          },
-
-        }),
-
-      },
-
-      stopWhen: stepCountIs(5),
-
-    });
-
-
-    return result.toUIMessageStreamResponse();
-
-  }
-
-}
-
-
+import {  ToolLoopAgent,  streamText,  convertToModelMessages,  tool,  stepCountIs,} from "ai";import { z } from "zod";
+// Define a reusable research agent with its own tools and instructionsconst researchAgent = new ToolLoopAgent({  model: researchModel,  instructions: "You are a research assistant. Be thorough and cite sources.",  tools: { webSearch: webSearchTool },  stopWhen: stepCountIs(10),});
+export class ChatAgent extends AIChatAgent {  async onChatMessage() {    const result = streamText({      model: orchestratorModel,      messages: await convertToModelMessages(this.messages),      tools: {        deepResearch: tool({          description: "Research a topic in depth",          inputSchema: z.object({            topic: z.string().describe("The topic to research"),          }),          execute: async ({ topic }) => {            const { text } = await researchAgent.generate({              prompt: topic,            });            return { summary: text };          },        }),      },      stopWhen: stepCountIs(5),    });
+    return result.toUIMessageStreamResponse();  }}
 ```
 
 TypeScript
 
 ```
-
-import {
-
-  ToolLoopAgent,
-
-  streamText,
-
-  convertToModelMessages,
-
-  tool,
-
-  stepCountIs,
-
-} from "ai";
-
-import { z } from "zod";
-
-
-// Define a reusable research agent with its own tools and instructions
-
-const researchAgent = new ToolLoopAgent({
-
-  model: researchModel,
-
-  instructions: "You are a research assistant. Be thorough and cite sources.",
-
-  tools: { webSearch: webSearchTool },
-
-  stopWhen: stepCountIs(10),
-
-});
-
-
-export class ChatAgent extends AIChatAgent {
-
-  async onChatMessage() {
-
-    const result = streamText({
-
-      model: orchestratorModel,
-
-      messages: await convertToModelMessages(this.messages),
-
-      tools: {
-
-        deepResearch: tool({
-
-          description: "Research a topic in depth",
-
-          inputSchema: z.object({
-
-            topic: z.string().describe("The topic to research"),
-
-          }),
-
-          execute: async ({ topic }) => {
-
-            const { text } = await researchAgent.generate({
-
-              prompt: topic,
-
-            });
-
-            return { summary: text };
-
-          },
-
-        }),
-
-      },
-
-      stopWhen: stepCountIs(5),
-
-    });
-
-
-    return result.toUIMessageStreamResponse();
-
-  }
-
-}
-
-
+import {  ToolLoopAgent,  streamText,  convertToModelMessages,  tool,  stepCountIs,} from "ai";import { z } from "zod";
+// Define a reusable research agent with its own tools and instructionsconst researchAgent = new ToolLoopAgent({  model: researchModel,  instructions: "You are a research assistant. Be thorough and cite sources.",  tools: { webSearch: webSearchTool },  stopWhen: stepCountIs(10),});
+export class ChatAgent extends AIChatAgent {  async onChatMessage() {    const result = streamText({      model: orchestratorModel,      messages: await convertToModelMessages(this.messages),      tools: {        deepResearch: tool({          description: "Research a topic in depth",          inputSchema: z.object({            topic: z.string().describe("The topic to research"),          }),          execute: async ({ topic }) => {            const { text } = await researchAgent.generate({              prompt: topic,            });            return { summary: text };          },        }),      },      stopWhen: stepCountIs(5),    });
+    return result.toUIMessageStreamResponse();  }}
 ```
 
 The research agent runs in its own context — its token budget is separate from the orchestrator's. Only the summary goes back to the parent model.
@@ -4015,77 +1412,23 @@ Note
 
 By default, a tool part appears as loading until `execute` returns. Use an async generator (`async function*`) to stream progress updates to the client while the tool is still working:
 
-* [  JavaScript ](#tab-panel-5223)
-* [  TypeScript ](#tab-panel-5224)
+* [  JavaScript ](#tab-panel-5297)
+* [  TypeScript ](#tab-panel-5298)
 
 JavaScript
 
 ```
-
-deepResearch: tool({
-
-  description: "Research a topic in depth",
-
-  inputSchema: z.object({
-
-    topic: z.string().describe("The topic to research"),
-
-  }),
-
-  async *execute({ topic }) {
-
-    // Preliminary result — the client sees "searching" immediately
-
-    yield { status: "searching", topic, summary: undefined };
-
-
+deepResearch: tool({  description: "Research a topic in depth",  inputSchema: z.object({    topic: z.string().describe("The topic to research"),  }),  async *execute({ topic }) {    // Preliminary result — the client sees "searching" immediately    yield { status: "searching", topic, summary: undefined };
     const { text } = await researchAgent.generate({ prompt: topic });
-
-
-    // Final result — sent to the model for its next step
-
-    yield { status: "done", topic, summary: text };
-
-  },
-
-});
-
-
+    // Final result — sent to the model for its next step    yield { status: "done", topic, summary: text };  },});
 ```
 
 TypeScript
 
 ```
-
-deepResearch: tool({
-
-  description: "Research a topic in depth",
-
-  inputSchema: z.object({
-
-    topic: z.string().describe("The topic to research"),
-
-  }),
-
-  async *execute({ topic }) {
-
-    // Preliminary result — the client sees "searching" immediately
-
-    yield { status: "searching", topic, summary: undefined };
-
-
+deepResearch: tool({  description: "Research a topic in depth",  inputSchema: z.object({    topic: z.string().describe("The topic to research"),  }),  async *execute({ topic }) {    // Preliminary result — the client sees "searching" immediately    yield { status: "searching", topic, summary: undefined };
     const { text } = await researchAgent.generate({ prompt: topic });
-
-
-    // Final result — sent to the model for its next step
-
-    yield { status: "done", topic, summary: text };
-
-  },
-
-});
-
-
+    // Final result — sent to the model for its next step    yield { status: "done", topic, summary: text };  },});
 ```
 
 Each `yield` updates the tool part on the client in real-time (with `preliminary: true`). The last yielded value becomes the final output that the model sees.
@@ -4104,20 +1447,7 @@ For more, refer to the [AI SDK Agents docs ↗](https://ai-sdk.dev/docs/agents/o
 When multiple clients connect to the same agent instance, messages are automatically broadcast to all connections. If one client sends a message, all other connected clients receive the updated message list.
 
 ```
-
-Client A ──── sendMessage("Hello") ────▶ AIChatAgent
-
-                                              │
-
-                                        persist + stream
-
-                                              │
-
-Client A ◀── CF_AGENT_USE_CHAT_RESPONSE ──────┤
-
-Client B ◀── CF_AGENT_CHAT_MESSAGES ──────────┘
-
-
+Client A ──── sendMessage("Hello") ────▶ AIChatAgent                                              │                                        persist + stream                                              │Client A ◀── CF_AGENT_USE_CHAT_RESPONSE ──────┤Client B ◀── CF_AGENT_CHAT_MESSAGES ──────────┘
 ```
 
 The originating client receives the streaming response. All other clients receive the final messages via a `CF_AGENT_CHAT_MESSAGES` broadcast.
@@ -4176,7 +1506,7 @@ If you are upgrading from an earlier version, replace deprecated calls with thei
 
 [ Durable execution ](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/) runFiber(), stash(), and crash recovery for long-running work. 
 
-[ Long-running agents ](https://developers.cloudflare.com/agents/concepts/agentic-patterns/long-running-agents/) Lifecycle, recovery patterns, and provider-specific strategies. 
+[ Long-running agents ](https://developers.cloudflare.com/agents/concepts/agentic-patterns/long-running-agents/) Lifecycle, recovery patterns, and provider-specific strategies.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/#page","headline":"Chat agents · Cloudflare Agents docs","description":"Build AI chat interfaces with AIChatAgent and useAgentChat, including message persistence, streaming, and tool support.","url":"https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

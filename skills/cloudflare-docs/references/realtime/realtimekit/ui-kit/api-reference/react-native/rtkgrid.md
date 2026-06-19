@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,33 +32,15 @@ The main participant grid that automatically switches between simple, mixed, spo
 ### Basic Usage
 
 ```
-
 import { RtkGrid } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkGrid meeting={meeting} />;
-
-}
-
-
+function MyComponent() {  return <RtkGrid meeting={meeting} />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkGrid } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkGrid meeting={meeting} aspectRatio="16:9" gap={12} size="md" />;
-
-}
-
-
+function MyComponent() {  return <RtkGrid meeting={meeting} aspectRatio="16:9" gap={12} size="md" />;}
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -43,14 +43,14 @@ Ruleset ID: ...499d988e
 
 The managed rulesets you can deploy depend on your Cloudflare plan.
 
-| Free                                              | Pro | Business | Enterprise |     |
-| ------------------------------------------------- | --- | -------- | ---------- | --- |
-| Availability                                      | Yes | Yes      | Yes        | Yes |
-| Free Managed Ruleset                              | Yes | Yes      | Yes        | Yes |
-| Cloudflare Managed Ruleset                        | No  | Yes      | Yes        | Yes |
-| Cloudflare OWASP Core Ruleset                     | No  | Yes      | Yes        | Yes |
-| Cloudflare Exposed Credentials Check (deprecated) | No  | Yes      | Yes        | Yes |
-| Cloudflare Sensitive Data Detection               | No  | No       | No         | Yes |
+|                                                   | Free | Pro | Business | Enterprise |
+| ------------------------------------------------- | ---- | --- | -------- | ---------- |
+| Availability                                      | Yes  | Yes | Yes      | Yes        |
+| Free Managed Ruleset                              | Yes  | Yes | Yes      | Yes        |
+| Cloudflare Managed Ruleset                        | No   | Yes | Yes      | Yes        |
+| Cloudflare OWASP Core Ruleset                     | No   | Yes | Yes      | Yes        |
+| Cloudflare Exposed Credentials Check (deprecated) | No   | Yes | Yes      | Yes        |
+| Cloudflare Sensitive Data Detection               | No   | No  | No       | Yes        |
 
 ## Customize the behavior of managed rulesets
 

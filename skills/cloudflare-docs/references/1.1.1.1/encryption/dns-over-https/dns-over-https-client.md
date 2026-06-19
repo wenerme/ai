@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/1.1.1.1/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,7 +28,7 @@ Terminal window
 ```  
 dnscrypt-proxy -version  
 ```  
-```  
+```
 2.0.8  
 ```
 3. Set up the configuration file using the [official instructions ↗](https://github.com/jedisct1/dnscrypt-proxy/wiki/installation#setting-up-dnscrypt-proxy), and add `cloudflare` and `cloudflare-ipv6` to the server list in `dnscrypt-proxy.toml`:  
@@ -43,11 +43,7 @@ dnscrypt-proxy -resolve cloudflare-dns.com
 ```  
 ```  
 Resolving [cloudflare-dns.com]  
-Domain exists:  yes, 3 name servers found  
-Canonical name: cloudflare-dns.com.  
-IP addresses:   2400:cb00:2048:1::6810:6f19, 2400:cb00:2048:1::6810:7019, 104.16.111.25, 104.16.112.25  
-TXT records:    -  
-Resolver IP:    172.68.140.217  
+Domain exists:  yes, 3 name servers foundCanonical name: cloudflare-dns.com.IP addresses:   2400:cb00:2048:1::6810:6f19, 2400:cb00:2048:1::6810:7019, 104.16.111.25, 104.16.112.25TXT records:    -Resolver IP:    172.68.140.217  
 ```
 5. Register it as a system service so that it starts automatically when your device boots. Follow the [DNSCrypt-Proxy installation instructions ↗](https://github.com/jedisct1/dnscrypt-proxy/wiki/installation).
 

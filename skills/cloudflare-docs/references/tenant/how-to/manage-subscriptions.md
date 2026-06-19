@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tenant/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,71 +20,26 @@ Once your customer has a zone provisioned, you can add zone and account-level su
 
 To create a zone subscription, typically used to upgrade a zone's plan from `PARTNERS_FREE` to a paid [Zone plan](https://developers.cloudflare.com/tenant/reference/subscriptions/#zone-plans), send a [POST](https://developers.cloudflare.com/api/resources/zones/subresources/subscriptions/methods/create/) request to the `/zones/{zone_id}/subscription` endpoint and include the following values:
 
-* `rate_plan` object  
-   * Contains the zone plan corresponding to what customers would order in the dashboard. For a list of available values, refer to [Zone subscriptions](https://developers.cloudflare.com/tenant/reference/subscriptions/#zone-plans).
-* `component_values` array  
-   * Additional services depending on your reseller agreement, such as additional `page_rules`.
-* `frequency` string  
-   * How often the subscription is renewed automatically (defaults to `"monthly"`).
+* `rate_plan` object
+
+  * Contains the zone plan corresponding to what customers would order in the dashboard. For a list of available values, refer to [Zone subscriptions](https://developers.cloudflare.com/tenant/reference/subscriptions/#zone-plans).
+* `component_values` array
+
+  * Additional services depending on your reseller agreement, such as additional `page_rules`.
+* `frequency` string
+
+  * How often the subscription is renewed automatically (defaults to `"monthly"`).
 
 Request (without \`component\_values\`)
 
 ```
-
-curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/subscription' \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "rate_plan": {
-
-    "id": "<RATE_PLAN>"
-
-  },
-
-  "frequency": "annual"
-
-}'
-
-
+curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/subscription' \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "rate_plan": {    "id": "<RATE_PLAN>"  },  "frequency": "annual"}'
 ```
 
 Request (with \`component\_values\`)
 
 ```
-
-curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/subscription' \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "rate_plan": {
-
-    "id": "PARTNERS_BIZ"
-
-  },
-
-  "component_values": [
-
-    {
-
-      "name": "page_rules",
-
-      "value": 50
-
-    }
-
-  ]
-
-}
-
-
+curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/subscription' \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "rate_plan": {    "id": "PARTNERS_BIZ"  },  "component_values": [    {      "name": "page_rules",      "value": 50    }  ]}
 ```
 
 ### Get zone subscription details
@@ -105,34 +60,20 @@ Depending on your agreement, you may be allowed to resell other add-on services.
 
 To create an account subscription, send a [POST](https://developers.cloudflare.com/api/resources/accounts/subresources/subscriptions/methods/create/) request to the `/accounts/{account_id}/subscriptions` endpoint and include the following values:
 
-* `rate_plan` object  
-   * Contains the account subscription corresponding to a specific add-on service. For a list of available values, refer to [Available subscriptions](https://developers.cloudflare.com/tenant/reference/subscriptions/).
-* `component_values` array  
-   * Additional services depending on your reseller agreement, such as additional endpoints for load balancing or additional seats for Cloudflare Zero Trust. If not included, the subscription includes the default values associated with each purchase.
-* `frequency` string  
-   * How often the subscription is renewed automatically (defaults to `"monthly"`).
+* `rate_plan` object
+
+  * Contains the account subscription corresponding to a specific add-on service. For a list of available values, refer to [Available subscriptions](https://developers.cloudflare.com/tenant/reference/subscriptions/).
+* `component_values` array
+
+  * Additional services depending on your reseller agreement, such as additional endpoints for load balancing or additional seats for Cloudflare Zero Trust. If not included, the subscription includes the default values associated with each purchase.
+* `frequency` string
+
+  * How often the subscription is renewed automatically (defaults to `"monthly"`).
 
 Request
 
 ```
-
-curl 'https://api.cloudflare.com/client/v4/accounts/{account_id}/subscriptions' \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "rate_plan": {
-
-    "id": "<RATE_PLAN_NAME>"
-
-  }
-
-}'
-
-
+curl 'https://api.cloudflare.com/client/v4/accounts/{account_id}/subscriptions' \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "rate_plan": {    "id": "<RATE_PLAN_NAME>"  }}'
 ```
 
 ### Get account subscription details

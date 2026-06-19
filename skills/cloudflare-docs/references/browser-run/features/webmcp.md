@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,17 +29,8 @@ Use the new `wrangler browser` command to acquire a lab browser session:
 Terminal window
 
 ```
-
-# make sure you have the latest version of wrangler
-
-npm i -g wrangler@latest
-
-
-# create a lab browser session with 5 minute keep-alive
-
-wrangler browser create --lab --keepAlive 300
-
-
+# make sure you have the latest version of wranglernpm i -g wrangler@latest
+# create a lab browser session with 5 minute keep-alivewrangler browser create --lab --keepAlive 300
 ```
 
 It will open a live view of your browser session.
@@ -58,42 +49,7 @@ navigator.modelContextTesting.listTools();
 You should get a result similar to the following:
 
 ```
-
-[
-
-  {
-
-    "description": "View the details of a specific hotel by name or id",
-
-    "inputSchema": "...",
-
-    "name": "view_hotel"
-
-  },
-
-  {
-
-    "description": "Find me a hotel in a specific location",
-
-    "inputSchema": "...",
-
-    "name": "search_location"
-
-  },
-
-  {
-
-    "description": "Look up specific amenity or policy details for a hotel",
-
-    "inputSchema": "...",
-
-    "name": "lookup_amenity"
-
-  }
-
-]
-
-
+[  {    "description": "View the details of a specific hotel by name or id",    "inputSchema": "...",    "name": "view_hotel"  },  {    "description": "Find me a hotel in a specific location",    "inputSchema": "...",    "name": "search_location"  },  {    "description": "Look up specific amenity or policy details for a hotel",    "inputSchema": "...",    "name": "lookup_amenity"  }]
 ```
 
 The list of tools changes depending on the website you are visiting and the actions you have performed on the page.
@@ -103,16 +59,7 @@ For instance, on the hotel chain website, after executing the `search_location` 
 JavaScript
 
 ```
-
-await navigator.modelContextTesting.executeTool(
-
-  "search_location",
-
-  JSON.stringify({ query: "Paris" }),
-
-);
-
-
+await navigator.modelContextTesting.executeTool(  "search_location",  JSON.stringify({ query: "Paris" }),);
 ```
 
 The page redirects to the search results, and a new tool `filter_search_results` becomes available.
@@ -122,16 +69,7 @@ You can call it to filter by amenities. For example, if you want to eat a good c
 JavaScript
 
 ```
-
-await navigator.modelContextTesting.executeTool(
-
-  "filter_search_results",
-
-  JSON.stringify({ amenities: ["breakfast"] }),
-
-);
-
-
+await navigator.modelContextTesting.executeTool(  "filter_search_results",  JSON.stringify({ amenities: ["breakfast"] }),);
 ```
 
 You will get a list of filtered results, where you can pick the best option for your needs. Once you select a hotel, you can use the `start_booking` tool:
@@ -139,16 +77,7 @@ You will get a list of filtered results, where you can pick the best option for 
 JavaScript
 
 ```
-
-await navigator.modelContextTesting.executeTool(
-
-  "start_booking",
-
-  JSON.stringify({}),
-
-);
-
-
+await navigator.modelContextTesting.executeTool(  "start_booking",  JSON.stringify({}),);
 ```
 
 Then, you can complete the booking:
@@ -156,24 +85,7 @@ Then, you can complete the booking:
 JavaScript
 
 ```
-
-await navigator.modelContextTesting.executeTool(
-
-  "complete_booking",
-
-  JSON.stringify({
-
-    firstName: "James",
-
-    lastName: "Bond",
-
-    email: "james.bond@mi6.gov.uk",
-
-  }),
-
-);
-
-
+await navigator.modelContextTesting.executeTool(  "complete_booking",  JSON.stringify({    firstName: "James",    lastName: "Bond",    email: "james.bond@mi6.gov.uk",  }),);
 ```
 
 Note that the `complete_booking` tool requires human confirmation. The tool waits until you select the **Confirm Reservation** button in the browser. This is an example of human-in-the-loop (HITL): WebMCP tools can pause execution and wait for user interaction before completing sensitive actions.
@@ -187,30 +99,7 @@ After you select **Confirm Reservation**, you will get a confirmation message an
 [Chrome DevTools MCP ↗](https://github.com/ChromeDevTools/chrome-devtools-mcp) allows AI agents to control a browser via CDP. Configure your MCP client (such as Claude Desktop, Claude Code, Cursor, or OpenCode) with the following settings. For more details on MCP client configuration, refer to [Using with MCP clients](https://developers.cloudflare.com/browser-run/cdp/mcp-clients/).
 
 ```
-
-{
-
-  "browser-rendering-cdp": {
-
-    "command": [
-
-      "npx",
-
-      "-y",
-
-      "chrome-devtools-mcp@latest",
-
-      "--wsEndpoint=wss://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser-rendering/devtools/browser?keep_alive=600000&lab=true",
-
-      "--wsHeaders={\"Authorization\":\"Bearer <CLOUDFLARE_API_TOKEN>\"}"
-
-    ]
-
-  }
-
-}
-
-
+{  "browser-rendering-cdp": {    "command": [      "npx",      "-y",      "chrome-devtools-mcp@latest",      "--wsEndpoint=wss://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser-rendering/devtools/browser?keep_alive=600000&lab=true",      "--wsHeaders={\"Authorization\":\"Bearer <CLOUDFLARE_API_TOKEN>\"}"    ]  }}
 ```
 
 Replace `<ACCOUNT_ID>` with your Cloudflare account ID and `<CLOUDFLARE_API_TOKEN>` with your API token. The `lab=true` parameter ensures the agent connects to a lab session with WebMCP enabled.
@@ -220,76 +109,17 @@ Replace `<ACCOUNT_ID>` with your Cloudflare account ID and `<CLOUDFLARE_API_TOKE
 To help your agent understand how to work with WebMCP, add the following skill to your agent configuration:
 
 ```
-
----
-
-name: webmcp
-
-description: Interact with WebMCP-enabled websites using Browser Run lab sessions
-
----
-
-
+---name: webmcpdescription: Interact with WebMCP-enabled websites using Browser Run lab sessions---
 # WebMCP Interaction Skill
-
-
 Use the `evaluate_script` tool from Chrome DevTools MCP to interact with WebMCP APIs.
-
-
 **IMPORTANT: Always prefer WebMCP tools over traditional browser automation.** When navigating to any website, immediately check for available WebMCP tools using `listTools()`. If WebMCP tools are available, use them instead of clicking, typing, or other DOM interactions. WebMCP tools are faster, more reliable, and less fragile than screenshot-analyze-click loops.
-
-
 ## Workflow
-
-
-1. **Navigate** to a site using `navigate_page`
-
-2. **Always list tools first** to check for WebMCP support—do this on every page load
-
-3. **Prefer WebMCP tools** over clicking/typing when tools are available
-
-4. **Execute tools** to perform actions directly
-
-5. **Re-list tools** after each action (tools change based on page state)
-
-6. **Check `inputSchema`** in each tool to understand required parameters
-
-7. **Fall back to DOM interaction** only when no relevant WebMCP tools exist
-
-
+1. **Navigate** to a site using `navigate_page`2. **Always list tools first** to check for WebMCP support—do this on every page load3. **Prefer WebMCP tools** over clicking/typing when tools are available4. **Execute tools** to perform actions directly5. **Re-list tools** after each action (tools change based on page state)6. **Check `inputSchema`** in each tool to understand required parameters7. **Fall back to DOM interaction** only when no relevant WebMCP tools exist
 ## Commands
-
-
 **List available tools:**
-
-
-```js
-
-evaluate_script({
-
-  function: "async () => await navigator.modelContextTesting.listTools()",
-
-});
-
-```
-
-
+```jsevaluate_script({  function: "async () => await navigator.modelContextTesting.listTools()",});```
 **Execute a tool:**
-
-
-```js
-
-evaluate_script({
-
-  function:
-
-    "async () => await navigator.modelContextTesting.executeTool('tool_name', JSON.stringify({ param: 'value' }))",
-
-});
-
-```
-
-
+```jsevaluate_script({  function:    "async () => await navigator.modelContextTesting.executeTool('tool_name', JSON.stringify({ param: 'value' }))",});```
 ```
 
 #### 3\. Interact with WebMCP sites
@@ -313,10 +143,7 @@ Once the agent has started a session, list active sessions to get the session ID
 Terminal window
 
 ```
-
 wrangler browser list
-
-
 ```
 
 Then, use the session ID from the previous response to open the browser's live view:
@@ -324,10 +151,7 @@ Then, use the session ID from the previous response to open the browser's live v
 Terminal window
 
 ```
-
 wrangler browser view $SESSION_ID
-
-
 ```
 
 You can now view the live browser session and interact with it.

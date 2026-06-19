@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,11 +22,11 @@ To order advanced certificates, you must purchase the Advanced Certificate Manag
 Advanced Certificate Manager allows you to:
 
 * Order advanced certificates that can:  
-   * Include up to 50 hosts as covered hostnames (the zone apex must be one of these 50).  
-   * Cover more than one level of subdomain.  
-   * Be issued by the certificate authority (CA) you choose.  
-   * Use your preferred validation method.  
-   * Have the validity period you choose.
+  * Include up to 50 hosts as covered hostnames (the zone apex must be one of these 50).
+  * Cover more than one level of subdomain.
+  * Be issued by the certificate authority (CA) you choose.
+  * Use your preferred validation method.
+  * Have the validity period you choose.
 * Automate domain control validation (DCV) for zones on a [CNAME setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/) using [delegated DCV](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/delegated-dcv/).
 * Enable [Total TLS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/) to automatically protect proxied hostnames.
 * Select a [custom trust store](https://developers.cloudflare.com/ssl/origin-configuration/custom-origin-trust-store/) for origin authentication.
@@ -42,7 +42,7 @@ On Partial zones, Universal SSL is provisioned per proxied hostname regardless o
 
 ## Availability
 
-| Free         | Pro         | Business    | Enterprise  |             |
+|              | Free        | Pro         | Business    | Enterprise  |
 | ------------ | ----------- | ----------- | ----------- | ----------- |
 | Availability | Paid add-on | Paid add-on | Paid add-on | Paid add-on |
 

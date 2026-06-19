@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -74,8 +74,9 @@ You can add the following build variable to disable automatic dependency install
 
 In the following table, review the pre-installed packages in the build image. The packages are installed with `apt`, a package manager for Linux distributions.
 
-| curl            | libbz2-dev      | libreadline-dev |
+|                 |                 |                 |
 | --------------- | --------------- | --------------- |
+| curl            | libbz2-dev      | libreadline-dev |
 | git             | libc++1         | libssl-dev      |
 | git-lfs         | libdb-dev       | libvips-dev     |
 | unzip           | libgdbm-dev     | libyaml-dev     |
@@ -89,8 +90,9 @@ In the following table, review the pre-installed packages in the build image. Th
 
 Workers Builds are run in the following environment:
 
-| **Build Environment** | Ubuntu 24.04 |
+|                       |              |
 | --------------------- | ------------ |
+| **Build Environment** | Ubuntu 24.04 |
 | **Architecture**      | x86\_64      |
 
 ## Build Image Policy

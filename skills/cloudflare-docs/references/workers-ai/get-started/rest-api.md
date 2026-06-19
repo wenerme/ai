@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,12 +27,13 @@ To get these values:
 1. In the Cloudflare dashboard, go to the **Workers AI** page.  
 [ Go to **Workers AI** ](https://dash.cloudflare.com/?to=/:account/ai/workers-ai)
 2. Select **Use REST API**.
-3. Get your API token:  
-   1. Select **Create a Workers AI API Token**.  
-   2. Review the prefilled information.  
-   3. Select **Create API Token**.  
-   4. Select **Copy API Token**.  
-   5. Save that value for future use. This token will be visible [on your profile](https://developers.cloudflare.com/api/get-started/create-token/).
+3. Get your API token:
+
+  1. Select **Create a Workers AI API Token**.
+  2. Review the prefilled information.
+  3. Select **Create API Token**.
+  4. Select **Copy API Token**.
+  5. Save that value for future use. This token will be visible [on your profile](https://developers.cloudflare.com/api/get-started/create-token/).
 4. For **Get Account ID**, copy the value for **Account ID**. Save that value for future use.
 
 Note
@@ -48,14 +49,7 @@ You will use the [Execute AI model](https://developers.cloudflare.com/api/resour
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/meta/llama-3.1-8b-instruct \
-
-  -H 'Authorization: Bearer {API_TOKEN}' \
-
-  -d '{ "prompt": "Where did the phrase Hello World come from" }'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/meta/llama-3.1-8b-instruct \  -H 'Authorization: Bearer {API_TOKEN}' \  -d '{ "prompt": "Where did the phrase Hello World come from" }'
 ```
 
 Replace the values for `{ACCOUNT_ID}` and `{API_TOKEN}`.
@@ -63,24 +57,7 @@ Replace the values for `{ACCOUNT_ID}` and `{API_TOKEN}`.
 The API response will look like the following:
 
 ```
-
-{
-
-  "result": {
-
-    "response": "Hello, World first appeared in 1974 at Bell Labs when Brian Kernighan included it in the C programming language example. It became widely used as a basic test program due to simplicity and clarity. It represents an inviting greeting from a program to the world."
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "response": "Hello, World first appeared in 1974 at Bell Labs when Brian Kernighan included it in the C programming language example. It became widely used as a basic test program due to simplicity and clarity. It represents an inviting greeting from a program to the world."  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 This example execution uses the `@cf/meta/llama-3.1-8b-instruct` model, but you can use any of the models in the [Workers AI models catalog](https://developers.cloudflare.com/workers-ai/models/). If using another model, you will need to replace `{model}` with your desired model name.

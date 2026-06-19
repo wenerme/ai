@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,10 +23,7 @@ To start tracking events, use the `zaraz.track()` function like this:
 JavaScript
 
 ```
-
 zaraz.track(eventName, [eventProperties]);
-
-
 ```
 
 The `eventName` parameter is a string, and the `eventProperties` parameter is an optional flat object of additional context you can attach to the event using your own keys of choice. For example, tracking a purchase with the value of 200 USD could look like this:
@@ -34,10 +31,7 @@ The `eventName` parameter is a string, and the `eventProperties` parameter is an
 JavaScript
 
 ```
-
 zaraz.track("purchase", { value: 200, currency: "USD" });
-
-
 ```
 
 Note that the name of the event (`purchase` in the above example), the names of the keys (`value` and `currency`) and the number of keys are customizable by you. You choose what variables to track and how you want to track these variables. However, picking meaningful names will help you when you configure your triggers, because the trigger configuration has to match the events your website is sending.

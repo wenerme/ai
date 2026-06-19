@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,11 +21,12 @@ To set up a notification:
 1. In the Cloudflare dashboard, go to the **Notifications** page.  
 [ Go to **Notifications** ](https://dash.cloudflare.com/?to=/:account/notifications)
 2. Select **Add**.
-3. Select one of the [available DDoS alerts](https://developers.cloudflare.com/ddos-protection/reference/alerts/#alert-types) depending on your plan and services:  
-   * HTTP DDoS Attack Alert  
-   * Layer 3/4 DDoS Attack Alert  
-   * Advanced HTTP DDoS Attack Alert  
-   * Advanced Layer 3/4 DDoS Attack Alert
+3. Select one of the [available DDoS alerts](https://developers.cloudflare.com/ddos-protection/reference/alerts/#alert-types) depending on your plan and services:
+
+  * HTTP DDoS Attack Alert
+  * Layer 3/4 DDoS Attack Alert
+  * Advanced HTTP DDoS Attack Alert
+  * Advanced Layer 3/4 DDoS Attack Alert
 4. Enter a notification name and (optionally) a description.
 5. Configure a delivery method for the notification. The available delivery methods depend on your Cloudflare plan. For more information, refer to [Cloudflare Notifications](https://developers.cloudflare.com/notifications/).
 6. If you are creating a notification for one of the advanced DDoS attack alerts, select **Next** and define the parameters that will filter the notifications you will receive.

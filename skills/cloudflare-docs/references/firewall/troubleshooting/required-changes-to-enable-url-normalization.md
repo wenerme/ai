@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/firewall/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -54,10 +54,11 @@ These steps will ensure a stronger security posture on your zone(s).
 Before enabling URL normalization, you should review the affected firewall rules on your zone(s) and take one of the following approaches:
 
 * Edit these firewall rules to remove the parts which will no longer trigger once normalized — for example, any rules that look for `//` or `../` in URL paths. Administrators previously created these rules to perform a limited URL normalization, and these rules can now be safely disabled and then deleted.
-* If you wish to identify visitors with non-normalized URI paths with these firewall rules, you should update them to use the original (or raw) non-normalized fields. These fields are the following:  
-   * `raw.http.request.uri.path`  
-   * `raw.http.request.full_uri`  
-   * `raw.http.request.uri`
+* If you wish to identify visitors with non-normalized URI paths with these firewall rules, you should update them to use the original (or raw) non-normalized fields. These fields are the following:
+
+  * `raw.http.request.uri.path`
+  * `raw.http.request.full_uri`
+  * `raw.http.request.uri`
 
 ### 2\. Enable URL normalization
 

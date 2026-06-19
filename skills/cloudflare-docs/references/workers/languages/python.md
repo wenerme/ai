@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,11 +17,11 @@ Cloudflare Workers provides a first-class Python experience, including support f
 * Easy to install and fast-booting [Packages](https://developers.cloudflare.com/workers/languages/python/packages), including [FastAPI ↗](https://fastapi.tiangolo.com/), [Langchain ↗](https://pypi.org/project/langchain/), [httpx ↗](https://www.python-httpx.org/), [Pydantic ↗](https://docs.pydantic.dev/latest/) and more.
 * A robust [foreign function interface (FFI)](https://developers.cloudflare.com/workers/languages/python/ffi) that lets you use JavaScript objects and functions directly from Python — including all [Runtime APIs](https://developers.cloudflare.com/workers/runtime-apis/)
 * An ecosystem of services on the Workers Platform accessible via [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/), including:  
-   * State storage and databases like [KV](https://developers.cloudflare.com/kv), [D1](https://developers.cloudflare.com/d1), [Durable Objects](https://developers.cloudflare.com/durable-objects/)  
-   * Access to [Environment Variables](https://developers.cloudflare.com/workers/configuration/environment-variables/), [Secrets](https://developers.cloudflare.com/workers/configuration/secrets/), and other Workers using [Service Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/)  
-   * AI capabilities with [Workers AI](https://developers.cloudflare.com/workers-ai/), [Vectorize](https://developers.cloudflare.com/vectorize)  
-   * File storage with [R2](https://developers.cloudflare.com/r2)  
-   * [Durable Workflows](https://developers.cloudflare.com/workflows/), [Queues](https://developers.cloudflare.com/queues/), and [ more](https://developers.cloudflare.com/workers/runtime-apis/bindings/)
+  * State storage and databases like [KV](https://developers.cloudflare.com/kv), [D1](https://developers.cloudflare.com/d1), [Durable Objects](https://developers.cloudflare.com/durable-objects/)
+  * Access to [Environment Variables](https://developers.cloudflare.com/workers/configuration/environment-variables/), [Secrets](https://developers.cloudflare.com/workers/configuration/secrets/), and other Workers using [Service Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/)
+  * AI capabilities with [Workers AI](https://developers.cloudflare.com/workers-ai/), [Vectorize](https://developers.cloudflare.com/vectorize)
+  * File storage with [R2](https://developers.cloudflare.com/r2)
+  * [Durable Workflows](https://developers.cloudflare.com/workflows/), [Queues](https://developers.cloudflare.com/queues/), and [ more](https://developers.cloudflare.com/workers/runtime-apis/bindings/)
 
 ## Introduction
 
@@ -30,17 +30,8 @@ A Python Worker can be as simple as four lines of code:
 Python
 
 ```
-
 from workers import WorkerEntrypoint, Response
-
-
-class Default(WorkerEntrypoint):
-
-    async def fetch(self, request):
-
-        return Response("Hello World!")
-
-
+class Default(WorkerEntrypoint):    async def fetch(self, request):        return Response("Hello World!")
 ```
 
 Similar to other Workers, the main entry point for a Python worker is the [fetch handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch) which handles incoming requests sent to the Worker.
@@ -64,10 +55,7 @@ Then set up your development environment:
 Terminal window
 
 ```
-
 uvx --from workers-py pywrangler init
-
-
 ```
 
 This will create a `pyproject.toml` file with `workers-py` as a development dependency. `pywrangler init` will create a wrangler config file. You can then run `pywrangler` with:
@@ -75,10 +63,7 @@ This will create a `pyproject.toml` file with `workers-py` as a development depe
 Terminal window
 
 ```
-
 uv run pywrangler dev
-
-
 ```
 
 To deploy a Python Worker to Cloudflare, run `pywrangler deploy`:
@@ -86,10 +71,7 @@ To deploy a Python Worker to Cloudflare, run `pywrangler deploy`:
 Terminal window
 
 ```
-
 uv run pywrangler deploy
-
-
 ```
 
 ### Python Worker Templates
@@ -99,10 +81,7 @@ When you initialize a new Python Worker project and select from one of many temp
 Terminal window
 
 ```
-
 uv run pywrangler init
-
-
 ```
 
 Or you can clone the examples repository to explore more options:
@@ -110,12 +89,7 @@ Or you can clone the examples repository to explore more options:
 Terminal window
 
 ```
-
-git clone https://github.com/cloudflare/python-workers-examples
-
-cd python-workers-examples/01-hello
-
-
+git clone https://github.com/cloudflare/python-workers-examplescd python-workers-examples/01-hello
 ```
 
 ## Next Up

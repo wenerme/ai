@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,51 +29,12 @@ Workers functions are written in [JavaScript ↗](https://www.cloudflare.com/lea
 Setting custom headers with a Workers function
 
 ```
-
-export default {
-
-  async fetch(request) {
-
-    // This proxies your Pages application under the condition that your Worker script is deployed on the same custom domain as your Pages project
-
-    const response = await fetch(request);
-
-
-    // Clone the response so that it is no longer immutable
-
-    const newResponse = new Response(response.body, response);
-
-
-    // Add a custom header with a value
-
-    newResponse.headers.append(
-
-      "x-workers-hello",
-
-      "Hello from Cloudflare Workers",
-
-    );
-
-
-    // Delete headers
-
-    newResponse.headers.delete("x-header-to-delete");
-
-    newResponse.headers.delete("x-header2-to-delete");
-
-
-    // Adjust the value for an existing header
-
-    newResponse.headers.set("x-header-to-change", "NewValue");
-
-
-    return newResponse;
-
-  },
-
-};
-
-
+export default {  async fetch(request) {    // This proxies your Pages application under the condition that your Worker script is deployed on the same custom domain as your Pages project    const response = await fetch(request);
+    // Clone the response so that it is no longer immutable    const newResponse = new Response(response.body, response);
+    // Add a custom header with a value    newResponse.headers.append(      "x-workers-hello",      "Hello from Cloudflare Workers",    );
+    // Delete headers    newResponse.headers.delete("x-header-to-delete");    newResponse.headers.delete("x-header2-to-delete");
+    // Adjust the value for an existing header    newResponse.headers.set("x-header-to-change", "NewValue");
+    return newResponse;  },};
 ```
 
 ## Deploying a Workers function in the dashboard
@@ -91,61 +52,24 @@ If you would like to skip writing this file yourself, you can use our `custom-he
 Generating a serverless function with wrangler
 
 ```
-
-git clone https://github.com/cloudflare/custom-headers-example
-
-cd custom-headers-example
-
-npm install
-
-
+git clone https://github.com/cloudflare/custom-headers-examplecd custom-headers-examplenpm install
 ```
 
 To operate your Workers function alongside your Pages application, deploy it to the same custom domain as your Pages application. To do this, update the Wrangler file in your project with your account and zone details:
 
-* [  wrangler.jsonc ](#tab-panel-9441)
-* [  wrangler.toml ](#tab-panel-9442)
+* [  wrangler.jsonc ](#tab-panel-9517)
+* [  wrangler.toml ](#tab-panel-9518)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "custom-headers-example",
-
-  "account_id": "FILL-IN-YOUR-ACCOUNT-ID",
-
-  "workers_dev": false,
-
-  "route": "FILL-IN-YOUR-WEBSITE.com/*",
-
-  "zone_id": "FILL-IN-YOUR-ZONE-ID"
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "custom-headers-example",  "account_id": "FILL-IN-YOUR-ACCOUNT-ID",  "workers_dev": false,  "route": "FILL-IN-YOUR-WEBSITE.com/*",  "zone_id": "FILL-IN-YOUR-ZONE-ID"}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "custom-headers-example"
-
-account_id = "FILL-IN-YOUR-ACCOUNT-ID"
-
-workers_dev = false
-
-route = "FILL-IN-YOUR-WEBSITE.com/*"
-
-zone_id = "FILL-IN-YOUR-ZONE-ID"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "custom-headers-example"account_id = "FILL-IN-YOUR-ACCOUNT-ID"workers_dev = falseroute = "FILL-IN-YOUR-WEBSITE.com/*"zone_id = "FILL-IN-YOUR-ZONE-ID"
 ```
 
 If you do not know how to find your Account ID and Zone ID, refer to [our guide](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
@@ -155,10 +79,7 @@ Once you have configured your [Wrangler configuration file](https://developers.c
 Terminal window
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 After you have deployed your Worker, your desired HTTP header adjustments will take effect. While the Worker is deployed, you should continue to see the content from your Pages application as normal.

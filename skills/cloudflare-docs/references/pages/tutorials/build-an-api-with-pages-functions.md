@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -34,16 +34,7 @@ In your terminal, create a new React project called `blog-frontend` using the `c
 Create a new React application
 
 ```
-
-npx create-vite -t react blog-frontend
-
-cd blog-frontend
-
-npm install
-
-npm run dev
-
-
+npx create-vite -t react blog-frontendcd blog-frontendnpm installnpm run dev
 ```
 
 ### Set up your React project
@@ -76,35 +67,10 @@ s
 JavaScript
 
 ```
-
 import { Routes, Route } from "react-router-dom";
-
-
-import Posts from "./components/posts";
-
-import Post from "./components/post";
-
-
-function App() {
-
-  return (
-
-    <Routes>
-
-      <Route path="/" element={<Posts />} />
-
-      <Route path="/posts/:id" element={<Post />} />
-
-    </Routes>
-
-  );
-
-}
-
-
+import Posts from "./components/posts";import Post from "./components/post";
+function App() {  return (    <Routes>      <Route path="/" element={<Posts />} />      <Route path="/posts/:id" element={<Post />} />    </Routes>  );}
 export default App;
-
-
 ```
 
 1. In the `src` directory, create a new folder called `components`.
@@ -114,65 +80,12 @@ export default App;
 JavaScript
 
 ```
-
-import React, { useEffect, useState } from "react";
-
-import { Link } from "react-router-dom";
-
-
-const Posts = () => {
-
-  const [posts, setPosts] = useState([]);
-
-
-  useEffect(() => {
-
-    const getPosts = async () => {
-
-      const resp = await fetch("/api/posts");
-
-      const postsResp = await resp.json();
-
-      setPosts(postsResp);
-
-    };
-
-
-    getPosts();
-
-  }, []);
-
-
-  return (
-
-    <div>
-
-      <h1>Posts</h1>
-
-      {posts.map((post) => (
-
-        <div key={post.id}>
-
-          <h2>
-
-            <Link to={`/posts/${post.id}`}>{post.title}</Link>
-
-          </h2>
-
-        </div>
-
-      ))}
-
-    </div>
-
-  );
-
-};
-
-
+import React, { useEffect, useState } from "react";import { Link } from "react-router-dom";
+const Posts = () => {  const [posts, setPosts] = useState([]);
+  useEffect(() => {    const getPosts = async () => {      const resp = await fetch("/api/posts");      const postsResp = await resp.json();      setPosts(postsResp);    };
+    getPosts();  }, []);
+  return (    <div>      <h1>Posts</h1>      {posts.map((post) => (        <div key={post.id}>          <h2>            <Link to={`/posts/${post.id}`}>{post.title}</Link>          </h2>        </div>      ))}    </div>  );};
 export default Posts;
-
-
 ```
 
 1. Populate `post.js` with the following code:
@@ -180,70 +93,13 @@ export default Posts;
 JavaScript
 
 ```
-
-import React, { useEffect, useState } from "react";
-
-import { Link, useParams } from "react-router-dom";
-
-
-const Post = () => {
-
-  const [post, setPost] = useState({});
-
-  const { id } = useParams();
-
-
-  useEffect(() => {
-
-    const getPost = async () => {
-
-      const resp = await fetch(`/api/post/${id}`);
-
-      const postResp = await resp.json();
-
-      setPost(postResp);
-
-    };
-
-
-    getPost();
-
-  }, [id]);
-
-
+import React, { useEffect, useState } from "react";import { Link, useParams } from "react-router-dom";
+const Post = () => {  const [post, setPost] = useState({});  const { id } = useParams();
+  useEffect(() => {    const getPost = async () => {      const resp = await fetch(`/api/post/${id}`);      const postResp = await resp.json();      setPost(postResp);    };
+    getPost();  }, [id]);
   if (!Object.keys(post).length) return <div />;
-
-
-  return (
-
-    <div>
-
-      <h1>{post.title}</h1>
-
-      <p>{post.text}</p>
-
-      <p>
-
-        <em>Published {new Date(post.published_at).toLocaleString()}</em>
-
-      </p>
-
-      <p>
-
-        <Link to="/">Go back</Link>
-
-      </p>
-
-    </div>
-
-  );
-
-};
-
-
+  return (    <div>      <h1>{post.title}</h1>      <p>{post.text}</p>      <p>        <em>Published {new Date(post.published_at).toLocaleString()}</em>      </p>      <p>        <Link to="/">Go back</Link>      </p>    </div>  );};
 export default Post;
-
-
 ```
 
 ## 2\. Build your API
@@ -262,17 +118,8 @@ To create the Pages Function that will act as your JSON API:
 JavaScript
 
 ```
-
 import posts from "./post/data";
-
-
-export function onRequestGet() {
-
-  return Response.json(posts);
-
-}
-
-
+export function onRequestGet() {  return Response.json(posts);}
 ```
 
 This code gets blog data (from `data.js`, which you will make in step 8) and returns it as a JSON response from the path `/api/posts`.
@@ -284,39 +131,8 @@ This code gets blog data (from `data.js`, which you will make in step 8) and ret
 JavaScript
 
 ```
-
-const posts = [
-
-  {
-
-    id: 1,
-
-    title: "My first blog post",
-
-    text: "Hello world! This is my first blog post on my new Cloudflare Workers + Pages blog.",
-
-    published_at: new Date("2020-10-23"),
-
-  },
-
-  {
-
-    id: 2,
-
-    title: "Updating my blog",
-
-    text: "It's my second blog post! I'm still writing and publishing using Cloudflare Workers + Pages :)",
-
-    published_at: new Date("2020-10-26"),
-
-  },
-
-];
-
-
+const posts = [  {    id: 1,    title: "My first blog post",    text: "Hello world! This is my first blog post on my new Cloudflare Workers + Pages blog.",    published_at: new Date("2020-10-23"),  },  {    id: 2,    title: "Updating my blog",    text: "It's my second blog post! I'm still writing and publishing using Cloudflare Workers + Pages :)",    published_at: new Date("2020-10-26"),  },];
 export default posts;
-
-
 ```
 
 1. In the `post` directory, create an `[[id]].js` file.
@@ -325,37 +141,12 @@ export default posts;
 \[\[id\]\].js
 
 ```
-
 import posts from "./data";
-
-
-export function onRequestGet(context) {
-
-  const id = context.params.id;
-
-
-  if (!id) {
-
-    return new Response("Not found", { status: 404 });
-
-  }
-
-
+export function onRequestGet(context) {  const id = context.params.id;
+  if (!id) {    return new Response("Not found", { status: 404 });  }
   const post = posts.find((post) => post.id === Number(id));
-
-
-  if (!post) {
-
-    return new Response("Not found", { status: 404 });
-
-  }
-
-
-  return Response.json(post);
-
-}
-
-
+  if (!post) {    return new Response("Not found", { status: 404 });  }
+  return Response.json(post);}
 ```
 
 `[[id]].js` is a [dynamic route](https://developers.cloudflare.com/pages/functions/routing#dynamic-routes) which is used to accept a blog post `id`.
@@ -371,10 +162,7 @@ In your `blog-frontend` directory, run [wrangler pages deploy](https://developer
 Terminal window
 
 ```
-
 wrangler pages deploy blog-frontend
-
-
 ```
 
 ### Deploy via the dashboard
@@ -388,20 +176,7 @@ Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). Aft
 Terminal window
 
 ```
-
-git init
-
-git remote add origin https://github.com/<YOUR-GH-USERNAME>/<REPOSITORY-NAME>
-
-git add .
-
-git commit -m "Initial commit"
-
-git branch -M main
-
-git push -u origin main
-
-
+git initgit remote add origin https://github.com/<YOUR-GH-USERNAME>/<REPOSITORY-NAME>git add .git commit -m "Initial commit"git branch -M maingit push -u origin main
 ```
 
 #### Deploy with Cloudflare Pages

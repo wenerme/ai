@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,10 +25,11 @@ A wildcard (`*`) record at your previous authoritative DNS provider may have bee
 To solve this issue, you can do one of the following:
 
 * [Delete records in bulk](https://developers.cloudflare.com/dns/manage-dns-records/how-to/batch-record-changes/#delete-records-in-bulk).
-* Remove and re-add your domain:  
-   1. [Remove your domain](https://developers.cloudflare.com/fundamentals/manage-domains/remove-domain/) from Cloudflare.  
-   2. Delete the wildcard record from your authoritative DNS.  
-   3. [Re-add](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) the domain.
+* Remove and re-add your domain:
+
+  1. [Remove your domain](https://developers.cloudflare.com/fundamentals/manage-domains/remove-domain/) from Cloudflare.
+  2. Delete the wildcard record from your authoritative DNS.
+  3. [Re-add](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) the domain.
 
 ---
 
@@ -93,17 +94,11 @@ You can verify this behavior by querying your domain's MX records (replace `exam
 Terminal window
 
 ```
-
 dig example.com mx +short
-
-
 ```
 
 ```
-
 100 _dc-mx.a1b2c3d4e5f6.example.com.
-
-
 ```
 
 The `_dc-mx` record resolves directly to your origin IP:
@@ -111,17 +106,11 @@ The `_dc-mx` record resolves directly to your origin IP:
 Terminal window
 
 ```
-
 dig _dc-mx.a1b2c3d4e5f6.example.com a +short
-
-
 ```
 
 ```
-
 192.0.2.1
-
-
 ```
 
 ### Solution

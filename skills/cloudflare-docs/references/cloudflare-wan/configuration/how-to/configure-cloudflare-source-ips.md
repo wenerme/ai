@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -36,13 +36,13 @@ Before you begin, ensure that:
 * You have Cloudflare One [Unified Routing (beta)](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#unified-routing-mode-beta). If your account is not yet on Unified Routing, contact your account team to discuss migration and availability.
 * You have [Cloudflare One Networks Write](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) permission.
 * Your desired new network range meets the following requirements:  
-   * Your network must be defined as a single CIDR with a prefix length of `/12`.  
-   * Cloudflare One subnets in the same account cannot overlap. Default allocations include:  
-         * Cloudflare Source IPs (`100.64.0.0/12`)  
-         * Hostname Route Token IPs (`100.80.0.0/16`)  
-         * Cloudflare One Clients (`100.96.0.0/12`)  
-         * Private Load Balancers (`100.112.0.0/16`)  
-   * The source subnet cannot match or contain any existing route in your Cloudflare One routing table. The source subnet can be within a supernet route.
+  * Your network must be defined as a single CIDR with a prefix length of `/12`.
+  * Cloudflare One subnets in the same account cannot overlap. Default allocations include:  
+    * Cloudflare Source IPs (`100.64.0.0/12`)
+    * Hostname Route Token IPs (`100.80.0.0/16`)
+    * Cloudflare One Clients (`100.96.0.0/12`)
+    * Private Load Balancers (`100.112.0.0/16`)
+  * The source subnet cannot match or contain any existing route in your Cloudflare One routing table. The source subnet can be within a supernet route.
 
 ## Affected connectors and services
 
@@ -69,8 +69,8 @@ Note
 
 You need Unified Routing (beta) to configure source IPs. If your account is not yet migrated, contact your account team to discuss migration and availability.
 
-* [ Dashboard ](#tab-panel-7774)
-* [ API ](#tab-panel-7775)
+* [ Dashboard ](#tab-panel-7850)
+* [ API ](#tab-panel-7851)
 
 1. Go to the **Address space** page.  
 [ Go to **Address space** ](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space)
@@ -86,30 +86,13 @@ Example:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Cloudflare One Networks Write`
 
 Update Cloudflare Source Subnet
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/zerotrust/subnets/cloudflare_source/$ADDRESS_FAMILY" \
-
-  --request PATCH \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "comment": "example_comment",
-
-    "name": "IPv4 Cloudflare Source IPs",
-
-    "network": "100.64.0.0/12"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/zerotrust/subnets/cloudflare_source/$ADDRESS_FAMILY" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "comment": "example_comment",    "name": "IPv4 Cloudflare Source IPs",    "network": "100.64.0.0/12"  }'
 ```
 
 ```json

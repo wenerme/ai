@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -47,18 +47,7 @@ To use Quick Actions from a [Worker](https://developers.cloudflare.com/workers/)
 JSONC
 
 ```
-
-{
-
-  "browser": {
-
-    "binding": "BROWSER"
-
-  }
-
-}
-
-
+{  "browser": {    "binding": "BROWSER"  }}
 ```
 
 Warning
@@ -71,29 +60,14 @@ The `.quickAction()` method has two requirements:
 JSONC
 
 ```
-
-{
-
-  "compatibility_date": "2026-03-24",
-
-  "browser": {
-
-    "binding": "BROWSER",
-
-    "remote": true
-
-  }
-
-}
-
-
+{  "compatibility_date": "2026-03-24",  "browser": {    "binding": "BROWSER",    "remote": true  }}
 ```
 
 Note
 
 You can monitor Browser Run (formerly Browser Rendering) usage in two ways:
 
-* In the Cloudflare dashboard, go to the **Browser Run** page to view aggregate metrics, including total Quick Actions requests and total browser hours used.[ Go to **Browser Run** ](https://dash.cloudflare.com/?to=/:account/workers/browser-run)
+* In the Cloudflare dashboard, go to the **Browser Run** page to view aggregate metrics, including total Quick Actions requests and total browser hours used. [ Go to **Browser Run** ](https://dash.cloudflare.com/?to=/:account/workers/browser-run)
 * `X-Browser-Ms-Used` header: Returned in every Quick Actions response, reporting browser time used for that request (in milliseconds).
 
 ```json

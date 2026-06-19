@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,366 +22,56 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11656)
-* [  TypeScript ](#tab-panel-11657)
-* [  Python ](#tab-panel-11658)
-* [  Hono ](#tab-panel-11659)
+* [  JavaScript ](#tab-panel-11673)
+* [  TypeScript ](#tab-panel-11674)
+* [  Python ](#tab-panel-11675)
+* [  Hono ](#tab-panel-11676)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    // Service configured to receive logs
-
-    const LOG_URL = "https://log-service.example.com/";
-
-
-    async function postLog(data) {
-
-      return await fetch(LOG_URL, {
-
-        method: "POST",
-
-        body: data,
-
-      });
-
-    }
-
-
+export default {  async fetch(request, env, ctx) {    // Service configured to receive logs    const LOG_URL = "https://log-service.example.com/";
+    async function postLog(data) {      return await fetch(LOG_URL, {        method: "POST",        body: data,      });    }
     let response;
-
-
-    try {
-
-      response = await fetch(request);
-
-      if (!response.ok && !response.redirected) {
-
-        const body = await response.text();
-
-        throw new Error(
-
-          "Bad response at origin. Status: " +
-
-            response.status +
-
-            " Body: " +
-
-            // Ensure the string is small enough to be a header
-
-            body.trim().substring(0, 10),
-
-        );
-
-      }
-
-    } catch (err) {
-
-      // Without ctx.waitUntil(), your fetch() to Cloudflare's
-
-      // logging service may or may not complete
-
-      ctx.waitUntil(postLog(err.toString()));
-
-      const stack = JSON.stringify(err.stack) || err;
-
-      // Copy the response and initialize body to the stack trace
-
-      response = new Response(stack, response);
-
-      // Add the error stack into a header to find out what happened
-
-      response.headers.set("X-Debug-stack", stack);
-
-      response.headers.set("X-Debug-err", err);
-
-    }
-
-    return response;
-
-  },
-
-};
-
-
+    try {      response = await fetch(request);      if (!response.ok && !response.redirected) {        const body = await response.text();        throw new Error(          "Bad response at origin. Status: " +            response.status +            " Body: " +            // Ensure the string is small enough to be a header            body.trim().substring(0, 10),        );      }    } catch (err) {      // Without ctx.waitUntil(), your fetch() to Cloudflare's      // logging service may or may not complete      ctx.waitUntil(postLog(err.toString()));      const stack = JSON.stringify(err.stack) || err;      // Copy the response and initialize body to the stack trace      response = new Response(stack, response);      // Add the error stack into a header to find out what happened      response.headers.set("X-Debug-stack", stack);      response.headers.set("X-Debug-err", err);    }    return response;  },};
 ```
 
 TypeScript
 
 ```
-
-interface Env {}
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    // Service configured to receive logs
-
-    const LOG_URL = "https://log-service.example.com/";
-
-
-    async function postLog(data) {
-
-      return await fetch(LOG_URL, {
-
-        method: "POST",
-
-        body: data,
-
-      });
-
-    }
-
-
+interface Env {}export default {  async fetch(request, env, ctx): Promise<Response> {    // Service configured to receive logs    const LOG_URL = "https://log-service.example.com/";
+    async function postLog(data) {      return await fetch(LOG_URL, {        method: "POST",        body: data,      });    }
     let response;
-
-
-    try {
-
-      response = await fetch(request);
-
-      if (!response.ok && !response.redirected) {
-
-        const body = await response.text();
-
-        throw new Error(
-
-          "Bad response at origin. Status: " +
-
-            response.status +
-
-            " Body: " +
-
-            // Ensure the string is small enough to be a header
-
-            body.trim().substring(0, 10),
-
-        );
-
-      }
-
-    } catch (err) {
-
-      // Without ctx.waitUntil(), your fetch() to Cloudflare's
-
-      // logging service may or may not complete
-
-      ctx.waitUntil(postLog(err.toString()));
-
-      const stack = JSON.stringify(err.stack) || err;
-
-      // Copy the response and initialize body to the stack trace
-
-      response = new Response(stack, response);
-
-      // Add the error stack into a header to find out what happened
-
-      response.headers.set("X-Debug-stack", stack);
-
-      response.headers.set("X-Debug-err", err);
-
-    }
-
-    return response;
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+    try {      response = await fetch(request);      if (!response.ok && !response.redirected) {        const body = await response.text();        throw new Error(          "Bad response at origin. Status: " +            response.status +            " Body: " +            // Ensure the string is small enough to be a header            body.trim().substring(0, 10),        );      }    } catch (err) {      // Without ctx.waitUntil(), your fetch() to Cloudflare's      // logging service may or may not complete      ctx.waitUntil(postLog(err.toString()));      const stack = JSON.stringify(err.stack) || err;      // Copy the response and initialize body to the stack trace      response = new Response(stack, response);      // Add the error stack into a header to find out what happened      response.headers.set("X-Debug-stack", stack);      response.headers.set("X-Debug-err", err);    }    return response;  },} satisfies ExportedHandler<Env>;
 ```
 
 Python
 
 ```
-
-from workers import WorkerEntrypoint
-
-from pyodide.ffi import create_proxy
-
-from js import Response, fetch
-
-
-async def post_log(data):
-
-  log_url = "https://log-service.example.com/"
-
-  await fetch(log_url, method="POST", body=data)
-
-
-class Default(WorkerEntrypoint):
-
-    async def fetch(self, request):
-
-        # Service configured to receive logs
-
-        response = await fetch(request)
-
-
-        try:
-
-            if not response.ok and not response.redirected:
-
-                body = await response.text()
-
-            # Simulating an error. Ensure the string is small enough to be a header
-
-            raise Exception(f'Bad response at origin. Status:{response.status} Body:{body.strip()[:10]}')
-
-        except Exception as e:
-
-            # Without ctx.waitUntil(), your fetch() to Cloudflare's
-
-            # logging service may or may not complete
-
-            self.ctx.waitUntil(create_proxy(post_log(str(e))))
-
-            # Copy the response and add to header
-
-            response = Response.new(stack, response)
-
-            response.headers["X-Debug-err"] = str(e)
-
-
+from workers import WorkerEntrypointfrom pyodide.ffi import create_proxyfrom js import Response, fetch
+async def post_log(data):  log_url = "https://log-service.example.com/"  await fetch(log_url, method="POST", body=data)
+class Default(WorkerEntrypoint):    async def fetch(self, request):        # Service configured to receive logs        response = await fetch(request)
+        try:            if not response.ok and not response.redirected:                body = await response.text()            # Simulating an error. Ensure the string is small enough to be a header            raise Exception(f'Bad response at origin. Status:{response.status} Body:{body.strip()[:10]}')        except Exception as e:            # Without ctx.waitUntil(), your fetch() to Cloudflare's            # logging service may or may not complete            self.ctx.waitUntil(create_proxy(post_log(str(e))))            # Copy the response and add to header            response = Response.new(stack, response)            response.headers["X-Debug-err"] = str(e)
         return response
-
-
 ```
 
 TypeScript
 
 ```
-
 import { Hono } from 'hono';
-
-
-// Define the environment with appropriate types
-
-interface Env {}
-
-
+// Define the environment with appropriate typesinterface Env {}
 const app = new Hono<{ Bindings: Env }>();
-
-
-// Service configured to receive logs
-
-const LOG_URL = "https://log-service.example.com/";
-
-
-// Function to post logs to an external service
-
-async function postLog(data: string) {
-
-  return await fetch(LOG_URL, {
-
-    method: "POST",
-
-    body: data,
-
-  });
-
-}
-
-
-// Middleware to handle error logging
-
-app.use('*', async (c, next) => {
-
-  try {
-
-    // Process the request with the next handler
-
-    await next();
-
-
-    // After processing, check if the response indicates an error
-
-    if (c.res && (!c.res.ok && !c.res.redirected)) {
-
-      const body = await c.res.clone().text();
-
-      throw new Error(
-
-        "Bad response at origin. Status: " +
-
-        c.res.status +
-
-        " Body: " +
-
-        // Ensure the string is small enough to be a header
-
-        body.trim().substring(0, 10)
-
-      );
-
-    }
-
-
-  } catch (err) {
-
-    // Without waitUntil, the fetch to the logging service may not complete
-
-    c.executionCtx.waitUntil(
-
-      postLog(err.toString())
-
-    );
-
-
-    // Get the error stack or error itself
-
-    const stack = JSON.stringify(err.stack) || err.toString();
-
-
-    // Create a new response with the error information
-
-    const response = c.res ?
-
-      new Response(stack, {
-
-        status: c.res.status,
-
-        headers: c.res.headers
-
-      }) :
-
-      new Response(stack, { status: 500 });
-
-
-    // Add debug headers
-
-    response.headers.set("X-Debug-stack", stack);
-
-    response.headers.set("X-Debug-err", err.toString());
-
-
-    // Set the modified response
-
-    c.res = response;
-
-  }
-
-});
-
-
-// Default route handler that passes requests through
-
-app.all('*', async (c) => {
-
-  return fetch(c.req.raw);
-
-});
-
-
+// Service configured to receive logsconst LOG_URL = "https://log-service.example.com/";
+// Function to post logs to an external serviceasync function postLog(data: string) {  return await fetch(LOG_URL, {    method: "POST",    body: data,  });}
+// Middleware to handle error loggingapp.use('*', async (c, next) => {  try {    // Process the request with the next handler    await next();
+    // After processing, check if the response indicates an error    if (c.res && (!c.res.ok && !c.res.redirected)) {      const body = await c.res.clone().text();      throw new Error(        "Bad response at origin. Status: " +        c.res.status +        " Body: " +        // Ensure the string is small enough to be a header        body.trim().substring(0, 10)      );    }
+  } catch (err) {    // Without waitUntil, the fetch to the logging service may not complete    c.executionCtx.waitUntil(      postLog(err.toString())    );
+    // Get the error stack or error itself    const stack = JSON.stringify(err.stack) || err.toString();
+    // Create a new response with the error information    const response = c.res ?      new Response(stack, {        status: c.res.status,        headers: c.res.headers      }) :      new Response(stack, { status: 500 });
+    // Add debug headers    response.headers.set("X-Debug-stack", stack);    response.headers.set("X-Debug-err", err.toString());
+    // Set the modified response    c.res = response;  }});
+// Default route handler that passes requests throughapp.all('*', async (c) => {  return fetch(c.req.raw);});
 export default app;
-
-
 ```
 
 ```json

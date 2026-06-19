@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -60,25 +60,8 @@ Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). Aft
 Terminal window
 
 ```
-
-# Skip the following three commands if you have built your application
-
-# using C3 or already committed your changes
-
-git init
-
-git add .
-
-git commit -m "Initial commit"
-
-
-git branch -M main
-
-git remote add origin https://github.com/<YOUR_GH_USERNAME>/<REPOSITORY_NAME>
-
-git push -u origin main
-
-
+# Skip the following three commands if you have built your application# using C3 or already committed your changesgit initgit add .git commit -m "Initial commit"
+git branch -M maingit remote add origin https://github.com/<YOUR_GH_USERNAME>/<REPOSITORY_NAME>git push -u origin main
 ```
 
 ### Create a Pages project

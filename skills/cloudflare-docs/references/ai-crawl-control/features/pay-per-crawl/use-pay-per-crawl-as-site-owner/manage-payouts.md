@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-crawl-control/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,9 +35,10 @@ A person with **Administrator** or **Super Administrator** access must set up th
 2. Select **Pay Per Crawl**.
 3. In the **Stripe account** section, select **Connect**.
 4. Select **Continue to Stripe**.
-5. Complete Stripe's onboarding process, including:  
-   * Basic business information  
-   * Bank account details for payouts
+5. Complete Stripe's onboarding process, including:
+
+  * Basic business information
+  * Bank account details for payouts
 
 Pay Per Crawl Stripe account required
 

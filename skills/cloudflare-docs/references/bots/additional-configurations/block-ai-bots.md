@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -24,10 +24,11 @@ To block [AI bots](https://developers.cloudflare.com/bots/concepts/bot/#ai-bots)
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Bot traffic**.
 3. Go to **Block AI bots**.
-4. Under **Configurations**, select the edit icon. Choose from:  
-   * **Only block on hostnames with ads**: Use this option if you wish to block AI bots only on portions of your site that show ads. Cloudflare automatically detects whether ads are present on a subdomain, and only block on hostnames that contain those ad units.  
-   * **Block on all pages**: Use this option if you wish to block AI bots on all your pages.  
-   * **Do not block (off)**: Use this option if you wish to allow AI bots on all your pages.
+4. Under **Configurations**, select the edit icon. Choose from:
+
+  * **Only block on hostnames with ads**: Use this option if you wish to block AI bots only on portions of your site that show ads. Cloudflare automatically detects whether ads are present on a subdomain, and only block on hostnames that contain those ad units.
+  * **Block on all pages**: Use this option if you wish to block AI bots on all your pages.
+  * **Do not block (off)**: Use this option if you wish to allow AI bots on all your pages.
 5. Select **Save** to save your configuration.
 
 To block individual AI crawlers (rather than blocking all crawlers), use [AI Crawl Control](https://developers.cloudflare.com/ai-crawl-control/).

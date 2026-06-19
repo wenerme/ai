@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -53,39 +53,19 @@ To request an adjustment to a limit, complete the [Limit Increase Request Form â
 
 By default, the maximum CPU time per consumer Worker invocation is set to 30 seconds, but can be increased by setting `limits.cpu_ms` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-9621)
-* [  wrangler.toml ](#tab-panel-9622)
+* [  wrangler.jsonc ](#tab-panel-9697)
+* [  wrangler.toml ](#tab-panel-9698)
 
 JSONC
 
 ```
-
-{
-
-  // ...rest of your configuration...
-
-  "limits": {
-
-    "cpu_ms": 300000, // 300,000 milliseconds = 5 minutes
-
-  },
-
-  // ...rest of your configuration...
-
-}
-
-
+{  // ...rest of your configuration...  "limits": {    "cpu_ms": 300000, // 300,000 milliseconds = 5 minutes  },  // ...rest of your configuration...}
 ```
 
 TOML
 
 ```
-
-[limits]
-
-cpu_ms = 300_000
-
-
+[limits]cpu_ms = 300_000
 ```
 
 To learn more about CPU time and limits, [review the Workers documentation](https://developers.cloudflare.com/workers/platform/limits/#cpu-time).

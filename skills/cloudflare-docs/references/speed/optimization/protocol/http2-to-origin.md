@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,9 +18,9 @@ HTTP is a well established protocol that has several versions, and each version 
 
 ## Availability
 
-| Free         | Pro | Business | Enterprise |     |
-| ------------ | --- | -------- | ---------- | --- |
-| Availability | Yes | Yes      | Yes        | Yes |
+|              | Free | Pro | Business | Enterprise |
+| ------------ | ---- | --- | -------- | ---------- |
+| Availability | Yes  | Yes | Yes      | Yes        |
 
 ## Disable HTTP/2 to Origin
 
@@ -51,14 +51,16 @@ Connections are kept alive and reused until they become idle or hit their concur
 
 * **Connection reuse**: Cloudflare maintains persistent (keep-alive) TCP connections to your origin. Reuse continues until the HTTP/2 stream limit is reached or the connection goes idle.
 * **Idle timeout (900s)**: If a connection remains idle (no active streams) for 900 seconds, Cloudflare closes it. Attempting to reuse a closed connection may result in a `520` error.
-* **Keep-alives**: Cloudflare sends periodic TCP keep-alives to detect unresponsive origins. After two unanswered probes, the connection is reset.  
-   * First probe after \~30 seconds of inactivity  
-   * Second probe after 15 seconds
-* **Connection tear-down**: Connections may also close due to:  
-   * Load balancing decisions  
-   * Data center or node maintenance  
-   * Reaching the maximum concurrency limit  
-   * Origin or intermediary network closing idle connections
+* **Keep-alives**: Cloudflare sends periodic TCP keep-alives to detect unresponsive origins. After two unanswered probes, the connection is reset.
+
+  * First probe after \~30 seconds of inactivity
+  * Second probe after 15 seconds
+* **Connection tear-down**: Connections may also close due to:
+
+  * Load balancing decisions
+  * Data center or node maintenance
+  * Reaching the maximum concurrency limit
+  * Origin or intermediary network closing idle connections
 
 ### Benefits
 
@@ -95,27 +97,14 @@ API
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone Settings Write`
 * `Zone Write`
 
 Change Origin H2 Max Streams Setting
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/origin_h2_max_streams" \
-
-  --request PATCH \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "value": 100
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/origin_h2_max_streams" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "value": 100  }'
 ```
 
 Refer to the [API documentation](https://developers.cloudflare.com/api/python/resources/zones/subresources/settings/methods/edit/) for more information.
@@ -123,18 +112,7 @@ Refer to the [API documentation](https://developers.cloudflare.com/api/python/re
 Terraform 
 
 ```
-
-resource "cloudflare_zone_setting" "example" {
-
-  zone_id    = "<ZONE_ID>"
-
-  setting_id = "origin_h2_max_streams"
-
-  value      = 50
-
-}
-
-
+resource "cloudflare_zone_setting" "example" {  zone_id    = "<ZONE_ID>"  setting_id = "origin_h2_max_streams"  value      = 50}
 ```
 
 Note

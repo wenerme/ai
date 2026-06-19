@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,8 +18,8 @@ Configure your Turnstile widget's appearance, behavior, and functionality using 
 
 Turnstile widgets can be implemented using implicit or explicit rendering.
 
-* [ Implicit rendering ](#tab-panel-11020)
-* [ Explicit rendering ](#tab-panel-11021)
+* [ Implicit rendering ](#tab-panel-11037)
+* [ Explicit rendering ](#tab-panel-11038)
 
 Implicit rendering automatically scans your HTML for elements with the `cf-turnstile` class and renders the widget when the page loads. It is best used for simple implementations, static websites, or when you want widgets to appear immediately on page load.
 
@@ -33,12 +33,7 @@ Implicit rendering automatically scans your HTML for elements with the `cf-turns
 Example
 
 ```
-
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-
-  <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-theme="light"></div>
-
-
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>  <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-theme="light"></div>
 ```
 
 Explicit rendering gives you programmatic control over when and how widgets are created using JavaScript functions. It is best used for dynamic websites and single-page applications (SPAs), when you need to control timing of widget creation, conditional rendering based on visitor interactions, or for multiple widgets with different configurations.
@@ -53,35 +48,8 @@ Explicit rendering gives you programmatic control over when and how widgets are 
 Example
 
 ```
-
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>
-
-  <div id="my-widget"></div>
-
-
-  <script>
-
-  window.onload = function() {
-
-    turnstile.render('#my-widget', {
-
-      sitekey: '<YOUR-SITE-KEY>',
-
-      theme: 'light',
-
-      callback: function(token) {
-
-        console.log('Success:', token);
-
-      }
-
-    });
-
-  };
-
-  </script>
-
-
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>  <div id="my-widget"></div>
+  <script>  window.onload = function() {    turnstile.render('#my-widget', {      sitekey: '<YOUR-SITE-KEY>',      theme: 'light',      callback: function(token) {        console.log('Success:', token);      }    });  };  </script>
 ```
 
 ---
@@ -104,77 +72,43 @@ Note
 
 Widget size only applies to Managed and Non-Interactive modes. Invisible widgets have no visual footprint regardless of size configuration.
 
-* [ Implicit rendering ](#tab-panel-11008)
-* [ Explicit rendering ](#tab-panel-11009)
+* [ Implicit rendering ](#tab-panel-11025)
+* [ Explicit rendering ](#tab-panel-11026)
 
 Normal size (default)
 
 ```
-
   <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>"></div>
-
-
 ```
 
 Flexible size
 
 ```
-
   <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-size="flexible"></div>
-
-
 ```
 
 Compact size
 
 ```
-
   <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-size="compact"></div>
-
-
 ```
 
 Normal size (default)
 
 ```
-
-  turnstile.render('#widget-container', {
-
-    sitekey: '<YOUR-SITE-KEY>'
-
-  });
-
-
+  turnstile.render('#widget-container', {    sitekey: '<YOUR-SITE-KEY>'  });
 ```
 
 Flexible size
 
 ```
-
-  turnstile.render('#widget-container', {
-
-    sitekey: '<YOUR-SITE-KEY>',
-
-    size: 'flexible'
-
-  });
-
-
+  turnstile.render('#widget-container', {    sitekey: '<YOUR-SITE-KEY>',    size: 'flexible'  });
 ```
 
 Compact size
 
 ```
-
-  turnstile.render('#widget-container', {
-
-    sitekey: '<YOUR-SITE-KEY>',
-
-    size: 'compact'
-
-  });
-
-
+  turnstile.render('#widget-container', {    sitekey: '<YOUR-SITE-KEY>',    size: 'compact'  });
 ```
 
 ---
@@ -187,77 +121,43 @@ Customize the widget's visual appearance to match your website's design.
 * `light`: Light theme with bright colors and clear contrast. Light theme works best on bright backgrounds and provides high contrast for readability.
 * `dark`: Dark theme optimized for dark interfaces. Dark theme is ideal for dark interfaces, gaming sites, or applications with dark color schemes.
 
-* [ Implicit rendering ](#tab-panel-11010)
-* [ Explicit rendering ](#tab-panel-11011)
+* [ Implicit rendering ](#tab-panel-11027)
+* [ Explicit rendering ](#tab-panel-11028)
 
 Auto theme (default)
 
 ```
-
   <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>"></div>
-
-
 ```
 
 Light theme
 
 ```
-
   <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-theme="light"></div>
-
-
 ```
 
 Dark theme
 
 ```
-
   <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-theme="dark"></div>
-
-
 ```
 
 Auto theme (default)
 
 ```
-
-  turnstile.render('#widget-container', {
-
-    sitekey: '<YOUR-SITE-KEY>'
-
-  });
-
-
+  turnstile.render('#widget-container', {    sitekey: '<YOUR-SITE-KEY>'  });
 ```
 
 Light theme
 
 ```
-
-  turnstile.render('#widget-container', {
-
-    sitekey: '<YOUR-SITE-KEY>',
-
-    theme: 'light'
-
-  });
-
-
+  turnstile.render('#widget-container', {    sitekey: '<YOUR-SITE-KEY>',    theme: 'light'  });
 ```
 
 Dark theme
 
 ```
-
-  turnstile.render('#widget-container', {
-
-    sitekey: '<YOUR-SITE-KEY>',
-
-    theme: 'dark'
-
-  });
-
-
+  turnstile.render('#widget-container', {    sitekey: '<YOUR-SITE-KEY>',    theme: 'dark'  });
 ```
 
 ---
@@ -274,77 +174,43 @@ Note
 
 Appearance modes only affect visible widget types (Managed and Non-Interactive). Invisible widgets are never shown regardless of the appearance setting.
 
-* [ Implicit rendering ](#tab-panel-11012)
-* [ Explicit rendering ](#tab-panel-11013)
+* [ Implicit rendering ](#tab-panel-11029)
+* [ Explicit rendering ](#tab-panel-11030)
 
 Always visible (default)
 
 ```
-
   <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>"></div>
-
-
 ```
 
 Visible only after challenge begins
 
 ```
-
   <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-appearance="execute"></div>
-
-
 ```
 
 Visible only when interaction is needed
 
 ```
-
   <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-appearance="interaction-only"></div>
-
-
 ```
 
 Always visible (default)
 
 ```
-
-  turnstile.render('#widget-container', {
-
-    sitekey: '<YOUR-SITE-KEY>'
-
-  });
-
-
+  turnstile.render('#widget-container', {    sitekey: '<YOUR-SITE-KEY>'  });
 ```
 
 Visible only after challenge begins
 
 ```
-
-  turnstile.render('#widget-container', {
-
-    sitekey: '<YOUR-SITE-KEY>',
-
-    appearance: 'execute'
-
-  });
-
-
+  turnstile.render('#widget-container', {    sitekey: '<YOUR-SITE-KEY>',    appearance: 'execute'  });
 ```
 
 Visible only when interaction is needed
 
 ```
-
-  turnstile.render('#widget-container', {
-
-    sitekey: '<YOUR-SITE-KEY>',
-
-    appearance: 'interaction-only'
-
-  });
-
-
+  turnstile.render('#widget-container', {    sitekey: '<YOUR-SITE-KEY>',    appearance: 'interaction-only'  });
 ```
 
 ---
@@ -354,69 +220,46 @@ Visible only when interaction is needed
 Control when the challenge runs and a token is generated.
 
 * `render` (default): The challenge runs automatically after calling the `render()` function and provides immediate protection as soon as the widget loads. The challenge runs in the background while the page loads, ensuring the token is ready when the visitor submits data.
-* `execute`: The challenge runs after calling the `turnstile.execute()` function separately and gives you precise control over when verification occurs. This option is useful for multi-step forms, conditional verification, or when you want to defer the challenge until the visitor actually attempts to submit data. This can improve page load performance and visitor experience by only running verification when needed.  
-**Common scenarios**  
-   * Multi-step forms: Run verification only on the final step.  
-   * Conditional protection: Only verify visitors who meet certain criteria.  
-   * Performance optimization: Defer verification to reduce initial page load time.  
-   * User-triggered verification: Let visitors manually start the verification process.
+* `execute`: The challenge runs after calling the `turnstile.execute()` function separately and gives you precise control over when verification occurs. This option is useful for multi-step forms, conditional verification, or when you want to defer the challenge until the visitor actually attempts to submit data. This can improve page load performance and visitor experience by only running verification when needed.
 
-* [ Implicit rendering ](#tab-panel-11014)
-* [ Explicit rendering ](#tab-panel-11015)
+**Common scenarios**
+
+  * Multi-step forms: Run verification only on the final step.
+  * Conditional protection: Only verify visitors who meet certain criteria.
+  * Performance optimization: Defer verification to reduce initial page load time.
+  * User-triggered verification: Let visitors manually start the verification process.
+
+* [ Implicit rendering ](#tab-panel-11031)
+* [ Explicit rendering ](#tab-panel-11032)
 
 Auto execution (default)
 
 ```
-
   <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>"></div>
-
-
 ```
 
 Manual execution
 
 ```
-
   <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-execution="execute"></div>
-
-
 ```
 
 Auto execution (default)
 
 ```
-
-  turnstile.render('#widget-container', {
-
-    sitekey: '<YOUR-SITE-KEY>'
-
-  });
-
-
+  turnstile.render('#widget-container', {    sitekey: '<YOUR-SITE-KEY>'  });
 ```
 
 Manual execution
 
 ```
-
-  turnstile.render('#widget-container', {
-
-    sitekey: '<YOUR-SITE-KEY>',
-
-    execution: 'execute'
-
-  });
-
-
+  turnstile.render('#widget-container', {    sitekey: '<YOUR-SITE-KEY>',    execution: 'execute'  });
 ```
 
 Execute the challenge later
 
 ```
-
   turnstile.execute('#widget-container');
-
-
 ```
 
 ---
@@ -436,62 +279,37 @@ Notes
 * Language affects all visitor-facing text including loading messages, error states, and accessibility labels.
 * Setting specific languages can improve visitor experience for international audiences.
 
-* [ Implicit rendering ](#tab-panel-11016)
-* [ Explicit rendering ](#tab-panel-11017)
+* [ Implicit rendering ](#tab-panel-11033)
+* [ Explicit rendering ](#tab-panel-11034)
 
 Auto language (default)
 
 ```
-
   <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>"></div>
-
-
 ```
 
 Specific language
 
 ```
-
   <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-language="es"></div>
-
-
 ```
 
 Language and country
 
 ```
-
   <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-language="en-US"></div>
-
-
 ```
 
 Auto language (default)
 
 ```
-
-  turnstile.render('#widget-container', {
-
-    sitekey: '<YOUR-SITE-KEY>'
-
-  });
-
-
+  turnstile.render('#widget-container', {    sitekey: '<YOUR-SITE-KEY>'  });
 ```
 
 Specific language
 
 ```
-
-  turnstile.render('#widget-container', {
-
-    sitekey: '<YOUR-SITE-KEY>',
-
-    language: 'es'
-
-  });
-
-
+  turnstile.render('#widget-container', {    sitekey: '<YOUR-SITE-KEY>',    language: 'es'  });
 ```
 
 ---
@@ -507,89 +325,17 @@ Handle widget events with callbacks.
 
 The success callback receives a token that must be validated on your server using the Siteverify API. Tokens are single-use and expire after 300 seconds (five minutes).
 
-* [ Implicit rendering ](#tab-panel-11018)
-* [ Explicit rendering ](#tab-panel-11019)
+* [ Implicit rendering ](#tab-panel-11035)
+* [ Explicit rendering ](#tab-panel-11036)
 
 ```
-
-  <div class="cf-turnstile"
-
-    data-sitekey="<YOUR-SITE-KEY>"
-
-    data-callback="onSuccess"
-
-    data-error-callback="onError"
-
-    data-expired-callback="onExpired"
-
-    data-timeout-callback="onTimeout"></div>
-
-  <script>
-
-  function onSuccess(token) {
-
-  console.log('Challenge Success:', token);
-
-  }
-
-  function onError(errorCode) {
-
-  console.log('Challenge Error:', errorCode);
-
-  }
-
-  function onExpired() {
-
-  console.log('Token expired');
-
-  }
-
-  function onTimeout() {
-
-  console.log('Challenge timed out');
-
-  }
-
-  </script>
-
-
+  <div class="cf-turnstile"    data-sitekey="<YOUR-SITE-KEY>"    data-callback="onSuccess"    data-error-callback="onError"    data-expired-callback="onExpired"    data-timeout-callback="onTimeout"></div>  <script>  function onSuccess(token) {  console.log('Challenge Success:', token);  }  function onError(errorCode) {  console.log('Challenge Error:', errorCode);  }  function onExpired() {  console.log('Token expired');  }  function onTimeout() {  console.log('Challenge timed out');  }  </script>
 ```
 
 JavaScript
 
 ```
-
-  turnstile.render('#widget-container', {
-
-    sitekey: '<YOUR-SITE-KEY>',
-
-    callback: function(token) {
-
-      console.log('Challenge Success:', token);
-
-    },
-
-    'error-callback': function(errorCode) {
-
-      console.log('Challenge Error:', errorCode);
-
-    },
-
-    'expired-callback': function() {
-
-      console.log('Token expired');
-
-    },
-
-    'timeout-callback': function() {
-
-      console.log('Challenge timed out');
-
-    }
-
-  });
-
-
+  turnstile.render('#widget-container', {    sitekey: '<YOUR-SITE-KEY>',    callback: function(token) {      console.log('Challenge Success:', token);    },    'error-callback': function(errorCode) {      console.log('Challenge Error:', errorCode);    },    'expired-callback': function() {      console.log('Token expired');    },    'timeout-callback': function() {      console.log('Challenge timed out');    }  });
 ```
 
 ### Best practices
@@ -614,28 +360,19 @@ Control how Turnstile handles failed challenges.
 Auto retry (default)
 
 ```
-
 <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>"></div>
-
-
 ```
 
 Disable retry
 
 ```
-
 <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-retry="never"></div>
-
-
 ```
 
 Custom retry interval (8000ms default)
 
 ```
-
 <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-retry-interval="0000"></div>
-
-
 ```
 
 ### Refresh behavior
@@ -656,28 +393,19 @@ Different strategies can be used for token expiration versus interactive timeout
 Auto refresh expired tokens (default)
 
 ```
-
 <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>"></div>
-
-
 ```
 
 Manual refresh
 
 ```
-
 <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-refresh-expired="manual"></div>
-
-
 ```
 
 Auto refresh timeouts (default for Managed mode)
 
 ```
-
 <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-refresh-timeout="auto"></div>
-
-
 ```
 
 ### Custom data
@@ -701,19 +429,13 @@ Both action and cData fields only accept alphanumeric characters, underscores (\
 Add custom action identifier
 
 ```
-
 <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-action="login"></div>
-
-
 ```
 
 Add custom data payload
 
 ```
-
 <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-cdata="user-cdata"></div>
-
-
 ```
 
 ### Form integration
@@ -734,19 +456,13 @@ When enabled, Turnstile automatically creates a hidden `<input>` element with th
 Custom response field name
 
 ```
-
 <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-response-field-name="turnstile-token"></div>
-
-
 ```
 
 Disable response field
 
 ```
-
 <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-response-field="false"></div>
-
-
 ```
 
 ---
@@ -786,25 +502,13 @@ Disable response field
 Responsive design widget
 
 ```
-
-<div style="max-width: 500px;">
-
-  <div class="cf-turnstile" data-sitekey=<YOUR-SITE-KEY> data-size="flexible" data-theme="auto"></div>
-
-</div>
-
-
+<div style="max-width: 500px;">  <div class="cf-turnstile" data-sitekey=<YOUR-SITE-KEY> data-size="flexible" data-theme="auto"></div></div>
 ```
 
 Mobile-optimized compact widget
 
 ```
-
-<div class="cf-turnstile" data-sitekey=<YOUR-SITE-KEY> data-size="compact" data-theme="light" data-language="en">
-
-</div>
-
-
+<div class="cf-turnstile" data-sitekey=<YOUR-SITE-KEY> data-size="compact" data-theme="light" data-language="en"></div>
 ```
 
 ```json

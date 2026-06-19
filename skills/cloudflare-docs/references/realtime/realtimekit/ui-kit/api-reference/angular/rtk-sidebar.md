@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,31 +33,13 @@ A component which handles the sidebar and you can customize which sections you w
 ### Basic Usage
 
 ```
-
-<!-- component.html -->
-
-<rtk-sidebar></rtk-sidebar>
-
-
+<!-- component.html --><rtk-sidebar></rtk-sidebar>
 ```
 
 ### With Properties
 
 ```
-
-<!-- component.html -->
-
-<rtk-sidebar
-
- [defaultSection]="rtksidebarsection"
-
- [enabledSections]="[]"
-
- [meeting]="meeting">
-
-</rtk-sidebar>
-
-
+<!-- component.html --><rtk-sidebar [defaultSection]="rtksidebarsection" [enabledSections]="[]" [meeting]="meeting"></rtk-sidebar>
 ```
 
 ```json

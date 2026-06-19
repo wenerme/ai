@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waiting-room/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -86,8 +86,8 @@ To start queueing all new visitors without a scheduled event:
 
 1. Go to **Traffic** \> **Waiting Room**.
 2. On a waiting room:  
-   1. Ensure **Enabled** is set to **On**.  
-   2. Set **Queue-all** to **On**.
+  1. Ensure **Enabled** is set to **On**.
+  2. Set **Queue-all** to **On**.
 3. Your waiting room will begin queueing all new visitors and will not allow any new visitors to the path protected by your waiting room. Queue-all will override all other waiting room settings, including event settings.
 
 Note

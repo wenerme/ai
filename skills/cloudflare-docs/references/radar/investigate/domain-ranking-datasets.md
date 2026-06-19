@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/radar/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,79 +26,11 @@ Cloudflare regularly generates a domain ranking based on DNS queries to [1.1.1.1
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/radar/ranking/top?name=top&limit=5" \
-
---header "Authorization: Bearer <API_TOKEN>"
-
-
+curl "https://api.cloudflare.com/client/v4/radar/ranking/top?name=top&limit=5" \--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "result": {
-
-    "top_0": [
-
-      {
-
-        "rank": 1,
-
-        "domain": "google.com"
-
-      },
-
-      {
-
-        "rank": 2,
-
-        "domain": "googleapis.com"
-
-      },
-
-      {
-
-        "rank": 3,
-
-        "domain": "facebook.com"
-
-      },
-
-      {
-
-        "rank": 4,
-
-        "domain": "gstatic.com"
-
-      },
-
-      {
-
-        "rank": 5,
-
-        "domain": "apple.com"
-
-      }
-
-    ]
-
-  },
-
-  "meta": {
-
-    // ...
-
-  }
-
-}
-
-
+{  "success": true,  "errors": [],  "result": {    "top_0": [      {        "rank": 1,        "domain": "google.com"      },      {        "rank": 2,        "domain": "googleapis.com"      },      {        "rank": 3,        "domain": "facebook.com"      },      {        "rank": 4,        "domain": "gstatic.com"      },      {        "rank": 5,        "domain": "apple.com"      }    ]  },  "meta": {    // ...  }}
 ```
 
 For more information refer to [Get top domains](https://developers.cloudflare.com/api/resources/radar/subresources/ranking/methods/top/).
@@ -112,63 +44,11 @@ In the following example we will request the last available domain ranking bucke
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/radar/datasets?limit=10&datasetType=RANKING_BUCKET" \
-
---header "Authorization: Bearer <API_TOKEN>"
-
-
+curl "https://api.cloudflare.com/client/v4/radar/datasets?limit=10&datasetType=RANKING_BUCKET" \--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "result": {
-
-    "datasets": [
-
-      {
-
-        "id": 213,
-
-        "title": "Top 1000000 ranking domains",
-
-        "description": "Unordered top 1000000 from 2023-01-02 to 2023-01-09",
-
-        "type": "RANKING_BUCKET",
-
-        "tags": [
-
-          "GLOBAL",
-
-          "top_1000000"
-
-        ],
-
-        "meta": {
-
-          "top": 1000000
-
-        },
-
-        "alias": "ranking_top_1000000"
-
-      },
-
-      // ...
-
-    ]
-
-  }
-
-}
-
-
+{  "success": true,  "errors": [],  "result": {    "datasets": [      {        "id": 213,        "title": "Top 1000000 ranking domains",        "description": "Unordered top 1000000 from 2023-01-02 to 2023-01-09",        "type": "RANKING_BUCKET",        "tags": [          "GLOBAL",          "top_1000000"        ],        "meta": {          "top": 1000000        },        "alias": "ranking_top_1000000"      },      // ...    ]  }}
 ```
 
 If you are interested in a specific top (like the top one million), go through the `meta.top` property. After finding the top you are looking for, get its `id` to fetch the dataset using the [GET dataset download url](https://developers.cloudflare.com/api/resources/radar/subresources/datasets/methods/download/) endpoint.
@@ -178,48 +58,16 @@ Then you can request a download url:
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/radar/datasets/download" \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "datasetId": 213
-
-}'
-
-
+curl "https://api.cloudflare.com/client/v4/radar/datasets/download" \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{  "datasetId": 213}'
 ```
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "result": {
-
-    "dataset": {
-
-      "url": "https://example.com/download"
-
-    }
-
-  }
-
-}
-
-
+{  "success": true,  "errors": [],  "result": {    "dataset": {      "url": "https://example.com/download"    }  }}
 ```
 
 #### Example: Get the last top `x` ranking bucket
 
-This endpoint allows you to directly request the latest top x bucket available (optionally at a given date)[Get dataset stream](https://developers.cloudflare.com/api/resources/radar/subresources/datasets/methods/get/) endpoint.
+This endpoint allows you to directly request the latest top x bucket available (optionally at a given date) [Get dataset stream](https://developers.cloudflare.com/api/resources/radar/subresources/datasets/methods/get/) endpoint.
 
 The dataset alias can be retrieved from the [Get datasets](https://developers.cloudflare.com/api/resources/radar/subresources/datasets/methods/list/) endpoint as the example above.
 
@@ -228,33 +76,11 @@ This stream endpoint is only available for datasets generated after 2023-01-08.
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/radar/datasets/ranking_top_1000" \
-
---header "Authorization: Bearer <API_TOKEN>"
-
-
+curl "https://api.cloudflare.com/client/v4/radar/datasets/ranking_top_1000" \--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 ```
-
-domain
-
-1rx.io
-
-2mdn.net
-
-360yield.com
-
-3lift.com
-
-a-msedge.net
-
-a2z.com
-
-...
-
-
+domain1rx.io2mdn.net360yield.com3lift.coma-msedge.neta2z.com...
 ```
 
 ## Next steps

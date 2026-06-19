@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,12 +20,13 @@ To enable audit logs:
 [ Go to **Logpush** ](https://dash.cloudflare.com/?to=/:account/logs)
 2. Select your storage destination.
 3. Select the three dots > **Edit**.
-4. Under **Configure logpush job**:  
-   * **Job name**: Enter the job name, if it is not already prepopulated.  
-   * **If logs match** \> Select **Filtered logs**:  
-         * **Field**: Choose `ResourceType`.  
-         * **Operator**: Choose `starts with`.  
-         * **Value**: Enter `email_security`.
+4. Under **Configure logpush job**:
+
+  * **Job name**: Enter the job name, if it is not already prepopulated.
+  * **If logs match** \> Select **Filtered logs**:  
+    * **Field**: Choose `ResourceType`.
+    * **Operator**: Choose `starts with`.
+    * **Value**: Enter `email_security`.
 5. Select **Submit**.
 
 You can now view logs via the Cloudflare dashboard.

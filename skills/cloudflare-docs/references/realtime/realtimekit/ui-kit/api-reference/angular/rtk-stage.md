@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,29 +26,13 @@ A component used as a stage that commonly houses the `grid` and `sidebar` compon
 ### Basic Usage
 
 ```
-
-<!-- component.html -->
-
-<rtk-stage></rtk-stage>
-
-
+<!-- component.html --><rtk-stage></rtk-stage>
 ```
 
 ### With Properties
 
 ```
-
-<!-- component.html -->
-
-<rtk-stage
-
- [iconPack]="defaultIconPack"
-
- [t]="rtki18n">
-
-</rtk-stage>
-
-
+<!-- component.html --><rtk-stage [iconPack]="defaultIconPack" [t]="rtki18n"></rtk-stage>
 ```
 
 ```json

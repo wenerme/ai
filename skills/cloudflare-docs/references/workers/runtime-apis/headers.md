@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,28 +21,11 @@ When a header name possesses multiple values, those values will be concatenated 
 JavaScript
 
 ```
-
 let headers = new Headers();
-
-
 headers.get('x-foo'); //=> null
-
-
-headers.set('x-foo', '123');
-
-headers.get('x-foo'); //=> "123"
-
-
-headers.set('x-foo', 'hello');
-
-headers.get('x-foo'); //=> "hello"
-
-
-headers.append('x-foo', 'world');
-
-headers.get('x-foo'); //=> "hello, world"
-
-
+headers.set('x-foo', '123');headers.get('x-foo'); //=> "123"
+headers.set('x-foo', 'hello');headers.get('x-foo'); //=> "hello"
+headers.append('x-foo', 'world');headers.get('x-foo'); //=> "hello, world"
 ```
 
 ## Differences
@@ -66,20 +49,9 @@ Due to [RFC 6265 ↗](https://www.rfc-editor.org/rfc/rfc6265) prohibiting foldin
 JavaScript
 
 ```
-
 const headers = new Headers();
-
-
-headers.append("Set-Cookie", "cookie1=value_for_cookie_1; Path=/; HttpOnly;");
-
-headers.append("Set-Cookie", "cookie2=value_for_cookie_2; Path=/; HttpOnly;");
-
-
-console.log(headers.getAll("Set-Cookie"));
-
-// Array(2) [ cookie1=value_for_cookie_1; Path=/; HttpOnly;, cookie2=value_for_cookie_2; Path=/; HttpOnly; ]
-
-
+headers.append("Set-Cookie", "cookie1=value_for_cookie_1; Path=/; HttpOnly;");headers.append("Set-Cookie", "cookie2=value_for_cookie_2; Path=/; HttpOnly;");
+console.log(headers.getAll("Set-Cookie"));// Array(2) [ cookie1=value_for_cookie_1; Path=/; HttpOnly;, cookie2=value_for_cookie_2; Path=/; HttpOnly; ]
 ```
 
 ### `USVString` return type

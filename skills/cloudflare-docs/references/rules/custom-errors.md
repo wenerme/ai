@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -42,13 +42,13 @@ To customize a challenge page or a block page, use an Error Page, since Custom E
 
 Custom Errors are available to all paid plans. The exact features depend on your Cloudflare plan.
 
-| Free               | Pro | Business | Enterprise |     |
-| ------------------ | --- | -------- | ---------- | --- |
-| Availability       | No  | Yes      | Yes        | Yes |
-| Number of rules    | 0   | 25       | 50         | 300 |
-| Number of assets   | 0   | 25       | 50         | 300 |
-| Error Pages        | No  | Yes      | Yes        | Yes |
-| Origin Error Pages | No  | No       | No         | Yes |
+|                    | Free | Pro | Business | Enterprise |
+| ------------------ | ---- | --- | -------- | ---------- |
+| Availability       | No   | Yes | Yes      | Yes        |
+| Number of rules    | 0    | 25  | 50       | 300        |
+| Number of assets   | 0    | 25  | 50       | 300        |
+| Error Pages        | No   | Yes | Yes      | Yes        |
+| Origin Error Pages | No   | No  | No       | Yes        |
 
 ---
 

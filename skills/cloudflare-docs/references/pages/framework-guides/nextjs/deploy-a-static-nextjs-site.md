@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,10 +35,7 @@ If you already have a Next.js project that you wish to deploy, ensure that it is
 Terminal window
 
 ```
-
 npx create-next-app --example with-static-export my-app
-
-
 ```
 
 After creating your project, a new `my-app` directory will be generated using the official [with-static-export ↗](https://github.com/vercel/next.js/tree/canary/examples/with-static-export) example as a template. Change to this directory to continue.
@@ -46,10 +43,7 @@ After creating your project, a new `my-app` directory will be generated using th
 Terminal window
 
 ```
-
 cd my-app
-
-
 ```
 
 ### Create a GitHub repository
@@ -59,14 +53,7 @@ Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). Aft
 Terminal window
 
 ```
-
-git remote add origin https://github.com/<GH_USERNAME>/<REPOSITORY_NAME>.git
-
-git branch -M main
-
-git push -u origin main
-
-
+git remote add origin https://github.com/<GH_USERNAME>/<REPOSITORY_NAME>.gitgit branch -M maingit push -u origin main
 ```
 
 ### Deploy your application to Cloudflare Pages

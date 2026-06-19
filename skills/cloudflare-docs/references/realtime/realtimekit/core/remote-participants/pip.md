@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,10 +31,7 @@ Picture-in-Picture API might not be supported in your browser. Always check for 
 JavaScript
 
 ```
-
 const isSupported = meeting.participants.pip.isSupported();
-
-
 ```
 
 ## Enable Picture-in-Picture
@@ -42,10 +39,7 @@ const isSupported = meeting.participants.pip.isSupported();
 JavaScript
 
 ```
-
 await meeting.participants.pip.enable();
-
-
 ```
 
 ## Disable Picture-in-Picture
@@ -53,10 +47,7 @@ await meeting.participants.pip.enable();
 JavaScript
 
 ```
-
 await meeting.participants.pip.disable();
-
-
 ```
 
 ## Check support
@@ -64,28 +55,19 @@ await meeting.participants.pip.disable();
 Picture-in-Picture API might not be supported in your browser. Always check for support before using the API.
 
 ```
-
 const isSupported = meeting.participants.pip.isSupported();
-
-
 ```
 
 ## Enable Picture-in-Picture
 
 ```
-
 await meeting.participants.pip.enable();
-
-
 ```
 
 ## Disable Picture-in-Picture
 
 ```
-
 await meeting.participants.pip.disable();
-
-
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -46,10 +46,7 @@ For example, if you were using macOS:
 Terminal window
 
 ```
-
 brew install azure-cli
-
-
 ```
 
 ---
@@ -59,8 +56,7 @@ brew install azure-cli
 1. Log in through the Azure CLI and create a resource group for the Managed HSM in one of the supported regions:  
 Terminal window  
 ```  
-az login  
-az group create --name HSMgroup --location southcentralus  
+az loginaz group create --name HSMgroup --location southcentralus  
 ```  
 Note  
 For a list of supported regions, see the [Microsoft documentation ↗](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=key-vault).
@@ -69,12 +65,13 @@ For a list of supported regions, see the [Microsoft documentation ↗](https://a
 ```  
 az keyvault key import --hsm-name "KeylessHSM" --name "hsm-pub-keyless" --pem-file server.key  
 ```
-4. If the key server is running in an Azure VM in the same account, use **Managed services** for authorization:  
-   1. Enable managed services on the VM in the UI.  
-   2. Give your service user (associated with your VM) HSM sign permissions  
-   ```  
-   az keyvault role assignment create  --hsm-name KeylessHSM --assignee $(az vm identity show --name "hsmtestvm" --resource-group "HSMgroup" --query principalId -o tsv) --scope / --role "Managed HSM Crypto User"  
-   ```
+4. If the key server is running in an Azure VM in the same account, use **Managed services** for authorization:
+
+  1. Enable managed services on the VM in the UI.
+  2. Give your service user (associated with your VM) HSM sign permissions  
+  ```  
+  az keyvault role assignment create  --hsm-name KeylessHSM --assignee $(az vm identity show --name "hsmtestvm" --resource-group "HSMgroup" --query principalId -o tsv) --scope / --role "Managed HSM Crypto User"  
+  ```
 5. In the `gokeyless` YAML file, add the URI from **Step 2** under `private_key_stores`. See our [README ↗](https://github.com/cloudflare/gokeyless/blob/master/README.md) for an example.
 
 ## 5\. Restart gokeyless
@@ -84,12 +81,7 @@ Once you save the config file, restart `gokeyless` and verify that it started su
 Terminal window
 
 ```
-
-sudo systemctl restart gokeyless.service
-
-sudo systemctl status gokeyless.service -l
-
-
+sudo systemctl restart gokeyless.servicesudo systemctl status gokeyless.service -l
 ```
 
 ```json

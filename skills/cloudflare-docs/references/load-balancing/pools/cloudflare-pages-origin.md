@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -128,14 +128,16 @@ After confirming the endpoints and monitors are set up correctly and return the 
 1. In the Cloudflare dashboard, go to the **Load Balancing** page.  
 [ Go to **Load Balancing** ](https://dash.cloudflare.com/?to=/:account/load-balancing)
 2. Select **Create load balancer**.
-3. On the **Hostname** page, configure the following and select **Next**.  
-   * Enter a **Hostname**, which is the DNS name at which the load balancer is available. Suggestion: for now, you can just add a temporary hostname such as `lb` (so the complete field value would look like `lb.<your_domain>`).  
-   * Toggle the orange cloud icon to update the [proxy mode](https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/), which affects how traffic is routed and which IP addresses are advertised.  
-   * Select your preferred option for [session affinity](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/) and [adaptive routing](https://developers.cloudflare.com/load-balancing/understand-basics/adaptive-routing/).
-4. On the **Add a Pool** page, configure the following and select **Next**.  
-   * Select the first pool you created previously and select **Add Pool**.  
-   * Do the same for the second pool and reorder them if needed. For the purposes of this tutorial, your production website pool would be the first (`primary`) and the Cloudflare Pages pool would be the second (`secondary`).  
-   * If needed, update the [**Fallback Pool**](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/#fallback-pools). For the purposes of this tutorial, you can leave this pointing to your secondary pool.
+3. On the **Hostname** page, configure the following and select **Next**.
+
+  * Enter a **Hostname**, which is the DNS name at which the load balancer is available. Suggestion: for now, you can just add a temporary hostname such as `lb` (so the complete field value would look like `lb.<your_domain>`).
+  * Toggle the orange cloud icon to update the [proxy mode](https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/), which affects how traffic is routed and which IP addresses are advertised.
+  * Select your preferred option for [session affinity](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/) and [adaptive routing](https://developers.cloudflare.com/load-balancing/understand-basics/adaptive-routing/).
+4. On the **Add a Pool** page, configure the following and select **Next**.
+
+  * Select the first pool you created previously and select **Add Pool**.
+  * Do the same for the second pool and reorder them if needed. For the purposes of this tutorial, your production website pool would be the first (`primary`) and the Cloudflare Pages pool would be the second (`secondary`).
+  * If needed, update the [**Fallback Pool**](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/#fallback-pools). For the purposes of this tutorial, you can leave this pointing to your secondary pool.
 5. On the **Monitors** page, review the monitors attached to your pools and the expected health status, and select **Next**.
 6. On the **Traffic Steering** page, make sure **Off** is selected. This means the load balancer will follow the order established on the **Add a Pool** section (Step 3 above), achieving an [Active - Passive Failover](https://developers.cloudflare.com/load-balancing/load-balancers/common-configurations/#active---passive-failover) configuration.
 7. For the purposes of this tutorial, leave the [**Custom Rules**](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/) option empty.

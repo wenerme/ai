@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/moq/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,22 +32,11 @@ Until Safari has a fully functional WebTransport implementation, some MoQ use ca
 The current implementation includes a `subscribe_id` field in Subgroup Headers which [draft-ietf-moq-transport-07 ↗](https://datatracker.ietf.org/doc/html/draft-ietf-moq-transport-07) omits.  
 In section 7.3.1, `draft-ietf-moq-transport-07` [specifies ↗](https://www.ietf.org/archive/id/draft-ietf-moq-transport-07.html#section-7.3.1):  
 ```  
-STREAM_HEADER_SUBGROUP Message {  
-  Track Alias (i),  
-  Group ID (i),  
-  Subgroup ID (i),  
-  Publisher Priority (8),  
-}  
+STREAM_HEADER_SUBGROUP Message {  Track Alias (i),  Group ID (i),  Subgroup ID (i),  Publisher Priority (8),}  
 ```  
 Whereas our implementation expects and produces:  
 ```  
-STREAM_HEADER_SUBGROUP Message {  
-  Subscribe ID (i),  
-  Track Alias (i),  
-  Group ID (i),  
-  Subgroup ID (i),  
-  Publisher Priority (8),  
-}  
+STREAM_HEADER_SUBGROUP Message {  Subscribe ID (i),  Track Alias (i),  Group ID (i),  Subgroup ID (i),  Publisher Priority (8),}  
 ```  
 This was erroroneously left over from a previous draft version and will be fixed in a future release. Thank you to [@yuki-uchida ↗](https://github.com/yuki-uchida) for reporting.
 

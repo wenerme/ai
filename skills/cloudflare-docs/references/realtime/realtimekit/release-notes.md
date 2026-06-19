@@ -6,13 +6,158 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
 # Release Notes
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/realtime/realtimekit/release-notes/index.xml)
+
+## 2026-06-18
+
+**RealtimeKit Web Core 2.0.0**
+
+**Compatibility:** Works best with RealtimeKit Web UI Kit 2.0.0 or later.
+
+This is a major breaking release. Several deprecated APIs have been removed and the plugin APIs have been completely redesigned. Review the migration guide below carefully before upgrading.
+
+**Plugin APIs — complete redesign**
+
+Plugins are no longer fetched from the server automatically. You now provide plugin configurations at SDK init time via `defaults.plugins`.
+
+Before (v1.x):
+
+```ts
+// plugins were loaded via API in SDK internally
+const meeting = await RealtimeKitClient.init({
+  authToken,
+});
+
+// Server-hosted plugins were auto-populated
+const plugin = meeting.plugins.all.get(pluginId);
+
+// Plugin rendered in an iframe managed by the SDK
+plugin.addPluginView(iframeElement, 'plugin-main');
+
+// Permissions checked via meeting.self.permissions.plugins.canStart / canClose
+
+```
+
+After (v2.0):
+
+A plugin component is any `HTMLElement`. You can use a custom element, a framework component mounted to a container, or an iframe. The following example embeds a collaborative text editor as a plugin:
+
+```ts
+const editor = document.createElement('iframe');
+editor.src = 'https://rustpad.io/#WKLJaD';
+editor.style.width = '100%';
+editor.style.height = '100%';
+editor.style.border = 'none';
+
+const meeting = await RealtimeKitClient.init({
+  authToken,
+  defaults: {
+    plugins: [
+      {
+        id: 'collaborative-editor', // SDK prefixes this with {meetingId}: to create the namespaced plugin.id
+        name: 'Collaborative Editor',
+        icon: 'https://example.com/editor.png',
+        permissions: {
+          canActivate: true,
+          canDeactivate: true,
+        },
+        component: editor,
+      },
+    ],
+  },
+});
+
+// Plugin is registered and available
+const plugin = meeting.plugins.all.get(pluginId);
+
+// Activate — state is synced across all participants
+await plugin.activate();
+
+```
+
+For a complete guide on building custom plugins, refer to [Build your own plugins](https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/build-your-own-plugins/). If you need to record plugin content, you must build a [custom recording app](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/create-record-app-using-sdks/).
+
+Key changes:
+
+* New type exports: `ClientPluginConfig`, `ClientPluginPermissions`.
+* Plugin `id` is now namespaced: the SDK prefixes your provided `id` with `{meetingId}:` to create the internal `pluginId`.
+* Plugin activation and deactivation state is now synced via a collaborative store (`__rtk_plugins__`) instead of dedicated socket messages.
+* Plugins now have a `component` property (any `HTMLElement`) instead of iframe-based rendering via `addPluginView`.
+* Per-plugin permissions (`plugin.permissions.canActivate` / `plugin.permissions.canDeactivate`) replace the old global `meeting.self.permissions.plugins.canStart` / `meeting.self.permissions.plugins.canClose`.
+
+Removed plugin APIs:
+
+* `plugin.addPluginView(iframe, viewId)` — pass an `HTMLElement` as `component` in `ClientPluginConfig` instead.
+* `plugin.removePluginView(viewId)` — handled automatically by the UI Kit.
+* `plugin.enable()` — use `plugin.activate()`.
+* `plugin.disable()` — use `plugin.deactivate()`.
+* `plugin.sendIframeEvent()` — removed. Communicate directly with your component.
+* `plugin.baseURL` — removed. Plugins are no longer server-hosted.
+* `plugin.picture` — use `plugin.icon`.
+* `plugin.description`, `plugin.organizationId`, `plugin.tags`, `plugin.type`, `plugin.staggered`, `plugin.private`, `plugin.published`, `plugin.createdAt`, `plugin.updatedAt` — removed. No longer applicable.
+* `plugin.config` (PluginConfig) — removed. No plugin manifest concept.
+* `meeting.self.permissions.plugins.canStart` — use `plugin.permissions.canActivate`.
+* `meeting.self.permissions.plugins.canClose` — use `plugin.permissions.canDeactivate`.
+* `modules.devTools.plugins` (local dev plugin config) — use `defaults.plugins` with a `component` pointing to your local element.
+
+**Removed deprecated APIs**
+
+Client:
+
+* `meeting.joinRoom()` — use `meeting.join()`.
+* `meeting.leaveRoom()` — use `meeting.leave()`.
+
+Chat:
+
+* `meeting.chat.getMessagesByUser(userId)` — use `meeting.chat.fetchPublicMessages()` with appropriate filters.
+* `meeting.chat.getMessagesByType(type)` — use `meeting.chat.fetchPublicMessages()` with appropriate filters.
+* `meeting.chat.getMessages(timestamp, size, reversed)` — use `meeting.chat.fetchPublicMessages()` or `meeting.chat.fetchPrivateMessages()`.
+* `meeting.chat.searchMessages(query, filters)` — use `meeting.chat.fetchPublicMessages()` or `meeting.chat.fetchPrivateMessages()`.
+* `meeting.chat.pinned` (getter) — use `meeting.chat.fetchPinnedMessages()`.
+
+Permissions (`meeting.self.permissions`):
+
+* `permissions.produceVideo` — use `permissions.canProduceVideo`.
+* `permissions.produceAudio` — use `permissions.canProduceAudio`.
+* `permissions.produceScreenshare` — use `permissions.canProduceScreenshare`.
+* `permissions.waitingRoomType` — use `permissions.waitingRoomBehaviour`.
+* `permissions.canChangeParticipantRole` — use `permissions.canChangeParticipantPermissions`.
+* `permissions.canChangeTheme` — removed (always returned `false`).
+* `permissions.canPresent` — check individual `canProduceAudio`, `canProduceVideo`, `canProduceScreenshare`.
+* `permissions.requestProduce` — check individual media permissions for `CAN_REQUEST` values.
+* `permissions.acceptPresentRequests` — use `permissions.acceptStageRequests`.
+* `permissions.maxScreenShareCount` — use `meeting.self.config.maxScreenShareCount`.
+* `PermissionPreset.fromResponse()` — use `PermissionPreset.init()`.
+* `PermissionPreset.default()` — use `PermissionPreset.init()`.
+
+Participants:
+
+* `meeting.participants.disableAudio(participantId)` — use `meeting.participants.joined.get(participantId).disableAudio()`.
+* `meeting.participants.disableVideo(participantId)` — use `meeting.participants.joined.get(participantId).disableVideo()`.
+* `meeting.participants.kick(participantId)` — call kick on the participant directly.
+* `participant.clientSpecificId` — use `participant.customParticipantId`.
+
+Connected Meetings:
+
+* `meeting.connectedMeetings.supportsConnectedMeetings` — removed. Permission checks are now granular via `meeting.self.permissions.connectedMeetings`.
+
+**Enhancements**
+
+* Faster reconnection: Socket-only disconnects (where WebRTC transports remain healthy) now skip full transport re-setup. Producers are re-registered and existing consumers are remapped, significantly reducing reconnection time.
+* Participants stay visible during reconnection: Participant tiles remain in the grid during a socket blip instead of disappearing and reappearing, providing a seamless experience.
+* Double audio fix: Fixed an issue where other participants could hear double audio from a reconnected participant, caused by stale producers not being cleaned up.
+* Socket reconnection resilience: Socket now supports up to 50 reconnection attempts with exponential backoff and jitter (up from 10), providing up to approximately four minutes of retry coverage when the internet is down.
+* Store improvements: `StoreManager` now supports `refresh(name)` to re-fetch store data from the server, and reserved store names (`__rtk_plugins__`) are protected from user creation.
+
+**Fixes**
+
+* Fixed socket failing to reconnect if left disconnected for 30 seconds.
 
 ## 2026-05-28
 
@@ -116,12 +261,12 @@ Removed non-operational chat channel APIs to streamline the RealtimeKit SDK. Mee
 
 **API changes**
 
-* The following methods no longer accept a third optional `channelId` parameter:  
-   * `meeting.chat.editTextMessage(messageId, message)`  
-   * `meeting.chat.editImageMessage(messageId, imageFile)`  
-   * `meeting.chat.editFileMessage(messageId, file)`  
-   * `meeting.chat.editMessage(messageId, messagePayload)`  
-   * `meeting.chat.deleteMessage(messageId)`
+* The following methods no longer accept a third optional `channelId` parameter:
+  * `meeting.chat.editTextMessage(messageId, message)`
+  * `meeting.chat.editImageMessage(messageId, imageFile)`
+  * `meeting.chat.editFileMessage(messageId, file)`
+  * `meeting.chat.editMessage(messageId, messagePayload)`
+  * `meeting.chat.deleteMessage(messageId)`
 
 **Deprecations**
 
@@ -316,6 +461,6 @@ meeting.participants.broadcastMessage("<message_type>", { message: "Hi" }, {
 * Initial release of Cloudflare RealtimeKit with support for group calls, webinars, livestreaming, polls, and chat.
 
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/realtime/realtimekit/release-notes/#page","headline":"Release Notes · Cloudflare Realtime docs","description":"Release notes and changelog for the RealtimeKit Web Core SDK.","url":"https://developers.cloudflare.com/realtime/realtimekit/release-notes/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/realtime/realtimekit/release-notes/#page","headline":"Release Notes · Cloudflare Realtime docs","description":"Release notes and changelog for the RealtimeKit Web Core SDK.","url":"https://developers.cloudflare.com/realtime/realtimekit/release-notes/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/release-notes/","name":"Release Notes"}}]}
 ```

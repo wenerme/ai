@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,8 +20,8 @@ Some admins choose to test by authenticating with a [one-time PIN (OTP)](https:/
 
 To add an identity provider:
 
-* [ Dashboard ](#tab-panel-9138)
-* [ Terraform (v5) ](#tab-panel-9139)
+* [ Dashboard ](#tab-panel-9214)
+* [ Terraform (v5) ](#tab-panel-9215)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. In the **Your identity providers** card, select **Add new identity provider**.
@@ -31,21 +31,12 @@ If you do not see your identity provider listed, these providers can typically s
 Each identity provider will have different required fields for you to fill in. Step-by-step instructions are shown in the dashboard side panel. Alternatively, refer to the [IdP-specific documentation](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/).
 5. Once you have filled in the necessary fields, select **Save**.
 
-1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):  
-   * `Access: Organizations, Identity Providers, and Groups Write`
+1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
+
+  * `Access: Organizations, Identity Providers, and Groups Write`
 2. Add an identity provider to Cloudflare One using the [cloudflare\_zero\_trust\_access\_identity\_provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fidentity%5Fprovider) resource. For example, to add a Microsoft Entra ID integration:  
 ```  
-resource "cloudflare_zero_trust_access_identity_provider" "microsoft_entra_id" {  
-  account_id = var.cloudflare_account_id  
-  name       = "Entra ID example"  
-  type       = "azureAD"  
-  config      = {  
-    client_id                  = var.entra_id_client_id  
-    client_secret              = var.entra_id_client_secret  
-    directory_id               = var.entra_id_directory_id  
-    support_groups             = true  
-    }  
-}  
+resource "cloudflare_zero_trust_access_identity_provider" "microsoft_entra_id" {  account_id = var.cloudflare_account_id  name       = "Entra ID example"  type       = "azureAD"  config      = {    client_id                  = var.entra_id_client_id    client_secret              = var.entra_id_client_secret    directory_id               = var.entra_id_directory_id    support_groups             = true    }}  
 ```  
 Each identity provider integration has different required attributes. You will need to obtain these attribute values from your identity provider. For more information, refer to the [IdP-specific documentation](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/).  
 If you do not see your identity provider listed, these providers can typically still be enabled. If they support OIDC or OAuth, use the [generic OIDC](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/) option. If they support SAML, use the [generic SAML](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/) option. Cloudflare supports all SAML and OIDC providers and can integrate with the majority of OAuth providers. If your provider supports both SAML and OIDC, we recommend OIDC for ease of configuration.

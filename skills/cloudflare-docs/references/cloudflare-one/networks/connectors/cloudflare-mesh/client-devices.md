@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,8 +26,8 @@ Connect a laptop or phone to your Mesh network:
 
 To enroll your device using the client GUI:
 
-* [ Version 2026.2+ ](#tab-panel-7225)
-* [ Version 2026.1 and earlier ](#tab-panel-7226)
+* [ Version 2026.2+ ](#tab-panel-7301)
+* [ Version 2026.1 and earlier ](#tab-panel-7302)
 
 1. [Download](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) and install the Cloudflare One Client.
 2. Launch the Cloudflare One Client.
@@ -69,10 +69,7 @@ Test that the device can reach a Mesh node or another client device:
 Terminal window
 
 ```
-
 ping <MESH-IP>
-
-
 ```
 
 Replace `<MESH-IP>` with the Mesh IP of a node (visible on the [Mesh overview page ↗](https://dash.cloudflare.com/?to=/:account/mesh)) or another enrolled device. Any TCP, UDP, or ICMP traffic works — you can SSH, connect to databases, call APIs, or run any protocol over Mesh IPs.

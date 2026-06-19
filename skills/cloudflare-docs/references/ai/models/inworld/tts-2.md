@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,483 +29,130 @@ Inworld's most powerful and expressive text-to-speech model. Builds on TTS 1.5 w
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-796)
-* [ cURL ](#tab-panel-797)
+* [ TypeScript ](#tab-panel-774)
+* [ cURL ](#tab-panel-775)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'inworld/tts-2',
-
-  {
-
-    output_format: 'mp3',
-
-    temperature: 1,
-
-    text: 'Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.',
-
-    timestamp_type: 'none',
-
-    voice_id: 'Dennis',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'inworld/tts-2',  {    output_format: 'mp3',    temperature: 1,    text: 'Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.',    timestamp_type: 'none',    voice_id: 'Dennis',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "inworld/tts-2",
-
-  "input": {
-
-    "output_format": "mp3",
-
-    "temperature": 1,
-
-    "text": "Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.",
-
-    "timestamp_type": "none",
-
-    "voice_id": "Dennis"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "inworld/tts-2",  "input": {    "output_format": "mp3",    "temperature": 1,    "text": "Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.",    "timestamp_type": "none",    "voice_id": "Dennis"  }}'
 ```
 
-* [ Output ](#tab-panel-792)
-* [ Raw response ](#tab-panel-793)
+* [ Output ](#tab-panel-770)
+* [ Raw response ](#tab-panel-771)
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/inworld__tts-2/simple-speech.mp3"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/inworld__tts-2/simple-speech.mp3"  },  "state": "Completed"}
 ```
 
 ## Examples
 
 **Natural Language Steering**  — Direct the voice with bracketed natural-language cues for emotion, pace, and style. 
 
-* [ TypeScript ](#tab-panel-800)
-* [ cURL ](#tab-panel-801)
+* [ TypeScript ](#tab-panel-778)
+* [ cURL ](#tab-panel-779)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'inworld/tts-2',
-
-  {
-
-    output_format: 'mp3',
-
-    temperature: 1,
-
-    text: "[speak with excitement] I'm really excited about Inworld's new model. Have you tried out the steering capabilities? It's pretty cool!",
-
-    timestamp_type: 'none',
-
-    voice_id: 'Dennis',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'inworld/tts-2',  {    output_format: 'mp3',    temperature: 1,    text: "[speak with excitement] I'm really excited about Inworld's new model. Have you tried out the steering capabilities? It's pretty cool!",    timestamp_type: 'none',    voice_id: 'Dennis',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "inworld/tts-2",
-
-  "input": {
-
-    "output_format": "mp3",
-
-    "temperature": 1,
-
-    "text": "[speak with excitement] I'\''m really excited about Inworld'\''s new model. Have you tried out the steering capabilities? It'\''s pretty cool!",
-
-    "timestamp_type": "none",
-
-    "voice_id": "Dennis"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "inworld/tts-2",  "input": {    "output_format": "mp3",    "temperature": 1,    "text": "[speak with excitement] I'\''m really excited about Inworld'\''s new model. Have you tried out the steering capabilities? It'\''s pretty cool!",    "timestamp_type": "none",    "voice_id": "Dennis"  }}'
 ```
 
-* [ Output ](#tab-panel-794)
-* [ Raw response ](#tab-panel-795)
+* [ Output ](#tab-panel-772)
+* [ Raw response ](#tab-panel-773)
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/inworld__tts-2/natural-language-steering.mp3"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/inworld__tts-2/natural-language-steering.mp3"  },  "state": "Completed"}
 ```
 
 **Whisper**  — Use steering tags to whisper 
 
-* [ TypeScript ](#tab-panel-804)
-* [ cURL ](#tab-panel-805)
+* [ TypeScript ](#tab-panel-782)
+* [ cURL ](#tab-panel-783)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'inworld/tts-2',
-
-  {
-
-    output_format: 'mp3',
-
-    temperature: 1,
-
-    text: '[whisper] This is a secret just between us.',
-
-    timestamp_type: 'none',
-
-    voice_id: 'Dennis',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'inworld/tts-2',  {    output_format: 'mp3',    temperature: 1,    text: '[whisper] This is a secret just between us.',    timestamp_type: 'none',    voice_id: 'Dennis',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "inworld/tts-2",
-
-  "input": {
-
-    "output_format": "mp3",
-
-    "temperature": 1,
-
-    "text": "[whisper] This is a secret just between us.",
-
-    "timestamp_type": "none",
-
-    "voice_id": "Dennis"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "inworld/tts-2",  "input": {    "output_format": "mp3",    "temperature": 1,    "text": "[whisper] This is a secret just between us.",    "timestamp_type": "none",    "voice_id": "Dennis"  }}'
 ```
 
-* [ Output ](#tab-panel-798)
-* [ Raw response ](#tab-panel-799)
+* [ Output ](#tab-panel-776)
+* [ Raw response ](#tab-panel-777)
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/inworld__tts-2/whisper.mp3"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/inworld__tts-2/whisper.mp3"  },  "state": "Completed"}
 ```
 
 **High Quality Audio**  — Higher sample rate for studio quality 
 
-* [ TypeScript ](#tab-panel-808)
-* [ cURL ](#tab-panel-809)
+* [ TypeScript ](#tab-panel-786)
+* [ cURL ](#tab-panel-787)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'inworld/tts-2',
-
-  {
-
-    output_format: 'mp3',
-
-    sample_rate: 48000,
-
-    temperature: 1,
-
-    text: 'This recording is generated at studio quality for the best possible listening experience.',
-
-    timestamp_type: 'none',
-
-    voice_id: 'Dennis',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'inworld/tts-2',  {    output_format: 'mp3',    sample_rate: 48000,    temperature: 1,    text: 'This recording is generated at studio quality for the best possible listening experience.',    timestamp_type: 'none',    voice_id: 'Dennis',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "inworld/tts-2",
-
-  "input": {
-
-    "output_format": "mp3",
-
-    "sample_rate": 48000,
-
-    "temperature": 1,
-
-    "text": "This recording is generated at studio quality for the best possible listening experience.",
-
-    "timestamp_type": "none",
-
-    "voice_id": "Dennis"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "inworld/tts-2",  "input": {    "output_format": "mp3",    "sample_rate": 48000,    "temperature": 1,    "text": "This recording is generated at studio quality for the best possible listening experience.",    "timestamp_type": "none",    "voice_id": "Dennis"  }}'
 ```
 
-* [ Output ](#tab-panel-802)
-* [ Raw response ](#tab-panel-803)
+* [ Output ](#tab-panel-780)
+* [ Raw response ](#tab-panel-781)
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/inworld__tts-2/high-quality-audio.mp3"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/inworld__tts-2/high-quality-audio.mp3"  },  "state": "Completed"}
 ```
 
 **With Text Normalization**  — Expand numbers and abbreviations before synthesis 
 
-* [ TypeScript ](#tab-panel-810)
-* [ cURL ](#tab-panel-811)
+* [ TypeScript ](#tab-panel-788)
+* [ cURL ](#tab-panel-789)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'inworld/tts-2',
-
-  {
-
-    apply_text_normalization: true,
-
-    output_format: 'mp3',
-
-    temperature: 1,
-
-    text: 'The meeting is at 3:30 PM on Jan 15th, 2026. Please confirm by calling 555-0123.',
-
-    timestamp_type: 'none',
-
-    voice_id: 'Dennis',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'inworld/tts-2',  {    apply_text_normalization: true,    output_format: 'mp3',    temperature: 1,    text: 'The meeting is at 3:30 PM on Jan 15th, 2026. Please confirm by calling 555-0123.',    timestamp_type: 'none',    voice_id: 'Dennis',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "inworld/tts-2",
-
-  "input": {
-
-    "apply_text_normalization": true,
-
-    "output_format": "mp3",
-
-    "temperature": 1,
-
-    "text": "The meeting is at 3:30 PM on Jan 15th, 2026. Please confirm by calling 555-0123.",
-
-    "timestamp_type": "none",
-
-    "voice_id": "Dennis"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "inworld/tts-2",  "input": {    "apply_text_normalization": true,    "output_format": "mp3",    "temperature": 1,    "text": "The meeting is at 3:30 PM on Jan 15th, 2026. Please confirm by calling 555-0123.",    "timestamp_type": "none",    "voice_id": "Dennis"  }}'
 ```
 
-* [ Output ](#tab-panel-806)
-* [ Raw response ](#tab-panel-807)
+* [ Output ](#tab-panel-784)
+* [ Raw response ](#tab-panel-785)
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/inworld__tts-2/with-text-normalization.mp3"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/inworld__tts-2/with-text-normalization.mp3"  },  "state": "Completed"}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-812)
-* [ Output ](#tab-panel-813)
+* [ Input ](#tab-panel-790)
+* [ Output ](#tab-panel-791)
 
 apply\_text\_normalization
 
@@ -551,7 +198,7 @@ audio
 
 Input [ ](https://developers.cloudflare.com/ai/models/inworld/tts-2/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/inworld/tts-2/schema-input.json "Download") 
 
-Output [ ](https://developers.cloudflare.com/ai/models/inworld/tts-2/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/inworld/tts-2/schema-output.json "Download") 
+Output [ ](https://developers.cloudflare.com/ai/models/inworld/tts-2/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/inworld/tts-2/schema-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/inworld/tts-2/#page","headline":"Inworld TTS 2 (Inworld) · Cloudflare AI docs · Cloudflare AI docs","description":"Inworld's most powerful and expressive text-to-speech model. Builds on TTS 1.5 with rich expressive speech, real-time latency, natural language steering (e.g. \\[whisper], \\[say excitedly]), and stronger multilingual support across 15 production languages plus 90+ experimental languages.","url":"https://developers.cloudflare.com/ai/models/inworld/tts-2/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

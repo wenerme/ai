@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,8 +28,8 @@ Because you can [configure MFA at the application and policy level](https://deve
 
 Before you can [enforce independent MFA on applications and policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#independent-mfa), you must turn on independent MFA at the organization level.
 
-* [ Dashboard ](#tab-panel-7071)
-* [ API ](#tab-panel-7072)
+* [ Dashboard ](#tab-panel-7147)
+* [ API ](#tab-panel-7148)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Access settings**.
 2. Under **Allow multi-factor authentication (MFA)**, select the [MFA methods](#supported-mfa-methods) you want to allow in your organization.
@@ -42,43 +42,27 @@ The [App Launcher](https://developers.cloudflare.com/cloudflare-one/access-contr
 
 1. Get your existing Zero Trust organization configuration:  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Access: Organizations, Identity Providers, and Groups Revoke`  
-   * `Access: Organizations, Identity Providers, and Groups Write`  
-   * `Access: Organizations, Identity Providers, and Groups Read`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Access: Organizations, Identity Providers, and Groups Revoke`
+  * `Access: Organizations, Identity Providers, and Groups Write`
+  * `Access: Organizations, Identity Providers, and Groups Read`  
 Get your Zero Trust organization  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/organizations" \  
-  --request GET \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/organizations" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
 ```
 2. Send a `PUT` request to update your organization's MFA settings. To avoid overwriting your existing configuration, the `PUT` request body should contain all fields returned by the previous `GET` request.  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Access: Organizations, Identity Providers, and Groups Write`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Access: Organizations, Identity Providers, and Groups Write`  
 Update your Zero Trust organization  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/organizations" \  
-  --request PUT \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "auth_domain": "your-team-name.cloudflareaccess.com",  
-    "name": "Your Team Name",  
-    "mfa_config": {  
-        "allowed_authenticators": [  
-            "totp",  
-            "biometrics",  
-            "security_key"  
-        ],  
-        "session_duration": "24h"  
-    },  
-    "mfa_required_for_all_apps": false  
-  }'  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/organizations" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "auth_domain": "your-team-name.cloudflareaccess.com",    "name": "Your Team Name",    "mfa_config": {        "allowed_authenticators": [            "totp",            "biometrics",            "security_key"        ],        "session_duration": "24h"    },    "mfa_required_for_all_apps": false  }'  
 ```  
-Set `allowed_authenticators` to an array containing one or more of:  
-   * `totp` — Authenticator application (time-based one-time passwords).  
-   * `biometrics` — Biometrics (Touch ID, Face ID, Windows Hello).  
-   * `security_key` — Security keys (YubiKeys).  
+Set `allowed_authenticators` to an array containing one or more of:
+
+  * `totp` — Authenticator application (time-based one-time passwords).
+  * `biometrics` — Biometrics (Touch ID, Face ID, Windows Hello).
+  * `security_key` — Security keys (YubiKeys).  
 Set `session_duration` to a duration string (for example, `30m`, `1h`, `24h`). To require MFA on every access, use `0m`.
 
 After you turn on independent MFA, users can [enroll authenticators](#enroll-authenticators) through the [App Launcher](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/).
@@ -97,18 +81,18 @@ Some authenticators do not send an AAGUID during WebAuthn registration, such as 
 
 AAGUIDs are managed using [Lists](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/). Create a list of type **AAGUID**, then reference the list in your organization's MFA configuration.
 
-* [ Dashboard ](#tab-panel-7069)
-* [ API ](#tab-panel-7070)
+* [ Dashboard ](#tab-panel-7145)
+* [ API ](#tab-panel-7146)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Resources** \> **Lists**.
 2. Select **Create new list**.
 3. Enter a **List name** (for example, `Approved security keys`) and an optional description.
 4. Set **List type** to **MFA AAGUIDs**.
 5. Add one or more AAGUID entries:  
-   * To add predefined AAGUIDs, select authenticators from the **Known authenticators** list.  
-   * To add a custom AAGUID, fill out the following fields:  
-         * **MFA AAGUIDs** — The AAGUID of the authenticator, in 32-character hexadecimal format without dashes (for example, `8c39ee867f9a4a959ba3f6b097e5c2ee`).  
-         * **Description** — An optional label such as the authenticator's name and model.
+  * To add predefined AAGUIDs, select authenticators from the **Known authenticators** list.
+  * To add a custom AAGUID, fill out the following fields:  
+    * **MFA AAGUIDs** — The AAGUID of the authenticator, in 32-character hexadecimal format without dashes (for example, `8c39ee867f9a4a959ba3f6b097e5c2ee`).
+    * **Description** — An optional label such as the authenticator's name and model.
 6. Select **Save**.
 
 Send a `POST` request to create the list:
@@ -116,36 +100,7 @@ Send a `POST` request to create the list:
 Create Zero Trust list
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/lists" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "Approved security keys",
-
-    "description": "AAGUIDs for MFA enrollment",
-
-    "type": "AAGUID",
-
-    "items": [
-
-        {
-
-            "value": "8c39ee867f9a4a959ba3f6b097e5c2ee",
-
-            "description": "YubiKey Bio Series - FIDO Edition (Enterprise Profile)"
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/lists" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Approved security keys",    "description": "AAGUIDs for MFA enrollment",    "type": "AAGUID",    "items": [        {            "value": "8c39ee867f9a4a959ba3f6b097e5c2ee",            "description": "YubiKey Bio Series - FIDO Edition (Enterprise Profile)"        }    ]  }'
 ```
 
 The response contains an `id` (UUID) for the list. Use this ID when you assign the list to your organization's MFA configuration.
@@ -156,8 +111,8 @@ You can look up AAGUIDs for common authenticators in the [FIDO Alliance Metadata
 
 ### 2\. Assign an AAGUID list to your organization
 
-* [ Dashboard ](#tab-panel-7075)
-* [ API ](#tab-panel-7076)
+* [ Dashboard ](#tab-panel-7151)
+* [ API ](#tab-panel-7152)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Access settings**.
 2. Under **Allow multi-factor authentication (MFA)**, go to **Limit MFA to specific authentication methods**.
@@ -168,38 +123,21 @@ After you save, only authenticators whose AAGUIDs appear in the list can be enro
 
 1. Get your existing Zero Trust organization configuration:  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Access: Organizations, Identity Providers, and Groups Revoke`  
-   * `Access: Organizations, Identity Providers, and Groups Write`  
-   * `Access: Organizations, Identity Providers, and Groups Read`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Access: Organizations, Identity Providers, and Groups Revoke`
+  * `Access: Organizations, Identity Providers, and Groups Write`
+  * `Access: Organizations, Identity Providers, and Groups Read`  
 Get your Zero Trust organization  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/organizations" \  
-  --request GET \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/organizations" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
 ```
 2. Send a `PUT` request to assign the list. To avoid overwriting your existing configuration, the `PUT` request body should contain all fields returned by the previous `GET` request. Set `mfa_config.required_aaguids` to the ID of your AAGUID list.  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Access: Organizations, Identity Providers, and Groups Write`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Access: Organizations, Identity Providers, and Groups Write`  
 Update your Zero Trust organization  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/organizations" \  
-  --request PUT \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "auth_domain": "your-team-name.cloudflareaccess.com",  
-    "name": "Your Team Name",  
-    "mfa_config": {  
-        "allowed_authenticators": [  
-            "security_key",  
-            "totp",  
-            "biometrics"  
-        ],  
-        "session_duration": "24h",  
-        "required_aaguids": "05ddacda-5131-41ab-9eeb-6763f8dce3be"  
-    }  
-  }'  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/organizations" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "auth_domain": "your-team-name.cloudflareaccess.com",    "name": "Your Team Name",    "mfa_config": {        "allowed_authenticators": [            "security_key",            "totp",            "biometrics"        ],        "session_duration": "24h",        "required_aaguids": "05ddacda-5131-41ab-9eeb-6763f8dce3be"    }  }'  
 ```  
 To remove the restriction, set `required_aaguids` to `null`.
 
@@ -228,8 +166,8 @@ Access ignores AMR values that do not map to a supported authenticator type (for
 
 ### Turn on AMR matching
 
-* [ Dashboard ](#tab-panel-7077)
-* [ API ](#tab-panel-7078)
+* [ Dashboard ](#tab-panel-7153)
+* [ API ](#tab-panel-7154)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Access settings**.
 2. Under **Allow multi-factor authentication (MFA)**, turn on **Use identity provider MFA**.
@@ -238,39 +176,21 @@ Access ignores AMR values that do not map to a supported authenticator type (for
 
 1. Get your existing Zero Trust organization configuration:  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Access: Organizations, Identity Providers, and Groups Revoke`  
-   * `Access: Organizations, Identity Providers, and Groups Write`  
-   * `Access: Organizations, Identity Providers, and Groups Read`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Access: Organizations, Identity Providers, and Groups Revoke`
+  * `Access: Organizations, Identity Providers, and Groups Write`
+  * `Access: Organizations, Identity Providers, and Groups Read`  
 Get your Zero Trust organization  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/organizations" \  
-  --request GET \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/organizations" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
 ```
 2. Send a `PUT` request to update your organization's AMR matching settings. To avoid overwriting your existing configuration, the `PUT` request body should contain all fields returned by the previous `GET` request.  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Access: Organizations, Identity Providers, and Groups Write`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Access: Organizations, Identity Providers, and Groups Write`  
 Update your Zero Trust organization  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/organizations" \  
-  --request PUT \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "auth_domain": "your-team-name.cloudflareaccess.com",  
-    "name": "Your Team Name",  
-    "mfa_config": {  
-        "allowed_authenticators": [  
-            "totp",  
-            "biometrics",  
-            "security_key"  
-        ],  
-        "session_duration": "24h",  
-        "amr_matching_enabled": true,  
-        "amr_session_duration": "1h"  
-    }  
-  }'  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/organizations" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "auth_domain": "your-team-name.cloudflareaccess.com",    "name": "Your Team Name",    "mfa_config": {        "allowed_authenticators": [            "totp",            "biometrics",            "security_key"        ],        "session_duration": "24h",        "amr_matching_enabled": true,        "amr_session_duration": "1h"    }  }'  
 ```
 
 ### When AMR matching is skipped
@@ -295,8 +215,8 @@ Turning off independent MFA removes MFA protection on all Access applications. B
 
 To turn off independent MFA for the organization:
 
-* [ Dashboard ](#tab-panel-7073)
-* [ API ](#tab-panel-7074)
+* [ Dashboard ](#tab-panel-7149)
+* [ API ](#tab-panel-7150)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Access settings**.
 2. Under **Allow multi-factor authentication (MFA)**, turn off **Apply global MFA settings by default**.
@@ -306,32 +226,21 @@ If you get an error updating MFA settings, ensure that you have removed custom M
 
 1. Get your existing Zero Trust organization configuration:  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Access: Organizations, Identity Providers, and Groups Revoke`  
-   * `Access: Organizations, Identity Providers, and Groups Write`  
-   * `Access: Organizations, Identity Providers, and Groups Read`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Access: Organizations, Identity Providers, and Groups Revoke`
+  * `Access: Organizations, Identity Providers, and Groups Write`
+  * `Access: Organizations, Identity Providers, and Groups Read`  
 Get your Zero Trust organization  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/organizations" \  
-  --request GET \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/organizations" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
 ```
 2. Send a `PUT` request with an empty `allowed_authenticators` array. To avoid overwriting your existing configuration, the `PUT` request body should contain all fields returned by the previous `GET` request.  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Access: Organizations, Identity Providers, and Groups Write`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Access: Organizations, Identity Providers, and Groups Write`  
 Update your Zero Trust organization  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/organizations" \  
-  --request PUT \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "auth_domain": "your-team-name.cloudflareaccess.com",  
-    "name": "Your Team Name",  
-    "mfa_config": {  
-        "allowed_authenticators": []  
-    }  
-  }'  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/organizations" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "auth_domain": "your-team-name.cloudflareaccess.com",    "name": "Your Team Name",    "mfa_config": {        "allowed_authenticators": []    }  }'  
 ```
 
 ## Enroll authenticators
@@ -349,21 +258,24 @@ Note
 Administrators can also share a direct enrollment link to help onboard users: `<your-team-name>.cloudflareaccess.com/AddMfaDevice`
 4. If you already have an MFA device enrolled, complete the MFA verification prompt.
 5. Select the authenticator type you want to enroll and follow the on-screen instructions.  
-Authenticator application  
-   1. Select **Authenticator application**.  
-   2. Scan the QR code with your authenticator app (for example, Google Authenticator, Microsoft Authenticator, or Authy). Alternatively, you can manually enter the setup key into your authenticator app. Use SHA1 as the hash function and set the time-step size to 30 seconds.  
-   3. Enter the 6-digit time-based one-time password (TOTP) generated by your authenticator app to verify enrollment.  
+Authenticator application
+
+  1. Select **Authenticator application**.
+  2. Scan the QR code with your authenticator app (for example, Google Authenticator, Microsoft Authenticator, or Authy). Alternatively, you can manually enter the setup key into your authenticator app. Use SHA1 as the hash function and set the time-step size to 30 seconds.
+  3. Enter the 6-digit time-based one-time password (TOTP) generated by your authenticator app to verify enrollment.  
 Note  
 You can only have one TOTP authenticator enrolled at a time. If you use multiple devices, scan the same QR code on each device during enrollment. To replace an existing TOTP authenticator, delete it first and then enroll a new one.  
-Security key  
-   1. Select **Security key**.  
-   2. When your browser prompts you, insert your security key and follow the on-screen instructions.  
-   3. After your browser confirms the registration, the security key is enrolled.  
+Security key
+
+  1. Select **Security key**.
+  2. When your browser prompts you, insert your security key and follow the on-screen instructions.
+  3. After your browser confirms the registration, the security key is enrolled.  
 You can enroll multiple security keys for backup purposes.  
-Biometrics  
-   1. Select **Biometrics** \> **Register biometrics**.  
-   2. You will be prompted to enroll with an authenticator type that is available on your device (for example, **Add macOS Touch ID** or **Add Windows Hello**).  
-   3. After your browser confirms the registration, the platform authenticator is enrolled.
+Biometrics
+
+  1. Select **Biometrics** \> **Register biometrics**.
+  2. You will be prompted to enroll with an authenticator type that is available on your device (for example, **Add macOS Touch ID** or **Add Windows Hello**).
+  3. After your browser confirms the registration, the platform authenticator is enrolled.
 
 You can now use these authenticators to log in to your organization's applications.
 
@@ -406,8 +318,8 @@ To view a user's enrolled authenticators:
 
 If a user is locked out or you need to revoke an authenticator for security reasons, you can delete it from the dashboard or API.
 
-* [ Dashboard ](#tab-panel-7067)
-* [ API ](#tab-panel-7068)
+* [ Dashboard ](#tab-panel-7143)
+* [ API ](#tab-panel-7144)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Users**.
 2. Select the user whose authenticator you want to delete.
@@ -420,14 +332,7 @@ Send a `DELETE` request to remove a specific authenticator:
 Delete a user's MFA device
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/users/$USER_ID/mfa_authenticators/$AUTHENTICATOR_ID" \
-
-  --request DELETE \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/users/$USER_ID/mfa_authenticators/$AUTHENTICATOR_ID" \  --request DELETE \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Parameters:

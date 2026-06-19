@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,10 +21,7 @@ This page documents every route exposed by the [sandbox bridge](https://develope
 All routes under `/v1/sandbox/*` and `/v1/openapi.*` require a Bearer token:
 
 ```
-
 Authorization: Bearer <SANDBOX_API_KEY>
-
-
 ```
 
 When `SANDBOX_API_KEY` is not configured, authentication is skipped for local development convenience. Always set the secret before deploying to production.
@@ -59,18 +56,7 @@ When running locally with `npm run dev`, open `http://localhost:8787/v1/openapi`
 The `/exec` endpoint accepts a JSON body:
 
 ```
-
-{
-
-  "argv": ["sh", "-lc", "echo hello"],
-
-  "timeout_ms": 10000,
-
-  "cwd": "/workspace"
-
-}
-
-
+{  "argv": ["sh", "-lc", "echo hello"],  "timeout_ms": 10000,  "cwd": "/workspace"}
 ```
 
 ### Argv escaping
@@ -122,24 +108,7 @@ The `/mount` endpoint accepts a JSON body. Two flows are supported:
 Omit `endpoint` and pass the Worker R2 binding name in `bucket`:
 
 ```
-
-{
-
-  "bucket": "MY_BUCKET",
-
-  "mountPath": "/mnt/data",
-
-  "options": {
-
-    "readOnly": false,
-
-    "prefix": "/subdir"
-
-  }
-
-}
-
-
+{  "bucket": "MY_BUCKET",  "mountPath": "/mnt/data",  "options": {    "readOnly": false,    "prefix": "/subdir"  }}
 ```
 
 When `options.endpoint` is omitted, `bucket` means the Worker R2 binding name.
@@ -147,34 +116,7 @@ When `options.endpoint` is omitted, `bucket` means the Worker R2 binding name.
 For an explicit S3-compatible endpoint mount, include `endpoint` and optionally `credentials`:
 
 ```
-
-{
-
-  "bucket": "my-r2-bucket",
-
-  "mountPath": "/mnt/data",
-
-  "options": {
-
-    "endpoint": "https://ACCOUNT_ID.r2.cloudflarestorage.com",
-
-    "readOnly": false,
-
-    "prefix": "/subdir",
-
-    "credentials": {
-
-      "accessKeyId": "...",
-
-      "secretAccessKey": "..."
-
-    }
-
-  }
-
-}
-
-
+{  "bucket": "my-r2-bucket",  "mountPath": "/mnt/data",  "options": {    "endpoint": "https://ACCOUNT_ID.r2.cloudflarestorage.com",    "readOnly": false,    "prefix": "/subdir",    "credentials": {      "accessKeyId": "...",      "secretAccessKey": "..."    }  }}
 ```
 
 When `endpoint` is provided, `bucket` means the remote bucket name. Credentials are optional in this mode only — the bridge auto-detects from Worker secrets (`R2_ACCESS_KEY_ID` / `R2_SECRET_ACCESS_KEY` or `AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY`) when omitted.
@@ -224,41 +166,19 @@ The WebSocket carries binary frames for terminal I/O and JSON text frames for co
 
 The warm pool pre-starts sandbox containers so new sessions boot instantly. Configure it with environment variables in `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-10205)
-* [  wrangler.toml ](#tab-panel-10206)
+* [  wrangler.jsonc ](#tab-panel-10281)
+* [  wrangler.toml ](#tab-panel-10282)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "vars": {
-
-    "WARM_POOL_TARGET": "3",
-
-    "WARM_POOL_REFRESH_INTERVAL": "10000"
-
-  }
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "vars": {    "WARM_POOL_TARGET": "3",    "WARM_POOL_REFRESH_INTERVAL": "10000"  }}
 ```
 
 TOML
 
 ```
-
-[vars]
-
-WARM_POOL_TARGET = "3"           # Number of idle containers to keep warm (0 = disabled)
-
-WARM_POOL_REFRESH_INTERVAL = "10000"  # Health-check interval in milliseconds
-
-
+[vars]WARM_POOL_TARGET = "3"           # Number of idle containers to keep warm (0 = disabled)WARM_POOL_REFRESH_INTERVAL = "10000"  # Health-check interval in milliseconds
 ```
 
 A cron trigger (`* * * * *`) primes the pool automatically after deployment. Set `WARM_POOL_TARGET` to `"0"` (the default) to disable the pool and avoid unexpected costs.

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,8 +26,8 @@ It is not recommended that you enable all the available rules using overrides, s
 
 ## Deploy the Cloudflare Managed Ruleset
 
-* [  New dashboard ](#tab-panel-11228)
-* [ Old dashboard ](#tab-panel-11229)
+* [  New dashboard ](#tab-panel-11245)
+* [ Old dashboard ](#tab-panel-11246)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -65,8 +65,8 @@ When you enable all the rules in the ruleset, you will affect rules that are dis
 
 Once you have [deployed the Cloudflare Managed Ruleset](#deploy-in-the-dashboard), do the following to configure it in the dashboard:
 
-* [  New dashboard ](#tab-panel-11230)
-* [ Old dashboard ](#tab-panel-11231)
+* [  New dashboard ](#tab-panel-11247)
+* [ Old dashboard ](#tab-panel-11248)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -87,9 +87,10 @@ If you have not deployed the managed ruleset yet, select **Cloudflare Managed Ru
 5. Under **Ruleset configuration**, define settings for all the rules in the Cloudflare Managed Ruleset using the drop-down lists.  
 For example, select the action to perform for all the rules in the ruleset.  
 ![The Configure deployment page displaying the available options to override all the rules in the Cloudflare Managed Ruleset: ruleset action and ruleset status.](https://developers.cloudflare.com/_astro/ruleset-config-cloudflare-managed-ruleset.DHYvPCho_eoe68.webp)
-6. If you have not deployed the Cloudflare Managed Ruleset yet:  
-   * Select **Deploy** to deploy the ruleset immediately.  
-   * Select **Save as Draft** to save your deployment settings for later.  
+6. If you have not deployed the Cloudflare Managed Ruleset yet:
+
+  * Select **Deploy** to deploy the ruleset immediately.
+  * Select **Save as Draft** to save your deployment settings for later.  
 If you are editing a managed ruleset you already deployed, select **Save**.
 
 ### Tag-level configuration
@@ -105,8 +106,8 @@ Setting any of these configurations for specific tags affects all current and fu
 
 Once you have [deployed the Cloudflare Managed Ruleset](#deploy-in-the-dashboard), do the following to configure rules with specific tags in the dashboard:
 
-* [  New dashboard ](#tab-panel-11234)
-* [ Old dashboard ](#tab-panel-11235)
+* [  New dashboard ](#tab-panel-11251)
+* [ Old dashboard ](#tab-panel-11252)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -119,9 +120,10 @@ If not all the rules are displayed in the current page, extend your selection to
 ![The Configure deployment page displaying selected rules with the 'sqli' tag in the Cloudflare Managed Ruleset.](https://developers.cloudflare.com/_astro/tags-config-cloudflare-managed-ruleset.Db5oHcxi_Z1HEcr9.webp)
 2. Update one or more settings for the selected rules using the buttons displayed in the top right corner of the table (for example, **Set status**).
 3. Select **Next**.
-4. A dialog appears asking you if any new rules with the selected tags should be configured with the field values you selected.  
-   * Select **Include new rules** if you want to apply your configurations to any new rules with the select tags.  
-   * Select **Only selected rules** to apply your configurations to the selected rules only.
+4. A dialog appears asking you if any new rules with the selected tags should be configured with the field values you selected.
+
+  * Select **Include new rules** if you want to apply your configurations to any new rules with the select tags.
+  * Select **Only selected rules** to apply your configurations to the selected rules only.
 5. Select **Save**.
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
@@ -135,9 +137,10 @@ If not all the rules are displayed in the current page, extend your selection to
 ![The Configure deployment page displaying selected rules with the 'sqli' tag in the Cloudflare Managed Ruleset.](https://developers.cloudflare.com/_astro/tags-config-cloudflare-managed-ruleset.Db5oHcxi_Z1HEcr9.webp)
 2. Update one or more settings for the selected rules using the buttons displayed in the top right corner of the table (for example, **Set status**).
 3. Select **Next**.
-4. A dialog appears asking you if any new rules with the selected tags should be configured with the field values you selected.  
-   * Select **Include new rules** if you want to apply your configurations to any new rules with the select tags.  
-   * Select **Only selected rules** to apply your configurations to the selected rules only.
+4. A dialog appears asking you if any new rules with the selected tags should be configured with the field values you selected.
+
+  * Select **Include new rules** if you want to apply your configurations to any new rules with the select tags.
+  * Select **Only selected rules** to apply your configurations to the selected rules only.
 5. Select **Save**.
 
 ### Rule-level configuration
@@ -149,8 +152,8 @@ You can configure (or override) the following Cloudflare Managed Ruleset setting
 
 Once you have [deployed the Cloudflare Managed Ruleset](#deploy-in-the-dashboard), do the following to configure individual ruleset rules in the dashboard:
 
-* [  New dashboard ](#tab-panel-11232)
-* [ Old dashboard ](#tab-panel-11233)
+* [  New dashboard ](#tab-panel-11249)
+* [ Old dashboard ](#tab-panel-11250)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -187,100 +190,23 @@ The following example deploys the [Cloudflare Managed Ruleset](https://developer
 1. Invoke the [Get a zone entry point ruleset](https://developers.cloudflare.com/api/resources/rulesets/subresources/phases/methods/get/) operation to obtain the definition of the entry point ruleset for the `http_request_firewall_managed` phase. You will need the [zone ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) for this task.  
 Get a zone entry point ruleset  
 ```  
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \  
-  --request GET \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
 ```  
 ```  
-{  
-  "result": {  
-    "description": "Zone-level phase entry point",  
-    "id": "<RULESET_ID>",  
-    "kind": "zone",  
-    "last_updated": "2024-03-16T15:40:08.202335Z",  
-    "name": "zone",  
-    "phase": "http_request_firewall_managed",  
-    "rules": [  
-      // ...  
-    ],  
-    "source": "firewall_managed",  
-    "version": "10"  
-  },  
-  "success": true,  
-  "errors": [],  
-  "messages": []  
-}  
+{  "result": {    "description": "Zone-level phase entry point",    "id": "<RULESET_ID>",    "kind": "zone",    "last_updated": "2024-03-16T15:40:08.202335Z",    "name": "zone",    "phase": "http_request_firewall_managed",    "rules": [      // ...    ],    "source": "firewall_managed",    "version": "10"  },  "success": true,  "errors": [],  "messages": []}  
 ```
 2. If the entry point ruleset already exists (that is, if you received a `200 OK` status code and the ruleset definition), take note of the ruleset ID in the response. Then, invoke the [Create a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/create/) operation to add an `execute` rule to the existing ruleset deploying the Cloudflare Managed Ruleset (with ID `efb7b8c949ac4650a09736fc376e9aee`). By default, the rule will be added at the end of the list of rules already in the ruleset.  
 Create a zone ruleset rule  
 ```  
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \  
-  --request POST \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "action": "execute",  
-    "action_parameters": {  
-        "id": "efb7b8c949ac4650a09736fc376e9aee"  
-    },  
-    "expression": "true",  
-    "description": "Execute the Cloudflare Managed Ruleset"  
-  }'  
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "action": "execute",    "action_parameters": {        "id": "efb7b8c949ac4650a09736fc376e9aee"    },    "expression": "true",    "description": "Execute the Cloudflare Managed Ruleset"  }'  
 ```  
 ```  
-{  
-  "result": {  
-    "id": "<RULESET_ID>",  
-    "name": "Zone-level phase entry point",  
-    "description": "",  
-    "kind": "zone",  
-    "version": "11",  
-    "rules": [  
-      // ... any existing rules  
-      {  
-        "id": "<RULE_ID>",  
-        "version": "1",  
-        "action": "execute",  
-        "action_parameters": {  
-          "id": "efb7b8c949ac4650a09736fc376e9aee",  
-          "version": "latest"  
-        },  
-        "expression": "true",  
-        "description": "Execute the Cloudflare Managed Ruleset",  
-        "last_updated": "2024-03-18T18:08:14.003361Z",  
-        "ref": "<RULE_REF>",  
-        "enabled": true  
-      }  
-    ],  
-    "last_updated": "2024-03-18T18:08:14.003361Z",  
-    "phase": "http_request_firewall_managed"  
-  },  
-  "success": true,  
-  "errors": [],  
-  "messages": []  
-}  
+{  "result": {    "id": "<RULESET_ID>",    "name": "Zone-level phase entry point",    "description": "",    "kind": "zone",    "version": "11",    "rules": [      // ... any existing rules      {        "id": "<RULE_ID>",        "version": "1",        "action": "execute",        "action_parameters": {          "id": "efb7b8c949ac4650a09736fc376e9aee",          "version": "latest"        },        "expression": "true",        "description": "Execute the Cloudflare Managed Ruleset",        "last_updated": "2024-03-18T18:08:14.003361Z",        "ref": "<RULE_REF>",        "enabled": true      }    ],    "last_updated": "2024-03-18T18:08:14.003361Z",    "phase": "http_request_firewall_managed"  },  "success": true,  "errors": [],  "messages": []}  
 ```
 3. If the entry point ruleset does not exist (that is, if you received a `404 Not Found` status code in step 1), create it using the [Create a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) operation. Include a single rule in the `rules` array that executes the Cloudflare Managed Ruleset (with ID `efb7b8c949ac4650a09736fc376e9aee`) for all incoming requests in the zone.  
 Create a zone ruleset  
 ```  
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \  
-  --request POST \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "name": "My ruleset",  
-    "description": "Entry point ruleset for WAF managed rulesets",  
-    "kind": "zone",  
-    "phase": "http_request_firewall_managed",  
-    "rules": [  
-        {  
-            "action": "execute",  
-            "action_parameters": {  
-                "id": "efb7b8c949ac4650a09736fc376e9aee"  
-            },  
-            "expression": "true",  
-            "description": "Execute the Cloudflare Managed Ruleset"  
-        }  
-    ]  
-  }'  
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "My ruleset",    "description": "Entry point ruleset for WAF managed rulesets",    "kind": "zone",    "phase": "http_request_firewall_managed",    "rules": [        {            "action": "execute",            "action_parameters": {                "id": "efb7b8c949ac4650a09736fc376e9aee"            },            "expression": "true",            "description": "Execute the Cloudflare Managed Ruleset"        }    ]  }'  
 ```
 
 ### Next steps
@@ -300,8 +226,8 @@ For more information on working with managed rulesets via API, refer to [Work wi
 
 The following example deploys the Cloudflare Managed Ruleset for a zone and overrides the action and status of a specific rule.
 
-* [ Terraform (v5) ](#tab-panel-11226)
-* [ Terraform (v4) ](#tab-panel-11227)
+* [ Terraform (v5) ](#tab-panel-11243)
+* [ Terraform (v4) ](#tab-panel-11244)
 
 Required API token permissions
 
@@ -312,115 +238,13 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
 
 ```
-
-# Configure a ruleset at the zone level for the "http_request_firewall_managed" phase
-
-resource "cloudflare_ruleset" "zone_level_managed_waf" {
-
-  zone_id     = var.cloudflare_zone_id
-
-  name        = "Managed WAF entry point ruleset"
-
-  description = "Zone-level WAF Managed Rules config"
-
-  kind        = "zone"
-
-  phase       = "http_request_firewall_managed"
-
-
-  # Execute Cloudflare Managed Ruleset
-
-  rules = [{
-
-    ref         = "execute_cloudflare_managed_ruleset"
-
-    description = "Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset"
-
-    expression  = "true"
-
-    action      = "execute"
-
-    action_parameters = {
-
-      id = "efb7b8c949ac4650a09736fc376e9aee"
-
-      overrides = {
-
-        rules = [{
-
-          id      = "5de7edfa648c4d6891dc3e7f84534ffa"
-
-          action  = "log"
-
-          enabled = true
-
-        }]
-
-      }
-
-    }
-
-  }]
-
-}
-
-
+# Configure a ruleset at the zone level for the "http_request_firewall_managed" phaseresource "cloudflare_ruleset" "zone_level_managed_waf" {  zone_id     = var.cloudflare_zone_id  name        = "Managed WAF entry point ruleset"  description = "Zone-level WAF Managed Rules config"  kind        = "zone"  phase       = "http_request_firewall_managed"
+  # Execute Cloudflare Managed Ruleset  rules = [{    ref         = "execute_cloudflare_managed_ruleset"    description = "Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset"    expression  = "true"    action      = "execute"    action_parameters = {      id = "efb7b8c949ac4650a09736fc376e9aee"      overrides = {        rules = [{          id      = "5de7edfa648c4d6891dc3e7f84534ffa"          action  = "log"          enabled = true        }]      }    }  }]}
 ```
 
 ```
-
-# Configure a ruleset at the zone level for the "http_request_firewall_managed" phase
-
-resource "cloudflare_ruleset" "zone_level_managed_waf" {
-
-  zone_id     = var.cloudflare_zone_id
-
-  name        = "Managed WAF entry point ruleset"
-
-  description = "Zone-level WAF Managed Rules config"
-
-  kind        = "zone"
-
-  phase       = "http_request_firewall_managed"
-
-
-  # Execute Cloudflare Managed Ruleset
-
-  rules {
-
-    ref         = "execute_cloudflare_managed_ruleset"
-
-    description = "Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset"
-
-    expression  = "true"
-
-    action      = "execute"
-
-    action_parameters {
-
-      id = "efb7b8c949ac4650a09736fc376e9aee"
-
-      overrides {
-
-        rules {
-
-          id      = "5de7edfa648c4d6891dc3e7f84534ffa"
-
-          action  = "log"
-
-          enabled = true
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
+# Configure a ruleset at the zone level for the "http_request_firewall_managed" phaseresource "cloudflare_ruleset" "zone_level_managed_waf" {  zone_id     = var.cloudflare_zone_id  name        = "Managed WAF entry point ruleset"  description = "Zone-level WAF Managed Rules config"  kind        = "zone"  phase       = "http_request_firewall_managed"
+  # Execute Cloudflare Managed Ruleset  rules {    ref         = "execute_cloudflare_managed_ruleset"    description = "Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset"    expression  = "true"    action      = "execute"    action_parameters {      id = "efb7b8c949ac4650a09736fc376e9aee"      overrides {        rules {          id      = "5de7edfa648c4d6891dc3e7f84534ffa"          action  = "log"          enabled = true        }      }    }  }}
 ```
 
 For more information, refer to [WAF Managed Rules configuration using Terraform](https://developers.cloudflare.com/terraform/additional-configurations/waf-managed-rulesets/).

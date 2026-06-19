@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network-flow/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -36,41 +36,14 @@ For example:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Magic Network Monitoring Admin`
 * `Magic Network Monitoring Config Write`
 
 Update account configuration fields
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/mnm/config" \
-
-  --request PATCH \
-
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
-
-  --json '{
-
-    "warp_devices": [
-
-        {
-
-            "id": "<YOUR_WARP_DEVICE_UNIQUE_IDENTIFIER>",
-
-            "name": "<NAME_OF_WARP_DEVICE>",
-
-            "router_ip": "YOUR_ROUTER_IP"
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/mnm/config" \  --request PATCH \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \  --json '{    "warp_devices": [        {            "id": "<YOUR_WARP_DEVICE_UNIQUE_IDENTIFIER>",            "name": "<NAME_OF_WARP_DEVICE>",            "router_ip": "YOUR_ROUTER_IP"        }    ]  }'
 ```
 
 ## 2\. Route Network Flow traffic through the Cloudflare One Client
@@ -88,15 +61,15 @@ If you have access to the router but installed the Cloudflare One Client on anot
 1. Set the machine's IP address as the export destination on the router.
 2. Configure the export port on the router to match the listening port on the Cloudflare One Client machine.
 3. Redirect traffic that arrives at your machine running the Cloudflare One Client to the following Cloudflare destination IPs and ports:  
-   * **For NetFlow**: IP address `162.159.65.1` and port `2055`.  
-   * **For sFlow**: IP `162.159.65.1` and port `6343`.  
-   For example, if WARP is running on a machine in your network with the IP `10.10.10.10`, and you configured it to accept traffic on port `2055` or `6343`, you need to configure your flow export-capable router to send data to `10.10.10.10` and port `2055` or `6343`.
+  * **For NetFlow**: IP address `162.159.65.1` and port `2055`.
+  * **For sFlow**: IP `162.159.65.1` and port `6343`.  
+  For example, if WARP is running on a machine in your network with the IP `10.10.10.10`, and you configured it to accept traffic on port `2055` or `6343`, you need to configure your flow export-capable router to send data to `10.10.10.10` and port `2055` or `6343`.
 
 In the machine running the Cloudflare One Client, you can redirect this traffic to Cloudflare using a proxy or redirect tool of your choice. Options include:
 
 * Using `socat`, listen on the desired port for UDP traffic. Then, proxy that traffic to Network Flow's destination and port.  
-   * `socat UDP-LISTEN:2055,reuseaddr,fork UDP:162.159.65.1:2055`  
-   * `socat UDP-LISTEN:6343,reuseaddr,fork UDP:162.159.65.1:6343`
+  * `socat UDP-LISTEN:2055,reuseaddr,fork UDP:162.159.65.1:2055`
+  * `socat UDP-LISTEN:6343,reuseaddr,fork UDP:162.159.65.1:6343`
 * Using any other proxy or port forwarding tool, such as `netcat`, `uredir` or `iptables`.
 
 ## 3\. (Optional) Configure split tunnels

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/1.1.1.1/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,10 +27,7 @@ If only a domain is given for the command, the bot defaults to looking for `A` r
 Example:
 
 ```
-
 /dig domain: cloudflare.com
-
-
 ```
 
 ### Supported record types
@@ -76,10 +73,7 @@ When you request a response in the short form, the name and TTL (time-to-live, h
 Example:
 
 ```
-
 /dig domain: cloudflare.com type: AAAA records short: True
-
-
 ```
 
 ### Disable DNSSEC checking
@@ -89,10 +83,7 @@ DNSSEC (Domain Name System Security Extensions) validates that DNS responses hav
 Example:
 
 ```
-
 /dig domain: cloudflare.com type: AAAA records cdflag: True
-
-
 ```
 
 ### Refreshing existing results
@@ -112,10 +103,7 @@ If you want to look up multiple DNS record types at once, use the `/multi-dig` c
 Example:
 
 ```
-
 /multi-dig domain: cloudflare.com types: A AAAA
-
-
 ```
 
 ### Supported record types
@@ -181,10 +169,7 @@ Like the main `/dig` command, the `/multi-dig` command also supports the optiona
 Example:
 
 ```
-
 /multi-dig domain: cloudflare.com types: CDS CDNSKEY short: True
-
-
 ```
 
 ### Disable DNSSEC checking
@@ -194,10 +179,7 @@ As with the `dig` command, you can disable DNSSEC checking by passing `cdflag` a
 Example:
 
 ```
-
 /multi-dig domain: cloudflare.com type: AAAA records cdflag: True
-
-
 ```
 
 ### Refreshing existing results
@@ -219,16 +201,7 @@ The `/whois` command performs a RDAP/WHOIS lookup in Discord for a given domain,
 Examples:
 
 ```
-
-/whois query: cloudflare.com
-
-/whois query: 104.16.132.229
-
-/whois query: 2606:4700::6810:84e5
-
-/whois query: 13335
-
-
+/whois query: cloudflare.com/whois query: 104.16.132.229/whois query: 2606:4700::6810:84e5/whois query: 13335
 ```
 
 ## Other commands
@@ -242,10 +215,7 @@ The `/help` command provides in-Discord documentation about all the commands ava
 Example:
 
 ```
-
 /help
-
-
 ```
 
 ### `privacy` command
@@ -255,10 +225,7 @@ The `/privacy` command displays the Privacy Policy notice for using the 1.1.1.1 
 Example:
 
 ```
-
 /privacy
-
-
 ```
 
 ### `terms` command
@@ -268,10 +235,7 @@ The `/terms` command displays the Terms of Service notice for using the 1.1.1.1 
 Example:
 
 ```
-
 /terms
-
-
 ```
 
 ### `github` command
@@ -281,10 +245,7 @@ The DNS over Discord bot is open-source, and the `/github` command provides a qu
 Example:
 
 ```
-
 /github
-
-
 ```
 
 ### `invite` command
@@ -292,10 +253,7 @@ Example:
 The `/invite` command provides the user with a quick link to invite the 1.1.1.1 DNS over Discord bot to another Discord server, or to add it to a Discord account. The bot can be invited at any time with [https://cfl.re/3nM6VfQ ↗](https://cfl.re/3nM6VfQ). The bot can also be added to accounts with [https://dns-over-discord.v4.wtf/invite/user ↗](https://dns-over-discord.v4.wtf/invite/user).
 
 ```
-
 /invite
-
-
 ```
 
 ---

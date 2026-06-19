@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -146,10 +146,10 @@ When analyzing this data, it is important to take into account [connection limit
 * [Cache Analytics](https://developers.cloudflare.com/cache/performance-review/cache-analytics/): Critical for analyzing Cache Hit Ratio (CHR) and "Requests by Cache Status" to find uncached content that causes origin load.
 * [Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/): Review and leverage the extensive library of [fields](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/), including network metrics like [TCP RTT and TCP fields](https://developers.cloudflare.com/changelog/2025-10-30-tcp-rtt-and-tcp-fields/), to implement precise custom logic for routing, caching, and security based on real-time connection properties.
 * Logging & Forensics:  
-   * [Log Explorer](https://developers.cloudflare.com/log-explorer/): For ad-hoc querying of request logs directly in the dashboard. Use [Custom Log Fields](https://developers.cloudflare.com/logs/logpush/logpush-job/custom-fields/) to log additional request headers, response headers and cookies.  
-   * [Logpush](https://developers.cloudflare.com/logs/logpush/): For exporting logs to third-party SIEMs with optional [Log Output Options](https://developers.cloudflare.com/logs/logpush/logpush-job/log-output-options/), supporting formats such as CSV or JSON. Essential for analyzing custom fields and long-term trends, as well as calculating the Download Success Rate and analyzing Download Throughput for large files.  
-   * [Instant Logs](https://developers.cloudflare.com/logs/instant-logs/): Real-time traffic inspection for immediate debugging.  
-   * [Network Error Logging (NEL)](https://developers.cloudflare.com/network-error-logging/): Captures client-side connectivity issues that the server might never see.
+  * [Log Explorer](https://developers.cloudflare.com/log-explorer/): For ad-hoc querying of request logs directly in the dashboard. Use [Custom Log Fields](https://developers.cloudflare.com/logs/logpush/logpush-job/custom-fields/) to log additional request headers, response headers and cookies.
+  * [Logpush](https://developers.cloudflare.com/logs/logpush/): For exporting logs to third-party SIEMs with optional [Log Output Options](https://developers.cloudflare.com/logs/logpush/logpush-job/log-output-options/), supporting formats such as CSV or JSON. Essential for analyzing custom fields and long-term trends, as well as calculating the Download Success Rate and analyzing Download Throughput for large files.
+  * [Instant Logs](https://developers.cloudflare.com/logs/instant-logs/): Real-time traffic inspection for immediate debugging.
+  * [Network Error Logging (NEL)](https://developers.cloudflare.com/network-error-logging/): Captures client-side connectivity issues that the server might never see.
 
 ### Open source and automation
 

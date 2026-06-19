@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -71,10 +71,7 @@ For setup, select the following options:
 Then, go to your newly created directory:
 
 ```
-
 cd resend-rate-limit-queue
-
-
 ```
 
 ## 2\. Set up a Queue
@@ -84,196 +81,52 @@ You need to create a Queue and a binding to your Worker. Run the following comma
 Create a Queue
 
 ```
-
 npx wrangler queues create rate-limit-queue
-
-
 ```
 
 ```
-
-Creating queue rate-limit-queue.
-
-Created queue rate-limit-queue.
-
-
+Creating queue rate-limit-queue.Created queue rate-limit-queue.
 ```
 
 ### Add Queue bindings to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/)
 
 In your Wrangler file, add the following:
 
-* [  wrangler.jsonc ](#tab-panel-9691)
-* [  wrangler.toml ](#tab-panel-9692)
+* [  wrangler.jsonc ](#tab-panel-9767)
+* [  wrangler.toml ](#tab-panel-9768)
 
 JSONC
 
 ```
-
-{
-
-  "queues": {
-
-    "producers": [
-
-      {
-
-        "binding": "EMAIL_QUEUE",
-
-        "queue": "rate-limit-queue"
-
-      }
-
-    ],
-
-    "consumers": [
-
-      {
-
-        "queue": "rate-limit-queue",
-
-        "max_batch_size": 2,
-
-        "max_batch_timeout": 10,
-
-        "max_retries": 3
-
-      }
-
-    ]
-
-  }
-
-}
-
-
+{  "queues": {    "producers": [      {        "binding": "EMAIL_QUEUE",        "queue": "rate-limit-queue"      }    ],    "consumers": [      {        "queue": "rate-limit-queue",        "max_batch_size": 2,        "max_batch_timeout": 10,        "max_retries": 3      }    ]  }}
 ```
 
 TOML
 
 ```
-
-[[queues.producers]]
-
-binding = "EMAIL_QUEUE"
-
-queue = "rate-limit-queue"
-
-
-[[queues.consumers]]
-
-queue = "rate-limit-queue"
-
-max_batch_size = 2
-
-max_batch_timeout = 10
-
-max_retries = 3
-
-
+[[queues.producers]]binding = "EMAIL_QUEUE"queue = "rate-limit-queue"
+[[queues.consumers]]queue = "rate-limit-queue"max_batch_size = 2max_batch_timeout = 10max_retries = 3
 ```
 
 It is important to include the `max_batch_size` of two to the consumer queue is important because the Resend API has a default rate limit of two requests per second. This batch size allows the queue to process the message in the batch size of two. If the batch size is less than two, the queue will wait for 10 seconds to collect the next message. If no more messages are available, the queue will process the message in the batch. For more information, refer to the [Batching, Retries and Delays documentation](https://developers.cloudflare.com/queues/configuration/batching-retries)
 
 Your final Wrangler file should look similar to the example below.
 
-* [  wrangler.jsonc ](#tab-panel-9693)
-* [  wrangler.toml ](#tab-panel-9694)
+* [  wrangler.jsonc ](#tab-panel-9769)
+* [  wrangler.toml ](#tab-panel-9770)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "resend-rate-limit-queue",
-
-  "main": "src/index.ts",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "compatibility_flags": [
-
-    "nodejs_compat"
-
-  ],
-
-  "queues": {
-
-    "producers": [
-
-      {
-
-        "binding": "EMAIL_QUEUE",
-
-        "queue": "rate-limit-queue"
-
-      }
-
-    ],
-
-    "consumers": [
-
-      {
-
-        "queue": "rate-limit-queue",
-
-        "max_batch_size": 2,
-
-        "max_batch_timeout": 10,
-
-        "max_retries": 3
-
-      }
-
-    ]
-
-  }
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "resend-rate-limit-queue",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-18",  "compatibility_flags": [    "nodejs_compat"  ],  "queues": {    "producers": [      {        "binding": "EMAIL_QUEUE",        "queue": "rate-limit-queue"      }    ],    "consumers": [      {        "queue": "rate-limit-queue",        "max_batch_size": 2,        "max_batch_timeout": 10,        "max_retries": 3      }    ]  }}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "resend-rate-limit-queue"
-
-main = "src/index.ts"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-compatibility_flags = [ "nodejs_compat" ]
-
-
-[[queues.producers]]
-
-binding = "EMAIL_QUEUE"
-
-queue = "rate-limit-queue"
-
-
-[[queues.consumers]]
-
-queue = "rate-limit-queue"
-
-max_batch_size = 2
-
-max_batch_timeout = 10
-
-max_retries = 3
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "resend-rate-limit-queue"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-18"compatibility_flags = [ "nodejs_compat" ]
+[[queues.producers]]binding = "EMAIL_QUEUE"queue = "rate-limit-queue"
+[[queues.consumers]]queue = "rate-limit-queue"max_batch_size = 2max_batch_timeout = 10max_retries = 3
 ```
 
 ## 3\. Add bindings to environment
@@ -283,14 +136,7 @@ Add the bindings to the environment interface in `worker-configuration.d.ts`, so
 worker-configuration.d.ts
 
 ```
-
-interface Env {
-
-  EMAIL_QUEUE: Queue<Message>;
-
-}
-
-
+interface Env {  EMAIL_QUEUE: Queue<Message>;}
 ```
 
 ## 4\. Send message to the queue
@@ -300,34 +146,7 @@ The application will send a message to the queue when the Worker receives a requ
 src/index.ts
 
 ```
-
-export default {
-
-  async fetch(req, env, ctx): Promise<Response> {
-
-    try {
-
-      await env.EMAIL_QUEUE.send(
-
-        { email: await req.text() },
-
-        { delaySeconds: 1 },
-
-      );
-
-      return new Response("Success!");
-
-    } catch (e) {
-
-      return new Response("Error!", { status: 500 });
-
-    }
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export default {  async fetch(req, env, ctx): Promise<Response> {    try {      await env.EMAIL_QUEUE.send(        { email: await req.text() },        { delaySeconds: 1 },      );      return new Response("Success!");    } catch (e) {      return new Response("Error!", { status: 500 });    }  },} satisfies ExportedHandler<Env>;
 ```
 
 This will accept requests to any subpath and forwards the request's body. It expects that the request body to contain only an email. In production, you should check that the request was a `POST` request. You should also avoid sending such sensitive information (email) directly to the queue. Instead, you can send a message to the queue that contains a unique identifier for the user. Then, your consumer queue can use the unique identifier to look up the email address in a database and use that to send the email.
@@ -343,65 +162,8 @@ Add the `queue()` handler as shown below:
 src/index.ts
 
 ```
-
-interface Message {
-
-  email: string;
-
-}
-
-
-export default {
-
-  async fetch(req, env, ctx): Promise<Response> {
-
-    try {
-
-      await env.EMAIL_QUEUE.send(
-
-        { email: await req.text() },
-
-        { delaySeconds: 1 },
-
-      );
-
-      return new Response("Success!");
-
-    } catch (e) {
-
-      return new Response("Error!", { status: 500 });
-
-    }
-
-  },
-
-  async queue(batch, env, ctx): Promise<void> {
-
-    for (const message of batch.messages) {
-
-      try {
-
-        console.log(message.body.email);
-
-        // After configuring Resend, you can send email
-
-        message.ack();
-
-      } catch (e) {
-
-        console.error(e);
-
-        message.retry({ delaySeconds: 5 });
-
-      }
-
-    }
-
-  },
-
-} satisfies ExportedHandler<Env, Message>;
-
-
+interface Message {  email: string;}
+export default {  async fetch(req, env, ctx): Promise<Response> {    try {      await env.EMAIL_QUEUE.send(        { email: await req.text() },        { delaySeconds: 1 },      );      return new Response("Success!");    } catch (e) {      return new Response("Error!", { status: 500 });    }  },  async queue(batch, env, ctx): Promise<void> {    for (const message of batch.messages) {      try {        console.log(message.body.email);        // After configuring Resend, you can send email        message.ack();      } catch (e) {        console.error(e);        message.retry({ delaySeconds: 5 });      }    }  },} satisfies ExportedHandler<Env, Message>;
 ```
 
 The above `queue()` handler will log the email address to the console and send the email. It will also retry the message if sending the email fails. The `delaySeconds` is set to five seconds to avoid sending the email too quickly.
@@ -411,10 +173,7 @@ To test the application, run the following command:
 Start the development server
 
 ```
-
 npm run dev
-
-
 ```
 
 Use the following cURL command to send a request to the application:
@@ -422,29 +181,11 @@ Use the following cURL command to send a request to the application:
 Test with a cURL request
 
 ```
-
 curl -X POST -d "test@example.com" http://localhost:8787/
-
-
 ```
 
 ```
-
-[wrangler:inf] POST / 200 OK (2ms)
-
-QueueMessage {
-
-  attempts: 1,
-
-  body: { email: 'test@example.com' },
-
-  timestamp: 2024-09-12T13:48:07.236Z,
-
-  id: '72a25ff18dd441f5acb6086b9ce87c8c'
-
-}
-
-
+[wrangler:inf] POST / 200 OK (2ms)QueueMessage {  attempts: 1,  body: { email: 'test@example.com' },  timestamp: 2024-09-12T13:48:07.236Z,  id: '72a25ff18dd441f5acb6086b9ce87c8c'}
 ```
 
 ## 6\. Set up Resend
@@ -454,10 +195,7 @@ To call the Resend API, you need to configure the Resend API key. Create a `.dev
 .dev.vars
 
 ```
-
 RESEND_API_KEY='your-resend-api-key'
-
-
 ```
 
 Replace `your-resend-api-key` with your actual Resend API key.
@@ -467,16 +205,7 @@ Next, update the `Env` interface in `worker-configuration.d.ts` to include the `
 worker-configuration.d.ts
 
 ```
-
-interface Env {
-
-  EMAIL_QUEUE: Queue<Message>;
-
-  RESEND_API_KEY: string;
-
-}
-
-
+interface Env {  EMAIL_QUEUE: Queue<Message>;  RESEND_API_KEY: string;}
 ```
 
 Lastly, install the [resend package ↗](https://www.npmjs.com/package/resend) using the following command:
@@ -508,101 +237,10 @@ In your `src/index.ts` file, import the Resend package and update the `queue()` 
 src/index.ts
 
 ```
-
 import { Resend } from "resend";
-
-
-interface Message {
-
-  email: string;
-
-}
-
-
-export default {
-
-  async fetch(req, env, ctx): Promise<Response> {
-
-    try {
-
-      await env.EMAIL_QUEUE.send(
-
-        { email: await req.text() },
-
-        { delaySeconds: 1 },
-
-      );
-
-      return new Response("Success!");
-
-    } catch (e) {
-
-      return new Response("Error!", { status: 500 });
-
-    }
-
-  },
-
-  async queue(batch, env, ctx): Promise<void> {
-
-    // Initialize Resend
-
-    const resend = new Resend(env.RESEND_API_KEY);
-
-    for (const message of batch.messages) {
-
-      try {
-
-        console.log(message.body.email);
-
-        // send email
-
-        const sendEmail = await resend.emails.send({
-
-          from: "onboarding@resend.dev",
-
-          to: [message.body.email],
-
-          subject: "Hello World",
-
-          html: "<strong>Sending an email from Worker!</strong>",
-
-        });
-
-
-        // check if the email failed
-
-        if (sendEmail.error) {
-
-          console.error(sendEmail.error);
-
-          message.retry({ delaySeconds: 5 });
-
-        } else {
-
-          // if success, ack the message
-
-          message.ack();
-
-        }
-
-        message.ack();
-
-      } catch (e) {
-
-        console.error(e);
-
-        message.retry({ delaySeconds: 5 });
-
-      }
-
-    }
-
-  },
-
-} satisfies ExportedHandler<Env, Message>;
-
-
+interface Message {  email: string;}
+export default {  async fetch(req, env, ctx): Promise<Response> {    try {      await env.EMAIL_QUEUE.send(        { email: await req.text() },        { delaySeconds: 1 },      );      return new Response("Success!");    } catch (e) {      return new Response("Error!", { status: 500 });    }  },  async queue(batch, env, ctx): Promise<void> {    // Initialize Resend    const resend = new Resend(env.RESEND_API_KEY);    for (const message of batch.messages) {      try {        console.log(message.body.email);        // send email        const sendEmail = await resend.emails.send({          from: "onboarding@resend.dev",          to: [message.body.email],          subject: "Hello World",          html: "<strong>Sending an email from Worker!</strong>",        });
+        // check if the email failed        if (sendEmail.error) {          console.error(sendEmail.error);          message.retry({ delaySeconds: 5 });        } else {          // if success, ack the message          message.ack();        }        message.ack();      } catch (e) {        console.error(e);        message.retry({ delaySeconds: 5 });      }    }  },} satisfies ExportedHandler<Env, Message>;
 ```
 
 The `queue()` handler will now send the email using the Resend API. It also checks if sending the email failed and will retry the message.
@@ -612,97 +250,10 @@ The final script is included below:
 src/index.ts
 
 ```
-
 import { Resend } from "resend";
-
-
-interface Message {
-
-  email: string;
-
-}
-
-
-export default {
-
-  async fetch(req, env, ctx): Promise<Response> {
-
-    try {
-
-      await env.EMAIL_QUEUE.send(
-
-        { email: await req.text() },
-
-        { delaySeconds: 1 },
-
-      );
-
-      return new Response("Success!");
-
-    } catch (e) {
-
-      return new Response("Error!", { status: 500 });
-
-    }
-
-  },
-
-  async queue(batch, env, ctx): Promise<void> {
-
-    // Initialize Resend
-
-    const resend = new Resend(env.RESEND_API_KEY);
-
-    for (const message of batch.messages) {
-
-      try {
-
-        // send email
-
-        const sendEmail = await resend.emails.send({
-
-          from: "onboarding@resend.dev",
-
-          to: [message.body.email],
-
-          subject: "Hello World",
-
-          html: "<strong>Sending an email from Worker!</strong>",
-
-        });
-
-
-        // check if the email failed
-
-        if (sendEmail.error) {
-
-          console.error(sendEmail.error);
-
-          message.retry({ delaySeconds: 5 });
-
-        } else {
-
-          // if success, ack the message
-
-          message.ack();
-
-        }
-
-      } catch (e) {
-
-        console.error(e);
-
-        message.retry({ delaySeconds: 5 });
-
-      }
-
-    }
-
-  },
-
-} satisfies ExportedHandler<Env, Message>;
-
-
+interface Message {  email: string;}
+export default {  async fetch(req, env, ctx): Promise<Response> {    try {      await env.EMAIL_QUEUE.send(        { email: await req.text() },        { delaySeconds: 1 },      );      return new Response("Success!");    } catch (e) {      return new Response("Error!", { status: 500 });    }  },  async queue(batch, env, ctx): Promise<void> {    // Initialize Resend    const resend = new Resend(env.RESEND_API_KEY);    for (const message of batch.messages) {      try {        // send email        const sendEmail = await resend.emails.send({          from: "onboarding@resend.dev",          to: [message.body.email],          subject: "Hello World",          html: "<strong>Sending an email from Worker!</strong>",        });
+        // check if the email failed        if (sendEmail.error) {          console.error(sendEmail.error);          message.retry({ delaySeconds: 5 });        } else {          // if success, ack the message          message.ack();        }      } catch (e) {        console.error(e);        message.retry({ delaySeconds: 5 });      }    }  },} satisfies ExportedHandler<Env, Message>;
 ```
 
 To test the application, start the development server using the following command:
@@ -710,10 +261,7 @@ To test the application, start the development server using the following comman
 Start the development server
 
 ```
-
 npm run dev
-
-
 ```
 
 Use the following cURL command to send a request to the application:
@@ -721,10 +269,7 @@ Use the following cURL command to send a request to the application:
 Test with a cURL request
 
 ```
-
 curl -X POST -d "delivered@resend.dev" http://localhost:8787/
-
-
 ```
 
 On the Resend dashboard, you should see that the email was sent to the provided email address.
@@ -736,10 +281,7 @@ To deploy your Worker, run the following command:
 Deploy your Worker
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 Lastly, add the Resend API key using the following command:
@@ -747,10 +289,7 @@ Lastly, add the Resend API key using the following command:
 Add the Resend API key
 
 ```
-
 npx wrangler secret put RESEND_API_KEY
-
-
 ```
 
 Enter the value of your API key. Your API key will get added to your project. You can now use the `RESEND_API_KEY` variable in your code.
@@ -762,10 +301,7 @@ To test your Worker, you could use the following cURL request. Replace `<YOUR_WO
 Test with a cURL request
 
 ```
-
 curl -X POST -d "delivered@resend.dev" <YOUR_WORKER_URL>
-
-
 ```
 
 Refer to the [GitHub repository ↗](https://github.com/harshil1712/queues-rate-limit) for the complete code for this tutorial. If you are using [Hono ↗](https://hono.dev/), you can refer to the [Hono example ↗](https://github.com/harshil1712/resend-rate-limit-demo).

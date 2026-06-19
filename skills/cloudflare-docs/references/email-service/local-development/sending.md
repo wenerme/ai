@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,44 +33,20 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 Configure your Wrangler file with the email binding:
 
-* [  wrangler.jsonc ](#tab-panel-8525)
-* [  wrangler.toml ](#tab-panel-8526)
+* [  wrangler.jsonc ](#tab-panel-8601)
+* [  wrangler.toml ](#tab-panel-8602)
 
 JSONC
 
 ```
-
-{
-
-  "name": "email-sending-worker",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "send_email": [{ "name": "EMAIL" }],
-
-}
-
-
+{  "name": "email-sending-worker",  // Set this to today's date  "compatibility_date": "2026-06-18",  "send_email": [{ "name": "EMAIL" }],}
 ```
 
 TOML
 
 ```
-
-name = "email-sending-worker"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[[send_email]]
-
-name = "EMAIL"
-
-
+name = "email-sending-worker"# Set this to today's datecompatibility_date = "2026-06-18"
+[[send_email]]name = "EMAIL"
 ```
 
 ## Remote bindings (recommended)
@@ -79,56 +55,20 @@ Using [remote bindings](https://developers.cloudflare.com/workers/development-te
 
 Set `remote: true` on the email binding in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-8527)
-* [  wrangler.toml ](#tab-panel-8528)
+* [  wrangler.jsonc ](#tab-panel-8603)
+* [  wrangler.toml ](#tab-panel-8604)
 
 JSONC
 
 ```
-
-{
-
-  "name": "email-sending-worker",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "send_email": [
-
-    {
-
-      "name": "EMAIL",
-
-      "remote": true,
-
-    },
-
-  ],
-
-}
-
-
+{  "name": "email-sending-worker",  // Set this to today's date  "compatibility_date": "2026-06-18",  "send_email": [    {      "name": "EMAIL",      "remote": true,    },  ],}
 ```
 
 TOML
 
 ```
-
-name = "email-sending-worker"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[[send_email]]
-
-name = "EMAIL"
-
-remote = true
-
-
+name = "email-sending-worker"# Set this to today's datecompatibility_date = "2026-06-18"
+[[send_email]]name = "EMAIL"remote = true
 ```
 
 Then run `wrangler dev` as usual. Calls to `env.EMAIL.send()` will send actual emails through Email Service while your Worker code runs locally.
@@ -146,84 +86,11 @@ When running `wrangler dev` without remote bindings, the email binding is simula
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    if (request.method !== "POST") {
-
-      return new Response("Method not allowed", { status: 405 });
-
-    }
-
-
-    try {
-
-      const emailData = await request.json();
-
-
-      console.log("Sending email:", {
-
-        to: emailData.to,
-
-        from: emailData.from,
-
-        subject: emailData.subject,
-
-      });
-
-
+export default {  async fetch(request, env, ctx) {    if (request.method !== "POST") {      return new Response("Method not allowed", { status: 405 });    }
+    try {      const emailData = await request.json();
+      console.log("Sending email:", {        to: emailData.to,        from: emailData.from,        subject: emailData.subject,      });
       const response = await env.EMAIL.send(emailData);
-
-
-      return new Response(
-
-        JSON.stringify({
-
-          success: true,
-
-          id: response.messageId,
-
-        }),
-
-        {
-
-          headers: { "Content-Type": "application/json" },
-
-        },
-
-      );
-
-    } catch (error) {
-
-      return new Response(
-
-        JSON.stringify({
-
-          success: false,
-
-          error: error.message,
-
-        }),
-
-        {
-
-          status: 500,
-
-          headers: { "Content-Type": "application/json" },
-
-        },
-
-      );
-
-    }
-
-  },
-
-};
-
-
+      return new Response(        JSON.stringify({          success: true,          id: response.messageId,        }),        {          headers: { "Content-Type": "application/json" },        },      );    } catch (error) {      return new Response(        JSON.stringify({          success: false,          error: error.message,        }),        {          status: 500,          headers: { "Content-Type": "application/json" },        },      );    }  },};
 ```
 
 ## Testing locally
@@ -233,10 +100,7 @@ Start your development server:
 Terminal window
 
 ```
-
 npx wrangler dev
-
-
 ```
 
 Send a test email:
@@ -244,44 +108,14 @@ Send a test email:
 Terminal window
 
 ```
-
-curl -X POST http://localhost:8787/ \
-
-  -H "Content-Type: application/json" \
-
-  -d '{
-
-    "to": "recipient@example.com",
-
-    "from": "sender@yourdomain.com",
-
-    "subject": "Test Email",
-
-    "html": "<h1>Hello from Wrangler!</h1>",
-
-    "text": "Hello from Wrangler!"
-
-  }'
-
-
+curl -X POST http://localhost:8787/ \  -H "Content-Type: application/json" \  -d '{    "to": "recipient@example.com",    "from": "sender@yourdomain.com",    "subject": "Test Email",    "html": "<h1>Hello from Wrangler!</h1>",    "text": "Hello from Wrangler!"  }'
 ```
 
 Wrangler will show output like:
 
 ```
-
-[wrangler:info] send_email binding called with MessageBuilder:
-
-From: sender@yourdomain.com
-
-To: recipient@example.com
-
-Subject: Test Email
-
-
+[wrangler:info] send_email binding called with MessageBuilder:From: sender@yourdomain.comTo: recipient@example.comSubject: Test Email
 Text: /tmp/miniflare-.../files/email-text/<message-id>.txt
-
-
 ```
 
 The email content (text and HTML) is saved to local files that you can inspect to verify your email structure before deploying.
@@ -293,10 +127,7 @@ The email content (text and HTML) is saved to local files that you can inspect t
 Local development simulates the `send_email` binding locally, but `ArrayBuffer` values in attachment `content` cannot be serialized by the local simulator. If you pass an `ArrayBuffer` (for example, for image or PDF attachments), you will see an error like:
 
 ```
-
 Cannot serialize value: [object ArrayBuffer]
-
-
 ```
 
 **Workaround:** Use string content for text-based attachments during local development. To test binary attachments (images, PDFs), deploy your Worker with `npx wrangler deploy` and test against the deployed version.

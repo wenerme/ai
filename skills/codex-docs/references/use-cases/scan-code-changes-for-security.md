@@ -6,7 +6,7 @@ summary: Use the Codex Security plugin to examine a Git-backed change set,
   before merge.
 skills:
   - token: $codex-security:security-diff-scan
-    url: /codex/security/plugin
+    url: /codex/security/plugin/code-changes
     description: Review a pull request, commit, branch diff, or working-tree patch
       for security regressions with validation and attack-path evidence.
 bestFor:
@@ -19,9 +19,8 @@ bestFor:
 starterPrompt:
   title: Review a Change for Security Regressions
   body: >-
-    /goal Scan this PR, commit, branch diff, or working-tree patch for security
-    regressions. Do not stop until all in-scope changed files are covered and
-    all required steps are complete.
+    Use $codex-security:security-diff-scan to review this PR, commit, branch
+    diff, or working-tree patch for security regressions.
 
 
     Scope and rules:
@@ -34,15 +33,13 @@ starterPrompt:
     - Pay particular attention to [auth, input handling, secrets, filesystem,
     network, dependencies, or other sensitive surface].
 
-    - Keep this pass read-only; do not modify code or open a pull request.
-
 
     Return the final Markdown report and any Codex app review directives for
     findings that require human review.
   suggestedEffort: high
 relatedLinks:
-  - label: Codex Security plugin
-    url: /codex/security/plugin
+  - label: Security change-review guide
+    url: /codex/security/plugin/code-changes
   - label: Review GitHub pull requests
     url: /codex/use-cases/github-code-reviews
   - label: Agent approvals and security
@@ -64,7 +61,7 @@ about security regressions, not a general style or test review.
 
 
 1. Open the repository and check out or describe the exact Git-backed change set to review.
-2. Install the [Codex Security plugin](https://developers.openai.com/codex/security/plugin) and specify the pull request, commit, branch diff, or working-tree patch in the starter prompt.
+2. Complete the [Codex Security plugin quickstart](https://developers.openai.com/codex/security/plugin) and specify the pull request, commit, branch diff, or working-tree patch in the starter prompt.
 3. Name high-risk surfaces in the change, such as authentication, parsers, file paths, network requests, or credential handling.
 4. Run the prompt without requesting a fix so the first result remains a review artifact.
 5. Check each reported affected line, validation result, and stated proof gap before deciding whether to remediate.
@@ -79,3 +76,6 @@ directives for affected lines. For an actionable result, open a new bounded
 fix task with the finding identifier or the relevant report section.
 See [Remediate a vulnerability backlog](https://developers.openai.com/codex/use-cases/remediate-vulnerability-backlog)
 for the fix-and-validation loop.
+
+For change selectors, diff scope, and result review, see [Review code changes
+for security](https://developers.openai.com/codex/security/plugin/code-changes).

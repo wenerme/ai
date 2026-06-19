@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,21 +26,14 @@ To enable content scanning, use a `POST` request similar to the following:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone WAF Write`
 * `Account WAF Write`
 
 Enable Content Scanning
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/content-upload-scan/enable" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/content-upload-scan/enable" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ### Disable WAF content scanning
@@ -49,21 +42,14 @@ To disable content scanning, use a `POST` request similar to the following:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone WAF Write`
 * `Account WAF Write`
 
 Disable Content Scanning
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/content-upload-scan/disable" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/content-upload-scan/disable" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ### Get WAF content scanning status
@@ -72,7 +58,7 @@ To obtain the current status of the content scanning feature, use a `GET` reques
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone WAF Write`
 * `Zone WAF Read`
 * `Account WAF Write`
@@ -81,14 +67,7 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Get Content Scanning Status
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/content-upload-scan/settings" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/content-upload-scan/settings" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ## Custom expression operations
@@ -101,7 +80,7 @@ To get a list of existing custom scan expressions, use a `GET` request similar t
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone WAF Write`
 * `Zone WAF Read`
 * `Account WAF Write`
@@ -110,41 +89,11 @@ At least one of the following [token permissions](https://developers.cloudflare.
 List Existing Custom Scan Expressions
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/content-upload-scan/payloads" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/content-upload-scan/payloads" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```
-
-{
-
-  "result": [
-
-    {
-
-      "id": "<EXPRESSION_ID>",
-
-      "payload": "lookup_json_string(http.request.body.raw, \"file\")"
-
-    }
-
-  ],
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": [    {      "id": "<EXPRESSION_ID>",      "payload": "lookup_json_string(http.request.body.raw, \"file\")"    }  ],  "success": true,  "errors": [],  "messages": []}
 ```
 
 ### Add a custom scan expression
@@ -153,31 +102,14 @@ Use a `POST` request similar to the following:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone WAF Write`
 * `Account WAF Write`
 
 Add Custom Scan Expressions
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/content-upload-scan/payloads" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '[
-
-    {
-
-        "payload": "lookup_json_string(http.request.body.raw, \"file\")"
-
-    }
-
-  ]'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/content-upload-scan/payloads" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '[    {        "payload": "lookup_json_string(http.request.body.raw, \"file\")"    }  ]'
 ```
 
 ### Delete a custom scan expression
@@ -186,21 +118,14 @@ Use a `DELETE` request similar to the following:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone WAF Write`
 * `Account WAF Write`
 
 Delete a Custom Scan Expression
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/content-upload-scan/payloads/$EXPRESSION_ID" \
-
-  --request DELETE \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/content-upload-scan/payloads/$EXPRESSION_ID" \  --request DELETE \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```json

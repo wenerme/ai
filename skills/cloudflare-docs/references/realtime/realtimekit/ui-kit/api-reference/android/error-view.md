@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,16 +25,7 @@ A full-screen error view that displays an error message and a retry button.
 ### Basic Usage
 
 ```
-
-<com.cloudflare.realtimekit.ui.view.RtkErrorView
-
-    android:id="@+id/rtk_error_view"
-
-    android:layout_width="match_parent"
-
-    android:layout_height="match_parent" />
-
-
+<com.cloudflare.realtimekit.ui.view.RtkErrorView    android:id="@+id/rtk_error_view"    android:layout_width="match_parent"    android:layout_height="match_parent" />
 ```
 
 ### With Methods
@@ -42,16 +33,7 @@ A full-screen error view that displays an error message and a retry button.
 Kotlin
 
 ```
-
-val errorView = findViewById<RtkErrorView>(R.id.rtk_error_view)
-
-errorView.refresh("Failed to connect") {
-
-    // Retry connection
-
-}
-
-
+val errorView = findViewById<RtkErrorView>(R.id.rtk_error_view)errorView.refresh("Failed to connect") {    // Retry connection}
 ```
 
 ```json

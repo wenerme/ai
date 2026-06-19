@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,34 +21,7 @@ Workers AI supports JSON Mode, enabling applications to request a structured out
 JSON Mode is compatible with OpenAI’s implementation; to enable add the `response_format` property to the request object using the following convention:
 
 ```
-
-{
-
-  response_format: {
-
-    title: "JSON Mode",
-
-    type: "object",
-
-    properties: {
-
-      type: {
-
-        type: "string",
-
-        enum: ["json_object", "json_schema"],
-
-      },
-
-      json_schema: {},
-
-    }
-
-  }
-
-}
-
-
+{  response_format: {    title: "JSON Mode",    type: "object",    properties: {      type: {        type: "string",        enum: ["json_object", "json_schema"],      },      json_schema: {},    }  }}
 ```
 
 Where `json_schema` must be a valid [JSON Schema ↗](https://json-schema.org/) declaration.
@@ -58,131 +31,13 @@ Where `json_schema` must be a valid [JSON Schema ↗](https://json-schema.org/) 
 When using JSON Format, pass the schema as in the example below as part of the request you send to the LLM.
 
 ```
-
-{
-
-  "messages": [
-
-    {
-
-      "role": "system",
-
-      "content": "Extract data about a country."
-
-    },
-
-    {
-
-      "role": "user",
-
-      "content": "Tell me about India."
-
-    }
-
-  ],
-
-  "response_format": {
-
-    "type": "json_schema",
-
-    "json_schema": {
-
-      "type": "object",
-
-      "properties": {
-
-        "name": {
-
-          "type": "string"
-
-        },
-
-        "capital": {
-
-          "type": "string"
-
-        },
-
-        "languages": {
-
-          "type": "array",
-
-          "items": {
-
-            "type": "string"
-
-          }
-
-        }
-
-      },
-
-      "required": [
-
-        "name",
-
-        "capital",
-
-        "languages"
-
-      ]
-
-    }
-
-  }
-
-}
-
-
+{  "messages": [    {      "role": "system",      "content": "Extract data about a country."    },    {      "role": "user",      "content": "Tell me about India."    }  ],  "response_format": {    "type": "json_schema",    "json_schema": {      "type": "object",      "properties": {        "name": {          "type": "string"        },        "capital": {          "type": "string"        },        "languages": {          "type": "array",          "items": {            "type": "string"          }        }      },      "required": [        "name",        "capital",        "languages"      ]    }  }}
 ```
 
 The LLM will follow the schema, and return a response such as below:
 
 ```
-
-{
-
-  "response": {
-
-    "name": "India",
-
-    "capital": "New Delhi",
-
-    "languages": [
-
-      "Hindi",
-
-      "English",
-
-      "Bengali",
-
-      "Telugu",
-
-      "Marathi",
-
-      "Tamil",
-
-      "Gujarati",
-
-      "Urdu",
-
-      "Kannada",
-
-      "Odia",
-
-      "Malayalam",
-
-      "Punjabi",
-
-      "Sanskrit"
-
-    ]
-
-  }
-
-}
-
-
+{  "response": {    "name": "India",    "capital": "New Delhi",    "languages": [      "Hindi",      "English",      "Bengali",      "Telugu",      "Marathi",      "Tamil",      "Gujarati",      "Urdu",      "Kannada",      "Odia",      "Malayalam",      "Punjabi",      "Sanskrit"    ]  }}
 ```
 
 As you can see, the model is complying with the JSON schema definition in the request and responding with a validated JSON object.

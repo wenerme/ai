@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/spectrum/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -43,89 +43,17 @@ TCP health check - API example
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Load Balancing: Monitors and Pools Write`
 
 Create Monitor
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/monitors" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "description": "Spectrum Health Check",
-
-    "type": "tcp",
-
-    "port": 2048,
-
-    "interval": 30,
-
-    "retries": 2,
-
-    "timeout": 5,
-
-    "method": "connection_established"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/monitors" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "description": "Spectrum Health Check",    "type": "tcp",    "port": 2048,    "interval": 30,    "retries": 2,    "timeout": 5,    "method": "connection_established"  }'
 ```
 
 ```
-
-{
-
-    "result": {
-
-        "description": "TCP Monitor for Spectrum",
-
-        "created_on": "2025-07-17T14:55:04.830009Z",
-
-        "modified_on": "2025-07-17T14:55:04.830009Z",
-
-        "id": "1d404721c660a8a7aaa28d68ed6d48d9",
-
-        "type": "tcp",
-
-        "port": 2048,
-
-        "interval": 60,
-
-        "retries": 2,
-
-        "timeout": 5,
-
-        "expected_body": "",
-
-        "expected_codes": "",
-
-        "follow_redirects": false,
-
-        "allow_insecure": false,
-
-        "probe_zone": "",
-
-        "path": "",
-
-        "method": "connection_established"
-
-    },
-
-    "success": true,
-
-    "errors": [],
-
-    "messages": []
-
-}
-
-
+{    "result": {        "description": "TCP Monitor for Spectrum",        "created_on": "2025-07-17T14:55:04.830009Z",        "modified_on": "2025-07-17T14:55:04.830009Z",        "id": "1d404721c660a8a7aaa28d68ed6d48d9",        "type": "tcp",        "port": 2048,        "interval": 60,        "retries": 2,        "timeout": 5,        "expected_body": "",        "expected_codes": "",        "follow_redirects": false,        "allow_insecure": false,        "probe_zone": "",        "path": "",        "method": "connection_established"    },    "success": true,    "errors": [],    "messages": []}
 ```
 
 ## Traffic steering

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -74,10 +74,7 @@ Now, move into your newly created directory:
 Terminal window
 
 ```
-
 cd rag-ai-tutorial
-
-
 ```
 
 ## 2\. Develop with Wrangler CLI
@@ -89,10 +86,7 @@ After you have created your first Worker, run the [wrangler dev](https://develop
 Terminal window
 
 ```
-
 npx wrangler dev
-
-
 ```
 
 You will now be able to go to [http://localhost:8787 ↗](http://localhost:8787) to see your Worker running. Any changes you make to your code will trigger a rebuild, and reloading the page will show you the up-to-date output of your Worker.
@@ -109,39 +103,19 @@ If you have issues with this step or you do not have access to a browser interfa
 
 This example features the [@cf/meta/llama-3-8b-instruct model](https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct/), which generates text.
 
-* [  wrangler.jsonc ](#tab-panel-11315)
-* [  wrangler.toml ](#tab-panel-11316)
+* [  wrangler.jsonc ](#tab-panel-11332)
+* [  wrangler.toml ](#tab-panel-11333)
 
 JSONC
 
 ```
-
-{
-
-  "ai": {
-
-    "binding": "AI",
-
-    "remote": true
-
-  }
-
-}
-
-
+{  "ai": {    "binding": "AI",    "remote": true  }}
 ```
 
 TOML
 
 ```
-
-[ai]
-
-binding = "AI"
-
-remote = true
-
-
+[ai]binding = "AI"remote = true
 ```
 
 Now, find the `src/index.js` file. Inside the `fetch` handler, you can query the `AI` binding:
@@ -149,25 +123,8 @@ Now, find the `src/index.js` file. Inside the `fetch` handler, you can query the
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    const answer = await env.AI.run("@cf/meta/llama-3-8b-instruct", {
-
-      messages: [{ role: "user", content: `What is the square root of 9?` }],
-
-    });
-
-
-    return new Response(JSON.stringify(answer));
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    const answer = await env.AI.run("@cf/meta/llama-3-8b-instruct", {      messages: [{ role: "user", content: `What is the square root of 9?` }],    });
+    return new Response(JSON.stringify(answer));  },};
 ```
 
 By querying the LLM through the `AI` binding, we can interact directly with Cloudflare AI's large language models directly in our code. In this example, we are using the [@cf/meta/llama-3-8b-instruct model](https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct/), which generates text.
@@ -177,10 +134,7 @@ Deploy your Worker using `wrangler`:
 Terminal window
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 Making a request to your Worker will now generate a text response from the LLM, and return it as a JSON object.
@@ -188,17 +142,11 @@ Making a request to your Worker will now generate a text response from the LLM, 
 Terminal window
 
 ```
-
 curl https://example.username.workers.dev
-
-
 ```
 
 ```
-
 {"response":"Answer: The square root of 9 is 3."}
-
-
 ```
 
 ## 4\. Adding embeddings using Cloudflare D1 and Vectorize
@@ -210,53 +158,24 @@ To begin using Vectorize, create a new embeddings index using `wrangler`. This i
 Terminal window
 
 ```
-
 npx wrangler vectorize create vector-index --dimensions=768 --metric=cosine
-
-
 ```
 
 Then, add the configuration details for your new Vectorize index to the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-11317)
-* [  wrangler.toml ](#tab-panel-11318)
+* [  wrangler.jsonc ](#tab-panel-11334)
+* [  wrangler.toml ](#tab-panel-11335)
 
 JSONC
 
 ```
-
-{
-
-  // ... existing wrangler configuration
-
-  "vectorize": [
-
-    {
-
-      "binding": "VECTOR_INDEX",
-
-      "index_name": "vector-index"
-
-    }
-
-  ]
-
-}
-
-
+{  // ... existing wrangler configuration  "vectorize": [    {      "binding": "VECTOR_INDEX",      "index_name": "vector-index"    }  ]}
 ```
 
 TOML
 
 ```
-
-[[vectorize]]
-
-binding = "VECTOR_INDEX"
-
-index_name = "vector-index"
-
-
+[[vectorize]]binding = "VECTOR_INDEX"index_name = "vector-index"
 ```
 
 A vector index allows you to store a collection of dimensions, which are floating point numbers used to represent your data. When you want to query the vector database, you can also convert your query into dimensions. **Vectorize** is designed to efficiently determine which stored vectors are most similar to your query.
@@ -268,57 +187,24 @@ Create a new D1 database using `wrangler`:
 Terminal window
 
 ```
-
 npx wrangler d1 create database
-
-
 ```
 
 Then, paste the configuration details output from the previous command into the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-11319)
-* [  wrangler.toml ](#tab-panel-11320)
+* [  wrangler.jsonc ](#tab-panel-11336)
+* [  wrangler.toml ](#tab-panel-11337)
 
 JSONC
 
 ```
-
-{
-
-  // ... existing wrangler configuration
-
-  "d1_databases": [
-
-    {
-
-      "binding": "DB", // available in your Worker on env.DB
-
-      "database_name": "database",
-
-      "database_id": "abc-def-geh" // replace this with a real database_id (UUID)
-
-    }
-
-  ]
-
-}
-
-
+{  // ... existing wrangler configuration  "d1_databases": [    {      "binding": "DB", // available in your Worker on env.DB      "database_name": "database",      "database_id": "abc-def-geh" // replace this with a real database_id (UUID)    }  ]}
 ```
 
 TOML
 
 ```
-
-[[d1_databases]]
-
-binding = "DB"
-
-database_name = "database"
-
-database_id = "abc-def-geh"
-
-
+[[d1_databases]]binding = "DB"database_name = "database"database_id = "abc-def-geh"
 ```
 
 In this application, we'll create a `notes` table in D1, which will allow us to store notes and later retrieve them in Vectorize. To create this table, run a SQL command using `wrangler d1 execute`:
@@ -326,10 +212,7 @@ In this application, we'll create a `notes` table in D1, which will allow us to 
 Terminal window
 
 ```
-
 npx wrangler d1 execute database --remote --command "CREATE TABLE IF NOT EXISTS notes (id INTEGER PRIMARY KEY, text TEXT NOT NULL)"
-
-
 ```
 
 Now, we can add a new note to our database using `wrangler d1 execute`:
@@ -337,10 +220,7 @@ Now, we can add a new note to our database using `wrangler d1 execute`:
 Terminal window
 
 ```
-
 npx wrangler d1 execute database --remote --command "INSERT INTO notes (text) VALUES ('The best pizza topping is pepperoni')"
-
-
 ```
 
 ## 5\. Creating a workflow
@@ -349,49 +229,19 @@ Before we begin creating notes, we will introduce a [Cloudflare Workflow](https:
 
 To begin, add a new `[[workflows]]` block to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-11321)
-* [  wrangler.toml ](#tab-panel-11322)
+* [  wrangler.jsonc ](#tab-panel-11338)
+* [  wrangler.toml ](#tab-panel-11339)
 
 JSONC
 
 ```
-
-{
-
-  // ... existing wrangler configuration
-
-  "workflows": [
-
-    {
-
-      "name": "rag",
-
-      "binding": "RAG_WORKFLOW",
-
-      "class_name": "RAGWorkflow"
-
-    }
-
-  ]
-
-}
-
-
+{  // ... existing wrangler configuration  "workflows": [    {      "name": "rag",      "binding": "RAG_WORKFLOW",      "class_name": "RAGWorkflow"    }  ]}
 ```
 
 TOML
 
 ```
-
-[[workflows]]
-
-name = "rag"
-
-binding = "RAG_WORKFLOW"
-
-class_name = "RAGWorkflow"
-
-
+[[workflows]]name = "rag"binding = "RAG_WORKFLOW"class_name = "RAGWorkflow"
 ```
 
 In `src/index.js`, add a new class called `RAGWorkflow` that extends `WorkflowEntrypoint`:
@@ -399,25 +249,8 @@ In `src/index.js`, add a new class called `RAGWorkflow` that extends `WorkflowEn
 JavaScript
 
 ```
-
 import { WorkflowEntrypoint } from "cloudflare:workers";
-
-
-export class RAGWorkflow extends WorkflowEntrypoint {
-
-  async run(event, step) {
-
-    await step.do("example step", async () => {
-
-      console.log("Hello World!");
-
-    });
-
-  }
-
-}
-
-
+export class RAGWorkflow extends WorkflowEntrypoint {  async run(event, step) {    await step.do("example step", async () => {      console.log("Hello World!");    });  }}
 ```
 
 This class will define a single workflow step that will log "Hello World!" to the console. You can add as many steps as you need to your workflow.
@@ -427,10 +260,7 @@ On its own, this workflow will not do anything. To execute the workflow, we will
 JavaScript
 
 ```
-
 env.RAG_WORKFLOW.create({ params: { text } });
-
-
 ```
 
 ## 6\. Creating notes and adding them to Vectorize
@@ -460,29 +290,10 @@ Then, import `hono` into your `src/index.js` file. You should also update the `f
 JavaScript
 
 ```
-
-import { Hono } from "hono";
-
-const app = new Hono();
-
-
-app.get("/", async (c) => {
-
-  const answer = await c.env.AI.run("@cf/meta/llama-3-8b-instruct", {
-
-    messages: [{ role: "user", content: `What is the square root of 9?` }],
-
-  });
-
-
-  return c.json(answer);
-
-});
-
-
+import { Hono } from "hono";const app = new Hono();
+app.get("/", async (c) => {  const answer = await c.env.AI.run("@cf/meta/llama-3-8b-instruct", {    messages: [{ role: "user", content: `What is the square root of 9?` }],  });
+  return c.json(answer);});
 export default app;
-
-
 ```
 
 This will establish a route at the root path `/` that is functionally equivalent to the previous version of your application.
@@ -494,74 +305,13 @@ This example features the [@cf/baai/bge-base-en-v1.5 model](https://developers.c
 JavaScript
 
 ```
-
 import { WorkflowEntrypoint } from "cloudflare:workers";
-
-
-export class RAGWorkflow extends WorkflowEntrypoint {
-
-  async run(event, step) {
-
-    const env = this.env;
-
-    const { text } = event.payload;
-
-
-    const record = await step.do(`create database record`, async () => {
-
-      const query = "INSERT INTO notes (text) VALUES (?) RETURNING *";
-
-
+export class RAGWorkflow extends WorkflowEntrypoint {  async run(event, step) {    const env = this.env;    const { text } = event.payload;
+    const record = await step.do(`create database record`, async () => {      const query = "INSERT INTO notes (text) VALUES (?) RETURNING *";
       const { results } = await env.DB.prepare(query).bind(text).run();
-
-
-      const record = results[0];
-
-      if (!record) throw new Error("Failed to create note");
-
-      return record;
-
-    });
-
-
-    const embedding = await step.do(`generate embedding`, async () => {
-
-      const embeddings = await env.AI.run("@cf/baai/bge-base-en-v1.5", {
-
-        text: text,
-
-      });
-
-      const values = embeddings.data[0];
-
-      if (!values) throw new Error("Failed to generate vector embedding");
-
-      return values;
-
-    });
-
-
-    await step.do(`insert vector`, async () => {
-
-      return env.VECTOR_INDEX.upsert([
-
-        {
-
-          id: record.id.toString(),
-
-          values: embedding,
-
-        },
-
-      ]);
-
-    });
-
-  }
-
-}
-
-
+      const record = results[0];      if (!record) throw new Error("Failed to create note");      return record;    });
+    const embedding = await step.do(`generate embedding`, async () => {      const embeddings = await env.AI.run("@cf/baai/bge-base-en-v1.5", {        text: text,      });      const values = embeddings.data[0];      if (!values) throw new Error("Failed to generate vector embedding");      return values;    });
+    await step.do(`insert vector`, async () => {      return env.VECTOR_INDEX.upsert([        {          id: record.id.toString(),          values: embedding,        },      ]);    });  }}
 ```
 
 The workflow does the following things:
@@ -578,20 +328,7 @@ To complete the code, we will add a route that allows users to submit notes to t
 JavaScript
 
 ```
-
-app.post("/notes", async (c) => {
-
-  const { text } = await c.req.json();
-
-  if (!text) return c.text("Missing text", 400);
-
-  await c.env.RAG_WORKFLOW.create({ params: { text } });
-
-  return c.text("Created note", 201);
-
-});
-
-
+app.post("/notes", async (c) => {  const { text } = await c.req.json();  if (!text) return c.text("Missing text", 400);  await c.env.RAG_WORKFLOW.create({ params: { text } });  return c.text("Created note", 201);});
 ```
 
 ## 7\. Querying Vectorize to retrieve notes
@@ -609,113 +346,18 @@ We'll update the prompt to include the context, and to ask the LLM to use the co
 JavaScript
 
 ```
-
-import { Hono } from "hono";
-
-const app = new Hono();
-
-
-// Existing post route...
-
-// app.post('/notes', async (c) => { ... })
-
-
-app.get("/", async (c) => {
-
-  const question = c.req.query("text") || "What is the square root of 9?";
-
-
-  const embeddings = await c.env.AI.run("@cf/baai/bge-base-en-v1.5", {
-
-    text: question,
-
-  });
-
-  const vectors = embeddings.data[0];
-
-
-  const vectorQuery = await c.env.VECTOR_INDEX.query(vectors, { topK: 1 });
-
-  let vecId;
-
-  if (
-
-    vectorQuery.matches &&
-
-    vectorQuery.matches.length > 0 &&
-
-    vectorQuery.matches[0]
-
-  ) {
-
-    vecId = vectorQuery.matches[0].id;
-
-  } else {
-
-    console.log("No matching vector found or vectorQuery.matches is empty");
-
-  }
-
-
-  let notes = [];
-
-  if (vecId) {
-
-    const query = `SELECT * FROM notes WHERE id = ?`;
-
-    const { results } = await c.env.DB.prepare(query).bind(vecId).run();
-
-    if (results) notes = results.map((vec) => vec.text);
-
-  }
-
-
-  const contextMessage = notes.length
-
-    ? `Context:\n${notes.map((note) => `- ${note}`).join("\n")}`
-
-    : "";
-
-
+import { Hono } from "hono";const app = new Hono();
+// Existing post route...// app.post('/notes', async (c) => { ... })
+app.get("/", async (c) => {  const question = c.req.query("text") || "What is the square root of 9?";
+  const embeddings = await c.env.AI.run("@cf/baai/bge-base-en-v1.5", {    text: question,  });  const vectors = embeddings.data[0];
+  const vectorQuery = await c.env.VECTOR_INDEX.query(vectors, { topK: 1 });  let vecId;  if (    vectorQuery.matches &&    vectorQuery.matches.length > 0 &&    vectorQuery.matches[0]  ) {    vecId = vectorQuery.matches[0].id;  } else {    console.log("No matching vector found or vectorQuery.matches is empty");  }
+  let notes = [];  if (vecId) {    const query = `SELECT * FROM notes WHERE id = ?`;    const { results } = await c.env.DB.prepare(query).bind(vecId).run();    if (results) notes = results.map((vec) => vec.text);  }
+  const contextMessage = notes.length    ? `Context:\n${notes.map((note) => `- ${note}`).join("\n")}`    : "";
   const systemPrompt = `When answering the question or responding, use the context provided, if it is provided and relevant.`;
-
-
-  const { response: answer } = await c.env.AI.run(
-
-    "@cf/meta/llama-3-8b-instruct",
-
-    {
-
-      messages: [
-
-        ...(notes.length ? [{ role: "system", content: contextMessage }] : []),
-
-        { role: "system", content: systemPrompt },
-
-        { role: "user", content: question },
-
-      ],
-
-    },
-
-  );
-
-
-  return c.text(answer);
-
-});
-
-
-app.onError((err, c) => {
-
-  return c.text(err);
-
-});
-
-
+  const { response: answer } = await c.env.AI.run(    "@cf/meta/llama-3-8b-instruct",    {      messages: [        ...(notes.length ? [{ role: "system", content: contextMessage }] : []),        { role: "system", content: systemPrompt },        { role: "user", content: question },      ],    },  );
+  return c.text(answer);});
+app.onError((err, c) => {  return c.text(err);});
 export default app;
-
-
 ```
 
 ## 8\. Adding Anthropic Claude model (optional)
@@ -747,104 +389,15 @@ In `src/index.js`, you can update the `GET /` route to check for the `ANTHROPIC_
 JavaScript
 
 ```
-
 import Anthropic from '@anthropic-ai/sdk';
-
-
-app.get('/', async (c) => {
-
-  // ... Existing code
-
-  const systemPrompt = `When answering the question or responding, use the context provided, if it is provided and relevant.`
-
-
-  let modelUsed = ""
-
-  let response = null
-
-
-  if (c.env.ANTHROPIC_API_KEY) {
-
-    const anthropic = new Anthropic({
-
-      apiKey: c.env.ANTHROPIC_API_KEY
-
-    })
-
-
-    const model = "claude-3-5-sonnet-latest"
-
-    modelUsed = model
-
-
-    const message = await anthropic.messages.create({
-
-      max_tokens: 1024,
-
-      model,
-
-      messages: [
-
-        { role: 'user', content: question }
-
-      ],
-
-      system: [systemPrompt, notes ? contextMessage : ''].join(" ")
-
-    })
-
-
-    response = {
-
-      response: message.content.map(content => content.text).join("\n")
-
-    }
-
-  } else {
-
-    const model = "@cf/meta/llama-3.1-8b-instruct"
-
-    modelUsed = model
-
-
-    response = await c.env.AI.run(
-
-      model,
-
-      {
-
-        messages: [
-
-          ...(notes.length ? [{ role: 'system', content: contextMessage }] : []),
-
-          { role: 'system', content: systemPrompt },
-
-          { role: 'user', content: question }
-
-        ]
-
-      }
-
-    )
-
-  }
-
-
-  if (response) {
-
-    c.header('x-model-used', modelUsed)
-
-    return c.text(response.response)
-
-  } else {
-
-    return c.text("We were unable to generate output", 500)
-
-  }
-
-})
-
-
+app.get('/', async (c) => {  // ... Existing code  const systemPrompt = `When answering the question or responding, use the context provided, if it is provided and relevant.`
+  let modelUsed = ""  let response = null
+  if (c.env.ANTHROPIC_API_KEY) {    const anthropic = new Anthropic({      apiKey: c.env.ANTHROPIC_API_KEY    })
+    const model = "claude-3-5-sonnet-latest"    modelUsed = model
+    const message = await anthropic.messages.create({      max_tokens: 1024,      model,      messages: [        { role: 'user', content: question }      ],      system: [systemPrompt, notes ? contextMessage : ''].join(" ")    })
+    response = {      response: message.content.map(content => content.text).join("\n")    }  } else {    const model = "@cf/meta/llama-3.1-8b-instruct"    modelUsed = model
+    response = await c.env.AI.run(      model,      {        messages: [          ...(notes.length ? [{ role: 'system', content: contextMessage }] : []),          { role: 'system', content: systemPrompt },          { role: 'user', content: question }        ]      }    )  }
+  if (response) {    c.header('x-model-used', modelUsed)    return c.text(response.response)  } else {    return c.text("We were unable to generate output", 500)  }})
 ```
 
 Finally, you'll need to set the `ANTHROPIC_API_KEY` environment variable in your Workers application. You can do this by using `wrangler secret put`:
@@ -852,10 +405,7 @@ Finally, you'll need to set the `ANTHROPIC_API_KEY` environment variable in your
 Terminal window
 
 ```
-
 $ npx wrangler secret put ANTHROPIC_API_KEY
-
-
 ```
 
 ## 9\. Deleting notes and vectors
@@ -865,25 +415,10 @@ If you no longer need a note, you can delete it from the database. Any time that
 JavaScript
 
 ```
-
-app.delete("/notes/:id", async (c) => {
-
-  const { id } = c.req.param();
-
-
-  const query = `DELETE FROM notes WHERE id = ?`;
-
-  await c.env.DB.prepare(query).bind(id).run();
-
-
+app.delete("/notes/:id", async (c) => {  const { id } = c.req.param();
+  const query = `DELETE FROM notes WHERE id = ?`;  await c.env.DB.prepare(query).bind(id).run();
   await c.env.VECTOR_INDEX.deleteByIds([id]);
-
-
-  return c.status(204);
-
-});
-
-
+  return c.status(204);});
 ```
 
 ## 10\. Text splitting (optional)
@@ -915,29 +450,10 @@ The `RecursiveCharacterTextSplitter` class provided by this package will split t
 JavaScript
 
 ```
-
 import { RecursiveCharacterTextSplitter } from "@langchain/textsplitters";
-
-
 const text = "Some long piece of text...";
-
-
-const splitter = new RecursiveCharacterTextSplitter({
-
-  // These can be customized to change the chunking size
-
-  // chunkSize: 1000,
-
-  // chunkOverlap: 200,
-
-});
-
-
-const output = await splitter.createDocuments([text]);
-
-console.log(output); // [{ pageContent: 'Some long piece of text...' }]
-
-
+const splitter = new RecursiveCharacterTextSplitter({  // These can be customized to change the chunking size  // chunkSize: 1000,  // chunkOverlap: 200,});
+const output = await splitter.createDocuments([text]);console.log(output); // [{ pageContent: 'Some long piece of text...' }]
 ```
 
 To use this splitter, we'll update the workflow to split the text into smaller chunks. We'll then iterate over the chunks and run the rest of the workflow for each chunk of text:
@@ -945,106 +461,13 @@ To use this splitter, we'll update the workflow to split the text into smaller c
 JavaScript
 
 ```
-
-export class RAGWorkflow extends WorkflowEntrypoint {
-
-  async run(event, step) {
-
-    const env = this.env;
-
-    const { text } = event.payload;
-
-    let texts = await step.do("split text", async () => {
-
-      const splitter = new RecursiveCharacterTextSplitter();
-
-      const output = await splitter.createDocuments([text]);
-
-      return output.map((doc) => doc.pageContent);
-
-    });
-
-
-    console.log(
-
-      "RecursiveCharacterTextSplitter generated ${texts.length} chunks",
-
-    );
-
-
-    for (const index in texts) {
-
-      const text = texts[index];
-
-      const record = await step.do(
-
-        `create database record: ${index}/${texts.length}`,
-
-        async () => {
-
-          const query = "INSERT INTO notes (text) VALUES (?) RETURNING *";
-
-
+export class RAGWorkflow extends WorkflowEntrypoint {  async run(event, step) {    const env = this.env;    const { text } = event.payload;    let texts = await step.do("split text", async () => {      const splitter = new RecursiveCharacterTextSplitter();      const output = await splitter.createDocuments([text]);      return output.map((doc) => doc.pageContent);    });
+    console.log(      "RecursiveCharacterTextSplitter generated ${texts.length} chunks",    );
+    for (const index in texts) {      const text = texts[index];      const record = await step.do(        `create database record: ${index}/${texts.length}`,        async () => {          const query = "INSERT INTO notes (text) VALUES (?) RETURNING *";
           const { results } = await env.DB.prepare(query).bind(text).run();
-
-
-          const record = results[0];
-
-          if (!record) throw new Error("Failed to create note");
-
-          return record;
-
-        },
-
-      );
-
-
-      const embedding = await step.do(
-
-        `generate embedding: ${index}/${texts.length}`,
-
-        async () => {
-
-          const embeddings = await env.AI.run("@cf/baai/bge-base-en-v1.5", {
-
-            text: text,
-
-          });
-
-          const values = embeddings.data[0];
-
-          if (!values) throw new Error("Failed to generate vector embedding");
-
-          return values;
-
-        },
-
-      );
-
-
-      await step.do(`insert vector: ${index}/${texts.length}`, async () => {
-
-        return env.VECTOR_INDEX.upsert([
-
-          {
-
-            id: record.id.toString(),
-
-            values: embedding,
-
-          },
-
-        ]);
-
-      });
-
-    }
-
-  }
-
-}
-
-
+          const record = results[0];          if (!record) throw new Error("Failed to create note");          return record;        },      );
+      const embedding = await step.do(        `generate embedding: ${index}/${texts.length}`,        async () => {          const embeddings = await env.AI.run("@cf/baai/bge-base-en-v1.5", {            text: text,          });          const values = embeddings.data[0];          if (!values) throw new Error("Failed to generate vector embedding");          return values;        },      );
+      await step.do(`insert vector: ${index}/${texts.length}`, async () => {        return env.VECTOR_INDEX.upsert([          {            id: record.id.toString(),            values: embedding,          },        ]);      });    }  }}
 ```
 
 Now, when large pieces of text are submitted to the `/notes` endpoint, they will be split into smaller chunks, and each chunk will be processed by the workflow.
@@ -1056,10 +479,7 @@ If you did not deploy your Worker during [step 1](https://developers.cloudflare.
 Terminal window
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 Preview your Worker at `<YOUR_WORKER>.<YOUR_SUBDOMAIN>.workers.dev`.

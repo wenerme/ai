@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,9 +29,9 @@ This guide covers how to configure [Coupa ↗](https://compass.coupa.com/en-us/p
 4. For the authentication protocol, select **SAML**.
 5. Select **Add application**.
 6. Fill in the following fields:  
-   * **Entity ID**:`sso-stg1.coupahost.com` for a stage account or `sso-prd1.coupahost.com` for a production account  
-   * **Assertion Consumer Service URL**: `https://sso-stg1.coupahost.com/sp/ACS.saml2` for a stage account or `https://sso-prd1.coupahost.com/sp/ACS.saml2` for a production account  
-   * **Name ID format**: _Email_
+  * **Entity ID**: `sso-stg1.coupahost.com` for a stage account or `sso-prd1.coupahost.com` for a production account
+  * **Assertion Consumer Service URL**: `https://sso-stg1.coupahost.com/sp/ACS.saml2` for a stage account or `https://sso-prd1.coupahost.com/sp/ACS.saml2` for a production account
+  * **Name ID format**: _Email_
 7. Copy the **Access Entity ID or Issuer** and **SAML Metadata Endpoint**.
 8. In **Default relay state**, enter `https://<your-subdomain>.coupahost.com/sessions/saml_post`.
 9. Configure [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) for the application.

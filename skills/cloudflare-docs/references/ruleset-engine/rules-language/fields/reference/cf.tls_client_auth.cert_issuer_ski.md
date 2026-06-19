@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,10 +21,7 @@ This field defaults to `""` if the connection does not use [mTLS authentication]
 Example value:
 
 ```
-
 "8204924CF49D471E855862706D889F58F6B784D3"
-
-
 ```
 
 Categories: 

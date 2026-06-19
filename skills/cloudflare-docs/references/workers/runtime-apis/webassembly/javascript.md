@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,42 +23,7 @@ In this guide, you will use the WebAssembly Text Format to create a simple Wasm 
 Review the following example module (`;;` denotes a comment):
 
 ```
-
-;; src/simple.wat
-
-(module
-
-  ;; Import a function from JavaScript named `imported_func`
-
-  ;; which takes a single i32 argument and assign to
-
-  ;; variable $i
-
-  (func $i (import "imports" "imported_func") (param i32))
-
-  ;; Export a function named `exported_func` which takes a
-
-  ;; single i32 argument and returns an i32
-
-  (func (export "exported_func") (param $input i32) (result i32)
-
-    ;; Invoke `imported_func` with $input as argument
-
-    local.get $input
-
-    call $i
-
-    ;; Return $input
-
-    local.get $input
-
-    return
-
-  )
-
-)
-
-
+;; src/simple.wat(module  ;; Import a function from JavaScript named `imported_func`  ;; which takes a single i32 argument and assign to  ;; variable $i  (func $i (import "imports" "imported_func") (param i32))  ;; Export a function named `exported_func` which takes a  ;; single i32 argument and returns an i32  (func (export "exported_func") (param $input i32) (result i32)    ;; Invoke `imported_func` with $input as argument    local.get $input    call $i    ;; Return $input    local.get $input    return  ))
 ```
 
 Using [wat2wasm ↗](https://github.com/WebAssembly/wabt), convert the WAT format to WebAssembly Binary Format:
@@ -66,10 +31,7 @@ Using [wat2wasm ↗](https://github.com/WebAssembly/wabt), convert the WAT forma
 Terminal window
 
 ```
-
 wat2wasm src/simple.wat -o src/simple.wasm
-
-
 ```
 
 ## Bundling
@@ -83,55 +45,10 @@ After you have converted the WAT format to WebAssembly Binary Format, import and
 TypeScript
 
 ```
-
 import mod from "./simple.wasm";
-
-
-// Define imports available to Wasm instance.
-
-const importObject = {
-
-  imports: {
-
-    imported_func: (arg: number) => {
-
-      console.log(`Hello from JavaScript: ${arg}`);
-
-    },
-
-  },
-
-};
-
-
-// Create instance of WebAssembly Module `mod`, supplying
-
-// the expected imports in `importObject`. This should be
-
-// done at the top level of the script to avoid instantiation on every request.
-
-const instance = await WebAssembly.instantiate(mod, importObject);
-
-
-export default {
-
-  async fetch() {
-
-    // Invoke the `exported_func` from our Wasm Instance with
-
-    // an argument.
-
-    const retval = instance.exports.exported_func(42);
-
-    // Return the return value!
-
-    return new Response(`Success: ${retval}`);
-
-  },
-
-};
-
-
+// Define imports available to Wasm instance.const importObject = {  imports: {    imported_func: (arg: number) => {      console.log(`Hello from JavaScript: ${arg}`);    },  },};
+// Create instance of WebAssembly Module `mod`, supplying// the expected imports in `importObject`. This should be// done at the top level of the script to avoid instantiation on every request.const instance = await WebAssembly.instantiate(mod, importObject);
+export default {  async fetch() {    // Invoke the `exported_func` from our Wasm Instance with    // an argument.    const retval = instance.exports.exported_func(42);    // Return the return value!    return new Response(`Success: ${retval}`);  },};
 ```
 
 When invoked, this Worker should log `Hello from JavaScript: 42` and return `Success: 42`, demonstrating the ability to invoke Wasm methods with arguments from JavaScript and vice versa.

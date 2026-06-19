@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,114 +31,17 @@ With [terraform ↗](https://developer.hashicorp.com/terraform/downloads) instal
 4. Ensure that `skip_region_validation = true`, `skip_requesting_account_id = true`, and `skip_credentials_validation = true` are set in the provider configuration.
 
 ```
-
-terraform {
-
-  required_providers {
-
-    aws = {
-
-      source = "hashicorp/aws"
-
-      version = "~> 5"
-
-    }
-
-  }
-
-}
-
-
-provider "aws" {
-
-  region = "us-east-1"
-
-
-  access_key = <R2 Access Key>
-
-  secret_key = <R2 Secret Key>
-
-
-  # Required for R2.
-
-  # These options disable S3-specific validation on the client (Terraform) side.
-
-  skip_credentials_validation = true
-
-  skip_region_validation      = true
-
-  skip_requesting_account_id  = true
-
-
-  endpoints {
-
-    s3 = "https://<account id>.r2.cloudflarestorage.com"
-
-  }
-
-}
-
-
-resource "aws_s3_bucket" "default" {
-
-  bucket = "<org>-test"
-
-}
-
-
-resource "aws_s3_bucket_cors_configuration" "default" {
-
-  bucket   = aws_s3_bucket.default.id
-
-
-  cors_rule {
-
-    allowed_methods = ["GET"]
-
-    allowed_origins = ["*"]
-
-  }
-
-}
-
-
-resource "aws_s3_bucket_lifecycle_configuration" "default" {
-
-  bucket = aws_s3_bucket.default.id
-
-
-  rule {
-
-    id     = "expire-bucket"
-
-    status = "Enabled"
-
-    expiration {
-
-      days = 1
-
-    }
-
-  }
-
-
-  rule {
-
-    id     = "abort-multipart-upload"
-
-    status = "Enabled"
-
-    abort_incomplete_multipart_upload {
-
-      days_after_initiation = 1
-
-    }
-
-  }
-
-}
-
-
+terraform {  required_providers {    aws = {      source = "hashicorp/aws"      version = "~> 5"    }  }}
+provider "aws" {  region = "us-east-1"
+  access_key = <R2 Access Key>  secret_key = <R2 Secret Key>
+  # Required for R2.  # These options disable S3-specific validation on the client (Terraform) side.  skip_credentials_validation = true  skip_region_validation      = true  skip_requesting_account_id  = true
+  endpoints {    s3 = "https://<account id>.r2.cloudflarestorage.com"  }}
+resource "aws_s3_bucket" "default" {  bucket = "<org>-test"}
+resource "aws_s3_bucket_cors_configuration" "default" {  bucket   = aws_s3_bucket.default.id
+  cors_rule {    allowed_methods = ["GET"]    allowed_origins = ["*"]  }}
+resource "aws_s3_bucket_lifecycle_configuration" "default" {  bucket = aws_s3_bucket.default.id
+  rule {    id     = "expire-bucket"    status = "Enabled"    expiration {      days = 1    }  }
+  rule {    id     = "abort-multipart-upload"    status = "Enabled"    abort_incomplete_multipart_upload {      days_after_initiation = 1    }  }}
 ```
 
 You can then use `terraform plan` to view the changes and `terraform apply` to apply changes.

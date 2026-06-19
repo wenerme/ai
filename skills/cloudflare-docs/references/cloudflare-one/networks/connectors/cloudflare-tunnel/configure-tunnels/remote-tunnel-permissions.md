@@ -7,7 +7,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,9 +19,9 @@ A remotely-managed tunnel only requires the tunnel token to run. Anyone with acc
 
 To get the token for a remotely-managed tunnel:
 
-* [ Dashboard ](#tab-panel-7252)
-* [ API ](#tab-panel-7253)
-* [ Terraform (v5) ](#tab-panel-7254)
+* [ Dashboard ](#tab-panel-7328)
+* [ API ](#tab-panel-7329)
+* [ Terraform (v5) ](#tab-panel-7330)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
 2. Select a `cloudflared` tunnel and select **Edit**.
@@ -31,7 +31,7 @@ Make a `GET` request to the [Cloudflare Tunnel token](https://developers.cloudfl
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Cloudflare One Connectors Write`
 * `Cloudflare One Connector: cloudflared Write`
 * `Cloudflare Tunnel Write`
@@ -39,46 +39,17 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Get a Cloudflare Tunnel token
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNNEL_ID/token" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNNEL_ID/token" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": [],
-
-  "result": "eyJhIjoiNWFiNGU5Z..."
-
-}
-
-
+{  "success": true,  "errors": [],  "messages": [],  "result": "eyJhIjoiNWFiNGU5Z..."}
 ```
 
 The token value can be found in the `result`.
 
 ```
-
-data "cloudflare_zero_trust_tunnel_cloudflared_token" "tunnel_token" {
-
-  account_id = var.cloudflare_account_id
-
-  tunnel_id = cloudflare_zero_trust_tunnel_cloudflared.example_tunnel.id
-
-}
-
-
+data "cloudflare_zero_trust_tunnel_cloudflared_token" "tunnel_token" {  account_id = var.cloudflare_account_id  tunnel_id = cloudflare_zero_trust_tunnel_cloudflared.example_tunnel.id}
 ```
 
 If your host machine is not managed in Terraform or you want to install the tunnel manually, you can output the token value to the CLI.
@@ -87,10 +58,7 @@ Example: Output to CLI
 
 1. Output the tunnel token to the Terraform state file:  
 ```  
-output "tunnel_token" {  
-  value       = data.cloudflare_zero_trust_tunnel_cloudflared_token.tunnel_token.token  
-  sensitive   = true  
-}  
+output "tunnel_token" {  value       = data.cloudflare_zero_trust_tunnel_cloudflared_token.tunnel_token.token  sensitive   = true}  
 ```
 2. Apply the configuration:  
 Terminal window  
@@ -111,21 +79,8 @@ Alternatively, pass `data.cloudflare_zero_trust_tunnel_cloudflared_token.tunnel_
 Example: Store in HashiCorp Vault
 
 ```
-
-resource "vault_generic_secret" "tunnel_token" {
-
-  path         = "kv/cloudflare/tunnel_token"
-
-
-  data_json = jsonencode({
-
-    "TUNNEL_TOKEN" = data.cloudflare_zero_trust_tunnel_cloudflared_token.tunnel_token.token
-
-  })
-
-}
-
-
+resource "vault_generic_secret" "tunnel_token" {  path         = "kv/cloudflare/tunnel_token"
+  data_json = jsonencode({    "TUNNEL_TOKEN" = data.cloudflare_zero_trust_tunnel_cloudflared_token.tunnel_token.token  })}
 ```
 
 ## Rotate a token without service disruption
@@ -134,66 +89,43 @@ Cloudflare recommends rotating the tunnel token at a regular cadence to reduce t
 
 To rotate a tunnel token:
 
-1. Refresh the token on Cloudflare:  
-   * [ Dashboard ](#tab-panel-7255)  
-   * [ API ](#tab-panel-7256)  
-   1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels**.  
-   2. Select a `cloudflared` tunnel and select **Edit**.  
-   3. Select **Refresh token**.  
-   4. Copy the `cloudflared` installation command for your operating system. This command contains the new token.  
-   1. Generate a random base64 string (minimum size 32 bytes) to use as a tunnel secret:  
-   Terminal window  
-   ```  
-   openssl rand -base64 32  
-   ```  
-   ```  
-   AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=  
-   ```  
-   2. Make a `PATCH` request to the [Cloudflare Tunnel](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/tunnels/methods/edit/) endpoint:  
-   Required API token permissions  
-   At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-         * `Cloudflare One Connectors Write`  
-         * `Cloudflare One Connector: cloudflared Write`  
-         * `Cloudflare Tunnel Write`  
-   Update a Cloudflare Tunnel  
-   ```  
-   curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNNEL_ID" \  
-     --request PATCH \  
-     --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-     --json '{  
-       "name": "Example tunnel",  
-       "tunnel_secret": "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg="  
-     }'  
-   ```  
-   ```  
-   {  
-     "success": true,  
-     "errors": [],  
-     "messages": [],  
-     "result": {  
-       "id": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",  
-       "account_tag": "699d98642c564d2e855e9661899b7252",  
-       "created_at": "2024-12-04T22:03:26.291225Z",  
-       "deleted_at": null,  
-       "name": "Example tunnel",  
-       "connections": [],  
-       "conns_active_at": null,  
-       "conns_inactive_at": "2024-12-04T22:03:26.291225Z",  
-       "tun_type": "cfd_tunnel",  
-       "metadata": {},  
-       "status": "inactive",  
-       "remote_config": true,  
-       "token": "eyJhIjoiNWFiNGU5Z..."  
-     }  
-   }  
-   ```  
-   3. Copy the `token` value shown in the output.  
+1. Refresh the token on Cloudflare:
+
+  * [ Dashboard ](#tab-panel-7331)
+  * [ API ](#tab-panel-7332)
+
+  1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
+  2. Select a `cloudflared` tunnel and select **Edit**.
+  3. Select **Refresh token**.
+  4. Copy the `cloudflared` installation command for your operating system. This command contains the new token.
+
+  1. Generate a random base64 string (minimum size 32 bytes) to use as a tunnel secret:  
+  Terminal window  
+  ```  
+  openssl rand -base64 32  
+  ```  
+  ```  
+  AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=  
+  ```
+  2. Make a `PATCH` request to the [Cloudflare Tunnel](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/tunnels/methods/edit/) endpoint:  
+  Required API token permissions  
+  At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+    * `Cloudflare One Connectors Write`
+    * `Cloudflare One Connector: cloudflared Write`
+    * `Cloudflare Tunnel Write`  
+  Update a Cloudflare Tunnel  
+  ```  
+  curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNNEL_ID" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Example tunnel",    "tunnel_secret": "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg="  }'  
+  ```  
+  ```  
+  {  "success": true,  "errors": [],  "messages": [],  "result": {    "id": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",    "account_tag": "699d98642c564d2e855e9661899b7252",    "created_at": "2024-12-04T22:03:26.291225Z",    "deleted_at": null,    "name": "Example tunnel",    "connections": [],    "conns_active_at": null,    "conns_inactive_at": "2024-12-04T22:03:26.291225Z",    "tun_type": "cfd_tunnel",    "metadata": {},    "status": "inactive",    "remote_config": true,    "token": "eyJhIjoiNWFiNGU5Z..."  }}  
+  ```
+  3. Copy the `token` value shown in the output.  
 After refreshing the token, `cloudflared` can no longer establish new connections to Cloudflare using the old token. However, existing connectors will remain active and the tunnel will continue serving traffic.
 2. On half of your `cloudflared` replicas, reinstall the `cloudflared` service with the new token. For example, on a Linux host:  
 Terminal window  
 ```  
-  sudo cloudflared service uninstall  
-sudo cloudflared service install <NEW_TOKEN>  
+  sudo cloudflared service uninstallsudo cloudflared service install <NEW_TOKEN>  
 ```
 3. Confirm that the service started correctly:  
 Terminal window  
@@ -213,22 +145,19 @@ If your tunnel token is compromised, we recommend taking the following steps:
 1. Refresh the token using the dashboard or API. Refer to Step 1 of [Rotate a token without service disruption](#rotate-a-token-without-service-disruption).
 2. [Delete all connections](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/tunnels/subresources/connections/methods/delete/) between `cloudflared` and Cloudflare:  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Cloudflare One Connectors Write`  
-   * `Cloudflare One Connector: cloudflared Write`  
-   * `Cloudflare Tunnel Write`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Cloudflare One Connectors Write`
+  * `Cloudflare One Connector: cloudflared Write`
+  * `Cloudflare Tunnel Write`  
 Clean up Cloudflare Tunnel connections  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNNEL_ID/connections" \  
-  --request DELETE \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNNEL_ID/connections" \  --request DELETE \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
 ```  
 This will clean up any unauthorized connections and prevent users from connecting to your network.
 3. On each `cloudflared` replica, update `cloudflared` to use the new token. For example, on a Linux host:  
 Terminal window  
 ```  
-  sudo cloudflared service uninstall  
-sudo cloudflared service install <NEW_TOKEN>  
+  sudo cloudflared service uninstallsudo cloudflared service install <NEW_TOKEN>  
 ```
 4. Confirm that the service started correctly:  
 Terminal window  

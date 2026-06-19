@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -74,7 +74,7 @@ On 2025-07-14, Gateway began evaluating network-level policies before applicatio
 
 Comparison of old and new order of enforcement
 
-| Old order of enforcement                       | New order of enforcement                                                                                               |                                                                                                                                         |
+|                                                | Old order of enforcement                                                                                               | New order of enforcement                                                                                                                |
 | ---------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | **Network Block policy and HTTP Block policy** | Gateway blocks traffic and displays the block page and/or follows the client notification settings on the HTTP policy. | Gateway blocks traffic. Gateway does not display the block page but will follow the client notification settings on the Network policy. |
 | **Network Allow policy and HTTP Block policy** | Gateway blocks traffic and displays the block page and follows the client notification settings on the HTTP policy.    | No change.                                                                                                                              |
@@ -239,37 +239,43 @@ To ensure your precedence is set correctly, Cloudflare recommends [upgrading you
 
 Suppose you have a list of policies arranged in the following order of precedence:
 
-* DNS policies:  
-| Precedence | Selector | Operator      | Value            | Action |  
-| ---------- | -------- | ------------- | ---------------- | ------ |  
-| 1          | Host     | is            | example.com      | Block  |  
-| 2          | Host     | is            | test.example.com | Allow  |  
+* DNS policies:
+
+| Precedence | Selector | Operator      | Value            | Action |
+| ---------- | -------- | ------------- | ---------------- | ------ |
+| 1          | Host     | is            | example.com      | Block  |
+| 2          | Host     | is            | test.example.com | Allow  |
 | 3          | Domain   | matches regex | .\\              | Block  |
-* HTTP policies:  
-| Precedence | Selector | Operator | Value             | Action         |  
-| ---------- | -------- | -------- | ----------------- | -------------- |  
-| 1          | Host     | is       | example.com       | Block          |  
+* HTTP policies:
+
+| Precedence | Selector | Operator | Value             | Action         |
+| ---------- | -------- | -------- | ----------------- | -------------- |
+| 1          | Host     | is       | example.com       | Block          |
 | 2          | Host     | is       | test2.example.com | Do Not Inspect |
-* Network policies:  
-| Precedence | Selector         | Operator | Value            | Action |  
-| ---------- | ---------------- | -------- | ---------------- | ------ |  
-| 1          | Destination Port | is       | 80               | Block  |  
-| 2          | Destination port | is       | 443              | Allow  |  
+* Network policies:
+
+| Precedence | Selector         | Operator | Value            | Action |
+| ---------- | ---------------- | -------- | ---------------- | ------ |
+| 1          | Destination Port | is       | 80               | Block  |
+| 2          | Destination port | is       | 443              | Allow  |
 | 3          | SNI Domain       | is       | test.example.com | Block  |
 
 When a user goes to `https://test.example.com`, Gateway performs the following operations:
 
-1. Evaluate DNS request against DNS policies:  
-   1. Policy #1 does not match `test.example.com` — move on to check Policy #2.  
-   2. Policy #2 matches, so DNS resolution is allowed.  
-   3. Policy #3 is not evaluated because there has already been an explicit match.
-2. Evaluate HTTPS request against network policies:  
-   1. Policy #1 does not match because port 80 is used for standard HTTP, not HTTPS.  
-   2. Policy #2 matches, so the request is allowed and proxied to the upstream server.  
-   3. Policy #3 is not evaluated because there has already been an explicit match.
-3. Evaluate HTTPS request against HTTP policies:  
-   1. Policy #2 is evaluated first because Do Not Inspect [always takes precedence](#http-policies) over Allow and Block. Since there is no match, move on to check Policy #1.  
-   2. Policy #1 does not match `test.example.com`. Since there are no matching Block policies, the request passes the HTTP filter.
+1. Evaluate DNS request against DNS policies:
+
+  1. Policy #1 does not match `test.example.com` — move on to check Policy #2.
+  2. Policy #2 matches, so DNS resolution is allowed.
+  3. Policy #3 is not evaluated because there has already been an explicit match.
+2. Evaluate HTTPS request against network policies:
+
+  1. Policy #1 does not match because port 80 is used for standard HTTP, not HTTPS.
+  2. Policy #2 matches, so the request is allowed and proxied to the upstream server.
+  3. Policy #3 is not evaluated because there has already been an explicit match.
+3. Evaluate HTTPS request against HTTP policies:
+
+  1. Policy #2 is evaluated first because Do Not Inspect [always takes precedence](#http-policies) over Allow and Block. Since there is no match, move on to check Policy #1.
+  2. Policy #1 does not match `test.example.com`. Since there are no matching Block policies, the request passes the HTTP filter.
 
 Therefore, the user is able to connect to `https://test.example.com`.
 
@@ -286,40 +292,9 @@ Changing the order within the Cloudflare dashboard or API may result in configur
 You can manage the order of execution of your Gateway policies using Terraform. With version 5 of the Terraform Cloudflare provider, Gateway users can list their policies in a Terraform file with any desired integer precedence value. Cloudflare recommends starting with a precedence of `1000` and adding extra space between each policy's precedence for any future policies. For example:
 
 ```
-
-resource "cloudflare_zero_trust_gateway_policy" "policy_1" {
-
-  account_id = var.cloudflare_account_id
-
-  # other attributes...
-
-  precedence = 1000
-
-}
-
-
-resource "cloudflare_zero_trust_gateway_policy" "policy_2" {
-
-  account_id = var.cloudflare_account_id
-
-  # other attributes...
-
-  precedence = 2000
-
-}
-
-
-resource "cloudflare_zero_trust_gateway_policy" "policy_3" {
-
-  account_id = var.cloudflare_account_id
-
-  # other attributes...
-
-  precedence = 3000
-
-}
-
-
+resource "cloudflare_zero_trust_gateway_policy" "policy_1" {  account_id = var.cloudflare_account_id  # other attributes...  precedence = 1000}
+resource "cloudflare_zero_trust_gateway_policy" "policy_2" {  account_id = var.cloudflare_account_id  # other attributes...  precedence = 2000}
+resource "cloudflare_zero_trust_gateway_policy" "policy_3" {  account_id = var.cloudflare_account_id  # other attributes...  precedence = 3000}
 ```
 
 To avoid precedence calculation errors when reordering policies with Terraform, you should move one policy at a time before running `terraform plan` and `terraform apply`. If you use both Terraform and the Cloudflare dashboard or API, sync your polices with `terraform refresh` before reordering policies in Terraform. Alternatively, you can set your account to [read-only in the Cloudflare dashboard](https://developers.cloudflare.com/cloudflare-one/api-terraform/#set-dashboard-to-read-only), only allowing changes using the API or Terraform.

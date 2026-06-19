@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/flagship/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,10 +23,7 @@ Returns the raw flag value without type checking. Use this method when the flag 
 TypeScript
 
 ```
-
 get(flagKey: string, defaultValue?: unknown, context?: FlagshipEvaluationContext): Promise<unknown>
-
-
 ```
 
 | Parameter    | Type                      | Required | Description                                                               |
@@ -38,14 +35,7 @@ get(flagKey: string, defaultValue?: unknown, context?: FlagshipEvaluationContext
 TypeScript
 
 ```
-
-const value = await env.FLAGS.get("checkout-flow", "v1", {
-
-  userId: "user-42",
-
-});
-
-
+const value = await env.FLAGS.get("checkout-flow", "v1", {  userId: "user-42",});
 ```
 
 ## `getBooleanValue()`
@@ -55,10 +45,7 @@ Returns the flag value as a `boolean`.
 TypeScript
 
 ```
-
 getBooleanValue(flagKey: string, defaultValue: boolean, context?: FlagshipEvaluationContext): Promise<boolean>
-
-
 ```
 
 | Parameter    | Type                      | Required | Description                                                               |
@@ -70,14 +57,7 @@ getBooleanValue(flagKey: string, defaultValue: boolean, context?: FlagshipEvalua
 TypeScript
 
 ```
-
-const enabled = await env.FLAGS.getBooleanValue("dark-mode", false, {
-
-  userId: "user-42",
-
-});
-
-
+const enabled = await env.FLAGS.getBooleanValue("dark-mode", false, {  userId: "user-42",});
 ```
 
 ## `getStringValue()`
@@ -87,10 +67,7 @@ Returns the flag value as a `string`.
 TypeScript
 
 ```
-
 getStringValue(flagKey: string, defaultValue: string, context?: FlagshipEvaluationContext): Promise<string>
-
-
 ```
 
 | Parameter    | Type                      | Required | Description                                                               |
@@ -102,16 +79,7 @@ getStringValue(flagKey: string, defaultValue: string, context?: FlagshipEvaluati
 TypeScript
 
 ```
-
-const variant = await env.FLAGS.getStringValue("checkout-flow", "v1", {
-
-  userId: "user-42",
-
-  country: "US",
-
-});
-
-
+const variant = await env.FLAGS.getStringValue("checkout-flow", "v1", {  userId: "user-42",  country: "US",});
 ```
 
 ## `getNumberValue()`
@@ -121,10 +89,7 @@ Returns the flag value as a `number`.
 TypeScript
 
 ```
-
 getNumberValue(flagKey: string, defaultValue: number, context?: FlagshipEvaluationContext): Promise<number>
-
-
 ```
 
 | Parameter    | Type                      | Required | Description                                                               |
@@ -136,14 +101,7 @@ getNumberValue(flagKey: string, defaultValue: number, context?: FlagshipEvaluati
 TypeScript
 
 ```
-
-const maxRetries = await env.FLAGS.getNumberValue("max-retries", 3, {
-
-  plan: "enterprise",
-
-});
-
-
+const maxRetries = await env.FLAGS.getNumberValue("max-retries", 3, {  plan: "enterprise",});
 ```
 
 ## `getObjectValue()`
@@ -153,10 +111,7 @@ Returns the flag value as a typed object. Use the generic parameter `T` to speci
 TypeScript
 
 ```
-
 getObjectValue<T extends object>(flagKey: string, defaultValue: T, context?: FlagshipEvaluationContext): Promise<T>
-
-
 ```
 
 | Parameter    | Type                      | Required | Description                                                               |
@@ -168,27 +123,8 @@ getObjectValue<T extends object>(flagKey: string, defaultValue: T, context?: Fla
 TypeScript
 
 ```
-
-interface ThemeConfig {
-
-  primaryColor: string;
-
-  fontSize: number;
-
-}
-
-
-const theme = await env.FLAGS.getObjectValue<ThemeConfig>(
-
-  "theme-config",
-
-  { primaryColor: "#000", fontSize: 14 },
-
-  { userId: "user-42" },
-
-);
-
-
+interface ThemeConfig {  primaryColor: string;  fontSize: number;}
+const theme = await env.FLAGS.getObjectValue<ThemeConfig>(  "theme-config",  { primaryColor: "#000", fontSize: 14 },  { userId: "user-42" },);
 ```
 
 ## `getBooleanDetails()`
@@ -198,10 +134,7 @@ Returns the flag value as a `boolean` with evaluation metadata.
 TypeScript
 
 ```
-
 getBooleanDetails(flagKey: string, defaultValue: boolean, context?: FlagshipEvaluationContext): Promise<FlagshipEvaluationDetails<boolean>>
-
-
 ```
 
 | Parameter    | Type                      | Required | Description                                                               |
@@ -213,18 +146,7 @@ getBooleanDetails(flagKey: string, defaultValue: boolean, context?: FlagshipEval
 TypeScript
 
 ```
-
-const details = await env.FLAGS.getBooleanDetails("dark-mode", false, {
-
-  userId: "user-42",
-
-});
-
-console.log(details.value); // true
-
-console.log(details.reason); // "TARGETING_MATCH"
-
-
+const details = await env.FLAGS.getBooleanDetails("dark-mode", false, {  userId: "user-42",});console.log(details.value); // trueconsole.log(details.reason); // "TARGETING_MATCH"
 ```
 
 ## `getStringDetails()`
@@ -234,10 +156,7 @@ Returns the flag value as a `string` with evaluation metadata.
 TypeScript
 
 ```
-
 getStringDetails(flagKey: string, defaultValue: string, context?: FlagshipEvaluationContext): Promise<FlagshipEvaluationDetails<string>>
-
-
 ```
 
 | Parameter    | Type                      | Required | Description                                                               |
@@ -249,20 +168,7 @@ getStringDetails(flagKey: string, defaultValue: string, context?: FlagshipEvalua
 TypeScript
 
 ```
-
-const details = await env.FLAGS.getStringDetails("checkout-flow", "v1", {
-
-  userId: "user-42",
-
-});
-
-console.log(details.value); // "v2"
-
-console.log(details.variant); // "new"
-
-console.log(details.reason); // "TARGETING_MATCH"
-
-
+const details = await env.FLAGS.getStringDetails("checkout-flow", "v1", {  userId: "user-42",});console.log(details.value); // "v2"console.log(details.variant); // "new"console.log(details.reason); // "TARGETING_MATCH"
 ```
 
 ## `getNumberDetails()`
@@ -272,10 +178,7 @@ Returns the flag value as a `number` with evaluation metadata.
 TypeScript
 
 ```
-
 getNumberDetails(flagKey: string, defaultValue: number, context?: FlagshipEvaluationContext): Promise<FlagshipEvaluationDetails<number>>
-
-
 ```
 
 | Parameter    | Type                      | Required | Description                                                               |
@@ -287,18 +190,7 @@ getNumberDetails(flagKey: string, defaultValue: number, context?: FlagshipEvalua
 TypeScript
 
 ```
-
-const details = await env.FLAGS.getNumberDetails("max-retries", 3, {
-
-  plan: "enterprise",
-
-});
-
-console.log(details.value); // 5
-
-console.log(details.reason); // "TARGETING_MATCH"
-
-
+const details = await env.FLAGS.getNumberDetails("max-retries", 3, {  plan: "enterprise",});console.log(details.value); // 5console.log(details.reason); // "TARGETING_MATCH"
 ```
 
 ## `getObjectDetails()`
@@ -308,10 +200,7 @@ Returns the flag value as a typed object with evaluation metadata. Use the gener
 TypeScript
 
 ```
-
 getObjectDetails<T extends object>(flagKey: string, defaultValue: T, context?: FlagshipEvaluationContext): Promise<FlagshipEvaluationDetails<T>>
-
-
 ```
 
 | Parameter    | Type                      | Required | Description                                                               |
@@ -323,31 +212,8 @@ getObjectDetails<T extends object>(flagKey: string, defaultValue: T, context?: F
 TypeScript
 
 ```
-
-interface ThemeConfig {
-
-  primaryColor: string;
-
-  fontSize: number;
-
-}
-
-
-const details = await env.FLAGS.getObjectDetails<ThemeConfig>(
-
-  "theme-config",
-
-  { primaryColor: "#000", fontSize: 14 },
-
-  { userId: "user-42" },
-
-);
-
-console.log(details.value); // { primaryColor: "#0051FF", fontSize: 16 }
-
-console.log(details.variant); // "brand-refresh"
-
-
+interface ThemeConfig {  primaryColor: string;  fontSize: number;}
+const details = await env.FLAGS.getObjectDetails<ThemeConfig>(  "theme-config",  { primaryColor: "#000", fontSize: 14 },  { userId: "user-42" },);console.log(details.value); // { primaryColor: "#0051FF", fontSize: 16 }console.log(details.variant); // "brand-refresh"
 ```
 
 ## Error handling
@@ -361,16 +227,7 @@ If you call a typed method on a flag with a different type (for example, `getBoo
 TypeScript
 
 ```
-
-// Flag "checkout-flow" is a string flag, but you call getBooleanDetails.
-
-const details = await env.FLAGS.getBooleanDetails("checkout-flow", false);
-
-console.log(details.value); // false (the default value)
-
-console.log(details.errorCode); // "TYPE_MISMATCH"
-
-
+// Flag "checkout-flow" is a string flag, but you call getBooleanDetails.const details = await env.FLAGS.getBooleanDetails("checkout-flow", false);console.log(details.value); // false (the default value)console.log(details.errorCode); // "TYPE_MISMATCH"
 ```
 
 ### Evaluation failure
@@ -380,20 +237,7 @@ If evaluation fails for any other reason (for example, a network error or missin
 TypeScript
 
 ```
-
-const details = await env.FLAGS.getStringDetails(
-
-  "nonexistent-flag",
-
-  "fallback",
-
-);
-
-console.log(details.value); // "fallback"
-
-console.log(details.errorCode); // "GENERAL"
-
-
+const details = await env.FLAGS.getStringDetails(  "nonexistent-flag",  "fallback",);console.log(details.value); // "fallback"console.log(details.errorCode); // "GENERAL"
 ```
 
 ## Parameters reference

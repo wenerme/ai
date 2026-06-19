@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -40,16 +40,7 @@ Return a tunnel record for `port`. The SDK spawns a fresh `cloudflared` process 
 TypeScript
 
 ```
-
-const tunnel = await sandbox.tunnels.get(
-
-  port: number,
-
-  options?: { name?: string }
-
-): Promise<TunnelInfo>
-
-
+const tunnel = await sandbox.tunnels.get(  port: number,  options?: { name?: string }): Promise<TunnelInfo>
 ```
 
 **Parameters**:
@@ -61,94 +52,32 @@ const tunnel = await sandbox.tunnels.get(
 
 Calling `get(port)` with different `options` on a port that already has a tunnel throws. Call [destroy(port)](#tunnelsdestroy) first.
 
-* [  JavaScript ](#tab-panel-10195)
-* [  TypeScript ](#tab-panel-10196)
+* [  JavaScript ](#tab-panel-10271)
+* [  TypeScript ](#tab-panel-10272)
 
 JavaScript
 
 ```
-
 import { getSandbox } from "@cloudflare/sandbox";
-
-
 export { Sandbox } from "@cloudflare/sandbox";
-
-
-export default {
-
-  async fetch(request, env) {
-
-    const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
-
+export default {  async fetch(request, env) {    const sandbox = getSandbox(env.Sandbox, "my-sandbox");
     await sandbox.startProcess("python -m http.server 8080");
-
-
-    const tunnel = await sandbox.tunnels.get(8080);
-
-    console.log(tunnel.url);
-
-    // → https://random-words-here.trycloudflare.com
-
-
-    // Repeated calls for the same port return the same record.
-
-    const same = await sandbox.tunnels.get(8080);
-
-    console.log(same.url === tunnel.url); // true
-
-
-    return Response.json({ url: tunnel.url });
-
-  },
-
-};
-
-
+    const tunnel = await sandbox.tunnels.get(8080);    console.log(tunnel.url);    // → https://random-words-here.trycloudflare.com
+    // Repeated calls for the same port return the same record.    const same = await sandbox.tunnels.get(8080);    console.log(same.url === tunnel.url); // true
+    return Response.json({ url: tunnel.url });  },};
 ```
 
 TypeScript
 
 ```
-
 import { getSandbox } from "@cloudflare/sandbox";
-
-
 export { Sandbox } from "@cloudflare/sandbox";
-
-
-export default {
-
-  async fetch(request: Request, env: Env): Promise<Response> {
-
-    const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
-
+export default {  async fetch(request: Request, env: Env): Promise<Response> {    const sandbox = getSandbox(env.Sandbox, "my-sandbox");
     await sandbox.startProcess("python -m http.server 8080");
-
-
-    const tunnel = await sandbox.tunnels.get(8080);
-
-    console.log(tunnel.url);
-
-    // → https://random-words-here.trycloudflare.com
-
-
-    // Repeated calls for the same port return the same record.
-
-    const same = await sandbox.tunnels.get(8080);
-
-    console.log(same.url === tunnel.url); // true
-
-
+    const tunnel = await sandbox.tunnels.get(8080);    console.log(tunnel.url);    // → https://random-words-here.trycloudflare.com
+    // Repeated calls for the same port return the same record.    const same = await sandbox.tunnels.get(8080);    console.log(same.url === tunnel.url); // true
     return Response.json({ url: tunnel.url });
-
-
-},
-
-};
-
-
+},};
 ```
 
 ### `tunnels.list()`
@@ -158,47 +87,26 @@ Return every tunnel currently tracked for this sandbox.
 TypeScript
 
 ```
-
 const tunnels = await sandbox.tunnels.list(): Promise<TunnelInfo[]>
-
-
 ```
 
 **Returns**: `Promise<TunnelInfo[]>` — an array of [TunnelInfo](#tunnelinfo) records. Empty when no tunnels are active.
 
-* [  JavaScript ](#tab-panel-10191)
-* [  TypeScript ](#tab-panel-10192)
+* [  JavaScript ](#tab-panel-10267)
+* [  TypeScript ](#tab-panel-10268)
 
 JavaScript
 
 ```
-
 const tunnels = await sandbox.tunnels.list();
-
-
-for (const tunnel of tunnels) {
-
-  console.log(`port ${tunnel.port} → ${tunnel.url}`);
-
-}
-
-
+for (const tunnel of tunnels) {  console.log(`port ${tunnel.port} → ${tunnel.url}`);}
 ```
 
 TypeScript
 
 ```
-
 const tunnels = await sandbox.tunnels.list();
-
-
-for (const tunnel of tunnels) {
-
-console.log(`port ${tunnel.port} → ${tunnel.url}`);
-
-}
-
-
+for (const tunnel of tunnels) {console.log(`port ${tunnel.port} → ${tunnel.url}`);}
 ```
 
 ### `tunnels.destroy()`
@@ -208,55 +116,30 @@ Tear down a tunnel. Accepts either the port number or the `TunnelInfo` record re
 TypeScript
 
 ```
-
 await sandbox.tunnels.destroy(portOrInfo: number | TunnelInfo): Promise<void>
-
-
 ```
 
 **Parameters**:
 
 * `portOrInfo` — Either the port number or the `TunnelInfo` record returned by [get()](#tunnelsget).
 
-* [  JavaScript ](#tab-panel-10193)
-* [  TypeScript ](#tab-panel-10194)
+* [  JavaScript ](#tab-panel-10269)
+* [  TypeScript ](#tab-panel-10270)
 
 JavaScript
 
 ```
-
 const tunnel = await sandbox.tunnels.get(8080);
-
-
-// Tear down by port number...
-
-await sandbox.tunnels.destroy(8080);
-
-
-// ...or by the record.
-
-await sandbox.tunnels.destroy(tunnel);
-
-
+// Tear down by port number...await sandbox.tunnels.destroy(8080);
+// ...or by the record.await sandbox.tunnels.destroy(tunnel);
 ```
 
 TypeScript
 
 ```
-
 const tunnel = await sandbox.tunnels.get(8080);
-
-
-// Tear down by port number...
-
-await sandbox.tunnels.destroy(8080);
-
-
-// ...or by the record.
-
-await sandbox.tunnels.destroy(tunnel);
-
-
+// Tear down by port number...await sandbox.tunnels.destroy(8080);
+// ...or by the record.await sandbox.tunnels.destroy(tunnel);
 ```
 
 ## Types
@@ -277,44 +160,9 @@ Quick tunnels omit `name`; named tunnels carry the label passed via `options.nam
 TypeScript
 
 ```
-
 type TunnelInfo = QuickTunnelInfo | NamedTunnelInfo;
-
-
-interface QuickTunnelInfo {
-
-  id: string;
-
-  port: number;
-
-  url: string;
-
-  hostname: string;
-
-  createdAt: string;
-
-  name?: never;
-
-}
-
-
-interface NamedTunnelInfo {
-
-  id: string;
-
-  port: number;
-
-  url: string;
-
-  hostname: string;
-
-  createdAt: string;
-
-  name: string;
-
-}
-
-
+interface QuickTunnelInfo {  id: string;  port: number;  url: string;  hostname: string;  createdAt: string;  name?: never;}
+interface NamedTunnelInfo {  id: string;  port: number;  url: string;  hostname: string;  createdAt: string;  name: string;}
 ```
 
 ## Named tunnels
@@ -363,50 +211,7 @@ You can create the token without using the dashboard. The permission group IDs a
 Terminal window
 
 ```
-
-curl -X POST "https://api.cloudflare.com/client/v4/user/tokens" \
-
-  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  -H "Content-Type: application/json" \
-
-  -d '{
-
-    "name": "sandbox-named-tunnels",
-
-    "policies": [
-
-      {
-
-        "effect": "allow",
-
-        "resources": { "com.cloudflare.api.account.<ACCOUNT_ID>": "*" },
-
-        "permission_groups": [{ "id": "<TUNNEL_EDIT_GROUP_ID>" }]
-
-      },
-
-      {
-
-        "effect": "allow",
-
-        "resources": { "com.cloudflare.api.account.zone.<ZONE_ID>": "*" },
-
-        "permission_groups": [
-
-          { "id": "<DNS_EDIT_GROUP_ID>" },
-
-          { "id": "<ZONE_READ_GROUP_ID>" }
-
-        ]
-
-      }
-
-    ]
-
-  }'
-
-
+curl -X POST "https://api.cloudflare.com/client/v4/user/tokens" \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  -H "Content-Type: application/json" \  -d '{    "name": "sandbox-named-tunnels",    "policies": [      {        "effect": "allow",        "resources": { "com.cloudflare.api.account.<ACCOUNT_ID>": "*" },        "permission_groups": [{ "id": "<TUNNEL_EDIT_GROUP_ID>" }]      },      {        "effect": "allow",        "resources": { "com.cloudflare.api.account.zone.<ZONE_ID>": "*" },        "permission_groups": [          { "id": "<DNS_EDIT_GROUP_ID>" },          { "id": "<ZONE_READ_GROUP_ID>" }        ]      }    ]  }'
 ```
 
 #### Bind the token and IDs to the Worker
@@ -422,10 +227,7 @@ The SDK reads `CLOUDFLARE_API_TOKEN` from the Worker environment and attempts to
 Terminal window
 
 ```
-
 npx wrangler secret put CLOUDFLARE_API_TOKEN
-
-
 ```
 
 For local development, place the variables in `.dev.vars` (gitignored). For production, set the non-secret IDs (when needed) under `vars` in your Wrangler config:
@@ -433,139 +235,36 @@ For local development, place the variables in `.dev.vars` (gitignored). For prod
 JSONC
 
 ```
-
-{
-
-  "vars": {
-
-    "CLOUDFLARE_ACCOUNT_ID": "<account-id>",
-
-    "CLOUDFLARE_ZONE_ID": "<zone-id>"
-
-  }
-
-}
-
-
+{  "vars": {    "CLOUDFLARE_ACCOUNT_ID": "<account-id>",    "CLOUDFLARE_ZONE_ID": "<zone-id>"  }}
 ```
 
 When inference fails, the SDK throws a clear error naming the variable to set.
 
 ### Example
 
-* [  JavaScript ](#tab-panel-10197)
-* [  TypeScript ](#tab-panel-10198)
+* [  JavaScript ](#tab-panel-10273)
+* [  TypeScript ](#tab-panel-10274)
 
 JavaScript
 
 ```
-
 import { getSandbox } from "@cloudflare/sandbox";
-
-
 export { Sandbox } from "@cloudflare/sandbox";
-
-
-export default {
-
-  async fetch(request, env) {
-
-    const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
-
-    // Reuse an existing app process across container restarts, or start it.
-
-    let proc = await sandbox.getProcess("app");
-
-    if (!proc) {
-
-      try {
-
-        proc = await sandbox.startProcess("python -m http.server 8080", {
-
-          processId: "app",
-
-        });
-
-      } catch (err) {
-
-        if (err?.code !== "PROCESS_ALREADY_EXISTS") throw err;
-
-        proc = await sandbox.getProcess("app");
-
-      }
-
-    }
-
-
-    // Provision (or reuse) https://app.example.com pointing at port 8080.
-
-    const tunnel = await sandbox.tunnels.get(8080, { name: "app" });
-
-    console.log(tunnel.url); // → https://app.example.com
-
-
-    return Response.json({ url: tunnel.url });
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const sandbox = getSandbox(env.Sandbox, "my-sandbox");
+    // Reuse an existing app process across container restarts, or start it.    let proc = await sandbox.getProcess("app");    if (!proc) {      try {        proc = await sandbox.startProcess("python -m http.server 8080", {          processId: "app",        });      } catch (err) {        if (err?.code !== "PROCESS_ALREADY_EXISTS") throw err;        proc = await sandbox.getProcess("app");      }    }
+    // Provision (or reuse) https://app.example.com pointing at port 8080.    const tunnel = await sandbox.tunnels.get(8080, { name: "app" });    console.log(tunnel.url); // → https://app.example.com
+    return Response.json({ url: tunnel.url });  },};
 ```
 
 TypeScript
 
 ```
-
 import { getSandbox } from "@cloudflare/sandbox";
-
-
 export { Sandbox } from "@cloudflare/sandbox";
-
-
-export default {
-
-  async fetch(request: Request, env: Env): Promise<Response> {
-
-    const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
-
-    // Reuse an existing app process across container restarts, or start it.
-
-    let proc = await sandbox.getProcess('app');
-
-    if (!proc) {
-
-      try {
-
-        proc = await sandbox.startProcess('python -m http.server 8080', { processId: 'app' });
-
-      } catch (err) {
-
-        if ((err as { code?: string })?.code !== 'PROCESS_ALREADY_EXISTS') throw err;
-
-        proc = await sandbox.getProcess('app');
-
-      }
-
-    }
-
-
-    // Provision (or reuse) https://app.example.com pointing at port 8080.
-
-    const tunnel = await sandbox.tunnels.get(8080, { name: "app" });
-
-    console.log(tunnel.url); // → https://app.example.com
-
-
-    return Response.json({ url: tunnel.url });
-
-  },
-
-};
-
-
+export default {  async fetch(request: Request, env: Env): Promise<Response> {    const sandbox = getSandbox(env.Sandbox, "my-sandbox");
+    // Reuse an existing app process across container restarts, or start it.    let proc = await sandbox.getProcess('app');    if (!proc) {      try {        proc = await sandbox.startProcess('python -m http.server 8080', { processId: 'app' });      } catch (err) {        if ((err as { code?: string })?.code !== 'PROCESS_ALREADY_EXISTS') throw err;        proc = await sandbox.getProcess('app');      }    }
+    // Provision (or reuse) https://app.example.com pointing at port 8080.    const tunnel = await sandbox.tunnels.get(8080, { name: "app" });    console.log(tunnel.url); // → https://app.example.com
+    return Response.json({ url: tunnel.url });  },};
 ```
 
 `name` must be a single DNS label
@@ -577,18 +276,18 @@ export default {
 Named tunnels are designed to outlive the container that provisioned them:
 
 1. **First call** to `sandbox.tunnels.get(port, { name })`:  
-   * Resolves `<name>.<your-zone>` from the configured zone ID.  
-   * Creates a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) resource named `sandbox-<sandbox-id>-<name>` tagged with the sandbox ID.  
-   * Upserts a proxied `CNAME` from `<name>.<your-zone>` to `<tunnel-id>.cfargotunnel.com`.  
-   * Spawns `cloudflared` inside the container with the tunnel's token.
+  * Resolves `<name>.<your-zone>` from the configured zone ID.
+  * Creates a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) resource named `sandbox-<sandbox-id>-<name>` tagged with the sandbox ID.
+  * Upserts a proxied `CNAME` from `<name>.<your-zone>` to `<tunnel-id>.cfargotunnel.com`.
+  * Spawns `cloudflared` inside the container with the tunnel's token.
 2. **Subsequent calls** with the same `(port, name)` return the cached record without contacting Cloudflare.
 3. **Container restart** (Durable Object eviction, deploy, crash):  
-   * `cloudflared` dies with the container, but the Cloudflare Tunnel and DNS record are preserved.  
-   * On the next `get(port, { name })`, the SDK rediscovers the tagged tunnel via the Cloudflare API and respawns `cloudflared`. The hostname is unchanged.
+  * `cloudflared` dies with the container, but the Cloudflare Tunnel and DNS record are preserved.
+  * On the next `get(port, { name })`, the SDK rediscovers the tagged tunnel via the Cloudflare API and respawns `cloudflared`. The hostname is unchanged.
 4. **Explicit teardown** with `sandbox.tunnels.destroy(port)`:  
-   * Stops `cloudflared` inside the container.  
-   * Deletes the Cloudflare Tunnel resource.  
-   * Deletes the proxied `CNAME` record.
+  * Stops `cloudflared` inside the container.
+  * Deletes the Cloudflare Tunnel resource.
+  * Deletes the proxied `CNAME` record.
 5. **Sandbox destroy** with `sandbox.destroy()` tears down every tunnel the sandbox provisioned, including the Cloudflare-side resources, before stopping the container.
 
 If `destroy()` fails to reach the Cloudflare API (for example, the token was revoked between `get()` and `destroy()`), the SDK logs a warning naming the orphaned `tunnelId` and `dnsRecordId` so you can clean up manually from the dashboard.
@@ -617,12 +316,7 @@ To list every tunnel created by the SDK for a given account:
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/cfd_tunnel?name=sandbox-" \
-
-  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/cfd_tunnel?name=sandbox-" \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ## Limitations

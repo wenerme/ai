@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,33 +25,15 @@ An animated loading spinner component.
 ### Basic Usage
 
 ```
-
 import { RtkSpinner } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkSpinner />;
-
-}
-
-
+function MyComponent() {  return <RtkSpinner />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkSpinner } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkSpinner style={{ width: 48, height: 48 }} />;
-
-}
-
-
+function MyComponent() {  return <RtkSpinner style={{ width: 48, height: 48 }} />;}
 ```
 
 ```json

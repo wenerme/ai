@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,9 +22,9 @@ Vary for images is available for Pro, Business, and Enterprise customers.
 
 ## Availability
 
-| Free         | Pro | Business | Enterprise |     |
-| ------------ | --- | -------- | ---------- | --- |
-| Availability | No  | Yes      | Yes        | Yes |
+|              | Free | Pro | Business | Enterprise |
+| ------------ | ---- | --- | -------- | ---------- |
+| Availability | No   | Yes | Yes      | Yes        |
 
 ## File extensions
 
@@ -51,114 +51,49 @@ Vary for Images is enabled through Cloudflare's API by creating a variants rule.
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone Settings Write`
 * `Zone Write`
 
 Change variants setting
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \
-
-  --request PATCH \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "value": {
-
-        "jpeg": [
-
-            "image/webp",
-
-            "image/avif"
-
-        ],
-
-        "jpg": [
-
-            "image/webp",
-
-            "image/avif"
-
-        ]
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "value": {        "jpeg": [            "image/webp",            "image/avif"        ],        "jpg": [            "image/webp",            "image/avif"        ]    }  }'
 ```
 
 ### Modify to only allow WebP variants
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone Settings Write`
 * `Zone Write`
 
 Change variants setting
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \
-
-  --request PATCH \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "value": {
-
-        "jpeg": [
-
-            "image/webp"
-
-        ],
-
-        "jpg": [
-
-            "image/webp"
-
-        ]
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "value": {        "jpeg": [            "image/webp"        ],        "jpg": [            "image/webp"        ]    }  }'
 ```
 
 ### Delete the rule
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone Settings Write`
 * `Zone Write`
 
 Delete variants setting
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \
-
-  --request DELETE \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \  --request DELETE \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ### Get the rule
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone Settings Write`
 * `Zone Settings Read`
 * `Zone Read`
@@ -167,14 +102,7 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Get variants setting
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 To learn more about purging varied images, refer to [Purge varied images](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-varied-images/).

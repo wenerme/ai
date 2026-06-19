@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -39,20 +39,7 @@ This will produce a `worker-configuration.d.ts` file that includes:
 worker-configuration.d.ts
 
 ```
-
-interface Env {
-
-  SUM_SERVICE: Service<import("../sum-worker/src/index").SumService>;
-
-  COUNTER_OBJECT: DurableObjectNamespace<
-
-    import("../counter/src/index").Counter
-
-  >;
-
-}
-
-
+interface Env {  SUM_SERVICE: Service<import("../sum-worker/src/index").SumService>;  COUNTER_OBJECT: DurableObjectNamespace<    import("../counter/src/index").Counter  >;}
 ```
 
 Now types for RPC method like the `env.SUM_SERVICE.sum` method will be exposed to the client Worker.
@@ -60,20 +47,7 @@ Now types for RPC method like the `env.SUM_SERVICE.sum` method will be exposed t
 src/index.ts
 
 ```
-
-export default {
-
-  async fetch(req, env, ctx): Promise<Response> {
-
-    const result = await env.SUM_SERVICE.sum(1, 2);
-
-    return new Response(result.toString());
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export default {  async fetch(req, env, ctx): Promise<Response> {    const result = await env.SUM_SERVICE.sum(1, 2);    return new Response(result.toString());  },} satisfies ExportedHandler<Env>;
 ```
 
 ```json

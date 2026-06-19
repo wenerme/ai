@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -44,16 +44,19 @@ IdP groups
 If you are using Okta, Microsoft Entra ID (formerly Azure AD), Google Workspace, or GitHub as your IdP, Access will automatically send a SAML attribute titled `groups` with all of the user's associated groups as attribute values.
 
 1. Under **Access policies**, add an existing policy or [create a new policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/) to control who can connect to your application. All Access applications are deny by default -- a user must match an Allow policy before they are granted access.
-2. Configure how users will authenticate:  
-   1. Select the [identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) you want to enable for your application.  
-   2. (Recommended) If you plan to only allow access via a single IdP, turn on **Apply instant authentication**. End users will not be shown the [Cloudflare Access login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/). Instead, Cloudflare will redirect users directly to your SSO login event.  
-   3. (Optional) Turn on **Authenticate with Cloudflare One Client** to allow users to authenticate to the application using their [ Cloudflare One Client session identity](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/).
-3. (Optional) Go to **Additional settings** to customize the application experience:  
-   * **App Launcher customization**: Configure how this application appears to users in the [App Launcher](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/).  
-   * **Custom block pages**: Choose what users will see when they are denied access to the application.  
-         * **Cloudflare default**: Reload the [login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/) and display a block message below the Cloudflare Access logo. The default message is `That account does not have access`, or you can enter a custom message.  
-         * **Redirect URL**: Redirect to the specified website.  
-         * **Custom page template**: Display a [custom block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-block-page/) hosted in Cloudflare One.
+2. Configure how users will authenticate:
+
+  1. Select the [identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) you want to enable for your application.
+  2. (Recommended) If you plan to only allow access via a single IdP, turn on **Apply instant authentication**. End users will not be shown the [Cloudflare Access login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/). Instead, Cloudflare will redirect users directly to your SSO login event.
+  3. (Optional) Turn on **Authenticate with Cloudflare One Client** to allow users to authenticate to the application using their [ Cloudflare One Client session identity](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/).
+3. (Optional) Go to **Additional settings** to customize the application experience:
+
+  * **App Launcher customization**: Configure how this application appears to users in the [App Launcher](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/).
+  * **Custom block pages**: Choose what users will see when they are denied access to the application.
+
+    * **Cloudflare default**: Reload the [login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/) and display a block message below the Cloudflare Access logo. The default message is `That account does not have access`, or you can enter a custom message.
+    * **Redirect URL**: Redirect to the specified website.
+    * **Custom page template**: Display a [custom block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-block-page/) hosted in Cloudflare One.
 4. Select **Create**.
 
 ## 3\. Configure SSO in your SaaS application
@@ -92,9 +95,9 @@ To send additional SAML attributes to your SaaS application, configure the follo
 * **Name**: SAML attribute name
 * **SAML friendly name**: (Optional) A human readable name for the SAML attribute
 * **Name format**: Specify the **Name** format expected by the SaaS application:  
-   * `Unspecified`: (default) No specific format required.  
-   * `URI`: Name is in a format such as `urn:ietf:params:scim:schemas:core:2.0:User:userName` or `urn:oid:2.5.4.42`.  
-   * `Basic`: Name is a normal string such as `userName`.
+  * `Unspecified`: (default) No specific format required.
+  * `URI`: Name is in a format such as `urn:ietf:params:scim:schemas:core:2.0:User:userName` or `urn:oid:2.5.4.42`.
+  * `Basic`: Name is a normal string such as `userName`.
 * **IdP claim**: The identity provider value that should map to this SAML attribute. You can select any [SAML attribute](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/#saml-headers-and-attributes) or [OIDC claim](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/#custom-oidc-claims) that was configured in a Cloudflare One IdP integration.
 * **Required**: If an attribute is marked as required but is not provided by an IdP, Cloudflare will fail the authentication request and show an error page.
 * **Add per IdP claim**: (Optional) If you turned on multiple identity providers for the SaaS application, you can choose different attribute mappings for each IdP. These values will override the parent **IdP claim**.
@@ -114,10 +117,7 @@ For example, the following JSONata script merges group names into a list and add
 JSONata expression
 
 ```
-
 $merge([$, {"groups": groups.name, 'eduPersonPrincipalName': email}])
-
-
 ```
 
 Here is an example of a user identity before applying the JSONata transform:
@@ -125,183 +125,13 @@ Here is an example of a user identity before applying the JSONata transform:
 User identity before JSONata transform
 
 ```
-
-{
-
-  "account_id": "699d98642c564d2e855e9661899b7252",
-
-  "amr": [
-
-    "pwd"
-
-  ],
-
-  "auth_status": "NONE",
-
-  "common_name": "",
-
-  "device_id": "c1744f8b-faa1-48a4-9e5c-02ac921467fa",
-
-  "device_sessions": {
-
-    "49e653db-991e-11ee-af26-2243bf8c3428": {
-
-      "last_authenticated": 1703004275
-
-    }
-
-  },
-
-  "devicePosture": {
-
-    "8534a230-e85e-4183-8964-a4b7dcf72986": {
-
-      "rule_name": "Warp",
-
-      "success": true,
-
-      "type": "warp"
-
-    }
-
-  },
-
-  "email": "jdoe@company.com",
-
-  "gateway_account_id": "bTSquyUGwLQjYJn8cI8S1h6M6wU",
-
-  "geo": {
-
-    "country": "US"
-
-  },
-
-  "groups": [
-
-    {
-
-      "id": "12fdf91a-fb23-41b3-995a-de2f72c61d0e",
-
-      "name": "IdentityProtection-RiskyUser-RiskLevel-low"
-
-    },
-
-    {
-
-      "id": "12348f47-8234-4860-a03f-c2a1513f267b",
-
-      "name": "Global Administrator"
-
-    },
-
-    {
-
-      "id": "11235980-87d7-4917-b0aa-74c01914c40e",
-
-      "name": "Application Administrator"
-
-    }
-
-  ],
-
-  "iat": 1659474397,
-
-  "id": "OidHvkPt-I-13IBSnd77UJ8cHgsrUpjs3W6_4t6ES7M",
-
-  "idp": {
-
-    "id": "b08e8c0c-a75d-4b3f-8e7b-cd427b7c7b47",
-
-    "type": "azureAD"
-
-  }
-
-}
-
-
+{  "account_id": "699d98642c564d2e855e9661899b7252",  "amr": [    "pwd"  ],  "auth_status": "NONE",  "common_name": "",  "device_id": "c1744f8b-faa1-48a4-9e5c-02ac921467fa",  "device_sessions": {    "49e653db-991e-11ee-af26-2243bf8c3428": {      "last_authenticated": 1703004275    }  },  "devicePosture": {    "8534a230-e85e-4183-8964-a4b7dcf72986": {      "rule_name": "Warp",      "success": true,      "type": "warp"    }  },  "email": "jdoe@company.com",  "gateway_account_id": "bTSquyUGwLQjYJn8cI8S1h6M6wU",  "geo": {    "country": "US"  },  "groups": [    {      "id": "12fdf91a-fb23-41b3-995a-de2f72c61d0e",      "name": "IdentityProtection-RiskyUser-RiskLevel-low"    },    {      "id": "12348f47-8234-4860-a03f-c2a1513f267b",      "name": "Global Administrator"    },    {      "id": "11235980-87d7-4917-b0aa-74c01914c40e",      "name": "Application Administrator"    }  ],  "iat": 1659474397,  "id": "OidHvkPt-I-13IBSnd77UJ8cHgsrUpjs3W6_4t6ES7M",  "idp": {    "id": "b08e8c0c-a75d-4b3f-8e7b-cd427b7c7b47",    "type": "azureAD"  }}
 ```
 
 Result after applying the example JSONata script:
 
 ```
-
-{
-
-  "account_id": "699d98642c564d2e855e9661899b7252",
-
-  "amr": [
-
-    "pwd"
-
-  ],
-
-  "auth_status": "NONE",
-
-  "common_name": "",
-
-  "device_id": "c1744f8b-faa1-48a4-9e5c-02ac921467fa",
-
-  "device_sessions": {
-
-    "49e653db-991e-11ee-af26-2243bf8c3428": {
-
-      "last_authenticated": 1703004275
-
-    }
-
-  },
-
-  "devicePosture": {
-
-    "8534a230-e85e-4183-8964-a4b7dcf72986": {
-
-      "rule_name": "Warp",
-
-      "success": true,
-
-      "type": "warp"
-
-    }
-
-  },
-
-  "email": "jdoe@company.com",
-
-  "gateway_account_id": "bTSquyUGwLQjYJn8cI8S1h6M6wU",
-
-  "geo": {
-
-    "country": "US"
-
-  },
-
-  "groups": [
-
-    "IdentityProtection-RiskyUser-RiskLevel-low",
-
-    "Global Administrator",
-
-    "Application Administrator"
-
-  ],
-
-  "iat": 1659474397,
-
-  "id": "OidHvkPt-I-13IBSnd77UJ8cHgsrUpjs3W6_4t6ES7M",
-
-  "idp": {
-
-    "id": "b08e8c0c-a75d-4b3f-8e7b-cd427b7c7b47",
-
-    "type": "azureAD"
-
-  },
-
-  "eduPersonPrincipalName": "jdoe@company.com"
-
-}
-
-
+{  "account_id": "699d98642c564d2e855e9661899b7252",  "amr": [    "pwd"  ],  "auth_status": "NONE",  "common_name": "",  "device_id": "c1744f8b-faa1-48a4-9e5c-02ac921467fa",  "device_sessions": {    "49e653db-991e-11ee-af26-2243bf8c3428": {      "last_authenticated": 1703004275    }  },  "devicePosture": {    "8534a230-e85e-4183-8964-a4b7dcf72986": {      "rule_name": "Warp",      "success": true,      "type": "warp"    }  },  "email": "jdoe@company.com",  "gateway_account_id": "bTSquyUGwLQjYJn8cI8S1h6M6wU",  "geo": {    "country": "US"  },  "groups": [    "IdentityProtection-RiskyUser-RiskLevel-low",    "Global Administrator",    "Application Administrator"  ],  "iat": 1659474397,  "id": "OidHvkPt-I-13IBSnd77UJ8cHgsrUpjs3W6_4t6ES7M",  "idp": {    "id": "b08e8c0c-a75d-4b3f-8e7b-cd427b7c7b47",    "type": "azureAD"  },  "eduPersonPrincipalName": "jdoe@company.com"}
 ```
 
 For more JSONata transform use cases, refer to the following examples.
@@ -313,81 +143,13 @@ The following JSONata script removes the `groups` SAML attribute. This can be us
 JSONata expression
 
 ```
-
 $ ~> |$|{}, ['groups']|
-
-
 ```
 
 Result after applying the JSONata transform:
 
 ```
-
-{
-
-  "account_id": "699d98642c564d2e855e9661899b7252",
-
-  "amr": [
-
-    "pwd"
-
-  ],
-
-  "auth_status": "NONE",
-
-  "common_name": "",
-
-  "device_id": "c1744f8b-faa1-48a4-9e5c-02ac921467fa",
-
-  "device_sessions": {
-
-    "49e653db-991e-11ee-af26-2243bf8c3428": {
-
-      "last_authenticated": 1703004275
-
-    }
-
-  },
-
-  "devicePosture": {
-
-    "8534a230-e85e-4183-8964-a4b7dcf72986": {
-
-      "rule_name": "Warp",
-
-      "success": true,
-
-      "type": "warp"
-
-    }
-
-  },
-
-  "email": "jdoe@company.com",
-
-  "gateway_account_id": "bTSquyUGwLQjYJn8cI8S1h6M6wU",
-
-  "geo": {
-
-    "country": "US"
-
-  },
-
-  "iat": 1659474397,
-
-  "id": "OidHvkPt-I-13IBSnd77UJ8cHgsrUpjs3W6_4t6ES7M",
-
-  "idp": {
-
-    "id": "b08e8c0c-a75d-4b3f-8e7b-cd427b7c7b47",
-
-    "type": "azureAD"
-
-  }
-
-}
-
-
+{  "account_id": "699d98642c564d2e855e9661899b7252",  "amr": [    "pwd"  ],  "auth_status": "NONE",  "common_name": "",  "device_id": "c1744f8b-faa1-48a4-9e5c-02ac921467fa",  "device_sessions": {    "49e653db-991e-11ee-af26-2243bf8c3428": {      "last_authenticated": 1703004275    }  },  "devicePosture": {    "8534a230-e85e-4183-8964-a4b7dcf72986": {      "rule_name": "Warp",      "success": true,      "type": "warp"    }  },  "email": "jdoe@company.com",  "gateway_account_id": "bTSquyUGwLQjYJn8cI8S1h6M6wU",  "geo": {    "country": "US"  },  "iat": 1659474397,  "id": "OidHvkPt-I-13IBSnd77UJ8cHgsrUpjs3W6_4t6ES7M",  "idp": {    "id": "b08e8c0c-a75d-4b3f-8e7b-cd427b7c7b47",    "type": "azureAD"  }}
 ```
 
 Rename groups field and remove group ID
@@ -397,135 +159,13 @@ The following JSONata script changes the `groups.name` field from `name` to `gro
 JSONata expression
 
 ```
-
-{
-
-  "account_id": account_id,
-
-  "amr": amr,
-
-  "auth_status": auth_status,
-
-  "common_name": common_name,
-
-  "devicePosture": devicePosture,
-
-  "device_id": device_id,
-
-  "device_sessions": device_sessions,
-
-  "email": email,
-
-  "gateway_account_id": gateway_account_id,
-
-  "geo": geo,
-
-  "groups": $map($.groups, function($group) {
-
-    {"group_name": $group.name}}),
-
-  "iat": iat,
-
-  "id": id,
-
-  "idp": idp
-
-}
-
-
+{  "account_id": account_id,  "amr": amr,  "auth_status": auth_status,  "common_name": common_name,  "devicePosture": devicePosture,  "device_id": device_id,  "device_sessions": device_sessions,  "email": email,  "gateway_account_id": gateway_account_id,  "geo": geo,  "groups": $map($.groups, function($group) {    {"group_name": $group.name}}),  "iat": iat,  "id": id,  "idp": idp}
 ```
 
 Result after applying the JSONata transform:
 
 ```
-
-{
-
-  "account_id": "699d98642c564d2e855e9661899b7252",
-
-  "amr": [
-
-    "pwd"
-
-  ],
-
-  "auth_status": "NONE",
-
-  "common_name": "",
-
-  "devicePosture": {
-
-    "8534a230-e85e-4183-8964-a4b7dcf72986": {
-
-      "rule_name": "Warp",
-
-      "success": true,
-
-      "type": "warp"
-
-    }
-
-  },
-
-  "device_id": "c1744f8b-faa1-48a4-9e5c-02ac921467fa",
-
-  "device_sessions": {
-
-    "49e653db-991e-11ee-af26-2210bf8c3428": {
-
-      "last_authenticated": 1703004275
-
-    }
-
-  },
-
-  "email": "jdoe@company.com",
-
-  "gateway_account_id": "bTSquyUGwLQjYJn8cI8S1h6M6wU",
-
-  "geo": {
-
-    "country": "US"
-
-  },
-
-  "groups": [
-
-    {
-
-      "group_name": "IdentityProtection-RiskyUser-RiskLevel-low"
-
-    },
-
-    {
-
-      "group_name": "Global Administrator"
-
-    },
-
-    {
-
-      "group_name": "Application Administrator"
-
-    }
-
-  ],
-
-  "iat": 1659474397,
-
-  "id": "OidHvkPt-I-13IBSnd77UJ8cHgsrUpjs3W6_4t6ES7M",
-
-  "idp": {
-
-    "id": "b08e8c0c-a75d-4b3f-8e7b-cd427b7c7b47",
-
-    "type": "azureAD"
-
-  }
-
-}
-
-
+{  "account_id": "699d98642c564d2e855e9661899b7252",  "amr": [    "pwd"  ],  "auth_status": "NONE",  "common_name": "",  "devicePosture": {    "8534a230-e85e-4183-8964-a4b7dcf72986": {      "rule_name": "Warp",      "success": true,      "type": "warp"    }  },  "device_id": "c1744f8b-faa1-48a4-9e5c-02ac921467fa",  "device_sessions": {    "49e653db-991e-11ee-af26-2210bf8c3428": {      "last_authenticated": 1703004275    }  },  "email": "jdoe@company.com",  "gateway_account_id": "bTSquyUGwLQjYJn8cI8S1h6M6wU",  "geo": {    "country": "US"  },  "groups": [    {      "group_name": "IdentityProtection-RiskyUser-RiskLevel-low"    },    {      "group_name": "Global Administrator"    },    {      "group_name": "Application Administrator"    }  ],  "iat": 1659474397,  "id": "OidHvkPt-I-13IBSnd77UJ8cHgsrUpjs3W6_4t6ES7M",  "idp": {    "id": "b08e8c0c-a75d-4b3f-8e7b-cd427b7c7b47",    "type": "azureAD"  }}
 ```
 
 Filter groups by name
@@ -535,101 +175,13 @@ The following JSONata script filters groups to those that match a regular expres
 JSONata expression
 
 ```
-
 $merge([$, { "groups": $filter(groups, function($v) { $contains($v.name, /Administrator/) }) }])
-
-
 ```
 
 Result after applying the JSONata transform:
 
 ```
-
-{
-
-  "account_id": "699d98642c564d2e855e9661899b7252",
-
-  "amr": [
-
-    "pwd"
-
-  ],
-
-  "auth_status": "NONE",
-
-  "common_name": "",
-
-  "device_id": "c1744f8b-faa1-48a4-9e5c-02ac921467fa",
-
-  "device_sessions": {
-
-    "49e653db-991e-11ee-af26-2243bf8c3428": {
-
-      "last_authenticated": 1703004275
-
-    }
-
-  },
-
-  "devicePosture": {
-
-    "8534a230-e85e-4183-8964-a4b7dcf72986": {
-
-      "rule_name": "Warp",
-
-      "success": true,
-
-      "type": "warp"
-
-    }
-
-  },
-
-  "email": "jdoe@company.com",
-
-  "gateway_account_id": "bTSquyUGwLQjYJn8cI8S1h6M6wU",
-
-  "geo": {
-
-    "country": "US"
-
-  },
-
-  "groups": [
-
-    {
-
-      "id": "12348f47-8234-4860-a03f-c2a1513f267b",
-
-      "name": "Global Administrator"
-
-    },
-
-    {
-
-      "id": "11235980-87d7-4917-b0aa-74c01914c40e",
-
-      "name": "Application Administrator"
-
-    }
-
-  ],
-
-  "iat": 1659474397,
-
-  "id": "OidHvkPt-I-13IBSnd77UJ8cHgsrUpjs3W6_4t6ES7M",
-
-  "idp": {
-
-    "id": "b08e8c0c-a75d-4b3f-8e7b-cd427b7c7b47",
-
-    "type": "azureAD"
-
-  }
-
-}
-
-
+{  "account_id": "699d98642c564d2e855e9661899b7252",  "amr": [    "pwd"  ],  "auth_status": "NONE",  "common_name": "",  "device_id": "c1744f8b-faa1-48a4-9e5c-02ac921467fa",  "device_sessions": {    "49e653db-991e-11ee-af26-2243bf8c3428": {      "last_authenticated": 1703004275    }  },  "devicePosture": {    "8534a230-e85e-4183-8964-a4b7dcf72986": {      "rule_name": "Warp",      "success": true,      "type": "warp"    }  },  "email": "jdoe@company.com",  "gateway_account_id": "bTSquyUGwLQjYJn8cI8S1h6M6wU",  "geo": {    "country": "US"  },  "groups": [    {      "id": "12348f47-8234-4860-a03f-c2a1513f267b",      "name": "Global Administrator"    },    {      "id": "11235980-87d7-4917-b0aa-74c01914c40e",      "name": "Application Administrator"    }  ],  "iat": 1659474397,  "id": "OidHvkPt-I-13IBSnd77UJ8cHgsrUpjs3W6_4t6ES7M",  "idp": {    "id": "b08e8c0c-a75d-4b3f-8e7b-cd427b7c7b47",    "type": "azureAD"  }}
 ```
 
 ### NameID transform
@@ -647,28 +199,7 @@ For example, to modify the user's email so that it includes a `+sandbox` suffix 
 Set a NameID transform via the API
 
 ```
-
-curl --request PUT \
-
-https://api.cloudflare.com/client/v4/accounts/{account_id}/access/apps/{app_id} \
-
---header "Authorization: Bearer {api_token}" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "saas_app": {
-
-    "auth_type": "saml",
-
-    "name_id_transform_jsonata": "$substringBefore(email, '\''@'\'') & '\''+sandbox@'\'' & $substringAfter(email, '\''@'\'')"
-
-  }
-
-}'
-
-
+curl --request PUT \https://api.cloudflare.com/client/v4/accounts/{account_id}/access/apps/{app_id} \--header "Authorization: Bearer {api_token}" \--header "Content-Type: application/json" \--data '{  "saas_app": {    "auth_type": "saml",    "name_id_transform_jsonata": "$substringBefore(email, '\''@'\'') & '\''+sandbox@'\'' & $substringAfter(email, '\''@'\'')"  }}'
 ```
 
 Given a user with the email `jdoe@company.com`, this expression produces a `NameID` of `jdoe+sandbox@company.com`.
@@ -680,28 +211,7 @@ To send a non-email attribute such as an employee ID, reference the attribute na
 Set employee\_id as NameID
 
 ```
-
-curl --request PUT \
-
-https://api.cloudflare.com/client/v4/accounts/{account_id}/access/apps/{app_id} \
-
---header "Authorization: Bearer {api_token}" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "saas_app": {
-
-    "auth_type": "saml",
-
-    "name_id_transform_jsonata": "employee_id"
-
-  }
-
-}'
-
-
+curl --request PUT \https://api.cloudflare.com/client/v4/accounts/{account_id}/access/apps/{app_id} \--header "Authorization: Bearer {api_token}" \--header "Content-Type: application/json" \--data '{  "saas_app": {    "auth_type": "saml",    "name_id_transform_jsonata": "employee_id"  }}'
 ```
 
 Given a user identity that contains `"employee_id": "efgh5678"`, the `NameID` sent in the SAML assertion will be `efgh5678`.
@@ -713,28 +223,7 @@ To revert to the default behavior (sending the user's email as the `NameID`), se
 Remove NameID transform
 
 ```
-
-curl --request PUT \
-
-https://api.cloudflare.com/client/v4/accounts/{account_id}/access/apps/{app_id} \
-
---header "Authorization: Bearer {api_token}" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "saas_app": {
-
-    "auth_type": "saml",
-
-    "name_id_transform_jsonata": ""
-
-  }
-
-}'
-
-
+curl --request PUT \https://api.cloudflare.com/client/v4/accounts/{account_id}/access/apps/{app_id} \--header "Authorization: Bearer {api_token}" \--header "Content-Type: application/json" \--data '{  "saas_app": {    "auth_type": "saml",    "name_id_transform_jsonata": ""  }}'
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/argo-smart-routing/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,8 +29,9 @@ Detailed performance data within **Origin Performance (Argo)** will only display
 The dashboard displays two different views for performance data:
 
 * **Origin Response Time**: A histogram shows response time from your origin to the Cloudflare network. The blue bars show time-to-first-byte (TTFB) without Argo, while the orange bars show TTFB where Argo found a Smart Route.
-* **Geography**: A map shows the improvement in response time at each Cloudflare data center.  
-   * A negative value indicates that requests from that location would not have benefited from Argo Smart Routing, so instead would have been routed directly.
+* **Geography**: A map shows the improvement in response time at each Cloudflare data center.
+
+  * A negative value indicates that requests from that location would not have benefited from Argo Smart Routing, so instead would have been routed directly.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/argo-smart-routing/analytics/#page","headline":"Analytics · Cloudflare Argo Smart Routing docs","description":"View latency improvements and response time data for Argo Smart Routing.","url":"https://developers.cloudflare.com/argo-smart-routing/analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics"]}

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -79,10 +79,7 @@ Run the following command to check your Node.js version:
 Terminal window
 
 ```
-
 node --version
-
-
 ```
 
 **You need to take action if** your version starts with `v16` or `v18` (for example, `v16.20.0` or `v18.20.0`).
@@ -137,10 +134,7 @@ Search your codebase and CI/CD configs:
 Terminal window
 
 ```
-
 grep -rE "wrangler (kv|r2)" --include="*.sh" --include="*.yml" --include="*.yaml" --include="Makefile" --include="package.json" .
-
-
 ```
 
 **What to do:**
@@ -150,17 +144,8 @@ Add `--remote` to commands that should interact with your Cloudflare account:
 Terminal window
 
 ```
-
-# Before (Wrangler v3 - queried remote by default)
-
-wrangler kv key get --binding MY_KV "my-key"
-
-
-# After (Wrangler v4 - must specify --remote)
-
-wrangler kv key get --binding MY_KV "my-key" --remote
-
-
+# Before (Wrangler v3 - queried remote by default)wrangler kv key get --binding MY_KV "my-key"
+# After (Wrangler v4 - must specify --remote)wrangler kv key get --binding MY_KV "my-key" --remote
 ```
 
 ### Deprecated commands and configurations removed
@@ -180,17 +165,8 @@ Am I affected?
 Terminal window
 
 ```
-
-# For TOML files
-
-grep -E "(legacy_assets|node_compat|usage_model)\s*=" wrangler.toml
-
-
-# For JSON files
-
-grep -E "\"(legacy_assets|node_compat|usage_model)\"" wrangler.json wrangler.jsonc
-
-
+# For TOML filesgrep -E "(legacy_assets|node_compat|usage_model)\s*=" wrangler.toml
+# For JSON filesgrep -E "\"(legacy_assets|node_compat|usage_model)\"" wrangler.json wrangler.jsonc
 ```
 
 **Check your commands and scripts** for deprecated flags:
@@ -198,10 +174,7 @@ grep -E "\"(legacy_assets|node_compat|usage_model)\"" wrangler.json wrangler.jso
 Terminal window
 
 ```
-
 grep -rE "wrangler.*(--legacy-assets|--node-compat)" --include="*.sh" --include="*.yml" --include="*.yaml" --include="Makefile" --include="package.json" .
-
-
 ```
 
 **Check for deprecated API usage** in your code:
@@ -209,10 +182,7 @@ grep -rE "wrangler.*(--legacy-assets|--node-compat)" --include="*.sh" --include=
 Terminal window
 
 ```
-
 grep -rE "getBindingsProxy" --include="*.js" --include="*.ts" --include="*.mjs" .
-
-
 ```
 
 **You need to take action if you find any of the following:**

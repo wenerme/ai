@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,28 +17,19 @@ For some operations, you can use specific endpoints provided by the Rulesets API
 For example, instead of using the following endpoint:
 
 ```
-
 PUT /zones/{zone_id}/rulesets/{ruleset_id}
-
-
 ```
 
 You can use the following endpoint:
 
 ```
-
 PUT /zones/{zone_id}/rulesets/phases/{phase_name}/entrypoint
-
-
 ```
 
 To invoke a Rulesets API operation, append the endpoint to the Cloudflare API base URL:
 
 ```
-
 https://api.cloudflare.com/client/v4
-
-
 ```
 
 For authentication instructions, refer to [Getting Started: Requests](https://developers.cloudflare.com/fundamentals/api/) in the Cloudflare API documentation.

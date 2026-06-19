@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/registrar/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -41,21 +41,13 @@ In your terminal, define environment variables for your account ID and API token
 Terminal window
 
 ```
-
-export ACCOUNT_ID="<YOUR_ACCOUNT_ID>"
-
-export CLOUDFLARE_API_TOKEN="<YOUR_API_TOKEN>"
-
-
+export ACCOUNT_ID="<YOUR_ACCOUNT_ID>"export CLOUDFLARE_API_TOKEN="<YOUR_API_TOKEN>"
 ```
 
 All requests in this guide use the Cloudflare API v4 base URL:
 
 ```
-
 https://api.cloudflare.com/client/v4/
-
-
 ```
 
 Note 
@@ -103,99 +95,13 @@ Agent best practice: Generate multiple candidates during search, but do not make
 Terminal window
 
 ```
-
-curl --request GET \
-
-  --url "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/registrar/domain-search?q=acme%20corp&limit=3" \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl --request GET \  --url "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/registrar/domain-search?q=acme%20corp&limit=3" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Example response:
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": [],
-
-  "result": {
-
-    "domains": [
-
-      {
-
-        "name": "acmecorp.com",
-
-        "registrable": true,
-
-        "tier": "standard",
-
-        "pricing": {
-
-          "currency": "USD",
-
-          "registration_cost": "8.57",
-
-          "renewal_cost": "8.57"
-
-        }
-
-      },
-
-      {
-
-        "name": "acmecorp.dev",
-
-        "registrable": true,
-
-        "tier": "standard",
-
-        "pricing": {
-
-          "currency": "USD",
-
-          "registration_cost": "10.11",
-
-          "renewal_cost": "10.11"
-
-        }
-
-      },
-
-      {
-
-        "name": "acmecorp.app",
-
-        "registrable": true,
-
-        "tier": "standard",
-
-        "pricing": {
-
-          "currency": "USD",
-
-          "registration_cost": "11.00",
-
-          "renewal_cost": "11.00"
-
-        }
-
-      }
-
-    ]
-
-  }
-
-}
-
-
+{  "success": true,  "errors": [],  "messages": [],  "result": {    "domains": [      {        "name": "acmecorp.com",        "registrable": true,        "tier": "standard",        "pricing": {          "currency": "USD",          "registration_cost": "8.57",          "renewal_cost": "8.57"        }      },      {        "name": "acmecorp.dev",        "registrable": true,        "tier": "standard",        "pricing": {          "currency": "USD",          "registration_cost": "10.11",          "renewal_cost": "10.11"        }      },      {        "name": "acmecorp.app",        "registrable": true,        "tier": "standard",        "pricing": {          "currency": "USD",          "registration_cost": "11.00",          "renewal_cost": "11.00"        }      }    ]  }}
 ```
 
 ## 2\. Check real-time availability and pricing
@@ -218,102 +124,19 @@ Agent best practice: Run `Check` immediately before registration, surface the re
 Terminal window
 
 ```
-
-curl --request POST \
-
-  --url "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/registrar/domain-check" \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-    "domains": ["acmecorp.dev"]
-
-  }'
-
-
+curl --request POST \  --url "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/registrar/domain-check" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{    "domains": ["acmecorp.dev"]  }'
 ```
 
 Example response:
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": [],
-
-  "result": {
-
-    "domains": [
-
-      {
-
-        "name": "acmecorp.dev",
-
-        "registrable": true,
-
-        "tier": "standard",
-
-        "pricing": {
-
-          "currency": "USD",
-
-          "registration_cost": "10.11",
-
-          "renewal_cost": "10.11"
-
-        }
-
-      }
-
-    ]
-
-  }
-
-}
-
-
+{  "success": true,  "errors": [],  "messages": [],  "result": {    "domains": [      {        "name": "acmecorp.dev",        "registrable": true,        "tier": "standard",        "pricing": {          "currency": "USD",          "registration_cost": "10.11",          "renewal_cost": "10.11"        }      }    ]  }}
 ```
 
 If a domain cannot be registered through the API, the response includes a reason. For example:
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": [],
-
-  "result": {
-
-    "domains": [
-
-      {
-
-        "name": "mybrand.uk",
-
-        "registrable": false,
-
-        "reason": "extension_not_supported_via_api"
-
-      }
-
-    ]
-
-  }
-
-}
-
-
+{  "success": true,  "errors": [],  "messages": [],  "result": {    "domains": [      {        "name": "mybrand.uk",        "registrable": false,        "reason": "extension_not_supported_via_api"      }    ]  }}
 ```
 
 Common `reason` values include:
@@ -338,22 +161,7 @@ The simplest request only requires `domain_name`:
 Terminal window
 
 ```
-
-curl --request POST \
-
-  --url "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/registrar/registrations" \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-    "domain_name": "acmecorp.dev"
-
-  }'
-
-
+curl --request POST \  --url "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/registrar/registrations" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{    "domain_name": "acmecorp.dev"  }'
 ```
 
 The account must have a default registrant contact configured. If you do not pass a new contact inline, the API uses the default contact automatically. If you want to register the domain with a different contact, you can pass that contact in the request.
@@ -373,117 +181,13 @@ To override the default registrant contact for a single registration, provide on
 Terminal window
 
 ```
-
-curl --request POST \
-
-  --url "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/registrar/registrations" \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-    "domain_name": "acmecorp.dev",
-
-    "contacts": {
-
-      "registrant": {
-
-        "email": "ada@example.com",
-
-        "phone": "+1.5555555555",
-
-        "postal_info": {
-
-          "name": "Ada Lovelace",
-
-          "organization": "Example Inc",
-
-          "address": {
-
-            "street": "123 Main St",
-
-            "city": "Austin",
-
-            "state": "TX",
-
-            "postal_code": "78701",
-
-            "country_code": "US"
-
-          }
-
-        }
-
-      }
-
-    }
-
-  }'
-
-
+curl --request POST \  --url "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/registrar/registrations" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{    "domain_name": "acmecorp.dev",    "contacts": {      "registrant": {        "email": "ada@example.com",        "phone": "+1.5555555555",        "postal_info": {          "name": "Ada Lovelace",          "organization": "Example Inc",          "address": {            "street": "123 Main St",            "city": "Austin",            "state": "TX",            "postal_code": "78701",            "country_code": "US"          }        }      }    }  }'
 ```
 
 Example successful response:
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": [],
-
-  "result": {
-
-    "domain_name": "acmecorp.dev",
-
-    "state": "succeeded",
-
-    "completed": true,
-
-    "created_at": "2025-10-27T10:00:00Z",
-
-    "updated_at": "2025-10-27T10:00:03Z",
-
-    "context": {
-
-      "registration": {
-
-        "domain_name": "acmecorp.dev",
-
-        "status": "active",
-
-        "created_at": "2025-10-27T10:00:00Z",
-
-        "expires_at": "2026-10-27T10:00:00Z",
-
-        "auto_renew": false,
-
-        "privacy_mode": "redaction",
-
-        "locked": true
-
-      }
-
-    },
-
-    "links": {
-
-      "self": "/accounts/abc/registrar/registrations/acmecorp.dev/registration-status",
-
-      "resource": "/accounts/abc/registrar/registrations/acmecorp.dev"
-
-    }
-
-  }
-
-}
-
-
+{  "success": true,  "errors": [],  "messages": [],  "result": {    "domain_name": "acmecorp.dev",    "state": "succeeded",    "completed": true,    "created_at": "2025-10-27T10:00:00Z",    "updated_at": "2025-10-27T10:00:03Z",    "context": {      "registration": {        "domain_name": "acmecorp.dev",        "status": "active",        "created_at": "2025-10-27T10:00:00Z",        "expires_at": "2026-10-27T10:00:00Z",        "auto_renew": false,        "privacy_mode": "redaction",        "locked": true      }    },    "links": {      "self": "/accounts/abc/registrar/registrations/acmecorp.dev/registration-status",      "resource": "/accounts/abc/registrar/registrations/acmecorp.dev"    }  }}
 ```
 
 ## Handle registration responses
@@ -506,63 +210,13 @@ Example asynchronous request:
 Terminal window
 
 ```
-
-curl --request POST \
-
-  --url "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/registrar/registrations" \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --header "Prefer: respond-async" \
-
-  --data '{
-
-    "domain_name": "acmecorp.dev"
-
-  }'
-
-
+curl --request POST \  --url "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/registrar/registrations" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --header "Prefer: respond-async" \  --data '{    "domain_name": "acmecorp.dev"  }'
 ```
 
 Example `202 Accepted` response:
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": [],
-
-  "result": {
-
-    "domain_name": "acmecorp.dev",
-
-    "state": "in_progress",
-
-    "completed": false,
-
-    "created_at": "2025-10-27T10:00:00Z",
-
-    "updated_at": "2025-10-27T10:00:10Z",
-
-    "links": {
-
-      "self": "/accounts/abc/registrar/registrations/acmecorp.dev/registration-status",
-
-      "resource": "/accounts/abc/registrar/registrations/acmecorp.dev"
-
-    }
-
-  }
-
-}
-
-
+{  "success": true,  "errors": [],  "messages": [],  "result": {    "domain_name": "acmecorp.dev",    "state": "in_progress",    "completed": false,    "created_at": "2025-10-27T10:00:00Z",    "updated_at": "2025-10-27T10:00:10Z",    "links": {      "self": "/accounts/abc/registrar/registrations/acmecorp.dev/registration-status",      "resource": "/accounts/abc/registrar/registrations/acmecorp.dev"    }  }}
 ```
 
 ## Poll registration status
@@ -572,75 +226,13 @@ If the registration is still in progress, poll the status endpoint until the wor
 Terminal window
 
 ```
-
-curl --request GET \
-
-  --url "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/registrar/registrations/acmecorp.dev/registration-status" \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl --request GET \  --url "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/registrar/registrations/acmecorp.dev/registration-status" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Example response:
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": [],
-
-  "result": {
-
-    "domain_name": "acmecorp.dev",
-
-    "state": "succeeded",
-
-    "completed": true,
-
-    "created_at": "2025-10-27T10:00:00Z",
-
-    "updated_at": "2025-10-27T10:00:03Z",
-
-    "context": {
-
-      "registration": {
-
-        "domain_name": "acmecorp.dev",
-
-        "status": "active",
-
-        "created_at": "2025-10-27T10:00:00Z",
-
-        "expires_at": "2026-10-27T10:00:00Z",
-
-        "auto_renew": false,
-
-        "privacy_mode": "redaction",
-
-        "locked": true
-
-      }
-
-    },
-
-    "links": {
-
-      "self": "/accounts/abc/registrar/registrations/acmecorp.dev/registration-status",
-
-      "resource": "/accounts/abc/registrar/registrations/acmecorp.dev"
-
-    }
-
-  }
-
-}
-
-
+{  "success": true,  "errors": [],  "messages": [],  "result": {    "domain_name": "acmecorp.dev",    "state": "succeeded",    "completed": true,    "created_at": "2025-10-27T10:00:00Z",    "updated_at": "2025-10-27T10:00:03Z",    "context": {      "registration": {        "domain_name": "acmecorp.dev",        "status": "active",        "created_at": "2025-10-27T10:00:00Z",        "expires_at": "2026-10-27T10:00:00Z",        "auto_renew": false,        "privacy_mode": "redaction",        "locked": true      }    },    "links": {      "self": "/accounts/abc/registrar/registrations/acmecorp.dev/registration-status",      "resource": "/accounts/abc/registrar/registrations/acmecorp.dev"    }  }}
 ```
 
 Possible workflow states include:
@@ -666,49 +258,13 @@ Once registration is complete, retrieve the registration resource directly:
 Terminal window
 
 ```
-
-curl --request GET \
-
-  --url "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/registrar/registrations/acmecorp.dev" \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl --request GET \  --url "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/registrar/registrations/acmecorp.dev" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Example response:
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": [],
-
-  "result": {
-
-    "domain_name": "acmecorp.dev",
-
-    "status": "active",
-
-    "created_at": "2025-10-27T10:00:00Z",
-
-    "expires_at": "2026-10-27T10:00:00Z",
-
-    "auto_renew": false,
-
-    "privacy_mode": "redaction",
-
-    "locked": true
-
-  }
-
-}
-
-
+{  "success": true,  "errors": [],  "messages": [],  "result": {    "domain_name": "acmecorp.dev",    "status": "active",    "created_at": "2025-10-27T10:00:00Z",    "expires_at": "2026-10-27T10:00:00Z",    "auto_renew": false,    "privacy_mode": "redaction",    "locked": true  }}
 ```
 
 ## Beta limitations

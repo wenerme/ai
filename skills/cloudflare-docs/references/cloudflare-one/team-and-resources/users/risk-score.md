@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -124,10 +124,10 @@ To add a risk score requirement to an Access policy:
 
 To prevent users with elevated risk scores from accessing sensitive applications, create a policy with the following configuration:
 
-| Action  | Rule type       | Selector         | Value        |
-| ------- | --------------- | ---------------- | ------------ |
-| Allow   | Include         | Emails ending in | @example.com |
-| Exclude | User risk score | _High_           |              |
+| Action | Rule type | Selector         | Value        |
+| ------ | --------- | ---------------- | ------------ |
+| Allow  | Include   | Emails ending in | @example.com |
+|        | Exclude   | User risk score  | _High_       |
 
 Users with a High risk score will be blocked, while users with Low or Medium scores can access the application.
 

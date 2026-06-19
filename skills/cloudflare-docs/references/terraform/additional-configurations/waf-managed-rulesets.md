@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/terraform/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -54,8 +54,8 @@ Terraform assumes that it has complete control over account and zone rulesets. I
 
 The following example deploys two managed rulesets to the zone with ID `<ZONE_ID>` using Terraform, using a `cloudflare_ruleset` resource with two rules that execute the managed rulesets.
 
-* [ Terraform (v5) ](#tab-panel-10962)
-* [ Terraform (v4) ](#tab-panel-10963)
+* [ Terraform (v5) ](#tab-panel-10979)
+* [ Terraform (v4) ](#tab-panel-10980)
 
 Required API token permissions
 
@@ -66,132 +66,14 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
 
 ```
-
-# Configure a ruleset at the zone level for the "http_request_firewall_managed" phase
-
-resource "cloudflare_ruleset" "zone_level_managed_waf" {
-
-  zone_id     = var.cloudflare_zone_id
-
-  name        = "Managed WAF entry point ruleset"
-
-  description = "Zone-level WAF Managed Rules config"
-
-  kind        = "zone"
-
-  phase       = "http_request_firewall_managed"
-
-
-  rules = [
-
-    {
-
-      # Execute Cloudflare Managed Ruleset
-
-      ref         = "execute_cloudflare_managed_ruleset"
-
-      description = "Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset"
-
-      expression  = "true"
-
-      action      = "execute"
-
-      action_parameters = {
-
-        id = "efb7b8c949ac4650a09736fc376e9aee"
-
-      }
-
-    },
-
-    {
-
-      # Execute Cloudflare OWASP Core Ruleset
-
-      ref         = "execute_cloudflare_owasp_core_ruleset"
-
-      description = "Execute Cloudflare OWASP Core Ruleset on my zone-level phase entry point ruleset"
-
-      expression  = "true"
-
-      action      = "execute"
-
-      action_parameters = {
-
-        id = "4814384a9e5d4991b9815dcfc25d2f1f"
-
-      }
-
-    },
-
-  ]
-
-}
-
-
+# Configure a ruleset at the zone level for the "http_request_firewall_managed" phaseresource "cloudflare_ruleset" "zone_level_managed_waf" {  zone_id     = var.cloudflare_zone_id  name        = "Managed WAF entry point ruleset"  description = "Zone-level WAF Managed Rules config"  kind        = "zone"  phase       = "http_request_firewall_managed"
+  rules = [    {      # Execute Cloudflare Managed Ruleset      ref         = "execute_cloudflare_managed_ruleset"      description = "Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset"      expression  = "true"      action      = "execute"      action_parameters = {        id = "efb7b8c949ac4650a09736fc376e9aee"      }    },    {      # Execute Cloudflare OWASP Core Ruleset      ref         = "execute_cloudflare_owasp_core_ruleset"      description = "Execute Cloudflare OWASP Core Ruleset on my zone-level phase entry point ruleset"      expression  = "true"      action      = "execute"      action_parameters = {        id = "4814384a9e5d4991b9815dcfc25d2f1f"      }    },  ]}
 ```
 
 ```
-
-# Configure a ruleset at the zone level for the "http_request_firewall_managed" phase
-
-resource "cloudflare_ruleset" "zone_level_managed_waf" {
-
-  zone_id     = "<ZONE_ID>"
-
-  name        = "Managed WAF entry point ruleset"
-
-  description = "Zone-level WAF Managed Rules config"
-
-  kind        = "zone"
-
-  phase       = "http_request_firewall_managed"
-
-
-  # Execute Cloudflare Managed Ruleset
-
-  rules {
-
-    ref         = "execute_cloudflare_managed_ruleset"
-
-    description = "Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset"
-
-    expression  = "true"
-
-    action      = "execute"
-
-    action_parameters {
-
-      id = "efb7b8c949ac4650a09736fc376e9aee"
-
-    }
-
-  }
-
-
-  # Execute Cloudflare OWASP Core Ruleset
-
-  rules {
-
-    ref         = "execute_cloudflare_owasp_core_ruleset"
-
-    description = "Execute Cloudflare OWASP Core Ruleset on my zone-level phase entry point ruleset"
-
-    expression  = "true"
-
-    action      = "execute"
-
-    action_parameters {
-
-      id = "4814384a9e5d4991b9815dcfc25d2f1f"
-
-    }
-
-  }
-
-}
-
-
+# Configure a ruleset at the zone level for the "http_request_firewall_managed" phaseresource "cloudflare_ruleset" "zone_level_managed_waf" {  zone_id     = "<ZONE_ID>"  name        = "Managed WAF entry point ruleset"  description = "Zone-level WAF Managed Rules config"  kind        = "zone"  phase       = "http_request_firewall_managed"
+  # Execute Cloudflare Managed Ruleset  rules {    ref         = "execute_cloudflare_managed_ruleset"    description = "Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset"    expression  = "true"    action      = "execute"    action_parameters {      id = "efb7b8c949ac4650a09736fc376e9aee"    }  }
+  # Execute Cloudflare OWASP Core Ruleset  rules {    ref         = "execute_cloudflare_owasp_core_ruleset"    description = "Execute Cloudflare OWASP Core Ruleset on my zone-level phase entry point ruleset"    expression  = "true"    action      = "execute"    action_parameters {      id = "4814384a9e5d4991b9815dcfc25d2f1f"    }  }}
 ```
 
 ## Deploy managed rulesets at the account level
@@ -203,8 +85,8 @@ Notes
 
 The following example deploys two managed rulesets to the account with ID `<ACCOUNT_ID>` using Terraform, using a `cloudflare_ruleset` resource with two rules that execute the managed rulesets for two hostnames belonging to Enterprise zones.
 
-* [ Terraform (v5) ](#tab-panel-10964)
-* [ Terraform (v4) ](#tab-panel-10965)
+* [ Terraform (v5) ](#tab-panel-10981)
+* [ Terraform (v4) ](#tab-panel-10982)
 
 Required API token permissions
 
@@ -216,128 +98,14 @@ All of the following [token permissions](https://developers.cloudflare.com/funda
 Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
 
 ```
-
-resource "cloudflare_ruleset" "account_level_managed_waf" {
-
-  account_id  = var.cloudflare_account_id
-
-  name        = "Managed WAF entry point ruleset"
-
-  description = "Account-level WAF Managed Rules config"
-
-  kind        = "root"
-
-  phase       = "http_request_firewall_managed"
-
-
-  rules = [
-
-    {
-
-      # Execute Cloudflare Managed Ruleset
-
-      ref         = "execute_cloudflare_managed_ruleset_api_store"
-
-      description = "Execute Cloudflare Managed Ruleset on my account-level phase entry point ruleset"
-
-      expression  = "http.host in {\"api.example.com\" \"store.example.com\"} and cf.zone.plan eq \"ENT\""
-
-      action      = "execute"
-
-      action_parameters = {
-
-        id = "efb7b8c949ac4650a09736fc376e9aee"
-
-      }
-
-    },
-
-    {
-
-      # Execute Cloudflare OWASP Core Ruleset
-
-      ref         = "execute_owasp_core_ruleset_api_store"
-
-      description = "Execute Cloudflare OWASP Core Ruleset on my account-level phase entry point ruleset"
-
-      expression  = "http.host in {\"api.example.com\" \"store.example.com\"} and cf.zone.plan eq \"ENT\""
-
-      action      = "execute"
-
-      action_parameters = {
-
-        id = "4814384a9e5d4991b9815dcfc25d2f1f"
-
-      }
-
-    },
-
-  ]
-
-}
-
-
+resource "cloudflare_ruleset" "account_level_managed_waf" {  account_id  = var.cloudflare_account_id  name        = "Managed WAF entry point ruleset"  description = "Account-level WAF Managed Rules config"  kind        = "root"  phase       = "http_request_firewall_managed"
+  rules = [    {      # Execute Cloudflare Managed Ruleset      ref         = "execute_cloudflare_managed_ruleset_api_store"      description = "Execute Cloudflare Managed Ruleset on my account-level phase entry point ruleset"      expression  = "http.host in {\"api.example.com\" \"store.example.com\"} and cf.zone.plan eq \"ENT\""      action      = "execute"      action_parameters = {        id = "efb7b8c949ac4650a09736fc376e9aee"      }    },    {      # Execute Cloudflare OWASP Core Ruleset      ref         = "execute_owasp_core_ruleset_api_store"      description = "Execute Cloudflare OWASP Core Ruleset on my account-level phase entry point ruleset"      expression  = "http.host in {\"api.example.com\" \"store.example.com\"} and cf.zone.plan eq \"ENT\""      action      = "execute"      action_parameters = {        id = "4814384a9e5d4991b9815dcfc25d2f1f"      }    },  ]}
 ```
 
 ```
-
-resource "cloudflare_ruleset" "account_level_managed_waf" {
-
-  account_id  = "<ACCOUNT_ID>"
-
-  name        = "Managed WAF entry point ruleset"
-
-  description = "Account-level WAF Managed Rules config"
-
-  kind        = "root"
-
-  phase       = "http_request_firewall_managed"
-
-
-  # Execute Cloudflare Managed Ruleset
-
-  rules {
-
-    ref         = "execute_cloudflare_managed_ruleset_api_store"
-
-    description = "Execute Cloudflare Managed Ruleset on my account-level phase entry point ruleset"
-
-    expression  = "http.host in {\"api.example.com\" \"store.example.com\"} and cf.zone.plan eq \"ENT\""
-
-    action      = "execute"
-
-    action_parameters {
-
-      id = "efb7b8c949ac4650a09736fc376e9aee"
-
-    }
-
-  }
-
-
-  # Execute Cloudflare OWASP Core Ruleset
-
-  rules {
-
-    ref         = "execute_owasp_core_ruleset_api_store"
-
-    description = "Execute Cloudflare OWASP Core Ruleset on my account-level phase entry point ruleset"
-
-    expression  = "http.host in {\"api.example.com\" \"store.example.com\"} and cf.zone.plan eq \"ENT\""
-
-    action      = "execute"
-
-    action_parameters {
-
-      id = "4814384a9e5d4991b9815dcfc25d2f1f"
-
-    }
-
-  }
-
-}
-
-
+resource "cloudflare_ruleset" "account_level_managed_waf" {  account_id  = "<ACCOUNT_ID>"  name        = "Managed WAF entry point ruleset"  description = "Account-level WAF Managed Rules config"  kind        = "root"  phase       = "http_request_firewall_managed"
+  # Execute Cloudflare Managed Ruleset  rules {    ref         = "execute_cloudflare_managed_ruleset_api_store"    description = "Execute Cloudflare Managed Ruleset on my account-level phase entry point ruleset"    expression  = "http.host in {\"api.example.com\" \"store.example.com\"} and cf.zone.plan eq \"ENT\""    action      = "execute"    action_parameters {      id = "efb7b8c949ac4650a09736fc376e9aee"    }  }
+  # Execute Cloudflare OWASP Core Ruleset  rules {    ref         = "execute_owasp_core_ruleset_api_store"    description = "Execute Cloudflare OWASP Core Ruleset on my account-level phase entry point ruleset"    expression  = "http.host in {\"api.example.com\" \"store.example.com\"} and cf.zone.plan eq \"ENT\""    action      = "execute"    action_parameters {      id = "4814384a9e5d4991b9815dcfc25d2f1f"    }  }}
 ```
 
 ## Configure exceptions
@@ -349,174 +117,20 @@ The following example adds two [exceptions](https://developers.cloudflare.com/wa
 
 Add the two exceptions to the `cloudflare_ruleset` resource before the rule that deploys the Cloudflare Managed Ruleset:
 
-* [ Terraform (v5) ](#tab-panel-10954)
-* [ Terraform (v4) ](#tab-panel-10955)
+* [ Terraform (v5) ](#tab-panel-10971)
+* [ Terraform (v4) ](#tab-panel-10972)
 
 ```
-
-resource "cloudflare_ruleset" "zone_level_managed_waf" {
-
-  # (...)
-
-
-  rules = [
-
-    {
-
-      # Skip execution of the entire Cloudflare Managed Ruleset for specific URLs
-
-      ref         = "skip_cloudflare_managed_ruleset_example_com"
-
-      description = "Skip Cloudflare Managed Ruleset"
-
-      expression  = "(http.request.uri.path eq \"/status\" and http.request.uri.query contains \"skip=rulesets\")"
-
-      action      = "skip"
-
-      action_parameters = {
-
-        rulesets = ["efb7b8c949ac4650a09736fc376e9aee"]
-
-      }
-
-    },
-
-    {
-
-      # Skip execution of two rules in the Cloudflare Managed Ruleset for specific URLs
-
-      ref         = "skip_wordpress_sqli_rules_example_com"
-
-      description = "Skip WordPress and SQLi rules"
-
-      expression  = "(http.request.uri.path eq \"/status\" and http.request.uri.query contains \"skip=rules\")"
-
-      action      = "skip"
-
-      action_parameters = {
-
-        rules = {
-
-          # Format: "<RULESET_ID>" = ["<RULE_ID_1>", "<RULE_ID_2>"]
-
-          "efb7b8c949ac4650a09736fc376e9aee" = ["5de7edfa648c4d6891dc3e7f84534ffa", "e3a567afc347477d9702d9047e97d760"]
-
-        }
-
-      }
-
-    },
-
-    {
-
-      # Execute Cloudflare Managed Ruleset
-
-      ref         = "execute_cloudflare_managed_ruleset"
-
-      description = "Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset"
-
-      expression  = "true"
-
-      action      = "execute"
-
-      action_parameters = {
-
-        id = "efb7b8c949ac4650a09736fc376e9aee"
-
-      }
-
-    },
-
-    # (...)
-
-  ]
-
-}
-
-
+resource "cloudflare_ruleset" "zone_level_managed_waf" {  # (...)
+  rules = [    {      # Skip execution of the entire Cloudflare Managed Ruleset for specific URLs      ref         = "skip_cloudflare_managed_ruleset_example_com"      description = "Skip Cloudflare Managed Ruleset"      expression  = "(http.request.uri.path eq \"/status\" and http.request.uri.query contains \"skip=rulesets\")"      action      = "skip"      action_parameters = {        rulesets = ["efb7b8c949ac4650a09736fc376e9aee"]      }    },    {      # Skip execution of two rules in the Cloudflare Managed Ruleset for specific URLs      ref         = "skip_wordpress_sqli_rules_example_com"      description = "Skip WordPress and SQLi rules"      expression  = "(http.request.uri.path eq \"/status\" and http.request.uri.query contains \"skip=rules\")"      action      = "skip"      action_parameters = {        rules = {          # Format: "<RULESET_ID>" = ["<RULE_ID_1>", "<RULE_ID_2>"]          "efb7b8c949ac4650a09736fc376e9aee" = ["5de7edfa648c4d6891dc3e7f84534ffa", "e3a567afc347477d9702d9047e97d760"]        }      }    },    {      # Execute Cloudflare Managed Ruleset      ref         = "execute_cloudflare_managed_ruleset"      description = "Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset"      expression  = "true"      action      = "execute"      action_parameters = {        id = "efb7b8c949ac4650a09736fc376e9aee"      }    },    # (...)  ]}
 ```
 
 ```
-
-resource "cloudflare_ruleset" "zone_level_managed_waf" {
-
-  # (...)
-
-
-  # Skip execution of the entire Cloudflare Managed Ruleset for specific URLs
-
-  rules {
-
-    ref         = "skip_cloudflare_managed_ruleset_example_com"
-
-    description = "Skip Cloudflare Managed Ruleset"
-
-    expression  = "(http.request.uri.path eq \"/status\" and http.request.uri.query contains \"skip=rulesets\")"
-
-    action      = "skip"
-
-    action_parameters {
-
-      rulesets = ["efb7b8c949ac4650a09736fc376e9aee"]
-
-    }
-
-  }
-
-
-  # Skip execution of two rules in the Cloudflare Managed Ruleset for specific URLs
-
-  rules {
-
-    ref         = "skip_wordpress_sqli_rules_example_com"
-
-    description = "Skip WordPress and SQLi rules"
-
-    expression  = "(http.request.uri.path eq \"/status\" and http.request.uri.query contains \"skip=rules\")"
-
-    action      = "skip"
-
-    action_parameters {
-
-      rules = {
-
-        # Format: "<RULESET_ID>" = "<RULE_ID_1>,<RULE_ID_2>,..."
-
-        "efb7b8c949ac4650a09736fc376e9aee" = "5de7edfa648c4d6891dc3e7f84534ffa,e3a567afc347477d9702d9047e97d760"
-
-      }
-
-    }
-
-  }
-
-
-  # Execute Cloudflare Managed Ruleset
-
-  rules {
-
-    ref         = "execute_cloudflare_managed_ruleset"
-
-    description = "Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset"
-
-    expression  = "true"
-
-    action      = "execute"
-
-    action_parameters {
-
-      id = "efb7b8c949ac4650a09736fc376e9aee"
-
-    }
-
-  }
-
-
-  # (...)
-
-}
-
-
+resource "cloudflare_ruleset" "zone_level_managed_waf" {  # (...)
+  # Skip execution of the entire Cloudflare Managed Ruleset for specific URLs  rules {    ref         = "skip_cloudflare_managed_ruleset_example_com"    description = "Skip Cloudflare Managed Ruleset"    expression  = "(http.request.uri.path eq \"/status\" and http.request.uri.query contains \"skip=rulesets\")"    action      = "skip"    action_parameters {      rulesets = ["efb7b8c949ac4650a09736fc376e9aee"]    }  }
+  # Skip execution of two rules in the Cloudflare Managed Ruleset for specific URLs  rules {    ref         = "skip_wordpress_sqli_rules_example_com"    description = "Skip WordPress and SQLi rules"    expression  = "(http.request.uri.path eq \"/status\" and http.request.uri.query contains \"skip=rules\")"    action      = "skip"    action_parameters {      rules = {        # Format: "<RULESET_ID>" = "<RULE_ID_1>,<RULE_ID_2>,..."        "efb7b8c949ac4650a09736fc376e9aee" = "5de7edfa648c4d6891dc3e7f84534ffa,e3a567afc347477d9702d9047e97d760"      }    }  }
+  # Execute Cloudflare Managed Ruleset  rules {    ref         = "execute_cloudflare_managed_ruleset"    description = "Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset"    expression  = "true"    action      = "execute"    action_parameters {      id = "efb7b8c949ac4650a09736fc376e9aee"    }  }
+  # (...)}
 ```
 
 Important
@@ -537,137 +151,19 @@ Ruleset overrides and tag overrides apply to both existing and _future_ rules in
 
 The following configuration includes the three overrides in the rule that executes the Cloudflare Managed Ruleset:
 
-* [ Terraform (v5) ](#tab-panel-10956)
-* [ Terraform (v4) ](#tab-panel-10957)
+* [ Terraform (v5) ](#tab-panel-10973)
+* [ Terraform (v4) ](#tab-panel-10974)
 
 ```
-
   # (...)
-
-
-  # Execute Cloudflare Managed Ruleset
-
-  rules = [{
-
-    ref         = "execute_cloudflare_managed_ruleset"
-
-    description = "Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset"
-
-    expression  = "true"
-
-    action      = "execute"
-
-    action_parameters = {
-
-      id = "efb7b8c949ac4650a09736fc376e9aee"
-
-      overrides = {
-
-        rules = [
-
-          {
-
-            id      = "5de7edfa648c4d6891dc3e7f84534ffa"
-
-            action  = "log"
-
-            enabled = true
-
-          },
-
-          {
-
-            id      = "75a0060762034a6cb663fd51a02344cb"
-
-            enabled = false
-
-          },
-
-        ]
-
-        categories = [{
-
-          category = "wordpress"
-
-          action   = "js_challenge"
-
-          enabled  = true
-
-        }]
-
-      }
-
-    }
-
-  }]
-
-
+  # Execute Cloudflare Managed Ruleset  rules = [{    ref         = "execute_cloudflare_managed_ruleset"    description = "Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset"    expression  = "true"    action      = "execute"    action_parameters = {      id = "efb7b8c949ac4650a09736fc376e9aee"      overrides = {        rules = [          {            id      = "5de7edfa648c4d6891dc3e7f84534ffa"            action  = "log"            enabled = true          },          {            id      = "75a0060762034a6cb663fd51a02344cb"            enabled = false          },        ]        categories = [{          category = "wordpress"          action   = "js_challenge"          enabled  = true        }]      }    }  }]
   # (...)
-
-
 ```
 
 ```
-
   # (...)
-
-
-  # Execute Cloudflare Managed Ruleset
-
-  rules {
-
-    ref         = "execute_cloudflare_managed_ruleset"
-
-    description = "Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset"
-
-    expression  = "true"
-
-    action      = "execute"
-
-    action_parameters {
-
-      id = "efb7b8c949ac4650a09736fc376e9aee"
-
-      overrides {
-
-        rules {
-
-          id      = "5de7edfa648c4d6891dc3e7f84534ffa"
-
-          action  = "log"
-
-          enabled = true
-
-        }
-
-        rules {
-
-          id      = "75a0060762034a6cb663fd51a02344cb"
-
-          enabled = false
-
-        }
-
-        categories {
-
-          category = "wordpress"
-
-          action   = "js_challenge"
-
-          enabled  = true
-
-        }
-
-      }
-
-    }
-
-  }
-
-
+  # Execute Cloudflare Managed Ruleset  rules {    ref         = "execute_cloudflare_managed_ruleset"    description = "Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset"    expression  = "true"    action      = "execute"    action_parameters {      id = "efb7b8c949ac4650a09736fc376e9aee"      overrides {        rules {          id      = "5de7edfa648c4d6891dc3e7f84534ffa"          action  = "log"          enabled = true        }        rules {          id      = "75a0060762034a6cb663fd51a02344cb"          enabled = false        }        categories {          category = "wordpress"          action   = "js_challenge"          enabled  = true        }      }    }  }
   # (...)
-
-
 ```
 
 ## Configure payload logging
@@ -676,81 +172,19 @@ This example enables [payload logging](https://developers.cloudflare.com/waf/man
 
 Building upon the rule that deploys the Cloudflare Managed Ruleset, the following rule configuration adds the `matched_data` object with the public key used to encrypt the payload:
 
-* [ Terraform (v5) ](#tab-panel-10958)
-* [ Terraform (v4) ](#tab-panel-10959)
+* [ Terraform (v5) ](#tab-panel-10975)
+* [ Terraform (v4) ](#tab-panel-10976)
 
 ```
-
   # (...)
-
-
-  # Execute Cloudflare Managed Ruleset
-
-  rules = [{
-
-    ref         = "execute_cloudflare_managed_ruleset"
-
-    description = "Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset"
-
-    expression  = "true"
-
-    action      = "execute"
-
-    action_parameters = {
-
-      id = "efb7b8c949ac4650a09736fc376e9aee"
-
-      matched_data = {
-
-        public_key = "Ycig/Zr/pZmklmFUN99nr+taURlYItL91g+NcHGYpB8="
-
-      }
-
-    }
-
-  }]
-
-
+  # Execute Cloudflare Managed Ruleset  rules = [{    ref         = "execute_cloudflare_managed_ruleset"    description = "Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset"    expression  = "true"    action      = "execute"    action_parameters = {      id = "efb7b8c949ac4650a09736fc376e9aee"      matched_data = {        public_key = "Ycig/Zr/pZmklmFUN99nr+taURlYItL91g+NcHGYpB8="      }    }  }]
   # (...)
-
-
 ```
 
 ```
-
   # (...)
-
-
-  # Execute Cloudflare Managed Ruleset
-
-  rules {
-
-    ref         = "execute_cloudflare_managed_ruleset"
-
-    description = "Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset"
-
-    expression  = "true"
-
-    action      = "execute"
-
-    action_parameters {
-
-      id = "efb7b8c949ac4650a09736fc376e9aee"
-
-      matched_data {
-
-         public_key = "Ycig/Zr/pZmklmFUN99nr+taURlYItL91g+NcHGYpB8="
-
-      }
-
-    }
-
-  }
-
-
+  # Execute Cloudflare Managed Ruleset  rules {    ref         = "execute_cloudflare_managed_ruleset"    description = "Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset"    expression  = "true"    action      = "execute"    action_parameters {      id = "efb7b8c949ac4650a09736fc376e9aee"      matched_data {         public_key = "Ycig/Zr/pZmklmFUN99nr+taURlYItL91g+NcHGYpB8="      }    }  }
   # (...)
-
-
 ```
 
 ## Configure the OWASP paranoia level, score threshold, and action
@@ -770,145 +204,19 @@ The following example rule of a `cloudflare_ruleset` Terraform resource performs
 * Sets the score threshold to `60` (_Low_).
 * Sets the ruleset action to `log`.
 
-* [ Terraform (v5) ](#tab-panel-10960)
-* [ Terraform (v4) ](#tab-panel-10961)
+* [ Terraform (v5) ](#tab-panel-10977)
+* [ Terraform (v4) ](#tab-panel-10978)
 
 ```
-
   # (...)
-
-
-  # Execute Cloudflare OWASP Core Ruleset
-
-  rules = [{
-
-    ref         = "execute_owasp_core_ruleset"
-
-    description = "Execute Cloudflare OWASP Core Ruleset"
-
-    expression  = "true"
-
-    action      = "execute"
-
-    action_parameters = {
-
-      id = "4814384a9e5d4991b9815dcfc25d2f1f"
-
-      overrides = {
-
-        # By default, all PL1 to PL4 rules are enabled.
-
-        # Set the paranoia level to PL2 by disabling rules with
-
-        # tags "paranoia-level-3" and "paranoia-level-4".
-
-        categories = [
-
-          {
-
-            category = "paranoia-level-3"
-
-            enabled  = false
-
-          },
-
-          {
-
-            category = "paranoia-level-4"
-
-            enabled  = false
-
-          },
-
-        ]
-
-        rules = [{
-
-          id              = "6179ae15870a4bb7b2d480d4843b323c"
-
-          action          = "log"
-
-          score_threshold = 60
-
-        }]
-
-      }
-
-    }
-
-  }]
-
-
+  # Execute Cloudflare OWASP Core Ruleset  rules = [{    ref         = "execute_owasp_core_ruleset"    description = "Execute Cloudflare OWASP Core Ruleset"    expression  = "true"    action      = "execute"    action_parameters = {      id = "4814384a9e5d4991b9815dcfc25d2f1f"      overrides = {        # By default, all PL1 to PL4 rules are enabled.        # Set the paranoia level to PL2 by disabling rules with        # tags "paranoia-level-3" and "paranoia-level-4".        categories = [          {            category = "paranoia-level-3"            enabled  = false          },          {            category = "paranoia-level-4"            enabled  = false          },        ]        rules = [{          id              = "6179ae15870a4bb7b2d480d4843b323c"          action          = "log"          score_threshold = 60        }]      }    }  }]
   # (...)
-
-
 ```
 
 ```
-
   # (...)
-
-
-  # Execute Cloudflare OWASP Core Ruleset
-
-  rules {
-
-    ref         = "execute_owasp_core_ruleset"
-
-    description = "Execute Cloudflare OWASP Core Ruleset"
-
-    expression  = "true"
-
-    action      = "execute"
-
-    action_parameters {
-
-      id = "4814384a9e5d4991b9815dcfc25d2f1f"
-
-      overrides {
-
-        # By default, all PL1 to PL4 rules are enabled.
-
-        # Set the paranoia level to PL2 by disabling rules with
-
-        # tags "paranoia-level-3" and "paranoia-level-4".
-
-        categories {
-
-          category = "paranoia-level-3"
-
-          enabled  = false
-
-        }
-
-        categories {
-
-          category = "paranoia-level-4"
-
-          enabled  = false
-
-        }
-
-        rules {
-
-          id              = "6179ae15870a4bb7b2d480d4843b323c"
-
-          action          = "log"
-
-          score_threshold = 60
-
-        }
-
-      }
-
-    }
-
-  }
-
-
+  # Execute Cloudflare OWASP Core Ruleset  rules {    ref         = "execute_owasp_core_ruleset"    description = "Execute Cloudflare OWASP Core Ruleset"    expression  = "true"    action      = "execute"    action_parameters {      id = "4814384a9e5d4991b9815dcfc25d2f1f"      overrides {        # By default, all PL1 to PL4 rules are enabled.        # Set the paranoia level to PL2 by disabling rules with        # tags "paranoia-level-3" and "paranoia-level-4".        categories {          category = "paranoia-level-3"          enabled  = false        }        categories {          category = "paranoia-level-4"          enabled  = false        }        rules {          id              = "6179ae15870a4bb7b2d480d4843b323c"          action          = "log"          score_threshold = 60        }      }    }  }
   # (...)
-
-
 ```
 
 ```json

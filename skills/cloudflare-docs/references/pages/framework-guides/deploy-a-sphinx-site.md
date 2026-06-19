@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -50,10 +50,7 @@ The quickest way to install Pipenv is by running the command:
 Terminal window
 
 ```
-
 pip install --user pipenv
-
-
 ```
 
 This command will install Pipenv to your user level directory and will make it accessible via your terminal. You can confirm this by running the following command and reviewing the expected output:
@@ -61,17 +58,11 @@ This command will install Pipenv to your user level directory and will make it a
 Terminal window
 
 ```
-
 pipenv --version
-
-
 ```
 
 ```
-
 pipenv, version 2021.5.29
-
-
 ```
 
 ### Creating a Sphinx project directory
@@ -81,12 +72,7 @@ From your terminal, run the following commands to create a new directory and nav
 Terminal window
 
 ```
-
-mkdir my-wonderful-new-sphinx-project
-
-cd my-wonderful-new-sphinx-project
-
-
+mkdir my-wonderful-new-sphinx-projectcd my-wonderful-new-sphinx-project
 ```
 
 ### Pipenv with Python 3.7
@@ -98,10 +84,7 @@ Use the following command:
 Terminal window
 
 ```
-
 pipenv --python 3.7
-
-
 ```
 
 You should see the following output:
@@ -109,31 +92,8 @@ You should see the following output:
 Terminal window
 
 ```
-
-Creating a virtualenv for this project...
-
-Pipfile: /home/ubuntu/my-wonderful-new-sphinx-project/Pipfile
-
-Using /usr/bin/python3.7m (3.7.11) to create virtualenv...
-
-⠸ Creating virtual environment...created virtual environment CPython3.7.11.final.0-64 in 1598ms
-
-  creator CPython3Posix(dest=/home/ubuntu/.local/share/virtualenvs/my-wonderful-new-sphinx-project-Y2HfWoOr, clear=False, no_vcs_ignore=False, global=False)
-
-  seeder FromAppData(download=False, pip=bundle, setuptools=bundle, wheel=bundle, via=copy, app_data_dir=/home/ubuntu/.local/share/virtualenv)
-
-    added seed packages: pip==21.1.3, setuptools==57.1.0, wheel==0.36.2
-
-  activators BashActivator,CShellActivator,FishActivator,PowerShellActivator,PythonActivator,XonshActivator
-
-
-✔ Successfully created virtual environment!
-
-Virtualenv location: /home/ubuntu/.local/share/virtualenvs/my-wonderful-new-sphinx-project-Y2HfWoOr
-
-Creating a Pipfile for this project...
-
-
+Creating a virtualenv for this project...Pipfile: /home/ubuntu/my-wonderful-new-sphinx-project/PipfileUsing /usr/bin/python3.7m (3.7.11) to create virtualenv...⠸ Creating virtual environment...created virtual environment CPython3.7.11.final.0-64 in 1598ms  creator CPython3Posix(dest=/home/ubuntu/.local/share/virtualenvs/my-wonderful-new-sphinx-project-Y2HfWoOr, clear=False, no_vcs_ignore=False, global=False)  seeder FromAppData(download=False, pip=bundle, setuptools=bundle, wheel=bundle, via=copy, app_data_dir=/home/ubuntu/.local/share/virtualenv)    added seed packages: pip==21.1.3, setuptools==57.1.0, wheel==0.36.2  activators BashActivator,CShellActivator,FishActivator,PowerShellActivator,PythonActivator,XonshActivator
+✔ Successfully created virtual environment!Virtualenv location: /home/ubuntu/.local/share/virtualenvs/my-wonderful-new-sphinx-project-Y2HfWoOrCreating a Pipfile for this project...
 ```
 
 List the contents of the directory:
@@ -141,17 +101,11 @@ List the contents of the directory:
 Terminal window
 
 ```
-
 ls
-
-
 ```
 
 ```
-
 Pipfile
-
-
 ```
 
 ### Installing Sphinx
@@ -163,10 +117,7 @@ From your terminal, run the following command to install Sphinx:
 Terminal window
 
 ```
-
 pipenv install sphinx
-
-
 ```
 
 You should see output similar to the following:
@@ -174,36 +125,7 @@ You should see output similar to the following:
 Terminal window
 
 ```
-
-Installing sphinx...
-
-Adding sphinx to Pipfile's [packages]...
-
-✔ Installation Succeeded
-
-Pipfile.lock not found, creating...
-
-Locking [dev-packages] dependencies...
-
-Locking [packages] dependencies...
-
-Building requirements...
-
-Resolving dependencies...
-
-✔ Success!
-
-Updated Pipfile.lock (763aa3)!
-
-Installing dependencies from Pipfile.lock (763aa3)...
-
-  🐍   ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ 0/0 — 00:00:00
-
-To activate this project's virtualenv, run pipenv shell.
-
-Alternatively, run a command inside the virtualenv with pipenv run.
-
-
+Installing sphinx...Adding sphinx to Pipfile's [packages]...✔ Installation SucceededPipfile.lock not found, creating...Locking [dev-packages] dependencies...Locking [packages] dependencies...Building requirements...Resolving dependencies...✔ Success!Updated Pipfile.lock (763aa3)!Installing dependencies from Pipfile.lock (763aa3)...  🐍   ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ 0/0 — 00:00:00To activate this project's virtualenv, run pipenv shell.Alternatively, run a command inside the virtualenv with pipenv run.
 ```
 
 This will install Sphinx into a new virtual environment managed by Pipenv. You should see a directory structure like this:
@@ -211,14 +133,7 @@ This will install Sphinx into a new virtual environment managed by Pipenv. You s
 Terminal window
 
 ```
-
-my-wonderful-new-sphinx-project
-
-|--Pipfile
-
-|--Pipfile.lock
-
-
+my-wonderful-new-sphinx-project|--Pipfile|--Pipfile.lock
 ```
 
 ## Creating a new project
@@ -228,19 +143,11 @@ With Sphinx installed, you can now run the quickstart command to create a templa
 Terminal window
 
 ```
-
 pipenv shell
-
-
 ```
 
 ```
-
-Launching subshell in virtual environment...
-
-ubuntu@sphinx-demo:~/my-wonderful-new-sphinx-project$  . /home/ubuntu/.local/share/virtualenvs/my-wonderful-new-sphinx-project-Y2HfWoOr/bin/activate
-
-
+Launching subshell in virtual environment...ubuntu@sphinx-demo:~/my-wonderful-new-sphinx-project$  . /home/ubuntu/.local/share/virtualenvs/my-wonderful-new-sphinx-project-Y2HfWoOr/bin/activate
 ```
 
 Now run the following command:
@@ -248,27 +155,13 @@ Now run the following command:
 Terminal window
 
 ```
-
 sphinx-quickstart
-
-
 ```
 
 You will be presented with a number of questions, please answer them in the following:
 
 ```
-
-Separate source and build directories (y/n) [n]: Y
-
-Project name: <Your project name>
-
-Author name(s): <You Author Name>
-
-Project release []: <You can accept default here or provide a version>
-
-Project language [en]: <You can accept en here or provide a regional language code>
-
-
+Separate source and build directories (y/n) [n]: YProject name: <Your project name>Author name(s): <You Author Name>Project release []: <You can accept default here or provide a version>Project language [en]: <You can accept en here or provide a regional language code>
 ```
 
 This will create four new files in your active directory, `source/conf.py`, `index.rst`, `Makefile` and `make.bat`:
@@ -276,28 +169,7 @@ This will create four new files in your active directory, `source/conf.py`, `ind
 Terminal window
 
 ```
-
-my-wonderful-new-sphinx-project
-
-|--Pipfile
-
-|--Pipfile.lock
-
-|--source
-
-|----_static
-
-|----_templates
-
-|----conf.py
-
-|----index.rst
-
-|--Makefile
-
-|--make.bat
-
-
+my-wonderful-new-sphinx-project|--Pipfile|--Pipfile.lock|--source|----_static|----_templates|----conf.py|----index.rst|--Makefile|--make.bat
 ```
 
 You now have everything you need to start deploying your site to Cloudflare Pages. For learning how to create documentation with Sphinx, refer to the official [Sphinx documentation ↗](https://www.sphinx-doc.org/en/master/usage/quickstart.html).
@@ -317,29 +189,11 @@ In a separate terminal window that is not within the pipenv shell session, verif
 Terminal window
 
 ```
-
-eval "$(ssh-agent)"
-
-ssh-add -T ~/.ssh/id_rsa.pub
-
-ssh -T git@github.com
-
-
+eval "$(ssh-agent)"ssh-add -T ~/.ssh/id_rsa.pubssh -T git@github.com
 ```
 
 ```
-
-The authenticity of host 'github.com (140.82.113.4)' can't be established.
-
-RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
-
-Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
-
-Warning: Permanently added 'github.com,140.82.113.4' (RSA) to the list of known hosts.
-
-Hi yourgithubusername! You've successfully authenticated, but GitHub does not provide shell access.
-
-
+The authenticity of host 'github.com (140.82.113.4)' can't be established.RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.Are you sure you want to continue connecting (yes/no/[fingerprint])? yesWarning: Permanently added 'github.com,140.82.113.4' (RSA) to the list of known hosts.Hi yourgithubusername! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 
 Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). After your repository is set up, push your application to GitHub by running the following commands in your terminal:
@@ -347,24 +201,7 @@ Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). Aft
 Terminal window
 
 ```
-
-git init
-
-git config user.name "Your Name"
-
-git config user.email "username@domain.com"
-
-git remote add origin git@github.com:yourgithubusername/githubrepo.git
-
-git add .
-
-git commit -m "Initial commit"
-
-git branch -M main
-
-git push -u origin main
-
-
+git initgit config user.name "Your Name"git config user.email "username@domain.com"git remote add origin git@github.com:yourgithubusername/githubrepo.gitgit add .git commit -m "Initial commit"git branch -M maingit push -u origin main
 ```
 
 ## Deploy with Cloudflare Pages

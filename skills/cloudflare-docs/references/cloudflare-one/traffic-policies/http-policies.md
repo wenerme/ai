@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -277,19 +277,13 @@ Policy context fields
 When you turn on **Preserve original path and query string**, Gateway will append the original path and query string to the redirected URL. Paths and queries in the redirect URL take precedence over the original URL. For example, if the original URL is `example.com/path/to/page?querystring=X` and the redirect URL is `cloudflare.com/redirect-path?querystring=Y`, Gateway will redirect requests to:
 
 ```
-
 cloudflare.com/redirect-path/path/to/page?querystring=Y
-
-
 ```
 
 When you turn on both options, Gateway will preserve the original path and query string, then append policy context to the end of the redirect URL. For example, if the original URL is `example.com/path/to/page?querystring=X&k=1` and the redirect URL is `cloudflare.com/redirect-path?querystring=Y`, Gateway will redirect requests to:
 
 ```
-
 cloudflare.com/redirect-path/path/to/page?querystring=Y&k=1&cf_user_email=user@example.com
-
-
 ```
 
 ### Isolate
@@ -715,9 +709,9 @@ Compressed
 Documents
 
 * Microsoft Office/365 files  
-   * Word document (`.doc`, `.docx`, `.docm`)  
-   * Excel spreadsheet (`.xls`, `.xlsx`, `.xlsm`)  
-   * PowerPoint presentation (`.ppt`, `.pptx`, `.pptm`)
+  * Word document (`.doc`, `.docx`, `.docm`)
+  * Excel spreadsheet (`.xls`, `.xlsx`, `.xlsm`)
+  * PowerPoint presentation (`.ppt`, `.pptx`, `.pptm`)
 * PDF document (`.pdf`)
 
 Executable

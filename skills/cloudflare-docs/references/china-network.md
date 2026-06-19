@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/china-network/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,12 +21,16 @@ You can use the same configurations and dashboard experience that you use with C
 Chapters
 
 * ![Introduction](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/b7933a5b3636ca29f834128ca92665b3/thumbnails/thumbnail.jpg?fit=crop&time=3s)  
+
  **Introduction** 3s
 * ![How does it work?](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/b7933a5b3636ca29f834128ca92665b3/thumbnails/thumbnail.jpg?fit=crop&time=50s)  
+
  **How does it work?** 50s
 * ![ICP regulations](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/b7933a5b3636ca29f834128ca92665b3/thumbnails/thumbnail.jpg?fit=crop&time=96s)  
+
  **ICP regulations** 1m36s
 * ![China Express](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/b7933a5b3636ca29f834128ca92665b3/thumbnails/thumbnail.jpg?fit=crop&time=118s)  
+
  **China Express** 1m58s
 
 ## Main features

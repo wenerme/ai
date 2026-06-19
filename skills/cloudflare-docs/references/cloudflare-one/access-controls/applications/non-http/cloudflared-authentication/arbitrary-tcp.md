@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -39,10 +39,7 @@ Run the following command to authenticate `cloudflared` into your Cloudflare acc
 Terminal window
 
 ```
-
 cloudflared tunnel login
-
-
 ```
 
 `cloudflared` will open a browser window and prompt you to login to your Cloudflare account. If you are working on a machine that does not have a browser, or a browser window does not launch, you can copy the URL from the command-line output and visit the URL in a browser on any machine.
@@ -66,10 +63,7 @@ Run the following command to connect the resource to Cloudflare, replacing the `
 Terminal window
 
 ```
-
 cloudflared tunnel --hostname tcp.site.com --url tcp://localhost:7870
-
-
 ```
 
 `cloudflared` will confirm that the connection has been established. The process needs to be configured to stay alive and autostart. If the process is terminated, end users will not be able to connect.
@@ -87,10 +81,7 @@ Run the following command to create a connection from the device to Cloudflare. 
 Terminal window
 
 ```
-
 cloudflared access tcp --hostname tcp.site.com --url localhost:9210
-
-
 ```
 
 This command can be wrapped as a desktop shortcut so that end users do not need to use the command line.

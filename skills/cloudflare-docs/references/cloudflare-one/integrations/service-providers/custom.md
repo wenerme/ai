@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -51,40 +51,7 @@ Devices are identified by their serial numbers. You must ensure that each of you
 Example request body:
 
 ```
-
-{
-
-  "devices": {
-
-    [
-
-      {
-
-        "device_id": "9ece5fab-7398-488a-a575-e25a9a3dec07",
-
-        "email": "jdoe@mycompany.com",
-
-        "serial_number": "jdR44P3d",
-
-        "mac_address": "74:1d:3e:23:e0:fe",
-
-        "virtual_ipv4": "100.96.0.10",
-
-        "hostname": "string",
-
-      },
-
-      {...},
-
-      {...}
-
-    ]
-
-  }
-
-}
-
-
+{  "devices": {    [      {        "device_id": "9ece5fab-7398-488a-a575-e25a9a3dec07",        "email": "jdoe@mycompany.com",        "serial_number": "jdR44P3d",        "mac_address": "74:1d:3e:23:e0:fe",        "virtual_ipv4": "100.96.0.10",        "hostname": "string",      },      {...},      {...}    ]  }}
 ```
 
 ### Expected response from external API
@@ -99,28 +66,7 @@ For each Cloudflare `device_id`, the API service is expected to return a posture
 Example response body:
 
 ```
-
-{
-
-  "result": {
-
-    "9ece5fab-7398-488a-a575-e25a9a3dec07": {
-
-      "s2s_id": "",
-
-      "score": 10
-
-    },
-
-    "device_id2": {...},
-
-    "device_id3": {...}
-
-  }
-
-}
-
-
+{  "result": {    "9ece5fab-7398-488a-a575-e25a9a3dec07": {      "s2s_id": "",      "score": 10    },    "device_id2": {...},    "device_id3": {...}  }}
 ```
 
 ## Set up custom device posture checks
@@ -134,9 +80,10 @@ The Cloudflare One Client uses an Access Client ID and Access Client Secret to s
 Next, secure the external API behind Cloudflare Access so that the Cloudflare One Client can authenticate with the service token. To add the API endpoint to Access:
 
 1. [Create a self-hosted application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/) for your API endpoint.
-2. Add the following Access policy to the application. Make sure that **Action** is set to _Service Auth_ (not _Allow_).  
-| Action       | Rule type | Selector      | Value        |  
-| ------------ | --------- | ------------- | ------------ |  
+2. Add the following Access policy to the application. Make sure that **Action** is set to _Service Auth_ (not _Allow_).
+
+| Action       | Rule type | Selector      | Value        |
+| ------------ | --------- | ------------- | ------------ |
 | Service Auth | Include   | Service Token | <TOKEN-NAME> |
 
 ### 3\. Add a service provider integration

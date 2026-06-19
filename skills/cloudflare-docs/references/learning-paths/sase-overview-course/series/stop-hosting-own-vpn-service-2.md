@@ -6,30 +6,36 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
 # Stop hosting your own VPN service
 
-* [ Watch this episode ](#tab-panel-9150)
-* [ Series overview ](#tab-panel-9151)
+* [ Watch this episode ](#tab-panel-9226)
+* [ Series overview ](#tab-panel-9227)
 
 Cloudflare's SASE platform can replace your traditional, expensive VPN appliances which deliver poor performance for users and create more security risks than solve them. Cloudflare's Zero Trust Network Access (ZTNA) service is a more secure, highly scalable cloud solution. In this video we look at how easily you can deploy Cloudflare to secure access to internal resources.
 
 Chapters
 
 * ![Introduction to Corporate Network Security and Access Challenges](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/0410c73fe3fdd36142ec08bac77e8f97/thumbnails/thumbnail.jpg?fit=crop&time=0s)  
+
  **Introduction to Corporate Network Security and Access Challenges** 0s
 * ![Cloudflare's SASE Approach to Securing Internal Applications](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/0410c73fe3fdd36142ec08bac77e8f97/thumbnails/thumbnail.jpg?fit=crop&time=75s)  
+
  **Cloudflare's SASE Approach to Securing Internal Applications** 1m15s
 * ![Connecting Internal Applications to Cloudflare with Secure Tunnels](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/0410c73fe3fdd36142ec08bac77e8f97/thumbnails/thumbnail.jpg?fit=crop&time=114s)  
+
  **Connecting Internal Applications to Cloudflare with Secure Tunnels** 1m54s
 * ![Implementing Identity-Based, Clientless Access Control Access Control](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/0410c73fe3fdd36142ec08bac77e8f97/thumbnails/thumbnail.jpg?fit=crop&time=162s)  
+
  **Implementing Identity-Based, Clientless Access Control Access Control** 2m42s
 * ![Leveraging Anycast Networking for Faster and More Secure Application Access](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/0410c73fe3fdd36142ec08bac77e8f97/thumbnails/thumbnail.jpg?fit=crop&time=336s)  
+
  **Leveraging Anycast Networking for Faster and More Secure Application Access** 5m36
 * ![Enhancing Security with Micro-Segmentation and Cloudflare's Global Network](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/0410c73fe3fdd36142ec08bac77e8f97/thumbnails/thumbnail.jpg?fit=crop&time=419s)  
+
  **Enhancing Security with Micro-Segmentation and Cloudflare's Global Network** 6m:59s
 
 **Related content**
@@ -49,7 +55,7 @@ If you want to dive into detail about using Cloudflare to replace your existing 
 
 [ Watch Episode 4: Connect and secure from any network to anywhere ](https://developers.cloudflare.com/learning-paths/sase-overview-course/series/connect-secure-from-any-network-to-anywhere-4/) In this video, we discuss how to connect any network to Cloudflare to any other network and the Internet. Learn how this improves security and performance for your networks and applications. 
 
-[ Watch Episode 5: Protect your users from Internet risks ](https://developers.cloudflare.com/learning-paths/sase-overview-course/series/protect-users-from-internet-risks-5/) In this video, we will explore how Cloudflare's Secure Web Gateway (SWG) helps keep users and devices safe by filtering and inspecting Internet traffic in real time. 
+[ Watch Episode 5: Protect your users from Internet risks ](https://developers.cloudflare.com/learning-paths/sase-overview-course/series/protect-users-from-internet-risks-5/) In this video, we will explore how Cloudflare's Secure Web Gateway (SWG) helps keep users and devices safe by filtering and inspecting Internet traffic in real time.
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/sase-overview-course/series/stop-hosting-own-vpn-service-2/#page","headline":"Stop hosting your own VPN service · Cloudflare Learning Paths","description":"Replace self-hosted VPNs with ZTNA.","url":"https://developers.cloudflare.com/learning-paths/sase-overview-course/series/stop-hosting-own-vpn-service-2/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

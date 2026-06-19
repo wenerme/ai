@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/spectrum/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -59,21 +59,8 @@ Example configuration for [vsftpd ↗](https://security.appspot.com/vsftpd.html)
 > Terminal window
 > 
 > ```
-> 
-> pasv_min_port=20000
-> 
-> pasv_max_port=20020
-> 
-> 
-> pasv_enable=YES
-> 
-> pasv_address=ftp.example.com
-> 
-> pasv_addr_resolve=YES
-> 
-> pasv_promiscuous=YES
-> 
-> 
+> pasv_min_port=20000pasv_max_port=20020
+> pasv_enable=YESpasv_address=ftp.example.compasv_addr_resolve=YESpasv_promiscuous=YES
 > ```
 
 ### Spectrum FTPS (ProFTPD) instructions

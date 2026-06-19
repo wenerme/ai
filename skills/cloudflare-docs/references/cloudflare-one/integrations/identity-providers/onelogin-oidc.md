@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,11 +37,12 @@ You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloud
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
 3. Select **OneLogin**.
-4. Fill in the following information:  
-   * **Name**: Name your identity provider.  
-   * **App ID**: Enter your OneLogin client ID.  
-   * **Client secret**: Enter your OneLogin client secret.  
-   * **OneLogin account URL**: Enter your OneLogin domain, for example `https://<your-domain>.onelogin.com`.
+4. Fill in the following information:
+
+  * **Name**: Name your identity provider.
+  * **App ID**: Enter your OneLogin client ID.
+  * **Client secret**: Enter your OneLogin client secret.
+  * **OneLogin account URL**: Enter your OneLogin domain, for example `https://<your-domain>.onelogin.com`.
 5. (Optional) To enable SCIM, refer to [Synchronize users and groups](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/#synchronize-users-and-groups).
 6. (Optional) Under **Optional configurations**, enter [custom OIDC claims](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/#custom-oidc-claims) that you wish to add to your user's identity.
 7. Select **Save**.
@@ -51,26 +52,7 @@ To test that your connection is working, go to **Integrations** \> **Identity pr
 ## Example API Config
 
 ```
-
-{
-
-  "config": {
-
-    "client_id": "<your client id>",
-
-    "client_secret": "<your client secret>",
-
-    "onelogin_account": "https://mycompany.onelogin.com"
-
-  },
-
-  "type": "onelogin",
-
-  "name": "my example idp"
-
-}
-
-
+{  "config": {    "client_id": "<your client id>",    "client_secret": "<your client secret>",    "onelogin_account": "https://mycompany.onelogin.com"  },  "type": "onelogin",  "name": "my example idp"}
 ```
 
 ```json

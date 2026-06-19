@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,76 +31,7 @@ As shown in the example below, `https://<your-team-name>.cloudflareaccess.com/cd
 * `public_certs`: both keys in PEM format
 
 ```
-
-{
-
-  "keys": [
-
-    {
-
-      "kid": "1a1c3986a44ce6390be42ec772b031df8f433fdc71716db821dc0c39af3bce49",
-
-      "kty": "RSA",
-
-      "alg": "RS256",
-
-      "use": "sig",
-
-      "e": "AQAB",
-
-      "n": "5PKw-...-AG7MyQ"
-
-    },
-
-    {
-
-      "kid": "6c3bffef71bb0a90c9cbef3b7c0d4a1c7b4b8b76b80292a623afd9dac45d1c65",
-
-      "kty": "RSA",
-
-      "alg": "RS256",
-
-      "use": "sig",
-
-      "e": "AQAB",
-
-      "n": "pwVn...AA6Hw"
-
-    }
-
-  ],
-
-  "public_cert": {
-
-    "kid": "6c3bffef71bb0a90c9cbef3b7c0d4a1c7b4b8b76b80292a623afd9dac45d1c65",
-
-    "cert": "-----BEGIN CERTIFICATE----- ... -----END CERTIFICATE----- "
-
-  },
-
-  "public_certs": [
-
-    {
-
-      "kid": "1a1c3986a44ce6390be42ec772b031df8f433fdc71716db821dc0c39af3bce49",
-
-      "cert": "-----BEGIN CERTIFICATE----- ... -----END CERTIFICATE----- "
-
-    },
-
-    {
-
-      "kid": "6c3bffef71bb0a90c9cbef3b7c0d4a1c7b4b8b76b80292a623afd9dac45d1c65",
-
-      "cert": "-----BEGIN CERTIFICATE----- ... -----END CERTIFICATE----- "
-
-    }
-
-  ]
-
-}
-
-
+{  "keys": [    {      "kid": "1a1c3986a44ce6390be42ec772b031df8f433fdc71716db821dc0c39af3bce49",      "kty": "RSA",      "alg": "RS256",      "use": "sig",      "e": "AQAB",      "n": "5PKw-...-AG7MyQ"    },    {      "kid": "6c3bffef71bb0a90c9cbef3b7c0d4a1c7b4b8b76b80292a623afd9dac45d1c65",      "kty": "RSA",      "alg": "RS256",      "use": "sig",      "e": "AQAB",      "n": "pwVn...AA6Hw"    }  ],  "public_cert": {    "kid": "6c3bffef71bb0a90c9cbef3b7c0d4a1c7b4b8b76b80292a623afd9dac45d1c65",    "cert": "-----BEGIN CERTIFICATE----- ... -----END CERTIFICATE----- "  },  "public_certs": [    {      "kid": "1a1c3986a44ce6390be42ec772b031df8f433fdc71716db821dc0c39af3bce49",      "cert": "-----BEGIN CERTIFICATE----- ... -----END CERTIFICATE----- "    },    {      "kid": "6c3bffef71bb0a90c9cbef3b7c0d4a1c7b4b8b76b80292a623afd9dac45d1c65",      "cert": "-----BEGIN CERTIFICATE----- ... -----END CERTIFICATE----- "    }  ]}
 ```
 
 Avoid key rotation issues
@@ -143,220 +74,32 @@ When Cloudflare Access is in front of your [Worker](https://developers.cloudflar
 
 The following code will validate the JWT using the [jose NPM package ↗](https://www.npmjs.com/package/jose):
 
-* [  JavaScript ](#tab-panel-7099)
-* [  TypeScript ](#tab-panel-7100)
+* [  JavaScript ](#tab-panel-7175)
+* [  TypeScript ](#tab-panel-7176)
 
 JavaScript
 
 ```
-
 import { jwtVerify, createRemoteJWKSet } from "jose";
-
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    // Verify the POLICY_AUD environment variable is set
-
-    if (!env.POLICY_AUD) {
-
-      return new Response("Missing required audience", {
-
-        status: 403,
-
-        headers: { "Content-Type": "text/plain" },
-
-      });
-
-    }
-
-
-    // Get the JWT from the request headers
-
-    const token = request.headers.get("cf-access-jwt-assertion");
-
-
-    // Check if token exists
-
-    if (!token) {
-
-      return new Response("Missing required CF Access JWT", {
-
-        status: 403,
-
-        headers: { "Content-Type": "text/plain" },
-
-      });
-
-    }
-
-
-    try {
-
-      // Create JWKS from your team domain
-
-      const JWKS = createRemoteJWKSet(
-
-        new URL(`${env.TEAM_DOMAIN}/cdn-cgi/access/certs`),
-
-      );
-
-
-      // Verify the JWT
-
-      const { payload } = await jwtVerify(token, JWKS, {
-
-        issuer: env.TEAM_DOMAIN,
-
-        audience: env.POLICY_AUD,
-
-      });
-
-
-      // Token is valid, proceed with your application logic
-
-      return new Response(`Hello ${payload.email || "authenticated user"}!`, {
-
-        headers: { "Content-Type": "text/plain" },
-
-      });
-
-    } catch (error) {
-
-      // Token verification failed
-
-      const message = error instanceof Error ? error.message : "Unknown error";
-
-      return new Response(`Invalid token: ${message}`, {
-
-        status: 403,
-
-        headers: { "Content-Type": "text/plain" },
-
-      });
-
-    }
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    // Verify the POLICY_AUD environment variable is set    if (!env.POLICY_AUD) {      return new Response("Missing required audience", {        status: 403,        headers: { "Content-Type": "text/plain" },      });    }
+    // Get the JWT from the request headers    const token = request.headers.get("cf-access-jwt-assertion");
+    // Check if token exists    if (!token) {      return new Response("Missing required CF Access JWT", {        status: 403,        headers: { "Content-Type": "text/plain" },      });    }
+    try {      // Create JWKS from your team domain      const JWKS = createRemoteJWKSet(        new URL(`${env.TEAM_DOMAIN}/cdn-cgi/access/certs`),      );
+      // Verify the JWT      const { payload } = await jwtVerify(token, JWKS, {        issuer: env.TEAM_DOMAIN,        audience: env.POLICY_AUD,      });
+      // Token is valid, proceed with your application logic      return new Response(`Hello ${payload.email || "authenticated user"}!`, {        headers: { "Content-Type": "text/plain" },      });    } catch (error) {      // Token verification failed      const message = error instanceof Error ? error.message : "Unknown error";      return new Response(`Invalid token: ${message}`, {        status: 403,        headers: { "Content-Type": "text/plain" },      });    }  },};
 ```
 
 TypeScript
 
 ```
-
 import { jwtVerify, createRemoteJWKSet } from "jose";
-
-
-interface Env {
-
-  POLICY_AUD: string;
-
-  TEAM_DOMAIN: string;
-
-}
-
-
-export default {
-
-  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
-
-    // Verify the POLICY_AUD environment variable is set
-
-    if (!env.POLICY_AUD) {
-
-      return new Response("Missing required audience", {
-
-        status: 403,
-
-        headers: { "Content-Type": "text/plain" },
-
-      });
-
-    }
-
-
-    // Get the JWT from the request headers
-
-    const token = request.headers.get("cf-access-jwt-assertion");
-
-
-    // Check if token exists
-
-    if (!token) {
-
-      return new Response("Missing required CF Access JWT", {
-
-        status: 403,
-
-        headers: { "Content-Type": "text/plain" },
-
-      });
-
-    }
-
-
-    try {
-
-      // Create JWKS from your team domain
-
-      const JWKS = createRemoteJWKSet(
-
-        new URL(`${env.TEAM_DOMAIN}/cdn-cgi/access/certs`)
-
-      );
-
-
-      // Verify the JWT
-
-      const { payload } = await jwtVerify(token, JWKS, {
-
-        issuer: env.TEAM_DOMAIN,
-
-        audience: env.POLICY_AUD,
-
-      });
-
-
-      // Token is valid, proceed with your application logic
-
-      return new Response(
-
-        `Hello ${payload.email || "authenticated user"}!`,
-
-        {
-
-          headers: { "Content-Type": "text/plain" },
-
-        }
-
-      );
-
-    } catch (error) {
-
-      // Token verification failed
-
-      const message = error instanceof Error ? error.message : "Unknown error";
-
-      return new Response(`Invalid token: ${message}`, {
-
-        status: 403,
-
-        headers: { "Content-Type": "text/plain" },
-
-      });
-
-    }
-
-  },
-
-};
-
-
+interface Env {  POLICY_AUD: string;  TEAM_DOMAIN: string;}
+export default {  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {    // Verify the POLICY_AUD environment variable is set    if (!env.POLICY_AUD) {      return new Response("Missing required audience", {        status: 403,        headers: { "Content-Type": "text/plain" },      });    }
+    // Get the JWT from the request headers    const token = request.headers.get("cf-access-jwt-assertion");
+    // Check if token exists    if (!token) {      return new Response("Missing required CF Access JWT", {        status: 403,        headers: { "Content-Type": "text/plain" },      });    }
+    try {      // Create JWKS from your team domain      const JWKS = createRemoteJWKSet(        new URL(`${env.TEAM_DOMAIN}/cdn-cgi/access/certs`)      );
+      // Verify the JWT      const { payload } = await jwtVerify(token, JWKS, {        issuer: env.TEAM_DOMAIN,        audience: env.POLICY_AUD,      });
+      // Token is valid, proceed with your application logic      return new Response(        `Hello ${payload.email || "authenticated user"}!`,        {          headers: { "Content-Type": "text/plain" },        }      );    } catch (error) {      // Token verification failed      const message = error instanceof Error ? error.message : "Unknown error";      return new Response(`Invalid token: ${message}`, {        status: 403,        headers: { "Content-Type": "text/plain" },      });    }  },};
 ```
 
 #### Required environment variables
@@ -371,122 +114,17 @@ You can set these variables by adding them to your Worker's [Wrangler configurat
 ### Golang example
 
 ```
-
 package main
-
-
-import (
-
-    "context"
-
-    "fmt"
-
-    "net/http"
-
-
-    "github.com/coreos/go-oidc/v3/oidc"
-
-)
-
-
-var (
-
-    ctx        = context.TODO()
-
-    teamDomain = "https://test.cloudflareaccess.com"
-
-    certsURL   = fmt.Sprintf("%s/cdn-cgi/access/certs", teamDomain)
-
-
-    // The Application Audience (AUD) tag for your application
-
-    policyAUD = "4714c1358e65fe4b408ad6d432a5f878f08194bdb4752441fd56faefa9b2b6f2"
-
-
-    config = &oidc.Config{
-
-        ClientID: policyAUD,
-
-    }
-
-    keySet   = oidc.NewRemoteKeySet(ctx, certsURL)
-
-    verifier = oidc.NewVerifier(teamDomain, keySet, config)
-
-)
-
-
-// VerifyToken is a middleware to verify a CF Access token
-
-func VerifyToken(next http.Handler) http.Handler {
-
-    fn := func(w http.ResponseWriter, r *http.Request) {
-
-        headers := r.Header
-
-
-        // Make sure that the incoming request has our token header
-
-        //  Could also look in the cookies for CF_AUTHORIZATION
-
-        accessJWT := headers.Get("Cf-Access-Jwt-Assertion")
-
-        if accessJWT == "" {
-
-            w.WriteHeader(http.StatusUnauthorized)
-
-            w.Write([]byte("No token on the request"))
-
-            return
-
-        }
-
-
-        // Verify the access token
-
-        ctx := r.Context()
-
-        _, err := verifier.Verify(ctx, accessJWT)
-
-        if err != nil {
-
-            w.WriteHeader(http.StatusUnauthorized)
-
-            w.Write([]byte(fmt.Sprintf("Invalid token: %s", err.Error())))
-
-            return
-
-        }
-
-        next.ServeHTTP(w, r)
-
-    }
-
-    return http.HandlerFunc(fn)
-
-}
-
-
-func MainHandler() http.Handler {
-
-    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-
-        w.Write([]byte("welcome"))
-
-    })
-
-}
-
-
-func main() {
-
-    http.Handle("/", VerifyToken(MainHandler()))
-
-    http.ListenAndServe(":3000", nil)
-
-}
-
-
+import (    "context"    "fmt"    "net/http"
+    "github.com/coreos/go-oidc/v3/oidc")
+var (    ctx        = context.TODO()    teamDomain = "https://test.cloudflareaccess.com"    certsURL   = fmt.Sprintf("%s/cdn-cgi/access/certs", teamDomain)
+    // The Application Audience (AUD) tag for your application    policyAUD = "4714c1358e65fe4b408ad6d432a5f878f08194bdb4752441fd56faefa9b2b6f2"
+    config = &oidc.Config{        ClientID: policyAUD,    }    keySet   = oidc.NewRemoteKeySet(ctx, certsURL)    verifier = oidc.NewVerifier(teamDomain, keySet, config))
+// VerifyToken is a middleware to verify a CF Access tokenfunc VerifyToken(next http.Handler) http.Handler {    fn := func(w http.ResponseWriter, r *http.Request) {        headers := r.Header
+        // Make sure that the incoming request has our token header        //  Could also look in the cookies for CF_AUTHORIZATION        accessJWT := headers.Get("Cf-Access-Jwt-Assertion")        if accessJWT == "" {            w.WriteHeader(http.StatusUnauthorized)            w.Write([]byte("No token on the request"))            return        }
+        // Verify the access token        ctx := r.Context()        _, err := verifier.Verify(ctx, accessJWT)        if err != nil {            w.WriteHeader(http.StatusUnauthorized)            w.Write([]byte(fmt.Sprintf("Invalid token: %s", err.Error())))            return        }        next.ServeHTTP(w, r)    }    return http.HandlerFunc(fn)}
+func MainHandler() http.Handler {    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {        w.Write([]byte("welcome"))    })}
+func main() {    http.Handle("/", VerifyToken(MainHandler()))    http.ListenAndServe(":3000", nil)}
 ```
 
 ### Python example
@@ -501,131 +139,19 @@ func main() {
 Python
 
 ```
-
-from flask import Flask, request
-
-import requests
-
-import jwt
-
-import json
-
-import os
-
-app = Flask(__name__)
-
-
-# The Application Audience (AUD) tag for your application
-
-POLICY_AUD = os.getenv("POLICY_AUD")
-
-
-# Your CF Access team domain
-
-TEAM_DOMAIN = os.getenv("TEAM_DOMAIN")
-
-CERTS_URL = "{}/cdn-cgi/access/certs".format(TEAM_DOMAIN)
-
-
-def _get_public_keys():
-
-    """
-
-    Returns:
-
-        List of RSA public keys usable by PyJWT.
-
-    """
-
-    r = requests.get(CERTS_URL)
-
-    public_keys = []
-
-    jwk_set = r.json()
-
-    for key_dict in jwk_set['keys']:
-
-        public_key = jwt.algorithms.RSAAlgorithm.from_jwk(json.dumps(key_dict))
-
-        public_keys.append(public_key)
-
-    return public_keys
-
-
-def verify_token(f):
-
-    """
-
-    Decorator that wraps a Flask API call to verify the CF Access JWT
-
-    """
-
-    def wrapper():
-
-        # Check for the POLICY_AUD environment variable
-
-        if not POLICY_AUD:
-
-          return "missing required audience", 403
-
-
-        token = ''
-
-        if 'CF_Authorization' in request.cookies:
-
-            token = request.cookies['CF_Authorization']
-
-        else:
-
-            return "missing required cf authorization token", 403
-
-        keys = _get_public_keys()
-
-
-        # Loop through the keys since we can't pass the key set to the decoder
-
-        valid_token = False
-
-        for key in keys:
-
-            try:
-
-                # decode returns the claims that has the email when needed
-
-                jwt.decode(token, key=key, audience=POLICY_AUD, algorithms=['RS256'])
-
-                valid_token = True
-
-                break
-
-            except:
-
-                pass
-
-        if not valid_token:
-
-            return "invalid token", 403
-
-
-        return f()
-
-    return wrapper
-
-
-@app.route('/')
-
-@verify_token
-
-def hello_world():
-
-    return 'Hello, World!'
-
-
-if __name__ == '__main__':
-
-    app.run()
-
-
+from flask import Flask, requestimport requestsimport jwtimport jsonimport osapp = Flask(__name__)
+
+# The Application Audience (AUD) tag for your applicationPOLICY_AUD = os.getenv("POLICY_AUD")
+# Your CF Access team domainTEAM_DOMAIN = os.getenv("TEAM_DOMAIN")CERTS_URL = "{}/cdn-cgi/access/certs".format(TEAM_DOMAIN)
+def _get_public_keys():    """    Returns:        List of RSA public keys usable by PyJWT.    """    r = requests.get(CERTS_URL)    public_keys = []    jwk_set = r.json()    for key_dict in jwk_set['keys']:        public_key = jwt.algorithms.RSAAlgorithm.from_jwk(json.dumps(key_dict))        public_keys.append(public_key)    return public_keys
+def verify_token(f):    """    Decorator that wraps a Flask API call to verify the CF Access JWT    """    def wrapper():        # Check for the POLICY_AUD environment variable        if not POLICY_AUD:          return "missing required audience", 403
+        token = ''        if 'CF_Authorization' in request.cookies:            token = request.cookies['CF_Authorization']        else:            return "missing required cf authorization token", 403        keys = _get_public_keys()
+        # Loop through the keys since we can't pass the key set to the decoder        valid_token = False        for key in keys:            try:                # decode returns the claims that has the email when needed                jwt.decode(token, key=key, audience=POLICY_AUD, algorithms=['RS256'])                valid_token = True                break            except:                pass        if not valid_token:            return "invalid token", 403
+        return f()    return wrapper
+
+@app.route('/')@verify_tokendef hello_world():    return 'Hello, World!'
+
+if __name__ == '__main__':    app.run()
 ```
 
 ### JavaScript (Node.js) example
@@ -633,110 +159,19 @@ if __name__ == '__main__':
 JavaScript
 
 ```
-
-const express = require("express");
-
-const jose = require("jose");
-
-
-// The Application Audience (AUD) tag for your application
-
-const AUD = process.env.POLICY_AUD;
-
-
-// Your CF Access team domain
-
-const TEAM_DOMAIN = process.env.TEAM_DOMAIN;
-
-const CERTS_URL = `${TEAM_DOMAIN}/cdn-cgi/access/certs`;
-
-
+const express = require("express");const jose = require("jose");
+// The Application Audience (AUD) tag for your applicationconst AUD = process.env.POLICY_AUD;
+// Your CF Access team domainconst TEAM_DOMAIN = process.env.TEAM_DOMAIN;const CERTS_URL = `${TEAM_DOMAIN}/cdn-cgi/access/certs`;
 const JWKS = jose.createRemoteJWKSet(new URL(CERTS_URL));
-
-
-// verifyToken is a middleware to verify a CF authorization token
-
-const verifyToken = async (req, res, next) => {
-
-  // Check for the AUD environment variable
-
-  if (!AUD) {
-
-    return res.status(403).send({
-
-      status: false,
-
-      message: "missing required audience",
-
-    });
-
-  }
-
-
+// verifyToken is a middleware to verify a CF authorization tokenconst verifyToken = async (req, res, next) => {  // Check for the AUD environment variable  if (!AUD) {    return res.status(403).send({      status: false,      message: "missing required audience",    });  }
   const token = req.headers["cf-access-jwt-assertion"];
-
-
-  // Make sure that the incoming request has our token header
-
-  if (!token) {
-
-    return res.status(403).send({
-
-      status: false,
-
-      message: "missing required cf authorization token",
-
-    });
-
-  }
-
-
-  try {
-
-    const result = await jose.jwtVerify(token, JWKS, {
-
-      issuer: TEAM_DOMAIN,
-
-      audience: AUD,
-
-    });
-
-
-    req.user = result.payload;
-
-    next();
-
-  } catch (err) {
-
-    return res.status(403).send({
-
-      status: false,
-
-      message: "invalid token",
-
-    });
-
-  }
-
-};
-
-
+  // Make sure that the incoming request has our token header  if (!token) {    return res.status(403).send({      status: false,      message: "missing required cf authorization token",    });  }
+  try {    const result = await jose.jwtVerify(token, JWKS, {      issuer: TEAM_DOMAIN,      audience: AUD,    });
+    req.user = result.payload;    next();  } catch (err) {    return res.status(403).send({      status: false,      message: "invalid token",    });  }};
 const app = express();
-
-
 app.use(verifyToken);
-
-
-app.get("/", (req, res) => {
-
-  res.send("Hello World!");
-
-});
-
-
+app.get("/", (req, res) => {  res.send("Hello World!");});
 app.listen(3333);
-
-
 ```
 
 ```json

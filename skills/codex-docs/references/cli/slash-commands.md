@@ -31,9 +31,10 @@ completion still works before you queue the command.
 | [`/agent`](#switch-agent-threads-with-agent)                                    | Switch the active agent thread.                                 | Inspect or continue work in a spawned subagent thread.                                                     |
 | [`/apps`](#browse-apps-with-apps)                                               | Browse apps (connectors) and insert them into your prompt.      | Attach an app as `$app-slug` before asking Codex to use it.                                                |
 | [`/plugins`](#browse-plugins-with-plugins)                                      | Browse installed and discoverable plugins.                      | Inspect plugin tools, install suggested plugins, or manage plugin availability.                            |
-| [`/hooks`](#review-hooks-with-hooks)                                            | Review lifecycle hooks.                                         | Inspect configured hooks, trust new or changed hooks, or disable non-managed hooks before they run.        |
+| [`/hooks`](#view-and-manage-lifecycle-hooks-with-hooks)                         | View and manage lifecycle hooks.                                | Inspect configured hooks, trust new or changed hooks, or disable non-managed hooks before they run.        |
 | [`/clear`](#clear-the-terminal-and-start-a-new-chat-with-clear)                 | Clear the terminal and start a fresh chat.                      | Reset the visible UI and conversation together when you want a fresh start.                                |
 | [`/archive`](#archive-the-current-session-with-archive)                         | Archive the current session and exit Codex.                     | Remove the current session from active session lists without deleting its transcript.                      |
+| [`/delete`](#delete-the-current-session-with-delete)                            | Permanently delete the current session and exit Codex.          | Remove the transcript and descendant sessions when archiving isn't enough.                                 |
 | [`/compact`](#keep-transcripts-lean-with-compact)                               | Summarize the visible conversation to free tokens.              | Use after long runs so Codex retains key points without blowing the context window.                        |
 | [`/copy`](#copy-the-latest-response-with-copy)                                  | Copy the latest completed Codex output.                         | Grab the latest finished response or plan text without manually selecting it. You can also press `Ctrl+O`. |
 | [`/diff`](#review-changes-with-diff)                                            | Show the Git diff, including files Git isn't tracking yet.      | Review Codex's edits before you commit or run tests.                                                       |
@@ -42,7 +43,7 @@ completion still works before you queue the command.
 | [`/approve`](#approve-an-auto-review-denial-with-approve)                       | Approve one retry of a recent auto review denial.               | Retry a command or action that the auto reviewer denied.                                                   |
 | [`/memories`](#configure-memories-with-memories)                                | Configure memory use and generation.                            | Turn memory injection or memory generation on or off without leaving the TUI.                              |
 | [`/skills`](#use-skills-with-skills)                                            | Browse and use skills.                                          | Improve task-specific behavior by selecting a relevant local skill.                                        |
-| [`/hooks`](#view-lifecycle-hooks-with-hooks)                                    | View and manage lifecycle hooks.                                | Inspect hook configuration loaded into the current session.                                                |
+| [`/import`](#import-claude-code-configuration-with-import)                      | Import Claude Code setup, project files, and recent chats.      | Migrate supported external-agent artifacts into Codex configuration and local files.                       |
 | [`/feedback`](#send-feedback-with-feedback)                                     | Send logs to the Codex maintainers.                             | Report issues or share diagnostics with support.                                                           |
 | [`/init`](#generate-agentsmd-with-init)                                         | Generate an `AGENTS.md` scaffold in the current directory.      | Capture persistent instructions for the repository or subdirectory you're working in.                      |
 | [`/logout`](#sign-out-with-logout)                                              | Sign out of Codex.                                              | Clear local credentials when using a shared machine.                                                       |
@@ -63,6 +64,7 @@ completion still works before you queue the command.
 | [`/quit`](#exit-the-cli-with-quit-or-exit)                                      | Exit the CLI.                                                   | Leave the session immediately.                                                                             |
 | [`/review`](#ask-for-a-working-tree-review-with-review)                         | Ask Codex to review your working tree.                          | Run after Codex completes work or when you want a second set of eyes on local changes.                     |
 | [`/status`](#inspect-the-session-with-status)                                   | Display session configuration and token usage.                  | Confirm the active model, approval policy, writable roots, and remaining context capacity.                 |
+| [`/usage`](#view-account-usage-with-usage)                                      | View account token usage or use a rate-limit reset.             | Inspect daily, weekly, or cumulative ChatGPT token activity from inside the TUI.                           |
 | [`/debug-config`](#inspect-config-layers-with-debug-config)                     | Print config layer and requirements diagnostics.                | Debug precedence and policy requirements, including experimental network constraints.                      |
 | [`/statusline`](#configure-footer-items-with-statusline)                        | Configure TUI status-line fields interactively.                 | Pick and reorder footer items (model/context/limits/git/tokens/session) and persist in config.toml.        |
 | [`/title`](#configure-terminal-title-items-with-title)                          | Configure terminal window or tab title fields interactively.    | Pick and reorder title items such as project, status, thread, branch, model, and task progress.            |
@@ -171,12 +173,16 @@ Expected: Codex updates the relevant memory settings for future sessions.
 Expected: Codex inserts the selected skill context so the next request follows
 that skill's instructions.
 
-### View lifecycle hooks with `/hooks`
+### Import Claude Code configuration with `/import`
 
-1. Type `/hooks`.
-2. Review the loaded lifecycle hook configuration.
+1. Type `/import`.
+2. Choose the Claude Code setup, project files, or recent chats you want to migrate.
 
-Expected: Codex shows the hooks that can run in the current session.
+Expected: Codex opens the external-agent import picker and imports the selected
+supported artifacts into Codex configuration and local files.
+
+Run `/import` from a local TUI session. It's unavailable while a task is running,
+in remote sessions, and while connected to the local app-server daemon.
 
 ### Clear the terminal and start a new chat with `/clear`
 
@@ -200,6 +206,17 @@ Codex keeps the session transcript stored locally; restore it later with
 `codex unarchive <SESSION>`.
 
 `/archive` is unavailable while a task is running.
+
+### Delete the current session with `/delete`
+
+1. Type `/delete` and press Enter.
+2. Confirm that you want to delete the current session and exit Codex.
+
+Expected: Codex deletes the current session transcript and closes the
+interactive TUI. Deletion is permanent and also removes spawned descendant
+sessions.
+
+`/delete` is unavailable while a task is running or in a side conversation.
 
 ### Update permissions with `/permissions`
 
@@ -269,6 +286,16 @@ that directory for later commands that run in the sandbox.
 
 Expected: Codex prints a summary confirming that it's operating where you
 expect.
+
+### View account usage with `/usage`
+
+1. Type `/usage` to open the usage menu.
+2. Choose whether to show token activity or redeem an available earned reset.
+3. To open token activity directly, type `/usage daily`, `/usage weekly`, or `/usage cumulative`.
+
+Expected: Codex opens usage actions or shows account token activity for the
+selected view. If the session doesn't have Codex service account auth, Codex
+shows a sign-in requirement.
 
 ### Inspect config layers with `/debug-config`
 
@@ -449,7 +476,7 @@ Expected: Codex opens the plugin browser so you can review installed plugins,
 discoverable plugins that your configuration allows, and installed plugin state.
 Press <kbd>Space</kbd> on an installed plugin to toggle its enabled state.
 
-### Review hooks with `/hooks`
+### View and manage lifecycle hooks with `/hooks`
 
 1. Type `/hooks`.
 2. Choose a hook event to inspect the matching handlers.

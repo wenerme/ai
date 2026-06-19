@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,9 +29,9 @@ would be sorted to:
 
 ## Availability
 
-| Free         | Pro | Business | Enterprise |     |
-| ------------ | --- | -------- | ---------- | --- |
-| Availability | No  | No       | No         | Yes |
+|              | Free | Pro | Business | Enterprise |
+| ------------ | ---- | --- | -------- | ---------- |
+| Availability | No   | No  | No       | Yes        |
 
 ---
 
@@ -72,19 +72,13 @@ The screenshot below shows an example where resources in the Media Library are n
 When the page `load-scripts.php` loads, the browser sends a request to Cloudflare for:
 
 ```
-
 /wp-admin/load-scripts.php?c=0&load%5B%5D=hoverIntent,common,admin-bar,underscore,shortcode,backbone,wp-util,wp-backbone,media-models,wp-plupload,wp-mediaelement,wp-api-r&load%5B%5D=equest,media-views,media-editor,media-audiovideo,mce-view,imgareaselect,image-edit,media-grid,media,svg-painter&ver=5.0.3
-
-
 ```
 
 With Query String Sort enabled, Cloudflare will then sort the parameters and values in the request query string, resulting in the following:
 
 ```
-
 /wp-admin/load-scripts.php?c=0&load%5B%5D=equest,media-views,media-editor,media-audiovideo,mce-view,imgareaselect,image-edit,media-grid,media,svg-painter&load%5B%5D=hoverIntent,common,admin-bar,underscore,shortcode,backbone,wp-util,wp-backbone,media-models,wp-plupload,wp-mediaelement,wp-api-r&ver=5.0.3
-
-
 ```
 
 Note that the `load[]` parameters were swapped, as `equest` should come before `hoverIntent` when alphabetically ordered.

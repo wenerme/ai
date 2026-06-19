@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -53,10 +53,7 @@ pnpm create cloudflare@latest claude-code-sandbox --template=cloudflare/sandbox-
 Terminal window
 
 ```
-
 cd claude-code-sandbox
-
-
 ```
 
 ## 2\. Set up local environment variables
@@ -66,10 +63,7 @@ Create a `.dev.vars` file in your project root for local development:
 Terminal window
 
 ```
-
 echo "ANTHROPIC_API_KEY=your_api_key_here" > .dev.vars
-
-
 ```
 
 Replace `your_api_key_here` with your actual API key from the [Anthropic Console ↗](https://console.anthropic.com/).
@@ -85,10 +79,7 @@ Start the development server:
 Terminal window
 
 ```
-
 npm run dev
-
-
 ```
 
 Note
@@ -100,33 +91,13 @@ Test with curl:
 Terminal window
 
 ```
-
-curl -X POST http://localhost:8787/ \
-
-  -d '{
-
-    "repo": "https://github.com/cloudflare/agents",
-
-    "task": "remove the emojis from the readme"
-
-  }'
-
-
+curl -X POST http://localhost:8787/ \  -d '{    "repo": "https://github.com/cloudflare/agents",    "task": "remove the emojis from the readme"  }'
 ```
 
 Response:
 
 ```
-
-{
-
-  "logs": "Done! I've removed the brain emoji from the README title. The heading now reads \"# Cloudflare Agents\" instead of \"# 🧠 Cloudflare Agents\".",
-
-  "diff": "diff --git a/README.md b/README.md\nindex 9296ac9..027c218 100644\n--- a/README.md\n+++ b/README.md\n@@ -1,4 +1,4 @@\n-# 🧠 Cloudflare Agents\n+# Cloudflare Agents\n \n ![npm install agents](assets/npm-install-agents.svg)\n "
-
-}
-
-
+{  "logs": "Done! I've removed the brain emoji from the README title. The heading now reads \"# Cloudflare Agents\" instead of \"# 🧠 Cloudflare Agents\".",  "diff": "diff --git a/README.md b/README.md\nindex 9296ac9..027c218 100644\n--- a/README.md\n+++ b/README.md\n@@ -1,4 +1,4 @@\n-# 🧠 Cloudflare Agents\n+# Cloudflare Agents\n \n ![npm install agents](assets/npm-install-agents.svg)\n "}
 ```
 
 ## 4\. Deploy
@@ -136,10 +107,7 @@ Deploy your Worker:
 Terminal window
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 Then set your Anthropic API key as a production secret:
@@ -147,10 +115,7 @@ Then set your Anthropic API key as a production secret:
 Terminal window
 
 ```
-
 npx wrangler secret put ANTHROPIC_API_KEY
-
-
 ```
 
 Paste your API key from the [Anthropic Console ↗](https://console.anthropic.com/) when prompted.

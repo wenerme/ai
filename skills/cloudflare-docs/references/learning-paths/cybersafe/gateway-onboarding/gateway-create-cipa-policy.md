@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -15,9 +15,10 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 ## Create CIPA policy
 
 1. Go to **Traffic policies** \> **Firewall policies**.
-2. Create a policy to block using the CIPA filter:  
-| Selector           | Operator | Value         | Action |  
-| ------------------ | -------- | ------------- | ------ |  
+2. Create a policy to block using the CIPA filter:
+
+| Selector           | Operator | Value         | Action |
+| ------------------ | -------- | ------------- | ------ |
 | Content Categories | in       | _CIPA Filter_ | Block  |
 3. In **Logs** \> **Gateway** \> **DNS**, verify that you see the blocked domain.
 

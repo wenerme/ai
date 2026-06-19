@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,37 +21,13 @@ For example, the code below has a query with an invalid keyword - `INSERTZ` inst
 JavaScript
 
 ```
-
-try {
-
-    // This is an intentional misspelling
-
-    await db.exec("INSERTZ INTO my_table (name, employees) VALUES ()");
-
-} catch (e: any) {
-
-    console.error({
-
-        message: e.message
-
-    });
-
-}
-
-
+try {    // This is an intentional misspelling    await db.exec("INSERTZ INTO my_table (name, employees) VALUES ()");} catch (e: any) {    console.error({        message: e.message    });}
 ```
 
 The code above throws the following error message:
 
 ```
-
-{
-
-  "message": "D1_EXEC_ERROR: Error in line 1: INSERTZ INTO my_table (name, employees) VALUES (): sql error: near \"INSERTZ\": syntax error in INSERTZ INTO my_table (name, employees) VALUES () at offset 0"
-
-}
-
-
+{  "message": "D1_EXEC_ERROR: Error in line 1: INSERTZ INTO my_table (name, employees) VALUES (): sql error: near \"INSERTZ\": syntax error in INSERTZ INTO my_table (name, employees) VALUES () at offset 0"}
 ```
 
 Note

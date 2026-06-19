@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -34,115 +34,25 @@ Because browser sessions run outside the Worker isolate, use them for work that 
 
 Create browser tools with the Browser Run and Worker Loader bindings, then pass those tools to your model call.
 
-* [  JavaScript ](#tab-panel-6505)
-* [  TypeScript ](#tab-panel-6506)
+* [  JavaScript ](#tab-panel-6579)
+* [  TypeScript ](#tab-panel-6580)
 
 JavaScript
 
 ```
-
-import { AIChatAgent } from "@cloudflare/ai-chat";
-
-import { createBrowserTools } from "agents/browser/ai";
-
-import { streamText, convertToModelMessages, stepCountIs } from "ai";
-
-import { createWorkersAI } from "workers-ai-provider";
-
-
-export class BrowserAgent extends AIChatAgent {
-
-  async onChatMessage() {
-
-    const workersai = createWorkersAI({ binding: this.env.AI });
-
-    const browserTools = createBrowserTools({
-
-      ctx: this.ctx,
-
-      browser: this.env.BROWSER,
-
-      loader: this.env.LOADER,
-
-    });
-
-
-    const result = streamText({
-
-      model: workersai("@cf/zai-org/glm-4.7-flash"),
-
-      system: "You can inspect web pages with browser tools.",
-
-      messages: await convertToModelMessages(this.messages),
-
-      tools: browserTools,
-
-      stopWhen: stepCountIs(10),
-
-    });
-
-
-    return result.toUIMessageStreamResponse();
-
-  }
-
-}
-
-
+import { AIChatAgent } from "@cloudflare/ai-chat";import { createBrowserTools } from "agents/browser/ai";import { streamText, convertToModelMessages, stepCountIs } from "ai";import { createWorkersAI } from "workers-ai-provider";
+export class BrowserAgent extends AIChatAgent {  async onChatMessage() {    const workersai = createWorkersAI({ binding: this.env.AI });    const browserTools = createBrowserTools({      ctx: this.ctx,      browser: this.env.BROWSER,      loader: this.env.LOADER,    });
+    const result = streamText({      model: workersai("@cf/zai-org/glm-4.7-flash"),      system: "You can inspect web pages with browser tools.",      messages: await convertToModelMessages(this.messages),      tools: browserTools,      stopWhen: stepCountIs(10),    });
+    return result.toUIMessageStreamResponse();  }}
 ```
 
 TypeScript
 
 ```
-
-import { AIChatAgent } from "@cloudflare/ai-chat";
-
-import { createBrowserTools } from "agents/browser/ai";
-
-import { streamText, convertToModelMessages, stepCountIs } from "ai";
-
-import { createWorkersAI } from "workers-ai-provider";
-
-
-export class BrowserAgent extends AIChatAgent<Env> {
-
-  async onChatMessage() {
-
-    const workersai = createWorkersAI({ binding: this.env.AI });
-
-    const browserTools = createBrowserTools({
-
-      ctx: this.ctx,
-
-      browser: this.env.BROWSER,
-
-      loader: this.env.LOADER,
-
-    });
-
-
-    const result = streamText({
-
-      model: workersai("@cf/zai-org/glm-4.7-flash"),
-
-      system: "You can inspect web pages with browser tools.",
-
-      messages: await convertToModelMessages(this.messages),
-
-      tools: browserTools,
-
-      stopWhen: stepCountIs(10),
-
-    });
-
-
-    return result.toUIMessageStreamResponse();
-
-  }
-
-}
-
-
+import { AIChatAgent } from "@cloudflare/ai-chat";import { createBrowserTools } from "agents/browser/ai";import { streamText, convertToModelMessages, stepCountIs } from "ai";import { createWorkersAI } from "workers-ai-provider";
+export class BrowserAgent extends AIChatAgent<Env> {  async onChatMessage() {    const workersai = createWorkersAI({ binding: this.env.AI });    const browserTools = createBrowserTools({      ctx: this.ctx,      browser: this.env.BROWSER,      loader: this.env.LOADER,    });
+    const result = streamText({      model: workersai("@cf/zai-org/glm-4.7-flash"),      system: "You can inspect web pages with browser tools.",      messages: await convertToModelMessages(this.messages),      tools: browserTools,      stopWhen: stepCountIs(10),    });
+    return result.toUIMessageStreamResponse();  }}
 ```
 
 Browser tools must be created from inside a Durable Object (such as an Agent) — the durable runtime facet and the session store live on its `ctx`. The helper exposes one durable CDP tool plus stateless Quick Action tools when a `browser` binding is present:
@@ -161,78 +71,38 @@ To discover protocol surface, the model calls `cdp.spec()` (the live, normalized
 
 Add the Browser Run and Worker Loader bindings to `wrangler.jsonc`.
 
-* [  wrangler.jsonc ](#tab-panel-6491)
-* [  wrangler.toml ](#tab-panel-6492)
+* [  wrangler.jsonc ](#tab-panel-6565)
+* [  wrangler.toml ](#tab-panel-6566)
 
 JSONC
 
 ```
-
-{
-
-  "compatibility_flags": ["nodejs_compat"],
-
-  "browser": {
-
-    "binding": "BROWSER"
-
-  },
-
-  "worker_loaders": [
-
-    {
-
-      "binding": "LOADER"
-
-    }
-
-  ]
-
-}
-
-
+{  "compatibility_flags": ["nodejs_compat"],  "browser": {    "binding": "BROWSER"  },  "worker_loaders": [    {      "binding": "LOADER"    }  ]}
 ```
 
 TOML
 
 ```
-
 compatibility_flags = [ "nodejs_compat" ]
-
-
-[browser]
-
-binding = "BROWSER"
-
-
-[[worker_loaders]]
-
-binding = "LOADER"
-
-
+[browser]binding = "BROWSER"
+[[worker_loaders]]binding = "LOADER"
 ```
 
 The durable runtime behind the tool lives in a Durable Object facet, so your Worker entry must export it (the `@cloudflare/codemode/vite` plugin does this automatically):
 
-* [  JavaScript ](#tab-panel-6493)
-* [  TypeScript ](#tab-panel-6494)
+* [  JavaScript ](#tab-panel-6567)
+* [  TypeScript ](#tab-panel-6568)
 
 JavaScript
 
 ```
-
 export { CodemodeRuntime } from "agents/browser";
-
-
 ```
 
 TypeScript
 
 ```
-
 export { CodemodeRuntime } from "agents/browser";
-
-
 ```
 
 `agents/browser` re-exports the codemode runtime for browser tool setups. Codemode-specific examples can also import `CodemodeRuntime` from `@cloudflare/codemode`.
@@ -241,45 +111,19 @@ export { CodemodeRuntime } from "agents/browser";
 
 By default each execution gets a fresh browser session, torn down when the run ends (`one-shot`). Pass a `session` option for two more modes:
 
-* [  JavaScript ](#tab-panel-6495)
-* [  TypeScript ](#tab-panel-6496)
+* [  JavaScript ](#tab-panel-6569)
+* [  TypeScript ](#tab-panel-6570)
 
 JavaScript
 
 ```
-
-createBrowserTools({
-
-  ctx: this.ctx,
-
-  browser: this.env.BROWSER,
-
-  loader: this.env.LOADER,
-
-  session: { mode: "dynamic" }, // or { mode: "reuse", key: "main" }
-
-});
-
-
+createBrowserTools({  ctx: this.ctx,  browser: this.env.BROWSER,  loader: this.env.LOADER,  session: { mode: "dynamic" }, // or { mode: "reuse", key: "main" }});
 ```
 
 TypeScript
 
 ```
-
-createBrowserTools({
-
-  ctx: this.ctx,
-
-  browser: this.env.BROWSER,
-
-  loader: this.env.LOADER,
-
-  session: { mode: "dynamic" }, // or { mode: "reuse", key: "main" }
-
-});
-
-
+createBrowserTools({  ctx: this.ctx,  browser: this.env.BROWSER,  loader: this.env.LOADER,  session: { mode: "dynamic" }, // or { mode: "reuse", key: "main" }});
 ```
 
 * **`one-shot`** (default) — fresh session per execution; deterministic cleanup when the execution reaches a terminal status.
@@ -296,74 +140,38 @@ For host-side wiring (session inspection, cleanup, reclaiming stale pauses), use
 
 Use `browser_execute` for interactive, multi-step automation. For one-shot browsing tasks, use [Browser Run Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/). Quick Actions need only the `browser` binding, so they do not need a Worker Loader or sandbox.
 
-* [  JavaScript ](#tab-panel-6497)
-* [  TypeScript ](#tab-panel-6498)
+* [  JavaScript ](#tab-panel-6571)
+* [  TypeScript ](#tab-panel-6572)
 
 JavaScript
 
 ```
-
 import { createQuickActionTools } from "agents/browser/ai";
-
-
-const tools = createQuickActionTools({ browser: this.env.BROWSER });
-
-// browser_markdown, browser_extract, browser_links, browser_scrape
-
-
+const tools = createQuickActionTools({ browser: this.env.BROWSER });// browser_markdown, browser_extract, browser_links, browser_scrape
 ```
 
 TypeScript
 
 ```
-
 import { createQuickActionTools } from "agents/browser/ai";
-
-
-const tools = createQuickActionTools({ browser: this.env.BROWSER });
-
-// browser_markdown, browser_extract, browser_links, browser_scrape
-
-
+const tools = createQuickActionTools({ browser: this.env.BROWSER });// browser_markdown, browser_extract, browser_links, browser_scrape
 ```
 
 By default, `createBrowserTools` and `createBrowserRuntime` include Quick Action tools whenever a `browser` binding is present. Pass `quickActions: false` to keep only `browser_execute`, or pass `quickActions: { actions, maxChars, options }` to configure the stateless tools.
 
-* [  JavaScript ](#tab-panel-6499)
-* [  TypeScript ](#tab-panel-6500)
+* [  JavaScript ](#tab-panel-6573)
+* [  TypeScript ](#tab-panel-6574)
 
 JavaScript
 
 ```
-
-createBrowserTools({
-
-  browser: this.env.BROWSER,
-
-  loader: this.env.LOADER,
-
-  quickActions: { maxChars: 20_000 },
-
-});
-
-
+createBrowserTools({  browser: this.env.BROWSER,  loader: this.env.LOADER,  quickActions: { maxChars: 20_000 },});
 ```
 
 TypeScript
 
 ```
-
-createBrowserTools({
-
-  browser: this.env.BROWSER,
-
-  loader: this.env.LOADER,
-
-  quickActions: { maxChars: 20_000 },
-
-});
-
-
+createBrowserTools({  browser: this.env.BROWSER,  loader: this.env.LOADER,  quickActions: { maxChars: 20_000 },});
 ```
 
 Every Quick Action result is bounded to `maxChars` to protect the model context window while preserving the result shape. Host-supplied request options, such as `cookies`, `authenticate`, `gotoOptions`, and `viewport`, are passed once through `options` and are not exposed to the model.
@@ -381,55 +189,21 @@ Because the codemode runtime can pause a run with the browser session intact, a 
 3. The model makes an approval-gated call, so the run pauses durably.
 4. After approval, the run resumes against the same session.
 
-* [  JavaScript ](#tab-panel-6501)
-* [  TypeScript ](#tab-panel-6502)
+* [  JavaScript ](#tab-panel-6575)
+* [  TypeScript ](#tab-panel-6576)
 
 JavaScript
 
 ```
-
-async () => {
-
-  const { targetId } = await cdp.send({
-
-    method: "Target.createTarget",
-
-    params: { url: "https://example.com/login" },
-
-  });
-
-
-  const { url } = await cdp.getLiveViewUrl({ targetId, mode: "tab" });
-
-  return { needsHumanLogin: url };
-
-};
-
-
+async () => {  const { targetId } = await cdp.send({    method: "Target.createTarget",    params: { url: "https://example.com/login" },  });
+  const { url } = await cdp.getLiveViewUrl({ targetId, mode: "tab" });  return { needsHumanLogin: url };};
 ```
 
 TypeScript
 
 ```
-
-async () => {
-
-  const { targetId } = await cdp.send({
-
-    method: "Target.createTarget",
-
-    params: { url: "https://example.com/login" },
-
-  });
-
-
-  const { url } = await cdp.getLiveViewUrl({ targetId, mode: "tab" });
-
-  return { needsHumanLogin: url };
-
-};
-
-
+async () => {  const { targetId } = await cdp.send({    method: "Target.createTarget",    params: { url: "https://example.com/login" },  });
+  const { url } = await cdp.getLiveViewUrl({ targetId, mode: "tab" });  return { needsHumanLogin: url };};
 ```
 
 Pass `mode: "tab"` for an interactive page view, or `mode: "devtools"` for the full DevTools inspector. The URL is valid for about five minutes. Call `cdp.getLiveViewUrl()` again to create a fresh URL.
@@ -442,114 +216,42 @@ From the host side, `connector.liveView()` returns Live View URLs for the shared
 
 Opt in per session with `recording: true`:
 
-* [  JavaScript ](#tab-panel-6503)
-* [  TypeScript ](#tab-panel-6504)
+* [  JavaScript ](#tab-panel-6577)
+* [  TypeScript ](#tab-panel-6578)
 
 JavaScript
 
 ```
-
 import { createBrowserRuntime } from "agents/browser/ai";
-
-
-const { connector } = createBrowserRuntime({
-
-  ctx: this.ctx,
-
-  browser: this.env.BROWSER,
-
-  loader: this.env.LOADER,
-
-  session: { mode: "reuse", key: "main", recording: true },
-
-});
-
-
+const { connector } = createBrowserRuntime({  ctx: this.ctx,  browser: this.env.BROWSER,  loader: this.env.LOADER,  session: { mode: "reuse", key: "main", recording: true },});
 ```
 
 TypeScript
 
 ```
-
 import { createBrowserRuntime } from "agents/browser/ai";
-
-
-const { connector } = createBrowserRuntime({
-
-  ctx: this.ctx,
-
-  browser: this.env.BROWSER,
-
-  loader: this.env.LOADER,
-
-  session: { mode: "reuse", key: "main", recording: true },
-
-});
-
-
+const { connector } = createBrowserRuntime({  ctx: this.ctx,  browser: this.env.BROWSER,  loader: this.env.LOADER,  session: { mode: "reuse", key: "main", recording: true },});
 ```
 
 A recording is finalized after the session closes. Capture the session ID while the session is alive, then fetch the recording from the Browser Rendering REST API:
 
-* [  JavaScript ](#tab-panel-6507)
-* [  TypeScript ](#tab-panel-6508)
+* [  JavaScript ](#tab-panel-6581)
+* [  TypeScript ](#tab-panel-6582)
 
 JavaScript
 
 ```
-
 import { getBrowserRecording } from "agents/browser";
-
-
-const { sessionId } = (await connector.sessionInfo()) ?? {};
-
-if (!sessionId) {
-
-  throw new Error("No active browser session");
-
-}
-
-
-const recording = await getBrowserRecording({
-
-  accountId: this.env.CF_ACCOUNT_ID,
-
-  apiToken: this.env.CF_API_TOKEN,
-
-  sessionId,
-
-});
-
-
+const { sessionId } = (await connector.sessionInfo()) ?? {};if (!sessionId) {  throw new Error("No active browser session");}
+const recording = await getBrowserRecording({  accountId: this.env.CF_ACCOUNT_ID,  apiToken: this.env.CF_API_TOKEN,  sessionId,});
 ```
 
 TypeScript
 
 ```
-
 import { getBrowserRecording } from "agents/browser";
-
-
-const { sessionId } = (await connector.sessionInfo()) ?? {};
-
-if (!sessionId) {
-
-  throw new Error("No active browser session");
-
-}
-
-
-const recording = await getBrowserRecording({
-
-  accountId: this.env.CF_ACCOUNT_ID,
-
-  apiToken: this.env.CF_API_TOKEN,
-
-  sessionId,
-
-});
-
-
+const { sessionId } = (await connector.sessionInfo()) ?? {};if (!sessionId) {  throw new Error("No active browser session");}
+const recording = await getBrowserRecording({  accountId: this.env.CF_ACCOUNT_ID,  apiToken: this.env.CF_API_TOKEN,  sessionId,});
 ```
 
 Recordings are retained for 30 days and capped at two hours per session. Be deliberate with recording on shared `reuse` and `dynamic` sessions because the recording spans the full session lifetime.
@@ -587,7 +289,7 @@ For a complete walkthrough, including Browser Run setup, tool definitions, and s
 
 [ Browser Run ](https://developers.cloudflare.com/browser-run/) Run browser automation on Cloudflare. 
 
-[ Chrome DevTools Protocol ](https://developers.cloudflare.com/browser-run/cdp/) Use CDP commands, events, and types with Browser Run. 
+[ Chrome DevTools Protocol ](https://developers.cloudflare.com/browser-run/cdp/) Use CDP commands, events, and types with Browser Run.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/browser/#page","headline":"Browser · Cloudflare Agents docs","description":"Give Agents full Chrome DevTools Protocol access to inspect pages, scrape data, and capture screenshots with Browser Run.","url":"https://developers.cloudflare.com/agents/tools/browser/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

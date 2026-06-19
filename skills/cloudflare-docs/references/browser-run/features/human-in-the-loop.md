@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,77 +32,16 @@ This example uses [Puppeteer](https://developers.cloudflare.com/browser-run/pupp
 JavaScript
 
 ```
-
 import puppeteer from "puppeteer-core";
-
-
-const ACCOUNT_ID = "<your-account-id>";
-
-const API_TOKEN = "<your-api-token>";
-
-
-// Create a browser session via CDP
-
-const response = await fetch(
-
-  `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/browser-rendering/devtools/browser?keep_alive=600000&targets=true`,
-
-  {
-
-    method: "POST",
-
-    headers: { Authorization: `Bearer ${API_TOKEN}` },
-
-  },
-
-);
-
-const { webSocketDebuggerUrl, targets } = await response.json();
-
-const liveUrl = targets[0].devtoolsFrontendUrl;
-
-
-// Connect Puppeteer to the session
-
-const browser = await puppeteer.connect({
-
-  browserWSEndpoint: webSocketDebuggerUrl,
-
-  headers: { Authorization: `Bearer ${API_TOKEN}` },
-
-});
-
-
-const page = await browser.newPage();
-
-await page.goto("https://example.com/login");
-
-
-// Share the Live View URL with the human operator (for example, send it via Slack, email, or display it in a UI)
-
-console.log(`Human input needed. Open this URL: ${liveUrl}`);
-
-
-// Wait for the human to complete login (5 minute timeout — the script will continue after this period)
-
-await page.waitForNavigation({ waitUntil: "networkidle0", timeout: 300000 });
-
-
-// Login complete, continue automation
-
-const cookies = await page.cookies();
-
-console.log("Login complete. Continuing automation...");
-
-
-await page.goto("https://example.com/dashboard");
-
-const content = await page.content();
-
-
+const ACCOUNT_ID = "<your-account-id>";const API_TOKEN = "<your-api-token>";
+// Create a browser session via CDPconst response = await fetch(  `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/browser-rendering/devtools/browser?keep_alive=600000&targets=true`,  {    method: "POST",    headers: { Authorization: `Bearer ${API_TOKEN}` },  },);const { webSocketDebuggerUrl, targets } = await response.json();const liveUrl = targets[0].devtoolsFrontendUrl;
+// Connect Puppeteer to the sessionconst browser = await puppeteer.connect({  browserWSEndpoint: webSocketDebuggerUrl,  headers: { Authorization: `Bearer ${API_TOKEN}` },});
+const page = await browser.newPage();await page.goto("https://example.com/login");
+// Share the Live View URL with the human operator (for example, send it via Slack, email, or display it in a UI)console.log(`Human input needed. Open this URL: ${liveUrl}`);
+// Wait for the human to complete login (5 minute timeout — the script will continue after this period)await page.waitForNavigation({ waitUntil: "networkidle0", timeout: 300000 });
+// Login complete, continue automationconst cookies = await page.cookies();console.log("Login complete. Continuing automation...");
+await page.goto("https://example.com/dashboard");const content = await page.content();
 browser.disconnect();
-
-
 ```
 
 The Live View URL is valid for five minutes from when it was generated. If the URL expires before the human operator opens it, list the targets again to get a fresh URL.

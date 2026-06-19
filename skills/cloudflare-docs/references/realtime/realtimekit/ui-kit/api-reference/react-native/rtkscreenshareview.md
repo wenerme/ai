@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,49 +32,15 @@ Renders a participant's screen share with fullscreen toggle, name tag, and audio
 ### Basic Usage
 
 ```
-
 import { RtkScreenshareView } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkScreenshareView participant={participant} meeting={meeting} />;
-
-}
-
-
+function MyComponent() {  return <RtkScreenshareView participant={participant} meeting={meeting} />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkScreenshareView } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkScreenshareView
-
-      participant={participant}
-
-      meeting={meeting}
-
-      nameTagPosition="bottom-left"
-
-      variant="solid"
-
-      size="md"
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkScreenshareView      participant={participant}      meeting={meeting}      nameTagPosition="bottom-left"      variant="solid"      size="md"    />  );}
 ```
 
 ```json

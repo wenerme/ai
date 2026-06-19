@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,86 +27,33 @@ Distilled BERT model that was finetuned on SST-2 for sentiment classification
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4774)
-* [  Python ](#tab-panel-4775)
-* [  curl ](#tab-panel-4776)
+* [  TypeScript ](#tab-panel-4848)
+* [  Python ](#tab-panel-4849)
+* [  curl ](#tab-panel-4850)
 
 ```
-
-export interface Env {
-
-  AI: Ai;
-
-}
-
-
-export default {
-
-  async fetch(request, env): Promise<Response> {
-
-
-    const response = await env.AI.run(
-
-      "@cf/huggingface/distilbert-sst-2-int8",
-
-      {
-
-        text: "This pizza is great!",
-
-      }
-
-    );
-
-
-    return Response.json(response);
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export interface Env {  AI: Ai;}
+export default {  async fetch(request, env): Promise<Response> {
+    const response = await env.AI.run(      "@cf/huggingface/distilbert-sst-2-int8",      {        text: "This pizza is great!",      }    );
+    return Response.json(response);  },} satisfies ExportedHandler<Env>;
 ```
 
 ```
-
-API_BASE_URL = "https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/"
-
-headers = {"Authorization": "Bearer {API_KEY}"}
-
-
-def run(model, input):
-
-    response = requests.post(f"{API_BASE_URL}{model}", headers=headers, json=input)
-
-    return response.json()
-
-
-output = run("@cf/huggingface/distilbert-sst-2-int8", { "text": "This pizza is great!" })
-
-print(output)
-
-
+API_BASE_URL = "https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/"headers = {"Authorization": "Bearer {API_KEY}"}
+def run(model, input):    response = requests.post(f"{API_BASE_URL}{model}", headers=headers, json=input)    return response.json()
+output = run("@cf/huggingface/distilbert-sst-2-int8", { "text": "This pizza is great!" })print(output)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/huggingface/distilbert-sst-2-int8  \
-
-  -X POST  \
-
-  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
-
-  -d '{ "text": "This pizza is great!" }'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/huggingface/distilbert-sst-2-int8  \  -X POST  \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \  -d '{ "text": "This pizza is great!" }'
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-4777)
-* [ Output ](#tab-panel-4778)
+* [ Input ](#tab-panel-4851)
+* [ Output ](#tab-panel-4852)
 
 text
 
@@ -132,7 +79,7 @@ items
 
 Input [ ](https://developers.cloudflare.com/workers-ai/models/distilbert-sst-2-int8/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/distilbert-sst-2-int8/schema-input.json "Download") 
 
-Output [ ](https://developers.cloudflare.com/workers-ai/models/distilbert-sst-2-int8/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/distilbert-sst-2-int8/schema-output.json "Download") 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/distilbert-sst-2-int8/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/distilbert-sst-2-int8/schema-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/distilbert-sst-2-int8/#page","headline":"distilbert-sst-2-int8 (HuggingFace) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Distilled BERT model that was finetuned on SST-2 for sentiment classification","url":"https://developers.cloudflare.com/workers-ai/models/distilbert-sst-2-int8/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

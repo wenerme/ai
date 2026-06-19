@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,35 +18,26 @@ Configure [Cloudflare Pages](https://developers.cloudflare.com/pages/) using Wra
 
 Develop your full-stack Pages application locally
 
-* [  npm ](#tab-panel-12385)
-* [  pnpm ](#tab-panel-12386)
-* [  yarn ](#tab-panel-12387)
+* [  npm ](#tab-panel-12402)
+* [  pnpm ](#tab-panel-12403)
+* [  yarn ](#tab-panel-12404)
 
 Terminal window
 
 ```
-
 npx wrangler pages dev [DIRECTORY] [COMMAND]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler pages dev [DIRECTORY] [COMMAND]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler pages dev [DIRECTORY] [COMMAND]
-
-
 ```
 
 * `[DIRECTORY]` ` string `  
@@ -123,35 +114,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Compile a folder of Pages Functions into a single Worker
 
-* [  npm ](#tab-panel-12388)
-* [  pnpm ](#tab-panel-12389)
-* [  yarn ](#tab-panel-12390)
+* [  npm ](#tab-panel-12405)
+* [  pnpm ](#tab-panel-12406)
+* [  yarn ](#tab-panel-12407)
 
 Terminal window
 
 ```
-
 npx wrangler pages functions build [DIRECTORY]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler pages functions build [DIRECTORY]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler pages functions build [DIRECTORY]
-
-
 ```
 
 * `[DIRECTORY]` ` string ` default: functions  
@@ -212,35 +194,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List your Cloudflare Pages projects
 
-* [  npm ](#tab-panel-12391)
-* [  pnpm ](#tab-panel-12392)
-* [  yarn ](#tab-panel-12393)
+* [  npm ](#tab-panel-12408)
+* [  pnpm ](#tab-panel-12409)
+* [  yarn ](#tab-panel-12410)
 
 Terminal window
 
 ```
-
 npx wrangler pages project list
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler pages project list
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler pages project list
-
-
 ```
 
 * `--json` ` boolean ` default: false  
@@ -269,35 +242,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Create a new Cloudflare Pages project
 
-* [  npm ](#tab-panel-12394)
-* [  pnpm ](#tab-panel-12395)
-* [  yarn ](#tab-panel-12396)
+* [  npm ](#tab-panel-12411)
+* [  pnpm ](#tab-panel-12412)
+* [  yarn ](#tab-panel-12413)
 
 Terminal window
 
 ```
-
 npx wrangler pages project create [PROJECT-NAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler pages project create [PROJECT-NAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler pages project create [PROJECT-NAME]
-
-
 ```
 
 * `[PROJECT-NAME]` ` string ` required  
@@ -332,35 +296,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a Cloudflare Pages project
 
-* [  npm ](#tab-panel-12397)
-* [  pnpm ](#tab-panel-12398)
-* [  yarn ](#tab-panel-12399)
+* [  npm ](#tab-panel-12414)
+* [  pnpm ](#tab-panel-12415)
+* [  yarn ](#tab-panel-12416)
 
 Terminal window
 
 ```
-
 npx wrangler pages project delete [PROJECT-NAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler pages project delete [PROJECT-NAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler pages project delete [PROJECT-NAME]
-
-
 ```
 
 * `[PROJECT-NAME]` ` string ` required  
@@ -391,35 +346,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List deployments in your Cloudflare Pages project
 
-* [  npm ](#tab-panel-12400)
-* [  pnpm ](#tab-panel-12401)
-* [  yarn ](#tab-panel-12402)
+* [  npm ](#tab-panel-12417)
+* [  pnpm ](#tab-panel-12418)
+* [  yarn ](#tab-panel-12419)
 
 Terminal window
 
 ```
-
 npx wrangler pages deployment list
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler pages deployment list
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler pages deployment list
-
-
 ```
 
 * `--project-name` ` string `  
@@ -452,35 +398,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Start a tailing session for a project's deployment and livestream logs from your Functions
 
-* [  npm ](#tab-panel-12403)
-* [  pnpm ](#tab-panel-12404)
-* [  yarn ](#tab-panel-12405)
+* [  npm ](#tab-panel-12420)
+* [  pnpm ](#tab-panel-12421)
+* [  yarn ](#tab-panel-12422)
 
 Terminal window
 
 ```
-
 npx wrangler pages deployment tail [DEPLOYMENT]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler pages deployment tail [DEPLOYMENT]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler pages deployment tail [DEPLOYMENT]
-
-
 ```
 
 * `[DEPLOYMENT]` ` string `  
@@ -527,35 +464,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a deployment in your Cloudflare Pages project
 
-* [  npm ](#tab-panel-12406)
-* [  pnpm ](#tab-panel-12407)
-* [  yarn ](#tab-panel-12408)
+* [  npm ](#tab-panel-12423)
+* [  pnpm ](#tab-panel-12424)
+* [  yarn ](#tab-panel-12425)
 
 Terminal window
 
 ```
-
 npx wrangler pages deployment delete [DEPLOYMENT-ID]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler pages deployment delete [DEPLOYMENT-ID]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler pages deployment delete [DEPLOYMENT-ID]
-
-
 ```
 
 * `[DEPLOYMENT-ID]` ` string ` required  
@@ -588,35 +516,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Deploy a directory of static assets as a Pages deployment
 
-* [  npm ](#tab-panel-12409)
-* [  pnpm ](#tab-panel-12410)
-* [  yarn ](#tab-panel-12411)
+* [  npm ](#tab-panel-12426)
+* [  pnpm ](#tab-panel-12427)
+* [  yarn ](#tab-panel-12428)
 
 Terminal window
 
 ```
-
 npx wrangler pages deploy [DIRECTORY]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler pages deploy [DIRECTORY]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler pages deploy [DIRECTORY]
-
-
 ```
 
 * `[DIRECTORY]` ` string `  
@@ -661,35 +580,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Create or update a secret variable for a Pages project
 
-* [  npm ](#tab-panel-12412)
-* [  pnpm ](#tab-panel-12413)
-* [  yarn ](#tab-panel-12414)
+* [  npm ](#tab-panel-12429)
+* [  pnpm ](#tab-panel-12430)
+* [  yarn ](#tab-panel-12431)
 
 Terminal window
 
 ```
-
 npx wrangler pages secret put [KEY]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler pages secret put [KEY]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler pages secret put [KEY]
-
-
 ```
 
 * `[KEY]` ` string ` required  
@@ -720,35 +630,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Bulk upload secrets for a Pages project
 
-* [  npm ](#tab-panel-12415)
-* [  pnpm ](#tab-panel-12416)
-* [  yarn ](#tab-panel-12417)
+* [  npm ](#tab-panel-12432)
+* [  pnpm ](#tab-panel-12433)
+* [  yarn ](#tab-panel-12434)
 
 Terminal window
 
 ```
-
 npx wrangler pages secret bulk [FILE]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler pages secret bulk [FILE]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler pages secret bulk [FILE]
-
-
 ```
 
 * `[FILE]` ` string `  
@@ -779,35 +680,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a secret variable from a Pages project
 
-* [  npm ](#tab-panel-12418)
-* [  pnpm ](#tab-panel-12419)
-* [  yarn ](#tab-panel-12420)
+* [  npm ](#tab-panel-12435)
+* [  pnpm ](#tab-panel-12436)
+* [  yarn ](#tab-panel-12437)
 
 Terminal window
 
 ```
-
 npx wrangler pages secret delete [KEY]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler pages secret delete [KEY]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler pages secret delete [KEY]
-
-
 ```
 
 * `[KEY]` ` string ` required  
@@ -838,35 +730,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List all secrets for a Pages project
 
-* [  npm ](#tab-panel-12421)
-* [  pnpm ](#tab-panel-12422)
-* [  yarn ](#tab-panel-12423)
+* [  npm ](#tab-panel-12438)
+* [  pnpm ](#tab-panel-12439)
+* [  yarn ](#tab-panel-12440)
 
 Terminal window
 
 ```
-
 npx wrangler pages secret list
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler pages secret list
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler pages secret list
-
-
 ```
 
 * `--project-name` ` string ` aliases: --project  
@@ -898,35 +781,26 @@ Experimental
 
 Download your Pages project config as a Wrangler configuration file
 
-* [  npm ](#tab-panel-12424)
-* [  pnpm ](#tab-panel-12425)
-* [  yarn ](#tab-panel-12426)
+* [  npm ](#tab-panel-12441)
+* [  pnpm ](#tab-panel-12442)
+* [  yarn ](#tab-panel-12443)
 
 Terminal window
 
 ```
-
 npx wrangler pages download config [PROJECTNAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler pages download config [PROJECTNAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler pages download config [PROJECTNAME]
-
-
 ```
 
 * `[PROJECTNAME]` ` string `  

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pipelines/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,35 +16,26 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Interactive setup for a complete pipeline
 
-* [  npm ](#tab-panel-9449)
-* [  pnpm ](#tab-panel-9450)
-* [  yarn ](#tab-panel-9451)
+* [  npm ](#tab-panel-9525)
+* [  pnpm ](#tab-panel-9526)
+* [  yarn ](#tab-panel-9527)
 
 Terminal window
 
 ```
-
 npx wrangler pipelines setup
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler pipelines setup
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler pipelines setup
-
-
 ```
 
 * `--name` ` string `  
@@ -73,35 +64,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Create a new pipeline
 
-* [  npm ](#tab-panel-9452)
-* [  pnpm ](#tab-panel-9453)
-* [  yarn ](#tab-panel-9454)
+* [  npm ](#tab-panel-9528)
+* [  pnpm ](#tab-panel-9529)
+* [  yarn ](#tab-panel-9530)
 
 Terminal window
 
 ```
-
 npx wrangler pipelines create [PIPELINE]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler pipelines create [PIPELINE]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler pipelines create [PIPELINE]
-
-
 ```
 
 * `[PIPELINE]` ` string ` required  
@@ -134,35 +116,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List all pipelines
 
-* [  npm ](#tab-panel-9455)
-* [  pnpm ](#tab-panel-9456)
-* [  yarn ](#tab-panel-9457)
+* [  npm ](#tab-panel-9531)
+* [  pnpm ](#tab-panel-9532)
+* [  yarn ](#tab-panel-9533)
 
 Terminal window
 
 ```
-
 npx wrangler pipelines list
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler pipelines list
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler pipelines list
-
-
 ```
 
 * `--page` ` number ` default: 1  
@@ -195,35 +168,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get details about a specific pipeline
 
-* [  npm ](#tab-panel-9458)
-* [  pnpm ](#tab-panel-9459)
-* [  yarn ](#tab-panel-9460)
+* [  npm ](#tab-panel-9534)
+* [  pnpm ](#tab-panel-9535)
+* [  yarn ](#tab-panel-9536)
 
 Terminal window
 
 ```
-
 npx wrangler pipelines get [PIPELINE]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler pipelines get [PIPELINE]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler pipelines get [PIPELINE]
-
-
 ```
 
 * `[PIPELINE]` ` string ` required  
@@ -254,35 +218,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Update a pipeline configuration (legacy pipelines only)
 
-* [  npm ](#tab-panel-9461)
-* [  pnpm ](#tab-panel-9462)
-* [  yarn ](#tab-panel-9463)
+* [  npm ](#tab-panel-9537)
+* [  pnpm ](#tab-panel-9538)
+* [  yarn ](#tab-panel-9539)
 
 Terminal window
 
 ```
-
 npx wrangler pipelines update [PIPELINE]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler pipelines update [PIPELINE]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler pipelines update [PIPELINE]
-
-
 ```
 
 * `[PIPELINE]` ` string ` required  
@@ -335,35 +290,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a pipeline
 
-* [  npm ](#tab-panel-9464)
-* [  pnpm ](#tab-panel-9465)
-* [  yarn ](#tab-panel-9466)
+* [  npm ](#tab-panel-9540)
+* [  pnpm ](#tab-panel-9541)
+* [  yarn ](#tab-panel-9542)
 
 Terminal window
 
 ```
-
 npx wrangler pipelines delete [PIPELINE]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler pipelines delete [PIPELINE]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler pipelines delete [PIPELINE]
-
-
 ```
 
 * `[PIPELINE]` ` string ` required  
@@ -394,35 +340,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Create a new stream
 
-* [  npm ](#tab-panel-9467)
-* [  pnpm ](#tab-panel-9468)
-* [  yarn ](#tab-panel-9469)
+* [  npm ](#tab-panel-9543)
+* [  pnpm ](#tab-panel-9544)
+* [  yarn ](#tab-panel-9545)
 
 Terminal window
 
 ```
-
 npx wrangler pipelines streams create [STREAM]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler pipelines streams create [STREAM]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler pipelines streams create [STREAM]
-
-
 ```
 
 * `[STREAM]` ` string ` required  
@@ -459,35 +396,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List all streams
 
-* [  npm ](#tab-panel-9470)
-* [  pnpm ](#tab-panel-9471)
-* [  yarn ](#tab-panel-9472)
+* [  npm ](#tab-panel-9546)
+* [  pnpm ](#tab-panel-9547)
+* [  yarn ](#tab-panel-9548)
 
 Terminal window
 
 ```
-
 npx wrangler pipelines streams list
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler pipelines streams list
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler pipelines streams list
-
-
 ```
 
 * `--page` ` number ` default: 1  
@@ -522,35 +450,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get details about a specific stream
 
-* [  npm ](#tab-panel-9473)
-* [  pnpm ](#tab-panel-9474)
-* [  yarn ](#tab-panel-9475)
+* [  npm ](#tab-panel-9549)
+* [  pnpm ](#tab-panel-9550)
+* [  yarn ](#tab-panel-9551)
 
 Terminal window
 
 ```
-
 npx wrangler pipelines streams get [STREAM]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler pipelines streams get [STREAM]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler pipelines streams get [STREAM]
-
-
 ```
 
 * `[STREAM]` ` string ` required  
@@ -581,35 +500,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a stream
 
-* [  npm ](#tab-panel-9476)
-* [  pnpm ](#tab-panel-9477)
-* [  yarn ](#tab-panel-9478)
+* [  npm ](#tab-panel-9552)
+* [  pnpm ](#tab-panel-9553)
+* [  yarn ](#tab-panel-9554)
 
 Terminal window
 
 ```
-
 npx wrangler pipelines streams delete [STREAM]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler pipelines streams delete [STREAM]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler pipelines streams delete [STREAM]
-
-
 ```
 
 * `[STREAM]` ` string ` required  
@@ -640,35 +550,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Create a new sink
 
-* [  npm ](#tab-panel-9479)
-* [  pnpm ](#tab-panel-9480)
-* [  yarn ](#tab-panel-9481)
+* [  npm ](#tab-panel-9555)
+* [  pnpm ](#tab-panel-9556)
+* [  yarn ](#tab-panel-9557)
 
 Terminal window
 
 ```
-
 npx wrangler pipelines sinks create [SINK]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler pipelines sinks create [SINK]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler pipelines sinks create [SINK]
-
-
 ```
 
 * `[SINK]` ` string ` required  
@@ -725,35 +626,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 List all sinks
 
-* [  npm ](#tab-panel-9482)
-* [  pnpm ](#tab-panel-9483)
-* [  yarn ](#tab-panel-9484)
+* [  npm ](#tab-panel-9558)
+* [  pnpm ](#tab-panel-9559)
+* [  yarn ](#tab-panel-9560)
 
 Terminal window
 
 ```
-
 npx wrangler pipelines sinks list
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler pipelines sinks list
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler pipelines sinks list
-
-
 ```
 
 * `--page` ` number ` default: 1  
@@ -788,35 +680,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get details about a specific sink
 
-* [  npm ](#tab-panel-9485)
-* [  pnpm ](#tab-panel-9486)
-* [  yarn ](#tab-panel-9487)
+* [  npm ](#tab-panel-9561)
+* [  pnpm ](#tab-panel-9562)
+* [  yarn ](#tab-panel-9563)
 
 Terminal window
 
 ```
-
 npx wrangler pipelines sinks get [SINK]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler pipelines sinks get [SINK]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler pipelines sinks get [SINK]
-
-
 ```
 
 * `[SINK]` ` string ` required  
@@ -847,35 +730,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a sink
 
-* [  npm ](#tab-panel-9488)
-* [  pnpm ](#tab-panel-9489)
-* [  yarn ](#tab-panel-9490)
+* [  npm ](#tab-panel-9564)
+* [  pnpm ](#tab-panel-9565)
+* [  yarn ](#tab-panel-9566)
 
 Terminal window
 
 ```
-
 npx wrangler pipelines sinks delete [SINK]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler pipelines sinks delete [SINK]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler pipelines sinks delete [SINK]
-
-
 ```
 
 * `[SINK]` ` string ` required  

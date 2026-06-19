@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,7 +22,7 @@ DCV Delegation will not work with Universal Certificates and requires the use of
 
 ## Availability
 
-| Free         | Pro                                                                                                                                 | Business                                                                                                                            | Enterprise                                                                                                                          |                                                                                                                                     |
+|              | Free                                                                                                                                | Pro                                                                                                                                 | Business                                                                                                                            | Enterprise                                                                                                                          |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
 | Availability | Included with [Advanced Certificate Manager](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) | Included with [Advanced Certificate Manager](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) | Included with [Advanced Certificate Manager](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) | Included with [Advanced Certificate Manager](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) |
 
@@ -53,10 +53,7 @@ To set up Delegated DCV:
 * If your certificate only covers the apex domain and a wildcard, you only need to create a single `CNAME` record for your apex domain. Any direct subdomains will be covered as well.
 
 ```
-
 _acme-challenge.example.com CNAME example.com.<COPIED_VALIDATION_URL>.
-
-
 ```
 
 * If your certificate also covers subdomains specified by their name, you will need to add multiple `CNAME` records to your authoritative DNS provider, one for each specific subdomain.
@@ -64,12 +61,7 @@ _acme-challenge.example.com CNAME example.com.<COPIED_VALIDATION_URL>.
 For example, a certificate covering `example.com`, `*.example.com`, and `sub.example.com` would require the following records.
 
 ```
-
-_acme-challenge.example.com CNAME example.com.<COPIED_VALIDATION_URL>.
-
-_acme-challenge.sub.example.com CNAME sub.example.com.<COPIED_VALIDATION_URL>.
-
-
+_acme-challenge.example.com CNAME example.com.<COPIED_VALIDATION_URL>._acme-challenge.sub.example.com CNAME sub.example.com.<COPIED_VALIDATION_URL>.
 ```
 
 Remove previous TXT records
@@ -77,10 +69,7 @@ Remove previous TXT records
 Existing TXT records for `_acme-challenge` will conflict with the delegated DCV CNAME record. Make sure to check and remove records such as the following:
 
 ```
-
 _acme-challenge.example.com TXT <CERTIFICATE_VALIDATION_VALUE>
-
-
 ```
 
 Once the `CNAME` records are in place, Cloudflare will add TXT DCV tokens for every hostname on the Advanced certificate that has a DCV delegation record in place, as long as the zone is [active](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/) on Cloudflare.
@@ -98,13 +87,8 @@ This is because Cloudflare places the tokens when needed and then cleans them up
 Terminal window
 
 ```
-
 dig TXT +noadditional +noquestion +nocomments +nocmd +nostats _acme-challenge.example.com. @1.1.1.1
-
-
 _acme-challenge.example.com. 3600    IN    CNAME    example.com.<COPIED_VALIDATION_URL>
-
-
 ```
 
 ### Renewal

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/log-explorer/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -71,51 +71,11 @@ The following `curl` command is an example for enabling the zone-level dataset `
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/explorer/datasets \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---json '{
-
-  "dataset": "http_requests"
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/explorer/datasets \--header "Authorization: Bearer <API_TOKEN>" \--json '{  "dataset": "http_requests"}'
 ```
 
 ```
-
-{
-
-  "result": {
-
-    "dataset": "http_requests",
-
-    "object_type": "zone",
-
-    "object_id": "<ZONE ID>",
-
-    "created_at": "2025-06-03T14:33:16Z",
-
-    "updated_at": "2025-06-03T14:33:16Z",
-
-    "dataset_id": "01973635f7e273a1964a02f4d4502499",
-
-    "enabled": true
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "dataset": "http_requests",    "object_type": "zone",    "object_id": "<ZONE ID>",    "created_at": "2025-06-03T14:33:16Z",    "updated_at": "2025-06-03T14:33:16Z",    "dataset_id": "01973635f7e273a1964a02f4d4502499",    "enabled": true  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 To enable an account-level dataset, replace `zones/{zone_id}` with `accounts/{account_id}` in the `curl` command. For example:
@@ -123,18 +83,7 @@ To enable an account-level dataset, replace `zones/{zone_id}` with `accounts/{ac
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/logs/explorer/datasets \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---json '{
-
-  "dataset": "access_requests"
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/logs/explorer/datasets \--header "Authorization: Bearer <API_TOKEN>" \--json '{  "dataset": "access_requests"}'
 ```
 
 ```json

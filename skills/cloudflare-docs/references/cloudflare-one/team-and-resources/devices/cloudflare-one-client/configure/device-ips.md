@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -55,11 +55,12 @@ To define a custom IPv4 subnet for device IPs:
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles**.
 2. Under **Device IP subnets**, select **Add new IP subnet**.
 3. Enter any name for the subnet.
-4. In **CIDR**, enter a valid IPv4 CIDR block from the supported private ranges:  
-   * `10.0.0.0/8`  
-   * `172.16.0.0/12`  
-   * `192.168.0.0/16`  
-   * `100.64.0.0/10`  
+4. In **CIDR**, enter a valid IPv4 CIDR block from the supported private ranges:
+
+  * `10.0.0.0/8`
+  * `172.16.0.0/12`
+  * `192.168.0.0/16`
+  * `100.64.0.0/10`  
 The configured CIDR block must be at least size `/24`.  
 Avoid IP conflicts  
 Ensure that the chosen CIDR block does not overlap with existing internal routes, such as local office subnets or virtual private clouds (VPCs) in AWS or GCP.
@@ -197,56 +198,22 @@ The Cloudflare One dashboard defaults to showing devices that were last seen wit
 
 To check the device IP used by the device client's virtual network interface:
 
-* [ Windows ](#tab-panel-7420)
-* [ macOS ](#tab-panel-7421)
-* [ Linux ](#tab-panel-7422)
+* [ Windows ](#tab-panel-7496)
+* [ macOS ](#tab-panel-7497)
+* [ Linux ](#tab-panel-7498)
 
 On Windows, run `ipconfig`. When the Cloudflare One Client is turned on, you will see an adapter called `CloudflareWARP` with your device IP.
 
 PowerShell
 
 ```
-
 ipconfig
-
-
 ```
 
 ```
-
 Windows IP Configuration
-
-
 Unknown adapter CloudflareWARP:
-
-
-   Connection-specific DNS Suffix  . :
-
-   Description . . . . . . . . . . . : Cloudflare WARP Interface Tunnel
-
-   Physical Address. . . . . . . . . :
-
-   DHCP Enabled. . . . . . . . . . . : No
-
-   Autoconfiguration Enabled . . . . : Yes
-
-   IPv6 Address. . . . . . . . . . . : 2606:4700:110:8f79:145:f180:fc4:8106(Preferred)
-
-   Link-local IPv6 Address . . . . . : fe80::83b:d647:4bed:d388%49(Preferred)
-
-   IPv4 Address. . . . . . . . . . . : 172.16.0.2(Preferred)
-
-   Subnet Mask . . . . . . . . . . . : 255.255.255.255
-
-   Default Gateway . . . . . . . . . :
-
-   DNS Servers . . . . . . . . . . . : 127.0.2.2
-
-                                       127.0.2.3
-
-   NetBIOS over Tcpip. . . . . . . . : Enabled
-
-
+   Connection-specific DNS Suffix  . :   Description . . . . . . . . . . . : Cloudflare WARP Interface Tunnel   Physical Address. . . . . . . . . :   DHCP Enabled. . . . . . . . . . . : No   Autoconfiguration Enabled . . . . : Yes   IPv6 Address. . . . . . . . . . . : 2606:4700:110:8f79:145:f180:fc4:8106(Preferred)   Link-local IPv6 Address . . . . . : fe80::83b:d647:4bed:d388%49(Preferred)   IPv4 Address. . . . . . . . . . . : 172.16.0.2(Preferred)   Subnet Mask . . . . . . . . . . . : 255.255.255.255   Default Gateway . . . . . . . . . :   DNS Servers . . . . . . . . . . . : 127.0.2.2                                       127.0.2.3   NetBIOS over Tcpip. . . . . . . . : Enabled
 ```
 
 On macOS, run `ifconfig`. When the Cloudflare One Client is turned on, you will see a `utun` interface with your device IP.
@@ -254,27 +221,11 @@ On macOS, run `ifconfig`. When the Cloudflare One Client is turned on, you will 
 Terminal window
 
 ```
-
 ifconfig
-
-
 ```
 
 ```
-
-<redacted>
-
-utun3: flags=8051<UP,POINTOPOINT,RUNNING,MULTICAST> mtu 1280
-
-  inet 172.16.0.2 --> 172.16.0.2 netmask 0xffffffff
-
-  inet6 fe80::f6d4:88ff:fe82:6d9e%utun3 prefixlen 64 scopeid 0x17
-
-  inet6 2606:4700:110:8c7d:7369:7526:a59b:5636 prefixlen 128
-
-  nd6 options=201<PERFORMNUD,DAD>
-
-
+<redacted>utun3: flags=8051<UP,POINTOPOINT,RUNNING,MULTICAST> mtu 1280  inet 172.16.0.2 --> 172.16.0.2 netmask 0xffffffff  inet6 fe80::f6d4:88ff:fe82:6d9e%utun3 prefixlen 64 scopeid 0x17  inet6 2606:4700:110:8c7d:7369:7526:a59b:5636 prefixlen 128  nd6 options=201<PERFORMNUD,DAD>
 ```
 
 On Linux, run `ifconfig` or `ip addr`. When the Cloudflare One Client is turned on, you will see a `utun` interface with your device IP.
@@ -282,33 +233,11 @@ On Linux, run `ifconfig` or `ip addr`. When the Cloudflare One Client is turned 
 Terminal window
 
 ```
-
 ip addr
-
-
 ```
 
 ```
-
-<redacted>
-
-3: CloudflareWARP: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1280 qdisc mq state UNKNOWN group default qlen 500
-
-    link/none
-
-    inet 172.16.0.2/32 scope global CloudflareWARP
-
-       valid_lft forever preferred_lft forever
-
-    inet6 2606:4700:110:8a2e:a5f7:a8de:a1f9:919/128 scope global
-
-       valid_lft forever preferred_lft forever
-
-    inet6 fe80::117e:276b:8a79:c498/64 scope link stable-privacy
-
-       valid_lft forever preferred_lft forever
-
-
+<redacted>3: CloudflareWARP: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1280 qdisc mq state UNKNOWN group default qlen 500    link/none    inet 172.16.0.2/32 scope global CloudflareWARP       valid_lft forever preferred_lft forever    inet6 2606:4700:110:8a2e:a5f7:a8de:a1f9:919/128 scope global       valid_lft forever preferred_lft forever    inet6 fe80::117e:276b:8a79:c498/64 scope link stable-privacy       valid_lft forever preferred_lft forever
 ```
 
 In the example above, the device IPv4 address is `172.16.0.2`.
@@ -336,83 +265,26 @@ Example script to filter registrations by IP
 1. Create a new file called `filter-device-ips.py` that contains the following code:  
 Python  
 ```  
-import requests  
-import ipaddress  
-import json  
-# --- Configuration ---  
-AUTH_EMAIL = "<CLOUDFLARE_ACCOUNT_EMAIL>"  
-AUTH_KEY = "<CLOUDFLARE_API_KEY>"  # Refer to https://developers.cloudflare.com/fundamentals/api/get-started/keys/. API token authentication is not currently supported for fetching device IPs.  
-ACCOUNT_ID = "<CLOUDLFARE_ACCOUNT_ID"  # Refer to https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/.  
-TARGET_CIDR = "100.64.0.0/10"  
-# --- API request headers ---  
-headers = {  
-    "X-Auth-Email": AUTH_EMAIL,  
-    "X-Auth-Key": AUTH_KEY,  
-    "Content-Type": "application/json"  
-}  
-def get_all_registrations():  
-    """Fetches all device registrations including revoked registrations. """  
-    devices = {}  
-    url = f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/devices/registrations"  
-    params = {"per_page": 50, "status": "all"}  
-    while True:  
-        response = requests.get(url, headers=headers, params=params).json()  
-        if not response.get('success'):  
-            print(f"Error fetching registrations: {response.get('errors')}")  
-            break  
-        for d in response.get('result', []):  
-            # We use the ID as the key to link with IP data later  
-            devices[d['id']] = d  
-        cursor = response.get('result_info', {}).get('cursor')  
-        if not cursor:  
-            break  
-        params['cursor'] = cursor  
+import requestsimport ipaddressimport json  
+# --- Configuration ---AUTH_EMAIL = "<CLOUDFLARE_ACCOUNT_EMAIL>"AUTH_KEY = "<CLOUDFLARE_API_KEY>"  # Refer to https://developers.cloudflare.com/fundamentals/api/get-started/keys/. API token authentication is not currently supported for fetching device IPs.ACCOUNT_ID = "<CLOUDLFARE_ACCOUNT_ID"  # Refer to https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/.TARGET_CIDR = "100.64.0.0/10"  
+# --- API request headers ---headers = {    "X-Auth-Email": AUTH_EMAIL,    "X-Auth-Key": AUTH_KEY,    "Content-Type": "application/json"}  
+def get_all_registrations():    """Fetches all device registrations including revoked registrations. """    devices = {}    url = f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/devices/registrations"    params = {"per_page": 50, "status": "all"}  
+    while True:        response = requests.get(url, headers=headers, params=params).json()        if not response.get('success'):            print(f"Error fetching registrations: {response.get('errors')}")            break  
+        for d in response.get('result', []):            # We use the ID as the key to link with IP data later            devices[d['id']] = d  
+        cursor = response.get('result_info', {}).get('cursor')        if not cursor:            break        params['cursor'] = cursor  
     return devices  
-def filter_by_cidr(device_map, network):  
-    """Fetch device IPs and return devices that fall within the target CIDR block."""  
-    matches = []  
-    device_ids = list(device_map.keys())  
-    # API limits IP correlation to batches of 20  
-    for i in range(0, len(device_ids), 20):  
-        batch = device_ids[i:i+20]  
-        # Construct parameters for the IP endpoint  
-        params = {f"device_ids[{idx}]": d_id for idx, d_id in enumerate(batch)}  
-        url = f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/teamnet/devices/ips"  
+def filter_by_cidr(device_map, network):    """Fetch device IPs and return devices that fall within the target CIDR block."""    matches = []    device_ids = list(device_map.keys())  
+    # API limits IP correlation to batches of 20    for i in range(0, len(device_ids), 20):        batch = device_ids[i:i+20]        # Construct parameters for the IP endpoint        params = {f"device_ids[{idx}]": d_id for idx, d_id in enumerate(batch)}        url = f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/teamnet/devices/ips"  
         res = requests.get(url, headers=headers, params=params).json()  
-        if not res.get('success'):  
-            print(f"Error fetching IPs: {res.get('errors')}")  
-            continue  
-        for item in res.get('result', []):  
-            d_id = item.get('device_id')  
-            ip_data = item.get('device_ips', {})  
-            ipv4_str = ip_data.get('ipv4')  
-            if ipv4_str:  
-                try:  
-                    if ipaddress.IPv4Address(ipv4_str) in network:  
-                        if d_id in device_map:  
-                            full_data = device_map[d_id]  
-                            full_data['device_ips'] = ip_data  
-                            matches.append(full_data)  
-                except ValueError:  
-                    continue  
+        if not res.get('success'):            print(f"Error fetching IPs: {res.get('errors')}")            continue  
+        for item in res.get('result', []):            d_id = item.get('device_id')            ip_data = item.get('device_ips', {})            ipv4_str = ip_data.get('ipv4')  
+            if ipv4_str:                try:                    if ipaddress.IPv4Address(ipv4_str) in network:                        if d_id in device_map:                            full_data = device_map[d_id]                            full_data['device_ips'] = ip_data                            matches.append(full_data)                except ValueError:                    continue  
     return matches  
-if __name__ == "__main__":  
-    try:  
-        net = ipaddress.IPv4Network(TARGET_CIDR, strict=False)  
-        print(f"[*] Fetching registrations (status=all)...")  
-        all_devices = get_all_registrations()  
-        print(f"[*] Found {len(all_devices)} total registrations.")  
-        print(f"[*] Checking IP ranges for match...")  
-        filtered_list = filter_by_cidr(all_devices, net)  
-        if filtered_list:  
-            print(f"\n--- Found {len(filtered_list)} Device(s) in {TARGET_CIDR} ---\n")  
-            for dev in filtered_list:  
-                print(json.dumps(dev, indent=2))  
-                print("-" * 50)  
-        else:  
-            print(f"\nNo devices found within the {TARGET_CIDR} range.")  
-    except Exception as e:  
-        print(f"Script Error: {e}")  
+if __name__ == "__main__":    try:        net = ipaddress.IPv4Network(TARGET_CIDR, strict=False)  
+        print(f"[*] Fetching registrations (status=all)...")        all_devices = get_all_registrations()        print(f"[*] Found {len(all_devices)} total registrations.")  
+        print(f"[*] Checking IP ranges for match...")        filtered_list = filter_by_cidr(all_devices, net)  
+        if filtered_list:            print(f"\n--- Found {len(filtered_list)} Device(s) in {TARGET_CIDR} ---\n")            for dev in filtered_list:                print(json.dumps(dev, indent=2))                print("-" * 50)        else:            print(f"\nNo devices found within the {TARGET_CIDR} range.")  
+    except Exception as e:        print(f"Script Error: {e}")  
 ```
 2. In the script configuration section, input your Cloudflare API credentials and your IP subnet range.
 3. Open a terminal and navigate to the script directory. To run the script, type:  

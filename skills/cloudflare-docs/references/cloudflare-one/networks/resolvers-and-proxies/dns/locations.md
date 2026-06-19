@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,12 +25,12 @@ To add a DNS location to Gateway:
 3. Choose a name for your DNS location.
 4. Choose at least one [DNS endpoint](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/#dns-endpoints) to resolve your organization's DNS queries.
 5. (Optional) Toggle the following settings:  
-   * **Enable EDNS client subnet** sends a user's IP geolocation to authoritative DNS nameservers. [EDNS Client Subnet (ECS)](https://developers.cloudflare.com/cloudflare-one/glossary/?term=ecs) helps reduce latency by routing the user to the closest origin server. Cloudflare enables EDNS in a privacy preserving way by not sending the user's exact IP address but rather the first `/24` range of the larger range that contains their IP address. This `/24` range will share the same geographic location as the user's exact IP address.  
-   * **Set as Default DNS Location** sets this location as the default DoH endpoint for DNS queries.
+  * **Enable EDNS client subnet** sends a user's IP geolocation to authoritative DNS nameservers. [EDNS Client Subnet (ECS)](https://developers.cloudflare.com/cloudflare-one/glossary/?term=ecs) helps reduce latency by routing the user to the closest origin server. Cloudflare enables EDNS in a privacy preserving way by not sending the user's exact IP address but rather the first `/24` range of the larger range that contains their IP address. This `/24` range will share the same geographic location as the user's exact IP address.
+  * **Set as Default DNS Location** sets this location as the default DoH endpoint for DNS queries.
 6. Select **Continue**.
 7. (Optional) Turn on source IP filtering for your configured endpoints, then add any source IPv4/IPv6 addresses to validate.  
-   * Endpoint authentication is required for standard IPv4 addresses and optional for dedicated IPv4 addresses.  
-   * **DoH endpoint filtering & authentication** lets you restrict DNS resolution to only valid identities or user tokens in addition to IPv4/IPv6 addresses.
+  * Endpoint authentication is required for standard IPv4 addresses and optional for dedicated IPv4 addresses.
+  * **DoH endpoint filtering & authentication** lets you restrict DNS resolution to only valid identities or user tokens in addition to IPv4/IPv6 addresses.
 8. Select **Continue**.
 9. Review the settings for your DNS location, then choose **Done**.
 1. Change the DNS resolvers on your router, browser, or OS by following the setup instructions in the UI.

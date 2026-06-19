@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -46,14 +46,14 @@ The key point is that the map's quality does not solely depend on the resolution
 There are similarities between the how a mapping services handles resolution and Cloudflare Analytics delivers analytics using adaptive samples:
 
 * **How data is stored**:  
-   * **Mapping service**: Imagery stored at different resolutions.  
-   * **Cloudflare Analytics**: Events stored at different sample rates.
+  * **Mapping service**: Imagery stored at different resolutions.
+  * **Cloudflare Analytics**: Events stored at different sample rates.
 * **How data is displayed to user**:  
-   * **Mapping service**: The total number of pixels is \~constant for a given screen size, regardless of the area selected.  
-   * **Cloudflare Analytics**: A similar number of events are read for each query, regardless of the size of the dataset or length of time selected.
+  * **Mapping service**: The total number of pixels is \~constant for a given screen size, regardless of the area selected.
+  * **Cloudflare Analytics**: A similar number of events are read for each query, regardless of the size of the dataset or length of time selected.
 * **How a resolution is selected**:  
-   * **Mapping service**: The area represented by each pixel will depend on the size of the map being rendered. In a more zoomed out map, each pixel will represent a larger area.  
-   * **Cloudflare Analytics**: The sample interval of each event in the result depends on the size of the underlying dataset and length of time selected. For a query over a large dataset or long length of time, each sampled event may stand in for many similar events.
+  * **Mapping service**: The area represented by each pixel will depend on the size of the map being rendered. In a more zoomed out map, each pixel will represent a larger area.
+  * **Cloudflare Analytics**: The sample interval of each event in the result depends on the size of the underlying dataset and length of time selected. For a query over a large dataset or long length of time, each sampled event may stand in for many similar events.
 
 ## How to read sampled data
 
@@ -128,11 +128,11 @@ The index has the following properties, which are important to consider when cho
 Some limitations and trade-offs to consider are:
 
 * You may not be able to get accurate unique counts of fields that are not in your index.  
-   * For example, if you index on `hostname`, you may not be able to count the number of unique URLs.
+  * For example, if you index on `hostname`, you may not be able to count the number of unique URLs.
 * You may not be able to observe very rare values of fields not in the index.  
-   * For example, a particular URL for a hostname, if you index on host and have millions of unique URLs.
+  * For example, a particular URL for a hostname, if you index on host and have millions of unique URLs.
 * You may not be able to run accurate queries across multiple indices at once.  
-   * For example, you may only be able to query for one host at a time (or all of them) and expect accurate results.
+  * For example, you may only be able to query for one host at a time (or all of them) and expect accurate results.
 * There is no guarantee you can retrieve any one individual record.
 * You cannot necessarily reconstruct exact sequences of events.
 

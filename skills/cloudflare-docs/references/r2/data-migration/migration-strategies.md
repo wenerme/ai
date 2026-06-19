@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,18 +17,18 @@ You can use a combination of Super Slurper and Sippy to effectively migrate all 
 ### When the source bucket is actively being read from / written to
 
 1. Enable Sippy and start using the R2 bucket in your application.  
-   * This copies objects from your previous bucket into the R2 bucket on demand when they are requested by the application.  
-   * New uploads will go to the R2 bucket.
+  * This copies objects from your previous bucket into the R2 bucket on demand when they are requested by the application.
+  * New uploads will go to the R2 bucket.
 2. Use Super Slurper to trigger a one-off migration to copy the remaining objects into the R2 bucket.  
-   * In the **Destination R2 bucket** \> **Overwrite files?**, select "Skip existing".
+  * In the **Destination R2 bucket** \> **Overwrite files?**, select "Skip existing".
 
 ### When the source bucket is not being read often
 
 1. Use Super Slurper to copy all objects to the R2 bucket.  
-   * Note that Super Slurper may skip some objects if they are uploaded after it lists the objects to be copied.
+  * Note that Super Slurper may skip some objects if they are uploaded after it lists the objects to be copied.
 2. Enable Sippy on your R2 bucket, then start using the R2 bucket in your application.  
-   * New uploads will go to the R2 bucket.  
-   * Objects which were uploaded while Super Slurper was copying the objects will be copied on-demand (by Sippy) when they are requested by the application.
+  * New uploads will go to the R2 bucket.
+  * Objects which were uploaded while Super Slurper was copying the objects will be copied on-demand (by Sippy) when they are requested by the application.
 
 ### Optimizing your Slurper data migration performance
 
@@ -45,13 +45,13 @@ When creating a migration job:
 For example, suppose your source bucket contains:
 
 * Directoryphotos  
-   * Directory2024  
-         * file1.jpg  
-         * file2.jpg  
-   * Directory2023  
-         * file3.jpg  
-   * Directory2019  
-         * file4.jpg
+  * Directory2024  
+    * file1.jpg
+    * file2.jpg
+  * Directory2023  
+    * file3.jpg
+  * Directory2019  
+    * file4.jpg
 
 You can create separate jobs with prefixes such as:
 

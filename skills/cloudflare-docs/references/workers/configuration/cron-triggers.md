@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,68 +30,27 @@ Cron Triggers execute on UTC time.
 
 To respond to a Cron Trigger, you must add a ["scheduled" handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/) to your Worker.
 
-* [  JavaScript ](#tab-panel-11440)
-* [  TypeScript ](#tab-panel-11441)
-* [  Python ](#tab-panel-11442)
+* [  JavaScript ](#tab-panel-11457)
+* [  TypeScript ](#tab-panel-11458)
+* [  Python ](#tab-panel-11459)
 
 JavaScript
 
 ```
-
-export default {
-
-  async scheduled(controller, env, ctx) {
-
-    console.log("cron processed");
-
-  },
-
-};
-
-
+export default {  async scheduled(controller, env, ctx) {    console.log("cron processed");  },};
 ```
 
 TypeScript
 
 ```
-
-interface Env {}
-
-export default {
-
-  async scheduled(
-
-    controller: ScheduledController,
-
-    env: Env,
-
-    ctx: ExecutionContext,
-
-  ) {
-
-    console.log("cron processed");
-
-  },
-
-};
-
-
+interface Env {}export default {  async scheduled(    controller: ScheduledController,    env: Env,    ctx: ExecutionContext,  ) {    console.log("cron processed");  },};
 ```
 
 Python
 
 ```
-
 from workers import WorkerEntrypoint, Response
-
-
-class Default(WorkerEntrypoint):
-
-    async def scheduled(self, controller, env, ctx):
-
-        print("cron processed")
-
-
+class Default(WorkerEntrypoint):    async def scheduled(self, controller, env, ctx):        print("cron processed")
 ```
 
 Refer to the following additional examples to write your code:
@@ -113,96 +72,36 @@ If a Worker is managed with Wrangler, Cron Triggers should be exclusively manage
 
 Refer to the example below for a Cron Triggers configuration:
 
-* [  wrangler.jsonc ](#tab-panel-11445)
-* [  wrangler.toml ](#tab-panel-11446)
+* [  wrangler.jsonc ](#tab-panel-11462)
+* [  wrangler.toml ](#tab-panel-11463)
 
 JSONC
 
 ```
-
-{
-
-  "triggers": {
-
-    // Schedule cron triggers:
-
-    // - At every 3rd minute
-
-    // - At 15:00 (UTC) on first day of the month
-
-    // - At 23:59 (UTC) on the last weekday of the month
-
-    "crons": [
-
-      "*/3 * * * *",
-
-      "0 15 1 * *",
-
-      "59 23 LW * *"
-
-    ]
-
-  }
-
-}
-
-
+{  "triggers": {    // Schedule cron triggers:    // - At every 3rd minute    // - At 15:00 (UTC) on first day of the month    // - At 23:59 (UTC) on the last weekday of the month    "crons": [      "*/3 * * * *",      "0 15 1 * *",      "59 23 LW * *"    ]  }}
 ```
 
 TOML
 
 ```
-
-[triggers]
-
-crons = [ "*/3 * * * *", "0 15 1 * *", "59 23 LW * *" ]
-
-
+[triggers]crons = [ "*/3 * * * *", "0 15 1 * *", "59 23 LW * *" ]
 ```
 
 You also can set a different Cron Trigger for each [environment](https://developers.cloudflare.com/workers/wrangler/environments/) in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). You need to put the `triggers` array under your chosen environment. For example:
 
-* [  wrangler.jsonc ](#tab-panel-11447)
-* [  wrangler.toml ](#tab-panel-11448)
+* [  wrangler.jsonc ](#tab-panel-11464)
+* [  wrangler.toml ](#tab-panel-11465)
 
 JSONC
 
 ```
-
-{
-
-  "env": {
-
-    "dev": {
-
-      "triggers": {
-
-        "crons": [
-
-          "0 * * * *"
-
-        ]
-
-      }
-
-    }
-
-  }
-
-}
-
-
+{  "env": {    "dev": {      "triggers": {        "crons": [          "0 * * * *"        ]      }    }  }}
 ```
 
 TOML
 
 ```
-
-[env.dev.triggers]
-
-crons = [ "0 * * * *" ]
-
-
+[env.dev.triggers]crons = [ "0 * * * *" ]
 ```
 
 #### Via the dashboard
@@ -233,22 +132,30 @@ Days of the week go from 1 = Sunday to 7 = Saturday, which is different on some 
 
 Some common time intervals that may be useful for setting up your Cron Trigger:
 
-* `* * * * *`  
-   * At every minute
-* `*/30 * * * *`  
-   * At every 30th minute
-* `45 * * * *`  
-   * On the 45th minute of every hour
-* `0 17 * * sun` or `0 17 * * 1`  
-   * 17:00 (UTC) on Sunday
-* `10 7 * * mon-fri` or `10 7 * * 2-6`  
-   * 07:10 (UTC) on weekdays
-* `0 15 1 * *`  
-   * 15:00 (UTC) on first day of the month
-* `0 18 * * 6L` or `0 18 * * friL`  
-   * 18:00 (UTC) on the last Friday of the month
-* `59 23 LW * *`  
-   * 23:59 (UTC) on the last weekday of the month
+* `* * * * *`
+
+  * At every minute
+* `*/30 * * * *`
+
+  * At every 30th minute
+* `45 * * * *`
+
+  * On the 45th minute of every hour
+* `0 17 * * sun` or `0 17 * * 1`
+
+  * 17:00 (UTC) on Sunday
+* `10 7 * * mon-fri` or `10 7 * * 2-6`
+
+  * 07:10 (UTC) on weekdays
+* `0 15 1 * *`
+
+  * 15:00 (UTC) on first day of the month
+* `0 18 * * 6L` or `0 18 * * friL`
+
+  * 18:00 (UTC) on the last Friday of the month
+* `59 23 LW * *`
+
+  * 23:59 (UTC) on the last weekday of the month
 
 ## Test Cron Triggers locally
 
@@ -257,10 +164,7 @@ Test Cron Triggers using Wrangler with [wrangler dev](https://developers.cloudfl
 Terminal window
 
 ```
-
 curl "http://localhost:8787/cdn-cgi/handler/scheduled"
-
-
 ```
 
 By default, the endpoint returns the scheduled handler outcome as text. To return the structured scheduled handler result as JSON, pass `?format=json`.
@@ -268,36 +172,21 @@ By default, the endpoint returns the scheduled handler outcome as text. To retur
 Terminal window
 
 ```
-
 curl "http://localhost:8787/cdn-cgi/handler/scheduled?format=json"
-
-
 ```
 
 ```
-
-{
-
-  "outcome": "ok",
-
-  "noRetry": false
-
-}
-
-
+{  "outcome": "ok",  "noRetry": false}
 ```
 
-The `noRetry` field is `true` when the scheduled handler calls`controller.noRetry()`.
+The `noRetry` field is `true` when the scheduled handler calls `controller.noRetry()`.
 
 To simulate different cron patterns, a `cron` query parameter can be passed in.
 
 Terminal window
 
 ```
-
 curl "http://localhost:8787/cdn-cgi/handler/scheduled?cron=*+*+*+*+*"
-
-
 ```
 
 Optionally, you can also pass a `time` query parameter to override `controller.scheduledTime` in your scheduled event listener.
@@ -305,10 +194,7 @@ Optionally, you can also pass a `time` query parameter to override `controller.s
 Terminal window
 
 ```
-
 curl "http://localhost:8787/cdn-cgi/handler/scheduled?cron=*+*+*+*+*&time=1745856238000"
-
-
 ```
 
 ## View past events
@@ -349,37 +235,19 @@ When deploying a Worker with Wrangler any previous Cron Triggers are replaced wi
 * If the `crons` property is an empty array then all the Cron Triggers are removed.
 * If the `triggers` or `crons` property are `undefined` then the currently deploy Cron Triggers are left in-place.
 
-* [  wrangler.jsonc ](#tab-panel-11443)
-* [  wrangler.toml ](#tab-panel-11444)
+* [  wrangler.jsonc ](#tab-panel-11460)
+* [  wrangler.toml ](#tab-panel-11461)
 
 JSONC
 
 ```
-
-{
-
-  "triggers": {
-
-    // Remove all cron triggers:
-
-    "crons": []
-
-  }
-
-}
-
-
+{  "triggers": {    // Remove all cron triggers:    "crons": []  }}
 ```
 
 TOML
 
 ```
-
-[triggers]
-
-crons = [ ]
-
-
+[triggers]crons = [ ]
 ```
 
 ## Limits

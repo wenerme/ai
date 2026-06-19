@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,7 +20,7 @@ For pre-built search and chat components you can embed on your website using the
 
 Enable public endpoints for your AI Search instance:
 
-1. Go to **AI Search** in the Cloudflare dashboard.[ Go to **AI Search** ](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
+1. Go to **AI Search** in the Cloudflare dashboard. [ Go to **AI Search** ](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
 2. Select your AI Search instance.
 3. Go to **Settings** \> **Public Endpoint**.
 4. Turn on **Enable Public Endpoint**.
@@ -35,28 +35,7 @@ The `/chat/completions` endpoint searches your data source and generates a respo
 Terminal window
 
 ```
-
-curl https://<INSTANCE_ID>.search.ai.cloudflare.com/chat/completions \
-
-  -H "Content-Type: application/json" \
-
-  -d '{
-
-    "messages": [
-
-      {
-
-        "content": "How do I configure AI Search?",
-
-        "role": "user"
-
-      }
-
-    ]
-
-  }'
-
-
+curl https://<INSTANCE_ID>.search.ai.cloudflare.com/chat/completions \  -H "Content-Type: application/json" \  -d '{    "messages": [      {        "content": "How do I configure AI Search?",        "role": "user"      }    ]  }'
 ```
 
 For the full list of options, refer to the [Chat Completions API reference](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/instances/methods/chat%5Fcompletions/).
@@ -68,28 +47,7 @@ The `/search` endpoint returns relevant chunks from your data source without gen
 Terminal window
 
 ```
-
-curl https://<INSTANCE_ID>.search.ai.cloudflare.com/search \
-
-  -H "Content-Type: application/json" \
-
-  -d '{
-
-    "messages": [
-
-      {
-
-        "content": "How do I configure AI Search?",
-
-        "role": "user"
-
-      }
-
-    ]
-
-  }'
-
-
+curl https://<INSTANCE_ID>.search.ai.cloudflare.com/search \  -H "Content-Type: application/json" \  -d '{    "messages": [      {        "content": "How do I configure AI Search?",        "role": "user"      }    ]  }'
 ```
 
 For the full list of options, refer to the [Search API reference](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/instances/methods/search/).

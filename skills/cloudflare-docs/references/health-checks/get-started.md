@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/health-checks/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,10 +22,11 @@ This guide will get you started with creating and managing configured Health Che
 
 1. In the Cloudflare dashboard, go to the **Health Checks** page.  
 [ Go to **Health Checks** ](https://dash.cloudflare.com/?to=/:account/:zone/traffic/health-checks)
-2. Select **Create** and fill out the form, paying special attention to:  
-   * The values for **Interval** and **Check regions**, because decreasing the **Interval** and increasing **Check regions** may increase the load on your origin server.  
-   * **Retries**, which specify the number of retries to attempt in case of a timeout before marking the origin as unhealthy.  
-   * **Response body**, which specifies a substring that must be present in the first 10 KB of the response body for the check to succeed.
+2. Select **Create** and fill out the form, paying special attention to:
+
+  * The values for **Interval** and **Check regions**, because decreasing the **Interval** and increasing **Check regions** may increase the load on your origin server.
+  * **Retries**, which specify the number of retries to attempt in case of a timeout before marking the origin as unhealthy.
+  * **Response body**, which specifies a substring that must be present in the first 10 KB of the response body for the check to succeed.
 3. Select **Save and Deploy**.
 
 ## Manage Health Checks

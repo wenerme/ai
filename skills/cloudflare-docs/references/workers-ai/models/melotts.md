@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,41 +29,14 @@ MeloTTS is a high-quality multi-lingual text-to-speech library by MyShell.ai.
 TypeScript
 
 ```
-
-export interface Env {
-
-  AI: Ai;
-
-}
-
-
-export default {
-
-  async fetch(request, env): Promise<Response> {
-
-    const { audio } = await env.AI.run('@cf/myshell-ai/melotts', {
-
-      prompt: 'Hello world',
-
-      lang: 'en',
-
-    });
-
-    // Returns the base64 encoded MP3 audio
-
-    return Response.json({ audio });
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export interface Env {  AI: Ai;}
+export default {  async fetch(request, env): Promise<Response> {    const { audio } = await env.AI.run('@cf/myshell-ai/melotts', {      prompt: 'Hello world',      lang: 'en',    });    // Returns the base64 encoded MP3 audio    return Response.json({ audio });  },} satisfies ExportedHandler<Env>;
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-5008)
-* [ Output ](#tab-panel-5009)
+* [ Input ](#tab-panel-5082)
+* [ Output ](#tab-panel-5083)
 
 prompt
 
@@ -87,7 +60,7 @@ The generated audio in MP3 format
 
 Input [ ](https://developers.cloudflare.com/workers-ai/models/melotts/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/melotts/schema-input.json "Download") 
 
-Output [ ](https://developers.cloudflare.com/workers-ai/models/melotts/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/melotts/schema-output.json "Download") 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/melotts/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/melotts/schema-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/melotts/#page","headline":"melotts (MyShell) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"MeloTTS is a high-quality multi-lingual text-to-speech library by MyShell.ai.","url":"https://developers.cloudflare.com/workers-ai/models/melotts/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

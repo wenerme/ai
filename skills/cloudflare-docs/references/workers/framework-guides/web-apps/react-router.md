@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -98,26 +98,29 @@ yarn create cloudflare my-react-router-app --framework=react-router
 pnpm create cloudflare@latest my-react-router-app --framework=react-router  
 ```  
 How is this project set up?  
-Below is a simplified file tree of the project.  
-   * Directorymy-react-router-app  
-         * Directoryapp  
-                  * Directoryroutes  
-                              * ...  
-                  * entry.server.ts  
-                  * root.tsx  
-                  * routes.ts  
-         * Directoryworkers  
-                  * app.ts  
-         * react-router.config.ts  
-         * vite.config.ts  
-         * wrangler.jsonc  
-`react-router.config.ts` is your [React Router config file ↗](https://reactrouter.com/explanation/special-files#react-routerconfigts). In this file:  
-   * `ssr` is set to `true`, meaning that your application will use server-side rendering.  
-   * `future.v8_viteEnvironmentApi` is set to `true` to enable compatibility with the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).  
+Below is a simplified file tree of the project.
+
+  * Directorymy-react-router-app  
+    * Directoryapp  
+      * Directoryroutes  
+        * ...
+      * entry.server.ts
+      * root.tsx
+      * routes.ts
+    * Directoryworkers  
+      * app.ts
+    * react-router.config.ts
+    * vite.config.ts
+    * wrangler.jsonc  
+`react-router.config.ts` is your [React Router config file ↗](https://reactrouter.com/explanation/special-files#react-routerconfigts). In this file:
+
+  * `ssr` is set to `true`, meaning that your application will use server-side rendering.
+  * `future.v8_viteEnvironmentApi` is set to `true` to enable compatibility with the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).  
 `vite.config.ts` is your [Vite config file ↗](https://vite.dev/config/). The React Router and Cloudflare plugins are included in the `plugins` array. The [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) runs your server code in the Workers runtime, ensuring your local development environment is as close to production as possible.  
-`wrangler.jsonc` is your [Worker config file](https://developers.cloudflare.com/workers/wrangler/configuration/). In this file:  
-   * `main` points to `./workers/app.ts`. This is the entry file for your Worker. The default export includes a [fetch handler](https://developers.cloudflare.com/workers/runtime-apis/fetch/), which delegates the request to React Router.  
-   * If you want to add [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) to resources on Cloudflare's developer platform, you configure them here.
+`wrangler.jsonc` is your [Worker config file](https://developers.cloudflare.com/workers/wrangler/configuration/). In this file:
+
+  * `main` points to `./workers/app.ts`. This is the entry file for your Worker. The default export includes a [fetch handler](https://developers.cloudflare.com/workers/runtime-apis/fetch/), which delegates the request to React Router.
+  * If you want to add [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) to resources on Cloudflare's developer platform, you configure them here.
 2. **Develop locally**  
 After creating your project, run the following command in your project directory to start a local development server.  
  npm  yarn  pnpm  
@@ -155,21 +158,8 @@ Once you have configured the bindings in the Wrangler configuration file, they a
 app/routes/home.tsx
 
 ```
-
-export function loader({ context }: Route.LoaderArgs) {
-
-  return { message: context.cloudflare.env.VALUE_FROM_CLOUDFLARE };
-
-}
-
-
-export default function Home({ loaderData }: Route.ComponentProps) {
-
-  return <Welcome message={loaderData.message} />;
-
-}
-
-
+export function loader({ context }: Route.LoaderArgs) {  return { message: context.cloudflare.env.VALUE_FROM_CLOUDFLARE };}
+export default function Home({ loaderData }: Route.ComponentProps) {  return <Welcome message={loaderData.message} />;}
 ```
 
 As you have direct access to your Worker entry file (`workers/app.ts`), you can also add additional exports such as [Durable Objects](https://developers.cloudflare.com/durable-objects/) and [Workflows](https://developers.cloudflare.com/workflows/)
@@ -181,123 +171,32 @@ Here is an example of how to set up a simple Workflow in your Worker entry file.
 workers/app.ts
 
 ```
-
-import { createRequestHandler } from "react-router";
-
-import { WorkflowEntrypoint, type WorkflowStep, type WorkflowEvent } from 'cloudflare:workers';
-
-
-declare global {
-
-  interface CloudflareEnvironment extends Env {}
-
-}
-
-
-type Env = {
-
-  MY_WORKFLOW: Workflow;
-
-};
-
-
-export class MyWorkflow extends WorkflowEntrypoint<Env> {
-
-  override async run(event: WorkflowEvent<{ hello: string }>, step: WorkflowStep) {
-
-    await step.do("first step", async () => {
-
-      return { output: "First step result" };
-
-    });
-
-
+import { createRequestHandler } from "react-router";import { WorkflowEntrypoint, type WorkflowStep, type WorkflowEvent } from 'cloudflare:workers';
+declare global {  interface CloudflareEnvironment extends Env {}}
+type Env = {  MY_WORKFLOW: Workflow;};
+export class MyWorkflow extends WorkflowEntrypoint<Env> {  override async run(event: WorkflowEvent<{ hello: string }>, step: WorkflowStep) {    await step.do("first step", async () => {      return { output: "First step result" };    });
     await step.sleep("sleep", "1 second");
-
-
-    await step.do("second step", async () => {
-
-      return { output: "Second step result" };
-
-    });
-
-
-    return "Workflow output";
-
-  }
-
-}
-
-
-const requestHandler = createRequestHandler(
-
-  () => import("virtual:react-router/server-build"),
-
-  import.meta.env.MODE
-
-);
-
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    return requestHandler(request, {
-
-      cloudflare: { env, ctx },
-
-    });
-
-  },
-
-} satisfies ExportedHandler<CloudflareEnvironment>;
-
-
+    await step.do("second step", async () => {      return { output: "Second step result" };    });
+    return "Workflow output";  }}
+const requestHandler = createRequestHandler(  () => import("virtual:react-router/server-build"),  import.meta.env.MODE);
+export default {  async fetch(request, env, ctx) {    return requestHandler(request, {      cloudflare: { env, ctx },    });  },} satisfies ExportedHandler<CloudflareEnvironment>;
 ```
 
 Configure it in your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-11798)
-* [  wrangler.toml ](#tab-panel-11799)
+* [  wrangler.jsonc ](#tab-panel-11815)
+* [  wrangler.toml ](#tab-panel-11816)
 
 JSONC
 
 ```
-
-{
-
-  "workflows": [
-
-    {
-
-      "name": "my-workflow",
-
-      "binding": "MY_WORKFLOW",
-
-      "class_name": "MyWorkflow"
-
-    }
-
-  ]
-
-}
-
-
+{  "workflows": [    {      "name": "my-workflow",      "binding": "MY_WORKFLOW",      "class_name": "MyWorkflow"    }  ]}
 ```
 
 TOML
 
 ```
-
-[[workflows]]
-
-name = "my-workflow"
-
-binding = "MY_WORKFLOW"
-
-class_name = "MyWorkflow"
-
-
+[[workflows]]name = "my-workflow"binding = "MY_WORKFLOW"class_name = "MyWorkflow"
 ```
 
 And then use it in your application:
@@ -305,23 +204,12 @@ And then use it in your application:
 app/routes/home.tsx
 
 ```
-
-export async function action({ context }: Route.ActionArgs) {
-
-  const env = context.cloudflare.env;
-
-  const instance = await env.MY_WORKFLOW.create({ params: { "hello": "world" } })
-
-  return { id: instance.id, details: await instance.status() };
-
-}
-
-
+export async function action({ context }: Route.ActionArgs) {  const env = context.cloudflare.env;  const instance = await env.MY_WORKFLOW.create({ params: { "hello": "world" } })  return { id: instance.id, details: await instance.status() };}
 ```
 
 With bindings, your application can be fully integrated with the Cloudflare Developer Platform, giving you access to compute, storage, AI and more.
 
-[ Bindings ](https://developers.cloudflare.com/workers/runtime-apis/bindings/) Access to compute, storage, AI and more. 
+[ Bindings ](https://developers.cloudflare.com/workers/runtime-apis/bindings/) Access to compute, storage, AI and more.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/react-router/#page","headline":"React Router (formerly Remix) · Cloudflare Workers docs","description":"Create a React Router application and deploy it to Cloudflare Workers","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/react-router/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["full-stack"]}

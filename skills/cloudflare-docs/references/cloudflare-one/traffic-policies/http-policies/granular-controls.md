@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,17 +28,18 @@ To use Application Granular Controls, you must:
 
 To create a Gateway HTTP policy with Application Granular Controls:
 
-* [ Dashboard ](#tab-panel-7648)
-* [ API ](#tab-panel-7649)
+* [ Dashboard ](#tab-panel-7724)
+* [ API ](#tab-panel-7725)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **HTTP**.
 2. Select **Add a policy**.
 3. Name the policy.
 4. Under **Traffic**, build a logical expression that defines the traffic you want to allow or block. Because granular controls are specific to each application, you must use the _Application_ selector with the _is_ operator.
 5. In **Value**, select your desired application.
-6. In **Controls**, choose one or more Application Controls or individual Operations. For example, you can create a policy to block file uploads to ChatGPT:  
-| Selector    | Operator | Value     | Controls | Action |  
-| ----------- | -------- | --------- | -------- | ------ |  
+6. In **Controls**, choose one or more Application Controls or individual Operations. For example, you can create a policy to block file uploads to ChatGPT:
+
+| Selector    | Operator | Value     | Controls | Action |
+| ----------- | -------- | --------- | -------- | ------ |
 | Application | is       | _ChatGPT_ | _Upload_ | Block  |
 7. Select **Create policy**.
 
@@ -47,38 +48,7 @@ Use the [Create a Zero Trust Gateway rule](https://developers.cloudflare.com/api
 Create a Zero Trust Gateway rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "Block ChatGPT uploads",
-
-    "description": "Block file uploads to ChatGPT while allowing other usage",
-
-    "enabled": true,
-
-    "action": "block",
-
-    "filters": [
-
-        "http"
-
-    ],
-
-    "traffic": "any(app.ids[*] == 1199) and any(app_control.controls[*] in {1653})",
-
-    "identity": "",
-
-    "device_posture": ""
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Block ChatGPT uploads",    "description": "Block file uploads to ChatGPT while allowing other usage",    "enabled": true,    "action": "block",    "filters": [        "http"    ],    "traffic": "any(app.ids[*] == 1199) and any(app_control.controls[*] in {1653})",    "identity": "",    "device_posture": ""  }'
 ```
 
 For more information, refer to [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/).

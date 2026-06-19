@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,29 +30,13 @@ A screen shown before joining the meeting, where you can edit your display name,
 ### Basic Usage
 
 ```
-
-<!-- component.html -->
-
-<rtk-setup-screen></rtk-setup-screen>
-
-
+<!-- component.html --><rtk-setup-screen></rtk-setup-screen>
 ```
 
 ### With Properties
 
 ```
-
-<!-- component.html -->
-
-<rtk-setup-screen
-
- [meeting]="meeting"
-
- size="md">
-
-</rtk-setup-screen>
-
-
+<!-- component.html --><rtk-setup-screen [meeting]="meeting" size="md"></rtk-setup-screen>
 ```
 
 ```json

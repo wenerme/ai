@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,10 +20,10 @@ For more background on HTTP/2, visit the [Learning Center ↗](https://www.cloud
 
 ## Availability
 
-| Free          | Pro | Business | Enterprise |     |
-| ------------- | --- | -------- | ---------- | --- |
-| Availability  | Yes | Yes      | Yes        | Yes |
-| Can customize | No  | Yes      | Yes        | Yes |
+|               | Free | Pro | Business | Enterprise |
+| ------------- | ---- | --- | -------- | ---------- |
+| Availability  | Yes  | Yes | Yes      | Yes        |
+| Can customize | No   | Yes | Yes      | Yes        |
 
 ## Enable HTTP/2
 
@@ -33,8 +33,8 @@ HTTP/2 is enabled by default for all plans (though it does require an [SSL certi
 
 Domains on Free plans cannot disable Cloudflare's HTTP/2 setting.
 
-* [ Dashboard ](#tab-panel-10554)
-* [ API ](#tab-panel-10555)
+* [ Dashboard ](#tab-panel-10630)
+* [ API ](#tab-panel-10631)
 
 To disable **HTTP/2** in the dashboard:
 

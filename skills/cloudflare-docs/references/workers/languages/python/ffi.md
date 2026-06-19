@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,48 +26,20 @@ Bindings allow your Worker to interact with resources on the Cloudflare Develope
 
 For example, to access a [KV](https://developers.cloudflare.com/kv) namespace from a Python Worker, you would declare the following in your Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-11826)
-* [  wrangler.toml ](#tab-panel-11827)
+* [  wrangler.jsonc ](#tab-panel-11843)
+* [  wrangler.toml ](#tab-panel-11844)
 
 JSONC
 
 ```
-
-{
-
-  "main": "./src/index.py",
-
-  "kv_namespaces": [
-
-    {
-
-      "binding": "FOO",
-
-      "id": "<YOUR_KV_NAMESPACE_ID>"
-
-    }
-
-  ]
-
-}
-
-
+{  "main": "./src/index.py",  "kv_namespaces": [    {      "binding": "FOO",      "id": "<YOUR_KV_NAMESPACE_ID>"    }  ]}
 ```
 
 TOML
 
 ```
-
 main = "./src/index.py"
-
-
-[[kv_namespaces]]
-
-binding = "FOO"
-
-id = "<YOUR_KV_NAMESPACE_ID>"
-
-
+[[kv_namespaces]]binding = "FOO"id = "<YOUR_KV_NAMESPACE_ID>"
 ```
 
 ...and then call `.get()` on the binding object that is exposed on `env`:
@@ -75,21 +47,8 @@ id = "<YOUR_KV_NAMESPACE_ID>"
 Python
 
 ```
-
 from workers import WorkerEntrypoint, Response
-
-
-class Default(WorkerEntrypoint):
-
-    async def fetch(self, request):
-
-        await self.env.FOO.put("bar", "baz")
-
-        bar = await self.env.FOO.get("bar")
-
-        return Response(bar) # returns "baz"
-
-
+class Default(WorkerEntrypoint):    async def fetch(self, request):        await self.env.FOO.put("bar", "baz")        bar = await self.env.FOO.get("bar")        return Response(bar) # returns "baz"
 ```
 
 Under the hood, `env` is actually a JavaScript object. When you call `.FOO`, you are accessing this property via a [JsProxy ↗](https://pyodide.org/en/stable/usage/api/python-api/ffi.html#pyodide.ffi.JsProxy) — special proxy object that makes a JavaScript object behave like a Python object.
@@ -101,22 +60,9 @@ Occasionally, to interoperate with JavaScript APIs, you may need to convert a Py
 Python
 
 ```
-
-from js import Object
-
-from pyodide.ffi import to_js as _to_js
-
-
+from js import Objectfrom pyodide.ffi import to_js as _to_js
 from workers import WorkerEntrypoint, Response
-
-
-# to_js converts between Python dictionaries and JavaScript Objects
-
-def to_js(obj):
-
-   return _to_js(obj, dict_converter=Object.fromEntries)
-
-
+# to_js converts between Python dictionaries and JavaScript Objectsdef to_js(obj):   return _to_js(obj, dict_converter=Object.fromEntries)
 ```
 
 For more details, see out the [documentation on pyodide.ffi.to\_js ↗](https://pyodide.org/en/stable/usage/api/python-api/ffi.html#pyodide.ffi.to%5Fjs).
@@ -128,19 +74,8 @@ When writing Workers in Python, you can access JavaScript globals by importing t
 Python
 
 ```
-
-from workers import WorkerEntrypoint
-
-from js import Response
-
-
-class Default(WorkerEntrypoint):
-
-    async def fetch(self, request):
-
-        return Response.new("Hello World!")
-
-
+from workers import WorkerEntrypointfrom js import Response
+class Default(WorkerEntrypoint):    async def fetch(self, request):        return Response.new("Hello World!")
 ```
 
 Refer to the [Python examples](https://developers.cloudflare.com/workers/languages/python/examples/) to learn how to call into JavaScript functions from Python, including `console.log` and logging, providing options to `Response`, and parsing JSON.

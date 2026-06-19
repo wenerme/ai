@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,43 +29,15 @@ A troubleshooting component to identify and fix any issues in the meeting.
 ### Basic Usage
 
 ```
-
 import { RtkDebugger } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return <RtkDebugger />;
-
-}
-
-
+function MyComponent() {  return <RtkDebugger />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkDebugger } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkDebugger
-
-      meeting={meeting}
-
-      size="md"
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkDebugger      meeting={meeting}      size="md"    />  );}
 ```
 
 ```json

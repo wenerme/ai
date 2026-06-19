@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/smart-shield/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,8 +20,8 @@ You can evaluate origin uptime, latency, failure reason, and specific event logs
 * **Health Checks By Failure Reason**: Shows a breakdown of failures by the specific reason. Refer to [common error code causes and solutions below](#common-error-codes).
 * **Health Checks By Latency**: Shows average latency – measured in round trip time — for individual origins over time.
 * **Event Log**: Shows individual health check data.  
-   * Select each record for additional details on **Round trip time**, the **Failure Reason**, the **Average Waterfall** (showing chronological data about request stages), **Response status code**, and more.  
-   * Note that **Global** is not a configured region; it represents the aggregated data from all enabled regions.
+  * Select each record for additional details on **Round trip time**, the **Failure Reason**, the **Average Waterfall** (showing chronological data about request stages), **Response status code**, and more.
+  * Note that **Global** is not a configured region; it represents the aggregated data from all enabled regions.
 
 ## Common error codes
 

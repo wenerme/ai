@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,16 +25,7 @@ A pre-built control bar for group call meetings. Contains mic toggle, camera tog
 ### Basic Usage
 
 ```
-
-<com.cloudflare.realtimekit.ui.view.controlbars.RtkMeetingControlBarView
-
-    android:id="@+id/rtk_meeting_control_bar"
-
-    android:layout_width="match_parent"
-
-    android:layout_height="wrap_content" />
-
-
+<com.cloudflare.realtimekit.ui.view.controlbars.RtkMeetingControlBarView    android:id="@+id/rtk_meeting_control_bar"    android:layout_width="match_parent"    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
@@ -42,12 +33,7 @@ A pre-built control bar for group call meetings. Contains mic toggle, camera tog
 Kotlin
 
 ```
-
-val controlBar = findViewById<RtkMeetingControlBarView>(R.id.rtk_meeting_control_bar)
-
-controlBar.activate(meeting)
-
-
+val controlBar = findViewById<RtkMeetingControlBarView>(R.id.rtk_meeting_control_bar)controlBar.activate(meeting)
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,37 +29,8 @@ D1 understands SQLite semantics, which allows you to query a database using SQL 
 When using SQL with D1, you may wish to define and enforce foreign key constraints across tables in a database. Foreign key constraints allow you to enforce relationships across tables, or prevent you from deleting rows that reference rows in other tables. An example of a foreign key relationship is shown below.
 
 ```
-
-CREATE TABLE users (
-
-    user_id INTEGER PRIMARY KEY,
-
-    email_address TEXT,
-
-    name TEXT,
-
-    metadata TEXT
-
-)
-
-
-CREATE TABLE orders (
-
-    order_id INTEGER PRIMARY KEY,
-
-    status INTEGER,
-
-    item_desc TEXT,
-
-    shipped_date INTEGER,
-
-    user_who_ordered INTEGER,
-
-    FOREIGN KEY(user_who_ordered) REFERENCES users(user_id)
-
-)
-
-
+CREATE TABLE users (    user_id INTEGER PRIMARY KEY,    email_address TEXT,    name TEXT,    metadata TEXT)
+CREATE TABLE orders (    order_id INTEGER PRIMARY KEY,    status INTEGER,    item_desc TEXT,    shipped_date INTEGER,    user_who_ordered INTEGER,    FOREIGN KEY(user_who_ordered) REFERENCES users(user_id))
 ```
 
 Refer to [Define foreign keys](https://developers.cloudflare.com/d1/sql-api/foreign-keys/) for more information.
@@ -71,35 +42,11 @@ D1 allows you to query and parse JSON data stored within a database. For example
 Given the following JSON object (`type:blob`) in a column named `sensor_reading`, you can extract values from it directly.
 
 ```
-
-{
-
-    "measurement": {
-
-        "temp_f": "77.4",
-
-        "aqi": [21, 42, 58],
-
-        "o3": [18, 500],
-
-        "wind_mph": "13",
-
-        "location": "US-NY"
-
-    }
-
-}
-
-
+{    "measurement": {        "temp_f": "77.4",        "aqi": [21, 42, 58],        "o3": [18, 500],        "wind_mph": "13",        "location": "US-NY"    }}
 ```
 
 ```
-
--- Extract the temperature value
-
-SELECT json_extract(sensor_reading, '$.measurement.temp_f')-- returns "77.4" as TEXT
-
-
+-- Extract the temperature valueSELECT json_extract(sensor_reading, '$.measurement.temp_f')-- returns "77.4" as TEXT
 ```
 
 Refer to [Query JSON](https://developers.cloudflare.com/d1/sql-api/query-json/) to learn more about querying JSON objects.
@@ -117,42 +64,9 @@ This requires you to:
 index.js
 
 ```
-
-export default {
-
-    async fetch(request, env) {
-
-        const {pathname} = new URL(request.url);
-
-        const companyName1 = `Bs Beverages`;
-
-        const companyName2 = `Around the Horn`;
-
-        const stmt = env.DB.prepare(`SELECT * FROM Customers WHERE CompanyName = ?`);
-
-
-        if (pathname === `/RUN`) {
-
-            const returnValue = await stmt.bind(companyName1).run();
-
-            return Response.json(returnValue);
-
-        }
-
-
-        return new Response(
-
-            `Welcome to the D1 API Playground!
-
-            \nChange the URL to test the various methods inside your index.js file.`,
-
-        );
-
-    },
-
-};
-
-
+export default {    async fetch(request, env) {        const {pathname} = new URL(request.url);        const companyName1 = `Bs Beverages`;        const companyName2 = `Around the Horn`;        const stmt = env.DB.prepare(`SELECT * FROM Customers WHERE CompanyName = ?`);
+        if (pathname === `/RUN`) {            const returnValue = await stmt.bind(companyName1).run();            return Response.json(returnValue);        }
+        return new Response(            `Welcome to the D1 API Playground!            \nChange the URL to test the various methods inside your index.js file.`,        );    },};
 ```
 
 Refer to [Workers Binding API](https://developers.cloudflare.com/d1/worker-api/) for more information.
@@ -170,41 +84,11 @@ You can use Wrangler commands to query a D1 database. Note that Wrangler command
 Terminal window
 
 ```
-
 npx wrangler d1 execute prod-d1-tutorial --command="SELECT * FROM Customers"
-
-
 ```
 
 ```
-
-🌀 Mapping SQL input into an array of statements
-
-🌀 Executing on local database production-db-backend (<DATABASE_ID>) from .wrangler/state/v3/d1:
-
-┌────────────┬─────────────────────┬───────────────────┐
-
-│ CustomerId │ CompanyName         │ ContactName       │
-
-├────────────┼─────────────────────┼───────────────────┤
-
-│ 1          │ Alfreds Futterkiste │ Maria Anders      │
-
-├────────────┼─────────────────────┼───────────────────┤
-
-│ 4          │ Around the Horn     │ Thomas Hardy      │
-
-├────────────┼─────────────────────┼───────────────────┤
-
-│ 11         │ Bs Beverages        │ Victoria Ashworth │
-
-├────────────┼─────────────────────┼───────────────────┤
-
-│ 13         │ Bs Beverages        │ Random Name       │
-
-└────────────┴─────────────────────┴───────────────────┘
-
-
+🌀 Mapping SQL input into an array of statements🌀 Executing on local database production-db-backend (<DATABASE_ID>) from .wrangler/state/v3/d1:┌────────────┬─────────────────────┬───────────────────┐│ CustomerId │ CompanyName         │ ContactName       │├────────────┼─────────────────────┼───────────────────┤│ 1          │ Alfreds Futterkiste │ Maria Anders      │├────────────┼─────────────────────┼───────────────────┤│ 4          │ Around the Horn     │ Thomas Hardy      │├────────────┼─────────────────────┼───────────────────┤│ 11         │ Bs Beverages        │ Victoria Ashworth │├────────────┼─────────────────────┼───────────────────┤│ 13         │ Bs Beverages        │ Random Name       │└────────────┴─────────────────────┴───────────────────┘
 ```
 
 ```json

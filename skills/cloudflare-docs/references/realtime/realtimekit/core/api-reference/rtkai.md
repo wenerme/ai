@@ -5,7 +5,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -14,12 +14,12 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 This module consists of the `ai` object which is used to interface with product's AI features. You can obtain the live meeting transcript and use other meeting AI features such as summary, and agenda using this object.
 
 * [RTKAi](#module%5FRTKAi)  
-   * _instance_  
-         * [.telemetry](#module%5FRTKAi+telemetry)  
-         * [.onTranscript(transcript)](#module%5FRTKAi+onTranscript)  
-   * _static_  
-         * [.parseTranscript(transcriptData, \[isPartialTranscript\])](#module%5FRTKAi.parseTranscript)  
-         * [.parseTranscripts(transcriptData)](#module%5FRTKAi.parseTranscripts)
+  * _instance_  
+    * [.telemetry](#module%5FRTKAi+telemetry)
+    * [.onTranscript(transcript)](#module%5FRTKAi+onTranscript)
+  * _static_  
+    * [.parseTranscript(transcriptData, \[isPartialTranscript\])](#module%5FRTKAi.parseTranscript)
+    * [.parseTranscripts(transcriptData)](#module%5FRTKAi.parseTranscripts)
 
 ### meeting.ai.telemetry
 
@@ -39,10 +39,10 @@ Parse a single line transcript
 
 **Kind**: static method of [RTKAi](#module%5FRTKAi)
 
-| Param                   | Type    | Default                      | Description                       |
-| ----------------------- | ------- | ---------------------------- | --------------------------------- |
-| transcriptData          | string  | The transcript data to parse |                                   |
-| \[isPartialTranscript\] | boolean | false                        | Whether the transcript is partial |
+| Param                   | Type    | Default | Description                       |
+| ----------------------- | ------- | ------- | --------------------------------- |
+| transcriptData          | string  |         | The transcript data to parse      |
+| \[isPartialTranscript\] | boolean | false   | Whether the transcript is partial |
 
 ### meeting.ai.parseTranscripts(transcriptData)
 

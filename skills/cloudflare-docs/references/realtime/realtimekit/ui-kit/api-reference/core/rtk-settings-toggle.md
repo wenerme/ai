@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,10 +17,7 @@ A button which toggles visibility of settings module. When clicked it emits a `r
 TypeScript
 
 ```
-
 { activeSettings: boolean; }
-
-
 ```
 
 ## Properties
@@ -38,37 +35,18 @@ TypeScript
 ### Basic Usage
 
 ```
-
 <rtk-settings-toggle></rtk-settings-toggle>
-
-
 ```
 
 ### With Properties
 
 ```
-
-<rtk-settings-toggle
-
- size="md"
-
- variant"button">
-
-</rtk-settings-toggle>
-
-
+<rtk-settings-toggle size="md" variant"button"></rtk-settings-toggle>
 ```
 
 ```
-
-<script>
-
-  const el = document.querySelector("rtk-settings-toggle");
-
-
+<script>  const el = document.querySelector("rtk-settings-toggle");
 </script>
-
-
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2-sql/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,24 +23,7 @@ R2 SQL is Cloudflare's serverless, distributed, analytics query engine for query
 ## Query syntax
 
 ```
-
-SELECT column_list | expression | aggregation_function
-
-FROM namespace_name.table_name
-
-[JOIN namespace_name.table_name ON condition]
-
-[WHERE conditions]
-
-[GROUP BY column_list]
-
-[HAVING conditions]
-
-[ORDER BY expression [ASC | DESC]]
-
-[LIMIT number]
-
-
+SELECT column_list | expression | aggregation_functionFROM namespace_name.table_name[JOIN namespace_name.table_name ON condition][WHERE conditions][GROUP BY column_list][HAVING conditions][ORDER BY expression [ASC | DESC]][LIMIT number]
 ```
 
 ---
@@ -52,10 +35,7 @@ FROM namespace_name.table_name
 Lists all available namespaces.
 
 ```
-
 SHOW DATABASES;
-
-
 ```
 
 ### SHOW NAMESPACES
@@ -63,10 +43,7 @@ SHOW DATABASES;
 Alias for `SHOW DATABASES`. Lists all available namespaces.
 
 ```
-
 SHOW NAMESPACES;
-
-
 ```
 
 ### SHOW TABLES
@@ -74,10 +51,7 @@ SHOW NAMESPACES;
 Lists all tables within a specific namespace.
 
 ```
-
 SHOW TABLES IN namespace_name;
-
-
 ```
 
 ### DESCRIBE
@@ -85,10 +59,7 @@ SHOW TABLES IN namespace_name;
 Describes the structure of a table, showing column names and data types.
 
 ```
-
 DESCRIBE namespace_name.table_name;
-
-
 ```
 
 ---
@@ -98,10 +69,7 @@ DESCRIBE namespace_name.table_name;
 ### Syntax
 
 ```
-
 SELECT [DISTINCT] column_specification [, column_specification, ...]
-
-
 ```
 
 ### Column specification
@@ -117,18 +85,7 @@ SELECT [DISTINCT] column_specification [, column_specification, ...]
 Use `DISTINCT` to eliminate duplicate rows from the result set:
 
 ```
-
-SELECT DISTINCT region, department
-
-FROM my_namespace.sales_data
-
-WHERE total_amount > 1000
-
-ORDER BY region, department
-
-LIMIT 100
-
-
+SELECT DISTINCT region, departmentFROM my_namespace.sales_dataWHERE total_amount > 1000ORDER BY region, departmentLIMIT 100
 ```
 
 For large datasets where approximate results are acceptable, `approx_distinct()` is a faster alternative for counting unique values.
@@ -136,14 +93,7 @@ For large datasets where approximate results are acceptable, `approx_distinct()`
 ### Examples
 
 ```
-
-SELECT * FROM my_namespace.sales_data LIMIT 10
-
-SELECT customer_id, region, total_amount FROM my_namespace.sales_data LIMIT 10
-
-SELECT region, total_amount * 1.1 AS total_with_tax FROM my_namespace.sales_data LIMIT 10
-
-
+SELECT * FROM my_namespace.sales_data LIMIT 10SELECT customer_id, region, total_amount FROM my_namespace.sales_data LIMIT 10SELECT region, total_amount * 1.1 AS total_with_tax FROM my_namespace.sales_data LIMIT 10
 ```
 
 ---
@@ -155,20 +105,7 @@ CTEs let you define named temporary result sets using `WITH` that you can refere
 ### Syntax
 
 ```
-
-WITH cte_name AS (
-
-    SELECT ...
-
-    FROM namespace_name.table_name
-
-    [WHERE ...]
-
-)
-
-SELECT ... FROM cte_name
-
-
+WITH cte_name AS (    SELECT ...    FROM namespace_name.table_name    [WHERE ...])SELECT ... FROM cte_name
 ```
 
 ### Chained CTEs
@@ -176,112 +113,19 @@ SELECT ... FROM cte_name
 A CTE can reference a previously defined CTE.
 
 ```
-
-WITH filtered AS (
-
-    SELECT customer_id, department, total_amount
-
-    FROM my_namespace.sales_data
-
-    WHERE total_amount > 0
-
-),
-
-summary AS (
-
-    SELECT department,
-
-           COUNT(*) AS order_count,
-
-           round(AVG(total_amount), 2) AS avg_amount
-
-    FROM filtered
-
-    GROUP BY department
-
-)
-
-SELECT *
-
-FROM summary
-
-WHERE order_count > 100
-
-ORDER BY avg_amount DESC
-
-
+WITH filtered AS (    SELECT customer_id, department, total_amount    FROM my_namespace.sales_data    WHERE total_amount > 0),summary AS (    SELECT department,           COUNT(*) AS order_count,           round(AVG(total_amount), 2) AS avg_amount    FROM filtered    GROUP BY department)SELECT *FROM summaryWHERE order_count > 100ORDER BY avg_amount DESC
 ```
 
 ### CTE joined with another table
 
 ```
-
-WITH enterprise_zones AS (
-
-    SELECT zone_id, domain, plan
-
-    FROM my_namespace.zones
-
-    WHERE plan = 'enterprise'
-
-)
-
-SELECT ez.domain, f.action, COUNT(*) AS cnt
-
-FROM enterprise_zones ez
-
-INNER JOIN my_namespace.firewall_events f ON ez.zone_id = f.zone_id
-
-GROUP BY ez.domain, f.action
-
-ORDER BY cnt DESC
-
-LIMIT 20
-
-
+WITH enterprise_zones AS (    SELECT zone_id, domain, plan    FROM my_namespace.zones    WHERE plan = 'enterprise')SELECT ez.domain, f.action, COUNT(*) AS cntFROM enterprise_zones ezINNER JOIN my_namespace.firewall_events f ON ez.zone_id = f.zone_idGROUP BY ez.domain, f.actionORDER BY cnt DESCLIMIT 20
 ```
 
 ### Two CTEs joined together
 
 ```
-
-WITH top_zones AS (
-
-    SELECT zone_id, COUNT(*) AS req_count
-
-    FROM my_namespace.http_requests
-
-    GROUP BY zone_id
-
-    ORDER BY req_count DESC
-
-    LIMIT 50
-
-),
-
-zone_threats AS (
-
-    SELECT zone_id, COUNT(*) AS threat_count
-
-    FROM my_namespace.firewall_events
-
-    WHERE risk_score > 0.5
-
-    GROUP BY zone_id
-
-)
-
-SELECT tz.zone_id, tz.req_count, COALESCE(zt.threat_count, 0) AS threat_count
-
-FROM top_zones tz
-
-LEFT JOIN zone_threats zt ON tz.zone_id = zt.zone_id
-
-ORDER BY tz.req_count DESC
-
-LIMIT 20
-
-
+WITH top_zones AS (    SELECT zone_id, COUNT(*) AS req_count    FROM my_namespace.http_requests    GROUP BY zone_id    ORDER BY req_count DESC    LIMIT 50),zone_threats AS (    SELECT zone_id, COUNT(*) AS threat_count    FROM my_namespace.firewall_events    WHERE risk_score > 0.5    GROUP BY zone_id)SELECT tz.zone_id, tz.req_count, COALESCE(zt.threat_count, 0) AS threat_countFROM top_zones tzLEFT JOIN zone_threats zt ON tz.zone_id = zt.zone_idORDER BY tz.req_count DESCLIMIT 20
 ```
 
 ---
@@ -291,10 +135,7 @@ LIMIT 20
 ### Syntax
 
 ```
-
 SELECT * FROM namespace_name.table_name
-
-
 ```
 
 R2 SQL queries can reference one or more tables. Tables are specified as `namespace_name.table_name`. Multiple tables can be combined using JOINs or comma-separated syntax. Refer to the [JOIN clause](#join-clause) section for details.
@@ -319,29 +160,8 @@ R2 SQL supports joining multiple Iceberg tables in a single query. All join type
 ### Syntax
 
 ```
-
--- Explicit JOIN
-
-SELECT columns
-
-FROM namespace.table1 alias1
-
-[INNER | LEFT | RIGHT | FULL OUTER | CROSS] JOIN namespace.table2 alias2
-
-  ON alias1.column = alias2.column
-
-[WHERE conditions]
-
-
--- Implicit join
-
-SELECT columns
-
-FROM namespace.table1 alias1, namespace.table2 alias2
-
-WHERE alias1.column = alias2.column
-
-
+-- Explicit JOINSELECT columnsFROM namespace.table1 alias1[INNER | LEFT | RIGHT | FULL OUTER | CROSS] JOIN namespace.table2 alias2  ON alias1.column = alias2.column[WHERE conditions]
+-- Implicit joinSELECT columnsFROM namespace.table1 alias1, namespace.table2 alias2WHERE alias1.column = alias2.column
 ```
 
 ### Multi-way joins
@@ -349,24 +169,7 @@ WHERE alias1.column = alias2.column
 You can join three or more tables in a single query:
 
 ```
-
-SELECT z.domain, h.method, f.action, COUNT(*) AS cnt
-
-FROM my_namespace.zones z
-
-INNER JOIN my_namespace.http_requests h ON z.zone_id = h.zone_id
-
-INNER JOIN my_namespace.firewall_events f ON z.zone_id = f.zone_id
-
-WHERE h.status_code >= 400
-
-GROUP BY z.domain, h.method, f.action
-
-ORDER BY cnt DESC
-
-LIMIT 20
-
-
+SELECT z.domain, h.method, f.action, COUNT(*) AS cntFROM my_namespace.zones zINNER JOIN my_namespace.http_requests h ON z.zone_id = h.zone_idINNER JOIN my_namespace.firewall_events f ON z.zone_id = f.zone_idWHERE h.status_code >= 400GROUP BY z.domain, h.method, f.actionORDER BY cnt DESCLIMIT 20
 ```
 
 ### Self-joins
@@ -374,22 +177,7 @@ LIMIT 20
 A table can be joined with itself using different aliases:
 
 ```
-
-SELECT f1.source_ip, f1.zone_id AS zone1, f2.zone_id AS zone2
-
-FROM my_namespace.firewall_events f1
-
-INNER JOIN my_namespace.firewall_events f2
-
-  ON f1.source_ip = f2.source_ip
-
-  AND f1.zone_id < f2.zone_id
-
-WHERE f1.action = 'block'
-
-LIMIT 20
-
-
+SELECT f1.source_ip, f1.zone_id AS zone1, f2.zone_id AS zone2FROM my_namespace.firewall_events f1INNER JOIN my_namespace.firewall_events f2  ON f1.source_ip = f2.source_ip  AND f1.zone_id < f2.zone_idWHERE f1.action = 'block'LIMIT 20
 ```
 
 ### Join conditions
@@ -403,17 +191,8 @@ Note
 Nested (parenthesized) joins are not supported. Write multi-way joins as a flat sequence of `JOIN` clauses instead of grouping them with parentheses.
 
 ```
-
--- Not supported
-
-SELECT * FROM (t1 JOIN t2 ON t1.id = t2.id) JOIN t3 ON t2.id = t3.id
-
-
--- Supported
-
-SELECT * FROM t1 JOIN t2 ON t1.id = t2.id JOIN t3 ON t2.id = t3.id
-
-
+-- Not supportedSELECT * FROM (t1 JOIN t2 ON t1.id = t2.id) JOIN t3 ON t2.id = t3.id
+-- SupportedSELECT * FROM t1 JOIN t2 ON t1.id = t2.id JOIN t3 ON t2.id = t3.id
 ```
 
 ### Best practices for joins
@@ -433,28 +212,7 @@ R2 SQL supports subqueries in multiple positions within a query.
 A subquery in the `FROM` clause creates a derived table that can be referenced in the outer query:
 
 ```
-
-SELECT sub.domain, sub.total_requests
-
-FROM (
-
-    SELECT z.domain, COUNT(*) AS total_requests
-
-    FROM my_namespace.zones z
-
-    INNER JOIN my_namespace.http_requests h ON z.zone_id = h.zone_id
-
-    GROUP BY z.domain
-
-) sub
-
-WHERE sub.total_requests > 1000
-
-ORDER BY sub.total_requests DESC
-
-LIMIT 20
-
-
+SELECT sub.domain, sub.total_requestsFROM (    SELECT z.domain, COUNT(*) AS total_requests    FROM my_namespace.zones z    INNER JOIN my_namespace.http_requests h ON z.zone_id = h.zone_id    GROUP BY z.domain) subWHERE sub.total_requests > 1000ORDER BY sub.total_requests DESCLIMIT 20
 ```
 
 Note
@@ -464,36 +222,7 @@ Note
 Derived tables can be joined with other derived tables or regular tables:
 
 ```
-
-SELECT req.domain, req.total_reqs, fw.total_events
-
-FROM (
-
-    SELECT zone_id, domain, COUNT(*) AS total_reqs
-
-    FROM my_namespace.zones z
-
-    INNER JOIN my_namespace.http_requests h ON z.zone_id = h.zone_id
-
-    GROUP BY zone_id, domain
-
-) req
-
-INNER JOIN (
-
-    SELECT zone_id, COUNT(*) AS total_events
-
-    FROM my_namespace.firewall_events
-
-    GROUP BY zone_id
-
-) fw ON req.zone_id = fw.zone_id
-
-ORDER BY fw.total_events DESC
-
-LIMIT 20
-
-
+SELECT req.domain, req.total_reqs, fw.total_eventsFROM (    SELECT zone_id, domain, COUNT(*) AS total_reqs    FROM my_namespace.zones z    INNER JOIN my_namespace.http_requests h ON z.zone_id = h.zone_id    GROUP BY zone_id, domain) reqINNER JOIN (    SELECT zone_id, COUNT(*) AS total_events    FROM my_namespace.firewall_events    GROUP BY zone_id) fw ON req.zone_id = fw.zone_idORDER BY fw.total_events DESCLIMIT 20
 ```
 
 ### `IN` / `NOT IN` subqueries
@@ -501,47 +230,11 @@ LIMIT 20
 Filter rows based on whether a value exists in the result of a subquery:
 
 ```
-
--- Find requests from enterprise zones
-
-SELECT method, status_code, COUNT(*) AS cnt
-
-FROM my_namespace.http_requests
-
-WHERE zone_id IN (
-
-    SELECT zone_id FROM my_namespace.zones WHERE plan = 'enterprise'
-
-)
-
-GROUP BY method, status_code
-
-ORDER BY cnt DESC
-
-LIMIT 20
-
-
+-- Find requests from enterprise zonesSELECT method, status_code, COUNT(*) AS cntFROM my_namespace.http_requestsWHERE zone_id IN (    SELECT zone_id FROM my_namespace.zones WHERE plan = 'enterprise')GROUP BY method, status_codeORDER BY cnt DESCLIMIT 20
 ```
 
 ```
-
--- NOT IN example
-
-SELECT zone_id, COUNT(*) AS cnt
-
-FROM my_namespace.http_requests
-
-WHERE zone_id NOT IN (
-
-    SELECT zone_id FROM my_namespace.firewall_events WHERE action = 'block'
-
-)
-
-GROUP BY zone_id
-
-LIMIT 10
-
-
+-- NOT IN exampleSELECT zone_id, COUNT(*) AS cntFROM my_namespace.http_requestsWHERE zone_id NOT IN (    SELECT zone_id FROM my_namespace.firewall_events WHERE action = 'block')GROUP BY zone_idLIMIT 10
 ```
 
 Warning
@@ -549,24 +242,7 @@ Warning
 `NOT IN` subqueries are not supported on nullable columns. If the subquery column can contain `NULL` values, use `NOT EXISTS` instead. `SELECT DISTINCT` is also not supported inside subqueries — omit the `DISTINCT` keyword or use `NOT EXISTS`.
 
 ```
-
--- Instead of NOT IN on a nullable column:
-
-SELECT z.domain
-
-FROM my_namespace.zones z
-
-WHERE NOT EXISTS (
-
-    SELECT 1 FROM my_namespace.firewall_events f
-
-    WHERE f.zone_id = z.zone_id
-
-)
-
-LIMIT 20
-
-
+-- Instead of NOT IN on a nullable column:SELECT z.domainFROM my_namespace.zones zWHERE NOT EXISTS (    SELECT 1 FROM my_namespace.firewall_events f    WHERE f.zone_id = z.zone_id)LIMIT 20
 ```
 
 ### `EXISTS` / `NOT EXISTS` subqueries
@@ -574,49 +250,11 @@ LIMIT 20
 Test for the existence of rows matching a correlated condition:
 
 ```
-
--- Find zones with blocked firewall events (semi-join)
-
-SELECT z.domain, z.plan
-
-FROM my_namespace.zones z
-
-WHERE EXISTS (
-
-    SELECT 1 FROM my_namespace.firewall_events f
-
-    WHERE f.zone_id = z.zone_id AND f.action = 'block'
-
-)
-
-ORDER BY z.domain
-
-LIMIT 20
-
-
+-- Find zones with blocked firewall events (semi-join)SELECT z.domain, z.planFROM my_namespace.zones zWHERE EXISTS (    SELECT 1 FROM my_namespace.firewall_events f    WHERE f.zone_id = z.zone_id AND f.action = 'block')ORDER BY z.domainLIMIT 20
 ```
 
 ```
-
--- Find zones with NO firewall events (anti-join)
-
-SELECT z.domain, z.plan
-
-FROM my_namespace.zones z
-
-WHERE NOT EXISTS (
-
-    SELECT 1 FROM my_namespace.firewall_events f
-
-    WHERE f.zone_id = z.zone_id
-
-)
-
-ORDER BY z.domain
-
-LIMIT 20
-
-
+-- Find zones with NO firewall events (anti-join)SELECT z.domain, z.planFROM my_namespace.zones zWHERE NOT EXISTS (    SELECT 1 FROM my_namespace.firewall_events f    WHERE f.zone_id = z.zone_id)ORDER BY z.domainLIMIT 20
 ```
 
 ### Scalar subqueries
@@ -624,41 +262,11 @@ LIMIT 20
 A subquery that returns a single value can be used in `SELECT`, `WHERE`, or `HAVING`:
 
 ```
-
--- In SELECT (constant value per row)
-
-SELECT z.domain, z.plan,
-
-       (SELECT COUNT(*) FROM my_namespace.zones) AS total_zones
-
-FROM my_namespace.zones z
-
-WHERE z.plan = 'enterprise'
-
-LIMIT 10
-
-
+-- In SELECT (constant value per row)SELECT z.domain, z.plan,       (SELECT COUNT(*) FROM my_namespace.zones) AS total_zonesFROM my_namespace.zones zWHERE z.plan = 'enterprise'LIMIT 10
 ```
 
 ```
-
--- In WHERE (comparison)
-
-SELECT z.domain, z.plan, z.requests_30d
-
-FROM my_namespace.zones z
-
-WHERE z.requests_30d > (
-
-    SELECT AVG(requests_30d) FROM my_namespace.zones
-
-)
-
-ORDER BY z.requests_30d DESC
-
-LIMIT 20
-
-
+-- In WHERE (comparison)SELECT z.domain, z.plan, z.requests_30dFROM my_namespace.zones zWHERE z.requests_30d > (    SELECT AVG(requests_30d) FROM my_namespace.zones)ORDER BY z.requests_30d DESCLIMIT 20
 ```
 
 ---
@@ -668,10 +276,7 @@ LIMIT 20
 ### Syntax
 
 ```
-
 SELECT * FROM namespace_name.table_name WHERE condition [AND | OR condition ...]
-
-
 ```
 
 ### Conditions
@@ -717,29 +322,10 @@ SELECT * FROM namespace_name.table_name WHERE condition [AND | OR condition ...]
 ### Examples
 
 ```
-
-SELECT * FROM my_namespace.sales_data
-
-WHERE timestamp BETWEEN '2025-09-24T01:00:00Z' AND '2025-09-25T01:00:00Z'
-
-
-SELECT * FROM my_namespace.sales_data
-
-WHERE status = 200 AND response_time > 1000
-
-
-SELECT * FROM my_namespace.sales_data
-
-WHERE (region = 'North' OR region = 'South')
-
-  AND total_amount IS NOT NULL
-
-
-SELECT * FROM my_namespace.sales_data
-
-WHERE department ILIKE '%eng%'
-
-
+SELECT * FROM my_namespace.sales_dataWHERE timestamp BETWEEN '2025-09-24T01:00:00Z' AND '2025-09-25T01:00:00Z'
+SELECT * FROM my_namespace.sales_dataWHERE status = 200 AND response_time > 1000
+SELECT * FROM my_namespace.sales_dataWHERE (region = 'North' OR region = 'South')  AND total_amount IS NOT NULL
+SELECT * FROM my_namespace.sales_dataWHERE department ILIKE '%eng%'
 ```
 
 ---
@@ -749,36 +335,14 @@ WHERE department ILIKE '%eng%'
 ### Syntax
 
 ```
-
-SELECT column_list, aggregation_function(column)
-
-FROM namespace_name.table_name
-
-[WHERE conditions]
-
-GROUP BY column_list
-
-
+SELECT column_list, aggregation_function(column)FROM namespace_name.table_name[WHERE conditions]GROUP BY column_list
 ```
 
 ### Examples
 
 ```
-
-SELECT department, COUNT(*) AS dept_count
-
-FROM my_namespace.sales_data
-
-GROUP BY department
-
-
-SELECT department, category, SUM(total_amount) AS total
-
-FROM my_namespace.sales_data
-
-GROUP BY department, category
-
-
+SELECT department, COUNT(*) AS dept_countFROM my_namespace.sales_dataGROUP BY department
+SELECT department, category, SUM(total_amount) AS totalFROM my_namespace.sales_dataGROUP BY department, category
 ```
 
 ---
@@ -788,40 +352,14 @@ GROUP BY department, category
 ### Syntax
 
 ```
-
-SELECT column_list, aggregation_function(column) AS alias
-
-FROM namespace_name.table_name
-
-GROUP BY column_list
-
-HAVING aggregation_function(column) comparison_operator value
-
-
+SELECT column_list, aggregation_function(column) AS aliasFROM namespace_name.table_nameGROUP BY column_listHAVING aggregation_function(column) comparison_operator value
 ```
 
 ### Examples
 
 ```
-
-SELECT department, COUNT(*) AS dept_count
-
-FROM my_namespace.sales_data
-
-GROUP BY department
-
-HAVING COUNT(*) > 1000
-
-
-SELECT region, SUM(total_amount) AS total
-
-FROM my_namespace.sales_data
-
-GROUP BY region
-
-HAVING SUM(total_amount) > 1000000
-
-
+SELECT department, COUNT(*) AS dept_countFROM my_namespace.sales_dataGROUP BY departmentHAVING COUNT(*) > 1000
+SELECT region, SUM(total_amount) AS totalFROM my_namespace.sales_dataGROUP BY regionHAVING SUM(total_amount) > 1000000
 ```
 
 ---
@@ -831,10 +369,7 @@ HAVING SUM(total_amount) > 1000000
 ### Syntax
 
 ```
-
 ORDER BY expression [ASC | DESC] [, expression [ASC | DESC], ...]
-
-
 ```
 
 * **ASC**: Ascending order (default)
@@ -844,27 +379,8 @@ ORDER BY expression [ASC | DESC] [, expression [ASC | DESC], ...]
 ### Examples
 
 ```
-
-SELECT customer_id, total_amount
-
-FROM my_namespace.sales_data
-
-WHERE total_amount IS NOT NULL
-
-ORDER BY total_amount DESC
-
-LIMIT 50
-
-
-SELECT department, COUNT(*) AS dept_count
-
-FROM my_namespace.sales_data
-
-GROUP BY department
-
-ORDER BY dept_count DESC, department ASC
-
-
+SELECT customer_id, total_amountFROM my_namespace.sales_dataWHERE total_amount IS NOT NULLORDER BY total_amount DESCLIMIT 50
+SELECT department, COUNT(*) AS dept_countFROM my_namespace.sales_dataGROUP BY departmentORDER BY dept_count DESC, department ASC
 ```
 
 ---
@@ -874,10 +390,7 @@ ORDER BY dept_count DESC, department ASC
 ### Syntax
 
 ```
-
 LIMIT number
-
-
 ```
 
 * **Type**: Integer only
@@ -886,10 +399,7 @@ LIMIT number
 ### Examples
 
 ```
-
 SELECT * FROM my_namespace.sales_data LIMIT 100
-
-
 ```
 
 ---
@@ -901,14 +411,7 @@ Set operations combine the results of two or more `SELECT` statements.
 ### Syntax
 
 ```
-
-SELECT ... FROM table1
-
-UNION | UNION ALL | INTERSECT | EXCEPT
-
-SELECT ... FROM table2
-
-
+SELECT ... FROM table1UNION | UNION ALL | INTERSECT | EXCEPTSELECT ... FROM table2
 ```
 
 ### Supported operations
@@ -925,46 +428,19 @@ SELECT ... FROM table2
 #### Union
 
 ```
-
--- Find zones that had either firewall blocks OR high-risk requests
-
-SELECT zone_id FROM my_namespace.firewall_events WHERE action = 'block'
-
-UNION
-
-SELECT zone_id FROM my_namespace.http_requests WHERE risk_score > 0.8
-
-
+-- Find zones that had either firewall blocks OR high-risk requestsSELECT zone_id FROM my_namespace.firewall_events WHERE action = 'block'UNIONSELECT zone_id FROM my_namespace.http_requests WHERE risk_score > 0.8
 ```
 
 #### Intersect
 
 ```
-
--- Find zones with both firewall blocks AND entries in the zones table
-
-SELECT zone_id FROM my_namespace.firewall_events WHERE action = 'block'
-
-INTERSECT
-
-SELECT zone_id FROM my_namespace.zones WHERE plan = 'enterprise'
-
-
+-- Find zones with both firewall blocks AND entries in the zones tableSELECT zone_id FROM my_namespace.firewall_events WHERE action = 'block'INTERSECTSELECT zone_id FROM my_namespace.zones WHERE plan = 'enterprise'
 ```
 
 #### Except
 
 ```
-
--- Find enterprise zones that have no firewall events
-
-SELECT zone_id FROM my_namespace.zones WHERE plan = 'enterprise'
-
-EXCEPT
-
-SELECT zone_id FROM my_namespace.firewall_events
-
-
+-- Find enterprise zones that have no firewall eventsSELECT zone_id FROM my_namespace.zones WHERE plan = 'enterprise'EXCEPTSELECT zone_id FROM my_namespace.firewall_events
 ```
 
 ### Requirements
@@ -980,16 +456,7 @@ SELECT zone_id FROM my_namespace.firewall_events
 Returns the execution plan for a query without running it.
 
 ```
-
-EXPLAIN SELECT department, COUNT(*) AS dept_count
-
-FROM my_namespace.sales_data
-
-WHERE total_amount IS NOT NULL
-
-GROUP BY department;
-
-
+EXPLAIN SELECT department, COUNT(*) AS dept_countFROM my_namespace.sales_dataWHERE total_amount IS NOT NULLGROUP BY department;
 ```
 
 ### EXPLAIN FORMAT JSON
@@ -997,10 +464,7 @@ GROUP BY department;
 Returns the execution plan as structured JSON for programmatic analysis.
 
 ```
-
 EXPLAIN FORMAT JSON SELECT * FROM my_namespace.sales_data LIMIT 10;
-
-
 ```
 
 ---
@@ -1012,12 +476,7 @@ Expressions can be used in `SELECT`, `WHERE`, `GROUP BY`, `HAVING`, and `ORDER B
 ### Literals
 
 ```
-
-SELECT 42 AS int_val, 3.14 AS float_val, 'hello' AS str_val, TRUE AS bool_val, NULL AS null_val
-
-FROM my_namespace.sales_data LIMIT 1
-
-
+SELECT 42 AS int_val, 3.14 AS float_val, 'hello' AS str_val, TRUE AS bool_val, NULL AS null_valFROM my_namespace.sales_data LIMIT 1
 ```
 
 ### Arithmetic operators
@@ -1025,29 +484,13 @@ FROM my_namespace.sales_data LIMIT 1
 `+`, `-`, `*`, `/`, `%`
 
 ```
-
-SELECT customer_id, total_amount * 1.1 AS total_with_tax, total_amount % 10 AS remainder
-
-FROM my_namespace.sales_data
-
-WHERE total_amount IS NOT NULL
-
-LIMIT 5
-
-
+SELECT customer_id, total_amount * 1.1 AS total_with_tax, total_amount % 10 AS remainderFROM my_namespace.sales_dataWHERE total_amount IS NOT NULLLIMIT 5
 ```
 
 ### String concatenation
 
 ```
-
-SELECT customer_id || ' - ' || region AS label
-
-FROM my_namespace.sales_data
-
-LIMIT 5
-
-
+SELECT customer_id || ' - ' || region AS labelFROM my_namespace.sales_dataLIMIT 5
 ```
 
 ### CASE expressions
@@ -1055,85 +498,27 @@ LIMIT 5
 Searched form:
 
 ```
-
-SELECT customer_id,
-
-    CASE
-
-        WHEN total_amount > 1000 THEN 'high'
-
-        WHEN total_amount > 100 THEN 'medium'
-
-        ELSE 'low'
-
-    END AS tier
-
-FROM my_namespace.sales_data
-
-LIMIT 10
-
-
+SELECT customer_id,    CASE        WHEN total_amount > 1000 THEN 'high'        WHEN total_amount > 100 THEN 'medium'        ELSE 'low'    END AS tierFROM my_namespace.sales_dataLIMIT 10
 ```
 
 Simple form:
 
 ```
-
-SELECT customer_id,
-
-    CASE region
-
-        WHEN 'North' THEN 'N'
-
-        WHEN 'South' THEN 'S'
-
-        ELSE 'Other'
-
-    END AS region_code
-
-FROM my_namespace.sales_data
-
-LIMIT 10
-
-
+SELECT customer_id,    CASE region        WHEN 'North' THEN 'N'        WHEN 'South' THEN 'S'        ELSE 'Other'    END AS region_codeFROM my_namespace.sales_dataLIMIT 10
 ```
 
 ### Type casting
 
 ```
-
--- CAST
-
-SELECT CAST(total_amount AS INT) AS amount_int FROM my_namespace.sales_data LIMIT 5
-
-
--- TRY_CAST (returns NULL on failure instead of error)
-
-SELECT TRY_CAST(customer_id AS INT) AS id_int FROM my_namespace.sales_data LIMIT 5
-
-
--- Shorthand (::)
-
-SELECT total_amount::INT AS amount_int FROM my_namespace.sales_data LIMIT 5
-
-
+-- CASTSELECT CAST(total_amount AS INT) AS amount_int FROM my_namespace.sales_data LIMIT 5
+-- TRY_CAST (returns NULL on failure instead of error)SELECT TRY_CAST(customer_id AS INT) AS id_int FROM my_namespace.sales_data LIMIT 5
+-- Shorthand (::)SELECT total_amount::INT AS amount_int FROM my_namespace.sales_data LIMIT 5
 ```
 
 ### EXTRACT
 
 ```
-
-SELECT EXTRACT(YEAR FROM timestamp) AS yr,
-
-       EXTRACT(MONTH FROM timestamp) AS mo,
-
-       EXTRACT(DAY FROM timestamp) AS dy
-
-FROM my_namespace.sales_data
-
-LIMIT 1
-
-
+SELECT EXTRACT(YEAR FROM timestamp) AS yr,       EXTRACT(MONTH FROM timestamp) AS mo,       EXTRACT(DAY FROM timestamp) AS dyFROM my_namespace.sales_dataLIMIT 1
 ```
 
 ---
@@ -1163,10 +548,7 @@ LIMIT 1
 Use parentheses to override default precedence:
 
 ```
-
 SELECT * FROM my_namespace.sales_data WHERE (status = 404 OR status = 500) AND region = 'North'
-
-
 ```
 
 ---
@@ -1176,83 +558,25 @@ SELECT * FROM my_namespace.sales_data WHERE (status = 404 OR status = 500) AND r
 ### Basic query
 
 ```
-
-SELECT *
-
-FROM my_namespace.sales_data
-
-WHERE timestamp BETWEEN '2025-09-24T01:00:00Z' AND '2025-09-25T01:00:00Z'
-
-LIMIT 100
-
-
+SELECT *FROM my_namespace.sales_dataWHERE timestamp BETWEEN '2025-09-24T01:00:00Z' AND '2025-09-25T01:00:00Z'LIMIT 100
 ```
 
 ### Filtered query with sorting
 
 ```
-
-SELECT customer_id, timestamp, status, total_amount
-
-FROM my_namespace.sales_data
-
-WHERE status >= 400 AND total_amount > 5000
-
-ORDER BY total_amount DESC
-
-LIMIT 50
-
-
+SELECT customer_id, timestamp, status, total_amountFROM my_namespace.sales_dataWHERE status >= 400 AND total_amount > 5000ORDER BY total_amount DESCLIMIT 50
 ```
 
 ### Aggregation with HAVING
 
 ```
-
-SELECT region, COUNT(*) AS region_count, AVG(total_amount) AS avg_amount
-
-FROM my_namespace.sales_data
-
-WHERE status = 'completed'
-
-GROUP BY region
-
-HAVING COUNT(*) > 1000
-
-ORDER BY avg_amount DESC
-
-LIMIT 20
-
-
+SELECT region, COUNT(*) AS region_count, AVG(total_amount) AS avg_amountFROM my_namespace.sales_dataWHERE status = 'completed'GROUP BY regionHAVING COUNT(*) > 1000ORDER BY avg_amount DESCLIMIT 20
 ```
 
 ### Conditional categorization
 
 ```
-
-SELECT customer_id,
-
-    CASE
-
-        WHEN total_amount >= 1000 THEN 'Premium'
-
-        WHEN total_amount >= 100 THEN 'Standard'
-
-        ELSE 'Basic'
-
-    END AS tier,
-
-    total_amount
-
-FROM my_namespace.sales_data
-
-WHERE total_amount IS NOT NULL
-
-ORDER BY total_amount DESC
-
-LIMIT 20
-
-
+SELECT customer_id,    CASE        WHEN total_amount >= 1000 THEN 'Premium'        WHEN total_amount >= 100 THEN 'Standard'        ELSE 'Basic'    END AS tier,    total_amountFROM my_namespace.sales_dataWHERE total_amount IS NOT NULLORDER BY total_amount DESCLIMIT 20
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,9 +19,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 **Action recommended - Node.js 18 end-of-life and impact on Pages Build System V2**
 * If you are using [Pages Build System V2](https://developers.cloudflare.com/pages/configuration/build-image/) for a Git-connected Pages project, note that the default Node.js version, **Node.js 18**, will end its LTS support on **April 30, 2025**.
 * Pages will not change the default Node.js version in the Build System V2 at this time, instead, we **strongly recommend pinning a modern Node.js version** to ensure your builds are consistent and secure.
-* You can [pin any Node.js version](https://developers.cloudflare.com/pages/configuration/build-image/#override-default-versions) by:  
-   1. Adding a `NODE_VERSION` environment variable with the desired version specified as the value.  
-   2. Adding a `.node-version` file with the desired version specified in the file.
+* You can [pin any Node.js version](https://developers.cloudflare.com/pages/configuration/build-image/#override-default-versions) by:
+  1. Adding a `NODE_VERSION` environment variable with the desired version specified as the value.
+  2. Adding a `.node-version` file with the desired version specified in the file.
 * Pinning helps avoid unexpected behavior and ensures your builds stay up-to-date with your chosen runtime. We also recommend pinning all critical tools and languages that your project relies on.
 
 ## 2025-02-26
@@ -32,15 +32,15 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 ## 2024-12-19
 
 **Cloudflare GitHub App Permissions Update**
-* Cloudflare is requesting updated permissions for the [Cloudflare GitHub App](https://github.com/apps/cloudflare-workers-and-pages) to enable features like automatically creating a repository on your GitHub account and deploying the new repository for you when getting started with a template. This feature is coming out soon to support a better onboarding experience.  
-   * **Requested permissions:**  
-         * [Repository Administration](https://docs.github.com/en/rest/authentication/permissions-required-for-github-apps?apiVersion=2022-11-28#repository-permissions-for-administration) (read/write) to create repositories.  
-         * [Contents](https://docs.github.com/en/rest/authentication/permissions-required-for-github-apps?apiVersion=2022-11-28#repository-permissions-for-contents) (read/write) to push code to the created repositories.  
-   * **Who is impacted:**  
-         * Existing users will be prompted to update permissions when GitHub sends an email with subject "\[GitHub\] Cloudflare Workers & Pages is requesting updated permission" on December 19th, 2024.  
-         * New users installing the app will see the updated permissions during the connecting repository process.  
-   * **Action:** Review and accept the permissions update to use upcoming features. _If you decline or take no action, you can continue connecting repositories and deploying changes via the Cloudflare GitHub App as you do today, but new features requiring these permissions will not be available._  
-   * **Questions?** Visit [#github-permissions-update](https://discord.com/channels/595317990191398933/1313895851520688163) in the Cloudflare Developers Discord.
+* Cloudflare is requesting updated permissions for the [Cloudflare GitHub App](https://github.com/apps/cloudflare-workers-and-pages) to enable features like automatically creating a repository on your GitHub account and deploying the new repository for you when getting started with a template. This feature is coming out soon to support a better onboarding experience.
+  * **Requested permissions:**
+    * [Repository Administration](https://docs.github.com/en/rest/authentication/permissions-required-for-github-apps?apiVersion=2022-11-28#repository-permissions-for-administration) (read/write) to create repositories.
+    * [Contents](https://docs.github.com/en/rest/authentication/permissions-required-for-github-apps?apiVersion=2022-11-28#repository-permissions-for-contents) (read/write) to push code to the created repositories.
+  * **Who is impacted:**
+    * Existing users will be prompted to update permissions when GitHub sends an email with subject "\[GitHub\] Cloudflare Workers & Pages is requesting updated permission" on December 19th, 2024.
+    * New users installing the app will see the updated permissions during the connecting repository process.
+  * **Action:** Review and accept the permissions update to use upcoming features. _If you decline or take no action, you can continue connecting repositories and deploying changes via the Cloudflare GitHub App as you do today, but new features requiring these permissions will not be available._
+  * **Questions?** Visit [#github-permissions-update](https://discord.com/channels/595317990191398933/1313895851520688163) in the Cloudflare Developers Discord.
 
 ## 2024-10-24
 
@@ -98,10 +98,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 ## 2023-03-20
 
 **Notifications for Pages are now available**
-* Notifications for Pages events are now available in the [Cloudflare dashboard](https://dash.cloudflare.com?to=/:account/notifications). Events supported include:  
-   * Deployment started.  
-   * Deployment succeeded.  
-   * Deployment failed.
+* Notifications for Pages events are now available in the [Cloudflare dashboard](https://dash.cloudflare.com?to=/:account/notifications). Events supported include:
+  * Deployment started.
+  * Deployment succeeded.
+  * Deployment failed.
 
 ## 2023-02-14
 
@@ -133,12 +133,12 @@ Updated all API messaging to be more helpful.
 
 **Functions GA and other updates**
 * Pages functions are now GA. For more information, refer to the [blog post](https://blog.cloudflare.com/pages-function-goes-ga/).
-* We also made the following updates to Functions:  
-   * [Functions metrics](https://dash.cloudflare.com?to=/:account/pages/view/:pages-project/analytics/production) are now available in the dashboard.  
-   * [Functions billing](https://developers.cloudflare.com/pages/functions/pricing/) is now available.  
-   * The [Unbound usage model](https://developers.cloudflare.com/workers/platform/limits/#response-limits) is now available for Functions.  
-   * [Secrets](https://developers.cloudflare.com/pages/functions/bindings/#secrets) are now available.  
-   * Functions tailing is now available via the [dashboard](https://dash.cloudflare.com?to=/:account/pages/view/:pages-project/:pages-deployment/functions) or with Wrangler (`wrangler pages deployment tail`).
+* We also made the following updates to Functions:
+  * [Functions metrics](https://dash.cloudflare.com?to=/:account/pages/view/:pages-project/analytics/production) are now available in the dashboard.
+  * [Functions billing](https://developers.cloudflare.com/pages/functions/pricing/) is now available.
+  * The [Unbound usage model](https://developers.cloudflare.com/workers/platform/limits/#response-limits) is now available for Functions.
+  * [Secrets](https://developers.cloudflare.com/pages/functions/bindings/#secrets) are now available.
+  * Functions tailing is now available via the [dashboard](https://dash.cloudflare.com?to=/:account/pages/view/:pages-project/:pages-deployment/functions) or with Wrangler (`wrangler pages deployment tail`).
 
 ## 2022-11-15
 

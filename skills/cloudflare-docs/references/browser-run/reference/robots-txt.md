@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -41,15 +41,8 @@ Include a reference to your sitemap in `robots.txt` so crawlers can discover you
 robots.txt
 
 ```
-
-User-agent: *
-
-Allow: /
-
-
+User-agent: *Allow: /
 Sitemap: https://example.com/sitemap.xml
-
-
 ```
 
 You can list multiple sitemaps:
@@ -57,17 +50,8 @@ You can list multiple sitemaps:
 robots.txt
 
 ```
-
-User-agent: *
-
-Allow: /
-
-
-Sitemap: https://example.com/sitemap.xml
-
-Sitemap: https://example.com/blog-sitemap.xml
-
-
+User-agent: *Allow: /
+Sitemap: https://example.com/sitemap.xmlSitemap: https://example.com/blog-sitemap.xml
 ```
 
 ### Set a crawl delay
@@ -77,17 +61,8 @@ Use `crawl-delay` to control how frequently crawlers request pages from your ser
 robots.txt
 
 ```
-
-User-agent: *
-
-Crawl-delay: 2
-
-Allow: /
-
-
+User-agent: *Crawl-delay: 2Allow: /
 Sitemap: https://example.com/sitemap.xml
-
-
 ```
 
 The value is in seconds. A `crawl-delay` of 2 means the crawler waits two seconds between requests.
@@ -103,12 +78,7 @@ To prevent all crawlers from accessing any page on your site:
 robots.txt
 
 ```
-
-User-agent: *
-
-Disallow: /
-
-
+User-agent: *Disallow: /
 ```
 
 This is the most restrictive configuration and blocks all compliant bots, not just Browser Run.
@@ -120,17 +90,8 @@ The [/crawl endpoint](https://developers.cloudflare.com/browser-run/quick-action
 robots.txt
 
 ```
-
-User-agent: CloudflareBrowserRenderingCrawler
-
-Disallow: /
-
-
-User-agent: *
-
-Allow: /
-
-
+User-agent: CloudflareBrowserRenderingCrawlerDisallow: /
+User-agent: *Allow: /
 ```
 
 ### Block the /crawl endpoint on specific paths
@@ -140,21 +101,8 @@ To allow the [/crawl endpoint](https://developers.cloudflare.com/browser-run/qui
 robots.txt
 
 ```
-
-User-agent: CloudflareBrowserRenderingCrawler
-
-Disallow: /admin/
-
-Disallow: /private/
-
-Allow: /
-
-
-User-agent: *
-
-Allow: /
-
-
+User-agent: CloudflareBrowserRenderingCrawlerDisallow: /admin/Disallow: /private/Allow: /
+User-agent: *Allow: /
 ```
 
 ## Best practices for sitemaps
@@ -164,34 +112,7 @@ Structure your sitemap to help crawlers process your site efficiently:
 sitemap.xml
 
 ```
-
-<?xml version="1.0" encoding="UTF-8"?>
-
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <url>
-
-    <loc>https://example.com/important-page</loc>
-
-    <lastmod>2025-01-15T00:00:00+00:00</lastmod>
-
-    <priority>1.0</priority>
-
-  </url>
-
-  <url>
-
-    <loc>https://example.com/other-page</loc>
-
-    <lastmod>2025-01-10T00:00:00+00:00</lastmod>
-
-    <priority>0.5</priority>
-
-  </url>
-
-</urlset>
-
-
+<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">  <url>    <loc>https://example.com/important-page</loc>    <lastmod>2025-01-15T00:00:00+00:00</lastmod>    <priority>1.0</priority>  </url>  <url>    <loc>https://example.com/other-page</loc>    <lastmod>2025-01-10T00:00:00+00:00</lastmod>    <priority>0.5</priority>  </url></urlset>
 ```
 
 | Attribute  | Purpose                       | Recommendation                                                                           |
@@ -207,32 +128,7 @@ For large sites with multiple sitemaps, use a sitemap index file. Browser Run us
 sitemap.xml
 
 ```
-
-<?xml version="1.0" encoding="UTF-8"?>
-
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  ...
-
-</urlset>
-
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-   <sitemap>
-
-      <loc>https://www.example.com/sitemap-products.xml</loc>
-
-   </sitemap>
-
-   <sitemap>
-
-      <loc>https://www.example.com/sitemap-blog.xml</loc>
-
-   </sitemap>
-
-</sitemapindex>
-
-
+<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">  ...</urlset><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">   <sitemap>      <loc>https://www.example.com/sitemap-products.xml</loc>   </sitemap>   <sitemap>      <loc>https://www.example.com/sitemap-blog.xml</loc>   </sitemap></sitemapindex>
 ```
 
 ### Caching headers

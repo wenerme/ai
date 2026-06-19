@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -39,18 +39,18 @@ This guide covers how to configure [Adobe Acrobat Sign ↗](https://helpx.adobe.
 3. Enter a hostname (for example, `yourcompanyname`). Users can use this URL or `https://secure.adobesign.com/public/login` to sign in via SSO.
 4. (Optional) For **Single Sign On Login Message**, enter a custom message (for example, `Log in via SSO`). The default message is **Sign in using your corporate credentials**.
 5. Fill in the following fields:  
-   * **Entity ID/Issuer URL**: Access Entity ID or Issuer from application configuration in Cloudflare One.  
-   * **Login URL/SSO Endpoint**: SSO endpoint from application configuration in Cloudflare One.  
-   * **IdP Certificate**: Public key from application configuration in Cloudflare One. Wrap the certificate in `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`.
+  * **Entity ID/Issuer URL**: Access Entity ID or Issuer from application configuration in Cloudflare One.
+  * **Login URL/SSO Endpoint**: SSO endpoint from application configuration in Cloudflare One.
+  * **IdP Certificate**: Public key from application configuration in Cloudflare One. Wrap the certificate in `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`.
 6. Copy the **Entity ID/SAML Audience** and **Assertion Consumer URL**.
 7. Select **Save**.
 
 ## 3\. Finish adding a SaaS application to Cloudflare One
 
 1. In your open Cloudflare One window, fill in the following fields:  
-   * **Entity ID**: Entity ID/SAML Audience from Adobe Acrobat Sign SAML SSO configuration.  
-   * **Assertion Consumer Service URL**: Assertion Consumer URL from Adobe Acrobat Sign SAML SSO configuration.  
-   * **Name ID format**: _Email_
+  * **Entity ID**: Entity ID/SAML Audience from Adobe Acrobat Sign SAML SSO configuration.
+  * **Assertion Consumer Service URL**: Assertion Consumer URL from Adobe Acrobat Sign SAML SSO configuration.
+  * **Name ID format**: _Email_
 2. Configure [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) for the application.
 3. Save the application.
 

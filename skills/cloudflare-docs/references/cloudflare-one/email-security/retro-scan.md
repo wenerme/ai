@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,9 +25,9 @@ To start a free scan:
 3. Select **Start a free scan** \> **Generate report**.
 4. Enable your [Microsoft integration](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/api/m365-api/#enable-microsoft-integration). Once you have enabled your Microsoft integration, you will be redirected to a page where you will add your domains and specify your current email security system.
 5. Generate Retro Scan report:  
-   * **Connect domains**: Select at least one domain from your integration, then select **Continue**.  
-   * **Select current solution**: Select the email security tool you are currently using, then select **Continue**.  
-   * **Review details**: Confirm the domain and current solution you selected, then select **Continue**. You will receive an email notification once the report is ready.
+  * **Connect domains**: Select at least one domain from your integration, then select **Continue**.
+  * **Select current solution**: Select the email security tool you are currently using, then select **Continue**.
+  * **Review details**: Confirm the domain and current solution you selected, then select **Continue**. You will receive an email notification once the report is ready.
 6. When you receive the notification email, select the link to view the full report.
 7. On the Cloudflare dashboard, select **View report**.
 

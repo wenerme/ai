@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,22 +25,17 @@ Before you start, you need:
 * [Credits loaded](https://developers.cloudflare.com/ai-gateway/features/unified-billing/#load-credits) on your account for third-party models.
 * A model that supports tool calling and streaming. For best results, use a model with a context window of at least 128k tokens.
 1. Set the provider environment variables. GitHub Copilot CLI reads these on startup and appends `/chat/completions` to the base URL. The commands set these variables for the current session. To persist them, add them to your shell profile (for example, `~/.zshrc` or `~/.bashrc`).  
-Replace `<ACCOUNT_ID>` with your Cloudflare account ID and `<CF_API_TOKEN>` with your Cloudflare API token. Set `COPILOT_MODEL` to any supported model in `provider/model` format.  
-   * [ macOS / Linux ](#tab-panel-6554)  
-   * [ Windows (PowerShell) ](#tab-panel-6555)  
+Replace `<ACCOUNT_ID>` with your Cloudflare account ID and `<CF_API_TOKEN>` with your Cloudflare API token. Set `COPILOT_MODEL` to any supported model in `provider/model` format.
+
+  * [ macOS / Linux ](#tab-panel-6628)
+  * [ Windows (PowerShell) ](#tab-panel-6629)  
 Terminal window  
 ```  
-export COPILOT_PROVIDER_TYPE="openai"  
-export COPILOT_PROVIDER_BASE_URL="https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai/v1"  
-export COPILOT_PROVIDER_API_KEY="<CF_API_TOKEN>"  
-export COPILOT_MODEL="openai/gpt-4.1"  
+export COPILOT_PROVIDER_TYPE="openai"export COPILOT_PROVIDER_BASE_URL="https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai/v1"export COPILOT_PROVIDER_API_KEY="<CF_API_TOKEN>"export COPILOT_MODEL="openai/gpt-4.1"  
 ```  
 PowerShell  
 ```  
-$env:COPILOT_PROVIDER_TYPE = "openai"  
-$env:COPILOT_PROVIDER_BASE_URL = "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai/v1"  
-$env:COPILOT_PROVIDER_API_KEY = "<CF_API_TOKEN>"  
-$env:COPILOT_MODEL = "openai/gpt-4.1"  
+$env:COPILOT_PROVIDER_TYPE = "openai"$env:COPILOT_PROVIDER_BASE_URL = "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai/v1"$env:COPILOT_PROVIDER_API_KEY = "<CF_API_TOKEN>"$env:COPILOT_MODEL = "openai/gpt-4.1"  
 ```
 2. Start GitHub Copilot CLI and send a prompt. Requests now route through AI Gateway.  
 Terminal window  
@@ -55,12 +50,7 @@ GitHub Copilot CLI keeps a built-in catalog of known models and their token limi
 Terminal window
 
 ```
-
-export COPILOT_PROVIDER_MAX_PROMPT_TOKENS="200000"
-
-export COPILOT_PROVIDER_MAX_OUTPUT_TOKENS="32000"
-
-
+export COPILOT_PROVIDER_MAX_PROMPT_TOKENS="200000"export COPILOT_PROVIDER_MAX_OUTPUT_TOKENS="32000"
 ```
 
 To confirm traffic reaches AI Gateway, refer to [Verify it works](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/#verify-it-works).

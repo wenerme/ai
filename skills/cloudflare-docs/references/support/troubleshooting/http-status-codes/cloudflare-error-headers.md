@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/support/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -15,11 +15,11 @@ image: https://developers.cloudflare.com/core-services-preview.png
 When Cloudflare generates an error page (as opposed to forwarding an error from your origin server), the response includes two diagnostic headers:
 
 * **`cf-error-type`**: Identifies the error category. Common values:  
-   * `1000` — DNS resolution failure (A record points to a Cloudflare IP)  
-   * `1016` — Origin DNS error (CNAME target does not resolve)  
-   * `1101` — Worker threw an unhandled exception  
-   * `1102` — Worker exceeded resource limits (CPU or memory)  
-   * `52x` — Origin connectivity error (521, 522, 523, 524, 525, 526)
+  * `1000` — DNS resolution failure (A record points to a Cloudflare IP)
+  * `1016` — Origin DNS error (CNAME target does not resolve)
+  * `1101` — Worker threw an unhandled exception
+  * `1102` — Worker exceeded resource limits (CPU or memory)
+  * `52x` — Origin connectivity error (521, 522, 523, 524, 525, 526)
 * **`cf-error-origin`**: Identifies which Cloudflare system generated the error.
 
 These headers are present **only on Cloudflare-generated error pages**, not on errors forwarded from your origin server.

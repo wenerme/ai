@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/automatic-platform-optimization/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -44,31 +44,10 @@ The `cf-edge-cache: no-cache` instructs the APO service to bypass caching for no
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    const originalResponse = await fetch(request);
-
-
-    // Response properties are immutable. To change them, construct a new Response object.
-
-    const response = new Response(originalResponse.body, originalResponse);
-
-
-    // Response headers can be modified through the headers `set` method.
-
-    response.headers.set("cf-edge-cache", "no-cache");
-
-
-    return response;
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    const originalResponse = await fetch(request);
+    // Response properties are immutable. To change them, construct a new Response object.    const response = new Response(originalResponse.body, originalResponse);
+    // Response headers can be modified through the headers `set` method.    response.headers.set("cf-edge-cache", "no-cache");
+    return response;  },};
 ```
 
 ### Use Cache Rules

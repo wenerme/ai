@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,7 +22,7 @@ To get the URL for a specific piece of content on a webpage:
 2. Go to the web page you want to report.
 3. Right click on the content you wish to report (often a video or image).
 4. Select **Inspect Element**.
-5. In the **DevTools** panel, look for the **src** attribute in the selected the image, video, or iFrame.![Look for the URL in the src attribute of the video or image](https://developers.cloudflare.com/_astro/identify-url.o_PP6jZ2_1rmxgw.webp)
+5. In the **DevTools** panel, look for the **src** attribute in the selected the image, video, or iFrame. ![Look for the URL in the src attribute of the video or image](https://developers.cloudflare.com/_astro/identify-url.o_PP6jZ2_1rmxgw.webp)
 6. Copy the URL.
 
 Providing the most specific and helpful URL enables Cloudflare to correctly identify any services it may be providing with respect to that content.

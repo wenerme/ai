@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,45 +30,15 @@ A button that follows RTK Design System.
 ### Basic Usage
 
 ```
-
 import { RtkButton } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return <RtkButton />;
-
-}
-
-
+function MyComponent() {  return <RtkButton />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkButton } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkButton
-
-      disabled={true}
-
-      kind={buttonkind}
-
-      reverse={true}
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkButton      disabled={true}      kind={buttonkind}      reverse={true}    />  );}
 ```
 
 ```json

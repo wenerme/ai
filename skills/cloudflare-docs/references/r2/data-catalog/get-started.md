@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,8 +30,8 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 ## 1\. Create an R2 bucket and enable the data catalog
 
-* [ Wrangler CLI ](#tab-panel-9741)
-* [ Dashboard ](#tab-panel-9742)
+* [ Wrangler CLI ](#tab-panel-9817)
+* [ Dashboard ](#tab-panel-9818)
 
 1. If not already logged in, run:  
 Terminal window  
@@ -106,88 +106,19 @@ uv add marimo pyiceberg pyarrow pandas
 Python  
 ```  
 import marimo  
-__generated_with = "0.11.31"  
-app = marimo.App(width="medium")  
-@app.cell  
-def _():  
-    import marimo as mo  
-    return (mo,)  
-@app.cell  
-def _():  
-    import pandas  
-    import pyarrow as pa  
-    import pyarrow.compute as pc  
-    import pyarrow.parquet as pq  
+__generated_with = "0.11.31"app = marimo.App(width="medium")  
+@app.celldef _():    import marimo as mo    return (mo,)  
+@app.celldef _():    import pandas    import pyarrow as pa    import pyarrow.compute as pc    import pyarrow.parquet as pq  
     from pyiceberg.catalog.rest import RestCatalog  
-    # Define catalog connection details (replace variables)  
-    WAREHOUSE = "<WAREHOUSE>"  
-    TOKEN = "<TOKEN>"  
-    CATALOG_URI = "<CATALOG_URI>"  
-    # Connect to R2 Data Catalog  
-    catalog = RestCatalog(  
-        name="my_catalog",  
-        warehouse=WAREHOUSE,  
-        uri=CATALOG_URI,  
-        token=TOKEN,  
-    )  
-    return (  
-        CATALOG_URI,  
-        RestCatalog,  
-        TOKEN,  
-        WAREHOUSE,  
-        catalog,  
-        pa,  
-        pandas,  
-        pc,  
-        pq,  
-    )  
-@app.cell  
-def _(catalog):  
-    # Create default namespace if needed  
-    catalog.create_namespace_if_not_exists("default")  
-    return  
-@app.cell  
-def _(pa):  
-    # Create simple PyArrow table  
-    df = pa.table({  
-        "id": [1, 2, 3],  
-        "name": ["Alice", "Bob", "Charlie"],  
-        "score": [80.0, 92.5, 88.0],  
-    })  
-    return (df,)  
-@app.cell  
-def _(catalog, df):  
-    # Create or load Iceberg table  
-    test_table = ("default", "people")  
-    if not catalog.table_exists(test_table):  
-        print(f"Creating table: {test_table}")  
-        table = catalog.create_table(  
-            test_table,  
-            schema=df.schema,  
-        )  
-    else:  
-        table = catalog.load_table(test_table)  
-    return table, test_table  
-@app.cell  
-def _(df, table):  
-    # Append data  
-    table.append(df)  
-    return  
-@app.cell  
-def _(table):  
-    print("Table contents:")  
-    scanned = table.scan().to_arrow()  
-    print(scanned.to_pandas())  
-    return (scanned,)  
-@app.cell  
-def _():  
-    # Optional cleanup. To run uncomment and run cell  
-    # print(f"Deleting table: {test_table}")  
-    # catalog.drop_table(test_table)  
-    # print("Table dropped.")  
-    return  
-if __name__ == "__main__":  
-    app.run()  
+    # Define catalog connection details (replace variables)    WAREHOUSE = "<WAREHOUSE>"    TOKEN = "<TOKEN>"    CATALOG_URI = "<CATALOG_URI>"  
+    # Connect to R2 Data Catalog    catalog = RestCatalog(        name="my_catalog",        warehouse=WAREHOUSE,        uri=CATALOG_URI,        token=TOKEN,    )    return (        CATALOG_URI,        RestCatalog,        TOKEN,        WAREHOUSE,        catalog,        pa,        pandas,        pc,        pq,    )  
+@app.celldef _(catalog):    # Create default namespace if needed    catalog.create_namespace_if_not_exists("default")    return  
+@app.celldef _(pa):    # Create simple PyArrow table    df = pa.table({        "id": [1, 2, 3],        "name": ["Alice", "Bob", "Charlie"],        "score": [80.0, 92.5, 88.0],    })    return (df,)  
+@app.celldef _(catalog, df):    # Create or load Iceberg table    test_table = ("default", "people")    if not catalog.table_exists(test_table):        print(f"Creating table: {test_table}")        table = catalog.create_table(            test_table,            schema=df.schema,        )    else:        table = catalog.load_table(test_table)    return table, test_table  
+@app.celldef _(df, table):    # Append data    table.append(df)    return  
+@app.celldef _(table):    print("Table contents:")    scanned = table.scan().to_arrow()    print(scanned.to_pandas())    return (scanned,)  
+@app.celldef _():    # Optional cleanup. To run uncomment and run cell    # print(f"Deleting table: {test_table}")    # catalog.drop_table(test_table)    # print("Table dropped.")    return  
+if __name__ == "__main__":    app.run()  
 ```
 3. Replace the `CATALOG_URI`, `WAREHOUSE`, and `TOKEN` variables with your values from sections **1** and **2** respectively.
 4. Launch the notebook editor in your browser:  
@@ -210,7 +141,7 @@ In the Python notebook above, you:
 
 [ Managing catalogs ](https://developers.cloudflare.com/r2/data-catalog/manage-catalogs/) Enable or disable R2 Data Catalog on your bucket, retrieve configuration details, and authenticate your Iceberg engine. 
 
-[ Connect to Iceberg engines ](https://developers.cloudflare.com/r2/data-catalog/config-examples/) Find detailed setup instructions for Apache Spark and other common query engines. 
+[ Connect to Iceberg engines ](https://developers.cloudflare.com/r2/data-catalog/config-examples/) Find detailed setup instructions for Apache Spark and other common query engines.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/get-started/#page","headline":"Getting started · Cloudflare R2 docs","description":"Learn how to enable the R2 Data Catalog on your bucket, load sample data, and run your first query.","url":"https://developers.cloudflare.com/r2/data-catalog/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -44,8 +44,8 @@ Note
 
 Requires an Enterprise plan.
 
-* [  New dashboard ](#tab-panel-11244)
-* [ Old dashboard ](#tab-panel-11245)
+* [  New dashboard ](#tab-panel-11261)
+* [ Old dashboard ](#tab-panel-11262)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -74,8 +74,8 @@ You can configure (or override) the following Cloudflare Sensitive Data Detectio
 
 Once you have [deployed the Cloudflare Sensitive Data Detection ruleset](#deploy-in-the-dashboard), do the following to configure it in the dashboard:
 
-* [  New dashboard ](#tab-panel-11246)
-* [ Old dashboard ](#tab-panel-11247)
+* [  New dashboard ](#tab-panel-11263)
+* [ Old dashboard ](#tab-panel-11264)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -103,8 +103,8 @@ Setting the rule status for specific tags affects all current and future rules w
 
 Once you have [deployed the Cloudflare Sensitive Data Detection ruleset](#deploy-in-the-dashboard), do the following to configure rules with specific tags in the dashboard:
 
-* [  New dashboard ](#tab-panel-11248)
-* [ Old dashboard ](#tab-panel-11249)
+* [  New dashboard ](#tab-panel-11265)
+* [ Old dashboard ](#tab-panel-11266)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -117,9 +117,10 @@ If not all the rules are displayed in the current page, extend your selection to
 ![The Configure deployment page displaying selected rules with the 'encryption' tag in the Sensitive Data Detection ruleset.](https://developers.cloudflare.com/_astro/tags-config-sdd-ruleset.DQw7m2sB_nJQp2.webp)
 2. Update one or more settings for the selected rules using the buttons displayed in the top right corner of the table (for example, **Set status**).
 3. Select **Next**.
-4. A dialog appears asking you if any new rules with the selected tags should be configured with the field values you selected.  
-   * Select **Include new rules** if you want to apply your configurations to any new rules with the select tags.  
-   * Select **Only selected rules** to apply your configurations to the selected rules only.
+4. A dialog appears asking you if any new rules with the selected tags should be configured with the field values you selected.
+
+  * Select **Include new rules** if you want to apply your configurations to any new rules with the select tags.
+  * Select **Only selected rules** to apply your configurations to the selected rules only.
 5. Select **Save**.
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
@@ -132,9 +133,10 @@ If not all the rules are displayed in the current page, extend your selection to
 ![The Configure deployment page displaying selected rules with the 'encryption' tag in the Sensitive Data Detection ruleset.](https://developers.cloudflare.com/_astro/tags-config-sdd-ruleset.DQw7m2sB_nJQp2.webp)
 2. Update one or more settings for the selected rules using the buttons displayed in the top right corner of the table (for example, **Set status**).
 3. Select **Next**.
-4. A dialog appears asking you if any new rules with the selected tags should be configured with the field values you selected.  
-   * Select **Include new rules** if you want to apply your configurations to any new rules with the select tags.  
-   * Select **Only selected rules** to apply your configurations to the selected rules only.
+4. A dialog appears asking you if any new rules with the selected tags should be configured with the field values you selected.
+
+  * Select **Include new rules** if you want to apply your configurations to any new rules with the select tags.
+  * Select **Only selected rules** to apply your configurations to the selected rules only.
 5. Select **Save**.
 
 ### Rule-level configuration
@@ -145,8 +147,8 @@ You can configure (or override) the following setting in the dashboard for the s
 
 Once you have [deployed the Cloudflare Sensitive Data Detection ruleset](#deploy-in-the-dashboard), do the following to configure individual ruleset rules in the dashboard:
 
-* [  New dashboard ](#tab-panel-11250)
-* [ Old dashboard ](#tab-panel-11251)
+* [  New dashboard ](#tab-panel-11267)
+* [ Old dashboard ](#tab-panel-11268)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -182,100 +184,23 @@ This example deploys the Cloudflare Sensitive Data Detection ruleset to the `htt
 1. Invoke the [Get a zone entry point ruleset](https://developers.cloudflare.com/api/resources/rulesets/subresources/phases/methods/get/) operation to obtain the definition of the entry point ruleset for the `http_response_firewall_managed` phase. You will need the [zone ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) for this task.  
 Get a zone entry point ruleset  
 ```  
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_response_firewall_managed/entrypoint" \  
-  --request GET \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_response_firewall_managed/entrypoint" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
 ```  
 ```  
-{  
-  "result": {  
-    "description": "Zone-level phase entry point (response)",  
-    "id": "<RULESET_ID>",  
-    "kind": "zone",  
-    "last_updated": "2024-03-16T15:40:08.202335Z",  
-    "name": "zone",  
-    "phase": "http_response_firewall_managed",  
-    "rules": [  
-      // ...  
-    ],  
-    "source": "firewall_managed",  
-    "version": "10"  
-  },  
-  "success": true,  
-  "errors": [],  
-  "messages": []  
-}  
+{  "result": {    "description": "Zone-level phase entry point (response)",    "id": "<RULESET_ID>",    "kind": "zone",    "last_updated": "2024-03-16T15:40:08.202335Z",    "name": "zone",    "phase": "http_response_firewall_managed",    "rules": [      // ...    ],    "source": "firewall_managed",    "version": "10"  },  "success": true,  "errors": [],  "messages": []}  
 ```
 2. If the entry point ruleset already exists (that is, if you received a `200 OK` status code and the ruleset definition), take note of the ruleset ID in the response. Then, invoke the [Create a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/create/) operation to add an `execute` rule to the existing ruleset deploying the Cloudflare Sensitive Data Detection managed ruleset (with ID `e22d83c647c64a3eae91b71b499d988e`). By default, the rule will be added at the end of the list of rules already in the ruleset.  
 Create a zone ruleset rule  
 ```  
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \  
-  --request POST \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "action": "execute",  
-    "action_parameters": {  
-        "id": "e22d83c647c64a3eae91b71b499d988e"  
-    },  
-    "expression": "true",  
-    "description": "Execute the Cloudflare Sensitive Data Detection managed ruleset"  
-  }'  
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "action": "execute",    "action_parameters": {        "id": "e22d83c647c64a3eae91b71b499d988e"    },    "expression": "true",    "description": "Execute the Cloudflare Sensitive Data Detection managed ruleset"  }'  
 ```  
 ```  
-{  
-  "result": {  
-    "id": "<RULESET_ID>",  
-    "name": "Zone-level phase entry point (response)",  
-    "description": "",  
-    "kind": "zone",  
-    "version": "11",  
-    "rules": [  
-      // ... any existing rules  
-      {  
-        "id": "<RULE_ID>",  
-        "version": "1",  
-        "action": "execute",  
-        "action_parameters": {  
-          "id": "e22d83c647c64a3eae91b71b499d988e",  
-          "version": "latest"  
-        },  
-        "expression": "true",  
-        "description": "Execute the Cloudflare Sensitive Data Detection managed ruleset",  
-        "last_updated": "2024-03-18T18:08:14.003361Z",  
-        "ref": "<RULE_REF>",  
-        "enabled": true  
-      }  
-    ],  
-    "last_updated": "2024-03-18T18:08:14.003361Z",  
-    "phase": "http_response_firewall_managed"  
-  },  
-  "success": true,  
-  "errors": [],  
-  "messages": []  
-}  
+{  "result": {    "id": "<RULESET_ID>",    "name": "Zone-level phase entry point (response)",    "description": "",    "kind": "zone",    "version": "11",    "rules": [      // ... any existing rules      {        "id": "<RULE_ID>",        "version": "1",        "action": "execute",        "action_parameters": {          "id": "e22d83c647c64a3eae91b71b499d988e",          "version": "latest"        },        "expression": "true",        "description": "Execute the Cloudflare Sensitive Data Detection managed ruleset",        "last_updated": "2024-03-18T18:08:14.003361Z",        "ref": "<RULE_REF>",        "enabled": true      }    ],    "last_updated": "2024-03-18T18:08:14.003361Z",    "phase": "http_response_firewall_managed"  },  "success": true,  "errors": [],  "messages": []}  
 ```
 3. If the entry point ruleset does not exist (that is, if you received a `404 Not Found` status code in step 1), create it using the [Create a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) operation. Include a single rule in the `rules` array that executes the Cloudflare Sensitive Data Detection managed ruleset (with ID `e22d83c647c64a3eae91b71b499d988e`) for all incoming requests in the zone.  
 Create a zone ruleset  
 ```  
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \  
-  --request POST \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "name": "My ruleset",  
-    "description": "Entry point ruleset for WAF managed rulesets (response)",  
-    "kind": "zone",  
-    "phase": "http_response_firewall_managed",  
-    "rules": [  
-        {  
-            "action": "execute",  
-            "action_parameters": {  
-                "id": "e22d83c647c64a3eae91b71b499d988e"  
-            },  
-            "expression": "true",  
-            "description": "Execute the Cloudflare Sensitive Data Detection managed ruleset"  
-        }  
-    ]  
-  }'  
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "My ruleset",    "description": "Entry point ruleset for WAF managed rulesets (response)",    "kind": "zone",    "phase": "http_response_firewall_managed",    "rules": [        {            "action": "execute",            "action_parameters": {                "id": "e22d83c647c64a3eae91b71b499d988e"            },            "expression": "true",            "description": "Execute the Cloudflare Sensitive Data Detection managed ruleset"        }    ]  }'  
 ```
 
 ### Next steps

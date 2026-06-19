@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,47 +30,15 @@ Pre-join setup screen with video preview, mic/camera toggles, display name input
 ### Basic Usage
 
 ```
-
 import { RtkSetupScreen } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkSetupScreen meeting={meeting} />;
-
-}
-
-
+function MyComponent() {  return <RtkSetupScreen meeting={meeting} />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkSetupScreen } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkSetupScreen
-
-      meeting={meeting}
-
-      config={customConfig}
-
-      size="md"
-
-      iconPack={customIconPack}
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkSetupScreen      meeting={meeting}      config={customConfig}      size="md"      iconPack={customIconPack}    />  );}
 ```
 
 ```json

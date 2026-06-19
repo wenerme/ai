@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -36,10 +36,11 @@ If you save a HAR (HTTP Archive) file from a browser to analyze your web traffic
 
 To verify Gateway is applying a custom header:
 
-1. In your policy with custom headers, add a selector to match traffic for [HTTPBin ↗](https://httpbin.org/), an open-source site for testing HTTP requests. For example:  
-| Selector    | Operator | Value              | Logic | Action | Untrusted certificate action |  
-| ----------- | -------- | ------------------ | ----- | ------ | ---------------------------- |  
-| Application | in       | _Google Workspace_ | Or    | Allow  | Block                        |  
+1. In your policy with custom headers, add a selector to match traffic for [HTTPBin ↗](https://httpbin.org/), an open-source site for testing HTTP requests. For example:
+
+| Selector    | Operator | Value              | Logic | Action | Untrusted certificate action |
+| ----------- | -------- | ------------------ | ----- | ------ | ---------------------------- |
+| Application | in       | _Google Workspace_ | Or    | Allow  | Block                        |
 | Domain      | in       | httpbin.org        |       |        |                              |
 2. On your device, go to [httpbin.org/anything ↗](https://httpbin.org/anything). Your custom header will appear in the list of headers.
 3. (Optional) Remove the HTTPBin expression from your policy.
@@ -122,12 +123,14 @@ For more information, refer to the [OpenAI documentation ↗](https://help.opena
 
 You can include custom headers in an HTTP policy to allow your users through [Cloudflare WAF](https://developers.cloudflare.com/waf/). This is useful for allowing only Cloudflare One Client users through your WAF.
 
-1. Create an Allow policy for an internal domain behind your WAF with a custom header.  
-| Selector | Operator | Value           | Action |  
-| -------- | -------- | --------------- | ------ |  
-| Domain   | in       | internalapp.com | Allow  |  
-| Custom header name | Custom header value |  
-| ------------------ | ------------------- |  
+1. Create an Allow policy for an internal domain behind your WAF with a custom header.
+
+| Selector | Operator | Value           | Action |
+| -------- | -------- | --------------- | ------ |
+| Domain   | in       | internalapp.com | Allow  |
+
+| Custom header name | Custom header value |
+| ------------------ | ------------------- |
 | X-Example-Header   | example-value       |
 2. In Cloudflare WAF, [create a custom rule](https://developers.cloudflare.com/waf/custom-rules/) to [require the same HTTP header](https://developers.cloudflare.com/waf/custom-rules/use-cases/require-specific-headers/#example-2-require-http-header-with-a-specific-value).
 
@@ -137,16 +140,19 @@ You can configure [Browser Isolation](https://developers.cloudflare.com/cloudfla
 
 To use custom headers with Browser Isolation, create two HTTP policies targeting the same domain or application group. For example, you can create policies for [HTTPBin ↗](https://httpbin.org/), an open-source site for testing HTTP requests:
 
-1. Create an Isolate policy for `httpbin.org`.  
-| Selector | Operator | Value       | Action  |  
-| -------- | -------- | ----------- | ------- |  
+1. Create an Isolate policy for `httpbin.org`.
+
+| Selector | Operator | Value       | Action  |
+| -------- | -------- | ----------- | ------- |
 | Domain   | in       | httpbin.org | Isolate |
-2. Create an Allow policy for `httpbin.org` with a custom header.  
-| Selector | Operator | Value       | Action |  
-| -------- | -------- | ----------- | ------ |  
-| Domain   | in       | httpbin.org | Allow  |  
-| Custom header name | Custom header value |  
-| ------------------ | ------------------- |  
+2. Create an Allow policy for `httpbin.org` with a custom header.
+
+| Selector | Operator | Value       | Action |
+| -------- | -------- | ----------- | ------ |
+| Domain   | in       | httpbin.org | Allow  |
+
+| Custom header name | Custom header value |
+| ------------------ | ------------------- |
 | Example-Header     | example-value       |
 3. Go to [httpbin.org/anything ↗](https://httpbin.org/anything). Cloudflare will render the site in an isolated browser. Your custom header will appear in the list of headers.
 

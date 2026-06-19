@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,297 +29,82 @@ Ultra-fast, cost-efficient text-to-speech with approximately 120ms latency and 1
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-782)
-* [ cURL ](#tab-panel-783)
+* [ TypeScript ](#tab-panel-760)
+* [ cURL ](#tab-panel-761)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'inworld/tts-1.5-mini',
-
-  {
-
-    output_format: 'mp3',
-
-    temperature: 1,
-
-    text: 'Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.',
-
-    timestamp_type: 'none',
-
-    voice_id: 'Dennis',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'inworld/tts-1.5-mini',  {    output_format: 'mp3',    temperature: 1,    text: 'Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.',    timestamp_type: 'none',    voice_id: 'Dennis',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "inworld/tts-1.5-mini",
-
-  "input": {
-
-    "output_format": "mp3",
-
-    "temperature": 1,
-
-    "text": "Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.",
-
-    "timestamp_type": "none",
-
-    "voice_id": "Dennis"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "inworld/tts-1.5-mini",  "input": {    "output_format": "mp3",    "temperature": 1,    "text": "Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.",    "timestamp_type": "none",    "voice_id": "Dennis"  }}'
 ```
 
-* [ Output ](#tab-panel-778)
-* [ Raw response ](#tab-panel-779)
+* [ Output ](#tab-panel-756)
+* [ Raw response ](#tab-panel-757)
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/inworld__tts-1.5-mini/simple-speech.mp3"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/inworld__tts-1.5-mini/simple-speech.mp3"  },  "state": "Completed"}
 ```
 
 ## Examples
 
 **Fast Speech**  — Speed up speech for quick playback 
 
-* [ TypeScript ](#tab-panel-786)
-* [ cURL ](#tab-panel-787)
+* [ TypeScript ](#tab-panel-764)
+* [ cURL ](#tab-panel-765)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'inworld/tts-1.5-mini',
-
-  {
-
-    output_format: 'mp3',
-
-    speaking_rate: 1.4,
-
-    temperature: 1,
-
-    text: 'This is a fast-paced summary of the key findings from the quarterly report. Revenue is up fifteen percent and user growth exceeded expectations.',
-
-    timestamp_type: 'none',
-
-    voice_id: 'Dennis',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'inworld/tts-1.5-mini',  {    output_format: 'mp3',    speaking_rate: 1.4,    temperature: 1,    text: 'This is a fast-paced summary of the key findings from the quarterly report. Revenue is up fifteen percent and user growth exceeded expectations.',    timestamp_type: 'none',    voice_id: 'Dennis',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "inworld/tts-1.5-mini",
-
-  "input": {
-
-    "output_format": "mp3",
-
-    "speaking_rate": 1.4,
-
-    "temperature": 1,
-
-    "text": "This is a fast-paced summary of the key findings from the quarterly report. Revenue is up fifteen percent and user growth exceeded expectations.",
-
-    "timestamp_type": "none",
-
-    "voice_id": "Dennis"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "inworld/tts-1.5-mini",  "input": {    "output_format": "mp3",    "speaking_rate": 1.4,    "temperature": 1,    "text": "This is a fast-paced summary of the key findings from the quarterly report. Revenue is up fifteen percent and user growth exceeded expectations.",    "timestamp_type": "none",    "voice_id": "Dennis"  }}'
 ```
 
-* [ Output ](#tab-panel-780)
-* [ Raw response ](#tab-panel-781)
+* [ Output ](#tab-panel-758)
+* [ Raw response ](#tab-panel-759)
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/inworld__tts-1.5-mini/fast-speech.mp3"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/inworld__tts-1.5-mini/fast-speech.mp3"  },  "state": "Completed"}
 ```
 
 **Low Latency**  — Minimize latency by disabling text normalization 
 
-* [ TypeScript ](#tab-panel-788)
-* [ cURL ](#tab-panel-789)
+* [ TypeScript ](#tab-panel-766)
+* [ cURL ](#tab-panel-767)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'inworld/tts-1.5-mini',
-
-  {
-
-    apply_text_normalization: false,
-
-    output_format: 'mp3',
-
-    temperature: 1,
-
-    text: 'Quick response needed. The server is ready.',
-
-    timestamp_type: 'none',
-
-    voice_id: 'Dennis',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'inworld/tts-1.5-mini',  {    apply_text_normalization: false,    output_format: 'mp3',    temperature: 1,    text: 'Quick response needed. The server is ready.',    timestamp_type: 'none',    voice_id: 'Dennis',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "inworld/tts-1.5-mini",
-
-  "input": {
-
-    "apply_text_normalization": false,
-
-    "output_format": "mp3",
-
-    "temperature": 1,
-
-    "text": "Quick response needed. The server is ready.",
-
-    "timestamp_type": "none",
-
-    "voice_id": "Dennis"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "inworld/tts-1.5-mini",  "input": {    "apply_text_normalization": false,    "output_format": "mp3",    "temperature": 1,    "text": "Quick response needed. The server is ready.",    "timestamp_type": "none",    "voice_id": "Dennis"  }}'
 ```
 
-* [ Output ](#tab-panel-784)
-* [ Raw response ](#tab-panel-785)
+* [ Output ](#tab-panel-762)
+* [ Raw response ](#tab-panel-763)
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/inworld__tts-1.5-mini/low-latency.mp3"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/inworld__tts-1.5-mini/low-latency.mp3"  },  "state": "Completed"}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-790)
-* [ Output ](#tab-panel-791)
+* [ Input ](#tab-panel-768)
+* [ Output ](#tab-panel-769)
 
 apply\_text\_normalization
 
@@ -365,7 +150,7 @@ audio
 
 Input [ ](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-mini/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-mini/schema-input.json "Download") 
 
-Output [ ](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-mini/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-mini/schema-output.json "Download") 
+Output [ ](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-mini/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-mini/schema-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/inworld/tts-1.5-mini/#page","headline":"Inworld TTS 1.5 Mini (Inworld) · Cloudflare AI docs · Cloudflare AI docs","description":"Ultra-fast, cost-efficient text-to-speech with approximately 120ms latency and 15-language support.","url":"https://developers.cloudflare.com/ai/models/inworld/tts-1.5-mini/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

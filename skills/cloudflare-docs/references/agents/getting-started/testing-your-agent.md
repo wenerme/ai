@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,10 +27,7 @@ Before you write your first test, install the necessary packages:
 Terminal window
 
 ```
-
 npm install vitest@^4.1.0 @cloudflare/vitest-pool-workers --save-dev
-
-
 ```
 
 Ensure that your `vitest.config.js` has the `cloudflareTest` plugin configured:
@@ -38,27 +35,8 @@ Ensure that your `vitest.config.js` has the `cloudflareTest` plugin configured:
 JavaScript
 
 ```
-
-import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
-
-import { defineConfig } from "vitest/config";
-
-
-export default defineConfig({
-
-  plugins: [
-
-    cloudflareTest({
-
-      wrangler: { configPath: "./wrangler.jsonc" },
-
-    }),
-
-  ],
-
-});
-
-
+import { cloudflareTest } from "@cloudflare/vitest-pool-workers";import { defineConfig } from "vitest/config";
+export default defineConfig({  plugins: [    cloudflareTest({      wrangler: { configPath: "./wrangler.jsonc" },    }),  ],});
 ```
 
 ### Write a test
@@ -72,67 +50,10 @@ Tests use the `vitest` framework. A basic test suite for your Agent can validate
 TypeScript
 
 ```
-
-import { env, exports } from "cloudflare:workers";
-
-import {
-
-  createExecutionContext,
-
-  waitOnExecutionContext,
-
-} from "cloudflare:test";
-
-import { describe, it, expect } from "vitest";
-
-import worker from "../src";
-
-import { Env } from "../src";
-
-
+import { env, exports } from "cloudflare:workers";import {  createExecutionContext,  waitOnExecutionContext,} from "cloudflare:test";import { describe, it, expect } from "vitest";import worker from "../src";import { Env } from "../src";
 interface ProvidedEnv extends Env {}
-
-
-describe("make a request to my Agent", () => {
-
-  // Unit testing approach
-
-  it("responds with state", async () => {
-
-    // Provide a valid URL that your Worker can use to route to your Agent
-
-    // If you are using routeAgentRequest, this will be /agents/:agent/:name
-
-    const request = new Request<unknown, IncomingRequestCfProperties>(
-
-      "http://example.com/agents/my-agent/agent-123",
-
-    );
-
-    const ctx = createExecutionContext();
-
-    const response = await worker.fetch(request, env, ctx);
-
-    await waitOnExecutionContext(ctx);
-
-    expect(await response.json()).toEqual({ hello: "from your agent" });
-
-  });
-
-
-  it("also responds with state", async () => {
-
-    const request = new Request("http://example.com/agents/my-agent/agent-123");
-
-    const response = await exports.default.fetch(request);
-
-    expect(await response.json()).toEqual({ hello: "from your agent" });
-
-  });
-
-});
-
-
+describe("make a request to my Agent", () => {  // Unit testing approach  it("responds with state", async () => {    // Provide a valid URL that your Worker can use to route to your Agent    // If you are using routeAgentRequest, this will be /agents/:agent/:name    const request = new Request<unknown, IncomingRequestCfProperties>(      "http://example.com/agents/my-agent/agent-123",    );    const ctx = createExecutionContext();    const response = await worker.fetch(request, env, ctx);    await waitOnExecutionContext(ctx);    expect(await response.json()).toEqual({ hello: "from your agent" });  });
+  it("also responds with state", async () => {    const request = new Request("http://example.com/agents/my-agent/agent-123");    const response = await exports.default.fetch(request);    expect(await response.json()).toEqual({ hello: "from your agent" });  });});
 ```
 
 ### Run tests
@@ -142,26 +63,12 @@ Running tests is done using the `vitest` CLI:
 Terminal window
 
 ```
-
-npm run test
-
-# or run vitest directly
-
-npx vitest
-
-
+npm run test# or run vitest directlynpx vitest
 ```
 
 ```
-
-  MyAgent
-
-    ✓ should return a greeting (1 ms)
-
-
+  MyAgent    ✓ should return a greeting (1 ms)
 Test Files  1 passed (1)
-
-
 ```
 
 Review the [documentation on testing](https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/) for additional examples and test configuration.
@@ -173,28 +80,12 @@ You can also run an Agent locally using the `wrangler` CLI:
 Terminal window
 
 ```
-
 npx wrangler dev
-
-
 ```
 
 ```
-
 Your Worker and resources are simulated locally via Miniflare. For more information, see: https://developers.cloudflare.com/workers/testing/local-development.
-
-
-Your worker has access to the following bindings:
-
-- Durable Objects:
-
-  - MyAgent: MyAgent
-
-  Starting local server...
-
-[wrangler:inf] Ready on http://localhost:53645
-
-
+Your worker has access to the following bindings:- Durable Objects:  - MyAgent: MyAgent  Starting local server...[wrangler:inf] Ready on http://localhost:53645
 ```
 
 This spins up a local development server that runs the same runtime as Cloudflare Workers, and allows you to iterate on your Agent's code and test it locally without deploying it.

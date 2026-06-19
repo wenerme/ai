@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,12 +23,14 @@ To create a new egress policy:
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Egress policies**.
 2. Select **Add a policy**.
 3. Name the policy.
-4. Build a logical expression that defines the traffic you want to control egress for. For example, you can add a policy to configure all traffic destined for a third-party network to use a static source IP:  
-| Policy name                 | Selector       | Operator | Value          | Egress method                   |  
-| --------------------------- | -------------- | -------- | -------------- | ------------------------------- |  
-| Access third-party provider | Destination IP | is       | 198.51.100.158 | Dedicated Cloudflare egress IPs |  
-| Primary IPv4 address | IPv6 address  |  
-| -------------------- | ------------- |  
+4. Build a logical expression that defines the traffic you want to control egress for. For example, you can add a policy to configure all traffic destined for a third-party network to use a static source IP:
+
+| Policy name                 | Selector       | Operator | Value          | Egress method                   |
+| --------------------------- | -------------- | -------- | -------------- | ------------------------------- |
+| Access third-party provider | Destination IP | is       | 198.51.100.158 | Dedicated Cloudflare egress IPs |
+
+| Primary IPv4 address | IPv6 address  |
+| -------------------- | ------------- |
 | 203.0.113.88         | 2001:db8::/32 |
 5. Select **Create policy**.
 

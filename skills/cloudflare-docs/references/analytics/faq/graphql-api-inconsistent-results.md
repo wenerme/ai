@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -60,23 +60,13 @@ Instead of querying an entire month at once, break queries into smaller interval
 Before (more variable):
 
 ```
-
-datetime_geq: "2024-09-01T00:00:00Z"
-
-datetime_lt: "2024-10-01T00:00:00Z"
-
-
+datetime_geq: "2024-09-01T00:00:00Z"datetime_lt: "2024-10-01T00:00:00Z"
 ```
 
 After (more consistent):
 
 ```
-
-datetime_geq: "2024-09-01T00:00:00Z"
-
-datetime_lt: "2024-09-02T00:00:00Z"
-
-
+datetime_geq: "2024-09-01T00:00:00Z"datetime_lt: "2024-09-02T00:00:00Z"
 ```
 
 Then aggregate the results client-side. Smaller time windows are less likely to trigger aggressive sampling thresholds.
@@ -92,10 +82,7 @@ For example, use `httpRequestsAdaptiveGroups` instead of raw event data.
 Always include `orderBy` in your queries to ensure consistent result ordering:
 
 ```
-
 orderBy: [datetime_ASC]
-
-
 ```
 
 ### Use confidence intervals
@@ -103,24 +90,7 @@ orderBy: [datetime_ASC]
 For adaptive datasets, request [confidence intervals](https://developers.cloudflare.com/analytics/graphql-api/features/confidence-intervals/) to understand data quality and verify sampling:
 
 ```
-
-confidence(level: 0.95) {
-
-  count {
-
-    estimate
-
-    lower
-
-    upper
-
-    sampleSize
-
-  }
-
-}
-
-
+confidence(level: 0.95) {  count {    estimate    lower    upper    sampleSize  }}
 ```
 
 A higher `sampleSize` indicates more reliable results.

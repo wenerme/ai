@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -14,15 +14,15 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Create a compression rule to turn on Zstandard compression for response content types where Cloudflare applies compression by default.
 
-* [ Dashboard ](#tab-panel-9969)
-* [ API ](#tab-panel-9970)
+* [ Dashboard ](#tab-panel-10045)
+* [ API ](#tab-panel-10046)
 
 The following example rule will turn on Zstandard compression for response content types where [Cloudflare applies compression by default](https://developers.cloudflare.com/speed/optimization/content/compression/). If the client does not support Zstandard compression, it will use Brotli or Gzip compression as a fallback.
 
 **When incoming requests match**
 
 * Custom filter expression:  
-   * _Media Type_ _is in_ `text/html, text/richtext, text/plain, text/css, text/x-script, text/x-component, text/x-java-source, text/x-markdown, application/javascript, application/x-javascript, text/javascript, text/js, image/x-icon, image/vnd.microsoft.icon, application/x-perl, application/x-httpd-cgi, text/xml, application/xml, application/rss+xml, application/vnd.api+json, application/x-protobuf, application/json, multipart/bag, multipart/mixed, application/xhtml+xml, font/ttf, font/otf, font/x-woff, image/svg+xml, application/vnd.ms-fontobject, application/ttf, application/x-ttf, application/otf, application/x-otf, application/truetype, application/opentype, application/x-opentype, application/font-woff, application/eot, application/font, application/font-sfnt, application/wasm, application/javascript-binast, application/manifest+json, application/ld+json, application/graphql+json, application/geo+json`
+  * _Media Type_ _is in_ `text/html, text/richtext, text/plain, text/css, text/x-script, text/x-component, text/x-java-source, text/x-markdown, application/javascript, application/x-javascript, text/javascript, text/js, image/x-icon, image/vnd.microsoft.icon, application/x-perl, application/x-httpd-cgi, text/xml, application/xml, application/rss+xml, application/vnd.api+json, application/x-protobuf, application/json, multipart/bag, multipart/mixed, application/xhtml+xml, font/ttf, font/otf, font/x-woff, image/svg+xml, application/vnd.ms-fontobject, application/ttf, application/x-ttf, application/otf, application/x-otf, application/truetype, application/opentype, application/x-opentype, application/font-woff, application/eot, application/font, application/font-sfnt, application/wasm, application/javascript-binast, application/manifest+json, application/ld+json, application/graphql+json, application/geo+json`
 
 **Then**
 
@@ -33,7 +33,7 @@ The following example sets the rules of an existing [entry point ruleset](https:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Response Compression Write`
 * `Config Settings Write`
 * `Dynamic URL Redirects Write`
@@ -59,58 +59,7 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Update a zone ruleset
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "rules": [
-
-        {
-
-            "ref": "use_zstd_compression",
-
-            "expression": "(http.response.content_type.media_type in {\"text/html\" \"text/richtext\" \"text/plain\" \"text/css\" \"text/x-script\" \"text/x-component\" \"text/x-java-source\" \"text/x-markdown\" \"application/javascript\" \"application/x-javascript\" \"text/javascript\" \"text/js\" \"image/x-icon\" \"image/vnd.microsoft.icon\" \"application/x-perl\" \"application/x-httpd-cgi\" \"text/xml\" \"application/xml\" \"application/rss+xml\" \"application/vnd.api+json\" \"application/x-protobuf\" \"application/json\" \"multipart/bag\" \"multipart/mixed\" \"application/xhtml+xml\" \"font/ttf\" \"font/otf\" \"font/x-woff\" \"image/svg+xml\" \"application/vnd.ms-fontobject\" \"application/ttf\" \"application/x-ttf\" \"application/otf\" \"application/x-otf\" \"application/truetype\" \"application/opentype\" \"application/x-opentype\" \"application/font-woff\" \"application/eot\" \"application/font\" \"application/font-sfnt\" \"application/wasm\" \"application/javascript-binast\" \"application/manifest+json\" \"application/ld+json\" \"application/graphql+json\" \"application/geo+json\"})",
-
-            "action": "compress_response",
-
-            "action_parameters": {
-
-                "algorithms": [
-
-                    {
-
-                        "name": "zstd"
-
-                    },
-
-                    {
-
-                        "name": "brotli"
-
-                    },
-
-                    {
-
-                        "name": "gzip"
-
-                    }
-
-                ]
-
-            }
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "ref": "use_zstd_compression",            "expression": "(http.response.content_type.media_type in {\"text/html\" \"text/richtext\" \"text/plain\" \"text/css\" \"text/x-script\" \"text/x-component\" \"text/x-java-source\" \"text/x-markdown\" \"application/javascript\" \"application/x-javascript\" \"text/javascript\" \"text/js\" \"image/x-icon\" \"image/vnd.microsoft.icon\" \"application/x-perl\" \"application/x-httpd-cgi\" \"text/xml\" \"application/xml\" \"application/rss+xml\" \"application/vnd.api+json\" \"application/x-protobuf\" \"application/json\" \"multipart/bag\" \"multipart/mixed\" \"application/xhtml+xml\" \"font/ttf\" \"font/otf\" \"font/x-woff\" \"image/svg+xml\" \"application/vnd.ms-fontobject\" \"application/ttf\" \"application/x-ttf\" \"application/otf\" \"application/x-otf\" \"application/truetype\" \"application/opentype\" \"application/x-opentype\" \"application/font-woff\" \"application/eot\" \"application/font\" \"application/font-sfnt\" \"application/wasm\" \"application/javascript-binast\" \"application/manifest+json\" \"application/ld+json\" \"application/graphql+json\" \"application/geo+json\"})",            "action": "compress_response",            "action_parameters": {                "algorithms": [                    {                        "name": "zstd"                    },                    {                        "name": "brotli"                    },                    {                        "name": "gzip"                    }                ]            }        }    ]  }'
 ```
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.

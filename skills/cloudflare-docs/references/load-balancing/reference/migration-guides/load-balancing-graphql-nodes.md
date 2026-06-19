@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -15,8 +15,8 @@ image: https://developers.cloudflare.com/core-services-preview.png
 After 30 September 2021, Cloudflare will make the following changes to the Load Balancing GraphQL schema:
 
 * Deprecate nodes:  
-   * `loadBalancingRequestsGroups` will be deprecated for `loadBalancingRequestsAdaptiveGroups`  
-   * `loadBalancingRequests` will be deprecated for `loadBalancingRequestsAdaptive`
+  * `loadBalancingRequestsGroups` will be deprecated for `loadBalancingRequestsAdaptiveGroups`
+  * `loadBalancingRequests` will be deprecated for `loadBalancingRequestsAdaptive`
 * Deprecate the `date` field (replace it with the existing `datetime` field)
 * Add the `sampleInterval` field
 
@@ -29,50 +29,7 @@ The following example:
 * Uses the new `sampleInterval` field
 
 ```
-
-query {
-
-  viewer {
-
-    zones(filter: { zoneTag: "your Zone ID" }) {
-
-      loadBalancingRequestsAdaptiveGroups(
-
-        filter: {
-
-          datetime_gt: "2021-06-12T04:00:00Z",
-
-          datetime_lt: "2021-06-13T06:00:00Z"
-
-        }
-
-      ) {
-
-        dimensions {
-
-          datetime
-
-          coloCode
-
-          ...
-
-        }
-
-        avg {
-
-          sampleInterval
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
+query {  viewer {    zones(filter: { zoneTag: "your Zone ID" }) {      loadBalancingRequestsAdaptiveGroups(        filter: {          datetime_gt: "2021-06-12T04:00:00Z",          datetime_lt: "2021-06-13T06:00:00Z"        }      ) {        dimensions {          datetime          coloCode          ...        }        avg {          sampleInterval        }      }    }  }}
 ```
 
 ```json

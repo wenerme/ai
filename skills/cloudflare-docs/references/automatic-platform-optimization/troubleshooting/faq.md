@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/automatic-platform-optimization/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,17 +27,11 @@ The browser cache control headers may be missing with APO if you set your **Brow
 Terminal window
 
 ```
-
 curl --silent --verbose --output /dev/null https://example.com/ --header 'Accept: text/html' 2>&1 | grep cache-control
-
-
 ```
 
 ```
-
 < cache-control: max-age=86400, stale-while-revalidate=86400, stale-if-error=86400
-
-
 ```
 
 ## Is the stale-if-error directive still needed with APO?

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network-flow/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -55,12 +55,7 @@ A [Network Flow rule](https://developers.cloudflare.com/api/resources/magic%5Fne
 For example, you create a Network Flow rule with the following parameters:
 
 ```
-
-"bandwidth_threshold": 50000000
-
-"duration": "1m0s"
-
-
+"bandwidth_threshold": 50000000"duration": "1m0s"
 ```
 
 With this rule, your network needs to receive a throughput greater than 50,000,000 bits per second (50 Megabits per second or Mbps) for 60 seconds. If both of these conditions are met, then Network Flow will send you an alert.

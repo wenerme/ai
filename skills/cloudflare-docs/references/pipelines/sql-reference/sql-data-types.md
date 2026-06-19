@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pipelines/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -41,10 +41,7 @@ List values can be indexed using 1-indexed subscript notation (`v[1]` is the fir
 Lists can be constructed via `[]` literals:
 
 ```
-
 SELECT [1, 2, 3] as numbers
-
-
 ```
 
 Pipelines provides array functions for manipulating list values, and lists may be unnested using the `UNNEST` operator.
@@ -56,10 +53,7 @@ Structs combine related fields into a single value. In stream schemas, structs a
 Example creating a struct in SQL:
 
 ```
-
 SELECT struct('user123', 'purchase', 29.99) as event_data FROM events
-
-
 ```
 
 This creates a struct with fields `c0`, `c1`, `c2` containing the user ID, event type, and amount.

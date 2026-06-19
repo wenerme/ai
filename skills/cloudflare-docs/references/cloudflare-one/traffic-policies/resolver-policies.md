@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -93,14 +93,15 @@ Resolver policies do not automatically update when you change the virtual networ
 
 To create a resolver policy:
 
-* [ Dashboard ](#tab-panel-7690)
-* [ Terraform (v5) ](#tab-panel-7691)
+* [ Dashboard ](#tab-panel-7766)
+* [ Terraform (v5) ](#tab-panel-7767)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Resolver policies**.
 2. Select **Add a policy**.
-3. Create an expression for your desired traffic. For example, you can resolve a hostname for an internal service:  
-| Selector | Operator | Value                |  
-| -------- | -------- | -------------------- |  
+3. Create an expression for your desired traffic. For example, you can resolve a hostname for an internal service:
+
+| Selector | Operator | Value                |
+| -------- | -------- | -------------------- |
 | Host     | in       | internal.example.com |  
 Make sure your destination is not subject to [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#manage-local-domains).
 4. In **Select DNS resolver**, choose _Configure custom DNS resolvers_.
@@ -111,37 +112,12 @@ Make sure your destination is not subject to [Local Domain Fallback](https://dev
 
 Custom resolvers are saved to your account for future use. You can add up to 10 IPv4 and 10 IPv6 addresses to a policy.
 
-1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):  
-   * `Zero Trust Write`
+1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
+
+  * `Zero Trust Write`
 2. Create a resolver policy using the [cloudflare\_zero\_trust\_gateway\_policy ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fgateway%5Fpolicy) resource:  
 ```  
-resource "cloudflare_zero_trust_gateway_policy" "resolver_policy" {  
-  name        = "Example resolver policy"  
-  enabled     = true  
-  account_id  = var.cloudflare_account_id  
-  description = "TERRAFORM MANAGED resolver policy"  
-  action      = "resolve"  
-  traffic     = "dns.fqdn in {\"internal.example.com\"}"  
-  identity    = "identity.email in {\"jdoe@example.com\"}"  
-  precedence  = 1  
-  rule_settings = {  
-      dns_resolvers = {  
-      # You can add up to 10 IPv4 and 10 IPv6 addresses to a policy.  
-        ipv4 = [{  
-          ip = "192.0.2.24"  
-          port = 53  
-          route_through_private_network = true  
-          vnet_id = cloudflare_zero_trust_tunnel_cloudflared_virtual_network.staging_vnet.id  
-        }]  
-        ipv6 = [{  
-          ip = "2001:DB8::"  
-          port = 53  
-          route_through_private_network = true  
-          vnet_id = cloudflare_zero_trust_tunnel_cloudflared_virtual_network.staging_vnet.id  
-        }]  
-      }  
-  }  
-}  
+resource "cloudflare_zero_trust_gateway_policy" "resolver_policy" {  name        = "Example resolver policy"  enabled     = true  account_id  = var.cloudflare_account_id  description = "TERRAFORM MANAGED resolver policy"  action      = "resolve"  traffic     = "dns.fqdn in {\"internal.example.com\"}"  identity    = "identity.email in {\"jdoe@example.com\"}"  precedence  = 1  rule_settings = {      dns_resolvers = {      # You can add up to 10 IPv4 and 10 IPv6 addresses to a policy.        ipv4 = [{          ip = "192.0.2.24"          port = 53          route_through_private_network = true          vnet_id = cloudflare_zero_trust_tunnel_cloudflared_virtual_network.staging_vnet.id        }]        ipv6 = [{          ip = "2001:DB8::"          port = 53          route_through_private_network = true          vnet_id = cloudflare_zero_trust_tunnel_cloudflared_virtual_network.staging_vnet.id        }]      }  }}  
 ```
 
 When a user's query matches a resolver policy, Gateway will send the query to your listed resolvers in the following order:

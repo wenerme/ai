@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -96,42 +96,42 @@ It is recommended to consistently use the same API token across all uploads and 
 [Static assets](https://developers.cloudflare.com/workers/static-assets/) and [frameworks](https://developers.cloudflare.com/workers/framework-guides/) are now supported in Cloudflare Workers. Learn to set up Workers projects and the commands for each framework in the framework guides:
 
 * [ AI & agents ](https://developers.cloudflare.com/workers/framework-guides/ai-and-agents/)  
-   * [ Agents SDK ](https://developers.cloudflare.com/agents/)  
-   * [ LangChain ](https://developers.cloudflare.com/workers/languages/python/packages/langchain/)
+  * [ Agents SDK ](https://developers.cloudflare.com/agents/)
+  * [ LangChain ](https://developers.cloudflare.com/workers/languages/python/packages/langchain/)
 * [ APIs ](https://developers.cloudflare.com/workers/framework-guides/apis/)  
-   * [ FastAPI ](https://developers.cloudflare.com/workers/languages/python/packages/fastapi/)  
-   * [ Hono ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/hono/)
+  * [ FastAPI ](https://developers.cloudflare.com/workers/languages/python/packages/fastapi/)
+  * [ Hono ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/hono/)
 * [ Deploy an existing project ](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/)
 * [ Mobile applications ](https://developers.cloudflare.com/workers/framework-guides/mobile-apps/)  
-   * [ Expo ](https://docs.expo.dev/eas/hosting/reference/worker-runtime/)
+  * [ Expo ](https://docs.expo.dev/eas/hosting/reference/worker-runtime/)
 * [ Web applications ](https://developers.cloudflare.com/workers/framework-guides/web-apps/)  
-   * [ React + Vite ](https://developers.cloudflare.com/workers/framework-guides/web-apps/react/)  
-   * [ Astro ](https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/)  
-   * [ React Router (formerly Remix) ](https://developers.cloudflare.com/workers/framework-guides/web-apps/react-router/)  
-   * [ Vue ](https://developers.cloudflare.com/workers/framework-guides/web-apps/vue/)  
-   * [ TanStack Start ](https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/)  
-   * [ Microfrontends ](https://developers.cloudflare.com/workers/framework-guides/web-apps/microfrontends/)  
-   * [ More guides... ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/)  
-         * [ Analog ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/analog/)  
-         * [ Angular ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/angular/)  
-         * [ Docusaurus ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/docusaurus/)  
-         * [ Gatsby ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/gatsby/)  
-         * [ Hono ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/hono/)  
-         * [ Nuxt ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/nuxt/)  
-         * [ Qwik ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/qwik/)  
-         * [ Solid ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/solid/)  
-         * [ Waku ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/waku/)  
-   * [ Next.js ](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/)  
-   * [ RedwoodSDK ](https://developers.cloudflare.com/workers/framework-guides/web-apps/redwoodsdk/)  
-   * [ SvelteKit ](https://developers.cloudflare.com/workers/framework-guides/web-apps/sveltekit/)  
-   * [ Vike ](https://developers.cloudflare.com/workers/framework-guides/web-apps/vike/)
+  * [ React + Vite ](https://developers.cloudflare.com/workers/framework-guides/web-apps/react/)
+  * [ Astro ](https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/)
+  * [ React Router (formerly Remix) ](https://developers.cloudflare.com/workers/framework-guides/web-apps/react-router/)
+  * [ Vue ](https://developers.cloudflare.com/workers/framework-guides/web-apps/vue/)
+  * [ TanStack Start ](https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/)
+  * [ Microfrontends ](https://developers.cloudflare.com/workers/framework-guides/web-apps/microfrontends/)
+  * [ More guides... ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/)  
+    * [ Analog ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/analog/)
+    * [ Angular ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/angular/)
+    * [ Docusaurus ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/docusaurus/)
+    * [ Gatsby ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/gatsby/)
+    * [ Hono ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/hono/)
+    * [ Nuxt ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/nuxt/)
+    * [ Qwik ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/qwik/)
+    * [ Solid ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/solid/)
+    * [ Waku ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/waku/)
+  * [ Next.js ](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/)
+  * [ RedwoodSDK ](https://developers.cloudflare.com/workers/framework-guides/web-apps/redwoodsdk/)
+  * [ SvelteKit ](https://developers.cloudflare.com/workers/framework-guides/web-apps/sveltekit/)
+  * [ Vike ](https://developers.cloudflare.com/workers/framework-guides/web-apps/vike/)
 
 ## Environment variables
 
 You can provide custom environment variables to your build.
 
-* [ Dashboard ](#tab-panel-11424)
-* [ Wrangler ](#tab-panel-11425)
+* [ Dashboard ](#tab-panel-11441)
+* [ Wrangler ](#tab-panel-11442)
 
 To add environment variables via the dashboard:
 
@@ -142,63 +142,21 @@ To add environment variables via the dashboard:
 
 To add env variables using Wrangler, define text and JSON via the `[vars]` configuration in your Wrangler file.
 
-* [  wrangler.jsonc ](#tab-panel-11422)
-* [  wrangler.toml ](#tab-panel-11423)
+* [  wrangler.jsonc ](#tab-panel-11439)
+* [  wrangler.toml ](#tab-panel-11440)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "my-worker-dev",
-
-  "vars": {
-
-    "API_HOST": "example.com",
-
-    "API_ACCOUNT_ID": "example_user",
-
-    "SERVICE_X_DATA": {
-
-      "URL": "service-x-api.dev.example",
-
-      "MY_ID": 123
-
-    }
-
-  }
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-worker-dev",  "vars": {    "API_HOST": "example.com",    "API_ACCOUNT_ID": "example_user",    "SERVICE_X_DATA": {      "URL": "service-x-api.dev.example",      "MY_ID": 123    }  }}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "my-worker-dev"
-
-
-[vars]
-
-API_HOST = "example.com"
-
-API_ACCOUNT_ID = "example_user"
-
-
-  [vars.SERVICE_X_DATA]
-
-  URL = "service-x-api.dev.example"
-
-  MY_ID = 123
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-worker-dev"
+[vars]API_HOST = "example.com"API_ACCOUNT_ID = "example_user"
+  [vars.SERVICE_X_DATA]  URL = "service-x-api.dev.example"  MY_ID = 123
 ```
 
 ### Default variables

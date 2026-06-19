@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,21 +29,8 @@ With npm, you can [create and view tokens through its website ↗](https://docs.
 Terminal window
 
 ```
-
-# Verify the current npm user is correct
-
-npm whoami
-
-
-# Create a readonly token
-
-npm token create --read-only
-
-#-> Enter password, if prompted
-
-#-> Enter 2FA code, if configured
-
-
+# Verify the current npm user is correctnpm whoami
+# Create a readonly tokennpm token create --read-only#-> Enter password, if prompted#-> Enter 2FA code, if configured
 ```
 
 This will produce a read-only token that looks like a UUID string. Save this value for a later step.
@@ -65,14 +52,7 @@ By default, `npm` looks for an environment variable named `NPM_TOKEN` and becaus
 When multiple registries are in use, a project will need to define its own root-level [.npmrc ↗](https://docs.npmjs.com/cli/v7/configuring-npm/npmrc) configuration file. An example `.npmrc` file may look like this:
 
 ```
-
-@foobar:registry=https://npm.pkg.github.com
-
-//registry.npmjs.org/:_authToken=${TOKEN_FOR_NPM}
-
-//npm.pkg.github.com/:_authToken=${TOKEN_FOR_GITHUB}
-
-
+@foobar:registry=https://npm.pkg.github.com//registry.npmjs.org/:_authToken=${TOKEN_FOR_NPM}//npm.pkg.github.com/:_authToken=${TOKEN_FOR_GITHUB}
 ```
 
 Here, all packages under the `@foobar` scope are directed towards the GitHub Packages registry. Then the registries are assigned their own access tokens via their respective environment variable names.

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,55 +26,19 @@ The `ssh.enabled` property only controls whether you can SSH into a Container th
 
 To SSH into a Container with Wrangler, add an `ssh-ed25519` public key to `authorized_keys` in your Container configuration. The following example shows a basic configuration:
 
-* [  wrangler.jsonc ](#tab-panel-7858)
-* [  wrangler.toml ](#tab-panel-7859)
+* [  wrangler.jsonc ](#tab-panel-7934)
+* [  wrangler.toml ](#tab-panel-7935)
 
 JSONC
 
 ```
-
-{
-
-  "containers": [
-
-    {
-
-      // other options here...
-
-      "authorized_keys": [
-
-        {
-
-          "name": "<NAME>",
-
-          "public_key": "<YOUR_PUBLIC_KEY_HERE>"
-
-        }
-
-      ]
-
-    }
-
-  ]
-
-}
-
-
+{  "containers": [    {      // other options here...      "authorized_keys": [        {          "name": "<NAME>",          "public_key": "<YOUR_PUBLIC_KEY_HERE>"        }      ]    }  ]}
 ```
 
 TOML
 
 ```
-
-[[containers]]
-
-[[containers.authorized_keys]]
-
-name = "<NAME>"
-
-public_key = "<YOUR_PUBLIC_KEY_HERE>"
-
-
+[[containers]][[containers.authorized_keys]]name = "<NAME>"public_key = "<YOUR_PUBLIC_KEY_HERE>"
 ```
 
 For more information on configuring SSH, refer to [SSH configuration](https://developers.cloudflare.com/workers/wrangler/configuration/#ssh).
@@ -86,10 +50,7 @@ Once SSH is configured and the Container is running, open the SSH connection wit
 Terminal window
 
 ```
-
 wrangler containers ssh <INSTANCE_ID>
-
-
 ```
 
 ## Use as SSH proxy
@@ -99,10 +60,7 @@ You can use `wrangler containers ssh` as an OpenSSH `ProxyCommand`. This lets yo
 Terminal window
 
 ```
-
 ssh -o ProxyCommand="wrangler containers ssh %h" cloudchamber@<INSTANCE_ID>
-
-
 ```
 
 When used this way, Wrangler pipes standard input and output to the SSH server in the running Container. You can also pass `--stdio` to force this mode.

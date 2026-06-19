@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,97 +28,32 @@ xAI's next-generation video generation model. Generates, edits, and extends vide
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1978)
-* [ cURL ](#tab-panel-1979)
+* [ TypeScript ](#tab-panel-2052)
+* [ cURL ](#tab-panel-2053)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'xai/grok-imagine-video-1.5-preview',
-
-  {
-
-    prompt: 'Generate a slow and serene time-lapse',
-
-    image: { url: 'https://docs.x.ai/assets/api-examples/video/milkyway-still.png' },
-
-    duration: 12,
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'xai/grok-imagine-video-1.5-preview',  {    prompt: 'Generate a slow and serene time-lapse',    image: { url: 'https://docs.x.ai/assets/api-examples/video/milkyway-still.png' },    duration: 12,  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "xai/grok-imagine-video-1.5-preview",
-
-  "input": {
-
-    "prompt": "Generate a slow and serene time-lapse",
-
-    "image": {
-
-      "url": "https://docs.x.ai/assets/api-examples/video/milkyway-still.png"
-
-    },
-
-    "duration": 12
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "xai/grok-imagine-video-1.5-preview",  "input": {    "prompt": "Generate a slow and serene time-lapse",    "image": {      "url": "https://docs.x.ai/assets/api-examples/video/milkyway-still.png"    },    "duration": 12  }}'
 ```
 
-* [ Output ](#tab-panel-1976)
-* [ Raw response ](#tab-panel-1977)
+* [ Output ](#tab-panel-2050)
+* [ Raw response ](#tab-panel-2051)
 
 ```
-
-{
-
-  "state": "Completed",
-
-  "result": {
-
-    "video": "https://examples.aig.cloudflare.com/xai/grok-imagine-video-1.5-preview/image-to-video.mp4"
-
-  },
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
-
-}
-
-
+{  "state": "Completed",  "result": {    "video": "https://examples.aig.cloudflare.com/xai/grok-imagine-video-1.5-preview/image-to-video.mp4"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-1980)
-* [ Output ](#tab-panel-1981)
+* [ Input ](#tab-panel-2054)
+* [ Output ](#tab-panel-2055)
 
 \_operation
 
@@ -172,7 +107,7 @@ video
 
 Input [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video-1.5-preview/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video-1.5-preview/schema-input.json "Download") 
 
-Output [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video-1.5-preview/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video-1.5-preview/schema-output.json "Download") 
+Output [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video-1.5-preview/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video-1.5-preview/schema-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/xai/grok-imagine-video-1.5-preview/#page","headline":"Grok Imagine Video 1.5 Preview (xAI) · Cloudflare AI docs · Cloudflare AI docs","description":"xAI's next-generation video generation model. Generates, edits, and extends videos from text and image inputs. Supports multiple aspect ratios and resolutions with improved quality over the previous generation.","url":"https://developers.cloudflare.com/ai/models/xai/grok-imagine-video-1.5-preview/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

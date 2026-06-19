@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -55,10 +55,7 @@ Audit Logs are available through the Cloudflare API. To retrieve audit logs, use
 Terminal window
 
 ```
-
 https://api.cloudflare.com/client/v4/accounts/{account_id}/logs/audit
-
-
 ```
 
 Below is an example request to retrieve audit logs for a certain period of time along with its corresponding response. Replace the example values in the URL with your actual values:
@@ -70,67 +67,13 @@ Below is an example request to retrieve audit logs for a certain period of time 
 Terminal window
 
 ```
-
 GET https://api.cloudflare.com/client/v4/accounts/1234567890abcdef/logs/audit?since=2025-03-01T00:00:00Z&before=2025-03-26T23:59:59Z
-
-
 ```
 
 Example response
 
 ```
-
-{
-
-  "result": [
-
-    {
-
-      "action": "zone.settings.change",
-
-      "actor": {
-
-        "email": "user@example.com",
-
-        "id": "0987654321abcdef"
-
-      },
-
-      "ip": "192.0.2.1",
-
-      "method": "PUT",
-
-      "interface": "dashboard",
-
-      "resources": [
-
-        {
-
-          "resource_id": "zone123",
-
-          "resource_type": "zone"
-
-        }
-
-      ],
-
-      "timestamp": "2025-03-15T14:25:37Z"
-
-    }
-
-    // Additional log entries
-
-  ],
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": [    {      "action": "zone.settings.change",      "actor": {        "email": "user@example.com",        "id": "0987654321abcdef"      },      "ip": "192.0.2.1",      "method": "PUT",      "interface": "dashboard",      "resources": [        {          "resource_id": "zone123",          "resource_type": "zone"        }      ],      "timestamp": "2025-03-15T14:25:37Z"    }    // Additional log entries  ],  "success": true,  "errors": [],  "messages": []}
 ```
 
 For more information refer to the [API documentation ↗](https://developers.cloudflare.com/api/resources/accounts/subresources/logs/subresources/audit/methods/list/#%28params%29%20default%20%3E%20%28param%29%20since%20%3E%20%28schema%29).
@@ -201,10 +144,7 @@ Contain events scoped to specific Cloudflare organizations. These logs capture u
 Terminal window
 
 ```
-
 GET https://api.cloudflare.com/client/v4/organizations/{organization_id}/logs/audit
-
-
 ```
 
 Note
@@ -219,136 +159,20 @@ Use the following example to get a list of audit logs for a user account.
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Account Settings Write`
 * `Account Settings Read`
 
 Get account audit logs (Version 2)
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logs/audit" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logs/audit" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Example response
 
 ```
-
-{
-
-  "errors": [
-
-    {
-
-      "message": "message"
-
-    }
-
-  ],
-
-  "result": [
-
-    {
-
-      "account": {
-
-        "id": "4bb334f7c94c4a29a045f03944f072e5",
-
-        "name": "Example Account"
-
-      },
-
-      "action": {
-
-        "description": "Add Member",
-
-        "result": "success",
-
-        "time": "2024-04-26T17:31:07Z",
-
-        "type": "create"
-
-      },
-
-      "actor": {
-
-        "id": "f6b5de0326bb5182b8a4840ee01ec774",
-
-        "context": "dash",
-
-        "email": "alice@example.com",
-
-        "ip_address": "198.41.129.166",
-
-        "token_id": "token_id",
-
-        "token_name": "token_name",
-
-        "type": "user"
-
-      },
-
-      "raw": {
-
-        "cf_ray_id": "8e9b1c60ef9e1c9a",
-
-        "method": "POST",
-
-        "status_code": 200,
-
-        "uri": "/accounts/4bb334f7c94c4a29a045f03944f072e5/members",
-
-        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) Safari/605.1.15"
-
-      },
-
-      "resource": {
-
-        "id": "id",
-
-        "product": "members",
-
-        "request": {},
-
-        "response": {},
-
-        "scope": {},
-
-        "type": "type"
-
-      },
-
-      "zone": {
-
-        "id": "id",
-
-        "name": "example.com"
-
-      }
-
-    }
-
-  ],
-
-  "result_info": {
-
-    "count": "1",
-
-    "cursor": "ASqdKd7dKgxh-aZ8bm0mZos1BtW4BdEqifCzNkEeGRzi_5SN_-362Y8sF-C1TRn60_6rd3z2dIajf9EAPyQ_NmIeAMkacmaJPXipqvP7PLU4t72wyqBeJfjmjdE="
-
-  },
-
-  "success": true
-
-}
-
-
+{  "errors": [    {      "message": "message"    }  ],  "result": [    {      "account": {        "id": "4bb334f7c94c4a29a045f03944f072e5",        "name": "Example Account"      },      "action": {        "description": "Add Member",        "result": "success",        "time": "2024-04-26T17:31:07Z",        "type": "create"      },      "actor": {        "id": "f6b5de0326bb5182b8a4840ee01ec774",        "context": "dash",        "email": "alice@example.com",        "ip_address": "198.41.129.166",        "token_id": "token_id",        "token_name": "token_name",        "type": "user"      },      "raw": {        "cf_ray_id": "8e9b1c60ef9e1c9a",        "method": "POST",        "status_code": 200,        "uri": "/accounts/4bb334f7c94c4a29a045f03944f072e5/members",        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) Safari/605.1.15"      },      "resource": {        "id": "id",        "product": "members",        "request": {},        "response": {},        "scope": {},        "type": "type"      },      "zone": {        "id": "id",        "name": "example.com"      }    }  ],  "result_info": {    "count": "1",    "cursor": "ASqdKd7dKgxh-aZ8bm0mZos1BtW4BdEqifCzNkEeGRzi_5SN_-362Y8sF-C1TRn60_6rd3z2dIajf9EAPyQ_NmIeAMkacmaJPXipqvP7PLU4t72wyqBeJfjmjdE="  },  "success": true}
 ```
 
 ## Common terms and definitions

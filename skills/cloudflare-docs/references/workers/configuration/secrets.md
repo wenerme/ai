@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,104 +29,33 @@ Secrets can be accessed from Workers as you would any other [environment variabl
 index.js
 
 ```
-
 import postgres from "postgres";
-
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    const sql = postgres(env.DB_CONNECTION_STRING);
-
-
+export default {  async fetch(request, env, ctx) {    const sql = postgres(env.DB_CONNECTION_STRING);
     const result = await sql`SELECT * FROM products;`;
-
-
-    return new Response(JSON.stringify(result), {
-
-      headers: { "Content-Type": "application/json" },
-
-    });
-
-  },
-
-};
-
-
+    return new Response(JSON.stringify(result), {      headers: { "Content-Type": "application/json" },    });  },};
 ```
 
 You can also import `env` from `cloudflare:workers` to access secrets from anywhere in your code, including outside of request handlers:
 
-* [  JavaScript ](#tab-panel-11489)
-* [  TypeScript ](#tab-panel-11490)
+* [  JavaScript ](#tab-panel-11506)
+* [  TypeScript ](#tab-panel-11507)
 
 JavaScript
 
 ```
-
-import { env } from "cloudflare:workers";
-
-import postgres from "postgres";
-
-
-// Initialize the database client at the top level using a secret
-
-const sql = postgres(env.DB_CONNECTION_STRING);
-
-
-export default {
-
-  async fetch(request) {
-
-    const result = await sql`SELECT * FROM products;`;
-
-
-    return new Response(JSON.stringify(result), {
-
-      headers: { "Content-Type": "application/json" },
-
-    });
-
-  },
-
-};
-
-
+import { env } from "cloudflare:workers";import postgres from "postgres";
+// Initialize the database client at the top level using a secretconst sql = postgres(env.DB_CONNECTION_STRING);
+export default {  async fetch(request) {    const result = await sql`SELECT * FROM products;`;
+    return new Response(JSON.stringify(result), {      headers: { "Content-Type": "application/json" },    });  },};
 ```
 
 TypeScript
 
 ```
-
-import { env } from "cloudflare:workers";
-
-import postgres from "postgres";
-
-
-// Initialize the database client at the top level using a secret
-
-const sql = postgres(env.DB_CONNECTION_STRING);
-
-
-export default {
-
-  async fetch(request: Request): Promise<Response> {
-
-    const result = await sql`SELECT * FROM products;`;
-
-
-    return new Response(JSON.stringify(result), {
-
-      headers: { "Content-Type": "application/json" },
-
-    });
-
-  },
-
-};
-
-
+import { env } from "cloudflare:workers";import postgres from "postgres";
+// Initialize the database client at the top level using a secretconst sql = postgres(env.DB_CONNECTION_STRING);
+export default {  async fetch(request: Request): Promise<Response> {    const result = await sql`SELECT * FROM products;`;
+    return new Response(JSON.stringify(result), {      headers: { "Content-Type": "application/json" },    });  },};
 ```
 
 For more details on accessing `env` globally, refer to [Importing env as a global](https://developers.cloudflare.com/workers/runtime-apis/bindings/#importing-env-as-a-global).
@@ -154,12 +83,7 @@ These files should be formatted using the [dotenv ↗](https://hexdocs.pm/dotenv
 .dev.vars / .env
 
 ```
-
-SECRET_KEY="value"
-
-API_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
-
-
+SECRET_KEY="value"API_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
 ```
 
 Do not commit secrets to git
@@ -172,10 +96,10 @@ When you select a Cloudflare environment in your local development, the correspo
 
 * When using `.dev.vars.<environment-name>` files, all secrets must be defined per environment. If `.dev.vars.<environment-name>` exists then only this will be loaded; the `.dev.vars` file will not be loaded.
 * In contrast, all matching `.env` files are loaded and the values are merged. For each variable, the value from the most specific file is used, with the following precedence:  
-   * `.env.<environment-name>.local` (most specific)  
-   * `.env.local`  
-   * `.env.<environment-name>`  
-   * `.env` (least specific)
+  * `.env.<environment-name>.local` (most specific)
+  * `.env.local`
+  * `.env.<environment-name>`
+  * `.env` (least specific)
 
 Controlling `.env` handling
 
@@ -201,10 +125,7 @@ Secrets can be added through [wrangler secret put](https://developers.cloudflare
 Terminal window
 
 ```
-
 npx wrangler secret put <KEY>
-
-
 ```
 
 If using [gradual deployments](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/), instead use the `wrangler versions secret put` command. This will only create a new version of the Worker, that can then be deploying using [wrangler versions deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#versions-deploy).
@@ -216,10 +137,7 @@ Wrangler versions before 3.73.0 require you to specify a `--x-versions` flag.
 Terminal window
 
 ```
-
 npx wrangler versions secret put <KEY>
-
-
 ```
 
 #### Via the dashboard
@@ -241,19 +159,13 @@ You can upload secrets at the same time as your Worker code using the `--secrets
 Terminal window
 
 ```
-
 npx wrangler deploy --secrets-file .env.production
-
-
 ```
 
 Terminal window
 
 ```
-
 npx wrangler versions upload --secrets-file secrets.json
-
-
 ```
 
 Secrets not included in the file are preserved from the previous version. This is useful in CI/CD pipelines where you want to deploy code and update secrets in a single operation.
@@ -269,10 +181,7 @@ Secrets can be deleted through [wrangler secret delete](https://developers.cloud
 Terminal window
 
 ```
-
 npx wrangler secret delete <KEY>
-
-
 ```
 
 If using [gradual deployments](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/), instead use the `wrangler versions secret delete` command. This will only create a new version of the Worker, that can then be deploying using [wrangler versions deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#versions-deploy).
@@ -280,10 +189,7 @@ If using [gradual deployments](https://developers.cloudflare.com/workers/configu
 Terminal window
 
 ```
-
 npx wrangler versions secret delete <KEY>
-
-
 ```
 
 #### Via the dashboard

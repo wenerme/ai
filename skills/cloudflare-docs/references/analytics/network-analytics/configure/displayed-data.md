@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -79,9 +79,10 @@ To filter for these traffic events:
 1. In the Cloudflare dashboard, go to the **Network Analytics** page.  
 [ Go to **Network analytics** ](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics)
 2. Go to **DDoS managed rules** tab.
-3. Select **Add filter**.  
-   * Set `Verdict equals drop`.  
-   * Set `Action equals pass`.
+3. Select **Add filter**.
+
+  * Set `Verdict equals drop`.
+  * Set `Action equals pass`.
 4. Select **Apply**.
 
 By setting `verdict` to `drop` and `outcome` as `pass`, we are filtering for traffic that was marked as a detection (that is, verdict was `drop`) but was not dropped (for example, outcome was `pass`).

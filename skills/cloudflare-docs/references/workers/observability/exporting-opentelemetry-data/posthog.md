@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -60,12 +60,12 @@ Now you'll create a destination in the Cloudflare dashboard that points to PostH
 1. Navigate to your Cloudflare account's [Workers Observability ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages/observability/pipelines) section
 2. Click **Add destination**
 3. Configure your logs destination:  
-   * **Destination Name**: `posthog-logs` (or any descriptive name)  
-   * **Destination Type**: Select **Logs**  
-   * **OTLP Endpoint**: Your PostHog logs endpoint (e.g., `https://us.i.posthog.com/i/v1/logs` or `https://eu.i.posthog.com/i/v1/logs`)  
-   * **Custom Headers**: Add the authentication header:  
-         * Header name: `Authorization`  
-         * Header value: `Bearer <your-project-api-key>` (e.g., `Bearer phc_xxxxx...`)
+  * **Destination Name**: `posthog-logs` (or any descriptive name)
+  * **Destination Type**: Select **Logs**
+  * **OTLP Endpoint**: Your PostHog logs endpoint (e.g., `https://us.i.posthog.com/i/v1/logs` or `https://eu.i.posthog.com/i/v1/logs`)
+  * **Custom Headers**: Add the authentication header:  
+    * Header name: `Authorization`
+    * Header value: `Bearer <your-project-api-key>` (e.g., `Bearer phc_xxxxx...`)
 4. Click **Save**
 ![Cloudflare destination configuration for PostHog logs with destination name, type selection, OTLP endpoint, and custom headers](https://developers.cloudflare.com/_astro/posthog-example-destination-modal.Dkn5CFBP_ZTWDAQ.webp) 
 
@@ -73,45 +73,19 @@ Now you'll create a destination in the Cloudflare dashboard that points to PostH
 
 With your destination created in the Cloudflare dashboard, update your Worker's configuration to enable logs export.
 
-* [  wrangler.jsonc ](#tab-panel-11848)
-* [  wrangler.toml ](#tab-panel-11849)
+* [  wrangler.jsonc ](#tab-panel-11865)
+* [  wrangler.toml ](#tab-panel-11866)
 
 JSONC
 
 ```
-
-{
-
-  "observability": {
-
-    "logs": {
-
-      "enabled": true,
-
-      // Must match the destination name in the dashboard
-
-      "destinations": ["posthog-logs"]
-
-    }
-
-  }
-
-}
-
-
+{  "observability": {    "logs": {      "enabled": true,      // Must match the destination name in the dashboard      "destinations": ["posthog-logs"]    }  }}
 ```
 
 TOML
 
 ```
-
-[observability.logs]
-
-enabled = true
-
-destinations = [ "posthog-logs" ]
-
-
+[observability.logs]enabled = truedestinations = [ "posthog-logs" ]
 ```
 
 After updating your configuration, deploy your Worker for the changes to take effect.
@@ -142,47 +116,10 @@ You can add custom attributes to your logs using standard `console` methods with
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    // Basic logging
-
-    console.log("Processing request");
-
-
-    // Logs with additional context
-
-    console.info("User action", {
-
-      userId: "user_123",
-
-      action: "api_call",
-
-      path: new URL(request.url).pathname
-
-    });
-
-
-    // Error logging with details
-
-    console.error("Request failed", {
-
-      error: "Connection timeout",
-
-      retryCount: 3
-
-    });
-
-
-    return new Response("OK");
-
-  }
-
-};
-
-
+export default {  async fetch(request, env) {    // Basic logging    console.log("Processing request");
+    // Logs with additional context    console.info("User action", {      userId: "user_123",      action: "api_call",      path: new URL(request.url).pathname    });
+    // Error logging with details    console.error("Request failed", {      error: "Connection timeout",      retryCount: 3    });
+    return new Response("OK");  }};
 ```
 
 These attributes will be searchable and filterable in the PostHog logs interface.

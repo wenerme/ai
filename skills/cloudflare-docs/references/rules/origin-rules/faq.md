@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -52,60 +52,7 @@ JSON example for API users
 When [using the API](https://developers.cloudflare.com/rules/origin-rules/create-api/), you configure origin rule parameters in an `action_parameters` object.
 
 ```
-
-{
-
-  "rules": [
-
-    {
-
-      "expression": "http.request.uri.query contains \"/eu/\"",
-
-      "description": "Origin rule #1",
-
-      "action": "route",
-
-      "action_parameters": {
-
-        "host_header": "example.com",
-
-        "origin": {
-
-          "port": 8081
-
-        }
-
-      }
-
-    },
-
-    {
-
-      "expression": "http.request.uri.query contains \"/eu/\"",
-
-      "description": "Origin rule #2",
-
-      "action": "route",
-
-      "action_parameters": {
-
-        "host_header": "example.net",
-
-        "origin": {
-
-          "host": "example.net"
-
-        }
-
-      }
-
-    }
-
-  ]
-
-}
-
-
+{  "rules": [    {      "expression": "http.request.uri.query contains \"/eu/\"",      "description": "Origin rule #1",      "action": "route",      "action_parameters": {        "host_header": "example.com",        "origin": {          "port": 8081        }      }    },    {      "expression": "http.request.uri.query contains \"/eu/\"",      "description": "Origin rule #2",      "action": "route",      "action_parameters": {        "host_header": "example.net",        "origin": {          "host": "example.net"        }      }    }  ]}
 ```
 
 The merged configuration to apply would be the following:

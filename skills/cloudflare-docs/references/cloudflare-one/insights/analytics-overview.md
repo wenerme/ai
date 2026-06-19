@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,10 +21,10 @@ The Analytics overview includes reports and insights across the following produc
 * [Global status](#global-status) of your Zero Trust Organization
 * [Access](#access)
 * Gateway  
-   * [HTTP traffic](#proxy-traffic)  
-   * [Network traffic](#gateway-network-requests)  
-   * [DNS traffic](#dns-traffic)  
-   * [Firewall policies](#gateway-insights)
+  * [HTTP traffic](#proxy-traffic)
+  * [Network traffic](#gateway-network-requests)
+  * [DNS traffic](#dns-traffic)
+  * [Firewall policies](#gateway-insights)
 
 Refer to [Insights overview](https://developers.cloudflare.com/cloudflare-one/insights/) to learn how to use Analytics dashboards together with [Analytics Overview](https://developers.cloudflare.com/cloudflare-one/insights/analytics-overview/) and [Digital Experience Monitoring (DEX)](https://developers.cloudflare.com/cloudflare-one/insights/dex/) for complete visibility and troubleshooting.
 

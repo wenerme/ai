@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,41 +23,19 @@ Cloudflare Workers provides a subset of Node.js APIs in two forms:
 
 To enable built-in Node.js APIs and add polyfills, add the `nodejs_compat` compatibility flag to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and ensure that your Worker's [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) is 2024-09-23 or later. [Learn more about the Node.js compatibility flag and v2](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag).
 
-* [  wrangler.jsonc ](#tab-panel-12001)
-* [  wrangler.toml ](#tab-panel-12002)
+* [  wrangler.jsonc ](#tab-panel-12018)
+* [  wrangler.toml ](#tab-panel-12019)
 
 JSONC
 
 ```
-
-{
-
-  "compatibility_flags": [
-
-    "nodejs_compat"
-
-  ],
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17"
-
-}
-
-
+{  "compatibility_flags": [    "nodejs_compat"  ],  // Set this to today's date  "compatibility_date": "2026-06-19"}
 ```
 
 TOML
 
 ```
-
-compatibility_flags = [ "nodejs_compat" ]
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
+compatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-06-19"
 ```
 
 ## Supported Node.js APIs
@@ -114,7 +92,7 @@ The runtime APIs from Node.js listed below as "🟢 supported" are currently nat
 
 Unless otherwise specified, native implementations of Node.js APIs in Workers are intended to match the implementation in the [Current release of Node.js ↗](https://github.com/nodejs/release#release-schedule).
 
-If an API you wish to use is missing and you want to suggest that Workers support it, please add a post or comment in the[Node.js APIs discussions category ↗](https://github.com/cloudflare/workerd/discussions/categories/node-js-apis) on GitHub.
+If an API you wish to use is missing and you want to suggest that Workers support it, please add a post or comment in the [Node.js APIs discussions category ↗](https://github.com/cloudflare/workerd/discussions/categories/node-js-apis) on GitHub.
 
 ### Node.js API Polyfills
 
@@ -123,10 +101,7 @@ Node.js APIs that are not yet supported in the Workers runtime are polyfilled vi
 Adding polyfills maximizes compatibility with existing npm packages by providing modules with mocked methods. Calling these mocked methods will either noop or will throw an error with a message like:
 
 ```
-
 [unenv] <method name> is not implemented yet!
-
-
 ```
 
 This allows you to import packages that use these Node.js modules, even if certain methods are not supported.
@@ -135,33 +110,19 @@ This allows you to import packages that use these Node.js modules, even if certa
 
 If you need to enable only the Node.js `AsyncLocalStorage` API, you can enable the `nodejs_als` compatibility flag:
 
-* [  wrangler.jsonc ](#tab-panel-12003)
-* [  wrangler.toml ](#tab-panel-12004)
+* [  wrangler.jsonc ](#tab-panel-12020)
+* [  wrangler.toml ](#tab-panel-12021)
 
 JSONC
 
 ```
-
-{
-
-  "compatibility_flags": [
-
-    "nodejs_als"
-
-  ]
-
-}
-
-
+{  "compatibility_flags": [    "nodejs_als"  ]}
 ```
 
 TOML
 
 ```
-
 compatibility_flags = [ "nodejs_als" ]
-
-
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,188 +27,58 @@ Faster variant of ByteDance's Seedance 2.0 video model. Trades some quality for 
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-392)
-* [ cURL ](#tab-panel-393)
+* [ TypeScript ](#tab-panel-370)
+* [ cURL ](#tab-panel-371)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'bytedance/seedance-2.0-fast',
-
-  {
-
-    prompt: 'A golden retriever running through a field of sunflowers on a sunny day',
-
-    aspect_ratio: '16:9',
-
-    duration: 5,
-
-    resolution: '720p',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'bytedance/seedance-2.0-fast',  {    prompt: 'A golden retriever running through a field of sunflowers on a sunny day',    aspect_ratio: '16:9',    duration: 5,    resolution: '720p',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "bytedance/seedance-2.0-fast",
-
-  "input": {
-
-    "prompt": "A golden retriever running through a field of sunflowers on a sunny day",
-
-    "aspect_ratio": "16:9",
-
-    "duration": 5,
-
-    "resolution": "720p"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "bytedance/seedance-2.0-fast",  "input": {    "prompt": "A golden retriever running through a field of sunflowers on a sunny day",    "aspect_ratio": "16:9",    "duration": 5,    "resolution": "720p"  }}'
 ```
 
-* [ Output ](#tab-panel-388)
-* [ Raw response ](#tab-panel-389)
+* [ Output ](#tab-panel-366)
+* [ Raw response ](#tab-panel-367)
 
 ```
-
-{
-
-  "state": "Completed",
-
-  "result": {
-
-    "video": "https://examples.aig.cloudflare.com/bytedance/seedance-2.0-fast/quick-video.mp4"
-
-  },
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
-
-}
-
-
+{  "state": "Completed",  "result": {    "video": "https://examples.aig.cloudflare.com/bytedance/seedance-2.0-fast/quick-video.mp4"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
 ```
 
 ## Examples
 
 **Portrait Video**  — Vertical video for social media 
 
-* [ TypeScript ](#tab-panel-394)
-* [ cURL ](#tab-panel-395)
+* [ TypeScript ](#tab-panel-372)
+* [ cURL ](#tab-panel-373)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'bytedance/seedance-2.0-fast',
-
-  {
-
-    prompt: 'A barista pouring latte art in a cozy coffee shop, close-up with shallow depth of field',
-
-    aspect_ratio: '9:16',
-
-    duration: 5,
-
-    resolution: '720p',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'bytedance/seedance-2.0-fast',  {    prompt: 'A barista pouring latte art in a cozy coffee shop, close-up with shallow depth of field',    aspect_ratio: '9:16',    duration: 5,    resolution: '720p',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "bytedance/seedance-2.0-fast",
-
-  "input": {
-
-    "prompt": "A barista pouring latte art in a cozy coffee shop, close-up with shallow depth of field",
-
-    "aspect_ratio": "9:16",
-
-    "duration": 5,
-
-    "resolution": "720p"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "bytedance/seedance-2.0-fast",  "input": {    "prompt": "A barista pouring latte art in a cozy coffee shop, close-up with shallow depth of field",    "aspect_ratio": "9:16",    "duration": 5,    "resolution": "720p"  }}'
 ```
 
-* [ Output ](#tab-panel-390)
-* [ Raw response ](#tab-panel-391)
+* [ Output ](#tab-panel-368)
+* [ Raw response ](#tab-panel-369)
 
 ```
-
-{
-
-  "state": "Completed",
-
-  "result": {
-
-    "video": "https://examples.aig.cloudflare.com/bytedance/seedance-2.0-fast/portrait-video.mp4"
-
-  },
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
-
-}
-
-
+{  "state": "Completed",  "result": {    "video": "https://examples.aig.cloudflare.com/bytedance/seedance-2.0-fast/portrait-video.mp4"  },  "gatewayMetadata": {    "keySource": "Unified"  }}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-396)
-* [ Output ](#tab-panel-397)
+* [ Input ](#tab-panel-374)
+* [ Output ](#tab-panel-375)
 
 aspect\_ratio
 
@@ -270,7 +140,7 @@ video
 
 Input [ ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/schema-input.json "Download") 
 
-Output [ ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/schema-output.json "Download") 
+Output [ ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/schema-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/#page","headline":"Seedance 2.0 Fast (ByteDance) · Cloudflare AI docs · Cloudflare AI docs","description":"Faster variant of ByteDance's Seedance 2.0 video model. Trades some quality for speed while sharing the same multimodal architecture. Supports text-to-video, image-to-video, native audio generation, multimodal references (images, videos, audio), video editing, and video extension.","url":"https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

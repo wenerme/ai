@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -80,10 +80,7 @@ Important notes
 To invoke an API endpoint, append the operation endpoint to the Cloudflare API base URL:
 
 ```
-
 https://api.cloudflare.com/client/v4
-
-
 ```
 
 ### Get full report
@@ -97,52 +94,18 @@ The provided `{asn}` must be affiliated with your account.
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `DDoS Botnet Feed Write`
 * `DDoS Botnet Feed Read`
 
 Get full report
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/botnet_feed/asn/$ASN_ID/full_report" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/botnet_feed/asn/$ASN_ID/full_report" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```
-
-{
-
-  "result": [
-
-    {
-
-      "cidr": "127.0.0.1/32",
-
-      "date": "1970-01-01T00:00:00Z",
-
-      "offense_count": 10000
-
-    },
-
-    // ... other entries ...
-
-  ],
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": [    {      "cidr": "127.0.0.1/32",      "date": "1970-01-01T00:00:00Z",      "offense_count": 10000    },    // ... other entries ...  ],  "success": true,  "errors": [],  "messages": []}
 ```
 
 ### Get day report
@@ -158,52 +121,18 @@ The provided `{asn}` must be affiliated with your account.
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `DDoS Botnet Feed Write`
 * `DDoS Botnet Feed Read`
 
 Get daily report
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/botnet_feed/asn/$ASN_ID/day_report" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/botnet_feed/asn/$ASN_ID/day_report" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```
-
-{
-
-  "result": [
-
-    {
-
-      "cidr": "127.0.0.1/32",
-
-      "date": "2024-05-05T00:00:00Z",
-
-      "offense_count": 10000
-
-    },
-
-    // ... other entries ...
-
-  ],
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": [    {      "cidr": "127.0.0.1/32",      "date": "2024-05-05T00:00:00Z",      "offense_count": 10000    },    // ... other entries ...  ],  "success": true,  "errors": [],  "messages": []}
 ```
 
 ```json

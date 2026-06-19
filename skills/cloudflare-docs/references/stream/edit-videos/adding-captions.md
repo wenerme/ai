@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,21 +25,8 @@ The `<LANGUAGE_TAG>` must adhere to the [BCP 47 format ↗](http://www.unicode.o
 Terminal window
 
 ```
-
 %%
-
-
-Subtag: tr
-
-Description: Turkish
-
-Added: 2005-10-16
-
-Suppress-Script: Latn
-
-%%
-
-
+Subtag: trDescription: TurkishAdded: 2005-10-16Suppress-Script: Latn%%
 ```
 
 The `Subtag` code indicates a value of `tr`. This is the value you should send as the `language` at the end of the HTTP request.
@@ -73,100 +60,38 @@ Videos may include captions for several languages, but each language must be uni
 
 The `<LANGUAGE_TAG>` must adhere to the BCP 47 format. The tag for English is `en`. You may specify a region in the tag, such as `en-GB`, which will render a label that shows `British English` for the caption.
 
-* [ REST API ](#tab-panel-10686)
-* [ Workers Binding API ](#tab-panel-10687)
+* [ REST API ](#tab-panel-10762)
+* [ Workers Binding API ](#tab-panel-10763)
 
-* [ cURL ](#tab-panel-10670)
-* [ TypeScript ](#tab-panel-10671)
+* [ cURL ](#tab-panel-10746)
+* [ TypeScript ](#tab-panel-10747)
 
 Terminal window
 
 ```
-
-curl -X POST \
-
--H 'Authorization: Bearer <API_TOKEN>' \
-
-https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/captions/<LANGUAGE_TAG>/generate
-
-
+curl -X POST \-H 'Authorization: Bearer <API_TOKEN>' \https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/captions/<LANGUAGE_TAG>/generate
 ```
 
 TypeScript
 
 ```
-
-const client = new Cloudflare({
-
-  apiEmail: process.env['CLOUDFLARE_EMAIL'],
-
-  apiKey: process.env['CLOUDFLARE_API_KEY'],
-
-});
-
-
-const caption = await client.stream.captions.language.create("<VIDEO_UID>", "en", {
-
-  account_id: '<ACCOUNT_ID>',
-
-});
-
-
+const client = new Cloudflare({  apiEmail: process.env['CLOUDFLARE_EMAIL'],  apiKey: process.env['CLOUDFLARE_API_KEY'],});
+const caption = await client.stream.captions.language.create("<VIDEO_UID>", "en", {  account_id: '<ACCOUNT_ID>',});
 ```
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-10672)
-* [ wrangler.jsonc ](#tab-panel-10673)
+* [ index.ts ](#tab-panel-10748)
+* [ wrangler.jsonc ](#tab-panel-10749)
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    const videoId = "<VIDEO_UID>";
-
-    const caption = await env.STREAM.video(videoId).captions.generate("en");
-
-    return new Response(JSON.stringify({ caption }));
-
-  },
-
-} satisfies ExportedHandler<{ STREAM: StreamBinding }>;
-
-
+export default {  async fetch(request, env, ctx): Promise<Response> {    const videoId = "<VIDEO_UID>";    const caption = await env.STREAM.video(videoId).captions.generate("en");    return new Response(JSON.stringify({ caption }));  },} satisfies ExportedHandler<{ STREAM: StreamBinding }>;
 ```
 
 ```
-
-{
-
-  "$schema": "node_modules/wrangler/config-schema.json",
-
-  "name": "<ENTER_WORKER_NAME>",
-
-  "main": "src/index.ts",
-
-  "compatibility_date": "$today",
-
-  "observability": {
-
-    "enabled": true
-
-  },
-
-  "stream": {
-
-    "binding": "STREAM"
-
-  }
-
-}
-
-
+{  "$schema": "node_modules/wrangler/config-schema.json",  "name": "<ENTER_WORKER_NAME>",  "main": "src/index.ts",  "compatibility_date": "$today",  "observability": {    "enabled": true  },  "stream": {    "binding": "STREAM"  }}
 ```
 
 See the full [Workers Stream binding API reference](https://developers.cloudflare.com/stream/manage-video-library/bindings/).
@@ -174,30 +99,7 @@ See the full [Workers Stream binding API reference](https://developers.cloudflar
 Example response:
 
 ```
-
-{
-
-  "result": {
-
-    "language": "en",
-
-    "label": "English (auto-generated)",
-
-    "generated": true,
-
-    "status": "inprogress"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "language": "en",    "label": "English (auto-generated)",    "generated": true,    "status": "inprogress"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 The result will provide a `status` denoting the progress of the caption generation.  
@@ -213,110 +115,38 @@ Note two changes if you edit a generated caption: the generated field will chang
 
 To create or replace a caption file:
 
-* [ REST API ](#tab-panel-10688)
-* [ Workers Binding API ](#tab-panel-10689)
+* [ REST API ](#tab-panel-10764)
+* [ Workers Binding API ](#tab-panel-10765)
 
-* [ cURL ](#tab-panel-10674)
-* [ TypeScript ](#tab-panel-10675)
+* [ cURL ](#tab-panel-10750)
+* [ TypeScript ](#tab-panel-10751)
 
 Terminal window
 
 ```
-
-curl -X PUT \
-
- -H 'Authorization: Bearer <API_TOKEN>' \
-
- -F file=@/Users/mickie/Desktop/example_caption.vtt \
-
-https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/captions/<LANGUAGE_TAG>
-
-
+curl -X PUT \ -H 'Authorization: Bearer <API_TOKEN>' \ -F file=@/Users/mickie/Desktop/example_caption.vtt \https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/captions/<LANGUAGE_TAG>
 ```
 
 TypeScript
 
 ```
-
-const client = new Cloudflare({
-
-  apiEmail: process.env['CLOUDFLARE_EMAIL'],
-
-  apiKey: process.env['CLOUDFLARE_API_KEY'],
-
-});
-
-
-const caption = await client.stream.captions.language.update("<VIDEO_UID>", "en", {
-
-  account_id: '<ACCOUNT_ID>',
-
-  file: '@/path/to/caption.vtt',
-
-});
-
-
+const client = new Cloudflare({  apiEmail: process.env['CLOUDFLARE_EMAIL'],  apiKey: process.env['CLOUDFLARE_API_KEY'],});
+const caption = await client.stream.captions.language.update("<VIDEO_UID>", "en", {  account_id: '<ACCOUNT_ID>',  file: '@/path/to/caption.vtt',});
 ```
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-10676)
-* [ wrangler.jsonc ](#tab-panel-10677)
+* [ index.ts ](#tab-panel-10752)
+* [ wrangler.jsonc ](#tab-panel-10753)
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    const videoId = "<VIDEO_UID>";
-
-    const language = "en";
-
-    // Obtain a ReadableStream from a file upload, fetch, or other source
-
-    const captionStream: ReadableStream = request.body!;
-
-    const caption = await env.STREAM.video(videoId).captions.upload(language, captionStream);
-
-    return new Response(JSON.stringify({ caption }));
-
-  },
-
-} satisfies ExportedHandler<{ STREAM: StreamBinding }>;
-
-
+export default {  async fetch(request, env, ctx): Promise<Response> {    const videoId = "<VIDEO_UID>";    const language = "en";    // Obtain a ReadableStream from a file upload, fetch, or other source    const captionStream: ReadableStream = request.body!;    const caption = await env.STREAM.video(videoId).captions.upload(language, captionStream);    return new Response(JSON.stringify({ caption }));  },} satisfies ExportedHandler<{ STREAM: StreamBinding }>;
 ```
 
 ```
-
-{
-
-  "$schema": "node_modules/wrangler/config-schema.json",
-
-  "name": "<ENTER_WORKER_NAME>",
-
-  "main": "src/index.ts",
-
-  "compatibility_date": "$today",
-
-  "observability": {
-
-    "enabled": true
-
-  },
-
-  "stream": {
-
-    "binding": "STREAM"
-
-  }
-
-}
-
-
+{  "$schema": "node_modules/wrangler/config-schema.json",  "name": "<ENTER_WORKER_NAME>",  "main": "src/index.ts",  "compatibility_date": "$today",  "observability": {    "enabled": true  },  "stream": {    "binding": "STREAM"  }}
 ```
 
 See the full [Workers Stream binding API reference](https://developers.cloudflare.com/stream/manage-video-library/bindings/).
@@ -324,128 +154,45 @@ See the full [Workers Stream binding API reference](https://developers.cloudflar
 ### Example Response to Add or Modify a Caption
 
 ```
-
-{
-
-  "result": {
-
-    "language": "en",
-
-    "label": "English",
-
-    "generated": false,
-
-    "status": "ready"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "language": "en",    "label": "English",    "generated": false,    "status": "ready"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 ## List the captions associated with a video
 
 To view captions associated with a video. Note this results list will also include generated captions that are `inprogress`and `error` status:
 
-* [ REST API ](#tab-panel-10690)
-* [ Workers Binding API ](#tab-panel-10691)
+* [ REST API ](#tab-panel-10766)
+* [ Workers Binding API ](#tab-panel-10767)
 
-* [ cURL ](#tab-panel-10678)
-* [ TypeScript ](#tab-panel-10679)
+* [ cURL ](#tab-panel-10754)
+* [ TypeScript ](#tab-panel-10755)
 
 Terminal window
 
 ```
-
-curl -H 'Authorization: Bearer <API_TOKEN>' \
-
-https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/captions
-
-
+curl -H 'Authorization: Bearer <API_TOKEN>' \https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/captions
 ```
 
 TypeScript
 
 ```
-
-const client = new Cloudflare({
-
-  apiEmail: process.env['CLOUDFLARE_EMAIL'],
-
-  apiKey: process.env['CLOUDFLARE_API_KEY'],
-
-});
-
-
-const captions = await client.stream.captions.get("<VIDEO_UID>", {
-
-  account_id: '<ACCOUNT_ID>',
-
-});
-
-
+const client = new Cloudflare({  apiEmail: process.env['CLOUDFLARE_EMAIL'],  apiKey: process.env['CLOUDFLARE_API_KEY'],});
+const captions = await client.stream.captions.get("<VIDEO_UID>", {  account_id: '<ACCOUNT_ID>',});
 ```
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-10680)
-* [ wrangler.jsonc ](#tab-panel-10681)
+* [ index.ts ](#tab-panel-10756)
+* [ wrangler.jsonc ](#tab-panel-10757)
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    const videoId = "<VIDEO_UID>";
-
-    const captions = await env.STREAM.video(videoId).captions.list();
-
-    return new Response(JSON.stringify({ captions }));
-
-  },
-
-} satisfies ExportedHandler<{ STREAM: StreamBinding }>;
-
-
+export default {  async fetch(request, env, ctx): Promise<Response> {    const videoId = "<VIDEO_UID>";    const captions = await env.STREAM.video(videoId).captions.list();    return new Response(JSON.stringify({ captions }));  },} satisfies ExportedHandler<{ STREAM: StreamBinding }>;
 ```
 
 ```
-
-{
-
-  "$schema": "node_modules/wrangler/config-schema.json",
-
-  "name": "<ENTER_WORKER_NAME>",
-
-  "main": "src/index.ts",
-
-  "compatibility_date": "$today",
-
-  "observability": {
-
-    "enabled": true
-
-  },
-
-  "stream": {
-
-    "binding": "STREAM"
-
-  }
-
-}
-
-
+{  "$schema": "node_modules/wrangler/config-schema.json",  "name": "<ENTER_WORKER_NAME>",  "main": "src/index.ts",  "compatibility_date": "$today",  "observability": {    "enabled": true  },  "stream": {    "binding": "STREAM"  }}
 ```
 
 See the full [Workers Stream binding API reference](https://developers.cloudflare.com/stream/manage-video-library/bindings/).
@@ -453,46 +200,7 @@ See the full [Workers Stream binding API reference](https://developers.cloudflar
 ### Example response to get the captions associated with a video
 
 ```
-
-{
-
-  "result": [
-
-    {
-
-      "language": "en",
-
-      "label": "English (auto-generated)",
-
-      "generated": true,
-
-      "status": "inprogress"
-
-    },
-
-    {
-
-      "language": "de",
-
-      "label": "Deutsch",
-
-      "generated": false,
-
-      "status": "ready"
-
-    }
-
-  ],
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": [    {      "language": "en",      "label": "English (auto-generated)",      "generated": true,      "status": "inprogress"    },    {      "language": "de",      "label": "Deutsch",      "generated": false,      "status": "ready"    }  ],  "success": true,  "errors": [],  "messages": []}
 ```
 
 ## Fetch a caption file
@@ -502,137 +210,53 @@ To view the WebVTT caption file, you may make a GET request:
 Terminal window
 
 ```
-
-curl \
-
--H 'Authorization: Bearer <API_TOKEN>' \
-
-https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/captions/<LANGUAGE_TAG>/vtt
-
-
+curl \-H 'Authorization: Bearer <API_TOKEN>' \https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/captions/<LANGUAGE_TAG>/vtt
 ```
 
 ### Example response to get the caption file for a video
 
 ```
-
 WEBVTT
-
-
-1
-
-00:00:00.000 --> 00:00:01.560
-
-This is an example of
-
-
-2
-
-00:00:01.560 --> 00:00:03.880
-
-a WebVTT caption response.
-
-
+100:00:00.000 --> 00:00:01.560This is an example of
+200:00:01.560 --> 00:00:03.880a WebVTT caption response.
 ```
 
 ## Delete the captions
 
 To remove a caption associated with your video:
 
-* [ REST API ](#tab-panel-10692)
-* [ Workers Binding API ](#tab-panel-10693)
+* [ REST API ](#tab-panel-10768)
+* [ Workers Binding API ](#tab-panel-10769)
 
-* [ cURL ](#tab-panel-10682)
-* [ TypeScript ](#tab-panel-10683)
+* [ cURL ](#tab-panel-10758)
+* [ TypeScript ](#tab-panel-10759)
 
 Terminal window
 
 ```
-
-curl -X DELETE \
-
- -H 'Authorization: Bearer <API_TOKEN>' \
-
- https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/captions/<LANGUAGE_TAG>
-
-
+curl -X DELETE \ -H 'Authorization: Bearer <API_TOKEN>' \ https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/captions/<LANGUAGE_TAG>
 ```
 
 TypeScript
 
 ```
-
-const client = new Cloudflare({
-
-  apiEmail: process.env['CLOUDFLARE_EMAIL'],
-
-  apiKey: process.env['CLOUDFLARE_API_KEY'],
-
-});
-
-
-await client.stream.captions.language.delete("<VIDEO_UID>", "en", {
-
-  account_id: '<ACCOUNT_ID>',
-
-});
-
-
+const client = new Cloudflare({  apiEmail: process.env['CLOUDFLARE_EMAIL'],  apiKey: process.env['CLOUDFLARE_API_KEY'],});
+await client.stream.captions.language.delete("<VIDEO_UID>", "en", {  account_id: '<ACCOUNT_ID>',});
 ```
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-10684)
-* [ wrangler.jsonc ](#tab-panel-10685)
+* [ index.ts ](#tab-panel-10760)
+* [ wrangler.jsonc ](#tab-panel-10761)
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    const videoId = "<VIDEO_UID>";
-
-    await env.STREAM.video(videoId).captions.delete("en");
-
-    return new Response(JSON.stringify({ success: true }));
-
-  },
-
-} satisfies ExportedHandler<{ STREAM: StreamBinding }>;
-
-
+export default {  async fetch(request, env, ctx): Promise<Response> {    const videoId = "<VIDEO_UID>";    await env.STREAM.video(videoId).captions.delete("en");    return new Response(JSON.stringify({ success: true }));  },} satisfies ExportedHandler<{ STREAM: StreamBinding }>;
 ```
 
 ```
-
-{
-
-  "$schema": "node_modules/wrangler/config-schema.json",
-
-  "name": "<ENTER_WORKER_NAME>",
-
-  "main": "src/index.ts",
-
-  "compatibility_date": "$today",
-
-  "observability": {
-
-    "enabled": true
-
-  },
-
-  "stream": {
-
-    "binding": "STREAM"
-
-  }
-
-}
-
-
+{  "$schema": "node_modules/wrangler/config-schema.json",  "name": "<ENTER_WORKER_NAME>",  "main": "src/index.ts",  "compatibility_date": "$today",  "observability": {    "enabled": true  },  "stream": {    "binding": "STREAM"  }}
 ```
 
 See the full [Workers Stream binding API reference](https://developers.cloudflare.com/stream/manage-video-library/bindings/).
@@ -642,20 +266,7 @@ If there is an entry in `errors` response field, the caption has not been delete
 ### Example response to delete the caption
 
 ```
-
-{
-
-  "result": "",
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": "",  "success": true,  "errors": [],  "messages": []}
 ```
 
 ## Limitations

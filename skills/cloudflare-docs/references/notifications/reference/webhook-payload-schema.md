@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/notifications/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,32 +19,7 @@ When you [configure a generic webhook](https://developers.cloudflare.com/notific
 All generic webhook notifications follow this schema:
 
 ```
-
-{
-
-  "name": "string",
-
-  "text": "string",
-
-  "data": {},
-
-  "ts": 1136214245,
-
-  "account_id": "string",
-
-  "policy_id": "string",
-
-  "policy_name": "string",
-
-  "alert_type": "string",
-
-  "alert_correlation_id": "string",
-
-  "alert_event": "string"
-
-}
-
-
+{  "name": "string",  "text": "string",  "data": {},  "ts": 1136214245,  "account_id": "string",  "policy_id": "string",  "policy_name": "string",  "alert_type": "string",  "alert_correlation_id": "string",  "alert_event": "string"}
 ```
 
 ### Field descriptions
@@ -73,478 +48,43 @@ The following examples show the payload structure for common alert types. The `d
 DDoS attack (Layer 4)
 
 ```
-
-{
-
-  "account_id": "9035f53656c247e895c5a6939ae8a0e0",
-
-  "alert_correlation_id": "000eaa907ed24e78946d3a93adb2ae57",
-
-  "alert_event": "ALERT_STATE_EVENT_START",
-
-  "alert_type": "advanced_ddos_attack_l4_alert",
-
-  "data": {
-
-    "account_name": "string",
-
-    "account_tag": "string",
-
-    "action": "string",
-
-    "attack_id": "string",
-
-    "attack_vector": "string",
-
-    "dashboard_link": "string",
-
-    "max_rate": "string",
-
-    "megabits_per_second": 0,
-
-    "mitigation": "string",
-
-    "packets_per_second": 0,
-
-    "protocol": "string",
-
-    "rule_description": "string",
-
-    "rule_id": "string",
-
-    "rule_name": "string",
-
-    "ruleset_id": "string",
-
-    "ruleset_override_id": "string",
-
-    "start_time": "2006-01-02T15:04:05Z",
-
-    "target_id": "string",
-
-    "target_ip": "string",
-
-    "target_port": 0
-
-  },
-
-  "name": "Example Cloudflare Notification",
-
-  "policy_id": "749b911ea5d04344a58e45edd099b328",
-
-  "policy_name": "Example Cloudflare Notification",
-
-  "text": "The description of my Cloudflare notification.",
-
-  "ts": 1136214245
-
-}
-
-
+{  "account_id": "9035f53656c247e895c5a6939ae8a0e0",  "alert_correlation_id": "000eaa907ed24e78946d3a93adb2ae57",  "alert_event": "ALERT_STATE_EVENT_START",  "alert_type": "advanced_ddos_attack_l4_alert",  "data": {    "account_name": "string",    "account_tag": "string",    "action": "string",    "attack_id": "string",    "attack_vector": "string",    "dashboard_link": "string",    "max_rate": "string",    "megabits_per_second": 0,    "mitigation": "string",    "packets_per_second": 0,    "protocol": "string",    "rule_description": "string",    "rule_id": "string",    "rule_name": "string",    "ruleset_id": "string",    "ruleset_override_id": "string",    "start_time": "2006-01-02T15:04:05Z",    "target_id": "string",    "target_ip": "string",    "target_port": 0  },  "name": "Example Cloudflare Notification",  "policy_id": "749b911ea5d04344a58e45edd099b328",  "policy_name": "Example Cloudflare Notification",  "text": "The description of my Cloudflare notification.",  "ts": 1136214245}
 ```
 
 DDoS attack (Layer 7)
 
 ```
-
-{
-
-  "account_id": "9035f53656c247e895c5a6939ae8a0e0",
-
-  "alert_correlation_id": "000eaa907ed24e78946d3a93adb2ae57",
-
-  "alert_event": "ALERT_STATE_EVENT_START",
-
-  "alert_type": "advanced_ddos_attack_l7_alert",
-
-  "data": {
-
-    "account_name": "string",
-
-    "account_tag": "string",
-
-    "action": "string",
-
-    "attack_id": "string",
-
-    "attack_type": "string",
-
-    "dashboard_link": "string",
-
-    "max_rate": "string",
-
-    "mitigation": "string",
-
-    "requests_per_second": 0,
-
-    "rule_description": "string",
-
-    "rule_id": "string",
-
-    "rule_link": "string",
-
-    "ruleset_id": "string",
-
-    "ruleset_override_id": "string",
-
-    "start_time": "2006-01-02T15:04:05Z",
-
-    "target_hostname": "string",
-
-    "zone_name": "string",
-
-    "zone_tag": "string"
-
-  },
-
-  "name": "Example Cloudflare Notification",
-
-  "policy_id": "749b911ea5d04344a58e45edd099b328",
-
-  "policy_name": "Example Cloudflare Notification",
-
-  "text": "The description of my Cloudflare notification.",
-
-  "ts": 1136214245
-
-}
-
-
+{  "account_id": "9035f53656c247e895c5a6939ae8a0e0",  "alert_correlation_id": "000eaa907ed24e78946d3a93adb2ae57",  "alert_event": "ALERT_STATE_EVENT_START",  "alert_type": "advanced_ddos_attack_l7_alert",  "data": {    "account_name": "string",    "account_tag": "string",    "action": "string",    "attack_id": "string",    "attack_type": "string",    "dashboard_link": "string",    "max_rate": "string",    "mitigation": "string",    "requests_per_second": 0,    "rule_description": "string",    "rule_id": "string",    "rule_link": "string",    "ruleset_id": "string",    "ruleset_override_id": "string",    "start_time": "2006-01-02T15:04:05Z",    "target_hostname": "string",    "zone_name": "string",    "zone_tag": "string"  },  "name": "Example Cloudflare Notification",  "policy_id": "749b911ea5d04344a58e45edd099b328",  "policy_name": "Example Cloudflare Notification",  "text": "The description of my Cloudflare notification.",  "ts": 1136214245}
 ```
 
 SSL certificate expiration
 
 ```
-
-{
-
-  "account_id": "9035f53656c247e895c5a6939ae8a0e0",
-
-  "alert_correlation_id": "000eaa907ed24e78946d3a93adb2ae57",
-
-  "alert_event": "ALERT_STATE_EVENT_START",
-
-  "alert_type": "dedicated_ssl_certificate_event_type",
-
-  "data": {
-
-    "account_name": "string",
-
-    "account_tag": "string",
-
-    "certificate_id": "string",
-
-    "certificate_pack_id": "string",
-
-    "certificate_status": "string",
-
-    "event_type": "string",
-
-    "hostnames": "string",
-
-    "pack_ca": "string",
-
-    "pack_id": "string",
-
-    "pack_status": "string",
-
-    "pack_validation": "string",
-
-    "zone_name": "string",
-
-    "zone_tag": "string"
-
-  },
-
-  "name": "Example Cloudflare Notification",
-
-  "policy_id": "749b911ea5d04344a58e45edd099b328",
-
-  "policy_name": "Example Cloudflare Notification",
-
-  "text": "The description of my Cloudflare notification.",
-
-  "ts": 1136214245
-
-}
-
-
+{  "account_id": "9035f53656c247e895c5a6939ae8a0e0",  "alert_correlation_id": "000eaa907ed24e78946d3a93adb2ae57",  "alert_event": "ALERT_STATE_EVENT_START",  "alert_type": "dedicated_ssl_certificate_event_type",  "data": {    "account_name": "string",    "account_tag": "string",    "certificate_id": "string",    "certificate_pack_id": "string",    "certificate_status": "string",    "event_type": "string",    "hostnames": "string",    "pack_ca": "string",    "pack_id": "string",    "pack_status": "string",    "pack_validation": "string",    "zone_name": "string",    "zone_tag": "string"  },  "name": "Example Cloudflare Notification",  "policy_id": "749b911ea5d04344a58e45edd099b328",  "policy_name": "Example Cloudflare Notification",  "text": "The description of my Cloudflare notification.",  "ts": 1136214245}
 ```
 
 Origin health check
 
 ```
-
-{
-
-  "account_id": "9035f53656c247e895c5a6939ae8a0e0",
-
-  "alert_correlation_id": "000eaa907ed24e78946d3a93adb2ae57",
-
-  "alert_event": "ALERT_STATE_EVENT_START",
-
-  "alert_type": "health_check_status_notification",
-
-  "data": {
-
-    "account_name": "string",
-
-    "account_tag": "string",
-
-    "failing_regions": "string",
-
-    "health_check_id": "string",
-
-    "health_check_name": "string",
-
-    "new_health_status": "string",
-
-    "new_status": "string",
-
-    "old_status": "string",
-
-    "origin_ip": "string",
-
-    "reason": "string",
-
-    "status_change_time": "2006-01-02T15:04:05Z",
-
-    "time_since_last_failure": "string",
-
-    "zone_name": "string",
-
-    "zone_tag": "string"
-
-  },
-
-  "name": "Example Cloudflare Notification",
-
-  "policy_id": "749b911ea5d04344a58e45edd099b328",
-
-  "policy_name": "Example Cloudflare Notification",
-
-  "text": "The description of my Cloudflare notification.",
-
-  "ts": 1136214245
-
-}
-
-
+{  "account_id": "9035f53656c247e895c5a6939ae8a0e0",  "alert_correlation_id": "000eaa907ed24e78946d3a93adb2ae57",  "alert_event": "ALERT_STATE_EVENT_START",  "alert_type": "health_check_status_notification",  "data": {    "account_name": "string",    "account_tag": "string",    "failing_regions": "string",    "health_check_id": "string",    "health_check_name": "string",    "new_health_status": "string",    "new_status": "string",    "old_status": "string",    "origin_ip": "string",    "reason": "string",    "status_change_time": "2006-01-02T15:04:05Z",    "time_since_last_failure": "string",    "zone_name": "string",    "zone_tag": "string"  },  "name": "Example Cloudflare Notification",  "policy_id": "749b911ea5d04344a58e45edd099b328",  "policy_name": "Example Cloudflare Notification",  "text": "The description of my Cloudflare notification.",  "ts": 1136214245}
 ```
 
 Workers alert
 
 ```
-
-{
-
-  "account_id": "9035f53656c247e895c5a6939ae8a0e0",
-
-  "alert_correlation_id": "000eaa907ed24e78946d3a93adb2ae57",
-
-  "alert_event": "ALERT_STATE_EVENT_START",
-
-  "alert_type": "workers_alert",
-
-  "data": {
-
-    "account_name": "string",
-
-    "account_script_count": 0,
-
-    "account_tag": "string",
-
-    "alert_type": "string",
-
-    "current_year": 0,
-
-    "end_date": "string",
-
-    "exceeding_script_count": 0,
-
-    "scripts": [
-
-      {
-
-        "constant_script_id": 0,
-
-        "cpu_time_previous_value": 0,
-
-        "cpu_time_unit": "string",
-
-        "cpu_time_value": 0,
-
-        "data_egress_unit": "string",
-
-        "data_egress_value": 0,
-
-        "duration_previous_value": 0,
-
-        "duration_unit": "string",
-
-        "duration_value": 0,
-
-        "last_modified": "string",
-
-        "request_count_previous_value": 0,
-
-        "request_count_unit": "string",
-
-        "request_count_value": 0,
-
-        "routes": ["string"],
-
-        "script_name": "string",
-
-        "usage_model": 0
-
-      }
-
-    ],
-
-    "start_date": "string",
-
-    "total_data_egress_unit": "string",
-
-    "total_data_egress_value": 0,
-
-    "total_duration_unit": "string",
-
-    "total_duration_value": 0,
-
-    "total_request_count_unit": "string",
-
-    "total_request_count_value": 0
-
-  },
-
-  "name": "Example Cloudflare Notification",
-
-  "policy_id": "749b911ea5d04344a58e45edd099b328",
-
-  "policy_name": "Example Cloudflare Notification",
-
-  "text": "The description of my Cloudflare notification.",
-
-  "ts": 1136214245
-
-}
-
-
+{  "account_id": "9035f53656c247e895c5a6939ae8a0e0",  "alert_correlation_id": "000eaa907ed24e78946d3a93adb2ae57",  "alert_event": "ALERT_STATE_EVENT_START",  "alert_type": "workers_alert",  "data": {    "account_name": "string",    "account_script_count": 0,    "account_tag": "string",    "alert_type": "string",    "current_year": 0,    "end_date": "string",    "exceeding_script_count": 0,    "scripts": [      {        "constant_script_id": 0,        "cpu_time_previous_value": 0,        "cpu_time_unit": "string",        "cpu_time_value": 0,        "data_egress_unit": "string",        "data_egress_value": 0,        "duration_previous_value": 0,        "duration_unit": "string",        "duration_value": 0,        "last_modified": "string",        "request_count_previous_value": 0,        "request_count_unit": "string",        "request_count_value": 0,        "routes": ["string"],        "script_name": "string",        "usage_model": 0      }    ],    "start_date": "string",    "total_data_egress_unit": "string",    "total_data_egress_value": 0,    "total_duration_unit": "string",    "total_duration_value": 0,    "total_request_count_unit": "string",    "total_request_count_value": 0  },  "name": "Example Cloudflare Notification",  "policy_id": "749b911ea5d04344a58e45edd099b328",  "policy_name": "Example Cloudflare Notification",  "text": "The description of my Cloudflare notification.",  "ts": 1136214245}
 ```
 
 Access certificate expiration
 
 ```
-
-{
-
-  "account_id": "9035f53656c247e895c5a6939ae8a0e0",
-
-  "alert_correlation_id": "000eaa907ed24e78946d3a93adb2ae57",
-
-  "alert_event": "ALERT_STATE_EVENT_START",
-
-  "alert_type": "access_custom_certificate_expiration_type",
-
-  "data": {
-
-    "account_name": "string",
-
-    "account_tag": "string",
-
-    "certificate_id": "string",
-
-    "days_til_expiration": 0,
-
-    "hostnames": "string",
-
-    "zone_name": "string",
-
-    "zone_tag": "string"
-
-  },
-
-  "name": "Example Cloudflare Notification",
-
-  "policy_id": "749b911ea5d04344a58e45edd099b328",
-
-  "policy_name": "Example Cloudflare Notification",
-
-  "text": "The description of my Cloudflare notification.",
-
-  "ts": 1136214245
-
-}
-
-
+{  "account_id": "9035f53656c247e895c5a6939ae8a0e0",  "alert_correlation_id": "000eaa907ed24e78946d3a93adb2ae57",  "alert_event": "ALERT_STATE_EVENT_START",  "alert_type": "access_custom_certificate_expiration_type",  "data": {    "account_name": "string",    "account_tag": "string",    "certificate_id": "string",    "days_til_expiration": 0,    "hostnames": "string",    "zone_name": "string",    "zone_tag": "string"  },  "name": "Example Cloudflare Notification",  "policy_id": "749b911ea5d04344a58e45edd099b328",  "policy_name": "Example Cloudflare Notification",  "text": "The description of my Cloudflare notification.",  "ts": 1136214245}
 ```
 
 Workers observability alert
 
 ```
-
-{
-
-  "account_id": "9035f53656c247e895c5a6939ae8a0e0",
-
-  "alert_correlation_id": "000eaa907ed24e78946d3a93adb2ae57",
-
-  "alert_event": "ALERT_STATE_EVENT_START",
-
-  "alert_type": "workers_observability_alert",
-
-  "data": {
-
-    "account": {
-
-      "id": "string",
-
-      "name": "string"
-
-    },
-
-    "config": {
-
-      "id": "string",
-
-      "name": "string"
-
-    },
-
-    "episode": {
-
-      "first_failed": "2006-01-02T15:04:05Z",
-
-      "first_fired": "2006-01-02T15:04:05Z",
-
-      "id": "string",
-
-      "last_failed": "2006-01-02T15:04:05Z",
-
-      "resolved_at": "2006-01-02T15:04:05Z",
-
-      "summary": "string"
-
-    },
-
-    "status": "PENDING"
-
-  },
-
-  "name": "Example Cloudflare Notification",
-
-  "policy_id": "749b911ea5d04344a58e45edd099b328",
-
-  "policy_name": "Example Cloudflare Notification",
-
-  "text": "The description of my Cloudflare notification.",
-
-  "ts": 1136214245
-
-}
-
-
+{  "account_id": "9035f53656c247e895c5a6939ae8a0e0",  "alert_correlation_id": "000eaa907ed24e78946d3a93adb2ae57",  "alert_event": "ALERT_STATE_EVENT_START",  "alert_type": "workers_observability_alert",  "data": {    "account": {      "id": "string",      "name": "string"    },    "config": {      "id": "string",      "name": "string"    },    "episode": {      "first_failed": "2006-01-02T15:04:05Z",      "first_fired": "2006-01-02T15:04:05Z",      "id": "string",      "last_failed": "2006-01-02T15:04:05Z",      "resolved_at": "2006-01-02T15:04:05Z",      "summary": "string"    },    "status": "PENDING"  },  "name": "Example Cloudflare Notification",  "policy_id": "749b911ea5d04344a58e45edd099b328",  "policy_name": "Example Cloudflare Notification",  "text": "The description of my Cloudflare notification.",  "ts": 1136214245}
 ```
 
 ## Validate webhook payloads

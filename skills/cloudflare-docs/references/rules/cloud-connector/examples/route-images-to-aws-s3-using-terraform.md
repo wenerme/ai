@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,32 +21,7 @@ Terraform code snippets below refer to the v4 SDK only.
 The following example defines a single Cloud Connector rule for a zone using Terraform. The rule routes requests to `/images` on your domain to an AWS S3 bucket.
 
 ```
-
-resource "cloudflare_cloud_connector_rules" "serve_images_in_aws" {
-
-  zone_id = "<ZONE_ID>"
-
-  rules {
-
-    description = "Route images to AWS S3 bucket"
-
-    enabled     = true
-
-    expression  = "http.request.full_uri wildcard \"https://<YOUR_HOSTNAME>/images/*\""
-
-    provider    = "aws_s3"
-
-    parameters {
-
-      host = "<BUCKET_NAME>.s3.amazonaws.com"
-
-    }
-
-  }
-
-}
-
-
+resource "cloudflare_cloud_connector_rules" "serve_images_in_aws" {  zone_id = "<ZONE_ID>"  rules {    description = "Route images to AWS S3 bucket"    enabled     = true    expression  = "http.request.full_uri wildcard \"https://<YOUR_HOSTNAME>/images/*\""    provider    = "aws_s3"    parameters {      host = "<BUCKET_NAME>.s3.amazonaws.com"    }  }}
 ```
 
 ## Additional resources

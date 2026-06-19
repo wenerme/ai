@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -44,24 +44,7 @@ Certain features may be disabled or degraded at low MTU thresholds. For details,
 PMTUD is disabled by default. To enable PMTUD on your devices, [deploy an MDM file](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/#windows) with the `enable_pmtud` key set to `true`. For example:
 
 ```
-
-<dict>
-
-  <key>organization</key>
-
-  <string>your-team-name</string>
-
-  <key>warp_tunnel_protocol</key>
-
-  <string>masque</string>
-
-  <key>enable_pmtud</key>
-
-  <true/>
-
-</dict>
-
-
+<dict>  <key>organization</key>  <string>your-team-name</string>  <key>warp_tunnel_protocol</key>  <string>masque</string>  <key>enable_pmtud</key>  <true/></dict>
 ```
 
 This configuration enables the PMTUD feature and explicitly configures the MASQUE tunnel protocol.
@@ -75,17 +58,11 @@ To check if PMTUD is active on a device, open a terminal and run the following c
 Terminal window
 
 ```
-
 warp-cli settings | grep -i pmtu
-
-
 ```
 
 ```
-
 (local policy)  PMTUD enabled: true
-
-
 ```
 
 If PMTUD is enabled, the output will show `PMTUD enabled: true`.
@@ -132,21 +109,10 @@ You can check your current network path MTU by collecting [Cloudflare One Client
 3. Open `connectivity.txt` and search for `PMTU`.  
 connectivity.txt  
 ```  
-====================================================================  
-H3 Quic Connect  
-====================================================================  
-Testing H3 QUIC connectivity to 'https://cloudflare-quic.com/cdn-cgi/l4-stats' result: Successful  
-IPv4:  
-"  
-Headers:  
-  server address=104.18.26.14:443  
-  ...  
-Body:  
-  transport=TCP  
-  ...  
-PMTU:  
-  1500 bytes  
-"  
+====================================================================H3 Quic Connect====================================================================  
+Testing H3 QUIC connectivity to 'https://cloudflare-quic.com/cdn-cgi/l4-stats' result: SuccessfulIPv4:"Headers:  server address=104.18.26.14:443  ...  
+Body:  transport=TCP  ...  
+PMTU:  1500 bytes"  
 ```
 
 The example above shows an MTU of 1500 bytes, which meets the [recommended MTU requirements](#recommended-mtu) for the Cloudflare One Client. If your MTU falls below the recommended threshold, consider [enabling Path MTU Discovery](#enable-path-mtu-discovery) to optimize connection performance.

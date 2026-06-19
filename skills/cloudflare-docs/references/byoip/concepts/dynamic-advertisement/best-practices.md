@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/byoip/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -63,8 +63,8 @@ Most dynamic advertisement operations require that you supply the Cloudflare ID 
 
 ## Obtain prefix IDs
 
-* [ Dashboard ](#tab-panel-6945)
-* [ API ](#tab-panel-6946)
+* [ Dashboard ](#tab-panel-7021)
+* [ API ](#tab-panel-7022)
 
 1. Log in to your [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
 2. Go to **IP Addresses** \> **BYOIP Prefixes**.

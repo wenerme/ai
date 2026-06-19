@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,30 +35,7 @@ Create a live input using one of the two options:
 API response from a POST request to /live\_inputs
 
 ```
-
-{
-
-  "uid": "1a553f11a88915d093d45eda660d2f8c",
-
- ...
-
-  "webRTC": {
-
-    "url": "https://customer-<CODE>.cloudflarestream.com/<SECRET>/webRTC/publish"
-
-  },
-
-  "webRTCPlayback": {
-
-    "url": "https://customer-<CODE>.cloudflarestream.com/<INPUT_UID>/webRTC/play"
-
-  },
-
-...
-
-}
-
-
+{  "uid": "1a553f11a88915d093d45eda660d2f8c", ...  "webRTC": {    "url": "https://customer-<CODE>.cloudflarestream.com/<SECRET>/webRTC/publish"  },  "webRTCPlayback": {    "url": "https://customer-<CODE>.cloudflarestream.com/<INPUT_UID>/webRTC/play"  },...}
 ```
 
 ## Step 2: Go live using WHIP
@@ -76,22 +53,9 @@ Paste this URL into the example code.
 Simplified example code
 
 ```
-
-// Add a <video> element to the HTML page this code runs in:
-
-// <video id="input-video" autoplay muted></video>
-
-
+// Add a <video> element to the HTML page this code runs in:// <video id="input-video" autoplay muted></video>
 import WHIPClient from "./WHIPClient.js";
-
-
-const url = "<WEBRTC_URL_FROM_YOUR_LIVE_INPUT>"; // add the webRTC URL from your live input here
-
-const videoElement = document.getElementById("input-video");
-
-const client = new WHIPClient(url, videoElement);
-
-
+const url = "<WEBRTC_URL_FROM_YOUR_LIVE_INPUT>"; // add the webRTC URL from your live input hereconst videoElement = document.getElementById("input-video");const client = new WHIPClient(url, videoElement);
 ```
 
 Once the creator grants permission to their camera and microphone, live video and audio will automatically start being streamed to Cloudflare, using WebRTC.
@@ -113,22 +77,9 @@ Paste this URL into the example code.
 Simplified example code
 
 ```
-
-// Add a <video> element to the HTML page this code runs in:
-
-// <video id="output-video" autoplay muted></video>
-
-
+// Add a <video> element to the HTML page this code runs in:// <video id="output-video" autoplay muted></video>
 import WHEPClient from "./WHEPClient.js";
-
-
-const url = "<WEBRTC_URL_FROM_YOUR_LIVE_INPUT>"; // add the webRTCPlayback URL from your live input here
-
-const videoElement = document.getElementById("output-video");
-
-const client = new WHEPClient(url, videoElement);
-
-
+const url = "<WEBRTC_URL_FROM_YOUR_LIVE_INPUT>"; // add the webRTCPlayback URL from your live input hereconst videoElement = document.getElementById("output-video");const client = new WHEPClient(url, videoElement);
 ```
 
 As long as the creator is actively streaming, viewers should see their broadcast in their browser, with less than 1 second of latency.

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,184 +20,34 @@ Note
 
 AI Search supports [bringing your own models natively](https://developers.cloudflare.com/ai-search/configuration/models/). You can attach provider keys through AI Gateway and select third-party models directly in your AI Search settings. The example below still works, but the recommended approach is to configure your external model through AI Gateway.
 
-* [  JavaScript ](#tab-panel-6621)
-* [  TypeScript ](#tab-panel-6622)
+* [  JavaScript ](#tab-panel-6697)
+* [  TypeScript ](#tab-panel-6698)
 
 JavaScript
 
 ```
-
-import { openai } from "@ai-sdk/openai";
-
-import { generateText } from "ai";
-
-
-export default {
-
-  async fetch(request, env) {
-
-    const url = new URL(request.url);
-
-
+import { openai } from "@ai-sdk/openai";import { generateText } from "ai";
+export default {  async fetch(request, env) {    const url = new URL(request.url);
     const userQuery = url.searchParams.get("query") ?? "What is Cloudflare?";
-
-
-    // Search for documents in AI Search
-
-    const searchResult = await env.AI_SEARCH.get("my-instance").search({
-
-      messages: [{ role: "user", content: userQuery }],
-
-    });
-
-
-    if (searchResult.chunks.length === 0) {
-
-      return Response.json({ text: `No data found for query "${userQuery}"` });
-
-    }
-
-
-    // Join all document chunks into a single string
-
-    const chunks = searchResult.chunks
-
-      .map((chunk) => {
-
-        return `<file name="${chunk.item.key}">${chunk.text}</file>`;
-
-      })
-
-      .join("\n\n");
-
-
-    // Send the user query + matched documents to OpenAI for answer
-
-    const generateResult = await generateText({
-
-      model: openai("gpt-4o-mini"),
-
-      messages: [
-
-        {
-
-          role: "system",
-
-          content:
-
-            "You are a helpful assistant and your task is to answer the user question using the provided files.",
-
-        },
-
-        { role: "user", content: chunks },
-
-        { role: "user", content: userQuery },
-
-      ],
-
-    });
-
-
-    return Response.json({ text: generateResult.text });
-
-  },
-
-};
-
-
+    // Search for documents in AI Search    const searchResult = await env.AI_SEARCH.get("my-instance").search({      messages: [{ role: "user", content: userQuery }],    });
+    if (searchResult.chunks.length === 0) {      return Response.json({ text: `No data found for query "${userQuery}"` });    }
+    // Join all document chunks into a single string    const chunks = searchResult.chunks      .map((chunk) => {        return `<file name="${chunk.item.key}">${chunk.text}</file>`;      })      .join("\n\n");
+    // Send the user query + matched documents to OpenAI for answer    const generateResult = await generateText({      model: openai("gpt-4o-mini"),      messages: [        {          role: "system",          content:            "You are a helpful assistant and your task is to answer the user question using the provided files.",        },        { role: "user", content: chunks },        { role: "user", content: userQuery },      ],    });
+    return Response.json({ text: generateResult.text });  },};
 ```
 
 TypeScript
 
 ```
-
-import { openai } from "@ai-sdk/openai";
-
-import { generateText } from "ai";
-
-
-export interface Env {
-
-  AI_SEARCH: AiSearchNamespace;
-
-  OPENAI_API_KEY: string;
-
-}
-
-
-export default {
-
-  async fetch(request, env): Promise<Response> {
-
-    const url = new URL(request.url);
-
-
+import { openai } from "@ai-sdk/openai";import { generateText } from "ai";
+export interface Env {  AI_SEARCH: AiSearchNamespace;  OPENAI_API_KEY: string;}
+export default {  async fetch(request, env): Promise<Response> {    const url = new URL(request.url);
     const userQuery = url.searchParams.get("query") ?? "What is Cloudflare?";
-
-
-    // Search for documents in AI Search
-
-    const searchResult = await env.AI_SEARCH.get("my-instance").search({
-
-      messages: [{ role: "user", content: userQuery }],
-
-    });
-
-
-    if (searchResult.chunks.length === 0) {
-
-      return Response.json({ text: `No data found for query "${userQuery}"` });
-
-    }
-
-
-    // Join all document chunks into a single string
-
-    const chunks = searchResult.chunks
-
-      .map((chunk) => {
-
-        return `<file name="${chunk.item.key}">${chunk.text}</file>`;
-
-      })
-
-      .join("\n\n");
-
-
-    // Send the user query + matched documents to OpenAI for answer
-
-    const generateResult = await generateText({
-
-      model: openai("gpt-4o-mini"),
-
-      messages: [
-
-        {
-
-          role: "system",
-
-          content:
-
-            "You are a helpful assistant and your task is to answer the user question using the provided files.",
-
-        },
-
-        { role: "user", content: chunks },
-
-        { role: "user", content: userQuery },
-
-      ],
-
-    });
-
-
-    return Response.json({ text: generateResult.text });
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+    // Search for documents in AI Search    const searchResult = await env.AI_SEARCH.get("my-instance").search({      messages: [{ role: "user", content: userQuery }],    });
+    if (searchResult.chunks.length === 0) {      return Response.json({ text: `No data found for query "${userQuery}"` });    }
+    // Join all document chunks into a single string    const chunks = searchResult.chunks      .map((chunk) => {        return `<file name="${chunk.item.key}">${chunk.text}</file>`;      })      .join("\n\n");
+    // Send the user query + matched documents to OpenAI for answer    const generateResult = await generateText({      model: openai("gpt-4o-mini"),      messages: [        {          role: "system",          content:            "You are a helpful assistant and your task is to answer the user question using the provided files.",        },        { role: "user", content: chunks },        { role: "user", content: userQuery },      ],    });
+    return Response.json({ text: generateResult.text });  },} satisfies ExportedHandler<Env>;
 ```
 
 ```json

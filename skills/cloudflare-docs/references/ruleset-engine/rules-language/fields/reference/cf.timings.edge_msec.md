@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,21 +26,13 @@ The value does not include:
 Example value:
 
 ```
-
 28
-
-
 ```
 
 Example usage:
 
 ```
-
-# Matches requests where Cloudflare's edge processing time was greater than 500 milliseconds
-
-cf.timings.edge_msec > 500
-
-
+# Matches requests where Cloudflare's edge processing time was greater than 500 millisecondscf.timings.edge_msec > 500
 ```
 
 Categories: 

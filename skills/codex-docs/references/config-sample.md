@@ -677,6 +677,36 @@ enabled = true
 
 # prevent_idle_sleep = false
 
+# Code mode namespaces. This feature is under development and off by default.
+
+# [features.code_mode]
+
+# enabled = true
+
+# excluded_tool_namespaces = ["mcp__codex_apps"]
+
+# direct_only_tool_namespaces = ["mcp__history"]
+
+# Rollout budget tracking. This feature is under development and off by default.
+
+# limit_tokens is required when enabled.
+
+# Optional reminder_interval_tokens defaults to 10% of limit_tokens.
+
+# Token weights default to 1.0.
+
+# [features.rollout_budget]
+
+# enabled = true
+
+# limit_tokens = 100000
+
+# reminder_interval_tokens = 10000
+
+# sampling_token_weight = 1.0
+
+# prefill_token_weight = 1.0
+
 ################################################################################
 
 # Memories (table)
@@ -915,6 +945,10 @@ enabled = true
 
 # open_world_enabled = true
 
+# approvals_reviewer = "user" # user | auto_review
+
+# default_tools_approval_mode = "auto" # auto | prompt | approve
+
 #
 
 # [apps.google_drive]
@@ -924,6 +958,8 @@ enabled = true
 # destructive_enabled = false # block destructive-hint tools for this app
 
 # default_tools_enabled = true
+
+# approvals_reviewer = "auto_review"
 
 # default_tools_approval_mode = "prompt" # auto | prompt | approve
 

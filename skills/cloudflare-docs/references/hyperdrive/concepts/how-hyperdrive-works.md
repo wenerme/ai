@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -63,18 +63,7 @@ If your Worker makes only one query per request, placement does not improve end-
 wrangler.jsonc
 
 ```
-
-{
-
-  "placement": {
-
-    "region": "aws:us-east-1", // Match your database region, for example "gcp:us-east4" or "azure:eastus"
-
-  },
-
-}
-
-
+{  "placement": {    "region": "aws:us-east-1", // Match your database region, for example "gcp:us-east4" or "azure:eastus"  },}
 ```
 
 ### 3\. Query Caching

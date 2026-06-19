@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/spectrum/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -34,28 +34,19 @@ When TCP applications are configured to use **PROXY Protocol v1**, Cloudflare wi
 PROXY Protocol prepends every connection with a header reporting the client IP address and port. A PROXY Protocol plain-text header has the format:
 
 ```
-
 PROXY_STRING + single space + INET_PROTOCOL + single space + CLIENT_IP + single space + PROXY_IP + single space + CLIENT_PORT + single space + PROXY_PORT + "\r\n"
-
-
 ```
 
 An example PROXY Protocol line for an IPv4 address would look like:
 
 ```
-
 PROXY TCP4 192.0.2.0 192.0.2.255 42300 443\r\n
-
-
 ```
 
 An example PROXY Protocol line for an IPv6 address would look like:
 
 ```
-
 PROXY TCP6 2001:db8:: 2001:db8:ffff:ffff:ffff:ffff:ffff:ffff 42300 443\r\n
-
-
 ```
 
 ## Enable Proxy Protocol v2 for TCP/UDP
@@ -76,107 +67,13 @@ PROXY Protocol prepends every connection with a header reporting the client IP a
 A PROXY Protocol binary header for a IPv4 incoming address has the format:
 
 ```
-
- 0                   1                   2                   3
-
- 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
-|                                                               |
-
-+                                                               +
-
-|                  Proxy Protocol v2 Signature                  |
-
-+                                                               +
-
-|                                                               |
-
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
-|Version|Command|   AF  | Proto.|         Address Length        |
-
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
-|                      IPv4 Source Address                      |
-
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
-|                    IPv4 Destination Address                   |
-
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
-|          Source Port          |        Destination Port       |
-
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
-
+ 0                   1                   2                   3 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+|                                                               |+                                                               +|                  Proxy Protocol v2 Signature                  |+                                                               +|                                                               |+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+|Version|Command|   AF  | Proto.|         Address Length        |+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+|                      IPv4 Source Address                      |+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+|                    IPv4 Destination Address                   |+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+|          Source Port          |        Destination Port       |+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
 
 A PROXY Protocol binary header for a IPv6 incoming address has the format:
 
 ```
-
- 0                   1                   2                   3
-
- 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
-|                                                               |
-
-+                                                               +
-
-|                  Proxy Protocol v2 Signature                  |
-
-+                                                               +
-
-|                                                               |
-
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
-|Version|Command|   AF  | Proto.|         Address Length        |
-
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
-|                                                               |
-
-+                                                               +
-
-|                                                               |
-
-+                      IPv6 Source Address                      +
-
-|                                                               |
-
-+                                                               +
-
-|                                                               |
-
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
-|                                                               |
-
-+                                                               +
-
-|                                                               |
-
-+                    IPv6 Destination Address                   +
-
-|                                                               |
-
-+                                                               +
-
-|                                                               |
-
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
-|          Source Port          |        Destination Port       |
-
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
-
+ 0                   1                   2                   3 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+|                                                               |+                                                               +|                  Proxy Protocol v2 Signature                  |+                                                               +|                                                               |+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+|Version|Command|   AF  | Proto.|         Address Length        |+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+|                                                               |+                                                               +|                                                               |+                      IPv6 Source Address                      +|                                                               |+                                                               +|                                                               |+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+|                                                               |+                                                               +|                                                               |+                    IPv6 Destination Address                   +|                                                               |+                                                               +|                                                               |+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+|          Source Port          |        Destination Port       |+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
 
 ## Enable Simple Proxy Protocol for UDP

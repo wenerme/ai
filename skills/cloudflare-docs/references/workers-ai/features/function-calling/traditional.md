@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,86 +19,14 @@ With traditional function calling, you define an array of tools with the name, d
 Traditional function calling example
 
 ```
-
-const response = await env.AI.run("@hf/nousresearch/hermes-2-pro-mistral-7b", {
-
-  messages: [
-
-    {
-
-      role: "user",
-
-      content: "what is the weather in london?",
-
-    },
-
-  ],
-
-  tools: [
-
-    {
-
-      name: "getWeather",
-
-      description: "Return the weather for a latitude and longitude",
-
-      parameters: {
-
-        type: "object",
-
-        properties: {
-
-          latitude: {
-
-            type: "string",
-
-            description: "The latitude for the given location",
-
-          },
-
-          longitude: {
-
-            type: "string",
-
-            description: "The longitude for the given location",
-
-          },
-
-        },
-
-        required: ["latitude", "longitude"],
-
-      },
-
-    },
-
-  ],
-
-});
-
-
+const response = await env.AI.run("@hf/nousresearch/hermes-2-pro-mistral-7b", {  messages: [    {      role: "user",      content: "what is the weather in london?",    },  ],  tools: [    {      name: "getWeather",      description: "Return the weather for a latitude and longitude",      parameters: {        type: "object",        properties: {          latitude: {            type: "string",            description: "The latitude for the given location",          },          longitude: {            type: "string",            description: "The longitude for the given location",          },        },        required: ["latitude", "longitude"],      },    },  ],});
 return new Response(JSON.stringify(response.tool_calls));
-
-
 ```
 
 The LLM will then return a JSON object with the required arguments and the name of the tool that was called. You can then pass this JSON object to make an API call.
 
 ```
-
-[
-
-  {
-
-    "arguments": { "latitude": "51.5074", "longitude": "-0.1278" },
-
-    "name": "getWeather"
-
-  }
-
-]
-
-
+[  {    "arguments": { "latitude": "51.5074", "longitude": "-0.1278" },    "name": "getWeather"  }]
 ```
 
 For a working example on how to do function calling, take a look at our [demo app ↗](https://github.com/craigsdennis/lightbulb-moment-tool-calling/blob/main/src/index.ts).

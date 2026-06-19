@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,30 +17,7 @@ Respond with information about the incoming request provided by Cloudflare’s g
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request) {
-
-    // For any request, respond with JSON object containing all incoming request properties provided by Cloudflare network
-
-    return Response.json(request.cf, {
-
-      // Add new header to identify request was served by Snippets
-
-      headers: {
-
-        "x-snippets-hello": "Hello from Cloudflare Snippets",
-
-      },
-
-    });
-
-  },
-
-};
-
-
+export default {  async fetch(request) {    // For any request, respond with JSON object containing all incoming request properties provided by Cloudflare network    return Response.json(request.cf, {      // Add new header to identify request was served by Snippets      headers: {        "x-snippets-hello": "Hello from Cloudflare Snippets",      },    });  },};
 ```
 
 ```json

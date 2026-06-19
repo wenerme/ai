@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,10 +35,7 @@ The exact record depends on your Cloudflare for SaaS setup.
 Most customers will have a `CNAME` target, which requires their customers to create a `CNAME` record similar to:
 
 ```
-
 mystore.com CNAME customers.saasprovider.com
-
-
 ```
 
 ### Apex proxying
@@ -46,10 +43,7 @@ mystore.com CNAME customers.saasprovider.com
 With [apex proxying](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/apex-proxying/), SaaS customers need to create an `A` record for their hostname that points to the IP prefix allocated to the SaaS provider's account.
 
 ```
-
 example.com.  60  IN  A   192.0.2.1
-
-
 ```
 
 Note

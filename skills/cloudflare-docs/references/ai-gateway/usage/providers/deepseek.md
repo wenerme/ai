@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,10 +17,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 ## Endpoint
 
 ```
-
 https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/deepseek
-
-
 ```
 
 ## Prerequisites
@@ -51,32 +48,7 @@ So your final URL will come together as:
 Example fetch request
 
 ```
-
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/deepseek/chat/completions \
-
- --header 'content-type: application/json' \
-
- --header 'Authorization: Bearer DEEPSEEK_TOKEN' \
-
- --data '{
-
-    "model": "deepseek-chat",
-
-    "messages": [
-
-        {
-
-            "role": "user",
-
-            "content": "What is Cloudflare?"
-
-        }
-
-    ]
-
-}'
-
-
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/deepseek/chat/completions \ --header 'content-type: application/json' \ --header 'Authorization: Bearer DEEPSEEK_TOKEN' \ --data '{    "model": "deepseek-chat",    "messages": [        {            "role": "user",            "content": "What is Cloudflare?"        }    ]}'
 ```
 
 ### Use DeepSeek with JavaScript
@@ -86,44 +58,11 @@ If you are using the OpenAI SDK, you can set your endpoint like this:
 JavaScript
 
 ```
-
 import OpenAI from "openai";
-
-
-const openai = new OpenAI({
-
-  apiKey: env.DEEPSEEK_TOKEN,
-
-  baseURL:
-
-    "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/deepseek",
-
-});
-
-
-try {
-
-  const chatCompletion = await openai.chat.completions.create({
-
-    model: "deepseek-chat",
-
-    messages: [{ role: "user", content: "What is Cloudflare?" }],
-
-  });
-
-
+const openai = new OpenAI({  apiKey: env.DEEPSEEK_TOKEN,  baseURL:    "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/deepseek",});
+try {  const chatCompletion = await openai.chat.completions.create({    model: "deepseek-chat",    messages: [{ role: "user", content: "What is Cloudflare?" }],  });
   const response = chatCompletion.choices[0].message;
-
-
-  return new Response(JSON.stringify(response));
-
-} catch (e) {
-
-  return new Response(e);
-
-}
-
-
+  return new Response(JSON.stringify(response));} catch (e) {  return new Response(e);}
 ```
 
 ## OpenAI-Compatible Endpoint
@@ -131,23 +70,13 @@ try {
 You can also access DeepSeek models using the OpenAI API schema through the [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/). Send your requests to:
 
 ```
-
 https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1/chat/completions
-
-
 ```
 
 Specify:
 
 ```
-
-{
-
-"model": "deepseek/{model}"
-
-}
-
-
+{"model": "deepseek/{model}"}
 ```
 
 ```json

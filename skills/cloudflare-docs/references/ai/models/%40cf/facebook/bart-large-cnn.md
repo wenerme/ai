@@ -1,0 +1,71 @@
+---
+title: bart-large-cnn
+description: BART is a transformer encoder-encoder (seq2seq) model with a bidirectional (BERT-like) encoder and an autoregressive (GPT-like) decoder. You can use this model for text summarization.
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt  
+> Use this file to discover all available pages before exploring further. 
+
+[Skip to content](#%5Ftop) 
+
+![Meta logo](https://developers.cloudflare.com/_astro/meta.BR4nfp35.svg) 
+
+#  bart-large-cnn Beta 
+
+Summarization • Meta 
+
+`@cf/facebook/bart-large-cnn` 
+
+BART is a transformer encoder-encoder (seq2seq) model with a bidirectional (BERT-like) encoder and an autoregressive (GPT-like) decoder. You can use this model for text summarization.
+
+| Model Info   |                          |
+| ------------ | ------------------------ |
+| Deprecated   | 5/30/2026                |
+| Beta         | Yes                      |
+| Unit Pricing | $0.00 per M input tokens |
+
+## Usage
+
+* [  TypeScript ](#tab-panel-2114)
+* [  curl ](#tab-panel-2115)
+
+```
+export interface Env {  AI: Ai;}
+export default {  async fetch(request, env): Promise<Response> {    const response = await env.AI.run("@cf/facebook/bart-large-cnn", {      input_text: "Workers AI allows you to run machine learning models, on the Cloudflare network, from your own code – whether that be from Workers, Pages, or anywhere via the Cloudflare API. With the launch of Workers AI, Cloudflare is slowly rolling out GPUs to its global network. This enables you to build and deploy ambitious AI applications that run near your users, wherever they are.",      max_length: 14    });    return Response.json(response);  },} satisfies ExportedHandler<Env>;
+```
+
+Terminal window
+
+```
+curl https://api.cloudflare.com/client/v4/accounts/{cf_account_id}/ai/run/@cf/facebook/bart-large-cnn \  -H "Authorization: Bearer {cf_api_token}" \  -d '{    "input_text": "Workers AI allows you to run machine learning models, on the Cloudflare network, from your own code – whether that be from Workers, Pages, or anywhere via the Cloudflare API. With the launch of Workers AI, Cloudflare is slowly rolling out GPUs to its global network. This enables you to build and deploy ambitious AI applications that run near your users, wherever they are.",    "max_length": 14  }'
+```
+
+## Parameters
+
+* [ Input ](#tab-panel-2116)
+* [ Output ](#tab-panel-2117)
+
+input\_text
+
+`string`requiredminLength: 1The text that you want the model to summarize
+
+max\_length
+
+`integer`default: 1024The maximum length of the generated summary in tokens
+
+summary
+
+`string`The summarized version of the input text
+
+## API Schemas (Raw)
+
+Input [ ](https://developers.cloudflare.com/workers-ai/models/bart-large-cnn/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/bart-large-cnn/schema-input.json "Download") 
+
+Output [ ](https://developers.cloudflare.com/workers-ai/models/bart-large-cnn/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/bart-large-cnn/schema-output.json "Download")
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/facebook/bart-large-cnn/#page","headline":"bart-large-cnn (Meta) · Cloudflare AI docs · Cloudflare AI docs","description":"BART is a transformer encoder-encoder (seq2seq) model with a bidirectional (BERT-like) encoder and an autoregressive (GPT-like) decoder. You can use this model for text summarization.","url":"https://developers.cloudflare.com/ai/models/%40cf/facebook/bart-large-cnn/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+```

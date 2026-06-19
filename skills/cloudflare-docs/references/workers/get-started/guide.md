@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -56,10 +56,7 @@ Now, you have a new project set up. Move into that project folder.
 Terminal window
 
 ```
-
 cd my-first-worker
-
-
 ```
 
 What files did C3 create?
@@ -79,10 +76,7 @@ In addition to creating new projects from C3 templates, C3 also supports creatin
 Terminal window
 
 ```
-
 npm create cloudflare@latest -- --template <SOURCE>
-
-
 ```
 
 `<SOURCE>` may be any of the following:
@@ -111,10 +105,7 @@ After you have created your first Worker, run the [wrangler dev](https://develop
 Terminal window
 
 ```
-
 npx wrangler dev
-
-
 ```
 
 If you have never used Wrangler before, it will open your web browser so you can login to your Cloudflare account.
@@ -134,18 +125,7 @@ Find the `src/index.js` file. `index.js` will be populated with the code below:
 Original index.js
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    return new Response("Hello World!");
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    return new Response("Hello World!");  },};
 ```
 
 Code explanation
@@ -155,18 +135,7 @@ This code block consists of a few different parts.
 Updated index.js
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    return new Response("Hello World!");
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    return new Response("Hello World!");  },};
 ```
 
 `export default` is JavaScript syntax required for defining [JavaScript modules ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#default%5Fexports%5Fversus%5Fnamed%5Fexports). Your Worker has to have a default export of an object, with properties corresponding to the events your Worker should handle.
@@ -174,18 +143,7 @@ export default {
 index.js
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    return new Response("Hello World!");
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    return new Response("Hello World!");  },};
 ```
 
 This [fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) will be called when your Worker receives an HTTP request. You can define additional event handlers in the exported object to respond to different types of events. For example, add a [scheduled() handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/) to respond to Worker invocations via a [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/).
@@ -195,18 +153,7 @@ Additionally, the `fetch` handler will always be passed three parameters: [reque
 index.js
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    return new Response("Hello World!");
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    return new Response("Hello World!");  },};
 ```
 
 The Workers runtime expects `fetch` handlers to return a `Response` object or a Promise which resolves with a `Response` object. In this example, you will return a new `Response` with the string `"Hello World!"`.
@@ -216,18 +163,7 @@ Replace the content in your current `index.js` file with the content below, whic
 index.js
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    return new Response("Hello Worker!");
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    return new Response("Hello Worker!");  },};
 ```
 
 Then, save the file and reload the page. Your Worker's output will have changed to the new text.
@@ -247,10 +183,7 @@ Deploy your Worker via Wrangler to a `*.workers.dev` subdomain or a [Custom Doma
 Terminal window
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 If you have not configured any subdomain or domain, Wrangler will prompt you during the publish process to set one up.

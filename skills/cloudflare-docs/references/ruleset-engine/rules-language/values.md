@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -46,22 +46,9 @@ The quoted string syntax has the following additional escaping requirements:
 Examples
 
 ```
-
-# Test if URI path contains 'a"b'
-
-http.request.uri.path matches "a\"b"
-
-
-# Test if URI path contains 'a"#b'
-
-http.request.uri.path matches "a\"#b"
-
-
-# Replace 'a' with '\' (backslash)
-
-regex_replace(http.host, "a", "\\")
-
-
+# Test if URI path contains 'a"b'http.request.uri.path matches "a\"b"
+# Test if URI path contains 'a"#b'http.request.uri.path matches "a\"#b"
+# Replace 'a' with '\' (backslash)regex_replace(http.host, "a", "\\")
 ```
 
 Warning
@@ -73,10 +60,7 @@ In this case, you must do the basic escaping required by strings as function par
 Therefore, to replace a backslash (`\`) with the `a` character using `regex_replace()` you would use the following expression:
 
 ```
-
 regex_replace(http.host, "\\\\", "a")
-
-
 ```
 
 To avoid this situation, Cloudflare recommends that you use the [raw string syntax](#raw-string-syntax) for specifying regular expressions.
@@ -95,31 +79,10 @@ Unlike the quoted string syntax, the raw string syntax is always the same, regar
 Examples
 
 ```
-
-# Test if URI path contains 'a"b'
-
-http.request.uri.path matches r#"a"b"#
-
-
-# Test if URI path contains 'a"#b'
-
-http.request.uri.path matches r##"a"#b"##
-
-
-# Replace '\' (backslash) with 'a'
-
-# You must still escape the '\' character in the following raw string because it has a special meaning in regular expressions
-
-regex_replace(http.host, r"\\", "a")
-
-
-# Test if URI path ends with '/api/login.aspx'
-
-# You must still escape the '.' character in the following raw string because it has a special meaning in regular expressions ("any character")
-
-http.request.uri.path matches r"/api/login\.aspx$"
-
-
+# Test if URI path contains 'a"b'http.request.uri.path matches r#"a"b"#
+# Test if URI path contains 'a"#b'http.request.uri.path matches r##"a"#b"##
+# Replace '\' (backslash) with 'a'# You must still escape the '\' character in the following raw string because it has a special meaning in regular expressionsregex_replace(http.host, r"\\", "a")
+# Test if URI path ends with '/api/login.aspx'# You must still escape the '.' character in the following raw string because it has a special meaning in regular expressions ("any character")http.request.uri.path matches r"/api/login\.aspx$"
 ```
 
 ### Case sensitivity in string comparisons
@@ -146,10 +109,7 @@ You can use the following strategies to reduce the number of regular expressions
 Simple expressions using boolean fields do not require operator notations or values. You only need to insert the field on its own, as shown in the `ssl` example below.
 
 ```
-
 ssl
-
-
 ```
 
 This simple expression matches requests where the value of the `ssl` field is `true`.
@@ -157,10 +117,7 @@ This simple expression matches requests where the value of the `ssl` field is `t
 To match requests where `ssl` is `false`, use the boolean `not` operator :
 
 ```
-
 not ssl
-
-
 ```
 
 ## Arrays
@@ -211,10 +168,7 @@ The Cloudflare Rules language includes several [fields](https://developers.cloud
 To access a value in a map, enter the key between square brackets (`[]`):
 
 ```
-
 <MAP_FIELD>[<KEY>]
-
-
 ```
 
 For maps where the values have an `Array` type, you cannot directly use [operators](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/) with the obtained (array) value, since these operators do not support arrays directly. To use an operator on an item of the array, use the special notation `[*]` when specifying an expression. This special index notation will unpack the array, call the enclosing function for all its elements individually, and return a new array containing all the individual return values.
@@ -226,17 +180,8 @@ The following example is based on the [http.request.headers](https://developers.
 If an incoming HTTP request included a single `Accept: application/json` HTTP header, the following expressions would evaluate to the indicated values:
 
 ```
-
-http.request.headers["accept"]     # ==> ["application/json"]
-
-http.request.headers["accept"][0]  # ==> "application/json"
-
-
-any(http.request.headers["accept"][*] == "application/json") # ==> true
-
-any(http.request.headers["accept"][*] == "text/plain")       # ==> false
-
-
+http.request.headers["accept"]     # ==> ["application/json"]http.request.headers["accept"][0]  # ==> "application/json"
+any(http.request.headers["accept"][*] == "application/json") # ==> trueany(http.request.headers["accept"][*] == "text/plain")       # ==> false
 ```
 
 The following example is based on the [http.request.uri.args](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.uri.args/) field with a data type of `Map<Array<String>>`, where array elements are of `String` data type.
@@ -244,38 +189,13 @@ The following example is based on the [http.request.uri.args](https://developers
 If an HTTP request included three `filter` URI arguments `waf`, `botm`, and `cdn`, the following expressions would evaluate to the indicated values:
 
 ```
-
-# Example request URL:
-
-# https://example.com/?filter=waf&filter=botm&filter=cdn
-
-
+# Example request URL:# https://example.com/?filter=waf&filter=botm&filter=cdn
 http.request.uri.args["filter"]          # ==> ["waf", "botm", "cdn"]
-
-
 len(http.request.uri.args["filter"][1])  # ==> 4
-
-
-# Check if the length of all 'filter' values is always 3 or 4
-
-all(len(http.request.uri.args["filter"][*])[*] in {3 4})      # ==> true
-
-
-# Check if the length of 'filter' values (if any) is never 3 or 4
-
-all(not len(http.request.uri.args["filter"][*])[*] in {3 4})  # ==> false
-
-
-# Check if the http.request.uri.args map contains a "filter" key
-
-len(http.request.uri.args["filter"]) >= 0     # ==> true
-
-
-# Check if the http.request.uri.args map does not contain an "order" key
-
-not len(http.request.uri.args["order"]) >= 0  # ==> true
-
-
+# Check if the length of all 'filter' values is always 3 or 4all(len(http.request.uri.args["filter"][*])[*] in {3 4})      # ==> true
+# Check if the length of 'filter' values (if any) is never 3 or 4all(not len(http.request.uri.args["filter"][*])[*] in {3 4})  # ==> false
+# Check if the http.request.uri.args map contains a "filter" keylen(http.request.uri.args["filter"]) >= 0     # ==> true
+# Check if the http.request.uri.args map does not contain an "order" keynot len(http.request.uri.args["order"]) >= 0  # ==> true
 ```
 
 For more information on `any()`, `all()`, `len()`, and other available functions, refer to [Functions](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/).
@@ -298,10 +218,7 @@ To refer to a list in a rule expression, use `$<list_name>` and specify the `in`
 The following example expression filters requests from IP addresses that are in an [IP list](https://developers.cloudflare.com/waf/tools/lists/custom-lists/#ip-lists) named `office_network`:
 
 ```
-
 (ip.src in $office_network)
-
-
 ```
 
 List names can only include lowercase letters, numbers, and the underscore (`_`) character. For guidance on creating and managing lists, refer to [Lists](https://developers.cloudflare.com/waf/tools/lists/).
@@ -315,24 +232,18 @@ Elements in an inline list can be strings, integers, or IP addresses/ranges. All
 Additionally, for some data types you can use ranges as elements:
 
 * For integer values, enter ranges in the form `<start_value>..<end_value>`. An inline list can contain both integer ranges and integer values.
-* For IP addresses, you can enter:  
-   * Explicit IP ranges in the form `<start_address>..<end_address>` (for example, `198.51.100.3..198.51.100.7`).  
-   * CIDR ranges (for example, `192.0.2.0/24` or `2001:0db8::/32`).  
+* For IP addresses, you can enter:
+
+  * Explicit IP ranges in the form `<start_address>..<end_address>` (for example, `198.51.100.3..198.51.100.7`).
+  * CIDR ranges (for example, `192.0.2.0/24` or `2001:0db8::/32`).  
 An inline list can contain explicit IP ranges, CIDR ranges, and individual IP addresses.
 
 Examples
 
 ```
-
 http.host in {"example.com" "example.net"}
-
-
 ip.src in {198.51.100.1 198.51.100.3..198.51.100.7 192.0.2.0/24 2001:0db8::/32}
-
-
 tcp.dstport in {8000..8009 8080..8089}
-
-
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,9 +23,9 @@ To create a new policy, open the [Cloudflare dashboard ↗](https://dash.cloudfl
 
 ## Example DNS policy
 
-* [ Dashboard ](#tab-panel-9096)
-* [ API ](#tab-panel-9097)
-* [ Terraform (v5) ](#tab-panel-9098)
+* [ Dashboard ](#tab-panel-9172)
+* [ API ](#tab-panel-9173)
+* [ Terraform (v5) ](#tab-panel-9174)
 
 | Traffic Selector | Operator | Value                |
 | ---------------- | -------- | -------------------- |
@@ -42,116 +42,18 @@ To create a new policy, open the [Cloudflare dashboard ↗](https://dash.cloudfl
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules \
-
---header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "name": "Company Wiki DNS policy",
-
-  "conditions": [
-
-    {
-
-      "type": "traffic",
-
-      "expression": {
-
-        "any": {
-
-          "in": {
-
-            "lhs": {
-
-              "splat": "dns.domains"
-
-            },
-
-            "rhs": "$<DOMAIN_LIST_ID>"
-
-          }
-
-        }
-
-      }
-
-    },
-
-    {
-
-      "type": "identity",
-
-      "expression": {
-
-        "matches": {
-
-          "lhs": "identity.email",
-
-          "rhs": ".*@example.com"
-
-        }
-
-      }
-
-    }
-
-  ],
-
-  "action": "allow",
-
-  "precedence": 13002,
-
-  "enabled": true,
-
-  "description": "Allow employees to access company wiki domains.",
-
-  "filters": [
-
-    "dns"
-
-  ]
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules \--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \--header "Content-Type: application/json" \--data '{  "name": "Company Wiki DNS policy",  "conditions": [    {      "type": "traffic",      "expression": {        "any": {          "in": {            "lhs": {              "splat": "dns.domains"            },            "rhs": "$<DOMAIN_LIST_ID>"          }        }      }    },    {      "type": "identity",      "expression": {        "matches": {          "lhs": "identity.email",          "rhs": ".*@example.com"        }      }    }  ],  "action": "allow",  "precedence": 13002,  "enabled": true,  "description": "Allow employees to access company wiki domains.",  "filters": [    "dns"  ]}'
 ```
 
 ```
-
-resource "cloudflare_zero_trust_gateway_policy" "dns_allow_wiki_domains" {
-
-  name        = "Company Wiki DNS policy"
-
-  enabled     = true
-
-  account_id  = var.cloudflare_account_id
-
-  description = "Managed by Terraform - Allow employees to access company wiki domains."
-
-  precedence  = 102
-
-  action      = "allow"
-
-  filters     = ["dns"]
-
-  traffic     = "any(dns.domains[*] in ${"$"}${cloudflare_zero_trust_list.wiki_domains.id})"
-
-  identity    = "identity.email matches \".*@example.com\""
-
-}
-
-
+resource "cloudflare_zero_trust_gateway_policy" "dns_allow_wiki_domains" {  name        = "Company Wiki DNS policy"  enabled     = true  account_id  = var.cloudflare_account_id  description = "Managed by Terraform - Allow employees to access company wiki domains."  precedence  = 102  action      = "allow"  filters     = ["dns"]  traffic     = "any(dns.domains[*] in ${"$"}${cloudflare_zero_trust_list.wiki_domains.id})"  identity    = "identity.email matches \".*@example.com\""}
 ```
 
 ## Example network policy
 
-* [ Dashboard ](#tab-panel-9099)
-* [ API ](#tab-panel-9100)
-* [ Terraform (v5) ](#tab-panel-9101)
+* [ Dashboard ](#tab-panel-9175)
+* [ API ](#tab-panel-9176)
+* [ Terraform (v5) ](#tab-panel-9177)
 
 | Traffic Selector | Operator | Value            |
 | ---------------- | -------- | ---------------- |
@@ -168,110 +70,20 @@ resource "cloudflare_zero_trust_gateway_policy" "dns_allow_wiki_domains" {
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules \
-
---header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "name": "Company Wiki network policy",
-
-  "conditions": [
-
-    {
-
-      "type": "traffic",
-
-      "expression": {
-
-        "in": {
-
-          "lhs": "net.dst.ip",
-
-          "rhs": "$<IP_LIST_ID>"
-
-        }
-
-      }
-
-    },
-
-    {
-
-      "type": "identity",
-
-      "expression": {
-
-        "matches": {
-
-          "lhs": "identity.email",
-
-          "rhs": ".*@example.com"
-
-        }
-
-      }
-
-    }
-
-  ],
-
-  "action": "allow",
-
-  "precedence": 13002,
-
-  "enabled": true,
-
-  "description": "Allow employees to access company wiki IPs.",
-
-  "filters": [
-
-    "l4"
-
-  ]
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules \--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \--header "Content-Type: application/json" \--data '{  "name": "Company Wiki network policy",  "conditions": [    {      "type": "traffic",      "expression": {        "in": {          "lhs": "net.dst.ip",          "rhs": "$<IP_LIST_ID>"        }      }    },    {      "type": "identity",      "expression": {        "matches": {          "lhs": "identity.email",          "rhs": ".*@example.com"        }      }    }  ],  "action": "allow",  "precedence": 13002,  "enabled": true,  "description": "Allow employees to access company wiki IPs.",  "filters": [    "l4"  ]}'
 ```
 
 ```
-
-resource "cloudflare_zero_trust_gateway_policy" "network_allow_wiki_IPs" {
-
-  name        = "Company Wiki Network policy"
-
-  enabled     = true
-
-  account_id  = var.cloudflare_account_id
-
-  description = "Managed by Terraform - Allow employees to access company wiki IPs."
-
-  precedence  = 103
-
-  action      = "allow"
-
-  filters     = ["l4"]
-
-  traffic     = "net.dst.ip in ${"$"}${cloudflare_zero_trust_list.wiki_IPs.id}"
-
-  identity    = "identity.email matches \".*@example.com\""
-
-}
-
-
+resource "cloudflare_zero_trust_gateway_policy" "network_allow_wiki_IPs" {  name        = "Company Wiki Network policy"  enabled     = true  account_id  = var.cloudflare_account_id  description = "Managed by Terraform - Allow employees to access company wiki IPs."  precedence  = 103  action      = "allow"  filters     = ["l4"]  traffic     = "net.dst.ip in ${"$"}${cloudflare_zero_trust_list.wiki_IPs.id}"  identity    = "identity.email matches \".*@example.com\""}
 ```
 
 ### Catch-all policy
 
 We recommend adding a catch-all policy to the bottom of your network policy list. An effective Zero Trust model should prioritize default-deny actions to avoid any overly permissive policy building. For example,
 
-* [ Dashboard ](#tab-panel-9102)
-* [ API ](#tab-panel-9103)
-* [ Terraform (v5) ](#tab-panel-9104)
+* [ Dashboard ](#tab-panel-9178)
+* [ API ](#tab-panel-9179)
+* [ Terraform (v5) ](#tab-panel-9180)
 
 | Traffic Selector | Operator | Value                      | Logic |
 | ---------------- | -------- | -------------------------- | ----- |
@@ -285,109 +97,11 @@ We recommend adding a catch-all policy to the bottom of your network policy list
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules \
-
---header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "name": "Catch-all block policy",
-
-  "conditions": [
-
-    {
-
-      "type": "traffic",
-
-      "expression": {
-
-        "or": [
-
-          {
-
-            "in": {
-
-              "lhs": "net.dst.ip",
-
-              "rhs": "$<IP_LIST_ID>"
-
-            }
-
-          },
-
-          {
-
-            "any": {
-
-              "in": {
-
-                "lhs": {
-
-                  "splat": "net.sni.domains"
-
-                },
-
-                "rhs": "$<DOMAIN_LIST_ID>"
-
-              }
-
-            }
-
-          }
-
-        ]
-
-      }
-
-    }
-
-  ],
-
-  "action": "block",
-
-  "precedence": 14002,
-
-  "enabled": true,
-
-  "description": "Block access to private network.",
-
-  "filters": [
-
-    "l4"
-
-  ]
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules \--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \--header "Content-Type: application/json" \--data '{  "name": "Catch-all block policy",  "conditions": [    {      "type": "traffic",      "expression": {        "or": [          {            "in": {              "lhs": "net.dst.ip",              "rhs": "$<IP_LIST_ID>"            }          },          {            "any": {              "in": {                "lhs": {                  "splat": "net.sni.domains"                },                "rhs": "$<DOMAIN_LIST_ID>"              }            }          }        ]      }    }  ],  "action": "block",  "precedence": 14002,  "enabled": true,  "description": "Block access to private network.",  "filters": [    "l4"  ]}'
 ```
 
 ```
-
-resource "cloudflare_zero_trust_gateway_policy" "network_catch_all" {
-
-  name        = "Catch-all block policy"
-
-  enabled     = true
-
-  account_id  = var.cloudflare_account_id
-
-  description = "Managed by Terraform - Block access to private network."
-
-  precedence  = 14002
-
-  action      = "block"
-
-  filters     = ["l4"]
-
-  traffic     = "net.dst.ip in ${"$"}${cloudflare_zero_trust_list.private_IPs.id} or any(net.sni.domains[*] in ${"$"}${cloudflare_zero_trust_list.private_domains.id})"
-
-}
-
-
+resource "cloudflare_zero_trust_gateway_policy" "network_catch_all" {  name        = "Catch-all block policy"  enabled     = true  account_id  = var.cloudflare_account_id  description = "Managed by Terraform - Block access to private network."  precedence  = 14002  action      = "block"  filters     = ["l4"]  traffic     = "net.dst.ip in ${"$"}${cloudflare_zero_trust_list.private_IPs.id} or any(net.sni.domains[*] in ${"$"}${cloudflare_zero_trust_list.private_domains.id})"}
 ```
 
 Network policies are evaluated in [top-down order](https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/#order-of-precedence), so if a user does not match an explicitly defined policy for an application, they will be blocked. To learn how multiple policies interact, refer to [Order of enforcement](https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/).

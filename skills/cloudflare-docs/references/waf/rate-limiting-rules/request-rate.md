@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -90,7 +90,7 @@ Consider the following configuration for a rate limiting rule. The rule counting
 * _IP_
 * _Header value of_ \> `x-api-key`
 
-**Increment counter when**:`http.request.uri.path eq "/form" and http.response.code eq 400`
+**Increment counter when**: `http.request.uri.path eq "/form" and http.response.code eq 400`
 
 The following diagram shows how Cloudflare handles these four incoming requests received during a 10-second period in the context of the above rate limiting rule.
 

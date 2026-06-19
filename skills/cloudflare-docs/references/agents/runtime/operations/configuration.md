@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,11 +19,11 @@ This guide covers everything you need to configure agents for local development 
 The typical file structure for an Agent project created from `npm create cloudflare@latest agents-starter -- --template cloudflare/agents-starter` follows:
 
 * Directorysrc/  
-   * index.ts your Agent definition
+  * index.ts your Agent definition
 * Directorypublic/  
-   * index.html
+  * index.html
 * Directorytest/  
-   * index.spec.ts your tests
+  * index.spec.ts your tests
 * package.json
 * tsconfig.json
 * vitest.config.mts
@@ -34,158 +34,30 @@ The typical file structure for an Agent project created from `npm create cloudfl
 
 The `wrangler.jsonc` file configures your Cloudflare Worker and its bindings. Here is a complete example for an agents project:
 
-* [  wrangler.jsonc ](#tab-panel-6415)
-* [  wrangler.toml ](#tab-panel-6416)
+* [  wrangler.jsonc ](#tab-panel-6489)
+* [  wrangler.toml ](#tab-panel-6490)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "node_modules/wrangler/config-schema.json",
-
-  "name": "my-agent-app",
-
-  "main": "src/server.ts",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "compatibility_flags": ["nodejs_compat"],
-
-
-  // Static assets (optional)
-
-  "assets": {
-
-    "directory": "public",
-
-    "binding": "ASSETS",
-
-  },
-
-
-  // Durable Object bindings for agents
-
-  "durable_objects": {
-
-    "bindings": [
-
-      {
-
-        "name": "MyAgent",
-
-        "class_name": "MyAgent",
-
-      },
-
-      {
-
-        "name": "ChatAgent",
-
-        "class_name": "ChatAgent",
-
-      },
-
-    ],
-
-  },
-
-
-  // Required: Enable SQLite storage for agents
-
-  "migrations": [
-
-    {
-
-      "tag": "v1",
-
-      "new_sqlite_classes": ["MyAgent", "ChatAgent"],
-
-    },
-
-  ],
-
-
-  // AI binding (optional, for Workers AI)
-
-  "ai": {
-
-    "binding": "AI",
-
-  },
-
-
-  // Observability (recommended)
-
-  "observability": {
-
-    "enabled": true,
-
-  },
-
-}
-
-
+{  "$schema": "node_modules/wrangler/config-schema.json",  "name": "my-agent-app",  "main": "src/server.ts",  // Set this to today's date  "compatibility_date": "2026-06-18",  "compatibility_flags": ["nodejs_compat"],
+  // Static assets (optional)  "assets": {    "directory": "public",    "binding": "ASSETS",  },
+  // Durable Object bindings for agents  "durable_objects": {    "bindings": [      {        "name": "MyAgent",        "class_name": "MyAgent",      },      {        "name": "ChatAgent",        "class_name": "ChatAgent",      },    ],  },
+  // Required: Enable SQLite storage for agents  "migrations": [    {      "tag": "v1",      "new_sqlite_classes": ["MyAgent", "ChatAgent"],    },  ],
+  // AI binding (optional, for Workers AI)  "ai": {    "binding": "AI",  },
+  // Observability (recommended)  "observability": {    "enabled": true,  },}
 ```
 
 TOML
 
 ```
-
-"$schema" = "node_modules/wrangler/config-schema.json"
-
-name = "my-agent-app"
-
-main = "src/server.ts"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-compatibility_flags = [ "nodejs_compat" ]
-
-
-[assets]
-
-directory = "public"
-
-binding = "ASSETS"
-
-
-[[durable_objects.bindings]]
-
-name = "MyAgent"
-
-class_name = "MyAgent"
-
-
-[[durable_objects.bindings]]
-
-name = "ChatAgent"
-
-class_name = "ChatAgent"
-
-
-[[migrations]]
-
-tag = "v1"
-
-new_sqlite_classes = [ "MyAgent", "ChatAgent" ]
-
-
-[ai]
-
-binding = "AI"
-
-
-[observability]
-
-enabled = true
-
-
+"$schema" = "node_modules/wrangler/config-schema.json"name = "my-agent-app"main = "src/server.ts"# Set this to today's datecompatibility_date = "2026-06-18"compatibility_flags = [ "nodejs_compat" ]
+[assets]directory = "public"binding = "ASSETS"
+[[durable_objects.bindings]]name = "MyAgent"class_name = "MyAgent"
+[[durable_objects.bindings]]name = "ChatAgent"class_name = "ChatAgent"
+[[migrations]]tag = "v1"new_sqlite_classes = [ "MyAgent", "ChatAgent" ]
+[ai]binding = "AI"
+[observability]enabled = true
 ```
 
 ### Key fields
@@ -194,29 +66,19 @@ enabled = true
 
 The `nodejs_compat` flag is required for agents:
 
-* [  wrangler.jsonc ](#tab-panel-6397)
-* [  wrangler.toml ](#tab-panel-6398)
+* [  wrangler.jsonc ](#tab-panel-6471)
+* [  wrangler.toml ](#tab-panel-6472)
 
 JSONC
 
 ```
-
-{
-
-  "compatibility_flags": ["nodejs_compat"],
-
-}
-
-
+{  "compatibility_flags": ["nodejs_compat"],}
 ```
 
 TOML
 
 ```
-
 compatibility_flags = [ "nodejs_compat" ]
-
-
 ```
 
 This enables Node.js compatibility mode, which agents depend on for crypto, streams, and other Node.js APIs.
@@ -225,47 +87,19 @@ This enables Node.js compatibility mode, which agents depend on for crypto, stre
 
 Each agent class needs a binding:
 
-* [  wrangler.jsonc ](#tab-panel-6399)
-* [  wrangler.toml ](#tab-panel-6400)
+* [  wrangler.jsonc ](#tab-panel-6473)
+* [  wrangler.toml ](#tab-panel-6474)
 
 JSONC
 
 ```
-
-{
-
-  "durable_objects": {
-
-    "bindings": [
-
-      {
-
-        "name": "Counter",
-
-        "class_name": "Counter",
-
-      },
-
-    ],
-
-  },
-
-}
-
-
+{  "durable_objects": {    "bindings": [      {        "name": "Counter",        "class_name": "Counter",      },    ],  },}
 ```
 
 TOML
 
 ```
-
-[[durable_objects.bindings]]
-
-name = "Counter"
-
-class_name = "Counter"
-
-
+[[durable_objects.bindings]]name = "Counter"class_name = "Counter"
 ```
 
 | Field       | Description                                             |
@@ -277,47 +111,19 @@ When `name` and `class_name` differ
 
 When `name` and `class_name` differ, follow the pattern shown below:
 
-* [  wrangler.jsonc ](#tab-panel-6401)
-* [  wrangler.toml ](#tab-panel-6402)
+* [  wrangler.jsonc ](#tab-panel-6475)
+* [  wrangler.toml ](#tab-panel-6476)
 
 JSONC
 
 ```
-
-{
-
-  "durable_objects": {
-
-    "bindings": [
-
-      {
-
-        "name": "COUNTER_DO",
-
-        "class_name": "CounterAgent",
-
-      },
-
-    ],
-
-  },
-
-}
-
-
+{  "durable_objects": {    "bindings": [      {        "name": "COUNTER_DO",        "class_name": "CounterAgent",      },    ],  },}
 ```
 
 TOML
 
 ```
-
-[[durable_objects.bindings]]
-
-name = "COUNTER_DO"
-
-class_name = "CounterAgent"
-
-
+[[durable_objects.bindings]]name = "COUNTER_DO"class_name = "CounterAgent"
 ```
 
 This is useful when you want environment variable-style naming (`COUNTER_DO`) but more descriptive class names (`CounterAgent`).
@@ -326,43 +132,19 @@ This is useful when you want environment variable-style naming (`COUNTER_DO`) bu
 
 Migrations tell Cloudflare how to set up storage for your Durable Objects:
 
-* [  wrangler.jsonc ](#tab-panel-6403)
-* [  wrangler.toml ](#tab-panel-6404)
+* [  wrangler.jsonc ](#tab-panel-6477)
+* [  wrangler.toml ](#tab-panel-6478)
 
 JSONC
 
 ```
-
-{
-
-  "migrations": [
-
-    {
-
-      "tag": "v1",
-
-      "new_sqlite_classes": ["MyAgent"],
-
-    },
-
-  ],
-
-}
-
-
+{  "migrations": [    {      "tag": "v1",      "new_sqlite_classes": ["MyAgent"],    },  ],}
 ```
 
 TOML
 
 ```
-
-[[migrations]]
-
-tag = "v1"
-
-new_sqlite_classes = [ "MyAgent" ]
-
-
+[[migrations]]tag = "v1"new_sqlite_classes = [ "MyAgent" ]
 ```
 
 | Field                | Description                                                  |
@@ -376,168 +158,76 @@ new_sqlite_classes = [ "MyAgent" ]
 
 For serving static files (HTML, CSS, JS):
 
-* [  wrangler.jsonc ](#tab-panel-6405)
-* [  wrangler.toml ](#tab-panel-6406)
+* [  wrangler.jsonc ](#tab-panel-6479)
+* [  wrangler.toml ](#tab-panel-6480)
 
 JSONC
 
 ```
-
-{
-
-  "assets": {
-
-    "directory": "public",
-
-    "binding": "ASSETS",
-
-  },
-
-}
-
-
+{  "assets": {    "directory": "public",    "binding": "ASSETS",  },}
 ```
 
 TOML
 
 ```
-
-[assets]
-
-directory = "public"
-
-binding = "ASSETS"
-
-
+[assets]directory = "public"binding = "ASSETS"
 ```
 
 With a binding, you can serve assets programmatically:
 
-* [  JavaScript ](#tab-panel-6435)
-* [  TypeScript ](#tab-panel-6436)
+* [  JavaScript ](#tab-panel-6509)
+* [  TypeScript ](#tab-panel-6510)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    // Static assets are served by the worker automatically by default
-
-
-    // Route the request to the appropriate agent
-
-    const agentResponse = await routeAgentRequest(request, env);
-
-    if (agentResponse) return agentResponse;
-
-
-    // Add your own routing logic here
-
-    return new Response("Not found", { status: 404 });
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    // Static assets are served by the worker automatically by default
+    // Route the request to the appropriate agent    const agentResponse = await routeAgentRequest(request, env);    if (agentResponse) return agentResponse;
+    // Add your own routing logic here    return new Response("Not found", { status: 404 });  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request: Request, env: Env) {
-
-    // Static assets are served by the worker automatically by default
-
-
-    // Route the request to the appropriate agent
-
-    const agentResponse = await routeAgentRequest(request, env);
-
-    if (agentResponse) return agentResponse;
-
-
-    // Add your own routing logic here
-
-    return new Response("Not found", { status: 404 });
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export default {  async fetch(request: Request, env: Env) {    // Static assets are served by the worker automatically by default
+    // Route the request to the appropriate agent    const agentResponse = await routeAgentRequest(request, env);    if (agentResponse) return agentResponse;
+    // Add your own routing logic here    return new Response("Not found", { status: 404 });  },} satisfies ExportedHandler<Env>;
 ```
 
 #### `ai`
 
 For Workers AI integration:
 
-* [  wrangler.jsonc ](#tab-panel-6407)
-* [  wrangler.toml ](#tab-panel-6408)
+* [  wrangler.jsonc ](#tab-panel-6481)
+* [  wrangler.toml ](#tab-panel-6482)
 
 JSONC
 
 ```
-
-{
-
-  "ai": {
-
-    "binding": "AI",
-
-  },
-
-}
-
-
+{  "ai": {    "binding": "AI",  },}
 ```
 
 TOML
 
 ```
-
-[ai]
-
-binding = "AI"
-
-
+[ai]binding = "AI"
 ```
 
 Access in your agent:
 
-* [  JavaScript ](#tab-panel-6431)
-* [  TypeScript ](#tab-panel-6432)
+* [  JavaScript ](#tab-panel-6505)
+* [  TypeScript ](#tab-panel-6506)
 
 JavaScript
 
 ```
-
-const response = await this.env.AI.run("@cf/meta/llama-3-8b-instruct", {
-
-  prompt: "Hello!",
-
-});
-
-
+const response = await this.env.AI.run("@cf/meta/llama-3-8b-instruct", {  prompt: "Hello!",});
 ```
 
 TypeScript
 
 ```
-
-const response = await this.env.AI.run("@cf/meta/llama-3-8b-instruct", {
-
-  prompt: "Hello!",
-
-});
-
-
+const response = await this.env.AI.run("@cf/meta/llama-3-8b-instruct", {  prompt: "Hello!",});
 ```
 
 ## TypeScript configuration
@@ -547,76 +237,19 @@ The Agents SDK ships a shared `tsconfig.json` that sets all the compiler options
 Extend it in your `tsconfig.json`:
 
 ```
-
-{
-
-  "extends": "agents/tsconfig"
-
-}
-
-
+{  "extends": "agents/tsconfig"}
 ```
 
 This is equivalent to:
 
 ```
-
-{
-
-  "compilerOptions": {
-
-    "target": "ES2021",
-
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
-
-    "jsx": "react-jsx",
-
-    "module": "ES2022",
-
-    "moduleResolution": "bundler",
-
-    "types": ["node", "@cloudflare/workers-types", "vite/client"],
-
-    "allowImportingTsExtensions": true,
-
-    "noEmit": true,
-
-    "isolatedModules": true,
-
-    "verbatimModuleSyntax": true,
-
-    "esModuleInterop": true,
-
-    "forceConsistentCasingInFileNames": true,
-
-    "strict": true,
-
-    "skipLibCheck": true
-
-  }
-
-}
-
-
+{  "compilerOptions": {    "target": "ES2021",    "lib": ["ES2022", "DOM", "DOM.Iterable"],    "jsx": "react-jsx",    "module": "ES2022",    "moduleResolution": "bundler",    "types": ["node", "@cloudflare/workers-types", "vite/client"],    "allowImportingTsExtensions": true,    "noEmit": true,    "isolatedModules": true,    "verbatimModuleSyntax": true,    "esModuleInterop": true,    "forceConsistentCasingInFileNames": true,    "strict": true,    "skipLibCheck": true  }}
 ```
 
 You can override individual options as needed:
 
 ```
-
-{
-
-  "extends": "agents/tsconfig",
-
-  "compilerOptions": {
-
-    "jsx": "preserve"
-
-  }
-
-}
-
-
+{  "extends": "agents/tsconfig",  "compilerOptions": {    "jsx": "preserve"  }}
 ```
 
 Warning
@@ -629,51 +262,21 @@ The Agents SDK provides a Vite plugin that handles TC39 decorator transforms. Vi
 
 Add the plugin to your `vite.config.ts`:
 
-* [  JavaScript ](#tab-panel-6437)
-* [  TypeScript ](#tab-panel-6438)
+* [  JavaScript ](#tab-panel-6511)
+* [  TypeScript ](#tab-panel-6512)
 
 JavaScript
 
 ```
-
-import { cloudflare } from "@cloudflare/vite-plugin";
-
-import react from "@vitejs/plugin-react";
-
-import agents from "agents/vite";
-
-import { defineConfig } from "vite";
-
-
-export default defineConfig({
-
-  plugins: [agents(), react(), cloudflare()],
-
-});
-
-
+import { cloudflare } from "@cloudflare/vite-plugin";import react from "@vitejs/plugin-react";import agents from "agents/vite";import { defineConfig } from "vite";
+export default defineConfig({  plugins: [agents(), react(), cloudflare()],});
 ```
 
 TypeScript
 
 ```
-
-import { cloudflare } from "@cloudflare/vite-plugin";
-
-import react from "@vitejs/plugin-react";
-
-import agents from "agents/vite";
-
-import { defineConfig } from "vite";
-
-
-export default defineConfig({
-
-  plugins: [agents(), react(), cloudflare()],
-
-});
-
-
+import { cloudflare } from "@cloudflare/vite-plugin";import react from "@vitejs/plugin-react";import agents from "agents/vite";import { defineConfig } from "vite";
+export default defineConfig({  plugins: [agents(), react(), cloudflare()],});
 ```
 
 The `agents()` plugin is safe to include even if your project does not use decorators. It only runs the transform on files that contain `@` syntax.
@@ -691,10 +294,7 @@ Run the types command:
 Terminal window
 
 ```
-
 npx wrangler types
-
-
 ```
 
 This creates or updates `worker-configuration.d.ts` with your `Env` type.
@@ -706,10 +306,7 @@ Specify a custom path:
 Terminal window
 
 ```
-
 npx wrangler types env.d.ts
-
-
 ```
 
 ### Without runtime types
@@ -719,10 +316,7 @@ For cleaner output (recommended for agents):
 Terminal window
 
 ```
-
 npx wrangler types env.d.ts --include-runtime false
-
-
 ```
 
 This generates just your bindings without Cloudflare runtime types.
@@ -732,82 +326,29 @@ This generates just your bindings without Cloudflare runtime types.
 TypeScript
 
 ```
-
-// env.d.ts (generated)
-
-declare namespace Cloudflare {
-
-  interface Env {
-
-    OPENAI_API_KEY: string;
-
-    Counter: DurableObjectNamespace;
-
-    ChatAgent: DurableObjectNamespace;
-
-  }
-
-}
-
-interface Env extends Cloudflare.Env {}
-
-
+// env.d.ts (generated)declare namespace Cloudflare {  interface Env {    OPENAI_API_KEY: string;    Counter: DurableObjectNamespace;    ChatAgent: DurableObjectNamespace;  }}interface Env extends Cloudflare.Env {}
 ```
 
 ### Manual type definition
 
 You can also define types manually:
 
-* [  JavaScript ](#tab-panel-6445)
-* [  TypeScript ](#tab-panel-6446)
+* [  JavaScript ](#tab-panel-6519)
+* [  TypeScript ](#tab-panel-6520)
 
 JavaScript
 
 ```
-
 // env.d.ts
-
-
 ```
 
 TypeScript
 
 ```
-
-// env.d.ts
-
-import type { Counter } from "./src/agents/counter";
-
-import type { ChatAgent } from "./src/agents/chat";
-
-
-interface Env {
-
-  // Secrets
-
-  OPENAI_API_KEY: string;
-
-  WEBHOOK_SECRET: string;
-
-
-  // Agent bindings
-
-  Counter: DurableObjectNamespace<Counter>;
-
-  ChatAgent: DurableObjectNamespace<ChatAgent>;
-
-
-  // Other bindings
-
-  AI: Ai;
-
-  ASSETS: Fetcher;
-
-  MY_KV: KVNamespace;
-
-}
-
-
+// env.d.tsimport type { Counter } from "./src/agents/counter";import type { ChatAgent } from "./src/agents/chat";
+interface Env {  // Secrets  OPENAI_API_KEY: string;  WEBHOOK_SECRET: string;
+  // Agent bindings  Counter: DurableObjectNamespace<Counter>;  ChatAgent: DurableObjectNamespace<ChatAgent>;
+  // Other bindings  AI: Ai;  ASSETS: Fetcher;  MY_KV: KVNamespace;}
 ```
 
 ### Adding to package.json
@@ -815,18 +356,7 @@ interface Env {
 Add a script for easy regeneration:
 
 ```
-
-{
-
-  "scripts": {
-
-    "types": "wrangler types env.d.ts --include-runtime false"
-
-  }
-
-}
-
-
+{  "scripts": {    "types": "wrangler types env.d.ts --include-runtime false"  }}
 ```
 
 ## Environment variables and secrets
@@ -838,55 +368,24 @@ Create a `.env` file for local secrets (add to `.gitignore`):
 Terminal window
 
 ```
-
-# .env
-
-OPENAI_API_KEY=sk-...
-
-GITHUB_WEBHOOK_SECRET=whsec_...
-
-DATABASE_URL=postgres://...
-
-
+# .envOPENAI_API_KEY=sk-...GITHUB_WEBHOOK_SECRET=whsec_...DATABASE_URL=postgres://...
 ```
 
 Access in your agent:
 
-* [  JavaScript ](#tab-panel-6443)
-* [  TypeScript ](#tab-panel-6444)
+* [  JavaScript ](#tab-panel-6517)
+* [  TypeScript ](#tab-panel-6518)
 
 JavaScript
 
 ```
-
-class MyAgent extends Agent {
-
-  async onStart() {
-
-    const apiKey = this.env.OPENAI_API_KEY;
-
-  }
-
-}
-
-
+class MyAgent extends Agent {  async onStart() {    const apiKey = this.env.OPENAI_API_KEY;  }}
 ```
 
 TypeScript
 
 ```
-
-class MyAgent extends Agent {
-
-  async onStart() {
-
-    const apiKey = this.env.OPENAI_API_KEY;
-
-  }
-
-}
-
-
+class MyAgent extends Agent {  async onStart() {    const apiKey = this.env.OPENAI_API_KEY;  }}
 ```
 
 ### Production secrets
@@ -896,169 +395,68 @@ Use `wrangler secret` for production:
 Terminal window
 
 ```
-
-# Add a secret
-
-npx wrangler secret put OPENAI_API_KEY
-
-# Enter value when prompted
-
-
-# List secrets
-
-npx wrangler secret list
-
-
-# Delete a secret
-
-npx wrangler secret delete OPENAI_API_KEY
-
-
+# Add a secretnpx wrangler secret put OPENAI_API_KEY# Enter value when prompted
+# List secretsnpx wrangler secret list
+# Delete a secretnpx wrangler secret delete OPENAI_API_KEY
 ```
 
 ### Non-secret variables
 
 For non-sensitive configuration, use `vars` in the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-6409)
-* [  wrangler.toml ](#tab-panel-6410)
+* [  wrangler.jsonc ](#tab-panel-6483)
+* [  wrangler.toml ](#tab-panel-6484)
 
 JSONC
 
 ```
-
-{
-
-  "vars": {
-
-    "API_BASE_URL": "https://api.example.com",
-
-    "MAX_RETRIES": "3",
-
-    "DEBUG_MODE": "false",
-
-  },
-
-}
-
-
+{  "vars": {    "API_BASE_URL": "https://api.example.com",    "MAX_RETRIES": "3",    "DEBUG_MODE": "false",  },}
 ```
 
 TOML
 
 ```
-
-[vars]
-
-API_BASE_URL = "https://api.example.com"
-
-MAX_RETRIES = "3"
-
-DEBUG_MODE = "false"
-
-
+[vars]API_BASE_URL = "https://api.example.com"MAX_RETRIES = "3"DEBUG_MODE = "false"
 ```
 
 All values must be strings. Parse numbers and booleans in code:
 
-* [  JavaScript ](#tab-panel-6439)
-* [  TypeScript ](#tab-panel-6440)
+* [  JavaScript ](#tab-panel-6513)
+* [  TypeScript ](#tab-panel-6514)
 
 JavaScript
 
 ```
-
-const maxRetries = parseInt(this.env.MAX_RETRIES, 10);
-
-const debugMode = this.env.DEBUG_MODE === "true";
-
-
+const maxRetries = parseInt(this.env.MAX_RETRIES, 10);const debugMode = this.env.DEBUG_MODE === "true";
 ```
 
 TypeScript
 
 ```
-
-const maxRetries = parseInt(this.env.MAX_RETRIES, 10);
-
-const debugMode = this.env.DEBUG_MODE === "true";
-
-
+const maxRetries = parseInt(this.env.MAX_RETRIES, 10);const debugMode = this.env.DEBUG_MODE === "true";
 ```
 
 ### Environment-specific variables
 
 Use `env` sections for different environments (for example, staging, production):
 
-* [  wrangler.jsonc ](#tab-panel-6417)
-* [  wrangler.toml ](#tab-panel-6418)
+* [  wrangler.jsonc ](#tab-panel-6491)
+* [  wrangler.toml ](#tab-panel-6492)
 
 JSONC
 
 ```
-
-{
-
-  "name": "my-agent",
-
-  "vars": {
-
-    "API_URL": "https://api.example.com",
-
-  },
-
-
-  "env": {
-
-    "staging": {
-
-      "vars": {
-
-        "API_URL": "https://staging-api.example.com",
-
-      },
-
-    },
-
-    "production": {
-
-      "vars": {
-
-        "API_URL": "https://api.example.com",
-
-      },
-
-    },
-
-  },
-
-}
-
-
+{  "name": "my-agent",  "vars": {    "API_URL": "https://api.example.com",  },
+  "env": {    "staging": {      "vars": {        "API_URL": "https://staging-api.example.com",      },    },    "production": {      "vars": {        "API_URL": "https://api.example.com",      },    },  },}
 ```
 
 TOML
 
 ```
-
 name = "my-agent"
-
-
-[vars]
-
-API_URL = "https://api.example.com"
-
-
-[env.staging.vars]
-
-API_URL = "https://staging-api.example.com"
-
-
-[env.production.vars]
-
-API_URL = "https://api.example.com"
-
-
+[vars]API_URL = "https://api.example.com"
+[env.staging.vars]API_URL = "https://staging-api.example.com"
+[env.production.vars]API_URL = "https://api.example.com"
 ```
 
 Deploy to specific environment:
@@ -1066,12 +464,7 @@ Deploy to specific environment:
 Terminal window
 
 ```
-
-npx wrangler deploy --env staging
-
-npx wrangler deploy --env production
-
-
+npx wrangler deploy --env stagingnpx wrangler deploy --env production
 ```
 
 ## Local development
@@ -1083,10 +476,7 @@ With Vite (recommended for full stack apps):
 Terminal window
 
 ```
-
 npx vite dev
-
-
 ```
 
 Without Vite:
@@ -1094,10 +484,7 @@ Without Vite:
 Terminal window
 
 ```
-
 npx wrangler dev
-
-
 ```
 
 ### Local state persistence
@@ -1105,11 +492,11 @@ npx wrangler dev
 Durable Object state is persisted locally in `.wrangler/state/`:
 
 * Directory.wrangler/  
-   * Directorystate/  
-         * Directoryv3/  
-                  * Directoryd1/  
-                              * Directoryminiflare-D1DatabaseObject/  
-                                             * ... (SQLite files)
+  * Directorystate/  
+    * Directoryv3/  
+      * Directoryd1/  
+        * Directoryminiflare-D1DatabaseObject/  
+          * ... (SQLite files)
 
 ### Clearing local state
 
@@ -1118,10 +505,7 @@ To reset all local Durable Object state:
 Terminal window
 
 ```
-
 rm -rf .wrangler/state
-
-
 ```
 
 Or restart with fresh state:
@@ -1129,10 +513,7 @@ Or restart with fresh state:
 Terminal window
 
 ```
-
 npx wrangler dev --persist-to=""
-
-
 ```
 
 ### Inspecting local SQLite
@@ -1142,17 +523,8 @@ You can inspect agent state directly:
 Terminal window
 
 ```
-
-# Find the SQLite file
-
-ls .wrangler/state/v3/d1/
-
-
-# Open with sqlite3
-
-sqlite3 .wrangler/state/v3/d1/miniflare-D1DatabaseObject/*.sqlite
-
-
+# Find the SQLite filels .wrangler/state/v3/d1/
+# Open with sqlite3sqlite3 .wrangler/state/v3/d1/miniflare-D1DatabaseObject/*.sqlite
 ```
 
 ## Dashboard setup
@@ -1185,10 +557,7 @@ View live logs from your agents:
 Terminal window
 
 ```
-
 npx wrangler tail
-
-
 ```
 
 Or in the dashboard:
@@ -1210,10 +579,7 @@ Filter by:
 Terminal window
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 This:
@@ -1227,84 +593,36 @@ This:
 
 Add a route in the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-6411)
-* [  wrangler.toml ](#tab-panel-6412)
+* [  wrangler.jsonc ](#tab-panel-6485)
+* [  wrangler.toml ](#tab-panel-6486)
 
 JSONC
 
 ```
-
-{
-
-  "routes": [
-
-    {
-
-      "pattern": "agents.example.com/*",
-
-      "zone_name": "example.com",
-
-    },
-
-  ],
-
-}
-
-
+{  "routes": [    {      "pattern": "agents.example.com/*",      "zone_name": "example.com",    },  ],}
 ```
 
 TOML
 
 ```
-
-[[routes]]
-
-pattern = "agents.example.com/*"
-
-zone_name = "example.com"
-
-
+[[routes]]pattern = "agents.example.com/*"zone_name = "example.com"
 ```
 
 Or use a custom domain (simpler):
 
-* [  wrangler.jsonc ](#tab-panel-6413)
-* [  wrangler.toml ](#tab-panel-6414)
+* [  wrangler.jsonc ](#tab-panel-6487)
+* [  wrangler.toml ](#tab-panel-6488)
 
 JSONC
 
 ```
-
-{
-
-  "routes": [
-
-    {
-
-      "pattern": "agents.example.com",
-
-      "custom_domain": true,
-
-    },
-
-  ],
-
-}
-
-
+{  "routes": [    {      "pattern": "agents.example.com",      "custom_domain": true,    },  ],}
 ```
 
 TOML
 
 ```
-
-[[routes]]
-
-pattern = "agents.example.com"
-
-custom_domain = true
-
-
+[[routes]]pattern = "agents.example.com"custom_domain = true
 ```
 
 ### Preview deployments
@@ -1314,14 +632,7 @@ Deploy without affecting production:
 Terminal window
 
 ```
-
-npx wrangler deploy --dry-run    # See what would be uploaded
-
-npx wrangler versions upload     # Upload new version
-
-npx wrangler versions deploy     # Gradually roll out
-
-
+npx wrangler deploy --dry-run    # See what would be uploadednpx wrangler versions upload     # Upload new versionnpx wrangler versions deploy     # Gradually roll out
 ```
 
 ### Rollbacks
@@ -1331,10 +642,7 @@ Roll back to a previous version:
 Terminal window
 
 ```
-
 npx wrangler rollback
-
-
 ```
 
 ## Multi-environment setup
@@ -1343,121 +651,27 @@ npx wrangler rollback
 
 Define environments in the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-6441)
-* [  wrangler.toml ](#tab-panel-6442)
+* [  wrangler.jsonc ](#tab-panel-6515)
+* [  wrangler.toml ](#tab-panel-6516)
 
 JSONC
 
 ```
-
-{
-
-  "name": "my-agent",
-
-  "main": "src/server.ts",
-
-
-  // Base configuration (shared)
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "compatibility_flags": ["nodejs_compat"],
-
-  "durable_objects": {
-
-    "bindings": [{ "name": "MyAgent", "class_name": "MyAgent" }],
-
-  },
-
-  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["MyAgent"] }],
-
-
-  // Environment overrides
-
-  "env": {
-
-    "staging": {
-
-      "name": "my-agent-staging",
-
-      "vars": {
-
-        "ENVIRONMENT": "staging",
-
-      },
-
-    },
-
-    "production": {
-
-      "name": "my-agent-production",
-
-      "vars": {
-
-        "ENVIRONMENT": "production",
-
-      },
-
-    },
-
-  },
-
-}
-
-
+{  "name": "my-agent",  "main": "src/server.ts",
+  // Base configuration (shared)  // Set this to today's date  "compatibility_date": "2026-06-18",  "compatibility_flags": ["nodejs_compat"],  "durable_objects": {    "bindings": [{ "name": "MyAgent", "class_name": "MyAgent" }],  },  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["MyAgent"] }],
+  // Environment overrides  "env": {    "staging": {      "name": "my-agent-staging",      "vars": {        "ENVIRONMENT": "staging",      },    },    "production": {      "name": "my-agent-production",      "vars": {        "ENVIRONMENT": "production",      },    },  },}
 ```
 
 TOML
 
 ```
-
-name = "my-agent"
-
-main = "src/server.ts"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-compatibility_flags = [ "nodejs_compat" ]
-
-
-[[durable_objects.bindings]]
-
-name = "MyAgent"
-
-class_name = "MyAgent"
-
-
-[[migrations]]
-
-tag = "v1"
-
-new_sqlite_classes = [ "MyAgent" ]
-
-
-[env.staging]
-
-name = "my-agent-staging"
-
-
-  [env.staging.vars]
-
-  ENVIRONMENT = "staging"
-
-
-[env.production]
-
-name = "my-agent-production"
-
-
-  [env.production.vars]
-
-  ENVIRONMENT = "production"
-
-
+name = "my-agent"main = "src/server.ts"# Set this to today's datecompatibility_date = "2026-06-18"compatibility_flags = [ "nodejs_compat" ]
+[[durable_objects.bindings]]name = "MyAgent"class_name = "MyAgent"
+[[migrations]]tag = "v1"new_sqlite_classes = [ "MyAgent" ]
+[env.staging]name = "my-agent-staging"
+  [env.staging.vars]  ENVIRONMENT = "staging"
+[env.production]name = "my-agent-production"
+  [env.production.vars]  ENVIRONMENT = "production"
 ```
 
 ### Deploying to environments
@@ -1465,24 +679,9 @@ name = "my-agent-production"
 Terminal window
 
 ```
-
-# Deploy to staging
-
-npx wrangler deploy --env staging
-
-
-# Deploy to production
-
-npx wrangler deploy --env production
-
-
-# Set secrets per environment
-
-npx wrangler secret put OPENAI_API_KEY --env staging
-
-npx wrangler secret put OPENAI_API_KEY --env production
-
-
+# Deploy to stagingnpx wrangler deploy --env staging
+# Deploy to productionnpx wrangler deploy --env production
+# Set secrets per environmentnpx wrangler secret put OPENAI_API_KEY --env stagingnpx wrangler secret put OPENAI_API_KEY --env production
 ```
 
 ### Separate Durable Objects
@@ -1491,59 +690,19 @@ Each environment gets its own Durable Objects. Staging agents do not share state
 
 To explicitly separate:
 
-* [  wrangler.jsonc ](#tab-panel-6421)
-* [  wrangler.toml ](#tab-panel-6422)
+* [  wrangler.jsonc ](#tab-panel-6495)
+* [  wrangler.toml ](#tab-panel-6496)
 
 JSONC
 
 ```
-
-{
-
-  "env": {
-
-    "staging": {
-
-      "durable_objects": {
-
-        "bindings": [
-
-          {
-
-            "name": "MyAgent",
-
-            "class_name": "MyAgent",
-
-            "script_name": "my-agent-staging",
-
-          },
-
-        ],
-
-      },
-
-    },
-
-  },
-
-}
-
-
+{  "env": {    "staging": {      "durable_objects": {        "bindings": [          {            "name": "MyAgent",            "class_name": "MyAgent",            "script_name": "my-agent-staging",          },        ],      },    },  },}
 ```
 
 TOML
 
 ```
-
-[[env.staging.durable_objects.bindings]]
-
-name = "MyAgent"
-
-class_name = "MyAgent"
-
-script_name = "my-agent-staging"
-
-
+[[env.staging.durable_objects.bindings]]name = "MyAgent"class_name = "MyAgent"script_name = "my-agent-staging"
 ```
 
 ## Migrations
@@ -1554,131 +713,41 @@ Migrations manage Durable Object storage schema changes.
 
 Add to `new_sqlite_classes` in a new migration:
 
-* [  wrangler.jsonc ](#tab-panel-6419)
-* [  wrangler.toml ](#tab-panel-6420)
+* [  wrangler.jsonc ](#tab-panel-6493)
+* [  wrangler.toml ](#tab-panel-6494)
 
 JSONC
 
 ```
-
-{
-
-  "migrations": [
-
-    {
-
-      "tag": "v1",
-
-      "new_sqlite_classes": ["ExistingAgent"],
-
-    },
-
-    {
-
-      "tag": "v2",
-
-      "new_sqlite_classes": ["NewAgent"],
-
-    },
-
-  ],
-
-}
-
-
+{  "migrations": [    {      "tag": "v1",      "new_sqlite_classes": ["ExistingAgent"],    },    {      "tag": "v2",      "new_sqlite_classes": ["NewAgent"],    },  ],}
 ```
 
 TOML
 
 ```
-
-[[migrations]]
-
-tag = "v1"
-
-new_sqlite_classes = [ "ExistingAgent" ]
-
-
-[[migrations]]
-
-tag = "v2"
-
-new_sqlite_classes = [ "NewAgent" ]
-
-
+[[migrations]]tag = "v1"new_sqlite_classes = [ "ExistingAgent" ]
+[[migrations]]tag = "v2"new_sqlite_classes = [ "NewAgent" ]
 ```
 
 ### Renaming an agent class
 
 Use `renamed_classes`:
 
-* [  wrangler.jsonc ](#tab-panel-6433)
-* [  wrangler.toml ](#tab-panel-6434)
+* [  wrangler.jsonc ](#tab-panel-6507)
+* [  wrangler.toml ](#tab-panel-6508)
 
 JSONC
 
 ```
-
-{
-
-  "migrations": [
-
-    {
-
-      "tag": "v1",
-
-      "new_sqlite_classes": ["OldName"],
-
-    },
-
-    {
-
-      "tag": "v2",
-
-      "renamed_classes": [
-
-        {
-
-          "from": "OldName",
-
-          "to": "NewName",
-
-        },
-
-      ],
-
-    },
-
-  ],
-
-}
-
-
+{  "migrations": [    {      "tag": "v1",      "new_sqlite_classes": ["OldName"],    },    {      "tag": "v2",      "renamed_classes": [        {          "from": "OldName",          "to": "NewName",        },      ],    },  ],}
 ```
 
 TOML
 
 ```
-
-[[migrations]]
-
-tag = "v1"
-
-new_sqlite_classes = [ "OldName" ]
-
-
-[[migrations]]
-
-tag = "v2"
-
-
-  [[migrations.renamed_classes]]
-
-  from = "OldName"
-
-  to = "NewName"
-
-
+[[migrations]]tag = "v1"new_sqlite_classes = [ "OldName" ]
+[[migrations]]tag = "v2"
+  [[migrations.renamed_classes]]  from = "OldName"  to = "NewName"
 ```
 
 Also update:
@@ -1691,58 +760,20 @@ Also update:
 
 Use `deleted_classes`:
 
-* [  wrangler.jsonc ](#tab-panel-6427)
-* [  wrangler.toml ](#tab-panel-6428)
+* [  wrangler.jsonc ](#tab-panel-6501)
+* [  wrangler.toml ](#tab-panel-6502)
 
 JSONC
 
 ```
-
-{
-
-  "migrations": [
-
-    {
-
-      "tag": "v1",
-
-      "new_sqlite_classes": ["AgentToDelete", "AgentToKeep"],
-
-    },
-
-    {
-
-      "tag": "v2",
-
-      "deleted_classes": ["AgentToDelete"],
-
-    },
-
-  ],
-
-}
-
-
+{  "migrations": [    {      "tag": "v1",      "new_sqlite_classes": ["AgentToDelete", "AgentToKeep"],    },    {      "tag": "v2",      "deleted_classes": ["AgentToDelete"],    },  ],}
 ```
 
 TOML
 
 ```
-
-[[migrations]]
-
-tag = "v1"
-
-new_sqlite_classes = [ "AgentToDelete", "AgentToKeep" ]
-
-
-[[migrations]]
-
-tag = "v2"
-
-deleted_classes = [ "AgentToDelete" ]
-
-
+[[migrations]]tag = "v1"new_sqlite_classes = [ "AgentToDelete", "AgentToKeep" ]
+[[migrations]]tag = "v2"deleted_classes = [ "AgentToDelete" ]
 ```
 
 Warning
@@ -1762,43 +793,19 @@ This permanently deletes all data for that class.
 
 The class is not in migrations:
 
-* [  wrangler.jsonc ](#tab-panel-6423)
-* [  wrangler.toml ](#tab-panel-6424)
+* [  wrangler.jsonc ](#tab-panel-6497)
+* [  wrangler.toml ](#tab-panel-6498)
 
 JSONC
 
 ```
-
-{
-
-  "migrations": [
-
-    {
-
-      "tag": "v1",
-
-      "new_sqlite_classes": ["MissingClassName"],
-
-    },
-
-  ],
-
-}
-
-
+{  "migrations": [    {      "tag": "v1",      "new_sqlite_classes": ["MissingClassName"],    },  ],}
 ```
 
 TOML
 
 ```
-
-[[migrations]]
-
-tag = "v1"
-
-new_sqlite_classes = [ "MissingClassName" ]
-
-
+[[migrations]]tag = "v1"new_sqlite_classes = [ "MissingClassName" ]
 ```
 
 ### Cannot find module in types
@@ -1808,10 +815,7 @@ Regenerate types:
 Terminal window
 
 ```
-
 npx wrangler types env.d.ts --include-runtime false
-
-
 ```
 
 ### Secrets not loading locally
@@ -1821,104 +825,43 @@ Check that `.env` exists and contains the variable:
 Terminal window
 
 ```
-
-cat .env
-
-# Should show: MY_SECRET=value
-
-
+cat .env# Should show: MY_SECRET=value
 ```
 
 ### Migration tag conflict
 
 Migration tags must be unique. If you see conflicts:
 
-* [  wrangler.jsonc ](#tab-panel-6425)
-* [  wrangler.toml ](#tab-panel-6426)
+* [  wrangler.jsonc ](#tab-panel-6499)
+* [  wrangler.toml ](#tab-panel-6500)
 
 JSONC
 
 ```
-
-{
-
-  // Wrong - duplicate tags
-
-  "migrations": [
-
-    { "tag": "v1", "new_sqlite_classes": ["A"] },
-
-    { "tag": "v1", "new_sqlite_classes": ["B"] },
-
-  ],
-
-}
-
-
+{  // Wrong - duplicate tags  "migrations": [    { "tag": "v1", "new_sqlite_classes": ["A"] },    { "tag": "v1", "new_sqlite_classes": ["B"] },  ],}
 ```
 
 TOML
 
 ```
-
-[[migrations]]
-
-tag = "v1"
-
-new_sqlite_classes = [ "A" ]
-
-
-[[migrations]]
-
-tag = "v1"
-
-new_sqlite_classes = [ "B" ]
-
-
+[[migrations]]tag = "v1"new_sqlite_classes = [ "A" ]
+[[migrations]]tag = "v1"new_sqlite_classes = [ "B" ]
 ```
 
-* [  wrangler.jsonc ](#tab-panel-6429)
-* [  wrangler.toml ](#tab-panel-6430)
+* [  wrangler.jsonc ](#tab-panel-6503)
+* [  wrangler.toml ](#tab-panel-6504)
 
 JSONC
 
 ```
-
-{
-
-  // Correct - sequential tags
-
-  "migrations": [
-
-    { "tag": "v1", "new_sqlite_classes": ["A"] },
-
-    { "tag": "v2", "new_sqlite_classes": ["B"] },
-
-  ],
-
-}
-
-
+{  // Correct - sequential tags  "migrations": [    { "tag": "v1", "new_sqlite_classes": ["A"] },    { "tag": "v2", "new_sqlite_classes": ["B"] },  ],}
 ```
 
 TOML
 
 ```
-
-[[migrations]]
-
-tag = "v1"
-
-new_sqlite_classes = [ "A" ]
-
-
-[[migrations]]
-
-tag = "v2"
-
-new_sqlite_classes = [ "B" ]
-
-
+[[migrations]]tag = "v1"new_sqlite_classes = [ "A" ]
+[[migrations]]tag = "v2"new_sqlite_classes = [ "B" ]
 ```
 
 ## Next steps
@@ -1927,7 +870,7 @@ new_sqlite_classes = [ "B" ]
 
 [ Routing ](https://developers.cloudflare.com/agents/runtime/communication/routing/) Route requests to your agent instances. 
 
-[ Schedule tasks ](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) Background processing with delayed and cron-based tasks. 
+[ Schedule tasks ](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) Background processing with delayed and cron-based tasks.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/operations/configuration/#page","headline":"Configuration · Cloudflare Agents docs","description":"Configure Wrangler bindings, environment variables, and type generation for a project using the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/operations/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

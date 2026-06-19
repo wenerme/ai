@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dynamic-workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,24 +23,7 @@ Custom limits can be specified as part of the worker code:
 JavaScript
 
 ```
-
-const worker = env.LOADER.get("my-worker", async () => {
-
-  return {
-
-    compatibilityDate: "$today",
-
-    mainModule: "index.js",
-
-    modules: { "index.js": code },
-
-    limits: { cpuMs: 10, subRequests: 5 },
-
-  };
-
-});
-
-
+const worker = env.LOADER.get("my-worker", async () => {  return {    compatibilityDate: "$today",    mainModule: "index.js",    modules: { "index.js": code },    limits: { cpuMs: 10, subRequests: 5 },  };});
 ```
 
 They can also be specified as part of the `getEntrypoint()` call:
@@ -48,16 +31,7 @@ They can also be specified as part of the `getEntrypoint()` call:
 JavaScript
 
 ```
-
-// get the worker's default entrypoint with custom limits
-
-// if limits were already specified as part of the worker code, the lower of the two limits is used
-
-const entrypoint = worker.getEntrypoint(null, { limits: { cpuMs: 10, subRequests: 5 } });
-
-await entrypoint.fetch(...);
-
-
+// get the worker's default entrypoint with custom limits// if limits were already specified as part of the worker code, the lower of the two limits is usedconst entrypoint = worker.getEntrypoint(null, { limits: { cpuMs: 10, subRequests: 5 } });await entrypoint.fetch(...);
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,10 +27,7 @@ Before starting this guide, make sure you have:
 Terminal window
 
 ```
-
 rustup target add wasm32-unknown-unknown
-
-
 ```
 
 * And `cargo-generate` sub-command by running:
@@ -38,10 +35,7 @@ rustup target add wasm32-unknown-unknown
 Terminal window
 
 ```
-
 cargo install cargo-generate
-
-
 ```
 
 ## 1\. Create a new project with Wrangler
@@ -51,10 +45,7 @@ Open a terminal window, and run the following command to generate a Worker proje
 Terminal window
 
 ```
-
 cargo generate cloudflare/workers-rs
-
-
 ```
 
 Your project will be created in a new directory that you named, in which you will find the following files and folders:
@@ -70,10 +61,7 @@ After you have created your first Worker, run the [wrangler dev](https://develop
 Terminal window
 
 ```
-
 npx wrangler dev
-
-
 ```
 
 If you have not used Wrangler before, it will try to open your web browser to login with your Cloudflare account.
@@ -89,19 +77,8 @@ Go to [http://localhost:8787 ↗](http://localhost:8787) to review your Worker r
 With your new project generated, write your Worker code. Find the entrypoint to your Worker in `src/lib.rs`:
 
 ```
-
 use worker::*;
-
-
-#[event(fetch)]
-
-async fn main(req: Request, env: Env, ctx: Context) -> Result<Response> {
-
-    Response::ok("Hello, World!")
-
-}
-
-
+#[event(fetch)]async fn main(req: Request, env: Env, ctx: Context) -> Result<Response> {    Response::ok("Hello, World!")}
 ```
 
 Note
@@ -169,10 +146,7 @@ With your project configured, you can now deploy your Worker, to a `*.workers.de
 Terminal window
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 Preview your Worker at `<YOUR_WORKER>.<YOUR_SUBDOMAIN>.workers.dev`.
@@ -205,36 +179,9 @@ To patch the JavaScript that `wasm-bindgen` emits:
 JavaScript
 
 ```
-
 import * as imports from "./mywasmlib_bg.js";
-
-
-// switch between both syntax for node and for workerd
-
-import wkmod from "./mywasmlib_bg.wasm";
-
-import * as nodemod from "./mywasmlib_bg.wasm";
-
-if (typeof process !== "undefined" && process.release.name === "node") {
-
-  imports.__wbg_set_wasm(nodemod);
-
-} else {
-
-  const instance = new WebAssembly.Instance(wkmod, {
-
-    "./mywasmlib_bg.js": imports,
-
-  });
-
-  imports.__wbg_set_wasm(instance.exports);
-
-}
-
-
+// switch between both syntax for node and for workerdimport wkmod from "./mywasmlib_bg.wasm";import * as nodemod from "./mywasmlib_bg.wasm";if (typeof process !== "undefined" && process.release.name === "node") {  imports.__wbg_set_wasm(nodemod);} else {  const instance = new WebAssembly.Instance(wkmod, {    "./mywasmlib_bg.js": imports,  });  imports.__wbg_set_wasm(instance.exports);}
 export * from "./mywasmlib_bg.js";
-
-
 ```
 
 1. In your Worker entrypoint, import the function and use it directly:
@@ -242,10 +189,7 @@ export * from "./mywasmlib_bg.js";
 JavaScript
 
 ```
-
 import { myFunction } from "path/to/mylib.js";
-
-
 ```
 
 ### Async (`wasm-bindgen-futures`)
@@ -269,16 +213,7 @@ Unoptimized Rust Wasm binaries can be large and may exceed Worker bundle size li
 TOML
 
 ```
-
-[profile.release]
-
-lto = true
-
-strip = true
-
-codegen-units = 1
-
-
+[profile.release]lto = truestrip = truecodegen-units = 1
 ```
 
 Finally, `worker-bundle` automatically invokes [wasm-opt ↗](https://github.com/brson/wasm-opt-rs) to further optimize binary size before upload.

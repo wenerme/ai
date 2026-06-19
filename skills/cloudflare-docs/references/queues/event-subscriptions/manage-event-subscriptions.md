@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -39,10 +39,7 @@ To create a subscription using Wrangler, run the [queues subscription create com
 Terminal window
 
 ```
-
 npx wrangler queues subscription create <queue-name> --source <source-type> --events <event1,event2> --<source-specific-option> <value>
-
-
 ```
 
 To learn more about which sources and events you can subscribe to, refer to [Events & schemas](https://developers.cloudflare.com/queues/event-subscriptions/events-schemas/).
@@ -65,10 +62,7 @@ To list subscriptions for a queue, run the [queues subscription list command](ht
 Terminal window
 
 ```
-
 npx wrangler queues subscription list <queue-name>
-
-
 ```
 
 ## Delete subscription
@@ -91,15 +85,12 @@ To delete a subscription, run the [queues subscription delete command](https://d
 Terminal window
 
 ```
-
 npx wrangler queues subscription delete <queue-name> --id <subscription-id>
-
-
 ```
 
 ## Learn more
 
-[ Events & schemas ](https://developers.cloudflare.com/queues/event-subscriptions/events-schemas/) Explore available event sources and types that you can subscribe to. 
+[ Events & schemas ](https://developers.cloudflare.com/queues/event-subscriptions/events-schemas/) Explore available event sources and types that you can subscribe to.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/event-subscriptions/manage-event-subscriptions/#page","headline":"Manage event subscriptions · Cloudflare Queues docs","description":"Learn how to create, view, and delete event subscriptions for your queues.","url":"https://developers.cloudflare.com/queues/event-subscriptions/manage-event-subscriptions/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

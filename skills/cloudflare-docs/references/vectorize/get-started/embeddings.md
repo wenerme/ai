@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/vectorize/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -85,10 +85,7 @@ To create your first Vectorize index, change into the directory you just created
 Terminal window
 
 ```
-
 cd embeddings-tutorial
-
-
 ```
 
 Using legacy Vectorize (V1) indexes?
@@ -116,24 +113,12 @@ Run the following `wrangler vectorize` command, ensuring that the `dimensions` a
 Terminal window
 
 ```
-
 npx wrangler vectorize create embeddings-index --dimensions=768 --metric=cosine
-
-
 ```
 
 ```
-
 ✅ Successfully created index 'embeddings-index'
-
-
-[[vectorize]]
-
-binding = "VECTORIZE" # available in your Worker on env.VECTORIZE
-
-index_name = "embeddings-index"
-
-
+[[vectorize]]binding = "VECTORIZE" # available in your Worker on env.VECTORIZEindex_name = "embeddings-index"
 ```
 
 This will create a new vector database, and output the [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) configuration needed in the next step.
@@ -144,43 +129,19 @@ You must create a binding for your Worker to connect to your Vectorize index. [B
 
 To bind your index to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-11095)
-* [  wrangler.toml ](#tab-panel-11096)
+* [  wrangler.jsonc ](#tab-panel-11112)
+* [  wrangler.toml ](#tab-panel-11113)
 
 JSONC
 
 ```
-
-{
-
-  "vectorize": [
-
-    {
-
-      "binding": "VECTORIZE", // available in your Worker on env.VECTORIZE
-
-      "index_name": "embeddings-index"
-
-    }
-
-  ]
-
-}
-
-
+{  "vectorize": [    {      "binding": "VECTORIZE", // available in your Worker on env.VECTORIZE      "index_name": "embeddings-index"    }  ]}
 ```
 
 TOML
 
 ```
-
-[[vectorize]]
-
-binding = "VECTORIZE"
-
-index_name = "embeddings-index"
-
-
+[[vectorize]]binding = "VECTORIZE"index_name = "embeddings-index"
 ```
 
 Specifically:
@@ -195,54 +156,20 @@ Before you deploy your embedding example, ensure your Worker uses your model cat
 
 From within the `embeddings-tutorial` directory, open your Wrangler file in your editor and add the new `[[ai]]` binding to make Workers AI's models available in your Worker:
 
-* [  wrangler.jsonc ](#tab-panel-11097)
-* [  wrangler.toml ](#tab-panel-11098)
+* [  wrangler.jsonc ](#tab-panel-11114)
+* [  wrangler.toml ](#tab-panel-11115)
 
 JSONC
 
 ```
-
-{
-
-  "vectorize": [
-
-    {
-
-      "binding": "VECTORIZE",
-
-      "index_name": "embeddings-index"
-
-    }
-
-  ],
-
-  "ai": {
-
-    "binding": "AI" // available in your Worker on env.AI
-
-  }
-
-}
-
-
+{  "vectorize": [    {      "binding": "VECTORIZE",      "index_name": "embeddings-index"    }  ],  "ai": {    "binding": "AI" // available in your Worker on env.AI  }}
 ```
 
 TOML
 
 ```
-
-[[vectorize]]
-
-binding = "VECTORIZE"
-
-index_name = "embeddings-index"
-
-
-[ai]
-
-binding = "AI"
-
-
+[[vectorize]]binding = "VECTORIZE"index_name = "embeddings-index"
+[ai]binding = "AI"
 ```
 
 With Workers AI ready, you can write code in your Worker.
@@ -256,140 +183,13 @@ Clear the content of `index.ts`. Paste the following code snippet into your `ind
 TypeScript
 
 ```
-
-export interface Env {
-
-  VECTORIZE: Vectorize;
-
-  AI: Ai;
-
-}
-
-interface EmbeddingResponse {
-
-  shape: number[];
-
-  data: number[][];
-
-}
-
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    let path = new URL(request.url).pathname;
-
-    if (path.startsWith("/favicon")) {
-
-      return new Response("", { status: 404 });
-
-    }
-
-
-    // You only need to generate vector embeddings once (or as
-
-    // data changes), not on every request
-
-    if (path === "/insert") {
-
-      // In a real-world application, you could read content from R2 or
-
-      // a SQL database (like D1) and pass it to Workers AI
-
-      const stories = [
-
-        "This is a story about an orange cloud",
-
-        "This is a story about a llama",
-
-        "This is a story about a hugging emoji",
-
-      ];
-
-      const modelResp: EmbeddingResponse = await env.AI.run(
-
-        "@cf/baai/bge-base-en-v1.5",
-
-        {
-
-          text: stories,
-
-        },
-
-      );
-
-
-      // Convert the vector embeddings into a format Vectorize can accept.
-
-      // Each vector needs an ID, a value (the vector) and optional metadata.
-
-      // In a real application, your ID would be bound to the ID of the source
-
-      // document.
-
-      let vectors: VectorizeVector[] = [];
-
-      let id = 1;
-
-      modelResp.data.forEach((vector) => {
-
-        vectors.push({ id: `${id}`, values: vector });
-
-        id++;
-
-      });
-
-
-      let inserted = await env.VECTORIZE.upsert(vectors);
-
-      return Response.json(inserted);
-
-    }
-
-
-    // Your query: expect this to match vector ID. 1 in this example
-
-    let userQuery = "orange cloud";
-
-    const queryVector: EmbeddingResponse = await env.AI.run(
-
-      "@cf/baai/bge-base-en-v1.5",
-
-      {
-
-        text: [userQuery],
-
-      },
-
-    );
-
-
-    let matches = await env.VECTORIZE.query(queryVector.data[0], {
-
-      topK: 1,
-
-    });
-
-    return Response.json({
-
-      // Expect a vector ID. 1 to be your top match with a score of
-
-      // ~0.89693683
-
-      // This tutorial uses a cosine distance metric, where the closer to one,
-
-      // the more similar.
-
-      matches: matches,
-
-    });
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export interface Env {  VECTORIZE: Vectorize;  AI: Ai;}interface EmbeddingResponse {  shape: number[];  data: number[][];}
+export default {  async fetch(request, env, ctx): Promise<Response> {    let path = new URL(request.url).pathname;    if (path.startsWith("/favicon")) {      return new Response("", { status: 404 });    }
+    // You only need to generate vector embeddings once (or as    // data changes), not on every request    if (path === "/insert") {      // In a real-world application, you could read content from R2 or      // a SQL database (like D1) and pass it to Workers AI      const stories = [        "This is a story about an orange cloud",        "This is a story about a llama",        "This is a story about a hugging emoji",      ];      const modelResp: EmbeddingResponse = await env.AI.run(        "@cf/baai/bge-base-en-v1.5",        {          text: stories,        },      );
+      // Convert the vector embeddings into a format Vectorize can accept.      // Each vector needs an ID, a value (the vector) and optional metadata.      // In a real application, your ID would be bound to the ID of the source      // document.      let vectors: VectorizeVector[] = [];      let id = 1;      modelResp.data.forEach((vector) => {        vectors.push({ id: `${id}`, values: vector });        id++;      });
+      let inserted = await env.VECTORIZE.upsert(vectors);      return Response.json(inserted);    }
+    // Your query: expect this to match vector ID. 1 in this example    let userQuery = "orange cloud";    const queryVector: EmbeddingResponse = await env.AI.run(      "@cf/baai/bge-base-en-v1.5",      {        text: [userQuery],      },    );
+    let matches = await env.VECTORIZE.query(queryVector.data[0], {      topK: 1,    });    return Response.json({      // Expect a vector ID. 1 to be your top match with a score of      // ~0.89693683      // This tutorial uses a cosine distance metric, where the closer to one,      // the more similar.      matches: matches,    });  },} satisfies ExportedHandler<Env>;
 ```
 
 ## 6\. Deploy your Worker
@@ -399,10 +199,7 @@ Before deploying your Worker globally, log in with your Cloudflare account by ru
 Terminal window
 
 ```
-
 npx wrangler login
-
-
 ```
 
 You will be directed to a web page asking you to log in to the Cloudflare dashboard. After you have logged in, you will be asked if Wrangler can make changes to your Cloudflare account. Scroll down and select **Allow** to continue.
@@ -412,10 +209,7 @@ From here, deploy your Worker to make your project accessible on the Internet. T
 Terminal window
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 Preview your Worker at `https://embeddings-tutorial.<YOUR_SUBDOMAIN>.workers.dev`.
@@ -432,30 +226,7 @@ With the URL for your deployed Worker (for example,`https://embeddings-tutorial.
 This should return the following JSON:
 
 ```
-
-{
-
-  "matches": {
-
-    "count": 1,
-
-    "matches": [
-
-      {
-
-        "id": "1",
-
-        "score": 0.89693683
-
-      }
-
-    ]
-
-  }
-
-}
-
-
+{  "matches": {    "count": 1,    "matches": [      {        "id": "1",        "score": 0.89693683      }    ]  }}
 ```
 
 Extend this example by:

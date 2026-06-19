@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -46,44 +46,23 @@ Page Rules require a [proxied DNS record](https://developers.cloudflare.com/dns/
 Imagine you want site visitors to reach your website for a variety of URL patterns. For instance, the page rule URL patterns `*www.example.com/products` and `*example.com/products` match:
 
 ```
-
 http://example.com/products
-
-
 http://www.example.com/products
-
-
 https://www.example.com/products
-
-
 https://blog.example.com/products
-
-
 https://www.blog.example.com/products
-
-
 ```
 
 but do not match:
 
 ```
-
-http://www.example.com/blog/products (extra directory)
-
-or
-
-http://www.example.comproducts (no trailing slash)
-
-
+http://www.example.com/blog/products (extra directory)orhttp://www.example.comproducts (no trailing slash)
 ```
 
 Once you have created the pattern that matches what you want, select the **Forwarding** toggle. This will display a field where you can enter the address you want requests forwarded to.
 
 ```
-
 https://example.com/products
-
-
 ```
 
 If you enter the address above in the forwarding box and select **Add Rule**, within a few seconds any requests that match the pattern you entered will automatically be forwarded with an `HTTP 302` redirect status code to the new URL.
@@ -97,37 +76,25 @@ If you use a basic redirect, such as forwarding the apex domain (`example.com`) 
 For example, you could set up the pattern:
 
 ```
-
 example.com
-
-
 ```
 
 And have it forward to:
 
 ```
-
 http://www.example.com
-
-
 ```
 
 However, if someone entered `example.com/some-particular-page.html`, they would be redirected to:
 
 ```
-
 www.example.com
-
-
 ```
 
 Instead of:
 
 ```
-
 www.example.com/some-particular-page.html
-
-
 ```
 
 The solution is to use variables. Each wildcard corresponds to a variable when can be referenced in the forwarding address. The variables are represented by a `$` (dollar sign) followed by a number. To refer to the first wildcard you would use `$1`, to refer to the second wildcard you would use `$2`, and so on.
@@ -135,37 +102,25 @@ The solution is to use variables. Each wildcard corresponds to a variable when c
 To fix the forwarding from the apex to `www` in the above example, you could use the same pattern:
 
 ```
-
 example.com/*
-
-
 ```
 
 You would then set up the following URL for traffic to forward to:
 
 ```
-
 http://www.example.com/$1
-
-
 ```
 
 In this case, if someone went to:
 
 ```
-
 example.com/some-particular-page.html
-
-
 ```
 
 They would be redirected to:
 
 ```
-
 http://www.example.com/some-particular-page.html
-
-
 ```
 
 ```json

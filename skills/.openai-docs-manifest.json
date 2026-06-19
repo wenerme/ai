@@ -10154,10 +10154,10 @@
   "codex-docs/app-server.md": {
     "url": "https://developers.openai.com/codex/app-server.md",
     "skill": "codex-docs",
-    "etag": "W/\"e36212d3ea8fe7cc788918d7c511e469\"",
-    "lastModified": "Fri, 22 May 2026 00:18:50 GMT",
-    "size": 74835,
-    "updatedAt": "2026-05-22T00:39:33.115Z"
+    "etag": "W/\"9c443b1ebb467c5813bc8b77e4697022\"",
+    "lastModified": "Thu, 18 Jun 2026 23:10:08 GMT",
+    "size": 83596,
+    "updatedAt": "2026-06-19T00:52:35.979Z"
   },
   "codex-docs/app.md": {
     "url": "https://developers.openai.com/codex/app.md",
@@ -10194,10 +10194,10 @@
   "codex-docs/app/commands.md": {
     "url": "https://developers.openai.com/codex/app/commands.md",
     "skill": "codex-docs",
-    "etag": "W/\"6cee633a7b3bc6148c741a16e6cc9fee\"",
-    "lastModified": "Fri, 12 Jun 2026 00:47:14 GMT",
-    "size": 16561,
-    "updatedAt": "2026-06-12T00:48:34.915Z"
+    "etag": "W/\"d0e95b57d666c71f5029be6ad82574fe\"",
+    "lastModified": "Thu, 18 Jun 2026 22:53:11 GMT",
+    "size": 18120,
+    "updatedAt": "2026-06-19T00:52:37.151Z"
   },
   "codex-docs/app/computer-use.md": {
     "url": "https://developers.openai.com/codex/app/computer-use.md",
@@ -10298,18 +10298,18 @@
   "codex-docs/cli/reference.md": {
     "url": "https://developers.openai.com/codex/cli/reference.md",
     "skill": "codex-docs",
-    "etag": "W/\"175e794304b5a7a9f8333b0aadbaa190\"",
-    "lastModified": "Tue, 09 Jun 2026 23:44:53 GMT",
-    "size": 43068,
-    "updatedAt": "2026-06-10T00:48:08.032Z"
+    "etag": "W/\"709fbdd5c0106d88657143a2be6a66c2\"",
+    "lastModified": "Thu, 18 Jun 2026 22:43:29 GMT",
+    "size": 44577,
+    "updatedAt": "2026-06-19T00:52:40.403Z"
   },
   "codex-docs/cli/slash-commands.md": {
     "url": "https://developers.openai.com/codex/cli/slash-commands.md",
     "skill": "codex-docs",
-    "etag": "W/\"b31dc097f2b4a4fe1fb5a5d797ee7939\"",
-    "lastModified": "Tue, 09 Jun 2026 23:47:52 GMT",
-    "size": 27945,
-    "updatedAt": "2026-06-10T00:48:08.271Z"
+    "etag": "W/\"b7c518e8461791cf6e7273bc2d54748f\"",
+    "lastModified": "Thu, 18 Jun 2026 23:09:15 GMT",
+    "size": 29584,
+    "updatedAt": "2026-06-19T00:52:40.616Z"
   },
   "codex-docs/cloud.md": {
     "url": "https://developers.openai.com/codex/cloud.md",
@@ -10394,18 +10394,18 @@
   "codex-docs/config-reference.md": {
     "url": "https://developers.openai.com/codex/config-reference.md",
     "skill": "codex-docs",
-    "etag": "W/\"16280790dd79583af6be14f68495bc9b\"",
-    "lastModified": "Tue, 16 Jun 2026 20:59:29 GMT",
-    "size": 71145,
-    "updatedAt": "2026-06-17T00:51:34.046Z"
+    "etag": "W/\"a346b0c43f9e69e0e28f8b36bf2d4de2\"",
+    "lastModified": "Thu, 18 Jun 2026 22:38:40 GMT",
+    "size": 73639,
+    "updatedAt": "2026-06-19T00:52:43.157Z"
   },
   "codex-docs/config-sample.md": {
     "url": "https://developers.openai.com/codex/config-sample.md",
     "skill": "codex-docs",
-    "etag": "W/\"0dd9aa833ad0f7561f5683cb2824bfde\"",
-    "lastModified": "Mon, 01 Jun 2026 23:06:41 GMT",
-    "size": 27576,
-    "updatedAt": "2026-06-02T00:46:31.027Z"
+    "etag": "W/\"d4b0f327eaef029f45cb09ece89decd1\"",
+    "lastModified": "Thu, 18 Jun 2026 22:38:40 GMT",
+    "size": 28349,
+    "updatedAt": "2026-06-19T00:52:43.377Z"
   },
   "codex-docs/custom-prompts.md": {
     "url": "https://developers.openai.com/codex/custom-prompts.md",
@@ -10442,10 +10442,10 @@
   "codex-docs/enterprise/managed-configuration.md": {
     "url": "https://developers.openai.com/codex/enterprise/managed-configuration.md",
     "skill": "codex-docs",
-    "etag": "W/\"124473ca154df5f77c16458b024931e0\"",
-    "lastModified": "Wed, 17 Jun 2026 21:36:37 GMT",
-    "size": 22742,
-    "updatedAt": "2026-06-18T00:51:23.347Z"
+    "etag": "W/\"43f2676d25dbc5bb40347acaff3bc2f0\"",
+    "lastModified": "Thu, 18 Jun 2026 22:39:29 GMT",
+    "size": 22743,
+    "updatedAt": "2026-06-19T00:52:44.514Z"
   },
   "codex-docs/environment-variables.md": {
     "url": "https://developers.openai.com/codex/environment-variables.md",
@@ -10642,10 +10642,10 @@
   "codex-docs/plugins.md": {
     "url": "https://developers.openai.com/codex/plugins.md",
     "skill": "codex-docs",
-    "etag": "W/\"654446ed6c92f5b636077d0f462ebda4\"",
-    "lastModified": "Wed, 03 Jun 2026 00:06:07 GMT",
-    "size": 6018,
-    "updatedAt": "2026-06-03T00:51:20.605Z"
+    "etag": "W/\"6722a614558b247e78ba8b21e2e87258\"",
+    "lastModified": "Thu, 18 Jun 2026 23:26:05 GMT",
+    "size": 6166,
+    "updatedAt": "2026-06-19T00:52:50.171Z"
   },
   "codex-docs/plugins/build.md": {
     "url": "https://developers.openai.com/codex/plugins/build.md",
@@ -10658,10 +10658,10 @@
   "codex-docs/pricing.md": {
     "url": "https://developers.openai.com/codex/pricing.md",
     "skill": "codex-docs",
-    "etag": "W/\"22187c3dc1318db3a0f1a1710b9f0e30\"",
-    "lastModified": "Sat, 13 Jun 2026 00:21:21 GMT",
-    "size": 47963,
-    "updatedAt": "2026-06-13T00:51:41.717Z"
+    "etag": "W/\"9f2c957aec9d59c6d97f4322d2e7787f\"",
+    "lastModified": "Thu, 18 Jun 2026 22:55:43 GMT",
+    "size": 48366,
+    "updatedAt": "2026-06-19T00:52:50.615Z"
   },
   "codex-docs/prompting.md": {
     "url": "https://developers.openai.com/codex/prompting.md",
@@ -10678,6 +10678,14 @@
     "lastModified": "Wed, 03 Jun 2026 00:14:00 GMT",
     "size": 19419,
     "updatedAt": "2026-06-03T00:51:21.556Z"
+  },
+  "codex-docs/record-and-replay.md": {
+    "url": "https://developers.openai.com/codex/record-and-replay.md",
+    "skill": "codex-docs",
+    "etag": "W/\"2522b603d66ca8fae8e0117c36e333c6\"",
+    "lastModified": "Thu, 18 Jun 2026 23:26:05 GMT",
+    "size": 3405,
+    "updatedAt": "2026-06-19T00:52:51.270Z"
   },
   "codex-docs/remote-connections.md": {
     "url": "https://developers.openai.com/codex/remote-connections.md",
@@ -10706,10 +10714,10 @@
   "codex-docs/security.md": {
     "url": "https://developers.openai.com/codex/security.md",
     "skill": "codex-docs",
-    "etag": "W/\"218e018b44574023775e5933b5ef9087\"",
-    "lastModified": "Thu, 28 May 2026 19:48:32 GMT",
-    "size": 2895,
-    "updatedAt": "2026-05-29T00:44:50.877Z"
+    "etag": "W/\"c03986bcf5ee011fa90243e9991fb3e1\"",
+    "lastModified": "Thu, 18 Jun 2026 23:26:05 GMT",
+    "size": 3394,
+    "updatedAt": "2026-06-19T00:52:52.149Z"
   },
   "codex-docs/security/faq.md": {
     "url": "https://developers.openai.com/codex/security/faq.md",
@@ -10722,10 +10730,66 @@
   "codex-docs/security/plugin.md": {
     "url": "https://developers.openai.com/codex/security/plugin.md",
     "skill": "codex-docs",
-    "etag": "W/\"8f0410d2820d9bcc392573bae4df23ec\"",
-    "lastModified": "Thu, 28 May 2026 22:40:37 GMT",
-    "size": 6054,
-    "updatedAt": "2026-05-29T00:44:51.327Z"
+    "etag": "W/\"eebfa7869fbcb0030002e300c22aa03e\"",
+    "lastModified": "Thu, 18 Jun 2026 23:26:05 GMT",
+    "size": 5305,
+    "updatedAt": "2026-06-19T00:52:52.605Z"
+  },
+  "codex-docs/security/plugin/changelog.md": {
+    "url": "https://developers.openai.com/codex/security/plugin/changelog.md",
+    "skill": "codex-docs",
+    "etag": "W/\"9d067882dc1ab93feab754c97e02816e\"",
+    "lastModified": "Thu, 18 Jun 2026 23:26:05 GMT",
+    "size": 2161,
+    "updatedAt": "2026-06-19T00:52:52.932Z"
+  },
+  "codex-docs/security/plugin/code-changes.md": {
+    "url": "https://developers.openai.com/codex/security/plugin/code-changes.md",
+    "skill": "codex-docs",
+    "etag": "W/\"f3b8f6107f1e8ce8ceae56894a3ecaa5\"",
+    "lastModified": "Thu, 18 Jun 2026 23:26:05 GMT",
+    "size": 5904,
+    "updatedAt": "2026-06-19T00:52:53.164Z"
+  },
+  "codex-docs/security/plugin/deep-scans.md": {
+    "url": "https://developers.openai.com/codex/security/plugin/deep-scans.md",
+    "skill": "codex-docs",
+    "etag": "W/\"16725e711e08c5a09e1c911626b7fdc9\"",
+    "lastModified": "Thu, 18 Jun 2026 23:26:05 GMT",
+    "size": 3227,
+    "updatedAt": "2026-06-19T00:52:53.390Z"
+  },
+  "codex-docs/security/plugin/export-findings.md": {
+    "url": "https://developers.openai.com/codex/security/plugin/export-findings.md",
+    "skill": "codex-docs",
+    "etag": "W/\"3f391f036b07520b20d0d4111a10a40b\"",
+    "lastModified": "Thu, 18 Jun 2026 23:26:05 GMT",
+    "size": 5694,
+    "updatedAt": "2026-06-19T00:52:53.630Z"
+  },
+  "codex-docs/security/plugin/fix-findings.md": {
+    "url": "https://developers.openai.com/codex/security/plugin/fix-findings.md",
+    "skill": "codex-docs",
+    "etag": "W/\"96402eac7b931f79766196ab0ea9deee\"",
+    "lastModified": "Thu, 18 Jun 2026 23:26:05 GMT",
+    "size": 4915,
+    "updatedAt": "2026-06-19T00:52:53.852Z"
+  },
+  "codex-docs/security/plugin/scans.md": {
+    "url": "https://developers.openai.com/codex/security/plugin/scans.md",
+    "skill": "codex-docs",
+    "etag": "W/\"9e95aa56f8b0fd152df8aff8696caffb\"",
+    "lastModified": "Thu, 18 Jun 2026 23:26:05 GMT",
+    "size": 4861,
+    "updatedAt": "2026-06-19T00:52:54.082Z"
+  },
+  "codex-docs/security/plugin/triage-backlog.md": {
+    "url": "https://developers.openai.com/codex/security/plugin/triage-backlog.md",
+    "skill": "codex-docs",
+    "etag": "W/\"ec52d64b346f178b89a11d89d537eac8\"",
+    "lastModified": "Thu, 18 Jun 2026 23:26:05 GMT",
+    "size": 10917,
+    "updatedAt": "2026-06-19T00:52:54.317Z"
   },
   "codex-docs/security/setup.md": {
     "url": "https://developers.openai.com/codex/security/setup.md",
@@ -10754,10 +10818,10 @@
   "codex-docs/skills.md": {
     "url": "https://developers.openai.com/codex/skills.md",
     "skill": "codex-docs",
-    "etag": "W/\"8f2b17196541f261e81a4035086ce5ad\"",
-    "lastModified": "Sat, 25 Apr 2026 07:23:04 GMT",
-    "size": 9348,
-    "updatedAt": "2026-04-25T10:26:53.320Z"
+    "etag": "W/\"311a9220617af99f80fb0ac4441ba9f5\"",
+    "lastModified": "Thu, 18 Jun 2026 23:30:07 GMT",
+    "size": 9611,
+    "updatedAt": "2026-06-19T00:52:55.247Z"
   },
   "codex-docs/speed.md": {
     "url": "https://developers.openai.com/codex/speed.md",
@@ -10930,10 +10994,10 @@
   "codex-docs/use-cases/collections/security.md": {
     "url": "https://developers.openai.com/codex/use-cases/collections/security.md",
     "skill": "codex-docs",
-    "etag": "W/\"7aaa63dd6f7a0b65d21542862685fdb5\"",
-    "lastModified": "Fri, 05 Jun 2026 11:18:30 GMT",
-    "size": 1379,
-    "updatedAt": "2026-06-05T11:18:30.464Z"
+    "etag": "W/\"085944a204ba0b81fbeb820817340548\"",
+    "lastModified": "Thu, 18 Jun 2026 23:26:05 GMT",
+    "size": 1469,
+    "updatedAt": "2026-06-19T00:53:03.791Z"
   },
   "codex-docs/use-cases/collections/web-development.md": {
     "url": "https://developers.openai.com/codex/use-cases/collections/web-development.md",
@@ -10970,10 +11034,10 @@
   "codex-docs/use-cases/deep-security-scan.md": {
     "url": "https://developers.openai.com/codex/use-cases/deep-security-scan.md",
     "skill": "codex-docs",
-    "etag": "W/\"00abc08e413f9fd4a6d5e4ee63e0f9e4\"",
-    "lastModified": "Thu, 28 May 2026 22:40:46 GMT",
-    "size": 3572,
-    "updatedAt": "2026-05-29T00:44:59.980Z"
+    "etag": "W/\"4b467a97279630ab9c637000df4a9fef\"",
+    "lastModified": "Thu, 18 Jun 2026 23:26:05 GMT",
+    "size": 3787,
+    "updatedAt": "2026-06-19T00:53:05.079Z"
   },
   "codex-docs/use-cases/dependency-incident-audits.md": {
     "url": "https://developers.openai.com/codex/use-cases/dependency-incident-audits.md",
@@ -11218,10 +11282,10 @@
   "codex-docs/use-cases/remediate-vulnerability-backlog.md": {
     "url": "https://developers.openai.com/codex/use-cases/remediate-vulnerability-backlog.md",
     "skill": "codex-docs",
-    "etag": "W/\"516a7a206b62ff036d97aff104b402ad\"",
-    "lastModified": "Thu, 28 May 2026 22:40:56 GMT",
-    "size": 4543,
-    "updatedAt": "2026-05-29T00:45:07.223Z"
+    "etag": "W/\"549fbaebad37d36eecaf290ed2c002b3\"",
+    "lastModified": "Fri, 19 Jun 2026 00:53:13 GMT",
+    "size": 4736,
+    "updatedAt": "2026-06-19T00:53:13.948Z"
   },
   "codex-docs/use-cases/reusable-codex-skills.md": {
     "url": "https://developers.openai.com/codex/use-cases/reusable-codex-skills.md",
@@ -11234,10 +11298,10 @@
   "codex-docs/use-cases/scan-code-changes-for-security.md": {
     "url": "https://developers.openai.com/codex/use-cases/scan-code-changes-for-security.md",
     "skill": "codex-docs",
-    "etag": "W/\"5006eaadc8489eb79fa105a0d5039da7\"",
-    "lastModified": "Thu, 28 May 2026 22:40:56 GMT",
-    "size": 3514,
-    "updatedAt": "2026-05-29T00:45:07.727Z"
+    "etag": "W/\"f1dcc6db0f7ac76c3876b34672b1d131\"",
+    "lastModified": "Thu, 18 Jun 2026 23:26:05 GMT",
+    "size": 3583,
+    "updatedAt": "2026-06-19T00:53:14.480Z"
   },
   "codex-docs/use-cases/scrna-seq-post-count-qc.md": {
     "url": "https://developers.openai.com/codex/use-cases/scrna-seq-post-count-qc.md",

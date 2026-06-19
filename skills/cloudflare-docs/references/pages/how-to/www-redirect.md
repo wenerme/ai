@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -41,10 +41,7 @@ It may take a moment for this DNS change to propagate, but once complete, you ca
 Terminal window
 
 ```
-
 curl --head -i https://www.example.com/
-
-
 ```
 
 Then, inspect the output to verify that the `location` header and status code are being set as configured.

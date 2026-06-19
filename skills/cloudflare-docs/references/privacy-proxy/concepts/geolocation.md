@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/privacy-proxy/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -57,10 +57,7 @@ When a client connects to Privacy Proxy:
 The `sec-ch-geohash` header includes the geohash and country code:
 
 ```
-
 sec-ch-geohash: xn76c-JP
-
-
 ```
 
 The format is `<geohash>-<country_code>`. The country code helps resolve edge cases where geohashes span country borders.

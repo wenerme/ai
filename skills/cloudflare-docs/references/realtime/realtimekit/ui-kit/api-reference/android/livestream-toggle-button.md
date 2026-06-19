@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,16 +25,7 @@ A toggle button for starting or stopping a livestream.
 ### Basic Usage
 
 ```
-
-<com.cloudflare.realtimekit.ui.view.RtkLivestreamToggleButton
-
-    android:id="@+id/rtk_livestream_toggle"
-
-    android:layout_width="wrap_content"
-
-    android:layout_height="wrap_content" />
-
-
+<com.cloudflare.realtimekit.ui.view.RtkLivestreamToggleButton    android:id="@+id/rtk_livestream_toggle"    android:layout_width="wrap_content"    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
@@ -42,12 +33,7 @@ A toggle button for starting or stopping a livestream.
 Kotlin
 
 ```
-
-val livestreamToggle = findViewById<RtkLivestreamToggleButton>(R.id.rtk_livestream_toggle)
-
-livestreamToggle.activate(meeting)
-
-
+val livestreamToggle = findViewById<RtkLivestreamToggleButton>(R.id.rtk_livestream_toggle)livestreamToggle.activate(meeting)
 ```
 
 ```json

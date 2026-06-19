@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/smart-shield/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,8 +32,8 @@ After setup, you can monitor origin performance and cache effectiveness through 
 
 Pro, Business, and Enterprise customers have access to [Health Checks](https://developers.cloudflare.com/smart-shield/configuration/health-checks/) for monitoring origin availability across all packages.
 
-* [ Enterprise ](#tab-panel-10538)
-* [ Free / Pro / Business ](#tab-panel-10539)
+* [ Enterprise ](#tab-panel-10614)
+* [ Free / Pro / Business ](#tab-panel-10615)
 
 Enterprise customers have access to all Smart Shield packages, including Smart Shield Advanced.
 

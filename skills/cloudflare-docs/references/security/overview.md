@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,30 +29,30 @@ The Security overview page displays:
 **Security action items** shows you insights and recommendations related to misconfigurations, exposed infrastructure, and suspicious activity.
 
 * **Action item types**:  
-   * Suspicious activity  
-   * Security insight
+  * Suspicious activity
+  * Security insight
 * **Criticality**: Your action items are ranked by the highest criticality, showing critical first, moderate, and low respectively.
 * **Filters**: You can filter your action items by Criticality, Insight Type, and Security Category.  
-   * Criticality:  
-         * Low  
-         * Moderate  
-         * Critical  
-   * Insight Types:  
-         * Suspicious activity  
-         * Exposed infrastructure  
-         * Insecure configuration  
-         * Configuration suggestion  
-         * Compliance Violation  
-         * Email Security  
-         * Weak Authentication  
-   * Security Category:  
-         * Web application exploits  
-         * AI exploits  
-         * DDoS attacks  
-         * Bot traffic  
-         * API abuse  
-         * Client-side abuse  
-         * Fraud
+  * Criticality:  
+    * Low
+    * Moderate
+    * Critical
+  * Insight Types:  
+    * Suspicious activity
+    * Exposed infrastructure
+    * Insecure configuration
+    * Configuration suggestion
+    * Compliance Violation
+    * Email Security
+    * Weak Authentication
+  * Security Category:  
+    * Web application exploits
+    * AI exploits
+    * DDoS attacks
+    * Bot traffic
+    * API abuse
+    * Client-side abuse
+    * Fraud
 * **Review**: Review your security action items for more detailed information and recommended actions to resolve.
 * **Load more**: View the full list of security action items.
 

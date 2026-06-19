@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,97 +18,19 @@ Think supports tools that execute in the browser. The client sends serializable 
 
 For dynamic client-side tools, pass `tools` to `useAgentChat`. Tools with an `execute` function are registered with the server as client-executed tools:
 
-* [  JavaScript ](#tab-panel-5575)
-* [  TypeScript ](#tab-panel-5576)
+* [  JavaScript ](#tab-panel-5649)
+* [  TypeScript ](#tab-panel-5650)
 
 JavaScript
 
 ```
-
-const { messages, sendMessage } = useAgentChat({
-
-  agent,
-
-  tools: {
-
-    getUserTimezone: {
-
-      description: "Get the user's timezone from their browser",
-
-      parameters: {},
-
-      execute: async () => {
-
-        return Intl.DateTimeFormat().resolvedOptions().timeZone;
-
-      },
-
-    },
-
-    getClipboard: {
-
-      description: "Read text from the user's clipboard",
-
-      parameters: {},
-
-      execute: async () => {
-
-        return navigator.clipboard.readText();
-
-      },
-
-    },
-
-  },
-
-});
-
-
+const { messages, sendMessage } = useAgentChat({  agent,  tools: {    getUserTimezone: {      description: "Get the user's timezone from their browser",      parameters: {},      execute: async () => {        return Intl.DateTimeFormat().resolvedOptions().timeZone;      },    },    getClipboard: {      description: "Read text from the user's clipboard",      parameters: {},      execute: async () => {        return navigator.clipboard.readText();      },    },  },});
 ```
 
 TypeScript
 
 ```
-
-const { messages, sendMessage } = useAgentChat({
-
-  agent,
-
-  tools: {
-
-    getUserTimezone: {
-
-      description: "Get the user's timezone from their browser",
-
-      parameters: {},
-
-      execute: async () => {
-
-        return Intl.DateTimeFormat().resolvedOptions().timeZone;
-
-      },
-
-    },
-
-    getClipboard: {
-
-      description: "Read text from the user's clipboard",
-
-      parameters: {},
-
-      execute: async () => {
-
-        return navigator.clipboard.readText();
-
-      },
-
-    },
-
-  },
-
-});
-
-
+const { messages, sendMessage } = useAgentChat({  agent,  tools: {    getUserTimezone: {      description: "Get the user's timezone from their browser",      parameters: {},      execute: async () => {        return Intl.DateTimeFormat().resolvedOptions().timeZone;      },    },    getClipboard: {      description: "Read text from the user's clipboard",      parameters: {},      execute: async () => {        return navigator.clipboard.readText();      },    },  },});
 ```
 
 Client tools are tools without an `execute` function on the server — they only have a schema. When the LLM produces a tool call for one, Think routes it to the client.
@@ -119,77 +41,19 @@ For most apps, prefer defining tools on the server and using `onToolCall` for br
 
 When a parent agent delegates to a Think sub-agent over RPC with `chat()` (rather than the browser WebSocket), there is no WebSocket to carry `clientTools` or to send tool results back. Pass them through `ChatOptions` instead:
 
-* [  JavaScript ](#tab-panel-5571)
-* [  TypeScript ](#tab-panel-5572)
+* [  JavaScript ](#tab-panel-5645)
+* [  TypeScript ](#tab-panel-5646)
 
 JavaScript
 
 ```
-
-await child.chat(message, callback, {
-
-  signal,
-
-  clientTools: [
-
-    {
-
-      name: "get_user_timezone",
-
-      description: "Get the caller's timezone",
-
-      parameters: { type: "object" },
-
-    },
-
-  ],
-
-  onClientToolCall: async ({ toolName, input }) => {
-
-    // Run the client tool wherever the parent can — return its output.
-
-    return runClientTool(toolName, input);
-
-  },
-
-});
-
-
+await child.chat(message, callback, {  signal,  clientTools: [    {      name: "get_user_timezone",      description: "Get the caller's timezone",      parameters: { type: "object" },    },  ],  onClientToolCall: async ({ toolName, input }) => {    // Run the client tool wherever the parent can — return its output.    return runClientTool(toolName, input);  },});
 ```
 
 TypeScript
 
 ```
-
-await child.chat(message, callback, {
-
-  signal,
-
-  clientTools: [
-
-    {
-
-      name: "get_user_timezone",
-
-      description: "Get the caller's timezone",
-
-      parameters: { type: "object" },
-
-    },
-
-  ],
-
-  onClientToolCall: async ({ toolName, input }) => {
-
-    // Run the client tool wherever the parent can — return its output.
-
-    return runClientTool(toolName, input);
-
-  },
-
-});
-
-
+await child.chat(message, callback, {  signal,  clientTools: [    {      name: "get_user_timezone",      description: "Get the caller's timezone",      parameters: { type: "object" },    },  ],  onClientToolCall: async ({ toolName, input }) => {    // Run the client tool wherever the parent can — return its output.    return runClientTool(toolName, input);  },});
 ```
 
 * `clientTools` registers the tool schemas for the turn, exactly like the WebSocket `clientTools` field.
@@ -210,69 +74,19 @@ If you omit `onClientToolCall`, the tools are registered but have no result: the
 
 Handle browser-side tool execution on the client with `onToolCall`:
 
-* [  JavaScript ](#tab-panel-5573)
-* [  TypeScript ](#tab-panel-5574)
+* [  JavaScript ](#tab-panel-5647)
+* [  TypeScript ](#tab-panel-5648)
 
 JavaScript
 
 ```
-
-useAgentChat({
-
-  agent,
-
-  onToolCall: async ({ toolCall, addToolOutput }) => {
-
-    if (toolCall.toolName === "read") {
-
-      const result = await readFromBrowser(toolCall.input);
-
-      addToolOutput({
-
-        toolCallId: toolCall.toolCallId,
-
-        output: result,
-
-      });
-
-    }
-
-  },
-
-});
-
-
+useAgentChat({  agent,  onToolCall: async ({ toolCall, addToolOutput }) => {    if (toolCall.toolName === "read") {      const result = await readFromBrowser(toolCall.input);      addToolOutput({        toolCallId: toolCall.toolCallId,        output: result,      });    }  },});
 ```
 
 TypeScript
 
 ```
-
-useAgentChat({
-
-  agent,
-
-  onToolCall: async ({ toolCall, addToolOutput }) => {
-
-    if (toolCall.toolName === "read") {
-
-      const result = await readFromBrowser(toolCall.input);
-
-      addToolOutput({
-
-        toolCallId: toolCall.toolCallId,
-
-        output: result,
-
-      });
-
-    }
-
-  },
-
-});
-
-
+useAgentChat({  agent,  onToolCall: async ({ toolCall, addToolOutput }) => {    if (toolCall.toolName === "read") {      const result = await readFromBrowser(toolCall.input);      addToolOutput({        toolCallId: toolCall.toolCallId,        output: result,      });    }  },});
 ```
 
 ## Auto-continuation
@@ -299,53 +113,21 @@ The `messageConcurrency` property controls how overlapping user submits behave w
 | "drop"                                        | Ignore overlapping submits entirely. Messages are not persisted.                                                                    |
 | { strategy: "debounce", debounceMs?: number } | Trailing-edge latest with a quiet window (default 750ms).                                                                           |
 
-* [  JavaScript ](#tab-panel-5569)
-* [  TypeScript ](#tab-panel-5570)
+* [  JavaScript ](#tab-panel-5643)
+* [  TypeScript ](#tab-panel-5644)
 
 JavaScript
 
 ```
-
 import { Think } from "@cloudflare/think";
-
-
-export class SearchAgent extends Think {
-
-  messageConcurrency = "latest";
-
-  getModel() {
-
-    /* ... */
-
-  }
-
-}
-
-
+export class SearchAgent extends Think {  messageConcurrency = "latest";  getModel() {    /* ... */  }}
 ```
 
 TypeScript
 
 ```
-
-import { Think } from "@cloudflare/think";
-
-import type { MessageConcurrency } from "@cloudflare/think";
-
-
-export class SearchAgent extends Think<Env> {
-
-  override messageConcurrency: MessageConcurrency = "latest";
-
-  getModel() {
-
-    /* ... */
-
-  }
-
-}
-
-
+import { Think } from "@cloudflare/think";import type { MessageConcurrency } from "@cloudflare/think";
+export class SearchAgent extends Think<Env> {  override messageConcurrency: MessageConcurrency = "latest";  getModel() {    /* ... */  }}
 ```
 
 ## Multi-tab broadcast

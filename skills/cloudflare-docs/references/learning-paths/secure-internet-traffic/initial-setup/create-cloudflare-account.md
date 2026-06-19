@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,10 +16,11 @@ To create a new Cloudflare account:
 
 1. [Sign up ↗](https://dash.cloudflare.com/sign-up) on the Cloudflare dashboard.
 2. To secure your account, enable [two-factor authentication](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/).
-3. If you have a Cloudflare contact (Enterprise only), ask them to set up your account as a multi-user organization. Account members will need:  
-   * [**Access** permissions](https://developers.cloudflare.com/cloudflare-one/roles-permissions/) to read or edit applications and Access policies.  
-   * [**Gateway** permissions](https://developers.cloudflare.com/cloudflare-one/roles-permissions/) to read or edit Gateway policies.  
-   * [**PII** permissions](https://developers.cloudflare.com/cloudflare-one/roles-permissions/#cloudflare-zero-trust-pii) to view user information in Gateway activity logs.
+3. If you have a Cloudflare contact (Enterprise only), ask them to set up your account as a multi-user organization. Account members will need:
+
+  * [**Access** permissions](https://developers.cloudflare.com/cloudflare-one/roles-permissions/) to read or edit applications and Access policies.
+  * [**Gateway** permissions](https://developers.cloudflare.com/cloudflare-one/roles-permissions/) to read or edit Gateway policies.
+  * [**PII** permissions](https://developers.cloudflare.com/cloudflare-one/roles-permissions/#cloudflare-zero-trust-pii) to view user information in Gateway activity logs.
 
 ## Best practices
 

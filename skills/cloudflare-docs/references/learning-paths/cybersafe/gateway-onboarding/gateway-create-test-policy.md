@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,8 +18,9 @@ To ensure a smooth deployment, we recommend testing a simple policy before deplo
 
 1. Go to **Traffic policies** \> **Firewall policies**.
 2. Create a policy to block all security categories:  
-| Selector            | Operator | Value                | Action |  
-| ------------------- | -------- | -------------------- | ------ |  
+
+| Selector            | Operator | Value                | Action |
+| ------------------- | -------- | -------------------- | ------ |
 | Security Categories | in       | _All security risks_ | Block  |
 3. In the browser, go to `malware.testcategory.com`. You should see a generic Gateway block page.
 4. In **Logs** \> **Gateway** \> **DNS**, verify that you see the blocked domain.

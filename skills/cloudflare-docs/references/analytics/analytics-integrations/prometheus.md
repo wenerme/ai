@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -49,18 +49,7 @@ After deployment, configure `CLOUDFLARE_API_TOKEN` as a secret. Optionally confi
 Terminal window
 
 ```
-
-git clone https://github.com/cloudflare/cloudflare-prometheus-exporter.git
-
-cd cloudflare-prometheus-exporter
-
-bun install
-
-wrangler secret put CLOUDFLARE_API_TOKEN
-
-bun run deploy
-
-
+git clone https://github.com/cloudflare/cloudflare-prometheus-exporter.gitcd cloudflare-prometheus-exporterbun installwrangler secret put CLOUDFLARE_API_TOKENbun run deploy
 ```
 
 ## Task 2 - Create an API token
@@ -87,20 +76,7 @@ Add the exporter as a scrape target in your Prometheus configuration:
 YAML
 
 ```
-
-scrape_configs:
-
-  - job_name: 'cloudflare'
-
-    scrape_interval: 60s
-
-    scrape_timeout: 30s
-
-    static_configs:
-
-      - targets: ['your-worker.your-subdomain.workers.dev']
-
-
+scrape_configs:  - job_name: 'cloudflare'    scrape_interval: 60s    scrape_timeout: 30s    static_configs:      - targets: ['your-worker.your-subdomain.workers.dev']
 ```
 
 ### With Basic Auth
@@ -110,26 +86,7 @@ If you configured Basic Auth on the exporter, update your Prometheus configurati
 YAML
 
 ```
-
-scrape_configs:
-
-  - job_name: 'cloudflare'
-
-    scrape_interval: 60s
-
-    scrape_timeout: 30s
-
-    basic_auth:
-
-      username: 'your-username'
-
-      password: 'your-password'
-
-    static_configs:
-
-      - targets: ['your-worker.your-subdomain.workers.dev']
-
-
+scrape_configs:  - job_name: 'cloudflare'    scrape_interval: 60s    scrape_timeout: 30s    basic_auth:      username: 'your-username'      password: 'your-password'    static_configs:      - targets: ['your-worker.your-subdomain.workers.dev']
 ```
 
 ## Configuration

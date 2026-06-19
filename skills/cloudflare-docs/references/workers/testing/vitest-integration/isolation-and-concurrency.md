@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -47,41 +47,19 @@ However, if you use Node.js globals that are not supported by the runtime, your 
 
 The Wrangler configuration file does not specify either `nodejs_compat` or `nodejs_compat_v2`:
 
-* [  wrangler.jsonc ](#tab-panel-12159)
-* [  wrangler.toml ](#tab-panel-12160)
+* [  wrangler.jsonc ](#tab-panel-12176)
+* [  wrangler.toml ](#tab-panel-12177)
 
 JSONC
 
 ```
-
-{ "name": "test",
-
-  "main": "src/index.ts",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17"
-
-  # no nodejs_compat flags here
-
-}
-
-
+{ "name": "test",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-19"  # no nodejs_compat flags here}
 ```
 
 TOML
 
 ```
-
-name = "test"
-
-main = "src/index.ts"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
+name = "test"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-19"
 ```
 
 In our `src/index.ts` file, we use the `process` object, which is a Node.js global, unavailable in the Workerd runtime:
@@ -89,20 +67,7 @@ In our `src/index.ts` file, we use the `process` object, which is a Node.js glob
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    process.env.TEST = "test";
-
-    return new Response(process.env.TEST);
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export default {  async fetch(request, env, ctx): Promise<Response> {    process.env.TEST = "test";    return new Response(process.env.TEST);  },} satisfies ExportedHandler<Env>;
 ```
 
 The test is a simple assertion that the Worker managed to use `process`.
@@ -110,32 +75,14 @@ The test is a simple assertion that the Worker managed to use `process`.
 TypeScript
 
 ```
-
-it('responds with "test"', async () => {
-
-  const response = await exports.default.fetch("https://example.com/");
-
-  expect(await response.text()).toMatchInlineSnapshot(`"test"`);
-
-});
-
-
+it('responds with "test"', async () => {  const response = await exports.default.fetch("https://example.com/");  expect(await response.text()).toMatchInlineSnapshot(`"test"`);});
 ```
 
 Now, if we run `npm run test`, we see that the tests will _pass_:
 
 ```
-
- ✓ test/index.spec.ts (1)
-
-   ✓ responds with "test"
-
-
- Test Files  1 passed (1)
-
-      Tests  1 passed (1)
-
-
+ ✓ test/index.spec.ts (1)   ✓ responds with "test"
+ Test Files  1 passed (1)      Tests  1 passed (1)
 ```
 
 And we can run `wrangler dev` and `wrangler deploy` without issues. It _looks like_ our code is fine. However, this code will fail in production as `process` is not available in the Workerd runtime.

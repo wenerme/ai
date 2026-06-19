@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,9 +27,9 @@ Not all data centers are relevant to you at all times. You can refer to the **Tr
 1. Log in to [Cloudflare One](https://one.dash.cloudflare.com/) and go to **Insights**.
 2. Go to **Network health** \> **WAN connector health**.
 3. In this view you can access a list of your tunnels and their current health status. You can also check the amount of health checks passed in the last hour as well as traffic volume for each tunnel.
-4. Find the tunnel you want to inspect, select the three dots next to it, and choose:  
-   * **Create alert**: Opens the [notifications wizard](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/common-settings/configure-tunnel-health-alerts/) so you can create specific alerts for that tunnel when specific conditions are met.  
-   * **Network Analytics**: Opens the Analytics section of the dash, prefiltered with the tunnel you want to inspect.
+4. Find the tunnel you want to inspect, select the three dots next to it, and choose:
+  * **Create alert**: Opens the [notifications wizard](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/common-settings/configure-tunnel-health-alerts/) so you can create specific alerts for that tunnel when specific conditions are met.
+  * **Network Analytics**: Opens the Analytics section of the dash, prefiltered with the tunnel you want to inspect.
 5. Alternatively, from the list of tunnels, select the tunnel you want to inspect to access details about it.
 
 ## Check tunnel health for a specific tunnel
@@ -43,9 +43,9 @@ You can drill down into a specific tunnel to check its health status and other i
 The next view displays detailed information about the tunnel, including:
 
 * Status information  
-   * Up: More than 80% of health checks pass.  
-   * Degraded: More than 40% of health checks pass.  
-   * Down: Less than 40% of health checks pass.
+  * Up: More than 80% of health checks pass.
+  * Degraded: More than 40% of health checks pass.
+  * Down: Less than 40% of health checks pass.
 * Health checks passed in the last hour
 * Traffic volume in the last hour
 

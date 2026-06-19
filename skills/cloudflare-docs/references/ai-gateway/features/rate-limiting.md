@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,8 +28,8 @@ When your requests exceed the allowed rate, you will encounter rate limiting. Th
 
 ## Default configuration
 
-* [ Dashboard ](#tab-panel-6544)
-* [ API ](#tab-panel-6545)
+* [ Dashboard ](#tab-panel-6618)
+* [ API ](#tab-panel-6619)
 
 To set the default rate limiting configuration in the dashboard:
 

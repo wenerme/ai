@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,18 +17,7 @@ Handlers are methods on Workers that can receive and process external inputs, an
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    return new Response('Hello World!');
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    return new Response('Hello World!');  },};
 ```
 
 The following handlers are available within Workers:

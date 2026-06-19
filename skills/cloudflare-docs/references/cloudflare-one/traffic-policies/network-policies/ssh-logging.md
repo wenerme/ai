@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -36,10 +36,7 @@ For testing purposes, you can run the following command to generate a Unix user 
 Terminal window
 
 ```
-
 sudo adduser jdoe
-
-
 ```
 
 Advanced setup: Differing usernames
@@ -57,14 +54,7 @@ If you would like to use short-lived certificates with the browser-based termina
 To allow `jdoe@example.com` to log in as the user `johndoe`, add the following to the server's `/etc/ssh/sshd_config`:
 
 ```
-
-Match user johndoe
-
-  AuthorizedPrincipalsCommand /bin/echo 'jdoe'
-
-  AuthorizedPrincipalsCommandUser nobody
-
-
+Match user johndoe  AuthorizedPrincipalsCommand /bin/echo 'jdoe'  AuthorizedPrincipalsCommandUser nobody
 ```
 
 This tells the SSH server that, when someone tries to authenticate as the user `johndoe`, check their certificate for the principal `jdoe`. This would allow the user `jdoe@example.com` to sign into the server with a command such as:
@@ -72,10 +62,7 @@ This tells the SSH server that, when someone tries to authenticate as the user `
 Terminal window
 
 ```
-
 ssh johndoe@server
-
-
 ```
 
 **Username matches multiple emails**
@@ -83,25 +70,13 @@ ssh johndoe@server
 To allow multiple email addresses to log in as `vmuser`, add the following to the server's `/etc/ssh/sshd_config`:
 
 ```
-
-Match user vmuser
-
-  AuthorizedPrincipalsFile /etc/ssh/vmusers-list.txt
-
-
+Match user vmuser  AuthorizedPrincipalsFile /etc/ssh/vmusers-list.txt
 ```
 
 This tells the SSH server to load a list of principles from a file. Then, in `/etc/ssh/vmusers-list.txt`, list the email prefixes that can log in as `vmuser`, one per line:
 
 ```
-
-jdoe
-
-bwayne
-
-robin
-
-
+jdoebwaynerobin
 ```
 
 **Username matches all users**
@@ -109,14 +84,7 @@ robin
 To allow any Access user to log in as `vmuser`, add the following command to the server's `/etc/ssh/sshd_config`:
 
 ```
-
-Match user vmuser
-
-  AuthorizedPrincipalsCommand /bin/bash -c "echo '%t %k' | ssh-keygen -L -f - | grep -A1 Principals"
-
-  AuthorizedPrincipalsCommandUser nobody
-
-
+Match user vmuser  AuthorizedPrincipalsCommand /bin/bash -c "echo '%t %k' | ssh-keygen -L -f - | grep -A1 Principals"  AuthorizedPrincipalsCommandUser nobody
 ```
 
 This command takes the certificate presented by the user and authorizes whatever principal is listed on it.
@@ -126,12 +94,7 @@ This command takes the certificate presented by the user and authorizes whatever
 To allow any Access user to log in with any username, add the following to the server's `/etc/ssh/sshd_config`:
 
 ```
-
-AuthorizedPrincipalsCommand /bin/bash -c "echo '%t %k' | ssh-keygen -L -f - | grep -A1 Principals"
-
-AuthorizedPrincipalsCommandUser nobody
-
-
+AuthorizedPrincipalsCommand /bin/bash -c "echo '%t %k' | ssh-keygen -L -f - | grep -A1 Principals"AuthorizedPrincipalsCommandUser nobody
 ```
 
 Since this will put the security of your server entirely dependent on your Access configuration, make sure your [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/) are correctly configured.
@@ -146,8 +109,8 @@ Other short-lived CAs, such as those used to [secure SSH servers behind Cloudfla
 
 To generate a Gateway SSH proxy CA and get its public key:
 
-* [ Dashboard ](#tab-panel-7686)
-* [ API ](#tab-panel-7687)
+* [ Dashboard ](#tab-panel-7762)
+* [ API ](#tab-panel-7763)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Service credentials** \> **SSH**.
 2. Select **Add a certificate**.
@@ -155,49 +118,36 @@ To generate a Gateway SSH proxy CA and get its public key:
 4. Select the **SSH with Access for Infrastructure** certificate.
 5. Copy its **CA public key**. You can return to copy this public key at any time.
 
-1. [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:  
-| Type    | Item                 | Permission |  
-| ------- | -------------------- | ---------- |  
+1. [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:
+
+| Type    | Item                 | Permission |
+| ------- | -------------------- | ---------- |
 | Account | Access: SSH Auditing | Edit       |
 2. If you have not yet generated a Cloudflare SSH CA, make a `POST` request to the Cloudflare API:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Access: SSH Auditing Write`
 
 Add a new SSH Certificate Authority (CA)
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/gateway_ca" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/gateway_ca" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 1. If you have already created a Cloudflare SSH CA or receive the error message `access.api.error.gateway_ca_already_exists`, make a `GET` request instead:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Access: SSH Auditing Write`
 * `Access: SSH Auditing Read`
 
 List SSH Certificate Authorities (CA)
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/gateway_ca" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/gateway_ca" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 1. Copy the `public_key` value returned in the response.
@@ -223,8 +173,7 @@ The `ca.pub` file can hold multiple keys, listed one per line. Empty lines and c
 4. Save the `ca.pub` file. In some systems, you may need to use the following command to force the file to save depending on your permissions:  
 Terminal window  
 ```  
-:w !sudo tee %  
-:q!  
+:w !sudo tee %:q!  
 ```
 
 ## 4\. Modify your `sshd_config` file
@@ -238,8 +187,7 @@ Terminal window
 ```
 2. Press `i` to enter insert mode, then add the following lines at the top of the file, above all other directives:  
 ```  
-PubkeyAuthentication yes  
-TrustedUserCAKeys /etc/ssh/ca.pub  
+PubkeyAuthentication yesTrustedUserCAKeys /etc/ssh/ca.pub  
 ```  
 Be aware of your include statements  
 If there are any include statements below these lines, the configurations in those files will not take precedence.
@@ -252,28 +200,22 @@ Cloudflare's SSH proxy only works with servers running on the default port 22\. 
 Terminal window
 
 ```
-
 cat /etc/ssh/sshd_config
-
-
 ```
 
 ## 6\. Restart your SSH server
 
 Once you have modified your `sshd` configuration, reload the SSH service on the remote machine for the changes to take effect.
 
-* [ Debian/Ubuntu ](#tab-panel-7684)
-* [ CentOS/RHEL ](#tab-panel-7685)
+* [ Debian/Ubuntu ](#tab-panel-7760)
+* [ CentOS/RHEL ](#tab-panel-7761)
 
 For Debian/Ubuntu:
 
 Terminal window
 
 ```
-
 sudo systemctl reload ssh
-
-
 ```
 
 For CentOS/RHEL 7 and newer:
@@ -281,10 +223,7 @@ For CentOS/RHEL 7 and newer:
 Terminal window
 
 ```
-
 sudo systemctl reload sshd
-
-
 ```
 
 ## 7\. Create an Audit SSH policy
@@ -307,10 +246,7 @@ Users must specify their desired username to connect with as part of the SSH com
 Terminal window
 
 ```
-
 ssh <username>@<hostname>
-
-
 ```
 
 Note
@@ -320,10 +256,7 @@ If the target resource is already in a user's `.ssh/known_hosts` file, the user 
 Terminal window
 
 ```
-
 ssh-keygen -R <targetIP or hostname>
-
-
 ```
 
 ## (Optional) Configure SSH Command Logging
@@ -334,8 +267,7 @@ To log SSH commands, you will need to generate an HPKE key pair and upload the p
 2. Using the `ssh-log-cli` utility, generate a public and private key pair.  
 Terminal window  
 ```  
-./ssh-log-cli generate-key-pair -o sshkey  
-ls  
+./ssh-log-cli generate-key-pair -o sshkeyls  
 ```  
 ```  
 README.md    ssh-log-cli    sshkey    sshkey.pub  

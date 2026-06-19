@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -24,10 +24,10 @@ You can monitor your Neuron usage in the [Cloudflare Workers AI dashboard ↗](h
 
 All limits reset daily at 00:00 UTC. If you exceed any one of the above limits, further operations will fail with an error.
 
-| Free  allocation | Pricing                |                               |
-| ---------------- | ---------------------- | ----------------------------- |
-| Workers Free     | 10,000 Neurons per day | N/A - Upgrade to Workers Paid |
-| Workers Paid     | 10,000 Neurons per day | $0.011 / 1,000 Neurons        |
+|              | Free  allocation       | Pricing                       |
+| ------------ | ---------------------- | ----------------------------- |
+| Workers Free | 10,000 Neurons per day | N/A - Upgrade to Workers Paid |
+| Workers Paid | 10,000 Neurons per day | $0.011 / 1,000 Neurons        |
 
 ## What are Neurons?
 

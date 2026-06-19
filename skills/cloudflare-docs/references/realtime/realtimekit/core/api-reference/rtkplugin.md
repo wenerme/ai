@@ -5,7 +5,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,30 +16,25 @@ The RTKPlugin module represents a single plugin in the meeting. A plugin can be 
 TypeScript
 
 ```
-
-const plugin1 = meeting.plugins.active.get(pluginId);
-
-const plugin2 = meeting.plugins.all.get(pluginId);
-
-
+const plugin1 = meeting.plugins.active.get(pluginId);const plugin2 = meeting.plugins.all.get(pluginId);
 ```
 
 * [RTKPlugin](#module%5FRTKPlugin)  
-   * [module.exports](#exp%5Fmodule%5FRTKPlugin--module.exports) ⏏  
-         * [new module.exports(context, plugin, pluginSocketHandler, self, participants, chat, meetingTitle)](#new%5Fmodule%5FRTKPlugin--module.exports%5Fnew)  
-         * [.telemetry](#module%5FRTKPlugin--module.exports+telemetry)  
-         * [.sendIframeEvent(message)](#module%5FRTKPlugin--module.exports+sendIframeEvent)  
-         * [.handleIframeMessage(iframeMessage)](#module%5FRTKPlugin--module.exports+handleIframeMessage)  
-         * [.sendData(payload)](#module%5FRTKPlugin--module.exports+sendData)  
-         * [.removeRTKPluginView(viewId)](#module%5FRTKPlugin--module.exports+removeRTKPluginView)  
-         * [.addRTKPluginView(iframe, viewId)](#module%5FRTKPlugin--module.exports+addRTKPluginView)  
-         * [.setActive(active)](#module%5FRTKPlugin--module.exports+setActive)  
-         * [.activateForSelf()](#module%5FRTKPlugin--module.exports+activateForSelf)  
-         * [.deactivateForSelf()](#module%5FRTKPlugin--module.exports+deactivateForSelf)  
-         * ~~[.enable()](#module%5FRTKPlugin--module.exports+enable)~~  
-         * ~~[.disable()](#module%5FRTKPlugin--module.exports+disable)~~  
-         * [.activate()](#module%5FRTKPlugin--module.exports+activate)  
-         * [.deactivate()](#module%5FRTKPlugin--module.exports+deactivate)
+  * [module.exports](#exp%5Fmodule%5FRTKPlugin--module.exports) ⏏  
+    * [new module.exports(context, plugin, pluginSocketHandler, self, participants, chat, meetingTitle)](#new%5Fmodule%5FRTKPlugin--module.exports%5Fnew)
+    * [.telemetry](#module%5FRTKPlugin--module.exports+telemetry)
+    * [.sendIframeEvent(message)](#module%5FRTKPlugin--module.exports+sendIframeEvent)
+    * [.handleIframeMessage(iframeMessage)](#module%5FRTKPlugin--module.exports+handleIframeMessage)
+    * [.sendData(payload)](#module%5FRTKPlugin--module.exports+sendData)
+    * [.removeRTKPluginView(viewId)](#module%5FRTKPlugin--module.exports+removeRTKPluginView)
+    * [.addRTKPluginView(iframe, viewId)](#module%5FRTKPlugin--module.exports+addRTKPluginView)
+    * [.setActive(active)](#module%5FRTKPlugin--module.exports+setActive)
+    * [.activateForSelf()](#module%5FRTKPlugin--module.exports+activateForSelf)
+    * [.deactivateForSelf()](#module%5FRTKPlugin--module.exports+deactivateForSelf)
+    * ~~[.enable()](#module%5FRTKPlugin--module.exports+enable)~~
+    * ~~[.disable()](#module%5FRTKPlugin--module.exports+disable)~~
+    * [.activate()](#module%5FRTKPlugin--module.exports+activate)
+    * [.deactivate()](#module%5FRTKPlugin--module.exports+deactivate)
 
 ### module.exports ⏏
 
@@ -105,10 +100,10 @@ This method adds the communication layer between the plugin inside the iframe an
 
 **Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKPlugin--module.exports)
 
-| Param  | Type                                    | Default                                | Description                                                        |
-| ------ | --------------------------------------- | -------------------------------------- | ------------------------------------------------------------------ |
-| iframe | HTMLIFrameElement \| ReactNativeWebView | Iframe element to display this plugin. |                                                                    |
-| viewId | string                                  | "default"                              | ID of the view corresponding to this iframe. Default is 'default'. |
+| Param  | Type                                    | Default   | Description                                                        |
+| ------ | --------------------------------------- | --------- | ------------------------------------------------------------------ |
+| iframe | HTMLIFrameElement \| ReactNativeWebView |           | Iframe element to display this plugin.                             |
+| viewId | string                                  | "default" | ID of the view corresponding to this iframe. Default is 'default'. |
 
 #### module.exports.setActive(active)
 

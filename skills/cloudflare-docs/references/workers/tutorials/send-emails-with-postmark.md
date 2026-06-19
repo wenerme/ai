@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,10 +37,7 @@ Start by using [C3](https://developers.cloudflare.com/pages/get-started/c3/) to 
 Terminal window
 
 ```
-
 npm create cloudflare@latest
-
-
 ```
 
 Alternatively, you can use CLI arguments to speed things up:
@@ -48,10 +45,7 @@ Alternatively, you can use CLI arguments to speed things up:
 Terminal window
 
 ```
-
 npm create cloudflare@latest email-with-postmark -- --type=hello-world --ts=false --git=true --deploy=false
-
-
 ```
 
 This creates a simple hello-world Worker having the following content:
@@ -59,18 +53,7 @@ This creates a simple hello-world Worker having the following content:
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    return new Response("Hello World!");
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    return new Response("Hello World!");  },};
 ```
 
 ## Add your domain to Postmark
@@ -102,42 +85,7 @@ Note
 [Postmark’s JavaScript library ↗](https://www.npmjs.com/package/postmark) is currently not supported on Workers. Use the [email API ↗](https://postmarkapp.com/developer/user-guide/send-email-with-api) instead.
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    return await fetch("https://api.postmarkapp.com/email", {
-
-      method: "POST",
-
-      headers: {
-
-        "Content-Type": "application/json",
-
-        "X-Postmark-Server-Token": "your_postmark_api_token_here",
-
-      },
-
-      body: JSON.stringify({
-
-        From: "hello@example.com",
-
-        To: "someone@example.com",
-
-        Subject: "Hello World",
-
-        HtmlBody: "<p>Hello from Workers</p>",
-
-      }),
-
-    });
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    return await fetch("https://api.postmarkapp.com/email", {      method: "POST",      headers: {        "Content-Type": "application/json",        "X-Postmark-Server-Token": "your_postmark_api_token_here",      },      body: JSON.stringify({        From: "hello@example.com",        To: "someone@example.com",        Subject: "Hello World",        HtmlBody: "<p>Hello from Workers</p>",      }),    });  },};
 ```
 
 To test your code locally, run the following command and navigate to [http://localhost:8787/ ↗](http://localhost:8787/) in a browser:
@@ -145,10 +93,7 @@ To test your code locally, run the following command and navigate to [http://loc
 Terminal window
 
 ```
-
 npm start
-
-
 ```
 
 Deploy your Worker with `npm run deploy`.
@@ -160,10 +105,7 @@ Sensitive information such as API keys and token should always be stored in secr
 To add secrets for local development, create a `.dev.vars` file which works exactly like a `.env` file:
 
 ```
-
 POSTMARK_API_TOKEN=your_postmark_api_token_here
-
-
 ```
 
 Also ensure the secret is added to your deployed worker by running:
@@ -171,51 +113,13 @@ Also ensure the secret is added to your deployed worker by running:
 Add secret to deployed Worker
 
 ```
-
 npx wrangler secret put POSTMARK_API_TOKEN
-
-
 ```
 
 The added secret can be accessed on via the `env` parameter passed to your Worker’s fetch event handler:
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    return await fetch("https://api.postmarkapp.com/email", {
-
-      method: "POST",
-
-      headers: {
-
-        "Content-Type": "application/json",
-
-        "X-Postmark-Server-Token": env.POSTMARK_API_TOKEN,
-
-      },
-
-      body: JSON.stringify({
-
-        From: "hello@example.com",
-
-        To: "someone@example.com",
-
-        Subject: "Hello World",
-
-        HtmlBody: "<p>Hello from Workers</p>",
-
-      }),
-
-    });
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    return await fetch("https://api.postmarkapp.com/email", {      method: "POST",      headers: {        "Content-Type": "application/json",        "X-Postmark-Server-Token": env.POSTMARK_API_TOKEN,      },      body: JSON.stringify({        From: "hello@example.com",        To: "someone@example.com",        Subject: "Hello World",        HtmlBody: "<p>Hello from Workers</p>",      }),    });  },};
 ```
 
 And finally, deploy this update with `npm run deploy`.

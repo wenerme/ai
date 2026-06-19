@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,50 +29,20 @@ To use AI Search with Workers, you must create an AI Search binding. You create 
 
 Access all instances within a [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/). You can get, create, list, and delete instances at runtime.
 
-* [  wrangler.jsonc ](#tab-panel-6608)
-* [  wrangler.toml ](#tab-panel-6609)
+* [  wrangler.jsonc ](#tab-panel-6682)
+* [  wrangler.toml ](#tab-panel-6683)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "compatibility_date": "2026-03-27",
-
-  "ai_search_namespaces": [
-
-    {
-
-      "binding": "AI_SEARCH",
-
-      "namespace": "my-namespace"
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "compatibility_date": "2026-03-27",  "ai_search_namespaces": [    {      "binding": "AI_SEARCH",      "namespace": "my-namespace"    }  ]}
 ```
 
 TOML
 
 ```
-
 compatibility_date = "2026-03-27"
-
-
-[[ai_search_namespaces]]
-
-binding = "AI_SEARCH"
-
-namespace = "my-namespace"
-
-
+[[ai_search_namespaces]]binding = "AI_SEARCH"namespace = "my-namespace"
 ```
 
 | Field     | Type    | Required | Description                                                                                                                                                                                                                   |
@@ -85,50 +55,20 @@ namespace = "my-namespace"
 
 Bind directly to a single instance in the `default` namespace. Use this when you know which instance you need at deploy time.
 
-* [  wrangler.jsonc ](#tab-panel-6610)
-* [  wrangler.toml ](#tab-panel-6611)
+* [  wrangler.jsonc ](#tab-panel-6684)
+* [  wrangler.toml ](#tab-panel-6685)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "compatibility_date": "2026-03-27",
-
-  "ai_search": [
-
-    {
-
-      "binding": "MY_SEARCH",
-
-      "instance_name": "my-instance"
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "compatibility_date": "2026-03-27",  "ai_search": [    {      "binding": "MY_SEARCH",      "instance_name": "my-instance"    }  ]}
 ```
 
 TOML
 
 ```
-
 compatibility_date = "2026-03-27"
-
-
-[[ai_search]]
-
-binding = "MY_SEARCH"
-
-instance_name = "my-instance"
-
-
+[[ai_search]]binding = "MY_SEARCH"instance_name = "my-instance"
 ```
 
 | Field          | Type    | Required | Description                                                                                          |
@@ -150,17 +90,8 @@ Search for relevant content chunks from your indexed data source. Returns scored
 TypeScript
 
 ```
-
 const instance = env.AI_SEARCH.get("my-instance");
-
-
-const results = await instance.search({
-
-  messages: [{ role: "user", content: "What is Cloudflare?" }],
-
-});
-
-
+const results = await instance.search({  messages: [{ role: "user", content: "What is Cloudflare?" }],});
 ```
 
 #### Parameters
@@ -169,10 +100,12 @@ const results = await instance.search({
 
 An array of message objects representing the conversation. Each message has a `role` and `content` field.
 
-* `role` ` string ` required  
-   * The role of the message sender. Valid values: `system`, `developer`, `user`, `assistant`, `tool`.
-* `content` ` string ` required  
-   * The content of the message.
+* `role` ` string ` required
+
+  * The role of the message sender. Valid values: `system`, `developer`, `user`, `assistant`, `tool`.
+* `content` ` string ` required
+
+  * The content of the message.
 
 ---
 
@@ -186,48 +119,70 @@ A simple text query string. Alternative to `messages`. Provide either `query` or
 
 Configuration options for the search operation.
 
-* `retrieval` ` object ` optional  
-   * `retrieval_type` ` string ` optional  
-         * The type of retrieval to perform. Valid values: `vector`, `keyword`, `hybrid`. Defaults to `hybrid`.  
-   * `match_threshold` ` number ` optional  
-         * The minimum match score required for a result to be considered a match. Must be between `0` and `1`. Defaults to `0.4`.  
-   * `max_num_results` ` integer ` optional  
-         * The maximum number of results to return. Must be between `1` and `50`. Defaults to `10`.  
-   * `filters` ` object ` optional  
-         * Filter search results based on metadata. Supports comparison filters (`eq`, `ne`, `gt`, `gte`, `lt`, `lte`) and compound filters (`and`, `or`). For more details, refer to [Metadata filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/).  
-   * `context_expansion` ` integer ` optional  
-         * The number of surrounding chunks to include for additional context. Must be between `0` and `3`. Defaults to `0`.  
-   * `fusion_method` ` string ` optional  
-         * Controls how vector and keyword scores are combined when using hybrid retrieval. Valid values: `rrf` (Reciprocal Rank Fusion), `max` (takes the maximum score). Defaults to the instance-level setting.  
-   * `keyword_match_mode` ` string ` optional  
-         * Controls how keyword (BM25) matching selects candidate documents. `and` requires all terms to match. `or` requires any term to match. Defaults to `and`.  
-   * `boost_by` ` array ` optional  
-         * Boost results by metadata fields. Maximum 3 items. Each item has:  
-                  * `field` ` string ` required \- The metadata field name to boost by (for example, `timestamp`). Maximum 64 characters.  
-                  * `direction` ` string ` optional \- The boost direction. Valid values: `asc`, `desc`, `exists`, `not_exists`. Defaults to `asc` for numeric fields and `exists` for text fields.  
-   * `metadata_only` ` boolean ` optional  
-         * Return only metadata for each chunk without the text content.  
-   * `return_on_failure` ` boolean ` optional  
-         * Whether to return partial results if some processing steps fail. Defaults to `true`.
-* `query_rewrite` ` object ` optional  
-   * `enabled` ` boolean ` optional  
-         * Rewrites the query to improve retrieval accuracy. Defaults to `false`.  
-   * `model` ` string ` optional  
-         * The model to use for query rewriting.  
-   * `rewrite_prompt` ` string ` optional  
-         * A custom prompt to guide query rewriting.
-* `reranking` ` object ` optional  
-   * `enabled` ` boolean ` optional  
-         * Reorders retrieved results based on semantic relevance using a reranking model. Defaults to `false`.  
-   * `model` ` string ` optional  
-         * The reranking model to use. Valid value: `@cf/baai/bge-reranker-base`.  
-   * `match_threshold` ` number ` optional  
-         * The minimum score for reranked results. Must be between `0` and `1`. Defaults to `0.4`.
-* `cache` ` object ` optional  
-   * `enabled` ` boolean ` optional  
-         * Override the instance-level cache setting for this request.  
-   * `cache_threshold` ` string ` optional  
-         * The similarity threshold for cache hits. Valid values: `super_strict_match`, `close_enough`, `flexible_friend`, `anything_goes`.
+* `retrieval` ` object ` optional
+
+  * `retrieval_type` ` string ` optional
+
+    * The type of retrieval to perform. Valid values: `vector`, `keyword`, `hybrid`. Defaults to `hybrid`.
+  * `match_threshold` ` number ` optional
+
+    * The minimum match score required for a result to be considered a match. Must be between `0` and `1`. Defaults to `0.4`.
+  * `max_num_results` ` integer ` optional
+
+    * The maximum number of results to return. Must be between `1` and `50`. Defaults to `10`.
+  * `filters` ` object ` optional
+
+    * Filter search results based on metadata. Supports comparison filters (`eq`, `ne`, `gt`, `gte`, `lt`, `lte`) and compound filters (`and`, `or`). For more details, refer to [Metadata filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/).
+  * `context_expansion` ` integer ` optional
+
+    * The number of surrounding chunks to include for additional context. Must be between `0` and `3`. Defaults to `0`.
+  * `fusion_method` ` string ` optional
+
+    * Controls how vector and keyword scores are combined when using hybrid retrieval. Valid values: `rrf` (Reciprocal Rank Fusion), `max` (takes the maximum score). Defaults to the instance-level setting.
+  * `keyword_match_mode` ` string ` optional
+
+    * Controls how keyword (BM25) matching selects candidate documents. `and` requires all terms to match. `or` requires any term to match. Defaults to `and`.
+  * `boost_by` ` array ` optional
+
+    * Boost results by metadata fields. Maximum 3 items. Each item has:  
+      * `field` ` string ` required \- The metadata field name to boost by (for example, `timestamp`). Maximum 64 characters.
+      * `direction` ` string ` optional \- The boost direction. Valid values: `asc`, `desc`, `exists`, `not_exists`. Defaults to `asc` for numeric fields and `exists` for text fields.
+  * `metadata_only` ` boolean ` optional
+
+    * Return only metadata for each chunk without the text content.
+  * `return_on_failure` ` boolean ` optional
+
+    * Whether to return partial results if some processing steps fail. Defaults to `true`.
+* `query_rewrite` ` object ` optional
+
+  * `enabled` ` boolean ` optional
+
+    * Rewrites the query to improve retrieval accuracy. Defaults to `false`.
+  * `model` ` string ` optional
+
+    * The model to use for query rewriting.
+  * `rewrite_prompt` ` string ` optional
+
+    * A custom prompt to guide query rewriting.
+* `reranking` ` object ` optional
+
+  * `enabled` ` boolean ` optional
+
+    * Reorders retrieved results based on semantic relevance using a reranking model. Defaults to `false`.
+  * `model` ` string ` optional
+
+    * The reranking model to use. Valid value: `@cf/baai/bge-reranker-base`.
+  * `match_threshold` ` number ` optional
+
+    * The minimum score for reranked results. Must be between `0` and `1`. Defaults to `0.4`.
+* `cache` ` object ` optional
+
+  * `enabled` ` boolean ` optional
+
+    * Override the instance-level cache setting for this request.
+  * `cache_threshold` ` string ` optional
+
+    * The similarity threshold for cache hits. Valid values: `super_strict_match`, `close_enough`, `flexible_friend`, `anything_goes`.
 
 #### Response
 
@@ -260,41 +215,8 @@ Generate chat completions using your AI Search instance as context. This method 
 TypeScript
 
 ```
-
 const instance = env.AI_SEARCH.get("my-instance");
-
-
-const response = await instance.chatCompletions({
-
-  messages: [
-
-    { role: "system", content: "You are a helpful documentation assistant." },
-
-    { role: "user", content: "What is Cloudflare?" },
-
-  ],
-
-  model: "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-
-  ai_search_options: {
-
-    retrieval: {
-
-      max_num_results: 5,
-
-    },
-
-    query_rewrite: {
-
-      enabled: true,
-
-    },
-
-  },
-
-});
-
-
+const response = await instance.chatCompletions({  messages: [    { role: "system", content: "You are a helpful documentation assistant." },    { role: "user", content: "What is Cloudflare?" },  ],  model: "@cf/meta/llama-3.3-70b-instruct-fp8-fast",  ai_search_options: {    retrieval: {      max_num_results: 5,    },    query_rewrite: {      enabled: true,    },  },});
 ```
 
 #### Stream responses
@@ -304,32 +226,9 @@ Set `stream: true` to receive responses as Server-Sent Events (SSE) as they are 
 TypeScript
 
 ```
-
 const instance = env.AI_SEARCH.get("my-instance");
-
-
-const stream = await instance.chatCompletions({
-
-  messages: [{ role: "user", content: "What is Cloudflare?" }],
-
-  stream: true,
-
-});
-
-
-return new Response(stream, {
-
-  headers: {
-
-    "content-type": "text/event-stream",
-
-    "cache-control": "no-cache",
-
-  },
-
-});
-
-
+const stream = await instance.chatCompletions({  messages: [{ role: "user", content: "What is Cloudflare?" }],  stream: true,});
+return new Response(stream, {  headers: {    "content-type": "text/event-stream",    "cache-control": "no-cache",  },});
 ```
 
 When `stream` is enabled, the method returns a `ReadableStream` of SSE events. Each event contains a JSON object with `choices[0].delta.content` for incremental text. The stream ends with a `data: [DONE]` event.
@@ -340,10 +239,12 @@ When `stream` is enabled, the method returns a `ReadableStream` of SSE events. E
 
 An array of message objects representing the conversation. Each message has a `role` and `content` field.
 
-* `role` ` string ` required  
-   * The role of the message sender. Valid values: `system`, `developer`, `user`, `assistant`, `tool`.
-* `content` ` string ` required  
-   * The content of the message.
+* `role` ` string ` required
+
+  * The role of the message sender. Valid values: `system`, `developer`, `user`, `assistant`, `tool`.
+* `content` ` string ` required
+
+  * The content of the message.
 
 ---
 
@@ -363,48 +264,70 @@ Returns a stream of results as they are generated. When enabled, returns a `Resp
 
 Configuration options for the search and generation operation.
 
-* `retrieval` ` object ` optional  
-   * `retrieval_type` ` string ` optional  
-         * The type of retrieval to perform. Valid values: `vector`, `keyword`, `hybrid`. Defaults to `hybrid`.  
-   * `match_threshold` ` number ` optional  
-         * The minimum match score required for a result to be considered a match. Must be between `0` and `1`. Defaults to `0.4`.  
-   * `max_num_results` ` integer ` optional  
-         * The maximum number of results to return. Must be between `1` and `50`. Defaults to `10`.  
-   * `filters` ` object ` optional  
-         * Filter search results based on metadata. Supports comparison filters (`eq`, `ne`, `gt`, `gte`, `lt`, `lte`) and compound filters (`and`, `or`). For more details, refer to [Metadata filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/).  
-   * `context_expansion` ` integer ` optional  
-         * The number of surrounding chunks to include for additional context. Must be between `0` and `3`. Defaults to `0`.  
-   * `fusion_method` ` string ` optional  
-         * Controls how vector and keyword scores are combined when using hybrid retrieval. Valid values: `rrf` (Reciprocal Rank Fusion), `max` (takes the maximum score). Defaults to the instance-level setting.  
-   * `keyword_match_mode` ` string ` optional  
-         * Controls how keyword (BM25) matching selects candidate documents. `and` requires all terms to match. `or` requires any term to match. Defaults to `and`.  
-   * `boost_by` ` array ` optional  
-         * Boost results by metadata fields. Maximum 3 items. Each item has:  
-                  * `field` ` string ` required \- The metadata field name to boost by (for example, `timestamp`). Maximum 64 characters.  
-                  * `direction` ` string ` optional \- The boost direction. Valid values: `asc`, `desc`, `exists`, `not_exists`. Defaults to `asc` for numeric fields and `exists` for text fields.  
-   * `metadata_only` ` boolean ` optional  
-         * Return only metadata for each chunk without the text content.  
-   * `return_on_failure` ` boolean ` optional  
-         * Whether to return partial results if some processing steps fail. Defaults to `true`.
-* `query_rewrite` ` object ` optional  
-   * `enabled` ` boolean ` optional  
-         * Rewrites the query to improve retrieval accuracy. Defaults to `false`.  
-   * `model` ` string ` optional  
-         * The model to use for query rewriting.  
-   * `rewrite_prompt` ` string ` optional  
-         * A custom prompt to guide query rewriting.
-* `reranking` ` object ` optional  
-   * `enabled` ` boolean ` optional  
-         * Reorders retrieved results based on semantic relevance using a reranking model. Defaults to `false`.  
-   * `model` ` string ` optional  
-         * The reranking model to use. Valid value: `@cf/baai/bge-reranker-base`.  
-   * `match_threshold` ` number ` optional  
-         * The minimum score for reranked results. Must be between `0` and `1`. Defaults to `0.4`.
-* `cache` ` object ` optional  
-   * `enabled` ` boolean ` optional  
-         * Override the instance-level cache setting for this request.  
-   * `cache_threshold` ` string ` optional  
-         * The similarity threshold for cache hits. Valid values: `super_strict_match`, `close_enough`, `flexible_friend`, `anything_goes`.
+* `retrieval` ` object ` optional
+
+  * `retrieval_type` ` string ` optional
+
+    * The type of retrieval to perform. Valid values: `vector`, `keyword`, `hybrid`. Defaults to `hybrid`.
+  * `match_threshold` ` number ` optional
+
+    * The minimum match score required for a result to be considered a match. Must be between `0` and `1`. Defaults to `0.4`.
+  * `max_num_results` ` integer ` optional
+
+    * The maximum number of results to return. Must be between `1` and `50`. Defaults to `10`.
+  * `filters` ` object ` optional
+
+    * Filter search results based on metadata. Supports comparison filters (`eq`, `ne`, `gt`, `gte`, `lt`, `lte`) and compound filters (`and`, `or`). For more details, refer to [Metadata filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/).
+  * `context_expansion` ` integer ` optional
+
+    * The number of surrounding chunks to include for additional context. Must be between `0` and `3`. Defaults to `0`.
+  * `fusion_method` ` string ` optional
+
+    * Controls how vector and keyword scores are combined when using hybrid retrieval. Valid values: `rrf` (Reciprocal Rank Fusion), `max` (takes the maximum score). Defaults to the instance-level setting.
+  * `keyword_match_mode` ` string ` optional
+
+    * Controls how keyword (BM25) matching selects candidate documents. `and` requires all terms to match. `or` requires any term to match. Defaults to `and`.
+  * `boost_by` ` array ` optional
+
+    * Boost results by metadata fields. Maximum 3 items. Each item has:  
+      * `field` ` string ` required \- The metadata field name to boost by (for example, `timestamp`). Maximum 64 characters.
+      * `direction` ` string ` optional \- The boost direction. Valid values: `asc`, `desc`, `exists`, `not_exists`. Defaults to `asc` for numeric fields and `exists` for text fields.
+  * `metadata_only` ` boolean ` optional
+
+    * Return only metadata for each chunk without the text content.
+  * `return_on_failure` ` boolean ` optional
+
+    * Whether to return partial results if some processing steps fail. Defaults to `true`.
+* `query_rewrite` ` object ` optional
+
+  * `enabled` ` boolean ` optional
+
+    * Rewrites the query to improve retrieval accuracy. Defaults to `false`.
+  * `model` ` string ` optional
+
+    * The model to use for query rewriting.
+  * `rewrite_prompt` ` string ` optional
+
+    * A custom prompt to guide query rewriting.
+* `reranking` ` object ` optional
+
+  * `enabled` ` boolean ` optional
+
+    * Reorders retrieved results based on semantic relevance using a reranking model. Defaults to `false`.
+  * `model` ` string ` optional
+
+    * The reranking model to use. Valid value: `@cf/baai/bge-reranker-base`.
+  * `match_threshold` ` number ` optional
+
+    * The minimum score for reranked results. Must be between `0` and `1`. Defaults to `0.4`.
+* `cache` ` object ` optional
+
+  * `enabled` ` boolean ` optional
+
+    * Override the instance-level cache setting for this request.
+  * `cache_threshold` ` string ` optional
+
+    * The similarity threshold for cache hits. Valid values: `super_strict_match`, `close_enough`, `flexible_friend`, `anything_goes`.
 
 #### Response (non-streaming)
 
@@ -428,27 +351,12 @@ Configuration options for the search and generation operation.
 When `stream: true`, the method returns a `ReadableStream` of Server-Sent Events. The retrieved chunks are sent first as a `chunks` event, followed by the streamed response.
 
 ```
-
-event: chunks
-
-data: [{"id":"chunk-001","type":"text","score":0.85,"text":"...","item":{"key":"about-cloudflare.md","timestamp":1775925540000},"scoring_details":{"vector_score":0.85}}]
-
-
+event: chunksdata: [{"id":"chunk-001","type":"text","score":0.85,"text":"...","item":{"key":"about-cloudflare.md","timestamp":1775925540000},"scoring_details":{"vector_score":0.85}}]
 data: {"id":"id-1776072781845","created":1776072781,"model":"@cf/meta/llama-3.3-70b-instruct-fp8-fast","object":"chat.completion.chunk","choices":[{"index":0,"delta":{"content":" document"}}]}
-
-
 data: {"id":"id-1776072781845","created":1776072781,"model":"@cf/meta/llama-3.3-70b-instruct-fp8-fast","object":"chat.completion.chunk","choices":[{"index":0,"delta":{"content":" you provided doesn"}}]}
-
-
 data: {"id":"id-1776072781845","created":1776072781,"model":"@cf/meta/llama-3.3-70b-instruct-fp8-fast","object":"chat.completion.chunk","choices":[{"index":0,"delta":{"content":"'t contain"}}]}
-
-
 data: {"id":"id-1776072781845","created":1776072781,"model":"@cf/meta/llama-3.3-70b-instruct-fp8-fast","object":"chat.completion.chunk","choices":[{"index":0,"delta":{"content":" information"}}]}
-
-
 data: [DONE]
-
-
 ```
 
 ## Namespace methods
@@ -462,20 +370,7 @@ Pass `instance_ids` in `ai_search_options` to specify which instances to query. 
 TypeScript
 
 ```
-
-const results = await env.AI_SEARCH.search({
-
-  messages: [{ role: "user", content: "What is Cloudflare?" }],
-
-  ai_search_options: {
-
-    instance_ids: ["product-docs", "customer-abc123"],
-
-  },
-
-});
-
-
+const results = await env.AI_SEARCH.search({  messages: [{ role: "user", content: "What is Cloudflare?" }],  ai_search_options: {    instance_ids: ["product-docs", "customer-abc123"],  },});
 ```
 
 #### Parameters
@@ -503,20 +398,7 @@ Generate chat completions using context retrieved from multiple instances.
 TypeScript
 
 ```
-
-const response = await env.AI_SEARCH.chatCompletions({
-
-  messages: [{ role: "user", content: "What is Cloudflare?" }],
-
-  ai_search_options: {
-
-    instance_ids: ["product-docs", "customer-abc123"],
-
-  },
-
-});
-
-
+const response = await env.AI_SEARCH.chatCompletions({  messages: [{ role: "user", content: "What is Cloudflare?" }],  ai_search_options: {    instance_ids: ["product-docs", "customer-abc123"],  },});
 ```
 
 Streaming is supported with `stream: true`.
@@ -546,28 +428,7 @@ Local development is supported by proxying requests to your deployed AI Search i
 JSONC
 
 ```
-
-// wrangler.jsonc
-
-{
-
-  "ai_search": [
-
-    {
-
-      "binding": "MY_SEARCH",
-
-      "instance_name": "my-instance",
-
-      "remote": true,
-
-    },
-
-  ],
-
-}
-
-
+// wrangler.jsonc{  "ai_search": [    {      "binding": "MY_SEARCH",      "instance_name": "my-instance",      "remote": true,    },  ],}
 ```
 
 ```json

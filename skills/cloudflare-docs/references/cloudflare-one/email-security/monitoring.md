@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -47,33 +47,33 @@ Email traffic that flows through Email security is given a final disposition, wh
 Disposition evaluation displays the following dispositions:
 
 * **Malicious**: Traffic associated with active threat campaigns. Malicious messages invoked multiple phishing verdict triggers and met thresholds for bad behavior.  
-   * **Recommendation**: Block.
+  * **Recommendation**: Block.
 * **Spam**: Traffic associated with non-malicious, commercial campaigns.  
-   * **Recommendation**: Route to existing Spam quarantine folder.
+  * **Recommendation**: Route to existing Spam quarantine folder.
 * **Bulk**: Traffic often associated with newsletters or marketing campaigns. Refer to [Graymail ↗](https://en.wikipedia.org/wiki/Graymail%5F%28email%29) for more details.  
-   * **Recommendation**: Monitor or tag.
+  * **Recommendation**: Monitor or tag.
 * **Suspicious**: Traffic associated with phishing campaigns (and is under further analysis by our automated systems).  
-   * **Recommendation**: Research these messages internally to evaluate legitimacy.
+  * **Recommendation**: Research these messages internally to evaluate legitimacy.
 * **Spoof**: Traffic associated with phishing campaigns that is either non-compliant with your email authentication policies ([SPF ↗](https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-spf-record/), [DKIM ↗](https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dkim-record/), [DMARC ↗](https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dmarc-record/)) or has mismatching `Envelope From` and `Header From` values.  
-   * **Recommendation**: Block after investigating (can be triggered by third-party mail services).
+  * **Recommendation**: Block after investigating (can be triggered by third-party mail services).
 
 ## Detection details
 
 Detection details displays information about:
 
 * **Malicious** disposition:  
-   * **Email threat types**: Top malicious threat types, and their number relative to the total amount of malicious threats received.  
-   * **Targeted users**: Top number of emails targeted, and their number relative to the total amount of malicious targets.  
-   * **Malicious links**: A graph displaying the total number of malicious links and their distribution throughout the month.  
-   * **Malicious attachments**: Number of malicious attachments, and the top types of malicious files received.
+  * **Email threat types**: Top malicious threat types, and their number relative to the total amount of malicious threats received.
+  * **Targeted users**: Top number of emails targeted, and their number relative to the total amount of malicious targets.
+  * **Malicious links**: A graph displaying the total number of malicious links and their distribution throughout the month.
+  * **Malicious attachments**: Number of malicious attachments, and the top types of malicious files received.
 * **Suspicious** disposition:  
-   * **Suspicious threat types**: Top suspicious threat types, and their number relative to the total amount of threats received.  
-   * **Suspicious targets**: Top number of emails targeted, and their number relative to the total amount of malicious targets.  
-   * **Suspicious links**: A graph displaying the total number of suspicious links and their distribution throughout the month.
+  * **Suspicious threat types**: Top suspicious threat types, and their number relative to the total amount of threats received.
+  * **Suspicious targets**: Top number of emails targeted, and their number relative to the total amount of malicious targets.
+  * **Suspicious links**: A graph displaying the total number of suspicious links and their distribution throughout the month.
 * **Spoof** disposition:  
-   * **Spoof users (impersonated names)**: Top number of impersonated names, and their number relative to the total number of detection received.  
-   * **Spoof targets**: Top number of targeted emails.  
-   * **Sender v. envelope mismatch**: This field indicates the number of mismatches between the email address the message was sent from, and the email address the message was _actually_ sent from.
+  * **Spoof users (impersonated names)**: Top number of impersonated names, and their number relative to the total number of detection received.
+  * **Spoof targets**: Top number of targeted emails.
+  * **Sender v. envelope mismatch**: This field indicates the number of mismatches between the email address the message was sent from, and the email address the message was _actually_ sent from.
 
 ## Impersonations
 

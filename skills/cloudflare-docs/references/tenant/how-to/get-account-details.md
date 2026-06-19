@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tenant/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,26 +16,23 @@ An [**Account**](https://developers.cloudflare.com/tenant/glossary/#account) wil
 
 To retrieve a list of accounts associated with a Tenant details, send a `GET` request to the `/tenants/{tenant_id}/accounts` endpoint. You can find the Tenant tag and all Tenants associated with the user with the [**Tenant Details**](https://developers.cloudflare.com/tenant/how-to/get-tenant-details/) API. The Tenant Accounts API also requires pagination passed as query parameters:
 
-* `page` number  
-   * Page number of accounts list response, indexed from 1
-* `per_page` number  
-   * Number of accounts to display per page
-* `order` string  
-   * (optional) Order by a specific column, has to be a valid top-level key from the response  
-   * `direction` number  
-         * (optional) 0 for ascending or 1 for descending, is 0 by default
+* `page` number
+
+  * Page number of accounts list response, indexed from 1
+* `per_page` number
+
+  * Number of accounts to display per page
+* `order` string
+
+  * (optional) Order by a specific column, has to be a valid top-level key from the response
+  * `direction` number
+
+    * (optional) 0 for ascending or 1 for descending, is 0 by default
 
 Request
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/tenants/{tenant_id}/accounts?page=1&per_page=10" \
-
---header "X-Auth-Email: <EMAIL>" \
-
---header "X-Auth-Key: <API_KEY>"
-
-
+curl "https://api.cloudflare.com/client/v4/tenants/{tenant_id}/accounts?page=1&per_page=10" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>"
 ```
 
 A successful request will return an HTTP status of `200` and a response body containing account information and feature flags for all accounts managed by the Tenant.

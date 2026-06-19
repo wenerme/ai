@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -34,8 +34,8 @@ Cache Reserve is a usage-based product and [pricing](#pricing) is detailed below
 
 A paid Cache Reserve plan is required.
 
-* [ Dashboard ](#tab-panel-6957)
-* [ API ](#tab-panel-6958)
+* [ Dashboard ](#tab-panel-7033)
+* [ API ](#tab-panel-7034)
 
 1. In the Cloudflare dashboard, go to the **Cache Reserve** page.  
 [ Go to **Cache Reserve** ](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-reserve)
@@ -86,10 +86,10 @@ In most cases, a Cache Reserve miss will result in both one class A and one clas
 
 ### Cache Reserve pricing
 
-| Rates                       | |  Storage               | $0.015 / GB-month |
-| --------------------------- | ------------------------ | ----------------- |
-| Class A Operations (writes) | $4.50 / million requests |                   |
-| Class B Operations (reads)  | $0.36 / million requests |                   |
+|                             | Rates                    | |  Storage | $0.015 / GB-month |
+| --------------------------- | ------------------------ | ---------- | ----------------- |
+| Class A Operations (writes) | $4.50 / million requests |            |                   |
+| Class B Operations (reads)  | $0.36 / million requests |            |                   |
 
 Note
 
@@ -134,12 +134,13 @@ Note this differs from the standard CDN's purge by tag, host, or prefix features
 
 Assuming 1,000 assets (each 1 GB) are written to Cache Reserve at the start of the month and each asset is read 1,000 times, the estimated cost for the month would be:
 
-| Usage              | Billable Quantity                         | Price           |        |
-| ------------------ | ----------------------------------------- | --------------- | ------ |
-| Class B Operations | (1,000 assets) \* (1,000 reads per asset) | 1,000,000       | $0.36  |
-| Class A Operations | (1,000 assets) \* (1 write per asset)     | 1,000           | $4.50  |
-| Storage            | (1,000 assets) \* (1GB per asset)         | 1,000 GB-months | $15.00 |
-| **TOTAL**          | **$19.86**                                |                 |        |
+|                    | Usage                                     | Billable Quantity | Price      |
+| ------------------ | ----------------------------------------- | ----------------- | ---------- |
+| Class B Operations | (1,000 assets) \* (1,000 reads per asset) | 1,000,000         | $0.36      |
+| Class A Operations | (1,000 assets) \* (1 write per asset)     | 1,000             | $4.50      |
+| Storage            | (1,000 assets) \* (1GB per asset)         | 1,000 GB-months   | $15.00     |
+| **TOTAL**          |                                           |                   | **$19.86** |
+|                    |                                           |                   |            |
 
 Note
 
@@ -154,12 +155,13 @@ Assuming 1,000,000 assets (each 1 MB) are in Cache Reserve, and:
 
 the estimated cost for the month would be:
 
-| Usage              | Billable Quantity                                    | Price           |         |
-| ------------------ | ---------------------------------------------------- | --------------- | ------- |
-| Class B Operations | (1,000,000 assets) \* (2 reads per day) \* (30 days) | 60,000,000      | $21.60  |
-| Class A Operations | (1,000,000 assets) \* (1 write per day) \* (30 days) | 30,000,000      | $135.00 |
-| Storage            | (1,000,000 assets) \* (1MB per asset)                | 1,000 GB-months | $15.00  |
-| **TOTAL**          | **$171.60**                                          |                 |         |
+|                    | Usage                                                | Billable Quantity | Price       |
+| ------------------ | ---------------------------------------------------- | ----------------- | ----------- |
+| Class B Operations | (1,000,000 assets) \* (2 reads per day) \* (30 days) | 60,000,000        | $21.60      |
+| Class A Operations | (1,000,000 assets) \* (1 write per day) \* (30 days) | 30,000,000        | $135.00     |
+| Storage            | (1,000,000 assets) \* (1MB per asset)                | 1,000 GB-months   | $15.00      |
+| **TOTAL**          |                                                      |                   | **$171.60** |
+|                    |                                                      |                   |             |
 
 Note
 
@@ -178,8 +180,8 @@ In the **Overview** section, under **Cache Reserve**, you have access to the fol
 * **Egress savings (bandwidth)** \- is an estimation based on response bytes served from Cache Reserve that did not need to be served from your origin server. These are represented as cache hits.
 * **Requests served by Cache Reserve** \- is the number of requests served by Cache Reserve (total).
 * **Data storage summary** \- is based on a representative sample of requests. Refer to [Sampling](https://developers.cloudflare.com/analytics/graphql-api/sampling/) for more details about how Cloudflare samples data.  
-   * **Current data stored** \- is the data stored (currently) over time.  
-   * **Aggregate storage usage** \- is the total of storage used for the selected timestamp.
+  * **Current data stored** \- is the data stored (currently) over time.
+  * **Aggregate storage usage** \- is the total of storage used for the selected timestamp.
 * **Operations** \- Class A (writes) and Class B (reads) operations over time.
 
 ## Cache Reserve clear button
@@ -191,8 +193,8 @@ You can remove all data stored in Cache Reserve through the dashboard or via API
 
 Be aware that the deletion may take up to 24 hours to complete.
 
-* [ Dashboard ](#tab-panel-6959)
-* [ API ](#tab-panel-6960)
+* [ Dashboard ](#tab-panel-7035)
+* [ API ](#tab-panel-7036)
 
 1. In the Cloudflare dashboard, go to the **Cache Reserve** page.  
 [ Go to **Cache Reserve** ](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-reserve)
@@ -204,7 +206,7 @@ To delete Cache Reserve data via API use the following example requests. For mor
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone Settings Write`
 * `Zone Settings Read`
 * `Zone Read`
@@ -213,41 +215,13 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Get Cache Reserve setting
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/cache_reserve" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/cache_reserve" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Response
 
 ```
-
-{
-
-  "result": {
-
-    "editable": true,
-
-    "id": "cache_reserve",
-
-    "value": "off"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "editable": true,    "id": "cache_reserve",    "value": "off"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 If Cache Reserve is turned off, you can proceed to the Cache Reserve Clear operation.
@@ -256,48 +230,20 @@ If Cache Reserve is turned off, you can proceed to the Cache Reserve Clear opera
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone Settings Write`
 * `Zone Write`
 
 Start Cache Reserve Clear
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/cache_reserve_clear" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/cache_reserve_clear" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Response
 
 ```
-
-{
-
-  "result": {
-
-    "id": "cache_reserve_clear",
-
-    "start_ts": "2024-06-02T10:00:00.12345Z",
-
-    "state": "In-progress"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "id": "cache_reserve_clear",    "start_ts": "2024-06-02T10:00:00.12345Z",    "state": "In-progress"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 ```json

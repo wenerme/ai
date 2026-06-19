@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,9 +16,9 @@ Automatic HTTPS Rewrites prevents end users from seeing "mixed content" errors b
 
 ## Availability
 
-| Free         | Pro | Business | Enterprise |     |
-| ------------ | --- | -------- | ---------- | --- |
-| Availability | Yes | Yes      | Yes        | Yes |
+|              | Free | Pro | Business | Enterprise |
+| ------------ | ---- | --- | -------- | ---------- |
+| Availability | Yes  | Yes | Yes      | Yes        |
 
 ## Additional details
 
@@ -32,8 +32,8 @@ For security reasons, this feature will run on URLs pointing to `localhost` if t
 
 ## Enable Automatic HTTPS Rewrites
 
-* [ Dashboard ](#tab-panel-10580)
-* [ API ](#tab-panel-10581)
+* [ Dashboard ](#tab-panel-10656)
+* [ API ](#tab-panel-10657)
 
 To enable **Automatic HTTPS Rewrites** in the dashboard:
 

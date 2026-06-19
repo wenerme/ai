@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,117 +28,40 @@ The following example deploys the [Cloudflare Managed Ruleset](https://developer
 
 1. Invoke the [Get an account entry point ruleset](https://developers.cloudflare.com/api/resources/rulesets/subresources/phases/methods/get/) operation to obtain the definition of the entry point ruleset for the `http_request_firewall_managed` phase. You will need the [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) for this task.  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Account WAF Write`  
-   * `Account WAF Read`  
-   * `Account Rulesets Read`  
-   * `Account Rulesets Write`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Account WAF Write`
+  * `Account WAF Read`
+  * `Account Rulesets Read`
+  * `Account Rulesets Write`  
 Get an account entry point ruleset  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \  
-  --request GET \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
 ```  
 ```  
-{  
-  "result": {  
-    "description": "Account-level phase entry point",  
-    "id": "<RULESET_ID>",  
-    "kind": "root",  
-    "last_updated": "2024-03-16T15:40:08.202335Z",  
-    "name": "root",  
-    "phase": "http_request_firewall_managed",  
-    "rules": [  
-      // ...  
-    ],  
-    "source": "firewall_managed",  
-    "version": "10"  
-  },  
-  "success": true,  
-  "errors": [],  
-  "messages": []  
-}  
+{  "result": {    "description": "Account-level phase entry point",    "id": "<RULESET_ID>",    "kind": "root",    "last_updated": "2024-03-16T15:40:08.202335Z",    "name": "root",    "phase": "http_request_firewall_managed",    "rules": [      // ...    ],    "source": "firewall_managed",    "version": "10"  },  "success": true,  "errors": [],  "messages": []}  
 ```
 2. If the entry point ruleset already exists (that is, if you received a `200 OK` status code and the ruleset definition), take note of the ruleset ID in the response. Then, invoke the [Create an account ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/create/) operation to add an `execute` rule to the existing ruleset deploying the [Cloudflare Managed Ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/) (with ID `efb7b8c949ac4650a09736fc376e9aee`). By default, the rule will be added at the end of the list of rules already in the ruleset.  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Account WAF Write`  
-   * `Account Rulesets Write`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Account WAF Write`
+  * `Account Rulesets Write`  
 Create an account ruleset rule  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESET_ID/rules" \  
-  --request POST \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "action": "execute",  
-    "action_parameters": {  
-        "id": "efb7b8c949ac4650a09736fc376e9aee"  
-    },  
-    "expression": "(cf.zone.name in {\"example.com\" \"anotherexample.com\"}) and cf.zone.plan eq \"ENT\"",  
-    "description": "Execute the Cloudflare Managed Ruleset"  
-  }'  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESET_ID/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "action": "execute",    "action_parameters": {        "id": "efb7b8c949ac4650a09736fc376e9aee"    },    "expression": "(cf.zone.name in {\"example.com\" \"anotherexample.com\"}) and cf.zone.plan eq \"ENT\"",    "description": "Execute the Cloudflare Managed Ruleset"  }'  
 ```  
 ```  
-{  
-  "result": {  
-    "id": "<RULESET_ID>",  
-    "name": "Account-level phase entry point",  
-    "description": "",  
-    "kind": "root",  
-    "version": "11",  
-    "rules": [  
-      // ... any existing rules  
-      {  
-        "id": "<RULE_ID>",  
-        "version": "1",  
-        "action": "execute",  
-        "action_parameters": {  
-          "id": "efb7b8c949ac4650a09736fc376e9aee",  
-          "version": "latest"  
-        },  
-        "expression": "(cf.zone.name in {\"example.com\" \"anotherexample.com\"}) and cf.zone.plan eq \"ENT\"",  
-        "description": "Execute the Cloudflare Managed Ruleset",  
-        "last_updated": "2024-03-18T18:30:08.122758Z",  
-        "ref": "<RULE_REF>",  
-        "enabled": true  
-      }  
-    ],  
-    "last_updated": "2024-03-18T18:30:08.122758Z",  
-    "phase": "http_request_firewall_managed"  
-  },  
-  "success": true,  
-  "errors": [],  
-  "messages": []  
-}  
+{  "result": {    "id": "<RULESET_ID>",    "name": "Account-level phase entry point",    "description": "",    "kind": "root",    "version": "11",    "rules": [      // ... any existing rules      {        "id": "<RULE_ID>",        "version": "1",        "action": "execute",        "action_parameters": {          "id": "efb7b8c949ac4650a09736fc376e9aee",          "version": "latest"        },        "expression": "(cf.zone.name in {\"example.com\" \"anotherexample.com\"}) and cf.zone.plan eq \"ENT\"",        "description": "Execute the Cloudflare Managed Ruleset",        "last_updated": "2024-03-18T18:30:08.122758Z",        "ref": "<RULE_REF>",        "enabled": true      }    ],    "last_updated": "2024-03-18T18:30:08.122758Z",    "phase": "http_request_firewall_managed"  },  "success": true,  "errors": [],  "messages": []}  
 ```  
 Warning  
 Managed rulesets deployed at the account level will only apply to incoming traffic of zones on an Enterprise plan. The expression of your `execute` rule must end with `and cf.zone.plan eq "ENT"` or else the API operation will fail.
 3. If the entry point ruleset does not exist (that is, if you received a `404 Not Found` status code in step 1), create it using the [Create an account ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) operation. Include a single rule in the `rules` array that executes the Cloudflare Managed Ruleset (with ID `efb7b8c949ac4650a09736fc376e9aee`) for all incoming requests where the zone name matches one of `example.com` or `anotherexample.com`.  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Account WAF Write`  
-   * `Account Rulesets Write`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Account WAF Write`
+  * `Account Rulesets Write`  
 Create an account ruleset  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \  
-  --request POST \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "name": "My ruleset",  
-    "description": "Entry point ruleset for WAF managed rulesets",  
-    "kind": "root",  
-    "phase": "http_request_firewall_managed",  
-    "rules": [  
-        {  
-            "action": "execute",  
-            "action_parameters": {  
-                "id": "efb7b8c949ac4650a09736fc376e9aee"  
-            },  
-            "expression": "(cf.zone.name in {\"example.com\" \"anotherexample.com\"}) and cf.zone.plan eq \"ENT\"",  
-            "description": "Execute the Cloudflare Managed Ruleset"  
-        }  
-    ]  
-  }'  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "My ruleset",    "description": "Entry point ruleset for WAF managed rulesets",    "kind": "root",    "phase": "http_request_firewall_managed",    "rules": [        {            "action": "execute",            "action_parameters": {                "id": "efb7b8c949ac4650a09736fc376e9aee"            },            "expression": "(cf.zone.name in {\"example.com\" \"anotherexample.com\"}) and cf.zone.plan eq \"ENT\"",            "description": "Execute the Cloudflare Managed Ruleset"        }    ]  }'  
 ```
 
 ## Next steps

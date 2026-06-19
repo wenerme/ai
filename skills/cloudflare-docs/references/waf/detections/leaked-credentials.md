@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -76,10 +76,7 @@ The default scan covers [common web applications](#default-scan-locations), but 
 For example, if the JSON body of an HTTP request authenticating a user looks like the following:
 
 ```
-
 { "user": "<username>", "secret": "<password>" }
-
-
 ```
 
 You could configure a custom detection location with the following settings:
@@ -102,15 +99,15 @@ The following table includes example detection locations for different request t
 Expressions used to specify custom detection locations can include the following fields and functions:
 
 * Fields:  
-   * [http.request.body.form](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.body.form/)  
-   * [http.request.body.multipart](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.body.multipart/)  
-   * [http.request.body.raw](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.body.raw/)  
-   * [http.request.headers](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.headers/)  
-   * [http.request.uri.args](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.uri.args/)  
-   * [http.request.uri.query](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.uri.query/)
+  * [http.request.body.form](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.body.form/)
+  * [http.request.body.multipart](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.body.multipart/)
+  * [http.request.body.raw](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.body.raw/)
+  * [http.request.headers](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.headers/)
+  * [http.request.uri.args](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.uri.args/)
+  * [http.request.uri.query](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.uri.query/)
 * Functions:  
-   * [lookup\_json\_string()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lookup%5Fjson%5Fstring)  
-   * [url\_decode()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#url%5Fdecode)
+  * [lookup\_json\_string()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lookup%5Fjson%5Fstring)
+  * [url\_decode()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#url%5Fdecode)
 
 For instructions on configuring a custom detection location, refer to [Get started](https://developers.cloudflare.com/waf/detections/leaked-credentials/get-started/#4-optional-configure-a-custom-detection-location).
 

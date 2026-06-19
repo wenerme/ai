@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -119,9 +119,9 @@ In this common design, Cloudflare enables your platform to issue SSL certificate
 1. Cloudflare secures traffic from your clients to your platform, at global scale, by validating and distributing SSL certificates.
 2. In this design, you will use the same L7 configuration - that is, all of the features that act on your traffic, and run after SSL, for each of your clients.
 3. Just set up a [Cloudflare for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/) zone and [order a custom hostname](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/create-custom-hostnames/) for each client hostname. The system will take you through an easy flow to point each client's traffic to your platform, and order their certificate.  
-   1. You can almost always use our default settings through this process, but bespoke SSL customization is also possible.  
-   2. Origin traffic routing is also handled through the SSL for SaaS process. Our default configuration is secure for most needs.  
-         * For highly secure use cases, you can use [Authenticated Origin Pulls](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/), [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/), or an advanced design with [Tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/).
+  1. You can almost always use our default settings through this process, but bespoke SSL customization is also possible.
+  2. Origin traffic routing is also handled through the SSL for SaaS process. Our default configuration is secure for most needs.  
+    * For highly secure use cases, you can use [Authenticated Origin Pulls](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/), [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/), or an advanced design with [Tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/).
 ![Figure 5](https://developers.cloudflare.com/_astro/figure5.C5V4KUCx_LQsqe.svg) 
 
 ### Feature Customization for your Platform customers

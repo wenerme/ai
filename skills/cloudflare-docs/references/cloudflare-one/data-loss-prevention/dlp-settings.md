@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -73,9 +73,9 @@ To configure payload log masking:
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Data loss prevention** \> **DLP settings**.
 2. Go to the **Payload log masking** card.
 3. Choose one of the following masking levels:  
-   * **Full Mask (default):** Masks the match while preserving character count and visual formatting. For example, a Social Security Number appears as `***-**-****`.  
-   * **Partial Mask:** Reveals 25% of the matched content while masking the remainder. For example, `***-**-6789`.  
-   * **Clear Text:** Stores the full, unmasked match for detailed investigation. For example, `123-45-6789`.
+  * **Full Mask (default):** Masks the match while preserving character count and visual formatting. For example, a Social Security Number appears as `***-**-****`.
+  * **Partial Mask:** Reveals 25% of the matched content while masking the remainder. For example, `***-**-6789`.
+  * **Clear Text:** Stores the full, unmasked match for detailed investigation. For example, `123-45-6789`.
 
 Note
 

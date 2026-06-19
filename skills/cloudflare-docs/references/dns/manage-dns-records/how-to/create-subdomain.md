@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,16 +26,17 @@ Then, you would create a corresponding [IP address resolution record](https://de
 | ---- | ---- | ------------ | ------------ |
 | A    | blog | 192.0.2.1    | Proxied      |
 
-* [ Dashboard ](#tab-panel-8095)
-* [ API ](#tab-panel-8096)
+* [ Dashboard ](#tab-panel-8171)
+* [ API ](#tab-panel-8172)
 
 1. In the Cloudflare dashboard, go to the **DNS Records** page.  
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Select **Add record**.
-3. Select `A`, `AAAA`, or `CNAME` as the record **Type**, according to your needs:  
-   * To point to an IPv4 address, select `A`, use your subdomain (`blog`) for the record **Name**, and insert the IPv4 address in the respective field.  
-   * To point to an IPv6 address, select `AAAA`, use your subdomain (`blog`) for the record **Name**, and insert the IPv6 address in the respective field.  
-   * To point to a [fully qualified domain name (FQDN) ↗](https://en.wikipedia.org/wiki/Fully%5Fqualified%5Fdomain%5Fname) (such as `your-site.host.example.com`), select `CNAME`, use your subdomain (`blog`) for the record **Name**, and insert the fully qualified domain name in the **Target** field.
+3. Select `A`, `AAAA`, or `CNAME` as the record **Type**, according to your needs:
+
+  * To point to an IPv4 address, select `A`, use your subdomain (`blog`) for the record **Name**, and insert the IPv4 address in the respective field.
+  * To point to an IPv6 address, select `AAAA`, use your subdomain (`blog`) for the record **Name**, and insert the IPv6 address in the respective field.
+  * To point to a [fully qualified domain name (FQDN) ↗](https://en.wikipedia.org/wiki/Fully%5Fqualified%5Fdomain%5Fname) (such as `your-site.host.example.com`), select `CNAME`, use your subdomain (`blog`) for the record **Name**, and insert the fully qualified domain name in the **Target** field.
 4. Specify the [**Proxy status**](https://developers.cloudflare.com/dns/proxy-status/) and [**TTL**](https://developers.cloudflare.com/dns/manage-dns-records/reference/ttl/) according to your needs.
 5. Select **Save** to confirm.
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -56,45 +56,19 @@ For full tunnel documentation, refer to [Cloudflare Tunnel for Workers VPC](http
 
 Create a VPC Service of type `tcp` that points to your database. Set the `--app-protocol` flag to `postgresql` or `mysql` so that Hyperdrive can optimize connections.
 
-* [ PostgreSQL ](#tab-panel-8644)
-* [ MySQL ](#tab-panel-8645)
+* [ PostgreSQL ](#tab-panel-8720)
+* [ MySQL ](#tab-panel-8721)
 
 Terminal window
 
 ```
-
-npx wrangler vpc service create my-postgres-db \
-
-  --type tcp \
-
-  --tcp-port 5432 \
-
-  --app-protocol postgresql \
-
-  --tunnel-id <YOUR_TUNNEL_ID> \
-
-  --ipv4 <YOUR_DATABASE_IP>
-
-
+npx wrangler vpc service create my-postgres-db \  --type tcp \  --tcp-port 5432 \  --app-protocol postgresql \  --tunnel-id <YOUR_TUNNEL_ID> \  --ipv4 <YOUR_DATABASE_IP>
 ```
 
 Terminal window
 
 ```
-
-npx wrangler vpc service create my-mysql-db \
-
-  --type tcp \
-
-  --tcp-port 3306 \
-
-  --app-protocol mysql \
-
-  --tunnel-id <YOUR_TUNNEL_ID> \
-
-  --ipv4 <YOUR_DATABASE_IP>
-
-
+npx wrangler vpc service create my-mysql-db \  --type tcp \  --tcp-port 3306 \  --app-protocol mysql \  --tunnel-id <YOUR_TUNNEL_ID> \  --ipv4 <YOUR_DATABASE_IP>
 ```
 
 Replace:
@@ -120,22 +94,7 @@ For example, to create a VPC Service for a PostgreSQL database with a self-signe
 Terminal window
 
 ```
-
-npx wrangler vpc service create my-postgres-db \
-
-  --type tcp \
-
-  --tcp-port 5432 \
-
-  --app-protocol postgresql \
-
-  --tunnel-id <YOUR_TUNNEL_ID> \
-
-  --ipv4 <YOUR_DATABASE_IP> \
-
-  --cert-verification-mode verify_ca
-
-
+npx wrangler vpc service create my-postgres-db \  --type tcp \  --tcp-port 5432 \  --app-protocol postgresql \  --tunnel-id <YOUR_TUNNEL_ID> \  --ipv4 <YOUR_DATABASE_IP> \  --cert-verification-mode verify_ca
 ```
 
 To update an existing VPC Service, use `wrangler vpc service update` with the same flag.
@@ -150,45 +109,19 @@ For the full list of verification modes, refer to [TLS certificate verification 
 
 Use the `--service-id` flag to point Hyperdrive at the VPC Service you created. When you use `--service-id`, you do not provide `--origin-host`, `--origin-port`, or `--connection-string`. Hyperdrive routes traffic through the VPC Service instead.
 
-* [ PostgreSQL ](#tab-panel-8646)
-* [ MySQL ](#tab-panel-8647)
+* [ PostgreSQL ](#tab-panel-8722)
+* [ MySQL ](#tab-panel-8723)
 
 Terminal window
 
 ```
-
-npx wrangler hyperdrive create <YOUR_CONFIG_NAME> \
-
-  --service-id <YOUR_VPC_SERVICE_ID> \
-
-  --database <DATABASE_NAME> \
-
-  --user <DATABASE_USER> \
-
-  --password <DATABASE_PASSWORD> \
-
-  --scheme postgresql
-
-
+npx wrangler hyperdrive create <YOUR_CONFIG_NAME> \  --service-id <YOUR_VPC_SERVICE_ID> \  --database <DATABASE_NAME> \  --user <DATABASE_USER> \  --password <DATABASE_PASSWORD> \  --scheme postgresql
 ```
 
 Terminal window
 
 ```
-
-npx wrangler hyperdrive create <YOUR_CONFIG_NAME> \
-
-  --service-id <YOUR_VPC_SERVICE_ID> \
-
-  --database <DATABASE_NAME> \
-
-  --user <DATABASE_USER> \
-
-  --password <DATABASE_PASSWORD> \
-
-  --scheme mysql
-
-
+npx wrangler hyperdrive create <YOUR_CONFIG_NAME> \  --service-id <YOUR_VPC_SERVICE_ID> \  --database <DATABASE_NAME> \  --user <DATABASE_USER> \  --password <DATABASE_PASSWORD> \  --scheme mysql
 ```
 
 Replace:
@@ -209,43 +142,19 @@ You must create a binding in your [Wrangler configuration file](https://develope
 
 To bind your Hyperdrive configuration to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-8648)
-* [  wrangler.toml ](#tab-panel-8649)
+* [  wrangler.jsonc ](#tab-panel-8724)
+* [  wrangler.toml ](#tab-panel-8725)
 
 JSONC
 
 ```
-
-{
-
-  "hyperdrive": [
-
-    {
-
-      "binding": "HYPERDRIVE",
-
-      "id": "<YOUR_DATABASE_ID>" // the ID associated with the Hyperdrive you just created
-
-    }
-
-  ]
-
-}
-
-
+{  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<YOUR_DATABASE_ID>" // the ID associated with the Hyperdrive you just created    }  ]}
 ```
 
 TOML
 
 ```
-
-[[hyperdrive]]
-
-binding = "HYPERDRIVE"
-
-id = "<YOUR_DATABASE_ID>"
-
-
+[[hyperdrive]]binding = "HYPERDRIVE"id = "<YOUR_DATABASE_ID>"
 ```
 
 Specifically:
@@ -256,47 +165,19 @@ Specifically:
 
 If you wish to use a local database during development, you can add a `localConnectionString` to your Hyperdrive configuration with the connection string of your database:
 
-* [  wrangler.jsonc ](#tab-panel-8650)
-* [  wrangler.toml ](#tab-panel-8651)
+* [  wrangler.jsonc ](#tab-panel-8726)
+* [  wrangler.toml ](#tab-panel-8727)
 
 JSONC
 
 ```
-
-{
-
-  "hyperdrive": [
-
-    {
-
-      "binding": "HYPERDRIVE",
-
-      "id": "<YOUR_DATABASE_ID>", // the ID associated with the Hyperdrive you just created
-
-      "localConnectionString": "<LOCAL_DATABASE_CONNECTION_URI>"
-
-    }
-
-  ]
-
-}
-
-
+{  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<YOUR_DATABASE_ID>", // the ID associated with the Hyperdrive you just created      "localConnectionString": "<LOCAL_DATABASE_CONNECTION_URI>"    }  ]}
 ```
 
 TOML
 
 ```
-
-[[hyperdrive]]
-
-binding = "HYPERDRIVE"
-
-id = "<YOUR_DATABASE_ID>"
-
-localConnectionString = "<LOCAL_DATABASE_CONNECTION_URI>"
-
-
+[[hyperdrive]]binding = "HYPERDRIVE"id = "<YOUR_DATABASE_ID>"localConnectionString = "<LOCAL_DATABASE_CONNECTION_URI>"
 ```
 
 Note
@@ -305,8 +186,8 @@ Learn more about setting up [Hyperdrive for local development](https://developer
 
 ## 5\. Query the database
 
-* [ PostgreSQL ](#tab-panel-8656)
-* [ MySQL ](#tab-panel-8657)
+* [ PostgreSQL ](#tab-panel-8732)
+* [ MySQL ](#tab-panel-8733)
 
 Use [node-postgres ↗](https://node-postgres.com/) (`pg`) to send a test query.
 
@@ -356,62 +237,20 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-8652)
-* [  wrangler.toml ](#tab-panel-8653)
+* [  wrangler.jsonc ](#tab-panel-8728)
+* [  wrangler.toml ](#tab-panel-8729)
 
 JSONC
 
 ```
-
-{
-
-  // required for database drivers to function
-
-  "compatibility_flags": [
-
-    "nodejs_compat"
-
-  ],
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "hyperdrive": [
-
-    {
-
-      "binding": "HYPERDRIVE",
-
-      "id": "<your-hyperdrive-id-here>"
-
-    }
-
-  ]
-
-}
-
-
+{  // required for database drivers to function  "compatibility_flags": [    "nodejs_compat"  ],  // Set this to today's date  "compatibility_date": "2026-06-18",  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<your-hyperdrive-id-here>"    }  ]}
 ```
 
 TOML
 
 ```
-
-compatibility_flags = [ "nodejs_compat" ]
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[[hyperdrive]]
-
-binding = "HYPERDRIVE"
-
-id = "<your-hyperdrive-id-here>"
-
-
+compatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-06-18"
+[[hyperdrive]]binding = "HYPERDRIVE"id = "<your-hyperdrive-id-here>"
 ```
 
 Create a new `Client` instance and pass the Hyperdrive `connectionString`:
@@ -419,69 +258,12 @@ Create a new `Client` instance and pass the Hyperdrive `connectionString`:
 TypeScript
 
 ```
-
-// filepath: src/index.ts
-
-import { Client } from "pg";
-
-
-export default {
-
-  async fetch(
-
-    request: Request,
-
-    env: Env,
-
-    ctx: ExecutionContext,
-
-  ): Promise<Response> {
-
-    // Create a new client instance for each request. Hyperdrive maintains the
-
-    // underlying database connection pool, so creating a new client is fast.
-
-    const client = new Client({
-
-      connectionString: env.HYPERDRIVE.connectionString,
-
-    });
-
-
-    try {
-
-      // Connect to the database
-
-      await client.connect();
-
-
-      // Perform a simple query
-
-      const result = await client.query("SELECT * FROM pg_tables");
-
-
-      return Response.json({
-
-        success: true,
-
-        result: result.rows,
-
-      });
-
-    } catch (error: any) {
-
-      console.error("Database error:", error.message);
-
-
-      return new Response("Internal error occurred", { status: 500 });
-
-    }
-
-  },
-
-};
-
-
+// filepath: src/index.tsimport { Client } from "pg";
+export default {  async fetch(    request: Request,    env: Env,    ctx: ExecutionContext,  ): Promise<Response> {    // Create a new client instance for each request. Hyperdrive maintains the    // underlying database connection pool, so creating a new client is fast.    const client = new Client({      connectionString: env.HYPERDRIVE.connectionString,    });
+    try {      // Connect to the database      await client.connect();
+      // Perform a simple query      const result = await client.query("SELECT * FROM pg_tables");
+      return Response.json({        success: true,        result: result.rows,      });    } catch (error: any) {      console.error("Database error:", error.message);
+      return new Response("Internal error occurred", { status: 500 });    }  },};
 ```
 
 Deploy your Worker:
@@ -489,10 +271,7 @@ Deploy your Worker:
 Terminal window
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 If you receive a list of `pg_tables` from your database when you access your deployed Worker, Hyperdrive is connected to your private database through Workers VPC.
@@ -525,62 +304,20 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-8654)
-* [  wrangler.toml ](#tab-panel-8655)
+* [  wrangler.jsonc ](#tab-panel-8730)
+* [  wrangler.toml ](#tab-panel-8731)
 
 JSONC
 
 ```
-
-{
-
-  // required for database drivers to function
-
-  "compatibility_flags": [
-
-    "nodejs_compat"
-
-  ],
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "hyperdrive": [
-
-    {
-
-      "binding": "HYPERDRIVE",
-
-      "id": "<your-hyperdrive-id-here>"
-
-    }
-
-  ]
-
-}
-
-
+{  // required for database drivers to function  "compatibility_flags": [    "nodejs_compat"  ],  // Set this to today's date  "compatibility_date": "2026-06-18",  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<your-hyperdrive-id-here>"    }  ]}
 ```
 
 TOML
 
 ```
-
-compatibility_flags = [ "nodejs_compat" ]
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[[hyperdrive]]
-
-binding = "HYPERDRIVE"
-
-id = "<your-hyperdrive-id-here>"
-
-
+compatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-06-18"
+[[hyperdrive]]binding = "HYPERDRIVE"id = "<your-hyperdrive-id-here>"
 ```
 
 Create a new `connection` instance and pass the Hyperdrive parameters:
@@ -588,70 +325,11 @@ Create a new `connection` instance and pass the Hyperdrive parameters:
 TypeScript
 
 ```
-
-// mysql2 v3.13.0 or later is required
-
-import { createConnection } from "mysql2/promise";
-
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    // Create a new connection on each request. Hyperdrive maintains the underlying
-
-    // database connection pool, so creating a new connection is fast.
-
-    const connection = await createConnection({
-
-      host: env.HYPERDRIVE.host,
-
-      user: env.HYPERDRIVE.user,
-
-      password: env.HYPERDRIVE.password,
-
-      database: env.HYPERDRIVE.database,
-
-      port: env.HYPERDRIVE.port,
-
-
-      // Required to enable mysql2 compatibility for Workers
-
-      disableEval: true,
-
-    });
-
-
-    try {
-
-      // Sample query
-
-      const [results, fields] = await connection.query("SHOW tables;");
-
-
-      // Return result rows as JSON
-
-      return Response.json({ results, fields });
-
-    } catch (e) {
-
-      console.error(e);
-
-      return Response.json(
-
-        { error: e instanceof Error ? e.message : e },
-
-        { status: 500 },
-
-      );
-
-    }
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+// mysql2 v3.13.0 or later is requiredimport { createConnection } from "mysql2/promise";
+export default {  async fetch(request, env, ctx): Promise<Response> {    // Create a new connection on each request. Hyperdrive maintains the underlying    // database connection pool, so creating a new connection is fast.    const connection = await createConnection({      host: env.HYPERDRIVE.host,      user: env.HYPERDRIVE.user,      password: env.HYPERDRIVE.password,      database: env.HYPERDRIVE.database,      port: env.HYPERDRIVE.port,
+      // Required to enable mysql2 compatibility for Workers      disableEval: true,    });
+    try {      // Sample query      const [results, fields] = await connection.query("SHOW tables;");
+      // Return result rows as JSON      return Response.json({ results, fields });    } catch (e) {      console.error(e);      return Response.json(        { error: e instanceof Error ? e.message : e },        { status: 500 },      );    }  },} satisfies ExportedHandler<Env>;
 ```
 
 Note
@@ -663,10 +341,7 @@ Deploy your Worker:
 Terminal window
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 If you receive a list of tables from your database when you access your deployed Worker, Hyperdrive is connected to your private database through Workers VPC.

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,54 +21,7 @@ Custom limits can be set in the dynamic dispatch Worker:
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    try {
-
-      // parse the URL, read the subdomain
-
-      let workerName = new URL(request.url).host.split(".")[0];
-
-      let userWorker = env.dispatcher.get(
-
-        workerName,
-
-        {},
-
-        {
-
-          // set limits
-
-          limits: { cpuMs: 10, subRequests: 5 },
-
-        },
-
-      );
-
-      return await userWorker.fetch(request);
-
-    } catch (e) {
-
-      if (e.message.startsWith("Worker not found")) {
-
-        // we tried to get a worker that doesn't exist in our dispatch namespace
-
-        return new Response("", { status: 404 });
-
-      }
-
-      return new Response(e.message, { status: 500 });
-
-    }
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    try {      // parse the URL, read the subdomain      let workerName = new URL(request.url).host.split(".")[0];      let userWorker = env.dispatcher.get(        workerName,        {},        {          // set limits          limits: { cpuMs: 10, subRequests: 5 },        },      );      return await userWorker.fetch(request);    } catch (e) {      if (e.message.startsWith("Worker not found")) {        // we tried to get a worker that doesn't exist in our dispatch namespace        return new Response("", { status: 404 });      }      return new Response(e.message, { status: 500 });    }  },};
 ```
 
 ```json

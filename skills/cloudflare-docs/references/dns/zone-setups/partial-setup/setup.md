@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,8 +33,8 @@ If your domain is sensitive to downtime, instead of using Universal SSL, conside
 
 ## 1\. Convert your zone and review DNS records
 
-* [ Dashboard ](#tab-panel-8135)
-* [ API ](#tab-panel-8136)
+* [ Dashboard ](#tab-panel-8211)
+* [ API ](#tab-panel-8212)
 
 Make sure you have the correct plan
 
@@ -49,35 +49,14 @@ If you are adding a zone for the first time via API you can add it directly with
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone Zone Edit`
 * `Zone DNS Edit`
 
 Create Zone
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "example.com",
-
-    "account": {
-
-        "id": "YOUR_ACCOUNT_ID"
-
-    },
-
-    "type": "partial"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "example.com",    "account": {        "id": "YOUR_ACCOUNT_ID"    },    "type": "partial"  }'
 ```
 
 ## 2\. Verify ownership for your domain
@@ -104,8 +83,9 @@ If your organization has multiple Cloudflare accounts, also consider using zone 
 
 ## 3\. Add DNS records
 
-1. At your authoritative DNS provider:  
-   1. Create CNAME records pointing to `{your-hostname}.cdn.cloudflare.net` for every hostname you wish to proxy through Cloudflare.  
+1. At your authoritative DNS provider:
+
+  1. Create CNAME records pointing to `{your-hostname}.cdn.cloudflare.net` for every hostname you wish to proxy through Cloudflare.  
 Example CNAME record at authoritative DNS provider  
 The CNAME record for `www.example.com` would be:  
 ```  

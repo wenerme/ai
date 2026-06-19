@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,76 +19,11 @@ This version passes through requests for `/test/*` and `/control/*` URI paths to
 JavaScript
 
 ```
-
 const NAME = "myExampleABTest";
-
-
-export default {
-
-  async fetch(request) {
-
-    // Clone the original URL
-
-    const url = new URL(request.url);
-
-
-    // Enable Passthrough to allow direct access to control and test routes.
-
-    if (url.pathname.startsWith("/control") || url.pathname.startsWith("/test"))
-
-      return fetch(request);
-
-
-    // Determine which group this requester is in.
-
-    const cookie = request.headers.get("cookie");
-
-
-    if (cookie && cookie.includes(`${NAME}=control`)) {
-
-      url.pathname = "/control" + url.pathname;
-
-    } else if (cookie && cookie.includes(`${NAME}=test`)) {
-
-      url.pathname = "/test" + url.pathname;
-
-    } else {
-
-      // If there is no cookie, this is a new client. Choose a group and set the cookie.
-
-      const group = Math.random() < 0.5 ? "test" : "control"; // 50/50 split
-
-      if (group === "control") {
-
-        url.pathname = "/control" + url.pathname;
-
-      } else {
-
-        url.pathname = "/test" + url.pathname;
-
-      }
-
-      // Reconstruct response to avoid immutability
-
-      let response = await fetch(url);
-
-      response = new Response(response.body, response);
-
-      // Set cookie to enable persistent A/B sessions.
-
-      response.headers.append("Set-Cookie", `${NAME}=${group}; path=/`);
-
-      return response;
-
-    }
-
-    return fetch(url);
-
-  },
-
-};
-
-
+export default {  async fetch(request) {    // Clone the original URL    const url = new URL(request.url);
+    // Enable Passthrough to allow direct access to control and test routes.    if (url.pathname.startsWith("/control") || url.pathname.startsWith("/test"))      return fetch(request);
+    // Determine which group this requester is in.    const cookie = request.headers.get("cookie");
+    if (cookie && cookie.includes(`${NAME}=control`)) {      url.pathname = "/control" + url.pathname;    } else if (cookie && cookie.includes(`${NAME}=test`)) {      url.pathname = "/test" + url.pathname;    } else {      // If there is no cookie, this is a new client. Choose a group and set the cookie.      const group = Math.random() < 0.5 ? "test" : "control"; // 50/50 split      if (group === "control") {        url.pathname = "/control" + url.pathname;      } else {        url.pathname = "/test" + url.pathname;      }      // Reconstruct response to avoid immutability      let response = await fetch(url);      response = new Response(response.body, response);      // Set cookie to enable persistent A/B sessions.      response.headers.append("Set-Cookie", `${NAME}=${group}; path=/`);      return response;    }    return fetch(url);  },};
 ```
 
 ```json

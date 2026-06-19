@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,8 +29,8 @@ Stream audio and video between WebRTC tracks and WebSocket endpoints. Supports i
 
 ## How it works
 
-* [ Ingest (WebSocket → WebRTC) ](#tab-panel-9957)
-* [ Stream (WebRTC → WebSocket) ](#tab-panel-9958)
+* [ Ingest (WebSocket → WebRTC) ](#tab-panel-10033)
+* [ Stream (WebRTC → WebSocket) ](#tab-panel-10034)
 
 ### Create WebRTC tracks from external audio
 
@@ -83,42 +83,16 @@ graph LR
 ### Create adapter
 
 ```
-
 POST /v1/apps/{appId}/adapters/websocket/new
-
-
 ```
 
-* [ Ingest ](#tab-panel-9959)
-* [ Stream ](#tab-panel-9960)
+* [ Ingest ](#tab-panel-10035)
+* [ Stream ](#tab-panel-10036)
 
 #### Request body
 
 ```
-
-{
-
-  "tracks": [
-
-    {
-
-      "location": "local",
-
-      "trackName": "string",
-
-      "endpoint": "wss://...",
-
-      "inputCodec": "pcm",
-
-      "mode": "buffer"
-
-    }
-
-  ]
-
-}
-
-
+{  "tracks": [    {      "location": "local",      "trackName": "string",      "endpoint": "wss://...",      "inputCodec": "pcm",      "mode": "buffer"    }  ]}
 ```
 
 #### Parameters
@@ -134,28 +108,7 @@ POST /v1/apps/{appId}/adapters/websocket/new
 #### Response
 
 ```
-
-{
-
-  "tracks": [
-
-    {
-
-      "trackName": "string",
-
-      "adapterId": "string",
-
-      "sessionId": "string",    // New session ID generated
-
-      "endpoint": "string"      // Echo of the requested endpoint
-
-    }
-
-  ]
-
-}
-
-
+{  "tracks": [    {      "trackName": "string",      "adapterId": "string",      "sessionId": "string",    // New session ID generated      "endpoint": "string"      // Echo of the requested endpoint    }  ]}
 ```
 
 Important
@@ -167,30 +120,7 @@ Important
 #### Request body
 
 ```
-
-{
-
-  "tracks": [
-
-    {
-
-      "location": "remote",
-
-      "sessionId": "string",
-
-      "trackName": "string",
-
-      "endpoint": "wss://...",
-
-      "outputCodec": "pcm"
-
-    }
-
-  ]
-
-}
-
-
+{  "tracks": [    {      "location": "remote",      "sessionId": "string",      "trackName": "string",      "endpoint": "wss://...",      "outputCodec": "pcm"    }  ]}
 ```
 
 #### Parameters
@@ -206,28 +136,7 @@ Important
 #### Response
 
 ```
-
-{
-
-  "tracks": [
-
-    {
-
-      "trackName": "string",
-
-      "adapterId": "string",
-
-      "sessionId": "string",    // Same as request sessionId
-
-      "endpoint": "string"      // Echo of the requested endpoint
-
-    }
-
-  ]
-
-}
-
-
+{  "tracks": [    {      "trackName": "string",      "adapterId": "string",      "sessionId": "string",    // Same as request sessionId      "endpoint": "string"      // Echo of the requested endpoint    }  ]}
 ```
 
 Important
@@ -242,31 +151,13 @@ Important
 ### Close adapter
 
 ```
-
 POST /v1/apps/{appId}/adapters/websocket/close
-
-
 ```
 
 #### Request body
 
 ```
-
-{
-
-  "tracks": [
-
-    {
-
-      "adapterId": "string"
-
-    }
-
-  ]
-
-}
-
-
+{  "tracks": [    {      "adapterId": "string"    }  ]}
 ```
 
 ## Media formats
@@ -287,18 +178,7 @@ Media uses Protocol Buffers. Audio uses PCM payloads; video uses JPEG payloads:
 * Video: JPEG image payload (one frame per message)
 
 ```
-
-message Packet {
-
-    uint32 sequenceNumber = 1;  // Used in Stream mode only
-
-    uint32 timestamp = 2;       // Used in Stream mode only
-
-    bytes payload = 5;          // Media data
-
-}
-
-
+message Packet {    uint32 sequenceNumber = 1;  // Used in Stream mode only    uint32 timestamp = 2;       // Used in Stream mode only    bytes payload = 5;          // Media data}
 ```
 
 **Ingest mode (buffer)**: Only the `payload` field is used, containing chunks of audio data.
@@ -306,13 +186,13 @@ message Packet {
 **Stream mode (egress)**:
 
 * For audio frames:  
-   * `sequenceNumber`: Incremental packet counter  
-   * `timestamp`: Timestamp for synchronization  
-   * `payload`: Individual PCM audio frame data
+  * `sequenceNumber`: Incremental packet counter
+  * `timestamp`: Timestamp for synchronization
+  * `payload`: Individual PCM audio frame data
 * For video frames (JPEG):  
-   * `timestamp`: Timestamp for synchronization  
-   * `payload`: JPEG image data (one frame per message)  
-   * Note: `sequenceNumber` may be unset for video frames
+  * `timestamp`: Timestamp for synchronization
+  * `payload`: JPEG image data (one frame per message)
+  * Note: `sequenceNumber` may be unset for video frames
 
 ### Video (JPEG)
 
@@ -340,13 +220,13 @@ Connects to your WebSocket endpoint:
 
 * **Binary messages**: Individual frames with metadata (audio or video)
 * Audio frames include:  
-   * Timestamp information  
-   * Sequence number  
-   * PCM audio frame data
+  * Timestamp information
+  * Sequence number
+  * PCM audio frame data
 * Video frames include:  
-   * Timestamp information  
-   * JPEG image data  
-   * Note: Sequence number may be unset for video frames
+  * Timestamp information
+  * JPEG image data
+  * Note: Sequence number may be unset for video frames
 * Frames are sent individually as they arrive from the WebRTC track
 * Video frames are emitted at approximately 1 FPS
 

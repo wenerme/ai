@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,10 +17,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 ## Endpoint
 
 ```
-
 https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/huggingface
-
-
 ```
 
 ## URL structure
@@ -43,20 +40,7 @@ When making requests to HuggingFace, ensure you have the following:
 Request
 
 ```
-
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/huggingface/bigcode/starcoder \
-
-  --header 'Authorization: Bearer {hf_api_token}' \
-
-  --header 'Content-Type: application/json' \
-
-  --data '{
-
-    "inputs": "console.log"
-
-}'
-
-
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/huggingface/bigcode/starcoder \  --header 'Authorization: Bearer {hf_api_token}' \  --header 'Content-Type: application/json' \  --data '{    "inputs": "console.log"}'
 ```
 
 ### Use HuggingFace.js library with JavaScript
@@ -66,24 +50,9 @@ If you are using the HuggingFace.js library, you can set your inference endpoint
 JavaScript
 
 ```
-
 import { HfInferenceEndpoint } from "@huggingface/inference";
-
-
-const accountId = "{account_id}";
-
-const gatewayId = "{gateway_id}";
-
-const model = "gpt2";
-
-const baseURL = `https://gateway.ai.cloudflare.com/v1/${accountId}/${gatewayId}/huggingface/${model}`;
-
-const apiToken = env.HF_API_TOKEN;
-
-
+const accountId = "{account_id}";const gatewayId = "{gateway_id}";const model = "gpt2";const baseURL = `https://gateway.ai.cloudflare.com/v1/${accountId}/${gatewayId}/huggingface/${model}`;const apiToken = env.HF_API_TOKEN;
 const hf = new HfInferenceEndpoint(baseURL, apiToken);
-
-
 ```
 
 ```json

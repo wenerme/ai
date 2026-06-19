@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -34,20 +34,20 @@ Comments and tags are only supported for [primary zones (full setup)](https://de
 
 ### Record comments
 
-| Free                | Pro | Business | Enterprise |     |
-| ------------------- | --- | -------- | ---------- | --- |
-| Availability        | Yes | Yes      | Yes        | Yes |
-| Character limit     | 100 | 500      | 500        | 500 |
-| Comments per record | 1   | 1        | 1          | 1   |
+|                     | Free | Pro | Business | Enterprise |
+| ------------------- | ---- | --- | -------- | ---------- |
+| Availability        | Yes  | Yes | Yes      | Yes        |
+| Character limit     | 100  | 500 | 500      | 500        |
+| Comments per record | 1    | 1   | 1        | 1          |
 
 ### Record tags
 
-| Free                                               | Pro | Business | Enterprise |     |
-| -------------------------------------------------- | --- | -------- | ---------- | --- |
-| Availability                                       | No  | Yes      | Yes        | Yes |
-| Name character limit (everything before the colon) | N/A | 32       | 32         | 32  |
-| Value character limit (everything after the colon) | N/A | 100      | 100        | 100 |
-| Tags per record                                    | N/A | 20       | 20         | 20  |
+|                                                    | Free | Pro | Business | Enterprise |
+| -------------------------------------------------- | ---- | --- | -------- | ---------- |
+| Availability                                       | No   | Yes | Yes      | Yes        |
+| Name character limit (everything before the colon) | N/A  | 32  | 32       | 32         |
+| Value character limit (everything after the colon) | N/A  | 100 | 100      | 100        |
+| Tags per record                                    | N/A  | 20  | 20       | 20         |
 
 ---
 

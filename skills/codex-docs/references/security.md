@@ -7,14 +7,18 @@
   class="my-8"
 />
 
-For installation steps, supported skills, and review boundaries, see the
-[Codex Security plugin guide](https://developers.openai.com/codex/security/plugin).
+For a prescriptive first local scan, start with the [Codex Security plugin
+quickstart](https://developers.openai.com/codex/security/plugin).
 
 ### Explore plugin use cases
 
-- [Run a deep security scan](https://developers.openai.com/codex/use-cases/deep-security-scan) to perform a higher-recall repository-wide audit.
-- [Scan code changes for security](https://developers.openai.com/codex/use-cases/scan-code-changes-for-security) before you merge a pull request or branch.
-- [Remediate a vulnerability backlog](https://developers.openai.com/codex/use-cases/remediate-vulnerability-backlog) with bounded fixes for approved findings.
+- [Run a security scan](https://developers.openai.com/codex/security/plugin/scans) for a repository or one scoped folder.
+- [Run a deep security scan](https://developers.openai.com/codex/security/plugin/deep-scans) when you need a more comprehensive scan and can wait longer for it to finish.
+- [Review code changes](https://developers.openai.com/codex/security/plugin/code-changes) before you merge a pull request or branch.
+- [Triage a backlog](https://developers.openai.com/codex/security/plugin/triage-backlog) when you have existing security findings to review.
+- [Fix and verify findings](https://developers.openai.com/codex/security/plugin/fix-findings) with bounded patches for approved findings.
+- [Export or track findings](https://developers.openai.com/codex/security/plugin/export-findings) as portable artifacts or approval-gated tracking destinations.
+- [See what's new](https://developers.openai.com/codex/security/plugin/changelog) in the Codex Security plugin.
 
 The plugin runs in your Codex thread. Codex Security cloud scans connected
   GitHub repositories through Codex Web. For Codex sandboxing, approvals,
@@ -49,7 +53,7 @@ Codex Security is available for ChatGPT Enterprise, Edu, Business, and Pro users
 
 ## Related docs
 
-- [Codex Security plugin guide](https://developers.openai.com/codex/security/plugin) covers local repository and diff-review workflows in Codex.
-- [Codex Security cloud setup](https://developers.openai.com/codex/security/setup) covers setup, scanning, and findings review.
+- [Codex Security plugin quickstart](https://developers.openai.com/codex/security/plugin) walks through installation and a first local scan.
+- [Codex Security cloud setup](https://developers.openai.com/codex/security/setup) details setup, scanning, and findings review.
 - [Improving the threat model](https://developers.openai.com/codex/security/threat-model) explains how to tune scope, attack surface, and criticality assumptions.
 - [FAQ](https://developers.openai.com/codex/security/faq) covers common product questions.

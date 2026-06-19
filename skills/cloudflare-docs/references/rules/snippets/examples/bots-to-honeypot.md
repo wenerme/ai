@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,36 +17,9 @@ Use the [bot score field](https://developers.cloudflare.com/workers/runtime-apis
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request) {
-
-    const response = await fetch(request);
-
-
-    // Clone the response so that it is no longer immutable
-
-    const newResponse = new Response(response.body, response);
-
-
-    if (request.cf.botManagement.score < 30) {
-
-      const honeypot = "https://example.com/";
-
-      return await fetch(honeypot, request);
-
-    } else {
-
-      return newResponse;
-
-    }
-
-  },
-
-};
-
-
+export default {  async fetch(request) {    const response = await fetch(request);
+    // Clone the response so that it is no longer immutable    const newResponse = new Response(response.body, response);
+    if (request.cf.botManagement.score < 30) {      const honeypot = "https://example.com/";      return await fetch(honeypot, request);    } else {      return newResponse;    }  },};
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -24,10 +24,7 @@ For more information, refer to [Quick Actions: Before you begin](https://develop
 ## Endpoint
 
 ```
-
 https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/scrape
-
-
 ```
 
 ## Required fields
@@ -46,174 +43,36 @@ You must provide either `url` or `elements`:
 
 ### Extract headings and links from a URL
 
-* [ curl ](#tab-panel-6913)
-* [ TypeScript SDK ](#tab-panel-6914)
-* [ Workers binding ](#tab-panel-6915)
+* [ curl ](#tab-panel-6989)
+* [ TypeScript SDK ](#tab-panel-6990)
+* [ Workers binding ](#tab-panel-6991)
 
 Go to `https://example.com` and extract metadata from all `h1` and `a` elements in the DOM.
 
 Terminal window
 
 ```
-
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/scrape' \
-
-  -H 'Authorization: Bearer <apiToken>' \
-
-  -H 'Content-Type: application/json' \
-
-  -d '{
-
-  "url": "https://example.com/",
-
-  "elements": [{
-
-    "selector": "h1"
-
-  },
-
-  {
-
-    "selector": "a"
-
-  }]
-
-}'
-
-
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/scrape' \  -H 'Authorization: Bearer <apiToken>' \  -H 'Content-Type: application/json' \  -d '{  "url": "https://example.com/",  "elements": [{    "selector": "h1"  },  {    "selector": "a"  }]}'
 ```
 
 ```
-
-{
-
-  "success": true,
-
-  "result": [
-
-    {
-
-      "results": [
-
-        {
-
-          "attributes": [],
-
-          "height": 39,
-
-          "html": "Example Domain",
-
-          "left": 100,
-
-          "text": "Example Domain",
-
-          "top": 133.4375,
-
-          "width": 600
-
-        }
-
-      ],
-
-      "selector": "h1"
-
-    },
-
-    {
-
-      "results": [
-
-        {
-
-          "attributes": [
-
-            { "name": "href", "value": "https://www.iana.org/domains/example" }
-
-          ],
-
-          "height": 20,
-
-          "html": "More information...",
-
-          "left": 100,
-
-          "text": "More information...",
-
-          "top": 249.875,
-
-          "width": 142
-
-        }
-
-      ],
-
-      "selector": "a"
-
-    }
-
-  ]
-
-}
-
-
+{  "success": true,  "result": [    {      "results": [        {          "attributes": [],          "height": 39,          "html": "Example Domain",          "left": 100,          "text": "Example Domain",          "top": 133.4375,          "width": 600        }      ],      "selector": "h1"    },    {      "results": [        {          "attributes": [            { "name": "href", "value": "https://www.iana.org/domains/example" }          ],          "height": 20,          "html": "More information...",          "left": 100,          "text": "More information...",          "top": 249.875,          "width": 142        }      ],      "selector": "a"    }  ]}
 ```
 
 TypeScript
 
 ```
-
 import Cloudflare from "cloudflare";
-
-
-const client = new Cloudflare({
-
-  apiToken: process.env["CLOUDFLARE_API_TOKEN"],
-
-});
-
-
-const scrapes = await client.browserRendering.scrape.create({
-
-  account_id: process.env["CLOUDFLARE_ACCOUNT_ID"],
-
-  elements: [{ selector: "h1" }, { selector: "a" }],
-
-});
-
-
+const client = new Cloudflare({  apiToken: process.env["CLOUDFLARE_API_TOKEN"],});
+const scrapes = await client.browserRendering.scrape.create({  account_id: process.env["CLOUDFLARE_ACCOUNT_ID"],  elements: [{ selector: "h1" }, { selector: "a" }],});
 console.log(scrapes);
-
-
 ```
 
 TypeScript
 
 ```
-
-interface Env {
-
-  BROWSER: BrowserRun;
-
-}
-
-
-export default {
-
-  async fetch(request, env): Promise<Response> {
-
-    return await env.BROWSER.quickAction("scrape", {
-
-      url: "https://example.com/",
-
-      elements: [{ selector: "h1" }, { selector: "a" }],
-
-    });
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+interface Env {  BROWSER: BrowserRun;}
+export default {  async fetch(request, env): Promise<Response> {    return await env.BROWSER.quickAction("scrape", {      url: "https://example.com/",      elements: [{ selector: "h1" }, { selector: "a" }],    });  },} satisfies ExportedHandler<Env>;
 ```
 
 Many more options exist, like setting HTTP credentials using `authenticate`, setting `cookies`, and using `gotoOptions` to control page load behaviour - check the endpoint [reference](https://developers.cloudflare.com/api/resources/browser%5Frendering/subresources/scrape/methods/create/) for all available parameters.
@@ -221,12 +80,12 @@ Many more options exist, like setting HTTP credentials using `authenticate`, set
 ### Response fields
 
 * `results` _(array of objects)_ \- Contains extracted data for each selector.  
-   * `selector` _(string)_ \- The CSS selector used.  
-   * `results` _(array of objects)_ \- List of extracted elements matching the selector.  
-         * `text` _(string)_ \- Inner text of the element.  
-         * `html` _(string)_ \- Inner HTML of the element.  
-         * `attributes` _(array of objects)_ \- List of extracted attributes such as `href` for links.  
-         * `height`, `width`, `top`, `left` _(number)_ \- Position and dimensions of the element.
+  * `selector` _(string)_ \- The CSS selector used.
+  * `results` _(array of objects)_ \- List of extracted elements matching the selector.  
+    * `text` _(string)_ \- Inner text of the element.
+    * `html` _(string)_ \- Inner HTML of the element.
+    * `attributes` _(array of objects)_ \- List of extracted attributes such as `href` for links.
+    * `height`, `width`, `top`, `left` _(number)_ \- Position and dimensions of the element.
 
 ## Advanced usage
 
@@ -241,20 +100,7 @@ For JavaScript-heavy pages or Single Page Applications (SPAs), the default page 
 The simplest solution is to use the `gotoOptions.waitUntil` parameter set to `networkidle0` or `networkidle2`:
 
 ```
-
-{
-
-  "url": "https://example.com",
-
-  "gotoOptions": {
-
-    "waitUntil": "networkidle0"
-
-  }
-
-}
-
-
+{  "url": "https://example.com",  "gotoOptions": {    "waitUntil": "networkidle0"  }}
 ```
 
 For faster responses, advanced users can use `waitForSelector` to wait for a specific element instead of waiting for all network activity to stop. This requires knowing which CSS selector indicates the content you need has loaded. For more details, refer to [Quick Actions timeouts](https://developers.cloudflare.com/browser-run/reference/timeouts/).

@@ -6,25 +6,22 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pipelines/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
 # Regex functions
 
-_Cloudflare Pipelines scalar function implementations are based on[Apache DataFusion ↗](https://arrow.apache.org/datafusion/) (via [Arroyo ↗](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference._
+_Cloudflare Pipelines scalar function implementations are based on [Apache DataFusion ↗](https://arrow.apache.org/datafusion/) (via [Arroyo ↗](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference._
 
-Cloudflare Pipelines uses a[PCRE-like ↗](https://en.wikibooks.org/wiki/Regular%5FExpressions/Perl-Compatible%5FRegular%5FExpressions)regular expression [syntax ↗](https://docs.rs/regex/latest/regex/#syntax) (minus support for several features including look-around and backreferences).
+Cloudflare Pipelines uses a [PCRE-like ↗](https://en.wikibooks.org/wiki/Regular%5FExpressions/Perl-Compatible%5FRegular%5FExpressions)regular expression [syntax ↗](https://docs.rs/regex/latest/regex/#syntax) (minus support for several features including look-around and backreferences).
 
 ## `regexp_like`
 
 Returns true if a [regular expression ↗](https://docs.rs/regex/latest/regex/#syntax) has at least one match in a string, false otherwise.
 
 ```
-
 regexp_like(str, regexp[, flags])
-
-
 ```
 
 **Arguments**
@@ -32,41 +29,16 @@ regexp_like(str, regexp[, flags])
 * **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
 * **regexp**: Regular expression to test against the string expression. Can be a constant, column, or function.
 * **flags**: Optional regular expression flags that control the behavior of the regular expression. The following flags are supported:  
-   * **i**: case-insensitive: letters match both upper and lower case  
-   * **m**: multi-line mode: ^ and $ match begin/end of line  
-   * **s**: allow . to match \\n  
-   * **R**: enables CRLF mode: when multi-line mode is enabled, \\r\\n is used  
-   * **U**: swap the meaning of x\* and x\*?
+  * **i**: case-insensitive: letters match both upper and lower case
+  * **m**: multi-line mode: ^ and $ match begin/end of line
+  * **s**: allow . to match \\n
+  * **R**: enables CRLF mode: when multi-line mode is enabled, \\r\\n is used
+  * **U**: swap the meaning of x\* and x\*?
 
 **Example**
 
 ```
-
-select regexp_like('Köln', '[a-zA-Z]ö[a-zA-Z]{2}');
-
-+--------------------------------------------------------+
-
-| regexp_like(Utf8("Köln"),Utf8("[a-zA-Z]ö[a-zA-Z]{2}")) |
-
-+--------------------------------------------------------+
-
-| true                                                   |
-
-+--------------------------------------------------------+
-
-SELECT regexp_like('aBc', '(b|d)', 'i');
-
-+--------------------------------------------------+
-
-| regexp_like(Utf8("aBc"),Utf8("(b|d)"),Utf8("i")) |
-
-+--------------------------------------------------+
-
-| true                                             |
-
-+--------------------------------------------------+
-
-
+select regexp_like('Köln', '[a-zA-Z]ö[a-zA-Z]{2}');+--------------------------------------------------------+| regexp_like(Utf8("Köln"),Utf8("[a-zA-Z]ö[a-zA-Z]{2}")) |+--------------------------------------------------------+| true                                                   |+--------------------------------------------------------+SELECT regexp_like('aBc', '(b|d)', 'i');+--------------------------------------------------+| regexp_like(Utf8("aBc"),Utf8("(b|d)"),Utf8("i")) |+--------------------------------------------------+| true                                             |+--------------------------------------------------+
 ```
 
 Additional examples can be found [here ↗](https://github.com/apache/datafusion/blob/main/datafusion-examples/examples/regexp.rs)
@@ -76,10 +48,7 @@ Additional examples can be found [here ↗](https://github.com/apache/datafusion
 Returns a list of [regular expression ↗](https://docs.rs/regex/latest/regex/#syntax) matches in a string.
 
 ```
-
 regexp_match(str, regexp[, flags])
-
-
 ```
 
 **Arguments**
@@ -87,41 +56,16 @@ regexp_match(str, regexp[, flags])
 * **str**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
 * **regexp**: Regular expression to match against. Can be a constant, column, or function.
 * **flags**: Optional regular expression flags that control the behavior of the regular expression. The following flags are supported:  
-   * **i**: case-insensitive: letters match both upper and lower case  
-   * **m**: multi-line mode: ^ and $ match begin/end of line  
-   * **s**: allow . to match \\n  
-   * **R**: enables CRLF mode: when multi-line mode is enabled, \\r\\n is used  
-   * **U**: swap the meaning of x\* and x\*?
+  * **i**: case-insensitive: letters match both upper and lower case
+  * **m**: multi-line mode: ^ and $ match begin/end of line
+  * **s**: allow . to match \\n
+  * **R**: enables CRLF mode: when multi-line mode is enabled, \\r\\n is used
+  * **U**: swap the meaning of x\* and x\*?
 
 **Example**
 
 ```
-
-select regexp_match('Köln', '[a-zA-Z]ö[a-zA-Z]{2}');
-
-+---------------------------------------------------------+
-
-| regexp_match(Utf8("Köln"),Utf8("[a-zA-Z]ö[a-zA-Z]{2}")) |
-
-+---------------------------------------------------------+
-
-| [Köln]                                                  |
-
-+---------------------------------------------------------+
-
-SELECT regexp_match('aBc', '(b|d)', 'i');
-
-+---------------------------------------------------+
-
-| regexp_match(Utf8("aBc"),Utf8("(b|d)"),Utf8("i")) |
-
-+---------------------------------------------------+
-
-| [B]                                               |
-
-+---------------------------------------------------+
-
-
+select regexp_match('Köln', '[a-zA-Z]ö[a-zA-Z]{2}');+---------------------------------------------------------+| regexp_match(Utf8("Köln"),Utf8("[a-zA-Z]ö[a-zA-Z]{2}")) |+---------------------------------------------------------+| [Köln]                                                  |+---------------------------------------------------------+SELECT regexp_match('aBc', '(b|d)', 'i');+---------------------------------------------------+| regexp_match(Utf8("aBc"),Utf8("(b|d)"),Utf8("i")) |+---------------------------------------------------+| [B]                                               |+---------------------------------------------------+
 ```
 
 Additional examples can be found [here ↗](https://github.com/apache/datafusion/blob/main/datafusion-examples/examples/regexp.rs)
@@ -131,10 +75,7 @@ Additional examples can be found [here ↗](https://github.com/apache/datafusion
 Replaces substrings in a string that match a [regular expression ↗](https://docs.rs/regex/latest/regex/#syntax).
 
 ```
-
 regexp_replace(str, regexp, replacement[, flags])
-
-
 ```
 
 **Arguments**
@@ -143,42 +84,17 @@ regexp_replace(str, regexp, replacement[, flags])
 * **regexp**: Regular expression to match against. Can be a constant, column, or function.
 * **replacement**: Replacement string expression. Can be a constant, column, or function, and any combination of string operators.
 * **flags**: Optional regular expression flags that control the behavior of the regular expression. The following flags are supported:  
-   * **g**: (global) Search globally and don't return after the first match  
-   * **i**: case-insensitive: letters match both upper and lower case  
-   * **m**: multi-line mode: ^ and $ match begin/end of line  
-   * **s**: allow . to match \\n  
-   * **R**: enables CRLF mode: when multi-line mode is enabled, \\r\\n is used  
-   * **U**: swap the meaning of x\* and x\*?
+  * **g**: (global) Search globally and don't return after the first match
+  * **i**: case-insensitive: letters match both upper and lower case
+  * **m**: multi-line mode: ^ and $ match begin/end of line
+  * **s**: allow . to match \\n
+  * **R**: enables CRLF mode: when multi-line mode is enabled, \\r\\n is used
+  * **U**: swap the meaning of x\* and x\*?
 
 **Example**
 
 ```
-
-SELECT regexp_replace('foobarbaz', 'b(..)', 'X\\1Y', 'g');
-
-+------------------------------------------------------------------------+
-
-| regexp_replace(Utf8("foobarbaz"),Utf8("b(..)"),Utf8("X\1Y"),Utf8("g")) |
-
-+------------------------------------------------------------------------+
-
-| fooXarYXazY                                                            |
-
-+------------------------------------------------------------------------+
-
-SELECT regexp_replace('aBc', '(b|d)', 'Ab\\1a', 'i');
-
-+-------------------------------------------------------------------+
-
-| regexp_replace(Utf8("aBc"),Utf8("(b|d)"),Utf8("Ab\1a"),Utf8("i")) |
-
-+-------------------------------------------------------------------+
-
-| aAbBac                                                            |
-
-+-------------------------------------------------------------------+
-
-
+SELECT regexp_replace('foobarbaz', 'b(..)', 'X\\1Y', 'g');+------------------------------------------------------------------------+| regexp_replace(Utf8("foobarbaz"),Utf8("b(..)"),Utf8("X\1Y"),Utf8("g")) |+------------------------------------------------------------------------+| fooXarYXazY                                                            |+------------------------------------------------------------------------+SELECT regexp_replace('aBc', '(b|d)', 'Ab\\1a', 'i');+-------------------------------------------------------------------+| regexp_replace(Utf8("aBc"),Utf8("(b|d)"),Utf8("Ab\1a"),Utf8("i")) |+-------------------------------------------------------------------+| aAbBac                                                            |+-------------------------------------------------------------------+
 ```
 
 Additional examples can be found [here ↗](https://github.com/apache/datafusion/blob/main/datafusion-examples/examples/regexp.rs)
@@ -188,10 +104,7 @@ Additional examples can be found [here ↗](https://github.com/apache/datafusion
 Returns the position of `substr` in `origstr` (counting from 1). If `substr` does not appear in `origstr`, return 0.
 
 ```
-
 position(substr in origstr)
-
-
 ```
 
 **Arguments**

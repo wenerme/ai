@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -36,28 +36,32 @@ Some SaaS applications provide the Redirect URL after you [configure the SSO pro
 7. In **Scopes**, select the user attributes that you want Access to send in the ID token. For more information about configuring OIDC scopes and claims, refer to [OIDC claims](#oidc-claims).
 8. In **Redirect URLs**, enter the callback URL obtained from the SaaS application.
 9. (Optional) Enable [Proof of Key Exchange (PKCE) ↗](https://www.oauth.com/oauth2-servers/pkce/) if the protocol is supported by your IdP. PKCE will be performed on all login attempts.
-10. Copy the following values to input into your SaaS application. Different SaaS applications may require different sets of input values.  
-| Field                  | Description                                                                                                                                                                                                                                                                           |  
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |  
-| Client secret          | Credential used to authorize Access as an SSO provider                                                                                                                                                                                                                                |  
-| Client ID              | Unique identifier for this Access application                                                                                                                                                                                                                                         |  
-| Configuration endpoint | If supported by your SaaS application, you can configure OIDC using this endpoint instead of manually entering the URLs listed below. https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/sso/oidc/<client-id>/.well-known/openid-configuration                              |  
-| Issuer                 | Base URL for this OIDC integration https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/sso/oidc/<client-id>                                                                                                                                                                  |  
-| Token endpoint         | Returns the user's ID token https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/sso/oidc/<client-id>/token                                                                                                                                                                   |  
-| Authorization endpoint | URL where users authenticate with Access https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/sso/oidc/<client-id>/authorization                                                                                                                                              |  
-| Key endpoint           | Returns the current public keys used to [verify the Access JWT](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/) https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/sso/oidc/<client-id>/jwks |  
+10. Copy the following values to input into your SaaS application. Different SaaS applications may require different sets of input values.
+
+| Field                  | Description                                                                                                                                                                                                                                                                           |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Client secret          | Credential used to authorize Access as an SSO provider                                                                                                                                                                                                                                |
+| Client ID              | Unique identifier for this Access application                                                                                                                                                                                                                                         |
+| Configuration endpoint | If supported by your SaaS application, you can configure OIDC using this endpoint instead of manually entering the URLs listed below. https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/sso/oidc/<client-id>/.well-known/openid-configuration                              |
+| Issuer                 | Base URL for this OIDC integration https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/sso/oidc/<client-id>                                                                                                                                                                  |
+| Token endpoint         | Returns the user's ID token https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/sso/oidc/<client-id>/token                                                                                                                                                                   |
+| Authorization endpoint | URL where users authenticate with Access https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/sso/oidc/<client-id>/authorization                                                                                                                                              |
+| Key endpoint           | Returns the current public keys used to [verify the Access JWT](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/) https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/sso/oidc/<client-id>/jwks |
 | User info endpoint     | Returns all user claims in JSON format https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/sso/oidc/<client-id>/userinfo                                                                                                                                                     |
 11. Under **Access policies**, add an existing policy or [create a new policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/) to control who can connect to your application. All Access applications are deny by default -- a user must match an Allow policy before they are granted access.
-12. Configure how users will authenticate:  
-   1. Select the [identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) you want to enable for your application.  
-   2. (Recommended) If you plan to only allow access via a single IdP, turn on **Apply instant authentication**. End users will not be shown the [Cloudflare Access login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/). Instead, Cloudflare will redirect users directly to your SSO login event.  
-   3. (Optional) Turn on **Authenticate with Cloudflare One Client** to allow users to authenticate to the application using their [ Cloudflare One Client session identity](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/).
-13. (Optional) Go to **Additional settings** to customize the application experience:  
-   * **App Launcher customization**: Configure how this application appears to users in the [App Launcher](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/). If **Show application in App Launcher** is enabled, then you must enter an **App Launcher URL**. The App Launcher URL is provided by the SaaS application. It may match the base URL portion of **Redirect URL** (`https://<INSTANCE-NAME>.example-app.com`) but could be a different value.  
-   * **Custom block pages**: Choose what users will see when they are denied access to the application.  
-         * **Cloudflare default**: Reload the [login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/) and display a block message below the Cloudflare Access logo. The default message is `That account does not have access`, or you can enter a custom message.  
-         * **Redirect URL**: Redirect to the specified website.  
-         * **Custom page template**: Display a [custom block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-block-page/) hosted in Cloudflare One.
+12. Configure how users will authenticate:
+
+  1. Select the [identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) you want to enable for your application.
+  2. (Recommended) If you plan to only allow access via a single IdP, turn on **Apply instant authentication**. End users will not be shown the [Cloudflare Access login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/). Instead, Cloudflare will redirect users directly to your SSO login event.
+  3. (Optional) Turn on **Authenticate with Cloudflare One Client** to allow users to authenticate to the application using their [ Cloudflare One Client session identity](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/).
+13. (Optional) Go to **Additional settings** to customize the application experience:
+
+  * **App Launcher customization**: Configure how this application appears to users in the [App Launcher](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/). If **Show application in App Launcher** is enabled, then you must enter an **App Launcher URL**. The App Launcher URL is provided by the SaaS application. It may match the base URL portion of **Redirect URL** (`https://<INSTANCE-NAME>.example-app.com`) but could be a different value.
+  * **Custom block pages**: Choose what users will see when they are denied access to the application.
+
+    * **Cloudflare default**: Reload the [login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/) and display a block message below the Cloudflare Access logo. The default message is `That account does not have access`, or you can enter a custom message.
+    * **Redirect URL**: Redirect to the specified website.
+    * **Custom page template**: Display a [custom block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-block-page/) hosted in Cloudflare One.
 14. Select **Create**.
 
 ## 3\. Configure SSO in your SaaS application

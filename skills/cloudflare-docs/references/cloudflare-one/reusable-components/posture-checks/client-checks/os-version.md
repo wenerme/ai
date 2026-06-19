@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,17 +26,22 @@ The OS Version device posture attribute checks whether the version of a device's
 4. Configure the **Operating system**, **Operator**, and **Version** fields to specify the [OS version](#determine-the-os-version) you want devices to match.  
 Note  
 The OS version must be specified as a valid [Semver ↗](https://semver.org/). For example, if your device is running OS version `1.2`, you must enter `1.2.0`.
-5. (Optional) Configure additional OS-specific fields:  
-   * [ Windows ](#tab-panel-7414)  
-   * [ macOS ](#tab-panel-7415)  
-   * [ Linux ](#tab-panel-7416)  
-   * [ iOS ](#tab-panel-7417)  
-To check that Windows devices have required security patches and features installed, include an Update Build Revision (UBR) number in the OS version check.  
-   * **Update Build Revision**: Enter the Windows UBR you want devices to match (for example, `3803`). The UBR is the fourth part of the full Windows version number (for example, in `10.0.19045.3803`, the UBR is `3803`).  
-   * **Rapid Security Response Version**: Enter the macOS [Rapid Security Response (RSR) ↗](https://support.apple.com/guide/deployment/rapid-security-responses-dep93ff7ea78/web) version you want devices to match (for example, `(a)`). Be sure to include the parenthesis around the letter.  
-   * **Distro name** and **Distro revision**: Enter the Linux distribution you want devices to match (for example, `ubuntu 22.04`). The distro version always matches with an equal-to operator (==) regardless of the **Operator** setting.  
-   * **Patch Version**: Enter the [patch version](#linux) of the kernel. For example, if the kernel is `6.50.0-1007-oem`, enter `1007`.  
-   * **Rapid Security Response Version**: Enter the iOS [Rapid Security Response (RSR) ↗](https://support.apple.com/guide/deployment/rapid-security-responses-dep93ff7ea78/web) version you want devices to match (for example, `(a)`). Be sure to include the parenthesis around the letter.
+5. (Optional) Configure additional OS-specific fields:
+
+  * [ Windows ](#tab-panel-7490)
+  * [ macOS ](#tab-panel-7491)
+  * [ Linux ](#tab-panel-7492)
+  * [ iOS ](#tab-panel-7493)  
+To check that Windows devices have required security patches and features installed, include an Update Build Revision (UBR) number in the OS version check.
+
+  * **Update Build Revision**: Enter the Windows UBR you want devices to match (for example, `3803`). The UBR is the fourth part of the full Windows version number (for example, in `10.0.19045.3803`, the UBR is `3803`).
+
+  * **Rapid Security Response Version**: Enter the macOS [Rapid Security Response (RSR) ↗](https://support.apple.com/guide/deployment/rapid-security-responses-dep93ff7ea78/web) version you want devices to match (for example, `(a)`). Be sure to include the parenthesis around the letter.
+
+  * **Distro name** and **Distro revision**: Enter the Linux distribution you want devices to match (for example, `ubuntu 22.04`). The distro version always matches with an equal-to operator (==) regardless of the **Operator** setting.
+  * **Patch Version**: Enter the [patch version](#linux) of the kernel. For example, if the kernel is `6.50.0-1007-oem`, enter `1007`.
+
+  * **Rapid Security Response Version**: Enter the iOS [Rapid Security Response (RSR) ↗](https://support.apple.com/guide/deployment/rapid-security-responses-dep93ff7ea78/web) version you want devices to match (for example, `(a)`). Be sure to include the parenthesis around the letter.
 6. Select **Save**.
 
 Next, go to **Insights** \> **Logs** \> **Posture logs** and verify that the OS version check is returning the expected results.
@@ -88,8 +93,7 @@ The Linux OS version check reads the system kernel version.
 2. Run the `uname -r` command to get the complete kernel version. For example,  
 Terminal window  
 ```  
-$ uname -r  
-5.14.0-25.el9.x86_64  
+$ uname -r5.14.0-25.el9.x86_64  
 ```
 3. **Version** is the first three numbers of the output in SemVer format (`5.14.0`).
 4. **Patch Version** is the first number after the SemVer (`25`).
@@ -116,10 +120,11 @@ To determine the ChromeOS version on your device:
 
 1. Open Chrome browser and go to `chrome://system`.
 2. Find the following values:  
-| Property                             | OS version component |  
-| ------------------------------------ | -------------------- |  
-| CHROMEOS\_RELEASE\_CHROME\_MILESTONE | MAJOR                |  
-| CHROMEOS\_RELEASE\_BUILD\_NUMBER     | MINOR                |  
+
+| Property                             | OS version component |
+| ------------------------------------ | -------------------- |
+| CHROMEOS\_RELEASE\_CHROME\_MILESTONE | MAJOR                |
+| CHROMEOS\_RELEASE\_BUILD\_NUMBER     | MINOR                |
 | CHROMEOS\_RELEASE\_BRANCH\_NUMBER    | BUILD                |
 3. The OS version in Semver format is `MAJOR.MINOR.BUILD` (for example, `103.14816.131`).
 

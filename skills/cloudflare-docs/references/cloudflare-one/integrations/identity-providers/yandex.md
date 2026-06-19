@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,7 +32,8 @@ https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
 You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.  
 ![Yandex Platform interface with Web services checked and callback URI in open form field](https://developers.cloudflare.com/_astro/yandex-3.DteBNxdB_1qShkV.webp)
 9. Select **Add**.
-10. Scroll to the **Platforms** card, and select **Submit**.  
+10. Scroll to the **Platforms** card, and select **Submit**.
+
 **Yandex OAuth** card titled **Cloudflare Access App** displays.
 11. Copy the **ID** and **Password**.
 12. In Cloudflare One, go to **Integrations** \> **Identity providers**.
@@ -44,24 +45,7 @@ You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloud
 ## Example API Config
 
 ```
-
-{
-
-  "config": {
-
-    "client_id": "<your client id>",
-
-    "client_secret": "<your client secret>"
-
-  },
-
-  "type": "yandex",
-
-  "name": "my example idp"
-
-}
-
-
+{  "config": {    "client_id": "<your client id>",    "client_secret": "<your client secret>"  },  "type": "yandex",  "name": "my example idp"}
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -65,310 +65,63 @@ To use WebSockets with Durable Objects:
 
 If an event occurs for a hibernated Durable Object, the runtime re-initializes it by calling the constructor. Minimize work in the constructor when using hibernation.
 
-* [  JavaScript ](#tab-panel-8295)
-* [  TypeScript ](#tab-panel-8296)
-* [  Python ](#tab-panel-8297)
+* [  JavaScript ](#tab-panel-8371)
+* [  TypeScript ](#tab-panel-8372)
+* [  Python ](#tab-panel-8373)
 
 JavaScript
 
 ```
-
 import { DurableObject } from "cloudflare:workers";
-
-
-// Durable Object
-
-export class WebSocketHibernationServer extends DurableObject {
-
-  async fetch(request) {
-
-    // Creates two ends of a WebSocket connection.
-
-    const webSocketPair = new WebSocketPair();
-
-    const [client, server] = Object.values(webSocketPair);
-
-
-    // Calling `acceptWebSocket()` connects the WebSocket to the Durable Object, allowing the WebSocket to send and receive messages.
-
-    // Unlike `ws.accept()`, `state.acceptWebSocket(ws)` allows the Durable Object to be hibernated
-
-    // When the Durable Object receives a message during Hibernation, it will run the `constructor` to be re-initialized
-
-    this.ctx.acceptWebSocket(server);
-
-
-    return new Response(null, {
-
-      status: 101,
-
-      webSocket: client,
-
-    });
-
-  }
-
-
-  async webSocketMessage(ws, message) {
-
-    // Upon receiving a message from the client, reply with the same message,
-
-    // but will prefix the message with "[Durable Object]: " and return the number of connections.
-
-    ws.send(
-
-      `[Durable Object] message: ${message}, connections: ${this.ctx.getWebSockets().length}`,
-
-    );
-
-  }
-
-
-  async webSocketClose(ws, code, reason, wasClean) {
-
-    // With web_socket_auto_reply_to_close (compat date >= 2026-04-07), the runtime
-
-    // auto-replies to Close frames. Calling close() is safe but no longer required.
-
-    ws.close(code, reason);
-
-  }
-
-}
-
-
+// Durable Objectexport class WebSocketHibernationServer extends DurableObject {  async fetch(request) {    // Creates two ends of a WebSocket connection.    const webSocketPair = new WebSocketPair();    const [client, server] = Object.values(webSocketPair);
+    // Calling `acceptWebSocket()` connects the WebSocket to the Durable Object, allowing the WebSocket to send and receive messages.    // Unlike `ws.accept()`, `state.acceptWebSocket(ws)` allows the Durable Object to be hibernated    // When the Durable Object receives a message during Hibernation, it will run the `constructor` to be re-initialized    this.ctx.acceptWebSocket(server);
+    return new Response(null, {      status: 101,      webSocket: client,    });  }
+  async webSocketMessage(ws, message) {    // Upon receiving a message from the client, reply with the same message,    // but will prefix the message with "[Durable Object]: " and return the number of connections.    ws.send(      `[Durable Object] message: ${message}, connections: ${this.ctx.getWebSockets().length}`,    );  }
+  async webSocketClose(ws, code, reason, wasClean) {    // With web_socket_auto_reply_to_close (compat date >= 2026-04-07), the runtime    // auto-replies to Close frames. Calling close() is safe but no longer required.    ws.close(code, reason);  }}
 ```
 
 TypeScript
 
 ```
-
 import { DurableObject } from "cloudflare:workers";
-
-
-export interface Env {
-
-  WEBSOCKET_HIBERNATION_SERVER: DurableObjectNamespace<WebSocketHibernationServer>;
-
-}
-
-
-// Durable Object
-
-export class WebSocketHibernationServer extends DurableObject {
-
-  async fetch(request: Request): Promise<Response> {
-
-    // Creates two ends of a WebSocket connection.
-
-    const webSocketPair = new WebSocketPair();
-
-    const [client, server] = Object.values(webSocketPair);
-
-
-    // Calling `acceptWebSocket()` connects the WebSocket to the Durable Object, allowing the WebSocket to send and receive messages.
-
-    // Unlike `ws.accept()`, `state.acceptWebSocket(ws)` allows the Durable Object to be hibernated
-
-    // When the Durable Object receives a message during Hibernation, it will run the `constructor` to be re-initialized
-
-    this.ctx.acceptWebSocket(server);
-
-
-    return new Response(null, {
-
-      status: 101,
-
-      webSocket: client,
-
-    });
-
-  }
-
-
-  async webSocketMessage(ws: WebSocket, message: ArrayBuffer | string) {
-
-    // Upon receiving a message from the client, reply with the same message,
-
-    // but will prefix the message with "[Durable Object]: " and return the number of connections.
-
-    ws.send(
-
-      `[Durable Object] message: ${message}, connections: ${this.ctx.getWebSockets().length}`,
-
-    );
-
-  }
-
-
-  async webSocketClose(
-
-    ws: WebSocket,
-
-    code: number,
-
-    reason: string,
-
-    wasClean: boolean,
-
-  ) {
-
-    // With web_socket_auto_reply_to_close (compat date >= 2026-04-07), the runtime
-
-    // auto-replies to Close frames. Calling close() is safe but no longer required.
-
-    ws.close(code, reason);
-
-  }
-
-}
-
-
+export interface Env {  WEBSOCKET_HIBERNATION_SERVER: DurableObjectNamespace<WebSocketHibernationServer>;}
+// Durable Objectexport class WebSocketHibernationServer extends DurableObject {  async fetch(request: Request): Promise<Response> {    // Creates two ends of a WebSocket connection.    const webSocketPair = new WebSocketPair();    const [client, server] = Object.values(webSocketPair);
+    // Calling `acceptWebSocket()` connects the WebSocket to the Durable Object, allowing the WebSocket to send and receive messages.    // Unlike `ws.accept()`, `state.acceptWebSocket(ws)` allows the Durable Object to be hibernated    // When the Durable Object receives a message during Hibernation, it will run the `constructor` to be re-initialized    this.ctx.acceptWebSocket(server);
+    return new Response(null, {      status: 101,      webSocket: client,    });  }
+  async webSocketMessage(ws: WebSocket, message: ArrayBuffer | string) {    // Upon receiving a message from the client, reply with the same message,    // but will prefix the message with "[Durable Object]: " and return the number of connections.    ws.send(      `[Durable Object] message: ${message}, connections: ${this.ctx.getWebSockets().length}`,    );  }
+  async webSocketClose(    ws: WebSocket,    code: number,    reason: string,    wasClean: boolean,  ) {    // With web_socket_auto_reply_to_close (compat date >= 2026-04-07), the runtime    // auto-replies to Close frames. Calling close() is safe but no longer required.    ws.close(code, reason);  }}
 ```
 
 Python
 
 ```
-
-from workers import Response, DurableObject
-
-from js import WebSocketPair
-
-
+from workers import Response, DurableObjectfrom js import WebSocketPair
 # Durable Object
-
-
-class WebSocketHibernationServer(DurableObject):
-
-def **init**(self, state, env):
-
-super().**init**(state, env)
-
-self.ctx = state
-
-
-    async def fetch(self, request):
-
-        # Creates two ends of a WebSocket connection.
-
-        client, server = WebSocketPair.new().object_values()
-
-
-        # Calling `acceptWebSocket()` connects the WebSocket to the Durable Object, allowing the WebSocket to send and receive messages.
-
-        # Unlike `ws.accept()`, `state.acceptWebSocket(ws)` allows the Durable Object to be hibernated
-
-        # When the Durable Object receives a message during Hibernation, it will run the `__init__` to be re-initialized
-
-        self.ctx.acceptWebSocket(server)
-
-
-        return Response(
-
-            None,
-
-            status=101,
-
-            web_socket=client
-
-        )
-
-
-    async def webSocketMessage(self, ws, message):
-
-        # Upon receiving a message from the client, reply with the same message,
-
-        # but will prefix the message with "[Durable Object]: " and return the number of connections.
-
-        ws.send(
-
-            f"[Durable Object] message: {message}, connections: {len(self.ctx.get_websockets())}"
-
-        )
-
-
-    async def webSocketClose(self, ws, code, reason, was_clean):
-
-        # With web_socket_auto_reply_to_close (compat date >= 2026-04-07), the runtime
-
-        # auto-replies to Close frames. Calling close() is safe but no longer required.
-
-        ws.close(code, reason)
-
-
+class WebSocketHibernationServer(DurableObject):def **init**(self, state, env):super().**init**(state, env)self.ctx = state
+    async def fetch(self, request):        # Creates two ends of a WebSocket connection.        client, server = WebSocketPair.new().object_values()
+        # Calling `acceptWebSocket()` connects the WebSocket to the Durable Object, allowing the WebSocket to send and receive messages.        # Unlike `ws.accept()`, `state.acceptWebSocket(ws)` allows the Durable Object to be hibernated        # When the Durable Object receives a message during Hibernation, it will run the `__init__` to be re-initialized        self.ctx.acceptWebSocket(server)
+        return Response(            None,            status=101,            web_socket=client        )
+    async def webSocketMessage(self, ws, message):        # Upon receiving a message from the client, reply with the same message,        # but will prefix the message with "[Durable Object]: " and return the number of connections.        ws.send(            f"[Durable Object] message: {message}, connections: {len(self.ctx.get_websockets())}"        )
+    async def webSocketClose(self, ws, code, reason, was_clean):        # With web_socket_auto_reply_to_close (compat date >= 2026-04-07), the runtime        # auto-replies to Close frames. Calling close() is safe but no longer required.        ws.close(code, reason)
 ```
 
 Configure your Wrangler file with a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/):
 
-* [  wrangler.jsonc ](#tab-panel-8304)
-* [  wrangler.toml ](#tab-panel-8305)
+* [  wrangler.jsonc ](#tab-panel-8380)
+* [  wrangler.toml ](#tab-panel-8381)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "websocket-hibernation-server",
-
-  "durable_objects": {
-
-    "bindings": [
-
-      {
-
-        "name": "WEBSOCKET_HIBERNATION_SERVER",
-
-        "class_name": "WebSocketHibernationServer"
-
-      }
-
-    ]
-
-  },
-
-  "migrations": [
-
-    {
-
-      "tag": "v1",
-
-      "new_sqlite_classes": ["WebSocketHibernationServer"]
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "websocket-hibernation-server",  "durable_objects": {    "bindings": [      {        "name": "WEBSOCKET_HIBERNATION_SERVER",        "class_name": "WebSocketHibernationServer"      }    ]  },  "migrations": [    {      "tag": "v1",      "new_sqlite_classes": ["WebSocketHibernationServer"]    }  ]}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "websocket-hibernation-server"
-
-
-[[durable_objects.bindings]]
-
-name = "WEBSOCKET_HIBERNATION_SERVER"
-
-class_name = "WebSocketHibernationServer"
-
-
-[[migrations]]
-
-tag = "v1"
-
-new_sqlite_classes = [ "WebSocketHibernationServer" ]
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "websocket-hibernation-server"
+[[durable_objects.bindings]]name = "WEBSOCKET_HIBERNATION_SERVER"class_name = "WebSocketHibernationServer"
+[[migrations]]tag = "v1"new_sqlite_classes = [ "WebSocketHibernationServer" ]
 ```
 
 A full example is available in [Build a WebSocket server with WebSocket Hibernation](https://developers.cloudflare.com/durable-objects/examples/websocket-hibernation-server/).
@@ -397,149 +150,31 @@ To maximize throughput:
 * **Use a simple envelope format** to pack and unpack batched messages
 * **Target fewer, larger messages** rather than many small ones
 
-* [  JavaScript ](#tab-panel-8308)
-* [  TypeScript ](#tab-panel-8309)
+* [  JavaScript ](#tab-panel-8384)
+* [  TypeScript ](#tab-panel-8385)
 
 JavaScript
 
 ```
-
 import { DurableObject } from "cloudflare:workers";
-
-
 // Define a batch envelope format
-
-
-// Client-side: batch messages before sending
-
-function sendBatch(ws, messages) {
-
-  const batch = {
-
-    messages,
-
-    timestamp: Date.now(),
-
-  };
-
-  ws.send(JSON.stringify(batch));
-
-}
-
-
-// Durable Object: process batched messages
-
-export class GameRoom extends DurableObject {
-
-  async webSocketMessage(ws, message) {
-
-    if (typeof message !== "string") return;
-
-
+// Client-side: batch messages before sendingfunction sendBatch(ws, messages) {  const batch = {    messages,    timestamp: Date.now(),  };  ws.send(JSON.stringify(batch));}
+// Durable Object: process batched messagesexport class GameRoom extends DurableObject {  async webSocketMessage(ws, message) {    if (typeof message !== "string") return;
     const batch = JSON.parse(message);
-
-
-    // Process all messages in the batch in a single handler invocation
-
-    for (const msg of batch.messages) {
-
-      this.handleMessage(ws, msg);
-
-    }
-
-  }
-
-
-  handleMessage(ws, msg) {
-
-    // Handle individual message logic
-
-  }
-
-}
-
-
+    // Process all messages in the batch in a single handler invocation    for (const msg of batch.messages) {      this.handleMessage(ws, msg);    }  }
+  handleMessage(ws, msg) {    // Handle individual message logic  }}
 ```
 
 TypeScript
 
 ```
-
 import { DurableObject } from "cloudflare:workers";
-
-
-// Define a batch envelope format
-
-interface BatchedMessage {
-
-  messages: Array<{ type: string; payload: unknown }>;
-
-  timestamp: number;
-
-}
-
-
-// Client-side: batch messages before sending
-
-function sendBatch(
-
-  ws: WebSocket,
-
-  messages: Array<{ type: string; payload: unknown }>,
-
-) {
-
-  const batch: BatchedMessage = {
-
-    messages,
-
-    timestamp: Date.now(),
-
-  };
-
-  ws.send(JSON.stringify(batch));
-
-}
-
-
-// Durable Object: process batched messages
-
-export class GameRoom extends DurableObject<Env> {
-
-  async webSocketMessage(ws: WebSocket, message: string | ArrayBuffer) {
-
-    if (typeof message !== "string") return;
-
-
+// Define a batch envelope formatinterface BatchedMessage {  messages: Array<{ type: string; payload: unknown }>;  timestamp: number;}
+// Client-side: batch messages before sendingfunction sendBatch(  ws: WebSocket,  messages: Array<{ type: string; payload: unknown }>,) {  const batch: BatchedMessage = {    messages,    timestamp: Date.now(),  };  ws.send(JSON.stringify(batch));}
+// Durable Object: process batched messagesexport class GameRoom extends DurableObject<Env> {  async webSocketMessage(ws: WebSocket, message: string | ArrayBuffer) {    if (typeof message !== "string") return;
     const batch = JSON.parse(message) as BatchedMessage;
-
-
-    // Process all messages in the batch in a single handler invocation
-
-    for (const msg of batch.messages) {
-
-      this.handleMessage(ws, msg);
-
-    }
-
-  }
-
-
-  private handleMessage(
-
-    ws: WebSocket,
-
-    msg: { type: string; payload: unknown },
-
-  ) {
-
-    // Handle individual message logic
-
-  }
-
-}
-
-
+    // Process all messages in the batch in a single handler invocation    for (const msg of batch.messages) {      this.handleMessage(ws, msg);    }  }
+  private handleMessage(    ws: WebSocket,    msg: { type: string; payload: unknown },  ) {    // Handle individual message logic  }}
 ```
 
 #### Why batching helps
@@ -584,161 +219,35 @@ Retrieves the most recent value passed to `serializeAttachment()`, or `null` if 
 
 Use `serializeAttachment` and `deserializeAttachment` to persist per-connection state across hibernation:
 
-* [  JavaScript ](#tab-panel-8310)
-* [  TypeScript ](#tab-panel-8311)
+* [  JavaScript ](#tab-panel-8386)
+* [  TypeScript ](#tab-panel-8387)
 
 JavaScript
 
 ```
-
 import { DurableObject } from "cloudflare:workers";
-
-
-export class WebSocketServer extends DurableObject {
-
-  async fetch(request) {
-
-    const url = new URL(request.url);
-
-    const orderId = url.searchParams.get("orderId") ?? "anonymous";
-
-
-    const webSocketPair = new WebSocketPair();
-
-    const [client, server] = Object.values(webSocketPair);
-
-
+export class WebSocketServer extends DurableObject {  async fetch(request) {    const url = new URL(request.url);    const orderId = url.searchParams.get("orderId") ?? "anonymous";
+    const webSocketPair = new WebSocketPair();    const [client, server] = Object.values(webSocketPair);
     this.ctx.acceptWebSocket(server);
-
-
-    // Persist per-connection state that survives hibernation
-
-    const state = {
-
-      orderId,
-
-      joinedAt: Date.now(),
-
-    };
-
-    server.serializeAttachment(state);
-
-
-    return new Response(null, { status: 101, webSocket: client });
-
-  }
-
-
-  async webSocketMessage(ws, message) {
-
-    // Restore state after potential hibernation
-
-    const state = ws.deserializeAttachment();
-
-    ws.send(`Hello ${state.orderId}, you joined at ${state.joinedAt}`);
-
-  }
-
-
-  async webSocketClose(ws, code, reason, wasClean) {
-
-    const state = ws.deserializeAttachment();
-
-    console.log(`${state.orderId} disconnected`);
-
-    // With web_socket_auto_reply_to_close (compat date >= 2026-04-07), the runtime
-
-    // auto-replies to Close frames. Calling close() is safe but no longer required.
-
-    ws.close(code, reason);
-
-  }
-
-}
-
-
+    // Persist per-connection state that survives hibernation    const state = {      orderId,      joinedAt: Date.now(),    };    server.serializeAttachment(state);
+    return new Response(null, { status: 101, webSocket: client });  }
+  async webSocketMessage(ws, message) {    // Restore state after potential hibernation    const state = ws.deserializeAttachment();    ws.send(`Hello ${state.orderId}, you joined at ${state.joinedAt}`);  }
+  async webSocketClose(ws, code, reason, wasClean) {    const state = ws.deserializeAttachment();    console.log(`${state.orderId} disconnected`);    // With web_socket_auto_reply_to_close (compat date >= 2026-04-07), the runtime    // auto-replies to Close frames. Calling close() is safe but no longer required.    ws.close(code, reason);  }}
 ```
 
 TypeScript
 
 ```
-
 import { DurableObject } from "cloudflare:workers";
-
-
-interface ConnectionState {
-
-orderId: string;
-
-joinedAt: number;
-
-}
-
-
-export class WebSocketServer extends DurableObject<Env> {
-
-  async fetch(request: Request): Promise<Response> {
-
-    const url = new URL(request.url);
-
-    const orderId = url.searchParams.get("orderId") ?? "anonymous";
-
-
-      const webSocketPair = new WebSocketPair();
-
-      const [client, server] = Object.values(webSocketPair);
-
-
+interface ConnectionState {orderId: string;joinedAt: number;}
+export class WebSocketServer extends DurableObject<Env> {  async fetch(request: Request): Promise<Response> {    const url = new URL(request.url);    const orderId = url.searchParams.get("orderId") ?? "anonymous";
+      const webSocketPair = new WebSocketPair();      const [client, server] = Object.values(webSocketPair);
       this.ctx.acceptWebSocket(server);
-
-
-      // Persist per-connection state that survives hibernation
-
-      const state: ConnectionState = {
-
-        orderId,
-
-        joinedAt: Date.now(),
-
-      };
-
-      server.serializeAttachment(state);
-
-
-      return new Response(null, { status: 101, webSocket: client });
-
-    }
-
-
-    async webSocketMessage(ws: WebSocket, message: string | ArrayBuffer) {
-
-      // Restore state after potential hibernation
-
-      const state = ws.deserializeAttachment() as ConnectionState;
-
-      ws.send(`Hello ${state.orderId}, you joined at ${state.joinedAt}`);
-
-    }
-
-
-    async webSocketClose(ws: WebSocket, code: number, reason: string, wasClean: boolean) {
-
-      const state = ws.deserializeAttachment() as ConnectionState;
-
-      console.log(`${state.orderId} disconnected`);
-
-      // With web_socket_auto_reply_to_close (compat date >= 2026-04-07), the runtime
-
-      // auto-replies to Close frames. Calling close() is safe but no longer required.
-
-      ws.close(code, reason);
-
-    }
-
-
+      // Persist per-connection state that survives hibernation      const state: ConnectionState = {        orderId,        joinedAt: Date.now(),      };      server.serializeAttachment(state);
+      return new Response(null, { status: 101, webSocket: client });    }
+    async webSocketMessage(ws: WebSocket, message: string | ArrayBuffer) {      // Restore state after potential hibernation      const state = ws.deserializeAttachment() as ConnectionState;      ws.send(`Hello ${state.orderId}, you joined at ${state.joinedAt}`);    }
+    async webSocketClose(ws: WebSocket, code: number, reason: string, wasClean: boolean) {      const state = ws.deserializeAttachment() as ConnectionState;      console.log(`${state.orderId} disconnected`);      // With web_socket_auto_reply_to_close (compat date >= 2026-04-07), the runtime      // auto-replies to Close frames. Calling close() is safe but no longer required.      ws.close(code, reason);    }
 }
-
-
 ```
 
 ## WebSocket Standard API
@@ -756,552 +265,102 @@ Validate requests in a Worker
 
 Both Workers and Durable Objects are billed based on the number of requests. Validate requests in your Worker to avoid billing for invalid requests against a Durable Object.
 
-* [  JavaScript ](#tab-panel-8298)
-* [  TypeScript ](#tab-panel-8299)
-* [  Python ](#tab-panel-8300)
+* [  JavaScript ](#tab-panel-8374)
+* [  TypeScript ](#tab-panel-8375)
+* [  Python ](#tab-panel-8376)
 
 JavaScript
 
 ```
-
-// Worker
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    if (request.method === "GET" && request.url.endsWith("/websocket")) {
-
-      // Expect to receive a WebSocket Upgrade request.
-
-      // If there is one, accept the request and return a WebSocket Response.
-
-      const upgradeHeader = request.headers.get("Upgrade");
-
-      if (!upgradeHeader || upgradeHeader !== "websocket") {
-
-        return new Response(null, {
-
-          status: 426,
-
-          statusText: "Durable Object expected Upgrade: websocket",
-
-          headers: {
-
-            "Content-Type": "text/plain",
-
-          },
-
-        });
-
-      }
-
-
-      // This example will refer to a single Durable Object instance, since the name "foo" is
-
-      // hardcoded
-
-      let stub = env.WEBSOCKET_SERVER.getByName("foo");
-
-
-      // The Durable Object's fetch handler will accept the server side connection and return
-
-      // the client
-
-      return stub.fetch(request);
-
-    }
-
-
-    return new Response(null, {
-
-      status: 400,
-
-      statusText: "Bad Request",
-
-      headers: {
-
-        "Content-Type": "text/plain",
-
-      },
-
-    });
-
-  },
-
-};
-
-
+// Workerexport default {  async fetch(request, env, ctx) {    if (request.method === "GET" && request.url.endsWith("/websocket")) {      // Expect to receive a WebSocket Upgrade request.      // If there is one, accept the request and return a WebSocket Response.      const upgradeHeader = request.headers.get("Upgrade");      if (!upgradeHeader || upgradeHeader !== "websocket") {        return new Response(null, {          status: 426,          statusText: "Durable Object expected Upgrade: websocket",          headers: {            "Content-Type": "text/plain",          },        });      }
+      // This example will refer to a single Durable Object instance, since the name "foo" is      // hardcoded      let stub = env.WEBSOCKET_SERVER.getByName("foo");
+      // The Durable Object's fetch handler will accept the server side connection and return      // the client      return stub.fetch(request);    }
+    return new Response(null, {      status: 400,      statusText: "Bad Request",      headers: {        "Content-Type": "text/plain",      },    });  },};
 ```
 
 TypeScript
 
 ```
-
-// Worker
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    if (request.method === "GET" && request.url.endsWith("/websocket")) {
-
-      // Expect to receive a WebSocket Upgrade request.
-
-      // If there is one, accept the request and return a WebSocket Response.
-
-      const upgradeHeader = request.headers.get("Upgrade");
-
-      if (!upgradeHeader || upgradeHeader !== "websocket") {
-
-        return new Response(null, {
-
-          status: 426,
-
-          statusText: "Durable Object expected Upgrade: websocket",
-
-          headers: {
-
-            "Content-Type": "text/plain",
-
-          },
-
-        });
-
-      }
-
-
-      // This example will refer to a single Durable Object instance, since the name "foo" is
-
-      // hardcoded
-
-      let stub = env.WEBSOCKET_SERVER.getByName("foo");
-
-
-      // The Durable Object's fetch handler will accept the server side connection and return
-
-      // the client
-
-      return stub.fetch(request);
-
-    }
-
-
-    return new Response(null, {
-
-      status: 400,
-
-      statusText: "Bad Request",
-
-      headers: {
-
-        "Content-Type": "text/plain",
-
-      },
-
-    });
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+// Workerexport default {  async fetch(request, env, ctx): Promise<Response> {    if (request.method === "GET" && request.url.endsWith("/websocket")) {      // Expect to receive a WebSocket Upgrade request.      // If there is one, accept the request and return a WebSocket Response.      const upgradeHeader = request.headers.get("Upgrade");      if (!upgradeHeader || upgradeHeader !== "websocket") {        return new Response(null, {          status: 426,          statusText: "Durable Object expected Upgrade: websocket",          headers: {            "Content-Type": "text/plain",          },        });      }
+      // This example will refer to a single Durable Object instance, since the name "foo" is      // hardcoded      let stub = env.WEBSOCKET_SERVER.getByName("foo");
+      // The Durable Object's fetch handler will accept the server side connection and return      // the client      return stub.fetch(request);    }
+    return new Response(null, {      status: 400,      statusText: "Bad Request",      headers: {        "Content-Type": "text/plain",      },    });  },} satisfies ExportedHandler<Env>;
 ```
 
 Python
 
 ```
-
 from workers import Response, WorkerEntrypoint
-
-
 # Worker
-
-
-class Default(WorkerEntrypoint):
-
-async def fetch(self, request):
-
-if request.method == "GET" and request.url.endswith("/websocket"): # Expect to receive a WebSocket Upgrade request. # If there is one, accept the request and return a WebSocket Response.
-
-upgrade_header = request.headers.get("Upgrade")
-
-if not upgrade_header or upgrade_header != "websocket":
-
-return Response(
-
-None,
-
-status=426,
-
-status_text="Durable Object expected Upgrade: websocket",
-
-headers={
-
-"Content-Type": "text/plain",
-
-},
-
-)
-
-
-            # This example will refer to a single Durable Object instance, since the name "foo" is
-
-            # hardcoded
-
-            stub = self.env.WEBSOCKET_SERVER.getByName("foo")
-
-
-            # The Durable Object's fetch handler will accept the server side connection and return
-
-            # the client
-
-            return await stub.fetch(request)
-
-
-        return Response(
-
-            None,
-
-            status=400,
-
-            status_text="Bad Request",
-
-            headers={
-
-                "Content-Type": "text/plain",
-
-            },
-
-        )
-
-
+class Default(WorkerEntrypoint):async def fetch(self, request):if request.method == "GET" and request.url.endswith("/websocket"): # Expect to receive a WebSocket Upgrade request. # If there is one, accept the request and return a WebSocket Response.upgrade_header = request.headers.get("Upgrade")if not upgrade_header or upgrade_header != "websocket":return Response(None,status=426,status_text="Durable Object expected Upgrade: websocket",headers={"Content-Type": "text/plain",},)
+            # This example will refer to a single Durable Object instance, since the name "foo" is            # hardcoded            stub = self.env.WEBSOCKET_SERVER.getByName("foo")
+            # The Durable Object's fetch handler will accept the server side connection and return            # the client            return await stub.fetch(request)
+        return Response(            None,            status=400,            status_text="Bad Request",            headers={                "Content-Type": "text/plain",            },        )
 ```
 
 The following Durable Object creates a WebSocket connection and responds to messages with the total number of connections:
 
-* [  JavaScript ](#tab-panel-8301)
-* [  TypeScript ](#tab-panel-8302)
-* [  Python ](#tab-panel-8303)
+* [  JavaScript ](#tab-panel-8377)
+* [  TypeScript ](#tab-panel-8378)
+* [  Python ](#tab-panel-8379)
 
 JavaScript
 
 ```
-
 import { DurableObject } from "cloudflare:workers";
-
-
-// Durable Object
-
-export class WebSocketServer extends DurableObject {
-
-  currentlyConnectedWebSockets;
-
-
-  constructor(ctx, env) {
-
-    super(ctx, env);
-
-    this.currentlyConnectedWebSockets = 0;
-
-  }
-
-
-  async fetch(request) {
-
-    // Creates two ends of a WebSocket connection.
-
-    const webSocketPair = new WebSocketPair();
-
-    const [client, server] = Object.values(webSocketPair);
-
-
-    // Calling `accept()` connects the WebSocket to this Durable Object
-
-    server.accept();
-
-    this.currentlyConnectedWebSockets += 1;
-
-
-    // Upon receiving a message from the client, the server replies with the same message,
-
-    // and the total number of connections with the "[Durable Object]: " prefix
-
-    server.addEventListener("message", (event) => {
-
-      server.send(
-
-        `[Durable Object] currentlyConnectedWebSockets: ${this.currentlyConnectedWebSockets}`,
-
-      );
-
-    });
-
-
-    // When the client closes the connection, clean up the server side.
-
-    // With web_socket_auto_reply_to_close (compat date >= 2026-04-07), the runtime
-
-    // auto-replies to Close frames. Calling close() is safe but no longer required.
-
-    server.addEventListener("close", (cls) => {
-
-      this.currentlyConnectedWebSockets -= 1;
-
-      server.close(cls.code, "Durable Object is closing WebSocket");
-
-    });
-
-
-    return new Response(null, {
-
-      status: 101,
-
-      webSocket: client,
-
-    });
-
-  }
-
-}
-
-
+// Durable Objectexport class WebSocketServer extends DurableObject {  currentlyConnectedWebSockets;
+  constructor(ctx, env) {    super(ctx, env);    this.currentlyConnectedWebSockets = 0;  }
+  async fetch(request) {    // Creates two ends of a WebSocket connection.    const webSocketPair = new WebSocketPair();    const [client, server] = Object.values(webSocketPair);
+    // Calling `accept()` connects the WebSocket to this Durable Object    server.accept();    this.currentlyConnectedWebSockets += 1;
+    // Upon receiving a message from the client, the server replies with the same message,    // and the total number of connections with the "[Durable Object]: " prefix    server.addEventListener("message", (event) => {      server.send(        `[Durable Object] currentlyConnectedWebSockets: ${this.currentlyConnectedWebSockets}`,      );    });
+    // When the client closes the connection, clean up the server side.    // With web_socket_auto_reply_to_close (compat date >= 2026-04-07), the runtime    // auto-replies to Close frames. Calling close() is safe but no longer required.    server.addEventListener("close", (cls) => {      this.currentlyConnectedWebSockets -= 1;      server.close(cls.code, "Durable Object is closing WebSocket");    });
+    return new Response(null, {      status: 101,      webSocket: client,    });  }}
 ```
 
 TypeScript
 
 ```
-
-// Durable Object
-
-export class WebSocketServer extends DurableObject {
-
-  currentlyConnectedWebSockets: number;
-
-
-  constructor(ctx: DurableObjectState, env: Env) {
-
-    super(ctx, env);
-
-    this.currentlyConnectedWebSockets = 0;
-
-  }
-
-
-  async fetch(request: Request): Promise<Response> {
-
-    // Creates two ends of a WebSocket connection.
-
-    const webSocketPair = new WebSocketPair();
-
-    const [client, server] = Object.values(webSocketPair);
-
-
-    // Calling `accept()` connects the WebSocket to this Durable Object
-
-    server.accept();
-
-    this.currentlyConnectedWebSockets += 1;
-
-
-    // Upon receiving a message from the client, the server replies with the same message,
-
-    // and the total number of connections with the "[Durable Object]: " prefix
-
-    server.addEventListener("message", (event: MessageEvent) => {
-
-      server.send(
-
-        `[Durable Object] currentlyConnectedWebSockets: ${this.currentlyConnectedWebSockets}`,
-
-      );
-
-    });
-
-
-    // When the client closes the connection, clean up the server side.
-
-    // With web_socket_auto_reply_to_close (compat date >= 2026-04-07), the runtime
-
-    // auto-replies to Close frames. Calling close() is safe but no longer required.
-
-    server.addEventListener("close", (cls: CloseEvent) => {
-
-      this.currentlyConnectedWebSockets -= 1;
-
-      server.close(cls.code, "Durable Object is closing WebSocket");
-
-    });
-
-
-    return new Response(null, {
-
-      status: 101,
-
-      webSocket: client,
-
-    });
-
-  }
-
-}
-
-
+// Durable Objectexport class WebSocketServer extends DurableObject {  currentlyConnectedWebSockets: number;
+  constructor(ctx: DurableObjectState, env: Env) {    super(ctx, env);    this.currentlyConnectedWebSockets = 0;  }
+  async fetch(request: Request): Promise<Response> {    // Creates two ends of a WebSocket connection.    const webSocketPair = new WebSocketPair();    const [client, server] = Object.values(webSocketPair);
+    // Calling `accept()` connects the WebSocket to this Durable Object    server.accept();    this.currentlyConnectedWebSockets += 1;
+    // Upon receiving a message from the client, the server replies with the same message,    // and the total number of connections with the "[Durable Object]: " prefix    server.addEventListener("message", (event: MessageEvent) => {      server.send(        `[Durable Object] currentlyConnectedWebSockets: ${this.currentlyConnectedWebSockets}`,      );    });
+    // When the client closes the connection, clean up the server side.    // With web_socket_auto_reply_to_close (compat date >= 2026-04-07), the runtime    // auto-replies to Close frames. Calling close() is safe but no longer required.    server.addEventListener("close", (cls: CloseEvent) => {      this.currentlyConnectedWebSockets -= 1;      server.close(cls.code, "Durable Object is closing WebSocket");    });
+    return new Response(null, {      status: 101,      webSocket: client,    });  }}
 ```
 
 Python
 
 ```
-
-from workers import Response, DurableObject
-
-from js import WebSocketPair
-
-from pyodide.ffi import create_proxy
-
-
+from workers import Response, DurableObjectfrom js import WebSocketPairfrom pyodide.ffi import create_proxy
 # Durable Object
-
-
-class WebSocketServer(DurableObject):
-
-def **init**(self, ctx, env):
-
-super().**init**(ctx, env)
-
-self.currently_connected_websockets = 0
-
-
-    async def fetch(self, request):
-
-        # Creates two ends of a WebSocket connection.
-
-        client, server = WebSocketPair.new().object_values()
-
-
-        # Calling `accept()` connects the WebSocket to this Durable Object
-
-        server.accept()
-
-        self.currently_connected_websockets += 1
-
-
-        # Upon receiving a message from the client, the server replies with the same message,
-
-        # and the total number of connections with the "[Durable Object]: " prefix
-
-        def on_message(event):
-
-            server.send(
-
-                f"[Durable Object] currentlyConnectedWebSockets: {self.currently_connected_websockets}"
-
-            )
-
-
+class WebSocketServer(DurableObject):def **init**(self, ctx, env):super().**init**(ctx, env)self.currently_connected_websockets = 0
+    async def fetch(self, request):        # Creates two ends of a WebSocket connection.        client, server = WebSocketPair.new().object_values()
+        # Calling `accept()` connects the WebSocket to this Durable Object        server.accept()        self.currently_connected_websockets += 1
+        # Upon receiving a message from the client, the server replies with the same message,        # and the total number of connections with the "[Durable Object]: " prefix        def on_message(event):            server.send(                f"[Durable Object] currentlyConnectedWebSockets: {self.currently_connected_websockets}"            )
         server.addEventListener("message", create_proxy(on_message))
-
-
-        # When the client closes the connection, clean up the server side.
-
-        # With web_socket_auto_reply_to_close (compat date >= 2026-04-07), the runtime
-
-        # auto-replies to Close frames. Calling close() is safe but no longer required.
-
-        def on_close(event):
-
-            self.currently_connected_websockets -= 1
-
-            server.close(event.code, "Durable Object is closing WebSocket")
-
-
+        # When the client closes the connection, clean up the server side.        # With web_socket_auto_reply_to_close (compat date >= 2026-04-07), the runtime        # auto-replies to Close frames. Calling close() is safe but no longer required.        def on_close(event):            self.currently_connected_websockets -= 1            server.close(event.code, "Durable Object is closing WebSocket")
         server.addEventListener("close", create_proxy(on_close))
-
-
-        return Response(
-
-            None,
-
-            status=101,
-
-            web_socket=client,
-
-        )
-
-
+        return Response(            None,            status=101,            web_socket=client,        )
 ```
 
 Configure your Wrangler file with a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/):
 
-* [  wrangler.jsonc ](#tab-panel-8306)
-* [  wrangler.toml ](#tab-panel-8307)
+* [  wrangler.jsonc ](#tab-panel-8382)
+* [  wrangler.toml ](#tab-panel-8383)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "websocket-server",
-
-  "durable_objects": {
-
-    "bindings": [
-
-      {
-
-        "name": "WEBSOCKET_SERVER",
-
-        "class_name": "WebSocketServer"
-
-      }
-
-    ]
-
-  },
-
-  "migrations": [
-
-    {
-
-      "tag": "v1",
-
-      "new_sqlite_classes": ["WebSocketServer"]
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "websocket-server",  "durable_objects": {    "bindings": [      {        "name": "WEBSOCKET_SERVER",        "class_name": "WebSocketServer"      }    ]  },  "migrations": [    {      "tag": "v1",      "new_sqlite_classes": ["WebSocketServer"]    }  ]}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "websocket-server"
-
-
-[[durable_objects.bindings]]
-
-name = "WEBSOCKET_SERVER"
-
-class_name = "WebSocketServer"
-
-
-[[migrations]]
-
-tag = "v1"
-
-new_sqlite_classes = [ "WebSocketServer" ]
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "websocket-server"
+[[durable_objects.bindings]]name = "WEBSOCKET_SERVER"class_name = "WebSocketServer"
+[[migrations]]tag = "v1"new_sqlite_classes = [ "WebSocketServer" ]
 ```
 
 A full example is available in [Build a WebSocket server](https://developers.cloudflare.com/durable-objects/examples/websocket-server/).

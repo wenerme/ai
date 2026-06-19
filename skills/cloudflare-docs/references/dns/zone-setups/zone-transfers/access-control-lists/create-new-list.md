@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,8 +16,8 @@ You need to create an Access Control List (ACL) if Cloudflare is your [secondary
 
 An ACL is configured at the account level, which means that it will apply to every primary and secondary zone in your account.
 
-* [ Dashboard ](#tab-panel-8141)
-* [ API ](#tab-panel-8142)
+* [ Dashboard ](#tab-panel-8217)
+* [ API ](#tab-panel-8218)
 
 To create a new ACL using the dashboard:
 
@@ -25,9 +25,10 @@ To create a new ACL using the dashboard:
 [ Go to **Configurations** ](https://dash.cloudflare.com/?to=/:account/configurations)
 2. Go to **DNS Settings**.
 3. Under **DNS Zone Transfers**, for **ACL**, select **Create**.
-4. Enter the following information:  
-   * **ACL name**: Provide a descriptive name.  
-   * **IP range**: Enter a range of IPv4 or IPv6 addresses (limited to a maximum of /24 for IPv4 and /64 for IPv6).
+4. Enter the following information:
+
+  * **ACL name**: Provide a descriptive name.
+  * **IP range**: Enter a range of IPv4 or IPv6 addresses (limited to a maximum of /24 for IPv4 and /64 for IPv6).
 5. Select **Create**.
 
 To create a new ACL using the API, send a [POST](https://developers.cloudflare.com/api/resources/dns/subresources/zone%5Ftransfers/subresources/acls/methods/create/) request.

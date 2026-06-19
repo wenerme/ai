@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,350 +27,73 @@ If this is your first agent, start with the [Getting started tutorial](https://d
 Terminal window
 
 ```
-
 npm install @cloudflare/think @cloudflare/ai-chat agents ai @cloudflare/shell zod workers-ai-provider
-
-
 ```
 
 ### Server
 
-* [  JavaScript ](#tab-panel-5565)
-* [  TypeScript ](#tab-panel-5566)
+* [  JavaScript ](#tab-panel-5639)
+* [  TypeScript ](#tab-panel-5640)
 
 JavaScript
 
 ```
-
-import { Think } from "@cloudflare/think";
-
-import { createWorkersAI } from "workers-ai-provider";
-
-import { routeAgentRequest } from "agents";
-
-
-export class MyAgent extends Think {
-
-  getModel() {
-
-    return createWorkersAI({ binding: this.env.AI })(
-
-      "@cf/moonshotai/kimi-k2.6",
-
-    );
-
-  }
-
-}
-
-
-export default {
-
-  async fetch(request, env) {
-
-    return (
-
-      (await routeAgentRequest(request, env)) ||
-
-      new Response("Not found", { status: 404 })
-
-    );
-
-  },
-
-};
-
-
+import { Think } from "@cloudflare/think";import { createWorkersAI } from "workers-ai-provider";import { routeAgentRequest } from "agents";
+export class MyAgent extends Think {  getModel() {    return createWorkersAI({ binding: this.env.AI })(      "@cf/moonshotai/kimi-k2.6",    );  }}
+export default {  async fetch(request, env) {    return (      (await routeAgentRequest(request, env)) ||      new Response("Not found", { status: 404 })    );  },};
 ```
 
 TypeScript
 
 ```
-
-import { Think } from "@cloudflare/think";
-
-import { createWorkersAI } from "workers-ai-provider";
-
-import { routeAgentRequest } from "agents";
-
-
-export class MyAgent extends Think<Env> {
-
-  getModel() {
-
-    return createWorkersAI({ binding: this.env.AI })(
-
-      "@cf/moonshotai/kimi-k2.6",
-
-    );
-
-  }
-
-}
-
-
-export default {
-
-  async fetch(request: Request, env: Env) {
-
-    return (
-
-      (await routeAgentRequest(request, env)) ||
-
-      new Response("Not found", { status: 404 })
-
-    );
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+import { Think } from "@cloudflare/think";import { createWorkersAI } from "workers-ai-provider";import { routeAgentRequest } from "agents";
+export class MyAgent extends Think<Env> {  getModel() {    return createWorkersAI({ binding: this.env.AI })(      "@cf/moonshotai/kimi-k2.6",    );  }}
+export default {  async fetch(request: Request, env: Env) {    return (      (await routeAgentRequest(request, env)) ||      new Response("Not found", { status: 404 })    );  },} satisfies ExportedHandler<Env>;
 ```
 
 That is it. Think handles the WebSocket chat protocol, message persistence, the agentic loop, message sanitization, stream resumption, client tool support, and workspace file tools.
 
 ### Client
 
-* [  JavaScript ](#tab-panel-5567)
-* [  TypeScript ](#tab-panel-5568)
+* [  JavaScript ](#tab-panel-5641)
+* [  TypeScript ](#tab-panel-5642)
 
 JavaScript
 
 ```
-
-import { useAgent } from "agents/react";
-
-import { useAgentChat } from "@cloudflare/ai-chat/react";
-
-
-function Chat() {
-
-  const agent = useAgent({ agent: "MyAgent" });
-
-  const { messages, sendMessage, status } = useAgentChat({ agent });
-
-
-  return (
-
-    <div>
-
-      {messages.map((msg) => (
-
-        <div key={msg.id}>
-
-          <strong>{msg.role}:</strong>
-
-          {msg.parts.map((part, i) =>
-
-            part.type === "text" ? <span key={i}>{part.text}</span> : null,
-
-          )}
-
-        </div>
-
-      ))}
-
-
-      <form
-
-        onSubmit={(e) => {
-
-          e.preventDefault();
-
-          const input = e.currentTarget.elements.namedItem("input");
-
-          sendMessage({ text: input.value });
-
-          input.value = "";
-
-        }}
-
-      >
-
-        <input name="input" placeholder="Send a message..." />
-
-        <button type="submit">Send</button>
-
-      </form>
-
-    </div>
-
-  );
-
-}
-
-
+import { useAgent } from "agents/react";import { useAgentChat } from "@cloudflare/ai-chat/react";
+function Chat() {  const agent = useAgent({ agent: "MyAgent" });  const { messages, sendMessage, status } = useAgentChat({ agent });
+  return (    <div>      {messages.map((msg) => (        <div key={msg.id}>          <strong>{msg.role}:</strong>          {msg.parts.map((part, i) =>            part.type === "text" ? <span key={i}>{part.text}</span> : null,          )}        </div>      ))}
+      <form        onSubmit={(e) => {          e.preventDefault();          const input = e.currentTarget.elements.namedItem("input");          sendMessage({ text: input.value });          input.value = "";        }}      >        <input name="input" placeholder="Send a message..." />        <button type="submit">Send</button>      </form>    </div>  );}
 ```
 
 TypeScript
 
 ```
-
-import { useAgent } from "agents/react";
-
-import { useAgentChat } from "@cloudflare/ai-chat/react";
-
-
-function Chat() {
-
-  const agent = useAgent({ agent: "MyAgent" });
-
-  const { messages, sendMessage, status } = useAgentChat({ agent });
-
-
-  return (
-
-    <div>
-
-      {messages.map((msg) => (
-
-        <div key={msg.id}>
-
-          <strong>{msg.role}:</strong>
-
-          {msg.parts.map((part, i) =>
-
-            part.type === "text" ? <span key={i}>{part.text}</span> : null,
-
-          )}
-
-        </div>
-
-      ))}
-
-
-      <form
-
-        onSubmit={(e) => {
-
-          e.preventDefault();
-
-          const input = e.currentTarget.elements.namedItem(
-
-            "input",
-
-          ) as HTMLInputElement;
-
-          sendMessage({ text: input.value });
-
-          input.value = "";
-
-        }}
-
-      >
-
-        <input name="input" placeholder="Send a message..." />
-
-        <button type="submit">Send</button>
-
-      </form>
-
-    </div>
-
-  );
-
-}
-
-
+import { useAgent } from "agents/react";import { useAgentChat } from "@cloudflare/ai-chat/react";
+function Chat() {  const agent = useAgent({ agent: "MyAgent" });  const { messages, sendMessage, status } = useAgentChat({ agent });
+  return (    <div>      {messages.map((msg) => (        <div key={msg.id}>          <strong>{msg.role}:</strong>          {msg.parts.map((part, i) =>            part.type === "text" ? <span key={i}>{part.text}</span> : null,          )}        </div>      ))}
+      <form        onSubmit={(e) => {          e.preventDefault();          const input = e.currentTarget.elements.namedItem(            "input",          ) as HTMLInputElement;          sendMessage({ text: input.value });          input.value = "";        }}      >        <input name="input" placeholder="Send a message..." />        <button type="submit">Send</button>      </form>    </div>  );}
 ```
 
 ### Configuration
 
-* [  wrangler.jsonc ](#tab-panel-5563)
-* [  wrangler.toml ](#tab-panel-5564)
+* [  wrangler.jsonc ](#tab-panel-5637)
+* [  wrangler.toml ](#tab-panel-5638)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "compatibility_flags": [
-
-    "nodejs_compat"
-
-  ],
-
-  "ai": {
-
-    "binding": "AI"
-
-  },
-
-  "durable_objects": {
-
-    "bindings": [
-
-      {
-
-        "class_name": "MyAgent",
-
-        "name": "MyAgent"
-
-      }
-
-    ]
-
-  },
-
-  "migrations": [
-
-    {
-
-      "new_sqlite_classes": [
-
-        "MyAgent"
-
-      ],
-
-      "tag": "v1"
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  // Set this to today's date  "compatibility_date": "2026-06-18",  "compatibility_flags": [    "nodejs_compat"  ],  "ai": {    "binding": "AI"  },  "durable_objects": {    "bindings": [      {        "class_name": "MyAgent",        "name": "MyAgent"      }    ]  },  "migrations": [    {      "new_sqlite_classes": [        "MyAgent"      ],      "tag": "v1"    }  ]}
 ```
 
 TOML
 
 ```
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-compatibility_flags = ["nodejs_compat"]
-
-
-[ai]
-
-binding = "AI"
-
-
-[[durable_objects.bindings]]
-
-class_name = "MyAgent"
-
-name = "MyAgent"
-
-
-[[migrations]]
-
-new_sqlite_classes = ["MyAgent"]
-
-tag = "v1"
-
-
+# Set this to today's datecompatibility_date = "2026-06-18"compatibility_flags = ["nodejs_compat"]
+[ai]binding = "AI"
+[[durable_objects.bindings]]class_name = "MyAgent"name = "MyAgent"
+[[migrations]]new_sqlite_classes = ["MyAgent"]tag = "v1"
 ```
 
 ## Think vs AIChatAgent

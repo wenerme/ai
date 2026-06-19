@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,144 +22,49 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11741)
-* [  TypeScript ](#tab-panel-11742)
-* [  Python ](#tab-panel-11743)
-* [  Rust ](#tab-panel-11744)
-* [  Hono ](#tab-panel-11745)
+* [  JavaScript ](#tab-panel-11756)
+* [  TypeScript ](#tab-panel-11757)
+* [  Python ](#tab-panel-11758)
+* [  Rust ](#tab-panel-11759)
+* [  Hono ](#tab-panel-11760)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request) {
-
-    const data = {
-
-      hello: "world",
-
-    };
-
-
-    return Response.json(data);
-
-  },
-
-};
-
-
+export default {  async fetch(request) {    const data = {      hello: "world",    };
+    return Response.json(data);  },};
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBGACwAOAMwBOAGxSArJNEAuFizbAOcLjT4CREmfMlLRAWABQAYXRUIAU3vYAIlADOMdO6jQ7Kkk08AmISKjhgBwYAIigaBwAPADoAK3do0lQoMCcIqNj45LToq1t7JwhsABU6GAcAuBgYMD4CKDtkFLgANzh3XgRYCABqYHRccAcrK0SvJBJcB1Q4cAgSAG9LEhI+uipeQIcIXgALAAoEBwBHEAd3CABKDa3tkl47e4WQkgZn19eTg4wGB0AFogB3TBgXDRAA0L22AF8iJYESRLhAQAgqCQAEp3LxUdwOVLuOxnbQPFFI+HIqzqZiabS6Hj8IRiKRyRTKUp2RzONyeby+dpUAJBbSkcKRGKRQjaDKBbK5GXRMggsglGx8irVWr1HZNFq8NodNJ2aaWdbRYBwOIAfTGExy0RUBUWRXSiPpDKZIRZ+nZRi5pmUzCsQA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAyCAHIICc4gMwA2AEziArAHYAXCxZtgHOFxp8BwsZNkKVAWABQAYXRUIAU3vYAIlADOMdO6jQ7qki08AmISKjhgBwYAIigaBwAPADoAK3do0lQoMCcIqNj45LToq1t7JwhsABU6GAcAuBgYMD4CKDtkFLgANzh3XgRYCABqYHRccAcrK0SvJBJcB1Q4cAgSAG9LEhI+uipeQIcIXgALAAoEBwBHEAd3CABKDa3tkl47e4WQkgZn19eTg4wGB0AFogB3TBgXDRAA0L22AF8iJYESRLhAQAgqCQAEp3LxUdwOVLuOxnHQPFFI+HIqwaZhaHR6Hj8ISiCTSeRKZSlOyOZxuTzeXztKgBII6UjhSIxSKEHQZQLZXKy6JkEFkEo2fkVaq1eo7JotXhtDppOzTSzraLAOBxAD6YwmOWiqgKiyK6UR9IZTJCLIM7OMXLMymYViAA)
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request): Promise<Response> {
-
-    const data = {
-
-      hello: "world",
-
-    };
-
-
-    return Response.json(data);
-
-  },
-
-} satisfies ExportedHandler;
-
-
+export default {  async fetch(request): Promise<Response> {    const data = {      hello: "world",    };
+    return Response.json(data);  },} satisfies ExportedHandler;
 ```
 
 Python
 
 ```
-
-from workers import WorkerEntrypoint, Response
-
-import json
-
-
-class Default(WorkerEntrypoint):
-
-    def fetch(self, request):
-
-        data = json.dumps({"hello": "world"})
-
-        headers = {"content-type": "application/json"}
-
-        return Response(data, headers=headers)
-
-
+from workers import WorkerEntrypoint, Responseimport json
+class Default(WorkerEntrypoint):    def fetch(self, request):        data = json.dumps({"hello": "world"})        headers = {"content-type": "application/json"}        return Response(data, headers=headers)
 ```
 
 ```
-
-use serde::{Deserialize, Serialize};
-
-use worker::*;
-
-
-#[derive(Deserialize, Serialize, Debug)]
-
-struct Json {
-
-    hello: String,
-
-}
-
-
-#[event(fetch)]
-
-async fn fetch(_req: Request, _env: Env, _ctx: Context) -> Result<Response> {
-
-    let data = Json {
-
-        hello: String::from("world"),
-
-    };
-
-    Response::from_json(&data)
-
-}
-
-
+use serde::{Deserialize, Serialize};use worker::*;
+#[derive(Deserialize, Serialize, Debug)]struct Json {    hello: String,}
+#[event(fetch)]async fn fetch(_req: Request, _env: Env, _ctx: Context) -> Result<Response> {    let data = Json {        hello: String::from("world"),    };    Response::from_json(&data)}
 ```
 
 TypeScript
 
 ```
-
 import { Hono } from "hono";
-
-
 const app = new Hono();
-
-
-app.get("*", (c) => {
-
-  const data = {
-
-    hello: "world",
-
-  };
-
-
-  return c.json(data);
-
-});
-
-
+app.get("*", (c) => {  const data = {    hello: "world",  };
+  return c.json(data);});
 export default app;
-
-
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,8 +22,8 @@ For more flexibility and customization, consider using [Snippets](https://develo
 
 ## Create a page rule
 
-* [ Dashboard ](#tab-panel-9993)
-* [ API ](#tab-panel-9994)
+* [ Dashboard ](#tab-panel-10069)
+* [ API ](#tab-panel-10070)
 
 To create a page rule in the dashboard:
 
@@ -49,16 +49,17 @@ Notes
 
 ## Edit a page rule
 
-* [ Dashboard ](#tab-panel-9989)
-* [ API ](#tab-panel-9990)
+* [ Dashboard ](#tab-panel-10065)
+* [ API ](#tab-panel-10066)
 
 To edit a page rule in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Page Rules** page.  
 [ Go to **Page Rules** ](https://dash.cloudflare.com/?to=/:account/:zone/rules/page-rules)
-2. For a specific rule:  
-   * To enable or disable the rule, select the on/off toggle.  
-   * To modify the URL pattern, settings, and order, select **Edit** (wrench icon). Then, enter the information you want to change.
+2. For a specific rule:
+
+  * To enable or disable the rule, select the on/off toggle.
+  * To modify the URL pattern, settings, and order, select **Edit** (wrench icon). Then, enter the information you want to change.
 
 To update one or more fields using the API, send a [PATCH request](https://developers.cloudflare.com/api/resources/page%5Frules/methods/edit/).
 
@@ -66,8 +67,8 @@ To entirely replace the configuration of a page rule, send a [PUT request](https
 
 ## Delete a page rule
 
-* [ Dashboard ](#tab-panel-9991)
-* [ API ](#tab-panel-9992)
+* [ Dashboard ](#tab-panel-10067)
+* [ API ](#tab-panel-10068)
 
 To delete a page rule in the dashboard:
 

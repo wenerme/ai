@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,7 +26,7 @@ To generate a memory snapshot:
 * Press the `D` from your terminal to open DevTools
 * Select on the "Memory" tab
 * Send requests to your Worker to start allocating memory  
-   * Optionally include a debugger to make sure you can pause execution at the proper time
+  * Optionally include a debugger to make sure you can pause execution at the proper time
 * Select `Take snapshot`
 
 You can now inspect Worker memory.
@@ -38,25 +38,8 @@ Let's look at an example to learn how to read a memory snapshot. Imagine you hav
 index.js
 
 ```
-
 let responseText = "Hello world!";
-
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    let now = new Date().toISOString();
-
-    responseText = responseText + ` (Requested at: ${now})`;
-
-    return new Response(responseText.slice(0, 53));
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    let now = new Date().toISOString();    responseText = responseText + ` (Requested at: ${now})`;    return new Response(responseText.slice(0, 53));  },};
 ```
 
 While this code worked well initially, over time you notice slower responses and Out of Memory errors. Using DevTools, you can find out if this is a memory leak.
@@ -80,10 +63,7 @@ The memory summary lists data types by the amount of memory they take up. When y
 JavaScript
 
 ```
-
 responseText = responseText + ` (Requested at: ${now})`;
-
-
 ```
 
 Using Memory Snapshotting in DevTools, you've identified the object and line of code causing the memory leak. You can now fix it with a small code change.

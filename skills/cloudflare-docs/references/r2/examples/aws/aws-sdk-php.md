@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,141 +22,18 @@ You must [generate an Access Key](https://developers.cloudflare.com/r2/api/token
 This example uses version 3 of the [aws-sdk-php ↗](https://packagist.org/packages/aws/aws-sdk-php) package. You must pass in the R2 configuration credentials when instantiating your `S3` service client:
 
 ```
-
-<?php
-
-require 'vendor/aws/aws-autoloader.php';
-
-
-$bucket_name = "my_bucket";
-
-// Provide your Cloudflare account ID
-
-$account_id = "<ACCOUNT_ID>";
-
-// Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)
-
-$access_key_id = "<ACCESS_KEY_ID>";
-
-$access_key_secret = "<SECRET_ACCESS_KEY>";
-
-
+<?phprequire 'vendor/aws/aws-autoloader.php';
+$bucket_name = "my_bucket";// Provide your Cloudflare account ID$account_id = "<ACCOUNT_ID>";// Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)$access_key_id = "<ACCESS_KEY_ID>";$access_key_secret = "<SECRET_ACCESS_KEY>";
 $credentials = new Aws\Credentials\Credentials($access_key_id, $access_key_secret);
-
-
-$options = [
-
-    'region' => 'auto', // Required by SDK but not used by R2
-
-    'endpoint' => "https://$account_id.r2.cloudflarestorage.com",
-
-    'version' => 'latest',
-
-    'credentials' => $credentials
-
-];
-
-
+$options = [    'region' => 'auto', // Required by SDK but not used by R2    'endpoint' => "https://$account_id.r2.cloudflarestorage.com",    'version' => 'latest',    'credentials' => $credentials];
 $s3_client = new Aws\S3\S3Client($options);
-
-
-$contents = $s3_client->listObjectsV2([
-
-    'Bucket' => $bucket_name
-
-]);
-
-
+$contents = $s3_client->listObjectsV2([    'Bucket' => $bucket_name]);
 var_dump($contents['Contents']);
-
-
-// array(1) {
-
-//   [0]=>
-
-//   array(5) {
-
-//     ["Key"]=>
-
-//     string(14) "ferriswasm.png"
-
-//     ["LastModified"]=>
-
-//     object(Aws\Api\DateTimeResult)#187 (3) {
-
-//       ["date"]=>
-
-//       string(26) "2022-05-18 17:20:21.670000"
-
-//       ["timezone_type"]=>
-
-//       int(2)
-
-//       ["timezone"]=>
-
-//       string(1) "Z"
-
-//     }
-
-//     ["ETag"]=>
-
-//     string(34) ""eb2b891dc67b81755d2b726d9110af16""
-
-//     ["Size"]=>
-
-//     string(5) "87671"
-
-//     ["StorageClass"]=>
-
-//     string(8) "STANDARD"
-
-//   }
-
-// }
-
-
+// array(1) {//   [0]=>//   array(5) {//     ["Key"]=>//     string(14) "ferriswasm.png"//     ["LastModified"]=>//     object(Aws\Api\DateTimeResult)#187 (3) {//       ["date"]=>//       string(26) "2022-05-18 17:20:21.670000"//       ["timezone_type"]=>//       int(2)//       ["timezone"]=>//       string(1) "Z"//     }//     ["ETag"]=>//     string(34) ""eb2b891dc67b81755d2b726d9110af16""//     ["Size"]=>//     string(5) "87671"//     ["StorageClass"]=>//     string(8) "STANDARD"//   }// }
 $buckets = $s3_client->listBuckets();
-
-
 var_dump($buckets['Buckets']);
-
-
-// array(1) {
-
-//   [0]=>
-
-//   array(2) {
-
-//     ["Name"]=>
-
-//     string(11) "my-bucket"
-
-//     ["CreationDate"]=>
-
-//     object(Aws\Api\DateTimeResult)#212 (3) {
-
-//       ["date"]=>
-
-//       string(26) "2022-05-18 17:19:59.645000"
-
-//       ["timezone_type"]=>
-
-//       int(2)
-
-//       ["timezone"]=>
-
-//       string(1) "Z"
-
-//     }
-
-//   }
-
-// }
-
-
+// array(1) {//   [0]=>//   array(2) {//     ["Name"]=>//     string(11) "my-bucket"//     ["CreationDate"]=>//     object(Aws\Api\DateTimeResult)#212 (3) {//       ["date"]=>//       string(26) "2022-05-18 17:19:59.645000"//       ["timezone_type"]=>//       int(2)//       ["timezone"]=>//       string(1) "Z"//     }//   }// }
 ?>
-
-
 ```
 
 ## Generate presigned URLs
@@ -164,43 +41,12 @@ var_dump($buckets['Buckets']);
 You can also generate presigned links that can be used to share public read or write access to a bucket temporarily.
 
 ```
-
-$cmd = $s3_client->getCommand('GetObject', [
-
-    'Bucket' => $bucket_name,
-
-    'Key' => 'ferriswasm.png'
-
-]);
-
-
-// The second parameter allows you to determine how long the presigned link is valid.
-
+$cmd = $s3_client->getCommand('GetObject', [    'Bucket' => $bucket_name,    'Key' => 'ferriswasm.png']);
+// The second parameter allows you to determine how long the presigned link is valid.$request = $s3_client->createPresignedRequest($cmd, '+1 hour');
+print_r((string)$request->getUri())// https://my-bucket.<ACCOUNT_ID>.r2.cloudflarestorage.com/ferriswasm.png?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=<credential>&X-Amz-Date=<timestamp>&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Signature=<signature>
+// You can also create links for operations such as putObject to allow temporary write access to a specific key.$cmd = $s3_client->getCommand('PutObject', [    'Bucket' => $bucket_name,    'Key' => 'ferriswasm.png']);
 $request = $s3_client->createPresignedRequest($cmd, '+1 hour');
-
-
 print_r((string)$request->getUri())
-
-// https://my-bucket.<ACCOUNT_ID>.r2.cloudflarestorage.com/ferriswasm.png?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=<credential>&X-Amz-Date=<timestamp>&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Signature=<signature>
-
-
-// You can also create links for operations such as putObject to allow temporary write access to a specific key.
-
-$cmd = $s3_client->getCommand('PutObject', [
-
-    'Bucket' => $bucket_name,
-
-    'Key' => 'ferriswasm.png'
-
-]);
-
-
-$request = $s3_client->createPresignedRequest($cmd, '+1 hour');
-
-
-print_r((string)$request->getUri())
-
-
 ```
 
 You can use the link generated by the `putObject` example to upload to the specified bucket and key, until the presigned link expires.
@@ -208,10 +54,7 @@ You can use the link generated by the `putObject` example to upload to the speci
 Terminal window
 
 ```
-
 curl -X PUT https://my-bucket.<ACCOUNT_ID>.r2.cloudflarestorage.com/ferriswasm.png?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=<credential>&X-Amz-Date=<timestamp>&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Signature=<signature> --data-binary @ferriswasm.png
-
-
 ```
 
 ```json

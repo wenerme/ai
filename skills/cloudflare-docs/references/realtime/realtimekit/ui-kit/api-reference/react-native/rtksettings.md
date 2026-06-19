@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,45 +30,15 @@ Settings dialog with audio device selection, video device selection, and network
 ### Basic Usage
 
 ```
-
 import { RtkSettings } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkSettings meeting={meeting} />;
-
-}
-
-
+function MyComponent() {  return <RtkSettings meeting={meeting} />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkSettings } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkSettings
-
-      meeting={meeting}
-
-      size="md"
-
-      onClose={() => setSettingsOpen(false)}
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkSettings      meeting={meeting}      size="md"      onClose={() => setSettingsOpen(false)}    />  );}
 ```
 
 ```json

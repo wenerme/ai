@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,12 +23,7 @@ Create a new project using [npx degit Elderjs/template ↗](https://docs.npmjs.c
 Terminal window
 
 ```
-
-npx degit Elderjs/template elderjs-app
-
-cd elderjs-app
-
-
+npx degit Elderjs/template elderjs-appcd elderjs-app
 ```
 
 The Elder.js template includes a number of pages and examples showing how to build your static site, but by simply generating the project, it is already ready to be deployed to Cloudflare Pages.
@@ -48,20 +43,7 @@ Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). Aft
 Terminal window
 
 ```
-
-git init
-
-git remote add origin https://github.com/<your-gh-username>/<repository-name>
-
-git add .
-
-git commit -m "Initial commit"
-
-git branch -M main
-
-git push -u origin main
-
-
+git initgit remote add origin https://github.com/<your-gh-username>/<repository-name>git add .git commit -m "Initial commit"git branch -M maingit push -u origin main
 ```
 
 ## Deploy with Cloudflare Pages

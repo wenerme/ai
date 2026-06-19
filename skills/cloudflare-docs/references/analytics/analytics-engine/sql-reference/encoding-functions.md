@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,10 +17,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 Usage:
 
 ```
-
 bin(<expression>)
-
-
 ```
 
 `bin` returns a string containing the binary representation of its argument.
@@ -28,16 +25,7 @@ bin(<expression>)
 Examples:
 
 ```
-
--- get the binary representation of 1
-
-bin(1)
-
--- get the binary representation of a string`
-
-bin('abc')
-
-
+-- get the binary representation of 1bin(1)-- get the binary representation of a string`bin('abc')
 ```
 
 ## hex New
@@ -45,10 +33,7 @@ bin('abc')
 Usage:
 
 ```
-
 hex(<expression>)
-
-
 ```
 
 `hex` returns a string containing the hexadecimal representation of its argument.
@@ -56,16 +41,7 @@ hex(<expression>)
 Examples:
 
 ```
-
--- get the hexadecimal representation of 1
-
-hex(1)
-
--- get the hexadecimal representation of a string`
-
-hex('abc')
-
-
+-- get the hexadecimal representation of 1hex(1)-- get the hexadecimal representation of a string`hex('abc')
 ```
 
 ```json

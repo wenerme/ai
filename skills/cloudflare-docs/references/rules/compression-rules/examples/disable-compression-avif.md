@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -14,16 +14,16 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Create a compression rule to turn off compression for AVIF images, based on either the content type or the file extension specified in the request.
 
-* [ Dashboard ](#tab-panel-9967)
-* [ API ](#tab-panel-9968)
+* [ Dashboard ](#tab-panel-10043)
+* [ API ](#tab-panel-10044)
 
 The following example rule will disable compression for AVIF images, based on either the content type or the file extension specified in the request.
 
 **When incoming requests match**
 
 * Custom filter expression:  
-   * _Media Type_ _equals_ `image/avif` **OR**  
-   * _File extension_ _equals_ `avif`
+  * _Media Type_ _equals_ `image/avif` **OR**
+  * _File extension_ _equals_ `avif`
 
 **Then**
 
@@ -33,7 +33,7 @@ The following example sets the rules of an existing [entry point ruleset](https:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Response Compression Write`
 * `Config Settings Write`
 * `Dynamic URL Redirects Write`
@@ -59,46 +59,7 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Update a zone ruleset
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "rules": [
-
-        {
-
-            "ref": "disable_compression_for_avif",
-
-            "expression": "http.response.content_type.media_type eq \"image/avif\" or http.request.uri.path.extension eq \"avif\"",
-
-            "action": "compress_response",
-
-            "action_parameters": {
-
-                "algorithms": [
-
-                    {
-
-                        "name": "none"
-
-                    }
-
-                ]
-
-            }
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "ref": "disable_compression_for_avif",            "expression": "http.response.content_type.media_type eq \"image/avif\" or http.request.uri.path.extension eq \"avif\"",            "action": "compress_response",            "action_parameters": {                "algorithms": [                    {                        "name": "none"                    }                ]            }        }    ]  }'
 ```
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-challenges/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -49,8 +49,8 @@ For Bot Fight Mode customers, [JavaScript Detections](https://developers.cloudfl
 
 For Super Bot Fight Mode and Bot Management for Enterprise customers, [JavaScript Detections](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/) is optional.
 
-* [  New dashboard ](#tab-panel-7007)
-* [ Old dashboard ](#tab-panel-7008)
+* [  New dashboard ](#tab-panel-7083)
+* [ Old dashboard ](#tab-panel-7084)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -81,33 +81,17 @@ When adding this field to WAF custom rules, it is used on endpoints expecting br
 
 The `cf.bot_management.js_detection.passed` field should never be used in a WAF custom rule that matches a visitor's first request to a site. It is necessary to have at least one HTML request before Cloudflare can inject JavaScript detection.
 
-* [ WAF rule example ](#tab-panel-7005)
-* [ Workers example ](#tab-panel-7006)
+* [ WAF rule example ](#tab-panel-7081)
+* [ Workers example ](#tab-panel-7082)
 
 ```
-
-(http.request.uri.path eq "/api/v4/user/create" and http.request.method eq "POST" and not cf.bot_management.verified_bot)
-
-and (cf.bot_management.score lt 30 or !cf.bot_management.js_detection.passed)
-
-
+(http.request.uri.path eq "/api/v4/user/create" and http.request.method eq "POST" and not cf.bot_management.verified_bot)and (cf.bot_management.score lt 30 or !cf.bot_management.js_detection.passed)
 ```
 
 JavaScript
 
 ```
-
-"botManagement": {
-
-"jsDetection": {
-
-    "passed": false
-
-}
-
-}
-
-
+"botManagement": {"jsDetection": {    "passed": false}}
 ```
 
 Refer to the [WAF documentation](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) for more information on creating a custom rule.
@@ -127,33 +111,8 @@ It is not recommended to combine both approaches (zone-wide toggle and the manua
 The following script must be added to every page that you wish to have JavaScript Detections enabled:
 
 ```
-
 <script>
-
-
-function jsdOnload(){
-
-  window.cloudflare.jsd.executeOnce(
-
-    {
-
-      callback: function(result){
-
-        console.log('jsd outcome', result);
-
-      }
-
-    }
-
-  );
-
-}
-
-</script>
-
-<script src="/cdn-cgi/challenge-platform/scripts/jsd/api.js?onload=jsdOnload" async>
-
-
+function jsdOnload(){  window.cloudflare.jsd.executeOnce(    {      callback: function(result){        console.log('jsd outcome', result);      }    }  );}</script><script src="/cdn-cgi/challenge-platform/scripts/jsd/api.js?onload=jsdOnload" async>
 ```
 
 Note
@@ -185,8 +144,8 @@ If you have a Content Security Policy (CSP), you need to take additional steps t
 
 * Ensure that anything under `/cdn-cgi/challenge-platform/` is allowed. Your CSP should allow scripts served from your origin domain (`script-src self`).
 * For `nonce` script tags:  
-   * If your CSP uses a `nonce` for script tags, Cloudflare will add these nonces to the scripts it injects by parsing your CSP response header.  
-   * If your CSP does not use `nonce` for script tags and **JavaScript Detections** is enabled, you may see a console error such as `Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'self'". Either the 'unsafe-inline' keyword, a hash ('sha256-b123b8a70+4jEj+d6gWI9U6IilUJIrlnRJbRR/uQl2Jc='), or a nonce ('nonce-...') is required to enable inline execution.` We highly discourage the use of `unsafe-inline` and instead recommend the use CSP `nonces` in script tags which we parse and support in our CDN.
+  * If your CSP uses a `nonce` for script tags, Cloudflare will add these nonces to the scripts it injects by parsing your CSP response header.
+  * If your CSP does not use `nonce` for script tags and **JavaScript Detections** is enabled, you may see a console error such as `Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'self'". Either the 'unsafe-inline' keyword, a hash ('sha256-b123b8a70+4jEj+d6gWI9U6IilUJIrlnRJbRR/uQl2Jc='), or a nonce ('nonce-...') is required to enable inline execution.` We highly discourage the use of `unsafe-inline` and instead recommend the use CSP `nonces` in script tags which we parse and support in our CDN.
 
 Warning
 

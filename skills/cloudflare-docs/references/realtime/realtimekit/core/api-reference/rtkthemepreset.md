@@ -5,7 +5,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -14,24 +14,24 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 The RTKThemePreset class represents the meeting theme for the current participant
 
 * [RTKThemePreset](#module%5FRTKThemePreset)  
-   * [module.exports](#exp%5Fmodule%5FRTKThemePreset--module.exports) ⏏  
-         * [new module.exports(preset)](#new%5Fmodule%5FRTKThemePreset--module.exports%5Fnew)  
-         * _instance_  
-                  * ~~[.setupScreen](#module%5FRTKThemePreset--module.exports+setupScreen)~~  
-                  * ~~[.waitingRoom](#module%5FRTKThemePreset--module.exports+waitingRoom)~~  
-                  * ~~[.controlBar](#module%5FRTKThemePreset--module.exports+controlBar)~~  
-                  * ~~[.header](#module%5FRTKThemePreset--module.exports+header)~~  
-                  * ~~[.pipMode](#module%5FRTKThemePreset--module.exports+pipMode)~~  
-                  * [.viewType](#module%5FRTKThemePreset--module.exports+viewType)  
-                  * [.livestreamViewerQualities](#module%5FRTKThemePreset--module.exports+livestreamViewerQualities)  
-                  * [.maxVideoStreams](#module%5FRTKThemePreset--module.exports+maxVideoStreams)  
-                  * [.maxScreenShareCount](#module%5FRTKThemePreset--module.exports+maxScreenShareCount)  
-                  * ~~[.plugins](#module%5FRTKThemePreset--module.exports+plugins)~~  
-                  * [.disabledPlugins](#module%5FRTKThemePreset--module.exports+disabledPlugins)  
-         * _static_  
-                  * [.fromResponse(preset)](#module%5FRTKThemePreset--module.exports.fromResponse)  
-                  * [.default()](#module%5FRTKThemePreset--module.exports.default)  
-                  * [.init(\[preset\], \[useDefault\])](#module%5FRTKThemePreset--module.exports.init)
+  * [module.exports](#exp%5Fmodule%5FRTKThemePreset--module.exports) ⏏  
+    * [new module.exports(preset)](#new%5Fmodule%5FRTKThemePreset--module.exports%5Fnew)
+    * _instance_  
+      * ~~[.setupScreen](#module%5FRTKThemePreset--module.exports+setupScreen)~~
+      * ~~[.waitingRoom](#module%5FRTKThemePreset--module.exports+waitingRoom)~~
+      * ~~[.controlBar](#module%5FRTKThemePreset--module.exports+controlBar)~~
+      * ~~[.header](#module%5FRTKThemePreset--module.exports+header)~~
+      * ~~[.pipMode](#module%5FRTKThemePreset--module.exports+pipMode)~~
+      * [.viewType](#module%5FRTKThemePreset--module.exports+viewType)
+      * [.livestreamViewerQualities](#module%5FRTKThemePreset--module.exports+livestreamViewerQualities)
+      * [.maxVideoStreams](#module%5FRTKThemePreset--module.exports+maxVideoStreams)
+      * [.maxScreenShareCount](#module%5FRTKThemePreset--module.exports+maxScreenShareCount)
+      * ~~[.plugins](#module%5FRTKThemePreset--module.exports+plugins)~~
+      * [.disabledPlugins](#module%5FRTKThemePreset--module.exports+disabledPlugins)
+    * _static_  
+      * [.fromResponse(preset)](#module%5FRTKThemePreset--module.exports.fromResponse)
+      * [.default()](#module%5FRTKThemePreset--module.exports.default)
+      * [.init(\[preset\], \[useDefault\])](#module%5FRTKThemePreset--module.exports.init)
 
 ### module.exports ⏏
 

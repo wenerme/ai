@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,45 +28,15 @@ A participant list item card showing avatar, name, audio/video status icons, and
 ### Basic Usage
 
 ```
-
 import { RtkParticipant } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkParticipant participant={participant} />;
-
-}
-
-
+function MyComponent() {  return <RtkParticipant participant={participant} />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkParticipant } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkParticipant
-
-      participant={participant}
-
-      meeting={meeting}
-
-      iconPack={customIconPack}
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkParticipant      participant={participant}      meeting={meeting}      iconPack={customIconPack}    />  );}
 ```
 
 ```json

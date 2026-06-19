@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/kv/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,10 +17,7 @@ To delete a key-value pair, call the `delete()` method of the [KV binding](https
 JavaScript
 
 ```
-
 env.NAMESPACE.delete(key);
-
-
 ```
 
 #### Example
@@ -30,37 +27,8 @@ An example of deleting a key-value pair from within a Worker:
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    try {
-
-      await env.NAMESPACE.delete("first-key");
-
-
-      return new Response("Successful delete", {
-
-        status: 200
-
-      });
-
-    }
-
-    catch (e)
-
-    {
-
-      return new Response(e.message, {status: 500});
-
-    }
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    try {      await env.NAMESPACE.delete("first-key");
+      return new Response("Successful delete", {        status: 200      });    }    catch (e)    {      return new Response(e.message, {status: 500});    }  },};
 ```
 
 ## Reference
@@ -76,21 +44,18 @@ To delete a key-value pair, call the `delete()` method of the [KV binding](https
 JavaScript
 
 ```
-
 env.NAMESPACE.delete(key);
-
-
 ```
 
 #### Parameters
 
 * `key`: `string`  
-   * The key to associate with the value.
+  * The key to associate with the value.
 
 #### Response
 
 * `response`: `Promise<void>`  
-   * A `Promise` that resolves if the delete is successful.
+  * A `Promise` that resolves if the delete is successful.
 
 This method returns a promise that you should `await` on to verify successful deletion. Calling `delete()` on a non-existing key is returned as a successful delete.
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/flagship/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -34,107 +34,29 @@ We do not recommend using the client provider in public-facing apps right now. I
 
 The following example initializes the provider with a set of pre-fetched flags and evaluates them in a browser application.
 
-* [  JavaScript ](#tab-panel-8553)
-* [  TypeScript ](#tab-panel-8554)
+* [  JavaScript ](#tab-panel-8629)
+* [  TypeScript ](#tab-panel-8630)
 
 JavaScript
 
 ```
-
-import { OpenFeature } from "@openfeature/web-sdk";
-
-import { FlagshipClientProvider } from "@cloudflare/flagship";
-
-
-await OpenFeature.setProviderAndWait(
-
-  new FlagshipClientProvider({
-
-    appId: "<APP_ID>",
-
-    accountId: "<ACCOUNT_ID>",
-
-    authToken: "<API_TOKEN>",
-
-    prefetchFlags: ["promo-banner", "dark-mode", "max-uploads"],
-
-  }),
-
-);
-
-
-// Set evaluation context globally. The provider re-fetches all prefetchFlags
-
-// whenever the context changes.
-
-await OpenFeature.setContext({ targetingKey: "user-42", plan: "enterprise" });
-
-
+import { OpenFeature } from "@openfeature/web-sdk";import { FlagshipClientProvider } from "@cloudflare/flagship";
+await OpenFeature.setProviderAndWait(  new FlagshipClientProvider({    appId: "<APP_ID>",    accountId: "<ACCOUNT_ID>",    authToken: "<API_TOKEN>",    prefetchFlags: ["promo-banner", "dark-mode", "max-uploads"],  }),);
+// Set evaluation context globally. The provider re-fetches all prefetchFlags// whenever the context changes.await OpenFeature.setContext({ targetingKey: "user-42", plan: "enterprise" });
 const client = OpenFeature.getClient();
-
-
-// Synchronous — served from the in-memory cache.
-
-const showBanner = client.getBooleanValue("promo-banner", false);
-
-
-if (showBanner) {
-
-  document.getElementById("banner").style.display = "block";
-
-}
-
-
+// Synchronous — served from the in-memory cache.const showBanner = client.getBooleanValue("promo-banner", false);
+if (showBanner) {  document.getElementById("banner").style.display = "block";}
 ```
 
 TypeScript
 
 ```
-
-import { OpenFeature } from "@openfeature/web-sdk";
-
-import { FlagshipClientProvider } from "@cloudflare/flagship";
-
-
-await OpenFeature.setProviderAndWait(
-
-  new FlagshipClientProvider({
-
-    appId: "<APP_ID>",
-
-    accountId: "<ACCOUNT_ID>",
-
-    authToken: "<API_TOKEN>",
-
-    prefetchFlags: ["promo-banner", "dark-mode", "max-uploads"],
-
-  }),
-
-);
-
-
-// Set evaluation context globally. The provider re-fetches all prefetchFlags
-
-// whenever the context changes.
-
-await OpenFeature.setContext({ targetingKey: "user-42", plan: "enterprise" });
-
-
+import { OpenFeature } from "@openfeature/web-sdk";import { FlagshipClientProvider } from "@cloudflare/flagship";
+await OpenFeature.setProviderAndWait(  new FlagshipClientProvider({    appId: "<APP_ID>",    accountId: "<ACCOUNT_ID>",    authToken: "<API_TOKEN>",    prefetchFlags: ["promo-banner", "dark-mode", "max-uploads"],  }),);
+// Set evaluation context globally. The provider re-fetches all prefetchFlags// whenever the context changes.await OpenFeature.setContext({ targetingKey: "user-42", plan: "enterprise" });
 const client = OpenFeature.getClient();
-
-
-// Synchronous — served from the in-memory cache.
-
-const showBanner = client.getBooleanValue("promo-banner", false);
-
-
-if (showBanner) {
-
-  document.getElementById("banner").style.display = "block";
-
-}
-
-
+// Synchronous — served from the in-memory cache.const showBanner = client.getBooleanValue("promo-banner", false);
+if (showBanner) {  document.getElementById("banner").style.display = "block";}
 ```
 
 Note

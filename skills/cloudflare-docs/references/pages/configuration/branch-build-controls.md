@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,18 +23,7 @@ If your project is a [Direct Upload](https://developers.cloudflare.com/pages/get
 Terminal window
 
 ```
-
-curl --request PATCH \
-
-"https://api.cloudflare.com/client/v4/accounts/{account_id}/pages/projects/{project_name}" \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Content-Type: application/json" \
-
---data "{\"production_branch\": \"main\"}"
-
-
+curl --request PATCH \"https://api.cloudflare.com/client/v4/accounts/{account_id}/pages/projects/{project_name}" \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data "{\"production_branch\": \"main\"}"
 ```
 
 To configure deployment options, go to your Pages project > **Settings** \> **Builds & deployments** \> **Configure Production deployments**. Pages will default to setting your production environment to the branch you first push, but you can set your production to another branch if you choose.
@@ -64,7 +53,7 @@ A wildcard (`*`) is a character that is used within rules. It can be placed alon
 
 If you want to enforce branch prefixes such as `fix/`, `feat/`, or `chore/` with wildcard syntax, you can include and exclude certain branches with the following rules:
 
-* Include Preview branches:`fix/*`, `feat/*`, `chore/*`
+* Include Preview branches: `fix/*`, `feat/*`, `chore/*`
 * Exclude Preview branches: \`\`
 
 Here Pages will include any branches with the indicated prefixes and exclude everything else. In this example, the excluding option is left empty.
@@ -73,8 +62,8 @@ Here Pages will include any branches with the indicated prefixes and exclude eve
 
 If you wanted to prevent [dependabot ↗](https://github.com/dependabot) from creating a deployment for each PR it creates, you can exclude those branches with the following:
 
-* Include Preview branches:`*`
-* Exclude Preview branches:`dependabot/*`
+* Include Preview branches: `*`
+* Exclude Preview branches: `dependabot/*`
 
 Here Pages will include all branches except any branch starting with `dependabot`. In this example, the excluding option means any `dependabot/` branches will not be built.
 
@@ -82,8 +71,8 @@ Here Pages will include all branches except any branch starting with `dependabot
 
 If you only want to deploy release-prefixed branches, then you could use the following rules:
 
-* Include Preview branches:`release/*`
-* Exclude Preview branches:`*`
+* Include Preview branches: `release/*`
+* Exclude Preview branches: `*`
 
 This will deploy only branches starting with `release/`.
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -51,25 +51,11 @@ Before a domain can be added to Cloudflare, the domain must return `NS` records 
 Terminal window
 
 ```
-
 dig +short ns cloudflare.com
-
-
 ```
 
 ```
-
-ns3.cloudflare.com.
-
-ns4.cloudflare.com.
-
-ns5.cloudflare.com.
-
-ns6.cloudflare.com.
-
-ns7.cloudflare.com.
-
-
+ns3.cloudflare.com.ns4.cloudflare.com.ns5.cloudflare.com.ns6.cloudflare.com.ns7.cloudflare.com.
 ```
 
 Additionally, the domain must return a valid `SOA` record when queried. `SOA` records can be checked via third-party online tools such as [https://www.whatsmydns.net ↗](https://www.whatsmydns.net/) or via a command-line terminal:
@@ -77,17 +63,11 @@ Additionally, the domain must return a valid `SOA` record when queried. `SOA` re
 Terminal window
 
 ```
-
 dig +short soa cloudflare.com
-
-
 ```
 
 ```
-
 ns3.cloudflare.com. dns.cloudflare.com. 2029202248 10000 2400 604800 300
-
-
 ```
 
 ---
@@ -97,19 +77,19 @@ ns3.cloudflare.com. dns.cloudflare.com. 2029202248 10000 2400 604800 300
 If Cloudflare has temporary or permanent restrictions on a domain, you will receive the following errors:
 
 * **Error 1105**  
-   * **Message**: `Error with Cloudflare request: [1105] This zone is temporarily restricted and cannot be added to Cloudflare at this time, please contact Cloudflare Support.`  
-   * **Cause**: We have seen too many attempts to add a domain to Cloudflare  
-   * **Resolution**: Wait 3 hours before attempting to re-add the domain to Cloudflare. Support cannot speed up this process.
+  * **Message**: `Error with Cloudflare request: [1105] This zone is temporarily restricted and cannot be added to Cloudflare at this time, please contact Cloudflare Support.`
+  * **Cause**: We have seen too many attempts to add a domain to Cloudflare
+  * **Resolution**: Wait 3 hours before attempting to re-add the domain to Cloudflare. Support cannot speed up this process.
 * **Error 1093 or 1116**  
-   * **Message**: `This zone cannot be added to Cloudflare at this time, please contact Cloudflare Support. (Code: 1093)`  
-   * **Cause**: You may have entered a subdomain (`www.example.com`) instead of the apex domain (also known as "root domain", e.g. `example.com`).  
-   * **Resolution**: Verify that you are entering the apex domain. If you are and still experience issues, contact [Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/).
+  * **Message**: `This zone cannot be added to Cloudflare at this time, please contact Cloudflare Support. (Code: 1093)`
+  * **Cause**: You may have entered a subdomain (`www.example.com`) instead of the apex domain (also known as "root domain", e.g. `example.com`).
+  * **Resolution**: Verify that you are entering the apex domain. If you are and still experience issues, contact [Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/).
 * **Error 1097**  
-   * **Message**: `This web property cannot be added to Cloudflare at this time. If you are an Enterprise customer, contact your Customer Success Manager. Otherwise, email abusereply@cloudflare.com with a detailed explanation of your association with this zone. (Code: 1097)`  
-   * **Resolution**: Contact [abusereply@cloudflare.com](mailto:abusereply@cloudflare.com) with a detailed explanation of your association with this zone.
+  * **Message**: `This web property cannot be added to Cloudflare at this time. If you are an Enterprise customer, contact your Customer Success Manager. Otherwise, email abusereply@cloudflare.com with a detailed explanation of your association with this zone. (Code: 1097)`
+  * **Resolution**: Contact [abusereply@cloudflare.com](mailto:abusereply@cloudflare.com) with a detailed explanation of your association with this zone.
 * **Error: Cannot be found** OR **`<your domain>` is not a registered domain (code: 1049)**  
-   * This can happen if the domain has not been registered yet. Some domains, like `.gov` domains, have special requirements that require the domain be added first.  
-   * **Resolution:** Contact [Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) if you require assistance adding a `.gov` and/or other domains that require manual registration.
+  * This can happen if the domain has not been registered yet. Some domains, like `.gov` domains, have special requirements that require the domain be added first.
+  * **Resolution:** Contact [Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) if you require assistance adding a `.gov` and/or other domains that require manual registration.
 
 ---
 
@@ -118,12 +98,7 @@ If Cloudflare has temporary or permanent restrictions on a domain, you will rece
 Enterprise customers can use the [zone hold](https://developers.cloudflare.com/fundamentals/account/account-security/zone-holds/) feature to prevent domains to be added in any other account. If you get the following error when adding your domain, it means that a zone hold is active:
 
 ```
-
-The zone name provided is subject to a hold which disallows the creation of this zone.
-
-Please contact the owner of the Cloudflare account that manages this domain to have this hold removed.
-
-
+The zone name provided is subject to a hold which disallows the creation of this zone.Please contact the owner of the Cloudflare account that manages this domain to have this hold removed.
 ```
 
 In this case, you need to remove the zone hold if you own the Cloudflare account in which the zone is active, or contact the owner of the Cloudflare account that has the zone active.

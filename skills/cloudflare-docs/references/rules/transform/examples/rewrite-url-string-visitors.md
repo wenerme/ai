@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,19 +19,13 @@ To rewrite a request to the `/blog` path to `/blog?sort-by=date`, create a URL r
 Text in **Expression Editor**:
 
 ```
-
 http.request.uri.path == "/blog"
-
-
 ```
 
 Text after **Query** \> **Rewrite to** \> _Static_:
 
 ```
-
 sort-by=date
-
-
 ```
 
 Additionally, set the path rewrite action of the same rule to _Preserve_ so that the URL path does not change.

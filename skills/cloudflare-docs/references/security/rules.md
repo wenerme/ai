@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,13 +27,14 @@ To create a security rule:
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. (Optional) Select **Templates**, and then select a template from the list. You can customize the default configuration of the template before deploying the new rule. Refer to the resources listed in the next step.
-3. Select **Create rule** \> select the type of rule you want to create. Refer to the following resources about each rule type:  
-   * [Custom rules](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/#rule-form)  
-   * [Rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/create-zone-dashboard/#rule-form)  
-   * [API sequence rules](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/#rule-form)  
-   * [API JWT validation rules](https://developers.cloudflare.com/api-shield/security/jwt-validation/#rule-form) (requires a [token configuration](https://developers.cloudflare.com/security/settings/#all-settings))  
-   * [Managed rules exceptions](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define-dashboard/#2-define-basic-exception-parameters)  
-   * [Content security rules](https://developers.cloudflare.com/client-side-security/rules/create-dashboard/#rule-form) (previously known as policies)
+3. Select **Create rule** \> select the type of rule you want to create. Refer to the following resources about each rule type:
+
+  * [Custom rules](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/#rule-form)
+  * [Rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/create-zone-dashboard/#rule-form)
+  * [API sequence rules](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/#rule-form)
+  * [API JWT validation rules](https://developers.cloudflare.com/api-shield/security/jwt-validation/#rule-form) (requires a [token configuration](https://developers.cloudflare.com/security/settings/#all-settings))
+  * [Managed rules exceptions](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define-dashboard/#2-define-basic-exception-parameters)
+  * [Content security rules](https://developers.cloudflare.com/client-side-security/rules/create-dashboard/#rule-form) (previously known as policies)
 
 Notes
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -42,64 +42,20 @@ For `chatRecovery` and `chatStreamStallTimeoutMs` behavior, refer to [Durable re
 
 Think's class generics match `Agent<Env, State, Props>`. Persisted runtime configuration is typed at the `configure<T>()` and `getConfig<T>()` call sites, stored in SQLite, and survives hibernation and restarts.
 
-* [  JavaScript ](#tab-panel-5577)
-* [  TypeScript ](#tab-panel-5578)
+* [  JavaScript ](#tab-panel-5651)
+* [  TypeScript ](#tab-panel-5652)
 
 JavaScript
 
 ```
-
-export class MyAgent extends Think {
-
-  getModel() {
-
-    const tier = this.getConfig()?.modelTier ?? "fast";
-
-    const models = {
-
-      fast: "@cf/moonshotai/kimi-k2.6",
-
-      capable: "@cf/meta/llama-4-scout-17b-16e-instruct",
-
-    };
-
-    return createWorkersAI({ binding: this.env.AI })(models[tier]);
-
-  }
-
-}
-
-
+export class MyAgent extends Think {  getModel() {    const tier = this.getConfig()?.modelTier ?? "fast";    const models = {      fast: "@cf/moonshotai/kimi-k2.6",      capable: "@cf/meta/llama-4-scout-17b-16e-instruct",    };    return createWorkersAI({ binding: this.env.AI })(models[tier]);  }}
 ```
 
 TypeScript
 
 ```
-
 type MyConfig = { modelTier: "fast" | "capable"; theme: string };
-
-
-export class MyAgent extends Think<Env> {
-
-  getModel() {
-
-    const tier = this.getConfig<MyConfig>()?.modelTier ?? "fast";
-
-    const models = {
-
-      fast: "@cf/moonshotai/kimi-k2.6",
-
-      capable: "@cf/meta/llama-4-scout-17b-16e-instruct",
-
-    };
-
-    return createWorkersAI({ binding: this.env.AI })(models[tier]);
-
-  }
-
-}
-
-
+export class MyAgent extends Think<Env> {  getModel() {    const tier = this.getConfig<MyConfig>()?.modelTier ?? "fast";    const models = {      fast: "@cf/moonshotai/kimi-k2.6",      capable: "@cf/meta/llama-4-scout-17b-16e-instruct",    };    return createWorkersAI({ binding: this.env.AI })(models[tier]);  }}
 ```
 
 | Method                    | Description                                                   |
@@ -109,158 +65,46 @@ export class MyAgent extends Think<Env> {
 
 Expose configuration to the client via `@callable`:
 
-* [  JavaScript ](#tab-panel-5579)
-* [  TypeScript ](#tab-panel-5580)
+* [  JavaScript ](#tab-panel-5653)
+* [  TypeScript ](#tab-panel-5654)
 
 JavaScript
 
 ```
-
 import { callable } from "agents";
-
-
-export class MyAgent extends Think {
-
-  getModel() {
-
-    /* ... */
-
-  }
-
-
-  @callable()
-
-  updateConfig(config) {
-
-    this.configure(config);
-
-  }
-
-}
-
-
+export class MyAgent extends Think {  getModel() {    /* ... */  }
+  @callable()  updateConfig(config) {    this.configure(config);  }}
 ```
 
 TypeScript
 
 ```
-
 import { callable } from "agents";
-
-
-export class MyAgent extends Think<Env> {
-
-  getModel() {
-
-    /* ... */
-
-  }
-
-
-  @callable()
-
-  updateConfig(config: MyConfig) {
-
-    this.configure<MyConfig>(config);
-
-  }
-
-}
-
-
+export class MyAgent extends Think<Env> {  getModel() {    /* ... */  }
+  @callable()  updateConfig(config: MyConfig) {    this.configure<MyConfig>(config);  }}
 ```
 
 ## Session integration
 
 Think stores conversations in a [Session](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/) — the storage layer that holds your messages and gives the model writable memory. Two concepts come up here: **context blocks** are labelled sections of the system prompt the model can read and update (for example, a `memory` block of facts about the user), and **compaction** summarizes older messages so long conversations stay within the model's context window. Override `configureSession` to add persistent memory, compaction, search, and skills:
 
-* [  JavaScript ](#tab-panel-5581)
-* [  TypeScript ](#tab-panel-5582)
+* [  JavaScript ](#tab-panel-5655)
+* [  TypeScript ](#tab-panel-5656)
 
 JavaScript
 
 ```
-
 import { Think, Session } from "@cloudflare/think";
-
-
-export class MyAgent extends Think {
-
-  getModel() {
-
-    /* ... */
-
-  }
-
-
-  configureSession(session) {
-
-    return session
-
-      .withContext("soul", {
-
-        provider: { get: async () => "You are a helpful coding assistant." },
-
-      })
-
-      .withContext("memory", {
-
-        description: "Important facts learned during conversation.",
-
-        maxTokens: 2000,
-
-      })
-
-      .withCachedPrompt();
-
-  }
-
-}
-
-
+export class MyAgent extends Think {  getModel() {    /* ... */  }
+  configureSession(session) {    return session      .withContext("soul", {        provider: { get: async () => "You are a helpful coding assistant." },      })      .withContext("memory", {        description: "Important facts learned during conversation.",        maxTokens: 2000,      })      .withCachedPrompt();  }}
 ```
 
 TypeScript
 
 ```
-
 import { Think, Session } from "@cloudflare/think";
-
-
-export class MyAgent extends Think<Env> {
-
-  getModel() {
-
-    /* ... */
-
-  }
-
-
-  configureSession(session: Session) {
-
-    return session
-
-      .withContext("soul", {
-
-        provider: { get: async () => "You are a helpful coding assistant." },
-
-      })
-
-      .withContext("memory", {
-
-        description: "Important facts learned during conversation.",
-
-        maxTokens: 2000,
-
-      })
-
-      .withCachedPrompt();
-
-  }
-
-}
-
-
+export class MyAgent extends Think<Env> {  getModel() {    /* ... */  }
+  configureSession(session: Session) {    return session      .withContext("soul", {        provider: { get: async () => "You are a helpful coding assistant." },      })      .withContext("memory", {        description: "Important facts learned during conversation.",        maxTokens: 2000,      })      .withCachedPrompt();  }}
 ```
 
 When `configureSession` adds context blocks, Think builds the system prompt from those blocks instead of using `getSystemPrompt()`. Think's `this.messages` getter reads directly from Session's tree-structured storage.

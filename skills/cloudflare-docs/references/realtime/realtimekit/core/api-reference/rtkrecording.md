@@ -5,7 +5,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -14,11 +14,11 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 The RTKRecording module represents the state of the current recording, and allows to start/stop recordings and check if there's a recording in progress.
 
 * [RTKRecording](#module%5FRTKRecording)  
-   * [.telemetry](#module%5FRTKRecording+telemetry)  
-   * [.start()](#module%5FRTKRecording+start)  
-   * [.stop()](#module%5FRTKRecording+stop)  
-   * [.pause()](#module%5FRTKRecording+pause)  
-   * [.resume()](#module%5FRTKRecording+resume)
+  * [.telemetry](#module%5FRTKRecording+telemetry)
+  * [.start()](#module%5FRTKRecording+start)
+  * [.stop()](#module%5FRTKRecording+stop)
+  * [.pause()](#module%5FRTKRecording+pause)
+  * [.resume()](#module%5FRTKRecording+resume)
 
 ### meeting.recording.telemetry
 

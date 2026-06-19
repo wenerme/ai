@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,10 +21,7 @@ Install the `gatsby` CLI by running the following command in your terminal:
 Terminal window
 
 ```
-
 npm install -g gatsby-cli
-
-
 ```
 
 ## Create a new project
@@ -34,10 +31,7 @@ With Gatsby installed, you can create a new project using `gatsby new`. The `new
 Terminal window
 
 ```
-
 npx gatsby new my-gatsby-site https://github.com/alxshelepenok/gatsby-starter-lumen
-
-
 ```
 
 ## Before you continue
@@ -55,14 +49,7 @@ Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). Aft
 Terminal window
 
 ```
-
-git remote add origin https://github.com/<your-gh-username>/<repository-name>
-
-git branch -M main
-
-git push -u origin main
-
-
+git remote add origin https://github.com/<your-gh-username>/<repository-name>git branch -M maingit push -u origin main
 ```
 
 ## Deploy with Cloudflare Pages
@@ -97,10 +84,7 @@ If you are using [dynamic routes ↗](https://www.gatsbyjs.com/docs/reference/fu
 If you have a dynamic route, such as `/users/[id]`, create your proxy redirect by referring to the following example:
 
 ```
-
 /users/* /users/:id 200
-
-
 ```
 
 ## Learn more

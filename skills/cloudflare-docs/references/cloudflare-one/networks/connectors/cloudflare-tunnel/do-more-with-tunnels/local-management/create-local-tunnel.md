@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,10 +27,10 @@ Before you start, make sure you:
 
 ## 1\. Download and install `cloudflared`
 
-* [ Windows ](#tab-panel-7268)
-* [ macOS ](#tab-panel-7269)
-* [ Linux ](#tab-panel-7270)
-* [ Build from source ](#tab-panel-7271)
+* [ Windows ](#tab-panel-7344)
+* [ macOS ](#tab-panel-7345)
+* [ Linux ](#tab-panel-7346)
+* [ Build from source ](#tab-panel-7347)
 
 1. Download `cloudflared` on your machine. Visit the [downloads](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/) page to find the right package for your OS.
 2. Rename the executable to `cloudflared.exe`
@@ -45,10 +45,7 @@ To download and install `cloudflared`:
 Terminal window
 
 ```
-
 brew install cloudflared
-
-
 ```
 
 Alternatively, you can [download the latest Darwin amd64 release](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/) directly.
@@ -62,12 +59,7 @@ Use the apt package manager to install `cloudflared` on compatible machines.
 Terminal window
 
 ```
-
-sudo mkdir -p --mode=0755 /usr/share/keyrings
-
-curl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg | sudo tee /usr/share/keyrings/cloudflare-main.gpg >/dev/null
-
-
+sudo mkdir -p --mode=0755 /usr/share/keyringscurl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg | sudo tee /usr/share/keyrings/cloudflare-main.gpg >/dev/null
 ```
 
 1. Add Cloudflare's apt repo to your apt repositories:
@@ -75,10 +67,7 @@ curl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg | sudo tee /usr/share/
 Terminal window
 
 ```
-
 echo "deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/cloudflared any main" | sudo tee /etc/apt/sources.list.d/cloudflared.list
-
-
 ```
 
 1. Update repositories and install cloudflared:
@@ -86,10 +75,7 @@ echo "deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://pkg.cloudf
 Terminal window
 
 ```
-
 sudo apt-get update && sudo apt-get install cloudflared
-
-
 ```
 
 **RHEL RPM**
@@ -114,10 +100,7 @@ sudo yum update && sudo yum install cloudflared
 Terminal window
 
 ```
-
 pacman -Syu cloudflared
-
-
 ```
 
 **Other**
@@ -129,16 +112,7 @@ To build the latest version of `cloudflared` from source:
 Terminal window
 
 ```
-
-git clone https://github.com/cloudflare/cloudflared.git
-
-cd cloudflared
-
-make cloudflared
-
-go install github.com/cloudflare/cloudflared/cmd/cloudflared
-
-
+git clone https://github.com/cloudflare/cloudflared.gitcd cloudflaredmake cloudflaredgo install github.com/cloudflare/cloudflared/cmd/cloudflared
 ```
 
 Depending on where you installed `cloudflared`, you can move it to a known path as well.
@@ -146,10 +120,7 @@ Depending on where you installed `cloudflared`, you can move it to a known path 
 Terminal window
 
 ```
-
 mv /root/cloudflared/cloudflared /usr/bin/cloudflared
-
-
 ```
 
 ## 2\. Authenticate `cloudflared`
@@ -157,10 +128,7 @@ mv /root/cloudflared/cloudflared /usr/bin/cloudflared
 Terminal window
 
 ```
-
 cloudflared tunnel login
-
-
 ```
 
 Running this command will:
@@ -173,10 +141,7 @@ Running this command will:
 Terminal window
 
 ```
-
 cloudflared tunnel create <NAME>
-
-
 ```
 
 Running this command will:
@@ -192,10 +157,7 @@ Confirm that the tunnel has been successfully created by running:
 Terminal window
 
 ```
-
 cloudflared tunnel list
-
-
 ```
 
 ## 4\. Create a configuration file
@@ -204,16 +166,11 @@ cloudflared tunnel list
 2. Add the following fields to the file:  
 If you are connecting a [published application](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/):  
 ```  
-url: http://localhost:8000  
-tunnel: <Tunnel-UUID>  
-credentials-file: /root/.cloudflared/<Tunnel-UUID>.json  
+url: http://localhost:8000tunnel: <Tunnel-UUID>credentials-file: /root/.cloudflared/<Tunnel-UUID>.json  
 ```  
 If you are connecting a [private network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/):  
 ```  
-tunnel: <Tunnel-UUID>  
-credentials-file: /root/.cloudflared/<Tunnel-UUID>.json  
-warp-routing:  
-  enabled: true  
+tunnel: <Tunnel-UUID>credentials-file: /root/.cloudflared/<Tunnel-UUID>.jsonwarp-routing:  enabled: true  
 ```
 3. Confirm that the configuration file has been successfully created by running:  
 Terminal window  
@@ -228,10 +185,7 @@ cat config.yml
 Terminal window
 
 ```
-
 cloudflared tunnel route dns <UUID or NAME> <hostname>
-
-
 ```
 
 This command will create a `CNAME` record pointing to `<UUID>.cfargotunnel.com`.
@@ -241,10 +195,7 @@ This command will create a `CNAME` record pointing to `<UUID>.cfargotunnel.com`.
 Terminal window
 
 ```
-
 cloudflared tunnel route ip add <IP/CIDR> <UUID or NAME>
-
-
 ```
 
 3\. Confirm that the route has been successfully established:
@@ -252,10 +203,7 @@ cloudflared tunnel route ip add <IP/CIDR> <UUID or NAME>
 Terminal window
 
 ```
-
 cloudflared tunnel route ip show
-
-
 ```
 
 ## 6\. Run the tunnel
@@ -265,10 +213,7 @@ Run the tunnel to proxy incoming traffic from the tunnel to any number of servic
 Terminal window
 
 ```
-
 cloudflared tunnel run <UUID or NAME>
-
-
 ```
 
 If your configuration file has a custom name or is not in the `.cloudflared` directory, add the `--config` flag and specify the path.
@@ -276,10 +221,7 @@ If your configuration file has a custom name or is not in the `.cloudflared` dir
 Terminal window
 
 ```
-
 cloudflared tunnel --config /path/your-config-file.yml run <UUID or NAME>
-
-
 ```
 
 Note
@@ -293,10 +235,7 @@ To get information on the tunnel you just created, run:
 Terminal window
 
 ```
-
 cloudflared tunnel info <UUID or NAME>
-
-
 ```
 
 ```json

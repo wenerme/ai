@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,10 +29,7 @@ For example, to test TLS 1.1, use the `curl` command below. Replace `www.example
 Terminal window
 
 ```
-
 curl https://www.example.com -svo /dev/null --tls-max 1.1
-
-
 ```
 
 If the TLS version you are testing is blocked by Cloudflare, the TLS handshake is not completed and returns an error:

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,13 +16,15 @@ Cache everything for hostnames in a list
 
 [Create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) to cache everything for hostnames that match a [custom hostname list](https://developers.cloudflare.com/waf/tools/lists/custom-lists/#lists-with-hostnames):
 
-* **When incoming requests match**: Custom filter expression  
-   * Using the Expression Builder:  
-   `Hostname is in list "my_hostnames"`  
-   * Using the Expression Editor:  
-   `(http.host in $my_hostnames)`
-* **Then**:  
-   * **Cache eligibility**: Eligible for cache
+* **When incoming requests match**: Custom filter expression
+
+  * Using the Expression Builder:  
+  `Hostname is in list "my_hostnames"`
+  * Using the Expression Editor:  
+  `(http.host in $my_hostnames)`
+* **Then**:
+
+  * **Cache eligibility**: Eligible for cache
 
 Note
 

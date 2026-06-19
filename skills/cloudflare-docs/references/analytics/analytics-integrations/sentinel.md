@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,8 +33,9 @@ This guide provides clear, step-by-step instructions for integrating Cloudflare 
 2. Go to **Analytics** \> **Logs** and select **Logpush**.
 3. Select **Create Logpush Job**. Choose the log type you want to export (for example, **HTTP requests**).
 4. For the destination, select **Azure Blob Storage**.
-5. Enter your Azure Blob Storage details:  
-   * SAS Token (Shared Access Signature)  
+5. Enter your Azure Blob Storage details:
+
+  * SAS Token (Shared Access Signature)  
 To generate a SAS token from the Azure portal, first navigate to your storage account. Under the **Data Storage** section, select **Containers** and choose the relevant container. Within the settings, locate and select **Shared access signature**. Configure the required permissions, such as `write` and `create`, and specify the start and expiration dates for the token. Once configured, generate the SAS token accordingly.
 6. Save and activate the Logpush job.
 

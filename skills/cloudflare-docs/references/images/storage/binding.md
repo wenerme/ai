@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,35 +26,19 @@ Hosted image operations require a [paid Images plan with storage](https://develo
 
 To bind Images to your Worker, add the following to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-8903)
-* [  wrangler.toml ](#tab-panel-8904)
+* [  wrangler.jsonc ](#tab-panel-8979)
+* [  wrangler.toml ](#tab-panel-8980)
 
 JSONC
 
 ```
-
-{
-
-  "images": {
-
-    "binding": "IMAGES", // available in your Worker on env.IMAGES
-
-  },
-
-}
-
-
+{  "images": {    "binding": "IMAGES", // available in your Worker on env.IMAGES  },}
 ```
 
 TOML
 
 ```
-
-[images]
-
-binding = "IMAGES"
-
-
+[images]binding = "IMAGES"
 ```
 
 Within your Worker code, you can manage hosted images using the `env.IMAGES.hosted` namespace.
@@ -119,522 +103,158 @@ Deletes an image. Returns `true` if the image was deleted or `false` if no image
 
 ### Upload an image from a request body
 
-* [  JavaScript ](#tab-panel-8905)
-* [  TypeScript ](#tab-panel-8906)
+* [  JavaScript ](#tab-panel-8981)
+* [  TypeScript ](#tab-panel-8982)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    if (!request.body) {
-
-      return new Response("Missing body", { status: 400 });
-
-    }
-
-
-    const image = await env.IMAGES.hosted.upload(request.body, {
-
-      filename: "upload.jpg",
-
-      metadata: { source: "worker" },
-
-      requireSignedURLs: false,
-
-    });
-
-
-    return Response.json(image);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    if (!request.body) {      return new Response("Missing body", { status: 400 });    }
+    const image = await env.IMAGES.hosted.upload(request.body, {      filename: "upload.jpg",      metadata: { source: "worker" },      requireSignedURLs: false,    });
+    return Response.json(image);  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    if (!request.body) {
-
-      return new Response("Missing body", { status: 400 });
-
-    }
-
-
-    const image = await env.IMAGES.hosted.upload(request.body, {
-
-      filename: "upload.jpg",
-
-      metadata: { source: "worker" },
-
-      requireSignedURLs: false,
-
-    });
-
-
-    return Response.json(image);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    if (!request.body) {      return new Response("Missing body", { status: 400 });    }
+    const image = await env.IMAGES.hosted.upload(request.body, {      filename: "upload.jpg",      metadata: { source: "worker" },      requireSignedURLs: false,    });
+    return Response.json(image);  },};
 ```
 
 ### Upload a base64-encoded image
 
 Set `encoding: "base64"` and the binding will decode the body for you before uploading.
 
-* [  JavaScript ](#tab-panel-8909)
-* [  TypeScript ](#tab-panel-8910)
+* [  JavaScript ](#tab-panel-8985)
+* [  TypeScript ](#tab-panel-8986)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    if (!request.body) {
-
-      return new Response("Missing body", { status: 400 });
-
-    }
-
-
-    const image = await env.IMAGES.hosted.upload(request.body, {
-
-      encoding: "base64",
-
-      filename: "upload.png",
-
-    });
-
-
-    return Response.json(image);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    if (!request.body) {      return new Response("Missing body", { status: 400 });    }
+    const image = await env.IMAGES.hosted.upload(request.body, {      encoding: "base64",      filename: "upload.png",    });
+    return Response.json(image);  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    if (!request.body) {
-
-      return new Response("Missing body", { status: 400 });
-
-    }
-
-
-    const image = await env.IMAGES.hosted.upload(request.body, {
-
-      encoding: "base64",
-
-      filename: "upload.png",
-
-    });
-
-
-    return Response.json(image);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    if (!request.body) {      return new Response("Missing body", { status: 400 });    }
+    const image = await env.IMAGES.hosted.upload(request.body, {      encoding: "base64",      filename: "upload.png",    });
+    return Response.json(image);  },};
 ```
 
 ### List images with pagination
 
-* [  JavaScript ](#tab-panel-8913)
-* [  TypeScript ](#tab-panel-8914)
+* [  JavaScript ](#tab-panel-8989)
+* [  TypeScript ](#tab-panel-8990)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    let cursor;
-
-    const ids = [];
-
-
-    do {
-
-      const page = await env.IMAGES.hosted.list({ limit: 100, cursor });
-
-      ids.push(...page.images.map((image) => image.id));
-
-      cursor = page.cursor;
-
-    } while (cursor);
-
-
-    return Response.json({ count: ids.length, ids });
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    let cursor;    const ids = [];
+    do {      const page = await env.IMAGES.hosted.list({ limit: 100, cursor });      ids.push(...page.images.map((image) => image.id));      cursor = page.cursor;    } while (cursor);
+    return Response.json({ count: ids.length, ids });  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    let cursor: string | undefined;
-
-    const ids: string[] = [];
-
-
-    do {
-
-      const page = await env.IMAGES.hosted.list({ limit: 100, cursor });
-
-      ids.push(...page.images.map((image) => image.id));
-
-      cursor = page.cursor;
-
-    } while (cursor);
-
-
-    return Response.json({ count: ids.length, ids });
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    let cursor: string | undefined;    const ids: string[] = [];
+    do {      const page = await env.IMAGES.hosted.list({ limit: 100, cursor });      ids.push(...page.images.map((image) => image.id));      cursor = page.cursor;    } while (cursor);
+    return Response.json({ count: ids.length, ids });  },};
 ```
 
 ### Get the details for a single image
 
-* [  JavaScript ](#tab-panel-8907)
-* [  TypeScript ](#tab-panel-8908)
+* [  JavaScript ](#tab-panel-8983)
+* [  TypeScript ](#tab-panel-8984)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const details = await env.IMAGES.hosted.image("IMAGE_ID").details();
-
-    if (!details) {
-
-      return new Response("Not found", { status: 404 });
-
-    }
-
-    return Response.json(details);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const details = await env.IMAGES.hosted.image("IMAGE_ID").details();    if (!details) {      return new Response("Not found", { status: 404 });    }    return Response.json(details);  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const details = await env.IMAGES.hosted.image("IMAGE_ID").details();
-
-    if (!details) {
-
-      return new Response("Not found", { status: 404 });
-
-    }
-
-    return Response.json(details);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const details = await env.IMAGES.hosted.image("IMAGE_ID").details();    if (!details) {      return new Response("Not found", { status: 404 });    }    return Response.json(details);  },};
 ```
 
 ### Stream the original bytes for an image
 
-* [  JavaScript ](#tab-panel-8911)
-* [  TypeScript ](#tab-panel-8912)
+* [  JavaScript ](#tab-panel-8987)
+* [  TypeScript ](#tab-panel-8988)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const bytes = await env.IMAGES.hosted.image("IMAGE_ID").bytes();
-
-    if (!bytes) {
-
-      return new Response("Not found", { status: 404 });
-
-    }
-
-    return new Response(bytes);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const bytes = await env.IMAGES.hosted.image("IMAGE_ID").bytes();    if (!bytes) {      return new Response("Not found", { status: 404 });    }    return new Response(bytes);  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const bytes = await env.IMAGES.hosted.image("IMAGE_ID").bytes();
-
-    if (!bytes) {
-
-      return new Response("Not found", { status: 404 });
-
-    }
-
-    return new Response(bytes);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const bytes = await env.IMAGES.hosted.image("IMAGE_ID").bytes();    if (!bytes) {      return new Response("Not found", { status: 404 });    }    return new Response(bytes);  },};
 ```
 
 ### Update image metadata
 
-* [  JavaScript ](#tab-panel-8915)
-* [  TypeScript ](#tab-panel-8916)
+* [  JavaScript ](#tab-panel-8991)
+* [  TypeScript ](#tab-panel-8992)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const updated = await env.IMAGES.hosted.image("IMAGE_ID").update({
-
-      metadata: { reviewed: true },
-
-    });
-
-    return Response.json(updated);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const updated = await env.IMAGES.hosted.image("IMAGE_ID").update({      metadata: { reviewed: true },    });    return Response.json(updated);  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const updated = await env.IMAGES.hosted.image("IMAGE_ID").update({
-
-      metadata: { reviewed: true },
-
-    });
-
-    return Response.json(updated);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const updated = await env.IMAGES.hosted.image("IMAGE_ID").update({      metadata: { reviewed: true },    });    return Response.json(updated);  },};
 ```
 
 ### Delete an image
 
-* [  JavaScript ](#tab-panel-8917)
-* [  TypeScript ](#tab-panel-8918)
+* [  JavaScript ](#tab-panel-8993)
+* [  TypeScript ](#tab-panel-8994)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const deleted = await env.IMAGES.hosted.image("IMAGE_ID").delete();
-
-    return new Response(deleted ? "Deleted" : "Not found", {
-
-      status: deleted ? 200 : 404,
-
-    });
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const deleted = await env.IMAGES.hosted.image("IMAGE_ID").delete();    return new Response(deleted ? "Deleted" : "Not found", {      status: deleted ? 200 : 404,    });  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const deleted = await env.IMAGES.hosted.image("IMAGE_ID").delete();
-
-    return new Response(deleted ? "Deleted" : "Not found", {
-
-      status: deleted ? 200 : 404,
-
-    });
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const deleted = await env.IMAGES.hosted.image("IMAGE_ID").delete();    return new Response(deleted ? "Deleted" : "Not found", {      status: deleted ? 200 : 404,    });  },};
 ```
 
 ### Ingest a remote image into Images storage
 
 This example fetches an image from a remote URL, uploads it into your Images account, and returns the first variant URL.
 
-* [  JavaScript ](#tab-panel-8919)
-* [  TypeScript ](#tab-panel-8920)
+* [  JavaScript ](#tab-panel-8995)
+* [  TypeScript ](#tab-panel-8996)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const upstream = await fetch("https://example.com/photo.jpg");
-
-    if (!upstream.ok || !upstream.body) {
-
-      return new Response("Upstream fetch failed", { status: 502 });
-
-    }
-
-
-    const image = await env.IMAGES.hosted.upload(upstream.body, {
-
-      filename: "photo.jpg",
-
-      metadata: { source: "example.com" },
-
-    });
-
-
-    return Response.json({
-
-      id: image.id,
-
-      variant: image.variants[0],
-
-    });
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const upstream = await fetch("https://example.com/photo.jpg");    if (!upstream.ok || !upstream.body) {      return new Response("Upstream fetch failed", { status: 502 });    }
+    const image = await env.IMAGES.hosted.upload(upstream.body, {      filename: "photo.jpg",      metadata: { source: "example.com" },    });
+    return Response.json({      id: image.id,      variant: image.variants[0],    });  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const upstream = await fetch("https://example.com/photo.jpg");
-
-    if (!upstream.ok || !upstream.body) {
-
-      return new Response("Upstream fetch failed", { status: 502 });
-
-    }
-
-
-    const image = await env.IMAGES.hosted.upload(upstream.body, {
-
-      filename: "photo.jpg",
-
-      metadata: { source: "example.com" },
-
-    });
-
-
-    return Response.json({
-
-      id: image.id,
-
-      variant: image.variants[0],
-
-    });
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const upstream = await fetch("https://example.com/photo.jpg");    if (!upstream.ok || !upstream.body) {      return new Response("Upstream fetch failed", { status: 502 });    }
+    const image = await env.IMAGES.hosted.upload(upstream.body, {      filename: "photo.jpg",      metadata: { source: "example.com" },    });
+    return Response.json({      id: image.id,      variant: image.variants[0],    });  },};
 ```
 
 ## Type definitions
@@ -644,41 +264,41 @@ export default {
 Returned by operations that retrieve, create, or update an image.
 
 * `id` ` string `  
-   * The unique identifier for the image.
+  * The unique identifier for the image.
 * `filename` ` string ` optional  
-   * The original filename supplied at upload time.
+  * The original filename supplied at upload time.
 * `uploaded` ` string ` optional  
-   * The date and time the image was uploaded, as an ISO 8601 string.
+  * The date and time the image was uploaded, as an ISO 8601 string.
 * `requireSignedURLs` ` boolean `  
-   * Whether signed URLs are required to access this image. Refer to [Serve private images](https://developers.cloudflare.com/images/optimization/hosted-images/serve-private-images/).
+  * Whether signed URLs are required to access this image. Refer to [Serve private images](https://developers.cloudflare.com/images/optimization/hosted-images/serve-private-images/).
 * `meta` ` Record<string, unknown> ` optional  
-   * User-supplied metadata associated with the image.
+  * User-supplied metadata associated with the image.
 * `variants` ` Array<string> `  
-   * Fully-formed URLs for each variant configured on your account. Refer to [Create variants](https://developers.cloudflare.com/images/optimization/hosted-images/create-variants/).
+  * Fully-formed URLs for each variant configured on your account. Refer to [Create variants](https://developers.cloudflare.com/images/optimization/hosted-images/create-variants/).
 * `draft` ` boolean ` optional  
-   * Whether the image is in a draft state (no bytes uploaded yet). Drafts are typically only seen on accounts using [Direct Creator Uploads](https://developers.cloudflare.com/images/storage/upload-images/direct-creator-upload/).
+  * Whether the image is in a draft state (no bytes uploaded yet). Drafts are typically only seen on accounts using [Direct Creator Uploads](https://developers.cloudflare.com/images/storage/upload-images/direct-creator-upload/).
 * `creator` ` string ` optional  
-   * A user-defined identifier for the image creator.
+  * A user-defined identifier for the image creator.
 
 ### ImageList
 
 Returned by [list()](#listoptions).
 
 * `images` ` Array<ImageMetadata> `  
-   * The images in this page of results.
+  * The images in this page of results.
 * `cursor` ` string ` optional  
-   * A continuation token to pass to the next `list()` call. Only present when there are more results.
+  * A continuation token to pass to the next `list()` call. Only present when there are more results.
 * `listComplete` ` boolean `  
-   * `true` when there are no further pages, `false` otherwise.
+  * `true` when there are no further pages, `false` otherwise.
 
 ## Error handling
 
 Methods that fail throw an `ImagesError` — `.upload()`, `.list()`, `.update()` — with the following properties:
 
 * `code` ` number `  
-   * A numeric error code that identifies the failure mode.
+  * A numeric error code that identifies the failure mode.
 * `message` ` string `  
-   * A human-readable description of the error.
+  * A human-readable description of the error.
 
 Methods that fetch a single image — [.details()](#imageimageiddetails), [.bytes()](#imageimageidbytes), and [.delete()](#imageimageiddelete) — return `null` or `false` for "not found" rather than throwing.
 

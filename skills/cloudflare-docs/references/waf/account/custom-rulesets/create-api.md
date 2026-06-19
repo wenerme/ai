@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -38,47 +38,14 @@ The following example creates a custom ruleset at the account level with a singl
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Account WAF Write`
 * `Account Rulesets Write`
 
 Create an account ruleset
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "description": "",
-
-    "kind": "custom",
-
-    "name": "My custom ruleset",
-
-    "rules": [
-
-        {
-
-            "description": "Challenge web traffic (not /api)",
-
-            "expression": "not starts_with(http.request.uri.path, \"/api/\")",
-
-            "action": "managed_challenge"
-
-        }
-
-    ],
-
-    "phase": "http_request_firewall_custom"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "description": "",    "kind": "custom",    "name": "My custom ruleset",    "rules": [        {            "description": "Challenge web traffic (not /api)",            "expression": "not starts_with(http.request.uri.path, \"/api/\")",            "action": "managed_challenge"        }    ],    "phase": "http_request_firewall_custom"  }'
 ```
 
 Save the ruleset ID in the response for the next step.
@@ -89,84 +56,38 @@ To deploy the custom ruleset, add a rule with `"action": "execute"` to the `http
 
 1. Invoke the [Get an account entry point ruleset](https://developers.cloudflare.com/api/resources/rulesets/subresources/phases/methods/get/) operation to obtain the definition of the entry point ruleset for the `http_request_firewall_custom` phase. You will need the [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) for this task.  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Account WAF Write`  
-   * `Account WAF Read`  
-   * `Account Rulesets Read`  
-   * `Account Rulesets Write`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Account WAF Write`
+  * `Account WAF Read`
+  * `Account Rulesets Read`
+  * `Account Rulesets Write`  
 Get an account entry point ruleset  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/phases/http_request_firewall_custom/entrypoint" \  
-  --request GET \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/phases/http_request_firewall_custom/entrypoint" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
 ```  
 ```  
-{  
-  "result": {  
-    "description": "Account-level phase entry point",  
-    "id": "<RULESET_ID>",  
-    "kind": "root",  
-    "last_updated": "2024-03-16T15:40:08.202335Z",  
-    "name": "root",  
-    "phase": "http_request_firewall_custom",  
-    "rules": [  
-      // ...  
-    ],  
-    "version": "9"  
-  },  
-  "success": true,  
-  "errors": [],  
-  "messages": []  
-}  
+{  "result": {    "description": "Account-level phase entry point",    "id": "<RULESET_ID>",    "kind": "root",    "last_updated": "2024-03-16T15:40:08.202335Z",    "name": "root",    "phase": "http_request_firewall_custom",    "rules": [      // ...    ],    "version": "9"  },  "success": true,  "errors": [],  "messages": []}  
 ```
 2. If the entry point ruleset already exists (that is, if you received a `200 OK` status code and the ruleset definition), take note of the ruleset ID in the response. Then, invoke the [Create an account ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/create/) operation to add an `execute` rule to the existing ruleset deploying the custom ruleset. By default, the rule will be added at the end of the list of rules already in the ruleset.  
 The following request creates a rule that executes the custom ruleset with ID `<CUSTOM_RULESET_ID>` for all Enterprise zones in the account:  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Account WAF Write`  
-   * `Account Rulesets Write`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Account WAF Write`
+  * `Account Rulesets Write`  
 Create an account ruleset rule  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESET_ID/rules" \  
-  --request POST \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "description": "Execute custom ruleset",  
-    "expression": "(cf.zone.plan eq \"ENT\")",  
-    "action": "execute",  
-    "action_parameters": {  
-        "id": "<CUSTOM_RULESET_ID>"  
-    },  
-    "enabled": true  
-  }'  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESET_ID/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "description": "Execute custom ruleset",    "expression": "(cf.zone.plan eq \"ENT\")",    "action": "execute",    "action_parameters": {        "id": "<CUSTOM_RULESET_ID>"    },    "enabled": true  }'  
 ```  
 Warning  
 At the account level, you can only apply custom rulesets to incoming traffic of zones on an Enterprise plan. To enforce this requirement, you must include `cf.zone.plan eq "ENT"` in the expression of the `execute` rule deploying the custom ruleset.
 3. If the entry point ruleset does not exist (that is, if you received a `404 Not Found` status code in step 1), create it using the [Create an account ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) operation. Include a single rule in the `rules` array that executes the custom ruleset for all incoming requests of Enterprise zones in your account.  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Account WAF Write`  
-   * `Account Rulesets Write`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Account WAF Write`
+  * `Account Rulesets Write`  
 Create an account ruleset  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \  
-  --request POST \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "description": "",  
-    "kind": "root",  
-    "name": "Account-level phase entry point",  
-    "rules": [  
-        {  
-            "action": "execute",  
-            "expression": "(cf.zone.plan eq \"ENT\")",  
-            "action_parameters": {  
-                "id": "<CUSTOM_RULESET_ID>"  
-            }  
-        }  
-    ],  
-    "phase": "http_request_firewall_custom"  
-  }'  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "description": "",    "kind": "root",    "name": "Account-level phase entry point",    "rules": [        {            "action": "execute",            "expression": "(cf.zone.plan eq \"ENT\")",            "action_parameters": {                "id": "<CUSTOM_RULESET_ID>"            }        }    ],    "phase": "http_request_firewall_custom"  }'  
 ```
 
 ## Next steps

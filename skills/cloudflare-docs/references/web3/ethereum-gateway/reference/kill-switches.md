@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/web3/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,7 +30,7 @@ This is a radically different approach for providing transparency and accountabi
 
 The trust given to institutions is historic. This history builds trustworthiness.
 
-The trust placed in consensus-based algorithms is based on the assumption that most people are honest, or more accurately that no sufficiently large subset of people can be made to collude to produce a malicious outcome. This is the_democratisation of trust_. In the DAO attack, a majority of nodes agreed to accept an irregular state transition. This effectively undid the damage of the attack, and shows how, at least in the world of blockchain, perception is reality. Because most people “believed" -- accepted this irregular block, it became a “real” -- valid block.
+The trust placed in consensus-based algorithms is based on the assumption that most people are honest, or more accurately that no sufficiently large subset of people can be made to collude to produce a malicious outcome. This is the _democratisation of trust_. In the DAO attack, a majority of nodes agreed to accept an irregular state transition. This effectively undid the damage of the attack, and shows how, at least in the world of blockchain, perception is reality. Because most people “believed" -- accepted this irregular block, it became a “real” -- valid block.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/ethereum-gateway/reference/kill-switches/#page","headline":"Kill Switches · Cloudflare Web3 docs","description":"Disable Ethereum Gateway features in an emergency.","url":"https://developers.cloudflare.com/web3/ethereum-gateway/reference/kill-switches/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

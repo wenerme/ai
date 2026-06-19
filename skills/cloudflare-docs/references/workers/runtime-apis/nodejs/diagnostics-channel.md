@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,42 +21,11 @@ The [diagnostics\_channel ↗](https://nodejs.org/dist/latest-v20.x/docs/api/dia
 JavaScript
 
 ```
-
-import {
-
-  channel,
-
-  hasSubscribers,
-
-  subscribe,
-
-  unsubscribe,
-
-  tracingChannel,
-
-} from "node:diagnostics_channel";
-
-
-// For publishing messages to a channel, acquire a channel object:
-
-const myChannel = channel("my-channel");
-
-
-// Any JS value can be published to a channel.
-
-myChannel.publish({ foo: "bar" });
-
-
+import {  channel,  hasSubscribers,  subscribe,  unsubscribe,  tracingChannel,} from "node:diagnostics_channel";
+// For publishing messages to a channel, acquire a channel object:const myChannel = channel("my-channel");
+// Any JS value can be published to a channel.myChannel.publish({ foo: "bar" });
 // For receiving messages on a channel, use subscribe:
-
-
-subscribe("my-channel", (message) => {
-
-  console.log(message);
-
-});
-
-
+subscribe("my-channel", (message) => {  console.log(message);});
 ```
 
 All `Channel` instances are singletons per each Isolate/context (for example, the same entry point). Subscribers are always invoked synchronously and in the order they were registered, much like an `EventTarget` or Node.js `EventEmitter` class.
@@ -68,34 +37,7 @@ When using [Tail Workers](https://developers.cloudflare.com/workers/observabilit
 JavaScript
 
 ```
-
-export default {
-
-  async tail(events) {
-
-    for (const event of events) {
-
-      for (const messageData of event.diagnosticsChannelEvents) {
-
-        console.log(
-
-          messageData.timestamp,
-
-          messageData.channel,
-
-          messageData.message,
-
-        );
-
-      }
-
-    }
-
-  },
-
-};
-
-
+export default {  async tail(events) {    for (const event of events) {      for (const messageData of event.diagnosticsChannelEvents) {        console.log(          messageData.timestamp,          messageData.channel,          messageData.message,        );      }    }  },};
 ```
 
 Note that message published to the tail worker is passed through the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FWorkers%5FAPI/Structured%5Fclone%5Falgorithm) (same mechanism as the [structuredClone() ↗](https://developer.mozilla.org/en-US/docs/Web/API/structuredClone) API) so only values that can be successfully cloned are supported.
@@ -107,81 +49,10 @@ Per the Node.js documentation, "[TracingChannel ↗](https://nodejs.org/api/diag
 JavaScript
 
 ```
-
-import { tracingChannel } from "node:diagnostics_channel";
-
-import { AsyncLocalStorage } from "node:async_hooks";
-
-
-const channels = tracingChannel("my-channel");
-
-const requestId = new AsyncLocalStorage();
-
-channels.start.bindStore(requestId);
-
-
-channels.subscribe({
-
-  start(message) {
-
-    console.log(requestId.getStore()); // { requestId: '123' }
-
-    // Handle start message
-
-  },
-
-  end(message) {
-
-    console.log(requestId.getStore()); // { requestId: '123' }
-
-    // Handle end message
-
-  },
-
-  asyncStart(message) {
-
-    console.log(requestId.getStore()); // { requestId: '123' }
-
-    // Handle asyncStart message
-
-  },
-
-  asyncEnd(message) {
-
-    console.log(requestId.getStore()); // { requestId: '123' }
-
-    // Handle asyncEnd message
-
-  },
-
-  error(message) {
-
-    console.log(requestId.getStore()); // { requestId: '123' }
-
-    // Handle error message
-
-  },
-
-});
-
-
-// The subscriber handlers will be invoked while tracing the execution of the async
-
-// function passed into `channel.tracePromise`...
-
-channel.tracePromise(
-
-  async () => {
-
-    // Perform some asynchronous work...
-
-  },
-
-  { requestId: "123" },
-
-);
-
-
+import { tracingChannel } from "node:diagnostics_channel";import { AsyncLocalStorage } from "node:async_hooks";
+const channels = tracingChannel("my-channel");const requestId = new AsyncLocalStorage();channels.start.bindStore(requestId);
+channels.subscribe({  start(message) {    console.log(requestId.getStore()); // { requestId: '123' }    // Handle start message  },  end(message) {    console.log(requestId.getStore()); // { requestId: '123' }    // Handle end message  },  asyncStart(message) {    console.log(requestId.getStore()); // { requestId: '123' }    // Handle asyncStart message  },  asyncEnd(message) {    console.log(requestId.getStore()); // { requestId: '123' }    // Handle asyncEnd message  },  error(message) {    console.log(requestId.getStore()); // { requestId: '123' }    // Handle error message  },});
+// The subscriber handlers will be invoked while tracing the execution of the async// function passed into `channel.tracePromise`...channel.tracePromise(  async () => {    // Perform some asynchronous work...  },  { requestId: "123" },);
 ```
 
 Refer to the [Node.js documentation for diagnostics\_channel ↗](https://nodejs.org/dist/latest-v20.x/docs/api/diagnostics%5Fchannel.html) for more information.

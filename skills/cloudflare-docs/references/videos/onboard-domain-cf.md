@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/videos/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,12 +17,16 @@ Learn how Cloudflare secures and accelerates your website using its global netwo
 Chapters
 
 * ![How Cloudflare Works](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/980c8494f2403b95473d2ed687b4f402/thumbnails/thumbnail.jpg?fit=crop&time=0s)  
+
  **How Cloudflare Works** 0s
 * ![Getting Started: Domain Onboarding](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/980c8494f2403b95473d2ed687b4f402/thumbnails/thumbnail.jpg?fit=crop&time=55s)  
+
  **Getting Started: Domain Onboarding** 55s
 * ![DNS and Reverse Proxy Explained](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/980c8494f2403b95473d2ed687b4f402/thumbnails/thumbnail.jpg?fit=crop&time=84s)  
+
  **DNS and Reverse Proxy Explained** 01m24s
 * ![Request Lifecycle and Performance Optimization](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/980c8494f2403b95473d2ed687b4f402/thumbnails/thumbnail.jpg?fit=crop&time=200s)  
+
  **Request Lifecycle and Performance Optimization** 03m20s
 
   

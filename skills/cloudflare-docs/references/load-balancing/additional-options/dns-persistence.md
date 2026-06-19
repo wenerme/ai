@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -53,8 +53,8 @@ This method uses load shedding to distribute traffic based on the source IP addr
 1. Create a pool for each endpoint (for example, `pool_1` with `endpoint_1` and `pool_2` with `endpoint_2`).
 2. On the first pool, select **Hash** under **Endpoint Steering**.
 3. Configure **Load Shedding**:  
-   * **Policy**: IP Hash  
-   * **Shed %**: 50% (to split traffic evenly between two pools)
+  * **Policy**: IP Hash
+  * **Shed %**: 50% (to split traffic evenly between two pools)
 4. Create a DNS-only load balancer and add both pools. Ensure `pool_1` is ordered before `pool_2`.
 5. Do not configure additional traffic steering or rules.
 
@@ -76,9 +76,9 @@ This method uses custom rules to split traffic based on IP address ranges.
 2. Create a DNS-only load balancer and add both pools. Ensure `pool_1` is ordered before `pool_2`.
 3. Do not configure traffic steering.
 4. Create a **Custom Rule** with:  
-   * **Field**: IP Source Address  
-   * **Operator**: is in  
-   * **Value**: A subset of IP space (for example, `0.0.0.0/1` for the lower half of IPv4 space)
+  * **Field**: IP Source Address
+  * **Operator**: is in
+  * **Value**: A subset of IP space (for example, `0.0.0.0/1` for the lower half of IPv4 space)
 5. For the rule action, choose **Override** \> **Endpoints** and set the pools in reverse order (`pool_2`, `pool_1`).
 
 #### How it works

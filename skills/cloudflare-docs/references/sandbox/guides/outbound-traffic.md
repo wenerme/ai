@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,39 +26,21 @@ Use them to:
 
 Use `enableInternet = false` to block public internet access by default:
 
-* [  JavaScript ](#tab-panel-10465)
-* [  TypeScript ](#tab-panel-10466)
+* [  JavaScript ](#tab-panel-10541)
+* [  TypeScript ](#tab-panel-10542)
 
 JavaScript
 
 ```
-
 import { Sandbox } from "@cloudflare/sandbox";
-
-
-export class MySandbox extends Sandbox {
-
-  enableInternet = false;
-
-}
-
-
+export class MySandbox extends Sandbox {  enableInternet = false;}
 ```
 
 TypeScript
 
 ```
-
 import { Sandbox } from "@cloudflare/sandbox";
-
-
-export class MySandbox extends Sandbox {
-
-  enableInternet = false;
-
-}
-
-
+export class MySandbox extends Sandbox {  enableInternet = false;}
 ```
 
 When `enableInternet` is `false`, only traffic you explicitly allow later on this page through `allowedHosts` or outbound handlers can leave the sandbox. Only ports `80`, `443`, and DNS are available, and DNS queries use Cloudflare's DNS servers.
@@ -81,98 +63,42 @@ When `allowedHosts` is set, it becomes a deny-by-default allowlist. Any host or 
 
 By default, a Sandbox allows internet access, and you can set `deniedHosts` to disallow specific hosts or IPs:
 
-* [  JavaScript ](#tab-panel-10467)
-* [  TypeScript ](#tab-panel-10468)
+* [  JavaScript ](#tab-panel-10543)
+* [  TypeScript ](#tab-panel-10544)
 
 JavaScript
 
 ```
-
-import { Sandbox, ContainerProxy } from "@cloudflare/sandbox";
-
-export { ContainerProxy };
-
-
-export class MySandbox extends Sandbox {
-
-  deniedHosts = ["some-nefarious-website.com", "141.101.64.0/18"];
-
-}
-
-
+import { Sandbox, ContainerProxy } from "@cloudflare/sandbox";export { ContainerProxy };
+export class MySandbox extends Sandbox {  deniedHosts = ["some-nefarious-website.com", "141.101.64.0/18"];}
 ```
 
 TypeScript
 
 ```
-
-import { Sandbox, ContainerProxy } from "@cloudflare/sandbox";
-
-export { ContainerProxy };
-
-
-export class MySandbox extends Sandbox {
-
-  deniedHosts = ["some-nefarious-website.com", "141.101.64.0/18"];
-
-}
-
-
+import { Sandbox, ContainerProxy } from "@cloudflare/sandbox";export { ContainerProxy };
+export class MySandbox extends Sandbox {  deniedHosts = ["some-nefarious-website.com", "141.101.64.0/18"];}
 ```
 
 You can also disable internet access by default, but allow specific hosts and IPs:
 
-* [  JavaScript ](#tab-panel-10469)
-* [  TypeScript ](#tab-panel-10470)
+* [  JavaScript ](#tab-panel-10545)
+* [  TypeScript ](#tab-panel-10546)
 
 JavaScript
 
 ```
-
-import { Sandbox, ContainerProxy } from "@cloudflare/sandbox";
-
-export { ContainerProxy };
-
-
-export class MySandbox extends Sandbox {
-
-  // default internet access to off unless overridden by 'allowedHosts' or outbound proxy
-
-  enableInternet = false;
-
-
-  // overrides enableInternet = false
-
-  allowedHosts = ["allowed.com"];
-
-}
-
-
+import { Sandbox, ContainerProxy } from "@cloudflare/sandbox";export { ContainerProxy };
+export class MySandbox extends Sandbox {  // default internet access to off unless overridden by 'allowedHosts' or outbound proxy  enableInternet = false;
+  // overrides enableInternet = false  allowedHosts = ["allowed.com"];}
 ```
 
 TypeScript
 
 ```
-
-import { Sandbox, ContainerProxy } from "@cloudflare/sandbox";
-
-export { ContainerProxy };
-
-
-export class MySandbox extends Sandbox {
-
-  // default internet access to off unless overridden by 'allowedHosts' or outbound proxy
-
-  enableInternet = false;
-
-
-  // overrides enableInternet = false
-
-  allowedHosts = ["allowed.com"];
-
-}
-
-
+import { Sandbox, ContainerProxy } from "@cloudflare/sandbox";export { ContainerProxy };
+export class MySandbox extends Sandbox {  // default internet access to off unless overridden by 'allowedHosts' or outbound proxy  enableInternet = false;
+  // overrides enableInternet = false  allowedHosts = ["allowed.com"];}
 ```
 
 ## Define outbound handlers
@@ -181,73 +107,23 @@ Outbound handlers are programmable egress proxies that run on the same machine a
 
 Use `outbound` to intercept all outbound HTTP and HTTPS traffic:
 
-* [  JavaScript ](#tab-panel-10473)
-* [  TypeScript ](#tab-panel-10474)
+* [  JavaScript ](#tab-panel-10549)
+* [  TypeScript ](#tab-panel-10550)
 
 JavaScript
 
 ```
-
-import { Sandbox, ContainerProxy } from "@cloudflare/sandbox";
-
-export { ContainerProxy };
-
-
+import { Sandbox, ContainerProxy } from "@cloudflare/sandbox";export { ContainerProxy };
 export class MySandbox extends Sandbox {}
-
-
-MySandbox.outbound = async (request, env, ctx) => {
-
-  if (request.method !== "GET") {
-
-    console.log(`Blocked ${request.method} to ${request.url}`);
-
-    return new Response("Method Not Allowed", { status: 405 });
-
-  }
-
-  return fetch(request);
-
-};
-
-
+MySandbox.outbound = async (request, env, ctx) => {  if (request.method !== "GET") {    console.log(`Blocked ${request.method} to ${request.url}`);    return new Response("Method Not Allowed", { status: 405 });  }  return fetch(request);};
 ```
 
 TypeScript
 
 ```
-
-import { Sandbox, ContainerProxy } from "@cloudflare/sandbox";
-
-export { ContainerProxy };
-
-
+import { Sandbox, ContainerProxy } from "@cloudflare/sandbox";export { ContainerProxy };
 export class MySandbox extends Sandbox {}
-
-
-MySandbox.outbound = async (
-
-  request: Request,
-
-  env: Env,
-
-  ctx: OutboundHandlerContext,
-
-) => {
-
-  if (request.method !== "GET") {
-
-    console.log(`Blocked ${request.method} to ${request.url}`);
-
-    return new Response("Method Not Allowed", { status: 405 });
-
-  }
-
-  return fetch(request);
-
-};
-
-
+MySandbox.outbound = async (  request: Request,  env: Env,  ctx: OutboundHandlerContext,) => {  if (request.method !== "GET") {    console.log(`Blocked ${request.method} to ${request.url}`);    return new Response("Method Not Allowed", { status: 405 });  }  return fetch(request);};
 ```
 
 Note
@@ -256,69 +132,23 @@ HTTP requests to the outbound handler remain secure because they run on the same
 
 Use `outboundByHost` to map specific domain names or IP addresses to handler functions:
 
-* [  JavaScript ](#tab-panel-10475)
-* [  TypeScript ](#tab-panel-10476)
+* [  JavaScript ](#tab-panel-10551)
+* [  TypeScript ](#tab-panel-10552)
 
 JavaScript
 
 ```
-
-import { Sandbox, ContainerProxy } from "@cloudflare/sandbox";
-
-export { ContainerProxy };
-
-
+import { Sandbox, ContainerProxy } from "@cloudflare/sandbox";export { ContainerProxy };
 export class MySandbox extends Sandbox {}
-
-
-MySandbox.outboundByHost = {
-
-  "my.worker": async (request, env, ctx) => {
-
-    // Run arbitrary Workers logic from this hostname
-
-    return await someWorkersFunction(request.body);
-
-  },
-
-};
-
-
+MySandbox.outboundByHost = {  "my.worker": async (request, env, ctx) => {    // Run arbitrary Workers logic from this hostname    return await someWorkersFunction(request.body);  },};
 ```
 
 TypeScript
 
 ```
-
-import { Sandbox, ContainerProxy } from "@cloudflare/sandbox";
-
-export { ContainerProxy };
-
-
+import { Sandbox, ContainerProxy } from "@cloudflare/sandbox";export { ContainerProxy };
 export class MySandbox extends Sandbox {}
-
-
-MySandbox.outboundByHost = {
-
-  "my.worker": async (
-
-    request: Request,
-
-    env: Env,
-
-    ctx: OutboundHandlerContext,
-
-  ) => {
-
-    // Run arbitrary Workers logic from this hostname
-
-    return await someWorkersFunction(request.body);
-
-  },
-
-};
-
-
+MySandbox.outboundByHost = {  "my.worker": async (    request: Request,    env: Env,    ctx: OutboundHandlerContext,  ) => {    // Run arbitrary Workers logic from this hostname    return await someWorkersFunction(request.body);  },};
 ```
 
 Calls to `http://my.worker` from the sandbox invoke the handler, which runs inside the Workers runtime, outside the sandbox.
@@ -329,55 +159,21 @@ Calls to `http://my.worker` from the sandbox invoke the handler, which runs insi
 
 Because outbound handlers run in the Workers runtime — outside the sandbox — they can hold secrets that the sandbox itself never sees. The sandbox makes a plain HTTP request, and the handler attaches the credential before forwarding it to the upstream service.
 
-* [  JavaScript ](#tab-panel-10471)
-* [  TypeScript ](#tab-panel-10472)
+* [  JavaScript ](#tab-panel-10547)
+* [  TypeScript ](#tab-panel-10548)
 
 JavaScript
 
 ```
-
 export class MySandbox extends Sandbox {}
-
-
-MySandbox.outboundByHost = {
-
-  "github.com": (request, env, ctx) => {
-
-    const requestWithAuth = new Request(request);
-
-    requestWithAuth.headers.set("x-auth-token", env.SECRET);
-
-    return fetch(requestWithAuth);
-
-  },
-
-};
-
-
+MySandbox.outboundByHost = {  "github.com": (request, env, ctx) => {    const requestWithAuth = new Request(request);    requestWithAuth.headers.set("x-auth-token", env.SECRET);    return fetch(requestWithAuth);  },};
 ```
 
 TypeScript
 
 ```
-
 export class MySandbox extends Sandbox {}
-
-
-MySandbox.outboundByHost = {
-
-  "github.com": (request: Request, env: Env, ctx: OutboundHandlerContext) => {
-
-    const requestWithAuth = new Request(request);
-
-    requestWithAuth.headers.set("x-auth-token", env.SECRET);
-
-    return fetch(requestWithAuth);
-
-  },
-
-};
-
-
+MySandbox.outboundByHost = {  "github.com": (request: Request, env: Env, ctx: OutboundHandlerContext) => {    const requestWithAuth = new Request(request);    requestWithAuth.headers.set("x-auth-token", env.SECRET);    return fetch(requestWithAuth);  },};
 ```
 
 This is especially useful for agentic workloads where you cannot fully trust the code running inside the sandbox. With this pattern:
@@ -388,69 +184,23 @@ This is especially useful for agentic workloads where you cannot fully trust the
 
 Here, `ctx.containerId` looks up a per-instance key from KV:
 
-* [  JavaScript ](#tab-panel-10477)
-* [  TypeScript ](#tab-panel-10478)
+* [  JavaScript ](#tab-panel-10553)
+* [  TypeScript ](#tab-panel-10554)
 
 JavaScript
 
 ```
-
 export class MySandbox extends Sandbox {}
-
-
-MySandbox.outboundByHost = {
-
-  "my-internal-vcs.dev": async (request, env, ctx) => {
-
-    const authKey = await env.KEYS.get(ctx.containerId);
-
-
-    const requestWithAuth = new Request(request);
-
-    requestWithAuth.headers.set("x-auth-token", authKey);
-
-    return fetch(requestWithAuth);
-
-  },
-
-};
-
-
+MySandbox.outboundByHost = {  "my-internal-vcs.dev": async (request, env, ctx) => {    const authKey = await env.KEYS.get(ctx.containerId);
+    const requestWithAuth = new Request(request);    requestWithAuth.headers.set("x-auth-token", authKey);    return fetch(requestWithAuth);  },};
 ```
 
 TypeScript
 
 ```
-
 export class MySandbox extends Sandbox {}
-
-
-MySandbox.outboundByHost = {
-
-  "my-internal-vcs.dev": async (
-
-    request: Request,
-
-    env: Env,
-
-    ctx: OutboundHandlerContext,
-
-  ) => {
-
-    const authKey = await env.KEYS.get(ctx.containerId);
-
-
-    const requestWithAuth = new Request(request);
-
-    requestWithAuth.headers.set("x-auth-token", authKey);
-
-    return fetch(requestWithAuth);
-
-  },
-
-};
-
-
+MySandbox.outboundByHost = {  "my-internal-vcs.dev": async (    request: Request,    env: Env,    ctx: OutboundHandlerContext,  ) => {    const authKey = await env.KEYS.get(ctx.containerId);
+    const requestWithAuth = new Request(request);    requestWithAuth.headers.set("x-auth-token", authKey);    return fetch(requestWithAuth);  },};
 ```
 
 ## HTTPS traffic
@@ -479,142 +229,46 @@ You can also manage runtime policy with `setOutboundByHosts()`, `setAllowedHosts
 
 This lets a trusted Worker hold credentials without exposing them to an untrusted sandbox:
 
-* [  JavaScript ](#tab-panel-10479)
-* [  TypeScript ](#tab-panel-10480)
+* [  JavaScript ](#tab-panel-10555)
+* [  TypeScript ](#tab-panel-10556)
 
 JavaScript
 
 ```
-
-import { Sandbox, ContainerProxy } from "@cloudflare/sandbox";
-
-export { ContainerProxy };
-
-
+import { Sandbox, ContainerProxy } from "@cloudflare/sandbox";export { ContainerProxy };
 export class MySandbox extends Sandbox {}
-
-
-MySandbox.outboundHandlers = {
-
-  authenticatedGithub: async (request, env, ctx) => {
-
-    const githubToken = env.GITHUB_TOKEN;
-
-    return authenticateGitHttpsRequest(request, githubToken, ctx.containerId);
-
-  },
-
-};
-
-
+MySandbox.outboundHandlers = {  authenticatedGithub: async (request, env, ctx) => {    const githubToken = env.GITHUB_TOKEN;    return authenticateGitHttpsRequest(request, githubToken, ctx.containerId);  },};
 ```
 
 TypeScript
 
 ```
-
-import { Sandbox, ContainerProxy } from "@cloudflare/sandbox";
-
-export { ContainerProxy };
-
-
+import { Sandbox, ContainerProxy } from "@cloudflare/sandbox";export { ContainerProxy };
 export class MySandbox extends Sandbox {}
-
-
-MySandbox.outboundHandlers = {
-
-  authenticatedGithub: async (
-
-    request: Request,
-
-    env: Env,
-
-    ctx: OutboundHandlerContext,
-
-  ) => {
-
-    const githubToken = env.GITHUB_TOKEN;
-
-    return authenticateGitHttpsRequest(request, githubToken, ctx.containerId);
-
-  },
-
-};
-
-
+MySandbox.outboundHandlers = {  authenticatedGithub: async (    request: Request,    env: Env,    ctx: OutboundHandlerContext,  ) => {    const githubToken = env.GITHUB_TOKEN;    return authenticateGitHttpsRequest(request, githubToken, ctx.containerId);  },};
 ```
 
 Apply handlers to hosts programmatically from your Worker:
 
-* [  JavaScript ](#tab-panel-10481)
-* [  TypeScript ](#tab-panel-10482)
+* [  JavaScript ](#tab-panel-10557)
+* [  TypeScript ](#tab-panel-10558)
 
 JavaScript
 
 ```
-
-import { Sandbox, ContainerProxy, getSandbox } from "@cloudflare/sandbox";
-
-export { ContainerProxy };
-
-
-export default {
-
-  async fetch(request, env) {
-
-    const sandbox = getSandbox(env.Sandbox, "agent-session");
-
-
-    // Give the sandbox access to github.com during setup
-
-    await sandbox.setOutboundByHost("github.com", "authenticatedGithub");
-
-    await sandbox.exec("node setup.js");
-
-
-    // Remove access once setup is complete
-
-    await sandbox.removeOutboundByHost("github.com");
-
-  },
-
-};
-
-
+import { Sandbox, ContainerProxy, getSandbox } from "@cloudflare/sandbox";export { ContainerProxy };
+export default {  async fetch(request, env) {    const sandbox = getSandbox(env.Sandbox, "agent-session");
+    // Give the sandbox access to github.com during setup    await sandbox.setOutboundByHost("github.com", "authenticatedGithub");    await sandbox.exec("node setup.js");
+    // Remove access once setup is complete    await sandbox.removeOutboundByHost("github.com");  },};
 ```
 
 TypeScript
 
 ```
-
-import { Sandbox, ContainerProxy, getSandbox } from "@cloudflare/sandbox";
-
-export { ContainerProxy };
-
-
-export default {
-
-  async fetch(request: Request, env: Env) {
-
-    const sandbox = getSandbox(env.Sandbox, "agent-session");
-
-
-    // Give the sandbox access to github.com during setup
-
-    await sandbox.setOutboundByHost("github.com", "authenticatedGithub");
-
-    await sandbox.exec("node setup.js");
-
-
-    // Remove access once setup is complete
-
-    await sandbox.removeOutboundByHost("github.com");
-
-  },
-
-};
-
-
+import { Sandbox, ContainerProxy, getSandbox } from "@cloudflare/sandbox";export { ContainerProxy };
+export default {  async fetch(request: Request, env: Env) {    const sandbox = getSandbox(env.Sandbox, "agent-session");
+    // Give the sandbox access to github.com during setup    await sandbox.setOutboundByHost("github.com", "authenticatedGithub");    await sandbox.exec("node setup.js");
+    // Remove access once setup is complete    await sandbox.removeOutboundByHost("github.com");  },};
 ```
 
 ## Handler precedence

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,7 +21,7 @@ To scan AI prompts and responses without Gateway HTTP filtering, you can also en
 ## Prerequisites
 
 * Set up [Gateway HTTP filtering](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/http/). This routes your users' web traffic through Cloudflare Gateway so it can be inspected.  
-   * HTTP filtering requires turning on the [Gateway proxy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/#turn-on-the-gateway-proxy) for TCP traffic.
+  * HTTP filtering requires turning on the [Gateway proxy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/#turn-on-the-gateway-proxy) for TCP traffic.
 * Turn on [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/#turn-on-tls-decryption). Because most web traffic is encrypted with HTTPS, Gateway must decrypt it before DLP can scan the request body for sensitive data.
 
 ## 1\. Configure a DLP profile
@@ -38,11 +38,12 @@ DLP Profiles may be used alongside other Cloudflare One rules in a [Gateway HTTP
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**. Select **HTTP**.
 2. Select **Add a policy**.
-3. Build an [HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) using the [DLP Profile](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#dlp-profile) selector. For example, the following policy blocks users from uploading sensitive data to any location other than an approved corporate application. It combines three conditions: the request content matches a DLP profile, the HTTP method is `POST`, and the destination is not an approved application:  
-| Selector    | Operator | Value                                                     | Logic | Action |  
-| ----------- | -------- | --------------------------------------------------------- | ----- | ------ |  
-| DLP Profile | in       | _Social Security, Insurance, Tax, and Identifier Numbers_ | And   | Block  |  
-| HTTP Method | in       | _POST_                                                    | And   |        |  
+3. Build an [HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) using the [DLP Profile](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#dlp-profile) selector. For example, the following policy blocks users from uploading sensitive data to any location other than an approved corporate application. It combines three conditions: the request content matches a DLP profile, the HTTP method is `POST`, and the destination is not an approved application:
+
+| Selector    | Operator | Value                                                     | Logic | Action |
+| ----------- | -------- | --------------------------------------------------------- | ----- | ------ |
+| DLP Profile | in       | _Social Security, Insurance, Tax, and Identifier Numbers_ | And   | Block  |
+| HTTP Method | in       | _POST_                                                    | And   |        |
 | Application | not in   | _Workday_                                                 |       |        |
 4. Select **Create policy**.
 
@@ -65,8 +66,8 @@ Different sites will send requests in different ways. For example, some sites wi
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights** \> **Logs** \> **HTTP request logs**.
 2. Select **Filter**.
 3. Choose an item under one of the following filters:  
-   * **DLP Profiles** shows the requests which matched a specific DLP profile.  
-   * **Policy** shows the requests which matched a specific DLP policy.
+  * **DLP Profiles** shows the requests which matched a specific DLP profile.
+  * **Policy** shows the requests which matched a specific DLP policy.
 
 You can expand an individual row to view details about the request. By default, logs show that a match occurred but do not include the actual matched content. To see the data that triggered the DLP policy, [configure logging options](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/).
 

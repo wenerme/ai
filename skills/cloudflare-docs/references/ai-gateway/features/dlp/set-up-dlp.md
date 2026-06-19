@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,23 +31,27 @@ Add Data Loss Prevention (DLP) to any AI Gateway to start scanning AI prompts an
 After enabling DLP, you can create policies to define how sensitive data should be handled:
 
 1. Under the DLP section, click **Add Policy**.
-2. Configure the following fields for each policy:  
-   * **Policy ID**: Enter a unique name for this policy (e.g., "Block-PII-Requests")  
-   * **DLP Profiles**: Select the DLP profiles to check against. AI requests/responses will be checked against each of the selected profiles. Available profiles include:  
-         * **Financial Information** \- Credit cards, bank accounts, routing numbers  
-         * **Personal Identifiable Information (PII)** \- Names, addresses, phone numbers  
-         * **Government Identifiers** \- SSNs, passport numbers, driver's licenses  
-         * **Healthcare Information** \- Medical record numbers, patient data  
-         * **Custom Profiles** \- Organization-specific data patterns  
-   Note  
-   DLP profiles can be created and managed in the [Zero Trust DLP dashboard](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/).  
-   * **Action**: Choose the action to take when any of the selected profiles match:  
-         * **Flag** \- Record the detection for audit purposes without blocking  
-         * **Block** \- Prevent the request/response from proceeding  
-   * **Check**: Select what to scan:  
-         * **Request** \- Scan user prompts sent to AI providers  
-         * **Response** \- Scan AI model responses before returning to users  
-         * **Both** \- Scan both requests and responses
+2. Configure the following fields for each policy:
+
+  * **Policy ID**: Enter a unique name for this policy (e.g., "Block-PII-Requests")
+  * **DLP Profiles**: Select the DLP profiles to check against. AI requests/responses will be checked against each of the selected profiles. Available profiles include:
+
+    * **Financial Information** \- Credit cards, bank accounts, routing numbers
+    * **Personal Identifiable Information (PII)** \- Names, addresses, phone numbers
+    * **Government Identifiers** \- SSNs, passport numbers, driver's licenses
+    * **Healthcare Information** \- Medical record numbers, patient data
+    * **Custom Profiles** \- Organization-specific data patterns  
+  Note  
+  DLP profiles can be created and managed in the [Zero Trust DLP dashboard](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/).
+  * **Action**: Choose the action to take when any of the selected profiles match:
+
+    * **Flag** \- Record the detection for audit purposes without blocking
+    * **Block** \- Prevent the request/response from proceeding
+  * **Check**: Select what to scan:
+
+    * **Request** \- Scan user prompts sent to AI providers
+    * **Response** \- Scan AI model responses before returning to users
+    * **Both** \- Scan both requests and responses
 3. Click **Save** to save your policy configuration.
 
 ## Manage DLP policies
@@ -97,8 +101,8 @@ To view only DLP-related requests:
 1. On the **Logs** tab, select **Add Filter**.
 2. Select **DLP Action** from the filter options.
 3. Choose to filter by:  
-   * **FLAG** \- Show only requests where sensitive data was flagged  
-   * **BLOCK** \- Show only requests that were blocked due to DLP policies
+  * **FLAG** \- Show only requests where sensitive data was flagged
+  * **BLOCK** \- Show only requests that were blocked due to DLP policies
 
 ## Error handling
 
@@ -111,77 +115,13 @@ When a request matches DLP policies (whether flagged or blocked), an additional 
 #### Header schema
 
 ```
-
-{
-
-  "findings": [
-
-    {
-
-      "profile": {
-
-        "context": {},
-
-        "entry_ids": ["string"],
-
-        "profile_id": "string"
-
-      },
-
-      "policy_ids": ["string"],
-
-      "check": "REQUEST" | "RESPONSE"
-
-    }
-
-  ],
-
-  "action": "BLOCK" | "FLAG"
-
-}
-
-
+{  "findings": [    {      "profile": {        "context": {},        "entry_ids": ["string"],        "profile_id": "string"      },      "policy_ids": ["string"],      "check": "REQUEST" | "RESPONSE"    }  ],  "action": "BLOCK" | "FLAG"}
 ```
 
 #### Example header value
 
 ```
-
-{
-
-  "findings": [
-
-    {
-
-      "profile": {
-
-        "context": {},
-
-        "entry_ids": [
-
-          "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-
-          "f7e8d9c0-b1a2-3456-789a-bcdef0123456"
-
-        ],
-
-        "profile_id": "12345678-90ab-cdef-1234-567890abcdef"
-
-      },
-
-      "policy_ids": ["block_financial_data"],
-
-      "check": "REQUEST"
-
-    }
-
-  ],
-
-  "action": "BLOCK"
-
-}
-
-
+{  "findings": [    {      "profile": {        "context": {},        "entry_ids": [          "a1b2c3d4-e5f6-7890-abcd-ef1234567890",          "f7e8d9c0-b1a2-3456-789a-bcdef0123456"        ],        "profile_id": "12345678-90ab-cdef-1234-567890abcdef"      },      "policy_ids": ["block_financial_data"],      "check": "REQUEST"    }  ],  "action": "BLOCK"}
 ```
 
 Use this header to programmatically detect which DLP profiles and entries were matched, which policies triggered, and whether the match occurred in the request or response.
@@ -190,52 +130,21 @@ Use this header to programmatically detect which DLP profiles and entries were m
 
 When DLP blocks a request, your application will receive structured error responses:
 
-* **Request blocked by DLP**  
-   * `"code": 2029`  
-   * `"message": "Request content blocked due to DLP policy violations"`
-* **Response blocked by DLP**  
-   * `"code": 2030`  
-   * `"message": "Response content blocked due to DLP policy violations"`
+* **Request blocked by DLP**
+
+  * `"code": 2029`
+  * `"message": "Request content blocked due to DLP policy violations"`
+* **Response blocked by DLP**
+
+  * `"code": 2030`
+  * `"message": "Response content blocked due to DLP policy violations"`
 
 Handle these errors in your application:
 
 JavaScript
 
 ```
-
-try {
-
-  const res = await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {
-
-    prompt: userInput
-
-  }, {
-
-    gateway: {id: 'your-gateway-id'}
-
-  })
-
-  return Response.json(res)
-
-} catch (e) {
-
-  if ((e as Error).message.includes('2029')) {
-
-    return new Response('Request contains sensitive data and cannot be processed.')
-
-  }
-
-  if ((e as Error).message.includes('2030')) {
-
-    return new Response('AI response was blocked due to sensitive content.')
-
-  }
-
-  return new Response('AI request failed')
-
-}
-
-
+try {  const res = await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {    prompt: userInput  }, {    gateway: {id: 'your-gateway-id'}  })  return Response.json(res)} catch (e) {  if ((e as Error).message.includes('2029')) {    return new Response('Request contains sensitive data and cannot be processed.')  }  if ((e as Error).message.includes('2030')) {    return new Response('AI response was blocked due to sensitive content.')  }  return new Response('AI request failed')}
 ```
 
 ## Best practices

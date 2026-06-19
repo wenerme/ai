@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,41 +27,15 @@ A menu list component.
 ### Basic Usage
 
 ```
-
 import { RtkMenuList } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return <RtkMenuList />;
-
-}
-
-
+function MyComponent() {  return <RtkMenuList />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkMenuList } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkMenuList
-
-      menuVariant={'primary' | 'secondary'}
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkMenuList      menuVariant={'primary' | 'secondary'}    />  );}
 ```
 
 ```json

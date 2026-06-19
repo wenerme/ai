@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -102,16 +102,16 @@ Below is a non-exhaustive list of third-party software that are known to cause `
 
 * **Docker**: [Turn off kernel networking for UDP ↗](https://github.com/docker/for-mac/issues/7008#issuecomment-1746653802) in Docker. Alternatively, uncheck **Start Docker Desktop when you sign in to your computer** under [**Settings** \> **General** ↗](https://docs.docker.com/desktop/settings-and-maintenance/settings/#general). Disabling the automatic startup process will prevent Docker from binding to port `53` before the Cloudflare One Client.
 * **Internet Sharing feature**: To disable Internet Sharing:  
-   1. On macOS, go to **System Settings** \> **General** \> **Sharing**.  
-   2. Turn off **Internet Sharing**.
+  1. On macOS, go to **System Settings** \> **General** \> **Sharing**.
+  2. Turn off **Internet Sharing**.
 * **Certain VM software (such as VMware Workstation or Parallels)**: The presence of VM software does not guarantee that it is the offending program, since compatibility with the Cloudflare One Client is highly dependent on the VM's configuration. To work around the issue, connect the Cloudflare One Client before running any VMs:  
-   1. Stop/quit all VMs.  
-   2. Connect the Cloudflare One Client.  
-   3. Start the VMs again.
+  1. Stop/quit all VMs.
+  2. Connect the Cloudflare One Client.
+  3. Start the VMs again.
 * **Apple Container**: [Apple Container ↗](https://github.com/apple/container) will also bind `mDNSResponder` to port `53` if started before the Cloudflare One Client (or while the Client is stopped).  
-   1. On macOS, run this in the terminal to temporarily stop the container system: `container system stop`  
-   2. Cloudflare One Client DNS mode should now start with no errors.  
-   3. You can then restart the container system (`container system start`) and pass explicit DNS flags when running containers.
+  1. On macOS, run this in the terminal to temporarily stop the container system: `container system stop`
+  2. Cloudflare One Client DNS mode should now start with no errors.
+  3. You can then restart the container system (`container system start`) and pass explicit DNS flags when running containers.
 1. Alternatively, switch the Cloudflare One Client to [Traffic only mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#traffic-only-mode) mode.
 
 ## CF\_FAILED\_READ\_SYSTEM\_DNS\_CONFIG
@@ -276,8 +276,8 @@ The device is not authenticated to an [organization](https://developers.cloudfla
 
 ### Resolution
 
-* [ Version 2026.2+ ](#tab-panel-7495)
-* [ Version 2026.1 and earlier ](#tab-panel-7496)
+* [ Version 2026.2+ ](#tab-panel-7571)
+* [ Version 2026.1 and earlier ](#tab-panel-7572)
 
 1. Launch the Cloudflare One Client.
 2. Go to **Profile** \> **Account information**.

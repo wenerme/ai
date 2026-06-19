@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,11 +20,12 @@ To change the appearance of your login page:
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Custom pages**.
 2. Find the **Access login page** setting and select **Manage**.
-3. Give the login page the look and feel of your organization by adding:  
-   * Your organization's name  
-   * A logo  
-   * A custom header and footer  
-   * A preferred background color  
+3. Give the login page the look and feel of your organization by adding:
+
+  * Your organization's name
+  * A logo
+  * A custom header and footer
+  * A preferred background color  
 Any changes you make will be reflected in real time in the **Preview** card.
 4. Once you are satisfied with your customization, select **Save**.
 

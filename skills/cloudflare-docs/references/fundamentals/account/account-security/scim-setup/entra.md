@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -61,17 +61,8 @@ The initial setup of creating the non-gallery applications and adding the provis
 Get an Entra access token. Note that the example below is using the Azure CLI.
 
 ```
-
-# Using azure-cli
-
-az login
-
-az account get-access-token --resource https://graph.microsoft.com
-
-
+# Using azure-cliaz loginaz account get-access-token --resource https://graph.microsoft.com
 (payload with accessToken returned)
-
-
 ```
 
 **2\. Create a new application via template.**
@@ -81,71 +72,13 @@ The template ID 8adf8e6e-67b2-4cf2-a259-e3dc5476c621 is the suggested template t
 Example request
 
 ```
-
-curl -X POST 'https://graph.microsoft.com/v1.0/applicationTemplates/8adf8e6e-67b2-4cf2-a259-e3dc5476c621/instantiate' \
-
-  --header 'Content-Type: application/json' \
-
-  --header 'Authorization: Bearer <accessToken>' \
-
-  --data-raw '{
-
-    "displayName": "Entra API create application test"
-
-}'
-
-
+curl -X POST 'https://graph.microsoft.com/v1.0/applicationTemplates/8adf8e6e-67b2-4cf2-a259-e3dc5476c621/instantiate' \  --header 'Content-Type: application/json' \  --header 'Authorization: Bearer <accessToken>' \  --data-raw '{    "displayName": "Entra API create application test"}'
 ```
 
 Example response
 
 ```
-
-{
-
-  "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#microsoft.graph.applicationServicePrincipal",
-
-  "application": {
-
-    "id": "343a8552-f9d9-471c-b677-d37062117cc8", //
-
-    "appId": "03d8207b-e837-4be9-b4e6-180492eb3b61",
-
-    "applicationTemplateId": "8adf8e6e-67b2-4cf2-a259-e3dc5476c621",
-
-    "createdDateTime": "2025-01-30T00:37:44Z",
-
-    "deletedDateTime": null,
-
-    "displayName": "Entra API create application test",
-
-    "description": null,
-
-    // ... snipped rest of large application payload
-
-  },
-
-  "servicePrincipal": {
-
-    "id": "a8cb133d-f841-4eb9-8bc9-c8e9e8c0d417", // Note this ID for the subsequent request
-
-    "deletedDateTime": null,
-
-    "accountEnabled": true,
-
-    "appId": "03d8207b-e837-4be9-b4e6-180492eb3b61",
-
-    "applicationTemplateId": "8adf8e6e-67b2-4cf2-a259-e3dc5476c621",
-
-    "appDisplayName": "Entra API create application test",
-
-  // ...snipped rest of JSON payload
-
-}
-
-}
-
-
+{  "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#microsoft.graph.applicationServicePrincipal",  "application": {    "id": "343a8552-f9d9-471c-b677-d37062117cc8", //    "appId": "03d8207b-e837-4be9-b4e6-180492eb3b61",    "applicationTemplateId": "8adf8e6e-67b2-4cf2-a259-e3dc5476c621",    "createdDateTime": "2025-01-30T00:37:44Z",    "deletedDateTime": null,    "displayName": "Entra API create application test",    "description": null,    // ... snipped rest of large application payload  },  "servicePrincipal": {    "id": "a8cb133d-f841-4eb9-8bc9-c8e9e8c0d417", // Note this ID for the subsequent request    "deletedDateTime": null,    "accountEnabled": true,    "appId": "03d8207b-e837-4be9-b4e6-180492eb3b61",    "applicationTemplateId": "8adf8e6e-67b2-4cf2-a259-e3dc5476c621",    "appDisplayName": "Entra API create application test",  // ...snipped rest of JSON payload}}
 ```
 
 **3\. Create a provisioning job**
@@ -155,49 +88,13 @@ To enable provisioning, you will also need to create a job. Note the SERVICE\_PR
 Example request
 
 ```
-
-curl -X POST 'https://graph.microsoft.com/v1.0/servicePrincipals/<SERVICE_PRINCIPAL_ID>/synchronization/jobs' \
-
-  --header 'Content-Type: application/json' \
-
-  --header 'Authorization: Bearer <accessToken>' \
-
-  --data-raw '{
-
-    "templateId": "scim"
-
-}'
-
-
+curl -X POST 'https://graph.microsoft.com/v1.0/servicePrincipals/<SERVICE_PRINCIPAL_ID>/synchronization/jobs' \  --header 'Content-Type: application/json' \  --header 'Authorization: Bearer <accessToken>' \  --data-raw '{    "templateId": "scim"}'
 ```
 
 Example response
 
 ```
-
-{
-
-  "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#servicePrincipals('a8cb133d-f841-4eb9-8bc9-c8e9e8c0d417')/synchronization/jobs/$entity",
-
-  "id": "scim.5b223a2cc249463bbd9a791550f11c76.03d8207b-e837-4be9-b4e6-180492eb3b61",
-
-  "templateId": "scim",
-
-  "schedule": {
-
-    "expiration": null,
-
-    "interval": "PT40M",
-
-    "state": "Disabled"
-
-  },
-
-}
-
-// ... snipped rest of JSON payload
-
-
+{  "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#servicePrincipals('a8cb133d-f841-4eb9-8bc9-c8e9e8c0d417')/synchronization/jobs/$entity",  "id": "scim.5b223a2cc249463bbd9a791550f11c76.03d8207b-e837-4be9-b4e6-180492eb3b61",  "templateId": "scim",  "schedule": {    "expiration": null,    "interval": "PT40M",    "state": "Disabled"  },}// ... snipped rest of JSON payload
 ```
 
 **4\. Configure the SCIM provisioning URL and API token**
@@ -209,36 +106,7 @@ Replace `<accessToken>`, `<ACCOUNT_ID>`, `<SCIM_PROVISIONING_API_TOKEN_VALUE>` w
 Example request
 
 ```
-
- --header 'Content-Type: application/json' \
-
-  --header 'Authorization: Bearer <accessToken>' \
-
-  --data-raw '{
-
-  "value": [
-
-    {
-
-      "key": "BaseAddress",
-
-      "value": "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/scim/v2"
-
-    },
-
-    {
-
-      "key": "SecretToken",
-
-      "value": "<SCIM_PROVISIONING_API_TOKEN_VALUE>"
-
-    }
-
-  ]
-
-}'
-
-
+ --header 'Content-Type: application/json' \  --header 'Authorization: Bearer <accessToken>' \  --data-raw '{  "value": [    {      "key": "BaseAddress",      "value": "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/scim/v2"    },    {      "key": "SecretToken",      "value": "<SCIM_PROVISIONING_API_TOKEN_VALUE>"    }  ]}'
 ```
 
 After completing the tasks above, the next steps in Entra include:

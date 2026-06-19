@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -24,8 +24,8 @@ Manage R2 buckets and objects directly from your terminal. Use CLI tools to auto
 
 A bucket stores your objects in R2\. To create a new R2 bucket:
 
-* [ Wrangler CLI ](#tab-panel-9767)
-* [ Dashboard ](#tab-panel-9768)
+* [ Wrangler CLI ](#tab-panel-9843)
+* [ Dashboard ](#tab-panel-9844)
 
 1. Log in to your Cloudflare account:  
 Terminal window  
@@ -64,9 +64,9 @@ CLI tools that use the S3 API ([AWS CLI](https://developers.cloudflare.com/r2/ex
 
 ## 3\. Set up a CLI tool
 
-* [ Wrangler ](#tab-panel-9764)
-* [ rclone ](#tab-panel-9765)
-* [ AWS CLI ](#tab-panel-9766)
+* [ Wrangler ](#tab-panel-9840)
+* [ rclone ](#tab-panel-9841)
+* [ AWS CLI ](#tab-panel-9842)
 
 [Wrangler](https://developers.cloudflare.com/r2/reference/wrangler-commands/) is the Cloudflare Workers CLI. It authenticates with your Cloudflare account directly, so no API credentials needed.
 
@@ -115,11 +115,12 @@ Terminal window
 ```  
 aws configure  
 ```
-3. When prompted, enter:  
-   * **AWS Access Key ID**: Your R2 Access Key ID  
-   * **AWS Secret Access Key**: Your R2 Secret Access Key  
-   * **Default region name**: `auto`  
-   * **Default output format**: `json` (or press Enter to skip)
+3. When prompted, enter:
+
+  * **AWS Access Key ID**: Your R2 Access Key ID
+  * **AWS Secret Access Key**: Your R2 Secret Access Key
+  * **Default region name**: `auto`
+  * **Default output format**: `json` (or press Enter to skip)
 
 ## 4\. Upload and download objects
 
@@ -128,30 +129,18 @@ aws configure
 Terminal window
 
 ```
-
 echo 'Hello, R2!' > myfile.txt
-
-
 ```
 
-* [ Wrangler ](#tab-panel-9761)
-* [ rclone ](#tab-panel-9762)
-* [ AWS CLI ](#tab-panel-9763)
+* [ Wrangler ](#tab-panel-9837)
+* [ rclone ](#tab-panel-9838)
+* [ AWS CLI ](#tab-panel-9839)
 
 Terminal window
 
 ```
-
-# Upload myfile.txt to my-bucket
-
-wrangler r2 object put my-bucket/myfile.txt --file ./myfile.txt
-
-
-# Download myfile.txt and save it as downloaded.txt
-
-wrangler r2 object get my-bucket/myfile.txt --file ./downloaded.txt
-
-
+# Upload myfile.txt to my-bucketwrangler r2 object put my-bucket/myfile.txt --file ./myfile.txt
+# Download myfile.txt and save it as downloaded.txtwrangler r2 object get my-bucket/myfile.txt --file ./downloaded.txt
 ```
 
 Refer to the [Wrangler R2 commands](https://developers.cloudflare.com/r2/reference/wrangler-commands/) for all available operations.
@@ -159,17 +148,8 @@ Refer to the [Wrangler R2 commands](https://developers.cloudflare.com/r2/referen
 Terminal window
 
 ```
-
-# Upload myfile.txt to my-bucket
-
-rclone copy myfile.txt r2:my-bucket/
-
-
-# Download myfile.txt from my-bucket to the current directory
-
-rclone copy r2:my-bucket/myfile.txt .
-
-
+# Upload myfile.txt to my-bucketrclone copy myfile.txt r2:my-bucket/
+# Download myfile.txt from my-bucket to the current directoryrclone copy r2:my-bucket/myfile.txt .
 ```
 
 Refer to the [rclone documentation](https://developers.cloudflare.com/r2/examples/rclone/) for more configuration options.
@@ -177,22 +157,9 @@ Refer to the [rclone documentation](https://developers.cloudflare.com/r2/example
 Terminal window
 
 ```
-
-# Upload myfile.txt to my-bucket
-
-aws s3 cp myfile.txt s3://my-bucket/ --endpoint-url https://<ACCOUNT_ID>.r2.cloudflarestorage.com
-
-
-# Download myfile.txt from my-bucket to current directory
-
-aws s3 cp s3://my-bucket/myfile.txt ./ --endpoint-url https://<ACCOUNT_ID>.r2.cloudflarestorage.com
-
-
-# List all objects in my-bucket
-
-aws s3 ls s3://my-bucket/ --endpoint-url https://<ACCOUNT_ID>.r2.cloudflarestorage.com
-
-
+# Upload myfile.txt to my-bucketaws s3 cp myfile.txt s3://my-bucket/ --endpoint-url https://<ACCOUNT_ID>.r2.cloudflarestorage.com
+# Download myfile.txt from my-bucket to current directoryaws s3 cp s3://my-bucket/myfile.txt ./ --endpoint-url https://<ACCOUNT_ID>.r2.cloudflarestorage.com
+# List all objects in my-bucketaws s3 ls s3://my-bucket/ --endpoint-url https://<ACCOUNT_ID>.r2.cloudflarestorage.com
 ```
 
 Refer to the [AWS CLI documentation](https://developers.cloudflare.com/r2/examples/aws/aws-cli/) for more examples.
@@ -205,7 +172,7 @@ Refer to the [AWS CLI documentation](https://developers.cloudflare.com/r2/exampl
 
 [ CORS ](https://developers.cloudflare.com/r2/buckets/cors/) Configure CORS for browser-based uploads. 
 
-[ Object lifecycles ](https://developers.cloudflare.com/r2/buckets/object-lifecycles/) Set up lifecycle rules to automatically delete old objects. 
+[ Object lifecycles ](https://developers.cloudflare.com/r2/buckets/object-lifecycles/) Set up lifecycle rules to automatically delete old objects.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/get-started/cli/#page","headline":"CLI · Cloudflare R2 docs","description":"Use R2 from the command line with Wrangler, rclone, or AWS CLI.","url":"https://developers.cloudflare.com/r2/get-started/cli/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

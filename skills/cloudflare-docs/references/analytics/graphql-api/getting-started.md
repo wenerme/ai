@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,7 +20,7 @@ Use these articles to get started with the Cloudflare GraphQL API:
 * [Create a query in a GraphQL client](https://developers.cloudflare.com/analytics/graphql-api/getting-started/compose-graphql-query/) \- describes how to build and run a query against the Cloudflare GraphQL API in the GraphQL clients,
 * [Use curl to query the GraphQL API](https://developers.cloudflare.com/analytics/graphql-api/getting-started/execute-graphql-query/) \- walks you through running a query against the Cloudflare GraphQL API from the command line.
 
-For examples of how to build your own GraphQL Analytics dashboard and query specific information, such as Firewall and Workers events, please refer to[Tutorials](https://developers.cloudflare.com/analytics/graphql-api/tutorials/).
+For examples of how to build your own GraphQL Analytics dashboard and query specific information, such as Firewall and Workers events, please refer to [Tutorials](https://developers.cloudflare.com/analytics/graphql-api/tutorials/).
 
 Data unavailability: Customer Metadata Boundary configuration
 

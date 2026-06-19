@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -50,38 +50,7 @@ When using the API to upload scripts, bindings must be specified in the `metadat
 Terminal window
 
 ```
-
-curl -X PUT \
-
-  "https://api.cloudflare.com/client/v4/accounts/<account-id>/workers/dispatch/namespaces/<your-namespace>/scripts/<script-name>" \
-
-  -H "Content-Type: multipart/form-data" \
-
-  -H "Authorization: Bearer <api-token>" \
-
-  -F 'metadata={
-
-    "main_module": "worker.js",
-
-    "bindings": [
-
-      {
-
-        "type": "kv_namespace",
-
-        "name": "USER_KV",
-
-        "namespace_id": "<your-namespace-id>"
-
-      }
-
-    ]
-
-  }' \
-
-  -F 'worker.js=@/path/to/worker.js'
-
-
+curl -X PUT \  "https://api.cloudflare.com/client/v4/accounts/<account-id>/workers/dispatch/namespaces/<your-namespace>/scripts/<script-name>" \  -H "Content-Type: multipart/form-data" \  -H "Authorization: Bearer <api-token>" \  -F 'metadata={    "main_module": "worker.js",    "bindings": [      {        "type": "kv_namespace",        "name": "USER_KV",        "namespace_id": "<your-namespace-id>"      }    ]  }' \  -F 'worker.js=@/path/to/worker.js'
 ```
 
 Now, the User Worker has can access the `USER_KV` binding through the `env` argument using `env.USER_DATA.get()`, `env.USER_DATA.put()`, and other KV methods.
@@ -91,36 +60,7 @@ Note: If you plan to add new bindings to the Worker, use the `keep_bindings` par
 Terminal window
 
 ```
-
-curl -X PUT \
-
-  "https://api.cloudflare.com/client/v4/accounts/<account-id>/workers/dispatch/namespaces/<your-namespace>/scripts/<script-name>" \
-
-  -H "Content-Type: multipart/form-data" \
-
-  -H "Authorization: Bearer <api-token>" \
-
-  -F 'metadata={
-
-    "bindings": [
-
-      {
-
-        "type": "r2_bucket",
-
-        "name": "STORAGE",
-
-        "bucket_name": "<your-bucket-name>"
-
-      }
-
-    ],
-
-    "keep_bindings": ["kv_namespace"]
-
-  }'
-
-
+curl -X PUT \  "https://api.cloudflare.com/client/v4/accounts/<account-id>/workers/dispatch/namespaces/<your-namespace>/scripts/<script-name>" \  -H "Content-Type: multipart/form-data" \  -H "Authorization: Bearer <api-token>" \  -F 'metadata={    "bindings": [      {        "type": "r2_bucket",        "name": "STORAGE",        "bucket_name": "<your-bucket-name>"      }    ],    "keep_bindings": ["kv_namespace"]  }'
 ```
 
 ```json

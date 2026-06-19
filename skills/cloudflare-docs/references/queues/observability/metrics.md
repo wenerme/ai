@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -93,184 +93,23 @@ These fields are also included in `metadata.metrics` when calling `send()`, `sen
 ### Get average queue backlog over time period
 
 ```
-
-query QueueBacklog(
-
-  $accountTag: string!
-
-  $queueId: string!
-
-  $datetimeStart: Time!
-
-  $datetimeEnd: Time!
-
-) {
-
-  viewer {
-
-    accounts(filter: { accountTag: $accountTag }) {
-
-      queueBacklogAdaptiveGroups(
-
-        limit: 10000
-
-        filter: {
-
-          queueId: $queueId
-
-          datetime_geq: $datetimeStart
-
-          datetime_leq: $datetimeEnd
-
-        }
-
-      ) {
-
-        avg {
-
-          messages
-
-          bytes
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
+query QueueBacklog(  $accountTag: string!  $queueId: string!  $datetimeStart: Time!  $datetimeEnd: Time!) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      queueBacklogAdaptiveGroups(        limit: 10000        filter: {          queueId: $queueId          datetime_geq: $datetimeStart          datetime_leq: $datetimeEnd        }      ) {        avg {          messages          bytes        }      }    }  }}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAiucAhAhgYwNYBsD2BzACgCgYYASdNHEAOwBcAVFPALhgGc6IBLGvAQhLlQYcAEkAJm048+g0mQko6YOtwC2YAMp0UEOmwYaw88kpVrNAURpSYRzYICUMAN5CAbtzAB3SG6FSSmp6dgIAM24sFQg2Vxhg2kZmNgo0KiSmPBgAXxd3UkKYEWR0bHwAQSUABzUPMABxCGpqsMCimCwNbgMYAEYABiGB9qLI6Mg40Y6SsElU2clpovNVYwB9PDBgVNXLbV19ZcK9jaxt3eU161tjnOn845QPbIKOos12dmYwdmPSABGUBUf3epHu7whhSh9xyQA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBHWAUzaoBMsQAlAUQAKAGXz8KAdSrIAEtTqNOYRK0QBLALasAyojAAnRDwBMABmMA2ALSnrARgAcyUwFZMAFgCcHhwC0GIEoq6lr88NzYZpY29k52dh7e7n4gAL5AA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAiucAhAhgYwNYBsD2BzACgCgYYASdNHEAOwBcAVFPALhgGc6IBLGvAQhLlQYcAEkAJm048+g0mQko6YOtwC2YAMp0UEOmwYaw88kpVrNAURpSYRzYICUMAN5CAbtzAB3SG6FSSmp6dgIAM24sFQg2Vxhg2kZmNgo0KiSmPBgAXxd3UkKYEWR0bHwAQSUABzUPMABxCGpqsMCimCwNbgMYAEYABiGB9qLI6Mg40Y6SsElU2clpovNVYwB9PDBgVNXLbV19ZcK9jaxt3eU161tjnOn845QPbIKOos12dmYwdmPSABGUBUf3epHu7whhSh9xyQA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBHWAUzaoBMsQAlAUQAKAGXz8KAdSrIAEtTqNOYRK0QBLALasAyojAAnRDwBMABmMA2ALSnrARgAcyOwHZMAFjemArAC0GIEoq6lr88NzYZpY29k7GAMweXn4gAL5AA)
 
 ### Get average consumer concurrency by hour
 
 ```
-
-query QueueConcurrencyByHour(
-
-  $accountTag: string!
-
-  $queueId: string!
-
-  $datetimeStart: Time!
-
-  $datetimeEnd: Time!
-
-) {
-
-  viewer {
-
-    accounts(filter: { accountTag: $accountTag }) {
-
-      queueConsumerMetricsAdaptiveGroups(
-
-        limit: 10000
-
-        filter: {
-
-          queueId: $queueId
-
-          datetime_geq: $datetimeStart
-
-          datetime_leq: $datetimeEnd
-
-        }
-
-        orderBy: [datetimeHour_DESC]
-
-      ) {
-
-        avg {
-
-          concurrency
-
-        }
-
-        dimensions {
-
-          datetimeHour
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
+query QueueConcurrencyByHour(  $accountTag: string!  $queueId: string!  $datetimeStart: Time!  $datetimeEnd: Time!) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      queueConsumerMetricsAdaptiveGroups(        limit: 10000        filter: {          queueId: $queueId          datetime_geq: $datetimeStart          datetime_leq: $datetimeEnd        }        orderBy: [datetimeHour_DESC]      ) {        avg {          concurrency        }        dimensions {          datetimeHour        }      }    }  }}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAiucBhA9gOwMYghMmoBCUAEitgBQBQMMAJAIYYZloAuAKvQOYBcMAzqwgBLNFwCE1OqDDgAkgBM+gkWMk1aC+qzCthAWzABlVvQis+7A2HV0tOvYYCiaJTCuHJAShgBvKQBuwmAA7pB+UjSMzCBs-OQAZsIANjoQfL4w0Swc3HwMTDmcXDAAvj7+NFUwMsjo-CCGEACyuiIY-ACCWgAOegFgAOIQZD3xkdUwyQbCFjAAjAAMy4sT1UmpkBlrk7Vgivl7ijvV9rrWAPpcYMD5Z47GpuYnVfeXyTd32ufOri+lLxQEAUkCIfAA2m9DKRsBcACJOIxIAC6OwqL3oARKlUm1WYmGwuHw-xeCmsaH4wnqEVxp2+DxhEBJuIB1VZZUopSAA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBHWAUzaoBMsQAlAUQAKAGXz8KAdSrIAEtTqNOYRK0QBLALasAyojAAnRDwBMABmMA2ALSnrARgAcyUwFZMAFgCcHhwC0GIEoq6lr88NzYZpY29k52dh7e7n4gAL5AA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAiucBhA9gOwMYghMmoBCUAEitgBQBQMMAJAIYYZloAuAKvQOYBcMAzqwgBLNFwCE1OqDDgAkgBM+gkWMk1aC+qzCthAWzABlVvQis+7A2HV0tOvYYCiaJTCuHJAShgBvKQBuwmAA7pB+UjSMzCBs-OQAZsIANjoQfL4w0Swc3HwMTDmcXDAAvj7+NFUwMsjo-CCGEACyuiIY-ACCWgAOegFgAOIQZD3xkdUwyQbCFjAAjAAMy4sT1UmpkBlrk7Vgivl7ijvV9rrWAPpcYMD5Z47GpuYnVfeXyTd32ufOri+lLxQEAUkCIfAA2m9DKRsBcACJOIxIAC6OwqL3oARKlUm1WYmGwuHw-xeCmsaH4wnqEVxp2+DxhEBJuIB1VZZUopSAA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBHWAUzaoBMsQAlAUQAKAGXz8KAdSrIAEtTqNOYRK0QBLALasAyojAAnRDwBMABmMA2ALSnrARgAcyOwHZMAFjemArAC0GIEoq6lr88NzYZpY29k7GAMweXn4gAL5AA)
 
 ### Get message operations by minute
 
 ```
-
-query QueueMessageOperationsByMinute(
-
-  $accountTag: string!
-
-  $queueId: string!
-
-  $datetimeStart: Date!
-
-  $datetimeEnd: Date!
-
-) {
-
-  viewer {
-
-    accounts(filter: { accountTag: $accountTag }) {
-
-      queueMessageOperationsAdaptiveGroups(
-
-        limit: 10000
-
-        filter: {
-
-          queueId: $queueId
-
-          datetime_geq: $datetimeStart
-
-          datetime_leq: $datetimeEnd
-
-        }
-
-        orderBy: [datetimeMinute_DESC]
-
-      ) {
-
-        count
-
-        sum {
-
-          bytes
-
-        }
-
-        dimensions {
-
-          datetimeMinute
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
+query QueueMessageOperationsByMinute(  $accountTag: string!  $queueId: string!  $datetimeStart: Date!  $datetimeEnd: Date!) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      queueMessageOperationsAdaptiveGroups(        limit: 10000        filter: {          queueId: $queueId          datetime_geq: $datetimeStart          datetime_leq: $datetimeEnd        }        orderBy: [datetimeMinute_DESC]      ) {        count        sum {          bytes        }        dimensions {          datetimeMinute        }      }    }  }}
 ```
 
 [Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAiucBZMBnVBDA5mA8gB0gwBcBLAewDtUAhKJUykYsACgCgYYASDAYz7kQlYgBVsALhipiERlgCEnHqDDgAkgBMpMuZUXLumkmDIBbMAGViGCMSkARE0q5GT5sAFFK2mE5ZKAJQwAN7KAG6kYADukKHKXPyCwsSorABmpAA2LBBSITBJQiLiWFK8AsVi2DAAvsFhXE0wqshomDgERGRUqACCxvhk4WAA4hBC+GkJzTBZpGak9jAAjAAMG2szzZk5kPnbs61gWuXHWofNxiweAPo4wOXXpgtWNnaXTc93WWCPPN9Xt5NJ9ap9yBBNJA6FIANqAiwMJgsW4OTyWADCAF1Dg1PskRJ9UCAzPFZrMAEZQFioUGfTSvagUahk8lfdyvJHMMB08lg5r8ursWpAA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBHWAUzaoBMsQAlAUQAKAGXz8KAdSrIAEtTqNOYRK0QBLALasAyojAAnRDwBMABmMA2ALSnrARgDsDEEpXqt-eN2xnLN+wAcIAC+QA)

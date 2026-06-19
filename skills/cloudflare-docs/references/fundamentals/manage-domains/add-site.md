@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,34 +35,37 @@ Cloudflare requires your apex domain to be one level below a valid TLD defined i
 
 Your DNS records must be accurate for your domain to work properly. If you don't know what DNS records are, consider the video below for a quick explanation.
 
-1. Since the quick scan is not guaranteed to find all existing DNS records, you need to review your records, paying special attention to the following:  
-   * [Zone apex records (example.com)](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-zone-apex/)  
-   More about zone apex records  
-   Zone apex refers to the domain or subdomain that you are [adding to Cloudflare](https://developers.cloudflare.com/dns/concepts/#zone).  
-   Usually, the zone apex record makes your domain accessible by visitors. In this case, the necessary record type ([A, AAAA, or CNAME](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#ip-address-resolution)) and its content will depend on the provider that [hosts](https://developers.cloudflare.com/fundamentals/manage-domains/#host-your-domain) your website or application.  
-   If you are using Cloudflare Workers, refer to [Custom domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/).  
-   If you are using other providers, look for their guidance on how to connect domains managed on external DNS services. Then, make sure you have the records required by your hosting provider on your [DNS records table](https://developers.cloudflare.com/dns/manage-dns-records/#dns-records-table) at Cloudflare.  
-   * [Subdomain records (www.example.com or blog.example.com)](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-subdomain/)  
-   More about subdomain records  
-   Most subdomains serve a specific purpose within the overall context of your website. For example, `blog.example.com` might be your blog, `support.example.com` could be your customer help portal, and `store.example.com` would be your e-commerce site.  
-   Even if you do not require specific subdomains, you might want to set up at least a subdomain record on `www`. It will usually point to the same content as what you have on the apex domain (`example.com`) or use a [redirect](https://developers.cloudflare.com/fundamentals/manage-domains/manage-subdomains/#redirect-a-subdomain-to-the-apex-domain). Having a subdomain DNS record on `www` helps guarantee that a visitor who types `www.` in front of your domain address can still find your website or application.  
-   * [Email records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-records/)  
-   More about email records  
-   Depending on your business needs, you can configure DNS records so that you can use your domain to receive emails, receive and send emails from your domain, or prevent others from sending emails on your behalf (spoofing).  
-   Below are some examples of what those DNS records might look like. The exact values for your DNS mail records depend on your email provider. If you have issues, review the [Troubleshooting](https://developers.cloudflare.com/dns/troubleshooting/email-issues/) and contact your email service provider to confirm your DNS records are correct.  
-   | Type | Name           | Content                       | Proxy status | TTL  |  
-   | ---- | -------------- | ----------------------------- | ------------ | ---- |  
-   | A    | mail           | 192.0.2.1                     | DNS Only     | Auto |  
-   | MX   | example.com    | 5 john.mx.example-server.test | DNS Only     | Auto |  
-   | TXT  | \_dmarc        | "v=DMARC1; p=reject; sp=...   | DNS Only     | Auto |  
-   | TXT  | \*.\_domainkey | "v=DKIM1; k=rsa; p=..."       | DNS Only     | Auto |  
-   | TXT  | example.com    | "v=spf1 ip4:..."              | DNS Only     | Auto |  
+1. Since the quick scan is not guaranteed to find all existing DNS records, you need to review your records, paying special attention to the following:
+
+  * [Zone apex records (example.com)](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-zone-apex/)  
+  More about zone apex records  
+  Zone apex refers to the domain or subdomain that you are [adding to Cloudflare](https://developers.cloudflare.com/dns/concepts/#zone).  
+  Usually, the zone apex record makes your domain accessible by visitors. In this case, the necessary record type ([A, AAAA, or CNAME](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#ip-address-resolution)) and its content will depend on the provider that [hosts](https://developers.cloudflare.com/fundamentals/manage-domains/#host-your-domain) your website or application.  
+  If you are using Cloudflare Workers, refer to [Custom domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/).  
+  If you are using other providers, look for their guidance on how to connect domains managed on external DNS services. Then, make sure you have the records required by your hosting provider on your [DNS records table](https://developers.cloudflare.com/dns/manage-dns-records/#dns-records-table) at Cloudflare.
+  * [Subdomain records (www.example.com or blog.example.com)](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-subdomain/)  
+  More about subdomain records  
+  Most subdomains serve a specific purpose within the overall context of your website. For example, `blog.example.com` might be your blog, `support.example.com` could be your customer help portal, and `store.example.com` would be your e-commerce site.  
+  Even if you do not require specific subdomains, you might want to set up at least a subdomain record on `www`. It will usually point to the same content as what you have on the apex domain (`example.com`) or use a [redirect](https://developers.cloudflare.com/fundamentals/manage-domains/manage-subdomains/#redirect-a-subdomain-to-the-apex-domain). Having a subdomain DNS record on `www` helps guarantee that a visitor who types `www.` in front of your domain address can still find your website or application.
+  * [Email records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-records/)  
+  More about email records  
+  Depending on your business needs, you can configure DNS records so that you can use your domain to receive emails, receive and send emails from your domain, or prevent others from sending emails on your behalf (spoofing).  
+  Below are some examples of what those DNS records might look like. The exact values for your DNS mail records depend on your email provider. If you have issues, review the [Troubleshooting](https://developers.cloudflare.com/dns/troubleshooting/email-issues/) and contact your email service provider to confirm your DNS records are correct.
+
+| Type | Name           | Content                       | Proxy status | TTL  |
+| ---- | -------------- | ----------------------------- | ------------ | ---- |
+| A    | mail           | 192.0.2.1                     | DNS Only     | Auto |
+| MX   | example.com    | 5 john.mx.example-server.test | DNS Only     | Auto |
+| TXT  | \_dmarc        | "v=DMARC1; p=reject; sp=...   | DNS Only     | Auto |
+| TXT  | \*.\_domainkey | "v=DKIM1; k=rsa; p=..."       | DNS Only     | Auto |
+| TXT  | example.com    | "v=spf1 ip4:..."              | DNS Only     | Auto |  
 Note  
 If you activate your domain on Cloudflare _without_ setting up the correct DNS records for your domain, your visitors may experience [DNS\_PROBE\_FINISHED\_NXDOMAIN](https://developers.cloudflare.com/dns/troubleshooting/dns-probe-finished-nxdomain/) errors.
 2. If you find any missing records, [manually add](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) those records.
-3. Depending on your site setup, you may want to adjust the [proxy status](https://developers.cloudflare.com/dns/proxy-status/) for certain `A`, `AAAA`, or `CNAME` records. Each record has a proxy status toggle:  
-   * **Proxied** (orange cloud): web traffic goes through the Cloudflare network, which provides caching, DDoS protection, and other security features.  
-   * **DNS only** (gray cloud): Cloudflare returns the DNS record value but does not proxy traffic. Use this for CNAME records that verify your domain for third-party services.
+3. Depending on your site setup, you may want to adjust the [proxy status](https://developers.cloudflare.com/dns/proxy-status/) for certain `A`, `AAAA`, or `CNAME` records. Each record has a proxy status toggle:
+
+  * **Proxied** (orange cloud): web traffic goes through the Cloudflare network, which provides caching, DDoS protection, and other security features.
+  * **DNS only** (gray cloud): Cloudflare returns the DNS record value but does not proxy traffic. Use this for CNAME records that verify your domain for third-party services.
 4. Select **Continue**.
 
 ## 3\. Update nameservers

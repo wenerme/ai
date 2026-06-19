@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -40,14 +40,14 @@ You can also refer to the [Examples gallery](https://developers.cloudflare.com/r
 
 ## Availability
 
-| Free                      | Pro | Business | Enterprise |     |
-| ------------------------- | --- | -------- | ---------- | --- |
-| Availability              | Yes | Yes      | Yes        | Yes |
-| Number of rules           | 10  | 25       | 50         | 300 |
-| Override Host header      | No  | No       | No         | Yes |
-| Override SNI              | No  | No       | No         | Yes |
-| Override DNS records      | No  | No       | No         | Yes |
-| Override destination port | Yes | Yes      | Yes        | Yes |
+|                           | Free | Pro | Business | Enterprise |
+| ------------------------- | ---- | --- | -------- | ---------- |
+| Availability              | Yes  | Yes | Yes      | Yes        |
+| Number of rules           | 10   | 25  | 50       | 300        |
+| Override Host header      | No   | No  | No       | Yes        |
+| Override SNI              | No   | No  | No       | Yes        |
+| Override DNS records      | No   | No  | No       | Yes        |
+| Override destination port | Yes  | Yes | Yes      | Yes        |
 
 ## Execution order
 

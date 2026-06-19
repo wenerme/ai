@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/vectorize/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -49,21 +49,13 @@ Watch this space for the upcoming capability to migrate legacy (V1) indexes to t
 3. To use the new version of Vectorize indexes in Workers, the environment binding must be defined as a `Vectorize` interface.  
 TypeScript  
 ```  
-export interface Env {  
-  // This makes your vector index methods available on env.VECTORIZE.*  
-  // For example, env.VECTORIZE.insert() or query()  
-  VECTORIZE: Vectorize;  
-}  
+export interface Env {  // This makes your vector index methods available on env.VECTORIZE.*  // For example, env.VECTORIZE.insert() or query()  VECTORIZE: Vectorize;}  
 ```  
 The `Vectorize` interface includes the type changes and the capabilities supported by new Vectorize (V2) indexes.  
 For legacy Vectorize (V1) indexes, use the `VectorizeIndex` interface.  
 TypeScript  
 ```  
-export interface Env {  
-  // This makes your vector index methods available on env.VECTORIZE.*  
-  // For example, env.VECTORIZE.insert() or query()  
-  VECTORIZE: VectorizeIndex;  
-}  
+export interface Env {  // This makes your vector index methods available on env.VECTORIZE.*  // For example, env.VECTORIZE.insert() or query()  VECTORIZE: VectorizeIndex;}  
 ```
 4. With the new Vectorize (V2) version, the `returnMetadata` option for the [query operation](https://developers.cloudflare.com/vectorize/reference/client-api/#query-vectors) now expects either `all`, `indexed` or `none` string values. For legacy Vectorize (V1), the `returnMetadata` option was a boolean field.
 5. With the new Vectorize (V2) indexes, all index and vector mutations are asynchronous and return a `mutationId` in the response as a unique identifier for that mutation operation.  

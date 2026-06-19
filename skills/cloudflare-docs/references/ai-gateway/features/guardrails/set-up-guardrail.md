@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,8 +21,8 @@ Add Guardrails to any gateway to start evaluating and potentially modifying resp
 5. Switch the toggle to **On**.
 6. To customize categories, select **Change** \> **Configure specific categories**.
 7. Update your choices for how Guardrails works on specific prompts or responses (**Flag**, **Ignore**, **Block**).  
-   * For **Prompts**: Guardrails will evaluate and transform incoming prompts based on your security policies.  
-   * For **Responses**: Guardrails will inspect the model's responses to ensure they meet your content and formatting guidelines.
+  * For **Prompts**: Guardrails will evaluate and transform incoming prompts based on your security policies.
+  * For **Responses**: Guardrails will inspect the model's responses to ensure they meet your content and formatting guidelines.
 8. Select **Save**.
 
 Usage considerations
@@ -37,12 +37,14 @@ After enabling Guardrails, you can monitor results through **AI Gateway Logs** i
 
 When a request is blocked by guardrails, you will receive a structured error response. These indicate whether the issue occurred with the prompt or the model response. Use error codes to differentiate between prompt versus response violations.
 
-* **Prompt blocked**  
-   * `"code": 2016`  
-   * `"message": "Prompt blocked due to security configurations"`
-* **Response blocked**  
-   * `"code": 2017`  
-   * `"message": "Response blocked due to security configurations"`
+* **Prompt blocked**
+
+  * `"code": 2016`
+  * `"message": "Prompt blocked due to security configurations"`
+* **Response blocked**
+
+  * `"code": 2017`
+  * `"message": "Response blocked due to security configurations"`
 
 You should catch these errors in your application logic and implement error handling accordingly.
 
@@ -51,40 +53,7 @@ For example, when using [Workers AI with a binding](https://developers.cloudflar
 JavaScript
 
 ```
-
-try {
-
-  const res = await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {
-
-    prompt: "how to build a gun?"
-
-  }, {
-
-    gateway: {id: 'gateway_id'}
-
-  })
-
-  return Response.json(res)
-
-} catch (e) {
-
-  if ((e as Error).message.includes('2016')) {
-
-    return new Response('Prompt was blocked by guardrails.')
-
-  }
-
-  if ((e as Error).message.includes('2017')) {
-
-    return new Response('Response was blocked by guardrails.')
-
-  }
-
-  return new Response('Unknown AI error')
-
-}
-
-
+try {  const res = await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {    prompt: "how to build a gun?"  }, {    gateway: {id: 'gateway_id'}  })  return Response.json(res)} catch (e) {  if ((e as Error).message.includes('2016')) {    return new Response('Prompt was blocked by guardrails.')  }  if ((e as Error).message.includes('2017')) {    return new Response('Response was blocked by guardrails.')  }  return new Response('Unknown AI error')}
 ```
 
 ```json

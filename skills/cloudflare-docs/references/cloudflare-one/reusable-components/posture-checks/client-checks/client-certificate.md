@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -48,54 +48,39 @@ To generate a sample root CA for testing, refer to [Generate mTLS certificates](
 
 1. Use the [Upload mTLS certificate endpoint](https://developers.cloudflare.com/api/resources/mtls%5Fcertificates/methods/create/) to upload the certificate and private key to Cloudflare. The certificate must be a signing certificate, formatted as a single string with `\n` replacing the line breaks. The private key is only required if you are using this custom certificate for Gateway HTTPS inspection.  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Account: SSL and Certificates Write`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Account: SSL and Certificates Write`  
 Upload mTLS certificate  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/mtls_certificates" \  
-  --request POST \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "name": "example_ca_cert",  
-    "certificates": "-----BEGIN CERTIFICATE-----\nXXXXX\n-----END CERTIFICATE-----",  
-    "private_key": "-----BEGIN PRIVATE KEY-----\nXXXXX\n-----END PRIVATE KEY-----",  
-    "ca": true  
-  }'  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/mtls_certificates" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "example_ca_cert",    "certificates": "-----BEGIN CERTIFICATE-----\nXXXXX\n-----END CERTIFICATE-----",    "private_key": "-----BEGIN PRIVATE KEY-----\nXXXXX\n-----END PRIVATE KEY-----",    "ca": true  }'  
 ```  
 The response will return a UUID for the certificate. For example:  
 ```  
-{  
-  "success": true,  
-  "errors": [],  
-  "messages": [],  
-  "result": {  
-    "id": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",  
-    "name": "example_ca_cert",  
-    "issuer": "O=Example Inc.,L=California,ST=San Francisco,C=US",  
-    "signature": "SHA256WithRSA",  
-    ...  
-  }  
-}  
+{  "success": true,  "errors": [],  "messages": [],  "result": {    "id": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",    "name": "example_ca_cert",    "issuer": "O=Example Inc.,L=California,ST=San Francisco,C=US",    "signature": "SHA256WithRSA",    ...  }}  
 ```
 2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Posture checks**.
 3. Go to **Cloudflare One Client checks** and select **Add a check**.
 4. Select **Client certificate**.
-5. You will be prompted for the following information:  
-   1. **Name**: Enter a unique name for this device posture check.  
-   2. **Operating system**: Select your operating system.  
-   3. **OS locations**: Specify the location(s) where the client certificate is installed.  
-   Windows  
-         * Local machine trust store  
-         * User trust store  
-   macOS  
-         * System keychain  
-   Linux  
-         * NSSDB (`/etc/pki/nssdb`) - To search a custom location, enter the absolute file path(s) to the certificate and private key (for example`/usr/local/mycompany/certs/client.pem` and`/usr/local/mycompany/certs/client_key.pem`). The certificate and private key must be in `PEM` format. They can either be in two different files or the same file.  
-   4. **Certificate ID**: Enter the UUID of the signing certificate.  
-   5. **Common name**: (Optional) To check for a Common Name (CN) on the client certificate, enter a string with optional `${serial_number}` and `${hostname}` variables (for example, `${serial_number}_mycompany`). The Cloudflare One Client will search for an exact, case-insensitive match. If you do not specify a common name, the Cloudflare One Client will ignore the common name field on the certificate.  
-   6. **Check for Extended Key Usage**: (Optional) Check whether the client certificate has one or more attributes set. Supported values are **Client authentication** (`1.3.6.1.5.5.7.3.2`) and/or **Email** (`1.3.6.1.5.5.7.3.4`).  
-   7. **Check for private key**: (Recommended) When enabled, WARP checks that the device has a private key associated with the client certificate.  
-   8. **Subject Alternative Name**: (Optional) To check for a Subject Alternative Name (SAN) on the client certificate, enter a string with optional `${serial_number}` and `${hostname}` variables (for example, `${serial_number}_mycompany`). The Cloudflare One Client will search for an exact, case-insensitive match. You can add multiple SANs to the posture check — a certificate only needs to match one SAN for the check to pass.
+5. You will be prompted for the following information:
+
+  1. **Name**: Enter a unique name for this device posture check.
+  2. **Operating system**: Select your operating system.
+  3. **OS locations**: Specify the location(s) where the client certificate is installed.  
+  Windows
+
+    * Local machine trust store
+    * User trust store  
+  macOS
+
+    * System keychain  
+  Linux
+
+    * NSSDB (`/etc/pki/nssdb`) - To search a custom location, enter the absolute file path(s) to the certificate and private key (for example `/usr/local/mycompany/certs/client.pem` and `/usr/local/mycompany/certs/client_key.pem`). The certificate and private key must be in `PEM` format. They can either be in two different files or the same file.
+  4. **Certificate ID**: Enter the UUID of the signing certificate.
+  5. **Common name**: (Optional) To check for a Common Name (CN) on the client certificate, enter a string with optional `${serial_number}` and `${hostname}` variables (for example, `${serial_number}_mycompany`). The Cloudflare One Client will search for an exact, case-insensitive match. If you do not specify a common name, the Cloudflare One Client will ignore the common name field on the certificate.
+  6. **Check for Extended Key Usage**: (Optional) Check whether the client certificate has one or more attributes set. Supported values are **Client authentication** (`1.3.6.1.5.5.7.3.2`) and/or **Email** (`1.3.6.1.5.5.7.3.4`).
+  7. **Check for private key**: (Recommended) When enabled, WARP checks that the device has a private key associated with the client certificate.
+  8. **Subject Alternative Name**: (Optional) To check for a Subject Alternative Name (SAN) on the client certificate, enter a string with optional `${serial_number}` and `${hostname}` variables (for example, `${serial_number}_mycompany`). The Cloudflare One Client will search for an exact, case-insensitive match. You can add multiple SANs to the posture check — a certificate only needs to match one SAN for the check to pass.
 6. Select **Save**.
 
 Next, go to **Insights** \> **Logs** \> **Posture logs** and verify that the client certificate check is returning the expected results.
@@ -104,9 +89,9 @@ Next, go to **Insights** \> **Logs** \> **Posture logs** and verify that the cli
 
 You can use the following commands to check if a client certificate is properly installed and trusted on the device.
 
-* [ Windows ](#tab-panel-7411)
-* [ macOS ](#tab-panel-7412)
-* [ Linux ](#tab-panel-7413)
+* [ Windows ](#tab-panel-7487)
+* [ macOS ](#tab-panel-7488)
+* [ Linux ](#tab-panel-7489)
 
 1. Open a PowerShell window.
 2. To search the local machine trust store for a certificate with a specific common name, run the following command:
@@ -114,10 +99,7 @@ You can use the following commands to check if a client certificate is properly 
 PowerShell
 
 ```
-
 Get-ChildItem Cert:\LocalMachine\My\ | where{$_.Subject -like "*<COMMON_NAME>*"}
-
-
 ```
 
 1. To search the user trust store for a certificate with a specific common name, run the following command:
@@ -125,10 +107,7 @@ Get-ChildItem Cert:\LocalMachine\My\ | where{$_.Subject -like "*<COMMON_NAME>*"}
 PowerShell
 
 ```
-
 Get-ChildItem Cert:\CurrentUser\My\ | where{$_.Subject -like "*<COMMON_NAME>*"}
-
-
 ```
 
 1. Open Terminal.
@@ -137,10 +116,7 @@ Get-ChildItem Cert:\CurrentUser\My\ | where{$_.Subject -like "*<COMMON_NAME>*"}
 Terminal window
 
 ```
-
 /usr/bin/security find-certificate -c "<COMMON_NAME>" -p /Library/Keychains/System.keychain
-
-
 ```
 
 1. Open Terminal.
@@ -149,24 +125,12 @@ Terminal window
 Terminal window
 
 ```
-
 certutil -L -d /etc/pki/nssdb
-
-
 ```
 
 ```
-
-Certificate Nickname                                         Trust Attributes
-
-                                                             SSL,S/MIME,JAR/XPI
-
-
-meow                                                         CTu,Cu,Cu
-
-noPrivateKey                                                 CT,,
-
-
+Certificate Nickname                                         Trust Attributes                                                             SSL,S/MIME,JAR/XPI
+meow                                                         CTu,Cu,CunoPrivateKey                                                 CT,,
 ```
 
 1. Open your desired certificate using its certificate nickname. The common name will appear in the line `Subject: "CN=123456.mycompany"`.
@@ -174,92 +138,12 @@ noPrivateKey                                                 CT,,
 Terminal window
 
 ```
-
 certutil -L -d /etc/pki/nssdb -n meow
-
-
 ```
 
 ```
-
-Certificate:
-
-    Data:
-
-        Version: 3 (0x2)
-
-        Serial Number: 236 (0xec)
-
-        Signature Algorithm: PKCS #1 SHA-256 With RSA Encryption
-
-        Issuer: "CN=123456.mycompany"
-
-        Validity:
-
-            Not Before: Tue Jul 02 17:20:40 2024
-
-            Not After : Sun Jul 02 17:20:40 2034
-
-        Subject: "CN=123456.mycompany"
-
-        Subject Public Key Info:
-
-            Public Key Algorithm: PKCS #1 RSA Encryption
-
-            RSA Public Key:
-
-                Modulus:
-
-                    <redacted>
-
-                Exponent: 65537 (0x10001)
-
-    Signature Algorithm: PKCS #1 SHA-256 With RSA Encryption
-
-    Signature:
-
-        <redacted>
-
-    Fingerprint (SHA-256):
-
-        <redacted>
-
-    Fingerprint (SHA1):
-
-        <redacted>
-
-
-    Mozilla-CA-Policy: false (attribute missing)
-
-    Certificate Trust Flags:
-
-        SSL Flags:
-
-            Valid CA
-
-            Trusted CA
-
-            User
-
-            Trusted Client CA
-
-        Email Flags:
-
-            Valid CA
-
-            Trusted CA
-
-            User
-
-        Object Signing Flags:
-
-            Valid CA
-
-            Trusted CA
-
-            User
-
-
+Certificate:    Data:        Version: 3 (0x2)        Serial Number: 236 (0xec)        Signature Algorithm: PKCS #1 SHA-256 With RSA Encryption        Issuer: "CN=123456.mycompany"        Validity:            Not Before: Tue Jul 02 17:20:40 2024            Not After : Sun Jul 02 17:20:40 2034        Subject: "CN=123456.mycompany"        Subject Public Key Info:            Public Key Algorithm: PKCS #1 RSA Encryption            RSA Public Key:                Modulus:                    <redacted>                Exponent: 65537 (0x10001)    Signature Algorithm: PKCS #1 SHA-256 With RSA Encryption    Signature:        <redacted>    Fingerprint (SHA-256):        <redacted>    Fingerprint (SHA1):        <redacted>
+    Mozilla-CA-Policy: false (attribute missing)    Certificate Trust Flags:        SSL Flags:            Valid CA            Trusted CA            User            Trusted Client CA        Email Flags:            Valid CA            Trusted CA            User        Object Signing Flags:            Valid CA            Trusted CA            User
 ```
 
 For the posture check to pass, a certificate must appear in the output that validates against the uploaded signing certificate.

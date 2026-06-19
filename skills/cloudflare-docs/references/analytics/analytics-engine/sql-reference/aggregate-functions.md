@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,12 +17,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 Usage:
 
 ```
-
-count()
-
-count(DISTINCT column_name)
-
-
+count()count(DISTINCT column_name)
 ```
 
 `count` is an aggregation function that returns the number of rows in each group or results set.
@@ -32,16 +27,7 @@ count(DISTINCT column_name)
 Example:
 
 ```
-
--- return the total number of rows
-
-count()
-
--- return the number of different values in the column
-
-count(DISTINCT column_name)
-
-
+-- return the total number of rowscount()-- return the number of different values in the columncount(DISTINCT column_name)
 ```
 
 ## sum
@@ -49,10 +35,7 @@ count(DISTINCT column_name)
 Usage:
 
 ```
-
 sum([DISTINCT] column_name)
-
-
 ```
 
 `sum` is an aggregation function that returns the sum of column values across all rows in each group or results set. Sum also supports `DISTINCT`, but in this case it will only sum the unique values in the column.
@@ -60,16 +43,7 @@ sum([DISTINCT] column_name)
 Example:
 
 ```
-
--- return the total cost of all items
-
-sum(item_cost)
-
--- return the total of all unique item costs
-
-sum(DISTINCT item_cost)
-
-
+-- return the total cost of all itemssum(item_cost)-- return the total of all unique item costssum(DISTINCT item_cost)
 ```
 
 ## avg
@@ -77,10 +51,7 @@ sum(DISTINCT item_cost)
 Usage:
 
 ```
-
 avg([DISTINCT] column_name)
-
-
 ```
 
 `avg` is an aggregation function that returns the mean of column values across all rows in each group or results set. Avg also supports `DISTINCT`, but in this case it will only average the unique values in the column.
@@ -88,16 +59,7 @@ avg([DISTINCT] column_name)
 Example:
 
 ```
-
--- return the mean item cost
-
-avg(item_cost)
-
--- return the mean of unique item costs
-
-avg(DISTINCT item_cost)
-
-
+-- return the mean item costavg(item_cost)-- return the mean of unique item costsavg(DISTINCT item_cost)
 ```
 
 ## min
@@ -105,10 +67,7 @@ avg(DISTINCT item_cost)
 Usage:
 
 ```
-
 min(column_name)
-
-
 ```
 
 `min` is an aggregation function that returns the minimum value of a column across all rows.
@@ -116,12 +75,7 @@ min(column_name)
 Example:
 
 ```
-
--- return the minimum item cost
-
-min(item_cost)
-
-
+-- return the minimum item costmin(item_cost)
 ```
 
 ## max
@@ -129,10 +83,7 @@ min(item_cost)
 Usage:
 
 ```
-
 max(column_name)
-
-
 ```
 
 `max` is an aggregation function that returns the maximum value of a column across all rows.
@@ -140,12 +91,7 @@ max(column_name)
 Example:
 
 ```
-
--- return the maximum item cost
-
-max(item_cost)
-
-
+-- return the maximum item costmax(item_cost)
 ```
 
 ## quantileExactWeighted
@@ -153,10 +99,7 @@ max(item_cost)
 Usage:
 
 ```
-
 quantileExactWeighted(q)(column_name, weight_column_name)
-
-
 ```
 
 `quantileExactWeighted` is an aggregation function that returns the value at the qth quantile in the named column across all rows in each group or results set. Each row will be weighted by the value in `weight_column_name`. Typically this would be `_sample_interval` (refer to [Sampling](https://developers.cloudflare.com/analytics/analytics-engine/sql-api/#sampling) for more information).
@@ -164,17 +107,8 @@ quantileExactWeighted(q)(column_name, weight_column_name)
 Example:
 
 ```
-
--- estimate the median value of <double1>
-
-quantileExactWeighted(0.5)(double1, _sample_interval)
-
-
--- in a table of query times, estimate the 95th centile query time
-
-quantileExactWeighted(0.95)(query_time, _sample_interval)
-
-
+-- estimate the median value of <double1>quantileExactWeighted(0.5)(double1, _sample_interval)
+-- in a table of query times, estimate the 95th centile query timequantileExactWeighted(0.95)(query_time, _sample_interval)
 ```
 
 For backwards compatibility, this is also available as `quantileWeighted(q, column_name, weight_column_name)`.
@@ -184,10 +118,7 @@ For backwards compatibility, this is also available as `quantileWeighted(q, colu
 Usage:
 
 ```
-
 argMax(arg, val)
-
-
 ```
 
 `argMax` is an aggregation function that returns the `arg` value that corresponds to the maximum value of `val`.
@@ -197,17 +128,8 @@ If multiple `arg` values have the maximum value of `val`, any one will be return
 Example:
 
 ```
-
--- find the <blob1> value for the row with the highest <double1>
-
-argMax(blob1, double1)
-
-
--- find the <blob1> value from the most heavily sampled row
-
-argMax(blob1, _sample_interval)
-
-
+-- find the <blob1> value for the row with the highest <double1>argMax(blob1, double1)
+-- find the <blob1> value from the most heavily sampled rowargMax(blob1, _sample_interval)
 ```
 
 ## argMin New
@@ -215,10 +137,7 @@ argMax(blob1, _sample_interval)
 Usage:
 
 ```
-
 argMin(arg, val)
-
-
 ```
 
 `argMin` is an aggregation function that returns the `arg` value that corresponds to the minimum value of `val`.
@@ -228,17 +147,8 @@ If multiple `arg` values have the minimum value of `val`, any one will be return
 Example:
 
 ```
-
--- find the <blob1> value for the row with the lowest <double1>
-
-argMin(blob1, double1)
-
-
--- find the <blob1> value from the least heavily sampled row
-
-argMin(blob1, _sample_interval)
-
-
+-- find the <blob1> value for the row with the lowest <double1>argMin(blob1, double1)
+-- find the <blob1> value from the least heavily sampled rowargMin(blob1, _sample_interval)
 ```
 
 ## first\_value New
@@ -246,10 +156,7 @@ argMin(blob1, _sample_interval)
 Usage:
 
 ```
-
 first_value(column_name)
-
-
 ```
 
 `first_value` is an aggregation function which returns the first value of the provided column.
@@ -257,12 +164,7 @@ first_value(column_name)
 Example:
 
 ```
-
--- find the oldest value of <blob1>
-
-SELECT first_value(blob1) FROM my_dataset ORDER BY timestamp ASC
-
-
+-- find the oldest value of <blob1>SELECT first_value(blob1) FROM my_dataset ORDER BY timestamp ASC
 ```
 
 ## last\_value New
@@ -270,10 +172,7 @@ SELECT first_value(blob1) FROM my_dataset ORDER BY timestamp ASC
 Usage:
 
 ```
-
 last_value(column_name)
-
-
 ```
 
 `last_value` is an aggregation function which returns the last value of the provided column.
@@ -281,12 +180,7 @@ last_value(column_name)
 Example:
 
 ```
-
--- find the oldest value of <blob1>
-
-SELECT last_value(blob1) FROM my_dataset ORDER BY timestamp DESC
-
-
+-- find the oldest value of <blob1>SELECT last_value(blob1) FROM my_dataset ORDER BY timestamp DESC
 ```
 
 ## topK New
@@ -294,10 +188,7 @@ SELECT last_value(blob1) FROM my_dataset ORDER BY timestamp DESC
 Usage:
 
 ```
-
 topK(N)(column)
-
-
 ```
 
 `topK` is an aggregation function which returns the most common `N` values of a column.
@@ -307,17 +198,8 @@ topK(N)(column)
 Example:
 
 ```
-
--- find the 10 most common values of <double1>
-
-SELECT topK(double1) FROM my_dataset
-
-
--- find the 15 most common values of <blob1>
-
-SELECT topK(15)(blob1) FROM my_dataset
-
-
+-- find the 10 most common values of <double1>SELECT topK(double1) FROM my_dataset
+-- find the 15 most common values of <blob1>SELECT topK(15)(blob1) FROM my_dataset
 ```
 
 ## topKWeighted New
@@ -325,10 +207,7 @@ SELECT topK(15)(blob1) FROM my_dataset
 Usage:
 
 ```
-
 topKWeighted(N)(column, weight_column)
-
-
 ```
 
 `topKWeighted` is an aggregation function which returns the most common `N` values of a column, weighted by a second column.
@@ -338,17 +217,8 @@ topKWeighted(N)(column, weight_column)
 Example:
 
 ```
-
--- find the 10 most common values of <double1>, weighted by `_sample_interval`
-
-SELECT topKWeighted(double1, _sample_interval) FROM my_dataset
-
-
--- find the 15 most common values of <blob1>, weighted by `_sample_interval`
-
-SELECT topKWeighted(15)(blob1, _sample_interval) FROM my_dataset
-
-
+-- find the 10 most common values of <double1>, weighted by `_sample_interval`SELECT topKWeighted(double1, _sample_interval) FROM my_dataset
+-- find the 15 most common values of <blob1>, weighted by `_sample_interval`SELECT topKWeighted(15)(blob1, _sample_interval) FROM my_dataset
 ```
 
 ## countIf New
@@ -356,10 +226,7 @@ SELECT topKWeighted(15)(blob1, _sample_interval) FROM my_dataset
 Usage:
 
 ```
-
 countIf(<expr>)
-
-
 ```
 
 `countIf` is an aggregation function that returns the number of rows in the results set, but only counting rows where a provided expression evaluates to true.
@@ -367,12 +234,7 @@ countIf(<expr>)
 Example:
 
 ```
-
--- return the number of rows where `double1` is greater than 5
-
-countIf(double1 > 5)
-
-
+-- return the number of rows where `double1` is greater than 5countIf(double1 > 5)
 ```
 
 ## sumIf New
@@ -380,10 +242,7 @@ countIf(double1 > 5)
 Usage:
 
 ```
-
 sumIf(<expr>, <expr>)
-
-
 ```
 
 `sumIf` is an aggregation function that returns the sum of a first expression across all rows in the results set, but only including rows where a second expression evaluates to true.
@@ -391,12 +250,7 @@ sumIf(<expr>, <expr>)
 Example:
 
 ```
-
--- return the sum of column `item_cost` of all items where another column `in_stock` is not zero
-
-sumIf(item_cost, in_stock > 0)
-
-
+-- return the sum of column `item_cost` of all items where another column `in_stock` is not zerosumIf(item_cost, in_stock > 0)
 ```
 
 ## avgIf New
@@ -404,10 +258,7 @@ sumIf(item_cost, in_stock > 0)
 Usage:
 
 ```
-
 avgIf(<expr>, <expr>)
-
-
 ```
 
 `avgIf` is an aggregation function that returns the mean of an expression across all rows in the results set, but only including rows where a second expression evaluates to true.
@@ -415,12 +266,7 @@ avgIf(<expr>, <expr>)
 Example:
 
 ```
-
--- return the mean of column `item_cost` where another column `in_stock` is not zero
-
-avgIf(item_cost, in_stock > 0)
-
-
+-- return the mean of column `item_cost` where another column `in_stock` is not zeroavgIf(item_cost, in_stock > 0)
 ```
 
 ```json

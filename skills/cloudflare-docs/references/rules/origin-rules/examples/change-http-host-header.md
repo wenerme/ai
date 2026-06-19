@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,8 +18,8 @@ The following origin rule overrides the HTTP `Host` header to `hr-server.example
 
 The `Host` header override only updates the header value; the DNS record override will handle the rerouting of incoming requests. For more information on these overrides, refer to [Origin Rules settings](https://developers.cloudflare.com/rules/origin-rules/features/).
 
-* [ Dashboard ](#tab-panel-9985)
-* [ API ](#tab-panel-9986)
+* [ Dashboard ](#tab-panel-10061)
+* [ API ](#tab-panel-10062)
 
 Expression when using the Expression Builder:
 
@@ -30,35 +30,26 @@ Expression when using the Expression Builder:
 Expression when using the Expression Editor:
 
 ```
-
 (starts_with(http.request.uri.path, "/hr-app/"))
-
-
 ```
 
 Value after **Host Header** \> **Rewrite to**:
 
 ```
-
 hr-server.example.com
-
-
 ```
 
 Value after **DNS Record** \> **Override to**:
 
 ```
-
 hr-server.example.com
-
-
 ```
 
 The following example sets the rules of an existing phase ruleset (`$RULESET_ID`) to a single origin rule — overriding the `Host` header of incoming requests and the resolved DNS record — using the [Update a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/update/) operation. The response will contain the complete definition of the ruleset you updated.
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Response Compression Write`
 * `Config Settings Write`
 * `Dynamic URL Redirects Write`
@@ -84,115 +75,11 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Update a zone ruleset
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "rules": [
-
-        {
-
-            "ref": "hr_app_overrides",
-
-            "expression": "starts_with(http.request.uri.path, \"/hr-app/\")",
-
-            "description": "Origin rule for the company HR application",
-
-            "action": "route",
-
-            "action_parameters": {
-
-                "host_header": "hr-server.example.com",
-
-                "origin": {
-
-                    "host": "hr-server.example.com"
-
-                }
-
-            }
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "ref": "hr_app_overrides",            "expression": "starts_with(http.request.uri.path, \"/hr-app/\")",            "description": "Origin rule for the company HR application",            "action": "route",            "action_parameters": {                "host_header": "hr-server.example.com",                "origin": {                    "host": "hr-server.example.com"                }            }        }    ]  }'
 ```
 
 ```
-
-{
-
-  "result": {
-
-    "id": "<RULESET_ID>",
-
-    "name": "Origin Rules ruleset",
-
-    "description": "Zone-level ruleset that will execute origin rules.",
-
-    "kind": "zone",
-
-    "version": "2",
-
-    "rules": [
-
-      {
-
-        "ref": "hr_app_overrides",
-
-        "id": "<RULE_ID>",
-
-        "version": "1",
-
-        "action": "route",
-
-        "action_parameters": {
-
-          "host_header": "hr-server.example.com",
-
-          "origin": {
-
-            "host": "hr-server.example.com"
-
-          }
-
-        },
-
-        "expression": "starts_with(http.request.uri.path, \"/hr-app/\")",
-
-        "description": "Origin rule for the company HR application",
-
-        "last_updated": "2022-06-03T14:42:04.219025Z",
-
-        "ref": "<RULE_REF>"
-
-      }
-
-    ],
-
-    "last_updated": "2022-06-03T14:42:04.219025Z",
-
-    "phase": "http_request_origin"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "id": "<RULESET_ID>",    "name": "Origin Rules ruleset",    "description": "Zone-level ruleset that will execute origin rules.",    "kind": "zone",    "version": "2",    "rules": [      {        "ref": "hr_app_overrides",        "id": "<RULE_ID>",        "version": "1",        "action": "route",        "action_parameters": {          "host_header": "hr-server.example.com",          "origin": {            "host": "hr-server.example.com"          }        },        "expression": "starts_with(http.request.uri.path, \"/hr-app/\")",        "description": "Origin rule for the company HR application",        "last_updated": "2022-06-03T14:42:04.219025Z",        "ref": "<RULE_REF>"      }    ],    "last_updated": "2022-06-03T14:42:04.219025Z",    "phase": "http_request_origin"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.

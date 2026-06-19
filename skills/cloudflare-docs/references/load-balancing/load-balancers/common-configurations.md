@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,8 +26,8 @@ To set up a load balancer with **active-passive failover**:
 
 1. Create a load balancer with two pools (`primary` and `secondary`).
 2. In the list of pools, set the following order:  
-   1. `primary`  
-   2. `secondary`
+  1. `primary`
+  2. `secondary`
 3. For **Traffic Steering**, select [**Off**](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/standard-options/#off---failover).
 
 With this setup, your load balancer will direct all traffic to `primary` until `primary` has fewer available endpoints than specified in its **Health Threshold**. Only then will your load balancer direct traffic to `secondary`.

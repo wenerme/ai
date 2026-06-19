@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,10 +17,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 ## Endpoint
 
 ```
-
 https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/fal
-
-
 ```
 
 ## URL structure
@@ -45,20 +42,7 @@ By default, requests to the Fal AI endpoint will hit the synchronous API at `htt
 Terminal window
 
 ```
-
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/fal/fal-ai/fast-sdxl \
-
-  --header 'Authorization: Key {fal_ai_token}' \
-
-  --header 'Content-Type: application/json' \
-
-  --data '{
-
-    "prompt": "Make an image of a cat flying an aeroplane"
-
-  }'
-
-
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/fal/fal-ai/fast-sdxl \  --header 'Authorization: Key {fal_ai_token}' \  --header 'Content-Type: application/json' \  --data '{    "prompt": "Make an image of a cat flying an aeroplane"  }'
 ```
 
 ## Custom target URLs
@@ -70,34 +54,7 @@ If you need to hit a different target URL, you can supply the entire Fal target 
 Terminal window
 
 ```
-
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/fal \
-
-  --header 'Authorization: Bearer {fal_ai_token}' \
-
-  --header 'x-fal-target-url: https://queue.fal.run/fal-ai/bytedance/seedream/v4/edit' \
-
-  --header 'Content-Type: application/json' \
-
-  --data '{
-
-    "prompt": "Dress the model in the clothes and hat. Add a cat to the scene and change the background to a Victorian era building.",
-
-    "image_urls": [
-
-      "https://storage.googleapis.com/falserverless/example_inputs/seedream4_edit_input_1.png",
-
-      "https://storage.googleapis.com/falserverless/example_inputs/seedream4_edit_input_2.png",
-
-      "https://storage.googleapis.com/falserverless/example_inputs/seedream4_edit_input_3.png",
-
-      "https://storage.googleapis.com/falserverless/example_inputs/seedream4_edit_input_4.png"
-
-    ]
-
-  }'
-
-
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/fal \  --header 'Authorization: Bearer {fal_ai_token}' \  --header 'x-fal-target-url: https://queue.fal.run/fal-ai/bytedance/seedream/v4/edit' \  --header 'Content-Type: application/json' \  --data '{    "prompt": "Dress the model in the clothes and hat. Add a cat to the scene and change the background to a Victorian era building.",    "image_urls": [      "https://storage.googleapis.com/falserverless/example_inputs/seedream4_edit_input_1.png",      "https://storage.googleapis.com/falserverless/example_inputs/seedream4_edit_input_2.png",      "https://storage.googleapis.com/falserverless/example_inputs/seedream4_edit_input_3.png",      "https://storage.googleapis.com/falserverless/example_inputs/seedream4_edit_input_4.png"    ]  }'
 ```
 
 ## WebSocket API
@@ -113,45 +70,10 @@ The `x-fal-target-url` format is compliant with the Fal SDKs, so AI Gateway can 
 JavaScript
 
 ```
-
 import { fal } from "@fal-ai/client";
-
-
-fal.config({
-
-  credentials: "{fal_ai_token}", // OR pass a cloudflare api token if using BYOK on AI Gateway
-
-  proxyUrl: "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/fal"
-
-});
-
-
-const result = await fal.subscribe("fal-ai/bytedance/seedream/v4/edit", {
-
-  "input": {
-
-    "prompt": "Dress the model in the clothes and hat. Add a cat to the scene and change the background to a Victorian era building.",
-
-    "image_urls": [
-
-      "https://storage.googleapis.com/falserverless/example_inputs/seedream4_edit_input_1.png",
-
-      "https://storage.googleapis.com/falserverless/example_inputs/seedream4_edit_input_2.png",
-
-      "https://storage.googleapis.com/falserverless/example_inputs/seedream4_edit_input_3.png",
-
-      "https://storage.googleapis.com/falserverless/example_inputs/seedream4_edit_input_4.png"
-
-    ]
-
-  }
-
-});
-
-
+fal.config({  credentials: "{fal_ai_token}", // OR pass a cloudflare api token if using BYOK on AI Gateway  proxyUrl: "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/fal"});
+const result = await fal.subscribe("fal-ai/bytedance/seedream/v4/edit", {  "input": {    "prompt": "Dress the model in the clothes and hat. Add a cat to the scene and change the background to a Victorian era building.",    "image_urls": [      "https://storage.googleapis.com/falserverless/example_inputs/seedream4_edit_input_1.png",      "https://storage.googleapis.com/falserverless/example_inputs/seedream4_edit_input_2.png",      "https://storage.googleapis.com/falserverless/example_inputs/seedream4_edit_input_3.png",      "https://storage.googleapis.com/falserverless/example_inputs/seedream4_edit_input_4.png"    ]  }});
 console.log(result.data.images[0]);
-
-
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -57,10 +57,7 @@ Add a lifecycle rule that expires all objects after 1 day:
 Terminal window
 
 ```
-
 npx wrangler r2 bucket lifecycle add <BUCKET_NAME> --expire-days 1
-
-
 ```
 
 After the bucket is empty, remove the rule:
@@ -68,10 +65,7 @@ After the bucket is empty, remove the rule:
 Terminal window
 
 ```
-
 npx wrangler r2 bucket lifecycle remove <BUCKET_NAME> --id <RULE_ID>
-
-
 ```
 
 For the full list of lifecycle commands, refer to [Wrangler R2 commands](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-lifecycle-add).
@@ -105,10 +99,7 @@ Use the [r2 bucket delete](https://developers.cloudflare.com/workers/wrangler/co
 Terminal window
 
 ```
-
 npx wrangler r2 bucket delete <BUCKET_NAME>
-
-
 ```
 
 The command fails if the bucket still contains objects. Empty the bucket before running this command.
@@ -120,12 +111,7 @@ Use the [delete bucket API endpoint](https://developers.cloudflare.com/api/resou
 Terminal window
 
 ```
-
-curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/r2/buckets/<BUCKET_NAME>" \
-
-  -H "Authorization: Bearer <API_TOKEN>"
-
-
+curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/r2/buckets/<BUCKET_NAME>" \  -H "Authorization: Bearer <API_TOKEN>"
 ```
 
 If the bucket is in a [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions), include the `cf-r2-jurisdiction` header:
@@ -133,14 +119,7 @@ If the bucket is in a [jurisdiction](https://developers.cloudflare.com/r2/refere
 Terminal window
 
 ```
-
-curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/r2/buckets/<BUCKET_NAME>" \
-
-  -H "Authorization: Bearer <API_TOKEN>" \
-
-  -H "cf-r2-jurisdiction: eu"
-
-
+curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/r2/buckets/<BUCKET_NAME>" \  -H "Authorization: Bearer <API_TOKEN>" \  -H "cf-r2-jurisdiction: eu"
 ```
 
 ## Behavior
@@ -158,7 +137,7 @@ curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/r2/bu
 
 [ Object lifecycles ](https://developers.cloudflare.com/r2/buckets/object-lifecycles/) Automatically expire objects after a specified period instead of emptying manually. 
 
-[ Create buckets ](https://developers.cloudflare.com/r2/buckets/create-buckets/) Create a new R2 bucket after deleting an existing one. 
+[ Create buckets ](https://developers.cloudflare.com/r2/buckets/create-buckets/) Create a new R2 bucket after deleting an existing one.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/buckets/delete-buckets/#page","headline":"Delete buckets · Cloudflare R2 docs","description":"Empty all objects from an R2 bucket and permanently delete it.","url":"https://developers.cloudflare.com/r2/buckets/delete-buckets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

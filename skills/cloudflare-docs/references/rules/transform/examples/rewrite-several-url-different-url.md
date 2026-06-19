@@ -5,7 +5,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,19 +18,13 @@ To rewrite paths like `/images/<FOLDER1>/<FOLDER2>/<FILENAME>` — where `<FOLDE
 Text in **Expression Editor**:
 
 ```
-
 http.request.uri.path ~ "^/images/[^/]+/[^/]+/[^/]+$"
-
-
 ```
 
 Text after **Path** \> **Rewrite to** \> _Dynamic_:
 
 ```
-
 regex_replace(http.request.uri.path, "^/images/[^/]+/[^/]+/(.+)$", "/img/${1}")
-
-
 ```
 
 For example, this rule would rewrite the `/images/nature/animals/tiger.png` path to `/img/tiger.png`.

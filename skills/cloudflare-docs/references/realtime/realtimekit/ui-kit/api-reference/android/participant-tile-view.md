@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -36,18 +36,7 @@ A component which plays a participant's video and allows for placement of compon
 ### Basic Usage
 
 ```
-
-<com.cloudflare.realtimekit.ui.view.participanttile.RtkParticipantTileView
-
-    android:id="@+id/rtk_participant_tile"
-
-    android:layout_width="match_parent"
-
-    android:layout_height="200dp"
-
-    app:rtk_ptv_nameTagPosition="BOTTOM_LEFT" />
-
-
+<com.cloudflare.realtimekit.ui.view.participanttile.RtkParticipantTileView    android:id="@+id/rtk_participant_tile"    android:layout_width="match_parent"    android:layout_height="200dp"    app:rtk_ptv_nameTagPosition="BOTTOM_LEFT" />
 ```
 
 ### With Methods
@@ -55,12 +44,7 @@ A component which plays a participant's video and allows for placement of compon
 Kotlin
 
 ```
-
-val tile = findViewById<RtkParticipantTileView>(R.id.rtk_participant_tile)
-
-tile.activate(participant)
-
-
+val tile = findViewById<RtkParticipantTileView>(R.id.rtk_participant_tile)tile.activate(participant)
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -50,10 +50,10 @@ This guide covers how to configure [ServiceNow ↗](https://docs.servicenow.com/
 2. In the search bar enter `Multi-Provider SSO`, and select **Identity Providers**.
 3. Select **New** \> **OpenID Connect**.
 4. In the pop-up, fill in the following fields:  
-   * **Name**: Name of the SSO (for example, `Cloudflare Access`). Unless otherwise configured, users will select this name when signing in to ServiceNow.  
-   * **Client ID**: **Client ID** from application configuration in Cloudflare One.  
-   * **Client Secret**: **Client Secret** from application configuration in Cloudflare One.  
-   * **Well Known Configuration URL**: `https://<TEAM-DOMAIN>.cloudflareaccess.com/cdn-cgi/access/sso/oidc/<CLIENT-ID>/.well-known/openid-configuration`.
+  * **Name**: Name of the SSO (for example, `Cloudflare Access`). Unless otherwise configured, users will select this name when signing in to ServiceNow.
+  * **Client ID**: **Client ID** from application configuration in Cloudflare One.
+  * **Client Secret**: **Client Secret** from application configuration in Cloudflare One.
+  * **Well Known Configuration URL**: `https://<TEAM-DOMAIN>.cloudflareaccess.com/cdn-cgi/access/sso/oidc/<CLIENT-ID>/.well-known/openid-configuration`.
 5. Select **Import**.
 6. Ensure **Active** is turned on
 7. Turn on **Show as Login option**, and for **SSO label** enter a label for the user login screen, if desired.

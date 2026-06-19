@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -34,6 +34,7 @@ These headers map to the `httpMetadata` field in the [R2 bindings](https://devel
 | Content-Disposition | httpMetadata.contentDisposition |
 | Cache-Control       | httpMetadata.cacheControl       |
 | Expires             | httpMetadata.expires            |
+|                     |                                 |
 
 If using Unicode in object key names, refer to [Unicode Interoperability](https://developers.cloudflare.com/r2/reference/unicode-interoperability/).
 
@@ -44,18 +45,7 @@ If you are creating buckets on demand, you might initiate an upload with the ass
 To support sending an upload with a streaming body to a bucket that may not exist yet, upload operations such as `PutObject` or `CreateMultipartUpload` allow you to specify a header that will ensure the `NoSuchBucket` error is not returned. If the bucket does not exist at the time of upload, it is implicitly instantiated with the following `CreateBucket` request:
 
 ```
-
-PUT / HTTP/1.1
-
-Host: bucket.account.r2.cloudflarestorage.com
-
-<CreateBucketConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
-
-   <LocationConstraint>auto</LocationConstraint>
-
-</CreateBucketConfiguration>
-
-
+PUT / HTTP/1.1Host: bucket.account.r2.cloudflarestorage.com<CreateBucketConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">   <LocationConstraint>auto</LocationConstraint></CreateBucketConfiguration>
 ```
 
 This is only useful if you are creating buckets on demand because you do not know the name of the bucket or the preferred access location ahead of time. For example, you have one bucket per one of your customers and the bucket is created on first upload to the bucket and not during account registration. In these cases, the [ListBuckets extension](#listbuckets), which supports accounts with more than 1,000 buckets, may also be useful.
@@ -82,17 +72,19 @@ The `x-amz-metadata-directive` allows a `MERGE` value, in addition to the standa
 | start-after        | cf-start-after        | Show buckets whose name appears lexicographically in the account. |
 | continuation-token | cf-continuation-token | Resume listing from a previously returned continuation token.     |
 | max-keys           | cf-max-keys           | Return this maximum number of buckets. Default and max is 1000.   |
+|                    |                       |                                                                   |
 
 The XML response contains a `NextContinuationToken` and `IsTruncated` elements as appropriate. Since these may not be accessible from existing S3 APIs, these are also available in response headers:
 
-| XML Response Element  | HTTP Response Header                                             | Meaning                                                                                      |
-| --------------------- | ---------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| IsTruncated           | cf-is-truncated                                                  | This is set to true if the list of buckets returned is not all the buckets on the account.   |
-| NextContinuationToken | cf-next-continuation-token                                       | This is set to continuation token to pass on a subsequent ListBuckets to resume the listing. |
-| StartAfter            | This is the start-after value that was passed in on the request. |                                                                                              |
-| KeyCount              | The number of buckets returned.                                  |                                                                                              |
-| ContinuationToken     | The continuation token that was supplied in the request.         |                                                                                              |
-| MaxKeys               | The max keys that were specified in the request.                 |                                                                                              |
+| XML Response Element  | HTTP Response Header       | Meaning                                                                                      |
+| --------------------- | -------------------------- | -------------------------------------------------------------------------------------------- |
+| IsTruncated           | cf-is-truncated            | This is set to true if the list of buckets returned is not all the buckets on the account.   |
+| NextContinuationToken | cf-next-continuation-token | This is set to continuation token to pass on a subsequent ListBuckets to resume the listing. |
+| StartAfter            |                            | This is the start-after value that was passed in on the request.                             |
+| KeyCount              |                            | The number of buckets returned.                                                              |
+| ContinuationToken     |                            | The continuation token that was supplied in the request.                                     |
+| MaxKeys               |                            | The max keys that were specified in the request.                                             |
+|                       |                            |                                                                                              |
 
 ### Conditional operations in `CopyObject` for the destination object
 

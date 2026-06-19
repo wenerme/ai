@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,10 +27,10 @@ You can connect Hyperdrive to any existing PlanetScale PostgreSQL database by cr
 1. Go to the [**PlanetScale dashboard** ↗](https://app.planetscale.com/) and select the database you wish to connect to.
 2. Click **Connect**.
 3. Create a new role for your Hyperdrive configuration (recommended):  
-   1. Ensure the minimum required permissions for Hyperdrive to read and write data to your tables:  
-         * **pg\_read\_all\_data**: Read data from all tables, views, and sequences  
-         * **pg\_write\_all\_data**: Write data to all tables, views, and sequences  
-   2. Click **Create role**.
+  1. Ensure the minimum required permissions for Hyperdrive to read and write data to your tables:  
+    * **pg\_read\_all\_data**: Read data from all tables, views, and sequences
+    * **pg\_write\_all\_data**: Write data to all tables, views, and sequences
+  2. Click **Create role**.
 4. Note the user, the password, the database host, and the database name (or `postgres` as the default database). You will need these to create a database configuration in Hyperdrive.
 
 With the host, database name, username and password, you can now create a Hyperdrive database configuration.
@@ -42,20 +42,7 @@ To reduce latency, use a [Placement Hint](https://developers.cloudflare.com/work
 wrangler.jsonc
 
 ```
-
-{
-
-  "placement": {
-
-    // Match to your PlanetScale region, for example "gcp:us-east4" or "aws:us-east-1"
-
-    "region": "gcp:us-east4",
-
-  },
-
-}
-
-
+{  "placement": {    // Match to your PlanetScale region, for example "gcp:us-east4" or "aws:us-east-1"    "region": "gcp:us-east4",  },}
 ```
 
 ## 2\. Create a database configuration
@@ -70,16 +57,13 @@ To configure Hyperdrive, you will need:
 Hyperdrive accepts the combination of these parameters in the common connection string format used by database drivers:
 
 ```
-
 postgres://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
-
-
 ```
 
 Most database providers will provide a connection string you can directly copy-and-paste directly into Hyperdrive.
 
-* [ Dashboard ](#tab-panel-8771)
-* [ Wrangler CLI ](#tab-panel-8772)
+* [ Dashboard ](#tab-panel-8847)
+* [ Wrangler CLI ](#tab-panel-8848)
 
 To create a Hyperdrive configuration with the Cloudflare dashboard:
 
@@ -96,40 +80,18 @@ Terminal window
 ```  
 npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="postgres://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name"  
 ```
-2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):  
-   * [  wrangler.jsonc ](#tab-panel-8769)  
-   * [  wrangler.toml ](#tab-panel-8770)  
+2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
+
+  * [  wrangler.jsonc ](#tab-panel-8845)
+  * [  wrangler.toml ](#tab-panel-8846)  
 JSONC  
 ```  
-{  
-  "$schema": "./node_modules/wrangler/config-schema.json",  
-  "name": "hyperdrive-example",  
-  "main": "src/index.ts",  
-  // Set this to today's date  
-  "compatibility_date": "2026-06-17",  
-  "compatibility_flags": [  
-    "nodejs_compat"  
-  ],  
-  // Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.  
-  "hyperdrive": [  
-    {  
-      "binding": "HYPERDRIVE",  
-      "id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"  
-    }  
-  ]  
-}  
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "hyperdrive-example",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-18",  "compatibility_flags": [    "nodejs_compat"  ],  // Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"    }  ]}  
 ```  
 TOML  
 ```  
-"$schema" = "./node_modules/wrangler/config-schema.json"  
-name = "hyperdrive-example"  
-main = "src/index.ts"  
-# Set this to today's date  
-compatibility_date = "2026-06-17"  
-compatibility_flags = [ "nodejs_compat" ]  
-[[hyperdrive]]  
-binding = "HYPERDRIVE"  
-id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"  
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "hyperdrive-example"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-18"compatibility_flags = [ "nodejs_compat" ]  
+[[hyperdrive]]binding = "HYPERDRIVE"id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"  
 ```
 
 Note
@@ -184,62 +146,20 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-8773)
-* [  wrangler.toml ](#tab-panel-8774)
+* [  wrangler.jsonc ](#tab-panel-8849)
+* [  wrangler.toml ](#tab-panel-8850)
 
 JSONC
 
 ```
-
-{
-
-  // required for database drivers to function
-
-  "compatibility_flags": [
-
-    "nodejs_compat"
-
-  ],
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "hyperdrive": [
-
-    {
-
-      "binding": "HYPERDRIVE",
-
-      "id": "<your-hyperdrive-id-here>"
-
-    }
-
-  ]
-
-}
-
-
+{  // required for database drivers to function  "compatibility_flags": [    "nodejs_compat"  ],  // Set this to today's date  "compatibility_date": "2026-06-18",  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<your-hyperdrive-id-here>"    }  ]}
 ```
 
 TOML
 
 ```
-
-compatibility_flags = [ "nodejs_compat" ]
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[[hyperdrive]]
-
-binding = "HYPERDRIVE"
-
-id = "<your-hyperdrive-id-here>"
-
-
+compatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-06-18"
+[[hyperdrive]]binding = "HYPERDRIVE"id = "<your-hyperdrive-id-here>"
 ```
 
 Create a new `Client` instance and pass the Hyperdrive `connectionString`:
@@ -247,69 +167,12 @@ Create a new `Client` instance and pass the Hyperdrive `connectionString`:
 TypeScript
 
 ```
-
-// filepath: src/index.ts
-
-import { Client } from "pg";
-
-
-export default {
-
-  async fetch(
-
-    request: Request,
-
-    env: Env,
-
-    ctx: ExecutionContext,
-
-  ): Promise<Response> {
-
-    // Create a new client instance for each request. Hyperdrive maintains the
-
-    // underlying database connection pool, so creating a new client is fast.
-
-    const client = new Client({
-
-      connectionString: env.HYPERDRIVE.connectionString,
-
-    });
-
-
-    try {
-
-      // Connect to the database
-
-      await client.connect();
-
-
-      // Perform a simple query
-
-      const result = await client.query("SELECT * FROM pg_tables");
-
-
-      return Response.json({
-
-        success: true,
-
-        result: result.rows,
-
-      });
-
-    } catch (error: any) {
-
-      console.error("Database error:", error.message);
-
-
-      return new Response("Internal error occurred", { status: 500 });
-
-    }
-
-  },
-
-};
-
-
+// filepath: src/index.tsimport { Client } from "pg";
+export default {  async fetch(    request: Request,    env: Env,    ctx: ExecutionContext,  ): Promise<Response> {    // Create a new client instance for each request. Hyperdrive maintains the    // underlying database connection pool, so creating a new client is fast.    const client = new Client({      connectionString: env.HYPERDRIVE.connectionString,    });
+    try {      // Connect to the database      await client.connect();
+      // Perform a simple query      const result = await client.query("SELECT * FROM pg_tables");
+      return Response.json({        success: true,        result: result.rows,      });    } catch (error: any) {      console.error("Database error:", error.message);
+      return new Response("Internal error occurred", { status: 500 });    }  },};
 ```
 
 Note

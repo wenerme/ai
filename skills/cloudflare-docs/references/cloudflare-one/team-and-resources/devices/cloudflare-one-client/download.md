@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,8 +22,9 @@ For more details on Cloudflare One Client support timelines and end-of-life (EOL
 
 [ Download latest stable release ](https://downloads.cloudflareclient.com/v1/download/windows/ga) 
 
-| **OS version**             | Windows 10 LTSC, Windows 11, Windows 365 Cloud PC running Windows 11 |
+|                            |                                                                      |
 | -------------------------- | -------------------------------------------------------------------- |
+| **OS version**             | Windows 10 LTSC, Windows 11, Windows 365 Cloud PC running Windows 11 |
 | **Processor**              | AMD64 / x86-64 or ARM64 / AArch64                                    |
 | **.NET Framework version** | 4.7.2 or later                                                       |
 | **HD space**               | 184 MB                                                               |
@@ -60,11 +61,11 @@ This release introduces the new Cloudflare One Client UI for Windows! You can ex
 * Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
 * Split tunnel list configuration is not available in the new UI. Management of Split Tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
 * Windows ARM may prompt the user to close running applications while trying to install this version. Simply click “Ok” with the default highlighted option.
-* DNS resolution may be broken when the following conditions are all true:  
-   * The client is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
-   * A custom DNS server address is configured on the primary network adapter.  
-   * The custom DNS server address on the primary network adapter is changed while the client is connected.  
-   To work around this issue, please reconnect the client by selecting "disconnect" and then "connect" in the client user interface.
+* DNS resolution may be broken when the following conditions are all true:
+  * The client is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  * A custom DNS server address is configured on the primary network adapter.
+  * The custom DNS server address on the primary network adapter is changed while the client is connected.  
+  To work around this issue, please reconnect the client by selecting "disconnect" and then "connect" in the client user interface.
 
 Previous version history (11)
 
@@ -92,11 +93,11 @@ This release introduces the new Cloudflare One Client UI for Windows! You can ex
 * Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
 * Split tunnel list configuration is not available in the new UI. Management of Split Tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
 * Windows ARM may prompt the user to close running applications while trying to install this version. Simply click “Ok” with the default highlighted option.
-* DNS resolution may be broken when the following conditions are all true:  
-   * The client is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
-   * A custom DNS server address is configured on the primary network adapter.  
-   * The custom DNS server address on the primary network adapter is changed while the client is connected.  
-   To work around this issue, please reconnect the client by selecting "disconnect" and then "connect" in the client user interface.
+* DNS resolution may be broken when the following conditions are all true:
+  * The client is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  * A custom DNS server address is configured on the primary network adapter.
+  * The custom DNS server address on the primary network adapter is changed while the client is connected.  
+  To work around this issue, please reconnect the client by selecting "disconnect" and then "connect" in the client user interface.
 
 Windows 2026.3.851.0
 
@@ -131,10 +132,11 @@ The next stable release for Windows will introduce the new Cloudflare One Client
 
 * For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 version KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution. This warning will be omitted from future release notes. This Windows update was released in July 2025.
 * Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later. This warning will be omitted from future release notes. This Microsoft Security Intelligence update was released in May 2025.
-* DNS resolution may be broken when the following conditions are all true:  
-   * The client is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
-   * A custom DNS server address is configured on the primary network adapter.  
-   * The custom DNS server address on the primary network adapter is changed while the client is connected.  
+* DNS resolution may be broken when the following conditions are all true:
+
+  * The client is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  * A custom DNS server address is configured on the primary network adapter.
+  * The custom DNS server address on the primary network adapter is changed while the client is connected.  
 To work around this issue, reconnect the client by selecting **Disconnect** and then **Connect** in the client user interface.
 
 Windows 2026.1.150.0
@@ -162,10 +164,11 @@ This release contains minor fixes, improvements, and new features.
 
 * For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
 * Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-* DNS resolution may be broken when the following conditions are all true:  
-   * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
-   * A custom DNS server address is configured on the primary network adapter.  
-   * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
+* DNS resolution may be broken when the following conditions are all true:
+
+  * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  * A custom DNS server address is configured on the primary network adapter.
+  * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
 To work around this issue, reconnect the WARP client by toggling off and back on.
 
 Windows 2025.10.186.0
@@ -191,10 +194,11 @@ This release contains minor fixes, improvements, and new features. New features 
 
 * For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
 * Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-* DNS resolution may be broken when the following conditions are all true:  
-   * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
-   * A custom DNS server address is configured on the primary network adapter.  
-   * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
+* DNS resolution may be broken when the following conditions are all true:
+
+  * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  * A custom DNS server address is configured on the primary network adapter.
+  * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
 To work around this issue, reconnect the WARP client by toggling off and back on.
 
 Windows 2025.9.558.0
@@ -221,10 +225,11 @@ This release contains minor fixes, improvements, and new features including [Pat
 * For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
 * Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
 * Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-* DNS resolution may be broken when the following conditions are all true:  
-   * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
-   * A custom DNS server address is configured on the primary network adapter.  
-   * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
+* DNS resolution may be broken when the following conditions are all true:
+
+  * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  * A custom DNS server address is configured on the primary network adapter.
+  * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
 To work around this issue, reconnect the WARP client by toggling off and back on.
 
 Windows 2025.8.779.0
@@ -247,10 +252,11 @@ This release contains significant fixes and improvements.
 * For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
 * Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
 * Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-* DNS resolution may be broken when the following conditions are all true:  
-   * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
-   * A custom DNS server address is configured on the primary network adapter.  
-   * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
+* DNS resolution may be broken when the following conditions are all true:
+
+  * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  * A custom DNS server address is configured on the primary network adapter.
+  * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
 To work around this issue, reconnect the WARP client by toggling off and back on.
 
 Windows 2025.7.176.0
@@ -276,10 +282,11 @@ This release contains minor fixes and improvements.
 * For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
 * Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
 * Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-* DNS resolution may be broken when the following conditions are all true:  
-   * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
-   * A custom DNS server address is configured on the primary network adapter.  
-   * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
+* DNS resolution may be broken when the following conditions are all true:
+
+  * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  * A custom DNS server address is configured on the primary network adapter.
+  * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
 To work around this issue, reconnect the WARP client by toggling off and back on.
 
 Windows 2025.6.1400.0
@@ -301,10 +308,11 @@ This release contains a hotfix for pre-login for multi-user for the 2025.6.1135.
 * For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 KB5062553](https://support.microsoft.com/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
 * Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
 * Devices with KB5055523 installed may receive a warning about Win32/ClickFix.ABA being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-* DNS resolution may be broken when the following conditions are all true:  
-   * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
-   * A custom DNS server address is configured on the primary network adapter.  
-   * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
+* DNS resolution may be broken when the following conditions are all true:
+
+  * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  * A custom DNS server address is configured on the primary network adapter.
+  * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
 To work around this issue, please reconnect the WARP client by toggling off and back on.
 
 Windows 2025.6.1335.0
@@ -330,10 +338,11 @@ This release contains minor fixes and improvements.
 * For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 version KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
 * Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
 * Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-* DNS resolution may be broken when the following conditions are all true:  
-   * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
-   * A custom DNS server address is configured on the primary network adapter.  
-   * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
+* DNS resolution may be broken when the following conditions are all true:
+
+  * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  * A custom DNS server address is configured on the primary network adapter.
+  * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
 To work around this issue, reconnect the WARP client by toggling off and back on.
 
 Windows 2025.5.943.0
@@ -357,10 +366,11 @@ This release contains minor fixes and improvements.
 * For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 version KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
 * Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
 * Devices with `KB5055523` installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-* DNS resolution may be broken when the following conditions are all true:  
-   * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
-   * A custom DNS server address is configured on the primary network adapter.  
-   * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
+* DNS resolution may be broken when the following conditions are all true:
+
+  * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  * A custom DNS server address is configured on the primary network adapter.
+  * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
 To work around this issue, reconnect the WARP client by toggling off and back on.
 
 Windows 2025.5.893.0
@@ -376,9 +386,9 @@ This release contains improvements and new exciting features, including [SCCM VP
 **Changes and improvements**
 
 * Fixed a device registration issue that caused WARP connection failures when changing networks.
-* Captive portal improvements and fixes:  
-   * Captive portal sign in notifications will now be sent through operating system notification services.  
-   * Fix for firewall configuration issue affecting clients in DoH only mode.
+* Captive portal improvements and fixes:
+  * Captive portal sign in notifications will now be sent through operating system notification services.
+  * Fix for firewall configuration issue affecting clients in DoH only mode.
 * Improved the connectivity status message in the client GUI.
 * Fixed a bug affecting clients in Gateway with DoH mode where the original DNS servers were not restored after disabling WARP.
 * The WARP client now applies post-quantum cryptography end-to-end on enabled devices accessing resources behind a Cloudflare Tunnel. This feature can be [enabled by MDM](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#enable%5Fpost%5Fquantum).
@@ -393,18 +403,20 @@ This release contains improvements and new exciting features, including [SCCM VP
 
 * For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 version KB5060829](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
 * Devices with `KB5055523` installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-* DNS resolution may be broken when the following conditions are all true:  
-   * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
-   * A custom DNS server address is configured on the primary network adapter.  
-   * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
+* DNS resolution may be broken when the following conditions are all true:
+
+  * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  * A custom DNS server address is configured on the primary network adapter.
+  * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
 To work around this issue, reconnect the WARP client by toggling off and back on.
 
 ## macOS
 
 [ Download latest stable release ](https://downloads.cloudflareclient.com/v1/download/macos/ga) 
 
-| **OS version**             | Sonoma 14.0+, Sequoia 15.1+ (15.0.x is not supported), Tahoe 26.0+ |
+|                            |                                                                    |
 | -------------------------- | ------------------------------------------------------------------ |
+| **OS version**             | Sonoma 14.0+, Sequoia 15.1+ (15.0.x is not supported), Tahoe 26.0+ |
 | **Processor**              | Intel or M series                                                  |
 | **HD space**               | 75 MB                                                              |
 | **Memory**                 | 35 MB                                                              |
@@ -640,9 +652,9 @@ This release contains improvements and new exciting features, including [post-qu
 
 * Fixed an issue where WARP sometimes failed to automatically relaunch after updating.
 * Fixed a device registration issue causing WARP connection failures when changing networks.
-* Captive portal improvements and fixes:  
-   * Captive portal sign in notifications will now be sent through operating system notification services.  
-   * Fix for firewall configuration issue affecting clients in DoH only mode.
+* Captive portal improvements and fixes:
+  * Captive portal sign in notifications will now be sent through operating system notification services.
+  * Fix for firewall configuration issue affecting clients in DoH only mode.
 * Improved the connectivity status message in the client GUI.
 * The WARP client now applies post-quantum cryptography end-to-end on enabled devices accessing resources behind a Cloudflare Tunnel. This feature can be [enabled by MDM](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#enable%5Fpost%5Fquantum).
 * Improvement to handle client configuration changes made by an MDM while WARP is not running.
@@ -662,8 +674,9 @@ Starting with Cloudflare One Client version 2026.3.846.0, [Cloudflare Mesh](http
 
 [ Package repository ](https://pkg.cloudflareclient.com/) 
 
-| **OS version**             | CentOS 8, RHEL 8, RHEL 9 [1](#user-content-fn-1), Debian 12, Debian 13, Fedora 34, Fedora 35, Ubuntu 22.04 LTS, Ubuntu 24.04 LTS |
+|                            |                                                                                                                                  |
 | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| **OS version**             | CentOS 8, RHEL 8, RHEL 9 [1](#user-content-fn-1), Debian 12, Debian 13, Fedora 34, Fedora 35, Ubuntu 22.04 LTS, Ubuntu 24.04 LTS |
 | **Processor**              | AMD64 / x86-64 or ARM64 / AArch64                                                                                                |
 | **HD space**               | 75 MB                                                                                                                            |
 | **Memory**                 | 35 MB                                                                                                                            |
@@ -679,7 +692,7 @@ Latest release
 
 **Version:**  Linux 2026.4.1390.0 **Date:**  2026-05-26 **Size:** 79.9 MB 
 
- CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2026.4.1390.0) 
+ CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download ](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2026.4.1390.0) 
 
 #### Release notes
 
@@ -705,7 +718,7 @@ Linux 2026.4.1350.0
 
 **Version:**  Linux 2026.4.1350.0 **Date:**  2026-05-11 **Size:** 79.9 MB 
 
- CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2026.4.1350.0) 
+ CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download ](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2026.4.1350.0) 
 
 #### Release notes
 
@@ -728,7 +741,7 @@ Linux 2026.3.846.0
 
 **Version:**  Linux 2026.3.846.0 **Date:**  2026-04-02 **Size:** 57.2 MB 
 
- CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2026.3.846.0) 
+ CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download ](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2026.3.846.0) 
 
 #### Release notes
 
@@ -751,7 +764,7 @@ Linux 2026.1.150.0
 
 **Version:**  Linux 2026.1.150.0 **Date:**  2026-02-24 **Size:** 55.1 MB 
 
- CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2026.1.150.0) 
+ CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download ](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2026.1.150.0) 
 
 #### Release notes
 
@@ -770,7 +783,7 @@ Linux 2025.10.186.0
 
 **Version:**  Linux 2025.10.186.0 **Date:**  2026-01-13 **Size:** 52 MB 
 
- CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2025.10.186.0) 
+ CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download ](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2025.10.186.0) 
 
 #### Release notes
 
@@ -790,7 +803,7 @@ Linux 2025.9.558.0
 
 **Version:**  Linux 2025.9.558.0 **Date:**  2025-11-11 **Size:** 54.7 MB 
 
- CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2025.9.558.0) 
+ CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download ](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2025.9.558.0) 
 
 #### Release notes
 
@@ -808,7 +821,7 @@ Linux 2025.8.779.0
 
 **Version:**  Linux 2025.8.779.0 **Date:**  2025-10-07 **Size:** 51.4 MB 
 
- CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2025.8.779.0) 
+ CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download ](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2025.8.779.0) 
 
 #### Release notes
 
@@ -827,7 +840,7 @@ Linux 2025.7.176.0
 
 **Version:**  Linux 2025.7.176.0 **Date:**  2025-09-30 **Size:** 52.7 MB 
 
- CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2025.7.176.0) 
+ CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Debian 13 (arm64)  Debian 13 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download ](https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2025.7.176.0) 
 
 #### Release notes
 
@@ -848,7 +861,7 @@ Linux 2025.6.1335.0
 
 **Version:**  Linux 2025.6.1335.0 **Date:**  2025-08-19 **Size:** 50.6 MB 
 
- buster-arm  buster-intel  CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download](https://downloads.cloudflareclient.com/v1/download/buster-arm/version/2025.6.1335.0) 
+ buster-arm  buster-intel  CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download ](https://downloads.cloudflareclient.com/v1/download/buster-arm/version/2025.6.1335.0) 
 
 #### Release notes
 
@@ -869,7 +882,7 @@ Linux 2025.5.943.0
 
 **Version:**  Linux 2025.5.943.0 **Date:**  2025-07-23 **Size:** 44.3 MB 
 
- buster-arm  buster-intel  CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download](https://downloads.cloudflareclient.com/v1/download/buster-arm/version/2025.5.943.0) 
+ buster-arm  buster-intel  CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download ](https://downloads.cloudflareclient.com/v1/download/buster-arm/version/2025.5.943.0) 
 
 #### Release notes
 
@@ -888,7 +901,7 @@ Linux 2025.5.893.0
 
 **Version:**  Linux 2025.5.893.0 **Date:**  2025-06-30 **Size:** 44.8 MB 
 
- buster-arm  buster-intel  CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download](https://downloads.cloudflareclient.com/v1/download/buster-arm/version/2025.5.893.0) 
+ buster-arm  buster-intel  CentOS / RHEL 8 (arm64)  CentOS / RHEL 8 (x86-64)  Debian 11 (arm64)  Debian 11 (x86-64)  Debian 12 (arm64)  Debian 12 (x86-64)  Fedora 34 (arm64)  Fedora 34 (x86-64)  Fedora 35 (arm64)  Fedora 35 (x86-64)  Ubuntu 20.04 (arm64)  Ubuntu 20.04 (x86-64)  Ubuntu 22.04 (arm64)  Ubuntu 22.04 (x86-64)  Ubuntu 24.04 (arm64)  Ubuntu 24.04 (x86-64) [Download ](https://downloads.cloudflareclient.com/v1/download/buster-arm/version/2025.5.893.0) 
 
 #### Release notes
 
@@ -897,9 +910,9 @@ This release contains improvements and new exciting features, including [post-qu
 **Changes and improvements**
 
 * Fixed a device registration issue causing WARP connection failures when changing networks.
-* Captive portal improvements and fixes:  
-   * Captive portal sign in notifications will now be sent through operating system notification services.  
-   * Fix for firewall configuration issue affecting clients in DoH only mode.
+* Captive portal improvements and fixes:
+  * Captive portal sign in notifications will now be sent through operating system notification services.
+  * Fix for firewall configuration issue affecting clients in DoH only mode.
 * Improved the connectivity status message in the client GUI.
 * The WARP client now applies post-quantum cryptography end-to-end on enabled devices accessing resources behind a Cloudflare Tunnel. This feature can be [enabled by MDM](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#enable%5Fpost%5Fquantum).
 * Improvement to handle client configuration changes made by MDM while WARP is not running.
@@ -912,8 +925,9 @@ This release contains improvements and new exciting features, including [post-qu
 
 ## iOS
 
-| **OS version** | iOS 11+ |
+|                |         |
 | -------------- | ------- |
+| **OS version** | iOS 11+ |
 
 [Download from the iOS App Store ↗](https://apps.apple.com/us/app/cloudflare-one-agent/id6443476492) or search for "Cloudflare One Agent".
 
@@ -923,8 +937,9 @@ The legacy iOS client, [1.1.1.1: Faster Internet ↗](https://apps.apple.com/us/
 
 ## Android
 
-| **OS version** | 5.0+ |
+|                |      |
 | -------------- | ---- |
+| **OS version** | 5.0+ |
 
 [Download from the Google Play store ↗](https://play.google.com/store/apps/details?id=com.cloudflare.cloudflareoneagent) or search for "Cloudflare One Agent".
 
@@ -934,8 +949,9 @@ The legacy Android client, [1.1.1.1 + WARP: Safer Internet ↗](https://play.goo
 
 ## ChromeOS
 
-| **OS version** | Chromebooks manufactured after 2019 |
+|                |                                     |
 | -------------- | ----------------------------------- |
+| **OS version** | Chromebooks manufactured after 2019 |
 
 Chromebooks are supported by our [Android app](#android). All Chromebooks made after 2019 should fully support our Android app. If you have a Chromebook made before 2019, [refer to this list ↗](https://www.chromium.org/chromium-os/chrome-os-systems-supporting-android-apps/) to verify that your device is supported.
 

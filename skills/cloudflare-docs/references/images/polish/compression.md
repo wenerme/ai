@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -45,10 +45,7 @@ WebP compression is quite effective on PNG images, reducing file sizes by approx
 The WebP version is served only when the `Accept` header from the browser includes WebP, and the WebP image is significantly smaller than the lossy or lossless recompression of the original format:
 
 ```
-
 Accept: image/avif,image/webp,image/*,*/*;q=0.8
-
-
 ```
 
 Polish only converts standard image formats _to_ the WebP format. If the origin server serves WebP images, Polish will not convert them, and will not optimize them.

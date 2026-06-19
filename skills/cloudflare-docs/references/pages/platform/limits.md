@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,7 +22,7 @@ To request an adjustment to a limit, complete the [Limit Increase Request Form â
 
 Each time you push new code to your Git repository, Pages will build and deploy your site. Build limits depend on your plan:
 
-| Free             | Pro               | Business            |                      |
+|                  | Free              | Pro                 | Business             |
 | ---------------- | ----------------- | ------------------- | -------------------- |
 | Builds           | 1 build at a time | 5 concurrent builds | 20 concurrent builds |
 | Builds per month | 500               | 5,000               | 20,000               |

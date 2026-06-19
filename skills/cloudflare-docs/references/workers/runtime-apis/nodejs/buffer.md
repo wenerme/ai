@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,22 +21,9 @@ The [Buffer ↗](https://nodejs.org/docs/latest/api/buffer.html) API in Node.js 
 JavaScript
 
 ```
-
 import { Buffer } from "node:buffer";
-
-
 const buf = Buffer.from("hello world", "utf8");
-
-
-console.log(buf.toString("hex"));
-
-// Prints: 68656c6c6f20776f726c64
-
-console.log(buf.toString("base64"));
-
-// Prints: aGVsbG8gd29ybGQ=
-
-
+console.log(buf.toString("hex"));// Prints: 68656c6c6f20776f726c64console.log(buf.toString("base64"));// Prints: aGVsbG8gd29ybGQ=
 ```
 
 A Buffer extends from `Uint8Array`. Therefore, it can be used in any Workers API that currently accepts `Uint8Array`, such as creating a new Response:
@@ -44,10 +31,7 @@ A Buffer extends from `Uint8Array`. Therefore, it can be used in any Workers API
 JavaScript
 
 ```
-
 const response = new Response(Buffer.from("hello world"));
-
-
 ```
 
 You can also use the `Buffer` API when interacting with streams:
@@ -55,14 +39,7 @@ You can also use the `Buffer` API when interacting with streams:
 JavaScript
 
 ```
-
-const writable = getWritableStreamSomehow();
-
-const writer = writable.getWriter();
-
-writer.write(Buffer.from("hello world"));
-
-
+const writable = getWritableStreamSomehow();const writer = writable.getWriter();writer.write(Buffer.from("hello world"));
 ```
 
 One key difference between the Workers implementation of `Buffer` and the Node.js implementation is that some methods of creating a `Buffer` in Node.js will allocate those from a global memory pool as a performance optimization. The Workers implementation does not use a memory pool and all `Buffer` instances are allocated independently.

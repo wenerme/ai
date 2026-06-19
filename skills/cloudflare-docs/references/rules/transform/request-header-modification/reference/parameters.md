@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -15,9 +15,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 To set an HTTP request header via API, set the following parameters in the `action_parameters` field:
 
 * **operation**: `set`
-* Include one of the following parameters to define a static or dynamic value:  
-   * **value**: Specifies a static value for the HTTP request header.  
-   * **expression**: Specifies the expression that defines a value for the HTTP request header.
+* Include one of the following parameters to define a static or dynamic value:
+
+  * **value**: Specifies a static value for the HTTP request header.
+  * **expression**: Specifies the expression that defines a value for the HTTP request header.
 
 To remove an HTTP request header via API, set the following parameter in the `action_parameters` field:
 
@@ -30,24 +31,7 @@ For step-by-step instructions, refer to [Create a request header transform rule 
 The full syntax of the `action_parameters` field to define a static HTTP request header value is the following:
 
 ```
-
-"action_parameters": {
-
-  "headers": {
-
-    "<HEADER_NAME>": {
-
-      "operation": "set",
-
-      "value": "<URI_PATH_VALUE>"
-
-    }
-
-  }
-
-}
-
-
+"action_parameters": {  "headers": {    "<HEADER_NAME>": {      "operation": "set",      "value": "<URI_PATH_VALUE>"    }  }}
 ```
 
 ## Dynamic header value parameters
@@ -55,24 +39,7 @@ The full syntax of the `action_parameters` field to define a static HTTP request
 The full syntax of the `action_parameters` field to define a dynamic HTTP request header value using an expression is the following:
 
 ```
-
-"action_parameters": {
-
-  "headers": {
-
-    "<HEADER_NAME>": {
-
-      "operation": "set",
-
-      "expression": "<EXPRESSION>"
-
-    }
-
-  }
-
-}
-
-
+"action_parameters": {  "headers": {    "<HEADER_NAME>": {      "operation": "set",      "expression": "<EXPRESSION>"    }  }}
 ```
 
 Note
@@ -84,22 +51,7 @@ Check the [available fields and functions](https://developers.cloudflare.com/rul
 The full syntax of the `action_parameters` field to remove an HTTP request header is the following:
 
 ```
-
-"action_parameters": {
-
-  "headers": {
-
-    "<HEADER_NAME>": {
-
-      "operation": "remove"
-
-    }
-
-  }
-
-}
-
-
+"action_parameters": {  "headers": {    "<HEADER_NAME>": {      "operation": "remove"    }  }}
 ```
 
 ## Different header modifications in the same rule
@@ -107,30 +59,7 @@ The full syntax of the `action_parameters` field to remove an HTTP request heade
 The same rule can modify different HTTP request headers using different operations (set or remove a header). For example, a single rule can set the value of a header and remove a different header. The syntax of such a rule could be the following:
 
 ```
-
-"action_parameters": {
-
-  "headers": {
-
-    "<HEADER_NAME_1>": {
-
-      "operation": "set",
-
-      "value": "<HEADER_VALUE_1>"
-
-    },
-
-    "<HEADER_NAME_2>": {
-
-      "operation": "remove"
-
-    }
-
-  }
-
-}
-
-
+"action_parameters": {  "headers": {    "<HEADER_NAME_1>": {      "operation": "set",      "value": "<HEADER_VALUE_1>"    },    "<HEADER_NAME_2>": {      "operation": "remove"    }  }}
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,16 +22,16 @@ By turning on the TLS 1.3 feature, traffic to and from your website will be serv
 
 ## Availability
 
-| Free         | Pro | Business | Enterprise |     |
-| ------------ | --- | -------- | ---------- | --- |
-| Availability | Yes | Yes      | Yes        | Yes |
+|              | Free | Pro | Business | Enterprise |
+| ------------ | ---- | --- | -------- | ---------- |
+| Availability | Yes  | Yes | Yes      | Yes        |
 
 ## Enable TLS 1.3
 
 TLS 1.3 can be activated in the Cloudflare dashboard or through the API:
 
-* [ Dashboard ](#tab-panel-10594)
-* [ API ](#tab-panel-10595)
+* [ Dashboard ](#tab-panel-10670)
+* [ API ](#tab-panel-10671)
 
 To enable TLS 1.3 in the dashboard:
 

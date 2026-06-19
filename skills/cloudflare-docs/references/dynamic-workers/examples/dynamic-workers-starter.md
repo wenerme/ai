@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dynamic-workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,39 +26,19 @@ Use this pattern for AI agents that need to execute a snippet of code to complet
 
 Add a `worker_loaders` binding to your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-8425)
-* [  wrangler.toml ](#tab-panel-8426)
+* [  wrangler.jsonc ](#tab-panel-8501)
+* [  wrangler.toml ](#tab-panel-8502)
 
 JSONC
 
 ```
-
-{
-
-  "worker_loaders": [
-
-    {
-
-      "binding": "LOADER"
-
-    }
-
-  ]
-
-}
-
-
+{  "worker_loaders": [    {      "binding": "LOADER"    }  ]}
 ```
 
 TOML
 
 ```
-
-[[worker_loaders]]
-
-binding = "LOADER"
-
-
+[[worker_loaders]]binding = "LOADER"
 ```
 
 ## Loading and executing a Dynamic Worker
@@ -68,89 +48,23 @@ In this example:
 * `env.LOADER.load()` creates a one-off dynamic isolate
 * `globalOutbound: null` blocks all outbound network access from the Dynamic Worker
 
-* [  JavaScript ](#tab-panel-8427)
-* [  TypeScript ](#tab-panel-8428)
+* [  JavaScript ](#tab-panel-8503)
+* [  TypeScript ](#tab-panel-8504)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const { code } = await request.json();
-
-
-    const worker = env.LOADER.load({
-
-      compatibilityDate: "2026-05-01",
-
-      mainModule: "worker.js",
-
-      modules: {
-
-        "worker.js": code,
-
-      },
-
-      // Block all outbound network access
-
-      globalOutbound: null,
-
-    });
-
-
-    const result = await worker.getEntrypoint().fetch(request);
-
-    return result;
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const { code } = await request.json();
+    const worker = env.LOADER.load({      compatibilityDate: "2026-05-01",      mainModule: "worker.js",      modules: {        "worker.js": code,      },      // Block all outbound network access      globalOutbound: null,    });
+    const result = await worker.getEntrypoint().fetch(request);    return result;  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request, env): Promise<Response> {
-
-    const { code } = await request.json();
-
-
-    const worker = env.LOADER.load({
-
-      compatibilityDate: "2026-05-01",
-
-      mainModule: "worker.js",
-
-      modules: {
-
-        "worker.js": code,
-
-      },
-
-      // Block all outbound network access
-
-      globalOutbound: null,
-
-    });
-
-
-    const result = await worker.getEntrypoint().fetch(request);
-
-    return result;
-
-  },
-
-} satisfies ExportedHandler;
-
-
+export default {  async fetch(request, env): Promise<Response> {    const { code } = await request.json();
+    const worker = env.LOADER.load({      compatibilityDate: "2026-05-01",      mainModule: "worker.js",      modules: {        "worker.js": code,      },      // Block all outbound network access      globalOutbound: null,    });
+    const result = await worker.getEntrypoint().fetch(request);    return result;  },} satisfies ExportedHandler;
 ```
 
 ## Running locally
@@ -158,12 +72,7 @@ export default {
 Terminal window
 
 ```
-
-npm install
-
-npm run dev
-
-
+npm installnpm run dev
 ```
 
 ```json

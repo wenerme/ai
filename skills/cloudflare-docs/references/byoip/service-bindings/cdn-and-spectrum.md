@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/byoip/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -67,23 +67,14 @@ At this point, continuing the [example](#before-you-begin), you should have a ma
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `IP Prefixes: Write`
 * `IP Prefixes: Read`
 
 List Service Bindings
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bindings" \
-
-  --request GET \
-
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bindings" \  --request GET \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
 ```
 
 ### 2\. Create service bindings
@@ -100,65 +91,19 @@ Replace the `{prefix_id}` in the URI with your prefix ID from previous steps. Wi
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `IP Prefixes: Write`
 
 Create Service Binding
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bindings" \
-
-  --request POST \
-
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
-
-  --json '{
-
-    "cidr": "203.0.113.100/32",
-
-    "service_id": "<SERVICE_ID>"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bindings" \  --request POST \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \  --json '{    "cidr": "203.0.113.100/32",    "service_id": "<SERVICE_ID>"  }'
 ```
 
 In the response body, the initial provisioning state should be `provisioning`.
 
 ```
-
-{
-
-  "errors": [],
-
-  "messages": [],
-
-  "success": true,
-
-  "result": {
-
-    "cidr": "203.0.113.100/32",
-
-    "id": "<SERVICE_BINDING_ID>",
-
-    "provisioning": {
-
-      "state": "provisioning"
-
-      },
-
-    "service_id": "<SERVICE_ID>",
-
-    "service_name": "<SERVICE_NAME>"
-
-  }
-
-}
-
-
+{  "errors": [],  "messages": [],  "success": true,  "result": {    "cidr": "203.0.113.100/32",    "id": "<SERVICE_BINDING_ID>",    "provisioning": {      "state": "provisioning"      },    "service_id": "<SERVICE_ID>",    "service_name": "<SERVICE_NAME>"  }}
 ```
 
 You can periodically check the service binding status using the [List Service Bindings](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/service%5Fbindings/methods/list/) endpoint.
@@ -169,23 +114,14 @@ After the propagation time (four to six hours), the [List Service Bindings](http
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `IP Prefixes: Write`
 * `IP Prefixes: Read`
 
 List Service Bindings
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bindings" \
-
-  --request GET \
-
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bindings" \  --request GET \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
 ```
 
 ---
@@ -213,8 +149,8 @@ Note
 
 If you need to map only specific subdomains (and not all proxied DNS records) to specific IP addresses, you can use a [Subdomain setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/).
 
-* [ Dashboard ](#tab-panel-6949)
-* [ API ](#tab-panel-6950)
+* [ Dashboard ](#tab-panel-7025)
+* [ API ](#tab-panel-7026)
 
 1. In the Cloudflare dashboard, go to the **Address Maps** page.  
 [ Go to **Address maps** ](https://dash.cloudflare.com/?to=/:account/ip-addresses/proxy-ips)
@@ -236,8 +172,8 @@ Note
 
 As you create the necessary DNS records, [Total TLS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/) can help making sure that you have SSL/TLS certificates in place for all your hostnames.
 
-* [ Dashboard ](#tab-panel-6951)
-* [ API ](#tab-panel-6952)
+* [ Dashboard ](#tab-panel-7027)
+* [ API ](#tab-panel-7028)
 
 To create a DNS record in the dashboard:
 
@@ -286,64 +222,13 @@ The `origin_direct` field takes the origin IP address, while `edge_ips` allows y
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone Settings Write`
 
 Create Spectrum application using a name for the origin
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '[
-
-    {
-
-        "protocol": "tcp/22",
-
-        "dns": {
-
-            "type": "CNAME",
-
-            "name": "ssh.example.com"
-
-        },
-
-        "origin_direct": [
-
-            "tcp://192.0.2.1:22"
-
-        ],
-
-        "proxy_protocol": "off",
-
-        "ip_firewall": true,
-
-        "tls": "full",
-
-        "edge_ips": {
-
-            "type": "static",
-
-            "ips": [
-
-                "203.0.113.18"
-
-            ]
-
-        },
-
-        "traffic_type": "direct"
-
-    }
-
-  ]'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '[    {        "protocol": "tcp/22",        "dns": {            "type": "CNAME",            "name": "ssh.example.com"        },        "origin_direct": [            "tcp://192.0.2.1:22"        ],        "proxy_protocol": "off",        "ip_firewall": true,        "tls": "full",        "edge_ips": {            "type": "static",            "ips": [                "203.0.113.18"            ]        },        "traffic_type": "direct"    }  ]'
 ```
 
 ---

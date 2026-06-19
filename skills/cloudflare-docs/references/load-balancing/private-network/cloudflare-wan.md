@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -54,9 +54,9 @@ To create the override, follow these steps:
 
 1. In **Gateway**, select **Firewall policies**.
 2. In the **DNS** tab, create an override where:  
-   * The **Selector** equals `Host`  
-   * The **Operator** equals `is`  
-   * The **Value** is the hostname you wish to associate with your load balancer.
+  * The **Selector** equals `Host`
+  * The **Operator** equals `is`
+  * The **Value** is the hostname you wish to associate with your load balancer.
 3. Set the **Action** to _Override_, and in **Override Hostname**, enter the IP address of your Private Load Balancer.
 
 Requests to the hostname will now resolve to your private load balancer.

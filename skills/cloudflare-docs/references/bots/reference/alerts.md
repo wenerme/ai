@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -76,9 +76,10 @@ To receive Bot alerts, you must [configure a notification](https://developers.cl
 [ Go to **Notifications** ](https://dash.cloudflare.com/?to=/:account/notifications)
 2. Select **Add**.
 3. Select **Bot Management** from the Product list.
-4. Choose one of the available bot detection alerts (depending on whether you want to set up custom filters and/or grouping):  
-   * Bot Detection Alert  
-   * Custom Bot Detection Alert
+4. Choose one of the available bot detection alerts (depending on whether you want to set up custom filters and/or grouping):
+
+  * Bot Detection Alert
+  * Custom Bot Detection Alert
 5. Enter a notification name and (optionally) a description.
 6. Select the domain(s) to monitor for this alert.
 7. Configure a delivery method for the notification. The available delivery methods depend on your Cloudflare plan. For more information, refer to [Cloudflare Notifications](https://developers.cloudflare.com/notifications/).

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/flagship/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -76,16 +76,7 @@ You pass the context as the third argument to evaluation methods on the binding:
 TypeScript
 
 ```
-
-const value = await env.FLAGS.getBooleanValue("new-checkout", false, {
-
-  userId: "user-42",
-
-  country: "US",
-
-});
-
-
+const value = await env.FLAGS.getBooleanValue("new-checkout", false, {  userId: "user-42",  country: "US",});
 ```
 
 When using the [OpenFeature SDK](https://developers.cloudflare.com/flagship/sdk/), you pass context through the OpenFeature evaluation context object.

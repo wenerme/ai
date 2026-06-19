@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,60 +19,28 @@ The [assets.html\_handling configuration](https://developers.cloudflare.com/work
 Take the following directory structure:
 
 * Directorydist  
-   * file.html  
-   * Directoryfolder  
-         * index.html
+  * file.html
+  * Directoryfolder  
+    * index.html
 
 ## Automatic trailing slashes (default)
 
 This will usually give you the desired behavior automatically: individual files (e.g. `foo.html`) will be served _without_ a trailing slash and folder index files (e.g. `foo/index.html`) will be served _with_ a trailing slash.
 
-* [  wrangler.jsonc ](#tab-panel-12129)
-* [  wrangler.toml ](#tab-panel-12130)
+* [  wrangler.jsonc ](#tab-panel-12146)
+* [  wrangler.toml ](#tab-panel-12147)
 
 JSONC
 
 ```
-
-{
-
-  "name": "my-worker",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "assets": {
-
-    "directory": "./dist/",
-
-    "html_handling": "auto-trailing-slash"
-
-  }
-
-}
-
-
+{  "name": "my-worker",  // Set this to today's date  "compatibility_date": "2026-06-19",  "assets": {    "directory": "./dist/",    "html_handling": "auto-trailing-slash"  }}
 ```
 
 TOML
 
 ```
-
-name = "my-worker"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[assets]
-
-directory = "./dist/"
-
-html_handling = "auto-trailing-slash"
-
-
+name = "my-worker"# Set this to today's datecompatibility_date = "2026-06-19"
+[assets]directory = "./dist/"html_handling = "auto-trailing-slash"
 ```
 
 Based on the incoming requests, the following assets would be served:
@@ -94,52 +62,20 @@ Based on the incoming requests, the following assets would be served:
 
 Alternatively, you can force trailing slashes (`force-trailing-slash`).
 
-* [  wrangler.jsonc ](#tab-panel-12131)
-* [  wrangler.toml ](#tab-panel-12132)
+* [  wrangler.jsonc ](#tab-panel-12148)
+* [  wrangler.toml ](#tab-panel-12149)
 
 JSONC
 
 ```
-
-{
-
-  "name": "my-worker",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "assets": {
-
-    "directory": "./dist/",
-
-    "html_handling": "force-trailing-slash"
-
-  }
-
-}
-
-
+{  "name": "my-worker",  // Set this to today's date  "compatibility_date": "2026-06-19",  "assets": {    "directory": "./dist/",    "html_handling": "force-trailing-slash"  }}
 ```
 
 TOML
 
 ```
-
-name = "my-worker"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[assets]
-
-directory = "./dist/"
-
-html_handling = "force-trailing-slash"
-
-
+name = "my-worker"# Set this to today's datecompatibility_date = "2026-06-19"
+[assets]directory = "./dist/"html_handling = "force-trailing-slash"
 ```
 
 Based on the incoming requests, the following assets would be served:
@@ -161,52 +97,20 @@ Based on the incoming requests, the following assets would be served:
 
 Or you can drop trailing slashes (`drop-trailing-slash`).
 
-* [  wrangler.jsonc ](#tab-panel-12133)
-* [  wrangler.toml ](#tab-panel-12134)
+* [  wrangler.jsonc ](#tab-panel-12150)
+* [  wrangler.toml ](#tab-panel-12151)
 
 JSONC
 
 ```
-
-{
-
-  "name": "my-worker",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "assets": {
-
-    "directory": "./dist/",
-
-    "html_handling": "drop-trailing-slash"
-
-  }
-
-}
-
-
+{  "name": "my-worker",  // Set this to today's date  "compatibility_date": "2026-06-19",  "assets": {    "directory": "./dist/",    "html_handling": "drop-trailing-slash"  }}
 ```
 
 TOML
 
 ```
-
-name = "my-worker"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[assets]
-
-directory = "./dist/"
-
-html_handling = "drop-trailing-slash"
-
-
+name = "my-worker"# Set this to today's datecompatibility_date = "2026-06-19"
+[assets]directory = "./dist/"html_handling = "drop-trailing-slash"
 ```
 
 Based on the incoming requests, the following assets would be served:
@@ -228,52 +132,20 @@ Based on the incoming requests, the following assets would be served:
 
 Alternatively, if you have bespoke needs, you can disable the built-in HTML handling entirely (`none`).
 
-* [  wrangler.jsonc ](#tab-panel-12135)
-* [  wrangler.toml ](#tab-panel-12136)
+* [  wrangler.jsonc ](#tab-panel-12152)
+* [  wrangler.toml ](#tab-panel-12153)
 
 JSONC
 
 ```
-
-{
-
-  "name": "my-worker",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "assets": {
-
-    "directory": "./dist/",
-
-    "html_handling": "none"
-
-  }
-
-}
-
-
+{  "name": "my-worker",  // Set this to today's date  "compatibility_date": "2026-06-19",  "assets": {    "directory": "./dist/",    "html_handling": "none"  }}
 ```
 
 TOML
 
 ```
-
-name = "my-worker"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[assets]
-
-directory = "./dist/"
-
-html_handling = "none"
-
-
+name = "my-worker"# Set this to today's datecompatibility_date = "2026-06-19"
+[assets]directory = "./dist/"html_handling = "none"
 ```
 
 Based on the incoming requests, the following assets would be served:

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,10 +19,7 @@ The application theme singleton that provides pre-configured appearance objects 
 Swift
 
 ```
-
 let theme = AppTheme.shared
-
-
 ```
 
 ## Methods
@@ -38,17 +35,8 @@ let theme = AppTheme.shared
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let theme = AppTheme.shared
-
-let titleAppearance = theme.meetingTitleAppearance
-
-let clockAppearance = theme.clockViewAppearance
-
-
+let theme = AppTheme.sharedlet titleAppearance = theme.meetingTitleAppearancelet clockAppearance = theme.clockViewAppearance
 ```
 
 ### Apply a custom theme
@@ -56,22 +44,9 @@ let clockAppearance = theme.clockViewAppearance
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-class CustomTheme: AppThemeProtocol {
-
-    // Implement required appearance properties
-
-}
-
-
-let customTheme = CustomTheme()
-
-AppTheme.shared.setUp(theme: customTheme)
-
-
+class CustomTheme: AppThemeProtocol {    // Implement required appearance properties}
+let customTheme = CustomTheme()AppTheme.shared.setUp(theme: customTheme)
 ```
 
 ```json

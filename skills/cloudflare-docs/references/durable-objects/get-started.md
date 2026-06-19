@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -77,10 +77,7 @@ Move into your new directory:
 Terminal window
 
 ```
-
 cd durable-object-starter
-
-
 ```
 
 Adding a Durable Object to an existing Worker
@@ -90,19 +87,12 @@ To add a Durable Object to an existing Worker, you need to:
 * Modify the code of the existing Worker to include the following:  
 TypeScript  
 ```  
-export class MyDurableObject extends DurableObject<Env> {  
-  constructor(ctx: DurableObjectState, env: Env) {  
-    // Required, as we're extending the base class.  
-    super(ctx, env)  
-  }  
+export class MyDurableObject extends DurableObject<Env> {  constructor(ctx: DurableObjectState, env: Env) {    // Required, as we're extending the base class.    super(ctx, env)  }  
   {/* Define your Durable Object methods here */}  
 }  
-export default {  
-  async fetch(request, env, ctx): Promise<Response> {  
-    const stub = env.MY_DURABLE_OBJECT.getByName(new URL(request.url).pathname);  
+export default {  async fetch(request, env, ctx): Promise<Response> {    const stub = env.MY_DURABLE_OBJECT.getByName(new URL(request.url).pathname);  
     {/* Access your Durable Object methods here */}  
-  },  
-} satisfies ExportedHandler<Env>;  
+  },} satisfies ExportedHandler<Env>;  
 ```
 * Update the Wrangler configuration file of your existing Worker to bind the Durable Object to the Worker.
 
@@ -116,158 +106,58 @@ If you do not use JavaScript or TypeScript, you will need a [shim ↗](https://d
 
 Your `MyDurableObject` class will have a constructor with two parameters. The first parameter, `ctx`, passed to the class constructor contains state specific to the Durable Object, including methods for accessing storage. The second parameter, `env`, contains any bindings you have associated with the Worker when you uploaded it.
 
-* [  JavaScript ](#tab-panel-8369)
-* [  TypeScript ](#tab-panel-8370)
-* [  Python ](#tab-panel-8371)
+* [  JavaScript ](#tab-panel-8445)
+* [  TypeScript ](#tab-panel-8446)
+* [  Python ](#tab-panel-8447)
 
 JavaScript
 
 ```
-
-export class MyDurableObject extends DurableObject {
-
-  constructor(ctx, env) {
-
-    // Required, as we're extending the base class.
-
-    super(ctx, env);
-
-  }
-
-}
-
-
+export class MyDurableObject extends DurableObject {  constructor(ctx, env) {    // Required, as we're extending the base class.    super(ctx, env);  }}
 ```
 
 TypeScript
 
 ```
-
-export class MyDurableObject extends DurableObject<Env> {
-
-  constructor(ctx: DurableObjectState, env: Env) {
-
-    // Required, as we're extending the base class.
-
-    super(ctx, env)
-
-  }
-
-}
-
-
+export class MyDurableObject extends DurableObject<Env> {  constructor(ctx: DurableObjectState, env: Env) {    // Required, as we're extending the base class.    super(ctx, env)  }}
 ```
 
 Python
 
 ```
-
 from workers import DurableObject
-
-
-class MyDurableObject(DurableObject):
-
-    def __init__(self, ctx, env):
-
-        super().__init__(ctx, env)
-
-
+class MyDurableObject(DurableObject):    def __init__(self, ctx, env):        super().__init__(ctx, env)
 ```
 
 Workers communicate with a Durable Object using [remote-procedure call](https://developers.cloudflare.com/workers/runtime-apis/rpc/#%5Ftop). Public methods on a Durable Object class are exposed as [RPC methods](https://developers.cloudflare.com/durable-objects/best-practices/create-durable-object-stubs-and-send-requests/) to be called by another Worker.
 
 Your file should now look like:
 
-* [  JavaScript ](#tab-panel-8375)
-* [  TypeScript ](#tab-panel-8376)
-* [  Python ](#tab-panel-8377)
+* [  JavaScript ](#tab-panel-8451)
+* [  TypeScript ](#tab-panel-8452)
+* [  Python ](#tab-panel-8453)
 
 JavaScript
 
 ```
-
-export class MyDurableObject extends DurableObject {
-
-  constructor(ctx, env) {
-
-    // Required, as we're extending the base class.
-
-    super(ctx, env);
-
-  }
-
-
-  async sayHello() {
-
-    let result = this.ctx.storage.sql
-
-      .exec("SELECT 'Hello, World!' as greeting")
-
-      .one();
-
-    return result.greeting;
-
-  }
-
-}
-
-
+export class MyDurableObject extends DurableObject {  constructor(ctx, env) {    // Required, as we're extending the base class.    super(ctx, env);  }
+  async sayHello() {    let result = this.ctx.storage.sql      .exec("SELECT 'Hello, World!' as greeting")      .one();    return result.greeting;  }}
 ```
 
 TypeScript
 
 ```
-
-export class MyDurableObject extends DurableObject<Env> {
-
-  constructor(ctx: DurableObjectState, env: Env) {
-
-    // Required, as we're extending the base class.
-
-    super(ctx, env)
-
-  }
-
-
-    async sayHello(): Promise<string> {
-
-      let result = this.ctx.storage.sql
-
-        .exec("SELECT 'Hello, World!' as greeting")
-
-        .one();
-
-      return result.greeting;
-
-    }
-
-
+export class MyDurableObject extends DurableObject<Env> {  constructor(ctx: DurableObjectState, env: Env) {    // Required, as we're extending the base class.    super(ctx, env)  }
+    async sayHello(): Promise<string> {      let result = this.ctx.storage.sql        .exec("SELECT 'Hello, World!' as greeting")        .one();      return result.greeting;    }
 }
-
-
 ```
 
 Python
 
 ```
-
 from workers import DurableObject
-
-
-class MyDurableObject(DurableObject):
-
-    async def say_hello(self):
-
-        result = self.ctx.storage.sql.exec(
-
-            "SELECT 'Hello, World!' as greeting"
-
-        ).one()
-
-
+class MyDurableObject(DurableObject):    async def say_hello(self):        result = self.ctx.storage.sql.exec(            "SELECT 'Hello, World!' as greeting"        ).one()
         return result.greeting
-
-
 ```
 
 In the code above, you have:
@@ -287,79 +177,32 @@ A Worker is used to [access Durable Objects](https://developers.cloudflare.com/d
 
 To communicate with a Durable Object, the Worker's fetch handler should look like the following:
 
-* [  JavaScript ](#tab-panel-8372)
-* [  TypeScript ](#tab-panel-8373)
-* [  Python ](#tab-panel-8374)
+* [  JavaScript ](#tab-panel-8448)
+* [  TypeScript ](#tab-panel-8449)
+* [  Python ](#tab-panel-8450)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    const stub = env.MY_DURABLE_OBJECT.getByName(new URL(request.url).pathname);
-
-
+export default {  async fetch(request, env, ctx) {    const stub = env.MY_DURABLE_OBJECT.getByName(new URL(request.url).pathname);
     const greeting = await stub.sayHello();
-
-
-    return new Response(greeting);
-
-  },
-
-};
-
-
+    return new Response(greeting);  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-      const stub = env.MY_DURABLE_OBJECT.getByName(new URL(request.url).pathname);
-
-
+export default {  async fetch(request, env, ctx): Promise<Response> {      const stub = env.MY_DURABLE_OBJECT.getByName(new URL(request.url).pathname);
       const greeting = await stub.sayHello();
-
-
-      return new Response(greeting);
-
-    },
-
-
+      return new Response(greeting);    },
 } satisfies ExportedHandler<Env>;
-
-
 ```
 
 Python
 
 ```
-
-from workers import handler, Response, WorkerEntrypoint
-
-from urllib.parse import urlparse
-
-
-class Default(WorkerEntrypoint):
-
-    async def fetch(request):
-
-        url = urlparse(request.url)
-
-        stub = self.env.MY_DURABLE_OBJECT.getByName(url.path)
-
-        greeting = await stub.say_hello()
-
-        return Response(greeting)
-
-
+from workers import handler, Response, WorkerEntrypointfrom urllib.parse import urlparse
+class Default(WorkerEntrypoint):    async def fetch(request):        url = urlparse(request.url)        stub = self.env.MY_DURABLE_OBJECT.getByName(url.path)        greeting = await stub.say_hello()        return Response(greeting)
 ```
 
 In the code above, you have:
@@ -376,47 +219,19 @@ Refer to [Access a Durable Object from a Worker](https://developers.cloudflare.c
 
 [Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) allow your Workers to interact with resources on the Cloudflare developer platform. The Durable Object bindings in your Worker project's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) will include a binding name (for this guide, use `MY_DURABLE_OBJECT`) and the class name (`MyDurableObject`).
 
-* [  wrangler.jsonc ](#tab-panel-8365)
-* [  wrangler.toml ](#tab-panel-8366)
+* [  wrangler.jsonc ](#tab-panel-8441)
+* [  wrangler.toml ](#tab-panel-8442)
 
 JSONC
 
 ```
-
-{
-
-  "durable_objects": {
-
-    "bindings": [
-
-      {
-
-        "name": "MY_DURABLE_OBJECT",
-
-        "class_name": "MyDurableObject"
-
-      }
-
-    ]
-
-  }
-
-}
-
-
+{  "durable_objects": {    "bindings": [      {        "name": "MY_DURABLE_OBJECT",        "class_name": "MyDurableObject"      }    ]  }}
 ```
 
 TOML
 
 ```
-
-[[durable_objects.bindings]]
-
-name = "MY_DURABLE_OBJECT"
-
-class_name = "MyDurableObject"
-
-
+[[durable_objects.bindings]]name = "MY_DURABLE_OBJECT"class_name = "MyDurableObject"
 ```
 
 The `bindings` section contains the following fields:
@@ -433,47 +248,19 @@ Migrations are performed through the `[[migrations]]` configurations key in your
 
 The Durable Object migration to create a new Durable Object class with SQLite storage backend will look like the following in your Worker's Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-8367)
-* [  wrangler.toml ](#tab-panel-8368)
+* [  wrangler.jsonc ](#tab-panel-8443)
+* [  wrangler.toml ](#tab-panel-8444)
 
 JSONC
 
 ```
-
-{
-
-  "migrations": [
-
-    {
-
-      "tag": "v1", // Should be unique for each entry
-
-      "new_sqlite_classes": [ // Array of new classes
-
-        "MyDurableObject"
-
-      ]
-
-    }
-
-  ]
-
-}
-
-
+{  "migrations": [    {      "tag": "v1", // Should be unique for each entry      "new_sqlite_classes": [ // Array of new classes        "MyDurableObject"      ]    }  ]}
 ```
 
 TOML
 
 ```
-
-[[migrations]]
-
-tag = "v1"
-
-new_sqlite_classes = [ "MyDurableObject" ]
-
-
+[[migrations]]tag = "v1"new_sqlite_classes = [ "MyDurableObject" ]
 ```
 
 Refer to [Durable Objects migrations](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) to learn more about the migration process.
@@ -485,10 +272,7 @@ To test your Durable Object locally, run [wrangler dev](https://developers.cloud
 Terminal window
 
 ```
-
 npx wrangler dev
-
-
 ```
 
 In your console, you should see a`Hello world` string returned by the Durable Object.
@@ -500,10 +284,7 @@ To deploy your Durable Object Worker:
 Terminal window
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 Once deployed, you should be able to see your newly created Durable Object Worker on the Cloudflare dashboard.
@@ -516,148 +297,37 @@ Preview your Durable Object Worker at `<YOUR_WORKER>.<YOUR_SUBDOMAIN>.workers.de
 
 Your final code should look like this:
 
-* [  JavaScript ](#tab-panel-8378)
-* [  TypeScript ](#tab-panel-8379)
-* [  Python ](#tab-panel-8380)
+* [  JavaScript ](#tab-panel-8454)
+* [  TypeScript ](#tab-panel-8455)
+* [  Python ](#tab-panel-8456)
 
 JavaScript
 
 ```
-
-import { DurableObject } from "cloudflare:workers";
-
-export class MyDurableObject extends DurableObject {
-
-  constructor(ctx, env) {
-
-    // Required, as we are extending the base class.
-
-    super(ctx, env);
-
-  }
-
-
-  async sayHello() {
-
-    let result = this.ctx.storage.sql
-
-      .exec("SELECT 'Hello, World!' as greeting")
-
-      .one();
-
-    return result.greeting;
-
-  }
-
-}
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    const stub = env.MY_DURABLE_OBJECT.getByName(new URL(request.url).pathname);
-
-
+import { DurableObject } from "cloudflare:workers";export class MyDurableObject extends DurableObject {  constructor(ctx, env) {    // Required, as we are extending the base class.    super(ctx, env);  }
+  async sayHello() {    let result = this.ctx.storage.sql      .exec("SELECT 'Hello, World!' as greeting")      .one();    return result.greeting;  }}export default {  async fetch(request, env, ctx) {    const stub = env.MY_DURABLE_OBJECT.getByName(new URL(request.url).pathname);
     const greeting = await stub.sayHello();
-
-
-    return new Response(greeting);
-
-  },
-
-};
-
-
+    return new Response(greeting);  },};
 ```
 
 TypeScript
 
 ```
-
-import { DurableObject } from "cloudflare:workers";
-
-export class MyDurableObject extends DurableObject<Env> {
-
-  constructor(ctx: DurableObjectState, env: Env) {
-
-    // Required, as we are extending the base class.
-
-    super(ctx, env)
-
-  }
-
-
-    async sayHello():Promise<string> {
-
-      let result = this.ctx.storage.sql
-
-        .exec("SELECT 'Hello, World!' as greeting")
-
-        .one();
-
-      return result.greeting;
-
-    }
-
-
-}
-
-export default {
-
-async fetch(request, env, ctx): Promise<Response> {
-
-const stub = env.MY_DURABLE_OBJECT.getByName(new URL(request.url).pathname);
-
-
+import { DurableObject } from "cloudflare:workers";export class MyDurableObject extends DurableObject<Env> {  constructor(ctx: DurableObjectState, env: Env) {    // Required, as we are extending the base class.    super(ctx, env)  }
+    async sayHello():Promise<string> {      let result = this.ctx.storage.sql        .exec("SELECT 'Hello, World!' as greeting")        .one();      return result.greeting;    }
+}export default {async fetch(request, env, ctx): Promise<Response> {const stub = env.MY_DURABLE_OBJECT.getByName(new URL(request.url).pathname);
       const greeting = await stub.sayHello();
-
-
-      return new Response(greeting);
-
-    },
-
-
+      return new Response(greeting);    },
 } satisfies ExportedHandler<Env>;
-
-
 ```
 
 Python
 
 ```
-
-from workers import DurableObject, handler, Response
-
-from urllib.parse import urlparse
-
-
-class MyDurableObject(DurableObject):
-
-    async def say_hello(self):
-
-        result = self.ctx.storage.sql.exec(
-
-            "SELECT 'Hello, World!' as greeting"
-
-        ).one()
-
-
+from workers import DurableObject, handler, Responsefrom urllib.parse import urlparse
+class MyDurableObject(DurableObject):    async def say_hello(self):        result = self.ctx.storage.sql.exec(            "SELECT 'Hello, World!' as greeting"        ).one()
         return result.greeting
-
-
-class Default(WorkerEntrypoint):
-
-    async def fetch(self, request):
-
-        url = urlparse(request.url)
-
-        stub = self.env.MY_DURABLE_OBJECT.getByName(url.path)
-
-        greeting = await stub.say_hello()
-
-        return Response(greeting)
-
-
+class Default(WorkerEntrypoint):    async def fetch(self, request):        url = urlparse(request.url)        stub = self.env.MY_DURABLE_OBJECT.getByName(url.path)        greeting = await stub.say_hello()        return Response(greeting)
 ```
 
 By finishing this tutorial, you have:

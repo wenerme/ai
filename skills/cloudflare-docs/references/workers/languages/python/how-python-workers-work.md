@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,60 +23,25 @@ A basic Python Worker includes a Python file with a `Default` class extending `W
 Python
 
 ```
-
 from workers import Response, WorkerEntrypoint
-
-
-class Default(WorkerEntrypoint):
-
-    async def fetch(self, request):
-
-        return Response("Hello world!")
-
-
+class Default(WorkerEntrypoint):    async def fetch(self, request):        return Response("Hello world!")
 ```
 
 ...and a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) that points to this `.py` file:
 
-* [  wrangler.jsonc ](#tab-panel-11828)
-* [  wrangler.toml ](#tab-panel-11829)
+* [  wrangler.jsonc ](#tab-panel-11845)
+* [  wrangler.toml ](#tab-panel-11846)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "hello-world-python-worker",
-
-  "main": "src/entry.py",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17"
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "hello-world-python-worker",  "main": "src/entry.py",  // Set this to today's date  "compatibility_date": "2026-06-19"}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "hello-world-python-worker"
-
-main = "src/entry.py"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "hello-world-python-worker"main = "src/entry.py"# Set this to today's datecompatibility_date = "2026-06-19"
 ```
 
 When you run `uv run pywrangler dev` to do local dev, the Workers runtime will:

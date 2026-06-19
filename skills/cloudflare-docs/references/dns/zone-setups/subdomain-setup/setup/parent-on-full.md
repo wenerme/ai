@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,10 +26,11 @@ If you have not yet created DNS records covering your subdomain in the parent zo
 2. Complete the configuration accordingly for [full](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/) or [secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/) setup.
 3. Get the nameserver names for the subdomain. These can be found within your newly created child zone on the [**DNS Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page, and will **not** be the same nameservers as the ones used in the parent zone.
 4. On the [**DNS Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page of the parent zone, [add](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) two `NS` records for the subdomain you want to delegate.  
-For example, if you delegated `www.example.com`, you might add the following records to `example.com`:  
-| **Type** | **Name** | **Content**               |  
-| -------- | -------- | ------------------------- |  
-| NS       | www      | john.ns.cloudflare.com    |  
+For example, if you delegated `www.example.com`, you might add the following records to `example.com`:
+
+| **Type** | **Name** | **Content**               |
+| -------- | -------- | ------------------------- |
+| NS       | www      | john.ns.cloudflare.com    |
 | NS       | www      | melinda.ns.cloudflare.com |
 5. After a few minutes, the child zone will be active.
 6. Create the various DNS records needed for your child zone.
@@ -50,10 +51,11 @@ If your child zone is on a primary setup (full), consider [exporting](https://de
 Note  
 If the parent zone is on Cloudflare, steps 7 and 9 below can be achieved via API. Use the [Batch DNS records](https://developers.cloudflare.com/api/resources/dns/subresources/records/methods/batch/) endpoint to delete and create or update DNS records within a single request. Refer to [Batch record changes](https://developers.cloudflare.com/dns/manage-dns-records/how-to/batch-record-changes/) for further guidance.
 7. On the [**DNS Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page of the parent zone, update existing address records (`A/AAAA`) on your subdomain to `NS` records. If you only have one address record, update the existing one and add a new `NS` record. If you have multiple address records, update any two of them.  
-For example, to delegate the subdomain `www.example.com`, the updated records in the parent zone `example.com` should contain `NS` records similar to the following:  
-| **Type** | **Name** | **Content**            |  
-| -------- | -------- | ---------------------- |  
-| NS       | www      | john.ns.cloudflare.com |  
+For example, to delegate the subdomain `www.example.com`, the updated records in the parent zone `example.com` should contain `NS` records similar to the following:
+
+| **Type** | **Name** | **Content**            |
+| -------- | -------- | ---------------------- |
+| NS       | www      | john.ns.cloudflare.com |
 | NS       | www      | adam.ns.cloudflare.com |  
 In this example, `john.ns.cloudflare.com` and `adam.ns.cloudflare.com` represent the subdomain nameservers that you got from step 6.
 8. Flush the address records of your subdomain in public resolvers ([1.1.1.1 ↗](https://1.1.1.1/purge-cache/) and [8.8.8.8 ↗](https://developers.google.com/speed/public-dns/cache)).

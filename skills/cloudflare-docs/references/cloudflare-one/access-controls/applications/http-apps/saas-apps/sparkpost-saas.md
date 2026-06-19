@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,15 +29,15 @@ This guide covers how to configure [SparkPost or SparkPost EU ↗](https://suppo
 4. For the authentication protocol, select **SAML**.
 5. Select **Add application**.
 6. Fill in the following fields:  
-   * **Entity ID**:  
-         * `https://api.sparkpost.com` for SparkPost accounts  
-         * `https://api.eu.sparkpost.com` for SparkPost EU accounts  
-         * `https://<api-host>` for SparkPost accounts with dedicated tenants  
-   * **Assertion Consumer Service URL**:  
-         * `https://api.sparkpost.com/api/v1/users/saml/consume` for SparkPost accounts  
-         * `https://api.eu.sparkpost.com/api/v1/users/saml/consume` for SparkPost EU accounts  
-         * `https://<api-host>/api/v1/users/saml/consume` for SparkPost accounts with dedicated tenants  
-   * **Name ID format**: _Email_
+  * **Entity ID**:  
+    * `https://api.sparkpost.com` for SparkPost accounts
+    * `https://api.eu.sparkpost.com` for SparkPost EU accounts
+    * `https://<api-host>` for SparkPost accounts with dedicated tenants
+  * **Assertion Consumer Service URL**:  
+    * `https://api.sparkpost.com/api/v1/users/saml/consume` for SparkPost accounts
+    * `https://api.eu.sparkpost.com/api/v1/users/saml/consume` for SparkPost EU accounts
+    * `https://<api-host>/api/v1/users/saml/consume` for SparkPost accounts with dedicated tenants
+  * **Name ID format**: _Email_
 7. Copy the **SAML Metadata endpoint**.
 8. Configure [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) for the application.
 9. Save the application.

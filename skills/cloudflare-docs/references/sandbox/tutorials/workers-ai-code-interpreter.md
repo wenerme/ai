@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -56,10 +56,7 @@ pnpm create cloudflare@latest workers-ai-interpreter --template=cloudflare/sandb
 Terminal window
 
 ```
-
 cd workers-ai-interpreter
-
-
 ```
 
 ## 2\. Review the implementation
@@ -69,64 +66,11 @@ The template includes a complete implementation using the latest best practices.
 TypeScript
 
 ```
-
-// src/index.ts
-
-import { getSandbox } from "@cloudflare/sandbox";
-
-import { generateText, stepCountIs, tool } from "ai";
-
-import { createWorkersAI } from "workers-ai-provider";
-
-import { z } from "zod";
-
-
+// src/index.tsimport { getSandbox } from "@cloudflare/sandbox";import { generateText, stepCountIs, tool } from "ai";import { createWorkersAI } from "workers-ai-provider";import { z } from "zod";
 const MODEL = "@cf/openai/gpt-oss-120b" as const;
-
-
-async function handleAIRequest(input: string, env: Env): Promise<string> {
-
-  const workersai = createWorkersAI({ binding: env.AI });
-
-
-  const result = await generateText({
-
-    model: workersai(MODEL),
-
-    messages: [{ role: "user", content: input }],
-
-    tools: {
-
-      execute_python: tool({
-
-        description: "Execute Python code and return the output",
-
-        inputSchema: z.object({
-
-          code: z.string().describe("The Python code to execute"),
-
-        }),
-
-        execute: async ({ code }) => {
-
-          return executePythonCode(env, code);
-
-        },
-
-      }),
-
-    },
-
-    stopWhen: stepCountIs(5),
-
-  });
-
-
-  return result.text || "No response generated";
-
-}
-
-
+async function handleAIRequest(input: string, env: Env): Promise<string> {  const workersai = createWorkersAI({ binding: env.AI });
+  const result = await generateText({    model: workersai(MODEL),    messages: [{ role: "user", content: input }],    tools: {      execute_python: tool({        description: "Execute Python code and return the output",        inputSchema: z.object({          code: z.string().describe("The Python code to execute"),        }),        execute: async ({ code }) => {          return executePythonCode(env, code);        },      }),    },    stopWhen: stepCountIs(5),  });
+  return result.text || "No response generated";}
 ```
 
 **Key improvements over direct REST API calls:**
@@ -140,106 +84,22 @@ async function handleAIRequest(input: string, env: Env): Promise<string> {
 
 The template includes the proper Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-10521)
-* [  wrangler.toml ](#tab-panel-10522)
+* [  wrangler.jsonc ](#tab-panel-10597)
+* [  wrangler.toml ](#tab-panel-10598)
 
 JSONC
 
 ```
-
-{
-
-  "name": "sandbox-code-interpreter-example",
-
-  "main": "src/index.ts",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "ai": {
-
-    "binding": "AI"
-
-  },
-
-  "containers": [
-
-    {
-
-      "class_name": "Sandbox",
-
-      "image": "./Dockerfile",
-
-      "name": "sandbox",
-
-      "max_instances": 1,
-
-      "instance_type": "basic"
-
-    }
-
-  ],
-
-  "durable_objects": {
-
-    "bindings": [
-
-      {
-
-        "class_name": "Sandbox",
-
-        "name": "Sandbox"
-
-      }
-
-    ]
-
-  }
-
-}
-
-
+{  "name": "sandbox-code-interpreter-example",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-18",  "ai": {    "binding": "AI"  },  "containers": [    {      "class_name": "Sandbox",      "image": "./Dockerfile",      "name": "sandbox",      "max_instances": 1,      "instance_type": "basic"    }  ],  "durable_objects": {    "bindings": [      {        "class_name": "Sandbox",        "name": "Sandbox"      }    ]  }}
 ```
 
 TOML
 
 ```
-
-name = "sandbox-code-interpreter-example"
-
-main = "src/index.ts"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[ai]
-
-binding = "AI"
-
-
-[[containers]]
-
-class_name = "Sandbox"
-
-image = "./Dockerfile"
-
-name = "sandbox"
-
-max_instances = 1
-
-instance_type = "basic"
-
-
-[[durable_objects.bindings]]
-
-class_name = "Sandbox"
-
-name = "Sandbox"
-
-
+name = "sandbox-code-interpreter-example"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-18"
+[ai]binding = "AI"
+[[containers]]class_name = "Sandbox"image = "./Dockerfile"name = "sandbox"max_instances = 1instance_type = "basic"
+[[durable_objects.bindings]]class_name = "Sandbox"name = "Sandbox"
 ```
 
 **Configuration highlights:**
@@ -255,10 +115,7 @@ Start the development server:
 Terminal window
 
 ```
-
 npm run dev
-
-
 ```
 
 Note
@@ -270,34 +127,9 @@ Test with curl:
 Terminal window
 
 ```
-
-# Simple calculation
-
-curl -X POST http://localhost:8787/run \
-
-  -H "Content-Type: application/json" \
-
-  -d '{"input": "Calculate 5 factorial using Python"}'
-
-
-# Complex operations
-
-curl -X POST http://localhost:8787/run \
-
-  -H "Content-Type: application/json" \
-
-  -d '{"input": "Use Python to find all prime numbers under 20"}'
-
-
-# Data analysis
-
-curl -X POST http://localhost:8787/run \
-
-  -H "Content-Type: application/json" \
-
-  -d '{"input": "Create a list of the first 10 squares and calculate their sum"}'
-
-
+# Simple calculationcurl -X POST http://localhost:8787/run \  -H "Content-Type: application/json" \  -d '{"input": "Calculate 5 factorial using Python"}'
+# Complex operationscurl -X POST http://localhost:8787/run \  -H "Content-Type: application/json" \  -d '{"input": "Use Python to find all prime numbers under 20"}'
+# Data analysiscurl -X POST http://localhost:8787/run \  -H "Content-Type: application/json" \  -d '{"input": "Create a list of the first 10 squares and calculate their sum"}'
 ```
 
 ## 5\. Deploy
@@ -307,10 +139,7 @@ Deploy your Worker:
 Terminal window
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 Warning
@@ -324,34 +153,9 @@ Try more complex queries:
 Terminal window
 
 ```
-
-# Data visualization preparation
-
-curl -X POST https://workers-ai-interpreter.YOUR_SUBDOMAIN.workers.dev/run \
-
-  -H "Content-Type: application/json" \
-
-  -d '{"input": "Generate sample sales data for 12 months and calculate quarterly totals"}'
-
-
-# Algorithm implementation
-
-curl -X POST https://workers-ai-interpreter.YOUR_SUBDOMAIN.workers.dev/run \
-
-  -H "Content-Type: application/json" \
-
-  -d '{"input": "Implement a binary search function and test it with a sorted array"}'
-
-
-# Mathematical computation
-
-curl -X POST https://workers-ai-interpreter.YOUR_SUBDOMAIN.workers.dev/run \
-
-  -H "Content-Type: application/json" \
-
-  -d '{"input": "Calculate the standard deviation of [2, 4, 4, 4, 5, 5, 7, 9]"}'
-
-
+# Data visualization preparationcurl -X POST https://workers-ai-interpreter.YOUR_SUBDOMAIN.workers.dev/run \  -H "Content-Type: application/json" \  -d '{"input": "Generate sample sales data for 12 months and calculate quarterly totals"}'
+# Algorithm implementationcurl -X POST https://workers-ai-interpreter.YOUR_SUBDOMAIN.workers.dev/run \  -H "Content-Type: application/json" \  -d '{"input": "Implement a binary search function and test it with a sorted array"}'
+# Mathematical computationcurl -X POST https://workers-ai-interpreter.YOUR_SUBDOMAIN.workers.dev/run \  -H "Content-Type: application/json" \  -d '{"input": "Calculate the standard deviation of [2, 4, 4, 4, 5, 5, 7, 9]"}'
 ```
 
 ## How it works

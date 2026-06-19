@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,15 +30,12 @@ You can use the [Cloudflare Terraform provider ↗](https://registry.terraform.i
 To add Zero Trust to your Terraform configuration:
 
 1. [Sign up for Zero Trust](#sign-up-for-zero-trust) on the Cloudflare dashboard.
-2. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):  
-   * `Access: Organizations, Identity Providers, and Groups Write`
+2. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
+
+  * `Access: Organizations, Identity Providers, and Groups Write`
 3. Add the [cloudflare\_zero\_trust\_organization ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Forganization) resource:  
 ```  
-resource "cloudflare_zero_trust_organization" "<your-team-name>" {  
-  account_id                         = var.cloudflare_account_id  
-  name                               = "Acme Corporation"  
-  auth_domain                        = "<your-team-name>.cloudflareaccess.com"  
-}  
+resource "cloudflare_zero_trust_organization" "<your-team-name>" {  account_id                         = var.cloudflare_account_id  name                               = "Acme Corporation"  auth_domain                        = "<your-team-name>.cloudflareaccess.com"}  
 ```  
 Replace `<your-team-name>` with the Zero Trust organization name selected during [onboarding](#sign-up-for-zero-trust). You can also view your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Zero Trust** \> **Settings** \> **Team name and domain**.
 

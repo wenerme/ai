@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,14 +37,7 @@ The recommended approach is to use an environment variable to avoid committing c
 Terminal window
 
 ```
-
-# Your configured Hyperdrive binding is "HYPERDRIVE"
-
-export CLOUDFLARE_HYPERDRIVE_LOCAL_CONNECTION_STRING_HYPERDRIVE="postgres://user:password@your-database-host:5432/database"
-
-npx wrangler dev
-
-
+# Your configured Hyperdrive binding is "HYPERDRIVE"export CLOUDFLARE_HYPERDRIVE_LOCAL_CONNECTION_STRING_HYPERDRIVE="postgres://user:password@your-database-host:5432/database"npx wrangler dev
 ```
 
 The environment variable format is `CLOUDFLARE_HYPERDRIVE_LOCAL_CONNECTION_STRING_<BINDING_NAME>`, where `<BINDING_NAME>` is the name of the binding assigned to your Hyperdrive in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/).
@@ -56,59 +49,26 @@ For example, to set the connection string for a local database:
 Terminal window
 
 ```
-
-export CLOUDFLARE_HYPERDRIVE_LOCAL_CONNECTION_STRING_HYPERDRIVE="postgres://user:password@localhost:5432/databasename"
-
-npx wrangler dev
-
-
+export CLOUDFLARE_HYPERDRIVE_LOCAL_CONNECTION_STRING_HYPERDRIVE="postgres://user:password@localhost:5432/databasename"npx wrangler dev
 ```
 
 ### Configure in Wrangler configuration file
 
 Alternatively, you can set `localConnectionString` in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-8658)
-* [  wrangler.toml ](#tab-panel-8659)
+* [  wrangler.jsonc ](#tab-panel-8734)
+* [  wrangler.toml ](#tab-panel-8735)
 
 JSONC
 
 ```
-
-{
-
-  "hyperdrive": [
-
-    {
-
-      "binding": "HYPERDRIVE",
-
-      "id": "c020574a-5623-407b-be0c-cd192bab9545",
-
-      "localConnectionString": "postgres://user:password@localhost:5432/databasename"
-
-    }
-
-  ]
-
-}
-
-
+{  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "c020574a-5623-407b-be0c-cd192bab9545",      "localConnectionString": "postgres://user:password@localhost:5432/databasename"    }  ]}
 ```
 
 TOML
 
 ```
-
-[[hyperdrive]]
-
-binding = "HYPERDRIVE"
-
-id = "c020574a-5623-407b-be0c-cd192bab9545"
-
-localConnectionString = "postgres://user:password@localhost:5432/databasename"
-
-
+[[hyperdrive]]binding = "HYPERDRIVE"id = "c020574a-5623-407b-be0c-cd192bab9545"localConnectionString = "postgres://user:password@localhost:5432/databasename"
 ```
 
 If both an environment variable and `localConnectionString` in the Wrangler configuration file are set, the environment variable takes precedence.
@@ -126,43 +86,19 @@ This mode is useful for testing how your Worker behaves with Hyperdrive's featur
 
 Configure your Hyperdrive binding in `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-8660)
-* [  wrangler.toml ](#tab-panel-8661)
+* [  wrangler.jsonc ](#tab-panel-8736)
+* [  wrangler.toml ](#tab-panel-8737)
 
 JSONC
 
 ```
-
-{
-
-  "hyperdrive": [
-
-    {
-
-      "binding": "HYPERDRIVE",
-
-      "id": "your-hyperdrive-id",
-
-    },
-
-  ],
-
-}
-
-
+{  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "your-hyperdrive-id",    },  ],}
 ```
 
 TOML
 
 ```
-
-[[hyperdrive]]
-
-binding = "HYPERDRIVE"
-
-id = "your-hyperdrive-id"
-
-
+[[hyperdrive]]binding = "HYPERDRIVE"id = "your-hyperdrive-id"
 ```
 
 To start a remote development session:
@@ -170,10 +106,7 @@ To start a remote development session:
 Terminal window
 
 ```
-
 npx wrangler dev --remote
-
-
 ```
 
 Note

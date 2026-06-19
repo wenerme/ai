@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -49,38 +49,11 @@ For Turnstile to function properly in WebView, the following requirements must b
 #### Android WebView
 
 ```
-
-WebView webView = findViewById(R.id.webview);
-
-WebSettings webSettings = webView.getSettings();
-
-
-// Required: Enable JavaScript
-
-webSettings.setJavaScriptEnabled(true);
-
-
-// Required: Enable DOM storage
-
-webSettings.setDomStorageEnabled(true);
-
-
-// Recommended: Enable other web features
-
-webSettings.setLoadWithOverviewMode(true);
-
-webSettings.setUseWideViewPort(true);
-
-webSettings.setAllowFileAccess(true);
-
-webSettings.setAllowContentAccess(true);
-
-
-// Load your web content with Turnstile
-
-webView.loadUrl("https://yoursite.com/protected-form");
-
-
+WebView webView = findViewById(R.id.webview);WebSettings webSettings = webView.getSettings();
+// Required: Enable JavaScriptwebSettings.setJavaScriptEnabled(true);
+// Required: Enable DOM storagewebSettings.setDomStorageEnabled(true);
+// Recommended: Enable other web featureswebSettings.setLoadWithOverviewMode(true);webSettings.setUseWideViewPort(true);webSettings.setAllowFileAccess(true);webSettings.setAllowContentAccess(true);
+// Load your web content with TurnstilewebView.loadUrl("https://yoursite.com/protected-form");
 ```
 
 #### iOS WKWebView (Swift)
@@ -88,40 +61,11 @@ webView.loadUrl("https://yoursite.com/protected-form");
 Swift
 
 ```
-
 import WebKit
-
-
-class ViewController: UIViewController {
-
-    @IBOutlet weak var webView: WKWebView!
-
-
-    override func viewDidLoad() {
-
-        super.viewDidLoad()
-
-
-        // Configure WebView
-
-        let configuration = WKWebViewConfiguration()
-
-        configuration.preferences.javaScriptEnabled = true
-
-
-        // Load your web content with Turnstile
-
-        if let url = URL(string: "https://yoursite.com/protected-form") {
-
-            webView.load(URLRequest(url: url))
-
-        }
-
-    }
-
-}
-
-
+class ViewController: UIViewController {    @IBOutlet weak var webView: WKWebView!
+    override func viewDidLoad() {        super.viewDidLoad()
+        // Configure WebView        let configuration = WKWebViewConfiguration()        configuration.preferences.javaScriptEnabled = true
+        // Load your web content with Turnstile        if let url = URL(string: "https://yoursite.com/protected-form") {            webView.load(URLRequest(url: url))        }    }}
 ```
 
 #### React Native WebView
@@ -129,33 +73,8 @@ class ViewController: UIViewController {
 JavaScript
 
 ```
-
 import { WebView } from "react-native-webview";
-
-
-export default function App() {
-
-  return (
-
-    <WebView
-
-      source={{ uri: "https://yoursite.com/protected-form" }}
-
-      javaScriptEnabled={true}
-
-      domStorageEnabled={true}
-
-      allowsInlineMediaPlayback={true}
-
-      mediaPlaybackRequiresUserAction={false}
-
-    />
-
-  );
-
-}
-
-
+export default function App() {  return (    <WebView      source={{ uri: "https://yoursite.com/protected-form" }}      javaScriptEnabled={true}      domStorageEnabled={true}      allowsInlineMediaPlayback={true}      mediaPlaybackRequiresUserAction={false}    />  );}
 ```
 
 #### Flutter WebView
@@ -163,55 +82,8 @@ export default function App() {
 Dart
 
 ```
-
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-
-
-class WebViewScreen extends StatelessWidget {
-
-  @override
-
-  Widget build(BuildContext context) {
-
-    return InAppWebView(
-
-      initialUrlRequest: URLRequest(
-
-        url: Uri.parse('https://yoursite.com/protected-form')
-
-      ),
-
-      initialOptions: InAppWebViewGroupOptions(
-
-        crossPlatform: InAppWebViewOptions(
-
-          javaScriptEnabled: true,
-
-          useShouldOverrideUrlLoading: false,
-
-        ),
-
-        android: AndroidInAppWebViewOptions(
-
-          domStorageEnabled: true,
-
-        ),
-
-        ios: IOSInAppWebViewOptions(
-
-          allowsInlineMediaPlayback: true,
-
-        ),
-
-      ),
-
-    );
-
-  }
-
-}
-
-
+class WebViewScreen extends StatelessWidget {  @override  Widget build(BuildContext context) {    return InAppWebView(      initialUrlRequest: URLRequest(        url: Uri.parse('https://yoursite.com/protected-form')      ),      initialOptions: InAppWebViewGroupOptions(        crossPlatform: InAppWebViewOptions(          javaScriptEnabled: true,          useShouldOverrideUrlLoading: false,        ),        android: AndroidInAppWebViewOptions(          domStorageEnabled: true,        ),        ios: IOSInAppWebViewOptions(          allowsInlineMediaPlayback: true,        ),      ),    );  }}
 ```
 
 ---
@@ -223,23 +95,13 @@ class WebViewScreen extends StatelessWidget {
 Changing the User Agent during a session causes Turnstile challenges to fail because the system relies on consistent browser characteristics to validate the visitor's authenticity. When the User Agent changes mid-session, Turnstile treats this as a potential security risk and rejects the challenge.
 
 ```
-
-// Android - Set consistent User Agent
-
-webSettings.setUserAgentString(webSettings.getUserAgentString());
-
-
+// Android - Set consistent User AgentwebSettings.setUserAgentString(webSettings.getUserAgentString());
 ```
 
 Swift
 
 ```
-
-// iOS - Maintain default User Agent
-
-webView.customUserAgent = webView.value(forKey: "userAgent") as? String
-
-
+// iOS - Maintain default User AgentwebView.customUserAgent = webView.value(forKey: "userAgent") as? String
 ```
 
 ### Content Security Policy (CSP)
@@ -247,26 +109,7 @@ webView.customUserAgent = webView.value(forKey: "userAgent") as? String
 Strict [Content Security Policy](https://developers.cloudflare.com/turnstile/reference/content-security-policy/) settings can prevent Turnstile from loading the necessary scripts and making required network connections. This happens when CSP headers or meta tags block access to the domains and resources that Turnstile needs to function properly.
 
 ```
-
-<meta
-
-  http-equiv="Content-Security-Policy"
-
-  content="
-
-  default-src 'self';
-
-  script-src 'self' challenges.cloudflare.com 'unsafe-inline';
-
-  connect-src 'self' challenges.cloudflare.com;
-
-  frame-src 'self' challenges.cloudflare.com;
-
-"
-
-/>
-
-
+<meta  http-equiv="Content-Security-Policy"  content="  default-src 'self';  script-src 'self' challenges.cloudflare.com 'unsafe-inline';  connect-src 'self' challenges.cloudflare.com;  frame-src 'self' challenges.cloudflare.com;"/>
 ```
 
 ### Domain configuration
@@ -287,25 +130,13 @@ The exact configuration method varies by platform, but the principle is to expli
 Cookies and local storage not persisting between sessions can cause Turnstile to fail because it relies on these mechanisms to maintain state and track visitor behavior. This commonly occurs when WebView storage settings are too restrictive or when the app clears storage between sessions. Ensure that your WebView is configured to properly handle cookies and local storage.
 
 ```
-
-// Android - Enable cookies
-
-CookieManager.getInstance().setAcceptCookie(true);
-
-CookieManager.getInstance().setAcceptThirdPartyCookies(webView, true);
-
-
+// Android - Enable cookiesCookieManager.getInstance().setAcceptCookie(true);CookieManager.getInstance().setAcceptThirdPartyCookies(webView, true);
 ```
 
 Swift
 
 ```
-
-// iOS - Configure cookie storage
-
-webView.configuration.websiteDataStore = WKWebsiteDataStore.default()
-
-
+// iOS - Configure cookie storagewebView.configuration.websiteDataStore = WKWebsiteDataStore.default()
 ```
 
 ```json

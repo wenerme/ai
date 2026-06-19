@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,11 +37,11 @@ To set up a traceroute test for an application:
 2. Select the **Tests** tab.
 3. Select **Add a Test**.
 4. Fill in the following fields:  
-   * **Name**: Enter any name for the test.  
-   * **Target**: Enter the IP address of the server you want to test (for example, `192.0.2.0`). You can test either a public-facing endpoint or a private endpoint you have connected to Cloudflare.  
-   * **Source device profiles**: (Optional) Select the [device profiles](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) that you want to run the test on. A device profile defines Cloudflare One Client settings for a specific set of devices in your organization. If no profiles are selected, the test will run on all supported devices connected to your Zero Trust organization.  
-   * **Test type**: Select _Traceroute_.  
-   * **Test frequency**: Specify how often the test will run. Input a minute value between 5 and 60.
+  * **Name**: Enter any name for the test.
+  * **Target**: Enter the IP address of the server you want to test (for example, `192.0.2.0`). You can test either a public-facing endpoint or a private endpoint you have connected to Cloudflare.
+  * **Source device profiles**: (Optional) Select the [device profiles](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) that you want to run the test on. A device profile defines Cloudflare One Client settings for a specific set of devices in your organization. If no profiles are selected, the test will run on all supported devices connected to your Zero Trust organization.
+  * **Test type**: Select _Traceroute_.
+  * **Test frequency**: Specify how often the test will run. Input a minute value between 5 and 60.
 5. Select **Add test**.
 
 Next, [view the results](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/view-results/) of your test.

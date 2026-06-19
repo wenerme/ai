@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,37 +30,18 @@ A component which allows you to change current page and view mode of active part
 ### Basic Usage
 
 ```
-
 <rtk-grid-pagination></rtk-grid-pagination>
-
-
 ```
 
 ### With Properties
 
 ```
-
-<rtk-grid-pagination
-
- size="md">
-
-</rtk-grid-pagination>
-
-
+<rtk-grid-pagination size="md"></rtk-grid-pagination>
 ```
 
 ```
-
-<script>
-
-  const el = document.querySelector("rtk-grid-pagination");
-
-
-  el.meeting= meeting
-
-</script>
-
-
+<script>  const el = document.querySelector("rtk-grid-pagination");
+  el.meeting= meeting</script>
 ```
 
 ```json

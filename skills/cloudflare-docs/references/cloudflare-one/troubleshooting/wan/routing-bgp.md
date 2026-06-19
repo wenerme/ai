@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -69,9 +69,10 @@ This section covers BGP peering sessions (beta) between your network and Cloudfl
 #### Solution
 
 1. **Check tunnel health**: Degraded tunnels have 500,000 added to their route priority. Down tunnels have 1,000,000 added. Traffic shifts to healthier paths, which may be in different regions. Refer to [Troubleshoot tunnel health](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/troubleshooting/tunnel-health/) for diagnostic steps.
-2. **Review route priorities**: Lower priority values indicate higher preference. Verify your routes have the expected priority configuration.  
-   * Default BGP route priority: `100`  
-   * Static routes at priority `100` take precedence over BGP routes at `100`
+2. **Review route priorities**: Lower priority values indicate higher preference. Verify your routes have the expected priority configuration.
+
+  * Default BGP route priority: `100`
+  * Static routes at priority `100` take precedence over BGP routes at `100`
 3. **Check regional scoping**: If you use region-scoped routes, ensure all regions have route coverage. Traffic arriving at a region without a matching route is dropped.
 4. **Use Network Analytics**: Review traffic patterns to identify where traffic is landing and which paths it follows. Refer to [Network Analytics](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/analytics/network-analytics/) for usage instructions.
 
@@ -169,12 +170,12 @@ If you have worked through this guide and still experience routing issues, gathe
 1. **Account ID** and affected prefix(es), tunnel name(s), or CNI identifier(s)
 2. **Timestamps** (in UTC) when the issue occurred
 3. **BGP configuration details:**  
-   * Your ASN and Cloudflare peering ASN  
-   * Neighbor IP addresses  
-   * Sanitized router configuration (remove passwords and keys)
+  * Your ASN and Cloudflare peering ASN
+  * Neighbor IP addresses
+  * Sanitized router configuration (remove passwords and keys)
 4. **Current state information:**  
-   * BGP session state from your router  
-   * Dashboard screenshots showing prefix, route, or tunnel status
+  * BGP session state from your router
+  * Dashboard screenshots showing prefix, route, or tunnel status
 
 ### Helpful diagnostic data
 
@@ -189,34 +190,11 @@ Collect output from these commands (syntax varies by vendor):
 Terminal window
 
 ```
-
-# Show BGP neighbor status
-
-show bgp neighbors
-
-
-# Show BGP summary
-
-show bgp ipv4 unicast summary
-
-
-# Show specific prefix in BGP table
-
-show bgp ipv4 unicast <YOUR_PREFIX>
-
-
-# Show interface status (for CNI)
-
-show interface <YOUR_INTERFACE_NAME>
-
-
-# Show received and advertised routes
-
-show bgp ipv4 unicast neighbors <YOUR_NEIGHBOR_IP> routes
-
-show bgp ipv4 unicast neighbors <YOUR_NEIGHBOR_IP> advertised-routes
-
-
+# Show BGP neighbor statusshow bgp neighbors
+# Show BGP summaryshow bgp ipv4 unicast summary
+# Show specific prefix in BGP tableshow bgp ipv4 unicast <YOUR_PREFIX>
+# Show interface status (for CNI)show interface <YOUR_INTERFACE_NAME>
+# Show received and advertised routesshow bgp ipv4 unicast neighbors <YOUR_NEIGHBOR_IP> routesshow bgp ipv4 unicast neighbors <YOUR_NEIGHBOR_IP> advertised-routes
 ```
 
 ## Resources
@@ -234,7 +212,7 @@ show bgp ipv4 unicast neighbors <YOUR_NEIGHBOR_IP> advertised-routes
 
 For more information, refer to the full Cloudflare WAN documentation.
 
-[ Full routing and BGP guide ❯ ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/troubleshooting/routing-and-bgp/) 
+[ Full routing and BGP guide ❯ ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/troubleshooting/routing-and-bgp/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/wan/routing-bgp/#page","headline":"Routing and BGP · Cloudflare One docs","description":"Routing and BGP for Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/wan/routing-bgp/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -54,9 +54,10 @@ Multi-provider DNS is an optional setting for zones using [primary setup (full)]
 
 When you enable multi-provider DNS on a primary zone:
 
-* Cloudflare will no longer ignore `NS` records created on the zone apex, as in the example below.  
-| Type | Name | Nameserver       |  
-| ---- | ---- | ---------------- |  
+* Cloudflare will no longer ignore `NS` records created on the zone apex, as in the example below.
+
+| Type | Name | Nameserver       |
+| ---- | ---- | ---------------- |
 | NS   | @    | ns1.external.com |
 
 This means that responses to DNS queries made to the zone apex and requesting `NS` records will contain both Cloudflare's and your other DNS providers' nameservers.

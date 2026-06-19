@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -47,8 +47,8 @@ For non-authoritative or [partial domains](https://developers.cloudflare.com/dns
 
 * Provisioned once the DNS record is [proxied through Cloudflare](https://developers.cloudflare.com/dns/zone-setups/partial-setup/setup/#3-add-dns-records).
 * Validated:  
-   * Immediately if you add [Domain Control Validation (DCV)](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/) records to your authoritative DNS.  
-   * After a brief period of downtime if you **do not** add DCV records (once your traffic is proxied).
+  * Immediately if you add [Domain Control Validation (DCV)](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/) records to your authoritative DNS.
+  * After a brief period of downtime if you **do not** add DCV records (once your traffic is proxied).
 
 Unless you cover and validate multiple subdomains with an [advanced certificate](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/), you will need to proxy and validate new subdomains as they are added.
 

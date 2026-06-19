@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,10 +19,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 **Base URL**
 
 ```
-
 https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai
-
-
 ```
 
 When making requests to OpenAI, replace `https://api.openai.com/v1` in the URL you are currently using with `https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai`.
@@ -41,240 +38,63 @@ When making requests to OpenAI, replace `https://api.openai.com/v1` in the URL y
 
 With Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-6578)
-* [ Unauthenticated Gateway ](#tab-panel-6579)
+* [ With Authenticated Gateway ](#tab-panel-6654)
+* [ Unauthenticated Gateway ](#tab-panel-6655)
 
 ```
-
 import OpenAI from "openai";
-
-
-const client = new OpenAI({
-
-  apiKey: "YOUR_OPENAI_API_KEY",
-
-  defaultHeaders: {
-
-    "cf-aig-authorization": `Bearer {cf_api_token}`,
-
-  },
-
-  baseURL:
-
-    "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai",
-
-});
-
-
-const response = await client.chat.completions.create({
-
-  model: "gpt-4o-mini",
-
-  messages: [{ role: "user", content: "Hello, world!" }],
-
-});
-
-
+const client = new OpenAI({  apiKey: "YOUR_OPENAI_API_KEY",  defaultHeaders: {    "cf-aig-authorization": `Bearer {cf_api_token}`,  },  baseURL:    "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai",});
+const response = await client.chat.completions.create({  model: "gpt-4o-mini",  messages: [{ role: "user", content: "Hello, world!" }],});
 ```
 
 ```
-
 import OpenAI from "openai";
-
-
-const client = new OpenAI({
-
-  apiKey: "YOUR_OPENAI_API_KEY",
-
-  baseURL:
-
-    "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai",
-
-});
-
-
-const response = await client.chat.completions.create({
-
-  model: "gpt-4o-mini",
-
-  messages: [{ role: "user", content: "Hello, world!" }],
-
-});
-
-
+const client = new OpenAI({  apiKey: "YOUR_OPENAI_API_KEY",  baseURL:    "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai",});
+const response = await client.chat.completions.create({  model: "gpt-4o-mini",  messages: [{ role: "user", content: "Hello, world!" }],});
 ```
 
 With Stored Keys (BYOK) / Unified Billing
 
 ```
-
 import OpenAI from "openai";
-
-
-const client = new OpenAI({
-
-  apiKey: "{cf_api_token}",
-
-  baseURL:
-
-    "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai",
-
-});
-
-
-// Ensure your OpenAI API key is stored with BYOK
-
-// or Unified Billing has credits
-
-const response = await client.chat.completions.create({
-
-  model: "gpt-4o-mini",
-
-  messages: [{ role: "user", content: "Hello, world!" }],
-
-});
-
-
+const client = new OpenAI({  apiKey: "{cf_api_token}",  baseURL:    "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai",});
+// Ensure your OpenAI API key is stored with BYOK// or Unified Billing has creditsconst response = await client.chat.completions.create({  model: "gpt-4o-mini",  messages: [{ role: "user", content: "Hello, world!" }],});
 ```
 
 ### cURL
 
 Responses API with API Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-6580)
-* [ Unauthenticated Gateway ](#tab-panel-6581)
+* [ With Authenticated Gateway ](#tab-panel-6656)
+* [ Unauthenticated Gateway ](#tab-panel-6657)
 
 Terminal window
 
 ```
-
-curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/responses \
-
-  --header 'Authorization: Bearer {OPENAI_API_KEY}' \
-
-  --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
-
-  --header 'Content-Type: application/json' \
-
-  --data '{
-
-    "model": "gpt-5.1",
-
-    "input": [
-
-      {
-
-        "role": "user",
-
-        "content": "Write a one-sentence bedtime story about a unicorn."
-
-      }
-
-    ]
-
-  }'
-
-
+curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/responses \  --header 'Authorization: Bearer {OPENAI_API_KEY}' \  --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \  --header 'Content-Type: application/json' \  --data '{    "model": "gpt-5.1",    "input": [      {        "role": "user",        "content": "Write a one-sentence bedtime story about a unicorn."      }    ]  }'
 ```
 
 Terminal window
 
 ```
-
-curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/responses \
-
-  --header 'Authorization: Bearer {OPENAI_API_KEY}' \
-
-  --header 'Content-Type: application/json' \
-
-  --data '{
-
-    "model": "gpt-5.1",
-
-    "input": [
-
-      {
-
-        "role": "user",
-
-        "content": "Write a one-sentence bedtime story about a unicorn."
-
-      }
-
-    ]
-
-  }'
-
-
+curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/responses \  --header 'Authorization: Bearer {OPENAI_API_KEY}' \  --header 'Content-Type: application/json' \  --data '{    "model": "gpt-5.1",    "input": [      {        "role": "user",        "content": "Write a one-sentence bedtime story about a unicorn."      }    ]  }'
 ```
 
 Chat Completions with API Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-6582)
-* [ Unauthenticated Gateway ](#tab-panel-6583)
+* [ With Authenticated Gateway ](#tab-panel-6658)
+* [ Unauthenticated Gateway ](#tab-panel-6659)
 
 Terminal window
 
 ```
-
-curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \
-
-  --header 'Authorization: Bearer {OPENAI_API_KEY}' \
-
-  --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
-
-  --header 'Content-Type: application/json' \
-
-  --data '{
-
-    "model": "gpt-4o-mini",
-
-    "messages": [
-
-      {
-
-        "role": "user",
-
-        "content": "What is Cloudflare?"
-
-      }
-
-    ]
-
-  }'
-
-
+curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \  --header 'Authorization: Bearer {OPENAI_API_KEY}' \  --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \  --header 'Content-Type: application/json' \  --data '{    "model": "gpt-4o-mini",    "messages": [      {        "role": "user",        "content": "What is Cloudflare?"      }    ]  }'
 ```
 
 Terminal window
 
 ```
-
-curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \
-
-  --header 'Authorization: Bearer {OPENAI_API_KEY}' \
-
-  --header 'Content-Type: application/json' \
-
-  --data '{
-
-    "model": "gpt-4o-mini",
-
-    "messages": [
-
-      {
-
-        "role": "user",
-
-        "content": "What is Cloudflare?"
-
-      }
-
-    ]
-
-  }'
-
-
+curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \  --header 'Authorization: Bearer {OPENAI_API_KEY}' \  --header 'Content-Type: application/json' \  --data '{    "model": "gpt-4o-mini",    "messages": [      {        "role": "user",        "content": "What is Cloudflare?"      }    ]  }'
 ```
 
 Responses API with Stored Keys (BYOK) / Unified Billing
@@ -282,32 +102,7 @@ Responses API with Stored Keys (BYOK) / Unified Billing
 Terminal window
 
 ```
-
-curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/responses \
-
-  --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
-
-  --header 'Content-Type: application/json' \
-
-  --data '{
-
-    "model": "gpt-5.1",
-
-    "input": [
-
-      {
-
-        "role": "user",
-
-        "content": "Write a one-sentence bedtime story about a unicorn."
-
-      }
-
-    ]
-
-  }'
-
-
+curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/responses \  --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \  --header 'Content-Type: application/json' \  --data '{    "model": "gpt-5.1",    "input": [      {        "role": "user",        "content": "Write a one-sentence bedtime story about a unicorn."      }    ]  }'
 ```
 
 Chat Completions with Stored Keys (BYOK) / Unified Billing
@@ -315,32 +110,7 @@ Chat Completions with Stored Keys (BYOK) / Unified Billing
 Terminal window
 
 ```
-
-curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \
-
-  --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
-
-  --header 'Content-Type: application/json' \
-
-  --data '{
-
-    "model": "gpt-4o-mini",
-
-    "messages": [
-
-      {
-
-        "role": "user",
-
-        "content": "What is Cloudflare?"
-
-      }
-
-    ]
-
-  }'
-
-
+curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \  --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \  --header 'Content-Type: application/json' \  --data '{    "model": "gpt-4o-mini",    "messages": [      {        "role": "user",        "content": "What is Cloudflare?"      }    ]  }'
 ```
 
 ```json

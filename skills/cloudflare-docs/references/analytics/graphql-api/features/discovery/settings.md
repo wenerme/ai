@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Cloudflare GraphQL API exposes more than 70 datasets to its customers. These datasets represent different Cloudflare products with very different data shapes; thus, each has its configuration of [limits](https://developers.cloudflare.com/analytics/graphql-api/limits/).
 
-Although we allow access to ALL plans for the essential datasets (like`httpRequestsAdaptiveGroups`, `firewallEventsAdaptive`, etc), users on larger plans benefit from an extended set of datasets and wider query limits.
+Although we allow access to ALL plans for the essential datasets (like `httpRequestsAdaptiveGroups`, `firewallEventsAdaptive`, etc), users on larger plans benefit from an extended set of datasets and wider query limits.
 
 In addition to [introspection](https://developers.cloudflare.com/analytics/graphql-api/features/discovery/introspection/), users can use the Settings node that is available for both zones and accounts scopes.
 
@@ -25,36 +25,7 @@ In addition to [introspection](https://developers.cloudflare.com/analytics/graph
 Using a settings node on accounts nodes
 
 ```
-
-{
-
-  viewer {
-
-    accounts(filter: { accountTag : $accountTag }) {
-
-      settings {
-
-        # any dataset(s) from accounts
-
-      }
-
-    }
-
-    zones(filter: { zoneTag : $zoneTag }) {
-
-      settings {
-
-        # any dataset(s) from zones
-
-      }
-
-    }
-
-  }
-
-}
-
-
+{  viewer {    accounts(filter: { accountTag : $accountTag }) {      settings {        # any dataset(s) from accounts      }    }    zones(filter: { zoneTag : $zoneTag }) {      settings {        # any dataset(s) from zones      }    }  }}
 ```
 
 Every subnode of `settings` node could consist of these fields:
@@ -71,38 +42,7 @@ Every subnode of `settings` node could consist of these fields:
 Get boundaries of firewallEventsAdaptive node
 
 ```
-
-query SampleQuery($zoneTag: string) {
-
-  viewer {
-
-    zones(filter: { zoneTag: $zoneTag }) {
-
-      settings {
-
-        firewallEventsAdaptive {
-
-          enabled
-
-          maxDuration
-
-          maxNumberOfFields
-
-          maxPageSize
-
-          notOlderThan
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
+query SampleQuery($zoneTag: string) {  viewer {    zones(filter: { zoneTag: $zoneTag }) {      settings {        firewallEventsAdaptive {          enabled          maxDuration          maxNumberOfFields          maxPageSize          notOlderThan        }      }    }  }}
 ```
 
 [Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAygQwLYAcA2YCK5oAoAkAXgPYB2YAKggOYBcMAzgC4QCWp1AlDAN4BQMGADdWYAO6ReAwTBLkGuAGas0TSPR6yylGvSLaq1GAF9u-GTIZgmTdtQZSLF5RHEI0aAKJCwpJgwBBABMEFFsfRycLXwQAIwwg6SjBJAQADwAREAgEWzIk5NS0gDkQJFjIAHlFADFRNCCGAqiigAUaMDhWQjBmp1JiJkqGyAoACwRSPsFjPtmLeZM+YyA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAXyA)
@@ -110,48 +50,7 @@ query SampleQuery($zoneTag: string) {
 firewallEventsAdaptive limits for a given user
 
 ```
-
-{
-
-  "data": {
-
-    "viewer": {
-
-      "zones": [
-
-        {
-
-          "settings": {
-
-            "firewallEventsAdaptive": {
-
-              "enabled": true,
-
-              "maxDuration": 259200,
-
-              "maxNumberOfFields": 30,
-
-              "maxPageSize": 10000,
-
-              "notOlderThan": 2678400
-
-            }
-
-          }
-
-        }
-
-      ]
-
-    }
-
-  },
-
-  "errors": null
-
-}
-
-
+{  "data": {    "viewer": {      "zones": [        {          "settings": {            "firewallEventsAdaptive": {              "enabled": true,              "maxDuration": 259200,              "maxNumberOfFields": 30,              "maxPageSize": 10000,              "notOlderThan": 2678400            }          }        }      ]    }  },  "errors": null}
 ```
 
 To get more details on how to execute queries, please refer to our how to get started [guides](https://developers.cloudflare.com/analytics/graphql-api/getting-started/).

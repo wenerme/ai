@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,61 +27,15 @@ Displays the current livestream viewer count. Only visible in livestream mode.
 ### Basic Usage
 
 ```
-
-import {
-
-  RtkLiveStreamViewerCount,
-
-  useLanguage,
-
-} from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  const t = useLanguage();
-
-  return <RtkLiveStreamViewerCount meeting={meeting} t={t} />;
-
-}
-
-
+import {  RtkLiveStreamViewerCount,  useLanguage,} from "@cloudflare/realtimekit-react-native-ui";
+function MyComponent() {  const t = useLanguage();  return <RtkLiveStreamViewerCount meeting={meeting} t={t} />;}
 ```
 
 ### With Properties
 
 ```
-
-import {
-
-  RtkLiveStreamViewerCount,
-
-  useLanguage,
-
-} from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  const t = useLanguage();
-
-  return (
-
-    <RtkLiveStreamViewerCount
-
-      meeting={meeting}
-
-      t={t}
-
-      iconPack={customIconPack}
-
-    />
-
-  );
-
-}
-
-
+import {  RtkLiveStreamViewerCount,  useLanguage,} from "@cloudflare/realtimekit-react-native-ui";
+function MyComponent() {  const t = useLanguage();  return (    <RtkLiveStreamViewerCount      meeting={meeting}      t={t}      iconPack={customIconPack}    />  );}
 ```
 
 ```json

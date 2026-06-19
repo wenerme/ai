@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,14 +29,14 @@ To use Email security, you will need to have:
 3. Select **Overview**. Select one of the following options:
 * If you have not purchased Email security, select **Contact sales**.
 * If you have not associated any integration:  
-   * Select **Set up**, then choose **BCC/Journaling**.  
-   * Select **Integrate with Google** \> **Authorize**.  
-   * Name your integration, then select **Next**.  
-   * Go to [step 1](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/bcc-setup/gmail-bcc-setup/enable-gmail-integration/#1-create-a-service-account-in-your-gcp-project) to continue the process of associating an integration.
+  * Select **Set up**, then choose **BCC/Journaling**.
+  * Select **Integrate with Google** \> **Authorize**.
+  * Name your integration, then select **Next**.
+  * Go to [step 1](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/bcc-setup/gmail-bcc-setup/enable-gmail-integration/#1-create-a-service-account-in-your-gcp-project) to continue the process of associating an integration.
 * If you have associated an integration, but have not connected a domain:  
-   * Select **Connect a domain**.  
-   * Choose **BCC/Journaling** \> **Integrate with Google**.  
-   * Refer to [Connect your domains](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/bcc-setup/gmail-bcc-setup/connect-domains/) to connect your domain(s).
+  * Select **Connect a domain**.
+  * Choose **BCC/Journaling** \> **Integrate with Google**.
+  * Refer to [Connect your domains](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/bcc-setup/gmail-bcc-setup/connect-domains/) to connect your domain(s).
 
 ### 1\. Create a Service Account in your GCP Project
 
@@ -44,10 +44,10 @@ To use Email security, you will need to have:
 2. On the [Google Cloud Console ↗](https://console.cloud.google.com/welcome/new), go to the sidebar, select **APIs & Services**, then select **Credentials**.
 3. Select **CREATE CREDENTIALS** \> **Service account**. Refer to [Service accounts overview ↗](https://docs.cloud.google.com/iam/docs/service-account-overview) to learn more about service accounts.
 4. Fill in the details to create a service account:  
-   * **Service account name**: Enter `Cloudflare Google Integration`.  
-   * **Service account ID**: Enter `cloudflare-google-integration`.  
-   * **Service account description**: Enter `Cloudflare Google Integration`.  
-   * Select **CREATE AND CONTINUE**.
+  * **Service account name**: Enter `Cloudflare Google Integration`.
+  * **Service account ID**: Enter `cloudflare-google-integration`.
+  * **Service account description**: Enter `Cloudflare Google Integration`.
+  * Select **CREATE AND CONTINUE**.
 
 ### 2\. Create a JSON Key for your Service Account
 

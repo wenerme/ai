@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/1.1.1.1/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,10 +29,7 @@ Before you start, head to the [Tor Project website ↗](https://www.torproject.o
 If you use Tor from the command line, create the following configuration file:
 
 ```
-
 SOCKSPort 9150
-
-
 ```
 
 Then you can run tor with:
@@ -40,19 +37,13 @@ Then you can run tor with:
 Terminal window
 
 ```
-
 tor -f tor.conf
-
-
 ```
 
 Also, if you use the Tor Browser, you can head to the resolver's address to see the usual 1.1.1.1 page:
 
 ```
-
 https://dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion/
-
-
 ```
 
 Note
@@ -64,17 +55,11 @@ If you ever forget 1.1.1.1's address, use cURL to retrieve it:
 Terminal window
 
 ```
-
 curl -sI https://tor.cloudflare-dns.com | grep -i alt-svc
-
-
 ```
 
 ```
-
 alt-svc: h2="dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion:443"; ma=315360000; persist=1
-
-
 ```
 
 ## Setting up a local DNS proxy using socat
@@ -88,10 +73,7 @@ The hidden resolver listens on TCP port 53 (DNS over TCP) and port 853 (DNS over
 Terminal window
 
 ```
-
 PORT=853; socat TCP4-LISTEN:${PORT},reuseaddr,fork SOCKS4A:127.0.0.1:dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion:${PORT},socksport=9150
-
-
 ```
 
 From here, you can follow the regular guide for [setting up 1.1.1.1](https://developers.cloudflare.com/1.1.1.1/setup/), except you should always use `127.0.0.1` instead of `1.1.1.1`. If you need to access the proxy from another device, replace `127.0.0.1` in the `socat` command with your local IP address.
@@ -106,10 +88,7 @@ From here, you can follow the regular guide for [setting up 1.1.1.1](https://dev
 Terminal window
 
 ```
-
 socat TCP4-LISTEN:443,reuseaddr,fork SOCKS4A:127.0.0.1:dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion:443,socksport=9150
-
-
 ```
 
 1. Instruct your machine to treat the `.onion` address as localhost:
@@ -117,14 +96,7 @@ socat TCP4-LISTEN:443,reuseaddr,fork SOCKS4A:127.0.0.1:dns4torpnlfs2ifuz2s2yf3fc
 Terminal window
 
 ```
-
-cat << EOF >> /etc/hosts
-
-127.0.0.1 dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion
-
-EOF
-
-
+cat << EOF >> /etc/hosts127.0.0.1 dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onionEOF
 ```
 
 If you run this command more than once, remove duplicate entries from `/etc/hosts` to avoid conflicts.
@@ -134,21 +106,11 @@ If you run this command more than once, remove duplicate entries from `/etc/host
 Terminal window
 
 ```
-
 cloudflared proxy-dns --upstream "https://dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion/dns-query"
-
-
 ```
 
 ```
-
-INFO[0000] Adding DNS upstream                           url="https://dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion/dns-query"
-
-INFO[0000] Starting DNS over HTTPS proxy server          addr="dns://localhost:53"
-
-INFO[0000] Starting metrics server                       addr="127.0.0.1:35659"
-
-
+INFO[0000] Adding DNS upstream                           url="https://dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion/dns-query"INFO[0000] Starting DNS over HTTPS proxy server          addr="dns://localhost:53"INFO[0000] Starting metrics server                       addr="127.0.0.1:35659"
 ```
 
 ```json

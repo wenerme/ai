@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,8 +22,8 @@ Loopback requests may also be blocked by [I’m Under Attack mode](https://devel
 
 ## Enable Optimize for WordPress
 
-* [  New dashboard ](#tab-panel-6850)
-* [ Old dashboard ](#tab-panel-6851)
+* [  New dashboard ](#tab-panel-6926)
+* [ Old dashboard ](#tab-panel-6927)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

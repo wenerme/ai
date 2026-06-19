@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,15 +29,8 @@ A pre-configured button that joins the meeting. Validates the participant name b
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let joinButton = RtkJoinButton(meeting: rtkClient)
-
-view.addSubview(joinButton)
-
-
+let joinButton = RtkJoinButton(meeting: rtkClient)view.addSubview(joinButton)
 ```
 
 ### With tap handler
@@ -45,33 +38,8 @@ view.addSubview(joinButton)
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let joinButton = RtkJoinButton(
-
-    meeting: rtkClient,
-
-    onClick: { button, success in
-
-        if success {
-
-            print("Joined meeting")
-
-        } else {
-
-            print("Join failed")
-
-        }
-
-    }
-
-)
-
-view.addSubview(joinButton)
-
-
+let joinButton = RtkJoinButton(    meeting: rtkClient,    onClick: { button, success in        if success {            print("Joined meeting")        } else {            print("Join failed")        }    })view.addSubview(joinButton)
 ```
 
 ```json

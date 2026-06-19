@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -38,17 +38,8 @@ The `participant` parameter is positional. Pass it without a named argument: `Rt
 Dart
 
 ```
-
 import 'package:realtimekit_ui/realtimekit_ui.dart';
-
-
-RtkParticipantTile(
-
-  participant,
-
-)
-
-
+RtkParticipantTile(  participant,)
 ```
 
 ### With Properties
@@ -56,23 +47,8 @@ RtkParticipantTile(
 Dart
 
 ```
-
 import 'package:realtimekit_ui/realtimekit_ui.dart';
-
-
-RtkParticipantTile(
-
-  participant,
-
-  designToken: yourDesignToken,
-
-  height: 300,
-
-  width: 200,
-
-)
-
-
+RtkParticipantTile(  participant,  designToken: yourDesignToken,  height: 300,  width: 200,)
 ```
 
 ```json

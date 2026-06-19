@@ -7,15 +7,15 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
 # Use cron triggers to develop time-aware applications
 
-* [ Watch this episode ](#tab-panel-9304)
-* [ Step-by-step tutorial ](#tab-panel-9305)
-* [ Series overview ](#tab-panel-9306)
+* [ Watch this episode ](#tab-panel-9380)
+* [ Step-by-step tutorial ](#tab-panel-9381)
+* [ Series overview ](#tab-panel-9382)
 
 Cloudflare Workflows provide a powerful way to manage asynchronous, durable processes. The ability to explicitly schedule tasks using scheduled handlers and pause execution with `step.sleep` allows developers to build sophisticated, time-aware applications.
 
@@ -59,57 +59,19 @@ The episode repository uses the older pattern of a top-level `[triggers]` sectio
 
 In current Workflows projects, you can usually schedule the Workflow directly on its binding instead:
 
-* [  wrangler.jsonc ](#tab-panel-9302)
-* [  wrangler.toml ](#tab-panel-9303)
+* [  wrangler.jsonc ](#tab-panel-9378)
+* [  wrangler.toml ](#tab-panel-9379)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "workflows": [
-
-    {
-
-      "name": "leaderboard-workflow",
-
-      "binding": "LEADERBOARD_WORKFLOW",
-
-      "class_name": "LeaderboardWorkflow",
-
-      "schedules": [
-
-        "*/30 * * * *"
-
-      ]
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "workflows": [    {      "name": "leaderboard-workflow",      "binding": "LEADERBOARD_WORKFLOW",      "class_name": "LeaderboardWorkflow",      "schedules": [        "*/30 * * * *"      ]    }  ]}
 ```
 
 TOML
 
 ```
-
-[[workflows]]
-
-name = "leaderboard-workflow"
-
-binding = "LEADERBOARD_WORKFLOW"
-
-class_name = "LeaderboardWorkflow"
-
-schedules = ["*/30 * * * *"]
-
-
+[[workflows]]name = "leaderboard-workflow"binding = "LEADERBOARD_WORKFLOW"class_name = "LeaderboardWorkflow"schedules = ["*/30 * * * *"]
 ```
 
 Use a separate Cron Trigger and `scheduled` handler only when you need custom logic before deciding whether to create a Workflow instance. Use the latest Wrangler release when configuring Workflow schedules.
@@ -160,10 +122,7 @@ To trigger the `PuntificatorWorkflow` manually:
 Terminal window
 
 ```
-
 npx wrangler workflows trigger puntificator
-
-
 ```
 
 This command will queue an instance of the workflow. You will receive a success message and the instance ID.
@@ -173,10 +132,7 @@ To describe the latest instance of a workflow:
 Terminal window
 
 ```
-
 npx wrangler workflows instances describe puntificator latest
-
-
 ```
 
 This command will show details about the most recent run of the specified workflow, including its start time, end time, duration, state, and the state of each individual step within the workflow. You can observe steps like `create-new-pun-based-on-trends`, `judge-pun`, `save-pun`, `publish`, and `wait-for-publish` (which shows a 'Sleeping' state).
@@ -185,7 +141,7 @@ This command will show details about the most recent run of the specified workfl
 
 [ Watch Episode 2: Monitor and batch your website data ](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-2/) In this episode, we describe how Workflows can be used to process batches of data, ensuring each item in the batch goes through a defined process with reliable execution. 
 
-[ Watch Episode 3: Use cron triggers to develop time-aware applications ](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-3/) In this episode, we review Workflows ability to explicitly schedule tasks using cron triggers and pause execution with \`step.sleep\` allows developers to build sophisticated, time-aware applications. 
+[ Watch Episode 3: Use cron triggers to develop time-aware applications ](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-3/) In this episode, we review Workflows ability to explicitly schedule tasks using cron triggers and pause execution with \`step.sleep\` allows developers to build sophisticated, time-aware applications.
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-3/#page","headline":"Use cron triggers to develop time-aware applications · Cloudflare Learning Paths","description":"Cloudflare Workflows provide a powerful way to manage asynchronous, durable processes. The ability to explicitly schedule tasks using scheduled handlers and pause execution with step.sleep allows developers to build sophisticated, time-aware applications.","url":"https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-3/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

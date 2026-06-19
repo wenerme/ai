@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tunnel/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -40,8 +40,8 @@ graph LR
 
 ### Deploy a replica
 
-* [ Dashboard ](#tab-panel-10978)
-* [ CLI ](#tab-panel-10979)
+* [ Dashboard ](#tab-panel-10995)
+* [ CLI ](#tab-panel-10996)
 
 To deploy a replica for a remotely-managed tunnel:
 
@@ -154,10 +154,7 @@ The following example shows how to manually run a tunnel with configuration flag
 Terminal window
 
 ```
-
 cloudflared tunnel --loglevel info --logfile /var/log/cloudflared/cloudflared.log run --token <TOKEN VALUE>
-
-
 ```
 
 For the complete list of run parameters and instructions on how to add them to a tunnel service, refer to [Run parameters](https://developers.cloudflare.com/tunnel/advanced/run-parameters/).

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,18 +20,18 @@ To check the list of members in your account, or to manage roles and permissions
 
 Only Super Administrators will be able to assign or remove the following roles from users in their account. Scroll to the right to see a full list of permissions for each role.
 
-| Access Read                                                      | Access Edit | Gateway Read | Gateway Edit | Gateway Report | DNS Location Read | DNS Location Edit | Billing Read | Billing Edit | DEX Read | DEX Edit | CASB Read | CASB Edit |   |
-| ---------------------------------------------------------------- | ----------- | ------------ | ------------ | -------------- | ----------------- | ----------------- | ------------ | ------------ | -------- | -------- | --------- | --------- | - |
-| Super Administrator                                              | ✅           | ✅            | ✅            | ✅              | ✅                 | ✅                 | ✅            | ✅            | ✅        | ✅        | ✅         | ✅         | ✅ |
-| Cloudflare Zero Trust[1](#user-content-fn-1)                     | ✅           | ✅            | ✅            | ✅              | ✅                 | ✅                 | ✅            | ✅            | ❌        | ✅        | ✅         | ✅         | ✅ |
-| Cloudflare Access                                                | ✅           | ✅            | ✅            | ❌              | ✅                 | ❌                 | ❌            | ✅            | ❌        | ❌        | ❌         | ❌         | ❌ |
-| Cloudflare Gateway                                               | ✅           | ❌            | ✅            | ✅              | ✅                 | ✅                 | ✅            | ✅            | ❌        | ❌        | ❌         | ❌         | ❌ |
-| Cloudflare Zero Trust Read Only                                  | ✅           | ❌            | ✅            | ❌              | ✅                 | ✅                 | ❌            | ✅            | ❌        | ✅        | ❌         | ✅         | ❌ |
-| Cloudflare Zero Trust Reporting                                  | ❌           | ❌            | ❌            | ❌              | ✅                 | ❌                 | ❌            | ✅            | ❌        | ✅        | ❌         | ❌         | ❌ |
-| Cloudflare Zero Trust DNS Locations Write[2](#user-content-fn-2) | ❌           | ❌            | ❌            | ❌              | ❌                 | ✅                 | ✅            | ❌            | ❌        | ❌        | ❌         | ❌         | ❌ |
-| Cloudflare DEX                                                   | ❌           | ❌            | ❌            | ❌              | ❌                 | ❌                 | ❌            | ❌            | ❌        | ✅        | ✅         | ❌         | ❌ |
-| Cloudflare CASB Read                                             | ❌           | ❌            | ✅            | ❌              | ❌                 | ❌                 | ❌            | ❌            | ❌        | ❌        | ❌         | ✅         | ❌ |
-| Cloudflare CASB                                                  | ❌           | ❌            | ✅            | ❌              | ❌                 | ❌                 | ❌            | ❌            | ❌        | ❌        | ❌         | ✅         | ✅ |
+|                                                                  | Access Read | Access Edit | Gateway Read | Gateway Edit | Gateway Report | DNS Location Read | DNS Location Edit | Billing Read | Billing Edit | DEX Read | DEX Edit | CASB Read | CASB Edit |
+| ---------------------------------------------------------------- | ----------- | ----------- | ------------ | ------------ | -------------- | ----------------- | ----------------- | ------------ | ------------ | -------- | -------- | --------- | --------- |
+| Super Administrator                                              | ✅           | ✅           | ✅            | ✅            | ✅              | ✅                 | ✅                 | ✅            | ✅            | ✅        | ✅        | ✅         | ✅         |
+| Cloudflare Zero Trust[1](#user-content-fn-1)                     | ✅           | ✅           | ✅            | ✅            | ✅              | ✅                 | ✅                 | ✅            | ❌            | ✅        | ✅        | ✅         | ✅         |
+| Cloudflare Access                                                | ✅           | ✅           | ✅            | ❌            | ✅              | ❌                 | ❌                 | ✅            | ❌            | ❌        | ❌        | ❌         | ❌         |
+| Cloudflare Gateway                                               | ✅           | ❌           | ✅            | ✅            | ✅              | ✅                 | ✅                 | ✅            | ❌            | ❌        | ❌        | ❌         | ❌         |
+| Cloudflare Zero Trust Read Only                                  | ✅           | ❌           | ✅            | ❌            | ✅              | ✅                 | ❌                 | ✅            | ❌            | ✅        | ❌        | ✅         | ❌         |
+| Cloudflare Zero Trust Reporting                                  | ❌           | ❌           | ❌            | ❌            | ✅              | ❌                 | ❌                 | ✅            | ❌            | ✅        | ❌        | ❌         | ❌         |
+| Cloudflare Zero Trust DNS Locations Write[2](#user-content-fn-2) | ❌           | ❌           | ❌            | ❌            | ❌              | ✅                 | ✅                 | ❌            | ❌            | ❌        | ❌        | ❌         | ❌         |
+| Cloudflare DEX                                                   | ❌           | ❌           | ❌            | ❌            | ❌              | ❌                 | ❌                 | ❌            | ❌            | ✅        | ✅        | ❌         | ❌         |
+| Cloudflare CASB Read                                             | ❌           | ❌           | ✅            | ❌            | ❌              | ❌                 | ❌                 | ❌            | ❌            | ❌        | ❌        | ✅         | ❌         |
+| Cloudflare CASB                                                  | ❌           | ❌           | ✅            | ❌            | ❌              | ❌                 | ❌                 | ❌            | ❌            | ❌        | ❌        | ✅         | ✅         |
 
 ### Cloudflare Zero Trust PII
 

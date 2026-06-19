@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,7 +22,7 @@ You can find all details on how to [configure](https://developers.cloudflare.com
 
 ## Set up a query and choose a dataset
 
-Click on the editing pane of GraphiQL and add this base query, replacing`zone-id` with your Cloudflare zone ID:
+Click on the editing pane of GraphiQL and add this base query, replacing `zone-id` with your Cloudflare zone ID:
 
 ![Adding a base query in the GraphiQL pane](https://developers.cloudflare.com/_astro/graphiql-base-query.fKm6YnqW_szGao.webp) 
 
@@ -50,11 +50,11 @@ To display information about the dataset, including required parameters, select 
 
 Note that the `filter` and `limit` arguments are required, as indicated by the exclamation mark (`!`) after their type definitions (gold text). In this example, the `orderBy` argument is not required, though when used it requires a value of type `ZoneFirewallEventsAdaptiveOrderBy`.
 
-To browse a list of supported filter fields, select the filter type definition (gold text) in the Documentation Explorer. In this example, the type is`ZoneFirewallEventsAdaptiveFilter_InputObject`:
+To browse a list of supported filter fields, select the filter type definition (gold text) in the Documentation Explorer. In this example, the type is `ZoneFirewallEventsAdaptiveFilter_InputObject`:
 
 ![Browsing GraphiQL filter fields](https://developers.cloudflare.com/_astro/graphiql-filter-fields.DeLcvFBV_1VYBuR.webp) 
 
-This example query shows the required `filter` and `limit` arguments for`firewallEventsAdaptive` (as well as for the rest of GraphQL nodes):
+This example query shows the required `filter` and `limit` arguments for `firewallEventsAdaptive` (as well as for the rest of GraphQL nodes):
 
 ![Example of GraphiQL query arguments](https://developers.cloudflare.com/_astro/graphiql-filter-values.vYQN7N4B_ZbHnhq.webp) 
 
@@ -90,7 +90,7 @@ To supply a value for a placeholder, select the **Query Variables** pane and edi
 
 This example query uses the `zoneTag` query variable to represent the zone ID:
 
-![Example of GraphiQL query variables](https://developers.cloudflare.com/_astro/graphiql-query-variables.D9uAtvLs_1bnPs.webp) 
+![Example of GraphiQL query variables](https://developers.cloudflare.com/_astro/graphiql-query-variables.D9uAtvLs_1bnPs.webp)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/getting-started/compose-graphql-query/#page","headline":"Compose a query in GraphiQL · Cloudflare Analytics docs","description":"Learn how to use a GraphiQL client to compose and execute a GraphQL query. This guide covers setting up a query, selecting the dataset, and configuring parameters and fields.","url":"https://developers.cloudflare.com/analytics/graphql-api/getting-started/compose-graphql-query/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

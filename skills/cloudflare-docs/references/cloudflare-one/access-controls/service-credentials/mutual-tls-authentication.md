@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,18 +31,18 @@ The mTLS certificate is used only to verify the client certificate. It does not 
 
 * An [Access application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/) for the hostname that you would like to secure with mTLS.
 * A CA that issues client certificates for your devices.  
-   * The CA certificate can be from a publicly trusted CA or self-signed.  
-   * In the certificate `Basic Constraints`, the attribute `CA` must be set to `TRUE`.  
-   * The certificate must use one of the signature algorithms listed below:  
-   Allowed signature algorithms  
-   `x509.SHA1WithRSA`  
-   `x509.SHA256WithRSA`  
-   `x509.SHA384WithRSA`  
-   `x509.SHA512WithRSA`  
-   `x509.ECDSAWithSHA1`  
-   `x509.ECDSAWithSHA256`  
-   `x509.ECDSAWithSHA384`  
-   `x509.ECDSAWithSHA512`
+  * The CA certificate can be from a publicly trusted CA or self-signed.
+  * In the certificate `Basic Constraints`, the attribute `CA` must be set to `TRUE`.
+  * The certificate must use one of the signature algorithms listed below:  
+  Allowed signature algorithms  
+  `x509.SHA1WithRSA`  
+  `x509.SHA256WithRSA`  
+  `x509.SHA384WithRSA`  
+  `x509.SHA512WithRSA`  
+  `x509.ECDSAWithSHA1`  
+  `x509.ECDSAWithSHA256`  
+  `x509.ECDSAWithSHA384`  
+  `x509.ECDSAWithSHA512`
 
 ### Add mTLS to your Access application
 
@@ -51,26 +51,24 @@ The mTLS certificate is used only to verify the client certificate. It does not 
 3. Enter any name for the root CA.
 4. In **Certificate content**, paste the contents of your root CA.  
 If the client certificate is directly signed by the root CA, you only need to upload the root. If the client certificate is signed by an intermediate certificate, you must upload the entire CA chain (intermediate and root). For example:  
+```
+-----BEGIN CERTIFICATE-----<intermediate.pem>-----END CERTIFICATE----------BEGIN CERTIFICATE-----<rootCA.pem>-----END CERTIFICATE-----  
 ```  
------BEGIN CERTIFICATE-----  
-<intermediate.pem>  
------END CERTIFICATE-----  
------BEGIN CERTIFICATE-----  
-<rootCA.pem>  
------END CERTIFICATE-----  
-```  
- Do not include any SSL/TLS server certificates; Access only uses the CA chain to verify the connection between the user's device and Cloudflare.
+Do not include any SSL/TLS server certificates; Access only uses the CA chain to verify the connection between the user's device and Cloudflare.
 1. In **Associated hostnames**, enter the fully-qualified domain names (FQDN) that will use this certificate.  
 These FQDNs will be the hostnames used for the resources being protected in the [Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/). You must associate the Root CA with the FQDN that the application being protected uses.
 2. Save the policy.
 3. Go to **Access controls** \> **Policies**.
-4. [Create an Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/#create-a-policy) using one of the following [selectors](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#selectors):  
-   * **Valid Certificate**: Any client certificate that can authenticate with the Root CA will be allowed to proceed.  
-   * **Common Name**: Only client certificates with a specific common name will be allowed to proceed.
-5. If this is for a client who does not need to log in through an IdP, set the policy **Action** to _Service Auth_.  
-**Example mTLS policy**  
-| Action       | Rule type | Selector    | Value    |  
-| ------------ | --------- | ----------- | -------- |  
+4. [Create an Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/#create-a-policy) using one of the following [selectors](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#selectors):
+
+  * **Valid Certificate**: Any client certificate that can authenticate with the Root CA will be allowed to proceed.
+  * **Common Name**: Only client certificates with a specific common name will be allowed to proceed.
+5. If this is for a client who does not need to log in through an IdP, set the policy **Action** to _Service Auth_.
+
+**Example mTLS policy**
+
+| Action       | Rule type | Selector    | Value    |
+| ------------ | --------- | ----------- | -------- |
 | Service Auth | Include   | Common Name | John Doe |
 6. Save the policy, then go to **Access controls** \> **Applications**.
 7. Select the application you would like to enforce mTLS on and select **Configure**. The application must be included in the **Associated hostnames** list from Step 5.
@@ -114,10 +112,10 @@ Important
 The command adds the client certificate to the trusted store on your device. Only proceed if you are comfortable doing so and intend to keep these testing certificates safeguarded.
 
 1. Navigate to the directory containing the client certificate and key.  
-   1. Open the `client.pem` file in Keychain Access. If prompted, enter your local password.  
-   2. In **Keychain**, choose the access option that suits your needs and select **Add**.  
-   3. In the list of certificates, locate the newly installed certificate. Keychain Access will mark this certificate as not trusted. Right-click the certificate and select **Get Info**.  
-   4. Select **Trust**. Under **When using this certificate**, select _Always Trust_.
+  1. Open the `client.pem` file in Keychain Access. If prompted, enter your local password.
+  2. In **Keychain**, choose the access option that suits your needs and select **Add**.
+  3. In the list of certificates, locate the newly installed certificate. Keychain Access will mark this certificate as not trusted. Right-click the certificate and select **Get Info**.
+  4. Select **Trust**. Under **When using this certificate**, select _Always Trust_.
 
 Assuming your browser uses the macOS system store, you can now connect to the mTLS application through the browser.
 
@@ -160,10 +158,7 @@ openssl req -new -sha256 -key intermediate.key -out intermediate.csr
 You will be prompted to enter your private key password and fill in some optional fields. For testing purposes, you can leave the optional fields blank.
 3. Create a CA Extension file called `v3_intermediate_ca.ext`. For example,  
 ```  
-subjectKeyIdentifier = hash  
-authorityKeyIdentifier = keyid:always,issuer  
-basicConstraints = critical, CA:true  
-keyUsage = critical, cRLSign, keyCertSign  
+subjectKeyIdentifier = hashauthorityKeyIdentifier = keyid:always,issuerbasicConstraints = critical, CA:truekeyUsage = critical, cRLSign, keyCertSign  
 ```  
 Make sure that `basicConstraints` includes the `CA:true` property. This property allows the intermediate certificate to act as a CA and sign client certificates.
 4. Sign the intermediate certificate with the root CA:  
@@ -227,46 +222,16 @@ You can install these packages from the [Cloudflare SSL GitHub repository ↗](h
 #### 2\. Generate the root CA
 
 1. Create a new directory to store the root CA.
-2. Within that directory, create two new files:  
-   * **CSR**. Create a file named `ca-csr.json` and add the following JSON blob, then save the file.  
-   ```  
-   {  
-     "CN": "Access Testing CA",  
-     "key": {  
-       "algo": "rsa",  
-       "size": 4096  
-     },  
-     "names": [  
-       {  
-         "C": "US",  
-         "L": "Austin",  
-         "O": "Access Testing",  
-         "OU": "TX",  
-         "ST": "Texas"  
-       }  
-     ]  
-   }  
-   ```  
-   * **config**. Create a file named `ca-config.json` and add the following JSON blob, then save the file.  
-   ```  
-   {  
-     "signing": {  
-       "default": {  
-         "expiry": "8760h"  
-       },  
-       "profiles": {  
-         "server": {  
-           "usages": ["signing", "key encipherment", "server auth"],  
-           "expiry": "8760h"  
-         },  
-         "client": {  
-           "usages": ["signing", "key encipherment", "client auth"],  
-           "expiry": "8760h"  
-         }  
-       }  
-     }  
-   }  
-   ```
+2. Within that directory, create two new files:
+
+  * **CSR**. Create a file named `ca-csr.json` and add the following JSON blob, then save the file.  
+  ```  
+  {  "CN": "Access Testing CA",  "key": {    "algo": "rsa",    "size": 4096  },  "names": [    {      "C": "US",      "L": "Austin",      "O": "Access Testing",      "OU": "TX",      "ST": "Texas"    }  ]}  
+  ```
+  * **config**. Create a file named `ca-config.json` and add the following JSON blob, then save the file.  
+  ```  
+  {  "signing": {    "default": {      "expiry": "8760h"    },    "profiles": {      "server": {        "usages": ["signing", "key encipherment", "server auth"],        "expiry": "8760h"      },      "client": {        "usages": ["signing", "key encipherment", "client auth"],        "expiry": "8760h"      }    }  }}  
+  ```
 3. Now, run the following command to generate the root CA with those files.  
 Terminal window  
 ```  
@@ -288,23 +253,7 @@ To generate a client certificate that will authenticate against the uploaded roo
 
 1. Create a file named `client-csr.json` and add the following JSON blob:  
 ```  
-{  
-  "CN": "James Royal",  
-  "hosts": [""],  
-  "key": {  
-    "algo": "rsa",  
-    "size": 4096  
-  },  
-  "names": [  
-    {  
-      "C": "US",  
-      "L": "Austin",  
-      "O": "Access",  
-      "OU": "Access Admins",  
-      "ST": "Texas"  
-    }  
-  ]  
-}  
+{  "CN": "James Royal",  "hosts": [""],  "key": {    "algo": "rsa",    "size": 4096  },  "names": [    {      "C": "US",      "L": "Austin",      "O": "Access",      "OU": "Access Admins",      "ST": "Texas"    }  ]}  
 ```
 2. Now, use the following command to generate a client certificate with the Cloudflare PKI toolkit:  
 Terminal window  
@@ -371,10 +320,7 @@ This rule unconditionally removes any `Client-Cert` header sent by the client.
 Text in **Expression Editor**:
 
 ```
-
 true
-
-
 ```
 
 Selected operation under **Modify request header**: _Remove_
@@ -388,10 +334,7 @@ This rule unconditionally removes any `Client-Cert-Chain` header sent by the cli
 Text in **Expression Editor**:
 
 ```
-
 true
-
-
 ```
 
 Selected operation under **Modify request header**: _Remove_
@@ -405,14 +348,7 @@ This rule sets the `Client-Cert` header only when the client presented a valid, 
 Text in **Expression Editor**:
 
 ```
-
-cf.tls_client_auth.cert_verified
-
-and not cf.tls_client_auth.cert_revoked
-
-and not cf.tls_client_auth.cert_rfc9440_too_large
-
-
+cf.tls_client_auth.cert_verifiedand not cf.tls_client_auth.cert_revokedand not cf.tls_client_auth.cert_rfc9440_too_large
 ```
 
 Selected operation under **Modify request header**: _Set dynamic_
@@ -428,16 +364,7 @@ This rule sets the `Client-Cert-Chain` header only when the client presented a v
 Text in **Expression Editor**:
 
 ```
-
-cf.tls_client_auth.cert_verified
-
-and not cf.tls_client_auth.cert_revoked
-
-and cf.tls_client_auth.cert_chain_rfc9440 ne ""
-
-and not cf.tls_client_auth.cert_chain_rfc9440_too_large
-
-
+cf.tls_client_auth.cert_verifiedand not cf.tls_client_auth.cert_revokedand cf.tls_client_auth.cert_chain_rfc9440 ne ""and not cf.tls_client_auth.cert_chain_rfc9440_too_large
 ```
 
 Selected operation under **Modify request header**: _Set dynamic_
@@ -468,40 +395,13 @@ The most common approach to forwarding a certificate is to use the Cloudflare AP
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Access: Mutual TLS Certificates Write`
 
 Update an mTLS certificate's hostname settings
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/access/certificates/settings" \
-
-  --request PUT \
-
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
-
-  --json '{
-
-    "settings": [
-
-        {
-
-            "hostname": "<HOSTNAME>",
-
-            "china_network": false,
-
-            "client_certificate_forwarding": true
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/access/certificates/settings" \  --request PUT \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \  --json '{    "settings": [        {            "hostname": "<HOSTNAME>",            "china_network": false,            "client_certificate_forwarding": true        }    ]  }'
 ```
 
 Once `client_certificate_forwarding` is set to `true`, every request within an mTLS connection will now include the following headers:
@@ -524,30 +424,7 @@ Additionally, Workers can provide details around the [client certificate](https:
 JavaScript
 
 ```
-
-const tlsHeaders = {
-
-  "X-CERT-ISSUER-DN": request.cf.tlsClientAuth.certIssuerDN,
-
-  "X-CERT-SUBJECT-DN": request.cf.tlsClientAuth.certSubjectDN,
-
-  "X-CERT-ISSUER-DN-L": request.cf.tlsClientAuth.certIssuerDNLegacy,
-
-  "X-CERT-SUBJECT-DN-L": request.cf.tlsClientAuth.certSubjectDNLegacy,
-
-  "X-CERT-SERIAL": request.cf.tlsClientAuth.certSerial,
-
-  "X-CERT-FINGER": request.cf.tlsClientAuth.certFingerprintSHA1,
-
-  "X-CERT-VERIFY": request.cf.tlsClientAuth.certVerify,
-
-  "X-CERT-NOTBE": request.cf.tlsClientAuth.certNotBefore,
-
-  "X-CERT-NOTAF": request.cf.tlsClientAuth.certNotAfter,
-
-};
-
-
+const tlsHeaders = {  "X-CERT-ISSUER-DN": request.cf.tlsClientAuth.certIssuerDN,  "X-CERT-SUBJECT-DN": request.cf.tlsClientAuth.certSubjectDN,  "X-CERT-ISSUER-DN-L": request.cf.tlsClientAuth.certIssuerDNLegacy,  "X-CERT-SUBJECT-DN-L": request.cf.tlsClientAuth.certSubjectDNLegacy,  "X-CERT-SERIAL": request.cf.tlsClientAuth.certSerial,  "X-CERT-FINGER": request.cf.tlsClientAuth.certFingerprintSHA1,  "X-CERT-VERIFY": request.cf.tlsClientAuth.certVerify,  "X-CERT-NOTBE": request.cf.tlsClientAuth.certNotBefore,  "X-CERT-NOTAF": request.cf.tlsClientAuth.certNotAfter,};
 ```
 
 ## Known limitations

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -46,25 +46,8 @@ A composite view for displaying plugins and screen share content. Includes a tab
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let viewModel = VideoPeerViewModel(
-
-    meeting: rtkClient,
-
-    participant: participant,
-
-    showSelfPreviewVideo: false
-
-)
-
-let pluginsView = RtkPluginsView(videoPeerViewModel: viewModel)
-
-view.addSubview(pluginsView)
-
-
+let viewModel = VideoPeerViewModel(    meeting: rtkClient,    participant: participant,    showSelfPreviewVideo: false)let pluginsView = RtkPluginsView(videoPeerViewModel: viewModel)view.addSubview(pluginsView)
 ```
 
 ### With tab buttons
@@ -72,48 +55,9 @@ view.addSubview(pluginsView)
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let viewModel = VideoPeerViewModel(
-
-    meeting: rtkClient,
-
-    participant: participant,
-
-    showSelfPreviewVideo: false
-
-)
-
-let pluginsView = RtkPluginsView(videoPeerViewModel: viewModel)
-
-
-let buttons = [
-
-    RtkPluginScreenShareTabButton(image: nil, title: "Screen Share"),
-
-    RtkPluginScreenShareTabButton(image: nil, title: "Whiteboard")
-
-]
-
-pluginsView.setButtons(
-
-    buttons: buttons,
-
-    selectedIndex: 0,
-
-    clickAction: { index in
-
-        print("Selected tab: \(index)")
-
-    }
-
-)
-
-view.addSubview(pluginsView)
-
-
+let viewModel = VideoPeerViewModel(    meeting: rtkClient,    participant: participant,    showSelfPreviewVideo: false)let pluginsView = RtkPluginsView(videoPeerViewModel: viewModel)
+let buttons = [    RtkPluginScreenShareTabButton(image: nil, title: "Screen Share"),    RtkPluginScreenShareTabButton(image: nil, title: "Whiteboard")]pluginsView.setButtons(    buttons: buttons,    selectedIndex: 0,    clickAction: { index in        print("Selected tab: \(index)")    })view.addSubview(pluginsView)
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,32 +21,7 @@ This guide demonstrates creating a standalone Worker from scratch. If you would 
 package.json
 
 ```
-
-{
-
-  "name": "cloudflare-vite-get-started",
-
-  "private": true,
-
-  "version": "0.0.0",
-
-  "type": "module",
-
-  "scripts": {
-
-    "dev": "vite dev",
-
-    "build": "vite build",
-
-    "preview": "npm run build && vite preview",
-
-    "deploy": "npm run build && wrangler deploy"
-
-  }
-
-}
-
-
+{  "name": "cloudflare-vite-get-started",  "private": true,  "version": "0.0.0",  "type": "module",  "scripts": {    "dev": "vite dev",    "build": "vite build",    "preview": "npm run build && vite preview",    "deploy": "npm run build && wrangler deploy"  }}
 ```
 
 Note
@@ -78,19 +53,8 @@ bun add -d vite @cloudflare/vite-plugin wrangler
 vite.config.ts
 
 ```
-
-import { defineConfig } from "vite";
-
-import { cloudflare } from "@cloudflare/vite-plugin";
-
-
-export default defineConfig({
-
-  plugins: [cloudflare()],
-
-});
-
-
+import { defineConfig } from "vite";import { cloudflare } from "@cloudflare/vite-plugin";
+export default defineConfig({  plugins: [cloudflare()],});
 ```
 
 The Cloudflare Vite plugin doesn't require any configuration by default and will look for a `wrangler.jsonc`, `wrangler.json` or `wrangler.toml` in the root of your application.
@@ -99,45 +63,19 @@ Refer to the [API reference](https://developers.cloudflare.com/workers/vite-plug
 
 ## Create your Worker config file
 
-* [  wrangler.jsonc ](#tab-panel-12207)
-* [  wrangler.toml ](#tab-panel-12208)
+* [  wrangler.jsonc ](#tab-panel-12224)
+* [  wrangler.toml ](#tab-panel-12225)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "cloudflare-vite-get-started",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "main": "./src/index.ts"
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "cloudflare-vite-get-started",  // Set this to today's date  "compatibility_date": "2026-06-19",  "main": "./src/index.ts"}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "cloudflare-vite-get-started"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-main = "./src/index.ts"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "cloudflare-vite-get-started"# Set this to today's datecompatibility_date = "2026-06-19"main = "./src/index.ts"
 ```
 
 The `name` field specifies the name of your Worker. By default, this is also used as the name of the Worker's Vite Environment (see [Vite Environments](https://developers.cloudflare.com/workers/vite-plugin/reference/vite-environments/) for more information). The `main` field specifies the entry file for your Worker code.
@@ -149,18 +87,7 @@ For more information about the Worker configuration, see [Configuration](https:/
 src/index.ts
 
 ```
-
-export default {
-
-  fetch() {
-
-    return new Response(`Running in ${navigator.userAgent}!`);
-
-  },
-
-};
-
-
+export default {  fetch() {    return new Response(`Running in ${navigator.userAgent}!`);  },};
 ```
 
 A request to this Worker will return **'Running in Cloudflare-Workers!'**, demonstrating that the code is running inside the Workers runtime.

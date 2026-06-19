@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,400 +29,114 @@ Recraft V4.1 Pro generates high-resolution, art-directed images at 2048px+ tuned
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1586)
-* [ cURL ](#tab-panel-1587)
+* [ TypeScript ](#tab-panel-1642)
+* [ cURL ](#tab-panel-1643)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'recraft/recraftv4-1-pro',
-
-  {
-
-    prompt:
-
-      'A detailed vintage botanical illustration of a rose with leaves and thorns, scientific illustration style',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'recraft/recraftv4-1-pro',  {    prompt:      'A detailed vintage botanical illustration of a rose with leaves and thorns, scientific illustration style',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "recraft/recraftv4-1-pro",
-
-  "input": {
-
-    "prompt": "A detailed vintage botanical illustration of a rose with leaves and thorns, scientific illustration style"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "recraft/recraftv4-1-pro",  "input": {    "prompt": "A detailed vintage botanical illustration of a rose with leaves and thorns, scientific illustration style"  }}'
 ```
 
-* [ Output ](#tab-panel-1584)
-* [ Raw response ](#tab-panel-1585)
+* [ Output ](#tab-panel-1640)
+* [ Raw response ](#tab-panel-1641)
 
 ![Print-Ready Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-pro/print-ready-illustration.png) 
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-pro/print-ready-illustration.png"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-pro/print-ready-illustration.png"  },  "state": "Completed"}
 ```
 
 ## Examples
 
 **Large Format Art**  — Large canvas digital art 
 
-* [ TypeScript ](#tab-panel-1590)
-* [ cURL ](#tab-panel-1591)
+* [ TypeScript ](#tab-panel-1646)
+* [ cURL ](#tab-panel-1647)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'recraft/recraftv4-1-pro',
-
-  {
-
-    prompt:
-
-      'A sweeping fantasy landscape with floating islands, waterfalls cascading into clouds, and ancient stone bridges connecting the islands',
-
-    size: '2048x2048',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'recraft/recraftv4-1-pro',  {    prompt:      'A sweeping fantasy landscape with floating islands, waterfalls cascading into clouds, and ancient stone bridges connecting the islands',    size: '2048x2048',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "recraft/recraftv4-1-pro",
-
-  "input": {
-
-    "prompt": "A sweeping fantasy landscape with floating islands, waterfalls cascading into clouds, and ancient stone bridges connecting the islands",
-
-    "size": "2048x2048"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "recraft/recraftv4-1-pro",  "input": {    "prompt": "A sweeping fantasy landscape with floating islands, waterfalls cascading into clouds, and ancient stone bridges connecting the islands",    "size": "2048x2048"  }}'
 ```
 
-* [ Output ](#tab-panel-1588)
-* [ Raw response ](#tab-panel-1589)
+* [ Output ](#tab-panel-1644)
+* [ Raw response ](#tab-panel-1645)
 
 ![Large Format Art](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-pro/large-format-art.png) 
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-pro/large-format-art.png"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-pro/large-format-art.png"  },  "state": "Completed"}
 ```
 
 **Brand Asset**  — Professional brand asset with controlled colors 
 
-* [ TypeScript ](#tab-panel-1598)
-* [ cURL ](#tab-panel-1599)
+* [ TypeScript ](#tab-panel-1654)
+* [ cURL ](#tab-panel-1655)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'recraft/recraftv4-1-pro',
-
-  {
-
-    prompt:
-
-      'A modern, clean illustration of a shield with a checkmark inside, representing security and trust',
-
-    controls: {
-
-      background_color: { rgb: [15, 23, 42] },
-
-      colors: [{ rgb: [46, 117, 182] }, { rgb: [255, 255, 255] }],
-
-    },
-
-    size: '2048x2048',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'recraft/recraftv4-1-pro',  {    prompt:      'A modern, clean illustration of a shield with a checkmark inside, representing security and trust',    controls: {      background_color: { rgb: [15, 23, 42] },      colors: [{ rgb: [46, 117, 182] }, { rgb: [255, 255, 255] }],    },    size: '2048x2048',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "recraft/recraftv4-1-pro",
-
-  "input": {
-
-    "prompt": "A modern, clean illustration of a shield with a checkmark inside, representing security and trust",
-
-    "controls": {
-
-      "background_color": {
-
-        "rgb": [
-
-          15,
-
-          23,
-
-          42
-
-        ]
-
-      },
-
-      "colors": [
-
-        {
-
-          "rgb": [
-
-            46,
-
-            117,
-
-            182
-
-          ]
-
-        },
-
-        {
-
-          "rgb": [
-
-            255,
-
-            255,
-
-            255
-
-          ]
-
-        }
-
-      ]
-
-    },
-
-    "size": "2048x2048"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "recraft/recraftv4-1-pro",  "input": {    "prompt": "A modern, clean illustration of a shield with a checkmark inside, representing security and trust",    "controls": {      "background_color": {        "rgb": [          15,          23,          42        ]      },      "colors": [        {          "rgb": [            46,            117,            182          ]        },        {          "rgb": [            255,            255,            255          ]        }      ]    },    "size": "2048x2048"  }}'
 ```
 
-* [ Output ](#tab-panel-1592)
-* [ Raw response ](#tab-panel-1593)
+* [ Output ](#tab-panel-1648)
+* [ Raw response ](#tab-panel-1649)
 
 ![Brand Asset](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-pro/brand-asset.png) 
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-pro/brand-asset.png"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-pro/brand-asset.png"  },  "state": "Completed"}
 ```
 
 **Editorial Illustration**  — Magazine-quality editorial illustration 
 
-* [ TypeScript ](#tab-panel-1596)
-* [ cURL ](#tab-panel-1597)
+* [ TypeScript ](#tab-panel-1652)
+* [ cURL ](#tab-panel-1653)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'recraft/recraftv4-1-pro',
-
-  {
-
-    prompt:
-
-      'A conceptual illustration of artificial intelligence as a tree with circuit-board branches and glowing data leaves',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'recraft/recraftv4-1-pro',  {    prompt:      'A conceptual illustration of artificial intelligence as a tree with circuit-board branches and glowing data leaves',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "recraft/recraftv4-1-pro",
-
-  "input": {
-
-    "prompt": "A conceptual illustration of artificial intelligence as a tree with circuit-board branches and glowing data leaves"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "recraft/recraftv4-1-pro",  "input": {    "prompt": "A conceptual illustration of artificial intelligence as a tree with circuit-board branches and glowing data leaves"  }}'
 ```
 
-* [ Output ](#tab-panel-1594)
-* [ Raw response ](#tab-panel-1595)
+* [ Output ](#tab-panel-1650)
+* [ Raw response ](#tab-panel-1651)
 
 ![Editorial Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-pro/editorial-illustration.png) 
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-pro/editorial-illustration.png"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-pro/editorial-illustration.png"  },  "state": "Completed"}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-1600)
-* [ Output ](#tab-panel-1601)
+* [ Input ](#tab-panel-1656)
+* [ Output ](#tab-panel-1657)
 
 ▶controls{}
 
@@ -452,7 +166,7 @@ image
 
 Input [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-pro/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-pro/schema-input.json "Download") 
 
-Output [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-pro/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-pro/schema-output.json "Download") 
+Output [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-pro/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-pro/schema-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-pro/#page","headline":"Recraft V4.1 Pro (Recraft) · Cloudflare AI docs · Cloudflare AI docs","description":"Recraft V4.1 Pro generates high-resolution, art-directed images at 2048px+ tuned for high aesthetics, with strong composition, text rendering, and refined design taste. Built for print and production work.","url":"https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-pro/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

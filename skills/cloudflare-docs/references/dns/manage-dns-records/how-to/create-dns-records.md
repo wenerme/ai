@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,8 +26,8 @@ If your domain is added to Cloudflare by a hosting partner, manage your DNS reco
 
 ### Create DNS records
 
-* [ Dashboard ](#tab-panel-8093)
-* [ API ](#tab-panel-8094)
+* [ Dashboard ](#tab-panel-8169)
+* [ API ](#tab-panel-8170)
 
 To create a DNS record in the dashboard:
 
@@ -35,11 +35,12 @@ To create a DNS record in the dashboard:
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Select **Add record**.
 3. Choose a record [**Type**](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/).
-4. Complete the required fields, which vary per record. Particularly important fields (for some records) include:  
-   * **Proxy status**: For `A`, `AAAA`, and `CNAME` records, decide whether hostname traffic is [proxied through Cloudflare](https://developers.cloudflare.com/dns/proxy-status/).  
-   * **TTL**: Short for [_Time to Live_](https://developers.cloudflare.com/dns/manage-dns-records/reference/ttl/), this field controls how long each record is valid and — as a result — how long it takes for record updates to reach your end users.  
-   * **Comment** and **Tag**: [Record attributes](https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes/) meant for your reference.  
-   * **Private network routing**: Some Enterprise customers also have access to [private network routing](https://developers.cloudflare.com/dns/private-origins/private-network-routing/). For `A` and `AAAA` records, this feature allows you to proxy HTTP/HTTPS traffic from public hostnames to origins in your private network.
+4. Complete the required fields, which vary per record. Particularly important fields (for some records) include:
+
+  * **Proxy status**: For `A`, `AAAA`, and `CNAME` records, decide whether hostname traffic is [proxied through Cloudflare](https://developers.cloudflare.com/dns/proxy-status/).
+  * **TTL**: Short for [_Time to Live_](https://developers.cloudflare.com/dns/manage-dns-records/reference/ttl/), this field controls how long each record is valid and — as a result — how long it takes for record updates to reach your end users.
+  * **Comment** and **Tag**: [Record attributes](https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes/) meant for your reference.
+  * **Private network routing**: Some Enterprise customers also have access to [private network routing](https://developers.cloudflare.com/dns/private-origins/private-network-routing/). For `A` and `AAAA` records, this feature allows you to proxy HTTP/HTTPS traffic from public hostnames to origins in your private network.
 5. Select **Save**.
 
 To create records with the API, use a [POST request](https://developers.cloudflare.com/api/resources/dns/subresources/records/methods/create/). For field definitions, select a record type under the request body specification.
@@ -48,8 +49,8 @@ For specific API examples, refer to [DNS record types](https://developers.cloudf
 
 ### Edit DNS records
 
-* [ Dashboard ](#tab-panel-8089)
-* [ API ](#tab-panel-8090)
+* [ Dashboard ](#tab-panel-8165)
+* [ API ](#tab-panel-8166)
 
 To edit DNS records in the dashboard:
 
@@ -63,8 +64,8 @@ To update part of a record with the API, use a [PATCH request](https://developer
 
 ### Delete DNS records
 
-* [ Dashboard ](#tab-panel-8091)
-* [ API ](#tab-panel-8092)
+* [ Dashboard ](#tab-panel-8167)
+* [ API ](#tab-panel-8168)
 
 To delete DNS records in the dashboard:
 

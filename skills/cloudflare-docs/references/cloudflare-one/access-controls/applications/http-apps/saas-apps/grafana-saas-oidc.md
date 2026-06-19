@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -46,11 +46,11 @@ You can also configure OIDC SSO for Grafana using a [configuration file ↗](htt
 1. In Grafana, select the **menu** icon > **Administration** \> **Authentication** \> **Generic OAuth**.
 2. (Optional) For **Display name**, enter a new display name (for example, `Cloudflare Access`). Users will select **Sign in with (display name)** when signing in via SSO.
 3. Fill in the following fields:  
-   * **Client Id**: Client ID from application configuration in Cloudflare One  
-   * **Client secret**: Client secret from application configuration in Cloudflare One  
-   * **Scopes**: Delete `user:email` and enter the scopes configured in Cloudflare One  
-   * **Auth URL**: Authorization endpoint from application configuration in Cloudflare One  
-   * **Token URL**: Token endpoint from application configuration in Cloudflare One
+  * **Client Id**: Client ID from application configuration in Cloudflare One
+  * **Client secret**: Client secret from application configuration in Cloudflare One
+  * **Scopes**: Delete `user:email` and enter the scopes configured in Cloudflare One
+  * **Auth URL**: Authorization endpoint from application configuration in Cloudflare One
+  * **Token URL**: Token endpoint from application configuration in Cloudflare One
 4. Select **Save**.
 
 ## 3\. Test the integration

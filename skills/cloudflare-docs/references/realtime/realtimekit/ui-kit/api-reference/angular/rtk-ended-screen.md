@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,29 +30,13 @@ A screen which shows a meeting has ended.
 ### Basic Usage
 
 ```
-
-<!-- component.html -->
-
-<rtk-ended-screen></rtk-ended-screen>
-
-
+<!-- component.html --><rtk-ended-screen></rtk-ended-screen>
 ```
 
 ### With Properties
 
 ```
-
-<!-- component.html -->
-
-<rtk-ended-screen
-
- [meeting]="meeting"
-
- size="md">
-
-</rtk-ended-screen>
-
-
+<!-- component.html --><rtk-ended-screen [meeting]="meeting" size="md"></rtk-ended-screen>
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/web3/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -52,28 +52,7 @@ If you need help with API authentication, refer to [Cloudflare API documentation
 Request
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/web3/hostnames" \
-
---header "X-Auth-Email: <EMAIL>" \
-
---header "X-Auth-Key: <API_KEY>" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "name": "gateway.example.com",
-
-  "description": "This is my IPFS gateway.",
-
-  "target": "ipfs",
-
-  "dnslink": "/ipns/onboarding.ipfs.cloudflare.com"
-
-}'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/web3/hostnames" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "name": "gateway.example.com",  "description": "This is my IPFS gateway.",  "target": "ipfs",  "dnslink": "/ipns/onboarding.ipfs.cloudflare.com"}'
 ```
 
 The response contains the complete definition of the new gateway.
@@ -81,38 +60,7 @@ The response contains the complete definition of the new gateway.
 Response
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": [],
-
-  "result": {
-
-    "id": "<WEB3_GATEWAY_ID>",
-
-    "name": "gateway.example.com",
-
-    "description": "This is my IPFS gateway.",
-
-    "status": "active",
-
-    "target": "ipfs",
-
-    "dnslink": "/ipns/onboarding.ipfs.cloudflare.com",
-
-    "created_on": "<CREATED_ON_DATE>",
-
-    "modified_on": "<MODIFIED_ON_DATE>"
-
-  }
-
-}
-
-
+{  "success": true,  "errors": [],  "messages": [],  "result": {    "id": "<WEB3_GATEWAY_ID>",    "name": "gateway.example.com",    "description": "This is my IPFS gateway.",    "status": "active",    "target": "ipfs",    "dnslink": "/ipns/onboarding.ipfs.cloudflare.com",    "created_on": "<CREATED_ON_DATE>",    "modified_on": "<MODIFIED_ON_DATE>"  }}
 ```
 
 When you create a gateway, Cloudflare automatically:
@@ -140,11 +88,12 @@ To set up those notifications:
 1. In the Cloudflare dashboard, go to the **Notifications** page.  
 [ Go to **Notifications** ](https://dash.cloudflare.com/?to=/:account/notifications)
 2. On **Alert Type** of **Usage Based Billing**, click **Select**.
-3. Fill out the following information:  
-   * **Name**  
-   * **Product**  
-   * **Notification limit** (exact metric will vary based on product)  
-   * **Notification email**  
+3. Fill out the following information:
+
+  * **Name**
+  * **Product**
+  * **Notification limit** (exact metric will vary based on product)
+  * **Notification email**  
 Note  
 Some plans also have access to alerts through [PagerDuty](https://developers.cloudflare.com/notifications/get-started/configure-pagerduty/) and [Webhooks](https://developers.cloudflare.com/notifications/get-started/configure-webhooks/).
 4. Select **Save**.

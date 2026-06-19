@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,48 +21,9 @@ The example code contains a generic header key and value of `X-Custom-PSK` and `
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request) {
-
-    /**
-
-     * @param {string} PRESHARED_AUTH_HEADER_KEY Custom header to check for key
-
-     * @param {string} PRESHARED_AUTH_HEADER_VALUE Hard-coded key value
-
-     */
-
-    const PRESHARED_AUTH_HEADER_KEY = "X-Custom-PSK";
-
-    const PRESHARED_AUTH_HEADER_VALUE = "mypresharedkey";
-
-    const psk = request.headers.get(PRESHARED_AUTH_HEADER_KEY);
-
-
-    if (psk === PRESHARED_AUTH_HEADER_VALUE) {
-
-      // Correct preshared header key supplied. Fetch request from origin.
-
-      return fetch(request);
-
-    }
-
-
-    // Incorrect key supplied. Reject the request.
-
-    return new Response("Sorry, you have supplied an invalid key.", {
-
-      status: 403,
-
-    });
-
-  },
-
-};
-
-
+export default {  async fetch(request) {    /**     * @param {string} PRESHARED_AUTH_HEADER_KEY Custom header to check for key     * @param {string} PRESHARED_AUTH_HEADER_VALUE Hard-coded key value     */    const PRESHARED_AUTH_HEADER_KEY = "X-Custom-PSK";    const PRESHARED_AUTH_HEADER_VALUE = "mypresharedkey";    const psk = request.headers.get(PRESHARED_AUTH_HEADER_KEY);
+    if (psk === PRESHARED_AUTH_HEADER_VALUE) {      // Correct preshared header key supplied. Fetch request from origin.      return fetch(request);    }
+    // Incorrect key supplied. Reject the request.    return new Response("Sorry, you have supplied an invalid key.", {      status: 403,    });  },};
 ```
 
 ```json

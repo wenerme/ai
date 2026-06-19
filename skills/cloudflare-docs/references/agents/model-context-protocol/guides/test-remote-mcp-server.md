@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,17 +26,17 @@ Terminal window
 npx @modelcontextprotocol/inspector  
 ```  
 ```  
-🚀 MCP Inspector is up and running at:  
-  http://localhost:5173/?MCP_PROXY_AUTH_TOKEN=46ab..cd3  
+🚀 MCP Inspector is up and running at:  http://localhost:5173/?MCP_PROXY_AUTH_TOKEN=46ab..cd3  
 🌐 Opening browser...  
 ```  
 The MCP Inspector will launch in your web browser. You can also launch it manually by opening a browser and going to `http://localhost:<PORT>`. Check the command output for the local port where MCP Inspector is running. In this example, MCP Inspector is served on port `5173`.
 2. In the MCP inspector, enter the URL of your MCP server (for example, `http://localhost:8788/mcp`). Select **Connect**.  
 You can connect to an MCP server running on your local machine or a remote MCP server running on Cloudflare.
-3. If your server requires authentication, the connection will fail. To authenticate:  
-   1. In MCP Inspector, select **Open Auth settings**.  
-   2. Select **Quick OAuth Flow**.  
-   3. Once you have authenticated with the OAuth provider, you will be redirected back to MCP Inspector. Select **Connect**.
+3. If your server requires authentication, the connection will fail. To authenticate:
+
+  1. In MCP Inspector, select **Open Auth settings**.
+  2. Select **Quick OAuth Flow**.
+  3. Once you have authenticated with the OAuth provider, you will be redirected back to MCP Inspector. Select **Connect**.
 
 You should see the **List tools** button, which will list the tools that your MCP server exposes.
 
@@ -52,24 +52,7 @@ You can use the [mcp-remote local proxy ↗](https://www.npmjs.com/package/mcp-r
 2. Replace the content with a configuration like this:
 
 ```
-
-{
-
-  "mcpServers": {
-
-    "my-server": {
-
-      "command": "npx",
-
-      "args": ["mcp-remote", "http://my-mcp-server.my-account.workers.dev/mcp"]
-
-    }
-
-  }
-
-}
-
-
+{  "mcpServers": {    "my-server": {      "command": "npx",      "args": ["mcp-remote", "http://my-mcp-server.my-account.workers.dev/mcp"]    }  }}
 ```
 
 1. Save the file and restart Claude Desktop (command/ctrl + R). When Claude restarts, a browser window will open showing your OAuth login page. Complete the authorization flow to grant Claude access to your MCP server.
@@ -81,22 +64,7 @@ Once authenticated, you'll be able to see your tools by clicking the tools icon 
 Connect [Cursor ↗](https://cursor.com/docs/context/mcp) to your remote MCP server by editing the project's `.cursor/mcp.json` file or a global `~/.cursor/mcp.json` file and adding the following configuration:
 
 ```
-
-{
-
-  "mcpServers": {
-
-    "my-server": {
-
-      "url": "http://my-mcp-server.my-account.workers.dev/mcp"
-
-    }
-
-  }
-
-}
-
-
+{  "mcpServers": {    "my-server": {      "url": "http://my-mcp-server.my-account.workers.dev/mcp"    }  }}
 ```
 
 ## Connect your remote MCP server to Windsurf
@@ -104,22 +72,7 @@ Connect [Cursor ↗](https://cursor.com/docs/context/mcp) to your remote MCP ser
 You can connect your remote MCP server to [Windsurf ↗](https://docs.windsurf.com) by editing the [mcp\_config.json file ↗](https://docs.windsurf.com/windsurf/cascade/mcp), and adding the following configuration:
 
 ```
-
-{
-
-  "mcpServers": {
-
-    "my-server": {
-
-      "serverUrl": "http://my-mcp-server.my-account.workers.dev/mcp"
-
-    }
-
-  }
-
-}
-
-
+{  "mcpServers": {    "my-server": {      "serverUrl": "http://my-mcp-server.my-account.workers.dev/mcp"    }  }}
 ```
 
 ```json

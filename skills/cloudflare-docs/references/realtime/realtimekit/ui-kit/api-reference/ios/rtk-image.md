@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,13 +28,8 @@ A struct that wraps a `UIImage` or a `URL` for image content. Used throughout th
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
 let rtkImage = RtkImage(image: UIImage(systemName: "mic"))
-
-
 ```
 
 ### With a remote URL
@@ -42,13 +37,8 @@ let rtkImage = RtkImage(image: UIImage(systemName: "mic"))
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
 let rtkImage = RtkImage(url: URL(string: "https://example.com/avatar.png"))
-
-
 ```
 
 ```json

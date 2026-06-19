@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -59,75 +59,21 @@ When automatic configuration runs, the following files may be created or modifie
 
 A new Wrangler configuration file is created with settings appropriate for your framework:
 
-* [  wrangler.jsonc ](#tab-panel-11782)
-* [  wrangler.toml ](#tab-panel-11783)
+* [  wrangler.jsonc ](#tab-panel-11799)
+* [  wrangler.toml ](#tab-panel-11800)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "node_modules/wrangler/config-schema.json",
-
-  "name": "my-project",
-
-  "main": "dist/_worker.js/index.js",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "compatibility_flags": ["nodejs_compat"],
-
-  "assets": {
-
-    "binding": "ASSETS",
-
-    "directory": "dist",
-
-  },
-
-  "observability": {
-
-    "enabled": true,
-
-  },
-
-}
-
-
+{  "$schema": "node_modules/wrangler/config-schema.json",  "name": "my-project",  "main": "dist/_worker.js/index.js",  // Set this to today's date  "compatibility_date": "2026-06-19",  "compatibility_flags": ["nodejs_compat"],  "assets": {    "binding": "ASSETS",    "directory": "dist",  },  "observability": {    "enabled": true,  },}
 ```
 
 TOML
 
 ```
-
-"$schema" = "node_modules/wrangler/config-schema.json"
-
-name = "my-project"
-
-main = "dist/_worker.js/index.js"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-compatibility_flags = [ "nodejs_compat" ]
-
-
-[assets]
-
-binding = "ASSETS"
-
-directory = "dist"
-
-
-[observability]
-
-enabled = true
-
-
+"$schema" = "node_modules/wrangler/config-schema.json"name = "my-project"main = "dist/_worker.js/index.js"# Set this to today's datecompatibility_date = "2026-06-19"compatibility_flags = [ "nodejs_compat" ]
+[assets]binding = "ASSETS"directory = "dist"
+[observability]enabled = true
 ```
 
 The exact configuration varies based on your framework.
@@ -137,22 +83,7 @@ The exact configuration varies based on your framework.
 New scripts are added to your `package.json`:
 
 ```
-
-{
-
-  "scripts": {
-
-    "deploy": "npm run build && wrangler deploy",
-
-    "preview": "npm run build && wrangler dev",
-
-    "cf-typegen": "wrangler types"
-
-  }
-
-}
-
-
+{  "scripts": {    "deploy": "npm run build && wrangler deploy",    "preview": "npm run build && wrangler dev",    "cf-typegen": "wrangler types"  }}
 ```
 
 ### `.gitignore`
@@ -160,16 +91,7 @@ New scripts are added to your `package.json`:
 Wrangler-specific entries are added:
 
 ```
-
-# wrangler files
-
-.wrangler
-
-.dev.vars*
-
-!.dev.vars.example
-
-
+# wrangler files.wrangler.dev.vars*!.dev.vars.example
 ```
 
 ### `.assetsignore`
@@ -177,12 +99,7 @@ Wrangler-specific entries are added:
 For frameworks that generate worker files in the output directory, an `.assetsignore` file is created to exclude them from static asset uploads:
 
 ```
-
-_worker.js
-
-_routes.json
-
-
+_worker.js_routes.json
 ```
 
 ## Using automatic configuration

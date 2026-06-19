@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -46,62 +46,20 @@ The minimum version of `postgres-js` required for Hyperdrive is `3.4.5`.
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-8805)
-* [  wrangler.toml ](#tab-panel-8806)
+* [  wrangler.jsonc ](#tab-panel-8881)
+* [  wrangler.toml ](#tab-panel-8882)
 
 JSONC
 
 ```
-
-{
-
-  // required for database drivers to function
-
-  "compatibility_flags": [
-
-    "nodejs_compat"
-
-  ],
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "hyperdrive": [
-
-    {
-
-      "binding": "HYPERDRIVE",
-
-      "id": "<your-hyperdrive-id-here>"
-
-    }
-
-  ]
-
-}
-
-
+{  // required for database drivers to function  "compatibility_flags": [    "nodejs_compat"  ],  // Set this to today's date  "compatibility_date": "2026-06-18",  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<your-hyperdrive-id-here>"    }  ]}
 ```
 
 TOML
 
 ```
-
-compatibility_flags = [ "nodejs_compat" ]
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[[hyperdrive]]
-
-binding = "HYPERDRIVE"
-
-id = "<your-hyperdrive-id-here>"
-
-
+compatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-06-18"
+[[hyperdrive]]binding = "HYPERDRIVE"id = "<your-hyperdrive-id-here>"
 ```
 
 Create a Worker that connects to your PostgreSQL database via Hyperdrive:
@@ -109,73 +67,12 @@ Create a Worker that connects to your PostgreSQL database via Hyperdrive:
 TypeScript
 
 ```
-
-// filepath: src/index.ts
-
-import postgres from "postgres";
-
-
-export default {
-
-  async fetch(
-
-    request: Request,
-
-    env: Env,
-
-    ctx: ExecutionContext,
-
-  ): Promise<Response> {
-
-    // Create a database client that connects to your database via Hyperdrive.
-
-    // Hyperdrive maintains the underlying database connection pool,
-
-    // so creating a new client on each request is fast and recommended.
-
-    const sql = postgres(env.HYPERDRIVE.connectionString, {
-
-      // Limit the connections for the Worker request to 5 due to Workers' limits on concurrent external connections
-
-      max: 5,
-
-      // If you are not using array types in your Postgres schema, disable `fetch_types` to avoid an additional round-trip (unnecessary latency)
-
-      fetch_types: false,
-
-
-      // This is set to true by default, but certain query generators such as Kysely or queries using sql.unsafe() will set this to false. Hyperdrive will not cache prepared statements when this option is set to false and will require additional round-trips.
-
-      prepare: true,
-
-    });
-
-
-    try {
-
-      // A very simple test query
-
-      const result = await sql`select * from pg_tables`;
-
-
-      // Return result rows as JSON
-
-      return Response.json({ success: true, result: result });
-
-    } catch (e: any) {
-
-      console.error("Database error:", e.message);
-
-
-      return Response.error();
-
-    }
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+// filepath: src/index.tsimport postgres from "postgres";
+export default {  async fetch(    request: Request,    env: Env,    ctx: ExecutionContext,  ): Promise<Response> {    // Create a database client that connects to your database via Hyperdrive.    // Hyperdrive maintains the underlying database connection pool,    // so creating a new client on each request is fast and recommended.    const sql = postgres(env.HYPERDRIVE.connectionString, {      // Limit the connections for the Worker request to 5 due to Workers' limits on concurrent external connections      max: 5,      // If you are not using array types in your Postgres schema, disable `fetch_types` to avoid an additional round-trip (unnecessary latency)      fetch_types: false,
+      // This is set to true by default, but certain query generators such as Kysely or queries using sql.unsafe() will set this to false. Hyperdrive will not cache prepared statements when this option is set to false and will require additional round-trips.      prepare: true,    });
+    try {      // A very simple test query      const result = await sql`select * from pg_tables`;
+      // Return result rows as JSON      return Response.json({ success: true, result: result });    } catch (e: any) {      console.error("Database error:", e.message);
+      return Response.error();    }  },} satisfies ExportedHandler<Env>;
 ```
 
 ```json

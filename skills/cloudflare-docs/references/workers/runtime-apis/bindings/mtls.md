@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,51 +31,24 @@ The `wrangler mtls-certificate upload` command requires the [SSL and Certificate
 Terminal window
 
 ```
-
 npx wrangler mtls-certificate upload --cert cert.pem --key key.pem --name my-client-cert
-
-
 ```
 
 Then, update your Worker project's Wrangler file to create an mTLS certificate binding:
 
-* [  wrangler.jsonc ](#tab-panel-11926)
-* [  wrangler.toml ](#tab-panel-11927)
+* [  wrangler.jsonc ](#tab-panel-11943)
+* [  wrangler.toml ](#tab-panel-11944)
 
 JSONC
 
 ```
-
-{
-
-  "mtls_certificates": [
-
-    {
-
-      "binding": "MY_CERT",
-
-      "certificate_id": "<CERTIFICATE_ID>"
-
-    }
-
-  ]
-
-}
-
-
+{  "mtls_certificates": [    {      "binding": "MY_CERT",      "certificate_id": "<CERTIFICATE_ID>"    }  ]}
 ```
 
 TOML
 
 ```
-
-[[mtls_certificates]]
-
-binding = "MY_CERT"
-
-certificate_id = "<CERTIFICATE_ID>"
-
-
+[[mtls_certificates]]binding = "MY_CERT"certificate_id = "<CERTIFICATE_ID>"
 ```
 
 Note
@@ -90,48 +63,20 @@ mTLS certificate bindings present an API similar to [service bindings](https://d
 
 ### Interface
 
-* [  JavaScript ](#tab-panel-11924)
-* [  TypeScript ](#tab-panel-11925)
+* [  JavaScript ](#tab-panel-11941)
+* [  TypeScript ](#tab-panel-11942)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, environment) {
-
-    return await environment.MY_CERT.fetch("https://a-secured-origin.com");
-
-  },
-
-};
-
-
+export default {  async fetch(request, environment) {    return await environment.MY_CERT.fetch("https://a-secured-origin.com");  },};
 ```
 
 JavaScript
 
 ```
-
-interface Env {
-
-  MY_CERT: Fetcher;
-
-}
-
-
-export default {
-
-    async fetch(request, environment): Promise<Response> {
-
-        return await environment.MY_CERT.fetch("https://a-secured-origin.com")
-
-    }
-
-} satisfies ExportedHandler<Env>;
-
-
+interface Env {  MY_CERT: Fetcher;}
+export default {    async fetch(request, environment): Promise<Response> {        return await environment.MY_CERT.fetch("https://a-secured-origin.com")    }} satisfies ExportedHandler<Env>;
 ```
 
 ```json

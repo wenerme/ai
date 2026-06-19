@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,38 +30,17 @@ Make sure you have:
 The first step is creating an HSM partition, which can be thought of as an independent logical HSM within your Azure Dedicated HSM device.
 
 ```
-
 vm$ ssh tenantadmin@hsm
-
-
-[local_host] lunash:>hsm login
-
-  Please enter the HSM Administrators' password:
-
-  > ********
-
+[local_host] lunash:>hsm login  Please enter the HSM Administrators' password:  > ********
 
 'hsm login' successful.
 
-
 Command Result : 0 (Success)
-
-
 [local_host] lunash:>partition create -partition KeylessSSL
 
-
-          Type 'proceed' to create the partition, or
-
-          'quit' to quit now.
-
-          > proceed
-
-'partition create' successful.
-
+          Type 'proceed' to create the partition, or          'quit' to quit now.          > proceed'partition create' successful.
 
 Command Result : 0 (Success)
-
-
 ```
 
 Next, the partition needs to be assigned to the client, in this case your key server.
@@ -69,71 +48,29 @@ Next, the partition needs to be assigned to the client, in this case your key se
 Terminal window
 
 ```
-
 [local_host] lunash:>client assignpartition -client azure-keyless -partition KeylessSSL
-
 
 'client assignPartition' successful.
 
-
 Command Result : 0 (Success)
-
-
 ```
 
 After the partition has been assigned, run `lunacm` from your virtual server and initialize the partition.
 
 ```
-
-vm$ lunacm
-
-lunacm (64-bit) v7.2.0-220. Copyright (c) 2018 SafeNet. All rights reserved.
-
+vm$ lunacmlunacm (64-bit) v7.2.0-220. Copyright (c) 2018 SafeNet. All rights reserved.
 
   Available HSMs:
-
-
-  Slot Id ->              0
-
-  Label ->
-
-  Serial Number ->        XXXXXXXXXXXXX
-
-  Model ->                LunaSA 7.2.0
-
-  Firmware Version ->     7.0.3
-
-  Configuration ->        Luna User Partition With SO (PW) Signing With Cloning Mode
-
-  Slot Description ->     Net Token Slot
-
+  Slot Id ->              0  Label ->  Serial Number ->        XXXXXXXXXXXXX  Model ->                LunaSA 7.2.0  Firmware Version ->     7.0.3  Configuration ->        Luna User Partition With SO (PW) Signing With Cloning Mode  Slot Description ->     Net Token Slot
 
   Current Slot Id: 0
-
-
 lunacm:>partition init -label KeylessSSL -domain cloudflare
-
-
   Enter password for Partition SO: ********
-
-
   Re-enter password for Partition SO: ********
-
-
-  You are about to initialize the partition.
-
-  All contents of the partition will be destroyed.
-
-
+  You are about to initialize the partition.  All contents of the partition will be destroyed.
   Are you sure you wish to continue?
-
-
   Type 'proceed' to continue, or 'quit' to quit now ->proceed
-
-
 Command Result : No Error
-
-
 ```
 
 ---
@@ -143,37 +80,17 @@ Command Result : No Error
 Before running the commands below, check with your information security and/or cryptography team to confirm the approved key creation procedures for your organization.
 
 ```
-
 # cmu generatekeypair -keyType=RSA -modulusBits=2048 -publicExponent=65537 -sign=1 -verify=1 -labelpublic=myrsakey -labelprivate=myrsakey -keygenmech=1
-
-
 Please enter password for token in slot 0 : ********
-
-
 # cmu list
-
-
-Please enter password for token in slot 0 : ********
-
-handle=51 label=myrsakey
-
-handle=48 label=myrsakey
-
-
+Please enter password for token in slot 0 : ********handle=51 label=myrsakeyhandle=48 label=myrsakey
 ```
 
 Using the key created in the previous step, generate a CSR that can be sent to a publicly trusted Certificate Authority (CA) for signing.
 
 ```
-
 # cmu requestCertificate -c="US" -o="Example, Inc." -cn="azure-dedicatedhsm.example.com" -s="California" -l="San Francisco" -publichandle=48 -privatehandle=51 -outputfile="rsa.csr" -sha256withrsa
-
-
-Please enter password for token in slot 0 : ********
-
-Using "CKM_SHA256_RSA_PKCS" Mechanism
-
-
+Please enter password for token in slot 0 : ********Using "CKM_SHA256_RSA_PKCS" Mechanism
 ```
 
 ---
@@ -193,12 +110,7 @@ Open `/etc/keyless/gokeyless.yaml` and immediately after:
 YAML
 
 ```
-
-private_key_stores:
-
-  - dir: /etc/keyless/keys
-
-
+private_key_stores:  - dir: /etc/keyless/keys
 ```
 
 add:
@@ -206,10 +118,7 @@ add:
 YAML
 
 ```
-
 - uri: pkcs11:token=KeylessSSL;object=myrsakey?module-path=/usr/safenet/lunaclient/lib/libCryptoki2_64.so&pin-value=password&max-sessions=1
-
-
 ```
 
 With the config file saved, restart `gokeyless` and verify it started successfully.
@@ -217,12 +126,7 @@ With the config file saved, restart `gokeyless` and verify it started successful
 Terminal window
 
 ```
-
-sudo systemctl restart gokeyless.service
-
-sudo systemctl status gokeyless.service -l
-
-
+sudo systemctl restart gokeyless.servicesudo systemctl status gokeyless.service -l
 ```
 
 ```json

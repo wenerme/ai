@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,12 +30,7 @@ Make a `DELETE` request to the [delete image endpoint](https://developers.cloudf
 Terminal window
 
 ```
-
-curl --request DELETE https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v1/{image_id} \
-
---header "Authorization: Bearer <API_TOKEN>"
-
-
+curl --request DELETE https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v1/{image_id} \--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 After the image has been deleted, the response returns `"success": true`.

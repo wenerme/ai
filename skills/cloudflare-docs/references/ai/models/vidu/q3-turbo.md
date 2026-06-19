@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,435 +29,130 @@ Vidu Q3 Turbo is a faster version of Vidu Q3 optimized for lower latency video g
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1818)
-* [ cURL ](#tab-panel-1819)
+* [ TypeScript ](#tab-panel-1892)
+* [ cURL ](#tab-panel-1893)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'vidu/q3-turbo',
-
-  { prompt: 'A cat lazily stretching on a sunlit windowsill', duration: 5, resolution: '720p' },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'vidu/q3-turbo',  { prompt: 'A cat lazily stretching on a sunlit windowsill', duration: 5, resolution: '720p' },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "vidu/q3-turbo",
-
-  "input": {
-
-    "prompt": "A cat lazily stretching on a sunlit windowsill",
-
-    "duration": 5,
-
-    "resolution": "720p"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "vidu/q3-turbo",  "input": {    "prompt": "A cat lazily stretching on a sunlit windowsill",    "duration": 5,    "resolution": "720p"  }}'
 ```
 
-* [ Output ](#tab-panel-1816)
-* [ Raw response ](#tab-panel-1817)
+* [ Output ](#tab-panel-1890)
+* [ Raw response ](#tab-panel-1891)
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "video": "https://video.cf.vidu.com/infer_28/tasks/26/0417/05/942602832110972928/creation-01/video.mp4"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "video": "https://video.cf.vidu.com/infer_28/tasks/26/0417/05/942602832110972928/creation-01/video.mp4"  },  "state": "Completed"}
 ```
 
 ## Examples
 
 **High Resolution**  — Generate at 1080p 
 
-* [ TypeScript ](#tab-panel-1822)
-* [ cURL ](#tab-panel-1823)
+* [ TypeScript ](#tab-panel-1896)
+* [ cURL ](#tab-panel-1897)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'vidu/q3-turbo',
-
-  {
-
-    prompt:
-
-      'Close-up of a hummingbird feeding from a vibrant red flower, slow motion with soft bokeh background',
-
-    duration: 5,
-
-    resolution: '1080p',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'vidu/q3-turbo',  {    prompt:      'Close-up of a hummingbird feeding from a vibrant red flower, slow motion with soft bokeh background',    duration: 5,    resolution: '1080p',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "vidu/q3-turbo",
-
-  "input": {
-
-    "prompt": "Close-up of a hummingbird feeding from a vibrant red flower, slow motion with soft bokeh background",
-
-    "duration": 5,
-
-    "resolution": "1080p"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "vidu/q3-turbo",  "input": {    "prompt": "Close-up of a hummingbird feeding from a vibrant red flower, slow motion with soft bokeh background",    "duration": 5,    "resolution": "1080p"  }}'
 ```
 
-* [ Output ](#tab-panel-1820)
-* [ Raw response ](#tab-panel-1821)
+* [ Output ](#tab-panel-1894)
+* [ Raw response ](#tab-panel-1895)
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "video": "https://video.cf.vidu.com/infer_44/tasks/26/0417/05/942602894400569344/creation-01/video.mp4"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "video": "https://video.cf.vidu.com/infer_44/tasks/26/0417/05/942602894400569344/creation-01/video.mp4"  },  "state": "Completed"}
 ```
 
 **Portrait Video**  — Vertical video for mobile viewing 
 
-* [ TypeScript ](#tab-panel-1828)
-* [ cURL ](#tab-panel-1829)
+* [ TypeScript ](#tab-panel-1902)
+* [ cURL ](#tab-panel-1903)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'vidu/q3-turbo',
-
-  {
-
-    prompt: 'A waterfall cascading down mossy rocks in a tropical jungle, mist rising',
-
-    aspect_ratio: '9:16',
-
-    duration: 5,
-
-    resolution: '720p',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'vidu/q3-turbo',  {    prompt: 'A waterfall cascading down mossy rocks in a tropical jungle, mist rising',    aspect_ratio: '9:16',    duration: 5,    resolution: '720p',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "vidu/q3-turbo",
-
-  "input": {
-
-    "prompt": "A waterfall cascading down mossy rocks in a tropical jungle, mist rising",
-
-    "aspect_ratio": "9:16",
-
-    "duration": 5,
-
-    "resolution": "720p"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "vidu/q3-turbo",  "input": {    "prompt": "A waterfall cascading down mossy rocks in a tropical jungle, mist rising",    "aspect_ratio": "9:16",    "duration": 5,    "resolution": "720p"  }}'
 ```
 
-* [ Output ](#tab-panel-1824)
-* [ Raw response ](#tab-panel-1825)
+* [ Output ](#tab-panel-1898)
+* [ Raw response ](#tab-panel-1899)
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "video": "https://video.cf.vidu.com/infer_48/tasks/26/0417/05/942603057143758848/creation-01/video.mp4"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "video": "https://video.cf.vidu.com/infer_48/tasks/26/0417/05/942603057143758848/creation-01/video.mp4"  },  "state": "Completed"}
 ```
 
 **Extended Duration**  — Longer video clip 
 
-* [ TypeScript ](#tab-panel-1830)
-* [ cURL ](#tab-panel-1831)
+* [ TypeScript ](#tab-panel-1904)
+* [ cURL ](#tab-panel-1905)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'vidu/q3-turbo',
-
-  {
-
-    prompt:
-
-      'Timelapse of clouds rolling over a mountain peak from sunrise to sunset, dramatic lighting',
-
-    duration: 16,
-
-    resolution: '720p',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'vidu/q3-turbo',  {    prompt:      'Timelapse of clouds rolling over a mountain peak from sunrise to sunset, dramatic lighting',    duration: 16,    resolution: '720p',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "vidu/q3-turbo",
-
-  "input": {
-
-    "prompt": "Timelapse of clouds rolling over a mountain peak from sunrise to sunset, dramatic lighting",
-
-    "duration": 16,
-
-    "resolution": "720p"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "vidu/q3-turbo",  "input": {    "prompt": "Timelapse of clouds rolling over a mountain peak from sunrise to sunset, dramatic lighting",    "duration": 16,    "resolution": "720p"  }}'
 ```
 
-* [ Output ](#tab-panel-1826)
-* [ Raw response ](#tab-panel-1827)
+* [ Output ](#tab-panel-1900)
+* [ Raw response ](#tab-panel-1901)
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "video": "https://video.cf.vidu.com/infer_84/tasks/26/0417/06/942603162785705984/creation-01/video.mp4"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "video": "https://video.cf.vidu.com/infer_84/tasks/26/0417/06/942603162785705984/creation-01/video.mp4"  },  "state": "Completed"}
 ```
 
 **Low Resolution Fast Preview**  — Quick preview at 540p 
 
-* [ TypeScript ](#tab-panel-1834)
-* [ cURL ](#tab-panel-1835)
+* [ TypeScript ](#tab-panel-1908)
+* [ cURL ](#tab-panel-1909)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'vidu/q3-turbo',
-
-  {
-
-    prompt: 'A sailboat gliding across calm ocean waters at sunset',
-
-    duration: 3,
-
-    resolution: '540p',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'vidu/q3-turbo',  {    prompt: 'A sailboat gliding across calm ocean waters at sunset',    duration: 3,    resolution: '540p',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "vidu/q3-turbo",
-
-  "input": {
-
-    "prompt": "A sailboat gliding across calm ocean waters at sunset",
-
-    "duration": 3,
-
-    "resolution": "540p"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "vidu/q3-turbo",  "input": {    "prompt": "A sailboat gliding across calm ocean waters at sunset",    "duration": 3,    "resolution": "540p"  }}'
 ```
 
-* [ Output ](#tab-panel-1832)
-* [ Raw response ](#tab-panel-1833)
+* [ Output ](#tab-panel-1906)
+* [ Raw response ](#tab-panel-1907)
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "video": "https://video.cf.vidu.com/infer_68/tasks/26/0417/06/942603796612128768/creation-01/video.mp4"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "video": "https://video.cf.vidu.com/infer_68/tasks/26/0417/06/942603796612128768/creation-01/video.mp4"  },  "state": "Completed"}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-1836)
-* [ Output ](#tab-panel-1837)
+* [ Input ](#tab-panel-1910)
+* [ Output ](#tab-panel-1911)
 
 aspect\_ratio
 
@@ -495,7 +190,7 @@ video
 
 Input [ ](https://developers.cloudflare.com/ai/models/vidu/q3-turbo/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/vidu/q3-turbo/schema-input.json "Download") 
 
-Output [ ](https://developers.cloudflare.com/ai/models/vidu/q3-turbo/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/vidu/q3-turbo/schema-output.json "Download") 
+Output [ ](https://developers.cloudflare.com/ai/models/vidu/q3-turbo/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/vidu/q3-turbo/schema-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/vidu/q3-turbo/#page","headline":"Vidu Q3 Turbo (Vidu) · Cloudflare AI docs · Cloudflare AI docs","description":"Vidu Q3 Turbo is a faster version of Vidu Q3 optimized for lower latency video generation while maintaining audio support and up to 16-second clips.","url":"https://developers.cloudflare.com/ai/models/vidu/q3-turbo/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

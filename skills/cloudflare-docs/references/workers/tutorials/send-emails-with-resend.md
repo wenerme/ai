@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,10 +37,7 @@ Start by using [C3](https://developers.cloudflare.com/pages/get-started/c3/) to 
 Terminal window
 
 ```
-
 npm create cloudflare@latest
-
-
 ```
 
 Alternatively, you can use CLI arguments to speed things up:
@@ -48,10 +45,7 @@ Alternatively, you can use CLI arguments to speed things up:
 Terminal window
 
 ```
-
 npm create cloudflare@latest email-with-resend -- --type=hello-world --ts=false --git=true --deploy=false
-
-
 ```
 
 This creates a simple hello-world Worker having the following content:
@@ -59,18 +53,7 @@ This creates a simple hello-world Worker having the following content:
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    return new Response("Hello World!");
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    return new Response("Hello World!");  },};
 ```
 
 ## Add your domain to Resend
@@ -98,46 +81,16 @@ The final step is putting it all together in a Worker. Open up a terminal in the
 Terminal window
 
 ```
-
 npm i resend
-
-
 ```
 
 In your Worker, import and use the Resend library like so:
 
 ```
-
 import { Resend } from "resend";
-
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    const resend = new Resend("your_resend_api_key");
-
-
-    const { data, error } = await resend.emails.send({
-
-      from: "hello@example.com",
-
-      to: "someone@example.com",
-
-      subject: "Hello World",
-
-      html: "<p>Hello from Workers</p>",
-
-    });
-
-
-    return Response.json({ data, error });
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    const resend = new Resend("your_resend_api_key");
+    const { data, error } = await resend.emails.send({      from: "hello@example.com",      to: "someone@example.com",      subject: "Hello World",      html: "<p>Hello from Workers</p>",    });
+    return Response.json({ data, error });  },};
 ```
 
 To test your code locally, run the following command and navigate to [http://localhost:8787/ ↗](http://localhost:8787/) in a browser:
@@ -145,10 +98,7 @@ To test your code locally, run the following command and navigate to [http://loc
 Terminal window
 
 ```
-
 npm start
-
-
 ```
 
 Deploy your Worker with `npm run deploy`.
@@ -160,10 +110,7 @@ Sensitive information such as API keys and token should always be stored in secr
 To add secrets for local development, create a `.dev.vars` file which works exactly like a `.env` file:
 
 ```
-
 RESEND_API_KEY=your_resend_api_key
-
-
 ```
 
 Also ensure the secret is added to your deployed worker by running:
@@ -171,46 +118,16 @@ Also ensure the secret is added to your deployed worker by running:
 Add secret to deployed Worker
 
 ```
-
 npx wrangler secret put RESEND_API_KEY
-
-
 ```
 
 The added secret can be accessed on via the `env` parameter passed to your Worker’s fetch event handler:
 
 ```
-
 import { Resend } from "resend";
-
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    const resend = new Resend(env.RESEND_API_KEY);
-
-
-    const { data, error } = await resend.emails.send({
-
-      from: "hello@example.com",
-
-      to: "someone@example.com",
-
-      subject: "Hello World",
-
-      html: "<p>Hello from Workers</p>",
-
-    });
-
-
-    return Response.json({ data, error });
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    const resend = new Resend(env.RESEND_API_KEY);
+    const { data, error } = await resend.emails.send({      from: "hello@example.com",      to: "someone@example.com",      subject: "Hello World",      html: "<p>Hello from Workers</p>",    });
+    return Response.json({ data, error });  },};
 ```
 
 And finally, deploy this update with `npm run deploy`.

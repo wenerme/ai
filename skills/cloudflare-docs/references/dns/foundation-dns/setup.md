@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -60,33 +60,31 @@ In this example, the TXT record and the A record for `www.example.com` will not 
 
 To enable advanced nameservers on an existing zone:
 
-1. Opt for advanced nameservers on your zone:  
-   * [ Dashboard ](#tab-panel-8071)  
-   * [ API ](#tab-panel-8072)  
-   1. In the Cloudflare dashboard, go to the **DNS Records** page.  
-   [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)  
-   2. In the **Cloudflare nameservers** card, enable **Advanced nameservers**.  
-   3. After you refresh the page, the card will display the values for your advanced nameservers `NS` records.  
+1. Opt for advanced nameservers on your zone:
+
+  * [ Dashboard ](#tab-panel-8147)
+  * [ API ](#tab-panel-8148)
+
+  1. In the Cloudflare dashboard, go to the **DNS Records** page.  
+  [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+  2. In the **Cloudflare nameservers** card, enable **Advanced nameservers**.
+  3. After you refresh the page, the card will display the values for your advanced nameservers `NS` records.  
 Use the [Update DNS Settings](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/zone/methods/edit/) endpoint to send a PATCH request like the following:  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Zone DNS Settings Write`  
-   * `DNS Write`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Zone DNS Settings Write`
+  * `DNS Write`  
 Update DNS Settings  
 ```  
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_settings" \  
-  --request PATCH \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "foundation_dns": true  
-  }'  
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_settings" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "foundation_dns": true  }'  
 ```  
 The response body will contain your assigned nameservers in the `nameservers` object. You will use these nameservers in the next step.
-2. Update the authoritative nameservers at your registrar. This step depends on whether you are using [Cloudflare Registrar](https://developers.cloudflare.com/registrar/):  
-   * If you are using Cloudflare Registrar, [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) to have your nameservers updated.  
-   * If you are using a different registrar or if your zone is delegated, [manually update your nameservers](https://developers.cloudflare.com/dns/nameservers/update-nameservers/#specific-processes).  
-   Warning  
-   Make sure the values for your assigned nameservers are copied exactly.
+2. Update the authoritative nameservers at your registrar. This step depends on whether you are using [Cloudflare Registrar](https://developers.cloudflare.com/registrar/):
+
+  * If you are using Cloudflare Registrar, [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) to have your nameservers updated.
+  * If you are using a different registrar or if your zone is delegated, [manually update your nameservers](https://developers.cloudflare.com/dns/nameservers/update-nameservers/#specific-processes).  
+  Warning  
+  Make sure the values for your assigned nameservers are copied exactly.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/foundation-dns/setup/#page","headline":"Set up advanced nameservers · Cloudflare DNS docs","description":"Set up advanced nameservers for your Foundation DNS zone.","url":"https://developers.cloudflare.com/dns/foundation-dns/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

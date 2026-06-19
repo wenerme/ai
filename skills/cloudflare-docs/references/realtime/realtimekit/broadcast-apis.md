@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -36,42 +36,14 @@ The Participants module on the meeting object allows you to broadcast messages t
 TypeScript
 
 ```
-
-const participants = useRealtimeKitSelector((m) => m.participants);
-
-participants.broadcastMessage(
-
-  type: Exclude<string, 'spotlight'>,
-
-  payload: BroadcastMessagePayload,
-
-  target?: BroadcastMessageTarget,
-
-): Promise<void>
-
-
+const participants = useRealtimeKitSelector((m) => m.participants);participants.broadcastMessage(  type: Exclude<string, 'spotlight'>,  payload: BroadcastMessagePayload,  target?: BroadcastMessageTarget,): Promise<void>
 ```
 
 TypeScript
 
 ```
-
-type BroadcastMessagePayload = {
-
-  [key: string]: boolean | number | string | Date | ActiveTab;
-
-};
-
-
-type BroadcastMessageTarget =
-
-  | { participantIds: string[] }
-
-  | { presetNames: string[] }
-
-  | { meetingIds: string[] };
-
-
+type BroadcastMessagePayload = {  [key: string]: boolean | number | string | Date | ActiveTab;};
+type BroadcastMessageTarget =  | { participantIds: string[] }  | { presetNames: string[] }  | { meetingIds: string[] };
 ```
 
 | Param   | Type                         | Description                                                                          | Required |
@@ -88,40 +60,14 @@ type BroadcastMessageTarget =
 TypeScript
 
 ```
-
-meeting.participants.broadcastMessage(
-
-  type: Exclude<string, 'spotlight'>,
-
-  payload: BroadcastMessagePayload,
-
-  target?: BroadcastMessageTarget,
-
-): Promise<void>
-
-
+meeting.participants.broadcastMessage(  type: Exclude<string, 'spotlight'>,  payload: BroadcastMessagePayload,  target?: BroadcastMessageTarget,): Promise<void>
 ```
 
 TypeScript
 
 ```
-
-type BroadcastMessagePayload = {
-
-  [key: string]: boolean | number | string | Date | ActiveTab;
-
-};
-
-
-type BroadcastMessageTarget =
-
-  | { participantIds: string[] }
-
-  | { presetNames: string[] }
-
-  | { meetingIds: string[] };
-
-
+type BroadcastMessagePayload = {  [key: string]: boolean | number | string | Date | ActiveTab;};
+type BroadcastMessageTarget =  | { participantIds: string[] }  | { presetNames: string[] }  | { meetingIds: string[] };
 ```
 
 | Param   | Type                         | Description                                                                          | Required |
@@ -138,40 +84,14 @@ type BroadcastMessageTarget =
 TypeScript
 
 ```
-
-meeting.participants.broadcastMessage(
-
-  type: Exclude<string, 'spotlight'>,
-
-  payload: BroadcastMessagePayload,
-
-  target?: BroadcastMessageTarget,
-
-): Promise<void>
-
-
+meeting.participants.broadcastMessage(  type: Exclude<string, 'spotlight'>,  payload: BroadcastMessagePayload,  target?: BroadcastMessageTarget,): Promise<void>
 ```
 
 TypeScript
 
 ```
-
-type BroadcastMessagePayload = {
-
-  [key: string]: boolean | number | string | Date | ActiveTab;
-
-};
-
-
-type BroadcastMessageTarget =
-
-  | { participantIds: string[] }
-
-  | { presetNames: string[] }
-
-  | { meetingIds: string[] };
-
-
+type BroadcastMessagePayload = {  [key: string]: boolean | number | string | Date | ActiveTab;};
+type BroadcastMessageTarget =  | { participantIds: string[] }  | { presetNames: string[] }  | { meetingIds: string[] };
 ```
 
 ### Subscribe to Messages
@@ -181,54 +101,19 @@ Use the `broadcastedMessage` event to listen for messages sent via `broadcastMes
 TypeScript
 
 ```
-
-const participants = useRealtimeKitSelector((m) => m.participants);
-
-participants.on("broadcastedMessage", ({ type, payload, timestamp }) => {
-
-  // handle message
-
-});
-
-
+const participants = useRealtimeKitSelector((m) => m.participants);participants.on("broadcastedMessage", ({ type, payload, timestamp }) => {  // handle message});
 ```
 
 TypeScript
 
 ```
-
-meeting.participants.on(
-
-  "broadcastedMessage",
-
-  ({ type, payload, timestamp }) => {
-
-    // handle message
-
-  },
-
-);
-
-
+meeting.participants.on(  "broadcastedMessage",  ({ type, payload, timestamp }) => {    // handle message  },);
 ```
 
 TypeScript
 
 ```
-
-meeting.participants.on(
-
-  "broadcastedMessage",
-
-  ({ type, payload, timestamp }) => {
-
-    // handle message
-
-  },
-
-);
-
-
+meeting.participants.on(  "broadcastedMessage",  ({ type, payload, timestamp }) => {    // handle message  },);
 ```
 
 ### Rate Limiting & Constraints
@@ -245,105 +130,22 @@ meeting.participants.on(
 TypeScript
 
 ```
-
-const participants = useRealtimeKitSelector((m) => m.participants);
-
-await participants.broadcastMessage("HAND_RAISE", {
-
-  raised: true,
-
-  userId: meeting.self.userId,
-
-  sentAt: new Date(),
-
-});
-
-
-participants.on(
-
-"broadcastedMessage",
-
-({ type, payload, timestamp }) => {
-
-if (type === "HAND_RAISE") {
-
-// payload.raised, payload.userId, payload.sentAt
-
-}
-
-},
-
-);
-
-
+const participants = useRealtimeKitSelector((m) => m.participants);await participants.broadcastMessage("HAND_RAISE", {  raised: true,  userId: meeting.self.userId,  sentAt: new Date(),});
+participants.on("broadcastedMessage",({ type, payload, timestamp }) => {if (type === "HAND_RAISE") {// payload.raised, payload.userId, payload.sentAt}},);
 ```
 
 TypeScript
 
 ```
-
-await meeting.participants.broadcastMessage("HAND_RAISE", {
-
-  raised: true,
-
-  userId: meeting.self.userId,
-
-  sentAt: new Date(),
-
-});
-
-
-meeting.participants.on(
-
-"broadcastedMessage",
-
-({ type, payload, timestamp }) => {
-
-if (type === "HAND_RAISE") {
-
-// payload.raised, payload.userId, payload.sentAt
-
-}
-
-},
-
-);
-
-
+await meeting.participants.broadcastMessage("HAND_RAISE", {  raised: true,  userId: meeting.self.userId,  sentAt: new Date(),});
+meeting.participants.on("broadcastedMessage",({ type, payload, timestamp }) => {if (type === "HAND_RAISE") {// payload.raised, payload.userId, payload.sentAt}},);
 ```
 
 TypeScript
 
 ```
-
-await meeting.participants.broadcastMessage("HAND_RAISE", {
-
-  raised: true,
-
-  userId: meeting.self.userId,
-
-  sentAt: new Date(),
-
-});
-
-
-meeting.participants.on(
-
-"broadcastedMessage",
-
-({ type, payload, timestamp }) => {
-
-if (type === "HAND_RAISE") {
-
-// payload.raised, payload.userId, payload.sentAt
-
-}
-
-},
-
-);
-
-
+await meeting.participants.broadcastMessage("HAND_RAISE", {  raised: true,  userId: meeting.self.userId,  sentAt: new Date(),});
+meeting.participants.on("broadcastedMessage",({ type, payload, timestamp }) => {if (type === "HAND_RAISE") {// payload.raised, payload.userId, payload.sentAt}},);
 ```
 
 #### Broadcast to a specific set of participants.
@@ -353,66 +155,19 @@ Only the participants with those participantIds receive the message.
 TypeScript
 
 ```
-
-const participants = useRealtimeKitSelector((m) => m.participants);
-
-await participants.broadcastMessage(
-
-  "PRIVATE_NOTE",
-
-  { message: "You are on stage in 30 seconds" },
-
-  {
-
-    participantIds: ["peer-id-1", "peer-id-2"],
-
-  },
-
-);
-
-
+const participants = useRealtimeKitSelector((m) => m.participants);await participants.broadcastMessage(  "PRIVATE_NOTE",  { message: "You are on stage in 30 seconds" },  {    participantIds: ["peer-id-1", "peer-id-2"],  },);
 ```
 
 TypeScript
 
 ```
-
-await meeting.participants.broadcastMessage(
-
-  "PRIVATE_NOTE",
-
-  { message: "You are on stage in 30 seconds" },
-
-  {
-
-    participantIds: ["peer-id-1", "peer-id-2"],
-
-  },
-
-);
-
-
+await meeting.participants.broadcastMessage(  "PRIVATE_NOTE",  { message: "You are on stage in 30 seconds" },  {    participantIds: ["peer-id-1", "peer-id-2"],  },);
 ```
 
 TypeScript
 
 ```
-
-await meeting.participants.broadcastMessage(
-
-  "PRIVATE_NOTE",
-
-  { message: "You are on stage in 30 seconds" },
-
-  {
-
-    participantIds: ["peer-id-1", "peer-id-2"],
-
-  },
-
-);
-
-
+await meeting.participants.broadcastMessage(  "PRIVATE_NOTE",  { message: "You are on stage in 30 seconds" },  {    participantIds: ["peer-id-1", "peer-id-2"],  },);
 ```
 
 #### Broadcast to a preset
@@ -422,66 +177,19 @@ All participants whose preset name is `speaker` receive the message.
 TypeScript
 
 ```
-
-const participants = useRealtimeKitSelector((m) => m.participants);
-
-await participants.broadcastMessage(
-
-  "STAGE_INSTRUCTION",
-
-  { text: "Prepare for Q&A" },
-
-  {
-
-    presetNames: ["speaker"],
-
-  },
-
-);
-
-
+const participants = useRealtimeKitSelector((m) => m.participants);await participants.broadcastMessage(  "STAGE_INSTRUCTION",  { text: "Prepare for Q&A" },  {    presetNames: ["speaker"],  },);
 ```
 
 TypeScript
 
 ```
-
-await meeting.participants.broadcastMessage(
-
-  "STAGE_INSTRUCTION",
-
-  { text: "Prepare for Q&A" },
-
-  {
-
-    presetNames: ["speaker"],
-
-  },
-
-);
-
-
+await meeting.participants.broadcastMessage(  "STAGE_INSTRUCTION",  { text: "Prepare for Q&A" },  {    presetNames: ["speaker"],  },);
 ```
 
 TypeScript
 
 ```
-
-await meeting.participants.broadcastMessage(
-
-  "STAGE_INSTRUCTION",
-
-  { text: "Prepare for Q&A" },
-
-  {
-
-    presetNames: ["speaker"],
-
-  },
-
-);
-
-
+await meeting.participants.broadcastMessage(  "STAGE_INSTRUCTION",  { text: "Prepare for Q&A" },  {    presetNames: ["speaker"],  },);
 ```
 
 #### Broadcast across multiple meetings
@@ -491,66 +199,19 @@ All participants in the specified meetings receive the message.
 TypeScript
 
 ```
-
-const participants = useRealtimeKitSelector((m) => m.participants);
-
-await participants.broadcastMessage(
-
-  "GLOBAL_ANNOUNCEMENT",
-
-  { text: "The event will end in 5 minutes." },
-
-  {
-
-    meetingIds: ["meeting-1", "meeting-2"],
-
-  },
-
-);
-
-
+const participants = useRealtimeKitSelector((m) => m.participants);await participants.broadcastMessage(  "GLOBAL_ANNOUNCEMENT",  { text: "The event will end in 5 minutes." },  {    meetingIds: ["meeting-1", "meeting-2"],  },);
 ```
 
 TypeScript
 
 ```
-
-await meeting.participants.broadcastMessage(
-
-  "GLOBAL_ANNOUNCEMENT",
-
-  { text: "The event will end in 5 minutes." },
-
-  {
-
-    meetingIds: ["meeting-1", "meeting-2"],
-
-  },
-
-);
-
-
+await meeting.participants.broadcastMessage(  "GLOBAL_ANNOUNCEMENT",  { text: "The event will end in 5 minutes." },  {    meetingIds: ["meeting-1", "meeting-2"],  },);
 ```
 
 TypeScript
 
 ```
-
-await meeting.participants.broadcastMessage(
-
-  "GLOBAL_ANNOUNCEMENT",
-
-  { text: "The event will end in 5 minutes." },
-
-  {
-
-    meetingIds: ["meeting-1", "meeting-2"],
-
-  },
-
-);
-
-
+await meeting.participants.broadcastMessage(  "GLOBAL_ANNOUNCEMENT",  { text: "The event will end in 5 minutes." },  {    meetingIds: ["meeting-1", "meeting-2"],  },);
 ```
 
 ```json

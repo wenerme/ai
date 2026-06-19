@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,10 +31,7 @@ If you had previously installed Wrangler v1 globally using npm, you can uninstal
 Terminal window
 
 ```
-
 npm uninstall -g @cloudflare/wrangler
-
-
 ```
 
 If you used Cargo to install Wrangler v1, you can uninstall it with:
@@ -42,10 +39,7 @@ If you used Cargo to install Wrangler v1, you can uninstall it with:
 Terminal window
 
 ```
-
 cargo uninstall wrangler
-
-
 ```
 
 ### 2\. Install Wrangler
@@ -55,10 +49,7 @@ Now, install the latest version of Wrangler.
 Terminal window
 
 ```
-
 npm install -g wrangler
-
-
 ```
 
 ### 3\. Verify your install
@@ -68,10 +59,7 @@ To check that you have installed the correct Wrangler version, run:
 Terminal window
 
 ```
-
 npx wrangler --version
-
-
 ```
 
 ## Test Wrangler v2 on your previous projects
@@ -85,10 +73,7 @@ Run the `wrangler dev` command. This will show any warnings or errors that shoul
 Terminal window
 
 ```
-
 npx wrangler dev
-
-
 ```
 
 * Errors need to be fixed before Wrangler can build your Worker.
@@ -99,33 +84,9 @@ Here is an example of some warnings and errors:
 Terminal window
 
 ```
+ ⛅️ wrangler 2.x-------------------------------------------------------▲ [WARNING] Processing wrangler.toml configuration:  - 😶 Ignored: "type":    Most common features now work out of the box with wrangler, including modules, jsx,  typescript, etc. If you need anything more, use a custom build.  - Deprecation: "zone_id":    This is unnecessary since we can deduce this from routes directly.  - Deprecation: "build.upload.format":    The format is inferred automatically from the code.
 
- ⛅️ wrangler 2.x
-
--------------------------------------------------------
-
-▲ [WARNING] Processing wrangler.toml configuration:
-
-  - 😶 Ignored: "type":
-
-    Most common features now work out of the box with wrangler, including modules, jsx,
-
-  typescript, etc. If you need anything more, use a custom build.
-
-  - Deprecation: "zone_id":
-
-    This is unnecessary since we can deduce this from routes directly.
-
-  - Deprecation: "build.upload.format":
-
-    The format is inferred automatically from the code.
-
-
-✘ [ERROR] Processing wrangler.toml configuration:
-
-  - Expected "route" to be either a string, or an object with shape { pattern, zone_id | zone_name }, but got "".
-
-
+✘ [ERROR] Processing wrangler.toml configuration:  - Expected "route" to be either a string, or an object with shape { pattern, zone_id | zone_name }, but got "".
 ```
 
 ## Deprecations

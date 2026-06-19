@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/videos/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,16 +17,22 @@ In this video, learn how Cloudflare's SASE platform can provide highly secure ac
 Chapters
 
 * ![Introduction to SASE and Securing Access to Critical Infrastructure](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=0s)  
+
  **Introduction to SASE and Securing Access to Critical Infrastructure** 0s
 * ![Connecting and Securing Private Servers with Cloudflare Tunnels](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=50s)  
+
  **Connecting and Securing Private Servers with Cloudflare Tunnels** 50s
 * ![Using Internal DNS to Securely Resolve Private Network Resources](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=132s)  
+
  **Using Internal DNS to Securely Resolve Private Network Resources** 02m12s
 * ![Connecting User Devices Securely with Cloudflare's Device Agent](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=181s)  
+
  **Connecting User Devices Securely with Cloudflare's Device Agent** 03m01s
 * ![Enforcing Access Control with Identity, Network and Device Based Security Policies](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=228s)  
+
  **Enforcing Access Control with Identity, Network and Device Based Security Policies** 03m48s
 * ![Auditing and Logging Access to Critical Infrastructure](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=303s)  
+
  **Auditing and Logging Access to Critical Infrastructure** 05m03s
 
   

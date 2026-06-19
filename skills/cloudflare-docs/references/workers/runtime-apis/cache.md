@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -39,12 +39,7 @@ The `caches.default` API is strongly influenced by the web browsers’ Cache API
 JavaScript
 
 ```
-
-let cache = caches.default;
-
-await cache.match(request);
-
-
+let cache = caches.default;await cache.match(request);
 ```
 
 You may create and manage additional Cache instances via the [caches.open ↗](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage/open) method.
@@ -52,12 +47,7 @@ You may create and manage additional Cache instances via the [caches.open ↗](h
 JavaScript
 
 ```
-
-let myCache = await caches.open('custom:cache');
-
-await myCache.match(request);
-
-
+let myCache = await caches.open('custom:cache');await myCache.match(request);
 ```
 
 ---
@@ -67,15 +57,15 @@ await myCache.match(request);
 Our implementation of the Cache API respects the following HTTP headers on the response passed to `put()`:
 
 * `Cache-Control`  
-   * Controls caching directives. This is consistent with [Cloudflare Cache-Control Directives](https://developers.cloudflare.com/cache/concepts/cache-control#cache-control-directives). Refer to [Edge TTL](https://developers.cloudflare.com/cache/how-to/configure-cache-status-code#edge-ttl) for a list of HTTP response codes and their TTL when `Cache-Control` directives are not present.
+  * Controls caching directives. This is consistent with [Cloudflare Cache-Control Directives](https://developers.cloudflare.com/cache/concepts/cache-control#cache-control-directives). Refer to [Edge TTL](https://developers.cloudflare.com/cache/how-to/configure-cache-status-code#edge-ttl) for a list of HTTP response codes and their TTL when `Cache-Control` directives are not present.
 * `Cache-Tag`  
-   * Allows resource purging by tag(s) later.
+  * Allows resource purging by tag(s) later.
 * `ETag`  
-   * Allows `cache.match()` to evaluate conditional requests with `If-None-Match`.
+  * Allows `cache.match()` to evaluate conditional requests with `If-None-Match`.
 * `Expires` string  
-   * A string that specifies when the resource becomes invalid.
+  * A string that specifies when the resource becomes invalid.
 * `Last-Modified`  
-   * Allows `cache.match()` to evaluate conditional requests with `If-Modified-Since`.
+  * Allows `cache.match()` to evaluate conditional requests with `If-Modified-Since`.
 
 This differs from the web browser Cache API as they do not honor any headers on the request or response.
 
@@ -94,14 +84,12 @@ Use the `Cache-Control` method to store the response without the `Set-Cookie` he
 JavaScript
 
 ```
-
 cache.put(request, response);
-
-
 ```
 
-* `put(request, response)` : Promise  
-   * Attempts to add a response to the cache, using the given request as the key. Returns a promise that resolves to `undefined` regardless of whether the cache successfully stored the response.
+* `put(request, response)` : Promise
+
+  * Attempts to add a response to the cache, using the given request as the key. Returns a promise that resolves to `undefined` regardless of whether the cache successfully stored the response.
 
 Note
 
@@ -109,10 +97,12 @@ The `stale-while-revalidate` and `stale-if-error` directives are not supported w
 
 #### Parameters
 
-* `request` string | Request  
-   * Either a string or a [Request](https://developers.cloudflare.com/workers/runtime-apis/request/) object to serve as the key. If a string is passed, it is interpreted as the URL for a new Request object.
-* `response` Response  
-   * A [Response](https://developers.cloudflare.com/workers/runtime-apis/response/) object to store under the given key.
+* `request` string | Request
+
+  * Either a string or a [Request](https://developers.cloudflare.com/workers/runtime-apis/request/) object to serve as the key. If a string is passed, it is interpreted as the URL for a new Request object.
+* `response` Response
+
+  * A [Response](https://developers.cloudflare.com/workers/runtime-apis/response/) object to store under the given key.
 
 #### Invalid parameters
 
@@ -140,14 +130,12 @@ This is a cache-poisoning mitigation. To cache redirect responses with query str
 JavaScript
 
 ```
-
 cache.match(request, options);
-
-
 ```
 
-* `match(request, options)` : Promise`<Response | undefined>`  
-   * Returns a promise wrapping the response object keyed to that request.
+* `match(request, options)` : Promise`<Response | undefined>`
+
+  * Returns a promise wrapping the response object keyed to that request.
 
 Note
 
@@ -155,21 +143,26 @@ The `stale-while-revalidate` and `stale-if-error` directives are not supported w
 
 #### Parameters
 
-* `request` string | Request  
-   * The string or [Request](https://developers.cloudflare.com/workers/runtime-apis/request/) object used as the lookup key. Strings are interpreted as the URL for a new `Request` object.
-* `options`  
-   * Can contain one possible property: `ignoreMethod` (Boolean). When `true`, the request is considered to be a `GET` request regardless of its actual value.
+* `request` string | Request
+
+  * The string or [Request](https://developers.cloudflare.com/workers/runtime-apis/request/) object used as the lookup key. Strings are interpreted as the URL for a new `Request` object.
+* `options`
+
+  * Can contain one possible property: `ignoreMethod` (Boolean). When `true`, the request is considered to be a `GET` request regardless of its actual value.
 
 Unlike the browser Cache API, Cloudflare Workers do not support the `ignoreSearch` or `ignoreVary` options on `match()`. You can accomplish this behavior by removing query strings or HTTP headers at `put()` time.
 
 Our implementation of the Cache API respects the following HTTP headers on the request passed to `match()`:
 
-* `Range`  
-   * Results in a `206` response if a matching response with a Content-Length header is found. Your Cloudflare cache always respects range requests, even if an `Accept-Ranges` header is on the response.
-* `If-Modified-Since`  
-   * Results in a `304` response if a matching response is found with a `Last-Modified` header with a value before the time specified in `If-Modified-Since`.
-* `If-None-Match`  
-   * Results in a `304` response if a matching response is found with an `ETag` header with a value that matches a value in `If-None-Match`.
+* `Range`
+
+  * Results in a `206` response if a matching response with a Content-Length header is found. Your Cloudflare cache always respects range requests, even if an `Accept-Ranges` header is on the response.
+* `If-Modified-Since`
+
+  * Results in a `304` response if a matching response is found with a `Last-Modified` header with a value before the time specified in `If-Modified-Since`.
+* `If-None-Match`
+
+  * Results in a `304` response if a matching response is found with an `ETag` header with a value that matches a value in `If-None-Match`.
 
 Note
 
@@ -186,10 +179,7 @@ If you use Cloudflare Logs, you may see these `504` responses with the `RequestS
 JavaScript
 
 ```
-
 cache.delete(request, options);
-
-
 ```
 
 * `delete(request, options)` : Promise`<boolean>`
@@ -205,10 +195,12 @@ The `cache.delete` method only purges content of the cache in the data center th
 
 #### Parameters
 
-* `request` string | Request  
-   * The string or [Request](https://developers.cloudflare.com/workers/runtime-apis/request/) object used as the lookup key. Strings are interpreted as the URL for a new `Request` object.
-* `options` object  
-   * Can contain one possible property: `ignoreMethod` (Boolean). Consider the request method a GET regardless of its actual value.
+* `request` string | Request
+
+  * The string or [Request](https://developers.cloudflare.com/workers/runtime-apis/request/) object used as the lookup key. Strings are interpreted as the URL for a new `Request` object.
+* `options` object
+
+  * Can contain one possible property: `ignoreMethod` (Boolean). Consider the request method a GET regardless of its actual value.
 
 ---
 

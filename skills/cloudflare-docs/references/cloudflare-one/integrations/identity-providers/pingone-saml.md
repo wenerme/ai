@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,19 +23,21 @@ The PingOne cloud platform from PingIdentity provides SSO identity management. C
 3. Enter an **Application Name**.
 4. Select **SAML Application**.
 5. Select **Configure**.
-6. To fill in your Cloudflare Access metadata:  
-   1. Select **Import from URL**.  
-   2. Set the **Import URL** to:  
+6. To fill in your Cloudflare Access metadata:
+
+  1. Select **Import from URL**.
+  2. Set the **Import URL** to:  
 ```  
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/saml-metadata  
 ```  
 where `<your-team-name>` is your Cloudflare One team name. 3\. Select **Import**. 4\. **Save** the configuration.
 7. In the **Configuration** tab, select **Download metadata** and save the XML metadata file. This file will be used in a later step to add PingOne to Cloudflare One.
-8. In the **Attribute Mappings** tab, add the following required attributes (case sensitive) and select **Save**.  
-| Application attribute | Outgoing value |  
-| --------------------- | -------------- |  
-| email                 | Email Address  |  
-| givenName             | Given Name     |  
+8. In the **Attribute Mappings** tab, add the following required attributes (case sensitive) and select **Save**.
+
+| Application attribute | Outgoing value |
+| --------------------- | -------------- |
+| email                 | Email Address  |
+| givenName             | Given Name     |
 | surName               | Family Name    |  
 These [SAML attributes](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/#saml-attributes) tell Cloudflare Access who the user is.
 9. Set the application to **Active**.

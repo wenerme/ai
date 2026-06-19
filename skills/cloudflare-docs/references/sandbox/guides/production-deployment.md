@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -55,64 +55,20 @@ This routes all subdomains through Cloudflare's proxy. The IP address `192.0.2.0
 
 Add a wildcard route to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-10483)
-* [  wrangler.toml ](#tab-panel-10484)
+* [  wrangler.jsonc ](#tab-panel-10559)
+* [  wrangler.toml ](#tab-panel-10560)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "my-sandbox-app",
-
-  "main": "src/index.ts",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "routes": [
-
-    {
-
-      "pattern": "*.yourdomain.com/*",
-
-      "zone_name": "yourdomain.com"
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-sandbox-app",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-18",  "routes": [    {      "pattern": "*.yourdomain.com/*",      "zone_name": "yourdomain.com"    }  ]}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "my-sandbox-app"
-
-main = "src/index.ts"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[[routes]]
-
-pattern = "*.yourdomain.com/*"
-
-zone_name = "yourdomain.com"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-sandbox-app"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-18"
+[[routes]]pattern = "*.yourdomain.com/*"zone_name = "yourdomain.com"
 ```
 
 Replace `yourdomain.com` with your actual domain. This routes all subdomain requests to your Worker and enables Cloudflare to provision SSL certificates automatically.
@@ -124,10 +80,7 @@ Deploy your Worker:
 Terminal window
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 ## Verify
@@ -137,24 +90,9 @@ Test that preview URLs work:
 TypeScript
 
 ```
-
-// Extract hostname from request
-
-const { hostname } = new URL(request.url);
-
-
-const sandbox = getSandbox(env.Sandbox, 'test-sandbox');
-
-await sandbox.startProcess('python -m http.server 8080');
-
-const exposed = await sandbox.exposePort(8080, { hostname });
-
-
-console.log(exposed.url);
-
-// https://8080-test-sandbox.yourdomain.com
-
-
+// Extract hostname from requestconst { hostname } = new URL(request.url);
+const sandbox = getSandbox(env.Sandbox, 'test-sandbox');await sandbox.startProcess('python -m http.server 8080');const exposed = await sandbox.exposePort(8080, { hostname });
+console.log(exposed.url);// https://8080-test-sandbox.yourdomain.com
 ```
 
 Visit the URL in your browser to confirm your service is accessible.

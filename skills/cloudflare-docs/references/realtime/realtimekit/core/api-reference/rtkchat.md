@@ -5,7 +5,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -14,36 +14,36 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 This is the chat module, which can be used to send and receive messages from the meeting.
 
 * [RTKChat](#module%5FRTKChat)  
-   * [module.exports](#exp%5Fmodule%5FRTKChat--module.exports) ⏏  
-         * [new module.exports(context, chatSocketHandler, self, participants)](#new%5Fmodule%5FRTKChat--module.exports%5Fnew)  
-         * ~~[.messages](#module%5FRTKChat--module.exports+messages)~~  
-         * [.telemetry](#module%5FRTKChat--module.exports+telemetry)  
-         * [.pinned](#module%5FRTKChat--module.exports+pinned)  
-         * [.setMaxTextLimit(limit)](#module%5FRTKChat--module.exports+setMaxTextLimit)  
-         * [.sendMessageInternal(message, \[participantIds\])](#module%5FRTKChat--module.exports+sendMessageInternal)  
-         * [.sendTextMessageInternal(message, \[peerIds\])](#module%5FRTKChat--module.exports+sendTextMessageInternal)  
-         * [.sendImageMessageInternal(image, \[peerIds\])](#module%5FRTKChat--module.exports+sendImageMessageInternal)  
-         * [.sendFileMessageInternal(file, \[peerIds\])](#module%5FRTKChat--module.exports+sendFileMessageInternal)  
-         * [.updateRateLimits(num, period)](#module%5FRTKChat--module.exports+updateRateLimits)  
-         * [.sendTextMessage(message, \[peerIds\])](#module%5FRTKChat--module.exports+sendTextMessage)  
-         * [.sendCustomMessage(message, \[peerIds\])](#module%5FRTKChat--module.exports+sendCustomMessage)  
-         * [.sendImageMessage(image, \[peerIds\])](#module%5FRTKChat--module.exports+sendImageMessage)  
-         * [.sendFileMessage(file, \[peerIds\])](#module%5FRTKChat--module.exports+sendFileMessage)  
-         * [.sendMessage(message, \[participantIds\])](#module%5FRTKChat--module.exports+sendMessage)  
-         * [.editTextMessage(messageId, message)](#module%5FRTKChat--module.exports+editTextMessage)  
-         * [.editImageMessage(messageId, image)](#module%5FRTKChat--module.exports+editImageMessage)  
-         * [.editFileMessage(messageId, file)](#module%5FRTKChat--module.exports+editFileMessage)  
-         * [.editMessage(messageId, message)](#module%5FRTKChat--module.exports+editMessage)  
-         * [.deleteMessage(messageId)](#module%5FRTKChat--module.exports+deleteMessage)  
-         * ~~[.getMessagesByUser(userId)](#module%5FRTKChat--module.exports+getMessagesByUser)~~  
-         * ~~[.getMessagesByType(type)](#module%5FRTKChat--module.exports+getMessagesByType)~~  
-         * [.pin(id)](#module%5FRTKChat--module.exports+pin)  
-         * [.unpin(id)](#module%5FRTKChat--module.exports+unpin)  
-         * [.fetchPublicMessages(options)](#module%5FRTKChat--module.exports+fetchPublicMessages)  
-         * [.fetchPrivateMessages(options)](#module%5FRTKChat--module.exports+fetchPrivateMessages)  
-         * [.fetchPinnedMessages(options)](#module%5FRTKChat--module.exports+fetchPinnedMessages)  
-         * ~~[.getMessages(timeStamp, size, reversed, \[offset\])](#module%5FRTKChat--module.exports+getMessages)~~  
-         * ~~[.searchMessages(query, \[filters\])](#module%5FRTKChat--module.exports+searchMessages)~~
+  * [module.exports](#exp%5Fmodule%5FRTKChat--module.exports) ⏏  
+    * [new module.exports(context, chatSocketHandler, self, participants)](#new%5Fmodule%5FRTKChat--module.exports%5Fnew)
+    * ~~[.messages](#module%5FRTKChat--module.exports+messages)~~
+    * [.telemetry](#module%5FRTKChat--module.exports+telemetry)
+    * [.pinned](#module%5FRTKChat--module.exports+pinned)
+    * [.setMaxTextLimit(limit)](#module%5FRTKChat--module.exports+setMaxTextLimit)
+    * [.sendMessageInternal(message, \[participantIds\])](#module%5FRTKChat--module.exports+sendMessageInternal)
+    * [.sendTextMessageInternal(message, \[peerIds\])](#module%5FRTKChat--module.exports+sendTextMessageInternal)
+    * [.sendImageMessageInternal(image, \[peerIds\])](#module%5FRTKChat--module.exports+sendImageMessageInternal)
+    * [.sendFileMessageInternal(file, \[peerIds\])](#module%5FRTKChat--module.exports+sendFileMessageInternal)
+    * [.updateRateLimits(num, period)](#module%5FRTKChat--module.exports+updateRateLimits)
+    * [.sendTextMessage(message, \[peerIds\])](#module%5FRTKChat--module.exports+sendTextMessage)
+    * [.sendCustomMessage(message, \[peerIds\])](#module%5FRTKChat--module.exports+sendCustomMessage)
+    * [.sendImageMessage(image, \[peerIds\])](#module%5FRTKChat--module.exports+sendImageMessage)
+    * [.sendFileMessage(file, \[peerIds\])](#module%5FRTKChat--module.exports+sendFileMessage)
+    * [.sendMessage(message, \[participantIds\])](#module%5FRTKChat--module.exports+sendMessage)
+    * [.editTextMessage(messageId, message)](#module%5FRTKChat--module.exports+editTextMessage)
+    * [.editImageMessage(messageId, image)](#module%5FRTKChat--module.exports+editImageMessage)
+    * [.editFileMessage(messageId, file)](#module%5FRTKChat--module.exports+editFileMessage)
+    * [.editMessage(messageId, message)](#module%5FRTKChat--module.exports+editMessage)
+    * [.deleteMessage(messageId)](#module%5FRTKChat--module.exports+deleteMessage)
+    * ~~[.getMessagesByUser(userId)](#module%5FRTKChat--module.exports+getMessagesByUser)~~
+    * ~~[.getMessagesByType(type)](#module%5FRTKChat--module.exports+getMessagesByType)~~
+    * [.pin(id)](#module%5FRTKChat--module.exports+pin)
+    * [.unpin(id)](#module%5FRTKChat--module.exports+unpin)
+    * [.fetchPublicMessages(options)](#module%5FRTKChat--module.exports+fetchPublicMessages)
+    * [.fetchPrivateMessages(options)](#module%5FRTKChat--module.exports+fetchPrivateMessages)
+    * [.fetchPinnedMessages(options)](#module%5FRTKChat--module.exports+fetchPinnedMessages)
+    * ~~[.getMessages(timeStamp, size, reversed, \[offset\])](#module%5FRTKChat--module.exports+getMessages)~~
+    * ~~[.searchMessages(query, \[filters\])](#module%5FRTKChat--module.exports+searchMessages)~~
 
 ### module.exports ⏏
 

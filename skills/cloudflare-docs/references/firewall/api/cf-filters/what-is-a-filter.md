@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/firewall/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -15,10 +15,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 A filter is a way of saying:
 
 ```
-
 if (traffic matches certain criteria) then...
-
-
 ```
 
 A filter contains an expression that would return `true` or `false` when evaluated against traffic passing through Cloudflare.
@@ -28,27 +25,13 @@ Filter expressions are human and machine readable, and you can compose complex l
 A filter object typically looks like the following:
 
 ```
-
-{
-
-  "id": "<FILTER_ID>",
-
-  "expression": "(http.request.uri.path ~ \"^.*wp-login.php$\" or http.request.uri.path ~ \"^.*xmlrpc.php$\") and ip.src ne 93.184.216.34",
-
-  "description": "WordPress login paths via the login page or mobile RPC endpoint"
-
-}
-
-
+{  "id": "<FILTER_ID>",  "expression": "(http.request.uri.path ~ \"^.*wp-login.php$\" or http.request.uri.path ~ \"^.*xmlrpc.php$\") and ip.src ne 93.184.216.34",  "description": "WordPress login paths via the login page or mobile RPC endpoint"}
 ```
 
 The expression specified in this example filter is:
 
 ```
-
 (http.request.uri.path ~ "^.*wp-login.php$" or http.request.uri.path ~ "^.*xmlrpc.php$") and ip.src ne 93.184.216.34
-
-
 ```
 
 This filter expression has a `(this or that) and not this` structure designed to:

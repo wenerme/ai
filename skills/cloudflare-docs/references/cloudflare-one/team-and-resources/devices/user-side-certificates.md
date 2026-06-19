@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,8 +37,8 @@ Zero Trust will indicate if a certificate is ready for use in inspection based o
 
 To generate a new Cloudflare root certificate for your Zero Trust organization:
 
-* [ Dashboard ](#tab-panel-7515)
-* [ API ](#tab-panel-7516)
+* [ Dashboard ](#tab-panel-7591)
+* [ API ](#tab-panel-7592)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. Select **Certificates**.
@@ -51,14 +51,7 @@ Send a `POST` request to the [Create Zero Trust certificate](https://developers.
 Create Zero Trust certificate
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/certificates" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/certificates" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 The API will respond with the ID and contents of the new certificate.
@@ -77,8 +70,8 @@ Once a certificate is generated in or uploaded to Zero Trust, you need to activa
 
 To activate your root certificate:
 
-* [ Dashboard ](#tab-panel-7517)
-* [ API ](#tab-panel-7518)
+* [ Dashboard ](#tab-panel-7593)
+* [ API ](#tab-panel-7594)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. Select **Certificates**.
@@ -90,22 +83,15 @@ Send a `POST` request to the [Activate a Zero Trust certificate](https://develop
 Activate a Zero Trust certificate
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/certificates/$CERTIFICATE_ID/activate" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/certificates/$CERTIFICATE_ID/activate" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 The status of the certificate will change to **Pending** while it deploys. Once the status of your certificate is **Available**, you can install it on your user's devices either [with the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/automated-deployment/) or [manually](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/manual-deployment/).
 
 Once you deploy and install your certificate, you can turn it on for use in inspection:
 
-* [ Dashboard ](#tab-panel-7519)
-* [ API ](#tab-panel-7520)
+* [ Dashboard ](#tab-panel-7595)
+* [ API ](#tab-panel-7596)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. Select **Certificates**.
@@ -117,30 +103,7 @@ Send a `PUT` request to the [Update Zero Trust account configuration](https://de
 Update Zero Trust account configuration
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configuration" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "settings": {
-
-        "certificate": {
-
-            "id": "{certificate_id}",
-
-            "in_use": true
-
-        }
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configuration" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "settings": {        "certificate": {            "id": "{certificate_id}",            "in_use": true        }    }  }'
 ```
 
 You can set multiple certificates to **Available**, but you can only turn on one certificate for use in inspection at a time. Setting a certificate as **In-Use** will set any other in-use certificates as **Available** only and prevent them from being used for inspection until turned on again.

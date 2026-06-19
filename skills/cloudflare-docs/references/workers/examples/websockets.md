@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,16 +37,7 @@ A client can make a WebSocket request in the browser by instantiating a new inst
 JavaScript
 
 ```
-
-// In client-side JavaScript, connect to your Workers function using WebSockets:
-
-const websocket = new WebSocket(
-
-  "wss://example-websocket.signalnerve.workers.dev",
-
-);
-
-
+// In client-side JavaScript, connect to your Workers function using WebSockets:const websocket = new WebSocket(  "wss://example-websocket.signalnerve.workers.dev",);
 ```
 
 Note
@@ -55,380 +46,95 @@ For more details about creating and working with WebSockets in the client, refer
 
 When an incoming WebSocket request reaches the Workers function, it will contain an `Upgrade` header, set to the string value `websocket`. Check for this header before continuing to instantiate a WebSocket:
 
-* [  JavaScript ](#tab-panel-11773)
-* [  Rust ](#tab-panel-11774)
+* [  JavaScript ](#tab-panel-11790)
+* [  Rust ](#tab-panel-11791)
 
 JavaScript
 
 ```
-
-async function handleRequest(request) {
-
-  const upgradeHeader = request.headers.get('Upgrade');
-
-  if (!upgradeHeader || upgradeHeader !== 'websocket') {
-
-    return new Response('Expected Upgrade: websocket', { status: 426 });
-
-  }
-
-}
-
-
+async function handleRequest(request) {  const upgradeHeader = request.headers.get('Upgrade');  if (!upgradeHeader || upgradeHeader !== 'websocket') {    return new Response('Expected Upgrade: websocket', { status: 426 });  }}
 ```
 
 ```
-
 use worker::*;
-
-
-#[event(fetch)]
-
-async fn fetch(req: HttpRequest, _env: Env, _ctx: Context) -> Result<worker::Response> {
-
-    let upgrade_header = match req.headers().get("Upgrade") {
-
-        Some(h) => h.to_str().unwrap(),
-
-        None => "",
-
-    };
-
-    if upgrade_header != "websocket" {
-
-        return worker::Response::error("Expected Upgrade: websocket", 426);
-
-    }
-
-}
-
-
+#[event(fetch)]async fn fetch(req: HttpRequest, _env: Env, _ctx: Context) -> Result<worker::Response> {    let upgrade_header = match req.headers().get("Upgrade") {        Some(h) => h.to_str().unwrap(),        None => "",    };    if upgrade_header != "websocket" {        return worker::Response::error("Expected Upgrade: websocket", 426);    }}
 ```
 
 After you have appropriately checked for the `Upgrade` header, you can create a new instance of `WebSocketPair`, which contains server and client WebSockets. One of these WebSockets should be handled by the Workers function and the other should be returned as part of a `Response` with the [101 status code ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/101), indicating the request is switching protocols:
 
-* [  JavaScript ](#tab-panel-11775)
-* [  Rust ](#tab-panel-11776)
+* [  JavaScript ](#tab-panel-11792)
+* [  Rust ](#tab-panel-11793)
 
 JavaScript
 
 ```
-
-async function handleRequest(request) {
-
-  const upgradeHeader = request.headers.get('Upgrade');
-
-  if (!upgradeHeader || upgradeHeader !== 'websocket') {
-
-    return new Response('Expected Upgrade: websocket', { status: 426 });
-
-  }
-
-
-  const webSocketPair = new WebSocketPair();
-
-  const client = webSocketPair[0],
-
-    server = webSocketPair[1];
-
-
-  return new Response(null, {
-
-    status: 101,
-
-    webSocket: client,
-
-  });
-
-}
-
-
+async function handleRequest(request) {  const upgradeHeader = request.headers.get('Upgrade');  if (!upgradeHeader || upgradeHeader !== 'websocket') {    return new Response('Expected Upgrade: websocket', { status: 426 });  }
+  const webSocketPair = new WebSocketPair();  const client = webSocketPair[0],    server = webSocketPair[1];
+  return new Response(null, {    status: 101,    webSocket: client,  });}
 ```
 
 ```
-
 use worker::*;
-
-
-#[event(fetch)]
-
-async fn fetch(req: HttpRequest, _env: Env, _ctx: Context) -> Result<worker::Response> {
-
-    let upgrade_header = match req.headers().get("Upgrade") {
-
-        Some(h) => h.to_str().unwrap(),
-
-        None => "",
-
-    };
-
-    if upgrade_header != "websocket" {
-
-        return worker::Response::error("Expected Upgrade: websocket", 426);
-
-    }
-
-
-    let ws = WebSocketPair::new()?;
-
-    let client = ws.client;
-
-    let server = ws.server;
-
-    server.accept()?;
-
-
+#[event(fetch)]async fn fetch(req: HttpRequest, _env: Env, _ctx: Context) -> Result<worker::Response> {    let upgrade_header = match req.headers().get("Upgrade") {        Some(h) => h.to_str().unwrap(),        None => "",    };    if upgrade_header != "websocket" {        return worker::Response::error("Expected Upgrade: websocket", 426);    }
+    let ws = WebSocketPair::new()?;    let client = ws.client;    let server = ws.server;    server.accept()?;
     worker::Response::from_websocket(client)
-
-
 }
-
-
 ```
 
 The `WebSocketPair` constructor returns an Object, with the `0` and `1` keys each holding a `WebSocket` instance as its value. It is common to grab the two WebSockets from this pair using [Object.values ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5Fobjects/Object/values) and [ES6 destructuring ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring%5Fassignment), as seen in the below example.
 
 In order to begin communicating with the `client` WebSocket in your Worker, call `accept` on the `server` WebSocket. This will tell the Workers runtime that it should listen for WebSocket data and keep the connection open with your `client` WebSocket:
 
-* [  JavaScript ](#tab-panel-11777)
-* [  Rust ](#tab-panel-11778)
+* [  JavaScript ](#tab-panel-11794)
+* [  Rust ](#tab-panel-11795)
 
 JavaScript
 
 ```
-
-async function handleRequest(request) {
-
-  const upgradeHeader = request.headers.get('Upgrade');
-
-  if (!upgradeHeader || upgradeHeader !== 'websocket') {
-
-    return new Response('Expected Upgrade: websocket', { status: 426 });
-
-  }
-
-
-  const webSocketPair = new WebSocketPair();
-
-  const [client, server] = Object.values(webSocketPair);
-
-
+async function handleRequest(request) {  const upgradeHeader = request.headers.get('Upgrade');  if (!upgradeHeader || upgradeHeader !== 'websocket') {    return new Response('Expected Upgrade: websocket', { status: 426 });  }
+  const webSocketPair = new WebSocketPair();  const [client, server] = Object.values(webSocketPair);
   server.accept();
-
-
-  return new Response(null, {
-
-    status: 101,
-
-    webSocket: client,
-
-  });
-
-}
-
-
+  return new Response(null, {    status: 101,    webSocket: client,  });}
 ```
 
 ```
-
 use worker::*;
-
-
-#[event(fetch)]
-
-async fn fetch(req: HttpRequest, _env: Env, _ctx: Context) -> Result<worker::Response> {
-
-    let upgrade_header = match req.headers().get("Upgrade") {
-
-        Some(h) => h.to_str().unwrap(),
-
-        None => "",
-
-    };
-
-    if upgrade_header != "websocket" {
-
-        return worker::Response::error("Expected Upgrade: websocket", 426);
-
-    }
-
-
-    let ws = WebSocketPair::new()?;
-
-    let client = ws.client;
-
-    let server = ws.server;
-
-    server.accept()?;
-
-
+#[event(fetch)]async fn fetch(req: HttpRequest, _env: Env, _ctx: Context) -> Result<worker::Response> {    let upgrade_header = match req.headers().get("Upgrade") {        Some(h) => h.to_str().unwrap(),        None => "",    };    if upgrade_header != "websocket" {        return worker::Response::error("Expected Upgrade: websocket", 426);    }
+    let ws = WebSocketPair::new()?;    let client = ws.client;    let server = ws.server;    server.accept()?;
     worker::Response::from_websocket(client)
-
-
 }
-
-
 ```
 
 WebSockets emit a number of [Events](https://developers.cloudflare.com/workers/runtime-apis/websockets/#events) that can be connected to using `addEventListener`. The below example hooks into the `message` event and emits a `console.log` with the data from it:
 
-* [  JavaScript ](#tab-panel-11779)
-* [  Rust ](#tab-panel-11780)
-* [  Hono ](#tab-panel-11781)
+* [  JavaScript ](#tab-panel-11796)
+* [  Rust ](#tab-panel-11797)
+* [  Hono ](#tab-panel-11798)
 
 JavaScript
 
 ```
-
-async function handleRequest(request) {
-
-  const upgradeHeader = request.headers.get('Upgrade');
-
-  if (!upgradeHeader || upgradeHeader !== 'websocket') {
-
-    return new Response('Expected Upgrade: websocket', { status: 426 });
-
-  }
-
-
-  const webSocketPair = new WebSocketPair();
-
-  const [client, server] = Object.values(webSocketPair);
-
-
-  server.accept();
-
-  server.addEventListener('message', event => {
-
-    console.log(event.data);
-
-  });
-
-
-  return new Response(null, {
-
-    status: 101,
-
-    webSocket: client,
-
-  });
-
-}
-
-
+async function handleRequest(request) {  const upgradeHeader = request.headers.get('Upgrade');  if (!upgradeHeader || upgradeHeader !== 'websocket') {    return new Response('Expected Upgrade: websocket', { status: 426 });  }
+  const webSocketPair = new WebSocketPair();  const [client, server] = Object.values(webSocketPair);
+  server.accept();  server.addEventListener('message', event => {    console.log(event.data);  });
+  return new Response(null, {    status: 101,    webSocket: client,  });}
 ```
 
 ```
-
-use futures::StreamExt;
-
-use worker::*;
-
-
-#[event(fetch)]
-
-async fn fetch(req: HttpRequest, _env: Env, _ctx: Context) -> Result<worker::Response> {
-
-    let upgrade_header = match req.headers().get("Upgrade") {
-
-        Some(h) => h.to_str().unwrap(),
-
-        None => "",
-
-    };
-
-    if upgrade_header != "websocket" {
-
-        return worker::Response::error("Expected Upgrade: websocket", 426);
-
-    }
-
-
-    let ws = WebSocketPair::new()?;
-
-    let client = ws.client;
-
-    let server = ws.server;
-
-    server.accept()?;
-
-
-    wasm_bindgen_futures::spawn_local(async move {
-
-        let mut event_stream = server.events().expect("could not open stream");
-
-        while let Some(event) = event_stream.next().await {
-
-            match event.expect("received error in websocket") {
-
-                WebsocketEvent::Message(msg) => server.send(&msg.text()).unwrap(),
-
-                WebsocketEvent::Close(event) => console_log!("{:?}", event),
-
-            }
-
-        }
-
-    });
-
-    worker::Response::from_websocket(client)
-
-
+use futures::StreamExt;use worker::*;
+#[event(fetch)]async fn fetch(req: HttpRequest, _env: Env, _ctx: Context) -> Result<worker::Response> {    let upgrade_header = match req.headers().get("Upgrade") {        Some(h) => h.to_str().unwrap(),        None => "",    };    if upgrade_header != "websocket" {        return worker::Response::error("Expected Upgrade: websocket", 426);    }
+    let ws = WebSocketPair::new()?;    let client = ws.client;    let server = ws.server;    server.accept()?;
+    wasm_bindgen_futures::spawn_local(async move {        let mut event_stream = server.events().expect("could not open stream");        while let Some(event) = event_stream.next().await {            match event.expect("received error in websocket") {                WebsocketEvent::Message(msg) => server.send(&msg.text()).unwrap(),                WebsocketEvent::Close(event) => console_log!("{:?}", event),            }        }    });    worker::Response::from_websocket(client)
 }
-
-
 ```
 
 TypeScript
 
 ```
-
-import { Hono } from 'hono'
-
-import { upgradeWebSocket } from 'hono/cloudflare-workers'
-
-
+import { Hono } from 'hono'import { upgradeWebSocket } from 'hono/cloudflare-workers'
 const app = new Hono()
-
-
-app.get(
-
-  '*',
-
-  upgradeWebSocket((c) => {
-
-    return {
-
-      onMessage(event, ws) {
-
-        console.log('Received message from client:', event.data)
-
-        ws.send(`Echo: ${event.data}`)
-
-      },
-
-      onClose: () => {
-
-        console.log('WebSocket closed:', event)
-
-      },
-
-      onError: () => {
-
-        console.error('WebSocket error:', event)
-
-      },
-
-    }
-
-  })
-
-)
-
-
+app.get(  '*',  upgradeWebSocket((c) => {    return {      onMessage(event, ws) {        console.log('Received message from client:', event.data)        ws.send(`Echo: ${event.data}`)      },      onClose: () => {        console.log('WebSocket closed:', event)      },      onError: () => {        console.error('WebSocket error:', event)      },    }  }))
 export default app;
-
-
 ```
 
 ### Connect to the WebSocket server from a client
@@ -438,22 +144,7 @@ Writing WebSocket clients that communicate with your Workers function is a two-s
 JavaScript
 
 ```
-
-const websocket = new WebSocket(
-
-  "wss://websocket-example.signalnerve.workers.dev",
-
-);
-
-websocket.addEventListener("message", (event) => {
-
-  console.log("Message received from server");
-
-  console.log(event.data);
-
-});
-
-
+const websocket = new WebSocket(  "wss://websocket-example.signalnerve.workers.dev",);websocket.addEventListener("message", (event) => {  console.log("Message received from server");  console.log(event.data);});
 ```
 
 WebSocket clients can send messages back to the server using the [send](https://developers.cloudflare.com/workers/runtime-apis/websockets/#send) function:
@@ -461,10 +152,7 @@ WebSocket clients can send messages back to the server using the [send](https://
 JavaScript
 
 ```
-
 websocket.send("MESSAGE");
-
-
 ```
 
 When the WebSocket interaction is complete, the client can close the connection using [close](https://developers.cloudflare.com/workers/runtime-apis/websockets/#close):
@@ -472,10 +160,7 @@ When the WebSocket interaction is complete, the client can close the connection 
 JavaScript
 
 ```
-
 websocket.close();
-
-
 ```
 
 For an example of this in practice, refer to the [websocket-template ↗](https://github.com/cloudflare/websocket-template) to get started with WebSockets.
@@ -489,63 +174,10 @@ Additionally, Cloudflare supports establishing WebSocket connections by making a
 JavaScript
 
 ```
-
-async function websocket(url) {
-
-  // Make a fetch request including `Upgrade: websocket` header.
-
-  // The Workers Runtime will automatically handle other requirements
-
-  // of the WebSocket protocol, like the Sec-WebSocket-Key header.
-
-  let resp = await fetch(url, {
-
-    headers: {
-
-      Upgrade: "websocket",
-
-    },
-
-  });
-
-
-  // If the WebSocket handshake completed successfully, then the
-
-  // response has a `webSocket` property.
-
-  let ws = resp.webSocket;
-
-  if (!ws) {
-
-    throw new Error("server didn't accept WebSocket");
-
-  }
-
-
-  // Call accept() to indicate that you'll be handling the socket here
-
-  // in JavaScript, as opposed to returning it on to a client.
-
-  // You can pass { allowHalfOpen: true } if you need to coordinate
-
-  // the close handshake manually (for example, when proxying).
-
-  ws.accept();
-
-
-  // Now you can send and receive messages like before.
-
-  ws.send("hello");
-
-  ws.addEventListener("message", (msg) => {
-
-    console.log(msg.data);
-
-  });
-
-}
-
-
+async function websocket(url) {  // Make a fetch request including `Upgrade: websocket` header.  // The Workers Runtime will automatically handle other requirements  // of the WebSocket protocol, like the Sec-WebSocket-Key header.  let resp = await fetch(url, {    headers: {      Upgrade: "websocket",    },  });
+  // If the WebSocket handshake completed successfully, then the  // response has a `webSocket` property.  let ws = resp.webSocket;  if (!ws) {    throw new Error("server didn't accept WebSocket");  }
+  // Call accept() to indicate that you'll be handling the socket here  // in JavaScript, as opposed to returning it on to a client.  // You can pass { allowHalfOpen: true } if you need to coordinate  // the close handshake manually (for example, when proxying).  ws.accept();
+  // Now you can send and receive messages like before.  ws.send("hello");  ws.addEventListener("message", (msg) => {    console.log(msg.data);  });}
 ```
 
 ## WebSocket close behavior

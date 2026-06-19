@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -46,69 +46,27 @@ Before you begin, ensure you have:
 3. From Grafana, copy your Otel endpoint, auth header, and auth value
 * Your OTEL endpoint will look like `https://otlp-gateway-prod-us-east-2.grafana.net/otlp` (append `/v1/traces` for traces and `/v1/logs` for logs)
 * Your custom header should include:  
-   * Your auth header name `Authorization`  
-   * Your auth header value `Basic MTMxxx...`
+  * Your auth header name `Authorization`
+  * Your auth header value `Basic MTMxxx...`
 
 ## Step 3: Configure your Worker
 
 With your destination created in the Cloudflare dashboard, update your Worker's configuration to enable telemetry export.
 
-* [  wrangler.jsonc ](#tab-panel-11844)
-* [  wrangler.toml ](#tab-panel-11845)
+* [  wrangler.jsonc ](#tab-panel-11861)
+* [  wrangler.toml ](#tab-panel-11862)
 
 JSONC
 
 ```
-
-{
-
-  "observability": {
-
-    "traces": {
-
-      "enabled": true,
-
-      // Must match the destination name in the dashboard
-
-      "destinations": ["grafana-traces"]
-
-    },
-
-    "logs": {
-
-      "enabled": true,
-
-      // Must match the destination name in the dashboard
-
-      "destinations": ["grafana-logs"]
-
-    }
-
-  }
-
-}
-
-
+{  "observability": {    "traces": {      "enabled": true,      // Must match the destination name in the dashboard      "destinations": ["grafana-traces"]    },    "logs": {      "enabled": true,      // Must match the destination name in the dashboard      "destinations": ["grafana-logs"]    }  }}
 ```
 
 TOML
 
 ```
-
-[observability.traces]
-
-enabled = true
-
-destinations = [ "grafana-traces" ]
-
-
-[observability.logs]
-
-enabled = true
-
-destinations = [ "grafana-logs" ]
-
-
+[observability.traces]enabled = truedestinations = [ "grafana-traces" ]
+[observability.logs]enabled = truedestinations = [ "grafana-logs" ]
 ```
 
 After updating your configuration, deploy your Worker for the changes to take effect.

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -163,13 +163,16 @@ Zero Trust now includes **Data security analytics**, providing you with unpreced
 
 The new dashboard includes:
 
-* **Sensitive Data Movement Over Time:**  
-   * See patterns and trends in how sensitive data moves across your environment. This helps understand where data is flowing and identify common paths.
-* **Sensitive Data at Rest in SaaS & Cloud:**  
-   * View an inventory of sensitive data stored within your corporate SaaS applications (for example, Google Drive, Microsoft 365) and cloud accounts (such as AWS S3).
-* **DLP Policy Activity:**  
-   * Identify which of your Data Loss Prevention (DLP) policies are being triggered most often.  
-   * See which specific users are responsible for triggering DLP policies.
+* **Sensitive Data Movement Over Time:**
+
+  * See patterns and trends in how sensitive data moves across your environment. This helps understand where data is flowing and identify common paths.
+* **Sensitive Data at Rest in SaaS & Cloud:**
+
+  * View an inventory of sensitive data stored within your corporate SaaS applications (for example, Google Drive, Microsoft 365) and cloud accounts (such as AWS S3).
+* **DLP Policy Activity:**
+
+  * Identify which of your Data Loss Prevention (DLP) policies are being triggered most often.
+  * See which specific users are responsible for triggering DLP policies.
 ![Data Security Analytics](https://developers.cloudflare.com/_astro/cf1-data-security-analytics-v1.BGl6fYXl_H3N0P.webp) 
 
 To access the new dashboard, log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/) and go to **Insights** on the sidebar.

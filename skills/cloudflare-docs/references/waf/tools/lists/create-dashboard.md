@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,11 +26,12 @@ To create a list, follow these steps:
 
 ## Add items to a list
 
-1. (Optional) If you wish to add items to an existing list:  
-   1. Go to the **Settings** page.  
-   [ Go to **Configurations** ](https://dash.cloudflare.com/?to=/:account/configurations)  
-   2. Go to **Lists**.  
-   3. Select **Edit** next to the list you want to edit.
+1. (Optional) If you wish to add items to an existing list:
+
+  1. Go to the **Settings** page.  
+  [ Go to **Configurations** ](https://dash.cloudflare.com/?to=/:account/configurations)
+  2. Go to **Lists**.
+  3. Select **Edit** next to the list you want to edit.
 2. Select **Add items**.
 3. To [add items to the list manually](#add-items-to-a-list-manually), use the available text inputs on the page.
 4. To [add items using a CSV file](#add-items-using-a-csv-file), select **Upload CSV**.
@@ -56,9 +57,10 @@ To add items to a list by uploading a CSV file:
 1. In the **Add items to list** page, select **Upload CSV**.
 2. Browse to the location of the CSV file, select the file, and then select **Open**. The displayed items in the page will include the items loaded from the CSV file.  
 The exact CSV file format depends on the list type. Refer to [Custom list types](https://developers.cloudflare.com/waf/tools/lists/custom-lists/#custom-list-types) for details.
-3. You can continue to edit the items in the list before adding them:  
-   * To delete any of the items you have entered, select **X**.  
-   * To add extra items manually, enter the information in the text inputs.
+3. You can continue to edit the items in the list before adding them:
+
+  * To delete any of the items you have entered, select **X**.
+  * To add extra items manually, enter the information in the text inputs.
 4. Select **Add to list**.
 
 ```json

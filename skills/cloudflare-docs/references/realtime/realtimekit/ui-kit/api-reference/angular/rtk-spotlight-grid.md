@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -39,31 +39,13 @@ A grid component that renders two lists of participants: `pinnedParticipants` an
 ### Basic Usage
 
 ```
-
-<!-- component.html -->
-
-<rtk-spotlight-grid></rtk-spotlight-grid>
-
-
+<!-- component.html --><rtk-spotlight-grid></rtk-spotlight-grid>
 ```
 
 ### With Properties
 
 ```
-
-<!-- component.html -->
-
-<rtk-spotlight-grid
-
- aspectRatio="example"
-
- gap="42"
-
- gridSize="md">
-
-</rtk-spotlight-grid>
-
-
+<!-- component.html --><rtk-spotlight-grid aspectRatio="example" gap="42" gridSize="md"></rtk-spotlight-grid>
 ```
 
 ```json

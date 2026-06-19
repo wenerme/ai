@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,12 +29,7 @@ These files should be formatted using the [dotenv ↗](https://hexdocs.pm/dotenv
 .dev.vars / .env
 
 ```
-
-SECRET_KEY="value"
-
-API_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
-
-
+SECRET_KEY="value"API_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
 ```
 
 Do not commit secrets to git
@@ -47,10 +42,10 @@ When you select a Cloudflare environment in your local development, the correspo
 
 * When using `.dev.vars.<environment-name>` files, all secrets must be defined per environment. If `.dev.vars.<environment-name>` exists then only this will be loaded; the `.dev.vars` file will not be loaded.
 * In contrast, all matching `.env` files are loaded and the values are merged. For each variable, the value from the most specific file is used, with the following precedence:  
-   * `.env.<environment-name>.local` (most specific)  
-   * `.env.local`  
-   * `.env.<environment-name>`  
-   * `.env` (least specific)
+  * `.env.<environment-name>.local` (most specific)
+  * `.env.local`
+  * `.env.<environment-name>`
+  * `.env` (least specific)
 
 Controlling `.env` handling
 
@@ -67,11 +62,10 @@ Here are steps to set up environment variables for local development using eithe
 2. Add key-value pairs:  
 .dev.vars/.env  
 ```  
-API_HOST="localhost:3000"  
-DEBUG="true"  
-SECRET_TOKEN="my-local-secret-token"  
+API_HOST="localhost:3000"DEBUG="true"SECRET_TOKEN="my-local-secret-token"  
 ```
-3. Run your `dev` command  
+3. Run your `dev` command
+
 **Wrangler**  
  npm  yarn  pnpm  
 ```  
@@ -82,7 +76,8 @@ yarn wrangler dev
 ```  
 ```  
 pnpm wrangler dev  
-```  
+```
+
 **Vite plugin**  
  npm  yarn  pnpm  
 ```  
@@ -103,11 +98,10 @@ To simulate different local environments, you can provide environment-specific f
 2. Add key-value pairs:  
 .dev.vars.staging/.env.staging  
 ```  
-API_HOST="staging.localhost:3000"  
-DEBUG="false"  
-SECRET_TOKEN="staging-token"  
+API_HOST="staging.localhost:3000"DEBUG="false"SECRET_TOKEN="staging-token"  
 ```
-3. Specify the environment when running the `dev` command:  
+3. Specify the environment when running the `dev` command:
+
 **Wrangler**  
  npm  yarn  pnpm  
 ```  
@@ -118,7 +112,8 @@ yarn wrangler dev --env staging
 ```  
 ```  
 pnpm wrangler dev --env staging  
-```  
+```
+
 **Vite plugin**  
  npm  yarn  pnpm  
 ```  
@@ -129,9 +124,10 @@ CLOUDFLARE_ENV=staging yarn vite dev
 ```  
 ```  
 CLOUDFLARE_ENV=staging pnpm vite dev  
-```  
-   * If using `.dev.vars.staging`, only the values from that file will be applied instead of `.dev.vars`.  
-   * If using `.env.staging`, the values will be merged with `.env` files, with the most specific file taking precedence.
+```
+
+  * If using `.dev.vars.staging`, only the values from that file will be applied instead of `.dev.vars`.
+  * If using `.env.staging`, the values will be merged with `.env` files, with the most specific file taking precedence.
 
 ## Learn more
 

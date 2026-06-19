@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,10 +33,10 @@ At least one **IP address resolution** record is required for each domain on Clo
 These records include the following fields:
 
 * **Name**: A subdomain or the zone apex (`@`).  
-   * The name must be composed of labels of 63 characters or less (`label1.label2.label3`), where the fully qualified domain name (`label1.label2.label3.example.com`) does not exceed 253 characters.  
-   * DNS labels can contain any octet (byte value). However, for compatibility with hostnames and TLS certificates, it is recommended to use only letters, digits, and hyphens (LDH rule). This is not a DNS protocol requirement, meaning DNS will work even if you do not follow these conventions.  
-   * There is no requirement to start with a letter or end with a letter or digit.  
-   * Underscores are valid in DNS and commonly used for service records.
+  * The name must be composed of labels of 63 characters or less (`label1.label2.label3`), where the fully qualified domain name (`label1.label2.label3.example.com`) does not exceed 253 characters.
+  * DNS labels can contain any octet (byte value). However, for compatibility with hostnames and TLS certificates, it is recommended to use only letters, digits, and hyphens (LDH rule). This is not a DNS protocol requirement, meaning DNS will work even if you do not follow these conventions.
+  * There is no requirement to start with a letter or end with a letter or digit.
+  * Underscores are valid in DNS and commonly used for service records.
 * **IPv4/IPv6 address**: Your origin server address (cannot be a [Cloudflare IP ↗](https://www.cloudflare.com/ips))
 
 Note
@@ -46,8 +46,8 @@ Cloudflare uses the [canonical notation ↗](https://www.rfc-editor.org/rfc/rfc5
 Alternative notations of IPv4 addresses (`1.1` for `1.0.0.1`, for example) are not supported for A records.
 
 * **TTL**: Time to live, which controls how long DNS resolvers should cache a response before revalidating it.  
-   * If the **Proxy Status** is **Proxied**, this value defaults to **Auto**, which is 300 seconds.  
-   * If the **Proxy Status** is **DNS Only**, you can customize the value.
+  * If the **Proxy Status** is **Proxied**, this value defaults to **Auto**, which is 300 seconds.
+  * If the **Proxy Status** is **DNS Only**, you can customize the value.
 * **Proxy status**: For more details, refer to [Proxied DNS records](https://developers.cloudflare.com/dns/proxy-status/).
 * **Private network routing**: Some Enterprise customers also have access to [private network routing](https://developers.cloudflare.com/dns/private-origins/private-network-routing/). For `A` and `AAAA` records, this feature allows you to proxy HTTP/HTTPS traffic from public hostnames to origins in your private network.
 
@@ -62,89 +62,19 @@ For field definitions, refer to the [API documentation](https://developers.cloud
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `DNS Write`
 
 Create DNS Record
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "type": "A",
-
-    "name": "www.example.com",
-
-    "content": "192.0.2.1",
-
-    "ttl": 3600,
-
-    "proxied": false
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "type": "A",    "name": "www.example.com",    "content": "192.0.2.1",    "ttl": 3600,    "proxied": false  }'
 ```
 
 Response
 
 ```
-
-{
-
-  "result": {
-
-    "id": "<ID>",
-
-    "zone_id": "<ZONE_ID>",
-
-    "zone_name": "example.com",
-
-    "name": "www.example.com",
-
-    "type": "A",
-
-    "content": "192.0.2.1",
-
-    "proxiable": true,
-
-    "proxied": false,
-
-    "ttl": 1,
-
-    "locked": false,
-
-    "meta": {
-
-      "source": "primary"
-
-    },
-
-    "comment": null,
-
-    "tags": [],
-
-    "created_on": "2023-01-17T20:37:05.368097Z",
-
-    "modified_on": "2023-01-17T20:37:05.368097Z"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "id": "<ID>",    "zone_id": "<ZONE_ID>",    "zone_name": "example.com",    "name": "www.example.com",    "type": "A",    "content": "192.0.2.1",    "proxiable": true,    "proxied": false,    "ttl": 1,    "locked": false,    "meta": {      "source": "primary"    },    "comment": null,    "tags": [],    "created_on": "2023-01-17T20:37:05.368097Z",    "modified_on": "2023-01-17T20:37:05.368097Z"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 ### CNAME
@@ -154,10 +84,10 @@ Response
 These records include the following fields:
 
 * **Name**: A subdomain or the zone apex (`@`).  
-   * The name must be composed of labels of 63 characters or less (`label1.label2.label3`), where the fully qualified domain name (`label1.label2.label3.example.com`) does not exceed 253 characters.  
-   * DNS labels can contain any octet (byte value). However, for compatibility with hostnames and TLS certificates, it is recommended to use only letters, digits, and hyphens (LDH rule). This is not a DNS protocol requirement, meaning DNS will work even if you do not follow these conventions.  
-   * There is no requirement to start with a letter or end with a letter or digit.  
-   * Underscores are valid in DNS and commonly used for service records.
+  * The name must be composed of labels of 63 characters or less (`label1.label2.label3`), where the fully qualified domain name (`label1.label2.label3.example.com`) does not exceed 253 characters.
+  * DNS labels can contain any octet (byte value). However, for compatibility with hostnames and TLS certificates, it is recommended to use only letters, digits, and hyphens (LDH rule). This is not a DNS protocol requirement, meaning DNS will work even if you do not follow these conventions.
+  * There is no requirement to start with a letter or end with a letter or digit.
+  * Underscores are valid in DNS and commonly used for service records.
 \- **Target**: The hostname where traffic should be directed (`example.com`). - **TTL**: Time to live, which controls how long DNS resolvers should cache a response before revalidating it.
 
 * If the **Proxy Status** is **Proxied**, this value defaults to **Auto**, which is 300 seconds. - If the **Proxy Status** is **DNS Only**, you can customize the value. - **Proxy status**: For more details, refer to [Proxied DNS records](https://developers.cloudflare.com/dns/proxy-status/).
@@ -203,89 +133,19 @@ For field definitions, refer to the [API documentation](https://developers.cloud
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `DNS Write`
 
 Create DNS Record
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "type": "CNAME",
-
-    "name": "www.example.com",
-
-    "content": "www.another-example.com",
-
-    "ttl": 3600,
-
-    "proxied": false
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "type": "CNAME",    "name": "www.example.com",    "content": "www.another-example.com",    "ttl": 3600,    "proxied": false  }'
 ```
 
 Response
 
 ```
-
-{
-
-  "result": {
-
-    "id": "<ID>",
-
-    "zone_id": "<ZONE_ID>",
-
-    "zone_name": "example.com",
-
-    "name": "www.example.com",
-
-    "type": "CNAME",
-
-    "content": "www.another-example.com",
-
-    "proxiable": true,
-
-    "proxied": false,
-
-    "ttl": 1,
-
-    "locked": false,
-
-    "meta": {
-
-      "source": "primary"
-
-    },
-
-    "comment": null,
-
-    "tags": [],
-
-    "created_on": "2023-01-17T20:37:05.368097Z",
-
-    "modified_on": "2023-01-17T20:37:05.368097Z"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "id": "<ID>",    "zone_id": "<ZONE_ID>",    "zone_name": "example.com",    "name": "www.example.com",    "type": "CNAME",    "content": "www.another-example.com",    "proxiable": true,    "proxied": false,    "ttl": 1,    "locked": false,    "meta": {      "source": "primary"    },    "comment": null,    "tags": [],    "created_on": "2023-01-17T20:37:05.368097Z",    "modified_on": "2023-01-17T20:37:05.368097Z"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 ---
@@ -358,115 +218,19 @@ For field definitions, refer to the [API documentation](https://developers.cloud
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `DNS Write`
 
 Create DNS Record
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "type": "SRV",
-
-    "name": "_xmpp._tcp.example.com",
-
-    "data": {
-
-        "priority": 10,
-
-        "weight": 5,
-
-        "port": 5223,
-
-        "target": "server.example.com"
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "type": "SRV",    "name": "_xmpp._tcp.example.com",    "data": {        "priority": 10,        "weight": 5,        "port": 5223,        "target": "server.example.com"    }  }'
 ```
 
 Response
 
 ```
-
-{
-
-  "result": {
-
-    "id": "<ID>",
-
-    "zone_id": "<ZONE_ID>",
-
-    "zone_name": "example.com",
-
-    "name": "_xmpp._tcp.example.com",
-
-    "type": "SRV",
-
-    "content": "5 5223 server.example.com",
-
-    "priority": 10,
-
-    "proxiable": false,
-
-    "proxied": false,
-
-    "ttl": 1,
-
-    "locked": false,
-
-    "data": {
-
-      "port": 5223,
-
-      "priority": 10,
-
-      "target": "server.example.com",
-
-      "weight": 5
-
-    },
-
-    "meta": {
-
-      "auto_added": false,
-
-      "managed_by_apps": false,
-
-      "managed_by_argo_tunnel": false,
-
-      "source": "primary"
-
-    },
-
-    "comment": null,
-
-    "tags": [],
-
-    "created_on": "2022-11-08T15:57:39.585977Z",
-
-    "modified_on": "2022-11-08T15:57:39.585977Z"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "id": "<ID>",    "zone_id": "<ZONE_ID>",    "zone_name": "example.com",    "name": "_xmpp._tcp.example.com",    "type": "SRV",    "content": "5 5223 server.example.com",    "priority": 10,    "proxiable": false,    "proxied": false,    "ttl": 1,    "locked": false,    "data": {      "port": 5223,      "priority": 10,      "target": "server.example.com",      "weight": 5    },    "meta": {      "auto_added": false,      "managed_by_apps": false,      "managed_by_argo_tunnel": false,      "source": "primary"    },    "comment": null,    "tags": [],    "created_on": "2022-11-08T15:57:39.585977Z",    "modified_on": "2022-11-08T15:57:39.585977Z"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 ### SVCB and HTTPS
@@ -534,31 +298,37 @@ SOA record fields
 
 * **`MNAME`**: The primary nameserver for the zone. Secondary nameservers receive zone updates from the nameserver specified in this field.
 * **`RNAME`**: The email address of the administrator responsible for the zone.  
-The `@` symbol is replaced by the first dot. If an email address contains a dot before `@`, this should be represented as `\.`.  
-| Email                | RNAME                  |  
-| -------------------- | ---------------------- |  
-| john@example.com     | john.example.com       |  
+The `@` symbol is replaced by the first dot. If an email address contains a dot before `@`, this should be represented as `\.`.
+
+| Email                | RNAME                  |
+| -------------------- | ---------------------- |
+| john@example.com     | john.example.com       |
 | john.doe@example.com | john\\.doe.example.com |
 * **`Serial`**: The serial number for the zone. Secondary nameservers initiate zone transfers if this number increases.
-* **`Refresh`**: Time (in seconds) after which a secondary nameserver should query the primary for the `SOA` record, to detect zone changes. Only relevant if DNS NOTIFY ([RFC 1996 ↗](https://www.rfc-editor.org/rfc/rfc1996.html)) is not configured.  
-| Default | Minimum | Maximum |  
-| ------- | ------- | ------- |  
+* **`Refresh`**: Time (in seconds) after which a secondary nameserver should query the primary for the `SOA` record, to detect zone changes. Only relevant if DNS NOTIFY ([RFC 1996 ↗](https://www.rfc-editor.org/rfc/rfc1996.html)) is not configured.
+
+| Default | Minimum | Maximum |
+| ------- | ------- | ------- |
 | 10000   | 600     | 86400   |
-* **`Retry`**: Time (in seconds) after which a secondary nameserver should retry getting the serial number from the primary nameserver after a failed attempt. Any specified values must not be greater than `Refresh`.  
-| Default | Minimum | Maximum |  
-| ------- | ------- | ------- |  
+* **`Retry`**: Time (in seconds) after which a secondary nameserver should retry getting the serial number from the primary nameserver after a failed attempt. Any specified values must not be greater than `Refresh`.
+
+| Default | Minimum | Maximum |
+| ------- | ------- | ------- |
 | 2400    | 600     | 3600    |
-* **`Expire`**: Time (in seconds) after which a secondary nameserver should stop answering queries for a zone if the primary does not respond. Any specified values must not be smaller than `Refresh`.  
-| Default | Minimum | Maximum |  
-| ------- | ------- | ------- |  
+* **`Expire`**: Time (in seconds) after which a secondary nameserver should stop answering queries for a zone if the primary does not respond. Any specified values must not be smaller than `Refresh`.
+
+| Default | Minimum | Maximum |
+| ------- | ------- | ------- |
 | 604800  | 86400   | 2419200 |
-* **`Record TTL`**: The [time to live](https://developers.cloudflare.com/dns/manage-dns-records/reference/ttl/) of the SOA record.  
-| Default | Minimum | Maximum |  
-| ------- | ------- | ------- |  
+* **`Record TTL`**: The [time to live](https://developers.cloudflare.com/dns/manage-dns-records/reference/ttl/) of the SOA record.
+
+| Default | Minimum | Maximum |
+| ------- | ------- | ------- |
 | 3600    | 1800    | 3600    |
-* **`Minimum TTL`**: The TTL for caching negative responses. Refer to [RFC 2308 ↗](https://www.rfc-editor.org/rfc/rfc2308.html#section-4) for details.  
-| Default | Minimum | Maximum |  
-| ------- | ------- | ------- |  
+* **`Minimum TTL`**: The TTL for caching negative responses. Refer to [RFC 2308 ↗](https://www.rfc-editor.org/rfc/rfc2308.html#section-4) for details.
+
+| Default | Minimum | Maximum |
+| ------- | ------- | ------- |
 | 1800    | 60      | 86400   |
 
 Note

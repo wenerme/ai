@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,22 +20,30 @@ The following methods can be used to configure your Pages Function.
 
 The `onRequest` method will be called unless a more specific `onRequestVerb` method is exported. For example, if both `onRequest` and `onRequestGet` are exported, only `onRequestGet` will be called for `GET` requests.
 
-* `onRequest(context[EventContext](#eventcontext))` Response | Promise<Response>  
-   * This function will be invoked on all requests no matter what the request method is, as long as no specific request verb (like one of the methods below) is exported.
-* `onRequestGet(context[EventContext](#eventcontext))` Response | Promise<Response>  
-   * This function will be invoked on all `GET` requests.
-* `onRequestPost(context[EventContext](#eventcontext))` Response | Promise<Response>  
-   * This function will be invoked on all `POST` requests.
-* `onRequestPatch(context[EventContext](#eventcontext))` Response | Promise<Response>  
-   * This function will be invoked on all `PATCH` requests.
-* `onRequestPut(context[EventContext](#eventcontext))` Response | Promise<Response>  
-   * This function will be invoked on all `PUT` requests.
-* `onRequestDelete(context[EventContext](#eventcontext))` Response | Promise<Response>  
-   * This function will be invoked on all `DELETE` requests.
-* `onRequestHead(context[EventContext](#eventcontext))` Response | Promise<Response>  
-   * This function will be invoked on all `HEAD` requests.
-* `onRequestOptions(context[EventContext](#eventcontext))` Response | Promise<Response>  
-   * This function will be invoked on all `OPTIONS` requests.
+* `onRequest(context[EventContext](#eventcontext))` Response | Promise<Response>
+
+  * This function will be invoked on all requests no matter what the request method is, as long as no specific request verb (like one of the methods below) is exported.
+* `onRequestGet(context[EventContext](#eventcontext))` Response | Promise<Response>
+
+  * This function will be invoked on all `GET` requests.
+* `onRequestPost(context[EventContext](#eventcontext))` Response | Promise<Response>
+
+  * This function will be invoked on all `POST` requests.
+* `onRequestPatch(context[EventContext](#eventcontext))` Response | Promise<Response>
+
+  * This function will be invoked on all `PATCH` requests.
+* `onRequestPut(context[EventContext](#eventcontext))` Response | Promise<Response>
+
+  * This function will be invoked on all `PUT` requests.
+* `onRequestDelete(context[EventContext](#eventcontext))` Response | Promise<Response>
+
+  * This function will be invoked on all `DELETE` requests.
+* `onRequestHead(context[EventContext](#eventcontext))` Response | Promise<Response>
+
+  * This function will be invoked on all `HEAD` requests.
+* `onRequestOptions(context[EventContext](#eventcontext))` Response | Promise<Response>
+
+  * This function will be invoked on all `OPTIONS` requests.
 
 ### `env.ASSETS.fetch()`
 
@@ -65,16 +73,12 @@ Holds the values from [dynamic routing](https://developers.cloudflare.com/pages/
 In the following example, you have a dynamic path that is `/users/[user].js`. When you visit the site on `/users/nevi` the `params` object would look like:  
 JavaScript  
 ```  
-{  
-  user: "nevi";  
-}  
+{  user: "nevi";}  
 ```  
 This allows you fetch the dynamic value from the path:  
 JavaScript  
 ```  
-export function onRequest(context) {  
-  return new Response(`Hello ${context.params.user}`);  
-}  
+export function onRequest(context) {  return new Response(`Hello ${context.params.user}`);}  
 ```  
 Which would return `"Hello nevi"`.
 * `data` Data

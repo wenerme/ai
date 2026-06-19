@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -40,21 +40,17 @@ You can view Durable Object logs from the Cloudflare dashboard. Logs are aggrega
 
 To start using Durable Object logging:
 
-1. Enable Durable Object logging in the Wrangler configuration file of the Worker that defines your Durable Object class:  
-   * [  wrangler.jsonc ](#tab-panel-8381)  
-   * [  wrangler.toml ](#tab-panel-8382)  
+1. Enable Durable Object logging in the Wrangler configuration file of the Worker that defines your Durable Object class:
+
+  * [  wrangler.jsonc ](#tab-panel-8457)
+  * [  wrangler.toml ](#tab-panel-8458)  
 JSONC  
 ```  
-{  
-    "observability": {  
-        "enabled": true  
-    }  
-}  
+{    "observability": {        "enabled": true    }}  
 ```  
 TOML  
 ```  
-[observability]  
-enabled = true  
+[observability]enabled = true  
 ```
 2. Deploy the latest version of the Worker with the updated binding.
 3. Go to the **Durable Objects** page.  
@@ -91,60 +87,7 @@ Durable Objects using [WebSockets](https://developers.cloudflare.com/durable-obj
 JavaScript
 
 ```
-
-  viewer {
-
-    /*
-
-    Replace with your account tag, the 32 hex character id visible at the beginning of any url
-
-    when logged in to dash.cloudflare.com or under "Account ID" on the sidebar of the Workers & Pages Overview
-
-    */
-
-    accounts(filter: {accountTag: "your account tag here"}) {
-
-      // Replace dates with a recent date
-
-      durableObjectsInvocationsAdaptiveGroups(filter: {date_gt: "2023-05-23"}, limit: 1000) {
-
-        sum {
-
-          // Any other fields found through introspection can be added here
-
-          requests
-
-          responseBodySize
-
-        }
-
-      }
-
-      durableObjectsPeriodicGroups(filter: {date_gt: "2023-05-23"}, limit: 1000) {
-
-        sum {
-
-          cpuTime
-
-        }
-
-      }
-
-      durableObjectsStorageGroups(filter: {date_gt: "2023-05-23"}, limit: 1000) {
-
-        max {
-
-          storedBytes
-
-        }
-
-      }
-
-    }
-
-  }
-
-
+  viewer {    /*    Replace with your account tag, the 32 hex character id visible at the beginning of any url    when logged in to dash.cloudflare.com or under "Account ID" on the sidebar of the Workers & Pages Overview    */    accounts(filter: {accountTag: "your account tag here"}) {      // Replace dates with a recent date      durableObjectsInvocationsAdaptiveGroups(filter: {date_gt: "2023-05-23"}, limit: 1000) {        sum {          // Any other fields found through introspection can be added here          requests          responseBodySize        }      }      durableObjectsPeriodicGroups(filter: {date_gt: "2023-05-23"}, limit: 1000) {        sum {          cpuTime        }      }      durableObjectsStorageGroups(filter: {date_gt: "2023-05-23"}, limit: 1000) {        max {          storedBytes        }      }    }  }
 ```
 
 Refer to the [Querying Workers Metrics with GraphQL](https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-workers-metrics/) tutorial for authentication and to learn more about querying Workers datasets.

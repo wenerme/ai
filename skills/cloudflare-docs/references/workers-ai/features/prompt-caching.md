@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -36,46 +36,7 @@ Prefix caching only works when a request routes to the same model instance that 
 Terminal window
 
 ```
-
-curl -X POST \
-
-  "https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/run/@cf/moonshotai/kimi-k2.5" \
-
-  -H "Authorization: Bearer {api_token}" \
-
-  -H "Content-Type: application/json" \
-
-  -H "x-session-affinity: ses_12345678" \
-
-  -d '{
-
-    "messages": [
-
-      {
-
-        "role": "system",
-
-        "content": "You are a helpful assistant."
-
-      },
-
-      {
-
-        "role": "user",
-
-        "content": "What is prefix caching and why does it matter?"
-
-      }
-
-    ],
-
-    "max_tokens": 2400,
-
-    "stream": true
-
-  }'
-
-
+curl -X POST \  "https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/run/@cf/moonshotai/kimi-k2.5" \  -H "Authorization: Bearer {api_token}" \  -H "Content-Type: application/json" \  -H "x-session-affinity: ses_12345678" \  -d '{    "messages": [      {        "role": "system",        "content": "You are a helpful assistant."      },      {        "role": "user",        "content": "What is prefix caching and why does it matter?"      }    ],    "max_tokens": 2400,    "stream": true  }'
 ```
 
 ### Workers AI binding
@@ -83,36 +44,7 @@ curl -X POST \
 JavaScript
 
 ```
-
-const response = await env.AI.run(
-
-  "@cf/moonshotai/kimi-k2.5",
-
-  {
-
-    messages: [
-
-      { role: "system", content: "You are a helpful assistant." },
-
-      { role: "user", content: "Explain prefix caching." },
-
-    ],
-
-  },
-
-  {
-
-    extraHeaders: {
-
-      "x-session-affinity": "ses_12345678",
-
-    },
-
-  },
-
-);
-
-
+const response = await env.AI.run(  "@cf/moonshotai/kimi-k2.5",  {    messages: [      { role: "system", content: "You are a helpful assistant." },      { role: "user", content: "Explain prefix caching." },    ],  },  {    extraHeaders: {      "x-session-affinity": "ses_12345678",    },  },);
 ```
 
 ## Structuring prompts for caching

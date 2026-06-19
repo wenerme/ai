@@ -5,7 +5,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,10 +16,10 @@ The RTKPlugins module consists of all the plugins in the meeting. It has 2 maps:
 * `all`: Consists of all the plugins in the meeting.
 * `active`: Consists of the plugins that are currently in use.
 * [RTKPlugins](#module%5FRTKPlugins)  
-   * [module.exports](#exp%5Fmodule%5FRTKPlugins--module.exports) ⏏  
-         * [new module.exports(logger)](#new%5Fmodule%5FRTKPlugins--module.exports%5Fnew)  
-         * [.all](#module%5FRTKPlugins--module.exports+all)  
-         * [.active](#module%5FRTKPlugins--module.exports+active)
+  * [module.exports](#exp%5Fmodule%5FRTKPlugins--module.exports) ⏏  
+    * [new module.exports(logger)](#new%5Fmodule%5FRTKPlugins--module.exports%5Fnew)
+    * [.all](#module%5FRTKPlugins--module.exports+all)
+    * [.active](#module%5FRTKPlugins--module.exports+active)
 
 ### module.exports ⏏
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -45,10 +45,7 @@ All packets with a destination IP in the VIP space need to be routed back throug
 Terminal window
 
 ```
-
 ip route add 100.96.0.0/12 dev gre1
-
-
 ```
 
 Note
@@ -107,10 +104,7 @@ For example:
 Terminal window
 
 ```
-
 nslookup <SERVER_BEHIND_CLOUDFLARE_WAN>
-
-
 ```
 
 This DNS lookup should return a valid IP address associated with the server or service you are testing for.

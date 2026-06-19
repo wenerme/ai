@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -65,24 +65,7 @@ Any custom metadata added to your requests via the `cf-aig-metadata` header will
 Terminal window
 
 ```
-
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \
-
-  --header 'Authorization: Bearer {api_token}' \
-
-  --header 'Content-Type: application/json' \
-
-  --header 'cf-aig-metadata: {"user_id": "user123", "team": "engineering"}' \
-
-  --data '{
-
-    "model": "gpt-4o",
-
-    "messages": [{"role": "user", "content": "Hello!"}]
-
-  }'
-
-
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \  --header 'Authorization: Bearer {api_token}' \  --header 'Content-Type: application/json' \  --header 'cf-aig-metadata: {"user_id": "user123", "team": "engineering"}' \  --data '{    "model": "gpt-4o",    "messages": [{"role": "user", "content": "Hello!"}]  }'
 ```
 
 The above request will include `user_id` and `team` as additional span attributes in the exported trace.
@@ -101,26 +84,7 @@ AI Gateway supports trace context propagation, allowing you to link AI Gateway s
 Terminal window
 
 ```
-
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \
-
-  --header 'cf-aig-otel-trace-id: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6' \
-
-  --header 'cf-aig-otel-parent-span-id: a1b2c3d4e5f6g7h8' \
-
-  --header 'Authorization: Bearer {api_token}' \
-
-  --header 'Content-Type: application/json' \
-
-  --data '{
-
-    "model": "gpt-4o",
-
-    "messages": [{"role": "user", "content": "Hello!"}]
-
-  }'
-
-
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/completions \  --header 'cf-aig-otel-trace-id: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6' \  --header 'cf-aig-otel-parent-span-id: a1b2c3d4e5f6g7h8' \  --header 'Authorization: Bearer {api_token}' \  --header 'Content-Type: application/json' \  --data '{    "model": "gpt-4o",    "messages": [{"role": "user", "content": "Hello!"}]  }'
 ```
 
 When these headers are provided, the AI Gateway span will use them to link with your existing trace. If not provided, AI Gateway will generate a new trace ID automatically.

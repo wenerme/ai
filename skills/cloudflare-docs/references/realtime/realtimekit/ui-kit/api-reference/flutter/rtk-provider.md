@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,25 +30,8 @@ A foundational widget that initializes and provides the RealtimeKit environment 
 Dart
 
 ```
-
 import 'package:realtimekit_ui/realtimekit_ui.dart';
-
-
-RtkProvider(
-
-  meeting: yourMeetingInstance,
-
-  uiKitInfo: yourUiKitInfo,
-
-  child: MaterialApp(
-
-    home: YourAppHome(),
-
-  ),
-
-)
-
-
+RtkProvider(  meeting: yourMeetingInstance,  uiKitInfo: yourUiKitInfo,  child: MaterialApp(    home: YourAppHome(),  ),)
 ```
 
 ### With Properties
@@ -56,45 +39,8 @@ RtkProvider(
 Dart
 
 ```
-
 import 'package:realtimekit_ui/realtimekit_ui.dart';
-
-
-class MyApp extends StatelessWidget {
-
-  @override
-
-  Widget build(BuildContext context) {
-
-    return RtkProvider(
-
-      meeting: RealtimekitClient(
-
-        // Client configuration
-
-      ),
-
-      uiKitInfo: RealtimeKitUIInfo(
-
-        // UI Kit information and design tokens
-
-      ),
-
-      observers: [MyProviderObserver()],
-
-      child: MaterialApp(
-
-        home: HomeScreen(),
-
-      ),
-
-    );
-
-  }
-
-}
-
-
+class MyApp extends StatelessWidget {  @override  Widget build(BuildContext context) {    return RtkProvider(      meeting: RealtimekitClient(        // Client configuration      ),      uiKitInfo: RealtimeKitUIInfo(        // UI Kit information and design tokens      ),      observers: [MyProviderObserver()],      child: MaterialApp(        home: HomeScreen(),      ),    );  }}
 ```
 
 Note

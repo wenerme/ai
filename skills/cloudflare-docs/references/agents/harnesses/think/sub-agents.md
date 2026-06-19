@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,18 +25,7 @@ For durable acceptance with idempotent retry and later status inspection, refer 
 TypeScript
 
 ```
-
-async chat(
-
-  userMessage: string | UIMessage,
-
-  callback: StreamCallback,
-
-  options?: ChatOptions,
-
-): Promise<void>
-
-
+async chat(  userMessage: string | UIMessage,  callback: StreamCallback,  options?: ChatOptions,): Promise<void>
 ```
 
 ### StreamCallback
@@ -61,313 +50,77 @@ Tools belong to the child agent. Define durable capabilities with the child's `g
 
 ### Example: parent calling a child
 
-* [  JavaScript ](#tab-panel-5647)
-* [  TypeScript ](#tab-panel-5648)
+* [  JavaScript ](#tab-panel-5721)
+* [  TypeScript ](#tab-panel-5722)
 
 JavaScript
 
 ```
-
 import { Think } from "@cloudflare/think";
-
-
-export class ParentAgent extends Think {
-
-  getModel() {
-
-    /* ... */
-
-  }
-
-
-  async delegateToChild(task) {
-
-    const child = await this.subAgent(ChildAgent, "child-1");
-
-
-    const chunks = [];
-
-    await child.chat(task, {
-
-      onStart: (event) => {
-
-        console.log("Child started:", event.requestId);
-
-      },
-
-      onEvent: (json) => {
-
-        chunks.push(json);
-
-      },
-
-      onDone: () => {
-
-        console.log("Child completed");
-
-      },
-
-      onError: (error) => {
-
-        console.error("Child failed:", error);
-
-      },
-
-    });
-
-
-    return chunks;
-
-  }
-
-}
-
-
-export class ChildAgent extends Think {
-
-  getModel() {
-
-    /* ... */
-
-  }
-
-
-  getSystemPrompt() {
-
-    return "You are a research assistant. Analyze data and report findings.";
-
-  }
-
-}
-
-
+export class ParentAgent extends Think {  getModel() {    /* ... */  }
+  async delegateToChild(task) {    const child = await this.subAgent(ChildAgent, "child-1");
+    const chunks = [];    await child.chat(task, {      onStart: (event) => {        console.log("Child started:", event.requestId);      },      onEvent: (json) => {        chunks.push(json);      },      onDone: () => {        console.log("Child completed");      },      onError: (error) => {        console.error("Child failed:", error);      },    });
+    return chunks;  }}
+export class ChildAgent extends Think {  getModel() {    /* ... */  }
+  getSystemPrompt() {    return "You are a research assistant. Analyze data and report findings.";  }}
 ```
 
 TypeScript
 
 ```
-
-import { Think } from "@cloudflare/think";
-
-import type { StreamCallback } from "@cloudflare/think";
-
-
-export class ParentAgent extends Think<Env> {
-
-  getModel() {
-
-    /* ... */
-
-  }
-
-
-  async delegateToChild(task: string) {
-
-    const child = await this.subAgent(ChildAgent, "child-1");
-
-
-    const chunks: string[] = [];
-
-    await child.chat(task, {
-
-      onStart: (event) => {
-
-        console.log("Child started:", event.requestId);
-
-      },
-
-      onEvent: (json) => {
-
-        chunks.push(json);
-
-      },
-
-      onDone: () => {
-
-        console.log("Child completed");
-
-      },
-
-      onError: (error) => {
-
-        console.error("Child failed:", error);
-
-      },
-
-    });
-
-
-    return chunks;
-
-  }
-
-}
-
-
-export class ChildAgent extends Think<Env> {
-
-  getModel() {
-
-    /* ... */
-
-  }
-
-
-  getSystemPrompt() {
-
-    return "You are a research assistant. Analyze data and report findings.";
-
-  }
-
-}
-
-
+import { Think } from "@cloudflare/think";import type { StreamCallback } from "@cloudflare/think";
+export class ParentAgent extends Think<Env> {  getModel() {    /* ... */  }
+  async delegateToChild(task: string) {    const child = await this.subAgent(ChildAgent, "child-1");
+    const chunks: string[] = [];    await child.chat(task, {      onStart: (event) => {        console.log("Child started:", event.requestId);      },      onEvent: (json) => {        chunks.push(json);      },      onDone: () => {        console.log("Child completed");      },      onError: (error) => {        console.error("Child failed:", error);      },    });
+    return chunks;  }}
+export class ChildAgent extends Think<Env> {  getModel() {    /* ... */  }
+  getSystemPrompt() {    return "You are a research assistant. Analyze data and report findings.";  }}
 ```
 
 ### Cancelling a sub-agent turn
 
 Use `onStart` and `cancelChat()` for RPC-safe cancellation across a sub-agent boundary:
 
-* [  JavaScript ](#tab-panel-5643)
-* [  TypeScript ](#tab-panel-5644)
+* [  JavaScript ](#tab-panel-5717)
+* [  TypeScript ](#tab-panel-5718)
 
 JavaScript
 
 ```
-
 let requestId;
-
-
-const callback = {
-
-  onStart(event) {
-
-    requestId = event.requestId;
-
-  },
-
-  onEvent(json) {
-
-    // Forward stream chunks.
-
-  },
-
-  onDone() {},
-
-  onError(error) {
-
-    console.error(error);
-
-  },
-
-};
-
-
+const callback = {  onStart(event) {    requestId = event.requestId;  },  onEvent(json) {    // Forward stream chunks.  },  onDone() {},  onError(error) {    console.error(error);  },};
 const turn = child.chat("Long analysis task", callback);
-
-
-// Later, from another RPC call or failure handler:
-
-if (requestId) {
-
-  await child.cancelChat(requestId, "client disconnected");
-
-}
-
-
+// Later, from another RPC call or failure handler:if (requestId) {  await child.cancelChat(requestId, "client disconnected");}
 await turn;
-
-
 ```
 
 TypeScript
 
 ```
-
 let requestId: string | undefined;
-
-
-const callback: StreamCallback = {
-
-  onStart(event) {
-
-    requestId = event.requestId;
-
-  },
-
-  onEvent(json) {
-
-    // Forward stream chunks.
-
-  },
-
-  onDone() {},
-
-  onError(error) {
-
-    console.error(error);
-
-  },
-
-};
-
-
+const callback: StreamCallback = {  onStart(event) {    requestId = event.requestId;  },  onEvent(json) {    // Forward stream chunks.  },  onDone() {},  onError(error) {    console.error(error);  },};
 const turn = child.chat("Long analysis task", callback);
-
-
-// Later, from another RPC call or failure handler:
-
-if (requestId) {
-
-  await child.cancelChat(requestId, "client disconnected");
-
-}
-
-
+// Later, from another RPC call or failure handler:if (requestId) {  await child.cancelChat(requestId, "client disconnected");}
 await turn;
-
-
 ```
 
 If the caller and callee are not separated by Workers RPC, you can also pass an `AbortSignal` to cancel mid-stream:
 
-* [  JavaScript ](#tab-panel-5637)
-* [  TypeScript ](#tab-panel-5638)
+* [  JavaScript ](#tab-panel-5711)
+* [  TypeScript ](#tab-panel-5712)
 
 JavaScript
 
 ```
-
-const controller = new AbortController();
-
-setTimeout(() => controller.abort(), 30_000);
-
-
-await child.chat("Long analysis task", callback, {
-
-  signal: controller.signal,
-
-});
-
-
+const controller = new AbortController();setTimeout(() => controller.abort(), 30_000);
+await child.chat("Long analysis task", callback, {  signal: controller.signal,});
 ```
 
 TypeScript
 
 ```
-
-const controller = new AbortController();
-
-setTimeout(() => controller.abort(), 30_000);
-
-
-await child.chat("Long analysis task", callback, {
-
-  signal: controller.signal,
-
-});
-
-
+const controller = new AbortController();setTimeout(() => controller.abort(), 30_000);
+await child.chat("Long analysis task", callback, {  signal: controller.signal,});
 ```
 
 `cancelChat(requestId, reason?)` is a no-op if the turn already completed or the request ID is unknown. When aborted, the partial assistant message is still persisted.
@@ -379,20 +132,7 @@ Inject messages and trigger a model turn without a WebSocket connection. Use for
 TypeScript
 
 ```
-
-async saveMessages(
-
-  messages:
-
-    | UIMessage[]
-
-    | ((current: UIMessage[]) => UIMessage[] | Promise<UIMessage[]>),
-
-  options?: SaveMessagesOptions,
-
-): Promise<SaveMessagesResult>
-
-
+async saveMessages(  messages:    | UIMessage[]    | ((current: UIMessage[]) => UIMessage[] | Promise<UIMessage[]>),  options?: SaveMessagesOptions,): Promise<SaveMessagesResult>
 ```
 
 Returns `{ requestId, status, error? }` where `status` is `"completed"`, `"error"`, `"skipped"`, or `"aborted"`.
@@ -408,181 +148,59 @@ Pass `options.signal` to cancel a programmatic turn from the Durable Object that
 
 ### Static messages
 
-* [  JavaScript ](#tab-panel-5639)
-* [  TypeScript ](#tab-panel-5640)
+* [  JavaScript ](#tab-panel-5713)
+* [  TypeScript ](#tab-panel-5714)
 
 JavaScript
 
 ```
-
-await this.saveMessages([
-
-  {
-
-    id: crypto.randomUUID(),
-
-    role: "user",
-
-    parts: [{ type: "text", text: "Time for your daily summary." }],
-
-  },
-
-]);
-
-
+await this.saveMessages([  {    id: crypto.randomUUID(),    role: "user",    parts: [{ type: "text", text: "Time for your daily summary." }],  },]);
 ```
 
 TypeScript
 
 ```
-
-await this.saveMessages([
-
-  {
-
-    id: crypto.randomUUID(),
-
-    role: "user",
-
-    parts: [{ type: "text", text: "Time for your daily summary." }],
-
-  },
-
-]);
-
-
+await this.saveMessages([  {    id: crypto.randomUUID(),    role: "user",    parts: [{ type: "text", text: "Time for your daily summary." }],  },]);
 ```
 
 ### Function form
 
 When multiple `saveMessages` calls queue up, the function form runs with the latest messages when the turn actually starts:
 
-* [  JavaScript ](#tab-panel-5641)
-* [  TypeScript ](#tab-panel-5642)
+* [  JavaScript ](#tab-panel-5715)
+* [  TypeScript ](#tab-panel-5716)
 
 JavaScript
 
 ```
-
-await this.saveMessages((current) => [
-
-  ...current,
-
-  {
-
-    id: crypto.randomUUID(),
-
-    role: "user",
-
-    parts: [{ type: "text", text: "Continue your analysis." }],
-
-  },
-
-]);
-
-
+await this.saveMessages((current) => [  ...current,  {    id: crypto.randomUUID(),    role: "user",    parts: [{ type: "text", text: "Continue your analysis." }],  },]);
 ```
 
 TypeScript
 
 ```
-
-await this.saveMessages((current) => [
-
-  ...current,
-
-  {
-
-    id: crypto.randomUUID(),
-
-    role: "user",
-
-    parts: [{ type: "text", text: "Continue your analysis." }],
-
-  },
-
-]);
-
-
+await this.saveMessages((current) => [  ...current,  {    id: crypto.randomUUID(),    role: "user",    parts: [{ type: "text", text: "Continue your analysis." }],  },]);
 ```
 
 ### Scheduled responses
 
 Trigger a recurring prompt turn with [getScheduledTasks()](https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/):
 
-* [  JavaScript ](#tab-panel-5645)
-* [  TypeScript ](#tab-panel-5646)
+* [  JavaScript ](#tab-panel-5719)
+* [  TypeScript ](#tab-panel-5720)
 
 JavaScript
 
 ```
-
-export class MyAgent extends Think {
-
-  getModel() {
-
-    /* ... */
-
-  }
-
-
-  getScheduledTasks() {
-
-    return {
-
-      dailyReport: {
-
-        schedule: "every day at 09:00",
-
-        timezone: "UTC",
-
-        prompt: "Generate the daily report.",
-
-      },
-
-    };
-
-  }
-
-}
-
-
+export class MyAgent extends Think {  getModel() {    /* ... */  }
+  getScheduledTasks() {    return {      dailyReport: {        schedule: "every day at 09:00",        timezone: "UTC",        prompt: "Generate the daily report.",      },    };  }}
 ```
 
 TypeScript
 
 ```
-
-export class MyAgent extends Think<Env> {
-
-  getModel() {
-
-    /* ... */
-
-  }
-
-
-  getScheduledTasks() {
-
-    return {
-
-      dailyReport: {
-
-        schedule: "every day at 09:00",
-
-        timezone: "UTC",
-
-        prompt: "Generate the daily report.",
-
-      },
-
-    };
-
-  }
-
-}
-
-
+export class MyAgent extends Think<Env> {  getModel() {    /* ... */  }
+  getScheduledTasks() {    return {      dailyReport: {        schedule: "every day at 09:00",        timezone: "UTC",        prompt: "Generate the daily report.",      },    };  }}
 ```
 
 ### Chaining from onChatResponse
@@ -592,26 +210,7 @@ Start a follow-up turn after the current one completes:
 TypeScript
 
 ```
-
-async onChatResponse(result: ChatResponseResult) {
-
-  if (result.status === "completed" && this.needsFollowUp(result.message)) {
-
-    await this.saveMessages([{
-
-      id: crypto.randomUUID(),
-
-      role: "user",
-
-      parts: [{ type: "text", text: "Now summarize what you found." }],
-
-    }]);
-
-  }
-
-}
-
-
+async onChatResponse(result: ChatResponseResult) {  if (result.status === "completed" && this.needsFollowUp(result.message)) {    await this.saveMessages([{      id: crypto.randomUUID(),      role: "user",      parts: [{ type: "text", text: "Now summarize what you found." }],    }]);  }}
 ```
 
 ## continueLastTurn
@@ -621,16 +220,7 @@ Run another model call after the latest assistant message without injecting a ne
 TypeScript
 
 ```
-
-protected async continueLastTurn(
-
-  body?: Record<string, unknown>,
-
-  options?: SaveMessagesOptions,
-
-): Promise<SaveMessagesResult>
-
-
+protected async continueLastTurn(  body?: Record<string, unknown>,  options?: SaveMessagesOptions,): Promise<SaveMessagesResult>
 ```
 
 Returns `{ requestId, status: "skipped" }` if the last message is not an assistant message. The optional `body` parameter overrides the stored body for this continuation. Pass `options.signal` to cancel the continuation while it is running.
@@ -642,12 +232,7 @@ Cancel in-flight chat turns from inside the Durable Object:
 TypeScript
 
 ```
-
-protected abortRequest(requestId: string, reason?: unknown): void
-
-protected abortAllRequests(): void
-
-
+protected abortRequest(requestId: string, reason?: unknown): voidprotected abortAllRequests(): void
 ```
 
 Use `abortRequest()` when you know the request ID. Use `abortAllRequests()` for single-purpose helpers that should cancel whatever turn is currently running. Prefer `SaveMessagesOptions.signal` for programmatic turns when you can pass a signal at the call site.

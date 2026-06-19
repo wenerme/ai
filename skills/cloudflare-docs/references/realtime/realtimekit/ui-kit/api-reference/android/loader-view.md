@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,16 +19,7 @@ A full-screen loader component that can be displayed while a connection is being
 ### Basic Usage
 
 ```
-
-<com.cloudflare.realtimekit.ui.view.RtkLoaderView
-
-    android:id="@+id/clLoader"
-
-    android:layout_width="match_parent"
-
-    android:layout_height="match_parent" />
-
-
+<com.cloudflare.realtimekit.ui.view.RtkLoaderView    android:id="@+id/clLoader"    android:layout_width="match_parent"    android:layout_height="match_parent" />
 ```
 
 ```json

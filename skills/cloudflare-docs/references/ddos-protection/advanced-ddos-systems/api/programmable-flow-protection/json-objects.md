@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,22 +17,7 @@ This page contains examples of the JSON objects used in the Programmable Flow Pr
 ## Program
 
 ```
-
-{
-
-  "id": "31c70c65-9f81-4669-94ed-1e1e041e7b06",
-
-  "name": "rate-limiter",
-
-  "status": "success",
-
-  "created_on": "2024-01-01T13:06:04.721954+01:00",
-
-  "modified_on": "2024-01-01T13:06:04.721954+01:00"
-
-}
-
-
+{  "id": "31c70c65-9f81-4669-94ed-1e1e041e7b06",  "name": "rate-limiter",  "status": "success",  "created_on": "2024-01-01T13:06:04.721954+01:00",  "modified_on": "2024-01-01T13:06:04.721954+01:00"}
 ```
 
 | Field        | Description                                                                                                                                       |
@@ -46,28 +31,7 @@ This page contains examples of the JSON objects used in the Programmable Flow Pr
 ## Rule
 
 ```
-
-{
-
-  "id": "20b99eb6-8b48-48dd-a5b9-a995a0843b57",
-
-  "program_id": "31c70c65-9f81-4669-94ed-1e1e041e7b06",
-
-  "scope": "region",
-
-  "name": "WEUR",
-
-  "mode": "enabled",
-
-  "expression": "ip.dst in { 192.0.2.0/24 }",
-
-  "created_on": "2024-01-01T13:10:38.762503+01:00",
-
-  "modified_on": "2024-01-01T13:10:38.762503+01:00"
-
-}
-
-
+{  "id": "20b99eb6-8b48-48dd-a5b9-a995a0843b57",  "program_id": "31c70c65-9f81-4669-94ed-1e1e041e7b06",  "scope": "region",  "name": "WEUR",  "mode": "enabled",  "expression": "ip.dst in { 192.0.2.0/24 }",  "created_on": "2024-01-01T13:10:38.762503+01:00",  "modified_on": "2024-01-01T13:10:38.762503+01:00"}
 ```
 
 | Field        | Description                                                                                                                                                        |

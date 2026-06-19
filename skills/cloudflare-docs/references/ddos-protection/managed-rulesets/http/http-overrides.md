@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,13 +37,13 @@ A DDoS managed ruleset contains the following managed rules:
 The following ruleset overrides have been configured:
 
 * **Ruleset override A**  
-   * **Managed rule 1** is set to `block`
+  * **Managed rule 1** is set to `block`
 * **Ruleset override B**  
-   * The action of the entire ruleset (or _all managed rules_) is set to `Managed Challenge`  
-   * **Managed rule 1** is set to `log`  
-   * **Managed rule 2** is set to `log`
+  * The action of the entire ruleset (or _all managed rules_) is set to `Managed Challenge`
+  * **Managed rule 1** is set to `log`
+  * **Managed rule 2** is set to `log`
 * **Ruleset override C**  
-   * **Managed rule 3** is set to `log`
+  * **Managed rule 3** is set to `log`
 
 ### Use case
 
@@ -56,10 +56,12 @@ A DDoS attack was detected on **managed rules 1**, **2**, and **3**, and has gen
 
 An additional dimension to take into account is Cloudflare’s DDoS systems will apply a given rule override only if its conditions are met — which includes the Sensitivity level. So, while it needs to match and modify the correct managed rule (or everything in the case of all managed rules above), it also has to meet the specified Sensitivity level of the rule.
 
-* **Rule override A**  
-   * _All managed rules_ are set to `challenge` at low sensitivity
-* **Rule override B**  
-   * **Managed rule 1** is set to `log` at default sensitivity
+* **Rule override A**
+
+  * _All managed rules_ are set to `challenge` at low sensitivity
+* **Rule override B**
+
+  * **Managed rule 1** is set to `log` at default sensitivity
 
 You receive a small attack below the threshold for low sensitivity, but above the threshold for high sensitivity on **managed rule 1**.
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -41,114 +41,37 @@ You will need the `database_name` and `database_id` for a D1 database. You can u
 Create a database
 
 ```
-
 npx wrangler d1 create my-first-db
-
-
 ```
 
 Retrieve a database ID
 
 ```
-
 npx wrangler d1 info some-existing-db
-
-
 ```
 
 ```
-
-# ┌───────────────────┬──────────────────────────────────────┐
-
-# │                   │ c89db32e-83f4-4e62-8cd7-7c8f97659029 │
-
-# ├───────────────────┼──────────────────────────────────────┤
-
-# │ name              │ db-enam                              │
-
-# ├───────────────────┼──────────────────────────────────────┤
-
-# │ created_at        │ 2023-06-12T16:52:03.071Z             │
-
-# └───────────────────┴──────────────────────────────────────┘
-
-
+# ┌───────────────────┬──────────────────────────────────────┐# │                   │ c89db32e-83f4-4e62-8cd7-7c8f97659029 │# ├───────────────────┼──────────────────────────────────────┤# │ name              │ db-enam                              │# ├───────────────────┼──────────────────────────────────────┤# │ created_at        │ 2023-06-12T16:52:03.071Z             │# └───────────────────┴──────────────────────────────────────┘
 ```
 
 ### 1\. Configure bindings
 
 In your Wrangler file, create a new `[[d1_databases]]` configuration block and set `database_name` and `database_id` to the name and id (respectively) of the D1 database you want to query:
 
-* [  wrangler.jsonc ](#tab-panel-7886)
-* [  wrangler.toml ](#tab-panel-7887)
+* [  wrangler.jsonc ](#tab-panel-7962)
+* [  wrangler.toml ](#tab-panel-7963)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "python-and-d1",
-
-  "main": "src/entry.py",
-
-  "compatibility_flags": [ // Required for Python Workers
-
-    "python_workers"
-
-  ],
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "d1_databases": [
-
-    {
-
-      "binding": "DB", // This will be how you refer to your database in your Worker
-
-      "database_name": "YOUR_DATABASE_NAME",
-
-      "database_id": "YOUR_DATABASE_ID"
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "python-and-d1",  "main": "src/entry.py",  "compatibility_flags": [ // Required for Python Workers    "python_workers"  ],  // Set this to today's date  "compatibility_date": "2026-06-18",  "d1_databases": [    {      "binding": "DB", // This will be how you refer to your database in your Worker      "database_name": "YOUR_DATABASE_NAME",      "database_id": "YOUR_DATABASE_ID"    }  ]}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "python-and-d1"
-
-main = "src/entry.py"
-
-compatibility_flags = [ "python_workers" ]
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[[d1_databases]]
-
-binding = "DB"
-
-database_name = "YOUR_DATABASE_NAME"
-
-database_id = "YOUR_DATABASE_ID"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "python-and-d1"main = "src/entry.py"compatibility_flags = [ "python_workers" ]# Set this to today's datecompatibility_date = "2026-06-18"
+[[d1_databases]]binding = "DB"database_name = "YOUR_DATABASE_NAME"database_id = "YOUR_DATABASE_ID"
 ```
 
 The value of `binding` is how you will refer to your database from within your Worker. If you change this, you must change this in your Worker script as well.
@@ -160,32 +83,9 @@ To create a Python Worker, create an empty file at `src/entry.py`, matching the 
 Python
 
 ```
-
 from workers import Response, WorkerEntrypoint
-
-
-class Default(WorkerEntrypoint):
-
-    async def fetch(self, request):
-
-        # Do anything else you'd like on request here!
-
-
-        try:
-
-            # Query D1 - we'll list all tables in our database in this example
-
-            results = await self.env.DB.prepare("PRAGMA table_list").run()
-
-            # Return a JSON response
-
-            return Response.json(results)
-
-        except Exception as e:
-
-            return Response.json({"error": "Database query failed"}, status=500)
-
-
+class Default(WorkerEntrypoint):    async def fetch(self, request):        # Do anything else you'd like on request here!
+        try:            # Query D1 - we'll list all tables in our database in this example            results = await self.env.DB.prepare("PRAGMA table_list").run()            # Return a JSON response            return Response.json(results)        except Exception as e:            return Response.json({"error": "Database query failed"}, status=500)
 ```
 
 The value of `binding` in your Wrangler file exactly must match the name of the variable in your Python code. This example refers to the database via a `DB` binding, and query this binding via `await env.DB.prepare(...)`.
@@ -195,35 +95,11 @@ You can then deploy your Python Worker directly:
 Terminal window
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 ```
-
-# Example output
-
-#
-
-# Your worker has access to the following bindings:
-
-# - D1 Databases:
-
-#   - DB: db-enam (c89db32e-83f4-4e62-8cd7-7c8f97659029)
-
-# Total Upload: 0.18 KiB / gzip: 0.17 KiB
-
-# Uploaded python-and-d1 (4.93 sec)
-
-# Published python-and-d1 (0.51 sec)
-
-#   https://python-and-d1.YOUR_SUBDOMAIN.workers.dev
-
-# Current Deployment ID: 80b72e19-da82-4465-83a2-c12fb11ccc72
-
-
+# Example output## Your worker has access to the following bindings:# - D1 Databases:#   - DB: db-enam (c89db32e-83f4-4e62-8cd7-7c8f97659029)# Total Upload: 0.18 KiB / gzip: 0.17 KiB# Uploaded python-and-d1 (4.93 sec)# Published python-and-d1 (0.51 sec)#   https://python-and-d1.YOUR_SUBDOMAIN.workers.dev# Current Deployment ID: 80b72e19-da82-4465-83a2-c12fb11ccc72
 ```
 
 Your Worker will be available at `https://python-and-d1.YOUR_SUBDOMAIN.workers.dev`.

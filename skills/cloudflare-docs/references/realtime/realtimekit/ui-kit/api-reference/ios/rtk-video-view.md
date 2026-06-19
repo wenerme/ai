@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,15 +37,8 @@ Renders a participant's video stream. Supports self-preview, remote participant 
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let videoView = RtkVideoView(participant: participant)
-
-view.addSubview(videoView)
-
-
+let videoView = RtkVideoView(participant: participant)view.addSubview(videoView)
 ```
 
 ### Self-preview
@@ -53,21 +46,8 @@ view.addSubview(videoView)
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let previewView = RtkVideoView(
-
-    participant: localParticipant,
-
-    showSelfPreview: true
-
-)
-
-view.addSubview(previewView)
-
-
+let previewView = RtkVideoView(    participant: localParticipant,    showSelfPreview: true)view.addSubview(previewView)
 ```
 
 ### Screen share
@@ -75,21 +55,8 @@ view.addSubview(previewView)
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let screenShareView = RtkVideoView(
-
-    participant: participant,
-
-    showScreenShare: true
-
-)
-
-view.addSubview(screenShareView)
-
-
+let screenShareView = RtkVideoView(    participant: participant,    showScreenShare: true)view.addSubview(screenShareView)
 ```
 
 ```json

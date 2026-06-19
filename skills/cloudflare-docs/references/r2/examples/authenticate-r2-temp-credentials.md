@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,55 +29,13 @@ Call the [Temporary Credentials API](https://developers.cloudflare.com/api/resou
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/r2/temp-access-credentials \
-
-  --header "Authorization: Bearer <PARENT_API_TOKEN>" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-    "bucket": "my-bucket",
-
-    "parentAccessKeyId": "<PARENT_ACCESS_KEY_ID>",
-
-    "permission": "object-read-only",
-
-    "ttlSeconds": 900,
-
-    "objects": ["reports/2026-q1.pdf"]
-
-  }'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/r2/temp-access-credentials \  --header "Authorization: Bearer <PARENT_API_TOKEN>" \  --header "Content-Type: application/json" \  --data '{    "bucket": "my-bucket",    "parentAccessKeyId": "<PARENT_ACCESS_KEY_ID>",    "permission": "object-read-only",    "ttlSeconds": 900,    "objects": ["reports/2026-q1.pdf"]  }'
 ```
 
 The response wraps the credentials in a `result` object:
 
 ```
-
-{
-
-  "result": {
-
-    "accessKeyId": "<accessKeyId>",
-
-    "secretAccessKey": "<secretAccessKey>",
-
-    "sessionToken": "<sessionToken>"
-
-  },
-
-  "errors": [],
-
-  "messages": [],
-
-  "success": true
-
-}
-
-
+{  "result": {    "accessKeyId": "<accessKeyId>",    "secretAccessKey": "<secretAccessKey>",    "sessionToken": "<sessionToken>"  },  "errors": [],  "messages": [],  "success": true}
 ```
 
 ## Generate locally (client-side signing)
@@ -107,149 +65,16 @@ The following helper signs a JWT with your parent secret access key and derives 
 temp-credentials.ts
 
 ```
-
 import { SignJWT } from "jose";
-
-
-type R2Scope =
-
-  | "object-read-only"
-
-  | "object-read-write"
-
-  | "admin-read-only"
-
-  | "admin-read-write";
-
-
-export interface TempCredentialOptions {
-
-  scope: R2Scope;
-
-  // Optional: narrow the credential to specific S3 operations.
-
-  actions?: string[];
-
-  // Time-to-live in seconds. Defaults to 1 hour.
-
-  ttlSeconds?: number;
-
-  // Optional: restrict access to specific prefixes or objects.
-
-  paths?: { prefixPaths?: string[]; objectPaths?: string[] };
-
-}
-
-
-export async function createTempCredentials(
-
-  endpoint: string,
-
-  accountId: string,
-
-  parentAccessKeyId: string,
-
-  parentSecretAccessKey: string,
-
-  bucket: string,
-
-  opts: TempCredentialOptions,
-
-): Promise<{
-
-  accessKeyId: string;
-
-  secretAccessKey: string;
-
-  sessionToken: string;
-
-}> {
-
-  const ttl = opts.ttlSeconds ?? 3600;
-
-
-  const claims: Record<string, unknown> = {
-
-    bucket,
-
-    scope: opts.scope,
-
-  };
-
-
-  if (opts.actions !== undefined && opts.actions.length > 0) {
-
-    claims.actions = opts.actions;
-
-  }
-
-
-  if (opts.paths !== undefined) {
-
-    claims.paths = {
-
-      prefixPaths: opts.paths.prefixPaths ?? [],
-
-      objectPaths: opts.paths.objectPaths ?? [],
-
-    };
-
-  }
-
-
-  // Sign the JWT with the parent secret access key. R2 validates this signature.
-
-  const jwt = await new SignJWT(claims)
-
-    .setProtectedHeader({ alg: "HS256", typ: "JWT" })
-
-    .setSubject(accountId)
-
-    .setIssuer(parentAccessKeyId)
-
-    .setAudience(new URL(endpoint).host)
-
-    .setIssuedAt()
-
-    .setExpirationTime(`${ttl}s`)
-
-    .sign(new TextEncoder().encode(parentSecretAccessKey));
-
-
-  // The temporary secret access key is the SHA-256 hex digest of the signed JWT.
-
-  const digest = await crypto.subtle.digest(
-
-    "SHA-256",
-
-    new TextEncoder().encode(jwt),
-
-  );
-
-  const secretAccessKey = Array.from(new Uint8Array(digest))
-
-    .map((b) => b.toString(16).padStart(2, "0"))
-
-    .join("");
-
-
-  return {
-
-    // Reuse the parent access key ID as the temporary access key ID.
-
-    accessKeyId: parentAccessKeyId,
-
-    secretAccessKey,
-
-    // The session token is base64("jwt/" + signed JWT).
-
-    sessionToken: btoa(`jwt/${jwt}`),
-
-  };
-
-}
-
-
+type R2Scope =  | "object-read-only"  | "object-read-write"  | "admin-read-only"  | "admin-read-write";
+export interface TempCredentialOptions {  scope: R2Scope;  // Optional: narrow the credential to specific S3 operations.  actions?: string[];  // Time-to-live in seconds. Defaults to 1 hour.  ttlSeconds?: number;  // Optional: restrict access to specific prefixes or objects.  paths?: { prefixPaths?: string[]; objectPaths?: string[] };}
+export async function createTempCredentials(  endpoint: string,  accountId: string,  parentAccessKeyId: string,  parentSecretAccessKey: string,  bucket: string,  opts: TempCredentialOptions,): Promise<{  accessKeyId: string;  secretAccessKey: string;  sessionToken: string;}> {  const ttl = opts.ttlSeconds ?? 3600;
+  const claims: Record<string, unknown> = {    bucket,    scope: opts.scope,  };
+  if (opts.actions !== undefined && opts.actions.length > 0) {    claims.actions = opts.actions;  }
+  if (opts.paths !== undefined) {    claims.paths = {      prefixPaths: opts.paths.prefixPaths ?? [],      objectPaths: opts.paths.objectPaths ?? [],    };  }
+  // Sign the JWT with the parent secret access key. R2 validates this signature.  const jwt = await new SignJWT(claims)    .setProtectedHeader({ alg: "HS256", typ: "JWT" })    .setSubject(accountId)    .setIssuer(parentAccessKeyId)    .setAudience(new URL(endpoint).host)    .setIssuedAt()    .setExpirationTime(`${ttl}s`)    .sign(new TextEncoder().encode(parentSecretAccessKey));
+  // The temporary secret access key is the SHA-256 hex digest of the signed JWT.  const digest = await crypto.subtle.digest(    "SHA-256",    new TextEncoder().encode(jwt),  );  const secretAccessKey = Array.from(new Uint8Array(digest))    .map((b) => b.toString(16).padStart(2, "0"))    .join("");
+  return {    // Reuse the parent access key ID as the temporary access key ID.    accessKeyId: parentAccessKeyId,    secretAccessKey,    // The session token is base64("jwt/" + signed JWT).    sessionToken: btoa(`jwt/${jwt}`),  };}
 ```
 
 The following example returns a credential that is valid for 15 minutes and can only `GetObject` and `HeadObject` under the `data/` prefix:
@@ -257,40 +82,9 @@ The following example returns a credential that is valid for 15 minutes and can 
 TypeScript
 
 ```
-
 import { createTempCredentials } from "./temp-credentials";
-
-
 const R2_URL = `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`;
-
-
-const creds = await createTempCredentials(
-
-  R2_URL,
-
-  ACCOUNT_ID,
-
-  PARENT_ACCESS_KEY_ID,
-
-  PARENT_SECRET_ACCESS_KEY,
-
-  "my-bucket",
-
-  {
-
-    scope: "object-read-only",
-
-    actions: ["GetObject", "HeadObject"],
-
-    ttlSeconds: 900,
-
-    paths: { prefixPaths: ["data/"] },
-
-  },
-
-);
-
-
+const creds = await createTempCredentials(  R2_URL,  ACCOUNT_ID,  PARENT_ACCESS_KEY_ID,  PARENT_SECRET_ACCESS_KEY,  "my-bucket",  {    scope: "object-read-only",    actions: ["GetObject", "HeadObject"],    ttlSeconds: 900,    paths: { prefixPaths: ["data/"] },  },);
 ```
 
 ## Use the credentials
@@ -300,40 +94,11 @@ Once you have a temporary credential, usage is the same regardless of how it was
 TypeScript
 
 ```
-
 import { AwsClient } from "aws4fetch";
-
-
 const R2_URL = `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`;
-
-
-const client = new AwsClient({
-
-  accessKeyId: ACCESS_KEY_ID,
-
-  secretAccessKey: SECRET_ACCESS_KEY,
-
-  sessionToken: SESSION_TOKEN,
-
-  service: "s3",
-
-});
-
-
-// Allowed: object under the data/ prefix.
-
-const ok = await client.fetch(`${R2_URL}/my-bucket/data/file.bin`);
-
-console.log(ok.status); // 200
-
-
-// Rejected with 403 AccessDenied because the object is outside the data/ prefix.
-
-const denied = await client.fetch(`${R2_URL}/my-bucket/other/file.bin`);
-
-console.log(denied.status); // 403
-
-
+const client = new AwsClient({  accessKeyId: ACCESS_KEY_ID,  secretAccessKey: SECRET_ACCESS_KEY,  sessionToken: SESSION_TOKEN,  service: "s3",});
+// Allowed: object under the data/ prefix.const ok = await client.fetch(`${R2_URL}/my-bucket/data/file.bin`);console.log(ok.status); // 200
+// Rejected with 403 AccessDenied because the object is outside the data/ prefix.const denied = await client.fetch(`${R2_URL}/my-bucket/other/file.bin`);console.log(denied.status); // 403
 ```
 
 ## Related resources

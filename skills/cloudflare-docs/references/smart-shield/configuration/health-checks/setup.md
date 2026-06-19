@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/smart-shield/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,8 +21,8 @@ Refer to the section below to learn how to manage your Smart Shield health check
 3. For Health Checks, select **Manage**.
 4. Select **Create** or find an existing health check and select **Edit**.
 5. Fill out the form or edit existing values, paying special attention to:  
-   * The values for **Interval** and **Check regions**, because decreasing the **Interval** and increasing **Check regions** may increase the load on your origin server.  
-   * **Retries**, which specify the number of retries to attempt in case of a timeout before marking the origin as unhealthy.
+  * The values for **Interval** and **Check regions**, because decreasing the **Interval** and increasing **Check regions** may increase the load on your origin server.
+  * **Retries**, which specify the number of retries to attempt in case of a timeout before marking the origin as unhealthy.
 6. Select **Save and Deploy**.
 
 ## Configure alerts

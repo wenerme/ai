@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,8 +18,8 @@ When the parent zone is using a [CNAME setup (partial)](https://developers.cloud
 
 If you have not yet created a DNS record covering your subdomain in the parent zone:
 
-* [ child is full or secondary ](#tab-panel-8137)
-* [ child is partial ](#tab-panel-8138)
+* [ child is full or secondary ](#tab-panel-8213)
+* [ child is partial ](#tab-panel-8214)
 
 1. Add the subdomain to a Cloudflare account as a new zone. It can be the same account where the parent zone exists or a different one.
 2. Complete the configuration accordingly for [full](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/) or [secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/) setup.
@@ -54,18 +54,15 @@ Example CNAME record at authoritative DNS provider
 The `CNAME` record for `sub.example.com` would be:
 
 ```
-
 sub.example.com CNAME sub.example.com.cdn.cloudflare.net
-
-
 ```
 
 ## Subdomain already exists
 
 If you have already created a DNS record covering your subdomain in the parent zone:
 
-* [ child is full or secondary ](#tab-panel-8139)
-* [ child is partial ](#tab-panel-8140)
+* [ child is full or secondary ](#tab-panel-8215)
+* [ child is partial ](#tab-panel-8216)
 
 1. Add the subdomain to a Cloudflare account as a new zone. It can be the same account where the parent zone exists or a different one.
 2. Complete the configuration accordingly for [full](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/) or [secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/) setup.
@@ -111,10 +108,7 @@ Example CNAME record at authoritative DNS provider
 The `CNAME` record for `sub.example.com` would be:
 
 ```
-
 sub.example.com CNAME sub.example.com.cdn.cloudflare.net
-
-
 ```
 
 ## Footnotes

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,11 +22,11 @@ If you want to apply Isolate policies based on user identity, you will need to e
 
 1. [Install a Cloudflare certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/) on your devices.
 2. Connect your infrastructure to Gateway using one of the following on-ramps:  
-   * Configure your browser to forward traffic to a Gateway proxy endpoint with [PAC files](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/) (Proxy Auto-Configuration files that tell the browser which traffic to route through the proxy).  
-   * Connect your enterprise site router to Gateway with the [anycast GRE or IPsec tunnel on-ramp to Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/) (site-to-site encrypted tunnels between your network and Cloudflare).
+  * Configure your browser to forward traffic to a Gateway proxy endpoint with [PAC files](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/) (Proxy Auto-Configuration files that tell the browser which traffic to route through the proxy).
+  * Connect your enterprise site router to Gateway with the [anycast GRE or IPsec tunnel on-ramp to Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/) (site-to-site encrypted tunnels between your network and Cloudflare).
 3. Enable non-identity browser isolation:  
-   1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Browser isolation** \> **Browser isolation settings**.  
-   2. Turn on **Allow isolated HTTP traffic when user identity is unknown**.
+  1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Browser isolation** \> **Browser isolation settings**.
+  2. Turn on **Allow isolated HTTP traffic when user identity is unknown**.
 4. Build a non-identity [HTTP policy](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/) to isolate websites in a remote browser.
 
 ```json

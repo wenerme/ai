@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,37 +29,18 @@ A menu component.
 ### Basic Usage
 
 ```
-
 <rtk-menu></rtk-menu>
-
-
 ```
 
 ### With Properties
 
 ```
-
-<rtk-menu
-
- size="md">
-
-</rtk-menu>
-
-
+<rtk-menu size="md"></rtk-menu>
 ```
 
 ```
-
-<script>
-
-  const el = document.querySelector("rtk-menu");
-
-
-  el.offset= 42;
-
-</script>
-
-
+<script>  const el = document.querySelector("rtk-menu");
+  el.offset= 42;</script>
 ```
 
 ```json

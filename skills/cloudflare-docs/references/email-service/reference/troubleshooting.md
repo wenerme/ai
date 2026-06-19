@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -24,9 +24,10 @@ Having multiple SPF records on your domain is not allowed and will prevent Email
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Look for multiple TXT records starting with `v=spf1`.
 3. Delete the incorrect SPF record.
-4. Ensure you have the correct SPF records:  
-   * For **Email Routing** (root domain): `v=spf1 include:_spf.mx.cloudflare.net ~all`  
-   * For **Email Sending** (`cf-bounce` subdomain): `v=spf1 include:_spf.mx.cloudflare.net ~all`
+4. Ensure you have the correct SPF records:
+
+  * For **Email Routing** (root domain): `v=spf1 include:_spf.mx.cloudflare.net ~all`
+  * For **Email Sending** (`cf-bounce` subdomain): `v=spf1 include:_spf.mx.cloudflare.net ~all`
 
 If you are unsure which SPF record is the correct one to keep, you can remove all of them and let Cloudflare regenerate the required records:
 
@@ -39,9 +40,10 @@ If emails are being rejected due to SPF failures:
 
 1. Log in to the Cloudflare dashboard, select your account and domain, then go to **DNS** \> **Records**.  
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
-2. Add TXT records for the appropriate service:  
-   * For **Email Routing**: **Name**: `@` (root domain), **Content**: `v=spf1 include:_spf.mx.cloudflare.net ~all`  
-   * For **Email Sending**: **Name**: `cf-bounce`, **Content**: `v=spf1 include:_spf.mx.cloudflare.net ~all`
+2. Add TXT records for the appropriate service:
+
+  * For **Email Routing**: **Name**: `@` (root domain), **Content**: `v=spf1 include:_spf.mx.cloudflare.net ~all`
+  * For **Email Sending**: **Name**: `cf-bounce`, **Content**: `v=spf1 include:_spf.mx.cloudflare.net ~all`
 3. If you already have an SPF record on the root domain, modify it to include `include:_spf.mx.cloudflare.net`
 
 ### SPF record syntax errors
@@ -56,10 +58,7 @@ Common SPF record syntax issues:
 **Correct format:**
 
 ```
-
 v=spf1 include:_spf.mx.cloudflare.net include:other-service.com ~all
-
-
 ```
 
 ### Checking SPF records
@@ -69,19 +68,13 @@ Verify your SPF record is configured correctly:
 Terminal window
 
 ```
-
 dig TXT example.com +short | grep spf
-
-
 ```
 
 Expected result should include:
 
 ```
-
 "v=spf1 include:_spf.mx.cloudflare.net ~all"
-
-
 ```
 
 ## DKIM (DomainKeys Identified Mail) issues
@@ -93,8 +86,8 @@ Email Service automatically generates DKIM keys for your domain, but the DNS rec
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Compute** \> **Email Service**.
 2. Select your domain.
 3. Check the **Settings** page for the appropriate service:  
-   * **Email Sending**: Go to **Email Sending** \> **Settings** to find the sending DKIM record (`cf-bounce._domainkey`).  
-   * **Email Routing**: Go to **Email Routing** \> **Settings** to find the routing DKIM record (`cf2024-1._domainkey`).
+  * **Email Sending**: Go to **Email Sending** \> **Settings** to find the sending DKIM record (`cf-bounce._domainkey`).
+  * **Email Routing**: Go to **Email Routing** \> **Settings** to find the routing DKIM record (`cf2024-1._domainkey`).
 4. Copy the DKIM record details.
 5. Go to **DNS** \> **Records** and add the DKIM TXT record with the correct selector name and public key.
 
@@ -113,26 +106,14 @@ Verify your DKIM records are configured correctly:
 Terminal window
 
 ```
-
-# Check Email Sending DKIM
-
-dig TXT cf-bounce._domainkey.example.com +short
-
-
-# Check Email Routing DKIM
-
-dig TXT cf2024-1._domainkey.example.com +short
-
-
+# Check Email Sending DKIMdig TXT cf-bounce._domainkey.example.com +short
+# Check Email Routing DKIMdig TXT cf2024-1._domainkey.example.com +short
 ```
 
 Expected result for either:
 
 ```
-
 "v=DKIM1; h=sha256; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA..."
-
-
 ```
 
 ### DKIM signature validation failures
@@ -141,8 +122,8 @@ If DKIM validation is failing:
 
 1. Verify the DKIM record exists in DNS
 2. Check that the record name matches the correct selector:  
-   * Email Sending: `cf-bounce._domainkey.yourdomain.com`  
-   * Email Routing: `cf2024-1._domainkey.yourdomain.com`
+  * Email Sending: `cf-bounce._domainkey.yourdomain.com`
+  * Email Routing: `cf2024-1._domainkey.yourdomain.com`
 3. Ensure there are no extra spaces or characters in the DNS record
 4. Wait for DNS propagation (up to 48 hours)
 5. Use online DKIM validators to test your configuration
@@ -155,9 +136,10 @@ While not required, DMARC significantly improves email deliverability:
 
 1. Go to **DNS** \> **Records** in the Cloudflare dashboard.  
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
-2. Add a TXT record:  
-   * **Name**: `_dmarc`  
-   * **Content**: `v=DMARC1; p=quarantine; rua=mailto:dmarc@example.com`
+2. Add a TXT record:
+
+  * **Name**: `_dmarc`
+  * **Content**: `v=DMARC1; p=quarantine; rua=mailto:dmarc@example.com`
 
 ### DMARC policy too strict
 
@@ -172,7 +154,7 @@ If a strict DMARC policy is causing delivery issues:
 
 DMARC requires either SPF or DKIM alignment:
 
-**SPF alignment**: The domain in the `Mail From` header must align with the domain in the `From` header**DKIM alignment**: The DKIM signature domain must align with the domain in the `From` header
+**SPF alignment**: The domain in the `Mail From` header must align with the domain in the `From` header **DKIM alignment**: The DKIM signature domain must align with the domain in the `From` header
 
 Email Service ensures proper alignment automatically.
 
@@ -183,19 +165,13 @@ Verify your DMARC record:
 Terminal window
 
 ```
-
 dig TXT _dmarc.example.com +short
-
-
 ```
 
 Example result:
 
 ```
-
 "v=DMARC1; p=quarantine; rua=mailto:dmarc@example.com; ruf=mailto:dmarc@example.com; sp=quarantine"
-
-
 ```
 
 ## Local development issues
@@ -252,10 +228,10 @@ If you continue to experience authentication issues:
 1. Check the [Email Service analytics](https://developers.cloudflare.com/email-service/observability/metrics-analytics/) for delivery metrics
 2. Review bounce messages for specific error codes
 3. Contact [Cloudflare Support ↗](https://dash.cloudflare.com/?to=/:account/support) with:  
-   * Domain name  
-   * Example email headers  
-   * Specific error messages  
-   * SPF, DKIM, and DMARC record configurations
+  * Domain name
+  * Example email headers
+  * Specific error messages
+  * SPF, DKIM, and DMARC record configurations
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/reference/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Email Service docs","description":"Diagnose and fix delivery, authentication, and local development issues for Email Service.","url":"https://developers.cloudflare.com/email-service/reference/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

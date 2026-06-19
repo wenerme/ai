@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,39 +30,18 @@ A button which toggles recording state of a meeting. Only a privileged user can 
 ### Basic Usage
 
 ```
-
 <rtk-recording-toggle></rtk-recording-toggle>
-
-
 ```
 
 ### With Properties
 
 ```
-
-<rtk-recording-toggle
-
- size="md">
-
-</rtk-recording-toggle>
-
-
+<rtk-recording-toggle size="md"></rtk-recording-toggle>
 ```
 
 ```
-
-<script>
-
-  const el = document.querySelector("rtk-recording-toggle");
-
-
-  el.disabled= true;
-
-  el.meeting= meeting
-
-</script>
-
-
+<script>  const el = document.querySelector("rtk-recording-toggle");
+  el.disabled= true;  el.meeting= meeting</script>
 ```
 
 ```json

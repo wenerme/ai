@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,714 +28,135 @@ xAI's Grok speech-to-text model. Transcribes audio files into text across 25 lan
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1982)
-* [ cURL ](#tab-panel-1983)
+* [ TypeScript ](#tab-panel-2056)
+* [ cURL ](#tab-panel-2057)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'xai/grok-stt',
-
-  { url: 'https://storage.googleapis.com/cloud-samples-data/speech/brooklyn_bridge.mp3' },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'xai/grok-stt',  { url: 'https://storage.googleapis.com/cloud-samples-data/speech/brooklyn_bridge.mp3' },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "xai/grok-stt",
-
-  "input": {
-
-    "url": "https://storage.googleapis.com/cloud-samples-data/speech/brooklyn_bridge.mp3"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "xai/grok-stt",  "input": {    "url": "https://storage.googleapis.com/cloud-samples-data/speech/brooklyn_bridge.mp3"  }}'
 ```
 
-* [ Output ](#tab-panel-1992)
-* [ Raw response ](#tab-panel-1993)
+* [ Output ](#tab-panel-2066)
+* [ Raw response ](#tab-panel-2067)
 
 How old is the Brooklyn Bridge?
 
 ```
-
-{
-
-  "state": "Completed",
-
-  "result": {
-
-    "text": "How old is the Brooklyn Bridge?",
-
-    "language": "English",
-
-    "duration": 1.85,
-
-    "words": [
-
-      {
-
-        "text": "How",
-
-        "start": 0.14,
-
-        "end": 0.28
-
-      },
-
-      {
-
-        "text": "old",
-
-        "start": 0.4,
-
-        "end": 0.6
-
-      },
-
-      {
-
-        "text": "is",
-
-        "start": 0.65,
-
-        "end": 0.75
-
-      },
-
-      {
-
-        "text": "the",
-
-        "start": 0.81,
-
-        "end": 0.89
-
-      },
-
-      {
-
-        "text": "Brooklyn",
-
-        "start": 0.95,
-
-        "end": 1.29
-
-      },
-
-      {
-
-        "text": "Bridge?",
-
-        "start": 1.35,
-
-        "end": 1.69
-
-      }
-
-    ]
-
-  },
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
-
-}
-
-
+{  "state": "Completed",  "result": {    "text": "How old is the Brooklyn Bridge?",    "language": "English",    "duration": 1.85,    "words": [      {        "text": "How",        "start": 0.14,        "end": 0.28      },      {        "text": "old",        "start": 0.4,        "end": 0.6      },      {        "text": "is",        "start": 0.65,        "end": 0.75      },      {        "text": "the",        "start": 0.81,        "end": 0.89      },      {        "text": "Brooklyn",        "start": 0.95,        "end": 1.29      },      {        "text": "Bridge?",        "start": 1.35,        "end": 1.69      }    ]  },  "gatewayMetadata": {    "keySource": "Unified"  }}
 ```
 
 ## Examples
 
 **With Language and Formatting**  — Enable Inverse Text Normalization so spoken numbers become digits 
 
-* [ TypeScript ](#tab-panel-1984)
-* [ cURL ](#tab-panel-1985)
+* [ TypeScript ](#tab-panel-2058)
+* [ cURL ](#tab-panel-2059)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'xai/grok-stt',
-
-  {
-
-    url: 'https://storage.googleapis.com/cloud-samples-data/speech/brooklyn_bridge.mp3',
-
-    language: 'en',
-
-    format: true,
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'xai/grok-stt',  {    url: 'https://storage.googleapis.com/cloud-samples-data/speech/brooklyn_bridge.mp3',    language: 'en',    format: true,  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "xai/grok-stt",
-
-  "input": {
-
-    "url": "https://storage.googleapis.com/cloud-samples-data/speech/brooklyn_bridge.mp3",
-
-    "language": "en",
-
-    "format": true
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "xai/grok-stt",  "input": {    "url": "https://storage.googleapis.com/cloud-samples-data/speech/brooklyn_bridge.mp3",    "language": "en",    "format": true  }}'
 ```
 
-* [ Output ](#tab-panel-1994)
-* [ Raw response ](#tab-panel-1995)
+* [ Output ](#tab-panel-2068)
+* [ Raw response ](#tab-panel-2069)
 
 How old is the Brooklyn Bridge?
 
 ```
-
-{
-
-  "state": "Completed",
-
-  "result": {
-
-    "text": "How old is the Brooklyn Bridge?",
-
-    "language": "English",
-
-    "duration": 1.85,
-
-    "words": [
-
-      {
-
-        "text": "How",
-
-        "start": 0.14,
-
-        "end": 0.28
-
-      },
-
-      {
-
-        "text": "old",
-
-        "start": 0.4,
-
-        "end": 0.6
-
-      },
-
-      {
-
-        "text": "is",
-
-        "start": 0.65,
-
-        "end": 0.75
-
-      },
-
-      {
-
-        "text": "the",
-
-        "start": 0.81,
-
-        "end": 0.89
-
-      },
-
-      {
-
-        "text": "Brooklyn",
-
-        "start": 0.95,
-
-        "end": 1.29
-
-      },
-
-      {
-
-        "text": "Bridge?",
-
-        "start": 1.35,
-
-        "end": 1.69
-
-      }
-
-    ]
-
-  },
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
-
-}
-
-
+{  "state": "Completed",  "result": {    "text": "How old is the Brooklyn Bridge?",    "language": "English",    "duration": 1.85,    "words": [      {        "text": "How",        "start": 0.14,        "end": 0.28      },      {        "text": "old",        "start": 0.4,        "end": 0.6      },      {        "text": "is",        "start": 0.65,        "end": 0.75      },      {        "text": "the",        "start": 0.81,        "end": 0.89      },      {        "text": "Brooklyn",        "start": 0.95,        "end": 1.29      },      {        "text": "Bridge?",        "start": 1.35,        "end": 1.69      }    ]  },  "gatewayMetadata": {    "keySource": "Unified"  }}
 ```
 
 **Speaker Diarization with Key Terms**  — Identify speakers and bias transcription toward proper nouns 
 
-* [ TypeScript ](#tab-panel-1988)
-* [ cURL ](#tab-panel-1989)
+* [ TypeScript ](#tab-panel-2062)
+* [ cURL ](#tab-panel-2063)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'xai/grok-stt',
-
-  {
-
-    url: 'https://storage.googleapis.com/cloud-samples-data/speech/brooklyn_bridge.mp3',
-
-    language: 'en',
-
-    diarize: true,
-
-    keyterm: ['Brooklyn', 'Manhattan'],
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'xai/grok-stt',  {    url: 'https://storage.googleapis.com/cloud-samples-data/speech/brooklyn_bridge.mp3',    language: 'en',    diarize: true,    keyterm: ['Brooklyn', 'Manhattan'],  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "xai/grok-stt",
-
-  "input": {
-
-    "url": "https://storage.googleapis.com/cloud-samples-data/speech/brooklyn_bridge.mp3",
-
-    "language": "en",
-
-    "diarize": true,
-
-    "keyterm": [
-
-      "Brooklyn",
-
-      "Manhattan"
-
-    ]
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "xai/grok-stt",  "input": {    "url": "https://storage.googleapis.com/cloud-samples-data/speech/brooklyn_bridge.mp3",    "language": "en",    "diarize": true,    "keyterm": [      "Brooklyn",      "Manhattan"    ]  }}'
 ```
 
-* [ Output ](#tab-panel-1998)
-* [ Raw response ](#tab-panel-1999)
+* [ Output ](#tab-panel-2072)
+* [ Raw response ](#tab-panel-2073)
 
 How old is the Brooklyn Bridge?
 
 ```
-
-{
-
-  "state": "Completed",
-
-  "result": {
-
-    "text": "How old is the Brooklyn Bridge?",
-
-    "language": "English",
-
-    "duration": 1.85,
-
-    "words": [
-
-      {
-
-        "text": "How",
-
-        "start": 0.14,
-
-        "end": 0.28,
-
-        "speaker": 0
-
-      },
-
-      {
-
-        "text": "old",
-
-        "start": 0.4,
-
-        "end": 0.6,
-
-        "speaker": 0
-
-      },
-
-      {
-
-        "text": "is",
-
-        "start": 0.65,
-
-        "end": 0.75,
-
-        "speaker": 0
-
-      },
-
-      {
-
-        "text": "the",
-
-        "start": 0.81,
-
-        "end": 0.89,
-
-        "speaker": 0
-
-      },
-
-      {
-
-        "text": "Brooklyn",
-
-        "start": 0.95,
-
-        "end": 1.29,
-
-        "speaker": 0
-
-      },
-
-      {
-
-        "text": "Bridge?",
-
-        "start": 1.35,
-
-        "end": 1.69,
-
-        "speaker": 0
-
-      }
-
-    ]
-
-  },
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
-
-}
-
-
+{  "state": "Completed",  "result": {    "text": "How old is the Brooklyn Bridge?",    "language": "English",    "duration": 1.85,    "words": [      {        "text": "How",        "start": 0.14,        "end": 0.28,        "speaker": 0      },      {        "text": "old",        "start": 0.4,        "end": 0.6,        "speaker": 0      },      {        "text": "is",        "start": 0.65,        "end": 0.75,        "speaker": 0      },      {        "text": "the",        "start": 0.81,        "end": 0.89,        "speaker": 0      },      {        "text": "Brooklyn",        "start": 0.95,        "end": 1.29,        "speaker": 0      },      {        "text": "Bridge?",        "start": 1.35,        "end": 1.69,        "speaker": 0      }    ]  },  "gatewayMetadata": {    "keySource": "Unified"  }}
 ```
 
 **Filler Words Preserved**  — Keep filler words (uh, um, er) in the transcript instead of removing them 
 
-* [ TypeScript ](#tab-panel-1986)
-* [ cURL ](#tab-panel-1987)
+* [ TypeScript ](#tab-panel-2060)
+* [ cURL ](#tab-panel-2061)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'xai/grok-stt',
-
-  {
-
-    url: 'https://storage.googleapis.com/cloud-samples-data/speech/brooklyn_bridge.mp3',
-
-    language: 'en',
-
-    filler_words: true,
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'xai/grok-stt',  {    url: 'https://storage.googleapis.com/cloud-samples-data/speech/brooklyn_bridge.mp3',    language: 'en',    filler_words: true,  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "xai/grok-stt",
-
-  "input": {
-
-    "url": "https://storage.googleapis.com/cloud-samples-data/speech/brooklyn_bridge.mp3",
-
-    "language": "en",
-
-    "filler_words": true
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "xai/grok-stt",  "input": {    "url": "https://storage.googleapis.com/cloud-samples-data/speech/brooklyn_bridge.mp3",    "language": "en",    "filler_words": true  }}'
 ```
 
-* [ Output ](#tab-panel-1996)
-* [ Raw response ](#tab-panel-1997)
+* [ Output ](#tab-panel-2070)
+* [ Raw response ](#tab-panel-2071)
 
 How old is the Brooklyn Bridge?
 
 ```
-
-{
-
-  "state": "Completed",
-
-  "result": {
-
-    "text": "How old is the Brooklyn Bridge?",
-
-    "language": "English",
-
-    "duration": 1.85,
-
-    "words": [
-
-      {
-
-        "text": "How",
-
-        "start": 0.14,
-
-        "end": 0.28
-
-      },
-
-      {
-
-        "text": "old",
-
-        "start": 0.4,
-
-        "end": 0.6
-
-      },
-
-      {
-
-        "text": "is",
-
-        "start": 0.65,
-
-        "end": 0.75
-
-      },
-
-      {
-
-        "text": "the",
-
-        "start": 0.81,
-
-        "end": 0.89
-
-      },
-
-      {
-
-        "text": "Brooklyn",
-
-        "start": 0.95,
-
-        "end": 1.29
-
-      },
-
-      {
-
-        "text": "Bridge?",
-
-        "start": 1.35,
-
-        "end": 1.69
-
-      }
-
-    ]
-
-  },
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
-
-}
-
-
+{  "state": "Completed",  "result": {    "text": "How old is the Brooklyn Bridge?",    "language": "English",    "duration": 1.85,    "words": [      {        "text": "How",        "start": 0.14,        "end": 0.28      },      {        "text": "old",        "start": 0.4,        "end": 0.6      },      {        "text": "is",        "start": 0.65,        "end": 0.75      },      {        "text": "the",        "start": 0.81,        "end": 0.89      },      {        "text": "Brooklyn",        "start": 0.95,        "end": 1.29      },      {        "text": "Bridge?",        "start": 1.35,        "end": 1.69      }    ]  },  "gatewayMetadata": {    "keySource": "Unified"  }}
 ```
 
 **Data URI Upload**  — Pass the audio file directly as a base64 data URI (mutually exclusive with \`url\`) 
 
-* [ TypeScript ](#tab-panel-1990)
-* [ cURL ](#tab-panel-1991)
+* [ TypeScript ](#tab-panel-2064)
+* [ cURL ](#tab-panel-2065)
 
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'xai/grok-stt',
-
-  { file: 'data:audio/wav;base64,<...>' },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'xai/grok-stt',  { file: 'data:audio/wav;base64,<...>' },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "xai/grok-stt",
-
-  "input": {
-
-    "file": "data:audio/wav;base64,<...>"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "xai/grok-stt",  "input": {    "file": "data:audio/wav;base64,<...>"  }}'
 ```
 
 ```
-
-{
-
-  "state": "Completed",
-
-  "result": {
-
-    "text": "",
-
-    "language": "",
-
-    "duration": 1
-
-  },
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  }
-
-}
-
-
+{  "state": "Completed",  "result": {    "text": "",    "language": "",    "duration": 1  },  "gatewayMetadata": {    "keySource": "Unified"  }}
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-2000)
-* [ Output ](#tab-panel-2001)
+* [ Input ](#tab-panel-2074)
+* [ Output ](#tab-panel-2075)
 
 audio\_format
 
@@ -809,7 +230,7 @@ text
 
 Input [ ](https://developers.cloudflare.com/ai/models/xai/grok-stt/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-stt/schema-input.json "Download") 
 
-Output [ ](https://developers.cloudflare.com/ai/models/xai/grok-stt/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-stt/schema-output.json "Download") 
+Output [ ](https://developers.cloudflare.com/ai/models/xai/grok-stt/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-stt/schema-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/xai/grok-stt/#page","headline":"Grok STT (xAI) · Cloudflare AI docs · Cloudflare AI docs","description":"xAI's Grok speech-to-text model. Transcribes audio files into text across 25 languages with word-level timestamps, multichannel transcription, speaker diarization, and key-term biasing.","url":"https://developers.cloudflare.com/ai/models/xai/grok-stt/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

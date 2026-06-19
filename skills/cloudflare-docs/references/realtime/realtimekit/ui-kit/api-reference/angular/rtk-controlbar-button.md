@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,31 +33,13 @@ A skeleton component used for composing custom controlbar buttons.
 ### Basic Usage
 
 ```
-
-<!-- component.html -->
-
-<rtk-controlbar-button></rtk-controlbar-button>
-
-
+<!-- component.html --><rtk-controlbar-button></rtk-controlbar-button>
 ```
 
 ### With Properties
 
 ```
-
-<!-- component.html -->
-
-<rtk-controlbar-button
-
- [brandIcon]="true"
-
- [disabled]="true"
-
- icon="example">
-
-</rtk-controlbar-button>
-
-
+<!-- component.html --><rtk-controlbar-button [brandIcon]="true" [disabled]="true" icon="example"></rtk-controlbar-button>
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,8 +28,8 @@ This guide covers how to deploy the Cloudflare One Client (formerly WARP) using 
 3. Select **OS settings** \> **Custom settings**.
 4. Select **Add profile** and upload the custom `.mobileconfig`.
 5. Select the hosts which require the Cloudflare One Client:  
-   * **All hosts**: Deploys the Cloudflare One Client to all hosts in the team.  
-   * **Custom**: Deploys the Cloudflare One Client to a subset of the hosts in the team. Use [labels ↗](https://fleetdm.com/guides/managing-labels-in-fleet#basic-article) to define the hosts that should be included or excluded.
+  * **All hosts**: Deploys the Cloudflare One Client to all hosts in the team.
+  * **Custom**: Deploys the Cloudflare One Client to a subset of the hosts in the team. Use [labels ↗](https://fleetdm.com/guides/managing-labels-in-fleet#basic-article) to define the hosts that should be included or excluded.
 6. Select **Add profile**.
 
 The defined hosts will immediately receive the deployment profile, but the Cloudflare One Client is not yet installed.
@@ -88,35 +88,12 @@ To add the Cloudflare One Client installer package for distribution to your host
 Terminal window
 
 ```
-
 $logFile = "${env:TEMP}/fleet-install-software.log"
-
-
 try {
-
-
-$installProcess = Start-Process msiexec.exe `
-
-  -ArgumentList "/quiet /norestart ORGANIZATION=your-team-name SUPPORT_URL=https://example.com /lv ${logFile} /i `"${env:INSTALLER_PATH}`"" `
-
-  -PassThru -Verb RunAs -Wait
-
-
+$installProcess = Start-Process msiexec.exe `  -ArgumentList "/quiet /norestart ORGANIZATION=your-team-name SUPPORT_URL=https://example.com /lv ${logFile} /i `"${env:INSTALLER_PATH}`"" `  -PassThru -Verb RunAs -Wait
 Get-Content $logFile -Tail 500
-
-
 Exit $installProcess.ExitCode
-
-
-} catch {
-
-  Write-Host "Error: $_"
-
-  Exit 1
-
-}
-
-
+} catch {  Write-Host "Error: $_"  Exit 1}
 ```
 
 Refer to [deployment parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/) for a description of each argument.
@@ -148,34 +125,11 @@ To uninstall the Fleet-deployed Cloudflare One Client:
 Fleet allows you to [execute custom scripts ↗](https://fleetdm.com/guides/scripts) on Linux hosts. The following example script creates an [MDM file](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/#linux) and installs the Cloudflare One Client on an Ubuntu 22.04 host:
 
 ```
-
 #!/bin/sh
-
-
-# Write the mdm.xml file
-
-touch /var/lib/cloudflare-warp/mdm.xml
-
-echo -e "<dict>\n   <key>organization</key>\n   <string>your-team-name</string>\n</dict>
-
-" > /var/lib/cloudflare-warp/mdm.xml
-
-
-# Add cloudflare gpg key
-
-curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
-
-
-# Add this repo to your apt repositories
-
-echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ any main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
-
-
-# Install
-
-sudo apt-get -y update && sudo apt-get -y install cloudflare-warp
-
-
+# Write the mdm.xml filetouch /var/lib/cloudflare-warp/mdm.xmlecho -e "<dict>\n   <key>organization</key>\n   <string>your-team-name</string>\n</dict>" > /var/lib/cloudflare-warp/mdm.xml
+# Add cloudflare gpg keycurl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
+# Add this repo to your apt repositoriesecho "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ any main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
+# Installsudo apt-get -y update && sudo apt-get -y install cloudflare-warp
 ```
 
 To install the Cloudflare One Client on other Linux distributions, refer to the [package repository ↗](https://pkg.cloudflareclient.com/).

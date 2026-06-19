@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -47,10 +47,10 @@ Cloud Connector will not apply any of the following configurations:
 
 Cloud Connector is available in beta to all customers. The maximum number of rules depends on your Cloudflare plan:
 
-| Free            | Pro | Business | Enterprise |     |
-| --------------- | --- | -------- | ---------- | --- |
-| Availability    | Yes | Yes      | Yes        | Yes |
-| Number of rules | 10  | 25       | 50         | 300 |
+|                 | Free | Pro | Business | Enterprise |
+| --------------- | ---- | --- | -------- | ---------- |
+| Availability    | Yes  | Yes | Yes      | Yes        |
+| Number of rules | 10   | 25  | 50       | 300        |
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/cloud-connector/#page","headline":"Cloud Connector · Cloudflare Rules docs","description":"Route matching requests to cloud provider storage buckets and services.","url":"https://developers.cloudflare.com/rules/cloud-connector/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AWS","Azure","GCP"]}

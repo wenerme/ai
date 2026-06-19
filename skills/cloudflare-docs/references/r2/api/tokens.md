@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,9 +25,10 @@ To create an API token:
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.  
 [ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Under the **Account Details** section, select **Manage** next to **API Tokens**.
-3. Choose to create either:  
-   * **Create Account API token** \- These tokens are tied to the Cloudflare account itself and can be used by any authorized system or user. Only users with the Super Administrator role can view or create them. These tokens remain valid until manually revoked.  
-   * **Create User API token** \- These tokens are tied to your individual Cloudflare user. They inherit your personal permissions and become inactive if your user is removed from the account.
+3. Choose to create either:
+
+  * **Create Account API token** \- These tokens are tied to the Cloudflare account itself and can be used by any authorized system or user. Only users with the Super Administrator role can view or create them. These tokens remain valid until manually revoked.
+  * **Create User API token** \- These tokens are tied to your individual Cloudflare user. They inherit your personal permissions and become inactive if your user is removed from the account.
 4. Under **Permissions**, choose a permission types for your token. Refer to [Permissions](#permissions) for information about each option.
 5. (Optional) If you select the **Object Read and Write** or **Object Read** permissions, you can scope your token to a set of buckets.
 6. Select **Create Account API token** or **Create User API token**.
@@ -60,9 +61,10 @@ Jurisdictional buckets can only be accessed via the corresponding jurisdictional
 | Object Read & Write | Allows the ability to read, write, and list objects in specific buckets.                                                                                                             |
 | Object Read only    | Allows the ability to read and list objects in specific buckets.                                                                                                                     |
 
-Note
+Considerations
 
-Currently **Admin Read & Write** or **Admin Read only** permission is required to use [R2 Data Catalog](https://developers.cloudflare.com/r2/data-catalog/).
+* Currently **Admin Read & Write** or **Admin Read only** permission is required to use [R2 Data Catalog](https://developers.cloudflare.com/r2/data-catalog/).
+* The **Object Read & Write** and **Object Read only** permissions are only supported by the [S3-compatible API](https://developers.cloudflare.com/r2/api/s3/api/), not the [Cloudflare REST API](https://developers.cloudflare.com/api/resources/r2/).
 
 ## Create API tokens via API
 
@@ -83,10 +85,7 @@ Include a set of R2 buckets or all buckets in an account.
 A specific bucket is represented as:
 
 ```
-
 "com.cloudflare.edge.r2.bucket.<ACCOUNT_ID>_<JURISDICTION>_<BUCKET_NAME>": "*"
-
-
 ```
 
 * `ACCOUNT_ID`: Refer to [Find zone and account IDs](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/#find-account-id-workers-and-pages).
@@ -96,14 +95,7 @@ A specific bucket is represented as:
 All buckets in an account are represented as:
 
 ```
-
-"com.cloudflare.api.account.<ACCOUNT_ID>": {
-
-  "com.cloudflare.edge.r2.bucket.*": "*"
-
-}
-
-
+"com.cloudflare.api.account.<ACCOUNT_ID>": {  "com.cloudflare.edge.r2.bucket.*": "*"}
 ```
 
 * `ACCOUNT_ID`: Refer to [Find zone and account IDs](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/#find-account-id-workers-and-pages).
@@ -123,40 +115,7 @@ Determine what [permission groups](https://developers.cloudflare.com/fundamental
 #### Example Access Policy
 
 ```
-
-[
-
-  {
-
-    "id": "f267e341f3dd4697bd3b9f71dd96247f",
-
-    "effect": "allow",
-
-    "resources": {
-
-      "com.cloudflare.edge.r2.bucket.4793d734c0b8e484dfc37ec392b5fa8a_default_my-bucket": "*",
-
-      "com.cloudflare.edge.r2.bucket.4793d734c0b8e484dfc37ec392b5fa8a_eu_my-eu-bucket": "*"
-
-    },
-
-    "permission_groups": [
-
-      {
-
-        "id": "6a018a9f2fc74eb6b293b0c548f38b39",
-
-        "name": "Workers R2 Storage Bucket Item Read"
-
-      }
-
-    ]
-
-  }
-
-]
-
-
+[  {    "id": "f267e341f3dd4697bd3b9f71dd96247f",    "effect": "allow",    "resources": {      "com.cloudflare.edge.r2.bucket.4793d734c0b8e484dfc37ec392b5fa8a_default_my-bucket": "*",      "com.cloudflare.edge.r2.bucket.4793d734c0b8e484dfc37ec392b5fa8a_eu_my-eu-bucket": "*"    },    "permission_groups": [      {        "id": "6a018a9f2fc74eb6b293b0c548f38b39",        "name": "Workers R2 Storage Bucket Item Read"      }    ]  }]
 ```
 
 ### Get S3 API credentials from an API token
@@ -173,6 +132,6 @@ Refer to [Authenticate against R2 API using auth tokens](https://developers.clou
 To issue short-lived, scoped credentials derived from an API token, use [temporary credentials](https://developers.cloudflare.com/r2/api/s3/temporary-credentials/). R2 supports generating them via the Temporary Credentials API or locally by signing a JWT with the parent token's secret access key.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/tokens/#page","headline":"Authentication · Cloudflare R2 docs","description":"Generate and manage R2 API tokens for use with S3-compatible SDKs and APIs.","url":"https://developers.cloudflare.com/r2/api/tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/tokens/#page","headline":"Authentication · Cloudflare R2 docs","description":"Generate and manage R2 API tokens for use with S3-compatible SDKs and APIs.","url":"https://developers.cloudflare.com/r2/api/tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/api/tokens/","name":"Authentication"}}]}
 ```

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,8 +32,8 @@ Warning
 
 If you add a pool to a region, you cannot [delete this pool](https://developers.cloudflare.com/load-balancing/pools/create-pool/#delete-a-pool) until you remove it from the **Geo steering** configuration. The configuration is **not** automatically removed when you change to a different **Traffic Steering** method.
 
-* [ Dashboard ](#tab-panel-9337)
-* [ API ](#tab-panel-9338)
+* [ Dashboard ](#tab-panel-9413)
+* [ API ](#tab-panel-9414)
 
 When [creating or editing a load balancer](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/):
 
@@ -52,68 +52,15 @@ In the example below, `WNAM` and `ENAM` represent the West and East Coasts of No
 Request
 
 ```
-
-// PUT /zones/:zone_id/load_balancers
-
-{
-
-  "description": "Load Balancer for www.example.com",
-
-  "name": "www.example.com",
-
-  "ttl": 30,
-
-  "proxied": true,
-
-  "fallback_pool": "ff02c959d17f7bb2b1184a202e3c0af7",
-
-  "default_pools": [
-
-    "17b5962d775c646f3f9725cbc7a53df4",
-
-    "ff02c959d17f7bb2b1184a202e3c0af7"
-
-  ],
-
-  "region_pools": {
-
-    "WNAM": [
-
-      "17b5962d775c646f3f9725cbc7a53df4",
-
-      "ff02c959d17f7bb2b1184a202e3c0af7"
-
-    ],
-
-    "ENAM": [
-
-      "17b5962d775c646f3f9725cbc7a53df4",
-
-      "ff02c959d17f7bb2b1184a202e3c0af7"
-
-    ],
-
-    "EEU": [
-
-      "ff02c959d17f7bb2b1184a202e3c0af7",
-
-      "17b5962d775c646f3f9725cbc7a53df4"
-
-    ]
-
-  }
-
-}
-
-
+// PUT /zones/:zone_id/load_balancers{  "description": "Load Balancer for www.example.com",  "name": "www.example.com",  "ttl": 30,  "proxied": true,  "fallback_pool": "ff02c959d17f7bb2b1184a202e3c0af7",  "default_pools": [    "17b5962d775c646f3f9725cbc7a53df4",    "ff02c959d17f7bb2b1184a202e3c0af7"  ],  "region_pools": {    "WNAM": [      "17b5962d775c646f3f9725cbc7a53df4",      "ff02c959d17f7bb2b1184a202e3c0af7"    ],    "ENAM": [      "17b5962d775c646f3f9725cbc7a53df4",      "ff02c959d17f7bb2b1184a202e3c0af7"    ],    "EEU": [      "ff02c959d17f7bb2b1184a202e3c0af7",      "17b5962d775c646f3f9725cbc7a53df4"    ]  }}
 ```
 
 If you only define `WNAM`, then traffic from the East Coast will be routed to the `default_pools`. You can test this using a client in each of those locations.
 
 ### Country steering
 
-* [ Dashboard ](#tab-panel-9339)
-* [ API ](#tab-panel-9340)
+* [ Dashboard ](#tab-panel-9415)
+* [ API ](#tab-panel-9416)
 
 When [creating or editing a load balancer](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/):
 

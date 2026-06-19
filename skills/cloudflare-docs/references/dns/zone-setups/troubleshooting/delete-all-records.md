@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,26 +31,7 @@ This script uses [jq ↗](https://jqlang.github.io/jq/) to format `JSON` outputs
 Terminal window
 
 ```
-
-zoneid=<ZONE_ID>
-
-bearer=<API_TOKEN>
-
-curl --silent "https://api.cloudflare.com/client/v4/zones/$zoneid/dns_records?per_page=50000" \
-
---header "Authorization: Bearer $bearer" \
-
-| jq --raw-output '.result[].id' | while read id
-
-do
-
-  curl --silent --request DELETE "https://api.cloudflare.com/client/v4/zones/$zoneid/dns_records/$id" \
-
---header "Authorization: Bearer $bearer"
-
-done
-
-
+zoneid=<ZONE_ID>bearer=<API_TOKEN>curl --silent "https://api.cloudflare.com/client/v4/zones/$zoneid/dns_records?per_page=50000" \--header "Authorization: Bearer $bearer" \| jq --raw-output '.result[].id' | while read iddo  curl --silent --request DELETE "https://api.cloudflare.com/client/v4/zones/$zoneid/dns_records/$id" \--header "Authorization: Bearer $bearer"done
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,12 +21,12 @@ A single-file purge performed through your Cloudflare dashboard does not clear o
 * [Custom cache keys](https://developers.cloudflare.com/cache/how-to/cache-keys/)
 * [Origin header ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Origin)
 * Any of these request headers:  
-   * `X-Forwarded-Host`  
-   * `X-Host`  
-   * `X-Forwarded-Scheme`  
-   * `X-Original-URL`  
-   * `X-Rewrite-URL`  
-   * `Forwarded`
+  * `X-Forwarded-Host`
+  * `X-Host`
+  * `X-Forwarded-Scheme`
+  * `X-Original-URL`
+  * `X-Rewrite-URL`
+  * `Forwarded`
 
 You can purge objects with these characteristics using an API call to ([purge files by URL](https://developers.cloudflare.com/api/resources/cache/methods/purge/)). In the data/header section of the API call, you must include all headers and cache keys contained in the cached resource, along with their matching values.
 

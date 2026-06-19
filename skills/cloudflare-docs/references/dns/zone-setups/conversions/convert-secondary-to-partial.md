@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -50,9 +50,10 @@ www.example.com CNAME www.example.com.cdn.cloudflare.net
 2. Use the [Edit Zone endpoint](https://developers.cloudflare.com/api/resources/zones/methods/edit/) with `type` set to `partial` to convert the zone type. Existing DNS records will not be affected.
 3. On the [**DNS Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page, get the **Verification TXT Record** and add it at your authoritative DNS provider.  
 Example verification record  
-A verification record for `sub.example.com` might be:  
-| Type | Name                              | Content             |  
-| ---- | --------------------------------- | ------------------- |  
+A verification record for `sub.example.com` might be:
+
+| Type | Name                              | Content             |
+| ---- | --------------------------------- | ------------------- |
 | TXT  | cloudflare-verify.sub.example.com | 966215192-518620144 |  
 If your authoritative DNS provider automatically appends DNS record `name` fields with your domain, make sure to only insert `cloudflare-verify` as the record name. Otherwise, it may result in an incorrect record name, such as `cloudflare-verify.sub.example.com.sub.example.com`.  
 After creating the record, you can use this [Dig Web Interface link ↗](https://digwebinterface.com/?type=TXT&ns=auth&nameservers=) to search (`dig`) for `cloudflare-verify.<YOUR DOMAIN>` and validate if it is working.  

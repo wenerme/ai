@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,31 +33,13 @@ A component which lists all participants, with ability to run privileged actions
 ### Basic Usage
 
 ```
-
-<!-- component.html -->
-
-<rtk-participants-stage-list></rtk-participants-stage-list>
-
-
+<!-- component.html --><rtk-participants-stage-list></rtk-participants-stage-list>
 ```
 
 ### With Properties
 
 ```
-
-<!-- component.html -->
-
-<rtk-participants-stage-list
-
- [hideHeader]="true"
-
- [meeting]="meeting"
-
- search="example">
-
-</rtk-participants-stage-list>
-
-
+<!-- component.html --><rtk-participants-stage-list [hideHeader]="true" [meeting]="meeting" search="example"></rtk-participants-stage-list>
 ```
 
 ```json

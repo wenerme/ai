@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,10 +35,7 @@ The error budget is the amount of unsuccessful events that can happen over the c
 The SLO is a target percentage, and the error budget equals 100% minus the SLO. For example, assume that during 30 days there were one million tunnel health checks in your account, and your SLO is set to 99.9%. The error budget for this case would be:
 
 ```
-
 number of events x (1 - SLO) = 1,000,000 x (1-0.999) = 1,000
-
-
 ```
 
 This means the SLO allows for 1,000 unsuccessful tunnel health checks over the course of 30 days. However, what happens if all errors happen in one hour instead of 30 days? This leads to the concept of burn rate.

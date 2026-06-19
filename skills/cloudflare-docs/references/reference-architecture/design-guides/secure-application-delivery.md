@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -287,9 +287,9 @@ Customers can use WAF to implement and use custom rules, rate limiting rules, an
 * WAF Custom Rules: provides ability to create custom rules based on different request attributes and header information to block any threat
 * WAF Rate Limiting Rules: prevents abuse, DDoS, brute force attempts, and provides for API-centric controls.
 * WAF Managed Rules  
-   * Cloudflare Managed Ruleset: provides advanced zero-day vulnerability protection  
-   * Cloudflare OWASP Core Ruleset: block common web application vulnerabilities, some of which are in OWASP top 10  
-   * Cloudflare Leaked Credential Check: checks exposed credential database for popular content management system (CMS) applications
+  * Cloudflare Managed Ruleset: provides advanced zero-day vulnerability protection
+  * Cloudflare OWASP Core Ruleset: block common web application vulnerabilities, some of which are in OWASP top 10
+  * Cloudflare Leaked Credential Check: checks exposed credential database for popular content management system (CMS) applications
 
 The same methodology applies for all other Cloudflare Application Performance and Security products (API Shield, Bot Management, etc.): once configured to route traffic through the Cloudflare network, customers can start leveraging the Cloudflare services. Figure 31 displays Cloudflare’s Bot Analytics which categorizes the traffic based on bot score, shows the bot score distribution, and other bot analytics. All of the request data is captured inline and all enforcement based on defined policies is also done inline.
 

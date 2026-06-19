@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -108,8 +108,7 @@ Terminal window
 ls -l  
 ```  
 ```  
-lrwxrwxrwx 1 root root   49 Jan  3 21:46 managed-warp.crt -> /usr/local/share/ca-certificates/managed-warp.pem  
--rw-r--r-- 1 root root 1139 Jan  3 21:46 managed-warp.pem  
+lrwxrwxrwx 1 root root   49 Jan  3 21:46 managed-warp.crt -> /usr/local/share/ca-certificates/managed-warp.pem-rw-r--r-- 1 root root 1139 Jan  3 21:46 managed-warp.pem  
 ```
 
 The Cloudflare One Client will also place the certificate in `/var/lib/cloudflare-warp/installed_cert.pem` for reference by scripts or tools.

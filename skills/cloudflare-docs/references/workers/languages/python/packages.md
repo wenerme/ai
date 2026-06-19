@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,35 +19,8 @@ To get started, create a pyproject.toml file with the following contents:
 TOML
 
 ```
-
-[project]
-
-name = "YourProjectName"
-
-version = "0.1.0"
-
-description = "Add your description here"
-
-requires-python = ">=3.12"
-
-dependencies = [
-
-    "fastapi"
-
-]
-
-
-[dependency-groups]
-
-dev = [
-
-  "workers-py",
-
-  "workers-runtime-sdk"
-
-]
-
-
+[project]name = "YourProjectName"version = "0.1.0"description = "Add your description here"requires-python = ">=3.12"dependencies = [    "fastapi"]
+[dependency-groups]dev = [  "workers-py",  "workers-runtime-sdk"]
 ```
 
 The above will allow your worker to depend on the [FastAPI ↗](https://fastapi.tiangolo.com/) package.
@@ -55,19 +28,13 @@ The above will allow your worker to depend on the [FastAPI ↗](https://fastapi.
 To run the worker locally:
 
 ```
-
 uv run pywrangler dev
-
-
 ```
 
 To deploy your worker:
 
 ```
-
 uv run pywrangler deploy
-
-
 ```
 
 Your dependencies will get bundled with your worker automatically on deployment.

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,166 +22,62 @@ Text strings and JSON values are not encrypted and are useful for storing applic
 
 To add env variables using Wrangler, define text and JSON via the `[vars]` configuration in your Wrangler file. In the following example, `API_HOST` and `API_ACCOUNT_ID` are text values and `SERVICE_X_DATA` is a JSON value.
 
-* [  wrangler.jsonc ](#tab-panel-11455)
-* [  wrangler.toml ](#tab-panel-11456)
+* [  wrangler.jsonc ](#tab-panel-11472)
+* [  wrangler.toml ](#tab-panel-11473)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "my-worker-dev",
-
-  "vars": {
-
-    "API_HOST": "example.com",
-
-    "API_ACCOUNT_ID": "example_user",
-
-    "SERVICE_X_DATA": {
-
-      "URL": "service-x-api.dev.example",
-
-      "MY_ID": 123
-
-    }
-
-  }
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-worker-dev",  "vars": {    "API_HOST": "example.com",    "API_ACCOUNT_ID": "example_user",    "SERVICE_X_DATA": {      "URL": "service-x-api.dev.example",      "MY_ID": 123    }  }}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "my-worker-dev"
-
-
-[vars]
-
-API_HOST = "example.com"
-
-API_ACCOUNT_ID = "example_user"
-
-
-  [vars.SERVICE_X_DATA]
-
-  URL = "service-x-api.dev.example"
-
-  MY_ID = 123
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-worker-dev"
+[vars]API_HOST = "example.com"API_ACCOUNT_ID = "example_user"
+  [vars.SERVICE_X_DATA]  URL = "service-x-api.dev.example"  MY_ID = 123
 ```
 
 Refer to the following example on how to access the `API_HOST` environment variable in your Worker code:
 
-* [  JavaScript ](#tab-panel-11449)
-* [  TypeScript ](#tab-panel-11450)
+* [  JavaScript ](#tab-panel-11466)
+* [  TypeScript ](#tab-panel-11467)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    return new Response(`API host: ${env.API_HOST}`);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    return new Response(`API host: ${env.API_HOST}`);  },};
 ```
 
 TypeScript
 
 ```
-
-export interface Env {
-
-  API_HOST: string;
-
-}
-
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    return new Response(`API host: ${env.API_HOST}`);
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export interface Env {  API_HOST: string;}
+export default {  async fetch(request, env, ctx): Promise<Response> {    return new Response(`API host: ${env.API_HOST}`);  },} satisfies ExportedHandler<Env>;
 ```
 
 ### Import `env` for global access
 
 You can also import `env` from [cloudflare:workers](https://developers.cloudflare.com/workers/runtime-apis/bindings/#importing-env-as-a-global) to access environment variables from anywhere in your code, including outside of request handlers:
 
-* [  JavaScript ](#tab-panel-11453)
-* [  TypeScript ](#tab-panel-11454)
+* [  JavaScript ](#tab-panel-11470)
+* [  TypeScript ](#tab-panel-11471)
 
 JavaScript
 
 ```
-
 import { env } from "cloudflare:workers";
-
-
-// Access environment variables at the top level
-
-const apiHost = env.API_HOST;
-
-
-export default {
-
-  async fetch(request) {
-
-    return new Response(`API host: ${apiHost}`);
-
-  },
-
-};
-
-
+// Access environment variables at the top levelconst apiHost = env.API_HOST;
+export default {  async fetch(request) {    return new Response(`API host: ${apiHost}`);  },};
 ```
 
 TypeScript
 
 ```
-
 import { env } from "cloudflare:workers";
-
-
-// Access environment variables at the top level
-
-const apiHost = env.API_HOST;
-
-
-export default {
-
-  async fetch(request: Request): Promise<Response> {
-
-    return new Response(`API host: ${apiHost}`);
-
-  },
-
-};
-
-
+// Access environment variables at the top levelconst apiHost = env.API_HOST;
+export default {  async fetch(request: Request): Promise<Response> {    return new Response(`API host: ${apiHost}`);  },};
 ```
 
 This approach is useful when you need to:
@@ -197,80 +93,22 @@ For more details, refer to [Importing env as a global](https://developers.cloudf
 
 The example below sets up two environments, `staging` and `production`, with different values for `API_HOST`.
 
-* [  wrangler.jsonc ](#tab-panel-11451)
-* [  wrangler.toml ](#tab-panel-11452)
+* [  wrangler.jsonc ](#tab-panel-11468)
+* [  wrangler.toml ](#tab-panel-11469)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "my-worker-dev",
-
-  // top level environment
-
-  "vars": {
-
-    "API_HOST": "api.example.com"
-
-  },
-
-  "env": {
-
-    "staging": {
-
-      "vars": {
-
-        "API_HOST": "staging.example.com"
-
-      }
-
-    },
-
-    "production": {
-
-      "vars": {
-
-        "API_HOST": "production.example.com"
-
-      }
-
-    }
-
-  }
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-worker-dev",  // top level environment  "vars": {    "API_HOST": "api.example.com"  },  "env": {    "staging": {      "vars": {        "API_HOST": "staging.example.com"      }    },    "production": {      "vars": {        "API_HOST": "production.example.com"      }    }  }}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "my-worker-dev"
-
-
-[vars]
-
-API_HOST = "api.example.com"
-
-
-[env.staging.vars]
-
-API_HOST = "staging.example.com"
-
-
-[env.production.vars]
-
-API_HOST = "production.example.com"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-worker-dev"
+[vars]API_HOST = "api.example.com"
+[env.staging.vars]API_HOST = "staging.example.com"
+[env.production.vars]API_HOST = "production.example.com"
 ```
 
 To run Wrangler commands in specific environments, you can pass in the `--env` or `-e` flag. For example, you can develop the Worker in an environment called `staging` by running `npx wrangler dev --env staging`, and deploy it with `npx wrangler deploy --env staging`.
@@ -321,12 +159,7 @@ These files should be formatted using the [dotenv ↗](https://hexdocs.pm/dotenv
 .dev.vars / .env
 
 ```
-
-SECRET_KEY="value"
-
-API_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
-
-
+SECRET_KEY="value"API_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
 ```
 
 Do not commit secrets to git
@@ -339,10 +172,10 @@ When you select a Cloudflare environment in your local development, the correspo
 
 * When using `.dev.vars.<environment-name>` files, all secrets must be defined per environment. If `.dev.vars.<environment-name>` exists then only this will be loaded; the `.dev.vars` file will not be loaded.
 * In contrast, all matching `.env` files are loaded and the values are merged. For each variable, the value from the most specific file is used, with the following precedence:  
-   * `.env.<environment-name>.local` (most specific)  
-   * `.env.local`  
-   * `.env.<environment-name>`  
-   * `.env` (least specific)
+  * `.env.<environment-name>.local` (most specific)
+  * `.env.local`
+  * `.env.<environment-name>`
+  * `.env` (least specific)
 
 Controlling `.env` handling
 
@@ -366,16 +199,7 @@ JSON variable values that do not evaluate to string values are exposed as the ra
 For example, imagine a Worker with three environment variables, two text values, and one JSON value:
 
 ```
-
-[vars]
-
-FOO =  "abc"
-
-BAR =  "abc"
-
-BAZ = { "a": 123 }
-
-
+[vars]FOO =  "abc"BAR =  "abc"BAZ = { "a": 123 }
 ```
 
 Environment variables can be added using either the `wrangler.{json|jsonc|toml}` file or via the Cloudflare dashboard UI.

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -47,10 +47,7 @@ After enabling e-commerce tracking on your Zaraz dashboard, you need to add `zar
 JavaScript
 
 ```
-
 zaraz.ecommerce("Event Name", { parameters });
-
-
 ```
 
 To create a complete tracking event, you need to add an event and one or more parameters. Below you will find a list of events and parameters Zaraz supports, as well as code examples for different types of events.
@@ -125,30 +122,7 @@ To create a complete tracking event, you need to add an event and one or more pa
 JavaScript
 
 ```
-
-zaraz.ecommerce("Product Viewed", {
-
-  product_id: "999555321",
-
-  sku: "2671033",
-
-  category: "T-shirts",
-
-  name: "V-neck T-shirt",
-
-  brand: "Cool Brand",
-
-  variant: "White",
-
-  price: 14.99,
-
-  currency: "usd",
-
-  value: 18.99,
-
-});
-
-
+zaraz.ecommerce("Product Viewed", {  product_id: "999555321",  sku: "2671033",  category: "T-shirts",  name: "V-neck T-shirt",  brand: "Cool Brand",  variant: "White",  price: 14.99,  currency: "usd",  value: 18.99,});
 ```
 
 ### Product List Viewed
@@ -156,64 +130,7 @@ zaraz.ecommerce("Product Viewed", {
 JavaScript
 
 ```
-
-zaraz.ecommerce("Product List Viewed", {
-
-  products: [
-
-    {
-
-      product_id: "999555321",
-
-      sku: "2671033",
-
-      category: "T-shirts",
-
-      name: "V-neck T-shirt",
-
-      brand: "Cool Brand",
-
-      variant: "White",
-
-      price: 14.99,
-
-      currency: "usd",
-
-      value: 18.99,
-
-      position: 1,
-
-    },
-
-    {
-
-      product_id: "999555322",
-
-      sku: "2671034",
-
-      category: "T-shirts",
-
-      name: "T-shirt",
-
-      brand: "Cool Brand",
-
-      variant: "Pink",
-
-      price: 10.99,
-
-      currency: "usd",
-
-      value: 16.99,
-
-      position: 2,
-
-    },
-
-  ],
-
-});
-
-
+zaraz.ecommerce("Product List Viewed", {  products: [    {      product_id: "999555321",      sku: "2671033",      category: "T-shirts",      name: "V-neck T-shirt",      brand: "Cool Brand",      variant: "White",      price: 14.99,      currency: "usd",      value: 18.99,      position: 1,    },    {      product_id: "999555322",      sku: "2671034",      category: "T-shirts",      name: "T-shirt",      brand: "Cool Brand",      variant: "Pink",      price: 10.99,      currency: "usd",      value: 16.99,      position: 2,    },  ],});
 ```
 
 ### Product added
@@ -221,34 +138,7 @@ zaraz.ecommerce("Product List Viewed", {
 JavaScript
 
 ```
-
-zaraz.ecommerce("Product Added", {
-
-  product_id: "999555321",
-
-  sku: "2671033",
-
-  category: "T-shirts",
-
-  name: "V-neck T-shirt",
-
-  brand: "Cool Brand",
-
-  variant: "White",
-
-  price: 14.99,
-
-  currency: "usd",
-
-  quantity: 1,
-
-  coupon: "SUMMER-SALE",
-
-  position: 2,
-
-});
-
-
+zaraz.ecommerce("Product Added", {  product_id: "999555321",  sku: "2671033",  category: "T-shirts",  name: "V-neck T-shirt",  brand: "Cool Brand",  variant: "White",  price: 14.99,  currency: "usd",  quantity: 1,  coupon: "SUMMER-SALE",  position: 2,});
 ```
 
 ### Checkout Step Viewed
@@ -256,14 +146,7 @@ zaraz.ecommerce("Product Added", {
 JavaScript
 
 ```
-
-zaraz.ecommerce("Checkout Step Viewed", {
-
-  step: 1,
-
-});
-
-
+zaraz.ecommerce("Checkout Step Viewed", {  step: 1,});
 ```
 
 ### Order completed
@@ -271,68 +154,7 @@ zaraz.ecommerce("Checkout Step Viewed", {
 JavaScript
 
 ```
-
-zaraz.ecommerce("Order Completed", {
-
-  checkout_id: "616727740",
-
-  order_id: "817286897056801",
-
-  affiliation: "affiliate.com",
-
-  total: 30.0,
-
-  revenue: 20.0,
-
-  shipping: 3,
-
-  tax: 2,
-
-  discount: 5,
-
-  coupon: "winter-sale",
-
-  currency: "USD",
-
-  products: [
-
-    {
-
-      product_id: "999666321",
-
-      sku: "8251511",
-
-      name: "Boy’s shorts",
-
-      price: 10,
-
-      quantity: 2,
-
-      category: "shorts",
-
-    },
-
-    {
-
-      product_id: "742566131",
-
-      sku: "7251567",
-
-      name: "Blank T-shirt",
-
-      price: 5,
-
-      quantity: 2,
-
-      category: "T-shirts",
-
-    },
-
-  ],
-
-});
-
-
+zaraz.ecommerce("Order Completed", {  checkout_id: "616727740",  order_id: "817286897056801",  affiliation: "affiliate.com",  total: 30.0,  revenue: 20.0,  shipping: 3,  tax: 2,  discount: 5,  coupon: "winter-sale",  currency: "USD",  products: [    {      product_id: "999666321",      sku: "8251511",      name: "Boy’s shorts",      price: 10,      quantity: 2,      category: "shorts",    },    {      product_id: "742566131",      sku: "7251567",      name: "Blank T-shirt",      price: 5,      quantity: 2,      category: "T-shirts",    },  ],});
 ```
 
 ```json

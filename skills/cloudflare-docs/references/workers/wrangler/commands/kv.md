@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,35 +30,26 @@ Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using ve
 
 Create a new namespace
 
-* [  npm ](#tab-panel-12352)
-* [  pnpm ](#tab-panel-12353)
-* [  yarn ](#tab-panel-12354)
+* [  npm ](#tab-panel-12369)
+* [  pnpm ](#tab-panel-12370)
+* [  yarn ](#tab-panel-12371)
 
 Terminal window
 
 ```
-
 npx wrangler kv namespace create [NAMESPACE]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler kv namespace create [NAMESPACE]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler kv namespace create [NAMESPACE]
-
-
 ```
 
 * `[NAMESPACE]` ` string ` required  
@@ -95,35 +86,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Output a list of all KV namespaces associated with your account id
 
-* [  npm ](#tab-panel-12355)
-* [  pnpm ](#tab-panel-12356)
-* [  yarn ](#tab-panel-12357)
+* [  npm ](#tab-panel-12372)
+* [  pnpm ](#tab-panel-12373)
+* [  yarn ](#tab-panel-12374)
 
 Terminal window
 
 ```
-
 npx wrangler kv namespace list
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler kv namespace list
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler kv namespace list
-
-
 ```
 
 Global flags
@@ -149,35 +131,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a given namespace.
 
-* [  npm ](#tab-panel-12358)
-* [  pnpm ](#tab-panel-12359)
-* [  yarn ](#tab-panel-12360)
+* [  npm ](#tab-panel-12375)
+* [  pnpm ](#tab-panel-12376)
+* [  yarn ](#tab-panel-12377)
 
 Terminal window
 
 ```
-
 npx wrangler kv namespace delete [NAMESPACE]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler kv namespace delete [NAMESPACE]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler kv namespace delete [NAMESPACE]
-
-
 ```
 
 * `[NAMESPACE]` ` string `  
@@ -214,35 +187,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Rename a KV namespace
 
-* [  npm ](#tab-panel-12361)
-* [  pnpm ](#tab-panel-12362)
-* [  yarn ](#tab-panel-12363)
+* [  npm ](#tab-panel-12378)
+* [  pnpm ](#tab-panel-12379)
+* [  yarn ](#tab-panel-12380)
 
 Terminal window
 
 ```
-
 npx wrangler kv namespace rename [OLD-NAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler kv namespace rename [OLD-NAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler kv namespace rename [OLD-NAME]
-
-
 ```
 
 * `[OLD-NAME]` ` string `  
@@ -287,35 +251,26 @@ Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using ve
 
 Write a single key/value pair to the given namespace
 
-* [  npm ](#tab-panel-12364)
-* [  pnpm ](#tab-panel-12365)
-* [  yarn ](#tab-panel-12366)
+* [  npm ](#tab-panel-12381)
+* [  pnpm ](#tab-panel-12382)
+* [  yarn ](#tab-panel-12383)
 
 Terminal window
 
 ```
-
 npx wrangler kv key put [KEY] [VALUE]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler kv key put [KEY] [VALUE]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler kv key put [KEY] [VALUE]
-
-
 ```
 
 * `[KEY]` ` string ` required  
@@ -366,35 +321,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Output a list of all keys in a given namespace
 
-* [  npm ](#tab-panel-12367)
-* [  pnpm ](#tab-panel-12368)
-* [  yarn ](#tab-panel-12369)
+* [  npm ](#tab-panel-12384)
+* [  pnpm ](#tab-panel-12385)
+* [  yarn ](#tab-panel-12386)
 
 Terminal window
 
 ```
-
 npx wrangler kv key list
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler kv key list
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler kv key list
-
-
 ```
 
 * `--binding` ` string `  
@@ -435,35 +381,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Read a single value by key from the given namespace
 
-* [  npm ](#tab-panel-12370)
-* [  pnpm ](#tab-panel-12371)
-* [  yarn ](#tab-panel-12372)
+* [  npm ](#tab-panel-12387)
+* [  pnpm ](#tab-panel-12388)
+* [  yarn ](#tab-panel-12389)
 
 Terminal window
 
 ```
-
 npx wrangler kv key get [KEY]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler kv key get [KEY]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler kv key get [KEY]
-
-
 ```
 
 * `[KEY]` ` string ` required  
@@ -506,35 +443,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Remove a single key value pair from the given namespace
 
-* [  npm ](#tab-panel-12373)
-* [  pnpm ](#tab-panel-12374)
-* [  yarn ](#tab-panel-12375)
+* [  npm ](#tab-panel-12390)
+* [  pnpm ](#tab-panel-12391)
+* [  yarn ](#tab-panel-12392)
 
 Terminal window
 
 ```
-
 npx wrangler kv key delete [KEY]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler kv key delete [KEY]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler kv key delete [KEY]
-
-
 ```
 
 * `[KEY]` ` string ` required  
@@ -587,35 +515,26 @@ Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using ve
 
 Gets multiple key-value pairs from a namespace
 
-* [  npm ](#tab-panel-12376)
-* [  pnpm ](#tab-panel-12377)
-* [  yarn ](#tab-panel-12378)
+* [  npm ](#tab-panel-12393)
+* [  pnpm ](#tab-panel-12394)
+* [  yarn ](#tab-panel-12395)
 
 Terminal window
 
 ```
-
 npx wrangler kv bulk get [FILENAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler kv bulk get [FILENAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler kv bulk get [FILENAME]
-
-
 ```
 
 * `[FILENAME]` ` string ` required  
@@ -656,35 +575,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Upload multiple key-value pairs to a namespace
 
-* [  npm ](#tab-panel-12379)
-* [  pnpm ](#tab-panel-12380)
-* [  yarn ](#tab-panel-12381)
+* [  npm ](#tab-panel-12396)
+* [  pnpm ](#tab-panel-12397)
+* [  yarn ](#tab-panel-12398)
 
 Terminal window
 
 ```
-
 npx wrangler kv bulk put [FILENAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler kv bulk put [FILENAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler kv bulk put [FILENAME]
-
-
 ```
 
 * `[FILENAME]` ` string ` required  
@@ -731,35 +641,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete multiple key-value pairs from a namespace
 
-* [  npm ](#tab-panel-12382)
-* [  pnpm ](#tab-panel-12383)
-* [  yarn ](#tab-panel-12384)
+* [  npm ](#tab-panel-12399)
+* [  pnpm ](#tab-panel-12400)
+* [  yarn ](#tab-panel-12401)
 
 Terminal window
 
 ```
-
 npx wrangler kv bulk delete [FILENAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler kv bulk delete [FILENAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler kv bulk delete [FILENAME]
-
-
 ```
 
 * `[FILENAME]` ` string ` required  

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/web-analytics/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,18 +19,7 @@ Cloudflare Web Analytics can automatically track user interactions on Single Pag
 If you want to disable the automatic tracking for SPAs, you can do so by adding the `spa` option with a value of `false` in the data attribute of the script tag, as shown below:
 
 ```
-
-<script
-
-  defer
-
-  src="https://static.cloudflareinsights.com/beacon.min.js"
-
-  data-cf-beacon=' {"token": "42e216b9090ru59384ygu891dce9eecde", "spa": false} '
-
-></script>
-
-
+<script  defer  src="https://static.cloudflareinsights.com/beacon.min.js"  data-cf-beacon=' {"token": "42e216b9090ru59384ygu891dce9eecde", "spa": false} '></script>
 ```
 
 ### Google Tag Manager (GTM)
@@ -38,16 +27,7 @@ If you want to disable the automatic tracking for SPAs, you can do so by adding 
 If you are using Google Tag Manager (GTM), you can disable SPA tracking by passing the spa option via the query string in the script URL:
 
 ```
-
-<script
-
-  defer
-
-  src="https://static.cloudflareinsights.com/beacon.min.js?token=42e216b9090ru59384ygu891dce9eecde&spa=false"
-
-></script>
-
-
+<script  defer  src="https://static.cloudflareinsights.com/beacon.min.js?token=42e216b9090ru59384ygu891dce9eecde&spa=false"></script>
 ```
 
 ```json

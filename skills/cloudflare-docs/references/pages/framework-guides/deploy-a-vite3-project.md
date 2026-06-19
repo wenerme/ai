@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,27 +33,10 @@ pnpm create vite@latest
 ```
 
 ```
-
-✔ Project name: … vite-on-pages
-
-✔ Select a framework: › vue
-
-✔ Select a variant: › vue
-
-
+✔ Project name: … vite-on-pages✔ Select a framework: › vue✔ Select a variant: › vue
 Scaffolding project in ~/src/vite-on-pages...
-
-
 Done. Now run:
-
-
-  cd vite-on-pages
-
-  npm install
-
-  npm run dev
-
-
+  cd vite-on-pages  npm install  npm run dev
 ```
 
 You will now create a new GitHub repository, and push your code using [GitHub's gh command line (CLI) ↗](https://cli.github.com):
@@ -61,64 +44,37 @@ You will now create a new GitHub repository, and push your code using [GitHub's 
 Terminal window
 
 ```
-
 git init
-
-
 ```
 
 ```
-
 Initialized empty Git repository in ~/vite-vue3-on-pages/.git/
-
-
 ```
 
 Terminal window
 
 ```
-
-git add .
-
-git commit -m "Initial commit"                                           vite-vue3-on-pages/git/main +
-
-
+git add .git commit -m "Initial commit"                                           vite-vue3-on-pages/git/main +
 ```
 
 ```
-
-[main (root-commit) dad4177] Initial commit
-
- 14 files changed, 1452 insertions(+)
-
-
+[main (root-commit) dad4177] Initial commit 14 files changed, 1452 insertions(+)
 ```
 
 Terminal window
 
 ```
-
 gh repo create
-
-
 ```
 
 ```
-
-✓ Created repository kristianfreeman/vite-vue3-on-pages on GitHub
-
-✓ Added remote git@github.com:kristianfreeman/vite-vue3-on-pages.git
-
-
+✓ Created repository kristianfreeman/vite-vue3-on-pages on GitHub✓ Added remote git@github.com:kristianfreeman/vite-vue3-on-pages.git
 ```
 
 Terminal window
 
 ```
-
 git push
-
-
 ```
 
 To deploy your site to Pages:

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,47 +31,15 @@ The top-level meeting component that orchestrates the entire meeting UI. Manages
 ### Basic Usage
 
 ```
-
 import { RtkMeeting } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkMeeting meeting={meeting} />;
-
-}
-
-
+function MyComponent() {  return <RtkMeeting meeting={meeting} />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkMeeting } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkMeeting
-
-      meeting={meeting}
-
-      applyDesignSystem={true}
-
-      showSetupScreen={true}
-
-      iOSScreenshareEnabled={false}
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkMeeting      meeting={meeting}      applyDesignSystem={true}      showSetupScreen={true}      iOSScreenshareEnabled={false}    />  );}
 ```
 
 ```json

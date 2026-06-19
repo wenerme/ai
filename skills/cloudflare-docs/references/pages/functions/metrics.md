@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -46,11 +46,11 @@ Function invocation statuses indicate whether a Function executed successfully o
 
 | Invocation status      | Definition                                            | Workers error code | Graph QL field       |
 | ---------------------- | ----------------------------------------------------- | ------------------ | -------------------- |
-| Success                | Worker script executed successfully                   | success            |                      |
-| Client disconnected    | HTTP client disconnected before the request completed | clientDisconnected |                      |
+| Success                | Worker script executed successfully                   |                    | success              |
+| Client disconnected    | HTTP client disconnected before the request completed |                    | clientDisconnected   |
 | Script threw exception | Worker script threw an unhandled JavaScript exception | 1101               | scriptThrewException |
 | Exceeded resources^1   | Worker script exceeded runtime limits                 | 1102, 1027         | exceededResources    |
-| Internal error^2       | Workers runtime encountered an error                  | internalError      |                      |
+| Internal error^2       | Workers runtime encountered an error                  |                    | internalError        |
 
 1. The Exceeded Resources status may appear when the Worker exceeds a [runtime limit](https://developers.cloudflare.com/workers/platform/limits/#request-and-response-limits). The most common cause is excessive CPU time, but is also caused by a script exceeding startup time or free tier limits.
 2. The Internal Error status may appear when the Workers runtime fails to process a request due to an internal failure in our system. These errors are not caused by any issue with the Function code nor any resource limit. While requests with Internal Error status are rare, some may appear during normal operation. These requests are not counted towards usage for billing purposes. If you notice an elevated rate of requests with Internal Error status, review [www.cloudflarestatus.com ↗](http://www.cloudflarestatus.com).

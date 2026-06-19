@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -56,135 +56,15 @@ Some filters, like `date`, can be used with operators, such as `gt` (greater tha
 GraphQL request
 
 ```
-
-query StreamGetMinutesExample($accountTag: string!, $start: Date, $end: Date) {
-
-  viewer {
-
-    accounts(filter: { accountTag: $accountTag }) {
-
-      streamMinutesViewedAdaptiveGroups(
-
-        filter: { date_geq: $start, date_lt: $end }
-
-        orderBy: [sum_minutesViewed_DESC]
-
-        limit: 100
-
-      ) {
-
-        sum {
-
-          minutesViewed
-
-        }
-
-        dimensions {
-
-          uid
-
-          clientCountryName
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
+query StreamGetMinutesExample($accountTag: string!, $start: Date, $end: Date) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      streamMinutesViewedAdaptiveGroups(        filter: { date_geq: $start, date_lt: $end }        orderBy: [sum_minutesViewed_DESC]        limit: 100      ) {        sum {          minutesViewed        }        dimensions {          uid          clientCountryName        }      }    }  }}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAygFwmAhgWwOJgQWQJYB2ICYAzgKIAe6ADgDZgAUAJCgMZsD2IBCAKigDmALhikkhQQEIANDGbiUEBKIAiKEnOZgCAEzUawAShgBvAFAwYANzxgA7pDOWrMdlx4JSjAGZ46JBCipm4c3LwCIvLu4fxCMAC+JhauruLI6PhEJKQAanaOugCCuig0CHjWYBgQ3DTeLqlWfgGQwTClJAD6gmDAogoISghynWBdAQM6uomNTZwQupAAQlCiANqkIGhdaITEZPkOYLpdquRwAMIAunOpdHh7KjAAjAAMb3cwyV9WW2jOJpNPbZQ4FE6-WZAqy6R46Uh4TgEUiA6FWEB4XSQqxsB46BCXWLQABy6DAkISX0pqWpswSQA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXsICMAhiACm8ACZc+gkeIDsIAL5A)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAygFwmAhgWwOJgQWQJYB2ICYAzgKIAe6ADgDZgAUAJCgMZsD2IBCAKigDmALhikkhQQEIANDGbiUEBKIAiKEnOZgCAEzUawAShgBvAFAwYANzxgA7pDOWrMdlx4JSjAGZ46JBCipm4c3LwCIvLu4fxCMAC+JhauruLI6PhEJKQAanaOugCCuig0CHjWYBgQ3DTeLqlWfgGQwTClJAD6gmDAogoISghynWBdAQM6uomNTZwQupAAQlCiANqkIGhdaITEZPkOYLpdquRwAMIAunOpdHh7KjAAjAAMb3cwyV9WW2jOJpNPbZQ4FE6-WZAqy6R46Uh4TgEUiA6FWEB4XSQqxsB46BCXWLQABy6DAkISX0pqWpswSQA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXsICMAdgYgApvAAmXPoJHiAHCAC+QA)
 
 GraphQL response
 
 ```
-
-{
-
-  "data": {
-
-    "viewer": {
-
-      "accounts": [
-
-        {
-
-          "streamMinutesViewedAdaptiveGroups": [
-
-            {
-
-              "dimensions": {
-
-                "clientCountryName": "US",
-
-                "uid": "73c514082b154945a753d0011e9d7525"
-
-              },
-
-              "sum": {
-
-                "minutesViewed": 2234
-
-              }
-
-            },
-
-            {
-
-              "dimensions": {
-
-                "clientCountryName": "CN",
-
-                "uid": "73c514082b154945a753d0011e9d7525"
-
-              },
-
-              "sum": {
-
-                "minutesViewed": 700
-
-              }
-
-            },
-
-            {
-
-              "dimensions": {
-
-                "clientCountryName": "IN",
-
-                "uid": "73c514082b154945a753d0011e9d7525"
-
-              },
-
-              "sum": {
-
-                "minutesViewed": 553
-
-              }
-
-            }
-
-          ]
-
-        }
-
-      ]
-
-    }
-
-  },
-
-  "errors": null
-
-}
-
-
+{  "data": {    "viewer": {      "accounts": [        {          "streamMinutesViewedAdaptiveGroups": [            {              "dimensions": {                "clientCountryName": "US",                "uid": "73c514082b154945a753d0011e9d7525"              },              "sum": {                "minutesViewed": 2234              }            },            {              "dimensions": {                "clientCountryName": "CN",                "uid": "73c514082b154945a753d0011e9d7525"              },              "sum": {                "minutesViewed": 700              }            },            {              "dimensions": {                "clientCountryName": "IN",                "uid": "73c514082b154945a753d0011e9d7525"              },              "sum": {                "minutesViewed": 553              }            }          ]        }      ]    }  },  "errors": null}
 ```
 
 ## Pagination
@@ -196,59 +76,10 @@ The query below will return data for 2 videos that follow video UID `5646153f8de
 GraphQL query
 
 ```
-
-query StreamPaginationExample(
-
-  $accountTag: string!
-
-  $start: Date
-
-  $end: Date
-
-  $uId: string
-
-) {
-
-  viewer {
-
-    accounts(filter: { accountTag: $accountTag }) {
-
-      videoPlaybackEventsAdaptiveGroups(
-
-        filter: { date_geq: $start, date_lt: $end, uid_gt: $uId }
-
-        orderBy: [uid_ASC]
-
-        limit: 2
-
-      ) {
-
-        count
-
-        sum {
-
-          timeViewedMinutes
-
-        }
-
-        dimensions {
-
-          uid
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
+query StreamPaginationExample(  $accountTag: string!  $start: Date  $end: Date  $uId: string) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      videoPlaybackEventsAdaptiveGroups(        filter: { date_geq: $start, date_lt: $end, uid_gt: $uId }        orderBy: [uid_ASC]        limit: 2      ) {        count        sum {          timeViewedMinutes        }        dimensions {          uid        }      }    }  }}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAygFwmAhgWwAooOYEsB2KCuA9vgKIAe6ADgDZgAUAUDDACQoDGXJI+CACo4AXDADOSAtgCErDpJQQEYgCJEw89mHwATNRq0gAkvolT82ZgEoYAb3kA3XGADuke-Lbde-BOMYAM1w6BEgxOxgfPgFhbDFOHhihHBgAX1sHNmyYZ10wEgw6FCgAI24Aa3JHHX8AQV0UGmIagHEIPhoArxyYYNDw+xhGsIB9bDBgBMVlABphjVHQhJ1deZBcXXGVDhNddJ6ckgh8iAAhKDEAbQ2turgAYQBdQ+y6XDRcHYAmV8zXti+AQAiQgNCeXq9YhoMAANRc7l0AFkCCAwuIQWkQboPjpxKR8OIIZDsrdMa8sTlKQc0kA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXsICMAhiACm8ACZc+gkeIDsU2FQXYArAIAsAsToDMAMwAcc6WDGqz+-XJ37uYV9NUCIZhQF8gA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAygFwmAhgWwAooOYEsB2KCuA9vgKIAe6ADgDZgAUAUDDACQoDGXJI+CACo4AXDADOSAtgCErDpJQQEYgCJEw89mHwATNRq0gAkvolT82ZgEoYAb3kA3XGADuke-Lbde-BOMYAM1w6BEgxOxgfPgFhbDFOHhihHBgAX1sHNmyYZ10wEgw6FCgAI24Aa3JHHX8AQV0UGmIagHEIPhoArxyYYNDw+xhGsIB9bDBgBMVlABphjVHQhJ1deZBcXXGVDhNddJ6ckgh8iAAhKDEAbQ2turgAYQBdQ+y6XDRcHYAmV8zXti+AQAiQgNCeXq9YhoMAANRc7l0AFkCCAwuIQWkQboPjpxKR8OIIZDsrdMa8sTlKQc0kA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXsICMAdgYgApvAAmXPoJHiAHNNhVF2AKwCALALG6AzADM18mWEnmDB+boPcwLmRIERzigL5A)
 
 Here are the steps to implementing pagination:
 

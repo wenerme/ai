@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,35 +27,18 @@ A component which renders an image message.
 ### Basic Usage
 
 ```
-
 <rtk-image-message-view></rtk-image-message-view>
-
-
 ```
 
 ### With Properties
 
 ```
-
-<rtk-image-message-view
-
- url="example">
-
-</rtk-image-message-view>
-
-
+<rtk-image-message-view url="example"></rtk-image-message-view>
 ```
 
 ```
-
-<script>
-
-  const el = document.querySelector("rtk-image-message-view");
-
-
+<script>  const el = document.querySelector("rtk-image-message-view");
 </script>
-
-
 ```
 
 ```json

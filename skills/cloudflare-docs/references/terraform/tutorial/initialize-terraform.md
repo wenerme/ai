@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/terraform/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,71 +30,12 @@ Create a file named `main.tf`, filling in your own values for the [API token](ht
 Terminal window
 
 ```
-
-terraform {
-
-  required_providers {
-
-    cloudflare = {
-
-      source  = "cloudflare/cloudflare"
-
-      version = "~> 5"
-
-    }
-
-  }
-
-}
-
-
-provider "cloudflare" {
-
-  api_token = "<YOUR_API_TOKEN>"
-
-}
-
-
-variable "zone_id" {
-
-  default = "<YOUR_ZONE_ID>"
-
-}
-
-
-variable "account_id" {
-
-  default = "<YOUR_ACCOUNT_ID>"
-
-}
-
-
-variable "domain" {
-
-  default = "<YOUR_DOMAIN>"
-
-}
-
-
-resource "cloudflare_dns_record" "www" {
-
-  zone_id = "<YOUR_ZONE_ID>"
-
-  name    = "www"
-
-  content = "203.0.113.10"
-
-  type    = "A"
-
-  ttl     = 1
-
-  proxied = true
-
-  comment = "Domain verification record"
-
-}
-
-
+terraform {  required_providers {    cloudflare = {      source  = "cloudflare/cloudflare"      version = "~> 5"    }  }}
+provider "cloudflare" {  api_token = "<YOUR_API_TOKEN>"}
+variable "zone_id" {  default = "<YOUR_ZONE_ID>"}
+variable "account_id" {  default = "<YOUR_ACCOUNT_ID>"}
+variable "domain" {  default = "<YOUR_DOMAIN>"}
+resource "cloudflare_dns_record" "www" {  zone_id = "<YOUR_ZONE_ID>"  name    = "www"  content = "203.0.113.10"  type    = "A"  ttl     = 1  proxied = true  comment = "Domain verification record"}
 ```
 
 Warning
@@ -108,10 +49,7 @@ Initialize Terraform to download the Cloudflare provider:
 Terminal window
 
 ```
-
 terraform init
-
-
 ```
 
 Review what will be created:
@@ -119,66 +57,14 @@ Review what will be created:
 Terminal window
 
 ```
-
 terraform plan
-
-
 ```
 
 ```
-
-Terraform used the selected providers to generate the following execution plan. Resource actions are
-
-indicated with the following symbols:
-
-  + create
-
-
+Terraform used the selected providers to generate the following execution plan. Resource actions areindicated with the following symbols:  + create
 Terraform will perform the following actions:
-
-
-  # cloudflare_dns_record.www will be created
-
-  + resource "cloudflare_dns_record" "www" {
-
-      + comment             = "Domain verification record"
-
-      + comment_modified_on = (known after apply)
-
-      + content             = "203.0.113.10"
-
-      + created_on          = (known after apply)
-
-      + id                  = (known after apply)
-
-      + meta                = (known after apply)
-
-      + modified_on         = (known after apply)
-
-      + name                = "www"
-
-      + proxiable           = (known after apply)
-
-      + proxied             = true
-
-      + settings            = (known after apply)
-
-      + tags                = (known after apply)
-
-      + tags_modified_on    = (known after apply)
-
-      + ttl                 = 1
-
-      + type                = "A"
-
-      + zone_id             = "<YOUR_ZONE_ID>"
-
-    }
-
-
+  # cloudflare_dns_record.www will be created  + resource "cloudflare_dns_record" "www" {      + comment             = "Domain verification record"      + comment_modified_on = (known after apply)      + content             = "203.0.113.10"      + created_on          = (known after apply)      + id                  = (known after apply)      + meta                = (known after apply)      + modified_on         = (known after apply)      + name                = "www"      + proxiable           = (known after apply)      + proxied             = true      + settings            = (known after apply)      + tags                = (known after apply)      + tags_modified_on    = (known after apply)      + ttl                 = 1      + type                = "A"      + zone_id             = "<YOUR_ZONE_ID>"    }
 Plan: 1 to add, 0 to change, 0 to destroy.
-
-
 ```
 
 ## 3\. Apply and verify
@@ -188,86 +74,20 @@ Apply your configuration:
 Terminal window
 
 ```
-
 terraform apply
-
-
 ```
 
 Type `yes` when prompted.
 
 ```
-
-Terraform used the selected providers to generate the following execution plan. Resource actions are
-
-indicated with the following symbols:
-
-  + create
-
-
+Terraform used the selected providers to generate the following execution plan. Resource actions areindicated with the following symbols:  + create
 Terraform will perform the following actions:
-
-
-  # cloudflare_dns_record.www will be created
-
-  + resource "cloudflare_dns_record" "www" {
-
-      + comment             = "Domain verification record"
-
-      + comment_modified_on = (known after apply)
-
-      + content             = "203.0.113.10"
-
-      + created_on          = (known after apply)
-
-      + id                  = (known after apply)
-
-      + meta                = (known after apply)
-
-      + modified_on         = (known after apply)
-
-      + name                = "www"
-
-      + proxiable           = (known after apply)
-
-      + proxied             = true
-
-      + settings            = (known after apply)
-
-      + tags                = (known after apply)
-
-      + tags_modified_on    = (known after apply)
-
-      + ttl                 = 1
-
-      + type                = "A"
-
-      + zone_id             = "<YOUR_ZONE_ID>"
-
-    }
-
-
+  # cloudflare_dns_record.www will be created  + resource "cloudflare_dns_record" "www" {      + comment             = "Domain verification record"      + comment_modified_on = (known after apply)      + content             = "203.0.113.10"      + created_on          = (known after apply)      + id                  = (known after apply)      + meta                = (known after apply)      + modified_on         = (known after apply)      + name                = "www"      + proxiable           = (known after apply)      + proxied             = true      + settings            = (known after apply)      + tags                = (known after apply)      + tags_modified_on    = (known after apply)      + ttl                 = 1      + type                = "A"      + zone_id             = "<YOUR_ZONE_ID>"    }
 Plan: 1 to add, 0 to change, 0 to destroy.
-
-
-Do you want to perform these actions?
-
-  Terraform will perform the actions described above.
-
-  Only 'yes' will be accepted to approve.
-
-
+Do you want to perform these actions?  Terraform will perform the actions described above.  Only 'yes' will be accepted to approve.
   Enter a value: yes
-
-
-cloudflare_dns_record.www: Creating...
-
-cloudflare_dns_record.www: Creation complete after 0s
-
-
+cloudflare_dns_record.www: Creating...cloudflare_dns_record.www: Creation complete after 0s
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
-
-
 ```
 
 After creation, verify the DNS record:
@@ -275,10 +95,7 @@ After creation, verify the DNS record:
 Terminal window
 
 ```
-
 dig www.example.com
-
-
 ```
 
 Test the web server response:
@@ -286,17 +103,11 @@ Test the web server response:
 Terminal window
 
 ```
-
 curl https://www.example.com
-
-
 ```
 
 ```
-
 Hello, this is 203.0.113.10!
-
-
 ```
 
 To see the full results returned from the API call:
@@ -304,15 +115,12 @@ To see the full results returned from the API call:
 Terminal window
 
 ```
-
 terraform show
-
-
 ```
 
 You can also check the Cloudflare dashboard and go to the **DNS** \> **Records** page.
 
-[ Go to **Account home** ](https://dash.cloudflare.com/?to=/:account/home) 
+[ Go to **Account home** ](https://dash.cloudflare.com/?to=/:account/home)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/tutorial/initialize-terraform/#page","headline":"Introduction to Terraform init · Cloudflare Terraform docs","description":"This tutorial shows you how to get started with Terraform. You will create a DNS record pointing www.example.com to a web server at 203.0.113.10.","url":"https://developers.cloudflare.com/terraform/tutorial/initialize-terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

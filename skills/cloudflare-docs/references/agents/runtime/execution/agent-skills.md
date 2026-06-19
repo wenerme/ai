@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -24,100 +24,24 @@ The skills engine lives in `agents/skills` and is framework-agnostic, so any age
 
 Bundled skills are usually imported with the Agents Vite plugin:
 
-* [  JavaScript ](#tab-panel-6017)
-* [  TypeScript ](#tab-panel-6018)
+* [  JavaScript ](#tab-panel-6091)
+* [  TypeScript ](#tab-panel-6092)
 
 JavaScript
 
 ```
-
-import { Think, skills } from "@cloudflare/think";
-
-import bundledSkills from "agents:skills"; // resolves to ./skills next to this file
-
-
-export class MyAgent extends Think {
-
-  getSkills() {
-
-    return [
-
-      bundledSkills,
-
-      skills.r2(this.env.SKILLS_BUCKET, { prefix: "skills/" }),
-
-    ];
-
-  }
-
-
-  getSkillScriptRunner() {
-
-    return skills.runner({
-
-      loader: this.env.LOADER,
-
-      workspaceInstance: this.workspace,
-
-    });
-
-  }
-
-}
-
-
+import { Think, skills } from "@cloudflare/think";import bundledSkills from "agents:skills"; // resolves to ./skills next to this file
+export class MyAgent extends Think {  getSkills() {    return [      bundledSkills,      skills.r2(this.env.SKILLS_BUCKET, { prefix: "skills/" }),    ];  }
+  getSkillScriptRunner() {    return skills.runner({      loader: this.env.LOADER,      workspaceInstance: this.workspace,    });  }}
 ```
 
 TypeScript
 
 ```
-
-import { Think, skills } from "@cloudflare/think";
-
-import bundledSkills from "agents:skills"; // resolves to ./skills next to this file
-
-
-type Env = {
-
-  AI: Ai;
-
-  LOADER: WorkerLoader;
-
-  SKILLS_BUCKET: R2Bucket;
-
-};
-
-
-export class MyAgent extends Think<Env> {
-
-  getSkills() {
-
-    return [
-
-      bundledSkills,
-
-      skills.r2(this.env.SKILLS_BUCKET, { prefix: "skills/" }),
-
-    ];
-
-  }
-
-
-  getSkillScriptRunner() {
-
-    return skills.runner({
-
-      loader: this.env.LOADER,
-
-      workspaceInstance: this.workspace,
-
-    });
-
-  }
-
-}
-
-
+import { Think, skills } from "@cloudflare/think";import bundledSkills from "agents:skills"; // resolves to ./skills next to this file
+type Env = {  AI: Ai;  LOADER: WorkerLoader;  SKILLS_BUCKET: R2Bucket;};
+export class MyAgent extends Think<Env> {  getSkills() {    return [      bundledSkills,      skills.r2(this.env.SKILLS_BUCKET, { prefix: "skills/" }),    ];  }
+  getSkillScriptRunner() {    return skills.runner({      loader: this.env.LOADER,      workspaceInstance: this.workspace,    });  }}
 ```
 
 `agents:skills` resolves to a `./skills` directory next to the importing file; use `agents:skills/<dir>` to point at a differently named sibling directory. The `agents:skills` import is typed by ambient declarations that ship with `agents`, so importing `Think` in the same file brings the type into scope (for a file that imports only the specifier, add `/// <reference types="agents/skills-module" />`). If you are not using the Agents Vite plugin, build a source with `skills.fromManifest(...)` instead.
@@ -127,14 +51,7 @@ Sources are applied in order; the first source to register a skill name wins, an
 The imported directory should contain one child directory per skill:
 
 ```
-
-src/skills/release-notes/SKILL.md
-
-src/skills/release-notes/scripts/format-release-notes.ts
-
-src/skills/release-notes/references/style-guide.md
-
-
+src/skills/release-notes/SKILL.mdsrc/skills/release-notes/scripts/format-release-notes.tssrc/skills/release-notes/references/style-guide.md
 ```
 
 ## Skill tools
@@ -153,83 +70,39 @@ Skills are not always-on system prompt text. Use `getSystemPrompt()` or a Sessio
 
 Script execution is opt-in and requires a Worker Loader binding:
 
-* [  wrangler.jsonc ](#tab-panel-6011)
-* [  wrangler.toml ](#tab-panel-6012)
+* [  wrangler.jsonc ](#tab-panel-6085)
+* [  wrangler.toml ](#tab-panel-6086)
 
 JSONC
 
 ```
-
-{
-
-  "worker_loaders": [{ "binding": "LOADER" }]
-
-}
-
-
+{  "worker_loaders": [{ "binding": "LOADER" }]}
 ```
 
 TOML
 
 ```
-
-[[worker_loaders]]
-
-binding = "LOADER"
-
-
+[[worker_loaders]]binding = "LOADER"
 ```
 
 `skills.runner()` is experimental and runs JavaScript, TypeScript, Python, and Bash scripts under `scripts/`. TypeScript is compiled with `@cloudflare/worker-bundler`; Python runs as Python Dynamic Workers; Bash runs through `just-bash`.
 
 JavaScript and TypeScript scripts are function-style:
 
-* [  JavaScript ](#tab-panel-6013)
-* [  TypeScript ](#tab-panel-6014)
+* [  JavaScript ](#tab-panel-6087)
+* [  TypeScript ](#tab-panel-6088)
 
 JavaScript
 
 ```
-
-export default async function run(input, ctx) {
-
-  const guide = ctx.files["references/style-guide.md"]; // bundled text resources
-
-  const docs = await ctx.workspace.readFile("README.md"); // gated by permission
-
-  const summary = await ctx.tools.call("summarize", { input }); // explicit tools
-
-  await ctx.output.writeFile("notes.md", summary); // scratch artifact
-
-  return { ok: true };
-
-}
-
-
+export default async function run(input, ctx) {  const guide = ctx.files["references/style-guide.md"]; // bundled text resources  const docs = await ctx.workspace.readFile("README.md"); // gated by permission  const summary = await ctx.tools.call("summarize", { input }); // explicit tools  await ctx.output.writeFile("notes.md", summary); // scratch artifact  return { ok: true };}
 ```
 
 TypeScript
 
 ```
-
 import type { SkillRunContext } from "@cloudflare/think";
-
-
-export default async function run(input: unknown, ctx: SkillRunContext) {
-
-  const guide = ctx.files["references/style-guide.md"]; // bundled text resources
-
-  const docs = await ctx.workspace.readFile("README.md"); // gated by permission
-
-  const summary = await ctx.tools.call("summarize", { input }); // explicit tools
-
-  await ctx.output.writeFile("notes.md", summary); // scratch artifact
-
-  return { ok: true };
-
-}
-
-
+export default async function run(input: unknown, ctx: SkillRunContext) {  const guide = ctx.files["references/style-guide.md"]; // bundled text resources  const docs = await ctx.workspace.readFile("README.md"); // gated by permission  const summary = await ctx.tools.call("summarize", { input }); // explicit tools  await ctx.output.writeFile("notes.md", summary); // scratch artifact  return { ok: true };}
 ```
 
 `ctx` is `{ skill, files, workspace, tools, output }`. `ctx.files` holds bundled text resources by relative path, `ctx.workspace` is gated by the workspace permission, `ctx.tools` only exposes tools the runner was given, and `ctx.output.writeFile(name, content)` returns scratch artifacts to the model (it does not mutate the workspace). Python and Bash use the path-based contract instead: `/input.json`, `/context.json`, bundled resources under `/skill`, and `/output` for artifacts.
@@ -238,47 +111,21 @@ Passing `workspaceInstance` gives scripts read-only workspace access by default.
 
 ## Example
 
-* [  JavaScript ](#tab-panel-6015)
-* [  TypeScript ](#tab-panel-6016)
+* [  JavaScript ](#tab-panel-6089)
+* [  TypeScript ](#tab-panel-6090)
 
 JavaScript
 
 ```
-
 import { Think, skills } from "@cloudflare/think";
-
-
-export class SkillsAgent extends Think {
-
-  getSkills() {
-
-    return [skills.r2(this.env.SKILLS_BUCKET, { prefix: "skills/" })];
-
-  }
-
-}
-
-
+export class SkillsAgent extends Think {  getSkills() {    return [skills.r2(this.env.SKILLS_BUCKET, { prefix: "skills/" })];  }}
 ```
 
 TypeScript
 
 ```
-
 import { Think, skills } from "@cloudflare/think";
-
-
-export class SkillsAgent extends Think<Env> {
-
-  getSkills() {
-
-    return [skills.r2(this.env.SKILLS_BUCKET, { prefix: "skills/" })];
-
-  }
-
-}
-
-
+export class SkillsAgent extends Think<Env> {  getSkills() {    return [skills.r2(this.env.SKILLS_BUCKET, { prefix: "skills/" })];  }}
 ```
 
 Refer to the [agent-skills example ↗](https://github.com/cloudflare/agents/tree/main/examples/agent-skills) for bundled skills, R2-backed skills, and script execution.

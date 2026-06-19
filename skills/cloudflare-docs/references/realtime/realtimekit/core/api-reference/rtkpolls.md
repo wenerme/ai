@@ -5,7 +5,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -14,9 +14,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 The RTKPolls module consists of the polls that have been created in the meeting.
 
 * [RTKPolls](#module%5FRTKPolls)  
-   * [.items](#module%5FRTKPolls+items)  
-   * [.create(question, options, anonymous, hideVotes)](#module%5FRTKPolls+create)  
-   * [.vote(pollId, index)](#module%5FRTKPolls+vote)
+  * [.items](#module%5FRTKPolls+items)
+  * [.create(question, options, anonymous, hideVotes)](#module%5FRTKPolls+create)
+  * [.vote(pollId, index)](#module%5FRTKPolls+vote)
 
 ### meeting.polls.items
 
@@ -30,12 +30,12 @@ Creates a poll in the meeting.
 
 **Kind**: instance method of [RTKPolls](#module%5FRTKPolls)
 
-| Param     | Default                               | Description                                |
-| --------- | ------------------------------------- | ------------------------------------------ |
-| question  | The question that is to be voted for. |                                            |
-| options   | The options of the poll.              |                                            |
-| anonymous | false                                 | If true, the poll votes are anonymous.     |
-| hideVotes | false                                 | If true, the votes on the poll are hidden. |
+| Param     | Default | Description                                |
+| --------- | ------- | ------------------------------------------ |
+| question  |         | The question that is to be voted for.      |
+| options   |         | The options of the poll.                   |
+| anonymous | false   | If true, the poll votes are anonymous.     |
+| hideVotes | false   | If true, the votes on the poll are hidden. |
 
 ### meeting.polls.vote(pollId, index)
 

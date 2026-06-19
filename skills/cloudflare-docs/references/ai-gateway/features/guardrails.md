@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,9 +28,10 @@ Guardrails proactively monitor interactions between users and AI models, giving 
 AI Gateway inspects all interactions in real time by evaluating content against predefined safety parameters. Guardrails work by:
 
 1. Intercepting interactions: AI Gateway proxies requests and responses, sitting between the user and the AI model.
-2. Inspecting content:  
-   * User prompts: AI Gateway checks prompts against safety parameters (for example, violence, hate, or sexual content). Based on your settings, prompts can be flagged or blocked before reaching the model.  
-   * Model responses: Once processed, the AI model response is inspected. If hazardous content is detected, it can be flagged or blocked before being delivered to the user.
+2. Inspecting content:
+
+  * User prompts: AI Gateway checks prompts against safety parameters (for example, violence, hate, or sexual content). Based on your settings, prompts can be flagged or blocked before reaching the model.
+  * Model responses: Once processed, the AI model response is inspected. If hazardous content is detected, it can be flagged or blocked before being delivered to the user.
 3. Applying actions: Depending on your configuration, flagged content is logged for review, while blocked content is prevented from proceeding.
 
 ## Related resource

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -64,11 +64,12 @@ The content scanner will fully check content objects with a size up to 50 MB. Fo
 
 Notes
 
-* The AV scanner will not scan some particular types of files, namely the following:  
-   * Password-protected archives  
-   * Archives with more than three recursion levels  
-   * Archives with more than 300 files  
-   * PGP-encrypted files
+* The AV scanner will not scan some particular types of files, namely the following:
+
+  * Password-protected archives
+  * Archives with more than three recursion levels
+  * Archives with more than 300 files
+  * PGP-encrypted files
 * In rare cases, the AV scanner may time out and fail to analyze a content object. When this happens, the `cf.waf.content_scan.has_failed` field will be set to true.
 
 ## Custom scan expressions
@@ -76,10 +77,7 @@ Notes
 Sometimes, you may want to specify where to find the content objects, such as when the content is a Base64-encoded string within a JSON payload. For example:
 
 ```
-
 { "file": "<BASE64_ENCODED_STRING>" }
-
-
 ```
 
 In these situations, configure a custom scan expression to tell the content scanner where to find the content objects. For more information, refer to [Configure a custom scan expression](https://developers.cloudflare.com/waf/detections/malicious-uploads/get-started/#4-optional-configure-a-custom-scan-expression).

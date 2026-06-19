@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,10 +37,7 @@ Server-side validation is required because:
 Endpoint
 
 ```
-
 POST https://challenges.cloudflare.com/turnstile/v0/siteverify
-
-
 ```
 
 ### Request format
@@ -71,69 +68,20 @@ To ensure a successful validation, the visitor must initiate the request and sub
 
 ## Basic validation examples
 
-* [  JavaScript ](#tab-panel-11022)
-* [  PHP ](#tab-panel-11023)
-* [  Python ](#tab-panel-11024)
-* [  Java ](#tab-panel-11025)
-* [  C# ](#tab-panel-11026)
+* [  JavaScript ](#tab-panel-11039)
+* [  PHP ](#tab-panel-11040)
+* [  Python ](#tab-panel-11041)
+* [  Java ](#tab-panel-11042)
+* [  C# ](#tab-panel-11043)
 
 #### JSON
 
 JavaScript
 
 ```
-
 const SECRET_KEY = "your-secret-key";
-
-
-async function validateTurnstile(token, remoteip) {
-
-  try {
-
-    const response = await fetch(
-
-      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
-
-      {
-
-        method: "POST",
-
-        headers: {
-
-          "Content-Type": "application/json",
-
-        },
-
-        body: JSON.stringify({
-
-          secret: SECRET_KEY,
-
-          response: token,
-
-          remoteip: remoteip,
-
-        }),
-
-      },
-
-    );
-
-
-    const result = await response.json();
-
-    return result;
-
-  } catch (error) {
-
-    console.error("Turnstile validation error:", error);
-
-    return { success: false, "error-codes": ["internal-error"] };
-
-  }
-
-}
-
-
+async function validateTurnstile(token, remoteip) {  try {    const response = await fetch(      "https://challenges.cloudflare.com/turnstile/v0/siteverify",      {        method: "POST",        headers: {          "Content-Type": "application/json",        },        body: JSON.stringify({          secret: SECRET_KEY,          response: token,          remoteip: remoteip,        }),      },    );
+    const result = await response.json();    return result;  } catch (error) {    console.error("Turnstile validation error:", error);    return { success: false, "error-codes": ["internal-error"] };  }}
 ```
 
 #### Form Data
@@ -141,538 +89,71 @@ async function validateTurnstile(token, remoteip) {
 JavaScript
 
 ```
-
 const SECRET_KEY = "your-secret-key";
-
-
-async function validateTurnstile(token, remoteip) {
-
-  const formData = new FormData();
-
-  formData.append("secret", SECRET_KEY);
-
-  formData.append("response", token);
-
-  formData.append("remoteip", remoteip);
-
-
-  try {
-
-    const response = await fetch(
-
-      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
-
-      {
-
-        method: "POST",
-
-        body: formData,
-
-      },
-
-    );
-
-
-    const result = await response.json();
-
-    return result;
-
-  } catch (error) {
-
-    console.error("Turnstile validation error:", error);
-
-    return { success: false, "error-codes": ["internal-error"] };
-
-  }
-
-}
-
-
-// Usage in form handler
-
-async function handleFormSubmission(request) {
-
-  const body = await request.formData();
-
-  const token = body.get("cf-turnstile-response");
-
-  const ip =
-
-    request.headers.get("CF-Connecting-IP") ||
-
-    request.headers.get("X-Forwarded-For") ||
-
-    "unknown";
-
-
+async function validateTurnstile(token, remoteip) {  const formData = new FormData();  formData.append("secret", SECRET_KEY);  formData.append("response", token);  formData.append("remoteip", remoteip);
+  try {    const response = await fetch(      "https://challenges.cloudflare.com/turnstile/v0/siteverify",      {        method: "POST",        body: formData,      },    );
+    const result = await response.json();    return result;  } catch (error) {    console.error("Turnstile validation error:", error);    return { success: false, "error-codes": ["internal-error"] };  }}
+// Usage in form handlerasync function handleFormSubmission(request) {  const body = await request.formData();  const token = body.get("cf-turnstile-response");  const ip =    request.headers.get("CF-Connecting-IP") ||    request.headers.get("X-Forwarded-For") ||    "unknown";
   const validation = await validateTurnstile(token, ip);
-
-
-  if (validation.success) {
-
-    // Token is valid - process the form
-
-    console.log("Valid submission from:", validation.hostname);
-
-    return processForm(body);
-
-  } else {
-
-    // Token is invalid - reject the submission
-
-    console.log("Invalid token:", validation["error-codes"]);
-
-    return new Response("Invalid verification", { status: 400 });
-
-  }
-
-}
-
-
+  if (validation.success) {    // Token is valid - process the form    console.log("Valid submission from:", validation.hostname);    return processForm(body);  } else {    // Token is invalid - reject the submission    console.log("Invalid token:", validation["error-codes"]);    return new Response("Invalid verification", { status: 400 });  }}
 ```
 
 ```
-
-<?php
-
-function validateTurnstile($token, $secret, $remoteip = null) {
-
-    $url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
-
-
-    $data = [
-
-        'secret' => $secret,
-
-        'response' => $token
-
-    ];
-
-
-    if ($remoteip) {
-
-        $data['remoteip'] = $remoteip;
-
-    }
-
-
-    $options = [
-
-        'http' => [
-
-            'header' => "Content-type: application/x-www-form-urlencoded\r\n",
-
-            'method' => 'POST',
-
-            'content' => http_build_query($data)
-
-        ]
-
-    ];
-
-
-    $context = stream_context_create($options);
-
-    $response = file_get_contents($url, false, $context);
-
-
-    if ($response === FALSE) {
-
-        return ['success' => false, 'error-codes' => ['internal-error']];
-
-    }
-
-
+<?phpfunction validateTurnstile($token, $secret, $remoteip = null) {    $url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+    $data = [        'secret' => $secret,        'response' => $token    ];
+    if ($remoteip) {        $data['remoteip'] = $remoteip;    }
+    $options = [        'http' => [            'header' => "Content-type: application/x-www-form-urlencoded\r\n",            'method' => 'POST',            'content' => http_build_query($data)        ]    ];
+    $context = stream_context_create($options);    $response = file_get_contents($url, false, $context);
+    if ($response === FALSE) {        return ['success' => false, 'error-codes' => ['internal-error']];    }
     return json_decode($response, true);
-
-
 }
-
-
-// Usage
-
-$secret_key = 'your-secret-key';
-
-$token = $_POST['cf-turnstile-response'] ?? '';
-
-$remoteip = $\_SERVER['HTTP_CF_CONNECTING_IP'] ??
-
-$\_SERVER['HTTP_X_FORWARDED_FOR'] ??
-
-$\_SERVER['REMOTE_ADDR'];
-
-
+// Usage$secret_key = 'your-secret-key';$token = $_POST['cf-turnstile-response'] ?? '';$remoteip = $\_SERVER['HTTP_CF_CONNECTING_IP'] ??$\_SERVER['HTTP_X_FORWARDED_FOR'] ??$\_SERVER['REMOTE_ADDR'];
 $validation = validateTurnstile($token, $secret_key, $remoteip);
-
-
-if ($validation['success']) {
-
-// Valid token - process form
-
-echo "Form submission successful!";
-
-// Process your form data here
-
-} else {
-
-// Invalid token - show error
-
-echo "Verification failed. Please try again.";
-
-error_log('Turnstile validation failed: ' . implode(', ', $validation['error-codes']));
-
-}
-
-?>
-
-
+if ($validation['success']) {// Valid token - process formecho "Form submission successful!";// Process your form data here} else {// Invalid token - show errorecho "Verification failed. Please try again.";error_log('Turnstile validation failed: ' . implode(', ', $validation['error-codes']));}?>
 ```
 
 Python
 
 ```
-
 import requests
-
-
-def validate_turnstile(token, secret, remoteip=None):
-
-    url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify'
-
-
-    data = {
-
-        'secret': secret,
-
-        'response': token
-
-    }
-
-
-    if remoteip:
-
-        data['remoteip'] = remoteip
-
-
-    try:
-
-        response = requests.post(url, data=data, timeout=10)
-
-        response.raise_for_status()
-
-        return response.json()
-
-    except requests.RequestException as e:
-
-        print(f"Turnstile validation error: {e}")
-
-        return {'success': False, 'error-codes': ['internal-error']}
-
-
-# Usage with Flask
-
-from flask import Flask, request, jsonify
-
-
-app = Flask(__name__)
-
-SECRET_KEY = 'your-secret-key'
-
-
-@app.route('/submit-form', methods=['POST'])
-
-def submit_form():
-
-    token = request.form.get('cf-turnstile-response')
-
-    remoteip = request.headers.get('CF-Connecting-IP') or \
-
-               request.headers.get('X-Forwarded-For') or \
-
-               request.remote_addr
-
-
+def validate_turnstile(token, secret, remoteip=None):    url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify'
+    data = {        'secret': secret,        'response': token    }
+    if remoteip:        data['remoteip'] = remoteip
+    try:        response = requests.post(url, data=data, timeout=10)        response.raise_for_status()        return response.json()    except requests.RequestException as e:        print(f"Turnstile validation error: {e}")        return {'success': False, 'error-codes': ['internal-error']}
+# Usage with Flaskfrom flask import Flask, request, jsonify
+app = Flask(__name__)SECRET_KEY = 'your-secret-key'
+@app.route('/submit-form', methods=['POST'])def submit_form():    token = request.form.get('cf-turnstile-response')    remoteip = request.headers.get('CF-Connecting-IP') or \               request.headers.get('X-Forwarded-For') or \               request.remote_addr
     validation = validate_turnstile(token, SECRET_KEY, remoteip)
-
-
-    if validation['success']:
-
-        # Valid token - process form
-
-        return jsonify({'status': 'success', 'message': 'Form submitted successfully'})
-
-    else:
-
-        # Invalid token - reject submission
-
-        return jsonify({
-
-            'status': 'error',
-
-            'message': 'Verification failed',
-
-            'errors': validation['error-codes']
-
-        }), 400
-
-
+    if validation['success']:        # Valid token - process form        return jsonify({'status': 'success', 'message': 'Form submitted successfully'})    else:        # Invalid token - reject submission        return jsonify({            'status': 'error',            'message': 'Verification failed',            'errors': validation['error-codes']        }), 400
 ```
 
 ```
-
-import org.springframework.web.client.RestTemplate;
-
-import org.springframework.util.LinkedMultiValueMap;
-
-import org.springframework.util.MultiValueMap;
-
-import org.springframework.http.HttpEntity;
-
-import org.springframework.http.HttpHeaders;
-
-import org.springframework.http.MediaType;
-
-import org.springframework.http.ResponseEntity;
-
-
-@Service
-
-public class TurnstileService {
-
-private static final String SITEVERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
-
-private final String secretKey = "your-secret-key";
-
-private final RestTemplate restTemplate = new RestTemplate();
-
-
-    public TurnstileResponse validateToken(String token, String remoteip) {
-
-        HttpHeaders headers = new HttpHeaders();
-
-        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-
-
-        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-
-        params.add("secret", secretKey);
-
-        params.add("response", token);
-
-        if (remoteip != null) {
-
-            params.add("remoteip", remoteip);
-
-        }
-
-
+import org.springframework.web.client.RestTemplate;import org.springframework.util.LinkedMultiValueMap;import org.springframework.util.MultiValueMap;import org.springframework.http.HttpEntity;import org.springframework.http.HttpHeaders;import org.springframework.http.MediaType;import org.springframework.http.ResponseEntity;
+@Servicepublic class TurnstileService {private static final String SITEVERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";private final String secretKey = "your-secret-key";private final RestTemplate restTemplate = new RestTemplate();
+    public TurnstileResponse validateToken(String token, String remoteip) {        HttpHeaders headers = new HttpHeaders();        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();        params.add("secret", secretKey);        params.add("response", token);        if (remoteip != null) {            params.add("remoteip", remoteip);        }
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(params, headers);
-
-
-        try {
-
-            ResponseEntity<TurnstileResponse> response = restTemplate.postForEntity(
-
-                SITEVERIFY_URL, request, TurnstileResponse.class);
-
-            return response.getBody();
-
-        } catch (Exception e) {
-
-            TurnstileResponse errorResponse = new TurnstileResponse();
-
-            errorResponse.setSuccess(false);
-
-            errorResponse.setErrorCodes(List.of("internal-error"));
-
-            return errorResponse;
-
-        }
-
-    }
-
-
+        try {            ResponseEntity<TurnstileResponse> response = restTemplate.postForEntity(                SITEVERIFY_URL, request, TurnstileResponse.class);            return response.getBody();        } catch (Exception e) {            TurnstileResponse errorResponse = new TurnstileResponse();            errorResponse.setSuccess(false);            errorResponse.setErrorCodes(List.of("internal-error"));            return errorResponse;        }    }
 }
-
-
-// Controller usage
-
-@PostMapping("/submit-form")
-
-public ResponseEntity<?> submitForm(
-
-@RequestParam("cf-turnstile-response") String token,
-
-HttpServletRequest request) {
-
-
-    String remoteip = request.getHeader("CF-Connecting-IP");
-
-    if (remoteip == null) {
-
-        remoteip = request.getHeader("X-Forwarded-For");
-
-    }
-
-    if (remoteip == null) {
-
-        remoteip = request.getRemoteAddr();
-
-    }
-
-
+// Controller usage@PostMapping("/submit-form")public ResponseEntity<?> submitForm(@RequestParam("cf-turnstile-response") String token,HttpServletRequest request) {
+    String remoteip = request.getHeader("CF-Connecting-IP");    if (remoteip == null) {        remoteip = request.getHeader("X-Forwarded-For");    }    if (remoteip == null) {        remoteip = request.getRemoteAddr();    }
     TurnstileResponse validation = turnstileService.validateToken(token, remoteip);
-
-
-    if (validation.isSuccess()) {
-
-        // Valid token - process form
-
-        return ResponseEntity.ok("Form submitted successfully");
-
-    } else {
-
-        // Invalid token - reject submission
-
-        return ResponseEntity.badRequest()
-
-            .body("Verification failed: " + validation.getErrorCodes());
-
-    }
-
-
+    if (validation.isSuccess()) {        // Valid token - process form        return ResponseEntity.ok("Form submitted successfully");    } else {        // Invalid token - reject submission        return ResponseEntity.badRequest()            .body("Verification failed: " + validation.getErrorCodes());    }
 }
-
-
 ```
 
 ```
-
 using System.Text.Json;
-
-
-public class TurnstileService
-
-{
-
-    private readonly HttpClient _httpClient;
-
-    private readonly string _secretKey = "your-secret-key";
-
-    private const string SiteverifyUrl = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
-
-
-    public TurnstileService(HttpClient httpClient)
-
-    {
-
-        _httpClient = httpClient;
-
-    }
-
-
-    public async Task<TurnstileResponse> ValidateTokenAsync(string token, string remoteip = null)
-
-    {
-
-        var parameters = new Dictionary<string, string>
-
-        {
-
-            { "secret", _secretKey },
-
-            { "response", token }
-
-        };
-
-
-        if (!string.IsNullOrEmpty(remoteip))
-
-        {
-
-            parameters.Add("remoteip", remoteip);
-
-        }
-
-
+public class TurnstileService{    private readonly HttpClient _httpClient;    private readonly string _secretKey = "your-secret-key";    private const string SiteverifyUrl = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
+    public TurnstileService(HttpClient httpClient)    {        _httpClient = httpClient;    }
+    public async Task<TurnstileResponse> ValidateTokenAsync(string token, string remoteip = null)    {        var parameters = new Dictionary<string, string>        {            { "secret", _secretKey },            { "response", token }        };
+        if (!string.IsNullOrEmpty(remoteip))        {            parameters.Add("remoteip", remoteip);        }
         var postContent = new FormUrlEncodedContent(parameters);
-
-
-        try
-
-        {
-
-            var response = await _httpClient.PostAsync(SiteverifyUrl, postContent);
-
-            var stringContent = await response.Content.ReadAsStringAsync();
-
-
-            return JsonSerializer.Deserialize<TurnstileResponse>(stringContent);
-
-        }
-
-        catch (Exception ex)
-
-        {
-
-            return new TurnstileResponse
-
-            {
-
-                Success = false,
-
-                ErrorCodes = new[] { "internal-error" }
-
-            };
-
-        }
-
-    }
-
-}
-
-
-// Controller usage
-
-[HttpPost("submit-form")]
-
-public async Task<IActionResult> SubmitForm([FromForm] string cfTurnstileResponse)
-
-{
-
-    var remoteip = HttpContext.Request.Headers["CF-Connecting-IP"].FirstOrDefault() ??
-
-                   HttpContext.Request.Headers["X-Forwarded-For"].FirstOrDefault() ??
-
-                   HttpContext.Connection.RemoteIpAddress?.ToString();
-
-
+        try        {            var response = await _httpClient.PostAsync(SiteverifyUrl, postContent);            var stringContent = await response.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<TurnstileResponse>(stringContent);        }        catch (Exception ex)        {            return new TurnstileResponse            {                Success = false,                ErrorCodes = new[] { "internal-error" }            };        }    }}
+// Controller usage[HttpPost("submit-form")]public async Task<IActionResult> SubmitForm([FromForm] string cfTurnstileResponse){    var remoteip = HttpContext.Request.Headers["CF-Connecting-IP"].FirstOrDefault() ??                   HttpContext.Request.Headers["X-Forwarded-For"].FirstOrDefault() ??                   HttpContext.Connection.RemoteIpAddress?.ToString();
     var validation = await _turnstileService.ValidateTokenAsync(cfTurnstileResponse, remoteip);
-
-
-    if (validation.Success)
-
-    {
-
-        // Valid token - process form
-
-        return Ok("Form submitted successfully");
-
-    }
-
-    else
-
-    {
-
-        // Invalid token - reject submission
-
-        return BadRequest($"Verification failed: {string.Join(", ", validation.ErrorCodes)}");
-
-    }
-
-}
-
-
+    if (validation.Success)    {        // Valid token - process form        return Ok("Form submitted successfully");    }    else    {        // Invalid token - reject submission        return BadRequest($"Verification failed: {string.Join(", ", validation.ErrorCodes)}");    }}
 ```
 
 ---
@@ -682,271 +163,47 @@ public async Task<IActionResult> SubmitForm([FromForm] string cfTurnstileRespons
 Idempotency keys for retry operation
 
 ```
-
 const crypto = require("crypto");
-
-
-async function validateWithRetry(token, remoteip, maxRetries = 3) {
-
-  const idempotencyKey = crypto.randomUUID();
-
-
-  for (let attempt = 1; attempt <= maxRetries; attempt++) {
-
-    try {
-
-      const formData = new FormData();
-
-      formData.append("secret", SECRET_KEY);
-
-      formData.append("response", token);
-
-      formData.append("remoteip", remoteip);
-
-      formData.append("idempotency_key", idempotencyKey);
-
-
-      const response = await fetch(
-
-        "https://challenges.cloudflare.com/turnstile/v0/siteverify",
-
-        {
-
-          method: "POST",
-
-          body: formData,
-
-        },
-
-      );
-
-
+async function validateWithRetry(token, remoteip, maxRetries = 3) {  const idempotencyKey = crypto.randomUUID();
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {    try {      const formData = new FormData();      formData.append("secret", SECRET_KEY);      formData.append("response", token);      formData.append("remoteip", remoteip);      formData.append("idempotency_key", idempotencyKey);
+      const response = await fetch(        "https://challenges.cloudflare.com/turnstile/v0/siteverify",        {          method: "POST",          body: formData,        },      );
       const result = await response.json();
-
-
-      if (response.ok) {
-
-        return result;
-
-      }
-
-
-      // If this is the last attempt, return the error
-
-      if (attempt === maxRetries) {
-
-        return result;
-
-      }
-
-
-      // Wait before retrying (exponential backoff)
-
-      await new Promise((resolve) =>
-
-        setTimeout(resolve, Math.pow(2, attempt) * 1000),
-
-      );
-
-    } catch (error) {
-
-      if (attempt === maxRetries) {
-
-        return { success: false, "error-codes": ["internal-error"] };
-
-      }
-
-    }
-
-  }
-
-}
-
-
+      if (response.ok) {        return result;      }
+      // If this is the last attempt, return the error      if (attempt === maxRetries) {        return result;      }
+      // Wait before retrying (exponential backoff)      await new Promise((resolve) =>        setTimeout(resolve, Math.pow(2, attempt) * 1000),      );    } catch (error) {      if (attempt === maxRetries) {        return { success: false, "error-codes": ["internal-error"] };      }    }  }}
 ```
 
 Enhanced validation with custom checks
 
 ```
-
-async function validateTurnstileEnhanced(
-
-  token,
-
-  remoteip,
-
-  expectedAction = null,
-
-  expectedHostname = null,
-
-) {
-
-  const validation = await validateTurnstile(token, remoteip);
-
-
-  if (!validation.success) {
-
-    return {
-
-      valid: false,
-
-      reason: "turnstile_failed",
-
-      errors: validation["error-codes"],
-
-    };
-
-  }
-
-
-  // Check if action matches expected value (if specified)
-
-  if (expectedAction && validation.action !== expectedAction) {
-
-    return {
-
-      valid: false,
-
-      reason: "action_mismatch",
-
-      expected: expectedAction,
-
-      received: validation.action,
-
-    };
-
-  }
-
-
-  // Check if hostname matches expected value (if specified)
-
-  if (expectedHostname && validation.hostname !== expectedHostname) {
-
-    return {
-
-      valid: false,
-
-      reason: "hostname_mismatch",
-
-      expected: expectedHostname,
-
-      received: validation.hostname,
-
-    };
-
-  }
-
-
-  // Check token age (warn if older than 4 minutes)
-
-  const challengeTime = new Date(validation.challenge_ts);
-
-  const now = new Date();
-
-  const ageMinutes = (now - challengeTime) / (1000 * 60);
-
-
-  if (ageMinutes > 4) {
-
-    console.warn(`Token is ${ageMinutes.toFixed(1)} minutes old`);
-
-  }
-
-
-  return {
-
-    valid: true,
-
-    data: validation,
-
-    tokenAge: ageMinutes,
-
-  };
-
-}
-
-
-// Usage
-
-const result = await validateTurnstileEnhanced(
-
-  token,
-
-  remoteip,
-
-  "login", // expected action
-
-  "example.com", // expected hostname
-
-);
-
-
-if (result.valid) {
-
-  // Process the request
-
-  console.log("Validation successful:", result.data);
-
-} else {
-
-  // Handle validation failure
-
-  console.log("Validation failed:", result.reason);
-
-}
-
-
+async function validateTurnstileEnhanced(  token,  remoteip,  expectedAction = null,  expectedHostname = null,) {  const validation = await validateTurnstile(token, remoteip);
+  if (!validation.success) {    return {      valid: false,      reason: "turnstile_failed",      errors: validation["error-codes"],    };  }
+  // Check if action matches expected value (if specified)  if (expectedAction && validation.action !== expectedAction) {    return {      valid: false,      reason: "action_mismatch",      expected: expectedAction,      received: validation.action,    };  }
+  // Check if hostname matches expected value (if specified)  if (expectedHostname && validation.hostname !== expectedHostname) {    return {      valid: false,      reason: "hostname_mismatch",      expected: expectedHostname,      received: validation.hostname,    };  }
+  // Check token age (warn if older than 4 minutes)  const challengeTime = new Date(validation.challenge_ts);  const now = new Date();  const ageMinutes = (now - challengeTime) / (1000 * 60);
+  if (ageMinutes > 4) {    console.warn(`Token is ${ageMinutes.toFixed(1)} minutes old`);  }
+  return {    valid: true,    data: validation,    tokenAge: ageMinutes,  };}
+// Usageconst result = await validateTurnstileEnhanced(  token,  remoteip,  "login", // expected action  "example.com", // expected hostname);
+if (result.valid) {  // Process the request  console.log("Validation successful:", result.data);} else {  // Handle validation failure  console.log("Validation failed:", result.reason);}
 ```
 
 ---
 
 ## API response format
 
-* [ Successful response ](#tab-panel-11027)
-* [ Failed response ](#tab-panel-11028)
+* [ Successful response ](#tab-panel-11044)
+* [ Failed response ](#tab-panel-11045)
 
 Example
 
 ```
-
-{
-
-  "success": true,
-
-  "challenge_ts": "2022-02-28T15:14:30.096Z",
-
-  "hostname": "example.com",
-
-  "error-codes": [],
-
-  "action": "login",
-
-  "cdata": "sessionid-123456789",
-
-  "metadata": {
-
-    "ephemeral_id": "x:9f78e0ed210960d7693b167e"
-
-  }
-
-}
-
-
+{  "success": true,  "challenge_ts": "2022-02-28T15:14:30.096Z",  "hostname": "example.com",  "error-codes": [],  "action": "login",  "cdata": "sessionid-123456789",  "metadata": {    "ephemeral_id": "x:9f78e0ed210960d7693b167e"  }}
 ```
 
 Example
 
 ```
-
-{
-
-  "success": false,
-
-  "error-codes": ["invalid-input-response"]
-
-}
-
-
+{  "success": false,  "error-codes": ["invalid-input-response"]}
 ```
 
 ### Response fields
@@ -980,191 +237,22 @@ Example
 Example implementation
 
 ```
-
-class TurnstileValidator {
-
-  constructor(secretKey, timeout = 10000) {
-
-    this.secretKey = secretKey;
-
-    this.timeout = timeout;
-
-  }
-
-
-  async validate(token, remoteip, options = {}) {
-
-    // Input validation
-
-    if (!token || typeof token !== "string") {
-
-      return { success: false, error: "Invalid token format" };
-
-    }
-
-
-    if (token.length > 2048) {
-
-      return { success: false, error: "Token too long" };
-
-    }
-
-
-    // Prepare request
-
-    const controller = new AbortController();
-
-    const timeoutId = setTimeout(() => controller.abort(), this.timeout);
-
-
-    try {
-
-      const formData = new FormData();
-
-      formData.append("secret", this.secretKey);
-
-      formData.append("response", token);
-
-
-      if (remoteip) {
-
-        formData.append("remoteip", remoteip);
-
-      }
-
-
-      if (options.idempotencyKey) {
-
-        formData.append("idempotency_key", options.idempotencyKey);
-
-      }
-
-
-      const response = await fetch(
-
-        "https://challenges.cloudflare.com/turnstile/v0/siteverify",
-
-        {
-
-          method: "POST",
-
-          body: formData,
-
-          signal: controller.signal,
-
-        },
-
-      );
-
-
+class TurnstileValidator {  constructor(secretKey, timeout = 10000) {    this.secretKey = secretKey;    this.timeout = timeout;  }
+  async validate(token, remoteip, options = {}) {    // Input validation    if (!token || typeof token !== "string") {      return { success: false, error: "Invalid token format" };    }
+    if (token.length > 2048) {      return { success: false, error: "Token too long" };    }
+    // Prepare request    const controller = new AbortController();    const timeoutId = setTimeout(() => controller.abort(), this.timeout);
+    try {      const formData = new FormData();      formData.append("secret", this.secretKey);      formData.append("response", token);
+      if (remoteip) {        formData.append("remoteip", remoteip);      }
+      if (options.idempotencyKey) {        formData.append("idempotency_key", options.idempotencyKey);      }
+      const response = await fetch(        "https://challenges.cloudflare.com/turnstile/v0/siteverify",        {          method: "POST",          body: formData,          signal: controller.signal,        },      );
       const result = await response.json();
-
-
-      // Additional validation
-
-      if (result.success) {
-
-        if (
-
-          options.expectedAction &&
-
-          result.action !== options.expectedAction
-
-        ) {
-
-          return {
-
-            success: false,
-
-            error: "Action mismatch",
-
-            expected: options.expectedAction,
-
-            received: result.action,
-
-          };
-
-        }
-
-
-        if (
-
-          options.expectedHostname &&
-
-          result.hostname !== options.expectedHostname
-
-        ) {
-
-          return {
-
-            success: false,
-
-            error: "Hostname mismatch",
-
-            expected: options.expectedHostname,
-
-            received: result.hostname,
-
-          };
-
-        }
-
-      }
-
-
-      return result;
-
-    } catch (error) {
-
-      if (error.name === "AbortError") {
-
-        return { success: false, error: "Validation timeout" };
-
-      }
-
-
-      console.error("Turnstile validation error:", error);
-
-      return { success: false, error: "Internal error" };
-
-    } finally {
-
-      clearTimeout(timeoutId);
-
-    }
-
-  }
-
-}
-
-
-// Usage
-
-const validator = new TurnstileValidator(process.env.TURNSTILE_SECRET_KEY);
-
-
-const result = await validator.validate(token, remoteip, {
-
-  expectedAction: "login",
-
-  expectedHostname: "example.com",
-
-});
-
-
-if (result.success) {
-
-  // Process the request
-
-} else {
-
-  // Handle failure
-
-  console.log("Validation failed:", result.error);
-
-}
-
-
+      // Additional validation      if (result.success) {        if (          options.expectedAction &&          result.action !== options.expectedAction        ) {          return {            success: false,            error: "Action mismatch",            expected: options.expectedAction,            received: result.action,          };        }
+        if (          options.expectedHostname &&          result.hostname !== options.expectedHostname        ) {          return {            success: false,            error: "Hostname mismatch",            expected: options.expectedHostname,            received: result.hostname,          };        }      }
+      return result;    } catch (error) {      if (error.name === "AbortError") {        return { success: false, error: "Validation timeout" };      }
+      console.error("Turnstile validation error:", error);      return { success: false, error: "Internal error" };    } finally {      clearTimeout(timeoutId);    }  }}
+// Usageconst validator = new TurnstileValidator(process.env.TURNSTILE_SECRET_KEY);
+const result = await validator.validate(token, remoteip, {  expectedAction: "login",  expectedHostname: "example.com",});
+if (result.success) {  // Process the request} else {  // Handle failure  console.log("Validation failed:", result.error);}
 ```
 
 ---

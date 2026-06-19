@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -43,9 +43,9 @@ In response to this, Cloudflare is an early adopter of ML-KEM, the post-quantum 
 Cloudflare has deployed the following hybrid key agreements:
 
 * [X25519MLKEM768 ↗](https://datatracker.ietf.org/doc/draft-kwiatkowski-tls-ecdhe-mlkem/) (Recommended)  
-   * TLS identifier: `0x11ec`
+  * TLS identifier: `0x11ec`
 * [X25519Kyber768Draft00 ↗](https://datatracker.ietf.org/doc/draft-tls-westerbaan-xyber768d00/) (Obsolete)  
-   * TLS identifier: `0x6399`
+  * TLS identifier: `0x6399`
 
 A hybrid key agreement lays the groundwork as more and more [clients](#1-visitor-to-cloudflare) adopt post-quantum cryptography, while also maintaining the current security provided by X25519\. It is a safer path in case of an unexpected breakthrough that renders all variants of ML-KEM insecure.
 

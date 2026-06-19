@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network-flow/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,49 +33,10 @@ Run a test query to retrieve bits and packets aggregated in five-minute interval
 For additional information about the Analytics schema, refer to [Explore the Analytics schema with GraphiQL](https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/).
 
 ```
-
-query MagicNetworkMonitoring($accountTag: string!, $start: Time, $end: Time) {
-
-  viewer {
-
-    accounts(filter: { accountTag: $accountTag }) {
-
-      mnmFlowDataAdaptiveGroups(
-
-        filter: { datetime_gt: $start, datetime_leq: $end }
-
-        limit: 10
-
-        orderBy: [datetimeFiveMinutes_DESC]
-
-      ) {
-
-        sum {
-
-          bits
-
-          packets
-
-        }
-
-        dimensions {
-
-          datetimeFiveMinutes
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
+query MagicNetworkMonitoring($accountTag: string!, $start: Time, $end: Time) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      mnmFlowDataAdaptiveGroups(        filter: { datetime_gt: $start, datetime_leq: $end }        limit: 10        orderBy: [datetimeFiveMinutes_DESC]      ) {        sum {          bits          packets        }        dimensions {          datetimeFiveMinutes        }      }    }  }}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAsgQwOYEsDGA5MAXA7gewgGs58A7FbQlMpACgBIE018QzsAVZALhgGdsEGkgCEAGhgNBCCNj6cUAWzCSGYMgBMFysAEoYAbwBQMGADcUYXJCOmzMZq3bZ+dAGYoANtkh9DjixsHNxIfExBLqEwAL4GJg4OSmRKAGJe+LgAIgjYCACCmggADtgo5mAA4hBsxW72iWaePn5GMEW+ZSoA+kjyUjJykh04ut1eYMDhGpqxDY1eypR8AIwADPOJhJqQAEJQfADaI11gqeVgcDQgvvzdWQCiAMoAwgC6mzDxn2b8IEp2RqNABGlH4PwcxWYRBw4KBZhiEM0ujI-BQ5H4gPhZhOunOFSuZBuYDh8MRQPJDkpiJiQA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXsICMADmS8ArJhljMvXgC0GIAKbwAJlz6CR4qWMUKlqkAF8gA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAsgQwOYEsDGA5MAXA7gewgGs58A7FbQlMpACgBIE018QzsAVZALhgGdsEGkgCEAGhgNBCCNj6cUAWzCSGYMgBMFysAEoYAbwBQMGADcUYXJCOmzMZq3bZ+dAGYoANtkh9DjixsHNxIfExBLqEwAL4GJg4OSmRKAGJe+LgAIgjYCACCmggADtgo5mAA4hBsxW72iWaePn5GMEW+ZSoA+kjyUjJykh04ut1eYMDhGpqxDY1eypR8AIwADPOJhJqQAEJQfADaI11gqeVgcDQgvvzdWQCiAMoAwgC6mzDxn2b8IEp2RqNABGlH4PwcxWYRBw4KBZhiEM0ujI-BQ5H4gPhZhOunOFSuZBuYDh8MRQPJDkpiJiQA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXsICMADmRiA7JgAsEzGICcALQYgApvAAmXPoJHip3AMwKlqjQF8gA)
 
 Note
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,20 +35,7 @@ Audio signal pathway within an audio file that carries a specific sound source. 
 You can modify the configs by specifying it in the `audio_config` field in the [Start Recording API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/start%5Frecordings/), for example:
 
 ```
-
-{
-
-  "audio_config": {
-
-    "codec": "AAC"
-
-    "channel": "stereo"
-
-  }
-
-}
-
-
+{  "audio_config": {    "codec": "AAC"    "channel": "stereo"  }}
 ```
 
 ## Download Audio Files

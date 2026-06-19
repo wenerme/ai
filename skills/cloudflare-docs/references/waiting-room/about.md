@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waiting-room/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,11 +21,12 @@ Waiting Room queues visitors when your traffic approaches a previously defined t
 Once you have [created and activated a waiting room](https://developers.cloudflare.com/waiting-room/get-started/) for a specific application page:
 
 * If a page is not experiencing heavy traffic, a visitor accesses the page directly.
-* If page traffic approaches a [user-defined threshold](https://developers.cloudflare.com/waiting-room/reference/configuration-settings/#session-duration), a visitor enters a virtual waiting room until it is their turn to access the page:  
-   * Each user receives a [cookie](https://developers.cloudflare.com/waiting-room/reference/waiting-room-cookie/) to manage the dynamic outflow of requests from the waiting room to the origin website in [First In First Out (FIFO)](https://developers.cloudflare.com/waiting-room/reference/queueing-methods/#first-in-first-out-fifo) order.  
-   * While in the waiting room, the user's browser automatically refreshes every 20 seconds to give them updated information about their estimated wait time.  
-   * When a user exits the waiting room and reaches your application, they can leave and re-enter without waiting for the length of time specified by the [session duration](https://developers.cloudflare.com/waiting-room/reference/configuration-settings/#session-duration).  
-   * Because waiting rooms support dynamic inflow and [outflow](https://developers.cloudflare.com/waiting-room/reference/configuration-settings/#session-duration), new spots appear more quickly and estimated wait times are lower and more accurate.
+* If page traffic approaches a [user-defined threshold](https://developers.cloudflare.com/waiting-room/reference/configuration-settings/#session-duration), a visitor enters a virtual waiting room until it is their turn to access the page:
+
+  * Each user receives a [cookie](https://developers.cloudflare.com/waiting-room/reference/waiting-room-cookie/) to manage the dynamic outflow of requests from the waiting room to the origin website in [First In First Out (FIFO)](https://developers.cloudflare.com/waiting-room/reference/queueing-methods/#first-in-first-out-fifo) order.
+  * While in the waiting room, the user's browser automatically refreshes every 20 seconds to give them updated information about their estimated wait time.
+  * When a user exits the waiting room and reaches your application, they can leave and re-enter without waiting for the length of time specified by the [session duration](https://developers.cloudflare.com/waiting-room/reference/configuration-settings/#session-duration).
+  * Because waiting rooms support dynamic inflow and [outflow](https://developers.cloudflare.com/waiting-room/reference/configuration-settings/#session-duration), new spots appear more quickly and estimated wait times are lower and more accurate.
 
 ## Architecture
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pipelines/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -36,12 +36,7 @@ To create a pipeline, run the [pipelines create](https://developers.cloudflare.c
 Terminal window
 
 ```
-
-npx wrangler pipelines create my-pipeline \
-
-  --sql "INSERT INTO my_sink SELECT * FROM my_stream"
-
-
+npx wrangler pipelines create my-pipeline \  --sql "INSERT INTO my_sink SELECT * FROM my_stream"
 ```
 
 You can also provide SQL from a file:
@@ -49,12 +44,7 @@ You can also provide SQL from a file:
 Terminal window
 
 ```
-
-npx wrangler pipelines create my-pipeline \
-
-  --sql-file pipeline.sql
-
-
+npx wrangler pipelines create my-pipeline \  --sql-file pipeline.sql
 ```
 
 Alternatively, to use the interactive setup wizard that helps you configure a stream, sink, and pipeline, run the [pipelines setup](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-setup) command:
@@ -62,10 +52,7 @@ Alternatively, to use the interactive setup wizard that helps you configure a st
 Terminal window
 
 ```
-
 npx wrangler pipelines setup
-
-
 ```
 
 ### SQL transformations
@@ -79,10 +66,7 @@ Common patterns include:
 Transfer all data from stream to sink:
 
 ```
-
 INSERT INTO my_sink SELECT * FROM my_stream
-
-
 ```
 
 #### Filtering events
@@ -90,14 +74,7 @@ INSERT INTO my_sink SELECT * FROM my_stream
 Filter events based on conditions:
 
 ```
-
-INSERT INTO my_sink
-
-SELECT * FROM my_stream
-
-WHERE event_type = 'purchase' AND amount > 100
-
-
+INSERT INTO my_sinkSELECT * FROM my_streamWHERE event_type = 'purchase' AND amount > 100
 ```
 
 #### Selecting specific fields
@@ -105,14 +82,7 @@ WHERE event_type = 'purchase' AND amount > 100
 Choose only the fields you need:
 
 ```
-
-INSERT INTO my_sink
-
-SELECT user_id, event_type, timestamp, amount
-
-FROM my_stream
-
-
+INSERT INTO my_sinkSELECT user_id, event_type, timestamp, amountFROM my_stream
 ```
 
 #### Transforming data
@@ -120,22 +90,7 @@ FROM my_stream
 Apply transformations to fields:
 
 ```
-
-INSERT INTO my_sink
-
-SELECT
-
-  user_id,
-
-  UPPER(event_type) as event_type,
-
-  timestamp,
-
-  amount * 1.1 as amount_with_tax
-
-FROM my_stream
-
-
+INSERT INTO my_sinkSELECT  user_id,  UPPER(event_type) as event_type,  timestamp,  amount * 1.1 as amount_with_taxFROM my_stream
 ```
 
 ## View pipeline configuration
@@ -152,10 +107,7 @@ To view a specific pipeline, run the [pipelines get](https://developers.cloudfla
 Terminal window
 
 ```
-
 npx wrangler pipelines get <PIPELINE_NAME_OR_ID>
-
-
 ```
 
 To list all pipelines in your account, run the [pipelines list](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-list) command:
@@ -163,10 +115,7 @@ To list all pipelines in your account, run the [pipelines list](https://develope
 Terminal window
 
 ```
-
 npx wrangler pipelines list
-
-
 ```
 
 ## Delete a pipeline
@@ -185,10 +134,7 @@ To delete a pipeline, run the [pipelines delete](https://developers.cloudflare.c
 Terminal window
 
 ```
-
 npx wrangler pipelines delete <PIPELINE_ID>
-
-
 ```
 
 Warning

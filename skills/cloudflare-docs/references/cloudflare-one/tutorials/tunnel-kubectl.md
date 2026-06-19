@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -38,12 +38,7 @@ cloudflared tunnel create k8s-tunnel
 3. Configure your tunnel by creating a configuration file named `config.yml`:  
 YAML  
 ```  
-tunnel: <TUNNEL_ID>  
-credentials-file: /path/to/credentials.json  
-ingress:  
-  - hostname: k8s.example.com  
-    service: tcp://kubernetes.default.svc.cluster.local:443  
-  - service: http_status:404  
+tunnel: <TUNNEL_ID>credentials-file: /path/to/credentials.jsoningress:  - hostname: k8s.example.com    service: tcp://kubernetes.default.svc.cluster.local:443  - service: http_status:404  
 ```  
 Replace `<TUNNEL_ID>` with your tunnel ID and adjust the hostname as needed.
 4. Start the tunnel:  
@@ -61,13 +56,7 @@ Ensure your Kubernetes API server is configured to accept authentication from Cl
 1. Create a script named `cloudflare-k8s-auth.sh` with the following content:  
 ```  
 #!/bin/bash  
-echo '{  
-  "apiVersion": "client.authentication.k8s.io/v1beta1",  
-  "kind": "ExecCredential",  
-  "status": {  
-    "token": "'"$(cloudflared access token -app=https://k8s.example.com)"'"  
-  }  
-}'  
+echo '{  "apiVersion": "client.authentication.k8s.io/v1beta1",  "kind": "ExecCredential",  "status": {    "token": "'"$(cloudflared access token -app=https://k8s.example.com)"'"  }}'  
 ```  
 Make the script executable:  
 Terminal window  
@@ -77,25 +66,7 @@ chmod +x cloudflare-k8s-auth.sh
 2. Update your `~/.kube/config` file to use the credential plugin:  
 YAML  
 ```  
-apiVersion: v1  
-kind: Config  
-clusters:  
-  - cluster:  
-      server: https://k8s.example.com  
-    name: cloudflare-k8s  
-users:  
-  - name: cloudflare-user  
-    user:  
-      exec:  
-        apiVersion: client.authentication.k8s.io/v1beta1  
-        command: /path/to/cloudflare-k8s-auth.sh  
-        interactiveMode: Never  
-contexts:  
-  - context:  
-      cluster: cloudflare-k8s  
-      user: cloudflare-user  
-    name: cloudflare-k8s-context  
-current-context: cloudflare-k8s-context  
+apiVersion: v1kind: Configclusters:  - cluster:      server: https://k8s.example.com    name: cloudflare-k8susers:  - name: cloudflare-user    user:      exec:        apiVersion: client.authentication.k8s.io/v1beta1        command: /path/to/cloudflare-k8s-auth.sh        interactiveMode: Nevercontexts:  - context:      cluster: cloudflare-k8s      user: cloudflare-user    name: cloudflare-k8s-contextcurrent-context: cloudflare-k8s-context  
 ```
 
 ## 4\. Use kubectl with Cloudflare Tunnel
@@ -105,10 +76,7 @@ Now you can use `kubectl` commands as usual. The client-go credential plugin wil
 Terminal window
 
 ```
-
 kubectl get pods
-
-
 ```
 
 ## Troubleshooting

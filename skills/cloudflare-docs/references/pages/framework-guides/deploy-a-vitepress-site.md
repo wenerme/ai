@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -63,14 +63,7 @@ If you encounter errors, make sure your local machine meets the [Prerequisites f
 Finally create a `.gitignore` file with the following content:
 
 ```
-
-node_modules
-
-.vitepress/cache
-
-.vitepress/dist
-
-
+node_modules.vitepress/cache.vitepress/dist
 ```
 
 This step makes sure that unnecessary files are not going to be included in the project's git repository (which we will set up next).
@@ -90,20 +83,7 @@ Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). Aft
 Terminal window
 
 ```
-
-git init
-
-git remote add origin https://github.com/<your-gh-username>/<repository-name>
-
-git add .
-
-git commit -m "Initial commit"
-
-git branch -M main
-
-git push -u origin main
-
-
+git initgit remote add origin https://github.com/<your-gh-username>/<repository-name>git add .git commit -m "Initial commit"git branch -M maingit push -u origin main
 ```
 
 ## Deploy with Cloudflare Pages

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,10 +19,7 @@ To specify a version override in your request, set the `Cloudflare-Workers-Versi
 Terminal window
 
 ```
-
 curl -s https://example.com -H 'Cloudflare-Workers-Version-Overrides: my-worker-name="dc8dcd28-271b-4367-9840-6c244f84cb40"'
-
-
 ```
 
 `Cloudflare-Workers-Version-Overrides` is a [Dictionary Structured Header ↗](https://www.rfc-editor.org/rfc/rfc8941#name-dictionaries).
@@ -64,10 +61,7 @@ Now test the new version with a version override before gradually progressing th
 Terminal window
 
 ```
-
 curl -s https://example.com -H 'Cloudflare-Workers-Version-Overrides: my-worker-name="dc8dcd28-271b-4367-9840-6c244f84cb40"'
-
-
 ```
 
 ## Service bindings
@@ -79,20 +73,7 @@ If you forward the original request object, the override header carries through 
 JavaScript
 
 ```
-
-// The override header from the inbound request is forwarded to the downstream Worker.
-
-export default {
-
-  async fetch(request, env) {
-
-    return env.MY_SERVICE.fetch(request);
-
-  },
-
-};
-
-
+// The override header from the inbound request is forwarded to the downstream Worker.export default {  async fetch(request, env) {    return env.MY_SERVICE.fetch(request);  },};
 ```
 
 Alternatively, you can set an override header explicitly:
@@ -100,32 +81,7 @@ Alternatively, you can set an override header explicitly:
 JavaScript
 
 ```
-
-// Replace the version ID with the target version from `wrangler versions list`.
-
-export default {
-
-  async fetch(request, env) {
-
-    const response = await env.MY_SERVICE.fetch("https://example.com/", {
-
-      headers: {
-
-        "Cloudflare-Workers-Version-Overrides":
-
-          'my-downstream-worker="dc8dcd28-271b-4367-9840-6c244f84cb40"',
-
-      },
-
-    });
-
-    return response;
-
-  },
-
-};
-
-
+// Replace the version ID with the target version from `wrangler versions list`.export default {  async fetch(request, env) {    const response = await env.MY_SERVICE.fetch("https://example.com/", {      headers: {        "Cloudflare-Workers-Version-Overrides":          'my-downstream-worker="dc8dcd28-271b-4367-9840-6c244f84cb40"',      },    });    return response;  },};
 ```
 
 Note

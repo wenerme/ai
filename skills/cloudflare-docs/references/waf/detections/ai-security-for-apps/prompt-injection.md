@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -46,9 +46,10 @@ The score gives you flexibility to set thresholds that match your risk tolerance
 
 ### Block high-confidence prompt injection attempts
 
-* **When incoming requests match**:  
-| Field               | Operator  | Value |  
-| ------------------- | --------- | ----- |  
+* **When incoming requests match**:
+
+| Field               | Operator  | Value |
+| ------------------- | --------- | ----- |
 | LLM Injection score | less than | 20    |  
 Expression when using the editor:  
 `(cf.llm.prompt.injection_score lt 20)`
@@ -56,9 +57,10 @@ Expression when using the editor:
 
 ### Challenge moderate-risk prompts instead of blocking
 
-* **When incoming requests match**:  
-| Field               | Operator  | Value |  
-| ------------------- | --------- | ----- |  
+* **When incoming requests match**:
+
+| Field               | Operator  | Value |
+| ------------------- | --------- | ----- |
 | LLM Injection score | less than | 40    |  
 Expression when using the editor:  
 `(cf.llm.prompt.injection_score lt 40)`

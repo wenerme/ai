@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/billing/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,8 +30,8 @@ For additional help, refer to [this Community thread ↗](https://community.clou
 
 ## Change plan type
 
-* [ Dashboard ](#tab-panel-6812)
-* [ API ](#tab-panel-6813)
+* [ Dashboard ](#tab-panel-6888)
+* [ API ](#tab-panel-6889)
 
 To change the Cloudflare plan for a domain in the dashboard:
 
@@ -52,8 +52,8 @@ If you are an Enterprise customer and cannot change your plan type, contact your
 
 ## Change plan duration
 
-* [ Dashboard ](#tab-panel-6814)
-* [ API ](#tab-panel-6815)
+* [ Dashboard ](#tab-panel-6890)
+* [ API ](#tab-panel-6891)
 
 To change the duration of your Cloudflare plan in the dashboard:
 

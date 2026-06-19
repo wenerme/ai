@@ -5,7 +5,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -14,12 +14,12 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 The RTKLivestream module represents the state of the current livestream, and allows to start/stop live streams.
 
 * [RTKLivestream](#module%5FRTKLivestream)  
-   * [module.exports](#exp%5Fmodule%5FRTKLivestream--module.exports) ⏏  
-         * [new module.exports(context, self)](#new%5Fmodule%5FRTKLivestream--module.exports%5Fnew)  
-         * [.telemetry](#module%5FRTKLivestream--module.exports+telemetry)  
-         * [.setRTKLivestreamState(livestreamState)](#module%5FRTKLivestream--module.exports+setRTKLivestreamState)  
-         * [.start(\[livestreamConfig\])](#module%5FRTKLivestream--module.exports+start)  
-         * [.stop()](#module%5FRTKLivestream--module.exports+stop)
+  * [module.exports](#exp%5Fmodule%5FRTKLivestream--module.exports) ⏏  
+    * [new module.exports(context, self)](#new%5Fmodule%5FRTKLivestream--module.exports%5Fnew)
+    * [.telemetry](#module%5FRTKLivestream--module.exports+telemetry)
+    * [.setRTKLivestreamState(livestreamState)](#module%5FRTKLivestream--module.exports+setRTKLivestreamState)
+    * [.start(\[livestreamConfig\])](#module%5FRTKLivestream--module.exports+start)
+    * [.stop()](#module%5FRTKLivestream--module.exports+stop)
 
 ### module.exports ⏏
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,10 +27,7 @@ This flag is automatically enabled for Workers using a [compatibility date](http
 TOML
 
 ```
-
 compatibility_flags = ["nodejs_compat", "enable_nodejs_http_modules"]
-
-
 ```
 
 ### Server-side methods
@@ -42,10 +39,7 @@ This flag is automatically enabled for Workers using a [compatibility date](http
 TOML
 
 ```
-
 compatibility_flags = ["nodejs_compat", "enable_nodejs_http_server_modules"]
-
-
 ```
 
 To use both client-side and server-side methods, enable both flags:
@@ -53,10 +47,7 @@ To use both client-side and server-side methods, enable both flags:
 TOML
 
 ```
-
 compatibility_flags = ["nodejs_compat", "enable_nodejs_http_modules", "enable_nodejs_http_server_modules"]
-
-
 ```
 
 ## get
@@ -70,48 +61,11 @@ Because `get` is a wrapper around `fetch(...)`, it may be used only within an ex
 JavaScript
 
 ```
-
 import { get } from "node:https";
-
-
-export default {
-
-  async fetch() {
-
-    const { promise, resolve, reject } = Promise.withResolvers();
-
-    get("https://example.com", (res) => {
-
-      let data = "";
-
-      res.setEncoding("utf8");
-
-      res.on("data", (chunk) => {
-
-        data += chunk;
-
-      });
-
-      res.on("end", () => {
-
-        resolve(new Response(data));
-
-      });
-
-      res.on("error", reject);
-
-    }).on("error", reject);
-
-    return promise;
-
-  },
-
-};
-
-
+export default {  async fetch() {    const { promise, resolve, reject } = Promise.withResolvers();    get("https://example.com", (res) => {      let data = "";      res.setEncoding("utf8");      res.on("data", (chunk) => {        data += chunk;      });      res.on("end", () => {        resolve(new Response(data));      });      res.on("error", reject);    }).on("error", reject);    return promise;  },};
 ```
 
-The implementation of `get` in Workers is a wrapper around the global[fetch API ↗](https://developers.cloudflare.com/workers/runtime-apis/fetch/)and is therefore subject to the same [limits ↗](https://developers.cloudflare.com/workers/platform/limits/).
+The implementation of `get` in Workers is a wrapper around the global [fetch API ↗](https://developers.cloudflare.com/workers/runtime-apis/fetch/)and is therefore subject to the same [limits ↗](https://developers.cloudflare.com/workers/platform/limits/).
 
 As shown in the example above, it is necessary to arrange for requests to be correctly awaited in the `fetch` handler using a promise or the fetch may be canceled prematurely when the handler returns.
 
@@ -132,65 +86,8 @@ The request method accepts all options from [http.request](https://developers.cl
 JavaScript
 
 ```
-
-import { request } from "node:https";
-
-import { strictEqual, ok } from "node:assert";
-
-
-export default {
-
-  async fetch() {
-
-    const { promise, resolve, reject } = Promise.withResolvers();
-
-    const req = request(
-
-      "https://developers.cloudflare.com/robots.txt",
-
-      {
-
-        method: "GET",
-
-      },
-
-      (res) => {
-
-        strictEqual(res.statusCode, 200);
-
-        let data = "";
-
-        res.setEncoding("utf8");
-
-        res.on("data", (chunk) => {
-
-          data += chunk;
-
-        });
-
-        res.once("error", reject);
-
-        res.on("end", () => {
-
-          ok(data.includes("User-agent"));
-
-          resolve(new Response(data));
-
-        });
-
-      },
-
-    );
-
-    req.end();
-
-    return promise;
-
-  },
-
-};
-
-
+import { request } from "node:https";import { strictEqual, ok } from "node:assert";
+export default {  async fetch() {    const { promise, resolve, reject } = Promise.withResolvers();    const req = request(      "https://developers.cloudflare.com/robots.txt",      {        method: "GET",      },      (res) => {        strictEqual(res.statusCode, 200);        let data = "";        res.setEncoding("utf8");        res.on("data", (chunk) => {          data += chunk;        });        res.once("error", reject);        res.on("end", () => {          ok(data.includes("User-agent"));          resolve(new Response(data));        });      },    );    req.end();    return promise;  },};
 ```
 
 The following additional options are not supported: `ca`, `cert`, `ciphers`, `clientCertEngine` (deprecated), `crl`, `dhparam`, `ecdhCurve`, `honorCipherOrder`, `key`, `passphrase`, `pfx`, `rejectUnauthorized`, `secureOptions`, `secureProtocol`, `servername`, `sessionIdContext`, `highWaterMark`.
@@ -204,26 +101,9 @@ The `createServer` method creates an HTTPS server instance that can handle incom
 JavaScript
 
 ```
-
-import { createServer } from "node:https";
-
-import { httpServerHandler } from "cloudflare:node";
-
-
-const server = createServer((req, res) => {
-
-  res.writeHead(200, { "Content-Type": "text/plain" });
-
-  res.end("Hello from Node.js HTTPS server!");
-
-});
-
-
-server.listen(8080);
-
-export default httpServerHandler({ port: 8080 });
-
-
+import { createServer } from "node:https";import { httpServerHandler } from "cloudflare:node";
+const server = createServer((req, res) => {  res.writeHead(200, { "Content-Type": "text/plain" });  res.end("Hello from Node.js HTTPS server!");});
+server.listen(8080);export default httpServerHandler({ port: 8080 });
 ```
 
 The `httpServerHandler` function integrates Node.js HTTPS servers with the Cloudflare Workers request model. When a request arrives at your Worker, the handler automatically routes it to your Node.js server running on the specified port. This bridge allows you to use familiar Node.js server patterns while benefiting from the Workers runtime environment, including automatic scaling, edge deployment, and integration with other Cloudflare services.
@@ -235,19 +115,8 @@ Failing to call `close()` on an HTTPS server may result in the server being leak
 JavaScript
 
 ```
-
 import { createServer } from "node:https";
-
-
-await using server = createServer((req, res) => {
-
-  res.end("Hello World");
-
-});
-
-// Server will be automatically closed when it goes out of scope
-
-
+await using server = createServer((req, res) => {  res.end("Hello World");});// Server will be automatically closed when it goes out of scope
 ```
 
 ## Agent
@@ -265,25 +134,8 @@ In Node.js, the `https.Server` class represents an HTTPS server and provides met
 JavaScript
 
 ```
-
-import { Server } from "node:https";
-
-import { httpServerHandler } from "cloudflare:node";
-
-
-const server = new Server((req, res) => {
-
-  res.writeHead(200, { "Content-Type": "application/json" });
-
-  res.end(JSON.stringify({ message: "Hello from HTTPS Server!" }));
-
-});
-
-server.listen(8080);
-
-export default httpServerHandler({ port: 8080 });
-
-
+import { Server } from "node:https";import { httpServerHandler } from "cloudflare:node";
+const server = new Server((req, res) => {  res.writeHead(200, { "Content-Type": "application/json" });  res.end(JSON.stringify({ message: "Hello from HTTPS Server!" }));});server.listen(8080);export default httpServerHandler({ port: 8080 });
 ```
 
 The following differences exist between the Workers implementation and Node.js:

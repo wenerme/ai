@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,47 +30,15 @@ Renders a single poll with question, votable options, vote counts, and voter ava
 ### Basic Usage
 
 ```
-
 import { RtkPoll } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkPoll poll={poll} meeting={meeting} />;
-
-}
-
-
+function MyComponent() {  return <RtkPoll poll={poll} meeting={meeting} />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkPoll } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkPoll
-
-      poll={poll}
-
-      meeting={meeting}
-
-      onRtkVotePoll={(index) => handleVote(index)}
-
-      self={selfUserId}
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkPoll      poll={poll}      meeting={meeting}      onRtkVotePoll={(index) => handleVote(index)}      self={selfUserId}    />  );}
 ```
 
 ```json

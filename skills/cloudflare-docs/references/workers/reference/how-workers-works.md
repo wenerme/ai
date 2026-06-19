@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -52,41 +52,19 @@ If you are interested in how Cloudflare handles security with the Workers runtim
 
 Most Workers are a variation on the default Workers flow:
 
-* [  JavaScript ](#tab-panel-11900)
-* [  TypeScript ](#tab-panel-11901)
+* [  JavaScript ](#tab-panel-11917)
+* [  TypeScript ](#tab-panel-11918)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    return new Response('Hello World!');
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    return new Response('Hello World!');  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    return new Response('Hello World!');
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export default {  async fetch(request, env, ctx): Promise<Response> {    return new Response('Hello World!');  },} satisfies ExportedHandler<Env>;
 ```
 
 For Workers written in [ES modules syntax](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/), when a request to your `*.workers.dev` subdomain or to your Cloudflare-managed domain is received by any of Cloudflare's data centers, the request invokes the [fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) defined in your Worker code with the given request. You can respond to the request by returning a [Response](https://developers.cloudflare.com/workers/runtime-apis/response/) object.

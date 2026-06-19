@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,8 +20,8 @@ You can connect to Neon using [Hyperdrive](https://developers.cloudflare.com/hyp
 
 Hyperdrive can provide the lowest possible latencies because it performs the database connection setup and connection pooling across Cloudflare's network. Hyperdrive supports native database drivers, libraries, and ORMs, and is included in all [Workers plans](https://developers.cloudflare.com/hyperdrive/platform/pricing/). Learn more about Hyperdrive in [How Hyperdrive Works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
 
-* [ Hyperdrive (recommended) ](#tab-panel-11519)
-* [ Neon serverless driver ](#tab-panel-11520)
+* [ Hyperdrive (recommended) ](#tab-panel-11536)
+* [ Neon serverless driver ](#tab-panel-11537)
 
 To connect to Neon using [Hyperdrive](https://developers.cloudflare.com/hyperdrive), follow these steps:
 
@@ -50,16 +50,13 @@ To configure Hyperdrive, you will need:
 Hyperdrive accepts the combination of these parameters in the common connection string format used by database drivers:
 
 ```
-
 postgres://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
-
-
 ```
 
 Most database providers will provide a connection string you can directly copy-and-paste directly into Hyperdrive.
 
-* [ Dashboard ](#tab-panel-11515)
-* [ Wrangler CLI ](#tab-panel-11516)
+* [ Dashboard ](#tab-panel-11532)
+* [ Wrangler CLI ](#tab-panel-11533)
 
 To create a Hyperdrive configuration with the Cloudflare dashboard:
 
@@ -76,40 +73,18 @@ Terminal window
 ```  
 npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="postgres://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name"  
 ```
-2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):  
-   * [  wrangler.jsonc ](#tab-panel-11513)  
-   * [  wrangler.toml ](#tab-panel-11514)  
+2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
+
+  * [  wrangler.jsonc ](#tab-panel-11530)
+  * [  wrangler.toml ](#tab-panel-11531)  
 JSONC  
 ```  
-{  
-  "$schema": "./node_modules/wrangler/config-schema.json",  
-  "name": "hyperdrive-example",  
-  "main": "src/index.ts",  
-  // Set this to today's date  
-  "compatibility_date": "2026-06-17",  
-  "compatibility_flags": [  
-    "nodejs_compat"  
-  ],  
-  // Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.  
-  "hyperdrive": [  
-    {  
-      "binding": "HYPERDRIVE",  
-      "id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"  
-    }  
-  ]  
-}  
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "hyperdrive-example",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-19",  "compatibility_flags": [    "nodejs_compat"  ],  // Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"    }  ]}  
 ```  
 TOML  
 ```  
-"$schema" = "./node_modules/wrangler/config-schema.json"  
-name = "hyperdrive-example"  
-main = "src/index.ts"  
-# Set this to today's date  
-compatibility_date = "2026-06-17"  
-compatibility_flags = [ "nodejs_compat" ]  
-[[hyperdrive]]  
-binding = "HYPERDRIVE"  
-id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"  
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "hyperdrive-example"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-19"compatibility_flags = [ "nodejs_compat" ]  
+[[hyperdrive]]binding = "HYPERDRIVE"id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"  
 ```
 
 Note
@@ -164,62 +139,20 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-11517)
-* [  wrangler.toml ](#tab-panel-11518)
+* [  wrangler.jsonc ](#tab-panel-11534)
+* [  wrangler.toml ](#tab-panel-11535)
 
 JSONC
 
 ```
-
-{
-
-  // required for database drivers to function
-
-  "compatibility_flags": [
-
-    "nodejs_compat"
-
-  ],
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "hyperdrive": [
-
-    {
-
-      "binding": "HYPERDRIVE",
-
-      "id": "<your-hyperdrive-id-here>"
-
-    }
-
-  ]
-
-}
-
-
+{  // required for database drivers to function  "compatibility_flags": [    "nodejs_compat"  ],  // Set this to today's date  "compatibility_date": "2026-06-19",  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<your-hyperdrive-id-here>"    }  ]}
 ```
 
 TOML
 
 ```
-
-compatibility_flags = [ "nodejs_compat" ]
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[[hyperdrive]]
-
-binding = "HYPERDRIVE"
-
-id = "<your-hyperdrive-id-here>"
-
-
+compatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-06-19"
+[[hyperdrive]]binding = "HYPERDRIVE"id = "<your-hyperdrive-id-here>"
 ```
 
 Create a new `Client` instance and pass the Hyperdrive `connectionString`:
@@ -227,69 +160,12 @@ Create a new `Client` instance and pass the Hyperdrive `connectionString`:
 TypeScript
 
 ```
-
-// filepath: src/index.ts
-
-import { Client } from "pg";
-
-
-export default {
-
-  async fetch(
-
-    request: Request,
-
-    env: Env,
-
-    ctx: ExecutionContext,
-
-  ): Promise<Response> {
-
-    // Create a new client instance for each request. Hyperdrive maintains the
-
-    // underlying database connection pool, so creating a new client is fast.
-
-    const client = new Client({
-
-      connectionString: env.HYPERDRIVE.connectionString,
-
-    });
-
-
-    try {
-
-      // Connect to the database
-
-      await client.connect();
-
-
-      // Perform a simple query
-
-      const result = await client.query("SELECT * FROM pg_tables");
-
-
-      return Response.json({
-
-        success: true,
-
-        result: result.rows,
-
-      });
-
-    } catch (error: any) {
-
-      console.error("Database error:", error.message);
-
-
-      return new Response("Internal error occurred", { status: 500 });
-
-    }
-
-  },
-
-};
-
-
+// filepath: src/index.tsimport { Client } from "pg";
+export default {  async fetch(    request: Request,    env: Env,    ctx: ExecutionContext,  ): Promise<Response> {    // Create a new client instance for each request. Hyperdrive maintains the    // underlying database connection pool, so creating a new client is fast.    const client = new Client({      connectionString: env.HYPERDRIVE.connectionString,    });
+    try {      // Connect to the database      await client.connect();
+      // Perform a simple query      const result = await client.query("SELECT * FROM pg_tables");
+      return Response.json({        success: true,        result: result.rows,      });    } catch (error: any) {      console.error("Database error:", error.message);
+      return new Response("Internal error occurred", { status: 500 });    }  },};
 ```
 
 Note
@@ -307,35 +183,17 @@ To connect to Neon using `@neondatabase/serverless`, follow these steps:
 1. You need to have an existing Neon database to connect to. [Create a Neon database ↗](https://neon.tech/docs/postgres/tutorial-createdb#create-a-table) or [load data from an existing database to Neon ↗](https://neon.tech/docs/import/import-from-postgres).
 2. Create an `elements` table using the Neon SQL editor. The SQL Editor allows you to query your databases directly from the Neon Console.  
 ```  
-CREATE TABLE elements (  
-  id INTEGER NOT NULL,  
-  elementName TEXT NOT NULL,  
-  atomicNumber INTEGER NOT NULL,  
-  symbol TEXT NOT NULL  
-);  
+CREATE TABLE elements (  id INTEGER NOT NULL,  elementName TEXT NOT NULL,  atomicNumber INTEGER NOT NULL,  symbol TEXT NOT NULL);  
 ```
 3. Insert some data into your newly created table.  
 ```  
-INSERT INTO elements (id, elementName, atomicNumber, symbol)  
-VALUES  
-  (1, 'Hydrogen', 1, 'H'),  
-  (2, 'Helium', 2, 'He'),  
-  (3, 'Lithium', 3, 'Li'),  
-  (4, 'Beryllium', 4, 'Be'),  
-  (5, 'Boron', 5, 'B'),  
-  (6, 'Carbon', 6, 'C'),  
-  (7, 'Nitrogen', 7, 'N'),  
-  (8, 'Oxygen', 8, 'O'),  
-  (9, 'Fluorine', 9, 'F'),  
-  (10, 'Neon', 10, 'Ne');  
+INSERT INTO elements (id, elementName, atomicNumber, symbol)VALUES  (1, 'Hydrogen', 1, 'H'),  (2, 'Helium', 2, 'He'),  (3, 'Lithium', 3, 'Li'),  (4, 'Beryllium', 4, 'Be'),  (5, 'Boron', 5, 'B'),  (6, 'Carbon', 6, 'C'),  (7, 'Nitrogen', 7, 'N'),  (8, 'Oxygen', 8, 'O'),  (9, 'Fluorine', 9, 'F'),  (10, 'Neon', 10, 'Ne');  
 ```
 4. Configure the Neon database credentials in your Worker:  
 You need to add your Neon database connection string as a secret to your Worker. Get your connection string from the [Neon Console ↗](https://console.neon.tech) under **Connection Details**, then add it as a secret using Wrangler:  
 Terminal window  
 ```  
-# Add the database connection string as a secret  
-npx wrangler secret put DATABASE_URL  
-# When prompted, paste your Neon database connection string  
+# Add the database connection string as a secretnpx wrangler secret put DATABASE_URL# When prompted, paste your Neon database connection string  
 ```
 5. In your Worker, install the `@neondatabase/serverless` driver to connect to your database and start manipulating data:  
  npm  yarn  pnpm  bun  
@@ -355,14 +213,8 @@ bun add @neondatabase/serverless
 JavaScript  
 ```  
 import { Client } from "@neondatabase/serverless";  
-export default {  
-  async fetch(request, env, ctx) {  
-    const client = new Client(env.DATABASE_URL);  
-    await client.connect();  
-    const { rows } = await client.query("SELECT * FROM elements");  
-    return new Response(JSON.stringify(rows));  
-  },  
-};  
+export default {  async fetch(request, env, ctx) {    const client = new Client(env.DATABASE_URL);    await client.connect();    const { rows } = await client.query("SELECT * FROM elements");  
+    return new Response(JSON.stringify(rows));  },};  
 ```
 
 To learn more about Neon, refer to [Neon's official documentation ↗](https://neon.tech/docs/introduction).

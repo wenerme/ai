@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -42,7 +42,7 @@ To review a detailed description of an HTTP request and its associated policy:
 ### Provided analytics
 
 * HTTP Requests over time  
-   * Time series view of HTTP requests
+  * Time series view of HTTP requests
 * Top Actions
 * Top Countries
 * Top Blocked Users
@@ -66,7 +66,7 @@ To review a detailed description of a DNS query and its associated policy:
 ### Provided analytics
 
 * DNS Queries over time  
-   * Time series view of DNS queries
+  * Time series view of DNS queries
 * Top Actions
 * Top Countries
 * Top Blocked Users
@@ -89,7 +89,7 @@ To review a detailed description of a network session and its associated policy:
 ### Provided analytics
 
 * Network Sessions over time  
-   * Time series view of network sessions
+  * Time series view of network sessions
 * Top Actions
 * Top Countries
 * Top Blocked Users
@@ -114,31 +114,17 @@ You can use the [GraphQL Analytics API](https://developers.cloudflare.com/analyt
 
 To explore the schema, you can use a GraphQL client such as [GraphiQL ↗](https://github.com/graphql/graphiql/tree/main/packages/graphiql#readme) or [Altair ↗](https://altairgraphql.dev/).
 
-1. [Create an API token](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/api-token-auth/) with the following permissions:  
-| Type    | Item              | Permission |  
-| ------- | ----------------- | ---------- |  
+1. [Create an API token](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/api-token-auth/) with the following permissions:
+
+| Type    | Item              | Permission |
+| ------- | ----------------- | ---------- |
 | Account | Account Analytics | Read       |
 2. In your GraphQL client, [add your API token](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/graphql-client-headers/) as an Authorization header.
 3. Compose a query to access your Gateway Analytics datasets. For example, you can query the `gatewayResolverQueriesAdaptiveGroups` dataset to return the adaptive groups of DNS queries resolved by Gateway:  
 ```  
-query GatewaySampleQuery($accountTag: string!, $start: Time) {  
-  viewer {  
-    accounts(filter: { accountTag: $accountTag }) {  
-      gatewayResolverQueriesAdaptiveGroups(  
-        filter: { datetime_gt: $start }  
-        limit: 10  
-      ) {  
-        count  
-        dimensions {  
-          queryNameReversed  
-          resolverDecision  
-        }  
-      }  
-    }  
-  }  
-}  
+query GatewaySampleQuery($accountTag: string!, $start: Time) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      gatewayResolverQueriesAdaptiveGroups(        filter: { datetime_gt: $start }        limit: 10      ) {        count        dimensions {          queryNameReversed          resolverDecision        }      }    }  }}  
 ```  
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA4gQwC5gO4KgZQQWwA4A2YAiuNABQAkCAxjQPYgB2SAKggOYBcMAzkhACWTDgEIANDEr8EEJD1aCcYAJQwA3gCgYMAG6C0kDdp0xaDZkl7kAZoIIoIPdWbqMW7blPPu2nGAC+alqmphzIaBgASmC89AS6kKSQBrwAggAmCHhIgolwEIx41iahOnYOkM4wWSi5ygD6HPJSMnKBpWUESoItAIwADJ06wcOmFixjOhlKYEy8gvTzxmVloJBQAHK4YDGJELxgGVOmELHx+wAiYDSCC0snAWNPoS8dAUA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXsICMADmS8ArJgAsATkxjFALRABfIA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA4gQwC5gO4KgZQQWwA4A2YAiuNABQAkCAxjQPYgB2SAKggOYBcMAzkhACWTDgEIANDEr8EEJD1aCcYAJQwA3gCgYMAG6C0kDdp0xaDZkl7kAZoIIoIPdWbqMW7blPPu2nGAC+alqmphzIaBgASmC89AS6kKSQBrwAggAmCHhIgolwEIx41iahOnYOkM4wWSi5ygD6HPJSMnKBpWUESoItAIwADJ06wcOmFixjOhlKYEy8gvTzxmVloJBQAHK4YDGJELxgGVOmELHx+wAiYDSCC0snAWNPoS8dAUA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXsICMADmRiA7JgAsAzAGZlALRABfIA)
 
 For more information, refer to [Compose a query in GraphiQL](https://developers.cloudflare.com/analytics/graphql-api/getting-started/compose-graphql-query/).
 

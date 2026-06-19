@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,10 +21,7 @@ To get started with your PKCS#11 token you will need to initialize it with a pri
 Terminal window
 
 ```
-
 pkcs11-tool --module <module path> --list-token-slots
-
-
 ```
 
 You will also want to check the label of the private key you imported (or generated). Run the following command and look for a `Private Key Object`:
@@ -32,12 +29,7 @@ You will also want to check the label of the private key you imported (or genera
 Terminal window
 
 ```
-
-pkcs11-tool --module <module path> --pin <pin> \
-
-    --list-token-slots --login --list-objects
-
-
+pkcs11-tool --module <module path> --pin <pin> \    --list-token-slots --login --list-objects
 ```
 
 You now have all the information you need to use your PKCS#11 token with the Keyless server, by adding to the `private_key_stores` section in the configuration file. You can specify the key pairs that you want Keyless to have access to in the [configuration file using the PKCS#11 URI ↗](https://tools.ietf.org/html/rfc7512) format.
@@ -47,10 +39,7 @@ You now have all the information you need to use your PKCS#11 token with the Key
 A PKCS#11 URI is a sequence of attribute value pairs separated by a semicolon that form a one-level path component, optionally followed by a query. The general form represented is:
 
 ```
-
 pkcs11:path-component[?query-component]
-
-
 ```
 
 The URI path component contains attributes that identify a resource. The query component can contain a few attributes that may be needed to retrieve the resource identified by the URI path component. Attributes in the path component are delimited by the `;` character, and attributes in the query component use `&` as a delimiter. All attributes are URL-encoded.
@@ -68,18 +57,7 @@ For certain modules, a query attribute `max-sessions` is required in order to pr
 Here are some examples of PKCS#11 URIs for keys stored on various modules:
 
 ```
-
-private_key_stores:
-
-- uri: pkcs11:token=SoftHSM2%20RSA%20Token;id=%03?module-path=/usr/lib64/libsofthsm2.so&pin-value=1234
-
-- uri: pkcs11:token=accelerator;object=thaleskey?module-path=/opt/nfast/toolkits/pkcs11/libcknfast.so
-
-- uri: pkcs11:token=YubiKey%20PIV;id=%00?module-path=/usr/lib64/libykcs11.so&pin-value=123456&max-sessions=1
-
-- uri: pkcs11:token=elab2parN;id=%04?module-path=/usr/lib/libCryptoki2_64.so&pin-value=crypto1
-
-
+private_key_stores:- uri: pkcs11:token=SoftHSM2%20RSA%20Token;id=%03?module-path=/usr/lib64/libsofthsm2.so&pin-value=1234- uri: pkcs11:token=accelerator;object=thaleskey?module-path=/opt/nfast/toolkits/pkcs11/libcknfast.so- uri: pkcs11:token=YubiKey%20PIV;id=%00?module-path=/usr/lib64/libykcs11.so&pin-value=123456&max-sessions=1- uri: pkcs11:token=elab2parN;id=%04?module-path=/usr/lib/libCryptoki2_64.so&pin-value=crypto1
 ```
 
 ## Limitations

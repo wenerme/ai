@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,19 +19,7 @@ To create the correct Sourcing Kit permissions:
 1. Log in to your AWS IAM account.
 2. Create a policy with the following format (replace `<BUCKET_NAME>` with the bucket you want to grant access to):  
 ```  
-{  
-  "Version": "2012-10-17",  
-  "Statement": [  
-    {  
-      "Effect": "Allow",  
-      "Action": ["s3:Get*", "s3:List*"],  
-      "Resource": [  
-        "arn:aws:s3:::<BUCKET_NAME>",  
-        "arn:aws:s3:::<BUCKET_NAME>/*"  
-      ]  
-    }  
-  ]  
-}  
+{  "Version": "2012-10-17",  "Statement": [    {      "Effect": "Allow",      "Action": ["s3:Get*", "s3:List*"],      "Resource": [        "arn:aws:s3:::<BUCKET_NAME>",        "arn:aws:s3:::<BUCKET_NAME>/*"      ]    }  ]}  
 ```
 3. Next, create a new user and attach the created policy to that user.
 

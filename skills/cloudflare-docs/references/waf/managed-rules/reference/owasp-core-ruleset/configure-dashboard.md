@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,8 +20,8 @@ Learn more about the [concepts](https://developers.cloudflare.com/waf/managed-ru
 
 ## Deploy the Cloudflare OWASP Core Ruleset
 
-* [  New dashboard ](#tab-panel-11236)
-* [ Old dashboard ](#tab-panel-11237)
+* [  New dashboard ](#tab-panel-11253)
+* [ Old dashboard ](#tab-panel-11254)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -52,21 +52,21 @@ You can configure (or override) the following Cloudflare OWASP Core Ruleset sett
 
 * **Scope**: When you specify a custom filter expression, the Cloudflare OWASP Core Ruleset applies only to a subset of the incoming requests. By default, a managed ruleset deployed in the dashboard applies to all incoming traffic.
 * **[Paranoia level](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/concepts/#paranoia-level)**: The paranoia level (PL) classifies OWASP rules according to their aggressiveness, varying from _PL1_ to _PL4_, where _PL4_ is the most strict level. The available levels are:  
-   * _PL1_ (default)  
-   * _PL2_  
-   * _PL3_  
-   * _PL4_
+  * _PL1_ (default)
+  * _PL2_
+  * _PL3_
+  * _PL4_
 * **[Score threshold](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/concepts/#score-threshold)**: The score threshold (or anomaly threshold) defines the minimum cumulative score — obtained from matching OWASP rules — for the WAF to apply the configured OWASP ruleset action. The available thresholds are:  
-   * _Low - 60 and higher_  
-   * _Medium - 40 and higher_ (default)  
-   * _High - 25 and higher_
+  * _Low - 60 and higher_
+  * _Medium - 40 and higher_ (default)
+  * _High - 25 and higher_
 * **OWASP action**: The action to perform when the calculated [request threat score](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/concepts/#request-threat-score) is greater than the [score threshold](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/concepts/#score-threshold). The available actions are: _Block_, _Log_, _Non-Interactive Challenge_, _Managed Challenge_, and _Interactive Challenge_.
 * **[Payload logging](https://developers.cloudflare.com/waf/managed-rules/payload-logging/configure/)**: When enabled, logs the request information (payload) that triggered a specific rule of the managed ruleset. You must configure a public key to encrypt the payload.
 
 Once you have [deployed the Cloudflare OWASP Core Ruleset](#deploy-in-the-dashboard), do the following to configure it in the dashboard:
 
-* [  New dashboard ](#tab-panel-11238)
-* [ Old dashboard ](#tab-panel-11239)
+* [  New dashboard ](#tab-panel-11255)
+* [ Old dashboard ](#tab-panel-11256)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -87,9 +87,10 @@ If you have not deployed the managed ruleset yet, select **Cloudflare OWASP Core
 5. Under **Ruleset configuration**, define settings for all the rules in the Cloudflare OWASP Core Ruleset using the drop-down lists.  
 For example, select the action to perform for all the rules in the ruleset.  
 ![The Configure deployment page displaying the available options to override all the rules in the OWASP Core Ruleset: OWASP Anomaly Score Threshold, OWASP Paranoia Level, and OWASP Action.](https://developers.cloudflare.com/_astro/ruleset-config-owasp-core-ruleset.mDp-LOkW_2rGR87.webp)
-6. If you have not deployed the Cloudflare OWASP Core Ruleset yet:  
-   * Select **Deploy** to deploy the ruleset immediately.  
-   * Select **Save as Draft** to save your deployment settings for later.  
+6. If you have not deployed the Cloudflare OWASP Core Ruleset yet:
+
+  * Select **Deploy** to deploy the ruleset immediately.
+  * Select **Save as Draft** to save your deployment settings for later.  
 If you are editing a managed ruleset you already deployed, select **Save**.
 
 ### Tag-level configuration
@@ -104,8 +105,8 @@ Setting the rule status for specific tags affects all current and future rules w
 
 Once you have [deployed the Cloudflare OWASP Core Ruleset](#deploy-in-the-dashboard), do the following to configure rules with specific tags in the dashboard:
 
-* [  New dashboard ](#tab-panel-11242)
-* [ Old dashboard ](#tab-panel-11243)
+* [  New dashboard ](#tab-panel-11259)
+* [ Old dashboard ](#tab-panel-11260)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -118,9 +119,10 @@ If not all the rules are displayed in the current page, extend your selection to
 ![The Configure deployment page displaying selected rules with the 'attack-xss' tag in the Cloudflare OWASP Core Ruleset.](https://developers.cloudflare.com/_astro/tags-config-owasp-core-ruleset.DNxlhwVX_1HV2zC.webp)
 2. Update one or more settings for the selected rules using the buttons displayed in the top right corner of the table (for example, **Set status**).
 3. Select **Next**.
-4. A dialog appears asking you if any new rules with the selected tags should be configured with the field values you selected.  
-   * Select **Include new rules** if you want to apply your configurations to any new rules with the select tags.  
-   * Select **Only selected rules** to apply your configurations to the selected rules only.
+4. A dialog appears asking you if any new rules with the selected tags should be configured with the field values you selected.
+
+  * Select **Include new rules** if you want to apply your configurations to any new rules with the select tags.
+  * Select **Only selected rules** to apply your configurations to the selected rules only.
 5. Select **Save**.
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
@@ -134,9 +136,10 @@ If not all the rules are displayed in the current page, extend your selection to
 ![The Configure deployment page displaying selected rules with the 'attack-xss' tag in the Cloudflare OWASP Core Ruleset.](https://developers.cloudflare.com/_astro/tags-config-owasp-core-ruleset.DNxlhwVX_1HV2zC.webp)
 2. Update one or more settings for the selected rules using the buttons displayed in the top right corner of the table (for example, **Set status**).
 3. Select **Next**.
-4. A dialog appears asking you if any new rules with the selected tags should be configured with the field values you selected.  
-   * Select **Include new rules** if you want to apply your configurations to any new rules with the select tags.  
-   * Select **Only selected rules** to apply your configurations to the selected rules only.
+4. A dialog appears asking you if any new rules with the selected tags should be configured with the field values you selected.
+
+  * Select **Include new rules** if you want to apply your configurations to any new rules with the select tags.
+  * Select **Only selected rules** to apply your configurations to the selected rules only.
 5. Select **Save**.
 
 ### Rule-level configuration
@@ -147,8 +150,8 @@ You can configure (or override) the following setting in the dashboard for the s
 
 Once you have [deployed the Cloudflare OWASP Core Ruleset](#deploy-in-the-dashboard), do the following to configure individual ruleset rules in the dashboard:
 
-* [  New dashboard ](#tab-panel-11240)
-* [ Old dashboard ](#tab-panel-11241)
+* [  New dashboard ](#tab-panel-11257)
+* [ Old dashboard ](#tab-panel-11258)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

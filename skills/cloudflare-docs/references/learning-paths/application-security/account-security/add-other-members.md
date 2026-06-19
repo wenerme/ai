@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,8 +22,8 @@ To manage account members, you must have a role of **Super Administrator** and h
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-9019)
-* [ API ](#tab-panel-9020)
+* [ Dashboard ](#tab-panel-9095)
+* [ API ](#tab-panel-9096)
 
 To view members using the dashboard:
 
@@ -37,18 +37,19 @@ To view members using the API, send a [GET request](https://developers.cloudflar
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-9021)
-* [ API ](#tab-panel-9022)
+* [ Dashboard ](#tab-panel-9097)
+* [ API ](#tab-panel-9098)
 
 To add a member to your account:
 
 1. In the Cloudflare dashboard, go to the **Members** page.  
 [ Go to **Members** ](https://dash.cloudflare.com/?to=/:account/members)
 2. Select **Invite**.
-3. Fill out the following information:  
-   * **Invite members**: Enter one or more email addresses (if multiple, separate addresses with commas).  
-   * **Scope**: Use a variety of fields to adjust the [scope](https://developers.cloudflare.com/fundamentals/manage-members/roles/) of your roles.  
-   * **Roles**: Choose one or more [roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/) to assign your members.
+3. Fill out the following information:
+
+  * **Invite members**: Enter one or more email addresses (if multiple, separate addresses with commas).
+  * **Scope**: Use a variety of fields to adjust the [scope](https://developers.cloudflare.com/fundamentals/manage-members/roles/) of your roles.
+  * **Roles**: Choose one or more [roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/) to assign your members.
 4. Select **Continue to summary**.
 5. Review the information, then select **Invite**.
 
@@ -62,8 +63,8 @@ To add a member using the API, send a [POST request](https://developers.cloudfla
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-9023)
-* [ API ](#tab-panel-9024)
+* [ Dashboard ](#tab-panel-9099)
+* [ API ](#tab-panel-9100)
 
 To edit member permissions using the dashboard:
 
@@ -81,36 +82,7 @@ Then, send a [PUT request](https://developers.cloudflare.com/api/resources/accou
 Request
 
 ```
-
-curl --request PUT \
-
-  --url https://api.cloudflare.com/client/v4/accounts/{account_id}/members/{member_id} \
-
-  --header 'Authorization: Bearer <API_TOKEN>' \
-
-  --header 'Content-Type: application/json' \
-
-  --data '{
-
-    "roles": [
-
-          {
-
-              "id": "<ROLE_ID1>"
-
-          },
-
-          {
-
-              "id": "<ROLE_ID2>"
-
-          }
-
-      ]
-
-    }'
-
-
+curl --request PUT \  --url https://api.cloudflare.com/client/v4/accounts/{account_id}/members/{member_id} \  --header 'Authorization: Bearer <API_TOKEN>' \  --header 'Content-Type: application/json' \  --data '{    "roles": [          {              "id": "<ROLE_ID1>"          },          {              "id": "<ROLE_ID2>"          }      ]    }'
 ```
 
 ## Resend an invitation
@@ -130,8 +102,8 @@ If you invited a member to your account but they cannot find the invitation or t
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-9025)
-* [ API ](#tab-panel-9026)
+* [ Dashboard ](#tab-panel-9101)
+* [ API ](#tab-panel-9102)
 
 To revoke a member's access to your account:
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -120,18 +120,7 @@ If you are running a version of Wrangler that is greater than `3.66.0` but below
 #### 3\. Make sure your `tsconfig.json` includes the generated types
 
 ```
-
-{
-
-  "compilerOptions": {
-
-    "types": ["./worker-configuration.d.ts"]
-
-  }
-
-}
-
-
+{  "compilerOptions": {    "types": ["./worker-configuration.d.ts"]  }}
 ```
 
 Note that if you have specified a custom path for the runtime types file, you should use that in your `compilerOptions.types` array instead of the default path.
@@ -161,18 +150,7 @@ bun add @types/node
 Then add this to your `tsconfig.json`.
 
 ```
-
-{
-
-  "compilerOptions": {
-
-    "types": ["./worker-configuration.d.ts", "node"]
-
-  }
-
-}
-
-
+{  "compilerOptions": {    "types": ["./worker-configuration.d.ts", "node"]  }}
 ```
 
 #### 5\. Update your scripts and CI pipelines
@@ -182,114 +160,55 @@ Regardless of your specific framework or build tools, you should run the `wrangl
 Most projects will have existing build and development scripts, as well as some type-checking. In the example below, we're adding the `wrangler types` before the type-checking script in the project:
 
 ```
-
-{
-
-  "scripts": {
-
-    "dev": "existing-dev-command",
-
-    "build": "existing-build-command",
-
-    "generate-types": "wrangler types",
-
-    "type-check": "generate-types && tsc"
-
-  }
-
-}
-
-
+{  "scripts": {    "dev": "existing-dev-command",    "build": "existing-build-command",    "generate-types": "wrangler types",    "type-check": "generate-types && tsc"  }}
 ```
 
 We recommend you commit your generated types file for use in CI. You can run `wrangler types` before other CI commands, as it should not take more than a few seconds. For example:
 
-* [ npm ](#tab-panel-11830)
-* [ yarn ](#tab-panel-11831)
-* [ pnpm ](#tab-panel-11832)
+* [ npm ](#tab-panel-11847)
+* [ yarn ](#tab-panel-11848)
+* [ pnpm ](#tab-panel-11849)
 
 YAML
 
 ```
-
-- run: npm run generate-types
-
-- run: npm run build
-
-- run: npm test
-
-
+- run: npm run generate-types- run: npm run build- run: npm test
 ```
 
 YAML
 
 ```
-
-- run: yarn generate-types
-
-- run: yarn build
-
-- run: yarn test
-
-
+- run: yarn generate-types- run: yarn build- run: yarn test
 ```
 
 YAML
 
 ```
-
-- run: pnpm run generate-types
-
-- run: pnpm run build
-
-- run: pnpm test
-
-
+- run: pnpm run generate-types- run: pnpm run build- run: pnpm test
 ```
 
 Alternatively, if you commit your generated types file and want to verify it stays up-to-date in CI, you can use the `--check` flag:
 
-* [ npm ](#tab-panel-11833)
-* [ yarn ](#tab-panel-11834)
-* [ pnpm ](#tab-panel-11835)
+* [ npm ](#tab-panel-11850)
+* [ yarn ](#tab-panel-11851)
+* [ pnpm ](#tab-panel-11852)
 
 YAML
 
 ```
-
-- run: npx wrangler types --check
-
-- run: npm run build
-
-- run: npm test
-
-
+- run: npx wrangler types --check- run: npm run build- run: npm test
 ```
 
 YAML
 
 ```
-
-- run: yarn wrangler types --check
-
-- run: yarn build
-
-- run: yarn test
-
-
+- run: yarn wrangler types --check- run: yarn build- run: yarn test
 ```
 
 YAML
 
 ```
-
-- run: pnpm wrangler types --check
-
-- run: pnpm run build
-
-- run: pnpm test
-
-
+- run: pnpm wrangler types --check- run: pnpm run build- run: pnpm test
 ```
 
 This fails the CI job if the committed types file is out-of-date, prompting developers to regenerate and commit the updated types.

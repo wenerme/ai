@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,10 +26,7 @@ Unlike the AWS SDKs, s3mini expects a **bucket-scoped endpoint** — the bucket 
 Terminal window
 
 ```
-
 npm install s3mini
-
-
 ```
 
 ## Node.js / Bun
@@ -37,49 +34,12 @@ npm install s3mini
 TypeScript
 
 ```
-
 import { S3mini } from "s3mini";
-
-
-const s3 = new S3mini({
-
-  accessKeyId: process.env.R2_ACCESS_KEY_ID!,
-
-  secretAccessKey: process.env.R2_SECRET_ACCESS_KEY!,
-
-  // Bucket-scoped endpoint — include your bucket name in the path
-
-  endpoint: `https://${process.env.ACCOUNT_ID}.r2.cloudflarestorage.com/my-bucket`,
-
-  region: "auto",
-
-});
-
-
-// Upload an object
-
-await s3.putObject("hello.txt", "Hello from s3mini!");
-
-
-// Download an object as a string
-
-const text = await s3.getObject("hello.txt");
-
-console.log(text);
-
-
-// List objects with a prefix
-
-const objects = await s3.listObjects("/", "hello");
-
-console.log(objects);
-
-
-// Delete an object
-
-await s3.deleteObject("hello.txt");
-
-
+const s3 = new S3mini({  accessKeyId: process.env.R2_ACCESS_KEY_ID!,  secretAccessKey: process.env.R2_SECRET_ACCESS_KEY!,  // Bucket-scoped endpoint — include your bucket name in the path  endpoint: `https://${process.env.ACCOUNT_ID}.r2.cloudflarestorage.com/my-bucket`,  region: "auto",});
+// Upload an objectawait s3.putObject("hello.txt", "Hello from s3mini!");
+// Download an object as a stringconst text = await s3.getObject("hello.txt");console.log(text);
+// List objects with a prefixconst objects = await s3.listObjects("/", "hello");console.log(objects);
+// Delete an objectawait s3.deleteObject("hello.txt");
 ```
 
 ## Cloudflare Workers
@@ -93,116 +53,15 @@ s3mini works natively in Workers without the `nodejs_compat` compatibility flag.
 TypeScript
 
 ```
-
 import { S3mini } from "s3mini";
-
-
-interface Env {
-
-  R2_ACCESS_KEY_ID: string;
-
-  R2_SECRET_ACCESS_KEY: string;
-
-  ACCOUNT_ID: string;
-
-}
-
-
-export default {
-
-  async fetch(request: Request, env: Env): Promise<Response> {
-
-    const s3 = new S3mini({
-
-      accessKeyId: env.R2_ACCESS_KEY_ID,
-
-      secretAccessKey: env.R2_SECRET_ACCESS_KEY,
-
-      endpoint: `https://${env.ACCOUNT_ID}.r2.cloudflarestorage.com/my-bucket`,
-
-      region: "auto",
-
-    });
-
-
-    const url = new URL(request.url);
-
-    const key = url.pathname.slice(1); // strip leading "/"
-
-
-    if (!key) {
-
-      return new Response("Missing object key", { status: 400 });
-
-    }
-
-
-    switch (request.method) {
-
-      case "PUT": {
-
-        const data = await request.arrayBuffer();
-
-        const contentType =
-
-          request.headers.get("content-type") ?? "application/octet-stream";
-
-        await s3.putObject(key, new Uint8Array(data), contentType);
-
-        return new Response("Created", { status: 201 });
-
-      }
-
-
-      case "GET": {
-
-        const response = await s3.getObjectResponse(key);
-
-        if (!response) {
-
-          return new Response("Not Found", { status: 404 });
-
-        }
-
-        return new Response(response.body, {
-
-          headers: {
-
-            "content-type":
-
-              response.headers.get("content-type") ??
-
-              "application/octet-stream",
-
-            etag: response.headers.get("etag") ?? "",
-
-          },
-
-        });
-
-      }
-
-
-      case "DELETE": {
-
-        await s3.deleteObject(key);
-
-        return new Response(null, { status: 204 });
-
-      }
-
-
-      default:
-
-        return new Response("Method Not Allowed", { status: 405 });
-
-    }
-
-  },
-
-};
-
-
+interface Env {  R2_ACCESS_KEY_ID: string;  R2_SECRET_ACCESS_KEY: string;  ACCOUNT_ID: string;}
+export default {  async fetch(request: Request, env: Env): Promise<Response> {    const s3 = new S3mini({      accessKeyId: env.R2_ACCESS_KEY_ID,      secretAccessKey: env.R2_SECRET_ACCESS_KEY,      endpoint: `https://${env.ACCOUNT_ID}.r2.cloudflarestorage.com/my-bucket`,      region: "auto",    });
+    const url = new URL(request.url);    const key = url.pathname.slice(1); // strip leading "/"
+    if (!key) {      return new Response("Missing object key", { status: 400 });    }
+    switch (request.method) {      case "PUT": {        const data = await request.arrayBuffer();        const contentType =          request.headers.get("content-type") ?? "application/octet-stream";        await s3.putObject(key, new Uint8Array(data), contentType);        return new Response("Created", { status: 201 });      }
+      case "GET": {        const response = await s3.getObjectResponse(key);        if (!response) {          return new Response("Not Found", { status: 404 });        }        return new Response(response.body, {          headers: {            "content-type":              response.headers.get("content-type") ??              "application/octet-stream",            etag: response.headers.get("etag") ?? "",          },        });      }
+      case "DELETE": {        await s3.deleteObject(key);        return new Response(null, { status: 204 });      }
+      default:        return new Response("Method Not Allowed", { status: 405 });    }  },};
 ```
 
 ```json

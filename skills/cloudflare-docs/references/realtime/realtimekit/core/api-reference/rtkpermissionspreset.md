@@ -5,7 +5,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -14,46 +14,46 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 The PermissionPreset class represents the meeting permissions for the current participant
 
 * [PermissionPreset](#module%5FPermissionPreset)  
-   * _instance_  
-         * [.stageEnabled](#module%5FPermissionPreset+stageEnabled)  
-         * [.stageAccess](#module%5FPermissionPreset+stageAccess)  
-         * [.acceptWaitingRequests](#module%5FPermissionPreset+acceptWaitingRequests)  
-         * [.requestProduceVideo](#module%5FPermissionPreset+requestProduceVideo)  
-         * [.requestProduceAudio](#module%5FPermissionPreset+requestProduceAudio)  
-         * [.requestProduceScreenshare](#module%5FPermissionPreset+requestProduceScreenshare)  
-         * [.canAllowParticipantAudio](#module%5FPermissionPreset+canAllowParticipantAudio)  
-         * [.canAllowParticipantScreensharing](#module%5FPermissionPreset+canAllowParticipantScreensharing)  
-         * [.canAllowParticipantVideo](#module%5FPermissionPreset+canAllowParticipantVideo)  
-         * [.canDisableParticipantAudio](#module%5FPermissionPreset+canDisableParticipantAudio)  
-         * [.canDisableParticipantVideo](#module%5FPermissionPreset+canDisableParticipantVideo)  
-         * [.kickParticipant](#module%5FPermissionPreset+kickParticipant)  
-         * [.pinParticipant](#module%5FPermissionPreset+pinParticipant)  
-         * [.canRecord](#module%5FPermissionPreset+canRecord)  
-         * ~~[.waitingRoomType](#module%5FPermissionPreset+waitingRoomType)~~  
-         * [.waitingRoomBehaviour](#module%5FPermissionPreset+waitingRoomBehaviour)  
-         * [.plugins](#module%5FPermissionPreset+plugins)  
-         * [.polls](#module%5FPermissionPreset+polls)  
-         * ~~[.produceVideo](#module%5FPermissionPreset+produceVideo)~~  
-         * ~~[.requestProduce](#module%5FPermissionPreset+requestProduce)~~  
-         * [.canProduceVideo](#module%5FPermissionPreset+canProduceVideo)  
-         * ~~[.produceScreenshare](#module%5FPermissionPreset+produceScreenshare)~~  
-         * [.canProduceScreenshare](#module%5FPermissionPreset+canProduceScreenshare)  
-         * ~~[.produceAudio](#module%5FPermissionPreset+produceAudio)~~  
-         * [.canProduceAudio](#module%5FPermissionPreset+canProduceAudio)  
-         * [.chatPublic](#module%5FPermissionPreset+chatPublic)  
-         * [.chatPrivate](#module%5FPermissionPreset+chatPrivate)  
-         * [.hiddenParticipant](#module%5FPermissionPreset+hiddenParticipant)  
-         * [.showParticipantList](#module%5FPermissionPreset+showParticipantList)  
-         * ~~[.canChangeParticipantRole](#module%5FPermissionPreset+canChangeParticipantRole)~~  
-         * [.canChangeParticipantPermissions](#module%5FPermissionPreset+canChangeParticipantPermissions)  
-         * ~~[.canChangeTheme](#module%5FPermissionPreset+canChangeTheme)~~  
-         * ~~[.canPresent](#module%5FPermissionPreset+canPresent)~~  
-         * ~~[.acceptPresentRequests](#module%5FPermissionPreset+acceptPresentRequests)~~  
-         * ~~[.maxScreenShareCount](#module%5FPermissionPreset+maxScreenShareCount)~~  
-         * [.canLivestream](#module%5FPermissionPreset+canLivestream)  
-   * _static_  
-         * [.fromResponse()](#module%5FPermissionPreset.fromResponse)  
-         * [.default()](#module%5FPermissionPreset.default)
+  * _instance_  
+    * [.stageEnabled](#module%5FPermissionPreset+stageEnabled)
+    * [.stageAccess](#module%5FPermissionPreset+stageAccess)
+    * [.acceptWaitingRequests](#module%5FPermissionPreset+acceptWaitingRequests)
+    * [.requestProduceVideo](#module%5FPermissionPreset+requestProduceVideo)
+    * [.requestProduceAudio](#module%5FPermissionPreset+requestProduceAudio)
+    * [.requestProduceScreenshare](#module%5FPermissionPreset+requestProduceScreenshare)
+    * [.canAllowParticipantAudio](#module%5FPermissionPreset+canAllowParticipantAudio)
+    * [.canAllowParticipantScreensharing](#module%5FPermissionPreset+canAllowParticipantScreensharing)
+    * [.canAllowParticipantVideo](#module%5FPermissionPreset+canAllowParticipantVideo)
+    * [.canDisableParticipantAudio](#module%5FPermissionPreset+canDisableParticipantAudio)
+    * [.canDisableParticipantVideo](#module%5FPermissionPreset+canDisableParticipantVideo)
+    * [.kickParticipant](#module%5FPermissionPreset+kickParticipant)
+    * [.pinParticipant](#module%5FPermissionPreset+pinParticipant)
+    * [.canRecord](#module%5FPermissionPreset+canRecord)
+    * ~~[.waitingRoomType](#module%5FPermissionPreset+waitingRoomType)~~
+    * [.waitingRoomBehaviour](#module%5FPermissionPreset+waitingRoomBehaviour)
+    * [.plugins](#module%5FPermissionPreset+plugins)
+    * [.polls](#module%5FPermissionPreset+polls)
+    * ~~[.produceVideo](#module%5FPermissionPreset+produceVideo)~~
+    * ~~[.requestProduce](#module%5FPermissionPreset+requestProduce)~~
+    * [.canProduceVideo](#module%5FPermissionPreset+canProduceVideo)
+    * ~~[.produceScreenshare](#module%5FPermissionPreset+produceScreenshare)~~
+    * [.canProduceScreenshare](#module%5FPermissionPreset+canProduceScreenshare)
+    * ~~[.produceAudio](#module%5FPermissionPreset+produceAudio)~~
+    * [.canProduceAudio](#module%5FPermissionPreset+canProduceAudio)
+    * [.chatPublic](#module%5FPermissionPreset+chatPublic)
+    * [.chatPrivate](#module%5FPermissionPreset+chatPrivate)
+    * [.hiddenParticipant](#module%5FPermissionPreset+hiddenParticipant)
+    * [.showParticipantList](#module%5FPermissionPreset+showParticipantList)
+    * ~~[.canChangeParticipantRole](#module%5FPermissionPreset+canChangeParticipantRole)~~
+    * [.canChangeParticipantPermissions](#module%5FPermissionPreset+canChangeParticipantPermissions)
+    * ~~[.canChangeTheme](#module%5FPermissionPreset+canChangeTheme)~~
+    * ~~[.canPresent](#module%5FPermissionPreset+canPresent)~~
+    * ~~[.acceptPresentRequests](#module%5FPermissionPreset+acceptPresentRequests)~~
+    * ~~[.maxScreenShareCount](#module%5FPermissionPreset+maxScreenShareCount)~~
+    * [.canLivestream](#module%5FPermissionPreset+canLivestream)
+  * _static_  
+    * [.fromResponse()](#module%5FPermissionPreset.fromResponse)
+    * [.default()](#module%5FPermissionPreset.default)
 
 ### meeting.self.permissions.stageEnabled
 
@@ -207,13 +207,13 @@ The `canProduceAudio` shows permissions for enabling audio. There possible value
 
 ### meeting.self.permissions.chatPublic
 
-The `chatPublic` shows permissions for public chat there are 4 permissions`canSend` \- if true, the participant can send chat`text` \- if true, the participant can send text`files` \- if true, the participant can send files
+The `chatPublic` shows permissions for public chat there are 4 permissions `canSend` \- if true, the participant can send chat `text` \- if true, the participant can send text `files` \- if true, the participant can send files
 
 **Kind**: instance property of [PermissionPreset](#module%5FPermissionPreset)  
 
 ### meeting.self.permissions.chatPrivate
 
-The `chatPrivate` shows permissions for public chat there are 4 permissions`canSend` \- if true, the participant can send private chat`text` \- if true, the participant can send text as private chat`files` \- if true, the participant can send files as private chat`canReceive` \- (optional) if true, the participant can receive private chat
+The `chatPrivate` shows permissions for public chat there are 4 permissions `canSend` \- if true, the participant can send private chat `text` \- if true, the participant can send text as private chat `files` \- if true, the participant can send files as private chat `canReceive` \- (optional) if true, the participant can receive private chat
 
 **Kind**: instance property of [PermissionPreset](#module%5FPermissionPreset)  
 

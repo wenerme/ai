@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,146 +28,33 @@ With Containers you can run:
 
 Container instances are spun up on-demand and controlled by code you write in your [Worker](https://developers.cloudflare.com/workers). Instead of chaining together API calls or writing Kubernetes operators, you just write JavaScript:
 
-* [ Worker Code ](#tab-panel-7788)
-* [ Worker Config ](#tab-panel-7789)
+* [ Worker Code ](#tab-panel-7864)
+* [ Worker Config ](#tab-panel-7865)
 
 JavaScript
 
 ```
-
 import { Container, getContainer } from "@cloudflare/containers";
-
-
-export class MyContainer extends Container {
-
-  defaultPort = 4000; // Port the container is listening on
-
-  sleepAfter = "10m"; // Stop the instance if requests not sent for 10 minutes
-
-}
-
-
-export default {
-
-  async fetch(request, env) {
-
-    const { "session-id": sessionId } = await request.json();
-
-    // Get the container instance for the given session ID
-
-    const containerInstance = getContainer(env.MY_CONTAINER, sessionId);
-
-    // Pass the request to the container instance on its default port
-
-    return containerInstance.fetch(request);
-
-  },
-
-};
-
-
+export class MyContainer extends Container {  defaultPort = 4000; // Port the container is listening on  sleepAfter = "10m"; // Stop the instance if requests not sent for 10 minutes}
+export default {  async fetch(request, env) {    const { "session-id": sessionId } = await request.json();    // Get the container instance for the given session ID    const containerInstance = getContainer(env.MY_CONTAINER, sessionId);    // Pass the request to the container instance on its default port    return containerInstance.fetch(request);  },};
 ```
 
-* [  wrangler.jsonc ](#tab-panel-7786)
-* [  wrangler.toml ](#tab-panel-7787)
+* [  wrangler.jsonc ](#tab-panel-7862)
+* [  wrangler.toml ](#tab-panel-7863)
 
 JSONC
 
 ```
-
-{
-
-  "name": "container-starter",
-
-  "main": "src/index.js",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "containers": [
-
-    {
-
-      "class_name": "MyContainer",
-
-      "image": "./Dockerfile",
-
-      "max_instances": 5
-
-    }
-
-  ],
-
-  "durable_objects": {
-
-    "bindings": [
-
-      {
-
-        "class_name": "MyContainer",
-
-        "name": "MY_CONTAINER"
-
-      }
-
-    ]
-
-  },
-
-  "migrations": [
-
-    {
-
-      "new_sqlite_classes": ["MyContainer"],
-
-      "tag": "v1"
-
-    }
-
-  ]
-
-}
-
-
+{  "name": "container-starter",  "main": "src/index.js",  // Set this to today's date  "compatibility_date": "2026-06-18",  "containers": [    {      "class_name": "MyContainer",      "image": "./Dockerfile",      "max_instances": 5    }  ],  "durable_objects": {    "bindings": [      {        "class_name": "MyContainer",        "name": "MY_CONTAINER"      }    ]  },  "migrations": [    {      "new_sqlite_classes": ["MyContainer"],      "tag": "v1"    }  ]}
 ```
 
 TOML
 
 ```
-
-name = "container-starter"
-
-main = "src/index.js"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[[containers]]
-
-class_name = "MyContainer"
-
-image = "./Dockerfile"
-
-max_instances = 5
-
-
-[[durable_objects.bindings]]
-
-class_name = "MyContainer"
-
-name = "MY_CONTAINER"
-
-
-[[migrations]]
-
-new_sqlite_classes = [ "MyContainer" ]
-
-tag = "v1"
-
-
+name = "container-starter"main = "src/index.js"# Set this to today's datecompatibility_date = "2026-06-18"
+[[containers]]class_name = "MyContainer"image = "./Dockerfile"max_instances = 5
+[[durable_objects.bindings]]class_name = "MyContainer"name = "MY_CONTAINER"
+[[migrations]]new_sqlite_classes = [ "MyContainer" ]tag = "v1"
 ```
 
 [ Get started ](https://developers.cloudflare.com/containers/get-started/) [ Containers dashboard ](https://dash.cloudflare.com/?to=/:account/workers/containers) 

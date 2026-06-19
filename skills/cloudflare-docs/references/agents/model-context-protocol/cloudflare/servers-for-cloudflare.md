@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,22 +35,7 @@ This approach uses approximately 1,000 tokens regardless of how many API endpoin
 Add the following configuration to your MCP client:
 
 ```
-
-{
-
-  "mcpServers": {
-
-    "cloudflare-api": {
-
-      "url": "https://mcp.cloudflare.com/mcp"
-
-    }
-
-  }
-
-}
-
-
+{  "mcpServers": {    "cloudflare-api": {      "url": "https://mcp.cloudflare.com/mcp"    }  }}
 ```
 
 When you connect, you will be redirected to Cloudflare to authorize via OAuth and select the permissions to grant to your agent.
@@ -68,10 +53,7 @@ You can install the [Cloudflare Skills plugin ↗](https://github.com/cloudflare
 Install using the [plugin marketplace ↗](https://code.claude.com/docs/en/discover-plugins#add-from-github):
 
 ```
-
 /plugin marketplace add cloudflare/skills
-
-
 ```
 
 #### Cursor
@@ -85,10 +67,7 @@ Install using the [npx skills ↗](https://skills.sh) CLI:
 Terminal window
 
 ```
-
 npx skills add https://github.com/cloudflare/skills
-
-
 ```
 
 #### Clone or copy

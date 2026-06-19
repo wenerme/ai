@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/key-transparency/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,10 +35,7 @@ Use the `--help` option for more details about the commands and their options.
 Terminal window
 
 ```
-
 plexi [OPTIONS] <COMMAND>
-
-
 ```
 
 ### Configure your auditor remote
@@ -62,12 +59,7 @@ An auditor monitors multiple Logs at once. To discover which Logs an auditor is 
 Terminal window
 
 ```
-
-plexi ls --remote-url 'https://plexi.key-transparency.cloudflare.com'
-
-whatsapp.key-transparency.v1
-
-
+plexi ls --remote-url 'https://plexi.key-transparency.cloudflare.com'whatsapp.key-transparency.v1
 ```
 
 ### Audit a signature
@@ -81,29 +73,8 @@ For instance, to verify WhatsApp Log auditted by Cloudflare Auditor, run the fol
 Terminal window
 
 ```
-
-> plexi audit --remote-url 'https://plexi.key-transparency.cloudflare.com' --namespace 'whatsapp.key-transparency.v1' --long
-
-Namespace
-
-  Name               : whatsapp.key-transparency.v1
-
-  Ciphersuite        : ed25519(protobuf)
-
-
-Signature (2024-09-23T16:53:45Z)
-
-  Epoch height        : 489193
-
-  Epoch digest        : cbe5097ae832a3ae51ad866104ffd4aa1f7479e873fd18df9cb96a02fc91ebfe
-
-  Signature           : fe94973e19da826487b637c019d3ce52f0c08093ada00b4fe6563e2f8117b4345121342bc33aae249be47979dfe704478e2c18aed86e674df9f934b718949c08
-
-  Signature verification: success
-
-  Proof verification  : success
-
-
+> plexi audit --remote-url 'https://plexi.key-transparency.cloudflare.com' --namespace 'whatsapp.key-transparency.v1' --longNamespace  Name               : whatsapp.key-transparency.v1  Ciphersuite        : ed25519(protobuf)
+Signature (2024-09-23T16:53:45Z)  Epoch height        : 489193  Epoch digest        : cbe5097ae832a3ae51ad866104ffd4aa1f7479e873fd18df9cb96a02fc91ebfe  Signature           : fe94973e19da826487b637c019d3ce52f0c08093ada00b4fe6563e2f8117b4345121342bc33aae249be47979dfe704478e2c18aed86e674df9f934b718949c08  Signature verification: success  Proof verification  : success
 ```
 
 ```json

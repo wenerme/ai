@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,8 +26,8 @@ After seven days, view your [Shadow IT SaaS Analytics](https://developers.cloudf
 
 To minimize the risk of [shadow IT](https://www.cloudflare.com/learning/access-management/what-is-shadow-it/), some organizations choose to limit their users' access to certain web-based tools and applications. For example, the following policy blocks known AI tools:
 
-* [ Dashboard ](#tab-panel-7659)
-* [ API ](#tab-panel-7660)
+* [ Dashboard ](#tab-panel-7735)
+* [ API ](#tab-panel-7736)
 
 | Selector    | Operator | Value                     | Action |
 | ----------- | -------- | ------------------------- | ------ |
@@ -38,46 +38,15 @@ In the following API examples, `filters: ["l4"]` indicates that this is a networ
 Create a Zero Trust Gateway rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "Block unauthorized applications",
-
-    "description": "Block access to unauthorized AI applications",
-
-    "enabled": true,
-
-    "action": "block",
-
-    "filters": [
-
-        "l4"
-
-    ],
-
-    "traffic": "any(app.type.ids[*] in {25})",
-
-    "identity": "",
-
-    "device_posture": ""
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Block unauthorized applications",    "description": "Block access to unauthorized AI applications",    "enabled": true,    "action": "block",    "filters": [        "l4"    ],    "traffic": "any(app.type.ids[*] in {25})",    "identity": "",    "device_posture": ""  }'
 ```
 
 ## Check user identity
 
 Configure access on a per user or group basis by adding [identity-based conditions](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/) to your policies.
 
-* [ Dashboard ](#tab-panel-7657)
-* [ API ](#tab-panel-7658)
+* [ Dashboard ](#tab-panel-7733)
+* [ API ](#tab-panel-7734)
 
 | Selector         | Operator | Value         | Logic | Action |
 | ---------------- | -------- | ------------- | ----- | ------ |
@@ -87,38 +56,7 @@ Configure access on a per user or group basis by adding [identity-based conditio
 Create a Zero Trust Gateway rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "Check user identity",
-
-    "description": "Block access to Salesforce by temporary employees and contractors",
-
-    "enabled": true,
-
-    "action": "block",
-
-    "filters": [
-
-        "l4"
-
-    ],
-
-    "traffic": "any(app.ids[*] in {606})",
-
-    "identity": "any(identity.groups.name[*] in {\"Contractors\"})",
-
-    "device_posture": ""
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Check user identity",    "description": "Block access to Salesforce by temporary employees and contractors",    "enabled": true,    "action": "block",    "filters": [        "l4"    ],    "traffic": "any(app.ids[*] in {606})",    "identity": "any(identity.groups.name[*] in {\"Contractors\"})",    "device_posture": ""  }'
 ```
 
 ## Enforce device posture
@@ -127,9 +65,9 @@ Require devices to have certain software installed or other configuration attrib
 
 In the following example, you can use a list of [device serial numbers](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/corp-device/) to ensure users can only access an application if they connect with the Cloudflare One Client from a company device:
 
-* [ Dashboard ](#tab-panel-7681)
-* [ API ](#tab-panel-7682)
-* [ Terraform ](#tab-panel-7683)
+* [ Dashboard ](#tab-panel-7757)
+* [ API ](#tab-panel-7758)
+* [ Terraform ](#tab-panel-7759)
 
 | Selector                     | Operator | Value                   | Logic | Action |
 | ---------------------------- | -------- | ----------------------- | ----- | ------ |
@@ -139,67 +77,13 @@ In the following example, you can use a list of [device serial numbers](https://
 Create a Zero Trust Gateway rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "All-NET-ApplicationAccess-Allow",
-
-    "description": "Ensure access to the application comes from authorized WARP clients",
-
-    "precedence": 70,
-
-    "enabled": false,
-
-    "action": "block",
-
-    "filters": [
-
-        "l4"
-
-    ],
-
-    "traffic": "any(net.sni.domains[*] == \"internalapp.com\")",
-
-    "device_posture": "not(any(device_posture.checks.passed[*] in {\"<DEVICE_SERIAL_NUMBERS_LIST_UUID>\"}))"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "All-NET-ApplicationAccess-Allow",    "description": "Ensure access to the application comes from authorized WARP clients",    "precedence": 70,    "enabled": false,    "action": "block",    "filters": [        "l4"    ],    "traffic": "any(net.sni.domains[*] == \"internalapp.com\")",    "device_posture": "not(any(device_posture.checks.passed[*] in {\"<DEVICE_SERIAL_NUMBERS_LIST_UUID>\"}))"  }'
 ```
 
 To get the UUIDs of your device posture checks, use the [List device posture rules](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/devices/subresources/posture/methods/list/) endpoint.
 
 ```
-
-resource "cloudflare_zero_trust_gateway_policy" "all_net_applicationaccess_allow" {
-
-  account_id  = var.cloudflare_account_id
-
-  name        = "All-NET-ApplicationAccess-Allow"
-
-  description = "Ensure access to the application comes from authorized WARP clients"
-
-  precedence  = 70
-
-  enabled     = false
-
-  action      = "block"
-
-  filters     = ["l4"]
-
-  traffic     = "any(net.sni.domains[*] == \"internalapp.com\")"
-
-  posture      =  "not(any(device_posture.checks.passed[*] in {\"${"$"}${cloudflare_zero_trust_list.allowed_devices_sn_list.id}\"}))"
-
-}
-
-
+resource "cloudflare_zero_trust_gateway_policy" "all_net_applicationaccess_allow" {  account_id  = var.cloudflare_account_id  name        = "All-NET-ApplicationAccess-Allow"  description = "Ensure access to the application comes from authorized WARP clients"  precedence  = 70  enabled     = false  action      = "block"  filters     = ["l4"]  traffic     = "any(net.sni.domains[*] == \"internalapp.com\")"  posture      =  "not(any(device_posture.checks.passed[*] in {\"${"$"}${cloudflare_zero_trust_list.allowed_devices_sn_list.id}\"}))"}
 ```
 
 ## Enforce session duration
@@ -212,8 +96,8 @@ Restrict user access to only the specific sites or applications configured in yo
 
 ### 1\. Allow HTTP and HTTPS traffic
 
-* [ Dashboard ](#tab-panel-7661)
-* [ API ](#tab-panel-7662)
+* [ Dashboard ](#tab-panel-7737)
+* [ API ](#tab-panel-7738)
 
 | Selector          | Operator | Value   | Logic | Action |
 | ----------------- | -------- | ------- | ----- | ------ |
@@ -223,44 +107,13 @@ Restrict user access to only the specific sites or applications configured in yo
 Create a Zero Trust Gateway rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "Allow HTTP and HTTPS traffic",
-
-    "description": "Restrict traffic to HTTP and HTTPS traffic",
-
-    "enabled": true,
-
-    "action": "allow",
-
-    "filters": [
-
-        "l4"
-
-    ],
-
-    "traffic": "net.detected_protocol == \"tls\" and net.dst.port in {80 443}",
-
-    "identity": "",
-
-    "device_posture": ""
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Allow HTTP and HTTPS traffic",    "description": "Restrict traffic to HTTP and HTTPS traffic",    "enabled": true,    "action": "allow",    "filters": [        "l4"    ],    "traffic": "net.detected_protocol == \"tls\" and net.dst.port in {80 443}",    "identity": "",    "device_posture": ""  }'
 ```
 
 ### 2\. Block all other traffic
 
-* [ Dashboard ](#tab-panel-7663)
-* [ API ](#tab-panel-7664)
+* [ Dashboard ](#tab-panel-7739)
+* [ API ](#tab-panel-7740)
 
 | Selector | Operator | Value        | Action |
 | -------- | -------- | ------------ | ------ |
@@ -269,46 +122,15 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 Create a Zero Trust Gateway rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "Block all other traffic",
-
-    "description": "Block all other traffic that is not HTTP or HTTPS",
-
-    "enabled": true,
-
-    "action": "block",
-
-    "filters": [
-
-        "l4"
-
-    ],
-
-    "traffic": "net.protocol in {\"tcp\" \"udp\"}",
-
-    "identity": "",
-
-    "device_posture": ""
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Block all other traffic",    "description": "Block all other traffic that is not HTTP or HTTPS",    "enabled": true,    "action": "block",    "filters": [        "l4"    ],    "traffic": "net.protocol in {\"tcp\" \"udp\"}",    "identity": "",    "device_posture": ""  }'
 ```
 
 ## Filter HTTPS traffic when inspecting on all ports
 
 If your organization blocks traffic by default with a Network policy and you want to [inspect HTTP traffic on all ports](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/protocol-detection/#inspect-on-all-ports), you need to explicitly allow HTTP and TLS traffic to filter it.
 
-* [ Dashboard ](#tab-panel-7665)
-* [ API ](#tab-panel-7666)
+* [ Dashboard ](#tab-panel-7741)
+* [ API ](#tab-panel-7742)
 
 | Selector          | Operator | Value  | Logic | Action |
 | ----------------- | -------- | ------ | ----- | ------ |
@@ -318,38 +140,7 @@ If your organization blocks traffic by default with a Network policy and you wan
 Create a Zero Trust Gateway rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "Allow on inspect all ports",
-
-    "description": "Filter HTTPS traffic when using inspect all ports",
-
-    "enabled": true,
-
-    "action": "allow",
-
-    "filters": [
-
-        "l4"
-
-    ],
-
-    "traffic": "net.detected_protocol == \"tls\" or net.detected_protocol == \"http\"",
-
-    "identity": "",
-
-    "device_posture": ""
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Allow on inspect all ports",    "description": "Filter HTTPS traffic when using inspect all ports",    "enabled": true,    "action": "allow",    "filters": [        "l4"    ],    "traffic": "net.detected_protocol == \"tls\" or net.detected_protocol == \"http\"",    "identity": "",    "device_posture": ""  }'
 ```
 
 ## Restrict private network access to proxy endpoint users
@@ -362,8 +153,8 @@ When using [source IP proxy endpoints](https://developers.cloudflare.com/cloudfl
 
 #### 1\. Allow proxy endpoint traffic from specific source IPs
 
-* [ Dashboard ](#tab-panel-7667)
-* [ API ](#tab-panel-7668)
+* [ Dashboard ](#tab-panel-7743)
+* [ API ](#tab-panel-7744)
 
 | Selector       | Operator | Value            | Logic | Action |
 | -------------- | -------- | ---------------- | ----- | ------ |
@@ -374,46 +165,15 @@ When using [source IP proxy endpoints](https://developers.cloudflare.com/cloudfl
 Create a Zero Trust Gateway rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "Allow proxy endpoint traffic from specific source IPs",
-
-    "description": "Allow traffic from proxy endpoint users with specific source IPs to reach private network",
-
-    "enabled": true,
-
-    "action": "allow",
-
-    "filters": [
-
-        "l4"
-
-    ],
-
-    "traffic": "net.proxy_endpoint.ids[*] in {\"<PROXY_ENDPOINT_ID>\"} and net.src.ip in {203.0.113.0/24} and net.dst.ip in {10.0.0.0/8}",
-
-    "identity": "",
-
-    "device_posture": ""
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Allow proxy endpoint traffic from specific source IPs",    "description": "Allow traffic from proxy endpoint users with specific source IPs to reach private network",    "enabled": true,    "action": "allow",    "filters": [        "l4"    ],    "traffic": "net.proxy_endpoint.ids[*] in {\"<PROXY_ENDPOINT_ID>\"} and net.src.ip in {203.0.113.0/24} and net.dst.ip in {10.0.0.0/8}",    "identity": "",    "device_posture": ""  }'
 ```
 
 Replace `<PROXY_ENDPOINT_ID>` with your proxy endpoint ID.
 
 #### 2\. Block all other proxy endpoint traffic to private network
 
-* [ Dashboard ](#tab-panel-7669)
-* [ API ](#tab-panel-7670)
+* [ Dashboard ](#tab-panel-7745)
+* [ API ](#tab-panel-7746)
 
 | Selector       | Operator | Value            | Logic | Action |
 | -------------- | -------- | ---------------- | ----- | ------ |
@@ -423,38 +183,7 @@ Replace `<PROXY_ENDPOINT_ID>` with your proxy endpoint ID.
 Create a Zero Trust Gateway rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "Block all other proxy endpoint traffic",
-
-    "description": "Block any other proxy endpoint traffic from accessing the private network",
-
-    "enabled": true,
-
-    "action": "block",
-
-    "filters": [
-
-        "l4"
-
-    ],
-
-    "traffic": "net.proxy_endpoint.ids[*] in {\"<PROXY_ENDPOINT_ID>\"} and net.dst.ip in {10.0.0.0/8}",
-
-    "identity": "",
-
-    "device_posture": ""
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Block all other proxy endpoint traffic",    "description": "Block any other proxy endpoint traffic from accessing the private network",    "enabled": true,    "action": "block",    "filters": [        "l4"    ],    "traffic": "net.proxy_endpoint.ids[*] in {\"<PROXY_ENDPOINT_ID>\"} and net.dst.ip in {10.0.0.0/8}",    "identity": "",    "device_posture": ""  }'
 ```
 
 Replace `<PROXY_ENDPOINT_ID>` with your proxy endpoint ID.
@@ -465,8 +194,8 @@ When using [authorization proxy endpoints](https://developers.cloudflare.com/clo
 
 #### 1\. Allow proxy endpoint traffic from specific source IPs
 
-* [ Dashboard ](#tab-panel-7671)
-* [ API ](#tab-panel-7672)
+* [ Dashboard ](#tab-panel-7747)
+* [ API ](#tab-panel-7748)
 
 | Selector       | Operator | Value            | Logic | Action |
 | -------------- | -------- | ---------------- | ----- | ------ |
@@ -477,46 +206,15 @@ When using [authorization proxy endpoints](https://developers.cloudflare.com/clo
 Create a Zero Trust Gateway rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "Allow authorized proxy endpoint traffic from specific source IPs",
-
-    "description": "Allow traffic from authorization proxy endpoint users with specific source IPs to reach private network",
-
-    "enabled": true,
-
-    "action": "allow",
-
-    "filters": [
-
-        "l4"
-
-    ],
-
-    "traffic": "net.proxy_endpoint.ids[*] in {\"<PROXY_ENDPOINT_ID>\"} and net.src.ip in {203.0.113.0/24} and net.dst.ip in {10.0.0.0/8}",
-
-    "identity": "",
-
-    "device_posture": ""
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Allow authorized proxy endpoint traffic from specific source IPs",    "description": "Allow traffic from authorization proxy endpoint users with specific source IPs to reach private network",    "enabled": true,    "action": "allow",    "filters": [        "l4"    ],    "traffic": "net.proxy_endpoint.ids[*] in {\"<PROXY_ENDPOINT_ID>\"} and net.src.ip in {203.0.113.0/24} and net.dst.ip in {10.0.0.0/8}",    "identity": "",    "device_posture": ""  }'
 ```
 
 Replace `<PROXY_ENDPOINT_ID>` with your proxy endpoint ID.
 
 #### 2\. Block all other proxy endpoint traffic to private network
 
-* [ Dashboard ](#tab-panel-7675)
-* [ API ](#tab-panel-7676)
+* [ Dashboard ](#tab-panel-7751)
+* [ API ](#tab-panel-7752)
 
 | Selector       | Operator | Value            | Logic | Action |
 | -------------- | -------- | ---------------- | ----- | ------ |
@@ -526,38 +224,7 @@ Replace `<PROXY_ENDPOINT_ID>` with your proxy endpoint ID.
 Create a Zero Trust Gateway rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "Block all other authorized proxy endpoint traffic",
-
-    "description": "Block any other authorization proxy endpoint traffic from accessing the private network",
-
-    "enabled": true,
-
-    "action": "block",
-
-    "filters": [
-
-        "l4"
-
-    ],
-
-    "traffic": "net.proxy_endpoint.ids[*] in {\"<PROXY_ENDPOINT_ID>\"} and net.dst.ip in {10.0.0.0/8}",
-
-    "identity": "",
-
-    "device_posture": ""
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Block all other authorized proxy endpoint traffic",    "description": "Block any other authorization proxy endpoint traffic from accessing the private network",    "enabled": true,    "action": "block",    "filters": [        "l4"    ],    "traffic": "net.proxy_endpoint.ids[*] in {\"<PROXY_ENDPOINT_ID>\"} and net.dst.ip in {10.0.0.0/8}",    "identity": "",    "device_posture": ""  }'
 ```
 
 Replace `<PROXY_ENDPOINT_ID>` with your proxy endpoint ID.
@@ -570,8 +237,8 @@ The following example consists of two policies: the first allows specific users 
 
 ### 1\. Allow company employees
 
-* [ Dashboard ](#tab-panel-7673)
-* [ API ](#tab-panel-7674)
+* [ Dashboard ](#tab-panel-7749)
+* [ API ](#tab-panel-7750)
 
 | Selector       | Operator      | Value           | Logic | Action |
 | -------------- | ------------- | --------------- | ----- | ------ |
@@ -581,44 +248,13 @@ The following example consists of two policies: the first allows specific users 
 Create a Zero Trust Gateway rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "Allow company employees",
-
-    "description": "Allow any users with an organization email to reach the application",
-
-    "enabled": true,
-
-    "action": "allow",
-
-    "filters": [
-
-        "l4"
-
-    ],
-
-    "traffic": "net.dst.ip in {10.0.0.0/8}",
-
-    "identity": "identity.email matches \".*@example.com\"",
-
-    "device_posture": ""
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Allow company employees",    "description": "Allow any users with an organization email to reach the application",    "enabled": true,    "action": "allow",    "filters": [        "l4"    ],    "traffic": "net.dst.ip in {10.0.0.0/8}",    "identity": "identity.email matches \".*@example.com\"",    "device_posture": ""  }'
 ```
 
 ### 2\. Block everyone else
 
-* [ Dashboard ](#tab-panel-7677)
-* [ API ](#tab-panel-7678)
+* [ Dashboard ](#tab-panel-7753)
+* [ API ](#tab-panel-7754)
 
 | Selector       | Operator | Value      | Action |
 | -------------- | -------- | ---------- | ------ |
@@ -627,46 +263,15 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 Create a Zero Trust Gateway rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "Block everyone else",
-
-    "description": "Block any other users from accessing the application",
-
-    "enabled": true,
-
-    "action": "block",
-
-    "filters": [
-
-        "l4"
-
-    ],
-
-    "traffic": "net.dst.ip in {10.0.0.0/8}",
-
-    "identity": "",
-
-    "device_posture": ""
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Block everyone else",    "description": "Block any other users from accessing the application",    "enabled": true,    "action": "block",    "filters": [        "l4"    ],    "traffic": "net.dst.ip in {10.0.0.0/8}",    "identity": "",    "device_posture": ""  }'
 ```
 
 ## Override IP address
 
 Override traffic directed toward a specific IP address with a different IP address.
 
-* [ Dashboard ](#tab-panel-7679)
-* [ API ](#tab-panel-7680)
+* [ Dashboard ](#tab-panel-7755)
+* [ API ](#tab-panel-7756)
 
 | Selector         | Operator | Value        | Logic | Action           |
 | ---------------- | -------- | ------------ | ----- | ---------------- |
@@ -680,54 +285,7 @@ Override traffic directed toward a specific IP address with a different IP addre
 Create a Zero Trust Gateway rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "Override example.com with 1.1.1.1",
-
-    "description": "Override a site'\''s IP address with another IP",
-
-    "enabled": true,
-
-    "action": "l4_override",
-
-    "filters": [
-
-        "l4"
-
-    ],
-
-    "traffic": "net.dst.ip in {203.0.113.17} and net.dst.port == 80",
-
-    "identity": "",
-
-    "device_posture": "",
-
-    "rule_settings": {
-
-        "l4override": {
-
-            "ip": "1.1.1.1",
-
-            "port": 80
-
-        },
-
-        "override_host": "",
-
-        "override_ips": null
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Override example.com with 1.1.1.1",    "description": "Override a site'\''s IP address with another IP",    "enabled": true,    "action": "l4_override",    "filters": [        "l4"    ],    "traffic": "net.dst.ip in {203.0.113.17} and net.dst.port == 80",    "identity": "",    "device_posture": "",    "rule_settings": {        "l4override": {            "ip": "1.1.1.1",            "port": 80        },        "override_host": "",        "override_ips": null    }  }'
 ```
 
 ```json

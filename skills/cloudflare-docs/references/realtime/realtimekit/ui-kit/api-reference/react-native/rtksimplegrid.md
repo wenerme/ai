@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -34,49 +34,15 @@ A simple grid layout that arranges participant tiles in rows and columns with au
 ### Basic Usage
 
 ```
-
 import { RtkSimpleGrid } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkSimpleGrid meeting={meeting} participants={participants} />;
-
-}
-
-
+function MyComponent() {  return <RtkSimpleGrid meeting={meeting} participants={participants} />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkSimpleGrid } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkSimpleGrid
-
-      meeting={meeting}
-
-      participants={participants}
-
-      aspectRatio="16:9"
-
-      gap={12}
-
-      size="md"
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkSimpleGrid      meeting={meeting}      participants={participants}      aspectRatio="16:9"      gap={12}      size="md"    />  );}
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,9 +18,9 @@ Speed Brain is a tool for improving web page performance by prefetching the most
 
 ## Availability
 
-| Free         | Pro                | Business | Enterprise |     |
-| ------------ | ------------------ | -------- | ---------- | --- |
-| Availability | Enabled by default | Yes      | Yes        | Yes |
+|              | Free               | Pro | Business | Enterprise |
+| ------------ | ------------------ | --- | -------- | ---------- |
+| Availability | Enabled by default | Yes | Yes      | Yes        |
 
 ---
 
@@ -48,30 +48,7 @@ When Cloudflare's Speed Brain feature is enabled, an HTTP header called `Specula
 The configuration looks like this:
 
 ```
-
-{
-
-  "prefetch": [
-
-    {
-
-      "source": "document",
-
-      "where": {
-
-        "and": [{ "href_matches": "/*", "relative_to": "document" }]
-
-      },
-
-      "eagerness": "conservative"
-
-    }
-
-  ]
-
-}
-
-
+{  "prefetch": [    {      "source": "document",      "where": {        "and": [{ "href_matches": "/*", "relative_to": "document" }]      },      "eagerness": "conservative"    }  ]}
 ```
 
 This configuration instructs the browser to initiate prefetch requests for future navigations. These prefetch requests will include the `sec-purpose: prefetch` HTTP request header. Prefetches that are not successful will respond with a `503` status code. Prefetches that are successful will respond with a `200` status code.
@@ -92,9 +69,9 @@ While you can use Speed Brain without RUM enabled, you will not have visibility 
 
 Speed Brain is available in Cloudflare's **Speed** tab of the dashboard and also in the API.
 
-* [ Dashboard ](#tab-panel-10547)
-* [ API ](#tab-panel-10548)
-* [ Terraform ](#tab-panel-10549)
+* [ Dashboard ](#tab-panel-10623)
+* [ API ](#tab-panel-10624)
+* [ Terraform ](#tab-panel-10625)
 
 To enable or disable **Speed Brain** in the dashboard:
 
@@ -107,26 +84,13 @@ Use the following `PATCH` request to enable Speed Brain:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone Settings Write`
 
 Change Cloudflare Speed Brain setting
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/speed_brain" \
-
-  --request PATCH \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "value": "on"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/speed_brain" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "value": "on"  }'
 ```
 
 To disable Speed Brain, set `value:` to `"off"`.
@@ -135,9 +99,10 @@ You can also configure Speed Brain using Terraform. For more details, refer to t
 
 ## Caveats
 
-* Since prefetch responses are not guaranteed to be rendered by the browser, Speed Brain includes two safeguards to minimize the risk of [unsafe prefetching ↗](https://developer.mozilla.org/en-US/docs/Web/API/Speculation%5FRules%5FAPI#unsafe%5Fprefetching):  
-   * Speed Brain will not prefetch on routes that run Workers. Without this safeguard, prefetch requests could inadvertently run Worker logic that assumes the incoming request is a normal (that is, not a prefetch) request. An example of this could be an incrementing page view counter running in a Worker. A page view counter should not increment if the page is not actually rendered in the browser.  
-   * Prefetch requests will never reach origin servers. Prefetch requests only serve content that is stored in Cloudflare’s Cache. If the content is not in Cache, the prefetch request will not continue to origin servers. Without this safeguard, origin server state could be modified despite the prefetch response not being rendered in the browser. An example of this could be a prefetch `GET` request to a sign-out URL inadvertently triggering a sign-out action on the server.
+* Since prefetch responses are not guaranteed to be rendered by the browser, Speed Brain includes two safeguards to minimize the risk of [unsafe prefetching ↗](https://developer.mozilla.org/en-US/docs/Web/API/Speculation%5FRules%5FAPI#unsafe%5Fprefetching):
+
+  * Speed Brain will not prefetch on routes that run Workers. Without this safeguard, prefetch requests could inadvertently run Worker logic that assumes the incoming request is a normal (that is, not a prefetch) request. An example of this could be an incrementing page view counter running in a Worker. A page view counter should not increment if the page is not actually rendered in the browser.
+  * Prefetch requests will never reach origin servers. Prefetch requests only serve content that is stored in Cloudflare’s Cache. If the content is not in Cache, the prefetch request will not continue to origin servers. Without this safeguard, origin server state could be modified despite the prefetch response not being rendered in the browser. An example of this could be a prefetch `GET` request to a sign-out URL inadvertently triggering a sign-out action on the server.
 * If origin server responses include the `Speculation-Rules` header, it will not be overridden.
 * Speed Brain will not work with restrictive [Content Security Policy ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/script-src) configurations using `strict-dynamic` or `nonce-{hash}` attributes.
 * Currently, Speed Brain is not compatible with websites that use or rely on `pages.dev`.

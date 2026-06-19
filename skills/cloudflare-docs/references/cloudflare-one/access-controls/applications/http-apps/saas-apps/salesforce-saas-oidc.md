@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,11 +32,11 @@ This guide covers how to configure [Salesforce ↗](https://help.salesforce.com/
 7. In **Redirect URLs**, enter the callback URL obtained from Salesforce (`https://<your-domain>.my.salesforce.com/services/authcallback/<URL Suffix>`). Refer to [Add a SSO provider to Salesforce](#2-add-a-sso-provider-to-salesforce) for instructions on obtaining this value.
 8. (Optional) Enable [Proof of Key Exchange (PKCE) ↗](https://www.oauth.com/oauth2-servers/pkce/) if the protocol is supported by your IdP. PKCE will be performed on all login attempts.
 9. Copy the following values:  
-   * **Client ID**  
-   * **Client Secret**  
-   * **Authorization endpoint**  
-   * **Token endpoint**  
-   * **User info endpoint**
+  * **Client ID**
+  * **Client Secret**
+  * **Authorization endpoint**
+  * **Token endpoint**
+  * **User info endpoint**
 10. Configure [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) for the application.
 11. (Optional) In **Experience settings**, configure [App Launcher settings](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/) by turning on **Enable App in App Launcher** and, in **App Launcher URL**, entering `https://<your-domain>.my.salesforce.com`.
 12. Save the application.
@@ -49,12 +49,12 @@ This guide covers how to configure [Salesforce ↗](https://help.salesforce.com/
 4. For the provider type, select **OpenID Connect**.
 5. Enter a name for the SSO provider (for example, `Cloudflare Access`).
 6. Fill in the following fields with values obtained from Cloudflare Access:  
-   * **Consumer Key**: Client ID  
-   * **Consumer Secret**: Client Secret  
-   * **Authorize Endpoint URL**: Authorization endpoint  
-   * **Token endpoint URL**: Token endpoint  
-   * **User Info Endpoint URL**: User info endpoint  
-   * **Token Issuer**: Issuer
+  * **Consumer Key**: Client ID
+  * **Consumer Secret**: Client Secret
+  * **Authorize Endpoint URL**: Authorization endpoint
+  * **Token endpoint URL**: Token endpoint
+  * **User Info Endpoint URL**: User info endpoint
+  * **Token Issuer**: Issuer
 7. (Optional) Enable **Use Proof Key for Code Exchange** if you enabled it in Access.
 8. In **Default Scopes**, enter a space-separated list of the scopes you configured in Access (for example, `openid email profile groups`).
 9. Select **Save**.
@@ -68,13 +68,14 @@ To test the integration, open an incognito browser window and go to the **Test-O
 
 ## 3\. Enable Single Sign-On in Salesforce
 
-1. Enable Cloudflare Access as an identity provider on your Salesforce domain:  
-   1. In the **Quick Find** box, enter `domain` and select **My Domain**.  
-   2. In **Authentication Configuration**, select **Edit**.  
-   3. In **Authentication Service**, turn on the Cloudflare Access provider.
+1. Enable Cloudflare Access as an identity provider on your Salesforce domain:
+
+  1. In the **Quick Find** box, enter `domain` and select **My Domain**.
+  2. In **Authentication Configuration**, select **Edit**.
+  3. In **Authentication Service**, turn on the Cloudflare Access provider.
 2. (Optional) To require users to login with Cloudflare Access:  
-   1. In the **Quick Find** box, enter `single sign-on` and select **Single Sign-On Settings**.  
-   2. Turn on **Disable login with Salesforce credentials**.
+  1. In the **Quick Find** box, enter `single sign-on` and select **Single Sign-On Settings**.
+  2. Turn on **Disable login with Salesforce credentials**.
 
 To test, open an incognito browser window and go to your Salesforce domain (`https://<your-domain>.my.salesforce.com`).
 

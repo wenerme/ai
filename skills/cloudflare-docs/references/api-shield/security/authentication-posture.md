@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,8 +29,8 @@ After configuring [session identifiers](https://developers.cloudflare.com/api-sh
 
 ### Examine an endpoint's authentication details
 
-* [  New dashboard ](#tab-panel-6703)
-* [ Old dashboard ](#tab-panel-6704)
+* [  New dashboard ](#tab-panel-6779)
+* [ Old dashboard ](#tab-panel-6780)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)

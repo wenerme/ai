@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -69,14 +69,7 @@ At your origin, make the `http_body` available in a TXT record at the path speci
 Here is an example NGINX configuration that would return a token:
 
 ```
-
-location "/.well-known/pki-validation/ca3-0052344e54074d9693e89e27486692d6.txt" {
-
-       return 200 "ca3-be794c5f757b468eba805d1a705e44f6\n";
-
-}
-
-
+location "/.well-known/pki-validation/ca3-0052344e54074d9693e89e27486692d6.txt" {       return 200 "ca3-be794c5f757b468eba805d1a705e44f6\n";}
 ```
 
 Once your configuration is live, test that the DCV text file is in place with `curl`:
@@ -84,17 +77,11 @@ Once your configuration is live, test that the DCV text file is in place with `c
 Terminal window
 
 ```
-
 curl "http://http-preval.example.com/.well-known/pki-validation/ca3-0052344e54074d9693e89e27486692d6.txt"
-
-
 ```
 
 ```
-
 ca3-be794c5f757b468eba805d1a705e44f6
-
-
 ```
 
 The token is valid for one check cycle. On the next check cycle, Cloudflare will ask the CA to recheck the URL, complete validation, and issue the certificate.

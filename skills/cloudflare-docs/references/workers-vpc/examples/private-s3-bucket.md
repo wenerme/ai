@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-vpc/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -41,16 +41,7 @@ First, create a Workers VPC Service for your internal S3 storage:
 Terminal window
 
 ```
-
-npx wrangler vpc service create s3-storage \
-
-  --type http \
-
-  --tunnel-id <YOUR_TUNNEL_ID> \
-
-  --hostname s3.us-west-2.amazonaws.com
-
-
+npx wrangler vpc service create s3-storage \  --type http \  --tunnel-id <YOUR_TUNNEL_ID> \  --hostname s3.us-west-2.amazonaws.com
 ```
 
 You can also create a Workers VPC Service using an IP address (for example, if using MinIO):
@@ -58,18 +49,7 @@ You can also create a Workers VPC Service using an IP address (for example, if u
 Terminal window
 
 ```
-
-npx wrangler vpc service create s3-storage \
-
-  --type http \
-
-  --tunnel-id <YOUR_TUNNEL_ID> \
-
-  --ipv4 10.0.1.60 \
-
-  --http-port 9000
-
-
+npx wrangler vpc service create s3-storage \  --type http \  --tunnel-id <YOUR_TUNNEL_ID> \  --ipv4 10.0.1.60 \  --http-port 9000
 ```
 
 Note the service ID returned for the next step.
@@ -79,48 +59,7 @@ Note the service ID returned for the next step.
 Configure your S3 bucket to allow anonymous access from your VPC endpoint. This works for unencrypted S3 objects:
 
 ```
-
-{
-
-  "Version": "2012-10-17",
-
-  "Statement": [
-
-    {
-
-      "Sid": "AllowAnonymousAccessFromVPCE",
-
-      "Effect": "Allow",
-
-      "Principal": "*",
-
-      "Action": ["s3:GetObject", "s3:ListBucket"],
-
-      "Resource": [
-
-        "arn:aws:s3:::your-bucket-name",
-
-        "arn:aws:s3:::your-bucket-name/*"
-
-      ],
-
-      "Condition": {
-
-        "StringEquals": {
-
-          "aws:sourceVpce": "vpce-your-endpoint-id"
-
-        }
-
-      }
-
-    }
-
-  ]
-
-}
-
-
+{  "Version": "2012-10-17",  "Statement": [    {      "Sid": "AllowAnonymousAccessFromVPCE",      "Effect": "Allow",      "Principal": "*",      "Action": ["s3:GetObject", "s3:ListBucket"],      "Resource": [        "arn:aws:s3:::your-bucket-name",        "arn:aws:s3:::your-bucket-name/*"      ],      "Condition": {        "StringEquals": {          "aws:sourceVpce": "vpce-your-endpoint-id"        }      }    }  ]}
 ```
 
 ### Testing S3 access directly
@@ -130,81 +69,28 @@ You can test S3 access directly from the VM where your Cloudflare Tunnel is runn
 Terminal window
 
 ```
-
-# Test listing bucket contents
-
-curl -i https://s3.us-west-2.amazonaws.com/your-bucket-name/
-
-
-# Test downloading a specific file
-
-curl -i https://your-bucket-name.s3.us-west-2.amazonaws.com/test-file.txt
-
-
+# Test listing bucket contentscurl -i https://s3.us-west-2.amazonaws.com/your-bucket-name/
+# Test downloading a specific filecurl -i https://your-bucket-name.s3.us-west-2.amazonaws.com/test-file.txt
 ```
 
 ## 4\. Configure your Worker
 
 Update your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-11351)
-* [  wrangler.toml ](#tab-panel-11352)
+* [  wrangler.jsonc ](#tab-panel-11368)
+* [  wrangler.toml ](#tab-panel-11369)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "private-s3-gateway",
-
-  "main": "src/index.js",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "vpc_services": [
-
-    {
-
-      "binding": "S3_STORAGE",
-
-      "service_id": "<YOUR_SERVICE_ID>"
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "private-s3-gateway",  "main": "src/index.js",  // Set this to today's date  "compatibility_date": "2026-06-19",  "vpc_services": [    {      "binding": "S3_STORAGE",      "service_id": "<YOUR_SERVICE_ID>"    }  ]}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "private-s3-gateway"
-
-main = "src/index.js"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[[vpc_services]]
-
-binding = "S3_STORAGE"
-
-service_id = "<YOUR_SERVICE_ID>"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "private-s3-gateway"main = "src/index.js"# Set this to today's datecompatibility_date = "2026-06-19"
+[[vpc_services]]binding = "S3_STORAGE"service_id = "<YOUR_SERVICE_ID>"
 ```
 
 ## 5\. Implement the Worker
@@ -214,33 +100,8 @@ In your Workers code, use the Workers VPC Service binding in order to send reque
 index.js
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    try {
-
-      // Fetch a file from the private S3 bucket via VPC endpoint
-
-      const response = await env.S3_STORAGE.fetch("https://s3.us-west-2.amazonaws.com/my-bucket/data.json");
-
-
-      // Use the response from S3 to perform more logic in Workers, before returning the final response
-
-      return response;
-
-    } catch (error) {
-
-      return new Response("Storage unavailable", { status: 503 });
-
-    }
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    try {      // Fetch a file from the private S3 bucket via VPC endpoint      const response = await env.S3_STORAGE.fetch("https://s3.us-west-2.amazonaws.com/my-bucket/data.json");
+      // Use the response from S3 to perform more logic in Workers, before returning the final response      return response;    } catch (error) {      return new Response("Storage unavailable", { status: 503 });    }  },};
 ```
 
 This guide demonstrates how you could access private object storage from your Workers. You could use Workers VPC Services to fetch files directly and manipulate the responses to enable you to build more full-stack and backend functionality on Workers.
@@ -252,21 +113,13 @@ Now, you can deploy and test your Worker that you have created:
 Terminal window
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 Terminal window
 
 ```
-
-# Test GET request
-
-curl https://private-s3-gateway.workers.dev
-
-
+# Test GET requestcurl https://private-s3-gateway.workers.dev
 ```
 
 ## Next steps

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,14 +21,7 @@ Miniflare uses compatibility dates to opt-into backwards-incompatible changes fr
 JavaScript
 
 ```
-
-const mf = new Miniflare({
-
-  compatibilityDate: "2021-11-12",
-
-});
-
-
+const mf = new Miniflare({  compatibilityDate: "2021-11-12",});
 ```
 
 ## Compatibility Flags
@@ -38,20 +31,7 @@ Miniflare also lets you opt-in/out of specific changes using compatibility flags
 JavaScript
 
 ```
-
-const mf = new Miniflare({
-
-  compatibilityFlags: [
-
-    "formdata_parser_supports_files",
-
-    "durable_object_fetch_allows_relative_url",
-
-  ],
-
-});
-
-
+const mf = new Miniflare({  compatibilityFlags: [    "formdata_parser_supports_files",    "durable_object_fetch_allows_relative_url",  ],});
 ```
 
 ```json

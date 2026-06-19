@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security-center/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,9 +28,9 @@ This update introduces a major shift from pure detection to actionable enforceme
 * **Instant WHOIS and Recipient Lookup:** We automatically scrape registrar data and WHOIS contact information (such as the registrant or registrar abuse email) behind the scenes, highlighting exactly where your notice needs to be sent
 * **Smart Template Automation:** We pre-fill your custom-branded templates with essential metadata, including the infringing domain, registrar name, and discovery date.
 * **Tailored Enforcement Tones:** Choose from three default layout strategies depending on the severity of the infrastructure match:  
-   * _Exact Match:_ A formal demand for identical trademark infringements  
-   * _Similar Match:_ A standard notice optimized for typosquatting (one-character distance matches)  
-   * _Friendly Tone:_ An amicable initial outreach for potential unintentional or accidental infringements
+  * _Exact Match:_ A formal demand for identical trademark infringements
+  * _Similar Match:_ A standard notice optimized for typosquatting (one-character distance matches)
+  * _Friendly Tone:_ An amicable initial outreach for potential unintentional or accidental infringements
 * **Full Editing Control:** Before creating the final PDF, a real-time review screen allows you to fine-tune the messaging, modify placeholders, and ensure your text aligns perfectly with internal legal standards
 
 #### How it works

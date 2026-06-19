@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/terraform/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,62 +27,16 @@ Create a new branch and append the configuration.
 Terminal window
 
 ```
-
 git checkout -b step5-pagerule
-
-
 ```
 
 Page Rules let you override zone settings for specific URL patterns. Add two Page Rules to your `main.tf`:
 
 ```
-
-# Increase security for expensive database operations
-
-resource "cloudflare_page_rule" "expensive_endpoint_security" {
-
-  zone_id  = var.zone_id
-
-  target   = "${var.domain}/expensive-db-call"
-
-  priority = 1
-
-
-  actions = {
-
-    security_level = "under_attack"
-
-  }
-
-}
-
-
-# Redirect old URLs to new location
-
-resource "cloudflare_page_rule" "legacy_redirect" {
-
-  zone_id  = var.zone_id
-
-  target   = "${var.domain}/old-location.php"
-
-  priority = 2
-
-
-  actions = {
-
-    forwarding_url = {
-
-      url         = "https://www.${var.domain}/expensive-db-call"
-
-      status_code = 301
-
-    }
-
-  }
-
-}
-
-
+# Increase security for expensive database operationsresource "cloudflare_page_rule" "expensive_endpoint_security" {  zone_id  = var.zone_id  target   = "${var.domain}/expensive-db-call"  priority = 1
+  actions = {    security_level = "under_attack"  }}
+# Redirect old URLs to new locationresource "cloudflare_page_rule" "legacy_redirect" {  zone_id  = var.zone_id  target   = "${var.domain}/old-location.php"  priority = 2
+  actions = {    forwarding_url = {      url         = "https://www.${var.domain}/expensive-db-call"      status_code = 301    }  }}
 ```
 
 The first rule increases security to "Under Attack" mode for your database endpoint. The second rule redirects old URLs with a 301 permanent redirect.
@@ -92,12 +46,7 @@ The first rule increases security to "Under Attack" mode for your database endpo
 Terminal window
 
 ```
-
-terraform plan
-
-terraform apply
-
-
+terraform planterraform apply
 ```
 
 ## 3\. Verify changes:
@@ -107,21 +56,13 @@ Test the redirect functionality:
 Terminal window
 
 ```
-
 curl -I https://example.com/old-location.php
-
-
 ```
 
 Expected output:
 
 ```
-
-HTTP/1.1 301 Moved Permanently
-
-Location: https://example.com/expensive-db-call
-
-
+HTTP/1.1 301 Moved PermanentlyLocation: https://example.com/expensive-db-call
 ```
 
 Test the increased security (Under Attack mode returns a challenge page):
@@ -129,19 +70,13 @@ Test the increased security (Under Attack mode returns a challenge page):
 Terminal window
 
 ```
-
 curl -I https://example.com/expensive-db-call
-
-
 ```
 
 Expected output:
 
 ```
-
 HTTP/1.1 503 Service Temporarily Unavailable
-
-
 ```
 
 The 503 response indicates the Under Attack mode is active, presenting visitors with a challenge page before allowing access to protect against DDoS attacks.
@@ -151,14 +86,7 @@ The 503 response indicates the Under Attack mode is active, presenting visitors 
 Terminal window
 
 ```
-
-git add main.tf
-
-git commit -m "Step 5 - Add two Page Rules"
-
-git push
-
-
+git add main.tfgit commit -m "Step 5 - Add two Page Rules"git push
 ```
 
 The call works as expected. In the first case, the Cloudflare global network responds with a `301` redirecting the browser to the new location. In the second case, the Cloudflare global network initially responds with a `503`, which is consistent with the Under Attack mode.

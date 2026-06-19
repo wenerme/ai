@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,7 +22,7 @@ When the Internet Archive integration is enabled, Cloudflare tells the Internet 
 
 ## Availability
 
-| Free           | Pro           | Business      | Enterprise   |              |
+|                | Free          | Pro           | Business     | Enterprise   |
 | -------------- | ------------- | ------------- | ------------ | ------------ |
 | Availability   | Yes           | Yes           | Yes          | Yes          |
 | Crawl interval | Every 30 days | Every 15 days | Every 5 days | Every 5 days |

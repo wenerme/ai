@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,74 +23,7 @@ The API call returns tunnel health check results by Cloudflare data center. Clou
 Terminal window
 
 ```
-
-echo '{ "query":
-
-  "query GetTunnelHealthCheckResults($accountTag: string, $datetimeStart: string, $datetimeEnd: string) {
-
-    viewer {
-
-      accounts(filter: {accountTag: $accountTag}) {
-
-        magicTransitTunnelHealthChecksAdaptiveGroups(
-
-          limit: 100,
-
-          filter: {
-
-            datetime_geq: $datetimeStart,
-
-            datetime_lt:  $datetimeEnd,
-
-          }
-
-        ) {
-
-          avg {
-
-            tunnelState
-
-          }
-
-          dimensions {
-
-            tunnelName
-
-            edgeColoName
-
-          }
-
-        }
-
-      }
-
-    }
-
-  }",
-
-  "variables": {
-
-    "accountTag": "<CLOUDFLARE_ACCOUNT_TAG>",
-
-    "datetimeStart": "2022-08-04T00:00:00.000Z",
-
-    "datetimeEnd": "2022-08-04T01:00:00.000Z"
-
-  }
-
-}' | tr -d '\n' | curl --silent \
-
-https://api.cloudflare.com/client/v4/graphql \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Accept: application/json" \
-
---header "Content-Type: application/json" \
-
---data @-
-
-
+echo '{ "query":  "query GetTunnelHealthCheckResults($accountTag: string, $datetimeStart: string, $datetimeEnd: string) {    viewer {      accounts(filter: {accountTag: $accountTag}) {        magicTransitTunnelHealthChecksAdaptiveGroups(          limit: 100,          filter: {            datetime_geq: $datetimeStart,            datetime_lt:  $datetimeEnd,          }        ) {          avg {            tunnelState          }          dimensions {            tunnelName            edgeColoName          }        }      }    }  }",  "variables": {    "accountTag": "<CLOUDFLARE_ACCOUNT_TAG>",    "datetimeStart": "2022-08-04T00:00:00.000Z",    "datetimeEnd": "2022-08-04T01:00:00.000Z"  }}' | tr -d '\n' | curl --silent \https://api.cloudflare.com/client/v4/graphql \--header "Authorization: Bearer <API_TOKEN>" \--header "Accept: application/json" \--header "Content-Type: application/json" \--data @-
 ```
 
 The results are returned in JSON (as requested), so piping the output to `jq` formats them for easier parsing, as in the following example:
@@ -98,93 +31,8 @@ The results are returned in JSON (as requested), so piping the output to `jq` fo
 Terminal window
 
 ```
-
-... | curl --silent \
-
-https://api.cloudflare.com/client/v4/graphql \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Accept: application/json" \
-
---header "Content-Type: application/json" \
-
---data @- | jq .
-
-
-## Example response:
-
-#=> {
-
-#=>   "data": {
-
-#=>     "viewer": {
-
-#=>       "accounts": [
-
-#=>         {
-
-#=>           "conduitEdgeTunnelHealthChecks": [
-
-#=>             {
-
-#=>               {
-
-#=>                 "avg": {
-
-#=>                   "tunnelState": 1
-
-#=>                 },
-
-#=>                 "dimensions": {
-
-#=>                   "edgeColoName": "mel01",
-
-#=>                   "tunnelName": "tunnel_01",
-
-#=>                   "tunnelState": 0.5
-
-#=>                 }
-
-#=>               },
-
-#=>               {
-
-#=>                 "avg": {
-
-#=>                   "tunnelState": 0.5
-
-#=>                 },
-
-#=>                 "count": 310,
-
-#=>                 "dimensions": {
-
-#=>                   "edgeColoName": "mel01",
-
-#=>                   "tunnelName": "tunnel_02",
-
-#=>                   "tunnelState": 0.5
-
-#=>                 }
-
-#=>               }
-
-#=>           ]
-
-#=>         }
-
-#=>       ]
-
-#=>     }
-
-#=>   },
-
-#=>   "errors": null
-
-#=> }
-
-
+... | curl --silent \https://api.cloudflare.com/client/v4/graphql \--header "Authorization: Bearer <API_TOKEN>" \--header "Accept: application/json" \--header "Content-Type: application/json" \--data @- | jq .
+## Example response:#=> {#=>   "data": {#=>     "viewer": {#=>       "accounts": [#=>         {#=>           "conduitEdgeTunnelHealthChecks": [#=>             {#=>               {#=>                 "avg": {#=>                   "tunnelState": 1#=>                 },#=>                 "dimensions": {#=>                   "edgeColoName": "mel01",#=>                   "tunnelName": "tunnel_01",#=>                   "tunnelState": 0.5#=>                 }#=>               },#=>               {#=>                 "avg": {#=>                   "tunnelState": 0.5#=>                 },#=>                 "count": 310,#=>                 "dimensions": {#=>                   "edgeColoName": "mel01",#=>                   "tunnelName": "tunnel_02",#=>                   "tunnelState": 0.5#=>                 }#=>               }#=>           ]#=>         }#=>       ]#=>     }#=>   },#=>   "errors": null#=> }
 ```
 
 ## Footnotes

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,232 +27,90 @@ The RPC system is designed to feel as similar as possible to calling a JavaScrip
 
 For example, if Worker B implements the public method `add(a, b)`:
 
-* [  wrangler.jsonc ](#tab-panel-12037)
-* [  wrangler.toml ](#tab-panel-12038)
+* [  wrangler.jsonc ](#tab-panel-12054)
+* [  wrangler.toml ](#tab-panel-12055)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "worker_b",
-
-  "main": "./src/workerB.js"
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "worker_b",  "main": "./src/workerB.js"}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "worker_b"
-
-main = "./src/workerB.js"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "worker_b"main = "./src/workerB.js"
 ```
 
-* [  JavaScript ](#tab-panel-12050)
-* [  TypeScript ](#tab-panel-12051)
-* [  Python ](#tab-panel-12052)
+* [  JavaScript ](#tab-panel-12067)
+* [  TypeScript ](#tab-panel-12068)
+* [  Python ](#tab-panel-12069)
 
 JavaScript
 
 ```
-
 import { WorkerEntrypoint } from "cloudflare:workers";
-
-
-export default class extends WorkerEntrypoint {
-
-  async fetch() {
-
-    return new Response("Hello from Worker B");
-
-  }
-
-
-  add(a, b) {
-
-    return a + b;
-
-  }
-
-}
-
-
+export default class extends WorkerEntrypoint {  async fetch() {    return new Response("Hello from Worker B");  }
+  add(a, b) {    return a + b;  }}
 ```
 
 TypeScript
 
 ```
-
 import { WorkerEntrypoint } from "cloudflare:workers";
-
-
-export default class extends WorkerEntrypoint {
-
-  async fetch() {
-
-    return new Response("Hello from Worker B");
-
-  }
-
-
-  add(a: number, b: number) {
-
-    return a + b;
-
-  }
-
-}
-
-
+export default class extends WorkerEntrypoint {  async fetch() {    return new Response("Hello from Worker B");  }
+  add(a: number, b: number) {    return a + b;  }}
 ```
 
 Python
 
 ```
-
 from workers import WorkerEntrypoint, Response
-
-
-class Default(WorkerEntrypoint):
-
-    async def fetch(self, request):
-
-        return Response("Hello from Worker B")
-
-
-    def add(self, a: int, b: int) -> int:
-
-        return a + b
-
-
+class Default(WorkerEntrypoint):    async def fetch(self, request):        return Response("Hello from Worker B")
+    def add(self, a: int, b: int) -> int:        return a + b
 ```
 
 Worker A can declare a [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings) to Worker B:
 
-* [  wrangler.jsonc ](#tab-panel-12041)
-* [  wrangler.toml ](#tab-panel-12042)
+* [  wrangler.jsonc ](#tab-panel-12058)
+* [  wrangler.toml ](#tab-panel-12059)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "worker_a",
-
-  "main": "./src/workerA.js",
-
-  "services": [
-
-    {
-
-      "binding": "WORKER_B",
-
-      "service": "worker_b"
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "worker_a",  "main": "./src/workerA.js",  "services": [    {      "binding": "WORKER_B",      "service": "worker_b"    }  ]}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "worker_a"
-
-main = "./src/workerA.js"
-
-
-[[services]]
-
-binding = "WORKER_B"
-
-service = "worker_b"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "worker_a"main = "./src/workerA.js"
+[[services]]binding = "WORKER_B"service = "worker_b"
 ```
 
 Making it possible for Worker A to call the `add()` method from Worker B:
 
-* [  JavaScript ](#tab-panel-12045)
-* [  TypeScript ](#tab-panel-12046)
-* [  Python ](#tab-panel-12047)
+* [  JavaScript ](#tab-panel-12062)
+* [  TypeScript ](#tab-panel-12063)
+* [  Python ](#tab-panel-12064)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const result = await env.WORKER_B.add(1, 2);
-
-    return new Response(result);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const result = await env.WORKER_B.add(1, 2);    return new Response(result);  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const result = await env.WORKER_B.add(1, 2);
-
-    return new Response(result);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const result = await env.WORKER_B.add(1, 2);    return new Response(result);  },};
 ```
 
 Python
 
 ```
-
 from workers import WorkerEntrypoint, Response
-
-
-class Default(WorkerEntrypoint):
-
-    async def fetch(self, request):
-
-        result = await self.env.WORKER_B.add(1, 2)
-
-    return Response(f"Result: {result}")
-
-
+class Default(WorkerEntrypoint):    async def fetch(self, request):        result = await self.env.WORKER_B.add(1, 2)    return Response(f"Result: {result}")
 ```
 
 The client, in this case Worker A, calls Worker B and tells it to execute a specific procedure using specific arguments that the client provides. This is accomplished with standard JavaScript classes.
@@ -287,219 +145,73 @@ You can send a function over RPC. When you do so, the function is replaced by a 
 
 Consider the following two Workers, connected via a [Service Binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc). The counter service provides the RPC method `newCounter()`, which returns a function:
 
-* [  wrangler.jsonc ](#tab-panel-12043)
-* [  wrangler.toml ](#tab-panel-12044)
+* [  wrangler.jsonc ](#tab-panel-12060)
+* [  wrangler.toml ](#tab-panel-12061)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "counter-service",
-
-  "main": "./src/counterService.js"
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "counter-service",  "main": "./src/counterService.js"}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "counter-service"
-
-main = "./src/counterService.js"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "counter-service"main = "./src/counterService.js"
 ```
 
-* [  JavaScript ](#tab-panel-12055)
-* [  TypeScript ](#tab-panel-12056)
+* [  JavaScript ](#tab-panel-12072)
+* [  TypeScript ](#tab-panel-12073)
 
 JavaScript
 
 ```
-
 import { WorkerEntrypoint } from "cloudflare:workers";
-
-
-export default class extends WorkerEntrypoint {
-
-  async fetch() {
-
-    return new Response("Hello from counter-service");
-
-  }
-
-
-  async newCounter() {
-
-    let value = 0;
-
-    return (increment = 0) => {
-
-      value += increment;
-
-      return value;
-
-    };
-
-  }
-
-}
-
-
+export default class extends WorkerEntrypoint {  async fetch() {    return new Response("Hello from counter-service");  }
+  async newCounter() {    let value = 0;    return (increment = 0) => {      value += increment;      return value;    };  }}
 ```
 
 TypeScript
 
 ```
-
 import { WorkerEntrypoint } from "cloudflare:workers";
-
-
-export default class extends WorkerEntrypoint {
-
-  async fetch() {
-
-    return new Response("Hello from counter-service");
-
-  }
-
-
-  async newCounter() {
-
-    let value = 0;
-
-    return (increment = 0) => {
-
-      value += increment;
-
-      return value;
-
-    };
-
-  }
-
-}
-
-
+export default class extends WorkerEntrypoint {  async fetch() {    return new Response("Hello from counter-service");  }
+  async newCounter() {    let value = 0;    return (increment = 0) => {      value += increment;      return value;    };  }}
 ```
 
 This function can then be called by the client Worker:
 
-* [  wrangler.jsonc ](#tab-panel-12048)
-* [  wrangler.toml ](#tab-panel-12049)
+* [  wrangler.jsonc ](#tab-panel-12065)
+* [  wrangler.toml ](#tab-panel-12066)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "client_worker",
-
-  "main": "./src/clientWorker.js",
-
-  "services": [
-
-    {
-
-      "binding": "COUNTER_SERVICE",
-
-      "service": "counter-service"
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "client_worker",  "main": "./src/clientWorker.js",  "services": [    {      "binding": "COUNTER_SERVICE",      "service": "counter-service"    }  ]}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "client_worker"
-
-main = "./src/clientWorker.js"
-
-
-[[services]]
-
-binding = "COUNTER_SERVICE"
-
-service = "counter-service"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "client_worker"main = "./src/clientWorker.js"
+[[services]]binding = "COUNTER_SERVICE"service = "counter-service"
 ```
 
-* [  JavaScript ](#tab-panel-12053)
-* [  TypeScript ](#tab-panel-12054)
+* [  JavaScript ](#tab-panel-12070)
+* [  TypeScript ](#tab-panel-12071)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    using f = await env.COUNTER_SERVICE.newCounter();
-
-    await f(2); // returns 2
-
-    await f(1); // returns 3
-
-    const count = await f(-5); // returns -2
-
-
-    return new Response(count);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    using f = await env.COUNTER_SERVICE.newCounter();    await f(2); // returns 2    await f(1); // returns 3    const count = await f(-5); // returns -2
+    return new Response(count);  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request: Request, env: Env) {
-
-    using f = await env.COUNTER_SERVICE.newCounter();
-
-    await f(2); // returns 2
-
-    await f(1); // returns 3
-
-    const count = await f(-5); // returns -2
-
-
-    return new Response(count);
-
-  },
-
-};
-
-
+export default {  async fetch(request: Request, env: Env) {    using f = await env.COUNTER_SERVICE.newCounter();    await f(2); // returns 2    await f(1); // returns 3    const count = await f(-5); // returns -2
+    return new Response(count);  },};
 ```
 
 Note
@@ -522,269 +234,83 @@ To use an instance of a class that you define as a parameter or return value of 
 
 Consider the following example:
 
-* [  wrangler.jsonc ](#tab-panel-12019)
-* [  wrangler.toml ](#tab-panel-12020)
+* [  wrangler.jsonc ](#tab-panel-12036)
+* [  wrangler.toml ](#tab-panel-12037)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "counter",
-
-  "main": "./src/counter.js"
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "counter",  "main": "./src/counter.js"}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "counter"
-
-main = "./src/counter.js"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "counter"main = "./src/counter.js"
 ```
 
-* [  JavaScript ](#tab-panel-12035)
-* [  TypeScript ](#tab-panel-12036)
+* [  JavaScript ](#tab-panel-12052)
+* [  TypeScript ](#tab-panel-12053)
 
 JavaScript
 
 ```
-
 import { WorkerEntrypoint, RpcTarget } from "cloudflare:workers";
-
-
-class Counter extends RpcTarget {
-
-  #value = 0;
-
-
-  increment(amount) {
-
-    this.#value += amount;
-
-    return this.#value;
-
-  }
-
-
-  get value() {
-
-    return this.#value;
-
-  }
-
-}
-
-
-export class CounterService extends WorkerEntrypoint {
-
-  async newCounter() {
-
-    return new Counter();
-
-  }
-
-}
-
-
-export default {
-
-  fetch() {
-
-    return new Response("ok");
-
-  },
-
-};
-
-
+class Counter extends RpcTarget {  #value = 0;
+  increment(amount) {    this.#value += amount;    return this.#value;  }
+  get value() {    return this.#value;  }}
+export class CounterService extends WorkerEntrypoint {  async newCounter() {    return new Counter();  }}
+export default {  fetch() {    return new Response("ok");  },};
 ```
 
 TypeScript
 
 ```
-
 import { WorkerEntrypoint, RpcTarget } from "cloudflare:workers";
-
-
-class Counter extends RpcTarget {
-
-  #value = 0;
-
-
-  increment(amount: number) {
-
-    this.#value += amount;
-
-    return this.#value;
-
-  }
-
-
-  get value() {
-
-    return this.#value;
-
-  }
-
-}
-
-
-export class CounterService extends WorkerEntrypoint {
-
-  async newCounter() {
-
-    return new Counter();
-
-  }
-
-}
-
-
-export default {
-
-  fetch() {
-
-    return new Response("ok");
-
-  },
-
-};
-
-
+class Counter extends RpcTarget {  #value = 0;
+  increment(amount: number) {    this.#value += amount;    return this.#value;  }
+  get value() {    return this.#value;  }}
+export class CounterService extends WorkerEntrypoint {  async newCounter() {    return new Counter();  }}
+export default {  fetch() {    return new Response("ok");  },};
 ```
 
 The method `increment` can be called directly by the client, as can the public property `value`:
 
-* [  wrangler.jsonc ](#tab-panel-12021)
-* [  wrangler.toml ](#tab-panel-12022)
+* [  wrangler.jsonc ](#tab-panel-12038)
+* [  wrangler.toml ](#tab-panel-12039)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "client-worker",
-
-  "main": "./src/clientWorker.js",
-
-  "services": [
-
-    {
-
-      "binding": "COUNTER_SERVICE",
-
-      "service": "counter",
-
-      "entrypoint": "CounterService"
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "client-worker",  "main": "./src/clientWorker.js",  "services": [    {      "binding": "COUNTER_SERVICE",      "service": "counter",      "entrypoint": "CounterService"    }  ]}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "client-worker"
-
-main = "./src/clientWorker.js"
-
-
-[[services]]
-
-binding = "COUNTER_SERVICE"
-
-service = "counter"
-
-entrypoint = "CounterService"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "client-worker"main = "./src/clientWorker.js"
+[[services]]binding = "COUNTER_SERVICE"service = "counter"entrypoint = "CounterService"
 ```
 
-* [  JavaScript ](#tab-panel-12027)
-* [  TypeScript ](#tab-panel-12028)
+* [  JavaScript ](#tab-panel-12044)
+* [  TypeScript ](#tab-panel-12045)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    using counter = await env.COUNTER_SERVICE.newCounter();
-
-
-    await counter.increment(2); // returns 2
-
-    await counter.increment(1); // returns 3
-
-    await counter.increment(-5); // returns -2
-
-
+export default {  async fetch(request, env) {    using counter = await env.COUNTER_SERVICE.newCounter();
+    await counter.increment(2); // returns 2    await counter.increment(1); // returns 3    await counter.increment(-5); // returns -2
     const count = await counter.value; // returns -2
-
-
-    return new Response(count);
-
-  },
-
-};
-
-
+    return new Response(count);  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request: Request, env: Env) {
-
-    using counter = await env.COUNTER_SERVICE.newCounter();
-
-
-    await counter.increment(2); // returns 2
-
-    await counter.increment(1); // returns 3
-
-    await counter.increment(-5); // returns -2
-
-
+export default {  async fetch(request: Request, env: Env) {    using counter = await env.COUNTER_SERVICE.newCounter();
+    await counter.increment(2); // returns 2    await counter.increment(1); // returns 3    await counter.increment(-5); // returns -2
     const count = await counter.value; // returns -2
-
-
-    return new Response(count);
-
-  },
-
-};
-
-
+    return new Response(count);  },};
 ```
 
 Note
@@ -807,33 +333,19 @@ Classes which do not inherit `RpcTarget` cannot be sent over RPC at all. This di
 
 When you call an RPC method and get back an object, it's common to immediately call a method on the object:
 
-* [  JavaScript ](#tab-panel-12023)
-* [  TypeScript ](#tab-panel-12024)
+* [  JavaScript ](#tab-panel-12040)
+* [  TypeScript ](#tab-panel-12041)
 
 JavaScript
 
 ```
-
-// Two round trips.
-
-using counter = await env.COUNTER_SERVICE.getCounter();
-
-await counter.increment();
-
-
+// Two round trips.using counter = await env.COUNTER_SERVICE.getCounter();await counter.increment();
 ```
 
 TypeScript
 
 ```
-
-// Two round trips.
-
-using counter = await env.COUNTER_SERVICE.getCounter();
-
-await counter.increment();
-
-
+// Two round trips.using counter = await env.COUNTER_SERVICE.getCounter();await counter.increment();
 ```
 
 But consider the case where the Worker service that you are calling may be far away across the network, as in the case of [Smart Placement](https://developers.cloudflare.com/workers/configuration/placement/) or [Durable Objects](https://developers.cloudflare.com/durable-objects). The code above makes two round trips, once when calling `getCounter()`, and again when calling `.increment()`. We'd like to avoid this.
@@ -842,33 +354,19 @@ With most RPC systems, the only way to avoid the problem would be to combine the
 
 Workers RPC allows a different approach: You can simply omit the first `await`:
 
-* [  JavaScript ](#tab-panel-12025)
-* [  TypeScript ](#tab-panel-12026)
+* [  JavaScript ](#tab-panel-12042)
+* [  TypeScript ](#tab-panel-12043)
 
 JavaScript
 
 ```
-
-// Only one round trip! Note the missing `await`.
-
-using promiseForCounter = env.COUNTER_SERVICE.getCounter();
-
-await promiseForCounter.increment();
-
-
+// Only one round trip! Note the missing `await`.using promiseForCounter = env.COUNTER_SERVICE.getCounter();await promiseForCounter.increment();
 ```
 
 TypeScript
 
 ```
-
-// Only one round trip! Note the missing `await`.
-
-using promiseForCounter = env.COUNTER_SERVICE.getCounter();
-
-await promiseForCounter.increment();
-
-
+// Only one round trip! Note the missing `await`.using promiseForCounter = env.COUNTER_SERVICE.getCounter();await promiseForCounter.increment();
 ```
 
 In this code, `getCounter()` returns a promise for a counter. Normally, the only thing you would do with a promise is `await` it. However, Workers RPC promises are special: they also allow you to initiate speculative calls on the future result of the promise. These calls are sent to the server immediately, without waiting for the initial call to complete. Thus, multiple chained calls can be completed in a single round trip.
@@ -877,108 +375,36 @@ How does this work? The promise returned by an RPC is not a real JavaScript `Pro
 
 This works when calling properties of objects returned by RPC methods as well. For example:
 
-* [  JavaScript ](#tab-panel-12029)
-* [  TypeScript ](#tab-panel-12030)
+* [  JavaScript ](#tab-panel-12046)
+* [  TypeScript ](#tab-panel-12047)
 
 JavaScript
 
 ```
-
 import { WorkerEntrypoint } from "cloudflare:workers";
-
-
-export class MyService extends WorkerEntrypoint {
-
-  async foo() {
-
-    return {
-
-      bar: {
-
-        baz: () => "qux",
-
-      },
-
-    };
-
-  }
-
-}
-
-
+export class MyService extends WorkerEntrypoint {  async foo() {    return {      bar: {        baz: () => "qux",      },    };  }}
 ```
 
 TypeScript
 
 ```
-
 import { WorkerEntrypoint } from "cloudflare:workers";
-
-
-export class MyService extends WorkerEntrypoint {
-
-  async foo() {
-
-    return {
-
-      bar: {
-
-        baz: () => "qux",
-
-      },
-
-    };
-
-  }
-
-}
-
-
+export class MyService extends WorkerEntrypoint {  async foo() {    return {      bar: {        baz: () => "qux",      },    };  }}
 ```
 
-* [  JavaScript ](#tab-panel-12033)
-* [  TypeScript ](#tab-panel-12034)
+* [  JavaScript ](#tab-panel-12050)
+* [  TypeScript ](#tab-panel-12051)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    using foo = env.MY_SERVICE.foo();
-
-    let baz = await foo.bar.baz();
-
-    return new Response(baz);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    using foo = env.MY_SERVICE.foo();    let baz = await foo.bar.baz();    return new Response(baz);  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    using foo = env.MY_SERVICE.foo();
-
-    let baz = await foo.bar.baz();
-
-    return new Response(baz);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    using foo = env.MY_SERVICE.foo();    let baz = await foo.bar.baz();    return new Response(baz);  },};
 ```
 
 If the initial RPC ends up throwing an exception, then any pipelined calls will also fail with the same exception
@@ -995,29 +421,19 @@ In all cases, ownership of the stream is transferred to the recipient. The sende
 
 A stub received over RPC from one Worker can be forwarded over RPC to another Worker.
 
-* [  JavaScript ](#tab-panel-12031)
-* [  TypeScript ](#tab-panel-12032)
+* [  JavaScript ](#tab-panel-12048)
+* [  TypeScript ](#tab-panel-12049)
 
 JavaScript
 
 ```
-
-using counter = env.COUNTER_SERVICE.getCounter();
-
-await env.ANOTHER_SERVICE.useCounter(counter);
-
-
+using counter = env.COUNTER_SERVICE.getCounter();await env.ANOTHER_SERVICE.useCounter(counter);
 ```
 
 TypeScript
 
 ```
-
-using counter = env.COUNTER_SERVICE.getCounter();
-
-await env.ANOTHER_SERVICE.useCounter(counter);
-
-
+using counter = env.COUNTER_SERVICE.getCounter();await env.ANOTHER_SERVICE.useCounter(counter);
 ```
 
 Here, three different workers are involved:
@@ -1047,44 +463,21 @@ In this video, we explore how Cloudflare Workers support Remote Procedure Calls 
 ## Limitations
 
 * [Smart Placement](https://developers.cloudflare.com/workers/configuration/placement/) is currently ignored when making RPC calls. If Smart Placement is enabled for Worker A, and Worker B declares a [Service Binding](https://developers.cloudflare.com/workers/runtime-apis/bindings) to it, when Worker B calls Worker A via RPC, Worker A will run locally, on the same machine.
-* The maximum serialized RPC limit is 32 MiB. Consider using [ReadableStream](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/) when returning more data.  
-   * [  JavaScript ](#tab-panel-12039)  
-   * [  TypeScript ](#tab-panel-12040)  
+* The maximum serialized RPC limit is 32 MiB. Consider using [ReadableStream](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/) when returning more data.
+
+  * [  JavaScript ](#tab-panel-12056)
+  * [  TypeScript ](#tab-panel-12057)  
 JavaScript  
 ```  
-export class MyService extends WorkerEntrypoint {  
-  async foo() {  
-    // Although this works, it puts a lot of memory pressure on the isolate.  
-    // If possible, streaming the data from its original source is much preferred and would yield better performance.  
-    // If you must buffer the data into memory, consider chunking it into smaller pieces if possible.  
-    const sizeInBytes = 33 * 1024 * 1024; // 33 MiB  
-    const arr = new Uint8Array(sizeInBytes);  
-    return new ReadableStream({  
-      start(controller) {  
-        controller.enqueue(arr);  
-        controller.close();  
-      },  
-    });  
-  }  
-}  
+export class MyService extends WorkerEntrypoint {  async foo() {    // Although this works, it puts a lot of memory pressure on the isolate.    // If possible, streaming the data from its original source is much preferred and would yield better performance.    // If you must buffer the data into memory, consider chunking it into smaller pieces if possible.  
+    const sizeInBytes = 33 * 1024 * 1024; // 33 MiB    const arr = new Uint8Array(sizeInBytes);  
+    return new ReadableStream({      start(controller) {        controller.enqueue(arr);        controller.close();      },    });  }}  
 ```  
 TypeScript  
 ```  
-export class MyService extends WorkerEntrypoint {  
-  async foo() {  
-    // Although this works, it puts a lot of memory pressure on the isolate.  
-    // If possible, streaming the data from its original source is much preferred and would yield better performance.  
-    // If you must buffer the data into memory, consider chunking it into smaller pieces if possible.  
-    const sizeInBytes = 33 * 1024 * 1024; // 33 MiB  
-    const arr = new Uint8Array(sizeInBytes);  
-    return new ReadableStream({  
-      start(controller) {  
-        controller.enqueue(arr);  
-        controller.close();  
-      },  
-    });  
-  }  
-}  
+export class MyService extends WorkerEntrypoint {  async foo() {    // Although this works, it puts a lot of memory pressure on the isolate.    // If possible, streaming the data from its original source is much preferred and would yield better performance.    // If you must buffer the data into memory, consider chunking it into smaller pieces if possible.  
+    const sizeInBytes = 33 * 1024 * 1024; // 33 MiB    const arr = new Uint8Array(sizeInBytes);  
+    return new ReadableStream({      start(controller) {        controller.enqueue(arr);        controller.close();      },    });  }}  
 ```
 
 ```json

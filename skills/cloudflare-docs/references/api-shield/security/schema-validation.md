@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -40,8 +40,8 @@ To view the contents in your learned schema, refer to [Export a schema](https://
 
 ### Add validation by uploading a schema
 
-* [  New dashboard ](#tab-panel-6709)
-* [ Old dashboard ](#tab-panel-6710)
+* [  New dashboard ](#tab-panel-6785)
+* [ Old dashboard ](#tab-panel-6786)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -64,8 +64,8 @@ Changes may take a few minutes to process depending on the number of added endpo
 
 ### Add validation by applying a learned schema to a single endpoint
 
-* [  New dashboard ](#tab-panel-6711)
-* [ Old dashboard ](#tab-panel-6712)
+* [  New dashboard ](#tab-panel-6787)
+* [ Old dashboard ](#tab-panel-6788)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -84,8 +84,8 @@ Changes may take a few minutes to process depending on the number of added endpo
 
 At this time, learned schemas will not overwrite customer-uploaded schemas. If an endpoint is covered by a customer-uploaded schema and also appears in a learned schema, the **Changes** field is set to `Unaffected`.
 
-* [  New dashboard ](#tab-panel-6713)
-* [ Old dashboard ](#tab-panel-6714)
+* [  New dashboard ](#tab-panel-6789)
+* [ Old dashboard ](#tab-panel-6790)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -116,8 +116,8 @@ By ensuring that all your endpoints in a schema are added to Endpoint Management
 
 To set up a fallthrough action:
 
-* [  New dashboard ](#tab-panel-6727)
-* [ Old dashboard ](#tab-panel-6728)
+* [  New dashboard ](#tab-panel-6803)
+* [ Old dashboard ](#tab-panel-6804)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -146,8 +146,8 @@ You can use the `cf.api_gateway.fallthrough_detected` field in your own custom r
 
 ### Change the action of an entire schema
 
-* [  New dashboard ](#tab-panel-6715)
-* [ Old dashboard ](#tab-panel-6716)
+* [  New dashboard ](#tab-panel-6791)
+* [ Old dashboard ](#tab-panel-6792)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -176,8 +176,8 @@ Schema validation’s default action is visible on the main Schema validation pa
 
 To change the default action:
 
-* [  New dashboard ](#tab-panel-6717)
-* [ Old dashboard ](#tab-panel-6718)
+* [  New dashboard ](#tab-panel-6793)
+* [ Old dashboard ](#tab-panel-6794)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -203,8 +203,8 @@ This allows you to be stricter on blocking non-compliant requests on certain end
 
 To change the action on an individual endpoint:
 
-* [  New dashboard ](#tab-panel-6719)
-* [ Old dashboard ](#tab-panel-6720)
+* [  New dashboard ](#tab-panel-6795)
+* [ Old dashboard ](#tab-panel-6796)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -226,8 +226,8 @@ You can disable Schema validation entirely for temporary troubleshooting. You ca
 
 To disable Schema validation without changing actions:
 
-* [  New dashboard ](#tab-panel-6721)
-* [ Old dashboard ](#tab-panel-6722)
+* [  New dashboard ](#tab-panel-6797)
+* [ Old dashboard ](#tab-panel-6798)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -245,8 +245,8 @@ Your per-endpoint configurations will be saved when modifying the setting, so th
 
 ### View active schemas
 
-* [  New dashboard ](#tab-panel-6723)
-* [ Old dashboard ](#tab-panel-6724)
+* [  New dashboard ](#tab-panel-6799)
+* [ Old dashboard ](#tab-panel-6800)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -271,8 +271,8 @@ Deleting the schema will remove validation from the currently associated endpoin
 
 To delete currently uploaded or learned schemas:
 
-* [  New dashboard ](#tab-panel-6725)
-* [ Old dashboard ](#tab-panel-6726)
+* [  New dashboard ](#tab-panel-6801)
+* [ Old dashboard ](#tab-panel-6802)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -342,12 +342,12 @@ Although not strictly required by the OpenAPI specification, Schema validation s
 #### `schema`
 
 * [type ↗](https://spec.openapis.org/oas/v3.0.3#schema-object)  
-   * All schemas require a type to be set. If the specific type is not supported by Schema validation, set the type to `string` instead.
+  * All schemas require a type to be set. If the specific type is not supported by Schema validation, set the type to `string` instead.
 
 #### `parameter`
 
 * [schema ↗](https://spec.openapis.org/oas/v3.0.3#schema-object)  
-   * Schema validation does not support the content field in parameters. For more details, refer to the [notes on validated and supported fields](#notes-on-validated-and-supported-fields) below. Instead, a schema is strictly required on all parameters objects.
+  * Schema validation does not support the content field in parameters. For more details, refer to the [notes on validated and supported fields](#notes-on-validated-and-supported-fields) below. Instead, a schema is strictly required on all parameters objects.
 
 ### Notes on validated and supported fields
 
@@ -356,65 +356,67 @@ Refer to the information below for more details on Schema validation's current s
 #### `servers`
 
 * [url ↗](https://spec.openapis.org/oas/v3.0.3#server-object)  
-   * Schema validation does not support relative URLs.
+  * Schema validation does not support relative URLs.
 * [variables ↗](https://spec.openapis.org/oas/v3.0.3#server-variable-object)  
-   * Server variables are not validated.
+  * Server variables are not validated.
 
 #### `parameter`
 
 * [style ↗](https://spec.openapis.org/oas/v3.0.3#parameter-object)  
-   * Only the default values are supported: `"simple"` (path or header parameters) and `"form"` (query or cookie parameters).
+  * Only the default values are supported: `"simple"` (path or header parameters) and `"form"` (query or cookie parameters).
 * [explode ↗](https://spec.openapis.org/oas/v3.0.3#parameter-object)  
-   * Only the default values are supported: `true` (for form) and `false` (for simple).
+  * Only the default values are supported: `true` (for form) and `false` (for simple).
 * [content ↗](https://spec.openapis.org/oas/v3.0.3#parameter-object)  
-   * The content field is not supported in parameters. Use the schema field instead.
+  * The content field is not supported in parameters. Use the schema field instead.
 * [type ↗](https://spec.openapis.org/oas/v3.0.3#parameter-object)  
-   * Cloudflare currently does not validate object type parameters.
+  * Cloudflare currently does not validate object type parameters.
 
 #### `reference`
 
 * [$ref ↗](https://spec.openapis.org/oas/v3.0.3#reference-object)  
-   * External or relative references are not supported.
+  * External or relative references are not supported.
 
 #### `requestBody`
 
 * `content`  
-   * [Request Body Object ↗](https://spec.openapis.org/oas/v3.0.3#request-body-object)  
-   * [Media Type Object ↗](https://spec.openapis.org/oas/v3.0.3#media-type-object)  
-         * Schema validation is able to validate `application/json` documents. If a given schema allows other content types, Schema validation will accept those requests without validation.
+  * [Request Body Object ↗](https://spec.openapis.org/oas/v3.0.3#request-body-object)
+  * [Media Type Object ↗](https://spec.openapis.org/oas/v3.0.3#media-type-object)  
+    * Schema validation is able to validate `application/json` documents. If a given schema allows other content types, Schema validation will accept those requests without validation.
 
 #### `parameter/schema`
 
 * `anyOf`  
-   * [Parameter Object ↗](https://spec.openapis.org/oas/v3.0.3#parameter-object)  
-   * [Schema Object ↗](https://spec.openapis.org/oas/v3.0.3#schema-object)  
-         * `anyOf` schemas are currently not supported in parameter schemas.
+  * [Parameter Object ↗](https://spec.openapis.org/oas/v3.0.3#parameter-object)
+  * [Schema Object ↗](https://spec.openapis.org/oas/v3.0.3#schema-object)  
+    * `anyOf` schemas are currently not supported in parameter schemas.
 
 #### `schema`
 
-* [format ↗](https://spec.openapis.org/oas/v3.0.3#schema-object)  
-   * Validated formats:  
-         * `date-time`  
-         * `time`  
-         * `date`  
-         * `email`  
-         * `hostname`  
-         * `ipv4`  
-         * `ipv6`  
-         * `uri`  
-         * `uri-reference`  
-         * `iri`  
-         * `iri-reference`  
-         * `int32`  
-         * `int64`  
-         * `float`  
-         * `double`  
-         * `password`  
-         * `uuid`  
-         * `byte`  
-         * `uint64`
-* [uniqueItems ↗](https://spec.openapis.org/oas/v3.0.3#schema-object)  
-   * This field is currently not validated by Schema validation.
+* [format ↗](https://spec.openapis.org/oas/v3.0.3#schema-object)
+
+  * Validated formats:  
+    * `date-time`
+    * `time`
+    * `date`
+    * `email`
+    * `hostname`
+    * `ipv4`
+    * `ipv6`
+    * `uri`
+    * `uri-reference`
+    * `iri`
+    * `iri-reference`
+    * `int32`
+    * `int64`
+    * `float`
+    * `double`
+    * `password`
+    * `uuid`
+    * `byte`
+    * `uint64`
+* [uniqueItems ↗](https://spec.openapis.org/oas/v3.0.3#schema-object)
+
+  * This field is currently not validated by Schema validation.
 
 ---
 

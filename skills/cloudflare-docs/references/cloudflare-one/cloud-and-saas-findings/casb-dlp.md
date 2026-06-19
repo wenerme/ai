@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -52,22 +52,26 @@ Your DLP profile is now ready to use with CASB.
 2. Select **Create profile**.
 3. Enter a name and optional description for the profile.
 4. Add detection entries to the profile.  
-Create a custom entry  
-   1. Select **Create custom entry**.  
-   2. Choose the type of detection entry you want to create and configure its values.  
-   For information on supported detection entry types, refer to [Configure detection entries](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/).  
-   3. To save the detection entry, select **Done**.  
+Create a custom entry
+
+  1. Select **Create custom entry**.
+  2. Choose the type of detection entry you want to create and configure its values.  
+  For information on supported detection entry types, refer to [Configure detection entries](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/).
+  3. To save the detection entry, select **Done**.  
 Add existing entries  
-Existing entries include [predefined](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/predefined-detection-entries/) and [user-defined](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/) detection entries that you manage from the Detection entries section.  
-   1. Select **Add existing entries**.  
-   2. Choose which entries you want to add, then select **Confirm**.  
-   3. To finish, select **Done**.
-5. (Optional) Add data classes to include reusable classification rules.  
-   * Select **Add data classes**  
-   * Choose the data classes you want to add, then select **Confirm**
-6. (Optional) Use labels as match criteria for the profile.  
-   * Select a sensitivity schema and minimum sensitivity level.  
-   * Select a data tag group and one or more data tags.  
+Existing entries include [predefined](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/predefined-detection-entries/) and [user-defined](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/) detection entries that you manage from the Detection entries section.
+
+  1. Select **Add existing entries**.
+  2. Choose which entries you want to add, then select **Confirm**.
+  3. To finish, select **Done**.
+5. (Optional) Add data classes to include reusable classification rules.
+
+  * Select **Add data classes**
+  * Choose the data classes you want to add, then select **Confirm**
+6. (Optional) Use labels as match criteria for the profile.
+
+  * Select a sensitivity schema and minimum sensitivity level.
+  * Select a data tag group and one or more data tags.  
 For more information on labels, templates, and data classes, refer to [Data Classification](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/data-classification/).
 7. (Optional) Configure [**profile settings**](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/advanced-settings/) for the profile.
 8. Select **Save profile**.

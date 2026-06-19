@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -39,18 +39,19 @@ A target represents a single resource in your infrastructure (such as a server, 
 
  Create a target for each Windows machine that requires RDP access. To create a new target:
 
-* [ Dashboard ](#tab-panel-7307)
-* [ API ](#tab-panel-7308)
-* [ Terraform ](#tab-panel-7309)
+* [ Dashboard ](#tab-panel-7383)
+* [ API ](#tab-panel-7384)
+* [ Terraform ](#tab-panel-7385)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Targets**.
 2. Select **Add a target**.
 3. In **Target hostname**, enter a user-friendly name for the target. We recommend using the server hostname, for example `production-server`. The target hostname does not need to be unique and can be reused for multiple targets. Hostnames are used to define the targets secured by an Access application; they are not used for DNS address resolution.  
-Hostname format restrictions  
-   * Case insensitive  
-   * Contain no more than 253 characters  
-   * Contain only alphanumeric characters, `-`, or `.` (no spaces allowed)  
-   * Start and end with an alphanumeric character
+Hostname format restrictions
+
+  * Case insensitive
+  * Contain no more than 253 characters
+  * Contain only alphanumeric characters, `-`, or `.` (no spaces allowed)
+  * Start and end with an alphanumeric character
 4. In **IP addresses**, enter the IPv4 and/or IPv6 address of the target resource. The dropdown menu will not populate until you type in the full IP address.
 
 Note
@@ -65,64 +66,19 @@ Make a `POST` request to the [Infrastructure Access Targets](https://developers.
 Create new target
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/infrastructure/targets" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "hostname": "infra-access-target",
-
-    "ip": {
-
-        "ipv4": {
-
-            "ip_addr": "187.26.29.249",
-
-            "virtual_network_id": "c77b744e-acc8-428f-9257-6878c046ed55"
-
-        },
-
-        "ipv6": {
-
-            "ip_addr": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
-
-            "virtual_network_id": "c77b744e-acc8-428f-9257-6878c046ed55"
-
-        }
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/infrastructure/targets" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "hostname": "infra-access-target",    "ip": {        "ipv4": {            "ip_addr": "187.26.29.249",            "virtual_network_id": "c77b744e-acc8-428f-9257-6878c046ed55"        },        "ipv6": {            "ip_addr": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",            "virtual_network_id": "c77b744e-acc8-428f-9257-6878c046ed55"        }    }  }'
 ```
 
 Provider versions
 
 The following example requires Cloudflare provider version `>=4.45.0`.
 
-1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/api%5Ftoken):  
-   * `Zero Trust Write`
+1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/api%5Ftoken):
+
+  * `Zero Trust Write`
 2. Configure the [cloudflare\_zero\_trust\_infrastructure\_access\_target ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/zero%5Ftrust%5Finfrastructure%5Faccess%5Ftarget) resource:  
 ```  
-resource "cloudflare_zero_trust_infrastructure_access_target" "infra-ssh-target" {  
-  account_id = var.cloudflare_account_id  
-    hostname   = "infra-access-target"  
-    ip = {  
-      ipv4 = {  
-        ip_addr = "187.26.29.249"  
-        virtual_network_id = "c77b744e-acc8-428f-9257-6878c046ed55"  
-      }  
-      ipv6 = {  
-        ip_addr = "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0"  
-        virtual_network_id = "c77b744e-acc8-428f-9257-6878c046ed55"  
-      }  
-    }  
-}  
+resource "cloudflare_zero_trust_infrastructure_access_target" "infra-ssh-target" {  account_id = var.cloudflare_account_id    hostname   = "infra-access-target"    ip = {      ipv4 = {        ip_addr = "187.26.29.249"        virtual_network_id = "c77b744e-acc8-428f-9257-6878c046ed55"      }      ipv6 = {        ip_addr = "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0"        virtual_network_id = "c77b744e-acc8-428f-9257-6878c046ed55"      }    }}  
 ```
 
 Next, create an Access application to secure the target.
@@ -184,32 +140,36 @@ You can only enable browser-based RDP on domains and subdomains, not for specifi
 Note  
 Ensure that only **Allow** or **Block** policies are present. **Bypass** and **Service Auth** are not supported for browser-rendered applications.
 11. (Optional) In your Access policy, configure [clipboard controls](#clipboard-controls) to restrict copy and paste actions between the user's local machine and the browser-based RDP session.
-12. Configure how users will authenticate:  
-   1. Select the [identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) you want to enable for your application.  
-   2. (Recommended) If you plan to only allow access via a single IdP, turn on **Apply instant authentication**. End users will not be shown the [Cloudflare Access login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/). Instead, Cloudflare will redirect users directly to your SSO login event.  
-   3. **Authenticate with Cloudflare One Client** is not supported for browser-based RDP and should remain turned off.
+12. Configure how users will authenticate:
+
+  1. Select the [identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) you want to enable for your application.
+  2. (Recommended) If you plan to only allow access via a single IdP, turn on **Apply instant authentication**. End users will not be shown the [Cloudflare Access login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/). Instead, Cloudflare will redirect users directly to your SSO login event.
+  3. **Authenticate with Cloudflare One Client** is not supported for browser-based RDP and should remain turned off.
 13. In **Session Duration**, choose how often the user's [application token](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/) should expire.  
 Cloudflare checks every HTTP request to your application for a valid application token. If the user's application token (and global token) has expired, they will be prompted to reauthenticate with the IdP. For more information, refer to [Session management](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/).
-14. (Optional) Go to the **Additional settings** tab to customize the application experience:  
-   * **App Launcher customization**: The [App Launcher](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/) allows users to view the Windows servers that they can access using browser-based RDP. Cloudflare recommends keeping **Show application in App Launcher** turned on. Without the App Launcher, users will need to know each target's direct URL.  
-   Note  
-   Ensure that users match an Allow rule in your [App Launcher policies](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/#enable-the-app-launcher).  
-   * **Custom block pages**: Choose what users will see when they are denied access to the application.  
-         * **Cloudflare default**: Reload the [login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/) and display a block message below the Cloudflare Access logo. The default message is `That account does not have access`, or you can enter a custom message.  
-         * **Redirect URL**: Redirect to the specified website.  
-         * **Custom page template**: Display a [custom block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-block-page/) hosted in Cloudflare One.  
-   * [**Cross-Origin Resource Sharing (CORS) settings**](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/cors/)  
-   * [**Cookie settings**](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/#cookie-settings)  
-   * **401 Response for Service Auth policies**: Return a `401` response code when a user (or machine) makes a request to the application without the correct [service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/).
+14. (Optional) Go to the **Additional settings** tab to customize the application experience:
+
+  * **App Launcher customization**: The [App Launcher](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/) allows users to view the Windows servers that they can access using browser-based RDP. Cloudflare recommends keeping **Show application in App Launcher** turned on. Without the App Launcher, users will need to know each target's direct URL.  
+  Note  
+  Ensure that users match an Allow rule in your [App Launcher policies](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/#enable-the-app-launcher).
+  * **Custom block pages**: Choose what users will see when they are denied access to the application.
+
+    * **Cloudflare default**: Reload the [login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/) and display a block message below the Cloudflare Access logo. The default message is `That account does not have access`, or you can enter a custom message.
+    * **Redirect URL**: Redirect to the specified website.
+    * **Custom page template**: Display a [custom block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-block-page/) hosted in Cloudflare One.
+  * [**Cross-Origin Resource Sharing (CORS) settings**](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/cors/)
+  * [**Cookie settings**](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/#cookie-settings)
+  * **401 Response for Service Auth policies**: Return a `401` response code when a user (or machine) makes a request to the application without the correct [service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/).
 15. Select **Create**.
 
 ## 5\. (Recommended) Modify order of precedence in Gateway
 
 By default, Cloudflare will evaluate Access application policies after evaluating all [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/). To evaluate Access applications before or after specific Gateway policies:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**. In **Network**, [create a Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) with the following configuration:  
-| Selector                     | Operator | Value     | Action |  
-| ---------------------------- | -------- | --------- | ------ |  
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**. In **Network**, [create a Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) with the following configuration:
+
+| Selector                     | Operator | Value     | Action |
+| ---------------------------- | -------- | --------- | ------ |
 | Access Infrastructure Target | is       | _Present_ | Allow  |
 2. Ensure that **Enforce Cloudflare One Client session duration** is turned off, otherwise users will be blocked from accessing RDP targets.
 3. Update the policy's [order of precedence](https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/#order-of-precedence)using the dashboard or API.
@@ -268,9 +228,9 @@ When a user attempts a restricted clipboard action, the clipboard content is rep
 
 ### Configure clipboard controls
 
-* [ Dashboard ](#tab-panel-7304)
-* [ API ](#tab-panel-7305)
-* [ Terraform ](#tab-panel-7306)
+* [ Dashboard ](#tab-panel-7380)
+* [ API ](#tab-panel-7381)
+* [ Terraform ](#tab-panel-7382)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Locate your browser-based RDP application and select **Configure**.
@@ -284,103 +244,21 @@ When [creating or updating an Access policy](https://developers.cloudflare.com/a
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Access: Apps and Policies Write`
 
 Create an Access reusable policy
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "Allow engineers with restricted clipboard",
-
-    "decision": "allow",
-
-    "include": [
-
-        {
-
-            "email_domain": {
-
-                "domain": "example.com"
-
-            }
-
-        }
-
-    ],
-
-    "connection_rules": {
-
-        "rdp": {
-
-            "allowed_clipboard_local_to_remote_formats": [
-
-                "text"
-
-            ],
-
-            "allowed_clipboard_remote_to_local_formats": []
-
-        }
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Allow engineers with restricted clipboard",    "decision": "allow",    "include": [        {            "email_domain": {                "domain": "example.com"            }        }    ],    "connection_rules": {        "rdp": {            "allowed_clipboard_local_to_remote_formats": [                "text"            ],            "allowed_clipboard_remote_to_local_formats": []        }    }  }'
 ```
 
 Using the `connection_rules` attribute within a [cloudflare\_zero\_trust\_access\_policy ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fpolicy) resource, configure the allowed copy/paste formats in each direction. For example, the following policy allows users to copy text from their local client into the browser-based RDP session, but blocks copying content out of the RDP session.
 
 ```
-
-resource "cloudflare_zero_trust_access_policy" "rdp-policy" {
-
-  account_id = var.cloudflare_account_id
-
-  name       = "Allow engineers with restricted clipboard"
-
-  decision   = "allow"
-
-
-  include = [
-
-    {
-
-      email_domain = {
-
-        domain = "example.com"
-
-      }
-
-    }
-
-  ]
-
-
-  connection_rules = {
-
-    rdp = {
-
-      allowed_clipboard_local_to_remote_formats = ["text"]
-
-      allowed_clipboard_remote_to_local_formats = []
-
-    }
-
-  }
-
-}
-
-
+resource "cloudflare_zero_trust_access_policy" "rdp-policy" {  account_id = var.cloudflare_account_id  name       = "Allow engineers with restricted clipboard"  decision   = "allow"
+  include = [    {      email_domain = {        domain = "example.com"      }    }  ]
+  connection_rules = {    rdp = {      allowed_clipboard_local_to_remote_formats = ["text"]      allowed_clipboard_remote_to_local_formats = []    }  }}
 ```
 
 ## Compatibility
@@ -483,11 +361,11 @@ Google tag gateway is configured at the zone level and cannot be scoped to speci
 * **Print to local printer**: Users cannot print information from their browser-based RDP session to a printer in their local network.
 * **Network Level Authentication for Entra-joined accounts**: Browser-based RDP does not support PKU2U authentication which is required for [Network Level Authentication (NLA) ↗](https://learn.microsoft.com/en-us/windows-server/remote/remote-desktop-services/remotepc/remote-desktop-allow-access#why-allow-connections-only-with-network-level-authentication) with Entra-joined accounts. Connecting to Entra-joined accounts requires disabling enforcement of NLA on the remote Windows machine. You can disable NLA from **Settings** \> **System** \> **Remote Desktop**, or use the Local Group Policy Editor to disable **Require user authentication for remote connections by using Network Level Authentication**.
 * **Clipboard browser compatibility**: Automatic clipboard sharing between the local and remote machine is only available in Chromium-based browsers by default (Google Chrome, Microsoft Edge, Opera, Brave). To enable this functionality in Firefox:  
-   1. Type `about:config` into the browser address bar and press **Enter**.  
-   2. Accept the warning prompt if displayed.  
-   3. Search for `dom.events.testing.asyncClipboard` and set it to `true`.  
-   4. Search for `dom.events.asyncClipboard.clipboardItem` and set it to `true`.  
-   5. Search for `dom.events.asyncClipboard.readText` and set it to `true`.
+  1. Type `about:config` into the browser address bar and press **Enter**.
+  2. Accept the warning prompt if displayed.
+  3. Search for `dom.events.testing.asyncClipboard` and set it to `true`.
+  4. Search for `dom.events.asyncClipboard.clipboardItem` and set it to `true`.
+  5. Search for `dom.events.asyncClipboard.readText` and set it to `true`.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/#page","headline":"Connect to RDP in a browser · Cloudflare One docs","description":"Connect to RDP in a browser in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["RDP"]}

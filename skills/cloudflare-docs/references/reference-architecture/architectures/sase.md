@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -131,7 +131,7 @@ This journey to a SASE architecture starts with an organization needing to provi
 
 [Zero Trust Network Access ↗](https://www.cloudflare.com/learning/access-management/what-is-ztna/) (ZTNA) is a SASE service that secures access to self-hosted applications and services. ZTNA functionality can be divided broadly into two categories: 1) establishing connectivity between Cloudflare's network and the environments where the applications are running, and 2) setting policies to define how users are able to access these applications. In this section, we first examine the former — how to connect apps to Cloudflare.
 
-Connectivity to self-hosted applications is facilitated through tunnels that are created and maintained by a software connector,[cloudflared](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/). `cloudflared` is a lightweight daemon installed in an organizations' infrastructure that creates a tunnel via an outbound connection to Cloudflare's global network. The connector can be installed in a variety of ways:
+Connectivity to self-hosted applications is facilitated through tunnels that are created and maintained by a software connector, [cloudflared](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/). `cloudflared` is a lightweight daemon installed in an organizations' infrastructure that creates a tunnel via an outbound connection to Cloudflare's global network. The connector can be installed in a variety of ways:
 
 * In the OS installed on the bare metal server
 * In the OS that is running in a virtualized environment
@@ -317,11 +317,11 @@ Each of these methods of connecting and routing traffic can be deployed concurre
 Note the following traffic flows:
 
 * All traffic connected via a Cloudflare Mesh node or device agent can communicate with each other over the mesh network  
-   * Developers working from home can communicate with the production and staging servers in the cloud  
-   * The employee in the retail location, as well as the developer at home, can receive VOIP calls on their laptop
+  * Developers working from home can communicate with the production and staging servers in the cloud
+  * The employee in the retail location, as well as the developer at home, can receive VOIP calls on their laptop
 * A HPC Cluster in AWS represents a proprietary solution in which no third-party software agents can be installed; as a result, it uses an IPsec connection to Cloudflare WAN
 * In the retail location, the Cloudflare One Appliance routes all traffic to Cloudflare via an IPsec tunnel  
-   * An employee's laptop running the device agent creates its own secure connection to Cloudflare that is routed over the IPsec tunnel
+  * An employee's laptop running the device agent creates its own secure connection to Cloudflare that is routed over the IPsec tunnel
 * The application owner of the reporting system maintains a connection to Cloudflare using `cloudflared` and doesn't require any networking help to expose their application to employees
 ![Connecting and routing traffic can be created using various methods such as Cloudflare Network Interconnect, IPSEC tunnels, Cloudflare Mesh and cloudflared.](https://developers.cloudflare.com/_astro/cf1-ref-arch-14.BMsYJBWD_1UbvIi.svg) 
 
@@ -419,19 +419,19 @@ All of the above methods result in only the DNS requests — not all traffic —
 
 The following table summarizes SWG capabilities for the various methods of forwarding traffic to Cloudflare (as of Oct 2023):
 
-| IP tunnel or Interconnect (Cloudflare WAN) | Device Agent (WARP)\*1 | Remote Browser | Browser proxy | DNS proxy |       |
-| ------------------------------------------ | ---------------------- | -------------- | ------------- | --------- | ----- |
-| Types of traffic forwarded                 | TCP/UDP                | TPC/UDP        | HTTP          | HTTP      | DNS   |
-| **Policy types**                           |                        |                |               |           |       |
-| DNS                                        | Yes                    | Yes            | Yes           | Yes       | Yes   |
-| HTTP/S\*2                                  | Yes                    | Yes            | Yes           | Yes       | N/A   |
-| Network (L3/L4 parameter)                  | Yes                    | Yes            | Yes           | Yes       | No    |
-| **Data available in policies**             |                        |                |               |           |       |
-| Identity information                       | No                     | Yes            | Yes           | No        | No\*3 |
-| Device posture                             | No                     | Yes            | No            | No        | No    |
-| **Capabilities**                           |                        |                |               |           |       |
-| Remote browser isolation                   | Yes                    | Yes            | Yes           | Yes       | N/A   |
-| Enforce egress IP                          | Yes                    | Yes            | Yes           | Yes       | N/A   |
+|                                | IP tunnel or Interconnect (Cloudflare WAN) | Device Agent (WARP)\*1 | Remote Browser | Browser proxy | DNS proxy |
+| ------------------------------ | ------------------------------------------ | ---------------------- | -------------- | ------------- | --------- |
+| Types of traffic forwarded     | TCP/UDP                                    | TPC/UDP                | HTTP           | HTTP          | DNS       |
+| **Policy types**               |                                            |                        |                |               |           |
+| DNS                            | Yes                                        | Yes                    | Yes            | Yes           | Yes       |
+| HTTP/S\*2                      | Yes                                        | Yes                    | Yes            | Yes           | N/A       |
+| Network (L3/L4 parameter)      | Yes                                        | Yes                    | Yes            | Yes           | No        |
+| **Data available in policies** |                                            |                        |                |               |           |
+| Identity information           | No                                         | Yes                    | Yes            | No            | No\*3     |
+| Device posture                 | No                                         | Yes                    | No             | No            | No        |
+| **Capabilities**               |                                            |                        |                |               |           |
+| Remote browser isolation       | Yes                                        | Yes                    | Yes            | Yes           | N/A       |
+| Enforce egress IP              | Yes                                        | Yes                    | Yes            | Yes           | N/A       |
 
 Notes:
 
@@ -591,23 +591,23 @@ In this example, consider two services: a database administration application ([
 The policies that enable access rely on two Access Groups.
 
 * Contractors  
-   * Users who authenticate through Okta and are part of the Okta group labeled "Contractors"  
-   * Authentication requires the use of a hardware token
+  * Users who authenticate through Okta and are part of the Okta group labeled "Contractors"
+  * Authentication requires the use of a hardware token
 * Database and IT administrators  
-   * Users who authenticate through Okta and are in the Okta groups "IT administrators" or "Database administrators"  
-   * Authentication requires the use of a hardware token  
-   * Users should be on a device with a serial number in the "Managed Devices" list
+  * Users who authenticate through Okta and are in the Okta groups "IT administrators" or "Database administrators"
+  * Authentication requires the use of a hardware token
+  * Users should be on a device with a serial number in the "Managed Devices" list
 
 Both of these groups are then used in two different access policies.
 
 * Database administration tool access  
-   * Database and IT admins are allowed access  
-   * Members of the "Contractor" access group are allowed access, but each authenticated session requires the user to complete a justification request  
-   * The admin tool is rendered in an isolated browser on Cloudflare's Edge network and file downloads are disabled
+  * Database and IT admins are allowed access
+  * Members of the "Contractor" access group are allowed access, but each authenticated session requires the user to complete a justification request
+  * The admin tool is rendered in an isolated browser on Cloudflare's Edge network and file downloads are disabled
 * Database server SSH access  
-   * "Database and IT administrators" group is allowed access  
-   * Their device must pass a Crowdstrike risk score of at least 80  
-   * Access must come from a device that is running our device agent and is connected to Cloudflare
+  * "Database and IT administrators" group is allowed access
+  * Their device must pass a Crowdstrike risk score of at least 80
+  * Access must come from a device that is running our device agent and is connected to Cloudflare
 
 These policies show that contractors are only allowed access to the database administration tool and do not have SSH access to the server. IT and database administrators can access the SSH service only when their devices are securely connected to Cloudflare via the device agent. Every element of the access groups and policies is evaluated for every login, so an IT administrator using a compromised laptop or a contractor unable to authenticate with a hardware token will be denied access.
 

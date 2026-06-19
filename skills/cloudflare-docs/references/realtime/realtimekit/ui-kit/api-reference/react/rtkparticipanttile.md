@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -34,55 +34,15 @@ A component which plays a participants video and allows for placement of compone
 ### Basic Usage
 
 ```
-
 import { RtkParticipantTile } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return <RtkParticipantTile />;
-
-}
-
-
+function MyComponent() {  return <RtkParticipantTile />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkParticipantTile } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkParticipantTile
-
-      isPreview={true}
-
-      meeting={meeting}
-
-      nameTagPosition={| 'bottom-left'
-
-    | 'bottom-right'
-
-    | 'bottom-center'
-
-    | 'top-left'
-
-    | 'top-right'
-
-    | 'top-center'}
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkParticipantTile      isPreview={true}      meeting={meeting}      nameTagPosition={| 'bottom-left'    | 'bottom-right'    | 'bottom-center'    | 'top-left'    | 'top-right'    | 'top-center'}    />  );}
 ```
 
 ```json

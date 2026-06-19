@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -43,40 +43,11 @@ This example assumes you already have a working FUSE implementation on the host,
 Terminal window
 
 ```
-
 go install github.com/cloudflare/artifact-fs/cmd/artifact-fs@latest
-
-
-export ARTIFACTS_REMOTE="<PASTE_REMOTE_FROM_CREATE_OR_GET_RESPONSE>"
-
-export ARTIFACTS_TOKEN="<YOUR_READ_TOKEN>"
-
-export ARTIFACTS_TOKEN_SECRET="${ARTIFACTS_TOKEN%%\?expires=*}"
-
-export ARTIFACTS_AUTH_REMOTE="https://x:${ARTIFACTS_TOKEN_SECRET}@${ARTIFACTS_REMOTE#https://}"
-
-
-artifact-fs add-repo \
-
-  --name starter-repo \
-
-  --remote "$ARTIFACTS_AUTH_REMOTE" \
-
-  --branch main \
-
-  --mount-root /tmp
-
-
+export ARTIFACTS_REMOTE="<PASTE_REMOTE_FROM_CREATE_OR_GET_RESPONSE>"export ARTIFACTS_TOKEN="<YOUR_READ_TOKEN>"export ARTIFACTS_TOKEN_SECRET="${ARTIFACTS_TOKEN%%\?expires=*}"export ARTIFACTS_AUTH_REMOTE="https://x:${ARTIFACTS_TOKEN_SECRET}@${ARTIFACTS_REMOTE#https://}"
+artifact-fs add-repo \  --name starter-repo \  --remote "$ARTIFACTS_AUTH_REMOTE" \  --branch main \  --mount-root /tmp
 artifact-fs daemon --root /tmp &
-
-
-ls /tmp/starter-repo/
-
-cat /tmp/starter-repo/README.md
-
-git -C /tmp/starter-repo log --oneline -5
-
-
+ls /tmp/starter-repo/cat /tmp/starter-repo/README.mdgit -C /tmp/starter-repo log --oneline -5
 ```
 
 Use a short-lived token in the authenticated remote URL. If you need a smaller repo or a simpler local workflow, use a normal [Git protocol](https://developers.cloudflare.com/artifacts/api/git-protocol/) clone instead.

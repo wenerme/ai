@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,76 +25,7 @@ Before a Certificate Authority will issue a certificate for a domain, the reques
 Cloudflare sends this alert when certificates move from a status of `pending_validation` to `pending_issuance`.
 
 ```
-
-{
-
-  "metadata": {
-
-    "event": {
-
-      "id": "<<WEBHOOK_ID>",
-
-      "type": "ssl.custom_hostname_certificate.validation.succeeded",
-
-      "created_at": "2022-02-09T00:03:28.385080Z"
-
-    },
-
-    "account": {
-
-      "id": "<<ACCOUNT_ID>"
-
-    },
-
-    "zone": {
-
-      "id": "<<ZONE_ID>"
-
-    }
-
-  },
-
-  "data": {
-
-    "id": "<<CUSTOM_HOSTNAME_ID>",
-
-    "hostname": "blog.com",
-
-    "ssl": {
-
-      "id": "<<CERTIFICATE_ID>",
-
-      "type": "dv",
-
-      "method": "cname",
-
-      "status": "pending_issuance",
-
-      "settings": {
-
-        "min_tls_version": "1.2",
-
-        "http2": "on"
-
-      }
-
-    },
-
-    "custom_metadata": {
-
-      "key1": "value1",
-
-      "key2": "value2"
-
-    },
-
-    "custom_origin_server": "0001.blog.com"
-
-  }
-
-}
-
-
+{  "metadata": {    "event": {      "id": "<<WEBHOOK_ID>",      "type": "ssl.custom_hostname_certificate.validation.succeeded",      "created_at": "2022-02-09T00:03:28.385080Z"    },    "account": {      "id": "<<ACCOUNT_ID>"    },    "zone": {      "id": "<<ZONE_ID>"    }  },  "data": {    "id": "<<CUSTOM_HOSTNAME_ID>",    "hostname": "blog.com",    "ssl": {      "id": "<<CERTIFICATE_ID>",      "type": "dv",      "method": "cname",      "status": "pending_issuance",      "settings": {        "min_tls_version": "1.2",        "http2": "on"      }    },    "custom_metadata": {      "key1": "value1",      "key2": "value2"    },    "custom_origin_server": "0001.blog.com"  }}
 ```
 
 ### Validation failed
@@ -102,90 +33,7 @@ Cloudflare sends this alert when certificates move from a status of `pending_val
 Cloudflare sends this alert each time a certificate remains in a `pending_validation` status during [DCV retries](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/validation-backoff-schedule/).
 
 ```
-
-{
-
-  "metadata": {
-
-    "event": {
-
-      "id": "<<WEBHOOK_ID>",
-
-      "type": "ssl.custom_hostname_certificate.validation.failed",
-
-      "created_at": "2018-02-09T00:03:28.385080Z"
-
-    },
-
-    "account": {
-
-      "id": "<<ACCOUNT_ID>"
-
-    },
-
-    "zone": {
-
-      "id": "<<ZONE_ID>"
-
-    }
-
-  },
-
-  "data": {
-
-    "id": "<<CUSTOM_HOSTNAME_ID>",
-
-    "hostname": "blog.com",
-
-    "ssl": {
-
-      "id": "<<CERTIFICATE_ID>",
-
-      "type": "dv",
-
-      "method": "cname",
-
-      "status": "pending_validation",
-
-      "cname": "_ca3-64ce913ebfe74edeb2e8813e3928e359.app.example2.com",
-
-      "cname_target": "dcv.digicert.com",
-
-      "validation_errors": [
-
-        {
-
-          "message": "blog.example.com reported as potential risk: google_safe_browsing"
-
-        }
-
-      ],
-
-      "settings": {
-
-        "min_tls_version": "1.2",
-
-        "http2": "on"
-
-      }
-
-    },
-
-    "custom_metadata": {
-
-      "key1": "value1",
-
-      "key2": "value2"
-
-    },
-
-    "custom_origin_server": "0001.blog.com"
-
-  }
-
-}
-
-
+{  "metadata": {    "event": {      "id": "<<WEBHOOK_ID>",      "type": "ssl.custom_hostname_certificate.validation.failed",      "created_at": "2018-02-09T00:03:28.385080Z"    },    "account": {      "id": "<<ACCOUNT_ID>"    },    "zone": {      "id": "<<ZONE_ID>"    }  },  "data": {    "id": "<<CUSTOM_HOSTNAME_ID>",    "hostname": "blog.com",    "ssl": {      "id": "<<CERTIFICATE_ID>",      "type": "dv",      "method": "cname",      "status": "pending_validation",      "cname": "_ca3-64ce913ebfe74edeb2e8813e3928e359.app.example2.com",      "cname_target": "dcv.digicert.com",      "validation_errors": [        {          "message": "blog.example.com reported as potential risk: google_safe_browsing"        }      ],      "settings": {        "min_tls_version": "1.2",        "http2": "on"      }    },    "custom_metadata": {      "key1": "value1",      "key2": "value2"    },    "custom_origin_server": "0001.blog.com"  }}
 ```
 
 ---
@@ -199,76 +47,7 @@ Once validated, certificates are issued by Cloudflare in conjunction with your c
 Cloudflare sends this alert when certificates move from a status of `pending_validation` or `pending_issuance` to `pending_deployment`.
 
 ```
-
-{
-
-  "metadata": {
-
-    "event": {
-
-      "id": "<<WEBHOOK_ID>",
-
-      "type": "ssl.custom_hostname_certificate.issuance.succeeded",
-
-      "created_at": "2022-02-09T00:03:28.385080Z"
-
-    },
-
-    "account": {
-
-      "id": "<<ACCOUNT_ID>"
-
-    },
-
-    "zone": {
-
-      "id": "<<ZONE_ID>"
-
-    }
-
-  },
-
-  "data": {
-
-    "id": "<<CUSTOM_HOSTNAME_ID>",
-
-    "hostname": "blog.com",
-
-    "ssl": {
-
-      "id": "<<CERTIFICATE_ID>",
-
-      "type": "dv",
-
-      "method": "cname",
-
-      "status": "pending_deployment",
-
-      "settings": {
-
-        "min_tls_version": "1.2",
-
-        "http2": "on"
-
-      }
-
-    },
-
-    "custom_metadata": {
-
-      "key1": "value1",
-
-      "key2": "value2"
-
-    },
-
-    "custom_origin_server": "0001.blog.com"
-
-  }
-
-}
-
-
+{  "metadata": {    "event": {      "id": "<<WEBHOOK_ID>",      "type": "ssl.custom_hostname_certificate.issuance.succeeded",      "created_at": "2022-02-09T00:03:28.385080Z"    },    "account": {      "id": "<<ACCOUNT_ID>"    },    "zone": {      "id": "<<ZONE_ID>"    }  },  "data": {    "id": "<<CUSTOM_HOSTNAME_ID>",    "hostname": "blog.com",    "ssl": {      "id": "<<CERTIFICATE_ID>",      "type": "dv",      "method": "cname",      "status": "pending_deployment",      "settings": {        "min_tls_version": "1.2",        "http2": "on"      }    },    "custom_metadata": {      "key1": "value1",      "key2": "value2"    },    "custom_origin_server": "0001.blog.com"  }}
 ```
 
 ### Issuance failed
@@ -276,90 +55,7 @@ Cloudflare sends this alert when certificates move from a status of `pending_val
 Cloudflare sends this alert each time a certificate remains in a status of `pending_issuance` during [DCV retries](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/validation-backoff-schedule/).
 
 ```
-
-{
-
-  "metadata": {
-
-    "event": {
-
-      "id": "<<WEBHOOK_ID>",
-
-      "type": "ssl.custom_hostname_certificate.issuance.failed",
-
-      "created_at": "2022-02-09T00:03:28.385080Z"
-
-    },
-
-    "account": {
-
-      "id": "<<ACCOUNT_ID>"
-
-    },
-
-    "zone": {
-
-      "id": "<<ZONE_ID>"
-
-    }
-
-  },
-
-  "data": {
-
-    "id": "<<CUSTOM_HOSTNAME_ID>",
-
-    "hostname": "blog.com",
-
-    "ssl": {
-
-      "id": "<<CERTIFICATE_ID>",
-
-      "type": "dv",
-
-      "method": "cname",
-
-      "status": "pending_issuance",
-
-      "cname": "_ca3-64ce913ebfe74edeb2e8813e3928e359.app.example2.com",
-
-      "cname_target": "dcv.digicert.com",
-
-      "validation_errors": [
-
-        {
-
-          "message": "caa_error: blog.example.com"
-
-        }
-
-      ],
-
-      "settings": {
-
-        "min_tls_version": "1.2",
-
-        "http2": "on"
-
-      }
-
-    },
-
-    "custom_metadata": {
-
-      "key1": "value1",
-
-      "key2": "value2"
-
-    },
-
-    "custom_origin_server": "0001.blog.com"
-
-  }
-
-}
-
-
+{  "metadata": {    "event": {      "id": "<<WEBHOOK_ID>",      "type": "ssl.custom_hostname_certificate.issuance.failed",      "created_at": "2022-02-09T00:03:28.385080Z"    },    "account": {      "id": "<<ACCOUNT_ID>"    },    "zone": {      "id": "<<ZONE_ID>"    }  },  "data": {    "id": "<<CUSTOM_HOSTNAME_ID>",    "hostname": "blog.com",    "ssl": {      "id": "<<CERTIFICATE_ID>",      "type": "dv",      "method": "cname",      "status": "pending_issuance",      "cname": "_ca3-64ce913ebfe74edeb2e8813e3928e359.app.example2.com",      "cname_target": "dcv.digicert.com",      "validation_errors": [        {          "message": "caa_error: blog.example.com"        }      ],      "settings": {        "min_tls_version": "1.2",        "http2": "on"      }    },    "custom_metadata": {      "key1": "value1",      "key2": "value2"    },    "custom_origin_server": "0001.blog.com"  }}
 ```
 
 ---
@@ -373,76 +69,7 @@ Once issued, certificates are deployed to Cloudflare's global edge network.
 Cloudflare sends this alert when certificates move from a status of `pending_deployment` to `active`.
 
 ```
-
-{
-
-  "metadata": {
-
-    "event": {
-
-      "id": "<<WEBHOOK_ID>",
-
-      "type": "ssl.custom_hostname_certificate.deployment.succeeded",
-
-      "created_at": "2022-02-09T00:03:28.385080Z"
-
-    },
-
-    "account": {
-
-      "id": "<<ACCOUNT_ID>"
-
-    },
-
-    "zone": {
-
-      "id": "<<ZONE_ID>"
-
-    }
-
-  },
-
-  "data": {
-
-    "id": "<<CUSTOM_HOSTNAME_ID>",
-
-    "hostname": "blog.com",
-
-    "ssl": {
-
-      "id": "<<CERTIFICATE_ID>",
-
-      "type": "dv",
-
-      "method": "cname",
-
-      "status": "active",
-
-      "settings": {
-
-        "min_tls_version": "1.2",
-
-        "http2": "on"
-
-      }
-
-    },
-
-    "custom_metadata": {
-
-      "key1": "value1",
-
-      "key2": "value2"
-
-    },
-
-    "custom_origin_server": "0001.blog.com"
-
-  }
-
-}
-
-
+{  "metadata": {    "event": {      "id": "<<WEBHOOK_ID>",      "type": "ssl.custom_hostname_certificate.deployment.succeeded",      "created_at": "2022-02-09T00:03:28.385080Z"    },    "account": {      "id": "<<ACCOUNT_ID>"    },    "zone": {      "id": "<<ZONE_ID>"    }  },  "data": {    "id": "<<CUSTOM_HOSTNAME_ID>",    "hostname": "blog.com",    "ssl": {      "id": "<<CERTIFICATE_ID>",      "type": "dv",      "method": "cname",      "status": "active",      "settings": {        "min_tls_version": "1.2",        "http2": "on"      }    },    "custom_metadata": {      "key1": "value1",      "key2": "value2"    },    "custom_origin_server": "0001.blog.com"  }}
 ```
 
 ### Deployment failed
@@ -450,76 +77,7 @@ Cloudflare sends this alert when certificates move from a status of `pending_dep
 Cloudflare sends this alert each time a certificate remains in a status of `pending_deployment` during [DCV retries](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/validation-backoff-schedule/).
 
 ```
-
-{
-
-  "metadata": {
-
-    "event": {
-
-      "id": "<<WEBHOOK_ID>",
-
-      "type": "ssl.custom_hostname_certificate.deployment.failed",
-
-      "created_at": "2022-02-09T00:03:28.385080Z"
-
-    },
-
-    "account": {
-
-      "id": "<<ACCOUNT_ID>"
-
-    },
-
-    "zone": {
-
-      "id": "<<ZONE_ID>"
-
-    }
-
-  },
-
-  "data": {
-
-    "id": "<<CUSTOM_HOSTNAME_ID>",
-
-    "hostname": "blog.com",
-
-    "ssl": {
-
-      "id": "<<CERTIFICATE_ID>",
-
-      "type": "dv",
-
-      "method": "cname",
-
-      "status": "pending_deployment",
-
-      "settings": {
-
-        "min_tls_version": "1.2",
-
-        "http2": "on"
-
-      }
-
-    },
-
-    "custom_metadata": {
-
-      "key1": "value1",
-
-      "key2": "value2"
-
-    },
-
-    "custom_origin_server": "0001.blog.com"
-
-  }
-
-}
-
-
+{  "metadata": {    "event": {      "id": "<<WEBHOOK_ID>",      "type": "ssl.custom_hostname_certificate.deployment.failed",      "created_at": "2022-02-09T00:03:28.385080Z"    },    "account": {      "id": "<<ACCOUNT_ID>"    },    "zone": {      "id": "<<ZONE_ID>"    }  },  "data": {    "id": "<<CUSTOM_HOSTNAME_ID>",    "hostname": "blog.com",    "ssl": {      "id": "<<CERTIFICATE_ID>",      "type": "dv",      "method": "cname",      "status": "pending_deployment",      "settings": {        "min_tls_version": "1.2",        "http2": "on"      }    },    "custom_metadata": {      "key1": "value1",      "key2": "value2"    },    "custom_origin_server": "0001.blog.com"  }}
 ```
 
 ---
@@ -531,68 +89,7 @@ Cloudflare sends this alert each time a certificate remains in a status of `pend
 Cloudflare sends this alert when certificates move from a status of `pending_deletion` to `deleted`.
 
 ```
-
-{
-
-  "metadata": {
-
-    "event": {
-
-      "id": "<<WEBHOOK_ID>",
-
-      "type": "ssl.custom_hostname_certificate.deletion.succeeded",
-
-      "created_at": "2022-02-09T00:03:28.385080Z"
-
-    },
-
-    "account": {
-
-      "id": "<<ACCOUNT_ID>"
-
-    },
-
-    "zone": {
-
-      "id": "<<ZONE_ID>"
-
-    }
-
-  },
-
-  "data": {
-
-    "id": "<<CUSTOM_HOSTNAME_ID>",
-
-    "hostname": "blog.com",
-
-    "ssl": {
-
-      "id": "<<CERTIFICATE_ID>",
-
-      "type": "dv",
-
-      "method": "cname",
-
-      "status": "deleted"
-
-    },
-
-    "custom_metadata": {
-
-      "key1": "value1",
-
-      "key2": "value2"
-
-    },
-
-    "custom_origin_server": "0001.blog.com"
-
-  }
-
-}
-
-
+{  "metadata": {    "event": {      "id": "<<WEBHOOK_ID>",      "type": "ssl.custom_hostname_certificate.deletion.succeeded",      "created_at": "2022-02-09T00:03:28.385080Z"    },    "account": {      "id": "<<ACCOUNT_ID>"    },    "zone": {      "id": "<<ZONE_ID>"    }  },  "data": {    "id": "<<CUSTOM_HOSTNAME_ID>",    "hostname": "blog.com",    "ssl": {      "id": "<<CERTIFICATE_ID>",      "type": "dv",      "method": "cname",      "status": "deleted"    },    "custom_metadata": {      "key1": "value1",      "key2": "value2"    },    "custom_origin_server": "0001.blog.com"  }}
 ```
 
 ### Deletion failed
@@ -600,68 +97,7 @@ Cloudflare sends this alert when certificates move from a status of `pending_del
 Cloudflare sends this alert each time a certificate remains in status of `pending_deletion` during [DCV retries](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/validation-backoff-schedule/).
 
 ```
-
-{
-
-  "metadata": {
-
-    "event": {
-
-      "id": "<<WEBHOOK_ID>",
-
-      "type": "ssl.custom_hostname_certificate.deletion.failed",
-
-      "created_at": "2022-02-09T00:03:28.385080Z"
-
-    },
-
-    "account": {
-
-      "id": "<<ACCOUNT_ID>"
-
-    },
-
-    "zone": {
-
-      "id": "<<ZONE_ID>"
-
-    }
-
-  },
-
-  "data": {
-
-    "id": "<<CUSTOM_HOSTNAME_ID>",
-
-    "hostname": "blog.com",
-
-    "ssl": {
-
-      "id": "<<CERTIFICATE_ID>",
-
-      "type": "dv",
-
-      "method": "cname",
-
-      "status": "pending_deletion"
-
-    },
-
-    "custom_metadata": {
-
-      "key1": "value1",
-
-      "key2": "value2"
-
-    },
-
-    "custom_origin_server": "0001.blog.com"
-
-  }
-
-}
-
-
+{  "metadata": {    "event": {      "id": "<<WEBHOOK_ID>",      "type": "ssl.custom_hostname_certificate.deletion.failed",      "created_at": "2022-02-09T00:03:28.385080Z"    },    "account": {      "id": "<<ACCOUNT_ID>"    },    "zone": {      "id": "<<ZONE_ID>"    }  },  "data": {    "id": "<<CUSTOM_HOSTNAME_ID>",    "hostname": "blog.com",    "ssl": {      "id": "<<CERTIFICATE_ID>",      "type": "dv",      "method": "cname",      "status": "pending_deletion"    },    "custom_metadata": {      "key1": "value1",      "key2": "value2"    },    "custom_origin_server": "0001.blog.com"  }}
 ```
 
 ---
@@ -675,86 +111,7 @@ The actions that you need to perform to renew certificates depend on your [valid
 ### Upcoming renewal
 
 ```
-
-{
-
-  "metadata": {
-
-    "event": {
-
-      "id": "<<WEBHOOK_ID>",
-
-      "type": "ssl.custom_hostname_certificate.renewal.upcoming_certificate_expiration_notification",
-
-      "created_at": "2022-02-09T00:03:28.385080Z"
-
-    },
-
-    "account": {
-
-      "id": "<<ACCOUNT_ID>"
-
-    },
-
-    "zone": {
-
-      "id": "<<ZONE_ID>"
-
-    }
-
-  },
-
-  "data": {
-
-    "id": "<<CUSTOM_HOSTNAME_ID>",
-
-    "hostname": "blog.com",
-
-    "ssl": {
-
-      "id": "<<CERTIFICATE_ID>",
-
-      "status": "active",
-
-      "hosts": ["blog.example.com"],
-
-      "issuer": "DigiCertInc",
-
-      "serial_number": "1001172778337169491",
-
-      "signature": "ECDSAWithSHA256",
-
-      "uploaded_on": "2021-11-17T04:33:54.561747Z",
-
-      "expires_on": "2022-11-21T12:00:00Z",
-
-      "custom_csr_id": "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
-
-      "settings": {
-
-        "min_tls_version": "1.2",
-
-        "http2": "on"
-
-      }
-
-    },
-
-    "custom_metadata": {
-
-      "key1": "value1",
-
-      "key2": "value2"
-
-    },
-
-    "custom_origin_server": "0001.blog.com"
-
-  }
-
-}
-
-
+{  "metadata": {    "event": {      "id": "<<WEBHOOK_ID>",      "type": "ssl.custom_hostname_certificate.renewal.upcoming_certificate_expiration_notification",      "created_at": "2022-02-09T00:03:28.385080Z"    },    "account": {      "id": "<<ACCOUNT_ID>"    },    "zone": {      "id": "<<ZONE_ID>"    }  },  "data": {    "id": "<<CUSTOM_HOSTNAME_ID>",    "hostname": "blog.com",    "ssl": {      "id": "<<CERTIFICATE_ID>",      "status": "active",      "hosts": ["blog.example.com"],      "issuer": "DigiCertInc",      "serial_number": "1001172778337169491",      "signature": "ECDSAWithSHA256",      "uploaded_on": "2021-11-17T04:33:54.561747Z",      "expires_on": "2022-11-21T12:00:00Z",      "custom_csr_id": "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",      "settings": {        "min_tls_version": "1.2",        "http2": "on"      }    },    "custom_metadata": {      "key1": "value1",      "key2": "value2"    },    "custom_origin_server": "0001.blog.com"  }}
 ```
 
 ### Renewal succeeded
@@ -762,76 +119,7 @@ The actions that you need to perform to renew certificates depend on your [valid
 Cloudflare sends this alert when certificates move from a status of `active` to `pending_deployment`.
 
 ```
-
-{
-
-  "metadata": {
-
-    "event": {
-
-      "id": "<<WEBHOOK_ID>",
-
-      "type": "ssl.custom_hostname_certificate.renewal.succeeded",
-
-      "created_at": "2022-02-09T00:03:28.385080Z"
-
-    },
-
-    "account": {
-
-      "id": "<<ACCOUNT_ID>"
-
-    },
-
-    "zone": {
-
-      "id": "<<ZONE_ID>"
-
-    }
-
-  },
-
-  "data": {
-
-    "id": "<<CUSTOM_HOSTNAME_ID>",
-
-    "hostname": "blog.com",
-
-    "ssl": {
-
-      "id": "<<CERTIFICATE_ID>",
-
-      "type": "dv",
-
-      "method": "cname",
-
-      "status": "pending_deployment",
-
-      "settings": {
-
-        "min_tls_version": "1.2",
-
-        "http2": "on"
-
-      }
-
-    },
-
-    "custom_metadata": {
-
-      "key1": "value1",
-
-      "key2": "value2"
-
-    },
-
-    "custom_origin_server": "0001.blog.com"
-
-  }
-
-}
-
-
+{  "metadata": {    "event": {      "id": "<<WEBHOOK_ID>",      "type": "ssl.custom_hostname_certificate.renewal.succeeded",      "created_at": "2022-02-09T00:03:28.385080Z"    },    "account": {      "id": "<<ACCOUNT_ID>"    },    "zone": {      "id": "<<ZONE_ID>"    }  },  "data": {    "id": "<<CUSTOM_HOSTNAME_ID>",    "hostname": "blog.com",    "ssl": {      "id": "<<CERTIFICATE_ID>",      "type": "dv",      "method": "cname",      "status": "pending_deployment",      "settings": {        "min_tls_version": "1.2",        "http2": "on"      }    },    "custom_metadata": {      "key1": "value1",      "key2": "value2"    },    "custom_origin_server": "0001.blog.com"  }}
 ```
 
 ### Renewal failed
@@ -839,90 +127,7 @@ Cloudflare sends this alert when certificates move from a status of `active` to 
 Cloudflare sends this alert when certificates move from a status of `active` to `pending_issuance`.
 
 ```
-
-{
-
-  "metadata": {
-
-    "event": {
-
-      "id": "<<WEBHOOK_ID>",
-
-      "type": "ssl.custom_hostname_certificate.renewal.failed",
-
-      "created_at": "2022-02-09T00:03:28.385080Z"
-
-    },
-
-    "account": {
-
-      "id": "<<ACCOUNT_ID>"
-
-    },
-
-    "zone": {
-
-      "id": "<<ZONE_ID>"
-
-    }
-
-  },
-
-  "data": {
-
-    "id": "<<CUSTOM_HOSTNAME_ID>",
-
-    "hostname": "blog.com",
-
-    "ssl": {
-
-      "id": "<<CERTIFICATE_ID>",
-
-      "type": "dv",
-
-      "method": "cname",
-
-      "status": "pending_issuance",
-
-      "cname": "_ca3-64ce913ebfe74edeb2e8813e3928e359.app.example2.com",
-
-      "cname_target": "dcv.digicert.com",
-
-      "validation_errors": [
-
-        {
-
-          "message": "caa_error: blog.example.com"
-
-        }
-
-      ],
-
-      "settings": {
-
-        "min_tls_version": "1.2",
-
-        "http2": "on"
-
-      }
-
-    },
-
-    "custom_metadata": {
-
-      "key1": "value1",
-
-      "key2": "value2"
-
-    },
-
-    "custom_origin_server": "0001.blog.com"
-
-  }
-
-}
-
-
+{  "metadata": {    "event": {      "id": "<<WEBHOOK_ID>",      "type": "ssl.custom_hostname_certificate.renewal.failed",      "created_at": "2022-02-09T00:03:28.385080Z"    },    "account": {      "id": "<<ACCOUNT_ID>"    },    "zone": {      "id": "<<ZONE_ID>"    }  },  "data": {    "id": "<<CUSTOM_HOSTNAME_ID>",    "hostname": "blog.com",    "ssl": {      "id": "<<CERTIFICATE_ID>",      "type": "dv",      "method": "cname",      "status": "pending_issuance",      "cname": "_ca3-64ce913ebfe74edeb2e8813e3928e359.app.example2.com",      "cname_target": "dcv.digicert.com",      "validation_errors": [        {          "message": "caa_error: blog.example.com"        }      ],      "settings": {        "min_tls_version": "1.2",        "http2": "on"      }    },    "custom_metadata": {      "key1": "value1",      "key2": "value2"    },    "custom_origin_server": "0001.blog.com"  }}
 ```
 
 ## Troubleshooting

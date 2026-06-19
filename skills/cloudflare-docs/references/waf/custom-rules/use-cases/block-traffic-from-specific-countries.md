@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -14,9 +14,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 This example [custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) blocks requests based on country code using the [ip.src.country](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/ip.src.country/) field.
 
-* **When incoming requests match**:  
-| Field   | Operator | Value               |  
-| ------- | -------- | ------------------- |  
+* **When incoming requests match**:
+
+| Field   | Operator | Value               |
+| ------- | -------- | ------------------- |
 | Country | is in    | Korea, North, Syria |  
 If you are using the expression editor:  
 `(ip.src.country in {"KP" "SY"})`

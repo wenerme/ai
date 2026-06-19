@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/magic-transit/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -71,28 +71,13 @@ Create a [POST request](https://developers.cloudflare.com/api/resources/addressi
 Create BGP Prefix
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bgp/prefixes" \
-
-  --request POST \
-
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
-
-  --json '{
-
-    "cidr": "192.0.2.0/24"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bgp/prefixes" \  --request POST \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \  --json '{    "cidr": "192.0.2.0/24"  }'
 ```
 
 ### Advertise or withdraw a BGP prefix
 
-* [ Dashboard ](#tab-panel-9358)
-* [ API ](#tab-panel-9359)
+* [ Dashboard ](#tab-panel-9434)
+* [ API ](#tab-panel-9435)
 
 Note
 
@@ -111,7 +96,7 @@ Any configured BGP prefix can be controlled through the API using a [PATCH reque
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Magic Transit Write`
 * `IP Prefixes: Write`
 * `IP Prefixes: BGP On Demand Write`
@@ -119,26 +104,7 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Update BGP Prefix
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bgp/prefixes/$BGP_PREFIX_ID" \
-
-  --request PATCH \
-
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
-
-  --json '{
-
-    "on_demand": {
-
-        "advertised": true
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bgp/prefixes/$BGP_PREFIX_ID" \  --request PATCH \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \  --json '{    "on_demand": {        "advertised": true    }  }'
 ```
 
 Warning: ISP route refresh delays may impact traffic
@@ -168,7 +134,7 @@ Refer to the following example for how to prepend AS13335 three times to a BGP p
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Magic Transit Write`
 * `IP Prefixes: Write`
 * `IP Prefixes: BGP On Demand Write`
@@ -176,22 +142,7 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Update BGP Prefix
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bgp/prefixes/$BGP_PREFIX_ID" \
-
-  --request PATCH \
-
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
-
-  --json '{
-
-    "asn_prepend_count": 3
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bgp/prefixes/$BGP_PREFIX_ID" \  --request PATCH \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \  --json '{    "asn_prepend_count": 3  }'
 ```
 
 AS prepending helps you gracefully transition traffic between network providers. By adding prepends to Cloudflare's advertisement, you make the route through Cloudflare less preferred for some Internet network providers. This allows you to simultaneously advertise the same prefix from an alternate provider with a shorter, more desirable `AS_PATH`. Advertising from both providers at once provides a smoother traffic migration and minimizes packet loss during a change of provider.
@@ -245,7 +196,7 @@ To enable automatic global announcement and withdrawal, enable this feature on t
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Magic Transit Write`
 * `IP Prefixes: Write`
 * `IP Prefixes: BGP On Demand Write`
@@ -253,22 +204,7 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Update BGP Prefix
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bgp/prefixes/$BGP_PREFIX_ID" \
-
-  --request PATCH \
-
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
-
-  --json '{
-
-    "auto_advertise_withdraw": true
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bgp/prefixes/$BGP_PREFIX_ID" \  --request PATCH \  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \  --json '{    "auto_advertise_withdraw": true  }'
 ```
 
 Once you configure this for a BGP prefix, Cloudflare applies the following logic:
@@ -321,142 +257,23 @@ The following examples show peering configurations for [Cisco IOS ↗](https://w
 #### Cisco IOS
 
 ```
-
-ip route {{ <YOUR-MAGIC-TRANSIT-PREFIX> }} Null0
-
-ip prefix-list magic-transit-prefix seq 5 permit {{ <YOUR-MAGIC-TRANSIT-PREFIX> }}
-
-
-route-map cloudflare-magic-transit-out permit 1
-
-match ip address prefix-list magic-transit-prefix
-
-!
-
-route-map cloudflare-magic-transit-out deny 99
-
-
+ip route {{ <YOUR-MAGIC-TRANSIT-PREFIX> }} Null0ip prefix-list magic-transit-prefix seq 5 permit {{ <YOUR-MAGIC-TRANSIT-PREFIX> }}
+route-map cloudflare-magic-transit-out permit 1match ip address prefix-list magic-transit-prefix!route-map cloudflare-magic-transit-out deny 99
 route-map reject-all deny 99
-
-
-router bgp {{ <YOUR-ASN> }}
-
-neighbor 141.101.67.22 remote-as 13335
-
-neighbor 141.101.67.22 ebgp-multihop 64
-
-neighbor 141.101.67.22 timers 60 900
-
-neighbor 162.158.160.22 remote-as 13335
-
-neighbor 162.158.160.22 ebgp-multihop 64
-
-neighbor 162.158.160.22 timers 60 900
-
-neighbor 173.245.63.66  remote-as 13335
-
-neighbor 173.245.63.66  ebgp-multihop 64
-
-neighbor 173.245.63.66  timers 60 900
-
-!
-
-address-family ipv4 unicast
-
-redistribute static
-
-neighbor 141.101.67.22 route-map cloudflare-magic-transit-out out
-
-neighbor 141.101.67.22 route-map reject-all in
-
-neighbor 162.158.160.22 route-map cloudflare-magic-transit-out out
-
-neighbor 162.158.160.22 route-map reject-all in
-
-neighbor 173.245.63.66  route-map cloudflare-magic-transit-out out
-
-neighbor 173.245.63.66  route-map reject-all in
-
-exit-address-family
-
-
+router bgp {{ <YOUR-ASN> }}neighbor 141.101.67.22 remote-as 13335neighbor 141.101.67.22 ebgp-multihop 64neighbor 141.101.67.22 timers 60 900neighbor 162.158.160.22 remote-as 13335neighbor 162.158.160.22 ebgp-multihop 64neighbor 162.158.160.22 timers 60 900neighbor 173.245.63.66  remote-as 13335neighbor 173.245.63.66  ebgp-multihop 64neighbor 173.245.63.66  timers 60 900!address-family ipv4 unicastredistribute staticneighbor 141.101.67.22 route-map cloudflare-magic-transit-out outneighbor 141.101.67.22 route-map reject-all inneighbor 162.158.160.22 route-map cloudflare-magic-transit-out outneighbor 162.158.160.22 route-map reject-all inneighbor 173.245.63.66  route-map cloudflare-magic-transit-out outneighbor 173.245.63.66  route-map reject-all inexit-address-family
 ```
 
 #### Juniper MX (Junos OS set commands)
 
 ```
-
-set protocols bgp group CF_ROUTE_REFLECTORS neighbor 162.158.160.22 description "CF RR#1 SIN"
-
-set protocols bgp group CF_ROUTE_REFLECTORS neighbor 173.245.63.66 description "CF RR#2 IAD"
-
-set protocols bgp group CF_ROUTE_REFLECTORS neighbor 141.101.67.22 description "CF RR#3 CDG"
-
-set protocols bgp group CF_ROUTE_REFLECTORS peer-as 13335
-
-set protocols bgp group CF_ROUTE_REFLECTORS import REJECT-ALL
-
-set protocols bgp group CF_ROUTE_REFLECTORS export BGP-CONTROL-OUT
-
-
-set policy-options policy-statement REJECT-ALL then reject
-
-set policy-options policy-statement BGP-CONTROL-OUT term <TERM-NAME> from route-filter 104.245.62.0/24 exact
-
-set policy-options policy-statement BGP-CONTROL-OUT term <TERM-NAME> from protocol static
-
-set policy-options policy-statement BGP-CONTROL-OUT term <TERM-NAME> from route-type internal
-
-set policy-options policy-statement BGP-CONTROL-OUT term <TERM-NAME> then accept
-
-set policy-options policy-statement BGP-CONTROL-OUT then reject
-
-
+set protocols bgp group CF_ROUTE_REFLECTORS neighbor 162.158.160.22 description "CF RR#1 SIN"set protocols bgp group CF_ROUTE_REFLECTORS neighbor 173.245.63.66 description "CF RR#2 IAD"set protocols bgp group CF_ROUTE_REFLECTORS neighbor 141.101.67.22 description "CF RR#3 CDG"set protocols bgp group CF_ROUTE_REFLECTORS peer-as 13335set protocols bgp group CF_ROUTE_REFLECTORS import REJECT-ALLset protocols bgp group CF_ROUTE_REFLECTORS export BGP-CONTROL-OUT
+set policy-options policy-statement REJECT-ALL then rejectset policy-options policy-statement BGP-CONTROL-OUT term <TERM-NAME> from route-filter 104.245.62.0/24 exactset policy-options policy-statement BGP-CONTROL-OUT term <TERM-NAME> from protocol staticset policy-options policy-statement BGP-CONTROL-OUT term <TERM-NAME> from route-type internalset policy-options policy-statement BGP-CONTROL-OUT term <TERM-NAME> then acceptset policy-options policy-statement BGP-CONTROL-OUT then reject
 ```
 
 #### Juniper MX (Junos OS XML format)
 
 ```
-
-@rtr01> show configuration routing-instances STAGE protocols bgp group CF_ROUTE_REFLECTORS
-
-type external;
-
-multihop {
-
-    ttl 64;
-
-}
-
-local-address {{customer router IP}}
-
-import NONE;
-
-export NONE;
-
-peer-as 13335;
-
-local-as {{customer AS}} loops 2;
-
-neighbor 162.158.160.22 {
-
-    description "CF RR#1 SIN";
-
-}
-
-neighbor 173.245.63.66 {
-
-    description "CF RR#2 IAD";
-
-}
-
-neighbor 141.101.67.22 {
-
-    description "CF RR#3 CDG";
-
-}
-
-
+@rtr01> show configuration routing-instances STAGE protocols bgp group CF_ROUTE_REFLECTORStype external;multihop {    ttl 64;}local-address {{customer router IP}}import NONE;export NONE;peer-as 13335;local-as {{customer AS}} loops 2;neighbor 162.158.160.22 {    description "CF RR#1 SIN";}neighbor 173.245.63.66 {    description "CF RR#2 IAD";}neighbor 141.101.67.22 {    description "CF RR#3 CDG";}
 ```
 
 ## BGP peering

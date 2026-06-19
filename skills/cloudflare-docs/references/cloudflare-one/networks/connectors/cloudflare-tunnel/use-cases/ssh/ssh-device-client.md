@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -99,15 +99,16 @@ To add a hostname route to your tunnel:
 
 1. In your tunnel configuration, go to the **Hostname routes** tab.
 2. Enter the hostname of your SSH server (for example, `ssh.internal.local`).  
-Hostname format restrictions  
-   * **Character limit:** Must be less than 255 characters.  
-   * **Supported wildcards:** A single wildcard (`*`) is allowed, and it must represent a full DNS label. Example: `*.internal.local`  
-   * **Unsupported wildcards:** The following wildcard formats are not supported:  
-         * Partial wildcards such as `*-dev.internal.local` or `dev-*.internal.local`.  
-         * Wildcards in the middle, such as `foo*bar.internal.local` or `foo.*.internal.local`.  
-         * Multiple wildcards in the hostname, such as `*.*.internal.local`.  
-   * **Wildcard trimming**: Leading wildcards (`*`) are trimmed off and an implicit dot (`.`) is assumed. For example, `*.internal.local` is saved as `internal.local` but will match all subdomains at the wildcard level (covers `foo.internal.local` but not `foo.bar.internal.local`).  
-   * **Dot trimming:** Leading and ending dots (`.`) are allowed but trimmed off.
+Hostname format restrictions
+
+  * **Character limit:** Must be less than 255 characters.
+  * **Supported wildcards:** A single wildcard (`*`) is allowed, and it must represent a full DNS label. Example: `*.internal.local`
+  * **Unsupported wildcards:** The following wildcard formats are not supported:  
+    * Partial wildcards such as `*-dev.internal.local` or `dev-*.internal.local`.
+    * Wildcards in the middle, such as `foo*bar.internal.local` or `foo.*.internal.local`.
+    * Multiple wildcards in the hostname, such as `*.*.internal.local`.
+  * **Wildcard trimming**: Leading wildcards (`*`) are trimmed off and an implicit dot (`.`) is assumed. For example, `*.internal.local` is saved as `internal.local` but will match all subdomains at the wildcard level (covers `foo.internal.local` but not `foo.bar.internal.local`).
+  * **Dot trimming:** Leading and ending dots (`.`) are allowed but trimmed off.
 3. Select **Complete setup**.
 
 ### 3.2 Configure DNS resolution
@@ -125,26 +126,12 @@ To check if `cloudflared` can successfully resolve `ssh.internal.local`, run the
 Terminal window
 
 ```
-
 nslookup ssh.internal.local
-
-
 ```
 
 ```
-
-Server:    127.0.2.2
-
-Address:  127.0.2.2#53
-
-
-Non-authoritative answer:
-
-Name:  ssh.internal.local
-
-Address: 10.2.0.3
-
-
+Server:    127.0.2.2Address:  127.0.2.2#53
+Non-authoritative answer:Name:  ssh.internal.localAddress: 10.2.0.3
 ```
 
 The output should contain the server's private IP address (the **Internal IP** of the GCP VM). If the hostname fails to resolve:
@@ -156,22 +143,25 @@ The output should contain the server's private IP address (the **Internal IP** o
 
 If you need `cloudflared` to use a specific internal DNS server that is different from the host's default resolver, you must explicitly connect that DNS server to Cloudflare via an [IP/CIDR route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/). You will also need to configure a [Gateway resolver policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/) to route queries to this specific private DNS server.
 
-1. To create an IP/CIDR route for the DNS server:  
-   1. Go to **Networks** \> **Routes** \> **CIDR**.  
-   2. Select **Add CIDR route**.  
-   3. Enter the private IP address of your internal DNS resolver.  
-   4. Select the Cloudflare Tunnel that connects to the network where this DNS server resides.  
-   5. Select **Create**.
-2. To create a resolver policy:  
-   1. Go to **Traffic policies** \> **Resolver policies**.  
-   2. Select **Create a policy**.  
-   3. Create an expression that matches the private hostname:  
-   | Selector | Operator | Value              |  
-   | -------- | -------- | ------------------ |  
-   | Host     | in       | ssh.internal.local |  
-   4. Under **Configure custom DNS resolvers**, enter the private IP address of your internal DNS server.  
-   5. From the dropdown menu, select the `- Private` routing option and the [virtual network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) assigned to the tunnel you selected in the previous step.  
-   6. Select **Create policy**.
+1. To create an IP/CIDR route for the DNS server:
+
+  1. Go to **Networks** \> **Routes** \> **CIDR**.
+  2. Select **Add CIDR route**.
+  3. Enter the private IP address of your internal DNS resolver.
+  4. Select the Cloudflare Tunnel that connects to the network where this DNS server resides.
+  5. Select **Create**.
+2. To create a resolver policy:
+
+  1. Go to **Traffic policies** \> **Resolver policies**.
+  2. Select **Create a policy**.
+  3. Create an expression that matches the private hostname:  
+
+| Selector | Operator | Value              |
+| -------- | -------- | ------------------ |
+| Host     | in       | ssh.internal.local |
+  4. Under **Configure custom DNS resolvers**, enter the private IP address of your internal DNS server.
+  5. From the dropdown menu, select the `- Private` routing option and the [virtual network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) assigned to the tunnel you selected in the previous step.
+  6. Select **Create policy**.
 
 ### 3.3 Configure Cloudflare One Clients
 
@@ -186,8 +176,8 @@ In your WARP [device profile](https://developers.cloudflare.com/cloudflare-one/t
 
 * **Exclude mode**: Delete `100.64.0.0/10` from your Split Tunnels list. We recommend [adding back the IP ranges](https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/#split-tunnel-configuration) that are not explicitly used for Cloudflare One services. This reduces the risk of conflicts with existing private network configurations that may use the CGNAT address space.
 * **Include mode**: Add Split Tunnel entries for the following IP addresses:  
-   * **IPv4**: `100.80.0.0/16`  
-   * **IPv6**: `2606:4700:0cf1:4000::/64`
+  * **IPv4**: `100.80.0.0/16`
+  * **IPv6**: `2606:4700:0cf1:4000::/64`
 
 #### 3.3.2 Configure Local Domain Fallback
 
@@ -206,30 +196,34 @@ To connect to the SSH server using its IP address (instead of a [hostname](#3-us
 By default, WARP excludes traffic bound for [RFC 1918 space ↗](https://datatracker.ietf.org/doc/html/rfc1918), which are IP addresses typically used in private networks and not reachable from the Internet. In order for the Cloudflare One Client to send traffic to your private network, you must configure [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) so that the IP/CIDR of your private network routes through the Cloudflare One Client.
 
 1. First, check whether your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode) is set to **Exclude** or **Include** mode.
-2. Edit your Split Tunnel routes depending on the mode:  
-   * [ Exclude IPs and domains ](#tab-panel-7316)  
-   * [ Include IPs and domains ](#tab-panel-7317)  
+2. Edit your Split Tunnel routes depending on the mode:
+
+  * [ Exclude IPs and domains ](#tab-panel-7392)
+  * [ Include IPs and domains ](#tab-panel-7393)  
 If you are using **Exclude** mode:  
 a. [Delete the route](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#remove-a-route) containing your private network's IP/CIDR range. For example, if your network uses the default AWS range of `172.31.0.0/16`, delete `172.16.0.0/12`.  
 b. [Re-add IP/CIDR ranges](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#add-a-route) that are not explicitly used by your private network. For the AWS example above, you would add new entries for `172.16.0.0/13`, `172.24.0.0/14`, `172.28.0.0/15`, and `172.30.0.0/16`. This ensures that only traffic to `172.31.0.0/16` routes through the Cloudflare One Client.  
-You can use the following calculator to determine which IP addresses to re-add:  
+You can use the following calculator to determine which IP addresses to re-add:
+
 **Base CIDR:** **Subtracted CIDRs:**  
 Calculate  
-Calculator instructions  
-   1. In **Base CIDR**, enter the RFC 1918 range that you deleted from Split Tunnels.  
-   2. In **Subtracted CIDRs**, enter the IP/CIDR range used by your private network.  
-   3. Re-add the calculator results to your Split Tunnel Exclude mode list.  
+Calculator instructions
+
+  1. In **Base CIDR**, enter the RFC 1918 range that you deleted from Split Tunnels.
+  2. In **Subtracted CIDRs**, enter the IP/CIDR range used by your private network.
+  3. Re-add the calculator results to your Split Tunnel Exclude mode list.  
 By tightening the private IP range included in the Cloudflare One Client, you reduce the risk of breaking a user's [access to local resources](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-users-to-enable-local-network-exclusion).  
-If you are using **Include** mode:  
-   1. Add the required [Zero Trust domains](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#cloudflare-zero-trust-domains) or [IP addresses](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#cloudflare-zero-trust-ip-addresses) to your Split Tunnel include list.  
-   2. [Add a route](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#add-a-route) to include your private network's IP/CIDR range.
+If you are using **Include** mode:
+
+  1. Add the required [Zero Trust domains](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#cloudflare-zero-trust-domains) or [IP addresses](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#cloudflare-zero-trust-ip-addresses) to your Split Tunnel include list.
+  2. [Add a route](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#add-a-route) to include your private network's IP/CIDR range.
 
 ## 5\. (Optional) Create Gateway network policies
 
 By default, all devices enrolled in your organization can SSH to the server unless you build Gateway network policies to allow or block specific users. You can create policies based on user identity, device posture, location, and other criteria.
 
-* [ Dashboard ](#tab-panel-7314)
-* [ Terraform (v5) ](#tab-panel-7315)
+* [ Dashboard ](#tab-panel-7390)
+* [ Terraform (v5) ](#tab-panel-7391)
 
 1. Go to **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Allow Secure Web Gateway to proxy traffic**.
@@ -237,15 +231,12 @@ By default, all devices enrolled in your organization can SSH to the server unle
 4. Select **UDP** (required to proxy traffic to internal DNS resolvers).
 5. (Recommended) To proxy traffic for diagnostic tools such as `ping` and `traceroute`, select **ICMP**. You may also need to [update your system](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/#icmp) to allow ICMP traffic through `cloudflared`.
 
-1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):  
-   * `Zero Trust Write`
+1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
+
+  * `Zero Trust Write`
 2. Turn on the TCP and/or UDP proxy using the [cloudflare\_zero\_trust\_device\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fsettings) resource:  
 ```  
-resource "cloudflare_zero_trust_device_settings "global_warp_settings" {  
-  account_id            = var.cloudflare_account_id  
-  gateway_proxy_enabled = true  
-  gateway_udp_proxy_enabled = true  
-}  
+resource "cloudflare_zero_trust_device_settings "global_warp_settings" {  account_id            = var.cloudflare_account_id  gateway_proxy_enabled = true  gateway_udp_proxy_enabled = true}  
 ```
 
 Cloudflare will now proxy traffic from enrolled devices, except for the traffic excluded in your [split tunnel settings](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/#3-route-private-network-ips-through-the-cloudflare-one-client). For more information on how Gateway forwards traffic, refer to [Gateway proxy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/).
@@ -259,10 +250,11 @@ The following example consists of two policies: the first allows specific users 
 1. Go to **Traffic policies** \> **Firewall policies** \> **Network**.
 2. Select **Create a policy**.
 3. Name your policy (for example, `Allow SSH to internal server`).
-4. Create an expression to match your SSH hostname and authorized users:  
-| Selector   | Operator | Value                                 |  
-| ---------- | -------- | ------------------------------------- |  
-| SNI        | in       | ssh.internal.local                    |  
+4. Create an expression to match your SSH hostname and authorized users:
+
+| Selector   | Operator | Value                                 |
+| ---------- | -------- | ------------------------------------- |
+| SNI        | in       | ssh.internal.local                    |
 | User Email | in       | admin@example.com, devops@example.com |
 5. In **Action**, select **Allow**.
 6. Select **Create policy**.
@@ -278,10 +270,11 @@ For an additional layer of protection, create a Gateway DNS policy to control DN
 1. Go to **Traffic policies** \> **Firewall Policies** \> **DNS**.
 2. Select **Create a policy**.
 3. Name your policy (for example, `Allow SSH hostname resolution`).
-4. Create an expression:  
-| Selector   | Operator | Value                                 |  
-| ---------- | -------- | ------------------------------------- |  
-| Host       | in       | ssh.internal.local                    |  
+4. Create an expression:
+
+| Selector   | Operator | Value                                 |
+| ---------- | -------- | ------------------------------------- |
+| Host       | in       | ssh.internal.local                    |
 | User Email | in       | admin@example.com, devops@example.com |
 5. In **Action**, select **Allow**.
 6. Select **Create policy**.
@@ -299,10 +292,7 @@ Once you have set up the tunnel route and the user device, the user can now SSH 
 Terminal window
 
 ```
-
 ssh -i ~/.ssh/gcp_ssh <username>@ssh.internal.local
-
-
 ```
 
 The Cloudflare One Client must be connected to your Zero Trust organization. Users will be able to connect if they match the Gateway network policies you created.
@@ -317,11 +307,8 @@ Terminal window
 nslookup ssh.internal.local  
 ```  
 ```  
-Server:    127.0.2.2  
-Address:  127.0.2.2#53  
-Non-authoritative answer:  
-Name:  ssh.internal.local  
-Address: 100.80.200.48  
+Server:    127.0.2.2Address:  127.0.2.2#53  
+Non-authoritative answer:Name:  ssh.internal.localAddress: 100.80.200.48  
 ```  
 The query should resolve using [WARP's DNS proxy](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#dns-traffic) and return a Gateway initial resolved IP. If the query fails to resolve or returns a different IP, check your [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) configuration and [Gateway resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/).
 2. **Check Gateway logs** \- Review your [Gateway network logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/) to see if the connection is being blocked by a policy.
@@ -332,9 +319,7 @@ Terminal window
 ssh -v <username>@ssh.internal.local  
 ```  
 ```  
-...  
-Authenticated to ssh.internal.local ([100.80.200.48]:22) using "publickey".  
-...  
+...Authenticated to ssh.internal.local ([100.80.200.48]:22) using "publickey"....  
 ```  
 Look for a line showing connection to an IP in the `100.64.0.0/10` range. If the request fails, confirm that the initial resolved IP [routes through the WARP tunnel](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/). You can also check your [tunnel logs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/logs/) to confirm that requests are routing to the server's private IP.
 

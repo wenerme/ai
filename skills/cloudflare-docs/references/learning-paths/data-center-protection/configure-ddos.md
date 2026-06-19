@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,18 +27,21 @@ Cloudflare DDoS protection automatically detects and mitigates Distributed Denia
 5. If you are creating an override for a subset of the incoming packets, define the [custom expression](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/override-expressions/) that matches the incoming packets you wish to target in the override, using either the Rule Builder or the Expression Editor.
 6. Select **Next**.
 7. Depending on what you wish to override, refer to the following sections (you can perform both configurations on the same override):  
-Configure all the rules in the ruleset (ruleset override)  
-   1. Select **Next**.  
-   2. Enter a name for your override in **Execution name**.  
-   3. To always apply a given action for all the rules in the ruleset, select an action in **Ruleset action**.  
-   4. To set the sensitivity level for all the rules in the ruleset, select a value in **Ruleset sensitivity**.  
-Configure one or more rules  
-   1. Search for the rules you wish to override using the available filters. You can search for tags.  
-   2. To override a single rule, select the desired value for a field in the displayed dropdowns next to the rule.  
+Configure all the rules in the ruleset (ruleset override)
+
+  1. Select **Next**.
+  2. Enter a name for your override in **Execution name**.
+  3. To always apply a given action for all the rules in the ruleset, select an action in **Ruleset action**.
+  4. To set the sensitivity level for all the rules in the ruleset, select a value in **Ruleset sensitivity**.  
+Configure one or more rules
+
+  1. Search for the rules you wish to override using the available filters. You can search for tags.
+  2. To override a single rule, select the desired value for a field in the displayed dropdowns next to the rule.  
 To configure more than one rule, select the rules using the row checkboxes and update the fields for the selected rules using the dropdowns displayed before the table. You can also configure all the rules with a given tag. For more information, refer to [Configure a managed ruleset](https://developers.cloudflare.com/waf/managed-rules/deploy-zone-dashboard/#configure-a-managed-ruleset). 14\. Select **Next**. 15\. Enter a name for your override in **Execution name**.  
-Notes  
-   * Tag and rule overrides have priority over ruleset overrides.  
-   * The managed ruleset includes some read-only rules that you cannot override.
+Notes
+
+  * Tag and rule overrides have priority over ruleset overrides.
+  * The managed ruleset includes some read-only rules that you cannot override.
 8. To save and deploy the override, select **Deploy**. If you are not ready to deploy your override, select **Save as Draft**.
 
 ## DDoS advanced protection

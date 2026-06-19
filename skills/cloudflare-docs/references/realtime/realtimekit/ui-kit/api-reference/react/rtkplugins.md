@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,43 +29,15 @@ A component which lists all available plugins from their preset, and ability to 
 ### Basic Usage
 
 ```
-
 import { RtkPlugins } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return <RtkPlugins />;
-
-}
-
-
+function MyComponent() {  return <RtkPlugins />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkPlugins } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkPlugins
-
-      meeting={meeting}
-
-      size="md"
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkPlugins      meeting={meeting}      size="md"    />  );}
 ```
 
 ```json

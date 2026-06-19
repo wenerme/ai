@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,31 +27,13 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 ### Basic Usage
 
 ```
-
-<!-- component.html -->
-
-<rtk-network-indicator></rtk-network-indicator>
-
-
+<!-- component.html --><rtk-network-indicator></rtk-network-indicator>
 ```
 
 ### With Properties
 
 ```
-
-<!-- component.html -->
-
-<rtk-network-indicator
-
- [isScreenShare]="true"
-
- [meeting]="meeting"
-
- [participant]="participant">
-
-</rtk-network-indicator>
-
-
+<!-- component.html --><rtk-network-indicator [isScreenShare]="true" [meeting]="meeting" [participant]="participant"></rtk-network-indicator>
 ```
 
 ```json

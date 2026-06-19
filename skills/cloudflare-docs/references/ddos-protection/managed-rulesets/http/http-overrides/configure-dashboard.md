@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,8 +28,8 @@ Rules in the phase entry point ruleset, where you create overrides, are evaluate
 
 ## Access
 
-* [  New dashboard ](#tab-panel-8051)
-* [ Old dashboard ](#tab-panel-8052)
+* [  New dashboard ](#tab-panel-8127)
+* [ Old dashboard ](#tab-panel-8128)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -43,28 +43,32 @@ Rules in the phase entry point ruleset, where you create overrides, are evaluate
 ### Create a DDoS override
 
 1. Enter a descriptive name for the override in **Override name**.
-2. If you are an Enterprise customer with the Advanced DDoS Protection subscription:  
-   1. Under **Override scope**, review the scope of the override — by default, all incoming requests for the current zone.  
-   2. If necessary, select **Edit scope** and configure the [custom filter expression](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/override-expressions/) that will determine the override scope.
+2. If you are an Enterprise customer with the Advanced DDoS Protection subscription:
+
+  1. Under **Override scope**, review the scope of the override — by default, all incoming requests for the current zone.
+  2. If necessary, select **Edit scope** and configure the [custom filter expression](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/override-expressions/) that will determine the override scope.
 3. Depending on what you wish to override, refer to the following sections (you can perform both configurations on the same override):  
-Configure all the rules in the ruleset (ruleset override)  
-   1. To always apply a given action for all the rules in the ruleset, select an action in **Ruleset action**.  
-   2. To set the sensitivity level for all the rules in the ruleset, select a value in **Ruleset sensitivity**.  
-Configure one or more rules  
-   1. Under **Rule configuration**, select **Browse rules**.  
-   2. Search for the rules you wish to configure using the available filters. You can search by [tag](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/rule-categories/) (also known as category).  
-   3. To configure a single rule, select the desired value for a field in the displayed dropdowns next to the rule.  
-   To configure more than one rule, select the rules using the row checkboxes and update the fields for the selected rules using the dropdowns displayed before the table. You can also configure all the rules with a given tag. For more information, refer to [Configure a managed ruleset](https://developers.cloudflare.com/waf/managed-rules/deploy-zone-dashboard/#configure-a-managed-ruleset).  
-   4. Select **Next**.  
-Notes  
-   * Tag and rule overrides have priority over ruleset overrides.  
-   * The managed ruleset includes some read-only rules that you cannot override.
+Configure all the rules in the ruleset (ruleset override)
+
+  1. To always apply a given action for all the rules in the ruleset, select an action in **Ruleset action**.
+  2. To set the sensitivity level for all the rules in the ruleset, select a value in **Ruleset sensitivity**.  
+Configure one or more rules
+
+  1. Under **Rule configuration**, select **Browse rules**.
+  2. Search for the rules you wish to configure using the available filters. You can search by [tag](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/rule-categories/) (also known as category).
+  3. To configure a single rule, select the desired value for a field in the displayed dropdowns next to the rule.  
+  To configure more than one rule, select the rules using the row checkboxes and update the fields for the selected rules using the dropdowns displayed before the table. You can also configure all the rules with a given tag. For more information, refer to [Configure a managed ruleset](https://developers.cloudflare.com/waf/managed-rules/deploy-zone-dashboard/#configure-a-managed-ruleset).
+  4. Select **Next**.  
+Notes
+
+  * Tag and rule overrides have priority over ruleset overrides.
+  * The managed ruleset includes some read-only rules that you cannot override.
 4. Select **Save**.
 
 ### Delete a DDoS override
 
-* [  New dashboard ](#tab-panel-8053)
-* [ Old dashboard ](#tab-panel-8054)
+* [  New dashboard ](#tab-panel-8129)
+* [ Old dashboard ](#tab-panel-8130)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

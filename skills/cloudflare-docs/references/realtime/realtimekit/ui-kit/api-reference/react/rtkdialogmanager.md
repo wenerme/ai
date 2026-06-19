@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -36,43 +36,15 @@ A component which handles all dialog elements in a component such as:
 ### Basic Usage
 
 ```
-
 import { RtkDialogManager } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return <RtkDialogManager />;
-
-}
-
-
+function MyComponent() {  return <RtkDialogManager />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkDialogManager } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkDialogManager
-
-      meeting={meeting}
-
-      size="md"
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkDialogManager      meeting={meeting}      size="md"    />  );}
 ```
 
 ```json

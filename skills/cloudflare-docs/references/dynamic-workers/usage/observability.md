@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dynamic-workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,41 +35,19 @@ Tail Workers run asynchronously after the Dynamic Worker has already sent its re
 
 Enable [Workers Logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/) by adding the `observability` setting to the loader Worker's Wrangler configuration. However, Workers Logs only captures log output from the loader Worker itself. Dynamic Workers are separate, so their `console.log()` calls are not included automatically. To get Dynamic Worker logs into Workers Logs, you need to define a Tail Worker that receives logs from the Dynamic Worker and writes them into the loader Worker's Workers Logs.
 
-* [  wrangler.jsonc ](#tab-panel-8449)
-* [  wrangler.toml ](#tab-panel-8450)
+* [  wrangler.jsonc ](#tab-panel-8525)
+* [  wrangler.toml ](#tab-panel-8526)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "observability": {
-
-    "enabled": true,
-
-    "head_sampling_rate": 1
-
-  }
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "observability": {    "enabled": true,    "head_sampling_rate": 1  }}
 ```
 
 TOML
 
 ```
-
-[observability]
-
-enabled = true
-
-head_sampling_rate = 1
-
-
+[observability]enabled = truehead_sampling_rate = 1
 ```
 
 ### Define the Tail Worker
@@ -83,39 +61,8 @@ Inside `tail()`, you write each log entry to Workers Logs by calling `console.lo
 JavaScript
 
 ```
-
 import { WorkerEntrypoint } from "cloudflare:workers";
-
-
-export class DynamicWorkerTail extends WorkerEntrypoint {
-
-  async tail(events) {
-
-    for (const event of events) {
-
-      for (const log of event.logs) {
-
-        console.log({
-
-          source: "dynamic-worker-tail",
-
-          workerId: this.ctx.props.workerId,
-
-          level: log.level,
-
-          message: log.message,
-
-        });
-
-      }
-
-    }
-
-  }
-
-}
-
-
+export class DynamicWorkerTail extends WorkerEntrypoint {  async tail(events) {    for (const event of events) {      for (const log of event.logs) {        console.log({          source: "dynamic-worker-tail",          workerId: this.ctx.props.workerId,          level: log.level,          message: log.message,        });      }    }  }}
 ```
 
 The Tail Worker reads `workerId` from `this.ctx.props.workerId`. You set this value when you attach the Tail Worker to the Dynamic Worker in the next step.
@@ -133,33 +80,8 @@ You also need to tell the Tail Worker which Dynamic Worker it is logging for. Si
 JavaScript
 
 ```
-
-const worker = env.LOADER.get(workerId, () => ({
-
-  mainModule: WORKER_MAIN,
-
-  modules: {
-
-    [WORKER_MAIN]: WORKER_SOURCE,
-
-  },
-
-  tails: [
-
-    ctx.exports.DynamicWorkerTail({
-
-      props: { workerId },
-
-    }),
-
-  ],
-
-}));
-
-
+const worker = env.LOADER.get(workerId, () => ({  mainModule: WORKER_MAIN,  modules: {    [WORKER_MAIN]: WORKER_SOURCE,  },  tails: [    ctx.exports.DynamicWorkerTail({      props: { workerId },    }),  ],}));
 return worker.getEntrypoint().fetch(request);
-
-
 ```
 
 ## Return logs in real time
@@ -178,27 +100,10 @@ The pattern works like this:
 JavaScript
 
 ```
-
 import { exports } from "cloudflare:workers";
-
-
-// 1. Create a log session before running the Dynamic Worker.
-
-const logSession = exports.LogSession.getByName(workerName);
-
-const logWaiter = await logSession.waitForLogs();
-
-
-// 2. Run the Dynamic Worker.
-
-const response = await worker.getEntrypoint().fetch(request);
-
-
-// 3. Wait up to 1 second for the Tail Worker to deliver logs.
-
-const logs = await logWaiter.getLogs(1000);
-
-
+// 1. Create a log session before running the Dynamic Worker.const logSession = exports.LogSession.getByName(workerName);const logWaiter = await logSession.waitForLogs();
+// 2. Run the Dynamic Worker.const response = await worker.getEntrypoint().fetch(request);
+// 3. Wait up to 1 second for the Tail Worker to deliver logs.const logs = await logWaiter.getLogs(1000);
 ```
 
 For a full working implementation, refer to the [Dynamic Workers Playground example ↗](https://github.com/cloudflare/agents/tree/main/examples/dynamic-workers-playground).

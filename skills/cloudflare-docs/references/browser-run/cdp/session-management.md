@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,27 +25,11 @@ Create a new browser session using the `POST /devtools/browser` endpoint. The se
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/ACCOUNT_ID/browser-rendering/devtools/browser?keep_alive=600000" \
-
-  --request POST \
-
-  --header "Authorization: Bearer {api_token}"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/ACCOUNT_ID/browser-rendering/devtools/browser?keep_alive=600000" \  --request POST \  --header "Authorization: Bearer {api_token}"
 ```
 
 ```
-
-{
-
-  "sessionId": "1909cef7-23e8-4394-bc31-27404bf4348f",
-
-  "webSocketDebuggerUrl": "wss://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/devtools/browser/1909cef7-23e8-4394-bc31-27404bf4348f"
-
-}
-
-
+{  "sessionId": "1909cef7-23e8-4394-bc31-27404bf4348f",  "webSocketDebuggerUrl": "wss://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/devtools/browser/1909cef7-23e8-4394-bc31-27404bf4348f"}
 ```
 
 Save the `sessionId` from the response. You will use it in subsequent requests.
@@ -57,37 +41,11 @@ Open a new tab in your browser session and navigate to a specific URL using the 
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/ACCOUNT_ID/browser-rendering/devtools/browser/SESSION_ID/json/new?url=https%3A%2F%2Fexample.com" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer {api_token}"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/ACCOUNT_ID/browser-rendering/devtools/browser/SESSION_ID/json/new?url=https%3A%2F%2Fexample.com" \  --request PUT \  --header "Authorization: Bearer {api_token}"
 ```
 
 ```
-
-{
-
-  "id": "8E598E996530FB09E46A22B8B7754F7F",
-
-  "type": "page",
-
-  "url": "https://example.com",
-
-  "title": "Example Domain",
-
-  "description": "",
-
-  "devtoolsFrontendUrl": "https://live.browser.run/ui/view?wss=live.browser.run/api/devtools/browser/1909cef7-23e8-4394-bc31-27404bf4348f/page/8E598E996530FB09E46A22B8B7754F7F?jwt=...",
-
-  "webSocketDebuggerUrl": "wss://live.browser.run/api/devtools/browser/1909cef7-23e8-4394-bc31-27404bf4348f/page/8E598E996530FB09E46A22B8B7754F7F?jwt=..."
-
-}
-
-
+{  "id": "8E598E996530FB09E46A22B8B7754F7F",  "type": "page",  "url": "https://example.com",  "title": "Example Domain",  "description": "",  "devtoolsFrontendUrl": "https://live.browser.run/ui/view?wss=live.browser.run/api/devtools/browser/1909cef7-23e8-4394-bc31-27404bf4348f/page/8E598E996530FB09E46A22B8B7754F7F?jwt=...",  "webSocketDebuggerUrl": "wss://live.browser.run/api/devtools/browser/1909cef7-23e8-4394-bc31-27404bf4348f/page/8E598E996530FB09E46A22B8B7754F7F?jwt=..."}
 ```
 
 ## Step 3: List all targets
@@ -97,41 +55,11 @@ List all targets (tabs) in your session to verify the tab was created and get th
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/ACCOUNT_ID/browser-rendering/devtools/browser/SESSION_ID/json/list" \
-
-  --request GET \
-
-  --header "Authorization: Bearer {api_token}"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/ACCOUNT_ID/browser-rendering/devtools/browser/SESSION_ID/json/list" \  --request GET \  --header "Authorization: Bearer {api_token}"
 ```
 
 ```
-
-[
-
-  {
-
-    "id": "8E598E996530FB09E46A22B8B7754F7F",
-
-    "type": "page",
-
-    "url": "https://example.com",
-
-    "title": "Example Domain",
-
-    "description": "",
-
-    "devtoolsFrontendUrl": "https://live.browser.run/ui/view?wss=live.browser.run/api/devtools/browser/1909cef7-23e8-4394-bc31-27404bf4348f/page/8E598E996530FB09E46A22B8B7754F7F?jwt=...",
-
-    "webSocketDebuggerUrl": "wss://live.browser.run/api/devtools/browser/1909cef7-23e8-4394-bc31-27404bf4348f/page/8E598E996530FB09E46A22B8B7754F7F?jwt=..."
-
-  }
-
-]
-
-
+[  {    "id": "8E598E996530FB09E46A22B8B7754F7F",    "type": "page",    "url": "https://example.com",    "title": "Example Domain",    "description": "",    "devtoolsFrontendUrl": "https://live.browser.run/ui/view?wss=live.browser.run/api/devtools/browser/1909cef7-23e8-4394-bc31-27404bf4348f/page/8E598E996530FB09E46A22B8B7754F7F?jwt=...",    "webSocketDebuggerUrl": "wss://live.browser.run/api/devtools/browser/1909cef7-23e8-4394-bc31-27404bf4348f/page/8E598E996530FB09E46A22B8B7754F7F?jwt=..."  }]
 ```
 
 ## Step 4: Open the DevTools UI
@@ -158,25 +86,11 @@ When you are done, close the browser session to release resources.
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/ACCOUNT_ID/browser-rendering/devtools/browser/SESSION_ID" \
-
-  --request DELETE \
-
-  --header "Authorization: Bearer {api_token}"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/ACCOUNT_ID/browser-rendering/devtools/browser/SESSION_ID" \  --request DELETE \  --header "Authorization: Bearer {api_token}"
 ```
 
 ```
-
-{
-
-  "status": "closing"
-
-}
-
-
+{  "status": "closing"}
 ```
 
 ## Troubleshooting

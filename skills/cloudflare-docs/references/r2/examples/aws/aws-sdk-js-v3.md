@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,171 +26,10 @@ Currently, you cannot use AWS S3-compatible API while developing locally via `wr
 TypeScript
 
 ```
-
-import {
-
-  S3Client,
-
-  ListBucketsCommand,
-
-  ListObjectsV2Command,
-
-  GetObjectCommand,
-
-  PutObjectCommand,
-
-} from "@aws-sdk/client-s3";
-
-
-const S3 = new S3Client({
-
-  region: "auto", // Required by SDK but not used by R2
-
-  // Provide your Cloudflare account ID
-
-  endpoint: `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`,
-
-  // Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)
-
-  credentials: {
-
-    accessKeyId: ACCESS_KEY_ID,
-
-    secretAccessKey: SECRET_ACCESS_KEY,
-
-  },
-
-});
-
-
-console.log(await S3.send(new ListBucketsCommand({})));
-
-// {
-
-//     '$metadata': {
-
-//     httpStatusCode: 200,
-
-//         requestId: undefined,
-
-//         extendedRequestId: undefined,
-
-//         cfId: undefined,
-
-//         attempts: 1,
-
-//         totalRetryDelay: 0
-
-// },
-
-//     Buckets: [
-
-//     { Name: 'user-uploads', CreationDate: 2022-04-13T21:23:47.102Z },
-
-//     { Name: 'my-bucket', CreationDate: 2022-05-07T02:46:49.218Z }
-
-//     ],
-
-//     Owner: {
-
-//         DisplayName: '...',
-
-//         ID: '...'
-
-//     }
-
-// }
-
-
-console.log(
-
-  await S3.send(new ListObjectsV2Command({ Bucket: "my-bucket" })),
-
-);
-
-// {
-
-//     '$metadata': {
-
-//       httpStatusCode: 200,
-
-//       requestId: undefined,
-
-//       extendedRequestId: undefined,
-
-//       cfId: undefined,
-
-//       attempts: 1,
-
-//       totalRetryDelay: 0
-
-//     },
-
-//     CommonPrefixes: undefined,
-
-//     Contents: [
-
-//       {
-
-//         Key: 'cat.png',
-
-//         LastModified: 2022-05-07T02:50:45.616Z,
-
-//         ETag: '"c4da329b38467509049e615c11b0c48a"',
-
-//         ChecksumAlgorithm: undefined,
-
-//         Size: 751832,
-
-//         StorageClass: 'STANDARD',
-
-//         Owner: undefined
-
-//       },
-
-//       {
-
-//         Key: 'todos.txt',
-
-//         LastModified: 2022-05-07T21:37:17.150Z,
-
-//         ETag: '"29d911f495d1ba7cb3a4d7d15e63236a"',
-
-//         ChecksumAlgorithm: undefined,
-
-//         Size: 279,
-
-//         StorageClass: 'STANDARD',
-
-//         Owner: undefined
-
-//       }
-
-//     ],
-
-//     ContinuationToken: undefined,
-
-//     Delimiter: undefined,
-
-//     EncodingType: undefined,
-
-//     IsTruncated: false,
-
-//     KeyCount: 8,
-
-//     MaxKeys: 1000,
-
-//     Name: 'my-bucket',
-
-//     NextContinuationToken: undefined,
-
-//     Prefix: undefined,
-
-//     StartAfter: undefined
-
-//   }
-
-
+import {  S3Client,  ListBucketsCommand,  ListObjectsV2Command,  GetObjectCommand,  PutObjectCommand,} from "@aws-sdk/client-s3";
+const S3 = new S3Client({  region: "auto", // Required by SDK but not used by R2  // Provide your Cloudflare account ID  endpoint: `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`,  // Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)  credentials: {    accessKeyId: ACCESS_KEY_ID,    secretAccessKey: SECRET_ACCESS_KEY,  },});
+console.log(await S3.send(new ListBucketsCommand({})));// {//     '$metadata': {//     httpStatusCode: 200,//         requestId: undefined,//         extendedRequestId: undefined,//         cfId: undefined,//         attempts: 1,//         totalRetryDelay: 0// },//     Buckets: [//     { Name: 'user-uploads', CreationDate: 2022-04-13T21:23:47.102Z },//     { Name: 'my-bucket', CreationDate: 2022-05-07T02:46:49.218Z }//     ],//     Owner: {//         DisplayName: '...',//         ID: '...'//     }// }
+console.log(  await S3.send(new ListObjectsV2Command({ Bucket: "my-bucket" })),);// {//     '$metadata': {//       httpStatusCode: 200,//       requestId: undefined,//       extendedRequestId: undefined,//       cfId: undefined,//       attempts: 1,//       totalRetryDelay: 0//     },//     CommonPrefixes: undefined,//     Contents: [//       {//         Key: 'cat.png',//         LastModified: 2022-05-07T02:50:45.616Z,//         ETag: '"c4da329b38467509049e615c11b0c48a"',//         ChecksumAlgorithm: undefined,//         Size: 751832,//         StorageClass: 'STANDARD',//         Owner: undefined//       },//       {//         Key: 'todos.txt',//         LastModified: 2022-05-07T21:37:17.150Z,//         ETag: '"29d911f495d1ba7cb3a4d7d15e63236a"',//         ChecksumAlgorithm: undefined,//         Size: 279,//         StorageClass: 'STANDARD',//         Owner: undefined//       }//     ],//     ContinuationToken: undefined,//     Delimiter: undefined,//     EncodingType: undefined,//     IsTruncated: false,//     KeyCount: 8,//     MaxKeys: 1000,//     Name: 'my-bucket',//     NextContinuationToken: undefined,//     Prefix: undefined,//     StartAfter: undefined//   }
 ```
 
 ## Generate presigned URLs
@@ -200,62 +39,12 @@ You can also generate presigned links that can be used to share public read or w
 TypeScript
 
 ```
-
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-
-
-// Use the expiresIn property to determine how long the presigned link is valid.
-
-console.log(
-
-  await getSignedUrl(
-
-    S3,
-
-    new GetObjectCommand({ Bucket: "my-bucket", Key: "dog.png" }),
-
-    { expiresIn: 3600 },
-
-  ),
-
-);
-
-// You can also create links for operations such as PutObject to allow temporary write access to a specific key.
-
-// Specify ContentType to restrict uploads to a specific file type.
-
-console.log(
-
-  await getSignedUrl(
-
-    S3,
-
-    new PutObjectCommand({
-
-      Bucket: "my-bucket",
-
-      Key: "dog.png",
-
-      ContentType: "image/png",
-
-    }),
-
-    { expiresIn: 3600 },
-
-  ),
-
-);
-
-
+// Use the expiresIn property to determine how long the presigned link is valid.console.log(  await getSignedUrl(    S3,    new GetObjectCommand({ Bucket: "my-bucket", Key: "dog.png" }),    { expiresIn: 3600 },  ),);// You can also create links for operations such as PutObject to allow temporary write access to a specific key.// Specify ContentType to restrict uploads to a specific file type.console.log(  await getSignedUrl(    S3,    new PutObjectCommand({      Bucket: "my-bucket",      Key: "dog.png",      ContentType: "image/png",    }),    { expiresIn: 3600 },  ),);
 ```
 
 ```
-
-https://my-bucket.<ACCOUNT_ID>.r2.cloudflarestorage.com/dog.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=<credential>&X-Amz-Date=<timestamp>&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=<signature>&x-id=GetObject
-
-https://my-bucket.<ACCOUNT_ID>.r2.cloudflarestorage.com/dog.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=<credential>&X-Amz-Date=<timestamp>&X-Amz-Expires=3600&X-Amz-SignedHeaders=content-type%3Bhost&X-Amz-Signature=<signature>&x-id=PutObject
-
-
+https://my-bucket.<ACCOUNT_ID>.r2.cloudflarestorage.com/dog.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=<credential>&X-Amz-Date=<timestamp>&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=<signature>&x-id=GetObjecthttps://my-bucket.<ACCOUNT_ID>.r2.cloudflarestorage.com/dog.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=<credential>&X-Amz-Date=<timestamp>&X-Amz-Expires=3600&X-Amz-SignedHeaders=content-type%3Bhost&X-Amz-Signature=<signature>&x-id=PutObject
 ```
 
 You can use the link generated by the `PutObject` example to upload to the specified bucket and key, until the presigned link expires. When using a presigned URL with `ContentType`, the client must include a matching `Content-Type` header in the request.
@@ -263,14 +52,7 @@ You can use the link generated by the `PutObject` example to upload to the speci
 Terminal window
 
 ```
-
-curl -X PUT "https://my-bucket.<ACCOUNT_ID>.r2.cloudflarestorage.com/dog.png?X-Amz-Algorithm=..." \
-
-  -H "Content-Type: image/png" \
-
-  --data-binary @dog.png
-
-
+curl -X PUT "https://my-bucket.<ACCOUNT_ID>.r2.cloudflarestorage.com/dog.png?X-Amz-Algorithm=..." \  -H "Content-Type: image/png" \  --data-binary @dog.png
 ```
 
 ## Restrict uploads with CORS and Content-Type
@@ -281,26 +63,7 @@ When generating presigned URLs for uploads, you can limit abuse and misuse by:
 2. **Configuring CORS**: Set up [CORS rules](https://developers.cloudflare.com/r2/buckets/cors/#add-cors-policies-from-the-dashboard) on your bucket to control which origins can upload files. Configure CORS via the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/r2/overview) by adding a JSON policy to your bucket settings:
 
 ```
-
-[
-
-  {
-
-    "AllowedOrigins": ["https://example.com"],
-
-    "AllowedMethods": ["PUT"],
-
-    "AllowedHeaders": ["Content-Type"],
-
-    "ExposeHeaders": ["ETag"],
-
-    "MaxAgeSeconds": 3600
-
-  }
-
-]
-
-
+[  {    "AllowedOrigins": ["https://example.com"],    "AllowedMethods": ["PUT"],    "AllowedHeaders": ["Content-Type"],    "ExposeHeaders": ["ETag"],    "MaxAgeSeconds": 3600  }]
 ```
 
 Then generate a presigned URL with a Content-Type restriction:
@@ -308,26 +71,7 @@ Then generate a presigned URL with a Content-Type restriction:
 TypeScript
 
 ```
-
-const putUrl = await getSignedUrl(
-
-  S3,
-
-  new PutObjectCommand({
-
-    Bucket: "my-bucket",
-
-    Key: "dog.png",
-
-    ContentType: "image/png",
-
-  }),
-
-  { expiresIn: 3600 },
-
-);
-
-
+const putUrl = await getSignedUrl(  S3,  new PutObjectCommand({    Bucket: "my-bucket",    Key: "dog.png",    ContentType: "image/png",  }),  { expiresIn: 3600 },);
 ```
 
 When a client uses this presigned URL, they must:

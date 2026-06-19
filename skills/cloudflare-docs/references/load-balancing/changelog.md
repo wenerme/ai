@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -58,10 +58,10 @@ All zone monitors have been tested against the new infrastructure. There should 
 #### What you can expect:
 
 * More reliable application of zone settings to monitoring requests, including  
-   * Authenticated Origin Pulls  
-   * Aegis Egress IP Pools  
-   * Argo Smart Routing  
-   * HTTP/2 to Origin
+  * Authenticated Origin Pulls
+  * Aegis Egress IP Pools
+  * Argo Smart Routing
+  * HTTP/2 to Origin
 * Improved support and bug fixes for retries, redirects, and proxied origin resolution
 * Improved performance and reliability of monitoring requests within the Cloudflare network
 * Unrelated CDN or WAF configuration changes should have no risk of impact to pool health
@@ -82,13 +82,15 @@ This update streamlines how you manage load balancers across multiple zones and 
 
 **Key Enhancements:**
 
-* **Account-Level UI Consolidation:**  
-   * **Unified Management:** Say goodbye to navigating individual zones for load balancing tasks. You can now view, configure, and monitor all your load balancers across every zone in your account from a single, intuitive interface at the account level.  
-   * **Improved Efficiency:** This centralized approach provides a more streamlined workflow, making it faster and easier to manage both your public-facing and internal traffic distribution.
-* **Private Network Load Balancing:**  
-   * **Secure Internal Application Access:** Create [**Private Load Balancers**](https://developers.cloudflare.com/load-balancing/private-network/) to distribute traffic to applications hosted within your private network, ensuring they are not exposed to the public Internet.  
-   * **WARP & Magic WAN Integration:** Effortlessly direct internal traffic from users connected via Cloudflare WARP or through your Magic WAN infrastructure to the appropriate internal endpoint pools.  
-   * **Enhanced Security for Internal Resources:** Combine reliable Load Balancing with Zero Trust access controls to ensure your internal services are both performant and only accessible by verified users.
+* **Account-Level UI Consolidation:**
+
+  * **Unified Management:** Say goodbye to navigating individual zones for load balancing tasks. You can now view, configure, and monitor all your load balancers across every zone in your account from a single, intuitive interface at the account level.
+  * **Improved Efficiency:** This centralized approach provides a more streamlined workflow, making it faster and easier to manage both your public-facing and internal traffic distribution.
+* **Private Network Load Balancing:**
+
+  * **Secure Internal Application Access:** Create [**Private Load Balancers**](https://developers.cloudflare.com/load-balancing/private-network/) to distribute traffic to applications hosted within your private network, ensuring they are not exposed to the public Internet.
+  * **WARP & Magic WAN Integration:** Effortlessly direct internal traffic from users connected via Cloudflare WARP or through your Magic WAN infrastructure to the appropriate internal endpoint pools.
+  * **Enhanced Security for Internal Resources:** Combine reliable Load Balancing with Zero Trust access controls to ensure your internal services are both performant and only accessible by verified users.
 ![Private Load Balancers](https://developers.cloudflare.com/_astro/private-load-balancer.yti20m_p_q5zIk.webp) 
 
 ## 2025-05-06

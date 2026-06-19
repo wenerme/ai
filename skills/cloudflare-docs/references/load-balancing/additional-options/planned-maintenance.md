@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -40,12 +40,12 @@ To remove an endpoint from rotation while still preserving session continuity, s
 
 1. On a new or existing load balancer, go to the **Hostname** step.
 2. Make sure you have enabled **Session Affinity**.
-3. For **Endpoint drain duration**, enter a time in seconds. If this value is less than the **Session TTL** value, you will affect existing sessions.![Example configuration of session affinity with endpoint drain](https://developers.cloudflare.com/_astro/session-affinity-3.Cv_ZhLzx_27Jgr3.webp)
+3. For **Endpoint drain duration**, enter a time in seconds. If this value is less than the **Session TTL** value, you will affect existing sessions. ![Example configuration of session affinity with endpoint drain](https://developers.cloudflare.com/_astro/session-affinity-3.Cv_ZhLzx_27Jgr3.webp)
 4. Save your changes to the load balancer.
 5. Click **Manage Pools**.
 6. Disable an endpoint. Your load balancer will gradually drain sessions from that endpoint.
-7. On your load balancer, expand your pools to find the disabled endpoint. You will see the estimated **Drain Time** counting down.![Example showing load balancer draining in progress](https://developers.cloudflare.com/_astro/session-affinity-4.DC0RLZtj_1H4fqz.webp)
-8. When a drain is **Complete**, there are no longer any connections to that endpoint.![Example showing load balancer draining complete](https://developers.cloudflare.com/_astro/session-affinity-5.BAgwGz7x_1BV2Ow.webp)
+7. On your load balancer, expand your pools to find the disabled endpoint. You will see the estimated **Drain Time** counting down. ![Example showing load balancer draining in progress](https://developers.cloudflare.com/_astro/session-affinity-4.DC0RLZtj_1H4fqz.webp)
+8. When a drain is **Complete**, there are no longer any connections to that endpoint. ![Example showing load balancer draining complete](https://developers.cloudflare.com/_astro/session-affinity-5.BAgwGz7x_1BV2Ow.webp)
 9. Perform your required maintenance or upgrades.
 10. To bring your endpoint back online, re-enable the endpoint.
 
@@ -54,11 +54,11 @@ To remove an endpoint from rotation while still preserving session continuity, s
 To direct traffic away from an endpoint immediately:
 
 1. Do one of the following actions:  
-   * On the endpoint's [monitor](https://developers.cloudflare.com/load-balancing/monitors/), update the monitor settings so the endpoint will fail health monitor requests, such as putting an incorrect value for the **Response Body** or **Response Code**.  
-   * On the pool, disable the endpoint.  
-   * On the pool, set the [endpoint weight](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/origin-level-steering/#weights) to `0` (though traffic may still reach the endpoint if it is included in multiple pools).
+  * On the endpoint's [monitor](https://developers.cloudflare.com/load-balancing/monitors/), update the monitor settings so the endpoint will fail health monitor requests, such as putting an incorrect value for the **Response Body** or **Response Code**.
+  * On the pool, disable the endpoint.
+  * On the pool, set the [endpoint weight](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/origin-level-steering/#weights) to `0` (though traffic may still reach the endpoint if it is included in multiple pools).
 2. Monitor [Load Balancing Analytics](https://developers.cloudflare.com/load-balancing/reference/load-balancing-analytics/) to make sure no requests are reaching the pool.  
-   * If you are using [DNS-only load balancing (gray-clouded)](https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/), changes may be delayed due to DNS resolver caching.
+  * If you are using [DNS-only load balancing (gray-clouded)](https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/), changes may be delayed due to DNS resolver caching.
 3. Perform your required maintenance or upgrades.
 4. Undo the changes you made in **Step 1**.
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -39,17 +39,8 @@ Each `RtkNotification` instance contains the following properties:
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let rtkUI = RealtimeKitUI(meetingInfo: meetingInfo)
-
-// Access the default notification config
-
-let notificationConfig = rtkUI.notification
-
-
+let rtkUI = RealtimeKitUI(meetingInfo: meetingInfo)// Access the default notification configlet notificationConfig = rtkUI.notification
 ```
 
 ### Customize notifications
@@ -57,23 +48,10 @@ let notificationConfig = rtkUI.notification
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
 let rtkUI = RealtimeKitUI(meetingInfo: meetingInfo)
-
-
-// Disable sound for participant join events
-
-rtkUI.notification.participantJoined.playSound = false
-
-
-// Disable toast for chat messages
-
-rtkUI.notification.newChatArrived.showToast = false
-
-
+// Disable sound for participant join eventsrtkUI.notification.participantJoined.playSound = false
+// Disable toast for chat messagesrtkUI.notification.newChatArrived.showToast = false
 ```
 
 ```json

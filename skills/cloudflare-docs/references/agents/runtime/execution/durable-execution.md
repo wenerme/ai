@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,51 +25,10 @@ For how fibers fit into the bigger picture of building agents that run for weeks
 TypeScript
 
 ```
-
-import { Agent } from "agents";
-
-import type { FiberRecoveryContext } from "agents";
-
-
-class MyAgent extends Agent {
-
-  async doWork() {
-
-    await this.runFiber("my-task", async (ctx) => {
-
-      const step1 = await expensiveOperation();
-
-      ctx.stash({ step1 });
-
-
-      const step2 = await anotherExpensiveOperation(step1);
-
-      this.setState({ ...this.state, result: step2 });
-
-    });
-
-  }
-
-
-  async onFiberRecovered(ctx: FiberRecoveryContext) {
-
-    if (ctx.name !== "my-task") return;
-
-    const snapshot = ctx.snapshot as { step1: unknown } | null;
-
-    if (snapshot) {
-
-      const step2 = await anotherExpensiveOperation(snapshot.step1);
-
-      this.setState({ ...this.state, result: step2 });
-
-    }
-
-  }
-
-}
-
-
+import { Agent } from "agents";import type { FiberRecoveryContext } from "agents";
+class MyAgent extends Agent {  async doWork() {    await this.runFiber("my-task", async (ctx) => {      const step1 = await expensiveOperation();      ctx.stash({ step1 });
+      const step2 = await anotherExpensiveOperation(step1);      this.setState({ ...this.state, result: step2 });    });  }
+  async onFiberRecovered(ctx: FiberRecoveryContext) {    if (ctx.name !== "my-task") return;    const snapshot = ctx.snapshot as { step1: unknown } | null;    if (snapshot) {      const step2 = await anotherExpensiveOperation(snapshot.step1);      this.setState({ ...this.state, result: step2 });    }  }}
 ```
 
 ## Why fibers exist
@@ -93,16 +52,7 @@ Prevents idle eviction by creating a 30-second alarm heartbeat that resets the i
 TypeScript
 
 ```
-
-class Agent {
-
-  keepAlive(): Promise<() => void>;
-
-  keepAliveWhile<T>(fn: () => Promise<T>): Promise<T>;
-
-}
-
-
+class Agent {  keepAlive(): Promise<() => void>;  keepAliveWhile<T>(fn: () => Promise<T>): Promise<T>;}
 ```
 
 `keepAliveWhile()` is the recommended approach — it runs an async function and automatically cleans up the heartbeat when it completes or throws:
@@ -110,14 +60,7 @@ class Agent {
 TypeScript
 
 ```
-
-const result = await this.keepAliveWhile(async () => {
-
-  return await slowAPICall();
-
-});
-
-
+const result = await this.keepAliveWhile(async () => {  return await slowAPICall();});
 ```
 
 For manual control, `keepAlive()` returns a disposer. Always call it when done — otherwise the heartbeat continues indefinitely:
@@ -125,20 +68,7 @@ For manual control, `keepAlive()` returns a disposer. Always call it when done �
 TypeScript
 
 ```
-
-const dispose = await this.keepAlive();
-
-try {
-
-  await longWork();
-
-} finally {
-
-  dispose();
-
-}
-
-
+const dispose = await this.keepAlive();try {  await longWork();} finally {  dispose();}
 ```
 
 ### How it works
@@ -154,14 +84,7 @@ Default: 30 seconds. The inactivity timeout is \~70–140 seconds, so 30 seconds
 TypeScript
 
 ```
-
-class MyAgent extends Agent {
-
-  static options = { keepAliveIntervalMs: 2_000 };
-
-}
-
-
+class MyAgent extends Agent {  static options = { keepAliveIntervalMs: 2_000 };}
 ```
 
 ### When to use keepAlive vs runFiber
@@ -185,95 +108,10 @@ Durable execution with checkpointing and recovery.
 TypeScript
 
 ```
-
-class Agent {
-
-  runFiber<T>(name: string, fn: (ctx: FiberContext) => Promise<T>): Promise<T>;
-
-  startFiber(
-
-    name: string,
-
-    fn: (ctx: FiberContext) => Promise<void>,
-
-    options?: StartFiberOptions,
-
-  ): Promise<StartFiberResult>;
-
-  inspectFiber(fiberId: string): Promise<FiberInspection | null>;
-
-  inspectFiberByKey(idempotencyKey: string): Promise<FiberInspection | null>;
-
-  listFibers(options?: ListFibersOptions): Promise<FiberInspection[]>;
-
-  cancelFiber(fiberId: string, reason?: string): Promise<boolean>;
-
-  cancelFiberByKey(idempotencyKey: string, reason?: string): Promise<boolean>;
-
-  deleteFibers(options?: DeleteFibersOptions): Promise<number>;
-
-  resolveFiber(fiberId: string, result: FiberRecoveryResult): Promise<boolean>;
-
-  stash(data: unknown): void;
-
-  onFiberRecovered(
-
-    ctx: FiberRecoveryContext,
-
-  ): Promise<void | FiberRecoveryResult>;
-
-}
-
-
-type FiberContext = {
-
-  id: string;
-
-  signal: AbortSignal;
-
-  stash(data: unknown): void;
-
-  snapshot: unknown | null;
-
-};
-
-
-type FiberStatus =
-
-  | "pending"
-
-  | "running"
-
-  | "completed"
-
-  | "aborted"
-
-  | "interrupted"
-
-  | "error";
-
-
-type FiberRecoveryContext = {
-
-  id: string;
-
-  name: string;
-
-  status?: FiberStatus;
-
-  idempotencyKey?: string;
-
-  metadata?: Record<string, unknown> | null;
-
-  snapshot: unknown | null;
-
-  createdAt: number;
-
-  recoveryReason: "interrupted";
-
-};
-
-
+class Agent {  runFiber<T>(name: string, fn: (ctx: FiberContext) => Promise<T>): Promise<T>;  startFiber(    name: string,    fn: (ctx: FiberContext) => Promise<void>,    options?: StartFiberOptions,  ): Promise<StartFiberResult>;  inspectFiber(fiberId: string): Promise<FiberInspection | null>;  inspectFiberByKey(idempotencyKey: string): Promise<FiberInspection | null>;  listFibers(options?: ListFibersOptions): Promise<FiberInspection[]>;  cancelFiber(fiberId: string, reason?: string): Promise<boolean>;  cancelFiberByKey(idempotencyKey: string, reason?: string): Promise<boolean>;  deleteFibers(options?: DeleteFibersOptions): Promise<number>;  resolveFiber(fiberId: string, result: FiberRecoveryResult): Promise<boolean>;  stash(data: unknown): void;  onFiberRecovered(    ctx: FiberRecoveryContext,  ): Promise<void | FiberRecoveryResult>;}
+type FiberContext = {  id: string;  signal: AbortSignal;  stash(data: unknown): void;  snapshot: unknown | null;};
+type FiberStatus =  | "pending"  | "running"  | "completed"  | "aborted"  | "interrupted"  | "error";
+type FiberRecoveryContext = {  id: string;  name: string;  status?: FiberStatus;  idempotencyKey?: string;  metadata?: Record<string, unknown> | null;  snapshot: unknown | null;  createdAt: number;  recoveryReason: "interrupted";};
 ```
 
 ### Lifecycle
@@ -281,61 +119,15 @@ type FiberRecoveryContext = {
 #### Normal execution
 
 ```
-
-runFiber("work", fn)
-
-  ├─ Persist recovery metadata
-
-  ├─ keepAlive() — heartbeat starts
-
-  ├─ Execute fn(ctx)
-
-  │    ├─ ctx.stash(data) → persist snapshot
-
-  │    ├─ ctx.stash(data) → persist snapshot
-
-  │    └─ return result
-
-  ├─ Delete recovery metadata
-
-  ├─ keepAlive dispose — heartbeat stops
-
-  └─ Return result to caller
-
-
+runFiber("work", fn)  ├─ Persist recovery metadata  ├─ keepAlive() — heartbeat starts  ├─ Execute fn(ctx)  │    ├─ ctx.stash(data) → persist snapshot  │    ├─ ctx.stash(data) → persist snapshot  │    └─ return result  ├─ Delete recovery metadata  ├─ keepAlive dispose — heartbeat stops  └─ Return result to caller
 ```
 
 #### Eviction and recovery
 
 ```
-
 [DO evicted — all in-memory state lost]
-
-
-  On next activation:
-
-  ├─ Request/connection → onStart() → check for orphaned fibers  [primary path]
-
-  │  OR
-
-  ├─ Persisted alarm fires → housekeeping check                   [fallback path]
-
-
-  Recovery:
-
-  ├─ Load interrupted fibers from storage
-
-  ├─ For each interrupted fiber:
-
-  │    ├─ Parse snapshot from JSON
-
-  │    ├─ Call onFiberRecovered(ctx)
-
-  │    └─ Delete recovery metadata after successful recovery
-
-  └─ If onFiberRecovered calls runFiber() again → new fiber, normal execution
-
-
+  On next activation:  ├─ Request/connection → onStart() → check for orphaned fibers  [primary path]  │  OR  ├─ Persisted alarm fires → housekeeping check                   [fallback path]
+  Recovery:  ├─ Load interrupted fibers from storage  ├─ For each interrupted fiber:  │    ├─ Parse snapshot from JSON  │    ├─ Call onFiberRecovered(ctx)  │    └─ Delete recovery metadata after successful recovery  └─ If onFiberRecovered calls runFiber() again → new fiber, normal execution
 ```
 
 Both recovery paths call the same hook. The alarm path is critical for background agents that have no incoming client connections — the persisted alarm wakes the agent on its own.
@@ -351,16 +143,7 @@ This keeps recovery local to the child while preserving the single physical alar
 #### Error during execution
 
 ```
-
-fn(ctx) throws Error
-
-  ├─ DELETE row from cf_agents_runs
-
-  ├─ keepAlive dispose
-
-  └─ Error propagates to caller (or logged if fire-and-forget)
-
-
+fn(ctx) throws Error  ├─ DELETE row from cf_agents_runs  ├─ keepAlive dispose  └─ Error propagates to caller (or logged if fire-and-forget)
 ```
 
 No automatic retries. Recovery logic belongs in `onFiberRecovered`, where you have the snapshot and full context about what went wrong.
@@ -372,25 +155,8 @@ No automatic retries. Recovery logic belongs in `onFiberRecovered`, where you ha
 TypeScript
 
 ```
-
-// Inline — await the result
-
-const result = await this.runFiber("work", async (ctx) => {
-
-  return computeExpensiveThing();
-
-});
-
-
-// Fire-and-forget — caller does not wait
-
-void this.runFiber("background", async (ctx) => {
-
-  await longRunningProcess();
-
-});
-
-
+// Inline — await the resultconst result = await this.runFiber("work", async (ctx) => {  return computeExpensiveThing();});
+// Fire-and-forget — caller does not waitvoid this.runFiber("background", async (ctx) => {  await longRunningProcess();});
 ```
 
 If the DO is evicted during an inline `await`, the caller is gone. On recovery, `onFiberRecovered` fires — it cannot return a result to the original caller. This is the inherent limitation of durable execution across process boundaries. For long-running work that is likely to outlive a single DO lifetime, use `startFiber()` when callers need a retained status record, idempotent acceptance, or cancellation.
@@ -402,37 +168,8 @@ Use `startFiber()` when a caller needs to durably accept background work, return
 TypeScript
 
 ```
-
-const receipt = await this.startFiber(
-
-  "reply-to-webhook",
-
-  async (ctx) => {
-
-    ctx.stash({ webhookId, threadId });
-
-    await postReply(threadId);
-
-  },
-
-  {
-
-    idempotencyKey: `webhook:${webhookId}`,
-
-    metadata: { threadId },
-
-  },
-
-);
-
-
-if (!receipt.accepted) {
-
-  // This webhook was already accepted by an earlier delivery.
-
-}
-
-
+const receipt = await this.startFiber(  "reply-to-webhook",  async (ctx) => {    ctx.stash({ webhookId, threadId });    await postReply(threadId);  },  {    idempotencyKey: `webhook:${webhookId}`,    metadata: { threadId },  },);
+if (!receipt.accepted) {  // This webhook was already accepted by an earlier delivery.}
 ```
 
 By default, `startFiber()` returns after the work is durably accepted. Pass `waitForCompletion: true` when the caller should remain open until the accepted fiber reaches a terminal status. Duplicate calls with the same idempotency key join an active in-memory execution when possible, then return the retained status with `accepted: false`.
@@ -440,23 +177,8 @@ By default, `startFiber()` returns after the work is durably accepted. Pass `wai
 TypeScript
 
 ```
-
-const result = await this.startFiber("reply-to-webhook", reply, {
-
-  idempotencyKey: `webhook:${webhookId}`,
-
-  waitForCompletion: true,
-
-});
-
-
-if (result.status === "error") {
-
-  console.error(result.error);
-
-}
-
-
+const result = await this.startFiber("reply-to-webhook", reply, {  idempotencyKey: `webhook:${webhookId}`,  waitForCompletion: true,});
+if (result.status === "error") {  console.error(result.error);}
 ```
 
 `startFiber()` is a durable acceptance API, not a value-return API. It returns the managed fiber status, but not the callback's result. Inspect status later with `inspectFiber()` or `inspectFiberByKey()`.
@@ -464,26 +186,9 @@ if (result.status === "error") {
 TypeScript
 
 ```
-
 const current = await this.inspectFiberByKey(`webhook:${webhookId}`);
-
-
-if (current) {
-
-  await this.cancelFiber(current.fiberId, "No longer needed");
-
-}
-
-
-await this.deleteFibers({
-
-  status: ["completed", "error", "aborted"],
-
-  settledBefore: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
-
-});
-
-
+if (current) {  await this.cancelFiber(current.fiberId, "No longer needed");}
+await this.deleteFibers({  status: ["completed", "error", "aborted"],  settledBefore: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),});
 ```
 
 By default, `deleteFibers()` deletes settled `completed`, `error`, and `aborted` rows. It does not delete `interrupted` rows unless you pass that status explicitly, because interrupted rows often need inspection or manual resolution.
@@ -497,28 +202,9 @@ Return a `FiberRecoveryResult` from `onFiberRecovered()` to record the policy de
 TypeScript
 
 ```
-
-async onFiberRecovered(ctx: FiberRecoveryContext) {
-
-  if (ctx.name !== "reply-to-webhook") return;
-
-
-  const snapshot = ctx.snapshot as { webhookId: string; threadId: string };
-
-  await postRecoveryMessage(snapshot.threadId);
-
-
-  return {
-
-    status: "completed",
-
-    snapshot: { ...snapshot, recovered: true },
-
-  };
-
-}
-
-
+async onFiberRecovered(ctx: FiberRecoveryContext) {  if (ctx.name !== "reply-to-webhook") return;
+  const snapshot = ctx.snapshot as { webhookId: string; threadId: string };  await postRecoveryMessage(snapshot.threadId);
+  return {    status: "completed",    snapshot: { ...snapshot, recovered: true },  };}
 ```
 
 Returning `undefined` keeps a managed fiber `interrupted`. Throwing leaves it `interrupted` and records the recovery error for inspection. Terminal managed fibers such as `aborted` are not recovered again if a stale run row remains.
@@ -534,38 +220,9 @@ Each call **fully replaces** the previous snapshot — it is not a merge. Write 
 TypeScript
 
 ```
-
-await this.runFiber("research", async (ctx) => {
-
-  const steps = ["search", "analyze", "synthesize"];
-
-  const completed: string[] = [];
-
-  const results: Record<string, unknown> = {};
-
-
-  for (const step of steps) {
-
-    results[step] = await executeStep(step);
-
-    completed.push(step);
-
-
-    ctx.stash({
-
-      completed,
-
-      results,
-
-      pendingSteps: steps.slice(completed.length),
-
-    });
-
-  }
-
-});
-
-
+await this.runFiber("research", async (ctx) => {  const steps = ["search", "analyze", "synthesize"];  const completed: string[] = [];  const results: Record<string, unknown> = {};
+  for (const step of steps) {    results[step] = await executeStep(step);    completed.push(step);
+    ctx.stash({      completed,      results,      pendingSteps: steps.slice(completed.length),    });  }});
 ```
 
 ### this.stash vs ctx.stash
@@ -581,60 +238,11 @@ Override `onFiberRecovered` to handle interrupted fibers. The default implementa
 TypeScript
 
 ```
-
-class ResearchAgent extends Agent {
-
-  async onFiberRecovered(ctx: FiberRecoveryContext) {
-
-    if (ctx.name !== "research") return;
-
-
-    const snapshot = ctx.snapshot as {
-
-      completed: string[];
-
-      results: Record<string, unknown>;
-
-      pendingSteps: string[];
-
-    } | null;
-
-
-    if (snapshot && snapshot.pendingSteps.length > 0) {
-
-      void this.runFiber("research", async (fiberCtx) => {
-
-        const { completed, results, pendingSteps } = snapshot;
-
-
-        for (const step of pendingSteps) {
-
-          results[step] = await this.executeStep(step);
-
-          completed.push(step);
-
-
-          fiberCtx.stash({
-
-            completed,
-
-            results,
-
-            pendingSteps: pendingSteps.slice(pendingSteps.indexOf(step) + 1),
-
-          });
-
-        }
-
-      });
-
-    }
-
-  }
-
-}
-
-
+class ResearchAgent extends Agent {  async onFiberRecovered(ctx: FiberRecoveryContext) {    if (ctx.name !== "research") return;
+    const snapshot = ctx.snapshot as {      completed: string[];      results: Record<string, unknown>;      pendingSteps: string[];    } | null;
+    if (snapshot && snapshot.pendingSteps.length > 0) {      void this.runFiber("research", async (fiberCtx) => {        const { completed, results, pendingSteps } = snapshot;
+        for (const step of pendingSteps) {          results[step] = await this.executeStep(step);          completed.push(step);
+          fiberCtx.stash({            completed,            results,            pendingSteps: pendingSteps.slice(pendingSteps.indexOf(step) + 1),          });        }      });    }  }}
 ```
 
 Key points:
@@ -656,20 +264,7 @@ Multiple fibers can run at the same time. Each has its own row in SQLite with it
 TypeScript
 
 ```
-
-void this.runFiber("fetch-data", async (ctx) => {
-
-  /* ... */
-
-});
-
-void this.runFiber("process-queue", async (ctx) => {
-
-  /* ... */
-
-});
-
-
+void this.runFiber("fetch-data", async (ctx) => {  /* ... */});void this.runFiber("process-queue", async (ctx) => {  /* ... */});
 ```
 
 On recovery, all orphaned rows are iterated and `onFiberRecovered` is called for each. Use `ctx.name` to distinguish between fiber types in your recovery hook.

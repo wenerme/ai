@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,69 +25,15 @@ Context provider component that wraps the meeting UI. Provides SafeAreaView, sta
 ### Basic Usage
 
 ```
-
-import {
-
-  RtkUIProvider,
-
-  RtkMeeting,
-
-} from "@cloudflare/realtimekit-react-native-ui";
-
-
-function App() {
-
-  return (
-
-    <RtkUIProvider>
-
-      <RtkMeeting meeting={meeting} />
-
-    </RtkUIProvider>
-
-  );
-
-}
-
-
+import {  RtkUIProvider,  RtkMeeting,} from "@cloudflare/realtimekit-react-native-ui";
+function App() {  return (    <RtkUIProvider>      <RtkMeeting meeting={meeting} />    </RtkUIProvider>  );}
 ```
 
 ### With Properties
 
 ```
-
-import {
-
-  RtkUIProvider,
-
-  RtkGrid,
-
-  RtkControlbar,
-
-  RtkHeader,
-
-} from "@cloudflare/realtimekit-react-native-ui";
-
-
-function App() {
-
-  return (
-
-    <RtkUIProvider>
-
-      <RtkHeader meeting={meeting} />
-
-      <RtkGrid meeting={meeting} />
-
-      <RtkControlbar meeting={meeting} />
-
-    </RtkUIProvider>
-
-  );
-
-}
-
-
+import {  RtkUIProvider,  RtkGrid,  RtkControlbar,  RtkHeader,} from "@cloudflare/realtimekit-react-native-ui";
+function App() {  return (    <RtkUIProvider>      <RtkHeader meeting={meeting} />      <RtkGrid meeting={meeting} />      <RtkControlbar meeting={meeting} />    </RtkUIProvider>  );}
 ```
 
 ```json

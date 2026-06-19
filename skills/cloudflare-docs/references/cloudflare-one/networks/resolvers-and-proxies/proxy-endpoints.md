@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -84,8 +84,8 @@ Warning
 
 All devices you add to the proxy endpoint can access your Cloudflare Tunnel applications and services. If you only want to proxy web traffic, [create a Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/common-policies/#restrict-private-network-access-to-proxy-endpoint-users) that restricts proxy endpoint traffic from connecting to your internal resources.
 
-* [ Dashboard ](#tab-panel-7384)
-* [ API ](#tab-panel-7385)
+* [ Dashboard ](#tab-panel-7460)
+* [ API ](#tab-panel-7461)
 
 Authorization endpoint
 
@@ -109,8 +109,8 @@ To add a [source IP endpoint](#source-ip-endpoint):
 3. Choose **Add a source IP endpoint**.
 4. Name your endpoint.
 5. Add the source IP addresses of your devices in CIDR notation. For example:  
-   * **IPv4**: `192.0.2.0/8`  
-   * **IPv6**: `2001:0db8:0000:0000:0000:1234:5678:0000/32`
+  * **IPv4**: `192.0.2.0/8`
+  * **IPv6**: `2001:0db8:0000:0000:0000:1234:5678:0000/32`
 6. Select **Save endpoint**.
 
 Authorization endpoint
@@ -120,51 +120,20 @@ To create an authorization endpoint:
 1. Use [Create a Proxy Endpoint](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/proxy%5Fendpoints/methods/create/) with the following call:  
 Create a proxy endpoint  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/proxy_endpoints" \  
-  --request POST \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "kind": "identity",  
-    "name": "any_name"  
-  }'  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/proxy_endpoints" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "kind": "identity",    "name": "any_name"  }'  
 ```
 2. The response returns output similar to the following:  
 ```  
-{  
-  "result": {  
-    "kind": "identity",  
-    "id": "d969d7bf-ec28-4291-9af0-86825f472c21",  
-    "name": "Identity Proxy Endpoint",  
-    "created_at": "2014-01-01T05:20:00.12345Z",  
-    "updated_at": "2014-01-01T05:20:00.12345Z",  
-    "subdomain": "3ele0ss56t"  
-  },  
-  "success": true,  
-  "errors": [],  
-  "messages": []  
-}  
+{  "result": {    "kind": "identity",    "id": "d969d7bf-ec28-4291-9af0-86825f472c21",    "name": "Identity Proxy Endpoint",    "created_at": "2014-01-01T05:20:00.12345Z",    "updated_at": "2014-01-01T05:20:00.12345Z",    "subdomain": "3ele0ss56t"  },  "success": true,  "errors": [],  "messages": []}  
 ```  
 Note the `subdomain` value returned by the API. You will use this to create the Access application.
 3. Use [Add An Access Application](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/applications/methods/create/) to associate the proxy endpoint with Access policies:  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Access: Apps and Policies Write`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Access: Apps and Policies Write`  
 Add an Access application  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps" \  
-  --request POST \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "domain": "<SUBDOMAIN>.proxy.cloudflare-gateway.com",  
-    "name": "Proxy Endpoint App",  
-    "session_duration": "12h",  
-    "type": "proxy_endpoint",  
-    "policies": [  
-        {  
-            "id": "<ACCESS_POLICY_ID>"  
-        }  
-    ]  
-  }'  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "domain": "<SUBDOMAIN>.proxy.cloudflare-gateway.com",    "name": "Proxy Endpoint App",    "session_duration": "12h",    "type": "proxy_endpoint",    "policies": [        {            "id": "<ACCESS_POLICY_ID>"        }    ]  }'  
 ```  
 Replace `<SUBDOMAIN>` with the subdomain from step 2 and `<ACCESS_POLICY_ID>` with the ID of an existing [Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/).
 
@@ -175,38 +144,17 @@ To create a source IP endpoint:
 1. Use [Create A Proxy Endpoint](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/proxy%5Fendpoints/methods/create/) with the following call:  
 Create a proxy endpoint  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/proxy_endpoints" \  
-  --request POST \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "name": "any_name",  
-    "ips": [  
-        "<PUBLIC_IP>",  
-        "<PUBLIC_IP2>",  
-        "<PUBLIC_IP3>"  
-    ]  
-  }'  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/proxy_endpoints" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "any_name",    "ips": [        "<PUBLIC_IP>",        "<PUBLIC_IP2>",        "<PUBLIC_IP3>"    ]  }'  
 ```  
-Replace `<PUBLIC_IP>` with the source IP address of your device in CIDR notation. For example:  
-   * **IPv4**: `192.0.2.0/8`  
-   * **IPv6**: `2001:0db8:0000:0000:0000:1234:5678:0000/32`  
+Replace `<PUBLIC_IP>` with the source IP address of your device in CIDR notation. For example:
+
+  * **IPv4**: `192.0.2.0/8`
+  * **IPv6**: `2001:0db8:0000:0000:0000:1234:5678:0000/32`  
 Note  
 Gateway limits the prefix length of source networks for proxy endpoints to `/8` for IPv4 networks and `/32` for IPv6 networks.
 2. The response returns output similar to the following:  
 ```  
-{  
-  "result": {  
-    "id": "d969d7bf-ec28-4291-9af0-86825f472c21",  
-    "name": "test",  
-    "created_at": "2022-03-02T10:57:18.094789Z",  
-    "updated_at": "2022-03-02T10:57:18.094789Z",  
-    "ips": ["90.90.241.229/8"],  
-    "subdomain": "3ele0ss56t"  
-  },  
-  "success": true,  
-  "errors": [],  
-  "messages": []  
-}  
+{  "result": {    "id": "d969d7bf-ec28-4291-9af0-86825f472c21",    "name": "test",    "created_at": "2022-03-02T10:57:18.094789Z",    "updated_at": "2022-03-02T10:57:18.094789Z",    "ips": ["90.90.241.229/8"],    "subdomain": "3ele0ss56t"  },  "success": true,  "errors": [],  "messages": []}  
 ```  
 Note the `subdomain` value returned by the API. Your Cloudflare proxy server domain is of the form:  
 ```  
@@ -233,23 +181,22 @@ To create a hosted PAC file:
 3. [Create a proxy endpoint](#1-create-a-proxy-endpoint) or select an existing one, then select **Edit**.
 4. Select **Add PAC files**.
 5. Configure your PAC file:  
-In **PAC file details**:  
-   1. Enter the **Basic Information**, including a name and optional description.  
-   2. (Optional) Customize the **URL slug** to create a memorable URL path. The slug cannot be changed after creation.  
-   3. In **PAC file configuration**, select **Browse PAC file configuration templates** and choose a pre-configured template to customize. The available templates are Okta and Azure. After you select a template, **PAC file JavaScript** will populate with the selected template.  
-   4. Modify the JavaScript as needed to match your network requirements.  
-In **Setup instructions**:  
-   1. Choose a browser.  
-   2. Follow the instructions in Cloudflare One to configure devices.
+In **PAC file details**:
+
+  1. Enter the **Basic Information**, including a name and optional description.
+  2. (Optional) Customize the **URL slug** to create a memorable URL path. The slug cannot be changed after creation.
+  3. In **PAC file configuration**, select **Browse PAC file configuration templates** and choose a pre-configured template to customize. The available templates are Okta and Azure. After you select a template, **PAC file JavaScript** will populate with the selected template.
+  4. Modify the JavaScript as needed to match your network requirements.  
+In **Setup instructions**:
+
+  1. Choose a browser.
+  2. Follow the instructions in Cloudflare One to configure devices.
 6. Select **Create**.
 
 Your hosted PAC file URL will be:
 
 ```
-
 https://pac.cloudflare-gateway.com/<account-id>/<slug>
-
-
 ```
 
 Where:
@@ -320,8 +267,8 @@ You may need to configure your organization's firewall to allow your users to co
 
 To get the domain of a proxy endpoint:
 
-* [ Dashboard ](#tab-panel-7382)
-* [ API ](#tab-panel-7383)
+* [ Dashboard ](#tab-panel-7458)
+* [ API ](#tab-panel-7459)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** \> **Resolvers & Proxies** \> **Proxy endpoints**.
 2. Choose the proxy endpoint. Select **Edit**.
@@ -330,30 +277,18 @@ To get the domain of a proxy endpoint:
 1. Use the [List proxy endpoints](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/proxy%5Fendpoints/methods/list/) operation to get a list of your proxy endpoints and their details. For example:  
 List proxy endpoints  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/proxy_endpoints" \  
-  --request GET \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/proxy_endpoints" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
 ```  
 ```  
-{  
-  "success": true,  
-  "result": {  
-    "id": "ed35569b41ce4d1facfe683550f54086",  
-    "created_at": "2014-01-01T05:20:00.12345Z",  
-    "ips": ["192.0.2.1/32"],  
-    "name": "DevOps team",  
-    "subdomain": "oli3n9zkz5.proxy.cloudflare-gateway.com",  
-    "updated_at": "2014-01-01T05:20:00.12345Z"  
-  }  
-}  
+{  "success": true,  "result": {    "id": "ed35569b41ce4d1facfe683550f54086",    "created_at": "2014-01-01T05:20:00.12345Z",    "ips": ["192.0.2.1/32"],    "name": "DevOps team",    "subdomain": "oli3n9zkz5.proxy.cloudflare-gateway.com",    "updated_at": "2014-01-01T05:20:00.12345Z"  }}  
 ```
 2. Find the proxy endpoint you want to use.
 3. Copy the value of the `subdomain` key.
 
 Using your proxy endpoint's domain, you can get the IP addresses assigned to the proxy endpoint:
 
-* [ macOS and Linux ](#tab-panel-7380)
-* [ Windows ](#tab-panel-7381)
+* [ macOS and Linux ](#tab-panel-7456)
+* [ Windows ](#tab-panel-7457)
 
 1. Open a terminal.
 2. Run `dig` on your proxy endpoint's A records to get its IPv4 addresses. For example:  
@@ -361,9 +296,8 @@ Terminal window
 ```  
 dig A example.cloudflare-gateway.com +short  
 ```  
-```  
-162.159.36.5  
-162.159.36.20  
+```
+162.159.36.5162.159.36.20  
 ```
 3. Run `dig` on your proxy endpoint's AAAA records to get its IPv6 addresses. For example:  
 Terminal window  
@@ -371,8 +305,7 @@ Terminal window
 dig AAAA example.cloudflare-gateway.com +short  
 ```  
 ```  
-2606:4700:54::a29f:2407  
-2606:4700:5c::a29f:2e07  
+2606:4700:54::a29f:24072606:4700:5c::a29f:2e07  
 ```
 
 1. Open a PowerShell terminal.
@@ -382,10 +315,7 @@ PowerShell
 Resolve-DnsName -Name example.cloudflare-gateway.com -Type A  
 ```  
 ```  
-Name                                           Type   TTL   Section    IPAddress  
-----                                           ----   ---   -------    ---------  
-example.cloudflare-gateway.com                 A      300   Answer     162.159.36.5  
-example.cloudflare-gateway.com                 A      300   Answer     162.159.36.20  
+Name                                           Type   TTL   Section    IPAddress----                                           ----   ---   -------    ---------example.cloudflare-gateway.com                 A      300   Answer     162.159.36.5example.cloudflare-gateway.com                 A      300   Answer     162.159.36.20  
 ```
 3. Run `Resolve-DnsName` on your proxy endpoint's AAAA records. Your proxy endpoint's IPv6 addresses will appear under `IPAddress`. For example:  
 PowerShell  
@@ -393,10 +323,7 @@ PowerShell
 Resolve-DnsName -Name example.cloudflare-gateway.com -Type AAAA  
 ```  
 ```  
-Name                                           Type   TTL   Section    IPAddress  
-----                                           ----   ---   -------    ---------  
-example.cloudflare-gateway.com                 AAAA   300   Answer     2606:4700:5c::a29f:2e07  
-example.cloudflare-gateway.com                 AAAA   300   Answer     2606:4700:54::a29f:2407  
+Name                                           Type   TTL   Section    IPAddress----                                           ----   ---   -------    ---------example.cloudflare-gateway.com                 AAAA   300   Answer     2606:4700:5c::a29f:2e07example.cloudflare-gateway.com                 AAAA   300   Answer     2606:4700:54::a29f:2407  
 ```
 
 To ensure responses are allowed through your firewall, add an inbound rule to allow the static IPv4 address for Cloudflare proxy endpoints, `162.159.193.21`.
@@ -411,9 +338,9 @@ You can modify proxy endpoint settings after creation.
 2. Locate your authorization endpoint (indicated by **Authorization** under **Type**).
 3. Select the three dots, then select **Configure**.
 4. Choose what to edit:  
-   * **Basic info**: Update the endpoint name and description.  
-   * **Access policies**: Add, remove, or modify Access policies that control who can use the endpoint.  
-   * **Login methods**: Select which [identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) users can authenticate with.
+  * **Basic info**: Update the endpoint name and description.
+  * **Access policies**: Add, remove, or modify Access policies that control who can use the endpoint.
+  * **Login methods**: Select which [identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) users can authenticate with.
 5. Select **Save**.
 
 ### Edit source IP endpoint
@@ -454,10 +381,7 @@ Gateway [HTTP Isolate policies](https://developers.cloudflare.com/cloudflare-one
 Traffic with a referer HTTP header matching the domain of a recently logged in user from the same source IP will be allowed through and logged with the following non-identity email address:
 
 ```
-
 auth-proxy-non-identity@<your-team-name>.cloudflareaccess.com
-
-
 ```
 
 Where `<your-team-name>` is your [team name](https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/#what-is-a-team-domainteam-name).

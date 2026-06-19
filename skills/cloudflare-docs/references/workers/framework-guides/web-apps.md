@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,15 +17,15 @@ Create full-stack web applications deployed to Cloudflare Workers.
 * [ Astro ](https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/)
 * [ Microfrontends ](https://developers.cloudflare.com/workers/framework-guides/web-apps/microfrontends/)
 * [ More guides... ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/)  
-   * [ Analog ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/analog/)  
-   * [ Angular ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/angular/)  
-   * [ Docusaurus ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/docusaurus/)  
-   * [ Gatsby ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/gatsby/)  
-   * [ Hono ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/hono/)  
-   * [ Nuxt ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/nuxt/)  
-   * [ Qwik ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/qwik/)  
-   * [ Solid ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/solid/)  
-   * [ Waku ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/waku/)
+  * [ Analog ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/analog/)
+  * [ Angular ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/angular/)
+  * [ Docusaurus ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/docusaurus/)
+  * [ Gatsby ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/gatsby/)
+  * [ Hono ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/hono/)
+  * [ Nuxt ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/nuxt/)
+  * [ Qwik ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/qwik/)
+  * [ Solid ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/solid/)
+  * [ Waku ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/waku/)
 * [ React + Vite ](https://developers.cloudflare.com/workers/framework-guides/web-apps/react/)
 * [ React Router (formerly Remix) ](https://developers.cloudflare.com/workers/framework-guides/web-apps/react-router/)
 * [ Next.js ](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/)

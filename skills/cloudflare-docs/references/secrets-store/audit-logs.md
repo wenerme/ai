@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/secrets-store/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,9 +16,9 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 * Access
 * Create  
-   * Duplicating a secret is presented as a `create` log with a field `duplicated_from_id`.
+  * Duplicating a secret is presented as a `create` log with a field `duplicated_from_id`.
 * Update  
-   * A boolean `"value_modified": true` is presented when the secret value is edited.
+  * A boolean `"value_modified": true` is presented when the secret value is edited.
 * Delete
 
 For information on how to access and use audit logs, refer to [Fundamentals](https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/).

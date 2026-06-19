@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -40,26 +40,7 @@ The steps below outline how to do this.
 In the example below, the `cf-aig-log-id` is `01JADMCQQQBWH3NXZ5GCRN98DP`.
 
 ```
-
-{
-
-  "status": "success",
-
-  "headers": {
-
-    "cf-aig-log-id": "01JADMCQQQBWH3NXZ5GCRN98DP"
-
-  },
-
-  "data": {
-
-    "response": "Sample response data"
-
-  }
-
-}
-
-
+{  "status": "success",  "headers": {    "cf-aig-log-id": "01JADMCQQQBWH3NXZ5GCRN98DP"  },  "data": {    "response": "Sample response data"  }}
 ```
 
 ### Method 2: Retrieve the `cf-aig-log-id` via API (GET request)
@@ -70,76 +51,18 @@ Send a `GET` request to get a list of logs and then find a specific ID
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `AI Gateway Write`
 * `AI Gateway Read`
 
 List Gateway Logs
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/gateways/$GATEWAY_ID/logs" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/gateways/$GATEWAY_ID/logs" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```
-
-{
-
-  "result": [
-
-    {
-
-      "id": "01JADMCQQQBWH3NXZ5GCRN98DP",
-
-      "cached": true,
-
-      "created_at": "2019-08-24T14:15:22Z",
-
-      "custom_cost": true,
-
-      "duration": 0,
-
-      "id": "string",
-
-      "metadata": "string",
-
-      "model": "string",
-
-      "model_type": "string",
-
-      "path": "string",
-
-      "provider": "string",
-
-      "request_content_type": "string",
-
-      "request_type": "string",
-
-      "response_content_type": "string",
-
-      "status_code": 0,
-
-      "step": 0,
-
-      "success": true,
-
-      "tokens_in": 0,
-
-      "tokens_out": 0
-
-    }
-
-  ]
-
-}
-
-
+{  "result": [    {      "id": "01JADMCQQQBWH3NXZ5GCRN98DP",      "cached": true,      "created_at": "2019-08-24T14:15:22Z",      "custom_cost": true,      "duration": 0,      "id": "string",      "metadata": "string",      "model": "string",      "model_type": "string",      "path": "string",      "provider": "string",      "request_content_type": "string",      "request_type": "string",      "response_content_type": "string",      "status_code": 0,      "step": 0,      "success": true,      "tokens_in": 0,      "tokens_out": 0    }  ]}
 ```
 
 ### Method 3: Retrieve the `cf-aig-log-id` via a binding
@@ -149,33 +72,8 @@ You can also retrieve the `cf-aig-log-id` using a binding, which streamlines the
 JavaScript
 
 ```
-
-const resp = await env.AI.run(
-
-  "@cf/meta/llama-3-8b-instruct",
-
-  {
-
-    prompt: "tell me a joke",
-
-  },
-
-  {
-
-    gateway: {
-
-      id: "my_gateway_id",
-
-    },
-
-  },
-
-);
-
-
+const resp = await env.AI.run(  "@cf/meta/llama-3-8b-instruct",  {    prompt: "tell me a joke",  },  {    gateway: {      id: "my_gateway_id",    },  },);
 const myLogId = env.AI.aiGatewayLogId;
-
-
 ```
 
 Note:
@@ -188,39 +86,19 @@ Once you have both the API token and the `cf-aig-log-id`, you can send a PATCH r
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `AI Gateway Write`
 
 Patch Gateway Log
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/gateways/$GATEWAY_ID/logs/$ID" \
-
-  --request PATCH \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "feedback": 1
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/gateways/$GATEWAY_ID/logs/$ID" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "feedback": 1  }'
 ```
 
 If you had negative feedback, adjust the body of the request to be `-1`.
 
 ```
-
-{
-
-  "feedback": -1
-
-}
-
-
+{  "feedback": -1}
 ```
 
 ## 4\. Verify the feedback submission

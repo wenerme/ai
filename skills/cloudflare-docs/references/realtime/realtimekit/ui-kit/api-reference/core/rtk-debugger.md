@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,37 +29,18 @@ A troubleshooting component to identify and fix any issues in the meeting.
 ### Basic Usage
 
 ```
-
 <rtk-debugger></rtk-debugger>
-
-
 ```
 
 ### With Properties
 
 ```
-
-<rtk-debugger
-
- size="md">
-
-</rtk-debugger>
-
-
+<rtk-debugger size="md"></rtk-debugger>
 ```
 
 ```
-
-<script>
-
-  const el = document.querySelector("rtk-debugger");
-
-
-  el.meeting= meeting
-
-</script>
-
-
+<script>  const el = document.querySelector("rtk-debugger");
+  el.meeting= meeting</script>
 ```
 
 ```json

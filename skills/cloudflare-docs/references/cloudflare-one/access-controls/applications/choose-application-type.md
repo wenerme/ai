@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,7 +20,7 @@ Most teams start with self-hosted applications and expand to SaaS applications, 
 
 The following table summarizes the key differences between each application type. For detailed setup instructions, refer to the section for each type.
 
-| Self-hosted application              | SaaS application                                                                                                                  | Infrastructure application                                                         | Bookmark                                                                                |                                                                                  |
+|                                      | Self-hosted application                                                                                                           | SaaS application                                                                   | Infrastructure application                                                              | Bookmark                                                                         |
 | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
 | **What it protects**                 | Resources you own and manage: public web apps, private network destinations, and Cloudflare Workers                               | Third-party SaaS tools your team uses (Salesforce, Atlassian, Workday)             | Individual servers and infrastructure targets, reachable over public or private network | External URLs displayed in the App Launcher (not gated by Access authentication) |
 | **Requires Cloudflare One Client**   | Depends on destination type and [policy requirements](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) | No                                                                                 | Yes                                                                                     | No                                                                               |

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,116 +22,31 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11733)
-* [  TypeScript ](#tab-panel-11734)
-* [  Python ](#tab-panel-11735)
+* [  JavaScript ](#tab-panel-11748)
+* [  TypeScript ](#tab-panel-11749)
+* [  Python ](#tab-panel-11750)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request) {
-
-    function MethodNotAllowed(request) {
-
-      return new Response(`Method ${request.method} not allowed.`, {
-
-        status: 405,
-
-        headers: {
-
-          Allow: "GET",
-
-        },
-
-      });
-
-    }
-
-    // Only GET requests work with this proxy.
-
-    if (request.method !== "GET") return MethodNotAllowed(request);
-
-    return fetch(`https://example.com`);
-
-  },
-
-};
-
-
+export default {  async fetch(request) {    function MethodNotAllowed(request) {      return new Response(`Method ${request.method} not allowed.`, {        status: 405,        headers: {          Allow: "GET",        },      });    }    // Only GET requests work with this proxy.    if (request.method !== "GET") return MethodNotAllowed(request);    return fetch(`https://example.com`);  },};
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBOABwA2AKyCA7KJkBGQZIBcLFm2Ac4XGnwEiJ0uYuUBYAFABhdFQgBTO9gAiUAM4x0bqNFsqSmngExCRUcMD2DABEUDT2AB4AdABWblGkqFBgjuGRMXFJqVGWNnaOENgAKnQw9v5wMDBgfARQtsjJcABucG68CLAQANTA6Ljg9paWCZ5IJLj2qHDgECQA3hYkJL10VLwB9hC8ABYAFAj2AI4g9m4QAJTrm1sB1Ly+VCQAsofHYwBy6AgAEEwGB0AB3ey4c5XG53R4bF4vC4QEAIT5UewQkgAJVuniobnspwABj8IH9cCQACRrC7XW4QRIRSljAC+oSB2zBkOhiVJABonsjkXcCCA3P4ACzKQXPUUkY72OALBBSkWKl6g8EQ-xRADiAFFKlF5VqSOzzaL2fciArLQ7kMgSAB5KhgOgkY2VEgM+EQNwkCGYADWwZ8xxIlPcJBgCHQ8ToiQdUFQJFhjLuLN+YxIAEIGAwSIaTVFHqj0Z8KVTASDeVCYf6mXaHZWMQcjmdSccIBAYFLnQlwk17IleOhgKTW1srRZ2URLOpmJptLoePwhGIpLJ5EpJCVbA4nK4PF4fG0qP5AtpSGEItFWargukAlkcg+omRwWRitYj+UVQ1HU2yNM0vCtO0qS2FMFhrFEwBwLEAD6ozjNkUQqPkCyFGk7JLsuq7BOu+hbkYu6mJIzCWEAA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBmAOwAWYQA4ATDNEBGUQDYAXCxZtgHOFxp8BIidLmKVAWABQAYXRUIAU3vYAIlADOMdO6jQ7qki08AmISKjhgBwYAIigaBwAPADoAK3do0lQoMCcIqNj45LToq1t7JwhsABU6GAcAuBgYMD4CKDtkFLgANzh3XgRYCABqYHRccAcrK0SvJBJcB1Q4cAgSAG9LEhI+uipeQIcIXgALAAoEBwBHEAd3CABKDa3twOpePyoSAFkjk-GAHLoCAAQTAYHQAHcHLgLtdbvcnptXq9LhAQAgvlQHJCSAAlO5eKjuBxnAAGvwg-1wJAAJOtLjc7hAkpEqeMAL5hYE7cFQmFJMkAGmeKJR9wIIHcAXEggArEKXmKSCcHHBFghpaLla8wRDIQFogBxACiVWiip1JA5lrFHIeRCV1qdyGQJAA8lQwHQSKaqiRGQiIO4SJDMABrUO+E4kKkeEgwBDoBJ0JJOqCoEhwpn3Vl-cYkACEDAYJGNZuiTzRGK+lOpQNBfOhsMDzIdTurmMOx3OZJOEAgMGlrsSEWaDiSvHQwDJ7e2NssHKIVg0zC0Oj0PH4QjEklk8iUylKdkczjcnm8vnaVACQR0pHCkRibPVIQygWyuSf0TIELIJRsE8KmqWp6h2JoWl4NoOjSOxpksdZomAOA4gAfTGCYcmiVQCkWIp0g5FdV3XEJNwMHdjH3MxlGYKwgA)
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request): Promise<Response> {
-
-    function MethodNotAllowed(request) {
-
-      return new Response(`Method ${request.method} not allowed.`, {
-
-        status: 405,
-
-        headers: {
-
-          Allow: "GET",
-
-        },
-
-      });
-
-    }
-
-    // Only GET requests work with this proxy.
-
-    if (request.method !== "GET") return MethodNotAllowed(request);
-
-    return fetch(`https://example.com`);
-
-  },
-
-} satisfies ExportedHandler;
-
-
+export default {  async fetch(request): Promise<Response> {    function MethodNotAllowed(request) {      return new Response(`Method ${request.method} not allowed.`, {        status: 405,        headers: {          Allow: "GET",        },      });    }    // Only GET requests work with this proxy.    if (request.method !== "GET") return MethodNotAllowed(request);    return fetch(`https://example.com`);  },} satisfies ExportedHandler;
 ```
 
 Python
 
 ```
-
 from workers import WorkerEntrypoint, Response, fetch
-
-
-class Default(WorkerEntrypoint):
-
-    def fetch(self, request):
-
-        def method_not_allowed(request):
-
-            msg = f'Method {request.method} not allowed.'
-
-            headers = {"Allow": "GET"}
-
-            return Response(msg, headers=headers, status=405)
-
-
-        # Only GET requests work with this proxy.
-
-        if request.method != "GET":
-
-            return method_not_allowed(request)
-
-
+class Default(WorkerEntrypoint):    def fetch(self, request):        def method_not_allowed(request):            msg = f'Method {request.method} not allowed.'            headers = {"Allow": "GET"}            return Response(msg, headers=headers, status=405)
+        # Only GET requests work with this proxy.        if request.method != "GET":            return method_not_allowed(request)
         return fetch("https://example.com")
-
-
 ```
 
 ```json

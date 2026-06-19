@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,17 +30,8 @@ A versatile button that follows the RTK Design System. Supports multiple styles,
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let button = RtkButton()
-
-button.setTitle("Join", for: .normal)
-
-view.addSubview(button)
-
-
+let button = RtkButton()button.setTitle("Join", for: .normal)view.addSubview(button)
 ```
 
 ### With custom style
@@ -48,25 +39,8 @@ view.addSubview(button)
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let button = RtkButton(
-
-    style: .line,
-
-    rtkButtonState: .active,
-
-    size: .large
-
-)
-
-button.setTitle("Cancel", for: .normal)
-
-view.addSubview(button)
-
-
+let button = RtkButton(    style: .line,    rtkButtonState: .active,    size: .large)button.setTitle("Cancel", for: .normal)view.addSubview(button)
 ```
 
 ```json

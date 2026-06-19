@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/1.1.1.1/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,9 +25,8 @@ To configure 1.1.1.1 for your Google Cloud VPC network:
 3. Select **Create Policy**.
 4. Enter a name for your policy (for example, `cloudflare-1-1-1-1`) and select the VPC networks to apply it to.
 5. Under **Alternate DNS servers**, select **Add Item** and enter:  
-```  
-1.1.1.1  
-1.0.0.1  
+```
+1.1.1.11.0.0.1  
 ```
 6. Select **Create**.
 

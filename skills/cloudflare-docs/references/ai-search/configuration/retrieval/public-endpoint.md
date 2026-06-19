@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,10 +31,7 @@ For details on how to use these endpoints, refer to [Public endpoint usage](http
 When enabled, public endpoints are accessible at:
 
 ```
-
 https://<hash>.search.ai.cloudflare.com/<endpoint>
-
-
 ```
 
 The `<hash>` is your instance's unique public endpoint identifier.
@@ -49,7 +46,7 @@ For example:
 
 You can enable or disable each public endpoint independently:
 
-1. Log in to your Cloudflare account, and go to **AI Search**.[ Go to **AI Search** ](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
+1. Log in to your Cloudflare account, and go to **AI Search**. [ Go to **AI Search** ](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
 2. Select your AI Search instance.
 3. Go to **Settings** \> **Public Endpoints**.
 4. Toggle on **Public Endpoints** to enable the feature, then toggle each individual endpoint on or off as needed.
@@ -86,16 +83,7 @@ The **Tool Description** field allows you to customize how your AI Search instan
 For example:
 
 ```
-
-Search the Acme product documentation for information about
-
-installation, configuration, API references, and troubleshooting
-
-guides. Use this tool when users ask questions about how to set up
-
-or use Acme products.
-
-
+Search the Acme product documentation for information aboutinstallation, configuration, API references, and troubleshootingguides. Use this tool when users ask questions about how to set upor use Acme products.
 ```
 
 ## Security considerations

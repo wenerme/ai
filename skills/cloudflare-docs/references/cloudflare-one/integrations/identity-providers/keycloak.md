@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,20 +28,22 @@ You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloud
 3. Change the `Name ID Format` to `email`
 4. Next, set the valid redirect URI to the Keycloak domain that you are using. For example, `https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback`.
 5. Set the Master SAML Processing URL using the same Keycloak domain: `https://<keycloak_domain>/auth/realms/master/protocol/saml`.
-6. If you wish to enable client signatures, enable `Client Signature Required` and select **save**.  
-   1. You will need to [follow the steps here to get the certificate and enable it in the Cloudflare dashboard](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/signed%5Fauthn/).  
-   2. Import the Access certificate you downloaded into the `SAML Keys` tab. Use `Certificate PEM` as the format.
+6. If you wish to enable client signatures, enable `Client Signature Required` and select **save**.
+
+  1. You will need to [follow the steps here to get the certificate and enable it in the Cloudflare dashboard](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/signed%5Fauthn/).
+  2. Import the Access certificate you downloaded into the `SAML Keys` tab. Use `Certificate PEM` as the format.
 7. Set the built-in protocol mapper for the `email` property.  
 ![Protocol Mapper with email property set](https://developers.cloudflare.com/_astro/protocol-mapper.CZf2t0Ex_o71H2.webp)  
 Next, you will need to integrate with Cloudflare Access.
 8. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 9. Under **Your identity providers**, select **Add new identity provider**.
 10. Choose **SAML** on the next page.  
-You will need to input the Keycloak details manually. The examples below should be replaced with the specific domains in use with Keycloak and Cloudflare Access.  
-| Field                       | Example                                                           |  
-| --------------------------- | ----------------------------------------------------------------- |  
-| Single Sign-On URL          | https://<keycloak\_domain>/auth/realms/master/protocol/saml       |  
-| IdP Entity ID or Issuer URL | https://<unique\_id>.cloudflareaccess.com/cdn-cgi/access/callback |  
+You will need to input the Keycloak details manually. The examples below should be replaced with the specific domains in use with Keycloak and Cloudflare Access.
+
+| Field                       | Example                                                           |
+| --------------------------- | ----------------------------------------------------------------- |
+| Single Sign-On URL          | https://<keycloak\_domain>/auth/realms/master/protocol/saml       |
+| IdP Entity ID or Issuer URL | https://<unique\_id>.cloudflareaccess.com/cdn-cgi/access/callback |
 | Signing certificate         | Use the X509 Certificate in the Realm Settings from Keycloak      |
 11. Select **Save**.
 

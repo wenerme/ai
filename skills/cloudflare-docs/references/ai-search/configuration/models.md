@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,12 +31,14 @@ All AI Search instances support models from [Workers AI](https://developers.clou
 To use AI Search with other model providers:
 
 1. Add provider keys to [AI Gateway](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/).
-2. Connect the gateway to AI Search.  
-   * When creating a new AI Search, select the AI Gateway with your provider keys.  
-   * For an existing AI Search, go to **Settings** and switch to a gateway that has your keys under **Resources**.
-3. Select models  
-   * Embedding model: Only available to be changed when creating a new AI Search.  
-   * Generation model: Can be selected when creating a new AI Search and can be changed at any time in **Settings**.
+2. Connect the gateway to AI Search.
+
+  * When creating a new AI Search, select the AI Gateway with your provider keys.
+  * For an existing AI Search, go to **Settings** and switch to a gateway that has your keys under **Resources**.
+3. Select models
+
+  * Embedding model: Only available to be changed when creating a new AI Search.
+  * Generation model: Can be selected when creating a new AI Search and can be changed at any time in **Settings**.
 
 AI Search supports a subset of models that have been selected to provide the best experience. Refer to the list of [supported models](https://developers.cloudflare.com/ai-search/configuration/models/supported-models/).
 

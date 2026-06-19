@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -43,20 +43,7 @@ Use the following Worker script to verify that the Worker has access to the boun
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    const res = await env.DB.prepare("SELECT 1;").run();
-
-    return new Response(JSON.stringify(res, null, 2));
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    const res = await env.DB.prepare("SELECT 1;").run();    return new Response(JSON.stringify(res, null, 2));  },};
 ```
 
 ## Related resources

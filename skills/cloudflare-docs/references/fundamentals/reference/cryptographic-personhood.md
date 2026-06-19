@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -50,20 +50,20 @@ For more details on how we set up Cryptographic Attestation of Personhood, refer
 CAP supports a wide variety of hardware authenticators:
 
 * **Roaming (cross-platform) authenticators**:  
-   * _Supported_: All security keys found in the [FIDO Metadata Service 3.0 ↗](https://fidoalliance.org/metadata/), unless they have been revoked for security reasons.  
-   * _Examples_: YubiKeys, HyperFIDO keys, Thetis FIDO U2F keys
+  * _Supported_: All security keys found in the [FIDO Metadata Service 3.0 ↗](https://fidoalliance.org/metadata/), unless they have been revoked for security reasons.
+  * _Examples_: YubiKeys, HyperFIDO keys, Thetis FIDO U2F keys
 * **Platform authenticators:**  
-   * _Examples_: Apple Touch ID and Face ID on iOS mobile devices and macOS laptops; Android mobile devices with fingerprint readers; Windows Hello
+  * _Examples_: Apple Touch ID and Face ID on iOS mobile devices and macOS laptops; Android mobile devices with fingerprint readers; Windows Hello
 
 ### Known limitations
 
 Most combinations of of web browsers and WebAuthn-capable authenticators will work, but there are some known compatibility issues with WebAuthn attestation that may prevent CAP from working successfully:
 
 * **Basic CAP**:  
-   * _macOS desktop_: For TouchID, browser must be Safari  
-   * _Android_: Browser must be Chrome
+  * _macOS desktop_: For TouchID, browser must be Safari
+  * _Android_: Browser must be Chrome
 * **CAP with Zero-Knowledge Proof**:  
-   * _Apple platform authenticators_ (e.g., iPhone with Touch ID/Face ID) are incompatible with the [zero-knowledge proof system ↗](https://blog.cloudflare.com/introducing-zero-knowledge-proofs-for-private-web-attestation-with-cross-multi-vendor-hardware/). If this fails, you will immediately be redirected to basic CAP route without having to take any further action. Since Apple uses a privacy-preserving [Apple Anonymous Attestation ↗](https://www.w3.org/TR/webauthn/#sctn-apple-anonymous-attestation) to show that an authenticator is valid while blocking tracking, this method maintains a high standard of privacy.
+  * _Apple platform authenticators_ (e.g., iPhone with Touch ID/Face ID) are incompatible with the [zero-knowledge proof system ↗](https://blog.cloudflare.com/introducing-zero-knowledge-proofs-for-private-web-attestation-with-cross-multi-vendor-hardware/). If this fails, you will immediately be redirected to basic CAP route without having to take any further action. Since Apple uses a privacy-preserving [Apple Anonymous Attestation ↗](https://www.w3.org/TR/webauthn/#sctn-apple-anonymous-attestation) to show that an authenticator is valid while blocking tracking, this method maintains a high standard of privacy.
 
 We are updating this list as the ecosystem evolves and as we continue to test different combinations.
 
@@ -80,11 +80,11 @@ If you do not have the necessary hardware (such as a Yubikey), you can still sol
 ## What are the common error codes and what do they mean?
 
 * **Unsupported\_att\_fmt**:  
-   * _Cause_: Your authenticator is using an unsupported attestation format (combination of browser and key). Also occurs when you use _Firefox_ and select the option to "anonymise your key".  
-   * _Solution:_ If this error occurs during [zero-knowledge version of CAP ↗](https://blog.cloudflare.com/introducing-zero-knowledge-proofs-for-private-web-attestation-with-cross-multi-vendor-hardware/), you will automatically be redirected to the basic CAP flow. If basic CAP fails, try a different combination of supported hardware device and browser or opt for a CAPTCHA.
+  * _Cause_: Your authenticator is using an unsupported attestation format (combination of browser and key). Also occurs when you use _Firefox_ and select the option to "anonymise your key".
+  * _Solution:_ If this error occurs during [zero-knowledge version of CAP ↗](https://blog.cloudflare.com/introducing-zero-knowledge-proofs-for-private-web-attestation-with-cross-multi-vendor-hardware/), you will automatically be redirected to the basic CAP flow. If basic CAP fails, try a different combination of supported hardware device and browser or opt for a CAPTCHA.
 * **Unsupported\_issuer**:  
-   * _Cause_: Your key is currently not supported.  
-   * _Solution_: Use a [supported key](#allowed-devices).
+  * _Cause_: Your key is currently not supported.
+  * _Solution_: Use a [supported key](#allowed-devices).
 
 ## Related resources
 

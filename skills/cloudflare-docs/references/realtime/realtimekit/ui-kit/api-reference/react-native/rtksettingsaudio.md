@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,33 +29,15 @@ Audio settings panel with device selection dropdown, audio visualizer preview, a
 ### Basic Usage
 
 ```
-
 import { RtkSettingsAudio } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkSettingsAudio meeting={meeting} />;
-
-}
-
-
+function MyComponent() {  return <RtkSettingsAudio meeting={meeting} />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkSettingsAudio } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkSettingsAudio meeting={meeting} size="md" states={states} />;
-
-}
-
-
+function MyComponent() {  return <RtkSettingsAudio meeting={meeting} size="md" states={states} />;}
 ```
 
 ```json

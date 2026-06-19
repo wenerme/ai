@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -43,24 +43,24 @@ To check if a Gateway block event occurred:
 
 1. Go to **Insights** \> **Logs** and select the **DNS query logs**, **Network logs**, or **HTTP request logs**.
 2. Apply the following filters:  
-   * **Email**: User's email address  
-   * **Event**: _Blocked_  
-   * **Date Time Range**: Time period when the user accessed the application
+  * **Email**: User's email address
+  * **Event**: _Blocked_
+  * **Date Time Range**: Time period when the user accessed the application
 
 ## 5\. Is the user matching the correct Gateway policy?
 
 Determine whether the user is matching any policy, or if they are matching a policy that has a higher priority than the expected policy.
 
 1. To determine the actual policy that was applied:  
-   1. Go to **Insights** \> **Logs** and select the **DNS query logs**, **Network logs**, or **HTTP request logs**.  
-   2. Apply the following filters:  
-         * **Email**: User's email address  
-         * **Date Time Range**: Time period when the user accessed the application  
-   3. In the search box, filter by the destination IP or FQDN.  
-   4. In the results, select a log and note its **Policy Name** value.
+  1. Go to **Insights** \> **Logs** and select the **DNS query logs**, **Network logs**, or **HTTP request logs**.
+  2. Apply the following filters:  
+    * **Email**: User's email address
+    * **Date Time Range**: Time period when the user accessed the application
+  3. In the search box, filter by the destination IP or FQDN.
+  4. In the results, select a log and note its **Policy Name** value.
 2. Go to **Traffic policies** \> **Firewall policies** and compare the [order of enforcement](https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/) of the matched policy versus the expected policy.
 3. Compare the Gateway log values with the expected policy criteria.  
-   * If the mismatched value is related to identity, [check the user registry](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/users/) and verify the values that are passed to Gateway from your IdP. Cloudflare updates the registry when the user enrolls in the Cloudflare One Client. If the user's identity is outdated, ask the user to re-authenticate the client (**Profile** \> **Account information** \> **Re-authenticate**)[1](#user-content-fn-1).
+  * If the mismatched value is related to identity, [check the user registry](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/users/) and verify the values that are passed to Gateway from your IdP. Cloudflare updates the registry when the user enrolls in the Cloudflare One Client. If the user's identity is outdated, ask the user to re-authenticate the client (**Profile** \> **Account information** \> **Re-authenticate**)[1](#user-content-fn-1).
 * If the mismatched value is related to device posture, [view posture check results](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/#2-verify-device-posture-checks) for the user's device. Verify that the device passes the posture checks configured in the policy.
 
 ## 6\. Are the correct Gateway proxy settings enabled?
@@ -75,18 +75,15 @@ Under **Traffic policies** \> **Traffic settings**, ensure that **Allow Secure W
 
 Verify that you can connect to the application directly from the `cloudflared` host machine:
 
-* [ macOS and Linux ](#tab-panel-9140)
-* [ Windows ](#tab-panel-9141)
+* [ macOS and Linux ](#tab-panel-9216)
+* [ Windows ](#tab-panel-9217)
 
 Open Terminal and run the following command:
 
 Terminal window
 
 ```
-
 telnet test.example.com 443
-
-
 ```
 
 If `telnet` fails to open the connection, check your infrastructure for firewalls, load balancers, or other network devices that may be interfering with the connection between `cloudflared` and the application server.
@@ -96,10 +93,7 @@ Open PowerShell and run the following command:
 PowerShell
 
 ```
-
 PS C:\Users\JohnDoe> Test-NetConnection test.example.com -port 443
-
-
 ```
 
 If the output shows `TcpTestSucceeded : False`, check your infrastructure for firewalls, load balancers, or other network devices that may be interfering with the connection between `cloudflared` and the application server.
@@ -119,15 +113,17 @@ Customers who have [Logpush](https://developers.cloudflare.com/cloudflare-one/in
 
 To troubleshoot TLS inspection:
 
-1. Create a temporary Gateway HTTP policy that disables TLS inspection for all traffic to the application. For example:  
-| Selector       | Operator | Value       | Action         |  
-| -------------- | -------- | ----------- | -------------- |  
+1. Create a temporary Gateway HTTP policy that disables TLS inspection for all traffic to the application. For example:
+
+| Selector       | Operator | Value       | Action         |
+| -------------- | -------- | ----------- | -------------- |
 | Destination IP | in       | 10.2.3.4/32 | Do Not Inspect |
 2. If the `Do Not Inspect` policy enables the user to connect, verify that the TLS certificate used by your application is trusted by a public CA and not self-signed. Cloudflare Gateway is unable to negotiate TLS with applications that use self-signed certificates. For more information, refer to [TLS inspection limitations](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/#inspection-limitations).  
-To work around the issue:  
-   * **Option 1:** Create a permanent [Do Not Inspect HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#do-not-inspect) for this application.  
-   * **Option 2:** Customers who use their [own certificate infrastructure](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/custom-certificate/) for inspection can opt to create an [Allow _Pass Through_ policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#untrusted-certificates) which enables our proxy to accept the TLS negotiation from your application. This will allow requests to flow correctly without the need for a `Do Not Inspect` policy.  
-   * **Option 3:** If your application uses `HTTPS` or other common protocols, you can add a [published application](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/) to your Cloudflare Tunnel and set [noTLSVerify](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/origin-parameters/#notlsverify) to `true`. This will allow `cloudflared` to trust your self-signed certificate.
+To work around the issue:
+
+  * **Option 1:** Create a permanent [Do Not Inspect HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#do-not-inspect) for this application.
+  * **Option 2:** Customers who use their [own certificate infrastructure](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/custom-certificate/) for inspection can opt to create an [Allow _Pass Through_ policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#untrusted-certificates) which enables our proxy to accept the TLS negotiation from your application. This will allow requests to flow correctly without the need for a `Do Not Inspect` policy.
+  * **Option 3:** If your application uses `HTTPS` or other common protocols, you can add a [published application](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/) to your Cloudflare Tunnel and set [noTLSVerify](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/origin-parameters/#notlsverify) to `true`. This will allow `cloudflared` to trust your self-signed certificate.
 
 ## Footnotes
 

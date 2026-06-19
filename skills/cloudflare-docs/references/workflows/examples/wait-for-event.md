@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workflows/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -45,311 +45,59 @@ The `index.ts` file defines the core logic of the Cloudflare Workflow responsibl
 
 For the complete implementation of the `index.ts` file, please refer to the [GitHub repository ↗](https://github.com/cloudflare/docs-examples/blob/main/workflows/waitForEvent/workflow/src/index.ts).
 
-* [  JavaScript ](#tab-panel-13063)
-* [  TypeScript ](#tab-panel-13064)
+* [  JavaScript ](#tab-panel-13080)
+* [  TypeScript ](#tab-panel-13081)
 
 JavaScript
 
 ```
-
-export class MyWorkflow extends WorkflowEntrypoint {
-
-  db;
-
-
-  async run(event, step) {
-
-    this.db = new DatabaseService(this.env.DB);
-
-    const { imageKey } = event.payload;
-
-
-    await step.do("Insert image name into database", async () => {
-
-      await this.db.insertImage(imageKey, event.instanceId);
-
-    });
-
-
-    const waitForApproval = await step.waitForEvent(
-
-      "Wait for AI Image tagging approval",
-
-      {
-
-        type: "approval-for-ai-tagging",
-
-        timeout: "5 minute",
-
-      },
-
-    );
-
-
-    const approvalPayload = waitForApproval.payload;
-
-    if (approvalPayload?.approved) {
-
-      const aiTags = await step.do("Generate AI tags", async () => {
-
-        const image = await this.env.workflow_demo_bucket.get(imageKey);
-
-        if (!image) throw new Error("Image not found");
-
-
-        const arrayBuffer = await image.arrayBuffer();
-
-        const uint8Array = new Uint8Array(arrayBuffer);
-
-
-        const input = {
-
-          image: Array.from(uint8Array),
-
-          prompt: AI_CONFIG.PROMPT,
-
-          max_tokens: AI_CONFIG.MAX_TOKENS,
-
-        };
-
-
-        const response = await this.env.AI.run(AI_CONFIG.MODEL, input);
-
-        return response.description;
-
-      });
-
-
-      await step.do("Update DB with AI tags", async () => {
-
-        await this.db.updateImageTags(event.instanceId, aiTags);
-
-      });
-
-    }
-
-  }
-
-}
-
-
+export class MyWorkflow extends WorkflowEntrypoint {  db;
+  async run(event, step) {    this.db = new DatabaseService(this.env.DB);    const { imageKey } = event.payload;
+    await step.do("Insert image name into database", async () => {      await this.db.insertImage(imageKey, event.instanceId);    });
+    const waitForApproval = await step.waitForEvent(      "Wait for AI Image tagging approval",      {        type: "approval-for-ai-tagging",        timeout: "5 minute",      },    );
+    const approvalPayload = waitForApproval.payload;    if (approvalPayload?.approved) {      const aiTags = await step.do("Generate AI tags", async () => {        const image = await this.env.workflow_demo_bucket.get(imageKey);        if (!image) throw new Error("Image not found");
+        const arrayBuffer = await image.arrayBuffer();        const uint8Array = new Uint8Array(arrayBuffer);
+        const input = {          image: Array.from(uint8Array),          prompt: AI_CONFIG.PROMPT,          max_tokens: AI_CONFIG.MAX_TOKENS,        };
+        const response = await this.env.AI.run(AI_CONFIG.MODEL, input);        return response.description;      });
+      await step.do("Update DB with AI tags", async () => {        await this.db.updateImageTags(event.instanceId, aiTags);      });    }  }}
 ```
 
 TypeScript
 
 ```
-
-export class MyWorkflow extends WorkflowEntrypoint<Env, WorkflowParams> {
-
-  private db!: DatabaseService;
-
-
-  async run(event: WorkflowEvent<WorkflowParams>, step: WorkflowStep) {
-
-    this.db = new DatabaseService(this.env.DB);
-
-    const { imageKey } = event.payload;
-
-
-    await step.do('Insert image name into database', async () => {
-
-      await this.db.insertImage(imageKey, event.instanceId);
-
-    });
-
-
-    const waitForApproval = await step.waitForEvent('Wait for AI Image tagging approval', {
-
-      type: 'approval-for-ai-tagging',
-
-      timeout: '5 minute',
-
-    });
-
-
-    const approvalPayload = waitForApproval.payload as ApprovalRequest;
-
-    if (approvalPayload?.approved) {
-
-      const aiTags = await step.do('Generate AI tags', async () => {
-
-        const image = await this.env.workflow_demo_bucket.get(imageKey);
-
-        if (!image) throw new Error('Image not found');
-
-
-        const arrayBuffer = await image.arrayBuffer();
-
-        const uint8Array = new Uint8Array(arrayBuffer);
-
-
-        const input = {
-
-          image: Array.from(uint8Array),
-
-          prompt: AI_CONFIG.PROMPT,
-
-          max_tokens: AI_CONFIG.MAX_TOKENS,
-
-        };
-
-
-        const response = await this.env.AI.run(AI_CONFIG.MODEL, input);
-
-        return response.description;
-
-      });
-
-
-      await step.do('Update DB with AI tags', async () => {
-
-        await this.db.updateImageTags(event.instanceId, aiTags);
-
-      });
-
-    }
-
-  }
-
-}
-
-
+export class MyWorkflow extends WorkflowEntrypoint<Env, WorkflowParams> {  private db!: DatabaseService;
+  async run(event: WorkflowEvent<WorkflowParams>, step: WorkflowStep) {    this.db = new DatabaseService(this.env.DB);    const { imageKey } = event.payload;
+    await step.do('Insert image name into database', async () => {      await this.db.insertImage(imageKey, event.instanceId);    });
+    const waitForApproval = await step.waitForEvent('Wait for AI Image tagging approval', {      type: 'approval-for-ai-tagging',      timeout: '5 minute',    });
+    const approvalPayload = waitForApproval.payload as ApprovalRequest;    if (approvalPayload?.approved) {      const aiTags = await step.do('Generate AI tags', async () => {        const image = await this.env.workflow_demo_bucket.get(imageKey);        if (!image) throw new Error('Image not found');
+        const arrayBuffer = await image.arrayBuffer();        const uint8Array = new Uint8Array(arrayBuffer);
+        const input = {          image: Array.from(uint8Array),          prompt: AI_CONFIG.PROMPT,          max_tokens: AI_CONFIG.MAX_TOKENS,        };
+        const response = await this.env.AI.run(AI_CONFIG.MODEL, input);        return response.description;      });
+      await step.do('Update DB with AI tags', async () => {        await this.db.updateImageTags(event.instanceId, aiTags);      });    }  }}
 ```
 
 ## Workflow wrangler.jsonc
 
 The Workflow configuration is defined in the `wrangler.jsonc` file. This file includes bindings for the R2 bucket, D1 database, Workers AI, and the Workflow itself. Ensure that all necessary bindings and environment variables are correctly set up to match your Cloudflare account and services.
 
-* [  wrangler.jsonc ](#tab-panel-13061)
-* [  wrangler.toml ](#tab-panel-13062)
+* [  wrangler.jsonc ](#tab-panel-13078)
+* [  wrangler.toml ](#tab-panel-13079)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "node_modules/wrangler/config-schema.json",
-
-  "name": "workflows-waitforevent",
-
-  "main": "src/index.ts",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "observability": {
-
-    "enabled": true,
-
-    "head_sampling_rate": 1,
-
-  },
-
-  "ai": {
-
-    "binding": "AI"
-
-  },
-
-  "workflows": [
-
-    {
-
-      "name": "workflows-starter",
-
-      "binding": "MY_WORKFLOW",
-
-      "class_name": "MyWorkflow"
-
-    }
-
-  ],
-
-  "r2_buckets": [
-
-    {
-
-      "bucket_name": "workflow-demo",
-
-      "binding": "workflow_demo_bucket"
-
-    }
-
-  ],
-
-  "d1_databases": [
-
-    {
-
-      "binding": "DB",
-
-      "database_name": "workflows-demo-d1",
-
-      "database_id": "66e4fbe9-06ac-4548-abba-2dc42088e13a"
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "node_modules/wrangler/config-schema.json",  "name": "workflows-waitforevent",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-19",  "observability": {    "enabled": true,    "head_sampling_rate": 1,  },  "ai": {    "binding": "AI"  },  "workflows": [    {      "name": "workflows-starter",      "binding": "MY_WORKFLOW",      "class_name": "MyWorkflow"    }  ],  "r2_buckets": [    {      "bucket_name": "workflow-demo",      "binding": "workflow_demo_bucket"    }  ],  "d1_databases": [    {      "binding": "DB",      "database_name": "workflows-demo-d1",      "database_id": "66e4fbe9-06ac-4548-abba-2dc42088e13a"    }  ]}
 ```
 
 TOML
 
 ```
-
-"$schema" = "node_modules/wrangler/config-schema.json"
-
-name = "workflows-waitforevent"
-
-main = "src/index.ts"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[observability]
-
-enabled = true
-
-head_sampling_rate = 1
-
-
-[ai]
-
-binding = "AI"
-
-
-[[workflows]]
-
-name = "workflows-starter"
-
-binding = "MY_WORKFLOW"
-
-class_name = "MyWorkflow"
-
-
-[[r2_buckets]]
-
-bucket_name = "workflow-demo"
-
-binding = "workflow_demo_bucket"
-
-
-[[d1_databases]]
-
-binding = "DB"
-
-database_name = "workflows-demo-d1"
-
-database_id = "66e4fbe9-06ac-4548-abba-2dc42088e13a"
-
-
+"$schema" = "node_modules/wrangler/config-schema.json"name = "workflows-waitforevent"main = "src/index.ts"# Set this to today's datecompatibility_date = "2026-06-19"
+[observability]enabled = truehead_sampling_rate = 1
+[ai]binding = "AI"
+[[workflows]]name = "workflows-starter"binding = "MY_WORKFLOW"class_name = "MyWorkflow"
+[[r2_buckets]]bucket_name = "workflow-demo"binding = "workflow_demo_bucket"
+[[d1_databases]]binding = "DB"database_name = "workflows-demo-d1"database_id = "66e4fbe9-06ac-4548-abba-2dc42088e13a"
 ```
 
 For access to the codebase, deployment instructions, and reference architecture, please visit the [GitHub repository ↗](https://github.com/cloudflare/docs-examples/tree/main/workflows/waitForEvent). This resource provides all the necessary tools and information to effectively implement the Workflow and Next.js frontend application.

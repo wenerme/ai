@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,10 +19,7 @@ The central design token library providing color, spacing, border width, and bor
 Swift
 
 ```
-
 let designLibrary = DesignLibrary.shared
-
-
 ```
 
 ## Properties
@@ -41,32 +38,11 @@ let designLibrary = DesignLibrary.shared
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
 let designLibrary = DesignLibrary.shared
-
-
-// Access color tokens
-
-let backgroundColor = designLibrary.color.background
-
-let textColor = designLibrary.color.text
-
-
-// Access spacing tokens
-
-let padding = designLibrary.space.space4
-
-
-// Access border tokens
-
-let borderWidth = designLibrary.borderSize.thin
-
-let cornerRadius = designLibrary.borderRadius.rounded
-
-
+// Access color tokenslet backgroundColor = designLibrary.color.backgroundlet textColor = designLibrary.color.text
+// Access spacing tokenslet padding = designLibrary.space.space4
+// Access border tokenslet borderWidth = designLibrary.borderSize.thinlet cornerRadius = designLibrary.borderRadius.rounded
 ```
 
 ```json

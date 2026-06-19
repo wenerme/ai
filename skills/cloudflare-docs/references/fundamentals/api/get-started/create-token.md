@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -42,49 +42,13 @@ The token secret page also includes an example command to test the token. Use th
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/user/tokens/verify" \
-
---header "Authorization: Bearer <API_TOKEN>"
-
-
+curl "https://api.cloudflare.com/client/v4/user/tokens/verify" \--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 The result:
 
 ```
-
-{
-
-  "result": {
-
-    "id": "100bf38cc8393103870917dd535e0628",
-
-    "status": "active"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": [
-
-    {
-
-      "code": 10000,
-
-      "message": "This API Token is valid and active",
-
-      "type": null
-
-    }
-
-  ]
-
-}
-
-
+{  "result": {    "id": "100bf38cc8393103870917dd535e0628",    "status": "active"  },  "success": true,  "errors": [],  "messages": [    {      "code": 10000,      "message": "This API Token is valid and active",      "type": null    }  ]}
 ```
 
 New API tokens use the `cfut_` prefixed [scannable format](https://developers.cloudflare.com/fundamentals/api/get-started/token-formats/), which allows credential scanning tools to detect leaked tokens.

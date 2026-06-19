@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,58 +30,20 @@ Note
 
 To enable built-in Node.js APIs and polyfills, add the nodejs\_compat compatibility flag to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). This also enables nodejs\_compat\_v2 as long as your compatibility date is 2024-09-23 or later. [Learn more about the Node.js compatibility flag and v2](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag).
 
-* [  wrangler.jsonc ](#tab-panel-6925)
-* [  wrangler.toml ](#tab-panel-6926)
+* [  wrangler.jsonc ](#tab-panel-7001)
+* [  wrangler.toml ](#tab-panel-7002)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  // Top-level configuration
-
-  "name": "browser-rendering",
-
-  "main": "src/index.ts",
-
-  "workers_dev": true,
-
-  "compatibility_flags": ["nodejs_compat_v2"],
-
-  "browser": {
-
-    "binding": "MYBROWSER",
-
-  },
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  // Top-level configuration  "name": "browser-rendering",  "main": "src/index.ts",  "workers_dev": true,  "compatibility_flags": ["nodejs_compat_v2"],  "browser": {    "binding": "MYBROWSER",  },}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "browser-rendering"
-
-main = "src/index.ts"
-
-workers_dev = true
-
-compatibility_flags = [ "nodejs_compat_v2" ]
-
-
-[browser]
-
-binding = "MYBROWSER"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "browser-rendering"main = "src/index.ts"workers_dev = truecompatibility_flags = [ "nodejs_compat_v2" ]
+[browser]binding = "MYBROWSER"
 ```
 
 After the binding is declared, access the DevTools endpoint using `env.MYBROWSER` in your Worker code:
@@ -89,10 +51,7 @@ After the binding is declared, access the DevTools endpoint using `env.MYBROWSER
 JavaScript
 
 ```
-
 const browser = await puppeteer.launch(env.MYBROWSER);
-
-
 ```
 
 Quick Actions compatibility
@@ -102,14 +61,7 @@ The browser binding's `.quickAction()` method requires a compatibility date of `
 JSONC
 
 ```
-
-{
-
-  "compatibility_date": "2026-03-24"
-
-}
-
-
+{  "compatibility_date": "2026-03-24"}
 ```
 
 Quick Actions require remote mode for local development
@@ -119,20 +71,7 @@ The `.quickAction()` method is not yet supported in local development mode. When
 JSONC
 
 ```
-
-{
-
-  "browser": {
-
-    "binding": "MYBROWSER",
-
-    "remote": true
-
-  }
-
-}
-
-
+{  "browser": {    "binding": "MYBROWSER",    "remote": true  }}
 ```
 
 Without remote mode, calls to `.quickAction()` will fail with: `The RPC receiver does not implement the method "quickAction"`.
@@ -146,10 +85,7 @@ By default, local development runs Chrome in headless mode. To launch Chrome in 
 Terminal window
 
 ```
-
 X_BROWSER_HEADFUL=true npx wrangler dev
-
-
 ```
 
 This opens a browser window on screen so you can watch navigations, interactions, and rendering in real time. Headful mode is for local development only and does not affect deployed Workers. This feature is experimental and may change without notice.

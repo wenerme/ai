@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,18 +29,7 @@ The details of how Magic Transit, Cloudflare Network Firewall, and Gateway work 
 To illustrate the architecture and how it works, the following diagrams visualize an example corporation with a set of public facing networks. These networks are deployed at 5 distinct locations, both on-premises and across multiple public clouds.
 
 ```
-
-AWS VPC: 192.0.2.0/24
-
-GCP VPC: 198.51.100.0/24
-
-Azure vNet: 203.0.113.0/26
-
-On-premises data center 1: 203.0.113.64/26
-
-On-premises data center 2: 203.0.113.128/25
-
-
+AWS VPC: 192.0.2.0/24GCP VPC: 198.51.100.0/24Azure vNet: 203.0.113.0/26On-premises data center 1: 203.0.113.64/26On-premises data center 2: 203.0.113.128/25
 ```
 
 ## Protect inbound network traffic

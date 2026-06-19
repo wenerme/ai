@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -50,16 +50,16 @@ The Network session analytics dashboard helps you:
 
 * **Top protocols**: Most used network protocols (TCP, UDP, ICMP, ICMPv6)
 * **Top connection close reasons**: Common reasons for session termination:  
-   * Client closed  
-   * Origin closed  
-   * Client idle timeout  
-   * Client error  
-   * Unknown  
-   * Client TLS error  
-   * Origin unreachable  
-   * Too many new sessions for user  
-   * Origin TLS error  
-   * Origin unroutable
+  * Client closed
+  * Origin closed
+  * Client idle timeout
+  * Client error
+  * Unknown
+  * Client TLS error
+  * Origin unreachable
+  * Too many new sessions for user
+  * Origin TLS error
+  * Origin unroutable
 
 For the full list of reasons for session termination, refer to [ConnectionCloseReason](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero%5Ftrust%5Fnetwork%5Fsessions/#connectionclosereason).
 

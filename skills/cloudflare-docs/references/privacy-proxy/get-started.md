@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/privacy-proxy/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,16 +37,7 @@ For quick tests, use curl with the `--proxy` and `--proxy-header` flags to pass 
 Terminal window
 
 ```
-
-curl -v \
-
-  --proxy https://your-proxy.example.com \
-
-  --proxy-header "Proxy-Authorization: Preshared <YOUR_PSK>" \
-
-  https://example.com
-
-
+curl -v \  --proxy https://your-proxy.example.com \  --proxy-header "Proxy-Authorization: Preshared <YOUR_PSK>" \  https://example.com
 ```
 
 ### Use Chaussette
@@ -56,9 +47,7 @@ curl -v \
 1. Start Chaussette with your PSK and proxy endpoint:  
 Terminal window  
 ```  
-MASQUE_PRESHARED_KEY=<YOUR_PSK> chaussette \  
-  --listen 127.0.0.1:1987 \  
-  --proxy https://your-proxy.example.com:443  
+MASQUE_PRESHARED_KEY=<YOUR_PSK> chaussette \  --listen 127.0.0.1:1987 \  --proxy https://your-proxy.example.com:443  
 ```
 2. Configure your browser to use the local SOCKS5 proxy:  
 Terminal window  
@@ -75,16 +64,7 @@ To confirm that traffic is routing through Privacy Proxy, check your apparent IP
 Terminal window
 
 ```
-
-curl -v \
-
-  --proxy https://your-proxy.example.com \
-
-  --proxy-header "Proxy-Authorization: Preshared <YOUR_PSK>" \
-
-  https://cloudflare.com/cdn-cgi/trace
-
-
+curl -v \  --proxy https://your-proxy.example.com \  --proxy-header "Proxy-Authorization: Preshared <YOUR_PSK>" \  https://cloudflare.com/cdn-cgi/trace
 ```
 
 The response includes connection metadata. Look for the `ip` field, which should show a Cloudflare egress IP address rather than your real IP.
@@ -92,28 +72,7 @@ The response includes connection metadata. Look for the `ip` field, which should
 Example response
 
 ```
-
-fl=123f456
-
-h=cloudflare.com
-
-ip=162.159.xxx.xxx
-
-ts=1234567890.123
-
-visit_scheme=https
-
-uag=curl/8.0.0
-
-colo=SJC
-
-http=http/2
-
-loc=US
-
-tls=TLSv1.3
-
-
+fl=123f456h=cloudflare.comip=162.159.xxx.xxxts=1234567890.123visit_scheme=httpsuag=curl/8.0.0colo=SJChttp=http/2loc=UStls=TLSv1.3
 ```
 
 The `ip` value confirms the egress IP address used by the proxy.
@@ -127,18 +86,7 @@ Privacy Proxy preserves user geolocation by selecting egress IP addresses based 
 Terminal window
 
 ```
-
-curl -v \
-
-  --proxy https://your-proxy.example.com \
-
-  --proxy-header "Proxy-Authorization: Preshared <YOUR_PSK>" \
-
-  --proxy-header "sec-ch-geohash: xn76c-JP" \
-
-  https://cloudflare.com/cdn-cgi/trace
-
-
+curl -v \  --proxy https://your-proxy.example.com \  --proxy-header "Proxy-Authorization: Preshared <YOUR_PSK>" \  --proxy-header "sec-ch-geohash: xn76c-JP" \  https://cloudflare.com/cdn-cgi/trace
 ```
 
 The `sec-ch-geohash` header provides a [geohash ↗](https://en.wikipedia.org/wiki/Geohash) that the proxy uses to select an appropriate egress IP. The format is `<geohash>-<country_code>`.

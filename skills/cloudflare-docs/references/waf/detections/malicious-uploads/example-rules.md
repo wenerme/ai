@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,9 +16,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 This [custom rule](https://developers.cloudflare.com/waf/custom-rules/) example logs all requests with at least one uploaded content object:
 
-* **When incoming requests match:**  
-| Field              | Operator | Value |  
-| ------------------ | -------- | ----- |  
+* **When incoming requests match:**
+
+| Field              | Operator | Value |
+| ------------------ | -------- | ----- |
 | Has content object | equals   | True  |  
 If you are using the Expression Editor:  
 `(cf.waf.content_scan.has_obj)`
@@ -28,10 +29,11 @@ If you are using the Expression Editor:
 
 This custom rule example blocks requests addressed at `/upload.php` that contain at least one uploaded content object considered malicious:
 
-* **When incoming requests match:**  
-| Field                        | Operator | Value       |     |  
-| ---------------------------- | -------- | ----------- | --- |  
-| Has malicious content object | equals   | True        | And |  
+* **When incoming requests match:**
+
+| Field                        | Operator | Value       |     |
+| ---------------------------- | -------- | ----------- | --- |
+| Has malicious content object | equals   | True        | And |
 | URI Path                     | equals   | /upload.php |     |  
 If you are using the Expression Editor:  
 `(cf.waf.content_scan.has_malicious_obj and http.request.uri.path eq "/upload.php")`

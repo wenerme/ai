@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -36,28 +36,7 @@ For a provider-specific endpoint, configure the timeout value by adding a `cf-ai
 Request with timeout
 
 ```
-
-# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
-
-# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
-
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --header "cf-aig-request-timeout: 5000" \
-
-  --data '{
-
-    "model": "openai/gpt-4.1-mini",
-
-    "messages": [{"role": "user", "content": "What is Cloudflare?"}]
-
-  }'
-
-
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --header "cf-aig-request-timeout: 5000" \  --data '{    "model": "openai/gpt-4.1-mini",    "messages": [{"role": "user", "content": "What is Cloudflare?"}]  }'
 ```
 
 ---

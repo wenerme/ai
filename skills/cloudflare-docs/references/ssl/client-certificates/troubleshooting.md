@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,10 +27,7 @@ On your terminal, use the following command to check whether an SSL/TLS connecti
 Terminal window
 
 ```
-
 curl --verbose --cert /path/to/certificate.pem --key /path/to/key.pem https://your-api-endpoint.com
-
-
 ```
 
 If the SSL/TLS handshake cannot be completed, check whether the certificate and the private key are correct. If the handshake completes but requests are still blocked, confirm that Cloudflare is verifying the client certificate.
@@ -50,12 +47,13 @@ To review mTLS rules, consider the steps below. For further guidance refer to [C
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. On a specific rule, select **Edit**.
-3. On that rule, check whether:  
-   * The Expression Preview is correct.  
-   * The hostname, if defined, matches your API endpoint. For example, for the API endpoint `api.trackers.ninja/time`, the rule should look like:  
-   ```  
-   (http.host in {"api.trackers.ninja"} and not cf.tls_client_auth.cert_verified)  
-   ```
+3. On that rule, check whether:
+
+  * The Expression Preview is correct.
+  * The hostname, if defined, matches your API endpoint. For example, for the API endpoint `api.trackers.ninja/time`, the rule should look like:  
+  ```  
+  (http.host in {"api.trackers.ninja"} and not cf.tls_client_auth.cert_verified)  
+  ```
 4. To edit the rule, either use the user interface or select **Edit expression**.
 
 ---
@@ -67,12 +65,7 @@ You can use [Cloudflare Workers](https://developers.cloudflare.com/workers/) to 
 1. Create a Worker to debug print [cf.properties](https://developers.cloudflare.com/workers/runtime-apis/request/#incomingrequestcfproperties):  
 JavaScript  
 ```  
-export default {  
-  async fetch(request, env, ctx) {  
-    console.info({ message: JSON.stringify(request.cf, null, 2) });  
-    return new Response(JSON.stringify(request.cf, null, 2))  
-  }  
-};  
+export default {  async fetch(request, env, ctx) {    console.info({ message: JSON.stringify(request.cf, null, 2) });    return new Response(JSON.stringify(request.cf, null, 2))  }};  
 ```
 2. Associate the Worker with the hostname where mTLS is enabled using a [Worker route](https://developers.cloudflare.com/workers/configuration/routing/routes/) or a [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/).
 3. Make requests to the hostname and/or path configured, with and without sending the mTLS client certificate.
@@ -80,24 +73,15 @@ export default {
 [ Go to **Observability** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages/observability)
 * Valid certificate  
 ```  
-"tlsClientAuth": {  
-  "certPresented": "1",  
-  "certVerified": "SUCCESS",  
-},  
+"tlsClientAuth": {  "certPresented": "1",  "certVerified": "SUCCESS",},  
 ```
 * Invalid certificate (for example, self-signed certificates)  
 ```  
-"tlsClientAuth": {  
-  "certPresented": "1",  
-  "certVerified": "FAILED:self signed certificate",  
-},  
+"tlsClientAuth": {  "certPresented": "1",  "certVerified": "FAILED:self signed certificate",},  
 ```
 * No certificate  
 ```  
-"tlsClientAuth": {  
-  "certPresented": "0",  
-  "certVerified": "NONE",  
-},  
+"tlsClientAuth": {  "certPresented": "0",  "certVerified": "NONE",},  
 ```
 
 ```json

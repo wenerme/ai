@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,27 +23,8 @@ Today, Containers are scaled manually by getting containers with a unique ID, th
 TypeScript
 
 ```
-
-// get and start two container instances
-
-const containerOne = getContainer(
-
-  env.MY_CONTAINER,
-
-  idOne,
-
-).startAndWaitForPorts();
-
-
-const containerTwo = getContainer(
-
-  env.MY_CONTAINER,
-
-  idTwo,
-
-).startAndWaitForPorts();
-
-
+// get and start two container instancesconst containerOne = getContainer(  env.MY_CONTAINER,  idOne,).startAndWaitForPorts();
+const containerTwo = getContainer(  env.MY_CONTAINER,  idTwo,).startAndWaitForPorts();
 ```
 
 Each instance will run until its `sleepAfter` time has elapsed, or until it is manually stopped.
@@ -52,40 +33,15 @@ This behavior is very useful when you want explicit control over the lifecycle o
 
 ### Use the `getRandom` helper function
 
-If you want to run multiple instances of a container and route requests between them, use the`getRandom` helper function:
+If you want to run multiple instances of a container and route requests between them, use the `getRandom` helper function:
 
 JavaScript
 
 ```
-
 import { Container, getRandom } from "@cloudflare/containers";
-
-
 const INSTANCE_COUNT = 3;
-
-
-class Backend extends Container {
-
-  defaultPort = 8080;
-
-  sleepAfter = "2h";
-
-}
-
-
-export default {
-
-  async fetch(request: Request, env: Env): Promise<Response> {
-
-    const containerInstance = await getRandom(env.BACKEND, INSTANCE_COUNT);
-
-    return containerInstance.fetch(request);
-
-  },
-
-};
-
-
+class Backend extends Container {  defaultPort = 8080;  sleepAfter = "2h";}
+export default {  async fetch(request: Request, env: Env): Promise<Response> {    const containerInstance = await getRandom(env.BACKEND, INSTANCE_COUNT);    return containerInstance.fetch(request);  },};
 ```
 
 Use `getRandom` to route to multiple stateless container instances. It randomly selects one of N instances for each request, which means:

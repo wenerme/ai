@@ -9,9 +9,10 @@ remediation.
 
 ## Assess a repository
 
-Use the Codex Security plugin to run a higher-recall scan across an authorized
+Use the Codex Security plugin to run a comprehensive scan across an authorized
 repository, review plausible findings, and produce reports that support human
-triage.
+triage. Comprehensive scans take longer because they repeat discovery across
+independent workers.
 
 - https://developers.openai.com/codex/use-cases/deep-security-scan
 

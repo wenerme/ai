@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,7 +33,7 @@ The following limits apply to gateway configurations, logs, and related features
 | [Logpush jobs](https://developers.cloudflare.com/ai-gateway/observability/logging/logpush/)            | 4 per account                             |
 | [Logpush size limit](https://developers.cloudflare.com/ai-gateway/observability/logging/logpush/)      | 1MB per log                               |
 
-1 When you reach the log storage limit for a gateway, you can configure your gateway to either automatically delete the oldest logs to make room for new ones, or stop saving new logs. You can also use[Logpush](https://developers.cloudflare.com/ai-gateway/observability/logging/logpush/) to export logs to external storage. Refer to [Automatic log deletion](https://developers.cloudflare.com/ai-gateway/observability/logging/#automatic-log-deletion)for more details.
+1 When you reach the log storage limit for a gateway, you can configure your gateway to either automatically delete the oldest logs to make room for new ones, or stop saving new logs. You can also use [Logpush](https://developers.cloudflare.com/ai-gateway/observability/logging/logpush/) to export logs to external storage. Refer to [Automatic log deletion](https://developers.cloudflare.com/ai-gateway/observability/logging/#automatic-log-deletion)for more details.
 
 2 On the free plan, the log storage limit applies to total logs across all gateways in your account. Same auto-delete or stop-saving behavior as 1.
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,14 +37,14 @@ If you are using several app security features like custom rules, Managed Rules,
 
 ## Availability
 
-| Free                             | Pro            | Business       | Enterprise     |       |
-| -------------------------------- | -------------- | -------------- | -------------- | ----- |
-| Availability                     | Yes            | Yes            | Yes            | Yes   |
-| Number of rules                  | 5              | 20             | 100            | 1,000 |
-| Supported actions                | All except Log | All except Log | All except Log | All   |
-| Regex support                    | No             | No             | Yes            | Yes   |
-| Number of custom rulesets (zone) | 1              | 2              | 5              | 10    |
-| Account-level custom rulesets    | No             | No             | No             | Yes   |
+|                                  | Free           | Pro            | Business       | Enterprise |
+| -------------------------------- | -------------- | -------------- | -------------- | ---------- |
+| Availability                     | Yes            | Yes            | Yes            | Yes        |
+| Number of rules                  | 5              | 20             | 100            | 1,000      |
+| Supported actions                | All except Log | All except Log | All except Log | All        |
+| Regex support                    | No             | No             | Yes            | Yes        |
+| Number of custom rulesets (zone) | 1              | 2              | 5              | 10         |
+| Account-level custom rulesets    | No             | No             | No             | Yes        |
 
 The maximum number of custom rules applies to all rules in the `http_request_firewall_custom` [phase](https://developers.cloudflare.com/ruleset-engine/about/phases/), which is where custom rules run. Each scope (zone or account) has a separate maximum number of rules, counted in the following way:
 

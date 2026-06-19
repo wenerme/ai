@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/support/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,13 +29,14 @@ If you encounter a `403` error without the Cloudflare branding, this means that 
 Cloudflare may serve `403` responses in the following scenarios:
 
 * **WAF rules**: The request violated a default WAF managed rule (enabled for all orange-clouded Cloudflare domains) or a custom WAF managed rule specific to your zone. For more information, refer to [WAF Managed Rules](https://developers.cloudflare.com/waf/managed-rules/).
-* **Security features**: A `403` response with Cloudflare branding in the response body may be triggered by:  
-   * [WAF Custom or Managed Rules](https://developers.cloudflare.com/waf/) with the challenge or block action.  
-   * [Security Level](https://developers.cloudflare.com/waf/tools/security-level/) settings, which default to Medium.  
-   * [DDoS Protection](https://developers.cloudflare.com/ddos-protection/), which is enabled by default on zones onboarded to Cloudflare, IP applications onboarded to Spectrum, and IP Prefixes onboarded to Magic Transit.  
-   * Most [1xxx Cloudflare error codes](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/).  
-   * The [Browser Integrity Check](https://developers.cloudflare.com/waf/tools/browser-integrity-check/).  
-   * [Validation Checks](https://developers.cloudflare.com/waf/tools/validation-checks/).
+* **Security features**: A `403` response with Cloudflare branding in the response body may be triggered by:
+
+  * [WAF Custom or Managed Rules](https://developers.cloudflare.com/waf/) with the challenge or block action.
+  * [Security Level](https://developers.cloudflare.com/waf/tools/security-level/) settings, which default to Medium.
+  * [DDoS Protection](https://developers.cloudflare.com/ddos-protection/), which is enabled by default on zones onboarded to Cloudflare, IP applications onboarded to Spectrum, and IP Prefixes onboarded to Magic Transit.
+  * Most [1xxx Cloudflare error codes](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/).
+  * The [Browser Integrity Check](https://developers.cloudflare.com/waf/tools/browser-integrity-check/).
+  * [Validation Checks](https://developers.cloudflare.com/waf/tools/validation-checks/).
 
 Cloudflare may also serve an unstyled `403` error page in specific cases. These errors are not logged because they occur early in Cloudflare's infrastructure, before domain configuration is loaded. An example is:
 

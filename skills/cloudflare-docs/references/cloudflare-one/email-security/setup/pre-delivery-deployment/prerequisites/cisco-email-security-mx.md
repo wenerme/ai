@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,41 +31,13 @@ To check your existing TTL, open a terminal window and run the following command
 Terminal window
 
 ```
-
 dig mx <YOUR_DOMAIN>
-
-
 ```
 
 ```
-
-; <<>> DiG 9.10.6 <<>> mx <YOUR_DOMAIN>
-
-;; global options: +cmd
-
-;; Got answer:
-
-;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 39938
-
-;; flags: qr rd ra; QUERY: 1, ANSWER: 5, AUTHORITY: 0, ADDITIONAL: 1
-
-
-;; OPT PSEUDOSECTION:
-
-; EDNS: version: 0, flags:; udp: 4096
-
-;; QUESTION SECTION:
-
-;<YOUR_DOMAIN>.    IN  MX
-
-
-;; ANSWER SECTION:
-
-<YOUR_DOMAIN>.    300    IN    MX    10 mxa.global.inbound.cf-emailsecurity.net.
-
-<YOUR_DOMAIN>.    300    IN    MX    10 mxb.global.inbound.cf-emailsecurity.net.
-
-
+; <<>> DiG 9.10.6 <<>> mx <YOUR_DOMAIN>;; global options: +cmd;; Got answer:;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 39938;; flags: qr rd ra; QUERY: 1, ANSWER: 5, AUTHORITY: 0, ADDITIONAL: 1
+;; OPT PSEUDOSECTION:; EDNS: version: 0, flags:; udp: 4096;; QUESTION SECTION:;<YOUR_DOMAIN>.    IN  MX
+;; ANSWER SECTION:<YOUR_DOMAIN>.    300    IN    MX    10 mxa.global.inbound.cf-emailsecurity.net.<YOUR_DOMAIN>.    300    IN    MX    10 mxb.global.inbound.cf-emailsecurity.net.
 ```
 
 In the above example, TTL is shown in seconds as `300` (or five minutes).
@@ -85,14 +57,15 @@ To add a new Sender Group:
 
 1. Go to **Mail Policies** \> **HAT Overview**.
 2. Select **Add Sender Group**.
-3. Configure the new Sender Group as follows:  
-   * **Name**: `Email security`.  
-   * **Order**: Order above the existing **WHITELIST** sender group.  
-   * **Comment**: `Email security Email Protection egress IP Addresses`.  
-   * **Policy**: `TRUSTED` (by default, spam detection is disabled for this mail flow policy).  
-   * **SBRS**: Leave blank.  
-   * **DNS Lists**: Leave blank.  
-   * **Connecting Host DNS Verification**: Leave all options unchecked.
+3. Configure the new Sender Group as follows:
+
+  * **Name**: `Email security`.
+  * **Order**: Order above the existing **WHITELIST** sender group.
+  * **Comment**: `Email security Email Protection egress IP Addresses`.
+  * **Policy**: `TRUSTED` (by default, spam detection is disabled for this mail flow policy).
+  * **SBRS**: Leave blank.
+  * **DNS Lists**: Leave blank.
+  * **Connecting Host DNS Verification**: Leave all options unchecked.
 4. Select **Submit and Add Senders** and add the IP addresses mentioned in [Egress IPs](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/egress-ips/)
 
 ## 2\. Configure Incoming Relays

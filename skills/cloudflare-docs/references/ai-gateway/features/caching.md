@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,8 +28,8 @@ This configuration benefits use cases with limited prompt options. For example, 
 
 ## Default configuration
 
-* [ Dashboard ](#tab-panel-6542)
-* [ API ](#tab-panel-6543)
+* [ Dashboard ](#tab-panel-6616)
+* [ API ](#tab-panel-6617)
 
 To set the default caching configuration in the dashboard:
 
@@ -90,38 +90,7 @@ As an example, when submitting a request to OpenAI, include the header in the fo
 Request skipping the cache
 
 ```
-
-# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
-
-# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
-
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --header "cf-aig-skip-cache: true" \
-
-  --data '{
-
-    "model": "openai/gpt-4.1-mini",
-
-    "messages": [
-
-      {
-
-        "role": "user",
-
-        "content": "how to build a wooden spoon in 3 short steps? give as short as answer as possible"
-
-      }
-
-    ]
-
-  }'
-
-
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --header "cf-aig-skip-cache: true" \  --data '{    "model": "openai/gpt-4.1-mini",    "messages": [      {        "role": "user",        "content": "how to build a wooden spoon in 3 short steps? give as short as answer as possible"      }    ]  }'
 ```
 
 ### Cache TTL (cf-aig-cache-ttl)
@@ -135,38 +104,7 @@ As an example, when submitting a request to OpenAI, include the header in the fo
 Request to be cached for an hour
 
 ```
-
-# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
-
-# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
-
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --header "cf-aig-cache-ttl: 3600" \
-
-  --data '{
-
-    "model": "openai/gpt-4.1-mini",
-
-    "messages": [
-
-      {
-
-        "role": "user",
-
-        "content": "how to build a wooden spoon in 3 short steps? give as short as answer as possible"
-
-      }
-
-    ]
-
-  }'
-
-
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --header "cf-aig-cache-ttl: 3600" \  --data '{    "model": "openai/gpt-4.1-mini",    "messages": [      {        "role": "user",        "content": "how to build a wooden spoon in 3 short steps? give as short as answer as possible"      }    ]  }'
 ```
 
 ### Custom cache key (cf-aig-cache-key)
@@ -180,38 +118,7 @@ As an example, when submitting a request to OpenAI, include the header in the fo
 Request with custom cache key
 
 ```
-
-# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
-
-# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
-
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --header "cf-aig-cache-key: responseA" \
-
-  --data '{
-
-    "model": "openai/gpt-4.1-mini",
-
-    "messages": [
-
-      {
-
-        "role": "user",
-
-        "content": "how to build a wooden spoon in 3 short steps? give as short as answer as possible"
-
-      }
-
-    ]
-
-  }'
-
-
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --header "cf-aig-cache-key: responseA" \  --data '{    "model": "openai/gpt-4.1-mini",    "messages": [      {        "role": "user",        "content": "how to build a wooden spoon in 3 short steps? give as short as answer as possible"      }    ]  }'
 ```
 
 AI Gateway caching behavior

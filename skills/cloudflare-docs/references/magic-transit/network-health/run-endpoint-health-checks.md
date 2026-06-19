@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/magic-transit/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -43,49 +43,11 @@ You will need your [account ID](https://developers.cloudflare.com/fundamentals/a
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/account_id/diagnostics/endpoint-healthcheck" \
-
-  --request POST \
-
-  --json '{
-
-    "check_type": "icmp",
-
-    "endpoint": "8.31.160.1",
-
-    "name": "Datacenter 1 - primary"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/account_id/diagnostics/endpoint-healthcheck" \  --request POST \  --json '{    "check_type": "icmp",    "endpoint": "8.31.160.1",    "name": "Datacenter 1 - primary"  }'
 ```
 
 ```
-
-{
-
-    "result": {
-
-        "id": "<HEALTH_CHECK_ID>",
-
-        "check_type": "icmp",
-
-        "endpoint": "8.31.160.1",
-
-        "name": "Datacenter 1 - primary"
-
-    },
-
-    "success": true,
-
-    "errors": [],
-
-    "messages": []
-
-}
-
-
+{    "result": {        "id": "<HEALTH_CHECK_ID>",        "check_type": "icmp",        "endpoint": "8.31.160.1",        "name": "Datacenter 1 - primary"    },    "success": true,    "errors": [],    "messages": []}
 ```
 
 ## Query endpoint health checks with GraphQL
@@ -149,78 +111,7 @@ The following example queries endpoint health check results for a specific accou
 Terminal window
 
 ```
-
-echo '{ "query":
-
-  "query GetEndpointHealthCheckResults($accountTag: string, $datetimeStart: string) {
-
-    viewer {
-
-      accounts(filter: {accountTag: $accountTag}) {
-
-        magicEndpointHealthCheckAdaptiveGroups(
-
-          filter: {
-
-            datetime_geq: $datetimeStart
-
-          }
-
-          limit: 10
-
-        ) {
-
-          count
-
-          dimensions {
-
-            checkId
-
-            checkType
-
-            endpoint
-
-            datetimeFiveMinutes
-
-          }
-
-          sum {
-
-            failures
-
-            total
-
-          }
-
-        }
-
-      }
-
-    }
-
-  }",
-
-  "variables": {
-
-    "accountTag": "<ACCOUNT_ID>",
-
-    "datetimeStart": "2026-01-21T00:00:00Z"
-
-  }
-
-}' | tr -d '\n' | curl --silent \
-
-https://api.cloudflare.com/client/v4/graphql \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Accept: application/json" \
-
---header "Content-Type: application/json" \
-
---data @-
-
-
+echo '{ "query":  "query GetEndpointHealthCheckResults($accountTag: string, $datetimeStart: string) {    viewer {      accounts(filter: {accountTag: $accountTag}) {        magicEndpointHealthCheckAdaptiveGroups(          filter: {            datetime_geq: $datetimeStart          }          limit: 10        ) {          count          dimensions {            checkId            checkType            endpoint            datetimeFiveMinutes          }          sum {            failures            total          }        }      }    }  }",  "variables": {    "accountTag": "<ACCOUNT_ID>",    "datetimeStart": "2026-01-21T00:00:00Z"  }}' | tr -d '\n' | curl --silent \https://api.cloudflare.com/client/v4/graphql \--header "Authorization: Bearer <API_TOKEN>" \--header "Accept: application/json" \--header "Content-Type: application/json" \--data @-
 ```
 
 Pipe the output to `jq` to format the JSON response for easier reading:
@@ -228,105 +119,13 @@ Pipe the output to `jq` to format the JSON response for easier reading:
 Terminal window
 
 ```
-
-... | curl --silent \
-
-https://api.cloudflare.com/client/v4/graphql \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Accept: application/json" \
-
---header "Content-Type: application/json" \
-
---data @- | jq .
-
-
+... | curl --silent \https://api.cloudflare.com/client/v4/graphql \--header "Authorization: Bearer <API_TOKEN>" \--header "Accept: application/json" \--header "Content-Type: application/json" \--data @- | jq .
 ```
 
 ### Example response
 
 ```
-
-{
-
-  "data": {
-
-    "viewer": {
-
-      "accounts": [
-
-        {
-
-          "magicEndpointHealthCheckAdaptiveGroups": [
-
-            {
-
-              "count": 288,
-
-              "dimensions": {
-
-                "checkId": "90b478c7-bb51-4640-b94b-2c3050e9fa00",
-
-                "checkType": "icmp",
-
-                "datetimeFiveMinutes": "2026-01-21T12:00:00Z",
-
-                "endpoint": "103.21.244.100"
-
-              },
-
-              "sum": {
-
-                "failures": 0,
-
-                "total": 288
-
-              }
-
-            },
-
-            {
-
-              "count": 288,
-
-              "dimensions": {
-
-                "checkId": "90b478c7-bb51-4640-b94b-2c3050e9fa00",
-
-                "checkType": "icmp",
-
-                "datetimeFiveMinutes": "2026-01-21T12:05:00Z",
-
-                "endpoint": "103.21.244.100"
-
-              },
-
-              "sum": {
-
-                "failures": 2,
-
-                "total": 288
-
-              }
-
-            }
-
-          ]
-
-        }
-
-      ]
-
-    }
-
-  },
-
-  "errors": null
-
-}
-
-
+{  "data": {    "viewer": {      "accounts": [        {          "magicEndpointHealthCheckAdaptiveGroups": [            {              "count": 288,              "dimensions": {                "checkId": "90b478c7-bb51-4640-b94b-2c3050e9fa00",                "checkType": "icmp",                "datetimeFiveMinutes": "2026-01-21T12:00:00Z",                "endpoint": "103.21.244.100"              },              "sum": {                "failures": 0,                "total": 288              }            },            {              "count": 288,              "dimensions": {                "checkId": "90b478c7-bb51-4640-b94b-2c3050e9fa00",                "checkType": "icmp",                "datetimeFiveMinutes": "2026-01-21T12:05:00Z",                "endpoint": "103.21.244.100"              },              "sum": {                "failures": 2,                "total": 288              }            }          ]        }      ]    }  },  "errors": null}
 ```
 
 In this response, `sum.total` is the number of probes sent during the interval and `sum.failures` is the number that did not receive a reply. A `failures` value of `0` indicates the endpoint was fully reachable during that period.
@@ -340,43 +139,11 @@ You can set up alerts to be notified when the state of your endpoint's health is
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/account_id/diagnostics/endpoint-healthcheck" \
-
-  --request GET
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/account_id/diagnostics/endpoint-healthcheck" \  --request GET
 ```
 
 ```
-
-{
-
-    "result": [
-
-        {
-
-            "id": "<HEALTH_CHECK_ID>",
-
-            "check_type": "icmp",
-
-            "endpoint": "8.31.160.1",
-
-            "name": "Datacenter 1 - primary"
-
-        }
-
-    ],
-
-    "success": true,
-
-    "errors": [],
-
-    "messages": []
-
-}
-
-
+{    "result": [        {            "id": "<HEALTH_CHECK_ID>",            "check_type": "icmp",            "endpoint": "8.31.160.1",            "name": "Datacenter 1 - primary"        }    ],    "success": true,    "errors": [],    "messages": []}
 ```
 
 1. Take note of the `id` value for the endpoint you want to get alerts for.
@@ -387,9 +154,9 @@ curl "https://api.cloudflare.com/client/v4/accounts/account_id/diagnostics/endpo
 3. Select **Magic Endpoint Health Check Alert**.
 4. Provide a name for your new notification and optionally provide a description.
 5. In the _Service Level Objective (SLO)_ drop-down menu, select the SLO threshold for your notification. The SLO defines the percentage of endpoint health checks that must pass. If the number of passing endpoint health checks falls below the SLO, Cloudflare generates an alert:  
-   * **High** \- 99%  
-   * **Medium** \- 98%  
-   * **Low** \- 97%
+  * **High** \- 99%
+  * **Medium** \- 98%
+  * **Low** \- 97%
 6. In the drop-down menu below SLOs, select the `id` value that matches the `id` you got through the API in step 1\. This `id` should match the endpoint health check you want to get notifications for.
 7. Select your preferred notification method (such as email or webhooks).
 8. Select **Save**.

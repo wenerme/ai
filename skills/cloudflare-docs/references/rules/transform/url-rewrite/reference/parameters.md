@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,28 +28,7 @@ The maximum length of all parameter values in a URL rewrite (combined) is 4,096 
 The full syntax of the `action_parameters` field for a static URL rewrite rule that rewrites both the URI path and the query string is the following:
 
 ```
-
-"action_parameters": {
-
-  "uri": {
-
-    "path": {
-
-      "value": "<URI_PATH_VALUE>"
-
-    },
-
-    "query": {
-
-      "value": "<QUERY_STRING_VALUE>"
-
-    }
-
-  }
-
-}
-
-
+"action_parameters": {  "uri": {    "path": {      "value": "<URI_PATH_VALUE>"    },    "query": {      "value": "<QUERY_STRING_VALUE>"    }  }}
 ```
 
 If you are only rewriting the URI path or the query string, omit the `query` or `path` parameter, respectively.
@@ -59,28 +38,7 @@ If you are only rewriting the URI path or the query string, omit the `query` or 
 The full syntax of the `action_parameters` field for a dynamic URL rewrite rule that rewrites both the URI path and the query string is the following:
 
 ```
-
-"action_parameters": {
-
-  "uri": {
-
-    "path": {
-
-      "expression": "<URI_PATH_EXPRESSION>"
-
-    },
-
-    "query": {
-
-      "expression": "<QUERY_STRING_EXPRESSION>"
-
-    }
-
-  }
-
-}
-
-
+"action_parameters": {  "uri": {    "path": {      "expression": "<URI_PATH_EXPRESSION>"    },    "query": {      "expression": "<QUERY_STRING_EXPRESSION>"    }  }}
 ```
 
 If you are only rewriting the URI path or the query string, omit the `query` or `path` parameter, respectively.
@@ -90,38 +48,7 @@ If you are only rewriting the URI path or the query string, omit the `query` or 
 The syntax of a dynamic URL rewrite rule that rewrites both the URI path and the query string based on wildcard matching and replacement is the following:
 
 ```
-
-{
-
-  "expression": "(http.request.full_uri wildcard r\"<REQUEST_URL>\")",
-
-  "action_parameters": {
-
-    "uri": {
-
-      "path": {
-
-        "expression": "wildcard_replace(http.request.uri.path, r\"<PATH_TARGET_PATH>\", r\"<PATH_REWRITE_TO>\")"
-
-      },
-
-      "query": {
-
-        "expression": "wildcard_replace(http.request.uri.query, r\"<QUERY_TARGET_QUERY>\", r\"<QUERY_REWRITE_TO>\")"
-
-      }
-
-    }
-
-  },
-
-  "action": "rewrite"
-
-  // ...
-
-}
-
-
+{  "expression": "(http.request.full_uri wildcard r\"<REQUEST_URL>\")",  "action_parameters": {    "uri": {      "path": {        "expression": "wildcard_replace(http.request.uri.path, r\"<PATH_TARGET_PATH>\", r\"<PATH_REWRITE_TO>\")"      },      "query": {        "expression": "wildcard_replace(http.request.uri.query, r\"<QUERY_TARGET_QUERY>\", r\"<QUERY_REWRITE_TO>\")"      }    }  },  "action": "rewrite"  // ...}
 ```
 
 The `<REQUEST_URL>`, `<PATH_TARGET_PATH>`, `<PATH_REWRITE_TO>`, `<QUERY_TARGET_QUERY>`, and `<QUERY_REWRITE_TO>` value placeholders correspond to the fields available in the Cloudflare dashboard when you select the **Wildcard pattern** option. For more information, refer to [Wildcard pattern parameters](https://developers.cloudflare.com/rules/transform/url-rewrite/create-dashboard/#wildcard-pattern-parameters).
@@ -135,28 +62,7 @@ The `http.request.uri.query` field does not include the `?` delimiter at the beg
 The same rule can have different types of URL rewrites for the URI path and the query string. For example, a single rule can perform a **dynamic** URL rewrite of the URI path and a **static** URL rewrite of the query string. The syntax of such a rule would be the following:
 
 ```
-
-"action_parameters": {
-
-  "uri": {
-
-    "path": {
-
-      "expression": "<URI_PATH_EXPRESSION>"
-
-    },
-
-    "query": {
-
-      "value": "<QUERY_STRING_VALUE>"
-
-    }
-
-  }
-
-}
-
-
+"action_parameters": {  "uri": {    "path": {      "expression": "<URI_PATH_EXPRESSION>"    },    "query": {      "value": "<QUERY_STRING_VALUE>"    }  }}
 ```
 
 ```json

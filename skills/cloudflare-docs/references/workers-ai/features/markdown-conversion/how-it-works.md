@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,8 +25,8 @@ When we detect an HTML file, a series of things happen to the HTML content befor
 * [JSON-LD ↗](https://json-ld.org/) content is extracted, if it exists. This will be appended at the end of the converted markdown.
 * The base URL to use for resolving relative links is extracted from the `<base>` element1, if it exists, according to the spec (that is, only the first instance of the base URL is counted).
 * If the `cssSelector` option is:  
-   * present, then only those elements that match the selector are kept for further processing;  
-   * missing, then elements such as `<header>`, `<footer>` and `<head>` are removed from the text.
+  * present, then only those elements that match the selector are kept for further processing;
+  * missing, then elements such as `<header>`, `<footer>` and `<head>` are removed from the text.
 * If a base URL was obtained previously, relative links in the remaining HTML are resolved to fully qualified URLs
 
 1 The host can also be set per request, using the HTML conversion options. Refer to [Conversion Options](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/conversion-options/#html) for more details.

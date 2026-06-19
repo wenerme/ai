@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -53,8 +53,8 @@ For details, refer to [How Cloudflare calculates Tunnel health alerts](https://d
 
 ## Set up Tunnel Health Alerts
 
-* [ Dashboard ](#tab-panel-7364)
-* [ API ](#tab-panel-7365)
+* [ Dashboard ](#tab-panel-7440)
+* [ API ](#tab-panel-7441)
 
 1. Go to the **Notifications** page.  
 [ Go to **Notifications** ](https://dash.cloudflare.com/?to=/:account/notifications)
@@ -93,146 +93,18 @@ Send a [POST request](https://developers.cloudflare.com/api/resources/alerting/s
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Notifications Write`
 * `Account Settings Write`
 
 Create a Notification policy
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/alerting/v3/policies" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "alert_type": "magic_wan_tunnel_health",
-
-    "description": "<DESCRIBE_POLICY>",
-
-    "enabled": true,
-
-    "filters": {
-
-        "slo": [
-
-            "99.9"
-
-        ]
-
-    },
-
-    "mechanisms": {
-
-        "email": [
-
-            {
-
-                "id": "EMAIL_ADDRESS"
-
-            }
-
-        ]
-
-    },
-
-    "name": "<DESCRIBE_ALERT>"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/alerting/v3/policies" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "alert_type": "magic_wan_tunnel_health",    "description": "<DESCRIBE_POLICY>",    "enabled": true,    "filters": {        "slo": [            "99.9"        ]    },    "mechanisms": {        "email": [            {                "id": "EMAIL_ADDRESS"            }        ]    },    "name": "<DESCRIBE_ALERT>"  }'
 ```
 
 ```
-
-  {
-
-    "result": [
-
-      {
-
-        "id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-
-        "name": "<POLICY_NAME>",
-
-        "description": "<POLICY_DESCRIPTION>",
-
-        "enabled": true,
-
-        "alert_type": "magic_wan_tunnel_health",
-
-        "mechanisms": {
-
-          "email": [
-
-            {
-
-              "id": "<YOUR_EMAIL>"
-
-            }
-
-          ]
-
-        },
-
-        "created": "2024-09-11T14:13:29.585658Z",
-
-        "modified": "2024-09-11T14:13:29.585658Z",
-
-        "conditions": {
-
-          "and": [
-
-            {
-
-              "or": [
-
-                {
-
-                  "<=": [
-
-                    {
-
-                      "var": "slo"
-
-                    },
-
-                    "99.9"
-
-                  ]
-
-                }
-
-              ]
-
-            }
-
-          ]
-
-        },
-
-        "filters": {
-
-          "slo": ["99.9"]
-
-        }
-
-      }
-
-    ],
-
-    "success": true,
-
-    "errors": [],
-
-    "messages": []
-
-  }
-
-
+  {    "result": [      {        "id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",        "name": "<POLICY_NAME>",        "description": "<POLICY_DESCRIPTION>",        "enabled": true,        "alert_type": "magic_wan_tunnel_health",        "mechanisms": {          "email": [            {              "id": "<YOUR_EMAIL>"            }          ]        },        "created": "2024-09-11T14:13:29.585658Z",        "modified": "2024-09-11T14:13:29.585658Z",        "conditions": {          "and": [            {              "or": [                {                  "<=": [                    {                      "var": "slo"                    },                    "99.9"                  ]                }              ]            }          ]        },        "filters": {          "slo": ["99.9"]        }      }    ],    "success": true,    "errors": [],    "messages": []  }
 ```
 
 ## Test SLOs

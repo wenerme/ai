@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,15 +16,15 @@ To set an HTTP response header, overwriting any headers with the same name, use 
 
 * **operation**: `set`
 * Include one of the following parameters to define a static or dynamic value:  
-   * **value**: Specifies a static value for the HTTP response header.  
-   * **expression**: Specifies the expression that defines a value for the HTTP response header.
+  * **value**: Specifies a static value for the HTTP response header.
+  * **expression**: Specifies the expression that defines a value for the HTTP response header.
 
 To add an HTTP response header, keeping any existing headers with the same name, use the following parameters in the `action_parameters` field:
 
 * **operation**: `add`
 * Include one of the following parameters to define a static or dynamic value:  
-   * **value**: Specifies a static value for the HTTP response header.  
-   * **expression**: Specifies the expression that defines a value for the HTTP response header.
+  * **value**: Specifies a static value for the HTTP response header.
+  * **expression**: Specifies the expression that defines a value for the HTTP response header.
 
 To remove an HTTP response header, set the following parameter in the `action_parameters` field:
 
@@ -35,24 +35,7 @@ To remove an HTTP response header, set the following parameter in the `action_pa
 The full syntax of the `action_parameters` field to define a static HTTP response header value is the following:
 
 ```
-
-"action_parameters": {
-
-  "headers": {
-
-    "<HEADER_NAME>": {
-
-      "operation": "<set|add>",
-
-      "value": "<URI_PATH_VALUE>"
-
-    }
-
-  }
-
-}
-
-
+"action_parameters": {  "headers": {    "<HEADER_NAME>": {      "operation": "<set|add>",      "value": "<URI_PATH_VALUE>"    }  }}
 ```
 
 ## Dynamic header value parameters
@@ -60,24 +43,7 @@ The full syntax of the `action_parameters` field to define a static HTTP respons
 The full syntax of the `action_parameters` field to define a dynamic HTTP response header value using an expression is the following:
 
 ```
-
-"action_parameters": {
-
-  "headers": {
-
-    "<HEADER_NAME>": {
-
-      "operation": "<set|add>",
-
-      "expression": "<EXPRESSION>"
-
-    }
-
-  }
-
-}
-
-
+"action_parameters": {  "headers": {    "<HEADER_NAME>": {      "operation": "<set|add>",      "expression": "<EXPRESSION>"    }  }}
 ```
 
 Note
@@ -89,22 +55,7 @@ Check the [available fields and functions](https://developers.cloudflare.com/rul
 The full syntax of the `action_parameters` field to remove an HTTP response header is the following:
 
 ```
-
-"action_parameters": {
-
-  "headers": {
-
-    "<HEADER_NAME>": {
-
-      "operation": "remove"
-
-    }
-
-  }
-
-}
-
-
+"action_parameters": {  "headers": {    "<HEADER_NAME>": {      "operation": "remove"    }  }}
 ```
 
 ## Different header modifications in the same rule
@@ -112,30 +63,7 @@ The full syntax of the `action_parameters` field to remove an HTTP response head
 The same rule can modify different HTTP response headers using different operations. For example, a single rule can set the value of a header and remove a different header. The syntax of such a rule could be the following:
 
 ```
-
-"action_parameters": {
-
-  "headers": {
-
-    "<HEADER_NAME_1>": {
-
-      "operation": "set",
-
-      "value": "<HEADER_VALUE_1>"
-
-    },
-
-    "<HEADER_NAME_2>": {
-
-      "operation": "remove"
-
-    }
-
-  }
-
-}
-
-
+"action_parameters": {  "headers": {    "<HEADER_NAME_1>": {      "operation": "set",      "value": "<HEADER_VALUE_1>"    },    "<HEADER_NAME_2>": {      "operation": "remove"    }  }}
 ```
 
 ```json

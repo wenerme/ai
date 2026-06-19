@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/billing/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,12 +25,13 @@ Budget alerts are available to Pay-as-you-go accounts only. Enterprise contract 
 [ Go to **Billing** ](https://dash.cloudflare.com/?to=/:account/billing)
 3. Select **Billable Usage**.
 4. Select **Create budget alert**.
-5. Configure the alert:  
-| Field                      | Description                                                                                                                                                           |  
-| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |  
-| **Alert name**             | A descriptive name for the alert (for example, "R2 spend warning").                                                                                                   |  
-| **Description**            | _(Optional)_ A note about when this alert should fire.                                                                                                                |  
-| **Budget threshold (USD)** | The dollar amount that triggers the alert. When your cumulative usage-based spend for the current billing period crosses this value, Cloudflare sends a notification. |  
+5. Configure the alert:
+
+| Field                      | Description                                                                                                                                                           |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Alert name**             | A descriptive name for the alert (for example, "R2 spend warning").                                                                                                   |
+| **Description**            | _(Optional)_ A note about when this alert should fire.                                                                                                                |
+| **Budget threshold (USD)** | The dollar amount that triggers the alert. When your cumulative usage-based spend for the current billing period crosses this value, Cloudflare sends a notification. |
 | **Email recipients**       | One or more email addresses to notify. Select **Add email** to add additional recipients.                                                                             |
 6. Select **Save**.
 

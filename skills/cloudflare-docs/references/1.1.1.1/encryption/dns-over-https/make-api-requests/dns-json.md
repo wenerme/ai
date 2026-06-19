@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/1.1.1.1/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -38,59 +38,11 @@ Example request and response:
 Terminal window
 
 ```
-
 curl --header "accept: application/dns-json" "https://cloudflare-dns.com/dns-query?name=example.com&type=AAAA"
-
-
 ```
 
 ```
-
-{
-
-  "Status": 0,
-
-  "TC": false,
-
-  "RD": true,
-
-  "RA": true,
-
-  "AD": true,
-
-  "CD": false,
-
-  "Question": [
-
-    {
-
-      "name": "example.com.",
-
-      "type": 28
-
-    }
-
-  ],
-
-  "Answer": [
-
-    {
-
-      "name": "example.com.",
-
-      "type": 28,
-
-      "TTL": 1726,
-
-      "data": "2606:2800:220:1:248:1893:25c8:1946"
-
-    }
-
-  ]
-
-}
-
-
+{  "Status": 0,  "TC": false,  "RD": true,  "RA": true,  "AD": true,  "CD": false,  "Question": [    {      "name": "example.com.",      "type": 28    }  ],  "Answer": [    {      "name": "example.com.",      "type": 28,      "TTL": 1726,      "data": "2606:2800:220:1:248:1893:25c8:1946"    }  ]}
 ```
 
 In the case of an invalid request a `400 Bad Request` error is returned:
@@ -98,21 +50,11 @@ In the case of an invalid request a `400 Bad Request` error is returned:
 Terminal window
 
 ```
-
 curl --header "accept: application/dns-json" "https://cloudflare-dns.com/dns-query?name=example.com&cd=2"
-
-
 ```
 
 ```
-
-{
-
-  "error": "Invalid CD flag `2`. Expected to be empty or one of `0`, `false`, `1`, or `true`."
-
-}
-
-
+{  "error": "Invalid CD flag `2`. Expected to be empty or one of `0`, `false`, `1`, or `true`."}
 ```
 
 ## Response fields

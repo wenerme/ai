@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,103 +18,29 @@ To enable built-in Node.js APIs and polyfills, add the nodejs\_compat compatibil
 
 Use [node:timers ↗](https://nodejs.org/api/timers.html) APIs to schedule functions to be executed later.
 
-This includes [setTimeout ↗](https://nodejs.org/api/timers.html#settimeoutcallback-delay-args) for calling a function after a delay,[setInterval ↗](https://nodejs.org/api/timers.html#clearintervaltimeout) for calling a function repeatedly, and [setImmediate ↗](https://nodejs.org/api/timers.html#setimmediatecallback-args) for calling a function in the next iteration of the event loop.
+This includes [setTimeout ↗](https://nodejs.org/api/timers.html#settimeoutcallback-delay-args) for calling a function after a delay, [setInterval ↗](https://nodejs.org/api/timers.html#clearintervaltimeout) for calling a function repeatedly, and [setImmediate ↗](https://nodejs.org/api/timers.html#setimmediatecallback-args) for calling a function in the next iteration of the event loop.
 
-* [  JavaScript ](#tab-panel-12015)
-* [  TypeScript ](#tab-panel-12016)
+* [  JavaScript ](#tab-panel-12032)
+* [  TypeScript ](#tab-panel-12033)
 
 index.js
 
 ```
-
 import timers from "node:timers";
-
-
-export default {
-
-  async fetch() {
-
-    console.log("first");
-
-    const { promise: promise1, resolve: resolve1 } = Promise.withResolvers();
-
-    const { promise: promise2, resolve: resolve2 } = Promise.withResolvers();
-
-    timers.setTimeout(() => {
-
-      console.log("last");
-
-      resolve1();
-
-    }, 10);
-
-
-    timers.setTimeout(() => {
-
-      console.log("next");
-
-      resolve2();
-
-    });
-
-
+export default {  async fetch() {    console.log("first");    const { promise: promise1, resolve: resolve1 } = Promise.withResolvers();    const { promise: promise2, resolve: resolve2 } = Promise.withResolvers();    timers.setTimeout(() => {      console.log("last");      resolve1();    }, 10);
+    timers.setTimeout(() => {      console.log("next");      resolve2();    });
     await Promise.all([promise1, promise2]);
-
-
-    return new Response("ok");
-
-  },
-
-};
-
-
+    return new Response("ok");  },};
 ```
 
 index.ts
 
 ```
-
 import timers from "node:timers";
-
-
-export default {
-
-  async fetch(): Promise<Response> {
-
-    console.log("first");
-
-    const { promise: promise1, resolve: resolve1 } = Promise.withResolvers<void>();
-
-    const { promise: promise2, resolve: resolve2 } = Promise.withResolvers<void>();
-
-    timers.setTimeout(() => {
-
-      console.log("last");
-
-      resolve1();
-
-    }, 10);
-
-
-    timers.setTimeout(() => {
-
-      console.log("next");
-
-      resolve2();
-
-    });
-
-
+export default {  async fetch(): Promise<Response> {    console.log("first");    const { promise: promise1, resolve: resolve1 } = Promise.withResolvers<void>();    const { promise: promise2, resolve: resolve2 } = Promise.withResolvers<void>();    timers.setTimeout(() => {      console.log("last");      resolve1();    }, 10);
+    timers.setTimeout(() => {      console.log("next");      resolve2();    });
     await Promise.all([promise1, promise2]);
-
-
-    return new Response("ok");
-
-  }
-
-} satisfies ExportedHandler<Env>;
-
-
+    return new Response("ok");  }} satisfies ExportedHandler<Env>;
 ```
 
 Note

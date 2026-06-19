@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,35 +26,18 @@ A component that lets you create a poll.
 ### Basic Usage
 
 ```
-
 <rtk-poll-form></rtk-poll-form>
-
-
 ```
 
 ### With Properties
 
 ```
-
-<rtk-poll-form>
-
-</rtk-poll-form>
-
-
+<rtk-poll-form></rtk-poll-form>
 ```
 
 ```
-
-<script>
-
-  const el = document.querySelector("rtk-poll-form");
-
-
-  el.iconPack= defaultIconPack
-
-</script>
-
-
+<script>  const el = document.querySelector("rtk-poll-form");
+  el.iconPack= defaultIconPack</script>
 ```
 
 ```json

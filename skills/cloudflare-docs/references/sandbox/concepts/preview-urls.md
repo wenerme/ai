@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,21 +19,8 @@ For quick preview deployments we recommend using [Cloudflare Tunnel ↗](https:/
 TypeScript
 
 ```
-
-await sandbox.startProcess("python -m http.server 8000");
-
-const tunnel = await sandbox.tunnels.get(8000);
-
-console.log(tunnel.url);
-
-// https://acute-llama-dancing-roundly.trycloudflare.app
-
-
-// Request will be routed directly to the webserver running on the sandbox.
-
-const req = await fetch(`${tunnel.url}/api/users`); // => GET http://localhost:8000/api/users
-
-
+await sandbox.startProcess("python -m http.server 8000");const tunnel = await sandbox.tunnels.get(8000);console.log(tunnel.url);// https://acute-llama-dancing-roundly.trycloudflare.app
+// Request will be routed directly to the webserver running on the sandbox.const req = await fetch(`${tunnel.url}/api/users`); // => GET http://localhost:8000/api/users
 ```
 
 Cloudflare Tunnel support currently has the following limitations:
@@ -61,24 +48,9 @@ Preview URLs provide public HTTPS access to services running inside sandboxes. W
 TypeScript
 
 ```
-
-// Extract hostname from request
-
-const { hostname } = new URL(request.url);
-
-
-await sandbox.startProcess("python -m http.server 8000");
-
-const exposed = await sandbox.exposePort(8000, { hostname });
-
-
-console.log(exposed.url);
-
-// Production: https://8000-sandbox-id-abc123random4567.yourdomain.com
-
-// Local dev: http://8000-sandbox-id-abc123random4567.localhost:{port}/
-
-
+// Extract hostname from requestconst { hostname } = new URL(request.url);
+await sandbox.startProcess("python -m http.server 8000");const exposed = await sandbox.exposePort(8000, { hostname });
+console.log(exposed.url);// Production: https://8000-sandbox-id-abc123random4567.yourdomain.com// Local dev: http://8000-sandbox-id-abc123random4567.localhost:{port}/
 ```
 
 ## URL Format
@@ -99,12 +71,7 @@ When no custom token is specified, a random 16-character token is generated:
 TypeScript
 
 ```
-
-const exposed = await sandbox.exposePort(8000, { hostname });
-
-// https://8000-sandbox-id-abc123random4567.yourdomain.com
-
-
+const exposed = await sandbox.exposePort(8000, { hostname });// https://8000-sandbox-id-abc123random4567.yourdomain.com
 ```
 
 URLs with auto-generated tokens change when you unexpose and re-expose a port.
@@ -116,20 +83,7 @@ For production deployments or shared URLs, specify a custom token to maintain co
 TypeScript
 
 ```
-
-const stable = await sandbox.exposePort(8000, {
-
-  hostname,
-
-  token: "api_v1",
-
-});
-
-// https://8000-sandbox-id-api_v1.yourdomain.com
-
-// Same URL every time ✓
-
-
+const stable = await sandbox.exposePort(8000, {  hostname,  token: "api_v1",});// https://8000-sandbox-id-api_v1.yourdomain.com// Same URL every time ✓
 ```
 
 **Token requirements:**
@@ -154,20 +108,7 @@ Preview URLs extract the sandbox ID from the hostname to route requests. Since h
 TypeScript
 
 ```
-
-// Problem scenario
-
-const sandbox = getSandbox(env.Sandbox, "MyProject-123");
-
-// Durable Object ID: "MyProject-123"
-
-await sandbox.exposePort(8080, { hostname });
-
-// Preview URL: 8080-myproject-123-token123.yourdomain.com
-
-// Routes to: "myproject-123" (different DO - doesn't exist!)
-
-
+// Problem scenarioconst sandbox = getSandbox(env.Sandbox, "MyProject-123");// Durable Object ID: "MyProject-123"await sandbox.exposePort(8080, { hostname });// Preview URL: 8080-myproject-123-token123.yourdomain.com// Routes to: "myproject-123" (different DO - doesn't exist!)
 ```
 
 **The solution**: Use `normalizeId: true` to lowercase IDs when creating sandboxes:
@@ -175,20 +116,7 @@ await sandbox.exposePort(8080, { hostname });
 TypeScript
 
 ```
-
-const sandbox = getSandbox(env.Sandbox, "MyProject-123", {
-
-  normalizeId: true,
-
-});
-
-// Durable Object ID: "myproject-123" (lowercased)
-
-// Preview URL: 8080-myproject-123-token123.yourdomain.com
-
-// Routes to: "myproject-123" (same DO - works!)
-
-
+const sandbox = getSandbox(env.Sandbox, "MyProject-123", {  normalizeId: true,});// Durable Object ID: "myproject-123" (lowercased)// Preview URL: 8080-myproject-123-token123.yourdomain.com// Routes to: "myproject-123" (same DO - works!)
 ```
 
 Without `normalizeId: true`, `exposePort()` throws an error when the ID contains uppercase letters.
@@ -202,33 +130,10 @@ You must call `proxyToSandbox()` first in your Worker's fetch handler to route p
 TypeScript
 
 ```
-
 import { proxyToSandbox, getSandbox } from "@cloudflare/sandbox";
-
-
 export { Sandbox } from "@cloudflare/sandbox";
-
-
-export default {
-
-  async fetch(request, env) {
-
-    // Handle preview URL routing first
-
-    const proxyResponse = await proxyToSandbox(request, env);
-
-    if (proxyResponse) return proxyResponse;
-
-
-    // Your application routes
-
-    // ...
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    // Handle preview URL routing first    const proxyResponse = await proxyToSandbox(request, env);    if (proxyResponse) return proxyResponse;
+    // Your application routes    // ...  },};
 ```
 
 Requests flow: Browser → Your Worker → Durable Object (sandbox) → Your Service.
@@ -240,29 +145,10 @@ Expose multiple services simultaneously:
 TypeScript
 
 ```
-
-// Extract hostname from request
-
-const { hostname } = new URL(request.url);
-
-
-await sandbox.startProcess("node api.js"); // Port 3000
-
-await sandbox.startProcess("node admin.js"); // Port 3001
-
-
-const api = await sandbox.exposePort(3000, { hostname, name: "api" });
-
-const admin = await sandbox.exposePort(3001, { hostname, name: "admin" });
-
-
-// Each gets its own URL with unique tokens:
-
-// https://3000-abc123-random16chars01.yourdomain.com
-
-// https://3001-abc123-random16chars02.yourdomain.com
-
-
+// Extract hostname from requestconst { hostname } = new URL(request.url);
+await sandbox.startProcess("node api.js"); // Port 3000await sandbox.startProcess("node admin.js"); // Port 3001
+const api = await sandbox.exposePort(3000, { hostname, name: "api" });const admin = await sandbox.exposePort(3001, { hostname, name: "admin" });
+// Each gets its own URL with unique tokens:// https://3000-abc123-random16chars01.yourdomain.com// https://3001-abc123-random16chars02.yourdomain.com
 ```
 
 ## What Works
@@ -287,39 +173,10 @@ Preview URLs support WebSocket connections. When a WebSocket upgrade request hit
 TypeScript
 
 ```
-
-// Extract hostname from request
-
-const { hostname } = new URL(request.url);
-
-
-// Start a WebSocket server
-
-await sandbox.startProcess("bun run ws-server.ts 8080");
-
-const { url } = await sandbox.exposePort(8080, { hostname });
-
-
-// Clients connect using WebSocket protocol
-
-// Browser: new WebSocket('wss://8080-abc123-token123.yourdomain.com')
-
-
-// Your Worker routes automatically
-
-export default {
-
-  async fetch(request, env) {
-
-    const proxyResponse = await proxyToSandbox(request, env);
-
-    if (proxyResponse) return proxyResponse;
-
-  },
-
-};
-
-
+// Extract hostname from requestconst { hostname } = new URL(request.url);
+// Start a WebSocket serverawait sandbox.startProcess("bun run ws-server.ts 8080");const { url } = await sandbox.exposePort(8080, { hostname });
+// Clients connect using WebSocket protocol// Browser: new WebSocket('wss://8080-abc123-token123.yourdomain.com')
+// Your Worker routes automaticallyexport default {  async fetch(request, env) {    const proxyResponse = await proxyToSandbox(request, env);    if (proxyResponse) return proxyResponse;  },};
 ```
 
 For custom routing scenarios where your Worker needs to control which sandbox or port to connect to based on request properties, see `wsConnect()` in the [Ports API](https://developers.cloudflare.com/sandbox/api/ports/#wsconnect).
@@ -344,28 +201,9 @@ For additional security, implement authentication within your application:
 Python
 
 ```
-
 from flask import Flask, request, abort
-
-
 app = Flask(__name__)
-
-
-@app.route('/data')
-
-def get_data():
-
-    # Check for your own authentication token
-
-    auth_token = request.headers.get('Authorization')
-
-    if auth_token != 'Bearer your-secret-token':
-
-        abort(401)
-
-    return {'data': 'protected'}
-
-
+@app.route('/data')def get_data():    # Check for your own authentication token    auth_token = request.headers.get('Authorization')    if auth_token != 'Bearer your-secret-token':        abort(401)    return {'data': 'protected'}
 ```
 
 This adds a second layer of security on top of the URL token.
@@ -379,29 +217,10 @@ Check if service is running and listening:
 TypeScript
 
 ```
-
-// 1. Is service running?
-
-const processes = await sandbox.listProcesses();
-
-
-// 2. Is port exposed?
-
-const ports = await sandbox.getExposedPorts();
-
-
-// 3. Is service binding to 0.0.0.0 (not 127.0.0.1)?
-
-// Good:
-
-app.run((host = "0.0.0.0"), (port = 3000));
-
-
-// Bad (localhost only):
-
-app.run((host = "127.0.0.1"), (port = 3000));
-
-
+// 1. Is service running?const processes = await sandbox.listProcesses();
+// 2. Is port exposed?const ports = await sandbox.getExposedPorts();
+// 3. Is service binding to 0.0.0.0 (not 127.0.0.1)?// Good:app.run((host = "0.0.0.0"), (port = 3000));
+// Bad (localhost only):app.run((host = "127.0.0.1"), (port = 3000));
 ```
 
 ### Production Errors
@@ -415,17 +234,8 @@ Local development limitation
 When using `wrangler dev`, you must expose ports in your Dockerfile:
 
 ```
-
 FROM docker.io/cloudflare/sandbox:0.3.3
-
-
-# Required for local development
-
-EXPOSE 3000
-
-EXPOSE 8080
-
-
+# Required for local developmentEXPOSE 3000EXPOSE 8080
 ```
 
 Without `EXPOSE`, you'll see: `connect(): Connection refused: container port not found`

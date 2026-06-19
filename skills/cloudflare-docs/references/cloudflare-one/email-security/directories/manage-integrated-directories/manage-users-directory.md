@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -66,18 +66,18 @@ To filter the impersonation registry:
 
 1. Select **Show filters** \> **Impersonation registry**.
 2. Choose one of the following:  
-   * **All**: To view registered and unregistered users.  
-   * **Registered**: To view registered users.  
-   * **Unregistered**: To view unregistered users.
+  * **All**: To view registered and unregistered users.
+  * **Registered**: To view registered users.
+  * **Unregistered**: To view unregistered users.
 3. Select **Apply filters**.
 
 To filter users:
 
 1. Select **Show filters** \> **Users**.
 2. Choose one of the following:  
-   * **All**: To view users in groups and not in groups.  
-   * **Users in groups**: To view users in groups.  
-   * **Users not in groups**: To view users not in groups.
+  * **All**: To view users in groups and not in groups.
+  * **Users in groups**: To view users in groups.
+  * **Users not in groups**: To view users not in groups.
 3. Select **Apply filters**.
 
 ```json

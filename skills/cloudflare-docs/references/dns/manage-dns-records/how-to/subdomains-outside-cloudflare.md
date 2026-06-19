@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,9 +26,9 @@ Cloudflare's CDN and security services are not applied to delegated subdomains.
 
 ## Availability
 
-| Free         | Pro | Business | Enterprise |     |
-| ------------ | --- | -------- | ---------- | --- |
-| Availability | Yes | Yes      | Yes        | Yes |
+|              | Free | Pro | Business | Enterprise |
+| ------------ | ---- | --- | -------- | ---------- |
+| Availability | Yes  | Yes | Yes      | Yes        |
 
 ---
 
@@ -40,10 +40,11 @@ To delegate a subdomain such as `blog.example.com`, tell DNS resolvers where to 
 2. Select the domain that contains the subdomain to be delegated.
 3. Go to the **DNS Records** page.  
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
-4. Create `NS` records for the subdomain. For example:  
-   * `blog.example.com NS ns1.externalhost.com`  
-   * `blog.example.com NS ns2.externalhost.com`  
-   * `blog.example.com NS ns3.externalhost.com`  
+4. Create `NS` records for the subdomain. For example:
+
+  * `blog.example.com NS ns1.externalhost.com`
+  * `blog.example.com NS ns2.externalhost.com`
+  * `blog.example.com NS ns3.externalhost.com`  
 Note  
 The `A` records for the subdomain are only required as glue records for nameservers that are located in the subdomain of the current zone that is being delegated.
 5. (Optional) If the delegated nameserver has DNSSEC enabled, [add the DS record](https://developers.cloudflare.com/dns/dnssec/#1-activate-dnssec-in-cloudflare) in Cloudflare.

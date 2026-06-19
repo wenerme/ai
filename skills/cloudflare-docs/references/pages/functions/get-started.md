@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,14 +33,7 @@ Copy and paste the following code into a `helloworld.js` file that you create in
 JavaScript
 
 ```
-
-export function onRequest(context) {
-
-  return new Response("Hello, world!");
-
-}
-
-
+export function onRequest(context) {  return new Response("Hello, world!");}
 ```
 
 In the above example code, the `onRequest` handler takes a request [context](https://developers.cloudflare.com/pages/functions/api-reference/#eventcontext) object. The handler must return a `Response` or a `Promise` of a `Response`.

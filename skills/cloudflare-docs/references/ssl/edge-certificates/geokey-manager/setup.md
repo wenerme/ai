@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -36,66 +36,28 @@ Store private keys in the E.U. and the U.S.
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Access: Mutual TLS Certificates Write`
 * `SSL and Certificates Write`
 
 Create SSL Configuration
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_certificates" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "certificate": "certificate",
-
-    "private_key": "<PRIVATE_KEY>",
-
-    "policy": "(country: US) and (region: EU)",
-
-    "type": "sni_custom"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_certificates" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "certificate": "certificate",    "private_key": "<PRIVATE_KEY>",    "policy": "(country: US) and (region: EU)",    "type": "sni_custom"  }'
 ```
 
 Store private keys in the E.U., but not in France
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Access: Mutual TLS Certificates Write`
 * `SSL and Certificates Write`
 
 Create SSL Configuration
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_certificates" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "certificate": "certificate",
-
-    "private_key": "<PRIVATE_KEY>",
-
-    "policy": "(region: EU) and (not country: FR)",
-
-    "type": "sni_custom"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_certificates" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "certificate": "certificate",    "private_key": "<PRIVATE_KEY>",    "policy": "(region: EU) and (not country: FR)",    "type": "sni_custom"  }'
 ```
 
 Note
@@ -106,17 +68,17 @@ For more information on the `policy` field, refer to [Supported options](https:/
 
 The first version of Geo Key Manager supports 3 regions: U.S., E.U., and a set of High Security Data Centers. If you would like to restrict your private key to another country or region, [apply for the closed beta ↗](https://www.cloudflare.com/lp/geo-key-manager/) of the new version.
 
-* [ Dashboard ](#tab-panel-10612)
-* [ API ](#tab-panel-10613)
+* [ Dashboard ](#tab-panel-10688)
+* [ API ](#tab-panel-10689)
 
 To use Geo Key Manager in the dashboard:
 
 1. Follow the steps to [upload a custom certificate](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/#upload-a-custom-certificate).
 2. For **Private Key Restriction**, choose one of the following options:  
-   * **Distribute to all Cloudflare data centers (optimal performance)**  
-   * **Distribute only to U.S. data centers**  
-   * **Distribute only to E.U. data centers**  
-   * **Distribute only to highest security data centers** ([more details](https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/supported-options/#highest-security-data-centers))
+  * **Distribute to all Cloudflare data centers (optimal performance)**
+  * **Distribute only to U.S. data centers**
+  * **Distribute only to E.U. data centers**
+  * **Distribute only to highest security data centers** ([more details](https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/supported-options/#highest-security-data-centers))
 3. Select **Upload Custom Certificate**.
 
 To use Geo Key Manager with the API, generally, follow the steps to [upload a custom certificate](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/#upload-a-custom-certificate).

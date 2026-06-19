@@ -5,7 +5,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -14,17 +14,17 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 This consists of the metadata of the meeting, such as the room name and the title.
 
 * [RTKMeta](#module%5FRTKMeta)  
-   * [module.exports](#exp%5Fmodule%5FRTKMeta--module.exports) ⏏  
-         * [new module.exports(context, self, viewType, roomSocketHandler, meetingTitle)](#new%5Fmodule%5FRTKMeta--module.exports%5Fnew)  
-         * [.selfActiveTab](#module%5FRTKMeta--module.exports+selfActiveTab)  
-         * [.broadcastTabChanges](#module%5FRTKMeta--module.exports+broadcastTabChanges)  
-         * [.viewType](#module%5FRTKMeta--module.exports+viewType)  
-         * [.meetingStartedTimestamp](#module%5FRTKMeta--module.exports+meetingStartedTimestamp)  
-         * [.meetingTitle](#module%5FRTKMeta--module.exports+meetingTitle)  
-         * [.sessionId](#module%5FRTKMeta--module.exports+sessionId)  
-         * [.meetingId](#module%5FRTKMeta--module.exports+meetingId)  
-         * [.setBroadcastTabChanges(broadcastTabChanges)](#module%5FRTKMeta--module.exports+setBroadcastTabChanges)  
-         * [.setSelfActiveTab(spotlightTab, tabChangeSource)](#module%5FRTKMeta--module.exports+setSelfActiveTab)
+  * [module.exports](#exp%5Fmodule%5FRTKMeta--module.exports) ⏏  
+    * [new module.exports(context, self, viewType, roomSocketHandler, meetingTitle)](#new%5Fmodule%5FRTKMeta--module.exports%5Fnew)
+    * [.selfActiveTab](#module%5FRTKMeta--module.exports+selfActiveTab)
+    * [.broadcastTabChanges](#module%5FRTKMeta--module.exports+broadcastTabChanges)
+    * [.viewType](#module%5FRTKMeta--module.exports+viewType)
+    * [.meetingStartedTimestamp](#module%5FRTKMeta--module.exports+meetingStartedTimestamp)
+    * [.meetingTitle](#module%5FRTKMeta--module.exports+meetingTitle)
+    * [.sessionId](#module%5FRTKMeta--module.exports+sessionId)
+    * [.meetingId](#module%5FRTKMeta--module.exports+meetingId)
+    * [.setBroadcastTabChanges(broadcastTabChanges)](#module%5FRTKMeta--module.exports+setBroadcastTabChanges)
+    * [.setSelfActiveTab(spotlightTab, tabChangeSource)](#module%5FRTKMeta--module.exports+setSelfActiveTab)
 
 ### module.exports ⏏
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-network-firewall/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,9 +27,9 @@ To add a policy:
 1. In the Cloudflare dashboard, go to the [Firewall Policies ↗](https://dash.cloudflare.com/?to=/:account/network-security/magic%5Ffirewall) page.
 2. Select the **Rate limiting** tab, then select **Add a policy**.
 3. Fill out the information for your new policy:  
-   * Select the **Field**: At the moment, you can only choose a [colo name ↗](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/cloudflare-network-firewall/).  
-   * Select the **Operator**: Choose among **equals** or **is in**.  
-   * Select the **Value**.
+  * Select the **Field**: At the moment, you can only choose a [colo name ↗](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/cloudflare-network-firewall/).
+  * Select the **Operator**: Choose among **equals** or **is in**.
+  * Select the **Value**.
 4. When you are done, select **Save policy**.
 
 ## Edit an existing policy

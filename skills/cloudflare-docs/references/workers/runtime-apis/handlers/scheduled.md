@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,224 +23,94 @@ You can test the behavior of your `scheduled()` handler in local development by 
 Terminal window
 
 ```
-
 curl "http://localhost:8787/cdn-cgi/handler/scheduled?format=json"
-
-
 ```
 
 ---
 
 ## Syntax
 
-* [  JavaScript ](#tab-panel-11991)
-* [  TypeScript ](#tab-panel-11992)
-* [  Python ](#tab-panel-11993)
+* [  JavaScript ](#tab-panel-12008)
+* [  TypeScript ](#tab-panel-12009)
+* [  Python ](#tab-panel-12010)
 
 JavaScript
 
 ```
-
-export default {
-
-  async scheduled(controller, env, ctx) {
-
-    await doSomeTaskOnASchedule();
-
-  },
-
-};
-
-
+export default {  async scheduled(controller, env, ctx) {    await doSomeTaskOnASchedule();  },};
 ```
 
 TypeScript
 
 ```
-
-interface Env {}
-
-export default {
-
-  async scheduled(
-
-    controller: ScheduledController,
-
-    env: Env,
-
-    ctx: ExecutionContext,
-
-  ) {
-
-    await doSomeTaskOnASchedule();
-
-  },
-
-};
-
-
+interface Env {}export default {  async scheduled(    controller: ScheduledController,    env: Env,    ctx: ExecutionContext,  ) {    await doSomeTaskOnASchedule();  },};
 ```
 
 Python
 
 ```
-
 from workers import WorkerEntrypoint, Response, fetch
-
-
-class Default(WorkerEntrypoint):
-
-    async def scheduled(self, controller, env, ctx):
-
-        await doSomeTaskOnASchedule()
-
-
+class Default(WorkerEntrypoint):    async def scheduled(self, controller, env, ctx):        await doSomeTaskOnASchedule()
 ```
 
 ### Properties
 
-* `controller.cron` string  
-   * The value of the [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/) that started the `ScheduledEvent`.
-* `controller.type` string  
-   * The type of controller. This will always return `"scheduled"`.
-* `controller.scheduledTime` number  
-   * The time the `ScheduledEvent` was scheduled to be executed in milliseconds since January 1, 1970, UTC. It can be parsed as `new Date(controller.scheduledTime)`.
-* `env` object  
-   * An object containing the bindings associated with your Worker using ES modules format, such as KV namespaces and Durable Objects.
-* `ctx` object  
-   * An object containing the context associated with your Worker using ES modules format. Currently, this object just contains the `waitUntil` function.
+* `controller.cron` string
+
+  * The value of the [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/) that started the `ScheduledEvent`.
+* `controller.type` string
+
+  * The type of controller. This will always return `"scheduled"`.
+* `controller.scheduledTime` number
+
+  * The time the `ScheduledEvent` was scheduled to be executed in milliseconds since January 1, 1970, UTC. It can be parsed as `new Date(controller.scheduledTime)`.
+* `env` object
+
+  * An object containing the bindings associated with your Worker using ES modules format, such as KV namespaces and Durable Objects.
+* `ctx` object
+
+  * An object containing the context associated with your Worker using ES modules format. Currently, this object just contains the `waitUntil` function.
 
 ### Handle multiple cron triggers
 
 When you configure multiple [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/) for a single Worker, each trigger invokes the same `scheduled()` handler. Use `controller.cron` to distinguish which schedule fired and run different logic for each.
 
-* [  wrangler.jsonc ](#tab-panel-11997)
-* [  wrangler.toml ](#tab-panel-11998)
+* [  wrangler.jsonc ](#tab-panel-12014)
+* [  wrangler.toml ](#tab-panel-12015)
 
 JSONC
 
 ```
-
-{
-
-  "triggers": {
-
-    "crons": ["*/5 * * * *", "0 0 * * *"],
-
-  },
-
-}
-
-
+{  "triggers": {    "crons": ["*/5 * * * *", "0 0 * * *"],  },}
 ```
 
 TOML
 
 ```
-
-[triggers]
-
-crons = [ "*/5 * * * *", "0 0 * * *" ]
-
-
+[triggers]crons = [ "*/5 * * * *", "0 0 * * *" ]
 ```
 
-* [  JavaScript ](#tab-panel-11994)
-* [  TypeScript ](#tab-panel-11995)
-* [  Python ](#tab-panel-11996)
+* [  JavaScript ](#tab-panel-12011)
+* [  TypeScript ](#tab-panel-12012)
+* [  Python ](#tab-panel-12013)
 
 JavaScript
 
 ```
-
-export default {
-
-  async scheduled(controller, env, ctx) {
-
-    switch (controller.cron) {
-
-      case "*/5 * * * *":
-
-        await fetch("https://example.com/api/sync");
-
-        break;
-
-      case "0 0 * * *":
-
-        await env.MY_KV.put("last-cleanup", new Date().toISOString());
-
-        break;
-
-    }
-
-  },
-
-};
-
-
+export default {  async scheduled(controller, env, ctx) {    switch (controller.cron) {      case "*/5 * * * *":        await fetch("https://example.com/api/sync");        break;      case "0 0 * * *":        await env.MY_KV.put("last-cleanup", new Date().toISOString());        break;    }  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  async scheduled(
-
-    controller: ScheduledController,
-
-    env: Env,
-
-    ctx: ExecutionContext,
-
-  ) {
-
-    switch (controller.cron) {
-
-      case "*/5 * * * *":
-
-        await fetch("https://example.com/api/sync");
-
-        break;
-
-      case "0 0 * * *":
-
-        await env.MY_KV.put("last-cleanup", new Date().toISOString());
-
-        break;
-
-    }
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export default {  async scheduled(    controller: ScheduledController,    env: Env,    ctx: ExecutionContext,  ) {    switch (controller.cron) {      case "*/5 * * * *":        await fetch("https://example.com/api/sync");        break;      case "0 0 * * *":        await env.MY_KV.put("last-cleanup", new Date().toISOString());        break;    }  },} satisfies ExportedHandler<Env>;
 ```
 
 Python
 
 ```
-
-from workers import WorkerEntrypoint, fetch
-
-from datetime import datetime, timezone
-
-
-class Default(WorkerEntrypoint):
-
-    async def scheduled(self, controller, env, ctx):
-
-        if controller.cron == "*/5 * * * *":
-
-            await fetch("https://example.com/api/sync")
-
-        elif controller.cron == "0 0 * * *":
-
-            await env.MY_KV.put("last-cleanup", datetime.now(timezone.utc).isoformat())
-
-
+from workers import WorkerEntrypoint, fetchfrom datetime import datetime, timezone
+class Default(WorkerEntrypoint):    async def scheduled(self, controller, env, ctx):        if controller.cron == "*/5 * * * *":            await fetch("https://example.com/api/sync")        elif controller.cron == "0 0 * * *":            await env.MY_KV.put("last-cleanup", datetime.now(timezone.utc).isoformat())
 ```
 
 The value of `controller.cron` is the exact cron expression string from your configuration. It must match character-for-character, including spacing.
@@ -253,7 +123,7 @@ When a Workers script is invoked by a [Cron Trigger](https://developers.cloudfla
 
 Note
 
-The runtime waits for the promise returned by the `scheduled()` handler to resolve (up to the 15-minute duration limit). You do not need to use`waitUntil()` for the runtime to wait for a single asynchronous task.`waitUntil()` is most useful when you need to run multiple concurrent tasks, or when you want the outcome of a specific promise to be recorded as the Cron Trigger invocation status.
+The runtime waits for the promise returned by the `scheduled()` handler to resolve (up to the 15-minute duration limit). You do not need to use `waitUntil()` for the runtime to wait for a single asynchronous task. `waitUntil()` is most useful when you need to run multiple concurrent tasks, or when you want the outcome of a specific promise to be recorded as the Cron Trigger invocation status.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/#page","headline":"Scheduled Handler · Cloudflare Workers docs","description":"Run Workers on a recurring schedule using the scheduled() handler and Cron Triggers.","url":"https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

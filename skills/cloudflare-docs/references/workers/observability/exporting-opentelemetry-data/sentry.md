@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -65,8 +65,8 @@ To configure your traces destination, click **Add destination** and configure th
 * **Destination Type**: Select **Traces**
 * **OTLP Endpoint**: Your Sentry OTLP traces endpoint (e.g., `https://{HOST}/api/{PROJECT_ID}/integration/otlp/v1/traces`)
 * **Custom Headers**: Add the Sentry authentication header:  
-   * Header name: `x-sentry-auth`  
-   * Header value: `sentry sentry_key={SENTRY_PUBLIC_KEY}` where `{SENTRY_PUBLIC_KEY}` is your Sentry project's public key
+  * Header name: `x-sentry-auth`
+  * Header value: `sentry sentry_key={SENTRY_PUBLIC_KEY}` where `{SENTRY_PUBLIC_KEY}` is your Sentry project's public key
 
 ### Logs destination
 
@@ -76,69 +76,27 @@ To configure your logs destination, click **Add destination** and configure the 
 * **Destination Type**: Select **Logs**
 * **OTLP Endpoint**: Your Sentry OTLP logs endpoint (e.g., `https://{HOST}/api/{PROJECT_ID}/integration/otlp/v1/logs`)
 * **Custom Headers**: Add the Sentry authentication header:  
-   * Header name: `x-sentry-auth`  
-   * Header value: `sentry sentry_key={SENTRY_PUBLIC_KEY}` where `{SENTRY_PUBLIC_KEY}` is your Sentry project's public key
+  * Header name: `x-sentry-auth`
+  * Header value: `sentry sentry_key={SENTRY_PUBLIC_KEY}` where `{SENTRY_PUBLIC_KEY}` is your Sentry project's public key
 
 ## Step 4: Configure your Worker
 
 With your destinations created in the Cloudflare dashboard, update your Worker's configuration to enable telemetry export.
 
-* [  wrangler.jsonc ](#tab-panel-11850)
-* [  wrangler.toml ](#tab-panel-11851)
+* [  wrangler.jsonc ](#tab-panel-11867)
+* [  wrangler.toml ](#tab-panel-11868)
 
 JSONC
 
 ```
-
-{
-
-  "observability": {
-
-    "traces": {
-
-      "enabled": true,
-
-      // Must match the destination name in the dashboard
-
-      "destinations": ["sentry-traces"]
-
-    },
-
-    "logs": {
-
-      "enabled": true,
-
-      // Must match the destination name in the dashboard
-
-      "destinations": ["sentry-logs"]
-
-    }
-
-  }
-
-}
-
-
+{  "observability": {    "traces": {      "enabled": true,      // Must match the destination name in the dashboard      "destinations": ["sentry-traces"]    },    "logs": {      "enabled": true,      // Must match the destination name in the dashboard      "destinations": ["sentry-logs"]    }  }}
 ```
 
 TOML
 
 ```
-
-[observability.traces]
-
-enabled = true
-
-destinations = [ "sentry-traces" ]
-
-
-[observability.logs]
-
-enabled = true
-
-destinations = [ "sentry-logs" ]
-
-
+[observability.traces]enabled = truedestinations = [ "sentry-traces" ]
+[observability.logs]enabled = truedestinations = [ "sentry-logs" ]
 ```
 
 After updating your configuration, deploy your Worker for the changes to take effect.

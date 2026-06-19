@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,45 +29,15 @@ Leave meeting confirmation dialog with options to leave or end the meeting for a
 ### Basic Usage
 
 ```
-
 import { RtkLeaveMeeting } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkLeaveMeeting meeting={meeting} onClose={() => setOpen(false)} />;
-
-}
-
-
+function MyComponent() {  return <RtkLeaveMeeting meeting={meeting} onClose={() => setOpen(false)} />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkLeaveMeeting } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkLeaveMeeting
-
-      meeting={meeting}
-
-      onClose={() => setOpen(false)}
-
-      states={states}
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkLeaveMeeting      meeting={meeting}      onClose={() => setOpen(false)}      states={states}    />  );}
 ```
 
 ```json

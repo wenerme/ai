@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -78,15 +78,15 @@ Before your migration, you should:
 
 1. To test validation methods, set up a test zone and ask your account team to enable SSL for SaaS v2.
 2. Wait for your account team to run our pre-migration tool. This tool groups your hostnames into one of the following statuses:  
-   * `test_pending`: In the process of being verified or was unable to be verified and re-queued for verification. A custom hostname will be re-queued 25 times before moving to the `test_failed` status.  
-   * `test_active`: Passed CNAME verification  
-   * `test_active_apex`: Passed Apex Proxy verification  
-   * `test_blocked`: Hostname will be blocked during the migration because hostname belongs to a banned zone. Contact your account team to verify banned custom hostnames and proceed with the migration.  
-   * `test_failed`: Failed hostname verification 25 times
+  * `test_pending`: In the process of being verified or was unable to be verified and re-queued for verification. A custom hostname will be re-queued 25 times before moving to the `test_failed` status.
+  * `test_active`: Passed CNAME verification
+  * `test_active_apex`: Passed Apex Proxy verification
+  * `test_blocked`: Hostname will be blocked during the migration because hostname belongs to a banned zone. Contact your account team to verify banned custom hostnames and proceed with the migration.
+  * `test_failed`: Failed hostname verification 25 times
 3. Review the results of our pre-migration tool (run by your account team) using one of the following methods:  
-   * Via the API: `https://api.cloudflare.com/client/v4/zones/{zone_tag}/custom_hostnames?hostname_status={status}`  
-   * Via a CSV file (provided by your account team)  
-   * Via the Cloudflare dashboard:![Review SSL migration status in the dashboard](https://developers.cloudflare.com/_astro/ssl-migration-status.CLPmua84_25MgVb.webp)
+  * Via the API: `https://api.cloudflare.com/client/v4/zones/{zone_tag}/custom_hostnames?hostname_status={status}`
+  * Via a CSV file (provided by your account team)
+  * Via the Cloudflare dashboard: ![Review SSL migration status in the dashboard](https://developers.cloudflare.com/_astro/ssl-migration-status.CLPmua84_25MgVb.webp)
 4. Approve the migration. Your account team will work with you to schedule a migration window for each of your SSL for SaaS zones.
 
 ## During the migration

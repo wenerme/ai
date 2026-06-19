@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,9 +31,10 @@ To create a [SYN flood rule](https://developers.cloudflare.com/ddos-protection/a
 1. In the Cloudflare dashboard, go to the **L3/4 DDoS protection** page.  
 [ Go to **DDoS Managed Rules** ](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
 2. Go to **Advanced Protection** \> **Advanced TCP Protection**.
-3. Depending on the rule you are creating, do one of the following:  
-   * Under **SYN Flood Protection**, select **Create SYN flood rule**.  
-   * Under **Out-of-state TCP Protection**, select **Create out-of-state TCP rule**.
+3. Depending on the rule you are creating, do one of the following:
+
+  * Under **SYN Flood Protection**, select **Create SYN flood rule**.
+  * Under **Out-of-state TCP Protection**, select **Create out-of-state TCP rule**.
 4. In **Mode**, select a [mode](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#mode) for the rule.
 5. Under **Set scope**, select a [scope](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#scope) for the rule. If you choose to apply the rule to a subset of incoming packets, select a region or a data center.
 6. Under **Sensitivity**, define the [burst sensitivity](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#burst-sensitivity) and [rate sensitivity](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#rate-sensitivity) of the rule (by default, _Medium_). The sensitivity levels are based on the initially configured thresholds for your specific case.

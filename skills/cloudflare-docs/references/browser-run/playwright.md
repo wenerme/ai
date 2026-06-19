@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -54,68 +54,20 @@ Note
 
 To use the latest version of `@cloudflare/playwright`, your Worker configuration must include the `nodejs_compat` compatibility flag and a `compatibility_date` of 2025-09-15 or later. This change is necessary because the library's functionality requires the native `node.fs` API.
 
-* [  wrangler.jsonc ](#tab-panel-6890)
-* [  wrangler.toml ](#tab-panel-6891)
+* [  wrangler.jsonc ](#tab-panel-6966)
+* [  wrangler.toml ](#tab-panel-6967)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "cloudflare-playwright-example",
-
-  "main": "src/index.ts",
-
-  "workers_dev": true,
-
-  "compatibility_flags": ["nodejs_compat"],
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "upload_source_maps": true,
-
-  "browser": {
-
-    "binding": "MYBROWSER",
-
-  },
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "cloudflare-playwright-example",  "main": "src/index.ts",  "workers_dev": true,  "compatibility_flags": ["nodejs_compat"],  // Set this to today's date  "compatibility_date": "2026-06-18",  "upload_source_maps": true,  "browser": {    "binding": "MYBROWSER",  },}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "cloudflare-playwright-example"
-
-main = "src/index.ts"
-
-workers_dev = true
-
-compatibility_flags = [ "nodejs_compat" ]
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-upload_source_maps = true
-
-
-[browser]
-
-binding = "MYBROWSER"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "cloudflare-playwright-example"main = "src/index.ts"workers_dev = truecompatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-06-18"upload_source_maps = true
+[browser]binding = "MYBROWSER"
 ```
 
 Install the npm package:
@@ -147,64 +99,13 @@ Using browser automation to take screenshots of web pages is a common use case. 
 TypeScript
 
 ```
-
 import { launch } from "@cloudflare/playwright";
-
-
-export default {
-
-  async fetch(request: Request, env: Env) {
-
-    const browser = await launch(env.MYBROWSER);
-
-    const page = await browser.newPage();
-
-
+export default {  async fetch(request: Request, env: Env) {    const browser = await launch(env.MYBROWSER);    const page = await browser.newPage();
     await page.goto("https://demo.playwright.dev/todomvc");
-
-
-    const TODO_ITEMS = [
-
-      "buy some cheese",
-
-      "feed the cat",
-
-      "book a doctors appointment",
-
-    ];
-
-
-    const newTodo = page.getByPlaceholder("What needs to be done?");
-
-    for (const item of TODO_ITEMS) {
-
-      await newTodo.fill(item);
-
-      await newTodo.press("Enter");
-
-    }
-
-
-    const img = await page.screenshot();
-
-    await browser.close();
-
-
-    return new Response(img, {
-
-      headers: {
-
-        "Content-Type": "image/png",
-
-      },
-
-    });
-
-  },
-
-};
-
-
+    const TODO_ITEMS = [      "buy some cheese",      "feed the cat",      "book a doctors appointment",    ];
+    const newTodo = page.getByPlaceholder("What needs to be done?");    for (const item of TODO_ITEMS) {      await newTodo.fill(item);      await newTodo.press("Enter");    }
+    const img = await page.screenshot();    await browser.close();
+    return new Response(img, {      headers: {        "Content-Type": "image/png",      },    });  },};
 ```
 
 ### Trace
@@ -216,77 +117,14 @@ Here's an example of a worker generating a trace file:
 TypeScript
 
 ```
-
-import fs from "fs";
-
-import { launch } from "@cloudflare/playwright";
-
-
-export default {
-
-  async fetch(request: Request, env: Env) {
-
-    const browser = await launch(env.MYBROWSER);
-
-    const page = await browser.newPage();
-
-
-    // Start tracing before navigating to the page
-
-    await page.context().tracing.start({ screenshots: true, snapshots: true });
-
-
+import fs from "fs";import { launch } from "@cloudflare/playwright";
+export default {  async fetch(request: Request, env: Env) {    const browser = await launch(env.MYBROWSER);    const page = await browser.newPage();
+    // Start tracing before navigating to the page    await page.context().tracing.start({ screenshots: true, snapshots: true });
     await page.goto("https://demo.playwright.dev/todomvc");
-
-
-    const TODO_ITEMS = [
-
-      "buy some cheese",
-
-      "feed the cat",
-
-      "book a doctors appointment",
-
-    ];
-
-
-    const newTodo = page.getByPlaceholder("What needs to be done?");
-
-    for (const item of TODO_ITEMS) {
-
-      await newTodo.fill(item);
-
-      await newTodo.press("Enter");
-
-    }
-
-
-    // Stop tracing and save the trace to a zip file
-
-    await page.context().tracing.stop({ path: "trace.zip" });
-
-    await browser.close();
-
-    const file = await fs.promises.readFile("trace.zip");
-
-
-    return new Response(file, {
-
-      status: 200,
-
-      headers: {
-
-        "Content-Type": "application/zip",
-
-      },
-
-    });
-
-  },
-
-};
-
-
+    const TODO_ITEMS = [      "buy some cheese",      "feed the cat",      "book a doctors appointment",    ];
+    const newTodo = page.getByPlaceholder("What needs to be done?");    for (const item of TODO_ITEMS) {      await newTodo.fill(item);      await newTodo.press("Enter");    }
+    // Stop tracing and save the trace to a zip file    await page.context().tracing.stop({ path: "trace.zip" });    await browser.close();    const file = await fs.promises.readFile("trace.zip");
+    return new Response(file, {      status: 200,      headers: {        "Content-Type": "application/zip",      },    });  },};
 ```
 
 ### Assertions
@@ -296,64 +134,13 @@ One of the most common use cases for using Playwright is software testing. Playw
 TypeScript
 
 ```
-
-import { launch } from "@cloudflare/playwright";
-
-import { expect } from "@cloudflare/playwright/test";
-
-
-export default {
-
-  async fetch(request: Request, env: Env) {
-
-    const browser = await launch(env.MYBROWSER);
-
-    const page = await browser.newPage();
-
-
+import { launch } from "@cloudflare/playwright";import { expect } from "@cloudflare/playwright/test";
+export default {  async fetch(request: Request, env: Env) {    const browser = await launch(env.MYBROWSER);    const page = await browser.newPage();
     await page.goto("https://demo.playwright.dev/todomvc");
-
-
-    const TODO_ITEMS = [
-
-      "buy some cheese",
-
-      "feed the cat",
-
-      "book a doctors appointment",
-
-    ];
-
-
-    const newTodo = page.getByPlaceholder("What needs to be done?");
-
-    for (const item of TODO_ITEMS) {
-
-      await newTodo.fill(item);
-
-      await newTodo.press("Enter");
-
-    }
-
-
+    const TODO_ITEMS = [      "buy some cheese",      "feed the cat",      "book a doctors appointment",    ];
+    const newTodo = page.getByPlaceholder("What needs to be done?");    for (const item of TODO_ITEMS) {      await newTodo.fill(item);      await newTodo.press("Enter");    }
     await expect(page.getByTestId("todo-title")).toHaveCount(TODO_ITEMS.length);
-
-
-    await Promise.all(
-
-      TODO_ITEMS.map((value, index) =>
-
-        expect(page.getByTestId("todo-title").nth(index)).toHaveText(value),
-
-      ),
-
-    );
-
-  },
-
-};
-
-
+    await Promise.all(      TODO_ITEMS.map((value, index) =>        expect(page.getByTestId("todo-title").nth(index)).toHaveText(value),      ),    );  },};
 ```
 
 ### Storage state
@@ -365,83 +152,26 @@ First, ensure you have a KV namespace. You can create a new one with:
 Terminal window
 
 ```
-
 npx wrangler kv namespace create KV
-
-
 ```
 
 Then, add the KV namespace to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-6892)
-* [  wrangler.toml ](#tab-panel-6893)
+* [  wrangler.jsonc ](#tab-panel-6968)
+* [  wrangler.toml ](#tab-panel-6969)
 
 JSONC
 
 ```
-
-{
-
-  "name": "storage-state-examples",
-
-  "main": "src/index.ts",
-
-  "compatibility_flags": ["nodejs_compat"],
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "browser": {
-
-    "binding": "MYBROWSER",
-
-  },
-
-  "kv_namespaces": [
-
-    {
-
-      "binding": "KV",
-
-      "id": "<YOUR-KV-NAMESPACE-ID>",
-
-    },
-
-  ],
-
-}
-
-
+{  "name": "storage-state-examples",  "main": "src/index.ts",  "compatibility_flags": ["nodejs_compat"],  // Set this to today's date  "compatibility_date": "2026-06-18",  "browser": {    "binding": "MYBROWSER",  },  "kv_namespaces": [    {      "binding": "KV",      "id": "<YOUR-KV-NAMESPACE-ID>",    },  ],}
 ```
 
 TOML
 
 ```
-
-name = "storage-state-examples"
-
-main = "src/index.ts"
-
-compatibility_flags = [ "nodejs_compat" ]
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[browser]
-
-binding = "MYBROWSER"
-
-
-[[kv_namespaces]]
-
-binding = "KV"
-
-id = "<YOUR-KV-NAMESPACE-ID>"
-
-
+name = "storage-state-examples"main = "src/index.ts"compatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-06-18"
+[browser]binding = "MYBROWSER"
+[[kv_namespaces]]binding = "KV"id = "<YOUR-KV-NAMESPACE-ID>"
 ```
 
 Now, you can use the storage state to persist cookies and other storage data in KV:
@@ -449,45 +179,12 @@ Now, you can use the storage state to persist cookies and other storage data in 
 src/index.ts
 
 ```
-
-// gets persisted storage state from KV or undefined if it does not exist
-
-const storageStateJson = await env.KV.get("storageState");
-
-const storageState = storageStateJson
-
-  ? ((await JSON.parse(
-
-      storageStateJson,
-
-    )) as BrowserContextOptions["storageState"])
-
-  : undefined;
-
-
-await using browser = await launch(env.MYBROWSER);
-
-// creates a new context with storage state persisted in KV
-
-await using context = await browser.newContext({ storageState });
-
-
+// gets persisted storage state from KV or undefined if it does not existconst storageStateJson = await env.KV.get("storageState");const storageState = storageStateJson  ? ((await JSON.parse(      storageStateJson,    )) as BrowserContextOptions["storageState"])  : undefined;
+await using browser = await launch(env.MYBROWSER);// creates a new context with storage state persisted in KVawait using context = await browser.newContext({ storageState });
 await using page = await context.newPage();
-
-
 // do some actions on the page that may update client-side storage
-
-
-// gets updated storage state: cookies, localStorage, and IndexedDB
-
-const updatedStorageState = await context.storageState({ indexedDB: true });
-
-
-// persists updated storage state in KV
-
-await env.KV.put("storageState", JSON.stringify(updatedStorageState));
-
-
+// gets updated storage state: cookies, localStorage, and IndexedDBconst updatedStorageState = await context.storageState({ indexedDB: true });
+// persists updated storage state in KVawait env.KV.put("storageState", JSON.stringify(updatedStorageState));
 ```
 
 ### Keep Alive
@@ -497,10 +194,7 @@ If users omit the `browser.close()` statement, the browser instance will stay op
 JavaScript
 
 ```
-
 const browser = await playwright.launch(env.MYBROWSER, { keep_alive: 600000 });
-
-
 ```
 
 Using the above, the browser will stay open for up to 10 minutes, even if inactive.
@@ -516,38 +210,11 @@ The best way to improve the performance of your Browser Run Worker is to reuse s
 JavaScript
 
 ```
-
-import { env } from "cloudflare:workers";
-
-import { acquire, connect } from "@cloudflare/playwright";
-
-
-async function reuseSameSession() {
-
-  // acquires a new session
-
-  const { sessionId } = await acquire(env.BROWSER);
-
-
-  for (let i = 0; i < 5; i++) {
-
-    // connects to the session that was previously acquired
-
-    const browser = await connect(env.BROWSER, sessionId);
-
-
+import { env } from "cloudflare:workers";import { acquire, connect } from "@cloudflare/playwright";
+async function reuseSameSession() {  // acquires a new session  const { sessionId } = await acquire(env.BROWSER);
+  for (let i = 0; i < 5; i++) {    // connects to the session that was previously acquired    const browser = await connect(env.BROWSER, sessionId);
     // ...
-
-
-    // this will disconnect the browser from the session, but the session will be kept alive
-
-    await browser.close();
-
-  }
-
-}
-
-
+    // this will disconnect the browser from the session, but the session will be kept alive    await browser.close();  }}
 ```
 
 ### Set a custom user agent
@@ -557,16 +224,7 @@ To specify a custom user agent in Playwright, set it in the options when creatin
 JavaScript
 
 ```
-
-const context = await browser.newContext({
-
-  userAgent:
-
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
-
-});
-
-
+const context = await browser.newContext({  userAgent:    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",});
 ```
 
 Note
@@ -580,10 +238,7 @@ When developing locally with `wrangler dev` or `vite dev`, Chrome runs in headle
 Terminal window
 
 ```
-
 X_BROWSER_HEADFUL=true npx wrangler dev
-
-
 ```
 
 Or with the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/):
@@ -591,10 +246,7 @@ Or with the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/v
 Terminal window
 
 ```
-
 X_BROWSER_HEADFUL=true npx vite dev
-
-
 ```
 
 This opens a browser window so you can watch your Playwright automation in real time, making it easier to debug navigation, element selection, and page interactions.
@@ -612,32 +264,7 @@ In order to facilitate browser session management, we have extended the Playwrig
 `playwright.sessions()` lists the current running sessions. It will return an output similar to this:
 
 ```
-
-[
-
-  {
-
-    "connectionId": "2a2246fa-e234-4dc1-8433-87e6cee80145",
-
-    "connectionStartTime": 1711621704607,
-
-    "sessionId": "478f4d7d-e943-40f6-a414-837d3736a1dc",
-
-    "startTime": 1711621703708
-
-  },
-
-  {
-
-    "sessionId": "565e05fb-4d2a-402b-869b-5b65b1381db7",
-
-    "startTime": 1711621703808
-
-  }
-
-]
-
-
+[  {    "connectionId": "2a2246fa-e234-4dc1-8433-87e6cee80145",    "connectionStartTime": 1711621704607,    "sessionId": "478f4d7d-e943-40f6-a414-837d3736a1dc",    "startTime": 1711621703708  },  {    "sessionId": "565e05fb-4d2a-402b-869b-5b65b1381db7",    "startTime": 1711621703808  }]
 ```
 
 Notice that the session `478f4d7d-e943-40f6-a414-837d3736a1dc` has an active worker connection (`connectionId=2a2246fa-e234-4dc1-8433-87e6cee80145`), while session `565e05fb-4d2a-402b-869b-5b65b1381db7` is free. While a connection is active, no other workers may connect to that session.
@@ -647,40 +274,7 @@ Notice that the session `478f4d7d-e943-40f6-a414-837d3736a1dc` has an active wor
 `playwright.history()` lists recent sessions, both open and closed. It is useful to get a sense of your current usage.
 
 ```
-
-[
-
-  {
-
-    "closeReason": 2,
-
-    "closeReasonText": "BrowserIdle",
-
-    "endTime": 1711621769485,
-
-    "sessionId": "478f4d7d-e943-40f6-a414-837d3736a1dc",
-
-    "startTime": 1711621703708
-
-  },
-
-  {
-
-    "closeReason": 1,
-
-    "closeReasonText": "NormalClosure",
-
-    "endTime": 1711123501771,
-
-    "sessionId": "2be00a21-9fb6-4bb2-9861-8cd48e40e771",
-
-    "startTime": 1711123430918
-
-  }
-
-]
-
-
+[  {    "closeReason": 2,    "closeReasonText": "BrowserIdle",    "endTime": 1711621769485,    "sessionId": "478f4d7d-e943-40f6-a414-837d3736a1dc",    "startTime": 1711621703708  },  {    "closeReason": 1,    "closeReasonText": "NormalClosure",    "endTime": 1711123501771,    "sessionId": "2be00a21-9fb6-4bb2-9861-8cd48e40e771",    "startTime": 1711123430918  }]
 ```
 
 Session `2be00a21-9fb6-4bb2-9861-8cd48e40e771` was closed explicitly with `browser.close()` by the client, while session `478f4d7d-e943-40f6-a414-837d3736a1dc` was closed due to reaching the maximum idle time (check [limits](https://developers.cloudflare.com/browser-run/limits/)).
@@ -692,26 +286,7 @@ You should also be able to access this information in the dashboard, albeit with
 `playwright.limits()` lists your active limits:
 
 ```
-
-{
-
-  "activeSessions": [
-
-    { "id": "478f4d7d-e943-40f6-a414-837d3736a1dc" },
-
-    { "id": "565e05fb-4d2a-402b-869b-5b65b1381db7" }
-
-  ],
-
-  "allowedBrowserAcquisitions": 1,
-
-  "maxConcurrentSessions": 2,
-
-  "timeUntilNextAllowedBrowserAcquisition": 0
-
-}
-
-
+{  "activeSessions": [    { "id": "478f4d7d-e943-40f6-a414-837d3736a1dc" },    { "id": "565e05fb-4d2a-402b-869b-5b65b1381db7" }  ],  "allowedBrowserAcquisitions": 1,  "maxConcurrentSessions": 2,  "timeUntilNextAllowedBrowserAcquisition": 0}
 ```
 
 * `activeSessions` lists the IDs of the current open sessions.

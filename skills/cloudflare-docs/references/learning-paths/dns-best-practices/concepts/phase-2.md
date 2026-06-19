@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -38,13 +38,13 @@ Use Cloudflare's **Import and Export** feature (under **DNS** \> **Records**) to
 
 [ Go to **Account home** ](https://dash.cloudflare.com/?to=/:account/home) 
 * Verification (Crucial):  
-   * After import, meticulously compare the records in Cloudflare with your BIND zone files or a `dig` output of your current zone.  
-   * Pay close attention to `MX` records, `SRV` records, `TXT` records (especially for `SPF`, `DKIM`, `DMARC`), and any complex `CNAME` configurations.  
-   * Ensure FQDNs (Fully Qualified Domain Names) are correctly formatted (Cloudflare usually handles the trailing dot correctly on import, but verify).
+  * After import, meticulously compare the records in Cloudflare with your BIND zone files or a `dig` output of your current zone.
+  * Pay close attention to `MX` records, `SRV` records, `TXT` records (especially for `SPF`, `DKIM`, `DMARC`), and any complex `CNAME` configurations.
+  * Ensure FQDNs (Fully Qualified Domain Names) are correctly formatted (Cloudflare usually handles the trailing dot correctly on import, but verify).
 * Proxy status (orange vs grey cloud):  
-   * For `A`, `AAAA`, and `CNAME` records that point to HTTP or HTTPS services you want to proxy through Cloudflare (for example, websites and APIs), you can enable the orange cloud to use Cloudflare CDN and security features.  
-   * Some services and ports are not supported behind the proxy, and certain record types (for example, `MX` targets and many non-HTTP services) must remain **DNS only**. For a detailed list, refer to [Proxy status and limitations](https://developers.cloudflare.com/dns/proxy-status/limitations/).  
-   * Recommendation for initial migration: To isolate the DNS migration from potential proxy-related issues, consider setting all records to **DNS only** (grey cloud) initially. After you confirm that DNS resolution is working correctly, enable the proxy (orange cloud) for specific HTTP(S) records and test again.
+  * For `A`, `AAAA`, and `CNAME` records that point to HTTP or HTTPS services you want to proxy through Cloudflare (for example, websites and APIs), you can enable the orange cloud to use Cloudflare CDN and security features.
+  * Some services and ports are not supported behind the proxy, and certain record types (for example, `MX` targets and many non-HTTP services) must remain **DNS only**. For a detailed list, refer to [Proxy status and limitations](https://developers.cloudflare.com/dns/proxy-status/limitations/).
+  * Recommendation for initial migration: To isolate the DNS migration from potential proxy-related issues, consider setting all records to **DNS only** (grey cloud) initially. After you confirm that DNS resolution is working correctly, enable the proxy (orange cloud) for specific HTTP(S) records and test again.
 
 ## 5\. DNSSEC preparation (if currently enabled)
 

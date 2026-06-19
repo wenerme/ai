@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/vectorize/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -51,10 +51,7 @@ For example, a vector embedding representing an image could include the path to 
 TypeScript
 
 ```
-
 { id: '1', values: [32.4, 74.1, 3.2, ...], metadata: { path: 'r2://bucket-name/path/to/image.png', format: 'png', category: 'profile_image' } }
-
-
 ```
 
 ### Performance Tips When Filtering by Metadata
@@ -86,53 +83,8 @@ To insert vectors with a namespace:
 TypeScript
 
 ```
-
-// Mock vectors
-
-// Vectors from a machine-learning model are typically ~100 to 1536 dimensions
-
-// wide (or wider still).
-
-const sampleVectors: Array<VectorizeVector> = [
-
-  {
-
-    id: "1",
-
-    values: [32.4, 74.1, 3.2, ...],
-
-    namespace: "text",
-
-  },
-
-  {
-
-    id: "2",
-
-    values: [15.1, 19.2, 15.8, ...],
-
-    namespace: "images",
-
-  },
-
-  {
-
-    id: "3",
-
-    values: [0.16, 1.2, 3.8, ...],
-
-    namespace: "pdfs",
-
-  },
-
-];
-
-
-// Insert your vectors, returning a count of the vectors inserted and their vector IDs.
-
-let inserted = await env.TUTORIAL_INDEX.insert(sampleVectors);
-
-
+// Mock vectors// Vectors from a machine-learning model are typically ~100 to 1536 dimensions// wide (or wider still).const sampleVectors: Array<VectorizeVector> = [  {    id: "1",    values: [32.4, 74.1, 3.2, ...],    namespace: "text",  },  {    id: "2",    values: [15.1, 19.2, 15.8, ...],    namespace: "images",  },  {    id: "3",    values: [0.16, 1.2, 3.8, ...],    namespace: "pdfs",  },];
+// Insert your vectors, returning a count of the vectors inserted and their vector IDs.let inserted = await env.TUTORIAL_INDEX.insert(sampleVectors);
 ```
 
 To query vectors within a namespace:
@@ -140,16 +92,7 @@ To query vectors within a namespace:
 TypeScript
 
 ```
-
-// Your queryVector will be searched against vectors within the namespace (only)
-
-let matches = await env.TUTORIAL_INDEX.query(queryVector, {
-
-  namespace: "images",
-
-});
-
-
+// Your queryVector will be searched against vectors within the namespace (only)let matches = await env.TUTORIAL_INDEX.query(queryVector, {  namespace: "images",});
 ```
 
 ## Improve Write Throughput
@@ -171,53 +114,8 @@ Use the `insert()` and `upsert()` methods available on an index from within a Cl
 TypeScript
 
 ```
-
-// Mock vectors
-
-// Vectors from a machine-learning model are typically ~100 to 1536 dimensions
-
-// wide (or wider still).
-
-const sampleVectors: Array<VectorizeVector> = [
-
-  {
-
-    id: "1",
-
-    values: [32.4, 74.1, 3.2, ...],
-
-    metadata: { url: "/products/sku/13913913" },
-
-  },
-
-  {
-
-    id: "2",
-
-    values: [15.1, 19.2, 15.8, ...],
-
-    metadata: { url: "/products/sku/10148191" },
-
-  },
-
-  {
-
-    id: "3",
-
-    values: [0.16, 1.2, 3.8, ...],
-
-    metadata: { url: "/products/sku/97913813" },
-
-  },
-
-];
-
-
-// Insert your vectors, returning a count of the vectors inserted and their vector IDs.
-
-let inserted = await env.TUTORIAL_INDEX.insert(sampleVectors);
-
-
+// Mock vectors// Vectors from a machine-learning model are typically ~100 to 1536 dimensions// wide (or wider still).const sampleVectors: Array<VectorizeVector> = [  {    id: "1",    values: [32.4, 74.1, 3.2, ...],    metadata: { url: "/products/sku/13913913" },  },  {    id: "2",    values: [15.1, 19.2, 15.8, ...],    metadata: { url: "/products/sku/10148191" },  },  {    id: "3",    values: [0.16, 1.2, 3.8, ...],    metadata: { url: "/products/sku/97913813" },  },];
+// Insert your vectors, returning a count of the vectors inserted and their vector IDs.let inserted = await env.TUTORIAL_INDEX.insert(sampleVectors);
 ```
 
 Refer to [Vectorize API](https://developers.cloudflare.com/vectorize/reference/client-api/) for additional examples.
@@ -236,14 +134,7 @@ You can bulk upload vector embeddings directly:
 An example NDJSON formatted file:
 
 ```
-
-{ "id": "4444", "values": [175.1, 167.1, 129.9], "metadata": {"url": "/products/sku/918318313"}}
-
-{ "id": "5555", "values": [158.8, 116.7, 311.4], "metadata": {"url": "/products/sku/183183183"}}
-
-{ "id": "6666", "values": [113.2, 67.5, 11.2], "metadata": {"url": "/products/sku/717313811"}}
-
-
+{ "id": "4444", "values": [175.1, 167.1, 129.9], "metadata": {"url": "/products/sku/918318313"}}{ "id": "5555", "values": [158.8, 116.7, 311.4], "metadata": {"url": "/products/sku/183183183"}}{ "id": "6666", "values": [113.2, 67.5, 11.2], "metadata": {"url": "/products/sku/717313811"}}
 ```
 
 Wrangler version 3.71.0 required
@@ -253,10 +144,7 @@ Vectorize V2 requires [wrangler](https://developers.cloudflare.com/workers/wrang
 Terminal window
 
 ```
-
 wrangler vectorize insert <your-index-name> --file=embeddings.ndjson
-
-
 ```
 
 ### HTTP API
@@ -268,27 +156,10 @@ For example, to insert embeddings in [NDJSON format](#workers-api) directly from
 Python
 
 ```
-
 import requests
-
-
 url = "https://api.cloudflare.com/client/v4/accounts/{}/vectorize/v2/indexes/{}/insert".format("your-account-id", "index-name")
-
-
-headers = {
-
-    "Authorization": "Bearer <your-api-token>"
-
-}
-
-
-with open('embeddings.ndjson', 'rb') as embeddings:
-
-    resp = requests.post(url, headers=headers, files=dict(vectors=embeddings))
-
-    print(resp)
-
-
+headers = {    "Authorization": "Bearer <your-api-token>"}
+with open('embeddings.ndjson', 'rb') as embeddings:    resp = requests.post(url, headers=headers, files=dict(vectors=embeddings))    print(resp)
 ```
 
 This code would insert the vectors defined in `embeddings.ndjson` into the provided index. Python libraries, including Pandas, also support the NDJSON format via the built-in `read_json` method:
@@ -296,12 +167,7 @@ This code would insert the vectors defined in `embeddings.ndjson` into the provi
 Python
 
 ```
-
-import pandas as pd
-
-data = pd.read_json('embeddings.ndjson', lines=True)
-
-
+import pandas as pddata = pd.read_json('embeddings.ndjson', lines=True)
 ```
 
 ```json

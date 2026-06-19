@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -36,21 +36,8 @@ A name tag view that displays the participant name and a microphone status icon.
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let nameTag = RtkMeetingNameTag(
-
-    meeting: rtkClient,
-
-    participant: participant
-
-)
-
-view.addSubview(nameTag)
-
-
+let nameTag = RtkMeetingNameTag(    meeting: rtkClient,    participant: participant)view.addSubview(nameTag)
 ```
 
 ### Update participant
@@ -58,28 +45,9 @@ view.addSubview(nameTag)
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let nameTag = RtkMeetingNameTag(
-
-    meeting: rtkClient,
-
-    participant: participant
-
-)
-
-view.addSubview(nameTag)
-
-
-// Switch to a different participant
-
-nameTag.set(participant: newParticipant)
-
-nameTag.refresh()
-
-
+let nameTag = RtkMeetingNameTag(    meeting: rtkClient,    participant: participant)view.addSubview(nameTag)
+// Switch to a different participantnameTag.set(participant: newParticipant)nameTag.refresh()
 ```
 
 ```json

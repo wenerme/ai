@@ -13,7 +13,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,78 +29,21 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ## Mocking Outbound `fetch` Requests
 
-When using the API, Miniflare allows you to substitute custom `Response`s for`fetch()` calls using `undici`'s[MockAgent API ↗](https://undici.nodejs.org/#/docs/api/MockAgent?id=mockagentgetorigin). This is useful for testing Workers that make HTTP requests to other services. To enable `fetch` mocking, create a[MockAgent ↗](https://undici.nodejs.org/#/docs/api/MockAgent?id=mockagentgetorigin)using the `createFetchMock()` function, then set this using the `fetchMock`option.
+When using the API, Miniflare allows you to substitute custom `Response`s for `fetch()` calls using `undici`'s [MockAgent API ↗](https://undici.nodejs.org/#/docs/api/MockAgent?id=mockagentgetorigin). This is useful for testing Workers that make HTTP requests to other services. To enable `fetch` mocking, create a [MockAgent ↗](https://undici.nodejs.org/#/docs/api/MockAgent?id=mockagentgetorigin)using the `createFetchMock()` function, then set this using the `fetchMock`option.
 
 JavaScript
 
 ```
-
 import { Miniflare, createFetchMock } from "miniflare";
-
-
-// Create `MockAgent` and connect it to the `Miniflare` instance
-
-const fetchMock = createFetchMock();
-
-const mf = new Miniflare({
-
-  modules: true,
-
-  script: `
-
-  export default {
-
-    async fetch(request, env, ctx) {
-
-      const res = await fetch("https://example.com/thing");
-
-      const text = await res.text();
-
-      return new Response(\`response:\${text}\`);
-
-    }
-
-  }
-
-  `,
-
-  fetchMock,
-
-});
-
-
-// Throw when no matching mocked request is found
-
-// (see https://undici.nodejs.org/#/docs/api/MockAgent?id=mockagentdisablenetconnect)
-
-fetchMock.disableNetConnect();
-
-
-// Mock request to https://example.com/thing
-
-// (see https://undici.nodejs.org/#/docs/api/MockAgent?id=mockagentgetorigin)
-
-const origin = fetchMock.get("https://example.com");
-
-// (see https://undici.nodejs.org/#/docs/api/MockPool?id=mockpoolinterceptoptions)
-
-origin
-
-  .intercept({ method: "GET", path: "/thing" })
-
-  .reply(200, "Mocked response!");
-
-
-const res = await mf.dispatchFetch("http://localhost:8787/");
-
-console.log(await res.text()); // "response:Mocked response!"
-
-
+// Create `MockAgent` and connect it to the `Miniflare` instanceconst fetchMock = createFetchMock();const mf = new Miniflare({  modules: true,  script: `  export default {    async fetch(request, env, ctx) {      const res = await fetch("https://example.com/thing");      const text = await res.text();      return new Response(\`response:\${text}\`);    }  }  `,  fetchMock,});
+// Throw when no matching mocked request is found// (see https://undici.nodejs.org/#/docs/api/MockAgent?id=mockagentdisablenetconnect)fetchMock.disableNetConnect();
+// Mock request to https://example.com/thing// (see https://undici.nodejs.org/#/docs/api/MockAgent?id=mockagentgetorigin)const origin = fetchMock.get("https://example.com");// (see https://undici.nodejs.org/#/docs/api/MockPool?id=mockpoolinterceptoptions)origin  .intercept({ method: "GET", path: "/thing" })  .reply(200, "Mocked response!");
+const res = await mf.dispatchFetch("http://localhost:8787/");console.log(await res.text()); // "response:Mocked response!"
 ```
 
 ## Subrequests
 
-Miniflare does not support limiting the amount of[subrequests](https://developers.cloudflare.com/workers/platform/limits#account-plan-limits). Please keep this in mind if you make a large amount of subrequests from your Worker.
+Miniflare does not support limiting the amount of [subrequests](https://developers.cloudflare.com/workers/platform/limits#account-plan-limits). Please keep this in mind if you make a large amount of subrequests from your Worker.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/miniflare/core/standards/#page","headline":"Web Standards · Cloudflare Workers docs","description":"When using the API, Miniflare allows you to substitute custom Responses for\nfetch() calls using undici's\nMockAgent API.\nThis is useful for testing Workers that make HTTP requests to other services. To\nenable fetch mocking, create a\nMockAgent\nusing the createFetchMock() function, then set this using the fetchMock\noption.","url":"https://developers.cloudflare.com/workers/testing/miniflare/core/standards/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-01-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

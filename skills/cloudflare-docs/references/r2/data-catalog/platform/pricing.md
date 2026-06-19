@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,7 +21,7 @@ All included usage is on a monthly basis.
 
 ## R2 Data Catalog pricing
 
-| Free                                                       | Paid                         |                              |
+|                                                            | Free                         | Paid                         |
 | ---------------------------------------------------------- | ---------------------------- | ---------------------------- |
 | **Catalog operations**                                     |                              |                              |
 | Included                                                   | 1 million operations / month | 1 million operations / month |
@@ -60,12 +60,12 @@ When you turn on [automatic snapshot expiration](https://developers.cloudflare.c
 
 A user maintains a single Iceberg table with 50 GB of data. They make 500,000 catalog operations per month and have compaction turned on, which processes 20 GB across 200,000 files.
 
-| Dimension                   | Usage     | Included  | Billable | Cost  |
-| --------------------------- | --------- | --------- | -------- | ----- |
-| Catalog operations          | 500,000   | 1,000,000 | 0        | $0.00 |
-| Compaction (data processed) | 20 GB     | 10 GB     | 10 GB    | $0.05 |
-| Compaction (objects)        | 200,000   | 1,000,000 | 0        | $0.00 |
-| **Total (Data Catalog)**    | **$0.05** |           |          |       |
+| Dimension                   | Usage   | Included  | Billable | Cost      |
+| --------------------------- | ------- | --------- | -------- | --------- |
+| Catalog operations          | 500,000 | 1,000,000 | 0        | $0.00     |
+| Compaction (data processed) | 20 GB   | 10 GB     | 10 GB    | $0.05     |
+| Compaction (objects)        | 200,000 | 1,000,000 | 0        | $0.00     |
+| **Total (Data Catalog)**    |         |           |          | **$0.05** |
 
 Standard R2 storage charges ($0.015 / GB-month) apply separately for the 50 GB of data stored.
 
@@ -73,13 +73,13 @@ Standard R2 storage charges ($0.015 / GB-month) apply separately for the 50 GB o
 
 A user streams data into an Iceberg table at 20 MB/s using [Pipelines](https://developers.cloudflare.com/pipelines/). Over a month (\~30 days) this produces approximately 50,625 GB (\~49 TB) of data, 347,000 catalog operations, and compaction processes roughly 50,625 GB across 43,200 files.
 
-| Dimension                   | Usage           | Included    | Billable        | Cost    |
-| --------------------------- | --------------- | ----------- | --------------- | ------- |
-| R2 storage                  | 50,625 GB-month | 10 GB-month | 50,615 GB-month | $759.23 |
-| Catalog operations          | 347,000         | 1,000,000   | 0               | $0.00   |
-| Compaction (data processed) | 50,625 GB       | 10 GB       | 50,615 GB       | $253.08 |
-| Compaction (objects)        | 43,200          | 1,000,000   | 0               | $0.00   |
-| **Total**                   | **$1,012.31**   |             |                 |         |
+| Dimension                   | Usage           | Included    | Billable        | Cost          |
+| --------------------------- | --------------- | ----------- | --------------- | ------------- |
+| R2 storage                  | 50,625 GB-month | 10 GB-month | 50,615 GB-month | $759.23       |
+| Catalog operations          | 347,000         | 1,000,000   | 0               | $0.00         |
+| Compaction (data processed) | 50,625 GB       | 10 GB       | 50,615 GB       | $253.08       |
+| Compaction (objects)        | 43,200          | 1,000,000   | 0               | $0.00         |
+| **Total**                   |                 |             |                 | **$1,012.31** |
 
 For large-scale use cases, storage costs are typically the largest component of the bill.
 

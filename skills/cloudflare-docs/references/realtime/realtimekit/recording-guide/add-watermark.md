@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,32 +21,7 @@ RealtimeKit's watermark feature enables you to include an image as a watermark i
 | Size          | Specify the height and width of the watermark in pixels.                                                                                                                       |
 
 ```
-
-{
-
-  "video_config": {
-
-    "watermark": {
-
-      "url": "https://test.io/images/client-logos-6.webp",
-
-      "position": "left top",
-
-      "size": {
-
-        "height": 20,
-
-        "width": 100
-
-      }
-
-    }
-
-  }
-
-}
-
-
+{  "video_config": {    "watermark": {      "url": "https://test.io/images/client-logos-6.webp",      "position": "left top",      "size": {        "height": 20,        "width": 100      }    }  }}
 ```
 
 ```json

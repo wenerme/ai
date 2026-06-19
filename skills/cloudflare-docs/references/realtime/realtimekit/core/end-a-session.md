@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,227 +30,112 @@ ReactWeb ComponentsAngular
 TypeScript  
 ```  
 const canEndSession = meeting.self.permissions.kickParticipant === true;  
-if (!canEndSession) {  
-  // Disable the "End meeting/session" control in your UI.  
-  // You can also show a message to explain why the action is not available.  
-}  
+if (!canEndSession) {  // Disable the "End meeting/session" control in your UI.  // You can also show a message to explain why the action is not available.}  
 ```  
 TypeScript  
 ```  
 const canEndSession = meeting.self.permissions.kickParticipant === true;  
-if (!canEndSession) {  
-  // Disable the "End meeting/session" control in your UI.  
-  // You can also show a message to explain why the action is not available.  
-}  
+if (!canEndSession) {  // Disable the "End meeting/session" control in your UI.  // You can also show a message to explain why the action is not available.}  
 ```  
 TypeScript  
 ```  
 const canEndSession = meeting.self.permissions.kickParticipant === true;  
-if (!canEndSession) {  
-  // Disable the "End meeting/session" control in your UI.  
-  // You can also show a message to explain why the action is not available.  
-}  
+if (!canEndSession) {  // Disable the "End meeting/session" control in your UI.  // You can also show a message to explain why the action is not available.}  
 ```  
 Kotlin  
 ```  
 val canEndSession = meeting.localUser.permissions.host.canKickParticipant  
-if (!canEndSession) {  
-    // Disable the "End meeting/session" control in your UI.  
-    // You can also show a message to explain why the action is not available.  
-}  
+if (!canEndSession) {    // Disable the "End meeting/session" control in your UI.    // You can also show a message to explain why the action is not available.}  
 ```  
 Swift  
 ```  
 let canEndSession = meeting.localUser.permissions.host.canKickParticipant  
-if !canEndSession {  
-    // Disable the "End meeting/session" control in your UI.  
-    // You can also show a message to explain why the action is not available.  
-}  
+if !canEndSession {    // Disable the "End meeting/session" control in your UI.    // You can also show a message to explain why the action is not available.}  
 ```  
 Dart  
 ```  
 final canEndSession = meeting.localUser.permissions.host.canKickParticipant;  
-if (!canEndSession) {  
-  // Disable the "End meeting/session" control in your UI.  
-  // You can also show a message to explain why the action is not available.  
-}  
+if (!canEndSession) {  // Disable the "End meeting/session" control in your UI.  // You can also show a message to explain why the action is not available.}  
 ```  
 JavaScript  
 ```  
 const canEndSession = meeting.self.permissions.kickParticipant === true;  
-if (!canEndSession) {  
-  // Disable the "End meeting/session" control in your UI.  
-  // You can also show a message to explain why the action is not available.  
-}  
+if (!canEndSession) {  // Disable the "End meeting/session" control in your UI.  // You can also show a message to explain why the action is not available.}  
 ```
 2. End the session by removing all participants.  
 If the participant does not have the required permission, `kickAll()` throws a ClientError with error code `1201`.  
 TypeScript  
 ```  
-try {  
-  await meeting.participants.kickAll();  
-} catch (err) {  
-  if (err?.code === 1201) {  
-    // The participant does not have permission to end the session.  
-    // Update your UI to indicate that the action is not allowed.  
-    return;  
-  }  
-  throw err;  
-}  
+try {  await meeting.participants.kickAll();} catch (err) {  if (err?.code === 1201) {    // The participant does not have permission to end the session.    // Update your UI to indicate that the action is not allowed.    return;  }  throw err;}  
 ```  
 If the participant does not have the required permission, `kickAll()` throws a ClientError with error code `1201`.  
 TypeScript  
 ```  
-try {  
-  await meeting.participants.kickAll();  
-} catch (err) {  
-  if (err?.code === 1201) {  
-    // The participant does not have permission to end the session.  
-    // Update your UI to indicate that the action is not allowed.  
-    return;  
-  }  
-  throw err;  
-}  
+try {  await meeting.participants.kickAll();} catch (err) {  if (err?.code === 1201) {    // The participant does not have permission to end the session.    // Update your UI to indicate that the action is not allowed.    return;  }  throw err;}  
 ```  
 If the participant does not have the required permission, `kickAll()` throws a ClientError with error code `1201`.  
 TypeScript  
 ```  
-try {  
-  await meeting.participants.kickAll();  
-} catch (err) {  
-  if (err?.code === 1201) {  
-    // The participant does not have permission to end the session.  
-    // Update your UI to indicate that the action is not allowed.  
-    return;  
-  }  
-  throw err;  
-}  
+try {  await meeting.participants.kickAll();} catch (err) {  if (err?.code === 1201) {    // The participant does not have permission to end the session.    // Update your UI to indicate that the action is not allowed.    return;  }  throw err;}  
 ```  
 If the participant does not have the required permission, `kickAll()` returns a `HostError`.  
 Kotlin  
 ```  
 val error: HostError? = meeting.participants.kickAll()  
-if (error != null) {  
-    when (error) {  
-        is HostError.KickPermissionDenied -> {  
-            // The participant does not have permission to end the session.  
-            // Update your UI to indicate that the action is not allowed.  
-        }  
-    }  
-} else {  
-    // Successfully initiated session end  
-}  
+if (error != null) {    when (error) {        is HostError.KickPermissionDenied -> {            // The participant does not have permission to end the session.            // Update your UI to indicate that the action is not allowed.        }    }} else {    // Successfully initiated session end}  
 ```  
 If the participant does not have the required permission, `kickAll()` returns a `HostError`.  
 Swift  
 ```  
 let error: HostError? = meeting.participants.kickAll()  
-if let error = error {  
-    switch error {  
-    case .kickPermissionDenied:  
-        // The participant does not have permission to end the session.  
-        // Update your UI to indicate that the action is not allowed.  
-        break  
-    default:  
-        break  
-    }  
-} else {  
-    // Successfully initiated session end  
-}  
+if let error = error {    switch error {    case .kickPermissionDenied:        // The participant does not have permission to end the session.        // Update your UI to indicate that the action is not allowed.        break    default:        break    }} else {    // Successfully initiated session end}  
 ```  
 Dart  
 ```  
-meeting.participants.kickAll(onResult: (error) {  
-  if (error != null) {  
-    // The participant does not have permission to end the session.  
-    // Update your UI to indicate that the action is not allowed.  
-  } else {  
-    // Successfully initiated session end  
-  }  
-});  
+meeting.participants.kickAll(onResult: (error) {  if (error != null) {    // The participant does not have permission to end the session.    // Update your UI to indicate that the action is not allowed.  } else {    // Successfully initiated session end  }});  
 ```  
 If the participant does not have the required permission, `kickAll()` throws a ClientError with error code `1201`.  
 JavaScript  
 ```  
-try {  
-  await meeting.participants.kickAll();  
-} catch (err) {  
-  if (err?.code === 1201) {  
-    // The participant does not have permission to end the session.  
-    // Update your UI to indicate that the action is not allowed.  
-    return;  
-  }  
-  throw err;  
-}  
+try {  await meeting.participants.kickAll();} catch (err) {  if (err?.code === 1201) {    // The participant does not have permission to end the session.    // Update your UI to indicate that the action is not allowed.    return;  }  throw err;}  
 ```
 3. Listen for the session end event.  
 When the session ends, all participants leave the session. The SDK emits a `roomLeft` event with `state` set to `ended`.  
 TypeScript  
 ```  
-meeting.self.on("roomLeft", ({ state }) => {  
-  if (state === "ended") {  
-    // Update your UI to show that the meeting session has ended.  
-  }  
-});  
+meeting.self.on("roomLeft", ({ state }) => {  if (state === "ended") {    // Update your UI to show that the meeting session has ended.  }});  
 ```  
 When the session ends, all participants leave the session. The SDK emits a `roomLeft` event with `state` set to `ended`.  
 TypeScript  
 ```  
-meeting.self.on("roomLeft", ({ state }) => {  
-  if (state === "ended") {  
-    // Update your UI to show that the meeting session has ended.  
-  }  
-});  
+meeting.self.on("roomLeft", ({ state }) => {  if (state === "ended") {    // Update your UI to show that the meeting session has ended.  }});  
 ```  
 When the session ends, all participants leave the session. The SDK emits a `roomLeft` event with `state` set to `ended`.  
 TypeScript  
 ```  
-meeting.self.on("roomLeft", ({ state }) => {  
-  if (state === "ended") {  
-    // Update your UI to show that the meeting session has ended.  
-  }  
-});  
+meeting.self.on("roomLeft", ({ state }) => {  if (state === "ended") {    // Update your UI to show that the meeting session has ended.  }});  
 ```  
 When the session ends, all participants leave the session. You can subscribe to the event listeners to handle the session end.  
 Kotlin  
 ```  
-meeting.addMeetingRoomEventListener(object : RtkMeetingRoomEventListener {  
-    override fun onMeetingEnded() {  
-        // Update your UI to show that the meeting session has ended.  
-    }  
-})  
+meeting.addMeetingRoomEventListener(object : RtkMeetingRoomEventListener {    override fun onMeetingEnded() {        // Update your UI to show that the meeting session has ended.    }})  
 ```  
 When the session ends, all participants leave the session. You can subscribe to the event listeners to handle the session end.  
 Swift  
 ```  
-// Implement the delegate method  
-extension MeetingViewModel: RtkMeetingRoomEventListener {  
-  func onMeetingEnded() {  
-      // Update your UI to show that the meeting session has ended.  
-  }  
-}  
+// Implement the delegate methodextension MeetingViewModel: RtkMeetingRoomEventListener {  func onMeetingEnded() {      // Update your UI to show that the meeting session has ended.  }}  
 meeting.addMeetingRoomEventListener(self)  
 ```  
 When the session ends, all participants leave the session. You can subscribe to the event listeners to handle the session end.  
 Dart  
 ```  
-class MeetingRoomListener extends RtkMeetingRoomEventListener {  
-  @override  
-  void onMeetingEnded() {  
-    // Update your UI to show that the meeting session has ended.  
-  }  
-}  
-// Add the listener  
-meeting.addMeetingRoomEventListener(MeetingRoomListener());  
+class MeetingRoomListener extends RtkMeetingRoomEventListener {  @override  void onMeetingEnded() {    // Update your UI to show that the meeting session has ended.  }}  
+// Add the listenermeeting.addMeetingRoomEventListener(MeetingRoomListener());  
 ```  
 When the session ends, all participants leave the session. The SDK emits a `roomLeft` event with `state` set to `ended`.  
 JavaScript  
 ```  
-meeting.self.on("roomLeft", ({ state }) => {  
-  if (state === "ended") {  
-    // Update your UI to show that the meeting session has ended.  
-  }  
-});  
+meeting.self.on("roomLeft", ({ state }) => {  if (state === "ended") {    // Update your UI to show that the meeting session has ended.  }});  
 ```
 
 You can also end a session from your backend by removing all participants using the [Kick all participants](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/active-session/methods/kick%5Fall%5Fparticipants/) API.
@@ -263,21 +148,14 @@ Use the [Kick all participants](https://developers.cloudflare.com/api/resources/
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Realtime Admin`
 * `Realtime`
 
 Kick all participants
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/meetings/$MEETING_ID/active-session/kick-all" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/meetings/$MEETING_ID/active-session/kick-all" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ### Listen for session end events with webhooks
@@ -286,35 +164,14 @@ Register a webhook that subscribes to `meeting.ended`. RealtimeKit sends this ev
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Realtime Admin`
 * `Realtime`
 
 Add a webhook
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/webhooks" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "name": "Session ended webhook",
-
-    "url": "<YOUR_WEBHOOK_URL>",
-
-    "events": [
-
-        "meeting.ended"
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/webhooks" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Session ended webhook",    "url": "<YOUR_WEBHOOK_URL>",    "events": [        "meeting.ended"    ]  }'
 ```
 
 ## Disable a meeting
@@ -323,27 +180,14 @@ Ending a session does not disable the meeting. Participants can join the meeting
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Realtime Admin`
 * `Realtime`
 
 Update a meeting
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/meetings/$MEETING_ID" \
-
-  --request PATCH \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "status": "INACTIVE"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/meetings/$MEETING_ID" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "status": "INACTIVE"  }'
 ```
 
 ## Next steps

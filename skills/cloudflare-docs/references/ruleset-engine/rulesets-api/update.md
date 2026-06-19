@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -44,7 +44,7 @@ The following `PUT` request defines the list of rules of a ruleset, setting it t
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Response Compression Write`
 * `Config Settings Write`
 * `Dynamic URL Redirects Write`
@@ -70,93 +70,11 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Update a zone ruleset
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "rules": [
-
-        {
-
-            "action": "execute",
-
-            "action_parameters": {
-
-                "id": "<MANAGED_RULESET_ID>"
-
-            },
-
-            "expression": "true"
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "action": "execute",            "action_parameters": {                "id": "<MANAGED_RULESET_ID>"            },            "expression": "true"        }    ]  }'
 ```
 
 ```
-
-{
-
-  "result": {
-
-    "id": "<RULESET_ID>",
-
-    "name": "Zone-level phase entry point ruleset",
-
-    "description": "This ruleset executes a managed ruleset.",
-
-    "kind": "zone",
-
-    "version": "4",
-
-    "rules": [
-
-      {
-
-        "id": "<RULE_ID>",
-
-        "version": "2",
-
-        "action": "execute",
-
-        "expression": "true",
-
-        "action_parameters": {
-
-          "id": "<MANAGED_RULESET_ID>"
-
-        },
-
-        "last_updated": "2025-03-17T15:42:37.917815Z"
-
-      }
-
-    ],
-
-    "last_updated": "2025-03-17T15:42:37.917815Z",
-
-    "phase": "http_request_firewall_managed"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "id": "<RULESET_ID>",    "name": "Zone-level phase entry point ruleset",    "description": "This ruleset executes a managed ruleset.",    "kind": "zone",    "version": "4",    "rules": [      {        "id": "<RULE_ID>",        "version": "2",        "action": "execute",        "expression": "true",        "action_parameters": {          "id": "<MANAGED_RULESET_ID>"        },        "last_updated": "2025-03-17T15:42:37.917815Z"      }    ],    "last_updated": "2025-03-17T15:42:37.917815Z",    "phase": "http_request_firewall_managed"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 ## Example - Deploy a ruleset
@@ -167,7 +85,7 @@ The following `PUT` request deploys a managed ruleset to the `http_request_firew
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Response Compression Write`
 * `Config Settings Write`
 * `Dynamic URL Redirects Write`
@@ -193,103 +111,11 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Update a zone entry point ruleset
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "rules": [
-
-        {
-
-            "action": "execute",
-
-            "action_parameters": {
-
-                "id": "<MANAGED_RULESET_ID>"
-
-            },
-
-            "expression": "true",
-
-            "description": "Execute Cloudflare Managed Ruleset on my phase entry point ruleset"
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "action": "execute",            "action_parameters": {                "id": "<MANAGED_RULESET_ID>"            },            "expression": "true",            "description": "Execute Cloudflare Managed Ruleset on my phase entry point ruleset"        }    ]  }'
 ```
 
 ```
-
-{
-
-  "result": {
-
-    "id": "<RULESET_ID>",
-
-    "name": "Zone-level phase entry point ruleset",
-
-    "description": "",
-
-    "kind": "zone",
-
-    "version": "4",
-
-    "rules": [
-
-      {
-
-        "id": "<RULE_ID_1>",
-
-        "version": "1",
-
-        "action": "execute",
-
-        "action_parameters": {
-
-          "id": "<MANAGED_RULESET_ID>",
-
-          "version": "latest"
-
-        },
-
-        "expression": "true",
-
-        "description": "Execute Cloudflare Managed Ruleset on my phase entry point ruleset",
-
-        "last_updated": "2025-03-21T11:02:08.769537Z",
-
-        "ref": "<RULE_REF_1>",
-
-        "enabled": true
-
-      }
-
-    ],
-
-    "last_updated": "2025-03-21T11:02:08.769537Z",
-
-    "phase": "http_request_firewall_managed"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "id": "<RULESET_ID>",    "name": "Zone-level phase entry point ruleset",    "description": "",    "kind": "zone",    "version": "4",    "rules": [      {        "id": "<RULE_ID_1>",        "version": "1",        "action": "execute",        "action_parameters": {          "id": "<MANAGED_RULESET_ID>",          "version": "latest"        },        "expression": "true",        "description": "Execute Cloudflare Managed Ruleset on my phase entry point ruleset",        "last_updated": "2025-03-21T11:02:08.769537Z",        "ref": "<RULE_REF_1>",        "enabled": true      }    ],    "last_updated": "2025-03-21T11:02:08.769537Z",    "phase": "http_request_firewall_managed"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 For more information on deploying rulesets, refer to [Deploy rulesets](https://developers.cloudflare.com/ruleset-engine/basic-operations/deploy-rulesets/).
@@ -306,7 +132,7 @@ You cannot update the description or the rules in a managed ruleset. You can onl
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Response Compression Write`
 * `Config Settings Write`
 * `Dynamic URL Redirects Write`
@@ -332,59 +158,11 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Update a zone ruleset
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "description": "My updated phase entry point ruleset"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "description": "My updated phase entry point ruleset"  }'
 ```
 
 ```
-
-{
-
-  "result": {
-
-    "id": "<RULESET_ID>",
-
-    "name": "Zone entry point",
-
-    "description": "My updated phase entry point ruleset",
-
-    "kind": "zone",
-
-    "version": "4",
-
-    "rules": [
-
-      // (...)
-
-    ],
-
-    "last_updated": "2025-03-30T10:49:11.006109Z",
-
-    "phase": "http_request_firewall_managed"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "id": "<RULESET_ID>",    "name": "Zone entry point",    "description": "My updated phase entry point ruleset",    "kind": "zone",    "version": "4",    "rules": [      // (...)    ],    "last_updated": "2025-03-30T10:49:11.006109Z",    "phase": "http_request_firewall_managed"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 ```json

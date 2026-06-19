@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,15 +27,8 @@ A control bar button that toggles the local camera on and off. Checks camera per
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let videoButton = RtkVideoButtonControlBar(rtkClient: rtkClient)
-
-view.addSubview(videoButton)
-
-
+let videoButton = RtkVideoButtonControlBar(rtkClient: rtkClient)view.addSubview(videoButton)
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,10 +16,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Edge Cache TTL (Time to Live) specifies the maximum time to cache a resource in the Cloudflare global network. Edge Cache TTL is not visible in response headers and the minimum Edge Cache TTL depends on plan type.
 
-| Free                   | Pro     | Business | Enterprise |          |
-| ---------------------- | ------- | -------- | ---------- | -------- |
-| Availability           | Yes     | Yes      | Yes        | Yes      |
-| Minimum Edge Cache TTL | 2 hours | 1 hour   | 1 second   | 1 second |
+|                        | Free    | Pro    | Business | Enterprise |
+| ---------------------- | ------- | ------ | -------- | ---------- |
+| Availability           | Yes     | Yes    | Yes      | Yes        |
+| Minimum Edge Cache TTL | 2 hours | 1 hour | 1 second | 1 second   |
 
 For more information on how to set up Edge Cache TTL, refer to [Cache rules](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#edge-ttl).
 
@@ -38,12 +38,12 @@ Note
 * If you modify cached assets, the new assets may not be displayed to repeat visitors before the Browser Cache TTL expires.
 * Purging Cloudflare’s cache does not affect assets stored by a visitor’s browser.
 
-| Free                                   | Pro       | Business  | Enterprise |            |
-| -------------------------------------- | --------- | --------- | ---------- | ---------- |
-| Availability                           | Yes       | Yes       | Yes        | Yes        |
-| Minimum Browser Cache TTL (Page Rules) | 2 minutes | 2 minutes | 2 minutes  | 30 seconds |
-| Minimum Browser Cache TTL              | 1 second  | 1 second  | 1 second   | 1 second   |
-| Default Browser Cache TTL              | 4 hours   | 4 hours   | 4 hours    | 4 hours    |
+|                                        | Free      | Pro       | Business  | Enterprise |
+| -------------------------------------- | --------- | --------- | --------- | ---------- |
+| Availability                           | Yes       | Yes       | Yes       | Yes        |
+| Minimum Browser Cache TTL (Page Rules) | 2 minutes | 2 minutes | 2 minutes | 30 seconds |
+| Minimum Browser Cache TTL              | 1 second  | 1 second  | 1 second  | 1 second   |
+| Default Browser Cache TTL              | 4 hours   | 4 hours   | 4 hours   | 4 hours    |
 
 For more information on setting the Browser Cache TTL, refer to [Set Browser Cache TTL](https://developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl/set-browser-ttl/).
 

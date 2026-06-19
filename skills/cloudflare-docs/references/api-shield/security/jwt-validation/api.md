@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -59,52 +59,7 @@ The example below shows a JSON object with all of the information necessary to c
 Example
 
 ```
-
-{
-
-  "title": "Production JWT configuration",
-
-  "description": "This configuration checks the JWT in the authorization header or cookie.",
-
-  "token_sources": [
-
-    "http.request.headers[\"authorization\"][0]",
-
-    "http.request.cookies[\"Authorization\"][0]"
-
-  ],
-
-  "token_type": "jwt",
-
-  "credentials": {
-
-    "keys": [
-
-      {
-
-        "kty": "EC",
-
-        "use": "sig",
-
-        "crv": "P-256",
-
-        "kid": "93UrzmNu1mqXs5cZcvCPkTlMHB2Jya30vSTkiBb0vhU",
-
-        "x": "QG3VFVwUX4IatQvBy7sqBvvmticCZ-eX5-nbtGKBOfI",
-
-        "y": "A3PXCshn7XcG7Ivvd2K_DerW4LHAlIVKdqhrUnczTD0",
-
-        "alg": "ES256"
-
-      }
-
-    ]
-
-  }
-
-}
-
-
+{  "title": "Production JWT configuration",  "description": "This configuration checks the JWT in the authorization header or cookie.",  "token_sources": [    "http.request.headers[\"authorization\"][0]",    "http.request.cookies[\"Authorization\"][0]"  ],  "token_type": "jwt",  "credentials": {    "keys": [      {        "kty": "EC",        "use": "sig",        "crv": "P-256",        "kid": "93UrzmNu1mqXs5cZcvCPkTlMHB2Jya30vSTkiBb0vhU",        "x": "QG3VFVwUX4IatQvBy7sqBvvmticCZ-eX5-nbtGKBOfI",        "y": "A3PXCshn7XcG7Ivvd2K_DerW4LHAlIVKdqhrUnczTD0",        "alg": "ES256"      }    ]  }}
 ```
 
 ## Create a token configuration using the Cloudflare API
@@ -114,56 +69,7 @@ Use cURL or any other API client tool to send the new configuration to Cloudflar
 Example using cURL
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/token_validation/config" \
-
---header 'Content-Type: application/json' \
-
---data '{
-
-    "title": "Production JWT configuration",
-
-    "description": "This configuration checks the JWT in the authorization header or cookie.",
-
-    "token_sources": [
-
-        "http.request.headers[\"authorization\"][0]",
-
-        "http.request.cookies[\"Authorization\"][0]"
-
-    ],
-
-    "token_type": "jwt",
-
-    "credentials": {
-
-        "keys": [
-
-            {
-
-                "kty": "EC",
-
-                "use": "sig",
-
-                "crv": "P-256",
-
-                "kid": "93UrzmNu1mqXs5cZcvCPkTlMHB2Jya30vSTkiBb0vhU",
-
-                "x": "QG3VFVwUX4IatQvBy7sqBvvmticCZ-eX5-nbtGKBOfI",
-
-                "y": "A3PXCshn7XcG7Ivvd2K_DerW4LHAlIVKdqhrUnczTD0",
-
-                "alg": "ES256"
-
-            }
-
-        ]
-
-    }
-
-}'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/token_validation/config" \--header 'Content-Type: application/json' \--data '{    "title": "Production JWT configuration",    "description": "This configuration checks the JWT in the authorization header or cookie.",    "token_sources": [        "http.request.headers[\"authorization\"][0]",        "http.request.cookies[\"Authorization\"][0]"    ],    "token_type": "jwt",    "credentials": {        "keys": [            {                "kty": "EC",                "use": "sig",                "crv": "P-256",                "kid": "93UrzmNu1mqXs5cZcvCPkTlMHB2Jya30vSTkiBb0vhU",                "x": "QG3VFVwUX4IatQvBy7sqBvvmticCZ-eX5-nbtGKBOfI",                "y": "A3PXCshn7XcG7Ivvd2K_DerW4LHAlIVKdqhrUnczTD0",                "alg": "ES256"            }        ]    }}'
 ```
 
 The response will be in a Cloudflare `v4` response envelope and the result contains the created configuration. Note the returned ID, as it will be used to reference the token configuration when creating token validation rules using the API.
@@ -171,66 +77,7 @@ The response will be in a Cloudflare `v4` response envelope and the result conta
 Example response
 
 ```
-
-{
-
-  "result": {
-
-    "id": "d5902294-00c3-4aed-b517-57e752e9cd58",
-
-    "token_type": "JWT",
-
-    "title": "Production JWT configuration",
-
-    "description": "This configuration checks the JWT in the authorization header or cookie.",
-
-    "token_sources": [
-
-      "http.request.headers[\"authorization\"][0]",
-
-      "http.request.cookies[\"Authorization\"][0]"
-
-    ],
-
-    "credentials": {
-
-      "keys": [
-
-        {
-
-          "x": "QG3VFVwUX4IatQvBy7sqBvvmticCZ-eX5-nbtGKBOfI",
-
-          "y": "A3PXCshn7XcG7Ivvd2K_DerW4LHAlIVKdqhrUnczTD0",
-
-          "alg": "ES256",
-
-          "crv": "P-256",
-
-          "kid": "93UrzmNu1mqXs5cZcvCPkTlMHB2Jya30vSTkiBb0vhU",
-
-          "kty": "EC"
-
-        }
-
-      ]
-
-    },
-
-    "created_at": "2023-11-08T16:45:17.236841Z",
-
-    "last_updated": "2023-11-08T16:45:17.236841Z"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "id": "d5902294-00c3-4aed-b517-57e752e9cd58",    "token_type": "JWT",    "title": "Production JWT configuration",    "description": "This configuration checks the JWT in the authorization header or cookie.",    "token_sources": [      "http.request.headers[\"authorization\"][0]",      "http.request.cookies[\"Authorization\"][0]"    ],    "credentials": {      "keys": [        {          "x": "QG3VFVwUX4IatQvBy7sqBvvmticCZ-eX5-nbtGKBOfI",          "y": "A3PXCshn7XcG7Ivvd2K_DerW4LHAlIVKdqhrUnczTD0",          "alg": "ES256",          "crv": "P-256",          "kid": "93UrzmNu1mqXs5cZcvCPkTlMHB2Jya30vSTkiBb0vhU",          "kty": "EC"        }      ]    },    "created_at": "2023-11-08T16:45:17.236841Z",    "last_updated": "2023-11-08T16:45:17.236841Z"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 ## Token validation rules
@@ -239,14 +86,14 @@ Token validation rules allow you to enforce a security policy using existing tok
 
 Token validation rules can be configured using the Cloudflare API or [dashboard](https://developers.cloudflare.com/api-shield/security/jwt-validation/#add-a-jwt-validation-rule).
 
-| Field name  | Description                                                                               | Example                                                                      | Notes                                                                                                                                               |
-| ----------- | ----------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| title       | A human-readable name allowing you to quickly identify it.                                | JWT validation on v1 and v2.example.com                                      | Limited to 50 characters.                                                                                                                           |
-| description | A human-readable description that gives more details than title and helps to document it. | Log requests without a valid authorization header.                           | Limited to 500 characters.                                                                                                                          |
-| action      | The Firewall Action taken on requests that do not meet expression.                        | log                                                                          | Possible: log or block                                                                                                                              |
-| enabled     | Enable or disable the rule.                                                               | true                                                                         | Possible: true or false                                                                                                                             |
-| expression  | The rule's security policy.                                                               | is\_jwt\_valid ("00170473-ec24-410e-968a-9905cf0a7d03")                      | Make sure to escape any quotes when creating rules using the Cloudflare API.  Refer to [Define a security policy](#define-a-security-policy) below. |
-| selector    | Configure what operations are covered by this rule.                                       | Refer to [Applying a rule to operations](#apply-a-rule-to-operations) below. |                                                                                                                                                     |
+| Field name  | Description                                                                               | Example                                                 | Notes                                                                                                                                               |
+| ----------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| title       | A human-readable name allowing you to quickly identify it.                                | JWT validation on v1 and v2.example.com                 | Limited to 50 characters.                                                                                                                           |
+| description | A human-readable description that gives more details than title and helps to document it. | Log requests without a valid authorization header.      | Limited to 500 characters.                                                                                                                          |
+| action      | The Firewall Action taken on requests that do not meet expression.                        | log                                                     | Possible: log or block                                                                                                                              |
+| enabled     | Enable or disable the rule.                                                               | true                                                    | Possible: true or false                                                                                                                             |
+| expression  | The rule's security policy.                                                               | is\_jwt\_valid ("00170473-ec24-410e-968a-9905cf0a7d03") | Make sure to escape any quotes when creating rules using the Cloudflare API.  Refer to [Define a security policy](#define-a-security-policy) below. |
+| selector    | Configure what operations are covered by this rule.                                       |                                                         | Refer to [Applying a rule to operations](#apply-a-rule-to-operations) below.                                                                        |
 
 ### Selectors
 
@@ -323,38 +170,7 @@ For example, the following selector will apply a rule to all operations in `v1.e
 Selector example
 
 ```
-
-{
-
-  "include": [
-
-    {
-
-      "host": ["v1.example.com", "v2.example.com"]
-
-    }
-
-  ],
-
-  "exclude": [
-
-    {
-
-      "operation_ids": [
-
-        "f9c5615e-fe15-48ce-bec6-cfc1946f1bec", // POST v1.example.com/login
-
-        "56828eae-035a-4396-ba07-51c66d680a04" // POST v2.example.com/login
-
-      ]
-
-    }
-
-  ]
-
-}
-
-
+{  "include": [    {      "host": ["v1.example.com", "v2.example.com"]    }  ],  "exclude": [    {      "operation_ids": [        "f9c5615e-fe15-48ce-bec6-cfc1946f1bec", // POST v1.example.com/login        "56828eae-035a-4396-ba07-51c66d680a04" // POST v2.example.com/login      ]    }  ]}
 ```
 
 Operations can be included at a host level and ignored on a per-operation basis.
@@ -364,50 +180,7 @@ You can use the `POST /zones/{zone_id}/token_validation/rules/preview` endpoint 
 Example using cURL
 
 ```
-
-curl --request PUT \
-
-'https://api.cloudflare.com/client/v4/zones/{zone_id}/token_validation/rules/preview' \
-
---header 'Content-Type: application/json' \
-
---data '{
-
-    "include": [
-
-        {
-
-            "host": [
-
-                "v1.example.com",
-
-                "v2.example.com"
-
-            ]
-
-        }
-
-    ],
-
-    "exclude": [
-
-        {
-
-            "operation_ids": [
-
-                "f9c5615e-fe15-48ce-bec6-cfc1946f1bec", // POST v1.example.com/login
-
-                "56828eae-035a-4396-ba07-51c66d680a04"  // POST v2.example.com/login
-
-            ]
-
-        }
-
-    ]
-
-}'
-
-
+curl --request PUT \'https://api.cloudflare.com/client/v4/zones/{zone_id}/token_validation/rules/preview' \--header 'Content-Type: application/json' \--data '{    "include": [        {            "host": [                "v1.example.com",                "v2.example.com"            ]        }    ],    "exclude": [        {            "operation_ids": [                "f9c5615e-fe15-48ce-bec6-cfc1946f1bec", // POST v1.example.com/login                "56828eae-035a-4396-ba07-51c66d680a04"  // POST v2.example.com/login            ]        }    ]}'
 ```
 
 The response will include all operations on a zone with an additional `state` field.
@@ -417,172 +190,7 @@ The `state` field can be `ignored`, `excluded`, or `included`. Included operatio
 Result
 
 ```
-
-{
-
-  "result": {
-
-    "operations": [
-
-      {
-
-        "operation_id": "ed15fcb6-5a73-41cd-91af-8c61e5bb1cdb",
-
-        "method": "GET",
-
-        "host": "example.com",
-
-        "endpoint": "/api/accounts/{var1}",
-
-        "last_updated": "2023-05-24T14:54:34.806506Z",
-
-        "state": "ignored"
-
-      },
-
-      {
-
-        "operation_id": "e7a582cd-3cfb-4061-ab5b-722e6e42f545",
-
-        "method": "GET",
-
-        "host": "v1.example.com",
-
-        "endpoint": "/api/accounts/{var1}",
-
-        "last_updated": "2023-05-24T14:54:34.806506Z",
-
-        "state": "included"
-
-      },
-
-      {
-
-        "operation_id": "ddd5df5a-795c-40ce-b38c-38e9d7ef9ae8",
-
-        "method": "GET",
-
-        "host": "v2.example.com",
-
-        "endpoint": "/api/accounts/{var1}",
-
-        "last_updated": "2023-05-24T14:54:34.806506Z",
-
-        "state": "included"
-
-      },
-
-      {
-
-        "operation_id": "4d20befb-0120-45d5-9b29-5835fd41b44e",
-
-        "method": "GET",
-
-        "host": "v3.example.com",
-
-        "endpoint": "/api/accounts/{var1}",
-
-        "last_updated": "2023-05-24T14:54:34.806506Z",
-
-        "state": "ignored"
-
-      },
-
-      {
-
-        "operation_id": "f9c5615e-fe15-48ce-bec6-cfc1946f1bec",
-
-        "method": "POST",
-
-        "host": "v1.example.com",
-
-        "endpoint": "/login",
-
-        "last_updated": "2023-05-24T14:54:34.806506Z",
-
-        "state": "excluded"
-
-      },
-
-      {
-
-        "operation_id": "56828eae-035a-4396-ba07-51c66d680a04",
-
-        "method": "POST",
-
-        "host": "v2.example.com",
-
-        "endpoint": "/login",
-
-        "last_updated": "2023-05-24T14:54:34.806506Z",
-
-        "state": "excluded"
-
-      },
-
-      {
-
-        "operation_id": "cf86874c-8d0c-4337-ae14-4e2459b541ac",
-
-        "method": "GET",
-
-        "host": "v3.example.com",
-
-        "endpoint": "login",
-
-        "last_updated": "2023-05-24T14:54:34.806506Z",
-
-        "state": "ignored"
-
-      }
-
-    ],
-
-    "total": 7,
-
-    "included": 2,
-
-    "excluded": 2,
-
-    "ignored": 3,
-
-    "selected_hosts": ["v1.example.com", "v2.example.com"],
-
-    "available_hosts": [
-
-      "example.com",
-
-      "v1.example.com",
-
-      "v1.example.com",
-
-      "v3.example.com"
-
-    ]
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": [],
-
-  "result_info": {
-
-    "page": 1,
-
-    "per_page": 20,
-
-    "count": 20,
-
-    "total_count": 1631
-
-  }
-
-}
-
-
+{  "result": {    "operations": [      {        "operation_id": "ed15fcb6-5a73-41cd-91af-8c61e5bb1cdb",        "method": "GET",        "host": "example.com",        "endpoint": "/api/accounts/{var1}",        "last_updated": "2023-05-24T14:54:34.806506Z",        "state": "ignored"      },      {        "operation_id": "e7a582cd-3cfb-4061-ab5b-722e6e42f545",        "method": "GET",        "host": "v1.example.com",        "endpoint": "/api/accounts/{var1}",        "last_updated": "2023-05-24T14:54:34.806506Z",        "state": "included"      },      {        "operation_id": "ddd5df5a-795c-40ce-b38c-38e9d7ef9ae8",        "method": "GET",        "host": "v2.example.com",        "endpoint": "/api/accounts/{var1}",        "last_updated": "2023-05-24T14:54:34.806506Z",        "state": "included"      },      {        "operation_id": "4d20befb-0120-45d5-9b29-5835fd41b44e",        "method": "GET",        "host": "v3.example.com",        "endpoint": "/api/accounts/{var1}",        "last_updated": "2023-05-24T14:54:34.806506Z",        "state": "ignored"      },      {        "operation_id": "f9c5615e-fe15-48ce-bec6-cfc1946f1bec",        "method": "POST",        "host": "v1.example.com",        "endpoint": "/login",        "last_updated": "2023-05-24T14:54:34.806506Z",        "state": "excluded"      },      {        "operation_id": "56828eae-035a-4396-ba07-51c66d680a04",        "method": "POST",        "host": "v2.example.com",        "endpoint": "/login",        "last_updated": "2023-05-24T14:54:34.806506Z",        "state": "excluded"      },      {        "operation_id": "cf86874c-8d0c-4337-ae14-4e2459b541ac",        "method": "GET",        "host": "v3.example.com",        "endpoint": "login",        "last_updated": "2023-05-24T14:54:34.806506Z",        "state": "ignored"      }    ],    "total": 7,    "included": 2,    "excluded": 2,    "ignored": 3,    "selected_hosts": ["v1.example.com", "v2.example.com"],    "available_hosts": [      "example.com",      "v1.example.com",      "v1.example.com",      "v3.example.com"    ]  },  "success": true,  "errors": [],  "messages": [],  "result_info": {    "page": 1,    "per_page": 20,    "count": 20,    "total_count": 1631  }}
 ```
 
 Operations with a `included` state will be covered by the token validation rule. The response also shows the hostnames of included operations in `result.selected_hosts` and shows all hostnames used by all zone operations in `result.available_hosts`.
@@ -592,16 +200,7 @@ You can also send an empty object in the request body:
 Example using cURL
 
 ```
-
-curl --request PUT \
-
-'https://api.cloudflare.com/client/v4/zones/{zone_id}/token_validation/rules/preview' \
-
---header 'Content-Type: application/json' \
-
---data '{ }'
-
-
+curl --request PUT \'https://api.cloudflare.com/client/v4/zones/{zone_id}/token_validation/rules/preview' \--header 'Content-Type: application/json' \--data '{ }'
 ```
 
 The response will show all zone operations and all possible hosts, which you can use to build your own selector.
@@ -615,56 +214,7 @@ Replace any token configurations IDs and operation IDs with the IDs that exist i
 Token Validation Rule JSON example
 
 ```
-
-[
-
-  {
-
-    "title": "JWT Validation on v1 and v2.example.com",
-
-    "description": "Log requests without a valid authorization header.",
-
-    "action": "log",
-
-    "enabled": true,
-
-    "expression": "is_jwt_valid(\"00170473-ec24-410e-968a-9905cf0a7d03\")",
-
-    "selector": {
-
-      "include": [
-
-        {
-
-          "host": ["v1.example.com", "v2.example.com"]
-
-        }
-
-      ],
-
-      "exclude": [
-
-        {
-
-          "operation_ids": [
-
-            "f9c5615e-fe15-48ce-bec6-cfc1946f1bec",
-
-            "56828eae-035a-4396-ba07-51c66d680a04"
-
-          ]
-
-        }
-
-      ]
-
-    }
-
-  }
-
-]
-
-
+[  {    "title": "JWT Validation on v1 and v2.example.com",    "description": "Log requests without a valid authorization header.",    "action": "log",    "enabled": true,    "expression": "is_jwt_valid(\"00170473-ec24-410e-968a-9905cf0a7d03\")",    "selector": {      "include": [        {          "host": ["v1.example.com", "v2.example.com"]        }      ],      "exclude": [        {          "operation_ids": [            "f9c5615e-fe15-48ce-bec6-cfc1946f1bec",            "56828eae-035a-4396-ba07-51c66d680a04"          ]        }      ]    }  }]
 ```
 
 ## Create a token Validation rule using the Cloudflare API
@@ -678,66 +228,7 @@ A single request can create multiple rules. To do so, pass multiple rule objects
 Example using cURL
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/token_validation/rules/bulk" \
-
---header 'Content-Type: application/json' \
-
---data '[
-
-    {
-
-        "title": "JWT Validation on v1 and v2.example.com",
-
-        "description": "Log requests without a valid authorization header.",
-
-        "action": "log",
-
-        "enabled": true,
-
-        "expression": "is_jwt_valid(\"00170473-ec24-410e-968a-9905cf0a7d03\")",
-
-        "selector": {
-
-            "include": [
-
-                {
-
-                    "host": [
-
-                        "v1.example.com",
-
-                        "v2.example.com"
-
-                    ]
-
-                }
-
-            ],
-
-            "exclude": [
-
-                {
-
-                    "operation_ids": [
-
-                        "f9c5615e-fe15-48ce-bec6-cfc1946f1bec",
-
-                        "56828eae-035a-4396-ba07-51c66d680a04"
-
-                    ]
-
-                }
-
-            ]
-
-        }
-
-    }
-
-]'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/token_validation/rules/bulk" \--header 'Content-Type: application/json' \--data '[    {        "title": "JWT Validation on v1 and v2.example.com",        "description": "Log requests without a valid authorization header.",        "action": "log",        "enabled": true,        "expression": "is_jwt_valid(\"00170473-ec24-410e-968a-9905cf0a7d03\")",        "selector": {            "include": [                {                    "host": [                        "v1.example.com",                        "v2.example.com"                    ]                }            ],            "exclude": [                {                    "operation_ids": [                        "f9c5615e-fe15-48ce-bec6-cfc1946f1bec",                        "56828eae-035a-4396-ba07-51c66d680a04"                    ]                }            ]        }    }]'
 ```
 
 The response will be in a Cloudflare `v4` response envelope and the result contains the created rules. Note the returned ID for each rule, which can be used to edit or delete an existing rule.
@@ -745,74 +236,7 @@ The response will be in a Cloudflare `v4` response envelope and the result conta
 Result
 
 ```
-
-{
-
-  "result": [
-
-    {
-
-      "id": "5ec7c417-6964-4b24-b82c-a23a7ec8f90c",
-
-      "title": "JWT Validation on v1 and v2.example.com",
-
-      "description": "Log requests without a valid authorization header.",
-
-      "action": "log",
-
-      "enabled": true,
-
-      "expression": "is_jwt_valid(\"00170473-ec24-410e-968a-9905cf0a7d03\")",
-
-      "selector": {
-
-        "include": [
-
-          {
-
-            "host": ["v1.example.com", "v2.example.com"]
-
-          }
-
-        ],
-
-        "exclude": [
-
-          {
-
-            "operation_ids": [
-
-              "f9c5615e-fe15-48ce-bec6-cfc1946f1bec",
-
-              "56828eae-035a-4396-ba07-51c66d680a04"
-
-            ]
-
-          }
-
-        ]
-
-      },
-
-      "created_at": "2023-10-18T12:08:09.575388Z",
-
-      "last_updated": "2023-10-18T12:08:09.575388Z",
-
-      "modified_by": "user@cloudflare.com"
-
-    }
-
-  ],
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": [    {      "id": "5ec7c417-6964-4b24-b82c-a23a7ec8f90c",      "title": "JWT Validation on v1 and v2.example.com",      "description": "Log requests without a valid authorization header.",      "action": "log",      "enabled": true,      "expression": "is_jwt_valid(\"00170473-ec24-410e-968a-9905cf0a7d03\")",      "selector": {        "include": [          {            "host": ["v1.example.com", "v2.example.com"]          }        ],        "exclude": [          {            "operation_ids": [              "f9c5615e-fe15-48ce-bec6-cfc1946f1bec",              "56828eae-035a-4396-ba07-51c66d680a04"            ]          }        ]      },      "created_at": "2023-10-18T12:08:09.575388Z",      "last_updated": "2023-10-18T12:08:09.575388Z",      "modified_by": "user@cloudflare.com"    }  ],  "success": true,  "errors": [],  "messages": []}
 ```
 
 ## Maintenance
@@ -834,54 +258,7 @@ Use the `PUT` command to update keys.
 Example using cURL
 
 ```
-
-curl --request PUT \
-
-'https://api.cloudflare.com/client/v4/zones/{zone_id}/token_validation/config/{config_id}/credentials' \
-
---header 'Content-Type: application/json' \
-
---data '{
-
-    "keys": [
-
-        {
-
-            "kty": "EC",
-
-            "use": "sig",
-
-            "kid": "test",
-
-            "x": "-0LNzBheJPn-Zy6JmanTIUX7xc3jgqU714IQY0oU6mw",
-
-            "y": "KONxBybUcRsJQmtu17jMAHsILSw009AuU3ulfUGv3FI",
-
-            "alg": "ES256"
-
-        },
-
-        {
-
-            "kty": "EC",
-
-            "crv": "P-256",
-
-            "kid": "test-2",
-
-            "x": "iIbPRbOeLzjGPvv7iwmzCOTU03R0xDqbenp2D6GUcWo",
-
-            "y": "tDkEh95PnfWwIXciCtdBBVA7wfghx_egmZ1Zcvu2lWw",
-
-            "alg": "ES256"
-
-        }
-
-    ]
-
-}'
-
-
+curl --request PUT \'https://api.cloudflare.com/client/v4/zones/{zone_id}/token_validation/config/{config_id}/credentials' \--header 'Content-Type: application/json' \--data '{    "keys": [        {            "kty": "EC",            "use": "sig",            "kid": "test",            "x": "-0LNzBheJPn-Zy6JmanTIUX7xc3jgqU714IQY0oU6mw",            "y": "KONxBybUcRsJQmtu17jMAHsILSw009AuU3ulfUGv3FI",            "alg": "ES256"        },        {            "kty": "EC",            "crv": "P-256",            "kid": "test-2",            "x": "iIbPRbOeLzjGPvv7iwmzCOTU03R0xDqbenp2D6GUcWo",            "y": "tDkEh95PnfWwIXciCtdBBVA7wfghx_egmZ1Zcvu2lWw",            "alg": "ES256"        }    ]}'
 ```
 
 Make sure to replace `{zone_id}` with the relevant zone ID and add your [authentication credentials](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) header.
@@ -897,36 +274,7 @@ The following example updates one rule and disables another:
 Example using cURL
 
 ```
-
-curl --request PATCH \
-
-"https://api.cloudflare.com/client/v4/zones/{zone_id}/token_validation/rules/bulk"  \
-
---header "Content-Type: application/json" \
-
---data '[
-
-    {
-
-        "id": "714d3dd0-cc59-4911-862f-8a27e22353cc",
-
-        "action": "log",
-
-        "title": "updated title"
-
-    },
-
-    {
-
-        "id": "7124f9bc-d6b5-430d-b488-b6bc2892f2fb",
-
-        "enabled": false
-
-    }
-
-]'
-
-
+curl --request PATCH \"https://api.cloudflare.com/client/v4/zones/{zone_id}/token_validation/rules/bulk"  \--header "Content-Type: application/json" \--data '[    {        "id": "714d3dd0-cc59-4911-862f-8a27e22353cc",        "action": "log",        "title": "updated title"    },    {        "id": "7124f9bc-d6b5-430d-b488-b6bc2892f2fb",        "enabled": false    }]'
 ```
 
 Rules can be reordered by setting a position field in the `PATCH` body.
@@ -936,30 +284,7 @@ This example places rule `714d3dd0-cc59-4911-862f-8a27e22353cc` after rule `7124
 Example using cURL
 
 ```
-
-curl --request PATCH \
-
-"https://api.cloudflare.com/client/v4/zones/{zone_id}/token_validation/rules/bulk" \
-
---header 'Content-Type: application/json' \
-
---data '[
-
-    {
-
-        "id": "714d3dd0-cc59-4911-862f-8a27e22353cc",
-
-        "position": {
-
-            "after": "7124f9bc-d6b5-430d-b488-b6bc2892f2fb"
-
-        }
-
-    }
-
-]'
-
-
+curl --request PATCH \"https://api.cloudflare.com/client/v4/zones/{zone_id}/token_validation/rules/bulk" \--header 'Content-Type: application/json' \--data '[    {        "id": "714d3dd0-cc59-4911-862f-8a27e22353cc",        "position": {            "after": "7124f9bc-d6b5-430d-b488-b6bc2892f2fb"        }    }]'
 ```
 
 This example places rule `714d3dd0-cc59-4911-862f-8a27e22353cc` before rule `7124f9bc-d6b5-430d-b488-b6bc2892f2fb`:
@@ -967,30 +292,7 @@ This example places rule `714d3dd0-cc59-4911-862f-8a27e22353cc` before rule `712
 Example using cURL
 
 ```
-
-curl --request PATCH \
-
-"https://api.cloudflare.com/client/v4/zones/{zone_id}/token_validation/rules/bulk" \
-
---header 'Content-Type: application/json' \
-
---data '[
-
-    {
-
-        "id": "714d3dd0-cc59-4911-862f-8a27e22353cc",
-
-        "position": {
-
-            "before": "7124f9bc-d6b5-430d-b488-b6bc2892f2fb"
-
-        }
-
-    }
-
-]'
-
-
+curl --request PATCH \"https://api.cloudflare.com/client/v4/zones/{zone_id}/token_validation/rules/bulk" \--header 'Content-Type: application/json' \--data '[    {        "id": "714d3dd0-cc59-4911-862f-8a27e22353cc",        "position": {            "before": "7124f9bc-d6b5-430d-b488-b6bc2892f2fb"        }    }]'
 ```
 
 ## Perform JWT validation

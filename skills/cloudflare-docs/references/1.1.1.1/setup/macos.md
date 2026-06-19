@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/1.1.1.1/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -24,35 +24,29 @@ Take note of any DNS addresses you might have set up, and save them in a safe pl
 6. Under **DNS Servers**, select **Add**.
 7. Depending on what you want to configure, choose one of the following DNS addresses for IPv4:  
 Use 1.1.1.1 resolver  
-```  
-1.1.1.1  
-1.0.0.1  
+```
+1.1.1.11.0.0.1  
 ```  
 Block malware with 1.1.1.1 for Families  
-```  
-1.1.1.2  
-1.0.0.2  
+```
+1.1.1.21.0.0.2  
 ```  
 Block malware and adult content with 1.1.1.1 for Families  
-```  
-1.1.1.3  
-1.0.0.3  
+```
+1.1.1.31.0.0.3  
 ```
 8. Depending on what you want to configure, choose one of the following DNS addresses for IPv6:  
 Use 1.1.1.1 resolver  
 ```  
-2606:4700:4700::1111  
-2606:4700:4700::1001  
+2606:4700:4700::11112606:4700:4700::1001  
 ```  
 Block malware with 1.1.1.1 for Families  
 ```  
-2606:4700:4700::1112  
-2606:4700:4700::1002  
+2606:4700:4700::11122606:4700:4700::1002  
 ```  
 Block malware and adult content with 1.1.1.1 for Families  
 ```  
-2606:4700:4700::1113  
-2606:4700:4700::1003  
+2606:4700:4700::11132606:4700:4700::1003  
 ```
 9. Select **OK**.
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -24,8 +24,8 @@ If you plan to direct your users to manually download and configure the Cloudfla
 
 To enroll your device using the client GUI:
 
-* [ Version 2026.2+ ](#tab-panel-7482)
-* [ Version 2026.1 and earlier ](#tab-panel-7483)
+* [ Version 2026.2+ ](#tab-panel-7558)
+* [ Version 2026.1 and earlier ](#tab-panel-7559)
 
 1. [Download](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) and install the Cloudflare One Client.
 2. Launch the Cloudflare One Client.

@@ -6,13 +6,13 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
 # rtk-notification
 
-A component which shows a notification. You need to remove the element after you receive the`rtkNotificationDismiss` event.
+A component which shows a notification. You need to remove the element after you receive the `rtkNotificationDismiss` event.
 
 ## Properties
 
@@ -29,37 +29,18 @@ A component which shows a notification. You need to remove the element after you
 ### Basic Usage
 
 ```
-
 <rtk-notification></rtk-notification>
-
-
 ```
 
 ### With Properties
 
 ```
-
-<rtk-notification
-
- size="md">
-
-</rtk-notification>
-
-
+<rtk-notification size="md"></rtk-notification>
 ```
 
 ```
-
-<script>
-
-  const el = document.querySelector("rtk-notification");
-
-
-  el.paused= true;
-
-</script>
-
-
+<script>  const el = document.querySelector("rtk-notification");
+  el.paused= true;</script>
 ```
 
 ```json

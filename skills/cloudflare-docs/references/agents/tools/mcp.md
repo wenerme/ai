@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,97 +27,27 @@ To build an MCP server instead, refer to [Model Context Protocol (MCP)](https://
 
 Call `addMcpServer()` to connect to a remote MCP server, then pass `this.mcp.getAITools()` to the AI SDK.
 
-* [  JavaScript ](#tab-panel-6511)
-* [  TypeScript ](#tab-panel-6512)
+* [  JavaScript ](#tab-panel-6585)
+* [  TypeScript ](#tab-panel-6586)
 
 JavaScript
 
 ```
-
-import { Agent } from "agents";
-
-import { generateText } from "ai";
-
-import { createWorkersAI } from "workers-ai-provider";
-
-
-export class ToolAgent extends Agent {
-
-  async onStart() {
-
-    await this.addMcpServer("github", "https://mcp.github.com/mcp");
-
-  }
-
-
-  async onRequest(request) {
-
-    const workersai = createWorkersAI({ binding: this.env.AI });
-
-
-    const response = await generateText({
-
-      model: workersai("@cf/zai-org/glm-4.7-flash"),
-
-      prompt: "Use available tools to summarize the latest issue activity.",
-
-      tools: this.mcp.getAITools(),
-
-    });
-
-
-    return new Response(response.text);
-
-  }
-
-}
-
-
+import { Agent } from "agents";import { generateText } from "ai";import { createWorkersAI } from "workers-ai-provider";
+export class ToolAgent extends Agent {  async onStart() {    await this.addMcpServer("github", "https://mcp.github.com/mcp");  }
+  async onRequest(request) {    const workersai = createWorkersAI({ binding: this.env.AI });
+    const response = await generateText({      model: workersai("@cf/zai-org/glm-4.7-flash"),      prompt: "Use available tools to summarize the latest issue activity.",      tools: this.mcp.getAITools(),    });
+    return new Response(response.text);  }}
 ```
 
 TypeScript
 
 ```
-
-import { Agent } from "agents";
-
-import { generateText } from "ai";
-
-import { createWorkersAI } from "workers-ai-provider";
-
-
-export class ToolAgent extends Agent<Env> {
-
-  async onStart() {
-
-    await this.addMcpServer("github", "https://mcp.github.com/mcp");
-
-  }
-
-
-  async onRequest(request: Request) {
-
-    const workersai = createWorkersAI({ binding: this.env.AI });
-
-
-    const response = await generateText({
-
-      model: workersai("@cf/zai-org/glm-4.7-flash"),
-
-      prompt: "Use available tools to summarize the latest issue activity.",
-
-      tools: this.mcp.getAITools(),
-
-    });
-
-
-    return new Response(response.text);
-
-  }
-
-}
-
-
+import { Agent } from "agents";import { generateText } from "ai";import { createWorkersAI } from "workers-ai-provider";
+export class ToolAgent extends Agent<Env> {  async onStart() {    await this.addMcpServer("github", "https://mcp.github.com/mcp");  }
+  async onRequest(request: Request) {    const workersai = createWorkersAI({ binding: this.env.AI });
+    const response = await generateText({      model: workersai("@cf/zai-org/glm-4.7-flash"),      prompt: "Use available tools to summarize the latest issue activity.",      tools: this.mcp.getAITools(),    });
+    return new Response(response.text);  }}
 ```
 
 If the server requires OAuth, `addMcpServer()` returns an authentication state and authorization URL. The connection is persisted in the agent's [SQL storage](https://developers.cloudflare.com/agents/runtime/lifecycle/state/).
@@ -128,57 +58,19 @@ For public MCP servers, no binding configuration is required. Store server URLs,
 
 For MCP servers that require bearer tokens or Cloudflare Access headers, pass custom transport headers when connecting.
 
-* [  JavaScript ](#tab-panel-6509)
-* [  TypeScript ](#tab-panel-6510)
+* [  JavaScript ](#tab-panel-6583)
+* [  TypeScript ](#tab-panel-6584)
 
 JavaScript
 
 ```
-
-await this.addMcpServer("internal", this.env.MCP_SERVER_URL, {
-
-  transport: {
-
-    headers: {
-
-      Authorization: `Bearer ${this.env.MCP_TOKEN}`,
-
-      "CF-Access-Client-Id": this.env.CF_ACCESS_CLIENT_ID,
-
-      "CF-Access-Client-Secret": this.env.CF_ACCESS_CLIENT_SECRET,
-
-    },
-
-  },
-
-});
-
-
+await this.addMcpServer("internal", this.env.MCP_SERVER_URL, {  transport: {    headers: {      Authorization: `Bearer ${this.env.MCP_TOKEN}`,      "CF-Access-Client-Id": this.env.CF_ACCESS_CLIENT_ID,      "CF-Access-Client-Secret": this.env.CF_ACCESS_CLIENT_SECRET,    },  },});
 ```
 
 TypeScript
 
 ```
-
-await this.addMcpServer("internal", this.env.MCP_SERVER_URL, {
-
-  transport: {
-
-    headers: {
-
-      Authorization: `Bearer ${this.env.MCP_TOKEN}`,
-
-      "CF-Access-Client-Id": this.env.CF_ACCESS_CLIENT_ID,
-
-      "CF-Access-Client-Secret": this.env.CF_ACCESS_CLIENT_SECRET,
-
-    },
-
-  },
-
-});
-
-
+await this.addMcpServer("internal", this.env.MCP_SERVER_URL, {  transport: {    headers: {      Authorization: `Bearer ${this.env.MCP_TOKEN}`,      "CF-Access-Client-Id": this.env.CF_ACCESS_CLIENT_ID,      "CF-Access-Client-Secret": this.env.CF_ACCESS_CLIENT_SECRET,    },  },});
 ```
 
 ## Related resources
@@ -187,7 +79,7 @@ await this.addMcpServer("internal", this.env.MCP_SERVER_URL, {
 
 [ Connect to an MCP server ](https://developers.cloudflare.com/agents/model-context-protocol/guides/connect-mcp-client/) Create an Agent that connects to an external MCP server and uses its tools. 
 
-[ Model Context Protocol specification ](https://modelcontextprotocol.io/) Learn about the open protocol for connecting AI applications to external tools and data. 
+[ Model Context Protocol specification ](https://modelcontextprotocol.io/) Learn about the open protocol for connecting AI applications to external tools and data.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/mcp/#page","headline":"MCP · Cloudflare Agents docs","description":"Connect agents to external Model Context Protocol servers and use their tools in model calls.","url":"https://developers.cloudflare.com/agents/tools/mcp/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

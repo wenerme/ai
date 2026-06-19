@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,9 +27,10 @@ To create a [filter](https://developers.cloudflare.com/ddos-protection/advanced-
 1. In the Cloudflare dashboard, go to the **L3/4 DDoS protection** page.  
 [ Go to **DDoS Managed Rules** ](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
 2. Go to **Advanced Protection** \> **Advanced TCP Protection**.
-3. Under the system component for which you are creating the filter (**SYN Flood Protection** or **Out-of-state TCP Protection**), select **Create** next to the type of filter you want to create:  
-   * **Mitigation Filter**: The protection system will drop packets matching the filter expression. - **Monitoring Filter**: The protection system will log packets matching the filter expression.  
-   * **Off Filter**: The protection system will ignore packets matching the filter expression.
+3. Under the system component for which you are creating the filter (**SYN Flood Protection** or **Out-of-state TCP Protection**), select **Create** next to the type of filter you want to create:
+
+  * **Mitigation Filter**: The protection system will drop packets matching the filter expression. - **Monitoring Filter**: The protection system will log packets matching the filter expression.
+  * **Off Filter**: The protection system will ignore packets matching the filter expression.
 4. Under **When incoming packets match**, define a filter expression using the Expression Builder (specifying one or more values for **Field**, **Operator**, and **Value**), or manually enter an expression using the Expression Editor. For more information, refer to [Edit rule expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/).
 5. Select **Save**.
 

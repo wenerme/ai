@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,28 +27,19 @@ Now you need to figure out what you want to add to your model.
 Example formats are below:
 
 ```
-
 ### Human: What is the meaning of life? ### Assistant: 42.
-
-
 ```
 
 If your training row contains newlines, you should wrap it with quotes.
 
 ```
-
 "human: What is the meaning of life? \n bot: 42."
-
-
 ```
 
 Different models, like Mistral, will provide a specific [chat template/instruction format ↗](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1#instruction-format)
 
 ```
-
 <s>[INST] What is the meaning of life? [/INST] 42</s>
-
-
 ```
 
 ## 2\. Configure the HuggingFace Autotrain Advanced Notebook
@@ -69,10 +60,10 @@ Modify the following fields
 
 * **project\_name**: Choose a descriptive name for you to remember later
 * **model\_name**: Choose from the one of the official HuggingFace base models that we support:  
-   * `mistralai/Mistral-7B-Instruct-v0.2`  
-   * `google/gemma-2b-it`  
-   * `google/gemma-7b-it`  
-   * `meta-llama/llama-2-7b-chat-hf`
+  * `mistralai/Mistral-7B-Instruct-v0.2`
+  * `google/gemma-2b-it`
+  * `google/gemma-7b-it`
+  * `meta-llama/llama-2-7b-chat-hf`
 
 ### Optional Section: Push to Hub
 
@@ -118,10 +109,7 @@ If you encounter the following error, it is caused by an Out of Memory error. Yo
 Terminal window
 
 ```
-
 subprocess.CalledProcessError: Command '['/usr/bin/python3', '-m', 'autotrain.trainers.clm', '--training_config', 'blog-instruct/training_params.json']' died with <Signals.SIGKILL: 9>.
-
-
 ```
 
 ## 5\. Download The LoRA

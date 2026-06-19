@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -43,8 +43,8 @@ If the Cloudflare One Client cannot establish a connection to Cloudflare, it wil
 * Some captive portals, particularly those on airlines, may be slow to respond and exceed the captive portal detection timeout. Users will likely see a [CF\_CAPTIVE\_PORTAL\_TIMED\_OUT](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/client-errors/#cf%5Fcaptive%5Fportal%5Ftimed%5Fout) error when they try to connect. For context on the steps leading up to these errors, refer to [Connectivity status](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/connectivity-status/).
 * The Cloudflare One Client may not be able to detect multi-stage captive portals, which redirect the user to different networks during the login process. Users will need to manually disconnect the Cloudflare One Client to get through the captive portal.
 * Some public Wi-Fi networks are incompatible with running the Cloudflare One Client:  
-   * Captive portals that intercept all DNS traffic will block the Cloudflare One Client's [DoH connection](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#overview). Users will likely see a [CF\_NO\_NETWORK](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/client-errors/#cf%5Fno%5Fnetwork) error after they login to the captive portal.  
-   * Captive portals that only allow HTTPS traffic will block the Cloudflare One Client's [Wireguard UDP connection](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#overview). Users will likely see a [CF\_HAPPY\_EYEBALLS\_MITM\_FAILURE](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/client-errors/#cf%5Fhappy%5Feyeballs%5Fmitm%5Ffailure) error after they login to the captive portal.
+  * Captive portals that intercept all DNS traffic will block the Cloudflare One Client's [DoH connection](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#overview). Users will likely see a [CF\_NO\_NETWORK](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/client-errors/#cf%5Fno%5Fnetwork) error after they login to the captive portal.
+  * Captive portals that only allow HTTPS traffic will block the Cloudflare One Client's [Wireguard UDP connection](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#overview). Users will likely see a [CF\_HAPPY\_EYEBALLS\_MITM\_FAILURE](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/client-errors/#cf%5Fhappy%5Feyeballs%5Fmitm%5Ffailure) error after they login to the captive portal.
 
 Check system notifications
 
@@ -71,8 +71,8 @@ Captive portal logs are used by Cloudflare Support to troubleshoot Cloudflare On
 
 To get captive portal logs:
 
-* [ Version 2026.2+ ](#tab-panel-7460)
-* [ Version 2026.1 and earlier ](#tab-panel-7461)
+* [ Version 2026.2+ ](#tab-panel-7536)
+* [ Version 2026.1 and earlier ](#tab-panel-7537)
 
 1. Open a terminal window.
 2. Run the following command:  

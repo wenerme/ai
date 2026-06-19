@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,22 +19,7 @@ Example of video playback with Cloudflare Stream and Shaka Player
 First, create a video element, using the poster attribute to set a preview thumbnail image. Refer to [Display thumbnails](https://developers.cloudflare.com/stream/viewing-videos/displaying-thumbnails/) for instructions on how to generate a thumbnail image using Cloudflare Stream.
 
 ```
-
-<video
-
-  id="video"
-
-  width="640"
-
-  poster="https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/thumbnails/thumbnail.jpg"
-
-  controls
-
-  autoplay
-
-></video>
-
-
+<video  id="video"  width="640"  poster="https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/thumbnails/thumbnail.jpg"  controls  autoplay></video>
 ```
 
 Then listen for `DOMContentLoaded` event, create a new instance of Shaka Player, and load the manifest URI.
@@ -42,25 +27,8 @@ Then listen for `DOMContentLoaded` event, create a new instance of Shaka Player,
 JavaScript
 
 ```
-
-// Replace the manifest URI with an HLS or DASH manifest from Cloudflare Stream
-
-const manifestUri =
-
-  'https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/manifest/video.mpd';
-
-
-document.addEventListener('DOMContentLoaded', () => {
-
-  const video = document.getElementById('video');
-
-  const player = new shaka.Player(video);
-
-  await player.load(manifestUri);
-
-});
-
-
+// Replace the manifest URI with an HLS or DASH manifest from Cloudflare Streamconst manifestUri =  'https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/manifest/video.mpd';
+document.addEventListener('DOMContentLoaded', () => {  const video = document.getElementById('video');  const player = new shaka.Player(video);  await player.load(manifestUri);});
 ```
 
 Refer to the [Shaka Player documentation ↗](https://github.com/shaka-project/shaka-player) for more information.

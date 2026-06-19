@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-crawl-control/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,8 +30,9 @@ Once your domain's visibility is set to **Visible** in Account Settings, you can
 [ Go to **AI Crawl Control** ](https://dash.cloudflare.com/?to=/:account/:zone/ai)
 2. Go to the **Settings** tab.
 3. In the **Pay Per Crawl** card, select **Enable**.
-4. Set your default per crawl price. This is the amount charged for each successful content retrieval (HTTP 200 response) by an AI crawler.  
-   * (Optional) To set different prices for different content, select **Enable custom pricing**. Refer to [Advanced configuration](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/advanced-configuration/) for details.
+4. Set your default per crawl price. This is the amount charged for each successful content retrieval (HTTP 200 response) by an AI crawler.
+
+  * (Optional) To set different prices for different content, select **Enable custom pricing**. Refer to [Advanced configuration](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/advanced-configuration/) for details.
 5. Select **Save**.
 
 After enabling and setting a price, the domain's status in Account Settings will change to **Enabled**.

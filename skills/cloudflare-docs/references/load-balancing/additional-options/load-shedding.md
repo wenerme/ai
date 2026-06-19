@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -61,32 +61,7 @@ Example request
 Request
 
 ```
-
-curl --request PATCH \
-
-"https://api.cloudflare.com/client/v4/accounts/{account_id}/load_balancers/pools/{pool_id}" \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Content-Type: application/json" \
-
---data-binary '{
-
-  "load_shedding": {
-
-    "default_percent": 20,
-
-    "default_policy": "random",
-
-    "session_percent": 0,
-
-    "session_policy": "hash"
-
-  }
-
-}'
-
-
+curl --request PATCH \"https://api.cloudflare.com/client/v4/accounts/{account_id}/load_balancers/pools/{pool_id}" \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data-binary '{  "load_shedding": {    "default_percent": 20,    "default_policy": "random",    "session_percent": 0,    "session_policy": "hash"  }}'
 ```
 
 For more guidance on choosing a shedding policy, see [Shedding policies](#shedding-policies).
@@ -102,8 +77,8 @@ If you see increased traffic to a pool, you may need to shed additional traffic.
 If you need to shed additional pool traffic:
 
 1. Follow the steps outlined in [Step 2](#step-2--shed-default-traffic-from-a-pool).  
-   * In the dashboard, increase the **Shed %** for **Default traffic** and/or **Session affinity traffic**.  
-   * For the API, increase the value for `default_percent` and/or `session_percent`.
+  * In the dashboard, increase the **Shed %** for **Default traffic** and/or **Session affinity traffic**.
+  * For the API, increase the value for `default_percent` and/or `session_percent`.
 
 Since shedding **Session Affinity traffic** will disrupt [existing sessions](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/) and may degrade the customer experience, only enable this option if your pool is in imminent danger of becoming unhealthy or your pool has a high percentage of traffic related to existing sessions. For more guidance, see [Shedding policies](#shedding-policies).
 

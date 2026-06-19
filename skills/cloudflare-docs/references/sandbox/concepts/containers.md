@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,22 +21,9 @@ Install additional software at runtime using standard package managers:
 Terminal window
 
 ```
-
-# Python packages
-
-pip install scikit-learn tensorflow
-
-
-# Node.js packages
-
-npm install express
-
-
-# System packages (requires apt-get update first)
-
-apt-get update && apt-get install -y redis-server
-
-
+# Python packagespip install scikit-learn tensorflow
+# Node.js packagesnpm install express
+# System packages (requires apt-get update first)apt-get update && apt-get install -y redis-server
 ```
 
 ## Filesystem
@@ -55,14 +42,7 @@ The container provides a standard Linux filesystem. You can read and write anywh
 TypeScript
 
 ```
-
-await sandbox.writeFile('/workspace/app.py', 'print("Hello")');
-
-await sandbox.writeFile('/tmp/cache.json', '{}');
-
-await sandbox.exec('ls -la /workspace');
-
-
+await sandbox.writeFile('/workspace/app.py', 'print("Hello")');await sandbox.writeFile('/tmp/cache.json', '{}');await sandbox.exec('ls -la /workspace');
 ```
 
 ## Process management
@@ -74,12 +54,7 @@ Processes run as you'd expect in a regular Linux environment.
 TypeScript
 
 ```
-
-const result = await sandbox.exec('npm test');
-
-// Waits for completion, returns output
-
-
+const result = await sandbox.exec('npm test');// Waits for completion, returns output
 ```
 
 **Background processes** (`startProcess()`):
@@ -87,12 +62,7 @@ const result = await sandbox.exec('npm test');
 TypeScript
 
 ```
-
-const process = await sandbox.startProcess('node server.js');
-
-// Returns immediately, process runs in background
-
-
+const process = await sandbox.startProcess('node server.js');// Returns immediately, process runs in background
 ```
 
 ## Network capabilities
@@ -102,14 +72,7 @@ const process = await sandbox.startProcess('node server.js');
 Terminal window
 
 ```
-
-curl https://api.example.com/data
-
-pip install requests
-
-npm install express
-
-
+curl https://api.example.com/datapip install requestsnpm install express
 ```
 
 **Inbound connections** require port exposure:
@@ -117,16 +80,7 @@ npm install express
 TypeScript
 
 ```
-
-const { hostname } = new URL(request.url);
-
-await sandbox.startProcess('python -m http.server 8000');
-
-const exposed = await sandbox.exposePort(8000, { hostname });
-
-console.log(exposed.url); // Public URL
-
-
+const { hostname } = new URL(request.url);await sandbox.startProcess('python -m http.server 8000');const exposed = await sandbox.exposePort(8000, { hostname });console.log(exposed.url); // Public URL
 ```
 
 Local development
@@ -138,12 +92,7 @@ When using `wrangler dev`, you must add `EXPOSE` directives to your Dockerfile f
 Terminal window
 
 ```
-
-redis-server &      # Start server
-
-redis-cli ping      # Connect locally
-
-
+redis-server &      # Start serverredis-cli ping      # Connect locally
 ```
 
 ## Security
@@ -164,10 +113,7 @@ To run untrusted code, use separate sandboxes per user:
 TypeScript
 
 ```
-
 const sandbox = getSandbox(env.Sandbox, `user-${userId}`);
-
-
 ```
 
 ## Limitations

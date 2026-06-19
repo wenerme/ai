@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -48,10 +48,10 @@ You must select **Application permissions**; delegated permissions will not work
 4. Next, go to **Policies**.
 5. [Create a new Conditional Access policy ↗](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-conditional-access-policies) or select an existing policy.
 6. Assign the conditional access policy to an authentication context:  
-   1. In the policy builder, select **Target resources**.  
-   2. In the **Select what this policy applies to** dropdown, select _Authentication context_.  
-   3. Select the authentication context that will use this policy.  
-   4. Save the policy.
+  1. In the policy builder, select **Target resources**.
+  2. In the **Select what this policy applies to** dropdown, select _Authentication context_.
+  3. Select the authentication context that will use this policy.
+  4. Save the policy.
 
 ## Sync Conditional Access with Zero Trust
 
@@ -72,11 +72,12 @@ To enforce your Conditional Access policies on a Cloudflare Access application:
 2. Select **Create new application**.
 3. Select **Self-hosted and private**.
 4. Select **Add public hostname** and enter the target URL of the protected application.
-5. Select **Create new policy** and build an [Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) using the _Azure AD - Auth context_ selector. For example:  
-| Action  | Rule type               | Selector                  | Value        |  
-| ------- | ----------------------- | ------------------------- | ------------ |  
-| Allow   | Include                 | Emails ending in          | @example.com |  
-| Require | Azure AD - Auth context | Require compliant devices |              |
+5. Select **Create new policy** and build an [Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) using the _Azure AD - Auth context_ selector. For example:
+
+| Action | Rule type | Selector                | Value                     |
+| ------ | --------- | ----------------------- | ------------------------- |
+| Allow  | Include   | Emails ending in        | @example.com              |
+|        | Require   | Azure AD - Auth context | Require compliant devices |
 6. Add this policy to your application configuration.
 7. For **Identity providers**, select your Microsoft Entra ID integration.
 8. Follow the remaining [self-hosted application creation steps](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/) to publish the application.

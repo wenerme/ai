@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tunnel/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,12 +25,7 @@ When `cloudflared` cannot reach the Cloudflare network, it [logs](https://develo
 #### `edge discovery: error looking up Cloudflare edge IPs`
 
 ```
-
-ERR edge discovery: error looking up Cloudflare edge IPs: the DNS query failed
-
-    error="lookup _v2-origintunneld._tcp.argotunnel.com on 172.19.64.1:53: no such host"
-
-
+ERR edge discovery: error looking up Cloudflare edge IPs: the DNS query failed    error="lookup _v2-origintunneld._tcp.argotunnel.com on 172.19.64.1:53: no such host"
 ```
 
 This error means the DNS resolver configured on your machine cannot resolve the SRV records that `cloudflared` uses to discover the [Cloudflare Tunnel destination IPs](https://developers.cloudflare.com/tunnel/configuration/#firewall-rules). Common causes include corporate DNS resolvers that strip or block SRV records, and DNS resolvers that return compressed SRV records.
@@ -42,10 +37,7 @@ On the `cloudflared` host machine, run:
 Terminal window
 
 ```
-
 dig SRV _v2-origintunneld._tcp.argotunnel.com
-
-
 ```
 
 If you receive `SERVFAIL`, `NXDOMAIN`, or an empty answer, test against Cloudflare's public resolver:
@@ -53,10 +45,7 @@ If you receive `SERVFAIL`, `NXDOMAIN`, or an empty answer, test against Cloudfla
 Terminal window
 
 ```
-
 dig SRV _v2-origintunneld._tcp.argotunnel.com @1.1.1.1
-
-
 ```
 
 **To resolve:**
@@ -67,14 +56,7 @@ dig SRV _v2-origintunneld._tcp.argotunnel.com @1.1.1.1
 #### `DNS query failed ... i/o timeout`
 
 ```
-
-ERR edge discovery: error looking up Cloudflare edge IPs: the DNS query failed
-
-    error="lookup _v2-origintunneld._tcp.argotunnel.com on 127.0.0.11:53:
-
-    read udp 127.0.0.1:53467->127.0.0.11:53: i/o timeout"
-
-
+ERR edge discovery: error looking up Cloudflare edge IPs: the DNS query failed    error="lookup _v2-origintunneld._tcp.argotunnel.com on 127.0.0.11:53:    read udp 127.0.0.1:53467->127.0.0.11:53: i/o timeout"
 ```
 
 This variant means DNS queries from `cloudflared` are being blocked or dropped entirely — the resolver never responds. This is common in container environments (Docker, Kubernetes) where the internal DNS resolver (`127.0.0.11`) is unreachable or misconfigured.
@@ -90,14 +72,7 @@ This variant means DNS queries from `cloudflared` are being blocked or dropped e
 #### `Failed to dial a quic connection`
 
 ```
-
-ERR Failed to dial a quic connection error="failed to dial to edge with quic:
-
-    timeout: handshake did not complete in time" connIndex=0 ip=198.41.192.227
-
-INF Retrying connection in up to 2s connIndex=0 ip=198.41.192.227
-
-
+ERR Failed to dial a quic connection error="failed to dial to edge with quic:    timeout: handshake did not complete in time" connIndex=0 ip=198.41.192.227INF Retrying connection in up to 2s connIndex=0 ip=198.41.192.227
 ```
 
 This error means `cloudflared` resolved the [Cloudflare Tunnel destination IPs](https://developers.cloudflare.com/tunnel/configuration/#firewall-rules) but could not complete a QUIC handshake over UDP port `7844`. Your network or firewall is blocking outbound UDP traffic to Cloudflare.
@@ -105,10 +80,7 @@ This error means `cloudflared` resolved the [Cloudflare Tunnel destination IPs](
 `cloudflared` retries with exponential backoff (2, 4, 8, 16, 32, up to 64 seconds). After exhausting retries, it falls back to HTTP/2 over TCP:
 
 ```
-
 INF Switching to fallback protocol http2 connIndex=0
-
-
 ```
 
 If the fallback also fails, you will see a [TCP connection timeout](#tcp-connection-timeout) error.
@@ -120,10 +92,7 @@ On the `cloudflared` host machine, test connectivity on port `7844`:
 Terminal window
 
 ```
-
 nc -uvz -w 3 198.41.192.227 7844
-
-
 ```
 
 Replace `198.41.192.227` with the IP shown in your [error message](#failed-to-dial-a-quic-connection). If the port is closed or blocked by a firewall, the command will return `Connection refused` or time out.
@@ -138,16 +107,7 @@ Replace `198.41.192.227` with the IP shown in your [error message](#failed-to-di
 #### `DialContext error: dial tcp ... i/o timeout`
 
 ```
-
-ERR Unable to establish connection with Cloudflare edge
-
-    error="DialContext error: dial tcp 198.41.200.43:7844: i/o timeout" connIndex=0
-
-ERR Serve tunnel error
-
-    error="DialContext error: dial tcp 198.41.200.43:7844: i/o timeout" connIndex=0
-
-
+ERR Unable to establish connection with Cloudflare edge    error="DialContext error: dial tcp 198.41.200.43:7844: i/o timeout" connIndex=0ERR Serve tunnel error    error="DialContext error: dial tcp 198.41.200.43:7844: i/o timeout" connIndex=0
 ```
 
 This error means `cloudflared` cannot reach Cloudflare over TCP port `7844`. If you also see the [QUIC handshake timeout](#failed-to-dial-a-quic-connection) above it, both UDP and TCP are blocked — the tunnel cannot connect at all.
@@ -159,10 +119,7 @@ As a quick test, run:
 Terminal window
 
 ```
-
 curl -v https://region1.v2.argotunnel.com:7844
-
-
 ```
 
 If the connection hangs, traffic is being dropped between your host and Cloudflare.
@@ -172,10 +129,7 @@ To test if `cloudflared` can connect on port `7844`, run:
 Terminal window
 
 ```
-
 nc -vz -w 3 198.41.200.43 7844
-
-
 ```
 
 Replace `198.41.200.43` with the IP shown in your [error message](#dialcontext-error-dial-tcp--io-timeout). If the port is closed or blocked by a firewall, the command will return `Connection refused` or time out.
@@ -200,19 +154,11 @@ If you encounter the following error when running a tunnel, double check your `c
 Terminal window
 
 ```
-
 cloudflared tunnel run
-
-
 ```
 
 ```
-
-2021-06-04T06:21:16Z INF Starting tunnel tunnelID=928655cc-7f95-43f2-8539-2aba6cf3592d
-
-Tunnel credentials file '/root/.cloudflared/928655cc-7f95-43f2-8539-2aba6cf3592d.json' doesn't exist or is not a file
-
-
+2021-06-04T06:21:16Z INF Starting tunnel tunnelID=928655cc-7f95-43f2-8539-2aba6cf3592dTunnel credentials file '/root/.cloudflared/928655cc-7f95-43f2-8539-2aba6cf3592d.json' doesn't exist or is not a file
 ```
 
 ## My tunnel fails to authenticate.
@@ -261,10 +207,7 @@ To identify the specific cause, review your [Tunnel logs](https://developers.clo
 If the origin service has stopped or never started, `cloudflared` logs will show an error similar to:
 
 ```
-
 error="dial tcp [::1]:8080: connect: connection refused"
-
-
 ```
 
 To resolve, verify the service is running and listening on the expected port:
@@ -272,10 +215,7 @@ To resolve, verify the service is running and listening on the expected port:
 Terminal window
 
 ```
-
 curl -v http://localhost:8080
-
-
 ```
 
 If the service is not running, start or restart it. You can confirm the service is listening by running `ss -tlnp | grep <PORT>` (Linux) or `lsof -iTCP -sTCP:LISTEN -nP | grep <PORT>` (macOS).
@@ -285,10 +225,7 @@ If the service is not running, start or restart it. You can confirm the service 
 If the origin expects HTTPS but the tunnel route specifies `http://`, or vice versa, `cloudflared` logs will show an error similar to:
 
 ```
-
 error="net/http: HTTP/1.x transport connection broken: malformed HTTP response \"\x15\x03\x01\x00\x02\x02\""
-
-
 ```
 
 To resolve, update the service URL in your tunnel route to match the [protocol](https://developers.cloudflare.com/tunnel/routing/#supported-protocols) your origin expects. For example, change `http://localhost:8080` to `https://localhost:8080`. If you are using a locally-managed tunnel, update your ingress rule in the [configuration file](https://developers.cloudflare.com/tunnel/other-tunnel-types/local-management/configuration-file/).
@@ -302,10 +239,7 @@ If the port in your tunnel route does not match the port your service is listeni
 If the origin presents a TLS certificate that `cloudflared` cannot verify, the logs will show an error similar to:
 
 ```
-
 error="x509: certificate is valid for example.com, not localhost"
-
-
 ```
 
 This commonly occurs when the origin uses a self-signed certificate or when an SSL/TLS inspection proxy sits between `cloudflared` and the origin.
@@ -314,27 +248,15 @@ To resolve, use one of the following approaches:
 
 * Set [originServerName](https://developers.cloudflare.com/tunnel/configuration/#originservername) to the hostname on the origin certificate in your tunnel route. If you are using a locally-managed tunnel, here is an example of a [configuration file](https://developers.cloudflare.com/tunnel/other-tunnel-types/local-management/configuration-file/):  
 ```  
-ingress:  
-  - hostname: app.example.com  
-    service: https://localhost:443  
-    originRequest:  
-      originServerName: app.example.com  
+ingress:  - hostname: app.example.com    service: https://localhost:443    originRequest:      originServerName: app.example.com  
 ```
 * Provide the CA certificate using [caPool](https://developers.cloudflare.com/tunnel/configuration/#capool):  
 ```  
-ingress:  
-  - hostname: app.example.com  
-    service: https://localhost:443  
-    originRequest:  
-      caPool: /path/to/ca-cert.pem  
+ingress:  - hostname: app.example.com    service: https://localhost:443    originRequest:      caPool: /path/to/ca-cert.pem  
 ```
 * As a last resort, disable TLS verification with [noTLSVerify](https://developers.cloudflare.com/tunnel/configuration/#notlsverify). This is not recommended for production environments.  
 ```  
-ingress:  
-  - hostname: app.example.com  
-    service: https://localhost:443  
-    originRequest:  
-      noTLSVerify: true  
+ingress:  - hostname: app.example.com    service: https://localhost:443    originRequest:      noTLSVerify: true  
 ```
 
 ## I see `ERR_TOO_MANY_REDIRECTS` when attempting to connect to an Access self-hosted app.
@@ -342,18 +264,7 @@ ingress:
 This error occurs when `cloudflared` does not recognize the SSL/TLS certificate presented by your origin. To resolve the issue, set the [origin server name](https://developers.cloudflare.com/tunnel/configuration/#originservername) parameter to the hostname on your origin certificate. Here is an example of a locally-managed tunnel configuration:
 
 ```
-
-ingress:
-
-  - hostname: test.example.com
-
-    service: https://localhost:443
-
-    originRequest:
-
-      originServerName: test.example.com
-
-
+ingress:  - hostname: test.example.com    service: https://localhost:443    originRequest:      originServerName: test.example.com
 ```
 
 ## `cloudflared access` shows an error `websocket: bad handshake`.

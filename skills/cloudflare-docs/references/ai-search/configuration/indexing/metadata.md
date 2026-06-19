@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -44,18 +44,7 @@ Before custom metadata can be extracted, define a schema in your AI Search confi
 TypeScript
 
 ```
-
-custom_metadata: [
-
-  { field_name: "category", data_type: "text" },
-
-  { field_name: "version", data_type: "number" },
-
-  { field_name: "is_public", data_type: "boolean" },
-
-];
-
-
+custom_metadata: [  { field_name: "category", data_type: "text" },  { field_name: "version", data_type: "number" },  { field_name: "is_public", data_type: "boolean" },];
 ```
 
 **Schema constraints:**
@@ -95,14 +84,7 @@ When you modify the `custom_metadata` schema:
 If file metadata exceeds size limits, the metadata is replaced with an error indicator:
 
 ```
-
-{
-
-  "file": { "error": "metadata is too large" }
-
-}
-
-
+{  "file": { "error": "metadata is too large" }}
 ```
 
 To avoid this, keep individual metadata values concise.

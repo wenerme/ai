@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waiting-room/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -124,83 +124,13 @@ This is a simple query to fetch metrics values. You can filter the data with the
 Request
 
 ```
-
-{
-
-  viewer {
-
-    zones(filter: {zoneTag: "example-zone"}) {
-
-      waitingRoomAnalyticsAdaptive(limit: 3, filter: {datetime_gt: "2023-03-05T19:14:30Z", datetime_lt: "2023-03-07T19:13:00Z", waitingRoomId: "example-waiting-room-id"}) {
-
-        totalActiveUsers
-
-          newUsersPerMinutes
-
-      }
-
-    }
-
-  }
-
-
+{  viewer {    zones(filter: {zoneTag: "example-zone"}) {      waitingRoomAnalyticsAdaptive(limit: 3, filter: {datetime_gt: "2023-03-05T19:14:30Z", datetime_lt: "2023-03-07T19:13:00Z", waitingRoomId: "example-waiting-room-id"}) {        totalActiveUsers          newUsersPerMinutes      }    }  }
 ```
 
 Response
 
 ```
-
-{
-
-  "data": {
-
-    "viewer": {
-
-      "zones": [
-
-        {
-
-          "waitingRoomAnalyticsAdaptive": [
-
-            {
-
-              "newUsersPerMinute": 77,
-
-              "totalActiveUsers": 1023
-
-            },
-
-            {
-
-              "newUsersPerMinute": 113,
-
-              "totalActiveUsers": 1009
-
-            },
-
-            {
-
-              "newUsersPerMinute": 99,
-
-              "totalActiveUsers": 927
-
-            }
-
-          ]
-
-        }
-
-      ]
-
-    }
-
-  },
-
-  "errors": null
-
-}
-
-
+{  "data": {    "viewer": {      "zones": [        {          "waitingRoomAnalyticsAdaptive": [            {              "newUsersPerMinute": 77,              "totalActiveUsers": 1023            },            {              "newUsersPerMinute": 113,              "totalActiveUsers": 1009            },            {              "newUsersPerMinute": 99,              "totalActiveUsers": 927            }          ]        }      ]    }  },  "errors": null}
 ```
 
 Find the average of total active users and new users per minute over a certain period, and aggregate this data over a period of 15 minutes.
@@ -210,119 +140,13 @@ This query calculates the average of total active users and new users per minute
 Request
 
 ```
-
-{
-
-  viewer {
-
-    zones(filter: {zoneTag: "example-zone"}) {
-
-      waitingRoomAnalyticsAdaptiveGroups(limit: 10, filter: {datetime_geq: "2023-03-15T04:00:00Z", datetime_leq: "2023-03-15T04:45:00Z", waitingRoomId: "example-waiting-room-id"}, orderBy: [datetimeFifteenMinutes_ASC]) {
-
-        avg {
-
-          totalActiveUsers
-
-          newUsersPerMinute
-
-        }
-
-        dimensions {
-
-          datetimeFifteenMinutes
-
-        }
-
-      }
-
-
+{  viewer {    zones(filter: {zoneTag: "example-zone"}) {      waitingRoomAnalyticsAdaptiveGroups(limit: 10, filter: {datetime_geq: "2023-03-15T04:00:00Z", datetime_leq: "2023-03-15T04:45:00Z", waitingRoomId: "example-waiting-room-id"}, orderBy: [datetimeFifteenMinutes_ASC]) {        avg {          totalActiveUsers          newUsersPerMinute        }        dimensions {          datetimeFifteenMinutes        }      }
 ```
 
 Response
 
 ```
-
-{
-
-  "data": {
-
-    "viewer": {
-
-      "zones": [
-
-        {
-
-          "waitingRoomAnalyticsAdaptiveGroups": [
-
-            {
-
-              "avg": {
-
-                "newUsersPerMinute": 119,
-
-                "totalActiveUsers": 1180
-
-              },
-
-              "dimensions": {
-
-                "datetimeFifteenMinutes": "2023-03-15T04:00:00Z"
-
-              }
-
-            },
-
-            {
-
-              "avg": {
-
-                "newUsersPerMinute": 146,
-
-                "totalActiveUsers": 961
-
-              },
-
-              "dimensions": {
-
-                "datetimeFifteenMinutes": "2023-03-15T04:15:00Z"
-
-              }
-
-            },
-
-            {
-
-              "avg": {
-
-                "newUsersPerMinute": 144,
-
-                "totalActiveUsers": 1015
-
-              },
-
-              "dimensions": {
-
-                "datetimeFifteenMinutes": "2023-03-15T04:30:00Z"
-
-              }
-
-            }
-
-          ]
-
-        }
-
-      ]
-
-    }
-
-  },
-
-  "errors": null
-
-}
-
-
+{  "data": {    "viewer": {      "zones": [        {          "waitingRoomAnalyticsAdaptiveGroups": [            {              "avg": {                "newUsersPerMinute": 119,                "totalActiveUsers": 1180              },              "dimensions": {                "datetimeFifteenMinutes": "2023-03-15T04:00:00Z"              }            },            {              "avg": {                "newUsersPerMinute": 146,                "totalActiveUsers": 961              },              "dimensions": {                "datetimeFifteenMinutes": "2023-03-15T04:15:00Z"              }            },            {              "avg": {                "newUsersPerMinute": 144,                "totalActiveUsers": 1015              },              "dimensions": {                "datetimeFifteenMinutes": "2023-03-15T04:30:00Z"              }            }          ]        }      ]    }  },  "errors": null}
 ```
 
 Find the weighted averages of time on origin (50th percentile) and total time waited (90th percentile) for a certain period and aggregate this data over one hour.
@@ -332,83 +156,13 @@ This query calculates the weighted averages of the metrics for a certain period 
 Request
 
 ```
-
-{
-
-  viewer {
-
-    zones(filter: {zoneTag: "example-zone"}) {
-
-      waitingRoomAnalyticsAdaptiveGroups(limit: 10, filter: {datetime_geq: "2023-03-15T04:00:00Z", datetime_leq: "2023-03-15T04:45:00Z", waitingRoomId: "example-waiting-room-id"}, orderBy: [datetimeHour_ASC]) {
-
-        avgWeighted {
-
-          timeOnOriginP50
-
-          totalTimeWaitedP90
-
-        }
-
-        dimensions {
-
-          datetimeHour
-
-        }
-
-      }
-
-
+{  viewer {    zones(filter: {zoneTag: "example-zone"}) {      waitingRoomAnalyticsAdaptiveGroups(limit: 10, filter: {datetime_geq: "2023-03-15T04:00:00Z", datetime_leq: "2023-03-15T04:45:00Z", waitingRoomId: "example-waiting-room-id"}, orderBy: [datetimeHour_ASC]) {        avgWeighted {          timeOnOriginP50          totalTimeWaitedP90        }        dimensions {          datetimeHour        }      }
 ```
 
 Response
 
 ```
-
-{
-
-  "data": {
-
-    "viewer": {
-
-      "zones": [
-
-        {
-
-          "waitingRoomAnalyticsAdaptiveGroups": [
-
-            {
-
-              "avgWeighted": {
-
-                "timeOnOriginP50": 99.19,
-
-                "totalTimeWaitedP90": 1625.63
-
-              },
-
-              "dimensions": {
-
-                "datetimeHour": "2023-03-15T04:00:00Z"
-
-              }
-
-            }
-
-          ]
-
-        }
-
-      ]
-
-    }
-
-  },
-
-  "errors": null
-
-}
-
-
+{  "data": {    "viewer": {      "zones": [        {          "waitingRoomAnalyticsAdaptiveGroups": [            {              "avgWeighted": {                "timeOnOriginP50": 99.19,                "totalTimeWaitedP90": 1625.63              },              "dimensions": {                "datetimeHour": "2023-03-15T04:00:00Z"              }            }          ]        }      ]    }  },  "errors": null}
 ```
 
 ## Why is there no data for my waiting room?

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -61,20 +61,7 @@ Hello World with Netlify functions:
 JavaScript
 
 ```
-
-exports.handler = async function (event, context) {
-
-  return {
-
-    statusCode: 200,
-
-    body: JSON.stringify({ message: "Hello World" }),
-
-  };
-
-};
-
-
+exports.handler = async function (event, context) {  return {    statusCode: 200,    body: JSON.stringify({ message: "Hello World" }),  };};
 ```
 
 Hello World with Pages Functions:
@@ -82,14 +69,7 @@ Hello World with Pages Functions:
 JavaScript
 
 ```
-
-export async function onRequestPost(request) {
-
-  return new Response(`Hello world`);
-
-}
-
-
+export async function onRequestPost(request) {  return new Response(`Hello world`);}
 ```
 
 ## Other Netlify configurations

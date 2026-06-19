@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,27 +35,8 @@ Pre-meeting setup screen view controller. Provides video preview, audio and vide
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let setupVC = RtkSetupViewController(
-
-    meetingInfo: meetingInfo,
-
-    meeting: rtkClient,
-
-    completion: {
-
-        print("Setup complete")
-
-    }
-
-)
-
-self.present(setupVC, animated: true)
-
-
+let setupVC = RtkSetupViewController(    meetingInfo: meetingInfo,    meeting: rtkClient,    completion: {        print("Setup complete")    })self.present(setupVC, animated: true)
 ```
 
 ### With delegate
@@ -63,37 +44,8 @@ self.present(setupVC, animated: true)
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-class ViewController: UIViewController, SetupViewControllerDelegate {
-
-    func showSetupScreen() {
-
-        let setupVC = RtkSetupViewController(
-
-            meetingInfo: meetingInfo,
-
-            meeting: rtkClient,
-
-            completion: {
-
-                self.dismiss(animated: true)
-
-            }
-
-        )
-
-        setupVC.delegate = self
-
-        self.present(setupVC, animated: true)
-
-    }
-
-}
-
-
+class ViewController: UIViewController, SetupViewControllerDelegate {    func showSetupScreen() {        let setupVC = RtkSetupViewController(            meetingInfo: meetingInfo,            meeting: rtkClient,            completion: {                self.dismiss(animated: true)            }        )        setupVC.delegate = self        self.present(setupVC, animated: true)    }}
 ```
 
 ```json

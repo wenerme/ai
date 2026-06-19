@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,10 +22,11 @@ To resolve private DNS queries:
 2. Under **Networks** \> **Routes**, verify that the IP address of your internal DNS resolver is included in the tunnel.  
 Note  
 Ensure that **Split Tunnels** are configured to [include traffic to private IPs and hostnames](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/#3-route-private-network-ips-through-the-cloudflare-one-client).
-3. Route specific DNS queries to your internal DNS resolver using one of the following options:  
-   * [Create a Local Domain Fallback entry](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) that points to the internal DNS resolver. For example, you can instruct the Cloudflare One Client to resolve all requests for `myorg.privatecorp` through an internal resolver at `10.0.0.25` rather than attempting to resolve this publicly.  
-   * Alternatively, [create a resolver policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#create-a-resolver-policy) that points to the internal DNS resolver.  
-   [Resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/) provide similar functionality to Local Domain Fallback but occur in Cloudflare Gateway rather than on the local device. This option is recommended if you want more granular control over private DNS resolution. For example, you can ensure that all users in a specific geography use the private DNS server closest to them, ensure that specific conditions are met before resolving private DNS traffic, and apply [Gateway DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/) to private DNS traffic.
+3. Route specific DNS queries to your internal DNS resolver using one of the following options:
+
+  * [Create a Local Domain Fallback entry](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) that points to the internal DNS resolver. For example, you can instruct the Cloudflare One Client to resolve all requests for `myorg.privatecorp` through an internal resolver at `10.0.0.25` rather than attempting to resolve this publicly.
+  * Alternatively, [create a resolver policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#create-a-resolver-policy) that points to the internal DNS resolver.  
+  [Resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/) provide similar functionality to Local Domain Fallback but occur in Cloudflare Gateway rather than on the local device. This option is recommended if you want more granular control over private DNS resolution. For example, you can ensure that all users in a specific geography use the private DNS server closest to them, ensure that specific conditions are met before resolving private DNS traffic, and apply [Gateway DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/) to private DNS traffic.
 4. [Enable the Gateway proxy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/#turn-on-the-gateway-proxy) for TCP and UDP.
 5. Finally, ensure that your tunnel uses QUIC as the default [transport protocol](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/#protocol). This will enable `cloudflared` to proxy UDP-based traffic which is required in most cases to resolve DNS queries.
 
@@ -38,10 +39,7 @@ For testing, run a `dig` command for the internal DNS service:
 Terminal window
 
 ```
-
 dig AAAA www.myorg.privatecorp
-
-
 ```
 
 The `dig` command will work because `myorg.privatecorp` was configured above as a fallback domain. If you skip that step, you can still force `dig` to use your private DNS resolver:
@@ -49,10 +47,7 @@ The `dig` command will work because `myorg.privatecorp` was configured above as 
 Terminal window
 
 ```
-
 dig @10.0.0.25 AAAA www.myorg.privatecorp
-
-
 ```
 
 Both `dig` commands will fail if the Cloudflare One Client is disabled on your end user's device.

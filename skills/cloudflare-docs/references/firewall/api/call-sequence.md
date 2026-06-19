@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/firewall/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,75 +37,13 @@ Below is an example call and response using this method:
 Request
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/firewall/rules" \
-
---header "X-Auth-Email: <EMAIL>" \
-
---header "X-Auth-Key: <API_KEY>" \
-
---header "Content-Type: application/json" \
-
---data '[
-
-  {
-
-    "filter": {
-
-      "expression": "http.request.uri.path contains \"/api/\" and ip.src eq 93.184.216.34"
-
-    },
-
-    "action": "block"
-
-  }
-
-]'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/firewall/rules" \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '[  {    "filter": {      "expression": "http.request.uri.path contains \"/api/\" and ip.src eq 93.184.216.34"    },    "action": "block"  }]'
 ```
 
 Response
 
 ```
-
-{
-
-  "result": [
-
-    {
-
-      "id": "<RULE_ID>",
-
-      "paused": false,
-
-      "action": "block",
-
-      "priority": null,
-
-      "filter": {
-
-        "id": "<FILTER_ID>",
-
-        "expression": "http.request.uri.path contains \"/api/\" and ip.src eq 93.184.216.34",
-
-        "paused": false
-
-      }
-
-    }
-
-  ],
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": [    {      "id": "<RULE_ID>",      "paused": false,      "action": "block",      "priority": null,      "filter": {        "id": "<FILTER_ID>",        "expression": "http.request.uri.path contains \"/api/\" and ip.src eq 93.184.216.34",        "paused": false      }    }  ],  "success": true,  "errors": [],  "messages": []}
 ```
 
 However, this approach has some disadvantages:

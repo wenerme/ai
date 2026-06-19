@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,9 +17,10 @@ To enable Cloudflare for SaaS for your account:
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.  
 [ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
 2. Select **Enable**.
-3. The next step depends on the zone's plan:  
-   * **Enterprise**: Eligible accounts can preview this product as a [non-contract service](https://developers.cloudflare.com/billing/understand/preview-services/), which provides full access free of metered usage fees, limits, and certain other restrictions. If you do not have access, contact your account team.  
-   * **Non-enterprise**: Enter payment information.
+3. The next step depends on the zone's plan:
+
+  * **Enterprise**: Eligible accounts can preview this product as a [non-contract service](https://developers.cloudflare.com/billing/understand/preview-services/), which provides full access free of metered usage fees, limits, and certain other restrictions. If you do not have access, contact your account team.
+  * **Non-enterprise**: Enter payment information.
 
 Note
 

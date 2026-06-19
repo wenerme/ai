@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,41 +28,15 @@ A confirmation modal.
 ### Basic Usage
 
 ```
-
 import { RtkOverlayModal } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return <RtkOverlayModal />;
-
-}
-
-
+function MyComponent() {  return <RtkOverlayModal />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkOverlayModal } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkOverlayModal
-
-      meeting={meeting}
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkOverlayModal      meeting={meeting}    />  );}
 ```
 
 ```json

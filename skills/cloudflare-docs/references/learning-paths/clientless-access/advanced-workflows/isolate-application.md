@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -64,13 +64,13 @@ with HTTP policies applied"]
 
 **Policy 1: Allow employees who pass device posture checks**
 
-* [ Dashboard ](#tab-panel-9031)
-* [ API ](#tab-panel-9032)
+* [ Dashboard ](#tab-panel-9107)
+* [ API ](#tab-panel-9108)
 
-| Action  | Rule type                                                                                                                                             | Selector                 | Value     |
-| ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ | --------- |
-| Allow   | Include                                                                                                                                               | Emails ending in         | @team.com |
-| Require | [Device Posture - Serial Number List](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/corp-device/) | Corporate serial numbers |           |
+| Action | Rule type | Selector                                                                                                                                              | Value                    |
+| ------ | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ |
+| Allow  | Include   | Emails ending in                                                                                                                                      | @team.com                |
+|        | Require   | [Device Posture - Serial Number List](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/corp-device/) | Corporate serial numbers |
 
 | Additional settings | Status   |
 | ------------------- | -------- |
@@ -79,62 +79,15 @@ with HTTP policies applied"]
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_UUID/policies \
-
---header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "decision": "allow",
-
-  "name": "Allow employees who pass device posture checks",
-
-  "include": [
-
-    {
-
-      "email_domain": {
-
-        "domain": "team.com"
-
-      }
-
-    }
-
-  ],
-
-  "exclude": [],
-
-  "require": [
-
-    {
-
-      "device_posture": {
-
-        "integration_uid": "<SERIAL_NUMBER_LIST_UUID>"
-
-      }
-
-    }
-
-  ],
-
-  "precedence": 1
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_UUID/policies \--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \--header "Content-Type: application/json" \--data '{  "decision": "allow",  "name": "Allow employees who pass device posture checks",  "include": [    {      "email_domain": {        "domain": "team.com"      }    }  ],  "exclude": [],  "require": [    {      "device_posture": {        "integration_uid": "<SERIAL_NUMBER_LIST_UUID>"      }    }  ],  "precedence": 1}'
 ```
 
 To create a list of serial numbers, refer to [Create Zero Trust list](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/lists/methods/create/).
 
 **Policy 2: Allow and isolate contractors**
 
-* [ Dashboard ](#tab-panel-9033)
-* [ API ](#tab-panel-9034)
+* [ Dashboard ](#tab-panel-9109)
+* [ API ](#tab-panel-9110)
 
 | Action | Rule type | Selector         | Value                       |
 | ------ | --------- | ---------------- | --------------------------- |
@@ -147,54 +100,7 @@ To create a list of serial numbers, refer to [Create Zero Trust list](https://de
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_UUID/policies \
-
---header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "decision": "allow",
-
-  "name": "Allow and isolate contractors",
-
-  "include": [
-
-    {
-
-      "email_domain": {
-
-        "domain": "team.com"
-
-      }
-
-    },
-
-    {
-
-      "email_domain": {
-
-        "domain": "contractors.com"
-
-      }
-
-    }
-
-  ],
-
-  "exclude": [],
-
-  "require": [],
-
-  "precedence": 2,
-
-  "isolation_required": true
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_UUID/policies \--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \--header "Content-Type: application/json" \--data '{  "decision": "allow",  "name": "Allow and isolate contractors",  "include": [    {      "email_domain": {        "domain": "team.com"      }    },    {      "email_domain": {        "domain": "contractors.com"      }    }  ],  "exclude": [],  "require": [],  "precedence": 2,  "isolation_required": true}'
 ```
 
 ## Example HTTP policies
@@ -203,8 +109,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_
 
 Prevents users on unmanaged devices from downloading any files from your private application.
 
-* [ Dashboard ](#tab-panel-9035)
-* [ API ](#tab-panel-9036)
+* [ Dashboard ](#tab-panel-9111)
+* [ API ](#tab-panel-9112)
 
 | Selector                     | Operator | Value                    | Logic | Action  |
 | ---------------------------- | -------- | ------------------------ | ----- | ------- |
@@ -218,114 +124,7 @@ Prevents users on unmanaged devices from downloading any files from your private
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules \
-
---header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "name": "Disable file downloads in isolated browser",
-
-  "conditions": [
-
-    {
-
-      "type": "traffic",
-
-      "expression": {
-
-        "in": {
-
-          "lhs": "http.request.host",
-
-          "rhs": [
-
-            "internal.site.com"
-
-          ]
-
-        }
-
-      }
-
-    },
-
-    {
-
-      "type": "device_posture",
-
-      "expression": {
-
-        "any": {
-
-          "in": {
-
-            "lhs": {
-
-              "splat": "device_posture.checks.passed"
-
-            },
-
-            "rhs": [
-
-              "<SERIAL_NUMBER_LIST_UUID>"
-
-            ]
-
-          }
-
-        }
-
-      }
-
-    }
-
-  ],
-
-  "action": "isolate",
-
-  "precedence": 14002,
-
-  "enabled": true,
-
-  "description": "",
-
-  "rule_settings": {
-
-    "block_page_enabled": false,
-
-    "block_reason": "",
-
-    "biso_admin_controls": {
-
-      "dcp": false,
-
-      "dcr": false,
-
-      "dd": true,
-
-      "dk": false,
-
-      "dp": false,
-
-      "du": false
-
-    }
-
-  },
-
-  "filters": [
-
-    "http"
-
-  ]
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules \--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \--header "Content-Type: application/json" \--data '{  "name": "Disable file downloads in isolated browser",  "conditions": [    {      "type": "traffic",      "expression": {        "in": {          "lhs": "http.request.host",          "rhs": [            "internal.site.com"          ]        }      }    },    {      "type": "device_posture",      "expression": {        "any": {          "in": {            "lhs": {              "splat": "device_posture.checks.passed"            },            "rhs": [              "<SERIAL_NUMBER_LIST_UUID>"            ]          }        }      }    }  ],  "action": "isolate",  "precedence": 14002,  "enabled": true,  "description": "",  "rule_settings": {    "block_page_enabled": false,    "block_reason": "",    "biso_admin_controls": {      "dcp": false,      "dcr": false,      "dd": true,      "dk": false,      "dp": false,      "du": false    }  },  "filters": [    "http"  ]}'
 ```
 
 To create a list of serial numbers, refer to [Create Zero Trust list](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/lists/methods/create/).
@@ -341,8 +140,8 @@ Block users on unmanaged devices from downloading files that contain credit card
 * **Policy 1: [Disable file downloads in isolated browser](https://developers.cloudflare.com/learning-paths/clientless-access/advanced-workflows/isolate-application/#disable-file-downloads-in-isolated-browser)**
 * **Policy 2: Block credit card numbers**
 
-* [ Dashboard ](#tab-panel-9037)
-* [ API ](#tab-panel-9038)
+* [ Dashboard ](#tab-panel-9113)
+* [ API ](#tab-panel-9114)
 
 | Selector                                                                                           | Operator | Value                      | Logic | Action |
 | -------------------------------------------------------------------------------------------------- | -------- | -------------------------- | ----- | ------ |
@@ -353,132 +152,7 @@ Block users on unmanaged devices from downloading files that contain credit card
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules \
-
---header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "name": "Block credit card numbers",
-
-  "conditions": [
-
-    {
-
-      "type": "traffic",
-
-      "expression": {
-
-        "and": [
-
-          {
-
-            "in": {
-
-              "lhs": "http.request.host",
-
-              "rhs": [
-
-                "internal.site.com"
-
-              ]
-
-            }
-
-          },
-
-          {
-
-            "any": {
-
-              "in": {
-
-                "lhs": {
-
-                  "splat": "dlp.profiles"
-
-                },
-
-                "rhs": [
-
-                  "<DLP_PROFILE_UUID>"
-
-                ]
-
-              }
-
-            }
-
-          }
-
-        ]
-
-      }
-
-    },
-
-    {
-
-      "type": "device_posture",
-
-      "expression": {
-
-        "any": {
-
-          "in": {
-
-            "lhs": {
-
-              "splat": "device_posture.checks.passed"
-
-            },
-
-            "rhs": [
-
-              "<SERIAL_NUMBER_LIST_UUID>"
-
-            ]
-
-          }
-
-        }
-
-      }
-
-    }
-
-  ],
-
-  "action": "block",
-
-  "precedence": 14003,
-
-  "enabled": true,
-
-  "description": "",
-
-  "rule_settings": {
-
-    "block_page_enabled": false,
-
-    "block_reason": "",
-
-    "biso_admin_controls": null
-
-  },
-
-  "filters": [
-
-    "http"
-
-  ]
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules \--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \--header "Content-Type: application/json" \--data '{  "name": "Block credit card numbers",  "conditions": [    {      "type": "traffic",      "expression": {        "and": [          {            "in": {              "lhs": "http.request.host",              "rhs": [                "internal.site.com"              ]            }          },          {            "any": {              "in": {                "lhs": {                  "splat": "dlp.profiles"                },                "rhs": [                  "<DLP_PROFILE_UUID>"                ]              }            }          }        ]      }    },    {      "type": "device_posture",      "expression": {        "any": {          "in": {            "lhs": {              "splat": "device_posture.checks.passed"            },            "rhs": [              "<SERIAL_NUMBER_LIST_UUID>"            ]          }        }      }    }  ],  "action": "block",  "precedence": 14003,  "enabled": true,  "description": "",  "rule_settings": {    "block_page_enabled": false,    "block_reason": "",    "biso_admin_controls": null  },  "filters": [    "http"  ]}'
 ```
 
 To configure a DLP profile, refer to [Update predefined profile](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/dlp/subresources/profiles/subresources/predefined/methods/update/) or [Create custom profile](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/dlp/subresources/profiles/subresources/custom/methods/create/).

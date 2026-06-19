@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,33 +25,8 @@ Here is an example of metadata filtering using the [Workers binding](https://dev
 TypeScript
 
 ```
-
 const instance = env.AI_SEARCH.get("my-instance");
-
-
-const results = await instance.search({
-
-  messages: [{ role: "user", content: "What is Cloudflare?" }],
-
-  ai_search_options: {
-
-    retrieval: {
-
-      filters: {
-
-        folder: "docs/getting-started/",
-
-        timestamp: { $gte: 1735689600 },
-
-      },
-
-    },
-
-  },
-
-});
-
-
+const results = await instance.search({  messages: [{ role: "user", content: "What is Cloudflare?" }],  ai_search_options: {    retrieval: {      filters: {        folder: "docs/getting-started/",        timestamp: { $gte: 1735689600 },      },    },  },});
 ```
 
 ## Filter syntax
@@ -76,43 +51,13 @@ Filters are JSON objects where keys are metadata attribute names and values spec
 When you provide a direct value without an operator, it is treated as an equality check:
 
 ```
-
-{
-
-  "ai_search_options": {
-
-    "retrieval": {
-
-      "filters": { "folder": "docs/getting-started/" }
-
-    }
-
-  }
-
-}
-
-
+{  "ai_search_options": {    "retrieval": {      "filters": { "folder": "docs/getting-started/" }    }  }}
 ```
 
 This is equivalent to:
 
 ```
-
-{
-
-  "ai_search_options": {
-
-    "retrieval": {
-
-      "filters": { "folder": { "$eq": "docs/getting-started/" } }
-
-    }
-
-  }
-
-}
-
-
+{  "ai_search_options": {    "retrieval": {      "filters": { "folder": { "$eq": "docs/getting-started/" } }    }  }}
 ```
 
 ### Range queries
@@ -120,22 +65,7 @@ This is equivalent to:
 Combine upper and lower bound operators to filter by ranges:
 
 ```
-
-{
-
-  "ai_search_options": {
-
-    "retrieval": {
-
-      "filters": { "timestamp": { "$gte": 1735689600, "$lt": 1735900000 } }
-
-    }
-
-  }
-
-}
-
-
+{  "ai_search_options": {    "retrieval": {      "filters": { "timestamp": { "$gte": 1735689600, "$lt": 1735900000 } }    }  }}
 ```
 
 ### Multiple conditions (implicit AND)
@@ -143,28 +73,7 @@ Combine upper and lower bound operators to filter by ranges:
 When you specify multiple keys, all conditions must match:
 
 ```
-
-{
-
-  "ai_search_options": {
-
-    "retrieval": {
-
-      "filters": {
-
-        "folder": "docs/getting-started/",
-
-        "timestamp": { "$gte": 1735689600 }
-
-      }
-
-    }
-
-  }
-
-}
-
-
+{  "ai_search_options": {    "retrieval": {      "filters": {        "folder": "docs/getting-started/",        "timestamp": { "$gte": 1735689600 }      }    }  }}
 ```
 
 ### `$in` operator
@@ -172,22 +81,7 @@ When you specify multiple keys, all conditions must match:
 Match any value in an array:
 
 ```
-
-{
-
-  "ai_search_options": {
-
-    "retrieval": {
-
-      "filters": { "folder": { "$in": ["docs/guides/", "docs/tutorials/"] } }
-
-    }
-
-  }
-
-}
-
-
+{  "ai_search_options": {    "retrieval": {      "filters": { "folder": { "$in": ["docs/guides/", "docs/tutorials/"] } }    }  }}
 ```
 
 ## "Starts with" filter for folders
@@ -197,32 +91,17 @@ Use range queries to filter for all files within a folder and its subfolders.
 For example, consider this file structure:
 
 * Directorydocs  
-   * guide.pdf  
-   * Directorytutorials  
-         * Directorygetting-started  
-                  * intro.pdf
+  * guide.pdf
+  * Directorytutorials  
+    * Directorygetting-started  
+      * intro.pdf
 
 Using `{ "folder": "docs/" }` only matches files directly in that folder (like `guide.pdf`), not files in subfolders.
 
 To match all files starting with `docs/`, use a range query:
 
 ```
-
-{
-
-  "ai_search_options": {
-
-    "retrieval": {
-
-      "filters": { "folder": { "$gte": "docs/", "$lt": "docs0" } }
-
-    }
-
-  }
-
-}
-
-
+{  "ai_search_options": {    "retrieval": {      "filters": { "folder": { "$gte": "docs/", "$lt": "docs0" } }    }  }}
 ```
 
 This works because:

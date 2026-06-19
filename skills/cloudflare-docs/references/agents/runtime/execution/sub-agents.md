@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,168 +20,42 @@ If you want a parent chat agent to dispatch another chat-capable agent during a 
 
 ## Quick start
 
-* [  JavaScript ](#tab-panel-6199)
-* [  TypeScript ](#tab-panel-6200)
+* [  JavaScript ](#tab-panel-6273)
+* [  TypeScript ](#tab-panel-6274)
 
 JavaScript
 
 ```
-
 import { Agent } from "agents";
-
-
-export class Orchestrator extends Agent {
-
-  async delegateWork() {
-
-    const researcher = await this.subAgent(Researcher, "research-1");
-
-    const findings = await researcher.search("cloudflare agents sdk");
-
-    return findings;
-
-  }
-
-}
-
-
-export class Researcher extends Agent {
-
-  async search(query) {
-
-    const results = await fetch(`https://api.example.com/search?q=${query}`);
-
-    return results.json();
-
-  }
-
-}
-
-
+export class Orchestrator extends Agent {  async delegateWork() {    const researcher = await this.subAgent(Researcher, "research-1");    const findings = await researcher.search("cloudflare agents sdk");    return findings;  }}
+export class Researcher extends Agent {  async search(query) {    const results = await fetch(`https://api.example.com/search?q=${query}`);    return results.json();  }}
 ```
 
 TypeScript
 
 ```
-
 import { Agent } from "agents";
-
-
-export class Orchestrator extends Agent {
-
-  async delegateWork() {
-
-    const researcher = await this.subAgent(Researcher, "research-1");
-
-    const findings = await researcher.search("cloudflare agents sdk");
-
-    return findings;
-
-  }
-
-}
-
-
-export class Researcher extends Agent {
-
-  async search(query: string) {
-
-    const results = await fetch(`https://api.example.com/search?q=${query}`);
-
-    return results.json();
-
-  }
-
-}
-
-
+export class Orchestrator extends Agent {  async delegateWork() {    const researcher = await this.subAgent(Researcher, "research-1");    const findings = await researcher.search("cloudflare agents sdk");    return findings;  }}
+export class Researcher extends Agent {  async search(query: string) {    const results = await fetch(`https://api.example.com/search?q=${query}`);    return results.json();  }}
 ```
 
 Both classes must be exported from the worker entry point. No separate Durable Object bindings are needed for child-only classes — child classes are discovered automatically via `ctx.exports`.
 
-* [  wrangler.jsonc ](#tab-panel-6187)
-* [  wrangler.toml ](#tab-panel-6188)
+* [  wrangler.jsonc ](#tab-panel-6261)
+* [  wrangler.toml ](#tab-panel-6262)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "compatibility_flags": [
-
-    "nodejs_compat"
-
-  ],
-
-  "durable_objects": {
-
-    "bindings": [
-
-      {
-
-        "class_name": "Orchestrator",
-
-        "name": "Orchestrator"
-
-      }
-
-    ]
-
-  },
-
-  "migrations": [
-
-    {
-
-      "new_sqlite_classes": [
-
-        "Orchestrator"
-
-      ],
-
-      "tag": "v1"
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  // Set this to today's date  "compatibility_date": "2026-06-18",  "compatibility_flags": [    "nodejs_compat"  ],  "durable_objects": {    "bindings": [      {        "class_name": "Orchestrator",        "name": "Orchestrator"      }    ]  },  "migrations": [    {      "new_sqlite_classes": [        "Orchestrator"      ],      "tag": "v1"    }  ]}
 ```
 
 TOML
 
 ```
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-compatibility_flags = ["nodejs_compat"]
-
-
-[[durable_objects.bindings]]
-
-class_name = "Orchestrator"
-
-name = "Orchestrator"
-
-
-[[migrations]]
-
-new_sqlite_classes = ["Orchestrator"]
-
-tag = "v1"
-
-
+# Set this to today's datecompatibility_date = "2026-06-18"compatibility_flags = ["nodejs_compat"]
+[[durable_objects.bindings]]class_name = "Orchestrator"name = "Orchestrator"
+[[migrations]]new_sqlite_classes = ["Orchestrator"]tag = "v1"
 ```
 
 Only the top-level parent agent needs a Durable Object binding and migration. Child agents are created as facets of the parent — they share the same machine but have fully isolated SQLite storage.
@@ -190,35 +64,19 @@ Only the top-level parent agent needs a Durable Object binding and migration. Ch
 
 Get or create a named sub-agent. The first call for a given name triggers the child's `onStart()`. Subsequent calls return the existing instance.
 
-* [  JavaScript ](#tab-panel-6189)
-* [  TypeScript ](#tab-panel-6190)
+* [  JavaScript ](#tab-panel-6263)
+* [  TypeScript ](#tab-panel-6264)
 
 JavaScript
 
 ```
-
 class Agent {}
-
-
 ```
 
 TypeScript
 
 ```
-
-class Agent {
-
-  async subAgent<T extends Agent>(
-
-    cls: SubAgentClass<T>,
-
-    name: string,
-
-  ): Promise<SubAgentStub<T>>;
-
-}
-
-
+class Agent {  async subAgent<T extends Agent>(    cls: SubAgentClass<T>,    name: string,  ): Promise<SubAgentStub<T>>;}
 ```
 
 | Parameter | Type             | Description                                                                                                      |
@@ -234,67 +92,21 @@ The stub exposes all public instance methods you define on the child class. Meth
 
 Return types are automatically wrapped in `Promise` if they are not already:
 
-* [  JavaScript ](#tab-panel-6201)
-* [  TypeScript ](#tab-panel-6202)
+* [  JavaScript ](#tab-panel-6275)
+* [  TypeScript ](#tab-panel-6276)
 
 JavaScript
 
 ```
-
-class MyChild extends Agent {
-
-  greet(name) {
-
-    return `Hello, ${name}`;
-
-  }
-
-  async fetchData(url) {
-
-    return fetch(url).then((r) => r.json());
-
-  }
-
-}
-
-
-// On the stub:
-
-// greet(name: string) => Promise<string>       (sync → wrapped)
-
-// fetchData(url: string) => Promise<unknown>   (already async → unchanged)
-
-
+class MyChild extends Agent {  greet(name) {    return `Hello, ${name}`;  }  async fetchData(url) {    return fetch(url).then((r) => r.json());  }}
+// On the stub:// greet(name: string) => Promise<string>       (sync → wrapped)// fetchData(url: string) => Promise<unknown>   (already async → unchanged)
 ```
 
 TypeScript
 
 ```
-
-class MyChild extends Agent {
-
-  greet(name: string): string {
-
-    return `Hello, ${name}`;
-
-  }
-
-  async fetchData(url: string): Promise<unknown> {
-
-    return fetch(url).then((r) => r.json());
-
-  }
-
-}
-
-
-// On the stub:
-
-// greet(name: string) => Promise<string>       (sync → wrapped)
-
-// fetchData(url: string) => Promise<unknown>   (already async → unchanged)
-
-
+class MyChild extends Agent {  greet(name: string): string {    return `Hello, ${name}`;  }  async fetchData(url: string): Promise<unknown> {    return fetch(url).then((r) => r.json());  }}
+// On the stub:// greet(name: string) => Promise<string>       (sync → wrapped)// fetchData(url: string) => Promise<unknown>   (already async → unchanged)
 ```
 
 ### Requirements
@@ -315,29 +127,19 @@ Tests that use `@cloudflare/vitest-pool-workers` may need to list facet classes 
 
 Forcefully stop a running sub-agent. The child stops executing immediately and restarts on the next `subAgent()` call. Storage is preserved — only the running instance is killed.
 
-* [  JavaScript ](#tab-panel-6191)
-* [  TypeScript ](#tab-panel-6192)
+* [  JavaScript ](#tab-panel-6265)
+* [  TypeScript ](#tab-panel-6266)
 
 JavaScript
 
 ```
-
 class Agent {}
-
-
 ```
 
 TypeScript
 
 ```
-
-class Agent {
-
-  abortSubAgent(cls: SubAgentClass, name: string, reason?: unknown): void;
-
-}
-
-
+class Agent {  abortSubAgent(cls: SubAgentClass, name: string, reason?: unknown): void;}
 ```
 
 | Parameter | Type          | Description                                       |
@@ -352,29 +154,19 @@ Abort is transitive — if the child has its own sub-agents, they are also abort
 
 Abort the child (if running) and permanently wipe its storage. The next `subAgent()` call creates a fresh instance with empty SQLite.
 
-* [  JavaScript ](#tab-panel-6193)
-* [  TypeScript ](#tab-panel-6194)
+* [  JavaScript ](#tab-panel-6267)
+* [  TypeScript ](#tab-panel-6268)
 
 JavaScript
 
 ```
-
 class Agent {}
-
-
 ```
 
 TypeScript
 
 ```
-
-class Agent {
-
-  deleteSubAgent(cls: SubAgentClass, name: string): void;
-
-}
-
-
+class Agent {  deleteSubAgent(cls: SubAgentClass, name: string): void;}
 ```
 
 | Parameter | Type          | Description                                     |
@@ -390,62 +182,38 @@ Deletion is transitive — the child's own sub-agents are also deleted.
 
 Check whether a child has been spawned and not deleted. This is backed by a framework-maintained SQLite registry.
 
-* [  JavaScript ](#tab-panel-6195)
-* [  TypeScript ](#tab-panel-6196)
+* [  JavaScript ](#tab-panel-6269)
+* [  TypeScript ](#tab-panel-6270)
 
 JavaScript
 
 ```
-
-if (!this.hasSubAgent(Chat, id)) {
-
-  return new Response("Not found", { status: 404 });
-
-}
-
-
+if (!this.hasSubAgent(Chat, id)) {  return new Response("Not found", { status: 404 });}
 ```
 
 TypeScript
 
 ```
-
-if (!this.hasSubAgent(Chat, id)) {
-
-  return new Response("Not found", { status: 404 });
-
-}
-
-
+if (!this.hasSubAgent(Chat, id)) {  return new Response("Not found", { status: 404 });}
 ```
 
 ### `listSubAgents`
 
 List spawned sub-agents, optionally filtered by class. Rows are returned in creation order.
 
-* [  JavaScript ](#tab-panel-6197)
-* [  TypeScript ](#tab-panel-6198)
+* [  JavaScript ](#tab-panel-6271)
+* [  TypeScript ](#tab-panel-6272)
 
 JavaScript
 
 ```
-
-const chats = this.listSubAgents(Chat);
-
-// [{ className: "Chat", name: "chat-abc", createdAt: 1700000000000 }]
-
-
+const chats = this.listSubAgents(Chat);// [{ className: "Chat", name: "chat-abc", createdAt: 1700000000000 }]
 ```
 
 TypeScript
 
 ```
-
-const chats = this.listSubAgents(Chat);
-
-// [{ className: "Chat", name: "chat-abc", createdAt: 1700000000000 }]
-
-
+const chats = this.listSubAgents(Chat);// [{ className: "Chat", name: "chat-abc", createdAt: 1700000000000 }]
 ```
 
 ### `onBeforeSubAgent`
@@ -460,61 +228,19 @@ The hook can return:
 | Request      | Forward a modified request                |
 | Response     | Short-circuit and do not wake the child   |
 
-* [  JavaScript ](#tab-panel-6205)
-* [  TypeScript ](#tab-panel-6206)
+* [  JavaScript ](#tab-panel-6279)
+* [  TypeScript ](#tab-panel-6280)
 
 JavaScript
 
 ```
-
-export class Inbox extends Agent {
-
-  async onBeforeSubAgent(_request, { className, name }) {
-
-    // Strict registry gate: only allow clients to reach chats that were created.
-
-    if (!this.hasSubAgent(className, name)) {
-
-      return new Response(`${className} "${name}" not found`, {
-
-        status: 404,
-
-      });
-
-    }
-
-  }
-
-}
-
-
+export class Inbox extends Agent {  async onBeforeSubAgent(_request, { className, name }) {    // Strict registry gate: only allow clients to reach chats that were created.    if (!this.hasSubAgent(className, name)) {      return new Response(`${className} "${name}" not found`, {        status: 404,      });    }  }}
 ```
 
 TypeScript
 
 ```
-
-export class Inbox extends Agent {
-
-  override async onBeforeSubAgent(_request, { className, name }) {
-
-    // Strict registry gate: only allow clients to reach chats that were created.
-
-    if (!this.hasSubAgent(className, name)) {
-
-      return new Response(`${className} "${name}" not found`, {
-
-        status: 404,
-
-      });
-
-    }
-
-  }
-
-}
-
-
+export class Inbox extends Agent {  override async onBeforeSubAgent(_request, { className, name }) {    // Strict registry gate: only allow clients to reach chats that were created.    if (!this.hasSubAgent(className, name)) {      return new Response(`${className} "${name}" not found`, {        status: 404,      });    }  }}
 ```
 
 WebSocket upgrade requests flow through this hook the same way as plain HTTP requests. If you return a modified `Request`, preserve the original WebSocket upgrade headers.
@@ -523,84 +249,40 @@ WebSocket upgrade requests flow through this hook the same way as plain HTTP req
 
 Sub-agents know who their parent is through `this.parentPath` and `this.selfPath`.
 
-* [  JavaScript ](#tab-panel-6207)
-* [  TypeScript ](#tab-panel-6208)
+* [  JavaScript ](#tab-panel-6281)
+* [  TypeScript ](#tab-panel-6282)
 
 JavaScript
 
 ```
-
-// Inside a Chat spawned by Inbox:
-
-this.parentPath;
-
-// [{ className: "Inbox", name: "user-123" }]
-
-
-this.selfPath;
-
-// [
-
-//   { className: "Inbox", name: "user-123" },
-
-//   { className: "Chat", name: "chat-abc" }
-
-// ]
-
-
+// Inside a Chat spawned by Inbox:this.parentPath;// [{ className: "Inbox", name: "user-123" }]
+this.selfPath;// [//   { className: "Inbox", name: "user-123" },//   { className: "Chat", name: "chat-abc" }// ]
 ```
 
 TypeScript
 
 ```
-
-// Inside a Chat spawned by Inbox:
-
-this.parentPath;
-
-// [{ className: "Inbox", name: "user-123" }]
-
-
-this.selfPath;
-
-// [
-
-//   { className: "Inbox", name: "user-123" },
-
-//   { className: "Chat", name: "chat-abc" }
-
-// ]
-
-
+// Inside a Chat spawned by Inbox:this.parentPath;// [{ className: "Inbox", name: "user-123" }]
+this.selfPath;// [//   { className: "Inbox", name: "user-123" },//   { className: "Chat", name: "chat-abc" }// ]
 ```
 
 `parentPath` is root-first, so the direct parent is always `parentPath.at(-1)`. Top-level agents have `parentPath === []`.
 
 Use `parentAgent(Cls)` from a sub-agent to get a typed RPC stub to its immediate parent:
 
-* [  JavaScript ](#tab-panel-6203)
-* [  TypeScript ](#tab-panel-6204)
+* [  JavaScript ](#tab-panel-6277)
+* [  TypeScript ](#tab-panel-6278)
 
 JavaScript
 
 ```
-
-const inbox = await this.parentAgent(Inbox);
-
-await inbox.recordTurn(this.name, "...");
-
-
+const inbox = await this.parentAgent(Inbox);await inbox.recordTurn(this.name, "...");
 ```
 
 TypeScript
 
 ```
-
-const inbox = await this.parentAgent(Inbox);
-
-await inbox.recordTurn(this.name, "...");
-
-
+const inbox = await this.parentAgent(Inbox);await inbox.recordTurn(this.name, "...");
 ```
 
 `parentAgent()` resolves the direct parent even when that parent is itself a facet-only sub-agent, using a root-side RPC bridge under the hood. This gives you typed method calls to the immediate parent without requiring every nested parent class to be bound as a top-level Durable Object.
@@ -613,41 +295,19 @@ For grandparents and further ancestors, iterate `this.parentPath` and call `getA
 
 Extend any `useAgent` call with a `sub` chain to connect to a descendant facet:
 
-* [  JavaScript ](#tab-panel-6209)
-* [  TypeScript ](#tab-panel-6210)
+* [  JavaScript ](#tab-panel-6283)
+* [  TypeScript ](#tab-panel-6284)
 
 JavaScript
 
 ```
-
-const chat = useAgent({
-
-  agent: "Inbox",
-
-  name: userId,
-
-  sub: [{ agent: "Chat", name: chatId }],
-
-});
-
-
+const chat = useAgent({  agent: "Inbox",  name: userId,  sub: [{ agent: "Chat", name: chatId }],});
 ```
 
 TypeScript
 
 ```
-
-const chat = useAgent({
-
-  agent: "Inbox",
-
-  name: userId,
-
-  sub: [{ agent: "Chat", name: chatId }],
-
-});
-
-
+const chat = useAgent({  agent: "Inbox",  name: userId,  sub: [{ agent: "Chat", name: chatId }],});
 ```
 
 The hook builds a URL like `/agents/inbox/user-123/sub/chat/chat-abc` and opens a direct WebSocket to the `Chat` child. Every other `useAgent` feature works as usual: state sync, `stub` calls, `@callable` RPC, and `useAgentChat` on top of the returned socket.
@@ -656,69 +316,23 @@ The hook builds a URL like `/agents/inbox/user-123/sub/chat/chat-abc` and opens 
 
 For fetch handlers that do their own top-level URL parsing, use `routeSubAgentRequest()` to dispatch a request into a sub-agent from an already-resolved parent stub:
 
-* [  JavaScript ](#tab-panel-6215)
-* [  TypeScript ](#tab-panel-6216)
+* [  JavaScript ](#tab-panel-6289)
+* [  TypeScript ](#tab-panel-6290)
 
 JavaScript
 
 ```
-
 import { getAgentByName, routeSubAgentRequest } from "agents";
-
-
-export default {
-
-  async fetch(request, env) {
-
-    const url = new URL(request.url);
-
-    const match = url.pathname.match(/^\/api\/u\/([^/]+)(\/.*)$/);
-
-    if (!match) return new Response("Not found", { status: 404 });
-
-
-    const [, userId, rest] = match;
-
-    const parent = await getAgentByName(env.Inbox, userId);
-
-    return routeSubAgentRequest(request, parent, { fromPath: rest });
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const url = new URL(request.url);    const match = url.pathname.match(/^\/api\/u\/([^/]+)(\/.*)$/);    if (!match) return new Response("Not found", { status: 404 });
+    const [, userId, rest] = match;    const parent = await getAgentByName(env.Inbox, userId);    return routeSubAgentRequest(request, parent, { fromPath: rest });  },};
 ```
 
 TypeScript
 
 ```
-
 import { getAgentByName, routeSubAgentRequest } from "agents";
-
-
-export default {
-
-  async fetch(request: Request, env: Env) {
-
-    const url = new URL(request.url);
-
-    const match = url.pathname.match(/^\/api\/u\/([^/]+)(\/.*)$/);
-
-    if (!match) return new Response("Not found", { status: 404 });
-
-
-    const [, userId, rest] = match;
-
-    const parent = await getAgentByName(env.Inbox, userId);
-
-    return routeSubAgentRequest(request, parent, { fromPath: rest });
-
-  },
-
-};
-
-
+export default {  async fetch(request: Request, env: Env) {    const url = new URL(request.url);    const match = url.pathname.match(/^\/api\/u\/([^/]+)(\/.*)$/);    if (!match) return new Response("Not found", { status: 404 });
+    const [, userId, rest] = match;    const parent = await getAgentByName(env.Inbox, userId);    return routeSubAgentRequest(request, parent, { fromPath: rest });  },};
 ```
 
 `fromPath` takes the sub-agent tail, such as `/sub/chat/chat-abc`. The helper parses it, runs the parent's `onBeforeSubAgent` hook, and forwards the request into the facet.
@@ -727,41 +341,23 @@ export default {
 
 From inside the parent Durable Object, `this.subAgent(Cls, name)` returns a typed stub. From outside the parent, use `getSubAgentByName()`:
 
-* [  JavaScript ](#tab-panel-6211)
-* [  TypeScript ](#tab-panel-6212)
+* [  JavaScript ](#tab-panel-6285)
+* [  TypeScript ](#tab-panel-6286)
 
 JavaScript
 
 ```
-
 import { getAgentByName, getSubAgentByName } from "agents";
-
-
-const inbox = await getAgentByName(env.Inbox, userId);
-
-const chat = await getSubAgentByName(inbox, Chat, chatId);
-
-
+const inbox = await getAgentByName(env.Inbox, userId);const chat = await getSubAgentByName(inbox, Chat, chatId);
 await chat.addMessage({ role: "user", content: "hello" });
-
-
 ```
 
 TypeScript
 
 ```
-
 import { getAgentByName, getSubAgentByName } from "agents";
-
-
-const inbox = await getAgentByName(env.Inbox, userId);
-
-const chat = await getSubAgentByName(inbox, Chat, chatId);
-
-
+const inbox = await getAgentByName(env.Inbox, userId);const chat = await getSubAgentByName(inbox, Chat, chatId);
 await chat.addMessage({ role: "user", content: "hello" });
-
-
 ```
 
 `getSubAgentByName()` returns an RPC-only proxy. Method calls work, but `.fetch()` throws. Use `routeSubAgentRequest()` for HTTP and WebSocket forwarding.
@@ -770,175 +366,61 @@ await chat.addMessage({ role: "user", content: "hello" });
 
 Each sub-agent has its own SQLite database, completely isolated from the parent and from other sub-agents. A parent writing to `this.sql` and a child writing to `this.sql` operate on different databases:
 
-* [  JavaScript ](#tab-panel-6221)
-* [  TypeScript ](#tab-panel-6222)
+* [  JavaScript ](#tab-panel-6295)
+* [  TypeScript ](#tab-panel-6296)
 
 JavaScript
 
 ```
-
-export class Parent extends Agent {
-
-  async demonstrate() {
-
-    this.sql`INSERT INTO parent_data (key, value) VALUES ('color', 'blue')`;
-
-
-    const child = await this.subAgent(Child, "child-1");
-
-    await child.increment("clicks");
-
-
-    // Parent's SQL and child's SQL are completely separate
-
-  }
-
-}
-
-
-export class Child extends Agent {
-
-  async increment(key) {
-
-    this
-
-      .sql`CREATE TABLE IF NOT EXISTS counters (key TEXT PRIMARY KEY, value INTEGER DEFAULT 0)`;
-
-    this
-
-      .sql`INSERT INTO counters (key, value) VALUES (${key}, 1) ON CONFLICT(key) DO UPDATE SET value = value + 1`;
-
-    const row = this.sql`SELECT value FROM counters WHERE key = ${key}`.one();
-
-    return row?.value ?? 0;
-
-  }
-
-}
-
-
+export class Parent extends Agent {  async demonstrate() {    this.sql`INSERT INTO parent_data (key, value) VALUES ('color', 'blue')`;
+    const child = await this.subAgent(Child, "child-1");    await child.increment("clicks");
+    // Parent's SQL and child's SQL are completely separate  }}
+export class Child extends Agent {  async increment(key) {    this      .sql`CREATE TABLE IF NOT EXISTS counters (key TEXT PRIMARY KEY, value INTEGER DEFAULT 0)`;    this      .sql`INSERT INTO counters (key, value) VALUES (${key}, 1) ON CONFLICT(key) DO UPDATE SET value = value + 1`;    const row = this.sql`SELECT value FROM counters WHERE key = ${key}`.one();    return row?.value ?? 0;  }}
 ```
 
 TypeScript
 
 ```
-
-export class Parent extends Agent {
-
-  async demonstrate() {
-
-    this.sql`INSERT INTO parent_data (key, value) VALUES ('color', 'blue')`;
-
-
-    const child = await this.subAgent(Child, "child-1");
-
-    await child.increment("clicks");
-
-
-    // Parent's SQL and child's SQL are completely separate
-
-  }
-
-}
-
-
-export class Child extends Agent {
-
-  async increment(key: string): Promise<number> {
-
-    this
-
-      .sql`CREATE TABLE IF NOT EXISTS counters (key TEXT PRIMARY KEY, value INTEGER DEFAULT 0)`;
-
-    this
-
-      .sql`INSERT INTO counters (key, value) VALUES (${key}, 1) ON CONFLICT(key) DO UPDATE SET value = value + 1`;
-
-    const row = this.sql<{
-
-      value: number;
-
-    }>`SELECT value FROM counters WHERE key = ${key}`.one();
-
-    return row?.value ?? 0;
-
-  }
-
-}
-
-
+export class Parent extends Agent {  async demonstrate() {    this.sql`INSERT INTO parent_data (key, value) VALUES ('color', 'blue')`;
+    const child = await this.subAgent(Child, "child-1");    await child.increment("clicks");
+    // Parent's SQL and child's SQL are completely separate  }}
+export class Child extends Agent {  async increment(key: string): Promise<number> {    this      .sql`CREATE TABLE IF NOT EXISTS counters (key TEXT PRIMARY KEY, value INTEGER DEFAULT 0)`;    this      .sql`INSERT INTO counters (key, value) VALUES (${key}, 1) ON CONFLICT(key) DO UPDATE SET value = value + 1`;    const row = this.sql<{      value: number;    }>`SELECT value FROM counters WHERE key = ${key}`.one();    return row?.value ?? 0;  }}
 ```
 
 ## Naming and identity
 
 Two different classes can share the same user-facing name — they are resolved independently. The internal key is a composite of class name and facet name:
 
-* [  JavaScript ](#tab-panel-6213)
-* [  TypeScript ](#tab-panel-6214)
+* [  JavaScript ](#tab-panel-6287)
+* [  TypeScript ](#tab-panel-6288)
 
 JavaScript
 
 ```
-
-const counter = await this.subAgent(Counter, "shared-name");
-
-const logger = await this.subAgent(Logger, "shared-name");
-
-// These are two separate sub-agents with separate storage
-
-
+const counter = await this.subAgent(Counter, "shared-name");const logger = await this.subAgent(Logger, "shared-name");// These are two separate sub-agents with separate storage
 ```
 
 TypeScript
 
 ```
-
-const counter = await this.subAgent(Counter, "shared-name");
-
-const logger = await this.subAgent(Logger, "shared-name");
-
-// These are two separate sub-agents with separate storage
-
-
+const counter = await this.subAgent(Counter, "shared-name");const logger = await this.subAgent(Logger, "shared-name");// These are two separate sub-agents with separate storage
 ```
 
 The child's `this.name` property returns the facet name (not the parent's name):
 
-* [  JavaScript ](#tab-panel-6217)
-* [  TypeScript ](#tab-panel-6218)
+* [  JavaScript ](#tab-panel-6291)
+* [  TypeScript ](#tab-panel-6292)
 
 JavaScript
 
 ```
-
-export class Child extends Agent {
-
-  getName() {
-
-    return this.name; // Returns "shared-name", not the parent's ID
-
-  }
-
-}
-
-
+export class Child extends Agent {  getName() {    return this.name; // Returns "shared-name", not the parent's ID  }}
 ```
 
 TypeScript
 
 ```
-
-export class Child extends Agent {
-
-  getName(): string {
-
-    return this.name; // Returns "shared-name", not the parent's ID
-
-  }
-
-}
-
-
+export class Child extends Agent {  getName(): string {    return this.name; // Returns "shared-name", not the parent's ID  }}
 ```
 
 ## Patterns
@@ -947,277 +429,67 @@ export class Child extends Agent {
 
 Run multiple sub-agents concurrently:
 
-* [  JavaScript ](#tab-panel-6219)
-* [  TypeScript ](#tab-panel-6220)
+* [  JavaScript ](#tab-panel-6293)
+* [  TypeScript ](#tab-panel-6294)
 
 JavaScript
 
 ```
-
-export class Orchestrator extends Agent {
-
-  async runAll(queries) {
-
-    const results = await Promise.all(
-
-      queries.map(async (query, i) => {
-
-        const worker = await this.subAgent(Researcher, `research-${i}`);
-
-        return worker.search(query);
-
-      }),
-
-    );
-
-    return results;
-
-  }
-
-}
-
-
+export class Orchestrator extends Agent {  async runAll(queries) {    const results = await Promise.all(      queries.map(async (query, i) => {        const worker = await this.subAgent(Researcher, `research-${i}`);        return worker.search(query);      }),    );    return results;  }}
 ```
 
 TypeScript
 
 ```
-
-export class Orchestrator extends Agent {
-
-  async runAll(queries: string[]) {
-
-    const results = await Promise.all(
-
-      queries.map(async (query, i) => {
-
-        const worker = await this.subAgent(Researcher, `research-${i}`);
-
-        return worker.search(query);
-
-      }),
-
-    );
-
-    return results;
-
-  }
-
-}
-
-
+export class Orchestrator extends Agent {  async runAll(queries: string[]) {    const results = await Promise.all(      queries.map(async (query, i) => {        const worker = await this.subAgent(Researcher, `research-${i}`);        return worker.search(query);      }),    );    return results;  }}
 ```
 
 ### Nested sub-agents
 
 Sub-agents can spawn their own sub-agents, forming a tree:
 
-* [  JavaScript ](#tab-panel-6223)
-* [  TypeScript ](#tab-panel-6224)
+* [  JavaScript ](#tab-panel-6297)
+* [  TypeScript ](#tab-panel-6298)
 
 JavaScript
 
 ```
-
-export class Manager extends Agent {
-
-  async delegate(task) {
-
-    const team = await this.subAgent(TeamLead, "team-a");
-
-    return team.assign(task);
-
-  }
-
-}
-
-
-export class TeamLead extends Agent {
-
-  async assign(task) {
-
-    const worker = await this.subAgent(Worker, "worker-1");
-
-    return worker.execute(task);
-
-  }
-
-}
-
-
-export class Worker extends Agent {
-
-  async execute(task) {
-
-    return { completed: task };
-
-  }
-
-}
-
-
+export class Manager extends Agent {  async delegate(task) {    const team = await this.subAgent(TeamLead, "team-a");    return team.assign(task);  }}
+export class TeamLead extends Agent {  async assign(task) {    const worker = await this.subAgent(Worker, "worker-1");    return worker.execute(task);  }}
+export class Worker extends Agent {  async execute(task) {    return { completed: task };  }}
 ```
 
 TypeScript
 
 ```
-
-export class Manager extends Agent {
-
-  async delegate(task: string) {
-
-    const team = await this.subAgent(TeamLead, "team-a");
-
-    return team.assign(task);
-
-  }
-
-}
-
-
-export class TeamLead extends Agent {
-
-  async assign(task: string) {
-
-    const worker = await this.subAgent(Worker, "worker-1");
-
-    return worker.execute(task);
-
-  }
-
-}
-
-
-export class Worker extends Agent {
-
-  async execute(task: string) {
-
-    return { completed: task };
-
-  }
-
-}
-
-
+export class Manager extends Agent {  async delegate(task: string) {    const team = await this.subAgent(TeamLead, "team-a");    return team.assign(task);  }}
+export class TeamLead extends Agent {  async assign(task: string) {    const worker = await this.subAgent(Worker, "worker-1");    return worker.execute(task);  }}
+export class Worker extends Agent {  async execute(task: string) {    return { completed: task };  }}
 ```
 
 ### Callback streaming
 
 Pass an `RpcTarget` callback to stream results from a sub-agent back to the parent:
 
-* [  JavaScript ](#tab-panel-6225)
-* [  TypeScript ](#tab-panel-6226)
+* [  JavaScript ](#tab-panel-6299)
+* [  TypeScript ](#tab-panel-6300)
 
 JavaScript
 
 ```
-
 import { RpcTarget } from "cloudflare:workers";
-
-
-class StreamCollector extends RpcTarget {
-
-  chunks = [];
-
-  onChunk(text) {
-
-    this.chunks.push(text);
-
-  }
-
-}
-
-
-export class Parent extends Agent {
-
-  async streamFromChild() {
-
-    const child = await this.subAgent(Streamer, "streamer-1");
-
-    const collector = new StreamCollector();
-
-    await child.generate("Write a poem", collector);
-
-    return collector.chunks;
-
-  }
-
-}
-
-
-export class Streamer extends Agent {
-
-  async generate(prompt, callback) {
-
-    const chunks = ["Once ", "upon ", "a ", "time..."];
-
-    for (const chunk of chunks) {
-
-      callback.onChunk(chunk);
-
-    }
-
-  }
-
-}
-
-
+class StreamCollector extends RpcTarget {  chunks = [];  onChunk(text) {    this.chunks.push(text);  }}
+export class Parent extends Agent {  async streamFromChild() {    const child = await this.subAgent(Streamer, "streamer-1");    const collector = new StreamCollector();    await child.generate("Write a poem", collector);    return collector.chunks;  }}
+export class Streamer extends Agent {  async generate(prompt, callback) {    const chunks = ["Once ", "upon ", "a ", "time..."];    for (const chunk of chunks) {      callback.onChunk(chunk);    }  }}
 ```
 
 TypeScript
 
 ```
-
 import { RpcTarget } from "cloudflare:workers";
-
-
-class StreamCollector extends RpcTarget {
-
-  chunks: string[] = [];
-
-  onChunk(text: string) {
-
-    this.chunks.push(text);
-
-  }
-
-}
-
-
-export class Parent extends Agent {
-
-  async streamFromChild() {
-
-    const child = await this.subAgent(Streamer, "streamer-1");
-
-    const collector = new StreamCollector();
-
-    await child.generate("Write a poem", collector);
-
-    return collector.chunks;
-
-  }
-
-}
-
-
-export class Streamer extends Agent {
-
-  async generate(prompt: string, callback: StreamCollector) {
-
-    const chunks = ["Once ", "upon ", "a ", "time..."];
-
-    for (const chunk of chunks) {
-
-      callback.onChunk(chunk);
-
-    }
-
-  }
-
-}
-
-
+class StreamCollector extends RpcTarget {  chunks: string[] = [];  onChunk(text: string) {    this.chunks.push(text);  }}
+export class Parent extends Agent {  async streamFromChild() {    const child = await this.subAgent(Streamer, "streamer-1");    const collector = new StreamCollector();    await child.generate("Write a poem", collector);    return collector.chunks;  }}
+export class Streamer extends Agent {  async generate(prompt: string, callback: StreamCollector) {    const chunks = ["Once ", "upon ", "a ", "time..."];    for (const chunk of chunks) {      callback.onChunk(chunk);    }  }}
 ```
 
 ## Scheduling and durable work

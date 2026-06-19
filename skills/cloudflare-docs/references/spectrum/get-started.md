@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/spectrum/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -42,115 +42,19 @@ Below is a curl example and the associated data being posted to the API.
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone Settings Write`
 
 Create Spectrum application using a name for the origin
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "protocol": "tcp/22",
-
-    "dns": {
-
-        "type": "CNAME",
-
-        "name": "ssh.example.com"
-
-    },
-
-    "origin_direct": [
-
-        "tcp://192.0.2.1:22"
-
-    ],
-
-    "proxy_protocol": "off",
-
-    "ip_firewall": true,
-
-    "tls": "full",
-
-    "edge_ips": {
-
-        "type": "dynamic",
-
-        "connectivity": "all"
-
-    },
-
-    "traffic_type": "direct",
-
-    "argo_smart_routing": true
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "protocol": "tcp/22",    "dns": {        "type": "CNAME",        "name": "ssh.example.com"    },    "origin_direct": [        "tcp://192.0.2.1:22"    ],    "proxy_protocol": "off",    "ip_firewall": true,    "tls": "full",    "edge_ips": {        "type": "dynamic",        "connectivity": "all"    },    "traffic_type": "direct",    "argo_smart_routing": true  }'
 ```
 
 **Example data:**
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": [],
-
-  "result": {
-
-    "id": "ea95132c15732412d22c1476fa83f27a",
-
-    "protocol": "tcp/22",
-
-    "dns": {
-
-      "type": "CNAME",
-
-      "name": "ssh.example.com"
-
-    },
-
-    "origin_direct": ["tcp://192.0.2.1:22"],
-
-    "proxy_protocol": "off",
-
-    "ip_firewall": true,
-
-    "tls": "full",
-
-    "edge_ips": {
-
-      "type": "dynamic",
-
-      "connectivity": "all"
-
-    },
-
-    "traffic_type": "direct",
-
-    "argo_smart_routing": true,
-
-    "created_on": "2014-01-02T02:20:00Z",
-
-    "modified_on": "2014-01-02T02:20:00Z"
-
-  }
-
-}
-
-
+{  "success": true,  "errors": [],  "messages": [],  "result": {    "id": "ea95132c15732412d22c1476fa83f27a",    "protocol": "tcp/22",    "dns": {      "type": "CNAME",      "name": "ssh.example.com"    },    "origin_direct": ["tcp://192.0.2.1:22"],    "proxy_protocol": "off",    "ip_firewall": true,    "tls": "full",    "edge_ips": {      "type": "dynamic",      "connectivity": "all"    },    "traffic_type": "direct",    "argo_smart_routing": true,    "created_on": "2014-01-02T02:20:00Z",    "modified_on": "2014-01-02T02:20:00Z"  }}
 ```
 
 ## Create a Spectrum application using a CNAME record
@@ -176,87 +80,19 @@ Below is a curl example and the associated data being posted to the API.
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone Settings Write`
 
 Create Spectrum application using a name for the origin
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "dns": {
-
-        "type": "CNAME",
-
-        "name": "spectrum-cname.example.com"
-
-    },
-
-    "ip_firewall": false,
-
-    "protocol": "tcp/22",
-
-    "proxy_protocol": "off",
-
-    "tls": "off",
-
-    "origin_dns": {
-
-        "name": "cname-to-origin.example.com",
-
-        "ttl": 1200
-
-    },
-
-    "origin_port": 22
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "dns": {        "type": "CNAME",        "name": "spectrum-cname.example.com"    },    "ip_firewall": false,    "protocol": "tcp/22",    "proxy_protocol": "off",    "tls": "off",    "origin_dns": {        "name": "cname-to-origin.example.com",        "ttl": 1200    },    "origin_port": 22  }'
 ```
 
 **Example data:**
 
 ```
-
-{
-
-  "dns": {
-
-    "type": "CNAME",
-
-    "name": "spectrum-cname.example.com"
-
-  },
-
-  "ip_firewall": false,
-
-  "protocol": "tcp/22",
-
-  "proxy_protocol": "off",
-
-  "tls": "off",
-
-  "origin_dns": {
-
-    "name": "cname-to-origin.example.com",
-
-    "ttl": 1200
-
-  },
-
-  "origin_port": 22
-
-}
-
-
+{  "dns": {    "type": "CNAME",    "name": "spectrum-cname.example.com"  },  "ip_firewall": false,  "protocol": "tcp/22",  "proxy_protocol": "off",  "tls": "off",  "origin_dns": {    "name": "cname-to-origin.example.com",    "ttl": 1200  },  "origin_port": 22}
 ```
 
 ## Create a Spectrum application using a load balancer
@@ -287,87 +123,19 @@ Below is a curl example and the associated data being posted to the API.
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Zone Settings Write`
 
 Create Spectrum application using a name for the origin
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "dns": {
-
-        "type": "CNAME",
-
-        "name": "spectrum-cname.example.com"
-
-    },
-
-    "ip_firewall": false,
-
-    "protocol": "tcp/22",
-
-    "proxy_protocol": "off",
-
-    "tls": "off",
-
-    "origin_dns": {
-
-        "name": "cname-to-origin.example.com",
-
-        "ttl": 1200
-
-    },
-
-    "origin_port": 22
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "dns": {        "type": "CNAME",        "name": "spectrum-cname.example.com"    },    "ip_firewall": false,    "protocol": "tcp/22",    "proxy_protocol": "off",    "tls": "off",    "origin_dns": {        "name": "cname-to-origin.example.com",        "ttl": 1200    },    "origin_port": 22  }'
 ```
 
 **Example data:**
 
 ```
-
-{
-
-  "dns": {
-
-    "type": "CNAME",
-
-    "name": "spectrum-cname.example.com"
-
-  },
-
-  "ip_firewall": false,
-
-  "protocol": "tcp/22",
-
-  "proxy_protocol": "off",
-
-  "tls": "off",
-
-  "origin_dns": {
-
-    "name": "cname-to-origin.example.com",
-
-    "ttl": 1200
-
-  },
-
-  "origin_port": 22
-
-}
-
-
+{  "dns": {    "type": "CNAME",    "name": "spectrum-cname.example.com"  },  "ip_firewall": false,  "protocol": "tcp/22",  "proxy_protocol": "off",  "tls": "off",  "origin_dns": {    "name": "cname-to-origin.example.com",    "ttl": 1200  },  "origin_port": 22}
 ```
 
 ## View traffic

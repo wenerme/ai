@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,19 +27,17 @@ All requests require an API token with **AI Search:Edit** and **AI Search:Run** 
 2. Select **Create Token**.
 3. Select **Create Custom Token**.
 4. Enter a **Token name**, for example `AI Search Manager`.
-5. Under **Permissions**, add two permissions:  
-   * **Account** \> **AI Search:Edit**  
-   * **Account** \> **AI Search:Run**
+5. Under **Permissions**, add two permissions:
+
+  * **Account** \> **AI Search:Edit**
+  * **Account** \> **AI Search:Run**
 6. Select **Continue to summary**, then select **Create Token**.
 7. Copy and save the token value. This is your `API_TOKEN`.
 
 Include the token in the `Authorization` header for all requests:
 
 ```
-
 Authorization: Bearer <API_TOKEN>
-
-
 ```
 
 ## Search and chat
@@ -67,30 +65,7 @@ Search a specific instance. The search endpoint also accepts a `query` string pa
 Terminal window
 
 ```
-
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/search" \
-
-  -H "Authorization: Bearer <API_TOKEN>" \
-
-  -H "Content-Type: application/json" \
-
-  -d '{
-
-    "messages": [
-
-      {
-
-        "content": "What is Cloudflare?",
-
-        "role": "user"
-
-      }
-
-    ]
-
-  }'
-
-
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/search" \  -H "Authorization: Bearer <API_TOKEN>" \  -H "Content-Type: application/json" \  -d '{    "messages": [      {        "content": "What is Cloudflare?",        "role": "user"      }    ]  }'
 ```
 
 ### Chat completions
@@ -100,30 +75,7 @@ Generate a response from a specific instance. For the full specification, refer 
 Terminal window
 
 ```
-
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/chat/completions" \
-
-  -H "Authorization: Bearer <API_TOKEN>" \
-
-  -H "Content-Type: application/json" \
-
-  -d '{
-
-    "messages": [
-
-      {
-
-        "content": "What is Cloudflare?",
-
-        "role": "user"
-
-      }
-
-    ]
-
-  }'
-
-
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/<INSTANCE_NAME>/chat/completions" \  -H "Authorization: Bearer <API_TOKEN>" \  -H "Content-Type: application/json" \  -d '{    "messages": [      {        "content": "What is Cloudflare?",        "role": "user"      }    ]  }'
 ```
 
 #### Streaming
@@ -131,27 +83,12 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-sear
 Set `stream` to `true` to receive responses as Server-Sent Events (SSE). The retrieved chunks are sent first as a `chunks` event, followed by the streamed response.
 
 ```
-
-event: chunks
-
-data: [{"id":"chunk-001","type":"text","score":0.85,"text":"...","item":{"key":"about-cloudflare.md","timestamp":1775925540000},"scoring_details":{"vector_score":0.85}}]
-
-
+event: chunksdata: [{"id":"chunk-001","type":"text","score":0.85,"text":"...","item":{"key":"about-cloudflare.md","timestamp":1775925540000},"scoring_details":{"vector_score":0.85}}]
 data: {"id":"id-1776072781845","created":1776072781,"model":"@cf/meta/llama-3.3-70b-instruct-fp8-fast","object":"chat.completion.chunk","choices":[{"index":0,"delta":{"content":" document"}}]}
-
-
 data: {"id":"id-1776072781845","created":1776072781,"model":"@cf/meta/llama-3.3-70b-instruct-fp8-fast","object":"chat.completion.chunk","choices":[{"index":0,"delta":{"content":" you provided doesn"}}]}
-
-
 data: {"id":"id-1776072781845","created":1776072781,"model":"@cf/meta/llama-3.3-70b-instruct-fp8-fast","object":"chat.completion.chunk","choices":[{"index":0,"delta":{"content":"'t contain"}}]}
-
-
 data: {"id":"id-1776072781845","created":1776072781,"model":"@cf/meta/llama-3.3-70b-instruct-fp8-fast","object":"chat.completion.chunk","choices":[{"index":0,"delta":{"content":" information"}}]}
-
-
 data: [DONE]
-
-
 ```
 
 ## Cross-instance search and chat
@@ -161,36 +98,7 @@ The search and chat completions APIs are also available at the namespace level. 
 Terminal window
 
 ```
-
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/namespaces/<NAMESPACE>/search" \
-
-  -H "Authorization: Bearer <API_TOKEN>" \
-
-  -H "Content-Type: application/json" \
-
-  -d '{
-
-    "messages": [
-
-      {
-
-        "role": "user",
-
-        "content": "What is Cloudflare?"
-
-      }
-
-    ],
-
-    "ai_search_options": {
-
-      "instance_ids": ["product-docs", "customer-abc123"]
-
-    }
-
-  }'
-
-
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/namespaces/<NAMESPACE>/search" \  -H "Authorization: Bearer <API_TOKEN>" \  -H "Content-Type: application/json" \  -d '{    "messages": [      {        "role": "user",        "content": "What is Cloudflare?"      }    ],    "ai_search_options": {      "instance_ids": ["product-docs", "customer-abc123"]    }  }'
 ```
 
 ```json

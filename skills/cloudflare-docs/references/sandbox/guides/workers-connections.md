@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,87 +20,21 @@ The sandbox makes a plain HTTP request to a virtual hostname (for example, `http
 
 Define an `outboundByHost` handler for each virtual hostname. The `env` argument gives you access to every binding declared in your Wrangler configuration.
 
-* [  JavaScript ](#tab-panel-10515)
-* [  TypeScript ](#tab-panel-10516)
+* [  JavaScript ](#tab-panel-10591)
+* [  TypeScript ](#tab-panel-10592)
 
 JavaScript
 
 ```
-
 export class MySandbox extends Sandbox {}
-
-
-MySandbox.outboundByHost = {
-
-  "my.kv": async (request, env, ctx) => {
-
-    const url = new URL(request.url);
-
-    const key = url.pathname.slice(1);
-
-    const value = await env.KV.get(key);
-
-    return new Response(value ?? "", { status: value ? 200 : 404 });
-
-  },
-
-  "my.r2": async (request, env, ctx) => {
-
-    const url = new URL(request.url);
-
-    // Scope access to this sandbox's ID
-
-    const path = `${ctx.containerId}${url.pathname}`;
-
-    const object = await env.R2.get(path);
-
-    return new Response(object?.body ?? null, { status: object ? 200 : 404 });
-
-  },
-
-};
-
-
+MySandbox.outboundByHost = {  "my.kv": async (request, env, ctx) => {    const url = new URL(request.url);    const key = url.pathname.slice(1);    const value = await env.KV.get(key);    return new Response(value ?? "", { status: value ? 200 : 404 });  },  "my.r2": async (request, env, ctx) => {    const url = new URL(request.url);    // Scope access to this sandbox's ID    const path = `${ctx.containerId}${url.pathname}`;    const object = await env.R2.get(path);    return new Response(object?.body ?? null, { status: object ? 200 : 404 });  },};
 ```
 
 TypeScript
 
 ```
-
 export class MySandbox extends Sandbox {}
-
-
-MySandbox.outboundByHost = {
-
-  "my.kv": async (request: Request, env: Env, ctx: OutboundHandlerContext) => {
-
-    const url = new URL(request.url);
-
-    const key = url.pathname.slice(1);
-
-    const value = await env.KV.get(key);
-
-    return new Response(value ?? "", { status: value ? 200 : 404 });
-
-  },
-
-  "my.r2": async (request: Request, env: Env, ctx: OutboundHandlerContext) => {
-
-    const url = new URL(request.url);
-
-    // Scope access to this sandbox's ID
-
-    const path = `${ctx.containerId}${url.pathname}`;
-
-    const object = await env.R2.get(path);
-
-    return new Response(object?.body ?? null, { status: object ? 200 : 404 });
-
-  },
-
-};
-
-
+MySandbox.outboundByHost = {  "my.kv": async (request: Request, env: Env, ctx: OutboundHandlerContext) => {    const url = new URL(request.url);    const key = url.pathname.slice(1);    const value = await env.KV.get(key);    return new Response(value ?? "", { status: value ? 200 : 404 });  },  "my.r2": async (request: Request, env: Env, ctx: OutboundHandlerContext) => {    const url = new URL(request.url);    // Scope access to this sandbox's ID    const path = `${ctx.containerId}${url.pathname}`;    const object = await env.R2.get(path);    return new Response(object?.body ?? null, { status: object ? 200 : 404 });  },};
 ```
 
 The sandbox calls `http://my.kv/some-key` and the handler resolves it using the KV binding. A call to `http://my.r2/file.png` reads from R2, scoped to the current sandbox instance.
@@ -113,67 +47,21 @@ You can use `ctx.containerId` to apply different rules per sandbox instance — 
 
 The `ctx` argument exposes `containerId`, which lets you interact with the sandbox's own Durable Object from an outbound handler.
 
-* [  JavaScript ](#tab-panel-10513)
-* [  TypeScript ](#tab-panel-10514)
+* [  JavaScript ](#tab-panel-10589)
+* [  TypeScript ](#tab-panel-10590)
 
 JavaScript
 
 ```
-
 export class MySandbox extends Sandbox {}
-
-
-MySandbox.outboundByHost = {
-
-  "get-state.do": async (request, env, ctx) => {
-
-    const id = env.MY_SANDBOX.idFromString(ctx.containerId);
-
-    const stub = env.MY_SANDBOX.get(id);
-
-    // Assumes getStateForKey is defined on your DO
-
-    return stub.getStateForKey(request.body);
-
-  },
-
-};
-
-
+MySandbox.outboundByHost = {  "get-state.do": async (request, env, ctx) => {    const id = env.MY_SANDBOX.idFromString(ctx.containerId);    const stub = env.MY_SANDBOX.get(id);    // Assumes getStateForKey is defined on your DO    return stub.getStateForKey(request.body);  },};
 ```
 
 TypeScript
 
 ```
-
 export class MySandbox extends Sandbox {}
-
-
-MySandbox.outboundByHost = {
-
-  "get-state.do": async (
-
-    request: Request,
-
-    env: Env,
-
-    ctx: { containerId: string },
-
-  ) => {
-
-    const id = env.MY_SANDBOX.idFromString(ctx.containerId);
-
-    const stub = env.MY_SANDBOX.get(id);
-
-    // Assumes getStateForKey is defined on your DO
-
-    return stub.getStateForKey(request.body);
-
-  },
-
-};
-
-
+MySandbox.outboundByHost = {  "get-state.do": async (    request: Request,    env: Env,    ctx: { containerId: string },  ) => {    const id = env.MY_SANDBOX.idFromString(ctx.containerId);    const stub = env.MY_SANDBOX.get(id);    // Assumes getStateForKey is defined on your DO    return stub.getStateForKey(request.body);  },};
 ```
 
 ## Related resources

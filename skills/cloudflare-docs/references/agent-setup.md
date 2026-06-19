@@ -6,19 +6,19 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agent-setup/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
 # Agent setup
 
-Install an agent of your choice, connect Cloudflare [Skills ↗](https://github.com/cloudflare/skills) and [Code Mode API ↗](https://blog.cloudflare.com/code-mode-mcp/) and [domain-specific ↗](https://github.com/cloudflare/mcp-server-cloudflare) MCP servers, and start deploying to Cloudflare from your editor or terminal.
+Install an agent of your choice, connect Cloudflare [Skills ↗](https://github.com/cloudflare/skills) and [Code Mode API ↗](https://blog.cloudflare.com/code-mode-mcp/) and [domain-specific ↗](https://github.com/cloudflare/mcp-server-cloudflare) MCP servers, and start deploying to Cloudflare from your editor or terminal. 
 
 Quick setup
 
 Already have an agent?
 
-Paste this into any AI coding agent to install Cloudflare agent tooling in one step.
+Paste this into any AI coding agent to install Cloudflare agent tooling in one step. 
 
 `Fetch https://developers.cloudflare.com/agent-setup/prompt.md ` 
 
@@ -26,7 +26,7 @@ Manual setup
 
 New to AI agents?
 
-Pick an agent, follow step-by-step setup instructions, compare capabilities, and learn about the Cloudflare tools available to you.
+Pick an agent, follow step-by-step setup instructions, compare capabilities, and learn about the Cloudflare tools available to you. 
 
 [Browse agents ↓](#pick-your-agent) 
 
@@ -59,7 +59,7 @@ Capabilities, pricing, and context approaches compared.
 | [ OpenCode ](https://developers.cloudflare.com/agent-setup/opencode/)             | BYOK         | Multi-provider | Project memory   |       |         |       |         |             |
 | [ Windsurf ](https://developers.cloudflare.com/agent-setup/windsurf/)             | Subscription | Multi-provider | Indexed codebase |       |         |       |         |             |
 
-Every agent listed supports Skills and MCP.
+Every agent listed supports Skills and MCP. 
 
 ## Understanding agents
 
@@ -71,11 +71,11 @@ Where the agent runs changes how you interact with it.
 
 Terminal
 
-Runs in a shell. Best for automation, scripting, and CI pipelines.
+Runs in a shell. Best for automation, scripting, and CI pipelines. 
 
 IDE
 
-Full code editor with AI first-class. Visual diffs, multi-file edits.
+Full code editor with AI first-class. Visual diffs, multi-file edits. 
 
 Cloud
 
@@ -83,27 +83,27 @@ Hosted infrastructure. Ideal for async, long-running work.
 
 Extension
 
-Plugs into an existing editor. Lightest install, keeps your setup.
+Plugs into an existing editor. Lightest install, keeps your setup. 
 
 ### Key concepts
 
 The vocabulary you'll run into when comparing agents.
 
-Skills
+Skills 
 
-Reusable prompt packages that teach an agent about a specific domain. Think of them as plugins made of instructions plus slash commands.
+Reusable prompt packages that teach an agent about a specific domain. Think of them as plugins made of instructions plus slash commands. 
 
-MCP
+MCP 
 
-The Model Context Protocol — a standard that lets agents call external tools and APIs. Connect an MCP server and the agent knows how to use it.
+The Model Context Protocol — a standard that lets agents call external tools and APIs. Connect an MCP server and the agent knows how to use it. 
 
-Model flexibility
+Model flexibility 
 
-Which foundation models you can use. **Locked**supports only the vendor's own models. **BYOK** (Bring Your Own Key) lets you bring your own API key. **Multi-provider**supports several providers out of the box.
+Which foundation models you can use. **Locked**supports only the vendor's own models. **BYOK** (Bring Your Own Key) lets you bring your own API key. **Multi-provider**supports several providers out of the box. 
 
-Context
+Context 
 
-How the agent retains information about your project.**Session** only remembers the current conversation.**Project memory** persists across sessions.**Indexed codebase** builds a searchable index of your whole repository.
+How the agent retains information about your project. **Session** only remembers the current conversation. **Project memory** persists across sessions. **Indexed codebase** builds a searchable index of your whole repository. 
 
 ### Common tradeoffs
 
@@ -111,15 +111,15 @@ Decisions you'll make when picking an agent.
 
 Cloud vs. Local 
 
-Cloud agents run on hosted infrastructure and read your code over the network. Local agents run on your own machine, with no code leaving it.
+Cloud agents run on hosted infrastructure and read your code over the network. Local agents run on your own machine, with no code leaving it. 
 
 Proprietary vs. Open source 
 
-Proprietary agents ship under a closed license you don't control. Open-source agents publish their source under an open license, so you can read, modify, or fork the code.
+Proprietary agents ship under a closed license you don't control. Open-source agents publish their source under an open license, so you can read, modify, or fork the code. 
 
 Locked model vs. BYOK 
 
-Locked agents only work with the vendor's own proprietary models. BYOK agents let you bring your own API key and switch between providers and models.
+Locked agents only work with the vendor's own proprietary models. BYOK agents let you bring your own API key and switch between providers and models. 
 
 Session vs. Indexed codebase 
 

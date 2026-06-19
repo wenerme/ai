@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,37 +30,18 @@ A component which renders list of messages.
 ### Basic Usage
 
 ```
-
 <rtk-message-list-view></rtk-message-list-view>
-
-
 ```
 
 ### With Properties
 
 ```
-
-<rtk-message-list-view>
-
-</rtk-message-list-view>
-
-
+<rtk-message-list-view></rtk-message-list-view>
 ```
 
 ```
-
-<script>
-
-  const el = document.querySelector("rtk-message-list-view");
-
-
-  el.estimateItemSize= 42;
-
-  el.messages= [];
-
-</script>
-
-
+<script>  const el = document.querySelector("rtk-message-list-view");
+  el.estimateItemSize= 42;  el.messages= [];</script>
 ```
 
 ```json

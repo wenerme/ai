@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -46,17 +46,18 @@ These sequence fields are available in:
 
 ## Build a sequence custom rule via the Cloudflare dashboard
 
-* [  New dashboard ](#tab-panel-6830)
-* [ Old dashboard ](#tab-panel-6831)
+* [  New dashboard ](#tab-panel-6906)
+* [ Old dashboard ](#tab-panel-6907)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. To create a new empty rule, select **Create rule** \> **Custom rules**.
 3. Enter a descriptive name for the rule in **Rule name**.
-4. Under **When incoming requests match**, use the **Field** drop-down list to filter by **Sequences** and select from:  
-   * Current Operation  
-   * Previous Operations  
-   * Elapsed time
+4. Under **When incoming requests match**, use the **Field** drop-down list to filter by **Sequences** and select from:
+
+  * Current Operation
+  * Previous Operations
+  * Elapsed time
 5. Under **Value**, select the edit icon to use Builder and build a sequence on the side panel.
 6. Under **Select a hostname for this sequence**, choose all or a specific hostname from the dropdown list. Optionally, you can use the search bar to search for a specific hostname.
 7. From the **Methods** dropdown list, choose all methods or a specific request method.
@@ -77,9 +78,9 @@ The fields in the custom rule are populated as a grouped sequence based on the v
 3. To create a new empty rule, select **Create rule**.
 4. Enter a descriptive name for the rule in **Rule name**.
 5. Under **When incoming requests match**, use the **Field** drop-down list and select:  
-   * Current Operation  
-   * Previous Operations  
-   * Elapsed time
+  * Current Operation
+  * Previous Operations
+  * Elapsed time
 6. Under **Value**, build a sequence by selecting a hostname for the sequence.
 7. Select the checkbox for each endpoint in the order that you want them to appear in the sequence.
 8. Set the time to complete.
@@ -104,18 +105,7 @@ The short ID will not be visible until your account team has enabled this featur
 API call
 
 ```
-
-curl --request PUT \
-
-https://api.cloudflare.com/client/v4/zones/{zone_id}/fraud_detection/sequence_cookies \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---header "Content-Type: application/json" \
-
---data '{"enabled": true}'
-
-
+curl --request PUT \https://api.cloudflare.com/client/v4/zones/{zone_id}/fraud_detection/sequence_cookies \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: application/json" \--data '{"enabled": true}'
 ```
 
 1. Use the expression editor to write sequence or timing based rules via [custom rules](https://developers.cloudflare.com/waf/custom-rules/), [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/), or [transform rules](https://developers.cloudflare.com/rules/transform/). You can put these rules in log only mode to monitor.
@@ -141,14 +131,7 @@ The short ID will not be visible until your account team has enabled this featur
 API call
 
 ```
-
-curl --request PUT https://api.cloudflare.com/client/v4/zones/{zone_id}/fraud_detection/sequence_cookies \
-
---header "Authorization: Bearer <API_TOKEN>" \
-
---data '{"enabled": false}'
-
-
+curl --request PUT https://api.cloudflare.com/client/v4/zones/{zone_id}/fraud_detection/sequence_cookies \--header "Authorization: Bearer <API_TOKEN>" \--data '{"enabled": false}'
 ```
 
 ---
@@ -166,23 +149,13 @@ The customer must request endpoint A before endpoint B.
 Valid sequence
 
 ```
-
-cf.sequence.current_op eq "bbbbbbbb" and
-
-any(cf.sequence.previous_ops[*] == "aaaaaaaa")
-
-
+cf.sequence.current_op eq "bbbbbbbb" andany(cf.sequence.previous_ops[*] == "aaaaaaaa")
 ```
 
 Invalid sequence
 
 ```
-
-cf.sequence.current_op eq "bbbbbbbb" and
-
-not any(cf.sequence.previous_ops[*] == "aaaaaaaa")
-
-
+cf.sequence.current_op eq "bbbbbbbb" andnot any(cf.sequence.previous_ops[*] == "aaaaaaaa")
 ```
 
 Customer must request endpoint A at least one second before endpoint B.
@@ -190,23 +163,13 @@ Customer must request endpoint A at least one second before endpoint B.
 Valid sequence
 
 ```
-
-cf.sequence.current_op eq "bbbbbbbb" and
-
-cf.sequence.msec_since_op["aaaaaaaa"] ge 1000
-
-
+cf.sequence.current_op eq "bbbbbbbb" andcf.sequence.msec_since_op["aaaaaaaa"] ge 1000
 ```
 
 Invalid sequence
 
 ```
-
-cf.sequence.current_op eq "bbbbbbbb" and
-
-not cf.sequence.msec_since_op["aaaaaaaa"] ge 1000
-
-
+cf.sequence.current_op eq "bbbbbbbb" andnot cf.sequence.msec_since_op["aaaaaaaa"] ge 1000
 ```
 
 ---

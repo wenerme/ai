@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -46,25 +46,8 @@ Following the Functions naming convention, the `_middleware.js` file exports a s
 JavaScript
 
 ```
-
-const abTest = async ({ request, next, env }) => {
-
-  /*
-
-  Todo:
-
-  1. Conditional statements to check for the cookie
-
-  2. Assign cookies based on percentage, then serve
-
-  */
-
-};
-
-
+const abTest = async ({ request, next, env }) => {  /*  Todo:  1. Conditional statements to check for the cookie  2. Assign cookies based on percentage, then serve  */};
 export const onRequest = [abTest];
-
-
 ```
 
 To set the cookie, create the `cookieName` variable and assign any value. Then create the `newHomepagePathName` variable and assign it `/test`:
@@ -72,30 +55,9 @@ To set the cookie, create the `cookieName` variable and assign any value. Then c
 JavaScript
 
 ```
-
-const cookieName = "ab-test-cookie";
-
-const newHomepagePathName = "/test";
-
-
-const abTest = async ({ request, next, env }) => {
-
-  /*
-
-  Todo:
-
-  1. Conditional statements to check for the cookie
-
-  2. Assign cookie based on percentage then serve
-
-  */
-
-};
-
-
+const cookieName = "ab-test-cookie";const newHomepagePathName = "/test";
+const abTest = async ({ request, next, env }) => {  /*  Todo:  1. Conditional statements to check for the cookie  2. Assign cookie based on percentage then serve  */};
 export const onRequest = [abTest];
-
-
 ```
 
 ## Set up conditional logic
@@ -105,54 +67,11 @@ Based on the URL pathname, check that the cookie value is equal to `new`. If the
 JavaScript
 
 ```
-
-const cookieName = "ab-test-cookie";
-
-const newHomepagePathName = "/test";
-
-
-const abTest = async ({ request, next, env }) => {
-
-  /*
-
-  Todo:
-
-  1. Assign cookies based on randomly generated percentage, then serve
-
-  */
-
-
-  const url = new URL(request.url);
-
-  if (url.pathname === "/") {
-
-    // if cookie ab-test-cookie=new then change the request to go to /test
-
-    // if no cookie set, pass x% of traffic and set a cookie value to "current" or "new"
-
-
-    let cookie = request.headers.get("cookie");
-
-    // is cookie set?
-
-    if (cookie && cookie.includes(`${cookieName}=new`)) {
-
-      // Change the request to go to /test (as set in the newHomepagePathName variable)
-
-      url.pathname = newHomepagePathName;
-
-      return env.ASSETS.fetch(url);
-
-    }
-
-  }
-
-};
-
-
+const cookieName = "ab-test-cookie";const newHomepagePathName = "/test";
+const abTest = async ({ request, next, env }) => {  /*  Todo:  1. Assign cookies based on randomly generated percentage, then serve  */
+  const url = new URL(request.url);  if (url.pathname === "/") {    // if cookie ab-test-cookie=new then change the request to go to /test    // if no cookie set, pass x% of traffic and set a cookie value to "current" or "new"
+    let cookie = request.headers.get("cookie");    // is cookie set?    if (cookie && cookie.includes(`${cookieName}=new`)) {      // Change the request to go to /test (as set in the newHomepagePathName variable)      url.pathname = newHomepagePathName;      return env.ASSETS.fetch(url);    }  }};
 export const onRequest = [abTest];
-
-
 ```
 
 If the cookie value is not present, you will have to assign one. Generate a percentage (from 0-99) by using: `Math.floor(Math.random() * 100)`. Your default cookie version is given a value of `current`.
@@ -168,75 +87,10 @@ A Function is a Worker that executes on your Pages project to add dynamic functi
 JavaScript
 
 ```
-
-const cookieName = "ab-test-cookie";
-
-const newHomepagePathName = "/test";
-
-
-const abTest = async (context) => {
-
-  const url = new URL(context.request.url);
-
-  // if homepage
-
-  if (url.pathname === "/") {
-
-    // if cookie ab-test-cookie=new then change the request to go to /test
-
-    // if no cookie set, pass x% of traffic and set a cookie value to "current" or "new"
-
-
-    let cookie = request.headers.get("cookie");
-
-    // is cookie set?
-
-    if (cookie && cookie.includes(`${cookieName}=new`)) {
-
-      // pass the request to /test
-
-      url.pathname = newHomepagePathName;
-
-      return context.env.ASSETS.fetch(url);
-
-    } else {
-
-      const percentage = Math.floor(Math.random() * 100);
-
-      let version = "current"; // default version
-
-      // change pathname and version name for 50% of traffic
-
-      if (percentage < 50) {
-
-        url.pathname = newHomepagePathName;
-
-        version = "new";
-
-      }
-
-      // get the static file from ASSETS, and attach a cookie
-
-      const asset = await context.env.ASSETS.fetch(url);
-
-      let response = new Response(asset.body, asset);
-
-      response.headers.append("Set-Cookie", `${cookieName}=${version}; path=/`);
-
-      return response;
-
-    }
-
-  }
-
-  return context.next();
-
-};
-
-
+const cookieName = "ab-test-cookie";const newHomepagePathName = "/test";
+const abTest = async (context) => {  const url = new URL(context.request.url);  // if homepage  if (url.pathname === "/") {    // if cookie ab-test-cookie=new then change the request to go to /test    // if no cookie set, pass x% of traffic and set a cookie value to "current" or "new"
+    let cookie = request.headers.get("cookie");    // is cookie set?    if (cookie && cookie.includes(`${cookieName}=new`)) {      // pass the request to /test      url.pathname = newHomepagePathName;      return context.env.ASSETS.fetch(url);    } else {      const percentage = Math.floor(Math.random() * 100);      let version = "current"; // default version      // change pathname and version name for 50% of traffic      if (percentage < 50) {        url.pathname = newHomepagePathName;        version = "new";      }      // get the static file from ASSETS, and attach a cookie      const asset = await context.env.ASSETS.fetch(url);      let response = new Response(asset.body, asset);      response.headers.append("Set-Cookie", `${cookieName}=${version}; path=/`);      return response;    }  }  return context.next();};
 export const onRequest = [abTest];
-
-
 ```
 
 ## Deploy to Cloudflare Pages

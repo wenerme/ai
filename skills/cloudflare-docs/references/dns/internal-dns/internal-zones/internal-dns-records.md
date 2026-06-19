@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -56,8 +56,8 @@ If it is not possible to flatten the CNAME record, the following will happen:
 
 1. The CNAME record is returned to [Gateway resolver](https://developers.cloudflare.com/dns/internal-dns/#architecture-overview) as-is.
 2. Gateway resolver will process the returned record, depending on the **Fallback through public DNS** configuration:  
-   * On: Gateway will try to resolve the query by sending it to Cloudflare's public DNS resolver ([1.1.1.1](https://developers.cloudflare.com/1.1.1.1/)).  
-   * Off: Gateway will return the response as-is to the client.
+  * On: Gateway will try to resolve the query by sending it to Cloudflare's public DNS resolver ([1.1.1.1](https://developers.cloudflare.com/1.1.1.1/)).
+  * Off: Gateway will return the response as-is to the client.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/internal-dns/internal-zones/internal-dns-records/#page","headline":"Manage internal DNS records · Cloudflare DNS docs","description":"Manage internal DNS records in Cloudflare. Learn about supported DNS record types and CNAME flattening.","url":"https://developers.cloudflare.com/dns/internal-dns/internal-zones/internal-dns-records/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}

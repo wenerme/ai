@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,15 +35,8 @@ A circular avatar view that displays a participant's profile image or name initi
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let avatarView = RtkAvatarView(participant: participant)
-
-view.addSubview(avatarView)
-
-
+let avatarView = RtkAvatarView(participant: participant)view.addSubview(avatarView)
 ```
 
 ### Update participant
@@ -51,22 +44,9 @@ view.addSubview(avatarView)
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let avatarView = RtkAvatarView(participant: participant)
-
-view.addSubview(avatarView)
-
-
-// Update to a different participant
-
-avatarView.set(participant: newParticipant)
-
-avatarView.refresh()
-
-
+let avatarView = RtkAvatarView(participant: participant)view.addSubview(avatarView)
+// Update to a different participantavatarView.set(participant: newParticipant)avatarView.refresh()
 ```
 
 ```json

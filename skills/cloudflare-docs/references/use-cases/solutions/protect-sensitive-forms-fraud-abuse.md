@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,10 +29,11 @@ Adding Turnstile involves three steps: create a widget in the dashboard, add the
 1. In the Cloudflare dashboard, go to the **Turnstile** page.  
 [ Go to **Turnstile** ](https://dash.cloudflare.com/?to=/:account/turnstile)
 2. Select **Add widget**.
-3. Fill out the required information:  
-   * **Widget name**: A descriptive name for your widget.  
-   * **Hostname management**: Domains where the widget will be used.  
-   * **Widget mode**: Choose from Managed, Non-Interactive, or Invisible.
+3. Fill out the required information:
+
+  * **Widget name**: A descriptive name for your widget.
+  * **Hostname management**: Domains where the widget will be used.
+  * **Widget mode**: Choose from Managed, Non-Interactive, or Invisible.
 4. (Optional) Configure **Pre-clearance support** for single-page applications.
 5. Select **Create** to save your widget.
 6. Copy your sitekey and secret key, and store the secret key securely.
@@ -44,25 +45,8 @@ Store the sitekey and secret key. You will use the sitekey in the client-side sn
 Add the Turnstile script and widget `div` element to each form you want to protect. Replace `<YOUR-SITE-KEY>` with the sitekey from the previous step.
 
 ```
-
-<form id="contact-form" action="/submit" method="POST">
-
-  <input type="text" name="name" placeholder="Name" required />
-
-  <input type="email" name="email" placeholder="Email" required />
-
-  <textarea name="message" placeholder="Message" required></textarea>
-
-  <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>"></div>
-
-  <button type="submit">Submit</button>
-
-</form>
-
-
+<form id="contact-form" action="/submit" method="POST">  <input type="text" name="name" placeholder="Name" required />  <input type="email" name="email" placeholder="Email" required />  <textarea name="message" placeholder="Message" required></textarea>  <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>"></div>  <button type="submit">Submit</button></form>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-
-
 ```
 
 The widget renders in the form and generates a token when the visitor passes verification. The token is included in the form submission as the `cf-turnstile-response` field.
@@ -76,54 +60,9 @@ Call the Siteverify API before processing any form submission:
 server.js
 
 ```
-
 const SECRET_KEY = "<YOUR-SECRET-KEY>";
-
-
-async function validateTurnstile(token, remoteip) {
-
-  try {
-
-    const response = await fetch(
-
-      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
-
-      {
-
-        method: "POST",
-
-        headers: { "Content-Type": "application/json" },
-
-        body: JSON.stringify({
-
-          secret: SECRET_KEY,
-
-          response: token,
-
-          remoteip: remoteip,
-
-        }),
-
-      },
-
-    );
-
-
-    const result = await response.json();
-
-    return result;
-
-  } catch (error) {
-
-    console.error("Turnstile validation error:", error);
-
-    return { success: false, "error-codes": ["internal-error"] };
-
-  }
-
-}
-
-
+async function validateTurnstile(token, remoteip) {  try {    const response = await fetch(      "https://challenges.cloudflare.com/turnstile/v0/siteverify",      {        method: "POST",        headers: { "Content-Type": "application/json" },        body: JSON.stringify({          secret: SECRET_KEY,          response: token,          remoteip: remoteip,        }),      },    );
+    const result = await response.json();    return result;  } catch (error) {    console.error("Turnstile validation error:", error);    return { success: false, "error-codes": ["internal-error"] };  }}
 ```
 
 Replace `"<YOUR-SECRET-KEY>"` with your Turnstile secret key. The endpoint returns a JSON object with a `success` field. Only process the form submission if `success` is `true`.
@@ -205,8 +144,8 @@ The [Cloudflare Managed Ruleset](https://developers.cloudflare.com/waf/managed-r
 
 Bot Fight Mode challenges requests that match known bot patterns across your entire domain. It is available on all plans and requires no configuration beyond turning it on.
 
-* [  New dashboard ](#tab-panel-11065)
-* [ Old dashboard ](#tab-panel-11066)
+* [  New dashboard ](#tab-panel-11082)
+* [ Old dashboard ](#tab-panel-11083)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -236,11 +175,12 @@ After deploying Turnstile, rate limiting rules, and Application Security rules, 
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 2. Select the **Events** tab.
 3. Use the **Add filter** button to narrow results to your form endpoint traffic.
-4. Review the sampled logs. For each event, check:  
-   * **Action taken**: Whether the request was blocked, challenged, or allowed  
-   * **Source**: The rule or feature that triggered the action  
-   * **IP address**: Whether a single IP is generating many events  
-   * **URI path**: Whether requests target your form endpoints specifically
+4. Review the sampled logs. For each event, check:
+
+  * **Action taken**: Whether the request was blocked, challenged, or allowed
+  * **Source**: The rule or feature that triggered the action
+  * **IP address**: Whether a single IP is generating many events
+  * **URI path**: Whether requests target your form endpoints specifically
 
 If legitimate users are being challenged, narrow the rule expression or switch to a less aggressive action.
 

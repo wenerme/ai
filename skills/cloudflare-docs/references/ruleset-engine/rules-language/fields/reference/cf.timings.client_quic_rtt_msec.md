@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,21 +21,13 @@ This field is only populated for QUIC (HTTP/3) connections. For TCP connections,
 Example value:
 
 ```
-
 42
-
-
 ```
 
 Example usage:
 
 ```
-
-# Match requests over QUIC where the RTT exceeds 200 ms
-
-cf.timings.client_quic_rtt_msec > 200
-
-
+# Match requests over QUIC where the RTT exceeds 200 mscf.timings.client_quic_rtt_msec > 200
 ```
 
 Categories: 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,16 +22,17 @@ Depending on the [cache status](https://developers.cloudflare.com/cache/concepts
 * **Revalidated**: The resource was in cache but Cloudflare confirmed with your origin that it was still current before serving it. To address an atypical quantity of revalidated content, consider [increasing your Edge Cache TTLs](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#edge-ttl) (how long Cloudflare considers cached content fresh before checking your origin).
 * **Expired**: The cached resource's TTL elapsed before it was requested again. Consider [extending Edge Cache TTLs](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#edge-ttl) for these resources via a Cache Rule, or configure your origin to return [revalidation headers](https://developers.cloudflare.com/cache/concepts/cache-control/) (`Last-Modified` or `ETag`) so Cloudflare can confirm content is still current without downloading it again.
 * **Miss**: The resource was not found in cache and was served from your origin. Although tricky to optimize, there are a few potential remedies:  
-   * [Enable Tiered Cache](https://developers.cloudflare.com/cache/how-to/tiered-cache/#enable-tiered-cache) to check an upper-tier Cloudflare data center before contacting your origin server.  
-   * [Create a custom cache key](https://developers.cloudflare.com/cache/how-to/cache-rules/examples/custom-cache-key/) so that multiple URLs match the same cached resource, for example by ignoring the query string.
+  * [Enable Tiered Cache](https://developers.cloudflare.com/cache/how-to/tiered-cache/#enable-tiered-cache) to check an upper-tier Cloudflare data center before contacting your origin server.
+  * [Create a custom cache key](https://developers.cloudflare.com/cache/how-to/cache-rules/examples/custom-cache-key/) so that multiple URLs match the same cached resource, for example by ignoring the query string.
 
 ## Troubleshoot cache performance with example reports
 
 Use [Cache Analytics](https://developers.cloudflare.com/cache/performance-review/cache-analytics/) to identify cache performance issues. The following examples show how to filter for common problems and resolve them.
 
-* Not caching HTML.  
-   * Identify the issue: Select **Add filter** and select **Cache status equals Dynamic**.  
-   * Resolution: Set a Cloudflare Cache Rule to [cache dynamic content](https://developers.cloudflare.com/cache/how-to/cache-rules/examples/cache-everything/).
+* Not caching HTML.
+
+  * Identify the issue: Select **Add filter** and select **Cache status equals Dynamic**.
+  * Resolution: Set a Cloudflare Cache Rule to [cache dynamic content](https://developers.cloudflare.com/cache/how-to/cache-rules/examples/cache-everything/).
 
 Warning
 
@@ -41,12 +42,14 @@ This option caches all HTML regardless of the presence of dynamic content (conte
 * Excluding requests that match known dynamic content file paths.
 * Excluding requests with dynamic content extensions (or no extension).
 
-* Short cache expiration TTL.  
-   * Identify the issue: Select **Add filter** and select **Cache status equals Revalidated**.  
-   * Resolution: [Increase Cloudflare's Edge Cache TTL via a Cache Rule](https://developers.cloudflare.com/cache/how-to/cache-rules/examples/edge-ttl/).
-* Need to enable Tiered Cache or custom cache key.  
-   * Identify the issue: Select **Add filter** and select **Cache status equals Miss**.  
-   * Resolution: [Enable Tiered Cache](https://developers.cloudflare.com/cache/how-to/tiered-cache/#enable-tiered-cache) or [create a custom cache key](https://developers.cloudflare.com/cache/how-to/cache-rules/examples/custom-cache-key/).
+* Short cache expiration TTL.
+
+  * Identify the issue: Select **Add filter** and select **Cache status equals Revalidated**.
+  * Resolution: [Increase Cloudflare's Edge Cache TTL via a Cache Rule](https://developers.cloudflare.com/cache/how-to/cache-rules/examples/edge-ttl/).
+* Need to enable Tiered Cache or custom cache key.
+
+  * Identify the issue: Select **Add filter** and select **Cache status equals Miss**.
+  * Resolution: [Enable Tiered Cache](https://developers.cloudflare.com/cache/how-to/tiered-cache/#enable-tiered-cache) or [create a custom cache key](https://developers.cloudflare.com/cache/how-to/cache-rules/examples/custom-cache-key/).
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/performance-review/cache-performance/#page","headline":"Cache performance · Cloudflare Cache (CDN) docs","description":"Measure and improve cache performance for your site.","url":"https://developers.cloudflare.com/cache/performance-review/cache-performance/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -53,22 +53,7 @@ AI Gateway now uses the AI REST API on `api.cloudflare.com`. You can call any mo
 Terminal window
 
 ```
-
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-    "model": "openai/gpt-5.5",
-
-    "messages": [{"role": "user", "content": "What is Cloudflare?"}]
-
-  }'
-
-
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{    "model": "openai/gpt-5.5",    "messages": [{"role": "user", "content": "What is Cloudflare?"}]  }'
 ```
 
 All AI Gateway features — logging, caching, rate limiting, and guardrails — are applied automatically. Third-party models are billed through [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/), so you do not need to manage separate provider API keys.
@@ -106,34 +91,7 @@ This is useful when you need usage metrics but do not want to persist sensitive 
 Terminal window
 
 ```
-
-curl https://gateway.ai.cloudflare.com/v1/$ACCOUNT_ID/$GATEWAY_ID/openai/chat/completions \
-
-  --header "Authorization: Bearer $TOKEN" \
-
-  --header 'Content-Type: application/json' \
-
-  --header 'cf-aig-collect-log-payload: false' \
-
-  --data '{
-
-    "model": "gpt-4o-mini",
-
-    "messages": [
-
-      {
-
-        "role": "user",
-
-        "content": "What is the email address and phone number of user123?"
-
-      }
-
-    ]
-
-  }'
-
-
+curl https://gateway.ai.cloudflare.com/v1/$ACCOUNT_ID/$GATEWAY_ID/openai/chat/completions \  --header "Authorization: Bearer $TOKEN" \  --header 'Content-Type: application/json' \  --header 'cf-aig-collect-log-payload: false' \  --data '{    "model": "gpt-4o-mini",    "messages": [      {        "role": "user",        "content": "What is the email address and phone number of user123?"      }    ]  }'
 ```
 
 For more information, refer to [Logging](https://developers.cloudflare.com/ai-gateway/observability/logging/#collect-log-payload-cf-aig-collect-log-payload).
@@ -150,32 +108,7 @@ To try it out, [create an API token](https://developers.cloudflare.com/fundament
 Terminal window
 
 ```
-
-curl -X POST https://gateway.ai.cloudflare.com/v1/$CLOUDFLARE_ACCOUNT_ID/default/compat/chat/completions \
-
-  --header "cf-aig-authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header 'Content-Type: application/json' \
-
-  --data '{
-
-    "model": "workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-
-    "messages": [
-
-      {
-
-        "role": "user",
-
-        "content": "What is Cloudflare?"
-
-      }
-
-    ]
-
-  }'
-
-
+curl -X POST https://gateway.ai.cloudflare.com/v1/$CLOUDFLARE_ACCOUNT_ID/default/compat/chat/completions \  --header "cf-aig-authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header 'Content-Type: application/json' \  --data '{    "model": "workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast",    "messages": [      {        "role": "user",        "content": "What is Cloudflare?"      }    ]  }'
 ```
 
 AI Gateway gives you logging, caching, rate limiting, and access to multiple AI providers through a single endpoint. For more information, refer to [Get started](https://developers.cloudflare.com/ai-gateway/get-started/).
@@ -236,47 +169,17 @@ Then, pass the key in the request header using its Secrets Store reference:
 Terminal window
 
 ```
-
-curl -X POST https://gateway.ai.cloudflare.com/v1/<ACCOUNT_ID>/my-gateway/anthropic/v1/messages \
-
- --header 'cf-aig-authorization: ANTHROPIC_KEY_1 \
-
- --header 'anthropic-version: 2023-06-01' \
-
- --header 'Content-Type: application/json' \
-
- --data  '{"model": "claude-3-opus-20240229", "messages": [{"role": "user", "content": "What is Cloudflare?"}]}'
-
-
+curl -X POST https://gateway.ai.cloudflare.com/v1/<ACCOUNT_ID>/my-gateway/anthropic/v1/messages \ --header 'cf-aig-authorization: ANTHROPIC_KEY_1 \ --header 'anthropic-version: 2023-06-01' \ --header 'Content-Type: application/json' \ --data  '{"model": "claude-3-opus-20240229", "messages": [{"role": "user", "content": "What is Cloudflare?"}]}'
 ```
 
 Or, using Javascript:
 
 ```
-
 import Anthropic from '@anthropic-ai/sdk';
 
+const anthropic = new Anthropic({ apiKey: "ANTHROPIC_KEY_1", baseURL: "https://gateway.ai.cloudflare.com/v1/<ACCOUNT_ID>/my-gateway/anthropic",});
 
-const anthropic = new Anthropic({
-
- apiKey: "ANTHROPIC_KEY_1",
-
- baseURL: "https://gateway.ai.cloudflare.com/v1/<ACCOUNT_ID>/my-gateway/anthropic",
-
-});
-
-
-const message = await anthropic.messages.create({
-
- model: 'claude-3-opus-20240229',
-
- messages: [{role: "user", content: "What is Cloudflare?"}],
-
- max_tokens: 1024
-
-});
-
-
+const message = await anthropic.messages.create({ model: 'claude-3-opus-20240229', messages: [{role: "user", content: "What is Cloudflare?"}], max_tokens: 1024});
 ```
 
 For more information, check out the [blog ↗](https://blog.cloudflare.com/ai-gateway-aug-2025-refresh)!
@@ -293,32 +196,9 @@ To get started, use the OpenAI compatible chat completions endpoint URL with you
 OpenAI SDK Example
 
 ```
-
-import OpenAI from "openai";
-
-const client = new OpenAI({
-
-  apiKey: "YOUR_PROVIDER_API_KEY", // Provider API key
-
-  baseURL:
-
-    "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",
-
-});
-
-
-const response = await client.chat.completions.create({
-
-  model: "google-ai-studio/gemini-2.0-flash",
-
-  messages: [{ role: "user", content: "What is Cloudflare?" }],
-
-});
-
-
+import OpenAI from "openai";const client = new OpenAI({  apiKey: "YOUR_PROVIDER_API_KEY", // Provider API key  baseURL:    "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",});
+const response = await client.chat.completions.create({  model: "google-ai-studio/gemini-2.0-flash",  messages: [{ role: "user", content: "What is Cloudflare?" }],});
 console.log(response.choices[0].message.content);
-
-
 ```
 
 Additionally, the [OpenAI Compatible endpoint](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/) can be combined with our [Universal Endpoint](https://developers.cloudflare.com/ai-gateway/usage/universal/) to add fallbacks across multiple providers. That means AI Gateway will return every response in the same standardized format, no extra parsing logic required!
@@ -341,47 +221,10 @@ Here's how you can connect AI Gateway to [OpenAI's Realtime API ↗](https://pla
 OpenAI Realtime API example
 
 ```
-
 import WebSocket from "ws";
-
-
-const url =
-
-  "wss://gateway.ai.cloudflare.com/v1/<account_id>/<gateway>/openai?model=gpt-4o-realtime-preview-2024-12-17";
-
-const ws = new WebSocket(url, {
-
-  headers: {
-
-    "cf-aig-authorization": process.env.CLOUDFLARE_API_KEY,
-
-    Authorization: "Bearer " + process.env.OPENAI_API_KEY,
-
-    "OpenAI-Beta": "realtime=v1",
-
-  },
-
-});
-
-
-ws.on("open", () => console.log("Connected to server."));
-
-ws.on("message", (message) => console.log(JSON.parse(message.toString())));
-
-
-ws.send(
-
-  JSON.stringify({
-
-    type: "response.create",
-
-    response: { modalities: ["text"], instructions: "Tell me a joke" },
-
-  }),
-
-);
-
-
+const url =  "wss://gateway.ai.cloudflare.com/v1/<account_id>/<gateway>/openai?model=gpt-4o-realtime-preview-2024-12-17";const ws = new WebSocket(url, {  headers: {    "cf-aig-authorization": process.env.CLOUDFLARE_API_KEY,    Authorization: "Bearer " + process.env.OPENAI_API_KEY,    "OpenAI-Beta": "realtime=v1",  },});
+ws.on("open", () => console.log("Connected to server."));ws.on("message", (message) => console.log(JSON.parse(message.toString())));
+ws.send(  JSON.stringify({    type: "response.create",    response: { modalities: ["text"], instructions: "Tell me a joke" },  }),);
 ```
 
 Get started by checking out the [Realtime WebSockets API](https://developers.cloudflare.com/ai-gateway/usage/websockets-api/realtime-api/) documentation.
@@ -418,18 +261,7 @@ To set a request timeout directly to a provider, add a `cf-aig-request-timeout` 
 Provider-specific endpoint example
 
 ```
-
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/workers-ai/@cf/meta/llama-3.1-8b-instruct \
-
- --header 'Authorization: Bearer {cf_api_token}' \
-
- --header 'Content-Type: application/json' \
-
- --header 'cf-aig-request-timeout: 5000'
-
- --data '{"prompt": "What is Cloudflare?"}'
-
-
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/workers-ai/@cf/meta/llama-3.1-8b-instruct \ --header 'Authorization: Bearer {cf_api_token}' \ --header 'Content-Type: application/json' \ --header 'cf-aig-request-timeout: 5000' --data '{"prompt": "What is Cloudflare?"}'
 ```
 
 **Request retries**A [request retry](https://developers.cloudflare.com/ai-gateway/configuration/request-handling/#request-retries) automatically retries failed requests, so you can recover from temporary issues without intervening.
@@ -457,32 +289,7 @@ To get started with AI Gateway, just update the base URL. Here's how you can sen
 Example fetch request
 
 ```
-
-curl -X POST https://gateway.ai.cloudflare.com/v1/ACCOUNT_TAG/GATEWAY/cerebras/chat/completions \
-
- --header 'content-type: application/json' \
-
- --header 'Authorization: Bearer CEREBRAS_TOKEN' \
-
- --data '{
-
-    "model": "llama-3.3-70b",
-
-    "messages": [
-
-        {
-
-            "role": "user",
-
-            "content": "What is Cloudflare?"
-
-        }
-
-    ]
-
-}'
-
-
+curl -X POST https://gateway.ai.cloudflare.com/v1/ACCOUNT_TAG/GATEWAY/cerebras/chat/completions \ --header 'content-type: application/json' \ --header 'Authorization: Bearer CEREBRAS_TOKEN' \ --data '{    "model": "llama-3.3-70b",    "messages": [        {            "role": "user",            "content": "What is Cloudflare?"        }    ]}'
 ```
 
 ## 2025-01-30
@@ -523,32 +330,7 @@ To get started, simply update the base URL of your DeepSeek API calls to route t
 Example fetch request
 
 ```
-
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/deepseek/chat/completions \
-
- --header 'content-type: application/json' \
-
- --header 'Authorization: Bearer DEEPSEEK_TOKEN' \
-
- --data '{
-
-    "model": "deepseek-chat",
-
-    "messages": [
-
-        {
-
-            "role": "user",
-
-            "content": "What is Cloudflare?"
-
-        }
-
-    ]
-
-}'
-
-
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/deepseek/chat/completions \ --header 'content-type: application/json' \ --header 'Authorization: Bearer DEEPSEEK_TOKEN' \ --data '{    "model": "deepseek-chat",    "messages": [        {            "role": "user",            "content": "What is Cloudflare?"        }    ]}'
 ```
 
 For detailed setup instructions, see our [DeepSeek provider documentation](https://developers.cloudflare.com/ai-gateway/usage/providers/deepseek/).

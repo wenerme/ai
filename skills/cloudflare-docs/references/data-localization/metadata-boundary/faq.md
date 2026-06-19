@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/data-localization/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,8 +27,8 @@ Some examples:
 * Customer account data (for example, name and billing information).
 * Customer configuration data (for example, the content of WAF custom rules).
 * Metadata that is "operational" in nature — data needed for Cloudflare to properly operate our network. This includes metadata such as:  
-   * System data generated for debugging (for example, internal application logs, core dumps).  
-   * Networking flow data (for example, sFlow samples from routers), including data on DDoS attacks.
+  * System data generated for debugging (for example, internal application logs, core dumps).
+  * Networking flow data (for example, sFlow samples from routers), including data on DDoS attacks.
 
 ## Who can use the Customer Metadata Boundary?
 

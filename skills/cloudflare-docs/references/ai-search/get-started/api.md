@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,9 +23,10 @@ You need an API token with **AI Search:Edit** and **AI Search:Run** permissions.
 2. Select **Create Token**.
 3. Select **Create Custom Token**.
 4. Enter a **Token name**, for example `AI Search Manager`.
-5. Under **Permissions**, add two permissions:  
-   * **Account** \> **AI Search:Edit**  
-   * **Account** \> **AI Search:Run**
+5. Under **Permissions**, add two permissions:
+
+  * **Account** \> **AI Search:Edit**
+  * **Account** \> **AI Search:Run**
 6. Select **Continue to summary**, then select **Create Token**.
 7. Copy and save the token value. This is your `API_TOKEN`.
 
@@ -36,20 +37,7 @@ Use the [Create instance API](https://developers.cloudflare.com/api/resources/ai
 Terminal window
 
 ```
-
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances" \
-
-  -H "Authorization: Bearer <API_TOKEN>" \
-
-  -H "Content-Type: application/json" \
-
-  --data '{
-
-    "id": "my-instance"
-
-  }'
-
-
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances" \  -H "Authorization: Bearer <API_TOKEN>" \  -H "Content-Type: application/json" \  --data '{    "id": "my-instance"  }'
 ```
 
 ### Connect a data source (optional)
@@ -63,24 +51,7 @@ Automatically crawl and index a [website](https://developers.cloudflare.com/ai-s
 Terminal window
 
 ```
-
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances" \
-
-  -H "Authorization: Bearer <API_TOKEN>" \
-
-  -H "Content-Type: application/json" \
-
-  --data '{
-
-    "id": "my-instance",
-
-    "type": "web-crawler",
-
-    "source": "example.com"
-
-  }'
-
-
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances" \  -H "Authorization: Bearer <API_TOKEN>" \  -H "Content-Type: application/json" \  --data '{    "id": "my-instance",    "type": "web-crawler",    "source": "example.com"  }'
 ```
 
 **R2 bucket:**
@@ -90,26 +61,7 @@ Index documents stored in an [R2 bucket](https://developers.cloudflare.com/ai-se
 Terminal window
 
 ```
-
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances" \
-
-  -H "Authorization: Bearer <API_TOKEN>" \
-
-  -H "Content-Type: application/json" \
-
-  --data '{
-
-    "id": "my-instance",
-
-    "type": "r2",
-
-    "source": "<R2_BUCKET_NAME>",
-
-    "token_id": "<SERVICE_TOKEN_ID>"
-
-  }'
-
-
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances" \  -H "Authorization: Bearer <API_TOKEN>" \  -H "Content-Type: application/json" \  --data '{    "id": "my-instance",    "type": "r2",    "source": "<R2_BUCKET_NAME>",    "token_id": "<SERVICE_TOKEN_ID>"  }'
 ```
 
 ## 3\. Add content
@@ -119,14 +71,7 @@ If you did not create an instance that is connected to a data source, upload fil
 Terminal window
 
 ```
-
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/my-instance/items" \
-
-  -H "Authorization: Bearer <API_TOKEN>" \
-
-  -F "file=@/path/to/your/file.pdf"
-
-
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/my-instance/items" \  -H "Authorization: Bearer <API_TOKEN>" \  -F "file=@/path/to/your/file.pdf"
 ```
 
 AI Search indexes uploaded files automatically.
@@ -138,12 +83,7 @@ Check if your content has finished indexing.
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/my-instance/stats" \
-
-  -H "Authorization: Bearer <API_TOKEN>"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/my-instance/stats" \  -H "Authorization: Bearer <API_TOKEN>"
 ```
 
 ## Try it out
@@ -153,30 +93,7 @@ Once indexing is complete, run your first query.
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/my-instance/search" \
-
-  -H "Authorization: Bearer <API_TOKEN>" \
-
-  -H "Content-Type: application/json" \
-
-  -d '{
-
-    "messages": [
-
-      {
-
-        "content": "How do I get started?",
-
-        "role": "user"
-
-      }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/instances/my-instance/search" \  -H "Authorization: Bearer <API_TOKEN>" \  -H "Content-Type: application/json" \  -d '{    "messages": [      {        "content": "How do I get started?",        "role": "user"      }    ]  }'
 ```
 
 You can also test queries in the dashboard by going to your instance and selecting the **Playground** tab.
@@ -185,7 +102,7 @@ You can also test queries in the dashboard by going to your instance and selecti
 
 [ Workers binding ](https://developers.cloudflare.com/ai-search/api/search/workers-binding/) Query AI Search directly from your Workers code. 
 
-[ REST API ](https://developers.cloudflare.com/ai-search/api/search/rest-api/) Query AI Search using HTTP requests. 
+[ REST API ](https://developers.cloudflare.com/ai-search/api/search/rest-api/) Query AI Search using HTTP requests.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/get-started/api/#page","headline":"REST API · Cloudflare AI Search docs","description":"Create AI Search instances programmatically using the REST API.","url":"https://developers.cloudflare.com/ai-search/get-started/api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

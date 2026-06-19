@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,16 +25,7 @@ A view that renders a participant's video stream with an avatar fallback when vi
 ### Basic Usage
 
 ```
-
-<com.cloudflare.realtimekit.ui.view.RtkVideoPeer
-
-    android:id="@+id/rtk_video_peer"
-
-    android:layout_width="match_parent"
-
-    android:layout_height="200dp" />
-
-
+<com.cloudflare.realtimekit.ui.view.RtkVideoPeer    android:id="@+id/rtk_video_peer"    android:layout_width="match_parent"    android:layout_height="200dp" />
 ```
 
 ### With Methods
@@ -42,12 +33,7 @@ A view that renders a participant's video stream with an avatar fallback when vi
 Kotlin
 
 ```
-
-val videoPeer = findViewById<RtkVideoPeer>(R.id.rtk_video_peer)
-
-videoPeer.refresh(participant, isScreenShare = false)
-
-
+val videoPeer = findViewById<RtkVideoPeer>(R.id.rtk_video_peer)videoPeer.refresh(participant, isScreenShare = false)
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -76,9 +76,9 @@ If AV scanning is turned on, Gateway uses the following criteria (in order) to d
 
 1. The `Content-Disposition` HTTP header is set to `Attachment`.
 2. The byte signature of the request or response body matches a known file type:  
-   * **Executable** (for example, `.exe`, `.bat`, `.dll`, and `.wasm`)  
-   * **Documents** (for example, `.doc`, `.docx`, `.pdf`, `.ppt`, and `.xls`)  
-   * **Compressed** (for example, `.7z`, `.gz`, `.zip`, and `.rar`)
+  * **Executable** (for example, `.exe`, `.bat`, `.dll`, and `.wasm`)
+  * **Documents** (for example, `.doc`, `.docx`, `.pdf`, `.ppt`, and `.xls`)
+  * **Compressed** (for example, `.7z`, `.gz`, `.zip`, and `.rar`)
 3. The file name in the `Content-Disposition` header contains a file extension matching one of the above categories.
 
 If none of these conditions match, Gateway falls back to the origin's `Content-Type` header. Gateway will not scan files it determines to be image, video, or audio files. All other files default to being scanned.
@@ -153,9 +153,9 @@ Gateway cannot scan all files for malware. When Gateway encounters a non-scannab
 Gateway cannot scan requests containing the following files:
 
 * Files larger than:  
-   * 15 MB on Free plans  
-   * 25 MB on Pay-as-you-go plans  
-   * 100 MB on Enterprise plans
+  * 15 MB on Free plans
+  * 25 MB on Pay-as-you-go plans
+  * 100 MB on Enterprise plans
 * PGP encrypted files
 * Password protected archives
 * Archives with more than three recursion levels

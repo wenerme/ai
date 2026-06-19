@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,109 +18,39 @@ Worker version ID, version tag and timestamp of when the version was created are
 
 To use the version metadata binding, update your Worker's Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-11978)
-* [  wrangler.toml ](#tab-panel-11979)
+* [  wrangler.jsonc ](#tab-panel-11995)
+* [  wrangler.toml ](#tab-panel-11996)
 
 JSONC
 
 ```
-
-{
-
-  "version_metadata": {
-
-    "binding": "CF_VERSION_METADATA"
-
-  }
-
-}
-
-
+{  "version_metadata": {    "binding": "CF_VERSION_METADATA"  }}
 ```
 
 TOML
 
 ```
-
-[version_metadata]
-
-binding = "CF_VERSION_METADATA"
-
-
+[version_metadata]binding = "CF_VERSION_METADATA"
 ```
 
 ### Interface
 
 An example of how to access the version ID and version tag from within a Worker to send events to [Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/):
 
-* [  JavaScript ](#tab-panel-11976)
-* [  TypeScript ](#tab-panel-11977)
+* [  JavaScript ](#tab-panel-11993)
+* [  TypeScript ](#tab-panel-11994)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    const { id: versionId, tag: versionTag, timestamp: versionTimestamp } = env.CF_VERSION_METADATA;
-
-    env.WAE.writeDataPoint({
-
-      indexes: [versionId],
-
-      blobs: [versionTag, versionTimestamp],
-
-      //...
-
-    });
-
-    //...
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    const { id: versionId, tag: versionTag, timestamp: versionTimestamp } = env.CF_VERSION_METADATA;    env.WAE.writeDataPoint({      indexes: [versionId],      blobs: [versionTag, versionTimestamp],      //...    });    //...  },};
 ```
 
 TypeScript
 
 ```
-
-interface Environment {
-
-  CF_VERSION_METADATA: WorkerVersionMetadata;
-
-  WAE: AnalyticsEngineDataset;
-
-}
-
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    const { id: versionId, tag: versionTag } = env.CF_VERSION_METADATA;
-
-    env.WAE.writeDataPoint({
-
-      indexes: [versionId],
-
-      blobs: [versionTag],
-
-      //...
-
-    });
-
-    //...
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+interface Environment {  CF_VERSION_METADATA: WorkerVersionMetadata;  WAE: AnalyticsEngineDataset;}
+export default {  async fetch(request, env, ctx) {    const { id: versionId, tag: versionTag } = env.CF_VERSION_METADATA;    env.WAE.writeDataPoint({      indexes: [versionId],      blobs: [versionTag],      //...    });    //...  },} satisfies ExportedHandler<Env>;
 ```
 
 ```json

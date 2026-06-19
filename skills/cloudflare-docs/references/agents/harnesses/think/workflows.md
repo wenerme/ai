@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,170 +30,47 @@ Import from `@cloudflare/think/workflows`:
 TypeScript
 
 ```
-
 import { ThinkWorkflow } from "@cloudflare/think/workflows";
-
-
 ```
 
 Extend `ThinkWorkflow` and call `step.prompt()` inside `run()`:
 
-* [  JavaScript ](#tab-panel-5693)
-* [  TypeScript ](#tab-panel-5694)
+* [  JavaScript ](#tab-panel-5767)
+* [  TypeScript ](#tab-panel-5768)
 
 JavaScript
 
 ```
-
-import { z } from "zod";
-
-import { ThinkWorkflow } from "@cloudflare/think/workflows";
-
-
-const draftSchema = z.object({
-
-  title: z.string(),
-
-  summary: z.string(),
-
-  labels: z.array(z.string()),
-
-});
-
-
-export class TriageWorkflow extends ThinkWorkflow {
-
-  async run(event, step) {
-
-    const draft = await step.prompt("triage-issue", {
-
-      prompt: `Triage issue #${event.payload.issueNumber}`,
-
-      output: draftSchema,
-
-      timeout: "3 days",
-
-    });
-
-
-    await step.do("apply-labels", async () => {
-
-      await this.agent.applyLabels(draft.labels);
-
-    });
-
-  }
-
-}
-
-
+import { z } from "zod";import { ThinkWorkflow } from "@cloudflare/think/workflows";
+const draftSchema = z.object({  title: z.string(),  summary: z.string(),  labels: z.array(z.string()),});
+export class TriageWorkflow extends ThinkWorkflow {  async run(event, step) {    const draft = await step.prompt("triage-issue", {      prompt: `Triage issue #${event.payload.issueNumber}`,      output: draftSchema,      timeout: "3 days",    });
+    await step.do("apply-labels", async () => {      await this.agent.applyLabels(draft.labels);    });  }}
 ```
 
 TypeScript
 
 ```
-
-import { z } from "zod";
-
-import { ThinkWorkflow } from "@cloudflare/think/workflows";
-
-import type { ThinkWorkflowStep } from "@cloudflare/think/workflows";
-
-import type { AgentWorkflowEvent } from "agents/workflows";
-
-
-const draftSchema = z.object({
-
-  title: z.string(),
-
-  summary: z.string(),
-
-  labels: z.array(z.string()),
-
-});
-
-
-export class TriageWorkflow extends ThinkWorkflow<TriageAgent, Params> {
-
-  async run(event: AgentWorkflowEvent<Params>, step: ThinkWorkflowStep) {
-
-    const draft = await step.prompt("triage-issue", {
-
-      prompt: `Triage issue #${event.payload.issueNumber}`,
-
-      output: draftSchema,
-
-      timeout: "3 days",
-
-    });
-
-
-    await step.do("apply-labels", async () => {
-
-      await this.agent.applyLabels(draft.labels);
-
-    });
-
-  }
-
-}
-
-
+import { z } from "zod";import { ThinkWorkflow } from "@cloudflare/think/workflows";import type { ThinkWorkflowStep } from "@cloudflare/think/workflows";import type { AgentWorkflowEvent } from "agents/workflows";
+const draftSchema = z.object({  title: z.string(),  summary: z.string(),  labels: z.array(z.string()),});
+export class TriageWorkflow extends ThinkWorkflow<TriageAgent, Params> {  async run(event: AgentWorkflowEvent<Params>, step: ThinkWorkflowStep) {    const draft = await step.prompt("triage-issue", {      prompt: `Triage issue #${event.payload.issueNumber}`,      output: draftSchema,      timeout: "3 days",    });
+    await step.do("apply-labels", async () => {      await this.agent.applyLabels(draft.labels);    });  }}
 ```
 
 Start the Workflow from inside your Think Agent with `runWorkflow()`:
 
-* [  JavaScript ](#tab-panel-5691)
-* [  TypeScript ](#tab-panel-5692)
+* [  JavaScript ](#tab-panel-5765)
+* [  TypeScript ](#tab-panel-5766)
 
 JavaScript
 
 ```
-
-export class TriageAgent extends Think {
-
-  async triageIssue(issueNumber) {
-
-    return this.runWorkflow(
-
-      "TRIAGE_WORKFLOW",
-
-      { issueNumber },
-
-      { metadata: { issueNumber } },
-
-    );
-
-  }
-
-}
-
-
+export class TriageAgent extends Think {  async triageIssue(issueNumber) {    return this.runWorkflow(      "TRIAGE_WORKFLOW",      { issueNumber },      { metadata: { issueNumber } },    );  }}
 ```
 
 TypeScript
 
 ```
-
-export class TriageAgent extends Think<Env> {
-
-  async triageIssue(issueNumber: number): Promise<string> {
-
-    return this.runWorkflow(
-
-      "TRIAGE_WORKFLOW",
-
-      { issueNumber },
-
-      { metadata: { issueNumber } },
-
-    );
-
-  }
-
-}
-
-
+export class TriageAgent extends Think<Env> {  async triageIssue(issueNumber: number): Promise<string> {    return this.runWorkflow(      "TRIAGE_WORKFLOW",      { issueNumber },      { metadata: { issueNumber } },    );  }}
 ```
 
 `runWorkflow()` creates the Workflow instance and injects the Agent identity that `ThinkWorkflow` needs to reconnect to `this.agent` inside `run()`. Prefer it over calling the Workflows binding directly:
@@ -201,12 +78,7 @@ export class TriageAgent extends Think<Env> {
 TypeScript
 
 ```
-
-// Avoid this for Agent workflows. It does not include Agent context.
-
-await this.env.TRIAGE_WORKFLOW.create({ params: { issueNumber } });
-
-
+// Avoid this for Agent workflows. It does not include Agent context.await this.env.TRIAGE_WORKFLOW.create({ params: { issueNumber } });
 ```
 
 Use `sendWorkflowEvent()` from the Agent when a waiting Workflow needs an external signal, such as human approval:
@@ -214,16 +86,7 @@ Use `sendWorkflowEvent()` from the Agent when a waiting Workflow needs an extern
 TypeScript
 
 ```
-
-await this.sendWorkflowEvent("TRIAGE_WORKFLOW", workflowId, {
-
-  type: "approval",
-
-  payload: { approved: true },
-
-});
-
-
+await this.sendWorkflowEvent("TRIAGE_WORKFLOW", workflowId, {  type: "approval",  payload: { approved: true },});
 ```
 
 `step.prompt()` accepts a prompt string and a Zod object schema. The schema is converted to JSON Schema before the Workflow calls the Agent. Think then runs a full agentic turn: the Agent may use its tools across multiple steps and returns the structured result by calling an internal `final_answer` tool whose arguments match the schema. This uses ordinary tool calling rather than a streaming `response_format`, so it works across every provider Think supports — including Workers AI, which rejects JSON Schema responses on streaming requests. When the Workflow resumes, the payload is validated again with the original Zod schema before the typed value is returned.
@@ -255,10 +118,7 @@ The machine-readable output is carried in the pending notification and Workflow 
 By default, `step.prompt()` infers the idempotency key from Workflow identity and step name:
 
 ```
-
 think-workflow:<workflowName>:<workflowId>:<stepName>
-
-
 ```
 
 For loops, pass a string `key` to distinguish repeated uses of the same step name:
@@ -266,18 +126,7 @@ For loops, pass a string `key` to distinguish repeated uses of the same step nam
 TypeScript
 
 ```
-
-await step.prompt("summarize-file", {
-
-  key: file.path,
-
-  prompt: `Summarize ${file.path}`,
-
-  output: summarySchema,
-
-});
-
-
+await step.prompt("summarize-file", {  key: file.path,  prompt: `Summarize ${file.path}`,  output: summarySchema,});
 ```
 
 Prompt text is not part of the inferred key, but Think stores workflow metadata and a prompt/config fingerprint for diagnostics.
@@ -295,48 +144,7 @@ Use [getScheduledTasks()](https://developers.cloudflare.com/agents/harnesses/thi
 TypeScript
 
 ```
-
-getScheduledTasks() {
-
-  return {
-
-    dailySummary: {
-
-      schedule: "every day at 09:00",
-
-      timezone: "UTC",
-
-      prompt: "Generate the daily report."
-
-    },
-
-    dailyWorkflow: {
-
-      schedule: "every day at 09:00",
-
-      timezone: "UTC",
-
-      retry: { maxAttempts: 3 },
-
-      handler: async ({ idempotencyKey, scheduledFor, timezone }) => {
-
-        await this.env.REPORT_WORKFLOW.create({
-
-          id: idempotencyKey,
-
-          params: { scheduledFor, timezone }
-
-        });
-
-      }
-
-    }
-
-  };
-
-}
-
-
+getScheduledTasks() {  return {    dailySummary: {      schedule: "every day at 09:00",      timezone: "UTC",      prompt: "Generate the daily report."    },    dailyWorkflow: {      schedule: "every day at 09:00",      timezone: "UTC",      retry: { maxAttempts: 3 },      handler: async ({ idempotencyKey, scheduledFor, timezone }) => {        await this.env.REPORT_WORKFLOW.create({          id: idempotencyKey,          params: { scheduledFor, timezone }        });      }    }  };}
 ```
 
 Use [submitMessages()](https://developers.cloudflare.com/agents/harnesses/think/programmatic-submissions/) for durable one-off turns where the caller can inspect submission status later.

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,85 +35,20 @@ OpenAI's high-definition text-to-speech model producing higher quality audio out
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'openai/tts-1-hd',
-
-  {
-
-    response_format: 'mp3',
-
-    speed: 1,
-
-    text: 'Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.',
-
-    voice: 'alloy',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'openai/tts-1-hd',  {    response_format: 'mp3',    speed: 1,    text: 'Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.',    voice: 'alloy',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "openai/tts-1-hd",
-
-  "input": {
-
-    "response_format": "mp3",
-
-    "speed": 1,
-
-    "text": "Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.",
-
-    "voice": "alloy"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "openai/tts-1-hd",  "input": {    "response_format": "mp3",    "speed": 1,    "text": "Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.",    "voice": "alloy"  }}'
 ```
 
 * [ Output ](#tab-panel-1464)
 * [ Raw response ](#tab-panel-1465)
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__tts-1-hd/simple-speech.mp3"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__tts-1-hd/simple-speech.mp3"  },  "state": "Completed"}
 ```
 
 ## Examples
@@ -126,85 +61,20 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'openai/tts-1-hd',
-
-  {
-
-    response_format: 'mp3',
-
-    speed: 0.9,
-
-    text: 'Once upon a time, in a kingdom beyond the clouds, there lived a young inventor who dreamed of building machines that could think.',
-
-    voice: 'fable',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'openai/tts-1-hd',  {    response_format: 'mp3',    speed: 0.9,    text: 'Once upon a time, in a kingdom beyond the clouds, there lived a young inventor who dreamed of building machines that could think.',    voice: 'fable',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "openai/tts-1-hd",
-
-  "input": {
-
-    "response_format": "mp3",
-
-    "speed": 0.9,
-
-    "text": "Once upon a time, in a kingdom beyond the clouds, there lived a young inventor who dreamed of building machines that could think.",
-
-    "voice": "fable"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "openai/tts-1-hd",  "input": {    "response_format": "mp3",    "speed": 0.9,    "text": "Once upon a time, in a kingdom beyond the clouds, there lived a young inventor who dreamed of building machines that could think.",    "voice": "fable"  }}'
 ```
 
 * [ Output ](#tab-panel-1466)
 * [ Raw response ](#tab-panel-1467)
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__tts-1-hd/storytelling.mp3"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__tts-1-hd/storytelling.mp3"  },  "state": "Completed"}
 ```
 
 **Podcast Style**  — Conversational podcast narration 
@@ -215,85 +85,20 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'openai/tts-1-hd',
-
-  {
-
-    response_format: 'mp3',
-
-    speed: 1,
-
-    text: "So here's the thing about large language models — they're not actually thinking. They're predicting the next token based on patterns in their training data. But the results can be surprisingly coherent.",
-
-    voice: 'echo',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'openai/tts-1-hd',  {    response_format: 'mp3',    speed: 1,    text: "So here's the thing about large language models — they're not actually thinking. They're predicting the next token based on patterns in their training data. But the results can be surprisingly coherent.",    voice: 'echo',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "openai/tts-1-hd",
-
-  "input": {
-
-    "response_format": "mp3",
-
-    "speed": 1,
-
-    "text": "So here'\''s the thing about large language models — they'\''re not actually thinking. They'\''re predicting the next token based on patterns in their training data. But the results can be surprisingly coherent.",
-
-    "voice": "echo"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "openai/tts-1-hd",  "input": {    "response_format": "mp3",    "speed": 1,    "text": "So here'\''s the thing about large language models — they'\''re not actually thinking. They'\''re predicting the next token based on patterns in their training data. But the results can be surprisingly coherent.",    "voice": "echo"  }}'
 ```
 
 * [ Output ](#tab-panel-1470)
 * [ Raw response ](#tab-panel-1471)
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__tts-1-hd/podcast-style.mp3"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__tts-1-hd/podcast-style.mp3"  },  "state": "Completed"}
 ```
 
 **Shimmer Voice**  — Bright and expressive voice 
@@ -304,85 +109,20 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'openai/tts-1-hd',
-
-  {
-
-    response_format: 'mp3',
-
-    speed: 1,
-
-    text: 'Breaking news: scientists have discovered a new species of deep-sea fish that produces its own light using bioluminescence.',
-
-    voice: 'shimmer',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'openai/tts-1-hd',  {    response_format: 'mp3',    speed: 1,    text: 'Breaking news: scientists have discovered a new species of deep-sea fish that produces its own light using bioluminescence.',    voice: 'shimmer',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "openai/tts-1-hd",
-
-  "input": {
-
-    "response_format": "mp3",
-
-    "speed": 1,
-
-    "text": "Breaking news: scientists have discovered a new species of deep-sea fish that produces its own light using bioluminescence.",
-
-    "voice": "shimmer"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "openai/tts-1-hd",  "input": {    "response_format": "mp3",    "speed": 1,    "text": "Breaking news: scientists have discovered a new species of deep-sea fish that produces its own light using bioluminescence.",    "voice": "shimmer"  }}'
 ```
 
 * [ Output ](#tab-panel-1474)
 * [ Raw response ](#tab-panel-1475)
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__tts-1-hd/shimmer-voice.mp3"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "audio": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__tts-1-hd/shimmer-voice.mp3"  },  "state": "Completed"}
 ```
 
 ## Parameters
@@ -414,7 +154,7 @@ audio
 
 Input [ ](https://developers.cloudflare.com/ai/models/openai/tts-1-hd/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/tts-1-hd/schema-input.json "Download") 
 
-Output [ ](https://developers.cloudflare.com/ai/models/openai/tts-1-hd/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/tts-1-hd/schema-output.json "Download") 
+Output [ ](https://developers.cloudflare.com/ai/models/openai/tts-1-hd/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/tts-1-hd/schema-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/tts-1-hd/#page","headline":"TTS-1 HD (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"OpenAI's high-definition text-to-speech model producing higher quality audio output.","url":"https://developers.cloudflare.com/ai/models/openai/tts-1-hd/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

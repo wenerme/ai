@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,7 +16,7 @@ Warning
 
 This documentation describes the Miniflare API, which is only relevant for advanced use cases. Instead, most users should use [Wrangler](https://developers.cloudflare.com/workers/wrangler) to build, run & deploy their Workers locally
 
-**Miniflare** is a simulator for developing and testing[**Cloudflare Workers** ↗](https://workers.cloudflare.com/). It's written in TypeScript, and runs your code in a sandbox implementing Workers' runtime APIs.
+**Miniflare** is a simulator for developing and testing [**Cloudflare Workers** ↗](https://workers.cloudflare.com/). It's written in TypeScript, and runs your code in a sandbox implementing Workers' runtime APIs.
 
 * 🎉 **Fun:** develop Workers easily with detailed logging, file watching and pretty error pages supporting source maps.
 * 🔋 **Full-featured:** supports most Workers features, including KV, Durable Objects, WebSockets, modules and more.
@@ -25,9 +25,9 @@ This documentation describes the Miniflare API, which is only relevant for advan
 
 ---
 
-These docs primarily cover Miniflare specific things. For more information on runtime APIs, refer to the[Cloudflare Workers docs](https://developers.cloudflare.com/workers).
+These docs primarily cover Miniflare specific things. For more information on runtime APIs, refer to the [Cloudflare Workers docs](https://developers.cloudflare.com/workers).
 
-If you find something that doesn't behave as it does in the production Workers environment (and this difference isn't documented), or something's wrong in these docs, please[open a GitHub issue ↗](https://github.com/cloudflare/workers-sdk/issues/new/choose).
+If you find something that doesn't behave as it does in the production Workers environment (and this difference isn't documented), or something's wrong in these docs, please [open a GitHub issue ↗](https://github.com/cloudflare/workers-sdk/issues/new/choose).
 
 * [ Get Started ](https://developers.cloudflare.com/workers/testing/miniflare/get-started/) :  Install and configure the Miniflare API to dispatch events and test Cloudflare Workers locally.
 * [ Writing tests ](https://developers.cloudflare.com/workers/testing/miniflare/writing-tests/) :  Write integration tests against Workers using Miniflare.

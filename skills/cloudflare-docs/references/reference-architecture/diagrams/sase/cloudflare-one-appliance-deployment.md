@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,18 +26,21 @@ Every organization and network is different, and as such there is no one-size-fi
 
 The first decision for a Cloudflare One Appliance deployment is its location in the network, and this relates to whether the organization wants to keep the existing Customer Premises Equipment (CPE, edge router or firewall at a site), and if so, for what reason. Experience shows that this decision usually leads to three different topologies:
 
-* **Connector replacing the CPE** (Figure 1a): When the link is an Internet connection and the organization does not have any real use of existing equipment since the Connector supports all the required networking features such as DHCP, DNS, NAT, Trunking (801.1Q), IP access lists, breakout traffic, etc. Examples could be:  
-   * The transition from MPLS to Internet-based connectivity, where the MPLS router probably does not add any value in the deployment.  
-   * An Internet-facing CPE reaching, or already having exceeded, its end of life.  
-   * An Internet-facing CPE that is redundant with Cloudflare One Appliance and can be removed for simplicity's sake.
-* **Connector north of the CPE** (Figure 1b): This option might be preferred when the existing CPE is a firewall, and the organization wants to keep it for:  
-   * Additional LAN protection as a result of a defense-in-depth approach.  
-   * Advanced segmentation requirements, for example allowing/blocking traffic between segments based on various Layer 3 to Layer 7 rules, since Cloudflare One Appliance supports segmentation only on layers 3 and 4 of the OSI model.
-* **Connector south of the CPE** (Figure 1c): Reasons for installing Cloudflare One Appliance south of an existing Internet-facing CPE might be:  
-   * CPE cannot be replaced because it connects to a broadband service with a presentation (for example RJ-11) or protocol (for example PPPoE) that Cloudflare One Appliance does not support.  
-   * CPE cannot be replaced because it is part of a fiber service that only works with that specific hardware, such as an ISP-provided ONT (Optical Network Terminal).  
-   * CPE cannot be replaced (yet) because it is part of an active managed service.  
-   * CPE cannot be replaced because it is a firewall that the organization wants to keep in place for other reasons (technical or contractual).
+* **Connector replacing the CPE** (Figure 1a): When the link is an Internet connection and the organization does not have any real use of existing equipment since the Connector supports all the required networking features such as DHCP, DNS, NAT, Trunking (801.1Q), IP access lists, breakout traffic, etc. Examples could be:
+
+  * The transition from MPLS to Internet-based connectivity, where the MPLS router probably does not add any value in the deployment.
+  * An Internet-facing CPE reaching, or already having exceeded, its end of life.
+  * An Internet-facing CPE that is redundant with Cloudflare One Appliance and can be removed for simplicity's sake.
+* **Connector north of the CPE** (Figure 1b): This option might be preferred when the existing CPE is a firewall, and the organization wants to keep it for:
+
+  * Additional LAN protection as a result of a defense-in-depth approach.
+  * Advanced segmentation requirements, for example allowing/blocking traffic between segments based on various Layer 3 to Layer 7 rules, since Cloudflare One Appliance supports segmentation only on layers 3 and 4 of the OSI model.
+* **Connector south of the CPE** (Figure 1c): Reasons for installing Cloudflare One Appliance south of an existing Internet-facing CPE might be:
+
+  * CPE cannot be replaced because it connects to a broadband service with a presentation (for example RJ-11) or protocol (for example PPPoE) that Cloudflare One Appliance does not support.
+  * CPE cannot be replaced because it is part of a fiber service that only works with that specific hardware, such as an ISP-provided ONT (Optical Network Terminal).
+  * CPE cannot be replaced (yet) because it is part of an active managed service.
+  * CPE cannot be replaced because it is a firewall that the organization wants to keep in place for other reasons (technical or contractual).
 
 ![Figure 1: Connector location options: \(a\) replacing CPE, \(b\) north of CPE , \(c\) south of CPE.](https://developers.cloudflare.com/_astro/figure01.Dcrrl27C_Z1tATI8.svg "Figure 1. Connector location options: (a) replacing CPE, (b) north of CPE , (c) south of CPE")
 

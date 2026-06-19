@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -36,37 +36,18 @@ A single component which renders an entire meeting UI. It loads your preset and 
 ### Basic Usage
 
 ```
-
 <rtk-meeting></rtk-meeting>
-
-
 ```
 
 ### With Properties
 
 ```
-
-<rtk-meeting>
-
-</rtk-meeting>
-
-
+<rtk-meeting></rtk-meeting>
 ```
 
 ```
-
-<script>
-
-  const el = document.querySelector("rtk-meeting");
-
-
-  el.applyDesignSystem= true;
-
-  el.config= defaultUiConfig
-
-</script>
-
-
+<script>  const el = document.querySelector("rtk-meeting");
+  el.applyDesignSystem= true;  el.config= defaultUiConfig</script>
 ```
 
 ```json

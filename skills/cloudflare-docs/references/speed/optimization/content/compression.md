@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,102 +25,7 @@ Customers can enable Zstandard compression through [Compression Rules](https://d
 If supported by visitors' web browsers, Cloudflare will return Gzip, Brotli, or Zstandard-encoded responses for the following content types:
 
 ```
-
-text/html
-
-text/richtext
-
-text/plain
-
-text/css
-
-text/x-script
-
-text/x-component
-
-text/x-java-source
-
-text/x-markdown
-
-application/javascript
-
-application/x-javascript
-
-text/javascript
-
-text/js
-
-image/x-icon
-
-image/vnd.microsoft.icon
-
-application/x-perl
-
-application/x-httpd-cgi
-
-text/xml
-
-application/xml
-
-application/rss+xml
-
-application/vnd.api+json
-
-application/x-protobuf
-
-application/json
-
-multipart/bag
-
-multipart/mixed
-
-application/xhtml+xml
-
-font/ttf
-
-font/otf
-
-font/x-woff
-
-image/svg+xml
-
-application/vnd.ms-fontobject
-
-application/ttf
-
-application/x-ttf
-
-application/otf
-
-application/x-otf
-
-application/truetype
-
-application/opentype
-
-application/x-opentype
-
-application/font-woff
-
-application/eot
-
-application/font
-
-application/font-sfnt
-
-application/wasm
-
-application/javascript-binast
-
-application/manifest+json
-
-application/ld+json
-
-application/graphql+json
-
-application/geo+json
-
-
+text/htmltext/richtexttext/plaintext/csstext/x-scripttext/x-componenttext/x-java-sourcetext/x-markdownapplication/javascriptapplication/x-javascripttext/javascripttext/jsimage/x-iconimage/vnd.microsoft.iconapplication/x-perlapplication/x-httpd-cgitext/xmlapplication/xmlapplication/rss+xmlapplication/vnd.api+jsonapplication/x-protobufapplication/jsonmultipart/bagmultipart/mixedapplication/xhtml+xmlfont/ttffont/otffont/x-woffimage/svg+xmlapplication/vnd.ms-fontobjectapplication/ttfapplication/x-ttfapplication/otfapplication/x-otfapplication/truetypeapplication/opentypeapplication/x-opentypeapplication/font-woffapplication/eotapplication/fontapplication/font-sfntapplication/wasmapplication/javascript-binastapplication/manifest+jsonapplication/ld+jsonapplication/graphql+jsonapplication/geo+json
 ```
 
 Cloudflare's global network can deliver content to website visitors using Gzip compression, Brotli compression, Zstandard compression, or no compression, depending on:

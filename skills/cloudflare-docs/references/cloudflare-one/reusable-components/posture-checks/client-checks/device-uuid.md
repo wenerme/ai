@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -45,10 +45,11 @@ Hyphens are automatically stripped from UUIDs. For example, the posture check wi
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Posture checks**.
 2. Go to **Cloudflare One Client checks** and select **Add a check**.
 3. Select **Unique Client ID**.
-4. You will be prompted for the following information:  
-   * **Name**: Enter a unique name for this device posture check.  
-   * **Operating system**: Select the operating system of the device.  
-   * **List**: Select your [list of UUIDs](#2-create-a-list-of-uuids).
+4. You will be prompted for the following information:
+
+  * **Name**: Enter a unique name for this device posture check.
+  * **Operating system**: Select the operating system of the device.
+  * **List**: Select your [list of UUIDs](#2-create-a-list-of-uuids).
 5. Select **Save**.
 6. [Verify](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/#2-verify-device-posture-checks) that the posture check is returning the expected results.
 

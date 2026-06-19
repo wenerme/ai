@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -15,10 +15,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 You can have Rocket Loader ignore individual scripts by adding the `data-cfasync="false"` attribute to the relevant script tag:
 
 ```
-
 <script data-cfasync="false" src="/javascript.js"></script>
-
-
 ```
 
 Rocket Loader will still optimize the loading of all other scripts on the page.

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,29 +29,20 @@ Deploy to Cloudflare buttons simplify the deployment of a Workers application by
 
 Deploy to Cloudflare buttons can be embedded anywhere developers might want to launch your project. To add a Deploy to Cloudflare button, copy the following snippet and replace the Git repository URL with your project's URL. You can also optionally specify a subdirectory.
 
-* [ Markdown ](#tab-panel-11883)
-* [ HTML ](#tab-panel-11884)
-* [ URL ](#tab-panel-11885)
+* [ Markdown ](#tab-panel-11900)
+* [ HTML ](#tab-panel-11901)
+* [ URL ](#tab-panel-11902)
 
 ```
-
 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=<your git repo URL>)
-
-
 ```
 
 ```
-
 <a href="https://deploy.workers.cloudflare.com/?url=<YOUR_REPO_URL>"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"/></a>
-
-
 ```
 
 ```
-
 https://deploy.workers.cloudflare.com/?url=<YOUR_REPO_URL>
-
-
 ```
 
 If you have already deployed your application using Workers Builds, you can generate a Deploy to Cloudflare button directly from the Cloudflare dashboard by selecting the share button (located within your Worker details) and copying the provided snippet.
@@ -73,52 +64,20 @@ Cloudflare will read the Wrangler configuration file of your source repo to dete
 
 [Worker environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/) can be defined in your Wrangler configuration file as normal:
 
-* [  wrangler.jsonc ](#tab-panel-11886)
-* [  wrangler.toml ](#tab-panel-11887)
+* [  wrangler.jsonc ](#tab-panel-11903)
+* [  wrangler.toml ](#tab-panel-11904)
 
 JSONC
 
 ```
-
-{
-
-  "name": "my-worker",
-
-  "main": "./src/index.ts",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "vars": {
-
-    "API_HOST": "https://example.com",
-
-  },
-
-}
-
-
+{  "name": "my-worker",  "main": "./src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-19",  "vars": {    "API_HOST": "https://example.com",  },}
 ```
 
 TOML
 
 ```
-
-name = "my-worker"
-
-main = "./src/index.ts"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[vars]
-
-API_HOST = "https://example.com"
-
-
+name = "my-worker"main = "./src/index.ts"# Set this to today's datecompatibility_date = "2026-06-19"
+[vars]API_HOST = "https://example.com"
 ```
 
 [Worker secrets](https://developers.cloudflare.com/workers/configuration/secrets/) can be defined in a `.dev.vars.example` or `.env.example` file with a [dotenv ↗](https://www.npmjs.com/package/dotenv) format:
@@ -126,72 +85,25 @@ API_HOST = "https://example.com"
 .dev.vars.example
 
 ```
-
 COOKIE_SIGNING_KEY=my-secret # comment
-
-
 ```
 
 [Secrets Store](https://developers.cloudflare.com/secrets-store/) secrets can be configured in the Wrangler configuration file as normal:
 
-* [  wrangler.jsonc ](#tab-panel-11888)
-* [  wrangler.toml ](#tab-panel-11889)
+* [  wrangler.jsonc ](#tab-panel-11905)
+* [  wrangler.toml ](#tab-panel-11906)
 
 JSONC
 
 ```
-
-{
-
-  "name": "my-worker",
-
-  "main": "./src/index.ts",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "secrets_store_secrets": [
-
-    {
-
-      "binding": "API_KEY",
-
-      "store_id": "demo",
-
-      "secret_name": "api-key"
-
-    }
-
-  ]
-
-}
-
-
+{  "name": "my-worker",  "main": "./src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-19",  "secrets_store_secrets": [    {      "binding": "API_KEY",      "store_id": "demo",      "secret_name": "api-key"    }  ]}
 ```
 
 TOML
 
 ```
-
-name = "my-worker"
-
-main = "./src/index.ts"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[[secrets_store_secrets]]
-
-binding = "API_KEY"
-
-store_id = "demo"
-
-secret_name = "api-key"
-
-
+name = "my-worker"main = "./src/index.ts"# Set this to today's datecompatibility_date = "2026-06-19"
+[[secrets_store_secrets]]binding = "API_KEY"store_id = "demo"secret_name = "api-key"
 ```
 
 ## Best practices
@@ -203,22 +115,7 @@ If no `deploy` script is specified, Cloudflare will preconfigure `npx wrangler d
 **Running D1 Migrations**: If you would like to run migrations as part of your setup, you can specify this in your `package.json` by running your migrations as part of your `deploy` script. The migration command should reference the binding name rather than the database name to ensure migrations are successful when users specify a database name that is different from that of your source repository. The following is an example of how you can set up the scripts section of your `package.json`:
 
 ```
-
-{
-
-  "scripts": {
-
-    "build": "astro build",
-
-    "deploy": "npm run db:migrations:apply && wrangler deploy",
-
-    "db:migrations:apply": "wrangler d1 migrations apply DB_BINDING --remote"
-
-  }
-
-}
-
-
+{  "scripts": {    "build": "astro build",    "deploy": "npm run db:migrations:apply && wrangler deploy",    "db:migrations:apply": "wrangler d1 migrations apply DB_BINDING --remote"  }}
 ```
 
 **Provide a description for bindings**: If you wish to provide additional information about bindings, such as why they are required in this template, or suggestions for how to configure a value, you can provide a description in your `package.json`. This can be particularly useful for environment variables and secrets where users might need to find a value outside of Cloudflare.
@@ -228,43 +125,14 @@ Inline markdown `` `code` ``, `**bold**`, `__italics__` and `[links](https://exa
 package.json
 
 ```
-
-{
-
-  "name": "my-worker",
-
-  "private": true,
-
-  "cloudflare": {
-
-    "bindings": {
-
-      "API_KEY": {
-
-        "description": "Select your company's [API key](https://example.com/) for connecting to the example service."
-
-      },
-
-      "COOKIE_SIGNING_KEY": {
-
-        "description": "Generate a random string using `openssl rand -hex 32`."
-
-      }
-
-    }
-
-  }
-
-}
-
-
+{  "name": "my-worker",  "private": true,  "cloudflare": {    "bindings": {      "API_KEY": {        "description": "Select your company's [API key](https://example.com/) for connecting to the example service."      },      "COOKIE_SIGNING_KEY": {        "description": "Generate a random string using `openssl rand -hex 32`."      }    }  }}
 ```
 
 ## Limitations
 
 * **Monorepos**: Cloudflare does not fully support monorepos  
-   * If your repository URL contains a subdirectory, your application must be fully isolated within that subdirectory, including any dependencies. Otherwise, the build will fail. Cloudflare treats this subdirectory as the root of the new repository created as part of the deploy process.  
-   * Additionally, if you have a monorepo that contains multiple Workers applications, they will not be deployed together. You must configure a separate Deploy to Cloudflare button for each application. The user will manually create a distinct Workers application for each subdirectory.
+  * If your repository URL contains a subdirectory, your application must be fully isolated within that subdirectory, including any dependencies. Otherwise, the build will fail. Cloudflare treats this subdirectory as the root of the new repository created as part of the deploy process.
+  * Additionally, if you have a monorepo that contains multiple Workers applications, they will not be deployed together. You must configure a separate Deploy to Cloudflare button for each application. The user will manually create a distinct Workers application for each subdirectory.
 * **Pages applications**: Deploy to Cloudflare buttons only support Workers applications.
 * **Non-GitHub/GitLab repositories**: Source repositories from anything other than github.com and gitlab.com are not supported. Self-hosted versions of GitHub and GitLab are also not supported.
 * **Private repositories**: Repositories must be public in order for others to successfully use your Deploy to Cloudflare button.

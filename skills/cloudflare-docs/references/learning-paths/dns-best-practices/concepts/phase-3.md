@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,11 +29,12 @@ Complete one last check of all DNS records in your Cloudflare dashboard for accu
 ## 3\. Monitor propagation
 
 * DNS nameserver changes can take time to propagate globally, typically anywhere from a few minutes to 48 hours (though often much faster due to lowered TTLs).
-* Use the commands exemplified below, replacing `yourdomain.com` by your actual domain.  
-   * `dig yourdomain.com NS @8.8.8.8` (query Google's DNS)  
-   * `dig yourdomain.com NS @1.1.1.1` (query Cloudflare's DNS)  
-   * `whois yourdomain.com`  
-   * `dig yourdomain.com @tld.nameserver.com` (`tld.nameserver.com` is the nameserver of your domain's TLD. You can find this information by querying it as `dig com ns +short` where `.com` is the example.)  
+* Use the commands exemplified below, replacing `yourdomain.com` by your actual domain.
+
+  * `dig yourdomain.com NS @8.8.8.8` (query Google's DNS)
+  * `dig yourdomain.com NS @1.1.1.1` (query Cloudflare's DNS)
+  * `whois yourdomain.com`
+  * `dig yourdomain.com @tld.nameserver.com` (`tld.nameserver.com` is the nameserver of your domain's TLD. You can find this information by querying it as `dig com ns +short` where `.com` is the example.)  
 You are looking for the Cloudflare nameservers to be reported consistently.
 
 ## 4\. Initial testing

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/data-localization/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,19 +30,13 @@ In order to verify that Regional Services is working, customers can confirm the 
 Terminal window
 
 ```
-
 curl -X GET -I https://<HOSTNAME>/ 2>&1 | grep cf-ray
-
-
 ```
 
 Terminal window
 
 ```
-
 curl -s https://<HOSTNAME>/cdn-cgi/trace | grep "colo="
-
-
 ```
 
 The first command will return a three-letter IATA code (an airport identifier that corresponds to the nearest Cloudflare data center) in the [Cf-Ray](https://developers.cloudflare.com/fundamentals/reference/http-headers/#cf-ray) header, indicating the Cloudflare data center location of processing and/or TLS termination (traffic decryption). The second command will directly return the three-letter IATA code.

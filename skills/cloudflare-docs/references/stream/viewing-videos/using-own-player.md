@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,19 +29,13 @@ Each video and live stream has its own unique HLS and DASH manifest. You can acc
 HLS
 
 ```
-
 https://customer-<CODE>.cloudflarestream.com/<UID>/manifest/video.m3u8
-
-
 ```
 
 DASH
 
 ```
-
 https://customer-<CODE>.cloudflarestream.com/<UID>/manifest/video.mpd
-
-
 ```
 
 #### LL-HLS playback Beta
@@ -51,10 +45,7 @@ If a Live Inputs is enabled for the Low-Latency HLS beta, add the query string `
 HLS
 
 ```
-
 https://customer-<CODE>.cloudflarestream.com/<UID>/manifest/video.m3u8?protocol=llhls
-
-
 ```
 
 ### Dashboard
@@ -76,17 +67,14 @@ Each HLS and DASH manifest provides multiple resolutions of your video or live s
 If your player lacks such configuration options or you need to override them, you can add the `clientBandwidthHint` query param to the request to fetch the manifest file. This should be used only as a last resort — we recommend first using customization options provided by your player. Remember that while you may be developing your website or app on a fast Internet connection, and be tempted to use this setting to force high quality playback, many of your viewers are likely connecting over slower mobile networks.
 
 * `clientBandwidthHint` float  
-   * Return only the video representation closest to the provided bandwidth value (in Mbps). This can be used to enforce a specific quality level. If you specify a value that would cause an invalid or empty manifest to be served, the hint is ignored.
+  * Return only the video representation closest to the provided bandwidth value (in Mbps). This can be used to enforce a specific quality level. If you specify a value that would cause an invalid or empty manifest to be served, the hint is ignored.
 
 Refer to the example below to display only the video representation with a bitrate closest to 1.8 Mbps.
 
 Example
 
 ```
-
 https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/manifest/video.m3u8?clientBandwidthHint=1.8
-
-
 ```
 
 ## Play live video in native apps with less than 1 second latency

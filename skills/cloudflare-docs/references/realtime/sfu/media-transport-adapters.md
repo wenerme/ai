@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -77,12 +77,7 @@ graph LR
 Media Transport Adapters are managed through the Realtime SFU API:
 
 ```
-
-POST /v1/apps/{appId}/adapters/{adapterType}/new
-
-POST /v1/apps/{appId}/adapters/{adapterType}/close
-
-
+POST /v1/apps/{appId}/adapters/{adapterType}/newPOST /v1/apps/{appId}/adapters/{adapterType}/close
 ```
 
 Each adapter type has specific configuration requirements and capabilities. Refer to individual adapter documentation for detailed API specifications.

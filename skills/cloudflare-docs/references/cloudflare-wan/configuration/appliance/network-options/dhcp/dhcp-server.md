@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 When you use a static IP address, Cloudflare One Appliance (formerly Magic WAN Connector) can also act as a DHCP server in your network. To enable this feature:
 
-* [ Dashboard ](#tab-panel-7760)
-* [ API ](#tab-panel-7761)
+* [ Dashboard ](#tab-panel-7836)
+* [ API ](#tab-panel-7837)
 
 1. Go to the **Connectors** page.
 [ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
@@ -24,10 +24,10 @@ When you use a static IP address, Cloudflare One Appliance (formerly Magic WAN C
 2. Select **Network Configuration** \> **LAN configuration**.
 3. In **LAN configuration**, select the LAN where you want to enable DHCP server.
 4. Select **Edit**.
-5. Under **Static addressing**, select **This is a DHCP Server**. You also have to specify:  
-   * The DNS server address. You can have more than one IP address. Select **Add DNS Server** for each server you want to add.  
-   * The DHCP pool start  
-   * The DHCP pool end
+5. Under **Static addressing**, select **This is a DHCP Server**. You also have to specify:
+  * The DNS server address. You can have more than one IP address. Select **Add DNS Server** for each server you want to add.
+  * The DHCP pool start
+  * The DHCP pool end
 
 Note
 
@@ -39,43 +39,14 @@ Example:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Magic WAN Write`
 * `Magic Transit Write`
 
 Update Site LAN
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/lans/$LAN_ID" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "lan": {
-
-        "static_addressing": {
-
-            "dhcp_server": {
-
-                "dhcp_pool_end": "<IP_ADDRESS>",
-
-                "dhcp_pool_start": "<IP_ADDRESS>",
-
-                "dns_server": "<IP_ADDRESS>"
-
-            }
-
-        }
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/lans/$LAN_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "lan": {        "static_addressing": {            "dhcp_server": {                "dhcp_pool_end": "<IP_ADDRESS>",                "dhcp_pool_start": "<IP_ADDRESS>",                "dns_server": "<IP_ADDRESS>"            }        }    }  }'
 ```
 
 ```json

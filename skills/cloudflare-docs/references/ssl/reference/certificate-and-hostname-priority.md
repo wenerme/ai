@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,15 +22,16 @@ For any given hostname, Cloudflare uses the following order to determine which c
 
 1. **Hostname specificity**: A specific subdomain certificate (`www.example.com`) would take precedence over a wildcard certificate (`*.example.com`) for requests to `www.example.com`.
 2. **Zone specificity**: A specific subdomain certificate (`www.example.com`) would take precedence over a custom hostname certificate if the domain is active as a zone on Cloudflare.
-3. **Certificate priority**: If the hostname is the same, certain types of certificates take precedence over others.  
-| Priority | Certificate Type                                                                                                         |  
-| -------- | ------------------------------------------------------------------------------------------------------------------------ |  
-| 1        | [Keyless SSL](https://developers.cloudflare.com/ssl/keyless-ssl/)                                                        |  
-| 2        | [Custom Legacy](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/)                            |  
-| 3        | [Custom Modern](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/)                            |  
-| 4        | [Custom Hostname (Cloudflare for SaaS)](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/) |  
-| 5        | [Advanced](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/)                        |  
-| 6        | [Advanced - Total TLS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/)            |  
+3. **Certificate priority**: If the hostname is the same, certain types of certificates take precedence over others.
+
+| Priority | Certificate Type                                                                                                         |
+| -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| 1        | [Keyless SSL](https://developers.cloudflare.com/ssl/keyless-ssl/)                                                        |
+| 2        | [Custom Legacy](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/)                            |
+| 3        | [Custom Modern](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/)                            |
+| 4        | [Custom Hostname (Cloudflare for SaaS)](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/) |
+| 5        | [Advanced](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/)                        |
+| 6        | [Advanced - Total TLS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/)            |
 | 7        | [Universal](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/)                                      |
 4. **Certificate expiration**: The most recently ordered certificate takes precedence unless a certificate deletion has occurred. If and when a certificate is deleted, the certificate with the latest expiration date is deployed.
 
@@ -56,13 +57,15 @@ When multiple proxied DNS records exist for a hostname, in multiple zones — us
 
 Cloudflare determines this priority in the following order, assuming each record exists and is proxied (orange-clouded):
 
-1. **Exact hostname match**:  
-   1. [New custom hostname](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/) (belonging to a SaaS provider)  
-   2. [Legacy custom hostname](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/versioning/) (belonging to a SaaS provider)  
-   3. [DNS](https://developers.cloudflare.com/dns/proxy-status/) (belonging to the logical DNS zone)
-2. **Wildcard hostname match**:  
-   1. DNS (belonging to the logical DNS zone)  
-   2. New custom hostname (belonging to a SaaS provider)
+1. **Exact hostname match**:
+
+  1. [New custom hostname](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/) (belonging to a SaaS provider)
+  2. [Legacy custom hostname](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/versioning/) (belonging to a SaaS provider)
+  3. [DNS](https://developers.cloudflare.com/dns/proxy-status/) (belonging to the logical DNS zone)
+2. **Wildcard hostname match**:
+
+  1. DNS (belonging to the logical DNS zone)
+  2. New custom hostname (belonging to a SaaS provider)
 
 If a hostname resource record is not proxied (gray-clouded) for a zone on Cloudflare, that zone's settings are not applied and any settings configured at the associated origin are applied instead. This origin could be another zone on Cloudflare or any other server.
 

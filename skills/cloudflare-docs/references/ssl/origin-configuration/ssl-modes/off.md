@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,8 +25,8 @@ Cloudflare does not recommend setting your encryption mode to **Off**.
 
 ## Required setup
 
-* [ Dashboard ](#tab-panel-10658)
-* [ API ](#tab-panel-10659)
+* [ Dashboard ](#tab-panel-10734)
+* [ API ](#tab-panel-10735)
 
 To change your encryption mode in the dashboard:
 

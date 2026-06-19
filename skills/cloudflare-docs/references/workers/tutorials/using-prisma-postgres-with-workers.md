@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -39,10 +39,7 @@ Begin by using [C3](https://developers.cloudflare.com/pages/get-started/c3/) to 
 Terminal window
 
 ```
-
 npm create cloudflare@latest prisma-postgres-worker -- --type=hello-world --ts=true --git=true --deploy=false
-
-
 ```
 
 Then navigate into your project:
@@ -50,10 +47,7 @@ Then navigate into your project:
 Terminal window
 
 ```
-
 cd ./prisma-postgres-worker
-
-
 ```
 
 Your initial `src/index.ts` file currently contains a simple request handler:
@@ -61,18 +55,7 @@ Your initial `src/index.ts` file currently contains a simple request handler:
 src/index.ts
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    return new Response("Hello World!");
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export default {  async fetch(request, env, ctx): Promise<Response> {    return new Response("Hello World!");  },} satisfies ExportedHandler<Env>;
 ```
 
 ## 2\. Setup Prisma in your project
@@ -178,10 +161,7 @@ Rename the `.env` file in the root of your application to `.dev.vars` file:
 Terminal window
 
 ```
-
 mv .env .dev.vars
-
-
 ```
 
 ### 2.4\. Apply database schema changes
@@ -191,34 +171,9 @@ Open the `schema.prisma` file in the `prisma` folder and add the following `User
 prisma/schema.prisma
 
 ```
-
-generator client {
-
-  provider = "prisma-client-js"
-
-}
-
-
-datasource db {
-
-  provider = "postgresql"
-
-  url      = env("DATABASE_URL")
-
-}
-
-
-model User {
-
-  id  Int @id @default(autoincrement())
-
-  email String
-
-  name   String
-
-}
-
-
+generator client {  provider = "prisma-client-js"}
+datasource db {  provider = "postgresql"  url      = env("DATABASE_URL")}
+model User {  id  Int @id @default(autoincrement())  email String  name   String}
 ```
 
 Next, add the following helper scripts to the `scripts` section of your `package.json`:
@@ -226,20 +181,7 @@ Next, add the following helper scripts to the `scripts` section of your `package
 package.json
 
 ```
-
-"scripts": {
-
-  "migrate": "dotenv -e .dev.vars -- npx prisma migrate dev",
-
-  "generate": "dotenv -e .dev.vars -- npx prisma generate --no-engine",
-
-  "studio": "dotenv -e .dev.vars -- npx prisma studio",
-
-  // Additional worker scripts...
-
-}
-
-
+"scripts": {  "migrate": "dotenv -e .dev.vars -- npx prisma migrate dev",  "generate": "dotenv -e .dev.vars -- npx prisma generate --no-engine",  "studio": "dotenv -e .dev.vars -- npx prisma studio",  // Additional worker scripts...}
 ```
 
 Run the migration script to apply changes to the database:
@@ -247,10 +189,7 @@ Run the migration script to apply changes to the database:
 Terminal window
 
 ```
-
 npm run migrate
-
-
 ```
 
 When prompted, provide a name for the migration (for example, `init`).
@@ -264,76 +203,13 @@ Modify the `src/index.ts` file and replace its contents with the following code:
 src/index.ts
 
 ```
-
-import { PrismaClient } from "@prisma/client/edge";
-
-import { withAccelerate } from "@prisma/extension-accelerate";
-
-
-export interface Env {
-
-  DATABASE_URL: string;
-
-}
-
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    const path = new URL(request.url).pathname;
-
-    if (path === "/favicon.ico")
-
-      return new Response("Resource not found", {
-
-        status: 404,
-
-        headers: {
-
-          "Content-Type": "text/plain",
-
-        },
-
-      });
-
-
-    const prisma = new PrismaClient({
-
-      datasourceUrl: env.DATABASE_URL,
-
-    }).$extends(withAccelerate());
-
-
-    const user = await prisma.user.create({
-
-      data: {
-
-        email: `Jon${Math.ceil(Math.random() * 1000)}@gmail.com`,
-
-        name: "Jon Doe",
-
-      },
-
-    });
-
-
+import { PrismaClient } from "@prisma/client/edge";import { withAccelerate } from "@prisma/extension-accelerate";
+export interface Env {  DATABASE_URL: string;}
+export default {  async fetch(request, env, ctx): Promise<Response> {    const path = new URL(request.url).pathname;    if (path === "/favicon.ico")      return new Response("Resource not found", {        status: 404,        headers: {          "Content-Type": "text/plain",        },      });
+    const prisma = new PrismaClient({      datasourceUrl: env.DATABASE_URL,    }).$extends(withAccelerate());
+    const user = await prisma.user.create({      data: {        email: `Jon${Math.ceil(Math.random() * 1000)}@gmail.com`,        name: "Jon Doe",      },    });
     const userCount = await prisma.user.count();
-
-
-    return new Response(`\
-
-Created new user: ${user.name} (${user.email}).
-
-Number of users in the database: ${userCount}.
-
-    `);
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+    return new Response(`\Created new user: ${user.name} (${user.email}).Number of users in the database: ${userCount}.    `);  },} satisfies ExportedHandler<Env>;
 ```
 
 Run the development server:
@@ -341,10 +217,7 @@ Run the development server:
 Terminal window
 
 ```
-
 npm run dev
-
-
 ```
 
 Visit [https://localhost:8787 ↗](https://localhost:8787) to see your app display the following output:
@@ -352,10 +225,7 @@ Visit [https://localhost:8787 ↗](https://localhost:8787) to see your app displ
 Terminal window
 
 ```
-
 Number of users in the database: 1
-
-
 ```
 
 Every time you refresh the page, a new user is created. The number displayed will increment by `1` with each refresh as it returns the total number of users in your database.
@@ -367,10 +237,7 @@ When the application is deployed to Cloudflare, it needs access to the `DATABASE
 Terminal window
 
 ```
-
 npx wrangler secret put DATABASE_URL
-
-
 ```
 
 When prompted, paste the `DATABASE_URL` value (from `.dev.vars`). If you are logged in via the Wrangler CLI, you will see a prompt asking if you'd like to create a new Worker. Confirm by choosing "yes":
@@ -378,10 +245,7 @@ When prompted, paste the `DATABASE_URL` value (from `.dev.vars`). If you are log
 Terminal window
 
 ```
-
 ✔ There doesn't seem to be a Worker called "prisma-postgres-worker". Do you want to create a new Worker with that name and add secrets to it? … yes
-
-
 ```
 
 Then execute the following command to deploy your project to Cloudflare Workers:
@@ -389,10 +253,7 @@ Then execute the following command to deploy your project to Cloudflare Workers:
 Terminal window
 
 ```
-
 npm run deploy
-
-
 ```
 
 The `wrangler` CLI will bundle and upload your application.

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,16 +35,22 @@ For more information on how the Cloudflare One Client routes traffic, refer to t
 Chapters
 
 * ![Introduction and WARP GUI Basics](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=0s)  
+
  **Introduction and WARP GUI Basics** 0s
 * ![Consumer vs. Corporate WARP](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=57s)  
+
  **Consumer vs. Corporate WARP** 57s
 * ![Device Profiles Explained](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=95s)  
+
  **Device Profiles Explained** 1m35s
 * ![WARP Operating Modes](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=132s)  
+
  **WARP Operating Modes** 2m12s
 * ![Split Tunneling](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=224s)  
+
  **Split Tunneling** 3m44s
 * ![Conclusion](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=296s)  
+
  **Conclusion** 4m56s
 
 ## Installation details
@@ -53,7 +59,7 @@ The GUI and daemon (or service) have different names and are stored in the follo
 
 Windows 
 
-| Windows              |                                                                                                               |
+|                      | Windows                                                                                                       |
 | -------------------- | ------------------------------------------------------------------------------------------------------------- |
 | **Service / Daemon** | C:\\Program Files\\Cloudflare\\Cloudflare WARP\\warp-svc.exe                                                  |
 | **GUI application**  | C:\\Program Files\\Cloudflare\\Cloudflare WARP\\Cloudflare WARP.exe                                           |
@@ -61,7 +67,7 @@ Windows
 
 macOS 
 
-| macOS                |                                                                                   |
+|                      | macOS                                                                             |
 | -------------------- | --------------------------------------------------------------------------------- |
 | **Service / Daemon** | /Applications/Cloudflare WARP.app/Contents/Resources/CloudflareWARP               |
 | **GUI application**  | /Applications/Cloudflare WARP.app/Contents/MacOS/Cloudflare WARP                  |
@@ -69,7 +75,7 @@ macOS
 
 Linux 
 
-| Linux                |                                                   |
+|                      | Linux                                             |
 | -------------------- | ------------------------------------------------- |
 | **Service / Daemon** | /bin/warp-svc                                     |
 | **GUI application**  | /bin/warp-taskbar                                 |
@@ -86,11 +92,12 @@ Along with the Cloudflare One Client GUI and daemon, `warp-cli` and `warp-diag` 
 Deploying the Cloudflare One Client significantly enhances your organization's security and visibility within Cloudflare Zero Trust:
 
 * **Unified security policies everywhere**: With the Cloudflare One Client deployed in the Traffic and DNS mode, [Gateway policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) are not location-dependent — they can be enforced anywhere.
-* **Advanced web filtering and threat protection**: Activate Gateway features for your device traffic, including:  
-   * [Anti-Virus scanning](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/antivirus-scanning/)  
-   * [HTTP filtering](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/)  
-   * [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#isolate)  
-   * [Identity-based policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/)
+* **Advanced web filtering and threat protection**: Activate Gateway features for your device traffic, including:
+
+  * [Anti-Virus scanning](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/antivirus-scanning/)
+  * [HTTP filtering](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/)
+  * [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#isolate)
+  * [Identity-based policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/)
 * **Application and device-specific insights**: View which SaaS applications your users are accessing and review their approval status on the [Shadow IT Discovery](https://developers.cloudflare.com/cloudflare-one/insights/analytics/shadow-it-discovery/) page. Monitor device and network performance with [Digital Experience Monitoring (DEX)](https://developers.cloudflare.com/cloudflare-one/insights/dex/) to detect connectivity or performance issues before users report them.
 * **Device posture checks**: The Cloudflare One Client provides advanced Zero Trust protection by making it possible to check for [device posture](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/). By setting up device posture checks, you can build Access or Gateway policies that check for a device's location, disk encryption status, OS version, and more.
 * **Secure private and infrastructure access**: Connect devices to internal networks and applications through [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/) without exposing them to the public internet. The client is also required for [Access for Infrastructure](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/), which provides SSH access using short-lived certificates and detailed audit logging.

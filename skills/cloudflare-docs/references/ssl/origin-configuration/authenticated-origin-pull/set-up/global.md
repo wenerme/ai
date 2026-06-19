@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,9 +19,10 @@ Global, [zone-level](https://developers.cloudflare.com/ssl/origin-configuration/
 ## Before you begin
 
 * Make sure your zone is using an [SSL/TLS encryption mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/) of **Full** or higher.
-* Consider your security and certificate needs:  
-   * The Cloudflare-provided certificate is not exclusive to your account. It only guarantees that a request is coming from the Cloudflare network. If you need stricter security, set up [zone-level](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/zone-level/) or [per-hostname](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/) AOP with your own certificate instead.  
-   * Global AOP is applied to all proxied hostnames on your zone, including [custom hostnames](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/) configured on a Cloudflare for SaaS zone. If you need a different AOP certificate for different custom hostnames, use [per-hostname AOP](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/).
+* Consider your security and certificate needs:
+
+  * The Cloudflare-provided certificate is not exclusive to your account. It only guarantees that a request is coming from the Cloudflare network. If you need stricter security, set up [zone-level](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/zone-level/) or [per-hostname](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/) AOP with your own certificate instead.
+  * Global AOP is applied to all proxied hostnames on your zone, including [custom hostnames](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/) configured on a Cloudflare for SaaS zone. If you need a different AOP certificate for different custom hostnames, use [per-hostname AOP](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/).
 
 ## 1\. Download the Cloudflare certificate
 
@@ -36,10 +37,7 @@ Check the examples below for Apache and NGINX or refer to your origin web server
 Apache example
 
 ```
-
 SSLCACertificateFile /path/to/origin-pull-ca.pem
-
-
 ```
 
 For this example, you would have saved your certificate to `/path/to/origin-pull-ca.pem`.
@@ -49,12 +47,7 @@ Rename the downloaded .PEM file and upload it to `/path/to/origin-pull-ca.pem` b
 NGINX example
 
 ```
-
-ssl_verify_client optional;
-
-ssl_client_certificate /etc/nginx/certs/cloudflare.crt;
-
-
+ssl_verify_client optional;ssl_client_certificate /etc/nginx/certs/cloudflare.crt;
 ```
 
 For this example, you would have saved your certificate to `/etc/nginx/certs/cloudflare.crt`.
@@ -65,8 +58,8 @@ At this point, you may also want to enable logging on your origin so that you ca
 
 ## 3\. Enable global Authenticated Origin Pulls
 
-* [ Dashboard ](#tab-panel-10640)
-* [ API ](#tab-panel-10641)
+* [ Dashboard ](#tab-panel-10716)
+* [ API ](#tab-panel-10717)
 
 1. Go to the **Origin Server** page.  
 [ Go to **Origin Server** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
@@ -82,19 +75,13 @@ Once you can confirm everything is working as expected for your specific origin 
 Apache example
 
 ```
-
 SSLVerifyClient require
-
-
 ```
 
 NGINX example
 
 ```
-
 ssl_verify_client on;
-
-
 ```
 
 After completing the process, you can use `curl` to send requests directly to your origin IPs, verifying that the requests fail due to certificate validation being enforced.

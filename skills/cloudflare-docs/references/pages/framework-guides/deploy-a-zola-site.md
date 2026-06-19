@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,10 +25,7 @@ If you use the package manager [Homebrew ↗](https://brew.sh), run the `brew in
 Terminal window
 
 ```
-
 brew install zola
-
-
 ```
 
 ### Windows (Chocolatey)
@@ -38,10 +35,7 @@ If you use the package manager [Chocolatey ↗](https://chocolatey.org/), run th
 Terminal window
 
 ```
-
 choco install zola
-
-
 ```
 
 ### Windows (Scoop)
@@ -51,10 +45,7 @@ If you use the package manager [Scoop ↗](https://scoop.sh/), run the `scoop in
 Terminal window
 
 ```
-
 scoop install zola
-
-
 ```
 
 ### Linux (pkg)
@@ -64,10 +55,7 @@ Your Linux distro's package manager may include Zola. If this is the case, you c
 Terminal window
 
 ```
-
 pkg install zola
-
-
 ```
 
 If your package manager does not include Zola or you would like to download a release directly, refer to the [**Manual**](https://developers.cloudflare.com/pages/framework-guides/deploy-a-zola-site/#manual-installation) section below.
@@ -85,10 +73,7 @@ With Zola installed, create a new project by running the `zola init` command in 
 Terminal window
 
 ```
-
 zola init my-zola-project
-
-
 ```
 
 Upon running `zola init`, you will prompted with three questions:
@@ -113,14 +98,7 @@ Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). Aft
 Terminal window
 
 ```
-
-git remote add origin https://github.com/<your-gh-username>/<repository-name>
-
-git branch -M main
-
-git push -u origin main
-
-
+git remote add origin https://github.com/<your-gh-username>/<repository-name>git branch -M maingit push -u origin main
 ```
 
 ## Deploy with Cloudflare Pages
@@ -149,12 +127,7 @@ For example:
 YAML
 
 ```
-
-# The URL the site will be built for
-
-base_url = "https://my-zola-project.pages.dev"
-
-
+# The URL the site will be built forbase_url = "https://my-zola-project.pages.dev"
 ```
 
 Every time you commit new code to your Zola site, Cloudflare Pages will automatically rebuild your project and deploy it. You will also get access to [preview deployments](https://developers.cloudflare.com/pages/configuration/preview-deployments/) on new pull requests, so you can preview how changes look to your site before deploying them to production.
@@ -168,10 +141,7 @@ To fix this, modify your build command in the Cloudflare Pages configuration to 
 Terminal window
 
 ```
-
 if [ "$CF_PAGES_BRANCH" = "main" ]; then zola build; else zola build --base-url $CF_PAGES_URL; fi
-
-
 ```
 
 This command uses:

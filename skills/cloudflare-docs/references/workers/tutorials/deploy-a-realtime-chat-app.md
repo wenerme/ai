@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,10 +29,7 @@ Open your terminal and clone the [workers-chat-demo ↗](https://github.com/clou
 Terminal window
 
 ```
-
 git clone https://github.com/cloudflare/workers-chat-demo.git
-
-
 ```
 
 ## Authenticate Wrangler
@@ -42,10 +39,7 @@ After you have cloned the repository, authenticate Wrangler by running:
 Terminal window
 
 ```
-
 npx wrangler login
-
-
 ```
 
 ## Deploy your project
@@ -55,10 +49,7 @@ When you are ready to deploy your application, run:
 Terminal window
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 Your application will be deployed to your `*.workers.dev` subdomain.
@@ -69,86 +60,38 @@ To deploy your application to a custom domain using Wrangler, open your project'
 
 To configure a route in your Wrangler configuration file, add the following to your environment:
 
-* [  wrangler.jsonc ](#tab-panel-12173)
-* [  wrangler.toml ](#tab-panel-12174)
+* [  wrangler.jsonc ](#tab-panel-12190)
+* [  wrangler.toml ](#tab-panel-12191)
 
 JSONC
 
 ```
-
-{
-
-  "routes": [
-
-    {
-
-      "pattern": "example.com/about",
-
-      "zone_id": "<YOUR_ZONE_ID>"
-
-    }
-
-  ]
-
-}
-
-
+{  "routes": [    {      "pattern": "example.com/about",      "zone_id": "<YOUR_ZONE_ID>"    }  ]}
 ```
 
 TOML
 
 ```
-
-[[routes]]
-
-pattern = "example.com/about"
-
-zone_id = "<YOUR_ZONE_ID>"
-
-
+[[routes]]pattern = "example.com/about"zone_id = "<YOUR_ZONE_ID>"
 ```
 
 If you have specified your zone ID in the environment of your Wrangler configuration file, you will not need to write it again in object form.
 
 To configure a subdomain in your Wrangler configuration file, add the following to your environment:
 
-* [  wrangler.jsonc ](#tab-panel-12175)
-* [  wrangler.toml ](#tab-panel-12176)
+* [  wrangler.jsonc ](#tab-panel-12192)
+* [  wrangler.toml ](#tab-panel-12193)
 
 JSONC
 
 ```
-
-{
-
-  "routes": [
-
-    {
-
-      "pattern": "subdomain.example.com",
-
-      "custom_domain": true
-
-    }
-
-  ]
-
-}
-
-
+{  "routes": [    {      "pattern": "subdomain.example.com",      "custom_domain": true    }  ]}
 ```
 
 TOML
 
 ```
-
-[[routes]]
-
-pattern = "subdomain.example.com"
-
-custom_domain = true
-
-
+[[routes]]pattern = "subdomain.example.com"custom_domain = true
 ```
 
 To test your live application:
@@ -164,83 +107,21 @@ To test your live application:
 
 To uninstall your chat application, modify your Wrangler file to remove the `durable_objects` bindings and add a `deleted_classes` migration:
 
-* [  wrangler.jsonc ](#tab-panel-12177)
-* [  wrangler.toml ](#tab-panel-12178)
+* [  wrangler.jsonc ](#tab-panel-12194)
+* [  wrangler.toml ](#tab-panel-12195)
 
 JSONC
 
 ```
-
-{
-
-  "durable_objects": {
-
-    "bindings": []
-
-  },
-
-  // Indicate that you want the ChatRoom and RateLimiter classes to be callable as Durable Objects.
-
-  "migrations": [
-
-    {
-
-      "tag": "v1",
-
-      "new_sqlite_classes": [
-
-        "ChatRoom",
-
-        "RateLimiter"
-
-      ]
-
-    },
-
-    {
-
-      "tag": "v2", // Should be unique for each entry
-
-      "deleted_classes": [
-
-        "ChatRoom",
-
-        "RateLimiter"
-
-      ]
-
-    }
-
-  ]
-
-}
-
-
+{  "durable_objects": {    "bindings": []  },  // Indicate that you want the ChatRoom and RateLimiter classes to be callable as Durable Objects.  "migrations": [    {      "tag": "v1",      "new_sqlite_classes": [        "ChatRoom",        "RateLimiter"      ]    },    {      "tag": "v2", // Should be unique for each entry      "deleted_classes": [        "ChatRoom",        "RateLimiter"      ]    }  ]}
 ```
 
 TOML
 
 ```
-
-[durable_objects]
-
-bindings = [ ]
-
-
-[[migrations]]
-
-tag = "v1"
-
-new_sqlite_classes = [ "ChatRoom", "RateLimiter" ]
-
-
-[[migrations]]
-
-tag = "v2"
-
-deleted_classes = [ "ChatRoom", "RateLimiter" ]
-
-
+[durable_objects]bindings = [ ]
+[[migrations]]tag = "v1"new_sqlite_classes = [ "ChatRoom", "RateLimiter" ]
+[[migrations]]tag = "v2"deleted_classes = [ "ChatRoom", "RateLimiter" ]
 ```
 
 Then run `npx wrangler deploy`.

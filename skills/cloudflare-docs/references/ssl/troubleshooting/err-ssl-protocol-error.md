@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -45,7 +45,7 @@ HTTP/3 uses the QUIC protocol over UDP, which some networks, firewalls, or devic
 
 Temporarily disable HTTP/3 to determine if it is the cause:
 
-1. In the Cloudflare dashboard, go to the **Protocol Optimization** page.[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization)
+1. In the Cloudflare dashboard, go to the **Protocol Optimization** page. [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization)
 2. Turn off **HTTP/3 (with QUIC)**.
 3. Ask the affected visitor to test again.
 
@@ -71,7 +71,7 @@ Disabling TLS 1.3 reduces security for all visitors. Only disable it temporarily
 
 Temporarily disable TLS 1.3 to determine if it is the cause:
 
-1. In the Cloudflare dashboard, go to the **Edge Certificates** page.[ Go to **Edge Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+1. In the Cloudflare dashboard, go to the **Edge Certificates** page. [ Go to **Edge Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. Find **TLS 1.3** and turn it off.
 3. Ask the affected visitor to test again.
 

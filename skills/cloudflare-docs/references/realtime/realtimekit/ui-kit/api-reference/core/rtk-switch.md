@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,39 +29,18 @@ A switch component which follows RTK Design System.
 ### Basic Usage
 
 ```
-
 <rtk-switch></rtk-switch>
-
-
 ```
 
 ### With Properties
 
 ```
-
-<rtk-switch>
-
-</rtk-switch>
-
-
+<rtk-switch></rtk-switch>
 ```
 
 ```
-
-<script>
-
-  const el = document.querySelector("rtk-switch");
-
-
-  el.checked= true;
-
-  el.disabled= true;
-
-  el.readonly= true;
-
-</script>
-
-
+<script>  const el = document.querySelector("rtk-switch");
+  el.checked= true;  el.disabled= true;  el.readonly= true;</script>
 ```
 
 ```json

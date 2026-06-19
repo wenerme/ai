@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,28 +33,14 @@ When the HTTP request contains too many headers, this field may not contain the 
 Example value:
 
 ```
-
-Example 1: ["application/json"]
-
-Example 2: ["This header value is longer than 10 bytes"]
-
-
+Example 1: ["application/json"]Example 2: ["This header value is longer than 10 bytes"]
 ```
 
 Example usage:
 
 ```
-
-# Example 1: Check for specific header value.
-
-any(http.request.headers.values[*] == "application/json")
-
-
-# Example 2: Match requests according to the specified operator and the length/size entered for the header value.
-
-any(len(http.request.headers.values[*])[*] gt 10)
-
-
+# Example 1: Check for specific header value.any(http.request.headers.values[*] == "application/json")
+# Example 2: Match requests according to the specified operator and the length/size entered for the header value.any(len(http.request.headers.values[*])[*] gt 10)
 ```
 
 Categories: 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,51 +30,13 @@ Configure the plugin as follows:
 For use in a dashboard, you usually want to aggregate some metric per time interval. This can be achieved by rounding and then grouping by the `timestamp` field. The following query rounds and groups in this way, and then computes an average across each time interval whilst taking into account [sampling](https://developers.cloudflare.com/analytics/analytics-engine/sql-api/#sampling).
 
 ```
-
-SELECT
-
-    intDiv(toUInt32(timestamp), 60) * 60 AS t,
-
-    blob1 AS label,
-
-    SUM(_sample_interval * double1) / SUM(_sample_interval) AS average_metric
-
-FROM dataset_name
-
-WHERE
-
-    timestamp <= NOW()
-
-    AND timestamp > NOW() - INTERVAL '1' DAY
-
-GROUP BY blob1, t
-
-ORDER BY t
-
-
+SELECT    intDiv(toUInt32(timestamp), 60) * 60 AS t,    blob1 AS label,    SUM(_sample_interval * double1) / SUM(_sample_interval) AS average_metricFROM dataset_nameWHERE    timestamp <= NOW()    AND timestamp > NOW() - INTERVAL '1' DAYGROUP BY blob1, tORDER BY t
 ```
 
 The Altinity plugin provides some useful macros that can simplify writing queries of this type. The macros require setting `Column:DateTime` to `timestamp` in the query builder, then they can be used like this:
 
 ```
-
-SELECT
-
-    $timeSeries AS t,
-
-    blob1 AS label,
-
-    SUM(_sample_interval * double1) / SUM(_sample_interval) AS average_metric
-
-FROM dataset_name
-
-WHERE $timeFilter
-
-GROUP BY blob1, t
-
-ORDER BY t
-
-
+SELECT    $timeSeries AS t,    blob1 AS label,    SUM(_sample_interval * double1) / SUM(_sample_interval) AS average_metricFROM dataset_nameWHERE $timeFilterGROUP BY blob1, tORDER BY t
 ```
 
 This query will automatically adjust the rounding time depending on the zoom level and filter to the correct time range that is currently being displayed.

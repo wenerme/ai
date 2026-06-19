@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waiting-room/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -55,11 +55,11 @@ Then, select the **play** button to get the test started. This should take rough
 
 ![Select the play button](https://developers.cloudflare.com/_astro/navigation.CqQsxXoC_Z1zxoei.webp) 
 * Each simulated user has the following attributes:  
-   * Contains a Cookie jar for cookies persistence.  
-   * Repeats for 20 times.  
-         * Makes a request to the origin site with waiting room enabled.  
-         * Logs request details.  
-         * Pauses for 10 seconds before refreshing the page to make another request to the origin site.
+  * Contains a Cookie jar for cookies persistence.
+  * Repeats for 20 times.  
+    * Makes a request to the origin site with waiting room enabled.
+    * Logs request details.
+    * Pauses for 10 seconds before refreshing the page to make another request to the origin site.
 ![User attributes](https://developers.cloudflare.com/_astro/user-attributes.CMfB7b6L_6qoKz.webp) 
 
 Per the plan above, each [Thread Group ↗](https://jmeter.apache.org/usermanual/test%5Fplan.html#thread%5Fgroup) performs the above action once. The user traffic ramps up within the first minute and keeps a sustained traffic for the next three minutes before users leave the site. You can send more or less traffic than what is being sent in this example by updating these properties.
@@ -75,54 +75,31 @@ Example Curl Statement
 Terminal window
 
 ```
-
-echo '{
-
-  "operationName": "UsersQueuedOverTimeQuery",
-
-  "variables": {
-
-    "filter": {
-
-      "datetime_geq": "2022-10-17T15:34:00Z",
-
-      "datetime_leq": "2022-10-17T15:40:00Z",
-
-      "waitingRoomId": "<YOUR_WAITING_ROOM_ID>"
-
-    },
-
-    "zoneId": "<YOUR_ZONE_ID>"
-
-  },
-
-  "query": "query UsersQueuedOverTimeQuery($zoneId: string, $filter: ZoneWaitingRoomAnalyticsAdaptiveGroupsFilter_InputObject) {\n  viewer {\n    zones(filter: {zoneTag: $zoneId}) {\n      timeseries: waitingRoomAnalyticsAdaptiveGroups(limit: 5000, filter: $filter, orderBy: [datetimeMinute_ASC]) {\n        avg {\n          totalActiveUsers\n          totalActiveUsersConfig\n          totalQueuedUsers\n          __typename\n        }\n        max {\n          totalQueuedUsers\n          totalActiveUsers\n          totalActiveUsersConfig\n          __typename\n        }\n        min {\n          totalActiveUsersConfig\n          __typename\n        }\n        dimensions {\n          ts: datetimeMinute\n          __typename\n        }\n        __typename\n      }\n      total: waitingRoomAnalyticsAdaptiveGroups(limit: 1, filter: $filter) {\n        max {\n          totalQueuedUsers\n          totalActiveUsers\n          __typename\n        }\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n}\n"
-
-}' | tr -d '\n' | curl \
-
-  -X POST
-
-
+echo '{  "operationName": "UsersQueuedOverTimeQuery",  "variables": {    "filter": {      "datetime_geq": "2022-10-17T15:34:00Z",      "datetime_leq": "2022-10-17T15:40:00Z",      "waitingRoomId": "<YOUR_WAITING_ROOM_ID>"    },    "zoneId": "<YOUR_ZONE_ID>"  },  "query": "query UsersQueuedOverTimeQuery($zoneId: string, $filter: ZoneWaitingRoomAnalyticsAdaptiveGroupsFilter_InputObject) {\n  viewer {\n    zones(filter: {zoneTag: $zoneId}) {\n      timeseries: waitingRoomAnalyticsAdaptiveGroups(limit: 5000, filter: $filter, orderBy: [datetimeMinute_ASC]) {\n        avg {\n          totalActiveUsers\n          totalActiveUsersConfig\n          totalQueuedUsers\n          __typename\n        }\n        max {\n          totalQueuedUsers\n          totalActiveUsers\n          totalActiveUsersConfig\n          __typename\n        }\n        min {\n          totalActiveUsersConfig\n          __typename\n        }\n        dimensions {\n          ts: datetimeMinute\n          __typename\n        }\n        __typename\n      }\n      total: waitingRoomAnalyticsAdaptiveGroups(limit: 1, filter: $filter) {\n        max {\n          totalQueuedUsers\n          totalActiveUsers\n          __typename\n        }\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n}\n"}' | tr -d '\n' | curl \  -X POST
 ```
 
 From our test, we got the following results (these are extracted from results of the query for readability):
 
-* 15:35:00 UTC  
-   * `"totalActiveUsers": 137,`  
-   * `"totalActiveUsersConfig": 300,`  
-   * `"totalQueuedUsers": 0`
-* 15:36:00 UTC  
-   * `"totalActiveUsers": 200,`  
-   * `"totalActiveUsersConfig": 300,`  
-   * `"totalQueuedUsers": 0`
-* 15:37:00 UTC  
-   * `"totalActiveUsers": 200,`  
-   * `"totalActiveUsersConfig": 300,`  
-   * `"totalQueuedUsers": 0`
-* 15:38:00 UTC  
-   * `"totalActiveUsers": 200,`  
-   * `"totalActiveUsersConfig": 300,`  
-   * `"totalQueuedUsers": 0`
+* 15:35:00 UTC
+
+  * `"totalActiveUsers": 137,`
+  * `"totalActiveUsersConfig": 300,`
+  * `"totalQueuedUsers": 0`
+* 15:36:00 UTC
+
+  * `"totalActiveUsers": 200,`
+  * `"totalActiveUsersConfig": 300,`
+  * `"totalQueuedUsers": 0`
+* 15:37:00 UTC
+
+  * `"totalActiveUsers": 200,`
+  * `"totalActiveUsersConfig": 300,`
+  * `"totalQueuedUsers": 0`
+* 15:38:00 UTC
+
+  * `"totalActiveUsers": 200,`
+  * `"totalActiveUsersConfig": 300,`
+  * `"totalQueuedUsers": 0`
 
 The first minute mark, 15:35:00 UTC, shows 137 active users past the waiting room. This is because our traffic was set to gradually ramp up within the first minute and the test did not start exactly at the minute mark. When data was aggregated for the following minute, 15:36:00 UTC, the waiting room reported the total 200 users active we expected on the site as each “user” made subrequests. The active user count remained stable at 200 as long as it received subrequests from the traffic sent by the load test.
 

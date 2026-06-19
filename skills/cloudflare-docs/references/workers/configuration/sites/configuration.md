@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,12 +22,15 @@ Workers Sites require the latest version of [Wrangler ↗](https://github.com/cl
 
 There are a few specific configuration settings for Workers Sites in your Wrangler file:
 
-* `bucket` required  
-   * The directory containing your static assets, path relative to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). Example: `bucket = "./public"`.
-* `include` optional  
-   * A list of gitignore-style patterns for files or directories in `bucket` you exclusively want to upload. Example: `include = ["upload_dir"]`.
-* `exclude` optional  
-   * A list of gitignore-style patterns for files or directories in `bucket` you want to exclude from uploads. Example: `exclude = ["ignore_dir"]`.
+* `bucket` required
+
+  * The directory containing your static assets, path relative to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). Example: `bucket = "./public"`.
+* `include` optional
+
+  * A list of gitignore-style patterns for files or directories in `bucket` you exclusively want to upload. Example: `include = ["upload_dir"]`.
+* `exclude` optional
+
+  * A list of gitignore-style patterns for files or directories in `bucket` you want to exclude from uploads. Example: `exclude = ["ignore_dir"]`.
 
 To learn more about the optional `include` and `exclude` fields, refer to [Ignoring subsets of static assets](#ignoring-subsets-of-static-assets).
 
@@ -37,78 +40,22 @@ If your project uses [environments](https://developers.cloudflare.com/workers/wr
 
 Example of a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-11495)
-* [  wrangler.toml ](#tab-panel-11496)
+* [  wrangler.jsonc ](#tab-panel-11512)
+* [  wrangler.toml ](#tab-panel-11513)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "docs-site-blah",
-
-  "site": {
-
-    "bucket": "./public"
-
-  },
-
-  "env": {
-
-    "production": {
-
-      "name": "docs-site",
-
-      "route": "https://example.com/docs*"
-
-    },
-
-    "staging": {
-
-      "name": "docs-site-staging",
-
-      "route": "https://staging.example.com/docs*"
-
-    }
-
-  }
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "docs-site-blah",  "site": {    "bucket": "./public"  },  "env": {    "production": {      "name": "docs-site",      "route": "https://example.com/docs*"    },    "staging": {      "name": "docs-site-staging",      "route": "https://staging.example.com/docs*"    }  }}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "docs-site-blah"
-
-
-[site]
-
-bucket = "./public"
-
-
-[env.production]
-
-name = "docs-site"
-
-route = "https://example.com/docs*"
-
-
-[env.staging]
-
-name = "docs-site-staging"
-
-route = "https://staging.example.com/docs*"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "docs-site-blah"
+[site]bucket = "./public"
+[env.production]name = "docs-site"route = "https://example.com/docs*"
+[env.staging]name = "docs-site-staging"route = "https://staging.example.com/docs*"
 ```
 
 ## Storage limits
@@ -127,43 +74,19 @@ This means that you should use gitignore semantics when declaring which director
 
 If you want to include only a certain set of files or directories in your `bucket`, you can add an `include` field to your `[site]` section of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-11491)
-* [  wrangler.toml ](#tab-panel-11492)
+* [  wrangler.jsonc ](#tab-panel-11508)
+* [  wrangler.toml ](#tab-panel-11509)
 
 JSONC
 
 ```
-
-{
-
-  "site": {
-
-    "bucket": "./public",
-
-    "include": [ // must be an array.
-
-      "included_dir"
-
-    ]
-
-  }
-
-}
-
-
+{  "site": {    "bucket": "./public",    "include": [ // must be an array.      "included_dir"    ]  }}
 ```
 
 TOML
 
 ```
-
-[site]
-
-bucket = "./public"
-
-include = [ "included_dir" ]
-
-
+[site]bucket = "./public"include = [ "included_dir" ]
 ```
 
 Wrangler will only upload files or directories matching the patterns in the `include` array.
@@ -172,43 +95,19 @@ Wrangler will only upload files or directories matching the patterns in the `inc
 
 If you want to exclude files or directories in your `bucket`, you can add an `exclude` field to your `[site]` section of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-11493)
-* [  wrangler.toml ](#tab-panel-11494)
+* [  wrangler.jsonc ](#tab-panel-11510)
+* [  wrangler.toml ](#tab-panel-11511)
 
 JSONC
 
 ```
-
-{
-
-  "site": {
-
-    "bucket": "./public",
-
-    "exclude": [ // must be an array.
-
-      "excluded_dir"
-
-    ]
-
-  }
-
-}
-
-
+{  "site": {    "bucket": "./public",    "exclude": [ // must be an array.      "excluded_dir"    ]  }}
 ```
 
 TOML
 
 ```
-
-[site]
-
-bucket = "./public"
-
-exclude = [ "excluded_dir" ]
-
-
+[site]bucket = "./public"exclude = [ "excluded_dir" ]
 ```
 
 Wrangler will ignore files or directories matching the patterns in the `exclude` array when uploading assets to Workers KV.

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,44 +37,7 @@ This example adds a rate limiting rule to the `http_ratelimit` phase entry point
 Create a zone ruleset rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "description": "My rate limiting rule",
-
-    "expression": "(http.request.uri.path matches \"^/api/\")",
-
-    "action": "block",
-
-    "ratelimit": {
-
-        "characteristics": [
-
-            "cf.colo.id",
-
-            "ip.src",
-
-            "http.request.headers[\"x-api-key\"]"
-
-        ],
-
-        "period": 60,
-
-        "requests_per_period": 100,
-
-        "mitigation_timeout": 600
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "description": "My rate limiting rule",    "expression": "(http.request.uri.path matches \"^/api/\")",    "action": "block",    "ratelimit": {        "characteristics": [            "cf.colo.id",            "ip.src",            "http.request.headers[\"x-api-key\"]"        ],        "period": 60,        "requests_per_period": 100,        "mitigation_timeout": 600    }  }'
 ```
 
 To define a specific position for the new rule, include a `position` object in the request body according to the guidelines in [Change the order of a rule in a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/update-rule/#change-the-order-of-a-rule-in-a-ruleset).
@@ -90,58 +53,7 @@ The new rule defines a [custom response](https://developers.cloudflare.com/waf/r
 Create a zone ruleset rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "description": "My rate limiting rule",
-
-    "expression": "(http.request.uri.path matches \"^/api/\")",
-
-    "action": "block",
-
-    "action_parameters": {
-
-        "response": {
-
-            "status_code": 403,
-
-            "content": "You have been rate limited.",
-
-            "content_type": "text/plain"
-
-        }
-
-    },
-
-    "ratelimit": {
-
-        "characteristics": [
-
-            "cf.colo.id",
-
-            "ip.src",
-
-            "http.request.headers[\"x-api-key\"]"
-
-        ],
-
-        "period": 60,
-
-        "requests_per_period": 100,
-
-        "mitigation_timeout": 600
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "description": "My rate limiting rule",    "expression": "(http.request.uri.path matches \"^/api/\")",    "action": "block",    "action_parameters": {        "response": {            "status_code": 403,            "content": "You have been rate limited.",            "content_type": "text/plain"        }    },    "ratelimit": {        "characteristics": [            "cf.colo.id",            "ip.src",            "http.request.headers[\"x-api-key\"]"        ],        "period": 60,        "requests_per_period": 100,        "mitigation_timeout": 600    }  }'
 ```
 
 To define a specific position for the new rule, include a `position` object in the request body according to the guidelines in [Change the order of a rule in a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/update-rule/#change-the-order-of-a-rule-in-a-ruleset).
@@ -157,46 +69,7 @@ The new rule does not consider requests for cached assets when calculating the r
 Create a zone ruleset rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "description": "My rate limiting rule",
-
-    "expression": "(http.request.uri.path matches \"^/api/\")",
-
-    "action": "block",
-
-    "ratelimit": {
-
-        "characteristics": [
-
-            "cf.colo.id",
-
-            "ip.src",
-
-            "http.request.headers[\"x-api-key\"]"
-
-        ],
-
-        "period": 60,
-
-        "requests_per_period": 100,
-
-        "mitigation_timeout": 600,
-
-        "requests_to_origin": true
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "description": "My rate limiting rule",    "expression": "(http.request.uri.path matches \"^/api/\")",    "action": "block",    "ratelimit": {        "characteristics": [            "cf.colo.id",            "ip.src",            "http.request.headers[\"x-api-key\"]"        ],        "period": 60,        "requests_per_period": 100,        "mitigation_timeout": 600,        "requests_to_origin": true    }  }'
 ```
 
 To define a specific position for the new rule, include a `position` object in the request body according to the guidelines in [Change the order of a rule in a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/update-rule/#change-the-order-of-a-rule-in-a-ruleset).
@@ -216,46 +89,7 @@ The new rule is a complexity-based rate limiting rule that takes the `my-score` 
 Create a zone ruleset rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "description": "My complexity-based rate limiting rule",
-
-    "expression": "(http.request.uri.path wildcard \"/graphql/*\")",
-
-    "action": "block",
-
-    "ratelimit": {
-
-        "characteristics": [
-
-            "cf.colo.id",
-
-            "http.request.headers[\"x-api-key\"]"
-
-        ],
-
-        "score_response_header_name": "my-score",
-
-        "score_per_period": 400,
-
-        "period": 60,
-
-        "mitigation_timeout": 600,
-
-        "counting_expression": ""
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "description": "My complexity-based rate limiting rule",    "expression": "(http.request.uri.path wildcard \"/graphql/*\")",    "action": "block",    "ratelimit": {        "characteristics": [            "cf.colo.id",            "http.request.headers[\"x-api-key\"]"        ],        "score_response_header_name": "my-score",        "score_per_period": 400,        "period": 60,        "mitigation_timeout": 600,        "counting_expression": ""    }  }'
 ```
 
 To define a specific position for the new rule, include a `position` object in the request body according to the guidelines in [Change the order of a rule in a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/update-rule/#change-the-order-of-a-rule-in-a-ruleset).

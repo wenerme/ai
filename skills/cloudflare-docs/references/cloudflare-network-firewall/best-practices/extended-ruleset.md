@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-network-firewall/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -45,11 +45,11 @@ Rule 10 in the example ruleset below is acting as a catch-all to block all traff
 
 ### Suggested rules
 
-**Rule ID**: 1**Description**: Endpoints (clients) will receive traffic destined for ephemeral ports. Blocks inbound SYN-only traffic. (meaning SYN-ACKs are permitted)**Match**: `ip.proto eq "tcp" and ip.dst in $endpoints and tcp.dstport in {32768..60999} and not (tcp.flags.syn and not tcp.flags.ack)` **Action**: Allow
+**Rule ID**: 1 **Description**: Endpoints (clients) will receive traffic destined for ephemeral ports. Blocks inbound SYN-only traffic. (meaning SYN-ACKs are permitted) **Match**: `ip.proto eq "tcp" and ip.dst in $endpoints and tcp.dstport in {32768..60999} and not (tcp.flags.syn and not tcp.flags.ack)` **Action**: Allow
 
-**Rule ID**: 2**Description**: Endpoints (clients) will receive traffic destined for ephemeral ports**Match**: `ip.proto eq "udp" and ip.dst in $endpoints and udp.dstport in {32768..60999}` **Action**: Allow
+**Rule ID**: 2 **Description**: Endpoints (clients) will receive traffic destined for ephemeral ports **Match**: `ip.proto eq "udp" and ip.dst in $endpoints and udp.dstport in {32768..60999}` **Action**: Allow
 
-**Rule ID**: 3**Description**: Permits ICMP traffic to destination IP addresses in `$endpoints` list with ICMP Types:
+**Rule ID**: 3 **Description**: Permits ICMP traffic to destination IP addresses in `$endpoints` list with ICMP Types:
 
 * Type 0 = Echo Reply
 * Type 3 = Destination Unreachable
@@ -57,7 +57,7 @@ Rule 10 in the example ruleset below is acting as a catch-all to block all traff
 
 **Match**: `ip.proto eq "icmp" and ip.dst in $endpoints and (icmp.type eq 0 or icmp.type eq 3 or icmp.type eq 11)` **Action**: Allow
 
-**Rule ID**: 10**Description**: Otherwise deny all traffic to IP's in `$endpoints` list**Match**: `ip.dst in $endpoints` **Action**: Block
+**Rule ID**: 10 **Description**: Otherwise deny all traffic to IP's in `$endpoints` list **Match**: `ip.dst in $endpoints` **Action**: Block
 
 ## Internal router/Firewall IP addresses
 
@@ -69,7 +69,7 @@ Follow the best practices for internal routers or firewall interface IP addresse
 
 ### Suggested rules
 
-**Rule ID**: 1**Description**: Permit limited ICMP traffic inbound, including:
+**Rule ID**: 1 **Description**: Permit limited ICMP traffic inbound, including:
 
 * Type 0 - Echo Reply
 * Type 3 - Destination Unreachable
@@ -78,7 +78,7 @@ Follow the best practices for internal routers or firewall interface IP addresse
 
 **Match**: `ip.proto eq "icmp" and ip.dst in $internal_routers and ( (icmp.type eq 0 or icmp.type eq 3) or (icmp.type eq 11) or (icmp.type eq 8) )` **Action**: Allow
 
-**Rule ID**: 2**Description**: Block all other traffic destined to these IP addresses**Match**: `ip.dst in $internal_routers` **Action**: Block
+**Rule ID**: 2 **Description**: Block all other traffic destined to these IP addresses **Match**: `ip.dst in $internal_routers` **Action**: Block
 
 ## Web Servers
 
@@ -95,11 +95,11 @@ The following is an example of suggested rules, but you should only make changes
 
 ### Suggested rules
 
-**Rule ID**: 1**Description**: Allows inbound HTTP/S traffic from the Internet with SYN-only or ACK-only flag (not SYN/ACKs)**Match**: `ip.proto eq "tcp" and tcp.srcport in {32768..60999} and ip.dst in $web_servers and tcp.dstport in {80 443} and not (tcp.flags.syn and tcp.flags.ack)` **Action**: Allow
+**Rule ID**: 1 **Description**: Allows inbound HTTP/S traffic from the Internet with SYN-only or ACK-only flag (not SYN/ACKs) **Match**: `ip.proto eq "tcp" and tcp.srcport in {32768..60999} and ip.dst in $web_servers and tcp.dstport in {80 443} and not (tcp.flags.syn and tcp.flags.ack)` **Action**: Allow
 
-**Rule ID**: 2**Description**: Allows UDP replies for DNS and NTP to web servers**Match**: `ip.dst in $web_servers and ip.proto eq "udp" and udp.srcport in {53 123} and udp.dstport in {1024..65535}` **Action**: Allow if necessary but Disable if under attack
+**Rule ID**: 2 **Description**: Allows UDP replies for DNS and NTP to web servers **Match**: `ip.dst in $web_servers and ip.proto eq "udp" and udp.srcport in {53 123} and udp.dstport in {1024..65535}` **Action**: Allow if necessary but Disable if under attack
 
-**Rule ID**: 3**Description**: Catch-all to block all other traffic destined for web server IP addresses**Match**: `ip.dst in $web_servers` **Action**: Block
+**Rule ID**: 3 **Description**: Catch-all to block all other traffic destined for web server IP addresses **Match**: `ip.dst in $web_servers` **Action**: Block
 
 Alternatively, if you have Cloudflare Layer 7 protection, the Cloudflare Public IP addresses can be permitted as the source IP addresses to the destination IP addresses for the HTTP/HTTPS inbound traffic. This recommendation effectively replaces Rule 1 in the example above.
 
@@ -107,7 +107,7 @@ For a list of Cloudflare's IP addresses, refer to [Cloudflare's IP addresses ↗
 
 ### Suggested rules for Cloudflare proxied traffic
 
-**Description**: Allow inbound HTTP/S traffic from Cloudflare with SYN or ACK**Match**: `ip.proto eq "tcp" and ip.dst in $web_servers and tcp.dstport in {80 443} and not (tcp.flags.syn and tcp.flags.ack) and ip.src in {173.245.48.0/20 103.21.244.0/22 103.22.200.0/22 103.31.4.0/22 141.101.64.0/18 108.162.192.0/18 190.93.240.0/20 188.114.96.0/20 197.234.240.0/22 198.41.128.0/17 162.158.0.0/15 104.16.0.0/13 104.24.0.0/14 172.64.0.0/13 131.0.72.0/22}` **Action**: Allow
+**Description**: Allow inbound HTTP/S traffic from Cloudflare with SYN or ACK **Match**: `ip.proto eq "tcp" and ip.dst in $web_servers and tcp.dstport in {80 443} and not (tcp.flags.syn and tcp.flags.ack) and ip.src in {173.245.48.0/20 103.21.244.0/22 103.22.200.0/22 103.31.4.0/22 141.101.64.0/18 108.162.192.0/18 190.93.240.0/20 188.114.96.0/20 197.234.240.0/22 198.41.128.0/17 162.158.0.0/15 104.16.0.0/13 104.24.0.0/14 172.64.0.0/13 131.0.72.0/22}` **Action**: Allow
 
 ## Non-web servers
 

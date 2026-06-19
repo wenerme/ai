@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pulumi/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,10 +31,7 @@ Install via Homebrew package manager.
 Terminal window
 
 ```
-
 brew install pulumi/tap/pulumi
-
-
 ```
 
 ### Linux
@@ -44,10 +41,7 @@ Use the installation script.
 Terminal window
 
 ```
-
 curl -fsSL https://get.pulumi.com | sh
-
-
 ```
 
 ### Windows
@@ -62,10 +56,7 @@ To verify your installation, run the following in the terminal:
 Terminal window
 
 ```
-
 pulumi version
-
-
 ```
 
 Note

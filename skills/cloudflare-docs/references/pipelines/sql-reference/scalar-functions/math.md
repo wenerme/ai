@@ -6,23 +6,20 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pipelines/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
 # Math functions
 
-_Cloudflare Pipelines scalar function implementations are based on[Apache DataFusion ↗](https://arrow.apache.org/datafusion/) (via [Arroyo ↗](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference._
+_Cloudflare Pipelines scalar function implementations are based on [Apache DataFusion ↗](https://arrow.apache.org/datafusion/) (via [Arroyo ↗](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference._
 
 ## `abs`
 
 Returns the absolute value of a number.
 
 ```
-
 abs(numeric_expression)
-
-
 ```
 
 **Arguments**
@@ -34,10 +31,7 @@ abs(numeric_expression)
 Returns the arc cosine or inverse cosine of a number.
 
 ```
-
 acos(numeric_expression)
-
-
 ```
 
 **Arguments**
@@ -49,10 +43,7 @@ acos(numeric_expression)
 Returns the area hyperbolic cosine or inverse hyperbolic cosine of a number.
 
 ```
-
 acosh(numeric_expression)
-
-
 ```
 
 **Arguments**
@@ -64,10 +55,7 @@ acosh(numeric_expression)
 Returns the arc sine or inverse sine of a number.
 
 ```
-
 asin(numeric_expression)
-
-
 ```
 
 **Arguments**
@@ -79,10 +67,7 @@ asin(numeric_expression)
 Returns the area hyperbolic sine or inverse hyperbolic sine of a number.
 
 ```
-
 asinh(numeric_expression)
-
-
 ```
 
 **Arguments**
@@ -94,10 +79,7 @@ asinh(numeric_expression)
 Returns the arc tangent or inverse tangent of a number.
 
 ```
-
 atan(numeric_expression)
-
-
 ```
 
 **Arguments**
@@ -109,10 +91,7 @@ atan(numeric_expression)
 Returns the area hyperbolic tangent or inverse hyperbolic tangent of a number.
 
 ```
-
 atanh(numeric_expression)
-
-
 ```
 
 **Arguments**
@@ -124,10 +103,7 @@ atanh(numeric_expression)
 Returns the arc tangent or inverse tangent of `expression_y / expression_x`.
 
 ```
-
 atan2(expression_y, expression_x)
-
-
 ```
 
 **Arguments**
@@ -140,10 +116,7 @@ atan2(expression_y, expression_x)
 Returns the cube root of a number.
 
 ```
-
 cbrt(numeric_expression)
-
-
 ```
 
 **Arguments**
@@ -155,10 +128,7 @@ cbrt(numeric_expression)
 Returns the nearest integer greater than or equal to a number.
 
 ```
-
 ceil(numeric_expression)
-
-
 ```
 
 **Arguments**
@@ -170,10 +140,7 @@ ceil(numeric_expression)
 Returns the cosine of a number.
 
 ```
-
 cos(numeric_expression)
-
-
 ```
 
 **Arguments**
@@ -185,10 +152,7 @@ cos(numeric_expression)
 Returns the hyperbolic cosine of a number.
 
 ```
-
 cosh(numeric_expression)
-
-
 ```
 
 **Arguments**
@@ -200,10 +164,7 @@ cosh(numeric_expression)
 Converts radians to degrees.
 
 ```
-
 degrees(numeric_expression)
-
-
 ```
 
 **Arguments**
@@ -215,10 +176,7 @@ degrees(numeric_expression)
 Returns the base-e exponential of a number.
 
 ```
-
 exp(numeric_expression)
-
-
 ```
 
 **Arguments**
@@ -230,10 +188,7 @@ exp(numeric_expression)
 Factorial. Returns 1 if value is less than 2.
 
 ```
-
 factorial(numeric_expression)
-
-
 ```
 
 **Arguments**
@@ -245,10 +200,7 @@ factorial(numeric_expression)
 Returns the nearest integer less than or equal to a number.
 
 ```
-
 floor(numeric_expression)
-
-
 ```
 
 **Arguments**
@@ -260,10 +212,7 @@ floor(numeric_expression)
 Returns the greatest common divisor of `expression_x` and `expression_y`. Returns 0 if both inputs are zero.
 
 ```
-
 gcd(expression_x, expression_y)
-
-
 ```
 
 **Arguments**
@@ -276,10 +225,7 @@ gcd(expression_x, expression_y)
 Returns true if a given number is +NaN or -NaN otherwise returns false.
 
 ```
-
 isnan(numeric_expression)
-
-
 ```
 
 **Arguments**
@@ -291,10 +237,7 @@ isnan(numeric_expression)
 Returns true if a given number is +0.0 or -0.0 otherwise returns false.
 
 ```
-
 iszero(numeric_expression)
-
-
 ```
 
 **Arguments**
@@ -306,10 +249,7 @@ iszero(numeric_expression)
 Returns the least common multiple of `expression_x` and `expression_y`. Returns 0 if either input is zero.
 
 ```
-
 lcm(expression_x, expression_y)
-
-
 ```
 
 **Arguments**
@@ -322,10 +262,7 @@ lcm(expression_x, expression_y)
 Returns the natural logarithm of a number.
 
 ```
-
 ln(numeric_expression)
-
-
 ```
 
 **Arguments**
@@ -337,12 +274,7 @@ ln(numeric_expression)
 Returns the base-x logarithm of a number. Can either provide a specified base, or if omitted then takes the base-10 of a number.
 
 ```
-
-log(base, numeric_expression)
-
-log(numeric_expression)
-
-
+log(base, numeric_expression)log(numeric_expression)
 ```
 
 **Arguments**
@@ -355,10 +287,7 @@ log(numeric_expression)
 Returns the base-10 logarithm of a number.
 
 ```
-
 log10(numeric_expression)
-
-
 ```
 
 **Arguments**
@@ -370,10 +299,7 @@ log10(numeric_expression)
 Returns the base-2 logarithm of a number.
 
 ```
-
 log2(numeric_expression)
-
-
 ```
 
 **Arguments**
@@ -385,10 +311,7 @@ log2(numeric_expression)
 Returns the first argument if it's not _NaN_. Returns the second argument otherwise.
 
 ```
-
 nanvl(expression_x, expression_y)
-
-
 ```
 
 **Arguments**
@@ -401,10 +324,7 @@ nanvl(expression_x, expression_y)
 Returns an approximate value of π.
 
 ```
-
 pi()
-
-
 ```
 
 ## `power`
@@ -412,10 +332,7 @@ pi()
 Returns a base expression raised to the power of an exponent.
 
 ```
-
 power(base, exponent)
-
-
 ```
 
 **Arguments**
@@ -436,10 +353,7 @@ _Alias of [power](#power)._
 Converts degrees to radians.
 
 ```
-
 radians(numeric_expression)
-
-
 ```
 
 **Arguments**
@@ -451,10 +365,7 @@ radians(numeric_expression)
 Returns a random float value in the range \[0, 1). The random seed is unique to each row.
 
 ```
-
 random()
-
-
 ```
 
 ## `round`
@@ -462,10 +373,7 @@ random()
 Rounds a number to the nearest integer.
 
 ```
-
 round(numeric_expression[, decimal_places])
-
-
 ```
 
 **Arguments**
@@ -478,10 +386,7 @@ round(numeric_expression[, decimal_places])
 Returns the sign of a number. Negative numbers return `-1`. Zero and positive numbers return `1`.
 
 ```
-
 signum(numeric_expression)
-
-
 ```
 
 **Arguments**
@@ -493,10 +398,7 @@ signum(numeric_expression)
 Returns the sine of a number.
 
 ```
-
 sin(numeric_expression)
-
-
 ```
 
 **Arguments**
@@ -508,10 +410,7 @@ sin(numeric_expression)
 Returns the hyperbolic sine of a number.
 
 ```
-
 sinh(numeric_expression)
-
-
 ```
 
 **Arguments**
@@ -523,10 +422,7 @@ sinh(numeric_expression)
 Returns the square root of a number.
 
 ```
-
 sqrt(numeric_expression)
-
-
 ```
 
 **Arguments**
@@ -538,10 +434,7 @@ sqrt(numeric_expression)
 Returns the tangent of a number.
 
 ```
-
 tan(numeric_expression)
-
-
 ```
 
 **Arguments**
@@ -553,10 +446,7 @@ tan(numeric_expression)
 Returns the hyperbolic tangent of a number.
 
 ```
-
 tanh(numeric_expression)
-
-
 ```
 
 **Arguments**
@@ -568,16 +458,13 @@ tanh(numeric_expression)
 Truncates a number to a whole number or truncated to the specified decimal places.
 
 ```
-
 trunc(numeric_expression[, decimal_places])
-
-
 ```
 
 **Arguments**
 
 * **numeric\_expression**: Numeric expression to operate on. Can be a constant, column, or function, and any combination of arithmetic operators.
-* **decimal\_places**: Optional. The number of decimal places to truncate to. Defaults to 0 (truncate to a whole number). If`decimal_places` is a positive integer, truncates digits to the right of the decimal point. If `decimal_places` is a negative integer, replaces digits to the left of the decimal point with `0`.
+* **decimal\_places**: Optional. The number of decimal places to truncate to. Defaults to 0 (truncate to a whole number). If `decimal_places` is a positive integer, truncates digits to the right of the decimal point. If `decimal_places` is a negative integer, replaces digits to the left of the decimal point with `0`.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/math/#page","headline":"Math functions · Cloudflare Pipelines Docs","description":"Scalar functions for mathematical operations","url":"https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/math/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

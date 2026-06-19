@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/radar/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,69 +37,13 @@ In this example, we will request traffic by device type globally, with and witho
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/radar/http/timeseries/device_type?name=human&botClass=LIKELY_HUMAN&dateRange=1d&name=bot&botClass=LIKELY_AUTOMATED&dateRange=1d&format=json&aggInterval=1h" \
-
---header "Authorization: Bearer <API_TOKEN>"
-
-
+curl "https://api.cloudflare.com/client/v4/radar/http/timeseries/device_type?name=human&botClass=LIKELY_HUMAN&dateRange=1d&name=bot&botClass=LIKELY_AUTOMATED&dateRange=1d&format=json&aggInterval=1h" \--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 Here is the abbreviated response:
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "result": {
-
-    "human": {
-
-      "timestamps": ["2022-11-03T13:00:00Z", "2022-11-03T14:00:00Z", ".."],
-
-      "mobile": ["52.5532", "52.146628", ".."],
-
-      "desktop": ["47.394791", "47.800731", ".."],
-
-      "other": ["0.052009", "0.052642", ".."]
-
-    },
-
-    "bot": {
-
-      "timestamps": ["2022-11-03T13:00:00Z", "2022-11-03T14:00:00Z", ".."],
-
-      "desktop": ["83.833892", "84.017711", ".."],
-
-      "mobile": ["16.156748", "15.969936", ".."],
-
-      "other": ["0.00936", "0.012353", ".."]
-
-    },
-
-    "meta": {
-
-      "dateRange": {
-
-        "startTime": "2022-11-03T13:00:00Z",
-
-        "endTime": "2022-11-04T13:00:00Z"
-
-      },
-
-      "normalization": "PERCENTAGE"
-
-    }
-
-  }
-
-}
-
-
+{  "success": true,  "errors": [],  "result": {    "human": {      "timestamps": ["2022-11-03T13:00:00Z", "2022-11-03T14:00:00Z", ".."],      "mobile": ["52.5532", "52.146628", ".."],      "desktop": ["47.394791", "47.800731", ".."],      "other": ["0.052009", "0.052642", ".."]    },    "bot": {      "timestamps": ["2022-11-03T13:00:00Z", "2022-11-03T14:00:00Z", ".."],      "desktop": ["83.833892", "84.017711", ".."],      "mobile": ["16.156748", "15.969936", ".."],      "other": ["0.00936", "0.012353", ".."]    },    "meta": {      "dateRange": {        "startTime": "2022-11-03T13:00:00Z",        "endTime": "2022-11-04T13:00:00Z"      },      "normalization": "PERCENTAGE"    }  }}
 ```
 
 Mobile devices tend to be considerably more present when examining human generated traffic versus bot generated traffic.
@@ -119,51 +63,13 @@ We can also look at the same information asking for a summary of the device type
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/radar/http/summary/device_type?name=human&botClass=LIKELY_HUMAN&dateRange=1d&name=bot&botClass=LIKELY_AUTOMATED&dateRange=1d&format=json&aggInterval=1h" \
-
---header "Authorization: Bearer <API_TOKEN>"
-
-
+curl "https://api.cloudflare.com/client/v4/radar/http/summary/device_type?name=human&botClass=LIKELY_HUMAN&dateRange=1d&name=bot&botClass=LIKELY_AUTOMATED&dateRange=1d&format=json&aggInterval=1h" \--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 Here is the abbreviated response:
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "result": {
-
-    "human": {
-
-      "mobile": "54.967243",
-
-      "desktop": "44.974006",
-
-      "other": "0.058751"
-
-    },
-
-    "bot": {
-
-      "desktop": "83.275452",
-
-      "mobile": "16.707455",
-
-      "other": "0.017093"
-
-    }
-
-  }
-
-}
-
-
+{  "success": true,  "errors": [],  "result": {    "human": {      "mobile": "54.967243",      "desktop": "44.974006",      "other": "0.058751"    },    "bot": {      "desktop": "83.275452",      "mobile": "16.707455",      "other": "0.017093"    }  }}
 ```
 
 For more information refer to the [API reference](https://developers.cloudflare.com/api/resources/radar/subresources/http/subresources/summary/methods/device%5Ftype/) for this endpoint.
@@ -175,47 +81,13 @@ In the following example, we will examine global breakdown of traffic by IP vers
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/radar/http/summary/ip_version?name=human&botClass=LIKELY_HUMAN&dateRange=1d&name=bot&botClass=LIKELY_AUTOMATED&dateRange=1d&format=json&aggInterval=1h" \
-
---header "Authorization: Bearer <API_TOKEN>"
-
-
+curl "https://api.cloudflare.com/client/v4/radar/http/summary/ip_version?name=human&botClass=LIKELY_HUMAN&dateRange=1d&name=bot&botClass=LIKELY_AUTOMATED&dateRange=1d&format=json&aggInterval=1h" \--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 This returns the following:
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "result": {
-
-    "human": {
-
-      "IPv4": "76.213647",
-
-      "IPv6": "23.786353"
-
-    },
-
-    "bot": {
-
-      "IPv4": "91.492032",
-
-      "IPv6": "8.507968"
-
-    }
-
-  }
-
-}
-
-
+{  "success": true,  "errors": [],  "result": {    "human": {      "IPv4": "76.213647",      "IPv6": "23.786353"    },    "bot": {      "IPv4": "91.492032",      "IPv6": "8.507968"    }  }}
 ```
 
 Bots tend to use more IPv4 addresses.
@@ -233,83 +105,11 @@ In the following example, we will find which locations had a higher adoption of 
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/radar/http/top/locations/ip_version/IPv6?name=ipv6&botClass=LIKELY_HUMAN&dateRange=28d&format=json&limit=5" \
-
---header "Authorization: Bearer <API_TOKEN>"
-
-
+curl "https://api.cloudflare.com/client/v4/radar/http/top/locations/ip_version/IPv6?name=ipv6&botClass=LIKELY_HUMAN&dateRange=28d&format=json&limit=5" \--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "result": {
-
-    "ipv6": [
-
-      {
-
-        "clientCountryAlpha2": "IN",
-
-        "clientCountryName": "India",
-
-        "value": "50.612747"
-
-      },
-
-      {
-
-        "clientCountryAlpha2": "MY",
-
-        "clientCountryName": "Malaysia",
-
-        "value": "46.233654"
-
-      },
-
-      {
-
-        "clientCountryAlpha2": "UY",
-
-        "clientCountryName": "Uruguay",
-
-        "value": "39.796762"
-
-      },
-
-      {
-
-        "clientCountryAlpha2": "LK",
-
-        "clientCountryName": "Sri Lanka",
-
-        "value": "39.709355"
-
-      },
-
-      {
-
-        "clientCountryAlpha2": "VN",
-
-        "clientCountryName": "Vietnam",
-
-        "value": "39.1514"
-
-      }
-
-    ]
-
-  }
-
-}
-
-
+{  "success": true,  "errors": [],  "result": {    "ipv6": [      {        "clientCountryAlpha2": "IN",        "clientCountryName": "India",        "value": "50.612747"      },      {        "clientCountryAlpha2": "MY",        "clientCountryName": "Malaysia",        "value": "46.233654"      },      {        "clientCountryAlpha2": "UY",        "clientCountryName": "Uruguay",        "value": "39.796762"      },      {        "clientCountryAlpha2": "LK",        "clientCountryName": "Sri Lanka",        "value": "39.709355"      },      {        "clientCountryAlpha2": "VN",        "clientCountryName": "Vietnam",        "value": "39.1514"      }    ]  }}
 ```
 
 According to the returned data, India is leading in IPv6 adoption.

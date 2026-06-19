@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -42,10 +42,7 @@ If you want to use the full token string returned by the API, pass it as a Beare
 Terminal window
 
 ```
-
 git -c http.extraHeader="Authorization: Bearer $ARTIFACTS_TOKEN" clone "$ARTIFACTS_REMOTE" artifacts-clone
-
-
 ```
 
 ### HTTPS remote with Basic auth
@@ -57,30 +54,19 @@ Use this form only when you need a self-contained remote URL for a short-lived c
 Terminal window
 
 ```
-
-export ARTIFACTS_TOKEN_SECRET="${ARTIFACTS_TOKEN%%\?expires=*}"
-
-export ARTIFACTS_AUTH_REMOTE="https://x:${ARTIFACTS_TOKEN_SECRET}@${ARTIFACTS_REMOTE#https://}"
-
-
+export ARTIFACTS_TOKEN_SECRET="${ARTIFACTS_TOKEN%%\?expires=*}"export ARTIFACTS_AUTH_REMOTE="https://x:${ARTIFACTS_TOKEN_SECRET}@${ARTIFACTS_REMOTE#https://}"
 ```
 
 Terminal window
 
 ```
-
 git clone "$ARTIFACTS_AUTH_REMOTE" artifacts-clone
-
-
 ```
 
 Terminal window
 
 ```
-
 git push "$ARTIFACTS_AUTH_REMOTE" HEAD:main
-
-
 ```
 
 Use any non-empty username in the URL. Artifacts accepts that username but does not otherwise use or log it, so `x` is just a placeholder.

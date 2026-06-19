@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -49,8 +49,8 @@ Once you [create a new hostname](https://developers.cloudflare.com/cloudflare-fo
 
 These tokens can be fetched through the API or the dashboard when the certificates are in a [pending validation](https://developers.cloudflare.com/ssl/reference/certificate-statuses/#new-certificates) state during custom hostname creation or during certificate renewals.
 
-* [ API ](#tab-panel-7021)
-* [ Dashboard ](#tab-panel-7022)
+* [ API ](#tab-panel-7097)
+* [ Dashboard ](#tab-panel-7098)
 
 You can access these tokens using the API with the [GET custom hostnames endpoint](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/list/).
 
@@ -59,94 +59,7 @@ For example, here are two tokens highlighted in the API response for a **wildcar
 Response
 
 ```
-
-{
-
-  "result": [
-
-    {
-
-      "id": "<HOSTNAME_ID>",
-
-      "hostname": "<HOSTNAME>",
-
-      "ssl": {
-
-        "id": "<CERTIFICATE_ID>",
-
-        "type": "dv",
-
-        "method": "txt",
-
-        "status": "pending_validation",
-
-        "validation_records": [
-
-          {
-
-            "status": "pending",
-
-            "txt_name": "_acme-challenge.<HOSTNAME>",
-
-            "txt_value": "gESljTB8fBT1mIuoEASU0qcK-oTd46baarnU_ZGjJIY"
-
-          },
-
-          {
-
-            "status": "pending",
-
-            "txt_name": "_acme-challenge.<HOSTNAME>",
-
-            "txt_value": "Pd8ViwX8KuA78kLbQHGmdEh4tQSpHBRxiNuJOYStEC0"
-
-          }
-
-        ],
-
-        "settings": {
-
-          "min_tls_version": "1.0"
-
-        },
-
-        "bundle_method": "ubiquitous",
-
-        "wildcard": true,
-
-        "certificate_authority": "google"
-
-      },
-
-      "status": "pending",
-
-      "ownership_verification": {
-
-        "type": "txt",
-
-        "name": "_cf-custom-hostname.<HOSTNAME>",
-
-        "value": "ac4a9a9d-5469-44cb-9d76-cea7541c9ff8"
-
-      },
-
-      "ownership_verification_http": {
-
-        "http_url": "http://<HOSTNAME>/.well-known/cf-custom-hostname-challenge/fabdf93c-a4ce-4075-9f3f-c553a5f93bed",
-
-        "http_body": "ac4a9a9d-5469-44cb-9d76-cea7541c9ff8"
-
-      },
-
-      "created_at": "2022-10-06T19:35:33.143257Z"
-
-    }
-
-  ]
-
-}
-
-
+{  "result": [    {      "id": "<HOSTNAME_ID>",      "hostname": "<HOSTNAME>",      "ssl": {        "id": "<CERTIFICATE_ID>",        "type": "dv",        "method": "txt",        "status": "pending_validation",        "validation_records": [          {            "status": "pending",            "txt_name": "_acme-challenge.<HOSTNAME>",            "txt_value": "gESljTB8fBT1mIuoEASU0qcK-oTd46baarnU_ZGjJIY"          },          {            "status": "pending",            "txt_name": "_acme-challenge.<HOSTNAME>",            "txt_value": "Pd8ViwX8KuA78kLbQHGmdEh4tQSpHBRxiNuJOYStEC0"          }        ],        "settings": {          "min_tls_version": "1.0"        },        "bundle_method": "ubiquitous",        "wildcard": true,        "certificate_authority": "google"      },      "status": "pending",      "ownership_verification": {        "type": "txt",        "name": "_cf-custom-hostname.<HOSTNAME>",        "value": "ac4a9a9d-5469-44cb-9d76-cea7541c9ff8"      },      "ownership_verification_http": {        "http_url": "http://<HOSTNAME>/.well-known/cf-custom-hostname-challenge/fabdf93c-a4ce-4075-9f3f-c553a5f93bed",        "http_body": "ac4a9a9d-5469-44cb-9d76-cea7541c9ff8"      },      "created_at": "2022-10-06T19:35:33.143257Z"    }  ]}
 ```
 
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.  

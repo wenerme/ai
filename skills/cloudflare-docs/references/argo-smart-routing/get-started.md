@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/argo-smart-routing/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,17 +18,18 @@ This functionality is now offered as part of Cloudflare's origin server safeguar
 
 Argo Smart Routing speeds up your global traffic by routing requests across the fastest network paths available.
 
-* [ Dashboard ](#tab-panel-6733)
-* [ API ](#tab-panel-6734)
+* [ Dashboard ](#tab-panel-6809)
+* [ API ](#tab-panel-6810)
 
 To enable [Argo Smart Routing ↗](https://dash.cloudflare.com/?to=/:account/:zone/traffic) in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Argo Smart Routing** page.  
 [ Go to **Argo Smart Routing** ](https://dash.cloudflare.com/?to=/:account/:zone/traffic)
 2. For **Argo Smart Routing**, switch the toggle to **On**.
-3. Provide your billing information.  
-   * If you do not have a [billing profile](https://developers.cloudflare.com/billing/get-started/create-billing-profile/), enter your billing information.  
-   * If you have a billing profile, confirm your billing information.
+3. Provide your billing information.
+
+  * If you do not have a [billing profile](https://developers.cloudflare.com/billing/get-started/create-billing-profile/), enter your billing information.
+  * If you have a billing profile, confirm your billing information.
 
 To enable or disable Argo Smart Routing with the API, send a [PATCH](https://developers.cloudflare.com/api/resources/argo/subresources/smart%5Frouting/methods/edit/) request with the `value` parameter set to your desired setting (`"on"` or `"off"`).
 
@@ -49,11 +50,12 @@ To set up those notifications:
 1. In the Cloudflare dashboard, go to the **Notifications** page.  
 [ Go to **Notifications** ](https://dash.cloudflare.com/?to=/:account/notifications)
 2. On **Alert Type** of **Usage Based Billing**, click **Select**.
-3. Fill out the following information:  
-   * **Name**  
-   * **Product**  
-   * **Notification limit** (exact metric will vary based on product)  
-   * **Notification email**  
+3. Fill out the following information:
+
+  * **Name**
+  * **Product**
+  * **Notification limit** (exact metric will vary based on product)
+  * **Notification email**  
 Note  
 Some plans also have access to alerts through [PagerDuty](https://developers.cloudflare.com/notifications/get-started/configure-pagerduty/) and [Webhooks](https://developers.cloudflare.com/notifications/get-started/configure-webhooks/).
 4. Select **Save**.

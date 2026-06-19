@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -59,30 +59,7 @@ Stream notifications are entirely customizable by the customer. Action will depe
 Example webhook payload
 
 ```
-
-{
-
-  "name": "Live Webhook Test",
-
-  "text": "Notification type: Stream Live Input\nInput ID: eb222fcca08eeb1ae84c981ebe8aeeb6\nEvent type: live_input.disconnected\nUpdated at: 2022-01-13T11:43:41.855717910Z",
-
-  "data": {
-
-    "notification_name": "Stream Live Input",
-
-    "input_id": "eb222fcca08eeb1ae84c981ebe8aeeb6",
-
-    "event_type": "live_input.disconnected",
-
-    "updated_at": "2022-01-13T11:43:41.855717910Z"
-
-  },
-
-  "ts": 1642074233
-
-}
-
-
+{  "name": "Live Webhook Test",  "text": "Notification type: Stream Live Input\nInput ID: eb222fcca08eeb1ae84c981ebe8aeeb6\nEvent type: live_input.disconnected\nUpdated at: 2022-01-13T11:43:41.855717910Z",  "data": {    "notification_name": "Stream Live Input",    "input_id": "eb222fcca08eeb1ae84c981ebe8aeeb6",    "event_type": "live_input.disconnected",    "updated_at": "2022-01-13T11:43:41.855717910Z"  },  "ts": 1642074233}
 ```
 
 The `event_type` property of the data object will either be `live_input.connected`, `live_input.disconnected`, or `live_input.errored`.
@@ -100,46 +77,7 @@ If there are issues detected with the input, the `event_type` will be `live_inpu
 Example live\_input.errored webhook payload
 
 ```
-
-{
-
-  "name": "Live Webhook Test",
-
-  "text": "Notification type: Stream Live Input\nInput ID: 2c28dd2cc444cb77578c4840b51e43a8\nEvent type: live_input.errored\nUpdated at: 2024-07-09T18:07:51.077371662Z\nError Code: ERR_GOP_OUT_OF_RANGE\nError Message: Input GOP size or keyframe interval is out of range.\nVideo Codec: \nAudio Codec: ",
-
-  "data": {
-
-    "notification_name": "Stream Live Input",
-
-    "input_id": "eb222fcca08eeb1ae84c981ebe8aeeb6",
-
-    "event_type": "live_input.errored",
-
-    "updated_at": "2024-07-09T18:07:51.077371662Z",
-
-    "live_input_errored": {
-
-      "error": {
-
-        "code": "ERR_GOP_OUT_OF_RANGE",
-
-        "message": "Input GOP size or keyframe interval is out of range."
-
-      },
-
-      "video_codec": "",
-
-      "audio_codec": ""
-
-    }
-
-  },
-
-  "ts": 1720548474,
-
-}
-
-
+{  "name": "Live Webhook Test",  "text": "Notification type: Stream Live Input\nInput ID: 2c28dd2cc444cb77578c4840b51e43a8\nEvent type: live_input.errored\nUpdated at: 2024-07-09T18:07:51.077371662Z\nError Code: ERR_GOP_OUT_OF_RANGE\nError Message: Input GOP size or keyframe interval is out of range.\nVideo Codec: \nAudio Codec: ",  "data": {    "notification_name": "Stream Live Input",    "input_id": "eb222fcca08eeb1ae84c981ebe8aeeb6",    "event_type": "live_input.errored",    "updated_at": "2024-07-09T18:07:51.077371662Z",    "live_input_errored": {      "error": {        "code": "ERR_GOP_OUT_OF_RANGE",        "message": "Input GOP size or keyframe interval is out of range."      },      "video_codec": "",      "audio_codec": ""    }  },  "ts": 1720548474,}
 ```
 
 ```json

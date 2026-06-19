@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,18 +17,7 @@ A component which lets to manage your audio devices and audio preferences. Emits
 TypeScript
 
 ```
-
-{
-
- prefs: {
-
-   muteNotificationSounds: boolean
-
- }
-
-}
-
-
+{ prefs: {   muteNotificationSounds: boolean }}
 ```
 
 ## Properties
@@ -46,37 +35,18 @@ TypeScript
 ### Basic Usage
 
 ```
-
 <rtk-settings-audio></rtk-settings-audio>
-
-
 ```
 
 ### With Properties
 
 ```
-
-<rtk-settings-audio
-
- size="md">
-
-</rtk-settings-audio>
-
-
+<rtk-settings-audio size="md"></rtk-settings-audio>
 ```
 
 ```
-
-<script>
-
-  const el = document.querySelector("rtk-settings-audio");
-
-
-  el.meeting= meeting
-
-</script>
-
-
+<script>  const el = document.querySelector("rtk-settings-audio");
+  el.meeting= meeting</script>
 ```
 
 ```json

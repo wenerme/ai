@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,12 +31,12 @@ To integrate with Microsoft 365:
 
 1. **Name integration**: Add your integration name, then select **Continue**.
 2. **Authorize integration**:  
-   * Select **Authorize**. Selecting **Authorize** will take you to the **Microsoft Sign in** page where you will have to enter your email address.  
-   * Once you enter your email address, select **Next**.  
-   * After selecting **Next**, the dashboard will show you a dialog box with a list of requested permissions. Select **Accept to authorize Email security**. Upon authorization, you will be redirected to a page where you can review details and enroll the integration.
+  * Select **Authorize**. Selecting **Authorize** will take you to the **Microsoft Sign in** page where you will have to enter your email address.
+  * Once you enter your email address, select **Next**.
+  * After selecting **Next**, the dashboard will show you a dialog box with a list of requested permissions. Select **Accept to authorize Email security**. Upon authorization, you will be redirected to a page where you can review details and enroll the integration.
 3. **Review details**: Review your integration details, then:  
-   * Select **Complete Email security set up** where you will be able to connect your domains and configure auto-moves.  
-   * Select **Continue to Email security**.
+  * Select **Complete Email security set up** where you will be able to connect your domains and configure auto-moves.
+  * Select **Continue to Email security**.
 
 Continue with [Connect your domains](#connect-your-domains) for the next steps.
 
@@ -65,11 +65,12 @@ To view your connected domains:
 3. In **Send undeliverable journal reports to** enter the email address of a valid user account. Note that you cannot use a team or group address. Select **Save** once you entered the email address.
 4. On the sidebar, go to **Solutions** \> **Data Lifecycle Management** \> **Exchange (legacy)**.
 5. Select **Journal rules**.
-6. Select **New rule** to configure a journaling rule, and configure it as follows:  
-   * **Send journal reports to**: This is the address you copied and pasted in step 5 of [Connect your domains](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/journaling-setup/m365-journaling/#connect-your-domains).  
-   * **Journal rule name**: `Journal Messages to Email security`  
-   * **Journal messages sent or received from**: _Everyone_  
-   * **Type of message to journal**: _External messages only_
+6. Select **New rule** to configure a journaling rule, and configure it as follows:
+
+  * **Send journal reports to**: This is the address you copied and pasted in step 5 of [Connect your domains](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/journaling-setup/m365-journaling/#connect-your-domains).
+  * **Journal rule name**: `Journal Messages to Email security`
+  * **Journal messages sent or received from**: _Everyone_
+  * **Type of message to journal**: _External messages only_
 7. Select **Next**.
 8. Verify the information is correct, and select **Submit** \> **Done**.
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,17 +27,8 @@ A themed label that uses design token colors and fonts from the RTK Design Syste
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let label = RtkLabel()
-
-label.text = "Meeting Room"
-
-view.addSubview(label)
-
-
+let label = RtkLabel()label.text = "Meeting Room"view.addSubview(label)
 ```
 
 ### With custom appearance
@@ -45,25 +36,8 @@ view.addSubview(label)
 Swift
 
 ```
-
 import RealtimeKitUI
-
-
-let appearance = RtkTextAppearance(
-
-    font: UIFont.systemFont(ofSize: 16, weight: .semibold),
-
-    textColor: .white
-
-)
-
-let label = RtkLabel(appearance: appearance)
-
-label.text = "Meeting Room"
-
-view.addSubview(label)
-
-
+let appearance = RtkTextAppearance(    font: UIFont.systemFont(ofSize: 16, weight: .semibold),    textColor: .white)let label = RtkLabel(appearance: appearance)label.text = "Meeting Room"view.addSubview(label)
 ```
 
 ```json

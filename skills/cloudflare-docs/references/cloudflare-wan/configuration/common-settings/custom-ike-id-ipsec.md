@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,22 +25,7 @@ Cloudflare WAN customers can set a custom IKE ID for an IPsec tunnel using the f
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/ACCOUNT_ID/ipsec_tunnels/TUNNEL_ID" \
-
-  --request PATCH \
-
-  --json '{
-
-    "custom_remote_identities": {
-
-        "fqdn_id": "<your_custom_label>.<account_id>.custom.ipsec.cloudflare.com"
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/ACCOUNT_ID/ipsec_tunnels/TUNNEL_ID" \  --request PATCH \  --json '{    "custom_remote_identities": {        "fqdn_id": "<your_custom_label>.<account_id>.custom.ipsec.cloudflare.com"    }  }'
 ```
 
 ```json

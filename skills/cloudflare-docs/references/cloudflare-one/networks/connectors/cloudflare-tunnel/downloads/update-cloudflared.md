@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,22 +18,19 @@ Updates will cause `cloudflared` to restart which will impact traffic currently 
 
 Refer to the following commands to update `cloudflared` for a remotely-managed tunnel or a locally-managed tunnel. Locally-managed tunnels must be set up to [run as a service](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/as-a-service/) for the following commands to execute successfully.
 
-* [ Windows ](#tab-panel-7272)
-* [ macOS ](#tab-panel-7273)
-* [ Debian ](#tab-panel-7274)
-* [ Red Hat ](#tab-panel-7275)
-* [ Docker ](#tab-panel-7276)
-* [ Other ](#tab-panel-7277)
+* [ Windows ](#tab-panel-7348)
+* [ macOS ](#tab-panel-7349)
+* [ Debian ](#tab-panel-7350)
+* [ Red Hat ](#tab-panel-7351)
+* [ Docker ](#tab-panel-7352)
+* [ Other ](#tab-panel-7353)
 
 Run the following command:
 
 PowerShell
 
 ```
-
 cloudflared update
-
-
 ```
 
 After running `cloudflared update` to update `cloudflared`, you must restart the service for it to take effect. Run:
@@ -41,10 +38,7 @@ After running `cloudflared update` to update `cloudflared`, you must restart the
 PowerShell
 
 ```
-
 net start cloudflared
-
-
 ```
 
 1. Update the `cloudflared` package:
@@ -52,10 +46,7 @@ net start cloudflared
 Terminal window
 
 ```
-
 brew upgrade cloudflared
-
-
 ```
 
 1. Restart the service:
@@ -63,16 +54,7 @@ brew upgrade cloudflared
 Terminal window
 
 ```
-
-sudo launchctl stop com.cloudflare.cloudflared
-
-sudo launchctl unload /Library/LaunchDaemons/com.cloudflare.cloudflared.plist
-
-sudo launchctl load /Library/LaunchDaemons/com.cloudflare.cloudflared.plist
-
-sudo launchctl start com.cloudflare.cloudflared
-
-
+sudo launchctl stop com.cloudflare.cloudflaredsudo launchctl unload /Library/LaunchDaemons/com.cloudflare.cloudflared.plistsudo launchctl load /Library/LaunchDaemons/com.cloudflare.cloudflared.plistsudo launchctl start com.cloudflare.cloudflared
 ```
 
 **If installed via apt:**
@@ -82,10 +64,7 @@ sudo launchctl start com.cloudflare.cloudflared
 Terminal window
 
 ```
-
 sudo apt-get update && sudo apt-get install --only-upgrade cloudflared
-
-
 ```
 
 1. Restart the service:
@@ -93,10 +72,7 @@ sudo apt-get update && sudo apt-get install --only-upgrade cloudflared
 Terminal window
 
 ```
-
 sudo systemctl restart cloudflared.service
-
-
 ```
 
 **If installed via `dpkg -i`:**
@@ -110,10 +86,7 @@ You can check if `cloudflared` was installed by a package manager by running `ls
 Terminal window
 
 ```
-
 curl --location --output cloudflared.deb "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-$(dpkg --print-architecture).deb" && sudo dpkg -i cloudflared.deb
-
-
 ```
 
 1. Restart the service:
@@ -121,10 +94,7 @@ curl --location --output cloudflared.deb "https://github.com/cloudflare/cloudfla
 Terminal window
 
 ```
-
 sudo systemctl restart cloudflared.service
-
-
 ```
 
 1. Update the `cloudflared` package:
@@ -132,10 +102,7 @@ sudo systemctl restart cloudflared.service
 Terminal window
 
 ```
-
 sudo yum update cloudflared
-
-
 ```
 
 1. Restart the service:
@@ -143,10 +110,7 @@ sudo yum update cloudflared
 Terminal window
 
 ```
-
 sudo systemctl restart cloudflared.service
-
-
 ```
 
 **If you created a remotely-managed tunnel using the dashboard:**
@@ -167,10 +131,7 @@ Cloudflare recommends creating remotely-managed tunnels when working with Docker
 Terminal window
 
 ```
-
 docker run --pull always cloudflare/cloudflared:latest tunnel --no-autoupdate run --token <TOKEN>
-
-
 ```
 
 **If you created a locally-managed tunnel using the CLI:**
@@ -187,10 +148,7 @@ If you installed `cloudflared` from GitHub-provided binaries or from source, run
 Terminal window
 
 ```
-
 cloudflared update
-
-
 ```
 
 If you installed `cloudflared` with a package manager, you must update it using the same package manager. 
@@ -230,10 +188,7 @@ Windows systems require services to have a unique name and display name. You can
 PowerShell
 
 ```
-
 sc.exe create <unique-name> binPath='<path-to-exe>' --config '<path-to-config>' displayname="Unique Name"
-
-
 ```
 
 1. Proceed to create additional services with unique names.
@@ -242,10 +197,7 @@ sc.exe create <unique-name> binPath='<path-to-exe>' --config '<path-to-config>' 
 PowerShell
 
 ```
-
 sc.exe start <unique-name>
-
-
 ```
 
 ```json

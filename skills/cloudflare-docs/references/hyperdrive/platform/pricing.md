@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -14,9 +14,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Hyperdrive is included in both the Free and Paid [Workers plans](https://developers.cloudflare.com/workers/platform/pricing/).
 
-| Free plan[1](#user-content-fn-1)        | Paid plan     |           |
-| --------------------------------------- | ------------- | --------- |
-| Database queries[2](#user-content-fn-2) | 100,000 / day | Unlimited |
+|                                         | Free plan[1](#user-content-fn-1) | Paid plan |
+| --------------------------------------- | -------------------------------- | --------- |
+| Database queries[2](#user-content-fn-2) | 100,000 / day                    | Unlimited |
 
 Footnotes
 
@@ -30,6 +30,14 @@ Footnotes
 2. Database queries refers to any database statement made via Hyperdrive, whether a query (`SELECT`), a modification (`INSERT`,`UPDATE`, or `DELETE`) or a schema change (`CREATE`, `ALTER`, `DROP`). [↩](#user-content-fnref-2)
 
 Hyperdrive limits are automatically adjusted when subscribed to a Workers Paid plan. Hyperdrive's [connection pooling and query caching](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/) are included in Workers Paid plan, so do not incur any additional charges.
+
+## PlanetScale Postgres & MySQL
+
+You can create PlanetScale Postgres and MySQL databases from Cloudflare and bill PlanetScale database usage through your Cloudflare account as a pay-as-you-go customer.
+
+PlanetScale database usage is separate from Hyperdrive usage. When you create a PlanetScale database from the Cloudflare dashboard, PlanetScale usage appears on your Cloudflare invoice each billing period as a dollar total at PlanetScale's standard [pricing ↗](https://planetscale.com/pricing).
+
+You can view per-database billing usage in the [PlanetScale dashboard ↗](https://planetscale.com/docs/billing#organization-usage-and-billing-page). To learn how PlanetScale databases work with Workers and Hyperdrive, refer to [PlanetScale Postgres and MySQL with Hyperdrive](https://developers.cloudflare.com/hyperdrive/planetscale/).
 
 ## Pricing FAQ
 
@@ -50,6 +58,6 @@ Note
 For questions about pricing, refer to the [pricing FAQs](https://developers.cloudflare.com/hyperdrive/reference/faq/#pricing).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/platform/pricing/#page","headline":"Pricing · Cloudflare Hyperdrive docs","description":"Hyperdrive pricing details for Free and Workers Paid plans.","url":"https://developers.cloudflare.com/hyperdrive/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/platform/pricing/#page","headline":"Pricing · Cloudflare Hyperdrive docs","description":"Hyperdrive pricing details for Free and Workers Paid plans.","url":"https://developers.cloudflare.com/hyperdrive/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/hyperdrive/","name":"Hyperdrive"}},{"@type":"ListItem","position":3,"item":{"@id":"/hyperdrive/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/hyperdrive/platform/pricing/","name":"Pricing"}}]}
 ```

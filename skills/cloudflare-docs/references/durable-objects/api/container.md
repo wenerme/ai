@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,60 +20,22 @@ The low-level API documented on this page is available on `this.ctx.container` i
 
 Because the `Container` class extends `DurableObject`, you also have access to [SQLite storage](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) via `this.ctx.storage`, [alarms](https://developers.cloudflare.com/durable-objects/api/alarms/), and all other Durable Object APIs.
 
-* [  JavaScript ](#tab-panel-8187)
-* [  TypeScript ](#tab-panel-8188)
+* [  JavaScript ](#tab-panel-8263)
+* [  TypeScript ](#tab-panel-8264)
 
 index.js
 
 ```
-
-export class MyDurableObject extends DurableObject {
-
-  constructor(ctx, env) {
-
-    super(ctx, env);
-
-
-    // boot the container when starting the DO
-
-    this.ctx.blockConcurrencyWhile(async () => {
-
-      this.ctx.container.start();
-
-    });
-
-  }
-
-}
-
-
+export class MyDurableObject extends DurableObject {  constructor(ctx, env) {    super(ctx, env);
+    // boot the container when starting the DO    this.ctx.blockConcurrencyWhile(async () => {      this.ctx.container.start();    });  }}
 ```
 
 index.ts
 
 ```
-
-export class MyDurableObject extends DurableObject {
-
-  constructor(ctx: DurableObjectState, env: Env) {
-
-    super(ctx, env);
-
-
-      // boot the container when starting the DO
-
-      this.ctx.blockConcurrencyWhile(async () => {
-
-        this.ctx.container.start();
-
-    });
-
-    }
-
-
+export class MyDurableObject extends DurableObject {  constructor(ctx: DurableObjectState, env: Env) {    super(ctx, env);
+      // boot the container when starting the DO      this.ctx.blockConcurrencyWhile(async () => {        this.ctx.container.start();    });    }
 }
-
-
 ```
 
 ## Attributes
@@ -85,10 +47,7 @@ export class MyDurableObject extends DurableObject {
 JavaScript
 
 ```
-
   this.ctx.container.running;
-
-
 ```
 
 ## Methods
@@ -100,30 +59,15 @@ JavaScript
 JavaScript
 
 ```
-
-this.ctx.container.start({
-
-  env: {
-
-    FOO: "bar",
-
-  },
-
-  enableInternet: false,
-
-  entrypoint: ["node", "server.js"],
-
-});
-
-
+this.ctx.container.start({  env: {    FOO: "bar",  },  enableInternet: false,  entrypoint: ["node", "server.js"],});
 ```
 
 #### Parameters
 
 * `options` (optional): An object with the following properties:  
-   * `env`: An object containing environment variables to pass to the container. This is useful for passing configuration values or secrets to the container.  
-   * `entrypoint`: An array of strings representing the command to run in the container.  
-   * `enableInternet`: A boolean indicating whether to enable internet access for the container.
+  * `env`: An object containing environment variables to pass to the container. This is useful for passing configuration values or secrets to the container.
+  * `entrypoint`: An array of strings representing the command to run in the container.
+  * `enableInternet`: A boolean indicating whether to enable internet access for the container.
 
 #### Return values
 
@@ -136,10 +80,7 @@ this.ctx.container.start({
 JavaScript
 
 ```
-
 this.ctx.container.destroy("Manually Destroyed");
-
-
 ```
 
 #### Parameters
@@ -157,12 +98,7 @@ this.ctx.container.destroy("Manually Destroyed");
 JavaScript
 
 ```
-
-const SIGTERM = 15;
-
-this.ctx.container.signal(SIGTERM);
-
-
+const SIGTERM = 15;this.ctx.container.signal(SIGTERM);
 ```
 
 #### Parameters
@@ -180,48 +116,14 @@ this.ctx.container.signal(SIGTERM);
 JavaScript
 
 ```
-
-const port = this.ctx.container.getTcpPort(8080);
-
-const res = await port.fetch("http://container/set-state", {
-
-  body: initialState,
-
-  method: "POST",
-
-});
-
-
+const port = this.ctx.container.getTcpPort(8080);const res = await port.fetch("http://container/set-state", {  body: initialState,  method: "POST",});
 ```
 
 JavaScript
 
 ```
-
-const conn = this.ctx.container.getTcpPort(8080).connect("10.0.0.1:8080");
-
-await conn.opened;
-
-
-try {
-
-  if (request.body) {
-
-    await request.body.pipeTo(conn.writable);
-
-  }
-
-  return new Response(conn.readable);
-
-} catch (err) {
-
-  console.error("Request body piping failed:", err);
-
-  return new Response("Failed to proxy request body", { status: 502 });
-
-}
-
-
+const conn = this.ctx.container.getTcpPort(8080).connect("10.0.0.1:8080");await conn.opened;
+try {  if (request.body) {    await request.body.pipeTo(conn.writable);  }  return new Response(conn.readable);} catch (err) {  console.error("Request body piping failed:", err);  return new Response("Failed to proxy request body", { status: 502 });}
 ```
 
 #### Parameters
@@ -239,38 +141,9 @@ try {
 JavaScript
 
 ```
-
-class MyContainer extends DurableObject {
-
-  constructor(ctx, env) {
-
-    super(ctx, env);
-
-    function onContainerExit() {
-
-      console.log("Container exited");
-
-    }
-
-
-    // the "err" value can be customized by the destroy() method
-
-    async function onContainerError(err) {
-
-      console.log("Container errored", err);
-
-    }
-
-
-    this.ctx.container.start();
-
-    this.ctx.container.monitor().then(onContainerExit).catch(onContainerError);
-
-  }
-
-}
-
-
+class MyContainer extends DurableObject {  constructor(ctx, env) {    super(ctx, env);    function onContainerExit() {      console.log("Container exited");    }
+    // the "err" value can be customized by the destroy() method    async function onContainerError(err) {      console.log("Container errored", err);    }
+    this.ctx.container.start();    this.ctx.container.monitor().then(onContainerExit).catch(onContainerError);  }}
 ```
 
 #### Parameters
@@ -288,30 +161,11 @@ class MyContainer extends DurableObject {
 JavaScript
 
 ```
-
 const worker = this.ctx.exports.MyWorker({ props: { message: "hello" } });
-
-
-// Match a specific hostname
-
-this.ctx.container.interceptOutboundHttp("api.example.com", worker);
-
-
-// Match a hostname glob pattern
-
-this.ctx.container.interceptOutboundHttp("*.example.com", worker);
-
-
-// Match an IP:port
-
-await this.ctx.container.interceptOutboundHttp("15.0.0.1:80", worker);
-
-
-// Match a CIDR range (IPv4 and IPv6)
-
-await this.ctx.container.interceptOutboundHttp("123.123.123.123/23", worker);
-
-
+// Match a specific hostnamethis.ctx.container.interceptOutboundHttp("api.example.com", worker);
+// Match a hostname glob patternthis.ctx.container.interceptOutboundHttp("*.example.com", worker);
+// Match an IP:portawait this.ctx.container.interceptOutboundHttp("15.0.0.1:80", worker);
+// Match a CIDR range (IPv4 and IPv6)await this.ctx.container.interceptOutboundHttp("123.123.123.123/23", worker);
 ```
 
 #### Parameters
@@ -330,10 +184,7 @@ await this.ctx.container.interceptOutboundHttp("123.123.123.123/23", worker);
 JavaScript
 
 ```
-
 await this.ctx.container.interceptAllOutboundHttp(worker);
-
-
 ```
 
 #### Parameters
@@ -353,25 +204,10 @@ Supports glob patterns where `*` matches any sequence of characters.
 JavaScript
 
 ```
-
 const worker = this.ctx.exports.MyWorker({ props: {} });
-
-
-// Match a specific hostname
-
-this.ctx.container.interceptOutboundHttps("api.example.com", worker);
-
-
-// Match a hostname glob pattern
-
-this.ctx.container.interceptOutboundHttps("*.example.com", worker);
-
-
-// Intercept all HTTPS traffic
-
-this.ctx.container.interceptOutboundHttps("*", worker);
-
-
+// Match a specific hostnamethis.ctx.container.interceptOutboundHttps("api.example.com", worker);
+// Match a hostname glob patternthis.ctx.container.interceptOutboundHttps("*.example.com", worker);
+// Intercept all HTTPS trafficthis.ctx.container.interceptOutboundHttps("*", worker);
 ```
 
 #### Parameters

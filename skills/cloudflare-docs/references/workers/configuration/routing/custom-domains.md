@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -56,99 +56,37 @@ After you have added the domain or subdomain, Cloudflare will create a new DNS r
 
 To configure a Custom Domain in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), add the `custom_domain=true` option on each pattern under `routes`. For example, to configure a Custom Domain:
 
-* [  wrangler.jsonc ](#tab-panel-11477)
-* [  wrangler.toml ](#tab-panel-11478)
+* [  wrangler.jsonc ](#tab-panel-11494)
+* [  wrangler.toml ](#tab-panel-11495)
 
 JSONC
 
 ```
-
-{
-
-  "routes": [
-
-    {
-
-      "pattern": "shop.example.com",
-
-      "custom_domain": true
-
-    }
-
-  ]
-
-}
-
-
+{  "routes": [    {      "pattern": "shop.example.com",      "custom_domain": true    }  ]}
 ```
 
 TOML
 
 ```
-
-[[routes]]
-
-pattern = "shop.example.com"
-
-custom_domain = true
-
-
+[[routes]]pattern = "shop.example.com"custom_domain = true
 ```
 
 To configure multiple Custom Domains:
 
-* [  wrangler.jsonc ](#tab-panel-11481)
-* [  wrangler.toml ](#tab-panel-11482)
+* [  wrangler.jsonc ](#tab-panel-11498)
+* [  wrangler.toml ](#tab-panel-11499)
 
 JSONC
 
 ```
-
-{
-
-  "routes": [
-
-    {
-
-      "pattern": "shop.example.com",
-
-      "custom_domain": true
-
-    },
-
-    {
-
-      "pattern": "shop-two.example.com",
-
-      "custom_domain": true
-
-    }
-
-  ]
-
-}
-
-
+{  "routes": [    {      "pattern": "shop.example.com",      "custom_domain": true    },    {      "pattern": "shop-two.example.com",      "custom_domain": true    }  ]}
 ```
 
 TOML
 
 ```
-
-[[routes]]
-
-pattern = "shop.example.com"
-
-custom_domain = true
-
-
-[[routes]]
-
-pattern = "shop-two.example.com"
-
-custom_domain = true
-
-
+[[routes]]pattern = "shop.example.com"custom_domain = true
+[[routes]]pattern = "shop-two.example.com"custom_domain = true
 ```
 
 ## Worker to Worker communication
@@ -167,20 +105,7 @@ If `worker-a` sends a fetch request to `worker-b`, the request will fail, becaus
 worker-a
 
 ```
-
-export default {
-
-  fetch(request) {
-
-    // This will fail
-
-    return fetch("https://shop.example.com")
-
-  }
-
-}
-
-
+export default {  fetch(request) {    // This will fail    return fetch("https://shop.example.com")  }}
 ```
 
 However, if `worker-b` was instead set up to run on the Custom Domain `shop.example.com`, the fetch request would succeed.
@@ -205,30 +130,7 @@ For example, consider the following workflow:
 auth-worker
 
 ```
-
-export default {
-
-  fetch(request) {
-
-    const url = new URL(request.url)
-
-    if(url.searchParams.get("auth") !== "SECRET_TOKEN") {
-
-      return new Response(null, { status: 401 })
-
-    } else {
-
-      // This will invoke `api-worker`
-
-      return fetch(request)
-
-    }
-
-  }
-
-}
-
-
+export default {  fetch(request) {    const url = new URL(request.url)    if(url.searchParams.get("auth") !== "SECRET_TOKEN") {      return new Response(null, { status: 401 })    } else {      // This will invoke `api-worker`      return fetch(request)    }  }}
 ```
 
 ## Certificates
@@ -276,25 +178,17 @@ To migrate the route `example.com/*` in your [Wrangler configuration file](https
 1. In the Cloudflare dashboard, go to the **DNS Records** page for your domain.  
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Delete the CNAME record for `example.com`.
-3. Add the following to your Wrangler file:  
-   * [  wrangler.jsonc ](#tab-panel-11479)  
-   * [  wrangler.toml ](#tab-panel-11480)  
+3. Add the following to your Wrangler file:
+
+  * [  wrangler.jsonc ](#tab-panel-11496)
+  * [  wrangler.toml ](#tab-panel-11497)  
 JSONC  
 ```  
-{  
-  "routes": [  
-    {  
-      "pattern": "example.com",  
-      "custom_domain": true  
-    }  
-  ]  
-}  
+{  "routes": [    {      "pattern": "example.com",      "custom_domain": true    }  ]}  
 ```  
 TOML  
 ```  
-[[routes]]  
-pattern = "example.com"  
-custom_domain = true  
+[[routes]]pattern = "example.com"custom_domain = true  
 ```
 4. Run `npx wrangler deploy` to create the Custom Domain your Worker will run on.
 

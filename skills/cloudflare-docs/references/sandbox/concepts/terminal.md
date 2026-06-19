@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,10 +19,7 @@ Terminal connections let browser-based UIs interact directly with sandbox shells
 Terminal connections use WebSockets to stream raw bytes between a browser terminal (like [xterm.js ↗](https://xtermjs.org/)) and a pseudo-terminal (PTY) process running inside the sandbox container.
 
 ```
-
 Browser (xterm.js) <-- WebSocket --> Worker <-- proxy --> Container PTY (bash)
-
-
 ```
 
 1. The browser sends a WebSocket upgrade request to your Worker
@@ -58,34 +55,9 @@ Each [session](https://developers.cloudflare.com/sandbox/concepts/sessions/) can
 TypeScript
 
 ```
-
-const devSession = await sandbox.createSession({
-
-  id: "dev",
-
-  cwd: "/workspace/frontend",
-
-  env: { NODE_ENV: "development" },
-
-});
-
-
-const testSession = await sandbox.createSession({
-
-  id: "test",
-
-  cwd: "/workspace",
-
-  env: { NODE_ENV: "test" },
-
-});
-
-
-// Each session's terminal has its own working directory,
-
-// environment variables, and command history
-
-
+const devSession = await sandbox.createSession({  id: "dev",  cwd: "/workspace/frontend",  env: { NODE_ENV: "development" },});
+const testSession = await sandbox.createSession({  id: "test",  cwd: "/workspace",  env: { NODE_ENV: "test" },});
+// Each session's terminal has its own working directory,// environment variables, and command history
 ```
 
 Multiple browser clients can connect to the same session's terminal simultaneously. They all see the same shell output and can send input. Use this pattern for intentional collaboration inside one workspace, not to separate independent users.

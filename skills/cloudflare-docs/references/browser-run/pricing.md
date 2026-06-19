@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,7 +21,7 @@ Billing depends on how you use Browser Run:
 
 Browser hours are shared across all methods.
 
-| Workers Free                                | Workers Paid       |                                                                                                                           |
+|                                             | Workers Free       | Workers Paid                                                                                                              |
 | ------------------------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------- |
 | Browser hours                               | 10 minutes per day | 10 hours per month, then $0.09 per additional hour                                                                        |
 | Concurrent browsers (Browser Sessions only) | 3 browsers         | 10 browsers ([averaged monthly](#how-is-the-number-of-concurrent-browsers-calculated)), then $2.00 per additional browser |
@@ -65,7 +65,7 @@ For concurrent browsers:
 450 browsers used in month ÷ 30 days in month = 15 browsers (averaged monthly)
 
   
-15 browsers (averaged monthly) − 10 (included in plan) = 5 browsers  
+15 browsers (averaged monthly) − 10 (included in plan) = 5 browsers   
 5 browsers × $2.00 per browser = $10.00
 
 For browser hours and concurrent browsers:
@@ -84,14 +84,8 @@ You can monitor Browser Run usage in two ways:
 * The `X-Browser-Ms-Used` header, which is returned in every Quick Actions response, reports browser time used for the request (in milliseconds). You can also access this header using the Typescript SDK with the .asResponse() method:  
 TypeScript  
 ```  
-const contentRes = await client.browserRendering.content  
-  .create({  
-    account_id: "account_id",  
-  })  
-  .asResponse();  
-const browserMsUsed = parseInt(  
-  contentRes.headers.get("X-Browser-Ms-Used") || "",  
-);  
+const contentRes = await client.browserRendering.content  .create({    account_id: "account_id",  })  .asResponse();  
+const browserMsUsed = parseInt(  contentRes.headers.get("X-Browser-Ms-Used") || "",);  
 ```
 
 You can then use the tables above to estimate your costs based on your usage.

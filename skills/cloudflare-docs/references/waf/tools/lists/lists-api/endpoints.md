@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -41,24 +41,24 @@ The Lists API supports the operations outlined below. Visit the associated links
 * **Operation**: [Get lists](https://developers.cloudflare.com/api/resources/rules/subresources/lists/methods/list/)
 * **Method and endpoint**: `GET accounts/{account_id}/rules/lists`
 * **Notes**:  
-   * Fetches all lists for the account.  
-   * This request does not fetch the items in the lists.
+  * Fetches all lists for the account.
+  * This request does not fetch the items in the lists.
 
 ### Get a list
 
 * **Operation**: [Get a list](https://developers.cloudflare.com/api/resources/rules/subresources/lists/methods/get/)
 * **Method and endpoint**: `GET accounts/{account_id}/rules/lists/{list_id}`
 * **Notes**:  
-   * Fetches a list by its ID.  
-   * This request does not display the items in the list.
+  * Fetches a list by its ID.
+  * This request does not display the items in the list.
 
 ### Update a list
 
 * **Operation**: [Update a list](https://developers.cloudflare.com/api/resources/rules/subresources/lists/methods/update/)
 * **Method and endpoint**: `PUT accounts/{account_id}/rules/lists/{list_id}`
 * **Notes**:  
-   * Updates the `description` of a list.  
-   * You cannot edit the `name` or `kind`, and you cannot update items in a list. To update an item in a list, use the [Update all list items](#update-all-list-items) operation.
+  * Updates the `description` of a list.
+  * You cannot edit the `name` or `kind`, and you cannot update items in a list. To update an item in a list, use the [Update all list items](#update-all-list-items) operation.
 
 ### Delete a list
 
@@ -79,10 +79,10 @@ When you make requests to a list while a bulk operation on that list is in progr
 * **Operation**: [Get list items](https://developers.cloudflare.com/api/resources/rules/subresources/lists/subresources/items/methods/list/)
 * **Method and endpoint**: `GET accounts/{account_id}/rules/lists/{list_id}/items[?search={query}]`
 * **Notes**:  
-   * Fetches items in a list (all items, by default).  
-   * Items are sorted in ascending order.  
-   * In the case of IP lists, CIDRs are sorted by IP address, then by the subnet mask.  
-   * To filter returned items, use the optional `search` query string parameter. For more information, refer to the [Get list items](https://developers.cloudflare.com/api/resources/rules/subresources/lists/subresources/items/methods/list/) API operation.
+  * Fetches items in a list (all items, by default).
+  * Items are sorted in ascending order.
+  * In the case of IP lists, CIDRs are sorted by IP address, then by the subnet mask.
+  * To filter returned items, use the optional `search` query string parameter. For more information, refer to the [Get list items](https://developers.cloudflare.com/api/resources/rules/subresources/lists/subresources/items/methods/list/) API operation.
 
 ### Get a list item
 
@@ -95,27 +95,27 @@ When you make requests to a list while a bulk operation on that list is in progr
 * **Operation**: [Create list items](https://developers.cloudflare.com/api/resources/rules/subresources/lists/subresources/items/methods/create/)
 * **Method and endpoint**: `POST accounts/{account_id}/rules/lists/{list_id}/items`
 * **Notes**:  
-   * Appends a new item or items to a list.  
-   * Replaces entries that already exist in the list, does not delete any items.  
-   * Overwrites the `comment` of the original item.  
-   * The response includes an `operation_id`.
+  * Appends a new item or items to a list.
+  * Replaces entries that already exist in the list, does not delete any items.
+  * Overwrites the `comment` of the original item.
+  * The response includes an `operation_id`.
 
 ### Update all list items
 
 * **Operation**: [Update all list items](https://developers.cloudflare.com/api/resources/rules/subresources/lists/subresources/items/methods/update/)
 * **Method and endpoint**: `PUT accounts/{account_id}/rules/lists/{list_id}/items`
 * **Notes**:  
-   * Deletes all current items in the list and replaces them with `items`.  
-   * When `items` is empty, deletes **all** items in the list.  
-   * The response includes an `operation_id`.
+  * Deletes all current items in the list and replaces them with `items`.
+  * When `items` is empty, deletes **all** items in the list.
+  * The response includes an `operation_id`.
 
 ### Delete list items
 
 * **Operation**: [Delete list items](https://developers.cloudflare.com/api/resources/rules/subresources/lists/subresources/items/methods/delete/)
 * **Method and endpoint**: `DELETE accounts/{account_id}/rules/lists/{list_id}/items`
 * **Notes**:  
-   * Deletes specified list items.  
-   * The response includes an `operation_id`.
+  * Deletes specified list items.
+  * The response includes an `operation_id`.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/lists/lists-api/endpoints/#page","headline":"Lists API endpoints · Cloudflare Web Application Firewall (WAF) docs","description":"API endpoints for managing lists and list items.","url":"https://developers.cloudflare.com/waf/tools/lists/lists-api/endpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

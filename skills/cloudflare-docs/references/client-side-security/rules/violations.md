@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/client-side-security/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,8 +26,8 @@ Information about rule violations is also available via [GraphQL API](#get-rule-
 
 To view rule violation information:
 
-* [  New dashboard ](#tab-panel-7003)
-* [ Old dashboard ](#tab-panel-7004)
+* [  New dashboard ](#tab-panel-7077)
+* [ Old dashboard ](#tab-panel-7078)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -57,165 +57,17 @@ For an introduction to GraphQL querying, refer to [Querying basics](https://deve
 Example GraphQL query
 
 ```
-
-query PageShieldReports(
-
-  $zoneTag: string
-
-  $datetimeStart: Time
-
-  $datetimeEnd: Time
-
-) {
-
-  viewer {
-
-    zones(filter: { zoneTag: $zoneTag }) {
-
-      pageShieldReportsAdaptiveGroups(
-
-        limit: 100
-
-        orderBy: [datetime_ASC]
-
-        filter: { datetime_geq: $datetimeStart, datetime_leq: $datetimeEnd }
-
-      ) {
-
-        avg {
-
-          sampleInterval
-
-        }
-
-        count
-
-        dimensions {
-
-          policyID
-
-          datetime
-
-          datetimeMinute
-
-          datetimeFiveMinutes
-
-          datetimeFifteenMinutes
-
-          datetimeHalfOfHour
-
-          datetimeHour
-
-          url
-
-          urlHost
-
-          host
-
-          resourceType
-
-          pageURL
-
-          action
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
+query PageShieldReports(  $zoneTag: string  $datetimeStart: Time  $datetimeEnd: Time) {  viewer {    zones(filter: { zoneTag: $zoneTag }) {      pageShieldReportsAdaptiveGroups(        limit: 100        orderBy: [datetime_ASC]        filter: { datetime_geq: $datetimeStart, datetime_leq: $datetimeEnd }      ) {        avg {          sampleInterval        }        count        dimensions {          policyID          datetime          datetimeMinute          datetimeFiveMinutes          datetimeFifteenMinutes          datetimeHalfOfHour          datetimeHour          url          urlHost          host          resourceType          pageURL          action        }      }    }  }}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBACgQwOZgMoAsCWYA2ATAJTAAcB7CAFwGcAKAKBhgBIAvUgOzABVkAuGKhQiZ2SBszwIKYCpgC2aCgkr8u8sOKaTpshQFF2eVeroBKGAG9xAN2wB3SJfGM2nWgDNMOaRH4WYrtx8zIE8SDAAvuZWjLEwxMhoWLiEJOTUAIKSxLLWYADiEKQgxLTOcTA48pgU-ACMAAwN5XHkeJAAQlD8ANraMuoA+hmoAMIAui2xnt6QfjD9umCDKMD8WlIDCqhKlAA0C5tLgzhgaxJH6gZ4kVPRU4wI1uExFXFUCHLEpwCS7D7WBA4B63N6MADGxX+ILw6nYVEwHCoTjBsTIVXBUB+ABEQYxFiZUfjLgoALIiEDSPGHHTqABimDy5PYlLAVGpBIUDPc0jA7GZrPZRJpWzAAAkge4APLuMXFCAckni+XUkAQYHCtU4OWCanoUi64UQNny8HcKDEDTChIoACqBAAMtSEODZBwQREpp64t7bhEgA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABMEAXGWgSwFsYBlWhAJ1rRACYADPwBsAWkHiAjAA44ggKyoALAE5UUgMwYK1OgxYw8UKnyGiJ0uVKkr1WnQF8gA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBACgQwOZgMoAsCWYA2ATAJTAAcB7CAFwGcAKAKBhgBIAvUgOzABVkAuGKhQiZ2SBszwIKYCpgC2aCgkr8u8sOKaTpshQFF2eVeroBKGAG9xAN2wB3SJfGM2nWgDNMOaRH4WYrtx8zIE8SDAAvuZWjLEwxMhoWLiEJOTUAIKSxLLWYADiEKQgxLTOcTA48pgU-ACMAAwN5XHkeJAAQlD8ANraMuoA+hmoAMIAui2xnt6QfjD9umCDKMD8WlIDCqhKlAA0C5tLgzhgaxJH6gZ4kVPRU4wI1uExFXFUCHLEpwCS7D7WBA4B63N6MADGxX+ILw6nYVEwHCoTjBsTIVXBUB+ABEQYxFiZUfjLgoALIiEDSPGHHTqABimDy5PYlLAVGpBIUDPc0jA7GZrPZRJpWzAAAkge4APLuMXFCAckni+XUkAQYHCtU4OWCanoUi64UQNny8HcKDEDTChIoACqBAAMtSEODZBwQREpp64t7bhEgA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABMEAXGWgSwFsYBlWhAJ1rRACYADPwBsAWkHiAjAA44UgOyoALCNT8ZGCtToMWMPFCp8hoidLn8AzCrUatAXyA)
 
 Example curl request
 
 Terminal window
 
 ```
-
-echo '{ "query":
-
-  "query PageShieldReports($zoneTag: string, $datetimeStart: string, $datetimeEnd: string) {
-
-    viewer {
-
-      zones(filter: {zoneTag: $zoneTag}) {
-
-        pageShieldReportsAdaptiveGroups(limit: 100,  orderBy: [datetime_ASC], filter: {datetime_geq:$datetimeStart, datetime_leq:$datetimeEnd}) {
-
-          avg {
-
-            sampleInterval
-
-          }
-
-          count
-
-          dimensions {
-
-            policyID
-
-            datetime
-
-            datetimeMinute
-
-            datetimeFiveMinutes
-
-            datetimeFifteenMinutes
-
-            datetimeHalfOfHour
-
-            datetimeHour
-
-            url
-
-            urlHost
-
-            host
-
-            resourceType
-
-            pageURL
-
-            action
-
-          }
-
-        }
-
-      }
-
-    }
-
-  }",
-
-  "variables": {
-
-    "zoneTag": "<CLOUDFLARE_ZONE_ID>",
-
-    "datetimeStart": "2023-04-17T11:00:00Z",
-
-    "datetimeEnd": "2023-04-24T12:00:00Z"
-
-  }
-
-}' | tr -d '\n' | curl --silent \
-
-https://api.cloudflare.com/client/v4/graphql \
-
---header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
---header "Content-Type: application/json" \
-
---data @-
-
-
+echo '{ "query":  "query PageShieldReports($zoneTag: string, $datetimeStart: string, $datetimeEnd: string) {    viewer {      zones(filter: {zoneTag: $zoneTag}) {        pageShieldReportsAdaptiveGroups(limit: 100,  orderBy: [datetime_ASC], filter: {datetime_geq:$datetimeStart, datetime_leq:$datetimeEnd}) {          avg {            sampleInterval          }          count          dimensions {            policyID            datetime            datetimeMinute            datetimeFiveMinutes            datetimeFifteenMinutes            datetimeHalfOfHour            datetimeHour            url            urlHost            host            resourceType            pageURL            action          }        }      }    }  }",  "variables": {    "zoneTag": "<CLOUDFLARE_ZONE_ID>",    "datetimeStart": "2023-04-17T11:00:00Z",    "datetimeEnd": "2023-04-24T12:00:00Z"  }}' | tr -d '\n' | curl --silent \https://api.cloudflare.com/client/v4/graphql \--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \--header "Content-Type: application/json" \--data @-
 ```
 
 ## Get rule violations via Logpush

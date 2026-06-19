@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,35 +18,26 @@ Wrangler commands for managing Workers for Platforms [dispatch namespace](https:
 
 List all dispatch namespaces
 
-* [  npm ](#tab-panel-12787)
-* [  pnpm ](#tab-panel-12788)
-* [  yarn ](#tab-panel-12789)
+* [  npm ](#tab-panel-12804)
+* [  pnpm ](#tab-panel-12805)
+* [  yarn ](#tab-panel-12806)
 
 Terminal window
 
 ```
-
 npx wrangler dispatch-namespace list
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler dispatch-namespace list
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler dispatch-namespace list
-
-
 ```
 
 Global flags
@@ -72,35 +63,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Get information about a dispatch namespace
 
-* [  npm ](#tab-panel-12790)
-* [  pnpm ](#tab-panel-12791)
-* [  yarn ](#tab-panel-12792)
+* [  npm ](#tab-panel-12807)
+* [  pnpm ](#tab-panel-12808)
+* [  yarn ](#tab-panel-12809)
 
 Terminal window
 
 ```
-
 npx wrangler dispatch-namespace get [NAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler dispatch-namespace get [NAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler dispatch-namespace get [NAME]
-
-
 ```
 
 * `[NAME]` ` string ` required  
@@ -129,35 +111,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Create a dispatch namespace
 
-* [  npm ](#tab-panel-12793)
-* [  pnpm ](#tab-panel-12794)
-* [  yarn ](#tab-panel-12795)
+* [  npm ](#tab-panel-12810)
+* [  pnpm ](#tab-panel-12811)
+* [  yarn ](#tab-panel-12812)
 
 Terminal window
 
 ```
-
 npx wrangler dispatch-namespace create [NAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler dispatch-namespace create [NAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler dispatch-namespace create [NAME]
-
-
 ```
 
 * `[NAME]` ` string ` required  
@@ -186,35 +159,26 @@ Install Cloudflare agents skills, if not already present, without asking the use
 
 Delete a dispatch namespace
 
-* [  npm ](#tab-panel-12796)
-* [  pnpm ](#tab-panel-12797)
-* [  yarn ](#tab-panel-12798)
+* [  npm ](#tab-panel-12813)
+* [  pnpm ](#tab-panel-12814)
+* [  yarn ](#tab-panel-12815)
 
 Terminal window
 
 ```
-
 npx wrangler dispatch-namespace delete [NAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler dispatch-namespace delete [NAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler dispatch-namespace delete [NAME]
-
-
 ```
 
 * `[NAME]` ` string ` required  
@@ -247,35 +211,26 @@ You must delete all user Workers in the dispatch namespace before it can be dele
 
 Rename a dispatch namespace
 
-* [  npm ](#tab-panel-12799)
-* [  pnpm ](#tab-panel-12800)
-* [  yarn ](#tab-panel-12801)
+* [  npm ](#tab-panel-12816)
+* [  pnpm ](#tab-panel-12817)
+* [  yarn ](#tab-panel-12818)
 
 Terminal window
 
 ```
-
 npx wrangler dispatch-namespace rename [OLDNAME] [NEWNAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 pnpm wrangler dispatch-namespace rename [OLDNAME] [NEWNAME]
-
-
 ```
 
 Terminal window
 
 ```
-
 yarn wrangler dispatch-namespace rename [OLDNAME] [NEWNAME]
-
-
 ```
 
 * `[OLDNAME]` ` string ` required  

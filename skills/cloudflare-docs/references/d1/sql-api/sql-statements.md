@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,66 +37,7 @@ D1 supports some [SQLite PRAGMA ↗](https://www.sqlite.org/pragma.html) stateme
 The PRAGMA statement examples on this page use the following SQL.
 
 ```
-
-PRAGMA foreign_keys=off;
-
-DROP TABLE IF EXISTS "Employee";
-
-DROP TABLE IF EXISTS "Category";
-
-DROP TABLE IF EXISTS "Customer";
-
-DROP TABLE IF EXISTS "Shipper";
-
-DROP TABLE IF EXISTS "Supplier";
-
-DROP TABLE IF EXISTS "Order";
-
-DROP TABLE IF EXISTS "Product";
-
-DROP TABLE IF EXISTS "OrderDetail";
-
-DROP TABLE IF EXISTS "CustomerCustomerDemo";
-
-DROP TABLE IF EXISTS "CustomerDemographic";
-
-DROP TABLE IF EXISTS "Region";
-
-DROP TABLE IF EXISTS "Territory";
-
-DROP TABLE IF EXISTS "EmployeeTerritory";
-
-DROP VIEW IF EXISTS [ProductDetails_V];
-
-CREATE TABLE IF NOT EXISTS "Employee" ( "Id" INTEGER PRIMARY KEY, "LastName" VARCHAR(8000) NULL, "FirstName" VARCHAR(8000) NULL, "Title" VARCHAR(8000) NULL, "TitleOfCourtesy" VARCHAR(8000) NULL, "BirthDate" VARCHAR(8000) NULL, "HireDate" VARCHAR(8000) NULL, "Address" VARCHAR(8000) NULL, "City" VARCHAR(8000) NULL, "Region" VARCHAR(8000) NULL, "PostalCode" VARCHAR(8000) NULL, "Country" VARCHAR(8000) NULL, "HomePhone" VARCHAR(8000) NULL, "Extension" VARCHAR(8000) NULL, "Photo" BLOB NULL, "Notes" VARCHAR(8000) NULL, "ReportsTo" INTEGER NULL, "PhotoPath" VARCHAR(8000) NULL);
-
-CREATE TABLE IF NOT EXISTS "Category" ( "Id" INTEGER PRIMARY KEY, "CategoryName" VARCHAR(8000) NULL, "Description" VARCHAR(8000) NULL);
-
-CREATE TABLE IF NOT EXISTS "Customer" ( "Id" VARCHAR(8000) PRIMARY KEY, "CompanyName" VARCHAR(8000) NULL, "ContactName" VARCHAR(8000) NULL, "ContactTitle" VARCHAR(8000) NULL, "Address" VARCHAR(8000) NULL, "City" VARCHAR(8000) NULL, "Region" VARCHAR(8000) NULL, "PostalCode" VARCHAR(8000) NULL, "Country" VARCHAR(8000) NULL, "Phone" VARCHAR(8000) NULL, "Fax" VARCHAR(8000) NULL);
-
-CREATE TABLE IF NOT EXISTS "Shipper" ( "Id" INTEGER PRIMARY KEY, "CompanyName" VARCHAR(8000) NULL, "Phone" VARCHAR(8000) NULL);
-
-CREATE TABLE IF NOT EXISTS "Supplier" ( "Id" INTEGER PRIMARY KEY, "CompanyName" VARCHAR(8000) NULL, "ContactName" VARCHAR(8000) NULL, "ContactTitle" VARCHAR(8000) NULL, "Address" VARCHAR(8000) NULL, "City" VARCHAR(8000) NULL, "Region" VARCHAR(8000) NULL, "PostalCode" VARCHAR(8000) NULL, "Country" VARCHAR(8000) NULL, "Phone" VARCHAR(8000) NULL, "Fax" VARCHAR(8000) NULL, "HomePage" VARCHAR(8000) NULL);
-
-CREATE TABLE IF NOT EXISTS "Order" ( "Id" INTEGER PRIMARY KEY, "CustomerId" VARCHAR(8000) NULL, "EmployeeId" INTEGER NOT NULL, "OrderDate" VARCHAR(8000) NULL, "RequiredDate" VARCHAR(8000) NULL, "ShippedDate" VARCHAR(8000) NULL, "ShipVia" INTEGER NULL, "Freight" DECIMAL NOT NULL, "ShipName" VARCHAR(8000) NULL, "ShipAddress" VARCHAR(8000) NULL, "ShipCity" VARCHAR(8000) NULL, "ShipRegion" VARCHAR(8000) NULL, "ShipPostalCode" VARCHAR(8000) NULL, "ShipCountry" VARCHAR(8000) NULL);
-
-CREATE TABLE IF NOT EXISTS "Product" ( "Id" INTEGER PRIMARY KEY, "ProductName" VARCHAR(8000) NULL, "SupplierId" INTEGER NOT NULL, "CategoryId" INTEGER NOT NULL, "QuantityPerUnit" VARCHAR(8000) NULL, "UnitPrice" DECIMAL NOT NULL, "UnitsInStock" INTEGER NOT NULL, "UnitsOnOrder" INTEGER NOT NULL, "ReorderLevel" INTEGER NOT NULL, "Discontinued" INTEGER NOT NULL);
-
-CREATE TABLE IF NOT EXISTS "OrderDetail" ( "Id" VARCHAR(8000) PRIMARY KEY, "OrderId" INTEGER NOT NULL, "ProductId" INTEGER NOT NULL, "UnitPrice" DECIMAL NOT NULL, "Quantity" INTEGER NOT NULL, "Discount" DOUBLE NOT NULL);
-
-CREATE TABLE IF NOT EXISTS "CustomerCustomerDemo" ( "Id" VARCHAR(8000) PRIMARY KEY, "CustomerTypeId" VARCHAR(8000) NULL);
-
-CREATE TABLE IF NOT EXISTS "CustomerDemographic" ( "Id" VARCHAR(8000) PRIMARY KEY, "CustomerDesc" VARCHAR(8000) NULL);
-
-CREATE TABLE IF NOT EXISTS "Region" ( "Id" INTEGER PRIMARY KEY, "RegionDescription" VARCHAR(8000) NULL);
-
-CREATE TABLE IF NOT EXISTS "Territory" ( "Id" VARCHAR(8000) PRIMARY KEY, "TerritoryDescription" VARCHAR(8000) NULL, "RegionId" INTEGER NOT NULL);
-
-CREATE TABLE IF NOT EXISTS "EmployeeTerritory" ( "Id" VARCHAR(8000) PRIMARY KEY, "EmployeeId" INTEGER NOT NULL, "TerritoryId" VARCHAR(8000) NULL);
-
-CREATE VIEW [ProductDetails_V] as select p.*, c.CategoryName, c.Description as [CategoryDescription], s.CompanyName as [SupplierName], s.Region as [SupplierRegion] from [Product] p join [Category] c on p.CategoryId = c.id join [Supplier] s on s.id = p.SupplierId;
-
-
+PRAGMA foreign_keys=off;DROP TABLE IF EXISTS "Employee";DROP TABLE IF EXISTS "Category";DROP TABLE IF EXISTS "Customer";DROP TABLE IF EXISTS "Shipper";DROP TABLE IF EXISTS "Supplier";DROP TABLE IF EXISTS "Order";DROP TABLE IF EXISTS "Product";DROP TABLE IF EXISTS "OrderDetail";DROP TABLE IF EXISTS "CustomerCustomerDemo";DROP TABLE IF EXISTS "CustomerDemographic";DROP TABLE IF EXISTS "Region";DROP TABLE IF EXISTS "Territory";DROP TABLE IF EXISTS "EmployeeTerritory";DROP VIEW IF EXISTS [ProductDetails_V];CREATE TABLE IF NOT EXISTS "Employee" ( "Id" INTEGER PRIMARY KEY, "LastName" VARCHAR(8000) NULL, "FirstName" VARCHAR(8000) NULL, "Title" VARCHAR(8000) NULL, "TitleOfCourtesy" VARCHAR(8000) NULL, "BirthDate" VARCHAR(8000) NULL, "HireDate" VARCHAR(8000) NULL, "Address" VARCHAR(8000) NULL, "City" VARCHAR(8000) NULL, "Region" VARCHAR(8000) NULL, "PostalCode" VARCHAR(8000) NULL, "Country" VARCHAR(8000) NULL, "HomePhone" VARCHAR(8000) NULL, "Extension" VARCHAR(8000) NULL, "Photo" BLOB NULL, "Notes" VARCHAR(8000) NULL, "ReportsTo" INTEGER NULL, "PhotoPath" VARCHAR(8000) NULL);CREATE TABLE IF NOT EXISTS "Category" ( "Id" INTEGER PRIMARY KEY, "CategoryName" VARCHAR(8000) NULL, "Description" VARCHAR(8000) NULL);CREATE TABLE IF NOT EXISTS "Customer" ( "Id" VARCHAR(8000) PRIMARY KEY, "CompanyName" VARCHAR(8000) NULL, "ContactName" VARCHAR(8000) NULL, "ContactTitle" VARCHAR(8000) NULL, "Address" VARCHAR(8000) NULL, "City" VARCHAR(8000) NULL, "Region" VARCHAR(8000) NULL, "PostalCode" VARCHAR(8000) NULL, "Country" VARCHAR(8000) NULL, "Phone" VARCHAR(8000) NULL, "Fax" VARCHAR(8000) NULL);CREATE TABLE IF NOT EXISTS "Shipper" ( "Id" INTEGER PRIMARY KEY, "CompanyName" VARCHAR(8000) NULL, "Phone" VARCHAR(8000) NULL);CREATE TABLE IF NOT EXISTS "Supplier" ( "Id" INTEGER PRIMARY KEY, "CompanyName" VARCHAR(8000) NULL, "ContactName" VARCHAR(8000) NULL, "ContactTitle" VARCHAR(8000) NULL, "Address" VARCHAR(8000) NULL, "City" VARCHAR(8000) NULL, "Region" VARCHAR(8000) NULL, "PostalCode" VARCHAR(8000) NULL, "Country" VARCHAR(8000) NULL, "Phone" VARCHAR(8000) NULL, "Fax" VARCHAR(8000) NULL, "HomePage" VARCHAR(8000) NULL);CREATE TABLE IF NOT EXISTS "Order" ( "Id" INTEGER PRIMARY KEY, "CustomerId" VARCHAR(8000) NULL, "EmployeeId" INTEGER NOT NULL, "OrderDate" VARCHAR(8000) NULL, "RequiredDate" VARCHAR(8000) NULL, "ShippedDate" VARCHAR(8000) NULL, "ShipVia" INTEGER NULL, "Freight" DECIMAL NOT NULL, "ShipName" VARCHAR(8000) NULL, "ShipAddress" VARCHAR(8000) NULL, "ShipCity" VARCHAR(8000) NULL, "ShipRegion" VARCHAR(8000) NULL, "ShipPostalCode" VARCHAR(8000) NULL, "ShipCountry" VARCHAR(8000) NULL);CREATE TABLE IF NOT EXISTS "Product" ( "Id" INTEGER PRIMARY KEY, "ProductName" VARCHAR(8000) NULL, "SupplierId" INTEGER NOT NULL, "CategoryId" INTEGER NOT NULL, "QuantityPerUnit" VARCHAR(8000) NULL, "UnitPrice" DECIMAL NOT NULL, "UnitsInStock" INTEGER NOT NULL, "UnitsOnOrder" INTEGER NOT NULL, "ReorderLevel" INTEGER NOT NULL, "Discontinued" INTEGER NOT NULL);CREATE TABLE IF NOT EXISTS "OrderDetail" ( "Id" VARCHAR(8000) PRIMARY KEY, "OrderId" INTEGER NOT NULL, "ProductId" INTEGER NOT NULL, "UnitPrice" DECIMAL NOT NULL, "Quantity" INTEGER NOT NULL, "Discount" DOUBLE NOT NULL);CREATE TABLE IF NOT EXISTS "CustomerCustomerDemo" ( "Id" VARCHAR(8000) PRIMARY KEY, "CustomerTypeId" VARCHAR(8000) NULL);CREATE TABLE IF NOT EXISTS "CustomerDemographic" ( "Id" VARCHAR(8000) PRIMARY KEY, "CustomerDesc" VARCHAR(8000) NULL);CREATE TABLE IF NOT EXISTS "Region" ( "Id" INTEGER PRIMARY KEY, "RegionDescription" VARCHAR(8000) NULL);CREATE TABLE IF NOT EXISTS "Territory" ( "Id" VARCHAR(8000) PRIMARY KEY, "TerritoryDescription" VARCHAR(8000) NULL, "RegionId" INTEGER NOT NULL);CREATE TABLE IF NOT EXISTS "EmployeeTerritory" ( "Id" VARCHAR(8000) PRIMARY KEY, "EmployeeId" INTEGER NOT NULL, "TerritoryId" VARCHAR(8000) NULL);CREATE VIEW [ProductDetails_V] as select p.*, c.CategoryName, c.Description as [CategoryDescription], s.CompanyName as [SupplierName], s.Region as [SupplierRegion] from [Product] p join [Category] c on p.CategoryId = c.id join [Supplier] s on s.id = p.SupplierId;
 ```
 
 Warning
@@ -123,95 +64,11 @@ Example of `PRAGMA table_list`
 Terminal window
 
 ```
-
 npx wrangler d1 execute [DATABASE_NAME] --command='PRAGMA table_list'
-
-
 ```
 
 ```
-
-🌀 Executing on remote database [DATABASE_NAME] (DATABASE_ID):
-
-🌀 To execute on your local development database, remove the --remote flag from your wrangler command.
-
-🚣 Executed 1 commands in 0.5874ms
-
-┌────────┬──────────────────────┬───────┬──────┬────┬────────┐
-
-│ schema │ name                 │ type  │ ncol │ wr │ strict │
-
-├────────┼──────────────────────┼───────┼──────┼────┼────────┤
-
-│ main   │ Territory            │ table │ 3    │ 0  │ 0      │
-
-├────────┼──────────────────────┼───────┼──────┼────┼────────┤
-
-│ main   │ CustomerDemographic  │ table │ 2    │ 0  │ 0      │
-
-├────────┼──────────────────────┼───────┼──────┼────┼────────┤
-
-│ main   │ OrderDetail          │ table │ 6    │ 0  │ 0      │
-
-├────────┼──────────────────────┼───────┼──────┼────┼────────┤
-
-│ main   │ sqlite_schema        │ table │ 5    │ 0  │ 0      │
-
-├────────┼──────────────────────┼───────┼──────┼────┼────────┤
-
-│ main   │ Region               │ table │ 2    │ 0  │ 0      │
-
-├────────┼──────────────────────┼───────┼──────┼────┼────────┤
-
-│ main   │ _cf_KV               │ table │ 2    │ 1  │ 0      │
-
-├────────┼──────────────────────┼───────┼──────┼────┼────────┤
-
-│ main   │ ProductDetails_V     │ view  │ 14   │ 0  │ 0      │
-
-├────────┼──────────────────────┼───────┼──────┼────┼────────┤
-
-│ main   │ EmployeeTerritory    │ table │ 3    │ 0  │ 0      │
-
-├────────┼──────────────────────┼───────┼──────┼────┼────────┤
-
-│ main   │ Employee             │ table │ 18   │ 0  │ 0      │
-
-├────────┼──────────────────────┼───────┼──────┼────┼────────┤
-
-│ main   │ Category             │ table │ 3    │ 0  │ 0      │
-
-├────────┼──────────────────────┼───────┼──────┼────┼────────┤
-
-│ main   │ Customer             │ table │ 11   │ 0  │ 0      │
-
-├────────┼──────────────────────┼───────┼──────┼────┼────────┤
-
-│ main   │ Shipper              │ table │ 3    │ 0  │ 0      │
-
-├────────┼──────────────────────┼───────┼──────┼────┼────────┤
-
-│ main   │ Supplier             │ table │ 12   │ 0  │ 0      │
-
-├────────┼──────────────────────┼───────┼──────┼────┼────────┤
-
-│ main   │ Order                │ table │ 14   │ 0  │ 0      │
-
-├────────┼──────────────────────┼───────┼──────┼────┼────────┤
-
-│ main   │ CustomerCustomerDemo │ table │ 2    │ 0  │ 0      │
-
-├────────┼──────────────────────┼───────┼──────┼────┼────────┤
-
-│ main   │ Product              │ table │ 10   │ 0  │ 0      │
-
-├────────┼──────────────────────┼───────┼──────┼────┼────────┤
-
-│ temp   │ sqlite_temp_schema   │ table │ 5    │ 0  │ 0      │
-
-└────────┴──────────────────────┴───────┴──────┴────┴────────┘
-
-
+🌀 Executing on remote database [DATABASE_NAME] (DATABASE_ID):🌀 To execute on your local development database, remove the --remote flag from your wrangler command.🚣 Executed 1 commands in 0.5874ms┌────────┬──────────────────────┬───────┬──────┬────┬────────┐│ schema │ name                 │ type  │ ncol │ wr │ strict │├────────┼──────────────────────┼───────┼──────┼────┼────────┤│ main   │ Territory            │ table │ 3    │ 0  │ 0      │├────────┼──────────────────────┼───────┼──────┼────┼────────┤│ main   │ CustomerDemographic  │ table │ 2    │ 0  │ 0      │├────────┼──────────────────────┼───────┼──────┼────┼────────┤│ main   │ OrderDetail          │ table │ 6    │ 0  │ 0      │├────────┼──────────────────────┼───────┼──────┼────┼────────┤│ main   │ sqlite_schema        │ table │ 5    │ 0  │ 0      │├────────┼──────────────────────┼───────┼──────┼────┼────────┤│ main   │ Region               │ table │ 2    │ 0  │ 0      │├────────┼──────────────────────┼───────┼──────┼────┼────────┤│ main   │ _cf_KV               │ table │ 2    │ 1  │ 0      │├────────┼──────────────────────┼───────┼──────┼────┼────────┤│ main   │ ProductDetails_V     │ view  │ 14   │ 0  │ 0      │├────────┼──────────────────────┼───────┼──────┼────┼────────┤│ main   │ EmployeeTerritory    │ table │ 3    │ 0  │ 0      │├────────┼──────────────────────┼───────┼──────┼────┼────────┤│ main   │ Employee             │ table │ 18   │ 0  │ 0      │├────────┼──────────────────────┼───────┼──────┼────┼────────┤│ main   │ Category             │ table │ 3    │ 0  │ 0      │├────────┼──────────────────────┼───────┼──────┼────┼────────┤│ main   │ Customer             │ table │ 11   │ 0  │ 0      │├────────┼──────────────────────┼───────┼──────┼────┼────────┤│ main   │ Shipper              │ table │ 3    │ 0  │ 0      │├────────┼──────────────────────┼───────┼──────┼────┼────────┤│ main   │ Supplier             │ table │ 12   │ 0  │ 0      │├────────┼──────────────────────┼───────┼──────┼────┼────────┤│ main   │ Order                │ table │ 14   │ 0  │ 0      │├────────┼──────────────────────┼───────┼──────┼────┼────────┤│ main   │ CustomerCustomerDemo │ table │ 2    │ 0  │ 0      │├────────┼──────────────────────┼───────┼──────┼────┼────────┤│ main   │ Product              │ table │ 10   │ 0  │ 0      │├────────┼──────────────────────┼───────┼──────┼────┼────────┤│ temp   │ sqlite_temp_schema   │ table │ 5    │ 0  │ 0      │└────────┴──────────────────────┴───────┴──────┴────┴────────┘
 ```
 
 ### `PRAGMA table_info("TABLE_NAME")`
@@ -234,83 +91,11 @@ Example of `PRAGMA table_info`
 Terminal window
 
 ```
-
 npx wrangler d1 execute [DATABASE_NAME] --command='PRAGMA table_info("Order")'
-
-
 ```
 
 ```
-
-🌀 Executing on remote database [DATABASE_NAME] (DATABASE_ID):
-
-🌀 To execute on your local development database, remove the --remote flag from your wrangler command.
-
-🚣 Executed 1 commands in 0.8502ms
-
-┌─────┬────────────────┬───────────────┬─────────┬────────────┬────┐
-
-│ cid │ name           │ type          │ notnull │ dflt_value │ pk │
-
-├─────┼────────────────┼───────────────┼─────────┼────────────┼────┤
-
-│ 0   │ Id             │ INTEGER       │ 0       │            │ 1  │
-
-├─────┼────────────────┼───────────────┼─────────┼────────────┼────┤
-
-│ 1   │ CustomerId     │ VARCHAR(8000) │ 0       │            │ 0  │
-
-├─────┼────────────────┼───────────────┼─────────┼────────────┼────┤
-
-│ 2   │ EmployeeId     │ INTEGER       │ 1       │            │ 0  │
-
-├─────┼────────────────┼───────────────┼─────────┼────────────┼────┤
-
-│ 3   │ OrderDate      │ VARCHAR(8000) │ 0       │            │ 0  │
-
-├─────┼────────────────┼───────────────┼─────────┼────────────┼────┤
-
-│ 4   │ RequiredDate   │ VARCHAR(8000) │ 0       │            │ 0  │
-
-├─────┼────────────────┼───────────────┼─────────┼────────────┼────┤
-
-│ 5   │ ShippedDate    │ VARCHAR(8000) │ 0       │            │ 0  │
-
-├─────┼────────────────┼───────────────┼─────────┼────────────┼────┤
-
-│ 6   │ ShipVia        │ INTEGER       │ 0       │            │ 0  │
-
-├─────┼────────────────┼───────────────┼─────────┼────────────┼────┤
-
-│ 7   │ Freight        │ DECIMAL       │ 1       │            │ 0  │
-
-├─────┼────────────────┼───────────────┼─────────┼────────────┼────┤
-
-│ 8   │ ShipName       │ VARCHAR(8000) │ 0       │            │ 0  │
-
-├─────┼────────────────┼───────────────┼─────────┼────────────┼────┤
-
-│ 9   │ ShipAddress    │ VARCHAR(8000) │ 0       │            │ 0  │
-
-├─────┼────────────────┼───────────────┼─────────┼────────────┼────┤
-
-│ 10  │ ShipCity       │ VARCHAR(8000) │ 0       │            │ 0  │
-
-├─────┼────────────────┼───────────────┼─────────┼────────────┼────┤
-
-│ 11  │ ShipRegion     │ VARCHAR(8000) │ 0       │            │ 0  │
-
-├─────┼────────────────┼───────────────┼─────────┼────────────┼────┤
-
-│ 12  │ ShipPostalCode │ VARCHAR(8000) │ 0       │            │ 0  │
-
-├─────┼────────────────┼───────────────┼─────────┼────────────┼────┤
-
-│ 13  │ ShipCountry    │ VARCHAR(8000) │ 0       │            │ 0  │
-
-└─────┴────────────────┴───────────────┴─────────┴────────────┴────┘
-
-
+🌀 Executing on remote database [DATABASE_NAME] (DATABASE_ID):🌀 To execute on your local development database, remove the --remote flag from your wrangler command.🚣 Executed 1 commands in 0.8502ms┌─────┬────────────────┬───────────────┬─────────┬────────────┬────┐│ cid │ name           │ type          │ notnull │ dflt_value │ pk │├─────┼────────────────┼───────────────┼─────────┼────────────┼────┤│ 0   │ Id             │ INTEGER       │ 0       │            │ 1  │├─────┼────────────────┼───────────────┼─────────┼────────────┼────┤│ 1   │ CustomerId     │ VARCHAR(8000) │ 0       │            │ 0  │├─────┼────────────────┼───────────────┼─────────┼────────────┼────┤│ 2   │ EmployeeId     │ INTEGER       │ 1       │            │ 0  │├─────┼────────────────┼───────────────┼─────────┼────────────┼────┤│ 3   │ OrderDate      │ VARCHAR(8000) │ 0       │            │ 0  │├─────┼────────────────┼───────────────┼─────────┼────────────┼────┤│ 4   │ RequiredDate   │ VARCHAR(8000) │ 0       │            │ 0  │├─────┼────────────────┼───────────────┼─────────┼────────────┼────┤│ 5   │ ShippedDate    │ VARCHAR(8000) │ 0       │            │ 0  │├─────┼────────────────┼───────────────┼─────────┼────────────┼────┤│ 6   │ ShipVia        │ INTEGER       │ 0       │            │ 0  │├─────┼────────────────┼───────────────┼─────────┼────────────┼────┤│ 7   │ Freight        │ DECIMAL       │ 1       │            │ 0  │├─────┼────────────────┼───────────────┼─────────┼────────────┼────┤│ 8   │ ShipName       │ VARCHAR(8000) │ 0       │            │ 0  │├─────┼────────────────┼───────────────┼─────────┼────────────┼────┤│ 9   │ ShipAddress    │ VARCHAR(8000) │ 0       │            │ 0  │├─────┼────────────────┼───────────────┼─────────┼────────────┼────┤│ 10  │ ShipCity       │ VARCHAR(8000) │ 0       │            │ 0  │├─────┼────────────────┼───────────────┼─────────┼────────────┼────┤│ 11  │ ShipRegion     │ VARCHAR(8000) │ 0       │            │ 0  │├─────┼────────────────┼───────────────┼─────────┼────────────┼────┤│ 12  │ ShipPostalCode │ VARCHAR(8000) │ 0       │            │ 0  │├─────┼────────────────┼───────────────┼─────────┼────────────┼────┤│ 13  │ ShipCountry    │ VARCHAR(8000) │ 0       │            │ 0  │└─────┴────────────────┴───────────────┴─────────┴────────────┴────┘
 ```
 
 ### `PRAGMA table_xinfo("TABLE_NAME")`
@@ -322,83 +107,11 @@ Example of `PRAGMA table_xinfo`
 Terminal window
 
 ```
-
 npx wrangler d1 execute [DATABASE_NAME] --command='PRAGMA table_xinfo("Order")'
-
-
 ```
 
 ```
-
-🌀 Executing on remote database [DATABASE_NAME] (DATABASE_ID):
-
-🌀 To execute on your local development database, remove the --remote flag from your wrangler command.
-
-🚣 Executed 1 commands in 0.3854ms
-
-┌─────┬────────────────┬───────────────┬─────────┬────────────┬────┬────────┐
-
-│ cid │ name           │ type          │ notnull │ dflt_value │ pk │ hidden │
-
-├─────┼────────────────┼───────────────┼─────────┼────────────┼────┼────────┤
-
-│ 0   │ Id             │ INTEGER       │ 0       │            │ 1  │ 0      │
-
-├─────┼────────────────┼───────────────┼─────────┼────────────┼────┼────────┤
-
-│ 1   │ CustomerId     │ VARCHAR(8000) │ 0       │            │ 0  │ 0      │
-
-├─────┼────────────────┼───────────────┼─────────┼────────────┼────┼────────┤
-
-│ 2   │ EmployeeId     │ INTEGER       │ 1       │            │ 0  │ 0      │
-
-├─────┼────────────────┼───────────────┼─────────┼────────────┼────┼────────┤
-
-│ 3   │ OrderDate      │ VARCHAR(8000) │ 0       │            │ 0  │ 0      │
-
-├─────┼────────────────┼───────────────┼─────────┼────────────┼────┼────────┤
-
-│ 4   │ RequiredDate   │ VARCHAR(8000) │ 0       │            │ 0  │ 0      │
-
-├─────┼────────────────┼───────────────┼─────────┼────────────┼────┼────────┤
-
-│ 5   │ ShippedDate    │ VARCHAR(8000) │ 0       │            │ 0  │ 0      │
-
-├─────┼────────────────┼───────────────┼─────────┼────────────┼────┼────────┤
-
-│ 6   │ ShipVia        │ INTEGER       │ 0       │            │ 0  │ 0      │
-
-├─────┼────────────────┼───────────────┼─────────┼────────────┼────┼────────┤
-
-│ 7   │ Freight        │ DECIMAL       │ 1       │            │ 0  │ 0      │
-
-├─────┼────────────────┼───────────────┼─────────┼────────────┼────┼────────┤
-
-│ 8   │ ShipName       │ VARCHAR(8000) │ 0       │            │ 0  │ 0      │
-
-├─────┼────────────────┼───────────────┼─────────┼────────────┼────┼────────┤
-
-│ 9   │ ShipAddress    │ VARCHAR(8000) │ 0       │            │ 0  │ 0      │
-
-├─────┼────────────────┼───────────────┼─────────┼────────────┼────┼────────┤
-
-│ 10  │ ShipCity       │ VARCHAR(8000) │ 0       │            │ 0  │ 0      │
-
-├─────┼────────────────┼───────────────┼─────────┼────────────┼────┼────────┤
-
-│ 11  │ ShipRegion     │ VARCHAR(8000) │ 0       │            │ 0  │ 0      │
-
-├─────┼────────────────┼───────────────┼─────────┼────────────┼────┼────────┤
-
-│ 12  │ ShipPostalCode │ VARCHAR(8000) │ 0       │            │ 0  │ 0      │
-
-├─────┼────────────────┼───────────────┼─────────┼────────────┼────┼────────┤
-
-│ 13  │ ShipCountry    │ VARCHAR(8000) │ 0       │            │ 0  │ 0      │
-
-└─────┴────────────────┴───────────────┴─────────┴────────────┴────┴────────┘
-
-
+🌀 Executing on remote database [DATABASE_NAME] (DATABASE_ID):🌀 To execute on your local development database, remove the --remote flag from your wrangler command.🚣 Executed 1 commands in 0.3854ms┌─────┬────────────────┬───────────────┬─────────┬────────────┬────┬────────┐│ cid │ name           │ type          │ notnull │ dflt_value │ pk │ hidden │├─────┼────────────────┼───────────────┼─────────┼────────────┼────┼────────┤│ 0   │ Id             │ INTEGER       │ 0       │            │ 1  │ 0      │├─────┼────────────────┼───────────────┼─────────┼────────────┼────┼────────┤│ 1   │ CustomerId     │ VARCHAR(8000) │ 0       │            │ 0  │ 0      │├─────┼────────────────┼───────────────┼─────────┼────────────┼────┼────────┤│ 2   │ EmployeeId     │ INTEGER       │ 1       │            │ 0  │ 0      │├─────┼────────────────┼───────────────┼─────────┼────────────┼────┼────────┤│ 3   │ OrderDate      │ VARCHAR(8000) │ 0       │            │ 0  │ 0      │├─────┼────────────────┼───────────────┼─────────┼────────────┼────┼────────┤│ 4   │ RequiredDate   │ VARCHAR(8000) │ 0       │            │ 0  │ 0      │├─────┼────────────────┼───────────────┼─────────┼────────────┼────┼────────┤│ 5   │ ShippedDate    │ VARCHAR(8000) │ 0       │            │ 0  │ 0      │├─────┼────────────────┼───────────────┼─────────┼────────────┼────┼────────┤│ 6   │ ShipVia        │ INTEGER       │ 0       │            │ 0  │ 0      │├─────┼────────────────┼───────────────┼─────────┼────────────┼────┼────────┤│ 7   │ Freight        │ DECIMAL       │ 1       │            │ 0  │ 0      │├─────┼────────────────┼───────────────┼─────────┼────────────┼────┼────────┤│ 8   │ ShipName       │ VARCHAR(8000) │ 0       │            │ 0  │ 0      │├─────┼────────────────┼───────────────┼─────────┼────────────┼────┼────────┤│ 9   │ ShipAddress    │ VARCHAR(8000) │ 0       │            │ 0  │ 0      │├─────┼────────────────┼───────────────┼─────────┼────────────┼────┼────────┤│ 10  │ ShipCity       │ VARCHAR(8000) │ 0       │            │ 0  │ 0      │├─────┼────────────────┼───────────────┼─────────┼────────────┼────┼────────┤│ 11  │ ShipRegion     │ VARCHAR(8000) │ 0       │            │ 0  │ 0      │├─────┼────────────────┼───────────────┼─────────┼────────────┼────┼────────┤│ 12  │ ShipPostalCode │ VARCHAR(8000) │ 0       │            │ 0  │ 0      │├─────┼────────────────┼───────────────┼─────────┼────────────┼────┼────────┤│ 13  │ ShipCountry    │ VARCHAR(8000) │ 0       │            │ 0  │ 0      │└─────┴────────────────┴───────────────┴─────────┴────────────┴────┴────────┘
 ```
 
 ### `PRAGMA index_list("TABLE_NAME")`
@@ -420,31 +133,11 @@ Example of `PRAGMA index_list`
 Terminal window
 
 ```
-
 npx wrangler d1 execute [DATABASE_NAME] --command='PRAGMA index_list("Territory")'
-
-
 ```
 
 ```
-
-🌀 Executing on remote database d1-pragma-db (DATABASE_ID):
-
-🌀 To execute on your local development database, remove the --remote flag from your wrangler command.
-
-🚣 Executed 1 commands in 0.2177ms
-
-┌─────┬──────────────────────────────┬────────┬────────┬─────────┐
-
-│ seq │ name                         │ unique │ origin │ partial │
-
-├─────┼──────────────────────────────┼────────┼────────┼─────────┤
-
-│ 0   │ sqlite_autoindex_Territory_1 │ 1      │ pk     │ 0       │
-
-└─────┴──────────────────────────────┴────────┴────────┴─────────┘
-
-
+🌀 Executing on remote database d1-pragma-db (DATABASE_ID):🌀 To execute on your local development database, remove the --remote flag from your wrangler command.🚣 Executed 1 commands in 0.2177ms┌─────┬──────────────────────────────┬────────┬────────┬─────────┐│ seq │ name                         │ unique │ origin │ partial │├─────┼──────────────────────────────┼────────┼────────┼─────────┤│ 0   │ sqlite_autoindex_Territory_1 │ 1      │ pk     │ 0       │└─────┴──────────────────────────────┴────────┴────────┴─────────┘
 ```
 
 ### `PRAGMA index_info(INDEX_NAME)`
@@ -464,31 +157,11 @@ Example of `PRAGMA index_info`
 Terminal window
 
 ```
-
 npx wrangler d1 execute [DATABASE_NAME] --command='PRAGMA index_info("sqlite_autoindex_Territory_1")'
-
-
 ```
 
 ```
-
-🌀 Executing on remote database d1-pragma-db (DATABASE_ID):
-
-🌀 To execute on your local development database, remove the --remote flag from your wrangler command.
-
-🚣 Executed 1 commands in 0.2523ms
-
-┌───────┬─────┬──────┐
-
-│ seqno │ cid │ name │
-
-├───────┼─────┼──────┤
-
-│ 0     │ 0   │ Id   │
-
-└───────┴─────┴──────┘
-
-
+🌀 Executing on remote database d1-pragma-db (DATABASE_ID):🌀 To execute on your local development database, remove the --remote flag from your wrangler command.🚣 Executed 1 commands in 0.2523ms┌───────┬─────┬──────┐│ seqno │ cid │ name │├───────┼─────┼──────┤│ 0     │ 0   │ Id   │└───────┴─────┴──────┘
 ```
 
 ### `PRAGMA index_xinfo("INDEX_NAME")`
@@ -500,35 +173,11 @@ Example of `PRAGMA index_xinfo`
 Terminal window
 
 ```
-
 npx wrangler d1 execute [DATABASE_NAME] --command='PRAGMA index_xinfo("sqlite_autoindex_Territory_1")'
-
-
 ```
 
 ```
-
-🌀 Executing on remote database d1-pragma-db (DATABASE_ID):
-
-🌀 To execute on your local development database, remove the --remote flag from your wrangler command.
-
-🚣 Executed 1 commands in 0.6034ms
-
-┌───────┬─────┬──────┬──────┬────────┬─────┐
-
-│ seqno │ cid │ name │ desc │ coll   │ key │
-
-├───────┼─────┼──────┼──────┼────────┼─────┤
-
-│ 0     │ 0   │ Id   │ 0    │ BINARY │ 1   │
-
-├───────┼─────┼──────┼──────┼────────┼─────┤
-
-│ 1     │ -1  │      │ 0    │ BINARY │ 0   │
-
-└───────┴─────┴──────┴──────┴────────┴─────┘
-
-
+🌀 Executing on remote database d1-pragma-db (DATABASE_ID):🌀 To execute on your local development database, remove the --remote flag from your wrangler command.🚣 Executed 1 commands in 0.6034ms┌───────┬─────┬──────┬──────┬────────┬─────┐│ seqno │ cid │ name │ desc │ coll   │ key │├───────┼─────┼──────┼──────┼────────┼─────┤│ 0     │ 0   │ Id   │ 0    │ BINARY │ 1   │├───────┼─────┼──────┼──────┼────────┼─────┤│ 1     │ -1  │      │ 0    │ BINARY │ 0   │└───────┴─────┴──────┴──────┴────────┴─────┘
 ```
 
 ### `PRAGMA quick_check`
@@ -549,31 +198,11 @@ Example of `PRAGMA quick_check`
 Terminal window
 
 ```
-
 npx wrangler d1 execute [DATABASE_NAME] --command='PRAGMA quick_check'
-
-
 ```
 
 ```
-
-🌀 Executing on remote database [DATABASE_NAME] (DATABASE_ID):
-
-🌀 To execute on your local development database, remove the --remote flag from your wrangler command.
-
-🚣 Executed 1 commands in 1.4073ms
-
-┌─────────────┐
-
-│ quick_check │
-
-├─────────────┤
-
-│ ok          │
-
-└─────────────┘
-
-
+🌀 Executing on remote database [DATABASE_NAME] (DATABASE_ID):🌀 To execute on your local development database, remove the --remote flag from your wrangler command.🚣 Executed 1 commands in 1.4073ms┌─────────────┐│ quick_check │├─────────────┤│ ok          │└─────────────┘
 ```
 
 ### `PRAGMA foreign_key_check`
@@ -637,22 +266,9 @@ Note that setting `PRAGMA defer_foreign_keys = ON` does not prevent `ON DELETE C
 To defer foreign key enforcement, set `PRAGMA defer_foreign_keys = on` at the start of your transaction, or ahead of changes that would violate constraints:
 
 ```
-
--- Defer foreign key enforcement in this transaction.
-
-PRAGMA defer_foreign_keys = on
-
-
--- Run your CREATE TABLE or ALTER TABLE / COLUMN statements
-
-ALTER TABLE users ...
-
-
--- This is implicit if not set by the end of the transaction.
-
-PRAGMA defer_foreign_keys = off
-
-
+-- Defer foreign key enforcement in this transaction.PRAGMA defer_foreign_keys = on
+-- Run your CREATE TABLE or ALTER TABLE / COLUMN statementsALTER TABLE users ...
+-- This is implicit if not set by the end of the transaction.PRAGMA defer_foreign_keys = off
 ```
 
 Refer to the [foreign key documentation](https://developers.cloudflare.com/d1/sql-api/foreign-keys/) to learn more about how to work with foreign keys.
@@ -678,47 +294,11 @@ Refer to [SQLite PRAGMA optimize documentation ↗](https://www.sqlite.org/pragm
 You can also query the `sqlite_master` table to show all tables, indexes, and the original SQL used to generate them:
 
 ```
-
 SELECT name, sql FROM sqlite_master
-
-
 ```
 
 ```
-
-      {
-
-        "name": "users",
-
-        "sql": "CREATE TABLE users ( user_id INTEGER PRIMARY KEY, email_address TEXT, created_at INTEGER, deleted INTEGER, settings TEXT)"
-
-      },
-
-      {
-
-        "name": "idx_ordered_users",
-
-        "sql": "CREATE INDEX idx_ordered_users ON users(created_at DESC)"
-
-      },
-
-      {
-
-        "name": "Order",
-
-        "sql": "CREATE TABLE \"Order\" ( \"Id\" INTEGER PRIMARY KEY, \"CustomerId\" VARCHAR(8000) NULL, \"EmployeeId\" INTEGER NOT NULL, \"OrderDate\" VARCHAR(8000) NULL, \"RequiredDate\" VARCHAR(8000) NULL, \"ShippedDate\" VARCHAR(8000) NULL, \"ShipVia\" INTEGER NULL, \"Freight\" DECIMAL NOT NULL, \"ShipName\" VARCHAR(8000) NULL, \"ShipAddress\" VARCHAR(8000) NULL, \"ShipCity\" VARCHAR(8000) NULL, \"ShipRegion\" VARCHAR(8000) NULL, \"ShipPostalCode\" VARCHAR(8000) NULL, \"ShipCountry\" VARCHAR(8000) NULL)"
-
-      },
-
-      {
-
-        "name": "Product",
-
-        "sql": "CREATE TABLE \"Product\" ( \"Id\" INTEGER PRIMARY KEY, \"ProductName\" VARCHAR(8000) NULL, \"SupplierId\" INTEGER NOT NULL, \"CategoryId\" INTEGER NOT NULL, \"QuantityPerUnit\" VARCHAR(8000) NULL, \"UnitPrice\" DECIMAL NOT NULL, \"UnitsInStock\" INTEGER NOT NULL, \"UnitsOnOrder\" INTEGER NOT NULL, \"ReorderLevel\" INTEGER NOT NULL, \"Discontinued\" INTEGER NOT NULL)"
-
-      }
-
-
+      {        "name": "users",        "sql": "CREATE TABLE users ( user_id INTEGER PRIMARY KEY, email_address TEXT, created_at INTEGER, deleted INTEGER, settings TEXT)"      },      {        "name": "idx_ordered_users",        "sql": "CREATE INDEX idx_ordered_users ON users(created_at DESC)"      },      {        "name": "Order",        "sql": "CREATE TABLE \"Order\" ( \"Id\" INTEGER PRIMARY KEY, \"CustomerId\" VARCHAR(8000) NULL, \"EmployeeId\" INTEGER NOT NULL, \"OrderDate\" VARCHAR(8000) NULL, \"RequiredDate\" VARCHAR(8000) NULL, \"ShippedDate\" VARCHAR(8000) NULL, \"ShipVia\" INTEGER NULL, \"Freight\" DECIMAL NOT NULL, \"ShipName\" VARCHAR(8000) NULL, \"ShipAddress\" VARCHAR(8000) NULL, \"ShipCity\" VARCHAR(8000) NULL, \"ShipRegion\" VARCHAR(8000) NULL, \"ShipPostalCode\" VARCHAR(8000) NULL, \"ShipCountry\" VARCHAR(8000) NULL)"      },      {        "name": "Product",        "sql": "CREATE TABLE \"Product\" ( \"Id\" INTEGER PRIMARY KEY, \"ProductName\" VARCHAR(8000) NULL, \"SupplierId\" INTEGER NOT NULL, \"CategoryId\" INTEGER NOT NULL, \"QuantityPerUnit\" VARCHAR(8000) NULL, \"UnitPrice\" DECIMAL NOT NULL, \"UnitsInStock\" INTEGER NOT NULL, \"UnitsOnOrder\" INTEGER NOT NULL, \"ReorderLevel\" INTEGER NOT NULL, \"Discontinued\" INTEGER NOT NULL)"      }
 ```
 
 ## Search with LIKE
@@ -728,27 +308,11 @@ You can perform a search using SQL's `LIKE` operator:
 JavaScript
 
 ```
-
-const { results } = await env.DB.prepare(
-
-  "SELECT * FROM Customers WHERE CompanyName LIKE ?",
-
-)
-
-  .bind("%eve%")
-
-  .run();
-
-console.log("results: ", results);
-
-
+const { results } = await env.DB.prepare(  "SELECT * FROM Customers WHERE CompanyName LIKE ?",)  .bind("%eve%")  .run();console.log("results: ", results);
 ```
 
 ```
-
 results:  [...]
-
-
 ```
 
 ## Related resources

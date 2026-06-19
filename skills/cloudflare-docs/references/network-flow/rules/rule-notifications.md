@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network-flow/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -53,8 +53,8 @@ To configure notifications for Network Flow rules:
 1. Select **Add**.
 2. Select _Magic Transit_ from the product drop-down menu.
 3. Find the appropriate Network Flow alert and select **Select**:  
-   * **Network Flow: Volumetric Attack** \- for static threshold and dynamic threshold notifications  
-   * **Network Flow: DDoS Attack** \- for sFlow DDoS attack notifications
+  * **Network Flow: Volumetric Attack** \- for static threshold and dynamic threshold notifications
+  * **Network Flow: DDoS Attack** \- for sFlow DDoS attack notifications
 4. Fill in the notification configuration details.
 5. Select **Save**.
 

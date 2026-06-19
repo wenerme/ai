@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/vectorize/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -59,7 +59,7 @@ When a user initiates a prompt, instead of passing it (without additional contex
 
 [Create a RAG application today with AI Search](https://developers.cloudflare.com/ai-search/) to deploy a fully managed RAG pipeline in just a few clicks. AI Search automatically sets up Vectorize, handles continuous indexing, and serves responses through a single API.
 
-1 You can learn more about the theory behind RAG by reading the [RAG paper ↗](https://arxiv.org/abs/2005.11401).1 You can learn more about the theory behind RAG by reading the [RAG paper ↗](https://arxiv.org/abs/2005.11401).
+1 You can learn more about the theory behind RAG by reading the [RAG paper ↗](https://arxiv.org/abs/2005.11401). 1 You can learn more about the theory behind RAG by reading the [RAG paper ↗](https://arxiv.org/abs/2005.11401).
 
 ## Terminology
 
@@ -74,10 +74,7 @@ Vector embeddings represent the features of a machine learning model as a numeri
 For example, a [text embedding model](https://developers.cloudflare.com/workers-ai/models/?tasks=Text+Embeddings) available in Workers AI is able to take text input and represent it as a 768-dimension vector. The text `This is a story about an orange cloud`, when represented as a vector embedding, resembles the following:
 
 ```
-
 [-0.019273685291409492,-0.01913292706012726,<764 dimensions here>,0.0007094172760844231,0.043409910053014755]
-
-
 ```
 
 When a model considers the features of an input as "similar" (based on its understanding), the distance between the vector embeddings for those two inputs will be short.

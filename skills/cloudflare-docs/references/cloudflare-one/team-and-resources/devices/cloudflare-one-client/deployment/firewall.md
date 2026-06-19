@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -81,16 +81,18 @@ The Cloudflare One Client connects to the following IP addresses, depending on w
 
 ### WireGuard
 
-| IPv4 address   | 162.159.193.0/24          |
+|                |                           |
 | -------------- | ------------------------- |
+| IPv4 address   | 162.159.193.0/24          |
 | IPv6 address   | 2606:4700:100::/48        |
 | Default port   | UDP 2408                  |
 | Fallback ports | UDP 500 UDP 1701 UDP 4500 |
 
 ### MASQUE
 
-| IPv4 address   | 162.159.197.0/24                                                                     |
+|                |                                                                                      |
 | -------------- | ------------------------------------------------------------------------------------ |
+| IPv4 address   | 162.159.197.0/24                                                                     |
 | IPv6 address   | 2606:4700:102::/48                                                                   |
 | Default port   | UDP 443                                                                              |
 | Fallback ports | UDP 500 UDP 1701 UDP 4500 UDP 4443 UDP 8443 UDP 8095 TCP 443 [1](#user-content-fn-1) |
@@ -103,8 +105,9 @@ FedRAMP High requirements
 
 Devices will use the MASQUE protocol in FedRAMP High environments. To deploy the Cloudflare One Client for FedRAMP High, you will need to allow the following IPs and ports:
 
-| IPv4 address   | 162.159.239.0/24                                                                     |
+|                |                                                                                      |
 | -------------- | ------------------------------------------------------------------------------------ |
+| IPv4 address   | 162.159.239.0/24                                                                     |
 | IPv6 address   | 2606:4700:105::/48                                                                   |
 | Default port   | UDP 443                                                                              |
 | Fallback ports | UDP 500 UDP 1701 UDP 4500 UDP 4443 UDP 8443 UDP 8095 TCP 443 [1](#user-content-fn-1) |
@@ -163,23 +166,25 @@ The Cloudflare One Client attempts to synchronize the exact time by NTP (`UDP 12
 If your organization does not currently allow inbound/outbound communication over the IP addresses, ports, and domains described above, you must manually add an exception. The rule at a minimum needs to be scoped to the following process based on your platform:
 
 * Windows: `C:\Program Files\Cloudflare\Cloudflare WARP\warp-svc.exe`
-* macOS: You must explicitly allow both the core networking daemon and GUI component as shown in the following instructions.  
-   1. Core networking daemon: `/Applications/Cloudflare WARP.app/Contents/Resources/CloudflareWARP`  
-   This binary does not have a Bundle ID and must be allowed via full path.  
-   2. GUI component, choose one of the following three identifiers depending on your MDM or firewall vendor's preferred format:  
-   `/Applications/Cloudflare WARP.app` (Path)  
-   `/Applications/Cloudflare WARP.app/Contents/MacOS/Cloudflare WARP` (Path)  
-   `com.cloudflare.1dot1dot1dot1.macos` (Bundle ID)  
+* macOS: You must explicitly allow both the core networking daemon and GUI component as shown in the following instructions.
+
+  1. Core networking daemon: `/Applications/Cloudflare WARP.app/Contents/Resources/CloudflareWARP`  
+  This binary does not have a Bundle ID and must be allowed via full path.
+  2. GUI component, choose one of the following three identifiers depending on your MDM or firewall vendor's preferred format:  
+  `/Applications/Cloudflare WARP.app` (Path)  
+  `/Applications/Cloudflare WARP.app/Contents/MacOS/Cloudflare WARP` (Path)  
+  `com.cloudflare.1dot1dot1dot1.macos` (Bundle ID)  
 macOS 15.0 through 15.4  
 Due to changes in macOS Sequoia versions 15.0 through 15.4, you must update your [macOS firewall settings ↗](https://support.apple.com/guide/mac-help/change-firewall-settings-on-mac-mh11783/mac) to allow the Cloudflare One Client to manage your device's firewall. Later versions of macOS are not affected because of changes Apple introduced to fix the unexpected breaking changes in their firewall.  
-To allow the Cloudflare One Client to function on macOS Sequoia versions 15.0 through 15.4 while still blocking unwanted incoming traffic, follow these steps:  
-   1. Turn off the following [macOS firewall settings ↗](https://support.apple.com/guide/mac-help/change-firewall-settings-on-mac-mh11783/mac):  
-   * **Block all incoming connections**  
-   * **Automatically allow built-in software to receive incoming connections**  
-   * **Automatically allow downloaded signed software to receive incoming connections**  
-   1. Add the [WARP daemon and GUI processes](#required-scopes) to the firewall exceptions list and set them to _Allow incoming connections_.  
-   2. Restrict the other allow exceptions to only the processes you want receiving traffic.  
-   3. (Optional) Do not grant users administrative privileges, otherwise they will be able to modify firewall settings and exceptions.
+To allow the Cloudflare One Client to function on macOS Sequoia versions 15.0 through 15.4 while still blocking unwanted incoming traffic, follow these steps:
+
+  1. Turn off the following [macOS firewall settings ↗](https://support.apple.com/guide/mac-help/change-firewall-settings-on-mac-mh11783/mac):
+  * **Block all incoming connections**
+  * **Automatically allow built-in software to receive incoming connections**
+  * **Automatically allow downloaded signed software to receive incoming connections**
+  1. Add the [WARP daemon and GUI processes](#required-scopes) to the firewall exceptions list and set them to _Allow incoming connections_.
+  2. Restrict the other allow exceptions to only the processes you want receiving traffic.
+  3. (Optional) Do not grant users administrative privileges, otherwise they will be able to modify firewall settings and exceptions.
 
 ### Optional scopes
 

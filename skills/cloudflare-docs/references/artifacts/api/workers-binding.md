@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,47 +20,19 @@ Review [Namespaces](https://developers.cloudflare.com/artifacts/concepts/namespa
 
 Add the Artifacts binding to your Wrangler config file:
 
-* [  wrangler.jsonc ](#tab-panel-6735)
-* [  wrangler.toml ](#tab-panel-6736)
+* [  wrangler.jsonc ](#tab-panel-6811)
+* [  wrangler.toml ](#tab-panel-6812)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "artifacts": [
-
-    {
-
-      "binding": "ARTIFACTS",
-
-      "namespace": "default"
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "artifacts": [    {      "binding": "ARTIFACTS",      "namespace": "default"    }  ]}
 ```
 
 TOML
 
 ```
-
-[[artifacts]]
-
-binding = "ARTIFACTS"
-
-namespace = "default" # replace with your Artifacts namespace
-
-# remote = true # optional: use the remote Artifacts service in local dev
-
-
+[[artifacts]]binding = "ARTIFACTS"namespace = "default" # replace with your Artifacts namespace# remote = true # optional: use the remote Artifacts service in local dev
 ```
 
 After you run `npx wrangler types`, your Worker environment looks like this:
@@ -68,14 +40,7 @@ After you run `npx wrangler types`, your Worker environment looks like this:
 TypeScript
 
 ```
-
-export interface Env {
-
-  ARTIFACTS: Artifacts;
-
-}
-
-
+export interface Env {  ARTIFACTS: Artifacts;}
 ```
 
 Wrangler generates the `Artifacts` type for consumers and binds it directly in your environment.
@@ -98,75 +63,21 @@ Use namespace methods on `env.ARTIFACTS` to create, list, inspect, import, or de
 
 `create()` returns repo metadata including `name`, `remote`, `defaultBranch`, and an initial token. Save these values if you need them later.
 
-* [  JavaScript ](#tab-panel-6741)
-* [  TypeScript ](#tab-panel-6742)
+* [  JavaScript ](#tab-panel-6817)
+* [  TypeScript ](#tab-panel-6818)
 
 JavaScript
 
 ```
-
-async function createRepo(artifacts) {
-
-  const created = await artifacts.create("starter-repo", {
-
-    description: "Repository for automation experiments",
-
-    readOnly: false,
-
-    setDefaultBranch: "main",
-
-  });
-
-
-  return {
-
-    defaultBranch: created.defaultBranch,
-
-    name: created.name,
-
-    remote: created.remote,
-
-    initialToken: created.token,
-
-  };
-
-}
-
-
+async function createRepo(artifacts) {  const created = await artifacts.create("starter-repo", {    description: "Repository for automation experiments",    readOnly: false,    setDefaultBranch: "main",  });
+  return {    defaultBranch: created.defaultBranch,    name: created.name,    remote: created.remote,    initialToken: created.token,  };}
 ```
 
 TypeScript
 
 ```
-
-async function createRepo(artifacts: Artifacts) {
-
-  const created = await artifacts.create("starter-repo", {
-
-    description: "Repository for automation experiments",
-
-    readOnly: false,
-
-    setDefaultBranch: "main",
-
-  });
-
-
-  return {
-
-    defaultBranch: created.defaultBranch,
-
-    name: created.name,
-
-    remote: created.remote,
-
-    initialToken: created.token,
-
-  };
-
-}
-
-
+async function createRepo(artifacts: Artifacts) {  const created = await artifacts.create("starter-repo", {    description: "Repository for automation experiments",    readOnly: false,    setDefaultBranch: "main",  });
+  return {    defaultBranch: created.defaultBranch,    name: created.name,    remote: created.remote,    initialToken: created.token,  };}
 ```
 
 ### `get(name)`
@@ -177,41 +88,19 @@ async function createRepo(artifacts: Artifacts) {
 
 `get()` returns a handle to an existing repo. Use the handle to call async methods on the repo, such as `createToken()`, `listTokens()`, `revokeToken()`, and `fork()`.
 
-* [  JavaScript ](#tab-panel-6737)
-* [  TypeScript ](#tab-panel-6738)
+* [  JavaScript ](#tab-panel-6813)
+* [  TypeScript ](#tab-panel-6814)
 
 JavaScript
 
 ```
-
-async function getRepoHandle(artifacts) {
-
-  const repo = await artifacts.get("starter-repo");
-
-  const token = await repo.createToken("read", 3600);
-
-  return token;
-
-}
-
-
+async function getRepoHandle(artifacts) {  const repo = await artifacts.get("starter-repo");  const token = await repo.createToken("read", 3600);  return token;}
 ```
 
 TypeScript
 
 ```
-
-async function getRepoHandle(artifacts: Artifacts) {
-
-  const repo = await artifacts.get("starter-repo");
-
-  const token = await repo.createToken("read", 3600);
-
-  return token;
-
-}
-
-
+async function getRepoHandle(artifacts: Artifacts) {  const repo = await artifacts.get("starter-repo");  const token = await repo.createToken("read", 3600);  return token;}
 ```
 
 ### `list(opts?)`
@@ -220,63 +109,21 @@ async function getRepoHandle(artifacts: Artifacts) {
 * `opts.cursor` ` Cursor ` optional
 * Returns ` Promise<ArtifactsRepoListResult> `
 
-* [  JavaScript ](#tab-panel-6745)
-* [  TypeScript ](#tab-panel-6746)
+* [  JavaScript ](#tab-panel-6821)
+* [  TypeScript ](#tab-panel-6822)
 
 JavaScript
 
 ```
-
-async function listRepos(artifacts) {
-
-  const page = await artifacts.list({ limit: 10 });
-
-
-  return {
-
-    repos: page.repos.map((repo) => ({
-
-      name: repo.name,
-
-      status: repo.status,
-
-    })),
-
-    nextCursor: page.cursor ?? null,
-
-  };
-
-}
-
-
+async function listRepos(artifacts) {  const page = await artifacts.list({ limit: 10 });
+  return {    repos: page.repos.map((repo) => ({      name: repo.name,      status: repo.status,    })),    nextCursor: page.cursor ?? null,  };}
 ```
 
 TypeScript
 
 ```
-
-async function listRepos(artifacts: Artifacts) {
-
-  const page = await artifacts.list({ limit: 10 });
-
-
-  return {
-
-    repos: page.repos.map((repo) => ({
-
-      name: repo.name,
-
-      status: repo.status,
-
-    })),
-
-    nextCursor: page.cursor ?? null,
-
-  };
-
-}
-
-
+async function listRepos(artifacts: Artifacts) {  const page = await artifacts.list({ limit: 10 });
+  return {    repos: page.repos.map((repo) => ({      name: repo.name,      status: repo.status,    })),    nextCursor: page.cursor ?? null,  };}
 ```
 
 Each listed repo includes a `status` value of `ready`, `importing`, or `forking`.
@@ -295,87 +142,21 @@ Import a repository from an external git remote.
 
 `import()` returns repo metadata including `name`, `remote`, `defaultBranch`, and an initial token. Save the `remote` and `name` values if you need them later.
 
-* [  JavaScript ](#tab-panel-6751)
-* [  TypeScript ](#tab-panel-6752)
+* [  JavaScript ](#tab-panel-6827)
+* [  TypeScript ](#tab-panel-6828)
 
 JavaScript
 
 ```
-
-async function importFromGitHub(artifacts) {
-
-  const imported = await artifacts.import({
-
-    source: {
-
-      url: "https://github.com/cloudflare/workers-sdk",
-
-      branch: "main",
-
-    },
-
-    target: {
-
-      name: "workers-sdk",
-
-    },
-
-  });
-
-
-  return {
-
-    name: imported.name,
-
-    remote: imported.remote,
-
-    token: imported.token,
-
-  };
-
-}
-
-
+async function importFromGitHub(artifacts) {  const imported = await artifacts.import({    source: {      url: "https://github.com/cloudflare/workers-sdk",      branch: "main",    },    target: {      name: "workers-sdk",    },  });
+  return {    name: imported.name,    remote: imported.remote,    token: imported.token,  };}
 ```
 
 TypeScript
 
 ```
-
-async function importFromGitHub(artifacts: Artifacts) {
-
-  const imported = await artifacts.import({
-
-    source: {
-
-      url: "https://github.com/cloudflare/workers-sdk",
-
-      branch: "main",
-
-    },
-
-    target: {
-
-      name: "workers-sdk",
-
-    },
-
-  });
-
-
-  return {
-
-    name: imported.name,
-
-    remote: imported.remote,
-
-    token: imported.token,
-
-  };
-
-}
-
-
+async function importFromGitHub(artifacts: Artifacts) {  const imported = await artifacts.import({    source: {      url: "https://github.com/cloudflare/workers-sdk",      branch: "main",    },    target: {      name: "workers-sdk",    },  });
+  return {    name: imported.name,    remote: imported.remote,    token: imported.token,  };}
 ```
 
 ### `delete(name)`
@@ -383,33 +164,19 @@ async function importFromGitHub(artifacts: Artifacts) {
 * `name` ` RepoName ` required
 * Returns ` Promise<boolean> `
 
-* [  JavaScript ](#tab-panel-6739)
-* [  TypeScript ](#tab-panel-6740)
+* [  JavaScript ](#tab-panel-6815)
+* [  TypeScript ](#tab-panel-6816)
 
 JavaScript
 
 ```
-
-async function deleteRepo(artifacts) {
-
-  return artifacts.delete("starter-repo");
-
-}
-
-
+async function deleteRepo(artifacts) {  return artifacts.delete("starter-repo");}
 ```
 
 TypeScript
 
 ```
-
-async function deleteRepo(artifacts: Artifacts) {
-
-  return artifacts.delete("starter-repo");
-
-}
-
-
+async function deleteRepo(artifacts: Artifacts) {  return artifacts.delete("starter-repo");}
 ```
 
 ## Repo handle methods
@@ -422,37 +189,19 @@ Call `await artifacts.get(name)` to get a repo handle. Use the handle to call as
 * `ttl` ` number ` optional (seconds)
 * Returns ` Promise<ArtifactsCreateTokenResult> `
 
-* [  JavaScript ](#tab-panel-6743)
-* [  TypeScript ](#tab-panel-6744)
+* [  JavaScript ](#tab-panel-6819)
+* [  TypeScript ](#tab-panel-6820)
 
 JavaScript
 
 ```
-
-async function mintReadToken(artifacts) {
-
-  const repo = await artifacts.get("starter-repo");
-
-  return repo.createToken("read", 3600);
-
-}
-
-
+async function mintReadToken(artifacts) {  const repo = await artifacts.get("starter-repo");  return repo.createToken("read", 3600);}
 ```
 
 TypeScript
 
 ```
-
-async function mintReadToken(artifacts: Artifacts) {
-
-  const repo = await artifacts.get("starter-repo");
-
-  return repo.createToken("read", 3600);
-
-}
-
-
+async function mintReadToken(artifacts: Artifacts) {  const repo = await artifacts.get("starter-repo");  return repo.createToken("read", 3600);}
 ```
 
 Unlike `create()` and `import()`, `repo.createToken()` returns a structured result with `plaintext` and `expiresAt`. The `plaintext` value is the Git token string.
@@ -461,53 +210,19 @@ Unlike `create()` and `import()`, `repo.createToken()` returns a structured resu
 
 * Returns ` Promise<ArtifactsTokenListResult> `
 
-* [  JavaScript ](#tab-panel-6749)
-* [  TypeScript ](#tab-panel-6750)
+* [  JavaScript ](#tab-panel-6825)
+* [  TypeScript ](#tab-panel-6826)
 
 JavaScript
 
 ```
-
-async function listRepoTokens(artifacts) {
-
-  const repo = await artifacts.get("starter-repo");
-
-  const result = await repo.listTokens();
-
-  return {
-
-    total: result.total,
-
-    tokens: result.tokens,
-
-  };
-
-}
-
-
+async function listRepoTokens(artifacts) {  const repo = await artifacts.get("starter-repo");  const result = await repo.listTokens();  return {    total: result.total,    tokens: result.tokens,  };}
 ```
 
 TypeScript
 
 ```
-
-async function listRepoTokens(artifacts: Artifacts) {
-
-  const repo = await artifacts.get("starter-repo");
-
-  const result = await repo.listTokens();
-
-  return {
-
-    total: result.total,
-
-    tokens: result.tokens,
-
-  };
-
-}
-
-
+async function listRepoTokens(artifacts: Artifacts) {  const repo = await artifacts.get("starter-repo");  const result = await repo.listTokens();  return {    total: result.total,    tokens: result.tokens,  };}
 ```
 
 ### `revokeToken(tokenOrId)`
@@ -515,37 +230,19 @@ async function listRepoTokens(artifacts: Artifacts) {
 * `tokenOrId` ` string ` required
 * Returns ` Promise<boolean> `
 
-* [  JavaScript ](#tab-panel-6747)
-* [  TypeScript ](#tab-panel-6748)
+* [  JavaScript ](#tab-panel-6823)
+* [  TypeScript ](#tab-panel-6824)
 
 JavaScript
 
 ```
-
-async function revokeToken(artifacts, tokenOrId) {
-
-  const repo = await artifacts.get("starter-repo");
-
-  return repo.revokeToken(tokenOrId);
-
-}
-
-
+async function revokeToken(artifacts, tokenOrId) {  const repo = await artifacts.get("starter-repo");  return repo.revokeToken(tokenOrId);}
 ```
 
 TypeScript
 
 ```
-
-async function revokeToken(artifacts: Artifacts, tokenOrId: string) {
-
-  const repo = await artifacts.get("starter-repo");
-
-  return repo.revokeToken(tokenOrId);
-
-}
-
-
+async function revokeToken(artifacts: Artifacts, tokenOrId: string) {  const repo = await artifacts.get("starter-repo");  return repo.revokeToken(tokenOrId);}
 ```
 
 ### `fork(name, opts?)`
@@ -558,59 +255,21 @@ async function revokeToken(artifacts: Artifacts, tokenOrId: string) {
 
 `fork()` returns metadata for the new repo. Save the `remote` and `name` values if you need them later.
 
-* [  JavaScript ](#tab-panel-6757)
-* [  TypeScript ](#tab-panel-6758)
+* [  JavaScript ](#tab-panel-6833)
+* [  TypeScript ](#tab-panel-6834)
 
 JavaScript
 
 ```
-
-async function forkRepo(artifacts) {
-
-  const repo = await artifacts.get("starter-repo");
-
-  const forked = await repo.fork("starter-repo-copy", {
-
-    description: "Fork for testing",
-
-    defaultBranchOnly: true,
-
-    readOnly: false,
-
-  });
-
-
-  return forked.remote;
-
-}
-
-
+async function forkRepo(artifacts) {  const repo = await artifacts.get("starter-repo");  const forked = await repo.fork("starter-repo-copy", {    description: "Fork for testing",    defaultBranchOnly: true,    readOnly: false,  });
+  return forked.remote;}
 ```
 
 TypeScript
 
 ```
-
-async function forkRepo(artifacts: Artifacts) {
-
-  const repo = await artifacts.get("starter-repo");
-
-  const forked = await repo.fork("starter-repo-copy", {
-
-    description: "Fork for testing",
-
-    defaultBranchOnly: true,
-
-    readOnly: false,
-
-  });
-
-
-  return forked.remote;
-
-}
-
-
+async function forkRepo(artifacts: Artifacts) {  const repo = await artifacts.get("starter-repo");  const forked = await repo.fork("starter-repo-copy", {    description: "Fork for testing",    defaultBranchOnly: true,    readOnly: false,  });
+  return forked.remote;}
 ```
 
 ### `log(opts?)`
@@ -620,41 +279,19 @@ async function forkRepo(artifacts: Artifacts) {
 * `opts.offset` ` number ` optional
 * Returns ` Promise<ArtifactsLogResult> `
 
-* [  JavaScript ](#tab-panel-6753)
-* [  TypeScript ](#tab-panel-6754)
+* [  JavaScript ](#tab-panel-6829)
+* [  TypeScript ](#tab-panel-6830)
 
 JavaScript
 
 ```
-
-async function readCommitHistory(artifacts) {
-
-  const repo = await artifacts.get("starter-repo");
-
-  const history = await repo.log({ ref: "main", limit: 10 });
-
-  return history;
-
-}
-
-
+async function readCommitHistory(artifacts) {  const repo = await artifacts.get("starter-repo");  const history = await repo.log({ ref: "main", limit: 10 });  return history;}
 ```
 
 TypeScript
 
 ```
-
-async function readCommitHistory(artifacts: Artifacts) {
-
-  const repo = await artifacts.get("starter-repo");
-
-  const history = await repo.log({ ref: "main", limit: 10 });
-
-  return history;
-
-}
-
-
+async function readCommitHistory(artifacts: Artifacts) {  const repo = await artifacts.get("starter-repo");  const history = await repo.log({ ref: "main", limit: 10 });  return history;}
 ```
 
 ### `readCommit(hash)`
@@ -662,37 +299,19 @@ async function readCommitHistory(artifacts: Artifacts) {
 * `hash` ` string ` required — Commit SHA-1 hash.
 * Returns ` Promise<ArtifactsCommit> `
 
-* [  JavaScript ](#tab-panel-6755)
-* [  TypeScript ](#tab-panel-6756)
+* [  JavaScript ](#tab-panel-6831)
+* [  TypeScript ](#tab-panel-6832)
 
 JavaScript
 
 ```
-
-async function readCommit(artifacts, hash) {
-
-  const repo = await artifacts.get("starter-repo");
-
-  return repo.readCommit(hash);
-
-}
-
-
+async function readCommit(artifacts, hash) {  const repo = await artifacts.get("starter-repo");  return repo.readCommit(hash);}
 ```
 
 TypeScript
 
 ```
-
-async function readCommit(artifacts: Artifacts, hash: string) {
-
-  const repo = await artifacts.get("starter-repo");
-
-  return repo.readCommit(hash);
-
-}
-
-
+async function readCommit(artifacts: Artifacts, hash: string) {  const repo = await artifacts.get("starter-repo");  return repo.readCommit(hash);}
 ```
 
 ### `readTree(hash)`
@@ -700,155 +319,45 @@ async function readCommit(artifacts: Artifacts, hash: string) {
 * `hash` ` string ` required — Tree SHA-1 hash.
 * Returns ` Promise<ArtifactsTree> `
 
-* [  JavaScript ](#tab-panel-6759)
-* [  TypeScript ](#tab-panel-6760)
+* [  JavaScript ](#tab-panel-6835)
+* [  TypeScript ](#tab-panel-6836)
 
 JavaScript
 
 ```
-
-async function readTree(artifacts, hash) {
-
-  const repo = await artifacts.get("starter-repo");
-
-  return repo.readTree(hash);
-
-}
-
-
+async function readTree(artifacts, hash) {  const repo = await artifacts.get("starter-repo");  return repo.readTree(hash);}
 ```
 
 TypeScript
 
 ```
-
-async function readTree(artifacts: Artifacts, hash: string) {
-
-  const repo = await artifacts.get("starter-repo");
-
-  return repo.readTree(hash);
-
-}
-
-
+async function readTree(artifacts: Artifacts, hash: string) {  const repo = await artifacts.get("starter-repo");  return repo.readTree(hash);}
 ```
 
 ## Worker example
 
 This example combines the binding methods in one Worker route.
 
-* [  JavaScript ](#tab-panel-6761)
-* [  TypeScript ](#tab-panel-6762)
+* [  JavaScript ](#tab-panel-6837)
+* [  TypeScript ](#tab-panel-6838)
 
 src/index.js
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    const url = new URL(request.url);
-
-
-    if (request.method === "POST" && url.pathname === "/repos") {
-
-      const created = await env.ARTIFACTS.create("starter-repo");
-
-      return Response.json({
-
-        name: created.name,
-
-        remote: created.remote,
-
-      });
-
-    }
-
-
-    if (request.method === "POST" && url.pathname === "/tokens") {
-
-      const repo = await env.ARTIFACTS.get("starter-repo");
-
-      const token = await repo.createToken("read", 3600);
-
-      return Response.json(token);
-
-    }
-
-
-    return Response.json(
-
-      { message: "Use POST /repos or POST /tokens." },
-
-      { status: 404 },
-
-    );
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const url = new URL(request.url);
+    if (request.method === "POST" && url.pathname === "/repos") {      const created = await env.ARTIFACTS.create("starter-repo");      return Response.json({        name: created.name,        remote: created.remote,      });    }
+    if (request.method === "POST" && url.pathname === "/tokens") {      const repo = await env.ARTIFACTS.get("starter-repo");      const token = await repo.createToken("read", 3600);      return Response.json(token);    }
+    return Response.json(      { message: "Use POST /repos or POST /tokens." },      { status: 404 },    );  },};
 ```
 
 src/index.ts
 
 ```
-
-interface Env {
-
-  ARTIFACTS: Artifacts;
-
-}
-
-
-export default {
-
-  async fetch(request: Request, env: Env): Promise<Response> {
-
-    const url = new URL(request.url);
-
-
-    if (request.method === "POST" && url.pathname === "/repos") {
-
-      const created = await env.ARTIFACTS.create("starter-repo");
-
-      return Response.json({
-
-        name: created.name,
-
-        remote: created.remote,
-
-      });
-
-    }
-
-
-    if (request.method === "POST" && url.pathname === "/tokens") {
-
-      const repo = await env.ARTIFACTS.get("starter-repo");
-
-      const token = await repo.createToken("read", 3600);
-
-      return Response.json(token);
-
-    }
-
-
-    return Response.json(
-
-      { message: "Use POST /repos or POST /tokens." },
-
-      { status: 404 },
-
-    );
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+interface Env {  ARTIFACTS: Artifacts;}
+export default {  async fetch(request: Request, env: Env): Promise<Response> {    const url = new URL(request.url);
+    if (request.method === "POST" && url.pathname === "/repos") {      const created = await env.ARTIFACTS.create("starter-repo");      return Response.json({        name: created.name,        remote: created.remote,      });    }
+    if (request.method === "POST" && url.pathname === "/tokens") {      const repo = await env.ARTIFACTS.get("starter-repo");      const token = await repo.createToken("read", 3600);      return Response.json(token);    }
+    return Response.json(      { message: "Use POST /repos or POST /tokens." },      { status: 404 },    );  },} satisfies ExportedHandler<Env>;
 ```
 
 Protect token routes
@@ -865,7 +374,7 @@ Run `npx wrangler types` in your own project and treat the generated `worker-con
 
 [ Get started with Workers ](https://developers.cloudflare.com/artifacts/get-started/workers/) Use the binding in a full Worker project from local development through deploy. 
 
-[ Git protocol ](https://developers.cloudflare.com/artifacts/api/git-protocol/) Use repo remotes and tokens with standard git-over-HTTPS clients. 
+[ Git protocol ](https://developers.cloudflare.com/artifacts/api/git-protocol/) Use repo remotes and tokens with standard git-over-HTTPS clients.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/api/workers-binding/#page","headline":"Workers binding · Artifacts · Cloudflare Artifacts docs","description":"Call Artifacts from a Worker binding.","url":"https://developers.cloudflare.com/artifacts/api/workers-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

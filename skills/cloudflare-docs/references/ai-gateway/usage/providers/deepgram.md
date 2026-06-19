@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,10 +21,7 @@ Deepgram is also available through Workers AI, see [Deepgram Workers AI](https:/
 ## Endpoint
 
 ```
-
 https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/deepgram
-
-
 ```
 
 ## URL Structure
@@ -46,49 +43,12 @@ When making requests to Deepgram, ensure you have the following:
 TS
 
 ```
-
 import { createClient, LiveTranscriptionEvents } from "@deepgram/sdk";
 
+const deepgram = createClient("{deepgram_api_key}", {    global: {      websocket: {        options: {          url: "wss://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/deepgram/",          _nodeOnlyHeaders: {            "cf-aig-authorization": "Bearer {CF_AIG_TOKEN}"          }        }      }    }});
 
-const deepgram = createClient("{deepgram_api_key}", {
-
-    global: {
-
-      websocket: {
-
-        options: {
-
-          url: "wss://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/deepgram/",
-
-          _nodeOnlyHeaders: {
-
-            "cf-aig-authorization": "Bearer {CF_AIG_TOKEN}"
-
-          }
-
-        }
-
-      }
-
-    }
-
-});
-
-
-const connection = deepgram.listen.live({
-
-    model: "nova-3",
-
-    language: "en-US",
-
-    smart_format: true,
-
-});
-
-
+const connection = deepgram.listen.live({    model: "nova-3",    language: "en-US",    smart_format: true,});
 connection.send(...);
-
-
 ```
 
 ```json

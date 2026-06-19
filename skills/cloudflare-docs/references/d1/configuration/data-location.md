@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -48,25 +48,13 @@ Jurisdictions can only be set on database creation and cannot be added or update
 Terminal window
 
 ```
-
 npx wrangler@latest d1 create db-with-jurisdiction --jurisdiction=eu
-
-
 ```
 
 ### Use REST API
 
 ```
-
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/<account_id>/d1/database" \
-
-     -H "Authorization: Bearer $TOKENn" \
-
-     -H "Content-Type: application/json" \
-
-     --data '{"name": "db-with-jurisdiction", "jurisdiction": "eu" }'
-
-
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<account_id>/d1/database" \     -H "Authorization: Bearer $TOKENn" \     -H "Content-Type: application/json" \     --data '{"name": "db-with-jurisdiction", "jurisdiction": "eu" }'
 ```
 
 ## Provide a location hint
@@ -99,10 +87,7 @@ To provide a location hint when creating a new database, pass the `--location` f
 Terminal window
 
 ```
-
 wrangler d1 create new-database --location=weur
-
-
 ```
 
 ### Use the dashboard

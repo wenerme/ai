@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -39,14 +39,7 @@ Then install dependencies and start the dev server:
 Terminal window
 
 ```
-
-cd agents-starter
-
-npm install
-
-npm run dev
-
-
+cd agents-starternpm installnpm run dev
 ```
 
 This creates a project with:
@@ -62,14 +55,7 @@ The starter template includes two important SDK integrations. If you are setting
 **tsconfig.json** — extends `agents/tsconfig`, which sets `target: "ES2021"` and other recommended options:
 
 ```
-
-{
-
-  "extends": "agents/tsconfig"
-
-}
-
-
+{  "extends": "agents/tsconfig"}
 ```
 
 **vite.config.ts** — includes the `agents()` plugin, which handles TC39 decorator transforms (required for `@callable()` in Vite 8):
@@ -77,23 +63,8 @@ The starter template includes two important SDK integrations. If you are setting
 TypeScript
 
 ```
-
-import { cloudflare } from "@cloudflare/vite-plugin";
-
-import react from "@vitejs/plugin-react";
-
-import agents from "agents/vite";
-
-import { defineConfig } from "vite";
-
-
-export default defineConfig({
-
-  plugins: [agents(), react(), cloudflare()],
-
-});
-
-
+import { cloudflare } from "@cloudflare/vite-plugin";import react from "@vitejs/plugin-react";import agents from "agents/vite";import { defineConfig } from "vite";
+export default defineConfig({  plugins: [agents(), react(), cloudflare()],});
 ```
 
 Open [http://localhost:5173 ↗](http://localhost:5173) to see your agent in action.
@@ -102,248 +73,50 @@ Open [http://localhost:5173 ↗](http://localhost:5173) to see your agent in act
 
 Build a simple counter agent from scratch. Replace `src/server.ts`:
 
-* [  JavaScript ](#tab-panel-5541)
-* [  TypeScript ](#tab-panel-5542)
+* [  JavaScript ](#tab-panel-5615)
+* [  TypeScript ](#tab-panel-5616)
 
 JavaScript
 
 ```
-
 import { Agent, routeAgentRequest, callable } from "agents";
-
-
 // Define the state shape
-
-
-// Create the agent
-
-export class CounterAgent extends Agent {
-
-  // Initial state for new instances
-
-  initialState = { count: 0 };
-
-
-  // Methods marked with @callable can be called from the client
-
-  @callable()
-
-  increment() {
-
-    this.setState({ count: this.state.count + 1 });
-
-    return this.state.count;
-
-  }
-
-
-  @callable()
-
-  decrement() {
-
-    this.setState({ count: this.state.count - 1 });
-
-    return this.state.count;
-
-  }
-
-
-  @callable()
-
-  reset() {
-
-    this.setState({ count: 0 });
-
-  }
-
-}
-
-
-// Route requests to agents
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    return (
-
-      (await routeAgentRequest(request, env)) ??
-
-      new Response("Not found", { status: 404 })
-
-    );
-
-  },
-
-};
-
-
+// Create the agentexport class CounterAgent extends Agent {  // Initial state for new instances  initialState = { count: 0 };
+  // Methods marked with @callable can be called from the client  @callable()  increment() {    this.setState({ count: this.state.count + 1 });    return this.state.count;  }
+  @callable()  decrement() {    this.setState({ count: this.state.count - 1 });    return this.state.count;  }
+  @callable()  reset() {    this.setState({ count: 0 });  }}
+// Route requests to agentsexport default {  async fetch(request, env, ctx) {    return (      (await routeAgentRequest(request, env)) ??      new Response("Not found", { status: 404 })    );  },};
 ```
 
 TypeScript
 
 ```
-
 import { Agent, routeAgentRequest, callable } from "agents";
-
-
-// Define the state shape
-
-export type CounterState = {
-
-  count: number;
-
-};
-
-
-// Create the agent
-
-export class CounterAgent extends Agent<Env, CounterState> {
-
-  // Initial state for new instances
-
-  initialState: CounterState = { count: 0 };
-
-
-  // Methods marked with @callable can be called from the client
-
-  @callable()
-
-  increment() {
-
-    this.setState({ count: this.state.count + 1 });
-
-    return this.state.count;
-
-  }
-
-
-  @callable()
-
-  decrement() {
-
-    this.setState({ count: this.state.count - 1 });
-
-    return this.state.count;
-
-  }
-
-
-  @callable()
-
-  reset() {
-
-    this.setState({ count: 0 });
-
-  }
-
-}
-
-
-// Route requests to agents
-
-export default {
-
-  async fetch(request: Request, env: Env, ctx: ExecutionContext) {
-
-    return (
-
-      (await routeAgentRequest(request, env)) ??
-
-      new Response("Not found", { status: 404 })
-
-    );
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+// Define the state shapeexport type CounterState = {  count: number;};
+// Create the agentexport class CounterAgent extends Agent<Env, CounterState> {  // Initial state for new instances  initialState: CounterState = { count: 0 };
+  // Methods marked with @callable can be called from the client  @callable()  increment() {    this.setState({ count: this.state.count + 1 });    return this.state.count;  }
+  @callable()  decrement() {    this.setState({ count: this.state.count - 1 });    return this.state.count;  }
+  @callable()  reset() {    this.setState({ count: 0 });  }}
+// Route requests to agentsexport default {  async fetch(request: Request, env: Env, ctx: ExecutionContext) {    return (      (await routeAgentRequest(request, env)) ??      new Response("Not found", { status: 404 })    );  },} satisfies ExportedHandler<Env>;
 ```
 
 Update `wrangler.jsonc` to register the agent:
 
-* [  wrangler.jsonc ](#tab-panel-5537)
-* [  wrangler.toml ](#tab-panel-5538)
+* [  wrangler.jsonc ](#tab-panel-5611)
+* [  wrangler.toml ](#tab-panel-5612)
 
 JSONC
 
 ```
-
-{
-
-  "name": "my-agent",
-
-  "main": "src/server.ts",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "compatibility_flags": ["nodejs_compat"],
-
-  "durable_objects": {
-
-    "bindings": [
-
-      {
-
-        "name": "CounterAgent",
-
-        "class_name": "CounterAgent",
-
-      },
-
-    ],
-
-  },
-
-  "migrations": [
-
-    {
-
-      "tag": "v1",
-
-      "new_sqlite_classes": ["CounterAgent"],
-
-    },
-
-  ],
-
-}
-
-
+{  "name": "my-agent",  "main": "src/server.ts",  // Set this to today's date  "compatibility_date": "2026-06-18",  "compatibility_flags": ["nodejs_compat"],  "durable_objects": {    "bindings": [      {        "name": "CounterAgent",        "class_name": "CounterAgent",      },    ],  },  "migrations": [    {      "tag": "v1",      "new_sqlite_classes": ["CounterAgent"],    },  ],}
 ```
 
 TOML
 
 ```
-
-name = "my-agent"
-
-main = "src/server.ts"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-compatibility_flags = [ "nodejs_compat" ]
-
-
-[[durable_objects.bindings]]
-
-name = "CounterAgent"
-
-class_name = "CounterAgent"
-
-
-[[migrations]]
-
-tag = "v1"
-
-new_sqlite_classes = [ "CounterAgent" ]
-
-
+name = "my-agent"main = "src/server.ts"# Set this to today's datecompatibility_date = "2026-06-18"compatibility_flags = [ "nodejs_compat" ]
+[[durable_objects.bindings]]name = "CounterAgent"class_name = "CounterAgent"
+[[migrations]]tag = "v1"new_sqlite_classes = [ "CounterAgent" ]
 ```
 
 **Key points:**
@@ -360,64 +133,11 @@ Replace `src/client.tsx`:
 src/client.tsx
 
 ```
-
-import "./styles.css";
-
-import { createRoot } from "react-dom/client";
-
-import { useState } from "react";
-
-import { useAgent } from "agents/react";
-
-import type { CounterAgent, CounterState } from "./server";
-
-
-export default function App() {
-
-  const [count, setCount] = useState(0);
-
-
-  // Connect to the Counter agent
-
-  const agent = useAgent<CounterAgent, CounterState>({
-
-    agent: "CounterAgent",
-
-    onStateUpdate: (state) => setCount(state.count),
-
-  });
-
-
-  return (
-
-    <div style={{ padding: "2rem", fontFamily: "system-ui" }}>
-
-      <h1>Counter Agent</h1>
-
-      <p style={{ fontSize: "3rem" }}>{count}</p>
-
-      <div style={{ display: "flex", gap: "1rem" }}>
-
-        <button onClick={() => agent.stub.decrement()}>-</button>
-
-        <button onClick={() => agent.stub.reset()}>Reset</button>
-
-        <button onClick={() => agent.stub.increment()}>+</button>
-
-      </div>
-
-    </div>
-
-  );
-
-}
-
-
-const root = createRoot(document.getElementById("root")!);
-
-root.render(<App />);
-
-
+import "./styles.css";import { createRoot } from "react-dom/client";import { useState } from "react";import { useAgent } from "agents/react";import type { CounterAgent, CounterState } from "./server";
+export default function App() {  const [count, setCount] = useState(0);
+  // Connect to the Counter agent  const agent = useAgent<CounterAgent, CounterState>({    agent: "CounterAgent",    onStateUpdate: (state) => setCount(state.count),  });
+  return (    <div style={{ padding: "2rem", fontFamily: "system-ui" }}>      <h1>Counter Agent</h1>      <p style={{ fontSize: "3rem" }}>{count}</p>      <div style={{ display: "flex", gap: "1rem" }}>        <button onClick={() => agent.stub.decrement()}>-</button>        <button onClick={() => agent.stub.reset()}>Reset</button>        <button onClick={() => agent.stub.increment()}>+</button>      </div>    </div>  );}
+const root = createRoot(document.getElementById("root")!);root.render(<App />);
 ```
 
 Key points:
@@ -453,69 +173,23 @@ flowchart LR
 
 If you are not using React:
 
-* [  JavaScript ](#tab-panel-5539)
-* [  TypeScript ](#tab-panel-5540)
+* [  JavaScript ](#tab-panel-5613)
+* [  TypeScript ](#tab-panel-5614)
 
 JavaScript
 
 ```
-
 import { AgentClient } from "agents/client";
-
-
-const agent = new AgentClient({
-
-  agent: "CounterAgent",
-
-  name: "my-counter", // optional, defaults to "default"
-
-  onStateUpdate: (state) => {
-
-    console.log("New count:", state.count);
-
-  },
-
-});
-
-
-// Call methods
-
-await agent.call("increment");
-
-await agent.call("reset");
-
-
+const agent = new AgentClient({  agent: "CounterAgent",  name: "my-counter", // optional, defaults to "default"  onStateUpdate: (state) => {    console.log("New count:", state.count);  },});
+// Call methodsawait agent.call("increment");await agent.call("reset");
 ```
 
 TypeScript
 
 ```
-
 import { AgentClient } from "agents/client";
-
-
-const agent = new AgentClient({
-
-  agent: "CounterAgent",
-
-  name: "my-counter", // optional, defaults to "default"
-
-  onStateUpdate: (state) => {
-
-    console.log("New count:", state.count);
-
-  },
-
-});
-
-
-// Call methods
-
-await agent.call("increment");
-
-await agent.call("reset");
-
-
+const agent = new AgentClient({  agent: "CounterAgent",  name: "my-counter", // optional, defaults to "default"  onStateUpdate: (state) => {    console.log("New count:", state.count);  },});
+// Call methodsawait agent.call("increment");await agent.call("reset");
 ```
 
 ## Deploy to Cloudflare
@@ -523,10 +197,7 @@ await agent.call("reset");
 Terminal window
 
 ```
-
 npm run deploy
-
-
 ```
 
 Your agent is now live on Cloudflare's global network, running close to your users.
@@ -537,120 +208,44 @@ Your agent is now live on Cloudflare's global network, running close to your use
 
 Check auth before routing to agents:
 
-* [  JavaScript ](#tab-panel-5553)
-* [  TypeScript ](#tab-panel-5554)
+* [  JavaScript ](#tab-panel-5627)
+* [  TypeScript ](#tab-panel-5628)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    // Check auth for agent routes
-
-    if (request.url.includes("/agents/")) {
-
-      const authResult = await checkAuth(request, env);
-
-      if (!authResult.valid) {
-
-        return new Response("Unauthorized", { status: 401 });
-
-      }
-
-    }
-
-
-    const agentResponse = await routeAgentRequest(request, env);
-
-    if (agentResponse) return agentResponse;
-
-
-    // ... rest of routing
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    // Check auth for agent routes    if (request.url.includes("/agents/")) {      const authResult = await checkAuth(request, env);      if (!authResult.valid) {        return new Response("Unauthorized", { status: 401 });      }    }
+    const agentResponse = await routeAgentRequest(request, env);    if (agentResponse) return agentResponse;
+    // ... rest of routing  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request: Request, env: Env) {
-
-    // Check auth for agent routes
-
-    if (request.url.includes("/agents/")) {
-
-      const authResult = await checkAuth(request, env);
-
-      if (!authResult.valid) {
-
-        return new Response("Unauthorized", { status: 401 });
-
-      }
-
-    }
-
-
-    const agentResponse = await routeAgentRequest(request, env);
-
-    if (agentResponse) return agentResponse;
-
-
-    // ... rest of routing
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export default {  async fetch(request: Request, env: Env) {    // Check auth for agent routes    if (request.url.includes("/agents/")) {      const authResult = await checkAuth(request, env);      if (!authResult.valid) {        return new Response("Unauthorized", { status: 401 });      }    }
+    const agentResponse = await routeAgentRequest(request, env);    if (agentResponse) return agentResponse;
+    // ... rest of routing  },} satisfies ExportedHandler<Env>;
 ```
 
 ### Custom agent path prefix
 
 By default, agents are routed at `/agents/{agent-name}/{instance-name}`. You can customize this:
 
-* [  JavaScript ](#tab-panel-5547)
-* [  TypeScript ](#tab-panel-5548)
+* [  JavaScript ](#tab-panel-5621)
+* [  TypeScript ](#tab-panel-5622)
 
 JavaScript
 
 ```
-
 import { routeAgentRequest } from "agents";
-
-
-const agentResponse = await routeAgentRequest(request, env, {
-
-  prefix: "/api/agents", // Now routes at /api/agents/{agent-name}/{instance-name}
-
-});
-
-
+const agentResponse = await routeAgentRequest(request, env, {  prefix: "/api/agents", // Now routes at /api/agents/{agent-name}/{instance-name}});
 ```
 
 TypeScript
 
 ```
-
 import { routeAgentRequest } from "agents";
-
-
-const agentResponse = await routeAgentRequest(request, env, {
-
-  prefix: "/api/agents", // Now routes at /api/agents/{agent-name}/{instance-name}
-
-});
-
-
+const agentResponse = await routeAgentRequest(request, env, {  prefix: "/api/agents", // Now routes at /api/agents/{agent-name}/{instance-name}});
 ```
 
 Refer to [Routing](https://developers.cloudflare.com/agents/runtime/communication/routing/) for more options including CORS, custom instance naming, and location hints.
@@ -659,261 +254,79 @@ Refer to [Routing](https://developers.cloudflare.com/agents/runtime/communicatio
 
 You can interact with agents directly from your Worker code:
 
-* [  JavaScript ](#tab-panel-5557)
-* [  TypeScript ](#tab-panel-5558)
+* [  JavaScript ](#tab-panel-5631)
+* [  TypeScript ](#tab-panel-5632)
 
 JavaScript
 
 ```
-
 import { getAgentByName } from "agents";
-
-
-export default {
-
-  async fetch(request, env) {
-
-    if (request.url.endsWith("/api/increment")) {
-
-      // Get a specific agent instance
-
-      const counter = await getAgentByName(env.CounterAgent, "shared-counter");
-
-      const newCount = await counter.increment();
-
-      return Response.json({ count: newCount });
-
-    }
-
-    // ...
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    if (request.url.endsWith("/api/increment")) {      // Get a specific agent instance      const counter = await getAgentByName(env.CounterAgent, "shared-counter");      const newCount = await counter.increment();      return Response.json({ count: newCount });    }    // ...  },};
 ```
 
 TypeScript
 
 ```
-
 import { getAgentByName } from "agents";
-
-
-export default {
-
-  async fetch(request: Request, env: Env) {
-
-    if (request.url.endsWith("/api/increment")) {
-
-      // Get a specific agent instance
-
-      const counter = await getAgentByName(env.CounterAgent, "shared-counter");
-
-      const newCount = await counter.increment();
-
-      return Response.json({ count: newCount });
-
-    }
-
-    // ...
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export default {  async fetch(request: Request, env: Env) {    if (request.url.endsWith("/api/increment")) {      // Get a specific agent instance      const counter = await getAgentByName(env.CounterAgent, "shared-counter");      const newCount = await counter.increment();      return Response.json({ count: newCount });    }    // ...  },} satisfies ExportedHandler<Env>;
 ```
 
 ### Adding multiple agents
 
 Add more agents by extending the configuration:
 
-* [  JavaScript ](#tab-panel-5551)
-* [  TypeScript ](#tab-panel-5552)
+* [  JavaScript ](#tab-panel-5625)
+* [  TypeScript ](#tab-panel-5626)
 
 JavaScript
 
 ```
-
-// src/agents/chat.ts
-
-export class Chat extends Agent {
-
-  // ...
-
-}
-
-
-// src/agents/scheduler.ts
-
-export class Scheduler extends Agent {
-
-  // ...
-
-}
-
-
+// src/agents/chat.tsexport class Chat extends Agent {  // ...}
+// src/agents/scheduler.tsexport class Scheduler extends Agent {  // ...}
 ```
 
 TypeScript
 
 ```
-
-// src/agents/chat.ts
-
-export class Chat extends Agent {
-
-  // ...
-
-}
-
-
-// src/agents/scheduler.ts
-
-export class Scheduler extends Agent {
-
-  // ...
-
-}
-
-
+// src/agents/chat.tsexport class Chat extends Agent {  // ...}
+// src/agents/scheduler.tsexport class Scheduler extends Agent {  // ...}
 ```
 
 Update the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-5543)
-* [  wrangler.toml ](#tab-panel-5544)
+* [  wrangler.jsonc ](#tab-panel-5617)
+* [  wrangler.toml ](#tab-panel-5618)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "durable_objects": {
-
-    "bindings": [
-
-      {
-
-        "name": "CounterAgent",
-
-        "class_name": "CounterAgent"
-
-      },
-
-      {
-
-        "name": "Chat",
-
-        "class_name": "Chat"
-
-      },
-
-      {
-
-        "name": "Scheduler",
-
-        "class_name": "Scheduler"
-
-      }
-
-    ]
-
-  },
-
-  "migrations": [
-
-    {
-
-      "tag": "v1",
-
-      "new_sqlite_classes": [
-
-        "CounterAgent",
-
-        "Chat",
-
-        "Scheduler"
-
-      ]
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "durable_objects": {    "bindings": [      {        "name": "CounterAgent",        "class_name": "CounterAgent"      },      {        "name": "Chat",        "class_name": "Chat"      },      {        "name": "Scheduler",        "class_name": "Scheduler"      }    ]  },  "migrations": [    {      "tag": "v1",      "new_sqlite_classes": [        "CounterAgent",        "Chat",        "Scheduler"      ]    }  ]}
 ```
 
 TOML
 
 ```
-
-[[durable_objects.bindings]]
-
-name = "CounterAgent"
-
-class_name = "CounterAgent"
-
-
-[[durable_objects.bindings]]
-
-name = "Chat"
-
-class_name = "Chat"
-
-
-[[durable_objects.bindings]]
-
-name = "Scheduler"
-
-class_name = "Scheduler"
-
-
-[[migrations]]
-
-tag = "v1"
-
-new_sqlite_classes = ["CounterAgent", "Chat", "Scheduler"]
-
-
+[[durable_objects.bindings]]name = "CounterAgent"class_name = "CounterAgent"
+[[durable_objects.bindings]]name = "Chat"class_name = "Chat"
+[[durable_objects.bindings]]name = "Scheduler"class_name = "Scheduler"
+[[migrations]]tag = "v1"new_sqlite_classes = ["CounterAgent", "Chat", "Scheduler"]
 ```
 
 Export all agents from your entry point:
 
-* [  JavaScript ](#tab-panel-5549)
-* [  TypeScript ](#tab-panel-5550)
+* [  JavaScript ](#tab-panel-5623)
+* [  TypeScript ](#tab-panel-5624)
 
 JavaScript
 
 ```
-
-export { CounterAgent } from "./agents/counter";
-
-export { Chat } from "./agents/chat";
-
-export { Scheduler } from "./agents/scheduler";
-
-
+export { CounterAgent } from "./agents/counter";export { Chat } from "./agents/chat";export { Scheduler } from "./agents/scheduler";
 ```
 
 TypeScript
 
 ```
-
-export { CounterAgent } from "./agents/counter";
-
-export { Chat } from "./agents/chat";
-
-export { Scheduler } from "./agents/scheduler";
-
-
+export { CounterAgent } from "./agents/counter";export { Chat } from "./agents/chat";export { Scheduler } from "./agents/scheduler";
 ```
 
 ## Troubleshooting
@@ -928,92 +341,40 @@ export { Scheduler } from "./agents/scheduler";
 
 Add the migration to the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-5545)
-* [  wrangler.toml ](#tab-panel-5546)
+* [  wrangler.jsonc ](#tab-panel-5619)
+* [  wrangler.toml ](#tab-panel-5620)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "migrations": [
-
-    {
-
-      "tag": "v1",
-
-      "new_sqlite_classes": [
-
-        "YourAgentClass"
-
-      ]
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "migrations": [    {      "tag": "v1",      "new_sqlite_classes": [        "YourAgentClass"      ]    }  ]}
 ```
 
 TOML
 
 ```
-
-[[migrations]]
-
-tag = "v1"
-
-new_sqlite_classes = ["YourAgentClass"]
-
-
+[[migrations]]tag = "v1"new_sqlite_classes = ["YourAgentClass"]
 ```
 
 ### WebSocket connection fails
 
 Ensure your routing passes the response unchanged:
 
-* [  JavaScript ](#tab-panel-5555)
-* [  TypeScript ](#tab-panel-5556)
+* [  JavaScript ](#tab-panel-5629)
+* [  TypeScript ](#tab-panel-5630)
 
 JavaScript
 
 ```
-
-// Correct - return the response directly
-
-const agentResponse = await routeAgentRequest(request, env);
-
-if (agentResponse) return agentResponse;
-
-
-// Wrong - this breaks WebSocket connections
-
-if (agentResponse) return new Response(agentResponse.body);
-
-
+// Correct - return the response directlyconst agentResponse = await routeAgentRequest(request, env);if (agentResponse) return agentResponse;
+// Wrong - this breaks WebSocket connectionsif (agentResponse) return new Response(agentResponse.body);
 ```
 
 TypeScript
 
 ```
-
-// Correct - return the response directly
-
-const agentResponse = await routeAgentRequest(request, env);
-
-if (agentResponse) return agentResponse;
-
-
-// Wrong - this breaks WebSocket connections
-
-if (agentResponse) return new Response(agentResponse.body);
-
-
+// Correct - return the response directlyconst agentResponse = await routeAgentRequest(request, env);if (agentResponse) return agentResponse;
+// Wrong - this breaks WebSocket connectionsif (agentResponse) return new Response(agentResponse.body);
 ```
 
 ### State not persisting
@@ -1030,110 +391,44 @@ Check that:
 
 Make sure your methods are decorated with `@callable()`:
 
-* [  JavaScript ](#tab-panel-5559)
-* [  TypeScript ](#tab-panel-5560)
+* [  JavaScript ](#tab-panel-5633)
+* [  TypeScript ](#tab-panel-5634)
 
 JavaScript
 
 ```
-
 import { Agent, callable } from "agents";
-
-
-export class MyAgent extends Agent {
-
-  @callable()
-
-  increment() {
-
-    // ...
-
-  }
-
-}
-
-
+export class MyAgent extends Agent {  @callable()  increment() {    // ...  }}
 ```
 
 TypeScript
 
 ```
-
 import { Agent, callable } from "agents";
-
-
-export class MyAgent extends Agent {
-
-  @callable()
-
-  increment() {
-
-    // ...
-
-  }
-
-}
-
-
+export class MyAgent extends Agent {  @callable()  increment() {    // ...  }}
 ```
 
 ### Type errors with `agent.stub`
 
 Add the agent and state type parameters:
 
-* [  JavaScript ](#tab-panel-5561)
-* [  TypeScript ](#tab-panel-5562)
+* [  JavaScript ](#tab-panel-5635)
+* [  TypeScript ](#tab-panel-5636)
 
 JavaScript
 
 ```
-
 import { useAgent } from "agents/react";
-
-
-// Pass the agent and state types to useAgent
-
-const agent = useAgent({
-
-  agent: "CounterAgent",
-
-  onStateUpdate: (state) => setCount(state.count),
-
-});
-
-
-// Now agent.stub is fully typed
-
-agent.stub.increment();
-
-
+// Pass the agent and state types to useAgentconst agent = useAgent({  agent: "CounterAgent",  onStateUpdate: (state) => setCount(state.count),});
+// Now agent.stub is fully typedagent.stub.increment();
 ```
 
 TypeScript
 
 ```
-
-import { useAgent } from "agents/react";
-
-import type { CounterAgent, CounterState } from "./server";
-
-
-// Pass the agent and state types to useAgent
-
-const agent = useAgent<CounterAgent, CounterState>({
-
-  agent: "CounterAgent",
-
-  onStateUpdate: (state) => setCount(state.count),
-
-});
-
-
-// Now agent.stub is fully typed
-
-agent.stub.increment();
-
-
+import { useAgent } from "agents/react";import type { CounterAgent, CounterState } from "./server";
+// Pass the agent and state types to useAgentconst agent = useAgent<CounterAgent, CounterState>({  agent: "CounterAgent",  onStateUpdate: (state) => setCount(state.count),});
+// Now agent.stub is fully typedagent.stub.increment();
 ```
 
 ### `SyntaxError: Invalid or unexpected token` with `@callable()`
@@ -1141,18 +436,7 @@ agent.stub.increment();
 If your dev server fails with `SyntaxError: Invalid or unexpected token`, set `"target": "ES2021"` in your `tsconfig.json`. This ensures that Vite's esbuild transpiler downlevels TC39 decorators instead of passing them through as native syntax.
 
 ```
-
-{
-
-  "compilerOptions": {
-
-    "target": "ES2021"
-
-  }
-
-}
-
-
+{  "compilerOptions": {    "target": "ES2021"  }}
 ```
 
 Warning
@@ -1185,7 +469,7 @@ Now that you have a working agent, explore these topics:
 
 [ Agent class internals ](https://developers.cloudflare.com/agents/runtime/lifecycle/agent-class/) Full lifecycle and methods reference. 
 
-[ Agents API ](https://developers.cloudflare.com/agents/runtime/agents-api/) Complete API reference for the Agents SDK. 
+[ Agents API ](https://developers.cloudflare.com/agents/runtime/agents-api/) Complete API reference for the Agents SDK.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/getting-started/quick-start/#page","headline":"Quick start · Cloudflare Agents docs","description":"Build your first agent in 10 minutes — a counter with persistent state that syncs to a React frontend in real-time.","url":"https://developers.cloudflare.com/agents/getting-started/quick-start/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

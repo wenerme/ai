@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -37,9 +37,10 @@ To avoid disruptions during initial deployment, you can create a _Log_ only – 
 2. Go to the **DDoS protection** tab.
 3. On **HTTP DDoS attack protection**, select **Create override**.
 4. Set the **Scope** to _Apply to all incoming requests_.
-5. Under **Ruleset configuration**:  
-   * Set the **Ruleset action** to _Log_.  
-   * Set the **Ruleset sensitivity** to _Essentially Off_.
+5. Under **Ruleset configuration**:
+
+  * Set the **Ruleset action** to _Log_.
+  * Set the **Ruleset sensitivity** to _Essentially Off_.
 6. Select **Save**.
 
 ```json

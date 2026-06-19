@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dynamic-workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,7 +16,7 @@ Dynamic Workers pricing is based on three dimensions: Dynamic Workers created da
 
 Dynamic Workers are currently only available on the [Workers Paid plan](https://developers.cloudflare.com/workers/platform/pricing/).
 
-| Included                          | Additional usage                       |                                     |
+|                                   | Included                               | Additional usage                    |
 | --------------------------------- | -------------------------------------- | ----------------------------------- |
 | **Dynamic Workers created daily** | 1,000 unique Dynamic Workers per month | +$0.002 per Dynamic Worker per day  |
 | **Requests** ¹                    | 10 million per month                   | +$0.30 per million requests         |
@@ -54,57 +54,13 @@ Dynamic Workers usage data only goes back to June 1, 2026.
 You can also query this count through the [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/) by using `workersInvocationsByOwnerAndScriptGroups` and selecting `distinctDynamicWorkerCount`:
 
 ```
-
-query getDynamicWorkersCount(
-
-  $accountTag: string!
-
-  $filter: AccountWorkersInvocationsByOwnerAndScriptGroupsFilter_InputObject
-
-) {
-
-  viewer {
-
-    accounts(filter: { accountTag: $accountTag }) {
-
-      workersInvocationsByOwnerAndScriptGroups(limit: 10000, filter: $filter) {
-
-        uniq {
-
-          distinctDynamicWorkerCount
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-
+query getDynamicWorkersCount(  $accountTag: string!  $filter: AccountWorkersInvocationsByOwnerAndScriptGroupsFilter_InputObject) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      workersInvocationsByOwnerAndScriptGroups(limit: 10000, filter: $filter) {        uniq {          distinctDynamicWorkerCount        }      }    }  }}
 ```
 
 Use variables to set the account and billing-period date range:
 
 ```
-
-{
-
-  "accountTag": "<ACCOUNT_ID>",
-
-  "filter": {
-
-    "date_geq": "2026-06-01",
-
-    "date_leq": "2026-06-30"
-
-  }
-
-}
-
-
+{  "accountTag": "<ACCOUNT_ID>",  "filter": {    "date_geq": "2026-06-01",    "date_leq": "2026-06-30"  }}
 ```
 
 The `distinctDynamicWorkerCount` field returns the unique Dynamic Workers count for the selected period.

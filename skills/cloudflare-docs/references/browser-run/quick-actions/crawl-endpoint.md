@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -24,10 +24,7 @@ For more information, refer to [Quick Actions: Before you begin](https://develop
 ## Endpoint
 
 ```
-
 https://api.cloudflare.com/client/v4/accounts/<account_id>/browser-rendering/crawl
-
-
 ```
 
 ## Required fields
@@ -61,35 +58,13 @@ Send a `POST` request with a `url` to start a crawl job. The API responds immedi
 Terminal window
 
 ```
-
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \
-
-  -H 'Authorization: Bearer <apiToken>' \
-
-  -H 'Content-Type: application/json' \
-
-  -d '{
-
-    "url": "https://developers.cloudflare.com/workers/"
-
-  }'
-
-
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \  -H 'Authorization: Bearer <apiToken>' \  -H 'Content-Type: application/json' \  -d '{    "url": "https://developers.cloudflare.com/workers/"  }'
 ```
 
 Example response:
 
 ```
-
-{
-
-  "success": true,
-
-  "result": "c7f8s2d9-a8e7-4b6e-8e4d-3d4a1b2c3f4e"
-
-}
-
-
+{  "success": true,  "result": "c7f8s2d9-a8e7-4b6e-8e4d-3d4a1b2c3f4e"}
 ```
 
 ## Request results of the crawl job
@@ -99,12 +74,7 @@ To check the status or request the results of your crawl job, use the job `id` y
 Terminal window
 
 ```
-
-curl -X GET 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl/c7f8s2d9-a8e7-4b6e-8e4d-3d4a1b2c3f4e' \
-
-  -H 'Authorization: Bearer YOUR_API_TOKEN'
-
-
+curl -X GET 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl/c7f8s2d9-a8e7-4b6e-8e4d-3d4a1b2c3f4e' \  -H 'Authorization: Bearer YOUR_API_TOKEN'
 ```
 
 The response includes a `status` field indicating the current state of the crawl job. The possible job statuses are:
@@ -123,55 +93,12 @@ Since crawl jobs run asynchronously, you can poll the endpoint periodically to c
 JavaScript
 
 ```
-
-async function waitForCrawl(accountId, jobId, apiToken) {
-
-  const maxAttempts = 60;
-
-  const delayMs = 5000;
-
-
-  for (let i = 0; i < maxAttempts; i++) {
-
-    const response = await fetch(
-
-      `https://api.cloudflare.com/client/v4/accounts/${accountId}/browser-rendering/crawl/${jobId}?limit=1`,
-
-      {
-
-        headers: {
-
-          Authorization: `Bearer ${apiToken}`,
-
-        },
-
-      },
-
-    );
-
-
-    const data = await response.json();
-
-    const status = data.result.status;
-
-
-    if (status !== "running") {
-
-      return data.result;
-
-    }
-
-
-    await new Promise((resolve) => setTimeout(resolve, delayMs));
-
-  }
-
-
-  throw new Error("Crawl job did not complete within timeout");
-
-}
-
-
+async function waitForCrawl(accountId, jobId, apiToken) {  const maxAttempts = 60;  const delayMs = 5000;
+  for (let i = 0; i < maxAttempts; i++) {    const response = await fetch(      `https://api.cloudflare.com/client/v4/accounts/${accountId}/browser-rendering/crawl/${jobId}?limit=1`,      {        headers: {          Authorization: `Bearer ${apiToken}`,        },      },    );
+    const data = await response.json();    const status = data.result.status;
+    if (status !== "running") {      return data.result;    }
+    await new Promise((resolve) => setTimeout(resolve, delayMs));  }
+  throw new Error("Crawl job did not complete within timeout");}
 ```
 
 Once the job reaches a terminal status, fetch the full results without the `limit` parameter. You can also use the following query parameters to filter and paginate results:
@@ -185,87 +112,13 @@ Example with query parameters:
 Terminal window
 
 ```
-
-curl -X GET 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl/c7f8s2d9-a8e7-4b6e-8e4d-3d4a1b2c3f4e?cursor=10&limit=10&status=completed' \
-
-  -H 'Authorization: Bearer YOUR_API_TOKEN'
-
-
+curl -X GET 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl/c7f8s2d9-a8e7-4b6e-8e4d-3d4a1b2c3f4e?cursor=10&limit=10&status=completed' \  -H 'Authorization: Bearer YOUR_API_TOKEN'
 ```
 
 Example response:
 
 ```
-
-{
-
-  "result": {
-
-    "id": "c7f8s2d9-a8e7-4b6e-8e4d-3d4a1b2c3f4e",
-
-    "status": "completed",
-
-    "browserSecondsUsed": 134.7,
-
-    "total": 50,
-
-    "finished": 50,
-
-    "records": [
-
-      {
-
-        "url": "https://developers.cloudflare.com/workers/",
-
-        "status": "completed",
-
-        "markdown": "# Cloudflare Workers\nBuild and deploy serverless applications...",
-
-        "metadata": {
-
-          "status": 200,
-
-          "title": "Cloudflare Workers · Cloudflare Workers docs",
-
-          "url": "https://developers.cloudflare.com/workers/"
-
-        }
-
-      },
-
-      {
-
-        "url": "https://developers.cloudflare.com/workers/get-started/quickstarts/",
-
-        "status": "completed",
-
-        "markdown": "## Quickstarts\nGet up and running with a simple Hello World...",
-
-        "metadata": {
-
-          "status": 200,
-
-          "title": "Quickstarts · Cloudflare Workers docs",
-
-          "url": "https://developers.cloudflare.com/workers/get-started/quickstarts/"
-
-        }
-
-      }
-
-      // ... 48 more entries omitted for brevity
-
-    ],
-
-    "cursor": 10
-
-  },
-
-  "success": true
-
-}
-
-
+{  "result": {    "id": "c7f8s2d9-a8e7-4b6e-8e4d-3d4a1b2c3f4e",    "status": "completed",    "browserSecondsUsed": 134.7,    "total": 50,    "finished": 50,    "records": [      {        "url": "https://developers.cloudflare.com/workers/",        "status": "completed",        "markdown": "# Cloudflare Workers\nBuild and deploy serverless applications...",        "metadata": {          "status": 200,          "title": "Cloudflare Workers · Cloudflare Workers docs",          "url": "https://developers.cloudflare.com/workers/"        }      },      {        "url": "https://developers.cloudflare.com/workers/get-started/quickstarts/",        "status": "completed",        "markdown": "## Quickstarts\nGet up and running with a simple Hello World...",        "metadata": {          "status": 200,          "title": "Quickstarts · Cloudflare Workers docs",          "url": "https://developers.cloudflare.com/workers/get-started/quickstarts/"        }      }      // ... 48 more entries omitted for brevity    ],    "cursor": 10  },  "success": true}
 ```
 
 ### Errored and blocked pages
@@ -279,12 +132,7 @@ To view only errored records, filter by `status=errored`:
 Terminal window
 
 ```
-
-curl -X GET 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl/{job_id}?status=errored' \
-
-  -H 'Authorization: Bearer YOUR_API_TOKEN'
-
-
+curl -X GET 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl/{job_id}?status=errored' \  -H 'Authorization: Bearer YOUR_API_TOKEN'
 ```
 
 The record's `status` field contains the HTTP status code returned by the origin server, and `html` contains the response body. This is useful for understanding site owners' intent when they block crawlers — for example, sites using [AI Crawl Control ↗](https://blog.cloudflare.com/ai-crawl-control) may return a custom status code and message.
@@ -296,12 +144,7 @@ To cancel a crawl job that is currently in progress, use the job `id` you receiv
 Terminal window
 
 ```
-
-curl -X DELETE 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl/c7f8s2d9-a8e7-4b6e-8e4d-3d4a1b2c3f4e' \
-
-  -H 'Authorization: Bearer YOUR_API_TOKEN'
-
-
+curl -X DELETE 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl/c7f8s2d9-a8e7-4b6e-8e4d-3d4a1b2c3f4e' \  -H 'Authorization: Bearer YOUR_API_TOKEN'
 ```
 
 A successful cancellation will return a `200 OK` status code. The job status will be updated to cancelled, and all URLs that have been queued to be crawled will be cancelled.
@@ -343,12 +186,7 @@ To view URLs that were discovered but skipped, query the crawl job results with 
 Terminal window
 
 ```
-
-curl -X GET 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl/{job_id}?status=skipped' \
-
-  -H 'Authorization: Bearer YOUR_API_TOKEN'
-
-
+curl -X GET 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl/{job_id}?status=skipped' \  -H 'Authorization: Bearer YOUR_API_TOKEN'
 ```
 
 ### `render` parameter
@@ -364,56 +202,7 @@ Crawls that use `render: true` use a headless browser and are billed under typic
 Terminal window
 
 ```
-
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \
-
-  -H 'Authorization: Bearer <apiToken>' \
-
-  -H 'Content-Type: application/json' \
-
-  -d '{
-
-    "url": "https://www.exampledocs.com/docs/",
-
-    "crawlPurposes": ["search"],
-
-    "limit": 50,
-
-    "depth": 2,
-
-    "formats": ["markdown"],
-
-    "render": false,
-
-    "maxAge": 7200,
-
-    "modifiedSince": 1704067200,
-
-    "source": "all",
-
-    "options": {
-
-      "includeExternalLinks": true,
-
-      "includeSubdomains": true,
-
-      "includePatterns": [
-
-        "**/api/v1/*"
-
-      ],
-
-      "excludePatterns": [
-
-        "*/learning-paths/*"
-
-      ]
-
-    }
-
-}'
-
-
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \  -H 'Authorization: Bearer <apiToken>' \  -H 'Content-Type: application/json' \  -d '{    "url": "https://www.exampledocs.com/docs/",    "crawlPurposes": ["search"],    "limit": 50,    "depth": 2,    "formats": ["markdown"],    "render": false,    "maxAge": 7200,    "modifiedSince": 1704067200,    "source": "all",    "options": {      "includeExternalLinks": true,      "includeSubdomains": true,      "includePatterns": [        "**/api/v1/*"      ],      "excludePatterns": [        "*/learning-paths/*"      ]    }}'
 ```
 
 ## Advanced usage
@@ -429,44 +218,7 @@ Crawl only documentation pages and exclude specific sections:
 Terminal window
 
 ```
-
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \
-
-  -H 'Authorization: Bearer <apiToken>' \
-
-  -H 'Content-Type: application/json' \
-
-  -d '{
-
-    "url": "https://example.com/docs",
-
-    "limit": 200,
-
-    "depth": 5,
-
-    "formats": ["markdown"],
-
-    "options": {
-
-      "includePatterns": [
-
-        "https://example.com/docs/**"
-
-      ],
-
-      "excludePatterns": [
-
-        "https://example.com/docs/changelog/**",
-
-        "https://example.com/docs/archive/**"
-
-      ]
-
-    }
-
-  }'
-
-
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \  -H 'Authorization: Bearer <apiToken>' \  -H 'Content-Type: application/json' \  -d '{    "url": "https://example.com/docs",    "limit": 200,    "depth": 5,    "formats": ["markdown"],    "options": {      "includePatterns": [        "https://example.com/docs/**"      ],      "excludePatterns": [        "https://example.com/docs/changelog/**",        "https://example.com/docs/archive/**"      ]    }  }'
 ```
 
 ### Product catalog extraction with AI
@@ -476,66 +228,7 @@ Extract structured product data using the `json` format. This leverages [Workers
 Terminal window
 
 ```
-
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \
-
-  -H 'Authorization: Bearer <apiToken>' \
-
-  -H 'Content-Type: application/json' \
-
-  -d '{
-
-    "url": "https://shop.example.com/products",
-
-    "limit": 50,
-
-    "formats": ["json"],
-
-    "jsonOptions": {
-
-      "prompt": "Extract product name, price, description, and availability",
-
-      "response_format": {
-
-        "type": "json_schema",
-
-        "json_schema": {
-
-          "name": "product",
-
-          "properties": {
-
-            "name": "string",
-
-            "price": "number",
-
-            "currency": "string",
-
-            "description": "string",
-
-            "inStock": "boolean"
-
-          }
-
-        }
-
-      }
-
-    },
-
-    "options": {
-
-      "includePatterns": [
-
-        "https://shop.example.com/products/*"
-
-      ]
-
-    }
-
-  }'
-
-
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \  -H 'Authorization: Bearer <apiToken>' \  -H 'Content-Type: application/json' \  -d '{    "url": "https://shop.example.com/products",    "limit": 50,    "formats": ["json"],    "jsonOptions": {      "prompt": "Extract product name, price, description, and availability",      "response_format": {        "type": "json_schema",        "json_schema": {          "name": "product",          "properties": {            "name": "string",            "price": "number",            "currency": "string",            "description": "string",            "inStock": "boolean"          }        }      }    },    "options": {      "includePatterns": [        "https://shop.example.com/products/*"      ]    }  }'
 ```
 
 ### Fast static content fetch
@@ -545,26 +238,7 @@ Fetch static HTML without rendering for faster crawling of static sites:
 Terminal window
 
 ```
-
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \
-
-  -H 'Authorization: Bearer <apiToken>' \
-
-  -H 'Content-Type: application/json' \
-
-  -d '{
-
-    "url": "https://example.com",
-
-    "limit": 100,
-
-    "render": false,
-
-    "formats": ["html", "markdown"]
-
-  }'
-
-
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \  -H 'Authorization: Bearer <apiToken>' \  -H 'Content-Type: application/json' \  -d '{    "url": "https://example.com",    "limit": 100,    "render": false,    "formats": ["html", "markdown"]  }'
 ```
 
 ### Crawl with authentication
@@ -574,30 +248,7 @@ Crawl pages behind HTTP authentication or with custom headers:
 Terminal window
 
 ```
-
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \
-
-  -H 'Authorization: Bearer <apiToken>' \
-
-  -H 'Content-Type: application/json' \
-
-  -d '{
-
-    "url": "https://secure.example.com",
-
-    "limit": 50,
-
-    "authenticate": {
-
-      "username": "user",
-
-      "password": "pass"
-
-    }
-
-  }'
-
-
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \  -H 'Authorization: Bearer <apiToken>' \  -H 'Content-Type: application/json' \  -d '{    "url": "https://secure.example.com",    "limit": 50,    "authenticate": {      "username": "user",      "password": "pass"    }  }'
 ```
 
 You can also use cookies or custom headers for token-based authentication:
@@ -605,28 +256,7 @@ You can also use cookies or custom headers for token-based authentication:
 Terminal window
 
 ```
-
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \
-
-  -H 'Authorization: Bearer <apiToken>' \
-
-  -H 'Content-Type: application/json' \
-
-  -d '{
-
-    "url": "https://api.example.com/docs",
-
-    "limit": 100,
-
-    "setExtraHTTPHeaders": {
-
-      "X-API-Key": "your-api-key"
-
-    }
-
-  }'
-
-
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \  -H 'Authorization: Bearer <apiToken>' \  -H 'Content-Type: application/json' \  -d '{    "url": "https://api.example.com/docs",    "limit": 100,    "setExtraHTTPHeaders": {      "X-API-Key": "your-api-key"    }  }'
 ```
 
 ### Wait for dynamic content
@@ -636,40 +266,7 @@ Crawl single-page applications that load content dynamically:
 Terminal window
 
 ```
-
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \
-
-  -H 'Authorization: Bearer <apiToken>' \
-
-  -H 'Content-Type: application/json' \
-
-  -d '{
-
-    "url": "https://app.example.com",
-
-    "limit": 50,
-
-    "gotoOptions": {
-
-      "waitUntil": "networkidle2",
-
-      "timeout": 60000
-
-    },
-
-    "waitForSelector": {
-
-      "selector": "[data-content-loaded]",
-
-      "timeout": 30000,
-
-      "visible": true
-
-    }
-
-  }'
-
-
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \  -H 'Authorization: Bearer <apiToken>' \  -H 'Content-Type: application/json' \  -d '{    "url": "https://app.example.com",    "limit": 50,    "gotoOptions": {      "waitUntil": "networkidle2",      "timeout": 60000    },    "waitForSelector": {      "selector": "[data-content-loaded]",      "timeout": 30000,      "visible": true    }  }'
 ```
 
 ### Block unnecessary resources
@@ -679,34 +276,7 @@ Speed up crawling by blocking images and media. `rejectResourceTypes` is only av
 Terminal window
 
 ```
-
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \
-
-  -H 'Authorization: Bearer <apiToken>' \
-
-  -H 'Content-Type: application/json' \
-
-  -d '{
-
-    "url": "https://example.com",
-
-    "limit": 100,
-
-    "rejectResourceTypes": [
-
-      "image",
-
-      "media",
-
-      "font",
-
-      "stylesheet"
-
-    ]
-
-  }'
-
-
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \  -H 'Authorization: Bearer <apiToken>' \  -H 'Content-Type: application/json' \  -d '{    "url": "https://example.com",    "limit": 100,    "rejectResourceTypes": [      "image",      "media",      "font",      "stylesheet"    ]  }'
 ```
 
 ## Crawler behavior
@@ -756,14 +326,7 @@ For example, a `robots.txt` that allows search indexing but disallows AI trainin
 robots.txt
 
 ```
-
-User-Agent: *
-
-Content-Signal: search=yes, ai-train=no
-
-Allow: /
-
-
+User-Agent: *Content-Signal: search=yes, ai-train=noAllow: /
 ```
 
 #### How /crawl enforces Content Signals
@@ -781,24 +344,7 @@ To crawl a site that disallows AI training but allows search, set `crawlPurposes
 Terminal window
 
 ```
-
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \
-
-  -H 'Authorization: Bearer <apiToken>' \
-
-  -H 'Content-Type: application/json' \
-
-  -d '{
-
-    "url": "https://example.com",
-
-    "crawlPurposes": ["search"],
-
-    "formats": ["markdown"]
-
-  }'
-
-
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \  -H 'Authorization: Bearer <apiToken>' \  -H 'Content-Type: application/json' \  -d '{    "url": "https://example.com",    "crawlPurposes": ["search"],    "formats": ["markdown"]  }'
 ```
 
 In this example, because the operator declared only `search` as their purpose, the crawl will succeed even if the site sets `ai-train=no`.

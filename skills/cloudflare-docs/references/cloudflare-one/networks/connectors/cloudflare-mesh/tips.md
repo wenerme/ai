@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,8 +18,8 @@ Operational guidance for managing Cloudflare Mesh deployments — updating the c
 
 Updating a Mesh node means updating the `cloudflare-warp` package on the Linux host. The node briefly disconnects during the update, which interrupts traffic routed through it. If you have [high availability](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/) enabled, traffic fails over to a standby replica automatically.
 
-* [ Debian / Ubuntu ](#tab-panel-7249)
-* [ RedHat / CentOS ](#tab-panel-7250)
+* [ Debian / Ubuntu ](#tab-panel-7325)
+* [ RedHat / CentOS ](#tab-panel-7326)
 
 1. Check the current version:  
 Terminal window  
@@ -59,10 +59,7 @@ Older installations may have used `sysctl -w` for IP forwarding, which does not 
 Terminal window
 
 ```
-
 printf 'net.ipv4.ip_forward = 1\nnet.ipv6.conf.all.forwarding = 1\nnet.ipv6.conf.all.accept_ra = 2\n' | sudo tee /etc/sysctl.d/99-zzz-cloudflare-warp-connector.conf && sudo sysctl --system
-
-
 ```
 
 You can verify the settings are active with:
@@ -70,10 +67,7 @@ You can verify the settings are active with:
 Terminal window
 
 ```
-
 sysctl net.ipv4.ip_forward net.ipv6.conf.all.forwarding net.ipv6.conf.all.accept_ra
-
-
 ```
 
 New installations include this step automatically.

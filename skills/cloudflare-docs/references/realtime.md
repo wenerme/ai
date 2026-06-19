@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -34,7 +34,7 @@ The [TURN service](https://developers.cloudflare.com/realtime/turn/) is a manage
 
 Use this comparison table to quickly find the right Realtime product for your needs:
 
-| **RealtimeKit**               | **Realtime SFU**                                                                                                                | **TURN Service**                                                                                                                                             |                                                                                                                         |
+|                               | **RealtimeKit**                                                                                                                 | **Realtime SFU**                                                                                                                                             | **TURN Service**                                                                                                        |
 | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
 | **What is it**                | High-level SDKs and APIs with pre-built UI components for video/voice integration. Built on top of Realtime SFU.                | Low-level WebRTC media server (Selective Forwarding Unit) that routes audio/video/data streams between participants.                                         | Managed relay service for WebRTC traffic that ensures connectivity through restrictive firewalls and NATs.              |
 | **Who is it for**             | Developers who want to quickly add video/voice features without handling WebRTC complexities.                                   | Developers with WebRTC expertise who need full control over media streams and want to build highly custom applications.                                      | Any WebRTC application needing reliable connectivity in restrictive network environments.                               |

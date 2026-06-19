@@ -644,6 +644,11 @@
     "size": 21942,
     "updatedAt": "2026-06-17T01:01:10.260Z"
   },
+  "api/api-reference/benchmarks/get-benchmarks.md": {
+    "url": "https://openrouter.ai/docs/api/api-reference/benchmarks/get-benchmarks.md",
+    "size": 19978,
+    "updatedAt": "2026-06-19T01:07:16.147Z"
+  },
   "api/api-reference/byok/list-byok-keys.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/byok/list-byok-keys.md",
     "size": 15210,
@@ -671,8 +676,8 @@
   },
   "api/api-reference/chat/send-chat-completion-request.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/chat/send-chat-completion-request.md",
-    "size": 127065,
-    "updatedAt": "2026-06-17T01:01:28.548Z"
+    "size": 128409,
+    "updatedAt": "2026-06-19T01:07:44.659Z"
   },
   "api/api-reference/credits/get-credits.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/credits/get-credits.md",
@@ -683,16 +688,6 @@
     "url": "https://openrouter.ai/docs/api/api-reference/datasets/get-app-rankings.md",
     "size": 20109,
     "updatedAt": "2026-06-11T11:54:23.124Z"
-  },
-  "api/api-reference/datasets/get-benchmarks-artificial-analysis.md": {
-    "url": "https://openrouter.ai/docs/api/api-reference/datasets/get-benchmarks-artificial-analysis.md",
-    "size": 14389,
-    "updatedAt": "2026-06-13T00:56:22.691Z"
-  },
-  "api/api-reference/datasets/get-benchmarks-design-arena.md": {
-    "url": "https://openrouter.ai/docs/api/api-reference/datasets/get-benchmarks-design-arena.md",
-    "size": 17506,
-    "updatedAt": "2026-06-12T00:49:57.728Z"
   },
   "api/api-reference/datasets/get-rankings-daily.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/datasets/get-rankings-daily.md",
@@ -1044,6 +1039,11 @@
     "size": 24994,
     "updatedAt": "2026-06-11T12:01:25.521Z"
   },
+  "client-sdks/typescript/api-reference/benchmarks.md": {
+    "url": "https://openrouter.ai/docs/client-sdks/typescript/api-reference/benchmarks.md",
+    "size": 4908,
+    "updatedAt": "2026-06-19T01:15:36.864Z"
+  },
   "client-sdks/typescript/api-reference/betaanalytics.md": {
     "url": "https://openrouter.ai/docs/client-sdks/typescript/api-reference/betaanalytics.md",
     "size": 9386,
@@ -1066,8 +1066,8 @@
   },
   "client-sdks/typescript/api-reference/datasets.md": {
     "url": "https://openrouter.ai/docs/client-sdks/typescript/api-reference/datasets.md",
-    "size": 19855,
-    "updatedAt": "2026-06-13T00:59:03.473Z"
+    "size": 10921,
+    "updatedAt": "2026-06-19T01:16:16.907Z"
   },
   "client-sdks/typescript/api-reference/embeddings.md": {
     "url": "https://openrouter.ai/docs/client-sdks/typescript/api-reference/embeddings.md",
@@ -1169,6 +1169,11 @@
     "size": 26669,
     "updatedAt": "2026-06-11T12:05:32.585Z"
   },
+  "client-sdks/python/api-reference/benchmarks.md": {
+    "url": "https://openrouter.ai/docs/client-sdks/python/api-reference/benchmarks.md",
+    "size": 5618,
+    "updatedAt": "2026-06-19T01:20:14.934Z"
+  },
   "client-sdks/python/api-reference/betaanalytics.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/api-reference/betaanalytics.md",
     "size": 11707,
@@ -1191,8 +1196,8 @@
   },
   "client-sdks/python/api-reference/datasets.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/api-reference/datasets.md",
-    "size": 21854,
-    "updatedAt": "2026-06-13T01:00:07.806Z"
+    "size": 14166,
+    "updatedAt": "2026-06-19T01:21:14.508Z"
   },
   "client-sdks/python/api-reference/embeddings.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/api-reference/embeddings.md",
@@ -1289,6 +1294,11 @@
     "size": 16547,
     "updatedAt": "2026-06-11T12:07:25.937Z"
   },
+  "client-sdks/go/api-reference/benchmarks.md": {
+    "url": "https://openrouter.ai/docs/client-sdks/go/api-reference/benchmarks.md",
+    "size": 3142,
+    "updatedAt": "2026-06-19T01:25:29.640Z"
+  },
   "client-sdks/go/api-reference/betaanalytics.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/api-reference/betaanalytics.md",
     "size": 5289,
@@ -1311,8 +1321,8 @@
   },
   "client-sdks/go/api-reference/datasets.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/api-reference/datasets.md",
-    "size": 14771,
-    "updatedAt": "2026-06-13T01:00:57.947Z"
+    "size": 8703,
+    "updatedAt": "2026-06-19T01:26:49.767Z"
   },
   "client-sdks/go/api-reference/embeddings.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/api-reference/embeddings.md",

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,7 +32,7 @@ This is the [actor model ↗](https://en.wikipedia.org/wiki/Actor%5Fmodel): each
 
 The economics follow directly:
 
-| VMs / Containers                              | Durable Objects                                |                                   |
+|                                               | VMs / Containers                               | Durable Objects                   |
 | --------------------------------------------- | ---------------------------------------------- | --------------------------------- |
 | **Idle cost**                                 | Full compute cost, always                      | Zero (hibernated)                 |
 | **Scaling**                                   | Provision and manage capacity                  | Automatic, per-agent              |
@@ -48,19 +48,8 @@ For agents — which are inherently bursty, stateful, and long-lived — this is
 A long-running agent is not a process that runs continuously. It is an entity that **exists** continuously but **runs** intermittently. Understanding the lifecycle is key to building agents that work reliably over long timelines.
 
 ```
-
-Wake → onStart() → handle events → idle (~2 min) → hibernation
-
-  ▲                                                      │
-
-  └──────────────── alarm or request wakes agent ────────┘
-
-
-Eviction (crash / redeploy) can happen at any point.
-
-State persists in SQLite. Agent restarts on next event.
-
-
+Wake → onStart() → handle events → idle (~2 min) → hibernation  ▲                                                      │  └──────────────── alarm or request wakes agent ────────┘
+Eviction (crash / redeploy) can happen at any point.State persists in SQLite. Agent restarts on next event.
 ```
 
 ### What survives
@@ -96,59 +85,10 @@ Throughout this doc, we build up a project manager agent that:
 TypeScript
 
 ```
-
 import { Agent } from "agents";
-
-
-type ProjectState = {
-
-  name: string;
-
-  status: "planning" | "active" | "review" | "complete";
-
-  tasks: Task[];
-
-  plan: Plan | null;
-
-};
-
-
-type Task = {
-
-  id: string;
-
-  title: string;
-
-  status: "pending" | "in_progress" | "blocked" | "complete";
-
-  assignee?: string;
-
-  dueDate?: string;
-
-  completedAt?: number;
-
-  externalJobId?: string;
-
-};
-
-
-export class ProjectManager extends Agent<ProjectState> {
-
-  initialState: ProjectState = {
-
-    name: "",
-
-    status: "planning",
-
-    tasks: [],
-
-    plan: null,
-
-  };
-
-}
-
-
+type ProjectState = {  name: string;  status: "planning" | "active" | "review" | "complete";  tasks: Task[];  plan: Plan | null;};
+type Task = {  id: string;  title: string;  status: "pending" | "in_progress" | "blocked" | "complete";  assignee?: string;  dueDate?: string;  completedAt?: number;  externalJobId?: string;};
+export class ProjectManager extends Agent<ProjectState> {  initialState: ProjectState = {    name: "",    status: "planning",    tasks: [],    plan: null,  };}
 ```
 
 The `Plan` type is introduced in [Planning as a durability strategy](#planning-as-a-durability-strategy). We add capabilities to this agent section by section.
@@ -172,79 +112,12 @@ The agent does not need to be "started" or "deployed" separately for each wake s
 TypeScript
 
 ```
-
-export class ProjectManager extends Agent<ProjectState> {
-
-  async onStart() {
-
-    // Daily deadline check at 9am UTC — idempotent, safe across restarts
-
-    await this.schedule(
-
-      "0 9 * * *",
-
-      "checkDeadlines",
-
-      {},
-
-      {
-
-        idempotent: true,
-
-      },
-
-    );
-
-
-    // Progress sync every 30 minutes
-
-    await this.scheduleEvery(1800, "syncProgress");
-
-  }
-
-
-  async onRequest(request: Request): Promise<Response> {
-
-    const url = new URL(request.url);
-
-
-    if (url.pathname.endsWith("/github-webhook")) {
-
-      const event = await request.json();
-
-      await this.handleGitHubEvent(event);
-
-      return new Response("OK");
-
-    }
-
-
-    return Response.json({
-
-      project: this.state.name,
-
-      status: this.state.status,
-
-    });
-
-  }
-
-
-  async checkDeadlines() {
-
-    /* ... find overdue tasks, broadcast alerts ... */
-
-  }
-
-  async syncProgress() {
-
-    /* ... check on sub-agents, update task statuses ... */
-
-  }
-
-}
-
-
+export class ProjectManager extends Agent<ProjectState> {  async onStart() {    // Daily deadline check at 9am UTC — idempotent, safe across restarts    await this.schedule(      "0 9 * * *",      "checkDeadlines",      {},      {        idempotent: true,      },    );
+    // Progress sync every 30 minutes    await this.scheduleEvery(1800, "syncProgress");  }
+  async onRequest(request: Request): Promise<Response> {    const url = new URL(request.url);
+    if (url.pathname.endsWith("/github-webhook")) {      const event = await request.json();      await this.handleGitHubEvent(event);      return new Response("OK");    }
+    return Response.json({      project: this.state.name,      status: this.state.status,    });  }
+  async checkDeadlines() {    /* ... find overdue tasks, broadcast alerts ... */  }  async syncProgress() {    /* ... check on sub-agents, update task statuses ... */  }}
 ```
 
 ## Staying alive during long work
@@ -256,43 +129,8 @@ Sometimes an agent needs to do work that takes longer than the idle eviction win
 TypeScript
 
 ```
-
-export class ProjectManager extends Agent<ProjectState> {
-
-  async generateProjectPlan(goal: string) {
-
-    const result = await this.keepAliveWhile(async () => {
-
-      const plan = await this.callLLM(`Create a project plan for: ${goal}`);
-
-      const tasks = await this.callLLM(
-
-        `Break this into tasks: ${JSON.stringify(plan)}`,
-
-      );
-
-      return { plan, tasks };
-
-    });
-
-
-    this.setState({
-
-      ...this.state,
-
-      status: "active",
-
-      plan: result.plan,
-
-      tasks: result.tasks,
-
-    });
-
-  }
-
-}
-
-
+export class ProjectManager extends Agent<ProjectState> {  async generateProjectPlan(goal: string) {    const result = await this.keepAliveWhile(async () => {      const plan = await this.callLLM(`Create a project plan for: ${goal}`);      const tasks = await this.callLLM(        `Break this into tasks: ${JSON.stringify(plan)}`,      );      return { plan, tasks };    });
+    this.setState({      ...this.state,      status: "active",      plan: result.plan,      tasks: result.tasks,    });  }}
 ```
 
 `keepAliveWhile()` is the recommended approach — it guarantees the heartbeat is cleaned up when the work finishes (or throws). For manual control, `keepAlive()` returns a disposer:
@@ -300,20 +138,7 @@ export class ProjectManager extends Agent<ProjectState> {
 TypeScript
 
 ```
-
-const dispose = await this.keepAlive();
-
-try {
-
-  await longWork();
-
-} finally {
-
-  dispose();
-
-}
-
-
+const dispose = await this.keepAlive();try {  await longWork();} finally {  dispose();}
 ```
 
 ### When keepAlive is not enough
@@ -339,60 +164,11 @@ Use [startFiber()](https://developers.cloudflare.com/agents/runtime/execution/du
 TypeScript
 
 ```
-
-export class ProjectManager extends Agent<ProjectState> {
-
-  async executeTask(task: Task) {
-
-    await this.runFiber(`task:${task.id}`, async (ctx) => {
-
-      const resources = await this.gatherResources(task);
-
-      ctx.stash({ phase: "prepared", resources, task });
-
-
-      const result = await this.runSubAgent(task, resources);
-
-      ctx.stash({ phase: "executed", result, task });
-
-
-      await this.updateTaskStatus(task.id, "complete", result);
-
-    });
-
-  }
-
-
-  async onFiberRecovered(ctx: FiberRecoveryContext) {
-
-    if (!ctx.name.startsWith("task:")) return;
-
-    const { phase, task } = ctx.snapshot as { phase: string; task: Task };
-
-
-    if (phase === "prepared") {
-
-      await this.executeTask(task);
-
-    } else if (phase === "executed") {
-
-      await this.updateTaskStatus(
-
-        task.id,
-
-        "complete",
-
-        (ctx.snapshot as { result: unknown }).result,
-
-      );
-
-    }
-
-  }
-
-}
-
-
+export class ProjectManager extends Agent<ProjectState> {  async executeTask(task: Task) {    await this.runFiber(`task:${task.id}`, async (ctx) => {      const resources = await this.gatherResources(task);      ctx.stash({ phase: "prepared", resources, task });
+      const result = await this.runSubAgent(task, resources);      ctx.stash({ phase: "executed", result, task });
+      await this.updateTaskStatus(task.id, "complete", result);    });  }
+  async onFiberRecovered(ctx: FiberRecoveryContext) {    if (!ctx.name.startsWith("task:")) return;    const { phase, task } = ctx.snapshot as { phase: string; task: Task };
+    if (phase === "prepared") {      await this.executeTask(task);    } else if (phase === "executed") {      await this.updateTaskStatus(        task.id,        "complete",        (ctx.snapshot as { result: unknown }).result,      );    }  }}
 ```
 
 The pattern is: **checkpoint before expensive work, recover from the last checkpoint.** This is not automatic replay — you decide what recovery means for your domain.
@@ -414,68 +190,9 @@ The project manager starts a CI pipeline for a task. The pipeline takes 20 minut
 TypeScript
 
 ```
-
-export class ProjectManager extends Agent<ProjectState> {
-
-  async startCIPipeline(task: Task) {
-
-    const response = await fetch("https://ci.example.com/api/pipelines", {
-
-      method: "POST",
-
-      body: JSON.stringify({
-
-        repo: "org/project",
-
-        branch: "main",
-
-        callback_url: `${this.url}/ci-callback?taskId=${task.id}`,
-
-      }),
-
-    });
-
-
-    const { pipelineId } = await response.json();
-
-    this.updateTask(task.id, {
-
-      status: "in_progress",
-
-      externalJobId: pipelineId,
-
-    });
-
-  }
-
-
-  async onRequest(request: Request): Promise<Response> {
-
-    const url = new URL(request.url);
-
-    if (url.pathname.endsWith("/ci-callback")) {
-
-      const taskId = url.searchParams.get("taskId");
-
-      const result = await request.json();
-
-      this.updateTask(taskId, {
-
-        status: result.status === "success" ? "complete" : "blocked",
-
-      });
-
-      return new Response("OK");
-
-    }
-
-    // ... other routes
-
-  }
-
-}
-
-
+export class ProjectManager extends Agent<ProjectState> {  async startCIPipeline(task: Task) {    const response = await fetch("https://ci.example.com/api/pipelines", {      method: "POST",      body: JSON.stringify({        repo: "org/project",        branch: "main",        callback_url: `${this.url}/ci-callback?taskId=${task.id}`,      }),    });
+    const { pipelineId } = await response.json();    this.updateTask(task.id, {      status: "in_progress",      externalJobId: pipelineId,    });  }
+  async onRequest(request: Request): Promise<Response> {    const url = new URL(request.url);    if (url.pathname.endsWith("/ci-callback")) {      const taskId = url.searchParams.get("taskId");      const result = await request.json();      this.updateTask(taskId, {        status: result.status === "success" ? "complete" : "blocked",      });      return new Response("OK");    }    // ... other routes  }}
 ```
 
 ### Pattern: polling with schedule
@@ -485,83 +202,10 @@ Not every external service supports callbacks. When the project manager submits 
 TypeScript
 
 ```
-
-export class ProjectManager extends Agent<ProjectState> {
-
-  async startVideoGeneration(task: Task) {
-
-    const response = await fetch("https://video-api.example.com/generate", {
-
-      method: "POST",
-
-      body: JSON.stringify({ prompt: task.title }),
-
-    });
-
-    const { jobId } = await response.json();
-
-    this.updateTask(task.id, { status: "in_progress", externalJobId: jobId });
-
-    await this.schedule(60, "pollExternalJob", {
-
-      taskId: task.id,
-
-      jobId,
-
-      attempt: 1,
-
-    });
-
-  }
-
-
-  async pollExternalJob(payload: {
-
-    taskId: string;
-
-    jobId: string;
-
-    attempt: number;
-
-  }) {
-
-    const response = await fetch(
-
-      `https://video-api.example.com/status/${payload.jobId}`,
-
-    );
-
-    const status = await response.json();
-
-
-    if (status.state === "complete" || status.state === "failed") {
-
-      this.updateTask(payload.taskId, {
-
-        status: status.state === "complete" ? "complete" : "blocked",
-
-      });
-
-      return;
-
-    }
-
-
-    const nextDelay = Math.min(60 * payload.attempt, 600);
-
-    await this.schedule(nextDelay, "pollExternalJob", {
-
-      ...payload,
-
-      attempt: payload.attempt + 1,
-
-    });
-
-  }
-
-}
-
-
+export class ProjectManager extends Agent<ProjectState> {  async startVideoGeneration(task: Task) {    const response = await fetch("https://video-api.example.com/generate", {      method: "POST",      body: JSON.stringify({ prompt: task.title }),    });    const { jobId } = await response.json();    this.updateTask(task.id, { status: "in_progress", externalJobId: jobId });    await this.schedule(60, "pollExternalJob", {      taskId: task.id,      jobId,      attempt: 1,    });  }
+  async pollExternalJob(payload: {    taskId: string;    jobId: string;    attempt: number;  }) {    const response = await fetch(      `https://video-api.example.com/status/${payload.jobId}`,    );    const status = await response.json();
+    if (status.state === "complete" || status.state === "failed") {      this.updateTask(payload.taskId, {        status: status.state === "complete" ? "complete" : "blocked",      });      return;    }
+    const nextDelay = Math.min(60 * payload.attempt, 600);    await this.schedule(nextDelay, "pollExternalJob", {      ...payload,      attempt: payload.attempt + 1,    });  }}
 ```
 
 ### Pattern: workflow delegation
@@ -571,49 +215,8 @@ A production deployment involves multiple steps that must each retry independent
 TypeScript
 
 ```
-
-export class ProjectManager extends Agent<ProjectState> {
-
-  async startDeployment(task: Task) {
-
-    const instanceId = await this.runWorkflow("DEPLOY_WORKFLOW", {
-
-      taskId: task.id,
-
-      environment: "production",
-
-    });
-
-    this.updateTask(task.id, {
-
-      status: "in_progress",
-
-      externalJobId: instanceId,
-
-    });
-
-  }
-
-
-  async onWorkflowComplete(
-
-    workflowName: string,
-
-    instanceId: string,
-
-    result?: unknown,
-
-  ) {
-
-    const task = this.state.tasks.find((t) => t.externalJobId === instanceId);
-
-    if (task) this.updateTask(task.id, { status: "complete" });
-
-  }
-
-}
-
-
+export class ProjectManager extends Agent<ProjectState> {  async startDeployment(task: Task) {    const instanceId = await this.runWorkflow("DEPLOY_WORKFLOW", {      taskId: task.id,      environment: "production",    });    this.updateTask(task.id, {      status: "in_progress",      externalJobId: instanceId,    });  }
+  async onWorkflowComplete(    workflowName: string,    instanceId: string,    result?: unknown,  ) {    const task = this.state.tasks.find((t) => t.externalJobId === instanceId);    if (task) this.updateTask(task.id, { status: "complete" });  }}
 ```
 
 ## Reconstructing context after a long wait
@@ -631,20 +234,7 @@ Three approaches work today:
 TypeScript
 
 ```
-
-ctx.stash({
-
-  task: "Waiting for CI results",
-
-  onSuccess: "Mark task complete, move to next step in plan",
-
-  onFailure: "Notify team, schedule retry in 1 hour",
-
-  relevantContext: { taskId, planStep: 3 },
-
-});
-
-
+ctx.stash({  task: "Waiting for CI results",  onSuccess: "Mark task complete, move to next step in plan",  onFailure: "Notify team, schedule retry in 1 hour",  relevantContext: { taskId, planStep: 3 },});
 ```
 
 On recovery, use the stash to construct a focused prompt rather than replaying everything.
@@ -658,165 +248,16 @@ A structured plan is not just useful for showing progress to users — it is a d
 TypeScript
 
 ```
-
-type Plan = {
-
-  goal: string;
-
-  steps: PlanStep[];
-
-  currentStep: number;
-
-  createdAt: string;
-
-  updatedAt: string;
-
-};
-
-
-type PlanStep = {
-
-  id: string;
-
-  description: string;
-
-  status: "pending" | "in_progress" | "complete" | "failed" | "skipped";
-
-  result?: unknown;
-
-};
-
-
-export class ProjectManager extends Agent<ProjectState> {
-
-  async createPlan(goal: string) {
-
-    const steps = await this.keepAliveWhile(async () => {
-
-      return this.callLLM(`
-
-        Break down this project goal into concrete steps.
-
-        Return a JSON array of { id, description } objects.
-
-        Goal: ${goal}
-
-      `);
-
-    });
-
-
-    this.setState({
-
-      ...this.state,
-
-      plan: {
-
-        goal,
-
-        steps: steps.map((s: { id: string; description: string }) => ({
-
-          ...s,
-
-          status: "pending" as const,
-
-        })),
-
-        currentStep: 0,
-
-        createdAt: new Date().toISOString(),
-
-        updatedAt: new Date().toISOString(),
-
-      },
-
-    });
-
-
-    await this.schedule(0, "executeNextStep");
-
-  }
-
-
-  async executeNextStep() {
-
-    const { plan } = this.state;
-
-    if (!plan || plan.currentStep >= plan.steps.length) {
-
-      this.setState({ ...this.state, status: "complete" });
-
-      return;
-
-    }
-
-
+type Plan = {  goal: string;  steps: PlanStep[];  currentStep: number;  createdAt: string;  updatedAt: string;};
+type PlanStep = {  id: string;  description: string;  status: "pending" | "in_progress" | "complete" | "failed" | "skipped";  result?: unknown;};
+export class ProjectManager extends Agent<ProjectState> {  async createPlan(goal: string) {    const steps = await this.keepAliveWhile(async () => {      return this.callLLM(`        Break down this project goal into concrete steps.        Return a JSON array of { id, description } objects.        Goal: ${goal}      `);    });
+    this.setState({      ...this.state,      plan: {        goal,        steps: steps.map((s: { id: string; description: string }) => ({          ...s,          status: "pending" as const,        })),        currentStep: 0,        createdAt: new Date().toISOString(),        updatedAt: new Date().toISOString(),      },    });
+    await this.schedule(0, "executeNextStep");  }
+  async executeNextStep() {    const { plan } = this.state;    if (!plan || plan.currentStep >= plan.steps.length) {      this.setState({ ...this.state, status: "complete" });      return;    }
     const step = plan.steps[plan.currentStep];
-
-
-    try {
-
-      const result = await this.keepAliveWhile(() => this.executeStep(step));
-
-
-      const updatedSteps = plan.steps.map((s) =>
-
-        s.id === step.id ? { ...s, status: "complete" as const, result } : s,
-
-      );
-
-      this.setState({
-
-        ...this.state,
-
-        plan: {
-
-          ...plan,
-
-          steps: updatedSteps,
-
-          currentStep: plan.currentStep + 1,
-
-          updatedAt: new Date().toISOString(),
-
-        },
-
-      });
-
-
-      await this.schedule(0, "executeNextStep");
-
-    } catch (error) {
-
-      const updatedSteps = plan.steps.map((s) =>
-
-        s.id === step.id ? { ...s, status: "failed" as const } : s,
-
-      );
-
-      this.setState({
-
-        ...this.state,
-
-        plan: {
-
-          ...plan,
-
-          steps: updatedSteps,
-
-          updatedAt: new Date().toISOString(),
-
-        },
-
-      });
-
-    }
-
-  }
-
-}
-
-
+    try {      const result = await this.keepAliveWhile(() => this.executeStep(step));
+      const updatedSteps = plan.steps.map((s) =>        s.id === step.id ? { ...s, status: "complete" as const, result } : s,      );      this.setState({        ...this.state,        plan: {          ...plan,          steps: updatedSteps,          currentStep: plan.currentStep + 1,          updatedAt: new Date().toISOString(),        },      });
+      await this.schedule(0, "executeNextStep");    } catch (error) {      const updatedSteps = plan.steps.map((s) =>        s.id === step.id ? { ...s, status: "failed" as const } : s,      );      this.setState({        ...this.state,        plan: {          ...plan,          steps: updatedSteps,          updatedAt: new Date().toISOString(),        },      });    }  }}
 ```
 
 This pattern has several advantages for long-running agents:
@@ -834,32 +275,9 @@ A project manager does not do everything itself. It delegates specialized work t
 TypeScript
 
 ```
-
-export class ProjectManager extends Agent<ProjectState> {
-
-  async delegateTask(task: Task) {
-
-    const researcher = await this.subAgent(
-
-      ResearchAgent,
-
-      `research-${task.id}`,
-
-    );
-
-
+export class ProjectManager extends Agent<ProjectState> {  async delegateTask(task: Task) {    const researcher = await this.subAgent(      ResearchAgent,      `research-${task.id}`,    );
     const findings = await researcher.research(task.title);
-
-
-    this.updateTask(task.id, { status: "complete" });
-
-    return findings;
-
-  }
-
-}
-
-
+    this.updateTask(task.id, { status: "complete" });    return findings;  }}
 ```
 
 Sub-agents have their own state, schedules, durable fibers, and lifecycle. They are colocated under the parent, but each child stores its own SQLite data and runs callbacks with the child as `this`.
@@ -877,44 +295,9 @@ For chat-oriented agents built on `AIChatAgent`, this is an even sharper problem
 TypeScript
 
 ```
-
-import { AIChatAgent } from "@cloudflare/ai-chat";
-
-import type {
-
-  ChatRecoveryContext,
-
-  ChatRecoveryOptions,
-
-} from "@cloudflare/ai-chat";
-
-
-class ProjectChat extends AIChatAgent<Env> {
-
-  override chatRecovery = true;
-
-
-  override async onChatRecovery(
-
-    ctx: ChatRecoveryContext,
-
-  ): Promise<ChatRecoveryOptions> {
-
-    // ctx.partialText    — text generated before eviction
-
-    // ctx.recoveryData   — whatever you stashed via this.stash()
-
-    // ctx.messages        — full conversation history
-
-    // ctx.createdAt       — when the interrupted turn started
-
-    return {};
-
-  }
-
-}
-
-
+import { AIChatAgent } from "@cloudflare/ai-chat";import type {  ChatRecoveryContext,  ChatRecoveryOptions,} from "@cloudflare/ai-chat";
+class ProjectChat extends AIChatAgent<Env> {  override chatRecovery = true;
+  override async onChatRecovery(    ctx: ChatRecoveryContext,  ): Promise<ChatRecoveryOptions> {    // ctx.partialText    — text generated before eviction    // ctx.recoveryData   — whatever you stashed via this.stash()    // ctx.messages        — full conversation history    // ctx.createdAt       — when the interrupted turn started    return {};  }}
 ```
 
 The right recovery strategy depends on the LLM provider:
@@ -943,60 +326,9 @@ Schedule periodic cleanup to prune old data and archive completed work:
 TypeScript
 
 ```
-
-export class ProjectManager extends Agent<ProjectState> {
-
-  async onStart() {
-
-    await this.schedule("0 0 * * *", "housekeeping", {}, { idempotent: true });
-
-  }
-
-
-  async housekeeping() {
-
-    const cutoff = Date.now() - 30 * 24 * 60 * 60 * 1000;
-
-    const toArchive = this.state.tasks.filter(
-
-      (t) => t.status === "complete" && (t.completedAt ?? 0) < cutoff,
-
-    );
-
-    for (const task of toArchive) {
-
-      this
-
-        .sql`INSERT INTO archived_tasks (id, data) VALUES (${task.id}, ${JSON.stringify(task)})`;
-
-    }
-
-    this.setState({
-
-      ...this.state,
-
-      tasks: this.state.tasks.filter(
-
-        (t) => !toArchive.some((a) => a.id === t.id),
-
-      ),
-
-    });
-
-
-    this.deleteWorkflows({
-
-      status: ["complete", "errored"],
-
-      createdBefore: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
-
-    });
-
-  }
-
-}
-
-
+export class ProjectManager extends Agent<ProjectState> {  async onStart() {    await this.schedule("0 0 * * *", "housekeeping", {}, { idempotent: true });  }
+  async housekeeping() {    const cutoff = Date.now() - 30 * 24 * 60 * 60 * 1000;    const toArchive = this.state.tasks.filter(      (t) => t.status === "complete" && (t.completedAt ?? 0) < cutoff,    );    for (const task of toArchive) {      this        .sql`INSERT INTO archived_tasks (id, data) VALUES (${task.id}, ${JSON.stringify(task)})`;    }    this.setState({      ...this.state,      tasks: this.state.tasks.filter(        (t) => !toArchive.some((a) => a.id === t.id),      ),    });
+    this.deleteWorkflows({      status: ["complete", "errored"],      createdBefore: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),    });  }}
 ```
 
 ### Conversation history management
@@ -1016,32 +348,9 @@ A long-running agent eventually completes its purpose. The project ships, the in
 TypeScript
 
 ```
-
-export class ProjectManager extends Agent<ProjectState> {
-
-  async completeProject() {
-
-    const schedules = await this.listSchedules();
-
-    for (const schedule of schedules) {
-
-      await this.cancelSchedule(schedule.id);
-
-    }
-
-
+export class ProjectManager extends Agent<ProjectState> {  async completeProject() {    const schedules = await this.listSchedules();    for (const schedule of schedules) {      await this.cancelSchedule(schedule.id);    }
     this.setState({ ...this.state, status: "complete" });
-
-
-    // All SQLite data, schedules, and state are permanently deleted
-
-    await this.destroy();
-
-  }
-
-}
-
-
+    // All SQLite data, schedules, and state are permanently deleted    await this.destroy();  }}
 ```
 
 `this.destroy()` is permanent. If you may need the agent's data later, archive it to an external store (R2, D1, or an API call) before destroying. For agents that might be reactivated, simply mark them as complete and let them hibernate — they cost nothing when idle.
@@ -1050,7 +359,7 @@ export class ProjectManager extends Agent<ProjectState> {
 
 Both Workflows and agent-internal primitives (schedules, fibers, queues) support long-running work. The right choice depends on the nature of the work:
 
-| Agent-internal     | Workflows                                              |                                          |
+|                    | Agent-internal                                         | Workflows                                |
 | ------------------ | ------------------------------------------------------ | ---------------------------------------- |
 | **Best for**       | Agent-centric work: scheduling, polling, state updates | Independent multi-step pipelines         |
 | **Durability**     | SQLite (survives eviction)                             | Workflow engine (survives everything)    |

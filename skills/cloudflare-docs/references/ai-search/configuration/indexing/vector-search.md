@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,22 +31,7 @@ Vector search is the default index method for all instances. To switch to [keywo
 TypeScript
 
 ```
-
-const instance = await env.AI_SEARCH.create({
-
-  id: "my-instance",
-
-  index_method: {
-
-    vector: false,
-
-    keyword: true,
-
-  },
-
-});
-
-
+const instance = await env.AI_SEARCH.create({  id: "my-instance",  index_method: {    vector: false,    keyword: true,  },});
 ```
 
 ## Per-request overrides
@@ -56,27 +41,8 @@ You can force vector-only search on a per-request basis using `ai_search_options
 TypeScript
 
 ```
-
 const instance = env.AI_SEARCH.get("my-instance");
-
-
-const results = await instance.search({
-
-  messages: [{ role: "user", content: "What is Cloudflare?" }],
-
-  ai_search_options: {
-
-    retrieval: {
-
-      retrieval_type: "vector",
-
-    },
-
-  },
-
-});
-
-
+const results = await instance.search({  messages: [{ role: "user", content: "What is Cloudflare?" }],  ai_search_options: {    retrieval: {      retrieval_type: "vector",    },  },});
 ```
 
 ## Scoring details

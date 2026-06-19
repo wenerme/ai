@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,9 +18,9 @@ URL prefetching means that Cloudflare pre-populates the cache with content a vis
 
 ## Availability
 
-| Free         | Pro | Business | Enterprise |     |
-| ------------ | --- | -------- | ---------- | --- |
-| Availability | No  | No       | No         | Yes |
+|              | Free | Pro | Business | Enterprise |
+| ------------ | ---- | --- | -------- | ---------- |
+| Availability | No   | No  | No       | Yes        |
 
 ---
 
@@ -30,8 +30,8 @@ For Cloudflare to start prefetching URLs, you will need to [enable the feature](
 
 ### Enable Prefetch URLs
 
-* [ Dashboard ](#tab-panel-10540)
-* [ API ](#tab-panel-10541)
+* [ Dashboard ](#tab-panel-10616)
+* [ API ](#tab-panel-10617)
 
 To enable **Prefetch URLs** in the dashboard:
 
@@ -54,14 +54,7 @@ Example HTTP response header:
 Example `manifest.txt` file:
 
 ```
-
-/static/fetch1
-
-//other.example.com/fetch2
-
-http://another.example.com/fetch3
-
-
+/static/fetch1//other.example.com/fetch2http://another.example.com/fetch3
 ```
 
 The manifest file should contain URIs, protocol-relative URLs or full URLs, separated by new lines. These files must be on your websites that are on Cloudflare. If you reference HTML pages, only the HTML page itself will be pre-fetched - any sub-requests from that HTML will not be fetched unless they are also defined explicitly in your manifest.

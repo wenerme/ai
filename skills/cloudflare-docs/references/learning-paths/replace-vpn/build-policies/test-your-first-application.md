@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -87,11 +87,11 @@ To set up an HTTP test for an application:
 2. Select the **Tests** tab.
 3. Select **Add a Test**.
 4. Fill in the following fields:  
-   * **Name**: Enter any name for the test.  
-   * **Target**: Enter the URL of the website or application that you want to test (for example, `https://jira.site.com`). Both public and private hostnames are supported. If testing a private hostname, ensure that the domain is on your [local domain fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) list.  
-   * **Source device profiles**: (Optional) Select the [device profiles](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) that you want to run the test on. If no profiles are selected, the test will run on all supported devices connected to your Zero Trust organization.  
-   * **Test type**: Select _HTTP Get_.  
-   * **Test frequency**: Specify how often the test will run. Input a minute value between 5 and 60.
+  * **Name**: Enter any name for the test.
+  * **Target**: Enter the URL of the website or application that you want to test (for example, `https://jira.site.com`). Both public and private hostnames are supported. If testing a private hostname, ensure that the domain is on your [local domain fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) list.
+  * **Source device profiles**: (Optional) Select the [device profiles](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) that you want to run the test on. If no profiles are selected, the test will run on all supported devices connected to your Zero Trust organization.
+  * **Test type**: Select _HTTP Get_.
+  * **Test frequency**: Specify how often the test will run. Input a minute value between 5 and 60.
 5. Select **Add test**.
 6. After the test is created and running, you can [view the results](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/view-results/) of your test.
 

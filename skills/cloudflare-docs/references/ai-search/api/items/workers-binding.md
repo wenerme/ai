@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,50 +29,20 @@ To use AI Search with Workers, you must create an AI Search binding. You create 
 
 Access all instances within a [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/). You can get, create, list, and delete instances at runtime.
 
-* [  wrangler.jsonc ](#tab-panel-6598)
-* [  wrangler.toml ](#tab-panel-6599)
+* [  wrangler.jsonc ](#tab-panel-6674)
+* [  wrangler.toml ](#tab-panel-6675)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "compatibility_date": "2026-03-27",
-
-  "ai_search_namespaces": [
-
-    {
-
-      "binding": "AI_SEARCH",
-
-      "namespace": "my-namespace"
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "compatibility_date": "2026-03-27",  "ai_search_namespaces": [    {      "binding": "AI_SEARCH",      "namespace": "my-namespace"    }  ]}
 ```
 
 TOML
 
 ```
-
 compatibility_date = "2026-03-27"
-
-
-[[ai_search_namespaces]]
-
-binding = "AI_SEARCH"
-
-namespace = "my-namespace"
-
-
+[[ai_search_namespaces]]binding = "AI_SEARCH"namespace = "my-namespace"
 ```
 
 | Field     | Type    | Required | Description                                                                                                                                                                                                                   |
@@ -85,50 +55,20 @@ namespace = "my-namespace"
 
 Bind directly to a single instance in the `default` namespace. Use this when you know which instance you need at deploy time.
 
-* [  wrangler.jsonc ](#tab-panel-6600)
-* [  wrangler.toml ](#tab-panel-6601)
+* [  wrangler.jsonc ](#tab-panel-6676)
+* [  wrangler.toml ](#tab-panel-6677)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "compatibility_date": "2026-03-27",
-
-  "ai_search": [
-
-    {
-
-      "binding": "MY_SEARCH",
-
-      "instance_name": "my-instance"
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "compatibility_date": "2026-03-27",  "ai_search": [    {      "binding": "MY_SEARCH",      "instance_name": "my-instance"    }  ]}
 ```
 
 TOML
 
 ```
-
 compatibility_date = "2026-03-27"
-
-
-[[ai_search]]
-
-binding = "MY_SEARCH"
-
-instance_name = "my-instance"
-
-
+[[ai_search]]binding = "MY_SEARCH"instance_name = "my-instance"
 ```
 
 | Field          | Type    | Required | Description                                                                                          |
@@ -146,10 +86,7 @@ The examples below use the namespace binding.
 TypeScript
 
 ```
-
 const instance = env.AI_SEARCH.get("my-instance");
-
-
 ```
 
 ### `items.upload()`
@@ -159,32 +96,9 @@ Uploads a document for indexing. Returns immediately. The document is queued for
 TypeScript
 
 ```
-
-// Upload from a string
-
-await instance.items.upload(
-
-  "faq.md",
-
-  "# FAQ\n\nQ: How do I reset my password?\nA: Go to Settings > Security...",
-
-);
-
-
-// Upload from an ArrayBuffer
-
-const pdfResponse = await fetch("https://example.com/guide.pdf");
-
-const pdfBuffer = await pdfResponse.arrayBuffer();
-
-await instance.items.upload("guide.pdf", pdfBuffer);
-
-
-// Upload from a ReadableStream
-
-await instance.items.upload("doc.txt", request.body);
-
-
+// Upload from a stringawait instance.items.upload(  "faq.md",  "# FAQ\n\nQ: How do I reset my password?\nA: Go to Settings > Security...",);
+// Upload from an ArrayBufferconst pdfResponse = await fetch("https://example.com/guide.pdf");const pdfBuffer = await pdfResponse.arrayBuffer();await instance.items.upload("guide.pdf", pdfBuffer);
+// Upload from a ReadableStreamawait instance.items.upload("doc.txt", request.body);
 ```
 
 #### Upload with metadata
@@ -194,22 +108,7 @@ Attach [custom metadata](https://developers.cloudflare.com/ai-search/configurati
 TypeScript
 
 ```
-
-await instance.items.upload("guide.pdf", pdfBuffer, {
-
-  metadata: {
-
-    category: "onboarding",
-
-    language: "en",
-
-    version: "2.0",
-
-  },
-
-});
-
-
+await instance.items.upload("guide.pdf", pdfBuffer, {  metadata: {    category: "onboarding",    language: "en",    version: "2.0",  },});
 ```
 
 #### Parameters
@@ -234,29 +133,8 @@ Uploads a document and polls until processing completes or the timeout is reache
 TypeScript
 
 ```
-
-// Wait for a specific document to finish indexing before searching
-
-const item = await instance.items.uploadAndPoll(
-
-  "handbook.txt",
-
-  handbookContent,
-
-);
-
-console.log(`handbook.txt status: ${item.status}`); // "completed"
-
-
-// Now search across all uploaded documents
-
-const results = await instance.search({
-
-  messages: [{ role: "user", content: "password reset policy" }],
-
-});
-
-
+// Wait for a specific document to finish indexing before searchingconst item = await instance.items.uploadAndPoll(  "handbook.txt",  handbookContent,);console.log(`handbook.txt status: ${item.status}`); // "completed"
+// Now search across all uploaded documentsconst results = await instance.search({  messages: [{ role: "user", content: "password reset policy" }],});
 ```
 
 #### Parameters
@@ -291,19 +169,8 @@ Returns a paginated list of items in the instance.
 TypeScript
 
 ```
-
 const { result, result_info } = await instance.items.list();
-
-
-for (const item of result) {
-
-  console.log(`${item.key} (${item.status})`);
-
-}
-
-// result_info.total_count contains the total number of items
-
-
+for (const item of result) {  console.log(`${item.key} (${item.status})`);}// result_info.total_count contains the total number of items
 ```
 
 #### Parameters
@@ -344,10 +211,7 @@ Deletes an item and its indexed chunks.
 TypeScript
 
 ```
-
 await instance.items.delete("item-id-123");
-
-
 ```
 
 #### Parameters
@@ -371,10 +235,7 @@ Returns the status and metadata of a specific item.
 TypeScript
 
 ```
-
 const itemInfo = await instance.items.get("item-id-123").info();
-
-
 ```
 
 ##### Parameters
@@ -404,12 +265,7 @@ Downloads the original source file for an item.
 TypeScript
 
 ```
-
-const file = await instance.items.get("item-id-123").download();
-
-// file.body is a ReadableStream
-
-
+const file = await instance.items.get("item-id-123").download();// file.body is a ReadableStream
 ```
 
 ##### Parameters

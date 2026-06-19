@@ -305,7 +305,7 @@ GPT-5.5 being a significantly more capable model.
         <tbody>
           <tr>
             <td>GPT-5.5</td>
-            <td style="text-align:center">80-400</td>
+            <td style="text-align:center">75-400</td>
             <td style="text-align:center">Not available</td>
             <td style="text-align:center">Not available</td>
           </tr>
@@ -1014,6 +1014,19 @@ tips to maximize your limits:
           {
             name: "Computer Use",
             href: "/codex/app/computer-use",
+            limitedFootnote: "region",
+            availability: {
+              plus: "limited",
+              pro: "limited",
+              business: "limited",
+              enterprise: "limited",
+              api: "limited",
+            },
+          },
+          {
+            name: "Record & Replay (macOS)",
+            shortName: "Record & Replay",
+            href: "/codex/record-and-replay",
             limitedFootnote: "region",
             availability: {
               plus: "limited",

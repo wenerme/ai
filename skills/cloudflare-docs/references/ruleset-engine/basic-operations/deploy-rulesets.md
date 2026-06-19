@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,7 +32,7 @@ The following example deploys the [Cloudflare Managed Ruleset](https://developer
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Response Compression Write`
 * `Config Settings Write`
 * `Dynamic URL Redirects Write`
@@ -58,103 +58,11 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Update a zone entry point ruleset
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "rules": [
-
-        {
-
-            "action": "execute",
-
-            "action_parameters": {
-
-                "id": "efb7b8c949ac4650a09736fc376e9aee"
-
-            },
-
-            "expression": "true",
-
-            "description": "Execute Cloudflare Managed Ruleset on my zone ruleset"
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "action": "execute",            "action_parameters": {                "id": "efb7b8c949ac4650a09736fc376e9aee"            },            "expression": "true",            "description": "Execute Cloudflare Managed Ruleset on my zone ruleset"        }    ]  }'
 ```
 
 ```
-
-{
-
-  "result": {
-
-    "id": "<ZONE_PHASE_RULESET_ID>",
-
-    "name": "Zone-level Ruleset 1",
-
-    "description": "",
-
-    "kind": "zone",
-
-    "version": "latest",
-
-    "rules": [
-
-      {
-
-        "id": "<RULE_ID>",
-
-        "version": "1",
-
-        "action": "execute",
-
-        "action_parameters": {
-
-          "id": "efb7b8c949ac4650a09736fc376e9aee",
-
-          "version": "3"
-
-        },
-
-        "expression": "true",
-
-        "description": "Execute Cloudflare Managed Ruleset on my zone ruleset",
-
-        "last_updated": "2021-03-18T18:08:14.003361Z",
-
-        "ref": "<RULE_REF>",
-
-        "enabled": true
-
-      }
-
-    ],
-
-    "last_updated": "2021-03-18T18:08:14.003361Z",
-
-    "phase": "http_request_firewall_managed"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "id": "<ZONE_PHASE_RULESET_ID>",    "name": "Zone-level Ruleset 1",    "description": "",    "kind": "zone",    "version": "latest",    "rules": [      {        "id": "<RULE_ID>",        "version": "1",        "action": "execute",        "action_parameters": {          "id": "efb7b8c949ac4650a09736fc376e9aee",          "version": "3"        },        "expression": "true",        "description": "Execute Cloudflare Managed Ruleset on my zone ruleset",        "last_updated": "2021-03-18T18:08:14.003361Z",        "ref": "<RULE_REF>",        "enabled": true      }    ],    "last_updated": "2021-03-18T18:08:14.003361Z",    "phase": "http_request_firewall_managed"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 Warning

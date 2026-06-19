@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,35 +20,19 @@ For a step-by-step setup guide, refer to [Set up Workers AI with AI Gateway](htt
 
 Add an AI binding to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-6588)
-* [  wrangler.toml ](#tab-panel-6589)
+* [  wrangler.jsonc ](#tab-panel-6664)
+* [  wrangler.toml ](#tab-panel-6665)
 
 JSONC
 
 ```
-
-{
-
-  "ai": {
-
-    "binding": "AI",
-
-  },
-
-}
-
-
+{  "ai": {    "binding": "AI",  },}
 ```
 
 TOML
 
 ```
-
-[ai]
-
-binding = "AI"
-
-
+[ai]binding = "AI"
 ```
 
 The binding is accessible in your Worker code as `env.AI`.
@@ -61,128 +45,36 @@ Runs an inference request through AI Gateway. Accepts Workers AI models (`@cf/` 
 
 **Workers AI model:**
 
-* [  JavaScript ](#tab-panel-6590)
-* [  TypeScript ](#tab-panel-6591)
+* [  JavaScript ](#tab-panel-6666)
+* [  TypeScript ](#tab-panel-6667)
 
 JavaScript
 
 ```
-
-const resp = await env.AI.run(
-
-  "@cf/moonshotai/kimi-k2.5",
-
-  {
-
-    prompt: "tell me a joke",
-
-  },
-
-  {
-
-    gateway: {
-
-      id: "default", // or use a specific gateway name
-
-    },
-
-  },
-
-);
-
-
+const resp = await env.AI.run(  "@cf/moonshotai/kimi-k2.5",  {    prompt: "tell me a joke",  },  {    gateway: {      id: "default", // or use a specific gateway name    },  },);
 ```
 
 TypeScript
 
 ```
-
-const resp = await env.AI.run(
-
-  "@cf/moonshotai/kimi-k2.5",
-
-  {
-
-    prompt: "tell me a joke",
-
-  },
-
-  {
-
-    gateway: {
-
-      id: "default", // or use a specific gateway name
-
-    },
-
-  },
-
-);
-
-
+const resp = await env.AI.run(  "@cf/moonshotai/kimi-k2.5",  {    prompt: "tell me a joke",  },  {    gateway: {      id: "default", // or use a specific gateway name    },  },);
 ```
 
 **Third-party model:**
 
-* [  JavaScript ](#tab-panel-6592)
-* [  TypeScript ](#tab-panel-6593)
+* [  JavaScript ](#tab-panel-6668)
+* [  TypeScript ](#tab-panel-6669)
 
 JavaScript
 
 ```
-
-const resp = await env.AI.run(
-
-  "openai/gpt-4.1-mini",
-
-  {
-
-    messages: [{ role: "user", content: "tell me a joke" }],
-
-  },
-
-  {
-
-    gateway: {
-
-      id: "default", // or use a specific gateway name
-
-    },
-
-  },
-
-);
-
-
+const resp = await env.AI.run(  "openai/gpt-4.1-mini",  {    messages: [{ role: "user", content: "tell me a joke" }],  },  {    gateway: {      id: "default", // or use a specific gateway name    },  },);
 ```
 
 TypeScript
 
 ```
-
-const resp = await env.AI.run(
-
-  "openai/gpt-4.1-mini",
-
-  {
-
-    messages: [{ role: "user", content: "tell me a joke" }],
-
-  },
-
-  {
-
-    gateway: {
-
-      id: "default", // or use a specific gateway name
-
-    },
-
-  },
-
-);
-
-
+const resp = await env.AI.run(  "openai/gpt-4.1-mini",  {    messages: [{ role: "user", content: "tell me a joke" }],  },  {    gateway: {      id: "default", // or use a specific gateway name    },  },);
 ```
 
 Third-party models require an AI Gateway and use [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/). Cloudflare manages the provider credentials and deducts credits from your account. You do not need to supply your own API keys.
@@ -213,10 +105,7 @@ Returns the log ID from the most recent `env.AI.run()` request.
 TypeScript
 
 ```
-
 const myLogId = env.AI.aiGatewayLogId;
-
-
 ```
 
 ## `env.AI.gateway()`
@@ -226,10 +115,7 @@ Returns a gateway instance for accessing AI Gateway methods directly.
 TypeScript
 
 ```
-
 const gateway = env.AI.gateway("my-gateway");
-
-
 ```
 
 The gateway instance exposes the following methods.
@@ -241,22 +127,7 @@ Sends feedback, score, and metadata for a specific log entry. All properties in 
 TypeScript
 
 ```
-
-await gateway.patchLog("my-log-id", {
-
-  feedback: 1,
-
-  score: 100,
-
-  metadata: {
-
-    user: "123",
-
-  },
-
-});
-
-
+await gateway.patchLog("my-log-id", {  feedback: 1,  score: 100,  metadata: {    user: "123",  },});
 ```
 
 **Returns:** `Promise<void>`
@@ -268,10 +139,7 @@ Retrieves details of a specific log entry. If the `AiGatewayLog` type is missing
 TypeScript
 
 ```
-
 const log = await gateway.getLog("my-log-id");
-
-
 ```
 
 **Returns:** `Promise<AiGatewayLog>`
@@ -283,17 +151,8 @@ Returns the base URL for your AI Gateway. Pass an optional provider name to get 
 TypeScript
 
 ```
-
-const baseUrl = await gateway.getUrl();
-
-// https://gateway.ai.cloudflare.com/v1/my-account-id/my-gateway/
-
-
-const openaiUrl = await gateway.getUrl("openai");
-
-// https://gateway.ai.cloudflare.com/v1/my-account-id/my-gateway/openai
-
-
+const baseUrl = await gateway.getUrl();// https://gateway.ai.cloudflare.com/v1/my-account-id/my-gateway/
+const openaiUrl = await gateway.getUrl("openai");// https://gateway.ai.cloudflare.com/v1/my-account-id/my-gateway/openai
 ```
 
 **Parameters:** Optional `provider` (string or `AIGatewayProviders` enum)
@@ -307,19 +166,8 @@ const openaiUrl = await gateway.getUrl("openai");
 TypeScript
 
 ```
-
 import OpenAI from "openai";
-
-
-const openai = new OpenAI({
-
-  apiKey: "my api key", // defaults to process.env["OPENAI_API_KEY"]
-
-  baseURL: await env.AI.gateway("my-gateway").getUrl("openai"),
-
-});
-
-
+const openai = new OpenAI({  apiKey: "my api key", // defaults to process.env["OPENAI_API_KEY"]  baseURL: await env.AI.gateway("my-gateway").getUrl("openai"),});
 ```
 
 **Vercel AI SDK with OpenAI:**
@@ -327,17 +175,8 @@ const openai = new OpenAI({
 TypeScript
 
 ```
-
 import { createOpenAI } from "@ai-sdk/openai";
-
-
-const openai = createOpenAI({
-
-  baseURL: await env.AI.gateway("my-gateway").getUrl("openai"),
-
-});
-
-
+const openai = createOpenAI({  baseURL: await env.AI.gateway("my-gateway").getUrl("openai"),});
 ```
 
 **Vercel AI SDK with Anthropic:**
@@ -345,17 +184,8 @@ const openai = createOpenAI({
 TypeScript
 
 ```
-
 import { createAnthropic } from "@ai-sdk/anthropic";
-
-
-const anthropic = createAnthropic({
-
-  baseURL: await env.AI.gateway("my-gateway").getUrl("anthropic"),
-
-});
-
-
+const anthropic = createAnthropic({  baseURL: await env.AI.gateway("my-gateway").getUrl("anthropic"),});
 ```
 
 ```json

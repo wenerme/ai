@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -46,60 +46,20 @@ When you deploy your project, Cloudflare deploys both your Worker code and your 
 
 The **assets directory** specified in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/#assets) is central to this design. During deployment, Wrangler automatically uploads the files from this directory to Cloudflare's infrastructure. Once deployed, requests for these assets are routed efficiently to locations closest to your users.
 
-* [  wrangler.jsonc ](#tab-panel-12075)
-* [  wrangler.toml ](#tab-panel-12076)
+* [  wrangler.jsonc ](#tab-panel-12092)
+* [  wrangler.toml ](#tab-panel-12093)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "my-spa",
-
-  "main": "src/index.js",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "assets": {
-
-    "directory": "./dist",
-
-    "binding": "ASSETS"
-
-  }
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-spa",  "main": "src/index.js",  // Set this to today's date  "compatibility_date": "2026-06-19",  "assets": {    "directory": "./dist",    "binding": "ASSETS"  }}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "my-spa"
-
-main = "src/index.js"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[assets]
-
-directory = "./dist"
-
-binding = "ASSETS"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-spa"main = "src/index.js"# Set this to today's datecompatibility_date = "2026-06-19"
+[assets]directory = "./dist"binding = "ASSETS"
 ```
 
 Note
@@ -108,68 +68,24 @@ If you are using the [Cloudflare Vite plugin](https://developers.cloudflare.com/
 
 By adding an [**assets binding**](https://developers.cloudflare.com/workers/static-assets/binding/#binding), you can directly fetch and serve assets within your Worker code.
 
-* [  JavaScript ](#tab-panel-12071)
-* [  Python ](#tab-panel-12072)
+* [  JavaScript ](#tab-panel-12088)
+* [  Python ](#tab-panel-12089)
 
 JavaScript
 
 ```
-
 // index.js
-
-
-export default {
-
-  async fetch(request, env) {
-
-    const url = new URL(request.url);
-
-
-    if (url.pathname.startsWith("/api/")) {
-
-      return new Response(JSON.stringify({ name: "Cloudflare" }), {
-
-        headers: { "Content-Type": "application/json" },
-
-      });
-
-    }
-
-
-    return env.ASSETS.fetch(request);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    const url = new URL(request.url);
+    if (url.pathname.startsWith("/api/")) {      return new Response(JSON.stringify({ name: "Cloudflare" }), {        headers: { "Content-Type": "application/json" },      });    }
+    return env.ASSETS.fetch(request);  },};
 ```
 
 Python
 
 ```
-
-from workers import WorkerEntrypoint, Response
-
-from urllib.parse import urlparse
-
-
-class Default(WorkerEntrypoint):
-
-  async def fetch(self, request):
-
-    # Example of serving static assets
-
-    url = urlparse(request.url)
-
-    if url.path.startswith("/api/):
-
-      return Response.json({"name": "Cloudflare"})
-
-
+from workers import WorkerEntrypoint, Responsefrom urllib.parse import urlparse
+class Default(WorkerEntrypoint):  async def fetch(self, request):    # Example of serving static assets    url = urlparse(request.url)    if url.path.startswith("/api/):      return Response.json({"name": "Cloudflare"})
     return await self.env.ASSETS.fetch(request)
-
-
 ```
 
 ### Routing behavior
@@ -181,103 +97,39 @@ The default behavior for requests which don't match a static asset can be change
 * [not\_found\_handling = "single-page-application"](https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/): Sets your application to return a `200 OK` response with `index.html` for requests which don't match a static asset. Use this if you have a Single Page Application. We recommend pairing this with selective routing using `run_worker_first` for [advanced routing control](https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/#advanced-routing-control).
 * [not\_found\_handling = "404-page"](https://developers.cloudflare.com/workers/static-assets/routing/static-site-generation/#custom-404-pages): Sets your application to return a `404 Not Found` response with the nearest `404.html` for requests which don't match a static asset.
 
-* [  wrangler.jsonc ](#tab-panel-12073)
-* [  wrangler.toml ](#tab-panel-12074)
+* [  wrangler.jsonc ](#tab-panel-12090)
+* [  wrangler.toml ](#tab-panel-12091)
 
 JSONC
 
 ```
-
-{
-
-  "assets": {
-
-    "directory": "./dist",
-
-    "not_found_handling": "single-page-application"
-
-  }
-
-}
-
-
+{  "assets": {    "directory": "./dist",    "not_found_handling": "single-page-application"  }}
 ```
 
 TOML
 
 ```
-
-[assets]
-
-directory = "./dist"
-
-not_found_handling = "single-page-application"
-
-
+[assets]directory = "./dist"not_found_handling = "single-page-application"
 ```
 
 If you want the Worker code to execute before serving assets, you can use the `run_worker_first` option. This can be set to `true` to invoke the Worker script for all requests, or configured as an array of route patterns for selective Worker-script-first routing:
 
 **Invoking your Worker script on specific paths:**
 
-* [  wrangler.jsonc ](#tab-panel-12077)
-* [  wrangler.toml ](#tab-panel-12078)
+* [  wrangler.jsonc ](#tab-panel-12094)
+* [  wrangler.toml ](#tab-panel-12095)
 
 JSONC
 
 ```
-
-{
-
-  "name": "my-spa-worker",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "main": "./src/index.ts",
-
-  "assets": {
-
-    "directory": "./dist/",
-
-    "not_found_handling": "single-page-application",
-
-    "binding": "ASSETS",
-
-    "run_worker_first": ["/api/*", "!/api/docs/*"]
-
-  }
-
-}
-
-
+{  "name": "my-spa-worker",  // Set this to today's date  "compatibility_date": "2026-06-19",  "main": "./src/index.ts",  "assets": {    "directory": "./dist/",    "not_found_handling": "single-page-application",    "binding": "ASSETS",    "run_worker_first": ["/api/*", "!/api/docs/*"]  }}
 ```
 
 TOML
 
 ```
-
-name = "my-spa-worker"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-main = "./src/index.ts"
-
-
-[assets]
-
-directory = "./dist/"
-
-not_found_handling = "single-page-application"
-
-binding = "ASSETS"
-
-run_worker_first = [ "/api/*", "!/api/docs/*" ]
-
-
+name = "my-spa-worker"# Set this to today's datecompatibility_date = "2026-06-19"main = "./src/index.ts"
+[assets]directory = "./dist/"not_found_handling = "single-page-application"binding = "ASSETS"run_worker_first = [ "/api/*", "!/api/docs/*" ]
 ```
 
 For a more advanced pattern, refer to [SPA shell with bootstrap data](https://developers.cloudflare.com/workers/examples/spa-shell/), which uses HTMLRewriter to inject prefetched API data into the HTML stream.
@@ -299,7 +151,7 @@ Cloudflare provides automatic caching for static assets across its network, ensu
 
 [ Supported frameworks ](https://developers.cloudflare.com/workers/framework-guides/) Start building on Workers with our framework guides. 
 
-[ Billing and limitations ](https://developers.cloudflare.com/workers/static-assets/billing-and-limitations/) Learn more about how requests are billed, current limitations, and troubleshooting. 
+[ Billing and limitations ](https://developers.cloudflare.com/workers/static-assets/billing-and-limitations/) Learn more about how requests are billed, current limitations, and troubleshooting.
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/static-assets/#page","headline":"Static Assets · Cloudflare Workers docs","description":"Create full-stack applications deployed to Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/static-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,10 +28,7 @@ To export log data:
 2. Choose either CSV or JSON format for rendering exported data. The downloaded file name will reflect the selected time range, using this pattern:
 
 ```
-
 network-analytics-attacks-<START_TIME>-<END_TIME>.json
-
-
 ```
 
 ## Export a Network Analytics report

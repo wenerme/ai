@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -40,51 +40,10 @@ The key to implementing test-environment detection is identifying test requests 
 TypeScript
 
 ```
-
-// Detect test environments using IP addresses or headers
-
-function isTestEnvironment(request) {
-
-  const testIPs = ['127.0.0.1', '::1'];
-
-  const isTestIP = testIPs.includes(request.ip);
-
-  const hasTestHeader = request.headers['x-test-environment'] === 'secret-token';
-
-
-  return isTestIP || hasTestHeader;
-
-}
-
-
-// Use the appropriate credentials based on the environment
-
-function getTurnstileCredentials(request) {
-
-  if (isTestEnvironment(request)) {
-
-    return {
-
-      sitekey: '1x00000000000000000000AA',
-
-      secretKey: '1x0000000000000000000000000000000AA'
-
-    };
-
-  }
-
-
-  return {
-
-    sitekey: process.env.TURNSTILE_SITE_KEY,
-
-    secretKey: process.env.TURNSTILE_SECRET_KEY
-
-  };
-
-}
-
-
+// Detect test environments using IP addresses or headersfunction isTestEnvironment(request) {  const testIPs = ['127.0.0.1', '::1'];  const isTestIP = testIPs.includes(request.ip);  const hasTestHeader = request.headers['x-test-environment'] === 'secret-token';
+  return isTestIP || hasTestHeader;}
+// Use the appropriate credentials based on the environmentfunction getTurnstileCredentials(request) {  if (isTestEnvironment(request)) {    return {      sitekey: '1x00000000000000000000AA',      secretKey: '1x0000000000000000000000000000000AA'    };  }
+  return {    sitekey: process.env.TURNSTILE_SITE_KEY,    secretKey: process.env.TURNSTILE_SECRET_KEY  };}
 ```
 
 ## Server-side integration
@@ -94,16 +53,7 @@ When rendering your page, inject the appropriate sitekey based on the environmen
 TypeScript
 
 ```
-
-app.get('/your-form', (req, res) => {
-
-  const { sitekey } = getTurnstileCredentials(req);
-
-  res.render('form', { sitekey });
-
-});
-
-
+app.get('/your-form', (req, res) => {  const { sitekey } = getTurnstileCredentials(req);  res.render('form', { sitekey });});
 ```
 
 ## Client-side integration
@@ -111,25 +61,25 @@ app.get('/your-form', (req, res) => {
 Your template can then use the injected sitekey:
 
 ```
-
 <div class="turnstile" data-sitekey="<%= sitekey %>"></div>
-
-
 ```
 
 ## Best practices
 
-1. **Environment detection**  
-   * Use multiple factors to identify test environments (IP, headers, etc.).  
-   * Keep your test environment identifiers secure if you need to test from the public web.
-2. **Credential management**  
-   * Store production credentials securely (for example, in environment variables).  
-   * Never commit credentials to version control.  
-   * Use different credentials for each environment.
-3. **Deployment safety**  
-   * Add checks to prevent test credentials in production.  
-   * Include credential validation in your CI/CD pipeline.  
-   * Monitor for accidental test credential usage.
+1. **Environment detection**
+
+  * Use multiple factors to identify test environments (IP, headers, etc.).
+  * Keep your test environment identifiers secure if you need to test from the public web.
+2. **Credential management**
+
+  * Store production credentials securely (for example, in environment variables).
+  * Never commit credentials to version control.
+  * Use different credentials for each environment.
+3. **Deployment safety**
+
+  * Add checks to prevent test credentials in production.
+  * Include credential validation in your CI/CD pipeline.
+  * Monitor for accidental test credential usage.
 
 ## Testing considerations
 
@@ -145,33 +95,8 @@ For Cypress or similar E2E testing frameworks:
 TypeScript
 
 ```
-
-// Set test header for all test requests
-
-beforeEach(() => {
-
-  cy.intercept('*', (req) => {
-
-    req.headers['x-test-environment'] = 'secret-token';
-
-  });
-
-});
-
-
-// Your test can now interact with the form normally
-
-it('submits form successfully', () => {
-
-  cy.visit('/your-form');
-
-  cy.get('form').submit();
-
-  // Turnstile will automatically pass verification
-
-});
-
-
+// Set test header for all test requestsbeforeEach(() => {  cy.intercept('*', (req) => {    req.headers['x-test-environment'] = 'secret-token';  });});
+// Your test can now interact with the form normallyit('submits form successfully', () => {  cy.visit('/your-form');  cy.get('form').submit();  // Turnstile will automatically pass verification});
 ```
 
 ## Conclusion

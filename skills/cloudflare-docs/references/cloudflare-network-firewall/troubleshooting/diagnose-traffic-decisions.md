@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-network-firewall/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -44,8 +44,8 @@ Before making changes, gather the following information:
 2. Under **Protect & Connect**, go to **Insights** \> **Network analytics**.
 3. In the **All Traffic** tab, select **Add filter**.
 4. Configure the filter:  
-   * Select **Action** \> **equals** \> **Drop**  
-   * Select **Apply**.
+  * Select **Action** \> **equals** \> **Drop**
+  * Select **Apply**.
 5. Filter the time range to when the issue occurred.
 6. Add additional filters if you know the affected traffic characteristics (such as Source IP, Destination IP, and more).
 7. To identify the blocking system: In the **Packet Summary** graph, select the the three dots > **Mitigation system**. This tells you which Cloudflare system blocked the traffic.

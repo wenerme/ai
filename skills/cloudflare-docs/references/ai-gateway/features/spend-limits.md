@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,10 +17,6 @@ Spend limits let you set cost-based budgets on your AI Gateway. When cumulative 
 Unlike [rate limiting](https://developers.cloudflare.com/ai-gateway/features/rate-limiting/), which caps the number of requests, spend limits track actual dollar cost per request based on model pricing. You can scope limits to any combination of model, provider, or [custom metadata](https://developers.cloudflare.com/ai-gateway/observability/custom-metadata/) dimensions like user ID, team, or application.
 
 Spend limits apply to both [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/) requests and [BYOK](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/) requests for models with known pricing.
-
-Note
-
-Unified Billing also has an account-level [spend limit](https://developers.cloudflare.com/ai-gateway/features/unified-billing/#spend-limits) on your loaded credits that applies across all gateways, but only to Unified Billing requests. Both limits are enforced independently — whichever one is reached first will block requests.
 
 ![Spend limits rules configured on a gateway](https://developers.cloudflare.com/_astro/spend-limits-rules.p6zy0Vea_1SihhE.webp) 
 
@@ -80,6 +76,6 @@ You can track your spend per model, provider, or any custom metadata attribute o
 * A maximum of 20 spend limit rules can be configured per gateway.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/spend-limits/#page","headline":"Spend limits · Cloudflare AI Gateway docs","description":"Set cost-based budgets on your AI Gateway to control spending by model, provider, or custom metadata dimensions like user or team.","url":"https://developers.cloudflare.com/ai-gateway/features/spend-limits/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/spend-limits/#page","headline":"Spend limits · Cloudflare AI Gateway docs","description":"Set cost-based budgets on your AI Gateway to control spending by model, provider, or custom metadata dimensions like user or team.","url":"https://developers.cloudflare.com/ai-gateway/features/spend-limits/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/features/spend-limits/","name":"Spend limits"}}]}
 ```

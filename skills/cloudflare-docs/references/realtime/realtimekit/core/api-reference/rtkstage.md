@@ -5,7 +5,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -14,18 +14,18 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 The RTKStage module represents a class to mange the RTKStage of the meeting RTKStage refers to a virtual area, where participants stream are visible to other participants. When a participant is off stage, they are not producing media but only consuming media from participants who are on RTKStage
 
 * [RTKStage](#module%5FRTKStage)  
-   * [module.exports](#exp%5Fmodule%5FRTKStage--module.exports) ⏏  
-         * [new module.exports(context, self, participants, stageSocketHandler, roomSocketHandler)](#new%5Fmodule%5FRTKStage--module.exports%5Fnew)  
-         * [.telemetry](#module%5FRTKStage--module.exports+telemetry)  
-         * [.peerId](#module%5FRTKStage--module.exports+peerId)  
-         * [.getAccessRequests()](#module%5FRTKStage--module.exports+getAccessRequests)  
-         * [.requestAccess()](#module%5FRTKStage--module.exports+requestAccess)  
-         * [.cancelRequestAccess()](#module%5FRTKStage--module.exports+cancelRequestAccess)  
-         * [.grantAccess()](#module%5FRTKStage--module.exports+grantAccess)  
-         * [.denyAccess()](#module%5FRTKStage--module.exports+denyAccess)  
-         * [.join()](#module%5FRTKStage--module.exports+join)  
-         * [.leave()](#module%5FRTKStage--module.exports+leave)  
-         * [.kick(userIds)](#module%5FRTKStage--module.exports+kick)
+  * [module.exports](#exp%5Fmodule%5FRTKStage--module.exports) ⏏  
+    * [new module.exports(context, self, participants, stageSocketHandler, roomSocketHandler)](#new%5Fmodule%5FRTKStage--module.exports%5Fnew)
+    * [.telemetry](#module%5FRTKStage--module.exports+telemetry)
+    * [.peerId](#module%5FRTKStage--module.exports+peerId)
+    * [.getAccessRequests()](#module%5FRTKStage--module.exports+getAccessRequests)
+    * [.requestAccess()](#module%5FRTKStage--module.exports+requestAccess)
+    * [.cancelRequestAccess()](#module%5FRTKStage--module.exports+cancelRequestAccess)
+    * [.grantAccess()](#module%5FRTKStage--module.exports+grantAccess)
+    * [.denyAccess()](#module%5FRTKStage--module.exports+denyAccess)
+    * [.join()](#module%5FRTKStage--module.exports+join)
+    * [.leave()](#module%5FRTKStage--module.exports+leave)
+    * [.kick(userIds)](#module%5FRTKStage--module.exports+kick)
 
 ### module.exports ⏏
 

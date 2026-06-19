@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,216 +16,48 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Resolve requests to your domain to a set of proxy third-party origin URLs.
 
-* [  JavaScript ](#tab-panel-11601)
-* [  TypeScript ](#tab-panel-11602)
-* [  Hono ](#tab-panel-11603)
-* [  Python ](#tab-panel-11604)
+* [  JavaScript ](#tab-panel-11618)
+* [  TypeScript ](#tab-panel-11619)
+* [  Hono ](#tab-panel-11620)
+* [  Python ](#tab-panel-11621)
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request) {
-
-    /**
-
-     * An object with different URLs to fetch
-
-     * @param {Object} ORIGINS
-
-     */
-
-    const ORIGINS = {
-
-      "starwarsapi.yourdomain.com": "swapi.dev",
-
-      "google.yourdomain.com": "www.google.com",
-
-    };
-
-
+export default {  async fetch(request) {    /**     * An object with different URLs to fetch     * @param {Object} ORIGINS     */    const ORIGINS = {      "starwarsapi.yourdomain.com": "swapi.dev",      "google.yourdomain.com": "www.google.com",    };
     const url = new URL(request.url);
-
-
-    // Check if incoming hostname is a key in the ORIGINS object
-
-    if (url.hostname in ORIGINS) {
-
-      const target = ORIGINS[url.hostname];
-
-      url.hostname = target;
-
-      // If it is, proxy request to that third party origin
-
-      return fetch(url.toString(), request);
-
-    }
-
-    // Otherwise, process request as normal
-
-    return fetch(request);
-
-  },
-
-};
-
-
+    // Check if incoming hostname is a key in the ORIGINS object    if (url.hostname in ORIGINS) {      const target = ORIGINS[url.hostname];      url.hostname = target;      // If it is, proxy request to that third party origin      return fetch(url.toString(), request);    }    // Otherwise, process request as normal    return fetch(request);  },};
 ```
 
 TypeScript
 
 ```
-
-export default {
-
-  async fetch(request): Promise<Response> {
-
-    /**
-
-     * An object with different URLs to fetch
-
-     * @param {Object} ORIGINS
-
-     */
-
-    const ORIGINS = {
-
-      "starwarsapi.yourdomain.com": "swapi.dev",
-
-      "google.yourdomain.com": "www.google.com",
-
-    };
-
-
+export default {  async fetch(request): Promise<Response> {    /**     * An object with different URLs to fetch     * @param {Object} ORIGINS     */    const ORIGINS = {      "starwarsapi.yourdomain.com": "swapi.dev",      "google.yourdomain.com": "www.google.com",    };
     const url = new URL(request.url);
-
-
-    // Check if incoming hostname is a key in the ORIGINS object
-
-    if (url.hostname in ORIGINS) {
-
-      const target = ORIGINS[url.hostname];
-
-      url.hostname = target;
-
-      // If it is, proxy request to that third party origin
-
-      return fetch(url.toString(), request);
-
-    }
-
-    // Otherwise, process request as normal
-
-    return fetch(request);
-
-  },
-
-} satisfies ExportedHandler;
-
-
+    // Check if incoming hostname is a key in the ORIGINS object    if (url.hostname in ORIGINS) {      const target = ORIGINS[url.hostname];      url.hostname = target;      // If it is, proxy request to that third party origin      return fetch(url.toString(), request);    }    // Otherwise, process request as normal    return fetch(request);  },} satisfies ExportedHandler;
 ```
 
 TypeScript
 
 ```
-
-import { Hono } from "hono";
-
-import { proxy } from "hono/proxy";
-
-
-// An object with different URLs to fetch
-
-const ORIGINS: Record<string, string> = {
-
-  "starwarsapi.yourdomain.com": "swapi.dev",
-
-  "google.yourdomain.com": "www.google.com",
-
-};
-
-
+import { Hono } from "hono";import { proxy } from "hono/proxy";
+// An object with different URLs to fetchconst ORIGINS: Record<string, string> = {  "starwarsapi.yourdomain.com": "swapi.dev",  "google.yourdomain.com": "www.google.com",};
 const app = new Hono();
-
-
-app.all("*", async (c) => {
-
-  const url = new URL(c.req.url);
-
-
-  // Check if incoming hostname is a key in the ORIGINS object
-
-  if (url.hostname in ORIGINS) {
-
-    const target = ORIGINS[url.hostname];
-
-    url.hostname = target;
-
-
-    // If it is, proxy request to that third party origin
-
-    return proxy(url, c.req.raw);
-
-  }
-
-
-  // Otherwise, process request as normal
-
-  return proxy(c.req.raw);
-
-});
-
-
+app.all("*", async (c) => {  const url = new URL(c.req.url);
+  // Check if incoming hostname is a key in the ORIGINS object  if (url.hostname in ORIGINS) {    const target = ORIGINS[url.hostname];    url.hostname = target;
+    // If it is, proxy request to that third party origin    return proxy(url, c.req.raw);  }
+  // Otherwise, process request as normal  return proxy(c.req.raw);});
 export default app;
-
-
 ```
 
 Python
 
 ```
-
-from workers import WorkerEntrypoint
-
-from js import fetch, URL
-
-
-class Default(WorkerEntrypoint):
-
-    async def fetch(self, request):
-
-        # A dict with different URLs to fetch
-
-        ORIGINS = {
-
-          "starwarsapi.yourdomain.com": "swapi.dev",
-
-          "google.yourdomain.com": "www.google.com",
-
-        }
-
-
+from workers import WorkerEntrypointfrom js import fetch, URL
+class Default(WorkerEntrypoint):    async def fetch(self, request):        # A dict with different URLs to fetch        ORIGINS = {          "starwarsapi.yourdomain.com": "swapi.dev",          "google.yourdomain.com": "www.google.com",        }
         url = URL.new(request.url)
-
-
-        # Check if incoming hostname is a key in the ORIGINS object
-
-        if url.hostname in ORIGINS:
-
-            url.hostname = ORIGINS[url.hostname]
-
-            # If it is, proxy request to that third party origin
-
-            return fetch(url.toString(), request)
-
-
-        # Otherwise, process request as normal
-
-        return fetch(request)
-
-
+        # Check if incoming hostname is a key in the ORIGINS object        if url.hostname in ORIGINS:            url.hostname = ORIGINS[url.hostname]            # If it is, proxy request to that third party origin            return fetch(url.toString(), request)
+        # Otherwise, process request as normal        return fetch(request)
 ```
 
 ```json

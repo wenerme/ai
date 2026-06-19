@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/vectorize/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,10 +25,10 @@ You are not billed for CPU, memory, "active index hours", or the number of index
 
 ## Billing metrics
 
-| [Workers Free](https://developers.cloudflare.com/workers/platform/pricing/#workers) | [Workers Paid](https://developers.cloudflare.com/workers/platform/pricing/#workers) |                                                                                 |
-| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| **Total queried vector dimensions**                                                 | 30 million queried vector dimensions / month                                        | First 50 million queried vector dimensions / month included + $0.01 per million |
-| **Total stored vector dimensions**                                                  | 5 million stored vector dimensions                                                  | First 10 million stored vector dimensions + $0.05 per 100 million               |
+|                                     | [Workers Free](https://developers.cloudflare.com/workers/platform/pricing/#workers) | [Workers Paid](https://developers.cloudflare.com/workers/platform/pricing/#workers) |
+| ----------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| **Total queried vector dimensions** | 30 million queried vector dimensions / month                                        | First 50 million queried vector dimensions / month included + $0.01 per million     |
+| **Total stored vector dimensions**  | 5 million stored vector dimensions                                                  | First 10 million stored vector dimensions + $0.05 per 100 million                   |
 
 ### Calculating vector dimensions
 

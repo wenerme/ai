@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,8 +30,8 @@ Aura-2 is a context-aware text-to-speech (TTS) model that applies natural pacing
 
 ## Parameters
 
-* [ Input ](#tab-panel-4727)
-* [ Output ](#tab-panel-4728)
+* [ Input ](#tab-panel-4801)
+* [ Output ](#tab-panel-4802)
 
 speaker
 
@@ -57,13 +57,13 @@ bit\_rate
 
 `number`The bitrate of the audio in bits per second. Choose from predefined ranges or specific values based on the encoding type.
 
-The binding returns a `ReadableStream` with the audio in MPEG format (check the model's output schema).
+ The binding returns a `ReadableStream` with the audio in MPEG format (check the model's output schema). 
 
 ## API Schemas (Raw)
 
 Input [ ](https://developers.cloudflare.com/workers-ai/models/aura-2-es/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/aura-2-es/schema-input.json "Download") 
 
-Output [ ](https://developers.cloudflare.com/workers-ai/models/aura-2-es/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/aura-2-es/schema-output.json "Download") 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/aura-2-es/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/aura-2-es/schema-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/aura-2-es/#page","headline":"aura-2-es (Deepgram) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Aura-2 is a context-aware text-to-speech (TTS) model that applies natural pacing, expressiveness, and fillers based on the context of the provided text. The quality of your text input directly impacts the naturalness of the audio output.","url":"https://developers.cloudflare.com/workers-ai/models/aura-2-es/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

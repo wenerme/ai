@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/radar/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,47 +33,13 @@ In the following example, we will examine both `ALL` and `HTTP` traffic in two [
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/radar/netflows/timeseries?name=meo_all&product=ALL&dateRange=1d&asn=3243&name=meo_http&product=HTTP&dateRange=1d&asn=3243&format=json&aggInterval=1h" \
-
---header "Authorization: Bearer <API_TOKEN>"
-
-
+curl "https://api.cloudflare.com/client/v4/radar/netflows/timeseries?name=meo_all&product=ALL&dateRange=1d&asn=3243&name=meo_http&product=HTTP&dateRange=1d&asn=3243&format=json&aggInterval=1h" \--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 This is the abbreviated response:
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "result": {
-
-    "AS3243_all": {
-
-      "timestamps": ["2022-11-08T14:00:00Z", "2022-11-08T15:00:00Z", "..."],
-
-      "values": ["0.565885", "0.586434", "..."]
-
-    },
-
-    "AS3243_http": {
-
-      "timestamps": ["2022-11-08T14:00:00Z", "2022-11-08T15:00:00Z", "..."],
-
-      "values": ["0.548564", "0.568329", "..."]
-
-    }
-
-  }
-
-}
-
-
+{  "success": true,  "errors": [],  "result": {    "AS3243_all": {      "timestamps": ["2022-11-08T14:00:00Z", "2022-11-08T15:00:00Z", "..."],      "values": ["0.565885", "0.586434", "..."]    },    "AS3243_http": {      "timestamps": ["2022-11-08T14:00:00Z", "2022-11-08T15:00:00Z", "..."],      "values": ["0.548564", "0.568329", "..."]    }  }}
 ```
 
 `HTTP` traffic values are similar to `ALL` traffic values. This means that most traffic Cloudflare receives from this AS is traffic to websites served by Cloudflare's [CDN ↗](https://www.cloudflare.com/en-gb/learning/cdn/what-is-a-cdn/) product.
@@ -83,47 +49,13 @@ In this other example, we will examine [AS174 ↗](https://radar.cloudflare.com/
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/radar/netflows/timeseries?name=AS174_all&product=ALL&dateRange=1d&asn=174&name=AS174_http&product=HTTP&dateRange=1d&asn=174&format=json&aggInterval=1h" \
-
---header "Authorization: Bearer <API_TOKEN>"
-
-
+curl "https://api.cloudflare.com/client/v4/radar/netflows/timeseries?name=AS174_all&product=ALL&dateRange=1d&asn=174&name=AS174_http&product=HTTP&dateRange=1d&asn=174&format=json&aggInterval=1h" \--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 The abbreviated response is:
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "result": {
-
-    "AS174_all": {
-
-      "timestamps": ["2022-11-08T14:00:00Z", "2022-11-08T15:00:00Z", "..."],
-
-      "values": ["0.917348", "1.0", "..."]
-
-    },
-
-    "AS174_http": {
-
-      "timestamps": ["2022-11-08T14:00:00Z", "2022-11-08T15:00:00Z", "..."],
-
-      "values": ["0.381777", "0.408091", "..."]
-
-    }
-
-  }
-
-}
-
-
+{  "success": true,  "errors": [],  "result": {    "AS174_all": {      "timestamps": ["2022-11-08T14:00:00Z", "2022-11-08T15:00:00Z", "..."],      "values": ["0.917348", "1.0", "..."]    },    "AS174_http": {      "timestamps": ["2022-11-08T14:00:00Z", "2022-11-08T15:00:00Z", "..."],      "values": ["0.381777", "0.408091", "..."]    }  }}
 ```
 
 Here, there is less `HTTP` traffic compared to other types of traffic — which makes sense, since this is not an ISP serving end-users.
@@ -133,63 +65,13 @@ Note that here we made two separate requests since we are only interested in whe
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/radar/netflows/timeseries?name=AS174_all&product=ALL&dateRange=1d&asn=174&name=AS174_http&product=HTTP&dateRange=1d&asn=174&name=AS3243_all&product=ALL&dateRange=1d&asn=3243&name=AS3243_http&product=HTTP&dateRange=1d&asn=3243&format=json&aggInterval=1h" \
-
---header "Authorization: Bearer <API_TOKEN>"
-
-
+curl "https://api.cloudflare.com/client/v4/radar/netflows/timeseries?name=AS174_all&product=ALL&dateRange=1d&asn=174&name=AS174_http&product=HTTP&dateRange=1d&asn=174&name=AS3243_all&product=ALL&dateRange=1d&asn=3243&name=AS3243_http&product=HTTP&dateRange=1d&asn=3243&format=json&aggInterval=1h" \--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 which would lead to a response like this:
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "result": {
-
-    "AS174_all": {
-
-      "timestamps": ["2022-11-08T14:00:00Z", "2022-11-08T15:00:00Z", "..."],
-
-      "values": ["0.917348", "1.0", "..."]
-
-    },
-
-    "AS174_http": {
-
-      "timestamps": ["2022-11-08T14:00:00Z", "2022-11-08T15:00:00Z", "..."],
-
-      "values": ["0.381777", "0.408091", "..."]
-
-    },
-
-    "AS3243_all": {
-
-      "timestamps": ["2022-11-08T14:00:00Z", "2022-11-08T15:00:00Z", "..."],
-
-      "values": ["0.317136", "0.328652", "..."]
-
-    },
-
-    "AS3243_http": {
-
-      "timestamps": ["2022-11-08T14:00:00Z", "2022-11-08T15:00:00Z", "..."],
-
-      "values": ["0.307429", "0.318505", "..."]
-
-    }
-
-  }
-
-}
-
-
+{  "success": true,  "errors": [],  "result": {    "AS174_all": {      "timestamps": ["2022-11-08T14:00:00Z", "2022-11-08T15:00:00Z", "..."],      "values": ["0.917348", "1.0", "..."]    },    "AS174_http": {      "timestamps": ["2022-11-08T14:00:00Z", "2022-11-08T15:00:00Z", "..."],      "values": ["0.381777", "0.408091", "..."]    },    "AS3243_all": {      "timestamps": ["2022-11-08T14:00:00Z", "2022-11-08T15:00:00Z", "..."],      "values": ["0.317136", "0.328652", "..."]    },    "AS3243_http": {      "timestamps": ["2022-11-08T14:00:00Z", "2022-11-08T15:00:00Z", "..."],      "values": ["0.307429", "0.318505", "..."]    }  }}
 ```
 
 This response shows how Cloudflare receives more traffic from AS174 than from AS3243.

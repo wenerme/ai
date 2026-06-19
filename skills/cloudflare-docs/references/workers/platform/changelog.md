@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -152,16 +152,16 @@ This is _different_ from [compatibility dates](https://developers.cloudflare.com
 
 ## 2024-12-19
 
-* **Cloudflare GitHub App Permissions Update**  
-   * Cloudflare is requesting updated permissions for the [Cloudflare GitHub App](https://github.com/apps/cloudflare-workers-and-pages) to enable features like automatically creating a repository on your GitHub account and deploying the new repository for you when getting started with a template. This feature is coming out soon to support a better onboarding experience.  
-   * **Requested permissions:**  
-         * [Repository Administration](https://docs.github.com/en/rest/authentication/permissions-required-for-github-apps?apiVersion=2022-11-28#repository-permissions-for-administration) (read/write) to create repositories.  
-         * [Contents](https://docs.github.com/en/rest/authentication/permissions-required-for-github-apps?apiVersion=2022-11-28#repository-permissions-for-contents) (read/write) to push code to the created repositories.  
-   * **Who is impacted:**  
-         * Existing users will be prompted to update permissions when GitHub sends an email with subject "\[GitHub\] Cloudflare Workers & Pages is requesting updated permission" on December 19th, 2024.  
-         * New users installing the app will see the updated permissions during the connecting repository process.  
-   * **Action:** Review and accept the permissions update to use upcoming features. _If you decline or take no action, you can continue connecting repositories and deploying changes via the Cloudflare GitHub App as you do today, but new features requiring these permissions will not be available._  
-   * **Questions?** Visit [#github-permissions-update](https://discord.com/channels/595317990191398933/1313895851520688163) in the Cloudflare Developers Discord.
+* **Cloudflare GitHub App Permissions Update**
+  * Cloudflare is requesting updated permissions for the [Cloudflare GitHub App](https://github.com/apps/cloudflare-workers-and-pages) to enable features like automatically creating a repository on your GitHub account and deploying the new repository for you when getting started with a template. This feature is coming out soon to support a better onboarding experience.
+  * **Requested permissions:**
+    * [Repository Administration](https://docs.github.com/en/rest/authentication/permissions-required-for-github-apps?apiVersion=2022-11-28#repository-permissions-for-administration) (read/write) to create repositories.
+    * [Contents](https://docs.github.com/en/rest/authentication/permissions-required-for-github-apps?apiVersion=2022-11-28#repository-permissions-for-contents) (read/write) to push code to the created repositories.
+  * **Who is impacted:**
+    * Existing users will be prompted to update permissions when GitHub sends an email with subject "\[GitHub\] Cloudflare Workers & Pages is requesting updated permission" on December 19th, 2024.
+    * New users installing the app will see the updated permissions during the connecting repository process.
+  * **Action:** Review and accept the permissions update to use upcoming features. _If you decline or take no action, you can continue connecting repositories and deploying changes via the Cloudflare GitHub App as you do today, but new features requiring these permissions will not be available._
+  * **Questions?** Visit [#github-permissions-update](https://discord.com/channels/595317990191398933/1313895851520688163) in the Cloudflare Developers Discord.
 
 ## 2024-11-18
 

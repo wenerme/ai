@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/kv/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -24,52 +24,31 @@ KV namespace IDs are public and bound to your account.
 
 To bind KV namespaces to your Worker, assign an array of the below object to the `kv_namespaces` key.
 
-* `binding` ` string ` required  
-   * The binding name used to refer to the KV namespace.
-* `id` ` string ` required  
-   * The ID of the KV namespace.
-* `preview_id` ` string ` optional  
-   * The ID of the KV namespace used during `wrangler dev`.
+* `binding` ` string ` required
+
+  * The binding name used to refer to the KV namespace.
+* `id` ` string ` required
+
+  * The ID of the KV namespace.
+* `preview_id` ` string ` optional
+
+  * The ID of the KV namespace used during `wrangler dev`.
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-8947)
-* [  wrangler.toml ](#tab-panel-8948)
+* [  wrangler.jsonc ](#tab-panel-9023)
+* [  wrangler.toml ](#tab-panel-9024)
 
 JSONC
 
 ```
-
-{
-
-  "kv_namespaces": [
-
-    {
-
-      "binding": "<TEST_NAMESPACE>",
-
-      "id": "<TEST_ID>"
-
-    }
-
-  ]
-
-}
-
-
+{  "kv_namespaces": [    {      "binding": "<TEST_NAMESPACE>",      "id": "<TEST_ID>"    }  ]}
 ```
 
 TOML
 
 ```
-
-[[kv_namespaces]]
-
-binding = "<TEST_NAMESPACE>"
-
-id = "<TEST_ID>"
-
-
+[[kv_namespaces]]binding = "<TEST_NAMESPACE>"id = "<TEST_ID>"
 ```
 
 ## Bind your KV namespace via the dashboard

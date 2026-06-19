@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,21 +25,13 @@ If the request did not invoke a Worker, the value of this field will be `0`.
 Example value:
 
 ```
-
 12
-
-
 ```
 
 Example usage:
 
 ```
-
-# Matches requests where the Worker execution time exceeded 500 milliseconds
-
-cf.timings.worker_msec > 500
-
-
+# Matches requests where the Worker execution time exceeded 500 millisecondscf.timings.worker_msec > 500
 ```
 
 Categories: 

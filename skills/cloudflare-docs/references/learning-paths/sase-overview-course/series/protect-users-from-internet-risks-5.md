@@ -6,30 +6,36 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
 # Protect your users from Internet risks
 
-* [ Watch this episode ](#tab-panel-9146)
-* [ Series overview ](#tab-panel-9147)
+* [ Watch this episode ](#tab-panel-9222)
+* [ Series overview ](#tab-panel-9223)
 
 The Internet has become part of your corporate network, however browsing the web comes with hidden risks including malware, phishing attacks, and malicious websites. In this video, we will explore how Cloudflare's Secure Web Gateway (SWG) helps keep users safe by filtering and inspecting Internet traffic in real time. Whether you are protecting a remote workforce or securing an entire organization, Cloudflare ensures that users can access the web securely — without sacrificing speed or productivity.
 
 Chapters
 
 * ![Introduction to Cloudflare's SASE and the Importance of Secure Corporate Networking](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=0s)  
+
  **Introduction to Cloudflare's SASE and the Importance of Secure Corporate Networking** 0s
 * ![Using Secure Web Gateway to Inspect and Control Internet Traffic](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=66s)  
+
  **Using Secure Web Gateway to Inspect and Control Internet Traffic** 1m6s
 * ![Protecting Users with DNS Filtering and Threat Intelligence](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=124s)  
+
  **Protecting Users with DNS Filtering and Threat Intelligence** 2m4s
 * ![Implementing Network-Level Security Policies for Private and Public Traffic](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=217s)  
+
  **Implementing Network-Level Security Policies for Private and Public Traffic** 3m37s
 * ![Advanced HTTP Filtering and Data Loss Prevention with Cloudflare](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=263s)  
+
  **Advanced HTTP Filtering and Data Loss Prevention with Cloudflare** 4m23s
 * ![Isolating Risky Websites and Preventing Data Leaks with Browser Isolation](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=348s)  
+
  **Isolating Risky Websites and Preventing Data Leaks with Browser Isolation** 5m48s
 
 **Related content**
@@ -49,7 +55,7 @@ If you want to dive into detail about modernizing your corporate network with Cl
 
 [ Watch Episode 4: Connect and secure from any network to anywhere ](https://developers.cloudflare.com/learning-paths/sase-overview-course/series/connect-secure-from-any-network-to-anywhere-4/) In this video, we discuss how to connect any network to Cloudflare to any other network and the Internet. Learn how this improves security and performance for your networks and applications. 
 
-[ Watch Episode 5: Protect your users from Internet risks ](https://developers.cloudflare.com/learning-paths/sase-overview-course/series/protect-users-from-internet-risks-5/) In this video, we will explore how Cloudflare's Secure Web Gateway (SWG) helps keep users and devices safe by filtering and inspecting Internet traffic in real time. 
+[ Watch Episode 5: Protect your users from Internet risks ](https://developers.cloudflare.com/learning-paths/sase-overview-course/series/protect-users-from-internet-risks-5/) In this video, we will explore how Cloudflare's Secure Web Gateway (SWG) helps keep users and devices safe by filtering and inspecting Internet traffic in real time.
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/sase-overview-course/series/protect-users-from-internet-risks-5/#page","headline":"Protect your users from Internet risks · Cloudflare Learning Paths","description":"Filter Internet traffic to protect users.","url":"https://developers.cloudflare.com/learning-paths/sase-overview-course/series/protect-users-from-internet-risks-5/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -74,7 +74,7 @@ Refer to the [Rules documentation](https://developers.cloudflare.com/waf/rate-li
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Account API Gateway`
 * `Account API Gateway Read`
 * `Domain API Gateway`
@@ -83,14 +83,7 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Retrieve information about an operation
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/api_gateway/operations/$OPERATION_ID" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/api_gateway/operations/$OPERATION_ID" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ## Special cases
@@ -118,16 +111,7 @@ You can follow the rate limiting rule example below:
 Example rule expression
 
 ```
-
-(http.request.method eq "GET" and
-
-http.host eq "<YOUR_DOMAIN>" and
-
-http.request.uri.path matches "</EXAMPLE_PATH>" and
-
-lookup_json_string(http.request.jwt.claims["<JWT_TOKEN_CONFIGURATION_ID>"][0], "aud") eq "free-tier"
-
-
+(http.request.method eq "GET" andhttp.host eq "<YOUR_DOMAIN>" andhttp.request.uri.path matches "</EXAMPLE_PATH>" andlookup_json_string(http.request.jwt.claims["<JWT_TOKEN_CONFIGURATION_ID>"][0], "aud") eq "free-tier"
 ```
 
 ## Limitations

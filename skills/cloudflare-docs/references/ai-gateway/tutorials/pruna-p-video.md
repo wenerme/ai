@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,8 +28,8 @@ This tutorial shows how to call the [Pruna's P-video ↗](https://replicate.com/
 
 ## 2\. Create an AI Gateway
 
-* [ Dashboard ](#tab-panel-6568)
-* [ API ](#tab-panel-6569)
+* [ Dashboard ](#tab-panel-6644)
+* [ API ](#tab-panel-6645)
 
 [ Go to **AI Gateway** ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
@@ -40,9 +40,10 @@ This tutorial shows how to call the [Pruna's P-video ↗](https://replicate.com/
 
 To set up an AI Gateway using the API:
 
-1. [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:  
-   * `AI Gateway - Read`  
-   * `AI Gateway - Edit`
+1. [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:
+
+  * `AI Gateway - Read`
+  * `AI Gateway - Edit`
 2. Get your [Account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
 3. Using that API token and Account ID, send a [POST request](https://developers.cloudflare.com/api/resources/ai%5Fgateway/methods/create/) to the Cloudflare API.
 
@@ -55,26 +56,14 @@ To add authentication to your gateway, refer to [Authenticated Gateway](https://
 Replace the standard Replicate API base URL with the AI Gateway URL:
 
 ```
-
-# Instead of:
-
-https://api.replicate.com/v1
-
-
-# Use:
-
-https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/replicate
-
-
+# Instead of:https://api.replicate.com/v1
+# Use:https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/replicate
 ```
 
 For example, if your account ID is `abc123` and your gateway is `my-gateway`:
 
 ```
-
 https://gateway.ai.cloudflare.com/v1/abc123/my-gateway/replicate
-
-
 ```
 
 ## 4\. Generate a video
@@ -84,38 +73,7 @@ P-video predictions generally complete within 30 seconds. Because this is under 
 Terminal window
 
 ```
-
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/replicate/predictions \
-
-  --header "Authorization: Bearer {replicate_api_token}" \
-
-  --header "cf-aig-authorization: Bearer {cloudflare_api_token}" \
-
-  --header "Content-Type: application/json" \
-
-  --header "Prefer: wait" \
-
-  --data '{
-
-    "version": "prunaai/p-video",
-
-    "input": {
-
-      "prompt": "A cat walking through a field of flowers in slow motion",
-
-      "duration": 5,
-
-      "aspect_ratio": "16:9",
-
-      "resolution": "720p",
-
-      "fps": 24
-
-    }
-
-  }'
-
-
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/replicate/predictions \  --header "Authorization: Bearer {replicate_api_token}" \  --header "cf-aig-authorization: Bearer {cloudflare_api_token}" \  --header "Content-Type: application/json" \  --header "Prefer: wait" \  --data '{    "version": "prunaai/p-video",    "input": {      "prompt": "A cat walking through a field of flowers in slow motion",      "duration": 5,      "aspect_ratio": "16:9",      "resolution": "720p",      "fps": 24    }  }'
 ```
 
 * `Authorization` — your Replicate API token (authenticates with Replicate).
@@ -133,59 +91,13 @@ If your request may exceed 60 seconds (for example, with longer durations or hig
 Terminal window
 
 ```
-
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/replicate/predictions \
-
-  --header "Authorization: Bearer {replicate_api_token}" \
-
-  --header "cf-aig-authorization: Bearer {cloudflare_api_token}" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-    "version": "prunaai/p-video",
-
-    "input": {
-
-      "prompt": "A cat walking through a field of flowers in slow motion",
-
-      "duration": 5,
-
-      "aspect_ratio": "16:9",
-
-      "resolution": "720p",
-
-      "fps": 24
-
-    }
-
-  }'
-
-
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/replicate/predictions \  --header "Authorization: Bearer {replicate_api_token}" \  --header "cf-aig-authorization: Bearer {cloudflare_api_token}" \  --header "Content-Type: application/json" \  --data '{    "version": "prunaai/p-video",    "input": {      "prompt": "A cat walking through a field of flowers in slow motion",      "duration": 5,      "aspect_ratio": "16:9",      "resolution": "720p",      "fps": 24    }  }'
 ```
 
 The response includes a prediction `id`:
 
 ```
-
-{
-
-  "id": "xyz789...",
-
-  "status": "starting",
-
-  "urls": {
-
-    "get": "https://api.replicate.com/v1/predictions/xyz789...",
-
-    "cancel": "https://api.replicate.com/v1/predictions/xyz789.../cancel"
-
-  }
-
-}
-
-
+{  "id": "xyz789...",  "status": "starting",  "urls": {    "get": "https://api.replicate.com/v1/predictions/xyz789...",    "cancel": "https://api.replicate.com/v1/predictions/xyz789.../cancel"  }}
 ```
 
 Poll the prediction status until it completes:
@@ -193,14 +105,7 @@ Poll the prediction status until it completes:
 Terminal window
 
 ```
-
-curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/replicate/predictions/{prediction_id} \
-
-  --header "Authorization: Bearer {replicate_api_token}" \
-
-  --header "cf-aig-authorization: Bearer {cloudflare_api_token}"
-
-
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/replicate/predictions/{prediction_id} \  --header "Authorization: Bearer {replicate_api_token}" \  --header "cf-aig-authorization: Bearer {cloudflare_api_token}"
 ```
 
 Keep polling until `status` is `succeeded` (or `failed`). When complete, the `output` field contains a URL to the generated video file.

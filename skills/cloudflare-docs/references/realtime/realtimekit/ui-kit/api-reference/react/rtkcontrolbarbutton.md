@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,45 +33,15 @@ A skeleton component used for composing custom controlbar buttons.
 ### Basic Usage
 
 ```
-
 import { RtkControlbarButton } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return <RtkControlbarButton />;
-
-}
-
-
+function MyComponent() {  return <RtkControlbarButton />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkControlbarButton } from '@cloudflare/realtimekit-react-ui';
-
-
-function MyComponent() {
-
-  return (
-
-    <RtkControlbarButton
-
-      brandIcon={true}
-
-      disabled={true}
-
-      icon="example"
-
-    />
-
-  );
-
-}
-
-
+function MyComponent() {  return (    <RtkControlbarButton      brandIcon={true}      disabled={true}      icon="example"    />  );}
 ```
 
 ```json

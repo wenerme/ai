@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -53,10 +53,7 @@ Once you have retrieved a token, you can access the protected API. The `cloudfla
 Terminal window
 
 ```
-
 cloudflared access curl http://example.com
-
-
 ```
 
 It is possible also to use the `put` command with `cloudflared` for any Unix tool to include the token in the request.
@@ -72,10 +69,7 @@ The `login` command initiates the login flow for an application behind Access.
 Terminal window
 
 ```
-
 cloudflared access login http://example.com
-
-
 ```
 
 ### curl
@@ -85,10 +79,7 @@ The `curl` command invokes the client wrapper and includes the token in the requ
 Terminal window
 
 ```
-
 cloudflared access curl http://example.com
-
-
 ```
 
 ### token
@@ -98,10 +89,7 @@ The `token` command retrieves the token scoped to that specific application for 
 Terminal window
 
 ```
-
 cloudflared access token -app=http://example.com
-
-
 ```
 
 ## Using the token as an environment variable
@@ -126,10 +114,7 @@ Once you have exported the token to your environment, use the variable with the 
 Terminal window
 
 ```
-
 curl -H "cf-access-token: $TOKEN" https://example.com/rest/api/2/item/foo-123
-
-
 ```
 
 ```json

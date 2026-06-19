@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -20,91 +20,29 @@ When browser automation fails or behaves unexpectedly, it can be difficult to un
 
 Pass `recording: true` to `puppeteer.launch()` or `playwright.launch()`:
 
-* [ Puppeteer ](#tab-panel-6862)
-* [ Playwright ](#tab-panel-6863)
+* [ Puppeteer ](#tab-panel-6938)
+* [ Playwright ](#tab-panel-6939)
 
 TypeScript
 
 ```
-
 import puppeteer from "@cloudflare/puppeteer";
-
-
-interface Env {
-
-  MYBROWSER: Fetcher;
-
-}
-
-
-export default {
-
-  async fetch(request: Request, env: Env): Promise<Response> {
-
-    const browser = await puppeteer.launch(env.MYBROWSER, { recording: true });
-
-    const page = await browser.newPage();
-
-
-    await page.goto("https://example.com");
-
-    // ... your automation steps ...
-
-
-    const sessionId = browser.sessionId();
-
-    await browser.close();
-
-
-    return new Response(`Session recorded: ${sessionId}`);
-
-  },
-
-};
-
-
+interface Env {  MYBROWSER: Fetcher;}
+export default {  async fetch(request: Request, env: Env): Promise<Response> {    const browser = await puppeteer.launch(env.MYBROWSER, { recording: true });    const page = await browser.newPage();
+    await page.goto("https://example.com");    // ... your automation steps ...
+    const sessionId = browser.sessionId();    await browser.close();
+    return new Response(`Session recorded: ${sessionId}`);  },};
 ```
 
 TypeScript
 
 ```
-
 import { launch } from "@cloudflare/playwright";
-
-
-interface Env {
-
-  MYBROWSER: Fetcher;
-
-}
-
-
-export default {
-
-  async fetch(request: Request, env: Env): Promise<Response> {
-
-    const browser = await launch(env.MYBROWSER, { recording: true });
-
-    const page = await browser.newPage();
-
-
-    await page.goto("https://example.com");
-
-    // ... your automation steps ...
-
-
-    const sessionId = browser.sessionId();
-
-    await browser.close();
-
-
-    return new Response(`Session recorded: ${sessionId}`);
-
-  },
-
-};
-
-
+interface Env {  MYBROWSER: Fetcher;}
+export default {  async fetch(request: Request, env: Env): Promise<Response> {    const browser = await launch(env.MYBROWSER, { recording: true });    const page = await browser.newPage();
+    await page.goto("https://example.com");    // ... your automation steps ...
+    const sessionId = browser.sessionId();    await browser.close();
+    return new Response(`Session recorded: ${sessionId}`);  },};
 ```
 
 Note
@@ -116,43 +54,13 @@ The recording is finalized when the browser session closes, whether you call `br
 When connecting to Browser Run from any environment using the [CDP endpoint](https://developers.cloudflare.com/browser-run/cdp/), add `recording=true` as a query parameter to the WebSocket URL:
 
 ```
-
 wss://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser-rendering/devtools/browser?recording=true&keep_alive=600000
-
-
 ```
 
 For example, to enable session recording in an MCP client, add `recording=true` to the `--wsEndpoint` URL in your client configuration:
 
 ```
-
-{
-
-  "mcpServers": {
-
-    "browser-rendering": {
-
-      "command": "npx",
-
-      "args": [
-
-        "-y",
-
-        "chrome-devtools-mcp@latest",
-
-        "--wsEndpoint=wss://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser-rendering/devtools/browser?recording=true&keep_alive=600000",
-
-        "--wsHeaders={\"Authorization\":\"Bearer <API_TOKEN>\"}"
-
-      ]
-
-    }
-
-  }
-
-}
-
-
+{  "mcpServers": {    "browser-rendering": {      "command": "npx",      "args": [        "-y",        "chrome-devtools-mcp@latest",        "--wsEndpoint=wss://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser-rendering/devtools/browser?recording=true&keep_alive=600000",        "--wsHeaders={\"Authorization\":\"Bearer <API_TOKEN>\"}"      ]    }  }}
 ```
 
 For other MCP clients and CDP usage with Puppeteer or Playwright, refer to the [CDP documentation](https://developers.cloudflare.com/browser-run/cdp/).
@@ -176,35 +84,13 @@ You can also retrieve a recording programmatically using the session ID. Use `br
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser-rendering/recording/<SESSION_ID> \
-
-  -H "Authorization: Bearer <API_TOKEN>"
-
-
+curl https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser-rendering/recording/<SESSION_ID> \  -H "Authorization: Bearer <API_TOKEN>"
 ```
 
 A successful response looks similar to the following:
 
 ```
-
-{
-
-  "sessionId": "e26d4660-5b78-4761-b82f-c6b5bad5a925",
-
-  "duration": 4380,
-
-  "events": {
-
-    "target-1": [],
-
-    "target-2": []
-
-  }
-
-}
-
-
+{  "sessionId": "e26d4660-5b78-4761-b82f-c6b5bad5a925",  "duration": 4380,  "events": {    "target-1": [],    "target-2": []  }}
 ```
 
 The keys in `events` (such as `target-1`, `target-2`) are [CDP targets ↗](https://chromedevtools.github.io/devtools-protocol/tot/Target/). In the context of session recording, each target typically corresponds to a browser tab. A session that opened multiple tabs will have one target per tab, and each target's value is an independent rrweb event array for that tab.

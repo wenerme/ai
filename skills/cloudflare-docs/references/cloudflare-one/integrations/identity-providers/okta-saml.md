@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,12 +28,14 @@ To set up SAML with Okta as your identity provider:
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback  
 ```  
 You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
-6. In the **Attribute Statements** section, enter the following information:  
-   * **Name**: Enter `email`.  
-   * **Value**: Enter `user.email`.
-7. (Optional) If you are using Okta groups, create a **Group Attribute Statement** with the following information:  
-   * **Name**: Enter `groups`.  
-   * **Filter**: Select _Matches regex_ and enter `.*`.
+6. In the **Attribute Statements** section, enter the following information:
+
+  * **Name**: Enter `email`.
+  * **Value**: Enter `user.email`.
+7. (Optional) If you are using Okta groups, create a **Group Attribute Statement** with the following information:
+
+  * **Name**: Enter `groups`.
+  * **Filter**: Select _Matches regex_ and enter `.*`.
 ![Configuring attribute statements in Okta](https://developers.cloudflare.com/_astro/okta-saml-2.BkDiypq5_1d8kYQ.webp) 
 1. Select **Next**.
 2. Select **I'm an Okta customer adding an internal app** and check **This is an internal app that we have created**.
@@ -46,11 +48,12 @@ You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloud
 ![Retrieving SAML provider information in Okta](https://developers.cloudflare.com/_astro/okta-saml-5.CWJU56SQ_1In0gM.webp) 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity provider**.
 2. Under **Your identity providers**, select **Add new identity provider**, and select _SAML_.
-3. Fill in the following information:  
-   * **Name**: Name your identity provider.  
-   * **Single Sign On URL**: Enter the Identity Provider Single-Sign-On URL from Okta.  
-   * **Issuer ID**: Enter the Identity Provider Issuer from Okta, for example `http://www.okta.com/<your-okta-entity-id>`.  
-   * **Signing Certificate**: Copy-paste the X.509 Certificate from Okta.
+3. Fill in the following information:
+
+  * **Name**: Name your identity provider.
+  * **Single Sign On URL**: Enter the Identity Provider Single-Sign-On URL from Okta.
+  * **Issuer ID**: Enter the Identity Provider Issuer from Okta, for example `http://www.okta.com/<your-okta-entity-id>`.
+  * **Signing Certificate**: Copy-paste the X.509 Certificate from Okta.
 4. (Recommended) Enable **Sign SAML authentication request**.
 5. (Recommended) Under **SAML attributes**, add the `email` and `groups` attributes. The `groups` attribute is required if you want to create policies based on [Okta groups](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/#okta-saml).
 ![Adding optional SAML attributes in Cloudflare One](https://developers.cloudflare.com/_astro/okta-saml-6.4pq9o6NF_xya5c.webp) 
@@ -65,36 +68,7 @@ SAML attributes are only refreshed during authentications with the Okta identity
 ## Example API configuration
 
 ```
-
-{
-
-  "config": {
-
-    "issuer_url": "http://www.okta.com/exkbhqj29iGxT7GwT0h7",
-
-    "sso_target_url": "https://dev-abc123.oktapreview.com/app/myapp/exkbhqj29iGxT7GwT0h7/sso/saml",
-
-    "attributes": ["email", "group"],
-
-    "email_attribute_name": "",
-
-    "sign_request": false,
-
-    "idp_public_certs": [
-
-      "MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEG\nA1UEC.....GF/Q2/MHadws97cZg\nuTnQyuOqPuHbnN83d/2l1NSYKCbHt24o"
-
-    ]
-
-  },
-
-  "type": "saml",
-
-  "name": "okta saml example"
-
-}
-
-
+{  "config": {    "issuer_url": "http://www.okta.com/exkbhqj29iGxT7GwT0h7",    "sso_target_url": "https://dev-abc123.oktapreview.com/app/myapp/exkbhqj29iGxT7GwT0h7/sso/saml",    "attributes": ["email", "group"],    "email_attribute_name": "",    "sign_request": false,    "idp_public_certs": [      "MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEG\nA1UEC.....GF/Q2/MHadws97cZg\nuTnQyuOqPuHbnN83d/2l1NSYKCbHt24o"    ]  },  "type": "saml",  "name": "okta saml example"}
 ```
 
 ```json

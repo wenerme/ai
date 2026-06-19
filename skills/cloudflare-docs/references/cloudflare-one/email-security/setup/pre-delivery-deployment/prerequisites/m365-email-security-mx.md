@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,41 +31,13 @@ To check your existing TTL, open a terminal window and run the following command
 Terminal window
 
 ```
-
 dig mx <YOUR_DOMAIN>
-
-
 ```
 
 ```
-
-; <<>> DiG 9.10.6 <<>> mx <YOUR_DOMAIN>
-
-;; global options: +cmd
-
-;; Got answer:
-
-;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 39938
-
-;; flags: qr rd ra; QUERY: 1, ANSWER: 5, AUTHORITY: 0, ADDITIONAL: 1
-
-
-;; OPT PSEUDOSECTION:
-
-; EDNS: version: 0, flags:; udp: 4096
-
-;; QUESTION SECTION:
-
-;<YOUR_DOMAIN>.    IN  MX
-
-
-;; ANSWER SECTION:
-
-<YOUR_DOMAIN>.    300    IN    MX    10 mxa.global.inbound.cf-emailsecurity.net.
-
-<YOUR_DOMAIN>.    300    IN    MX    10 mxb.global.inbound.cf-emailsecurity.net.
-
-
+; <<>> DiG 9.10.6 <<>> mx <YOUR_DOMAIN>;; global options: +cmd;; Got answer:;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 39938;; flags: qr rd ra; QUERY: 1, ANSWER: 5, AUTHORITY: 0, ADDITIONAL: 1
+;; OPT PSEUDOSECTION:; EDNS: version: 0, flags:; udp: 4096;; QUESTION SECTION:;<YOUR_DOMAIN>.    IN  MX
+;; ANSWER SECTION:<YOUR_DOMAIN>.    300    IN    MX    10 mxa.global.inbound.cf-emailsecurity.net.<YOUR_DOMAIN>.    300    IN    MX    10 mxb.global.inbound.cf-emailsecurity.net.
 ```
 
 In the above example, TTL is shown in seconds as `300` (or five minutes).
@@ -85,9 +57,9 @@ Below is a list with instructions on how to edit MX records for some popular ser
 2. In **Always allow messages from the following IP addresses or address range**, add IP addresses and CIDR blocks mentioned in the [Egress IPs](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/egress-ips/) page.
 3. Select **Save**.
 4. Microsoft recommends disabling SPF Hard fail when an email solution is placed in front of it:  
-   * Return to the [Anti-spam option ↗](https://security.microsoft.com/antispam).  
-   * Select **Default anti-spam policy**.  
-   * Select **[Edit spam threshold and properties ↗](https://learn.microsoft.com/en-us/defender-office-365/anti-spam-bulk-complaint-level-bcl-about)** \> **Mark as spam** \> **SPF record: hard fail**, and ensure it is set to **Off**.
+  * Return to the [Anti-spam option ↗](https://security.microsoft.com/antispam).
+  * Select **Default anti-spam policy**.
+  * Select **[Edit spam threshold and properties ↗](https://learn.microsoft.com/en-us/defender-office-365/anti-spam-bulk-complaint-level-bcl-about)** \> **Mark as spam** \> **SPF record: hard fail**, and ensure it is set to **Off**.
 5. Select **Save**.
 
 ## 2\. Configure Enhanced Filtering
@@ -96,9 +68,9 @@ Below is a list with instructions on how to edit MX records for some popular ser
 
 1. [Set up a connector ↗](https://learn.microsoft.com/en-us/exchange/mail-flow-best-practices/use-connectors-to-configure-mail-flow/set-up-connectors-to-route-mail#1-set-up-a-connector-from-your-email-server-to-microsoft-365-or-office-365).
 2. Select **Partner organization** under **Connection from**.  
-   * Provide a name for the connector:  
-         * **Name**: `Email security Inbound Connector`  
-         * **Description**: `Inbound connector for Enhanced Filtering`
+  * Provide a name for the connector:  
+    * **Name**: `Email security Inbound Connector`
+    * **Description**: `Inbound connector for Enhanced Filtering`
 3. In **Authenticating sent email**, select **By verifying that the IP address of the sending server matches one of the following IP addresses, which belongs to your partner organization.**
 4. Enter all of the egress IPs in the [Egress IPs](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/egress-ips/) page.
 5. In **Security restrictions**, accept the default **Reject email messages if they aren't sent over TLS** setting.
@@ -124,13 +96,13 @@ To configure anti-spam policies:
 7. Set the following conditions and actions (you might need to scroll up or down to find them):
 * **Spam**: _Move messages to Junk Email folder_.
 * **High confidence spam**: _Quarantine message_.  
-   * **Select quarantine policy**: _AdminOnlyAccessPolicy_.
+  * **Select quarantine policy**: _AdminOnlyAccessPolicy_.
 * **Phishing**: _Quarantine message_.  
-   * **Select quarantine policy**: _AdminOnlyAccessPolicy_.
+  * **Select quarantine policy**: _AdminOnlyAccessPolicy_.
 * **High confidence phishing**: _Quarantine message_.  
-   * **Select quarantine policy**: _AdminOnlyAccessPolicy_.
+  * **Select quarantine policy**: _AdminOnlyAccessPolicy_.
 * **Retain spam in quarantine for this many days**: Default is 15 days. Email security recommends 15-30 days.  
-   * Select the spam actions in the above step:
+  * Select the spam actions in the above step:
 1. Select **Save**.
 
 ## 4\. Create transport rules
@@ -140,27 +112,29 @@ To create the transport rules that will send emails with certain [dispositions](
 1. Open the new [Exchange admin center ↗](https://admin.exchange.microsoft.com/#/homepage).
 2. Go to **Mail flow** \> **Rules**.
 3. Select **Add a Rule** \> **Create a new rule**.
-4. Set the following rule conditions:  
-   * **Name**: _Email Security Deliver to Junk Email folder_.  
-   * **Apply this rule if**: _The message headers_ \> _includes any of these words_.  
-         * **Enter text**: `X-CFEmailSecurity-Disposition` \> **Save**.  
-         * **Enter words**: `BULK` \> **Add** \> **Save**.  
-   * **Apply this rule if**: Select **+** to add a second condition.  
-   * **And**: _The sender_ \> _IP address is in any of these ranges or exactly matches_ \> enter the egress IPs mentioned in [Egress IPs](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/egress-ips/).  
-   * **Do the following** \- _Modify the message properties_ \> _Set the Spam Confidence Level (SCL)_ \> _5_.
+4. Set the following rule conditions:
+
+  * **Name**: _Email Security Deliver to Junk Email folder_.
+  * **Apply this rule if**: _The message headers_ \> _includes any of these words_.  
+    * **Enter text**: `X-CFEmailSecurity-Disposition` \> **Save**.
+    * **Enter words**: `BULK` \> **Add** \> **Save**.
+  * **Apply this rule if**: Select **+** to add a second condition.
+  * **And**: _The sender_ \> _IP address is in any of these ranges or exactly matches_ \> enter the egress IPs mentioned in [Egress IPs](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/egress-ips/).
+  * **Do the following** \- _Modify the message properties_ \> _Set the Spam Confidence Level (SCL)_ \> _5_.
 5. Select **Next**.
 6. You can use the default values on this screen. Select **Next**.
 7. Review your settings and select **Finish** \> **Done**.
 8. Select the rule **Email security Deliver to Junk Email folder** you have just created, and **Enable**.
 9. Select **Add a Rule** \> **Create a new rule**.
-10. Set the following rule conditions:  
-   * **Name**: `Email security Deliver to Junk Email folder`.  
-   * **Apply this rule if**: _The message headers_ \> _includes any of these words_.  
-         * **Enter text**: `X-CFEmailSecurity-Disposition` \> **Save**.  
-         * **Enter words**: `MALICIOUS`, `UCE`, `SPOOF` \> **Add** \> **Save**.  
-   * **Apply this rule if**: Select **+** to add a second condition.  
-   * **And**: _The sender_ \> _IP address is in any of these ranges or exactly matches_ \> enter the egress IPs in the [Egress IPs](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/egress-ips/).  
-   * **Do the following**: _Redirect the message to_ \> _hosted quarantine_.
+10. Set the following rule conditions:
+
+  * **Name**: `Email security Deliver to Junk Email folder`.
+  * **Apply this rule if**: _The message headers_ \> _includes any of these words_.  
+    * **Enter text**: `X-CFEmailSecurity-Disposition` \> **Save**.
+    * **Enter words**: `MALICIOUS`, `UCE`, `SPOOF` \> **Add** \> **Save**.
+  * **Apply this rule if**: Select **+** to add a second condition.
+  * **And**: _The sender_ \> _IP address is in any of these ranges or exactly matches_ \> enter the egress IPs in the [Egress IPs](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/egress-ips/).
+  * **Do the following**: _Redirect the message to_ \> _hosted quarantine_.
 11. Select **Next**.
 12. You can use the default values on this screen. Select **Next**.
 13. Review your settings and select **Finish** \> **Done**.
@@ -185,9 +159,10 @@ This step should not be performed until 72 hours after all domains in your Micro
 3. Select **Add a connector**.
 4. Go to **Connection from** \> **Partner organization**.
 5. Select **Next**.
-6. Set the following options:  
-   * **Name** \- `Secure M365 Inbound`  
-   * **Description** \- `Only accept inbound email from Email security`
+6. Set the following options:
+
+  * **Name** \- `Secure M365 Inbound`
+  * **Description** \- `Only accept inbound email from Email security`
 7. Select **Next**.
 8. Make sure **By Verifying that the sender domain matches one of the following domains** is selected.
 9. Enter `*` in the text field, and select **+**.

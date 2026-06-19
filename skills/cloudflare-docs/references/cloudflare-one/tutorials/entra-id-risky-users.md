@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -47,13 +47,14 @@ Once the base IdP integration is tested and working, enable additional permissio
 2. Select the application you created for the IdP integration.
 3. Go to **API permissions** and select **Add a permission**.
 4. Select **Microsoft Graph**.
-5. Select **Application permissions** and add the following [permissions ↗](https://learn.microsoft.com/en-us/graph/permissions-reference):  
-   * `IdentityRiskyUser.ReadAll`  
-   * `Directory.ReadWriteAll`  
-   * `Group.Create`  
-   * `Group.ReadAll`  
-   * `GroupMember.ReadAll`  
-   * `GroupMember.ReadWriteAll`
+5. Select **Application permissions** and add the following [permissions ↗](https://learn.microsoft.com/en-us/graph/permissions-reference):
+
+  * `IdentityRiskyUser.ReadAll`
+  * `Directory.ReadWriteAll`
+  * `Group.Create`
+  * `Group.ReadAll`
+  * `GroupMember.ReadAll`
+  * `GroupMember.ReadWriteAll`
 6. Select **Grant admin consent**.
 
 You will see the list of enabled permissions.
@@ -76,45 +77,23 @@ Terminal window
 ```  
 cd risky-users  
 ```
-3. Modify the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to include the following values:  
-   * `<ACCOUNT_ID>`: your Cloudflare [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).  
-   * `<TENANT_ID>`: your Entra ID **Directory (tenant) ID**, obtained when [setting up Entra ID as an identity provider](#1-set-up-entra-id-as-an-identity-provider).  
-   * `<CLIENT_ID>`: your Entra ID **Application (client) ID**, obtained when [setting up Entra ID as an identity provider](#1-set-up-entra-id-as-an-identity-provider).  
-   * [  wrangler.jsonc ](#tab-panel-7730)  
-   * [  wrangler.toml ](#tab-panel-7731)  
+3. Modify the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to include the following values:
+
+  * `<ACCOUNT_ID>`: your Cloudflare [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
+  * `<TENANT_ID>`: your Entra ID **Directory (tenant) ID**, obtained when [setting up Entra ID as an identity provider](#1-set-up-entra-id-as-an-identity-provider).
+  * `<CLIENT_ID>`: your Entra ID **Application (client) ID**, obtained when [setting up Entra ID as an identity provider](#1-set-up-entra-id-as-an-identity-provider).
+
+  * [  wrangler.jsonc ](#tab-panel-7806)
+  * [  wrangler.toml ](#tab-panel-7807)  
 JSONC  
 ```  
-{  
-  "$schema": "./node_modules/wrangler/config-schema.json",  
-  "name": "risky-users",  
-  // Set this to today's date  
-  "compatibility_date": "2026-06-17",  
-  "main": "src/index.js",  
-  "workers_dev": false,  
-  "account_id": "<ACCOUNT-ID>",  
-  "vars": {  
-    "AZURE_AD_TENANT_ID": "<TENANT-ID>",  
-    "AZURE_AD_CLIENT_ID": "<CLIENT-ID>",  
-  },  
-  "triggers": {  
-    "crons": ["* * * * *"],  
-  },  
-}  
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "risky-users",  // Set this to today's date  "compatibility_date": "2026-06-18",  "main": "src/index.js",  "workers_dev": false,  "account_id": "<ACCOUNT-ID>",  "vars": {    "AZURE_AD_TENANT_ID": "<TENANT-ID>",    "AZURE_AD_CLIENT_ID": "<CLIENT-ID>",  },  "triggers": {    "crons": ["* * * * *"],  },}  
 ```  
 TOML  
 ```  
-"$schema" = "./node_modules/wrangler/config-schema.json"  
-name = "risky-users"  
-# Set this to today's date  
-compatibility_date = "2026-06-17"  
-main = "src/index.js"  
-workers_dev = false  
-account_id = "<ACCOUNT-ID>"  
-[vars]  
-AZURE_AD_TENANT_ID = "<TENANT-ID>"  
-AZURE_AD_CLIENT_ID = "<CLIENT-ID>"  
-[triggers]  
-crons = [ "* * * * *" ]  
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "risky-users"# Set this to today's datecompatibility_date = "2026-06-18"main = "src/index.js"workers_dev = falseaccount_id = "<ACCOUNT-ID>"  
+[vars]AZURE_AD_TENANT_ID = "<TENANT-ID>"AZURE_AD_CLIENT_ID = "<CLIENT-ID>"  
+[triggers]crons = [ "* * * * *" ]  
 ```
 
 Note
@@ -138,10 +117,7 @@ The Worker script will begin executing once per minute. To view realtime logs, r
 Terminal window
 
 ```
-
 wrangler tail --format pretty
-
-
 ```
 
 After the initial run, the auto-generated groups will appear in the Entra ID dashboard.
@@ -153,10 +129,11 @@ After the initial run, the auto-generated groups will appear in the Entra ID das
 Next, synchronize Entra ID risky user groups with Cloudflare Access:
 
 1. [Enable SCIM synchronization](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/entra-id/#synchronize-users-and-groups).
-2. In Entra ID, assign the following groups to your SCIM enterprise application:  
-   * `IdentityProtection-RiskyUser-RiskLevel-high`  
-   * `IdentityProtection-RiskyUser-RiskLevel-medium`  
-   * `IdentityProtection-RiskyUser-RiskLevel-low`
+2. In Entra ID, assign the following groups to your SCIM enterprise application:
+
+  * `IdentityProtection-RiskyUser-RiskLevel-high`
+  * `IdentityProtection-RiskyUser-RiskLevel-medium`
+  * `IdentityProtection-RiskyUser-RiskLevel-low`
 
 Cloudflare Access will now synchronize changes in group membership with Entra ID. You can verify the synchronization status on the SCIM application's **Provisioning** page.
 
@@ -166,10 +143,11 @@ Finally, create a [Gateway HTTP policy](https://developers.cloudflare.com/cloudf
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Traffic policies** \> **Firewall policies** \> **HTTP**.
 2. Select **Add a policy**.
-3. Build an [Isolate policy](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/) that contains a _User Group Names_ rule. For example, the following policy serves `app1.example.com` and `app2.example.com` in a remote browser for all members flagged as high risk:  
-| Selector         | Operator | Value                                       | Logic | Action  |  
-| ---------------- | -------- | ------------------------------------------- | ----- | ------- |  
-| Domain           | in       | app1.example.com, app2.example.com          | And   | Isolate |  
+3. Build an [Isolate policy](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/) that contains a _User Group Names_ rule. For example, the following policy serves `app1.example.com` and `app2.example.com` in a remote browser for all members flagged as high risk:
+
+| Selector         | Operator | Value                                       | Logic | Action  |
+| ---------------- | -------- | ------------------------------------------- | ----- | ------- |
+| Domain           | in       | app1.example.com, app2.example.com          | And   | Isolate |
 | User Group Names | in       | IdentityProtection-RiskyUser-RiskLevel-high |       |         |
 
 To test the policy, refer to the Microsoft documentation for [simulating risky detections ↗](https://learn.microsoft.com/entra/id-protection/howto-identity-protection-simulate-risk).

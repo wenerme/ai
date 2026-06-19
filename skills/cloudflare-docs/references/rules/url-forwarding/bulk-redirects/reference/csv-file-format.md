@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -15,10 +15,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 You can use a CSV file to import URL redirects into a Bulk Redirect List [using the Cloudflare dashboard](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/create-dashboard/#1-create-a-bulk-redirect-list). Each line in the CSV file must follow this format:
 
 ```
-
 <SOURCE_URL>,<TARGET_URL>[,<STATUS_CODE>,<PRESERVE_QUERY_STRING>,<INCLUDE_SUBDOMAINS>,<SUBPATH_MATCHING>,<PRESERVE_PATH_SUFFIX>]
-
-
 ```
 
 Only the `<SOURCE_URL>` and `<TARGET_URL>` values are mandatory. The default value of `<STATUS_CODE>` is `301` and the default value for all the boolean parameters is `FALSE`.
@@ -30,14 +27,7 @@ To enable one of the URL redirect parameters, use one of the following values: `
 All the lines in this example are valid lines that you can import in the dashboard:
 
 ```
-
-example.com/contacts,https://example.net/contact-us,301,,,,
-
-example.com/about,https://example.net/about-us,,FALSE,TRUE,,
-
-example.com/docs,https://example.com/draft-docs,302,,TRUE
-
-
+example.com/contacts,https://example.net/contact-us,301,,,,example.com/about,https://example.net/about-us,,FALSE,TRUE,,example.com/docs,https://example.com/draft-docs,302,,TRUE
 ```
 
 ## Important remarks

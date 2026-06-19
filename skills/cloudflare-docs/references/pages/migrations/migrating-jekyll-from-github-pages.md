@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -55,23 +55,13 @@ Specifically, you will need to create a `Gemfile` and install the `github-pages`
 Set Ruby Version
 
 ```
-
-brew install ruby@3.2
-
-export PATH="/usr/local/opt/ruby@3.2/bin:$PATH"
-
-
+brew install ruby@3.2export PATH="/usr/local/opt/ruby@3.2/bin:$PATH"
 ```
 
 Create a Gemfile
 
 ```
-
-cd my-github-pages-repo
-
-bundle init
-
-
+cd my-github-pages-repobundle init
 ```
 
 Open the `Gemfile` that was created for you, and add the following line to the bottom of the file:
@@ -79,30 +69,16 @@ Open the `Gemfile` that was created for you, and add the following line to the b
 Specifying the github-pages version
 
 ```
-
 gem "github-pages", group: :jekyll_plugins
-
-
 ```
 
 Your `Gemfile` should resemble the below:
 
 ```
-
 # frozen_string_literal: true
-
-
 source "https://rubygems.org"
-
-
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
-
-
-# gem "rails"
-
-gem "github-pages", group: :jekyll_plugins
-
-
+# gem "rails"gem "github-pages", group: :jekyll_plugins
 ```
 
 Run `bundle update`, which will install the `github-pages` gem for you, and create a `Gemfile.lock` file with the resolved dependency versions.
@@ -110,12 +86,7 @@ Run `bundle update`, which will install the `github-pages` gem for you, and crea
 Running bundle update
 
 ```
-
-bundle update
-
-# Bundler will show a lot of output as it fetches the dependencies
-
-
+bundle update# Bundler will show a lot of output as it fetches the dependencies
 ```
 
 This should complete successfully. If not, verify that you have copied the `github-pages` line above exactly, and have not commented it out with a leading `#`.
@@ -125,14 +96,7 @@ You will now need to commit these files to your repository so that Cloudflare Pa
 Commit Gemfile and Gemfile.lock
 
 ```
-
-git add Gemfile Gemfile.lock
-
-git commit -m "deps: added Gemfiles"
-
-git push origin main
-
-
+git add Gemfile Gemfile.lockgit commit -m "deps: added Gemfiles"git push origin main
 ```
 
 ## Configuring your Pages project

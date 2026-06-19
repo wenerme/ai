@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/radar/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,75 +31,13 @@ In the following example, we will examine the worldwide versus Singapore distrib
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/radar/attacks/layer3/timeseries_groups?name=global&dateRange=1d&location=&name=singapore&location=SG&dateRange=1d&aggInterval=1h&format=json" \
-
---header "Authorization: Bearer <API_TOKEN>"
-
-
+curl "https://api.cloudflare.com/client/v4/radar/attacks/layer3/timeseries_groups?name=global&dateRange=1d&location=&name=singapore&location=SG&dateRange=1d&aggInterval=1h&format=json" \--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 If we inspect the abbreviated response below, we can conclude that globally, at those timestamps, `UDP` and `TCP` attacks were mostly evenly split.
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "result": {
-
-    "global": {
-
-      "timestamps": ["2022-11-06T13:00:00Z", "2022-11-06T14:00:00Z", "..."],
-
-      "udp": ["50.784034", "51.055221", "..."],
-
-      "tcp": ["49.213944", "48.943769", "..."],
-
-      "icmp": ["0.002023", "0.001009", "..."],
-
-      "gre": ["0.0", "0.0", "0.0", "..."]
-
-    },
-
-    "singapore": {
-
-      "timestamps": ["2022-11-06T13:00:00Z", "2022-11-06T14:00:00Z", "..."],
-
-      "tcp": ["79.605287", "83.943885", "..."],
-
-      "udp": ["20.394594", "16.056115", "..."],
-
-      "icmp": ["0.000119", "0.0", "..."],
-
-      "gre": ["0.0", "0.0", "..."]
-
-    },
-
-    "meta": {
-
-      "dateRange": {
-
-        "startTime": "2022-11-06T13:00:00Z",
-
-        "endTime": "2022-11-07T13:00:00Z"
-
-      },
-
-      "normalization": "PERCENTAGE",
-
-      // ...
-
-    }
-
-  }
-
-}
-
-
+{  "success": true,  "errors": [],  "result": {    "global": {      "timestamps": ["2022-11-06T13:00:00Z", "2022-11-06T14:00:00Z", "..."],      "udp": ["50.784034", "51.055221", "..."],      "tcp": ["49.213944", "48.943769", "..."],      "icmp": ["0.002023", "0.001009", "..."],      "gre": ["0.0", "0.0", "0.0", "..."]    },    "singapore": {      "timestamps": ["2022-11-06T13:00:00Z", "2022-11-06T14:00:00Z", "..."],      "tcp": ["79.605287", "83.943885", "..."],      "udp": ["20.394594", "16.056115", "..."],      "icmp": ["0.000119", "0.0", "..."],      "gre": ["0.0", "0.0", "..."]    },    "meta": {      "dateRange": {        "startTime": "2022-11-06T13:00:00Z",        "endTime": "2022-11-07T13:00:00Z"      },      "normalization": "PERCENTAGE",      // ...    }  }}
 ```
 
 We can also conclude that the distribution of network layer attacks coming from Singapore — or, more accurately, reaching Cloudflare's data center located in Singapore — differs quite a bit from the worldwide distribution. At those times, the distribution of network layer attacks clearly favors [TCP ↗](https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/).
@@ -115,57 +53,11 @@ We can also filter by source location and examine attacks coming from Russia:
 Terminal window
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/radar/attacks/layer3/summary?location=RU&name=attacks_ru&dateRange=1d&format=json" \
-
---header "Authorization: Bearer <API_TOKEN>"
-
-
+curl "https://api.cloudflare.com/client/v4/radar/attacks/layer3/summary?location=RU&name=attacks_ru&dateRange=1d&format=json" \--header "Authorization: Bearer <API_TOKEN>"
 ```
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "result": {
-
-    "attacks_ru": {
-
-      "udp": "86.682356",
-
-      "tcp": "11.928664",
-
-      "gre": "1.381015",
-
-      "icmp": "0.007965"
-
-    },
-
-    "meta": {
-
-      "dateRange": {
-
-        "startTime": "2022-11-06T15:00:00Z",
-
-        "endTime": "2022-11-07T15:00:00Z"
-
-      },
-
-      "normalization": "PERCENTAGE",
-
-      // ...
-
-    }
-
-  }
-
-}
-
-
+{  "success": true,  "errors": [],  "result": {    "attacks_ru": {      "udp": "86.682356",      "tcp": "11.928664",      "gre": "1.381015",      "icmp": "0.007965"    },    "meta": {      "dateRange": {        "startTime": "2022-11-06T15:00:00Z",        "endTime": "2022-11-07T15:00:00Z"      },      "normalization": "PERCENTAGE",      // ...    }  }}
 ```
 
 The response shows that the attacks coming from Russia to other locations tended to use the [UDP ↗](https://www.cloudflare.com/en-gb/learning/ddos/glossary/user-datagram-protocol-udp/) network protocol at those timestamps.

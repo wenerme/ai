@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -36,7 +36,7 @@ You must decide the type of configuration you want for your site from the beginn
 
 Do you need a high availability configuration? 
 
-* If you need a high availability configuration for your premises, refer to[About high availability configurations](#about-high-availability-configurations) for details and learn how to configure your Cloudflare One Appliance device in this mode.
+* If you need a high availability configuration for your premises, refer to [About high availability configurations](#about-high-availability-configurations) for details and learn how to configure your Cloudflare One Appliance device in this mode.
 * If you do not need a high availability configuration for you premises, check if you need a [DHCP or a static IP setup](#decide-on-dhcp-vs-static-ip-connections) before proceeding to [Set up Cloudflare dashboard](#set-up-cloudflare-dashboard).
 
 Warning
@@ -104,8 +104,8 @@ To create a profile:
 
 ### Create a WAN
 
-* [ Dashboard ](#tab-panel-7740)
-* [ API ](#tab-panel-7741)
+* [ Dashboard ](#tab-panel-7816)
+* [ API ](#tab-panel-7817)
 
 When you have more than one anycast IP configured in your account (set up during your Cloudflare WAN (formerly Magic WAN) onboarding), Cloudflare One Appliance will automatically create at most two tunnels per WAN port. This improves reliability and performance, and requires no additional configuration on your part.
 
@@ -119,8 +119,8 @@ This is not the same as a high availability (HA) configuration. HA configuration
 5. In **Priority**, choose the priority for your WAN. Lower numbers have higher priority. For details on how Cloudflare calculates priorities, refer to [Traffic steering](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/).
 6. In **Health check rate** configure the health check frequency for your site. Options are `low`, `mid`, and `high`. For details, refer to [Update tunnel health checks frequency](https://developers.cloudflare.com/cloudflare-wan/configuration/common-settings/update-tunnel-health-checks-frequency/).
 7. **Addressing**: Select **DHCP**. This is needed the first time you set up your Cloudflare One Appliance to successfully download all settings to the machine and activate it. If you need a static IP address in your network environment:  
-   1. Continue the set up flow to activate your Cloudflare One Appliance.  
-   2. Refer to [WAN with a static IP address](#wan-with-a-static-ip-address). If you choose a static IP, you also need to specify the static IP and gateway addresses.
+  1. Continue the set up flow to activate your Cloudflare One Appliance.
+  2. Refer to [WAN with a static IP address](#wan-with-a-static-ip-address). If you choose a static IP, you also need to specify the static IP and gateway addresses.
 8. Select **Save** when you are finished.
 
 Note
@@ -136,34 +136,13 @@ Example:
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/sites/{site_id}/wans \
-
---header "X-Auth-Email: <EMAIL>" \
-
---header "X-Auth-Key: <API_KEY>" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "name": "<YOUR_WAN_NAME>",
-
-  "physport": 1,
-
-  "priority": 0,
-
-  "vlan_tag": 0
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/sites/{site_id}/wans \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "name": "<YOUR_WAN_NAME>",  "physport": 1,  "priority": 0,  "vlan_tag": 0}'
 ```
 
 ### Create a LAN
 
-* [ Dashboard ](#tab-panel-7742)
-* [ API ](#tab-panel-7743)
+* [ Dashboard ](#tab-panel-7818)
+* [ API ](#tab-panel-7819)
 
 1. In **LAN configuration**, select **Create**.
 2. Enter a descriptive name for your LAN in **Interface name**.
@@ -171,14 +150,14 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/sites/{sit
  If you need a throughput higher than 1 Gbps, you can use one of the SFP+ ports. For details on hardware support, refer to [SFP+ port information](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-hardware-appliance/sfp-port-information/).
 4. In **VLAN ID**, specify a [VLAN ID](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/reference/#vlan-id) to create virtual LANs.
 5. In **Static addressing** \> **Static address** give your Cloudflare One Appliance's LAN interface its IP address. You can also enable the following options if they suit your use case:  
-   * **This is a DHCP server**: If your Cloudflare One Appliance is a [DHCP server](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-server/).  
-   * **This is a DHCP relay**: If your Cloudflare One Appliance is a [DHCP relay](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-relay/).
+  * **This is a DHCP server**: If your Cloudflare One Appliance is a [DHCP server](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-server/).
+  * **This is a DHCP relay**: If your Cloudflare One Appliance is a [DHCP relay](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-relay/).
 6. (Optional) In **Directly attached subnet** \> **Static NAT prefix**, enter a CIDR prefix to enable NAT (network address translation). The prefix you enter here should be the same size as the prefix entered in **Static addressing**. For example, both networks have a subnet mask of `/24`: `192.168.100.0/24` and `10.10.100.0/24`.
 7. (Optional) If your LAN contains additional subnets behind a layer 3 router, select **Add routed subnet** under **Routed subnets** to add them:  
-   * **Prefix**: The CIDR prefix for the subnet behind the L3 router.  
-   * **Next hop**: The address of the L3 router to which the Cloudflare One Appliance should forward packets for this subnet.  
-   * **Static NAT prefix**: Optional setting. If you want to enable NAT for a routed subnet, supply an "external" prefix for the overlay-facing side of the NAT to use. It must be the same size as **Prefix**.  
-    For details, refer to [Routed subnets](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/routed-subnets/).
+  * **Prefix**: The CIDR prefix for the subnet behind the L3 router.
+  * **Next hop**: The address of the L3 router to which the Cloudflare One Appliance should forward packets for this subnet.
+  * **Static NAT prefix**: Optional setting. If you want to enable NAT for a routed subnet, supply an "external" prefix for the overlay-facing side of the NAT to use. It must be the same size as **Prefix**.  
+   For details, refer to [Routed subnets](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/routed-subnets/).
 8. Select **Save**.
 9. Select **Done** to finish your configuration. Tunnels and static routes will be automatically created for your Cloudflare One Appliance, once it boots up.
 
@@ -193,32 +172,7 @@ Example:
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/sites/{site_id}/lans \
-
---header "X-Auth-Email: <EMAIL>" \
-
---header "X-Auth-Key: <API_KEY>" \
-
---header "Content-Type: application/json" \
-
---data '{
-
-  "name": "<YOUR_LAN_NAME>",
-
-  "physport": 2,
-
-  "static_addressing": {
-
-    "address": "172.16.14.0/24"
-
-  },
-
-  "vlan_tag": 0
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/sites/{site_id}/lans \--header "X-Auth-Email: <EMAIL>" \--header "X-Auth-Key: <API_KEY>" \--header "Content-Type: application/json" \--data '{  "name": "<YOUR_LAN_NAME>",  "physport": 2,  "static_addressing": {    "address": "172.16.14.0/24"  },  "vlan_tag": 0}'
 ```
 
 #### Network segmentation
@@ -365,8 +319,8 @@ To access the serial port on Cloudflare One Appliance you will need the followin
 
 ### 1\. Access the device's serial port
 
-1. Using the Phillips screwdriver, loosen the screw covering the serial console panel on the back of the Cloudflare One Appliance and turn the panel out of the way.  
-   * Pictures and more instructions can be found on [Dell's Technical Documents](https://www.dell.com/support/kbdoc/en-us/000134440/how-to-access-console-port-of-dell-emc-networking-virtual-edge-platform-1405-series).
+1. Using the Phillips screwdriver, loosen the screw covering the serial console panel on the back of the Cloudflare One Appliance and turn the panel out of the way.
+  * Pictures and more instructions can be found on [Dell's Technical Documents](https://www.dell.com/support/kbdoc/en-us/000134440/how-to-access-console-port-of-dell-emc-networking-virtual-edge-platform-1405-series).
 2. Connect your computer to your Cloudflare One Appliance device using the USB cable.
 
 #### Default password
@@ -382,8 +336,8 @@ To access the Cloudflare One Appliance device environment you need a serial term
 Cloudflare recommends using PuTTY for Windows. Download PuTTY from the [official website](https://www.putty.org/) and then install it.
 
 1. Check the COM port of the USB to UART device in the Windows Device Manager. It should appear as something similar to `Silicon Labs CP210x USB to UART Bridge (COMX)`.
-2. Take note of the value in the parentheses (COMX).  
-   * For details on creating a serial console connection, refer to the [Dell Documentation Page](https://infohub.delltechnologies.com/l/virtual-edge-platform-vep-1405-series-diag-os-and-tools-release-notes/bios-installation-and-configuration).
+2. Take note of the value in the parentheses (COMX).
+  * For details on creating a serial console connection, refer to the [Dell Documentation Page](https://infohub.delltechnologies.com/l/virtual-edge-platform-vep-1405-series-diag-os-and-tools-release-notes/bios-installation-and-configuration).
 3. Launch PuTTY.
 4. Under **Category**, make sure that **Session** (the first item) is selected.
 5. Under **Connection type**, select **Serial**.

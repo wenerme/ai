@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/support/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,30 +30,33 @@ Here are some options to fix or workaround this issue:
 * For a potential quick fix, set **SSL** to _Full_ instead of _Full (strict)_ in the **Overview** tab of your Cloudflare **SSL/TLS** app for the domain.
 * Add your self-signed SSL certificate to the [Custom Origin Trust Store](https://developers.cloudflare.com/ssl/origin-configuration/custom-origin-trust-store/). This allows the Cloudflare edge to recognize your self-signed SSL certificate as valid.
 * Use a [Cloudflare Origin CA certificate](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/) at your origin.
-* Request your server administrator or hosting provider to review the origin web server's SSL certificates and verify that:  
-   * Certificate is not expired.  
-   * Certificate is not revoked.  
-   * Certificate is signed by a [Certificate Authority ↗](https://en.wikipedia.org/wiki/Certificate%5Fauthority) (not self-signed).  
-   * The requested or target domain name and hostname are in the certificate's **Common Name** or **Subject Alternative Name**.  
-   * The certificate chain is complete - the origin server must serve the leaf certificate along with any required intermediate CA certificates so that Cloudflare can build a trusted chain to a root CA.  
-   * Your origin web server accepts connections over port SSL port `443`.  
-   * [Temporarily pause Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/pause-cloudflare/) and visit [https://www.sslshopper.com/ssl-checker.html#hostname=www.example.com ↗](https://www.sslshopper.com/ssl-checker.html#hostname=www.example.com) (replace `www.example.com` with your hostname and domain) to verify no issues exists with the origin SSL certificate:  
+* Request your server administrator or hosting provider to review the origin web server's SSL certificates and verify that:
+
+  * Certificate is not expired.
+  * Certificate is not revoked.
+  * Certificate is signed by a [Certificate Authority ↗](https://en.wikipedia.org/wiki/Certificate%5Fauthority) (not self-signed).
+  * The requested or target domain name and hostname are in the certificate's **Common Name** or **Subject Alternative Name**.
+  * The certificate chain is complete - the origin server must serve the leaf certificate along with any required intermediate CA certificates so that Cloudflare can build a trusted chain to a root CA.
+  * Your origin web server accepts connections over port SSL port `443`.
+  * [Temporarily pause Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/pause-cloudflare/) and visit [https://www.sslshopper.com/ssl-checker.html#hostname=www.example.com ↗](https://www.sslshopper.com/ssl-checker.html#hostname=www.example.com) (replace `www.example.com` with your hostname and domain) to verify no issues exists with the origin SSL certificate:  
 ![Screen showing an SSL certificate with no errors.](https://developers.cloudflare.com/_astro/hc-import-troubleshooting_5xx_errors_sslshopper_output.B54TP_B1_kRIBu.webp)
 
 ### Error 526 in the Zero Trust context
 
 When using [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/), an HTTP Error `526` might be returned in the [following cases](https://developers.cloudflare.com/cloudflare-one/traffic-policies/troubleshooting/#error-526-invalid-ssl-certificate):
 
-* **An untrusted certificate is presented from the origin to Gateway.** Gateway will consider a certificate is untrusted if any of these conditions are true:  
-   * The server certificate issuer is unknown or is not trusted by the service.  
-   * The server certificate is revoked and fails a CRL check.  
-   * There is at least one expired certificate in the certificate chain for the server certificate.  
-   * The common name on the certificate does not match the URL you are trying to reach.  
-   * The common name on the certificate contains invalid characters (such as underscores). Gateway uses [BoringSSL ↗](https://csrc.nist.gov/projects/cryptographic-module-validation-program/validated-modules/search?SearchMode=Basic&Vendor=Google&CertificateStatus=Active&ValidationYear=0) to validate certificates. Chrome's [validation logic ↗](https://chromium.googlesource.com/chromium/src/+/refs/heads/main/net/cert/x509%5Fcertificate.cc#429) allows non-RFC 1305 compliant certificates, which is why the website may load when you turn off WARP.
-* **The connection from Gateway to the origin is insecure.** Gateway does not trust origins which:  
-   * Only offer insecure cipher suites (such as RC4, RC4-MD5, or 3DES). You can use the [SSL Server Test tool ↗](https://www.ssllabs.com/ssltest/index.html) to check which ciphers are supported by the origin.  
-   * Do not support [FIPS-compliant ciphers](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/#cipher-suites) (if you have enabled [FIPS compliance mode](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/#fips-compliance)). In order to load the page, you can either disable FIPS mode or create a Do Not Inspect policy for this host (which has the effect of disabling FIPS compliance for this origin).  
-   * Redirect all HTTPS requests to HTTP.
+* **An untrusted certificate is presented from the origin to Gateway.** Gateway will consider a certificate is untrusted if any of these conditions are true:
+
+  * The server certificate issuer is unknown or is not trusted by the service.
+  * The server certificate is revoked and fails a CRL check.
+  * There is at least one expired certificate in the certificate chain for the server certificate.
+  * The common name on the certificate does not match the URL you are trying to reach.
+  * The common name on the certificate contains invalid characters (such as underscores). Gateway uses [BoringSSL ↗](https://csrc.nist.gov/projects/cryptographic-module-validation-program/validated-modules/search?SearchMode=Basic&Vendor=Google&CertificateStatus=Active&ValidationYear=0) to validate certificates. Chrome's [validation logic ↗](https://chromium.googlesource.com/chromium/src/+/refs/heads/main/net/cert/x509%5Fcertificate.cc#429) allows non-RFC 1305 compliant certificates, which is why the website may load when you turn off WARP.
+* **The connection from Gateway to the origin is insecure.** Gateway does not trust origins which:
+
+  * Only offer insecure cipher suites (such as RC4, RC4-MD5, or 3DES). You can use the [SSL Server Test tool ↗](https://www.ssllabs.com/ssltest/index.html) to check which ciphers are supported by the origin.
+  * Do not support [FIPS-compliant ciphers](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/#cipher-suites) (if you have enabled [FIPS compliance mode](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/#fips-compliance)). In order to load the page, you can either disable FIPS mode or create a Do Not Inspect policy for this host (which has the effect of disabling FIPS compliance for this origin).
+  * Redirect all HTTPS requests to HTTP.
 
 ### Error 526 in the Workers context
 

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -44,17 +44,18 @@ These sequence fields are available in:
 
 ## Build a sequence custom rule
 
-* [  New dashboard ](#tab-panel-6729)
-* [ Old dashboard ](#tab-panel-6730)
+* [  New dashboard ](#tab-panel-6805)
+* [ Old dashboard ](#tab-panel-6806)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. To create a new empty rule, select **Create rule** \> **Custom rules**.
 3. Enter a descriptive name for the rule in **Rule name**.
-4. Under **When incoming requests match**, use the **Field** drop-down list to filter by **Sequences** and select from:  
-   * Current Operation  
-   * Previous Operations  
-   * Elapsed time
+4. Under **When incoming requests match**, use the **Field** drop-down list to filter by **Sequences** and select from:
+
+  * Current Operation
+  * Previous Operations
+  * Elapsed time
 5. Under **Value**, select the edit icon to use Builder and build a sequence on the side panel.
 6. Under **Select a hostname for this sequence**, choose all or a specific hostname from the dropdown list. Optionally, you can use the search bar to search for a specific hostname.
 7. From the **Methods** dropdown list, choose all methods or a specific request method.
@@ -75,9 +76,9 @@ The fields in the custom rule are populated as a grouped sequence based on the v
 3. To create a new empty rule, select **Create rule**.
 4. Enter a descriptive name for the rule in **Rule name**.
 5. Under **When incoming requests match**, use the **Field** drop-down list and select:  
-   * Current Operation  
-   * Previous Operations  
-   * Elapsed time
+  * Current Operation
+  * Previous Operations
+  * Elapsed time
 6. Under **Value**, build a sequence by selecting a hostname for the sequence.
 7. Select the checkbox for each endpoint in the order that you want them to appear in the sequence.
 8. Set the time to complete.
@@ -94,51 +95,25 @@ Each saved endpoint will have an endpoint ID visible in its details page in Endp
 The visitor must wait more than 2 seconds after requesting endpoint `aaaaaaaa` before requesting endpoint `bbbbbbbb`:
 
 ```
-
-cf.sequence.current_op eq "bbbbbbbb" and
-
-cf.sequence.msec_since_op["aaaaaaaa"] ge 2000
-
-
+cf.sequence.current_op eq "bbbbbbbb" andcf.sequence.msec_since_op["aaaaaaaa"] ge 2000
 ```
 
 The visitor must request endpoints `aaaaaaaa`, then `bbbbbbbb`, then `cccccccc` in that exact order:
 
 ```
-
-cf.sequence.current_op eq "cccccccc" and
-
-cf.sequence.previous_ops[0] == "bbbbbbbb" and
-
-cf.sequence.previous_ops[1] == "aaaaaaaa"
-
-
+cf.sequence.current_op eq "cccccccc" andcf.sequence.previous_ops[0] == "bbbbbbbb" andcf.sequence.previous_ops[1] == "aaaaaaaa"
 ```
 
 The visitor must request endpoint `aaaaaaaa` before endpoint `bbbbbbbb`, but endpoint `aaaaaaaa` can be anywhere in the previous 10 requests:
 
 ```
-
-cf.sequence.current_op eq "bbbbbbbb" and
-
-any(cf.sequence.previous_ops[*] == "aaaaaaaa")
-
-
+cf.sequence.current_op eq "bbbbbbbb" andany(cf.sequence.previous_ops[*] == "aaaaaaaa")
 ```
 
 The visitor must request either endpoint `aaaaaaaa` before endpoint `bbbbbbbb`, or endpoint `cccccccc` before endpoint `bbbbbbbb`:
 
 ```
-
-(cf.sequence.current_op eq "bbbbbbbb" and
-
-any(cf.sequence.previous_ops[*] == "aaaaaaaa")) or
-
-(cf.sequence.current_op eq "bbbbbbbb" and
-
-any(cf.sequence.previous_ops[*] == "cccccccc"))
-
-
+(cf.sequence.current_op eq "bbbbbbbb" andany(cf.sequence.previous_ops[*] == "aaaaaaaa")) or(cf.sequence.current_op eq "bbbbbbbb" andany(cf.sequence.previous_ops[*] == "cccccccc"))
 ```
 
 ```json

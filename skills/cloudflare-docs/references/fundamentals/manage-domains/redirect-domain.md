@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,10 +16,11 @@ If you have an alias domain that only forwards traffic to another domain (that i
 
 1. [Add](https://developers.cloudflare.com/fundamentals/manage-domains/#add-a-domain-to-cloudflare) your alias domain (for example, `previous.com`) to Cloudflare.
 2. Make sure that your alias domain has a proxied [DNS A or CNAME record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) that properly resolves DNS queries. You may also want to include a subdomain DNS record for `www`.  
-Use the IP address `192.0.2.1` for the `A` record. This address does not route traffic to an origin server but allows Cloudflare to apply rules, redirects, and Workers to incoming traffic. The equivalent IP address for an `AAAA` record is `100::`.  
-| **Type** | **Name** | **IPv4 address** | **Proxy status** |  
-| -------- | -------- | ---------------- | ---------------- |  
-| A        | @        | 192.0.2.1        | Proxied          |  
+Use the IP address `192.0.2.1` for the `A` record. This address does not route traffic to an origin server but allows Cloudflare to apply rules, redirects, and Workers to incoming traffic. The equivalent IP address for an `AAAA` record is `100::`.
+
+| **Type** | **Name** | **IPv4 address** | **Proxy status** |
+| -------- | -------- | ---------------- | ---------------- |
+| A        | @        | 192.0.2.1        | Proxied          |
 | A        | www      | 192.0.2.1        | Proxied          |
 3. Use [Redirect rules](https://developers.cloudflare.com/rules/url-forwarding/) to forward traffic from your alias domain to your other domain.
 

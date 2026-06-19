@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,63 +17,12 @@ The Agents SDK includes an MCP client that can pay for x402-protected tools. Use
 TypeScript
 
 ```
-
-import { Agent } from "agents";
-
-import { withX402Client } from "agents/x402";
-
-import { privateKeyToAccount } from "viem/accounts";
-
-
-export class MyAgent extends Agent {
-
-  // Your Agent definitions...
-
-
-  async onStart() {
-
-    const { id } = await this.mcp.connect(`${this.env.WORKER_URL}/mcp`);
-
-    const account = privateKeyToAccount(this.env.MY_PRIVATE_KEY);
-
-
-    this.x402Client = withX402Client(this.mcp.mcpConnections[id].client, {
-
-      network: "base-sepolia",
-
-      account,
-
-    });
-
-  }
-
-
-  onPaymentRequired(paymentRequirements): Promise<boolean> {
-
-    // Your human-in-the-loop confirmation flow...
-
-  }
-
-
-  async onToolCall(toolName: string, toolArgs: unknown) {
-
-    // The first parameter is the confirmation callback.
-
-    // Set to `null` for the agent to pay automatically.
-
-    return await this.x402Client.callTool(this.onPaymentRequired, {
-
-      name: toolName,
-
-      arguments: toolArgs,
-
-    });
-
-  }
-
-}
-
-
+import { Agent } from "agents";import { withX402Client } from "agents/x402";import { privateKeyToAccount } from "viem/accounts";
+export class MyAgent extends Agent {  // Your Agent definitions...
+  async onStart() {    const { id } = await this.mcp.connect(`${this.env.WORKER_URL}/mcp`);    const account = privateKeyToAccount(this.env.MY_PRIVATE_KEY);
+    this.x402Client = withX402Client(this.mcp.mcpConnections[id].client, {      network: "base-sepolia",      account,    });  }
+  onPaymentRequired(paymentRequirements): Promise<boolean> {    // Your human-in-the-loop confirmation flow...  }
+  async onToolCall(toolName: string, toolArgs: unknown) {    // The first parameter is the confirmation callback.    // Set to `null` for the agent to pay automatically.    return await this.x402Client.callTool(this.onPaymentRequired, {      name: toolName,      arguments: toolArgs,    });  }}
 ```
 
 For a complete working example, see [x402-mcp on GitHub ↗](https://github.com/cloudflare/agents/tree/main/examples/x402-mcp).
@@ -85,17 +34,8 @@ Store your private key securely:
 Terminal window
 
 ```
-
-# Local development (.dev.vars)
-
-MY_PRIVATE_KEY="0x..."
-
-
-# Production
-
-npx wrangler secret put MY_PRIVATE_KEY
-
-
+# Local development (.dev.vars)MY_PRIVATE_KEY="0x..."
+# Productionnpx wrangler secret put MY_PRIVATE_KEY
 ```
 
 Use `base-sepolia` for testing. Get test USDC from the [Circle faucet ↗](https://faucet.circle.com/).

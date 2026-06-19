@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,12 +21,7 @@ In your project directory, install [Wrangler](https://developers.cloudflare.com/
 Terminal window
 
 ```
-
-# Publish created project
-
-$ CLOUDFLARE_ACCOUNT_ID=<ACCOUNT_ID> npx wrangler pages deploy <DIRECTORY> --project-name=<PROJECT_NAME>
-
-
+# Publish created project$ CLOUDFLARE_ACCOUNT_ID=<ACCOUNT_ID> npx wrangler pages deploy <DIRECTORY> --project-name=<PROJECT_NAME>
 ```
 
 ## Get credentials from Cloudflare
@@ -83,50 +78,7 @@ In your `pages-deployment.yaml` file, copy the following content:
 YAML
 
 ```
-
-on: [push]
-
-jobs:
-
-  deploy:
-
-    runs-on: ubuntu-latest
-
-    permissions:
-
-      contents: read
-
-      deployments: write
-
-    name: Deploy to Cloudflare Pages
-
-    steps:
-
-      - name: Checkout
-
-        uses: actions/checkout@v6
-
-      # Run your project's build step
-
-      # - name: Build
-
-      #   run: npm install && npm run build
-
-      - name: Deploy
-
-        uses: cloudflare/wrangler-action@v3
-
-        with:
-
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-
-          command: pages deploy YOUR_DIRECTORY_OF_STATIC_ASSETS --project-name=YOUR_PROJECT_NAME
-
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-
-
+on: [push]jobs:  deploy:    runs-on: ubuntu-latest    permissions:      contents: read      deployments: write    name: Deploy to Cloudflare Pages    steps:      - name: Checkout        uses: actions/checkout@v6      # Run your project's build step      # - name: Build      #   run: npm install && npm run build      - name: Deploy        uses: cloudflare/wrangler-action@v3        with:          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}          command: pages deploy YOUR_DIRECTORY_OF_STATIC_ASSETS --project-name=YOUR_PROJECT_NAME          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 In the above code block, you have set up an Action that runs when you push code to the repository. Replace `YOUR_PROJECT_NAME` with your Cloudflare Pages project name and `YOUR_DIRECTORY_OF_STATIC_ASSETS` with your project's output directory, respectively.
@@ -163,40 +115,9 @@ Create a `.circleci/config.yml` file at the root of your project. This file cont
 YAML
 
 ```
-
-version: 2.1
-
-jobs:
-
-  Publish-to-Pages:
-
-    docker:
-
-      - image: cimg/node:18.7.0
-
-
-    steps:
-
-      - checkout
-
-      # Run your project's build step
-
-      - run: npm install && npm run build
-
-      # Publish with wrangler
-
-      - run: npx wrangler pages deploy dist --project-name=<PROJECT NAME> # Replace dist with the name of your build folder and input your project name
-
-
-workflows:
-
-  Publish-to-Pages-workflow:
-
-    jobs:
-
-      - Publish-to-Pages
-
-
+version: 2.1jobs:  Publish-to-Pages:    docker:      - image: cimg/node:18.7.0
+    steps:      - checkout      # Run your project's build step      - run: npm install && npm run build      # Publish with wrangler      - run: npx wrangler pages deploy dist --project-name=<PROJECT NAME> # Replace dist with the name of your build folder and input your project name
+workflows:  Publish-to-Pages-workflow:    jobs:      - Publish-to-Pages
 ```
 
 Your continuous integration workflow is broken down into jobs when using CircleCI. From the code block above, you can see that you first define a list of jobs that run on each commit. For example, your repository will run on a prebuilt docker image `cimg/node:18.7.0`. It first checks out the repository with the Node version specified in the image.
@@ -226,38 +147,9 @@ Go to [Travis-ci.com ↗](https://Travis-ci.com) and enable your repository by l
 YAML
 
 ```
-
-language: node_js
-
-node_js:
-
-  - "18.0.0" # You can specify more versions of Node you want your CI process to support
-
-branches:
-
-  only:
-
-    - travis-ci-test # Specify what branch you want your CI process to run on
-
-install:
-
-  - npm install
-
-
-script:
-
-  - npm run build # Switch this out with your build command or remove it if you don't have a build step
-
-  - npx wrangler pages deploy dist --project-name=<PROJECT NAME>
-
-
-env:
-
-  - CLOUDFLARE_ACCOUNT_ID: { $CLOUDFLARE_ACCOUNT_ID }
-
-  - CLOUDFLARE_API_TOKEN: { $CLOUDFLARE_API_TOKEN }
-
-
+language: node_jsnode_js:  - "18.0.0" # You can specify more versions of Node you want your CI process to supportbranches:  only:    - travis-ci-test # Specify what branch you want your CI process to run oninstall:  - npm install
+script:  - npm run build # Switch this out with your build command or remove it if you don't have a build step  - npx wrangler pages deploy dist --project-name=<PROJECT NAME>
+env:  - CLOUDFLARE_ACCOUNT_ID: { $CLOUDFLARE_ACCOUNT_ID }  - CLOUDFLARE_API_TOKEN: { $CLOUDFLARE_API_TOKEN }
 ```
 
 This will set the Node.js version to 18\. You have also set branches you want your continuous integration to run on. Finally, input your `PROJECT NAME` in the script section and your CI process should work as expected.

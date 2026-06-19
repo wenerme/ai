@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,33 +28,15 @@ Button to mute all participants' audio. Only visible for hosts with mute-all per
 ### Basic Usage
 
 ```
-
 import { RtkMuteToggle } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkMuteToggle meeting={meeting} />;
-
-}
-
-
+function MyComponent() {  return <RtkMuteToggle meeting={meeting} />;}
 ```
 
 ### With Properties
 
 ```
-
 import { RtkMuteToggle } from "@cloudflare/realtimekit-react-native-ui";
-
-
-function MyComponent() {
-
-  return <RtkMuteToggle meeting={meeting} size="md" />;
-
-}
-
-
+function MyComponent() {  return <RtkMuteToggle meeting={meeting} size="md" />;}
 ```
 
 ```json

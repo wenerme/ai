@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-vpc/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -41,18 +41,7 @@ First, create a Workers VPC Service for your internal API:
 Terminal window
 
 ```
-
-npx wrangler vpc service create api-service \
-
-  --type http \
-
-  --tunnel-id <YOUR_TUNNEL_ID> \
-
-  --ipv4 10.0.1.50 \
-
-  --http-port 8080
-
-
+npx wrangler vpc service create api-service \  --type http \  --tunnel-id <YOUR_TUNNEL_ID> \  --ipv4 10.0.1.50 \  --http-port 8080
 ```
 
 You can also create a VPC Service for a service using its hostname:
@@ -60,16 +49,7 @@ You can also create a VPC Service for a service using its hostname:
 Terminal window
 
 ```
-
-npx wrangler vpc service create api-service \
-
-  --type http \
-
-  --tunnel-id <YOUR_TUNNEL_ID> \
-
-  --hostname internal-hostname.example.com
-
-
+npx wrangler vpc service create api-service \  --type http \  --tunnel-id <YOUR_TUNNEL_ID> \  --hostname internal-hostname.example.com
 ```
 
 Note the service ID returned for the next step.
@@ -78,68 +58,20 @@ Note the service ID returned for the next step.
 
 Update your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-11343)
-* [  wrangler.toml ](#tab-panel-11344)
+* [  wrangler.jsonc ](#tab-panel-11360)
+* [  wrangler.toml ](#tab-panel-11361)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "private-api-gateway",
-
-  "main": "src/index.js",
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "vpc_services": [
-
-    {
-
-      "binding": "INTERNAL_API",
-
-      "service_id": "<YOUR_SERVICE_ID>",
-
-      "remote": true
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "private-api-gateway",  "main": "src/index.js",  // Set this to today's date  "compatibility_date": "2026-06-19",  "vpc_services": [    {      "binding": "INTERNAL_API",      "service_id": "<YOUR_SERVICE_ID>",      "remote": true    }  ]}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "private-api-gateway"
-
-main = "src/index.js"
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-
-[[vpc_services]]
-
-binding = "INTERNAL_API"
-
-service_id = "<YOUR_SERVICE_ID>"
-
-remote = true
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "private-api-gateway"main = "src/index.js"# Set this to today's datecompatibility_date = "2026-06-19"
+[[vpc_services]]binding = "INTERNAL_API"service_id = "<YOUR_SERVICE_ID>"remote = true
 ```
 
 ## 4\. Implement the Worker
@@ -149,33 +81,8 @@ In your Workers code, use the VPC Service binding in order to send requests to t
 index.js
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    try {
-
-      // Fetch data from internal API and process it before returning
-
-      const response = await env.INTERNAL_API.fetch("http://10.0.1.50:8080/api/data");
-
-
-      // Use the response of the private API to perform more logic in Workers, before returning the final response
-
-      return response;
-
-    } catch (error) {
-
-      return new Response("Service unavailable", { status: 503 });
-
-    }
-
-  },
-
-};
-
-
+export default {  async fetch(request, env, ctx) {    try {      // Fetch data from internal API and process it before returning      const response = await env.INTERNAL_API.fetch("http://10.0.1.50:8080/api/data");
+      // Use the response of the private API to perform more logic in Workers, before returning the final response      return response;    } catch (error) {      return new Response("Service unavailable", { status: 503 });    }  },};
 ```
 
 This guide demonstrates how you could create a simple proxy in your Workers. However, you could use VPC Services to fetch APIs directly and manipulate the responses to enable you to build more full-stack and backend functionality on Workers.
@@ -187,21 +94,13 @@ Now, you can deploy and test your Worker that you have created:
 Terminal window
 
 ```
-
 npx wrangler deploy
-
-
 ```
 
 Terminal window
 
 ```
-
-# Test GET request
-
-curl https://private-api-gateway.workers.dev
-
-
+# Test GET requestcurl https://private-api-gateway.workers.dev
 ```
 
 ## Next steps

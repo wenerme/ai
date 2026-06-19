@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,10 +19,7 @@ The following response header transform rule adds a header named `Access-Control
 Text in **Expression Editor**:
 
 ```
-
 (http.host eq "<YOUR_HOSTNAME>")
-
-
 ```
 
 Selected operation under **Modify response header**: _Set static_
@@ -34,10 +31,7 @@ Selected operation under **Modify response header**: _Set static_
 You can also use an expression similar to the following to apply the CORS header to several specific hostnames:
 
 ```
-
 (http.host in {"<YOUR_HOSTNAME_1>" "<YOUR_HOSTNAME_2>"})
-
-
 ```
 
 ```json

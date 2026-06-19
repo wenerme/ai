@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -41,10 +41,7 @@ Fields reflect all threat activity for an IP address over the past seven days, f
 A value in one field does not have to come from the same threat event as a value in another field. For example, this expression matches if the IP has _any_ China-origin activity **and** _any_ banking-targeted activity — even from separate events:
 
 ```
-
 any(cf.intel.ip.attacker_countries[*] == "CN") and any(cf.intel.ip.target_industries[*] == "Banking & Financial Services")
-
-
 ```
 
 Combining fields across dimensions produces broader matches than you might expect. Test combined rules with the _Log_ action first.

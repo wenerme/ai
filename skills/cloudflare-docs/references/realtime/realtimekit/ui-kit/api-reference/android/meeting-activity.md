@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -21,16 +21,7 @@ The main meeting activity that manages the full meeting lifecycle. Handles trans
 Kotlin
 
 ```
-
-val meetingInfo = RtkMeetingInfo(authToken = authToken, baseUrl = baseUrl)
-
-val realtimeKitUIInfo = RealtimeKitUIInfo(activity = this, rtkMeetingInfo = meetingInfo)
-
-val realtimeKitUI = RealtimeKitUIBuilder.build(realtimeKitUIInfo)
-
-realtimeKitUI.startMeeting()
-
-
+val meetingInfo = RtkMeetingInfo(authToken = authToken, baseUrl = baseUrl)val realtimeKitUIInfo = RealtimeKitUIInfo(activity = this, rtkMeetingInfo = meetingInfo)val realtimeKitUI = RealtimeKitUIBuilder.build(realtimeKitUIInfo)realtimeKitUI.startMeeting()
 ```
 
 ```json

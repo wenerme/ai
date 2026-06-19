@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,8 +26,8 @@ When creating a cache rule via API, make sure you:
 
 1. Use the [List zone rulesets](https://developers.cloudflare.com/api/resources/rulesets/methods/list/) method to obtain the list of rules already present in the `http_request_cache_settings` phase entry point ruleset.
 2. If the phase ruleset does not exist, create it using the [Create a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) operation. In the new ruleset properties, set the following values:  
-   * kind: `zone`  
-   * phase: `http_request_cache_settings`
+  * kind: `zone`
+  * phase: `http_request_cache_settings`
 3. Use the [Update a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/update/) operation to add a cache rule to the list of ruleset rules. Alternatively, include the rule in the [Create a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) request mentioned in the previous step.
 4. (Optional) To update an existing cache rule, use the [Update a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/methods/update/) operation. For an example, refer to the section below.
 
@@ -40,38 +40,7 @@ Example: Cache everything for example.com
 Update a zone ruleset
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "rules": [
-
-        {
-
-            "expression": "(http.host eq \"example.com\")",
-
-            "description": "cache everything for example.com",
-
-            "action": "set_cache_settings",
-
-            "action_parameters": {
-
-                "cache": true
-
-            }
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "expression": "(http.host eq \"example.com\")",            "description": "cache everything for example.com",            "action": "set_cache_settings",            "action_parameters": {                "cache": true            }        }    ]  }'
 ```
 
 Example: Extend read timeout for Android clients
@@ -79,40 +48,7 @@ Example: Extend read timeout for Android clients
 Update a zone ruleset
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "rules": [
-
-        {
-
-            "expression": "(http.user_agent contains \"Android\")",
-
-            "description": "extend read timeout for android clients",
-
-            "action": "set_cache_settings",
-
-            "action_parameters": {
-
-                "cache": true,
-
-                "read_timeout": 300
-
-            }
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "expression": "(http.user_agent contains \"Android\")",            "description": "extend read timeout for android clients",            "action": "set_cache_settings",            "action_parameters": {                "cache": true,                "read_timeout": 300            }        }    ]  }'
 ```
 
 Example: Disable Cache Reserve for frequently updated assets
@@ -120,44 +56,7 @@ Example: Disable Cache Reserve for frequently updated assets
 Update a zone ruleset
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "rules": [
-
-        {
-
-            "expression": "(starts_with(http.request.uri, \"/feed/\"))",
-
-            "description": "disable cache reserve for frequently updated assets",
-
-            "action": "set_cache_settings",
-
-            "action_parameters": {
-
-                "cache": true,
-
-                "cache_reserve": {
-
-                    "enabled": false
-
-                }
-
-            }
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "expression": "(starts_with(http.request.uri, \"/feed/\"))",            "description": "disable cache reserve for frequently updated assets",            "action": "set_cache_settings",            "action_parameters": {                "cache": true,                "cache_reserve": {                    "enabled": false                }            }        }    ]  }'
 ```
 
 Example: Turn off default cache TTLs
@@ -165,44 +64,7 @@ Example: Turn off default cache TTLs
 Update a zone ruleset
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "rules": [
-
-        {
-
-            "expression": "(http.host eq \"example.com\")",
-
-            "description": "turn off default cache ttls",
-
-            "action": "set_cache_settings",
-
-            "action_parameters": {
-
-                "cache": true,
-
-                "edge_ttl": {
-
-                    "mode": "bypass_by_default"
-
-                }
-
-            }
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "rules": [        {            "expression": "(http.host eq \"example.com\")",            "description": "turn off default cache ttls",            "action": "set_cache_settings",            "action_parameters": {                "cache": true,                "edge_ttl": {                    "mode": "bypass_by_default"                }            }        }    ]  }'
 ```
 
 Example: Update the position of an existing rule
@@ -210,38 +72,7 @@ Example: Update the position of an existing rule
 Update a zone ruleset rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules/$RULE_ID" \
-
-  --request PATCH \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "expression": "(http.host eq \"example.com\")",
-
-    "description": "cache everything for example.com",
-
-    "action": "set_cache_settings",
-
-    "action_parameters": {
-
-        "cache": true
-
-    },
-
-    "enabled": true,
-
-    "position": {
-
-        "before": "da5e8e506c8e7877fe06cdf4c41add54"
-
-    }
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules/$RULE_ID" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "expression": "(http.host eq \"example.com\")",    "description": "cache everything for example.com",    "action": "set_cache_settings",    "action_parameters": {        "cache": true    },    "enabled": true,    "position": {        "before": "da5e8e506c8e7877fe06cdf4c41add54"    }  }'
 ```
 
 ## Required API token permissions

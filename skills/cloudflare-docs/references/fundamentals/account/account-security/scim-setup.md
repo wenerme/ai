@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -67,9 +67,10 @@ The account ID can be found via dashboard or API. For more information, refer to
 
 ### Create an API token
 
-1. [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:  
-| Type    | Item              | Permission |  
-| ------- | ----------------- | ---------- |  
+1. [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:
+
+| Type    | Item              | Permission |
+| ------- | ----------------- | ---------- |
 | Account | SCIM Provisioning | Edit       |  
 Note  
 Account API tokens are recommended for SCIM Provisioning. User owned API tokens, while supported, may result in a broken SCIM connection in the event when the user's policies are revoked from the SCIM integration, or the [API access](https://developers.cloudflare.com/fundamentals/api/how-to/control-api-access/) is unexpectedly disabled. Learn more about [Account API tokens](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/).

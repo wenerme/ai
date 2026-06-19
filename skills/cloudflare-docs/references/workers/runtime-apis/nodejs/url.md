@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,23 +23,8 @@ Returns the Punycode ASCII serialization of the domain. If domain is an invalid 
 JavaScript
 
 ```
-
 import { domainToASCII } from "node:url";
-
-
-console.log(domainToASCII("español.com"));
-
-// Prints xn--espaol-zwa.com
-
-console.log(domainToASCII("中文.com"));
-
-// Prints xn--fiq228c.com
-
-console.log(domainToASCII("xn--iñvalid.com"));
-
-// Prints an empty string
-
-
+console.log(domainToASCII("español.com"));// Prints xn--espaol-zwa.comconsole.log(domainToASCII("中文.com"));// Prints xn--fiq228c.comconsole.log(domainToASCII("xn--iñvalid.com"));// Prints an empty string
 ```
 
 ## domainToUnicode
@@ -51,23 +36,8 @@ It performs the inverse operation to `domainToASCII()`.
 JavaScript
 
 ```
-
 import { domainToUnicode } from "node:url";
-
-
-console.log(domainToUnicode("xn--espaol-zwa.com"));
-
-// Prints español.com
-
-console.log(domainToUnicode("xn--fiq228c.com"));
-
-// Prints 中文.com
-
-console.log(domainToUnicode("xn--iñvalid.com"));
-
-// Prints an empty string
-
-
+console.log(domainToUnicode("xn--espaol-zwa.com"));// Prints español.comconsole.log(domainToUnicode("xn--fiq228c.com"));// Prints 中文.comconsole.log(domainToUnicode("xn--iñvalid.com"));// Prints an empty string
 ```
 
 ```json

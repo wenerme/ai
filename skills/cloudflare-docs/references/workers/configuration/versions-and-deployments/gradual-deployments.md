@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -102,16 +102,7 @@ Run a cURL command on your Worker to test the split deployment.
 Terminal window
 
 ```
-
-for j in {0..10}
-
-do
-
-    curl -s https://$WORKER_NAME.$SUBDOMAIN.workers.dev
-
-done
-
-
+for j in {0..10}do    curl -s https://$WORKER_NAME.$SUBDOMAIN.workers.devdone
 ```
 
 You should see 10 responses. Responses will reflect the content returned by the versions in your deployment. Responses will vary depending on the percentages configured in [step #3](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/#3-create-a-new-deployment).
@@ -149,16 +140,7 @@ pnpm wrangler versions deploy
 Terminal window
 
 ```
-
-for j in {0..10}
-
-do
-
-    curl -s https://$WORKER_NAME.$SUBDOMAIN.workers.dev
-
-done
-
-
+for j in {0..10}do    curl -s https://$WORKER_NAME.$SUBDOMAIN.workers.devdone
 ```
 
 You should see 10 responses. Responses will reflect the content returned by the versions in your deployment. Responses will vary depending on the percentages configured in step #6.
@@ -180,10 +162,7 @@ You can do this by setting the `Cloudflare-Workers-Version-Key` header on the in
 Terminal window
 
 ```
-
 curl -s https://example.com -H 'Cloudflare-Workers-Version-Key: foo'
-
-
 ```
 
 For a given [deployment](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/#deployments), all requests with a version key set to `foo` will be handled by the same version of your Worker. The specific version of your Worker that the version key `foo` corresponds to is determined by the percentages you have configured for each Worker version in your deployment.
@@ -199,10 +178,7 @@ For example, if your worker serves video assets under the URI path `/assets/` an
 Text in **Expression Editor**:
 
 ```
-
 starts_with(http.request.uri.path, "/asset/")
-
-
 ```
 
 Selected operation under **Modify request header**: _Set dynamic_
@@ -289,49 +265,13 @@ A new `ScriptVersion` object is available in [Workers Logpush](https://developer
 Terminal window
 
 ```
-
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/logpush/jobs' \
-
--H 'Authorization: Bearer <TOKEN>' \
-
--H 'Content-Type: application/json' \
-
--d '{
-
-"name": "workers-logpush",
-
-"output_options": {
-
-    "field_names": ["Event", "EventTimestampMs", "Outcome", "Logs", "ScriptName", "ScriptVersion"],
-
-},
-
-"destination_conf": "<DESTINATION_URL>",
-
-"dataset": "workers_trace_events",
-
-"enabled": true
-
-}'| jq .
-
-
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/logpush/jobs' \-H 'Authorization: Bearer <TOKEN>' \-H 'Content-Type: application/json' \-d '{"name": "workers-logpush","output_options": {    "field_names": ["Event", "EventTimestampMs", "Outcome", "Logs", "ScriptName", "ScriptVersion"],},"destination_conf": "<DESTINATION_URL>","dataset": "workers_trace_events","enabled": true}'| jq .
 ```
 
 `ScriptVersion` is an object with the following structure:
 
 ```
-
-scriptVersion: {
-
-    id: "<UUID>",
-
-    message: "<MESSAGE>",
-
-    tag: "<TAG>"
-
-}
-
-
+scriptVersion: {    id: "<UUID>",    message: "<MESSAGE>",    tag: "<TAG>"}
 ```
 
 ### Runtime binding

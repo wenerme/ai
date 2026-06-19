@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,43 +27,12 @@ When using certain functionality, like the `cf-create-bucket-if-missing` header,
 Python
 
 ```
-
 import boto3
-
-
-client = boto3.resource('s3',
-
-  # Provide your Cloudflare account ID
-
-  endpoint_url = 'https://<ACCOUNT_ID>.r2.cloudflarestorage.com',
-
-  # Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)
-
-  aws_access_key_id = '<ACCESS_KEY_ID>',
-
-  aws_secret_access_key = '<SECRET_ACCESS_KEY>'
-
-)
-
-
+client = boto3.resource('s3',  # Provide your Cloudflare account ID  endpoint_url = 'https://<ACCOUNT_ID>.r2.cloudflarestorage.com',  # Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)  aws_access_key_id = '<ACCESS_KEY_ID>',  aws_secret_access_key = '<SECRET_ACCESS_KEY>')
 event_system = client.meta.events
-
-
-# Define function responsible for adding the header
-
-def add_custom_header(params, **kwargs):
-
-    params["headers"]['cf-create-bucket-if-missing'] = 'true'
-
-
+# Define function responsible for adding the headerdef add_custom_header(params, **kwargs):    params["headers"]['cf-create-bucket-if-missing'] = 'true'
 event_system.register('before-call.s3.PutObject', add_custom_header)
-
-
-response = client.put_object(Bucket="my_bucket", Key="my_file", Body="file_contents")
-
-print(response)
-
-
+response = client.put_object(Bucket="my_bucket", Key="my_file", Body="file_contents")print(response)
 ```
 
 ### Set a header for all requests with `aws-sdk-js-v3`
@@ -73,70 +42,13 @@ print(response)
 TypeScript
 
 ```
-
-import {
-
-  PutObjectCommand,
-
-  S3Client,
-
-} from "@aws-sdk/client-s3";
-
-
-const client = new S3Client({
-
-  region: "auto", // Required by SDK but not used by R2
-
-  endpoint: `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`,
-
-  // Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)
-
-  credentials: {
-
-    accessKeyId: ACCESS_KEY_ID,
-
-    secretAccessKey: SECRET_ACCESS_KEY,
-
-  },
-
-});
-
-
-client.middlewareStack.add(
-
-  (next, context) => async (args) => {
-
-      const r = args.request as RequestInit
-
-      r.headers["cf-create-bucket-if-missing"] = "true";
-
-
-      return await next(args)
-
-    },
-
-  { step: 'build', name: 'customHeaders' },
-
-)
-
-
-const command = new PutObjectCommand({
-
-  Bucket: "my_bucket",
-
-  Key: "my_key",
-
-  Body: "my_data"
-
-});
-
-
+import {  PutObjectCommand,  S3Client,} from "@aws-sdk/client-s3";
+const client = new S3Client({  region: "auto", // Required by SDK but not used by R2  endpoint: `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`,  // Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)  credentials: {    accessKeyId: ACCESS_KEY_ID,    secretAccessKey: SECRET_ACCESS_KEY,  },});
+client.middlewareStack.add(  (next, context) => async (args) => {      const r = args.request as RequestInit      r.headers["cf-create-bucket-if-missing"] = "true";
+      return await next(args)    },  { step: 'build', name: 'customHeaders' },)
+const command = new PutObjectCommand({  Bucket: "my_bucket",  Key: "my_key",  Body: "my_data"});
 const response = await client.send(command);
-
-
 console.log(response);
-
-
 ```
 
 ## Set a different header on each request
@@ -150,61 +62,14 @@ To enable us to pass custom headers as an extra argument into the call to `clien
 Python
 
 ```
-
 import boto3
-
-
-client = boto3.resource('s3',
-
-  # Provide your Cloudflare account ID
-
-  endpoint_url = 'https://<ACCOUNT_ID>.r2.cloudflarestorage.com',
-
-  # Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)
-
-  aws_access_key_id = '<ACCESS_KEY_ID>',
-
-  aws_secret_access_key = '<SECRET_ACCESS_KEY>'
-
-)
-
-
+client = boto3.resource('s3',  # Provide your Cloudflare account ID  endpoint_url = 'https://<ACCOUNT_ID>.r2.cloudflarestorage.com',  # Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)  aws_access_key_id = '<ACCESS_KEY_ID>',  aws_secret_access_key = '<SECRET_ACCESS_KEY>')
 event_system = client.meta.events
-
-
-# Moves the custom headers from the parameters to the request context
-
-def process_custom_arguments(params, context, **kwargs):
-
-    if (custom_headers := params.pop("custom_headers", None)):
-
-        context["custom_headers"] = custom_headers
-
-
-# Here we extract the headers from the request context and actually set them
-
-def add_custom_headers(params, context, **kwargs):
-
-    if (custom_headers := context.get("custom_headers")):
-
-        params["headers"].update(custom_headers)
-
-
-event_system.register('before-parameter-build.s3.PutObject', process_custom_arguments)
-
-event_system.register('before-call.s3.PutObject', add_custom_headers)
-
-
+# Moves the custom headers from the parameters to the request contextdef process_custom_arguments(params, context, **kwargs):    if (custom_headers := params.pop("custom_headers", None)):        context["custom_headers"] = custom_headers
+# Here we extract the headers from the request context and actually set themdef add_custom_headers(params, context, **kwargs):    if (custom_headers := context.get("custom_headers")):        params["headers"].update(custom_headers)
+event_system.register('before-parameter-build.s3.PutObject', process_custom_arguments)event_system.register('before-call.s3.PutObject', add_custom_headers)
 custom_headers = {'If-Match' : '"29d911f495d1ba7cb3a4d7d15e63236a"'}
-
-
-# Note that boto3 will throw an exception if the precondition failed. Catch this exception if necessary
-
-response = client.put_object(Bucket="my_bucket", Key="my_key", Body="file_contents", custom_headers=custom_headers)
-
-print(response)
-
-
+# Note that boto3 will throw an exception if the precondition failed. Catch this exception if necessaryresponse = client.put_object(Bucket="my_bucket", Key="my_key", Body="file_contents", custom_headers=custom_headers)print(response)
 ```
 
 ### Set a header per request in `aws-sdk-js-v3`
@@ -214,84 +79,13 @@ Here we again configure the header we would like to set by creating a middleware
 TypeScript
 
 ```
-
-import {
-
-  PutObjectCommand,
-
-  S3Client,
-
-} from "@aws-sdk/client-s3";
-
-
-const client = new S3Client({
-
-  region: "auto", // Required by SDK but not used by R2
-
-  // Provide your Cloudflare account ID
-
-  endpoint: `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`,
-
-  // Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)
-
-  credentials: {
-
-    accessKeyId: ACCESS_KEY_ID,
-
-    secretAccessKey: SECRET_ACCESS_KEY,
-
-  },
-
-});
-
-
-const command = new PutObjectCommand({
-
-  Bucket: "my_bucket",
-
-  Key: "my_key",
-
-  Body: "my_data"
-
-});
-
-
-const headers = { 'If-Match': '"29d911f495d1ba7cb3a4d7d15e63236a"' }
-
-command.middlewareStack.add(
-
-  (next) =>
-
-    (args) => {
-
-      const r = args.request as RequestInit
-
-
-      Object.entries(headers).forEach(
-
-        ([k, v]: [key: string, value: string]): void => {
-
-          r.headers[k] = v
-
-        },
-
-      )
-
-
-      return next(args)
-
-    },
-
-  { step: 'build', name: 'customHeaders' },
-
-)
-
-const response = await client.send(command);
-
-
+import {  PutObjectCommand,  S3Client,} from "@aws-sdk/client-s3";
+const client = new S3Client({  region: "auto", // Required by SDK but not used by R2  // Provide your Cloudflare account ID  endpoint: `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`,  // Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)  credentials: {    accessKeyId: ACCESS_KEY_ID,    secretAccessKey: SECRET_ACCESS_KEY,  },});
+const command = new PutObjectCommand({  Bucket: "my_bucket",  Key: "my_key",  Body: "my_data"});
+const headers = { 'If-Match': '"29d911f495d1ba7cb3a4d7d15e63236a"' }command.middlewareStack.add(  (next) =>    (args) => {      const r = args.request as RequestInit
+      Object.entries(headers).forEach(        ([k, v]: [key: string, value: string]): void => {          r.headers[k] = v        },      )
+      return next(args)    },  { step: 'build', name: 'customHeaders' },)const response = await client.send(command);
 console.log(response);
-
-
 ```
 
 ```json

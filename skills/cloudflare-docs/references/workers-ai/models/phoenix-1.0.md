@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,75 +28,27 @@ Phoenix 1.0 is a model by Leonardo.Ai that generates images with exceptional pro
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-5042)
-* [  curl ](#tab-panel-5043)
+* [  TypeScript ](#tab-panel-5116)
+* [  curl ](#tab-panel-5117)
 
 ```
-
-export interface Env {
-
-  AI: Ai;
-
-}
-
-
-export default {
-
-  async fetch(request, env): Promise<Response> {
-
-
-    const inputs = {
-
-      prompt: "cyberpunk cat",
-
-    };
-
-
-    const response = await env.AI.run(
-
-      "@cf/leonardo/phoenix-1.0",
-
-      inputs
-
-    );
-
-
-    return new Response(response, {
-
-      headers: {
-
-        "content-type": "image/jpg",
-
-      },
-
-    });
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export interface Env {  AI: Ai;}
+export default {  async fetch(request, env): Promise<Response> {
+    const inputs = {      prompt: "cyberpunk cat",    };
+    const response = await env.AI.run(      "@cf/leonardo/phoenix-1.0",      inputs    );
+    return new Response(response, {      headers: {        "content-type": "image/jpg",      },    });  },} satisfies ExportedHandler<Env>;
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/leonardo/phoenix-1.0  \
-
-  -X POST  \
-
-  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
-
-  -d '{ "prompt": "cyberpunk cat" }'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/leonardo/phoenix-1.0  \  -X POST  \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \  -d '{ "prompt": "cyberpunk cat" }'
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-5044)
-* [ Output ](#tab-panel-5045)
+* [ Input ](#tab-panel-5118)
+* [ Output ](#tab-panel-5119)
 
 prompt
 
@@ -126,13 +78,13 @@ negative\_prompt
 
 `string`minLength: 1Specify what to exclude from the generated images
 
-The binding returns a `ReadableStream` with the output (check the model's output schema).
+ The binding returns a `ReadableStream` with the output (check the model's output schema). 
 
 ## API Schemas (Raw)
 
 Input [ ](https://developers.cloudflare.com/workers-ai/models/phoenix-1.0/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/phoenix-1.0/schema-input.json "Download") 
 
-Output [ ](https://developers.cloudflare.com/workers-ai/models/phoenix-1.0/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/phoenix-1.0/schema-output.json "Download") 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/phoenix-1.0/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/phoenix-1.0/schema-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/phoenix-1.0/#page","headline":"phoenix-1.0 (Leonardo) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Phoenix 1.0 is a model by Leonardo.Ai that generates images with exceptional prompt adherence and coherent text.","url":"https://developers.cloudflare.com/workers-ai/models/phoenix-1.0/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

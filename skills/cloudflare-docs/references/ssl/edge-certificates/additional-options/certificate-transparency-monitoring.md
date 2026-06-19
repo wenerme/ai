@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,7 +26,7 @@ Aspects to consider
 
 ## Availability
 
-| Free             | Pro                 | Business            | Enterprise                |                           |
+|                  | Free                | Pro                 | Business                  | Enterprise                |
 | ---------------- | ------------------- | ------------------- | ------------------------- | ------------------------- |
 | Availability     | Yes                 | Yes                 | Yes                       | Yes                       |
 | Email Recipients | All account members | All account members | Specified email addresses | Specified email addresses |

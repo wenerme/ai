@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/billing/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -24,16 +24,21 @@ Because some countries tax goods and services on personal accounts, you may be a
 [ Go to **Billing** ](https://dash.cloudflare.com/?to=/:account/billing)
 2. Go to the **Subscriptions** page and open the **Payment methods** panel.
 3. Select **Add Payment Method**. If no payment method is on file, the dialog opens automatically.
-4. Choose a payment option and enter the required details:  
-**Card** (Visa, Mastercard, American Express, Discover, UnionPay):  
-   1. Enter your card details.  
-   2. Complete 3D Secure authentication if your card issuer requires it.  
-   3. If applicable, add your business information for your invoice, including your **Company** and **VAT/GST Number**.  
-**PayPal** (your linked card or bank is charged if you have insufficient funds in your PayPal account):  
-   1. Select **PayPal**.  
-   2. Follow the online instructions until PayPal returns you to the Cloudflare **Payment Method** form to continue setup.  
-   3. Verify your **PayPal username** now appears next to the PayPal logo.  
-   4. Add your account contact information as well as **Company** and **VAT/GST Number**, if applicable.  
+4. Choose a payment option and enter the required details:
+
+**Card** (Visa, Mastercard, American Express, Discover, UnionPay):
+
+  1. Enter your card details.
+  2. Complete 3D Secure authentication if your card issuer requires it.
+  3. If applicable, add your business information for your invoice, including your **Company** and **VAT/GST Number**.
+
+**PayPal** (your linked card or bank is charged if you have insufficient funds in your PayPal account):
+
+  1. Select **PayPal**.
+  2. Follow the online instructions until PayPal returns you to the Cloudflare **Payment Method** form to continue setup.
+  3. Verify your **PayPal username** now appears next to the PayPal logo.
+  4. Add your account contact information as well as **Company** and **VAT/GST Number**, if applicable.
+
 **Wallets**: Apple Pay, Google Pay, Link, and [Instant Bank Payments via Link](https://developers.cloudflare.com/billing/payment-methods/instant-bank-payments-link/) (US-based self-serve accounts) are also available.
 5. Review the payment method and contact information.
 6. To finish, select **Confirm**.

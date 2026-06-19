@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,266 +22,61 @@ Be careful when calling `setAlarm` in the Durable Object class constructor
 
 In this example the TTL is extended upon every new fetch request to the Durable Object. It might be tempting to instead extend the TTL in the constructor of the Durable Object. This is not advised because the Durable Object's constructor will be called before invoking the alarm handler if the alarm wakes the Durable Object up from hibernation. This approach will naively result in the constructor continually extending the TTL without running the alarm handler. If you must call `setAlarm` in the Durable Object class constructor be sure to check that there is no alarm previously set.
 
-* [  JavaScript ](#tab-panel-8325)
-* [  TypeScript ](#tab-panel-8326)
-* [  Python ](#tab-panel-8327)
+* [  JavaScript ](#tab-panel-8401)
+* [  TypeScript ](#tab-panel-8402)
+* [  Python ](#tab-panel-8403)
 
 JavaScript
 
 ```
-
 import { DurableObject } from "cloudflare:workers";
-
-
-// Durable Object
-
-export class MyDurableObject extends DurableObject {
-
-  // Time To Live (TTL) in milliseconds
-
-  timeToLiveMs = 1000;
-
-
-  constructor(ctx, env) {
-
-    super(ctx, env);
-
-  }
-
-
-  async fetch(_request) {
-
-    // Extend the TTL immediately following every fetch request to a Durable Object.
-
-    await this.ctx.storage.setAlarm(Date.now() + this.timeToLiveMs);
-
-    ...
-
-   }
-
-
-  async alarm() {
-
-    await this.ctx.storage.deleteAll();
-
-  }
-
-}
-
-
-// Worker
-
-export default {
-
-  async fetch(request, env) {
-
-    const stub = env.MY_DURABLE_OBJECT.getByName("foo");
-
-    return await stub.fetch(request);
-
-  },
-
-};
-
-
+// Durable Objectexport class MyDurableObject extends DurableObject {  // Time To Live (TTL) in milliseconds  timeToLiveMs = 1000;
+  constructor(ctx, env) {    super(ctx, env);  }
+  async fetch(_request) {    // Extend the TTL immediately following every fetch request to a Durable Object.    await this.ctx.storage.setAlarm(Date.now() + this.timeToLiveMs);    ...   }
+  async alarm() {    await this.ctx.storage.deleteAll();  }}
+// Workerexport default {  async fetch(request, env) {    const stub = env.MY_DURABLE_OBJECT.getByName("foo");    return await stub.fetch(request);  },};
 ```
 
 TypeScript
 
 ```
-
 import { DurableObject } from "cloudflare:workers";
-
-
-export interface Env {
-
-  MY_DURABLE_OBJECT: DurableObjectNamespace<MyDurableObject>;
-
-}
-
-
-// Durable Object
-
-export class MyDurableObject extends DurableObject {
-
-  // Time To Live (TTL) in milliseconds
-
-  timeToLiveMs = 1000;
-
-
-  constructor(ctx: DurableObjectState, env: Env) {
-
-    super(ctx, env);
-
-  }
-
-
-  async fetch(_request: Request) {
-
-    // Extend the TTL immediately following every fetch request to a Durable Object.
-
-    await this.ctx.storage.setAlarm(Date.now() + this.timeToLiveMs);
-
-    ...
-
-   }
-
-
-  async alarm() {
-
-    await this.ctx.storage.deleteAll();
-
-  }
-
-}
-
-
-// Worker
-
-export default {
-
-  async fetch(request, env) {
-
-    const stub = env.MY_DURABLE_OBJECT.getByName("foo");
-
-    return await stub.fetch(request);
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export interface Env {  MY_DURABLE_OBJECT: DurableObjectNamespace<MyDurableObject>;}
+// Durable Objectexport class MyDurableObject extends DurableObject {  // Time To Live (TTL) in milliseconds  timeToLiveMs = 1000;
+  constructor(ctx: DurableObjectState, env: Env) {    super(ctx, env);  }
+  async fetch(_request: Request) {    // Extend the TTL immediately following every fetch request to a Durable Object.    await this.ctx.storage.setAlarm(Date.now() + this.timeToLiveMs);    ...   }
+  async alarm() {    await this.ctx.storage.deleteAll();  }}
+// Workerexport default {  async fetch(request, env) {    const stub = env.MY_DURABLE_OBJECT.getByName("foo");    return await stub.fetch(request);  },} satisfies ExportedHandler<Env>;
 ```
 
 Python
 
 ```
-
-from workers import DurableObject, Response, WorkerEntrypoint
-
-import time
-
-
-# Durable Object
-
-class MyDurableObject(DurableObject):
-
-  # Time To Live (TTL) in milliseconds
-
-  timeToLiveMs = 1000
-
-
-  def __init__(self, ctx, env):
-
-    super().__init__(ctx, env)
-
-
-  async def fetch(self, _request):
-
-    # Extend the TTL immediately following every fetch request to a Durable Object.
-
-    await self.ctx.storage.setAlarm(int(time.time() * 1000) + self.timeToLiveMs)
-
-    ...
-
-
-  async def alarm(self):
-
-    await self.ctx.storage.deleteAll()
-
-
-# Worker
-
-class Default(WorkerEntrypoint):
-
-  async def fetch(self, request):
-
-    stub = self.env.MY_DURABLE_OBJECT.getByName("foo")
-
-    return await stub.fetch(request)
-
-
+from workers import DurableObject, Response, WorkerEntrypointimport time
+# Durable Objectclass MyDurableObject(DurableObject):  # Time To Live (TTL) in milliseconds  timeToLiveMs = 1000
+  def __init__(self, ctx, env):    super().__init__(ctx, env)
+  async def fetch(self, _request):    # Extend the TTL immediately following every fetch request to a Durable Object.    await self.ctx.storage.setAlarm(int(time.time() * 1000) + self.timeToLiveMs)    ...
+  async def alarm(self):    await self.ctx.storage.deleteAll()
+# Workerclass Default(WorkerEntrypoint):  async def fetch(self, request):    stub = self.env.MY_DURABLE_OBJECT.getByName("foo")    return await stub.fetch(request)
 ```
 
 To test and deploy this example, configure your Wrangler file to include a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) based on the namespace and class name chosen previously.
 
-* [  wrangler.jsonc ](#tab-panel-8328)
-* [  wrangler.toml ](#tab-panel-8329)
+* [  wrangler.jsonc ](#tab-panel-8404)
+* [  wrangler.toml ](#tab-panel-8405)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "durable-object-ttl",
-
-  "main": "src/index.ts",
-
-  "durable_objects": {
-
-    "bindings": [
-
-      {
-
-        "name": "MY_DURABLE_OBJECT",
-
-        "class_name": "MyDurableObject"
-
-      }
-
-    ]
-
-  },
-
-  "migrations": [
-
-    {
-
-      "tag": "v1",
-
-      "new_sqlite_classes": [
-
-        "MyDurableObject"
-
-      ]
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "durable-object-ttl",  "main": "src/index.ts",  "durable_objects": {    "bindings": [      {        "name": "MY_DURABLE_OBJECT",        "class_name": "MyDurableObject"      }    ]  },  "migrations": [    {      "tag": "v1",      "new_sqlite_classes": [        "MyDurableObject"      ]    }  ]}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "durable-object-ttl"
-
-main = "src/index.ts"
-
-
-[[durable_objects.bindings]]
-
-name = "MY_DURABLE_OBJECT"
-
-class_name = "MyDurableObject"
-
-
-[[migrations]]
-
-tag = "v1"
-
-new_sqlite_classes = [ "MyDurableObject" ]
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "durable-object-ttl"main = "src/index.ts"
+[[durable_objects.bindings]]name = "MY_DURABLE_OBJECT"class_name = "MyDurableObject"
+[[migrations]]tag = "v1"new_sqlite_classes = [ "MyDurableObject" ]
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/vectorize/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -45,10 +45,7 @@ To create an index with `wrangler`:
 Terminal window
 
 ```
-
 npx wrangler vectorize create your-index-name --dimensions=NUM_DIMENSIONS --metric=SELECTED_METRIC
-
-
 ```
 
 To create an index that can accept vector embeddings from Worker's AI's [@cf/baai/bge-base-en-v1.5](https://developers.cloudflare.com/workers-ai/models/?tasks=Text+Embeddings) embedding model, which outputs vectors with 768 dimensions, use the following command:
@@ -56,10 +53,7 @@ To create an index that can accept vector embeddings from Worker's AI's [@cf/baa
 Terminal window
 
 ```
-
 npx wrangler vectorize create your-index-name --dimensions=768 --metric=cosine
-
-
 ```
 
 ### HTTP API
@@ -71,45 +65,12 @@ For example, to create an index directly from a Python script:
 Python
 
 ```
-
 import requests
-
-
 url = "https://api.cloudflare.com/client/v4/accounts/{}/vectorize/v2/indexes".format("your-account-id")
-
-
-headers = {
-
-    "Authorization": "Bearer <your-api-token>"
-
-}
-
-
-body = {
-
-  "name": "demo-index",
-
-  "description": "some index description",
-
-  "config": {
-
-    "dimensions": 1024,
-
-    "metric": "euclidean"
-
-  },
-
-}
-
-
+headers = {    "Authorization": "Bearer <your-api-token>"}
+body = {  "name": "demo-index",  "description": "some index description",  "config": {    "dimensions": 1024,    "metric": "euclidean"  },}
 resp = requests.post(url, headers=headers, json=body)
-
-
-print('Status Code:', resp.status_code)
-
-print('Response JSON:', resp.json())
-
-
+print('Status Code:', resp.status_code)print('Response JSON:', resp.json())
 ```
 
 This script should print the response with a status code `201`, along with a JSON response body indicating the creation of an index with the provided configuration.

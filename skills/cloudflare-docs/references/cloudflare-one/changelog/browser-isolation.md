@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -87,24 +87,7 @@ We're excited to announce that new logging capabilities for [Remote Browser Isol
 With these enhanced logs, administrators can gain visibility into end user behavior in the remote browser and track blocked data extraction attempts, along with the websites that triggered them, in an isolated session.
 
 ```
-
-{
-
-  "AccountID": "$ACCOUNT_ID",
-
-  "Decision": "block",
-
-  "DomainName": "www.example.com",
-
-  "Timestamp": "2025-02-27T23:15:06Z",
-
-  "Type": "copy",
-
-  "UserID": "$USER_ID"
-
-}
-
-
+{  "AccountID": "$ACCOUNT_ID",  "Decision": "block",  "DomainName": "www.example.com",  "Timestamp": "2025-02-27T23:15:06Z",  "Type": "copy",  "UserID": "$USER_ID"}
 ```
 
 User Actions available:

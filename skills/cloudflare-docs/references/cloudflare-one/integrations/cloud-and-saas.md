@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,26 +30,26 @@ The workflow pages for managing findings and webhooks appear first, followed by 
 * [ Google Cloud Platform (GCP) Cloud Storage ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/gcp-cloud-storage/)
 * [ GitHub ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/github/)
 * [ Google Workspace ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/)  
-   * [ Gmail ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/gmail/)  
-   * [ Google Admin ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/google-admin/)  
-   * [ Google Calendar ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/google-calendar/)  
-   * [ Google Drive ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/google-drive/)  
-   * [ Gmail (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/gmail-fedramp/)  
-   * [ Google Admin (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/google-admin-fedramp/)  
-   * [ Google Calendar (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/google-calendar-fedramp/)  
-   * [ Google Drive (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/google-drive-fedramp/)  
-   * [ Gemini for Google Workspace ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/gemini/)
+  * [ Gmail ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/gmail/)
+  * [ Google Admin ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/google-admin/)
+  * [ Google Calendar ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/google-calendar/)
+  * [ Google Drive ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/google-drive/)
+  * [ Gmail (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/gmail-fedramp/)
+  * [ Google Admin (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/google-admin-fedramp/)
+  * [ Google Calendar (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/google-calendar-fedramp/)
+  * [ Google Drive (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/google-drive-fedramp/)
+  * [ Gemini for Google Workspace ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/gemini/)
 * [ Microsoft 365 ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/)  
-   * [ Admin Center ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/admin-center/)  
-   * [ OneDrive ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/onedrive/)  
-   * [ Outlook ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/outlook/)  
-   * [ SharePoint ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/sharepoint/)  
-   * [ Microsoft 365 Copilot ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/m365-copilot/)  
-   * [ Admin Center (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/admin-center-fedramp/)  
-   * [ OneDrive (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/onedrive-fedramp/)  
-   * [ Outlook (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/outlook-fedramp/)  
-   * [ SharePoint (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/sharepoint-fedramp/)  
-   * [ Microsoft 365 Copilot (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/m365-copilot-fedramp/)
+  * [ Admin Center ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/admin-center/)
+  * [ OneDrive ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/onedrive/)
+  * [ Outlook ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/outlook/)
+  * [ SharePoint ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/sharepoint/)
+  * [ Microsoft 365 Copilot ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/m365-copilot/)
+  * [ Admin Center (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/admin-center-fedramp/)
+  * [ OneDrive (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/onedrive-fedramp/)
+  * [ Outlook (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/outlook-fedramp/)
+  * [ SharePoint (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/sharepoint-fedramp/)
+  * [ Microsoft 365 Copilot (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/m365-copilot-fedramp/)
 * [ OpenAI ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/openai/)
 * [ Salesforce (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/salesforce-fedramp/)
 * [ Salesforce ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/salesforce/)
@@ -57,9 +57,9 @@ The workflow pages for managing findings and webhooks appear first, followed by 
 * [ ServiceNow ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/servicenow/)
 * [ Slack ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/slack/)
 * [ Troubleshooting ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/troubleshooting/)  
-   * [ CASB ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/troubleshooting/casb/)  
-   * [ Troubleshoot integrations ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/troubleshooting/troubleshoot-integrations/)  
-   * [ Troubleshoot compute accounts ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/troubleshooting/troubleshoot-compute-accounts/)
+  * [ CASB ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/troubleshooting/casb/)
+  * [ Troubleshoot integrations ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/troubleshooting/troubleshoot-integrations/)
+  * [ Troubleshoot compute accounts ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/troubleshooting/troubleshoot-compute-accounts/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/#page","headline":"Cloud and SaaS integrations · Cloudflare One docs","description":"Cloud and SaaS integrations resources and guides for Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -43,56 +43,9 @@ bun add @cloudflare/pages-plugin-vercel-og
 TypeScript
 
 ```
-
-import React from "react";
-
-import vercelOGPagesPlugin from "@cloudflare/pages-plugin-vercel-og";
-
-
-interface Props {
-
-  ogTitle: string;
-
-}
-
-
-export const onRequest = vercelOGPagesPlugin<Props>({
-
-  imagePathSuffix: "/social-image.png",
-
-  component: ({ ogTitle, pathname }) => {
-
-    return <div style={{ display: "flex" }}>{ogTitle}</div>;
-
-  },
-
-  extractors: {
-
-    on: {
-
-      'meta[property="og:title"]': (props) => ({
-
-        element(element) {
-
-          props.ogTitle = element.getAttribute("content");
-
-        },
-
-      }),
-
-    },
-
-  },
-
-  autoInject: {
-
-    openGraph: true,
-
-  },
-
-});
-
-
+import React from "react";import vercelOGPagesPlugin from "@cloudflare/pages-plugin-vercel-og";
+interface Props {  ogTitle: string;}
+export const onRequest = vercelOGPagesPlugin<Props>({  imagePathSuffix: "/social-image.png",  component: ({ ogTitle, pathname }) => {    return <div style={{ display: "flex" }}>{ogTitle}</div>;  },  extractors: {    on: {      'meta[property="og:title"]': (props) => ({        element(element) {          props.ogTitle = element.getAttribute("content");        },      }),    },  },  autoInject: {    openGraph: true,  },});
 ```
 
 The Plugin takes an object with six properties:
@@ -113,31 +66,8 @@ For example, the below code will generate an image saying "Hello, world!" which 
 TypeScript
 
 ```
-
-import React from "react";
-
-import { ImageResponse } from "@cloudflare/pages-plugin-vercel-og/api";
-
-
-export const onRequest: PagesFunction = async () => {
-
-  return new ImageResponse(
-
-    <div style={{ display: "flex" }}>Hello, world!</div>,
-
-    {
-
-      width: 1200,
-
-      height: 630,
-
-    }
-
-  );
-
-};
-
-
+import React from "react";import { ImageResponse } from "@cloudflare/pages-plugin-vercel-og/api";
+export const onRequest: PagesFunction = async () => {  return new ImageResponse(    <div style={{ display: "flex" }}>Hello, world!</div>,    {      width: 1200,      height: 630,    }  );};
 ```
 
 This is the same API that the underlying [@vercel/og library ↗](https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation/og-image-api) offers.

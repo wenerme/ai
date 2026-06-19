@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -48,11 +48,11 @@ When upgrading to custom rules, consider replacing the _Allow_ action supported 
 
 IP Access rules are available to all customers.
 
-| Free             | Pro    | Business | Enterprise |                               |
-| ---------------- | ------ | -------- | ---------- | ----------------------------- |
-| Availability     | Yes    | Yes      | Yes        | Yes                           |
-| Number of rules  | 50,000 | 50,000   | 50,000     | 50,000, but can purchase more |
-| Block by country | No     | No       | No         | Yes                           |
+|                  | Free   | Pro    | Business | Enterprise                    |
+| ---------------- | ------ | ------ | -------- | ----------------------------- |
+| Availability     | Yes    | Yes    | Yes      | Yes                           |
+| Number of rules  | 50,000 | 50,000 | 50,000   | 50,000, but can purchase more |
+| Block by country | No     | No     | No       | Yes                           |
 
 Each Cloudflare account can have a maximum of 50,000 rules. If you are an Enterprise customer and need more rules, contact your account team.
 

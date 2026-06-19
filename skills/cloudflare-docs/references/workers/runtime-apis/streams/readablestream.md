@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,30 +19,31 @@ A `ReadableStream` is returned by the `readable` property inside [TransformStrea
 ## Properties
 
 * `locked` boolean  
-   * A Boolean value that indicates if the readable stream is locked to a reader.
+  * A Boolean value that indicates if the readable stream is locked to a reader.
 
 ## Methods
 
-* `pipeTo(destinationWritableStream, optionsPipeToOptions)` : Promise<void>  
-   * Pipes the readable stream to a given writable stream `destination` and returns a promise that is fulfilled when the `write` operation succeeds or rejects it if the operation fails.
-* `getReader(optionsObject)` : ReadableStreamDefaultReader  
-   * Gets an instance of `ReadableStreamDefaultReader` and locks the `ReadableStream` to that reader instance. This method accepts an object argument indicating options. The only supported option is `mode`, which can be set to `byob` to create a [ReadableStreamBYOBReader](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestreambyobreader/), as shown here:
+* `pipeTo(destinationWritableStream, optionsPipeToOptions)` : Promise<void>
+
+  * Pipes the readable stream to a given writable stream `destination` and returns a promise that is fulfilled when the `write` operation succeeds or rejects it if the operation fails.
+* `getReader(optionsObject)` : ReadableStreamDefaultReader
+
+  * Gets an instance of `ReadableStreamDefaultReader` and locks the `ReadableStream` to that reader instance. This method accepts an object argument indicating options. The only supported option is `mode`, which can be set to `byob` to create a [ReadableStreamBYOBReader](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestreambyobreader/), as shown here:
 
 JavaScript
 
 ```
-
 let reader = readable.getReader({ mode: 'byob' });
-
-
 ```
 
 ### `PipeToOptions`
 
-* `preventClose` bool  
-   * When `true`, closure of the source `ReadableStream` will not cause the destination `WritableStream` to be closed.
-* `preventAbort` bool  
-   * When `true`, errors in the source `ReadableStream` will no longer abort the destination `WritableStream`. `pipeTo` will return a rejected promise with the error from the source or any error that occurred while aborting the destination.
+* `preventClose` bool
+
+  * When `true`, closure of the source `ReadableStream` will not cause the destination `WritableStream` to be closed.
+* `preventAbort` bool
+
+  * When `true`, errors in the source `ReadableStream` will no longer abort the destination `WritableStream`. `pipeTo` will return a rejected promise with the error from the source or any error that occurred while aborting the destination.
 
 ---
 

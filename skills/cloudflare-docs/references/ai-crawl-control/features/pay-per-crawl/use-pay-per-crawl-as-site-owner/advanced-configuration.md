@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-crawl-control/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,10 +26,11 @@ To get started, use [Configuration Rules](https://developers.cloudflare.com/rule
 1. Go to **Rules** \> **Overview** in the Cloudflare dashboard.  
 [ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
 2. Select **Create rule** \> **Configuration Rule**.
-3. **When incoming requests match**: Set your URI pattern.  
-   * Field: `URI Full`  
-   * Operator: `wildcard`  
-   * Value: `https://*example.com/public/*`
+3. **When incoming requests match**: Set your URI pattern.
+
+  * Field: `URI Full`
+  * Operator: `wildcard`
+  * Value: `https://*example.com/public/*`
 4. Select **Disable Pay Per Crawl** \> **Add**
 5. Select **Deploy**.
 

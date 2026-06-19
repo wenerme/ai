@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,54 +25,19 @@ Ordering within nested structures is not supported.
 ### Raw data sorting
 
 ```
-
-firewallEventsAdaptive (orderBy: [clientCountryName_ASC]) {
-
-    clientCountryName
-
-}
-
-
+firewallEventsAdaptive (orderBy: [clientCountryName_ASC]) {    clientCountryName}
 ```
 
 ### Raw data sorting using multiple fields
 
 ```
-
-firewallEventsAdaptive (orderBy: [clientCountryName_ASC, datetime_DESC]) {
-
-    clientCountryName
-
-    datetime
-
-}
-
-
+firewallEventsAdaptive (orderBy: [clientCountryName_ASC, datetime_DESC]) {    clientCountryName    datetime}
 ```
 
 ### Group sorting by aggregation function
 
 ```
-
-httpRequests1hGroups (orderBy: [sum_bytes_DESC]){
-
-    sum {
-
-        bytes
-
-        requests
-
-    }
-
-    dimensions {
-
-        datetime
-
-    }
-
-}
-
-
+httpRequests1hGroups (orderBy: [sum_bytes_DESC]){    sum {        bytes        requests    }    dimensions {        datetime    }}
 ```
 
 ```json

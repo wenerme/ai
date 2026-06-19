@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,37 +28,18 @@ A component which shows count of total joined participants in a meeting.
 ### Basic Usage
 
 ```
-
 <rtk-viewer-count></rtk-viewer-count>
-
-
 ```
 
 ### With Properties
 
 ```
-
-<rtk-viewer-count
-
- variant="primary">
-
-</rtk-viewer-count>
-
-
+<rtk-viewer-count variant="primary"></rtk-viewer-count>
 ```
 
 ```
-
-<script>
-
-  const el = document.querySelector("rtk-viewer-count");
-
-
-  el.meeting= meeting
-
-</script>
-
-
+<script>  const el = document.querySelector("rtk-viewer-count");
+  el.meeting= meeting</script>
 ```
 
 ```json

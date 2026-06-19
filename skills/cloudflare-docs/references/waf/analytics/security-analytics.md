@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,7 +31,7 @@ Security Analytics shows all traffic, whether or not Cloudflare acted on it. If 
 
 Zone/domain-level analytics are included with all plans, though the retention period, query window, displayed statistics, and filter options vary by plan. Account-level analytics are only available to customers on Business and Enterprise domain plans.
 
-| Free                             | Pro                   | Business              | Enterprise             |                        |
+|                                  | Free                  | Pro                   | Business               | Enterprise             |
 | -------------------------------- | --------------------- | --------------------- | ---------------------- | ---------------------- |
 | Availability                     | Yes                   | Yes                   | Yes                    | Yes                    |
 | Historical time (data retention) | Up to the last 7 days | Up to the last 7 days | Up to the last 31 days | Up to the last 90 days |
@@ -42,11 +42,12 @@ Zone/domain-level analytics are included with all plans, though the retention pe
 To use Security Analytics:
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
-2. Go to the account or zone/domain dashboard:  
-   * For the zone/domain dashboard, go to the **Analytics** page.  
-   [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)  
-   * For the account dashboard, go to the **Security Analytics** page.  
-   [ Go to **Security analytics** ](https://dash.cloudflare.com/?to=/:account/security-center/analytics)
+2. Go to the account or zone/domain dashboard:
+
+  * For the zone/domain dashboard, go to the **Analytics** page.  
+  [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+  * For the account dashboard, go to the **Security Analytics** page.  
+  [ Go to **Security analytics** ](https://dash.cloudflare.com/?to=/:account/security-center/analytics)
 
 ## Adjusting displayed data
 
@@ -104,10 +105,11 @@ Each suspicious activity is classified with a severity score that can vary from 
 
 The main chart displays the following data for the selected time frame, according to the selected tab:
 
-* **Traffic analysis**: Traffic mitigated by the Cloudflare security platform, served by Cloudflare, and served by the origin server, according to the following classification:  
-   * **Mitigated by WAF**: Requests blocked or [challenged](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/#actions) by Cloudflare's application security products such as the WAF and HTTP DDoS protection. Requests with _Log_, _Skip_, or _Allow_ [actions](https://developers.cloudflare.com/ruleset-engine/rules-language/actions/) are not counted as mitigated.  
-   * **Served by Cloudflare**: Requests served by the Cloudflare global network such as cached content and redirects.  
-   * **Served by origin**: Requests served by your origin server.
+* **Traffic analysis**: Traffic mitigated by the Cloudflare security platform, served by Cloudflare, and served by the origin server, according to the following classification:
+
+  * **Mitigated by WAF**: Requests blocked or [challenged](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/#actions) by Cloudflare's application security products such as the WAF and HTTP DDoS protection. Requests with _Log_, _Skip_, or _Allow_ [actions](https://developers.cloudflare.com/ruleset-engine/rules-language/actions/) are not counted as mitigated.
+  * **Served by Cloudflare**: Requests served by the Cloudflare global network such as cached content and redirects.
+  * **Served by origin**: Requests served by your origin server.
 * **Attack analysis**: [WAF attack score](https://developers.cloudflare.com/waf/detections/attack-score/) analysis of incoming requests, classifying them as _Clean_, _Likely clean_, _Likely attack_, or _Attack_.
 * **Bot analysis**: [Bot score](https://developers.cloudflare.com/bots/concepts/bot-score/) analysis of incoming requests, classifying them as _Automated_, _Likely automated_, _Likely human_, or _Verified bot_.
 * **Request rate analysis**: Displays data on the request rate for traffic matching the selected filters and time period. Use this tab to [find an appropriate rate limit](https://developers.cloudflare.com/waf/rate-limiting-rules/find-rate-limit/) for incoming traffic matching the applied filters.

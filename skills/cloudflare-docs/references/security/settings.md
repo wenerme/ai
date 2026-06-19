@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,12 +27,12 @@ Security settings and detection tools are categorized by the type of threat that
 In the **Web application exploits** security category you can manage the following settings:
 
 * Detection tools:  
-   * [Leaked credentials detection](https://developers.cloudflare.com/waf/detections/leaked-credentials/)  
-   * [Malicious uploads detection](https://developers.cloudflare.com/waf/detections/malicious-uploads/)  
-   * [Sensitive data detection](https://developers.cloudflare.com/waf/managed-rules/reference/sensitive-data-detection/)  
-   * [Cloudflare managed ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/)  
-   * [OWASP Core](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/) ruleset  
-   * [AI Security for Apps](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/)
+  * [Leaked credentials detection](https://developers.cloudflare.com/waf/detections/leaked-credentials/)
+  * [Malicious uploads detection](https://developers.cloudflare.com/waf/detections/malicious-uploads/)
+  * [Sensitive data detection](https://developers.cloudflare.com/waf/managed-rules/reference/sensitive-data-detection/)
+  * [Cloudflare managed ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/)
+  * [OWASP Core](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/) ruleset
+  * [AI Security for Apps](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/)
 * [Under Attack mode](https://developers.cloudflare.com/fundamentals/reference/under-attack-mode/) in Security Level
 * Managed [security.txt](https://developers.cloudflare.com/security-center/infrastructure/security-file/)
 
@@ -104,8 +104,8 @@ The API abuse security category includes features and settings from [API Shield]
 In the **Client-side abuse** security category you can manage the following settings:
 
 * [Continuous script monitoring](https://developers.cloudflare.com/client-side-security/how-it-works/):  
-   * [Reporting endpoint](https://developers.cloudflare.com/client-side-security/reference/settings/#reporting-endpoint) to use your hostname instead of a Cloudflare-owned endpoint (only for Enterprise customers with a paid add-on)  
-   * [Data logged in client-side abuse reports](https://developers.cloudflare.com/client-side-security/reference/settings/#connection-target-details) (only the hostname or the full URI)
+  * [Reporting endpoint](https://developers.cloudflare.com/client-side-security/reference/settings/#reporting-endpoint) to use your hostname instead of a Cloudflare-owned endpoint (only for Enterprise customers with a paid add-on)
+  * [Data logged in client-side abuse reports](https://developers.cloudflare.com/client-side-security/reference/settings/#connection-target-details) (only the hostname or the full URI)
 * [Email Address Obfuscation](https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/)
 * [Hotlink Protection](https://developers.cloudflare.com/waf/tools/scrape-shield/hotlink-protection/)
 

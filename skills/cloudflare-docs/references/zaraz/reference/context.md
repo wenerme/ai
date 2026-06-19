@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -27,6 +27,7 @@ System properties, which are automatically collected by Zaraz, provide insights 
 | system.page.url      | URL    | [URL ↗](https://developer.mozilla.org/en-US/docs/Web/API/URL) Object containing information about the current URL |
 | system.page.referrer | String | Current page referrer from document.referrer.                                                                     |
 | system.page.encoding | String | Current page character encoding from document.characterSet.                                                       |
+|                      |        |                                                                                                                   |
 
 ### Cookies
 
@@ -54,6 +55,7 @@ The keys inside the `system.cookies` are the cookies name. The property `system.
 | system.device.user-agent.os.version      | String | Version of the operating system.                                                                                                                          |
 | system.device.user-agent.device          | String | Type of device used (for example, iPhone).                                                                                                                |
 | system.device.user-agent.cpu             | String | Device’s CPU.                                                                                                                                             |
+|                                          |        |                                                                                                                                                           |
 
 ### Consent Management
 
@@ -78,6 +80,7 @@ The keys inside the `system.clientKV` object are formatted as Tool ID, underscor
 | system.misc.random                | Number | Random number unique to each request. |
 | system.misc.timestamp             | Number | Unix time in seconds.                 |
 | system.misc.timestampMilliseconds | Number | Unix time in milliseconds.            |
+|                                   |        |                                       |
 
 ## Event properties
 
@@ -85,6 +88,7 @@ The keys inside the `system.clientKV` object are formatted as Tool ID, underscor
 | --------------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | client.\_\_zarazTrack | String | Returns the name of the event sent using the Track method of the Web API. Refer to [Zaraz Track](https://developers.cloudflare.com/zaraz/web-api/track/) for more information.                                                                                                               |
 | client.<KEY\_NAME>    | String | Returns the value of a zaraz.track() eventProperties key. The key can either be directly used in zaraz.track() or set using zaraz.set(). Replace <KEY\_NAME> with the name of your key. Refer to [Zaraz Track](https://developers.cloudflare.com/zaraz/web-api/track/) for more information. |
+|                       |        |                                                                                                                                                                                                                                                                                              |
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/reference/context/#page","headline":"Zaraz Context · Cloudflare Zaraz docs","description":"Data available in the Zaraz context object for triggers and actions.","url":"https://developers.cloudflare.com/zaraz/reference/context/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

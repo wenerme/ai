@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,8 +26,8 @@ Zone custom nameservers are available for zones on Business or Enterprise plans.
 
 To create zone custom nameservers:
 
-* [ Dashboard ](#tab-panel-8113)
-* [ API ](#tab-panel-8114)
+* [ Dashboard ](#tab-panel-8189)
+* [ API ](#tab-panel-8190)
 
 1. In the Cloudflare dashboard, go to the **DNS Records** page.  
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
@@ -38,10 +38,7 @@ To create zone custom nameservers:
 Use the [Edit zone endpoint](https://developers.cloudflare.com/api/resources/zones/methods/edit/) and specify the custom nameservers in the payload:
 
 ```
-
 "vanity_name_servers": ["ns1.example.com","ns2.example.com"]
-
-
 ```
 
 Cloudflare will assign an IPv4 and an IPv6 address to each ZCNS name and automatically create the associated `A` or `AAAA` records.
@@ -63,8 +60,8 @@ If you are using [Cloudflare as a secondary DNS provider](https://developers.clo
 
 To remove zone custom nameservers (and their associated, read-only DNS records):
 
-* [ Dashboard ](#tab-panel-8115)
-* [ API ](#tab-panel-8116)
+* [ Dashboard ](#tab-panel-8191)
+* [ API ](#tab-panel-8192)
 
 1. In the Cloudflare dashboard, go to the **DNS Records** page.  
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
@@ -73,10 +70,7 @@ To remove zone custom nameservers (and their associated, read-only DNS records):
 Use the [Edit zone endpoint](https://developers.cloudflare.com/api/resources/zones/methods/edit/) and include an empty array in the payload:
 
 ```
-
 "vanity_name_servers": []
-
-
 ```
 
 Cloudflare will remove your ZCNS and their associated read-only `A` or `AAAA` records.

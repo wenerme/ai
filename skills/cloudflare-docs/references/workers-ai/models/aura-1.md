@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,52 +30,24 @@ Aura is a context-aware text-to-speech (TTS) model that applies natural pacing, 
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-4721)
-* [  curl ](#tab-panel-4722)
+* [  TypeScript ](#tab-panel-4795)
+* [  curl ](#tab-panel-4796)
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-      const resp = await env.AI.run("@cf/deepgram/aura-1", {
-
-        "text":"Hello World!"
-
-      }, {
-
-        returnRawResponse: true
-
-      });
-
-
-      return resp;
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export default {  async fetch(request, env, ctx): Promise<Response> {      const resp = await env.AI.run("@cf/deepgram/aura-1", {        "text":"Hello World!"      }, {        returnRawResponse: true      });
+      return resp;  },} satisfies ExportedHandler<Env>;
 ```
 
 Terminal window
 
 ```
-
-curl --request POST   --url 'https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/deepgram/aura-1'   --header 'Authorization: Bearer {TOKEN}'   --header 'Content-Type: application/json'   --data '{
-
-    "text":"Hello world!"
-
-}'
-
-
+curl --request POST   --url 'https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/deepgram/aura-1'   --header 'Authorization: Bearer {TOKEN}'   --header 'Content-Type: application/json'   --data '{    "text":"Hello world!"}'
 ```
 
 ## Parameters
 
-* [ Input ](#tab-panel-4723)
-* [ Output ](#tab-panel-4724)
+* [ Input ](#tab-panel-4797)
+* [ Output ](#tab-panel-4798)
 
 speaker
 
@@ -101,13 +73,13 @@ bit\_rate
 
 `number`The bitrate of the audio in bits per second. Choose from predefined ranges or specific values based on the encoding type.
 
-The binding returns a `ReadableStream` with the audio in MPEG format (check the model's output schema).
+ The binding returns a `ReadableStream` with the audio in MPEG format (check the model's output schema). 
 
 ## API Schemas (Raw)
 
 Input [ ](https://developers.cloudflare.com/workers-ai/models/aura-1/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/aura-1/schema-input.json "Download") 
 
-Output [ ](https://developers.cloudflare.com/workers-ai/models/aura-1/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/aura-1/schema-output.json "Download") 
+Output [ ](https://developers.cloudflare.com/workers-ai/models/aura-1/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/aura-1/schema-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/aura-1/#page","headline":"aura-1 (Deepgram) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Aura is a context-aware text-to-speech (TTS) model that applies natural pacing, expressiveness, and fillers based on the context of the provided text. The quality of your text input directly impacts the naturalness of the audio output.","url":"https://developers.cloudflare.com/workers-ai/models/aura-1/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

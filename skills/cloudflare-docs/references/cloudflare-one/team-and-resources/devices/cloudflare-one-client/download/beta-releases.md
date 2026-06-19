@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,8 +18,9 @@ Cloudflare tests new Cloudflare One Client features and improvements in an unsta
 
 [ Download latest beta release ](https://downloads.cloudflareclient.com/v1/download/windows/beta) 
 
-| **OS version**             | Windows 10 LTSC, Windows 11, Windows 365 Cloud PC running Windows 11 |
+|                            |                                                                      |
 | -------------------------- | -------------------------------------------------------------------- |
+| **OS version**             | Windows 10 LTSC, Windows 11, Windows 365 Cloud PC running Windows 11 |
 | **Processor**              | AMD64 / x86-64 or ARM64 / AArch64                                    |
 | **.NET Framework version** | 4.7.2 or later                                                       |
 | **HD space**               | 184 MB                                                               |
@@ -64,11 +65,11 @@ This release introduces the new Cloudflare One Client UI for Windows! You can ex
 * Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
 * Split tunnel list configuration is not available in the new UI. Management of Split Tunnel entries is currently only possible via `warp-cli tunnel ip` and `warp-cli tunnel host`. UI support will be added in a future release.
 * Windows ARM may prompt the user to close running applications while trying to install this version. Simply click “Ok” with the default highlighted option.
-* DNS resolution may be broken when the following conditions are all true:  
-   * The client is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
-   * A custom DNS server address is configured on the primary network adapter.  
-   * The custom DNS server address on the primary network adapter is changed while the client is connected.  
-   To work around this issue, please reconnect the client by selecting "disconnect" and then "connect" in the client user interface.
+* DNS resolution may be broken when the following conditions are all true:
+  * The client is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  * A custom DNS server address is configured on the primary network adapter.
+  * The custom DNS server address on the primary network adapter is changed while the client is connected.  
+  To work around this issue, please reconnect the client by selecting "disconnect" and then "connect" in the client user interface.
 
 Previous version history (6)
 
@@ -106,10 +107,10 @@ This release contains minor fixes and introduces a brand new visual style for th
 * Canceling login during a single MDM configuration setup results in an empty page with no way to resume authentication. To work around this issue, exit and relaunch the client.
 * For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 version KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
 * Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later. This warning will be omitted from future release notes. This Microsoft Security Intelligence update was released in May 2025.
-* DNS resolution may be broken when the following conditions are all true:  
-   * The client is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
-   * A custom DNS server address is configured on the primary network adapter.  
-   * The custom DNS server address on the primary network adapter is changed while the client is connected. To work around this issue, reconnect the client by selecting **Disconnect** and then **Connect** in the client user interface.
+* DNS resolution may be broken when the following conditions are all true:
+  * The client is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  * A custom DNS server address is configured on the primary network adapter.
+  * The custom DNS server address on the primary network adapter is changed while the client is connected. To work around this issue, reconnect the client by selecting **Disconnect** and then **Connect** in the client user interface.
 
 Windows 2026.1.89.1
 
@@ -133,10 +134,11 @@ This release contains minor fixes, improvements, and new features.
 
 * For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
 * Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-* DNS resolution may be broken when the following conditions are all true:  
-   * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
-   * A custom DNS server address is configured on the primary network adapter.  
-   * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
+* DNS resolution may be broken when the following conditions are all true:
+
+  * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  * A custom DNS server address is configured on the primary network adapter.
+  * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
 To work around this issue, reconnect the WARP client by toggling off and back on.
 
 Windows 2025.10.118.1
@@ -159,10 +161,11 @@ This release contains minor fixes and improvements.
 
 * For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
 * Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-* DNS resolution may be broken when the following conditions are all true:  
-   * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
-   * A custom DNS server address is configured on the primary network adapter.  
-   * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
+* DNS resolution may be broken when the following conditions are all true:
+
+  * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  * A custom DNS server address is configured on the primary network adapter.
+  * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
 To work around this issue, reconnect the WARP client by toggling off and back on.
 
 Windows 2025.9.173.1
@@ -187,10 +190,11 @@ This release contains minor fixes, improvements, and new features including Path
 * For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
 * Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
 * Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-* DNS resolution may be broken when the following conditions are all true:  
-   * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
-   * A custom DNS server address is configured on the primary network adapter.  
-   * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
+* DNS resolution may be broken when the following conditions are all true:
+
+  * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  * A custom DNS server address is configured on the primary network adapter.
+  * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
 To work around this issue, reconnect the WARP client by toggling off and back on.
 
 Windows 2025.7.106.1
@@ -216,10 +220,11 @@ This release contains minor fixes and improvements including enhancements to [Pr
 * For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
 * Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
 * Devices with KB5055523 installed may receive a warning about Win32/ClickFix.ABA being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-* DNS resolution may be broken when the following conditions are all true:  
-   * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
-   * A custom DNS server address is configured on the primary network adapter.  
-   * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
+* DNS resolution may be broken when the following conditions are all true:
+
+  * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  * A custom DNS server address is configured on the primary network adapter.
+  * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
 To work around this issue, reconnect the WARP client by toggling off and back on.
 
 Windows 2025.6.824.1
@@ -244,18 +249,20 @@ This release contains minor fixes and improvements.
 * For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 version KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
 * Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
 * Devices with `KB5055523` installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-* DNS resolution may be broken when the following conditions are all true:  
-   * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
-   * A custom DNS server address is configured on the primary network adapter.  
-   * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
+* DNS resolution may be broken when the following conditions are all true:
+
+  * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
+  * A custom DNS server address is configured on the primary network adapter.
+  * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
 To work around this issue, reconnect the WARP client by toggling off and back on.
 
 ## macOS
 
 [ Download latest beta release ](https://downloads.cloudflareclient.com/v1/download/macos/beta) 
 
-| **OS version**             | Sonoma 14.0+, Sequoia 15.1+ (15.0.x is not supported), Tahoe 26.0+ |
+|                            |                                                                    |
 | -------------------------- | ------------------------------------------------------------------ |
+| **OS version**             | Sonoma 14.0+, Sequoia 15.1+ (15.0.x is not supported), Tahoe 26.0+ |
 | **Processor**              | Intel or M series                                                  |
 | **HD space**               | 75 MB                                                              |
 | **Memory**                 | 35 MB                                                              |

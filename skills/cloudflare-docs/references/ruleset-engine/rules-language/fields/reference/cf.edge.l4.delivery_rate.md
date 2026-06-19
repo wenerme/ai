@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,21 +23,13 @@ Returns `0` when L4 statistics are not available for the request.
 Example value:
 
 ```
-
 123456
-
-
 ```
 
 Example usage:
 
 ```
-
-# Match requests where the delivery rate is below 100 KB/s
-
-cf.edge.l4.delivery_rate < 100000
-
-
+# Match requests where the delivery rate is below 100 KB/scf.edge.l4.delivery_rate < 100000
 ```
 
 Categories: 

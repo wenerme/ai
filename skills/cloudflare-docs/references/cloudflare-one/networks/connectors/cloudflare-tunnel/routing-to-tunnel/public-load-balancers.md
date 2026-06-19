@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,21 +32,23 @@ To create a load balancer for Cloudflare Tunnel published applications:
 3. Under **Select website**, select the domain of your published application route.
 4. On the **Hostname** page, enter a hostname for the load balancer (for example, `lb.example.com`).
 5. On the **Pools** page, select **Create a pool** and enter a descriptive name.
-6. Add a tunnel endpoint with the following values:  
-   * **Endpoint Name**: Name of the server running the application  
-   * **Endpoint Address**: `<UUID>.cfargotunnel.com` (find the Tunnel ID in the \[Cloudflare dashboard\](https://dash.cloudflare.com/) under \*\*Zero Trust\*\* > \*\*Networks\*\* > \*\*Connectors\*\* > \*\*Cloudflare Tunnels\*\*)  
-   * **Header value**: Hostname of your published application route (for example, `app.example.com`)  
-   * **Weight**: `1` (if only one endpoint)  
+6. Add a tunnel endpoint with the following values:
+
+  * **Endpoint Name**: Name of the server running the application
+  * **Endpoint Address**: `<UUID>.cfargotunnel.com` (find the Tunnel ID in the \[Cloudflare dashboard\](https://dash.cloudflare.com/) under \*\*Zero Trust\*\* > \*\*Networks\*\* > \*\*Connectors\*\* > \*\*Cloudflare Tunnels\*\*)
+  * **Header value**: Hostname of your published application route (for example, `app.example.com`)
+  * **Weight**: `1` (if only one endpoint)  
 Note  
 A single origin pool cannot reference the same tunnel UUID twice.
 7. Choose a **Fallback pool**. Refer to [traffic steering policies](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/) for routing options.
-8. (Recommended) On the **Monitors** page, attach a monitor to the endpoint. For an HTTP or HTTPS application, create an HTTPS monitor:  
-   * **Type**: _HTTPS_  
-   * **Path**: `/`  
-   * **Port**: `443`  
-   * **Expected Code(s)**: `200`  
-   * **Header Name**: `Host`  
-   * **Value**: `app.example.com`
+8. (Recommended) On the **Monitors** page, attach a monitor to the endpoint. For an HTTP or HTTPS application, create an HTTPS monitor:
+
+  * **Type**: _HTTPS_
+  * **Path**: `/`
+  * **Port**: `443`
+  * **Expected Code(s)**: `200`
+  * **Header Name**: `Host`
+  * **Value**: `app.example.com`
 9. Save and deploy the load balancer.
 
 To test, access your application using the load balancer hostname (`lb.example.com`).
@@ -179,16 +181,16 @@ Here is an example of what your DNS records will look like before and after sett
 TCP monitors are not supported for tunnel endpoints. Instead, create a health check endpoint on the `cloudflared` host and use an HTTPS monitor. For example, you can use `cloudflared` to return a fixed HTTP status response:
 
 1. [Add a published application route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/#2a-publish-an-application) for the health check:  
-   * **Hostname**: `health-check.example.com`  
-   * **Service Type**: _HTTP\_STATUS_  
-   * **HTTP Status Code**: `200`
+  * **Hostname**: `health-check.example.com`
+  * **Service Type**: _HTTP\_STATUS_
+  * **HTTP Status Code**: `200`
 2. [Create a monitor](https://developers.cloudflare.com/load-balancing/monitors/create-monitor/) with these settings:  
-   * **Type**: _HTTPS_  
-   * **Path**: `/`  
-   * **Port**: `443`  
-   * **Expected Code(s)**: `200`  
-   * **Header Name**: `Host`  
-   * **Value**: `health-check.example.com`
+  * **Type**: _HTTPS_
+  * **Path**: `/`
+  * **Port**: `443`
+  * **Expected Code(s)**: `200`
+  * **Header Name**: `Host`
+  * **Value**: `health-check.example.com`
 
 This monitor verifies that `cloudflared` is reachable. It does not check whether the upstream service is accepting requests.
 

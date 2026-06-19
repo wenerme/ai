@@ -6,13 +6,13 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
 # rtk-transcript
 
-A component which shows a transcript. You need to remove the element after you receive the`rtkTranscriptDismiss` event.
+A component which shows a transcript. You need to remove the element after you receive the `rtkTranscriptDismiss` event.
 
 ## Properties
 
@@ -26,37 +26,18 @@ A component which shows a transcript. You need to remove the element after you r
 ### Basic Usage
 
 ```
-
 <rtk-transcript></rtk-transcript>
-
-
 ```
 
 ### With Properties
 
 ```
-
-<rtk-transcript
-
- transcript="example">
-
-</rtk-transcript>
-
-
+<rtk-transcript transcript="example"></rtk-transcript>
 ```
 
 ```
-
-<script>
-
-  const el = document.querySelector("rtk-transcript");
-
-
-  el.transcript= {};
-
-</script>
-
-
+<script>  const el = document.querySelector("rtk-transcript");
+  el.transcript= {};</script>
 ```
 
 ```json

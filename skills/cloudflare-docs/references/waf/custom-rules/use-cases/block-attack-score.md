@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,10 +16,11 @@ The [attack score](https://developers.cloudflare.com/waf/detections/attack-score
 
 This example [custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) blocks requests based on country code ([ISO 3166-1 Alpha 2 ↗](https://www.iso.org/obp/ui/#search/code/) format), from requests with an attack score lower than 20\. For more information, refer to [WAF attack score](https://developers.cloudflare.com/waf/detections/attack-score/).
 
-* **When incoming requests match**:  
-| Field            | Operator  | Value                                        | Logic |  
-| ---------------- | --------- | -------------------------------------------- | ----- |  
-| Country          | is in     | China, Taiwan, United Kingdom, United States | And   |  
+* **When incoming requests match**:
+
+| Field            | Operator  | Value                                        | Logic |
+| ---------------- | --------- | -------------------------------------------- | ----- |
+| Country          | is in     | China, Taiwan, United Kingdom, United States | And   |
 | WAF Attack Score | less than | 20                                           |       |  
 If you are using the expression editor:  
 `(ip.src.country in {"CN" "TW" "US" "GB"} and cf.waf.score lt 20)`

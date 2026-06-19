@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/support/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,18 +25,20 @@ Two different timeouts cause HTTP error `522` depending on when they occur betwe
 
 ### Resolution
 
-* Contact your hosting provider and share the [error details](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/#required-error-details-for-hosting-provider) to assist in troubleshooting these common causes:  
-   * [Cloudflare IP addresses ↗](https://www.cloudflare.com/ips/) are rate limited or blocked in .htaccess, iptables, or firewalls. Confirm your hosting provider allows **all Cloudflare IP ranges** (most common cause). You can use a [Cloudflare WAF Custom Rule](https://developers.cloudflare.com/waf/custom-rules/use-cases/block-by-geographical-location/) if you need to restrict traffic from geographical locations.  
-   * An overloaded or offline origin web server drops incoming requests.  
-   * [Keepalives ↗](http://tldp.org/HOWTO/TCP-Keepalive-HOWTO/overview.html) are disabled at the origin web server.  
-   * The origin IP address in your Cloudflare **DNS** app does not match the IP address currently provisioned to your origin web server by your hosting provider.  
-   * Packets were dropped at your origin web server.
+* Contact your hosting provider and share the [error details](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/#required-error-details-for-hosting-provider) to assist in troubleshooting these common causes:
+
+  * [Cloudflare IP addresses ↗](https://www.cloudflare.com/ips/) are rate limited or blocked in .htaccess, iptables, or firewalls. Confirm your hosting provider allows **all Cloudflare IP ranges** (most common cause). You can use a [Cloudflare WAF Custom Rule](https://developers.cloudflare.com/waf/custom-rules/use-cases/block-by-geographical-location/) if you need to restrict traffic from geographical locations.
+  * An overloaded or offline origin web server drops incoming requests.
+  * [Keepalives ↗](http://tldp.org/HOWTO/TCP-Keepalive-HOWTO/overview.html) are disabled at the origin web server.
+  * The origin IP address in your Cloudflare **DNS** app does not match the IP address currently provisioned to your origin web server by your hosting provider.
+  * Packets were dropped at your origin web server.
 * If you are using [Cloudflare Pages](https://developers.cloudflare.com/pages/), verify that you have a custom domain set up and that your CNAME record is pointed to your [custom Pages domain](https://developers.cloudflare.com/pages/configuration/custom-domains/#add-a-custom-domain).
 * If you are using [Workers with a Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/), performing a `fetch` to its own hostname will cause a `522` error. Consider using a [Route](https://developers.cloudflare.com/workers/configuration/routing/), targeting another hostname, or enabling the [global\_fetch\_strictly\_public compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#global-fetch-strictly-public) instead.
 * If you are using [Origin Rules](https://developers.cloudflare.com/rules/origin-rules/), make sure the resulting hostname can be resolved. For example, if your Origin Rule point to a Worker route, a `522` error will be returned if the hostname for this route is an A record pointing to a reserved address such as `100::` or `192.0.2.0`.
-* If none of the above leads to a resolution, request the following information from your hosting provider or site administrator before [contacting Cloudflare support](https://developers.cloudflare.com/support/contacting-cloudflare-support/):  
-   * An [MTR or traceroute](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/#perform-a-traceroute) from your origin web server to a [Cloudflare IP address ↗](http://www.cloudflare.com/ips) that most commonly connected to your origin web server before the issue occurred. Identify a connecting Cloudflare IP recorded in the origin web server logs.  
-   * Details from the hosting provider's investigation, such as pertinent logs or conversations with the hosting provider.
+* If none of the above leads to a resolution, request the following information from your hosting provider or site administrator before [contacting Cloudflare support](https://developers.cloudflare.com/support/contacting-cloudflare-support/):
+
+  * An [MTR or traceroute](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/#perform-a-traceroute) from your origin web server to a [Cloudflare IP address ↗](http://www.cloudflare.com/ips) that most commonly connected to your origin web server before the issue occurred. Identify a connecting Cloudflare IP recorded in the origin web server logs.
+  * Details from the hosting provider's investigation, such as pertinent logs or conversations with the hosting provider.
 
 ### Diagnose with Origin Analytics
 

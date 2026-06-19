@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,16 +25,7 @@ A button which toggles visibility of a more menu.
 ### Basic Usage
 
 ```
-
-<com.cloudflare.realtimekit.ui.view.controlbarbuttons.RtkMoreToggleButton
-
-    android:id="@+id/rtk_more_toggle"
-
-    android:layout_width="50dp"
-
-    android:layout_height="50dp" />
-
-
+<com.cloudflare.realtimekit.ui.view.controlbarbuttons.RtkMoreToggleButton    android:id="@+id/rtk_more_toggle"    android:layout_width="50dp"    android:layout_height="50dp" />
 ```
 
 ### With Methods
@@ -42,12 +33,7 @@ A button which toggles visibility of a more menu.
 Kotlin
 
 ```
-
-val moreToggleButton = findViewById<RtkMoreToggleButton>(R.id.rtk_more_toggle)
-
-moreToggleButton.activate(meeting)
-
-
+val moreToggleButton = findViewById<RtkMoreToggleButton>(R.id.rtk_more_toggle)moreToggleButton.activate(meeting)
 ```
 
 ```json

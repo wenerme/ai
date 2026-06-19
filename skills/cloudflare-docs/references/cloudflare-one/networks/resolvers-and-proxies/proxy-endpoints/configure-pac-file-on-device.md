@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -28,12 +28,12 @@ Before you configure a PAC file on your device, make sure you have:
 
 Configure your operating system to use the PAC file. This applies the proxy to all browsers that use system proxy settings (Chrome, Edge, Brave, Safari).
 
-* [ Windows ](#tab-panel-7386)
-* [ macOS ](#tab-panel-7387)
-* [ Linux ](#tab-panel-7388)
-* [ iOS / iPadOS ](#tab-panel-7389)
-* [ Android ](#tab-panel-7390)
-* [ ChromeOS ](#tab-panel-7391)
+* [ Windows ](#tab-panel-7462)
+* [ macOS ](#tab-panel-7463)
+* [ Linux ](#tab-panel-7464)
+* [ iOS / iPadOS ](#tab-panel-7465)
+* [ Android ](#tab-panel-7466)
+* [ ChromeOS ](#tab-panel-7467)
 
 For more information, refer to [Use a proxy server in Windows ↗](https://support.microsoft.com/windows/use-a-proxy-server-in-windows-03096c53-0554-4ffe-b6ab-8b1deee8dae1).
 
@@ -147,11 +147,11 @@ You can deploy the PAC file URL through Group Policy by configuring the Internet
 1. Open **Group Policy Management** and create or edit a Group Policy Object.
 2. Go to **User Configuration** \> **Preferences** \> **Windows Settings** \> **Registry**.
 3. Add a registry item with the following values:  
-   * **Hive**: `HKEY_CURRENT_USER`  
-   * **Key path**: `Software\Microsoft\Windows\CurrentVersion\Internet Settings`  
-   * **Value name**: `AutoConfigURL`  
-   * **Value type**: `REG_SZ`  
-   * **Value data**: Your PAC file URL
+  * **Hive**: `HKEY_CURRENT_USER`
+  * **Key path**: `Software\Microsoft\Windows\CurrentVersion\Internet Settings`
+  * **Value name**: `AutoConfigURL`
+  * **Value type**: `REG_SZ`
+  * **Value data**: Your PAC file URL
 
 ### Microsoft Intune
 

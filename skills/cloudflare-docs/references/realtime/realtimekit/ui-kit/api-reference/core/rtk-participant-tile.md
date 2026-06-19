@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -34,37 +34,18 @@ A component which plays a participants video and allows for placement of compone
 ### Basic Usage
 
 ```
-
 <rtk-participant-tile></rtk-participant-tile>
-
-
 ```
 
 ### With Properties
 
 ```
-
-<rtk-participant-tile>
-
-</rtk-participant-tile>
-
-
+<rtk-participant-tile></rtk-participant-tile>
 ```
 
 ```
-
-<script>
-
-  const el = document.querySelector("rtk-participant-tile");
-
-
-  el.isPreview= true;
-
-  el.meeting= meeting
-
-</script>
-
-
+<script>  const el = document.querySelector("rtk-participant-tile");
+  el.isPreview= true;  el.meeting= meeting</script>
 ```
 
 ```json

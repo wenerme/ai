@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -156,11 +156,11 @@ Private Network Load Balancer and their endpoints usually sit behind firewalls. 
 There are two main load balancer architectures:
 
 * On-premises load balancers  
-   * Typically hardware-based, but also can be virtualized or software-based  
-   * Focused on maximum performance
+  * Typically hardware-based, but also can be virtualized or software-based
+  * Focused on maximum performance
 * Cloud-based load balancers  
-   * Software deployed public cloud infrastructure  
-   * Handle requests closer to the originator of the request
+  * Software deployed public cloud infrastructure
+  * Handle requests closer to the originator of the request
 
 Each approach has advantages and disadvantages. On-premises load balancers usually exist inside of private networks completely controlled by the organization. These load balancers are collocated with the endpoints they are load balancing, so latency and RTT time should be minimal. The disadvantage of these on-premises load balancers is that they are restricted to a single physical location. Which means traffic from other regions can have long RTT and high latency in responses. Also, adding another data center requires purchasing and deploying all new equipment. On-premises load balancers also typically require cloud-based load balancers for geographic traffic steering to get requests routed by a geographically local or region-appropriate data center. The advantages of cloud-based load balancers is that they can operate in almost any geographic region without concern for rack space, power, cooling, or maintenance and can scale without concern for new chassis, modules, or larger network connections. Cloud-based load balancers do however increase latency and RTT between the load balancer and the endpoints as they are not typically colocated with the endpoints they are steering traffic toward.
 
@@ -373,11 +373,11 @@ Here’s an example of LORS:
 * Pool A has 3 open requests
 * Pool B has 0 open requests
 * Relevant equation  
-   * weight / (count + 1) = transformedWeight
+  * weight / (count + 1) = transformedWeight
 * Pool A's transformed weight: 0.4 / (3 + 1) = 0.1
 * Pool B's transformed weight: 0.6 / (0 + 1) = 0.6
 * Relevant equation  
-   * weight / (total weight) = probability of being selected
+  * weight / (total weight) = probability of being selected
 * Pool A’s probability of being steered toward: 0.1 / (0.1+0.6) = .1429 (14.29%)
 * Pool B’s probability of being steered toward: 0.6 / (0.1+0.6) = .8571 (85.71%)
 
@@ -393,10 +393,10 @@ LORS is best used if endpoint pools or endpoints are easily overwhelmed by spike
 | -------------------------- | ---------------- | ----------------- | ------------ | --------------- |
 | Off - Failover             | X                |                   |              |                 |
 | Random                     | X                | X                 | X            |                 |
-| Hash                       | X                | X                 | X            |                 |
-| Geo                        | X                | X                 |              |                 |
-| Dynamic                    | X                | X                 |              |                 |
-| Proximity                  | X                | X                 |              |                 |
+| Hash                       |                  | X                 | X            | X               |
+| Geo                        | X                |                   |              | X               |
+| Dynamic                    | X                |                   |              | X               |
+| Proximity                  | X                |                   |              | X               |
 | Least Outstanding Requests | X                | X                 | X            | X               |
 
 All traffic steering methods marked above as Enterprise-only can also be obtained as a self-service add-on as well. All endpoint steering methods marked as Enterprise-Only require an enterprise plan with Cloudflare.
@@ -428,12 +428,12 @@ Health monitor Probes can be configured as the following types:
 Once a health monitor is defined, it can be assigned to an endpoint and the probes will be sent to the endpoint at the interval defined. There are two additional settings to note in regards to the health monitor configuration within the endpoint pool. The first is the Health Threshold, which is used to determine how many endpoints within the pool need to be healthy in order to consider the endpoint pool to be healthy or degraded.
 
 * Endpoint pool in healthy state  
-   * Contains only healthy endpoints
+  * Contains only healthy endpoints
 * Endpoint pool in degraded state  
-   * Contains at least one critical endpoint but remains at or above the health threshold setting
+  * Contains at least one critical endpoint but remains at or above the health threshold setting
 * Endpoint pool in critical state  
-   * Contains healthy endpoints below the health threshold  
-   * Not capable of handling traffic; removed from all steering decisions.
+  * Contains healthy endpoints below the health threshold
+  * Not capable of handling traffic; removed from all steering decisions.
 
 ![Comparison of three endpoint pools with different numbers of healthy endpoints](https://developers.cloudflare.com/_astro/lb-ref-arch-17.BM3mVtFf_Z1UUgUA.svg "Figure 17: When endpoints pool are considered healthy, degraded, or critical")
 
@@ -525,8 +525,8 @@ Individual endpoints are defined within endpoint pools, and the endpoint pool al
 
 * The _endpoint name_ is primarily used for reference, reporting, and analytics; it does not affect the function of the load balancer or endpoint pool.
 * The _endpoint address_, however, defines a resource that the load balancer can use to handle a request or connection.  
-   * Endpoints within an endpoint pool must be accessible over port 80 or 443\. If the endpoint is not listening on port 80 or 443, then either a proxy service or network port forwarding device needs to be placed in front of the endpoint to map port 80 or 443 to the port that the service is actually listening on.  
-   * Another method for mapping ports of endpoints to 80 or 443 is to connect to the endpoint service using [Cloudflare Tunnel](#cloudflare-tunnel), and then use the hostname created through that process as the endpoint address. This will automatically map the intended endpoint port to port 443.
+  * Endpoints within an endpoint pool must be accessible over port 80 or 443\. If the endpoint is not listening on port 80 or 443, then either a proxy service or network port forwarding device needs to be placed in front of the endpoint to map port 80 or 443 to the port that the service is actually listening on.
+  * Another method for mapping ports of endpoints to 80 or 443 is to connect to the endpoint service using [Cloudflare Tunnel](#cloudflare-tunnel), and then use the hostname created through that process as the endpoint address. This will automatically map the intended endpoint port to port 443.
 
 _Endpoint address_ can be defined in one of the following ways:
 
@@ -717,7 +717,7 @@ In addition to being public, Spectrum load balancers are always proxied. The pro
 | Load Balancer Model | Public | Proxied | OSI Layer | Traffic Type |
 | ------------------- | ------ | ------- | --------- | ------------ |
 | Layer 7 HTTP(S)     | X      | X       | 7         | HTTP(S)      |
-| DNS-Only            | X      | 7 (DNS) | IP-Based  |              |
+| DNS-Only            | X      |         | 7 (DNS)   | IP-Based     |
 | Spectrum            | X      | X       | 4         | TCP/UDP      |
 
 #### Load balancer details
@@ -814,26 +814,26 @@ If the default behavior of a load balancer is not covered in the documents liste
 All Cloudflare Load Balancer deployment models come with inherent protections. The following section briefly highlights the default security Cloudflare provides, as well as optional protections that can be added in front of Cloudflare Load Balancers:
 
 * Proxied HTTP layer 7 load balancer (Public)  
-   * [DDoS protection](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/) to protect against attacks  
-   * WAF with [Cloudflare managed ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/) and [OWASP ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/) to block known vulnerabilities and exploits
+  * [DDoS protection](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/) to protect against attacks
+  * WAF with [Cloudflare managed ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/) and [OWASP ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/) to block known vulnerabilities and exploits
 * DNS-only load balancer (Public)  
-   * [DNS DDoS protection ↗](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/) to ensure a DNS-only load balancer is always available
+  * [DNS DDoS protection ↗](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/) to ensure a DNS-only load balancer is always available
 * Spectrum layer 4 load balancer (Public)  
-   * [DDoS Protection](https://developers.cloudflare.com/spectrum/about/ddos-for-spectrum/) to protect against layer 4 attacks
+  * [DDoS Protection](https://developers.cloudflare.com/spectrum/about/ddos-for-spectrum/) to protect against layer 4 attacks
 
 #### Additional options
 
 Cloudflare offers additional security layers that can be used in conjunction with load balancing to protect any services — including websites, APIs, HTTP(S)-based services, and more:
 
 * Proxied HTTP layer 7 load balancer (Public)  
-   * [Bot management](https://developers.cloudflare.com/bots/) to control which bots can access resources  
-   * [WAF](https://developers.cloudflare.com/waf/) for creating custom rules for web applications  
-   * [Client-side security](https://developers.cloudflare.com/client-side-security/) for monitoring script usage on web applications  
-   * [API Shield](https://developers.cloudflare.com/api-shield/) for protecting APIs
+  * [Bot management](https://developers.cloudflare.com/bots/) to control which bots can access resources
+  * [WAF](https://developers.cloudflare.com/waf/) for creating custom rules for web applications
+  * [Client-side security](https://developers.cloudflare.com/client-side-security/) for monitoring script usage on web applications
+  * [API Shield](https://developers.cloudflare.com/api-shield/) for protecting APIs
 * DNS-only load balancer (Public)  
-   * [DNSSEC](https://developers.cloudflare.com/dns/dnssec/) to ensure authenticity of DNS records
+  * [DNSSEC](https://developers.cloudflare.com/dns/dnssec/) to ensure authenticity of DNS records
 * Spectrum layer 4 load balancer (Public)  
-   * [IP Access Rules](https://developers.cloudflare.com/spectrum/reference/configuration-options/#ip-access-rules) for controlling access to public layer 4 load balancers
+  * [IP Access Rules](https://developers.cloudflare.com/spectrum/reference/configuration-options/#ip-access-rules) for controlling access to public layer 4 load balancers
 
 ## Summary
 

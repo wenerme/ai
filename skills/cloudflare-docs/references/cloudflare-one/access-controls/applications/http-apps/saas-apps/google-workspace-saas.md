@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,11 +30,12 @@ The integration of Access as a single sign-on provider for your Google Workspace
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select **Create new application**.
 3. Select **SaaS application**.
-4. Fill in the following information:  
-   * **Application**: _Google_.  
-   * **Entity ID**: Use the value provided to you by Google when [configuring your SAML SSO provider ↗](https://saml-doc.okta.com/SAML%5FDocs/How-to-Enable-SAML-2.0-in-Google-Apps.html).  
-   * **Assertion Consumer Service URL**: `https://www.google.com/a/<your_domain.com>/acs`, where `<your_domain.com>` is your Google Workspace domain.  
-   * **Name ID Format**: _Email_.
+4. Fill in the following information:
+
+  * **Application**: _Google_.
+  * **Entity ID**: Use the value provided to you by Google when [configuring your SAML SSO provider ↗](https://saml-doc.okta.com/SAML%5FDocs/How-to-Enable-SAML-2.0-in-Google-Apps.html).
+  * **Assertion Consumer Service URL**: `https://www.google.com/a/<your_domain.com>/acs`, where `<your_domain.com>` is your Google Workspace domain.
+  * **Name ID Format**: _Email_.
 
 Warning
 
@@ -48,10 +49,8 @@ When you put your Google Workspace behind Access, users will not be able to log 
 
 1. Copy and then paste your **Public key** into a text editor.
 2. Wrap the certificate in `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`. For example,  
-```  
------BEGIN CERTIFICATE-----  
-<PUBLIC_KEY>  
------END CERTIFICATE-----  
+```
+-----BEGIN CERTIFICATE-----<PUBLIC_KEY>-----END CERTIFICATE-----  
 ```
 3. Set the file extension as `.crt` and save.
 
@@ -62,9 +61,9 @@ When you put your Google Workspace behind Access, users will not be able to log 
 3. Select **Third-party SSO profile for your organization**.
 4. Enable **Set up SSO with third-party identity provider**.
 5. Fill in the following information:  
-   * **Sign-in page URL**: Copy and then paste your **SSO endpoint** from Cloudflare One.  
-   * **Sign-out page URL**: `https://<team-name>.cloudflareaccess.com/cdn-cgi/access/logout`, where `<team-name>` is your Cloudflare One team name.  
-   * **Verification certificate**: Upload the certificate file containing your public key.
+  * **Sign-in page URL**: Copy and then paste your **SSO endpoint** from Cloudflare One.
+  * **Sign-out page URL**: `https://<team-name>.cloudflareaccess.com/cdn-cgi/access/logout`, where `<team-name>` is your Cloudflare One team name.
+  * **Verification certificate**: Upload the certificate file containing your public key.
 6. (Optional) Enable **Use a domain specific issuer**. If you select this option, Google will send an issuer specific to your Google Workspace domain (`google.com/a/<your_domain.com>` instead of the standard `google.com`).
 
 ## 4\. Test the integration

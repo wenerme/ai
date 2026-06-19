@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,19 +25,13 @@ To normalize encoded forward slashes (`%2F`) to standard slashes (`/`) in the re
 Text in **Expression Editor**:
 
 ```
-
 (lower(raw.http.request.full_uri) wildcard "*%2f*")
-
-
 ```
 
 Text after **Path** \> **Rewrite to** \> _Dynamic_:
 
 ```
-
 url_decode(http.request.uri.path)
-
-
 ```
 
 This transformation ensures that `%2F` is always treated as `/` in the request path. This is particularly useful when setting up rules that depend on URL path matching, as it prevents discrepancies caused by differing normalization behaviors.

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -65,41 +65,19 @@ Workflows can communicate with Agents through several mechanisms:
 * **State updates**: Modify Agent state via `step.updateAgentState()` or `step.mergeAgentState()`, which broadcasts to connected clients
 * **Client broadcasts**: Send messages to all WebSocket clients via `this.broadcastToClients()`
 
-* [  JavaScript ](#tab-panel-5419)
-* [  TypeScript ](#tab-panel-5420)
+* [  JavaScript ](#tab-panel-5493)
+* [  TypeScript ](#tab-panel-5494)
 
 JavaScript
 
 ```
-
-// Inside a workflow's run() method
-
-await this.agent.updateTaskStatus(taskId, "processing"); // RPC call
-
-await this.reportProgress({ step: "process", percent: 0.5 }); // Progress (non-durable)
-
-this.broadcastToClients({ type: "update", taskId }); // Broadcast (non-durable)
-
-await step.mergeAgentState({ taskProgress: 0.5 }); // State update (durable)
-
-
+// Inside a workflow's run() methodawait this.agent.updateTaskStatus(taskId, "processing"); // RPC callawait this.reportProgress({ step: "process", percent: 0.5 }); // Progress (non-durable)this.broadcastToClients({ type: "update", taskId }); // Broadcast (non-durable)await step.mergeAgentState({ taskProgress: 0.5 }); // State update (durable)
 ```
 
 TypeScript
 
 ```
-
-// Inside a workflow's run() method
-
-await this.agent.updateTaskStatus(taskId, "processing"); // RPC call
-
-await this.reportProgress({ step: "process", percent: 0.5 }); // Progress (non-durable)
-
-this.broadcastToClients({ type: "update", taskId }); // Broadcast (non-durable)
-
-await step.mergeAgentState({ taskProgress: 0.5 }); // State update (durable)
-
-
+// Inside a workflow's run() methodawait this.agent.updateTaskStatus(taskId, "processing"); // RPC callawait this.reportProgress({ step: "process", percent: 0.5 }); // Progress (non-durable)this.broadcastToClients({ type: "update", taskId }); // Broadcast (non-durable)await step.mergeAgentState({ taskProgress: 0.5 }); // State update (durable)
 ```
 
 ### Agent to Workflow
@@ -160,57 +138,19 @@ When an Agent starts a workflow using `runWorkflow()`, the workflow is automatic
 
 An Agent receives a request, starts a Workflow for heavy processing, and broadcasts progress updates to connected clients as the Workflow executes each step.
 
-* [  JavaScript ](#tab-panel-5421)
-* [  TypeScript ](#tab-panel-5422)
+* [  JavaScript ](#tab-panel-5495)
+* [  TypeScript ](#tab-panel-5496)
 
 JavaScript
 
 ```
-
-// Workflow reports progress after each item
-
-for (let i = 0; i < items.length; i++) {
-
-  await step.do(`process-${i}`, async () => processItem(items[i]));
-
-  await this.reportProgress({
-
-    step: `process-${i}`,
-
-    percent: (i + 1) / items.length,
-
-    message: `Processed ${i + 1}/${items.length}`,
-
-  });
-
-}
-
-
+// Workflow reports progress after each itemfor (let i = 0; i < items.length; i++) {  await step.do(`process-${i}`, async () => processItem(items[i]));  await this.reportProgress({    step: `process-${i}`,    percent: (i + 1) / items.length,    message: `Processed ${i + 1}/${items.length}`,  });}
 ```
 
 TypeScript
 
 ```
-
-// Workflow reports progress after each item
-
-for (let i = 0; i < items.length; i++) {
-
-  await step.do(`process-${i}`, async () => processItem(items[i]));
-
-  await this.reportProgress({
-
-    step: `process-${i}`,
-
-    percent: (i + 1) / items.length,
-
-    message: `Processed ${i + 1}/${items.length}`,
-
-  });
-
-}
-
-
+// Workflow reports progress after each itemfor (let i = 0; i < items.length; i++) {  await step.do(`process-${i}`, async () => processItem(items[i]));  await this.reportProgress({    step: `process-${i}`,    percent: (i + 1) / items.length,    message: `Processed ${i + 1}/${items.length}`,  });}
 ```
 
 ### Human-in-the-loop approval
@@ -221,69 +161,19 @@ A Workflow prepares a request, pauses to wait for approval using `waitForApprova
 
 A Workflow wraps external API calls in durable steps with retry logic. If the API fails or the workflow restarts, completed calls are not repeated and failed calls retry automatically.
 
-* [  JavaScript ](#tab-panel-5423)
-* [  TypeScript ](#tab-panel-5424)
+* [  JavaScript ](#tab-panel-5497)
+* [  TypeScript ](#tab-panel-5498)
 
 JavaScript
 
 ```
-
-const result = await step.do(
-
-  "call-api",
-
-  {
-
-    retries: { limit: 5, delay: "10 seconds", backoff: "exponential" },
-
-    timeout: "5 minutes",
-
-  },
-
-  async () => {
-
-    const response = await fetch("https://api.example.com/process");
-
-    if (!response.ok) throw new Error(`API error: ${response.status}`);
-
-    return response.json();
-
-  },
-
-);
-
-
+const result = await step.do(  "call-api",  {    retries: { limit: 5, delay: "10 seconds", backoff: "exponential" },    timeout: "5 minutes",  },  async () => {    const response = await fetch("https://api.example.com/process");    if (!response.ok) throw new Error(`API error: ${response.status}`);    return response.json();  },);
 ```
 
 TypeScript
 
 ```
-
-const result = await step.do(
-
-  "call-api",
-
-  {
-
-    retries: { limit: 5, delay: "10 seconds", backoff: "exponential" },
-
-    timeout: "5 minutes",
-
-  },
-
-  async () => {
-
-    const response = await fetch("https://api.example.com/process");
-
-    if (!response.ok) throw new Error(`API error: ${response.status}`);
-
-    return response.json();
-
-  },
-
-);
-
-
+const result = await step.do(  "call-api",  {    retries: { limit: 5, delay: "10 seconds", backoff: "exponential" },    timeout: "5 minutes",  },  async () => {    const response = await fetch("https://api.example.com/process");    if (!response.ok) throw new Error(`API error: ${response.status}`);    return response.json();  },);
 ```
 
 ### State synchronization
@@ -296,7 +186,7 @@ A Workflow updates Agent state at key milestones using `step.updateAgentState()`
 
 [ Cloudflare Workflows ](https://developers.cloudflare.com/workflows/) Workflow fundamentals and documentation. 
 
-[ Human-in-the-loop ](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/) Approval flows and manual intervention. 
+[ Human-in-the-loop ](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/) Approval flows and manual intervention.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/concepts/workflows/#page","headline":"Using Agents with Workflows · Cloudflare Agents docs","description":"Integrate Cloudflare Workflows with Agents for durable, multi-step background processing with automatic retries.","url":"https://developers.cloudflare.com/agents/concepts/workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

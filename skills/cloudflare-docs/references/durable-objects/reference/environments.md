@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,171 +22,55 @@ If you are using Wrangler environments, you must specify any [Durable Object bin
 
 Durable Object bindings are not inherited. For example, you can define an environment named `staging` as below:
 
-* [  wrangler.jsonc ](#tab-panel-8403)
-* [  wrangler.toml ](#tab-panel-8404)
+* [  wrangler.jsonc ](#tab-panel-8479)
+* [  wrangler.toml ](#tab-panel-8480)
 
 JSONC
 
 ```
-
-{
-
-  "env": {
-
-    "staging": {
-
-      "durable_objects": {
-
-        "bindings": [
-
-          {
-
-            "name": "EXAMPLE_CLASS",
-
-            "class_name": "DurableObjectExample"
-
-          }
-
-        ]
-
-      }
-
-    }
-
-  }
-
-}
-
-
+{  "env": {    "staging": {      "durable_objects": {        "bindings": [          {            "name": "EXAMPLE_CLASS",            "class_name": "DurableObjectExample"          }        ]      }    }  }}
 ```
 
 TOML
 
 ```
-
-[[env.staging.durable_objects.bindings]]
-
-name = "EXAMPLE_CLASS"
-
-class_name = "DurableObjectExample"
-
-
+[[env.staging.durable_objects.bindings]]name = "EXAMPLE_CLASS"class_name = "DurableObjectExample"
 ```
 
 Because Wrangler appends the [environment name](https://developers.cloudflare.com/workers/wrangler/environments/) to the top-level name when publishing, for a Worker named `worker-name` the above example is equivalent to:
 
-* [  wrangler.jsonc ](#tab-panel-8405)
-* [  wrangler.toml ](#tab-panel-8406)
+* [  wrangler.jsonc ](#tab-panel-8481)
+* [  wrangler.toml ](#tab-panel-8482)
 
 JSONC
 
 ```
-
-{
-
-  "env": {
-
-    "staging": {
-
-      "durable_objects": {
-
-        "bindings": [
-
-          {
-
-            "name": "EXAMPLE_CLASS",
-
-            "class_name": "DurableObjectExample",
-
-            "script_name": "worker-name-staging"
-
-          }
-
-        ]
-
-      }
-
-    }
-
-  }
-
-}
-
-
+{  "env": {    "staging": {      "durable_objects": {        "bindings": [          {            "name": "EXAMPLE_CLASS",            "class_name": "DurableObjectExample",            "script_name": "worker-name-staging"          }        ]      }    }  }}
 ```
 
 TOML
 
 ```
-
-[[env.staging.durable_objects.bindings]]
-
-name = "EXAMPLE_CLASS"
-
-class_name = "DurableObjectExample"
-
-script_name = "worker-name-staging"
-
-
+[[env.staging.durable_objects.bindings]]name = "EXAMPLE_CLASS"class_name = "DurableObjectExample"script_name = "worker-name-staging"
 ```
 
 `"EXAMPLE_CLASS"` in the staging environment is bound to a different Worker code name compared to the top-level `"EXAMPLE_CLASS"` binding, and will therefore access different Durable Objects with different persistent storage.
 
 If you want an environment-specific binding that accesses the same Objects as the top-level binding, specify the top-level Worker code name explicitly using `script_name`:
 
-* [  wrangler.jsonc ](#tab-panel-8407)
-* [  wrangler.toml ](#tab-panel-8408)
+* [  wrangler.jsonc ](#tab-panel-8483)
+* [  wrangler.toml ](#tab-panel-8484)
 
 JSONC
 
 ```
-
-{
-
-  "env": {
-
-    "another": {
-
-      "durable_objects": {
-
-        "bindings": [
-
-          {
-
-            "name": "EXAMPLE_CLASS",
-
-            "class_name": "DurableObjectExample",
-
-            "script_name": "worker-name"
-
-          }
-
-        ]
-
-      }
-
-    }
-
-  }
-
-}
-
-
+{  "env": {    "another": {      "durable_objects": {        "bindings": [          {            "name": "EXAMPLE_CLASS",            "class_name": "DurableObjectExample",            "script_name": "worker-name"          }        ]      }    }  }}
 ```
 
 TOML
 
 ```
-
-[[env.another.durable_objects.bindings]]
-
-name = "EXAMPLE_CLASS"
-
-class_name = "DurableObjectExample"
-
-script_name = "worker-name"
-
-
+[[env.another.durable_objects.bindings]]name = "EXAMPLE_CLASS"class_name = "DurableObjectExample"script_name = "worker-name"
 ```
 
 ### Migration environments

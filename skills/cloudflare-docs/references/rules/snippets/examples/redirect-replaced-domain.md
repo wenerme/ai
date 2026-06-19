@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,44 +17,11 @@ Redirect all requests from one domain to another domain.
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request) {
-
-    // Define variables to use in the response redirect.
-
-    const base = "https://example.com";
-
-    const statusCode = 301;
-
-
-    // Clone the original URL.
-
-    const url = new URL(request.url);
-
-
-    // Define a "pathname" and "search" variables, extracting their values from the cloned URL.
-
-    const { pathname, search } = url;
-
-
-    // Define the destination URL using the variables you declared previously.
-
-    const destinationURL = `${base}${pathname}${search}`;
-
-    console.log(destinationURL);
-
-
-    // Respond with the redirect.
-
-    return Response.redirect(destinationURL, statusCode);
-
-  },
-
-};
-
-
+export default {  async fetch(request) {    // Define variables to use in the response redirect.    const base = "https://example.com";    const statusCode = 301;
+    // Clone the original URL.    const url = new URL(request.url);
+    // Define a "pathname" and "search" variables, extracting their values from the cloned URL.    const { pathname, search } = url;
+    // Define the destination URL using the variables you declared previously.    const destinationURL = `${base}${pathname}${search}`;    console.log(destinationURL);
+    // Respond with the redirect.    return Response.redirect(destinationURL, statusCode);  },};
 ```
 
 ```json

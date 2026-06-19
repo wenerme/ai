@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,50 +33,7 @@ Matched payload information includes the specific string that triggered a rule, 
 Once you decrypt its value, the `encrypted_matched_data` property of the `Metadata` field in Logpush has a structure similar to the following:
 
 ```
-
-{
-
-  // for fields with only one match (such as URI or user agent fields):
-
-  "<match_location>": {
-
-    "before": "<text_before_match>",
-
-    "content": "<matched_text>",
-
-    "after": "<text_after_match>"
-
-  },
-
-  // for fields with possible multiple matches (such as form, header, or body fields):
-
-  "<match_location>": [
-
-    {
-
-      "before": "<text_before_match_1>",
-
-      "content": "<matched_text_1>",
-
-      "after": "<text_after_match_1>"
-
-    },
-
-    {
-
-      "before": "<text_before_match_2>",
-
-      "content": "<matched_text_2>",
-
-      "after": "<text_after_match_2>"
-
-    }
-
-  ]
-
-}
-
-
+{  // for fields with only one match (such as URI or user agent fields):  "<match_location>": {    "before": "<text_before_match>",    "content": "<matched_text>",    "after": "<text_after_match>"  },  // for fields with possible multiple matches (such as form, header, or body fields):  "<match_location>": [    {      "before": "<text_before_match_1>",      "content": "<matched_text_1>",      "after": "<text_after_match_1>"    },    {      "before": "<text_before_match_2>",      "content": "<matched_text_2>",      "after": "<text_after_match_2>"    }  ]}
 ```
 
 The `before` and `after` properties are optional (there may be no content before/after the matched text) and will contain at most 15 bytes of content appearing before and after the match.
@@ -86,60 +43,19 @@ Below are a few examples of payload matches:
 URI match
 
 ```
-
-{
-
-  "http.request.uri": {
-
-    "before": "/admin",
-
-    "content": "/.git/",
-
-    "after": "config"
-
-  }
-
-}
-
-
+{  "http.request.uri": {    "before": "/admin",    "content": "/.git/",    "after": "config"  }}
 ```
 
 Header value match
 
 ```
-
-{
-
-  "http.request.headers.values[3]": [
-
-    { "content": "phar://", "after": "example" }
-
-  ]
-
-}
-
-
+{  "http.request.headers.values[3]": [    { "content": "phar://", "after": "example" }  ]}
 ```
 
 Raw body content match
 
 ```
-
-{
-
-  "http.request.body.raw": {
-
-    "before": "NY>",
-
-    "content": "<!ENTITY xxe SYSTEM \"file:///dev/random\">] > ",
-
-    "after": "<foo>&xxe;</foo>"
-
-  }
-
-}
-
-
+{  "http.request.body.raw": {    "before": "NY>",    "content": "<!ENTITY xxe SYSTEM \"file:///dev/random\">] > ",    "after": "<foo>&xxe;</foo>"  }}
 ```
 
 ```json

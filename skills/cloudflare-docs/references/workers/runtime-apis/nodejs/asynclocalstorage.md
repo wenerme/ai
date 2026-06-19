@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,33 +25,33 @@ Cloudflare Workers provides an implementation of a subset of the Node.js [AsyncL
 JavaScript
 
 ```
-
 import { AsyncLocalStorage } from "node:async_hooks";
-
-
 const asyncLocalStorage = new AsyncLocalStorage();
-
-
 ```
 
 * `new AsyncLocalStorage()` : AsyncLocalStorage  
-   * Returns a new `AsyncLocalStorage` instance.
+  * Returns a new `AsyncLocalStorage` instance.
 
 ## Methods
 
-* `getStore()` : any  
-   * Returns the current store. If called outside of an asynchronous context initialized by calling `asyncLocalStorage.run()`, it returns `undefined`.
-* `run(storeany, callbackfunction, ...argsarguments)` : any  
-   * Runs a function synchronously within a context and returns its return value. The store is not accessible outside of the callback function. The store is accessible to any asynchronous operations created within the callback. The optional `args` are passed to the callback function. If the callback function throws an error, the error is thrown by `run()` also.
-* `exit(callbackfunction, ...argsarguments)` : any  
-   * Runs a function synchronously outside of a context and returns its return value. This method is equivalent to calling `run()` with the `store` value set to `undefined`.
+* `getStore()` : any
+
+  * Returns the current store. If called outside of an asynchronous context initialized by calling `asyncLocalStorage.run()`, it returns `undefined`.
+* `run(storeany, callbackfunction, ...argsarguments)` : any
+
+  * Runs a function synchronously within a context and returns its return value. The store is not accessible outside of the callback function. The store is accessible to any asynchronous operations created within the callback. The optional `args` are passed to the callback function. If the callback function throws an error, the error is thrown by `run()` also.
+* `exit(callbackfunction, ...argsarguments)` : any
+
+  * Runs a function synchronously outside of a context and returns its return value. This method is equivalent to calling `run()` with the `store` value set to `undefined`.
 
 ## Static Methods
 
-* `AsyncLocalStorage.bind(fn)` : function  
-   * Captures the asynchronous context that is current when `bind()` is called and returns a function that enters that context before calling the passed in function.
-* `AsyncLocalStorage.snapshot()` : function  
-   * Captures the asynchronous context that is current when `snapshot()` is called and returns a function that enters that context before calling a given function.
+* `AsyncLocalStorage.bind(fn)` : function
+
+  * Captures the asynchronous context that is current when `bind()` is called and returns a function that enters that context before calling the passed in function.
+* `AsyncLocalStorage.snapshot()` : function
+
+  * Captures the asynchronous context that is current when `snapshot()` is called and returns a function that enters that context before calling a given function.
 
 ## Examples
 
@@ -60,34 +60,9 @@ const asyncLocalStorage = new AsyncLocalStorage();
 JavaScript
 
 ```
-
 import { AsyncLocalStorage } from 'node:async_hooks';
-
-
-const asyncLocalStorage = new AsyncLocalStorage();
-
-let idSeq = 0;
-
-
-export default {
-
-  async fetch(req) {
-
-    return asyncLocalStorage.run(idSeq++, () => {
-
-      // Simulate some async activity...
-
-      await scheduler.wait(1000);
-
-      return new Response(asyncLocalStorage.getStore());
-
-    });
-
-  }
-
-};
-
-
+const asyncLocalStorage = new AsyncLocalStorage();let idSeq = 0;
+export default {  async fetch(req) {    return asyncLocalStorage.run(idSeq++, () => {      // Simulate some async activity...      await scheduler.wait(1000);      return new Response(asyncLocalStorage.getStore());    });  }};
 ```
 
 ### Multiple stores
@@ -97,38 +72,9 @@ The API supports multiple `AsyncLocalStorage` instances to be used concurrently.
 JavaScript
 
 ```
-
 import { AsyncLocalStorage } from 'node:async_hooks';
-
-
-const als1 = new AsyncLocalStorage();
-
-const als2 = new AsyncLocalStorage();
-
-
-export default {
-
-  async fetch(req) {
-
-    return als1.run(123, () => {
-
-      return als2.run(321, () => {
-
-        // Simulate some async activity...
-
-        await scheduler.wait(1000);
-
-        return new Response(`${als1.getStore()}-${als2.getStore()}`);
-
-      });
-
-    });
-
-  }
-
-};
-
-
+const als1 = new AsyncLocalStorage();const als2 = new AsyncLocalStorage();
+export default {  async fetch(req) {    return als1.run(123, () => {      return als2.run(321, () => {        // Simulate some async activity...        await scheduler.wait(1000);        return new Response(`${als1.getStore()}-${als2.getStore()}`);      });    });  }};
 ```
 
 ### Unhandled Rejections
@@ -138,39 +84,10 @@ When a `Promise` rejects and the rejection is unhandled, the async context propa
 JavaScript
 
 ```
-
 import { AsyncLocalStorage } from "node:async_hooks";
-
-
-const asyncLocalStorage = new AsyncLocalStorage();
-
-let idSeq = 0;
-
-
-addEventListener("unhandledrejection", (event) => {
-
-  console.log(asyncLocalStorage.getStore(), "unhandled rejection!");
-
-});
-
-
-export default {
-
-  async fetch(req) {
-
-    return asyncLocalStorage.run(idSeq++, () => {
-
-      // Cause an unhandled rejection!
-
-      throw new Error("boom");
-
-    });
-
-  },
-
-};
-
-
+const asyncLocalStorage = new AsyncLocalStorage();let idSeq = 0;
+addEventListener("unhandledrejection", (event) => {  console.log(asyncLocalStorage.getStore(), "unhandled rejection!");});
+export default {  async fetch(req) {    return asyncLocalStorage.run(idSeq++, () => {      // Cause an unhandled rejection!      throw new Error("boom");    });  },};
 ```
 
 ### `AsyncLocalStorage.bind()` and `AsyncLocalStorage.snapshot()`
@@ -178,73 +95,21 @@ export default {
 JavaScript
 
 ```
-
 import { AsyncLocalStorage } from "node:async_hooks";
-
-
 const als = new AsyncLocalStorage();
-
-
-function foo() {
-
-  console.log(als.getStore());
-
-}
-
-function bar() {
-
-  console.log(als.getStore());
-
-}
-
-
-const oneFoo = als.run(123, () => AsyncLocalStorage.bind(foo));
-
-oneFoo(); // prints 123
-
-
-const snapshot = als.run("abc", () => AsyncLocalStorage.snapshot());
-
-snapshot(foo); // prints 'abc'
-
-snapshot(bar); // prints 'abc'
-
-
+function foo() {  console.log(als.getStore());}function bar() {  console.log(als.getStore());}
+const oneFoo = als.run(123, () => AsyncLocalStorage.bind(foo));oneFoo(); // prints 123
+const snapshot = als.run("abc", () => AsyncLocalStorage.snapshot());snapshot(foo); // prints 'abc'snapshot(bar); // prints 'abc'
 ```
 
 JavaScript
 
 ```
-
 import { AsyncLocalStorage } from "node:async_hooks";
-
-
 const als = new AsyncLocalStorage();
-
-
-class MyResource {
-
-  #runInAsyncScope = AsyncLocalStorage.snapshot();
-
-
-  doSomething() {
-
-    this.#runInAsyncScope(() => {
-
-      return als.getStore();
-
-    });
-
-  }
-
-}
-
-
-const myResource = als.run(123, () => new MyResource());
-
-console.log(myResource.doSomething()); // prints 123
-
-
+class MyResource {  #runInAsyncScope = AsyncLocalStorage.snapshot();
+  doSomething() {    this.#runInAsyncScope(() => {      return als.getStore();    });  }}
+const myResource = als.run(123, () => new MyResource());console.log(myResource.doSomething()); // prints 123
 ```
 
 ## `AsyncResource`
@@ -258,55 +123,25 @@ Note that `AsyncLocalStorage.snapshot()` and `AsyncLocalStorage.bind()` provide 
 JavaScript
 
 ```
-
 import { AsyncResource, AsyncLocalStorage } from "node:async_hooks";
-
-
 const als = new AsyncLocalStorage();
-
-
-class MyResource extends AsyncResource {
-
-  constructor() {
-
-    // The type string is required by Node.js but unused in Workers.
-
-    super("MyResource");
-
-  }
-
-
-  doSomething() {
-
-    this.runInAsyncScope(() => {
-
-      return als.getStore();
-
-    });
-
-  }
-
-}
-
-
-const myResource = als.run(123, () => new MyResource());
-
-console.log(myResource.doSomething()); // prints 123
-
-
+class MyResource extends AsyncResource {  constructor() {    // The type string is required by Node.js but unused in Workers.    super("MyResource");  }
+  doSomething() {    this.runInAsyncScope(() => {      return als.getStore();    });  }}
+const myResource = als.run(123, () => new MyResource());console.log(myResource.doSomething()); // prints 123
 ```
 
-* `new AsyncResource(typestring, optionsAsyncResourceOptions)` : AsyncResource  
-   * Returns a new `AsyncResource`. Importantly, while the constructor arguments are required in Node.js' implementation of `AsyncResource`, they are not used in Workers.
+* `new AsyncResource(typestring, optionsAsyncResourceOptions)` : AsyncResource
+
+  * Returns a new `AsyncResource`. Importantly, while the constructor arguments are required in Node.js' implementation of `AsyncResource`, they are not used in Workers.
 * `AsyncResource.bind(fnfunction, typestring, thisArgany)`  
-   * Binds the given function to the current async context.
+  * Binds the given function to the current async context.
 
 ### Methods
 
 * `asyncResource.bind(fnfunction, thisArgany)`  
-   * Binds the given function to the async context associated with this `AsyncResource`.
+  * Binds the given function to the async context associated with this `AsyncResource`.
 * `asyncResource.runInAsyncScope(fnfunction, thisArgany, ...argsarguments)`  
-   * Call the provided function with the given arguments in the async context associated with this `AsyncResource`.
+  * Call the provided function with the given arguments in the async context associated with this `AsyncResource`.
 
 ## Caveats
 

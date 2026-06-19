@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,41 +29,13 @@ The webhook notification URL must include the protocol. Only `http://` or `https
 Terminal window
 
 ```
-
-curl -X PUT --header 'Authorization: Bearer <API_TOKEN>' \
-
-https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/webhook \
-
---data '{"notificationUrl":"<WEBHOOK_NOTIFICATION_URL>"}'
-
-
+curl -X PUT --header 'Authorization: Bearer <API_TOKEN>' \https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/webhook \--data '{"notificationUrl":"<WEBHOOK_NOTIFICATION_URL>"}'
 ```
 
 Example response
 
 ```
-
-{
-
-  "result": {
-
-    "notificationUrl": "http://www.your-service-webhook-handler.com",
-
-    "modified": "2019-01-01T01:02:21.076571Z",
-
-    "secret": "85011ed3a913c6ad5f9cf6c5573cc0a7"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "notificationUrl": "http://www.your-service-webhook-handler.com",    "modified": "2019-01-01T01:02:21.076571Z",    "secret": "85011ed3a913c6ad5f9cf6c5573cc0a7"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 ## Notifications
@@ -73,97 +45,16 @@ When a video on your account finishes processing, you will receive a `POST` requ
 Example POST request body sent in response to successful encoding
 
 ```
-
-{
-
-  "uid": "6b9e68b07dfee8cc2d116e4c51d6a957",
-
-  "creator": null,
-
-  "thumbnail": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/thumbnails/thumbnail.jpg",
-
-  "thumbnailTimestampPct": 0,
-
-  "readyToStream": true,
-
-  "status": {
-
-    "state": "ready",
-
-    "pctComplete": "39.000000",
-
-    "errorReasonCode": "",
-
-    "errorReasonText": ""
-
-  },
-
-  "meta": {
-
-    "filename": "small.mp4",
-
-    "filetype": "video/mp4",
-
-    "name": "small.mp4",
-
-    "relativePath": "null",
-
-    "type": "video/mp4"
-
-  },
-
-  "created": "2022-06-30T17:53:12.512033Z",
-
-  "modified": "2022-06-30T17:53:21.774299Z",
-
-  "size": 383631,
-
-  "preview": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/watch",
-
-  "allowedOrigins": [],
-
-  "requireSignedURLs": false,
-
-  "uploaded": "2022-06-30T17:53:12.511981Z",
-
-  "uploadExpiry": "2022-07-01T17:53:12.511973Z",
-
-  "maxSizeBytes": null,
-
-  "maxDurationSeconds": null,
-
-  "duration": 5.5,
-
-  "input": {
-
-    "width": 560,
-
-    "height": 320
-
-  },
-
-  "playback": {
-
-    "hls": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/manifest/video.m3u8",
-
-    "dash": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/manifest/video.mpd"
-
-  },
-
-  "watermark": null
-
-}
-
-
+{  "uid": "6b9e68b07dfee8cc2d116e4c51d6a957",  "creator": null,  "thumbnail": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/thumbnails/thumbnail.jpg",  "thumbnailTimestampPct": 0,  "readyToStream": true,  "status": {    "state": "ready",    "pctComplete": "39.000000",    "errorReasonCode": "",    "errorReasonText": ""  },  "meta": {    "filename": "small.mp4",    "filetype": "video/mp4",    "name": "small.mp4",    "relativePath": "null",    "type": "video/mp4"  },  "created": "2022-06-30T17:53:12.512033Z",  "modified": "2022-06-30T17:53:21.774299Z",  "size": 383631,  "preview": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/watch",  "allowedOrigins": [],  "requireSignedURLs": false,  "uploaded": "2022-06-30T17:53:12.511981Z",  "uploadExpiry": "2022-07-01T17:53:12.511973Z",  "maxSizeBytes": null,  "maxDurationSeconds": null,  "duration": 5.5,  "input": {    "width": 560,    "height": 320  },  "playback": {    "hls": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/manifest/video.m3u8",    "dash": "https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/manifest/video.mpd"  },  "watermark": null}
 ```
 
 * `uid` – The video's unique identifier.
 * `readytoStream` – Returns `true` when at least one quality level is encoded and ready to be streamed.
 * `status` – The processing status.  
-   * `state` – Returns `ready` when a video is done processing and all quality levels are encoded.  
-   * `pctComplete` – The percentage of processing that is complete. When this reaches `100`, all quality levels are available.  
-   Tip  
-   If you want to ensure the highest picture quality, enable video playback only when `state` is `ready` and `pctComplete` is `100`.
+  * `state` – Returns `ready` when a video is done processing and all quality levels are encoded.
+  * `pctComplete` – The percentage of processing that is complete. When this reaches `100`, all quality levels are available.  
+  Tip  
+  If you want to ensure the highest picture quality, enable video playback only when `state` is `ready` and `pctComplete` is `100`.
 * `meta` – Metadata associated with the uploaded file.
 * `created` – Timestamp indicating when the video record was created.
 
@@ -183,28 +74,7 @@ In addition to the `state` field, a video's `readyToStream` field must also be `
 Example error response
 
 ```
-
-{
-
-  "readyToStream": false,
-
-  "status": {
-
-    "state": "error",
-
-    "step": "encoding",
-
-    "pctComplete": "39",
-
-    "errReasonCode": "ERR_MALFORMED_VIDEO",
-
-    "errReasonText": "The video was deemed to be corrupted or malformed.",
-
-  }
-
-}
-
-
+{  "readyToStream": false,  "status": {    "state": "error",    "step": "encoding",    "pctComplete": "39",    "errReasonCode": "ERR_MALFORMED_VIDEO",    "errReasonText": "The video was deemed to be corrupted or malformed.",  }}
 ```
 
 ## Verify webhook authenticity
@@ -262,43 +132,12 @@ If the signatures match, you can trust that Cloudflare sent the webhook.
 Using [crypto/hmac ↗](https://golang.org/pkg/crypto/hmac/#pkg-overview):
 
 ```
-
 package main
-
-
-import (
-
- "crypto/hmac"
-
- "crypto/sha256"
-
- "encoding/hex"
-
- "log"
-
-)
-
-
-func main() {
-
- secret := []byte("secret from the Cloudflare API")
-
- message := []byte("string from step 2")
-
-
- hash := hmac.New(sha256.New, secret)
-
- hash.Write(message)
-
-
+import ( "crypto/hmac" "crypto/sha256" "encoding/hex" "log")
+func main() { secret := []byte("secret from the Cloudflare API") message := []byte("string from step 2")
+ hash := hmac.New(sha256.New, secret) hash.Write(message)
  hashToCheck := hex.EncodeToString(hash.Sum(nil))
-
-
- log.Println(hashToCheck)
-
-}
-
-
+ log.Println(hashToCheck)}
 ```
 
 **Node.js**
@@ -306,38 +145,18 @@ func main() {
 JavaScript
 
 ```
-
 var crypto = require("crypto");
-
-
-var key = "secret from the Cloudflare API";
-
-var message = "string from step 2";
-
-
+var key = "secret from the Cloudflare API";var message = "string from step 2";
 var hash = crypto.createHmac("sha256", key).update(message);
-
-
 hash.digest("hex");
-
-
 ```
 
 **Ruby**
 
 ```
-
     require 'openssl'
-
-
-    key = 'secret from the Cloudflare API'
-
-    message = 'string from step 2'
-
-
+    key = 'secret from the Cloudflare API'    message = 'string from step 2'
     OpenSSL::HMAC.hexdigest('sha256', key, message)
-
-
 ```
 
 **In JavaScript (for example, to use in Cloudflare Workers)**
@@ -345,50 +164,11 @@ hash.digest("hex");
 JavaScript
 
 ```
-
-const key = "secret from the Cloudflare API";
-
-const message = "string from step 2";
-
-
-const getUtf8Bytes = (str) =>
-
-  new Uint8Array(
-
-    [...decodeURIComponent(encodeURIComponent(str))].map((c) =>
-
-      c.charCodeAt(0),
-
-    ),
-
-  );
-
-
-const keyBytes = getUtf8Bytes(key);
-
-const messageBytes = getUtf8Bytes(message);
-
-
-const cryptoKey = await crypto.subtle.importKey(
-
-  "raw",
-
-  keyBytes,
-
-  { name: "HMAC", hash: "SHA-256" },
-
-  true,
-
-  ["sign"],
-
-);
-
-const sig = await crypto.subtle.sign("HMAC", cryptoKey, messageBytes);
-
-
+const key = "secret from the Cloudflare API";const message = "string from step 2";
+const getUtf8Bytes = (str) =>  new Uint8Array(    [...decodeURIComponent(encodeURIComponent(str))].map((c) =>      c.charCodeAt(0),    ),  );
+const keyBytes = getUtf8Bytes(key);const messageBytes = getUtf8Bytes(message);
+const cryptoKey = await crypto.subtle.importKey(  "raw",  keyBytes,  { name: "HMAC", hash: "SHA-256" },  true,  ["sign"],);const sig = await crypto.subtle.sign("HMAC", cryptoKey, messageBytes);
 [...new Uint8Array(sig)].map((b) => b.toString(16).padStart(2, "0")).join("");
-
-
 ```
 
 ```json

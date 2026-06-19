@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -63,8 +63,8 @@ Load balancer pools are logical groupings of endpoints, typically organized by p
 
 Pools can be created using either the Cloudflare dashboard or the API.
 
-* [ Dashboard ](#tab-panel-9335)
-* [ API ](#tab-panel-9336)
+* [ Dashboard ](#tab-panel-9411)
+* [ API ](#tab-panel-9412)
 
 To create a pool using the dashboard, refer to the [Create a pool](https://developers.cloudflare.com/load-balancing/pools/create-pool/#create-a-pool) documentation.
 
@@ -81,42 +81,13 @@ The following example adds a Cloudflare Tunnel endpoint to an existing Load Bala
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Load Balancing: Monitors and Pools Write`
 
 Patch Pool
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/pools/$POOL_ID" \
-
-  --request PATCH \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "origins": [
-
-        {
-
-            "name": "server-1",
-
-            "address": "10.0.0.1",
-
-            "enabled": true,
-
-            "weight": 1,
-
-            "virtual_network_id": "a5624d4e-044a-4ff0-b3e1-e2465353d4b4"
-
-        }
-
-    ]
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/pools/$POOL_ID" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "origins": [        {            "name": "server-1",            "address": "10.0.0.1",            "enabled": true,            "weight": 1,            "virtual_network_id": "a5624d4e-044a-4ff0-b3e1-e2465353d4b4"        }    ]  }'
 ```
 
 ## 2\. Create a private load balancer
@@ -125,9 +96,10 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/p
 [ Go to **Load Balancing** ](https://dash.cloudflare.com/?to=/:account/load-balancing)
 2. Select **Create a Load Balancer**.
 3. Select **Private Load Balancer**.
-4. On the next step you can choose to associate this load balancer with either:  
-   * A Cloudflare-assigned IP from the `100.112.0.0/16` range  
-   * A custom `/32` IP in an [RFC 1918 range ↗](https://datatracker.ietf.org/doc/html/rfc1918)
+4. On the next step you can choose to associate this load balancer with either:
+
+  * A Cloudflare-assigned IP from the `100.112.0.0/16` range
+  * A custom `/32` IP in an [RFC 1918 range ↗](https://datatracker.ietf.org/doc/html/rfc1918)
 5. Add a descriptive name to identify your load balancer.
 6. Proceed through the setup.
 
@@ -141,10 +113,10 @@ In order for Cloudflare One Clients to connect to your load balancer, the load b
 2. Find the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) you would like to modify and select **Edit**.
 3. Under **Split Tunnels**, check whether your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode) is set to **Exclude** or **Include**.
 4. Select **Manage**. Depending on the mode:  
-   * **Exclude mode**: Delete the IP range that contains your load balancer IP. For example, if your load balancer has a Cloudflare-assigned CGNAT IP, delete `100.64.0.0/10`. We recommend [adding back the IPs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/#3-route-private-network-ips-through-the-cloudflare-one-client) that are not being used by your load balancer.  
-   Note  
-   Some IPs in the `100.64.0.0/10` range may be reserved for other Zero Trust services such as Gateway initial resolved IPs or WARP CGNAT IPs. These IPs should remain deleted from the Exclude list.  
-   * **Include mode**: Add your load balancer IP.
+  * **Exclude mode**: Delete the IP range that contains your load balancer IP. For example, if your load balancer has a Cloudflare-assigned CGNAT IP, delete `100.64.0.0/10`. We recommend [adding back the IPs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/#3-route-private-network-ips-through-the-cloudflare-one-client) that are not being used by your load balancer.  
+  Note  
+  Some IPs in the `100.64.0.0/10` range may be reserved for other Zero Trust services such as Gateway initial resolved IPs or WARP CGNAT IPs. These IPs should remain deleted from the Exclude list.
+  * **Include mode**: Add your load balancer IP.
 
 Cloudflare One Client traffic can now reach your private load balancer. For example, if your load balancer points to a web application, you can test by running `curl <load-balancer-IP>` from the device. This traffic will be distributed over Cloudflare Tunnel to your private endpoints according to your configured steering method.
 
@@ -154,9 +126,10 @@ If you want your load balancer and its endpoints to be transparently accessible 
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **DNS**.
 2. Select **Add a policy**.
-3. In **Traffic**, create an expression where the **Selector** equals `Host`, the **Operator** equals `is`, and **Value** is the hostname you wish to associate with your load balancer. For example,  
-| Selector | Operator | Value              |  
-| -------- | -------- | ------------------ |  
+3. In **Traffic**, create an expression where the **Selector** equals `Host`, the **Operator** equals `is`, and **Value** is the hostname you wish to associate with your load balancer. For example,
+
+| Selector | Operator | Value              |
+| -------- | -------- | ------------------ |
 | Host     | is       | app.internal.local |
 4. Set the **Action** to _Override_.
 5. In **Override Hostname**, enter your private load balancer IP (for example, `100.112.0.0`).

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,9 +29,9 @@ This guide covers how to configure [Slack ↗](https://slack.com/help/articles/2
 4. For the authentication protocol, select **SAML**.
 5. Select **Add application**.
 6. Fill in the following fields:  
-   * **Entity ID**: `https://slack.com`  
-   * **Assertion Consumer Service URL**: `https://<YOUR_DOMAIN>.slack.com/sso/saml`  
-   * **Name ID format**: The format expected by Slack, usually _Email_
+  * **Entity ID**: `https://slack.com`
+  * **Assertion Consumer Service URL**: `https://<YOUR_DOMAIN>.slack.com/sso/saml`
+  * **Name ID format**: The format expected by Slack, usually _Email_
 7. Copy the **SSO endpoint**, **Access Entity ID or Issuer**, and **Public key**.
 8. Configure [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) for the application.
 9. Save the application.
@@ -43,17 +43,17 @@ This guide covers how to configure [Slack ↗](https://slack.com/help/articles/2
 
 ## 3\. Add a SAML SSO provider to Slack
 
-* [ business+ plan ](#tab-panel-7111)
-* [ enterprise grid plan ](#tab-panel-7112)
+* [ business+ plan ](#tab-panel-7185)
+* [ enterprise grid plan ](#tab-panel-7186)
 
 1. In Slack, go to **Settings & administrations** \> **Workspace settings** \> **Authentication**.
 2. Select **Configure**.
 3. Turn on **Test**. Configuration changes will not apply until **Configure** is turned on.
 4. Fill in the following fields:  
-   * **Service Provider Issuer URL**: Ensure set to `https://slack.com`.  
-   * **SAML SSO URL**: SSO endpoint from application configuration in Cloudflare One.  
-   * **Identity Provider Issuer**: Access Entity ID or Issuer from application configuration in Cloudflare One.  
-   * **Public Certificate**: Paste the entire x.509 certificate from step [2\. Create a x.509 certificate](#2-create-a-x509-certificate).
+  * **Service Provider Issuer URL**: Ensure set to `https://slack.com`.
+  * **SAML SSO URL**: SSO endpoint from application configuration in Cloudflare One.
+  * **Identity Provider Issuer**: Access Entity ID or Issuer from application configuration in Cloudflare One.
+  * **Public Certificate**: Paste the entire x.509 certificate from step [2\. Create a x.509 certificate](#2-create-a-x509-certificate).
 5. Under **Advanced Options**, select **Expand**.
 6. For **AuthnContextClassRef**, ensure _urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport_ is selected.
 7. Ensure **Sign the AuthnRequest** is turned off.
@@ -65,10 +65,10 @@ This guide covers how to configure [Slack ↗](https://slack.com/help/articles/2
 1. In Slack, go to **Settings & administration** \> **Organization settings** \> **Security** \> **SSO Settings**.
 2. For **SSO name**, enter your desired name.
 3. Fill in the following fields:  
-   * **SAML 2.0 Endpoint URL**: SSO endpoint from application configuration in Cloudflare One.  
-   * **Identity Provider Issuer URL**: Access Entity ID or Issuer from application configuration in Cloudflare One.  
-   * **Service Provider Issuer URL**: Ensure set to `https://slack.com`.  
-   * **x.509 Certificate**: Paste the entire x.509 certificate from step [2\. Create a x.509 certificate](#2-create-a-x509-certificate).
+  * **SAML 2.0 Endpoint URL**: SSO endpoint from application configuration in Cloudflare One.
+  * **Identity Provider Issuer URL**: Access Entity ID or Issuer from application configuration in Cloudflare One.
+  * **Service Provider Issuer URL**: Ensure set to `https://slack.com`.
+  * **x.509 Certificate**: Paste the entire x.509 certificate from step [2\. Create a x.509 certificate](#2-create-a-x509-certificate).
 4. For **AuthnContextClassRef**, ensure _urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport_ is selected.
 5. Ensure **Sign the AuthnRequest** is turned off.
 6. For **SAML Response Signing**, turn on **Sign the Response** and **Sign the Assertion**.

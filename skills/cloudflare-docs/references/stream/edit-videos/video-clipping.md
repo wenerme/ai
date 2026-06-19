@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,18 +35,7 @@ Clipped videos will not inherit the `scheduledDeletion` date. To set the deletio
 Required parameters
 
 ```
-
-{
-
-  "clippedFromVideoUID": "0ea62994907491cf9ebefb0a34c1e2c6",
-
-  "startTimeSeconds": 20,
-
-  "endTimeSeconds": 40
-
-}
-
-
+{  "clippedFromVideoUID": "0ea62994907491cf9ebefb0a34c1e2c6",  "startTimeSeconds": 20,  "endTimeSeconds": 40}
 ```
 
 * **`clippedFromVideoUID`**: The unique identifier for the video used to create the new, clipped video.
@@ -56,24 +45,7 @@ Required parameters
 Example: Clip a video
 
 ```
-
-curl --location --request POST 'https://api.cloudflare.com/client/v4/accounts/<YOUR_ACCOUNT_ID_HERE>/stream/clip' \
-
---header 'Authorization: Bearer <YOUR_TOKEN_HERE>' \
-
---header 'Content-Type: application/json' \
-
---data-raw '{
-
-    "clippedFromVideoUID": "0ea62994907491cf9ebefb0a34c1e2c6",
-
-    "startTimeSeconds": 10,
-
-    "endTimeSeconds": 15
-
-    }'
-
-
+curl --location --request POST 'https://api.cloudflare.com/client/v4/accounts/<YOUR_ACCOUNT_ID_HERE>/stream/clip' \--header 'Authorization: Bearer <YOUR_TOKEN_HERE>' \--header 'Content-Type: application/json' \--data-raw '{    "clippedFromVideoUID": "0ea62994907491cf9ebefb0a34c1e2c6",    "startTimeSeconds": 10,    "endTimeSeconds": 15    }'
 ```
 
 You can check whether your video is ready to play on the **Stream** page of the Cloudflare dashboard.
@@ -91,24 +63,7 @@ When you clip a video, you can also specify a new name for the clipped video. In
 Example: Specify a custom name
 
 ```
-
-{
-
-  "clippedFromVideoUID": "0ea62994907491cf9ebefb0a34c1e2c6",
-
-  "startTimeSeconds": 10,
-
-  "endTimeSeconds": 15,
-
-  "meta": {
-
-    "name": "overriding-filename-clip.mp4"
-
-  }
-
-}
-
-
+{  "clippedFromVideoUID": "0ea62994907491cf9ebefb0a34c1e2c6",  "startTimeSeconds": 10,  "endTimeSeconds": 15,  "meta": {    "name": "overriding-filename-clip.mp4"  }}
 ```
 
 When the video has been clipped and processed, your newly named video displays in your Cloudflare dashboard in the list videos.
@@ -120,30 +75,7 @@ You can also add a custom watermark to your video. For more information on water
 Example: Clip a video, set a new video name, and apply a watermark
 
 ```
-
-{
-
-  "clippedFromVideoUID": "0ea62994907491cf9ebefb0a34c1e2c6",
-
-  "startTimeSeconds": 10,
-
-  "endTimeSeconds": 15,
-
-  "watermark": {
-
-    "uid": "4babd675387c3d927f58c41c761978fe"
-
-  },
-
-  "meta": {
-
-    "name": "overriding-filename-clip.mp4"
-
-  }
-
-}
-
-
+{  "clippedFromVideoUID": "0ea62994907491cf9ebefb0a34c1e2c6",  "startTimeSeconds": 10,  "endTimeSeconds": 15,  "watermark": {    "uid": "4babd675387c3d927f58c41c761978fe"  },  "meta": {    "name": "overriding-filename-clip.mp4"  }}
 ```
 
 ## Require signed URLs
@@ -153,26 +85,7 @@ When clipping a video, you can make a video private and accessible only to certa
 Example: Clip a video and require signed URLs
 
 ```
-
-{
-
-  "clippedFromVideoUID": "0ea62994907491cf9ebefb0a34c1e2c6",
-
-  "startTimeSeconds": 10,
-
-  "endTimeSeconds": 15,
-
-  "requireSignedURLs": true,
-
-  "meta": {
-
-    "name": "signed-urls-demo.mp4"
-
-  }
-
-}
-
-
+{  "clippedFromVideoUID": "0ea62994907491cf9ebefb0a34c1e2c6",  "startTimeSeconds": 10,  "endTimeSeconds": 15,  "requireSignedURLs": true,  "meta": {    "name": "signed-urls-demo.mp4"  }}
 ```
 
 After the video clipping is complete, you can open the Cloudflare dashboard and video list to locate your video. When you select the video, the **Settings** tab displays a checkmark next to **Require Signed URLs**.
@@ -184,26 +97,7 @@ You can also specify a thumbnail image for your video using a percentage value. 
 Example: Clip a video with a thumbnail generated at the 50% mark
 
 ```
-
-{
-
-  "clippedFromVideoUID": "0ea62994907491cf9ebefb0a34c1e2c6",
-
-  "startTimeSeconds": 10,
-
-  "endTimeSeconds": 15,
-
-  "thumbnailTimestampPct": 0.5,
-
-  "meta": {
-
-    "name": "thumbnail_percentage.mp4"
-
-  }
-
-}
-
-
+{  "clippedFromVideoUID": "0ea62994907491cf9ebefb0a34c1e2c6",  "startTimeSeconds": 10,  "endTimeSeconds": 15,  "thumbnailTimestampPct": 0.5,  "meta": {    "name": "thumbnail_percentage.mp4"  }}
 ```
 
 ```json

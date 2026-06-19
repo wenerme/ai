@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,39 +33,18 @@ A grid component which renders only the participants in a simple grid.
 ### Basic Usage
 
 ```
-
 <rtk-simple-grid></rtk-simple-grid>
-
-
 ```
 
 ### With Properties
 
 ```
-
-<rtk-simple-grid
-
- aspectRatio="example">
-
-</rtk-simple-grid>
-
-
+<rtk-simple-grid aspectRatio="example"></rtk-simple-grid>
 ```
 
 ```
-
-<script>
-
-  const el = document.querySelector("rtk-simple-grid");
-
-
-  el.gap= 42;
-
-  el.meeting= meeting
-
-</script>
-
-
+<script>  const el = document.querySelector("rtk-simple-grid");
+  el.gap= 42;  el.meeting= meeting</script>
 ```
 
 ```json

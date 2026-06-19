@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -30,25 +30,14 @@ While RealtimeKit does not include a built-in scheduling system, you can impleme
 
 How do I prevent participants from joining a meeting after a specific date or time?
 
-You can disable the meeting at the required time by setting its status to `INACTIVE` using a `PATCH` request to the[Update Meeting](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/update%5Fmeeting%5Fby%5Fid/) endpoint.
+You can disable the meeting at the required time by setting its status to `INACTIVE` using a `PATCH` request to the [Update Meeting](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/update%5Fmeeting%5Fby%5Fid/) endpoint.
 
 This prevents participants from joining the meeting and prevents any new Sessions from starting.
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/realtime/kit/{APP_ID}/meetings/{MEETING_ID} \
-
---request PATCH \
-
---header "Authorization: Bearer <CLOUDFLARE_API_TOKEN>" \
-
---header "Content-Type: application/json" \
-
---data '{ "status": "INACTIVE" }'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/realtime/kit/{APP_ID}/meetings/{MEETING_ID} \--request PATCH \--header "Authorization: Bearer <CLOUDFLARE_API_TOKEN>" \--header "Content-Type: application/json" \--data '{ "status": "INACTIVE" }'
 ```
 
 ### Participants
@@ -164,6 +153,6 @@ Instead, set up the default meeting UI in your own website by following the [UI 
 The demo app and example applications may be updated at any time without prior notice.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/faq/#page","headline":"FAQ · Cloudflare Realtime docs","description":"Frequently asked questions about RealtimeKit meetings, recordings, and SDK usage.","url":"https://developers.cloudflare.com/realtime/realtimekit/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/faq/#page","headline":"FAQ · Cloudflare Realtime docs","description":"Frequently asked questions about RealtimeKit meetings, recordings, and SDK usage.","url":"https://developers.cloudflare.com/realtime/realtimekit/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/faq/","name":"FAQ"}}]}
 ```

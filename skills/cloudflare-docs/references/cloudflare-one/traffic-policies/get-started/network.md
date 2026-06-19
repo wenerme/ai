@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -46,8 +46,8 @@ To verify your device is connected to Cloudflare One:
 3. On your Cloudflare One Client device, open a browser and visit any website. This generates traffic that should appear in the logs.
 4. Determine the **Source IP** for your device (the public-facing address Cloudflare sees for your connection):
 
-* [ Version 2026.2+ ](#tab-panel-7608)
-* [ Version 2026.1 and earlier ](#tab-panel-7609)
+* [ Version 2026.2+ ](#tab-panel-7684)
+* [ Version 2026.1 and earlier ](#tab-panel-7685)
 
 1. Open the Cloudflare One Client.
 2. Go to **Profile**.
@@ -67,59 +67,35 @@ A network policy has two parts: a matcher that selects which traffic to act on (
 
 To create a new network policy:
 
-* [ Dashboard ](#tab-panel-7610)
-* [ API ](#tab-panel-7611)
+* [ Dashboard ](#tab-panel-7686)
+* [ API ](#tab-panel-7687)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
 2. In the **Network** tab, select **Add a network policy**.
 3. Name the policy.
 4. Under **Traffic**, build a logical expression that defines the traffic you want to allow or block.
-5. Choose an **Action** to take when traffic matches the logical expression. For example, you can use a list of [device serial numbers](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/corp-device/) to ensure users can only access an application if they connect with the Cloudflare One Client from a company device:  
-| Selector                     | Operator | Value                   | Logic | Action |  
-| ---------------------------- | -------- | ----------------------- | ----- | ------ |  
-| SNI Domain                   | is       | internalapp.com         | And   | Block  |  
+5. Choose an **Action** to take when traffic matches the logical expression. For example, you can use a list of [device serial numbers](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/corp-device/) to ensure users can only access an application if they connect with the Cloudflare One Client from a company device:
+
+| Selector                     | Operator | Value                   | Logic | Action |
+| ---------------------------- | -------- | ----------------------- | ----- | ------ |
+| SNI Domain                   | is       | internalapp.com         | And   | Block  |
 | Passed Device Posture Checks | not in   | _Device serial numbers_ |       |        |
 6. Select **Create policy**.
 
-1. [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:  
-| Type    | Item       | Permission |  
-| ------- | ---------- | ---------- |  
+1. [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:
+
+| Type    | Item       | Permission |
+| ------- | ---------- | ---------- |
 | Account | Zero Trust | Edit       |
 2. (Optional) Configure your API environment variables to include your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and API token.
 3. Send a `POST` request to the [Create a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/rules/methods/create/) endpoint. For example, you can use a list of [device serial numbers](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/corp-device/) to ensure users can only access an application if they connect with the Cloudflare One Client from a company device:  
 Create a Zero Trust Gateway rule  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  
-  --request POST \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "name": "Enforce device posture",  
-    "description": "Ensure only devices in Zero Trust organization can connect to application",  
-    "precedence": 0,  
-    "enabled": true,  
-    "action": "block",  
-    "filters": [  
-        "l4"  
-    ],  
-    "traffic": "any(net.sni.domains[*] == \"internalapp.com\")",  
-    "identity": "",  
-    "device_posture": "not(any(device_posture.checks.passed[*] in {\"LIST_UUID\"}))"  
-  }'  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "name": "Enforce device posture",    "description": "Ensure only devices in Zero Trust organization can connect to application",    "precedence": 0,    "enabled": true,    "action": "block",    "filters": [        "l4"    ],    "traffic": "any(net.sni.domains[*] == \"internalapp.com\")",    "identity": "",    "device_posture": "not(any(device_posture.checks.passed[*] in {\"LIST_UUID\"}))"  }'  
 ```
 
 ```
-
-{
-
-   "success": true,
-
-   "errors": [],
-
-   "messages": []
-
-}
-
-
+{   "success": true,   "errors": [],   "messages": []}
 ```
 
 The API will respond with a summary of the policy and the result of your request.

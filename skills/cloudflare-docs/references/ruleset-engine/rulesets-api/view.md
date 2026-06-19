@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -45,7 +45,7 @@ The result does not include the list of rules in the ruleset. Refer to [View a s
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Response Compression Write`
 * `Response Compression Read`
 * `Config Settings Write`
@@ -92,51 +92,11 @@ At least one of the following [token permissions](https://developers.cloudflare.
 List zone rulesets
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```
-
-{
-
-  "result": [
-
-    {
-
-      "id": "<PHASE_RULESET_ID>",
-
-      "name": "Zone-level phase entry point",
-
-      "description": "",
-
-      "kind": "zone",
-
-      "version": "5",
-
-      "last_updated": "2025-03-18T18:30:08.122758Z",
-
-      "phase": "http_request_firewall_managed"
-
-    }
-
-  ],
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": [    {      "id": "<PHASE_RULESET_ID>",      "name": "Zone-level phase entry point",      "description": "",      "kind": "zone",      "version": "5",      "last_updated": "2025-03-18T18:30:08.122758Z",      "phase": "http_request_firewall_managed"    }  ],  "success": true,  "errors": [],  "messages": []}
 ```
 
 ## View a specific ruleset
@@ -167,7 +127,7 @@ The API returns a `404 Not Found` HTTP status code under these conditions:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Response Compression Write`
 * `Response Compression Read`
 * `Config Settings Write`
@@ -214,71 +174,11 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Get a zone ruleset
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```
-
-{
-
-  "result": {
-
-    "id": "<RULESET_ID>",
-
-    "name": "Zone-level phase entry point",
-
-    "description": "Executes a managed ruleset.",
-
-    "kind": "zone",
-
-    "version": "3",
-
-    "rules": [
-
-      {
-
-        "id": "<RULE_ID>",
-
-        "version": "1",
-
-        "action": "execute",
-
-        "expression": "true",
-
-        "action_parameters": {
-
-          "id": "<MANAGED_RULESET_ID>"
-
-        },
-
-        "last_updated": "2025-03-17T15:42:37.917815Z"
-
-      }
-
-    ],
-
-    "last_updated": "2025-03-17T15:42:37.917815Z",
-
-    "phase": "http_request_firewall_managed"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "id": "<RULESET_ID>",    "name": "Zone-level phase entry point",    "description": "Executes a managed ruleset.",    "kind": "zone",    "version": "3",    "rules": [      {        "id": "<RULE_ID>",        "version": "1",        "action": "execute",        "expression": "true",        "action_parameters": {          "id": "<MANAGED_RULESET_ID>"        },        "last_updated": "2025-03-17T15:42:37.917815Z"      }    ],    "last_updated": "2025-03-17T15:42:37.917815Z",    "phase": "http_request_firewall_managed"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 ## List all versions of a ruleset
@@ -304,7 +204,7 @@ When the specified phase entry point ruleset does not exist, this API method ret
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Response Compression Write`
 * `Response Compression Read`
 * `Config Settings Write`
@@ -351,69 +251,11 @@ At least one of the following [token permissions](https://developers.cloudflare.
 List a zone ruleset's versions
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/versions" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/versions" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```
-
-{
-
-  "result": [
-
-    {
-
-      "id": "<RULESET_ID>",
-
-      "name": "Zone Ruleset 1",
-
-      "description": "",
-
-      "kind": "zone",
-
-      "version": "1",
-
-      "last_updated": "2023-02-17T11:15:13.128705Z",
-
-      "phase": "http_request_firewall_managed"
-
-    },
-
-    {
-
-      "id": "<RULESET_ID>",
-
-      "name": "Zone Ruleset 1",
-
-      "description": "",
-
-      "kind": "zone",
-
-      "version": "2",
-
-      "last_updated": "2023-02-17T11:24:06.869326Z",
-
-      "phase": "http_request_firewall_managed"
-
-    }
-
-  ],
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": [    {      "id": "<RULESET_ID>",      "name": "Zone Ruleset 1",      "description": "",      "kind": "zone",      "version": "1",      "last_updated": "2023-02-17T11:15:13.128705Z",      "phase": "http_request_firewall_managed"    },    {      "id": "<RULESET_ID>",      "name": "Zone Ruleset 1",      "description": "",      "kind": "zone",      "version": "2",      "last_updated": "2023-02-17T11:24:06.869326Z",      "phase": "http_request_firewall_managed"    }  ],  "success": true,  "errors": [],  "messages": []}
 ```
 
 ## View a specific version of a ruleset
@@ -437,7 +279,7 @@ When the specified phase entry point ruleset does not exist, this API method ret
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Response Compression Write`
 * `Response Compression Read`
 * `Config Settings Write`
@@ -484,71 +326,11 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Get a zone ruleset version
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/versions/$RULESET_VERSION" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/versions/$RULESET_VERSION" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```
-
-{
-
-  "result": {
-
-    "id": "<RULESET_ID>",
-
-    "name": "Zone-level phase entry point",
-
-    "description": "Executes a managed ruleset.",
-
-    "kind": "zone",
-
-    "version": "<RULESET_VERSION>",
-
-    "rules": [
-
-      {
-
-        "id": "<RULE_ID>",
-
-        "version": "1",
-
-        "action": "execute",
-
-        "expression": "true",
-
-        "action_parameters": {
-
-          "id": "<MANAGED_RULESET_ID>"
-
-        },
-
-        "last_updated": "2025-03-17T15:42:37.917815Z"
-
-      }
-
-    ],
-
-    "last_updated": "2025-03-17T15:42:37.917815Z",
-
-    "phase": "http_request_firewall_managed"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "id": "<RULESET_ID>",    "name": "Zone-level phase entry point",    "description": "Executes a managed ruleset.",    "kind": "zone",    "version": "<RULESET_VERSION>",    "rules": [      {        "id": "<RULE_ID>",        "version": "1",        "action": "execute",        "expression": "true",        "action_parameters": {          "id": "<MANAGED_RULESET_ID>"        },        "last_updated": "2025-03-17T15:42:37.917815Z"      }    ],    "last_updated": "2025-03-17T15:42:37.917815Z",    "phase": "http_request_firewall_managed"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 Note
@@ -566,7 +348,7 @@ Returns a list of all the rules in a managed ruleset with a specific tag.
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Mass URL Redirects Write`
 * `Mass URL Redirects Read`
 * `Magic Firewall Write`
@@ -587,107 +369,11 @@ At least one of the following [token permissions](https://developers.cloudflare.
 List an account ruleset version's rules by tag
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESET_ID/versions/2/by_tag/wordpress" \
-
-  --request GET \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESET_ID/versions/2/by_tag/wordpress" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```
-
-{
-
-  "result": {
-
-    "id": "<MANAGED_RULESET_ID>",
-
-    "name": "Cloudflare Managed Ruleset",
-
-    "description": "Managed ruleset created by Cloudflare",
-
-    "kind": "managed",
-
-    "version": "2",
-
-    "rules": [
-
-      {
-
-        "id": "<RULE_ID_1>",
-
-        "version": "2",
-
-        "action": "log",
-
-        "categories": [
-
-          "cve-2014-5265",
-
-          "cve-2014-5266",
-
-          "cve-2014-5267",
-
-          "dos",
-
-          "drupal",
-
-          "wordpress"
-
-        ],
-
-        "description": "Drupal, WordPress - DoS - XMLRPC - CVE:CVE-2014-5265, CVE:CVE-2014-5266, CVE:CVE-2014-5267",
-
-        "last_updated": "2025-03-19T16:54:32.942986Z",
-
-        "ref": "<RULE_REF_1>",
-
-        "enabled": true
-
-      },
-
-      {
-
-        "id": "<RULE_ID_2>",
-
-        "version": "2",
-
-        "action": "block",
-
-        "categories": ["broken-access-control", "cve-2018-12895", "wordpress"],
-
-        "description": "WordPress - Broken Access Control - CVE:CVE-2018-12895",
-
-        "last_updated": "2025-03-19T16:54:32.942986Z",
-
-        "ref": "<RULE_REF_2>",
-
-        "enabled": true
-
-      }
-
-      // (...)
-
-    ],
-
-    "last_updated": "2025-03-19T16:54:32.942986Z",
-
-    "phase": "http_request_firewall_managed"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "id": "<MANAGED_RULESET_ID>",    "name": "Cloudflare Managed Ruleset",    "description": "Managed ruleset created by Cloudflare",    "kind": "managed",    "version": "2",    "rules": [      {        "id": "<RULE_ID_1>",        "version": "2",        "action": "log",        "categories": [          "cve-2014-5265",          "cve-2014-5266",          "cve-2014-5267",          "dos",          "drupal",          "wordpress"        ],        "description": "Drupal, WordPress - DoS - XMLRPC - CVE:CVE-2014-5265, CVE:CVE-2014-5266, CVE:CVE-2014-5267",        "last_updated": "2025-03-19T16:54:32.942986Z",        "ref": "<RULE_REF_1>",        "enabled": true      },      {        "id": "<RULE_ID_2>",        "version": "2",        "action": "block",        "categories": ["broken-access-control", "cve-2018-12895", "wordpress"],        "description": "WordPress - Broken Access Control - CVE:CVE-2018-12895",        "last_updated": "2025-03-19T16:54:32.942986Z",        "ref": "<RULE_REF_2>",        "enabled": true      }      // (...)    ],    "last_updated": "2025-03-19T16:54:32.942986Z",    "phase": "http_request_firewall_managed"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 ```json

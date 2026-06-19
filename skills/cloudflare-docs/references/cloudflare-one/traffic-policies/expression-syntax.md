@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -29,23 +29,13 @@ The [Ruleset Engine documentation](https://developers.cloudflare.com/ruleset-eng
 Gateway expressions follow this pattern:
 
 ```
-
 <field> <operator> <value>
-
-
 ```
 
 For example:
 
 ```
-
-dns.fqdn == "example.com"
-
-http.request.host == "api.example.com"
-
-identity.email == "user@company.com"
-
-
+dns.fqdn == "example.com"http.request.host == "api.example.com"identity.email == "user@company.com"
 ```
 
 ### Operators
@@ -78,24 +68,15 @@ Combine multiple conditions using logical operators:
 Some Gateway fields return arrays (multiple values). Use the `any()` function to match if any element in the array meets the condition:
 
 ```
-
 any(http.request.uri.content_category[*] in {17 85 102})
-
-
 ```
 
 ```
-
 any(identity.groups[*].name in {"Engineering" "Security"})
-
-
 ```
 
 ```
-
 any(http.request.domains[*] == "example.com")
-
-
 ```
 
 The `[*]` notation indicates that the function should evaluate all elements in the array.
@@ -105,17 +86,11 @@ The `[*]` notation indicates that the function should evaluate all elements in t
 You can reference [lists](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/) in your expressions using the list UUID:
 
 ```
-
 http.request.host in $<LIST_UUID>
-
-
 ```
 
 ```
-
 any(http.request.domains[*] in $<LIST_UUID>)
-
-
 ```
 
 To find a list's UUID, go to **My Team** \> **Lists** in Zero Trust and select the list. The UUID appears in the browser URL.
@@ -139,53 +114,38 @@ For a complete list of available fields for each policy type, refer to the selec
 ### Block a domain in a DNS policy
 
 ```
-
 dns.fqdn == "example.com"
-
-
 ```
 
 ### Block multiple content categories in an HTTP policy
 
 ```
-
 any(http.request.uri.content_category[*] in {17 85 102})
-
-
 ```
 
 ### Allow traffic from a specific user group
 
 ```
-
 any(identity.groups[*].name in {"Engineering"})
-
-
 ```
 
 ### Block traffic to a destination IP range in a Network policy
 
 ```
-
 net.dst.ip in {10.0.0.0/8}
-
-
 ```
 
 ### Combine identity and traffic conditions
 
 ```
-
 http.request.host == "internal.example.com" and identity.email matches ".*@company.com"
-
-
 ```
 
 ## Gateway versus Ruleset Engine
 
 The following table summarizes the key differences between the Rules language\](/ruleset-engine/rules-language/) (supported by the Ruleset Engine) and Gateway policy expressions:
 
-| Ruleset Engine      | Gateway                                                                            |                                                                                        |
+|                     | Ruleset Engine                                                                     | Gateway                                                                                |
 | ------------------- | ---------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | **Products**        | WAF, Transform Rules, Cache Rules, Configuration Rules                             | DNS, HTTP, Network, Egress, Resolver policies                                          |
 | **Field examples**  | http.request.uri.path, cf.bot\_management.score, ip.src                            | dns.fqdn, http.request.host, identity.email                                            |

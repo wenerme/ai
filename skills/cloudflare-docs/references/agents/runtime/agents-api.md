@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -34,34 +34,9 @@ An Agent is a class that extends the base `Agent` class:
 TypeScript
 
 ```
-
 import { Agent, routeAgentRequest } from "agents";
-
-
-export class MyAgent extends Agent<Env, State> {
-
-  // Your agent logic
-
-}
-
-
-export default {
-
-  async fetch(request: Request, env: Env) {
-
-    return (
-
-      (await routeAgentRequest(request, env)) ||
-
-      new Response("Not found", { status: 404 })
-
-    );
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export class MyAgent extends Agent<Env, State> {  // Your agent logic}
+export default {  async fetch(request: Request, env: Env) {    return (      (await routeAgentRequest(request, env)) ||      new Response("Not found", { status: 404 })    );  },} satisfies ExportedHandler<Env>;
 ```
 
 Each Agent can have millions of instances. Each instance is a separate micro-server that runs independently, allowing horizontal scaling. Instances are addressed by a unique identifier (user ID, email, ticket number, etc.).
@@ -135,22 +110,9 @@ Each Agent instance has an embedded SQLite database accessed via `this.sql`:
 TypeScript
 
 ```
-
-// Create tables
-
-this.sql`CREATE TABLE IF NOT EXISTS users (id TEXT PRIMARY KEY, name TEXT)`;
-
-
-// Insert data
-
-this.sql`INSERT INTO users (id, name) VALUES (${id}, ${name})`;
-
-
-// Query data
-
-const users = this.sql<User>`SELECT * FROM users WHERE id = ${id}`;
-
-
+// Create tablesthis.sql`CREATE TABLE IF NOT EXISTS users (id TEXT PRIMARY KEY, name TEXT)`;
+// Insert datathis.sql`INSERT INTO users (id, name) VALUES (${id}, ${name})`;
+// Query dataconst users = this.sql<User>`SELECT * FROM users WHERE id = ${id}`;
 ```
 
 For state that needs to sync with clients, use the [State API](https://developers.cloudflare.com/agents/runtime/lifecycle/state/) instead.
@@ -172,35 +134,10 @@ Module-level helper exports include `agentTool()` from `agents/agent-tools`, whi
 TypeScript
 
 ```
-
-import { useAgent } from "agents/react";
-
-import type { MyAgent } from "./server";
-
-
-function App() {
-
-  const agent = useAgent<MyAgent, State>({
-
-    agent: "my-agent",
-
-    name: "user-123",
-
-  });
-
-
-  // Call methods on the agent
-
-  agent.stub.someMethod();
-
-
-  // Update state (syncs to server and all clients)
-
-  agent.setState({ count: 1 });
-
-}
-
-
+import { useAgent } from "agents/react";import type { MyAgent } from "./server";
+function App() {  const agent = useAgent<MyAgent, State>({    agent: "my-agent",    name: "user-123",  });
+  // Call methods on the agent  agent.stub.someMethod();
+  // Update state (syncs to server and all clients)  agent.setState({ count: 1 });}
 ```
 
 ## Chat agents
@@ -210,23 +147,8 @@ For AI chat applications, extend `AIChatAgent` instead of `Agent`:
 TypeScript
 
 ```
-
 import { AIChatAgent } from "@cloudflare/ai-chat";
-
-
-class ChatAgent extends AIChatAgent {
-
-  async onChatMessage(onFinish) {
-
-    // this.messages contains the conversation history
-
-    // Return a streaming response
-
-  }
-
-}
-
-
+class ChatAgent extends AIChatAgent {  async onChatMessage(onFinish) {    // this.messages contains the conversation history    // Return a streaming response  }}
 ```
 
 Features include:
@@ -242,10 +164,7 @@ Refer to [Build a chat agent](https://developers.cloudflare.com/agents/examples/
 Agents are accessed via URL patterns:
 
 ```
-
 https://your-worker.workers.dev/agents/:agent-name/:instance-name
-
-
 ```
 
 Use `routeAgentRequest()` in your Worker to route requests:
@@ -253,27 +172,8 @@ Use `routeAgentRequest()` in your Worker to route requests:
 TypeScript
 
 ```
-
 import { routeAgentRequest } from "agents";
-
-
-export default {
-
-  async fetch(request: Request, env: Env) {
-
-    return (
-
-      routeAgentRequest(request, env) ||
-
-      new Response("Not found", { status: 404 })
-
-    );
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export default {  async fetch(request: Request, env: Env) {    return (      routeAgentRequest(request, env) ||      new Response("Not found", { status: 404 })    );  },} satisfies ExportedHandler<Env>;
 ```
 
 Refer to [Routing](https://developers.cloudflare.com/agents/runtime/communication/routing/) for custom paths, CORS, and instance naming patterns.
@@ -286,7 +186,7 @@ Refer to [Routing](https://developers.cloudflare.com/agents/runtime/communicatio
 
 [ WebSockets ](https://developers.cloudflare.com/agents/runtime/communication/websockets/) Real-time bidirectional communication with clients. 
 
-[ Build a chat agent ](https://developers.cloudflare.com/agents/examples/chat-agent/) Build AI applications with AIChatAgent. 
+[ Build a chat agent ](https://developers.cloudflare.com/agents/examples/chat-agent/) Build AI applications with AIChatAgent.
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/agents-api/#page","headline":"Agents API · Cloudflare Agents docs","description":"Reference for the Agent base class, lifecycle hooks, SQL storage, and error handling in the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/agents-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

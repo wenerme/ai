@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,72 +22,32 @@ Besides determining the difference between a `SELECT` and an `INSERT`, Hyperdriv
 
 For example, a read query that populates the front page of a news site would be cached:
 
-* [ PostgreSQL ](#tab-panel-8624)
-* [ MySQL ](#tab-panel-8625)
+* [ PostgreSQL ](#tab-panel-8700)
+* [ MySQL ](#tab-panel-8701)
 
 ```
-
--- Cacheable: uses a parameterized date value instead of CURRENT_DATE
-
-SELECT * FROM articles WHERE DATE(published_time) = $1
-
-ORDER BY published_time DESC LIMIT 50
-
-
+-- Cacheable: uses a parameterized date value instead of CURRENT_DATESELECT * FROM articles WHERE DATE(published_time) = $1ORDER BY published_time DESC LIMIT 50
 ```
 
 ```
-
--- Cacheable: uses a parameterized date value instead of CURDATE()
-
-SELECT * FROM articles WHERE DATE(published_time) = ?
-
-ORDER BY published_time DESC LIMIT 50
-
-
+-- Cacheable: uses a parameterized date value instead of CURDATE()SELECT * FROM articles WHERE DATE(published_time) = ?ORDER BY published_time DESC LIMIT 50
 ```
 
 Mutating queries (including `INSERT`, `UPSERT`, or `CREATE TABLE`) and queries that use functions designated as [volatile ↗](https://www.postgresql.org/docs/current/xfunc-volatility.html) or [stable ↗](https://www.postgresql.org/docs/current/xfunc-volatility.html) by PostgreSQL are not cached:
 
-* [ PostgreSQL ](#tab-panel-8626)
-* [ MySQL ](#tab-panel-8627)
+* [ PostgreSQL ](#tab-panel-8702)
+* [ MySQL ](#tab-panel-8703)
 
 ```
-
--- Not cached: mutating queries
-
-INSERT INTO users(id, name, email) VALUES(555, 'Matt', 'hello@example.com');
-
-
--- Not cached: LASTVAL() is a volatile function
-
-SELECT LASTVAL(), * FROM articles LIMIT 50;
-
-
--- Not cached: NOW() is a stable function
-
-SELECT * FROM events WHERE created_at > NOW() - INTERVAL '1 hour';
-
-
+-- Not cached: mutating queriesINSERT INTO users(id, name, email) VALUES(555, 'Matt', 'hello@example.com');
+-- Not cached: LASTVAL() is a volatile functionSELECT LASTVAL(), * FROM articles LIMIT 50;
+-- Not cached: NOW() is a stable functionSELECT * FROM events WHERE created_at > NOW() - INTERVAL '1 hour';
 ```
 
 ```
-
--- Not cached: mutating queries
-
-INSERT INTO users(id, name, email) VALUES(555, 'Thomas', 'hello@example.com');
-
-
--- Not cached: LAST_INSERT_ID() is a volatile function
-
-SELECT LAST_INSERT_ID(), * FROM articles LIMIT 50;
-
-
--- Not cached: NOW() returns a non-deterministic value
-
-SELECT * FROM events WHERE created_at > NOW() - INTERVAL 1 HOUR;
-
-
+-- Not cached: mutating queriesINSERT INTO users(id, name, email) VALUES(555, 'Thomas', 'hello@example.com');
+-- Not cached: LAST_INSERT_ID() is a volatile functionSELECT LAST_INSERT_ID(), * FROM articles LIMIT 50;
+-- Not cached: NOW() returns a non-deterministic valueSELECT * FROM events WHERE created_at > NOW() - INTERVAL 1 HOUR;
 ```
 
 Common PostgreSQL functions that are **not cacheable** include:
@@ -114,12 +74,7 @@ Hyperdrive uses text-based pattern matching to detect uncacheable functions in y
 For example, the following query would **not** be cached because `NOW()` appears in the comment:
 
 ```
-
--- We removed NOW() to keep this query cacheable
-
-SELECT * FROM api_keys WHERE hash = $1 AND deleted = false;
-
-
+-- We removed NOW() to keep this query cacheableSELECT * FROM api_keys WHERE hash = $1 AND deleted = false;
 ```
 
 Avoid referencing uncacheable function names anywhere in your query text, including comments.
@@ -146,149 +101,44 @@ For example:
 Terminal window
 
 ```
-
-# wrangler v3.11 and above required
-
-npx wrangler hyperdrive update my-hyperdrive-id --origin-password my-db-password --caching-disabled true
-
-
+# wrangler v3.11 and above requirednpx wrangler hyperdrive update my-hyperdrive-id --origin-password my-db-password --caching-disabled true
 ```
 
 You can also configure multiple Hyperdrive connections from a single application: one connection that enables caching for popular queries, and a second connection where you do not want to cache queries, but still benefit from Hyperdrive's latency benefits and connection pooling.
 
 For example, using database drivers:
 
-* [ PostgreSQL ](#tab-panel-8628)
-* [ MySQL ](#tab-panel-8629)
+* [ PostgreSQL ](#tab-panel-8704)
+* [ MySQL ](#tab-panel-8705)
 
 index.ts
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    // Create clients inside your handler — not in global scope
-
-    const client = postgres(env.HYPERDRIVE.connectionString);
-
-    // ...
-
-    const clientNoCache = postgres(env.HYPERDRIVE_CACHE_DISABLED.connectionString);
-
-    // ...
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export default {  async fetch(request, env, ctx): Promise<Response> {    // Create clients inside your handler — not in global scope    const client = postgres(env.HYPERDRIVE.connectionString);    // ...    const clientNoCache = postgres(env.HYPERDRIVE_CACHE_DISABLED.connectionString);    // ...  },} satisfies ExportedHandler<Env>;
 ```
 
 index.ts
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx): Promise<Response> {
-
-    // Create connections inside your handler — not in global scope
-
-    const connection = await createConnection({
-
-      host: env.HYPERDRIVE.host,
-
-      user: env.HYPERDRIVE.user,
-
-      password: env.HYPERDRIVE.password,
-
-      database: env.HYPERDRIVE.database,
-
-      port: env.HYPERDRIVE.port,
-
-    });
-
-    // ...
-
-    const connectionNoCache = await createConnection({
-
-      host: env.HYPERDRIVE_CACHE_DISABLED.host,
-
-      user: env.HYPERDRIVE_CACHE_DISABLED.user,
-
-      password: env.HYPERDRIVE_CACHE_DISABLED.password,
-
-      database: env.HYPERDRIVE_CACHE_DISABLED.database,
-
-      port: env.HYPERDRIVE_CACHE_DISABLED.port,
-
-    });
-
-    // ...
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
+export default {  async fetch(request, env, ctx): Promise<Response> {    // Create connections inside your handler — not in global scope    const connection = await createConnection({      host: env.HYPERDRIVE.host,      user: env.HYPERDRIVE.user,      password: env.HYPERDRIVE.password,      database: env.HYPERDRIVE.database,      port: env.HYPERDRIVE.port,    });    // ...    const connectionNoCache = await createConnection({      host: env.HYPERDRIVE_CACHE_DISABLED.host,      user: env.HYPERDRIVE_CACHE_DISABLED.user,      password: env.HYPERDRIVE_CACHE_DISABLED.password,      database: env.HYPERDRIVE_CACHE_DISABLED.database,      port: env.HYPERDRIVE_CACHE_DISABLED.port,    });    // ...  },} satisfies ExportedHandler<Env>;
 ```
 
 The Wrangler configuration remains the same both for PostgreSQL and MySQL.
 
-* [  wrangler.jsonc ](#tab-panel-8630)
-* [  wrangler.toml ](#tab-panel-8631)
+* [  wrangler.jsonc ](#tab-panel-8706)
+* [  wrangler.toml ](#tab-panel-8707)
 
 JSONC
 
 ```
-
-{
-
-  "hyperdrive": [
-
-    {
-
-      "binding": "HYPERDRIVE",
-
-      "id": "<YOUR_HYPERDRIVE_CACHE_ENABLED_CONFIGURATION_ID>",
-
-    },
-
-    {
-
-      "binding": "HYPERDRIVE_CACHE_DISABLED",
-
-      "id": "<YOUR_HYPERDRIVE_CACHE_DISABLED_CONFIGURATION_ID>",
-
-    },
-
-  ],
-
-}
-
-
+{  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<YOUR_HYPERDRIVE_CACHE_ENABLED_CONFIGURATION_ID>",    },    {      "binding": "HYPERDRIVE_CACHE_DISABLED",      "id": "<YOUR_HYPERDRIVE_CACHE_DISABLED_CONFIGURATION_ID>",    },  ],}
 ```
 
 TOML
 
 ```
-
-[[hyperdrive]]
-
-binding = "HYPERDRIVE"
-
-id = "<YOUR_HYPERDRIVE_CACHE_ENABLED_CONFIGURATION_ID>"
-
-
-[[hyperdrive]]
-
-binding = "HYPERDRIVE_CACHE_DISABLED"
-
-id = "<YOUR_HYPERDRIVE_CACHE_DISABLED_CONFIGURATION_ID>"
-
-
+[[hyperdrive]]binding = "HYPERDRIVE"id = "<YOUR_HYPERDRIVE_CACHE_ENABLED_CONFIGURATION_ID>"
+[[hyperdrive]]binding = "HYPERDRIVE_CACHE_DISABLED"id = "<YOUR_HYPERDRIVE_CACHE_DISABLED_CONFIGURATION_ID>"
 ```
 
 ## Next steps

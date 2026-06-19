@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,10 +19,11 @@ The Cloudflare dashboard provides a user-friendly interface for creating and man
 1. In the Cloudflare dashboard, go to the **Turnstile** page.  
 [ Go to **Turnstile** ](https://dash.cloudflare.com/?to=/:account/turnstile)
 2. Select **Add widget**.
-3. Fill out the required information:  
-   * **Widget name**: A descriptive name for your widget.  
-   * **Hostname management**: Domains where the widget will be used.  
-   * **Widget mode**: Choose from Managed, Non-Interactive, or Invisible.
+3. Fill out the required information:
+
+  * **Widget name**: A descriptive name for your widget.
+  * **Hostname management**: Domains where the widget will be used.
+  * **Widget mode**: Choose from Managed, Non-Interactive, or Invisible.
 4. (Optional) Configure **Pre-clearance support** for single-page applications.
 5. Select **Create** to save your widget.
 6. Copy your sitekey and secret key, and store the secret key securely.

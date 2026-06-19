@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -24,12 +24,13 @@ Cloudflare One can check if [Carbon Black ↗](https://www.carbonblack.com/) is 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Posture checks**.
 2. Go to **Cloudflare One Client checks** and select **Add a check**.
 3. Select **Carbon Black**.
-4. You will be prompted for the following information:  
-   1. **Name**: Enter a unique name for this device posture check.  
-   2. **Operating system**: Select your operating system. You will need to configure one posture check per operating system (macOS and Windows currently supported).  
-   3. **Application Path**: Enter the full path to the Carbon Black process to be checked (for example, `c:\program files\CarbonBlack\CarbonBlack.exe`).  
-   4. **Signing certificate thumbprint (recommended)**: Enter the thumbprint of the publishing certificate used to sign the binary. This proves the binary came from Carbon Black and is the recommended way to validate the process.  
-   5. **SHA-256 (optional)**: Enter a SHA-256 value. This is used to validate the SHA256 signature of the binary and ensures the integrity of the binary file on the device. Note: do not fill out this field unless you strictly control updates to Carbon Black, as this will change between versions.
+4. You will be prompted for the following information:
+
+  1. **Name**: Enter a unique name for this device posture check.
+  2. **Operating system**: Select your operating system. You will need to configure one posture check per operating system (macOS and Windows currently supported).
+  3. **Application Path**: Enter the full path to the Carbon Black process to be checked (for example, `c:\program files\CarbonBlack\CarbonBlack.exe`).
+  4. **Signing certificate thumbprint (recommended)**: Enter the thumbprint of the publishing certificate used to sign the binary. This proves the binary came from Carbon Black and is the recommended way to validate the process.
+  5. **SHA-256 (optional)**: Enter a SHA-256 value. This is used to validate the SHA256 signature of the binary and ensures the integrity of the binary file on the device. Note: do not fill out this field unless you strictly control updates to Carbon Black, as this will change between versions.
 
 Next, go to **Insights** \> **Logs** \> **Posture logs** and verify that the Carbon Black check is returning the expected results.
 

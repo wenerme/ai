@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,10 +17,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 Usage:
 
 ```
-
 toUInt8(<expression>)
-
-
 ```
 
 Converts any numeric expression, or expression resulting in a string representation of a decimal, into an unsigned 8 bit integer.
@@ -32,10 +29,7 @@ Behaviour for negative numbers is undefined.
 Usage:
 
 ```
-
 toUInt32(<expression>)
-
-
 ```
 
 Converts any numeric expression, or expression resulting in a string representation of a decimal, into an unsigned 32 bit integer.

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -85,12 +85,12 @@ The diagram above describes the following:
 
 1. Email arrives at Cloudflare based on [MX records ↗](https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-mx-record/).
 2. Cloudflare inspects email body, header, and attachments and assigns the appropriate disposition:  
-   * Malicious  
-   * Spam  
-   * Bulk  
-   * Suspicious  
-   * Spoof  
-   * Clean
+  * Malicious
+  * Spam
+  * Bulk
+  * Suspicious
+  * Spoof
+  * Clean
 3. Apply any policy, such as allow or block certain domains.
 4. Quarantine high risk emails
 5. All messages that received a [disposition](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/#dispositions) by Cloudflare will have the header `X-CFEmailSecurity-Disposition` added. This header can be used by downstream systems to enact any special handling (rerouting, external quarantining, and more).
@@ -134,19 +134,19 @@ The diagram above describes the following:
 
 1. An email is delivered directly to the user inbox via an existing route.
 2. Cloudflare retrieves messages for inspection via email vendors API. Cloudflare inspects email body, header, and attachments and assigns the appropriate disposition:  
-   * Malicious  
-   * Spam  
-   * Bulk  
-   * Suspicious  
-   * Spoof  
-   * Clean
+  * Malicious
+  * Spam
+  * Bulk
+  * Suspicious
+  * Spoof
+  * Clean
 3. Apply any policy, such as allow or block certain domains.
 4. Messages are moved per policy in the Cloudflare solution. The following actions are available:  
-   * Inbox  
-   * Junk  
-   * Trash  
-   * Soft Delete (User Recoverable)  
-   * Hard Delete (Admin Recoverable)
+  * Inbox
+  * Junk
+  * Trash
+  * Soft Delete (User Recoverable)
+  * Hard Delete (Admin Recoverable)
 
 Under normal circumstances, this process is typically performed in less than 2-3 seconds from inbox delivery to the move request. There is no SLA from Google or Microsoft 365 on how long they will take to perform the action. If the move action is not successful, our solution will retry numerous times every five minutes.
 
@@ -163,14 +163,14 @@ Before deploying Email security via [API deployment](https://developers.cloudfla
 
 * Depending on the API infrastructure, Microsoft 365 or Google outages and maintenance windows will increase message dwell time in the inbox as emails cannot be scanned or remediated until after delivery to the user. This is a limitation of all API vendors.
 * Microsoft 365 may throttle API requests to the Graph API on a Service by Service basis. The Mail API with Graph is within the Outlook Services section. These limits could be abused by a threat actor to functionally disable any API based deployment granting an additional window for attack. The limits are as follows:  
-   * 10,000 API requests in a 10 minute period  
-   * Four concurrent requests  
-   * 150 megabytes (MB) upload (PATCH, POST, PUT) in a five-minute period  
-   * Refer to [Outlook service limits ↗](https://learn.microsoft.com/en-us/graph/throttling-limits#outlook-service-limits)
+  * 10,000 API requests in a 10 minute period
+  * Four concurrent requests
+  * 150 megabytes (MB) upload (PATCH, POST, PUT) in a five-minute period
+  * Refer to [Outlook service limits ↗](https://learn.microsoft.com/en-us/graph/throttling-limits#outlook-service-limits)
 * The Gmail API is subject to a daily usage limit that applies to all requests made from your application, and per-user rate limits. Each limit is identified in terms of quota units, or an abstract unit of measurement representing Gmail resource usage. The main request limits are described as follows:  
-   * Per user rate limit of 250 quota units per user per second, moving average (allows short bursts).  
-   * Per-method Quota Usage is based on the number of quota units consumed by a request depending on the method called.  
-   * For example, `messages.get` and `messages.attachments.get` consume five quota units. Refer to [Per-method quota usage ↗](https://developers.google.com/gmail/api/reference/quota#per-method%5Fquota%5Fusage)
+  * Per user rate limit of 250 quota units per user per second, moving average (allows short bursts).
+  * Per-method Quota Usage is based on the number of quota units consumed by a request depending on the method called.
+  * For example, `messages.get` and `messages.attachments.get` consume five quota units. Refer to [Per-method quota usage ↗](https://developers.google.com/gmail/api/reference/quota#per-method%5Fquota%5Fusage)
 * Requires read/write access into mailboxes which some security/email teams may not allow.
 * Only Microsoft 365 has true API support. Google allows for API remediation but still requires a Compliance Rule to deliver emails using SMTP for scanning. On-prem Exchange requires PowerShell and does not have APIs for auto-moves.
 * Messages cannot be modified after delivery as per Microsoft 365/Google requirements. This means we cannot perform URL Rewriting to Cloudflare [email link isolation](https://developers.cloudflare.com/cloudflare-one/email-security/investigation/search-email/#open-links) or append text to the email subject or body. Those features are only available using an Inline deployment.

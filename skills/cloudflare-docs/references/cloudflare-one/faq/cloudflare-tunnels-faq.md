@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -45,30 +45,19 @@ Tunnel can expose web applications to the Internet that sit behind a NAT or fire
 Terminal window
 
 ```
-
-netcat -zv [your-server's-ip-address] 80
-
-netcat -zv [your-server's-ip-address] 443
-
-
+netcat -zv [your-server's-ip-address] 80netcat -zv [your-server's-ip-address] 443
 ```
 
 If your server is still responding on those ports, you will see:
 
 ```
-
 [ip-address] 80 (http) open
-
-
 ```
 
 If your server is correctly locked down, you will see:
 
 ```
-
 [ip-address] 443 (https): Connection refused
-
-
 ```
 
 ## What records are created for routing to a Named Tunnel's hostname?

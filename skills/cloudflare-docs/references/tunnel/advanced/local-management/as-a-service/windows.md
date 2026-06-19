@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tunnel/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -61,16 +61,8 @@ cloudflared.exe tunnel create <Tunnel Name>
 This will generate a [credentials file](https://developers.cloudflare.com/tunnel/other-tunnel-types/local-management/local-tunnel-terms/#credentials-file) in `.json` format.
 10. [Create a configuration file](https://developers.cloudflare.com/tunnel/other-tunnel-types/local-management/create-local-tunnel/#4-create-a-configuration-file) with the following content:  
 ```  
-tunnel: <Tunnel ID>  
-credentials-file: C:\Windows\System32\config\systemprofile\.cloudflared\<Tunnel-ID>.json  
-# Uncomment the following two lines if you are using self-signed certificates in your origin server  
-# originRequest:  
-#   noTLSVerify: true  
-ingress:  
-  - hostname: app.mydomain.com  
-    service: https://internal.mydomain.com  
-  - service: http_status:404  
-logfile:  C:\Cloudflared\cloudflared.log  
+tunnel: <Tunnel ID>credentials-file: C:\Windows\System32\config\systemprofile\.cloudflared\<Tunnel-ID>.json# Uncomment the following two lines if you are using self-signed certificates in your origin server# originRequest:#   noTLSVerify: true  
+ingress:  - hostname: app.mydomain.com    service: https://internal.mydomain.com  - service: http_status:404logfile:  C:\Cloudflared\cloudflared.log  
 ```
 11. Copy the credentials file to the folder created in step 6:  
 Terminal window  
@@ -95,16 +87,7 @@ sc start cloudflared
 ```  
 You will see the output below:  
 ```  
-SERVICE_NAME: cloudflared  
-        TYPE               : 10  WIN32_OWN_PROCESS  
-        STATE              : 2  START_PENDING  
-                                (NOT_STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)  
-        WIN32_EXIT_CODE    : 0  (0x0)  
-        SERVICE_EXIT_CODE  : 0  (0x0)  
-        CHECKPOINT         : 0x0  
-        WAIT_HINT          : 0x7d0  
-        PID                : 3548  
-        FLAGS              :  
+SERVICE_NAME: cloudflared        TYPE               : 10  WIN32_OWN_PROCESS        STATE              : 2  START_PENDING                                (NOT_STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)        WIN32_EXIT_CODE    : 0  (0x0)        SERVICE_EXIT_CODE  : 0  (0x0)        CHECKPOINT         : 0x0        WAIT_HINT          : 0x7d0        PID                : 3548        FLAGS              :  
 ```
 
 ## Next steps
@@ -114,12 +97,7 @@ You can now [route traffic through your tunnel](https://developers.cloudflare.co
 Terminal window
 
 ```
-
-sc stop cloudflared
-
-sc start cloudflared
-
-
+sc stop cloudflaredsc start cloudflared
 ```
 
 ```json

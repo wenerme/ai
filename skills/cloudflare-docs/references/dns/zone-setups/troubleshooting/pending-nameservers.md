@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -23,10 +23,7 @@ DS records belong to your **registrar** (where the domain is registered), not to
 Terminal window
 
 ```
-
 dig DS yourdomain.com
-
-
 ```
 
 If DS records are returned and you did not configure Cloudflare DNSSEC, these are stale records from your previous provider.

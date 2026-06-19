@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -39,23 +39,8 @@ bun add @cloudflare/pages-plugin-stytch
 TypeScript
 
 ```
-
-import stytchPlugin from "@cloudflare/pages-plugin-stytch";
-
-import { envs } from "@cloudflare/pages-plugin-stytch/api";
-
-
-export const onRequest: PagesFunction = stytchPlugin({
-
-  project_id: "YOUR_STYTCH_PROJECT_ID",
-
-  secret: "YOUR_STYTCH_PROJECT_SECRET",
-
-  env: envs.live,
-
-});
-
-
+import stytchPlugin from "@cloudflare/pages-plugin-stytch";import { envs } from "@cloudflare/pages-plugin-stytch/api";
+export const onRequest: PagesFunction = stytchPlugin({  project_id: "YOUR_STYTCH_PROJECT_ID",  secret: "YOUR_STYTCH_PROJECT_SECRET",  env: envs.live,});
 ```
 
 We recommend storing your secret in KV rather than in plain text as above.

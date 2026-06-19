@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -32,30 +32,7 @@ This example invokes the [Create a zone ruleset rule](https://developers.cloudfl
 Create a zone ruleset rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "action": "skip",
-
-    "action_parameters": {
-
-        "ruleset": "current"
-
-    },
-
-    "expression": "http.request.uri.path contains \"/skip-current-ruleset/\"",
-
-    "description": ""
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "action": "skip",    "action_parameters": {        "ruleset": "current"    },    "expression": "http.request.uri.path contains \"/skip-current-ruleset/\"",    "description": ""  }'
 ```
 
 ## Skip a phase
@@ -65,34 +42,7 @@ This example invokes the [Create a zone ruleset rule](https://developers.cloudfl
 Create a zone ruleset rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "action": "skip",
-
-    "action_parameters": {
-
-        "phases": [
-
-            "http_ratelimit"
-
-        ]
-
-    },
-
-    "expression": "http.request.uri.path contains \"/skip-phase/\"",
-
-    "description": ""
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "action": "skip",    "action_parameters": {        "phases": [            "http_ratelimit"        ]    },    "expression": "http.request.uri.path contains \"/skip-phase/\"",    "description": ""  }'
 ```
 
 Refer to [Available skip options](https://developers.cloudflare.com/waf/custom-rules/skip/options/) for the list of phases you can skip.
@@ -107,40 +57,7 @@ This example invokes the [Create a zone ruleset rule](https://developers.cloudfl
 Create a zone ruleset rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "action": "skip",
-
-    "action_parameters": {
-
-        "phases": [
-
-            "http_ratelimit"
-
-        ]
-
-    },
-
-    "logging": {
-
-        "enabled": false
-
-    },
-
-    "expression": "http.request.uri.path contains \"/disable-logging/\"",
-
-    "description": ""
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "action": "skip",    "action_parameters": {        "phases": [            "http_ratelimit"        ]    },    "logging": {        "enabled": false    },    "expression": "http.request.uri.path contains \"/disable-logging/\"",    "description": ""  }'
 ```
 
 Refer to [Available skip options](https://developers.cloudflare.com/waf/custom-rules/skip/options/#log-requests-matching-the-skip-rule) for more information on disabling logging for requests that match a skip rule.
@@ -152,36 +69,7 @@ This example uses the [Create a zone ruleset rule](https://developers.cloudflare
 Create a zone ruleset rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "action": "skip",
-
-    "action_parameters": {
-
-        "products": [
-
-            "zoneLockdown",
-
-            "uaBlock"
-
-        ]
-
-    },
-
-    "expression": "http.request.uri.path contains \"/skip-products/\"",
-
-    "description": ""
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "action": "skip",    "action_parameters": {        "products": [            "zoneLockdown",            "uaBlock"        ]    },    "expression": "http.request.uri.path contains \"/skip-products/\"",    "description": ""  }'
 ```
 
 Refer to [Available skip options](https://developers.cloudflare.com/waf/custom-rules/skip/options/#skip-products) for the list of products you can skip.
@@ -193,30 +81,7 @@ This example invokes the [Create a zone ruleset rule](https://developers.cloudfl
 Create a zone ruleset rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "action": "skip",
-
-    "action_parameters": {
-
-        "phase": "current"
-
-    },
-
-    "expression": "http.request.uri.path contains \"/skip-current-ruleset/\"",
-
-    "description": ""
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "action": "skip",    "action_parameters": {        "phase": "current"    },    "expression": "http.request.uri.path contains \"/skip-current-ruleset/\"",    "description": ""  }'
 ```
 
 Currently, this skip option is only available at the zone level. Refer to [Available skip options](https://developers.cloudflare.com/waf/custom-rules/skip/options/#skip-the-remaining-custom-rules-current-phase) for more details.

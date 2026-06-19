@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -35,43 +35,13 @@ Alibaba's Wan 2.6 text-to-image model generating images from text prompts with o
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'alibaba/wan-2.6-image',
-
-  { prompt: 'A golden retriever puppy playing in autumn leaves' },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'alibaba/wan-2.6-image',  { prompt: 'A golden retriever puppy playing in autumn leaves' },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "alibaba/wan-2.6-image",
-
-  "input": {
-
-    "prompt": "A golden retriever puppy playing in autumn leaves"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "alibaba/wan-2.6-image",  "input": {    "prompt": "A golden retriever puppy playing in autumn leaves"  }}'
 ```
 
 * [ Output ](#tab-panel-72)
@@ -80,26 +50,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/simple-generation.png) 
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "image": "https://dashscope-463f.oss-accelerate.aliyuncs.com/1d/66/20260417/c057796c/32701268-BbftSa6r_189314ac1a36.png"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://dashscope-463f.oss-accelerate.aliyuncs.com/1d/66/20260417/c057796c/32701268-BbftSa6r_189314ac1a36.png"  },  "state": "Completed"}
 ```
 
 ## Examples
@@ -112,53 +63,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'alibaba/wan-2.6-image',
-
-  {
-
-    prompt:
-
-      'A vast alien desert landscape with two suns setting on the horizon, ancient ruins in the foreground',
-
-    size: '1024x768',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'alibaba/wan-2.6-image',  {    prompt:      'A vast alien desert landscape with two suns setting on the horizon, ancient ruins in the foreground',    size: '1024x768',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "alibaba/wan-2.6-image",
-
-  "input": {
-
-    "prompt": "A vast alien desert landscape with two suns setting on the horizon, ancient ruins in the foreground",
-
-    "size": "1024x768"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "alibaba/wan-2.6-image",  "input": {    "prompt": "A vast alien desert landscape with two suns setting on the horizon, ancient ruins in the foreground",    "size": "1024x768"  }}'
 ```
 
 * [ Output ](#tab-panel-76)
@@ -167,26 +78,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ![Custom Dimensions](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/custom-dimensions.png) 
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "image": "https://dashscope-463f.oss-accelerate.aliyuncs.com/1d/35/20260417/c057796c/3257252-vy1GbNI6_bc223e38c5b4.png"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://dashscope-463f.oss-accelerate.aliyuncs.com/1d/35/20260417/c057796c/3257252-vy1GbNI6_bc223e38c5b4.png"  },  "state": "Completed"}
 ```
 
 **Square Format**  — Square image for social media or product photos 
@@ -197,53 +89,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'alibaba/wan-2.6-image',
-
-  {
-
-    prompt:
-
-      'A sleek wireless headphone on a minimalist white marble surface with soft studio lighting',
-
-    size: '1024x1024',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'alibaba/wan-2.6-image',  {    prompt:      'A sleek wireless headphone on a minimalist white marble surface with soft studio lighting',    size: '1024x1024',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "alibaba/wan-2.6-image",
-
-  "input": {
-
-    "prompt": "A sleek wireless headphone on a minimalist white marble surface with soft studio lighting",
-
-    "size": "1024x1024"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "alibaba/wan-2.6-image",  "input": {    "prompt": "A sleek wireless headphone on a minimalist white marble surface with soft studio lighting",    "size": "1024x1024"  }}'
 ```
 
 * [ Output ](#tab-panel-80)
@@ -252,26 +104,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ![Square Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/square-format.png) 
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "image": "https://dashscope-463f.oss-accelerate.aliyuncs.com/1d/84/20260417/c057796c/18355039-RFkWcHgG_0dcb1c1d6d95.png"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://dashscope-463f.oss-accelerate.aliyuncs.com/1d/84/20260417/c057796c/18355039-RFkWcHgG_0dcb1c1d6d95.png"  },  "state": "Completed"}
 ```
 
 **Negative Prompt**  — Guide generation away from unwanted elements 
@@ -282,51 +115,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'alibaba/wan-2.6-image',
-
-  {
-
-    prompt: 'A detailed oil painting portrait of a Renaissance nobleman with intricate lace collar',
-
-    negative_prompt: 'modern clothing, photograph, blurry, low quality',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'alibaba/wan-2.6-image',  {    prompt: 'A detailed oil painting portrait of a Renaissance nobleman with intricate lace collar',    negative_prompt: 'modern clothing, photograph, blurry, low quality',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "alibaba/wan-2.6-image",
-
-  "input": {
-
-    "prompt": "A detailed oil painting portrait of a Renaissance nobleman with intricate lace collar",
-
-    "negative_prompt": "modern clothing, photograph, blurry, low quality"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "alibaba/wan-2.6-image",  "input": {    "prompt": "A detailed oil painting portrait of a Renaissance nobleman with intricate lace collar",    "negative_prompt": "modern clothing, photograph, blurry, low quality"  }}'
 ```
 
 * [ Output ](#tab-panel-84)
@@ -335,26 +130,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ![Negative Prompt](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/negative-prompt.png) 
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "image": "https://dashscope-463f.oss-accelerate.aliyuncs.com/1d/53/20260417/c057796c/26097304-eVhNm6uS_edc041cd5e2b.png"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://dashscope-463f.oss-accelerate.aliyuncs.com/1d/53/20260417/c057796c/26097304-eVhNm6uS_edc041cd5e2b.png"  },  "state": "Completed"}
 ```
 
 **Portrait Format**  — Tall vertical image for portraits 
@@ -365,51 +141,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 TypeScript
 
 ```
-
-const response = await env.AI.run(
-
-  'alibaba/wan-2.6-image',
-
-  {
-
-    prompt: 'An elegant Art Deco poster featuring a jazz singer under a spotlight',
-
-    size: '768x1024',
-
-  },
-
-)
-
-console.log(response)
-
-
+const response = await env.AI.run(  'alibaba/wan-2.6-image',  {    prompt: 'An elegant Art Deco poster featuring a jazz singer under a spotlight',    size: '768x1024',  },)console.log(response)
 ```
 
 Terminal window
 
 ```
-
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{
-
-  "model": "alibaba/wan-2.6-image",
-
-  "input": {
-
-    "prompt": "An elegant Art Deco poster featuring a jazz singer under a spotlight",
-
-    "size": "768x1024"
-
-  }
-
-}'
-
-
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{  "model": "alibaba/wan-2.6-image",  "input": {    "prompt": "An elegant Art Deco poster featuring a jazz singer under a spotlight",    "size": "768x1024"  }}'
 ```
 
 * [ Output ](#tab-panel-88)
@@ -418,26 +156,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ![Portrait Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/portrait-format.png) 
 
 ```
-
-{
-
-  "gatewayMetadata": {
-
-    "keySource": "Unified"
-
-  },
-
-  "result": {
-
-    "image": "https://dashscope-463f.oss-accelerate.aliyuncs.com/1d/5a/20260417/c057796c/79957405-YTXQsRY6_8d8a6631f1d6.png"
-
-  },
-
-  "state": "Completed"
-
-}
-
-
+{  "gatewayMetadata": {    "keySource": "Unified"  },  "result": {    "image": "https://dashscope-463f.oss-accelerate.aliyuncs.com/1d/5a/20260417/c057796c/79957405-YTXQsRY6_8d8a6631f1d6.png"  },  "state": "Completed"}
 ```
 
 ## Parameters
@@ -465,7 +184,7 @@ image
 
 Input [ ](https://developers.cloudflare.com/ai/models/alibaba/wan-2.6-image/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/alibaba/wan-2.6-image/schema-input.json "Download") 
 
-Output [ ](https://developers.cloudflare.com/ai/models/alibaba/wan-2.6-image/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/alibaba/wan-2.6-image/schema-output.json "Download") 
+Output [ ](https://developers.cloudflare.com/ai/models/alibaba/wan-2.6-image/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/alibaba/wan-2.6-image/schema-output.json "Download")
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/alibaba/wan-2.6-image/#page","headline":"Wan 2.6 Image (Alibaba) · Cloudflare AI docs · Cloudflare AI docs","description":"Alibaba's Wan 2.6 text-to-image model generating images from text prompts with optional negative prompts and customizable dimensions.","url":"https://developers.cloudflare.com/ai/models/alibaba/wan-2.6-image/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

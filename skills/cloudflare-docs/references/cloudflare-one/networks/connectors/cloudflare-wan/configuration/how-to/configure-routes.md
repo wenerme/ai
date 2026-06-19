@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,8 +33,8 @@ For prefixes outside RFC 1918, contact your Cloudflare customer service manager.
 
 ### Create a static route
 
-* [ Dashboard ](#tab-panel-7374)
-* [ API ](#tab-panel-7375)
+* [ Dashboard ](#tab-panel-7450)
+* [ API ](#tab-panel-7451)
 
 1. Log in to [Cloudflare One](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Routes** \> **WAN Routes**, and select **Create** to add a new route.
@@ -60,134 +60,24 @@ Example:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Magic WAN Write`
 * `Magic Transit Write`
 
 Create a Route
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "nexthop": "<IP_NEXT_HOP>",
-
-    "prefix": "<YOUR_IP_PREFIX>",
-
-    "priority": 0,
-
-    "id": "023e105f4ecef8ad9ca31a8372d0c353",
-
-    "description": "<ROUTE_DESCRIPTION>",
-
-    "scope": {
-
-        "colo_names": [
-
-            "den01"
-
-        ],
-
-        "colo_regions": [
-
-            "APAC"
-
-        ]
-
-    },
-
-    "weight": 0
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "nexthop": "<IP_NEXT_HOP>",    "prefix": "<YOUR_IP_PREFIX>",    "priority": 0,    "id": "023e105f4ecef8ad9ca31a8372d0c353",    "description": "<ROUTE_DESCRIPTION>",    "scope": {        "colo_names": [            "den01"        ],        "colo_regions": [            "APAC"        ]    },    "weight": 0  }'
 ```
 
 ```
-
-{
-
-  "errors": [
-
-    {
-
-      "code": 1000,
-
-      "message": "message"
-
-    }
-
-  ],
-
-  "messages": [
-
-    {
-
-      "code": 1000,
-
-      "message": "message"
-
-    }
-
-  ],
-
-  "result": {
-
-    "routes": [
-
-      {
-
-        "nexthop": "203.0.113.1",
-
-        "prefix": "192.0.2.0/24",
-
-        "priority": 0,
-
-        "id": "023e105f4ecef8ad9ca31a8372d0c353",
-
-        "description": "New route for new prefix 203.0.113.1",
-
-        "scope": {
-
-          "colo_names": [
-
-            "den01"
-
-          ],
-
-          "colo_regions": [
-
-            "APAC"
-
-          ]
-
-        },
-
-        "weight": 0
-
-      }
-
-    ]
-
-  },
-
-  "success": true
-
-}
-
-
+{  "errors": [    {      "code": 1000,      "message": "message"    }  ],  "messages": [    {      "code": 1000,      "message": "message"    }  ],  "result": {    "routes": [      {        "nexthop": "203.0.113.1",        "prefix": "192.0.2.0/24",        "priority": 0,        "id": "023e105f4ecef8ad9ca31a8372d0c353",        "description": "New route for new prefix 203.0.113.1",        "scope": {          "colo_names": [            "den01"          ],          "colo_regions": [            "APAC"          ]        },        "weight": 0      }    ]  },  "success": true}
 ```
 
 ### Edit a static route
 
-* [ Dashboard ](#tab-panel-7376)
-* [ API ](#tab-panel-7377)
+* [ Dashboard ](#tab-panel-7452)
+* [ API ](#tab-panel-7453)
 
 1. In **Routes** \> **WAN Routes**, locate the route to modify.
 2. Select the three dots next to it > **Edit**.
@@ -205,132 +95,24 @@ Example:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Magic WAN Write`
 * `Magic Transit Write`
 
 Update Route
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes/$ROUTE_ID" \
-
-  --request PUT \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "nexthop": "<IP_NEXT_HOP>",
-
-    "prefix": "<YOUR_IP_PREFIX>",
-
-    "priority": 0,
-
-    "id": "023e105f4ecef8ad9ca31a8372d0c353",
-
-    "description": "<ROUTE_DESCRIPTION>",
-
-    "scope": {
-
-        "colo_names": [
-
-            "den01"
-
-        ],
-
-        "colo_regions": [
-
-            "APAC"
-
-        ]
-
-    },
-
-    "weight": 0
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes/$ROUTE_ID" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "nexthop": "<IP_NEXT_HOP>",    "prefix": "<YOUR_IP_PREFIX>",    "priority": 0,    "id": "023e105f4ecef8ad9ca31a8372d0c353",    "description": "<ROUTE_DESCRIPTION>",    "scope": {        "colo_names": [            "den01"        ],        "colo_regions": [            "APAC"        ]    },    "weight": 0  }'
 ```
 
 ```
-
-{
-
-  "errors": [
-
-    {
-
-      "code": 1000,
-
-      "message": "message"
-
-    }
-
-  ],
-
-  "messages": [
-
-    {
-
-      "code": 1000,
-
-      "message": "message"
-
-    }
-
-  ],
-
-  "result": {
-
-    "modified": true,
-
-    "modified_route": {
-
-      "nexthop": "203.0.113.1",
-
-      "prefix": "192.0.2.0/24",
-
-      "priority": 0,
-
-      "id": "023e105f4ecef8ad9ca31a8372d0c353",
-
-      "description": "New route for new prefix 203.0.113.1",
-
-      "scope": {
-
-        "colo_names": [
-
-          "den01"
-
-        ],
-
-        "colo_regions": [
-
-          "APAC"
-
-        ]
-
-      },
-
-      "weight": 0
-
-    }
-
-  },
-
-  "success": true
-
-}
-
-
+{  "errors": [    {      "code": 1000,      "message": "message"    }  ],  "messages": [    {      "code": 1000,      "message": "message"    }  ],  "result": {    "modified": true,    "modified_route": {      "nexthop": "203.0.113.1",      "prefix": "192.0.2.0/24",      "priority": 0,      "id": "023e105f4ecef8ad9ca31a8372d0c353",      "description": "New route for new prefix 203.0.113.1",      "scope": {        "colo_names": [          "den01"        ],        "colo_regions": [          "APAC"        ]      },      "weight": 0    }  },  "success": true}
 ```
 
 ### Delete static route
 
-* [ Dashboard ](#tab-panel-7370)
-* [ API ](#tab-panel-7371)
+* [ Dashboard ](#tab-panel-7446)
+* [ API ](#tab-panel-7447)
 
 1. In **Routes** \> **WAN Routes**, locate the static route to delete.
 2. Select the three dots next to it > **Delete**.
@@ -346,94 +128,18 @@ Example:
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Magic WAN Write`
 * `Magic Transit Write`
 
 Delete Route
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes/$ROUTE_ID" \
-
-  --request DELETE \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes/$ROUTE_ID" \  --request DELETE \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```
-
-{
-
-  "errors": [
-
-    {
-
-      "code": 1000,
-
-      "message": "message"
-
-    }
-
-  ],
-
-  "messages": [
-
-    {
-
-      "code": 1000,
-
-      "message": "message"
-
-    }
-
-  ],
-
-  "result": {
-
-    "deleted": true,
-
-    "deleted_route": {
-
-      "nexthop": "203.0.113.1",
-
-      "prefix": "192.0.2.0/24",
-
-      "priority": 0,
-
-      "id": "023e105f4ecef8ad9ca31a8372d0c353",
-
-      "description": "New route for new prefix 203.0.113.1",
-
-      "scope": {
-
-        "colo_names": [
-
-          "den01"
-
-        ],
-
-        "colo_regions": [
-
-          "APAC"
-
-        ]
-
-      },
-
-      "weight": 0
-
-    }
-
-  },
-
-  "success": true
-
-}
-
-
+{  "errors": [    {      "code": 1000,      "message": "message"    }  ],  "messages": [    {      "code": 1000,      "message": "message"    }  ],  "result": {    "deleted": true,    "deleted_route": {      "nexthop": "203.0.113.1",      "prefix": "192.0.2.0/24",      "priority": 0,      "id": "023e105f4ecef8ad9ca31a8372d0c353",      "description": "New route for new prefix 203.0.113.1",      "scope": {        "colo_names": [          "den01"        ],        "colo_regions": [          "APAC"        ]      },      "weight": 0    }  },  "success": true}
 ```
 
 ## Configure Automatic Return Routing (beta)
@@ -442,8 +148,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes/$RO
 
 To enable ARR:
 
-* [ Dashboard ](#tab-panel-7372)
-* [ API ](#tab-panel-7373)
+* [ Dashboard ](#tab-panel-7448)
+* [ API ](#tab-panel-7449)
 
 1. Follow the [Add tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels) information to learn how to create an IPsec or GRE tunnel.
 2. On the tunnel's options, select **Automatic return routing**.
@@ -453,39 +159,14 @@ Create a `POST` request to create an [IPsec](https://developers.cloudflare.com/a
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Magic WAN Write`
 * `Magic Transit Write`
 
 Create an IPsec tunnel
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/ipsec_tunnels" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "cloudflare_endpoint": "<CLOUDFLARE_ENDPOINT>",
-
-    "interface_address": "<INTERFACE_ADDRESS>",
-
-    "name": "IPsec_1",
-
-    "customer_endpoint": "<CUSTOMER_ENDPOINT>",
-
-    "description": "Tunnel for ISP X",
-
-    "psk": "<PSK>",
-
-    "automatic_return_routing": "true"
-
-  }'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/ipsec_tunnels" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "cloudflare_endpoint": "<CLOUDFLARE_ENDPOINT>",    "interface_address": "<INTERFACE_ADDRESS>",    "name": "IPsec_1",    "customer_endpoint": "<CUSTOMER_ENDPOINT>",    "description": "Tunnel for ISP X",    "psk": "<PSK>",    "automatic_return_routing": "true"  }'
 ```
 
 ## Configure BGP routes
@@ -517,9 +198,9 @@ Cloudflare WAN customers should also be aware of the following:
 * The customer chooses their device ASN, which must be different from the Cloudflare-side ASN.
 * The Cloudflare side ASN will be included in the `AS_PATH` of announced routes to any BGP enabled on-ramp (interconnect, IPsec or GRE tunnel).
 * The customer-announced `AS_PATH` is transitive between on-ramps — meaning the origin (customer) ASN is visible in the `AS_PATH` of routes received from Cloudflare via BGP. Due to default BGP loop prevention mechanisms, a router will reject any route that contains its own ASN in the `AS_PATH`. For example, if two Cloudflare WAN-connected sites both use `ASN 65000`, site A will not accept routes from site B, and vice versa, because each site sees its own ASN in the advertised `AS_PATH`.  
- To enable routing between private networks over Cloudflare WAN, you should either:  
-   * Assign a unique ASN to each site/network, or  
-   * Configure your edge CPE to accept BGP routes that include its own ASN in the `AS_PATH`.
+To enable routing between private networks over Cloudflare WAN, you should either:
+  * Assign a unique ASN to each site/network, or
+  * Configure your edge CPE to accept BGP routes that include its own ASN in the `AS_PATH`.
 
 ### Set up BGP peering
 
@@ -545,10 +226,11 @@ BGP over CNI is in closed beta and is not currently available to new customers. 
 Note  
 Multiple tunnels or interconnects with the same ASN will not exchange routes if standard BGP loop prevention is enabled. Consider using a different ASN per session, or enabling duplicate ASNs (like Cisco's `allowas-in` feature) to exchange routes between networks.
 3. In **MD5 key**, you can optionally enter the key for your network. Note that this is meant to prevent accidental misconfigurations and is not a security mechanism.
-4. (Optional) In **Additional Advertised prefix list**, input any additional prefixes you want to advertise alongside your existing routes. Leave this blank if you do not want to advertise extra routes. Typical prefixes to configure here include:  
-   * A route to `0.0.0.0/0`, the default route — to attract all Internet-bound traffic if using Cloudflare WAN with Gateway.  
-   * A route to `100.96.0.0/12`, the portion of CGNAT space [used by default with Cloudflare One Clients](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#return-traffic-routing).  
-   * A route to `100.64.0.0/12`, the portion of CGNAT space [used by default for Cloudflare Source IPs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/).
+4. (Optional) In **Additional Advertised prefix list**, input any additional prefixes you want to advertise alongside your existing routes. Leave this blank if you do not want to advertise extra routes. Typical prefixes to configure here include:
+
+  * A route to `0.0.0.0/0`, the default route — to attract all Internet-bound traffic if using Cloudflare WAN with Gateway.
+  * A route to `100.96.0.0/12`, the portion of CGNAT space [used by default with Cloudflare One Clients](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#return-traffic-routing).
+  * A route to `100.64.0.0/12`, the portion of CGNAT space [used by default for Cloudflare Source IPs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/).
 5. Select **Save**.
 
 #### Set up BGP for IPsec/GRE tunnels
@@ -562,10 +244,11 @@ Multiple tunnels or interconnects with the same ASN will not exchange routes if 
 Note  
 Multiple tunnels or interconnects with the same ASN will not exchange routes if standard BGP loop prevention is enabled. Consider using a different ASN per session, or enabling duplicate ASNs (like Cisco's `allowas-in` feature) to exchange routes between networks.
 3. In **MD5 key**, you can optionally enter the key for your network. Note that this is meant to prevent accidental misconfigurations and is not a security mechanism.
-4. (Optional) In **Additional Advertised prefix list**, input any additional prefixes you want to advertise alongside your existing routes. Leave this blank if you do not want to advertise extra routes. Typical prefixes to configure here include:  
-   * A route to `0.0.0.0/0`, the default route — to attract all Internet-bound traffic if using Cloudflare WAN with Gateway.  
-   * A route to `100.96.0.0/12`, the portion of CGNAT space [used by default with Cloudflare One Clients](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#return-traffic-routing).  
-   * A route to `100.64.0.0/12`, the portion of CGNAT space [used by default for Cloudflare Source IPs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/).
+4. (Optional) In **Additional Advertised prefix list**, input any additional prefixes you want to advertise alongside your existing routes. Leave this blank if you do not want to advertise extra routes. Typical prefixes to configure here include:
+
+  * A route to `0.0.0.0/0`, the default route — to attract all Internet-bound traffic if using Cloudflare WAN with Gateway.
+  * A route to `100.96.0.0/12`, the portion of CGNAT space [used by default with Cloudflare One Clients](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#return-traffic-routing).
+  * A route to `100.64.0.0/12`, the portion of CGNAT space [used by default for Cloudflare Source IPs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/).
 5. Select **Save**.
 
 ### Important remarks for GRE/IPsec tunnels

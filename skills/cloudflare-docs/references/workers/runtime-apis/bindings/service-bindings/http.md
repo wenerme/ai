@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -16,108 +16,43 @@ Worker A that declares a Service binding to Worker B can forward a [Request](htt
 
 For example, consider the following Worker that implements a [fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/):
 
-* [  wrangler.jsonc ](#tab-panel-11942)
-* [  wrangler.toml ](#tab-panel-11943)
+* [  wrangler.jsonc ](#tab-panel-11959)
+* [  wrangler.toml ](#tab-panel-11960)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "worker_b",
-
-  "main": "./src/workerB.js"
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "worker_b",  "main": "./src/workerB.js"}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "worker_b"
-
-main = "./src/workerB.js"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "worker_b"main = "./src/workerB.js"
 ```
 
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env, ctx) {
-
-    return new Response("Hello World!");
-
-  }
-
-}
-
-
+export default {  async fetch(request, env, ctx) {    return new Response("Hello World!");  }}
 ```
 
 The following Worker declares a binding to the Worker above:
 
-* [  wrangler.jsonc ](#tab-panel-11944)
-* [  wrangler.toml ](#tab-panel-11945)
+* [  wrangler.jsonc ](#tab-panel-11961)
+* [  wrangler.toml ](#tab-panel-11962)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "worker_a",
-
-  "main": "./src/workerA.js",
-
-  "services": [
-
-    {
-
-      "binding": "WORKER_B",
-
-      "service": "worker_b"
-
-    }
-
-  ]
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "worker_a",  "main": "./src/workerA.js",  "services": [    {      "binding": "WORKER_B",      "service": "worker_b"    }  ]}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "worker_a"
-
-main = "./src/workerA.js"
-
-
-[[services]]
-
-binding = "WORKER_B"
-
-service = "worker_b"
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "worker_a"main = "./src/workerA.js"
+[[services]]binding = "WORKER_B"service = "worker_b"
 ```
 
 And then can forward a request to it:
@@ -125,18 +60,7 @@ And then can forward a request to it:
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    return await env.WORKER_B.fetch(request);
-
-  },
-
-};
-
-
+export default {  async fetch(request, env) {    return await env.WORKER_B.fetch(request);  },};
 ```
 
 Note
@@ -146,24 +70,7 @@ If you construct a new request manually, rather than forwarding an existing one,
 JavaScript
 
 ```
-
-export default {
-
-  async fetch(request, env) {
-
-    // provide a valid URL
-
-    let newRequest = new Request("https://valid-url.com", { method: "GET" });
-
-    let response = await env.WORKER_B.fetch(newRequest);
-
-    return response;
-
-  }
-
-};
-
-
+export default {  async fetch(request, env) {    // provide a valid URL    let newRequest = new Request("https://valid-url.com", { method: "GET" });    let response = await env.WORKER_B.fetch(newRequest);    return response;  }};
 ```
 
 ```json

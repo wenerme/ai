@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -43,10 +43,7 @@ The core Wrangler commands for creating, developing, and deploying Workers are o
 ## How to run Wrangler commands
 
 ```
-
 wrangler <COMMAND> <SUBCOMMAND> [PARAMETERS] [OPTIONS]
-
-
 ```
 
 Since Cloudflare recommends [installing Wrangler locally](https://developers.cloudflare.com/workers/wrangler/install-and-update/) in your project (rather than globally), the way to run Wrangler will depend on your specific setup and package manager.
@@ -68,24 +65,7 @@ pnpm wrangler <COMMAND> <SUBCOMMAND> [PARAMETERS] [OPTIONS]
 You can add Wrangler commands that you use often as scripts in your project's `package.json` file:
 
 ```
-
-{
-
-  ...
-
-  "scripts": {
-
-    "deploy": "wrangler deploy",
-
-    "dev": "wrangler dev"
-
-  }
-
-  ...
-
-}
-
-
+{  ...  "scripts": {    "deploy": "wrangler deploy",    "dev": "wrangler dev"  }  ...}
 ```
 
 You can then run them using your package manager of choice:

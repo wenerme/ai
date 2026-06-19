@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -19,10 +19,7 @@ The gokeyless key server exposes a [Prometheus ↗](https://prometheus.io/) metr
 By default, metrics are served at:
 
 ```
-
 http://<host>:2406/metrics
-
-
 ```
 
 The port is configurable via the `metrics_port` key in your configuration file, the `--metrics-port` flag, or the `KEYLESS_METRICS_PORT` environment variable.
@@ -171,10 +168,7 @@ For successful requests the value is `no error`. All other values indicate a fai
 Measures the total time to satisfy a request, from when the request packet is read off the wire to when the response bytes are written back to the client.
 
 ```
-
 total_duration = exec_duration + response_write_time
-
-
 ```
 
 Both timestamps are captured after the connection semaphore is already held, so semaphore queue wait time is not included in either histogram. Under normal load, total duration and exec duration are approximately equal. A growing gap between them indicates slow writes back to the client — for example, network backpressure between the key server and the Cloudflare edge.
@@ -250,38 +244,19 @@ Note
 ### Signing throughput by key type
 
 ```
-
 sum by (opcode) (rate(keyless_requests[1m]))
-
-
 ```
 
 ### Error rate by error type
 
 ```
-
-sum by (error) (
-
-  rate(keyless_request_exec_duration_per_opcode_count{error!="no error"}[5m])
-
-)
-
-
+sum by (error) (  rate(keyless_request_exec_duration_per_opcode_count{error!="no error"}[5m]))
 ```
 
 ### 99th percentile signing latency for RSA
 
 ```
-
-histogram_quantile(
-
-  0.99,
-
-  rate(keyless_request_exec_duration_per_opcode_bucket{type="rsa"}[5m])
-
-)
-
-
+histogram_quantile(  0.99,  rate(keyless_request_exec_duration_per_opcode_bucket{type="rsa"}[5m]))
 ```
 
 A value approaching 10 seconds indicates PKCS#11 session pool exhaustion. Refer to [Scaling and benchmarking](https://developers.cloudflare.com/ssl/keyless-ssl/reference/scaling-and-benchmarking/) and your HSM documentation for guidance on increasing the session pool size.
@@ -289,10 +264,7 @@ A value approaching 10 seconds indicates PKCS#11 session pool exhaustion. Refer 
 ### 99th percentile key load latency
 
 ```
-
 histogram_quantile(0.99, rate(keyless_key_load_duration_bucket[5m]))
-
-
 ```
 
 A spike here without a corresponding spike in exec duration suggests the keystore lookup itself is slow — a possible disk I/O issue or PKCS#11 object enumeration delay.
@@ -300,10 +272,7 @@ A spike here without a corresponding spike in exec duration suggests the keystor
 ### Connection failure rate
 
 ```
-
 rate(keyless_failed_connection_total[5m])
-
-
 ```
 
 A sustained non-zero rate indicates network or TLS problems between the Cloudflare network and your key server.
@@ -311,10 +280,7 @@ A sustained non-zero rate indicates network or TLS problems between the Cloudfla
 ### Alert on certificate expiry within 30 days
 
 ```
-
 (certificate_expiration_timestamp_seconds - time()) / 86400 < 30
-
-
 ```
 
 ```json

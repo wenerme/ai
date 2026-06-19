@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -22,192 +22,31 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11704)
-* [  TypeScript ](#tab-panel-11705)
-* [  Hono ](#tab-panel-11706)
+* [  JavaScript ](#tab-panel-11721)
+* [  TypeScript ](#tab-panel-11722)
+* [  Hono ](#tab-panel-11723)
 
 JavaScript
 
 ```
-
-export default {
-
-  async scheduled(event, env, ctx) {
-
-    // Write code for updating your API
-
-    switch (event.cron) {
-
-      case "*/3 * * * *":
-
-        // Every three minutes
-
-        await updateAPI();
-
-        break;
-
-      case "*/10 * * * *":
-
-        // Every ten minutes
-
-        await updateAPI2();
-
-        break;
-
-      case "*/45 * * * *":
-
-        // Every forty-five minutes
-
-        await updateAPI3();
-
-        break;
-
-    }
-
-    console.log("cron processed");
-
-  },
-
-};
-
-
+export default {  async scheduled(event, env, ctx) {    // Write code for updating your API    switch (event.cron) {      case "*/3 * * * *":        // Every three minutes        await updateAPI();        break;      case "*/10 * * * *":        // Every ten minutes        await updateAPI2();        break;      case "*/45 * * * *":        // Every forty-five minutes        await updateAPI3();        break;    }    console.log("cron processed");  },};
 ```
 
 TypeScript
 
 ```
-
-interface Env {}
-
-export default {
-
-  async scheduled(
-
-    controller: ScheduledController,
-
-    env: Env,
-
-    ctx: ExecutionContext,
-
-  ) {
-
-    // Write code for updating your API
-
-    switch (controller.cron) {
-
-      case "*/3 * * * *":
-
-        // Every three minutes
-
-        await updateAPI();
-
-        break;
-
-      case "*/10 * * * *":
-
-        // Every ten minutes
-
-        await updateAPI2();
-
-        break;
-
-      case "*/45 * * * *":
-
-        // Every forty-five minutes
-
-        await updateAPI3();
-
-        break;
-
-    }
-
-    console.log("cron processed");
-
-  },
-
-};
-
-
+interface Env {}export default {  async scheduled(    controller: ScheduledController,    env: Env,    ctx: ExecutionContext,  ) {    // Write code for updating your API    switch (controller.cron) {      case "*/3 * * * *":        // Every three minutes        await updateAPI();        break;      case "*/10 * * * *":        // Every ten minutes        await updateAPI2();        break;      case "*/45 * * * *":        // Every forty-five minutes        await updateAPI3();        break;    }    console.log("cron processed");  },};
 ```
 
 TypeScript
 
 ```
-
 import { Hono } from "hono";
-
-
 interface Env {}
-
-
-// Create Hono app
-
-const app = new Hono<{ Bindings: Env }>();
-
-
-// Regular routes for normal HTTP requests
-
-app.get("/", (c) => c.text("Multiple Cron Trigger Example"));
-
-
-// Export both the app and a scheduled function
-
-export default {
-
-  // The Hono app handles regular HTTP requests
-
-  fetch: app.fetch,
-
-
-  // The scheduled function handles Cron triggers
-
-  async scheduled(
-
-    controller: ScheduledController,
-
-    env: Env,
-
-    ctx: ExecutionContext,
-
-  ) {
-
-    // Check which cron schedule triggered this execution
-
-    switch (controller.cron) {
-
-      case "*/3 * * * *":
-
-        // Every three minutes
-
-        await updateAPI();
-
-        break;
-
-      case "*/10 * * * *":
-
-        // Every ten minutes
-
-        await updateAPI2();
-
-        break;
-
-      case "*/45 * * * *":
-
-        // Every forty-five minutes
-
-        await updateAPI3();
-
-        break;
-
-    }
-
-    console.log("cron processed");
-
-  },
-
-};
-
-
+// Create Hono appconst app = new Hono<{ Bindings: Env }>();
+// Regular routes for normal HTTP requestsapp.get("/", (c) => c.text("Multiple Cron Trigger Example"));
+// Export both the app and a scheduled functionexport default {  // The Hono app handles regular HTTP requests  fetch: app.fetch,
+  // The scheduled function handles Cron triggers  async scheduled(    controller: ScheduledController,    env: Env,    ctx: ExecutionContext,  ) {    // Check which cron schedule triggered this execution    switch (controller.cron) {      case "*/3 * * * *":        // Every three minutes        await updateAPI();        break;      case "*/10 * * * *":        // Every ten minutes        await updateAPI2();        break;      case "*/45 * * * *":        // Every forty-five minutes        await updateAPI3();        break;    }    console.log("cron processed");  },};
 ```
 
 ## Test Cron Triggers using Wrangler
@@ -219,16 +58,9 @@ Cron Triggers can be tested using Wrangler by passing in the `--test-scheduled` 
 Terminal window
 
 ```
-
 npx wrangler dev --test-scheduled
-
-
 curl "http://localhost:8787/__scheduled?cron=*%2F3+*+*+*+*"
-
-
 curl "http://localhost:8787/cdn-cgi/handler/scheduled?cron=*+*+*+*+*" # Python Workers
-
-
 ```
 
 ```json

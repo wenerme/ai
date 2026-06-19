@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,20 +33,7 @@ After your account team enables the Offlabel entitlement, you can activate it fo
 cURL command
 
 ```
-
-curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets/$WIDGET_ID" \
-
--H "Authorization: Bearer $API_TOKEN" \
-
--H "Content-Type: application/json" \
-
--d '{
-
-    "offlabel": true
-
-}'
-
-
+curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets/$WIDGET_ID" \-H "Authorization: Bearer $API_TOKEN" \-H "Content-Type: application/json" \-d '{    "offlabel": true}'
 ```
 
 ### Create new widgets with Offlabel
@@ -56,26 +43,7 @@ You can enable Offlabel when creating new widgets.
 cURL command
 
 ```
-
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets" \
-
--H "Authorization: Bearer $API_TOKEN" \
-
--H "Content-Type: application/json" \
-
--d '{
-
-    "name": "Branded Widget",
-
-    "domains": ["example.com"],
-
-    "mode": "managed",
-
-    "offlabel": true
-
-}'
-
-
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets" \-H "Authorization: Bearer $API_TOKEN" \-H "Content-Type: application/json" \-d '{    "name": "Branded Widget",    "domains": ["example.com"],    "mode": "managed",    "offlabel": true}'
 ```
 
 ### Verification
@@ -85,12 +53,7 @@ Confirm Offlabel is enabled by checking your widget configuration.
 cURL command
 
 ```
-
-curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets/$WIDGET_ID" \
-
--H "Authorization: Bearer $API_TOKEN"
-
-
+curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets/$WIDGET_ID" \-H "Authorization: Bearer $API_TOKEN"
 ```
 
 The response will include `"offlabel": true` when the feature is active.

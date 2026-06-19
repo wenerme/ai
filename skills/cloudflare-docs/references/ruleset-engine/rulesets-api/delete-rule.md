@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,7 +31,7 @@ The response will include the complete ruleset after deleting the rule.
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required: 
 * `Mass URL Redirects Write`
 * `Magic Firewall Write`
 * `L4 DDoS Managed Ruleset Write`
@@ -44,71 +44,11 @@ At least one of the following [token permissions](https://developers.cloudflare.
 Delete an account ruleset rule
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESET_ID/rules/$RULE_ID_1" \
-
-  --request DELETE \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESET_ID/rules/$RULE_ID_1" \  --request DELETE \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```
-
-{
-
-  "result": {
-
-    "id": "<RULESET_ID>",
-
-    "name": "Custom Ruleset 1",
-
-    "description": "My first custom ruleset",
-
-    "kind": "custom",
-
-    "version": "12",
-
-    "rules": [
-
-      {
-
-        "id": "<RULE_ID_2>",
-
-        "version": "2",
-
-        "action": "js_challenge",
-
-        "expression": "(ip.src.country in {\"GB\" \"FR\"} and cf.bot_management.score < 20 and not cf.bot_management.verified_bot)",
-
-        "description": "challenge GB and FR based on bot score",
-
-        "last_updated": "2021-07-22T12:54:58.144683Z",
-
-        "ref": "<RULE_REF_2>",
-
-        "enabled": true
-
-      }
-
-    ],
-
-    "last_updated": "2021-07-22T12:54:58.144683Z",
-
-    "phase": "http_request_firewall_custom"
-
-  },
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": []
-
-}
-
-
+{  "result": {    "id": "<RULESET_ID>",    "name": "Custom Ruleset 1",    "description": "My first custom ruleset",    "kind": "custom",    "version": "12",    "rules": [      {        "id": "<RULE_ID_2>",        "version": "2",        "action": "js_challenge",        "expression": "(ip.src.country in {\"GB\" \"FR\"} and cf.bot_management.score < 20 and not cf.bot_management.verified_bot)",        "description": "challenge GB and FR based on bot score",        "last_updated": "2021-07-22T12:54:58.144683Z",        "ref": "<RULE_REF_2>",        "enabled": true      }    ],    "last_updated": "2021-07-22T12:54:58.144683Z",    "phase": "http_request_firewall_custom"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -33,12 +33,14 @@ Cloudflare Realtime SFU will automatically handle the simulcast configuration ba
 The `simulcast` configuration object in the API call when you start pulling a remote track allows you to specify:
 
 * `preferredRid`: The preferred quality level for the video stream (RID for the simulcast stream. [RIDs can be specified by the publisher. ↗](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/setParameters#encodings))
-* `priorityOrdering`: Controls how the SFU handles bandwidth constraints.  
-   * `none`: Keep sending the preferred layer, set via the preferredRid, even if there's not enough bandwidth.  
-   * `asciibetical`: Use alphabetical ordering (a-z) to determine priority, where 'a' is most desirable and 'z' is least desirable.
-* `ridNotAvailable`: Controls what happens when the preferred RID is no longer available, for example when the publisher stops sending it.  
-   * `none`: Do nothing.  
-   * `asciibetical`: Switch to the next available RID based on the priority ordering, where 'a' is most desirable and 'z' is least desirable.  
+* `priorityOrdering`: Controls how the SFU handles bandwidth constraints.
+
+  * `none`: Keep sending the preferred layer, set via the preferredRid, even if there's not enough bandwidth.
+  * `asciibetical`: Use alphabetical ordering (a-z) to determine priority, where 'a' is most desirable and 'z' is least desirable.
+* `ridNotAvailable`: Controls what happens when the preferred RID is no longer available, for example when the publisher stops sending it.
+
+  * `none`: Do nothing.
+  * `asciibetical`: Switch to the next available RID based on the priority ordering, where 'a' is most desirable and 'z' is least desirable.  
 You will likely want to order the asciibetical RIDs based on your desired metric, such as highest resolution to lowest or highest bandwidth to lowest.
 
 ### Bandwidth Management across media tracks
@@ -60,16 +62,7 @@ When a layer switch is requested (through updating `preferredRid`) with the `/tr
 For publishers (local tracks), you only need to include the simulcast attributes in your SDP. The SFU will automatically handle the simulcast configuration based on the SDP. For example, the SDP should contain a section like this:
 
 ```
-
-a=simulcast:send f;h;q
-
-a=rid:f send
-
-a=rid:h send
-
-a=rid:q send
-
-
+a=simulcast:send f;h;qa=rid:f senda=rid:h senda=rid:q send
 ```
 
 If the publisher endpoint is a browser you can include these by specifying `sendEncodings` when creating the transceiver like this:
@@ -77,24 +70,7 @@ If the publisher endpoint is a browser you can include these by specifying `send
 JavaScript
 
 ```
-
-const transceiver = peerConnection.addTransceiver(track, {
-
-  direction: "sendonly",
-
-  sendEncodings: [
-
-    { scaleResolutionDownBy: 1, rid: "f" },
-
-    { scaleResolutionDownBy: 2, rid: "h" },
-
-    { scaleResolutionDownBy: 4, rid: "q" },
-
-  ],
-
-});
-
-
+const transceiver = peerConnection.addTransceiver(track, {  direction: "sendonly",  sendEncodings: [    { scaleResolutionDownBy: 1, rid: "f" },    { scaleResolutionDownBy: 2, rid: "h" },    { scaleResolutionDownBy: 4, rid: "q" },  ],});
 ```
 
 ## Example

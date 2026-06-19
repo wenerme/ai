@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,21 +25,19 @@ Workers currently only implements an identity transform stream, a type of transf
 JavaScript
 
 ```
-
 let { readable, writable } = new TransformStream();
-
-
 ```
 
-* `TransformStream()` TransformStream  
-   * Returns a new identity transform stream.
+* `TransformStream()` TransformStream
+
+  * Returns a new identity transform stream.
 
 ## Properties
 
 * `readable` ReadableStream  
-   * An instance of a `ReadableStream`.
+  * An instance of a `ReadableStream`.
 * `writable` WritableStream  
-   * An instance of a `WritableStream`.
+  * An instance of a `WritableStream`.
 
 ---
 
@@ -54,21 +52,19 @@ The `IdentityTransformStream` readable side supports [bring your own buffer (BYO
 JavaScript
 
 ```
-
 let { readable, writable } = new IdentityTransformStream();
-
-
 ```
 
-* `IdentityTransformStream()` IdentityTransformStream  
-   * Returns a new identity transform stream.
+* `IdentityTransformStream()` IdentityTransformStream
+
+  * Returns a new identity transform stream.
 
 ### Properties
 
 * `readable` ReadableStream  
-   * An instance of a `ReadableStream`.
+  * An instance of a `ReadableStream`.
 * `writable` WritableStream  
-   * An instance of a `WritableStream`.
+  * An instance of a `WritableStream`.
 
 ---
 
@@ -81,22 +77,20 @@ The `FixedLengthStream` is a specialization of `IdentityTransformStream` that li
 JavaScript
 
 ```
-
 let { readable, writable } = new FixedLengthStream(1000);
-
-
 ```
 
-* `FixedLengthStream(length)` FixedLengthStream  
-   * Returns a new identity transform stream.  
-   * `length` maybe a `number` or `bigint` with a maximum value of `2^53 - 1`.
+* `FixedLengthStream(length)` FixedLengthStream
+
+  * Returns a new identity transform stream.
+  * `length` maybe a `number` or `bigint` with a maximum value of `2^53 - 1`.
 
 ### Properties
 
 * `readable` ReadableStream  
-   * An instance of a `ReadableStream`.
+  * An instance of a `ReadableStream`.
 * `writable` WritableStream  
-   * An instance of a `WritableStream`.
+  * An instance of a `WritableStream`.
 
 ---
 

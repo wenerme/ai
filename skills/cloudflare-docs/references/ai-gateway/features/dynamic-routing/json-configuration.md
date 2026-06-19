@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -15,18 +15,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 Instead of using the **dashboard editor UI** to define the route graph, you can do it using the REST API. Routes are internally represented using a simple JSON structure:
 
 ```
-
-{
-
-  "id": "<route id>",
-
-  "name": "<route name>",
-
-  "elements": [<array of elements>]
-
-}
-
-
+{  "id": "<route id>",  "name": "<route name>",  "elements": [<array of elements>]}
 ```
 
 ## Supported elements
@@ -39,25 +28,10 @@ Marks the beginning of a route. Every route must start with a Start element.
 
 * **Inputs**: None
 * **Outputs**:  
-   * `next`: Forwards the unchanged request to the next element
+  * `next`: Forwards the unchanged request to the next element
 
 ```
-
-{
-
-  "id": "<id>",
-
-  "type": "start",
-
-  "outputs": {
-
-    "next": { "elementId": "<id>" }
-
-  }
-
-}
-
-
+{  "id": "<id>",  "type": "start",  "outputs": {    "next": { "elementId": "<id>" }  }}
 ```
 
 ### Conditional Element (If/Else)
@@ -66,40 +40,13 @@ Evaluates a condition based on request parameters and routes the request accordi
 
 * **Inputs**: Request
 * **Outputs**:  
-   * `true`: Forwards request to provided element if condition evaluates to true  
-   * `false`: Forwards request to provided element if condition evaluates to false
+  * `true`: Forwards request to provided element if condition evaluates to true
+  * `false`: Forwards request to provided element if condition evaluates to false
 
 `conditions` supports MongoDB-like operators such as `$eq`, `$ne`, `$in`, `$and`, and `$or`.
 
 ```
-
-{
-
-  "id": "<id>",
-
-  "type": "conditional",
-
-  "properties": {
-
-    "conditions": {
-
-      "metadata.plan": { "$eq": "free" }
-
-    }
-
-  },
-
-  "outputs": {
-
-    "true": { "elementId": "<id>" },
-
-    "false": { "elementId": "<id>" }
-
-  }
-
-}
-
-
+{  "id": "<id>",  "type": "conditional",  "properties": {    "conditions": {      "metadata.plan": { "$eq": "free" }    }  },  "outputs": {    "true": { "elementId": "<id>" },    "false": { "elementId": "<id>" }  }}
 ```
 
 ### Percentage Split
@@ -108,29 +55,10 @@ Routes requests probabilistically across multiple outputs, useful for A/B testin
 
 * **Inputs**: Request
 * **Outputs**: Up to 5 named percentage outputs  
-   * Each output key (for example, `"10%"`) is the probability for that branch, and the keys must sum to 100%
+  * Each output key (for example, `"10%"`) is the probability for that branch, and the keys must sum to 100%
 
 ```
-
-{
-
-  "id": "<id>",
-
-  "type": "percentage",
-
-  "outputs": {
-
-    "10%": { "elementId": "<id>" },
-
-    "40%": { "elementId": "<id>" },
-
-    "50%": { "elementId": "<id>" }
-
-  }
-
-}
-
-
+{  "id": "<id>",  "type": "percentage",  "outputs": {    "10%": { "elementId": "<id>" },    "40%": { "elementId": "<id>" },    "50%": { "elementId": "<id>" }  }}
 ```
 
 ### Rate/Budget Limit
@@ -139,8 +67,8 @@ Apply limits based on request metadata. Supports both count-based and cost-based
 
 * **Inputs**: Request
 * **Outputs**:  
-   * `success`: Forwards request to provided element if request is not rate limited  
-   * `fallback`: Optional output for rate-limited requests (route terminates if not provided)
+  * `success`: Forwards request to provided element if request is not rate limited
+  * `fallback`: Optional output for rate-limited requests (route terminates if not provided)
 
 **Properties**:
 
@@ -150,36 +78,7 @@ Apply limits based on request metadata. Supports both count-based and cost-based
 * `window`: Time window in seconds
 
 ```
-
-{
-
-  "id": "<id>",
-
-  "type": "rate",
-
-  "properties": {
-
-    "limitType": "count",
-
-    "key": "metadata.user_id",
-
-    "limit": 100,
-
-    "window": 3600
-
-  },
-
-  "outputs": {
-
-    "success": { "elementId": "node_model_workers_ai" },
-
-    "fallback": { "elementId": "node_model_openai_mini" }
-
-  }
-
-}
-
-
+{  "id": "<id>",  "type": "rate",  "properties": {    "limitType": "count",    "key": "metadata.user_id",    "limit": 100,    "window": 3600  },  "outputs": {    "success": { "elementId": "node_model_workers_ai" },    "fallback": { "elementId": "node_model_openai_mini" }  }}
 ```
 
 ### Model
@@ -188,8 +87,8 @@ Executes inference using a specified model and provider with configurable timeou
 
 * **Inputs**: Request
 * **Outputs**:  
-   * `success`: Forwards request to provided element if model successfully starts streaming a response  
-   * `fallback`: Optional output if model fails after all retries or times out
+  * `success`: Forwards request to provided element if model successfully starts streaming a response
+  * `fallback`: Optional output if model fails after all retries or times out
 
 **Properties**:
 
@@ -199,36 +98,7 @@ Executes inference using a specified model and provider with configurable timeou
 * `retries`: Number of retry attempts
 
 ```
-
-{
-
-  "id": "<id>",
-
-  "type": "model",
-
-  "properties": {
-
-    "provider": "openai",
-
-    "model": "gpt-4o-mini",
-
-    "timeout": 60000,
-
-    "retries": 4
-
-  },
-
-  "outputs": {
-
-    "success": { "elementId": "<id>" },
-
-    "fallback": { "elementId": "<id>" }
-
-  }
-
-}
-
-
+{  "id": "<id>",  "type": "model",  "properties": {    "provider": "openai",    "model": "gpt-4o-mini",    "timeout": 60000,    "retries": 4  },  "outputs": {    "success": { "elementId": "<id>" },    "fallback": { "elementId": "<id>" }  }}
 ```
 
 ### End element
@@ -239,18 +109,7 @@ Marks the end of a route. Returns the last successful model response, or an erro
 * **Outputs**: None (provide an empty `outputs` object)
 
 ```
-
-{
-
-  "id": "<id>",
-
-  "type": "end",
-
-  "outputs": {}
-
-}
-
-
+{  "id": "<id>",  "type": "end",  "outputs": {}}
 ```
 
 ```json

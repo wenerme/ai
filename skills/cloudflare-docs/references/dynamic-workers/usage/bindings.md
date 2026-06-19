@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dynamic-workers/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -36,21 +36,8 @@ To create a custom binding, your loader Worker needs to implement a [WorkerEntry
 TypeScript
 
 ```
-
 import { WorkerEntrypoint } from "cloudflare:workers";
-
-
-export class ChatRoom extends WorkerEntrypoint {
-
-  async post(text: string): Promise<void> {
-
-    // Your implementation here
-
-  }
-
-}
-
-
+export class ChatRoom extends WorkerEntrypoint {  async post(text: string): Promise<void> {    // Your implementation here  }}
 ```
 
 #### Step 2: Pass it to the Dynamic Worker
@@ -60,19 +47,8 @@ Your loader Worker will then create an instance of the exported class, called a 
 TypeScript
 
 ```
-
 let chatRoom = ctx.exports.ChatRoom({ props: { roomName: "#bot-chat" } });
-
-
-let worker = env.LOADER.load({
-
-  env: { CHAT_ROOM: chatRoom },
-
-  // ...
-
-});
-
-
+let worker = env.LOADER.load({  env: { CHAT_ROOM: chatRoom },  // ...});
 ```
 
 From the Dynamic Worker's perspective, `CHAT_ROOM` just looks like a regular binding with methods it can call:
@@ -80,12 +56,7 @@ From the Dynamic Worker's perspective, `CHAT_ROOM` just looks like a regular bin
 TypeScript
 
 ```
-
-// Inside the Dynamic Worker
-
-await this.env.CHAT_ROOM.post("Hello!");
-
-
+// Inside the Dynamic Workerawait this.env.CHAT_ROOM.post("Hello!");
 ```
 
 #### Step 3: Customize per user with props
@@ -95,14 +66,7 @@ One class can serve many different Dynamic Workers. Instead of defining a separa
 TypeScript
 
 ```
-
-// Same class, different props per user
-
-let aliceRoom = ctx.exports.ChatRoom({ props: { roomName: "#alice", apiKey: ALICE_KEY } });
-
-let bobRoom   = ctx.exports.ChatRoom({ props: { roomName: "#bob", apiKey: BOB_KEY } });
-
-
+// Same class, different props per userlet aliceRoom = ctx.exports.ChatRoom({ props: { roomName: "#alice", apiKey: ALICE_KEY } });let bobRoom   = ctx.exports.ChatRoom({ props: { roomName: "#bob", apiKey: BOB_KEY } });
 ```
 
 When the Dynamic Worker calls a method on the binding, it's actually making a call back to your loader Worker, that's where the method runs. Inside that method, you can read the `props` via [this.ctx.props](https://developers.cloudflare.com/workers/runtime-apis/context#props). Only the loader Worker has access to the props, the Dynamic Worker never sees them.
@@ -110,22 +74,7 @@ When the Dynamic Worker calls a method on the binding, it's actually making a ca
 TypeScript
 
 ```
-
-export class ChatRoom extends WorkerEntrypoint<Cloudflare.Env, ChatRoomProps> {
-
-  async post(text: string): Promise<void> {
-
-    // Props are set when the stub is created — the Dynamic Worker never sees them
-
-    let roomName = this.ctx.props.roomName;
-
-    await postToChat(roomName, text);
-
-  }
-
-}
-
-
+export class ChatRoom extends WorkerEntrypoint<Cloudflare.Env, ChatRoomProps> {  async post(text: string): Promise<void> {    // Props are set when the stub is created — the Dynamic Worker never sees them    let roomName = this.ctx.props.roomName;    await postToChat(roomName, text);  }}
 ```
 
 ### Example: Chat room agent
@@ -137,42 +86,11 @@ You define a `ChatRoom` class in your parent Worker. This class has a `post` met
 TypeScript
 
 ```
-
 import { WorkerEntrypoint } from "cloudflare:workers";
-
-
-export class ChatRoom extends WorkerEntrypoint<Cloudflare.Env, ChatRoomProps> {
-
-  async post(text: string): Promise<void> {
-
-    let { apiKey, botName, roomName } = this.ctx.props;
-
-
-    // Prefix the message with the bot's name.
-
-    text = `[${botName}]: ${text}`;
-
-
-    // Send it to the chat service.
-
-    await postToChat(apiKey, roomName, text);
-
-  }
-
-}
-
-
-type ChatRoomProps = {
-
-  apiKey: string;
-
-  roomName: string;
-
-  botName: string;
-
-};
-
-
+export class ChatRoom extends WorkerEntrypoint<Cloudflare.Env, ChatRoomProps> {  async post(text: string): Promise<void> {    let { apiKey, botName, roomName } = this.ctx.props;
+    // Prefix the message with the bot's name.    text = `[${botName}]: ${text}`;
+    // Send it to the chat service.    await postToChat(apiKey, roomName, text);  }}
+type ChatRoomProps = {  apiKey: string;  roomName: string;  botName: string;};
 ```
 
 You export one `ChatRoom` class, but each stub you create can have different `props` — a different room name, a different API key, a different bot name. The `props` are set when you create the stub, and the Dynamic Worker never sees them.
@@ -182,64 +100,9 @@ Now pass it to a Dynamic Worker:
 TypeScript
 
 ```
-
-// Create a stub scoped to a specific room.
-
-let chatRoom = ctx.exports.ChatRoom({
-
-  props: {
-
-    apiKey,
-
-    roomName: "#bot-chat",
-
-    botName: "Robo",
-
-  },
-
-});
-
-
-let worker = env.LOADER.load({
-
-  env: {
-
-    CHAT_ROOM: chatRoom,
-
-  },
-
-  compatibilityDate: "$today",
-
-  mainModule: "index.js",
-
-  modules: {
-
-    "index.js": `
-
-      export class Agent extends WorkerEntrypoint {
-
-        async run() {
-
-          // This is all the Dynamic Worker sees.
-
-          await this.env.CHAT_ROOM.post("Hello!");
-
-        }
-
-      }
-
-    `,
-
-  },
-
-  globalOutbound: null,
-
-});
-
-
+// Create a stub scoped to a specific room.let chatRoom = ctx.exports.ChatRoom({  props: {    apiKey,    roomName: "#bot-chat",    botName: "Robo",  },});
+let worker = env.LOADER.load({  env: {    CHAT_ROOM: chatRoom,  },  compatibilityDate: "$today",  mainModule: "index.js",  modules: {    "index.js": `      export class Agent extends WorkerEntrypoint {        async run() {          // This is all the Dynamic Worker sees.          await this.env.CHAT_ROOM.post("Hello!");        }      }    `,  },  globalOutbound: null,});
 return worker.getEntrypoint("Agent").run();
-
-
 ```
 
 The agent just calls `this.env.CHAT_ROOM.post("Hello!")`. It has no way to post to a different room, see or use the API key, or change the bot name attached to its messages.
@@ -261,41 +124,10 @@ First, bind the KV namespace to your loader Worker. Then in your loader Worker, 
 TypeScript
 
 ```
-
 import { WorkerEntrypoint } from "cloudflare:workers";
-
-
-export class MyStorage extends WorkerEntrypoint<Cloudflare.Env, MyStorageProps> {
-
-  // Export this class from your loader Worker
-
-  // The Dynamic Worker will be able to call get() and put()
-
-  async get(key: string): Promise<string | null> {
-
-    // Prefix the key so this customer can only access their own data
-
-    return this.env.MY_KV.get(`${this.ctx.props.prefix}:${key}`);
-
-  }
-
-
-  async put(key: string, value: string): Promise<void> {
-
-    await this.env.MY_KV.put(`${this.ctx.props.prefix}:${key}`, value);
-
-  }
-
-}
-
-
-type MyStorageProps = {
-
-  prefix: string;
-
-};
-
-
+export class MyStorage extends WorkerEntrypoint<Cloudflare.Env, MyStorageProps> {  // Export this class from your loader Worker  // The Dynamic Worker will be able to call get() and put()  async get(key: string): Promise<string | null> {    // Prefix the key so this customer can only access their own data    return this.env.MY_KV.get(`${this.ctx.props.prefix}:${key}`);  }
+  async put(key: string, value: string): Promise<void> {    await this.env.MY_KV.put(`${this.ctx.props.prefix}:${key}`, value);  }}
+type MyStorageProps = {  prefix: string;};
 ```
 
 Then pass it to the Dynamic Worker with a customer-specific prefix:
@@ -303,25 +135,8 @@ Then pass it to the Dynamic Worker with a customer-specific prefix:
 TypeScript
 
 ```
-
-// Create a stub scoped to this customer's prefix
-
-let storage = ctx.exports.MyStorage({
-
-  props: { prefix: `customer-${customerId}` },
-
-});
-
-
-let worker = env.LOADER.load({
-
-  env: { STORAGE: storage },
-
-  // ...
-
-});
-
-
+// Create a stub scoped to this customer's prefixlet storage = ctx.exports.MyStorage({  props: { prefix: `customer-${customerId}` },});
+let worker = env.LOADER.load({  env: { STORAGE: storage },  // ...});
 ```
 
 The Dynamic Worker just uses it like any other binding:
@@ -329,14 +144,7 @@ The Dynamic Worker just uses it like any other binding:
 TypeScript
 
 ```
-
-// Inside the Dynamic Worker, it just sees STORAGE with get and put
-
-let value = await this.env.STORAGE.get("settings");
-
-await this.env.STORAGE.put("settings", "dark-mode");
-
-
+// Inside the Dynamic Worker, it just sees STORAGE with get and putlet value = await this.env.STORAGE.get("settings");await this.env.STORAGE.put("settings", "dark-mode");
 ```
 
 This same pattern works for any resource your loader Worker has access to — [R2](https://developers.cloudflare.com/r2/) buckets or [D1](https://developers.cloudflare.com/d1/) databases. Bind the resource to your loader Worker, export a class that uses it, and pass the stub to the Dynamic Worker.

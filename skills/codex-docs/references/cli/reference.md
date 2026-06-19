@@ -88,7 +88,7 @@ export const globalFlagOptions = [
     key: "--remote",
     type: "ws://host:port | wss://host:port | unix:// | unix://PATH",
     description:
-      "Connect the interactive TUI to a remote app-server endpoint over WebSocket or a Unix socket. Supported for `codex`, `codex resume`, and `codex fork`; other subcommands reject remote mode.",
+      "Connect to a remote app-server endpoint over WebSocket or a Unix socket. Supported for `codex`, `codex resume`, `codex fork`, `codex archive`, `codex delete`, and `codex unarchive`; other subcommands reject remote mode.",
   },
   {
     key: "--remote-auth-token-env",
@@ -179,6 +179,13 @@ export const commandOverview = [
     type: "stable",
     description:
       "Archive a saved interactive session by session ID or session name.",
+  },
+  {
+    key: "codex delete",
+    href: "/codex/cli/reference#codex-delete",
+    type: "stable",
+    description:
+      "Permanently delete a saved interactive session by session ID or session name.",
   },
   {
     key: "codex cloud",
@@ -1060,6 +1067,34 @@ export const archiveOptions = [
   },
 ];
 
+export const deleteOptions = [
+  {
+    key: "SESSION",
+    type: "session ID | session name",
+    description:
+      "Saved session to delete. Session IDs take precedence over session names.",
+  },
+  {
+    key: "--force",
+    type: "boolean",
+    defaultValue: "false",
+    description:
+      "Delete without prompting. The session argument must be a UUID; names still require interactive confirmation.",
+  },
+  {
+    key: "--remote",
+    type: "ws://host:port | wss://host:port | unix:// | unix://PATH",
+    description:
+      "Connect to a remote app-server endpoint before deleting the session.",
+  },
+  {
+    key: "--remote-auth-token-env",
+    type: "ENV_VAR",
+    description:
+      "Read a bearer token from this environment variable when `--remote` requires authentication.",
+  },
+];
+
 ## How to read this reference
 
 This page catalogs every documented Codex CLI command and flag. Use the interactive tables to search by key or description. Each section indicates whether the option is stable or experimental and calls out risky combinations.
@@ -1160,6 +1195,22 @@ codex unarchive <SESSION>
 ```
 
 <ConfigTable client:load options={archiveOptions} />
+
+### `codex delete`
+
+Permanently delete a saved interactive session by session ID or session name.
+Use this only when you want to remove the transcript instead of hiding it from
+active session lists.
+
+```bash
+codex delete <SESSION>
+codex delete <SESSION_UUID> --force
+```
+
+<ConfigTable client:load options={deleteOptions} />
+
+Use `--force` only with a session UUID. Named sessions still require
+confirmation so Codex doesn't delete a repeated or ambiguous name without a prompt.
 
 ### `codex cloud`
 

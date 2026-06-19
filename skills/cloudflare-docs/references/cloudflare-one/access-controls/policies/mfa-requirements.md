@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -36,9 +36,10 @@ To enforce an IdP MFA requirement on an application:
 4. If your application already has a policy containing an identity requirement, find it and select **Configure**.  
 Note  
 The policy should contain an Include rule that uses identity-based selectors. For example, the Include rule could allow users who are part of a [rule group](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/groups/), email domain, or identity provider group.
-5. Add the following rule to the policy:  
-| Rule type | Selector              | Value                                |  
-| --------- | --------------------- | ------------------------------------ |  
+5. Add the following rule to the policy:
+
+| Rule type | Selector              | Value                                |
+| --------- | --------------------- | ------------------------------------ |
 | Require   | Authentication method | mfa - multiple-factor authentication |
 6. Save the policy.
 
@@ -92,9 +93,9 @@ To configure MFA for an application:
 2. Find the application you want to configure and select **Configure**.
 3. Scroll down to **Authentication** and select the **MFA**.tab.
 4. Select one of the following options:  
-   * To inherit the organization setting, select **Respect global enforcement setting**.  
-   * To set custom requirements, select **Custom MFA settings**, then configure the [allowed MFA methods](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#supported-mfa-methods) and [authentication duration](#mfa-session-duration).  
-   * To exempt the application from MFA, select **Disable MFA**.
+  * To inherit the organization setting, select **Respect global enforcement setting**.
+  * To set custom requirements, select **Custom MFA settings**, then configure the [allowed MFA methods](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#supported-mfa-methods) and [authentication duration](#mfa-session-duration).
+  * To exempt the application from MFA, select **Disable MFA**.
 5. Select **Save**.
 
 ### Configure independent MFA for a policy
@@ -104,9 +105,9 @@ Each policy has the same three MFA options described in [Configure independent M
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Policies**.
 2. Choose an **Allow** policy and select **Configure**.
 3. Under **Multi-factor authentication (MFA)**, select an option:  
-   * To inherit the application or organization setting, select **Respect global enforcement setting**.  
-   * To set custom requirements for users who match this policy, select **Custom MFA settings**, then configure the [allowed MFA methods](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#supported-mfa-methods) and [authentication duration](#mfa-session-duration).  
-   * To exempt users who match this policy from MFA, select **Disable MFA**.
+  * To inherit the application or organization setting, select **Respect global enforcement setting**.
+  * To set custom requirements for users who match this policy, select **Custom MFA settings**, then configure the [allowed MFA methods](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#supported-mfa-methods) and [authentication duration](#mfa-session-duration).
+  * To exempt users who match this policy from MFA, select **Disable MFA**.
 4. Select **Save**.
 
 ### MFA session duration

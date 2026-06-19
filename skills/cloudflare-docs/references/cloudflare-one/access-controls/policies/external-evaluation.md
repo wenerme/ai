@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -49,91 +49,28 @@ npx wrangler kv namespace create "KV"
 ```  
 The command will output the binding name and KV namespace ID, for example  
 ```  
-  [[kv_namespaces]]  
-   binding = "KV"  
-   id = "YOUR_KV_NAMESPACE_ID"  
+  [[kv_namespaces]]   binding = "KV"   id = "YOUR_KV_NAMESPACE_ID"  
 ```
-4. Open the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) in an editor and insert the following:  
-   * `[[kv_namespaces]]`: Add the output generated in the previous step.  
-   * `<TEAM_NAME>`: your Cloudflare One team name.
+4. Open the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) in an editor and insert the following:
 
-* [  wrangler.jsonc ](#tab-panel-7165)
-* [  wrangler.toml ](#tab-panel-7166)
+  * `[[kv_namespaces]]`: Add the output generated in the previous step.
+  * `<TEAM_NAME>`: your Cloudflare One team name.
+
+* [  wrangler.jsonc ](#tab-panel-7241)
+* [  wrangler.toml ](#tab-panel-7242)
 
 JSONC
 
 ```
-
-{
-
-  "$schema": "./node_modules/wrangler/config-schema.json",
-
-  "name": "my-worker",
-
-  "workers_dev": true,
-
-  // Set this to today's date
-
-  "compatibility_date": "2026-06-17",
-
-  "main": "index.js",
-
-  "kv_namespaces": [
-
-    {
-
-      "binding": "KV",
-
-      "id": "YOUR_KV_NAMESPACE_ID"
-
-    }
-
-  ],
-
-  "vars": {
-
-    "TEAM_DOMAIN": "<TEAM_NAME>.cloudflareaccess.com",
-
-    "DEBUG": false
-
-  }
-
-}
-
-
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "my-worker",  "workers_dev": true,  // Set this to today's date  "compatibility_date": "2026-06-18",  "main": "index.js",  "kv_namespaces": [    {      "binding": "KV",      "id": "YOUR_KV_NAMESPACE_ID"    }  ],  "vars": {    "TEAM_DOMAIN": "<TEAM_NAME>.cloudflareaccess.com",    "DEBUG": false  }}
 ```
 
 TOML
 
 ```
-
-"$schema" = "./node_modules/wrangler/config-schema.json"
-
-name = "my-worker"
-
-workers_dev = true
-
-# Set this to today's date
-
-compatibility_date = "2026-06-17"
-
-main = "index.js"
-
-
-[[kv_namespaces]]
-
-binding = "KV"
-
-id = "YOUR_KV_NAMESPACE_ID"
-
-
-[vars]
-
-TEAM_DOMAIN = "<TEAM_NAME>.cloudflareaccess.com"
-
-DEBUG = false
-
-
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "my-worker"workers_dev = true# Set this to today's datecompatibility_date = "2026-06-18"main = "index.js"
+[[kv_namespaces]]binding = "KV"id = "YOUR_KV_NAMESPACE_ID"
+[vars]TEAM_DOMAIN = "<TEAM_NAME>.cloudflareaccess.com"DEBUG = false
 ```
 
 ### 2\. Program your business logic
@@ -158,9 +95,10 @@ The Worker will be deployed to your `*.workers.dev` subdomain at `my-worker.<YOU
 To generate an RSA private/public key pair:
 
 1. Open a browser and go to `https://my-worker.<YOUR_SUBDOMAIN>.workers.dev/keys`.
-2. (Optional) Verify that the key has been stored in the `KV` namespace:  
-   1. In the Cloudflare dashboard, go to the **Workers KV** page.[ Go to **Workers KV** ](https://dash.cloudflare.com/?to=/:account/workers/kv/namespaces)  
-   2. Select **View** next to `my-worker-KV`.
+2. (Optional) Verify that the key has been stored in the `KV` namespace:
+
+  1. In the Cloudflare dashboard, go to the **Workers KV** page. [ Go to **Workers KV** ](https://dash.cloudflare.com/?to=/:account/workers/kv/namespaces)
+  2. Select **View** next to `my-worker-KV`.
 
 Other key formats (such as DSA) are not supported at this time.
 
@@ -207,18 +145,14 @@ The session logs should show an incoming and outgoing JWT. The incoming JWT was 
 The incoming JWT should contain the user's identity data. The outgoing JWT should look similar to:  
 JavaScript  
 ```  
-{  
-"success": true,  
-"iat": 1655409315,  
-"exp": 1655409375,  
-"nonce": "9J2E9Xg6wYj8tlnA5MV4Zgp6t8rzmS0Q"  
-}  
+{"success": true,"iat": 1655409315,"exp": 1655409375,"nonce": "9J2E9Xg6wYj8tlnA5MV4Zgp6t8rzmS0Q"}  
 ```  
-Access checks the outgoing JWT for all of the following criteria:  
-   * Token was signed by **Keys URL**.  
-   * Expiration date has not elapsed.  
-   * API returns `"success": true`.  
-   * `nonce` is unchanged from the incoming JWT. The `nonce` value is unique per request.  
+Access checks the outgoing JWT for all of the following criteria:
+
+  * Token was signed by **Keys URL**.
+  * Expiration date has not elapsed.
+  * API returns `"success": true`.
+  * `nonce` is unchanged from the incoming JWT. The `nonce` value is unique per request.  
 If any condition fails, the External Evaluation rule evaluates to false.
 
 ```json

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -49,10 +49,10 @@ You cannot delete the primary certificate if secondary certificates are present 
 
 ## Availability
 
-| Free                  | Pro | Business | Enterprise            |                                                               |
-| --------------------- | --- | -------- | --------------------- | ------------------------------------------------------------- |
-| Availability          | No  | No       | Yes                   | Yes                                                           |
-| Certificates included | 0   | 0        | 1 Modern and 1 Legacy | 1 Modern (can purchase more) and 1 Legacy (can purchase more) |
+|                       | Free | Pro | Business              | Enterprise                                                    |
+| --------------------- | ---- | --- | --------------------- | ------------------------------------------------------------- |
+| Availability          | No   | No  | Yes                   | Yes                                                           |
+| Certificates included | 0    | 0   | 1 Modern and 1 Legacy | 1 Modern (can purchase more) and 1 Legacy (can purchase more) |
 
 ## Related features
 

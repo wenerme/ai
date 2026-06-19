@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -156,105 +156,19 @@ ReactWeb ComponentsAngular
 Initialize the SDK and add an event handler for breakout rooms:
 
 ```
-
-import {
-
-  RealtimeKitProvider,
-
-  useRealtimeKitClient,
-
-} from "@cloudflare/realtimekit-react";
-
-import { RtkMeeting } from "@cloudflare/realtimekit-react-ui";
-
-import { useEffect, useState } from "react";
-
-
-function App() {
-
-  const [meeting, initMeeting] = useRealtimeKitClient();
-
-  const [authToken, setAuthToken] = useState("<participant_auth_token>");
-
-
-  useEffect(() => {
-
-    if (authToken) {
-
-      initMeeting({
-
-        authToken: authToken,
-
-      });
-
-    }
-
-  }, [authToken]);
-
-
-  // Add event handler for breakout rooms
-
-  useEffect(() => {
-
-    if (meeting) {
-
-      meeting.connectedMeetings.on("meetingChanged", (newMeeting) => {
-
-        // Meeting object is automatically updated in React
-
-        console.log("Switched to breakout room or main meeting");
-
-      });
-
-    }
-
-  }, [meeting]);
-
-
-  return (
-
-    <RealtimeKitProvider value={meeting}>
-
-      <RtkMeeting showSetupScreen={true} meeting={meeting} />
-
-    </RealtimeKitProvider>
-
-  );
-
-}
-
-
+import {  RealtimeKitProvider,  useRealtimeKitClient,} from "@cloudflare/realtimekit-react";import { RtkMeeting } from "@cloudflare/realtimekit-react-ui";import { useEffect, useState } from "react";
+function App() {  const [meeting, initMeeting] = useRealtimeKitClient();  const [authToken, setAuthToken] = useState("<participant_auth_token>");
+  useEffect(() => {    if (authToken) {      initMeeting({        authToken: authToken,      });    }  }, [authToken]);
+  // Add event handler for breakout rooms  useEffect(() => {    if (meeting) {      meeting.connectedMeetings.on("meetingChanged", (newMeeting) => {        // Meeting object is automatically updated in React        console.log("Switched to breakout room or main meeting");      });    }  }, [meeting]);
+  return (    <RealtimeKitProvider value={meeting}>      <RtkMeeting showSetupScreen={true} meeting={meeting} />    </RealtimeKitProvider>  );}
 ```
 
 The `meetingChanged` event is triggered when a participant switches between the main meeting and breakout rooms. In React, the meeting object is automatically managed by the provider.
 
 ```
-
-<script type="module">
-
-  import RealtimeKitClient from "https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit@latest/dist/index.es.js";
-
-
-  let meeting = await RealtimeKitClient.init({
-
-    authToken: "<participant_auth_token>",
-
-  });
-
-
-  // Add event handler for breakout rooms
-
-  meeting.connectedMeetings.on("meetingChanged", (newMeeting) => {
-
-    meeting = newMeeting;
-
-    document.querySelector("rtk-meeting").meeting = meeting;
-
-  });
-
-</script>
-
-
+<script type="module">  import RealtimeKitClient from "https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit@latest/dist/index.es.js";
+  let meeting = await RealtimeKitClient.init({    authToken: "<participant_auth_token>",  });
+  // Add event handler for breakout rooms  meeting.connectedMeetings.on("meetingChanged", (newMeeting) => {    meeting = newMeeting;    document.querySelector("rtk-meeting").meeting = meeting;  });</script>
 ```
 
 The `meetingChanged` event is triggered when a participant switches between the main meeting and breakout rooms. Update the meeting object reference when this event fires.
@@ -262,66 +176,11 @@ The `meetingChanged` event is triggered when a participant switches between the 
 TypeScript
 
 ```
-
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
-
-import RealtimeKitClient from '@cloudflare/realtimekit';
-
-import { RtkMeeting } from '@cloudflare/realtimekit-angular';
-
-
-@Component({
-
-  selector: 'app-root',
-
-  template: `<rtk-meeting #myid [showSetupScreen]="true"></rtk-meeting>`
-
-})
-
-export class AppComponent implements AfterViewInit {
-
-  @ViewChild('myid') meetingComponent: RtkMeeting;
-
-  rtkMeeting: RealtimeKitClient;
-
-
-  async ngAfterViewInit() {
-
-    let meeting = await RealtimeKitClient.init({
-
-      authToken: '<participant_auth_token>',
-
-    });
-
-
-    // Add event handler for breakout rooms
-
-    meeting.connectedMeetings.on('meetingChanged', (newMeeting) => {
-
-      meeting = newMeeting;
-
-      if (this.meetingComponent) {
-
-        this.meetingComponent.meeting = meeting;
-
-      }
-
-    });
-
-
-    this.rtkMeeting = meeting;
-
-    if (this.meetingComponent) {
-
-      this.meetingComponent.meeting = meeting;
-
-    }
-
-  }
-
-}
-
-
+import { Component, ViewChild, AfterViewInit } from '@angular/core';import RealtimeKitClient from '@cloudflare/realtimekit';import { RtkMeeting } from '@cloudflare/realtimekit-angular';
+@Component({  selector: 'app-root',  template: `<rtk-meeting #myid [showSetupScreen]="true"></rtk-meeting>`})export class AppComponent implements AfterViewInit {  @ViewChild('myid') meetingComponent: RtkMeeting;  rtkMeeting: RealtimeKitClient;
+  async ngAfterViewInit() {    let meeting = await RealtimeKitClient.init({      authToken: '<participant_auth_token>',    });
+    // Add event handler for breakout rooms    meeting.connectedMeetings.on('meetingChanged', (newMeeting) => {      meeting = newMeeting;      if (this.meetingComponent) {        this.meetingComponent.meeting = meeting;      }    });
+    this.rtkMeeting = meeting;    if (this.meetingComponent) {      this.meetingComponent.meeting = meeting;    }  }}
 ```
 
 The `meetingChanged` event is triggered when a participant switches between the main meeting and breakout rooms. Update the meeting object reference when this event fires.
@@ -331,70 +190,11 @@ The `meetingChanged` event is triggered when a participant switches between the 
 Use the default meeting UI component which includes built-in breakout room support:
 
 ```
-
-import {
-
-  RealtimeKitProvider,
-
-  useRealtimeKitClient,
-
-} from "@cloudflare/realtimekit-react";
-
-import { RtkMeeting } from "@cloudflare/realtimekit-react-ui";
-
-import { useEffect, useState } from "react";
-
-
-function App() {
-
-  const [meeting, initMeeting] = useRealtimeKitClient();
-
-  const [authToken, setAuthToken] = useState("<participant_auth_token>");
-
-
-  useEffect(() => {
-
-    if (authToken) {
-
-      initMeeting({
-
-        authToken: authToken,
-
-      });
-
-    }
-
-  }, [authToken]);
-
-
-  useEffect(() => {
-
-    if (meeting) {
-
-      meeting.connectedMeetings.on("meetingChanged", (newMeeting) => {
-
-        console.log("Switched to breakout room or main meeting");
-
-      });
-
-    }
-
-  }, [meeting]);
-
-
-  return (
-
-    <RealtimeKitProvider value={meeting}>
-
-      <RtkMeeting showSetupScreen={true} meeting={meeting} />
-
-    </RealtimeKitProvider>
-
-  );
-
-}
-
-
+import {  RealtimeKitProvider,  useRealtimeKitClient,} from "@cloudflare/realtimekit-react";import { RtkMeeting } from "@cloudflare/realtimekit-react-ui";import { useEffect, useState } from "react";
+function App() {  const [meeting, initMeeting] = useRealtimeKitClient();  const [authToken, setAuthToken] = useState("<participant_auth_token>");
+  useEffect(() => {    if (authToken) {      initMeeting({        authToken: authToken,      });    }  }, [authToken]);
+  useEffect(() => {    if (meeting) {      meeting.connectedMeetings.on("meetingChanged", (newMeeting) => {        console.log("Switched to breakout room or main meeting");      });    }  }, [meeting]);
+  return (    <RealtimeKitProvider value={meeting}>      <RtkMeeting showSetupScreen={true} meeting={meeting} />    </RealtimeKitProvider>  );}
 ```
 
 Note
@@ -404,44 +204,11 @@ The Default Meeting UI (`RtkMeeting` component) automatically joins the session,
 The `showSetupScreen` property controls whether the setup screen is displayed, allowing participants to preview their audio and video before joining the session.
 
 ```
-
-<body>
-
-  <rtk-meeting id="my-meeting"></rtk-meeting>
-
-
-  <script type="module">
-
-    import RealtimeKitClient from "https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit@latest/dist/index.es.js";
-
-
-    let meeting = await RealtimeKitClient.init({
-
-      authToken: "<participant_auth_token>",
-
-    });
-
-
-    // Add event handler for breakout rooms
-
-    meeting.connectedMeetings.on("meetingChanged", (newMeeting) => {
-
-      meeting = newMeeting;
-
-      document.querySelector("rtk-meeting").meeting = meeting;
-
-    });
-
-
-    document.querySelector("rtk-meeting").showSetupScreen = true;
-
-    document.querySelector("rtk-meeting").meeting = meeting;
-
-  </script>
-
-</body>
-
-
+<body>  <rtk-meeting id="my-meeting"></rtk-meeting>
+  <script type="module">    import RealtimeKitClient from "https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit@latest/dist/index.es.js";
+    let meeting = await RealtimeKitClient.init({      authToken: "<participant_auth_token>",    });
+    // Add event handler for breakout rooms    meeting.connectedMeetings.on("meetingChanged", (newMeeting) => {      meeting = newMeeting;      document.querySelector("rtk-meeting").meeting = meeting;    });
+    document.querySelector("rtk-meeting").showSetupScreen = true;    document.querySelector("rtk-meeting").meeting = meeting;  </script></body>
 ```
 
 Note
@@ -451,75 +218,17 @@ The Default Meeting UI (`rtk-meeting` component) automatically joins the session
 The `showSetupScreen` property controls whether the setup screen is displayed, allowing participants to preview their audio and video before joining the session.
 
 ```
-
 <rtk-meeting #myid [showSetupScreen]="true"></rtk-meeting>
-
-
 ```
 
 TypeScript
 
 ```
-
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
-
-import RealtimeKitClient from '@cloudflare/realtimekit';
-
-import { RtkMeeting } from '@cloudflare/realtimekit-angular';
-
-
-@Component({
-
-  selector: 'app-root',
-
-  templateUrl: './app.component.html'
-
-})
-
-export class AppComponent implements AfterViewInit {
-
-  @ViewChild('myid') meetingComponent: RtkMeeting;
-
-  rtkMeeting: RealtimeKitClient;
-
-
-  async ngAfterViewInit() {
-
-    let meeting = await RealtimeKitClient.init({
-
-      authToken: '<participant_auth_token>',
-
-    });
-
-
-    // Add event handler for breakout rooms
-
-    meeting.connectedMeetings.on('meetingChanged', (newMeeting) => {
-
-      meeting = newMeeting;
-
-      if (this.meetingComponent) {
-
-        this.meetingComponent.meeting = meeting;
-
-      }
-
-    });
-
-
-    this.rtkMeeting = meeting;
-
-    if (this.meetingComponent) {
-
-      this.meetingComponent.meeting = meeting;
-
-    }
-
-  }
-
-}
-
-
+import { Component, ViewChild, AfterViewInit } from '@angular/core';import RealtimeKitClient from '@cloudflare/realtimekit';import { RtkMeeting } from '@cloudflare/realtimekit-angular';
+@Component({  selector: 'app-root',  templateUrl: './app.component.html'})export class AppComponent implements AfterViewInit {  @ViewChild('myid') meetingComponent: RtkMeeting;  rtkMeeting: RealtimeKitClient;
+  async ngAfterViewInit() {    let meeting = await RealtimeKitClient.init({      authToken: '<participant_auth_token>',    });
+    // Add event handler for breakout rooms    meeting.connectedMeetings.on('meetingChanged', (newMeeting) => {      meeting = newMeeting;      if (this.meetingComponent) {        this.meetingComponent.meeting = meeting;      }    });
+    this.rtkMeeting = meeting;    if (this.meetingComponent) {      this.meetingComponent.meeting = meeting;    }  }}
 ```
 
 Note

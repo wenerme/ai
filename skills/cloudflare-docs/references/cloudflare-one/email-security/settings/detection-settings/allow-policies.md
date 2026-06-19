@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -121,7 +121,8 @@ Below you can find a list of known services you can add when configuring an Acce
 `.*@.*\.freshdesk\.com`
 * Webroot  
 `167.89.85.54` `49.72.237.117`
-* Wombat Egress IPs  
+* Wombat Egress IPs
+
 **Training Platform**  
 `107.20.210.250` `52.1.14.157`
 * Phishing Assessment  
@@ -136,20 +137,20 @@ To configure allow policies:
 3. Select **Settings**, then go to **Detection settings** \> **Allow policies**.
 4. On the **Detection settings** page, select **Add a policy**.
 5. On the **Add an allow policy** page, enter the policy information:  
-   * **Input method**: Choose between **Manual input**, and **Uploading an allow policy**:  
-         * **Manual input**:  
-                  * **Action**: Select one of the following to choose how Email security will handle messages that match your criteria:  
-                              * **Trust sender**: Messages will bypass all detections and link following.  
-                              * **Exempt recipient**: Message to this recipient will bypass all detections.  
-                              * **Accept sender**: Messages from this sender will be exempted from Spam, Spoof, and Bulk dispositions. Refer to [Allow policy configuration use cases](#use-case-1) for use case examples on how to configure allow policies for accept sender.  
-         * **Rule type**: Specify the scope of your policy. Choose one of the following:  
-                  * **Email addresses**: Must be a valid email. Enter an email address whose emails are going to be exempted.  
-                  * **IP addresses**: This is the IP address of the email server. Any email address sent from this email server is going to be allowed. The IP address can only be IPv4\. IPv6 and CIDR are invalid entries.  
-                  * **Domains**: Must be a valid domain.  
-                  * **Regular expressions**: Must be valid Java expressions. Regular expressions are matched with fields related to the sender email address (envelope from, header from, reply-to), the originating IP address, and the server name for the email. For example, you can enter `.*@domain\.com` to exempt any email address that ends with `domain.com`.  
-         * **(Recommended) Sender verification**: This option enforces DMARC, SPF, or DKIM authentication. If you choose to enable this option, Email security will only honor policies that pass authentication.  
-                  * **Notes**: Provide additional information about your allow policy.  
-   * **Uploading an allow policy**: Upload a file no larger than 150 KB. The file can only contain `Pattern`, `Pattern Type`, `Verify Email`, `Trusted Sender`, `Exempt Recipient`, `Acceptable Sender`, `Notes` fields. The first row must be a header row. Refer to [CSV uploads](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/allow-policies/#csv-uploads) for an example file.
+  * **Input method**: Choose between **Manual input**, and **Uploading an allow policy**:  
+    * **Manual input**:  
+      * **Action**: Select one of the following to choose how Email security will handle messages that match your criteria:  
+        * **Trust sender**: Messages will bypass all detections and link following.
+        * **Exempt recipient**: Message to this recipient will bypass all detections.
+        * **Accept sender**: Messages from this sender will be exempted from Spam, Spoof, and Bulk dispositions. Refer to [Allow policy configuration use cases](#use-case-1) for use case examples on how to configure allow policies for accept sender.
+    * **Rule type**: Specify the scope of your policy. Choose one of the following:  
+      * **Email addresses**: Must be a valid email. Enter an email address whose emails are going to be exempted.
+      * **IP addresses**: This is the IP address of the email server. Any email address sent from this email server is going to be allowed. The IP address can only be IPv4\. IPv6 and CIDR are invalid entries.
+      * **Domains**: Must be a valid domain.
+      * **Regular expressions**: Must be valid Java expressions. Regular expressions are matched with fields related to the sender email address (envelope from, header from, reply-to), the originating IP address, and the server name for the email. For example, you can enter `.*@domain\.com` to exempt any email address that ends with `domain.com`.
+    * **(Recommended) Sender verification**: This option enforces DMARC, SPF, or DKIM authentication. If you choose to enable this option, Email security will only honor policies that pass authentication.  
+      * **Notes**: Provide additional information about your allow policy.
+  * **Uploading an allow policy**: Upload a file no larger than 150 KB. The file can only contain `Pattern`, `Pattern Type`, `Verify Email`, `Trusted Sender`, `Exempt Recipient`, `Acceptable Sender`, `Notes` fields. The first row must be a header row. Refer to [CSV uploads](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/allow-policies/#csv-uploads) for an example file.
 6. Select **Save**.
 
 Allow policy configuration use cases
@@ -201,12 +202,7 @@ You can upload a file no larger than 150 KB. The file can only contain `Pattern`
 An example file would look like this:
 
 ```
-
-Values, Rule Type, Sender Verification, Trusted Sender, Exempt Recipient, Acceptable Sender, Notes
-
-whale@notaphish.com, EMAIL, true, true, false, true, not a phish
-
-
+Values, Rule Type, Sender Verification, Trusted Sender, Exempt Recipient, Acceptable Sender, Noteswhale@notaphish.com, EMAIL, true, true, false, true, not a phish
 ```
 
 ## Export allow policies

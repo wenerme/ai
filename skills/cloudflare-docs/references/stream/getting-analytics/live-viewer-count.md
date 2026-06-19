@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -17,19 +17,13 @@ The Stream player has full support for live viewer counts by default. To get the
 Terminal window
 
 ```
-
 https://customer-<CODE>.cloudflarestream.com/<INPUT_ID>/views
-
-
 ```
 
 Below is a response for a live video with several active viewers:
 
 ```
-
 { "liveViewers": 113 }
-
-
 ```
 
 ```json

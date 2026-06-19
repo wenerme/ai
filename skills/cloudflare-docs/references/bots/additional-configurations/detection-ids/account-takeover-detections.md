@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -34,8 +34,8 @@ Cloudflare's [Managed Challenge](https://developers.cloudflare.com/cloudflare-ch
 
 To access account takeover detections:
 
-* [  New dashboard ](#tab-panel-6822)
-* [ Old dashboard ](#tab-panel-6823)
+* [  New dashboard ](#tab-panel-6898)
+* [ Old dashboard ](#tab-panel-6899)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -52,10 +52,7 @@ To access account takeover detections:
 Rule example
 
 ```
-
 (any(cf.bot_management.detection_ids[*] eq 201326593))
-
-
 ```
 
 ## Limit logins with account takeover detections
@@ -64,8 +61,8 @@ Rate limiting rules can limit the number of logins from a particular IP, JA4 fin
 
 To use rate limiting rules with account takeover detections:
 
-* [  New dashboard ](#tab-panel-6824)
-* [ Old dashboard ](#tab-panel-6825)
+* [  New dashboard ](#tab-panel-6900)
+* [ Old dashboard ](#tab-panel-6901)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

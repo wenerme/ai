@@ -6,37 +6,20 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
 # DVR for Live
 
-Stream Live supports "DVR mode" on an opt-in basis to allow viewers to rewind, resume, and fast-forward a live broadcast. To enable DVR mode, add the`dvrEnabled=true` query parameter to the Stream Player embed source or the HLS manifest URL.
+Stream Live supports "DVR mode" on an opt-in basis to allow viewers to rewind, resume, and fast-forward a live broadcast. To enable DVR mode, add the `dvrEnabled=true` query parameter to the Stream Player embed source or the HLS manifest URL.
 
 ## Stream Player
 
 Stream Player embed format
 
 ```
-
-<div style="position: relative; padding-top: 56.25%;">
-
-  <iframe
-
-    src="https://customer-<CODE>.cloudflarestream.com/<INPUT_ID|VIDEO_ID>/iframe?dvrEnabled=true"
-
-    style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;"
-
-    allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-
-    allowfullscreen="true"
-
-  ></iframe>
-
-</div>
-
-
+<div style="position: relative; padding-top: 56.25%;">  <iframe    src="https://customer-<CODE>.cloudflarestream.com/<INPUT_ID|VIDEO_ID>/iframe?dvrEnabled=true"    style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;"    allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"    allowfullscreen="true"  ></iframe></div>
 ```
 
 When DVR mode is enabled the Stream Player will:
@@ -50,10 +33,7 @@ When DVR mode is enabled the Stream Player will:
 HLS manifest URL format
 
 ```
-
 https://customer-<CODE>.cloudflarestream.com/<INPUT_ID|VIDEO_ID>/manifest/video.m3u8?dvrEnabled=true
-
-
 ```
 
 Custom players using a DVR-capable HLS manifest may need additional configuration to surface helpful controls or information. Refer to your player library for additional information.

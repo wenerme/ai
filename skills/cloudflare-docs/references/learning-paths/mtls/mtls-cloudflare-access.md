@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -31,90 +31,19 @@ In case you want to [create your own CA](https://developers.cloudflare.com/cloud
 1. Create a JSON file called `ca-csr.json`:
 
 ```
-
-{
-
-  "CN": "Cloudflare Access Testing CA",
-
-  "key": {
-
-    "algo": "rsa",
-
-    "size": 4096
-
-  },
-
-  "names": [
-
-    {
-
-      "C": "US",
-
-      "L": "LA",
-
-      "O": "Access Testing",
-
-      "OU": "CA",
-
-      "ST": "California"
-
-    }
-
-  ]
-
-}
-
-
+{  "CN": "Cloudflare Access Testing CA",  "key": {    "algo": "rsa",    "size": 4096  },  "names": [    {      "C": "US",      "L": "LA",      "O": "Access Testing",      "OU": "CA",      "ST": "California"    }  ]}
 ```
 
 1. Create a JSON file called `ca-config.json`:
 
 ```
-
-{
-
-  "signing": {
-
-    "default": {
-
-      "expiry": "8760h"
-
-    },
-
-    "profiles": {
-
-      "server": {
-
-        "usages": ["signing", "key encipherment", "server auth"],
-
-        "expiry": "8760h"
-
-      },
-
-      "client": {
-
-        "usages": ["signing", "key encipherment", "client auth"],
-
-        "expiry": "8760h"
-
-      }
-
-    }
-
-  }
-
-}
-
-
+{  "signing": {    "default": {      "expiry": "8760h"    },    "profiles": {      "server": {        "usages": ["signing", "key encipherment", "server auth"],        "expiry": "8760h"      },      "client": {        "usages": ["signing", "key encipherment", "client auth"],        "expiry": "8760h"      }    }  }}
 ```
 
 1. Run the following [cfssl](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/#test-mtls-using-cloudflare-pki) command to generate the CA certificate `ca.pem`:
 
 ```
-
 cfssl gencert -initca ca-csr.json | cfssljson -bare ca
-
-
 ```
 
 ## 2\. Create Client Certificates
@@ -122,42 +51,7 @@ cfssl gencert -initca ca-csr.json | cfssljson -bare ca
 1. In order to create the Client Certificates, you need to prepare the following JSON file called `client-csr.json`:
 
 ```
-
-{
-
-    "CN": "mtls-access.example.com",        # replace with your own hostname
-
-    "hosts": ["mtls-access.example.com"],   # replace with your own hostname
-
-    "key": {
-
-      "algo": "rsa",
-
-      "size": 4096
-
-    },
-
-    "names": [
-
-      {
-
-        "C": "US",
-
-        "L": "Austin",
-
-        "O": "Access",
-
-        "OU": "Access Admins",
-
-        "ST": "Texas"
-
-      }
-
-    ]
-
-  }
-
-
+{    "CN": "mtls-access.example.com",        # replace with your own hostname    "hosts": ["mtls-access.example.com"],   # replace with your own hostname    "key": {      "algo": "rsa",      "size": 4096    },    "names": [      {        "C": "US",        "L": "Austin",        "O": "Access",        "OU": "Access Admins",        "ST": "Texas"      }    ]  }
 ```
 
 1. Now you can run the following command to generate the Client Certificates, which will output the files `client.pem`, `client-key.pem` and `client.csr`:
@@ -165,10 +59,7 @@ cfssl gencert -initca ca-csr.json | cfssljson -bare ca
 Terminal window
 
 ```
-
 cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=client client-csr.json | cfssljson -bare client
-
-
 ```
 
 ## 3\. Add mTLS CA certificate to Cloudflare Access
@@ -198,19 +89,11 @@ With the Public and Private Client Certificates in the same directory, with this
 Terminal window
 
 ```
-
 curl -IXGET --cert client.pem --key client-key.pem https://mtls-access.example.com/
-
-
 ```
 
 ```
-
-HTTP/2 200
-
-server: cloudflare
-
-
+HTTP/2 200server: cloudflare
 ```
 
 Without the certificates, we would see the following:
@@ -218,19 +101,11 @@ Without the certificates, we would see the following:
 Terminal window
 
 ```
-
 curl -I https://mtls-access.example.com/mtls-test
-
-
 ```
 
 ```
-
-HTTP/2 401
-
-server: cloudflare
-
-
+HTTP/2 401server: cloudflare
 ```
 
 ```json

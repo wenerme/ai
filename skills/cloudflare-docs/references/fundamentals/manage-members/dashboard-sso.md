@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,15 +18,16 @@ Cloudflare offers single sign-on (SSO) for all customers who log in with a custo
 
 Cloudflare Dashboard SSO is available for free to all plans.
 
-| Free         | Pro | Business | Enterprise |     |
-| ------------ | --- | -------- | ---------- | --- |
-| Availability | Yes | Yes      | Yes        | Yes |
+|              | Free | Pro | Business | Enterprise |
+| ------------ | ---- | --- | -------- | ---------- |
+| Availability | Yes  | Yes | Yes      | Yes        |
 
 ## Prerequisites
 
-1. You must control your email domain and be able to add a TXT record to verify this.  
-   * Public email providers such as `@gmail.com` are not allowed.  
-   * Every user with that email domain must be an employee in your organization. For example, university domains such as `@harvard.edu` are not allowed because they include student emails.
+1. You must control your email domain and be able to add a TXT record to verify this.
+
+  * Public email providers such as `@gmail.com` are not allowed.
+  * Every user with that email domain must be an employee in your organization. For example, university domains such as `@harvard.edu` are not allowed because they include student emails.
 2. You must be a super administrator and be able to access the Cloudflare API.
 3. A Cloudflare Zero Trust organization with any subscription tier (including Free) must be created. To set up a Cloudflare Zero Trust organization, refer to [Create a Cloudflare Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/setup/#2-create-a-zero-trust-organization).
 
@@ -42,8 +43,8 @@ Warning
 
 You must create an [Account API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the role `SSO Connector Edit` and store it securely. This acts as a backup plan, allowing you to disable SSO via the API if you are accidentally locked out, such as due to changes in your IdP configuration later.
 
-* [ Dashboard ](#tab-panel-8585)
-* [ API ](#tab-panel-8586)
+* [ Dashboard ](#tab-panel-8661)
+* [ API ](#tab-panel-8662)
 
 1. Once you have configured an IdP in Cloudflare One, go to the **Members** page to manage SSO connectors.
 [ Go to **Members** ](https://dash.cloudflare.com/?to=/:account/members)
@@ -62,57 +63,17 @@ Using a command line terminal where you have already set the environment variabl
 cURL command
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{"email_domain":"{domain}"}'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{"email_domain":"{domain}"}'
 ```
 
 ```
-
-{
-
-  "success": true,
-
-  "errors": [],
-
-  "messages": [],
-
-  "result": {
-
-    "id": "c3ebcba5c20b42f73e111110d0be67d",
-
-    "enabled": false,
-
-    "email_domain": "cool.cats",
-
-    "verification": {
-
-      "code": "cloudflare_dashboard_sso=111111111",
-
-      "status": "pending"
-
-    },
-
-    "created_on": "2025-09-05T20:35:34Z"
-
-  }
-
-}
-
-
+{  "success": true,  "errors": [],  "messages": [],  "result": {    "id": "c3ebcba5c20b42f73e111110d0be67d",    "enabled": false,    "email_domain": "cool.cats",    "verification": {      "code": "cloudflare_dashboard_sso=111111111",      "status": "pending"    },    "created_on": "2025-09-05T20:35:34Z"  }}
 ```
 
 ## 3\. Verify domain ownership
 
-* [ Dashboard ](#tab-panel-8587)
-* [ API ](#tab-panel-8588)
+* [ Dashboard ](#tab-panel-8663)
+* [ API ](#tab-panel-8664)
 
 If you are unable to change your DNS records right away, the option to verify later is available. The verification process can be manually triggered from the actions menu for that connector in the list.
 
@@ -129,17 +90,11 @@ Copy the verification code (for example `cloudflare_dashboard_sso=1111111`) and 
 Terminal window
 
 ```
-
 dig cool.cats TXT +short
-
-
 ```
 
 ```
-
 "cloudflare_dashboard_sso=111111111"
-
-
 ```
 
 The `TXT` record must include the `cloudflare_dashboard_sso=` prefix along with the numerical code.
@@ -149,14 +104,7 @@ Cloudflare will automatically poll this DNS record until it is found or a timeou
 cURL command
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors/{sso_connector_id}/begin_verification" \
-
-  --request POST \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors/{sso_connector_id}/begin_verification" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Once the verification process has completed or timed out, you will receive an email notification with the verification result.
@@ -171,8 +119,8 @@ Once the verification process has completed and successfully verified domain own
 
 Domains that are associated with an already enabled connector belonging to a different account may not be enabled on a new account until disabled on the old account.
 
-* [ Dashboard ](#tab-panel-8589)
-* [ API ](#tab-panel-8590)
+* [ Dashboard ](#tab-panel-8665)
+* [ API ](#tab-panel-8666)
 
 Enable the connector by selecting **Enable** in the Actions menu for that connector in the list.
 
@@ -183,16 +131,7 @@ Enable the connector by running the following — again, replacing the `{account
 cURL command
 
 ```
-
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors/{sso_connector_id}" \
-
-  --request PATCH \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{"enabled": true}'
-
-
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors/{sso_connector_id}" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{"enabled": true}'
 ```
 
 ## Test your IdP before enforcement
@@ -269,61 +208,29 @@ If there is an issue with your SSO IdP provider, you can add an alternate IdP us
 
 1. [Add](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/identity%5Fproviders/methods/create/) one-time PIN login:  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Access: Organizations, Identity Providers, and Groups Write`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Access: Organizations, Identity Providers, and Groups Write`  
 Add an Access identity provider  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_providers" \  
-  --request POST \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "type": "onetimepin",  
-    "config": {}  
-  }'  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_providers" \  --request POST \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "type": "onetimepin",    "config": {}  }'  
 ```
 2. [Get](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/applications/methods/list/) the `id` of the `dash_sso` Access application. You can use [jq ↗](https://jqlang.github.io/jq/download/) to quickly find the correct application:  
 cURL command  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps" \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  | jq '.result[] | select(.type == "dash_sso")'  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  | jq '.result[] | select(.type == "dash_sso")'  
 ```
 
 ```
-
-   {
-
-     "id": "3537a672-e4d8-4d89-aab9-26cb622918a1",
-
-     "uid": "3537a672-e4d8-4d89-aab9-26cb622918a1",
-
-     "type": "dash_sso",
-
-     "name": "SSO App"
-
-     // ...
-
-   }
-
-
+   {     "id": "3537a672-e4d8-4d89-aab9-26cb622918a1",     "uid": "3537a672-e4d8-4d89-aab9-26cb622918a1",     "type": "dash_sso",     "name": "SSO App"     // ...   }
 ```
 
 1. Using the `id` obtained above, [update](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/applications/methods/update/) **SSO App** to accept all identity providers. To avoid overwriting your existing configuration, the PUT request body should contain all fields returned by the previous GET request.  
 Required API token permissions  
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
-   * `Access: Apps and Policies Write`  
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:  
+  * `Access: Apps and Policies Write`  
 Update an Access application  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/3537a672-e4d8-4d89-aab9-26cb622918a1" \  
-  --request PUT \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "id": "3537a672-e4d8-4d89-aab9-26cb622918a1",  
-    "uid": "3537a672-e4d8-4d89-aab9-26cb622918a1",  
-    "type": "dash_sso",  
-    "name": "SSO App",  
-    "allowed_idps": []  
-  }'  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/3537a672-e4d8-4d89-aab9-26cb622918a1" \  --request PUT \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "id": "3537a672-e4d8-4d89-aab9-26cb622918a1",    "uid": "3537a672-e4d8-4d89-aab9-26cb622918a1",    "type": "dash_sso",    "name": "SSO App",    "allowed_idps": []  }'  
 ```
 
 Users will now have the option to log in using a one-time PIN.
@@ -334,8 +241,8 @@ Warning
 
 Before disabling SSO, make sure you have access to your Cloudflare user email. This will allow you to reset your password in case you get logged out of the Cloudflare dashboard.
 
-* [ Dashboard ](#tab-panel-8581)
-* [ API ](#tab-panel-8582)
+* [ Dashboard ](#tab-panel-8657)
+* [ API ](#tab-panel-8658)
 
 1. Navigate to the **Members** page.
 [ Go to **Members** ](https://dash.cloudflare.com/?to=/:account/members)
@@ -348,82 +255,21 @@ The following API calls will disable SSO enforcement for an account. This action
 1. Get your SSO connector `id`:  
 cURL command  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors" \  
-  --request GET \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
 ```
 
 ```
-
-   {
-
-     "result": [
-
-       {
-
-         "id": "d616ac82cc7f87153112d75a711c5c3c",
-
-         "email_domain": "cool.cats",
-
-         "enabled": true
-
-         // ...
-
-       }
-
-     ],
-
-     "success": true,
-
-     "errors": [],
-
-     "messages": []
-
-   }
-
-
+   {     "result": [       {         "id": "d616ac82cc7f87153112d75a711c5c3c",         "email_domain": "cool.cats",         "enabled": true         // ...       }     ],     "success": true,     "errors": [],     "messages": []   }
 ```
 
 1. Disable the SSO connector:  
 cURL command  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors/{connector_id}" \  
-  --request PATCH \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "enabled": false  
-  }'  
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors/{connector_id}" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "enabled": false  }'  
 ```
 
 ```
-
-   {
-
-     "result": [
-
-       {
-
-         "id": "d616ac82cc7f87153112d75a711c5c3c",
-
-         "email_domain": "cool.cats",
-
-         "enabled": false
-
-         // ...
-
-       }
-
-     ],
-
-     "success": true,
-
-     "errors": [],
-
-     "messages": []
-
-   }
-
-
+   {     "result": [       {         "id": "d616ac82cc7f87153112d75a711c5c3c",         "email_domain": "cool.cats",         "enabled": false         // ...       }     ],     "success": true,     "errors": [],     "messages": []   }
 ```
 
 Users can now log in using their Cloudflare account email and password. If a user does not have a password, they can use the [forgot password](https://developers.cloudflare.com/fundamentals/user-profiles/change-password-or-email/#forgot-your-password) method on the login page to create one.
@@ -432,8 +278,8 @@ Users can now log in using their Cloudflare account email and password. If a use
 
 Cloudflare does not allow you to change your team name while a SSO connector is created. To change your team name, you must disable and delete your SSO connector(s).
 
-* [ Dashboard ](#tab-panel-8583)
-* [ API ](#tab-panel-8584)
+* [ Dashboard ](#tab-panel-8659)
+* [ API ](#tab-panel-8660)
 
 1. Navigate to the **Members** page.
 [ Go to **Members** ](https://dash.cloudflare.com/?to=/:account/members)
@@ -444,26 +290,17 @@ Cloudflare does not allow you to change your team name while a SSO connector is 
 1. Get all SSO connectors for your account.  
 cURL command  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors" \  
-  --request GET \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors" \  --request GET \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
 ```
 2. Disable any active SSO connectors using the `id` of each connector from the previous step.  
 cURL command  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors/{connector_id}" \  
-  --request PATCH \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
-  --json '{  
-    "enabled": false  
-  }'  
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors/{connector_id}" \  --request PATCH \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --json '{    "enabled": false  }'  
 ```
 3. Delete all SSO connectors using the `id` of each connector from the previous step.  
 cURL command  
 ```  
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors/{connector_id}" \  
-  --request DELETE \  
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors/{connector_id}" \  --request DELETE \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
 ```
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Custom pages**.

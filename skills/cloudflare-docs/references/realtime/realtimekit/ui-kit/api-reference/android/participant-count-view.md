@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -26,16 +26,7 @@ A text view that displays the current number of participants in a meeting. It au
 ### Basic Usage
 
 ```
-
-<com.cloudflare.realtimekit.ui.view.RtkParticipantCountView
-
-    android:id="@+id/rtk_participant_count"
-
-    android:layout_width="wrap_content"
-
-    android:layout_height="wrap_content" />
-
-
+<com.cloudflare.realtimekit.ui.view.RtkParticipantCountView    android:id="@+id/rtk_participant_count"    android:layout_width="wrap_content"    android:layout_height="wrap_content" />
 ```
 
 ### With Methods
@@ -43,12 +34,7 @@ A text view that displays the current number of participants in a meeting. It au
 Kotlin
 
 ```
-
-val countView = findViewById<RtkParticipantCountView>(R.id.rtk_participant_count)
-
-countView.activate(meeting)
-
-
+val countView = findViewById<RtkParticipantCountView>(R.id.rtk_participant_count)countView.activate(meeting)
 ```
 
 ```json

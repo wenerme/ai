@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -45,11 +45,11 @@ You can also refer to the [Examples gallery](https://developers.cloudflare.com/r
 
 ## Availability
 
-| Free                          | Pro | Business | Enterprise |     |
-| ----------------------------- | --- | -------- | ---------- | --- |
-| Availability                  | No  | Yes      | Yes        | Yes |
-| Number of snippets            | 0   | 25       | 50         | 300 |
-| Number of snippet subrequests | 0   | 2        | 3          | 5   |
+|                               | Free | Pro | Business | Enterprise |
+| ----------------------------- | ---- | --- | -------- | ---------- |
+| Availability                  | No   | Yes | Yes      | Yes        |
+| Number of snippets            | 0    | 25  | 50       | 300        |
+| Number of snippet subrequests | 0    | 2   | 3        | 5          |
 
 Each subrequest in a redirect chain counts against the subrequest limit. This means that if a subrequest was redirected it would count as two subrequests. To avoid issues, ensure that you make a subrequest to the end location of the redirect chain.
 

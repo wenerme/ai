@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -25,8 +25,8 @@ The `cf-aig-authorization` header is used with the `gateway.ai.cloudflare.com` e
 1. Go to the Settings for the specific gateway you want to enable authentication for.
 2. Select **Create authentication token** to generate a custom token with the required `Run` permissions. Be sure to securely save this token, as it will not be displayed again.
 3. Include the API token in each request:  
-   * If using the REST API (`/ai/run`), include your Cloudflare API token in the standard `Authorization` header.  
-   * If using [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/) at `gateway.ai.cloudflare.com`, use the `cf-aig-authorization` header.
+  * If using the REST API (`/ai/run`), include your Cloudflare API token in the standard `Authorization` header.
+  * If using [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/) at `gateway.ai.cloudflare.com`, use the `cf-aig-authorization` header.
 4. Return to the settings page and toggle on Authenticated Gateway.
 
 AI Gateway API tokens are account-scoped
@@ -40,20 +40,7 @@ For isolation between gateways or tenants, use separate Cloudflare accounts or a
 Terminal window
 
 ```
-
-# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
-
-# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
-
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --header "Content-Type: application/json" \
-
-  --data '{"model": "openai/gpt-4.1-mini", "messages": [{"role": "user", "content": "What is Cloudflare?"}]}'
-
-
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  --header "Content-Type: application/json" \  --data '{"model": "openai/gpt-4.1-mini", "messages": [{"role": "user", "content": "What is Cloudflare?"}]}'
 ```
 
 Using the OpenAI SDK:
@@ -61,28 +48,9 @@ Using the OpenAI SDK:
 JavaScript
 
 ```
-
 import OpenAI from "openai";
-
-
-const openai = new OpenAI({
-
-  apiKey: CLOUDFLARE_API_TOKEN,
-
-  baseURL: `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/ai/v1`,
-
-});
-
-
-const response = await openai.chat.completions.create({
-
-  model: "openai/gpt-4.1-mini",
-
-  messages: [{ role: "user", content: "What is Cloudflare?" }],
-
-});
-
-
+const openai = new OpenAI({  apiKey: CLOUDFLARE_API_TOKEN,  baseURL: `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/ai/v1`,});
+const response = await openai.chat.completions.create({  model: "openai/gpt-4.1-mini",  messages: [{ role: "user", content: "What is Cloudflare?" }],});
 ```
 
 Using the Vercel AI SDK:
@@ -90,19 +58,8 @@ Using the Vercel AI SDK:
 JavaScript
 
 ```
-
 import { createOpenAI } from "@ai-sdk/openai";
-
-
-const openai = createOpenAI({
-
-  apiKey: CLOUDFLARE_API_TOKEN,
-
-  baseURL: `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/ai/v1`,
-
-});
-
-
+const openai = createOpenAI({  apiKey: CLOUDFLARE_API_TOKEN,  baseURL: `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/ai/v1`,});
 ```
 
 ## Expected behavior

@@ -6,7 +6,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -43,14 +43,7 @@ PowerShell
 Get-WmiObject -Namespace "root\SecurityCenter2" -ClassName "AntiVirusProduct"  
 ```  
 ```  
-<redacted>  
-displayName              : Windows Defender  
-instanceGuid             : {00000000-0000-0000-0000-000000000000}  
-pathToSignedProductExe   : windowsdefender://  
-pathToSignedReportingExe : %ProgramFiles%\Windows Defender\MsMpeng.exe  
-productState             : 397568  
-timestamp                : Fri, 09 Jan 2026 12:00:00 GMT  
-PSComputerName           : ENDPOINT-01  
+<redacted>displayName              : Windows DefenderinstanceGuid             : {00000000-0000-0000-0000-000000000000}pathToSignedProductExe   : windowsdefender://pathToSignedReportingExe : %ProgramFiles%\Windows Defender\MsMpeng.exeproductState             : 397568timestamp                : Fri, 09 Jan 2026 12:00:00 GMTPSComputerName           : ENDPOINT-01  
 ```
 3. Microsoft does not support decoding the `productState` from the `SecurityCenter2` namespace. To verify that an antivirus product is active, open the [Windows Security app ↗](https://support.microsoft.com/en-us/windows/stay-protected-with-the-windows-security-app-2ae0363d-0ada-c064-8b56-6a39afb6a963). The **Virus & threat protection** panel should say `No action needed` with a green checkmark.  
 To determine which antivirus product is running, select **Virus & threat protection** \> **Manage providers**. You will see the name of the antivirus product (for example, `Windows Defender Antivirus`) and its current state.

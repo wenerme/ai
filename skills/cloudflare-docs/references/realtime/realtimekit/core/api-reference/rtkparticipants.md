@@ -5,7 +5,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 > Documentation Index  
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt  
-> Use this file to discover all available pages before exploring further.
+> Use this file to discover all available pages before exploring further. 
 
 [Skip to content](#%5Ftop) 
 
@@ -18,41 +18,41 @@ This module represents all the participants in the meeting (except the local use
 * `active`: A map of active participants who should be displayed in the meeting grid.
 * `pinned`: A map of pinned participants.
 * [RTKParticipants](#module%5FRTKParticipants)  
-   * [module.exports](#exp%5Fmodule%5FRTKParticipants--module.exports) ⏏  
-         * [new module.exports(context, self, roomSocketHandler)](#new%5Fmodule%5FRTKParticipants--module.exports%5Fnew)  
-         * [.waitlisted](#module%5FRTKParticipants--module.exports+waitlisted)  
-         * [.joined](#module%5FRTKParticipants--module.exports+joined)  
-         * ~~[.active](#module%5FRTKParticipants--module.exports+active)~~  
-         * [.videoSubscribed](#module%5FRTKParticipants--module.exports+videoSubscribed)  
-         * [.audioSubscribed](#module%5FRTKParticipants--module.exports+audioSubscribed)  
-         * [.pinned](#module%5FRTKParticipants--module.exports+pinned)  
-         * [.all](#module%5FRTKParticipants--module.exports+all)  
-         * [.pip](#module%5FRTKParticipants--module.exports+pip)  
-         * [.telemetry](#module%5FRTKParticipants--module.exports+telemetry)  
-         * [.viewMode](#module%5FRTKParticipants--module.exports+viewMode)  
-         * [.currentPage](#module%5FRTKParticipants--module.exports+currentPage)  
-         * [.lastActiveSpeaker](#module%5FRTKParticipants--module.exports+lastActiveSpeaker)  
-         * [.selectedPeers](#module%5FRTKParticipants--module.exports+selectedPeers)  
-         * [.count](#module%5FRTKParticipants--module.exports+count)  
-         * [.maxActiveRTKParticipantsCount](#module%5FRTKParticipants--module.exports+maxActiveRTKParticipantsCount)  
-         * [.pageCount](#module%5FRTKParticipants--module.exports+pageCount)  
-         * [.setMaxActiveRTKParticipantsCount(limit)](#module%5FRTKParticipants--module.exports+setMaxActiveRTKParticipantsCount)  
-         * [.acceptWaitingRoomRequest(id)](#module%5FRTKParticipants--module.exports+acceptWaitingRoomRequest)  
-         * [.acceptAllWaitingRoomRequest(userIds)](#module%5FRTKParticipants--module.exports+acceptAllWaitingRoomRequest)  
-         * [.rejectWaitingRoomRequest(id)](#module%5FRTKParticipants--module.exports+rejectWaitingRoomRequest)  
-         * [.setViewMode(viewMode)](#module%5FRTKParticipants--module.exports+setViewMode)  
-         * [.subscribe(peerIds, \[kinds\])](#module%5FRTKParticipants--module.exports+subscribe)  
-         * [.unsubscribe(peerIds, \[kinds\])](#module%5FRTKParticipants--module.exports+unsubscribe)  
-         * [.setPage(page)](#module%5FRTKParticipants--module.exports+setPage)  
-         * [.disableAllAudio(allowUnmute)](#module%5FRTKParticipants--module.exports+disableAllAudio)  
-         * [.disableAllVideo()](#module%5FRTKParticipants--module.exports+disableAllVideo)  
-         * ~~[.disableAudio(participantId)](#module%5FRTKParticipants--module.exports+disableAudio)~~  
-         * ~~[.disableVideo(participantId)](#module%5FRTKParticipants--module.exports+disableVideo)~~  
-         * ~~[.kick(participantId)](#module%5FRTKParticipants--module.exports+kick)~~  
-         * [.kickAll()](#module%5FRTKParticipants--module.exports+kickAll)  
-         * [.broadcastMessage(type, payload, target)](#module%5FRTKParticipants--module.exports+broadcastMessage)  
-         * [.getAllJoinedPeers(searchQuery, limit, offset)](#module%5FRTKParticipants--module.exports+getAllJoinedPeers)  
-         * [.getRTKParticipantsInMeetingPreJoin()](#module%5FRTKParticipants--module.exports+getRTKParticipantsInMeetingPreJoin)
+  * [module.exports](#exp%5Fmodule%5FRTKParticipants--module.exports) ⏏  
+    * [new module.exports(context, self, roomSocketHandler)](#new%5Fmodule%5FRTKParticipants--module.exports%5Fnew)
+    * [.waitlisted](#module%5FRTKParticipants--module.exports+waitlisted)
+    * [.joined](#module%5FRTKParticipants--module.exports+joined)
+    * ~~[.active](#module%5FRTKParticipants--module.exports+active)~~
+    * [.videoSubscribed](#module%5FRTKParticipants--module.exports+videoSubscribed)
+    * [.audioSubscribed](#module%5FRTKParticipants--module.exports+audioSubscribed)
+    * [.pinned](#module%5FRTKParticipants--module.exports+pinned)
+    * [.all](#module%5FRTKParticipants--module.exports+all)
+    * [.pip](#module%5FRTKParticipants--module.exports+pip)
+    * [.telemetry](#module%5FRTKParticipants--module.exports+telemetry)
+    * [.viewMode](#module%5FRTKParticipants--module.exports+viewMode)
+    * [.currentPage](#module%5FRTKParticipants--module.exports+currentPage)
+    * [.lastActiveSpeaker](#module%5FRTKParticipants--module.exports+lastActiveSpeaker)
+    * [.selectedPeers](#module%5FRTKParticipants--module.exports+selectedPeers)
+    * [.count](#module%5FRTKParticipants--module.exports+count)
+    * [.maxActiveRTKParticipantsCount](#module%5FRTKParticipants--module.exports+maxActiveRTKParticipantsCount)
+    * [.pageCount](#module%5FRTKParticipants--module.exports+pageCount)
+    * [.setMaxActiveRTKParticipantsCount(limit)](#module%5FRTKParticipants--module.exports+setMaxActiveRTKParticipantsCount)
+    * [.acceptWaitingRoomRequest(id)](#module%5FRTKParticipants--module.exports+acceptWaitingRoomRequest)
+    * [.acceptAllWaitingRoomRequest(userIds)](#module%5FRTKParticipants--module.exports+acceptAllWaitingRoomRequest)
+    * [.rejectWaitingRoomRequest(id)](#module%5FRTKParticipants--module.exports+rejectWaitingRoomRequest)
+    * [.setViewMode(viewMode)](#module%5FRTKParticipants--module.exports+setViewMode)
+    * [.subscribe(peerIds, \[kinds\])](#module%5FRTKParticipants--module.exports+subscribe)
+    * [.unsubscribe(peerIds, \[kinds\])](#module%5FRTKParticipants--module.exports+unsubscribe)
+    * [.setPage(page)](#module%5FRTKParticipants--module.exports+setPage)
+    * [.disableAllAudio(allowUnmute)](#module%5FRTKParticipants--module.exports+disableAllAudio)
+    * [.disableAllVideo()](#module%5FRTKParticipants--module.exports+disableAllVideo)
+    * ~~[.disableAudio(participantId)](#module%5FRTKParticipants--module.exports+disableAudio)~~
+    * ~~[.disableVideo(participantId)](#module%5FRTKParticipants--module.exports+disableVideo)~~
+    * ~~[.kick(participantId)](#module%5FRTKParticipants--module.exports+kick)~~
+    * [.kickAll()](#module%5FRTKParticipants--module.exports+kickAll)
+    * [.broadcastMessage(type, payload, target)](#module%5FRTKParticipants--module.exports+broadcastMessage)
+    * [.getAllJoinedPeers(searchQuery, limit, offset)](#module%5FRTKParticipants--module.exports+getAllJoinedPeers)
+    * [.getRTKParticipantsInMeetingPreJoin()](#module%5FRTKParticipants--module.exports+getRTKParticipantsInMeetingPreJoin)
 
 ### module.exports ⏏
 
