@@ -24,6 +24,10 @@ Anycast routing
 
 Cloudflare uses anycast to route traffic. Anycast is a network addressing and routing method that routes incoming requests to different locations. Traffic can arrive at a different geographic location than expected. Not all requests go to the closest data center because Internet routing and peering relationships are complex, and Cloudflare optimizes for performance and reliability.
 
+One page for all your routes 
+
+The dashboard **Routes** page shows the routes for all of your connectors — including Cloudflare Tunnel and Cloudflare Mesh — in a single table, not just Magic Transit static routes. The following steps cover Magic Transit static routes. Routes for other connector types appear in the same table and can be filtered by type.
+
 ## Configure static routes
 
 ### Create a static route
@@ -33,7 +37,7 @@ Cloudflare uses anycast to route traffic. Anycast is a network addressing and ro
 
 1. Go to **Routes** page.
 [ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
-1. From the **Routes** tab, select **Create static route** to add a new route.
+1. From the **Routes** tab, select **Create route**, then choose **WAN** as the route type.
 1. Enter a descriptive name for your route in **Description**.
 2. In **Prefix**, enter your range of IP addresses. For example, `10.10.10.100/24`.
 3. In **Tunnel/Next hop**, select a tunnel for your route from the tunnels you created in [Configure tunnel endpoints](https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/).

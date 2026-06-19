@@ -26,6 +26,7 @@ GPT-5.5 pro uses OpenAI's Responses API with built-in tools, improved reasoning,
 | Terms and License                                                          | [link ↗](https://openai.com/policies/)                                                                               |
 | More information                                                           | [link ↗](https://openai.com/)                                                                                        |
 | Zero data retention                                                        | Yes                                                                                                                  |
+| Request formats                                                            | Responses                                                                                                            |
 | Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.5-pro) |
 
 ## Usage

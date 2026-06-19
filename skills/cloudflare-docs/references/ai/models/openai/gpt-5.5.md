@@ -26,6 +26,7 @@ GPT-5.5 is OpenAI's flagship model with strong coding, reasoning, and multimodal
 | Terms and License                                                          | [link ↗](https://openai.com/policies/)                                                                           |
 | More information                                                           | [link ↗](https://openai.com/)                                                                                    |
 | Zero data retention                                                        | Yes                                                                                                              |
+| Request formats                                                            | Responses, Chat Completions                                                                                      |
 | Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.5) |
 
 ## Usage

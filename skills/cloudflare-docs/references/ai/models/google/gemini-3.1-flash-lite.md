@@ -26,6 +26,7 @@ Google's lightest and most cost-efficient Gemini model for high-throughput tasks
 | Terms and License                                                          | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                               |
 | More information                                                           | [link ↗](https://deepmind.google/technologies/gemini/)                                                                         |
 | Zero data retention                                                        | Yes                                                                                                                            |
+| Request formats                                                            | Chat Completions                                                                                                               |
 | Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3.1-flash-lite) |
 
 ## Usage

@@ -26,6 +26,7 @@ GPT-5.1 Chat is the chat-tuned variant of GPT-5.1, optimised for back-and-forth 
 | Terms and License                                                          | [link ↗](https://openai.com/policies/)                                                                                |
 | More information                                                           | [link ↗](https://openai.com/)                                                                                         |
 | Zero data retention                                                        | Yes                                                                                                                   |
+| Request formats                                                            | Chat Completions                                                                                                      |
 | Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.1-chat) |
 
 ## Usage

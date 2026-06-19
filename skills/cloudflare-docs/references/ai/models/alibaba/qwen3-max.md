@@ -25,6 +25,7 @@ Alibaba's Qwen 3 Max is a large language model with strong coding, reasoning, an
 | Terms and License   | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                                |
 | More information    | [link ↗](https://www.alibabacloud.com/en/solutions/generative-ai/qwen)                                              |
 | Zero data retention | Yes                                                                                                                 |
+| Request formats     | Chat Completions, Responses                                                                                         |
 | Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/qwen3-max) |
 
 ## Usage

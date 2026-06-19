@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # React Router (formerly Remix)
 
-**Start from CLI**: Scaffold a full-stack app with [React Router v7 ↗](https://reactrouter.com/) and the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) for lightning-fast development.
+**Start from CLI**: Scaffold a full-stack app with [React Router v8 ↗](https://reactrouter.com/) and the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) for lightning-fast development.
 
  npm  yarn  pnpm 
 
@@ -28,7 +28,7 @@ yarn create cloudflare my-react-router-app --framework=react-router
 pnpm create cloudflare@latest my-react-router-app --framework=react-router
 ```
 
-**Or just deploy**: Create a full-stack app using React Router v7, with CI/CD and previews all set up for you.
+**Or just deploy**: Create a full-stack app using React Router v8, with CI/CD and previews all set up for you.
 
 [![Deploy to Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/react-router-starter-template)
 
@@ -82,7 +82,7 @@ Wrangler handles configuration automatically
 
 ## What is React Router?
 
-[React Router v7 ↗](https://reactrouter.com/) is a full-stack React framework for building web applications. It combines with the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) to provide a first-class experience for developing, building and deploying your apps on Cloudflare.
+[React Router v8 ↗](https://reactrouter.com/) is a full-stack React framework for building web applications. It combines with the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) to provide a first-class experience for developing, building and deploying your apps on Cloudflare.
 
 ## Creating a full-stack React Router app
 
@@ -112,10 +112,9 @@ Below is a simplified file tree of the project.
     * react-router.config.ts
     * vite.config.ts
     * wrangler.jsonc  
-`react-router.config.ts` is your [React Router config file ↗](https://reactrouter.com/explanation/special-files#react-routerconfigts). In this file:
+`react-router.config.ts` is your [React Router config file ↗](https://reactrouter.com/api/framework-conventions/react-router.config.ts). In this file:
 
-  * `ssr` is set to `true`, meaning that your application will use server-side rendering.
-  * `future.v8_viteEnvironmentApi` is set to `true` to enable compatibility with the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).  
+  * `ssr` is set to `true`, meaning that your application will use server-side rendering.  
 `vite.config.ts` is your [Vite config file ↗](https://vite.dev/config/). The React Router and Cloudflare plugins are included in the `plugins` array. The [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) runs your server code in the Workers runtime, ensuring your local development environment is as close to production as possible.  
 `wrangler.jsonc` is your [Worker config file](https://developers.cloudflare.com/workers/wrangler/configuration/). In this file:
 
@@ -212,6 +211,6 @@ With bindings, your application can be fully integrated with the Cloudflare Deve
 [ Bindings ](https://developers.cloudflare.com/workers/runtime-apis/bindings/) Access to compute, storage, AI and more.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/react-router/#page","headline":"React Router (formerly Remix) · Cloudflare Workers docs","description":"Create a React Router application and deploy it to Cloudflare Workers","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/react-router/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["full-stack"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/react-router/#page","headline":"React Router (formerly Remix) · Cloudflare Workers docs","description":"Create a React Router application and deploy it to Cloudflare Workers","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/react-router/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["full-stack"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/framework-guides/","name":"Framework guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/framework-guides/web-apps/","name":"Web applications"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/framework-guides/web-apps/react-router/","name":"React Router (formerly Remix)"}}]}
 ```

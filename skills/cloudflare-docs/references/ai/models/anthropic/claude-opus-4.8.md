@@ -26,6 +26,7 @@ Claude Opus 4.8 is Anthropic's most capable generally available model, with a st
 | Terms and License                                                          | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                  |
 | More information                                                           | [link ↗](https://www.anthropic.com/claude/opus)                                                                             |
 | Zero data retention                                                        | Yes                                                                                                                         |
+| Request formats                                                            | Anthropic Messages                                                                                                          |
 | Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-opus-4.8) |
 
 ## Usage

@@ -14,6 +14,31 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml) 
 
+## 2026-06-19
+
+[ Cloudflare Mesh ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)[ Cloudflare Tunnel ](https://developers.cloudflare.com/tunnel/)[ Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/)[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/) 
+
+  
+**Manage all your routes from one page in the dashboard**   
+
+The **Routes** page in the Cloudflare dashboard now shows the routes across all of your connectors — [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) and [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) routes alongside [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) and [Magic Transit](https://developers.cloudflare.com/magic-transit/) static routes — in a single table, instead of a separate routes view per product.
+
+![The unified Routes page in the Cloudflare dashboard, showing routes across connectors in a single table](https://developers.cloudflare.com/_astro/2026-06-19-unified-routes.B3igBY20_Z1awHp.webp) 
+
+From the unified Routes page you can:
+
+* **Visualize your network with an interactive map** that shows how your destinations flow through to your connectors — including equal-cost multi-path (ECMP) routes where the same prefix is served by several connectors. Select a node to filter the table down to the routes behind it.
+* **See every route in one table**, with its destination, type, connector, priority, and source, and filter or sort to find what you need.
+* **Create, edit, and delete routes** of any supported type without leaving the page. When adding a Cloudflare WAN or Magic Transit static route, you now pick the next hop by **connector name** instead of typing its IP.
+* **Manage [virtual networks](https://developers.cloudflare.com/cloudflare-one/networks/virtual-networks/)** from a dedicated tab.
+* **Test a route** to see which connector and next hop a destination resolves to before you commit a change.
+
+To find it, go to **Networking** \> **Routes** in the dashboard sidebar.
+
+[ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes) 
+
+Your existing routes, APIs, and configurations are unchanged — this is a dashboard experience that brings them together in one place. Learn how to [add routes](https://developers.cloudflare.com/cloudflare-one/networks/routes/add-routes/) and [manage virtual networks](https://developers.cloudflare.com/cloudflare-one/networks/virtual-networks/).
+
 ## 2026-06-11
 
 [ Data Loss Prevention ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/) 

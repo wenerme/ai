@@ -26,6 +26,7 @@ GPT-5.4 mini is a smaller, faster, and more cost-efficient version of GPT-5.4 fo
 | Terms and License                                                          | [link ↗](https://openai.com/policies/)                                                                                |
 | More information                                                           | [link ↗](https://openai.com/)                                                                                         |
 | Zero data retention                                                        | Yes                                                                                                                   |
+| Request formats                                                            | Responses, Chat Completions                                                                                           |
 | Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.4-mini) |
 
 ## Usage

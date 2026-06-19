@@ -26,6 +26,7 @@ Google's fast multimodal Gemini 2.5 model with strong reasoning and a 1M token c
 | Terms and License                                                          | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                          |
 | More information                                                           | [link ↗](https://deepmind.google/technologies/gemini/)                                                                    |
 | Zero data retention                                                        | Yes                                                                                                                       |
+| Request formats                                                            | Chat Completions                                                                                                          |
 | Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-2.5-flash) |
 
 ## Usage

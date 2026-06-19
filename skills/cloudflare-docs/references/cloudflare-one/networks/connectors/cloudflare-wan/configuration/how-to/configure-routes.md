@@ -21,6 +21,10 @@ Refer to [Traffic Steering](https://developers.cloudflare.com/cloudflare-one/net
 * BGP peering (beta)
 * [Automatic Return Routing (ARR)](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#automatic-return-routing-beta)
 
+One page for all your routes 
+
+The dashboard **Routes** page shows the routes for all of your connectors — including Cloudflare Tunnel and Cloudflare Mesh — in a single table, not just Cloudflare WAN static routes. The following steps cover Cloudflare WAN static routes. Routes for other connector types appear in the same table and can be filtered by type.
+
 ## Configure static routes
 
 The following IPv4 address ranges are allowed in the Cloudflare Virtual Network routing table:

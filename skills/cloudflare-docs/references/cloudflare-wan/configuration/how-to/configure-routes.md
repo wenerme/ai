@@ -21,6 +21,10 @@ Refer to [Traffic Steering](https://developers.cloudflare.com/cloudflare-wan/ref
 * BGP peering (beta)
 * [Automatic Return Routing (ARR)](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#automatic-return-routing-beta)
 
+One page for all your routes 
+
+The dashboard **Routes** page shows the routes for all of your connectors — including Cloudflare Tunnel and Cloudflare Mesh — in a single table, not just Cloudflare WAN static routes. The following steps cover Cloudflare WAN static routes. Routes for other connector types appear in the same table and can be filtered by type.
+
 ## Configure static routes
 
 The following IPv4 address ranges are allowed in the Cloudflare Virtual Network routing table:
@@ -38,7 +42,7 @@ For prefixes outside RFC 1918, contact your Cloudflare customer service manager.
 
 1. Go to **Routes** page.
 [ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
-1. From the **Routes** tab, select **Create static route** to add a new route.
+1. From the **Routes** tab, select **Create route**, then choose **WAN** as the route type.
 1. Enter a descriptive name for your route in **Description**.
 2. In **Prefix**, enter your range of IP addresses. For example, `10.10.10.100/24`.
 3. In **Tunnel/Next hop**, select a tunnel for your route from the tunnels you created in [Configure tunnel endpoints](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/).

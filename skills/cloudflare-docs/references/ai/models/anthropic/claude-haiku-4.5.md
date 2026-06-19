@@ -26,6 +26,7 @@ Claude Haiku 4.5 delivers similar levels of coding performance at one-third the 
 | Terms and License                                                          | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                   |
 | More information                                                           | [link ↗](https://www.anthropic.com/claude/haiku)                                                                             |
 | Zero data retention                                                        | Yes                                                                                                                          |
+| Request formats                                                            | Anthropic Messages                                                                                                           |
 | Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-haiku-4.5) |
 
 ## Usage

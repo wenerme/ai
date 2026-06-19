@@ -59,14 +59,13 @@ In this example, "private network" refers to a distinct environment (such as sta
 To route overlapping IPs over virtual networks:
 
 1. Create two unique virtual networks:  
-  1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Networks** \> **Routes** \> **Virtual networks**.  
-  Note  
-  The **Virtual networks** card will only appear if a CIDR route exists in your account. If you do not already have a route, you can navigate to **Virtual networks** using this [direct link ↗](https://dash.cloudflare.com/?to=/:account/one/networks/routes/cidr/vnets).
+  1. In the Cloudflare dashboard, go to **Networking** \> **Routes** \> **Virtual networks**.  
+  [ Go to **Virtual networks** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes/virtual-networks)
   2. Select **Create virtual network**.
   3. Name your virtual network `staging-vnet` and select **Save**.
   4. Repeat Steps 1a-1d to create another virtual network called `production-vnet`.
 2. Create a Cloudflare Tunnel for each private network with overlapping IPs (one tunnel per isolated environment, for example staging and production):  
-  1. Go to **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
+  1. Go to **Networking** \> **Tunnels**.
   2. Select **Create a tunnel**.
   3. Name your tunnel `Staging tunnel` and select **Save tunnel**.
   4. Install the connector within your staging environment.
@@ -168,13 +167,14 @@ You can use now the Cloudflare One Client to [switch between virtual networks](#
 
 ## Delete a virtual network
 
-* [ Dashboard ](#tab-panel-7364)
-* [ Locally-managed tunnels ](#tab-panel-7365)
+* [ Dashboard ](#tab-panel-7366)
+* [ Locally-managed tunnels ](#tab-panel-7367)
 
 To delete a virtual network:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels** and ensure that no IP routes are assigned to the virtual network you are trying to delete. If your virtual network is in use, delete the route or reassign it to a different virtual network.
-2. Next, go to **Networks** \> **Routes**.
+1. In the Cloudflare dashboard, go to **Networking** \> **Tunnels** and ensure that no IP routes are assigned to the virtual network you are trying to delete. If your virtual network is in use, delete the route or reassign it to a different virtual network.  
+[ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
+2. Next, go to **Networking** \> **Routes**.
 3. In **Virtual networks**, find your virtual network.
 4. Select the three-dot menu and choose **Delete**.
 
@@ -204,8 +204,8 @@ You can verify that the virtual network was successfully deleted by typing `clou
 
 ### Windows, macOS, and Linux
 
-* [ Version 2026.2+ ](#tab-panel-7366)
-* [ Version 2026.1 and earlier ](#tab-panel-7367)
+* [ Version 2026.2+ ](#tab-panel-7364)
+* [ Version 2026.1 and earlier ](#tab-panel-7365)
 
 1. Open the Cloudflare One Client.
 2. Go to **Home**.
@@ -226,6 +226,6 @@ When you visit `10.128.0.3/32`, the Cloudflare One Client will route your reques
 When you visit `10.128.0.3/32`, the Cloudflare One Client will route your request to the staging environment.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/#page","headline":"Virtual networks · Cloudflare One docs","description":"Virtual networks in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/#page","headline":"Virtual networks · Cloudflare One docs","description":"Virtual networks in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/","name":"Private networks"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/","name":"Connect with cloudflared"}},{"@type":"ListItem","position":8,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/","name":"Virtual networks"}}]}
 ```

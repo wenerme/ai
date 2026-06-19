@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**  
 For example:  
 ```  
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.  
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.  
 ```
 
 ## Cloudflare platform access

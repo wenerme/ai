@@ -1284,6 +1284,11 @@
     "size": 44068,
     "updatedAt": "2026-06-17T01:09:43.958Z"
   },
+  "client-sdks/go/overview.md": {
+    "url": "https://openrouter.ai/docs/client-sdks/go/overview.md",
+    "size": 4015,
+    "updatedAt": "2026-06-19T11:48:06.432Z"
+  },
   "client-sdks/go/api-reference/analytics.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/api-reference/analytics.md",
     "size": 3360,
