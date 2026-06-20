@@ -68,6 +68,10 @@ When Cloudflare marks your fallback origin as **Active**, that only reflects tha
 
 You need to make sure your DNS record is sending traffic to the correct origin location.
 
+Note
+
+Changing the fallback origin hostname is non-disruptive. Existing custom hostname traffic continues to flow while the fallback origin is updated, and the change propagates across Cloudflare's edge within seconds.
+
 ### 2\. (Optional) Create CNAME target
 
 The CNAME target — optional, but highly encouraged — provides a friendly and more flexible place for customers to [route their traffic](#3-have-customer-create-cname-record). You may want to use a subdomain such as `customers.<SAAS_PROVIDER>.com`.
@@ -210,6 +214,6 @@ For more details, refer to [Remove custom hostnames](https://developers.cloudfla
 [↩](#user-content-fnref-1)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/#page","headline":"Configuring Cloudflare for SaaS · Cloudflare for Platforms docs","description":"Get started with Cloudflare for SaaS","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/#page","headline":"Configuring Cloudflare for SaaS · Cloudflare for Platforms docs","description":"Get started with Cloudflare for SaaS","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-for-platforms/","name":"Cloudflare for Platforms"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/","name":"Cloudflare for SaaS"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/start/","name":"Get started"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/","name":"Configuring Cloudflare for SaaS"}}]}
 ```

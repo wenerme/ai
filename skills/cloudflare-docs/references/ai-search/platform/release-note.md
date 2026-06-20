@@ -14,6 +14,12 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 This release notes section covers regular updates and minor fixes. For major feature releases or significant updates, see the [changelog](https://developers.cloudflare.com/changelog).
 
+## 2026-06-18
+
+**Migration to managed infrastructure complete**
+
+All AI Search instances have finished migrating to managed infrastructure. Every instance now includes built-in storage, a built-in vector index, and built-in web crawling, so the [current limits](https://developers.cloudflare.com/ai-search/platform/limits-pricing/#limits) apply across all instances. Storage, vector indexing, and Browser Run usage for crawling are now included; [Workers AI](https://developers.cloudflare.com/workers-ai/platform/pricing/) and [AI Gateway](https://developers.cloudflare.com/ai-gateway/reference/pricing/) are still billed separately. If your instance previously crawled a website, the dedicated R2 bucket AI Search created in your account is no longer used and can be deleted.
+
 ## 2026-06-10
 
 **Manage AI Search namespaces with Wrangler CLI**
@@ -24,7 +30,7 @@ AI Search now supports namespace-level Wrangler commands to create, list, update
 
 **Automatic migration to managed infrastructure on June 3, 2026**
 
-Instances created before April 16, 2026 will be automatically migrated to managed infrastructure on **June 3, 2026**. The migration may take up to three days with no service downtime expected. No action is required. After migration, instances will include built-in storage, a built-in vector index, and built-in web crawling, and [new limits](https://developers.cloudflare.com/ai-search/platform/limits-pricing/#new-instances) will apply. For full migration details, refer to [Limits & pricing](https://developers.cloudflare.com/ai-search/platform/limits-pricing/#previous-instances).
+Instances created before April 16, 2026 will be automatically migrated to managed infrastructure on **June 3, 2026**. The migration may take up to three days with no service downtime expected. No action is required. After migration, instances will include built-in storage, a built-in vector index, and built-in web crawling, and [new limits](https://developers.cloudflare.com/ai-search/platform/limits-pricing/#limits) will apply. For full migration details, refer to [Limits & pricing](https://developers.cloudflare.com/ai-search/platform/limits-pricing/#historical-billing).
 
 ## 2026-04-16
 

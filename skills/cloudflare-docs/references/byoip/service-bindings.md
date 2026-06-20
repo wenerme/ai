@@ -46,7 +46,7 @@ When a service binding of type `Spectrum` is applied, once the change has propag
 
 UDP applications
 
-Spectrum UDP applications are [not supported](https://developers.cloudflare.com/spectrum/reference/limitations/#udp) when using Spectrum with BYOIP.
+Spectrum UDP applications are supported with BYOIP, including [CDN and Spectrum service bindings](https://developers.cloudflare.com/byoip/service-bindings/cdn-and-spectrum/). However, they are [not currently supported with Magic Transit service bindings](https://developers.cloudflare.com/spectrum/reference/limitations/#udp).
 
 ### Magic Transit
 

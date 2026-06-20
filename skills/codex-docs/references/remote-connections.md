@@ -237,6 +237,33 @@ unauthenticated public listeners.
   imageClass="rounded-xl"
 />
 
+## Hand off a thread between hosts
+
+Handoff moves an existing thread and its Git state between your local computer
+and a connected remote host. Use it to start work locally, continue in a
+worktree on a remote computer, and bring the thread back later.
+
+Before you hand off a thread, connect the destination host and save a project
+for the same Git repository on that host. If the project is a subdirectory of
+the repository, save the same subdirectory on both hosts. Codex only shows
+destinations with a matching saved project.
+
+To hand off a thread:
+
+1. Open the thread in the Codex App.
+2. In the thread footer, select the current run location, then select the
+   destination host. Select **This computer** when handing a remote thread back
+   to your local computer.
+3. Review the destination and branch, then select **Hand off**.
+
+Codex creates or reuses a worktree on the destination host, transfers the
+thread and Git state, and switches the thread to that host. If the thread is
+running, handoff interrupts the current response before transferring it.
+
+You can also ask Codex in another thread to hand off a named thread to a
+connected host. Codex can't hand off the thread making the request, and handoff
+to a Codex cloud environment isn't supported.
+
 ## Authentication and network exposure
 
 Remote connections use SSH to start and manage the remote Codex app server.

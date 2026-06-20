@@ -69,7 +69,22 @@ If you can serve these tokens on behalf of your customers, you can simplify thei
 4. After a few minutes, you will see the hostname status become **Active** in the UI.
 5. Once the hostname is active, your customer can remove the token from their origin server.
 
+## Zero-downtime migration with HTTP DCV
+
+When onboarding a customer whose hostname is already live with another provider, you can use pre-validation combined with manual HTTP DCV to achieve zero-downtime migration:
+
+1. Create the custom hostname with `"ssl": {"method": "http", "type": "dv"}`.
+2. Complete [hostname ownership pre-validation](#pre-validate-with-a-txt-record) using a TXT record so the hostname reaches `status: active`.
+3. Wait for the `ssl.validation_records` to populate with the HTTP DCV token (an `http_url` and `http_body` pair).
+4. Ask your customer to serve the DCV token at the `http_url` path on their current live origin. The certificate authority will validate it against the current DNS target.
+5. Once `ssl.status` reaches `active`, the hostname and certificate are both ready.
+6. Your customer can now update their DNS CNAME to point to your SaaS target with no interruption — the certificate is already issued.
+
+Note
+
+The HTTP DCV token is single-use and must be served before it expires. Refer to [DCV tokens validity](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/validation-backoff-schedule/#dcv-tokens-validity) for expiration periods by certificate authority.
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/pre-validation/#page","headline":"Pre-validation methods - Custom Hostname Validation · Cloudflare for Platforms docs","description":"Verify domain ownership before customer traffic begins proxying through Cloudflare.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/pre-validation/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/pre-validation/#page","headline":"Pre-validation methods - Custom Hostname Validation · Cloudflare for Platforms docs","description":"Verify domain ownership before customer traffic begins proxying through Cloudflare.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/pre-validation/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-for-platforms/","name":"Cloudflare for Platforms"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/","name":"Cloudflare for SaaS"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/domain-support/","name":"Custom hostnames"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/","name":"Hostname validation"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/pre-validation/","name":"Pre-validation"}}]}
 ```

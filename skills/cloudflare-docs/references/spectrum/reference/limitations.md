@@ -20,7 +20,9 @@ At the moment, HTTPS applications do not support HTTP/3.
 
 ## UDP
 
-At the moment, Cloudflare does not support packet fragmentation for UDP packets. If packets are fragmented, they will be dropped at Cloudflare’s edge. Additionally, UDP Spectrum applications are not supported on Magic Transit, BYOIP, Spectrum, and Bindings.
+Cloudflare does not support packet fragmentation for UDP packets. If packets are fragmented, they will be dropped at Cloudflare’s edge.
+
+Spectrum UDP applications are supported with [BYOIP](https://developers.cloudflare.com/spectrum/about/byoip/), including [CDN and Spectrum service bindings](https://developers.cloudflare.com/byoip/service-bindings/cdn-and-spectrum/). They are not currently supported with [Magic Transit service bindings](https://developers.cloudflare.com/byoip/service-bindings/).
 
 ## Minecraft
 
@@ -66,6 +68,6 @@ Currently, [custom rules](https://developers.cloudflare.com/waf/custom-rules/) d
 Refer to [Configuration options](https://developers.cloudflare.com/spectrum/reference/configuration-options/#ip-access-rules) for more information.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/reference/limitations/#page","headline":"Limitations · Cloudflare Spectrum docs","description":"Protocol-specific limitations for Spectrum applications.","url":"https://developers.cloudflare.com/spectrum/reference/limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/reference/limitations/#page","headline":"Limitations · Cloudflare Spectrum docs","description":"Protocol-specific limitations for Spectrum applications.","url":"https://developers.cloudflare.com/spectrum/reference/limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/spectrum/","name":"Spectrum"}},{"@type":"ListItem","position":3,"item":{"@id":"/spectrum/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/spectrum/reference/limitations/","name":"Limitations"}}]}
 ```

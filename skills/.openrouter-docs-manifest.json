@@ -696,8 +696,8 @@
   },
   "api/api-reference/embeddings/create-embeddings.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/embeddings/create-embeddings.md",
-    "size": 41201,
-    "updatedAt": "2026-06-11T11:54:24.140Z"
+    "size": 42236,
+    "updatedAt": "2026-06-20T01:08:24.531Z"
   },
   "api/api-reference/embeddings/list-embeddings-models.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/embeddings/list-embeddings-models.md",

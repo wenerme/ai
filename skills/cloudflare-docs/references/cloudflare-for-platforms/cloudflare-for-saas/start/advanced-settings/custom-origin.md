@@ -28,6 +28,19 @@ To use a custom origin server, you need to meet the following requirements:
 
 To use a custom origin, select that option when [creating a new custom hostname](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/) in the dashboard or include the `"custom_origin_server": your_custom_origin_server` parameter when using the API [POST command](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/create/).
 
+## Cloud provider origins (Azure, AWS, GCP)
+
+When using a cloud provider endpoint as a custom origin (for example, Azure App Service, AWS ALB, or GCP Cloud Run), the provider may reject requests with a `404` or `400` error if the `Host` header does not match a domain configured on that endpoint.
+
+By default, Cloudflare sends the original custom hostname as the `Host` header. If your cloud provider expects a different hostname:
+
+1. Configure the cloud provider to accept the custom hostname as a valid domain, or
+2. Use an [Origin Rule](https://developers.cloudflare.com/rules/origin-rules/) to override the `Host` header to match the hostname your cloud provider expects.
+
+Note
+
+This is a common issue with Azure App Service, where the platform returns a default parking page (404) when the incoming `Host` header does not match any configured custom domain.
+
 ## SNI rewrites
 
 Note
@@ -74,6 +87,6 @@ To set an SNI rewrite via the API, set the `custom_origin_sni` parameter when [c
 * **Subdomain of zone**: Set to `"example.com"` or another subdomain of the custom hostname
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/custom-origin/#page","headline":"Custom origin server · Cloudflare for Platforms docs","description":"Route custom hostname traffic to a different origin server per hostname.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/custom-origin/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/custom-origin/#page","headline":"Custom origin server · Cloudflare for Platforms docs","description":"Route custom hostname traffic to a different origin server per hostname.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/custom-origin/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-for-platforms/","name":"Cloudflare for Platforms"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/","name":"Cloudflare for SaaS"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/start/","name":"Get started"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/","name":"Advanced Settings"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/custom-origin/","name":"Custom origin server"}}]}
 ```

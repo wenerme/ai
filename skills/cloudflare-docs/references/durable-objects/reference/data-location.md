@@ -88,27 +88,31 @@ Hints are a best effort and not a guarantee. Unlike with jurisdictions, Durable 
 
 ### Supported locations
 
-| Parameter | Location              |
-| --------- | --------------------- |
-| wnam      | Western North America |
-| enam      | Eastern North America |
-| sam       | South America 2       |
-| weur      | Western Europe        |
-| eeur      | Eastern Europe        |
-| apac      | Asia-Pacific          |
-| oc        | Oceania               |
-| afr       | Africa 2              |
-| me        | Middle East 2         |
+| Parameter | Location                 |
+| --------- | ------------------------ |
+| wnam      | Western North America    |
+| enam      | Eastern North America    |
+| sam       | South America 2          |
+| weur      | Western Europe           |
+| eeur      | Eastern Europe           |
+| apac      | Asia-Pacific             |
+| apac-ne   | Northeast Asia-Pacific 3 |
+| apac-se   | Southeast Asia-Pacific 3 |
+| oc        | Oceania                  |
+| afr       | Africa 2                 |
+| me        | Middle East 2            |
 
 1 Dynamic relocation of existing Durable Objects is planned for the future.
 
 2 Durable Objects currently do not spawn in this location. Instead, the Durable Object will spawn in a nearby location which does support Durable Objects. For example, Durable Objects hinted to South America spawn in Eastern North America instead.
+
+3 `apac-ne` (Northeast Asia-Pacific) and `apac-se` (Southeast Asia-Pacific) are narrower sub-regions within `apac` (Asia-Pacific). Prefer `apac` for general Asia-Pacific placement. Choose `apac-ne` or `apac-se` only when your users are concentrated in the northeast or southeast of the region and you want to minimize latency for them.
 
 ## Additional resources
 
 * You can find our more about where Durable Objects are located using the website: [Where Durable Objects Live ↗](https://where.durableobjects.live/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/reference/data-location/#page","headline":"Data location · Cloudflare Durable Objects docs","description":"Restrict Durable Objects to specific jurisdictions or provide location hints to control where data is stored and processed.","url":"https://developers.cloudflare.com/durable-objects/reference/data-location/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/reference/data-location/#page","headline":"Data location · Cloudflare Durable Objects docs","description":"Restrict Durable Objects to specific jurisdictions or provide location hints to control where data is stored and processed.","url":"https://developers.cloudflare.com/durable-objects/reference/data-location/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/reference/data-location/","name":"Data location"}}]}
 ```

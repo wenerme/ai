@@ -97,15 +97,15 @@
   },
   "chrome.md": {
     "url": "https://code.claude.com/docs/en/chrome",
-    "lastModified": "Thu, 04 Jun 2026 00:39:42 GMT",
-    "size": 11508,
-    "updatedAt": "2026-06-04T00:39:42.739Z"
+    "lastModified": "Sat, 20 Jun 2026 00:29:52 GMT",
+    "size": 11507,
+    "updatedAt": "2026-06-20T00:29:52.916Z"
   },
   "claude-code-on-the-web.md": {
     "url": "https://code.claude.com/docs/en/claude-code-on-the-web",
-    "lastModified": "Fri, 19 Jun 2026 00:38:12 GMT",
-    "size": 52578,
-    "updatedAt": "2026-06-19T00:38:12.543Z"
+    "lastModified": "Sat, 20 Jun 2026 00:29:53 GMT",
+    "size": 52740,
+    "updatedAt": "2026-06-20T00:29:53.319Z"
   },
   "claude-directory.md": {
     "url": "https://code.claude.com/docs/en/claude-directory",
@@ -217,9 +217,9 @@
   },
   "env-vars.md": {
     "url": "https://code.claude.com/docs/en/env-vars",
-    "lastModified": "Fri, 19 Jun 2026 00:38:25 GMT",
-    "size": 256931,
-    "updatedAt": "2026-06-19T00:38:25.794Z"
+    "lastModified": "Sat, 20 Jun 2026 00:30:06 GMT",
+    "size": 258773,
+    "updatedAt": "2026-06-20T00:30:06.014Z"
   },
   "errors.md": {
     "url": "https://code.claude.com/docs/en/errors",
@@ -283,9 +283,9 @@
   },
   "headless.md": {
     "url": "https://code.claude.com/docs/en/headless",
-    "lastModified": "Fri, 19 Jun 2026 00:38:33 GMT",
-    "size": 18432,
-    "updatedAt": "2026-06-19T00:38:33.346Z"
+    "lastModified": "Sat, 20 Jun 2026 00:30:13 GMT",
+    "size": 18868,
+    "updatedAt": "2026-06-20T00:30:13.645Z"
   },
   "hooks.md": {
     "url": "https://code.claude.com/docs/en/hooks",
@@ -319,9 +319,9 @@
   },
   "keybindings.md": {
     "url": "https://code.claude.com/docs/en/keybindings",
-    "lastModified": "Wed, 10 Jun 2026 00:33:17 GMT",
-    "size": 27018,
-    "updatedAt": "2026-06-10T00:33:17.933Z"
+    "lastModified": "Sat, 20 Jun 2026 00:30:17 GMT",
+    "size": 27295,
+    "updatedAt": "2026-06-20T00:30:17.496Z"
   },
   "large-codebases.md": {
     "url": "https://code.claude.com/docs/en/large-codebases",
@@ -343,15 +343,15 @@
   },
   "managed-mcp.md": {
     "url": "https://code.claude.com/docs/en/managed-mcp",
-    "lastModified": "Mon, 25 May 2026 23:29:56 GMT",
-    "size": 27148,
-    "updatedAt": "2026-05-26T00:26:46.139Z"
+    "lastModified": "Sat, 20 Jun 2026 00:30:19 GMT",
+    "size": 27968,
+    "updatedAt": "2026-06-20T00:30:19.910Z"
   },
   "mcp.md": {
     "url": "https://code.claude.com/docs/en/mcp",
-    "lastModified": "Sat, 13 Jun 2026 10:47:29 GMT",
-    "size": 50866,
-    "updatedAt": "2026-06-13T10:47:29.254Z"
+    "lastModified": "Sat, 20 Jun 2026 00:30:20 GMT",
+    "size": 52340,
+    "updatedAt": "2026-06-20T00:30:20.693Z"
   },
   "mcp-quickstart.md": {
     "url": "https://code.claude.com/docs/en/mcp-quickstart",
@@ -373,9 +373,9 @@
   },
   "model-config.md": {
     "url": "https://code.claude.com/docs/en/model-config",
-    "lastModified": "Wed, 17 Jun 2026 00:34:58 GMT",
-    "size": 46615,
-    "updatedAt": "2026-06-17T00:34:58.502Z"
+    "lastModified": "Sat, 20 Jun 2026 00:30:23 GMT",
+    "size": 47245,
+    "updatedAt": "2026-06-20T00:30:23.824Z"
   },
   "monitoring-usage.md": {
     "url": "https://code.claude.com/docs/en/monitoring-usage",
@@ -403,9 +403,9 @@
   },
   "permission-modes.md": {
     "url": "https://code.claude.com/docs/en/permission-modes",
-    "lastModified": "Wed, 17 Jun 2026 00:35:01 GMT",
-    "size": 26082,
-    "updatedAt": "2026-06-17T00:35:01.415Z"
+    "lastModified": "Sat, 20 Jun 2026 00:30:27 GMT",
+    "size": 26495,
+    "updatedAt": "2026-06-20T00:30:27.175Z"
   },
   "permissions.md": {
     "url": "https://code.claude.com/docs/en/permissions",
@@ -523,9 +523,9 @@
   },
   "settings.md": {
     "url": "https://code.claude.com/docs/en/settings",
-    "lastModified": "Fri, 19 Jun 2026 00:38:59 GMT",
-    "size": 188390,
-    "updatedAt": "2026-06-19T00:38:59.085Z"
+    "lastModified": "Sat, 20 Jun 2026 00:30:39 GMT",
+    "size": 191155,
+    "updatedAt": "2026-06-20T00:30:39.570Z"
   },
   "setup.md": {
     "url": "https://code.claude.com/docs/en/setup",

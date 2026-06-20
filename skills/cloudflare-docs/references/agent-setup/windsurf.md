@@ -41,7 +41,7 @@ Add the Cloudflare API and docs servers to `~/.codeium/windsurf/mcp_config.json`
 4. **Try a prompt**  
 Open Cascade and try a prompt — for example:  
 ```  
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.  
+Check my Workers deployment logs for errors and suggest fixes.  
 ```
 
 ## Cloudflare platform access

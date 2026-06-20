@@ -12,17 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Built-in storage
 
-Every new AI Search instance comes with built-in storage and a built-in vector index, powered by [R2](https://developers.cloudflare.com/r2/) and [Vectorize](https://developers.cloudflare.com/vectorize/). You can upload files directly to an instance without setting up either service yourself.
-
-## Instances created after April 16, 2026
-
-Instances created after **April 16, 2026** include built-in storage. You can upload files directly using the [Items API](https://developers.cloudflare.com/ai-search/api/items/workers-binding/) or the dashboard.
-
-Instances created before this date do not include built-in storage and do not support the Items API. You can see which of your instances have built-in storage on the dashboard under **AI** \> **AI Search**. Select your instance and check the **Overview** tab to see if it includes built-in storage.
-
-[ Go to **AI Search** ](https://dash.cloudflare.com/?to=/:account/ai/ai-search) 
-
-All instances created before this date will be automatically migrated to managed infrastructure on **June 3, 2026**. For details, refer to [Limits & pricing](https://developers.cloudflare.com/ai-search/platform/limits-pricing/#previous-instances).
+Every AI Search instance comes with built-in storage and a built-in vector index, powered by [R2](https://developers.cloudflare.com/r2/) and [Vectorize](https://developers.cloudflare.com/vectorize/). You can upload files directly to an instance without setting up either service yourself.
 
 ## Upload and manage files
 
@@ -32,7 +22,7 @@ For supported file types, refer to [Supported file types](https://developers.clo
 
 ## Indexing
 
-Files uploaded to built-in storage are indexed immediately. External data sources like websites and R2 buckets are indexed on a sync schedule.
+Files uploaded to built-in storage are indexed immediately. External data sources like websites and R2 buckets are indexed on a [sync schedule](https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/).
 
 ## External data sources
 
@@ -45,9 +35,9 @@ For example, an instance can be backed by a website for shared documentation whi
 
 ## Limits and pricing
 
-For instances with built-in storage, R2 storage, Vectorize, and Browser Run are included. Workers AI and AI Gateway usage is billed separately. For full details, refer to [Limits and pricing](https://developers.cloudflare.com/ai-search/platform/limits-pricing/).
+Storage, vector indexing, and Browser Run usage for crawling are included. Workers AI and AI Gateway usage is billed separately. For full details, refer to [Limits and pricing](https://developers.cloudflare.com/ai-search/platform/limits-pricing/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/#page","headline":"Built-in storage · Cloudflare AI Search docs","description":"Upload files directly to an AI Search instance using built-in storage powered by R2 and Vectorize.","url":"https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/#page","headline":"Built-in storage · Cloudflare AI Search docs","description":"Upload files directly to an AI Search instance using built-in storage powered by R2 and Vectorize.","url":"https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/configuration/data-source/","name":"Data source"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-search/configuration/data-source/built-in-storage/","name":"Built-in storage"}}]}
 ```

@@ -26,7 +26,7 @@ BYOIP does not come standard with Spectrum. To enable it, contact your account t
 
 UDP applications
 
-Spectrum UDP applications are [not supported](https://developers.cloudflare.com/spectrum/reference/limitations/#udp) when using Spectrum with BYOIP.
+Spectrum UDP applications are supported with BYOIP, including [CDN and Spectrum service bindings](https://developers.cloudflare.com/byoip/service-bindings/cdn-and-spectrum/). However, they are [not currently supported with Magic Transit service bindings](https://developers.cloudflare.com/spectrum/reference/limitations/#udp).
 
 ## Assign an IP address
 

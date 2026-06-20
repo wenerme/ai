@@ -214,7 +214,7 @@ Assuming `203.0.113.100` was also the origin IP, the DNS record would look like 
 
 UDP applications
 
-Spectrum UDP applications are [not supported](https://developers.cloudflare.com/spectrum/reference/limitations/#udp) when using Spectrum with BYOIP.
+Spectrum UDP applications are supported with BYOIP, including [CDN and Spectrum service bindings](https://developers.cloudflare.com/byoip/service-bindings/cdn-and-spectrum/). However, they are [not currently supported with Magic Transit service bindings](https://developers.cloudflare.com/spectrum/reference/limitations/#udp).
 
 Configuring Spectrum to use your own IP address is only possible via the [Cloudflare API](https://developers.cloudflare.com/api/resources/spectrum/).
 

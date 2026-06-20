@@ -56,8 +56,8 @@
   "anthropic-docs/build-with-claude/effort.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/effort",
     "skill": "anthropic-docs",
-    "size": 19605,
-    "updatedAt": "2026-06-10T00:34:06.397Z"
+    "size": 20269,
+    "updatedAt": "2026-06-20T00:31:02.384Z"
   },
   "anthropic-docs/build-with-claude/task-budgets.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/task-budgets",
@@ -76,8 +76,8 @@
   "anthropic-docs/build-with-claude/structured-outputs.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/structured-outputs",
     "skill": "anthropic-docs",
-    "size": 101766,
-    "updatedAt": "2026-06-12T00:35:26.759Z"
+    "size": 102789,
+    "updatedAt": "2026-06-20T00:31:03.322Z"
   },
   "anthropic-docs/build-with-claude/citations.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/citations",
@@ -116,8 +116,8 @@
   "anthropic-docs/build-with-claude/multilingual-support.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/multilingual-support",
     "skill": "anthropic-docs",
-    "size": 3471,
-    "updatedAt": "2026-06-16T00:40:03.258Z"
+    "size": 8989,
+    "updatedAt": "2026-06-20T00:31:05.146Z"
   },
   "anthropic-docs/build-with-claude/embeddings.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/embeddings",

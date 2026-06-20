@@ -735,6 +735,25 @@ components:
       enum:
         - list
       title: EmbeddingsPostResponsesContentApplicationJsonSchemaObject
+    EmbeddingsPostResponsesContentApplicationJsonSchemaUsageCostDetails:
+      type: object
+      properties:
+        upstream_inference_completions_cost:
+          type: number
+          format: double
+        upstream_inference_cost:
+          type:
+            - number
+            - 'null'
+          format: double
+        upstream_inference_prompt_cost:
+          type: number
+          format: double
+      required:
+        - upstream_inference_completions_cost
+        - upstream_inference_prompt_cost
+      description: Breakdown of upstream inference costs
+      title: EmbeddingsPostResponsesContentApplicationJsonSchemaUsageCostDetails
     EmbeddingsPostResponsesContentApplicationJsonSchemaUsagePromptTokensDetails:
       type: object
       properties:
@@ -766,6 +785,15 @@ components:
           type: number
           format: double
           description: Cost of the request in credits
+        cost_details:
+          oneOf:
+            - $ref: >-
+                #/components/schemas/EmbeddingsPostResponsesContentApplicationJsonSchemaUsageCostDetails
+            - type: 'null'
+          description: Breakdown of upstream inference costs
+        is_byok:
+          type: boolean
+          description: Whether a request was made using a Bring Your Own Key configuration
         prompt_tokens:
           type: integer
           description: Number of tokens in the input
