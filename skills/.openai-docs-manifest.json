@@ -10394,18 +10394,18 @@
   "codex-docs/config-reference.md": {
     "url": "https://developers.openai.com/codex/config-reference.md",
     "skill": "codex-docs",
-    "etag": "W/\"a346b0c43f9e69e0e28f8b36bf2d4de2\"",
-    "lastModified": "Thu, 18 Jun 2026 22:38:40 GMT",
-    "size": 73639,
-    "updatedAt": "2026-06-19T00:52:43.157Z"
+    "etag": "W/\"f3d2eebfabc2254dc295cfad08f6eddc\"",
+    "lastModified": "Sat, 20 Jun 2026 03:09:20 GMT",
+    "size": 73788,
+    "updatedAt": "2026-06-20T11:01:38.656Z"
   },
   "codex-docs/config-sample.md": {
     "url": "https://developers.openai.com/codex/config-sample.md",
     "skill": "codex-docs",
-    "etag": "W/\"d4b0f327eaef029f45cb09ece89decd1\"",
-    "lastModified": "Thu, 18 Jun 2026 22:38:40 GMT",
-    "size": 28349,
-    "updatedAt": "2026-06-19T00:52:43.377Z"
+    "etag": "W/\"ab4037e56ff6dbe85602ccb2fe54f519\"",
+    "lastModified": "Sat, 20 Jun 2026 03:09:20 GMT",
+    "size": 28514,
+    "updatedAt": "2026-06-20T11:01:38.879Z"
   },
   "codex-docs/custom-prompts.md": {
     "url": "https://developers.openai.com/codex/custom-prompts.md",
@@ -10594,10 +10594,10 @@
   "codex-docs/mcp.md": {
     "url": "https://developers.openai.com/codex/mcp.md",
     "skill": "codex-docs",
-    "etag": "W/\"e0a7ecf0974dd6588d19bef4b1955bd3\"",
-    "lastModified": "Wed, 27 May 2026 00:39:50 GMT",
-    "size": 7720,
-    "updatedAt": "2026-05-27T00:43:03.955Z"
+    "etag": "W/\"7456d2705ec026985ae0cca70e045025\"",
+    "lastModified": "Sat, 20 Jun 2026 03:10:40 GMT",
+    "size": 7950,
+    "updatedAt": "2026-06-20T11:01:44.818Z"
   },
   "codex-docs/memories.md": {
     "url": "https://developers.openai.com/codex/memories.md",
