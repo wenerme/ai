@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # pfSense
 
-**Last reviewed:**  almost 2 years ago 
+**Last reviewed:**  about 2 years ago 
 
 This tutorial includes the steps required to configure IPsec tunnels to connect a pfSense firewall to Cloudflare WAN (formerly Magic WAN).
 

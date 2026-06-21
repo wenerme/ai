@@ -41,7 +41,7 @@ Add the Cloudflare API and docs servers to `~/.codeium/windsurf/mcp_config.json`
 4. **Try a prompt**  
 Open Cascade and try a prompt — for example:  
 ```  
-Check my Workers deployment logs for errors and suggest fixes.  
+Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.  
 ```
 
 ## Cloudflare platform access

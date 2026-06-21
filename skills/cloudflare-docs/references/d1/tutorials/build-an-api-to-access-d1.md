@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Build an API to access D1 using a proxy Worker
 
-**Last reviewed:**  over 1 year ago 
+**Last reviewed:**  almost 2 years ago 
 
 In this tutorial, you will learn how to create an API that allows you to securely run queries against a D1 database.
 
@@ -179,8 +179,8 @@ Make a note of the displayed `database_name` and `database_id`. You will use thi
 1. From your `d1-http` folder, open the Wrangler file, Wrangler's configuration file.
 2. Add the following binding in the file. Make sure that the `database_name` and the `database_id` are correct.
 
-  * [  wrangler.jsonc ](#tab-panel-8009)
-  * [  wrangler.toml ](#tab-panel-8010)  
+  * [  wrangler.jsonc ](#tab-panel-8011)
+  * [  wrangler.toml ](#tab-panel-8012)  
 JSONC  
 ```  
 {  "d1_databases": [    {      "binding": "DB", // i.e. available in your Worker on env.DB      "database_name": "d1-http-example",      "database_id": "1234567890"    }  ]}  

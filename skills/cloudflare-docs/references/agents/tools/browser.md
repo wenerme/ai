@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Agents can use [Browser Run](https://developers.cloudflare.com/browser-run/) to inspect and interact with web pages through the [Chrome DevTools Protocol (CDP)](https://developers.cloudflare.com/browser-run/cdp/). Beta Browser tools are useful when an agent needs to understand rendered pages, capture screenshots, debug frontend behavior, or extract information that is only available after JavaScript runs.
 
-Instead of a fixed set of browser actions (click, screenshot, navigate), the model writes code that runs CDP commands against a live browser session through the `cdp` connector — accessing all domains, commands, events, and types in the protocol. Executions are recorded on a durable codemode runtime (abort-and-replay), so a run can pause for approval and resume with its browser session intact.
+Instead of a fixed set of browser actions (click, screenshot, navigate), the model writes code that runs CDP commands against a live browser session through the `cdp` connector — accessing all domains, commands, events, and types in the protocol. Executions are recorded on a durable Code Mode runtime (abort-and-replay), so a run can pause for approval and resume with its browser session intact.
 
 Use browser tools when you want an agent to:
 
@@ -105,7 +105,7 @@ TypeScript
 export { CodemodeRuntime } from "agents/browser";
 ```
 
-`agents/browser` re-exports the codemode runtime for browser tool setups. Codemode-specific examples can also import `CodemodeRuntime` from `@cloudflare/codemode`.
+`agents/browser` re-exports the Code Mode runtime for browser tool setups. Code Mode-specific examples can also import `CodemodeRuntime` from `@cloudflare/codemode`.
 
 ## Session lifecycle
 
@@ -182,7 +182,7 @@ Quick Actions require a Worker `compatibility_date` of `2026-03-24` or later and
 
 [Live View](https://developers.cloudflare.com/browser-run/features/live-view/) lets a human watch or control a running browser session in real time. Use it for human-in-the-loop steps such as login, MFA, CAPTCHA, or sensitive input.
 
-Because the codemode runtime can pause a run with the browser session intact, a handoff follows this pattern:
+Because the Code Mode runtime can pause a run with the browser session intact, a handoff follows this pattern:
 
 1. The model calls `cdp.getLiveViewUrl()` to get a link to the current tab.
 2. The agent surfaces the link to the user.
@@ -292,6 +292,6 @@ For a complete walkthrough, including Browser Run setup, tool definitions, and s
 [ Chrome DevTools Protocol ](https://developers.cloudflare.com/browser-run/cdp/) Use CDP commands, events, and types with Browser Run.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/browser/#page","headline":"Browser · Cloudflare Agents docs","description":"Give Agents full Chrome DevTools Protocol access to inspect pages, scrape data, and capture screenshots with Browser Run.","url":"https://developers.cloudflare.com/agents/tools/browser/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/browser/#page","headline":"Browser · Cloudflare Agents docs","description":"Give Agents full Chrome DevTools Protocol access to inspect pages, scrape data, and capture screenshots with Browser Run.","url":"https://developers.cloudflare.com/agents/tools/browser/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/tools/","name":"Tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/tools/browser/","name":"Browser"}}]}
 ```

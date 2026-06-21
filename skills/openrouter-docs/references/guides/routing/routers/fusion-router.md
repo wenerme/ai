@@ -92,7 +92,57 @@ curl https://openrouter.ai/api/v1/chat/completions \
 
 ## Configuration
 
-You can override the default panel and judge by declaring the tool explicitly with a `parameters` block. This is optional — omit it entirely and fusion uses the Quality preset defaults.
+Override the default panel and judge via the `plugins` array or the `tools` array. Both are optional — omit them entirely and fusion uses the Quality preset defaults.
+
+### Plugin config (recommended with the model slug)
+
+Pass a `fusion` plugin entry alongside `model: "openrouter/fusion"`. This is the same pattern the [Pareto Router](/docs/guides/routing/routers/pareto-router) uses for `min_coding_score`.
+
+```typescript title="TypeScript SDK"
+const completion = await openRouter.chat.send({
+  model: 'openrouter/fusion',
+  plugins: [
+    {
+      id: 'fusion',
+      analysis_models: [
+        '~anthropic/claude-opus-latest',
+        '~openai/gpt-latest',
+        '~google/gemini-pro-latest',
+      ],
+      model: '~openai/gpt-latest',
+    },
+  ],
+  messages: [
+    {
+      role: 'user',
+      content: 'Compare ridge, lasso, and elastic-net regression. Where does each shine?',
+    },
+  ],
+});
+```
+
+```bash title="cURL"
+curl https://openrouter.ai/api/v1/chat/completions \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "openrouter/fusion",
+    "plugins": [
+      {
+        "id": "fusion",
+        "analysis_models": ["~anthropic/claude-opus-latest", "~openai/gpt-latest", "~google/gemini-pro-latest"],
+        "model": "~openai/gpt-latest"
+      }
+    ],
+    "messages": [
+      {"role": "user", "content": "Compare ridge, lasso, and elastic-net regression."}
+    ]
+  }'
+```
+
+### Tool config (when using your own outer model)
+
+When you bring your own model and add `openrouter:fusion` as a server tool, configure it via the `tools` array instead:
 
 ```typescript title="TypeScript SDK"
 const completion = await openRouter.chat.send({

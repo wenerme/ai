@@ -113,17 +113,17 @@ For the full Session API — context blocks, compaction, search, skills, and mul
 
 ## Package exports
 
-| Export                                | Description                                                 |
-| ------------------------------------- | ----------------------------------------------------------- |
-| @cloudflare/think                     | Think, Session, Workspace, skills namespace                 |
-| @cloudflare/think/messengers          | Messenger contracts, Chat SDK bridge, state agent, delivery |
-| @cloudflare/think/messengers/telegram | Telegram messenger provider and delivery helpers            |
-| @cloudflare/think/workflows           | ThinkWorkflow, step.prompt() — Workflow prompts             |
-| @cloudflare/think/tools/workspace     | createWorkspaceTools() — for custom storage backends        |
-| @cloudflare/think/tools/execute       | createExecuteTool() — sandboxed code execution via codemode |
-| @cloudflare/think/tools/browser       | createBrowserTools() — Chrome DevTools Protocol tools       |
-| @cloudflare/think/tools/extensions    | createExtensionTools() — LLM-driven extension loading       |
-| @cloudflare/think/extensions          | ExtensionManager, HostBridgeLoopback — extension runtime    |
+| Export                                | Description                                                  |
+| ------------------------------------- | ------------------------------------------------------------ |
+| @cloudflare/think                     | Think, Session, Workspace, skills namespace                  |
+| @cloudflare/think/messengers          | Messenger contracts, Chat SDK bridge, state agent, delivery  |
+| @cloudflare/think/messengers/telegram | Telegram messenger provider and delivery helpers             |
+| @cloudflare/think/workflows           | ThinkWorkflow, step.prompt() — Workflow prompts              |
+| @cloudflare/think/tools/workspace     | createWorkspaceTools() — for custom storage backends         |
+| @cloudflare/think/tools/execute       | createExecuteTool() — sandboxed code execution via Code Mode |
+| @cloudflare/think/tools/browser       | createBrowserTools() — Chrome DevTools Protocol tools        |
+| @cloudflare/think/tools/extensions    | createExtensionTools() — LLM-driven extension loading        |
+| @cloudflare/think/extensions          | ExtensionManager, HostBridgeLoopback — extension runtime     |
 
 ## Dependencies
 
@@ -147,6 +147,6 @@ Bundled with `@cloudflare/think`:
 The Agent Skills engine and its script runner live in [agents/skills](https://developers.cloudflare.com/agents/runtime/execution/agent-skills/), so skill scripts pull `@cloudflare/worker-bundler` and `just-bash` through `agents`, not Think.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/configuration/#page","headline":"Configuration · Cloudflare Agents docs","description":"Configuration overrides, dynamic runtime configuration, Session integration, and package exports for the Think chat agent framework.","url":"https://developers.cloudflare.com/agents/harnesses/think/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/configuration/#page","headline":"Configuration · Cloudflare Agents docs","description":"Configuration overrides, dynamic runtime configuration, Session integration, and package exports for the Think chat agent framework.","url":"https://developers.cloudflare.com/agents/harnesses/think/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/harnesses/","name":"Harnesses"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/harnesses/think/","name":"Think"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/harnesses/think/configuration/","name":"Configuration"}}]}
 ```

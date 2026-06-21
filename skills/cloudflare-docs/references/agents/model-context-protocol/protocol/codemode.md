@@ -1,5 +1,5 @@
 ---
-title: Codemode
+title: Code Mode
 description: Let LLMs use external systems by writing TypeScript in a secure sandbox, backed by a durable runtime with discovery, approvals, and reusable snippets.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
@@ -10,11 +10,11 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-# Codemode
+# Code Mode
 
 Beta 
 
-Codemode lets a model use external systems by **writing TypeScript** instead of making individual tool calls. The model gets one tool — `codemode({ code })` — that executes its code in a sandboxed Worker. Inside the sandbox, every integration you configure is available as a typed global, and a four-method platform SDK handles discovery, side effects, and reuse.
+Code Mode lets a model use external systems by **writing TypeScript** instead of making individual tool calls. The model gets one tool — `codemode({ code })` — that executes its code in a sandboxed Worker. Inside the sandbox, every integration you configure is available as a typed global, and a four-method platform SDK handles discovery, side effects, and reuse.
 
 TypeScript
 
@@ -25,11 +25,11 @@ TypeScript
 
 Warning
 
-Codemode is experimental and may have breaking changes in future releases. Use with caution in production.
+Code Mode is experimental and may have breaking changes in future releases. Use with caution in production.
 
-## Why use Codemode
+## Why use Code Mode
 
-* **Tool descriptions do not scale.** The classic approach generates types for every tool and puts them all in the tool description. Ten tools is fine; a GitHub MCP server plus a Stripe spec plus an internal API is thousands of prompt tokens the model pays for on every request, mostly for tools it will not call. Codemode moves discovery _inside the sandbox_: `codemode.search` and `codemode.describe` return results into the running code, not into the context window. The model pulls exactly the type information it needs, when it needs it.
+* **Tool descriptions do not scale.** The classic approach generates types for every tool and puts them all in the tool description. Ten tools is fine; a GitHub MCP server plus a Stripe spec plus an internal API is thousands of prompt tokens the model pays for on every request, mostly for tools it will not call. Code Mode moves discovery _inside the sandbox_: `codemode.search` and `codemode.describe` return results into the running code, not into the context window. The model pulls exactly the type information it needs, when it needs it.
 * **Models are better at code than at tool protocols.** Filtering, joining, retrying, and looping over pages each cost a round trip through the model in tool-call style. In code it is just code: one sandbox run can do what would otherwise take a dozen tool calls.
 * **Real work needs durable state.** Creating issues, sending messages, and merging pull requests need human approval, an audit trail, and sometimes an undo. Those concerns have one home — the runtime — instead of being rebuilt per app. The model's code pauses at an approval-required call and continues after approval as if nothing happened.
 
@@ -51,7 +51,7 @@ Terminal window
 npm install @cloudflare/codemode
 ```
 
-## Configure Codemode
+## Configure Code Mode
 
 ### 1\. Add the Vite plugin
 
@@ -421,13 +421,13 @@ For import attributes to work, your `tsconfig.json` needs `"module": "esnext"` (
 
 ## Related resources
 
-[ Codemode connectors example ](https://github.com/cloudflare/agents/tree/main/examples/codemode-connectors) The connector playground — MCP, OpenAPI, and custom connectors with in-sandbox approvals. 
+[ Code Mode connectors example ](https://github.com/cloudflare/agents/tree/main/examples/codemode-connectors) The connector playground — MCP, OpenAPI, and custom connectors with in-sandbox approvals. 
 
 [ Using AI models ](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/) Use AI models with your Agent. 
 
-[ MCP client ](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/) Connect to MCP servers and expose their tools as codemode connectors.
+[ MCP client ](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/) Connect to MCP servers and expose their tools as Code Mode connectors.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/codemode/#page","headline":"Codemode · Cloudflare Agents docs","description":"Let LLMs use external systems by writing TypeScript in a secure sandbox, backed by a durable runtime with discovery, approvals, and reusable snippets.","url":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/codemode/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/model-context-protocol/","name":"Model Context Protocol (MCP)"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/model-context-protocol/protocol/","name":"Protocol"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/model-context-protocol/protocol/codemode/","name":"Codemode"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/codemode/#page","headline":"Code Mode · Cloudflare Agents docs","description":"Let LLMs use external systems by writing TypeScript in a secure sandbox, backed by a durable runtime with discovery, approvals, and reusable snippets.","url":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/codemode/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/model-context-protocol/","name":"Model Context Protocol (MCP)"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/model-context-protocol/protocol/","name":"Protocol"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/model-context-protocol/protocol/codemode/","name":"Code Mode"}}]}
 ```

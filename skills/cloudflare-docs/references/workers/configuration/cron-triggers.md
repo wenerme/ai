@@ -30,9 +30,9 @@ Cron Triggers execute on UTC time.
 
 To respond to a Cron Trigger, you must add a ["scheduled" handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/) to your Worker.
 
-* [  JavaScript ](#tab-panel-11457)
-* [  TypeScript ](#tab-panel-11458)
-* [  Python ](#tab-panel-11459)
+* [  JavaScript ](#tab-panel-11459)
+* [  TypeScript ](#tab-panel-11460)
+* [  Python ](#tab-panel-11461)
 
 JavaScript
 
@@ -49,8 +49,8 @@ interface Env {}export default {  async scheduled(    controller: ScheduledContr
 Python
 
 ```
-from workers import WorkerEntrypoint, Response
-class Default(WorkerEntrypoint):    async def scheduled(self, controller, env, ctx):        print("cron processed")
+from workers import WorkerEntrypoint
+class Default(WorkerEntrypoint):    async def scheduled(self, controller, env, ctx):        # All four parameters (self, controller, env, ctx) are required        print("cron processed")
 ```
 
 Refer to the following additional examples to write your code:
@@ -72,8 +72,8 @@ If a Worker is managed with Wrangler, Cron Triggers should be exclusively manage
 
 Refer to the example below for a Cron Triggers configuration:
 
-* [  wrangler.jsonc ](#tab-panel-11462)
-* [  wrangler.toml ](#tab-panel-11463)
+* [  wrangler.jsonc ](#tab-panel-11464)
+* [  wrangler.toml ](#tab-panel-11465)
 
 JSONC
 
@@ -89,8 +89,8 @@ TOML
 
 You also can set a different Cron Trigger for each [environment](https://developers.cloudflare.com/workers/wrangler/environments/) in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). You need to put the `triggers` array under your chosen environment. For example:
 
-* [  wrangler.jsonc ](#tab-panel-11464)
-* [  wrangler.toml ](#tab-panel-11465)
+* [  wrangler.jsonc ](#tab-panel-11466)
+* [  wrangler.toml ](#tab-panel-11467)
 
 JSONC
 
@@ -159,7 +159,7 @@ Some common time intervals that may be useful for setting up your Cron Trigger:
 
 ## Test Cron Triggers locally
 
-Test Cron Triggers using Wrangler with [wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev), or using the [Cloudflare Vite plugin ↗](https://developers.cloudflare.com/workers/vite-plugin/). This exposes a `/cdn-cgi/handler/scheduled` route, which can be used to test using an HTTP request.
+Test Cron Triggers using Wrangler with [wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev), or using the [Cloudflare Vite plugin ↗](https://developers.cloudflare.com/workers/vite-plugin/). This exposes a `/cdn-cgi/handler/scheduled` route, which can be used to test using an HTTP request. If you are using the Cloudflare Vite Plugin, ensure that you use the correct vite port for the following commands (Vite defaults to 5173).
 
 Terminal window
 
@@ -235,8 +235,8 @@ When deploying a Worker with Wrangler any previous Cron Triggers are replaced wi
 * If the `crons` property is an empty array then all the Cron Triggers are removed.
 * If the `triggers` or `crons` property are `undefined` then the currently deploy Cron Triggers are left in-place.
 
-* [  wrangler.jsonc ](#tab-panel-11460)
-* [  wrangler.toml ](#tab-panel-11461)
+* [  wrangler.jsonc ](#tab-panel-11462)
+* [  wrangler.toml ](#tab-panel-11463)
 
 JSONC
 
@@ -275,6 +275,6 @@ Green Compute can be configured at the account level:
 * Learn how to access Cron Triggers in [ES modules syntax](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) for an optimized experience.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/cron-triggers/#page","headline":"Cron Triggers · Cloudflare Workers docs","description":"Enable your Worker to be executed on a schedule.","url":"https://developers.cloudflare.com/workers/configuration/cron-triggers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/cron-triggers/#page","headline":"Cron Triggers · Cloudflare Workers docs","description":"Enable your Worker to be executed on a schedule.","url":"https://developers.cloudflare.com/workers/configuration/cron-triggers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/cron-triggers/","name":"Cron Triggers"}}]}
 ```

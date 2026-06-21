@@ -49,7 +49,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**  
 For example:  
 ```  
-Add a cron trigger to my Worker that processes a job queue every hour.  
+Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.  
 ```
 
 1. **Download Codex**  

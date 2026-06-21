@@ -59,7 +59,7 @@ GraphQL request
 query StreamGetMinutesExample($accountTag: string!, $start: Date, $end: Date) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      streamMinutesViewedAdaptiveGroups(        filter: { date_geq: $start, date_lt: $end }        orderBy: [sum_minutesViewed_DESC]        limit: 100      ) {        sum {          minutesViewed        }        dimensions {          uid          clientCountryName        }      }    }  }}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAygFwmAhgWwOJgQWQJYB2ICYAzgKIAe6ADgDZgAUAJCgMZsD2IBCAKigDmALhikkhQQEIANDGbiUEBKIAiKEnOZgCAEzUawAShgBvAFAwYANzxgA7pDOWrMdlx4JSjAGZ46JBCipm4c3LwCIvLu4fxCMAC+JhauruLI6PhEJKQAanaOugCCuig0CHjWYBgQ3DTeLqlWfgGQwTClJAD6gmDAogoISghynWBdAQM6uomNTZwQupAAQlCiANqkIGhdaITEZPkOYLpdquRwAMIAunOpdHh7KjAAjAAMb3cwyV9WW2jOJpNPbZQ4FE6-WZAqy6R46Uh4TgEUiA6FWEB4XSQqxsB46BCXWLQABy6DAkISX0pqWpswSQA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXsICMADgYgApvAAmXPoJHiAnCAC+QA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAygFwmAhgWwOJgQWQJYB2ICYAzgKIAe6ADgDZgAUAJCgMZsD2IBCAKigDmALhikkhQQEIANDGbiUEBKIAiKEnOZgCAEzUawAShgBvAFAwYANzxgA7pDOWrMdlx4JSjAGZ46JBCipm4c3LwCIvLu4fxCMAC+JhauruLI6PhEJKQAanaOugCCuig0CHjWYBgQ3DTeLqlWfgGQwTClJAD6gmDAogoISghynWBdAQM6uomNTZwQupAAQlCiANqkIGhdaITEZPkOYLpdquRwAMIAunOpdHh7KjAAjAAMb3cwyV9WW2jOJpNPbZQ4FE6-WZAqy6R46Uh4TgEUiA6FWEB4XSQqxsB46BCXWLQABy6DAkISX0pqWpswSQA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXsICMATgYgApvAAmXPoJHC+IAL5A)
 
 GraphQL response
 
@@ -79,7 +79,7 @@ GraphQL query
 query StreamPaginationExample(  $accountTag: string!  $start: Date  $end: Date  $uId: string) {  viewer {    accounts(filter: { accountTag: $accountTag }) {      videoPlaybackEventsAdaptiveGroups(        filter: { date_geq: $start, date_lt: $end, uid_gt: $uId }        orderBy: [uid_ASC]        limit: 2      ) {        count        sum {          timeViewedMinutes        }        dimensions {          uid        }      }    }  }}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAygFwmAhgWwAooOYEsB2KCuA9vgKIAe6ADgDZgAUAUDDACQoDGXJI+CACo4AXDADOSAtgCErDpJQQEYgCJEw89mHwATNRq0gAkvolT82ZgEoYAb3kA3XGADuke-Lbde-BOMYAM1w6BEgxOxgfPgFhbDFOHhihHBgAX1sHNmyYZ10wEgw6FCgAI24Aa3JHHX8AQV0UGmIagHEIPhoArxyYYNDw+xhGsIB9bDBgBMVlABphjVHQhJ1deZBcXXGVDhNddJ6ckgh8iAAhKDEAbQ2turgAYQBdQ+y6XDRcHYAmV8zXti+AQAiQgNCeXq9YhoMAANRc7l0AFkCCAwuIQWkQboPjpxKR8OIIZDsrdMa8sTlKQc0kA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXsICMADgYgApvAAmXPoJHiAnNNhVF2AKwCALALG6AzADMJ8mWDEB2cwYPzdB7mDcy7AiOcUBfIA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAygFwmAhgWwAooOYEsB2KCuA9vgKIAe6ADgDZgAUAUDDACQoDGXJI+CACo4AXDADOSAtgCErDpJQQEYgCJEw89mHwATNRq0gAkvolT82ZgEoYAb3kA3XGADuke-Lbde-BOMYAM1w6BEgxOxgfPgFhbDFOHhihHBgAX1sHNmyYZ10wEgw6FCgAI24Aa3JHHX8AQV0UGmIagHEIPhoArxyYYNDw+xhGsIB9bDBgBMVlABphjVHQhJ1deZBcXXGVDhNddJ6ckgh8iAAhKDEAbQ2turgAYQBdQ+y6XDRcHYAmV8zXti+AQAiQgNCeXq9YhoMAANRc7l0AFkCCAwuIQWkQboPjpxKR8OIIZDsrdMa8sTlKQc0kA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXsICMATgYgApvAAmXPoJHC+02FUXYArAIAsAsToDMAMwAc8mWDEB2M-v3yd+7mDcy7AiGcUBfIA)
 
 Here are the steps to implementing pagination:
 

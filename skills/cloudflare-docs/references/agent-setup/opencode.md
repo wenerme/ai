@@ -51,7 +51,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.  
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.  
 ```
 
 ## Cloudflare platform access

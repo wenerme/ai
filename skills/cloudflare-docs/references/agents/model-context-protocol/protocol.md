@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 * [ Tools ](https://developers.cloudflare.com/agents/model-context-protocol/protocol/tools/)
 * [ Authorization ](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/)
 * [ Transport ](https://developers.cloudflare.com/agents/model-context-protocol/protocol/transport/)
-* [ Codemode ](https://developers.cloudflare.com/agents/model-context-protocol/protocol/codemode/)
+* [ Code Mode ](https://developers.cloudflare.com/agents/model-context-protocol/protocol/codemode/)
 * [ MCP governance ](https://developers.cloudflare.com/agents/model-context-protocol/protocol/governance/)
 
 ```json

@@ -20,7 +20,7 @@ These MCP servers allow your MCP client to read configurations from your account
 
 The [Cloudflare API MCP server ↗](https://github.com/cloudflare/mcp) provides access to the entire [Cloudflare API](https://developers.cloudflare.com/api/) — over 2,500 endpoints across DNS, Workers, R2, Zero Trust, and every other product — through just two tools: `search()` and `execute()`.
 
-It uses [Codemode](https://developers.cloudflare.com/agents/model-context-protocol/protocol/codemode/), a technique where the model writes JavaScript against a typed representation of the OpenAPI spec and the Cloudflare API client, rather than loading individual tool definitions for each endpoint. The generated code runs inside an isolated [Dynamic Worker](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/) sandbox.
+It uses [Code Mode](https://developers.cloudflare.com/agents/model-context-protocol/protocol/codemode/), a technique where the model writes JavaScript against a typed representation of the OpenAPI spec and the Cloudflare API client, rather than loading individual tool definitions for each endpoint. The generated code runs inside an isolated [Dynamic Worker](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/) sandbox.
 
 This approach uses approximately 1,000 tokens regardless of how many API endpoints exist. An equivalent MCP server that exposed every endpoint as a native tool would consume over 1 million tokens — more than the entire context window of most foundation models.
 
@@ -28,7 +28,7 @@ This approach uses approximately 1,000 tokens regardless of how many API endpoin
 | --------------------------------- | ----- | ----------- |
 | Native MCP (full schemas)         | 2,594 | \~1,170,000 |
 | Native MCP (required params only) | 2,594 | \~244,000   |
-| Codemode                          | 2     | \~1,000     |
+| Code Mode                         | 2     | \~1,000     |
 
 ### Connect to the Cloudflare API MCP server
 
@@ -108,6 +108,6 @@ In addition to the Cloudflare API MCP server, Cloudflare provides product-specif
 Check the [GitHub page ↗](https://github.com/cloudflare/mcp-server-cloudflare) to learn how to use Cloudflare's remote MCP servers with different MCP clients.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/#page","headline":"Cloudflare's own MCP servers · Cloudflare Agents docs","description":"Connect to Cloudflare's managed remote MCP servers to read configurations, manage services, and automate actions across your account.","url":"https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/#page","headline":"Cloudflare's own MCP servers · Cloudflare Agents docs","description":"Connect to Cloudflare's managed remote MCP servers to read configurations, manage services, and automate actions across your account.","url":"https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/model-context-protocol/","name":"Model Context Protocol (MCP)"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/model-context-protocol/cloudflare/","name":"Cloudflare"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/model-context-protocol/cloudflare/servers-for-cloudflare/","name":"Cloudflare's own MCP servers"}}]}
 ```

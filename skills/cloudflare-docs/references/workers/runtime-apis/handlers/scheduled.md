@@ -30,9 +30,9 @@ curl "http://localhost:8787/cdn-cgi/handler/scheduled?format=json"
 
 ## Syntax
 
-* [  JavaScript ](#tab-panel-12008)
-* [  TypeScript ](#tab-panel-12009)
-* [  Python ](#tab-panel-12010)
+* [  JavaScript ](#tab-panel-12011)
+* [  TypeScript ](#tab-panel-12012)
+* [  Python ](#tab-panel-12013)
 
 JavaScript
 
@@ -49,8 +49,8 @@ interface Env {}export default {  async scheduled(    controller: ScheduledContr
 Python
 
 ```
-from workers import WorkerEntrypoint, Response, fetch
-class Default(WorkerEntrypoint):    async def scheduled(self, controller, env, ctx):        await doSomeTaskOnASchedule()
+from workers import WorkerEntrypoint
+class Default(WorkerEntrypoint):    async def scheduled(self, controller, env, ctx):        # controller.cron contains the cron pattern that triggered this event        # controller.scheduledTime contains the scheduled time in ms since epoch        print(f"Cron triggered: {controller.cron}")
 ```
 
 ### Properties
@@ -75,8 +75,8 @@ class Default(WorkerEntrypoint):    async def scheduled(self, controller, env, c
 
 When you configure multiple [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/) for a single Worker, each trigger invokes the same `scheduled()` handler. Use `controller.cron` to distinguish which schedule fired and run different logic for each.
 
-* [  wrangler.jsonc ](#tab-panel-12014)
-* [  wrangler.toml ](#tab-panel-12015)
+* [  wrangler.jsonc ](#tab-panel-12017)
+* [  wrangler.toml ](#tab-panel-12018)
 
 JSONC
 
@@ -90,9 +90,9 @@ TOML
 [triggers]crons = [ "*/5 * * * *", "0 0 * * *" ]
 ```
 
-* [  JavaScript ](#tab-panel-12011)
-* [  TypeScript ](#tab-panel-12012)
-* [  Python ](#tab-panel-12013)
+* [  JavaScript ](#tab-panel-12014)
+* [  TypeScript ](#tab-panel-12015)
+* [  Python ](#tab-panel-12016)
 
 JavaScript
 
@@ -126,6 +126,6 @@ Note
 The runtime waits for the promise returned by the `scheduled()` handler to resolve (up to the 15-minute duration limit). You do not need to use `waitUntil()` for the runtime to wait for a single asynchronous task. `waitUntil()` is most useful when you need to run multiple concurrent tasks, or when you want the outcome of a specific promise to be recorded as the Cron Trigger invocation status.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/#page","headline":"Scheduled Handler · Cloudflare Workers docs","description":"Run Workers on a recurring schedule using the scheduled() handler and Cron Triggers.","url":"https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/#page","headline":"Scheduled Handler · Cloudflare Workers docs","description":"Run Workers on a recurring schedule using the scheduled() handler and Cron Triggers.","url":"https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/handlers/","name":"Handlers"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/runtime-apis/handlers/scheduled/","name":"Scheduled Handler"}}]}
 ```
