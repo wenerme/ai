@@ -53,19 +53,20 @@ No LTS releases are currently available, as Cloudflare is still rolling out our 
 
 ## Linux
 
-|                            |                                                                                                                                  |
-| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| **OS version**             | CentOS 8, RHEL 8, RHEL 9 [1](#user-content-fn-1), Debian 12, Debian 13, Fedora 34, Fedora 35, Ubuntu 22.04 LTS, Ubuntu 24.04 LTS |
-| **Processor**              | AMD64 / x86-64 or ARM64 / AArch64                                                                                                |
-| **HD space**               | 75 MB                                                                                                                            |
-| **Memory**                 | 35 MB                                                                                                                            |
-| **Network interface type** | Wi-Fi or LAN                                                                                                                     |
-| **MTU**                    | 1381 bytes recommended [2](#user-content-fn-2)                                                                                   |
+|                            |                                                                                                                                                          |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **OS version**             | CentOS 8, RHEL 8, RHEL 9 [1](#user-content-fn-1), Debian 12, Debian 13, Fedora 34, Fedora 35 [2](#user-content-fn-3), Ubuntu 22.04 LTS, Ubuntu 24.04 LTS |
+| **Processor**              | AMD64 / x86-64 or ARM64 / AArch64                                                                                                                        |
+| **HD space**               | 75 MB                                                                                                                                                    |
+| **Memory**                 | 35 MB                                                                                                                                                    |
+| **Network interface type** | Wi-Fi or LAN                                                                                                                                             |
+| **MTU**                    | 1381 bytes recommended [3](#user-content-fn-2)                                                                                                           |
 
 ## Footnotes
 
 1. On RHEL 9 and later, enable the [Extra Packages for Enterprise Linux (EPEL) ↗](https://docs.fedoraproject.org/en-US/epel/) repository (`sudo dnf install epel-release`) before installing `cloudflare-warp`. EPEL provides dependencies required by the client UI. [↩](#user-content-fnref-1)
-2. Minimum 1281 bytes with [Path MTU Discovery](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/) [↩](#user-content-fnref-2)
+2. The Linux client UI depends on the `webkit2gtk3` library. Fedora releases newer than those listed (Fedora 41 and later) ship `webkit2gtk4.x` instead of `webkit2gtk3` and do not provide a `webkit2gtk3` package, so the `cloudflare-warp` RPM cannot currently be installed on them. [↩](#user-content-fnref-3)
+3. Minimum 1281 bytes with [Path MTU Discovery](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/) [↩](#user-content-fnref-2)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/lts-releases/#page","headline":"Download Cloudflare One Client LTS releases · Cloudflare One docs","description":"Reference information for Download Cloudflare One Client LTS releases in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/lts-releases/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

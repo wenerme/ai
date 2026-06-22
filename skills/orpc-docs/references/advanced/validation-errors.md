@@ -4,7 +4,7 @@ oRPC includes built-in validation errors that work well for most cases. Customiz
 
 ## Customizing
 
-You can catch validation errors with [interceptors](/docs/rpc/handler#interceptors), [client interceptors](/docs/rpc/handler#client-interceptors), or [middleware](/docs/rpc/middleware) applied before `.input` or `.output`.
+You can catch validation errors with [interceptors](/docs/rpc/handler#interceptors), [client interceptors](/docs/rpc/handler#client-interceptors), or [middleware](/docs/middleware) applied before `.input` or `.output`.
 
 ```ts twoslash
 import { RPCHandler } from '@orpc/server/fetch'
@@ -57,7 +57,7 @@ const handler = new RPCHandler(router, {
 
 As explained in the [error handling guide](/docs/error-handling#orpcerror-compatibility), if you throw an `ORPCError` whose `code` and `data` match an error defined with `.errors`, oRPC treats it the same as `errors.[code]`.
 
-This does not work in [interceptors](/docs/rpc/handler#interceptors). Use [client interceptors](/docs/rpc/handler#client-interceptors) or [middleware](/docs/rpc/middleware) applied before `.input` or `.output` instead.
+This does not work in [interceptors](/docs/rpc/handler#interceptors). Use [client interceptors](/docs/rpc/handler#client-interceptors) or [middleware](/docs/middleware) applied before `.input` or `.output` instead.
 
 ```ts twoslash
 import { RPCHandler } from '@orpc/server/fetch'

@@ -1,6 +1,6 @@
 # RPC Protocol
 
-The RPC protocol is a lightweight protocol for remote procedure calls. It supports more native types than plain JSON and is used by [RPC Handler](/docs/rpc/handler) and [RPC Link](/docs/client/rpc-link).
+The RPC protocol is a lightweight protocol for remote procedure calls. It supports more native types than plain JSON and is used by [RPC Handler](/docs/rpc/handler) and [RPC Link](/docs/rpc/link).
 
 ## Serializer
 

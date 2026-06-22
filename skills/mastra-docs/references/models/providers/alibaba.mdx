@@ -1,11 +1,11 @@
 ---
 title: "Alibaba | Models"
-description: "Use Alibaba models with Mastra. 49 models available."
+description: "Use Alibaba models with Mastra. 51 models available."
 ---
 
 # [Alibaba logo]Alibaba
 
-Access 49 Alibaba models through Mastra's model router. Authentication is handled automatically using the `DASHSCOPE_API_KEY` environment variable.
+Access 51 Alibaba models through Mastra's model router. Authentication is handled automatically using the `DASHSCOPE_API_KEY` environment variable.
 
 Learn more in the [Alibaba documentation](https://www.alibabacloud.com/help/en/model-studio/models).
 
@@ -580,6 +580,18 @@ for await (const chunk of stream) {
     "outputCost": 1.485
   },
   {
+    "model": "alibaba/qwen3.6-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 65536,
+    "inputCost": 0.1875,
+    "outputCost": 1.125
+  },
+  {
     "model": "alibaba/qwen3.6-max-preview",
     "imageInput": false,
     "audioInput": false,
@@ -614,6 +626,18 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": 2.5,
     "outputCost": 7.5
+  },
+  {
+    "model": "alibaba/qwen3.7-plus",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 65536,
+    "inputCost": 0.5,
+    "outputCost": 3
   },
   {
     "model": "alibaba/qwq-plus",

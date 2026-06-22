@@ -58,19 +58,19 @@ npx wrangler d1 info some-existing-db
 
 In your Wrangler file, create a new `[[d1_databases]]` configuration block and set `database_name` and `database_id` to the name and id (respectively) of the D1 database you want to query:
 
-* [  wrangler.jsonc ](#tab-panel-7962)
-* [  wrangler.toml ](#tab-panel-7963)
+* [  wrangler.jsonc ](#tab-panel-7964)
+* [  wrangler.toml ](#tab-panel-7965)
 
 JSONC
 
 ```
-{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "python-and-d1",  "main": "src/entry.py",  "compatibility_flags": [ // Required for Python Workers    "python_workers"  ],  // Set this to today's date  "compatibility_date": "2026-06-18",  "d1_databases": [    {      "binding": "DB", // This will be how you refer to your database in your Worker      "database_name": "YOUR_DATABASE_NAME",      "database_id": "YOUR_DATABASE_ID"    }  ]}
+{  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "python-and-d1",  "main": "src/entry.py",  "compatibility_flags": [ // Required for Python Workers    "python_workers"  ],  // Set this to today's date  "compatibility_date": "2026-06-22",  "d1_databases": [    {      "binding": "DB", // This will be how you refer to your database in your Worker      "database_name": "YOUR_DATABASE_NAME",      "database_id": "YOUR_DATABASE_ID"    }  ]}
 ```
 
 TOML
 
 ```
-"$schema" = "./node_modules/wrangler/config-schema.json"name = "python-and-d1"main = "src/entry.py"compatibility_flags = [ "python_workers" ]# Set this to today's datecompatibility_date = "2026-06-18"
+"$schema" = "./node_modules/wrangler/config-schema.json"name = "python-and-d1"main = "src/entry.py"compatibility_flags = [ "python_workers" ]# Set this to today's datecompatibility_date = "2026-06-22"
 [[d1_databases]]binding = "DB"database_name = "YOUR_DATABASE_NAME"database_id = "YOUR_DATABASE_ID"
 ```
 
@@ -88,7 +88,7 @@ class Default(WorkerEntrypoint):    async def fetch(self, request):        # Do 
         try:            # Query D1 - we'll list all tables in our database in this example            results = await self.env.DB.prepare("PRAGMA table_list").run()            # Return a JSON response            return Response.json(results)        except Exception as e:            return Response.json({"error": "Database query failed"}, status=500)
 ```
 
-The value of `binding` in your Wrangler file exactly must match the name of the variable in your Python code. This example refers to the database via a `DB` binding, and query this binding via `await env.DB.prepare(...)`.
+The value of `binding` in your Wrangler file exactly must match the name of the variable in your Python code. This example refers to the database via a `DB` binding, and queries this binding via `await self.env.DB.prepare(...)`.
 
 You can then deploy your Python Worker directly:
 
@@ -117,6 +117,6 @@ If you receive an error deploying:
 * Learn [how to import data](https://developers.cloudflare.com/d1/best-practices/import-export-data/) to your D1 database.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/examples/query-d1-from-python-workers/#page","headline":"Query D1 from Python Workers · Cloudflare D1 docs","description":"Learn how to query D1 from a Python Worker","url":"https://developers.cloudflare.com/d1/examples/query-d1-from-python-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Python"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/examples/query-d1-from-python-workers/#page","headline":"Query D1 from Python Workers · Cloudflare D1 docs","description":"Learn how to query D1 from a Python Worker","url":"https://developers.cloudflare.com/d1/examples/query-d1-from-python-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Python"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/examples/query-d1-from-python-workers/","name":"Query D1 from Python Workers"}}]}
 ```

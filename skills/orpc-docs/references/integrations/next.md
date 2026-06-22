@@ -5,23 +5,23 @@
 ## Installation
 
 ```sh [npm]
-npm install @orpc/next@latest
+npm install @orpc/next@beta
 ```
 
 ```sh [yarn]
-yarn add @orpc/next@latest
+yarn add @orpc/next@beta
 ```
 
 ```sh [pnpm]
-pnpm add @orpc/next@latest
+pnpm add @orpc/next@beta
 ```
 
 ```sh [bun]
-bun add @orpc/next@latest
+bun add @orpc/next@beta
 ```
 
 ```sh [deno]
-deno add npm:@orpc/next@latest
+deno add npm:@orpc/next@beta
 ```
 
 ## Server Functions

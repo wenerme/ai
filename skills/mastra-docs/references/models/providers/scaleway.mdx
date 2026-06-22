@@ -1,11 +1,11 @@
 ---
 title: "Scaleway | Models"
-description: "Use Scaleway models with Mastra. 17 models available."
+description: "Use Scaleway models with Mastra. 15 models available."
 ---
 
 # [Scaleway logo]Scaleway
 
-Access 17 Scaleway models through Mastra's model router. Authentication is handled automatically using the `SCALEWAY_API_KEY` environment variable.
+Access 15 Scaleway models through Mastra's model router. Authentication is handled automatically using the `SCALEWAY_API_KEY` environment variable.
 
 Learn more in the [Scaleway documentation](https://www.scaleway.com/en/docs/generative-apis/).
 
@@ -52,30 +52,6 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
-    "model": "scaleway/deepseek-r1-distill-llama-70b",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 32000,
-    "maxOutput": 8196,
-    "inputCost": 0.9,
-    "outputCost": 0.9
-  },
-  {
-    "model": "scaleway/devstral-2-123b-instruct-2512",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 256000,
-    "maxOutput": 16384,
-    "inputCost": 0.4,
-    "outputCost": 2
-  },
-  {
     "model": "scaleway/gemma-3-27b-it",
     "imageInput": true,
     "audioInput": false,
@@ -84,6 +60,18 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 40000,
     "maxOutput": 8192,
+    "inputCost": 0.25,
+    "outputCost": 0.5
+  },
+  {
+    "model": "scaleway/gemma-4-26b-a4b-it",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 256000,
+    "maxOutput": 16384,
     "inputCost": 0.25,
     "outputCost": 0.5
   },
@@ -98,18 +86,6 @@ for await (const chunk of stream) {
     "maxOutput": 32768,
     "inputCost": 0.15,
     "outputCost": 0.6
-  },
-  {
-    "model": "scaleway/llama-3.1-8b-instruct",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 128000,
-    "maxOutput": 16384,
-    "inputCost": 0.2,
-    "outputCost": 0.2
   },
   {
     "model": "scaleway/llama-3.3-70b-instruct",
@@ -134,18 +110,6 @@ for await (const chunk of stream) {
     "maxOutput": 16384,
     "inputCost": 1.5,
     "outputCost": 7.5
-  },
-  {
-    "model": "scaleway/mistral-nemo-instruct-2407",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 128000,
-    "maxOutput": 8192,
-    "inputCost": 0.2,
-    "outputCost": 0.2
   },
   {
     "model": "scaleway/mistral-small-3.2-24b-instruct-2506",
@@ -177,7 +141,7 @@ for await (const chunk of stream) {
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
-    "reasoning": false,
+    "reasoning": true,
     "contextWindow": 260000,
     "maxOutput": 16384,
     "inputCost": 0.75,
@@ -218,6 +182,18 @@ for await (const chunk of stream) {
     "maxOutput": 16384,
     "inputCost": 0.6,
     "outputCost": 3.6
+  },
+  {
+    "model": "scaleway/qwen3.6-35b-a3b",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 128000,
+    "maxOutput": 16384,
+    "inputCost": 0.25,
+    "outputCost": 1.5
   },
   {
     "model": "scaleway/voxtral-small-24b-2507",

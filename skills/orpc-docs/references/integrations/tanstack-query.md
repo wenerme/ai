@@ -7,23 +7,23 @@
 ## Installation
 
 ```sh [npm]
-npm install @orpc/tanstack-query@latest
+npm install @orpc/tanstack-query@beta
 ```
 
 ```sh [yarn]
-yarn add @orpc/tanstack-query@latest
+yarn add @orpc/tanstack-query@beta
 ```
 
 ```sh [pnpm]
-pnpm add @orpc/tanstack-query@latest
+pnpm add @orpc/tanstack-query@beta
 ```
 
 ```sh [bun]
-bun add @orpc/tanstack-query@latest
+bun add @orpc/tanstack-query@beta
 ```
 
 ```sh [deno]
-deno add npm:@orpc/tanstack-query@latest
+deno add npm:@orpc/tanstack-query@beta
 ```
 
 ## Setup

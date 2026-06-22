@@ -17,9 +17,9 @@ First, create a `src/index.ts` file to set up and export your client.
 ```ts [src/index.ts]
 import { createORPCClient } from '@orpc/client'
 import { RPCLink } from '@orpc/client/fetch'
-import type { ContractRouterClient } from '@orpc/contract'
+import type { RouterContractClient } from '@orpc/contract'
 
-export function createMyApi(apiKey: string): ContractRouterClient<typeof contract> {
+export function createMyApi(apiKey: string): RouterContractClient<typeof contract> {
   const link = new RPCLink({
     origin: 'https://example.com',
     url: '/rpc',

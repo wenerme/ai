@@ -46,7 +46,7 @@ In Claude Code, run these two slash commands. This installs Cloudflare Skills an
 4. **Try a prompt**  
 For example:  
 ```  
-Set up rate limiting and WAF rules to block abuse on my public API.  
+Create a Logpush job to stream Workers analytics to my data warehouse.  
 ```
 
 ## Cloudflare platform access

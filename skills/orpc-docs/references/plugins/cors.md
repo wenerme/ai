@@ -6,6 +6,7 @@ Use `CORSHandlerPlugin` to configure [CORS Policy](https://developer.mozilla.org
 
 ```ts twoslash
 import { RPCHandler } from '@orpc/server/fetch'
+import { router } from './shared/planet'
 // ---cut---
 import { CORSHandlerPlugin } from '@orpc/server/plugins'
 

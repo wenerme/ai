@@ -100,7 +100,7 @@ const exampleProcedure = os
 
 As an alternative to `.errors`, you can return an `ORPCError` directly from your handler or middleware to achieve end-to-end type safety.
 
-> **warning**: The [Contract First Approach](/docs/contract-first/define-contract) does not support this pattern. When implementing a contract, returning an `ORPCError` is treated the same as throwing it.
+> **warning**: When [implementing a contract](/docs/contract/implementation), returning an `ORPCError` is equivalent to throwing one.
 ```ts
 const exampleProcedure = os
   .handler(async ({ errors }) => {

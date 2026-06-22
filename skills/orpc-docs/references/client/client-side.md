@@ -5,28 +5,28 @@ Client-side clients call procedures remotely, in a different process or on a dif
 ## Installation
 
 ```sh [npm]
-npm install @orpc/client@latest
+npm install @orpc/client@beta
 ```
 
 ```sh [yarn]
-yarn add @orpc/client@latest
+yarn add @orpc/client@beta
 ```
 
 ```sh [pnpm]
-pnpm add @orpc/client@latest
+pnpm add @orpc/client@beta
 ```
 
 ```sh [bun]
-bun add @orpc/client@latest
+bun add @orpc/client@beta
 ```
 
 ```sh [deno]
-deno add npm:@orpc/client@latest
+deno add npm:@orpc/client@beta
 ```
 
 ## Creating a Client
 
-To create a client, first set up a link that defines how the client communicates with the server. This can be an [RPC Link](/docs/rpc/link), an [OpenAPI Link](/docs/openapi/link), or any custom link. Then create a client for your [router](/docs/router) or [contract](/docs/contract-first/define-contract) using `createORPCClient`.
+To create a client, first set up a link that defines how the client communicates with the server. This can be an [RPC Link](/docs/rpc/link), an [OpenAPI Link](/docs/openapi/link), or any custom link. Then create a client for your [router](/docs/router) or [contract](/docs/contract/router) using `createORPCClient`.
 
 ```ts
 import { createORPCClient } from '@orpc/client'

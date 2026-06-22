@@ -29,8 +29,8 @@ npm install
 npm run dev
 ```
 
-- Visit [http://localhost:3000](http://localhost:3000) to view the app.
-- Visit [http://localhost:3000/api](http://localhost:3000/api) to explore the OpenAPI client.
+- Visit `http://localhost:3000` to view the app.
+- Visit `http://localhost:3000/api` to explore the OpenAPI client.
 
 ### OpenTelemetry
 
@@ -40,4 +40,4 @@ Collect OpenTelemetry traces with [Jaeger](https://www.jaegertracing.io/) by run
 npm run jaeger:run
 ```
 
-Then play with your app and open [http://localhost:16686](http://localhost:16686) to see the traces in the Jaeger dashboard.
+Then play with your app and open `http://localhost:16686` to see the traces in the Jaeger dashboard.

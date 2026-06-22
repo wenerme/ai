@@ -6,6 +6,7 @@ Use `ResponseHeadersHandlerPlugin` to accumulate response headers in `context.re
 
 ```ts twoslash
 import { os } from '@orpc/server'
+import { setCookie } from '@orpc/server/helpers'
 // ---cut---
 import type { ResponseHeadersHandlerPluginContext } from '@orpc/server/plugins'
 

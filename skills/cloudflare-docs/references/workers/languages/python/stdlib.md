@@ -18,12 +18,6 @@ Pyodide is a port of CPython to WebAssembly — for the most part it behaves ide
 
 The full [Python Standard Library ↗](https://docs.python.org/3/library/index.html) is available in Python Workers, with the following exceptions:
 
-## Modules with limited functionality
-
-* `decimal`: The decimal module has C (\_decimal) and Python (\_pydecimal) implementations with the same functionality. Only the C implementation is available (compiled to WebAssembly)
-* `pydoc`: Help messages for Python builtins are not available
-* `webbrowser`: The original webbrowser module is not available.
-
 ## Excluded modules
 
 The following modules are not available in Python Workers:
@@ -51,12 +45,17 @@ The following modules can be imported, but are not functional due to the limitat
 
 * multiprocessing
 * threading
-* sockets
 
 The following are present but cannot be imported due to a dependency on the termios package which has been removed:
 
 * pty
 * tty
+
+## Modules with limited functionality
+
+* `decimal`: The decimal module has C (\_decimal) and Python (\_pydecimal) implementations with the same functionality. Only the C implementation is available (compiled to WebAssembly)
+* `pydoc`: Help messages for Python builtins are not available
+* `webbrowser`: The original webbrowser module is not available.
 
 ## In-memory filesystem
 
@@ -65,6 +64,6 @@ Python Workers have access to an ephemeral, in-memory filesystem. You can read a
 This can be useful for temporary file operations, but should not be relied upon for persistent storage. Use [KV](https://developers.cloudflare.com/kv/), [R2](https://developers.cloudflare.com/r2/), or [Durable Objects](https://developers.cloudflare.com/durable-objects/) for durable storage.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/languages/python/stdlib/#page","headline":"Standard Library provided to Python Workers · Cloudflare Workers docs","description":"Python standard library availability and limitations in Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/languages/python/stdlib/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/languages/python/stdlib/#page","headline":"Standard Library provided to Python Workers · Cloudflare Workers docs","description":"Python standard library availability and limitations in Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/languages/python/stdlib/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/languages/","name":"Languages"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/languages/python/","name":"Python Workers"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/languages/python/stdlib/","name":"Standard Library"}}]}
 ```

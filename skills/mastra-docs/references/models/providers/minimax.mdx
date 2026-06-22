@@ -1,11 +1,11 @@
 ---
 title: "MiniMax (minimax.io) | Models"
-description: "Use MiniMax (minimax.io) models with Mastra. 6 models available."
+description: "Use MiniMax (minimax.io) models with Mastra. 7 models available."
 ---
 
 # [MiniMax (minimax.io) logo]MiniMax (minimax.io)
 
-Access 6 MiniMax (minimax.io) models through Mastra's model router. Authentication is handled automatically using the `MINIMAX_API_KEY` environment variable.
+Access 7 MiniMax (minimax.io) models through Mastra's model router. Authentication is handled automatically using the `MINIMAX_API_KEY` environment variable.
 
 Learn more in the [MiniMax (minimax.io) documentation](https://platform.minimax.io/docs/guides/quickstart).
 
@@ -110,6 +110,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 0.6,
     "outputCost": 2.4
+  },
+  {
+    "model": "minimax/MiniMax-M3",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 512000,
+    "maxOutput": 128000,
+    "inputCost": 0.6,
+    "outputCost": 2.4
   }
 ]}
 />
@@ -142,7 +154,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "minimax/MiniMax-M2.7-highspeed"
+      ? "minimax/MiniMax-M3"
       : "minimax/MiniMax-M2";
   }
 });

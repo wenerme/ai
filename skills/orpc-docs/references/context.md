@@ -50,10 +50,12 @@ Injected context is injected at runtime through [middleware](/docs/middleware#mi
 
 ```ts twoslash
 import { os } from '@orpc/server'
+
+declare const env: { DB_URL: string }
 // ---cut---
 const base = os.use(async ({ next }) => next({
   context: {
-    env: { DB_URL: process.env.DB_URL! },
+    env: { DB_URL: env.DB_URL },
   },
 }))
 
@@ -67,9 +69,11 @@ export const getting = base.handler(async ({ context }) => {
 ```ts twoslash
 import { call, os } from '@orpc/server'
 
+declare const env: { DB_URL: string }
+
 const base = os.use(async ({ next }) => next({
   context: {
-    env: { DB_URL: process.env.DB_URL! },
+    env: { DB_URL: env.DB_URL },
   },
 }))
 

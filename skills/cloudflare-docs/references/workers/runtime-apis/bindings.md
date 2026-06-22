@@ -45,8 +45,8 @@ The following bindings are available today:
 
 When you declare a binding on your Worker, you grant it a specific capability, such as being able to read and write files to an [R2](https://developers.cloudflare.com/r2/) bucket. For example:
 
-* [  wrangler.jsonc ](#tab-panel-11939)
-* [  wrangler.toml ](#tab-panel-11940)
+* [  wrangler.jsonc ](#tab-panel-11992)
+* [  wrangler.toml ](#tab-panel-11993)
 
 JSONC
 
@@ -61,8 +61,8 @@ main = "./src/index.js"
 [[r2_buckets]]binding = "MY_BUCKET"bucket_name = "<MY_BUCKET_NAME>"
 ```
 
-* [  JavaScript ](#tab-panel-11925)
-* [  Python ](#tab-panel-11926)
+* [  JavaScript ](#tab-panel-11978)
+* [  Python ](#tab-panel-11979)
 
 JavaScript
 
@@ -117,8 +117,8 @@ export default {  async fetch(request, env) {    return new Response(`Hi, ${env.
 ```
 * It is as class property on [WorkerEntrypoint](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#bindings-env), [DurableObject](https://developers.cloudflare.com/durable-objects/), and [Workflow](https://developers.cloudflare.com/workflows/):
 
-  * [  JavaScript ](#tab-panel-11927)
-  * [  Python ](#tab-panel-11928)  
+  * [  JavaScript ](#tab-panel-11980)
+  * [  Python ](#tab-panel-11981)  
 JavaScript  
 ```  
 export class MyDurableObject extends DurableObject {  async sayHello() {    return `Hi, ${this.env.NAME}!`;  }}  
@@ -130,23 +130,23 @@ class Default(WorkerEntrypoint):  async def fetch(self, request):    return Resp
 ```
 * It can be imported from `cloudflare:workers`:
 
-  * [  JavaScript ](#tab-panel-11929)
-  * [  Python ](#tab-panel-11930)  
+  * [  JavaScript ](#tab-panel-11982)
+  * [  Python ](#tab-panel-11983)  
 JavaScript  
 ```  
 import { env } from "cloudflare:workers";console.log(`Hi, ${env.Name}`);  
 ```  
 Python  
 ```  
-from workers import import_from_javascriptenv = import_from_javascript("cloudflare:workers").envprint(f"Hi, {env.NAME}")  
+from workers import envprint(f"Hi, {env.NAME}")  
 ```
 
 ### Importing `env` as a global
 
 Importing `env` from `cloudflare:workers` is useful when you need to access a binding such as [secrets](https://developers.cloudflare.com/workers/configuration/secrets/) or [environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/)in top-level global scope. For example, to initialize an API client:
 
-* [  JavaScript ](#tab-panel-11931)
-* [  Python ](#tab-panel-11932)
+* [  JavaScript ](#tab-panel-11984)
+* [  Python ](#tab-panel-11985)
 
 JavaScript
 
@@ -168,8 +168,8 @@ Workers do not allow I/O from outside a request context. This means that even th
 
 For instance, environment variables and secrets are accessible, and you are able to call `env.NAMESPACE.get` to get a [Durable Object stub](https://developers.cloudflare.com/durable-objects/api/stub/) in the top-level context. However, calling methods on the Durable Object stub, making [calls to a KV store](https://developers.cloudflare.com/kv/api/), and [calling to other Workers](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings) will not work.
 
-* [  JavaScript ](#tab-panel-11933)
-* [  Python ](#tab-panel-11934)
+* [  JavaScript ](#tab-panel-11986)
+* [  Python ](#tab-panel-11987)
 
 JavaScript
 
@@ -189,8 +189,8 @@ class Default(WorkerEntrypoint):  async def fetch(self, request):    # This work
 
 Additionally, importing `env` from `cloudflare:workers` lets you avoid passing `env`as an argument through many function calls if you need to access a binding from a deeply-nested function. This can be helpful in a complex codebase.
 
-* [  JavaScript ](#tab-panel-11935)
-* [  Python ](#tab-panel-11936)
+* [  JavaScript ](#tab-panel-11988)
+* [  Python ](#tab-panel-11989)
 
 JavaScript
 
@@ -220,8 +220,8 @@ The `withEnv` function provides a mechanism for overriding values of `env`.
 
 Imagine a user has defined the [environment variable](https://developers.cloudflare.com/workers/configuration/environment-variables/)"NAME" to be "Alice" in their Wrangler configuration file and deployed a Worker. By default, logging `env.NAME` would print "Alice". Using the `withEnv` function, you can override the value of "NAME".
 
-* [  JavaScript ](#tab-panel-11937)
-* [  Python ](#tab-panel-11938)
+* [  JavaScript ](#tab-panel-11990)
+* [  Python ](#tab-panel-11991)
 
 JavaScript
 
@@ -246,6 +246,6 @@ class Default(WorkerEntrypoint):  async def fetch(req):    # this will log "Alic
 This can be useful when testing code that relies on an imported `env` object.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/#page","headline":"Bindings (env) · Cloudflare Workers docs","description":"Worker Bindings that allow for interaction with other Cloudflare Resources.","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/#page","headline":"Bindings (env) · Cloudflare Workers docs","description":"Worker Bindings that allow for interaction with other Cloudflare Resources.","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/bindings/","name":"Bindings (env)"}}]}
 ```

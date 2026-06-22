@@ -5,9 +5,9 @@ Middleware is a powerful mechanism in oRPC that allows you to execute code befor
 ## Overview
 
 ```ts twoslash
-import type { MetaPlugin } from '@orpc/server'
+import type { AnyMetaPlugin } from '@orpc/server'
 
-declare const someMeta: MetaPlugin
+declare const someMeta: AnyMetaPlugin
 // ---cut---
 import { os } from '@orpc/server'
 

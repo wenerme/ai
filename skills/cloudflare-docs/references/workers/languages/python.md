@@ -14,14 +14,14 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Cloudflare Workers provides a first-class Python experience, including support for:
 
-* Easy to install and fast-booting [Packages](https://developers.cloudflare.com/workers/languages/python/packages), including [FastAPI ↗](https://fastapi.tiangolo.com/), [Langchain ↗](https://pypi.org/project/langchain/), [httpx ↗](https://www.python-httpx.org/), [Pydantic ↗](https://docs.pydantic.dev/latest/) and more.
+* Easy to install and fast-booting [Packages](https://developers.cloudflare.com/workers/languages/python/packages), including [FastAPI ↗](https://fastapi.tiangolo.com/), [Langchain ↗](https://pypi.org/project/langchain/), [Pydantic ↗](https://docs.pydantic.dev/latest/) and more.
 * A robust [foreign function interface (FFI)](https://developers.cloudflare.com/workers/languages/python/ffi) that lets you use JavaScript objects and functions directly from Python — including all [Runtime APIs](https://developers.cloudflare.com/workers/runtime-apis/)
 * An ecosystem of services on the Workers Platform accessible via [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/), including:  
   * State storage and databases like [KV](https://developers.cloudflare.com/kv), [D1](https://developers.cloudflare.com/d1), [Durable Objects](https://developers.cloudflare.com/durable-objects/)
   * Access to [Environment Variables](https://developers.cloudflare.com/workers/configuration/environment-variables/), [Secrets](https://developers.cloudflare.com/workers/configuration/secrets/), and other Workers using [Service Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/)
   * AI capabilities with [Workers AI](https://developers.cloudflare.com/workers-ai/), [Vectorize](https://developers.cloudflare.com/vectorize)
   * File storage with [R2](https://developers.cloudflare.com/r2)
-  * [Durable Workflows](https://developers.cloudflare.com/workflows/), [Queues](https://developers.cloudflare.com/queues/), and [ more](https://developers.cloudflare.com/workers/runtime-apis/bindings/)
+  * [Durable Workflows](https://developers.cloudflare.com/workflows/), [Queues](https://developers.cloudflare.com/queues/), and [more](https://developers.cloudflare.com/workers/runtime-apis/bindings/)
 
 ## Introduction
 
@@ -40,7 +40,7 @@ In a Python Worker, this handler is placed in a `Default` class that extends the
 
 Python Workers are in beta.
 
-You must add the `python_workers` compatibility flag to your Worker, while Python Workers are in open beta. Packages are supported using the [pywrangler](https://developers.cloudflare.com/workers/languages/python/packages) tool.
+You must add the `python_workers` compatibility flag to your Worker, while Python Workers are in open beta.
 
 We'd love your feedback. Join the #python-workers channel in the [Cloudflare Developers Discord ↗](https://discord.cloudflare.com/) and let us know what you'd like to see next.
 
@@ -101,6 +101,6 @@ git clone https://github.com/cloudflare/python-workers-examplescd python-workers
 * Learn about Python Workers' [foreign function interface (FFI)](https://developers.cloudflare.com/workers/languages/python/ffi), and how to use it to work with [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings) and [Runtime APIs](https://developers.cloudflare.com/workers/runtime-apis/).
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/languages/python/#page","headline":"Write Cloudflare Workers in Python · Cloudflare Workers docs","description":"Write Workers in 100% Python","url":"https://developers.cloudflare.com/workers/languages/python/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/languages/python/#page","headline":"Write Cloudflare Workers in Python · Cloudflare Workers docs","description":"Write Workers in 100% Python","url":"https://developers.cloudflare.com/workers/languages/python/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/languages/","name":"Languages"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/languages/python/","name":"Python Workers"}}]}
 ```

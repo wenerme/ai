@@ -1,11 +1,11 @@
 ---
 title: "Claudinio | Models"
-description: "Use Claudinio models with Mastra. 1 model available."
+description: "Use Claudinio models with Mastra. 2 models available."
 ---
 
 # [Claudinio logo]Claudinio
 
-Access 1 Claudinio model through Mastra's model router. Authentication is handled automatically using the `CLAUDINIO_API_KEY` environment variable.
+Access 2 Claudinio models through Mastra's model router. Authentication is handled automatically using the `CLAUDINIO_API_KEY` environment variable.
 
 Learn more in the [Claudinio documentation](https://claudin.io).
 
@@ -42,14 +42,26 @@ for await (const chunk of stream) {
   {
     "model": "claudinio/claudinio",
     "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
+    "audioInput": true,
+    "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 256000,
     "maxOutput": 64000,
     "inputCost": 0.5,
     "outputCost": 2
+  },
+  {
+    "model": "claudinio/claudius",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 256000,
+    "maxOutput": 64000,
+    "inputCost": 3,
+    "outputCost": 8
   }
 ]}
 />
@@ -82,7 +94,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "claudinio/claudinio"
+      ? "claudinio/claudius"
       : "claudinio/claudinio";
   }
 });

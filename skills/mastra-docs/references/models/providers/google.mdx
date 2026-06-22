@@ -1,16 +1,17 @@
 ---
 title: "Google | Models"
-description: "Use Google models with Mastra. 21 models available."
+description: "Use Google models with Mastra. 18 models available."
 ---
 
 # [Google logo]Google
 
-Access 21 Google models through Mastra's model router. Authentication is handled automatically using the `GOOGLE_API_KEY` environment variable.
+Access 18 Google models through Mastra's model router. Authentication is handled automatically using one of the following environment variables: `GOOGLE_API_KEY`, `GOOGLE_GENERATIVE_AI_API_KEY`.
 
 Learn more in the [Google documentation](https://ai.google.dev/gemini-api/docs/models).
 
 ```bash title=".env"
 GOOGLE_API_KEY=your-api-key
+GOOGLE_GENERATIVE_AI_API_KEY=your-api-key
 ```
 
 ```typescript title="src/mastra/agents/my-agent.ts" {7}
@@ -20,7 +21,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "google/gemini-2.0-flash"
+  model: "google/gemini-2.5-flash"
 });
 
 // Generate a response
@@ -37,30 +38,6 @@ for await (const chunk of stream) {
 
 <ProviderModelsTable
   models={[
-  {
-    "model": "google/gemini-2.0-flash",
-    "imageInput": true,
-    "audioInput": true,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 1048576,
-    "maxOutput": 8192,
-    "inputCost": 0.1,
-    "outputCost": 0.4
-  },
-  {
-    "model": "google/gemini-2.0-flash-lite",
-    "imageInput": true,
-    "audioInput": true,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 1048576,
-    "maxOutput": 8192,
-    "inputCost": 0.075,
-    "outputCost": 0.3
-  },
   {
     "model": "google/gemini-2.5-flash",
     "imageInput": true,
@@ -146,16 +123,16 @@ for await (const chunk of stream) {
     "outputCost": 3
   },
   {
-    "model": "google/gemini-3-pro-preview",
+    "model": "google/gemini-3-pro-image-preview",
     "imageInput": true,
-    "audioInput": true,
-    "videoInput": true,
-    "toolUsage": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
     "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 65536,
+    "contextWindow": 131072,
+    "maxOutput": 32768,
     "inputCost": 2,
-    "outputCost": 12
+    "outputCost": 120
   },
   {
     "model": "google/gemini-3.1-flash-image-preview",
@@ -171,18 +148,6 @@ for await (const chunk of stream) {
   },
   {
     "model": "google/gemini-3.1-flash-lite",
-    "imageInput": true,
-    "audioInput": true,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 65536,
-    "inputCost": 0.25,
-    "outputCost": 1.5
-  },
-  {
-    "model": "google/gemini-3.1-flash-lite-preview",
     "imageInput": true,
     "audioInput": true,
     "videoInput": true,
@@ -301,8 +266,8 @@ const agent = new Agent({
   id: "custom-agent",
   name: "custom-agent",
   model: {
-    id: "google/gemini-2.0-flash",
-    apiKey: process.env.GOOGLE_API_KEY,
+    id: "google/gemini-2.5-flash",
+    apiKey: process.env.GOOGLE_API_KEY,GOOGLE_GENERATIVE_AI_API_KEY,
     headers: {
       "X-Custom-Header": "value"
     }
@@ -320,7 +285,7 @@ const agent = new Agent({
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
       ? "google/gemma-4-31b-it"
-      : "google/gemini-2.0-flash";
+      : "google/gemini-2.5-flash";
   }
 });
 ```

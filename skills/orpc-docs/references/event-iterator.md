@@ -41,7 +41,7 @@ const example = os
 
 Using the `withEventMeta` helper, you can attach [additional event metadata](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#event_stream_format) (such as an event ID or retry interval) to each event. When the client reconnects properly, the last received event ID is sent back to the server in `lastEventId`, allowing the stream to resume from where it left off.
 
-> **info**: When used with the [Client Retry Plugin](/docs/plugins/client-retry) or [EventSource](https://developer.mozilla.org/en-US/docs/Web/API/EventSource), reconnection with the last event ID is handled automatically.
+> **info**: When used with the [Retry Plugin](/docs/plugins/retry) or [EventSource](https://developer.mozilla.org/en-US/docs/Web/API/EventSource), reconnection with the last event ID is handled automatically.
 ```ts
 import { withEventMeta } from '@orpc/server'
 

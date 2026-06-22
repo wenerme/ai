@@ -34,7 +34,7 @@ Minecraft Java Edition is supported but Minecraft Bedrock Edition is not support
 
 ## Private Network Load Balancing
 
-When using [Spectrum](https://developers.cloudflare.com/load-balancing/private-network/#on-ramps) as an on-ramp and [Cloudflare WAN](https://developers.cloudflare.com/load-balancing/private-network/#cloudflare-wan) as an off-ramp the [proxy protocol](https://developers.cloudflare.com/spectrum/how-to/enable-proxy-protocol/) setting in Spectrum is not supported.
+When using [Spectrum](https://developers.cloudflare.com/load-balancing/private-network/#on-ramps) as an on-ramp into Private Network Load Balancing, the [proxy protocol](https://developers.cloudflare.com/spectrum/how-to/enable-proxy-protocol/) setting in Spectrum is not supported. This applies regardless of the [off-ramp](https://developers.cloudflare.com/load-balancing/private-network/) used to reach your private origin, including Cloudflare WAN and Cloudflare Tunnel.
 
 ## Cloudflare Tunnel
 
@@ -68,6 +68,6 @@ Currently, [custom rules](https://developers.cloudflare.com/waf/custom-rules/) d
 Refer to [Configuration options](https://developers.cloudflare.com/spectrum/reference/configuration-options/#ip-access-rules) for more information.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/reference/limitations/#page","headline":"Limitations · Cloudflare Spectrum docs","description":"Protocol-specific limitations for Spectrum applications.","url":"https://developers.cloudflare.com/spectrum/reference/limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/reference/limitations/#page","headline":"Limitations · Cloudflare Spectrum docs","description":"Protocol-specific limitations for Spectrum applications.","url":"https://developers.cloudflare.com/spectrum/reference/limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/spectrum/","name":"Spectrum"}},{"@type":"ListItem","position":3,"item":{"@id":"/spectrum/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/spectrum/reference/limitations/","name":"Limitations"}}]}
 ```

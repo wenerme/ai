@@ -1,6 +1,6 @@
 # OpenAPI Specification
 
-Learn how to configure metadata and generate OpenAPI documents from your oRPC [contracts](/docs/contract-first/define-contract) and [routers](/docs/router).
+Learn how to configure metadata and generate OpenAPI documents from your oRPC [contracts](/docs/contract/router) and [routers](/docs/router).
 
 ## Metadata
 
@@ -119,7 +119,7 @@ In this example, the final `tags` is `undefined`, so no tags are applied to `exa
 
 ## OpenAPI Generator
 
-`OpenAPIGenerator` accepts either a [contract](/docs/contract-first/define-contract) or a [router](/docs/router) and generates an OpenAPI 3.1 document.
+`OpenAPIGenerator` accepts either a [contract](/docs/contract/router) or a [router](/docs/router) and generates an OpenAPI 3.1 document.
 
 ```ts
 import { OpenAPIGenerator } from '@orpc/openapi'

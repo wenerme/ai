@@ -26,8 +26,8 @@ Bindings allow your Worker to interact with resources on the Cloudflare Develope
 
 For example, to access a [KV](https://developers.cloudflare.com/kv) namespace from a Python Worker, you would declare the following in your Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-11843)
-* [  wrangler.toml ](#tab-panel-11844)
+* [  wrangler.jsonc ](#tab-panel-11896)
+* [  wrangler.toml ](#tab-panel-11897)
 
 JSONC
 
@@ -51,8 +51,6 @@ from workers import WorkerEntrypoint, Response
 class Default(WorkerEntrypoint):    async def fetch(self, request):        await self.env.FOO.put("bar", "baz")        bar = await self.env.FOO.get("bar")        return Response(bar) # returns "baz"
 ```
 
-Under the hood, `env` is actually a JavaScript object. When you call `.FOO`, you are accessing this property via a [JsProxy ↗](https://pyodide.org/en/stable/usage/api/python-api/ffi.html#pyodide.ffi.JsProxy) — special proxy object that makes a JavaScript object behave like a Python object.
-
 ### Converting Python to JavaScript
 
 Occasionally, to interoperate with JavaScript APIs, you may need to convert a Python object to JavaScript. Pyodide provides a `to_js` function to facilitate this conversion.
@@ -69,7 +67,9 @@ For more details, see out the [documentation on pyodide.ffi.to\_js ↗](https://
 
 ## Using JavaScript globals from Python Workers
 
-When writing Workers in Python, you can access JavaScript globals by importing them from the `js` module. For example, note how `Response` is imported from `js` in the example below:
+We recommend using the `workers` module, which is provided by our `workers-runtime-sdk` package, to access JavaScript globals in a more Pythonic way. However, if you need to access JavaScript globals directly for any reason, you can import them from the `js` module.
+
+For example, note how `Response` is imported from `js` in the example below:
 
 Python
 
@@ -81,6 +81,6 @@ class Default(WorkerEntrypoint):    async def fetch(self, request):        retur
 Refer to the [Python examples](https://developers.cloudflare.com/workers/languages/python/examples/) to learn how to call into JavaScript functions from Python, including `console.log` and logging, providing options to `Response`, and parsing JSON.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/languages/python/ffi/#page","headline":"Work with JavaScript objects, methods, functions and globals from Python Workers · Cloudflare Workers docs","description":"Call JavaScript APIs, bindings, and globals from Python Workers using the Pyodide FFI.","url":"https://developers.cloudflare.com/workers/languages/python/ffi/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/languages/python/ffi/#page","headline":"Work with JavaScript objects, methods, functions and globals from Python Workers · Cloudflare Workers docs","description":"Call JavaScript APIs, bindings, and globals from Python Workers using the Pyodide FFI.","url":"https://developers.cloudflare.com/workers/languages/python/ffi/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/languages/","name":"Languages"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/languages/python/","name":"Python Workers"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/languages/python/ffi/","name":"Foreign Function Interface (FFI)"}}]}
 ```

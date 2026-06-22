@@ -1,11 +1,11 @@
 ---
 title: "MiniMax Token Plan (minimax.io) | Models"
-description: "Use MiniMax Token Plan (minimax.io) models with Mastra. 6 models available."
+description: "Use MiniMax Token Plan (minimax.io) models with Mastra. 7 models available."
 ---
 
 # [MiniMax Token Plan (minimax.io) logo]MiniMax Token Plan (minimax.io)
 
-Access 6 MiniMax Token Plan (minimax.io) models through Mastra's model router. Authentication is handled automatically using the `MINIMAX_API_KEY` environment variable.
+Access 7 MiniMax Token Plan (minimax.io) models through Mastra's model router. Authentication is handled automatically using the `MINIMAX_API_KEY` environment variable.
 
 Learn more in the [MiniMax Token Plan (minimax.io) documentation](https://platform.minimax.io/docs/token-plan/intro).
 
@@ -110,6 +110,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": null,
     "outputCost": null
+  },
+  {
+    "model": "minimax-coding-plan/MiniMax-M3",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 512000,
+    "maxOutput": 128000,
+    "inputCost": null,
+    "outputCost": null
   }
 ]}
 />
@@ -142,7 +154,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "minimax-coding-plan/MiniMax-M2.7-highspeed"
+      ? "minimax-coding-plan/MiniMax-M3"
       : "minimax-coding-plan/MiniMax-M2";
   }
 });

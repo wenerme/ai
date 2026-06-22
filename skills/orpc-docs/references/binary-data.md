@@ -31,6 +31,7 @@ Procedures can return `ReadableStream<Uint8Array>` to stream binary responses. T
 
 ```ts twoslash
 import { os } from '@orpc/server'
+import { ResponseHeadersHandlerPluginContext } from '@orpc/server/plugins'
 import * as z from 'zod'
 
 interface ServerContext extends ResponseHeadersHandlerPluginContext {}

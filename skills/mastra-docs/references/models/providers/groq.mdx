@@ -1,11 +1,11 @@
 ---
 title: "Groq | Models"
-description: "Use Groq models with Mastra. 17 models available."
+description: "Use Groq models with Mastra. 15 models available."
 ---
 
 # [Groq logo]Groq
 
-Access 17 Groq models through Mastra's model router. Authentication is handled automatically using the `GROQ_API_KEY` environment variable.
+Access 15 Groq models through Mastra's model router. Authentication is handled automatically using the `GROQ_API_KEY` environment variable.
 
 Learn more in the [Groq documentation](https://console.groq.com/docs/models).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "groq/allam-2-7b"
+  model: "groq/canopylabs/orpheus-arabic-saudi"
 });
 
 // Generate a response
@@ -38,18 +38,6 @@ for await (const chunk of stream) {
 <ProviderModelsTable
   models={[
   {
-    "model": "groq/allam-2-7b",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 4096,
-    "maxOutput": 4096,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
     "model": "groq/canopylabs/orpheus-arabic-saudi",
     "imageInput": false,
     "audioInput": false,
@@ -58,7 +46,7 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 4000,
     "maxOutput": 50000,
-    "inputCost": 40,
+    "inputCost": null,
     "outputCost": null
   },
   {
@@ -78,8 +66,8 @@ for await (const chunk of stream) {
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
+    "toolUsage": false,
+    "reasoning": false,
     "contextWindow": 131072,
     "maxOutput": 8192,
     "inputCost": null,
@@ -90,8 +78,8 @@ for await (const chunk of stream) {
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
+    "toolUsage": false,
+    "reasoning": false,
     "contextWindow": 131072,
     "maxOutput": 8192,
     "inputCost": null,
@@ -158,18 +146,6 @@ for await (const chunk of stream) {
     "outputCost": 0.04
   },
   {
-    "model": "groq/moonshotai/kimi-k2-instruct-0905",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 262144,
-    "maxOutput": 16384,
-    "inputCost": 1,
-    "outputCost": 3
-  },
-  {
     "model": "groq/openai/gpt-oss-120b",
     "imageInput": false,
     "audioInput": false,
@@ -224,8 +200,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": false,
     "reasoning": false,
-    "contextWindow": 448,
-    "maxOutput": 448,
+    "contextWindow": null,
+    "maxOutput": null,
     "inputCost": null,
     "outputCost": null
   },
@@ -236,8 +212,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": false,
     "reasoning": false,
-    "contextWindow": 448,
-    "maxOutput": 448,
+    "contextWindow": null,
+    "maxOutput": null,
     "inputCost": null,
     "outputCost": null
   }
@@ -254,7 +230,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://api.groq.com/openai/v1",
-    id: "groq/allam-2-7b",
+    id: "groq/canopylabs/orpheus-arabic-saudi",
     apiKey: process.env.GROQ_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -273,7 +249,7 @@ const agent = new Agent({
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
       ? "groq/whisper-large-v3-turbo"
-      : "groq/allam-2-7b";
+      : "groq/canopylabs/orpheus-arabic-saudi";
   }
 });
 ```

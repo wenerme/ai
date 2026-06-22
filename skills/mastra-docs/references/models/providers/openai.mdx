@@ -1,11 +1,11 @@
 ---
 title: "OpenAI | Models"
-description: "Use OpenAI models with Mastra. 52 models available."
+description: "Use OpenAI models with Mastra. 51 models available."
 ---
 
 # [OpenAI logo]OpenAI
 
-Access 52 OpenAI models through Mastra's model router. Authentication is handled automatically using the `OPENAI_API_KEY` environment variable.
+Access 51 OpenAI models through Mastra's model router. Authentication is handled automatically using the `OPENAI_API_KEY` environment variable.
 
 Learn more in the [OpenAI documentation](https://platform.openai.com/docs/models).
 
@@ -506,6 +506,18 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
+    "model": "openai/gpt-image-2",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": null,
+    "maxOutput": null,
+    "inputCost": 5,
+    "outputCost": 30
+  },
+  {
     "model": "openai/o1",
     "imageInput": true,
     "audioInput": false,
@@ -514,30 +526,6 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 200000,
     "maxOutput": 100000,
-    "inputCost": 15,
-    "outputCost": 60
-  },
-  {
-    "model": "openai/o1-mini",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": true,
-    "contextWindow": 128000,
-    "maxOutput": 65536,
-    "inputCost": 1.1,
-    "outputCost": 4.4
-  },
-  {
-    "model": "openai/o1-preview",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": true,
-    "contextWindow": 128000,
-    "maxOutput": 32768,
     "inputCost": 15,
     "outputCost": 60
   },

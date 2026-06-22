@@ -7,23 +7,23 @@
 ## Installation
 
 ```sh [npm]
-npm install @orpc/pino@latest pino@latest
+npm install @orpc/pino@beta pino@beta
 ```
 
 ```sh [yarn]
-yarn add @orpc/pino@latest pino@latest
+yarn add @orpc/pino@beta pino@beta
 ```
 
 ```sh [pnpm]
-pnpm add @orpc/pino@latest pino@latest
+pnpm add @orpc/pino@beta pino@beta
 ```
 
 ```sh [bun]
-bun add @orpc/pino@latest pino@latest
+bun add @orpc/pino@beta pino@beta
 ```
 
 ```sh [deno]
-deno add npm:@orpc/pino@latest npm:pino@latest
+deno add npm:@orpc/pino@beta npm:pino@beta
 ```
 
 ## Setup

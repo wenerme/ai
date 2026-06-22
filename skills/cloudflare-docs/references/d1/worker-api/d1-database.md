@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 To interact with your D1 database from your Worker, you need to access it through the environment bindings provided to the Worker (`env`).
 
-* [  JavaScript ](#tab-panel-8019)
-* [  Python ](#tab-panel-8020)
+* [  JavaScript ](#tab-panel-8021)
+* [  Python ](#tab-panel-8022)
 
 JavaScript
 
@@ -38,8 +38,8 @@ A D1 binding has the type `D1Database`, and supports a number of methods, as lis
 
 Prepares a query statement to be later executed.
 
-* [  JavaScript ](#tab-panel-8021)
-* [  Python ](#tab-panel-8022)
+* [  JavaScript ](#tab-panel-8023)
+* [  Python ](#tab-panel-8024)
 
 JavaScript
 
@@ -69,8 +69,8 @@ You can use the `bind` method to dynamically bind a value into the query stateme
 
 * Example of a static statement without using `bind`:
 
-  * [  JavaScript ](#tab-panel-8023)
-  * [  Python ](#tab-panel-8024)  
+  * [  JavaScript ](#tab-panel-8025)
+  * [  Python ](#tab-panel-8026)  
 JavaScript  
 ```  
 const stmt = db  .prepare("SELECT * FROM Customers WHERE CompanyName = 'Alfreds Futterkiste' AND CustomerId = 1")  
@@ -81,8 +81,8 @@ stmt = db.prepare("SELECT * FROM Customers WHERE CompanyName = 'Alfreds Futterki
 ```
 * Example of an ordered statement using `bind`:
 
-  * [  JavaScript ](#tab-panel-8025)
-  * [  Python ](#tab-panel-8026)  
+  * [  JavaScript ](#tab-panel-8027)
+  * [  Python ](#tab-panel-8028)  
 JavaScript  
 ```  
 const stmt = db  .prepare("SELECT * FROM Customers WHERE CompanyName = ? AND CustomerId = ?")  .bind("Alfreds Futterkiste", 1);  
@@ -102,8 +102,8 @@ Batched statements are [SQL transactions ↗](https://www.sqlite.org/lang%5Ftran
 
 To send batch statements, provide `D1Database::batch` a list of prepared statements and get the results in the same order.
 
-* [  JavaScript ](#tab-panel-8027)
-* [  Python ](#tab-panel-8028)
+* [  JavaScript ](#tab-panel-8029)
+* [  Python ](#tab-panel-8030)
 
 JavaScript
 
@@ -114,8 +114,7 @@ const companyName1 = `Bs Beverages`;const companyName2 = `Around the Horn`;const
 Python
 
 ```
-from pyodide.ffi import to_js
-company_name1 = "Bs Beverages"company_name2 = "Around the Horn"stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?")batch_result = await self.env.DB.batch(to_js([    stmt.bind(company_name1),    stmt.bind(company_name2)]))
+company_name1 = "Bs Beverages"company_name2 = "Around the Horn"stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?")batch_result = await self.env.DB.batch([    stmt.bind(company_name1),    stmt.bind(company_name2),])
 ```
 
 #### Parameters
@@ -131,8 +130,8 @@ company_name1 = "Bs Beverages"company_name2 = "Around the Horn"stmt = self.env.D
 
 Example of return values
 
-* [  JavaScript ](#tab-panel-8029)
-* [  Python ](#tab-panel-8030)
+* [  JavaScript ](#tab-panel-8031)
+* [  Python ](#tab-panel-8032)
 
 JavaScript
 
@@ -143,16 +142,16 @@ const companyName1 = `Bs Beverages`;const companyName2 = `Around the Horn`;const
 Python
 
 ```
-from pyodide.ffi import to_jsfrom workers import Response
-company_name1 = "Bs Beverages"company_name2 = "Around the Horn"stmt = await self.env.DB.batch(to_js([    self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(company_name1),    self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(company_name2)]))return Response.json(stmt)
+from workers import Response
+company_name1 = "Bs Beverages"company_name2 = "Around the Horn"stmt = await self.env.DB.batch([    self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(company_name1),    self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(company_name2),])return Response.json(stmt)
 ```
 
 ```
 [  {    "success": true,    "meta": {      "served_by": "miniflare.db",      "duration": 0,      "changes": 0,      "last_row_id": 0,      "changed_db": false,      "size_after": 8192,      "rows_read": 4,      "rows_written": 0    },    "results": [      {        "CustomerId": 11,        "CompanyName": "Bs Beverages",        "ContactName": "Victoria Ashworth"      },      {        "CustomerId": 13,        "CompanyName": "Bs Beverages",        "ContactName": "Random Name"      }    ]  },  {    "success": true,    "meta": {      "served_by": "miniflare.db",      "duration": 0,      "changes": 0,      "last_row_id": 0,      "changed_db": false,      "size_after": 8192,      "rows_read": 4,      "rows_written": 0    },    "results": [      {        "CustomerId": 4,        "CompanyName": "Around the Horn",        "ContactName": "Thomas Hardy"      }    ]  }]
 ```
 
-* [  JavaScript ](#tab-panel-8031)
-* [  Python ](#tab-panel-8032)
+* [  JavaScript ](#tab-panel-8033)
+* [  Python ](#tab-panel-8034)
 
 JavaScript
 
@@ -174,24 +173,24 @@ print(stmt[1].results.to_py())
 
 * You can construct batches reusing the same prepared statement:
 
-  * [  JavaScript ](#tab-panel-8033)
-  * [  Python ](#tab-panel-8034)  
+  * [  JavaScript ](#tab-panel-8035)
+  * [  Python ](#tab-panel-8036)  
 JavaScript  
 ```  
 const companyName1 = `Bs Beverages`;const companyName2 = `Around the Horn`;const stmt = env.DB.prepare(`SELECT * FROM Customers WHERE CompanyName = ?`);const batchResult = await env.DB.batch([  stmt.bind(companyName1),  stmt.bind(companyName2)]);return Response.json(batchResult);  
 ```  
 Python  
 ```  
-from pyodide.ffi import to_jsfrom workers import Response  
-company_name1 = "Bs Beverages"company_name2 = "Around the Horn"stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?")batch_result = await self.env.DB.batch(to_js([    stmt.bind(company_name1),    stmt.bind(company_name2)]))return Response.json(batch_result)  
+from workers import Response  
+company_name1 = "Bs Beverages"company_name2 = "Around the Horn"stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?")batch_result = await self.env.DB.batch([    stmt.bind(company_name1),    stmt.bind(company_name2),])return Response.json(batch_result)  
 ```
 
 ### `exec()`
 
 Executes one or more queries directly without prepared statements or parameter bindings.
 
-* [  JavaScript ](#tab-panel-8035)
-* [  Python ](#tab-panel-8036)
+* [  JavaScript ](#tab-panel-8037)
+* [  Python ](#tab-panel-8038)
 
 JavaScript
 
@@ -219,8 +218,8 @@ return_value = await self.env.DB.exec('SELECT * FROM Customers WHERE CompanyName
 
 Example of return values
 
-* [  JavaScript ](#tab-panel-8037)
-* [  Python ](#tab-panel-8038)
+* [  JavaScript ](#tab-panel-8039)
+* [  Python ](#tab-panel-8040)
 
 JavaScript
 
@@ -254,8 +253,8 @@ This API only works on databases created during D1's alpha period. Check which v
 
 Dumps the entire D1 database to an SQLite compatible file inside an ArrayBuffer.
 
-* [  JavaScript ](#tab-panel-8039)
-* [  Python ](#tab-panel-8040)
+* [  JavaScript ](#tab-panel-8041)
+* [  Python ](#tab-panel-8042)
 
 JavaScript
 
@@ -282,8 +281,8 @@ dump = await db.dump()return Response(dump, status=200, headers={"Content-Type":
 
 Starts a D1 session which maintains sequential consistency among queries executed on the returned `D1DatabaseSession` object.
 
-* [  JavaScript ](#tab-panel-8041)
-* [  Python ](#tab-panel-8042)
+* [  JavaScript ](#tab-panel-8043)
+* [  Python ](#tab-panel-8044)
 
 JavaScript
 
@@ -330,8 +329,8 @@ session = self.env.DB.withSession("<parameter>")
 
 Retrieves the latest `bookmark` from the D1 Session.
 
-* [  JavaScript ](#tab-panel-8043)
-* [  Python ](#tab-panel-8044)
+* [  JavaScript ](#tab-panel-8045)
+* [  Python ](#tab-panel-8046)
 
 JavaScript
 
@@ -365,6 +364,6 @@ This method is equivalent to [D1Database::prepare](https://developers.cloudflare
 This method is equivalent to [D1Database::batch](https://developers.cloudflare.com/d1/worker-api/d1-database/#batch).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/worker-api/d1-database/#page","headline":"D1 Database · Cloudflare D1 docs","description":"Use the D1Database binding to prepare statements, execute queries, batch operations, and dump a D1 database from a Worker.","url":"https://developers.cloudflare.com/d1/worker-api/d1-database/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/worker-api/d1-database/#page","headline":"D1 Database · Cloudflare D1 docs","description":"Use the D1Database binding to prepare statements, execute queries, batch operations, and dump a D1 database from a Worker.","url":"https://developers.cloudflare.com/d1/worker-api/d1-database/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/worker-api/","name":"Workers Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/worker-api/d1-database/","name":"D1 Database"}}]}
 ```

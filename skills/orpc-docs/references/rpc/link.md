@@ -43,7 +43,7 @@ export const client = createORPCClient(link)
 
 ## Typesafe Clients
 
-After you create an `RPCLink`, pass it to `createORPCClient` to build a typesafe client for either a [contract](/docs/contract-first/define-contract) or a [router](/docs/router):
+After you create an `RPCLink`, pass it to `createORPCClient` to build a typesafe client for either a [contract](/docs/contract/router) or a [router](/docs/router):
 
 ```ts
 import { createORPCClient } from '@orpc/client'
@@ -211,7 +211,7 @@ const link = new RPCLink({
 
 ## Plugins
 
-Plugins package reusable interceptors. For example, [Retry After Plugin](/docs/plugins/retry-after-link) adds retry behavior based on the `retry-after` response header.
+Plugins package reusable interceptors. For example, [Retry After Plugin](/docs/plugins/retry-after) adds retry behavior based on the `retry-after` response header.
 
 ```ts
 const link = new RPCLink({

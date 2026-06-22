@@ -1,11 +1,11 @@
 ---
 title: "Alibaba (China) | Models"
-description: "Use Alibaba (China) models with Mastra. 80 models available."
+description: "Use Alibaba (China) models with Mastra. 83 models available."
 ---
 
 # [Alibaba (China) logo]Alibaba (China)
 
-Access 80 Alibaba (China) models through Mastra's model router. Authentication is handled automatically using the `DASHSCOPE_API_KEY` environment variable.
+Access 83 Alibaba (China) models through Mastra's model router. Authentication is handled automatically using the `DASHSCOPE_API_KEY` environment variable.
 
 Learn more in the [Alibaba (China) documentation](https://www.alibabacloud.com/help/en/model-studio/models).
 
@@ -192,8 +192,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 384000,
-    "inputCost": 1.74,
-    "outputCost": 3.48
+    "inputCost": 0.435,
+    "outputCost": 0.87
   },
   {
     "model": "alibaba-cn/glm-5",
@@ -892,6 +892,18 @@ for await (const chunk of stream) {
     "outputCost": 3.44
   },
   {
+    "model": "alibaba-cn/qwen3.6-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 65536,
+    "inputCost": 0.1875,
+    "outputCost": 1.125
+  },
+  {
     "model": "alibaba-cn/qwen3.6-max-preview",
     "imageInput": false,
     "audioInput": false,
@@ -912,6 +924,30 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 65536,
+    "inputCost": 0.5,
+    "outputCost": 3
+  },
+  {
+    "model": "alibaba-cn/qwen3.7-max",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 65536,
+    "inputCost": 2.5,
+    "outputCost": 7.5
+  },
+  {
+    "model": "alibaba-cn/qwen3.7-plus",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 64000,
     "inputCost": 0.5,
     "outputCost": 3
   },

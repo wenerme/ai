@@ -7,23 +7,23 @@
 ## Installation
 
 ```sh [npm]
-npm install @orpc/experimental-effect@latest effect@latest
+npm install @orpc/experimental-effect@beta effect@beta
 ```
 
 ```sh [yarn]
-yarn add @orpc/experimental-effect@latest effect@latest
+yarn add @orpc/experimental-effect@beta effect@beta
 ```
 
 ```sh [pnpm]
-pnpm add @orpc/experimental-effect@latest effect@latest
+pnpm add @orpc/experimental-effect@beta effect@beta
 ```
 
 ```sh [bun]
-bun add @orpc/experimental-effect@latest effect@latest
+bun add @orpc/experimental-effect@beta effect@beta
 ```
 
 ```sh [deno]
-deno add npm:@orpc/experimental-effect@latest npm:effect@latest
+deno add npm:@orpc/experimental-effect@beta npm:effect@beta
 ```
 
 ## Effectful Handlers

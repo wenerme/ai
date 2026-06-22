@@ -28,27 +28,27 @@ Remove the tRPC packages and install the oRPC replacements:
 
 ```sh [npm]
 npm uninstall @trpc/server @trpc/client @trpc/tanstack-react-query
-npm install @orpc/server@latest @orpc/client@latest @orpc/tanstack-query@latest
+npm install @orpc/server@beta @orpc/client@beta @orpc/tanstack-query@beta
 ```
 
 ```sh [yarn]
 yarn remove @trpc/server @trpc/client @trpc/tanstack-react-query
-yarn add @orpc/server@latest @orpc/client@latest @orpc/tanstack-query@latest
+yarn add @orpc/server@beta @orpc/client@beta @orpc/tanstack-query@beta
 ```
 
 ```sh [pnpm]
 pnpm remove @trpc/server @trpc/client @trpc/tanstack-react-query
-pnpm add @orpc/server@latest @orpc/client@latest @orpc/tanstack-query@latest
+pnpm add @orpc/server@beta @orpc/client@beta @orpc/tanstack-query@beta
 ```
 
 ```sh [bun]
 bun remove @trpc/server @trpc/client @trpc/tanstack-react-query
-bun add @orpc/server@latest @orpc/client@latest @orpc/tanstack-query@latest
+bun add @orpc/server@beta @orpc/client@beta @orpc/tanstack-query@beta
 ```
 
 ```sh [deno]
 deno remove npm:@trpc/server npm:@trpc/client npm:@trpc/tanstack-react-query
-deno add npm:@orpc/server@latest npm:@orpc/client@latest npm:@orpc/tanstack-query@latest
+deno add npm:@orpc/server@beta npm:@orpc/client@beta npm:@orpc/tanstack-query@beta
 ```
 
 ### 2. Initialize
@@ -255,7 +255,7 @@ throw new TRPCError({
 
 ### 6. Server Setup
 
-This example uses [Next.js](https://nextjs.org/). If you use another framework, see [oRPC HTTP Adapters](/docs/adapters/http).
+This example uses [Next.js](https://nextjs.org/). If you use another framework, see [oRPC HTTP Adapters](/docs/adapters/fetch-api).
 
 ```ts [app/api/orpc/[[...rest]]/route.ts]
 import { RPCHandler } from '@orpc/server/fetch'
@@ -349,7 +349,7 @@ export const client = createTRPCProxyClient<typeof appRouter>({
 const { planets } = await client.planet.list.query({ cursor: 0 })
 ```
 
-> **info**: Learn more about oRPC [Client-Side Clients](/docs/client/client-side), [Batch Plugin](/docs/plugins/batch), and [Dedupe Requests Plugin](/docs/plugins/dedupe-requests).
+> **info**: Learn more about oRPC [Client-Side Clients](/docs/client/client-side), [Batch Plugin](/docs/plugins/batch), and [Dedupe Plugin](/docs/plugins/dedupe).
 
 ### 8. TanStack Query (React) Integration
 

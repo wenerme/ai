@@ -11,23 +11,23 @@
 ## Installation
 
 ```sh [npm]
-npm install @orpc/opentelemetry@latest
+npm install @orpc/opentelemetry@beta
 ```
 
 ```sh [yarn]
-yarn add @orpc/opentelemetry@latest
+yarn add @orpc/opentelemetry@beta
 ```
 
 ```sh [pnpm]
-pnpm add @orpc/opentelemetry@latest
+pnpm add @orpc/opentelemetry@beta
 ```
 
 ```sh [bun]
-bun add @orpc/opentelemetry@latest
+bun add @orpc/opentelemetry@beta
 ```
 
 ```sh [deno]
-deno add npm:@orpc/opentelemetry@latest
+deno add npm:@orpc/opentelemetry@beta
 ```
 
 ## Setup

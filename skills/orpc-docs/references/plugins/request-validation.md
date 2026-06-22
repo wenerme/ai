@@ -14,7 +14,7 @@ const link = new RPCLink({
 })
 ```
 
-> **info**: If you do not have a [contract](/docs/contract-first/define-contract), you can use a [unlazied router](/docs/contract-first/router-to-contract#unlazy) instead.
+> **info**: If you do not have a [contract](/docs/contract/router), you can use a [unlazied router](/docs/contract/router#router-to-contract) instead.
 
 ## Forward Validated Input
 

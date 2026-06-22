@@ -19,7 +19,7 @@ To get started, create a pyproject.toml file with the following contents:
 TOML
 
 ```
-[project]name = "YourProjectName"version = "0.1.0"description = "Add your description here"requires-python = ">=3.12"dependencies = [    "fastapi"]
+[project]name = "YourProjectName"version = "0.1.0"description = "Add your description here"requires-python = ">=3.13"dependencies = [    "fastapi"]
 [dependency-groups]dev = [  "workers-py",  "workers-runtime-sdk"]
 ```
 
@@ -43,15 +43,15 @@ The `pywrangler` CLI also supports all commands supported by the `wrangler` tool
 
 ## Supported Libraries
 
-Python Workers support pure Python packages on [PyPI ↗](https://pypi.org/), as well as [packages that are included in Pyodide ↗](https://pyodide.org/en/stable/usage/packages-in-pyodide.html).
+Python Workers support pure and [PyEmscripten ↗](https://peps.python.org/pep-0783/) Python packages on [PyPI ↗](https://pypi.org/). Additionally, Python Workers support packages that are included in [Pyodide ↗](https://pyodide.org/en/stable/usage/packages-in-pyodide.html).
 
-If you would like to use a package that is not pure Python and not yet supported in Pyodide, request support via the [Python Packages Discussions ↗](https://github.com/cloudflare/workerd/discussions/categories/python-packages) on the Cloudflare Workers Runtime GitHub repository.
+WebAssembly support for Python packages is still in early stages, and some packages may not yet be available as PyEmscripten wheels on PyPI. If a package you would like to use is not yet available, we encourage you to reach out to the package maintainers and request PyEmscripten wheels. You can also start a thread in the [Python Packages Discussions ↗](https://github.com/cloudflare/workerd/discussions/categories/python-packages)on the Cloudflare Workers Runtime GitHub repository — we would be happy to help you communicate with package maintainers.
 
 ## HTTP Client Libraries
 
 Only HTTP libraries that are able to make requests asynchronously are supported. Currently, these include [aiohttp ↗](https://docs.aiohttp.org/en/stable/index.html) and [httpx ↗](https://www.python-httpx.org/). You can also use the [fetch() API](https://developers.cloudflare.com/workers/runtime-apis/fetch/) from JavaScript, using Python Workers' [foreign function interface](https://developers.cloudflare.com/workers/languages/python/ffi) to make HTTP requests.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/languages/python/packages/#page","headline":"Python packages supported in Cloudflare Workers · Cloudflare Workers docs","description":"Manage and use Python packages in Cloudflare Workers with Pywrangler.","url":"https://developers.cloudflare.com/workers/languages/python/packages/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/languages/python/packages/#page","headline":"Python packages supported in Cloudflare Workers · Cloudflare Workers docs","description":"Manage and use Python packages in Cloudflare Workers with Pywrangler.","url":"https://developers.cloudflare.com/workers/languages/python/packages/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/languages/","name":"Languages"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/languages/python/","name":"Python Workers"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/languages/python/packages/","name":"Packages"}}]}
 ```

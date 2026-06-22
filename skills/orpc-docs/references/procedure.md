@@ -6,9 +6,9 @@ Procedures are the core building blocks of oRPC. They define the logic for handl
 
 ```ts twoslash
 import { z } from 'zod'
-import type { MetaPlugin } from '@orpc/server'
+import type { AnyMetaPlugin } from '@orpc/server'
 
-declare const someMeta: MetaPlugin
+declare const someMeta: AnyMetaPlugin
 
 const requireAuth = os
   .middleware(({ context, next }) => {

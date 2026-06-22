@@ -2,7 +2,7 @@
 
 [Signals](https://en.wikipedia.org/wiki/Signal_(IPC)) are messages sent to
 running programs to trigger specific behavior. For example, `SIGINT` is sent to
-all processes in the terminal foreground process group when `CTRL-C` is pressed.
+all processes in the terminal foreground process group when `ctrl-c` is pressed.
 
 `just` tries to exit when requested by a signal, but it also tries to avoid
 leaving behind running child processes, two goals which are somewhat in
@@ -33,6 +33,30 @@ was likely sent to `just` alone.
 
 Regardless of whether a child process terminates successfully after `just`
 receives a fatal signal, `just` halts execution.
+
+#### Continuing Execution
+
+The `[continue]`<sup>master</sup> attribute can be used to make `just` continue
+execution even if it receives a fatal signal as long as the child process it's
+running exits successfully.
+
+With no arguments, `[continue]` handles `SIGINT` (`ctrl-c`) so `SIGQUIT`
+(`ctrl-\`) can still be used to stop execution.
+
+With arguments, one or more signals to handle may be given explicitly, as
+`"SIGHUP"`, `"SIGINT"`, and `"SIGQUIT"`.
+
+In this example, if `main.py` catches `SIGINT` and exits successfully,
+`cleanup` will still run and `just` will exit successfully:
+
+```just
+[continue]
+test: && cleanup
+  python3 main.py
+
+cleanup:
+  echo cleanup
+```
 
 #### `SIGINFO`
 

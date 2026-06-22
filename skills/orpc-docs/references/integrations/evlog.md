@@ -7,23 +7,23 @@
 ## Installation
 
 ```sh [npm]
-npm install @orpc/evlog@latest evlog@latest
+npm install @orpc/evlog@beta evlog@beta
 ```
 
 ```sh [yarn]
-yarn add @orpc/evlog@latest evlog@latest
+yarn add @orpc/evlog@beta evlog@beta
 ```
 
 ```sh [pnpm]
-pnpm add @orpc/evlog@latest evlog@latest
+pnpm add @orpc/evlog@beta evlog@beta
 ```
 
 ```sh [bun]
-bun add @orpc/evlog@latest evlog@latest
+bun add @orpc/evlog@beta evlog@beta
 ```
 
 ```sh [deno]
-deno add npm:@orpc/evlog@latest npm:evlog@latest
+deno add npm:@orpc/evlog@beta npm:evlog@beta
 ```
 
 ## Setup

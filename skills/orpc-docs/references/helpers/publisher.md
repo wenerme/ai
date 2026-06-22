@@ -5,23 +5,23 @@ Publisher helpers provide a unified way to publish and subscribe to events acros
 ## Installation
 
 ```sh [npm]
-npm install @orpc/publisher@latest
+npm install @orpc/publisher@beta
 ```
 
 ```sh [yarn]
-yarn add @orpc/publisher@latest
+yarn add @orpc/publisher@beta
 ```
 
 ```sh [pnpm]
-pnpm add @orpc/publisher@latest
+pnpm add @orpc/publisher@beta
 ```
 
 ```sh [bun]
-bun add @orpc/publisher@latest
+bun add @orpc/publisher@beta
 ```
 
 ```sh [deno]
-deno add npm:@orpc/publisher@latest
+deno add npm:@orpc/publisher@beta
 ```
 
 ## Basic Usage
