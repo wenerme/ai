@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # ServiceNow (SAML)
 
-**Last reviewed:**  almost 2 years ago 
+**Last reviewed:**  about 2 years ago 
 
 This guide covers how to configure [ServiceNow ↗](https://docs.servicenow.com/bundle/washingtondc-platform-security/page/integrate/single-sign-on/task/t%5FCreateASAML2Upd1SSOConfigMultiSSO.html) as a SAML application in Cloudflare One.
 

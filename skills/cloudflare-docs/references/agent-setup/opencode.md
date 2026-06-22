@@ -51,7 +51,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.  
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.  
 ```
 
 ## Cloudflare platform access

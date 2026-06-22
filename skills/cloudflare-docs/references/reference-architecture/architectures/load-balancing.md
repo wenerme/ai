@@ -62,7 +62,7 @@ Steering is a load balancer’s main function — the process of handling, sendi
 
 #### Layer 7
 
-[Layer 7 ↗](https://www.cloudflare.com/learning/ddos/what-is-layer-7/) of the [OSI model ↗](https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/), also known as the application layer, is where protocols such as SSH, FTP, NTP, SMTP, and HTTP(S) reside. When this document refers to layer 7 or layer 7 load balancers, it means HTTP(S)-based services. The Cloudflare layer 7 stack allows Cloudflare to apply services like DDoS protection, Bot Management. WAF, CDN, Load Balancing and more to a customer's website to improve performance, availability, and security.
+[Layer 7 ↗](https://www.cloudflare.com/learning/ddos/what-is-layer-7/) of the [OSI model ↗](https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/), also known as the application layer, is where protocols such as SSH, FTP, NTP, SMTP, and HTTP(S) reside. When this document refers to layer 7 or layer 7 load balancers, it means HTTP(S)-based services. The Cloudflare layer 7 stack allows Cloudflare to apply services like DDoS protection, Bot Management, WAF, CDN, Load Balancing, and more to a customer's website to improve performance, availability, and security.
 
 #### Layer 4
 
@@ -159,7 +159,7 @@ There are two main load balancer architectures:
   * Typically hardware-based, but also can be virtualized or software-based
   * Focused on maximum performance
 * Cloud-based load balancers  
-  * Software deployed public cloud infrastructure
+  * Software deployed on public cloud infrastructure
   * Handle requests closer to the originator of the request
 
 Each approach has advantages and disadvantages. On-premises load balancers usually exist inside of private networks completely controlled by the organization. These load balancers are collocated with the endpoints they are load balancing, so latency and RTT time should be minimal. The disadvantage of these on-premises load balancers is that they are restricted to a single physical location. Which means traffic from other regions can have long RTT and high latency in responses. Also, adding another data center requires purchasing and deploying all new equipment. On-premises load balancers also typically require cloud-based load balancers for geographic traffic steering to get requests routed by a geographically local or region-appropriate data center. The advantages of cloud-based load balancers is that they can operate in almost any geographic region without concern for rack space, power, cooling, or maintenance and can scale without concern for new chassis, modules, or larger network connections. Cloud-based load balancers do however increase latency and RTT between the load balancer and the endpoints as they are not typically colocated with the endpoints they are steering traffic toward.
@@ -342,7 +342,7 @@ Dynamic steering is a traffic steering algorithm available to enterprise plan cu
 
 ##### Proximity steering
 
-Proximity steering is a traffic steering algorithm available to enterprise plan customers that steers traffic to the closest physical data center based on where the request endpointated.
+Proximity steering is a traffic steering algorithm available to enterprise plan customers that steers traffic to the closest physical data center based on where the request originated.
 
 Cloudflare determines the requester’s physical location using the following methods, in this order:
 
@@ -473,7 +473,7 @@ Cloudflare endpoints can be defined in two ways, by IP address or by hostname. I
 
 ##### Cloudflare proxied, DNS, IP, and non-Cloudflare endpoints
 
-As mentioned in the “HTTP(S) Load Balancing” section above, load balancing is the very last process run before a request is sent to an endpoint. In the case of however, even if an endpoint is proxied via Cloudflare’s edge, after the load balancer, the request is forwarded directly to the endpoint without passing through the layer 7 stack again. This doesn’t mean the endpoint is unprotected or uncached, however. As long as the load balancer itself is proxied then all those protections are provided to the load balancer rather than the endpoints. Any direct communication with the endpoint can still be proxied and treated with Cloudflare’s layer 7 stack, but communication with an endpoint places all the processing in front of the load balancer, not the endpoint. Figure 19 illustrates the difference of where the Cloudflare layer 7 stack is placed in relation to the endpoint(s).
+As mentioned in the “HTTP(S) Load Balancing” section above, load balancing is the very last process run before a request is sent to an endpoint. However, even if an endpoint is proxied via Cloudflare’s edge, after the load balancer, the request is forwarded directly to the endpoint without passing through the layer 7 stack again. This doesn’t mean the endpoint is unprotected or uncached, however. As long as the load balancer itself is proxied then all those protections are provided to the load balancer rather than the endpoints. Any direct communication with the endpoint can still be proxied and treated with Cloudflare’s layer 7 stack, but communication with an endpoint places all the processing in front of the load balancer, not the endpoint. Figure 19 illustrates the difference of where the Cloudflare layer 7 stack is placed in relation to the endpoint(s).
 
 ![Load balancing is the last process before dispatching to the endpoint](https://developers.cloudflare.com/_astro/lb-ref-arch-19.CKZfc_hA_Z18MGx.svg "Figure 19: Differences in the Layer 7 paths between load balancer and endpoint")
 
@@ -497,7 +497,7 @@ A single cloudflared instance will create 4 different tunnels, two tunnels in tw
 
 ###### Public hostname
 
-The public endpoint method allows organizations to define a tunnel that points to a specific service or port running on an endpoint. The tunnel can terminate on the endpoint or on any server with IP connectivity to the endpoint. Using this public hostname method requires that each service that will be accessed over the tunnel is defined in the tunnel configuration. When configured, a unique tunnel ID, such as d74b3a46-f3a3-4596-9049-da7e72c876f5, will be created for the IP and port or service for which the tunnel is connecting traffic. This tunnel ID is then created into a unique public hostname in the Cloudflare-owned domain of cfargotunnel.com which results in a DNS A record being created that points directly to that service, I.E. d74b3a46-f3a3-4596-9049-da7e72c876f5.cfargotunnel.com. While this hostname is public it can only be accessed or utilized by traffic that is sent through the account that owns the Cloudflare Tunnel configuration. No other accounts would be able to access or send traffic directly to this DNS address. A DNS CNAME record created outside of the account that owns the cfargotunnel.com hostname will not be able to send traffic through that specificCloudflare Tunnel.
+The public endpoint method allows organizations to define a tunnel that points to a specific service or port running on an endpoint. The tunnel can terminate on the endpoint or on any server with IP connectivity to the endpoint. Using this public hostname method requires that each service that will be accessed over the tunnel is defined in the tunnel configuration. When configured, a unique tunnel ID, such as d74b3a46-f3a3-4596-9049-da7e72c876f5, will be created for the IP and port or service for which the tunnel is connecting traffic. This tunnel ID is then created into a unique public hostname in the Cloudflare-owned domain of cfargotunnel.com which results in a DNS A record being created that points directly to that service, that is d74b3a46-f3a3-4596-9049-da7e72c876f5.cfargotunnel.com. While this hostname is public it can only be accessed or utilized by traffic that is sent through the account that owns the Cloudflare Tunnel configuration. No other accounts would be able to access or send traffic directly to this DNS address. A DNS CNAME record created outside of the account that owns the cfargotunnel.com hostname will not be able to send traffic through that specific Cloudflare Tunnel.
 
 When configured via the Dashboard, Cloudflare automatically creates a CNAME record in the DNS zone that refers to the cfargotunnel.com hostname. For example, a CNAME record of myTunnelService.example.com could be created to point the A record of d74b3a46-f3a3-4596-9049-da7e72c876f5.cfargotunnel.com. The main benefit being the ease of use and administration as the CNAME record is much more suggestive about its purpose and belongs to the customer DNS zone.
 
@@ -517,7 +517,7 @@ Within the endpoint pool, there are several configuration options. This section 
 
 ##### Endpoint steering
 
-The first configuration, besides defining a name and description of the endpoint pool, is to determine the endpoint steering method. Endpoint steering is responsible for ultimately selecting the endpoint or endpoint that will receive the request or connection attempt (please refer to the [Steering methods](#steering-methods) section for a detailed description of each method).
+The first configuration, besides defining a name and description of the endpoint pool, is to determine the endpoint steering method. Endpoint steering is responsible for ultimately selecting the endpoint pool or endpoint that will receive the request or connection attempt (please refer to the [Steering methods](#steering-methods) section for a detailed description of each method).
 
 ##### Endpoints
 
@@ -553,9 +553,9 @@ Within a layer 7 load balancer where requests are HTTP(S)-based, the Host header
 
 For example:
 
-* Say a user tries to reach `www.example.com`. The load balancer will be configured with the hostname of `www.example.com`to receive all the requests.
+* Say a user tries to reach `www.example.com`. The load balancer will be configured with the hostname of `www.example.com` to receive all the requests.
 * Since the endpoints can’t have the same public hostname in DNS, its hostname is `endpoint1.example.com`.
-* When the user makes a request to `www.example.com,` the Host header will be set to` www.example.com,` as well. The endpoint will need to be configured to respond to Host headers of `www.example.com`.
+* When the user makes a request to `www.example.com,` the Host header will be set to `www.example.com`, as well. The endpoint will need to be configured to respond to Host headers of `www.example.com`.
 * In some cases (such as with certain cloud or SaaS applications), however, endpoints aren’t configurable in that manner, so the endpoint may receive a request with an unknown Host header and fail to respond appropriately.
 * In this example, in the endpoint configuration, setting the Host header for the endpoint to the endpoint address of `endpoint1.example.com` will replace the Host header of `www.example.com` with `endpoint1.example.com`, and will allow the endpoint to properly respond to this request.
 
@@ -748,7 +748,7 @@ For cookie-based session affinity, the expiration timer is never reset, meaning 
 
 Endpoint draining is a subfeature of session affinity. It allows for sessions to gracefully expire from an endpoint while not allowing new sessions to be created on that same endpoint. Endpoint draining is useful for maintenance, as it does not require administrators to arbitrarily or abruptly cut off user sessions in order to remove all active sessions from an endpoint.
 
-The endpoint drain TTL is the amount of time that endpoints will be allowed to maintain active sessions before being forcefully terminated. Once the endpoint drain TTL is set, endpoint draining is started by disabling an endpoint (or multiple endpoints) within an endpoint pool. As seen in the below image, administrators can monitor the time remaining on an endpoint drawing operation from the load balancer UI.
+The endpoint drain TTL is the amount of time that endpoints will be allowed to maintain active sessions before being forcefully terminated. Once the endpoint drain TTL is set, endpoint draining is started by disabling an endpoint (or multiple endpoints) within an endpoint pool. As seen in the below image, administrators can monitor the time remaining on an endpoint draining operation from the load balancer UI.
 
 ![Endpoint draining in process from web user interface](https://developers.cloudflare.com/_astro/lb-ref-arch-30.todYN9Ax_1LLmJE.webp "Figure 30: Endpoint draining occurring within a Cloudflare Load Balancer")
 
@@ -767,7 +767,7 @@ These response codes are not returned from the endpoint, but from requests made 
 Zero-downtime failover has three modes of operation:
 
 1. **None (Off):** No failover will take place and users may receive error messages or a poor user experience.
-2. **Temporary:** Traffic will be sent to other endpoint(s) until the endpointal endpoint is available again.
+2. **Temporary:** Traffic will be sent to other endpoint(s) until the endpoint is available again.
 3. **Sticky:** The session affinity cookie is updated and subsequent requests are sent to the new endpoint moving forward as needed. This is not supported when session affinity is using HTTP header mode.
 
 ##### Adaptive routing - failover across pools
@@ -844,6 +844,6 @@ These load balancers operate within approximately 50ms of about 95% of the Inter
 With Cloudflare Tunnel, endpoints can be located within private networks and still be utilized by Cloudflare Load Balancers. Cloudflare offers public layer 7 load balancers — that supports both HTTP(S) and WebSockets, as well as public layer 4 load balancers that can steer any TCP or UDP traffic. This means that Cloudflare can offer load balancing services to all organizations and users, no matter their location, use cases, or existing configurations.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/architectures/load-balancing/#page","headline":"Load Balancing Reference Architecture · Cloudflare Reference Architecture docs","description":"This reference architecture is for organizations looking to deploy both global and local traffic management load balancing solutions. It is designed for IT, web hosting, and network professionals with some responsibility over or familiarity with their organization's existing infrastructure.","url":"https://developers.cloudflare.com/reference-architecture/architectures/load-balancing/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/architectures/load-balancing/#page","headline":"Load Balancing Reference Architecture · Cloudflare Reference Architecture docs","description":"This reference architecture is for organizations looking to deploy both global and local traffic management load balancing solutions. It is designed for IT, web hosting, and network professionals with some responsibility over or familiarity with their organization's existing infrastructure.","url":"https://developers.cloudflare.com/reference-architecture/architectures/load-balancing/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/architectures/","name":"Reference Architectures"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/architectures/load-balancing/","name":"Load Balancing Reference Architecture"}}]}
 ```
