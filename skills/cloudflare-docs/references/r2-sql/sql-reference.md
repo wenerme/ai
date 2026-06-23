@@ -23,8 +23,10 @@ R2 SQL is Cloudflare's serverless, distributed, analytics query engine for query
 ## Query syntax
 
 ```
-SELECT column_list | expression | aggregation_functionFROM namespace_name.table_name[JOIN namespace_name.table_name ON condition][WHERE conditions][GROUP BY column_list][HAVING conditions][ORDER BY expression [ASC | DESC]][LIMIT number]
+SELECT [DISTINCT] column_list | expression | aggregate_function | window_functionFROM namespace_name.table_name[JOIN namespace_name.table_name ON condition][WHERE conditions][GROUP BY column_list][HAVING conditions][QUALIFY window_condition][ORDER BY expression [ASC | DESC]][LIMIT number]
 ```
+
+Two or more queries can be combined with [set operations](#set-operations) (`UNION`, `UNION ALL`, `INTERSECT`, `EXCEPT`).
 
 ---
 
@@ -80,21 +82,22 @@ SELECT [DISTINCT] column_specification [, column_specification, ...]
 * **Column alias**: `column_name AS alias`
 * **Expressions**: arithmetic, function calls, CASE expressions, and casts
 
-### Select distinct
-
-Use `DISTINCT` to eliminate duplicate rows from the result set:
-
-```
-SELECT DISTINCT region, departmentFROM my_namespace.sales_dataWHERE total_amount > 1000ORDER BY region, departmentLIMIT 100
-```
-
-For large datasets where approximate results are acceptable, `approx_distinct()` is a faster alternative for counting unique values.
-
 ### Examples
 
 ```
 SELECT * FROM my_namespace.sales_data LIMIT 10SELECT customer_id, region, total_amount FROM my_namespace.sales_data LIMIT 10SELECT region, total_amount * 1.1 AS total_with_tax FROM my_namespace.sales_data LIMIT 10
 ```
+
+### DISTINCT
+
+`SELECT DISTINCT` returns unique rows. `DISTINCT ON (...)` returns the first row for each combination of the listed expressions, using the `ORDER BY` clause to determine which row is kept.
+
+```
+-- Unique combinationsSELECT DISTINCT region, department FROM my_namespace.sales_data
+-- First row per region by amountSELECT DISTINCT ON (region) region, customer_id, total_amountFROM my_namespace.sales_dataORDER BY region, total_amount DESC
+```
+
+For counting unique values on large datasets, `approx_distinct()` is a faster alternative.
 
 ---
 
@@ -239,7 +242,7 @@ Filter rows based on whether a value exists in the result of a subquery:
 
 Warning
 
-`NOT IN` subqueries are not supported on nullable columns. If the subquery column can contain `NULL` values, use `NOT EXISTS` instead. `SELECT DISTINCT` is also not supported inside subqueries — omit the `DISTINCT` keyword or use `NOT EXISTS`.
+`NOT IN` subqueries are not supported on nullable columns. If the subquery column can contain `NULL` values, use `NOT EXISTS` instead.
 
 ```
 -- Instead of NOT IN on a nullable column:SELECT z.domainFROM my_namespace.zones zWHERE NOT EXISTS (    SELECT 1 FROM my_namespace.firewall_events f    WHERE f.zone_id = z.zone_id)LIMIT 20
@@ -345,6 +348,20 @@ SELECT department, COUNT(*) AS dept_countFROM my_namespace.sales_dataGROUP BY de
 SELECT department, category, SUM(total_amount) AS totalFROM my_namespace.sales_dataGROUP BY department, category
 ```
 
+### GROUPING SETS, ROLLUP, and CUBE
+
+These extensions compute multiple groupings, including subtotals and grand totals, in a single query.
+
+* **`GROUPING SETS`**: Computes exactly the groupings you list. `()` produces the grand total.
+* **`ROLLUP`**: Computes hierarchical subtotals from left to right. `ROLLUP(a, b)` groups by `(a, b)`, `(a)`, and `()`.
+* **`CUBE`**: Computes every combination of the listed columns. `CUBE(a, b)` groups by `(a, b)`, `(a)`, `(b)`, and `()`.
+
+```
+-- Subtotals per department plus a grand totalSELECT department, SUM(total_amount) AS totalFROM my_namespace.sales_dataGROUP BY ROLLUP(department)
+-- Every combination of department and categorySELECT department, category, SUM(total_amount) AS totalFROM my_namespace.sales_dataGROUP BY CUBE(department, category)
+-- Explicit groupingsSELECT department, category, SUM(total_amount) AS totalFROM my_namespace.sales_dataGROUP BY GROUPING SETS ((department, category), (department), ())
+```
+
 ---
 
 ## HAVING clause
@@ -404,6 +421,45 @@ SELECT * FROM my_namespace.sales_data LIMIT 100
 
 ---
 
+## Window functions
+
+Window functions compute a value across a set of rows related to the current row without collapsing them into a single output row. The window is defined inline with an `OVER (...)` clause containing an optional `PARTITION BY`, `ORDER BY`, and frame specification.
+
+### Syntax
+
+```
+function(args) OVER (    [PARTITION BY expression [, ...]]    [ORDER BY expression [ASC | DESC] [, ...]]    [frame_specification])
+```
+
+### Supported functions
+
+| Category  | Functions                                                        |
+| --------- | ---------------------------------------------------------------- |
+| Ranking   | ROW\_NUMBER, RANK, DENSE\_RANK, PERCENT\_RANK, CUME\_DIST, NTILE |
+| Offset    | LAG, LEAD, FIRST\_VALUE, LAST\_VALUE, NTH\_VALUE                 |
+| Aggregate | SUM, AVG, COUNT, MIN, MAX, and other aggregates used with OVER   |
+
+### Examples
+
+```
+-- Rank rows within each partitionSELECT customer_id, region,       ROW_NUMBER() OVER (PARTITION BY region ORDER BY total_amount DESC) AS rank_in_region,       LAG(total_amount) OVER (PARTITION BY region ORDER BY total_amount DESC) AS prev_amountFROM my_namespace.sales_data
+-- Running total with an explicit frameSELECT customer_id, total_amount,       SUM(total_amount) OVER (ORDER BY total_amount ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS running_totalFROM my_namespace.sales_data
+```
+
+Note
+
+The named `WINDOW` clause is not supported. Inline the `OVER (...)` specification at each call site instead of defining `WINDOW w AS (...)`.
+
+### QUALIFY
+
+`QUALIFY` filters rows based on the result of a window function, similar to how `HAVING` filters grouped rows.
+
+```
+-- Keep only the top 3 customers by amount in each regionSELECT customer_id, region, total_amountFROM my_namespace.sales_dataQUALIFY ROW_NUMBER() OVER (PARTITION BY region ORDER BY total_amount DESC) <= 3
+```
+
+---
+
 ## Set operations
 
 Set operations combine the results of two or more `SELECT` statements.
@@ -448,6 +504,10 @@ SELECT ... FROM table1UNION | UNION ALL | INTERSECT | EXCEPTSELECT ... FROM tabl
 * All queries in a set operation must return the same number of columns.
 * Corresponding columns must have compatible data types.
 * Column names in the result are taken from the first query.
+
+Note
+
+A `LIMIT` placed directly before a set operator is not valid. Wrap each query in a subquery if you need to limit its rows, or apply a single `LIMIT` to the combined result.
 
 ---
 
@@ -580,6 +640,6 @@ SELECT customer_id,    CASE        WHEN total_amount >= 1000 THEN 'Premium'     
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/r2-sql/sql-reference/#page","headline":"SQL reference · R2 SQL docs","description":"Comprehensive reference for SQL syntax, functions, and data types supported in R2 SQL.","url":"https://developers.cloudflare.com/r2-sql/sql-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SQL"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/r2-sql/sql-reference/#page","headline":"SQL reference · R2 SQL docs","description":"Comprehensive reference for SQL syntax, functions, and data types supported in R2 SQL.","url":"https://developers.cloudflare.com/r2-sql/sql-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SQL"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2-sql/","name":"R2 SQL"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2-sql/sql-reference/","name":"SQL reference"}}]}
 ```

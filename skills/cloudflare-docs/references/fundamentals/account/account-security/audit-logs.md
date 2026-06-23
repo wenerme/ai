@@ -46,7 +46,7 @@ Approximately 30 days of logs from the Beta period (back to \~February 8, 2026) 
 
 ## Access Audit Logs
 
-You can retrieve audit logs using either the API or the Cloudflare dashboard.
+You can retrieve audit logs using the Cloudflare dashboard, the API, or Logpush.
 
 ### API
 
@@ -61,8 +61,8 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/logs/audit
 Below is an example request to retrieve audit logs for a certain period of time along with its corresponding response. Replace the example values in the URL with your actual values:
 
 * `account_id`: Your Cloudflare account identifier.
-* `Since` (required): Start date for the audit log retrieval in the format yyyy-mm-dd.​
-* `Before` (required) : End date for the audit log retrieval in the format yyyy-mm-dd.
+* `since` (required): Start date for the audit log retrieval. Accepts `yyyy-mm-dd` (interpreted as UTC) or RFC3339 timestamp (`yyyy-mm-ddTHH:MM:SSZ`).
+* `before` (required): End date for the audit log retrieval. Same format as `since`.
 
 Terminal window
 
@@ -80,9 +80,7 @@ For more information refer to the [API documentation ↗](https://developers.clo
 
 ### Dashboard
 
-To access audit logs in the Cloudflare dashboard:
-
-In the Cloudflare dashboard, go to the **Audit Logs** page.
+To access audit logs in the Cloudflare dashboard, go to **Manage Account** \> **Audit Logs**.
 
 [ Go to **Audit logs** ](https://dash.cloudflare.com/?to=/:account/audit-log) 
 
@@ -90,7 +88,7 @@ Note
 
 The Audit Logs v2 is shown by default. You can switch between Audit Logs v2 and v1 as needed.
 
-## Logpush job
+### Logpush
 
 Note
 
@@ -139,7 +137,17 @@ The `GET /memberships` endpoint supports cross-account access. To query membersh
 
 #### Organization Activity Logs
 
-Contain events scoped to specific Cloudflare organizations. These logs capture user-initiated actions performed by Org Admins through organization-level APIs and are retrievable via the Audit Logs v2 API.
+Contain events scoped to specific [Cloudflare Organizations](https://developers.cloudflare.com/fundamentals/organizations/). These logs capture user-initiated actions performed by Org Admins through organization-level APIs.
+
+Note
+
+Cloudflare Organizations is Enterprise-only and currently in public beta.
+
+You can retrieve Organization audit logs using either the API or the Cloudflare dashboard.
+
+##### API access
+
+Retrievable via the Audit Logs v2 API:
 
 Terminal window
 
@@ -147,15 +155,19 @@ Terminal window
 GET https://api.cloudflare.com/client/v4/organizations/{organization_id}/logs/audit
 ```
 
+##### Dashboard access
+
+To access organization audit logs in the Cloudflare dashboard, go to **Organizations** \> _(select your organization)_ \> **Manage Organization** \> **Audit Logs**.
+
 Note
 
 Organization-level audit logs are separate from account-level audit logs. Actions performed within a specific account continue to be available via the account-level Audit Logs UI, Audit Logs v2 API, and Logpush.
 
-This initial release covers user-initiated actions only. Support for system-initiated actions, a dashboard UI, and Logpush for organizations will be added in future releases.
+This release covers user-initiated actions only. Support for system-initiated actions and Logpush for organizations will be added in future releases.
 
 ## Example how to query Audit Logs
 
-Use the following example to get a list of audit logs for a user account.
+Use the following example to get a list of audit logs for a Cloudflare account.
 
 Required API token permissions
 
@@ -200,6 +212,6 @@ The resource identifies the object impacted by the action. It includes the resou
 This is a unique identifier for the log record itself. It can be used for deduplication, correlation, or referencing specific actions during investigations.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/#page","headline":"Audit Logs - version 2 · Cloudflare Fundamentals docs","description":"Use Cloudflare Audit Logs v2 to track user-initiated and system-initiated actions across your account via the dashboard, API, or Logpush.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/#page","headline":"Audit Logs - version 2 · Cloudflare Fundamentals docs","description":"Use Cloudflare Audit Logs v2 to track user-initiated and system-initiated actions across your account via the dashboard, API, or Logpush.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/account/","name":"Accounts"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/account/account-security/","name":"Account security"}},{"@type":"ListItem","position":5,"item":{"@id":"/fundamentals/account/account-security/audit-logs/","name":"Audit Logs - version 2"}}]}
 ```

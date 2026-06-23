@@ -2,7 +2,7 @@
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
-# Migrate to OpenRouter
+# Migrate to OpenRouter in One Prompt
 
 **Goal:** Migrate an existing app's LLM calls to OpenRouter without rewriting how
 the app works.

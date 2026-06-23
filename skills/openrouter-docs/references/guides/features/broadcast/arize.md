@@ -2,18 +2,18 @@
 > For a complete documentation index, see https://openrouter.ai/docs/llms.txt.
 > For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://openrouter.ai/docs/_mcp/server.
 
-# Arize AI
+# Arize AX
 
-[Arize AX](https://arize.com) is an evaluation and observability platform developed by Arize AI; it offers tools for agent tracing, evals, prompt optimization, and more.
+[Arize AX](https://arize.com) is an evaluation and observability platform developed by Arize; it offers tools for agent tracing, evals, prompt optimization, and more.
 
-## Step 1: Get your Arize credentials
+## Step 1: Get your Arize AX credentials
 
-In Arize, navigate to your space settings to find your API key and space key:
+In Arize AX, navigate to your space settings to find your API key and space key:
 
-1. Log in to your Arize account
+1. Log in to your Arize AX account
 2. Go to **Space Settings** to find your Space Key
 3. Go to **API Keys** to create or copy your API key
-4. Note the Model ID you want to use for organizing traces
+4. Note the Project Name you want to use for organizing traces
 
 ## Step 2: Enable Broadcast in OpenRouter
 
@@ -21,13 +21,13 @@ Go to [Settings > Observability](https://openrouter.ai/settings/observability) a
 
 ![Enable Broadcast](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/3e095d95758bab05594f468011be81b7d5a2fb19293fa91d5b3923d9f09b81d8/content/pages/features/broadcast/broadcast-enable.png)
 
-## Step 3: Configure Arize AI
+## Step 3: Configure Arize AX
 
-Click the edit icon next to **Arize AI** and enter:
+Click the edit icon next to **Arize AX** and enter:
 
-* **Api Key**: Your Arize API key
-* **Space Key**: Your Arize space key
-* **Model Id**: The model identifier for organizing your traces in Arize
+* **Api Key**: Your Arize AX API key
+* **Space Key**: Your Arize AX space key
+* **Project Name**: The name of the tracing project in Arize AX
 * **Base Url** (optional): Default is `https://otlp.arize.com`
 
 ## Step 4: Test and save
@@ -36,14 +36,14 @@ Click **Test Connection** to verify the setup. The configuration only saves if t
 
 ## Step 5: Send a test trace
 
-Make an API request through OpenRouter and view the trace in your Arize
-dashboard under the specified model.
+Make an API request through OpenRouter and view the trace in your Arize AX
+dashboard under the specified project.
 
 ![Arize Trace View](https://files.buildwithfern.com/openrouter.docs.buildwithfern.com/docs/a917bd16b2036c129bd72451d4650953812a85f8c7585dd39804fceef83857d9/content/pages/features/broadcast/broadcast-arize-trace.png)
 
 ## Custom Metadata
 
-Arize uses the [OpenInference](https://github.com/Arize-ai/openinference) semantic convention for tracing. Custom metadata from the `trace` field is sent as span attributes in the OTLP payload.
+Arize AX uses the [OpenInference](https://github.com/Arize-ai/openinference) semantic convention for tracing. Custom metadata from the `trace` field is sent as span attributes in the OTLP payload.
 
 ### Supported Metadata Keys
 

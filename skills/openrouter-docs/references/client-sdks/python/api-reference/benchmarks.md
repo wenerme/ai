@@ -32,7 +32,7 @@ with OpenRouter(
     api_key=os.getenv("OPENROUTER_API_KEY", ""),
 ) as open_router:
 
-    res = open_router.benchmarks.get_benchmarks(source="artificial-analysis", max_results=20)
+    res = open_router.benchmarks.get_benchmarks()
 
     # Handle response
     print(res)
@@ -41,17 +41,17 @@ with OpenRouter(
 
 ### Parameters
 
-| Parameter                  | Type                                                                   | Required             | Description                                                                                                                                                                     | Example             |
-| -------------------------- | ---------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
-| `source`                   | [operations.Source](/docs/sdks/python/api-reference/operations/source) | :heavy\_check\_mark: | Benchmark source to query. Determines the shape of the returned items.                                                                                                          | artificial-analysis |
-| `http_referer`             | *Optional\[str]*                                                       | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br />                     |                     |
-| `x_open_router_title`      | *Optional\[str]*                                                       | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                                              |                     |
-| `x_open_router_categories` | *Optional\[str]*                                                       | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                                     |                     |
-| `task_type`                | [Optional\[operations.TaskType\]](../../operations/tasktype.md)        | :heavy\_minus\_sign: | Filter results by task type. For Artificial Analysis, maps to the corresponding index. For Design Arena, maps to the matching category.                                         | coding              |
-| `arena`                    | [Optional\[operations.Arena\]](../../operations/arena.md)              | :heavy\_minus\_sign: | Design Arena only: arena to query. Defaults to `models` when source is `design-arena`.                                                                                          | models              |
-| `category`                 | *Optional\[str]*                                                       | :heavy\_minus\_sign: | Design Arena only: category within the arena (e.g. `codecategories`, `uicomponent`, `gamedev`, `3d`, `dataviz`, `image`, `video`, `svg`). When omitted, returns all categories. | codecategories      |
-| `max_results`              | *Optional\[int]*                                                       | :heavy\_minus\_sign: | Max results to return (1–100, default 50).                                                                                                                                      | 20                  |
-| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)     | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                                             |                     |
+| Parameter                  | Type                                                               | Required             | Description                                                                                                                                                                     | Example             |
+| -------------------------- | ------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
+| `http_referer`             | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br />                     |                     |
+| `x_open_router_title`      | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                                              |                     |
+| `x_open_router_categories` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                                     |                     |
+| `source`                   | [Optional\[operations.Source\]](../../operations/source.md)        | :heavy\_minus\_sign: | Benchmark source to query. Determines the shape of the returned items. When omitted, returns results from all sources.                                                          | artificial-analysis |
+| `task_type`                | [Optional\[operations.TaskType\]](../../operations/tasktype.md)    | :heavy\_minus\_sign: | Filter results by task type. For Artificial Analysis, maps to the corresponding index. For Design Arena, maps to the matching category.                                         | coding              |
+| `arena`                    | [Optional\[operations.Arena\]](../../operations/arena.md)          | :heavy\_minus\_sign: | Design Arena only: arena to query. Defaults to `models` when source is `design-arena`.                                                                                          | models              |
+| `category`                 | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Design Arena only: category within the arena (e.g. `codecategories`, `uicomponent`, `gamedev`, `3d`, `dataviz`, `image`, `video`, `svg`). When omitted, returns all categories. | codecategories      |
+| `max_results`              | *Optional\[int]*                                                   | :heavy\_minus\_sign: | Maximum number of items to return. When omitted, all matching results are returned.                                                                                             | 50                  |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                                             |                     |
 
 ### Response
 

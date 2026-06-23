@@ -23,7 +23,7 @@ You can control reasoning tokens in your requests using the `reasoning` paramete
   "messages": [],
   "reasoning": {
     // One of the following (not both):
-    "effort": "high", // Can be "xhigh", "high", "medium", "low", "minimal" or "none" (OpenAI-style)
+    "effort": "high", // Can be "max", "xhigh", "high", "medium", "low", "minimal" or "none" (OpenAI-style)
     "max_tokens": 2000, // Specific token limit (Anthropic-style)
 
     // Optional: Default is false. All models support this.
@@ -99,7 +99,8 @@ For models that only support `reasoning.effort` (see below), the `max_tokens` va
 
 Currently supported by OpenAI reasoning models (o1 series, o3 series, GPT-5 series) and Grok models
 
-* `"effort": "xhigh"` - Allocates the largest portion of tokens for reasoning (approximately 95% of max\_tokens)
+* `"effort": "max"` - Allocates the largest portion of tokens for reasoning (approximately 95% of max\_tokens)
+* `"effort": "xhigh"` - Same allocation as max (approximately 95% of max\_tokens)
 * `"effort": "high"` - Allocates a large portion of tokens for reasoning (approximately 80% of max\_tokens)
 * `"effort": "medium"` - Allocates a moderate portion of tokens (approximately 50% of max\_tokens)
 * `"effort": "low"` - Allocates a smaller portion of tokens (approximately 20% of max\_tokens)
@@ -810,7 +811,7 @@ When using Anthropic models with reasoning:
 
 The reasoning token allocation is capped at 128,000 tokens maximum and 1024 tokens minimum. The formula for calculating the budget\_tokens is: `budget_tokens = max(min(max_tokens * {effort_ratio}, 128000), 1024)`
 
-effort\_ratio is 0.95 for xhigh effort, 0.8 for high effort, 0.5 for medium effort, 0.2 for low effort, and 0.1 for minimal effort.
+effort\_ratio is 0.95 for max and xhigh effort, 0.8 for high effort, 0.5 for medium effort, 0.2 for low effort, and 0.1 for minimal effort.
 
 **Important**: `max_tokens` must be strictly higher than the reasoning budget to ensure there are tokens available for the final response after thinking.
 

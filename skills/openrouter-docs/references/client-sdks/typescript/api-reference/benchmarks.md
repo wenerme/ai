@@ -32,10 +32,7 @@ const openRouter = new OpenRouter({
 });
 
 async function run() {
-  const result = await openRouter.benchmarks.getBenchmarks({
-    source: "artificial-analysis",
-    maxResults: 20,
-  });
+  const result = await openRouter.benchmarks.getBenchmarks();
 
   console.log(result);
 }
@@ -61,10 +58,7 @@ const openRouter = new OpenRouterCore({
 });
 
 async function run() {
-  const res = await benchmarksGetBenchmarks(openRouter, {
-    source: "artificial-analysis",
-    maxResults: 20,
-  });
+  const res = await benchmarksGetBenchmarks(openRouter);
   if (res.ok) {
     const { value: result } = res;
     console.log(result);

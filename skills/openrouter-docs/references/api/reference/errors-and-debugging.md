@@ -402,7 +402,7 @@ Mid-stream errors are emitted as an SSE `error` event:
 
 ## Debugging
 
-OpenRouter provides a `debug` option that allows you to inspect the exact request body that was sent to the upstream provider. This is useful for understanding how OpenRouter transforms your request parameters to work with different providers.
+OpenRouter provides a `debug` option that allows you to inspect the exact request body that was sent to the upstream provider. This works with both the Chat Completions API (`/api/v1/chat/completions`) and the Responses API (`/api/v1/responses`). Useful for understanding how OpenRouter transforms your request parameters for different providers.
 
 ### Debug Option Shape
 
@@ -417,6 +417,8 @@ type DebugOptions = {
 ### Usage
 
 To enable debug output, include the `debug` parameter in your request:
+
+#### Chat Completions
 
 ```typescript title="TypeScript"
 fetch('https://openrouter.ai/api/v1/chat/completions', {
@@ -487,9 +489,74 @@ for line in response.iter_lines():
       print(text)
 ```
 
+#### Responses API
+
+```typescript title="TypeScript"
+fetch('https://openrouter.ai/api/v1/responses', {
+  method: 'POST',
+  headers: {
+    Authorization: 'Bearer <OPENROUTER_API_KEY>',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: 'anthropic/claude-haiku-4.5',
+    stream: true,
+    input: 'Hello!',
+    debug: {
+      echo_upstream_body: true,
+    },
+  }),
+});
+
+const text = await response.text();
+
+for (const line of text.split('\n')) {
+  if (!line.startsWith('data: ')) continue;
+
+  const data = line.slice(6);
+  if (data === '[DONE]') break;
+
+  const parsed = JSON.parse(data);
+
+  if (parsed.type === 'response.debug') {
+    console.log('\nDebug:', JSON.stringify(parsed.debug, null, 2));
+  }
+}
+```
+
+```python title="Python"
+import requests
+import json
+
+response = requests.post(
+  url="https://openrouter.ai/api/v1/responses",
+  headers={
+    "Authorization": "Bearer <OPENROUTER_API_KEY>",
+    "Content-Type": "application/json",
+  },
+  data=json.dumps({
+    "model": "anthropic/claude-haiku-4.5",
+    "stream": True,
+    "input": "Hello!",
+    "debug": {
+      "echo_upstream_body": True
+    }
+  }),
+  stream=True
+)
+
+for line in response.iter_lines():
+  if line:
+    text = line.decode('utf-8')
+    if 'response.debug' in text:
+      print(text)
+```
+
 ### Debug Response Format
 
-When `debug.echo_upstream_body` is set to `true`, OpenRouter will send a debug chunk as the **first chunk** in the streaming response. This chunk will have an empty `choices` array and include a `debug` field containing the transformed request body:
+#### Chat Completions
+
+When `debug.echo_upstream_body` is set to `true`, OpenRouter sends a debug chunk as the **first chunk** in the streaming response. This chunk has an empty `choices` array and includes a `debug` field with the transformed request body:
 
 ```json
 {
@@ -516,9 +583,31 @@ When `debug.echo_upstream_body` is set to `true`, OpenRouter will send a debug c
 }
 ```
 
+#### Responses API
+
+On the Responses API, debug data arrives as a `response.debug` SSE event:
+
+```json
+{
+  "type": "response.debug",
+  "debug": {
+    "echo_upstream_body": {
+      "model": "claude-haiku-4-5-20251001",
+      "messages": [
+        { "role": "user", "content": "Hello!" }
+      ],
+      "stream": true,
+      "max_tokens": 64000,
+      "temperature": 1
+    }
+  },
+  "sequence_number": 0
+}
+```
+
 ### Important Notes
 
-The debug option **only works with streaming mode** (`stream: true`) for the Chat Completions API. Non-streaming requests and Responses API requests will ignore the debug parameter.
+The debug option **only works with streaming mode** (`stream: true`). Non-streaming requests will ignore the debug parameter.
 
 The debug flag should **not be used in production environments**. It is intended for development and debugging purposes only, as it may potentially return sensitive information included in the request that was not intended to be visible elsewhere.
 

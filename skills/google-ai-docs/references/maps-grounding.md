@@ -1,3 +1,6 @@
+> [!NOTE]
+> **Note:** This version of the page covers the **Interactions API** . You can use the toggle on this page to switch to the [generateContent API version of this page](https://ai.google.dev/gemini-api/docs/generate-content/maps-grounding).
+
 Grounding with Google Maps connects the generative capabilities of Gemini with
 the rich, factual, and up-to-date data of Google Maps. This feature enables
 developers to easily incorporate location-aware functionality into their
@@ -17,97 +20,88 @@ the Gemini model to use Google Maps data.
 
 ### Python
 
+    # This will only work for SDK newer than 2.0.0
     from google import genai
-    from google.genai import types
 
     client = genai.Client()
 
-    prompt = "What are the best Italian restaurants within a 15-minute walk from here?"
-
-    response = client.models.generate_content(
-        model='gemini-3.5-flash',
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            # Turn on grounding with Google Maps
-            tools=[types.Tool(google_maps=types.GoogleMaps())],
-            # Optionally provide the relevant location context (this is in Los Angeles)
-            tool_config=types.ToolConfig(retrieval_config=types.RetrievalConfig(
-                lat_lng=types.LatLng(
-                    latitude=34.050481, longitude=-118.248526))),
-        ),
+    interaction = client.interactions.create(
+        model="gemini-3.5-flash",
+        input="What are the best Italian restaurants within a 15-minute walk from here?",
+        tools=[{
+            "type": "google_maps",
+            "latitude": 34.050481,
+            "longitude": -118.248526
+        }]
     )
 
-    print("Generated Response:")
-    print(response.text)
-
-    if grounding := response.candidates[0].grounding_metadata:
-      if grounding.grounding_chunks:
-        print('-' * 40)
-        print("Sources:")
-        for chunk in grounding.grounding_chunks:
-          print(f'- [{chunk.maps.title}]({chunk.maps.uri})')
+    # Print the model's text response and annotations
+    for step in interaction.steps:
+        if step.type == "model_output":
+            for content_block in step.content:
+                if content_block.type == "text":
+                    print(content_block.text)
+                    if content_block.annotations:
+                        print("\nSources:")
+                        for annotation in content_block.annotations:
+                            if annotation.type == "place_citation":
+                                print(f"  - {annotation.name}: {annotation.url}")
 
 ### JavaScript
 
+    // This will only work for SDK newer than 2.0.0
     import { GoogleGenAI } from "@google/genai";
 
     const ai = new GoogleGenAI({});
 
-    async function generateContentWithMapsGrounding() {
-      const response = await ai.models.generateContent({
+    async function main() {
+      const interaction = await ai.interactions.create({
         model: "gemini-3.5-flash",
-        contents: "What are the best Italian restaurants within a 15-minute walk from here?",
-        config: {
-          // Turn on grounding with Google Maps
-          tools: [{ googleMaps: {} }],
-          toolConfig: {
-            retrievalConfig: {
-              // Optionally provide the relevant location context (this is in Los Angeles)
-              latLng: {
-                latitude: 34.050481,
-                longitude: -118.248526,
-              },
-            },
-          },
-        },
+        input: "What are the best Italian restaurants within a 15-minute walk from here?",
+        tools: [{
+          type: "google_maps",
+          latitude: 34.050481,
+          longitude: -118.248526
+        }]
       });
 
-      console.log("Generated Response:");
-      console.log(response.text);
-
-      const grounding = response.candidates[0]?.groundingMetadata;
-      if (grounding?.groundingChunks) {
-        console.log("-".repeat(40));
-        console.log("Sources:");
-        for (const chunk of grounding.groundingChunks) {
-          if (chunk.maps) {
-            console.log(`- [${chunk.maps.title}](${chunk.maps.uri})`);
+      // Print the model's text response and annotations
+      for (const step of interaction.steps) {
+        if (step.type === 'model_output') {
+          for (const contentBlock of step.content) {
+            if (contentBlock.type === 'text') {
+              console.log(contentBlock.text);
+              if (contentBlock.annotations) {
+                console.log("\nSources:");
+                for (const annotation of contentBlock.annotations) {
+                  if (annotation.type === 'place_citation') {
+                    console.log(`  - {annotation.name}: {annotation.url}`);
+                  }
+                }
+              }
+            }
           }
         }
       }
     }
 
-    generateContentWithMapsGrounding();
+    main();
 
 ### REST
 
-    curl -X POST 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent' \
+    # Specifies the API revision to avoid breaking changes when they become default
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
-      -H "x-goog-api-key: ${GEMINI_API_KEY}" \
       -d '{
-      "contents": [{
-        "role": "user",
-        "parts": [{
-          "text": "What are the best Italian restaurants within a 15-minute walk from here?"
+        "model": "gemini-3.5-flash",
+        "input": "What are the best Italian restaurants within a 15-minute walk from here?",
+        "tools": [{
+          "type": "google_maps",
+          "latitude": 34.050481,
+          "longitude": -118.248526
         }]
-      }],
-      "tools": [{"googleMaps": {}}],
-      "toolConfig": {
-        "retrievalConfig": {
-          "latLng": {"latitude": 34.050481, "longitude": -118.248526}
-        }
-      }
-    }'
+      }'
 
 ## How Grounding with Google Maps works
 
@@ -123,7 +117,7 @@ The process typically involves:
 2. **Tool invocation:** The Gemini model, recognizing the geographical intent, invokes the Grounding with Google Maps tool. This tool can optionally be provided with the user's `latitude` and `longitude`. The tool is a textual search tool and behaves similarly to searching on Maps, in that local queries ("near me") will use the coordinates, while specific or non-local queries are unlikely to be influenced by the explicit location.
 3. **Data retrieval:** The Grounding with Google Maps service queries Google Maps for relevant information (e.g., places, reviews, photos, addresses, opening hours).
 4. **Grounded generation:** The retrieved Maps data is used to inform the Gemini model's response, ensuring factual accuracy and relevance.
-5. **Response:** The model returns a text response, which includes citations to Google Maps sources.
+5. **Response \& annotations:** The model returns a text response with inline annotations linking to Google Maps sources, allowing developers to display citations.
 
 ## Why and when to use Grounding with Google Maps
 
@@ -143,113 +137,9 @@ Grounding with Google Maps excels in use cases where proximity and current
 factual data are critical, such as finding the "best coffee shop near me" or
 getting directions.
 
-## API methods and parameters
-
-Grounding with Google Maps is exposed through the Gemini API as a tool within
-the [`generateContent`](https://ai.google.dev/api/generate-content) method. You enable and configure
-Grounding with Google Maps by including a
-[`googleMaps`](https://ai.google.dev/api/caching#GoogleMaps) object in the `tools` parameter of your
-request.
-
-### JSON
-
-    {
-      "contents": [{
-        "parts": [
-          {"text": "Restaurants near Times Square."}
-        ]
-      }],
-      "tools":  { "googleMaps": {} }
-    }
-
-Additionally, the tool supports passing the contextual location as `toolConfig`.
-
-### JSON
-
-    {
-      "contents": [{
-        "parts": [
-          {"text": "Restaurants near here."}
-        ]
-      }],
-      "tools":  { "googleMaps": {} },
-      "toolConfig":  {
-        "retrievalConfig": {
-          "latLng": {
-            "latitude": 40.758896,
-            "longitude": -73.985130
-          }
-        }
-      }
-    }
-
-### Understanding the grounding response
-
-When a response is successfully grounded with Google Maps data, the response
-includes a [`groundingMetadata`](https://ai.google.dev/api/generate-content#GroundingMetadata) field.
-This structured data is essential for verifying claims and building a rich
-citation experience in your application, as well as meeting the service usage
-requirements.
-
-### JSON
-
-    {
-      "candidates": [
-        {
-          "content": {
-            "parts": [
-              {
-                "text": "CanteenM is an American restaurant with..."
-              }
-            ],
-            "role": "model"
-          },
-          "groundingMetadata": {
-            "groundingChunks": [
-              {
-                "maps": {
-                  "uri": "https://maps.google.com/?cid=13100894621228039586",
-                  "title": "Heaven on 7th Marketplace",
-                  "placeId": "places/ChIJ0-zA1vBZwokRon0fGj-6z7U"
-                },
-                // repeated ...
-              }
-            ],
-            "groundingSupports": [
-              {
-                "segment": {
-                  "startIndex": 0,
-                  "endIndex": 79,
-                  "text": "CanteenM is an American restaurant with a 4.6-star rating and is open 24 hours."
-                },
-                "groundingChunkIndices": [0]
-              },
-              // repeated ...
-            ],
-            "webSearchQueries": [
-              "restaurants near me"
-            ]
-          }
-        }
-      ]
-    }
-
-The Gemini API returns the following information with the
-[`groundingMetadata`](https://ai.google.dev/api/generate-content#GroundingMetadata):
-
-- `groundingChunks`: Array of objects containing the `maps` sources (`uri`, `placeId` and `title`).
-- `groundingSupports`: Array of chunks to connect model response text to the sources in `groundingChunks`. Each chunk links a text span (defined by `startIndex` and `endIndex`) to one or more `groundingChunkIndices`. This is the key to building inline citations.
-
-For a code snippet showing how to render inline citations in text, see [the
-example](https://ai.google.dev/gemini-api/docs/google-search#attributing_sources_with_inline_citations)
-in the Grounding with Google Search docs.
-
 ## Use cases
 
-Grounding with Google Maps supports a variety of location-aware use cases. The
-following examples demonstrate how different prompts and parameters can leverage
-Grounding with Google Maps. Information in the Google Maps Grounded Results may
-differ from actual conditions.
+Grounding with Google Maps supports a variety of location-aware use cases.
 
 ### Handling place-specific questions
 
@@ -258,101 +148,70 @@ user reviews and other Maps data.
 
 ### Python
 
+    # This will only work for SDK newer than 2.0.0
     from google import genai
-    from google.genai import types
 
     client = genai.Client()
 
-    prompt = "Is there a cafe near the corner of 1st and Main that has outdoor seating?"
-
-    response = client.models.generate_content(
-        model='gemini-3.5-flash',
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            # Turn on the Maps tool
-            tools=[types.Tool(google_maps=types.GoogleMaps())],
-
-            # Provide the relevant location context (this is in Los Angeles)
-            tool_config=types.ToolConfig(retrieval_config=types.RetrievalConfig(
-                lat_lng=types.LatLng(
-                    latitude=34.050481, longitude=-118.248526))),
-        ),
+    interaction = client.interactions.create(
+        model="gemini-3.5-flash",
+        input="Is there a cafe near the corner of 1st and Main that has outdoor seating?",
+        tools=[{
+            "type": "google_maps",
+            "latitude": 34.050481,
+            "longitude": -118.248526
+        }]
     )
 
-    print("Generated Response:")
-    print(response.text)
+    for step in interaction.steps:
+        if step.type == "model_output":
+            for content_block in step.content:
+                if content_block.type == "text":
+                    print(content_block.text)
+                    if content_block.annotations:
+                        print("\nSources:")
+                        for annotation in content_block.annotations:
+                            if annotation.type == "place_citation":
+                                print(f"  - {annotation.name}: {annotation.url}")
 
-    if grounding := response.candidates[0].grounding_metadata:
-      if chunks := grounding.grounding_chunks:
-        print('-' * 40)
-        print("Sources:")
-        for chunk in chunks:
-          print(f'- [{chunk.maps.title}]({chunk.maps.uri})')
-      ```
+### JavaScript
 
-### Javascript
-
-    import { GoogleGenAI } from '@google/genai';
+    // This will only work for SDK newer than 2.0.0
+    import { GoogleGenAI } from "@google/genai";
 
     const ai = new GoogleGenAI({});
 
-    async function run() {
-      const prompt = "Is there a cafe near the corner of 1st and Main that has outdoor seating?";
-
-      const response = await ai.models.generateContent({
-        model: 'gemini-3.5-flash',
-        contents: prompt,
-        config: {
-          // Turn on the Maps tool
-          tools: [{googleMaps: {}}],
-          // Provide the relevant location context (this is in Los Angeles)
-          toolConfig: {
-            retrievalConfig: {
-              latLng: {
-                latitude: 34.050481,
-                longitude: -118.248526
-              }
-            }
-          }
-        },
+    async function main() {
+      const interaction = await ai.interactions.create({
+        model: "gemini-3.5-flash",
+        input: "Is there a cafe near the corner of 1st and Main that has outdoor seating?",
+        tools: [{
+          type: "google_maps",
+          latitude: 34.050481,
+          longitude: -118.248526
+        }]
       });
 
-      console.log("Generated Response:");
-      console.log(response.text);
-
-      const chunks = response.candidates[0].groundingMetadata?.groundingChunks;
-      if (chunks) {
-        console.log('-'.repeat(40));
-        console.log("Sources:");
-        for (const chunk of chunks) {
-          if (chunk.maps) {
-            console.log(`- [${chunk.maps.title}](${chunk.maps.uri})`);
+      for (const step of interaction.steps) {
+        if (step.type === 'model_output') {
+          for (const contentBlock of step.content) {
+            if (contentBlock.type === 'text') {
+              console.log(contentBlock.text);
+              if (contentBlock.annotations) {
+                console.log("\nSources:");
+                for (const annotation of contentBlock.annotations) {
+                  if (annotation.type === 'place_citation') {
+                    console.log(`  - ${annotation.name}: ${annotation.url}`);
+                  }
+                }
+              }
+            }
           }
         }
       }
     }
 
-    run();
-
-### REST
-
-    curl -X POST 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent' \
-      -H 'Content-Type: application/json' \
-      -H "x-goog-api-key: ${GEMINI_API_KEY}" \
-      -d '{
-      "contents": [{
-        "role": "user",
-        "parts": [{
-          "text": "Is there a cafe near the corner of 1st and Main that has outdoor seating?"
-        }]
-      }],
-      "tools": [{"googleMaps": {}}],
-      "toolConfig": {
-        "retrievalConfig": {
-          "latLng": {"latitude": 34.050481, "longitude": -118.248526}
-        }
-      }
-    }'
+    main();
 
 ### Providing location-based personalization
 
@@ -361,97 +220,70 @@ area.
 
 ### Python
 
+    # This will only work for SDK newer than 2.0.0
     from google import genai
-    from google.genai import types
 
     client = genai.Client()
 
-    prompt = "Which family-friendly restaurants near here have the best playground reviews?"
-
-    response = client.models.generate_content(
-        model='gemini-3.5-flash',
-        contents=prompt,
-        config=types.GenerateContentConfig(
-          tools=[types.Tool(google_maps=types.GoogleMaps())],
-          tool_config=types.ToolConfig(retrieval_config=types.RetrievalConfig(
-              # Provide the location as context; this is Austin, TX.
-              lat_lng=types.LatLng(
-                  latitude=30.2672, longitude=-97.7431))),
-        ),
+    interaction = client.interactions.create(
+        model="gemini-3.5-flash",
+        input="Which family-friendly restaurants near here have the best playground reviews?",
+        tools=[{
+            "type": "google_maps",
+            "latitude": 30.2672,
+            "longitude": -97.7431
+        }]
     )
 
-    print("Generated Response:")
-    print(response.text)
+    for step in interaction.steps:
+        if step.type == "model_output":
+            for content_block in step.content:
+                if content_block.type == "text":
+                    print(content_block.text)
+                    if content_block.annotations:
+                        print("\nSources:")
+                        for annotation in content_block.annotations:
+                            if annotation.type == "place_citation":
+                                print(f"  - {annotation.name}: {annotation.url}")
 
-    if grounding := response.candidates[0].grounding_metadata:
-      if chunks := grounding.grounding_chunks:
-        print('-' * 40)
-        print("Sources:")
-        for chunk in chunks:
-          print(f'- [{chunk.maps.title}]({chunk.maps.uri})')
+### JavaScript
 
-### Javascript
-
-    import { GoogleGenAI } from '@google/genai';
+    // This will only work for SDK newer than 2.0.0
+    import { GoogleGenAI } from "@google/genai";
 
     const ai = new GoogleGenAI({});
 
-    async function run() {
-      const prompt = "Which family-friendly restaurants near here have the best playground reviews?";
-
-      const response = await ai.models.generateContent({
-        model: 'gemini-3.5-flash',
-        contents: prompt,
-        config: {
-          tools: [{googleMaps: {}}],
-          toolConfig: {
-            retrievalConfig: {
-              // Provide the location as context; this is Austin, TX.
-              latLng: {
-                latitude: 30.2672,
-                longitude: -97.7431
-              }
-            }
-          }
-        },
+    async function main() {
+      const interaction = await ai.interactions.create({
+        model: "gemini-3.5-flash",
+        input: "Which family-friendly restaurants near here have the best playground reviews?",
+        tools: [{
+          type: "google_maps",
+          latitude: 30.2672,
+          longitude: -97.7431
+        }]
       });
 
-      console.log("Generated Response:");
-      console.log(response.text);
-
-      const chunks = response.candidates[0].groundingMetadata?.groundingChunks;
-      if (chunks) {
-        console.log('-'.repeat(40));
-        console.log("Sources:");
-        for (const chunk of chunks) {
-          if (chunk.maps) {
-            console.log(`- [${chunk.maps.title}](${chunk.maps.uri})`);
+      for (const step of interaction.steps) {
+        if (step.type === 'model_output') {
+          for (const contentBlock of step.content) {
+            if (contentBlock.type === 'text') {
+              console.log(contentBlock.text);
+              if (contentBlock.annotations) {
+                console.log("\nSources:");
+                for (const annotation of contentBlock.annotations) {
+                  if (annotation.type === 'place_citation') {
+                    console.log(`  - ${annotation.name}: ${annotation.url}`);
+                  }
+                }
+              }
+            }
           }
         }
       }
     }
 
-    run();
-
-### REST
-
-    curl -X POST 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent' \
-      -H 'Content-Type: application/json' \
-      -H "x-goog-api-key: ${GEMINI_API_KEY}" \
-      -d '{
-      "contents": [{
-        "role": "user",
-        "parts": [{
-          "text": "Which family-friendly restaurants near here have the best playground reviews?"
-        }],
-      }],
-      "tools": [{"googleMaps": {}}],
-      "toolConfig": {
-        "retrievalConfig": {
-          "latLng": {"latitude": 30.2672, "longitude": -97.7431}
-        }
-      }
-    }'
+    main();
 
 ### Assisting with itinerary planning
 
@@ -460,99 +292,60 @@ locations, perfect for travel applications.
 
 ### Python
 
+    # This will only work for SDK newer than 2.0.0
     from google import genai
-    from google.genai import types
 
     client = genai.Client()
 
     prompt = "Plan a day in San Francisco for me. I want to see the Golden Gate Bridge, visit a museum, and have a nice dinner."
 
-    response = client.models.generate_content(
-        model='gemini-3.5-flash',
-        contents=prompt,
-        config=types.GenerateContentConfig(
-          tools=[types.Tool(google_maps=types.GoogleMaps())],
-          tool_config=types.ToolConfig(retrieval_config=types.RetrievalConfig(
-              # Provide the location as context, this is in San Francisco.
-              lat_lng=types.LatLng(
-                  latitude=37.78193, longitude=-122.40476))),
-        ),
+    interaction = client.interactions.create(
+        model="gemini-3.5-flash",
+        input=prompt,
+        tools=[{
+            "type": "google_maps",
+            "latitude": 37.78193,
+            "longitude": -122.40476
+        }]
     )
+    # ... code to process response
 
-    print("Generated Response:")
-    print(response.text)
+### JavaScript
 
-    if grounding := response.candidates[0].grounding_metadata:
-      if grounding.grounding_chunks:
-        print('-' * 40)
-        print("Sources:")
-        for chunk in grounding.grounding_chunks:
-          print(f'- [{chunk.maps.title}]({chunk.maps.uri})')
-
-### Javascript
-
-    import { GoogleGenAI } from '@google/genai';
+    // This will only work for SDK newer than 2.0.0
+    import { GoogleGenAI } from "@google/genai";
 
     const ai = new GoogleGenAI({});
 
-    async function run() {
-      const prompt = "Plan a day in San Francisco for me. I want to see the Golden Gate Bridge, visit a museum, and have a nice dinner.";
-
-      const response = await ai.models.generateContent({
-        model: 'gemini-3.5-flash',
-        contents: prompt,
-        config: {
-          tools: [{googleMaps: {}}],
-          toolConfig: {
-            retrievalConfig: {
-              // Provide the location as context, this is in San Francisco.
-              latLng: {
-                latitude: 37.78193,
-                longitude: -122.40476
-              }
-            }
-          }
-        },
+    async function main() {
+      const interaction = await ai.interactions.create({
+        model: "gemini-3.5-flash",
+        input: "Plan a day in San Francisco for me. I want to see the Golden Gate Bridge, visit a museum, and have a nice dinner.",
+        tools: [{
+          type: "google_maps",
+          latitude: 37.78193,
+          longitude: -122.40476
+        }]
       });
-
-      console.log("Generated Response:");
-      console.log(response.text);
-
-      const groundingMetadata = response.candidates[0]?.groundingMetadata;
-      if (groundingMetadata) {
-        if (groundingMetadata.groundingChunks) {
-          console.log('-'.repeat(40));
-          console.log("Sources:");
-          for (const chunk of groundingMetadata.groundingChunks) {
-            if (chunk.maps) {
-              console.log(`- [${chunk.maps.title}](${chunk.maps.uri})`);
-            }
-          }
-        }
-      }
     }
 
-    run();
+    main();
 
 ### REST
 
-    curl -X POST 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent' \
+    # Specifies the API revision to avoid breaking changes when they become default
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
-      -H "x-goog-api-key: ${GEMINI_API_KEY}" \
       -d '{
-      "contents": [{
-        "role": "user",
-        "parts": [{
-          "text": "Plan a day in San Francisco for me. I want to see the Golden Gate Bridge, visit a museum, and have a nice dinner."
+        "model": "gemini-3.5-flash",
+        "input": "Plan a day in San Francisco for me. I want to see the Golden Gate Bridge, visit a museum, and have a nice dinner.",
+        "tools": [{
+          "type": "google_maps",
+          "latitude": 37.78193,
+          "longitude": -122.40476
         }]
-      }],
-      "tools": [{"googleMaps": {}}],
-      "toolConfig": {
-        "retrievalConfig": {
-        "latLng": {"latitude": 37.78193, "longitude": -122.40476}
-      }
-      }
-    }'
+      }'
 
 ## Service usage requirements
 
@@ -561,13 +354,12 @@ Maps.
 
 ### Inform the user about the use of Google Maps sources
 
-With each Google Maps Grounded result, you'll receive sources in
-`groundingChunks` that support each response. The following metadata is also
+With each Google Maps Grounded result, you'll receive source annotations on
+the `model_output` step's content blocks that support each response. The following metadata is
 returned:
 
-- source uri
-- title
-- ID
+- source url
+- name
 
 When presenting results from Grounding with Google Maps, you must specify the
 associated Google Maps sources, and inform your users of the following:
@@ -577,30 +369,12 @@ associated Google Maps sources, and inform your users of the following:
 
 ### Display Google Maps sources with Google Maps links
 
-For each source in `groundingChunks` and in
-`grounding_chunks.maps.placeAnswerSources.reviewSnippets`, a link preview must
+For each source annotation, a link preview must
 be generated following these requirements:
 
 - Attribute each source to Google Maps following the Google Maps text [attribution guidelines](https://ai.google.dev/gemini-api/docs/maps-grounding#maps-attribution-guidelines).
-- Display the source title provided in the response.
-- Link to the source using the `uri` or `googleMapsUri` from the response.
-
-These images show the minimum requirements for displaying the sources and Google
-Maps links.
-
-![Prompt with response showing sources](https://ai.google.dev/static/gemini-api/docs/images/maps/sources-expanded.jpg)
-
-You can collapse the view of the sources.
-
-![Prompt with response and sources collapsed](https://ai.google.dev/static/gemini-api/docs/images/maps/sources-collapsed.jpg)
-
-Optional: Enhance the link preview with additional content, such as:
-
-- A [Google Maps favicon](https://www.google.com/images/branding/product/ico/web_maps_icon_32dp.ico) is inserted before the Google Maps text attribution.
-- A photo from the source URL (`og:image`).
-
-For more information about some of our Google Maps data providers and their
-license terms, see the [Google Maps and Google Earth legal notices](https://www.google.com/help/legalnotices_maps/).
+- Display the source name provided in the response.
+- Link to the source using the `url` from the annotation.
 
 ### Google Maps text attribution guidelines
 
@@ -611,70 +385,22 @@ When you attribute sources to Google Maps in text, follow these guidelines:
   - Don't wrap Google Maps onto multiple lines.
   - Don't localize Google Maps into another language.
   - Prevent browsers from translating Google Maps by using the HTML attribute translate="no".
-- Style Google Maps text as described in the following table:
 
-| Property | Style |
-|---|---|
-| `Font family` | Roboto. Loading the font is optional. |
-| `Fallback font family` | Any sans serif body font already used in your product or "Sans-Serif" to invoke the default system font |
-| `Font style` | Normal |
-| `Font weight` | 400 |
-| `Font color` | White, black (#1F1F1F), or gray (#5E5E5E). Maintain accessible (4.5:1) contrast against the background. |
-| `Font size` | - Minimum font size: 12sp - Maximum font size: 16sp - To learn about sp, see Font size units on the [Material Design website](https://m3.material.io/styles/typography/type-scale-tokens#3f4488e7-3b74-45b0-a143-9d6afa4d62dc). |
-| `Spacing` | Normal |
-
-#### Example CSS
-
-The following CSS renders Google Maps with the appropriate typographic style and
-color on a white or light background.
-
-### CSS
-
-    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
-    .GMP-attribution {
-
-    font-family: Roboto, Sans-Serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1rem;
-    letter-spacing: normal;
-    white-space: nowrap;
-    color: #5e5e5e;
-    }
-
-### Place ID and review ID
-
-The Google Maps data includes place ID and review ID. You might
-cache, store, and export the following response data:
-
-- `placeId`
-- `reviewId`
-
-The restrictions against caching in the Grounding with Google Maps Terms don't
-apply.
-
-### Prohibited activity and territory
-
-Grounding with Google Maps has additional restrictions for certain content and
-activities to maintain a safe and reliable platform. In addition to the usage
-restrictions in the [Terms](https://ai.google.dev/gemini-api/terms#grounding-with-google-maps):
-
-- You won't use Grounding with Google Maps for high risk activities including emergency response services.
-- You won't distribute or market your application that offers Grounding with Google Maps in a Prohibited Territory. For more information, see [Google Maps Platform Prohibited Territories](https://cloud.google.com/maps-platform/terms/maps-prohibited-territories). The list of Prohibited Territories may be updated from time to time.
+For more information about some of our Google Maps data providers and their
+license terms, see the [Google Maps and Google Earth legal notices](https://www.google.com/help/legalnotices_maps/).
 
 ## Best practices
 
-- **Provide user location:** For the most relevant and personalized responses, always include the `user_location` (latitude and longitude) in your `googleMapsGrounding` configuration when the user's location is known.
+- **Provide user location:** For the most relevant and personalized responses, always include the `latitude` and `longitude` in your `google_maps` tool configuration when the user's location is known.
 - **Inform End-Users:** Clearly inform your end-users that Google Maps data is being used to answer their queries, especially when the tool is enabled.
-- **Monitor Latency:** For conversational applications, ensure that the P95 latency for grounded responses remains within acceptable thresholds to maintain a smooth user experience.
-- **Toggle Off When Not Needed:** Grounding with Google Maps is off by default. Only enable it (`"tools": [{"googleMaps": {}}]`) when a query has a clear geographical context, to optimize performance and cost.
+- **Toggle Off When Not Needed:** Grounding with Google Maps is off by default. Only enable it (`"tools": [{"type": "google_maps"}]`) when a query has a clear geographical context, to optimize performance and cost.
 
 ## Limitations
 
-- **Geographical Scope:** Grounding with Google Maps is globally available
-- **Model Support:** See the [Supported models](https://ai.google.dev/gemini-api/docs/maps-grounding#supported-models) section.
-- **Multimodal Inputs/Outputs:** Grounding with Google Maps does not currently support multimodal inputs or outputs beyond text.
+- Grounding with Google Maps currently only supports English language prompts and responses.
+- The tool may not be available in all regions.
+- Results may vary based on location accuracy and available Maps data.
+- **Geographical Scope:** Grounding with Google Maps is globally available.
 - **Default State:** The Grounding with Google Maps tool is off by default. You must explicitly enable it in your API requests.
 
 ## Pricing and rate limits
@@ -686,9 +412,6 @@ a prompt successfully returns at least one Google Maps grounded result (i.e.,
 results containing at least one Google Maps source). If multiple queries are
 sent to Google Maps from a single request, it counts as one request towards the
 rate limit.
-
-> [!NOTE]
-> **Note:** The quota for Grounding with Google Maps typically aligns with the underlying Gemini model rate limits.
 
 For detailed pricing information, see the [Gemini API pricing page](https://ai.google.dev/gemini-api/docs/pricing).
 
@@ -714,7 +437,5 @@ Maps) with custom tools (function calling). Learn more on the
 
 ## What's next
 
-- Try the [Grounding with Google Search in the Gemini API
-  Cookbook](https://colab.research.google.com/github/google-gemini/cookbook/blob/main/quickstarts/Search_Grounding.ipynb).
 - Learn about other [available tools](https://ai.google.dev/gemini-api/docs/tools).
 - To learn more about responsible AI best practices and Gemini API's safety filters, see [the Safety settings guide](https://ai.google.dev/gemini-api/docs/safety-settings).

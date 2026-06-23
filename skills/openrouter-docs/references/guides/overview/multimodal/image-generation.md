@@ -4,79 +4,123 @@
 
 # Image Generation
 
-OpenRouter supports image generation via the [Chat Completions](/docs/api/api-reference/chat/send-chat-completion-request) and [Responses](/docs/api/reference/responses/overview) endpoints. You can find the supported models, their capabilities, and pricing by filtering our [model list by image output](https://openrouter.ai/models?output_modalities=image).
+OpenRouter provides a dedicated Image API for generating images from text prompts (and optional reference images). The API covers model discovery, per-endpoint capabilities, and generation. You can browse available models and pricing on the [models page filtered by image output](https://openrouter.ai/models?output_modalities=image).
 
 ## Model Discovery
 
-You can find image generation models in several ways:
+### Via the Image Models API
 
-### Via the API
-
-Use the `output_modalities` query parameter on the [Models API](/docs/api-reference/models/get-models) to programmatically discover image generation models:
+The dedicated image models endpoint lists every available image model with its capabilities:
 
 ```bash
-# List only image generation models
-curl "https://openrouter.ai/api/v1/models?output_modalities=image"
-
-# List models that support both text and image output
-curl "https://openrouter.ai/api/v1/models?output_modalities=text,image"
+curl "https://openrouter.ai/api/v1/images/models"
 ```
 
-See [Models - Query Parameters](/docs/guides/overview/models#query-parameters) for the full list of supported modality values.
+Each entry in the `data` array includes:
+
+```json
+{
+  "data": [
+    {
+      "id": "bytedance-seed/seedream-4.5",
+      "name": "Seedream 4.5",
+      "description": "A text-to-image model.",
+      "created": 1692901234,
+      "architecture": {
+        "input_modalities": ["text", "image"],
+        "output_modalities": ["image"]
+      },
+      "supported_parameters": {
+        "resolution": { "type": "enum", "values": ["1K", "2K", "4K"] },
+        "seed": { "type": "boolean" }
+      },
+      "supports_streaming": false,
+      "endpoints": "/api/v1/images/models/bytedance-seed/seedream-4.5/endpoints"
+    }
+  ]
+}
+```
+
+| Field                  | Description                                                                                                                                   |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`                   | Model slug to use in generation requests                                                                                                      |
+| `architecture`         | Input and output modalities the model accepts                                                                                                 |
+| `supported_parameters` | Union of capabilities across all endpoints. Each key is a request field name; the value is a [capability descriptor](#capability-descriptors) |
+| `supports_streaming`   | Whether any endpoint supports native SSE streaming (`stream: true`)                                                                           |
+| `endpoints`            | URL to the full per-endpoint records for this model                                                                                           |
+
+### Per-Endpoint Records
+
+Each model may be served by multiple providers. To see the definitive capabilities, pricing, and passthrough options per endpoint:
+
+```bash
+curl "https://openrouter.ai/api/v1/images/models/bytedance-seed/seedream-4.5/endpoints"
+```
+
+```json
+{
+  "id": "bytedance-seed/seedream-4.5",
+  "endpoints": [
+    {
+      "provider_name": "Bytedance",
+      "provider_slug": "bytedance",
+      "provider_tag": "bytedance",
+      "supported_parameters": {
+        "resolution": { "type": "enum", "values": ["1K", "2K", "4K"] },
+        "seed": { "type": "boolean" }
+      },
+      "allowed_passthrough_parameters": [],
+      "supports_streaming": false,
+      "pricing": [
+        { "billable": "output_image", "unit": "image", "cost_usd": 0.05 }
+      ]
+    }
+  ]
+}
+```
+
+| Field                            | Description                                                                                                                                                                                                                                                        |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `provider_slug`                  | Use in `provider.options[slug]` to pass provider-specific parameters                                                                                                                                                                                               |
+| `provider_tag`                   | Use to pin requests to a specific provider. `null` when provider-level routing is unavailable                                                                                                                                                                      |
+| `supported_parameters`           | The definitive set of parameters *this* endpoint accepts (a subset of the model-level union)                                                                                                                                                                       |
+| `allowed_passthrough_parameters` | Provider-specific keys accepted under `provider.options[provider_slug]`                                                                                                                                                                                            |
+| `supports_streaming`             | Whether *this* endpoint supports native SSE streaming                                                                                                                                                                                                              |
+| `pricing`                        | Billable pricing lines for this endpoint. Each entry has `billable` (e.g. `output_image`, `input_image`, `input_reference`), `unit` (`image`, `megapixel`, or `token`), `cost_usd`, and an optional `variant` tier (e.g. `2k`, `4k` for resolution-tiered pricing) |
+
+### Capability Descriptors
+
+The `supported_parameters` map uses typed descriptors to describe what each request field accepts:
+
+| Type      | Shape                                          | Meaning                                      |
+| --------- | ---------------------------------------------- | -------------------------------------------- |
+| `enum`    | `{ type: "enum", values: ["1K", "2K", "4K"] }` | Discrete allowlist of accepted string values |
+| `range`   | `{ type: "range", min: 0, max: 100 }`          | Any integer in `[min, max]` is valid         |
+| `boolean` | `{ type: "boolean" }`                          | Supported (present) or unsupported (absent)  |
+
+An absent key means the parameter is unsupported by that endpoint.
+
+### Via the Models API
+
+You can also discover image models through the general [Models API](/docs/api-reference/models/get-models):
+
+```bash
+curl "https://openrouter.ai/api/v1/models?output_modalities=image"
+```
 
 ### On the Models Page
 
-Visit the [Models page](/models) and filter by output modalities to find models capable of image generation. Look for models that list `"image"` in their output modalities.
-
-### In the Chatroom
-
-When using the [Chatroom](/chat), click the **Image** button to automatically filter and select models with image generation capabilities. If no image-capable model is active, you'll be prompted to add one.
+Visit the [Models page](/models) and filter by output modalities to find models with image generation capabilities.
 
 ## API Usage
 
-To generate images, send a request to the `/api/v1/chat/completions` endpoint with the `modalities` parameter. The value depends on the model's capabilities:
+Send a `POST` request to `/api/v1/images` with the model and prompt:
 
-* **Models that output both text and images** (e.g., Gemini): Use `modalities: ["image", "text"]`
-* **Models that only output images** (e.g., Sourceful, Flux): Use `modalities: ["image"]`
-
-### Basic Image Generation
-
-```typescript title="TypeScript SDK"
-import { OpenRouter } from '@openrouter/sdk';
-
-const openRouter = new OpenRouter({
-  apiKey: '{{API_KEY_REF}}',
-});
-
-const result = await openRouter.chat.send({
-  model: '{{MODEL}}',
-  messages: [
-    {
-      role: 'user',
-      content: 'Generate a beautiful sunset over mountains',
-    },
-  ],
-  modalities: ['image', 'text'],
-  stream: false,
-});
-
-// The generated image will be in the assistant message
-if (result.choices) {
-  const message = result.choices[0].message;
-  if (message.images) {
-    message.images.forEach((image, index) => {
-      const imageUrl = image.imageUrl.url; // Base64 data URL
-      console.log(`Generated image ${index + 1}: ${imageUrl.substring(0, 50)}...`);
-    });
-  }
-}
-```
-
-```python
+```python title="Python (requests)"
 import requests
 import json
 
-url = "https://openrouter.ai/api/v1/chat/completions"
+url = "https://openrouter.ai/api/v1/images"
 headers = {
     "Authorization": f"Bearer {API_KEY_REF}",
     "Content-Type": "application/json"
@@ -84,29 +128,19 @@ headers = {
 
 payload = {
     "model": "{{MODEL}}",
-    "messages": [
-        {
-            "role": "user",
-            "content": "Generate a beautiful sunset over mountains"
-        }
-    ],
-    "modalities": ["image", "text"]
+    "prompt": "a red panda astronaut floating in space, studio lighting"
 }
 
 response = requests.post(url, headers=headers, json=payload)
 result = response.json()
 
-# The generated image will be in the assistant message
-if result.get("choices"):
-    message = result["choices"][0]["message"]
-    if message.get("images"):
-        for image in message["images"]:
-            image_url = image["image_url"]["url"]  # Base64 data URL
-            print(f"Generated image: {image_url[:50]}...")
+for image in result["data"]:
+    # image["b64_json"] contains the base64-encoded image
+    print(f"Generated image ({len(image['b64_json'])} chars)")
 ```
 
 ```typescript title="TypeScript (fetch)"
-const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+const response = await fetch('https://openrouter.ai/api/v1/images', {
   method: 'POST',
   headers: {
     Authorization: `Bearer ${API_KEY_REF}`,
@@ -114,485 +148,213 @@ const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
   },
   body: JSON.stringify({
     model: '{{MODEL}}',
-    messages: [
-      {
-        role: 'user',
-        content: 'Generate a beautiful sunset over mountains',
-      },
-    ],
-    modalities: ['image', 'text'],
+    prompt: 'a red panda astronaut floating in space, studio lighting',
   }),
 });
 
 const result = await response.json();
 
-// The generated image will be in the assistant message
-if (result.choices) {
-  const message = result.choices[0].message;
-  if (message.images) {
-    message.images.forEach((image, index) => {
-      const imageUrl = image.image_url.url; // Base64 data URL
-      console.log(`Generated image ${index + 1}: ${imageUrl.substring(0, 50)}...`);
-    });
-  }
+for (const image of result.data) {
+  // image.b64_json contains the base64-encoded image
+  console.log(`Generated image (${image.b64_json.length} chars)`);
 }
 ```
 
-### Image Configuration Options
-
-Some image generation models support additional configuration through the `image_config` parameter. The shared options below — aspect ratio and image size — work across many image models. Parameters that are specific to a single provider are grouped into dedicated [Recraft](#recraft-image-options) and [Sourceful](#sourceful-image-options) sections further down.
-
-#### Aspect Ratio
-
-Set `image_config.aspect_ratio` to request specific aspect ratios for generated images.
-
-**Supported aspect ratios:**
-
-* `1:1` → 1024×1024 (default)
-* `2:3` → 832×1248
-* `3:2` → 1248×832
-* `3:4` → 864×1184
-* `4:3` → 1184×864
-* `4:5` → 896×1152
-* `5:4` → 1152×896
-* `9:16` → 768×1344
-* `16:9` → 1344×768
-* `21:9` → 1536×672
-
-**Azure MAI Image aspect ratios** (supported by [`microsoft/mai-image-2.5`](/models/microsoft/mai-image-2.5)):
-
-* `1:1` → 1024×1024 (default)
-* `4:3` → 1024×768
-* `3:4` → 768×1024
-* `16:9` → 1365×768
-* `9:16` → 768×1365
-* `3:2` → 1152×768
-* `2:3` → 768×1152
-
-**Extended aspect ratios** (supported by [`google/gemini-3.1-flash-image-preview`](/models/google/gemini-3.1-flash-image-preview) only):
-
-* `1:4` → Tall, narrow format ideal for scrolling carousels and vertical UI elements
-* `4:1` → Wide, short format for hero banners and horizontal layouts
-* `1:8` → Extra-tall format for notification headers and narrow vertical spaces
-* `8:1` → Extra-wide format for wide-format banners and panoramic layouts
-
-#### Image Size
-
-Set `image_config.image_size` to control the resolution of generated images.
-
-**Supported sizes:**
-
-* `1K` → Standard resolution (default)
-* `2K` → Higher resolution
-* `4K` → Highest resolution
-* `0.5K` → Lower resolution, optimized for efficiency (supported by [`google/gemini-3.1-flash-image-preview`](/models/google/gemini-3.1-flash-image-preview) only)
-
-You can combine both `aspect_ratio` and `image_size` in the same request:
-
-```python
-import requests
-import json
-
-url = "https://openrouter.ai/api/v1/chat/completions"
-headers = {
-    "Authorization": f"Bearer {API_KEY_REF}",
-    "Content-Type": "application/json"
-}
-
-payload = {
+```bash title="cURL"
+curl -X POST "https://openrouter.ai/api/v1/images" \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
     "model": "{{MODEL}}",
-    "messages": [
-        {
-            "role": "user",
-            "content": "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme"
-        }
-    ],
-    "modalities": ["image", "text"],
-    "image_config": {
-        "aspect_ratio": "16:9",
-        "image_size": "4K"
+    "prompt": "a red panda astronaut floating in space, studio lighting"
+  }'
+```
+
+### Response Format
+
+```json
+{
+  "created": 1748372400,
+  "data": [
+    {
+      "b64_json": "<base64-encoded-image>"
     }
-}
-
-response = requests.post(url, headers=headers, json=payload)
-result = response.json()
-
-if result.get("choices"):
-    message = result["choices"][0]["message"]
-    if message.get("images"):
-        for image in message["images"]:
-            image_url = image["image_url"]["url"]
-            print(f"Generated image: {image_url[:50]}...")
-```
-
-```typescript
-const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-  method: 'POST',
-  headers: {
-    Authorization: `Bearer ${API_KEY_REF}`,
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: '{{MODEL}}',
-    messages: [
-      {
-        role: 'user',
-        content: 'Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme',
-      },
-    ],
-    modalities: ['image', 'text'],
-    image_config: {
-      aspect_ratio: '16:9',
-      image_size: '4K',
-    },
-  }),
-});
-
-const result = await response.json();
-
-if (result.choices) {
-  const message = result.choices[0].message;
-  if (message.images) {
-    message.images.forEach((image, index) => {
-      const imageUrl = image.image_url.url;
-      console.log(`Generated image ${index + 1}: ${imageUrl.substring(0, 50)}...`);
-    });
+  ],
+  "usage": {
+    "prompt_tokens": 0,
+    "completion_tokens": 4175,
+    "total_tokens": 4175,
+    "cost": 0.04
   }
 }
 ```
 
-### Recraft Image Options
+Images are returned as base64-encoded bytes. The `usage` field reports token counts and cost when available.
 
-The parameters in this section are supported only by [Recraft](/models?q=Recraft) models. Where support is limited to a specific Recraft version (for example, V3 but not V4), that is noted on the parameter.
+## Image Configuration Options
 
-#### Strength
+### Resolution and Aspect Ratio
 
-Set `image_config.strength` to control how much the output image differs from the input image during image-to-image generation. This parameter only applies when input images are provided in `messages`. Supported by all Recraft models (`recraft/recraft-v3`, `recraft/recraft-v4`, and `recraft/recraft-v4-pro`).
-
-* **Range**: `0.0` to `1.0`
-* **Default**: `0.2`
-* Lower values produce outputs closer to the input image; higher values allow more creative deviation.
-
-**Example:**
+Control output dimensions with `resolution`, `aspect_ratio`, or the convenience `size` shorthand:
 
 ```json
 {
-  "image_config": {
-    "strength": 0.7
-  }
+  "model": "bytedance-seed/seedream-4.5",
+  "prompt": "a landscape photo",
+  "resolution": "2K",
+  "aspect_ratio": "16:9"
 }
 ```
 
-#### Text Layout (Recraft V3 only)
+* `resolution` — normalized tier (`512`, `1K`, `2K`, `4K`). Concrete pixel dimensions are derived per-provider.
+* `aspect_ratio` — normalized ratio. Pass `auto` to let the provider choose. Common values include `1:1`, `16:9`, `9:16`, `4:3`, `3:4`, `3:2`, `2:3`, `4:5`, `5:4`, and extended ratios like `1:2`, `2:1`, `1:4`, `4:1`, `1:8`, `8:1`, `9:21`, `21:9`. Providers clamp to their supported subset — check the model's `supported_parameters` for accepted values.
+* `size` — convenience shorthand. Pass a tier (`"2K"`) or explicit pixels (`"2048x2048"`) and it gets normalized for the provider. Interchangeable with `resolution` + `aspect_ratio`; conflicting values are rejected.
 
-Use `image_config.text_layout` to place text at specific positions on the generated image. Each entry specifies the text to render and a bounding box defined by four corner points in normalized coordinates (0 to 1). This parameter is only supported by Recraft V3 (`recraft/recraft-v3`) for both text-to-image and image-to-image requests. Recraft V4 and V4 Pro do not support `text_layout`.
+Check the model's `supported_parameters` to see which values each endpoint accepts.
 
-Each text layout entry is an object with:
-
-* `text` (required): The text string to render
-* `bbox` (required): Array of 4 `[x, y]` coordinate pairs defining the bounding box corners (top-left, top-right, bottom-right, bottom-left), with values from 0 to 1
-
-**Example:**
+### Quality and Output Format
 
 ```json
 {
-  "image_config": {
-    "text_layout": [
-      {
-        "text": "Hello",
-        "bbox": [[0.3, 0.45], [0.6, 0.45], [0.6, 0.55], [0.3, 0.55]]
-      },
-      {
-        "text": "World",
-        "bbox": [[0.35, 0.6], [0.65, 0.6], [0.65, 0.7], [0.35, 0.7]]
+  "model": "openai/gpt-image-1",
+  "prompt": "a product photo",
+  "quality": "high",
+  "output_format": "png",
+  "background": "transparent"
+}
+```
+
+* `quality` — `auto`, `low`, `medium`, or `high`. Providers without a quality knob ignore this.
+* `output_format` — `png`, `jpeg`, or `webp`.
+* `background` — `auto`, `transparent`, or `opaque`. `transparent` requires an alpha-capable format (png or webp).
+* `output_compression` — 0–100 for webp/jpeg. Ignored for png.
+
+### Multiple Images
+
+Request up to 10 images per call with `n`:
+
+```json
+{
+  "model": "openai/gpt-image-1",
+  "prompt": "a cute cat",
+  "n": 4
+}
+```
+
+Not all providers support `n > 1`. Check the model's `supported_parameters` for availability.
+
+### Image-to-Image (Reference Images)
+
+Pass reference images to guide generation via `input_references`:
+
+```json
+{
+  "model": "openai/gpt-image-1",
+  "prompt": "make this scene look like a watercolor painting",
+  "input_references": [
+    {
+      "type": "image_url",
+      "image_url": {
+        "url": "https://example.com/photo.jpg"
       }
-    ]
-  }
+    }
+  ]
 }
 ```
 
-#### Style (Recraft V3 only)
+Reference images can be HTTP(S) URLs or base64 data URLs. The number of references accepted varies by provider.
 
-Use `image_config.style` to apply a specific artistic style to the generated image. This parameter is only supported by Recraft V3 (`recraft/recraft-v3`). Recraft V4 and V4 Pro do not support styles.
+### Provider-Specific Options
 
-See the [full list of available styles](https://www.recraft.ai/docs/api-reference/styles#list-of-styles) in Recraft's documentation. Note that vector styles are not supported.
-
-**Example:**
+Pass provider-specific parameters through `provider.options`, keyed by the provider slug from the endpoints API:
 
 ```json
 {
-  "image_config": {
-    "style": "Photorealism"
-  }
-}
-```
-
-#### RGB Colors
-
-Use `image_config.rgb_colors` to specify a color palette that influences the generated image. Each color is a `[r, g, b]` array of three integers (0 to 255). Supported by all Recraft models (`recraft/recraft-v3`, `recraft/recraft-v4`, and `recraft/recraft-v4-pro`) for both text-to-image and image-to-image requests.
-
-**Example:**
-
-```json
-{
-  "image_config": {
-    "rgb_colors": [
-      [255, 0, 0],
-      [0, 128, 0]
-    ]
-  }
-}
-```
-
-#### Background RGB Color
-
-Use `image_config.background_rgb_color` to set a specific background color for the generated image. The value is a `[r, g, b]` array of three integers (0 to 255). Supported by all Recraft models (`recraft/recraft-v3`, `recraft/recraft-v4`, and `recraft/recraft-v4-pro`) for both text-to-image and image-to-image requests.
-
-**Example:**
-
-```json
-{
-  "image_config": {
-    "background_rgb_color": [0, 0, 255]
-  }
-}
-```
-
-You can combine `rgb_colors` and `background_rgb_color` in the same request:
-
-```json
-{
-  "image_config": {
-    "rgb_colors": [[255, 0, 0]],
-    "background_rgb_color": [255, 255, 255]
-  }
-}
-```
-
-### Sourceful Image Options
-
-The parameters in this section are supported only by [Sourceful](/models?q=Sourceful) models. Each parameter notes the Sourceful version (V2 or V2.5) that supports it.
-
-#### Font Inputs (Riverflow V2 and newer)
-
-Use `image_config.font_inputs` to render custom text with specific fonts in generated images. The text you want to render must also be included in your prompt for best results. Supported by Sourceful Riverflow V2 and newer — `sourceful/riverflow-v2-fast`, `sourceful/riverflow-v2-pro`, `sourceful/riverflow-v2.5-fast`, and `sourceful/riverflow-v2.5-pro`.
-
-Each font input is an object with:
-
-* `font_url` (required): URL to the font file
-* `text` (required): Text to render with the font
-
-**Limits:**
-
-* Maximum 2 font inputs per request
-* Additional cost: \$0.03 per font input
-
-**Example:**
-
-```json
-{
-  "image_config": {
-    "font_inputs": [
-      {
-        "font_url": "https://example.com/fonts/custom-font.ttf",
-        "text": "Hello World"
+  "model": "black-forest-labs/flux.2-pro",
+  "prompt": "a dramatic portrait",
+  "provider": {
+    "options": {
+      "black-forest-labs": {
+        "steps": 40,
+        "guidance": 3
       }
-    ]
+    }
   }
 }
 ```
 
-**Tips for best results:**
+The `allowed_passthrough_parameters` field in each endpoint record lists which keys are accepted.
 
-* Include the text in your prompt along with details about font name, color, size, and position
-* The `text` parameter should match exactly what's in your prompt - avoid extra wording or quotation marks
-* Use line breaks or double spaces to separate headlines and sub-headers when using the same font
-* Works best with short, clear headlines and sub-headlines
+## Streaming Image Generation
 
-#### Super Resolution References (Riverflow V2 only)
-
-Use `image_config.super_resolution_references` to enhance low-quality elements in your input image using high-quality reference images. The output image will match the size of your input image, so use larger input images for better results. Supported by Sourceful V2 models (`sourceful/riverflow-v2-fast` and `sourceful/riverflow-v2-pro`) when using image-to-image generation (i.e., when input images are provided in `messages`).
-
-**Limits:**
-
-* Maximum 4 reference URLs per request
-* Only works with image-to-image requests (ignored when there are no images in `messages`)
-* Additional cost: \$0.20 per reference
-
-**Example:**
+Models that support native SSE streaming (`supports_streaming: true` in the discovery API) can return partial images as they're generated:
 
 ```json
 {
-  "image_config": {
-    "super_resolution_references": [
-      "https://example.com/reference1.jpg",
-      "https://example.com/reference2.jpg"
-    ]
-  }
+  "model": "openai/gpt-image-1",
+  "prompt": "a detailed landscape",
+  "stream": true
 }
 ```
 
-**Tips for best results:**
+The response is an SSE stream with three event types:
 
-* Supply an input image where the elements to enhance are present but low quality
-* Use larger input images for better output quality (output matches input size)
-* Use high-quality reference images that show what you want the enhanced elements to look like
+**Partial image** — emitted as each partial render becomes available:
 
-#### Scoring Prompt (Riverflow V2.5 only)
-
-Use `image_config.scoring_prompt` to give the model free-form guidance it uses to evaluate and refine its own output during generation. Supported by Sourceful V2.5 models (`sourceful/riverflow-v2.5-fast` and `sourceful/riverflow-v2.5-pro`).
-
-**Example:**
-
-```json
-{
-  "image_config": {
-    "scoring_prompt": "Prefer realistic materials, crisp product edges, and even studio lighting."
-  }
-}
+```
+data: {"type":"image_generation.partial_image","partial_image_index":0,"b64_json":"<base64>"}
 ```
 
-#### Scoring Rubric (Riverflow V2.5 only)
+**Completed** — emitted when the final image is ready:
 
-Use `image_config.scoring_rubric` to provide a structured set of weighted dimensions the model scores its output against. This is the structured complement to `scoring_prompt` — the two are independent and can be provided together in the same request (rubric for weighted dimension scoring, prompt for additional free-form guidance). Supported by Sourceful V2.5 models (`sourceful/riverflow-v2.5-fast` and `sourceful/riverflow-v2.5-pro`).
-
-Each rubric entry is an object with:
-
-* `key` (required): unique machine-readable identifier for the dimension
-* `label` (required): human-readable name
-* `description` (required): what this dimension evaluates
-* `weight` (required): relative importance as a positive number
-* `passing_score` (optional): minimum acceptable score
-* `score_guidance` (optional): array of `{ "score": number, "description": string }` anchors
-
-**Limits:**
-
-* 1 to 8 dimensions per request
-
-**Example:**
-
-```json
-{
-  "image_config": {
-    "scoring_rubric": [
-      {
-        "key": "lighting",
-        "label": "Lighting quality",
-        "description": "Even, professional studio lighting with no blown highlights.",
-        "weight": 2,
-        "passing_score": 7,
-        "score_guidance": [
-          { "score": 10, "description": "Flawless, even studio lighting." },
-          { "score": 5, "description": "Acceptable but uneven lighting." }
-        ]
-      },
-      {
-        "key": "edges",
-        "label": "Edge sharpness",
-        "description": "Crisp, clean product edges without halos.",
-        "weight": 1
-      }
-    ]
-  }
-}
+```
+data: {"type":"image_generation.completed","b64_json":"<base64>","created":1748372400,"usage":{"prompt_tokens":16,"completion_tokens":272,"total_tokens":288,"cost":0.011}}
 ```
 
-#### Background Mode and Color (Riverflow V2.5 only)
+The `usage` object in the completed event includes `cost` (USD), matching the buffered response shape.
 
-Use `image_config.background_mode` to control how the generated image's background is handled, and `image_config.background_hex_color` to set the fill color for solid backgrounds. Supported by Sourceful V2.5 models (`sourceful/riverflow-v2.5-fast` and `sourceful/riverflow-v2.5-pro`).
+**Error** — emitted if generation fails mid-stream:
 
-* `background_mode`: one of `original` (default — keep the generated background), `transparent` (remove the background), or `solid` (composite onto a flat color).
-* `background_hex_color`: a `#RRGGBB` hex string. Required when `background_mode` is `solid`.
-
-**Behavior:**
-
-* Passing only `background_hex_color` (without `background_mode`) is treated as `solid` with that color.
-* `background_hex_color` is validated but then discarded for `original` and `transparent` modes — a malformed hex string always returns a 400 regardless of mode.
-
-**Example (solid color):**
-
-```json
-{
-  "image_config": {
-    "background_mode": "solid",
-    "background_hex_color": "#f6f1e8"
-  }
-}
+```
+data: {"type":"error","error":{"message":"Generation failed","code":"server_error"}}
 ```
 
-**Example (transparent):**
+The stream terminates with `data: [DONE]`.
 
-```json
-{
-  "image_config": {
-    "background_mode": "transparent"
-  }
-}
-```
-
-Recraft uses `background_rgb_color` (an `[r, g, b]` array) to set a solid background color, whereas Sourceful V2.5 uses `background_mode` together with `background_hex_color`.
-
-### Streaming Image Generation
-
-Image generation also works with streaming responses:
-
-```python
+```python title="Python (requests)"
 import requests
-import json
 
-url = "https://openrouter.ai/api/v1/chat/completions"
+url = "https://openrouter.ai/api/v1/images"
 headers = {
     "Authorization": f"Bearer {API_KEY_REF}",
     "Content-Type": "application/json"
 }
 
-payload = {
-    "model": "{{MODEL}}",
-    "messages": [
-        {
-            "role": "user",
-            "content": "Create an image of a futuristic city"
-        }
-    ],
-    "modalities": ["image", "text"],
+response = requests.post(url, headers=headers, json={
+    "model": "openai/gpt-image-1",
+    "prompt": "a detailed landscape painting",
     "stream": True
-}
-
-response = requests.post(url, headers=headers, json=payload, stream=True)
+}, stream=True)
 
 for line in response.iter_lines():
     if line:
-        line = line.decode('utf-8')
-        if line.startswith('data: '):
-            data = line[6:]
-            if data != '[DONE]':
-                try:
-                    chunk = json.loads(data)
-                    if chunk.get("choices"):
-                        delta = chunk["choices"][0].get("delta", {})
-                        if delta.get("images"):
-                            for image in delta["images"]:
-                                print(f"Generated image: {image['image_url']['url'][:50]}...")
-                except json.JSONDecodeError:
-                    continue
+        decoded = line.decode("utf-8")
+        if decoded.startswith("data: ") and decoded != "data: [DONE]":
+            import json
+            event = json.loads(decoded[6:])
+            print(f"Event: {event['type']}")
 ```
 
-```typescript
-const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+```typescript title="TypeScript (fetch)"
+const response = await fetch('https://openrouter.ai/api/v1/images', {
   method: 'POST',
   headers: {
     Authorization: `Bearer ${API_KEY_REF}`,
     'Content-Type': 'application/json',
   },
   body: JSON.stringify({
-    model: '{{MODEL}}',
-    messages: [
-      {
-        role: 'user',
-        content: 'Create an image of a futuristic city',
-      },
-    ],
-    modalities: ['image', 'text'],
+    model: 'openai/gpt-image-1',
+    prompt: 'a detailed landscape painting',
     stream: true,
   }),
 });
@@ -605,94 +367,43 @@ while (true) {
   if (done) break;
 
   const chunk = decoder.decode(value);
-  const lines = chunk.split('\n');
-
-  for (const line of lines) {
-    if (line.startsWith('data: ')) {
-      const data = line.slice(6);
-      if (data !== '[DONE]') {
-        try {
-          const parsed = JSON.parse(data);
-          if (parsed.choices) {
-            const delta = parsed.choices[0].delta;
-            if (delta?.images) {
-              delta.images.forEach((image, index) => {
-                console.log(`Generated image ${index + 1}: ${image.image_url.url.substring(0, 50)}...`);
-              });
-            }
-          }
-        } catch (e) {
-          // Skip invalid JSON
-        }
-      }
+  for (const line of chunk.split('\n')) {
+    if (line.startsWith('data: ') && line !== 'data: [DONE]') {
+      const event = JSON.parse(line.slice(6));
+      console.log(`Event: ${event.type}`);
     }
   }
 }
 ```
 
-## Response Format
-
-When generating images, the assistant message includes an `images` field containing the generated images:
-
-```json
-{
-  "choices": [
-    {
-      "message": {
-        "role": "assistant",
-        "content": "I've generated a beautiful sunset image for you.",
-        "images": [
-          {
-            "type": "image_url",
-            "image_url": {
-              "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..."
-            }
-          }
-        ]
-      }
-    }
-  ]
-}
+```bash title="cURL"
+curl -N -X POST "https://openrouter.ai/api/v1/images" \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "openai/gpt-image-1",
+    "prompt": "a detailed landscape painting",
+    "stream": true
+  }'
 ```
 
-### Image Format
+## Request Parameters
 
-* **Format**: Images are returned as base64-encoded data URLs
-* **Types**: Typically PNG format (`data:image/png;base64,`)
-* **Multiple Images**: Some models can generate multiple images in a single response
-* **Size**: Image dimensions vary by model capabilities
+| Parameter            | Type    | Required | Description                                                            |
+| -------------------- | ------- | -------- | ---------------------------------------------------------------------- |
+| `model`              | string  | Yes      | Model slug (e.g. `bytedance-seed/seedream-4.5`)                        |
+| `prompt`             | string  | Yes      | Text description of the desired image                                  |
+| `n`                  | integer | No       | Number of images to generate (1–10)                                    |
+| `resolution`         | string  | No       | Resolution tier (`512`, `1K`, `2K`, `4K`)                              |
+| `aspect_ratio`       | string  | No       | Aspect ratio (`1:1`, `16:9`, `9:16`, `4:3`, `3:4`, `1:4`, `4:1`, etc.) |
+| `size`               | string  | No       | Convenience shorthand — a tier or explicit pixels (`"2048x2048"`)      |
+| `quality`            | string  | No       | `auto`, `low`, `medium`, or `high`                                     |
+| `output_format`      | string  | No       | `png`, `jpeg`, or `webp`                                               |
+| `background`         | string  | No       | `auto`, `transparent`, or `opaque`                                     |
+| `output_compression` | integer | No       | Compression level (0–100) for webp/jpeg                                |
+| `seed`               | integer | No       | Seed for deterministic generation (where supported)                    |
+| `stream`             | boolean | No       | Stream partial images via SSE                                          |
+| `input_references`   | array   | No       | Reference images for image-to-image generation                         |
+| `provider.options`   | object  | No       | Provider-specific parameters keyed by provider slug                    |
 
-## Model Compatibility
-
-Not all models support image generation. To use this feature:
-
-1. **Check Output Modalities**: Ensure the model has `"image"` in its `output_modalities`
-2. **Set Modalities Parameter**: Use `["image", "text"]` for models that output both, or `["image"]` for image-only models
-3. **Use Compatible Models**: Examples include:
-   * `google/gemini-3.1-flash-image-preview` (supports extended aspect ratios and 0.5K resolution)
-   * `google/gemini-2.5-flash-image`
-   * `black-forest-labs/flux.2-pro`
-   * `black-forest-labs/flux.2-flex`
-   * `sourceful/riverflow-v2-standard-preview`
-   * Other models with image generation capabilities
-
-## Best Practices
-
-* **Clear Prompts**: Provide detailed descriptions for better image quality
-* **Model Selection**: Choose models specifically designed for image generation
-* **Error Handling**: Check for the `images` field in responses before processing
-* **Rate Limits**: Image generation may have different rate limits than text generation
-* **Storage**: Consider how you'll handle and store the base64 image data
-
-## Troubleshooting
-
-**No images in response?**
-
-* Verify the model supports image generation (`output_modalities` includes `"image"`)
-* Ensure you've set the `modalities` parameter correctly: `["image", "text"]` for models that output both, or `["image"]` for image-only models
-* Check that your prompt is requesting image generation
-
-**Model not found?**
-
-* Use the [Models page](/models) to find available image generation models
-* Filter by output modalities to see compatible models
+Use the [Image Models API](#via-the-image-models-api) to check which parameters each model and endpoint supports.

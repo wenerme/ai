@@ -1,722 +1,399 @@
-# Gemini thinking
+> [!NOTE]
+> **Note:** This version of the page covers the **Interactions API** . You can use the toggle on this page to switch to the [generateContent API version of this page](https://ai.google.dev/gemini-api/docs/generate-content/thinking).
 
-The [Gemini 3 and 2.5 series models](https://ai.google.dev/gemini-api/docs/models) use an internal
+The [Gemini 3 and 2.5 series models](https://ai.google.dev/gemini-api/docs/models) use a
 "thinking process" that significantly improves their reasoning and multi-step
 planning abilities, making them highly effective for complex tasks such as
 coding, advanced mathematics, and data analysis.
 
-This guide shows you how to work with Gemini's thinking capabilities using the
-Gemini API.
+When you use a thinking model, Gemini reasons internally before responding. The Interactions API surfaces this reasoning via `thought` steps, dedicated steps that appear chronologically alongside function calls, user inputs or model outputs in the `steps` array.
 
-## Generating content with thinking
+Every thought step contains two fields:
 
-Initiating a request with a thinking model is similar to any other content
-generation request. The key difference lies in specifying one of the
-[models with thinking support](https://ai.google.dev/gemini-api/docs/thinking#supported-models) in the `model` field, as
-demonstrated in the following [text generation](https://ai.google.dev/gemini-api/docs/text-generation#text-input) example:
+| Field | Required | Description |
+|---|---|---|
+| `signature` | ✅ Yes | An encrypted representation of the model's internal reasoning state. Always present, even when the model performs minimal reasoning. |
+| `summary` | ❌ No | An array of content (text and/or images) summarizing the reasoning. May be empty depending on the [`thinking_summaries`](https://ai.google.dev/api/interactions-api) config, whether the model performed enough reasoning, or the content type (for example, image latents may not have text summaries). |
+
+> [!NOTE]
+> **Note:** The Interactions API handles thoughts and signatures differently than the `generateContent` API:  
+> - In the `generateContent` API, there are no dedicated thought blocks. Because of this, signatures are metadata that can be attached to any part, such as living inside `functionCall` parts or the final part of a response.  
+> - In the Interactions API, thoughts are a first-class representation as dedicated `thought` steps. Because of this signatures are limited exclusively to two known locations, `thought` steps, or built-in tool steps (like `google_search_call`/ `google_search_result`). They never appear on user inputs, model outputs, or standard function calls.
+
+## Interactions with thinking
+
+Initiating an interaction with a thinking model is similar to any other interaction request. Specify one of the [models with thinking support](https://ai.google.dev/gemini-api/docs/thinking#thinking-levels) in the `model` field:
 
 ### Python
 
     from google import genai
 
     client = genai.Client()
-    prompt = "Explain the concept of Occam's Razor and provide a simple, everyday example."
-    response = client.models.generate_content(
-        model="gemini-3.5-flash",
-        contents=prompt
-    )
 
-    print(response.text)
+    interaction = client.interactions.create(
+        model="gemini-3-flash-preview",
+        input="Explain the concept of Occam's Razor and provide a simple, everyday example."
+    )
+    print(interaction.output_text)
 
 ### JavaScript
 
     import { GoogleGenAI } from "@google/genai";
 
-    const ai = new GoogleGenAI({});
+    const client = new GoogleGenAI({});
 
-    async function main() {
-      const prompt = "Explain the concept of Occam's Razor and provide a simple, everyday example.";
+    const interaction = await client.interactions.create({
+        model: "gemini-3-flash-preview",
+        input: "Explain the concept of Occam's Razor and provide a simple, everyday example."
+    });
+    console.log(interaction.output_text);
 
-      const response = await ai.models.generateContent({
-        model: "gemini-3.5-flash",
-        contents: prompt,
-      });
+### REST
 
-      console.log(response.text);
-    }
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H 'Content-Type: application/json' \
+      -d '{
+        "model": "gemini-3-flash-preview",
+        "input": "Explain the concept of Occam'\''s Razor and provide a simple example."
+      }'
 
-    main();
+## Thought summaries
 
-### Go
+Thought summaries provide insights into the model's internal reasoning process.
+By default, only the final output is returned. You can enable thought summaries
+with `thinking_summaries`:
 
-    package main
+### Python
 
-    import (
-      "context"
-      "fmt"
-      "log"
-      "os"
-      "google.golang.org/genai"
+    from google import genai
+
+    client = genai.Client()
+
+    interaction = client.interactions.create(
+        model="gemini-3-flash-preview",
+        input="What is the sum of the first 50 prime numbers?",
+        generation_config={
+            "thinking_summaries": "auto"
+        }
     )
 
-    func main() {
-      ctx := context.Background()
-      client, err := genai.NewClient(ctx, nil)
-      if err != nil {
-          log.Fatal(err)
-      }
+    for step in interaction.steps:
+        if step.type == "thought":
+            print("Thought summary:")
+            if step.summary:
+                for content_block in step.summary:
+                    if content_block.type == "text":
+                        print(content_block.text)
+            print()
+        elif step.type == "model_output":
+            for content_block in step.content:
+                if content_block.type == "text":
+                    print("Answer:")
+                    print(content_block.text)
+                    print()
 
-      prompt := "Explain the concept of Occam's Razor and provide a simple, everyday example."
-      model := "gemini-3.5-flash"
+### JavaScript
 
-      resp, _ := client.Models.GenerateContent(ctx, model, genai.Text(prompt), nil)
+    import { GoogleGenAI } from "@google/genai";
 
-      fmt.Println(resp.Text())
+    const client = new GoogleGenAI({});
+
+    const interaction = await client.interactions.create({
+        model: "gemini-3-flash-preview",
+        input: "What is the sum of the first 50 prime numbers?",
+        generation_config: {
+            thinking_summaries: "auto"
+        }
+    });
+
+    for (const step of interaction.steps) {
+        if (step.type === "thought") {
+            console.log("Thought summary:");
+            if (step.summary) {
+                for (const contentBlock of step.summary) {
+                    if (contentBlock.type === "text") console.log(contentBlock.text);
+                }
+            }
+        } else if (step.type === "model_output") {
+            for (const contentBlock of step.content) {
+                if (contentBlock.type === "text") {
+                    console.log("Answer:");
+                    console.log(contentBlock.text);
+                }
+            }
+        }
     }
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
-     -H "x-goog-api-key: $GEMINI_API_KEY" \
-     -H 'Content-Type: application/json' \
-     -X POST \
-     -d '{
-       "contents": [
-         {
-           "parts": [
-             {
-               "text": "Explain the concept of Occam'\''s Razor and provide a simple, everyday example."
-             }
-           ]
-         }
-       ]
-     }'
-     ```
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H 'Content-Type: application/json' \
+      -d '{
+        "model": "gemini-3-flash-preview",
+        "input": "What is the sum of the first 50 prime numbers?",
+        "generation_config": {
+          "thinking_summaries": "auto"
+        }
+      }'
 
-## Thought summaries
+A thought block may contain **only a signature with no summary** in these cases:
 
-Thought summaries are summarized versions of the model's raw thoughts and offer
-insights into the model's internal reasoning process. Note that
-thinking levels and budgets apply to the model's raw thoughts and not to thought
-summaries.
+- Simple requests, where the model didn't reason enough to generate a summary
+- `thinking_summaries: "none"`, where summaries are explicitly disabled
+- Certain thought content types, such as images, may not have text summaries
 
-You can enable thought summaries by setting `includeThoughts` to `true` in your
-request configuration. You can then access the summary by iterating through the
-`response` parameter's `parts`, and checking the `thought` boolean.
+Your code should always handle thought blocks where `summary` is empty or absent.
 
-Here's an example demonstrating how to enable and retrieve thought summaries
-without streaming, which returns a single, final thought summary with the
-response:
+## Streaming with thinking
+
+Use streaming to receive incremental thought summaries during generation.
+Thought blocks are delivered using Server-Sent Events (SSE) with two distinct
+delta types:
+
+| Delta type | Contains | When sent |
+|---|---|---|
+| `thought_summary` | Text or image summary content | One or more deltas with incremental summary |
+| `thought_signature` | The cryptographic signature | the last delta before `step.stop` |
 
 ### Python
 
     from google import genai
-    from google.genai import types
-
-    client = genai.Client()
-    prompt = "What is the sum of the first 50 prime numbers?"
-    response = client.models.generate_content(
-      model="gemini-3.5-flash",
-      contents=prompt,
-      config=types.GenerateContentConfig(
-        thinking_config=types.ThinkingConfig(
-          include_thoughts=True
-        )
-      )
-    )
-
-    for part in response.candidates[0].content.parts:
-      if not part.text:
-        continue
-      if part.thought:
-        print("Thought summary:")
-        print(part.text)
-        print()
-      else:
-        print("Answer:")
-        print(part.text)
-        print()
-
-### JavaScript
-
-    import { GoogleGenAI } from "@google/genai";
-
-    const ai = new GoogleGenAI({});
-
-    async function main() {
-      const response = await ai.models.generateContent({
-        model: "gemini-3.5-flash",
-        contents: "What is the sum of the first 50 prime numbers?",
-        config: {
-          thinkingConfig: {
-            includeThoughts: true,
-          },
-        },
-      });
-
-      for (const part of response.candidates[0].content.parts) {
-        if (!part.text) {
-          continue;
-        }
-        else if (part.thought) {
-          console.log("Thoughts summary:");
-          console.log(part.text);
-        }
-        else {
-          console.log("Answer:");
-          console.log(part.text);
-        }
-      }
-    }
-
-    main();
-
-### Go
-
-    package main
-
-    import (
-      "context"
-      "fmt"
-      "google.golang.org/genai"
-      "os"
-    )
-
-    func main() {
-      ctx := context.Background()
-      client, err := genai.NewClient(ctx, nil)
-      if err != nil {
-          log.Fatal(err)
-      }
-
-      contents := genai.Text("What is the sum of the first 50 prime numbers?")
-      model := "gemini-3.5-flash"
-      resp, _ := client.Models.GenerateContent(ctx, model, contents, &genai.GenerateContentConfig{
-        ThinkingConfig: &genai.ThinkingConfig{
-          IncludeThoughts: true,
-        },
-      })
-
-      for _, part := range resp.Candidates[0].Content.Parts {
-        if part.Text != "" {
-          if part.Thought {
-            fmt.Println("Thoughts Summary:")
-            fmt.Println(part.Text)
-          } else {
-            fmt.Println("Answer:")
-            fmt.Println(part.Text)
-          }
-        }
-      }
-    }
-
-And here is an example using thinking with streaming, which returns rolling,
-incremental summaries during generation:
-
-### Python
-
-    from google import genai
-    from google.genai import types
 
     client = genai.Client()
 
     prompt = """
     Alice, Bob, and Carol each live in a different house on the same street: red, green, and blue.
-    The person who lives in the red house owns a cat.
+    Alice does not live in the red house.
     Bob does not live in the green house.
-    Carol owns a dog.
-    The green house is to the left of the red house.
-    Alice does not own a cat.
-    Who lives in each house, and what pet do they own?
+    Carol does not live in the red or green house.
+    Which house does each person live in?
     """
 
     thoughts = ""
     answer = ""
 
-    for chunk in client.models.generate_content_stream(
-        model="gemini-3.5-flash",
-        contents=prompt,
-        config=types.GenerateContentConfig(
-          thinking_config=types.ThinkingConfig(
-            include_thoughts=True
-          )
-        )
-    ):
-      for part in chunk.candidates[0].content.parts:
-        if not part.text:
-          continue
-        elif part.thought:
-          if not thoughts:
-            print("Thoughts summary:")
-          print(part.text)
-          thoughts += part.text
-        else:
-          if not answer:
-            print("Answer:")
-          print(part.text)
-          answer += part.text
+    stream = client.interactions.create(
+        model="gemini-3-flash-preview",
+        input=prompt,
+        generation_config={
+            "thinking_summaries": "auto"
+        },
+        stream=True
+    )
+
+    for event in stream:
+        if event.event_type == "step.delta":
+            if event.delta.type == "thought_summary":
+                if not thoughts:
+                    print("Thinking...")
+                summary_text = event.delta.content.text
+                print(f"[Thought] {summary_text}", end="")
+                thoughts += summary_text
+            elif event.delta.type == "text" and event.delta.text:
+                if not answer:
+                    print("\nAnswer:")
+                print(event.delta.text, end="")
+                answer += event.delta.text
 
 ### JavaScript
 
     import { GoogleGenAI } from "@google/genai";
 
-    const ai = new GoogleGenAI({});
+    const client = new GoogleGenAI({});
 
     const prompt = `Alice, Bob, and Carol each live in a different house on the same
-    street: red, green, and blue. The person who lives in the red house owns a cat.
-    Bob does not live in the green house. Carol owns a dog. The green house is to
-    the left of the red house. Alice does not own a cat. Who lives in each house,
-    and what pet do they own?`;
+    street: red, green, and blue. Alice does not live in the red house.
+    Bob does not live in the green house.
+    Carol does not live in the red or green house.
+    Which house does each person live in?`;
 
     let thoughts = "";
     let answer = "";
 
-    async function main() {
-      const response = await ai.models.generateContentStream({
-        model: "gemini-3.5-flash",
-        contents: prompt,
-        config: {
-          thinkingConfig: {
-            includeThoughts: true,
-          },
+    const stream = await client.interactions.create({
+        model: "gemini-3-flash-preview",
+        input: prompt,
+        generation_config: {
+            thinking_summaries: "auto"
         },
-      });
+        stream: true
+    });
 
-      for await (const chunk of response) {
-        for (const part of chunk.candidates[0].content.parts) {
-          if (!part.text) {
-            continue;
-          } else if (part.thought) {
-            if (!thoughts) {
-              console.log("Thoughts summary:");
+    for await (const event of stream) {
+        if (event.event_type === "step.delta") {
+            if (event.delta.type === "thought_summary") {
+                if (!thoughts) console.log("Thinking...");
+                const text = event.delta.content?.text || "";
+                process.stdout.write(`[Thought] ${text}`);
+                thoughts += text;
+            } else if (event.delta.type === "text" && event.delta.text) {
+                if (!answer) console.log("\nAnswer:");
+                process.stdout.write(event.delta.text);
+                answer += event.delta.text;
             }
-            console.log(part.text);
-            thoughts = thoughts + part.text;
-          } else {
-            if (!answer) {
-              console.log("Answer:");
-            }
-            console.log(part.text);
-            answer = answer + part.text;
-          }
         }
-      }
-    }
-
-    await main();
-
-### Go
-
-    package main
-
-    import (
-      "context"
-      "fmt"
-      "log"
-      "os"
-      "google.golang.org/genai"
-    )
-
-    const prompt = `
-    Alice, Bob, and Carol each live in a different house on the same street: red, green, and blue.
-    The person who lives in the red house owns a cat.
-    Bob does not live in the green house.
-    Carol owns a dog.
-    The green house is to the left of the red house.
-    Alice does not own a cat.
-    Who lives in each house, and what pet do they own?
-    `
-
-    func main() {
-      ctx := context.Background()
-      client, err := genai.NewClient(ctx, nil)
-      if err != nil {
-          log.Fatal(err)
-      }
-
-      contents := genai.Text(prompt)
-      model := "gemini-3.5-flash"
-
-      resp := client.Models.GenerateContentStream(ctx, model, contents, &genai.GenerateContentConfig{
-        ThinkingConfig: &genai.ThinkingConfig{
-          IncludeThoughts: true,
-        },
-      })
-
-      for chunk := range resp {
-        for _, part := range chunk.Candidates[0].Content.Parts {
-          if len(part.Text) == 0 {
-            continue
-          }
-
-          if part.Thought {
-            fmt.Printf("Thought: %s\n", part.Text)
-          } else {
-            fmt.Printf("Answer: %s\n", part.Text)
-          }
-        }
-      }
-    }
-
-## Controlling thinking
-
-Gemini models engage in dynamic thinking by default, automatically adjusting the
-amount of reasoning effort based on the complexity of the user's request.
-However, if you have specific latency constraints or require the model to engage
-in deeper reasoning than usual, you can optionally use parameters to control
-thinking behavior.
-
-### Thinking levels (Gemini 3)
-
-The `thinkingLevel` parameter, recommended for Gemini 3 models and onwards,
-lets you control reasoning behavior.
-
-The following table details the `thinkingLevel` settings for each model type:
-
-| Thinking Level | Gemini 3.1 Pro | Gemini 3.1 Flash-Lite | Gemini 3 Flash | Gemini 3.5 Flash | Description |
-|---|---|---|---|---|---|
-| **`minimal`** | Not supported | Supported (Default) | Supported | Supported | Matches the "no thinking" setting for most queries. The model may think very minimally for complex coding tasks. Minimizes latency for chat or high throughput applications. Note, `minimal` does not guarantee that thinking is off. |
-| **`low`** | Supported | Supported | Supported | Supported | Minimizes latency and cost. Best for simple instruction following, chat, or high-throughput applications. |
-| **`medium`** | Supported | Supported | Supported | Supported (Default) | Balanced thinking for most tasks. |
-| **`high`** | Supported (Default, Dynamic) | Supported (Dynamic) | Supported (Default, Dynamic) | Supported (Dynamic) | Maximizes reasoning depth. The model may take significantly longer to reach a first (non thinking) output token, but the output will be more carefully reasoned. |
-
-The following example shows how to set the thinking level.
-
-### Python
-
-    from google import genai
-    from google.genai import types
-
-    client = genai.Client()
-
-    response = client.models.generate_content(
-        model="gemini-3.5-flash",
-        contents="Provide a list of 3 famous physicists and their key contributions",
-        config=types.GenerateContentConfig(
-            thinking_config=types.ThinkingConfig(thinking_level="low")
-        ),
-    )
-
-    print(response.text)
-
-### JavaScript
-
-    import { GoogleGenAI, ThinkingLevel } from "@google/genai";
-
-    const ai = new GoogleGenAI({});
-
-    async function main() {
-      const response = await ai.models.generateContent({
-        model: "gemini-3.5-flash",
-        contents: "Provide a list of 3 famous physicists and their key contributions",
-        config: {
-          thinkingConfig: {
-            thinkingLevel: ThinkingLevel.LOW,
-          },
-        },
-      });
-
-      console.log(response.text);
-    }
-
-    main();
-
-### Go
-
-    package main
-
-    import (
-      "context"
-      "fmt"
-      "google.golang.org/genai"
-      "os"
-    )
-
-    func main() {
-      ctx := context.Background()
-      client, err := genai.NewClient(ctx, nil)
-      if err != nil {
-          log.Fatal(err)
-      }
-
-      thinkingLevelVal := "low"
-
-      contents := genai.Text("Provide a list of 3 famous physicists and their key contributions")
-      model := "gemini-3.5-flash"
-      resp, _ := client.Models.GenerateContent(ctx, model, contents, &genai.GenerateContentConfig{
-        ThinkingConfig: &genai.ThinkingConfig{
-          ThinkingLevel: &thinkingLevelVal,
-        },
-      })
-
-    fmt.Println(resp.Text())
     }
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
-    -H "x-goog-api-key: $GEMINI_API_KEY" \
-    -H 'Content-Type: application/json' \
-    -X POST \
-    -d '{
-      "contents": [
-        {
-          "parts": [
-            {
-              "text": "Provide a list of 3 famous physicists and their key contributions"
-            }
-          ]
-        }
-      ],
-      "generationConfig": {
-        "thinkingConfig": {
-              "thinkingLevel": "low"
-        }
-      }
-    }'
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H 'Content-Type: application/json' \
+      --no-buffer \
+      -d '{
+        "model": "gemini-3-flash-preview",
+        "input": "Alice, Bob, and Carol each live in a different house on the same street: red, green, and blue. Alice does not live in the red house. Bob does not live in the green house. Carol does not live in the red or green house. Which house does each person live in?",
+        "generation_config": {
+          "thinking_summaries": "auto"
+        },
+        "stream": true
+      }'
 
-You cannot disable thinking for Gemini 3.1 Pro. Gemini 3 Flash and Flash-Lite
-also do not support full thinking-off, but the `minimal`
-setting means the model likely will not think (though it still potentially can).
-If you don't specify a thinking level, Gemini will use the Gemini 3 models'
-default thinking level (e.g., `"high"` for Gemini 3.1 Pro, and `"medium"` for Gemini 3.5 Flash).
+The streaming response uses Server-Sent Events (SSE) and is composed of steps
+and events, for example:
 
-Gemini 2.5 series models don't support `thinkingLevel`; use `thinkingBudget`
-instead.
+    event: interaction.created
+    data: {"interaction":{"id":"v1_xxx","status":"in_progress","object":"interaction","model":"gemini-3-flash-preview"},"event_type":"interaction.created"}
 
-### Thinking budgets
+    event: step.start
+    data: {"index":0,"step":{"signature":"","summary":[{"text":"**Evaluating the clues**\n\nI'm considering...","type":"text"}],"type":"thought"},"event_type":"step.start"}
 
-The `thinkingBudget` parameter, introduced with the Gemini 2.5 series, guides
-the model on the specific number of thinking tokens to use for reasoning.
+    event: step.delta
+    data: {"index":0,"delta":{"signature":"EpoGCpcGAXLI2nx/...","type":"thought_signature"},"event_type":"step.delta"}
 
-> [!NOTE]
-> **Note:** Use the `thinkingLevel` parameter with Gemini 3 models. While `thinkingBudget` is accepted for backwards compatibility, using it with Gemini 3 Pro may result in unexpected performance.
+    event: step.stop
+    data: {"index":0,"event_type":"step.stop"}
 
-The following are `thinkingBudget` configuration details for each model type.
-You can disable thinking by setting `thinkingBudget` to 0.
-Setting the `thinkingBudget` to -1 turns
-on **dynamic thinking**, meaning the model will adjust the budget based on the
-complexity of the request.
+    event: step.start
+    data: {"index":1,"step":{"content":[{"text":"Based on the clues provided, here","type":"text"}],"type":"model_output"},"event_type":"step.start"}
 
-| Model | Default setting (Thinking budget is not set) | Range | Disable thinking | Turn on dynamic thinking |
-|---|---|---|---|---|
-| **2.5 Pro** | Dynamic thinking | `128` to `32768` | N/A: Cannot disable thinking | `thinkingBudget = -1` (Default) |
-| **2.5 Flash** | Dynamic thinking | `0` to `24576` | `thinkingBudget = 0` | `thinkingBudget = -1` (Default) |
-| **2.5 Flash Preview** | Dynamic thinking | `0` to `24576` | `thinkingBudget = 0` | `thinkingBudget = -1` (Default) |
-| **2.5 Flash Lite** | Model does not think | `512` to `24576` | `thinkingBudget = 0` | `thinkingBudget = -1` |
-| **2.5 Flash Lite Preview** | Model does not think | `512` to `24576` | `thinkingBudget = 0` | `thinkingBudget = -1` |
-| **Robotics-ER 1.6 Preview** | Dynamic thinking | `0` to `24576` | `thinkingBudget = 0` | `thinkingBudget = -1` (Default) |
-| **2.5 Flash Live Native Audio Preview (09-2025)** | Dynamic thinking | `0` to `24576` | `thinkingBudget = 0` | `thinkingBudget = -1` (Default) |
+    event: step.delta
+    data: {"index":1,"delta":{"text":" is the answer to your question...","type":"text"},"event_type":"step.delta"}
+
+    event: step.stop
+    data: {"index":1,"event_type":"step.stop"}
+
+    event: interaction.completed
+    data: {"interaction":{"id":"v1_xxx","status":"completed","usage":{"total_tokens":530,"total_input_tokens":62,"total_output_tokens":171,"total_thought_tokens":297}},"event_type":"interaction.completed"}
+
+    event: done
+    data: [DONE]
+
+## Controlling thinking
+
+Gemini models engage in dynamic thinking by default, automatically adjusting
+the amount of reasoning effort based on the complexity of the request. You can control this behavior using the `thinking_level` parameter.
+
+| Model | Default Thinking | Levels Supported |
+|---|---|---|
+| gemini-3.1-pro-preview | On (high) | low, medium, high |
+| gemini-3-flash-preview | On (high) | minimal, low, medium, high |
+| gemini-3-pro-preview | On (high) | low, high |
+| gemini-2.5-pro | On | low, medium, high |
+| gemini-2.5-flash | On | low, medium, high |
+| gemini-2.5-flash-lite | Off | low, medium, high |
 
 ### Python
 
     from google import genai
-    from google.genai import types
 
     client = genai.Client()
 
-    response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents="Provide a list of 3 famous physicists and their key contributions",
-        config=types.GenerateContentConfig(
-            thinking_config=types.ThinkingConfig(thinking_budget=1024)
-            # Turn off thinking:
-            # thinking_config=types.ThinkingConfig(thinking_budget=0)
-            # Turn on dynamic thinking:
-            # thinking_config=types.ThinkingConfig(thinking_budget=-1)
-        ),
+    interaction = client.interactions.create(
+        model="gemini-3-flash-preview",
+        input="Provide a list of 3 famous physicists and their key contributions",
+        generation_config={
+            "thinking_level": "low"
+        }
     )
-
-    print(response.text)
+    print(interaction.output_text)
 
 ### JavaScript
 
     import { GoogleGenAI } from "@google/genai";
 
-    const ai = new GoogleGenAI({});
+    const client = new GoogleGenAI({});
 
-    async function main() {
-      const response = await ai.models.generateContent({
-        model: "gemini-2.5-flash",
-        contents: "Provide a list of 3 famous physicists and their key contributions",
-        config: {
-          thinkingConfig: {
-            thinkingBudget: 1024,
-            // Turn off thinking:
-            // thinkingBudget: 0
-            // Turn on dynamic thinking:
-            // thinkingBudget: -1
-          },
-        },
-      });
-
-      console.log(response.text);
-    }
-
-    main();
-
-### Go
-
-    package main
-
-    import (
-      "context"
-      "fmt"
-      "google.golang.org/genai"
-      "os"
-    )
-
-    func main() {
-      ctx := context.Background()
-      client, err := genai.NewClient(ctx, nil)
-      if err != nil {
-          log.Fatal(err)
-      }
-
-      thinkingBudgetVal := int32(1024)
-
-      contents := genai.Text("Provide a list of 3 famous physicists and their key contributions")
-      model := "gemini-2.5-flash"
-      resp, _ := client.Models.GenerateContent(ctx, model, contents, &genai.GenerateContentConfig{
-        ThinkingConfig: &genai.ThinkingConfig{
-          ThinkingBudget: &thinkingBudgetVal,
-          // Turn off thinking:
-          // ThinkingBudget: int32(0),
-          // Turn on dynamic thinking:
-          // ThinkingBudget: int32(-1),
-        },
-      })
-
-    fmt.Println(resp.Text())
-    }
+    const interaction = await client.interactions.create({
+        model: "gemini-3-flash-preview",
+        input: "Provide a list of 3 famous physicists and their key contributions",
+        generation_config: {
+            thinking_level: "low"
+        }
+    });
+    console.log(interaction.output_text);
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent" \
-    -H "x-goog-api-key: $GEMINI_API_KEY" \
-    -H 'Content-Type: application/json' \
-    -X POST \
-    -d '{
-      "contents": [
-        {
-          "parts": [
-            {
-              "text": "Provide a list of 3 famous physicists and their key contributions"
-            }
-          ]
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H 'Content-Type: application/json' \
+      -d '{
+        "model": "gemini-3-flash-preview",
+        "input": "Provide a list of 3 famous physicists and their key contributions",
+        "generation_config": {
+          "thinking_level": "low"
         }
-      ],
-      "generationConfig": {
-        "thinkingConfig": {
-              "thinkingBudget": 1024
-        }
-      }
-    }'
-
-Depending on the prompt, the model might overflow or underflow the token budget.
+      }'
 
 ## Thought signatures
 
-> [!IMPORTANT]
-> **Important:** The [Google GenAI SDK](https://ai.google.dev/gemini-api/docs/libraries) automatically handles the return of thought signatures for you. You only need to [manage thought signatures manually](https://ai.google.dev/gemini-api/docs/function-calling#thought-signatures) if you're modifying conversation history or using the REST API.
+Thought signatures are encrypted representations of the model's internal reasoning. They are required to maintain reasoning continuity across multi-turn interactions.
 
-The Gemini API is stateless, so the model treats every API request independently
-and doesn't have access to thought context from previous turns in multi-turn
-interactions.
+The Interactions API makes handling thought signatures much simpler than the `generateContent` API.
 
-In order to enable maintaining thought context across multi-turn interactions,
-Gemini returns thought signatures, which are encrypted representations of the
-model's internal thought process.
+### Stateful mode (Recommended)
 
-- **Gemini 2.5 models** return thought signatures when thinking is enabled and the request includes [function calling](https://ai.google.dev/gemini-api/docs/function-calling#thinking), specifically [function declarations](https://ai.google.dev/gemini-api/docs/function-calling#step-2).
-- **Gemini 3 models** may return thought signatures for all types of [parts](https://ai.google.dev/api/caching#Part). We recommend you always pass all signatures back as received, but it's *required* for function calling signatures. Read the [Thought Signatures](https://ai.google.dev/gemini-api/docs/thought-signatures) page to learn more.
+By default, when you use the Interactions API in stateful mode (by setting `store: true` and passing the `previous_interaction_id` in subsequent turns), the server automatically manages the conversation state, including all thought blocks and signatures. In this mode, you do not need to do anything regarding signatures. They are handled entirely on the server side.
 
-Other usage limitations to consider with function calling include:
+### Stateless mode
 
-- Signatures are returned from the model within other parts in the response, for example function calling or text parts. [Return the entire response](https://ai.google.dev/gemini-api/docs/function-calling#step-4) with all parts back to the model in subsequent turns.
-- Don't concatenate parts with signatures together.
-- Don't merge one part with a signature with another part without a signature.
+If you are managing the conversation state yourself (stateless mode) and passing the full history of inputs and outputs in each request:
+
+- You **MUST** always resend all `thought` blocks exactly as they were received from the model.
+- You should **NOT** remove or modify thought blocks from the history, as they contain the signatures required for the model to continue its reasoning.
+- When switching models within a session, you should still resend the previous model's thought blocks. The backend manages compatibility.
+
+> [!NOTE]
+> **Note:** Built-in tools such as Google Search can carry their own distinct signatures on the call/result blocks. In stateless mode, you must also resend these tool result signatures in subsequent turns.
 
 ## Pricing
 
-> [!NOTE]
-> **Note:** **Summaries** are available in the [free and paid tiers](https://ai.google.dev/gemini-api/docs/pricing) of the API. **Thought signatures** will increase the input tokens you are charged when sent back as part of the request.
-
 When thinking is turned on, response pricing is the sum of output
 tokens and thinking tokens. You can get the total number of generated thinking
-tokens from the `thoughtsTokenCount` field.
+tokens from the `total_thought_tokens` field.
 
 ### Python
 
-    # ...
-    print("Thoughts tokens:", response.usage_metadata.thoughts_token_count)
-    print("Output tokens:", response.usage_metadata.candidates_token_count)
+    print("Thoughts tokens:", interaction.usage.total_thought_tokens)
+    print("Output tokens:", interaction.usage.total_output_tokens)
 
 ### JavaScript
 
-    // ...
-    console.log(`Thoughts tokens: ${response.usageMetadata.thoughtsTokenCount}`);
-    console.log(`Output tokens: ${response.usageMetadata.candidatesTokenCount}`);
-
-### Go
-
-    // ...
-    fmt.Println("Thoughts tokens:", response.UsageMetadata.ThoughtsTokenCount)
-    fmt.Println("Output tokens:", response.UsageMetadata.CandidatesTokenCount)
+    console.log(`Thoughts tokens: ${interaction.usage.total_thought_tokens}`);
+    console.log(`Output tokens: ${interaction.usage.total_output_tokens}`);
 
 Thinking models generate full thoughts to improve the quality of the final
 response, and then output [summaries](https://ai.google.dev/gemini-api/docs/thinking#summaries) to provide insight into the
-thought process. So, pricing is based on the full thought tokens the
-model needs to generate to create a summary, despite only the summary being
-output from the API.
+thought process. Pricing is based on the full thought tokens the model needs to
+generate, despite only the summary being output from the API.
 
-You can learn more about tokens in the [Token counting](https://ai.google.dev/gemini-api/docs/tokens)
-guide.
+You can learn more about tokens in the [Token counting](https://ai.google.dev/gemini-api/docs/tokens) guide.
 
 ## Best practices
 
-This section includes some guidance for using thinking models efficiently.
-As always, following our [prompting guidance and best practices](https://ai.google.dev/gemini-api/docs/prompting-strategies) will get you the best results.
+Use thinking models efficiently by following these guidelines.
 
-### Debugging and steering
+- **Review reasoning**: Analyze thought summaries to understand failures and improve prompts.
+- **Control thinking budget**: Prompt the model to think less for lengthy outputs to save tokens.
+- **Simple tasks**: Use minimal thinking for fact retrieval or classification (e.g., "Where was DeepMind founded?").
+- **Moderate tasks**: Use default thinking for comparing concepts or creative reasoning (e.g., Compare electric and hybrid cars).
+- **Complex tasks**: Use maximum thinking for advanced coding, math, or multi-step planning (e.g., Solve AIME math problems).
 
-- **Review reasoning**: When you're not getting your expected response from the
-  thinking models, it can help to carefully analyze Gemini's thought summaries.
-  You can see how it broke down the task and arrived at its conclusion, and use
-  that information to correct towards the right results.
+## What's next
 
-- **Provide Guidance in Reasoning** : If you're hoping for a particularly lengthy
-  output, you may want to provide guidance in your prompt to constrain the
-  [amount of thinking](https://ai.google.dev/gemini-api/docs/thinking#set-budget) the model uses. This lets you reserve more
-  of the token output for your response.
-
-### Task complexity
-
-- **Easy Tasks (Thinking could be OFF):** For straightforward requests where complex reasoning isn't required, such as fact retrieval or classification, thinking is not required. Examples include:
-  - "Where was DeepMind founded?"
-  - "Is this email asking for a meeting or just providing information?"
-- **Medium Tasks (Default/Some Thinking):** Many common requests benefit from a degree of step-by-step processing or deeper understanding. Gemini can flexibly use thinking capability for tasks like:
-  - Analogize photosynthesis and growing up.
-  - Compare and contrast electric cars and hybrid cars.
-- **Hard Tasks (Maximum Thinking Capability):** For truly complex challenges, such as solving complex math problems or coding tasks, we recommend setting a high thinking budget. These types of tasks require the model to engage its full reasoning and planning capabilities, often involving many internal steps before providing an answer. Examples include:
-  - Solve problem 1 in AIME 2025: Find the sum of all integer bases b \> 9 for which 17~b~ is a divisor of 97~b~.
-  - Write Python code for a web application that visualizes real-time stock market data, including user authentication. Make it as efficient as possible.
-
-## Supported models, tools, and capabilities
-
-Thinking features are supported on all 3 and 2.5 series models.
-You can find all model capabilities on the
-[model overview](https://ai.google.dev/gemini-api/docs/models) page.
-
-Thinking models work with all of Gemini's tools and capabilities. This allows
-the models to interact with external systems, execute code, or access real-time
-information, incorporating the results into their reasoning and final response.
-
-You can try examples of using tools with thinking models in the
-\[Thinking cookbook\]\[Colab\].
-
-## What's next?
-
-- Thinking coverage is available in our [OpenAI Compatibility](https://ai.google.dev/gemini-api/docs/openai#thinking) guide.
-
-\[Colab\]: https://colab.sandbox.google.com/github/google-gemini/cookbook/blob/main/quickstarts/Get_started_thinking.ipynb
+- [Text generation](https://ai.google.dev/gemini-api/docs/text-generation): Basic text responses
+- [Function calling](https://ai.google.dev/gemini-api/docs/function-calling): Connect to tools
+- [Gemini 3 guide](https://ai.google.dev/gemini-api/docs/gemini-3): Model-specific features

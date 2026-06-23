@@ -86,6 +86,7 @@ components:
           description: Custom HTTP headers to include in requests to this destination.
         modelId:
           type: string
+          description: The name of the tracing project in Arize AX
         spaceKey:
           type: string
       required:

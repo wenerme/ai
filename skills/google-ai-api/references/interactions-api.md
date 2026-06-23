@@ -1,5 +1,8 @@
-The Gemini Interactions API is an experimental API that allows developers to build generative AI applications using Gemini models. Gemini is our most capable model, built from the ground up to be multimodal. It can generalize and seamlessly understand, operate across, and combine different types of information including language, images, audio, video, and code. You can use the Gemini API for use cases like reasoning across text and images, content generation, dialogue agents, summarization and classification systems, and more.
-[View as markdown](https://ai.google.dev/static/api/interactions.md.txt) [View the OpenAPI Spec](https://ai.google.dev/static/api/interactions.openapi.json)
+> [!NOTE]
+> **Beta** : You are viewing the beta version of the Interactions API. Endpoints are under `/v1beta/`. The stable [v1 version](https://ai.google.dev/api/interactions-api-v1) is also available.
+
+The Gemini Interactions API allows developers to build generative AI applications using Gemini models. Gemini is our most capable model, built from the ground up to be multimodal. It can generalize and seamlessly understand, operate across, and combine different types of information including language, images, audio, video, and code. You can use the Gemini API for use cases like reasoning across text and images, content generation, dialogue agents, summarization and classification systems, and more.
+[View as markdown](https://ai.google.dev/static/api/interactions.md.txt) [View the OpenAPI Spec](https://ai.google.dev/static/api/interactions.openapi.json) API version: v1beta [v1](https://ai.google.dev/api/interactions-api-v1)
 
 ## Creating an interaction
 
@@ -10,7 +13,7 @@ post https://generativelanguage.googleapis.com/v1beta/interactions Creates a new
 
 ### Path / Query Parameters
 
-api_version string (optional) Which version of the API to use.
+api_version string (required) Which version of the API to use.
 
 ### Request body
 
@@ -75,15 +78,15 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
 - `gemini-3.1-flash-tts-preview`
 
   Gemini 3.1 Flash TTS: Powerful, low-latency speech generation. Enjoy natural outputs, steerable prompts, and new expressive audio tags for precise narration control.
+- `gemini-3.5-flash`
+
+  Our most intelligent model for sustained frontier performance in agentic and coding tasks.
 - `lyria-3-clip-preview`
 
   Our low-latency, music generation model optimized for high-fidelity audio clips and precise rhythmic control.
 - `lyria-3-pro-preview`
 
   Our advanced, full-song generative model with deep compositional understanding, optimized for precise structural control and complex transitions across diverse musical styles.
-- `gemini-3.5-flash`
-
-  Our most intelligent model for sustained frontier performance in agentic and coding tasks.
 agent AgentOption (optional) The name of the \`Agent\` used for generating the interaction.   
 **Required if \`model\` is not provided.**
 The agent to interact with.
@@ -102,7 +105,7 @@ The agent to interact with.
 - `antigravity-preview-05-2026`
 
   Use the Antigravity managed agent to perform multi-step tasks that require reasoning, file operations, and tool use.
-input [Content](https://ai.google.dev/api/interactions-api#Resource:Content) or array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) or string (required) The inputs for the interaction (common to both Model and Agent).
+input [Content](https://ai.google.dev/api/interactions-api#Resource:Content) or array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) or array (Turn) or string (required) The inputs for the interaction (common to both Model and Agent).
 system_instruction string (optional) System instruction for the interaction.
 tools array ([Tool](https://ai.google.dev/api/interactions-api#Resource:Tool)) (optional) A list of tool declarations the model may call during interaction.
 response_format [ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat) or array ([ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat)) (optional) Enforces that the generated response is a JSON object that complies with the JSON schema specified in this field.
@@ -228,13 +231,6 @@ caching (e.g. what content to cache) and enjoy guaranteed cost savings.
 Format:
 \`projects/{project}/locations/{location}/cachedContents/{cachedContent}\`
 environment [EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) or string (optional) The environment configuration for the interaction. Can be an object specifying remote environment sources or a string referencing an existing environment ID.
-labels object (optional) Optional. The labels with user-defined metadata for the request. It is used for
-billing and reporting only.
-
-Label keys and values can be no longer than 63 characters
-(Unicode codepoints) and can only contain lowercase letters, numeric
-characters, underscores, and dashes. International characters are allowed.
-Label values are optional. Label keys must start with a letter.
 previous_interaction_id string (optional) The ID of the previous interaction, if any.
 response_modalities ResponseModality (optional) The requested modalities of the response (TEXT, IMAGE, AUDIO).
 <br />
@@ -256,86 +252,6 @@ response_modalities ResponseModality (optional) The requested modalities of the 
 - `document`
 
   Indicates the model should return documents.
-safety_settings SafetySetting (optional) Safety settings for the interaction.
-A safety setting that affects the safety-blocking behavior.
-
-A SafetySetting consists of a
-harm category and a
-threshold for that
-category.
-
-#### Fields
-
-category HarmCategory (optional) Required. The harm category to be blocked.
-<br />
-
-#### Possible values
-
-- `hate_speech`
-
-  Content that promotes violence or incites hatred against individuals or
-  groups based on certain attributes.
-- `dangerous_content`
-
-  Content that promotes, facilitates, or enables dangerous activities.
-- `harassment`
-
-  Abusive, threatening, or content intended to bully, torment, or ridicule.
-- `sexually_explicit`
-
-  Content that contains sexually explicit material.
-- `civic_integrity`
-
-  Deprecated: Election filter is not longer supported.
-  The harm category is civic integrity.
-- `image_hate`
-
-  Images that contain hate speech.
-- `image_dangerous_content`
-
-  Images that contain dangerous content.
-- `image_harassment`
-
-  Images that contain harassment.
-- `image_sexually_explicit`
-
-  Images that contain sexually explicit content.
-- `jailbreak`
-
-  Prompts designed to bypass safety filters.
-threshold enum (string) (optional) Required. The threshold for blocking content. If the harm probability
-exceeds this threshold, the content will be blocked.
-
-Possible
-values:
-
-- `block_low_and_above`
-
-  Block content with a low harm probability or higher.
-- `block_medium_and_above`
-
-  Block content with a medium harm probability or higher.
-- `block_only_high`
-
-  Block content with a high harm probability.
-- `block_none`
-
-  Do not block any content, regardless of its harm probability.
-- `off`
-
-  Turn off the safety filter entirely.
-method enum (string) (optional) Optional. The method for blocking content. If not specified, the default
-behavior is to use the probability score.
-
-Possible
-values:
-
-- `severity`
-
-  The harm block method uses both probability and severity scores.
-- `probability`
-
-  The harm block method uses the probability score.
 service_tier ServiceTier (optional) The service tier for the interaction.
 <br />
 
@@ -680,7 +596,7 @@ post https://generativelanguage.googleapis.com/v1beta/interactions/{id}/cancel C
 
 ### Path / Query Parameters
 
-api_version string (optional) Which version of the API to use.
+api_version string (required) Which version of the API to use.
 id string (required) The unique identifier of the interaction to cancel.
 
 ### Response
@@ -695,12 +611,22 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ```json
 {
-  "id": "v1_ChdPU0F4YWFtNkFwS2kxZThQZ05lbXdROBIXT1NBeGFhbTZBcEtpMWU4UGdOZW13UTg",
+  "id": "v1_ChdVc0E0YXJTYk1zYlV6N0lQcXRXVG1BYxIXVXNBNGFyU2JNc2JVejdJUHF0V1RtQWM",
   "agent": "deep-research-pro-preview-12-2025",
   "status": "cancelled",
-  "object": "interaction",
-  "created": "2025-11-26T12:25:15Z",
-  "updated": "2025-11-26T12:25:15Z"
+  "created": "2026-06-22T04:55:47Z",
+  "updated": "2026-06-22T04:55:47Z",
+  "steps": [
+    {
+      "type": "user_input",
+      "content": [
+        {
+          "type": "text",
+          "text": "Research the history of the Google TPUs with a focus on 2025 specs."
+        }
+      ]
+    }
+  ]
 }
 ```
 
@@ -712,7 +638,7 @@ get https://generativelanguage.googleapis.com/v1beta/interactions/{id} Retrieves
 
 ### Path / Query Parameters
 
-api_version string (optional) Which version of the API to use.
+api_version string (required) Which version of the API to use.
 id string (required) The unique identifier of the interaction to retrieve.
 last_event_id string (optional) Optional. If set, resumes the interaction stream from the next chunk after the event marked by the event id. Can only be used if \`stream\` is true.
 stream boolean (optional) If set to true, the generated content will be streamed incrementally.
@@ -759,14 +685,14 @@ delete https://generativelanguage.googleapis.com/v1beta/interactions/{id} Delete
 
 ### Path / Query Parameters
 
-api_version string (optional) Which version of the API to use.
+api_version string (required) Which version of the API to use.
 id string (required) The unique identifier of the interaction to delete.
 
 ### Response
 
 If successful, the response is empty.
 
-### Delete Interaction
+### Delete
 
 <iframe src="https:///frame/api/interactions-api_0fc2bd340016691664f848e973e53332506ebccc55dfe5a005735e2cd9b3bc83.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
@@ -837,15 +763,15 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
 - `gemini-3.1-flash-tts-preview`
 
   Gemini 3.1 Flash TTS: Powerful, low-latency speech generation. Enjoy natural outputs, steerable prompts, and new expressive audio tags for precise narration control.
+- `gemini-3.5-flash`
+
+  Our most intelligent model for sustained frontier performance in agentic and coding tasks.
 - `lyria-3-clip-preview`
 
   Our low-latency, music generation model optimized for high-fidelity audio clips and precise rhythmic control.
 - `lyria-3-pro-preview`
 
   Our advanced, full-song generative model with deep compositional understanding, optimized for precise structural control and complex transitions across diverse musical styles.
-- `gemini-3.5-flash`
-
-  Our most intelligent model for sustained frontier performance in agentic and coding tasks.
 agent AgentOption (optional) The name of the \`Agent\` used for generating the interaction.
 The agent to interact with.
 
@@ -864,6 +790,8 @@ The agent to interact with.
 
   Use the Antigravity managed agent to perform multi-step tasks that require reasoning, file operations, and tool use.
 id string (optional) Required. Output only. A unique identifier for the interaction completion.
+
+*Defaults to:*
 status enum (string) (optional) Required. Output only. The status of the interaction.
 
 Possible
@@ -891,9 +819,9 @@ values:
 - `budget_exceeded`
 
   The interaction was halted because the token budget was exceeded.
-created string (optional) Required. Output only. The time at which the response was created in ISO 8601 format
+created string (optional) Output only. The time at which the response was created in ISO 8601 format
 (YYYY-MM-DDThh:mm:ssZ).
-updated string (optional) Required. Output only. The time at which the response was last updated in ISO 8601 format
+updated string (optional) Output only. The time at which the response was last updated in ISO 8601 format
 (YYYY-MM-DDThh:mm:ssZ).
 system_instruction string (optional) System instruction for the interaction.
 tools array ([Tool](https://ai.google.dev/api/interactions-api#Resource:Tool)) (optional) A list of tool declarations the model may call during interaction.
@@ -1081,95 +1009,7 @@ uris array (string) (optional) Optional. If set, these webhook URIs will be used
 registered webhooks.
 user_metadata object (optional) Optional. The user metadata that will be returned on each event emission to the
 webhooks.
-steps array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) (optional) Required. Output only. The steps that make up the interaction.
-safety_settings SafetySetting (optional) Safety settings for the interaction.
-A safety setting that affects the safety-blocking behavior.
-
-A SafetySetting consists of a
-harm category and a
-threshold for that
-category.
-
-#### Fields
-
-category HarmCategory (optional) Required. The harm category to be blocked.
-<br />
-
-#### Possible values
-
-- `hate_speech`
-
-  Content that promotes violence or incites hatred against individuals or
-  groups based on certain attributes.
-- `dangerous_content`
-
-  Content that promotes, facilitates, or enables dangerous activities.
-- `harassment`
-
-  Abusive, threatening, or content intended to bully, torment, or ridicule.
-- `sexually_explicit`
-
-  Content that contains sexually explicit material.
-- `civic_integrity`
-
-  Deprecated: Election filter is not longer supported.
-  The harm category is civic integrity.
-- `image_hate`
-
-  Images that contain hate speech.
-- `image_dangerous_content`
-
-  Images that contain dangerous content.
-- `image_harassment`
-
-  Images that contain harassment.
-- `image_sexually_explicit`
-
-  Images that contain sexually explicit content.
-- `jailbreak`
-
-  Prompts designed to bypass safety filters.
-threshold enum (string) (optional) Required. The threshold for blocking content. If the harm probability
-exceeds this threshold, the content will be blocked.
-
-Possible
-values:
-
-- `block_low_and_above`
-
-  Block content with a low harm probability or higher.
-- `block_medium_and_above`
-
-  Block content with a medium harm probability or higher.
-- `block_only_high`
-
-  Block content with a high harm probability.
-- `block_none`
-
-  Do not block any content, regardless of its harm probability.
-- `off`
-
-  Turn off the safety filter entirely.
-method enum (string) (optional) Optional. The method for blocking content. If not specified, the default
-behavior is to use the probability score.
-
-Possible
-values:
-
-- `severity`
-
-  The harm block method uses both probability and severity scores.
-- `probability`
-
-  The harm block method uses the probability score.
-labels object (optional) Optional. The labels with user-defined metadata for the request. It is used for
-billing and reporting only.
-
-Label keys and values can be no longer than 63 characters
-(Unicode codepoints) and can only contain lowercase letters, numeric
-characters, underscores, and dashes. International characters are allowed.
-Label values are optional. Label keys must start with a letter.
-input [Content](https://ai.google.dev/api/interactions-api#Resource:Content) or array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) or string (optional) The input for the interaction.
+steps array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) (optional) Output only. The steps that make up the interaction, when included in the response.
 response_format [ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat) or array ([ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat)) (optional) Enforces that the generated response is a JSON object that complies with the JSON schema specified in this field.
 environment [EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) or string (optional) The environment configuration for the interaction. Can be an object specifying remote environment sources or a string referencing an existing environment ID.
 cached_content string (optional) The name of the cached content used as context to serve the prediction.
@@ -1217,6 +1057,129 @@ true, the Deep Research agent will provide a research plan in its response.
 The agent will then proceed only if the user confirms the plan in the next
 turn.
 enable_bigquery_tool boolean (optional) Enables bigquery tool for the Deep Research agent.
+input [Content](https://ai.google.dev/api/interactions-api#Resource:Content) or array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) or array (Turn) or string (optional) The input for the interaction.
+output_text string (optional) Concatenated text from the last model output in response to the current request.
+
+Note: this is added by the SDK.
+output_image [ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) (optional) The last image generated by the model in response to the current request.
+
+Note: this is added by the SDK.
+output_audio AudioContent (optional) The last audio generated by the model in response to the current request.
+
+Note: this is added by the SDK.
+An audio content block.
+
+#### Fields
+
+type object (optional) No description provided.
+
+Always set to `"audio"`.
+data string (optional) The audio content.
+uri string (optional) The URI of the audio.
+mime_type enum (string) (optional) The mime type of the audio.
+
+Possible
+values:
+
+- `audio/wav`
+
+  WAV audio format
+- `audio/mp3`
+
+  MP3 audio format
+- `audio/aiff`
+
+  AIFF audio format
+- `audio/aac`
+
+  AAC audio format
+- `audio/ogg`
+
+  OGG audio format
+- `audio/flac`
+
+  FLAC audio format
+- `audio/mpeg`
+
+  MPEG audio format
+- `audio/m4a`
+
+  M4A audio format
+- `audio/l16`
+
+  L16 audio format
+- `audio/opus`
+
+  OPUS audio format
+- `audio/alaw`
+
+  ALAW audio format
+- `audio/mulaw`
+
+  MULAW audio format
+channels integer (optional) The number of audio channels.
+sample_rate integer (optional) The sample rate of the audio.
+output_video VideoContent (optional) The last video generated by the model in response to the current request.
+
+Note: this is added by the SDK.
+A video content block.
+
+#### Fields
+
+type object (optional) No description provided.
+
+Always set to `"video"`.
+data string (optional) The video content.
+uri string (optional) The URI of the video.
+mime_type enum (string) (optional) The mime type of the video.
+
+Possible
+values:
+
+- `video/mp4`
+
+  MP4 video format
+- `video/mpeg`
+
+  MPEG video format
+- `video/mpg`
+
+  MPG video format
+- `video/mov`
+
+  MOV video format
+- `video/avi`
+
+  AVI video format
+- `video/x-flv`
+
+  FLV video format
+- `video/webm`
+
+  WebM video format
+- `video/wmv`
+
+  WMV video format
+- `video/3gpp`
+
+  3GPP video format
+resolution MediaResolution (optional) The resolution of the media.
+<br />
+
+#### Possible values
+
+- `low`
+
+  Low resolution.
+- `medium`
+
+  Medium resolution.
+- `high`
+
+  High resolution.
+- `ultra_high`
+
+  Ultra high resolution.
 
 ### Examples
 
@@ -1769,7 +1732,6 @@ InteractionCreatedEvent <br />
 event_type object (required) No description provided.
 
 Always set to `"interaction.created"`.
-interaction [Interaction](https://ai.google.dev/api/interactions-api#Resource:Interaction) (required) No description provided.
 event_id string (optional) The event_id token to be used to resume the interaction stream, from
 this event.
 metadata StreamMetadata (optional) Optional metadata accompanying ANY streamed event.
@@ -1914,13 +1876,199 @@ values:
 
   Grounding with customer's data, for example, VertexAISearch.
 count integer (optional) The number of grounding tool counts.
+interaction InteractionSseEventInteraction (required) Partial interaction resource emitted when the stream is created.
+Partial interaction resource emitted by interaction lifecycle SSE events.
+Streaming lifecycle payloads may omit fields that are only available on
+full non-streaming Interaction responses.
+
+#### Fields
+
+id string (optional) Required. Output only. A unique identifier for the interaction completion.
+object string (optional) Output only. The resource type.
+model string (optional) The model that will complete your prompt.
+agent string (optional) The agent to interact with.
+status enum (string) (optional) Required. Output only. The status of the interaction.
+
+Possible
+values:
+
+- `in_progress`
+
+  The interaction is in progress.
+- `requires_action`
+
+  The interaction requires action/input from the user.
+- `completed`
+
+  The interaction is completed.
+- `failed`
+
+  The interaction failed.
+- `cancelled`
+
+  The interaction was cancelled.
+- `incomplete`
+
+  The interaction is completed, but contains incomplete results (e.g. hitting max_tokens).
+created string (optional) Output only. The time at which the response was created in ISO 8601 format.
+updated string (optional) Output only. The time at which the response was last updated in ISO 8601 format.
+service_tier ServiceTier (optional) The service tier for the interaction.
+<br />
+
+#### Possible values
+
+- `flex`
+
+  Flex service tier.
+- `standard`
+
+  Standard service tier.
+- `priority`
+
+  Priority service tier.
+usage Usage (optional) Output only. Statistics on the interaction request's token usage.
+Statistics on the interaction request's token usage.
+
+#### Fields
+
+total_input_tokens integer (optional) Number of tokens in the prompt (context).
+input_tokens_by_modality ModalityTokens (optional) A breakdown of input token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
+total_cached_tokens integer (optional) Number of tokens in the cached part of the prompt (the cached content).
+cached_tokens_by_modality ModalityTokens (optional) A breakdown of cached token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
+total_output_tokens integer (optional) Total number of tokens across all the generated responses.
+output_tokens_by_modality ModalityTokens (optional) A breakdown of output token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
+total_tool_use_tokens integer (optional) Number of tokens present in tool-use prompt(s).
+tool_use_tokens_by_modality ModalityTokens (optional) A breakdown of tool-use token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
+total_thought_tokens integer (optional) Number of tokens of thoughts for thinking models.
+total_tokens integer (optional) Total token count for the interaction request (prompt + responses + other
+internal tokens).
+grounding_tool_count GroundingToolCount (optional) Grounding tool count.
+The number of grounding tool counts.
+
+#### Fields
+
+type enum (string) (optional) The grounding tool type associated with the count.
+
+Possible
+values:
+
+- `google_search`
+
+  Grounding with Google Web Search and Image Search, \& Web Grounding
+  for Enterprise.
+- `google_maps`
+
+  Grounding with Google Maps.
+- `retrieval`
+
+  Grounding with customer's data, for example, VertexAISearch.
+count integer (optional) The number of grounding tool counts.
+steps array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) (optional) Output only. The steps that make up the interaction, if included in this event.
 InteractionCompletedEvent <br />
 
 event_type object (required) No description provided.
 
 Always set to `"interaction.completed"`.
-interaction [Interaction](https://ai.google.dev/api/interactions-api#Resource:Interaction) (required) Required. The completed interaction with empty outputs to reduce the payload size.
-Use the preceding ContentDelta events for the actual output.
 event_id string (optional) The event_id token to be used to resume the interaction stream, from
 this event.
 metadata StreamMetadata (optional) Optional metadata accompanying ANY streamed event.
@@ -2065,6 +2213,194 @@ values:
 
   Grounding with customer's data, for example, VertexAISearch.
 count integer (optional) The number of grounding tool counts.
+interaction InteractionSseEventInteraction (required) Partial completed interaction resource emitted at the end of the stream.
+Partial interaction resource emitted by interaction lifecycle SSE events.
+Streaming lifecycle payloads may omit fields that are only available on
+full non-streaming Interaction responses.
+
+#### Fields
+
+id string (optional) Required. Output only. A unique identifier for the interaction completion.
+object string (optional) Output only. The resource type.
+model string (optional) The model that will complete your prompt.
+agent string (optional) The agent to interact with.
+status enum (string) (optional) Required. Output only. The status of the interaction.
+
+Possible
+values:
+
+- `in_progress`
+
+  The interaction is in progress.
+- `requires_action`
+
+  The interaction requires action/input from the user.
+- `completed`
+
+  The interaction is completed.
+- `failed`
+
+  The interaction failed.
+- `cancelled`
+
+  The interaction was cancelled.
+- `incomplete`
+
+  The interaction is completed, but contains incomplete results (e.g. hitting max_tokens).
+created string (optional) Output only. The time at which the response was created in ISO 8601 format.
+updated string (optional) Output only. The time at which the response was last updated in ISO 8601 format.
+service_tier ServiceTier (optional) The service tier for the interaction.
+<br />
+
+#### Possible values
+
+- `flex`
+
+  Flex service tier.
+- `standard`
+
+  Standard service tier.
+- `priority`
+
+  Priority service tier.
+usage Usage (optional) Output only. Statistics on the interaction request's token usage.
+Statistics on the interaction request's token usage.
+
+#### Fields
+
+total_input_tokens integer (optional) Number of tokens in the prompt (context).
+input_tokens_by_modality ModalityTokens (optional) A breakdown of input token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
+total_cached_tokens integer (optional) Number of tokens in the cached part of the prompt (the cached content).
+cached_tokens_by_modality ModalityTokens (optional) A breakdown of cached token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
+total_output_tokens integer (optional) Total number of tokens across all the generated responses.
+output_tokens_by_modality ModalityTokens (optional) A breakdown of output token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
+total_tool_use_tokens integer (optional) Number of tokens present in tool-use prompt(s).
+tool_use_tokens_by_modality ModalityTokens (optional) A breakdown of tool-use token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
+total_thought_tokens integer (optional) Number of tokens of thoughts for thinking models.
+total_tokens integer (optional) Total token count for the interaction request (prompt + responses + other
+internal tokens).
+grounding_tool_count GroundingToolCount (optional) Grounding tool count.
+The number of grounding tool counts.
+
+#### Fields
+
+type enum (string) (optional) The grounding tool type associated with the count.
+
+Possible
+values:
+
+- `google_search`
+
+  Grounding with Google Web Search and Image Search, \& Web Grounding
+  for Enterprise.
+- `google_maps`
+
+  Grounding with Google Maps.
+- `retrieval`
+
+  Grounding with customer's data, for example, VertexAISearch.
+count integer (optional) The number of grounding tool counts.
+steps array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) (optional) Output only. The steps that make up the interaction, if included in this event.
 InteractionStatusUpdate <br />
 
 event_type object (required) No description provided.
@@ -2996,12 +3332,12 @@ call_id string (required) Required. ID to match the ID from the function call bl
 result array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or object or string (required) No description provided.
 event_id string (optional) The event_id token to be used to resume the interaction stream, from
 this event.
-metadata StreamMetadata (optional) Optional metadata accompanying ANY streamed event.
-<br />
+metadata StepDeltaMetadata (optional) Optional metadata accompanying ANY streamed event.
+Optional metadata accompanying ANY streamed event.
 
 #### Fields
 
-total_usage Usage (optional) No description provided.
+total_usage Usage (optional) Statistics on the interaction request's token usage.
 Statistics on the interaction request's token usage.
 
 #### Fields
@@ -3307,6 +3643,21 @@ count integer (optional) The number of grounding tool counts.
 }
 ```
 
+### Interaction Created
+
+```json
+{
+  "event_type": "interaction.created",
+  "interaction": {
+    "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
+    "model": "gemini-3-flash-preview",
+    "object": "interaction",
+    "status": "in_progress"
+  },
+  "event_id": "evt_123"
+}
+```
+
 ### Interaction Completed
 
 ```json
@@ -3315,6 +3666,23 @@ count integer (optional) The number of grounding tool counts.
   "interaction": {
     "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
     "model": "gemini-3.5-flash",
+    "status": "completed",
+    "created": "2025-12-04T15:01:45Z",
+    "updated": "2025-12-04T15:01:45Z"
+  },
+  "event_id": "evt_123"
+}
+```
+
+### Interaction Completed
+
+```json
+{
+  "event_type": "interaction.completed",
+  "interaction": {
+    "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
+    "model": "gemini-3-flash-preview",
+    "object": "interaction",
     "status": "completed",
     "created": "2025-12-04T15:01:45Z",
     "updated": "2025-12-04T15:01:45Z"
@@ -3747,14 +4115,14 @@ UrlContextCallStep URL context call step.
 type object (required) No description provided.
 
 Always set to `"url_context_call"`.
-arguments UrlContextCallStepArguments (required) Required. The arguments to pass to the URL context.
+id string (required) Required. A unique ID for this specific tool call.
+signature string (optional) A signature hash for backend validation.
+arguments UrlContextCallArguments (required) The arguments to pass to the URL context.
 The arguments to pass to the URL context.
 
 #### Fields
 
 urls array (string) (optional) The URLs to fetch.
-id string (required) Required. A unique ID for this specific tool call.
-signature string (optional) A signature hash for backend validation.
 McpServerToolCallStep MCPServer tool call step.
 type object (required) No description provided.
 
@@ -3827,7 +4195,7 @@ UrlContextResultStep URL context result step.
 type object (required) No description provided.
 
 Always set to `"url_context_result"`.
-result UrlContextResultItem (required) Required. The results of the URL context.
+result UrlContextResult (required) Required. The results of the URL context.
 The result of the URL context.
 
 #### Fields
@@ -3840,16 +4208,16 @@ values:
 
 - `success`
 
-  The status of the URL retrieval.
+  Url retrieval is successful.
 - `error`
 
-  The status of the URL retrieval.
+  Url retrieval is failed due to error.
 - `paywall`
 
-  The status of the URL retrieval.
+  Url retrieval is failed because the content is behind paywall.
 - `unsafe`
 
-  The status of the URL retrieval.
+  Url retrieval is failed because the content is unsafe.
 is_error boolean (optional) Whether the URL context resulted in an error.
 call_id string (required) Required. ID to match the ID from the function call block.
 signature string (optional) A signature hash for backend validation.

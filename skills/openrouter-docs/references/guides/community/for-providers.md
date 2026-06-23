@@ -165,7 +165,7 @@ By default, when OpenRouter's provider monitor sees a new model in your `/v1/mod
 
 Behavior:
 
-* `is_ready: false` keeps newly-staged endpoints hidden even if all baseline tests pass, and auto-hides any matching endpoint that is currently live. Use this to upload a model in advance of launch, or to take a live model offline coordinated with us.
+* `is_ready: false` skips baseline tests for newly-staged endpoints, keeping them hidden, and auto-hides any matching endpoint that is currently live. Use this to upload a model in advance of launch, or to take a live model offline coordinated with us.
 * `is_ready: true` and an omitted/absent field both preserve the default auto-stage and auto-unhide behavior.
 
 #### Free Model Variants with `is_free`

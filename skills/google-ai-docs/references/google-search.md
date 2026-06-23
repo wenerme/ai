@@ -1,4 +1,5 @@
-# Grounding with Google Search
+> [!NOTE]
+> **Note:** This version of the page covers the **Interactions API** . You can use the toggle on this page to switch to the [generateContent API version of this page](https://ai.google.dev/gemini-api/docs/generate-content/google-search).
 
 Grounding with Google Search connects the Gemini model to real-time web content
 and works with all available languages. This allows
@@ -15,71 +16,41 @@ Grounding helps you build applications that can:
 ### Python
 
     from google import genai
-    from google.genai import types
 
     client = genai.Client()
 
-    grounding_tool = types.Tool(
-        google_search=types.GoogleSearch()
-    )
-
-    config = types.GenerateContentConfig(
-        tools=[grounding_tool]
-    )
-
-    response = client.models.generate_content(
+    interaction = client.interactions.create(
         model="gemini-3.5-flash",
-        contents="Who won the euro 2024?",
-        config=config,
+        input="Who won the euro 2024?",
+        tools=[{"type": "google_search"}]
     )
 
-    print(response.text)
+    print(interaction.output_text)
 
 ### JavaScript
 
     import { GoogleGenAI } from "@google/genai";
 
-    const ai = new GoogleGenAI({});
+    const client = new GoogleGenAI({});
 
-    const groundingTool = {
-      googleSearch: {},
-    };
-
-    const config = {
-      tools: [groundingTool],
-    };
-
-    const response = await ai.models.generateContent({
-      model: "gemini-3.5-flash",
-      contents: "Who won the euro 2024?",
-      config,
+    const interaction = await client.interactions.create({
+        model: "gemini-3.5-flash",
+        input: "Who won the euro 2024?",
+        tools: [{ type: "google_search" }]
     });
 
-    console.log(response.text);
+    console.log(interaction.output_text);
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Content-Type: application/json" \
-      -X POST \
       -d '{
-        "contents": [
-          {
-            "parts": [
-              {"text": "Who won the euro 2024?"}
-            ]
-          }
-        ],
-        "tools": [
-          {
-            "google_search": {}
-          }
-        ]
+        "model": "gemini-3.5-flash",
+        "input": "Who won the euro 2024?",
+        "tools": [{"type": "google_search"}]
       }'
-
-You can learn more by trying the [Search tool
-notebook](https://colab.research.google.com/github/google-gemini/cookbook/blob/main/quickstarts/Search_Grounding.ipynb).
 
 ## How grounding with Google Search works
 
@@ -92,144 +63,132 @@ of searching, processing, and citing information automatically.
 2. **Prompt Analysis:** The model analyzes the prompt and determines if a Google Search can improve the answer.
 3. **Google Search:** If needed, the model automatically generates one or multiple search queries and executes them.
 4. **Search Results Processing:** The model processes the search results, synthesizes the information, and formulates a response.
-5. **Grounded Response:** The API returns a final, user-friendly response that is grounded in the search results. This response includes the model's text answer and `groundingMetadata` with the search queries, web results, and citations.
+5. **Grounded Response:** The API returns a final, user-friendly response that is grounded in the search results. This response includes the model's text answer with inline `annotations` containing the citations, as well as `google_search_call` and `google_search_result` steps with the search queries and search suggestions.
 
 ## Understanding the grounding response
 
-When a response is successfully grounded, the response includes a
-`groundingMetadata` field. This structured data is essential for verifying
-claims and building a rich citation experience in your application.
+When a response is successfully grounded, the model's text output includes
+inline `annotations` directly on the text content block. These annotations
+provide citation information linking parts of the response to their sources.
 
     {
-      "candidates": [
+      "steps": [
         {
-          "content": {
-            "parts": [
-              {
-                "text": "Spain won Euro 2024, defeating England 2-1 in the final. This victory marks Spain's record fourth European Championship title."
-              }
-            ],
-            "role": "model"
-          },
-          "groundingMetadata": {
-            "webSearchQueries": [
-              "UEFA Euro 2024 winner",
-              "who won euro 2024"
-            ],
-            "searchEntryPoint": {
-              "renderedContent": "<!-- HTML and CSS for the search widget -->"
-            },
-            "groundingChunks": [
-              {"web": {"uri": "https://vertexaisearch.cloud.google.com.....", "title": "aljazeera.com"}},
-              {"web": {"uri": "https://vertexaisearch.cloud.google.com.....", "title": "uefa.com"}}
-            ],
-            "groundingSupports": [
-              {
-                "segment": {"startIndex": 0, "endIndex": 85, "text": "Spain won Euro 2024, defeatin..."},
-                "groundingChunkIndices": [0]
-              },
-              {
-                "segment": {"startIndex": 86, "endIndex": 210, "text": "This victory marks Spain's..."},
-                "groundingChunkIndices": [0, 1]
-              }
-            ]
+          "type": "thought",
+          "summary": [
+            {
+              "type": "text",
+              "text": "The user is asking for the winner of Euro 2024. I need to search for the result of the Euro 2024 final."
+            }
+          ],
+          "signature": "CoMDAXLI2nynRYojJIy6B1Jh9os2crpWLfB0..."
+        },
+        {
+          "type": "google_search_call",
+          "arguments": {
+            "queries": ["UEFA Euro 2024 winner"]
           }
+        },
+        {
+          "type": "google_search_result",
+          "call_id": "search_001",
+          "result": [
+            {
+              "search_suggestions": "<!-- HTML and CSS for the search widget -->"
+            }
+          ]
+        },
+        {
+          "type": "model_output",
+          "content": [
+            {
+              "type": "text",
+              "text": "Spain won Euro 2024, defeating England 2-1 in the final. This victory marks Spain's record fourth European Championship title.",
+              "annotations": [
+                {
+                  "type": "url_citation",
+                  "url": "https://www.aljazeera.com/sports/euro-2024-final",
+                  "title": "aljazeera.com",
+                  "start_index": 0,
+                  "end_index": 56
+                },
+                {
+                  "type": "url_citation",
+                  "url": "https://www.uefa.com/euro2024/news/spain-wins-euro-2024",
+                  "title": "uefa.com",
+                  "start_index": 57,
+                  "end_index": 124
+                }
+              ]
+            }
+          ]
         }
       ]
     }
 
-The Gemini API returns the following information with the `groundingMetadata`:
+The key fields in the response:
 
-- `webSearchQueries` : Array of the search queries used. This is useful for debugging and understanding the model's reasoning process.
-- `searchEntryPoint` : Contains the HTML and CSS to render the required Search Suggestions. Full usage requirements are detailed in the [Terms of
-  Service](https://ai.google.dev/gemini-api/terms#grounding-with-google-search).
-- `groundingChunks` : Array of objects containing the web sources (`uri` and `title`).
-- `groundingSupports` : Array of chunks to connect model response `text` to the sources in `groundingChunks`. Each chunk links a text `segment` (defined by `startIndex` and `endIndex`) to one or more `groundingChunkIndices`. This is the key to building inline citations.
+- `google_search_call` : Contains the search `queries` the model executed.
+- `google_search_result` : Contains `search_suggestions`, an HTML snippet for rendering search suggestions in your UI. Full usage requirements are detailed in the [Terms of Service](https://ai.google.dev/gemini-api/terms#grounding-with-google-search).
+- `text` with `annotations` : The model's synthesized answer with inline citations. Each `url_citation` annotation links a text segment (defined by `start_index` and `end_index`) to a source URL. This is the key to building inline citations.
 
 Grounding with Google Search can also be used in combination with the [URL
-context tool](https://ai.google.dev/gemini-api/docs/url-context) to ground responses in both public
-web data and the specific URLs you provide.
+context tool](https://ai.google.dev/gemini-api/docs/url-context) to ground responses in
+both public web data and the specific URLs you provide.
 
 ## Attributing sources with inline citations
 
-The API returns structured citation data, giving you complete control over how
-you display sources in your user interface. You can use the `groundingSupports`
-and `groundingChunks` fields to link the model's statements directly to their
-sources. Here is a common pattern for processing the metadata to create a
-response with inline, clickable citations.
+The API returns inline `url_citation` annotations on the text content block,
+giving you complete control over how you display sources in your user interface.
+Each annotation includes `start_index` and `end_index` to identify which part
+of the text it cites. Here's how to extract and display them.
 
 ### Python
 
-    def add_citations(response):
-        text = response.text
-        supports = response.candidates[0].grounding_metadata.grounding_supports
-        chunks = response.candidates[0].grounding_metadata.grounding_chunks
-
-        # Sort supports by end_index in descending order to avoid shifting issues when inserting.
-        sorted_supports = sorted(supports, key=lambda s: s.segment.end_index, reverse=True)
-
-        for support in sorted_supports:
-            end_index = support.segment.end_index
-            if support.grounding_chunk_indices:
-                # Create citation string like [1](link1)[2](link2)
-                citation_links = []
-                for i in support.grounding_chunk_indices:
-                    if i < len(chunks):
-                        uri = chunks[i].web.uri
-                        citation_links.append(f"[{i + 1}]({uri})")
-
-                citation_string = ", ".join(citation_links)
-                text = text[:end_index] + citation_string + text[end_index:]
-
-        return text
-
-    # Assuming response with grounding metadata
-    text_with_citations = add_citations(response)
-    print(text_with_citations)
+    for step in interaction.steps:
+        if step.type == "model_output":
+            for content_block in step.content:
+                if content_block.type == "text":
+                    print(content_block.text)
+                    if content_block.annotations:
+                        print("\nCitations:")
+                        for annotation in content_block.annotations:
+                            if annotation.type == "url_citation":
+                                cited_text = content_block.text[annotation.start_index:annotation.end_index]
+                                print(f"  [{annotation.title}]({annotation.url})")
+                                print(f"    Cited text: \"{cited_text}\"")
 
 ### JavaScript
 
-    function addCitations(response) {
-        let text = response.text;
-        const supports = response.candidates[0]?.groundingMetadata?.groundingSupports;
-        const chunks = response.candidates[0]?.groundingMetadata?.groundingChunks;
-
-        // Sort supports by end_index in descending order to avoid shifting issues when inserting.
-        const sortedSupports = [...supports].sort(
-            (a, b) => (b.segment?.endIndex ?? 0) - (a.segment?.endIndex ?? 0),
-        );
-
-        for (const support of sortedSupports) {
-            const endIndex = support.segment?.endIndex;
-            if (endIndex === undefined || !support.groundingChunkIndices?.length) {
-            continue;
-            }
-
-            const citationLinks = support.groundingChunkIndices
-            .map(i => {
-                const uri = chunks[i]?.web?.uri;
-                if (uri) {
-                return `[${i + 1}](${uri})`;
+    for (const step of interaction.steps) {
+      if (step.type === 'model_output') {
+        for (const contentBlock of step.content) {
+          if (contentBlock.type === 'text') {
+            console.log(contentBlock.text);
+            if (contentBlock.annotations) {
+              console.log("\nCitations:");
+              for (const annotation of contentBlock.annotations) {
+                if (annotation.type === 'url_citation') {
+                  const citedText = contentBlock.text.slice(annotation.startIndex, annotation.endIndex);
+                  console.log(`  [${annotation.title}](${annotation.url})`);
+                  console.log(`    Cited text: "${citedText}"`);
                 }
-                return null;
-            })
-            .filter(Boolean);
-
-            if (citationLinks.length > 0) {
-            const citationString = citationLinks.join(", ");
-            text = text.slice(0, endIndex) + citationString + text.slice(endIndex);
+              }
             }
+          }
         }
-
-        return text;
+      }
     }
 
-    const textWithCitations = addCitations(response);
-    console.log(textWithCitations);
+The output will show the text followed by its citations:
 
-The new response with inline citations will look like this:
+    Spain won Euro 2024, defeating England 2-1 in the final. This victory marks Spain's record fourth European Championship title.
 
-    Spain won Euro 2024, defeating England 2-1 in the final.[1](https:/...), [2](https:/...), [4](https:/...), [5](https:/...) This victory marks Spain's record-breaking fourth European Championship title.[5]((https:/...), [2](https:/...), [3](https:/...), [4](https:/...)
+    Citations:
+      [aljazeera.com](https://www.aljazeera.com/sports/euro-2024-final)
+        Cited text: "Spain won Euro 2024, defeating England 2-1 in the final."
+      [uefa.com](https://www.uefa.com/euro2024/news/spain-wins-euro-2024)
+        Cited text: "This victory marks Spain's record fourth European Championship title."
 
 ## Pricing
 
@@ -254,12 +213,10 @@ overview](https://ai.google.dev/gemini-api/docs/models) page.
 | Model | Grounding with Google Search |
 |---|---|
 | Gemini 3.5 Flash | ✔️ |
-| Gemini 3.1 Flash-Lite | ✔️ |
 | Gemini 3.1 Flash Image Preview | ✔️ |
 | Gemini 3.1 Pro Preview | ✔️ |
 | Gemini 3 Pro Image Preview | ✔️ |
 | Gemini 3 Flash Preview | ✔️ |
-| Gemini 3.1 Flash-Lite Preview | ✔️ |
 | Gemini 2.5 Pro | ✔️ |
 | Gemini 2.5 Flash | ✔️ |
 | Gemini 2.5 Flash-Lite | ✔️ |
@@ -272,16 +229,14 @@ overview](https://ai.google.dev/gemini-api/docs/models) page.
 
 You can use Grounding with Google Search with other tools like
 [code execution](https://ai.google.dev/gemini-api/docs/code-execution) and
-[URL context](https://ai.google.dev/gemini-api/docs/url-context) to power more complex use cases.
+[URL context](https://ai.google.dev/gemini-api/docs/url-context) to power more complex
+use cases.
 
-Gemini 3 models support combining built-in tools (like Grounding with Google
-Search) with custom tools (function calling). Learn more on the
+Gemini 3 models support combining built-in tools (like Grounding with
+Google Search) with custom tools (function calling). Learn more on the
 [tool combinations](https://ai.google.dev/gemini-api/docs/tool-combination) page.
 
 ## What's next
 
-- Try the [Grounding with Google Search in the Gemini API
-  Cookbook](https://colab.research.google.com/github/google-gemini/cookbook/blob/main/quickstarts/Search_Grounding.ipynb).
 - Learn about other available tools, like [Function Calling](https://ai.google.dev/gemini-api/docs/function-calling).
-- Learn how to augment prompts with specific URLs using the [URL context
-  tool](https://ai.google.dev/gemini-api/docs/url-context).
+- Learn how to augment prompts with specific URLs using the [URL context tool](https://ai.google.dev/gemini-api/docs/url-context).

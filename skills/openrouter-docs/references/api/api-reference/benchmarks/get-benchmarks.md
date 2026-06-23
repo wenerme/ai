@@ -36,8 +36,8 @@ paths:
           in: query
           description: >-
             Benchmark source to query. Determines the shape of the returned
-            items.
-          required: true
+            items. When omitted, returns results from all sources.
+          required: false
           schema:
             $ref: '#/components/schemas/BenchmarksGetParametersSource'
         - name: task_type
@@ -68,11 +68,12 @@ paths:
             type: string
         - name: max_results
           in: query
-          description: Max results to return (1–100, default 50).
+          description: >-
+            Maximum number of items to return. When omitted, all matching
+            results are returned.
           required: false
           schema:
             type: integer
-            default: 50
         - name: Authorization
           in: header
           description: API key as bearer token in Authorization header
@@ -122,7 +123,9 @@ components:
       enum:
         - artificial-analysis
         - design-arena
-      description: Benchmark source to query. Determines the shape of the returned items.
+      description: >-
+        Benchmark source to query. Determines the shape of the returned items.
+        When omitted, returns results from all sources.
       title: BenchmarksGetParametersSource
     BenchmarksGetParametersTaskType:
       type: string
@@ -303,7 +306,7 @@ components:
       enum:
         - artificial-analysis
         - design-arena
-      description: The source filter applied.
+      description: The source filter applied, or null when all sources are returned.
       title: UnifiedBenchmarksMetaSource
     UnifiedBenchmarksMetaVersion:
       type: string
@@ -318,17 +321,28 @@ components:
           type: string
           description: ISO-8601 timestamp of when this data was last updated.
         citation:
-          type: string
-          description: Required attribution when republishing this data.
+          type:
+            - string
+            - 'null'
+          description: >-
+            Required attribution when republishing this data, or null when
+            results span multiple sources (attribute each item individually by
+            its `source` discriminator).
         model_count:
           type: integer
           description: Number of unique models in the response.
         source:
-          $ref: '#/components/schemas/UnifiedBenchmarksMetaSource'
-          description: The source filter applied.
+          oneOf:
+            - $ref: '#/components/schemas/UnifiedBenchmarksMetaSource'
+            - type: 'null'
+          description: The source filter applied, or null when all sources are returned.
         source_url:
-          type: string
-          description: URL of the upstream data source.
+          type:
+            - string
+            - 'null'
+          description: >-
+            URL of the upstream data source, or null when results span multiple
+            sources.
         task_type:
           type:
             - string
@@ -539,10 +553,10 @@ components:
   ],
   "meta": {
     "as_of": "2026-06-03T12:00:00Z",
-    "citation": "Source: Artificial Analysis (artificialanalysis.ai) via OpenRouter (openrouter.ai/rankings).",
+    "citation": null,
     "model_count": 1,
-    "source": "artificial-analysis",
-    "source_url": "https://artificialanalysis.ai",
+    "source": null,
+    "source_url": null,
     "task_type": null,
     "version": "v1"
   }
@@ -556,17 +570,15 @@ import requests
 
 url = "https://openrouter.ai/api/v1/benchmarks"
 
-querystring = {"source":"artificial-analysis"}
-
 headers = {"Authorization": "Bearer <token>"}
 
-response = requests.get(url, headers=headers, params=querystring)
+response = requests.get(url, headers=headers)
 
 print(response.json())
 ```
 
 ```javascript Benchmarks_getBenchmarks_example
-const url = 'https://openrouter.ai/api/v1/benchmarks?source=artificial-analysis';
+const url = 'https://openrouter.ai/api/v1/benchmarks';
 const options = {method: 'GET', headers: {Authorization: 'Bearer <token>'}};
 
 try {
@@ -589,7 +601,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1/benchmarks?source=artificial-analysis"
+	url := "https://openrouter.ai/api/v1/benchmarks"
 
 	req, _ := http.NewRequest("GET", url, nil)
 
@@ -610,7 +622,7 @@ func main() {
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1/benchmarks?source=artificial-analysis")
+url = URI("https://openrouter.ai/api/v1/benchmarks")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -626,7 +638,7 @@ puts response.read_body
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/benchmarks?source=artificial-analysis")
+HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/benchmarks")
   .header("Authorization", "Bearer <token>")
   .asString();
 ```
@@ -637,7 +649,7 @@ require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('GET', 'https://openrouter.ai/api/v1/benchmarks?source=artificial-analysis', [
+$response = $client->request('GET', 'https://openrouter.ai/api/v1/benchmarks', [
   'headers' => [
     'Authorization' => 'Bearer <token>',
   ],
@@ -649,7 +661,7 @@ echo $response->getBody();
 ```csharp Benchmarks_getBenchmarks_example
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1/benchmarks?source=artificial-analysis");
+var client = new RestClient("https://openrouter.ai/api/v1/benchmarks");
 var request = new RestRequest(Method.GET);
 request.AddHeader("Authorization", "Bearer <token>");
 IRestResponse response = client.Execute(request);
@@ -660,7 +672,7 @@ import Foundation
 
 let headers = ["Authorization": "Bearer <token>"]
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/benchmarks?source=artificial-analysis")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/benchmarks")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"

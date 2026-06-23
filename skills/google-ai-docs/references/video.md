@@ -1,3 +1,6 @@
+> [!NOTE]
+> **Note:** This feature is currently only available with the generateContent API. Please follow the content on this page for more information.
+
 > To learn about video understanding, see the [Video understanding](https://ai.google.dev/gemini-api/docs/video-understanding) guide.
 
 [Veo 3.1](https://deepmind.google/models/veo/) is Google's state-of-the-art

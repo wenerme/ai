@@ -1,5 +1,5 @@
 ---
-title: Hyperdrive
+title: Hyperdrive (Postgres &amp; MySQL)
 description: Accelerate access to your existing databases from Cloudflare Workers with Hyperdrive's global connection pooling and query caching.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
@@ -10,7 +10,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
-# Hyperdrive
+# Hyperdrive (Postgres & MySQL)
 
 Turn your existing regional database into a globally distributed database.
 
@@ -26,8 +26,8 @@ Use Hyperdrive's connection details from your Cloudflare Workers application wit
 
 ### PostgreSQL
 
-* [ index.ts ](#tab-panel-8694)
-* [ wrangler.jsonc ](#tab-panel-8695)
+* [ index.ts ](#tab-panel-8696)
+* [ wrangler.jsonc ](#tab-panel-8697)
 
 TypeScript
 
@@ -44,8 +44,8 @@ export default {  async fetch(request, env, ctx): Promise<Response> {    // Crea
 
 ### MySQL
 
-* [ index.ts ](#tab-panel-8696)
-* [ wrangler.jsonc ](#tab-panel-8697)
+* [ index.ts ](#tab-panel-8698)
+* [ wrangler.jsonc ](#tab-panel-8699)
 
 TypeScript
 
@@ -128,6 +128,6 @@ Connect with the Workers community on Discord to ask questions, show what you ar
 Follow @CloudflareDev on Twitter to learn about product announcements, and what is new in Cloudflare Developer Platform.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/hyperdrive/#page","headline":"Overview · Cloudflare Hyperdrive docs","description":"Accelerate access to your existing databases from Cloudflare Workers with Hyperdrive's global connection pooling and query caching.","url":"https://developers.cloudflare.com/hyperdrive/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/hyperdrive/#page","headline":"Overview · Cloudflare Hyperdrive docs","description":"Accelerate access to your existing databases from Cloudflare Workers with Hyperdrive's global connection pooling and query caching.","url":"https://developers.cloudflare.com/hyperdrive/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/hyperdrive/","name":"Hyperdrive"}}]}
 ```

@@ -209,6 +209,36 @@ The HTTPS endpoint that the Cloudflare One Client will poll for an [External Eme
 
 The URL must use `https://` and use an IPv4 or IPv6 address as host (not a domain).
 
+### `hardware_backed_registration`
+
+Feature availability
+
+| [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
+| ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| All modes                                                                                                                          | All plans                                                       |
+
+| System   | Availability | Minimum WARP version |
+| -------- | ------------ | -------------------- |
+| Windows  | ✅            | 2026.6.0             |
+| macOS    | ✅            | 2026.6.0             |
+| Linux    | ✅            | 2026.6.0             |
+| iOS      | ❌            | N/A                  |
+| Android  | ❌            | N/A                  |
+| ChromeOS | ❌            | N/A                  |
+
+Binds the registration to a non-exportable key stored in device hardware (Secure Enclave or TPM 2.0) and authenticates API requests with mTLS. For more information, refer to [Hardware-backed registration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/hardware-backed-registration/).
+
+**Value Type:** `boolean`
+
+**Value:**
+
+* `false` — (default) The Cloudflare One Client stores its API token in the device keystore.
+* `true` — The Cloudflare One Client generates a hardware-backed key during registration and uses mTLS for subsequent API calls.
+
+Warning
+
+Changing this value after a device has registered forces the device to register again. Existing registrations are not migrated.
+
 ### `local_emergency_signal_enabled`
 
 Enables [Local Emergency Disconnect](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/emergency-disconnect/#set-up-local-emergency-disconnect). When enabled, the Cloudflare One Client monitors a fixed-path JSON file on the device for an emergency disconnect signal.
@@ -387,9 +417,10 @@ Defines organization-wide settings that apply to all [configs](#configs) entries
 
 Supported settings:
 
-| Key         | Description                                                                                     |
-| ----------- | ----------------------------------------------------------------------------------------------- |
-| environment | Overrides the [environment](#environment) value for all configs belonging to this organization. |
+| Key                            | Description                                                                                                                             |
+| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
+| environment                    | Overrides the [environment](#environment) value for all configs belonging to this organization.                                         |
+| hardware\_backed\_registration | Overrides the [hardware\_backed\_registration](#hardware%5Fbacked%5Fregistration) value for all configs belonging to this organization. |
 
 Use `organization_configs` when you have multiple configurations for the same organization and want to enforce a single `environment` value across all of them. Any `environment` value set inside an individual `configs` entry for that organization will be overridden by the value specified in `organization_configs`.
 
@@ -428,6 +459,6 @@ An optional property. `is_browser` will help the Cloudflare One Agent applicatio
 1. Traffic and DNS mode is supported in client version 2025.2.664.0 and below. In version 2025.4.589.1 and above, this parameter does not apply to Traffic and DNS mode because all DoH traffic goes inside of the WARP tunnel. [↩](#user-content-fnref-1)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#page","headline":"Parameters · Cloudflare One docs","description":"Explore parameters for deploying the Cloudflare One Client via MDM, including organization setup and device registration for Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["XML","Post-quantum"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#page","headline":"Parameters · Cloudflare One docs","description":"Explore parameters for deploying the Cloudflare One Client via MDM, including organization setup and device registration for Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["XML","Post-quantum"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/","name":"Cloudflare One Client"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/","name":"Deploy the Cloudflare One Client"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/","name":"Managed deployment"}},{"@type":"ListItem","position":8,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/","name":"Parameters"}}]}
 ```

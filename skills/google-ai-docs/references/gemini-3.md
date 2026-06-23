@@ -1,4 +1,5 @@
-# Gemini 3 Developer Guide
+> [!NOTE]
+> **Note:** This version of the page covers the **Interactions API** . You can use the toggle on this page to switch to the [generateContent API version of this page](https://ai.google.dev/gemini-api/docs/generate-content/gemini-3).
 
 > [!CAUTION]
 > **Deprecation notice:** This page is deprecated and will be removed. See the [What's new
@@ -9,7 +10,6 @@ state-of-the-art reasoning. It is designed to bring any idea to life by
 mastering agentic workflows, autonomous coding, and complex multimodal tasks.
 This guide covers key features of the Gemini 3 model family and how to get the
 most out of it.
-[Try Gemini 3.1 Pro Preview](https://aistudio.google.com/prompts/new_chat?model=gemini-3.1-pro-preview) [Try Gemini 3 Flash Preview](https://aistudio.google.com/prompts/new_chat?model=gemini-3-flash-preview) [Try Gemini 3.1 Flash-Lite](https://aistudio.google.com/prompts/new_chat?model=gemini-3-flash-lite) [Try Nano Banana 2](https://aistudio.google.com/prompts/new_chat?model=gemini-3.1-flash-image-preview)
 
 Explore our [collection of Gemini 3 apps](https://aistudio.google.com/app/apps?source=showcase&showcaseTag=gemini-3) to
 see how the model handles advanced reasoning, autonomous coding, and complex
@@ -23,40 +23,38 @@ Get started with a few lines of code:
 
     client = genai.Client()
 
-    response = client.models.generate_content(
+    interaction = client.interactions.create(
         model="gemini-3.1-pro-preview",
-        contents="Find the race condition in this multi-threaded C++ snippet: [code here]",
+        input="Find the race condition in this multi-threaded C++ snippet: [code here]",
     )
 
-    print(response.text)
+    print(interaction.output_text)
 
 ### JavaScript
 
     import { GoogleGenAI } from "@google/genai";
 
-    const ai = new GoogleGenAI({});
+    const client = new GoogleGenAI({});
 
     async function run() {
-      const response = await ai.models.generateContent({
+      const interaction = await client.interactions.create({
         model: "gemini-3.1-pro-preview",
-        contents: "Find the race condition in this multi-threaded C++ snippet: [code here]",
+        input: "Find the race condition in this multi-threaded C++ snippet: [code here]",
       });
 
-      console.log(response.text);
+      console.log(interaction.output_text);
     }
 
     run();
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent" \
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
-      -X POST \
       -d '{
-        "contents": [{
-          "parts": [{"text": "Find the race condition in this multi-threaded C++ snippet: [code here]"}]
-        }]
+        "model": "gemini-3.1-pro-preview",
+        "input": "Find the race condition in this multi-threaded C++ snippet: [code here]"
       }'
 
 ## Meet the Gemini 3 series
@@ -73,6 +71,8 @@ the high-volume, high-efficiency, lower price-point equivalent.
 
 Gemini 3.1 Flash-Lite is our workhorse model built for cost-efficiency model and
 high-volume tasks.
+
+All Gemini 3 models are currently in preview.
 
 | Model ID | Context Window (In / Out) | Knowledge Cutoff | Pricing (Input / Output)\* |
 |---|---|---|---|
@@ -93,7 +93,7 @@ For detailed limits, pricing, and additional information, see the
 Gemini 3 introduces new parameters designed to give developers more control over
 latency, cost, and multimodal fidelity.
 
-### Thinking level
+### Level of thinking
 
 Gemini 3 series models use dynamic thinking by default to reason through
 prompts. You can use the `thinking_level` parameter, which controls the
@@ -115,168 +115,48 @@ constrain the model's thinking level to `low`.
 ### Python
 
     from google import genai
-    from google.genai import types
 
     client = genai.Client()
 
-    response = client.models.generate_content(
+    interaction = client.interactions.create(
         model="gemini-3.1-pro-preview",
-        contents="How does AI work?",
-        config=types.GenerateContentConfig(
-            thinking_config=types.ThinkingConfig(thinking_level="low")
-        ),
+        input="How does AI work?",
+        generation_config={"thinking_level": "low"},
     )
 
-    print(response.text)
+    print(interaction.output_text)
 
 ### JavaScript
 
     import { GoogleGenAI } from "@google/genai";
 
-    const ai = new GoogleGenAI({});
+    const client = new GoogleGenAI({});
 
-    const response = await ai.models.generateContent({
+    const interaction = await client.interactions.create({
         model: "gemini-3.1-pro-preview",
-        contents: "How does AI work?",
-        config: {
-          thinkingConfig: {
-            thinkingLevel: "low",
-          }
+        input: "How does AI work?",
+        generation_config: {
+          thinking_level: "low",
         },
       });
 
-    console.log(response.text);
+    console.log(interaction.output_text);
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent" \
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
-      -X POST \
       -d '{
-        "contents": [{
-          "parts": [{"text": "How does AI work?"}]
-        }],
-        "generationConfig": {
-          "thinkingConfig": {
-            "thinkingLevel": "low"
-          }
+        "model": "gemini-3.1-pro-preview",
+        "input": "How does AI work?",
+        "generation_config": {
+          "thinking_level": "low"
         }
       }'
 
 > [!IMPORTANT]
 > **Important:** You cannot use both `thinking_level` and the legacy `thinking_budget` parameter in the same request. Doing so will return a 400 error.
-
-### Media resolution
-
-Gemini 3 introduces granular control over multimodal vision processing using the
-`media_resolution` parameter. Higher resolutions improve the model's ability to
-read fine text or identify small details, but increase token usage and latency.
-The `media_resolution` parameter determines the **maximum number of tokens
-allocated per input image or video frame.**
-
-You can now set the resolution to `media_resolution_low`,
-`media_resolution_medium`, `media_resolution_high`, or
-`media_resolution_ultra_high` per individual media part or globally (via
-`generation_config`, global not available for ultra high). If unspecified, the
-model uses optimal defaults based on the media type.
-
-**Recommended settings**
-
-| Media Type | Recommended Setting | Max Tokens | Usage Guidance |
-|---|---|---|---|
-| **Images** | `media_resolution_high` | 1120 | Recommended for most image analysis tasks to ensure maximum quality. |
-| **PDFs** | `media_resolution_medium` | 560 | Optimal for document understanding; quality typically saturates at `medium`. Increasing to `high` rarely improves OCR results for standard documents. |
-| **Video** (General) | `media_resolution_low` (or `media_resolution_medium`) | 70 (per frame) | **Note:** For video, `low` and `medium` settings are treated identically (70 tokens) to optimize context usage. This is sufficient for most action recognition and description tasks. |
-| **Video** (Text-heavy) | `media_resolution_high` | 280 (per frame) | Required only when the use case involves reading dense text (OCR) or small details within video frames. |
-
-> [!NOTE]
-> **Note:** The `media_resolution` parameter maps to different token counts depending on the input type. While images scale linearly (`media_resolution_low`: 280, `media_resolution_medium`: 560, `media_resolution_high`: 1120), Video is compressed more aggressively. For Video, both `media_resolution_low` and `media_resolution_medium` are capped at 70 tokens per frame, and `media_resolution_high` is capped at 280 tokens. See the full details on the [Media resolution](https://ai.google.dev/gemini-api/docs/media-resolution#token-counts) page.
-
-### Python
-
-    from google import genai
-    from google.genai import types
-    import base64
-
-    # The media_resolution parameter is currently only available in the v1alpha API version.
-    client = genai.Client(http_options={'api_version': 'v1alpha'})
-
-    response = client.models.generate_content(
-        model="gemini-3.1-pro-preview",
-        contents=[
-            types.Content(
-                parts=[
-                    types.Part(text="What is in this image?"),
-                    types.Part(
-                        inline_data=types.Blob(
-                            mime_type="image/jpeg",
-                            data=base64.b64decode("..."),
-                        ),
-                        media_resolution={"level": "media_resolution_high"}
-                    )
-                ]
-            )
-        ]
-    )
-
-    print(response.text)
-
-### JavaScript
-
-    import { GoogleGenAI } from "@google/genai";
-
-    // The media_resolution parameter is currently only available in the v1alpha API version.
-    const ai = new GoogleGenAI({ apiVersion: "v1alpha" });
-
-    async function run() {
-      const response = await ai.models.generateContent({
-        model: "gemini-3.1-pro-preview",
-        contents: [
-          {
-            parts: [
-              { text: "What is in this image?" },
-              {
-                inlineData: {
-                  mimeType: "image/jpeg",
-                  data: "...",
-                },
-                mediaResolution: {
-                  level: "media_resolution_high"
-                }
-              }
-            ]
-          }
-        ]
-      });
-
-      console.log(response.text);
-    }
-
-    run();
-
-### REST
-
-    curl "https://generativelanguage.googleapis.com/v1alpha/models/gemini-3.1-pro-preview:generateContent" \
-      -H "x-goog-api-key: $GEMINI_API_KEY" \
-      -H 'Content-Type: application/json' \
-      -X POST \
-      -d '{
-        "contents": [{
-          "parts": [
-            { "text": "What is in this image?" },
-            {
-              "inlineData": {
-                "mimeType": "image/jpeg",
-                "data": "..."
-              },
-              "mediaResolution": {
-                "level": "media_resolution_high"
-              }
-            }
-          ]
-        }]
-      }'
 
 ### Temperature
 
@@ -291,265 +171,12 @@ particularly in complex mathematical or reasoning tasks.
 
 ### Thought signatures
 
-Gemini 3 uses [Thought signatures](https://ai.google.dev/gemini-api/docs/thought-signatures) to
-maintain reasoning context across API calls. These signatures are encrypted
-representations of the model's internal thought process. To ensure the model
-maintains its reasoning capabilities you must return these signatures back to
-the model in your request exactly as they were received:
+Gemini 3 models use thought signatures to maintain reasoning context across API calls. These signatures are encrypted representations of the model's internal thought process.
 
-- **Function Calling (Strict):** The API enforces strict validation on the
-  "Current Turn". Missing signatures will result in a 400 error.
+- **Stateful Mode (Recommended)** : When using the Interactions API in stateful mode (providing `previous_interaction_id`), the server automatically manages conversation history and thought signatures.
+- **Stateless Mode**: If you are managing conversation history manually, you must include thought blocks with their signatures in subsequent requests to validate authenticity.
 
-  > [!NOTE]
-  > **Note:** Circulation of thought signatures is required even when [thinking level](https://ai.google.dev/gemini-api/docs/gemini-3#thinking_level) is set to `minimal` for Gemini 3 Flash.
-
-- **Text/Chat:** Validation is not strictly enforced, but omitting signatures will degrade the model's reasoning and answer quality.
-
-- **Image generation/editing (Strict)** : The API enforces strict validation on all Model parts including a `thoughtSignature`. Missing signatures will result in a 400 error.
-
-> [!TIP]
-> **Success:** If you use the [official SDKs (Python, Node, Java)](https://ai.google.dev/gemini-api/docs/function-calling?example=meeting#thinking) and standard chat history, Thought Signatures are handled automatically. You do not need to manually manage these fields.
-
-#### Function calling (strict validation)
-
-When Gemini generates a `functionCall`, it relies on the `thoughtSignature` to
-process the tool's output correctly in the next turn. The "Current Turn"
-includes all Model (`functionCall`) and User (`functionResponse`) steps that
-occurred since the last standard **User** `text` message.
-
-- **Single Function Call:** The `functionCall` part contains a signature. You must return it.
-- **Parallel Function Calls:** Only the first `functionCall` part in the list will contain the signature. You must return the parts in the exact order received.
-- **Multi-Step (Sequential):** If the model calls a tool, receives a result, and calls *another* tool (within the same turn), **both** function calls have signatures. You must return **all** accumulated signatures in the history.
-
-#### Text and streaming
-
-For standard chat or text generation, the presence of a signature is not
-guaranteed.
-
-- **Non-Streaming** : The final content part of the response may contain a `thoughtSignature`, though it is not always present. If one is returned, you should send it back to maintain best performance.
-- **Streaming**: If a signature is generated, it may arrive in a final chunk that contains an empty text part. Ensure your stream parser checks for signatures even if the text field is empty.
-
-#### Image generation and editing
-
-For `gemini-3-pro-image-preview` and `gemini-3.1-flash-image-preview`, thought
-signatures are critical for
-conversational editing. When you ask the model to modify an image it relies on
-the `thoughtSignature` from the previous turn to understand the composition and
-logic of the original image.
-
-- **Editing:** Signatures are guaranteed on the first part after the thoughts of the response (`text` or `inlineData`) and on every subsequent `inlineData` part. You must return all of these signatures to avoid errors.
-
-#### Code examples
-
-#### Multi-step Function Calling (Sequential)
-
-The user asks a question requiring two separate steps (Check Flight -\> Book Taxi) in one turn.   
-
-
-**Step 1: Model calls Flight Tool.**   
-
-The model returns a signature `<Sig_A>`
-
-```java
-// Model Response (Turn 1, Step 1)
-  {
-    "role": "model",
-    "parts": [
-      {
-        "functionCall": { "name": "check_flight", "args": {...} },
-        "thoughtSignature": "<Sig_A>" // SAVE THIS
-      }
-    ]
-  }
-```
-
-**Step 2: User sends Flight Result**   
-
-We must send back `<Sig_A>` to keep the model's train of thought.
-
-```java
-// User Request (Turn 1, Step 2)
-[
-  { "role": "user", "parts": [{ "text": "Check flight AA100..." }] },
-  {
-    "role": "model",
-    "parts": [
-      { 
-        "functionCall": { "name": "check_flight", "args": {...} },
-        "thoughtSignature": "<Sig_A>" // REQUIRED
-      }
-    ]
-  },
-  { "role": "user", "parts": [{ "functionResponse": { "name": "check_flight", "response": {...} } }] }
-]
-```
-
-**Step 3: Model calls Taxi Tool**   
-
-The model remembers the flight delay via `<Sig_A>` and now decides to book a taxi. It generates a *new* signature `<Sig_B>`.
-
-```java
-// Model Response (Turn 1, Step 3)
-{
-  "role": "model",
-  "parts": [
-    {
-      "functionCall": { "name": "book_taxi", "args": {...} },
-      "thoughtSignature": "<Sig_B>" // SAVE THIS
-    }
-  ]
-}
-```
-
-**Step 4: User sends Taxi Result**   
-
-To complete the turn, you must send back the entire chain: `<Sig_A>` AND `<Sig_B>`.
-
-```java
-// User Request (Turn 1, Step 4)
-[
-  // ... previous history ...
-  { 
-    "role": "model", 
-    "parts": [
-       { "functionCall": { "name": "check_flight", ... }, "thoughtSignature": "<Sig_A>" }
-    ]
-  },
-  { "role": "user", "parts": [{ "functionResponse": {...} }] },
-  { 
-    "role": "model", 
-    "parts": [
-       { "functionCall": { "name": "book_taxi", ... }, "thoughtSignature": "<Sig_B>" }
-    ]
-  },
-  { "role": "user", "parts": [{ "functionResponse": {...} }] }
-]
-```
-
-#### Parallel Function Calling
-
-The user asks: "Check the weather in Paris and London." The model returns two function calls in one response.
-
-```java
-// User Request (Sending Parallel Results)
-[
-  {
-    "role": "user",
-    "parts": [
-      { "text": "Check the weather in Paris and London." }
-    ]
-  },
-  {
-    "role": "model",
-    "parts": [
-      // 1. First Function Call has the signature
-      {
-        "functionCall": { "name": "check_weather", "args": { "city": "Paris" } },
-        "thoughtSignature": "<Signature_A>" 
-      },
-      // 2. Subsequent parallel calls DO NOT have signatures
-      {
-        "functionCall": { "name": "check_weather", "args": { "city": "London" } }
-      } 
-    ]
-  },
-  {
-    "role": "user",
-    "parts": [
-      // 3. Function Responses are grouped together in the next block
-      {
-        "functionResponse": { "name": "check_weather", "response": { "temp": "15C" } }
-      },
-      {
-        "functionResponse": { "name": "check_weather", "response": { "temp": "12C" } }
-      }
-    ]
-  }
-]
-```
-
-#### Text/In-Context Reasoning (No Validation)
-
-The user asks a question that requires in-context reasoning without external tools. While not strictly validated, including the signature helps the model maintain the reasoning chain for follow-up questions.
-
-```java
-// User Request (Follow-up question)
-[
-  {
-    "role": "user",
-    "parts": [{ "text": "What are the risks of this investment?" }]
-  },
-  {
-    "role": "model",
-    "parts": [
-      {
-        "text": "I need to calculate the risk step-by-step. First, I'll look at volatility...",
-        "thoughtSignature": "<Signature_C>" // Recommended to include
-      }
-    ]
-  },
-  {
-    "role": "user",
-    "parts": [{ "text": "Summarize that in one sentence." }]
-  }
-]
-```
-
-#### Image Generation \& Editing
-
-For image generation, signatures are strictly validated. They appear on the **first part** (text or image) and **all subsequent image parts**. All must be returned in the next turn.
-
-```java
-// Model Response (Turn 1)
-{
-  "role": "model",
-  "parts": [
-    // 1. First part ALWAYS has a signature (even if text)
-    {
-      "text": "I will generate a cyberpunk city...",
-      "thoughtSignature": "<Signature_D>"
-    },
-    // 2. ALL InlineData (Image) parts ALWAYS have signatures
-    {
-      "inlineData": { ... }, 
-      "thoughtSignature": "<Signature_E>"
-    },
-  ]
-}
-
-// User Request (Turn 2 - Requesting an Edit)
-{
-  "contents": [
-    // History must include ALL signatures received
-    {
-      "role": "user",
-      "parts": [{ "text": "Generate a cyberpunk city" }]
-    },
-    {
-      "role": "model",
-      "parts": [
-         { "text": "...", "thoughtSignature": "<Signature_D>" },
-         { "inlineData": "...", "thoughtSignature": "<Signature_E>" },
-      ]
-    },
-    // New User Prompt
-    {
-      "role": "user",
-      "parts": [{ "text": "Make it daytime." }]
-    }
-  ]
-}
-```
-
-#### Migrating from other models
-
-If you are transferring a conversation trace from another model (e.g., Gemini
-2.5) or injecting a custom function call that was not generated by Gemini 3,
-you will not have a valid signature.
-
-To bypass strict validation in these specific scenarios, populate the field with
-this specific dummy string: `"thoughtSignature": "context_engineering_is_the_way
-to_go"`
+For detailed information, see the [Thought Signatures](https://ai.google.dev/gemini-api/docs/thinking) page.\`
 
 ### Structured Outputs with tools
 
@@ -559,7 +186,6 @@ Gemini 3 models allow you to combine [Structured Outputs](https://ai.google.dev/
 ### Python
 
     from google import genai
-    from google.genai import types
     from pydantic import BaseModel, Field
     from typing import List
 
@@ -570,49 +196,62 @@ Gemini 3 models allow you to combine [Structured Outputs](https://ai.google.dev/
 
     client = genai.Client()
 
-    response = client.models.generate_content(
+    interaction = client.interactions.create(
         model="gemini-3.1-pro-preview",
-        contents="Search for all details for the latest Euro.",
-        config={
-            "tools": [
-                {"google_search": {}},
-                {"url_context": {}}
-            ],
-            "response_format": {"text": {"mime_type": "application/json", "schema": MatchResult.model_json_schema()}},
-        },  
+        input="Search for all details for the latest Euro.",
+        tools=[
+            {"type": "google_search"},
+            {"type": "url_context"}
+        ],
+        response_format={
+            "type": "text",
+            "mime_type": "application/json",
+            "schema": MatchResult.model_json_schema()
+        },
     )
 
-    result = MatchResult.model_validate_json(response.text)
+    result = MatchResult.model_validate_json(interaction.output_text)
     print(result)
 
 ### JavaScript
 
     import { GoogleGenAI } from "@google/genai";
-    import { z } from "zod";
-    import { zodToJsonSchema } from "zod-to-json-schema";
+    import * as z from "zod";
 
-    const ai = new GoogleGenAI({});
+    const matchJsonSchema = {
+      type: "object",
+      properties: {
+        winner: { type: "string", description: "The name of the winner." },
+        final_match_score: { type: "string", description: "The final score." },
+        scorers: {
+          type: "array",
+          items: { type: "string" },
+          description: "The name of the scorer."
+        }
+      },
+      required: ["winner", "final_match_score", "scorers"]
+    };
 
-    const matchSchema = z.object({
-      winner: z.string().describe("The name of the winner."),
-      final_match_score: z.string().describe("The final score."),
-      scorers: z.array(z.string()).describe("The name of the scorer.")
-    });
+    const matchSchema = z.fromJSONSchema(matchJsonSchema);
+
+    const client = new GoogleGenAI({});
 
     async function run() {
-      const response = await ai.models.generateContent({
+      const interaction = await client.interactions.create({
         model: "gemini-3.1-pro-preview",
-        contents: "Search for all details for the latest Euro.",
-        config: {
-          tools: [
-            { googleSearch: {} },
-            { urlContext: {} }
-          ],
-          responseFormat: { text: { mimeType: "application/json", schema: zodToJsonSchema(matchSchema) } },
+        input: "Search for all details for the latest Euro.",
+        tools: [
+          { type: "google_search" },
+          { type: "url_context" }
+        ],
+        response_format: {
+            type: "text",
+            mime_type: "application/json",
+            schema: matchJsonSchema
         },
       });
 
-      const match = matchSchema.parse(JSON.parse(response.text));
+      const match = matchSchema.parse(JSON.parse(interaction.output_text));
       console.log(match);
     }
 
@@ -620,23 +259,20 @@ Gemini 3 models allow you to combine [Structured Outputs](https://ai.google.dev/
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent" \
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
-      -X POST \
       -d '{
-        "contents": [{
-          "parts": [{"text": "Search for all details for the latest Euro."}]
-        }],
+        "model": "gemini-3.1-pro-preview",
+        "input": "Search for all details for the latest Euro.",
         "tools": [
-          {"googleSearch": {}},
-          {"urlContext": {}}
+          {"type": "google_search"},
+          {"type": "url_context"}
         ],
-        "generationConfig": {
-    "responseFormat": {
-      "text": {
-        "mimeType": "application/json",
-        "schema": {
+        "response_format": {
+            "type": "text",
+            "mime_type": "application/json",
+            "schema": {
                 "type": "object",
                 "properties": {
                     "winner": {"type": "string", "description": "The name of the winner."},
@@ -646,9 +282,7 @@ Gemini 3 models allow you to combine [Structured Outputs](https://ai.google.dev/
                         "items": {"type": "string"},
                         "description": "The name of the scorer."
                     }
-      }
-    }
-    },
+                },
                 "required": ["winner", "final_match_score", "scorers"]
             }
         }
@@ -674,23 +308,28 @@ options, see the [Image Generation guide](https://ai.google.dev/gemini-api/docs/
 ### Python
 
     from google import genai
-    from google.genai import types
+    import base64
 
     client = genai.Client()
 
-    response = client.models.generate_content(
+    interaction = client.interactions.create(
         model="gemini-3-pro-image-preview",
-        contents="Generate an infographic of the current weather in Tokyo.",
-        config=types.GenerateContentConfig(
-            tools=[{"google_search": {}}],
-            response_format={"image": {"aspect_ratio": "16:9", "image_size": "4K"}}
-        )
+        input="Generate an infographic of the current weather in Tokyo.",
+        tools=[{"type": "google_search"}],
+        response_format={
+            "type": "image",
+            "aspect_ratio": "16:9",
+            "image_size": "4K"
+        }
     )
 
-    image_parts = [part for part in response.parts if part.inline_data]
+    from PIL import Image
+    import io
 
-    if image_parts:
-        image = image_parts[0].as_image()
+    generated_image = interaction.output_image
+    if generated_image:
+        image_data = base64.b64decode(generated_image.data)
+        image = Image.open(io.BytesIO(image_data))
         image.save('weather_tokyo.png')
         image.show()
 
@@ -699,52 +338,40 @@ options, see the [Image Generation guide](https://ai.google.dev/gemini-api/docs/
     import { GoogleGenAI } from "@google/genai";
     import * as fs from "node:fs";
 
-    const ai = new GoogleGenAI({});
+    const client = new GoogleGenAI({});
 
     async function run() {
-      const response = await ai.models.generateContent({
+      const interaction = await client.interactions.create({
         model: "gemini-3-pro-image-preview",
-        contents: "Generate a visualization of the current weather in Tokyo.",
-        config: {
-          tools: [{ googleSearch: {} }],
-          responseFormat: {
-        image: {
-            aspectRatio: "16:9",
-            imageSize: "4K"
-          }
-      }
+        input: "Generate a visualization of the current weather in Tokyo.",
+        tools: [{ type: "google_search" }],
+        response_format: {
+          type: "image",
+          aspect_ratio: "16:9",
+          image_size: "4K"
         }
       });
 
-      for (const part of response.candidates[0].content.parts) {
-        if (part.inlineData) {
-          const imageData = part.inlineData.data;
-          const buffer = Buffer.from(imageData, "base64");
-          fs.writeFileSync("weather_tokyo.png", buffer);
-        }
-      }
+      const buffer = Buffer.from(interaction.output_image.data, 'base64');
+
+      fs.writeFileSync('weather_tokyo.png', buffer);
     }
 
     run();
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-pro-image-preview:generateContent" \
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
-      -X POST \
       -d '{
-        "contents": [{
-          "parts": [{"text": "Generate a visualization of the current weather in Tokyo."}]
-        }],
-        "tools": [{"googleSearch": {}}],
-        "generationConfig": {
-            "responseFormat": {
-        "image": {
-              "aspectRatio": "16:9",
-              "imageSize": "4K"
-          }
-      }
+        "model": "gemini-3-pro-image-preview",
+        "input": "Generate a visualization of the current weather in Tokyo.",
+        "tools": [{"type": "google_search"}],
+        "response_format": {
+            "type": "image",
+            "aspect_ratio": "16:9",
+            "image_size": "4K"
         }
       }'
 
@@ -775,6 +402,7 @@ code to manipulate images when needed.
     import requests
     from PIL import Image
     import io
+    import base64
 
     image_path = "https://goo.gle/instrument-img"
     image_bytes = requests.get(image_path).content
@@ -782,32 +410,36 @@ code to manipulate images when needed.
 
     client = genai.Client()
 
-    response = client.models.generate_content(
+    interaction = client.interactions.create(
         model="gemini-3-flash-preview",
-        contents=[
+        input=[
             image,
             "Zoom into the expression pedals and tell me how many pedals are there?"
         ],
-        config=types.GenerateContentConfig(
-            tools=[types.Tool(code_execution=types.ToolCodeExecution)]
-        ),
+        tools=[{"type": "code_execution"}],
     )
 
-    for part in response.candidates[0].content.parts:
-        if part.text is not None:
-            print(part.text)
-        if part.executable_code is not None:
-            print(part.executable_code.code)
-        if part.code_execution_result is not None:
-            print(part.code_execution_result.output)
-        if part.as_image() is not None:
-            display(Image.open(io.BytesIO(part.as_image().image_bytes)))
+    from IPython.display import display
+    from PIL import Image
+    import io
+
+    for step in interaction.steps:
+        if step.type == "model_output":
+            for content_block in step.content:
+                if content_block.type == "text":
+                    print(content_block.text)
+                elif content_block.type == "image":
+                     display(Image.open(io.BytesIO(base64.b64decode(content_block.data))))
+        elif step.type == "code_execution_call":
+            print(step.code)
+        elif step.type == "code_execution_result":
+            print(step.output)
 
 ### JavaScript
 
     import { GoogleGenAI } from "@google/genai";
 
-    const ai = new GoogleGenAI({});
+    const client = new GoogleGenAI({});
 
     async function main() {
       const imageUrl = "https://goo.gle/instrument-img";
@@ -815,33 +447,33 @@ code to manipulate images when needed.
       const imageArrayBuffer = await response.arrayBuffer();
       const base64ImageData = Buffer.from(imageArrayBuffer).toString("base64");
 
-      const result = await ai.models.generateContent({
+      const interaction = await client.interactions.create({
         model: "gemini-3-flash-preview",
-        contents: [
+        input: [
           {
-            inlineData: {
-              mimeType: "image/jpeg",
-              data: base64ImageData,
-            },
+            type: "image",
+            mime_type: "image/jpeg",
+            data: base64ImageData,
           },
           {
+            type: "text",
             text: "Zoom into the expression pedals and tell me how many pedals are there?",
           },
         ],
-        config: {
-          tools: [{ codeExecution: {} }],
-        },
+        tools: [{ type: "code_execution" }],
       });
 
-      for (const part of result.candidates[0].content.parts) {
-        if (part.text) {
-          console.log("Text:", part.text);
-        }
-        if (part.executableCode) {
-          console.log("Code:", part.executableCode.code);
-        }
-        if (part.codeExecutionResult) {
-          console.log("Output:", part.codeExecutionResult.output);
+      for (const step of interaction.steps) {
+        if (step.type === "model_output") {
+          for (const contentBlock of step.content) {
+            if (contentBlock.type === "text") {
+              console.log("Text:", contentBlock.text);
+            }
+          }
+        } else if (step.type === "code_execution_call") {
+          console.log("Code:", step.code);
+        } else if (step.type === "code_execution_result") {
+          console.log("Output:", step.output);
         }
       }
     }
@@ -866,23 +498,20 @@ code to manipulate images when needed.
       IMAGE_B64=$(curl -sL "$IMG_URL" | base64 -w0)
     fi
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/$MODEL:generateContent" \
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
-        -X POST \
         -d '{
-          "contents": [{
-            "parts":[
+          "model": "'$MODEL'",
+          "input": [
                 {
-                  "inline_data": {
-                    "mime_type":"'"$MIME_TYPE"'",
-                    "data": "'"$IMAGE_B64"'"
-                  }
+                  "type": "image",
+                  "mime_type":"'"$MIME_TYPE"'",
+                  "data": "'"$IMAGE_B64"'"
                 },
-                {"text": "Zoom into the expression pedals and tell me how many pedals are there?"}
-            ]
-          }],
-          "tools": [{"code_execution": {}}]
+                {"type": "text", "text": "Zoom into the expression pedals and tell me how many pedals are there?"}
+          ],
+          "tools": [{"type": "code_execution"}]
         }'
 
 For more details on code execution with images, see [Code Execution](https://ai.google.dev/gemini-api/docs/code-execution#images).
@@ -897,184 +526,124 @@ function responses:
 
 ### Python
 
+    # This will only work for SDK newer than 2.0.0
     from google import genai
-    from google.genai import types
-
     import requests
+    import base64
 
     client = genai.Client()
 
-    # This is a manual, two turn multimodal function calling workflow:
-
-    # 1. Define the function tool
-    get_image_declaration = types.FunctionDeclaration(
-      name="get_image",
-      description="Retrieves the image file reference for a specific order item.",
-      parameters={
-          "type": "object",
-          "properties": {
-              "item_name": {
-                  "type": "string",
-                  "description": "The name or description of the item ordered (e.g., 'instrument')."
-              }
-          },
-          "required": ["item_name"],
-      },
-    )
-    tool_config = types.Tool(function_declarations=[get_image_declaration])
-
-    # 2. Send a message that triggers the tool
-    prompt = "Show me the instrument I ordered last month."
-    response_1 = client.models.generate_content(
-      model="gemini-3-flash-preview",
-      contents=[prompt],
-      config=types.GenerateContentConfig(
-          tools=[tool_config],
-      )
-    )
-
-    # 3. Handle the function call
-    function_call = response_1.function_calls[0]
-    requested_item = function_call.args["item_name"]
-    print(f"Model wants to call: {function_call.name}")
-
-    # Execute your tool (e.g., call an API)
-    # (This is a mock response for the example)
-    print(f"Calling external tool for: {requested_item}")
-
-    function_response_data = {
-      "image_ref": {"$ref": "instrument.jpg"},
+    # 1. Define the tool
+    get_image_tool = {
+        "type": "function",
+        "name": "get_image",
+        "description": "Retrieves the image file reference for a specific order item.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "item_name": {
+                    "type": "string",
+                    "description": "The name or description of the item ordered (e.g., 'instrument')."
+                }
+            },
+            "required": ["item_name"],
+        },
     }
+
+    # 2. Send the request with tools
+    interaction_1 = client.interactions.create(
+        model="gemini-3-flash-preview",
+        input="Show me the instrument I ordered last month.",
+        tools=[get_image_tool],
+    )
+
+    # 3. Find the function call step
+    fc_step = next(s for s in interaction_1.steps if s.type == "function_call")
+    print(f"Tool Call: {fc_step.name}({fc_step.arguments})")
+
+    # Execute tool (fetch image)
     image_path = "https://goo.gle/instrument-img"
     image_bytes = requests.get(image_path).content
-    function_response_multimodal_data = types.FunctionResponsePart(
-      inline_data=types.FunctionResponseBlob(
-        mime_type="image/jpeg",
-        display_name="instrument.jpg",
-        data=image_bytes,
-      )
+    image_b64 = base64.b64encode(image_bytes).decode("utf-8")
+
+    # 4. Send multimodal function result back
+    interaction_2 = client.interactions.create(
+        model="gemini-3-flash-preview",
+        previous_interaction_id=interaction_1.id,
+        input=[{
+            "type": "function_result",
+            "name": fc_step.name,
+            "call_id": fc_step.id,
+            "result": [
+                {"type": "text", "text": "instrument.jpg"},
+                {
+                    "type": "image",
+                    "mime_type": "image/jpeg",
+                    "data": image_b64,
+                }
+            ]
+        }],
+        tools=[get_image_tool]
     )
 
-    # 4. Send the tool's result back
-    # Append this turn's messages to history for a final response.
-    history = [
-      types.Content(role="user", parts=[types.Part(text=prompt)]),
-      response_1.candidates[0].content,
-      types.Content(
-        role="user",
-        parts=[
-            types.Part.from_function_response(
-              name=function_call.name,
-              response=function_response_data,
-              parts=[function_response_multimodal_data]
-            )
-        ],
-      )
-    ]
-
-    response_2 = client.models.generate_content(
-      model="gemini-3-flash-preview",
-      contents=history,
-      config=types.GenerateContentConfig(
-          tools=[tool_config],
-          thinking_config=types.ThinkingConfig(include_thoughts=True)
-      ),
-    )
-
-    print(f"\nFinal model response: {response_2.text}")
+    print(f"\nFinal model response: {interaction_2.output_text}")
 
 ### JavaScript
 
-    import { GoogleGenAI, Type } from '@google/genai';
+    import { GoogleGenAI } from '@google/genai';
 
-    const client = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+    const client = new GoogleGenAI({});
 
-    // This is a manual, two turn multimodal function calling workflow:
-    // 1. Define the function tool
-    const getImageDeclaration = {
-      name: 'get_image',
-      description: 'Retrieves the image file reference for a specific order item.',
-      parameters: {
-        type: Type.OBJECT,
-        properties: {
-          item_name: {
-            type: Type.STRING,
-            description: "The name or description of the item ordered (e.g., 'instrument').",
-          },
+    const getImageTool = {
+        type: 'function',
+        name: 'get_image',
+        description: 'Retrieves the image file reference for a specific order item.',
+        parameters: {
+            type: 'object',
+            properties: {
+                item_name: {
+                    type: 'string',
+                    description: "The name or description of the item ordered (e.g., 'instrument').",
+                },
+            },
+            required: ['item_name'],
         },
-        required: ['item_name'],
-      },
     };
 
-    const toolConfig = {
-      functionDeclarations: [getImageDeclaration],
-    };
-
-    // 2. Send a message that triggers the tool
-    const prompt = 'Show me the instrument I ordered last month.';
-    const response1 = await client.models.generateContent({
-      model: 'gemini-3-flash-preview',
-      contents: prompt,
-      config: {
-        tools: [toolConfig],
-      },
+    const interaction1 = await client.interactions.create({
+        model: 'gemini-3-flash-preview',
+        input: 'Use the get_image tool to show me the instrument I ordered last month.',
+        tools: [getImageTool],
     });
 
-    // 3. Handle the function call
-    const functionCall = response1.functionCalls[0];
-    const requestedItem = functionCall.args.item_name;
-    console.log(`Model wants to call: ${functionCall.name}`);
+    const fcStep = interaction1.steps.find(s => s.type === 'function_call');
+    console.log(`Tool Call: ${fcStep.name}(${JSON.stringify(fcStep.arguments)})`);
 
-    // Execute your tool (e.g., call an API)
-    // (This is a mock response for the example)
-    console.log(`Calling external tool for: ${requestedItem}`);
-
-    const functionResponseData = {
-      image_ref: { $ref: 'instrument.jpg' },
-    };
-
-    const imageUrl = "https://goo.gle/instrument-img";
+    const imageUrl = 'https://goo.gle/instrument-img';
     const response = await fetch(imageUrl);
     const imageArrayBuffer = await response.arrayBuffer();
     const base64ImageData = Buffer.from(imageArrayBuffer).toString('base64');
 
-    const functionResponseMultimodalData = {
-      inlineData: {
-        mimeType: 'image/jpeg',
-        displayName: 'instrument.jpg',
-        data: base64ImageData,
-      },
-    };
-
-    // 4. Send the tool's result back
-    // Append this turn's messages to history for a final response.
-    const history = [
-      { role: 'user', parts: [{ text: prompt }] },
-      response1.candidates[0].content,
-      {
-        role: 'tool',
-        parts: [
-          {
-            functionResponse: {
-              name: functionCall.name,
-              response: functionResponseData,
-              parts: [functionResponseMultimodalData],
-            },
-          },
-        ],
-      },
-    ];
-
-    const response2 = await client.models.generateContent({
-      model: 'gemini-3-flash-preview',
-      contents: history,
-      config: {
-        tools: [toolConfig],
-        thinkingConfig: { includeThoughts: true },
-      },
+    const interaction2 = await client.interactions.create({
+        model: 'gemini-3-flash-preview',
+        previous_interaction_id: interaction1.id,
+        input: [{
+            type: 'function_result',
+            name: fcStep.name,
+            call_id: fcStep.id,
+            result: [
+                { type: 'text', text: 'instrument.jpg' },
+                {
+                    type: 'image',
+                    mime_type: 'image/jpeg',
+                    data: base64ImageData,
+                }
+            ]
+        }],
+        tools: [getImageTool]
     });
 
-    console.log(`\nFinal model response: ${response2.text}`);
+    console.log(`\nFinal model response: ${interaction2.output_text}`);
 
 ### REST
 
@@ -1094,45 +663,39 @@ function responses:
       IMAGE_B64=$(curl -sL "$IMG_URL" | base64 -w0)
     fi
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    # 1. First interaction (triggers function call)
+    # curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+    #   -H "x-goog-api-key: $GEMINI_API_KEY" \
+    #   -H 'Content-Type: application/json' \
+    #   -d '{ "model": "gemini-3-flash-preview", "input": "Show me the instrument I ordered last month.", "tools": [...] }'
+
+    # 2. Send multimodal function result back (Replace INTERACTION_ID and CALL_ID)
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
-      -X POST \
       -d '{
-        "contents": [
-          ...,
-          {
-            "role": "user",
-            "parts": [
+        "model": "gemini-3-flash-preview",
+        "previous_interaction_id": "INTERACTION_ID",
+        "input": [{
+          "type": "function_result",
+          "name": "get_image",
+          "call_id": "CALL_ID",
+          "result": [
+            { "type": "text", "text": "instrument.jpg" },
             {
-                "functionResponse": {
-                  "name": "get_image",
-                  "response": {
-                    "image_ref": {
-                      "$ref": "instrument.jpg"
-                    }
-                  },
-                  "parts": [
-                    {
-                      "inlineData": {
-                        "displayName": "instrument.jpg",
-                        "mimeType":"'"$MIME_TYPE"'",
-                        "data": "'"$IMAGE_B64"'"
-                      }
-                    }
-                  ]
-                }
-              }
-            ]
-          }
-        ]
+              "type": "image",
+              "mime_type": "'"$MIME_TYPE"'",
+              "data": "'"$IMAGE_B64"'"
+            }
+          ]
+        }]
       }'
 
 ### Combine built-in tools and function calling
 
 Gemini 3 allows the use of built-in tools (like Google Search, URL
 context, and [more](https://ai.google.dev/gemini-api/docs/tools)) and custom [function calling](https://ai.google.dev/gemini-api/docs/function-calling) tools in the same API call, allowing for
-more complex workflows. Learn more on the [tool combinations](https://ai.google.dev/gemini-api/docs/tool-combination) page.
+more complex workflows.
 
 ### Python
 
@@ -1142,6 +705,7 @@ more complex workflows. Learn more on the [tool combinations](https://ai.google.
     client = genai.Client()
 
     getWeather = {
+        "type": "function",
         "name": "getWeather",
         "description": "Gets the weather for a requested city.",
         "parameters": {
@@ -1156,121 +720,86 @@ more complex workflows. Learn more on the [tool combinations](https://ai.google.
         },
     }
 
-    response = client.models.generate_content(
+    interaction = client.interactions.create(
         model="gemini-3-flash-preview",
-        contents="What is the northernmost city in the United States? What's the weather like there today?",
-        config=types.GenerateContentConfig(
-          tools=[
-            types.Tool(
-              google_search=types.ToolGoogleSearch(),  # Built-in tool
-              function_declarations=[getWeather]       # Custom tool
-            ),
-          ],
-          include_server_side_tool_invocations=True
-        ),
+        input="What is the northernmost city in the United States? What's the weather like there today?",
+        tools=[
+            {"type": "google_search"},
+            getWeather
+        ],
     )
 
-    history = [
-        types.Content(
-            role="user",
-            parts=[types.Part(text="What is the northernmost city in the United States? What's the weather like there today?")]
-        ),
-        response.candidates[0].content,
-        types.Content(
-            role="user",
-            parts=[types.Part(
-                function_response=types.FunctionResponse(
-                    name="getWeather",
-                    response={"response": "Very cold. 22 degrees Fahrenheit."},
-                    id=response.candidates[0].content.parts[2].function_call.id
-                )
-            )]
+    fc_step = next((s for s in interaction.steps if s.type == "function_call"), None)
+
+    if fc_step:
+        result = {"response": "Very cold. 22 degrees Fahrenheit."}
+
+        final_interaction = client.interactions.create(
+            model="gemini-3-flash-preview",
+            input=[
+                {"type": "function_result", "name": fc_step.name, "call_id": fc_step.id, "result": result}
+            ],
+            tools=[
+                {"type": "google_search"},
+                getWeather
+            ],
+            previous_interaction_id=interaction.id,
         )
-    ]
 
-    response_2 = client.models.generate_content(
-        model="gemini-3-flash-preview",
-        contents=history,
-        config=types.GenerateContentConfig(
-          tools=[
-            types.Tool(
-              google_search=types.ToolGoogleSearch(),
-              function_declarations=[getWeather]
-            ),
-          ],
-          include_server_side_tool_invocations=True
-        ),
-    )
+        print(final_interaction.output_text)
 
-### Javascript
+### JavaScript
 
     import { GoogleGenAI, Type } from '@google/genai';
 
     const client = new GoogleGenAI({});
 
-    const getWeather = {
-        name: "getWeather",
-        description: "Get the weather in a given location",
-        parameters: {
-            type: "OBJECT",
-            properties: {
-                location: {
-                    type: "STRING",
-                    description: "The city and state, e.g. San Francisco, CA"
-                }
-            },
-            required: ["location"]
-        }
+    const getWeatherDeclaration = {
+      type: 'function',
+      name: 'getWeather',
+      description: 'Gets the weather for a requested city.',
+      parameters: {
+        type: Type.OBJECT,
+        properties: {
+          city: {
+            type: Type.STRING,
+            description: 'The city and state, e.g. Utqiaġvik, Alaska',
+          },
+        },
+        required: ['city'],
+      },
     };
 
-    async function run() {
-        const model = client.models.generateContent({
-            model: "gemini-3-flash-preview",
-        });
+    const interaction = await client.interactions.create({
+      model: 'gemini-3-flash-preview',
+      input: "What is the northernmost city in the United States? What's the weather like there today?",
+      tools: [
+        { type: "google_search" },
+        getWeatherDeclaration
+      ],
+    });
 
-        const tools = [
-          { googleSearch: {} },
-          { functionDeclarations: [getWeather] }
-        ];
-        const toolConfig = { includeServerSideToolInvocations: true };
+    const fcStep = interaction.steps.find(s => s.type === 'function_call');
 
-        const result1 = await model.generateContent({
-            contents: [{role: "user", parts: [{text: "What is the northernmost city in the United States? What's the weather like there today?"}]}],
-            tools: tools,
-            toolConfig: toolConfig,
-        });
+    if (fcStep) {
+      const result = { response: "Very cold. 22 degrees Fahrenheit." };
 
-        const response1 = result1.response;
-        const functionCallId = response1.candidates[0].content.parts.find(p => p.functionCall)?.functionCall?.id;
+      const finalInteraction = await client.interactions.create({
+        model: 'gemini-3-flash-preview',
+        input: [
+          { type: 'function_result', name: fcStep.name, call_id: fcStep.id, result: result }
+        ],
+        tools: [
+          { type: "google_search" },
+          getWeatherDeclaration
+        ],
+        previous_interaction_id: interaction.id,
+      });
 
-        const history = [
-            {
-                role: "user",
-                parts:[{text: "What is the northernmost city in the United States? What's the weather like there today?"}]
-            },
-            response1.candidates[0].content,
-            {
-                role: "user",
-                parts: [{
-                    functionResponse: {
-                        name: "getWeather",
-                        response: {response: "Very cold. 22 degrees Fahrenheit."},
-                        id: functionCallId
-                    }
-                }]
-            }
-        ];
-
-        const result2 = await model.generateContent({
-            contents: history,
-            tools: tools,
-            toolConfig: toolConfig,
-        });
+      console.log(finalInteraction.output_text);
     }
 
-    run();
-
-## Migrating from Gemini 2.5
+## Migration from Gemini 2.5
 
 Gemini 3 is our most capable model family to date and offers a stepwise
 improvement over Gemini 2.5. When migrating, consider the following:
@@ -1279,12 +808,11 @@ improvement over Gemini 2.5. When migrating, consider the following:
 - **Temperature settings:** If your existing code explicitly sets temperature (especially to low values for deterministic outputs), we recommend removing this parameter and using the Gemini 3 default of 1.0 to avoid potential looping issues or performance degradation on complex tasks.
 - **PDF \& document understanding:** If you relied on specific behavior for dense document parsing, test the new `media_resolution_high` setting to ensure continued accuracy.
 - **Token consumption:** Migrating to Gemini 3 defaults may **increase** token usage for PDFs but **decrease** token usage for video. If requests now exceed the context window due to higher default resolutions, we recommend explicitly reducing the media resolution.
-- **Image segmentation:** Image segmentation capabilities (returning pixel-level masks for objects) are not supported in Gemini 3 Pro or Gemini 3 Flash. For workloads requiring native image segmentation, we recommend continuing to utilize Gemini 2.5 Flash with thinking turned off or [Gemini Robotics-ER 1.6](https://ai.google.dev/gemini-api/docs/robotics-overview).
+- **Image segmentation:** Image segmentation capabilities (returning pixel-level masks for objects) are not supported in Gemini 3 Pro or Gemini 3 Flash. For workloads requiring built-in image segmentation, we recommend continuing to utilize Gemini 2.5 Flash with thinking turned off or [Gemini Robotics-ER 1.6](https://ai.google.dev/gemini-api/docs/robotics-overview).
 - **Computer Use:** Gemini 3 Pro and Gemini 3 Flash support [Computer
   Use](https://ai.google.dev/gemini-api/docs/computer-use). Unlike the 2.5 series, you don't need to use a separate model to access the Computer Use tool.
 - **Tool support** : [Combining built-in tools with function calling](https://ai.google.dev/gemini-api/docs/tool-combination) is now supported for Gemini 3 models. [Maps
   grounding](https://ai.google.dev/gemini-api/docs/maps-grounding) is also now supported for Gemini 3 models.
-- **Candidate count** : Gemini 3 models do not support `candidateCount > 1`. Setting this parameter to a value greater than `1` will return a 400 error.
 
 ## OpenAI compatibility
 
@@ -1298,7 +826,7 @@ Gemini 3 is a reasoning model, which changes how you should prompt.
 
 - **Precise instructions:** Be concise in your input prompts. Gemini 3 responds best to direct, clear instructions. It may over-analyze verbose or overly complex prompt engineering techniques used for older models.
 - **Output verbosity:** By default, Gemini 3 is less verbose and prefers providing direct, efficient answers. If your use case requires a more conversational or "chatty" persona, you must explicitly steer the model in the prompt (e.g., "Explain this as a friendly, talkative assistant").
-- **Context management:** When working with large datasets (e.g., entire books, codebases, or long videos), place your specific instructions or questions at the end of the prompt, after the data context. Anchor the model's reasoning to the provided data by starting your question with a phrase like, "Based on the information above...".
+- **Context management:** When working with large datasets (e.g., entire books, codebases, or long videos), place your specific instructions or questions at the end of the prompt, after the data context. Anchor the model's reasoning to the provided data by starting your question with a phrase like, "Based on the preceding information...".
 
 Learn more about prompt design strategies in the [prompt engineering guide](https://ai.google.dev/gemini-api/docs/prompting-strategies).
 
@@ -1312,14 +840,13 @@ Learn more about prompt design strategies in the [prompt engineering guide](http
    token input context window and up to 64k tokens of output.
 
 3. **Is there a free tier for Gemini 3?** Gemini 3 Flash
-   `gemini-3-flash-preview` and 3.1 Flash-Lite `gemini-3.1-flash-lite` have
-   free tiers in the Gemini API. You can try Gemini 3.1 Pro and 3 Flash for free in
-   Google AI Studio, but there is no free tier available for
-   `gemini-3.1-pro-preview` in the Gemini API.
+   `gemini-3-flash-preview` has a free tier in the Gemini API. You can try
+   Gemini 3.1 Pro and 3 Flash at no cost in Google AI Studio, but there
+   is no free tier available for `gemini-3.1-pro-preview` in the Gemini API.
 
 4. **Will my old `thinking_budget` code still work?** Yes, `thinking_budget` is
    still supported for backward compatibility, but we recommend migrating to
-   `thinking_level` for more predictable performance. Do not use both in the same
+   `thinking_level` for more predictable performance. Don't use both in the same
    request.
 
 5. **Does Gemini 3 support the Batch API?** Yes, Gemini 3 supports the
@@ -1327,13 +854,17 @@ Learn more about prompt design strategies in the [prompt engineering guide](http
 
 6. **Is Context Caching supported?** Yes, [Context Caching](https://ai.google.dev/gemini-api/docs/caching) is supported for Gemini 3.
 
-7. **Which tools are supported in Gemini 3?** Gemini 3 supports [Google Search](https://ai.google.dev/gemini-api/docs/google-search), [Grounding with Google Maps](https://ai.google.dev/gemini-api/docs/maps-grounding), [File Search](https://ai.google.dev/gemini-api/docs/file-search),
-   [Code Execution](https://ai.google.dev/gemini-api/docs/code-execution), and [URL Context](https://ai.google.dev/gemini-api/docs/url-context). It also supports standard [Function Calling](https://ai.google.dev/gemini-api/docs/function-calling) for your own custom tools,
-   and in [combination with built-in tools](https://ai.google.dev/gemini-api/docs/tool-combination).
+7. **Which tools are supported in Gemini 3?** Gemini 3 supports
+   [Google Search](https://ai.google.dev/gemini-api/docs/google-search),
+   [Grounding with Google Maps](https://ai.google.dev/gemini-api/docs/maps-grounding),
+   [File Search](https://ai.google.dev/gemini-api/docs/file-search),
+   [Code Execution](https://ai.google.dev/gemini-api/docs/code-execution), and
+   [URL Context](https://ai.google.dev/gemini-api/docs/url-context). It also supports
+   standard [Function Calling](https://ai.google.dev/gemini-api/docs/function-calling) for
+   your own custom tools, and in
+   [combination with built-in tools](https://ai.google.dev/gemini-api/docs/tool-combination).
 
-8. **What is `gemini-3.1-pro-preview-customtools`?** If you are using `gemini-3.1-pro-preview` and the model ignores your custom tools in favor of bash commands, try the `gemini-3.1-pro-preview-customtools` model instead. More info [here](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview#gemini-31-pro-preview-customtools).
-
-## Next steps
-
-- Get started with the [Gemini 3 Cookbook](https://colab.research.google.com/github/google-gemini/cookbook/blob/main/quickstarts/Get_started.ipynb#templateParams=%7B%22MODEL_ID%22%3A+%22gemini-3-pro-preview%22%7D)
-- Check the dedicated Cookbook guide on [thinking levels](https://colab.research.google.com/github/google-gemini/cookbook/blob/main/quickstarts/Get_started_thinking_REST.ipynb#gemini3) and how to migrate from thinking budget to thinking levels.
+8. **What is `gemini-3.1-pro-preview-customtools`?** If you are using
+   `gemini-3.1-pro-preview` and the model ignores your custom tools in favor of
+   bash commands, try the `gemini-3.1-pro-preview-customtools` model instead.
+   More info \[here\]\[customtools-model\].

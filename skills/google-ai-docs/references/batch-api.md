@@ -1,3 +1,6 @@
+> [!NOTE]
+> **Note:** This feature is currently only available with the generateContent API. Please follow the content on this page for more information.
+
 The Gemini Batch API is designed to process large volumes of requests
 asynchronously at [50% of the standard cost](https://ai.google.dev/gemini-api/docs/pricing).
 The target turnaround time is 24 hours, but in majority of cases, it is much

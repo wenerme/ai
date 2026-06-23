@@ -51,7 +51,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Add a cron trigger to my Worker that processes a job queue every hour.  
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.  
 ```
 
 ## Cloudflare platform access

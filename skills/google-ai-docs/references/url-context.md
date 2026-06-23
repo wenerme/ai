@@ -1,4 +1,5 @@
-# URL context
+> [!NOTE]
+> **Note:** This version of the page covers the **Interactions API** . You can use the toggle on this page to switch to the [generateContent API version of this page](https://ai.google.dev/gemini-api/docs/generate-content/url-context).
 
 The URL context tool lets you provide additional context to the models in the
 form of URLs. By including URLs in your request, the model will access
@@ -17,78 +18,79 @@ The following example shows how to compare two recipes from different websites.
 
 ### Python
 
+    # This will only work for SDK newer than 2.0.0
     from google import genai
-    from google.genai.types import Tool, GenerateContentConfig
 
     client = genai.Client()
-    model_id = "gemini-3.5-flash"
-
-    tools = [
-      {"url_context": {}},
-    ]
 
     url1 = "https://www.foodnetwork.com/recipes/ina-garten/perfect-roast-chicken-recipe-1940592"
     url2 = "https://www.allrecipes.com/recipe/21151/simple-whole-roast-chicken/"
 
-    response = client.models.generate_content(
-        model=model_id,
-        contents=f"Compare the ingredients and cooking times from the recipes at {url1} and {url2}",
-        config=GenerateContentConfig(
-            tools=tools,
-        )
+    interaction = client.interactions.create(
+        model="gemini-3.5-flash",
+        input=f"Compare the ingredients and cooking times from the recipes at {url1} and {url2}",
+        tools=[{"type": "url_context"}]
     )
 
-    for each in response.candidates[0].content.parts:
-        print(each.text)
-
-    # For verification, you can inspect the metadata to see which URLs the model retrieved
-    print(response.candidates[0].url_context_metadata)
+    # Print the model's text response and its source annotations
+    for step in interaction.steps:
+        if step.type == "model_output":
+            for content_block in step.content:
+                if content_block.type == "text":
+                    print(content_block.text)
+                    if content_block.annotations:
+                        print("\nSources:")
+                        for annotation in content_block.annotations:
+                            if annotation.type == "url_citation":
+                                print(f"  - {annotation.title}: {annotation.url}")
 
 ### Javascript
 
+    // This will only work for SDK newer than 2.0.0
     import { GoogleGenAI } from "@google/genai";
 
-    const ai = new GoogleGenAI({});
+    const client = new GoogleGenAI({});
 
     async function main() {
-      const response = await ai.models.generateContent({
+      const interaction = await client.interactions.create({
         model: "gemini-3.5-flash",
-        contents: [
-            "Compare the ingredients and cooking times from the recipes at https://www.foodnetwork.com/recipes/ina-garten/perfect-roast-chicken-recipe-1940592 and https://www.allrecipes.com/recipe/21151/simple-whole-roast-chicken/",
-        ],
-        config: {
-          tools: [{urlContext: {}}],
-        },
+        input: "Compare the ingredients and cooking times from the recipes at https://www.foodnetwork.com/recipes/ina-garten/perfect-roast-chicken-recipe-1940592 and https://www.allrecipes.com/recipe/21151/simple-whole-roast-chicken/",
+        tools: [{ type: "url_context" }]
       });
-      console.log(response.text);
 
-      // For verification, you can inspect the metadata to see which URLs the model retrieved
-      console.log(response.candidates[0].urlContextMetadata)
+      // Print the model's text response and its source annotations
+      for (const step of interaction.steps) {
+        if (step.type === 'model_output') {
+          for (const contentBlock of step.content) {
+            if (contentBlock.type === 'text') {
+              console.log(contentBlock.text);
+              if (contentBlock.annotations) {
+                console.log("\nSources:");
+                for (const annotation of contentBlock.annotations) {
+                  if (annotation.type === 'url_citation') {
+                    console.log(`  - ${annotation.title}: ${annotation.url}`);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
 
     await main();
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
+    # Specifies the API revision to avoid breaking changes when they become default
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
-          "contents": [
-              {
-                  "parts": [
-                      {"text": "Compare the ingredients and cooking times from the recipes at https://www.foodnetwork.com/recipes/ina-garten/perfect-roast-chicken-recipe-1940592 and https://www.allrecipes.com/recipe/21151/simple-whole-roast-chicken/"}
-                  ]
-              }
-          ],
-          "tools": [
-              {
-                  "url_context": {}
-              }
-          ]
-      }' > result.json
-
-    cat result.json
+          "model": "gemini-3.5-flash",
+          "input": "Compare the ingredients and cooking times from the recipes at https://www.foodnetwork.com/recipes/ina-garten/perfect-roast-chicken-recipe-1940592 and https://www.allrecipes.com/recipe/21151/simple-whole-roast-chicken/",
+          "tools": [{"type": "url_context"}]
+      }'
 
 ## How it works
 
@@ -119,146 +121,102 @@ prompts that require both broad searching and deep analysis of specific pages.
 
 ### Python
 
+    # This will only work for SDK newer than 2.0.0
     from google import genai
-    from google.genai.types import Tool, GenerateContentConfig, GoogleSearch, UrlContext
 
     client = genai.Client()
-    model_id = "gemini-3.5-flash"
 
-    tools = [
-          {"url_context": {}},
-          {"google_search": {}}
-      ]
-
-    response = client.models.generate_content(
-        model=model_id,
-        contents="Give me three day events schedule based on YOUR_URL. Also let me know what needs to taken care of considering weather and commute.",
-        config=GenerateContentConfig(
-            tools=tools,
-        )
+    interaction = client.interactions.create(
+        model="gemini-3.5-flash",
+        input="Give me three day events schedule based on YOUR_URL. Also let me know what needs to taken care of considering weather and commute.",
+        tools=[
+            {"type": "url_context"},
+            {"type": "google_search"}
+        ]
     )
 
-    for each in response.candidates[0].content.parts:
-        print(each.text)
-    # get URLs retrieved for context
-    print(response.candidates[0].url_context_metadata)
+    for step in interaction.steps:
+        if step.type == "model_output":
+            for content_block in step.content:
+                if content_block.type == "text":
+                    print(content_block.text)
 
 ### Javascript
 
+    // This will only work for SDK newer than 2.0.0
     import { GoogleGenAI } from "@google/genai";
 
-    const ai = new GoogleGenAI({});
+    const client = new GoogleGenAI({});
 
     async function main() {
-      const response = await ai.models.generateContent({
+      const interaction = await client.interactions.create({
         model: "gemini-3.5-flash",
-        contents: [
-            "Give me three day events schedule based on YOUR_URL. Also let me know what needs to taken care of considering weather and commute.",
-        ],
-        config: {
-          tools: [
-            {urlContext: {}},
-            {googleSearch: {}}
-            ],
-        },
+        input: "Give me three day events schedule based on YOUR_URL. Also let me know what needs to taken care of considering weather and commute.",
+        tools: [
+          { type: "url_context" },
+          { type: "google_search" }
+        ]
       });
-      console.log(response.text);
-      // To get URLs retrieved for context
-      console.log(response.candidates[0].urlContextMetadata)
+
+      for (const step of interaction.steps) {
+        if (step.type === 'model_output') {
+          for (const contentBlock of step.content) {
+            if (contentBlock.type === 'text') console.log(contentBlock.text);
+          }
+        }
+      }
     }
 
     await main();
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
+    # Specifies the API revision to avoid breaking changes when they become default
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
-          "contents": [
-              {
-                  "parts": [
-                      {"text": "Give me three day events schedule based on YOUR_URL. Also let me know what needs to taken care of considering weather and commute."}
-                  ]
-              }
-          ],
+          "model": "gemini-3.5-flash",
+          "input": "Give me three day events schedule based on YOUR_URL. Also let me know what needs to taken care of considering weather and commute.",
           "tools": [
-              {
-                  "url_context": {}
-              },
-              {
-                  "google_search": {}
-              }
+              {"type": "url_context"},
+              {"type": "google_search"}
           ]
-      }' > result.json
-
-    cat result.json
+      }'
 
 ## Understanding the response
 
-When the model uses the URL context tool, the response includes a
-`url_context_metadata` object. This object lists the URLs the model retrieved
-content from and the status of each retrieval attempt, which is useful for
-verification and debugging.
+When the model uses the URL context tool, its text response includes inline
+`url_citation` annotations on the text content block. Each annotation links a
+segment of the response text (via `start_index` and `end_index`) to the source
+URL it was derived from. This is the primary way to surface citations in your
+application --- see the [main example above](https://ai.google.dev/gemini-api/docs/url-context#get-started) for how to extract them.
 
-The following is an example of that part of the response
-(parts of the response have been omitted for brevity):
-
-    {
-      "candidates": [
-        {
-          "content": {
-            "parts": [
-              {
-                "text": "... \n"
-              }
-            ],
-            "role": "model"
-          },
-          ...
-          "url_context_metadata": {
-            "url_metadata": [
-              {
-                "retrieved_url": "https://www.foodnetwork.com/recipes/ina-garten/perfect-roast-chicken-recipe-1940592",
-                "url_retrieval_status": "URL_RETRIEVAL_STATUS_SUCCESS"
-              },
-              {
-                "retrieved_url": "https://www.allrecipes.com/recipe/21151/simple-whole-roast-chicken/",
-                "url_retrieval_status": "URL_RETRIEVAL_STATUS_SUCCESS"
-              }
-            ]
-          }
-        }
-      ]
-    }
-
-For complete detail about this object , see the
-[`UrlContextMetadata` API reference](https://ai.google.dev/api/generate-content#UrlContextMetadata).
+The response also includes a `url_context_result` step with metadata about each
+URL retrieval attempt (status, retrieved URL). This is mainly useful for
+debugging.
 
 ### Safety checks
 
-The system performs a content moderation check on the URL to confirm
-they meet safety standards. If the URL you provided fails this check, you will
-get an `url_retrieval_status` of `URL_RETRIEVAL_STATUS_UNSAFE`.
+The system performs a content moderation check on URLs to confirm
+they meet safety standards. If a URL fails this check, the corresponding
+`url_context_result` step will show a `status` of `"unsafe"`.
 
 ### Token count
 
 The content retrieved from the URLs you specify in your prompt is counted
-as part of the input tokens. You can see the token count for your prompt and
-tools usage in the [`usage_metadata`](https://ai.google.dev/api/generate-content#UsageMetadata)
-object of the model output. The following is an example output:
+as part of the input tokens. You can see the token count in the
+`usage` object of the interaction. The following is an example:
 
-    'usage_metadata': {
-      'candidates_token_count': 45,
-      'prompt_token_count': 27,
-      'prompt_tokens_details': [{'modality': <MediaModality.TEXT: 'TEXT'>,
-        'token_count': 27}],
-      'thoughts_token_count': 31,
-      'tool_use_prompt_token_count': 10309,
-      'tool_use_prompt_tokens_details': [{'modality': <MediaModality.TEXT: 'TEXT'>,
-        'token_count': 10309}],
-      'total_token_count': 10412
-      }
+    'usage': {
+      'output_tokens': 45,
+      'input_tokens': 27,
+      'input_tokens_details': [{'modality': 'TEXT', 'token_count': 27}],
+      'thoughts_tokens': 31,
+      'tool_use_input_tokens': 10309,
+      'tool_use_input_tokens_details': [{'modality': 'TEXT', 'token_count': 10309}],
+      'total_tokens': 10412
+    }
 
 Price per token depends on the model used, see the
 [pricing](https://ai.google.dev/gemini-api/docs/pricing) page for details.
@@ -268,7 +226,7 @@ Price per token depends on the model used, see the
 | Model | URL Context |
 |---|---|
 | [Gemini 3.5 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash) | ✔️ |
-| [Gemini 3.1 Pro Preview](https://ai.google.dev/gemini-api/docs/gemini-3.1-pro-preview) | ✔️ |
+| [Gemini 3.1 Pro Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) | ✔️ |
 | [Gemini 3.1 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite) | ✔️ |
 | [Gemini 3 Flash Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview) | ✔️ |
 | [Gemini 2.5 Pro](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-pro) | ✔️ |
@@ -283,7 +241,6 @@ Price per token depends on the model used, see the
 
 ## Limitations
 
-- Function calling: Tool use (URL Context, Grounding with Google Search, etc) with function calling is currently unsupported.
 - Request limit: The tool can process up to 20 URLs per request.
 - URL content size: The maximum size for content retrieved from a single URL is 34MB.
 - Public accessibility: The URLs must be publicly accessible on the web. Localhost addresses (e.g., localhost, 127.0.0.1), private networks, and tunneling services (e.g., ngrok, pinggy) are not supported.
@@ -303,7 +260,3 @@ The following content types are **not** supported:
 - YouTube videos (See [video understanding](https://ai.google.dev/gemini-api/docs/video-understanding#youtube) to learn how to process YouTube URLs)
 - Google workspace files like Google docs or spreadsheets
 - Video and audio files
-
-## What's next
-
-- Explore the [URL context cookbook](https://colab.sandbox.google.com/github/google-gemini/cookbook/blob/main/quickstarts/Grounding.ipynb#url-context) for more examples.

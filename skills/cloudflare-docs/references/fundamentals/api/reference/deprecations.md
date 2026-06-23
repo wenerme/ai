@@ -20,6 +20,28 @@ Subscribe to all API deprecation posts via [RSS](https://developers.cloudflare.c
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/fundamentals/api/reference/deprecations/index.xml)
 
+## 2026-06-16
+
+**Zone Settings Batch API**
+
+Deprecation date: April 23, 2025
+
+End of life date: September 15, 2026
+
+The Zone Settings Batch API endpoints, which read and edit multiple zone settings in a single request, are deprecated and will reach their end of life on September 15, 2026\. Use the per-setting endpoints to read and edit individual zone settings instead.
+
+Deprecated APIs:
+
+* `GET /zones/{zone_id}/settings`
+* `PATCH /zones/{zone_id}/settings`
+
+Replacements:
+
+* [Get zone setting](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/get/) — `GET /zones/{zone_id}/settings/{setting_id}`
+* [Edit zone setting](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) — `PATCH /zones/{zone_id}/settings/{setting_id}`
+
+Integrations that read or edit multiple settings in a single call must migrate to per-setting requests before September 15, 2026 to ensure uninterrupted service. After this date, the batch endpoints will no longer be available.
+
 ## 2026-05-13
 
 **Gateway Audit SSH rules**

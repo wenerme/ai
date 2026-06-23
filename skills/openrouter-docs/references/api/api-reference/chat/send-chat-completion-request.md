@@ -1554,6 +1554,7 @@ components:
     ChatRequestReasoningEffort:
       type: string
       enum:
+        - max
         - xhigh
         - high
         - medium
@@ -1907,6 +1908,7 @@ components:
     AdvisorReasoningEffort:
       type: string
       enum:
+        - max
         - xhigh
         - high
         - medium
@@ -2203,6 +2205,7 @@ components:
     SubagentReasoningEffort:
       type: string
       enum:
+        - max
         - xhigh
         - high
         - medium

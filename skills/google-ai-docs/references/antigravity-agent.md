@@ -1,6 +1,6 @@
 The Antigravity agent is a general-purpose managed agent on the Gemini API. A single API call gives you an agent that reasons, executes code, manages files, and browses the web inside your own secure Linux sandbox, hosted by Google.
 
-It is powered by Gemini 3.5 Flash and uses the same harness as the Antigravity IDE. Available through the [Interactions API](https://ai.google.dev/gemini-api/docs/interactions) and [Google AI Studio](https://aistudio.google.com).
+It is powered by Gemini 3.5 Flash and uses the same harness as the Antigravity IDE. Available through the [Interactions API](https://ai.google.dev/gemini-api/docs/interactions-overview) and [Google AI Studio](https://aistudio.google.com).
 
 ### Python
 
@@ -35,7 +35,6 @@ It is powered by Gemini 3.5 Flash and uses the same harness as the Antigravity I
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
     -H "Content-Type: application/json" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
-    -H "Api-Revision: 2026-05-20" \
     -d '{
         "agent": "antigravity-preview-05-2026",
         "input": "Read Hacker News, summarize the top 10 stories, and save the results as a PDF.",
@@ -64,6 +63,7 @@ By default, the agent has access to `code_execution`, `google_search`, and `url_
 | URL Context | `url_context` | Fetch and read web pages. |
 | Filesystem | *(enabled via `environment`)* | Read, write, edit, search, and list files in the sandbox. No separate tool type; enabled automatically when `environment` is set. |
 | Custom Functions | `function` | Define custom functions that the agent can request to execute. See [Function calling](https://ai.google.dev/gemini-api/docs/antigravity-agent#function-calling). |
+| Remote MCP Server | `mcp_server` | Register external Model Context Protocol (MCP) servers as tools. See [MCP servers](https://ai.google.dev/gemini-api/docs/antigravity-agent#mcp-servers). |
 
 To limit the agent to specific tools, pass only the ones you need:
 
@@ -108,7 +108,6 @@ To limit the agent to specific tools, pass only the ones you need:
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
     -H "Content-Type: application/json" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
-    -H "Api-Revision: 2026-05-20" \
     -d '{
         "agent": "antigravity-preview-05-2026",
         "input": "Search for the latest AI research papers on reasoning and summarize them.",
@@ -176,7 +175,6 @@ The Antigravity agent supports multimodal inputs. Currently, only `text` and `im
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
     -H "Content-Type: application/json" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
-    -H "Api-Revision: 2026-05-20" \
     -d "{
         \"agent\": \"antigravity-preview-05-2026\",
         \"input\": [
@@ -355,7 +353,6 @@ The following example demonstrates a 2-turn interaction. The agent first request
     RESPONSE=$(curl -s -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
       -H "Content-Type: application/json" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
-      -H "Api-Revision: 2026-05-20" \
       -d '{
           "agent": "antigravity-preview-05-2026",
           "input": "What is the weather in Tokyo?",
@@ -386,7 +383,6 @@ The following example demonstrates a 2-turn interaction. The agent first request
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
       -H "Content-Type: application/json" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
-      -H "Api-Revision: 2026-05-20" \
       -d "{
           \"agent\": \"antigravity-preview-05-2026\",
           \"previous_interaction_id\": \"$INTERACTION_ID\",
@@ -403,6 +399,75 @@ The following example demonstrates a 2-turn interaction. The agent first request
               }
           ]
       }"
+
+## MCP servers
+
+You can connect the Antigravity agent to external tools by registering remote Model Context Protocol (MCP) servers. The agent supports remote MCP servers over streamable HTTP.
+
+When registering an MCP server, you must specify the following fields in the `tools` array:
+
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `type` | string | Yes | Must be `"mcp_server"`. |
+| `name` | string | Yes | A unique identifier for the server. Must be strictly lowercase and alphanumeric (matching `^[a-z0-9_-]+$`). |
+| `url` | string | Yes | The endpoint URL of the remote MCP server. |
+| `headers` | object | No | Custom headers (e.g., authentication) sent with requests. |
+| `allowed_tools` | array | No | List of tool names allowed to be executed. If omitted, all tools are allowed. |
+
+### Python
+
+    from google import genai
+
+    client = genai.Client()
+
+    # Register a remote HTTP MCP server
+    interaction = client.interactions.create(
+        agent="antigravity-preview-05-2026",
+        input="What is the weather in Tokyo?",
+        environment="remote",
+        tools=[{
+            "type": "mcp_server",
+            "name": "weather", # Must be lowercase
+            "url": "https://gemini-api-demos.uc.r.appspot.com/mcp"
+        }]
+    )
+
+    print(interaction.output_text)
+
+### JavaScript
+
+    import { GoogleGenAI } from "@google/genai";
+
+    const client = new GoogleGenAI({});
+
+    const interaction = await client.interactions.create({
+        agent: "antigravity-preview-05-2026",
+        input: "What is the weather in Tokyo?",
+        environment: "remote",
+        tools: [{
+            type: "mcp_server",
+            name: "weather", // Must be lowercase
+            url: "https://gemini-api-demos.uc.r.appspot.com/mcp"
+        }]
+    }, { timeout: 300000 });
+
+    console.log(interaction.output_text);
+
+### REST
+
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+      -H "Content-Type: application/json" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -d '{
+          "agent": "antigravity-preview-05-2026",
+          "input": "What is the weather in Tokyo?",
+          "environment": "remote",
+          "tools": [{
+              "type": "mcp_server",
+              "name": "weather",
+              "url": "https://gemini-api-demos.uc.r.appspot.com/mcp"
+          }]
+      }'
 
 ## Customizing the agent
 
@@ -424,12 +489,12 @@ See [Environments](https://ai.google.dev/gemini-api/docs/agent-environment) for 
 
 ## Availability and pricing
 
-Antigravity agent is available in preview through the [Interactions API](https://ai.google.dev/gemini-api/docs/interactions) in Google AI Studio and the Gemini API.
+Antigravity agent is available in preview through the [Interactions API](https://ai.google.dev/gemini-api/docs/interactions-overview) in Google AI Studio and the Gemini API.
 
 Pricing follows a [pay-as-you-go model](https://ai.google.dev/gemini-api/docs/pricing#pricing-for-agents) based on the underlying Gemini model tokens and the tools the agent uses. Unlike a standard chat request that produces a single output, an Antigravity interaction is an agentic workflow. A single request triggers an autonomous loop of reasoning, tool execution, code running, and file management.
 
 > [!NOTE]
-> **Note:** Unlike standard Gemini models, the Antigravity agent runs through multiple autonomous loops per interaction and can accumulate a high number of tokens. You can monitor your agent runs (through [SSE streaming](https://ai.google.dev/gemini-api/docs/interactions/streaming)) and cancel the request if the agent appears to be stuck or is running longer than expected.
+> **Note:** Unlike standard Gemini models, the Antigravity agent runs through multiple autonomous loops per interaction and can accumulate a high number of tokens. You can monitor your agent runs (through [SSE streaming](https://ai.google.dev/gemini-api/docs/streaming)) and cancel the request if the agent appears to be stuck or is running longer than expected.
 
 ### Estimated costs
 
@@ -448,10 +513,11 @@ Costs vary based on task complexity. The agent autonomously determines how many 
 
 ## Limitations
 
-- **Preview status:** The Antigravity agent and the Interactions API are in preview. Features and schemas may change.
+- **Preview status:** The Antigravity agent and the Interactions API. Features and schemas may change.
 - **Unsupported generation config:** The following parameters are not supported and return a 400 error: `temperature`, `top_p`, `top_k`, `stop_sequences`, `max_output_tokens`.
 - **Structured output:** The Antigravity agent does not support structured outputs.
-- **Unavailable tools:** `file_search`, `computer_use`, `google_maps`, and `mcp` are not yet supported.
+- **Unavailable tools:** `file_search`, `computer_use`, and `google_maps` are not yet supported.
+- **Remote MCP limitations:** Server-Sent Events (SSE) transport is not supported (use Streamable HTTP). Additionally, the server `name` must be strictly lowercase and alphanumeric (using uppercase letters triggers a generic `400 Bad Request` error).
 - **Filesystem tool:** There is no filesystem tool at the moment. It is part of the `environment`.
 - **Background:** Agent does not support using `background=True` and requires `store=True`.
 - **Stateful only function calling:** Function calling is only supported in stateful mode. You must use `previous_interaction_id` to continue the turn; reconstructing history manually (stateless mode) is not supported.
@@ -462,5 +528,5 @@ Costs vary based on task complexity. The agent autonomously determines how many 
 - [Quickstart](https://ai.google.dev/gemini-api/docs/managed-agents-quickstart): multi-turn conversations and streaming.
 - [Building Custom Agents](https://ai.google.dev/gemini-api/docs/custom-agents): custom instructions, skills, and saving agents.
 - [Environments](https://ai.google.dev/gemini-api/docs/agent-environment): sandbox configuration, sources, networking.
-- [Deep Research Agent](https://ai.google.dev/gemini-api/docs/interactions/deep-research): long-form research tasks.
-- [Interactions API](https://ai.google.dev/gemini-api/docs/interactions): the underlying API.
+- [Deep Research Agent](https://ai.google.dev/gemini-api/docs/deep-research): long-form research tasks.
+- [Interactions API](https://ai.google.dev/gemini-api/docs/interactions-overview): the underlying API.

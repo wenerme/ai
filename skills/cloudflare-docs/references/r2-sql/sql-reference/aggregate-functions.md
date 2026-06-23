@@ -1,6 +1,6 @@
 ---
 title: Aggregate functions
-description: Reference for all 33 aggregate functions supported in R2 SQL, organized by category.
+description: Reference for the aggregate functions supported in R2 SQL, organized by category.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -14,9 +14,11 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Aggregate functions collapse multiple rows into a single result. They are used with `GROUP BY` to compute summaries per group, or without `GROUP BY` to compute a single result across all rows.
 
+Most aggregates accept a `DISTINCT` modifier, for example `COUNT(DISTINCT customer_id)` or `SUM(DISTINCT total_amount)`.
+
 Note
 
-The following aggregates are not supported: `PERCENTILE_CONT`, `MEDIAN`, `ARRAY_AGG`, `STRING_AGG`, and any `func(DISTINCT ...)`. Use the approximate alternatives where available.
+On large datasets, prefer the [approximate aggregates](#approximate-aggregates) (`approx_distinct`, `approx_median`, `approx_percentile_cont`) over their exact counterparts for lower memory and compute.
 
 ---
 
@@ -66,6 +68,27 @@ Returns the maximum value. Works on numeric and string columns.
 SELECT MAX(total_amount) AS max_amount, MAX(customer_id) AS last_customerFROM my_namespace.sales_data
 SELECT department, MAX(total_amount) AS max_amountFROM my_namespace.sales_dataGROUP BY department
 ```
+
+### MEDIAN
+
+Returns the exact median value. For large datasets, use [approx\_median](#approx%5Fmedian) instead.
+
+```
+SELECT MEDIAN(total_amount) AS median_amountFROM my_namespace.sales_data
+SELECT department, MEDIAN(total_amount) AS median_amountFROM my_namespace.sales_dataGROUP BY department
+```
+
+### PERCENTILE\_CONT
+
+Returns the exact value at a given percentile using `WITHIN GROUP (ORDER BY ...)`. The percentile parameter must be between `0.0` and `1.0` inclusive. For large datasets, use [approx\_percentile\_cont](#approx%5Fpercentile%5Fcont) instead.
+
+```
+SELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY total_amount) AS median,       PERCENTILE_CONT(0.95) WITHIN GROUP (ORDER BY total_amount) AS p95FROM my_namespace.sales_data
+```
+
+Note
+
+`PERCENTILE_DISC` is not supported. Use `PERCENTILE_CONT` or [approx\_percentile\_cont](#approx%5Fpercentile%5Fcont).
 
 ---
 
@@ -318,7 +341,29 @@ Returns the last value in a group according to the specified ordering.
 SELECT department,       last_value(customer_id ORDER BY total_amount ASC) AS highest_spenderFROM my_namespace.sales_dataWHERE total_amount IS NOT NULLGROUP BY department
 ```
 
+---
+
+## Collection aggregates
+
+These aggregates accumulate all input values into a single result. Because they hold every value in memory, use a `WHERE` filter or `GROUP BY` to keep group sizes bounded on large datasets.
+
+### array\_agg
+
+Collects values from a group into an array.
+
+```
+SELECT department, array_agg(customer_id) AS customersFROM my_namespace.sales_dataGROUP BY department
+```
+
+### string\_agg
+
+Concatenates values from a group into a single string, separated by the given delimiter.
+
+```
+SELECT department, string_agg(customer_id, ', ') AS customer_listFROM my_namespace.sales_dataGROUP BY department
+```
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2-sql/sql-reference/aggregate-functions/#page","headline":"Aggregate functions · R2 SQL docs","description":"Reference for all 33 aggregate functions supported in R2 SQL, organized by category.","url":"https://developers.cloudflare.com/r2-sql/sql-reference/aggregate-functions/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SQL"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2-sql/sql-reference/aggregate-functions/#page","headline":"Aggregate functions · R2 SQL docs","description":"Reference for the aggregate functions supported in R2 SQL, organized by category.","url":"https://developers.cloudflare.com/r2-sql/sql-reference/aggregate-functions/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SQL"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2-sql/","name":"R2 SQL"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2-sql/sql-reference/","name":"SQL reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2-sql/sql-reference/aggregate-functions/","name":"Aggregate functions"}}]}
 ```

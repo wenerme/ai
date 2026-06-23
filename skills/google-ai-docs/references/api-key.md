@@ -1,3 +1,6 @@
+> [!NOTE]
+> **Note:** This version of the page covers the **Interactions API** . You can use the toggle on this page to switch to the [generateContent API version of this page](https://ai.google.dev/gemini-api/docs/generate-content/api-key).
+
 To use the Gemini API, you must authenticate your requests. You can
 authenticate using a standard or authorization API key.
 
@@ -69,7 +72,7 @@ project that is not associated with an organization to generate your keys.
 Once you have a key, configure your environment to use it securely in your
 applications.
 
-### Use environment variables (Recommended)
+### Option 1: Use environment variables (Recommended)
 
 Set the environment variable `GEMINI_API_KEY` or `GOOGLE_API_KEY`. The Gemini
 API client libraries automatically detect and use these variables. If both are
@@ -121,7 +124,7 @@ Save the file, then apply the changes:
 4. Set the variable name to `GEMINI_API_KEY` and the value to your API key.
 5. Click **OK** to save. Open a new terminal session to load the variable.
 
-### Provide the API key explicitly in code
+### Option 2: Provide the API key explicitly in code
 
 You can pass the API key explicitly when initializing the client. Only do this
 if you cannot use environment variables.
@@ -132,11 +135,11 @@ if you cannot use environment variables.
 
     client = genai.Client(api_key="YOUR_API_KEY")
 
-    response = client.models.generate_content(
+    interaction = client.interactions.create(
         model="gemini-3.5-flash",
-        contents="Explain how AI works in a few words"
+        input="Explain how AI works in a few words"
     )
-    print(response.text)
+    print(interaction.output_text)
 
 ### JavaScript
 
@@ -145,11 +148,11 @@ if you cannot use environment variables.
     const ai = new GoogleGenAI({ apiKey: "YOUR_API_KEY" });
 
     async function main() {
-      const response = await ai.models.generateContent({
+      const interaction = await ai.interactions.create({
         model: "gemini-3.5-flash",
-        contents: "Explain how AI works in a few words",
+        input: "Explain how AI works in a few words",
       });
-      console.log(response.text);
+      console.log(interaction.output_text);
     }
 
     main();
@@ -163,6 +166,7 @@ if you cannot use environment variables.
         "fmt"
         "log"
         "google.golang.org/genai"
+        "google.golang.org/genai/interactions"
     )
 
     func main() {
@@ -175,16 +179,25 @@ if you cannot use environment variables.
             log.Fatal(err)
         }
 
-        result, err := client.Models.GenerateContent(
-            ctx,
-            "gemini-3.5-flash",
-            genai.Text("Explain how AI works in a few words"),
-            nil,
-        )
+        interaction, err := client.Interactions.NewModel(ctx, interactions.NewModelParams{
+            Model: "gemini-3.5-flash",
+            Input: interactions.Input{
+                String: "Explain how AI works in a few words",
+            },
+        })
         if err != nil {
             log.Fatal(err)
         }
-        fmt.Println(result.Text())
+
+        for _, step := range interaction.Steps {
+            if step.ModelOutput != nil {
+                for _, content := range step.ModelOutput.Content {
+                    if content.Text != nil {
+                        fmt.Println(content.Text.Text)
+                    }
+                }
+            }
+        }
     }
 
 ### Java
@@ -192,34 +205,42 @@ if you cannot use environment variables.
     package com.example;
 
     import com.google.genai.Client;
-    import com.google.genai.types.GenerateContentResponse;
+    import com.google.genai.interactions.models.interactions.CreateModelInteractionParams;
+    import com.google.genai.interactions.models.interactions.Interaction;
 
     public class GenerateTextFromTextInput {
       public static void main(String[] args) {
         Client client = Client.builder().apiKey("YOUR_API_KEY").build();
 
-        GenerateContentResponse response =
-            client.models.generateContent(
-                "gemini-3.5-flash",
-                "Explain how AI works in a few words",
-                null);
+        CreateModelInteractionParams params =
+            CreateModelInteractionParams.builder()
+                .input("Explain how AI works in a few words")
+                .model("gemini-3.5-flash")
+                .build();
 
-        System.out.println(response.text());
+        Interaction interaction = client.interactions.create(params);
+
+        interaction.steps().forEach(step -> {
+          if (step.isModelOutput()) {
+            step.asModelOutput().content().ifPresent(contents -> {
+              contents.forEach(content -> {
+                content.text().ifPresent(text -> System.out.println(text.text()));
+              });
+            });
+          }
+        });
       }
     }
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent"       -H 'Content-Type: application/json'       -H "x-goog-api-key: YOUR_API_KEY"       -X POST       -d '{
-        "contents": [
-          {
-            "parts": [
-              {
-                "text": "Explain how AI works in a few words"
-              }
-            ]
-          }
-        ]
+    curl "https://generativelanguage.googleapis.com/v1beta/interactions" \
+      -H 'Content-Type: application/json' \
+      -H "x-goog-api-key: YOUR_API_KEY" \
+      -X POST \
+      -d '{
+        "model": "gemini-3.5-flash",
+        "input": "Explain how AI works in a few words"
       }'
 
 ## Security and secret management
@@ -268,7 +289,7 @@ your key.
 To continue using the Gemini API after June 19, 2026, you must secure any
 unrestricted keys.
 
-#### Restrict the key to the Gemini API only via AI Studio
+#### Method A: Restrict the key to the Gemini API only (AI Studio)
 
 If you only use the key for the Gemini API, secure it directly in AI Studio:
 
@@ -280,7 +301,7 @@ If you only use the key for the Gemini API, secure it directly in AI Studio:
 > [!NOTE]
 > **Note:** To restrict an API key, you must have the `apikeys.keys.update` permission on the associated Google Cloud project. This permission is included in roles like **API Keys Admin** or **Editor**.
 
-#### Restrict the key for other services via Google Cloud Console
+#### Method B: Restrict the key for other services (Google Cloud Console)
 
 If the key is shared with other Google APIs (not recommended), restrict it in
 the Cloud Console. **Note: Gemini API requests using this key will fail after

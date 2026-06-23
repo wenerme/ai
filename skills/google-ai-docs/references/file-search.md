@@ -1,4 +1,5 @@
-# File Search
+> [!NOTE]
+> **Note:** This version of the page covers the **Interactions API** . You can use the toggle on this page to switch to the [generateContent API version of this page](https://ai.google.dev/gemini-api/docs/generate-content/file-search).
 
 The Gemini API enables Retrieval Augmented Generation ("RAG") through the File
 Search tool. File Search imports, chunks, and indexes your data to
@@ -19,7 +20,8 @@ Search Tool both easier and more cost-effective to build and scale with. See
 
 ## Directly upload to File Search store
 
-This example shows how to directly upload a file to the [file search store](https://ai.google.dev/api/file-search/file-search-stores#method:-media.uploadtofilesearchstore):
+This example shows how to directly upload a file to the
+[file search store](https://ai.google.dev/api/file-search/file-search-stores#method:-media.uploadtofilesearchstore):
 
 ### Python
 
@@ -29,7 +31,6 @@ This example shows how to directly upload a file to the [file search store](http
 
     client = genai.Client()
 
-    # File name will be visible in citations
     file_search_store = client.file_search_stores.create(
         config={
             'display_name': 'your-fileSearchStore-name',
@@ -49,21 +50,25 @@ This example shows how to directly upload a file to the [file search store](http
         time.sleep(5)
         operation = client.operations.get(operation)
 
-    response = client.models.generate_content(
+    interaction = client.interactions.create(
         model="gemini-3.5-flash",
-        contents="""Can you tell me about [insert question]""",
-        config=types.GenerateContentConfig(
-            tools=[
-                types.Tool(
-                    file_search=types.FileSearch(
-                        file_search_store_names=[file_search_store.name]
-                    )
-                )
-            ]
-        )
+        input="Can you tell me about [insert question]",
+        tools=[{
+            "type": "file_search",
+            "file_search_store_names": [file_search_store.name]
+        }]
     )
 
-    print(response.text)
+    for step in interaction.steps:
+        if step.type == "model_output":
+            for content_block in step.content:
+                if content_block.type == "text":
+                    print(content_block.text)
+                    if content_block.annotations:
+                        print("\nSources:")
+                        for annotation in content_block.annotations:
+                            if annotation.type == "file_citation":
+                                print(f"  - {annotation.file_name}: {annotation.source}")
 
 ### JavaScript
 
@@ -72,7 +77,6 @@ This example shows how to directly upload a file to the [file search store](http
     const ai = new GoogleGenAI({});
 
     async function run() {
-      // File name will be visible in citations
       const fileSearchStore = await ai.fileSearchStores.create({
         config: {
           displayName: 'your-fileSearchStore-name',
@@ -93,21 +97,32 @@ This example shows how to directly upload a file to the [file search store](http
         operation = await ai.operations.get({ operation });
       }
 
-      const response = await ai.models.generateContent({
+      const interaction = await ai.interactions.create({
         model: "gemini-3.5-flash",
-        contents: "Can you tell me about [insert question]",
-        config: {
-          tools: [
-            {
-              fileSearch: {
-                fileSearchStoreNames: [fileSearchStore.name]
-              }
-            }
-          ]
-        }
+        input: "Can you tell me about [insert question]",
+        tools: [{
+          type: "file_search",
+          file_search_store_names: [fileSearchStore.name]
+        }]
       });
 
-      console.log(response.text);
+      for (const step of interaction.steps) {
+        if (step.type === 'model_output') {
+          for (const contentBlock of step.content) {
+            if (contentBlock.type === 'text') {
+              console.log(contentBlock.text);
+              if (contentBlock.annotations) {
+                console.log("\nSources:");
+                for (const annotation of contentBlock.annotations) {
+                  if (annotation.type === 'file_citation') {
+                    console.log(`  - ${annotation.file_name}: ${annotation.source}`);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
 
     run();
@@ -126,8 +141,7 @@ Alternatively, you can upload an existing file and [import it to your file searc
 
     client = genai.Client()
 
-    # File name will be visible in citations
-    sample_file = client.files.upload(file='sample.txt', config={'name': 'display_file_name'})
+    sample_file = client.files.upload(file='sample.txt', config={'display_name': 'display_file_name'})
 
     file_search_store = client.file_search_stores.create(
         config={
@@ -145,21 +159,20 @@ Alternatively, you can upload an existing file and [import it to your file searc
         time.sleep(5)
         operation = client.operations.get(operation)
 
-    response = client.models.generate_content(
+    interaction = client.interactions.create(
         model="gemini-3.5-flash",
-        contents="""Can you tell me about [insert question]""",
-        config=types.GenerateContentConfig(
-            tools=[
-                types.Tool(
-                    file_search=types.FileSearch(
-                        file_search_store_names=[file_search_store.name]
-                    )
-                )
-            ]
-        )
+        input="Can you tell me about [insert question]",
+        tools=[{
+            "type": "file_search",
+            "file_search_store_names": [file_search_store.name]
+        }]
     )
 
-    print(response.text)
+    for step in interaction.steps:
+        if step.type == "model_output":
+            for content_block in step.content:
+                if content_block.type == "text":
+                    print(content_block.text)
 
 ### JavaScript
 
@@ -168,10 +181,9 @@ Alternatively, you can upload an existing file and [import it to your file searc
     const ai = new GoogleGenAI({});
 
     async function run() {
-      // File name will be visible in citations
       const sampleFile = await ai.files.upload({
         file: 'sample.txt',
-        config: { name: 'file-name' }
+        config: { displayName: 'file-name' }
       });
 
       const fileSearchStore = await ai.fileSearchStores.create({
@@ -191,21 +203,24 @@ Alternatively, you can upload an existing file and [import it to your file searc
         operation = await ai.operations.get({ operation: operation });
       }
 
-      const response = await ai.models.generateContent({
+      const interaction = await ai.interactions.create({
         model: "gemini-3.5-flash",
-        contents: "Can you tell me about [insert question]",
-        config: {
-          tools: [
-            {
-              fileSearch: {
-                fileSearchStoreNames: [fileSearchStore.name]
-              }
-            }
-          ]
-        }
+        input: "Can you tell me about [insert question]",
+        tools: [{
+          type: "file_search",
+          file_search_store_names: [fileSearchStore.name]
+        }]
       });
 
-      console.log(response.text);
+      for (const step of interaction.steps) {
+        if (step.type === 'model_output') {
+          for (const contentBlock of step.content) {
+            if (contentBlock.type === 'text') {
+              console.log(contentBlock.text);
+            }
+          }
+        }
+      }
     }
 
     run();
@@ -231,7 +246,7 @@ tokens.
 
     operation = client.file_search_stores.upload_to_file_search_store(
         file_search_store_name=file_search_store.name,
-        file_name=sample_file.name,
+        file='sample.txt',
         config={
             'chunking_config': {
               'white_space_config': {
@@ -274,7 +289,7 @@ tokens.
     }
     console.log("Custom chunking complete.");
 
-To use your File Search store, pass it as a tool to the `generateContent`
+To use your File Search store, pass it as a tool to the `interactions.create`
 method, as shown in the [Upload](https://ai.google.dev/gemini-api/docs/file-search#upload) and [Import](https://ai.google.dev/gemini-api/docs/file-search#importing-files) examples.
 
 ## How it works
@@ -400,7 +415,7 @@ document by name.
     file_search_document = client.file_search_stores.documents.get(name='fileSearchStores/my-file_search-store-123/documents/my_doc')
     print(file_search_document)
 
-    client.file_search_stores.documents.delete(name='fileSearchStores/my-file_search-store-123/documents/my_doc')
+    client.file_search_stores.documents.delete(name='fileSearchStores/my-file_search-store-123/documents/my_doc', config={'force': True})
 
 ### JavaScript
 
@@ -412,7 +427,7 @@ document by name.
     }
 
     const fileSearchDocument = await ai.fileSearchStores.documents.get({
-      name: 'fileSearchStores/my-file_search-store-123/documents/my_doc',
+      name: 'fileSearchStores/my-file_search-store-123/documents/my_doc'
     });
 
     await ai.fileSearchStores.documents.delete({
@@ -425,7 +440,7 @@ document by name.
 
     curl "https://generativelanguage.googleapis.com/v1beta/fileSearchStores/my-file_search-store-123/documents/my_doc?key=${GEMINI_API_KEY}"
 
-    curl -X DELETE "https://generativelanguage.googleapis.com/v1beta/fileSearchStores/my-file_search-store-123/documents/my_doc?key=${GEMINI_API_KEY}"
+    curl -X DELETE "https://generativelanguage.googleapis.com/v1beta/fileSearchStores/my-file_search-store-123/documents/my_doc?key=${GEMINI_API_KEY}&force=true"
 
 ## File metadata
 
@@ -437,10 +452,12 @@ additional context. Metadata is a set of key-value pairs.
     op = client.file_search_stores.import_file(
         file_search_store_name=file_search_store.name,
         file_name=sample_file.name,
-        custom_metadata=[
-            {"key": "author", "string_value": "Robert Graves"},
-            {"key": "year", "numeric_value": 1934}
-        ]
+        config={
+            'custom_metadata': [
+                {"key": "author", "string_value": "Robert Graves"},
+                {"key": "year", "numeric_value": 1934}
+            ]
+        }
     )
 
 ### JavaScript
@@ -461,56 +478,57 @@ to search only a subset of them.
 
 ### Python
 
-    response = client.models.generate_content(
+    interaction = client.interactions.create(
         model="gemini-3.5-flash",
-        contents="Tell me about the book 'I, Claudius'",
-        config=types.GenerateContentConfig(
-            tools=[
-                types.Tool(
-                    file_search=types.FileSearch(
-                        file_search_store_names=[file_search_store.name],
-                        metadata_filter="author=Robert Graves",
-                    )
-                )
-            ]
-        )
+        input="Tell me about the book 'I, Claudius'",
+        tools=[{
+            "type": "file_search",
+            "file_search_store_names": [file_search_store.name],
+            "metadata_filter": 'author="Robert Graves"',
+        }]
     )
 
-    print(response.text)
+    for step in interaction.steps:
+        if step.type == "model_output":
+            for content_block in step.content:
+                if content_block.type == "text":
+                    print(content_block.text)
 
 ### JavaScript
 
-    const response = await ai.models.generateContent({
+    const interaction = await ai.interactions.create({
       model: "gemini-3.5-flash",
-      contents: "Tell me about the book 'I, Claudius'",
-      config: {
-        tools: [
-          {
-            fileSearch: {
-              fileSearchStoreNames: [fileSearchStore.name],
-              metadataFilter: 'author="Robert Graves"',
-            }
-          }
-        ]
-      }
+      input: "Tell me about the book 'I, Claudius'",
+      tools: [{
+        type: "file_search",
+        file_search_store_names: [fileSearchStore.name],
+        metadata_filter: 'author="Robert Graves"',
+      }]
     });
 
-    console.log(response.text);
+    for (const step of interaction.steps) {
+      if (step.type === 'model_output') {
+        for (const contentBlock of step.content) {
+          if (contentBlock.type === 'text') {
+            console.log(contentBlock.text);
+          }
+        }
+      }
+    }
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${GEMINI_API_KEY}" \
+    curl "https://generativelanguage.googleapis.com/v1beta/interactions" \
+        -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -X POST \
         -d '{
-                "contents": [{
-                    "parts":[{"text": "Tell me about the book I, Claudius"}]
-                }],
+                "model": "gemini-3.5-flash",
+                "input": [{"type": "text", "text": "Tell me about the book I, Claudius"}],
                 "tools": [{
-                    "file_search": {
-                        "file_search_store_names":["'$STORE_NAME'"],
-                        "metadata_filter": "author = \"Robert Graves\""
-                    }
+                    "type": "file_search",
+                    "file_search_store_names": ["'$STORE_NAME'"],
+                    "metadata_filter": "author = \"Robert Graves\""
                 }]
             }' 2> /dev/null > response.json
 
@@ -574,65 +592,87 @@ When you use File Search, the model's response may include citations that
 specify which parts of your uploaded documents were used to generate the
 answer. This helps with fact-checking and verification.
 
-You can access citation information through the `grounding_metadata` attribute
-of the response.
+You can access citation information through the `annotations` attribute inside the `model_output` step's `content` blocks of the response.
 
 ### Python
 
-    print(response.candidates[0].grounding_metadata)
+    for step in interaction.steps:
+        if step.type == 'model_output':
+            for content in step.content:
+                if content.type == 'text' and content.annotations:
+                    print(content.annotations)
 
 ### JavaScript
 
-    console.log(JSON.stringify(response.candidates?.[0]?.groundingMetadata, null, 2));
+    for (const step of interaction.steps) {
+      if (step.type === 'model_output') {
+        for (const contentBlock of step.content) {
+          if (contentBlock.type === 'text' && contentBlock.annotations) {
+            console.log(JSON.stringify(contentBlock.annotations, null, 2));
+          }
+        }
+      }
+    }
 
-For detailed information on the structure of the grounding metadata, see the
-examples in the [File Search
-cookbook](https://github.com/google-gemini/cookbook/blob/main/quickstarts/File_Search.ipynb)
-or [the grounding section of the Grounding with Google
-Search](https://ai.google.dev/gemini-api/docs/google-search#attributing_sources_with_inline_citations)
-docs.
+For detailed information on the structure of the citations, see the
+[API reference for Interactions](https://ai.google.dev/api/interactions-api#Resource:FileCitation).
 
 ### Page numbers
 
 When you use File Search with documents that have pages (such as PDFs), the
 model's response may include the page number where the information was found.
-You can access this information through the `page_number` attribute of the
-`retrieved_context`.
+You can access this information through the `page_number` attribute of a
+`file_citation` annotation.
 
 ### Python
 
-    # Iterate through citations and check for page numbers
-    for chunk in response.grounding_metadata.grounding_chunks:
-       if chunk.retrieved_context and chunk.retrieved_context.page_number:
-           print(f"Cited Page: {chunk.retrieved_context.page_number}")
+    for step in interaction.steps:
+        if step.type == "model_output":
+            for content in step.content:
+                if content.type == "text" and content.annotations:
+                    for annotation in content.annotations:
+                        if annotation.type == "file_citation" and annotation.page_number:
+                            print(f"Cited Page: {annotation.page_number}")
 
 ### JavaScript
 
-    const groundingMetadata = response.candidates[0].groundingMetadata;
-    for (const chunk of groundingMetadata.groundingChunks) {
-      if (chunk.retrievedContext && chunk.retrievedContext.pageNumber) {
-        console.log(`Cited Page: ${chunk.retrievedContext.pageNumber}`);
+    for (const step of interaction.steps) {
+      if (step.type === 'model_output') {
+        for (const block of step.content) {
+          if (block.type === 'text' && block.annotations) {
+            for (const annotation of block.annotations) {
+              if (annotation.type === 'file_citation' && annotation.pageNumber) {
+                console.log(`Cited Page: ${annotation.pageNumber}`);
+              }
+            }
+          }
+        }
       }
     }
 
 ### Media citations
 
-When the model references an image chunk during generation, the API returns a
-citation in the grounding metadata that includes a `media_id`. You can use this
+When the model references an image chunk during generation, the API returns an
+annotation of type `file_citation` in the annotations that includes a `media_id`. You can use this
 ID to download the exact image chunk the model referenced. This `media_id` is
 persistent across multiple search calls, which lets you reliably retrieve
 the same image or cache it using the ID.
 
-The following snippet is an example REST response:
+The following snippet is an example REST response step:
 
-    "groundingMetadata": {
-      "groundingChunks": [
+    {
+      "type": "model_output",
+      "content": [
         {
-          "retrievedContext": {
-            "title": "product_image",
-            "fileSearchStore": "fileSearchStores/my-store-123",
-            "media_id": "fileSearchStores/my-store-123/media/BlobId-456"
-          }
+          "type": "text",
+          "text": "...",
+          "annotations": [
+            {
+              "type": "file_citation",
+              "file_name": "product_image",
+              "media_id": "fileSearchStores/my-store-123/media/BlobId-456"
+            }
+          ]
         }
       ]
     }
@@ -642,24 +682,31 @@ download the media:
 
 ### Python
 
-    # Iterate through citations and download media if present
-    for chunk in response.grounding_metadata.grounding_chunks:
-       if chunk.retrieved_context and chunk.retrieved_context.media_id:
-           print(f"Cited Media ID: {chunk.retrieved_context.media_id}")
-           # Download the blob using the SDK
-           blob_content = client.file_search_stores.download_media(
-               media_id=chunk.retrieved_context.media_id
-           )
-           # Save blob_content to file...
+    for step in interaction.steps:
+        if step.type == "model_output":
+            for content in step.content:
+                if content.type == "text" and content.annotations:
+                    for annotation in content.annotations:
+                        if annotation.type == "file_citation" and annotation.media_id:
+                            print(f"Cited Media ID: {annotation.media_id}")
+                            blob_content = client.file_search_stores.download_media(
+                                media_id=annotation.media_id
+                            )
 
 ### JavaScript
 
-    const groundingMetadata = response.candidates[0].groundingMetadata;
-    for (const chunk of groundingMetadata.groundingChunks) {
-      if (chunk.retrievedContext && chunk.retrievedContext.mediaId) {
-        console.log(`Cited Media ID: ${chunk.retrievedContext.mediaId}`);
-        const blobContent = await ai.fileSearchStores.downloadMedia(chunk.retrievedContext.mediaId);
-        // Save blobContent to file...
+    for (const step of interaction.steps) {
+      if (step.type === 'model_output') {
+        for (const block of step.content) {
+          if (block.type === 'text' && block.annotations) {
+            for (const annotation of block.annotations) {
+              if (annotation.type === 'file_citation' && annotation.mediaId) {
+                console.log(`Cited Media ID: ${annotation.mediaId}`);
+                const blobContent = await ai.fileSearchStores.downloadMedia(annotation.mediaId);
+              }
+            }
+          }
+        }
       }
     }
 
@@ -668,80 +715,69 @@ download the media:
     curl -X GET "https://generativelanguage.googleapis.com/v1/fileSearchStores/my-store-123/media/BlobId-456" \
       -H "x-goog-api-key: $GEMINI_API_KEY"
 
-## Custom metadata in grounding data
+## Custom metadata
 
 If you have added custom metadata to your files, you can access it in the
-grounding metadata of the model's response. This is useful for passing
+annotations of the model's response. This is useful for passing
 additional context (like URLs, page numbers, or authors) from your source
-documents to your application logic. Each `grounding_chunk` in the
-`retrieved_context` contains this custom metadata.
+documents to your application logic. Each citation annotation of type `file_citation`
+contains this custom metadata.
 
 ### Python
 
-    response = client.models.generate_content(
+    interaction = client.interactions.create(
         model="gemini-3.5-flash",
-        contents="Tell me about [insert question]",
-        config=types.GenerateContentConfig(
-            tools=[
-                types.Tool(
-                    file_search=types.FileSearch(
-                        file_search_store_names=[file_search_store.name]
-                    )
-                )
-            ]
-        )
+        input="Tell me about [insert question]",
+        tools=[{
+            "type": "file_search",
+            "file_search_store_names": [file_search_store.name]
+        }]
     )
 
-    for chunk in response.candidates[0].grounding_metadata.grounding_chunks:
-        if chunk.retrieved_context:
-            print(f"Text: {chunk.retrieved_context.text}")
-            if chunk.retrieved_context.custom_metadata:
-                for metadata in chunk.retrieved_context.custom_metadata:
-                    print(f"Metadata Key: {metadata.key}")
-                    print(f"Value: {metadata.string_value or metadata.numeric_value}")
+    for step in interaction.steps:
+        if step.type == "model_output":
+            for content_block in step.content:
+                if content_block.annotations:
+                    for annotation in content_block.annotations:
+                        print(annotation)
 
 ### JavaScript
 
-    const response = await ai.models.generateContent({
-      model: "gemini-3.5-flash",
-      contents: "Tell me about [insert question]",
-      config: {
-        tools: [
-          {
-            fileSearch: {
-              fileSearchStoreNames: [fileSearchStore.name]
+      const interaction = await ai.interactions.create({
+        model: "gemini-3.5-flash",
+        input: "Tell me about [insert question]",
+        tools: [{
+          type: "file_search",
+          file_search_store_names: [fileSearchStore.name]
+        }]
+      });
+
+      for (const step of interaction.steps) {
+        if (step.type === 'model_output') {
+          for (const contentBlock of step.content) {
+            if (contentBlock.annotations) {
+              contentBlock.annotations.forEach((annotation) => {
+                console.log(annotation);
+              });
             }
           }
-        ]
-      }
-    });
-
-    const groundingMetadata = response.candidates[0].groundingMetadata;
-    groundingMetadata.groundingChunks.forEach((chunk) => {
-      if (chunk.retrievedContext) {
-        console.log(`Text: ${chunk.retrievedContext.text}`);
-        if (chunk.retrievedContext.customMetadata) {
-          chunk.retrievedContext.customMetadata.forEach((metadata) => {
-            console.log(`Metadata Key: ${metadata.key}`);
-            console.log(`Value: ${metadata.stringValue || metadata.numericValue}`);
-          });
         }
       }
-    });
 
 ### REST
 
     {
-      "candidates": [
+      "steps": [
         {
-          "content": { ... },
-          "grounding_metadata": {
-            "grounding_chunks": [
-              {
-                "retrieved_context": {
-                  "text": "...",
-                  "title": "...",
-                  "uri": "...",
+          "type": "model_output",
+          "content": [
+            {
+              "type": "text",
+              "text": "...",
+              "annotations": [
+                {
+                  "file_name": "...",
+                  "source": "...",
                   "custom_metadata": [
                     {
                       "key": "author",
@@ -753,10 +789,9 @@ documents to your application logic. Each `grounding_chunk` in the
                     }
                   ]
                 }
-              }
-            ],
-            "grounding_supports": [ ... ]
-          }
+              ]
+            }
+          ]
         }
       ]
     }
@@ -774,49 +809,53 @@ Starting with Gemini 3 models, you can combine file search tool with
         amount: str = Field(description="The numerical part of the amount.")
         currency: str = Field(description="The currency of amount.")
 
-    response = client.models.generate_content(
+    interaction = client.interactions.create(
         model="gemini-3.5-flash",
-        contents="What is the minimum hourly wage in Tokyo right now?",
-        config=types.GenerateContentConfig(
-                    tools=[
-                        types.Tool(
-                            file_search=types.FileSearch(
-                                file_search_store_names=[file_search_store.name]
-                            )
-                        )
-                    ],
-                    response_format={"text": {"mime_type": "application/json", "schema": Money.model_json_schema()}}
-          )
+        input="What is the minimum hourly wage in Tokyo right now?",
+        tools=[{
+            "type": "file_search",
+            "file_search_store_names": [file_search_store.name]
+        }],
+        response_format={
+            "type": "text",
+            "mime_type": "application/json",
+            "schema": Money.model_json_schema()
+        },
     )
-    result = Money.model_validate_json(response.text)
+    result = Money.model_validate_json(interaction.output_text)
     print(result)
 
 ### JavaScript
 
     import { z } from "zod";
 
-    const moneySchema = z.object({
-      amount: z.string().describe("The numerical part of the amount."),
-      currency: z.string().describe("The currency of amount."),
-    });
+    const moneyJsonSchema = {
+      type: "object",
+      properties: {
+        amount: { type: "string", description: "The numerical part of the amount." },
+        currency: { type: "string", description: "The currency of amount." }
+      },
+      required: ["amount", "currency"]
+    };
+
+    const moneySchema = z.fromJSONSchema(moneyJsonSchema);
 
     async function run() {
-      const response = await ai.models.generateContent({
+      const interaction = await ai.interactions.create({
         model: "gemini-3.5-flash",
-        contents: "What is the minimum hourly wage in Tokyo right now?",
-        config: {
-          tools: [
-            {
-              fileSearch: {
-                fileSearchStoreNames: [file_search_store.name],
-              },
-            },
-          ],
-          responseFormat: { text: { mimeType: "application/json", schema: z.toJSONSchema(moneySchema) } },
+        input: "What is the minimum hourly wage in Tokyo right now?",
+        tools: [{
+          type: "file_search",
+          file_search_store_names: [fileSearchStore.name],
+        }],
+        response_format: {
+          type: 'text',
+          mime_type: 'application/json',
+          schema: moneyJsonSchema
         },
       });
 
-      const result = moneySchema.parse(JSON.parse(response.text));
+      const result = moneySchema.parse(JSON.parse(interaction.output_text));
       console.log(result);
     }
 
@@ -824,35 +863,28 @@ Starting with Gemini 3 models, you can combine file search tool with
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
+    curl "https://generativelanguage.googleapis.com/v1beta/interactions" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -X POST \
       -d '{
-        "contents": [{
-          "parts": [{"text": "What is the minimum hourly wage in Tokyo right now?"}]
+        "model": "gemini-3.5-flash",
+        "input": "What is the minimum hourly wage in Tokyo right now?",
+        "tools": [{
+          "type": "file_search",
+          "file_search_store_names": ["$FILE_SEARCH_STORE_NAME"]
         }],
-        "tools": [
-          {
-            "fileSearch": {
-              "fileSearchStoreNames": ["$FILE_SEARCH_STORE_NAME"]
-            }
+        "response_format": {
+          "type": "text",
+          "mime_type": "application/json",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "amount": {"type": "string", "description": "The numerical part of the amount."},
+              "currency": {"type": "string", "description": "The currency of amount."}
+            },
+            "required": ["amount", "currency"]
           }
-        ],
-        "generationConfig": {
-    "responseFormat": {
-      "text": {
-        "mimeType": "application/json",
-        "schema": {
-                "type": "object",
-                "properties": {
-                    "amount": {"type": "string", "description": "The numerical part of the amount."},
-                    "currency": {"type": "string", "description": "The currency of amount."}
-      }
-    }
-    },
-                "required": ["amount", "currency"]
-            }
         }
       }'
 
@@ -863,7 +895,7 @@ The following models support File Search:
 | Model | File Search |
 |---|---|
 | [Gemini 3.5 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash) | ✔️ |
-| [Gemini 3.1 Pro Preview](https://ai.google.dev/gemini-api/docs/gemini-3.1-pro-preview) | ✔️ |
+| [Gemini 3.1 Pro Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) | ✔️ |
 | [Gemini 3.1 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite) | ✔️ |
 | [Gemini 3 Flash Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview) | ✔️ |
 | [Gemini 2.5 Pro](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-pro) | ✔️ |

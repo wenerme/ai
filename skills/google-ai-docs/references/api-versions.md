@@ -1,11 +1,12 @@
 This document provides a high-level overview of the differences between the `v1`
 and `v1beta` versions of the Gemini API.
 
-- **v1**: Stable version of the API. Features in the stable version are fully-supported over the lifetime of the major version. If there are any breaking changes, then the next major version of the API will be created and the existing version will be deprecated after a reasonable period of time. Non-breaking changes may be introduced to the API without changing the major version.
-- **v1beta** : This version includes early features that may be under development and are subject to breaking changes. There is also no guarantee that the features in the Beta version will move to the stable version. **If you require stability in your production environment and cannot risk breaking changes, you should not use this version in production.**
+- **v1** : Stable version of the API. Features in the stable version are fully-supported over the lifetime of the major version. If there are any breaking changes, then the next major version of the API will be created and the existing version will be deprecated after a reasonable period of time. Non-breaking changes may be introduced to the API without changing the major version. As of June 2026, the **Interactions API** is Generally Available and supported in `v1`.
+- **v1beta** : This version includes early features and capabilities that are actively being developed. While features in `v1beta` may be subject to changes as we refine them based on feedback, it lets you try new capabilities before they are promoted to stable.
 
 | Feature | v1 | v1beta |
 |---|---|---|
+| Interactions API | Yes | Yes |
 | Generate Content - Text-only input | Yes | Yes |
 | Generate Content - Text-and-image input | Yes | Yes |
 | Generate Content - Text output | Yes | Yes |
@@ -15,7 +16,6 @@ and `v1beta` versions of the Gemini API.
 | Embed Content - Text-only input | Yes | Yes |
 | Generate Answer |   | Yes |
 | Semantic retriever |   | Yes |
-| Interactions API |   | Yes |
 
 - Yes - Supported
 - No - Will never be supported
@@ -25,18 +25,21 @@ and `v1beta` versions of the Gemini API.
 The Gemini API SDKs default to `v1beta`, but you can explicitly specify versions
 by setting the API version as shown in the following code sample:
 
+> [!NOTE]
+> **Note:** The GenAI SDKs use \`v1beta\` by default to enable access to preview features. You can configure the SDK to use the stable \`v1\` version (as shown below) which also supports the Interactions API.
+
 ### Python
 
     from google import genai
 
     client = genai.Client(http_options={'api_version': 'v1'})
 
-    response = client.models.generate_content(
+    interaction = client.interactions.create(
         model='gemini-3.5-flash',
-        contents="Explain how AI works",
+        input="Explain how AI works",
     )
 
-    print(response.text)
+    print(interaction.output_text)
 
 ### JavaScript
 
@@ -47,23 +50,21 @@ by setting the API version as shown in the following code sample:
     });
 
     async function main() {
-      const response = await ai.models.generateContent({
+      const interaction = await ai.interactions.create({
         model: "gemini-3.5-flash",
-        contents: "Explain how AI works",
+        input: "Explain how AI works",
       });
-      console.log(response.text);
+      console.log(interaction.output_text);
     }
 
     await main();
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1/models/gemini-3.5-flash:generateContent" \
-    -H "x-goog-api-key: $GEMINI_API_KEY" \
-    -H 'Content-Type: application/json' \
-    -X POST \
-    -d '{
-      "contents": [{
-        "parts":[{"text": "Explain how AI works."}]
-        }]
-       }'
+    curl -X POST "https://generativelanguage.googleapis.com/v1/interactions" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H 'Content-Type: application/json' \
+      -d '{
+        "model": "gemini-3.5-flash",
+        "input": "Explain how AI works"
+      }'

@@ -4,6 +4,8 @@
 
 # Claude 4.7 Migration Guide
 
+As of June 22, 2026, OpenRouter maps `reasoning.effort` to Anthropic's `output_config.effort` on Claude 4.6 and newer models — previously it was ignored. `verbosity` is unchanged: it still sets `output_config.effort`, and wins if both are passed.
+
 ## What's New
 
 See Anthropic's [Migrating to Claude Opus 4.7](https://platform.claude.com/docs/en/about-claude/models/migration-guide#migrating-to-claude-opus-4-7) for a full overview of changes.
@@ -11,7 +13,7 @@ See Anthropic's [Migrating to Claude Opus 4.7](https://platform.claude.com/docs/
 Claude 4.7 Opus introduces three major changes:
 
 1. **Sampling parameters removed** — `temperature`, `top_p`, and `top_k` are no longer supported and will be ignored
-2. **Adaptive-only thinking** — when reasoning is enabled the only supported mode is adaptive; `thinking.budget_tokens` is no longer supported and `reasoning.effort` / `reasoning.max_tokens` are ignored (adaptive is used instead)
+2. **Adaptive-only thinking** — when reasoning is enabled the only supported mode is adaptive; `thinking.budget_tokens` is no longer supported and `reasoning.max_tokens` is ignored
 3. **New `'xhigh'` effort level** — a new effort level between `'high'` and `'max'` via `verbosity` / `output_config.effort`
 
 ## Sampling Parameters Removed
@@ -38,7 +40,7 @@ Reasoning itself remains opt-in on all Anthropic models via [`reasoning.enabled=
 Concretely on 4.7:
 
 * `reasoning.max_tokens` is accepted but ignored
-* `reasoning.effort` is accepted but ignored
+* `reasoning.effort` maps to Anthropic's `output_config.effort` (see [Parameter Summary](#parameter-summary)) rather than a thinking budget
 * `thinking.budget_tokens` is no longer supported upstream
 
 To influence overall response effort (not reasoning-specific), use [`verbosity`](#new-xhigh-effort-level). It maps to Anthropic's `output_config.effort` and applies whether or not reasoning is enabled.
@@ -63,13 +65,13 @@ To influence overall response effort (not reasoning-specific), use [`verbosity`]
 ```
 
 ```json
-// reasoning.effort is ignored (adaptive used)
+// reasoning.effort maps to output_config.effort (thinking stays adaptive)
 {
   "model": "anthropic/claude-4.7-opus",
   "reasoning": { "enabled": true, "effort": "low" },
   "messages": [{ "role": "user", "content": "Hello" }]
 }
-// ↑ Equivalent to just { "reasoning": { "enabled": true } }
+// ↑ Equivalent to { "reasoning": { "enabled": true }, "verbosity": "low" }
 ```
 
 ## New `'xhigh'` Effort Level
@@ -89,14 +91,14 @@ The full effort scale is now: `low` → `medium` → `high` → `xhigh` → `max
 
 ## Parameter Summary
 
-With sampling parameters and reasoning budgets removed on 4.7, `verbosity` (→ `output_config.effort`) is the remaining lever for influencing overall response effort. It is not reasoning-specific and applies whether or not reasoning is enabled.
+With sampling parameters and reasoning budgets removed on 4.7, `output_config.effort` is the remaining lever for influencing overall response effort. You can set it via `verbosity`, or via `reasoning.effort` when reasoning is enabled (`verbosity` wins if both are passed; `'minimal'` maps to `'low'`, and `'none'` disables reasoning entirely so no `output_config.effort` is sent).
 
-| Parameter                       | Claude 4.7 Opus Behavior                                  |
-| ------------------------------- | --------------------------------------------------------- |
-| `temperature`, `top_p`, `top_k` | Ignored                                                   |
-| `reasoning.effort`              | Ignored (adaptive used)                                   |
-| `reasoning.max_tokens`          | Ignored (adaptive used)                                   |
-| `verbosity`                     | Controls overall response effort (`output_config.effort`) |
+| Parameter                       | Claude 4.7 Opus Behavior                                |
+| ------------------------------- | ------------------------------------------------------- |
+| `temperature`, `top_p`, `top_k` | Ignored                                                 |
+| `reasoning.max_tokens`          | Ignored (adaptive used)                                 |
+| `reasoning.effort`              | Sets `output_config.effort` (when reasoning is enabled) |
+| `verbosity`                     | Sets `output_config.effort`                             |
 
 ```json
 { "model": "anthropic/claude-4.7-opus", "verbosity": "xhigh" }
@@ -104,11 +106,11 @@ With sampling parameters and reasoning budgets removed on 4.7, `verbosity` (→ 
 
 ## Breaking Changes
 
-| Feature                                        | Opus 4.6                 | Opus 4.7                |
-| ---------------------------------------------- | ------------------------ | ----------------------- |
-| `temperature` / `top_p` / `top_k`              | Supported                | Ignored                 |
-| Thinking modes (when `reasoning.enabled=true`) | Adaptive or budget-based | Adaptive only           |
-| `reasoning.max_tokens`                         | Budget-based             | Ignored (adaptive used) |
-| `reasoning.effort`                             | Ignored (adaptive used)  | Ignored (adaptive used) |
-| `verbosity: 'xhigh'`                           | Falls back to `high`     | Supported               |
-| `verbosity: 'max'`                             | Supported                | Supported               |
+| Feature                                        | Opus 4.6                    | Opus 4.7                    |
+| ---------------------------------------------- | --------------------------- | --------------------------- |
+| `temperature` / `top_p` / `top_k`              | Supported                   | Ignored                     |
+| Thinking modes (when `reasoning.enabled=true`) | Adaptive or budget-based    | Adaptive only               |
+| `reasoning.max_tokens`                         | Sets a thinking budget      | Ignored (adaptive used)     |
+| `reasoning.effort`                             | Sets `output_config.effort` | Sets `output_config.effort` |
+| `'xhigh'` effort level                         | Falls back to `'high'`      | Supported                   |
+| `'max'` effort level                           | Supported                   | Supported                   |

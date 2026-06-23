@@ -16,6 +16,10 @@ Unified Billing allows users to connect to various AI providers (such as OpenAI,
 
 A 5% fee is applied to all credits purchased through Unified Billing. For example, a $100 credit purchase will result in a $105 charge. Inference pricing from providers is passed through with no markup — you pay the same per-token rates as you would directly with the provider.
 
+Warning
+
+In rare instances, your credit balance may go negative. If this happens, Cloudflare will charge the payment method on file for the outstanding amount. Charges occur at the beginning of each month for the previous month.
+
 ## Pre-requisites
 
 * Ensure your Cloudflare account has [sufficient credits loaded](#load-credits).
@@ -142,6 +146,6 @@ Unified Billing request with ZDR
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/unified-billing/#page","headline":"Unified Billing · Cloudflare AI Gateway docs","description":"Use the Cloudflare billing to pay for and authenticate your inference requests.","url":"https://developers.cloudflare.com/ai-gateway/features/unified-billing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/unified-billing/#page","headline":"Unified Billing · Cloudflare AI Gateway docs","description":"Use the Cloudflare billing to pay for and authenticate your inference requests.","url":"https://developers.cloudflare.com/ai-gateway/features/unified-billing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/features/unified-billing/","name":"Unified Billing"}}]}
 ```

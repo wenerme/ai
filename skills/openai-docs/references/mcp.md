@@ -110,6 +110,46 @@ The final tool response should look like:
 }
 ```
 
+### Citation behavior
+
+For both `search` results and `fetch` responses, ChatGPT creates citation
+metadata only when `url` is a non-empty string. A result with a `title` but no
+usable `url` remains ordinary tool output instead of becoming an empty
+citation. To make a result citable, return its canonical `url`.
+
+For example, ChatGPT might call `search` with:
+
+```json
+{ "query": "What is the quarterly plan?" }
+```
+
+The MCP server can respond with a URL-backed result:
+
+```json
+{
+  "structuredContent": {
+    "results": [
+      {
+        "id": "quarterly-plan",
+        "title": "Quarterly plan",
+        "url": "https://example.com/quarterly-plan"
+      }
+    ]
+  },
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"results\":[{\"id\":\"quarterly-plan\",\"title\":\"Quarterly plan\",\"url\":\"https://example.com/quarterly-plan\"}]}"
+    }
+  ]
+}
+```
+
+In this response, the `url` field has a value, which makes the result eligible
+for citation metadata. The query itself does not trigger citation handling. If
+the result omits `url`, or provides an empty or non-string value, ChatGPT
+preserves the result as ordinary tool output.
+
 ### Server example
 
 An easy way to try out this example MCP server is using [Replit](https://replit.com/). You can configure this sample application with your own API credentials and vector store information to try it yourself.

@@ -1,3 +1,13 @@
+<br />
+
+Description: Learn how to optimize latency with the Priority inference tier in the Interactions API
+
+<br />
+
+
+> [!NOTE]
+> **Note:** This version of the page covers the **Interactions API** . You can use the toggle on this page to switch to the [generateContent API version of this page](https://ai.google.dev/gemini-api/docs/generate-content/priority-inference).
+
 > [!WARNING]
 > **Preview:** The Gemini Priority API is in [Preview](https://cloud.google.com/products#product-launch-stages).
 
@@ -6,13 +16,11 @@ business-critical workloads that require lower latency and the highest
 reliability at a premium price point. Priority tier traffic is prioritized above
 standard API and Flex tier traffic.
 
-Priority inference is available to [Tier 2 \& Tier 3](https://ai.google.dev/gemini-api/docs/billing#about-billing) users across the GenerateContent API
-and Interactions API endpoints.
+Priority inference is available across the Interactions API endpoints.
 
 ## How to use Priority
 
-To use the Priority tier, set the `service_tier` field in the request body to
-`priority`. The default tier is standard if the field is omitted.
+To use the Priority tier, set the `service_tier` field in your request to `priority`. The default tier is standard if the field is omitted.
 
 ### Python
 
@@ -20,100 +28,40 @@ To use the Priority tier, set the `service_tier` field in the request body to
 
     client = genai.Client()
 
-    try:
-        response = client.models.generate_content(
-            model="gemini-3.5-flash",
-            contents="Triage this critical customer support ticket immediately.",
-            config={"service_tier": "priority"},
-        )
-
-        # Validate for graceful downgrade
-        if response.sdk_http_response.headers.get("x-gemini-service-tier") == "standard":
-            print("Warning: Priority limit exceeded, processed at Standard tier.")
-
-        print(response.text)
-
-    except Exception as e:
-        # Standard error handling (e.g., DEADLINE_EXCEEDED)
-        print(f"Error during API call: {e}")
+    interaction = client.interactions.create(
+        model="gemini-3.5-flash",
+        input="Triage this critical customer support ticket immediately.",
+        service_tier='priority'
+    )
+    print(interaction.output_text)
 
 ### JavaScript
 
-    import {GoogleGenAI} from '@google/genai';
+    import { GoogleGenAI } from '@google/genai';
 
     const ai = new GoogleGenAI({});
 
     async function main() {
-      try {
-          const result = await ai.models.generateContent({
-              model: "gemini-3.5-flash",
-              contents: "Triage this critical customer support ticket immediately.",
-              config: {serviceTier: "priority"},
-          });
-
-          // Validate for graceful downgrade
-          if (result.sdkHttpResponse.headers.get("x-gemini-service-tier") === "standard") {
-              console.log("Warning: Priority limit exceeded, processed at Standard tier.");
-          }
-
-          console.log(result.text);
-
-      } catch (e) {
-          console.log(`Error during API call: ${e}`);
-      }
+        const interaction = await ai.interactions.create({
+            model: "gemini-3.5-flash",
+            input: "Triage this critical customer support ticket immediately.",
+            service_tier: "priority"
+        });
+        console.log(interaction.output_text);
     }
 
     await main();
 
-### Go
-
-    package main
-
-    import (
-        "context"
-        "fmt"
-        "log"
-        "google.golang.org/genai"
-    )
-
-    func main() {
-        ctx := context.Background()
-        client, err := genai.NewClient(ctx, nil)
-        if err != nil {
-            log.Fatal(err)
-        }
-        defer client.Close()
-
-        resp, err := client.Models.GenerateContent(
-            ctx,
-            "gemini-3.5-flash",
-            genai.Text("Triage this critical customer support ticket immediately."),
-            &genai.GenerateContentConfig{
-                ServiceTier: "priority",
-            },
-        )
-        if err != nil {
-            log.Fatalf("Error during API call: %v", err)
-        }
-
-        // Validate for graceful downgrade
-        if resp.SDKHTTPResponse.Header.Get("x-gemini-service-tier") == "standard" {
-            fmt.Println("Warning: Priority limit exceeded, processed at Standard tier.")
-        }
-
-        fmt.Println(resp.Text())
-    }
-
 ### REST
 
-    curl -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=$GEMINI_API_KEY" \
-    -H "Content-Type: application/json" \
-    -d '{
-      "contents": [{
-        "parts":[{"text": "Analyze user sentiment in real time"}]
-      }],
-      "service_tier": "priority"
-    }'
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+      -H "Content-Type: application/json" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -d '{
+        "model": "gemini-3.5-flash",
+        "input": "Triage this critical customer support ticket immediately.",
+        "service_tier": "priority"
+      }'
 
 ## How Priority inference works
 
@@ -135,7 +83,7 @@ the request.
 - **Low latency**: Designed for second response times for interactive, user-facing AI tools.
 - **High reliability**: Traffic is treated with the highest criticality and is strictly non-sheddable.
 - **Graceful degradation**: Traffic spikes exceeding dynamic limits are automatically downgraded to the Standard tier for processing instead of failing, preventing service outages.
-- **Low friction** : Uses the same synchronous `generateContent` method as the standard and Flex tiers.
+- **Low friction** : Uses the same synchronous `create` method as the standard and Flex tiers.
 
 ### Use cases
 
@@ -178,16 +126,11 @@ The following models support Priority inference:
 | [Gemini 3.1 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite) | ✔️ |
 | [Gemini 3.1 Pro Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) | ✔️ |
 | [Gemini 3 Flash Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview) | ✔️ |
-| [Gemini 3 Pro Image Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image-preview) | ✔️ |
 | [Gemini 2.5 Pro](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-pro) | ✔️ |
 | [Gemini 2.5 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash) | ✔️ |
-| [Gemini 2.5 Flash Image](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-image) | ✔️ |
 | [Gemini 2.5 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-lite) | ✔️ |
 
 ## What's next
 
-Read about Gemini's other [inference and optimization](https://ai.google.dev/gemini-api/docs/optimization) options:
-
-- [Flex inference](https://ai.google.dev/gemini-api/docs/flex-inference) for 50% cost reduction.
-- [Batch API](https://ai.google.dev/gemini-api/docs/batch-api) for asynchronous processing within 24 hours.
-- [Context caching](https://ai.google.dev/gemini-api/docs/caching) for reduced input token costs.
+- [Flex inference](https://ai.google.dev/gemini-api/docs/flex-inference) for cost reduction.
+- [Tokens](https://ai.google.dev/gemini-api/docs/tokens): Understand tokens.

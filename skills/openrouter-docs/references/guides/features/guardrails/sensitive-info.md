@@ -42,10 +42,12 @@ Some types of sensitive information — like person names and physical addresses
 
 NLP-based presets include:
 
-* Person names
-* Physical addresses / locations
+* Person names *(beta)*
+* Physical addresses / locations *(beta)*
 
-NLP-based detection adds latency to requests proportional to the size of the input text. The "Person Name" and "Address" presets are marked with an **Adds latency** label in the dashboard to indicate this.
+The "Person Name" and "Address" presets are currently in **beta**. Detection accuracy may vary — especially for uncommon name formats and partial or non-standard addresses. If the check times out, the request proceeds (not blocked). We're actively improving these models.
+
+NLP-based detection also adds latency proportional to the size of the input text. These presets are marked with an **Adds latency** label in the dashboard.
 
 ## Built-In Presets
 
@@ -58,8 +60,8 @@ The following presets are available out of the box. Each can be individually ena
 | Social Security number | Regex            | `[SSN]`         | `123-45-6789`                                            |
 | Credit card number     | Regex            | `[CREDIT_CARD]` | `4265 5256 0839 8752`, `4265-5256-0839-8752`             |
 | IP address             | Regex            | `[IP_ADDRESS]`  | `192.168.0.1`, `10.0.0.1`                                |
-| Person name            | NLP              | `[PERSON_NAME]` | `John Smith`, `Dr. Sarah Johnson`, `Maria Garcia-Lopez`  |
-| Address                | NLP              | `[ADDRESS]`     | `123 Main Street, Springfield`, `London, United Kingdom` |
+| Person name *(beta)*   | NLP              | `[PERSON_NAME]` | `John Smith`, `Dr. Sarah Johnson`, `Maria Garcia-Lopez`  |
+| Address *(beta)*       | NLP              | `[ADDRESS]`     | `123 Main Street, Springfield`, `London, United Kingdom` |
 
 ### NLP Preset Limitations
 

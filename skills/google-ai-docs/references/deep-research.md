@@ -1,5 +1,3 @@
-# Gemini Deep Research Agent
-
 The Gemini Deep Research Agent autonomously plans, executes, and synthesizes
 multi-step research tasks. Powered by Gemini, it navigates complex
 information landscapes to produce detailed, cited reports. New
@@ -15,7 +13,7 @@ to run the agent asynchronously and poll for results or stream updates. See
 
 > [!WARNING]
 > **Preview:** The Gemini Deep Research Agent is currently in preview. The Deep Research agent is exclusively available using the [Interactions
-> API](https://ai.google.dev/gemini-api/docs/interactions). You cannot access it through `generate_content`.
+> API](https://ai.google.dev/gemini-api/docs). You cannot access it through `generate_content`.
 
 The following example shows how to start a research task in the background
 and poll for results.
@@ -38,7 +36,7 @@ and poll for results.
     while True:
         interaction = client.interactions.get(interaction.id)
         if interaction.status == "completed":
-            print(interaction.outputs[-1].text)
+            print(interaction.steps[-1].content[0].text)
             break
         elif interaction.status == "failed":
             print(f"Research failed: {interaction.error}")
@@ -62,7 +60,7 @@ and poll for results.
     while (true) {
         const result = await client.interactions.get(interaction.id);
         if (result.status === 'completed') {
-            console.log(result.outputs[result.outputs.length - 1].text);
+            console.log(result.steps.at(-1).content[0].text);
             break;
         } else if (result.status === 'failed') {
             console.log(`Research failed: ${result.error}`);
@@ -130,7 +128,7 @@ returns a research plan instead of a full report.
     # Wait for and retrieve the plan
     while (result := client.interactions.get(id=plan_interaction.id)).status != "completed":
         time.sleep(5)
-    print(result.outputs[-1].text)
+    print(result.steps[-1].content[0].text)
 
 ### JavaScript
 
@@ -149,7 +147,7 @@ returns a research plan instead of a full report.
     while ((result = await client.interactions.get(planInteraction.id)).status !== 'completed') {
         await new Promise(r => setTimeout(r, 5000));
     }
-    console.log(result.outputs[result.outputs.length - 1].text);
+    console.log(result.steps.at(-1).content[0].text);
 
 ### REST
 
@@ -190,7 +188,7 @@ mode.
 
     while (result := client.interactions.get(id=refined_plan.id)).status != "completed":
         time.sleep(5)
-    print(result.outputs[-1].text)
+    print(result.steps[-1].content[0].text)
 
 ### JavaScript
 
@@ -210,7 +208,7 @@ mode.
     while ((result = await client.interactions.get(refinedPlan.id)).status !== 'completed') {
         await new Promise(r => setTimeout(r, 5000));
     }
-    console.log(result.outputs[result.outputs.length - 1].text);
+    console.log(result.steps.at(-1).content[0].text);
 
 ### REST
 
@@ -251,7 +249,7 @@ start the research.
 
     while (result := client.interactions.get(id=final_report.id)).status != "completed":
         time.sleep(5)
-    print(result.outputs[-1].text)
+    print(result.steps[-1].content[0].text)
 
 ### JavaScript
 
@@ -271,7 +269,7 @@ start the research.
     while ((result = await client.interactions.get(finalReport.id)).status !== 'completed') {
         await new Promise(r => setTimeout(r, 5000));
     }
-    console.log(result.outputs[result.outputs.length - 1].text);
+    console.log(result.steps.at(-1).content[0].text);
 
 ### REST
 
@@ -297,7 +295,7 @@ start the research.
 
 When `visualization` is set to `"auto"`, the agent can generate charts,
 graphs, and other visual elements to support its research findings.
-Generated images are included in the response outputs and streamed as
+Generated images are included in the response steps and streamed as
 `image` deltas. For best results, explicitly ask for visuals in your
 query --- for example, "Include charts showing trends over time" or
 "Generate graphics comparing market share." Setting `visualization` to
@@ -307,7 +305,6 @@ when the prompt requests them.
 ### Python
 
     import base64
-    from IPython.display import Image, display
 
     interaction = client.interactions.create(
         agent="deep-research-preview-04-2026",
@@ -324,15 +321,14 @@ when the prompt requests them.
     while (result := client.interactions.get(id=interaction.id)).status != "completed":
         time.sleep(5)
 
-    for output in result.outputs:
-        if output.type == "text":
-            print(output.text)
-        elif output.type == "image" and output.data:
-            image_bytes = base64.b64decode(output.data)
-            print(f"Received image: {len(image_bytes)} bytes")
-            # To display in a Jupyter notebook:
-            # from IPython.display import display, Image
-            # display(Image(data=image_bytes))
+    for step in result.steps:
+        if step.type == "model_output":
+            for content_item in step.content:
+                if content_item.type == "text":
+                    print(content_item.text)
+                elif content_item.type == "image" and content_item.data:
+                    image_bytes = base64.b64decode(content_item.data)
+                    print(f"Received image: {len(image_bytes)} bytes")
 
 ### JavaScript
 
@@ -357,11 +353,15 @@ when the prompt requests them.
         await new Promise(r => setTimeout(r, 5000));
     }
 
-    for (const output of result.outputs) {
-        if (output.type === 'text') {
-            console.log(output.text);
-        } else if (output.type === 'image' && output.data) {
-            console.log(`[Image Output: ${output.data.substring(0, 20)}...]`);
+    for (const step of result.steps) {
+        if (step.type === 'model_output') {
+            for (const contentItem of step.content) {
+                if (contentItem.type === 'text') {
+                    console.log(contentItem.text);
+                } else if (contentItem.type === 'image' && contentItem.data) {
+                    console.log(`[Image Output: ${contentItem.data.substring(0, 20)}...]`);
+                }
+            }
         }
     }
 
@@ -491,8 +491,8 @@ Allow the agent to execute code for calculations and data analysis:
     -H "Content-Type: application/json" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -d '{
-        "agent": "deep-research-preview-04-2026",
         "input": "Calculate the 50th Fibonacci number.",
+        "agent": "deep-research-preview-04-2026",
         "tools": [{"type": "code_execution"}],
         "background": true
     }'
@@ -692,6 +692,7 @@ contextualized by the provided inputs.
             {"type": "text", "text": prompt},
             {
                 "type": "image",
+                "mime_type": "image/jpeg",
                 "uri": "https://storage.googleapis.com/generativeai-downloads/images/generated_elephants_giraffes_zebras_sunset.jpg"
             }
         ],
@@ -704,7 +705,7 @@ contextualized by the provided inputs.
     while True:
         interaction = client.interactions.get(interaction.id)
         if interaction.status == "completed":
-            print(interaction.outputs[-1].text)
+            print(interaction.steps[-1].content[0].text)
             break
         elif interaction.status == "failed":
             print(f"Research failed: {interaction.error}")
@@ -729,6 +730,7 @@ contextualized by the provided inputs.
             { type: 'text', text: prompt },
             {
                 type: 'image',
+                mime_type: "image/jpeg",
                 uri: 'https://storage.googleapis.com/generativeai-downloads/images/generated_elephants_giraffes_zebras_sunset.jpg'
             }
         ],
@@ -741,7 +743,7 @@ contextualized by the provided inputs.
     while (true) {
         const result = await client.interactions.get(interaction.id);
         if (result.status === 'completed') {
-            console.log(result.outputs[result.outputs.length - 1].text);
+            console.log(result.steps.at(-1).content[0].text);
             break;
         } else if (result.status === 'failed') {
             console.log(`Research failed: ${result.error}`);
@@ -759,7 +761,7 @@ contextualized by the provided inputs.
     -d '{
         "input": [
             {"type": "text", "text": "Analyze the interspecies dynamics and behavioral risks present in the provided image of the African watering hole. Specifically, investigate the symbiotic relationship between the avian species and the pachyderms shown, and conduct a risk assessment for the reticulated giraffes based on their drinking posture relative to the specific predator visible in the foreground."},
-            {"type": "image", "uri": "https://storage.googleapis.com/generativeai-downloads/images/generated_elephants_giraffes_zebras_sunset.jpg"}
+            {"type": "image", "mime_type": "image/jpeg", "uri": "https://storage.googleapis.com/generativeai-downloads/images/generated_elephants_giraffes_zebras_sunset.jpg"}
         ],
         "agent": "deep-research-preview-04-2026",
         "background": true
@@ -859,9 +861,9 @@ final results.
 
 | Event type | Delta type | Description |
 |---|---|---|
-| `content.delta` | `thought_summary` | Intermediate reasoning step from the agent. |
-| `content.delta` | `text` | Part of the final text output. |
-| `content.delta` | `image` | A generated image (base64-encoded). |
+| `step.delta` | `thought` | Intermediate reasoning step from the agent. |
+| `step.delta` | `text` | Part of the final text output. |
+| `step.delta` | `image` | A generated image (base64-encoded). |
 
 The following example starts a research task and processes the stream with
 automatic reconnection. It tracks the `interaction_id` and `last_event_id` so
@@ -880,17 +882,17 @@ resume from where it left off.
 
     def process_stream(stream):
         global interaction_id, last_event_id, is_complete
-        for chunk in stream:
-            if chunk.event_type == "interaction.start":
-                interaction_id = chunk.interaction.id
-            if chunk.event_id:
-                last_event_id = chunk.event_id
-            if chunk.event_type == "content.delta":
-                if chunk.delta.type == "text":
-                    print(chunk.delta.text, end="", flush=True)
-                elif chunk.delta.type == "thought_summary":
-                    print(f"Thought: {chunk.delta.content.text}", flush=True)
-            elif chunk.event_type in ("interaction.complete", "error"):
+        for event in stream:
+            if event.event_type == "interaction.created":
+                interaction_id = event.interaction.id
+            if event.event_id:
+                last_event_id = event.event_id
+            if event.event_type == "step.delta":
+                if event.delta.type == "text":
+                    print(event.delta.text, end="", flush=True)
+                elif event.delta.type == "thought":
+                    print(f"Thought: {event.delta.text}", flush=True)
+            elif event.event_type in ("interaction.completed", "interaction.error"):
                 is_complete = True
 
     stream = client.interactions.create(
@@ -923,18 +925,18 @@ resume from where it left off.
     let isComplete = false;
 
     async function processStream(stream) {
-        for await (const chunk of stream) {
-            if (chunk.event_type === 'interaction.start') {
-                interactionId = chunk.interaction.id;
+        for await (const event of stream) {
+            if (event.type === 'interaction.created') {
+                interactionId = event.interaction.id;
             }
-            if (chunk.event_id) lastEventId = chunk.event_id;
-            if (chunk.event_type === 'content.delta') {
-                if (chunk.delta.type === 'text') {
-                    process.stdout.write(chunk.delta.text);
-                } else if (chunk.delta.type === 'thought_summary') {
-                    console.log(`Thought: ${chunk.delta.content.text}`);
+            if (event.event_id) lastEventId = event.event_id;
+            if (event.type === 'step.delta') {
+                if (event.delta.type === 'text') {
+                    process.stdout.write(event.delta.text);
+                } else if (event.delta.type === 'thought') {
+                    console.log(`Thought: ${event.delta.text}`);
                 }
-            } else if (['interaction.complete', 'error'].includes(chunk.event_type)) {
+            } else if (['interaction.completed', 'interaction.error'].includes(event.type)) {
                 isComplete = true;
             }
         }
@@ -1001,7 +1003,7 @@ restarting the entire task.
         previous_interaction_id="COMPLETED_INTERACTION_ID"
     )
 
-    print(interaction.outputs[-1].text)
+    print(interaction.steps[-1].content[0].text)
 
 ### JavaScript
 
@@ -1010,7 +1012,7 @@ restarting the entire task.
         model: 'gemini-3.1-pro-preview',
         previous_interaction_id: 'COMPLETED_INTERACTION_ID'
     });
-    console.log(interaction.outputs[interaction.outputs.length - 1].text);
+    console.log(interaction.steps.at(-1).content[0].text);
 
 ### REST
 
@@ -1132,7 +1134,6 @@ consideration of safety risks.
 
 ## Limitations
 
-- **Beta status**: The Interactions API is in public beta. Features and schemas may change.
 - **Custom tools:** You cannot currently provide custom Function Calling tools but you can use remote MCP (Model Context Protocol) servers with the Deep Research agent.
 - **Structured output:** The Deep Research Agent currently doesn't support structured outputs.
 - **Max research time:** The Deep Research agent has a maximum research time of 60 minutes. Most tasks should complete within 20 minutes.
@@ -1143,6 +1144,5 @@ consideration of safety risks.
 
 ## What's next
 
-- Learn more about the [Interactions API](https://ai.google.dev/gemini-api/docs/interactions).
-- Try the [Deep Research in the Gemini API Cookbook](https://colab.research.google.com/github/google-gemini/cookbook/blob/main/quickstarts/Get_started_Deep_Research.ipynb).
+- Learn more about the [Interactions API](https://ai.google.dev/gemini-api/docs/interactions-overview).
 - Learn how to use your own data using the [File Search](https://ai.google.dev/gemini-api/docs/file-search) tool.

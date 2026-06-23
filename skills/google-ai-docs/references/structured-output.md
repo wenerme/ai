@@ -1,8 +1,9 @@
-# Structured outputs
+> [!NOTE]
+> **Note:** This version of the page covers the **Interactions API** . You can use the toggle on this page to switch to the [generateContent API version of this page](https://ai.google.dev/gemini-api/docs/generate-content/structured-output).
 
-You can configure Gemini models to generate responses that adhere to a provided JSON
-Schema. This ensures predictable, type-safe results and simplifies extracting
-structured data from unstructured text.
+You can configure Gemini models to generate responses that adhere to a provided
+JSON Schema. This ensures predictable, type-safe results and simplifies
+extracting structured data from unstructured text.
 
 Using structured outputs is ideal for:
 
@@ -11,7 +12,7 @@ Using structured outputs is ideal for:
 - **Agentic workflows:** Generate structured inputs for tools or APIs.
 
 In addition to supporting JSON Schema in the REST API, the Google GenAI SDKs
-make it easy to define schemas using
+allow defining schemas using
 [Pydantic](https://docs.pydantic.dev/latest/) (Python) and
 [Zod](https://zod.dev/) (JavaScript).
 
@@ -54,36 +55,57 @@ JSON Schema types like `object`, `array`, `string`, and `integer`.
     onto ungreased baking sheets and bake for 9 to 11 minutes.
     """
 
-    response = client.models.generate_content(
+    interaction = client.interactions.create(
         model="gemini-3.5-flash",
-        contents=prompt,
-        config={
-            "response_format": {"text": {"mime_type": "application/json", "schema": Recipe.model_json_schema()}},
+        input=prompt,
+        response_format={
+            "type": "text",
+            "mime_type": "application/json",
+            "schema": Recipe.model_json_schema()
         },
     )
 
-    recipe = Recipe.model_validate_json(response.text)
+    recipe = Recipe.model_validate_json(interaction.output_text)
     print(recipe)
 
 ### JavaScript
 
     import { GoogleGenAI } from "@google/genai";
-    import { z } from "zod";
-    import { zodToJsonSchema } from "zod-to-json-schema";
+    import * as z from "zod";
 
-    const ingredientSchema = z.object({
-      name: z.string().describe("Name of the ingredient."),
-      quantity: z.string().describe("Quantity of the ingredient, including units."),
-    });
+    const recipeJsonSchema = {
+      type: "object",
+      properties: {
+        recipe_name: {
+          type: "string",
+          description: "The name of the recipe."
+        },
+        prep_time_minutes: {
+            type: "integer",
+            description: "Optional time in minutes to prepare the recipe."
+        },
+        ingredients: {
+          type: "array",
+          items: {
+            type: "object",
+            properties: {
+              name: { type: "string", description: "Name of the ingredient."},
+              quantity: { type: "string", description: "Quantity of the ingredient, including units."}
+            },
+            required: ["name", "quantity"]
+          }
+        },
+        instructions: {
+          type: "array",
+          items: { type: "string" }
+        }
+      },
+      required: ["recipe_name", "ingredients", "instructions"]
+    };
 
-    const recipeSchema = z.object({
-      recipe_name: z.string().describe("The name of the recipe."),
-      prep_time_minutes: z.number().optional().describe("Optional time in minutes to prepare the recipe."),
-      ingredients: z.array(ingredientSchema),
-      instructions: z.array(z.string()),
-    });
+    const recipeSchema = z.fromJSONSchema(recipeJsonSchema);
 
-    const ai = new GoogleGenAI({});
+    const client = new GoogleGenAI({});
 
     const prompt = `
     Please extract the recipe from the following text.
@@ -99,117 +121,31 @@ JSON Schema types like `object`, `array`, `string`, and `integer`.
     onto ungreased baking sheets and bake for 9 to 11 minutes.
     `;
 
-    const response = await ai.models.generateContent({
+    const interaction = await client.interactions.create({
       model: "gemini-3.5-flash",
-      contents: prompt,
-      config: {
-        responseFormat: { text: { mimeType: "application/json", schema: zodToJsonSchema(recipeSchema) } },
+      input: prompt,
+      response_format: {
+        type: 'text',
+        mime_type: 'application/json',
+        schema: recipeJsonSchema
       },
     });
 
-    const recipe = recipeSchema.parse(JSON.parse(response.text));
+    const recipe = recipeSchema.parse(JSON.parse(interaction.output_text));
     console.log(recipe);
-
-### Go
-
-    package main
-
-    import (
-        "context"
-        "fmt"
-        "log"
-
-        "google.golang.org/genai"
-    )
-
-    func main() {
-        ctx := context.Background()
-        client, err := genai.NewClient(ctx, nil)
-        if err != nil {
-            log.Fatal(err)
-        }
-
-        prompt := `
-      Please extract the recipe from the following text.
-      The user wants to make delicious chocolate chip cookies.
-      They need 2 and 1/4 cups of all-purpose flour, 1 teaspoon of baking soda,
-      1 teaspoon of salt, 1 cup of unsalted butter (softened), 3/4 cup of granulated sugar,
-      3/4 cup of packed brown sugar, 1 teaspoon of vanilla extract, and 2 large eggs.
-      For the best part, they'll need 2 cups of semisweet chocolate chips.
-      First, preheat the oven to 375°F (190°C). Then, in a small bowl, whisk together the flour,
-      baking soda, and salt. In a large bowl, cream together the butter, granulated sugar, and brown sugar
-      until light and fluffy. Beat in the vanilla and eggs, one at a time. Gradually beat in the dry
-      ingredients until just combined. Finally, stir in the chocolate chips. Drop by rounded tablespoons
-      onto ungreased baking sheets and bake for 9 to 11 minutes.
-      `
-        config := &genai.GenerateContentConfig{
-            ResponseMIMEType: "application/json",
-            ResponseJsonSchema: map[string]any{
-                "type": "object",
-                "properties": map[string]any{
-                    "recipe_name": map[string]any{
-                        "type":        "string",
-                        "description": "The name of the recipe.",
-                    },
-                    "prep_time_minutes": map[string]any{
-                        "type":        "integer",
-                        "description": "Optional time in minutes to prepare the recipe.",
-                    },
-                    "ingredients": map[string]any{
-                        "type": "array",
-                        "items": map[string]any{
-                            "type": "object",
-                            "properties": map[string]any{
-                                "name": map[string]any{
-                                    "type":        "string",
-                                    "description": "Name of the ingredient.",
-                                },
-                                "quantity": map[string]any{
-                                    "type":        "string",
-                                    "description": "Quantity of the ingredient, including units.",
-                                },
-                            },
-                            "required": []string{"name", "quantity"},
-                        },
-                    },
-                    "instructions": map[string]any{
-                        "type":  "array",
-                        "items": map[string]any{"type": "string"},
-                    },
-                },
-                "required": []string{"recipe_name", "ingredients", "instructions"},
-            },
-        }
-
-        result, err := client.Models.GenerateContent(
-            ctx,
-            "gemini-3.5-flash",
-            genai.Text(prompt),
-            config,
-        )
-        if err != nil {
-            log.Fatal(err)
-        }
-        fmt.Println(result.Text())
-    }
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
-        -X POST \
         -d '{
-          "contents": [{
-            "parts":[
-              { "text": "Please extract the recipe from the following text.\nThe user wants to make delicious chocolate chip cookies.\nThey need 2 and 1/4 cups of all-purpose flour, 1 teaspoon of baking soda,\n1 teaspoon of salt, 1 cup of unsalted butter (softened), 3/4 cup of granulated sugar,\n3/4 cup of packed brown sugar, 1 teaspoon of vanilla extract, and 2 large eggs.\nFor the best part, they will need 2 cups of semisweet chocolate chips.\nFirst, preheat the oven to 375°F (190°C). Then, in a small bowl, whisk together the flour,\nbaking soda, and salt. In a large bowl, cream together the butter, granulated sugar, and brown sugar\nuntil light and fluffy. Beat in the vanilla and eggs, one at a time. Gradually beat in the dry\ningredients until just combined. Finally, stir in the chocolate chips. Drop by rounded tablespoons\nonto ungreased baking sheets and bake for 9 to 11 minutes." }
-            ]
-          }],
-          "generationConfig": {
-            "responseFormat": {
-              "text": {
-                "mimeType": "application/json",
-                "schema": {
+          "model": "gemini-3.5-flash",
+          "input": "Please extract the recipe from the following text.\nThe user wants to make delicious chocolate chip cookies.\nThey need 2 and 1/4 cups of all-purpose flour, 1 teaspoon of baking soda,\n1 teaspoon of salt, 1 cup of unsalted butter (softened), 3/4 cup of granulated sugar,\n3/4 cup of packed brown sugar, 1 teaspoon of vanilla extract, and 2 large eggs.\nFor the best part, they will need 2 cups of semisweet chocolate chips.\nFirst, preheat the oven to 375°F (190°C). Then, in a small bowl, whisk together the flour,\nbaking soda, and salt. In a large bowl, cream together the butter, granulated sugar, and brown sugar\nuntil light and fluffy. Beat in the vanilla and eggs, one at a time. Gradually beat in the dry\ningredients until just combined. Finally, stir in the chocolate chips. Drop by rounded tablespoons\nonto ungreased baking sheets and bake for 9 to 11 minutes.",
+          "response_format": {
+            "type": "text",
+            "mime_type": "application/json",
+            "schema": {
               "type": "object",
               "properties": {
                 "recipe_name": {
@@ -227,9 +163,7 @@ JSON Schema types like `object`, `array`, `string`, and `integer`.
                     "properties": {
                       "name": { "type": "string", "description": "Name of the ingredient."},
                       "quantity": { "type": "string", "description": "Quantity of the ingredient, including units."}
-              }
-            }
-          },
+                    },
                     "required": ["name", "quantity"]
                   }
                 },
@@ -241,6 +175,7 @@ JSON Schema types like `object`, `array`, `string`, and `integer`.
               "required": ["recipe_name", "ingredients", "instructions"]
             }
           }
+          }
         }'
 
 **Example Response:**
@@ -248,42 +183,15 @@ JSON Schema types like `object`, `array`, `string`, and `integer`.
     {
       "recipe_name": "Delicious Chocolate Chip Cookies",
       "ingredients": [
-        {
-          "name": "all-purpose flour",
-          "quantity": "2 and 1/4 cups"
-        },
-        {
-          "name": "baking soda",
-          "quantity": "1 teaspoon"
-        },
-        {
-          "name": "salt",
-          "quantity": "1 teaspoon"
-        },
-        {
-          "name": "unsalted butter (softened)",
-          "quantity": "1 cup"
-        },
-        {
-          "name": "granulated sugar",
-          "quantity": "3/4 cup"
-        },
-        {
-          "name": "packed brown sugar",
-          "quantity": "3/4 cup"
-        },
-        {
-          "name": "vanilla extract",
-          "quantity": "1 teaspoon"
-        },
-        {
-          "name": "large eggs",
-          "quantity": "2"
-        },
-        {
-          "name": "semisweet chocolate chips",
-          "quantity": "2 cups"
-        }
+        { "name": "all-purpose flour", "quantity": "2 and 1/4 cups" },
+        { "name": "baking soda", "quantity": "1 teaspoon" },
+        { "name": "salt", "quantity": "1 teaspoon" },
+        { "name": "unsalted butter (softened)", "quantity": "1 cup" },
+        { "name": "granulated sugar", "quantity": "3/4 cup" },
+        { "name": "packed brown sugar", "quantity": "3/4 cup" },
+        { "name": "vanilla extract", "quantity": "1 teaspoon" },
+        { "name": "large eggs", "quantity": "2" },
+        { "name": "semisweet chocolate chips", "quantity": "2 cups" }
       ],
       "instructions": [
         "Preheat the oven to 375°F (190°C).",
@@ -325,154 +233,89 @@ classification, allowing the output structure to vary based on the content.
     Content: 'Congratulations! You''ve won a free cruise to the Bahamas. Click here to claim your prize: www.definitely-not-a-scam.com'
     """
 
-    response = client.models.generate_content(
+    interaction = client.interactions.create(
         model="gemini-3.5-flash",
-        contents=prompt,
-        config={
-            "response_format": {"text": {"mime_type": "application/json", "schema": ModerationResult.model_json_schema()}},
+        input=prompt,
+        response_format={
+            "type": "text",
+            "mime_type": "application/json",
+            "schema": ModerationResult.model_json_schema()
         },
     )
 
-    result = ModerationResult.model_validate_json(response.text)
+    result = ModerationResult.model_validate_json(interaction.output_text)
     print(result)
 
 ### JavaScript
 
     import { GoogleGenAI } from "@google/genai";
-    import { z } from "zod";
-    import { zodToJsonSchema } from "zod-to-json-schema";
+    import * as z from "zod";
 
-    const spamDetailsSchema = z.object({
-      reason: z.string().describe("The reason why the content is considered spam."),
-      spam_type: z.enum(["phishing", "scam", "unsolicited promotion", "other"]).describe("The type of spam."),
-    });
+    const moderationResultJsonSchema = {
+      type: "object",
+      properties: {
+        decision: {
+          anyOf: [
+            {
+              type: "object",
+              title: "SpamDetails",
+              description: "Details for content classified as spam.",
+              properties: {
+                reason: { type: "string", description: "The reason why the content is considered spam." },
+                spam_type: { type: "string", enum: ["phishing", "scam", "unsolicited promotion", "other"], description: "The type of spam." }
+              },
+              required: ["reason", "spam_type"]
+            },
+            {
+              type: "object",
+              title: "NotSpamDetails",
+              description: "Details for content classified as not spam.",
+              properties: {
+                summary: { type: "string", description: "A brief summary of the content." },
+                is_safe: { type: "boolean", description: "Whether the content is safe for all audiences." }
+              },
+              required: ["summary", "is_safe"]
+            }
+          ]
+        }
+      },
+      required: ["decision"]
+    };
 
-    const notSpamDetailsSchema = z.object({
-      summary: z.string().describe("A brief summary of the content."),
-      is_safe: z.boolean().describe("Whether the content is safe for all audiences."),
-    });
+    const moderationResultSchema = z.fromJSONSchema(moderationResultJsonSchema);
 
-    const moderationResultSchema = z.object({
-      decision: z.union([spamDetailsSchema, notSpamDetailsSchema]),
-    });
-
-    const ai = new GoogleGenAI({});
+    const client = new GoogleGenAI({});
 
     const prompt = `
     Please moderate the following content and provide a decision.
     Content: 'Congratulations! You''ve won a free cruise to the Bahamas. Click here to claim your prize: www.definitely-not-a-scam.com'
     `;
 
-    const response = await ai.models.generateContent({
+    const interaction = await client.interactions.create({
       model: "gemini-3.5-flash",
-      contents: prompt,
-      config: {
-        responseFormat: { text: { mimeType: "application/json", schema: zodToJsonSchema(moderationResultSchema) } },
+      input: prompt,
+      response_format: {
+        type: 'text',
+        mime_type: 'application/json',
+        schema: moderationResultJsonSchema
       },
     });
 
-    const result = moderationResultSchema.parse(JSON.parse(response.text));
+    const result = moderationResultSchema.parse(JSON.parse(interaction.output_text));
     console.log(result);
-
-### Go
-
-    package main
-
-    import (
-        "context"
-        "fmt"
-        "log"
-
-        "google.golang.org/genai"
-    )
-
-    func main() {
-        ctx := context.Background()
-        client, err := genai.NewClient(ctx, nil)
-        if err != nil {
-            log.Fatal(err)
-        }
-
-        prompt := `
-      Please moderate the following content and provide a decision.
-      Content: 'Congratulations! You''ve won a free cruise to the Bahamas. Click here to claim your prize: www.definitely-not-a-scam.com'
-      `
-        config := &genai.GenerateContentConfig{
-            ResponseMIMEType: "application/json",
-            ResponseJsonSchema: map[string]any{
-                "type": "object",
-                "properties": map[string]any{
-                    "decision": map[string]any{
-                        "anyOf": []map[string]any{
-                            {
-                                "type":        "object",
-                                "title":       "SpamDetails",
-                                "description": "Details for content classified as spam.",
-                                "properties": map[string]any{
-                                    "reason": map[string]any{
-                                        "type":        "string",
-                                        "description": "The reason why the content is considered spam.",
-                                    },
-                                    "spam_type": map[string]any{
-                                        "type":        "string",
-                                        "enum":        []string{"phishing", "scam", "unsolicited promotion", "other"},
-                                        "description": "The type of spam.",
-                                    },
-                                },
-                                "required": []string{"reason", "spam_type"},
-                            },
-                            {
-                                "type":        "object",
-                                "title":       "NotSpamDetails",
-                                "description": "Details for content classified as not spam.",
-                                "properties": map[string]any{
-                                    "summary": map[string]any{
-                                        "type":        "string",
-                                        "description": "A brief summary of the content.",
-                                    },
-                                    "is_safe": map[string]any{
-                                        "type":        "boolean",
-                                        "description": "Whether the content is safe for all audiences.",
-                                    },
-                                },
-                                "required": []string{"summary", "is_safe"},
-                            },
-                        },
-                    },
-                },
-                "required": []string{"decision"},
-            },
-        }
-
-        result, err := client.Models.GenerateContent(
-            ctx,
-            "gemini-3.5-flash",
-            genai.Text(prompt),
-            config,
-        )
-        if err != nil {
-            log.Fatal(err)
-        }
-        fmt.Println(result.Text())
-    }
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
-        -X POST \
         -d '{
-          "contents": [{
-            "parts":[
-              { "text": "Please moderate the following content and provide a decision.\nContent: ''Congratulations! You have won a free cruise to the Bahamas. Click here to claim your prize: www.definitely-not-a-scam.com''" }
-            ]
-          }],
-          "generationConfig": {
-            "responseFormat": {
-              "text": {
-                "mimeType": "application/json",
-                "schema": {
+          "model": "gemini-3.5-flash",
+          "input": "Please moderate the following content and provide a decision.\nContent: '\''Congratulations! You have won a free cruise to the Bahamas. Click here to claim your prize: www.definitely-not-a-scam.com'\''",
+          "response_format": {
+            "type": "text",
+            "mime_type": "application/json",
+            "schema": {
               "type": "object",
               "properties": {
                 "decision": {
@@ -484,44 +327,41 @@ classification, allowing the output structure to vary based on the content.
                       "properties": {
                         "reason": { "type": "string", "description": "The reason why the content is considered spam." },
                         "spam_type": { "type": "string", "enum": ["phishing", "scam", "unsolicited promotion", "other"], "description": "The type of spam." }
-              }
+                      },
+                      "required": ["reason", "spam_type"]
+                    },
+                    {
+                      "type": "object",
+                      "title": "NotSpamDetails",
+                      "description": "Details for content classified as not spam.",
+                      "properties": {
+                        "summary": { "type": "string", "description": "A brief summary of the content." },
+                        "is_safe": { "type": "boolean", "description": "Whether the content is safe for all audiences." }
+                      },
+                      "required": ["summary", "is_safe"]
+                    }
+                  ]
+                }
+              },
+              "required": ["decision"]
             }
-          },
-                       "required": ["reason", "spam_type"]
-                     },
-                     {
-                       "type": "object",
-                       "title": "NotSpamDetails",
-                       "description": "Details for content classified as not spam.",
-                       "properties": {
-                         "summary": { "type": "string", "description": "A brief summary of the content." },
-                         "is_safe": { "type": "boolean", "description": "Whether the content is safe for all audiences." }
-                       },
-                       "required": ["summary", "is_safe"]
-                     }
-                   ]
-                 }
-               },
-               "required": ["decision"]
-             }
-           }
-         }'
-     ```
+          }
+          }
+        }'
 
-    **Example Response:**
+**Example Response:**
 
-    ```json
     {
-    "decision": {
-     "reason": "The content is an unsolicited prize notification attempting to trick the user into clicking a suspicious link.",
-     "spam_type": "scam"
-    }
+      "decision": {
+        "reason": "The content is an unsolicited prize notification attempting to trick the user into clicking a suspicious link.",
+        "spam_type": "scam"
+      }
     }
 
 ### Recursive Structures
 
-This example illustrates how to define a recursive schema such as an organization
-chart.
+This example illustrates how to define a recursive schema such as an
+organization chart.
 
 ### Python
 
@@ -545,118 +385,74 @@ chart.
     The manager is Alice, who manages Bob and Charlie. Bob manages David.
     """
 
-    response = client.models.generate_content(
+    interaction = client.interactions.create(
         model="gemini-3.5-flash",
-        contents=prompt,
-        config={
-            "response_format": {"text": {"mime_type": "application/json", "schema": Employee.model_json_schema()}},
+        input=prompt,
+        response_format={
+            "type": "text",
+            "mime_type": "application/json",
+            "schema": Employee.model_json_schema()
         },
     )
 
-    employee = Employee.model_validate_json(response.text)
+    employee = Employee.model_validate_json(interaction.output_text)
     print(employee)
 
 ### JavaScript
 
     import { GoogleGenAI } from "@google/genai";
-    import { z } from "zod";
-    import { zodToJsonSchema } from "zod-to-json-schema";
+    import * as z from "zod";
 
-    const employeeSchema = z.object({
-      name: z.string(),
-      employee_id: z.number().int(),
-      reports: z.lazy(() => z.array(employeeSchema)).describe("A list of employees reporting to this employee."),
-    });
+    const employeeJsonSchema = {
+      type: "object",
+      properties: {
+        name: { type: "string" },
+        employee_id: { type: "integer" },
+        reports: {
+          type: "array",
+          description: "A list of employees reporting to this employee.",
+          items: {
+            "$ref": "#"
+          }
+        }
+      },
+      required: ["name", "employee_id", "reports"]
+    };
 
-    const ai = new GoogleGenAI({});
+    const employeeSchema = z.fromJSONSchema(employeeJsonSchema);
+
+    const client = new GoogleGenAI({});
 
     const prompt = `
     Generate an organization chart for a small team.
     The manager is Alice, who manages Bob and Charlie. Bob manages David.
     `;
 
-    const response = await ai.models.generateContent({
+    const interaction = await client.interactions.create({
       model: "gemini-3.5-flash",
-      contents: prompt,
-      config: {
-        responseFormat: { text: { mimeType: "application/json", schema: zodToJsonSchema(employeeSchema) } },
+      input: prompt,
+      response_format: {
+        type: 'text',
+        mime_type: 'application/json',
+        schema: employeeJsonSchema
       },
     });
 
-    const employee = employeeSchema.parse(JSON.parse(response.text));
+    const employee = employeeSchema.parse(JSON.parse(interaction.output_text));
     console.log(employee);
-
-### Go
-
-    package main
-
-    import (
-        "context"
-        "fmt"
-        "log"
-
-        "google.golang.org/genai"
-    )
-
-    func main() {
-        ctx := context.Background()
-        client, err := genai.NewClient(ctx, nil)
-        if err != nil {
-            log.Fatal(err)
-        }
-
-        prompt := `
-      Generate an organization chart for a small team.
-      The manager is Alice, who manages Bob and Charlie. Bob manages David.
-      `
-        config := &genai.GenerateContentConfig{
-            ResponseMIMEType: "application/json",
-            ResponseJsonSchema: map[string]any{
-                "type": "object",
-                "properties": map[string]any{
-                    "name":        map[string]any{"type": "string"},
-                    "employee_id": map[string]any{"type": "integer"},
-                    "reports": map[string]any{
-                        "type":        "array",
-                        "description": "A list of employees reporting to this employee.",
-                        "items": map[string]any{
-                            "$ref": "#",
-                        },
-                    },
-                },
-                "required": []string{"name", "employee_id", "reports"},
-            },
-        }
-
-        result, err := client.Models.GenerateContent(
-            ctx,
-            "gemini-3.5-flash",
-            genai.Text(prompt),
-            config,
-        )
-        if err != nil {
-            log.Fatal(err)
-        }
-        fmt.Println(result.Text())
-    }
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
-        -X POST \
         -d '{
-          "contents": [{
-            "parts":[
-              { "text": "Generate an organization chart for a small team.\nThe manager is Alice, who manages Bob and Charlie. Bob manages David." }
-            ]
-          }],
-          "generationConfig": {
-            "responseFormat": {
-              "text": {
-                "mimeType": "application/json",
-                "schema": {
+          "model": "gemini-3.5-flash",
+          "input": "Generate an organization chart for a small team.\nThe manager is Alice, who manages Bob and Charlie. Bob manages David.",
+          "response_format": {
+            "type": "text",
+            "mime_type": "application/json",
+            "schema": {
               "type": "object",
               "properties": {
                 "name": { "type": "string" },
@@ -667,12 +463,11 @@ chart.
                   "items": {
                     "$ref": "#"
                   }
-              }
-            }
-          }
+                }
               },
               "required": ["name", "employee_id", "reports"]
             }
+          }
           }
         }'
 
@@ -701,19 +496,16 @@ chart.
       ]
     }
 
-## Streaming
+## Streaming results
 
-You can stream structured outputs, which allows you to start processing the
-response as it's being generated, without having to wait for the entire output
-to be complete. This can improve the perceived performance of your application.
-
-The streamed chunks will be valid partial JSON strings, which can be
-concatenated to form the final, complete JSON object.
+You can stream structured outputs, allowing you to start processing the
+response as it's being generated. The streamed chunks are valid partial JSON
+strings that can be concatenated to form the final JSON object.
 
 ### Python
 
     from google import genai
-    from pydantic import BaseModel, Field
+    from pydantic import BaseModel
     from typing import Literal
 
     class Feedback(BaseModel):
@@ -721,49 +513,61 @@ concatenated to form the final, complete JSON object.
         summary: str
 
     client = genai.Client()
-    prompt = "The new UI is incredibly intuitive and visually appealing. Great job. Add a very long summary to test streaming!"
+    prompt = "The new UI is incredibly intuitive. Add a very long summary to test streaming!"
 
-    response_stream = client.models.generate_content_stream(
+    stream = client.interactions.create(
         model="gemini-3.5-flash",
-        contents=prompt,
-        config={
-            "response_format": {"text": {"mime_type": "application/json", "schema": Feedback.model_json_schema()}},
+        input=prompt,
+        response_format={
+            "type": "text",
+            "mime_type": "application/json",
+            "schema": Feedback.model_json_schema()
         },
+        stream=True
     )
-
-    for chunk in response_stream:
-        print(chunk.candidates[0].content.parts[0].text)
+    for event in stream:
+        if event.event_type == "step.delta" and event.delta.text:
+            print(event.delta.text, end="")
 
 ### JavaScript
 
     import { GoogleGenAI } from "@google/genai";
-    import { z } from "zod";
-    import { zodToJsonSchema } from "zod-to-json-schema";
+    import * as z from "zod";
 
-    const ai = new GoogleGenAI({});
-    const prompt = "The new UI is incredibly intuitive and visually appealing. Great job! Add a very long summary to test streaming!";
-
-    const feedbackSchema = z.object({
-      sentiment: z.enum(["positive", "neutral", "negative"]),
-      summary: z.string(),
-    });
-
-    const stream = await ai.models.generateContentStream({
-      model: "gemini-3.5-flash",
-      contents: prompt,
-      config: {
-        responseFormat: { text: { mimeType: "application/json", schema: zodToJsonSchema(feedbackSchema) } },
+    const feedbackJsonSchema = {
+      type: "object",
+      properties: {
+        sentiment: { type: "string", enum: ["positive", "neutral", "negative"] },
+        summary: { type: "string" }
       },
+      required: ["sentiment", "summary"]
+    };
+
+    const feedbackSchema = z.fromJSONSchema(feedbackJsonSchema);
+
+    const client = new GoogleGenAI({});
+
+    const stream = await client.interactions.create({
+      model: "gemini-3.5-flash",
+      input: "The new UI is incredibly intuitive. Add a very long summary!",
+      response_format: {
+        type: 'text',
+        mime_type: 'application/json',
+        schema: feedbackJsonSchema
+      },
+      stream: true,
     });
 
-    for await (const chunk of stream) {
-      console.log(chunk.candidates[0].content.parts[0].text)
+    for await (const event of stream) {
+      if (event.type === "step.delta" && event.delta?.text) {
+        process.stdout.write(event.delta.text);
+      }
     }
 
 ## Structured outputs with tools
 
 > [!WARNING]
-> **Preview:** This feature is available only to Gemini 3 series models, `gemini-3.1-pro-preview` and `gemini-3.5-flash`.
+> **Preview:** This feature is available only to Gemini 3 series models.
 
 Gemini 3 lets you combine Structured Outputs with built-in tools, including
 [Grounding with Google Search](https://ai.google.dev/gemini-api/docs/google-search),
@@ -785,104 +589,90 @@ Gemini 3 lets you combine Structured Outputs with built-in tools, including
 
     client = genai.Client()
 
-    response = client.models.generate_content(
+    interaction = client.interactions.create(
         model="gemini-3.1-pro-preview",
-        contents="Search for all details for the latest Euro.",
-        config={
-            "tools": [
-                {"google_search": {}},
-                {"url_context": {}}
-            ],
-            "response_format": {"text": {"mime_type": "application/json", "schema": MatchResult.model_json_schema()}},
-        },  
+        input="Search for all details for the latest Euro.",
+        tools=[{"type": "google_search"}, {"type": "url_context"}],
+        response_format={
+            "type": "text",
+            "mime_type": "application/json",
+            "schema": MatchResult.model_json_schema()
+        },
     )
 
-    result = MatchResult.model_validate_json(response.text)
+    result = MatchResult.model_validate_json(interaction.output_text)
     print(result)
 
 ### JavaScript
 
     import { GoogleGenAI } from "@google/genai";
-    import { z } from "zod";
-    import { zodToJsonSchema } from "zod-to-json-schema";
+    import * as z from "zod";
 
-    const ai = new GoogleGenAI({});
+    const matchJsonSchema = {
+      type: "object",
+      properties: {
+        winner: { type: "string" },
+        final_match_score: { type: "string" },
+        scorers: { type: "array", items: { type: "string" } }
+      },
+      required: ["winner", "final_match_score", "scorers"]
+    };
 
-    const matchSchema = z.object({
-      winner: z.string().describe("The name of the winner."),
-      final_match_score: z.string().describe("The final score."),
-      scorers: z.array(z.string()).describe("The name of the scorer.")
+    const matchSchema = z.fromJSONSchema(matchJsonSchema);
+
+    const client = new GoogleGenAI({});
+
+    const interaction = await client.interactions.create({
+      model: "gemini-3.1-pro-preview",
+      input: "Search for all details for the latest Euro.",
+      tools: [{type: "google_search"}, {type: "url_context"}],
+      response_format: {
+        type: 'text',
+        mime_type: 'application/json',
+        schema: matchJsonSchema
+      },
     });
 
-    async function run() {
-      const response = await ai.models.generateContent({
-        model: "gemini-3.1-pro-preview",
-        contents: "Search for all details for the latest Euro.",
-        config: {
-          tools: [
-            { googleSearch: {} },
-            { urlContext: {} }
-          ],
-          responseFormat: { text: { mimeType: "application/json", schema: zodToJsonSchema(matchSchema) } },
-        },
-      });
-
-      const match = matchSchema.parse(JSON.parse(response.text));
-      console.log(match);
-    }
-
-    run();
+    const match = matchSchema.parse(JSON.parse(interaction.output_text));
+    console.log(match);
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent" \
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
-      -X POST \
       -d '{
-        "contents": [{
-          "parts": [{"text": "Search for all details for the latest Euro."}]
-        }],
-        "tools": [
-          {"googleSearch": {}},
-          {"urlContext": {}}
-        ],
-        "generationConfig": {
-            "responseFormat": {
-              "text": {
-                "mimeType": "application/json",
-                "schema": {
-                "type": "object",
-                "properties": {
-                    "winner": {"type": "string", "description": "The name of the winner."},
-                    "final_match_score": {"type": "string", "description": "The final score."},
-                    "scorers": {
-                        "type": "array",
-                        "items": {"type": "string"},
-                        "description": "The name of the scorer."
-                    }
-              }
-            }
-          },
-                "required": ["winner", "final_match_score", "scorers"]
-            }
+        "model": "gemini-3.1-pro-preview",
+        "input": "Search for all details for the latest Euro.",
+        "tools": [{"type": "google_search"}, {"type": "url_context"}],
+        "response_format": {
+          "type": "text",
+          "mime_type": "application/json",
+          "schema": {
+            "type": "object",
+            "properties": {
+                "winner": {"type": "string"},
+                "final_match_score": {"type": "string"},
+                "scorers": {"type": "array", "items": {"type": "string"}}
+            },
+            "required": ["winner", "final_match_score", "scorers"]
+          }
         }
       }'
 
 ## JSON schema support
 
-To generate a JSON object, set the `response_format` in the generation configuration. The schema must be a valid [JSON Schema](https://json-schema.org/) that describes the desired output format.
+To generate a JSON object, configure `response_format` with an object (or an array containing an object) of type `text` and set its `mime_type` to `application/json`. The schema should be provided in the `schema` field.
 
-The model will then generate a response that is a syntactically valid JSON string matching the provided schema. When using structured outputs, the model will produce outputs in the same order as the keys in the schema.
-
-Gemini's structured output mode supports a subset of the [JSON Schema](https://json-schema.org) specification.
+Gemini's structured output mode supports a subset of the
+[JSON Schema](https://json-schema.org/) specification.
 
 The following values of `type` are supported:
 
 - **`string`**: For text.
 - **`number`**: For floating-point numbers.
 - **`integer`**: For whole numbers.
-- **`boolean`**: For true/false values.
+- **`boolean`**: For true or false values.
 - **`object`**: For structured data with key-value pairs.
 - **`array`**: For lists of items.
 - **`null`** : To allow a property to be null, include `"null"` in the type array (e.g., `{"type": ["string", "null"]}`).
@@ -918,42 +708,22 @@ These descriptive properties help guide the model:
 - **`minItems`**: The minimum number of items in the array.
 - **`maxItems`**: The maximum number of items in the array.
 
-## Model support
-
-The following models support structured output:
-
-| Model | Structured Outputs |
-|---|---|
-| Gemini 3.1 Flash-Lite | ✔️ |
-| Gemini 3.1 Pro Preview | ✔️ |
-| Gemini 3.5 Flash | ✔️ |
-| Gemini 3.1 Flash-Lite Preview | ✔️ |
-| Gemini 2.5 Pro | ✔️ |
-| Gemini 2.5 Flash | ✔️ |
-| Gemini 2.5 Flash-Lite | ✔️ |
-| Gemini 2.0 Flash | ✔️\* |
-| Gemini 2.0 Flash-Lite | ✔️\* |
-
-*\* Note that Gemini 2.0 requires an explicit `propertyOrdering` list within the JSON input to define the preferred structure. You can find an example in this [cookbook](https://github.com/google-gemini/cookbook/blob/main/examples/Pdf_structured_outputs_on_invoices_and_forms.ipynb).*
-
-## Structured outputs vs. function calling
-
-Both structured outputs and function calling use JSON schemas, but they serve different purposes:
+## Structured outputs versus function calling
 
 | Feature | Primary Use Case |
 |---|---|
-| **Structured Outputs** | **Formatting the final response to the user.** Use this when you want the model's *answer* to be in a specific format (e.g., extracting data from a document to save to a database). |
-| **Function Calling** | **Taking action during the conversation.** Use this when the model needs to *ask you* to perform a task (e.g., "get current weather") before it can provide a final answer. |
+| **Structured Outputs** | **Formatting the final response.** Use when you want the model's *answer* in a specific format. |
+| **Function Calling** | **Taking action during conversation.** Use when the model needs to *ask you* to perform a task before providing a final answer. |
 
 ## Best practices
 
-- **Clear descriptions:** Use the `description` field in your schema to provide clear instructions to the model about what each property represents. This is crucial for guiding the model's output.
-- **Strong typing:** Use specific types (`integer`, `string`, `enum`) whenever possible. If a parameter has a limited set of valid values, use an `enum`.
-- **Prompt engineering:** Clearly state in your prompt what you want the model to do. For example, "Extract the following information from the text..." or "Classify this feedback according to the provided schema...".
-- **Validation:** While structured output guarantees syntactically correct JSON, it does not guarantee the values are semantically correct. Always validate the final output in your application code before using it.
-- **Error handling:** Implement robust error handling in your application to gracefully manage cases where the model's output, while schema-compliant, may not meet your business logic requirements.
+- **Clear descriptions:** Use the `description` field to guide the model.
+- **Strong typing:** Use specific types (`integer`, `string`, `enum`).
+- **Prompt engineering:** Clearly state what you want the model to do.
+- **Validation:** While output is syntactically correct JSON, always validate values in your application.
+- **Error handling:** Implement robust error handling for schema-compliant but semantically incorrect outputs.
 
 ## Limitations
 
-- **Schema subset:** Not all features of the JSON Schema specification are supported. The model ignores unsupported properties.
-- **Schema complexity:** The API may reject very large or deeply nested schemas. If you encounter errors, try simplifying your schema by shortening property names, reducing nesting, or limiting the number of constraints.
+- **Schema subset:** Not all JSON Schema features are supported.
+- **Schema complexity:** Very large or deeply nested schemas may be rejected.

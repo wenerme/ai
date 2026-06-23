@@ -235,8 +235,7 @@ mcp_oauth_credentials_store = "auto"
 
 # Optional redirect URI override for MCP OAuth login (for example, remote devbox ingress).
 
-# Codex appends a server-specific callback ID before OAuth login, so register the
-# full derived URI with your provider, not just the base host or unsuffixed path.
+# Codex appends a server-specific callback ID before OAuth login, so register the full derived URI with your provider, not just the base host or unsuffixed path.
 
 # Custom callback paths are supported. `mcp_oauth_callback_port` still controls the listener port.
 

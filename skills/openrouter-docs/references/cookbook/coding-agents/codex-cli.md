@@ -63,13 +63,13 @@ Your requests will now be routed through OpenRouter.
 
 ### Core Settings
 
-| Setting                    | Description                                   | Example                                  |
-| -------------------------- | --------------------------------------------- | ---------------------------------------- |
-| `model_provider`           | Provider to use for model requests            | `"openrouter"`                           |
-| `model`                    | OpenRouter model ID                           | `"~openai/gpt-latest"`                   |
-| `model_reasoning_effort`   | Reasoning effort level for Codex models       | `"low"`, `"medium"`, `"high"`, `"xhigh"` |
-| `show_raw_agent_reasoning` | Whether to display reasoning tokens in the UI | `true` or `false`                        |
-| `personality`              | Agent personality preset                      | `"pragmatic"`, `"helpful"`, etc.         |
+| Setting                    | Description                                   | Example                                           |
+| -------------------------- | --------------------------------------------- | ------------------------------------------------- |
+| `model_provider`           | Provider to use for model requests            | `"openrouter"`                                    |
+| `model`                    | OpenRouter model ID                           | `"~openai/gpt-latest"`                            |
+| `model_reasoning_effort`   | Reasoning effort level for Codex models       | `"low"`, `"medium"`, `"high"`, `"xhigh"`, `"max"` |
+| `show_raw_agent_reasoning` | Whether to display reasoning tokens in the UI | `true` or `false`                                 |
+| `personality`              | Agent personality preset                      | `"pragmatic"`, `"helpful"`, etc.                  |
 
 ### OpenRouter Provider Block
 

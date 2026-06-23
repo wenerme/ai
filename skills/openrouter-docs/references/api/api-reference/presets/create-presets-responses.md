@@ -121,6 +121,16 @@ components:
         automatically applies cache breakpoints to the last cacheable block in
         the request. Currently supported for Anthropic Claude models.
       title: AnthropicCacheControlDirective
+    ChatDebugOptions:
+      type: object
+      properties:
+        echo_upstream_body:
+          type: boolean
+          description: >-
+            If true, includes the transformed upstream request body in a debug
+            chunk at the start of the stream. Only works with streaming mode.
+      description: Debug options for inspecting request transformations (streaming only)
+      title: ChatDebugOptions
     ImageConfig:
       oneOf:
         - type: string
@@ -3352,6 +3362,7 @@ components:
     ReasoningEffort:
       type: string
       enum:
+        - max
         - xhigh
         - high
         - medium
@@ -4449,6 +4460,7 @@ components:
     AdvisorReasoningEffort:
       type: string
       enum:
+        - max
         - xhigh
         - high
         - medium
@@ -4583,6 +4595,7 @@ components:
     SubagentReasoningEffort:
       type: string
       enum:
+        - max
         - xhigh
         - high
         - medium
@@ -4718,6 +4731,7 @@ components:
     FusionServerToolConfigReasoningEffort:
       type: string
       enum:
+        - max
         - xhigh
         - high
         - medium
@@ -4773,6 +4787,8 @@ components:
             collective output into structured analysis JSON. Capped at 8 models
             to bound cost amplification. Defaults to the Quality preset from
             /labs/fusion.
+        cache_control:
+          $ref: '#/components/schemas/AnthropicCacheControlDirective'
         max_completion_tokens:
           type: integer
           description: >-
@@ -5331,6 +5347,8 @@ components:
             - 'null'
         cache_control:
           $ref: '#/components/schemas/AnthropicCacheControlDirective'
+        debug:
+          $ref: '#/components/schemas/ChatDebugOptions'
         frequency_penalty:
           type:
             - number

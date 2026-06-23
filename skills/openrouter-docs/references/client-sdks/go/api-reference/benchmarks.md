@@ -28,7 +28,6 @@ import(
 	"context"
 	"os"
 	openrouter "github.com/OpenRouterTeam/go-sdk"
-	"github.com/OpenRouterTeam/go-sdk/models/operations"
 	"log"
 )
 
@@ -39,10 +38,7 @@ func main() {
         openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
     )
 
-    res, err := s.Benchmarks.GetBenchmarks(ctx, operations.GetBenchmarksRequest{
-        Source: operations.SourceArtificialAnalysis,
-        MaxResults: openrouter.Pointer[int64](20),
-    })
+    res, err := s.Benchmarks.GetBenchmarks(ctx, nil)
     if err != nil {
         log.Fatal(err)
     }

@@ -1,4 +1,5 @@
-# Document understanding
+> [!NOTE]
+> **Note:** This version of the page covers the **Interactions API** . You can use the toggle on this page to switch to the [generateContent API version of this page](https://ai.google.dev/gemini-api/docs/generate-content/document-processing).
 
 Gemini models can process documents in PDF format, using native
 vision to understand entire document contexts. This goes beyond
@@ -14,257 +15,138 @@ as normal text which will eliminate context like charts or formatting.
 
 ## Passing PDF data inline
 
-You can pass PDF data inline in the request to `generateContent`. This is best
+You can pass PDF data inline in the request. This is best
 suited for smaller documents or temporary processing where you don't need to
-reference the file in subsequent requests. We recommend using the [Files API](https://ai.google.dev/gemini-api/docs/document-processing#large-pdfs)
+reference the file in subsequent requests. We recommend using the
+[Files API](https://ai.google.dev/gemini-api/docs/document-processing#large-pdfs)
 for larger documents that you need to refer to in multi-turn interactions to
 improve request latency and reduce bandwidth usage.
 
-The following example shows you how to fetch a PDF from a URL and convert it to
-bytes for processing:
+The following example shows you how to pass PDF data inline:
 
 ### Python
 
     from google import genai
-    from google.genai import types
-    import httpx
+    import base64
 
     client = genai.Client()
 
-    doc_url = "https://discovery.ucl.ac.uk/id/eprint/10089234/1/343019_3_art_0_py4t4l_convrt.pdf"
+    with open('path/to/document.pdf', 'rb') as f:
+        pdf_bytes = f.read()
 
-    # Retrieve and encode the PDF byte
-    doc_data = httpx.get(doc_url).content
-
-    prompt = "Summarize this document"
-    response = client.models.generate_content(
+    interaction = client.interactions.create(
         model="gemini-3.5-flash",
-        contents=[
-            types.Part.from_bytes(
-                data=doc_data,
-                mime_type='application/pdf',
-            ),
-            prompt
+        input=[
+            {
+                "type": "document",
+                "data": base64.b64encode(pdf_bytes).decode('utf-8'),
+                "mime_type": "application/pdf"
+            },
+            {"type": "text", "text": "Summarize this document"}
         ]
     )
 
-    print(response.text)
+    print(interaction.output_text)
 
 ### JavaScript
 
     import { GoogleGenAI } from "@google/genai";
+    import * as fs from "node:fs";
 
-    const ai = new GoogleGenAI({ apiKey: "GEMINI_API_KEY" });
+    const ai = new GoogleGenAI({});
 
     async function main() {
-        const pdfResp = await fetch('https://discovery.ucl.ac.uk/id/eprint/10089234/1/343019_3_art_0_py4t4l_convrt.pdf')
-            .then((response) => response.arrayBuffer());
-
-        const contents = [
-            { text: "Summarize this document" },
-            {
-                inlineData: {
-                    mimeType: 'application/pdf',
-                    data: Buffer.from(pdfResp).toString("base64")
-                }
-            }
-        ];
-
-        const response = await ai.models.generateContent({
-            model: "gemini-3.5-flash",
-            contents: contents
+        const pdfData = fs.readFileSync("path/to/document.pdf", {
+            encoding: "base64"
         });
-        console.log(response.text);
+
+        const interaction = await ai.interactions.create({
+            model: "gemini-3.5-flash",
+            input: [
+                { type: "text", text: "Summarize this document" },
+                {
+                    type: "document",
+                    data: pdfData,
+                    mime_type: "application/pdf"
+                }
+            ]
+        });
+        console.log(interaction.output_text);
     }
 
     main();
 
-### Go
-
-    package main
-
-    import (
-        "context"
-        "fmt"
-        "io"
-        "net/http"
-        "os"
-        "google.golang.org/genai"
-    )
-
-    func main() {
-
-        ctx := context.Background()
-        client, _ := genai.NewClient(ctx, &genai.ClientConfig{
-            APIKey:  os.Getenv("GEMINI_API_KEY"),
-            Backend: genai.BackendGeminiAPI,
-        })
-
-        pdfResp, _ := http.Get("https://discovery.ucl.ac.uk/id/eprint/10089234/1/343019_3_art_0_py4t4l_convrt.pdf")
-        var pdfBytes []byte
-        if pdfResp != nil && pdfResp.Body != nil {
-            pdfBytes, _ = io.ReadAll(pdfResp.Body)
-            pdfResp.Body.Close()
-        }
-
-        parts := []*genai.Part{
-            &genai.Part{
-                InlineData: &genai.Blob{
-                    MIMEType: "application/pdf",
-                    Data:     pdfBytes,
-                },
-            },
-            genai.NewPartFromText("Summarize this document"),
-        }
-
-        contents := []*genai.Content{
-            genai.NewContentFromParts(parts, genai.RoleUser),
-        }
-
-        result, _ := client.Models.GenerateContent(
-            ctx,
-            "gemini-3.5-flash",
-            contents,
-            nil,
-        )
-
-        fmt.Println(result.Text())
-    }
-
 ### REST
 
-    DOC_URL="https://discovery.ucl.ac.uk/id/eprint/10089234/1/343019_3_art_0_py4t4l_convrt.pdf"
-    PROMPT="Summarize this document"
-    DISPLAY_NAME="base64_pdf"
+    PDF_PATH="path/to/document.pdf"
 
-    # Download the PDF
-    wget -O "${DISPLAY_NAME}.pdf" "${DOC_URL}"
-
-    # Check for FreeBSD base64 and set flags accordingly
     if [[ "$(base64 --version 2>&1)" = *"FreeBSD"* ]]; then
       B64FLAGS="--input"
     else
       B64FLAGS="-w0"
     fi
 
-    # Base64 encode the PDF
-    ENCODED_PDF=$(base64 $B64FLAGS "${DISPLAY_NAME}.pdf")
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H 'Content-Type: application/json' \
+      -d '{
+        "model": "gemini-3.5-flash",
+        "input": [
+          {
+            "type": "document",
+            "data": "'$(base64 $B64FLAGS $PDF_PATH)'",
+            "mime_type": "application/pdf"
+          },
+          {"type": "text", "text": "Summarize this document"}
+        ]
+      }'
 
-    # Generate content using the base64 encoded PDF
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=$GOOGLE_API_KEY" \
-        -H 'Content-Type: application/json' \
-        -X POST \
-        -d '{
-          "contents": [{
-            "parts":[
-              {"inline_data": {"mime_type": "application/pdf", "data": "'"$ENCODED_PDF"'"}},
-              {"text": "'$PROMPT'"}
-            ]
-          }]
-        }' 2> /dev/null > response.json
-
-    cat response.json
-    echo
-
-    jq ".candidates[].content.parts[].text" response.json
-
-    # Clean up the downloaded PDF
-    rm "${DISPLAY_NAME}.pdf"
-
-You can also read a PDF from a local file for processing:
+You can also upload a local PDF file for processing:
 
 ### Python
 
     from google import genai
-    from google.genai import types
-    import pathlib
 
     client = genai.Client()
 
-    # Retrieve and encode the PDF byte
-    filepath = pathlib.Path('file.pdf')
+    uploaded_file = client.files.upload(file="file.pdf")
 
-    prompt = "Summarize this document"
-    response = client.models.generate_content(
-      model="gemini-3.5-flash",
-      contents=[
-          types.Part.from_bytes(
-            data=filepath.read_bytes(),
-            mime_type='application/pdf',
-          ),
-          prompt])
-    print(response.text)
+    interaction = client.interactions.create(
+        model="gemini-3.5-flash",
+        input=[
+            {"type": "document", "uri": uploaded_file.uri, "mime_type": uploaded_file.mime_type},
+            {"type": "text", "text": "Summarize this document"}
+        ]
+    )
+    print(interaction.output_text)
 
 ### JavaScript
 
     import { GoogleGenAI } from "@google/genai";
-    import * as fs from 'fs';
 
-    const ai = new GoogleGenAI({ apiKey: "GEMINI_API_KEY" });
+    const ai = new GoogleGenAI({});
 
     async function main() {
-        const contents = [
-            { text: "Summarize this document" },
-            {
-                inlineData: {
-                    mimeType: 'application/pdf',
-                    data: Buffer.from(fs.readFileSync("content/343019_3_art_0_py4t4l_convrt.pdf")).toString("base64")
-                }
-            }
-        ];
-
-        const response = await ai.models.generateContent({
-            model: "gemini-3.5-flash",
-            contents: contents
+        const uploadedFile = await ai.files.upload({
+            file: "file.pdf",
+            config: { mime_type: "application/pdf" }
         });
-        console.log(response.text);
+
+        const interaction = await ai.interactions.create({
+            model: "gemini-3.5-flash",
+            input: [
+                { type: "text", text: "Summarize this document" },
+                {
+                    type: "document",
+                    uri: uploadedFile.uri,
+                    mime_type: uploadedFile.mime_type
+                }
+            ]
+        });
+        console.log(interaction.output_text);
     }
 
     main();
-
-### Go
-
-    package main
-
-    import (
-        "context"
-        "fmt"
-        "os"
-        "google.golang.org/genai"
-    )
-
-    func main() {
-
-        ctx := context.Background()
-        client, _ := genai.NewClient(ctx, &genai.ClientConfig{
-            APIKey:  os.Getenv("GEMINI_API_KEY"),
-            Backend: genai.BackendGeminiAPI,
-        })
-
-        pdfBytes, _ := os.ReadFile("path/to/your/file.pdf")
-
-        parts := []*genai.Part{
-            &genai.Part{
-                InlineData: &genai.Blob{
-                    MIMEType: "application/pdf",
-                    Data:     pdfBytes,
-                },
-            },
-            genai.NewPartFromText("Summarize this document"),
-        }
-        contents := []*genai.Content{
-            genai.NewContentFromParts(parts, genai.RoleUser),
-        }
-
-        result, _ := client.Models.GenerateContent(
-            ctx,
-            "gemini-3.5-flash",
-            contents,
-            nil,
-        )
-
-        fmt.Println(result.Text())
-    }
 
 ## Uploading PDFs using the Files API
 
@@ -282,19 +164,16 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
 ### Python
 
     from google import genai
-    from google.genai import types
     import io
     import httpx
 
     client = genai.Client()
 
-    long_context_pdf_path = "https://www.nasa.gov/wp-content/uploads/static/history/alsj/a17/A17_FlightPlan.pdf"
+    long_context_pdf_path = "https://arxiv.org/pdf/2312.11805"
 
-    # Retrieve and upload the PDF using the File API
     doc_io = io.BytesIO(httpx.get(long_context_pdf_path).content)
 
     sample_doc = client.files.upload(
-      # You can pass a path or a file-like object here
       file=doc_io,
       config=dict(
         mime_type='application/pdf')
@@ -302,20 +181,24 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
 
     prompt = "Summarize this document"
 
-    response = client.models.generate_content(
-      model="gemini-3.5-flash",
-      contents=[sample_doc, prompt])
-    print(response.text)
+    interaction = client.interactions.create(
+        model="gemini-3.5-flash",
+        input=[
+            {"type": "document", "uri": sample_doc.uri, "mime_type": sample_doc.mime_type},
+            {"type": "text", "text": prompt}
+        ]
+    )
+    print(interaction.output_text)
 
 ### JavaScript
 
-    import { createPartFromUri, GoogleGenAI } from "@google/genai";
+    import { GoogleGenAI } from "@google/genai";
 
-    const ai = new GoogleGenAI({ apiKey: "GEMINI_API_KEY" });
+    const ai = new GoogleGenAI({});
 
     async function main() {
 
-        const pdfBuffer = await fetch("https://www.nasa.gov/wp-content/uploads/static/history/alsj/a17/A17_FlightPlan.pdf")
+        const pdfBuffer = await fetch("https://arxiv.org/pdf/2312.11805")
             .then((response) => response.arrayBuffer());
 
         const fileBlob = new Blob([pdfBuffer], { type: 'application/pdf' });
@@ -327,7 +210,6 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
             },
         });
 
-        // Wait for the file to be processed.
         let getFile = await ai.files.get({ name: file.name });
         while (getFile.state === 'PROCESSING') {
             getFile = await ai.files.get({ name: file.name });
@@ -342,84 +224,24 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
             throw new Error('File processing failed.');
         }
 
-        // Add the file to the contents.
-        const content = [
-            'Summarize this document',
-        ];
-
-        if (file.uri && file.mimeType) {
-            const fileContent = createPartFromUri(file.uri, file.mimeType);
-            content.push(fileContent);
-        }
-
-        const response = await ai.models.generateContent({
+        const interaction = await ai.interactions.create({
             model: 'gemini-3.5-flash',
-            contents: content,
+            input: [
+                { type: "document", uri: file.uri, mime_type: file.mime_type },
+                { type: "text", text: "Summarize this document" }
+            ],
         });
 
-        console.log(response.text);
+        console.log(interaction.output_text);
 
     }
 
     main();
 
-### Go
-
-    package main
-
-    import (
-      "context"
-      "fmt"
-      "io"
-      "net/http"
-      "os"
-      "google.golang.org/genai"
-    )
-
-    func main() {
-
-      ctx := context.Background()
-      client, _ := genai.NewClient(ctx, &genai.ClientConfig{
-        APIKey:  os.Getenv("GEMINI_API_KEY"),
-        Backend: genai.BackendGeminiAPI,
-      })
-
-      pdfURL := "https://www.nasa.gov/wp-content/uploads/static/history/alsj/a17/A17_FlightPlan.pdf"
-      localPdfPath := "A17_FlightPlan_downloaded.pdf"
-
-      respHttp, _ := http.Get(pdfURL)
-      defer respHttp.Body.Close()
-
-      outFile, _ := os.Create(localPdfPath)
-      defer outFile.Close()
-
-      _, _ = io.Copy(outFile, respHttp.Body)
-
-      uploadConfig := &genai.UploadFileConfig{MIMEType: "application/pdf"}
-      uploadedFile, _ := client.Files.UploadFromPath(ctx, localPdfPath, uploadConfig)
-
-      promptParts := []*genai.Part{
-        genai.NewPartFromURI(uploadedFile.URI, uploadedFile.MIMEType),
-        genai.NewPartFromText("Summarize this document"),
-      }
-      contents := []*genai.Content{
-        genai.NewContentFromParts(promptParts, genai.RoleUser), // Specify role
-      }
-
-        result, _ := client.Models.GenerateContent(
-            ctx,
-            "gemini-3.5-flash",
-            contents,
-            nil,
-        )
-
-      fmt.Println(result.Text())
-    }
-
 ### REST
 
-    PDF_PATH="https://www.nasa.gov/wp-content/uploads/static/history/alsj/a17/A17_FlightPlan.pdf"
-    DISPLAY_NAME="A17_FlightPlan"
+    PDF_PATH="https://arxiv.org/pdf/2312.11805"
+    DISPLAY_NAME="Gemini_paper"
     PROMPT="Summarize this document"
 
     # Download the PDF from the provided URL
@@ -435,7 +257,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
 
     # Initial resumable request defining metadata.
     # The upload url is in the response headers dump them to a file.
-    curl "${BASE_URL}/upload/v1beta/files?key=${GOOGLE_API_KEY}" \
+    curl "https://generativelanguage.googleapis.com/upload/v1beta/files?key=${GEMINI_API_KEY}" \
       -D upload-header.tmp \
       -H "X-Goog-Upload-Protocol: resumable" \
       -H "X-Goog-Upload-Command: start" \
@@ -454,70 +276,73 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
       -H "X-Goog-Upload-Command: upload, finalize" \
       --data-binary "@${DISPLAY_NAME}.pdf" 2> /dev/null > file_info.json
 
-    file_uri=$(jq ".file.uri" file_info.json)
+    file_uri=$(jq -r ".file.uri" file_info.json)
     echo "file_uri: ${file_uri}"
 
-    # Now generate content using that file
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=$GOOGLE_API_KEY" \
+    # Create payload JSON file for safety
+    cat << EOF > payload.json
+    {
+      "model": "gemini-3.5-flash",
+      "input": [
+        {"type": "text", "text": "${PROMPT}"},
+        {"type": "document", "uri": "${file_uri}", "mime_type": "application/pdf"}
+      ]
+    }
+    EOF
+
+    # Now create an interaction using that file
+    curl "https://generativelanguage.googleapis.com/v1beta/interactions" \
+        -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -X POST \
-        -d '{
-          "contents": [{
-            "parts":[
-              {"text": "'$PROMPT'"},
-              {"file_data":{"mime_type": "application/pdf", "file_uri": '$file_uri'}}]
-            }]
-          }' 2> /dev/null > response.json
+        -d @payload.json 2> /dev/null > response.json
 
     cat response.json
     echo
 
-    jq ".candidates[].content.parts[].text" response.json
+    jq ".steps[-1].content[0].text" response.json
 
-    # Clean up the downloaded PDF
+    # Clean up
     rm "${DISPLAY_NAME}.pdf"
+    rm payload.json
 
 ### Large PDFs stored locally
 
 ### Python
 
     from google import genai
-    from google.genai import types
     import pathlib
-    import httpx
 
     client = genai.Client()
 
-    # Retrieve and encode the PDF byte
     file_path = pathlib.Path('large_file.pdf')
-
-    # Upload the PDF using the File API
     sample_file = client.files.upload(
         file=file_path,
     )
 
-    prompt="Summarize this document"
-
-    response = client.models.generate_content(
+    interaction = client.interactions.create(
         model="gemini-3.5-flash",
-        contents=[sample_file, "Summarize this document"])
-    print(response.text)
+        input=[
+            {"type": "document", "uri": sample_file.uri, "mime_type": sample_file.mime_type},
+            {"type": "text", "text": "Summarize this document"}
+        ]
+    )
+    print(interaction.output_text)
 
 ### JavaScript
 
-    import { createPartFromUri, GoogleGenAI } from "@google/genai";
+    import { GoogleGenAI } from "@google/genai";
 
-    const ai = new GoogleGenAI({ apiKey: "GEMINI_API_KEY" });
+    const ai = new GoogleGenAI({});
 
     async function main() {
         const file = await ai.files.upload({
-            file: 'path-to-localfile.pdf'
+            file: 'path-to-localfile.pdf',
             config: {
                 displayName: 'A17_FlightPlan.pdf',
             },
         });
 
-        // Wait for the file to be processed.
         let getFile = await ai.files.get({ name: file.name });
         while (getFile.state === 'PROCESSING') {
             getFile = await ai.files.get({ name: file.name });
@@ -532,77 +357,30 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
             throw new Error('File processing failed.');
         }
 
-        // Add the file to the contents.
-        const content = [
-            'Summarize this document',
-        ];
-
-        if (file.uri && file.mimeType) {
-            const fileContent = createPartFromUri(file.uri, file.mimeType);
-            content.push(fileContent);
-        }
-
-        const response = await ai.models.generateContent({
+        const interaction = await ai.interactions.create({
             model: 'gemini-3.5-flash',
-            contents: content,
+            input: [
+                { type: "document", uri: file.uri, mime_type: file.mime_type },
+                { type: "text", text: "Summarize this document" }
+            ],
         });
 
-        console.log(response.text);
+        console.log(interaction.output_text);
 
     }
 
     main();
 
-### Go
-
-    package main
-
-    import (
-        "context"
-        "fmt"
-        "os"
-        "google.golang.org/genai"
-    )
-
-    func main() {
-
-        ctx := context.Background()
-        client, _ := genai.NewClient(ctx, &genai.ClientConfig{
-            APIKey:  os.Getenv("GEMINI_API_KEY"),
-            Backend: genai.BackendGeminiAPI,
-        })
-        localPdfPath := "/path/to/file.pdf"
-
-        uploadConfig := &genai.UploadFileConfig{MIMEType: "application/pdf"}
-        uploadedFile, _ := client.Files.UploadFromPath(ctx, localPdfPath, uploadConfig)
-
-        promptParts := []*genai.Part{
-            genai.NewPartFromURI(uploadedFile.URI, uploadedFile.MIMEType),
-            genai.NewPartFromText("Give me a summary of this pdf file."),
-        }
-        contents := []*genai.Content{
-            genai.NewContentFromParts(promptParts, genai.RoleUser),
-        }
-
-        result, _ := client.Models.GenerateContent(
-            ctx,
-            "gemini-3.5-flash",
-            contents,
-            nil,
-        )
-
-        fmt.Println(result.Text())
-    }
-
 ### REST
 
+    PDF_PATH="path/to/large_file.pdf"
     NUM_BYTES=$(wc -c < "${PDF_PATH}")
     DISPLAY_NAME=TEXT
     tmp_header_file=upload-header.tmp
 
     # Initial resumable request defining metadata.
     # The upload url is in the response headers dump them to a file.
-    curl "${BASE_URL}/upload/v1beta/files?key=${GEMINI_API_KEY}" \
+    curl "https://generativelanguage.googleapis.com/upload/v1beta/files?key=${GEMINI_API_KEY}" \
       -D upload-header.tmp \
       -H "X-Goog-Upload-Protocol: resumable" \
       -H "X-Goog-Upload-Command: start" \
@@ -624,22 +402,23 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
     file_uri=$(jq ".file.uri" file_info.json)
     echo file_uri=$file_uri
 
-    # Now generate content using that file
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=$GOOGLE_API_KEY" \
+    # Now create an interaction using that file
+    curl "https://generativelanguage.googleapis.com/v1beta/interactions" \
+        -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -X POST \
         -d '{
-          "contents": [{
-            "parts":[
-              {"text": "Can you add a few more lines to this poem?"},
-              {"file_data":{"mime_type": "application/pdf", "file_uri": '$file_uri'}}]
-            }]
-          }' 2> /dev/null > response.json
+          "model": "gemini-3.5-flash",
+          "input": [
+            {"type": "document", "uri": '$file_uri', "mime_type": "application/pdf"},
+            {"type": "text", "text": "Can you add a few more lines to this poem?"}
+          ]
+        }' 2> /dev/null > response.json
 
     cat response.json
     echo
 
-    jq ".candidates[].content.parts[].text" response.json
+    jq ".steps[-1].content[0].text" response.json
 
 You can verify the API successfully stored the uploaded file and get its
 metadata by calling [`files.get`](https://ai.google.dev/api/rest/v1beta/files/get). Only the `name`
@@ -652,23 +431,23 @@ metadata by calling [`files.get`](https://ai.google.dev/api/rest/v1beta/files/ge
 
     client = genai.Client()
 
-    fpath = pathlib.Path('example.txt')
+    fpath = pathlib.Path('example.pdf')
     fpath.write_text('hello')
 
-    file = client.files.upload(file='example.txt')
+    file = client.files.upload(file='example.pdf')
 
     file_info = client.files.get(name=file.name)
     print(file_info.model_dump_json(indent=4))
 
 ### REST
 
-    name=$(jq ".file.name" file_info.json)
+    name=$(jq -r ".file.name" file_info.json)
     # Get the file of interest to check state
-    curl https://generativelanguage.googleapis.com/v1beta/files/$name > file_info.json
+    curl "https://generativelanguage.googleapis.com/v1beta/$name?key=$GEMINI_API_KEY" > file_info.json
     # Print some information about the file you got
-    name=$(jq ".file.name" file_info.json)
+    name=$(jq -r ".name" file_info.json)
     echo name=$name
-    file_uri=$(jq ".file.uri" file_info.json)
+    file_uri=$(jq -r ".uri" file_info.json)
     echo file_uri=$file_uri
 
 ## Passing multiple PDFs
@@ -688,7 +467,6 @@ prompt stays within the model's context window.
     doc_url_1 = "https://arxiv.org/pdf/2312.11805"
     doc_url_2 = "https://arxiv.org/pdf/2403.05530"
 
-    # Retrieve and upload both PDFs using the File API
     doc_data_1 = io.BytesIO(httpx.get(doc_url_1).content)
     doc_data_2 = io.BytesIO(httpx.get(doc_url_2).content)
 
@@ -703,18 +481,22 @@ prompt stays within the model's context window.
 
     prompt = "What is the difference between each of the main benchmarks between these two papers? Output these in a table."
 
-    response = client.models.generate_content(
+    interaction = client.interactions.create(
         model="gemini-3.5-flash",
-        contents=[sample_pdf_1, sample_pdf_2, prompt]
+        input=[
+            {"type": "document", "uri": sample_pdf_1.uri, "mime_type": sample_pdf_1.mime_type},
+            {"type": "document", "uri": sample_pdf_2.uri, "mime_type": sample_pdf_2.mime_type},
+            {"type": "text", "text": prompt}
+        ]
     )
 
-    print(response.text)
+    print(interaction.output_text)
 
 ### JavaScript
 
-    import { createPartFromUri, GoogleGenAI } from "@google/genai";
+    import { GoogleGenAI } from "@google/genai";
 
-    const ai = new GoogleGenAI({ apiKey: "GEMINI_API_KEY" });
+    const ai = new GoogleGenAI({});
 
     async function uploadRemotePDF(url, displayName) {
         const pdfBuffer = await fetch(url)
@@ -729,7 +511,6 @@ prompt stays within the model's context window.
             },
         });
 
-        // Wait for the file to be processed.
         let getFile = await ai.files.get({ name: file.name });
         while (getFile.state === 'PROCESSING') {
             getFile = await ai.files.get({ name: file.name });
@@ -748,98 +529,22 @@ prompt stays within the model's context window.
     }
 
     async function main() {
-        const content = [
-            'What is the difference between each of the main benchmarks between these two papers? Output these in a table.',
-        ];
+        const file1 = await uploadRemotePDF("https://arxiv.org/pdf/2312.11805", "PDF 1");
+        const file2 = await uploadRemotePDF("https://arxiv.org/pdf/2403.05530", "PDF 2");
 
-        let file1 = await uploadRemotePDF("https://arxiv.org/pdf/2312.11805", "PDF 1")
-        if (file1.uri && file1.mimeType) {
-            const fileContent = createPartFromUri(file1.uri, file1.mimeType);
-            content.push(fileContent);
-        }
-        let file2 = await uploadRemotePDF("https://arxiv.org/pdf/2403.05530", "PDF 2")
-        if (file2.uri && file2.mimeType) {
-            const fileContent = createPartFromUri(file2.uri, file2.mimeType);
-            content.push(fileContent);
-        }
-
-        const response = await ai.models.generateContent({
+        const interaction = await ai.interactions.create({
             model: 'gemini-3.5-flash',
-            contents: content,
+            input: [
+                { type: "document", uri: file1.uri, mime_type: file1.mime_type },
+                { type: "document", uri: file2.uri, mime_type: file2.mime_type },
+                { type: "text", text: "What is the difference between each of the main benchmarks between these two papers? Output these in a table." }
+            ],
         });
 
-        console.log(response.text);
+        console.log(interaction.output_text);
     }
 
     main();
-
-### Go
-
-    package main
-
-    import (
-        "context"
-        "fmt"
-        "io"
-        "net/http"
-        "os"
-        "google.golang.org/genai"
-    )
-
-    func main() {
-
-        ctx := context.Background()
-        client, _ := genai.NewClient(ctx, &genai.ClientConfig{
-            APIKey:  os.Getenv("GEMINI_API_KEY"),
-            Backend: genai.BackendGeminiAPI,
-        })
-
-        docUrl1 := "https://arxiv.org/pdf/2312.11805"
-        docUrl2 := "https://arxiv.org/pdf/2403.05530"
-        localPath1 := "doc1_downloaded.pdf"
-        localPath2 := "doc2_downloaded.pdf"
-
-        respHttp1, _ := http.Get(docUrl1)
-        defer respHttp1.Body.Close()
-
-        outFile1, _ := os.Create(localPath1)
-        _, _ = io.Copy(outFile1, respHttp1.Body)
-        outFile1.Close()
-
-        respHttp2, _ := http.Get(docUrl2)
-        defer respHttp2.Body.Close()
-
-        outFile2, _ := os.Create(localPath2)
-        _, _ = io.Copy(outFile2, respHttp2.Body)
-        outFile2.Close()
-
-        uploadConfig1 := &genai.UploadFileConfig{MIMEType: "application/pdf"}
-        uploadedFile1, _ := client.Files.UploadFromPath(ctx, localPath1, uploadConfig1)
-
-        uploadConfig2 := &genai.UploadFileConfig{MIMEType: "application/pdf"}
-        uploadedFile2, _ := client.Files.UploadFromPath(ctx, localPath2, uploadConfig2)
-
-        promptParts := []*genai.Part{
-            genai.NewPartFromURI(uploadedFile1.URI, uploadedFile1.MIMEType),
-            genai.NewPartFromURI(uploadedFile2.URI, uploadedFile2.MIMEType),
-            genai.NewPartFromText("What is the difference between each of the " +
-                                  "main benchmarks between these two papers? " +
-                                  "Output these in a table."),
-        }
-        contents := []*genai.Content{
-            genai.NewContentFromParts(promptParts, genai.RoleUser),
-        }
-
-        modelName := "gemini-3.5-flash"
-        result, _ := client.Models.GenerateContent(
-            ctx,
-            modelName,
-            contents,
-            nil,
-        )
-
-        fmt.Println(result.Text())
-    }
 
 ### REST
 
@@ -854,19 +559,21 @@ prompt stays within the model's context window.
       local doc_url="$1"
       local display_name="$2"
 
+      echo "Downloading ${display_name} from ${doc_url}..." >&2
       # Download the PDF
-      wget -O "${display_name}.pdf" "${doc_url}"
+      wget -O "${display_name}.pdf" "${doc_url}" 2> /dev/null
 
       local MIME_TYPE=$(file -b --mime-type "${display_name}.pdf")
       local NUM_BYTES=$(wc -c < "${display_name}.pdf")
 
-      echo "MIME_TYPE: ${MIME_TYPE}"
-      echo "NUM_BYTES: ${NUM_BYTES}"
+      echo "MIME_TYPE: ${MIME_TYPE}" >&2
+      echo "NUM_BYTES: ${NUM_BYTES}" >&2
 
-      local tmp_header_file=upload-header.tmp
+      local tmp_header_file="upload-header-${display_name}.tmp"
 
       # Initial resumable request
-      curl "${BASE_URL}/upload/v1beta/files?key=${GOOGLE_API_KEY}" \
+      # Using GEMINI_API_KEY instead of GOOGLE_API_KEY
+      curl "https://generativelanguage.googleapis.com/upload/v1beta/files?key=${GEMINI_API_KEY}" \
         -D "${tmp_header_file}" \
         -H "X-Goog-Upload-Protocol: resumable" \
         -H "X-Goog-Upload-Command: start" \
@@ -878,6 +585,8 @@ prompt stays within the model's context window.
       local upload_url=$(grep -i "x-goog-upload-url: " "${tmp_header_file}" | cut -d" " -f2 | tr -d "\r")
       rm "${tmp_header_file}"
 
+      echo "Upload URL for ${display_name}: ${upload_url}" >&2
+
       # Upload the PDF
       curl "${upload_url}" \
         -H "Content-Length: ${NUM_BYTES}" \
@@ -885,8 +594,8 @@ prompt stays within the model's context window.
         -H "X-Goog-Upload-Command: upload, finalize" \
         --data-binary "@${display_name}.pdf" 2> /dev/null > "file_info_${display_name}.json"
 
-      local file_uri=$(jq ".file.uri" "file_info_${display_name}.json")
-      echo "file_uri for ${display_name}: ${file_uri}"
+      local file_uri=$(jq -r ".file.uri" "file_info_${display_name}.json")
+      echo "file_uri for ${display_name}: ${file_uri}" >&2
 
       # Clean up the downloaded PDF
       rm "${display_name}.pdf"
@@ -900,24 +609,35 @@ prompt stays within the model's context window.
     # Upload the second PDF
     file_uri_2=$(upload_pdf "${DOC_URL_2}" "${DISPLAY_NAME_2}")
 
-    # Now generate content using both files
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=$GOOGLE_API_KEY" \
+    # Create payload JSON file for safety
+    cat << EOF > payload_multi.json
+    {
+      "model": "gemini-3.5-flash",
+      "input": [
+        {"type": "document", "uri": "${file_uri_1}", "mime_type": "application/pdf"},
+        {"type": "document", "uri": "${file_uri_2}", "mime_type": "application/pdf"},
+        {"type": "text", "text": "${PROMPT}"}
+      ]
+    }
+    EOF
+
+    # Now create an interaction using both files
+    # Using GEMINI_API_KEY instead of GOOGLE_API_KEY
+    curl "https://generativelanguage.googleapis.com/v1beta/interactions" \
+        -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -X POST \
-        -d '{
-          "contents": [{
-            "parts":[
-              {"file_data": {"mime_type": "application/pdf", "file_uri": '$file_uri_1'}},
-              {"file_data": {"mime_type": "application/pdf", "file_uri": '$file_uri_2'}},
-              {"text": "'$PROMPT'"}
-            ]
-          }]
-        }' 2> /dev/null > response.json
+        -d @payload_multi.json 2> /dev/null > response.json
 
     cat response.json
     echo
 
-    jq ".candidates[].content.parts[].text" response.json
+    jq ".steps[-1].content[0].text" response.json
+
+    # Clean up
+    rm payload_multi.json
+    rm "file_info_${DISPLAY_NAME_1}.json"
+    rm "file_info_${DISPLAY_NAME_2}.json"
 
 ## Technical details
 

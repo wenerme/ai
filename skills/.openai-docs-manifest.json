@@ -1178,10 +1178,10 @@
   "openai-docs/mcp.md": {
     "url": "https://developers.openai.com/api/docs/mcp.md",
     "skill": "openai-docs",
-    "etag": "W/\"c4c135e9f703e0183209373e2e50bbd3\"",
-    "lastModified": "Sat, 13 Jun 2026 00:37:30 GMT",
-    "size": 30244,
-    "updatedAt": "2026-06-13T00:44:17.751Z"
+    "etag": "W/\"1770e0c59ddc4e0a24836d0391e9a06d\"",
+    "lastModified": "Mon, 22 Jun 2026 23:53:54 GMT",
+    "size": 31387,
+    "updatedAt": "2026-06-23T00:40:08.917Z"
   },
   "openai-docs/pricing.md": {
     "url": "https://developers.openai.com/api/docs/pricing.md",
@@ -10402,10 +10402,10 @@
   "codex-docs/config-sample.md": {
     "url": "https://developers.openai.com/codex/config-sample.md",
     "skill": "codex-docs",
-    "etag": "W/\"ab4037e56ff6dbe85602ccb2fe54f519\"",
-    "lastModified": "Sat, 20 Jun 2026 03:09:20 GMT",
-    "size": 28514,
-    "updatedAt": "2026-06-20T11:01:38.879Z"
+    "etag": "W/\"b3fa95d6a75a1fd1cfb73af98dfa3dbc\"",
+    "lastModified": "Mon, 22 Jun 2026 22:58:28 GMT",
+    "size": 28512,
+    "updatedAt": "2026-06-23T00:46:02.886Z"
   },
   "codex-docs/custom-prompts.md": {
     "url": "https://developers.openai.com/codex/custom-prompts.md",

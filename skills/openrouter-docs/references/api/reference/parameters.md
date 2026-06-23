@@ -223,7 +223,7 @@ Controls reasoning behavior for models that support thinking tokens, including w
 
 * Key: `reasoning_effort`
 
-* Optional, **enum** (xhigh, high, medium, low, minimal, none)
+* Optional, **enum** (max, xhigh, high, medium, low, minimal, none)
 
 OpenAI-style reasoning effort setting. Higher values allow the model to spend more tokens on internal reasoning when supported.
 

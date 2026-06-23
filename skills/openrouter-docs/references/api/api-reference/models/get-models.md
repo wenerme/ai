@@ -526,6 +526,7 @@ components:
     ReasoningEffort:
       type: string
       enum:
+        - max
         - xhigh
         - high
         - medium
