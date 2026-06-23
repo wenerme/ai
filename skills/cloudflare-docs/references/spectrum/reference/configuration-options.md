@@ -79,6 +79,25 @@ Network analytics data for Spectrum does not reflect the outcomes of IP Access r
 
 Once Argo Smart Routing is enabled for your application, traffic will automatically be routed through the fastest and most reliable network path available. Argo Smart Routing is available for TCP and UDP (beta) applications.
 
+## Virtual network origin
+
+Spectrum applications can route `origin_direct` traffic to a private origin through a Cloudflare Tunnel [virtual network](https://developers.cloudflare.com/cloudflare-one/networks/virtual-networks/). Set `virtual_network_id` on the application to the ID of the virtual network that the origin IP is routable within. Traffic to the application is delivered through the connector associated with that virtual network — typically a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) or a [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) (formerly Magic WAN) connection.
+
+To create the virtual network and attach a route covering your origin IP, refer to [Manage virtual networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) and [Connect an IP/CIDR](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/).
+
+The following restrictions apply when `virtual_network_id` is set:
+
+* Application type must be TCP or UDP. HTTP/HTTPS applications do not support virtual network origins.
+* The origin must be specified with `origin_direct`. Hostname origins (`origin_dns`) are not supported.
+* `origin_direct` must contain exactly one address. Multiple addresses are not supported.
+* The origin port must be a single port. Port ranges are not supported.
+* The origin IP must be routable within the specified virtual network. The virtual network must already have a route covering the IP.
+* [Proxy Protocol](https://developers.cloudflare.com/spectrum/how-to/enable-proxy-protocol/) is not supported. `proxy_protocol` must be set to `off`.
+
+For the validation error codes returned when these constraints are violated, refer to [Error codes](https://developers.cloudflare.com/spectrum/reference/error-codes/).
+
+Spectrum virtual network origins are for TCP and UDP traffic only. For HTTP/HTTPS traffic to private origins, use [Application Services for Private Origins](https://developers.cloudflare.com/dns/private-origins/), which provides WAF, CDN caching, and the full Cloudflare proxy stack.
+
 ## Edge TLS Termination
 
 If you enable **Edge TLS Termination** for a Spectrum application, Cloudflare will encrypt traffic for the application at the Edge. The Edge TLS Termination toggle applies only to TCP applications.
@@ -151,6 +170,6 @@ The cipher suites below are ordered based on how they appear in the ClientHello,
 1. Although TLS 1.3 uses the same cipher suite space as previous versions of TLS, TLS 1.3 cipher suites are defined differently, only specifying the symmetric ciphers, and cannot be used for TLS 1.2\. Similarly, TLS 1.2 and lower cipher suites cannot be used with TLS 1.3 ([RFC 8446 ↗](https://www.rfc-editor.org/rfc/rfc8446.html)). BoringSSL also hard-codes cipher preferences in this order for TLS 1.3\. Refer to [TLS 1.3 cipher suites](https://developers.cloudflare.com/ssl/origin-configuration/cipher-suites/#tls-13-cipher-suites) for details. [↩](#user-content-fnref-1) [↩2](#user-content-fnref-1-2) [↩3](#user-content-fnref-1-3)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/reference/configuration-options/#page","headline":"Configuration options · Cloudflare Spectrum docs","description":"Configurable options for Spectrum applications, including edge and origin ports and protocols.","url":"https://developers.cloudflare.com/spectrum/reference/configuration-options/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/reference/configuration-options/#page","headline":"Configuration options · Cloudflare Spectrum docs","description":"Configurable options for Spectrum applications, including edge and origin ports and protocols.","url":"https://developers.cloudflare.com/spectrum/reference/configuration-options/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/spectrum/","name":"Spectrum"}},{"@type":"ListItem","position":3,"item":{"@id":"/spectrum/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/spectrum/reference/configuration-options/","name":"Configuration options"}}]}
 ```

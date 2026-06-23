@@ -279,7 +279,7 @@ Variadic `*` and `+` parameters cannot be options.
 
 The `[arg(ARG, value=VALUE, …)]`<sup>1.46.0</sup> attribute can be used with
 `long` or `short` to make a parameter a flag which does not take a value.
-`VALUE` may be an expression<sup>master</sup>.
+`VALUE` may be an expression<sup>1.54.0</sup>.
 
 In this `justfile`:
 

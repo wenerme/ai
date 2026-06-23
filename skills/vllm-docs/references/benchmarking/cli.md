@@ -337,7 +337,7 @@ vllm bench serve \
     --model meta-llama/Meta-Llama-3-8B-Instruct \
     --dataset-name spec_bench \
     --dataset-path "<YOUR_DOWNLOADED_PATH>/data/spec_bench/question.jsonl" \
-    --num-prompts -1
+    --num-prompts -1 \
     --spec-bench-category "summarization"
 ```
 
@@ -351,7 +351,7 @@ vllm bench serve \
 First, download the dataset to a folder, using this one liner:
 
 ```bash
-curl -LsSf https://raw.githubusercontent.com/NVIDIA-NeMo/Skills/refs/heads/main/nemo_skills/dataset/speed-bench/prepare.py \| python3 -
+curl -LsSf https://raw.githubusercontent.com/NVIDIA-NeMo/Skills/refs/heads/main/nemo_skills/dataset/speed-bench/prepare.py | python3 -
 ```
 
 The command supports also the following arguments:
@@ -387,7 +387,7 @@ vllm bench serve \
     --model meta-llama/Llama-3.3-70B-Instruct \
     --dataset-name speed_bench \
     --dataset-path "<YOUR_DOWNLOADED_PATH>/data/speed_bench" \
-    --num-prompts -1
+    --num-prompts -1 \
     --speed-bench-category "multilingual"
 ```
 
@@ -397,7 +397,7 @@ Run all categories in the Throughput split (2k ISL):
 vllm bench serve \
     --model meta-llama/Llama-3.3-70B-Instruct \
     --dataset-name speed_bench \
-    --speed-bench-dataset-subset throughput_2k
+    --speed-bench-dataset-subset throughput_2k \
     --dataset-path "<YOUR_DOWNLOADED_PATH>/data/speed_bench/" \
     --num-prompts -1
 ```

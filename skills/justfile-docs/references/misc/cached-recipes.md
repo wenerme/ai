@@ -1,7 +1,7 @@
 ### Cached Recipes
 
 `just` will skip invocations of recipes with the `[cache]`
-attribute<sup>master</sup> if it finds an entry matching the invocation in the
+attribute<sup>1.54.0</sup> if it finds an entry matching the invocation in the
 cache. The `[cache]` attribute may only be used with script recipes and is
 currently unstable.
 
@@ -13,7 +13,7 @@ thoroughly, including the friendly admonitions below.
 The cache is a directory named `.justcache` alongside the `justfile` and should
 not be committed to version control systems. It contains cache entries named
 `HASH.json`, where `HASH` is the BLAKE3 hash of a serialized cache key JSON
-object. The cache can be cleared with `just --clean`.
+object.
 
 The keys of the cache key object are:
 
@@ -25,6 +25,9 @@ The keys of the cache key object are:
 - `positional`: positional arguments
 - `recipe`: `::`-separated module path to invoked recipe
 - `working_directory`: current working directory
+
+Cache key objects for invoked recipes can be printed to standard error with
+`just -vv`.
 
 The value of `extra` may be supplied with `[cache(extra = EXPRESSION)]`, where
 `EXPRESSION` is an arbitrary expression evaluated with recipe arguments in
@@ -44,6 +47,36 @@ invocation with the same cache key, the first will take the lock, run the
 recipe, write to the cache entry, and relinquish the lock. The second will
 block until the first relinquishes the lock, see that the entry is non-empty,
 and skip the invocation.
+
+The cache can be bypassed entirely with the `--no-cache` flag.
+
+#### Clearing the Cache
+
+The recipe cache is stored in a directory named `.justcache` alongside the
+`justfile`. Deleting it will clear the cache.
+
+The cache can also be cleared with `just --clean`, which can selectively clear
+cache entries:
+
+```sh
+# clear all cache entries
+just --clean
+
+# clear cache entries for recipe `foo`
+just --clean foo
+
+# clear cache entries for recipe `baz` in submodule `bar`
+just --clean bar baz
+
+# clear cache entries for recipes in submodule module `bar`
+just --clean bar
+
+# clear cache entries for recipes in submodule module `bar::bob`
+just --clean bar bob
+
+# '::'-separated paths may also be used
+just --clean bar::bob
+```
 
 #### Input Files
 

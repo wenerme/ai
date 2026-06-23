@@ -45,17 +45,17 @@ Authentication uses OAuth 2.0. When your MCP client connects for the first time,
 Each client handles the OAuth flow automatically on first connection.
 
 ```shell
-claude mcp add --transport http clickstack-cloud https://mcp.clickhouse.cloud/clickstack
+claude mcp add --transport http clickstack https://mcp.clickhouse.cloud/clickstack
 ```
 
-Launch Claude Code and run `/mcp`, then select `clickstack-cloud` to complete the OAuth flow.
+Launch Claude Code and run `/mcp`, then select `clickstack` to complete the OAuth flow.
 
 Add the following to `.cursor/mcp.json`:
 
 ```json
 {
   "mcpServers": {
-    "clickstack-cloud": {
+    "clickstack": {
       "url": "https://mcp.clickhouse.cloud/clickstack"
     }
   }
@@ -67,7 +67,7 @@ Add the following to `.vscode/mcp.json`:
 ```json
 {
   "servers": {
-    "clickstack-cloud": {
+    "clickstack": {
       "type": "http",
       "url": "https://mcp.clickhouse.cloud/clickstack"
     }
@@ -80,7 +80,7 @@ Add the following to `opencode.json`:
 ```json
 {
   "mcp": {
-    "clickstack-cloud": {
+    "clickstack": {
       "type": "remote",
       "url": "https://mcp.clickhouse.cloud/clickstack"
     }

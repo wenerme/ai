@@ -55,7 +55,7 @@ By default, there is a limit to the number of records you can create on a single
 * Free zones created on or after `2024-09-01 00:00:00 UTC`: 200
 * Pro: 3,500
 * Business: 3,500
-* Enterprise: 3,500
+* Enterprise: falls under the [per-account quota](#per-account-quota) (no separate per-zone limit).
 
 You can retrieve a zone's current quota (if applicable) and usage [via the API](https://developers.cloudflare.com/api/resources/dns/subresources/usage/subresources/zone/methods/get/).
 
@@ -103,6 +103,6 @@ If you are an Enterprise customer and require a higher account quota, contact yo
 * [ Stale response for upstream DNS resolution ](https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/stale-response/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/dns/manage-dns-records/#page","headline":"DNS records · Cloudflare DNS docs","description":"Manage DNS records for your Cloudflare zones.","url":"https://developers.cloudflare.com/dns/manage-dns-records/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/dns/manage-dns-records/#page","headline":"DNS records · Cloudflare DNS docs","description":"Manage DNS records for your Cloudflare zones.","url":"https://developers.cloudflare.com/dns/manage-dns-records/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/manage-dns-records/","name":"DNS records"}}]}
 ```

@@ -36,7 +36,7 @@ receives a fatal signal, `just` halts execution.
 
 #### Continuing Execution
 
-The `[continue]`<sup>master</sup> attribute can be used to make `just` continue
+The `[continue]`<sup>1.54.0</sup> attribute can be used to make `just` continue
 execution even if it receives a fatal signal as long as the child process it's
 running exits successfully.
 

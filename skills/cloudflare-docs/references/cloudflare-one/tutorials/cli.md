@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Connect through Cloudflare Access using a CLI
 
-**Last reviewed:**  about 5 years ago 
+**Last reviewed:**  over 5 years ago 
 
 Cloudflare's `cloudflared` command-line tool allows you to interact with endpoints protected by Cloudflare Access. You can use `cloudflared` to interact with a protected application's API.
 

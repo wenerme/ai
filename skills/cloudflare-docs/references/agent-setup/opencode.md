@@ -51,7 +51,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.  
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.  
 ```
 
 ## Cloudflare platform access

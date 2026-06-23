@@ -36,6 +36,10 @@ Once the endpoint and virtual network (VNet) tunnel association is configured, C
 
 Refer to [Set up Private Network Load Balancing for Public traffic to Tunnel](https://developers.cloudflare.com/load-balancing/private-network/public-to-tunnel/) for a detailed guide.
 
+Note
+
+If your application only needs TCP or UDP proxying (not load balancing), you can skip the Load Balancer and attach Spectrum directly to a virtual network. Refer to [Create a Spectrum application using a virtual network](https://developers.cloudflare.com/spectrum/get-started/#create-a-spectrum-application-using-a-virtual-network-origin).
+
 ### Cloudflare WAN
 
 Private Network Load Balancing supports off-ramping traffic for Cloudflare WAN (formerly Magic WAN) tunnels, such as GRE, IPSec or CNI tunnels. For more information refer to the [Set up Private Network Load Balancing with Cloudflare WAN](https://developers.cloudflare.com/load-balancing/private-network/cloudflare-wan/).
@@ -60,6 +64,6 @@ When using [Spectrum](https://developers.cloudflare.com/spectrum/) as an on-ramp
 * **Public and Private Load Balancers**: Public LBs can direct Internet traffic to private IP addresses, supporting all L7 products like WAF and API Shield. Private LBs direct traffic originating from private networks to private IP addresses and require an on-ramp like the Cloudflare One Client or Cloudflare WAN.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/private-network/#page","headline":"Private Network Load Balancing · Cloudflare Load Balancing docs","description":"Use Private Network Load Balancing to load balance traffic between servers within a data center or between private applications, and eliminate the need for hardware appliances.","url":"https://developers.cloudflare.com/load-balancing/private-network/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/private-network/#page","headline":"Private Network Load Balancing · Cloudflare Load Balancing docs","description":"Use Private Network Load Balancing to load balance traffic between servers within a data center or between private applications, and eliminate the need for hardware appliances.","url":"https://developers.cloudflare.com/load-balancing/private-network/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/private-network/","name":"Private Network Load Balancing"}}]}
 ```

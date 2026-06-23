@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**  
 For example:  
 ```  
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.  
+Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.  
 ```
 
 ## Cloudflare platform access

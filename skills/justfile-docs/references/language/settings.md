@@ -21,7 +21,7 @@ foo:
 | `allow-duplicate-variables` | boolean | `false` | Allow variables appearing later in a `justfile` to override earlier variables with the same name. |
 | `default-list` | boolean | `false` | List recipes instead of running the default recipe. |
 | `default-script`<sup>1.52.0</sup> | boolean | `false` | Default recipes to script instead of shell. |
-| `dotenv-command`<sup>master</sup> | string | - | Run a command and load its output as an environment file. |
+| `dotenv-command`<sup>1.54.0</sup> | string | - | Run a command and load its output as an environment file. |
 | `dotenv-filename` | string | - | Load a `.env` file with a custom name, if present. |
 | `dotenv-load` | boolean | `false` | Load a `.env` file, if present. |
 | `dotenv-override` | boolean | `false` | Override existing environment variables with values from the `.env` file. |
