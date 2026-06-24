@@ -1,3 +1,5 @@
+# Interactions API
+
 The Interactions API is our new interface and the most straightforward way
 to build with Gemini models and agents. As of June 2026, it is Generally
 Available and the recommended interface for all new projects.

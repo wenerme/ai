@@ -1,5 +1,5 @@
 > [!NOTE]
-> **Note:** This version of the page covers the **generateContent API** . You can use the toggle on this page to switch to the [Interactions API version of this page](https://ai.google.dev/gemini-api/docs/image-understanding).
+> **Note:** This version of the page covers the previous **generateContent API** . We recommend using the new [Interactions API](https://ai.google.dev/gemini-api/docs/interactions-overview) for access to all the latest features and models. You can use the toggle on this page to switch to the [Interactions API version of this page](https://ai.google.dev/gemini-api/docs/image-understanding).
 
 Gemini models are built to be multimodal from the ground up, unlocking a wide
 range of image processing and computer vision tasks including but not limited to

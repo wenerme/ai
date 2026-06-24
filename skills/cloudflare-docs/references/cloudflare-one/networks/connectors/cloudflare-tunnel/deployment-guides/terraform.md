@@ -121,8 +121,8 @@ touch providers.tf
 ```
 2. Add the following providers to `providers.tf`. The `random` provider is used to generate a tunnel secret.
 
-  * [ Terraform (v5) ](#tab-panel-7342)
-  * [ Terraform (v4) ](#tab-panel-7343)  
+  * [ Terraform (v5) ](#tab-panel-7344)
+  * [ Terraform (v4) ](#tab-panel-7345)  
 ```  
 terraform {  required_providers {    cloudflare = {      source = "cloudflare/cloudflare"      version = ">= 5.8.2"    }    google = {      source = "hashicorp/google"    }  }  required_version = ">= 1.2"}  
 # Providersprovider "cloudflare" {  api_token    = var.cloudflare_token}provider "google" {  project    = var.gcp_project_id}provider "random" {}  
@@ -143,8 +143,8 @@ touch Cloudflare-config.tf
 ```
 2. Add the following resources to `Cloudflare-config.tf`:
 
-  * [ Terraform (v5) ](#tab-panel-7338)
-  * [ Terraform (v4) ](#tab-panel-7339)  
+  * [ Terraform (v5) ](#tab-panel-7340)
+  * [ Terraform (v4) ](#tab-panel-7341)  
 ```  
 # Creates a new remotely-managed tunnel for the GCP VM.resource "cloudflare_zero_trust_tunnel_cloudflared" "gcp_tunnel" {  account_id    = var.cloudflare_account_id  name          = "Terraform GCP tunnel"  config_src    = "cloudflare"}  
 # Reads the token used to run the tunnel on the server.data "cloudflare_zero_trust_tunnel_cloudflared_token" "gcp_tunnel_token" {  account_id   = var.cloudflare_account_id  tunnel_id   = cloudflare_zero_trust_tunnel_cloudflared.gcp_tunnel.id}  
@@ -177,8 +177,8 @@ touch GCP-config.tf
 ```
 2. Add the following content to `GCP-config.tf`:
 
-  * [ Terraform (v5) ](#tab-panel-7340)
-  * [ Terraform (v4) ](#tab-panel-7341)  
+  * [ Terraform (v5) ](#tab-panel-7342)
+  * [ Terraform (v4) ](#tab-panel-7343)  
 ```  
 # OS the server will usedata "google_compute_image" "image" {  family  = "ubuntu-2204-lts"  project = "ubuntu-os-cloud"}  
 # GCP Instance resourceresource "google_compute_instance" "http_server" {  name         = "test"  machine_type = var.machine_type  zone         = var.zone  tags         = []  boot_disk {    initialize_params {      image = data.google_compute_image.image.self_link    }  }  
@@ -229,7 +229,7 @@ Terminal window
 terraform apply  
 ```
 
-It may take several minutes for the GCP instance and tunnel to come online. You can view your new tunnel in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Zero Trust** \> **Networks** \> **Connectors**, and your Access application and policy under **Zero Trust** \> **Access controls** \> **Applications**. The new DNS records are available on the [**DNS Records** page](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/).
+It may take several minutes for the GCP instance and tunnel to come online. You can view your new tunnel in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Networking** \> **Tunnels**, and your Access application and policy under **Zero Trust** \> **Access controls** \> **Applications**. The new DNS records are available on the [**DNS Records** page](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/).
 
 Remove Terraform resources
 
@@ -237,7 +237,7 @@ If you need to roll back the configuration, run `terraform destroy` to delete ev
 
 ## 7\. Test the connection
 
-1. In **Networks** \> **Connectors** \> **Cloudflare Tunnels**, verify that your tunnel is active.
+1. In **Networking** \> **Tunnels**, verify that your tunnel is active.
 2. In **Access controls** \> **Applications**, verify that your Cloudflare email is allowed by the Access policy.
 3. From any device, open a browser and go to `http_app.<CLOUDFLARE_ZONE>` (for example, `http_app.example.com`).  
 You will see the Access login page if you have not recently logged in.
@@ -245,6 +245,6 @@ You will see the Access login page if you have not recently logged in.
 You should see the [HTTPBin ↗](https://httpbin.org/) homepage.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/deployment-guides/terraform/#page","headline":"Deploy Tunnels with Terraform · Cloudflare One docs","description":"Learn how to deploy a Cloudflare Tunnel using Terraform and our lightweight server-side daemon, cloudflared.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/deployment-guides/terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/deployment-guides/terraform/#page","headline":"Deploy Tunnels with Terraform · Cloudflare One docs","description":"Learn how to deploy a Cloudflare Tunnel using Terraform and our lightweight server-side daemon, cloudflared.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/deployment-guides/terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GCP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/deployment-guides/","name":"Environments"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/deployment-guides/terraform/","name":"Terraform"}}]}
 ```

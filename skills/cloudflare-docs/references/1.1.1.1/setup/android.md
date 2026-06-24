@@ -36,9 +36,9 @@ Your connection to the Internet and your DNS queries are now protected.
 
 ## Configure 1.1.1.1 manually
 
-### Android 11 or later
+### Android 9 and later
 
-Android 11 and later support encrypted DNS through a feature called Private DNS, which uses DNS over TLS (DoT). When you configure Private DNS, your device uses that DNS resolver on all networks — including cellular — without needing per-network configuration.
+Android 9 and later support encrypted DNS through a feature called Private DNS, which uses DNS-over-TLS (DoT), or DNS-over-HTTP/3\. When you configure Private DNS, your device uses that DNS resolver on all networks — including cellular.
 
 1. Go to **Settings** \> **Network & internet**.
 2. Select **Advanced** \> **Private DNS**.
@@ -53,33 +53,6 @@ Or the corresponding IP address if your device requires it:
 
 * **IPv4**: `1.1.1.1` or `1.0.0.1`
 * **IPv6**: `2606:4700:4700::1111` or `2606:4700:4700::1001`
-
-Block malware with 1.1.1.1 for Families
-
-* `security.cloudflare-dns.com`
-
-Or the corresponding IP address if your device requires it:
-
-* **IPv4**: `1.1.1.2` or `1.0.0.2`
-* **IPv6**: `2606:4700:4700::1112` or `2606:4700:4700::1002`
-
-Block malware and adult content with 1.1.1.1 for Families
-
-* `family.cloudflare-dns.com`
-
-Or the corresponding IP address if your device requires it:
-
-* **IPv4**: `1.1.1.3` or `1.0.0.3`
-* **IPv6**: `2606:4700:4700::1113` or `2606:4700:4700::1003`
-
-### Android 9 or 10
-
-Android 9 and 10 support DNS over TLS through a feature called Private DNS. When you configure Private DNS, your device encrypts DNS queries and uses the configured resolver on all networks, including cellular.
-
-1. Go to **Settings** \> **Network & internet**.
-2. Select **Advanced** \> **Private DNS**.
-3. Select the **Private DNS provider hostname** option.
-4. Enter `one.one.one.one` and select **Save**. Or use one of the following hostnames if you want to use 1.1.1.1 for Families.
 
 Block malware with 1.1.1.1 for Families
 
@@ -147,6 +120,6 @@ If you are experiencing connectivity issues related to captive portals:
 3. Once the connection has been established, re-add the static IP addresses or enable the 1.1.1.1 app.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/setup/android/#page","headline":"Set up 1.1.1.1 on Android","description":"Learn how to set up Cloudflare's 1.1.1.1 DNS resolver on Android devices. Encrypt DNS queries with DoT or DoH, and enable 1.1.1.1 for Families.","url":"https://developers.cloudflare.com/1.1.1.1/setup/android/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/setup/android/#page","headline":"Set up 1.1.1.1 on Android","description":"Learn how to set up Cloudflare's 1.1.1.1 DNS resolver on Android devices. Encrypt DNS queries with DoT or DoH, and enable 1.1.1.1 for Families.","url":"https://developers.cloudflare.com/1.1.1.1/setup/android/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/1.1.1.1/","name":"1.1.1.1 (DNS Resolver)"}},{"@type":"ListItem","position":3,"item":{"@id":"/1.1.1.1/setup/","name":"Set up"}},{"@type":"ListItem","position":4,"item":{"@id":"/1.1.1.1/setup/android/","name":"Android"}}]}
 ```

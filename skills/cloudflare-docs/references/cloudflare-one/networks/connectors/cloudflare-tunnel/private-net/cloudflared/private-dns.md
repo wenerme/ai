@@ -19,7 +19,8 @@ By default, all DNS requests on the user device are resolved by Cloudflare's [pu
 To resolve private DNS queries:
 
 1. [Connect your private network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/) with Cloudflare Tunnel.
-2. Under **Networks** \> **Routes**, verify that the IP address of your internal DNS resolver is included in the tunnel.  
+2. Under **Networking** \> **Routes**, verify that the IP address of your internal DNS resolver is included in the tunnel.  
+[ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)  
 Note  
 Ensure that **Split Tunnels** are configured to [include traffic to private IPs and hostnames](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/#3-route-private-network-ips-through-the-cloudflare-one-client).
 3. Route specific DNS queries to your internal DNS resolver using one of the following options:
@@ -56,7 +57,7 @@ Both `dig` commands will fail if the Cloudflare One Client is disabled on your e
 
 Use the following troubleshooting strategies if you are running into issues while configuring private DNS with Cloudflare Tunnel.
 
-* Ensure that `cloudflared` is connected to Cloudflare by visiting **Networks** \> **Connectors** \> **Cloudflare Tunnels** in Cloudflare One.
+* Ensure that `cloudflared` is connected to Cloudflare by visiting **Networking** \> **Tunnels** in the Cloudflare dashboard.
 * Ensure that `cloudflared` is running with the `quic` protocol (search for `Initial protocol quic` in its logs).
 * Ensure that the machine where `cloudflared` is running is allowed to egress via UDP to port 7844 to talk out to Cloudflare.
 * Ensure that end-user devices are enrolled into the Cloudflare One Client by visiting [https://help.teams.cloudflare.com ↗](https://help.teams.cloudflare.com).
@@ -66,6 +67,6 @@ Use the following troubleshooting strategies if you are running into issues whil
 * Check your set up by using `dig ... +tcp` to force the DNS resolution to use TCP instead of UDP.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/private-dns/#page","headline":"Private DNS · Cloudflare One docs","description":"Private DNS in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/private-dns/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/private-dns/#page","headline":"Private DNS · Cloudflare One docs","description":"Private DNS in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/private-dns/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/","name":"Private networks"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/","name":"Connect with cloudflared"}},{"@type":"ListItem","position":8,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/private-dns/","name":"Private DNS"}}]}
 ```

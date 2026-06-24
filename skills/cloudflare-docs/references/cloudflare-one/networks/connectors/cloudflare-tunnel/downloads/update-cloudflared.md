@@ -18,12 +18,12 @@ Updates will cause `cloudflared` to restart which will impact traffic currently 
 
 Refer to the following commands to update `cloudflared` for a remotely-managed tunnel or a locally-managed tunnel. Locally-managed tunnels must be set up to [run as a service](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/as-a-service/) for the following commands to execute successfully.
 
-* [ Windows ](#tab-panel-7348)
-* [ macOS ](#tab-panel-7349)
-* [ Debian ](#tab-panel-7350)
-* [ Red Hat ](#tab-panel-7351)
-* [ Docker ](#tab-panel-7352)
-* [ Other ](#tab-panel-7353)
+* [ Windows ](#tab-panel-7350)
+* [ macOS ](#tab-panel-7351)
+* [ Debian ](#tab-panel-7352)
+* [ Red Hat ](#tab-panel-7353)
+* [ Docker ](#tab-panel-7354)
+* [ Other ](#tab-panel-7355)
 
 Run the following command:
 
@@ -115,9 +115,10 @@ sudo systemctl restart cloudflared.service
 
 **If you created a remotely-managed tunnel using the dashboard:**
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
-2. Select your tunnel and select **Edit**.
-3. Select **Docker** and copy the installation command shown in the dashboard. The copied command will contain your token.
+1. In the Cloudflare dashboard, go to **Networking** \> **Tunnels**.  
+[ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
+2. Select your tunnel to open its detail page.
+3. On the **Overview** tab, copy the Docker installation command. The copied command will contain your token.
 4. Paste this command into a terminal window.
 
 This command creates a new container from the latest `cloudflared` image. You can now delete the old container.

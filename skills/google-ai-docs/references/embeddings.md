@@ -1,3 +1,5 @@
+# Embeddings
+
 <br />
 
 The Gemini API offers embedding models to generate embeddings for text, images,

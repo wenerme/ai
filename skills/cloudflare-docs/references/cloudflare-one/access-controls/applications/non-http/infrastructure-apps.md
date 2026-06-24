@@ -44,9 +44,9 @@ A target represents a single resource in your infrastructure (such as a server, 
 
 Targets are protocol-agnostic, meaning that you do not need to define a new target for each protocol that runs on the server. To create a new target: 
 
-* [ Dashboard ](#tab-panel-7191)
-* [ API ](#tab-panel-7192)
-* [ Terraform ](#tab-panel-7193)
+* [ Dashboard ](#tab-panel-7193)
+* [ API ](#tab-panel-7194)
+* [ Terraform ](#tab-panel-7195)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Targets**.
 2. Select **Add a target**.
@@ -61,7 +61,7 @@ Hostname format restrictions
 
 Note
 
-If the target IP does not appear in the dropdown, go to **Networks** \> **Routes** and confirm that the IP routes through Cloudflare Tunnel.
+If the target IP does not appear in the dropdown, go to **Networking** \> **Routes** and confirm that the IP routes through Cloudflare Tunnel.
 
 1. In the dropdown menu, select the IP address and [virtual network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) where the resource is located. This IP address and virtual network pairing is now assigned to this target and cannot be reused in another target by design.
 2. Select **Add target**.
@@ -90,9 +90,9 @@ Next, create an Access application to secure the target.
 
 ## 2\. Add an infrastructure application
 
-* [ Dashboard ](#tab-panel-7194)
-* [ API ](#tab-panel-7195)
-* [ Terraform (v4) ](#tab-panel-7196)
+* [ Dashboard ](#tab-panel-7196)
+* [ API ](#tab-panel-7197)
+* [ Terraform (v4) ](#tab-panel-7198)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select **Create new application**.

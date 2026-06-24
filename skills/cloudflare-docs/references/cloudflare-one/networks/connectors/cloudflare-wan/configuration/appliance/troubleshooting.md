@@ -23,7 +23,7 @@ Cloudflare customers can inspect metrics for a specific Cloudflare One Appliance
 
 To find the information above and start troubleshooting your Cloudflare One Appliance:
 
-1. Log in to [Cloudflare One](https://one.dash.cloudflare.com/), and go to **Networks** \> **Connectors**.
+1. Log in to the [Cloudflare dashboard](https://dash.cloudflare.com/), and go to **Networking** \> **Connectors**.
 2. Go to **Appliances** \> **Profiles**.
 3. Select your Appliance > **View analytics**.
 
@@ -39,7 +39,7 @@ In Performance analytics you can review your Cloudflare One Appliance's performa
 
 To access performance analytics:
 
-1. Log in to [Cloudflare One](https://one.dash.cloudflare.com/), and go to **Networks** \> **Connectors**.
+1. Log in to the [Cloudflare dashboard](https://dash.cloudflare.com/), and go to **Networking** \> **Connectors**.
 2. Go to **Appliances** \> **Profiles**.
 3. Select your Appliance > **View analytics**.
 1. Select **Performance analytics**.
@@ -53,7 +53,7 @@ Port analytics gives you access to information related to the packets sent and r
 
 The dashboard provides this information for all active ports in your Cloudflare One Appliance. To access port analytics:
 
-1. Log in to [Cloudflare One](https://one.dash.cloudflare.com/), and go to **Networks** \> **Connectors**.
+1. Log in to the [Cloudflare dashboard](https://dash.cloudflare.com/), and go to **Networking** \> **Connectors**.
 2. Go to **Appliances** \> **Profiles**.
 3. Select your Appliance > **View analytics**.
 1. Select **Port analytics**.
@@ -81,7 +81,7 @@ Use Event logs to identify general patterns and changes over time. This is usefu
 
 To access event logs:
 
-1. Log in to [Cloudflare One](https://one.dash.cloudflare.com/), and go to **Networks** \> **Connectors**.
+1. Log in to the [Cloudflare dashboard](https://dash.cloudflare.com/), and go to **Networking** \> **Connectors**.
 2. Go to **Appliances** \> **Profiles**.
 3. Select your Appliance > **View analytics**.
 1. Select **Events**.
@@ -91,7 +91,7 @@ To access event logs:
 
 The DHCP leasing section identifies DHCP assigned leases and their expiration dates. To access DHCP leasing:
 
-1. Log in to [Cloudflare One](https://one.dash.cloudflare.com/), and go to **Networks** \> **Connectors**.
+1. Log in to the [Cloudflare dashboard](https://dash.cloudflare.com/), and go to **Networking** \> **Connectors**.
 2. Go to **Appliances** \> **Profiles**.
 3. Select your Appliance > **View analytics**.
 1. Select **DHCP leasing**.

@@ -111,10 +111,10 @@ NAME                                           DESIRED   CURRENT   READY   AGEre
 To create a Cloudflare Tunnel:
 
 1. In the [Cloudflare dashboard](https://dash.cloudflare.com/), go to **Networking** \> **Tunnels**.
-2. Select **Create Tunnel**.
+2. Select **Create a tunnel**.
 3. Enter a name for your tunnel (for example, `gke-tunnel`).
-4. Select **Save tunnel**.
-5. Under **Choose an environment**, select **Docker**.  
+4. Select **Create Tunnel**.
+5. Choose your operating system and select **Docker**.  
 Applications must be packaged into a containerized image before you can run it in Kubernetes. Therefore, we will use the `cloudflared` Docker container image to deploy the tunnel in Kubernetes.
 6. Instead of running the installation command, copy just the token value rather than the whole command. The token value is of the form `eyJhIjoiNWFiNGU5Z...` You will need the token for the Kubernetes manifest file.
 
@@ -191,7 +191,7 @@ kubectl logs pod/cloudflared-deployment-6d5f9f9666-85l5w
 Now that the tunnel is up and running, we can route the httpbin service through the tunnel.
 
 1. In the [Cloudflare dashboard](https://dash.cloudflare.com/), go to **Networking** \> **Tunnels** and select your tunnel.
-2. Under **Routes**, select **Add route** \> **Published application**.
+2. On the **Routes** tab, select **Add route** \> **Published application**.
 3. Enter a hostname for the application (for example, `httpbin.<your-domain>.com`).
 4. Under **Service**, enter `http://httpbin-service`. `httpbin-service` is the name of the Kubernetes service defined in `httpbinsvc.yaml`.
 5. Select **Add route**.

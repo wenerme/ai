@@ -30,6 +30,12 @@ If the issue persists, try switching to a different network or device to rule ou
 
 Ensure your browser is updated to the latest version to maintain compatibility.
 
+## 401 response on a Private Access Token request
+
+When a Challenge Page loads, the browser may request a [Private Access Token (PAT)](https://developers.cloudflare.com/cloudflare-challenges/reference/private-access-tokens/) from a `/cdn-cgi/challenge-platform/.../pat/...` endpoint. On devices, browsers, or networks that cannot issue a token, this request returns an HTTP `401`.
+
+This response is **expected** and does not mean the visitor was blocked or that the widget failed. Cloudflare falls back to a standard challenge and the visitor proceeds as normal. A `401` on this request — for example, one seen in browser developer tools or a HAR capture — is not, on its own, a sign of a misconfiguration, a false positive, or a block. For more details, refer to [Private Access Tokens](https://developers.cloudflare.com/cloudflare-challenges/reference/private-access-tokens/).
+
 ## Troubleshooting
 
 Follow the steps below to ensure that your environment is properly configured.
@@ -55,6 +61,6 @@ Follow the steps below to ensure that your environment is properly configured.
 If none of the above resolves your issue, contact the website administrator with the [error code](https://developers.cloudflare.com/turnstile/troubleshooting/client-side-errors/error-codes/) and Ray ID or submit a [feedback report](https://developers.cloudflare.com/turnstile/troubleshooting/feedback-reports/) through the Turnstile widget by selecting **Submit Feedback**.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/troubleshooting/challenge-solve-issues/#page","headline":"Challenge solve issues · Cloudflare challenges docs","description":"Fix challenge loops, unsupported browser errors, and other solve failures.","url":"https://developers.cloudflare.com/cloudflare-challenges/troubleshooting/challenge-solve-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/troubleshooting/challenge-solve-issues/#page","headline":"Challenge solve issues · Cloudflare challenges docs","description":"Fix challenge loops, unsupported browser errors, and other solve failures.","url":"https://developers.cloudflare.com/cloudflare-challenges/troubleshooting/challenge-solve-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-challenges/","name":"Challenges"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-challenges/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-challenges/troubleshooting/challenge-solve-issues/","name":"Challenge solve issues"}}]}
 ```

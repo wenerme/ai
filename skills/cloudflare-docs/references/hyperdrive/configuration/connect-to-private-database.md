@@ -50,15 +50,13 @@ If your organization also uses [Super Bot Fight Mode](https://developers.cloudfl
 
 First, create a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) in your private network to establish a secure connection between your network and Cloudflare. Your network must be configured such that the tunnel has permissions to egress to the Cloudflare network and access the database within your network.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
+1. Log in to the Cloudflare dashboard and go to **Networking** \> **Tunnels**.  
+[ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Select **Create a tunnel**.
-3. Choose **Cloudflared** for the connector type and select **Next**.
-4. Enter a name for your tunnel. We suggest choosing a name that reflects the type of resources you want to connect through this tunnel (for example, `enterprise-VPC-01`).
-5. Select **Save tunnel**.
-6. Next, you will need to install `cloudflared` and run it. To do so, check that the environment under **Choose an environment** reflects the operating system on your machine, then copy the command in the box below and paste it into a terminal window. Run the command.
-7. Once the command has finished running, your connector will appear in Cloudflare One.  
-![Connector appearing in the UI after cloudflared has run](https://developers.cloudflare.com/_astro/connector.BnVS4T_M_ZxLFu6.webp)
-8. Select **Next**.
+3. Enter a name for your tunnel. We suggest choosing a name that reflects the type of resources you want to connect through this tunnel (for example, `enterprise-VPC-01`).
+4. Select **Create Tunnel**.
+5. Choose your operating system, then copy the installation command and run it in a terminal on your origin server.
+6. Wait for the tunnel to connect. Once the connection is established, select **Continue**.
 
 ### 1.2\. Connect your database using a public hostname
 
@@ -128,8 +126,8 @@ This is the only time Cloudflare Access will display the Client Secret. If you l
 
 To create a Hyperdrive configuration for your private database, you'll need to specify the Access application and Cloudflare Tunnel information upon creation.
 
-* [ Wrangler ](#tab-panel-8708)
-* [ Terraform ](#tab-panel-8709)
+* [ Wrangler ](#tab-panel-8710)
+* [ Terraform ](#tab-panel-8711)
 
 Terminal window
 
@@ -159,8 +157,8 @@ You must create a binding in your [Wrangler configuration file](https://develope
 
 To bind your Hyperdrive configuration to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-8710)
-* [  wrangler.toml ](#tab-panel-8711)
+* [  wrangler.jsonc ](#tab-panel-8712)
+* [  wrangler.toml ](#tab-panel-8713)
 
 JSONC
 
@@ -182,8 +180,8 @@ Specifically:
 
 If you wish to use a local database during development, you can add a `localConnectionString` to your Hyperdrive configuration with the connection string of your database:
 
-* [  wrangler.jsonc ](#tab-panel-8712)
-* [  wrangler.toml ](#tab-panel-8713)
+* [  wrangler.jsonc ](#tab-panel-8714)
+* [  wrangler.toml ](#tab-panel-8715)
 
 JSONC
 
@@ -205,8 +203,8 @@ Learn more about setting up [Hyperdrive for local development](https://developer
 
 Validate that you can connect to your database from Workers and make queries.
 
-* [ PostgreSQL ](#tab-panel-8718)
-* [ MySQL ](#tab-panel-8719)
+* [ PostgreSQL ](#tab-panel-8720)
+* [ MySQL ](#tab-panel-8721)
 
 Use [node-postgres ↗](https://node-postgres.com/) (`pg`) to send a test query to validate that the connection has been successful.
 
@@ -256,19 +254,19 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-8714)
-* [  wrangler.toml ](#tab-panel-8715)
+* [  wrangler.jsonc ](#tab-panel-8716)
+* [  wrangler.toml ](#tab-panel-8717)
 
 JSONC
 
 ```
-{  // required for database drivers to function  "compatibility_flags": [    "nodejs_compat"  ],  // Set this to today's date  "compatibility_date": "2026-06-18",  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<your-hyperdrive-id-here>"    }  ]}
+{  // required for database drivers to function  "compatibility_flags": [    "nodejs_compat"  ],  // Set this to today's date  "compatibility_date": "2026-06-23",  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<your-hyperdrive-id-here>"    }  ]}
 ```
 
 TOML
 
 ```
-compatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-06-18"
+compatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-06-23"
 [[hyperdrive]]binding = "HYPERDRIVE"id = "<your-hyperdrive-id-here>"
 ```
 
@@ -323,19 +321,19 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-8716)
-* [  wrangler.toml ](#tab-panel-8717)
+* [  wrangler.jsonc ](#tab-panel-8718)
+* [  wrangler.toml ](#tab-panel-8719)
 
 JSONC
 
 ```
-{  // required for database drivers to function  "compatibility_flags": [    "nodejs_compat"  ],  // Set this to today's date  "compatibility_date": "2026-06-18",  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<your-hyperdrive-id-here>"    }  ]}
+{  // required for database drivers to function  "compatibility_flags": [    "nodejs_compat"  ],  // Set this to today's date  "compatibility_date": "2026-06-23",  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<your-hyperdrive-id-here>"    }  ]}
 ```
 
 TOML
 
 ```
-compatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-06-18"
+compatibility_flags = [ "nodejs_compat" ]# Set this to today's datecompatibility_date = "2026-06-23"
 [[hyperdrive]]binding = "HYPERDRIVE"id = "<your-hyperdrive-id-here>"
 ```
 

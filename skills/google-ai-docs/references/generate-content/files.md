@@ -1,5 +1,5 @@
 > [!NOTE]
-> **Note:** This version of the page covers the **generateContent API** . You can use the toggle on this page to switch to the [Interactions API version of this page](https://ai.google.dev/gemini-api/docs/files).
+> **Note:** This version of the page covers the previous **generateContent API** . We recommend using the new [Interactions API](https://ai.google.dev/gemini-api/docs/interactions-overview) for access to all the latest features and models. You can use the toggle on this page to switch to the [Interactions API version of this page](https://ai.google.dev/gemini-api/docs/files).
 
 Gemini can handle various types of input data, including text, images, and
 audio, at the same time.

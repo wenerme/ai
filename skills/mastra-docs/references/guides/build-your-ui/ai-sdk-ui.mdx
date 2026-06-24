@@ -89,7 +89,7 @@ You can use [`chatRoute()`](/reference/ai-sdk/chat-route), [`workflowRoute()`](/
 
     When a workflow step pipes an agent's stream to the workflow writer (e.g., `await response.fullStream.pipeTo(writer)`), the agent's text chunks and tool calls are forwarded to the UI stream in real time, even when the agent runs inside workflow steps.
 
-    See [Workflow Streaming](/docs/streaming/workflow-streaming) for more details.
+    See [Workflow Streaming](/docs/workflows/overview#inspecting-workflow-stream-payloads) for more details.
 
     :::
   
@@ -667,7 +667,7 @@ When using `workflowRoute()` or `handleWorkflowStream()`, Mastra emits `data-wor
     ```
   
 
-For more details on workflow streaming, see [Workflow Streaming](/docs/streaming/workflow-streaming).
+For more details on workflow streaming, see [Workflow Streaming](/docs/workflows/overview#inspecting-workflow-stream-payloads).
 
 ### Rendering network data
 
@@ -896,7 +896,7 @@ Custom event types must start with `data-` to be recognized as data parts.
 
 ### Tool streaming
 
-Tools can also stream data using `context.writer.write()` for lower-level control, or pipe an agent's stream directly to the tool's writer. For more details, see [Tool Streaming](/docs/streaming/tool-streaming).
+Tools can also stream data using `context.writer.write()` for lower-level control, or pipe an agent's stream directly to the tool's writer. For more details, see [Tool Streaming](/docs/agents/using-tools#streaming).
 
 ### Examples
 

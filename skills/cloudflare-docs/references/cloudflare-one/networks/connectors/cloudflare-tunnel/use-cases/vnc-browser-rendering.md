@@ -153,8 +153,9 @@ sudo vim /etc/systemd/system/vncserver@.service
 ## 2\. Connect the server to Cloudflare
 
 1. Create a Cloudflare Tunnel by following the [dashboard setup guide](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/).
-2. Go to **Networks** \> **Connectors**. Select your tunnel and select **Edit**.
-3. Select the **Published application routes** tab, then select **Add a published application route**.
+2. Go to **Networking** \> **Tunnels**, then select your tunnel.  
+[ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
+3. On the **Routes** tab, select **Add route**, then select **Published application**.
 4. Choose a domain from the drop-down menu and specify any subdomain (for example, `vnc.example.com`).
 5. For **Service**, select _TCP_ and enter `localhost:<5901>`. If the VNC server is on a different machine from where you installed the tunnel, enter `<SERVER_IP>:5901`.  
 Replace `5901` with your VNC server's listening port. To determine your VNC listening port, run `sudo ss -lnpt` and look for `vnc` in the list of processes.
@@ -189,6 +190,6 @@ To connect to the VNC server:
 You should see the remote VNC server desktop rendered in your browser. All connections are secured through Cloudflare's network, and access is controlled by your Access policies.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/vnc-browser-rendering/#page","headline":"Render a VNC client in the browser · Cloudflare One docs","description":"Render a VNC client in the browser in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/vnc-browser-rendering/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GCP","Linux"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/vnc-browser-rendering/#page","headline":"Render a VNC client in the browser · Cloudflare One docs","description":"Render a VNC client in the browser in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/vnc-browser-rendering/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GCP","Linux"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/vnc-browser-rendering/","name":"Render a VNC client in the browser"}}]}
 ```

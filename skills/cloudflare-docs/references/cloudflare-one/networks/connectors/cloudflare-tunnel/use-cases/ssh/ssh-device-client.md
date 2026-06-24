@@ -67,15 +67,13 @@ In order to be able to establish an SSH connection, do not enable [OS Login ↗]
 
 This section covers how to create a new Cloudflare Tunnel for your SSH server. You can reuse the same tunnel for all services on a private network that are reachable from the `cloudflared` host.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
+1. Log in to the Cloudflare dashboard and go to **Networking** \> **Tunnels**.  
+[ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Select **Create a tunnel**.
-3. Choose **Cloudflared** for the connector type and select **Next**.
-4. Enter a name for your tunnel. We suggest choosing a name that reflects the type of resources you want to connect through this tunnel (for example, `enterprise-VPC-01`).
-5. Select **Save tunnel**.
-6. Next, you will need to install `cloudflared` and run it. To do so, check that the environment under **Choose an environment** reflects the operating system on your machine, then copy the command in the box below and paste it into a terminal window. Run the command.
-7. Once the command has finished running, your connector will appear in Cloudflare One.  
-![Connector appearing in the UI after cloudflared has run](https://developers.cloudflare.com/_astro/connector.BnVS4T_M_ZxLFu6.webp)
-8. Select **Next**.
+3. Enter a name for your tunnel. We suggest choosing a name that reflects the type of resources you want to connect through this tunnel (for example, `enterprise-VPC-01`).
+4. Select **Create Tunnel**.
+5. Choose your operating system, then copy the installation command and run it in a terminal on your origin server.
+6. Wait for the tunnel to connect. Once the connection is established, select **Continue**.
 
 ## 3\. Use hostname routes
 
@@ -97,8 +95,9 @@ If you do not have a private DNS resolver configured or would rather SSH to an I
 
 To add a hostname route to your tunnel:
 
-1. In your tunnel configuration, go to the **Hostname routes** tab.
-2. Enter the hostname of your SSH server (for example, `ssh.internal.local`).  
+1. Go to **Networking** \> **Tunnels** and select your tunnel.
+2. On the **Routes** tab, select **Add route**, then select **Private hostname**.
+3. Enter the hostname of your SSH server (for example, `ssh.internal.local`).  
 Hostname format restrictions
 
   * **Character limit:** Must be less than 255 characters.
@@ -109,7 +108,7 @@ Hostname format restrictions
     * Multiple wildcards in the hostname, such as `*.*.internal.local`.
   * **Wildcard trimming**: Leading wildcards (`*`) are trimmed off and an implicit dot (`.`) is assumed. For example, `*.internal.local` is saved as `internal.local` but will match all subdomains at the wildcard level (covers `foo.internal.local` but not `foo.bar.internal.local`).
   * **Dot trimming:** Leading and ending dots (`.`) are allowed but trimmed off.
-3. Select **Complete setup**.
+4. Select **Save**.
 
 ### 3.2 Configure DNS resolution
 
@@ -145,7 +144,8 @@ If you need `cloudflared` to use a specific internal DNS server that is differen
 
 1. To create an IP/CIDR route for the DNS server:
 
-  1. Go to **Networks** \> **Routes** \> **CIDR**.
+  1. Go to **Networking** \> **Routes**.  
+  [ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
   2. Select **Add CIDR route**.
   3. Enter the private IP address of your internal DNS resolver.
   4. Select the Cloudflare Tunnel that connects to the network where this DNS server resides.
@@ -198,8 +198,8 @@ By default, WARP excludes traffic bound for [RFC 1918 space ↗](https://datatra
 1. First, check whether your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode) is set to **Exclude** or **Include** mode.
 2. Edit your Split Tunnel routes depending on the mode:
 
-  * [ Exclude IPs and domains ](#tab-panel-7392)
-  * [ Include IPs and domains ](#tab-panel-7393)  
+  * [ Exclude IPs and domains ](#tab-panel-7394)
+  * [ Include IPs and domains ](#tab-panel-7395)  
 If you are using **Exclude** mode:  
 a. [Delete the route](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#remove-a-route) containing your private network's IP/CIDR range. For example, if your network uses the default AWS range of `172.31.0.0/16`, delete `172.16.0.0/12`.  
 b. [Re-add IP/CIDR ranges](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#add-a-route) that are not explicitly used by your private network. For the AWS example above, you would add new entries for `172.16.0.0/13`, `172.24.0.0/14`, `172.28.0.0/15`, and `172.30.0.0/16`. This ensures that only traffic to `172.31.0.0/16` routes through the Cloudflare One Client.  
@@ -222,8 +222,8 @@ If you are using **Include** mode:
 
 By default, all devices enrolled in your organization can SSH to the server unless you build Gateway network policies to allow or block specific users. You can create policies based on user identity, device posture, location, and other criteria.
 
-* [ Dashboard ](#tab-panel-7390)
-* [ Terraform (v5) ](#tab-panel-7391)
+* [ Dashboard ](#tab-panel-7392)
+* [ Terraform (v5) ](#tab-panel-7393)
 
 1. Go to **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Allow Secure Web Gateway to proxy traffic**.
@@ -324,6 +324,6 @@ ssh -v <username>@ssh.internal.local
 Look for a line showing connection to an IP in the `100.64.0.0/10` range. If the request fails, confirm that the initial resolved IP [routes through the WARP tunnel](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/). You can also check your [tunnel logs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/logs/) to confirm that requests are routing to the server's private IP.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-device-client/#page","headline":"Connect with self-managed SSH keys · Cloudflare One docs","description":"Connect with self-managed SSH keys in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-device-client/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSH"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-device-client/#page","headline":"Connect with self-managed SSH keys · Cloudflare One docs","description":"Connect with self-managed SSH keys in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-device-client/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSH"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/","name":"SSH"}},{"@type":"ListItem","position":8,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-device-client/","name":"Connect with self-managed SSH keys"}}]}
 ```

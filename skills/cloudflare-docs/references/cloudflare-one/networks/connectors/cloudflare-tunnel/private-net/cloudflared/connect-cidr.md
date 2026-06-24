@@ -18,12 +18,15 @@ This guide covers how to enable secure remote access to private IP addresses usi
 
 To connect your infrastructure with Cloudflare Tunnel:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
+1. In the Cloudflare dashboard, go to **Networking** \> **Tunnels**.  
+[ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. [Create a new tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/) or edit an existing `cloudflared` tunnel.
-1. In the **CIDR** tab for the tunnel, enter the IP/CIDR range that you wish to route through the tunnel (for example, `10.0.0.1` or `10.0.0.0/8`).
-2. (Optional) Under **Additional settings**, select a [virtual network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) for this tunnel route. This step is only needed if the route's IP/CIDR range overlaps with another route in your account. If you do not select a virtual network, the IP route will be assigned to the `default` network.  
-Note  
-To create a new virtual network, select **Manage virtual networks**.
+1. In the Cloudflare dashboard, go to **Networking** \> **Routes**.  
+[ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+2. Select **Create route** \> **Tunnel CIDR**.
+3. Select the tunnel you just created, then enter the IP/CIDR range that you wish to route through the tunnel (for example, `10.0.0.1` or `10.0.0.0/8`).
+4. (Optional) Select a [virtual network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) for this tunnel route. This step is only needed if the route's IP/CIDR range overlaps with another route in your account. If you do not select a virtual network, the IP route will be assigned to the `default` network.
+5. Select **Create route**.
 
 ## 2\. Set up the client
 

@@ -1,3 +1,5 @@
+# Long context
+
 Many Gemini models come with large context windows of 1 million or more tokens.
 Historically, large language models (LLMs) were significantly limited by
 the amount of text (or tokens) that could be passed to the model at one time.

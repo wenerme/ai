@@ -78,11 +78,12 @@ A bucket website endpoint will be available at `http://<your-S3-bucket01>.s3-web
 
 ### 4\. Add a published application to the Cloudflare Tunnel
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
-2. Select your Tunnel, then select **Configure**.
-3. Go to **Published applications**, then select **Add a public hostname**.
+1. In the Cloudflare dashboard, go to **Networking** \> **Tunnels**.  
+[ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
+2. Select your tunnel, then go to the **Routes** tab.
+3. Select **Add route**, then select **Published application**.
 4. Enter a subdomain your organization will use to access the S3 bucket. For example, `s3-bucket.<your-domain>.com`.
-5. Under **Service**, choose _HTTP_ for **Type**. In **URL**, enter `<your-S3-bucket01>.s3-website.<aws-region>.amazonaws.com`.
+5. In **Service URL**, enter `http://<your-S3-bucket01>.s3-website.<aws-region>.amazonaws.com`.
 6. In **Additional application settings** \> **HTTP Settings**, input the **HTTP Host Header** as `<your-S3-bucket01>.s3-website.<aws-region>.amazonaws.com`.
 7. Select **Save hostname**.
 
@@ -144,7 +145,7 @@ A bucket website endpoint will be available at `http://<your-S3-bucket02>.s3-web
 
 ### 3\. Setup a dedicated egress IP policy
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Egress policies**. Select **Add a policy**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Egress policies**. Select **Add a policy**.
 2. Create a policy that specifies which proxied traffic Gateway should assign a [dedicated egress IP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/) to. For more information, refer to [Egress policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/).
 3. In **Select an egress IP**, choose _Use dedicated Cloudflare egress IPs_. Select the dedicated egress IP defined in your bucket policy.
 4. Select **Create policy**.
@@ -152,6 +153,6 @@ A bucket website endpoint will be available at `http://<your-S3-bucket02>.s3-web
 Traffic proxied by Gateway and assigned your specified egress IP can access your S3 bucket at `http://<your-S3-bucket02>.s3-website.<aws-region>.amazonaws.com`.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/s3-buckets/#page","headline":"Protect access to Amazon S3 buckets with Cloudflare Zero Trust · Cloudflare One docs","description":"This tutorial demonstrates how to secure access to Amazon S3 buckets with Cloudflare Zero Trust so that data in these buckets is not publicly exposed on the Internet.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/s3-buckets/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["S3"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/s3-buckets/#page","headline":"Protect access to Amazon S3 buckets with Cloudflare Zero Trust · Cloudflare One docs","description":"This tutorial demonstrates how to secure access to Amazon S3 buckets with Cloudflare Zero Trust so that data in these buckets is not publicly exposed on the Internet.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/s3-buckets/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["S3"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/tutorials/s3-buckets/","name":"Protect access to Amazon S3 buckets with Cloudflare Zero Trust"}}]}
 ```

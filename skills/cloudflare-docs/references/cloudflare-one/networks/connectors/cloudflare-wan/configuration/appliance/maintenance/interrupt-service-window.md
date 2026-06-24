@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 The Interrupt window defines when Cloudflare One Appliance (formerly Magic WAN Connector) can update its systems. When Cloudflare One Appliance is updating, this may result in an interruption to existing connections. Set up a time window that minimizes disruption to your sites.
 
-1. Log in to [Cloudflare One](https://one.dash.cloudflare.com/), and go to **Networks** \> **Connectors**.
+1. Log in to the [Cloudflare dashboard](https://dash.cloudflare.com/), and go to **Networking** \> **Connectors**.
 2. In **Appliances** \> **Appliances**, select the Cloudflare One Appliance for which you want to set up the update window > **Edit**.
 1. In **Interrupt window**, select the most appropriate time for the Cloudflare One Appliance to update its systems:  
   * **Timezone**: Select the time zone for the Cloudflare One Appliance to update.

@@ -18,9 +18,12 @@ Furthermore, Access for Infrastructure replaces traditional SSH keys with short-
 
 ## 1\. Connect the server to Cloudflare
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
+1. In the Cloudflare dashboard, go to **Networking** \> **Tunnels**.  
+[ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. [Create a new tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/) or edit an existing `cloudflared` tunnel.
-1. In the **CIDR** tab for the tunnel, enter the IP or CIDR address of your server. Typically this would be a private IP, but public IPs are also allowed.
+1. In the Cloudflare dashboard, go to **Networking** \> **Routes**.  
+[ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+2. Select **Create route** \> **Tunnel CIDR**. Select the tunnel you just created, enter the IP or CIDR address of your server (typically a private IP, but public IPs are also allowed), and select **Create route**.
 
 ## 2\. Set up the client
 
@@ -37,8 +40,8 @@ By default, WARP excludes traffic bound for [RFC 1918 space ↗](https://datatra
 1. First, check whether your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode) is set to **Exclude** or **Include** mode.
 2. Edit your Split Tunnel routes depending on the mode:
 
-  * [ Exclude IPs and domains ](#tab-panel-7408)
-  * [ Include IPs and domains ](#tab-panel-7409)  
+  * [ Exclude IPs and domains ](#tab-panel-7410)
+  * [ Include IPs and domains ](#tab-panel-7411)  
 If you are using **Exclude** mode:  
 a. [Delete the route](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#remove-a-route) containing your SSH server's IP/CIDR range. For example, if your network uses the default AWS range of `172.31.0.0/16`, delete `172.16.0.0/12`.  
 b. [Re-add IP/CIDR ranges](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#add-a-route) that are not explicitly used by your SSH server. For the AWS example above, you would add new entries for `172.16.0.0/13`, `172.24.0.0/14`, `172.28.0.0/15`, and `172.30.0.0/16`. This ensures that only traffic to `172.31.0.0/16` routes through the Cloudflare One Client.  
@@ -63,9 +66,9 @@ A target represents a single resource in your infrastructure (such as a server, 
 
 Targets are protocol-agnostic, meaning that you do not need to define a new target for each protocol that runs on the server. To create a new target: 
 
-* [ Dashboard ](#tab-panel-7400)
-* [ API ](#tab-panel-7401)
-* [ Terraform ](#tab-panel-7402)
+* [ Dashboard ](#tab-panel-7402)
+* [ API ](#tab-panel-7403)
+* [ Terraform ](#tab-panel-7404)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Targets**.
 2. Select **Add a target**.
@@ -80,7 +83,7 @@ Hostname format restrictions
 
 Note
 
-If the target IP does not appear in the dropdown, go to **Networks** \> **Routes** and confirm that the IP routes through Cloudflare Tunnel.
+If the target IP does not appear in the dropdown, go to **Networking** \> **Routes** and confirm that the IP routes through Cloudflare Tunnel.
 
 1. In the dropdown menu, select the IP address and [virtual network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) where the resource is located. This IP address and virtual network pairing is now assigned to this target and cannot be reused in another target by design.
 2. Select **Add target**.
@@ -109,9 +112,9 @@ Next, create an Access application to secure the target.
 
 ## 5\. Add an infrastructure application
 
-* [ Dashboard ](#tab-panel-7403)
-* [ API ](#tab-panel-7404)
-* [ Terraform (v4) ](#tab-panel-7405)
+* [ Dashboard ](#tab-panel-7405)
+* [ API ](#tab-panel-7406)
+* [ Terraform (v4) ](#tab-panel-7407)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select **Create new application**.
@@ -206,8 +209,8 @@ Other short-lived CAs, such as those used to [secure SSH servers behind Cloudfla
 
 To generate a Cloudflare SSH CA and get its public key:
 
-* [ Dashboard ](#tab-panel-7406)
-* [ API ](#tab-panel-7407)
+* [ Dashboard ](#tab-panel-7408)
+* [ API ](#tab-panel-7409)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Service credentials** \> **SSH**.
 2. Select **Add a certificate**.
@@ -304,8 +307,8 @@ chmod 600 /etc/ssh/ca.pub
 
 Once you have modified your `sshd` configuration, reload the SSH service on the remote machine for the changes to take effect.
 
-* [ Debian/Ubuntu ](#tab-panel-7394)
-* [ CentOS/RHEL ](#tab-panel-7395)
+* [ Debian/Ubuntu ](#tab-panel-7396)
+* [ CentOS/RHEL ](#tab-panel-7397)
 
 For Debian/Ubuntu:
 
@@ -368,8 +371,8 @@ All proxied SSH commands are immediately encrypted using this public key. The ma
 
 To turn off SSH command logging, delete your uploaded public key:
 
-* [ Dashboard ](#tab-panel-7398)
-* [ API ](#tab-panel-7399)
+* [ Dashboard ](#tab-panel-7400)
+* [ API ](#tab-panel-7401)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings** \> **SSH log encryption public key**.
 2. Select **Remove**.
@@ -493,19 +496,19 @@ If the end user cannot connect to the target, the tunnel you set up in [step 1: 
 
 To check the status of your tunnel:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Networks** \> **Routes**.
-2. Search your IP to find the tunnel associated with the IP.  
+1. In the Cloudflare dashboard, go to **Networking** \> **Routes**.  
+[ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+2. Search your IP to find the route and its associated tunnel.  
 This IP will be visible in the `warp-cli target list` output in [the previous step](#1-review-access-policies). If you are an admin, you can also go to **Networks** \> **Targets** and find the IP next to your Hostname.
-3. Copy the tunnel name.
-4. Go to **Networks** \> **Connectors** \> **Cloudflare Tunnels** and search by your tunnel name.
-5. Review that the [Tunnel status](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/notifications/#available-notifications) says `Active`, and not `Down`, `Degraded`, or `Inactive`.
+3. Select the tunnel name in the **Connector** column to open the tunnel detail page.
+4. Review that the [Tunnel status](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/notifications/#available-notifications) says `Active`, and not `Down`, `Degraded`, or `Inactive`.
 
-| Status       | Meaning                                                                                                                                                                                                                                                                                                                                                               | Recommended Action                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Healthy**  | The tunnel is active and serving traffic through four connections to the Cloudflare global network.                                                                                                                                                                                                                                                                   | No action is required. Your tunnel is running correctly.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| **Inactive** | The tunnel has been created (via the API or dashboard) but the cloudflared connector has never been run to establish a connection.                                                                                                                                                                                                                                    | Run the tunnel as a service (recommended) or use the cloudflared tunnel run command on your origin server to connect the tunnel to Cloudflare. Refer to [substep 6 of step 1 in the Create a Tunnel dashboard guide](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/#1-create-a-tunnel) or step 4 in the [Create a Tunnel API guide](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel-api/#4-install-and-run-the-tunnel). |
-| **Down**     | The tunnel was previously connected but is currently disconnected because the cloudflared process has stopped.                                                                                                                                                                                                                                                        | 1\. Ensure the cloudflared [service](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/as-a-service/) or process is actively running on your server.  2\. Check for server-side issues, such as the machine being powered off, an application crash, or recent network changes.                                                                                                                                                                                                                |
-| **Degraded** | The cloudflared connector is running and the tunnel is serving traffic, but at least one individual connection has failed. Further degradation in [tunnel availability](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/) could risk the tunnel going down and failing to serve traffic. | 1\. Review your cloudflared [logs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/logs/) for connection failures or error messages.  2\. Investigate local network and firewall rules to ensure they are not blocking connections to the [Cloudflare Tunnel IPs and ports](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-with-firewall/).                                                                                                       |
+| Status       | Meaning                                                                                                                                                                                                                                                                                                                                                               | Recommended Action                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Healthy**  | The tunnel is active and serving traffic through four connections to the Cloudflare global network.                                                                                                                                                                                                                                                                   | No action is required. Your tunnel is running correctly.                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| **Inactive** | The tunnel has been created (via the API or dashboard) but the cloudflared connector has never been run to establish a connection.                                                                                                                                                                                                                                    | Install and run cloudflared on your origin server to connect the tunnel to Cloudflare. You can find the installation command in the Cloudflare dashboard under **Networking** \> **Tunnels** — select your tunnel, then on the **Overview** tab select **Add a replica**. For API-based setup, refer to [Install and run the tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel-api/#4-install-and-run-the-tunnel). |
+| **Down**     | The tunnel was previously connected but is currently disconnected because the cloudflared process has stopped.                                                                                                                                                                                                                                                        | 1\. Ensure the cloudflared [service](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/as-a-service/) or process is actively running on your server.  2\. Check for server-side issues, such as the machine being powered off, an application crash, or recent network changes.                                                                                                                                       |
+| **Degraded** | The cloudflared connector is running and the tunnel is serving traffic, but at least one individual connection has failed. Further degradation in [tunnel availability](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/) could risk the tunnel going down and failing to serve traffic. | 1\. Review your cloudflared [logs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/logs/) for connection failures or error messages.  2\. Investigate local network and firewall rules to ensure they are not blocking connections to the [Cloudflare Tunnel IPs and ports](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-with-firewall/).                              |
 
 For detailed steps on troubleshooting, refer to the [Troubleshooting Tunnel documentation](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/). Review the [Tunnel with Firewall documentation](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-with-firewall/#test-connectivity) to ensure your network is correctly configured to allow `cloudflared` connections.
 
@@ -589,8 +592,8 @@ Do not restart
 Restarting your `sshd` service will result in the termination of your current SSH connection. Make sure to reload instead of restarting to avoid terminating all currently open SSH sessions.  
 Once you have modified your `sshd` configuration, reload the SSH service on the remote machine for the changes to take effect.
 
-  * [ Debian/Ubuntu ](#tab-panel-7396)
-  * [ CentOS/RHEL ](#tab-panel-7397)  
+  * [ Debian/Ubuntu ](#tab-panel-7398)
+  * [ CentOS/RHEL ](#tab-panel-7399)  
 For Debian/Ubuntu:  
 Terminal window  
 ```  
@@ -629,6 +632,6 @@ The `sshd` logs (captured with LogLevel DEBUG3) are attached and show the connec
 The `sshd_config` file and `ssh -vvv alice@10.116.0.3` output are attached. The tunnel status is Healthy in the Cloudflare dashboard, and Access authentication logs show a successful `Access granted` decision.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/#page","headline":"SSH with Access for Infrastructure · Cloudflare One docs","description":"SSH with Access for Infrastructure in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSH"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/#page","headline":"SSH with Access for Infrastructure · Cloudflare One docs","description":"SSH with Access for Infrastructure in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSH"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/","name":"SSH"}},{"@type":"ListItem","position":8,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/","name":"SSH with Access for Infrastructure"}}]}
 ```

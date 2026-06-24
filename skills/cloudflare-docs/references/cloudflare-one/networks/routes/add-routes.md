@@ -70,19 +70,14 @@ Before you publish an application, ensure you have:
 
 To add a published application route to an existing tunnel:
 
-1. In the Cloudflare dashboard, go to **Networking** \> **Tunnels**.  
+1. In the Cloudflare dashboard, go to **Networking** \> **Tunnels**, then select your tunnel.  
 [ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
-2. Select your tunnel and select **Edit**.
-3. Go to the **Published application routes** tab and select **Add a published application route**.
-4. Enter a subdomain and select a **Domain** from the drop-down menu. Specify any subdomain or path information.  
+2. On the **Routes** tab, select **Add route**, then select **Published application**.
+3. Enter a subdomain and select a **Domain** from the drop-down menu. Specify any subdomain or path information.  
 Note  
 If you add a multi-level subdomain (more than one level of subdomain), you must [order an Advanced Certificate for the hostname](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/common-errors/#i-see-this-site-cant-provide-a-secure-connection).
-5. Under **Service**, choose a [service type](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/protocols/) and specify its URL. For example:
-
-  * **Type**: _HTTP_
-  * **URL**: `localhost:8000`
-6. Under **Additional application settings**, specify any [parameters](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/origin-parameters/) you would like to add to your tunnel configuration.
-7. Select **Save**.
+4. In **Service URL**, enter the protocol and address of your application (for example, `http://localhost:8000`). Refer to [supported protocols](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/protocols/) for available options.
+5. Select **Save**.
 
 Anyone on the Internet can now access the application at the specified hostname. To allow or block specific users, [create an Access application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/).
 
@@ -91,6 +86,6 @@ Anyone on the Internet can now access the application at the specified hostname.
 WAN routes define the IP network segments (such as `10.0.0.0/24`) that are reachable via a GRE or IPsec tunnel. To add a WAN route, refer to the [WAN Connectors documentation](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-routes/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/routes/add-routes/#page","headline":"Add routes · Cloudflare One docs","description":"Add routes in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/routes/add-routes/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/routes/add-routes/#page","headline":"Add routes · Cloudflare One docs","description":"Add routes in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/routes/add-routes/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/routes/","name":"Routes"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/routes/add-routes/","name":"Add routes"}}]}
 ```

@@ -142,14 +142,47 @@ The `openrouter_metadata` object follows the same shape as on successful respons
 
 ## Provider Errors
 
-If the model provider encounters an error, the `error.metadata` will contain information about the issue. The shape of the metadata is as follows:
+OpenRouter normalizes every upstream provider error into the stable, typed
+`error_type` vocabulary documented under [Typed Error Codes](#typed-error-codes).
+The same `error_type` values describe what went wrong whether the provider
+error arrives in a non-streaming response body or as a mid-stream SSE event.
+Native protocol codes (the Anthropic `error.type`, the Responses `error.code`)
+are best-effort and can differ between formats — `error_type` is the field to
+rely on across all of them.
 
-```typescript
-type ProviderErrorMetadata = {
-  provider_name: string; // The name of the provider that encountered the error
-  raw: unknown; // The raw error from the provider
-};
+For Chat Completions, a provider error that interrupts generation carries
+`error_type` inside `error.metadata`:
+
+```json
+{
+  "error": {
+    "code": 429,
+    "message": "Rate limit exceeded",
+    "metadata": {
+      "error_type": "rate_limit_exceeded",
+      "provider_code": "rate_limited"
+    }
+  }
+}
 ```
+
+The same value is carried on mid-stream errors and on the Anthropic and
+Responses skins — see [Skin-Specific Error Formats](#skin-specific-error-formats)
+for the exact wire location in each format.
+
+### Masking and raw provider details
+
+When a request fails with a `500`, the `message` is replaced with a generic
+string and `provider_code` and `openrouter_metadata` are omitted, but
+`error_type` is still present (`server`).
+
+For non-500 errors, the upstream provider's own error code is surfaced in
+`error.metadata.provider_code` when available. Opt-in routing context (which
+provider was selected, fallback attempts, etc.) is carried in the
+`openrouter_metadata` object when the request sets `X-OpenRouter-Metadata`
+— it follows the same shape as on successful responses (routing-summary
+fields only; see
+[Pipeline Stages](/docs/features/router-metadata#pipeline-stages)).
 
 ## When No Content is Generated
 
@@ -235,7 +268,23 @@ Key characteristics:
 
 ## Typed Error Codes
 
-Every mid-stream error carries an `error_type` string in its metadata. Use this value — not the HTTP status code alone — to programmatically distinguish error categories.
+When a provider error reaches your application, OpenRouter tags it with a
+canonical `error_type` string — both on the non-streaming response body and
+on mid-stream SSE events. Use this value, not the HTTP status code alone, to
+programmatically distinguish error categories. It is stable across all three
+API skins even when the native protocol code is lossy.
+
+Where `error_type` appears depends on the skin and path:
+
+* **Chat Completions**: `error.metadata.error_type` — on the mid-stream error
+  chunk (see [Mid-Stream Errors](#mid-stream-errors)) and on the non-streaming
+  response when a provider error interrupts generation.
+* **Anthropic Messages**: `error.error_type` on the SSE `error` event and the
+  non-streaming error envelope.
+* **Responses**: top-level `error_type` on the failed response, for both the
+  streaming `response.failed` event and the non-streaming JSON body.
+
+The HTTP status each `error_type` maps to is listed in the tables below.
 
 ### Token and Length Limits
 
@@ -301,13 +350,13 @@ Every mid-stream error carries an `error_type` string in its metadata. Use this 
 
 ## Skin-Specific Error Formats
 
-OpenRouter exposes three API skins. Each translates the same internal error types into its own wire format.
+OpenRouter exposes three API skins. Each translates the same internal provider error types into its own wire format, for non-streaming responses and in-stream errors alike. In every case `error_type` is the stable field; the wire location differs per skin.
 
 ### Chat Completions (`/api/v1/chat/completions`)
 
-Mid-stream errors appear as a `chat.completion.chunk` with a top-level `error` object (shape shown [above](#mid-stream-errors)). The `error.metadata.error_type` field carries the typed code from the table.
+Mid-stream errors appear as a `chat.completion.chunk` with a top-level `error` object (shape shown [above](#mid-stream-errors)). The `error.metadata.error_type` field carries the typed code.
 
-For non-streaming requests where some content was already generated, the error is embedded in the final response alongside the partial content:
+For non-streaming requests where a provider error occurs, the error is embedded in the final response alongside any partial content:
 
 ```json
 {
@@ -325,7 +374,7 @@ For non-streaming requests where some content was already generated, the error i
 
 ### Responses API (`/api/v1/responses`)
 
-The Responses API maps internal error types to the OpenAI Responses error code set. The mapping is narrower — many distinct internal types collapse to `server_error`:
+The Responses API maps internal error types to the OpenAI Responses error code set. The mapping is narrower — many distinct internal types collapse to `server_error` — so the precise reason is preserved in a top-level `error_type` field on the response, outside the native `error` object:
 
 | Internal `error_type`                                                                | Responses API `code`             |
 | ------------------------------------------------------------------------------------ | -------------------------------- |
@@ -335,7 +384,18 @@ The Responses API maps internal error types to the OpenAI Responses error code s
 | `authentication`, `provider_overloaded`, `provider_unavailable`, `timeout`, `server` | `server_error`                   |
 | All others (including `invalid_prompt`)                                              | `server_error`                   |
 
-Errors surface as one of three SSE event types:
+Both the streaming terminal event and the non-streaming JSON body carry the canonical `error_type` at the top level of the response object. For example, an authentication failure collapses to the native `server_error` code but keeps `error_type: "authentication"`:
+
+```json
+{
+  "id": "resp_abc123",
+  "status": "failed",
+  "error": { "code": "server_error", "message": "Invalid credentials" },
+  "error_type": "authentication"
+}
+```
+
+Streaming errors surface as one of three SSE event types, each wrapping the same response object:
 
 1. **`response.failed`** — terminal event when the response could not complete:
    ```json
@@ -344,7 +404,8 @@ Errors surface as one of three SSE event types:
      "response": {
        "id": "resp_abc123",
        "status": "failed",
-       "error": { "code": "server_error", "message": "Internal server error" }
+       "error": { "code": "server_error", "message": "Internal server error" },
+       "error_type": "server"
      }
    }
    ```
@@ -391,12 +452,31 @@ The Anthropic Messages skin maps internal types to Anthropic-native error type s
 | `provider_unavailable`, `timeout`, `server`                              | `api_error`             |
 | All others                                                               | `api_error`             |
 
-Mid-stream errors are emitted as an SSE `error` event:
+Because the native `error.type` is lossy (many internal types collapse to `api_error`), the canonical `error_type` is added inside the `error` object alongside it. This holds for both the non-streaming error envelope and mid-stream SSE `error` events.
+
+Non-streaming error envelope:
 
 ```json
 {
   "type": "error",
-  "error": { "type": "overloaded_error", "message": "Provider is temporarily overloaded" }
+  "error": {
+    "type": "authentication_error",
+    "message": "Invalid credentials",
+    "error_type": "authentication"
+  }
+}
+```
+
+Mid-stream errors are emitted as an SSE `error` event with the same shape:
+
+```json
+{
+  "type": "error",
+  "error": {
+    "type": "overloaded_error",
+    "message": "Provider is temporarily overloaded",
+    "error_type": "provider_overloaded"
+  }
 }
 ```
 

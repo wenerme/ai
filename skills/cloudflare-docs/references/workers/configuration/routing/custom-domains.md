@@ -56,8 +56,8 @@ After you have added the domain or subdomain, Cloudflare will create a new DNS r
 
 To configure a Custom Domain in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), add the `custom_domain=true` option on each pattern under `routes`. For example, to configure a Custom Domain:
 
-* [  wrangler.jsonc ](#tab-panel-11494)
-* [  wrangler.toml ](#tab-panel-11495)
+* [  wrangler.jsonc ](#tab-panel-11547)
+* [  wrangler.toml ](#tab-panel-11548)
 
 JSONC
 
@@ -73,8 +73,8 @@ TOML
 
 To configure multiple Custom Domains:
 
-* [  wrangler.jsonc ](#tab-panel-11498)
-* [  wrangler.toml ](#tab-panel-11499)
+* [  wrangler.jsonc ](#tab-panel-11551)
+* [  wrangler.toml ](#tab-panel-11552)
 
 JSONC
 
@@ -139,6 +139,10 @@ Creating a Custom Domain will also generate an [Advanced Certificate](https://de
 
 These certificates are generated with default settings. To override these settings, delete the generated certificate and create your own certificate in the Cloudflare dashboard. Refer to [Manage advanced certificates](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/) for instructions.
 
+Warning
+
+When you delete a Custom Domain, the associated Advanced Certificate is **not** automatically deleted. You must manually remove the certificate from the Cloudflare dashboard under **SSL/TLS** \> **Edge Certificates**, or via the [API](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate%5Fpacks/methods/delete/). Leaving unused certificates in place does not affect functionality but may cause confusion when auditing your certificate inventory.
+
 ## Redirect between www and root domain
 
 Because Custom Domains require an exact hostname match, a Worker attached to `example.com` will not receive requests sent to `www.example.com`, and vice versa. To make both versions of your domain work, set up a redirect rule:
@@ -180,8 +184,8 @@ To migrate the route `example.com/*` in your [Wrangler configuration file](https
 2. Delete the CNAME record for `example.com`.
 3. Add the following to your Wrangler file:
 
-  * [  wrangler.jsonc ](#tab-panel-11496)
-  * [  wrangler.toml ](#tab-panel-11497)  
+  * [  wrangler.jsonc ](#tab-panel-11549)
+  * [  wrangler.toml ](#tab-panel-11550)  
 JSONC  
 ```  
 {  "routes": [    {      "pattern": "example.com",      "custom_domain": true    }  ]}  
@@ -193,6 +197,6 @@ TOML
 4. Run `npx wrangler deploy` to create the Custom Domain your Worker will run on.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/routing/custom-domains/#page","headline":"Custom Domains · Cloudflare Workers docs","description":"Connect a Cloudflare Worker to a domain or subdomain with automatic DNS and certificate management.","url":"https://developers.cloudflare.com/workers/configuration/routing/custom-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/routing/custom-domains/#page","headline":"Custom Domains · Cloudflare Workers docs","description":"Connect a Cloudflare Worker to a domain or subdomain with automatic DNS and certificate management.","url":"https://developers.cloudflare.com/workers/configuration/routing/custom-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/routing/","name":"Routes and domains"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/configuration/routing/custom-domains/","name":"Custom Domains"}}]}
 ```

@@ -19,9 +19,9 @@
   },
   "agent-view.md": {
     "url": "https://code.claude.com/docs/en/agent-view",
-    "lastModified": "Tue, 16 Jun 2026 00:38:38 GMT",
-    "size": 56689,
-    "updatedAt": "2026-06-16T00:38:38.959Z"
+    "lastModified": "Wed, 24 Jun 2026 00:25:53 GMT",
+    "size": 60818,
+    "updatedAt": "2026-06-24T00:25:53.989Z"
   },
   "agents.md": {
     "url": "https://code.claude.com/docs/en/agents",
@@ -73,9 +73,9 @@
   },
   "changelog.md": {
     "url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
-    "etag": "W/\"a8d519d88828f93380317b2800cf6c75a68436eae2d3f63ddeef3410acea182f\"",
-    "size": 392042,
-    "updatedAt": "2026-06-23T00:32:04.140Z"
+    "etag": "W/\"48eebff0ab4029a46f8afde3072a4f2ee9551e31f486d9bb2fce855f53e530a2\"",
+    "size": 394647,
+    "updatedAt": "2026-06-24T00:27:24.408Z"
   },
   "channels.md": {
     "url": "https://code.claude.com/docs/en/channels",
@@ -103,9 +103,9 @@
   },
   "claude-code-on-the-web.md": {
     "url": "https://code.claude.com/docs/en/claude-code-on-the-web",
-    "lastModified": "Sat, 20 Jun 2026 00:29:53 GMT",
-    "size": 52740,
-    "updatedAt": "2026-06-20T00:29:53.319Z"
+    "lastModified": "Wed, 24 Jun 2026 00:26:06 GMT",
+    "size": 52882,
+    "updatedAt": "2026-06-24T00:26:06.146Z"
   },
   "claude-directory.md": {
     "url": "https://code.claude.com/docs/en/claude-directory",
@@ -541,9 +541,9 @@
   },
   "slack.md": {
     "url": "https://code.claude.com/docs/en/slack",
-    "lastModified": "Tue, 14 Apr 2026 06:26:44 GMT",
-    "size": 13530,
-    "updatedAt": "2026-04-14T10:28:45.664Z"
+    "lastModified": "Wed, 24 Jun 2026 00:27:00 GMT",
+    "size": 14712,
+    "updatedAt": "2026-06-24T00:27:00.689Z"
   },
   "statusline.md": {
     "url": "https://code.claude.com/docs/en/statusline",

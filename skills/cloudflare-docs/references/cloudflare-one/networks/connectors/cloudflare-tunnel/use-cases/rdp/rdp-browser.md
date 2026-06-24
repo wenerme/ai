@@ -29,9 +29,12 @@ Browser-based RDP can be used in conjunction with [the Cloudflare One Client](ht
 
 ## 1\. Connect the server to Cloudflare
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
+1. In the Cloudflare dashboard, go to **Networking** \> **Tunnels**.  
+[ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. [Create a new tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/) or edit an existing `cloudflared` tunnel.
-1. In the **CIDR** tab for the tunnel, enter the IP or CIDR address of your server. Typically this would be a private IP, but public IPs are also allowed.
+1. In the Cloudflare dashboard, go to **Networking** \> **Routes**.  
+[ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+2. Select **Create route** \> **Tunnel CIDR**. Select the tunnel you just created, enter the IP or CIDR address of your server (typically a private IP, but public IPs are also allowed), and select **Create route**.
 
 ## 2\. Add a target
 
@@ -39,9 +42,9 @@ A target represents a single resource in your infrastructure (such as a server, 
 
  Create a target for each Windows machine that requires RDP access. To create a new target:
 
-* [ Dashboard ](#tab-panel-7383)
-* [ API ](#tab-panel-7384)
-* [ Terraform ](#tab-panel-7385)
+* [ Dashboard ](#tab-panel-7385)
+* [ API ](#tab-panel-7386)
+* [ Terraform ](#tab-panel-7387)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Targets**.
 2. Select **Add a target**.
@@ -56,7 +59,7 @@ Hostname format restrictions
 
 Note
 
-If the target IP does not appear in the dropdown, go to **Networks** \> **Routes** and confirm that the IP routes through Cloudflare Tunnel.
+If the target IP does not appear in the dropdown, go to **Networking** \> **Routes** and confirm that the IP routes through Cloudflare Tunnel.
 
 1. In the dropdown menu, select the IP address and [virtual network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) where the resource is located. This IP address and virtual network pairing is now assigned to this target and cannot be reused in another target by design.
 2. Select **Add target**.
@@ -228,9 +231,9 @@ When a user attempts a restricted clipboard action, the clipboard content is rep
 
 ### Configure clipboard controls
 
-* [ Dashboard ](#tab-panel-7380)
-* [ API ](#tab-panel-7381)
-* [ Terraform ](#tab-panel-7382)
+* [ Dashboard ](#tab-panel-7382)
+* [ API ](#tab-panel-7383)
+* [ Terraform ](#tab-panel-7384)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Locate your browser-based RDP application and select **Configure**.

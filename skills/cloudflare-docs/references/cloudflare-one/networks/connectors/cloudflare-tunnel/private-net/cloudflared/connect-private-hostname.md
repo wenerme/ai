@@ -74,8 +74,8 @@ This section covers how to enable remote access to a private hostname applicatio
 
 Before you can connect to private hostnames, you must enable the Gateway proxy.
 
-* [ Dashboard ](#tab-panel-7362)
-* [ Terraform (v5) ](#tab-panel-7363)
+* [ Dashboard ](#tab-panel-7364)
+* [ Terraform (v5) ](#tab-panel-7365)
 
 1. Go to **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Allow Secure Web Gateway to proxy traffic**.
@@ -124,16 +124,15 @@ Cloudflare WAN
 
 ### 1\. Connect the application to Cloudflare
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
+1. Log in to the Cloudflare dashboard and go to **Networking** \> **Tunnels**.  
+[ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Select **Create a tunnel**.
-3. Choose **Cloudflared** for the connector type and select **Next**.
-4. Enter a name for your tunnel. We suggest choosing a name that reflects the type of resources you want to connect through this tunnel (for example, `enterprise-VPC-01`).
-5. Select **Save tunnel**.
-6. Next, you will need to install `cloudflared` and run it. To do so, check that the environment under **Choose an environment** reflects the operating system on your machine, then copy the command in the box below and paste it into a terminal window. Run the command.
-7. Once the command has finished running, your connector will appear in Cloudflare One.  
-![Connector appearing in the UI after cloudflared has run](https://developers.cloudflare.com/_astro/connector.BnVS4T_M_ZxLFu6.webp)
-8. Select **Next**.
-1. In the **Hostname routes** tab, enter the fully qualified domain name (FQDN) that represents your application (for example, `wiki.internal.local`).  
+3. Enter a name for your tunnel. We suggest choosing a name that reflects the type of resources you want to connect through this tunnel (for example, `enterprise-VPC-01`).
+4. Select **Create Tunnel**.
+5. Choose your operating system, then copy the installation command and run it in a terminal on your origin server.
+6. Wait for the tunnel to connect. Once the connection is established, select **Continue**.
+1. After the tunnel is connected, go to the tunnel's **Routes** tab and select **Add route**, then select **Private hostname**.
+2. Enter the fully qualified domain name (FQDN) that represents your application (for example, `wiki.internal.local`).  
 Hostname format restrictions
 
   * **Character limit:** Must be less than 255 characters.
@@ -144,7 +143,7 @@ Hostname format restrictions
     * Multiple wildcards in the hostname, such as `*.*.internal.local`.
   * **Wildcard trimming**: Leading wildcards (`*`) are trimmed off and an implicit dot (`.`) is assumed. For example, `*.internal.local` is saved as `internal.local` but will match all subdomains at the wildcard level (covers `foo.internal.local` but not `foo.bar.internal.local`).
   * **Dot trimming:** Leading and ending dots (`.`) are allowed but trimmed off.
-2. Select **Complete setup**.
+3. Select **Save**.
 
 ### 2\. Configure DNS resolution
 
@@ -162,7 +161,8 @@ If you need `cloudflared` to use a specific internal DNS server that is differen
 
 1. To create an IP/CIDR route for the DNS server:
 
-  1. Go to **Networks** \> **Routes** \> **CIDR**.
+  1. Go to **Networking** \> **Routes**.  
+  [ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
   2. Select **Add CIDR route**.
   3. Enter the private IP address of your internal DNS resolver.
   4. Select the Cloudflare Tunnel that connects to the network where this DNS server resides.
@@ -282,6 +282,6 @@ To avoid this issue, choose one of the following options:
 * **Disable the Chrome feature flag**: Go to `chrome://flags` and set the **Local Network Access Checks** flag to _Disabled_. This approach is suitable for individual users but not for enterprise-wide deployment.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/#page","headline":"Connect a private hostname · Cloudflare One docs","description":"Connect a private hostname in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/#page","headline":"Connect a private hostname · Cloudflare One docs","description":"Connect a private hostname in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/","name":"Private networks"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/","name":"Connect with cloudflared"}},{"@type":"ListItem","position":8,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/","name":"Connect a private hostname"}}]}
 ```

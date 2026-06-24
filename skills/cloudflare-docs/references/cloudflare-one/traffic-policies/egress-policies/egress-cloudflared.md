@@ -93,7 +93,8 @@ Requires `cloudflared` version 2025.7.0 or later.
 
 To route a public hostname through Cloudflare Tunnel:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Networks** \> **Routes** \> **Hostname routes**.
+1. In the Cloudflare dashboard, go to **Networking** \> **Routes**.  
+[ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 2. Select **Create hostname route**.
 3. In **Hostname**, enter the public hostname that represents the application (for example, `app.bank.com`). The hostname should be accessible from the public Internet.
 4. For **Tunnel**, select the Cloudflare Tunnel that is being used to connect the private network to Cloudflare.
@@ -174,6 +175,6 @@ To avoid this issue, choose one of the following options:
 * **Disable the Chrome feature flag**: Go to `chrome://flags` and set the **Local Network Access Checks** flag to _Disabled_. This approach is suitable for individual users but not for enterprise-wide deployment.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/egress-cloudflared/#page","headline":"Egress through Cloudflare Tunnel · Cloudflare One docs","description":"Egress through Cloudflare Tunnel in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/egress-cloudflared/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AWS","Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/egress-cloudflared/#page","headline":"Egress through Cloudflare Tunnel · Cloudflare One docs","description":"Egress through Cloudflare Tunnel in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/egress-cloudflared/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AWS","Private networks"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/egress-policies/","name":"Egress policies"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/traffic-policies/egress-policies/egress-cloudflared/","name":"Egress through Cloudflare Tunnel"}}]}
 ```

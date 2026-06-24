@@ -1,3 +1,5 @@
+# Migrate to the Google GenAI SDK
+
 Starting with the Gemini 2.0 release in late 2024, we introduced a new set of
 libraries called the [Google GenAI SDK](https://ai.google.dev/gemini-api/docs/libraries). It offers
 an improved developer experience through

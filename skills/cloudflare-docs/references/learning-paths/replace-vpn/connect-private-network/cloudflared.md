@@ -18,18 +18,16 @@ Cloudflare Tunnel is an outbound-only daemon service that can run on nearly any 
 
 To connect your private network:
 
-* [ Dashboard ](#tab-panel-9212)
-* [ Terraform (v5) ](#tab-panel-9213)
+* [ Dashboard ](#tab-panel-9260)
+* [ Terraform (v5) ](#tab-panel-9261)
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
+1. Log in to the Cloudflare dashboard and go to **Networking** \> **Tunnels**.  
+[ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Select **Create a tunnel**.
-3. Choose **Cloudflared** for the connector type and select **Next**.
-4. Enter a name for your tunnel. We suggest choosing a name that reflects the type of resources you want to connect through this tunnel (for example, `enterprise-VPC-01`).
-5. Select **Save tunnel**.
-6. Next, you will need to install `cloudflared` and run it. To do so, check that the environment under **Choose an environment** reflects the operating system on your machine, then copy the command in the box below and paste it into a terminal window. Run the command.
-7. Once the command has finished running, your connector will appear in Cloudflare One.  
-![Connector appearing in the UI after cloudflared has run](https://developers.cloudflare.com/_astro/connector.BnVS4T_M_ZxLFu6.webp)
-8. Select **Next**.
+3. Enter a name for your tunnel. We suggest choosing a name that reflects the type of resources you want to connect through this tunnel (for example, `enterprise-VPC-01`).
+4. Select **Create Tunnel**.
+5. Choose your operating system, then copy the installation command and run it in a terminal on your origin server.
+6. Wait for the tunnel to connect. Once the connection is established, select **Continue**.
 1. In the **CIDR** tab, enter the CIDR of your private network (for example, `10.0.0.0/8`).
 2. Select **Save tunnel**.
 
@@ -76,10 +74,10 @@ resource "vault_generic_secret" "tunnel_token" {  path         = "kv/cloudflare/
 ```
 5. Install `cloudflared` on a host machine in your private network and run the tunnel:
 
-  * [ Linux ](#tab-panel-9208)
-  * [ Windows ](#tab-panel-9209)
-  * [ macOS ](#tab-panel-9210)
-  * [ Docker ](#tab-panel-9211)
+  * [ Linux ](#tab-panel-9256)
+  * [ Windows ](#tab-panel-9257)
+  * [ macOS ](#tab-panel-9258)
+  * [ Docker ](#tab-panel-9259)
 
   1. [Download and install ↗](https://pkg.cloudflare.com/index.html) `cloudflared`.
   2. Run the following command:  

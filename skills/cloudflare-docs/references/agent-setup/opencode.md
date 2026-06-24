@@ -51,7 +51,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.  
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.  
 ```
 
 ## Cloudflare platform access

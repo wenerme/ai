@@ -1,3 +1,5 @@
+# Priority inference
+
 <br />
 
 Description: Learn how to optimize latency with the Priority inference tier in the Interactions API

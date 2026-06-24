@@ -29,22 +29,20 @@ Make sure you have:
 
 Install `cloudflared` on a server in your private network. This server should have connectivity to the MySQL database.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
+1. Log in to the Cloudflare dashboard and go to **Networking** \> **Tunnels**.  
+[ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Select **Create a tunnel**.
-3. Choose **Cloudflared** for the connector type and select **Next**.
-4. Enter a name for your tunnel. We suggest choosing a name that reflects the type of resources you want to connect through this tunnel (for example, `enterprise-VPC-01`).
-5. Select **Save tunnel**.
-6. Next, you will need to install `cloudflared` and run it. To do so, check that the environment under **Choose an environment** reflects the operating system on your machine, then copy the command in the box below and paste it into a terminal window. Run the command.
-7. Once the command has finished running, your connector will appear in Cloudflare One.  
-![Connector appearing in the UI after cloudflared has run](https://developers.cloudflare.com/_astro/connector.BnVS4T_M_ZxLFu6.webp)
-8. Select **Next**.
+3. Enter a name for your tunnel. We suggest choosing a name that reflects the type of resources you want to connect through this tunnel (for example, `enterprise-VPC-01`).
+4. Select **Create Tunnel**.
+5. Choose your operating system, then copy the installation command and run it in a terminal on your origin server.
+6. Wait for the tunnel to connect. Once the connection is established, select **Continue**.
 
 ## Add private network routes
 
-1. In the **CIDR** tab, add the following IP addresses:
-* Private IP/CIDR of your MySQL server (for example, `10.128.0.175/32`)
-* (Optional) Private IP/CIDR of your internal DNS server
-1. Select **Save tunnel**.
+1. In the Cloudflare dashboard, go to **Networking** \> **Routes**.  
+[ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+2. Select **Create route** \> **Tunnel CIDR**. Select the tunnel you just created, enter the private IP/CIDR of your MySQL server (for example, `10.128.0.175/32`), and select **Create route**.
+3. (Optional) Repeat to create a second route for the private IP/CIDR of your internal DNS server.
 
 The application and (optional) DNS server are now connected to Cloudflare.
 
@@ -87,6 +85,6 @@ If your internal DNS server has an `A` record for the MySQL database, users can 
 Allowed Cloudflare One Client users can connect to the MySQL database at `mysql.internalrecord.com` using the MySQL client of their choice.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/mysql-network-policy/#page","headline":"Access and secure a MySQL database using Cloudflare Tunnel and network policies · Cloudflare One docs","description":"Using Cloudflare Tunnel's private networks, users can connect to arbitrary non-browser based TCP/UDP applications, like databases. You can set up network policies that implement zero trust controls to define who and what can access those applications using the Cloudflare One Client.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/mysql-network-policy/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MySQL","Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/mysql-network-policy/#page","headline":"Access and secure a MySQL database using Cloudflare Tunnel and network policies · Cloudflare One docs","description":"Using Cloudflare Tunnel's private networks, users can connect to arbitrary non-browser based TCP/UDP applications, like databases. You can set up network policies that implement zero trust controls to define who and what can access those applications using the Cloudflare One Client.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/mysql-network-policy/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MySQL","Private networks"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/tutorials/mysql-network-policy/","name":"Access and secure a MySQL database using Cloudflare Tunnel and network policies"}}]}
 ```

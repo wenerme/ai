@@ -27,8 +27,8 @@ To learn more about how Local Domain Fallback works, refer to [How the Cloudflar
 
 To add a domain to the Local Domain Fallback list:
 
-* [ Dashboard ](#tab-panel-9196)
-* [ Terraform (v5) ](#tab-panel-9197)
+* [ Dashboard ](#tab-panel-9244)
+* [ Terraform (v5) ](#tab-panel-9245)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Locate the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) you would like to view or modify and select **Configure**.
@@ -64,7 +64,7 @@ The Cloudflare One Client routes DNS traffic to your [Local Domain Fallback serv
 
 * If your DNS server is only reachable inside of the WARP tunnel (for example, via `cloudflared` or Cloudflare WAN):
 
-  1. Go to **Networks** \> **Routes** and verify that the DNS server is connected to Cloudflare. To connect a DNS server, refer to [Private networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/).
+  1. Go to **Networking** \> **Routes** and verify that the DNS server is connected to Cloudflare. To connect a DNS server, refer to [Private networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/).
   2. In your [Split Tunnel configuration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/), verify that the DNS server IP routes through the WARP tunnel.
 * If your DNS server is only reachable outside of the WARP tunnel (for example, via a third-party VPN), verify that the DNS server IP is [excluded from the WARP tunnel](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/).
 
@@ -86,8 +86,8 @@ Resolver policies do not automatically update when you change the virtual networ
 
 To create a resolver policy:
 
-* [ Dashboard ](#tab-panel-9194)
-* [ Terraform (v5) ](#tab-panel-9195)
+* [ Dashboard ](#tab-panel-9242)
+* [ Terraform (v5) ](#tab-panel-9243)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Resolver policies**.
 2. Select **Add a policy**.

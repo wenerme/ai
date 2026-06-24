@@ -114,15 +114,13 @@ NAME                                           DESIRED   CURRENT   READY   AGEre
 
 To create a Cloudflare Tunnel:
 
-1. Open a new browser tab and log in to the [Cloudflare dashboard](https://dash.cloudflare.com/).
-2. Go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
-3. Select **Create a tunnel**.
-4. Choose **Cloudflared** for the connector type and select **Next**.
-5. Enter a name for your tunnel (for example, `gke-tunnel`).
-6. Select **Save tunnel**.
-7. Under **Choose an environment**, select **Docker**.  
+1. In the [Cloudflare dashboard](https://dash.cloudflare.com/), go to **Networking** \> **Tunnels**.
+2. Select **Create a tunnel**.
+3. Enter a name for your tunnel (for example, `gke-tunnel`).
+4. Select **Create Tunnel**.
+5. Choose your operating system and select **Docker**.  
 Applications must be packaged into a containerized image before you can run it in Kubernetes. Therefore, we will use the `cloudflared` Docker container image to deploy the tunnel in Kubernetes.
-8. Instead of running the installation command, copy just the token value rather than the whole command. The token value is of the form `eyJhIjoiNWFiNGU5Z...` You will need the token for the Kubernetes manifest file.
+6. Instead of running the installation command, copy just the token value rather than the whole command. The token value is of the form `eyJhIjoiNWFiNGU5Z...` You will need the token for the Kubernetes manifest file.
 
 Leave the Cloudflare Tunnel browser tab open while we focus on the Kubernetes deployment.
 
@@ -196,11 +194,11 @@ kubectl logs pod/cloudflared-deployment-6d5f9f9666-85l5w
 
 Now that the tunnel is up and running, we can route the httpbin service through the tunnel.
 
-1. Switch to the browser tab where you were configuring Cloudflare Tunnel.
-2. Go to the **Configuration page** for your Cloudflared Tunnel.
-3. In the **Published application routes** tab, enter a hostname for the application (for example, `httpbin.<your-domain>.com`).
+1. In the [Cloudflare dashboard](https://dash.cloudflare.com/), go to **Networking** \> **Tunnels** and select your tunnel.
+2. On the **Routes** tab, select **Add route** \> **Published application**.
+3. Enter a hostname for the application (for example, `httpbin.<your-domain>.com`).
 4. Under **Service**, enter `http://httpbin-service`. `httpbin-service` is the name of the Kubernetes service defined in `httpbinsvc.yaml`.
-5. Select **Complete setup**.
+5. Select **Add route**.
 
 ## 8\. Test the connection
 

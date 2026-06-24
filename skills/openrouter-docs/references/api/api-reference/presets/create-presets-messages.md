@@ -1724,6 +1724,7 @@ components:
         - Stealth
         - StreamLake
         - Switchpoint
+        - Tenstorrent
         - Together
         - Upstage
         - Venice

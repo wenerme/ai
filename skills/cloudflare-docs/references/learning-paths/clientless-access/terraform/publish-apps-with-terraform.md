@@ -43,7 +43,8 @@ Create a `.tf` file and copy-paste the following example. Fill in your API token
 
 Find the Tunnel ID
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
+1. In the Cloudflare dashboard, go to **Networking** \> **Tunnels**.  
+[ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Select the tunnel name.
 3. Copy the **Tunnel ID**.
 
@@ -115,13 +116,19 @@ Terminal window
 terraform apply  
 ```
 
-Users can now access the private application by going to the public URL and authenticating with Cloudflare Access. You can view your new tunnel route in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Zero Trust** \> **Networks** \> **Connectors**, and your Access application and policy under **Zero Trust** \> **Access controls** \> **Applications**. The new DNS record is shown in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
+Users can now access the private application by going to the public URL and authenticating with Cloudflare Access.
+
+You can view your new tunnel in the Cloudflare dashboard under **Networking** \> **Tunnels**.
+
+[ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels) 
+
+Your Access application and policy are under **Zero Trust** \> **Access controls** \> **[Applications ↗](https://dash.cloudflare.com/?to=/:account/one/access/apps)**.
 
 Note
 
 If you need to modify the Access application, Access policy or DNS record, you must make the changes via Terraform. Changes made via the dashboard will break Terraform's state. To prevent this from happening, [set the dashboard to read-only](https://developers.cloudflare.com/cloudflare-one/api-terraform/#set-dashboard-to-read-only).
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/clientless-access/terraform/publish-apps-with-terraform/#page","headline":"Publish applications with Terraform · Cloudflare Learning Paths","description":"Learn about publish applications with terraform in this guide.","url":"https://developers.cloudflare.com/learning-paths/clientless-access/terraform/publish-apps-with-terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/clientless-access/terraform/publish-apps-with-terraform/#page","headline":"Publish applications with Terraform · Cloudflare Learning Paths","description":"Learn about publish applications with terraform in this guide.","url":"https://developers.cloudflare.com/learning-paths/clientless-access/terraform/publish-apps-with-terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/clientless-access/terraform/","name":"Terraform automation"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/clientless-access/terraform/publish-apps-with-terraform/","name":"Publish applications with Terraform"}}]}
 ```

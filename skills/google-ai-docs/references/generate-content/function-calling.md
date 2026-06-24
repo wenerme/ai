@@ -1,5 +1,5 @@
 > [!NOTE]
-> **Note:** This version of the page covers the **generateContent API** . You can use the toggle on this page to switch to the [Interactions API version of this page](https://ai.google.dev/gemini-api/docs/function-calling).
+> **Note:** This version of the page covers the previous **generateContent API** . We recommend using the new [Interactions API](https://ai.google.dev/gemini-api/docs/interactions-overview) for access to all the latest features and models. You can use the toggle on this page to switch to the [Interactions API version of this page](https://ai.google.dev/gemini-api/docs/function-calling).
 
 Function calling lets you connect models to external tools and APIs.
 Instead of generating text responses, the model determines when to call specific

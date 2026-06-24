@@ -27,6 +27,20 @@ conceptually similar to TPM. Other models might have a token per day limit (TPD)
 
 Rate limits are more restricted for experimental and preview models.
 
+### Spend-based rate limits
+
+In addition to requests per minute (RPM) and tokens per minute (TPM) limits, the
+Gemini API enforces spend-based rate limits to protect against unexpected
+charges. These limits vary based on your account's billing history and
+[usage tier](https://ai.google.dev/gemini-api/docs/rate-limits#usage-tiers).
+
+If you hit a spend-based rate limit, the API returns a `429 RESOURCE_EXHAUSTED`
+error. To resolve this:
+
+- **Wait and retry** after a short period.
+- **Reduce the rate of expensive requests**, for example by using smaller context windows or shorter outputs.
+- If you consistently hit this limit during normal usage, [request a rate limit increase](https://ai.google.dev/gemini-api/docs/rate-limits#request-rate-limit-increase).
+
 ## Usage tiers
 
 Rate limits are tied to the project's usage tier. As your API usage and spending

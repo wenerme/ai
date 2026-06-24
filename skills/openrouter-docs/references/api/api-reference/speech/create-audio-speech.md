@@ -524,6 +524,10 @@ components:
           type: object
           additionalProperties:
             description: Any type
+        tenstorrent:
+          type: object
+          additionalProperties:
+            description: Any type
         together:
           type: object
           additionalProperties:

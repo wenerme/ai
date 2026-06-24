@@ -168,6 +168,7 @@ components:
         - stepfun
         - streamlake
         - switchpoint
+        - tenstorrent
         - together
         - upstage
         - venice
@@ -258,6 +259,7 @@ components:
         - stepfun
         - streamlake
         - switchpoint
+        - tenstorrent
         - together
         - upstage
         - venice

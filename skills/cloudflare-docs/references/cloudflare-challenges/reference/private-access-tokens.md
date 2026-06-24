@@ -18,7 +18,15 @@ A PAT does not automatically solve a challenge or let a visitor bypass the Chall
 
 While some challenges require interactivity, most challenges served are invisible to the visitor.
 
+## Expected 401 responses
+
+While loading a Challenge Page, the visitor's browser may attempt to retrieve a Private Access Token by issuing a request to a `/cdn-cgi/challenge-platform/.../pat/...` path. When the visitor's device, browser, or network environment cannot provide a token — for example, on unsupported platforms, in some managed or enterprise environments, or when connected through certain VPNs — this request returns an HTTP `401` response.
+
+This `401` is expected and does **not** mean the visitor is blocked. The Private Access Token flow is an optimization used to reduce challenge steps. When a token is unavailable, Cloudflare falls back to a standard challenge and the visitor continues through the Challenge Page as usual.
+
+If you are inspecting network requests in your browser's developer tools and notice a `401` on a `/cdn-cgi/challenge-platform/.../pat/...` request, you can safely disregard it. It is part of normal challenge processing and is not the cause of a block.
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/reference/private-access-tokens/#page","headline":"Private Access Tokens (PAT) · Cloudflare challenges docs","description":"How Private Access Tokens reduce challenge steps for visitors with valid tokens.","url":"https://developers.cloudflare.com/cloudflare-challenges/reference/private-access-tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/reference/private-access-tokens/#page","headline":"Private Access Tokens (PAT) · Cloudflare challenges docs","description":"How Private Access Tokens reduce challenge steps for visitors with valid tokens.","url":"https://developers.cloudflare.com/cloudflare-challenges/reference/private-access-tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-challenges/","name":"Challenges"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-challenges/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-challenges/reference/private-access-tokens/","name":"Private Access Tokens (PAT)"}}]}
 ```

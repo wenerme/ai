@@ -1,3 +1,5 @@
+# Gemini Developer API pricing
+
 Start building free of charge with generous limits, then scale up with
 prepaid then pay-as-you-go pricing for your production ready applications.
 

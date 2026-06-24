@@ -38,9 +38,19 @@ The private MCP server does not need a public listener. The OpenAI-hosted endpoi
 You need:
 
 - A `tunnel_id` from [Platform tunnel settings](https://platform.openai.com/settings/organization/tunnels).
-- A runtime API key for `tunnel-client`. The key principal needs Tunnels **Read** + **Use** for the target tunnel.
-- A tunnel manager with Tunnels **Read** + **Manage** if you need to create or edit tunnel metadata.
+- A runtime API key for `tunnel-client`.
 - An MCP server that `tunnel-client` can reach over stdio or HTTP from inside your network.
+
+## Permissions and access
+
+[Platform tunnel permissions](https://developers.openai.com/api/docs/guides/rbac) and ChatGPT developer-mode access are separate:
+
+- Creating or editing a tunnel requires Tunnels **Read** + **Manage**.
+- Running `tunnel-client` or selecting the tunnel in connector settings requires Tunnels **Read** + **Use**.
+- Tunnel permissions apply to a Platform organization. A Platform organization owner or RBAC administrator grants the tunnel role.
+- ChatGPT developer mode is a separate workspace permission. For Enterprise/Edu, a workspace admin grants **Permissions & Roles** > **Connected Data** > **Developer mode / Create custom MCP connectors**; the user then enables it in **Settings** > **Apps** > **Advanced Settings**. See the [developer-mode Help Center article](https://help.openai.com/en/articles/12584461-developer-mode-apps-and-full-mcp-connectors-in-chatgpt-beta) for plan-specific policy.
+
+Ask the target ChatGPT workspace admin for developer-mode access, and ask the target Platform organization owner/RBAC admin for tunnel permissions.
 
 ## Associate tunnels with the right organizations and workspaces
 
@@ -51,7 +61,7 @@ A tunnel can be associated with one or more Platform organizations or ChatGPT wo
 - Include another Platform organization when Codex, the Responses API, or another supported product will call the private MCP server from that organization.
 - Use the same `tunnel_id` for `tunnel-client`; adding organizations or workspaces does not create a second tunnel or change the private MCP server endpoint.
 
-For personal accounts, use the personal Platform organization that belongs to that account. A tunnel associated only with a personal account won't automatically appear in an enterprise ChatGPT workspace.
+For personal accounts, use the personal Platform organization that belongs to that account. For ChatGPT and Codex testing, associate the tunnel with the target ChatGPT workspace and the Platform organization that Codex will use. A tunnel associated only with a personal Platform organization doesn't automatically appear in an Enterprise/Edu workspace.
 
 If the Platform organization and ChatGPT workspace are already linked, you can add the missing organization or workspace in [Platform tunnel settings](https://platform.openai.com/settings/organization/tunnels). If your enterprise setup can't be verified automatically, such as when the Platform organization has no corresponding ChatGPT workspace, contact your OpenAI account team to request a reviewed manual association override for the enterprise account mapping that should use the tunnel.
 

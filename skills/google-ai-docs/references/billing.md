@@ -105,6 +105,7 @@ assigned billing plan and manage payment methods on the
 > **Important:** Prepay and Postpay billing plans start taking effect **March 23, 2026** .  
 > - Accounts that predate the introduction of Prepay and Postpay billing plans will be evaluated and assigned a plan or offered the choice between plans.
 > - Accounts created after the effective date might not be immediately affected; you may be assigned a Postpay account initially, and be switched to Prepay once the new billing plan system is fully released.
+> - If you have a prepay billing account, you must add funds to your account before you can use promotional Cloud Credits. After adding funds, your promotional credits will be consumed first before your prepaid funds.
 >
 ### Prepay
 

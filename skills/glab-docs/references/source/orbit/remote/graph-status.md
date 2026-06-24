@@ -19,8 +19,8 @@ Exactly one of `--namespace-id`, `--project-id`, or
 full path of a project or group. For example, `gitlab-org/gitlab`.
 
 Unlike `glab orbit remote query`, this endpoint defaults to
-the `raw` response format. Use `--format llm` for
-compact output intended for agents.
+the `raw` response format. Use `--response-format llm`
+for compact output intended for agents.
 
 This feature is an experiment and is not ready for production use.
 It might be unstable or removed at any time.
@@ -42,19 +42,19 @@ $ glab orbit remote graph-status --project-id 278964
 $ glab orbit remote graph-status --namespace-id 9970
 
 # Compact output for agents
-$ glab orbit remote graph-status --full-path gitlab-org/gitlab --format llm
+$ glab orbit remote graph-status --full-path gitlab-org/gitlab --response-format llm
 
 ```
 
 ## Options
 
 ```plaintext
-  -f, --format raw                    Response format: raw (structured JSON) or `llm` (compact, intended for agents). (default "raw")
       --full-path gitlab-org/gitlab   Full path of a project or group, such as gitlab-org/gitlab. Cannot be used with the ID flags.
       --hostname gitlab.com           GitLab hostname to query. Defaults to the current repository's host or gitlab.com.
       --jq string                     Filter JSON output with a jq expression.
       --namespace-id int              Namespace (group) ID to inspect. Cannot be used with --project-id or --full-path.
       --project-id int                Project ID to inspect. Cannot be used with --namespace-id or --full-path.
+      --response-format raw           Server response format: raw (structured JSON) or `llm` (compact GOON/TOON for agents). (default "raw")
 ```
 
 ## Options inherited from parent commands

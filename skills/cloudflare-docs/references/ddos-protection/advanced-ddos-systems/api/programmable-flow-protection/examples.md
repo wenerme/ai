@@ -34,16 +34,18 @@ Response
 
 This example uploads a new eBPF program written in C. The program source code is sent as the request body with `Content-Type: text/plain`.
 
+Include the optional `X-Program-Name` header to specify a human-readable program name. If omitted, the API generates a UUID as the program name.
+
 Request
 
 ```
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/programs" \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: text/plain" \--data-binary "@/path/to/program.c"
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/programs" \--header "Authorization: Bearer <API_TOKEN>" \--header "Content-Type: text/plain" \--header "X-Program-Name: my-rate-limiter" \--data-binary "@/path/to/program.c"
 ```
 
 Response
 
 ```
-{  "result": {    "id": "<PROGRAM_ID>",    "name": "program",    "status": "success",    "created_on": "<TIMESTAMP>",    "modified_on": "<TIMESTAMP>"  },  "success": true,  "errors": [],  "messages": []}
+{  "result": {    "id": "<PROGRAM_ID>",    "name": "my-rate-limiter",    "status": "success",    "created_on": "<TIMESTAMP>",    "modified_on": "<TIMESTAMP>"  },  "success": true,  "errors": [],  "messages": []}
 ```
 
 If the program fails compilation or verification, the API returns a detailed error message:
@@ -192,6 +194,6 @@ The output PCAP file contains the same packets as the input file, but with annot
 * `Challenge packet`: the challenge packet emitted from the program back to the client, if any
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/examples/#page","headline":"Common API calls · Cloudflare DDoS Protection docs","description":"Example API requests for managing Programmable Flow Protection programs and rules.","url":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/examples/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/examples/#page","headline":"Common API calls · Cloudflare DDoS Protection docs","description":"Example API requests for managing Programmable Flow Protection programs and rules.","url":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/examples/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ddos-protection/","name":"DDoS Protection"}},{"@type":"ListItem","position":3,"item":{"@id":"/ddos-protection/advanced-ddos-systems/","name":"Advanced DDoS systems"}},{"@type":"ListItem","position":4,"item":{"@id":"/ddos-protection/advanced-ddos-systems/api/","name":"API configuration"}},{"@type":"ListItem","position":5,"item":{"@id":"/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/","name":"Programmable Flow Protection"}},{"@type":"ListItem","position":6,"item":{"@id":"/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/examples/","name":"Common API calls"}}]}
 ```

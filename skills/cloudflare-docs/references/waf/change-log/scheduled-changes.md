@@ -14,14 +14,14 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/waf.xml) 
 
-## 2026-06-15
+## 2026-06-23
 
   
-**WAF Release - Scheduled changes for 2026-06-22**   
+**WAF Release - Scheduled changes for 2026-06-29**   
 
-| Announcement Date | Release Date | Release Behavior | Legacy Rule ID | Rule ID     | Description                                            | Comments                 |
-| ----------------- | ------------ | ---------------- | -------------- | ----------- | ------------------------------------------------------ | ------------------------ |
-| 2026-06-15        | 2026-06-22   | Log              | N/A            | ...242fdf83 | Ivanti Sentry - Command Injection - CVE:CVE-2026-10520 | This is a new detection. |
+| Announcement Date | Release Date | Release Behavior | Legacy Rule ID | Rule ID     | Description                                                 | Comments                 |
+| ----------------- | ------------ | ---------------- | -------------- | ----------- | ----------------------------------------------------------- | ------------------------ |
+| 2026-06-23        | 2026-06-29   | Log              | N/A            | ...d84c92c9 | Fortinet FortiSandbox - Path Traversal - CVE:CVE-2026-39813 | This is a new detection. |
 
 For other WAF updates, refer to the [changelog](https://developers.cloudflare.com/waf/change-log/changelog/).
 

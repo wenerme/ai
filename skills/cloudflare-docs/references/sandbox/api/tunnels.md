@@ -52,8 +52,8 @@ const tunnel = await sandbox.tunnels.get(  port: number,  options?: { name?: str
 
 Calling `get(port)` with different `options` on a port that already has a tunnel throws. Call [destroy(port)](#tunnelsdestroy) first.
 
-* [  JavaScript ](#tab-panel-10271)
-* [  TypeScript ](#tab-panel-10272)
+* [  JavaScript ](#tab-panel-10323)
+* [  TypeScript ](#tab-panel-10324)
 
 JavaScript
 
@@ -92,8 +92,8 @@ const tunnels = await sandbox.tunnels.list(): Promise<TunnelInfo[]>
 
 **Returns**: `Promise<TunnelInfo[]>` — an array of [TunnelInfo](#tunnelinfo) records. Empty when no tunnels are active.
 
-* [  JavaScript ](#tab-panel-10267)
-* [  TypeScript ](#tab-panel-10268)
+* [  JavaScript ](#tab-panel-10319)
+* [  TypeScript ](#tab-panel-10320)
 
 JavaScript
 
@@ -123,8 +123,8 @@ await sandbox.tunnels.destroy(portOrInfo: number | TunnelInfo): Promise<void>
 
 * `portOrInfo` — Either the port number or the `TunnelInfo` record returned by [get()](#tunnelsget).
 
-* [  JavaScript ](#tab-panel-10269)
-* [  TypeScript ](#tab-panel-10270)
+* [  JavaScript ](#tab-panel-10321)
+* [  TypeScript ](#tab-panel-10322)
 
 JavaScript
 
@@ -242,8 +242,8 @@ When inference fails, the SDK throws a clear error naming the variable to set.
 
 ### Example
 
-* [  JavaScript ](#tab-panel-10273)
-* [  TypeScript ](#tab-panel-10274)
+* [  JavaScript ](#tab-panel-10325)
+* [  TypeScript ](#tab-panel-10326)
 
 JavaScript
 
@@ -298,10 +298,10 @@ Named tunnels create resources **on your Cloudflare account, outside the sandbox
 
 For each `(sandbox, name)` pair, the SDK creates:
 
-| Resource           | Name / location                               | Identifier                                         |
-| ------------------ | --------------------------------------------- | -------------------------------------------------- |
-| Cloudflare Tunnel  | **Zero Trust** \> **Networks** \> **Tunnels** | sandbox-<sandbox-id>-<name>                        |
-| Proxied DNS record | Your zone, **DNS** \> **Records**             | CNAME <name>.<zone> → <tunnel-id>.cfargotunnel.com |
+| Resource           | Name / location                   | Identifier                                         |
+| ------------------ | --------------------------------- | -------------------------------------------------- |
+| Cloudflare Tunnel  | **Networking** \> **Tunnels**     | sandbox-<sandbox-id>-<name>                        |
+| Proxied DNS record | Your zone, **DNS** \> **Records** | CNAME <name>.<zone> → <tunnel-id>.cfargotunnel.com |
 
 Both resources are tagged so you can audit, query, and bulk-clean them from the dashboard or API:
 
@@ -346,6 +346,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/cfd_t
 * [Transport configuration](https://developers.cloudflare.com/sandbox/configuration/transport/) — RPC vs. route-based transport.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/tunnels/#page","headline":"Tunnels · Cloudflare Sandbox SDK docs","description":"Expose sandbox services on the public internet with quick tunnels (\\*.trycloudflare.com) or named tunnels bound to a hostname on your Cloudflare zone.","url":"https://developers.cloudflare.com/sandbox/api/tunnels/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/tunnels/#page","headline":"Tunnels · Cloudflare Sandbox SDK docs","description":"Expose sandbox services on the public internet with quick tunnels (\\*.trycloudflare.com) or named tunnels bound to a hostname on your Cloudflare zone.","url":"https://developers.cloudflare.com/sandbox/api/tunnels/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/tunnels/","name":"Tunnels"}}]}
 ```

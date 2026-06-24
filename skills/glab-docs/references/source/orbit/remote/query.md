@@ -23,13 +23,14 @@ The request body must be a full Orbit query envelope:
 }
 ```
 
-`--format` overrides the body's `response_format` value,
-or sets it if absent. If neither the body nor `--format`
-specifies a format, `llm` is used by default. The `llm`
-format is compact GOON/TOON text intended for agents; `raw`
-returns structured JSON suitable for `jq`. The server's
-response body is written to stdout verbatim regardless of format —
-no client-side decoding or re-encoding is performed.
+`--response-format` overrides the body's `response_format`
+value, or sets it if absent. If neither the body nor
+`--response-format` specifies a format, `llm` is used by
+default. The `llm` format is compact GOON/TOON text intended
+for agents; `raw` returns structured JSON suitable for
+`jq`. The server's response body is written to stdout verbatim
+regardless of format — no client-side decoding or re-encoding is
+performed.
 
 Compatibility note: prior to this change, `--format raw`
 output was re-marshalled through the SDK's typed
@@ -67,15 +68,15 @@ $ glab orbit remote query ./query.json
 $ cat ./query.json | glab orbit remote query -
 
 # Force raw output (pipeable into jq)
-$ glab orbit remote query --format raw ./query.json
+$ glab orbit remote query --response-format raw ./query.json
 
 ```
 
 ## Options
 
 ```plaintext
-  -f, --format llm            Response format: llm (compact, intended for agents) or `raw` (structured JSON). (default "llm")
       --hostname gitlab.com   GitLab hostname to query. Defaults to the current repository's host or gitlab.com.
+      --response-format llm   Server response format: llm (compact GOON/TOON for agents) or `raw` (structured JSON). (default "llm")
 ```
 
 ## Options inherited from parent commands

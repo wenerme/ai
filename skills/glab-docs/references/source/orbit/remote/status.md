@@ -9,10 +9,18 @@ Show GitLab Knowledge Graph cluster health. (EXPERIMENTAL)
 
 ## Synopsis
 
-Calls `GET /api/v4/orbit/status` and prints the cluster health
-response as pretty-printed JSON. Use this command to confirm Orbit
-is enabled and reachable for your user. It is the first step in
-the Orbit discovery workflow.
+Prints the Orbit cluster health as pretty-printed JSON. Use this
+command to confirm Orbit is enabled and reachable for your user.
+It is the first step in the Orbit discovery workflow.
+
+The output is always the system health object (fields such as
+status, version, components, error) regardless of the GitLab
+instance version. On newer instances (19.1+), when the backend
+cannot reach the gRPC cluster, the output includes an error
+field (and status is "unknown"). Use --jq to filter health
+fields directly, for example --jq '.status' or
+--jq '.components'. The user/system wrapper returned by newer
+instances is not exposed in the output.
 
 This feature is an experiment and is not ready for production use.
 It might be unstable or removed at any time.

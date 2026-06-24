@@ -1,3 +1,5 @@
+# Batch API
+
 > [!NOTE]
 > **Note:** This feature is currently only available with the generateContent API. Please follow the content on this page for more information.
 

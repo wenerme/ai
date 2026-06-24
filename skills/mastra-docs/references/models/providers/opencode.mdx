@@ -1,11 +1,11 @@
 ---
 title: "OpenCode Zen | Models"
-description: "Use OpenCode Zen models with Mastra. 45 models available."
+description: "Use OpenCode Zen models with Mastra. 46 models available."
 ---
 
 # [OpenCode Zen logo]OpenCode Zen
 
-Access 45 OpenCode Zen models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
+Access 46 OpenCode Zen models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
 
 Learn more in the [OpenCode Zen documentation](https://opencode.ai/docs/zen).
 
@@ -251,6 +251,18 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 204800,
+    "maxOutput": 131072,
+    "inputCost": 1.4,
+    "outputCost": 4.4
+  },
+  {
+    "model": "opencode/glm-5.2",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
     "maxOutput": 131072,
     "inputCost": 1.4,
     "outputCost": 4.4

@@ -20,30 +20,25 @@ To enable clientless access to your applications, you will need to create a Clou
 
 To create a Cloudflare Tunnel:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
+1. Log in to the Cloudflare dashboard and go to **Networking** \> **Tunnels**.  
+[ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Select **Create a tunnel**.
-3. Choose **Cloudflared** for the connector type and select **Next**.
-4. Enter a name for your tunnel. We suggest choosing a name that reflects the type of resources you want to connect through this tunnel (for example, `enterprise-VPC-01`).
-5. Select **Save tunnel**.
-6. Next, you will need to install `cloudflared` and run it. To do so, check that the environment under **Choose an environment** reflects the operating system on your machine, then copy the command in the box below and paste it into a terminal window. Run the command.
-7. Once the command has finished running, your connector will appear in Cloudflare One.  
-![Connector appearing in the UI after cloudflared has run](https://developers.cloudflare.com/_astro/connector.BnVS4T_M_ZxLFu6.webp)
-8. Select **Next**.
+3. Enter a name for your tunnel. We suggest choosing a name that reflects the type of resources you want to connect through this tunnel (for example, `enterprise-VPC-01`).
+4. Select **Create Tunnel**.
+5. Choose your operating system, then copy the installation command and run it in a terminal on your origin server.
+6. Wait for the tunnel to connect. Once the connection is established, select **Continue**.
 
 ## Publish an application
 
-To add a published application when creating a new tunnel:
+After creating your tunnel, add a published application route:
 
-1. Go to the **Published applications** tab.
-2. Enter a subdomain and select a **Domain** from the drop-down menu. Specify any subdomain or path information.  
+1. Go to **Networking** \> **Tunnels**, then select your tunnel.  
+[ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
+2. On the **Routes** tab, select **Add route**, then select **Published application**.
+3. Enter a subdomain and select a **Domain** from the drop-down menu. Specify any subdomain or path information.  
 Note  
 If you add a multi-level subdomain (more than one level of subdomain), you must [order an Advanced Certificate for the hostname](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/common-errors/#i-see-this-site-cant-provide-a-secure-connection).
-3. Under **Service**, choose a [service type](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/protocols/) and specify its URL. For example,
-
-  * **Type**: _HTTP_
-  * **URL**: `localhost:8000`
-4. Under **Additional application settings**, specify any [parameters](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/origin-parameters/) you would like to add to your tunnel configuration.  
-![Example of a published application route in the Cloudflare One dashboard](https://developers.cloudflare.com/_astro/published-app.CZQbD1Bb_ZFOOUB.webp)
+4. In **Service URL**, enter the protocol and address of your application (for example, `http://localhost:8000`). Refer to [supported protocols](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/protocols/) for available options.
 5. Select **Save**.
 
 All users on the Internet can now connect to this application via its public hostname. In [Module 4: Secure your applications](https://developers.cloudflare.com/learning-paths/clientless-access/access-application/), we will discuss how to restrict access to authorized users.
