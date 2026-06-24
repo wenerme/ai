@@ -1080,7 +1080,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `react-resizable-panels-v3-to-v4` | 1 | 9.2 KiB |
 | `requesting-code-review` | 2 | 7.4 KiB |
 | `shadcn` | 14 | 82 KiB |
-| `skill-writer` | 4 | 24 KiB |
+| `skill-writer` | 4 | 23 KiB |
 | `sling-cli` | 3 | 14 KiB |
 | `slopus-happy-docs` | 75 | 716 KiB |
 | `swift-ms-docs` | 67 | 1.1 MiB |
