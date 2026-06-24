@@ -2,13 +2,7 @@ name: Update Skills
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 0 * * *"   # 08:00 UTC+8
-    - cron: "0 10 * * *"  # 18:00 UTC+8
-
-concurrency:
-  group: update-skills
-  cancel-in-progress: false
+  workflow_call:
 
 env:
   SOURCE_BRANCH: develop
@@ -79,7 +73,7 @@ jobs:
           mkdir -p .github/workflows skills
           cp ../source/README.md README.md
           cp ../source/LICENSE LICENSE
-          cp ../source/.github/workflows/update-skills.yaml .github/workflows/update-skills.yaml
+          cp ../source/.github/workflows/schedule-update-skills.yaml .github/workflows/schedule-update-skills.yaml
           for skill_dir in ../source/skills/*/; do
             rsync -a --delete "$skill_dir" "skills/$(basename "$skill_dir")/"
           done
