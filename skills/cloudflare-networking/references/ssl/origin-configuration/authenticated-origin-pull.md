@@ -44,12 +44,16 @@ Global AOP uses a Cloudflare-provided certificate shared across all accounts, so
 
 Using your own certificate is also required for [FIPS ↗](https://en.wikipedia.org/wiki/Federal%5FInformation%5FProcessing%5FStandards) compliance. For broader origin protection guidance, refer to [Protect your origin server](https://developers.cloudflare.com/fundamentals/security/protect-your-origin-server/).
 
+## Post-quantum certificates
+
+Zone-level and per-hostname AOP support ML-DSA (FIPS 204) post-quantum client certificates. Refer to [Post-quantum signatures](https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-to-origin/#post-quantum-signatures) for certificate generation and upload guidance.
+
 ## Related topics
 
 * [SSL/TLS Encryption Modes](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/)
 * [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/#page","headline":"Authenticated Origin Pulls (mTLS) · Cloudflare SSL/TLS docs","description":"Authenticated Origin Pulls helps ensure requests to your origin server come from the Cloudflare network.","url":"https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/#page","headline":"Authenticated Origin Pulls (mTLS) · Cloudflare SSL/TLS docs","description":"Authenticated Origin Pulls helps ensure requests to your origin server come from the Cloudflare network.","url":"https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/origin-configuration/","name":"Origin server"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/origin-configuration/authenticated-origin-pull/","name":"Authenticated Origin Pulls (mTLS)"}}]}
 ```

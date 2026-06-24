@@ -1084,7 +1084,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 97 skills, 24483 files, 268 MiB total
+> 97 skills, 24487 files, 268 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1119,7 +1119,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `cloudflare-workers` | 768 | 6.9 MiB |
 | `cloudflare-zero-trust` | 928 | 9.5 MiB |
 | `codex-docs` | 164 | 1.4 MiB |
-| `comfyui-docs` | 4616 | 14 MiB |
+| `comfyui-docs` | 4620 | 14 MiB |
 | `daisyui-v5` | 3 | 60 KiB |
 | `doris-docs` | 1572 | 9.4 MiB |
 | `evalscope-cli` | 6 | 31 KiB |

@@ -51,7 +51,7 @@ opencode
 5. **Try a prompt**
 For example:
 ```
-Add a cron trigger to my Worker that processes a job queue every hour.
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
 ```
 
 ## Cloudflare platform access

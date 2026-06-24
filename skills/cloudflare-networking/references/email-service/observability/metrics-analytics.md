@@ -142,7 +142,7 @@ To query email sending volume grouped by hour, useful for identifying traffic pa
 query EmailSendingHourlyVolume($zoneTag: string!, $start: Time!, $end: Time!) {  viewer {    zones(filter: { zoneTag: $zoneTag }) {      emailSendingAdaptiveGroups(        filter: { datetimeHour_geq: $start, datetimeHour_leq: $end }        limit: 10000        orderBy: [datetimeHour_ASC]      ) {        count        dimensions {          datetimeHour          status        }      }    }  }}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAogWwIYEsA2BlMA7AJi7AcwAkB7ECNKANVLRATAAoASAL1OzABUlCAuGAGcALhAKEAhABoYLUUggjB3FIxlycuFWrCSAlDADeAKBgwAbijAB3SMbPmYHLkKYAzdCMiCjzzjx8guwBvIQwAL6Gpk5OYMjoWHgSAIK4SAAOIigWYADiEOQZbo6x5p5o3hC+MOne2YxkFAD6hGDAwQpKsnVgDWBNEM1o7cFakaVlaGooyjAAjAAMy4uTsaQQuJAAQlCCANq9-YPNKRgAwgC6azDRN+YAxuTYIve1uthCKJxCDmVlR10gze5gUIhAQjeERu0NisImESAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2eWALHDYBWVAEZOqAMwBODBRAwoAE2bsuvfkPHiJUuQoC+QA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAogWwIYEsA2BlMA7AJi7AcwAkB7ECNKANVLRATAAoASAL1OzABUlCAuGAGcALhAKEAhABoYLUUggjB3FIxlycuFWrCSAlDADeAKBgwAbijAB3SMbPmYHLkKYAzdCMiCjzzjx8guwBvIQwAL6Gpk5OYMjoWHgSAIK4SAAOIigWYADiEOQZbo6x5p5o3hC+MOne2YxkFAD6hGDAwQpKsnVgDWBNEM1o7cFakaVlaGooyjAAjAAMy4uTsaQQuJAAQlCCANq9-YPNKRgAwgC6azDRN+YAxuTYIve1uthCKJxCDmVlR10gze5gUIhAQjeERu0NisImESAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2eWALHDYBWVAICM4gRgogYUACbN2XXvyESpk6bIC+QA)
 
 #### Individual email events
 
@@ -152,7 +152,7 @@ To query individual email events for troubleshooting specific delivery issues. T
 query RecentEmailEvents($zoneTag: string!, $start: Time!, $end: Time!) {  viewer {    zones(filter: { zoneTag: $zoneTag }) {      emailSendingAdaptive(        filter: { datetime_geq: $start, datetime_leq: $end }        limit: 50        orderBy: [datetime_DESC]      ) {        datetime        from        to        subject        status        eventType        sendingDomain        messageId        errorCause        errorDetail        dkim        dmarc        spf        isSpam      }    }  }}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBASmAxmAdgFwKIFsCGBLAGwwDdU0BnACgBIAvAexTABUcBzALhnLQjxTYBCADQxqPHBDRdmeLGBFjUAExlyFAShgBvAFAwYxPGADukHfoMwGTKgDNCaSF23XGLdlzrvWbGAF8tPSsrMFxCAGUVfjYAQWUcAAc0PFJKSxCDBwInCBcYBKcU+QB9NjBgLwkpUUKwYrASggqvFQCMzII5PGkYAFYABg6Q+ghlSAAhKC4AbTqGkoARDAiAYQBdYZggrYN59V2YOwh6LEO0ekPyEAAjACskNCu0HDQQckOwUnRmKESwK7RASLU74FCHeTkcjsMAASWUnwgJwgqxw7wBmVCSNGi3q+AIh2UAGs5ITcBBEFdEnZDnhyBFEjgzpj-B1WQZWf4gA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2eWALHDYBWVAEZOqAMwBODBRAwoAE2bsuvfkPHiJUuQoC+QA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBASmAxmAdgFwKIFsCGBLAGwwDdU0BnACgBIAvAexTABUcBzALhnLQjxTYBCADQxqPHBDRdmeLGBFjUAExlyFAShgBvAFAwYxPGADukHfoMwGTKgDNCaSF23XGLdlzrvWbGAF8tPSsrMFxCAGUVfjYAQWUcAAc0PFJKSxCDBwInCBcYBKcU+QB9NjBgLwkpUUKwYrASggqvFQCMzII5PGkYAFYABg6Q+ghlSAAhKC4AbTqGkoARDAiAYQBdYZggrYN59V2YOwh6LEO0ekPyEAAjACskNCu0HDQQckOwUnRmKESwK7RASLU74FCHeTkcjsMAASWUnwgJwgqxw7wBmVCSNGi3q+AIh2UAGs5ITcBBEFdEnZDnhyBFEjgzpj-B1WQZWf4gA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2eWALHDYBWVAICM4gRgogYUACbN2XXvyESpk6bIC+QA)
 
 #### Email routing operations
 
@@ -182,7 +182,7 @@ To query individual routing events for troubleshooting:
 query RecentRoutingEvents($zoneTag: string!, $start: Time!, $end: Time!) {  viewer {    zones(filter: { zoneTag: $zoneTag }) {      emailRoutingAdaptive(        filter: { datetime_geq: $start, datetime_leq: $end }        limit: 50        orderBy: [datetime_DESC]      ) {        datetime        from        to        subject        status        action        ruleMatched        messageId        errorDetail        dkim        dmarc        spf        isSpam      }    }  }}
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBASmAxmAdgFzgexGgligcwFEA3VNAZwAoASAL0xTABUBDAgLhgrQnwICEAGhg0erCGi7NcAWzDDRqACbS5CgJQwA3gCgYMErjAB3SDv0GYDJtQBmuADZpIXbdcYt2Xep7YEYAF8tPSsrMFlWJywcfgBBZVYABzwyKkswgwdnVx0YRJc8eQB9AjBgH3FJEQKwIrBix3KfFSCMzMc5XCkYAFYABnawzAhlSAAhKC4AbVr64oARIgBlAGEAXSGYEK2DOfVdmDsITFlDtExDihAAIwArJDQrtFY0EApD1kQ8RkOIECaAFlXogABZgZSHeQUCjsMAASUhmXCEBOEAWdSijkOygA1nIcZEIIgrkk7IdcBRlklWGdkYF2gyDAzAkA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2eWALHDYBWVAEZOqAMwBODBRAwoAE2bsuvfkPHiJUuQoC+QA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBASmAxmAdgFzgexGgligcwFEA3VNAZwAoASAL0xTABUBDAgLhgrQnwICEAGhg0erCGi7NcAWzDDRqACbS5CgJQwA3gCgYMErjAB3SDv0GYDJtQBmuADZpIXbdcYt2Xep7YEYAF8tPSsrMFlWJywcfgBBZVYABzwyKkswgwdnVx0YRJc8eQB9AjBgH3FJEQKwIrBix3KfFSCMzMc5XCkYAFYABnawzAhlSAAhKC4AbVr64oARIgBlAGEAXSGYEK2DOfVdmDsITFlDtExDihAAIwArJDQrtFY0EApD1kQ8RkOIECaAFlXogABZgZSHeQUCjsMAASUhmXCEBOEAWdSijkOygA1nIcZEIIgrkk7IdcBRlklWGdkYF2gyDAzAkA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2eWALHDYBWVAICM4gRgogYUACbN2XXvyESpk6bIC+QA)
 
 Note
 
