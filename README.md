@@ -81,7 +81,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `papermc-docs` | PaperMC documentation — high-performance Minecraft Java server (Paper), Velocity proxy, and Adventure text API. Covers... | [PaperMC/docs](https://github.com/PaperMC/docs) |
 | `peekaboo` | Use when using Peekaboo as an installed macOS automation CLI or MCP server: screenshots, UI inspection, clicking,... | [steipete/peekaboo](https://github.com/steipete/peekaboo) |
 | `react-resizable-panels-v3-to-v4` | Use when upgrading react-resizable-panels from v3 to v4, fixing v4 type/runtime errors (PanelGroup not exported,... |  |
-| `requesting-code-review` | Use when completing tasks, implementing major features, or before merging to verify work meets requirements |  |
+| `requesting-code-review` | Use when completing tasks, implementing major features, or before merging to verify work meets requirements | [obra/superpowers](https://github.com/obra/superpowers) |
 | `shadcn` | Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI. Provides... | [shadcn-ui/ui](https://github.com/shadcn-ui/ui) |
 | `skill-writer` | Use when creating new skills, editing existing skills, optimizing skill descriptions and structure, splitting large... |  |
 | `sling-cli` | Use when moving data between databases, files, or APIs with the sling CLI; configuring connections, writing replication... | [docs.slingdata.io](https://docs.slingdata.io) |
@@ -1078,7 +1078,7 @@ Use when implementing React state management with Zustand, including context-sco
 | `papermc-docs` | 192 | 877 KiB |
 | `peekaboo` | 1 | 15 KiB |
 | `react-resizable-panels-v3-to-v4` | 1 | 9.2 KiB |
-| `requesting-code-review` | 2 | 7.4 KiB |
+| `requesting-code-review` | 2 | 6.2 KiB |
 | `shadcn` | 14 | 82 KiB |
 | `skill-writer` | 4 | 23 KiB |
 | `sling-cli` | 3 | 14 KiB |
