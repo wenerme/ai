@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Securing data at rest
 
-**Last reviewed:**  about 2 years ago
-
 ## Introduction
 
 Data at rest refers to data that is stored in a fixed location, such as on a local hard drive, on-premises server, or cloud storage. Many businesses today are using SaaS platforms that store a lot of business data in structured forms (like databases) and unstructured forms (files like documents, images, spreadsheets). The security of the actual storage of the data, such as encryption and reliable backups, is usually abstracted from your control. But the SaaS applications allow you to manage user accounts, define what data they have access to, and also provide an ability to share access to data.

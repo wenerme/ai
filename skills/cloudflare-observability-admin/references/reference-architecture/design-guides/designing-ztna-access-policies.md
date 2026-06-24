@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Designing ZTNA access policies for Cloudflare Access
 
-**Last reviewed:**  over 1 year ago
-
 ## Introduction
 
 Organizations today are increasingly adopting a [Zero Trust security ↗](https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/) posture to safeguard company assets and infrastructure in a constantly evolving threat landscape. The traditional security associated with legacy network design assumes trust within the corporate network perimeter. In contrast, Zero Trust operates on the principle of "Never trust, always verify" and implements continuous [authentication and strict access controls ↗](https://www.cloudflare.com/learning/access-management/what-is-access-control/) for all users, devices, and applications, regardless of their location or network.

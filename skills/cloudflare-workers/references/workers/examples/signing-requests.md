@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Sign requests
 
-**Last reviewed:**  over 2 years ago
-
 Verify a signed request using the HMAC and SHA-256 algorithms or return a 403.
 
 If you want to get started quickly, click on the button below.
@@ -33,10 +31,10 @@ The following Worker will:
 * For request URLs beginning with `/generate/`, replace `/generate/` with `/`, sign the resulting path with its timestamp, and return the full, signed URL in the response body.
 * For all other request URLs, verify the signed URL and allow the request through.
 
-* [  JavaScript ](#tab-panel-11823)
-* [  TypeScript ](#tab-panel-11824)
-* [  Hono ](#tab-panel-11825)
-* [  Python ](#tab-panel-11826)
+* [  JavaScript ](#tab-panel-11863)
+* [  TypeScript ](#tab-panel-11864)
+* [  Hono ](#tab-panel-11865)
+* [  Python ](#tab-panel-11866)
 
 JavaScript
 

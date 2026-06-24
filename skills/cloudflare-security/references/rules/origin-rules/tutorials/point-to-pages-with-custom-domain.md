@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Point to Pages with a custom domain
 
-**Last reviewed:**  about 1 year ago
-
 This tutorial will instruct you how to configure an origin rule and a DNS record to point to a Pages deployment with a custom domain.
 
 The procedure will use the following example values:

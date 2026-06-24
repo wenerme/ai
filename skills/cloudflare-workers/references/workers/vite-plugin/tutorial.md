@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Tutorial - React SPA with an API
 
-**Last reviewed:**  about 1 year ago
-
 This tutorial takes you through the steps needed to adapt a Vite project to use the Cloudflare Vite plugin. Much of the content can also be applied to adapting existing Vite projects and to front-end frameworks other than React.
 
 Note
@@ -81,8 +79,8 @@ Refer to the [API reference](https://developers.cloudflare.com/workers/vite-plug
 
 ### Create your Worker config file
 
-* [  wrangler.jsonc ](#tab-panel-12289)
-* [  wrangler.toml ](#tab-panel-12290)
+* [  wrangler.jsonc ](#tab-panel-12329)
+* [  wrangler.toml ](#tab-panel-12330)
 
 JSONC
 
@@ -157,8 +155,8 @@ tsconfig.json
 
 ### Add to your Worker configuration
 
-* [  wrangler.jsonc ](#tab-panel-12291)
-* [  wrangler.toml ](#tab-panel-12292)
+* [  wrangler.jsonc ](#tab-panel-12331)
+* [  wrangler.toml ](#tab-panel-12332)
 
 JSONC
 
@@ -193,8 +191,8 @@ For top-level navigation requests, browsers send a `Sec-Fetch-Mode: navigate` he
 
 If you would instead like to define the routes that invoke your Worker explicitly, you can provide an array of route patterns to [run\_worker\_first](https://developers.cloudflare.com/workers/static-assets/binding/#run%5Fworker%5Ffirst). This opts out of interpreting the `Sec-Fetch-Mode` header.
 
-* [  wrangler.jsonc ](#tab-panel-12293)
-* [  wrangler.toml ](#tab-panel-12294)
+* [  wrangler.jsonc ](#tab-panel-12333)
+* [  wrangler.toml ](#tab-panel-12334)
 
 JSONC
 

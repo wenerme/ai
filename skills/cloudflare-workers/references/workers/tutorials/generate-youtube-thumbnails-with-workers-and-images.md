@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Generate YouTube thumbnails with Workers and Cloudflare Image Resizing
 
-**Last reviewed:**  about 3 years ago
-
 In this tutorial, you will learn how to programmatically generate a custom YouTube thumbnail using Cloudflare Workers and Cloudflare Image Resizing. You may want to generate a custom YouTube thumbnail to customize the thumbnail's design, call-to-actions and images used to encourage more viewers to watch your video.
 
 This tutorial will help you understand how to work with [Images](https://developers.cloudflare.com/images/),[Image Resizing](https://developers.cloudflare.com/images/optimization/transformations/overview/) and [Cloudflare Workers](https://developers.cloudflare.com/workers/).
@@ -191,8 +189,8 @@ Adding a query parameter with custom text, you should receive:
 
 To deploy your Worker, open your Wrangler file and update the `name` key with your project's name. Below is an example with this tutorial's project name:
 
-* [  wrangler.jsonc ](#tab-panel-12253)
-* [  wrangler.toml ](#tab-panel-12254)
+* [  wrangler.jsonc ](#tab-panel-12293)
+* [  wrangler.toml ](#tab-panel-12294)
 
 JSONC
 
@@ -313,8 +311,8 @@ Image transformations can only be tested when you deploy your Worker.
 
 To deploy your Worker, open your Wrangler file and update the `name` key with your project's name. Below is an example with this tutorial's project name:
 
-* [  wrangler.jsonc ](#tab-panel-12255)
-* [  wrangler.toml ](#tab-panel-12256)
+* [  wrangler.jsonc ](#tab-panel-12295)
+* [  wrangler.toml ](#tab-panel-12296)
 
 JSONC
 

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Data loss prevention
 
-**Last reviewed:**  over 5 years ago
-
 Protect sensitive data to prevent data loss, and send alerts to a webhooks server in the event of a data breach.
 
 If you want to get started quickly, click on the button below.
@@ -22,10 +20,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11722)
-* [  TypeScript ](#tab-panel-11723)
-* [  Python ](#tab-panel-11724)
-* [  Hono ](#tab-panel-11725)
+* [  JavaScript ](#tab-panel-11762)
+* [  TypeScript ](#tab-panel-11763)
+* [  Python ](#tab-panel-11764)
+* [  Hono ](#tab-panel-11765)
 
 JavaScript
 

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Connect to a MySQL database with Cloudflare Workers
 
-**Last reviewed:**  about 1 year ago
-
 In this tutorial, you will learn how to create a Cloudflare Workers application and connect it to a MySQL database using [TCP Sockets](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/) and [Hyperdrive](https://developers.cloudflare.com/hyperdrive/). The Workers application you create in this tutorial will interact with a product database inside of MySQL.
 
 Note
@@ -75,8 +73,8 @@ cd mysql-tutorial
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-12263)
-* [  wrangler.toml ](#tab-panel-12264)
+* [  wrangler.jsonc ](#tab-panel-12303)
+* [  wrangler.toml ](#tab-panel-12304)
 
 JSONC
 
@@ -102,8 +100,8 @@ npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="
 
 This command outputs the Hyperdrive configuration `id` that will be used for your Hyperdrive [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/). Set up your binding by specifying the `id` in the Wrangler file.
 
-* [  wrangler.jsonc ](#tab-panel-12261)
-* [  wrangler.toml ](#tab-panel-12262)
+* [  wrangler.jsonc ](#tab-panel-12301)
+* [  wrangler.toml ](#tab-panel-12302)
 
 JSONC
 
@@ -146,8 +144,8 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-12265)
-* [  wrangler.toml ](#tab-panel-12266)
+* [  wrangler.jsonc ](#tab-panel-12305)
+* [  wrangler.toml ](#tab-panel-12306)
 
 JSONC
 

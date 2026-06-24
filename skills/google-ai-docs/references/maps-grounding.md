@@ -1,5 +1,3 @@
-# Grounding with Google Maps
-
 > [!NOTE]
 > **Note:** This version of the page covers the **Interactions API** . You can use the toggle on this page to switch to the [generateContent API version of this page](https://ai.google.dev/gemini-api/docs/generate-content/maps-grounding).
 
@@ -407,13 +405,10 @@ license terms, see the [Google Maps and Google Earth legal notices](https://www.
 
 ## Pricing and rate limits
 
-Grounding with Google Maps pricing is based on queries. The current rate is
-**$25 / 1K grounded prompts**. The free tier also has up to 500 requests per day
-available. A request is only counted towards the quota when
-a prompt successfully returns at least one Google Maps grounded result (i.e.,
-results containing at least one Google Maps source). If multiple queries are
-sent to Google Maps from a single request, it counts as one request towards the
-rate limit.
+Grounding with Google Maps pricing differs depending on the model generation:
+
+- **Gemini 3 models:** Your project is billed for each **search query** that the model decides to execute. A single **search prompt** (your API request to the model) might result in the model executing multiple search queries to find the necessary information. Each of these queries counts as a billable use of the tool.
+- **Gemini 2.5 and older models:** Your project is billed per **search prompt**. A request is only billed if the prompt successfully returns at least one Google Maps grounded result, regardless of how many individual search queries the model performed internally to get that result.
 
 For detailed pricing information, see the [Gemini API pricing page](https://ai.google.dev/gemini-api/docs/pricing).
 

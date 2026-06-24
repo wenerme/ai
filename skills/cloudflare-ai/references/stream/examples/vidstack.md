@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Vidstack
 
-**Last reviewed:**  almost 4 years ago
-
 Example of video playback with Cloudflare Stream and Vidstack
 
 ## Installation

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Understanding Email Security Deployments
 
-**Last reviewed:**  7 months ago
-
 ## Introduction
 
 Email continues to be a mission critical method for communication between people and organizations. This also makes email an ideal channel for attackers to exploit in their attempts to take over accounts, steal data, and gain access to internal systems. Being able to reduce spam, defeat phishing, and malware attacks is critical for the security of your organization. Over 90% of cybersecurity incidents begin with an email attack.

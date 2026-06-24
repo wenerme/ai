@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # CockroachDB
 
-**Last reviewed:**  over 2 years ago
-
 Connect Hyperdrive to a CockroachDB database.
 
 This example shows you how to connect Hyperdrive to a [CockroachDB ↗](https://www.cockroachlabs.com/) database cluster. CockroachDB is a PostgreSQL-compatible distributed SQL database with strong consistency guarantees.
@@ -61,8 +59,8 @@ postgres://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
 
 Most database providers will provide a connection string you can directly copy-and-paste directly into Hyperdrive.
 
-* [ Dashboard ](#tab-panel-8801)
-* [ Wrangler CLI ](#tab-panel-8802)
+* [ Dashboard ](#tab-panel-8841)
+* [ Wrangler CLI ](#tab-panel-8842)
 
 To create a Hyperdrive configuration with the Cloudflare dashboard:
 
@@ -81,8 +79,8 @@ npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="
 ```
 2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-  * [  wrangler.jsonc ](#tab-panel-8799)
-  * [  wrangler.toml ](#tab-panel-8800)
+  * [  wrangler.jsonc ](#tab-panel-8839)
+  * [  wrangler.toml ](#tab-panel-8840)
 JSONC
 ```
 {  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "hyperdrive-example",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-24",  "compatibility_flags": [    "nodejs_compat"  ],  // Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"    }  ]}
@@ -145,8 +143,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-8803)
-* [  wrangler.toml ](#tab-panel-8804)
+* [  wrangler.jsonc ](#tab-panel-8843)
+* [  wrangler.toml ](#tab-panel-8844)
 
 JSONC
 

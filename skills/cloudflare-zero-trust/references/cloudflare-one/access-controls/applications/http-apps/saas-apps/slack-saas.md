@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Slack
 
-**Last reviewed:**  about 2 years ago
-
 This guide covers how to configure [Slack ↗](https://slack.com/help/articles/203772216-SAML-single-sign-on) as a SAML application in Cloudflare One.
 
 ## Prerequisites
@@ -43,8 +41,8 @@ This guide covers how to configure [Slack ↗](https://slack.com/help/articles/2
 
 ## 3\. Add a SAML SSO provider to Slack
 
-* [ business+ plan ](#tab-panel-7187)
-* [ enterprise grid plan ](#tab-panel-7188)
+* [ business+ plan ](#tab-panel-7227)
+* [ enterprise grid plan ](#tab-panel-7228)
 
 1. In Slack, go to **Settings & administrations** \> **Workspace settings** \> **Authentication**.
 2. Select **Configure**.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Create different resources using Pulumi and Wrangler
 
-**Last reviewed:**  over 1 year ago
-
 This example creates a zone and other resources using two different strategies:
 
 * Use Pulumi for some resources supported by the Cloudflare Pulumi provider.

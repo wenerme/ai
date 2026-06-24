@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Send Emails With Postmark
 
-**Last reviewed:**  about 2 years ago
-
 In this tutorial, you will learn how to send transactional emails from Workers using [Postmark ↗](https://postmarkapp.com/). At the end of this tutorial, you’ll be able to:
 
 * Create a Worker to send emails.

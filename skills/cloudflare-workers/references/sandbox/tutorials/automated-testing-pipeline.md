@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Automated testing pipeline
 
-**Last reviewed:**  8 months ago
-
 Build a testing pipeline that clones Git repositories, installs dependencies, runs tests, and reports results.
 
 **Time to complete**: 25 minutes

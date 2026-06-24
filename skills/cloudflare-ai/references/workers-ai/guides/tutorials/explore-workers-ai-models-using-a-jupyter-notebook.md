@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Explore Workers AI Models Using a Jupyter Notebook
 
-**Last reviewed:**  almost 2 years ago
-
 A handy way to explore all of the models available on [Workers AI](https://developers.cloudflare.com/workers-ai) is to use a [Jupyter Notebook ↗](https://jupyter.org/).
 
 You can [download the Workers AI notebook](https://developers.cloudflare.com/workers-ai-notebooks/cloudflare-workers-ai.ipynb) or view the embedded notebook below.

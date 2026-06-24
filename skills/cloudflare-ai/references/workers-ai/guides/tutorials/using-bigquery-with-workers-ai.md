@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Using BigQuery with Workers AI
 
-**Last reviewed:**  over 1 year ago
-
 The easiest way to get started with [Workers AI](https://developers.cloudflare.com/workers-ai/) is to try it out in the [Multi-modal Playground ↗](https://multi-modal.ai.cloudflare.com/) and the [LLM playground ↗](https://playground.ai.cloudflare.com/). If you decide that you want to integrate your code with Workers AI, you may then decide to use its [REST API endpoints](https://developers.cloudflare.com/workers-ai/get-started/rest-api/) or a [Worker binding](https://developers.cloudflare.com/workers-ai/configuration/bindings/).
 
 But what about the data? What if you want these models to ingest data that is stored outside Cloudflare?
@@ -238,8 +236,8 @@ formattedResults = formattedResults?.map((formattedResult, i) => {          if (
 
 Uncomment the following lines from the Wrangler file in your project:
 
-* [  wrangler.jsonc ](#tab-panel-11398)
-* [  wrangler.toml ](#tab-panel-11399)
+* [  wrangler.jsonc ](#tab-panel-11438)
+* [  wrangler.toml ](#tab-panel-11439)
 
 JSONC
 

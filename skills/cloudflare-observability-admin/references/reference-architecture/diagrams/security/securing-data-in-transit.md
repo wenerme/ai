@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Securing data in transit
 
-**Last reviewed:**  about 2 years ago
-
 ## Introduction
 
 Data in transit typically means when it's traveling over the network. Because the Internet is made up of many thousands of networks, it is important to ensure your data is secure as it moves from device to server and back. These days, most common activities that generate data in transit are related to:

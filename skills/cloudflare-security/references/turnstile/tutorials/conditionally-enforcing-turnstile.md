@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Conditionally enforce Turnstile
 
-**Last reviewed:**  about 1 year ago
-
 This tutorial explains how to conditionally enforce Turnstile based on the incoming request, such as a pre-shared secret in a header or a specific IP address.
 
 ## Overview

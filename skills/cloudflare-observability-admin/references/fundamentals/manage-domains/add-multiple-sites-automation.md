@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Add multiple sites via automation
 
-**Last reviewed:**  5 months ago
-
 To add multiple sites to Cloudflare at once and more efficiently, you can do so via the Cloudflare API.
 
 Adding multiple sites can be useful when you:

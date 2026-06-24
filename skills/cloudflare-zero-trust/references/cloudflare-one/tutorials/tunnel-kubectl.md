@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Use Cloudflare Tunnels with Kubernetes client-go credential plugins
 
-**Last reviewed:**  over 1 year ago
-
 This tutorial explains how to use Cloudflare Tunnels with Kubernetes client-go credential plugins for authentication. By following these steps, you can securely access your Kubernetes cluster through a Cloudflare Tunnel using the `kubectl` command-line tool.
 
 ## Prerequisites

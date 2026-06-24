@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # PagerDuty
 
-**Last reviewed:**  almost 2 years ago
-
 This guide covers how to configure [PagerDuty ↗](https://support.pagerduty.com/docs/sso) as a SAML application in Cloudflare One.
 
 ## Prerequisites

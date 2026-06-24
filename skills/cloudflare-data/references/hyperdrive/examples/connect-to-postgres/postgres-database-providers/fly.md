@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Fly
 
-**Last reviewed:**  about 1 year ago
-
 Connect Hyperdrive to a Fly Postgres database instance.
 
 This example shows you how to connect Hyperdrive to a Fly Postgres database instance.
@@ -65,8 +63,8 @@ postgres://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
 
 Most database providers will provide a connection string you can directly copy-and-paste directly into Hyperdrive.
 
-* [ Dashboard ](#tab-panel-8813)
-* [ Wrangler CLI ](#tab-panel-8814)
+* [ Dashboard ](#tab-panel-8853)
+* [ Wrangler CLI ](#tab-panel-8854)
 
 To create a Hyperdrive configuration with the Cloudflare dashboard:
 
@@ -85,8 +83,8 @@ npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="
 ```
 2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-  * [  wrangler.jsonc ](#tab-panel-8811)
-  * [  wrangler.toml ](#tab-panel-8812)
+  * [  wrangler.jsonc ](#tab-panel-8851)
+  * [  wrangler.toml ](#tab-panel-8852)
 JSONC
 ```
 {  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "hyperdrive-example",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-24",  "compatibility_flags": [    "nodejs_compat"  ],  // Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"    }  ]}
@@ -149,8 +147,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-8815)
-* [  wrangler.toml ](#tab-panel-8816)
+* [  wrangler.jsonc ](#tab-panel-8855)
+* [  wrangler.toml ](#tab-panel-8856)
 
 JSONC
 

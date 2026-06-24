@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Store and Catalog AI Generated Images with R2 (Part 3)
 
-**Last reviewed:**  over 1 year ago
-
 In the final part of the AI Image Playground series, Kristian teaches how to utilize Cloudflare's [R2](https://developers.cloudflare.com/r2) object storage in order to maintain and keep track of each AI generated image.
 
 Refer to the AI Image Playground [GitHub repository ↗](https://github.com/kristianfreeman/workers-ai-image-playground) to follow along locally.

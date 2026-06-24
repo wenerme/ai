@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Set up and use a Prisma Postgres database
 
-**Last reviewed:**  over 1 year ago
-
 [Prisma Postgres ↗](https://www.prisma.io/postgres) is a managed, serverless PostgreSQL database. It supports features like connection pooling, caching, real-time subscriptions, and query optimization recommendations.
 
 In this tutorial, you will learn how to:

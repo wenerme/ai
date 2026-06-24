@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Streamlined WAF deployment across zones and applications
 
-**Last reviewed:**  over 1 year ago
-
 ## Introduction
 
 Security perimeters have become less defined compared to the traditional "Castle and Moat" deployments that were popular in the past. Within a fixed perimeter, it was relatively easier to secure multiple applications using a single Web Application Firewall (WAF) deployment inside a datacenter. Today this approach does not provide enough flexibility as applications and services expand beyond the traditional datacenter. There are several good reasons to configure networks and services in a hybrid approach and to adopt SaaS platforms, so it is valuable to update the WAF approach to cover this scenario.

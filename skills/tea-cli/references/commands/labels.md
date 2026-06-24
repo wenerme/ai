@@ -2,9 +2,13 @@
 
 Manage issue labels
 
+**--exclude-org**: Exclude organization labels from the list
+
 **--limit, --lm**="": specify limit of items per page (default: 30)
 
 **--login, -l**="": Use a different Gitea Login. Optional
+
+**--org**="": List organization labels
 
 **--output, -o**="": Output format. (simple, table, csv, tsv, yaml, json)
 
@@ -20,9 +24,13 @@ Manage issue labels
 
 List labels
 
+**--exclude-org**: Exclude organization labels from the list
+
 **--limit, --lm**="": specify limit of items per page (default: 30)
 
 **--login, -l**="": Use a different Gitea Login. Optional
+
+**--org**="": List organization labels
 
 **--output, -o**="": Output format. (simple, table, csv, tsv, yaml, json)
 

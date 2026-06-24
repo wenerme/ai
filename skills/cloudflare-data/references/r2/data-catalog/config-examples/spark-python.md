@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Spark (PySpark)
 
-**Last reviewed:**  about 1 year ago
-
 Below is an example of using [PySpark ↗](https://spark.apache.org/docs/latest/api/python/index.html) to connect to R2 Data Catalog.
 
 ## Prerequisites

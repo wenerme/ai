@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Zendesk
 
-**Last reviewed:**  about 2 years ago
-
 This guide covers how to configure [Zendesk ↗](https://support.zendesk.com/hc/en-us/articles/4408887505690-Enabling-SAML-single-sign-on#topic%5Fu54%5Fwc3%5Fz2b) as a SAML application in Cloudflare One.
 
 ## Prerequisites

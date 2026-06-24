@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Getting started
 
-**Last reviewed:**  about 2 years ago
-
 In this guide, you will learn how to set up and use your first AI Gateway.
 
 ## Get your account ID and authentication token
@@ -41,8 +39,8 @@ Create a gateway manually
 
 You can also create gateways manually with a custom name and configuration through the dashboard or API.
 
-* [ Dashboard ](#tab-panel-6622)
-* [ API ](#tab-panel-6623)
+* [ Dashboard ](#tab-panel-6662)
+* [ API ](#tab-panel-6663)
 
 [ Go to **AI Gateway** ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.

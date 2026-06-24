@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Protect data center networks
 
-**Last reviewed:**  over 1 year ago
-
 ## Introduction
 
 Network security teams have traditionally used various network firewalls or security appliances at the perimeter to protect their data center networks against both external and internal threats, for example, DDoS attacks, malware, ransomware, phishing, leaking of sensitive information, etc. In addition, the same or additional firewall or security appliances are deployed at the [DMZ ↗](https://en.wikipedia.org/wiki/DMZ%5F%28computing%29) or core layer of the data center networks to control and secure internal private network traffic routed between multiple data center sites across their wide-area network (WAN).

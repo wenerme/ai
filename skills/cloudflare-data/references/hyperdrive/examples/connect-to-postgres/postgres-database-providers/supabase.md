@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Supabase
 
-**Last reviewed:**  over 2 years ago
-
 Connect Hyperdrive to a Supabase Postgres database.
 
 This example shows you how to connect Hyperdrive to a [Supabase ↗](https://supabase.com/) Postgres database.
@@ -52,8 +50,8 @@ postgres://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
 
 Most database providers will provide a connection string you can directly copy-and-paste directly into Hyperdrive.
 
-* [ Dashboard ](#tab-panel-8863)
-* [ Wrangler CLI ](#tab-panel-8864)
+* [ Dashboard ](#tab-panel-8903)
+* [ Wrangler CLI ](#tab-panel-8904)
 
 To create a Hyperdrive configuration with the Cloudflare dashboard:
 
@@ -72,8 +70,8 @@ npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="
 ```
 2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-  * [  wrangler.jsonc ](#tab-panel-8861)
-  * [  wrangler.toml ](#tab-panel-8862)
+  * [  wrangler.jsonc ](#tab-panel-8901)
+  * [  wrangler.toml ](#tab-panel-8902)
 JSONC
 ```
 {  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "hyperdrive-example",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-24",  "compatibility_flags": [    "nodejs_compat"  ],  // Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"    }  ]}
@@ -136,8 +134,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-8865)
-* [  wrangler.toml ](#tab-panel-8866)
+* [  wrangler.jsonc ](#tab-panel-8905)
+* [  wrangler.toml ](#tab-panel-8906)
 
 JSONC
 

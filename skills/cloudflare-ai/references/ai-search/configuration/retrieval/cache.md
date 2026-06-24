@@ -29,7 +29,7 @@ To see if a response came from the cache, check the `cf-aig-cache-status` header
 Consider these behaviors when using similarity caching:
 
 * **Volatile Cache**: If two similar requests hit at the same time, the first might not cache in time for the second to use it, resulting in a `MISS`.
-* **30-Day Cache**: Cached responses last 30 days, then expire automatically. No custom durations for now.
+* **Configurable duration**: Cached responses expire based on the instance's `cache_ttl` setting. The default is 48 hours.
 * **Data Dependency**: Cached responses are tied to specific document chunks. If those chunks change or get deleted, the cache clears to keep answers fresh.
 
 ## How similarity matching works
@@ -54,6 +54,37 @@ The similarity threshold decides how close two prompts need to be to reuse a cac
 | Broad     | flexible\_friend        | Moderate match, more hits   | "What's the weather like today?" matches with "Tell me today's weather"         |
 | Loose     | anything\_goes          | Low similarity, max reuse   | "What's the weather like today?" matches with "Give me the forecast"            |
 
+## Set cache duration
+
+Set `cache_ttl` when creating or updating an instance to control how long the instance retains cached responses. Allowed values are:
+
+| Duration   | API value |
+| ---------- | --------- |
+| 10 minutes | 600       |
+| 30 minutes | 1800      |
+| 1 hour     | 3600      |
+| 2 hours    | 7200      |
+| 6 hours    | 21600     |
+| 12 hours   | 43200     |
+| 24 hours   | 86400     |
+| 48 hours   | 172800    |
+| 72 hours   | 259200    |
+| 6 days     | 518400    |
+
+## Purge cached responses
+
+To clear all cached responses for an instance immediately, use the purge cache operation:
+
+Terminal window
+
+```
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/instances/$INSTANCE_NAME/purge_cache" \  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```
+
+Purging the cache rotates the instance's internal cache key, so new queries do not reuse previous cached responses.
+
+You can also purge cached responses from the instance settings page in the Cloudflare dashboard.
+
 ## Per-request cache override
 
 You can override the instance-level cache setting on a per-request basis using the `cache` parameter in `ai_search_options`:
@@ -66,6 +97,6 @@ const results = await instance.search({  messages: [{ role: "user", content: "Wh
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/retrieval/cache/#page","headline":"Similarity cache · Cloudflare AI Search docs","description":"Speed up AI Search responses by caching and reusing answers for semantically similar queries.","url":"https://developers.cloudflare.com/ai-search/configuration/retrieval/cache/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/retrieval/cache/#page","headline":"Similarity cache · Cloudflare AI Search docs","description":"Speed up AI Search responses by caching and reusing answers for semantically similar queries.","url":"https://developers.cloudflare.com/ai-search/configuration/retrieval/cache/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/configuration/retrieval/","name":"Retrieval"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-search/configuration/retrieval/cache/","name":"Similarity cache"}}]}
 ```

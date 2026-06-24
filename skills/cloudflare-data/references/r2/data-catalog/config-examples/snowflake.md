@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Snowflake
 
-**Last reviewed:**  about 1 year ago
-
 Below is an example of using [Snowflake ↗](https://docs.snowflake.com/en/user-guide/tables-iceberg-configure-catalog-integration-rest) to connect and query data from R2 Data Catalog (read-only).
 
 ## Prerequisites

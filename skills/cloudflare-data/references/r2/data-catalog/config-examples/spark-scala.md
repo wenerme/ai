@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Spark (Scala)
 
-**Last reviewed:**  about 1 year ago
-
 Below is an example of how you can build an [Apache Spark ↗](https://spark.apache.org/) application (with Scala) which connects to R2 Data Catalog. This application is built to run locally, but it can be adapted to run on a cluster.
 
 ## Prerequisites

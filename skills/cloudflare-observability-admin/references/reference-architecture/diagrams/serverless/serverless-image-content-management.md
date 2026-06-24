@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Serverless image content management
 
-**Last reviewed:**  over 2 years ago
-
 ## Introduction
 
 In this reference architecture diagram, we reveal how to leverage various components of Cloudflare’s ecosystem to construct a scalable image management solution. This solution integrates moderation principles via Cloudflare's Workers AI platform and performs image classification through inference at the edge. The storage of images is handled by Cloudflare's R2 product, an S3 API-like object storage system, while metadata is stored in a key/value store to enable content augmentation.

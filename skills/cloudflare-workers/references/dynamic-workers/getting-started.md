@@ -19,7 +19,7 @@ Dynamic Workers support two loading modes:
 * `load(code)` creates a fresh Dynamic Worker for one-time execution.
 * `get(id, callback)` caches a Dynamic Worker by ID so it can stay warm across requests.
 
-`load()` is best for one-time code execution, for example when using [Code Mode](https://developers.cloudflare.com/agents/model-context-protocol/protocol/codemode/). `get(id, callback)` is better when the same code will receive subsequent requests, for example when you are building applications.
+`load()` is best for one-time code execution, for example when using [Code Mode](https://developers.cloudflare.com/agents/tools/codemode/). `get(id, callback)` is better when the same code will receive subsequent requests, for example when you are building applications.
 
 ### Try it out
 
@@ -41,8 +41,8 @@ In order for a Worker to be able to create Dynamic Workers, it needs a Worker Lo
 
 Configure it like so, in your Worker's `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-8507)
-* [  wrangler.toml ](#tab-panel-8508)
+* [  wrangler.jsonc ](#tab-panel-8547)
+* [  wrangler.toml ](#tab-panel-8548)
 
 JSONC
 
@@ -62,8 +62,8 @@ Your Worker will then have access to the Worker Loader API via `env.LOADER`.
 
 Use `env.LOADER.load()` to create a Dynamic Worker and run it:
 
-* [  JavaScript ](#tab-panel-8515)
-* [  TypeScript ](#tab-panel-8516)
+* [  JavaScript ](#tab-panel-8555)
+* [  TypeScript ](#tab-panel-8556)
 
 JavaScript
 
@@ -95,8 +95,8 @@ If you expect to load the exact same Worker more than once, use [get(id, callbac
 
 The callback you provide will only be called if the Worker is not already loaded. This lets you skip loading the code from storage when the Worker is already running.
 
-* [  JavaScript ](#tab-panel-8509)
-* [  TypeScript ](#tab-panel-8510)
+* [  JavaScript ](#tab-panel-8549)
+* [  TypeScript ](#tab-panel-8550)
 
 JavaScript
 
@@ -124,8 +124,8 @@ For the full list of supported module types, refer to the [API reference](https:
 
 To run Python code in a Dynamic Worker, you must include the `python_workers` compatibility flag. Without this flag, the Dynamic Worker will fail to load the Python runtime.
 
-* [  JavaScript ](#tab-panel-8511)
-* [  TypeScript ](#tab-panel-8512)
+* [  JavaScript ](#tab-panel-8551)
+* [  TypeScript ](#tab-panel-8552)
 
 JavaScript
 
@@ -147,8 +147,8 @@ If your Dynamic Worker needs TypeScript compilation or npm dependencies, the cod
 
 [@cloudflare/worker-bundler ↗](https://www.npmjs.com/package/@cloudflare/worker-bundler) is a library that handles this for you. Use it to bundle source files into a format that `load()` and `get()` accept:
 
-* [  JavaScript ](#tab-panel-8513)
-* [  TypeScript ](#tab-panel-8514)
+* [  JavaScript ](#tab-panel-8553)
+* [  TypeScript ](#tab-panel-8554)
 
 JavaScript
 
@@ -169,6 +169,6 @@ const worker = env.LOADER.get("my-worker", async () => {  const { mainModule, mo
 `createWorker()` handles TypeScript compilation, dependency resolution from npm, and bundling. It returns `mainModule` and `modules` ready to pass directly to `load()` or `get()`.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/getting-started/#page","headline":"Getting started · Cloudflare Dynamic Workers docs","description":"Load and run a dynamic Worker.","url":"https://developers.cloudflare.com/dynamic-workers/getting-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/getting-started/#page","headline":"Getting started · Cloudflare Dynamic Workers docs","description":"Load and run a dynamic Worker.","url":"https://developers.cloudflare.com/dynamic-workers/getting-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dynamic-workers/","name":"Dynamic Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/dynamic-workers/getting-started/","name":"Getting started"}}]}
 ```

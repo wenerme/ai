@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Run Claude Code on a Sandbox
 
-**Last reviewed:**  8 months ago
-
 Build a Worker that takes a repository URL and a task description and uses Sandbox SDK to run Claude Code to implement your task.
 
 **Time to complete:** 5 minutes

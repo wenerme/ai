@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Magic Transit Reference Architecture
 
-**Last reviewed:**  over 3 years ago
-
 ## Introduction
 
 The purpose of this document is to describe the key architecture, functionalities, and network deployment options of [Cloudflare Magic Transit](https://developers.cloudflare.com/magic-transit/) — a BGP-based DDoS protection and traffic acceleration service for Internet-facing network infrastructure.

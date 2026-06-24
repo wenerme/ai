@@ -2,22 +2,60 @@
 title: "가격 정책"
 description: "이 문서에는 현재 파트너 노드의 가격 정책이 나와 있습니다. 모든 가격은 크레딧 단위로 표시됩니다(211 크레딧 = 1 USD)."
 mode: wide
-translationSourceHash: 2cc2a271
+translationSourceHash: 41a5c5ff
 translationFrom: tutorials/partner-nodes/pricing.mdx
+translationBlockHashes:
+  "_intro": 845592d4
+  "Beeble": 885c0b0f
+  "BFL": c049375b
+  "Anthropic": 7966fafa
+  "Bria": c7c492a1
+  "ByteDance": ab10ad06
+  "ElevenLabs": 6adeca08
+  "Freepik": cf21eaf2
+  "Google": 22aa3ea9
+  "HappyHorse": 1fdc6023
+  "Hitpaw": 3f19a1ce
+  "Ideogram": 6b1fa01c
+  "Krea": 67613c4e
+  "Kling": ba141835
+  "Lightricks": c29a5b7e
+  "Luma": 0fadfe09
+  "Meshy": 3a0f5a43
+  "Minimax": e2e387a5
+  "Moonvalley": 8ca8c186
+  "OpenAI": 6842a6d6
+  "OpenRouter": a437d408
+  "Pika": 117ad27b
+  "Pixverse": 6fa7019b
+  "Quiver": 199f7f57
+  "Recraft": 48d0028a
+  "Reve": 82943ad5
+  "Rodin": 69c74113
+  "Runway": f2115adb
+  "Sonilo": 9b1be9b8
+  "Stability AI": 488faf10
+  "Tencent": 5d02a5cc
+  "Topaz": 8f39ff22
+  "Tripo": 2f8e0275
+  "Vidu": 50f09885
+  "WAN": b01edeb4
+  "Wavespeed": 17bdbfd6
+  "xAI": e3f7e425
+  "Other (Cloud)": 9101685b
 ---
-
 다음 표에는 현재 파트너 노드의 가격 정책이 나와 있습니다. 모든 가격은 크레딧 단위로 표시됩니다.
 
 211 크레딧 = 1 USD
 
-## 비블
+## Beeble
 
 | 제품 이름               | 구성                             | 크레딧       | 카테고리 |
 | :----------------------- | :---------------------------------------- | :------------ | :------- |
-| 스위치X | 모델: switchx, output_type: video, resolution: 720p | 30.17 / 30프레임 | 비디오    |
-| 스위치X | 모델: switchx, output_type: video, resolution: 1080p | 90.52 / 30프레임 | 비디오    |
-| 스위치X | 모델: switchx, output_type: image, resolution: 720p  | 30.17 / 실행       | 이미지    |
-| 스위치X | 모델: switchx, output_type: image, resolution: 1080p | 90.52 / 실행       | 이미지    |
+| SwitchX | model: switchx, output_type: video, resolution: 720p | 30.17 / 30프레임 | 비디오    |
+| SwitchX | model: switchx, output_type: video, resolution: 1080p | 90.52 / 30프레임 | 비디오    |
+| SwitchX | model: switchx, output_type: image, resolution: 720p  | 30.17 / 실행       | 이미지    |
+| SwitchX | model: switchx, output_type: image, resolution: 1080p | 90.52 / 실행       | 이미지    |
 
 ## BFL
 
@@ -109,7 +147,7 @@ Anthropic 파트너 노드는 공개 Anthropic API와 동일한 기본 USD 사�
 | BytePlus 비디오 생성 제품 (K 토큰당)     | model: dreamina-seedance-2-0-fast, resolution: 1080P, video_type: image-to-video (비디오 입력 없음: 텍스트 또는 이미지) | 4.226 / K 토큰 | 비디오    |
 | BytePlus 비디오 생성 제품 (K 토큰당)     | model: dreamina-seedance-2-0-fast, resolution: 1080P, video_type: video-to-video (비디오 입력 있음)              | 2.488 / K 토큰 | 비디오    |
 
-> **Seedance 2.0 토큰 계산:** 출력 토큰 = (입력 비디오 길이 + 출력 비디오 길이) × 출력 비디오 길이 × 출력 비디오 너비 × 출력 비디오 프레임 레이트 ÷ 1024. 입력이 텍스트, 이미지, 또는 오디오인 경우 입력 길이 = 0. Seedance 2.0은 24fps로 출력합니다. 비디오-투-비디오 입력에는 최소 토큰 사용 제한이 적용됩니다. **K 토큰당 크레딧**은 출력 해상도에 따라 달라집니다: 동일한 모델과 `video_type`에서 **1080P는 720P 요금의 2.5배**입니다.
+> **Seedance 2.0 토큰 계산:** 출력 토큰 = (입력 비디오 지속 시간 + 출력 비디오 지속 시간) × 출력 비디오 길이 × 출력 비디오 너비 × 출력 비디오 프레임 레이트 ÷ 1024. 입력이 텍스트, 이미지, 또는 오디오인 경우 입력 지속 시간 = 0. Seedance 2.0은 24fps로 출력합니다. 비디오-투-비디오 입력에는 최소 토큰 사용 제한이 적용됩니다. **K 토큰당 크레딧**은 출력 해상도에 따라 달라집니다: 동일한 모델과 `video_type`에서 **1080P는 720P 요금의 2.5배**입니다.
 
 ## ElevenLabs
 
@@ -144,79 +182,57 @@ Anthropic 파트너 노드는 공개 Anthropic API와 동일한 기본 USD 사�
 | prod-v1-Veo 2 제품                       | model: veo-2.0-generate-001                                | 105.5 / 실행        | 이미지    |
 | prod-v1-Veo 2 제품                       | model: veo-3.0-generate-preview                            | 158.25 / 실행       | 이미지    |
 | Gemini 입력 텍스트 토큰 (100만당) 제품   | model: gemini-2.5-flash-image                              | 63.3 / 1M 토큰   | 텍스트     |
-| Gemini 입력 텍스트 토큰 (100만당) 제품   | model: gemini-2.5-flash-image-preview                      | 63.3 / 1M 토큰   | 텍스트     |
 | Gemini 입력 텍스트 토큰 (100만당) 제품   | model: gemini-2.5-flash                                    | 63.3 / 1M 토큰   | 텍스트     |
-| Gemini 입력 텍스트 토큰 (100만당) 제품   | model: gemini-2.5-flash-preview-04-17                      | 63.3 / 1M 토큰   | 텍스트     |
 | Gemini 입력 텍스트 토큰 (100만당) 제품   | model: gemini-2.5-pro                                      | 263.75 / 1M 토큰 | 텍스트     |
-| Gemini 입력 텍스트 토큰 (100만당) 제품   | model: gemini-2.5-pro-preview-05-06                        | 263.75 / 1M 토큰 | 텍스트     |
 | Gemini 입력 텍스트 토큰 (100만당) 제품   | model: gemini-3.1-flash-image-preview                      | 105.5 / 1M 토큰  | 텍스트     |
 | Gemini 입력 텍스트 토큰 (100만당) 제품   | model: gemini-3.1-pro-preview                              | 422 / 1M 토큰    | 텍스트     |
 | Gemini 입력 텍스트 토큰 (100만당) 제품   | model: gemini-3-pro-image-preview                          | 422 / 1M 토큰    | 텍스트     |
 | Gemini 입력 텍스트 토큰 (100만당) 제품   | model: gemini-3-pro-preview                                | 422 / 1M 토큰    | 텍스트     |
 | Gemini 출력 텍스트 토큰 (100만당) 제품  | model: gemini-2.5-flash-image                              | 527.5 / 1M 토큰  | 텍스트     |
-| Gemini 출력 텍스트 토큰 (100만당) 제품  | model: gemini-2.5-flash-image-preview                      | 527.5 / 1M 토큰  | 텍스트     |
 | Gemini 출력 텍스트 토큰 (100만당) 제품  | model: gemini-2.5-flash                                    | 527.5 / 1M 토큰  | 텍스트     |
-| Gemini 출력 텍스트 토큰 (100만당) 제품  | model: gemini-2.5-flash-preview-04-17                      | 527.5 / 1M 토큰  | 텍스트     |
 | Gemini 출력 텍스트 토큰 (100만당) 제품  | model: gemini-2.5-pro                                      | 2110 / 1M 토큰   | 텍스트     |
-| Gemini 출력 텍스트 토큰 (100만당) 제품  | model: gemini-2.5-pro-preview-05-06                        | 2110 / 1M 토큰   | 텍스트     |
 | Gemini 출력 텍스트 토큰 (100만당) 제품  | model: gemini-3.1-flash-image-preview                      | 633 / 1M 토큰    | 텍스트     |
 | Gemini 출력 텍스트 토큰 (100만당) 제품  | model: gemini-3.1-pro-preview                              | 2532 / 1M 토큰   | 텍스트     |
 | Gemini 출력 텍스트 토큰 (100만당) 제품  | model: gemini-3-pro-image-preview                          | 2532 / 1M 토큰   | 텍스트     |
 | Gemini 출력 텍스트 토큰 (100만당) 제품  | model: gemini-3-pro-preview                                | 2532 / 1M 토큰   | 텍스트     |
 | Gemini 입력 이미지 토큰 (100만당) 제품  | model: gemini-2.5-flash-image                              | 63.3 / 1M 토큰   | 이미지    |
-| Gemini 입력 이미지 토큰 (100만당) 제품  | model: gemini-2.5-flash-image-preview                      | 63.3 / 1M 토큰   | 이미지    |
 | Gemini 입력 이미지 토큰 (100만당) 제품  | model: gemini-2.5-flash                                    | 63.3 / 1M 토큰   | 이미지    |
-| Gemini 입력 이미지 토큰 (100만당) 제품  | model: gemini-2.5-flash-preview-04-17                      | 63.3 / 1M 토큰   | 이미지    |
 | Gemini 입력 이미지 토큰 (100만당) 제품  | model: gemini-2.5-pro                                      | 263.75 / 1M 토큰 | 이미지    |
-| Gemini 입력 이미지 토큰 (100만당) 제품  | model: gemini-2.5-pro-preview-05-06                        | 263.75 / 1M 토큰 | 이미지    |
 | Gemini 입력 이미지 토큰 (100만당) 제품  | model: gemini-3.1-flash-image-preview                      | 105.5 / 1M 토큰  | 이미지    |
 | Gemini 입력 이미지 토큰 (100만당) 제품  | model: gemini-3.1-pro-preview                              | 422 / 1M 토큰    | 이미지    |
 | Gemini 입력 이미지 토큰 (100만당) 제품  | model: gemini-3-pro-image-preview                          | 422 / 1M 토큰    | 이미지    |
 | Gemini 입력 이미지 토큰 (100만당) 제품  | model: gemini-3-pro-preview                                | 422 / 1M 토큰    | 이미지    |
 | Gemini 출력 이미지 토큰 (100만당) 제품 | model: gemini-2.5-flash-image                              | 6330 / 1M 토큰   | 이미지    |
-| Gemini 출력 이미지 토큰 (100만당) 제품 | model: gemini-2.5-flash-image-preview                      | 6330 / 1M 토큰   | 이미지    |
-| Gemini 출력 이미지 토큰 (100만당) 제품 | model: gemini-2.5-flash-preview-04-17                      | 3165 / 1M 토큰   | 이미지    |
-| Gemini 출력 이미지 토큰 (100만당) 제품 | model: gemini-2.5-pro-preview-05-06                        | 7385 / 1M 토큰   | 이미지    |
 | Gemini 출력 이미지 토큰 (100만당) 제품 | model: gemini-3.1-flash-image-preview                      | 12660 / 1M 토큰  | 이미지    |
 | Gemini 출력 이미지 토큰 (100만당) 제품 | model: gemini-3.1-pro-preview                              | 25320 / 1M 토큰  | 이미지    |
 | Gemini 출력 이미지 토큰 (100만당) 제품 | model: gemini-3-pro-image-preview                          | 25320 / 1M 토큰  | 이미지    |
 | Nano Banana 2 Image Generation              | model: gemini-3.1-flash-image-preview, resolution: 2K      | 21.31 / 실행        | 이미지    |
 | Nano Banana 2 Image Generation              | model: gemini-3.1-flash-image-preview, resolution: 4K      | 32.49 / 실행        | 이미지    |
 | Gemini 입력 비디오 토큰 (100만당) 제품  | model: gemini-2.5-flash-image                              | 63.3 / 1M 토큰   | 비디오    |
-| Gemini 입력 비디오 토큰 (100만당) 제품  | model: gemini-2.5-flash-image-preview                      | 63.3 / 1M 토큰   | 비디오    |
 | Gemini 입력 비디오 토큰 (100만당) 제품  | model: gemini-2.5-flash                                    | 63.3 / 1M 토큰   | 비디오    |
-| Gemini 입력 비디오 토큰 (100만당) 제품  | model: gemini-2.5-flash-preview-04-17                      | 63.3 / 1M 토큰   | 비디오    |
 | Gemini 입력 비디오 토큰 (100만당) 제품  | model: gemini-2.5-pro                                      | 263.75 / 1M 토큰 | 비디오    |
-| Gemini 입력 비디오 토큰 (100만당) 제품  | model: gemini-2.5-pro-preview-05-06                        | 263.75 / 1M 토큰 | 비디오    |
 | Gemini 입력 비디오 토큰 (100만당) 제품  | model: gemini-3.1-pro-preview                              | 422 / 1M 토큰    | 비디오    |
 | Gemini 입력 비디오 토큰 (100만당) 제품  | model: gemini-3-pro-image-preview                          | 422 / 1M 토큰    | 비디오    |
 | Gemini 입력 비디오 토큰 (100만당) 제품  | model: gemini-3-pro-preview                                | 422 / 1M 토큰    | 비디오    |
-| Gemini 출력 비디오 토큰 (100만당) 제품 | model: gemini-2.5-flash-preview-04-17                      | 4220 / 1M 토큰   | 비디오    |
-| Gemini 출력 비디오 토큰 (100만당) 제품 | model: gemini-2.5-pro-preview-05-06                        | 8440 / 1M 토큰   | 비디오    |
 | Gemini 입력 오디오 토큰 (100만당) 제품  | model: gemini-2.5-flash-image                              | 211 / 1M 토큰    | 오디오    |
-| Gemini 입력 오디오 토큰 (100만당) 제품  | model: gemini-2.5-flash-image-preview                      | 211 / 1M 토큰    | 오디오    |
 | Gemini 입력 오디오 토큰 (100만당) 제품  | model: gemini-2.5-flash                                    | 211 / 1M 토큰    | 오디오    |
-| Gemini 입력 오디오 토큰 (100만당) 제품  | model: gemini-2.5-flash-preview-04-17                      | 211 / 1M 토큰    | 오디오    |
 | Gemini 입력 오디오 토큰 (100만당) 제품  | model: gemini-2.5-pro                                      | 263.75 / 1M 토큰 | 오디오    |
-| Gemini 입력 오디오 토큰 (100만당) 제품  | model: gemini-2.5-pro-preview-05-06                        | 263.75 / 1M 토큰 | 오디오    |
 | Gemini 입력 오디오 토큰 (100만당) 제품  | model: gemini-3.1-pro-preview                              | 422 / 1M 토큰    | 오디오    |
 | Gemini 입력 오디오 토큰 (100만당) 제품  | model: gemini-3-pro-image-preview                          | 422 / 1M 토큰    | 오디오    |
 | Gemini 입력 오디오 토큰 (100만당) 제품  | model: gemini-3-pro-preview                                | 422 / 1M 토큰    | 오디오    |
-| Gemini 출력 오디오 토큰 (100만당) 제품 | model: gemini-2.5-flash-preview-04-17                      | 3165 / 1M 토큰   | 오디오    |
-| Gemini 출력 오디오 토큰 (100만당) 제품 | model: gemini-2.5-pro-preview-05-06                        | 7385 / 1M 토큰   | 오디오    |
-| Google Veo3/Veo3 Fast Video Generation      | generateAudio: false, model: veo-3.0-fast-generate-001     | 168.8 / 실행        | 비디오    |
-| Google Veo3/Veo3 Fast Video Generation      | generateAudio: false, model: veo-3.0-generate-001          | 337.6 / 실행        | 비디오    |
-| Google Veo3/Veo3 Fast Video Generation      | generateAudio: true, model: veo-3.0-fast-generate-001      | 253.2 / 실행        | 비디오    |
-| Google Veo3/Veo3 Fast Video Generation      | generateAudio: true, model: veo-3.0-generate-001           | 675.2 / 실행        | 비디오    |
+| Google Veo3/Veo3 Fast Video Generation      | generateAudio: 거짓, model: veo-3.0-fast-generate-001     | 168.8 / 실행        | 비디오    |
+| Google Veo3/Veo3 Fast Video Generation      | generateAudio: 거짓, model: veo-3.0-generate-001          | 337.6 / 실행        | 비디오    |
+| Google Veo3/Veo3 Fast Video Generation      | generateAudio: 참, model: veo-3.0-fast-generate-001      | 253.2 / 실행        | 비디오    |
+| Google Veo3/Veo3 Fast Video Generation      | generateAudio: 참, model: veo-3.0-generate-001           | 675.2 / 실행        | 비디오    |
 | Google Veo2 Video Generation                | NA                                                         | 105.5 / 실행        | 비디오    |
-| Google Veo3                                 | generateAudio: false, model: veo-3.0-fast-generate-001     | 21.1 / 실행         | 이미지    |
-| Google Veo3                                 | generateAudio: false, model: veo-3.0-generate-001          | 42.2 / 실행         | 이미지    |
-| Google Veo3                                 | generateAudio: false, model: veo-3.1-fast-generate-preview | 21.1 / 실행         | 이미지    |
-| Google Veo3                                 | generateAudio: false, model: veo-3.1-generate-preview      | 42.2 / 실행         | 이미지    |
-| Google Veo3                                 | generateAudio: true, model: veo-3.0-fast-generate-001      | 31.65 / 실행        | 이미지    |
-| Google Veo3                                 | generateAudio: true, model: veo-3.0-generate-001           | 84.4 / 실행         | 이미지    |
-| Google Veo3                                 | generateAudio: true, model: veo-3.1-fast-generate-preview  | 31.65 / 실행        | 이미지    |
-| Google Veo3                                 | generateAudio: true, model: veo-3.1-generate-preview       | 84.4 / 실행         | 이미지    |
+| Google Veo3                                 | generateAudio: 거짓, model: veo-3.0-fast-generate-001     | 21.1 / 실행         | 이미지    |
+| Google Veo3                                 | generateAudio: 거짓, model: veo-3.0-generate-001          | 42.2 / 실행         | 이미지    |
+| Google Veo3                                 | generateAudio: 거짓, model: veo-3.1-fast-generate-preview | 21.1 / 실행         | 이미지    |
+| Google Veo3                                 | generateAudio: 거짓, model: veo-3.1-generate-preview      | 42.2 / 실행         | 이미지    |
+| Google Veo3                                 | generateAudio: 참, model: veo-3.0-fast-generate-001      | 31.65 / 실행        | 이미지    |
+| Google Veo3                                 | generateAudio: 참, model: veo-3.0-generate-001           | 84.4 / 실행         | 이미지    |
+| Google Veo3                                 | generateAudio: 참, model: veo-3.1-fast-generate-preview  | 31.65 / 실행        | 이미지    |
+| Google Veo3                                 | generateAudio: 참, model: veo-3.1-generate-preview       | 84.4 / 실행         | 이미지    |
 | Gemini Thoughts Tokens (100만당) 제품     | model: gemini-3.1-flash-image-preview                      | 633 / 1M 토큰    | 텍스트     |
 | Gemini Thoughts Tokens (100만당) 제품     | model: gemini-3.1-pro-preview                              | 2532 / 1M 토큰   | 텍스트     |
 | Gemini Thoughts Tokens (100만당) 제품     | model: gemini-3-pro-image-preview                          | 2532 / 1M 토큰   | 텍스트     |
@@ -228,19 +244,864 @@ Anthropic 파트너 노드는 공개 Anthropic API와 동일한 기본 USD 사�
 | Gemini 입력 오디오 토큰 (100만당) 제품  | model: gemini-3.1-flash-lite-preview                       | 105.5 / 1M 토큰  | 오디오    |
 | Gemini Thoughts Tokens (100만당) 제품     | model: gemini-3.1-flash-lite-preview                       | 316.5 / 1M 토큰  | 텍스트     |
 
+## HappyHorse
+
+| 제품 이름                                     | 구성                                            | 크레딧        | 카테고리 |
+| :------------------------------------------- | :---------------------------------------------- | :---------- | :------- |
+| HappyHorse 비디오 생성 제품                  | 모델: happyhorse1.0, 해상도: 720P               | 29.54 / 초  | 비디오    |
+| HappyHorse 비디오 생성 제품                  | 모델: happyhorse1.0, 해상도: 1080P              | 50.64 / 초  | 비디오    |
+
+## Hitpaw
+
+### 비디오 향상
+
+| 제품 이름                     | 구성                                           | 크레딧       | 카테고리 |
+| :------------------------------- | :------------------------------------------------ | :---------- | :------- |
+| Hitpaw 비디오 향상 제품 | type: Standard, resolution: 720P, fps: &lt;30fps  | 2.11 / 초  | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Standard, resolution: 720P, fps: 30-60fps   | 4.22 / 초  | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Standard, resolution: 720P, fps: 60-120fps  | 8.44 / 초  | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Standard, resolution: 720P, fps: ≥120fps    | 12.66 / 초 | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Standard, resolution: 1080P, fps: &lt;30fps | 3.17 / 초  | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Standard, resolution: 1080P, fps: 30-60fps  | 6.33 / 초  | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Standard, resolution: 1080P, fps: 60-120fps | 12.66 / 초 | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Standard, resolution: 1080P, fps: ≥120fps   | 18.99 / 초 | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Standard, resolution: 2K, fps: &lt;30fps    | 4.22 / 초  | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Standard, resolution: 2K, fps: 30-60fps     | 8.23 / 초  | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Standard, resolution: 2K, fps: 60-120fps    | 16.46 / 초 | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Standard, resolution: 2K, fps: ≥120fps      | 24.69 / 초 | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Standard, resolution: 4K, fps: &lt;30fps    | 5.28 / 초  | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Standard, resolution: 4K, fps: 30-60fps     | 10.76 / 초 | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Standard, resolution: 4K, fps: 60-120fps    | 21.31 / 초 | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Standard, resolution: 4K, fps: ≥120fps      | 32.07 / 초 | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Standard, resolution: 8K, fps: &lt;30fps    | 6.96 / 초  | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Standard, resolution: 8K, fps: 30-60fps     | 13.93 / 초 | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Standard, resolution: 8K, fps: 60-120fps    | 27.85 / 초 | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Standard, resolution: 8K, fps: ≥120fps      | 41.78 / 초 | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Ultra, resolution: 720P, fps: &lt;30fps     | 3.17 / 초  | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Ultra, resolution: 720P, fps: 30-60fps      | 6.54 / 초  | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Ultra, resolution: 720P, fps: 60-120fps     | 13.08 / 초 | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Ultra, resolution: 720P, fps: ≥120fps       | 19.41 / 초 | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Ultra, resolution: 1080P, fps: &lt;30fps    | 4.22 / 초  | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Ultra, resolution: 1080P, fps: 30-60fps     | 8.44 / 초  | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Ultra, resolution: 1080P, fps: 60-120fps    | 16.88 / 초 | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Ultra, resolution: 1080P, fps: ≥120fps      | 25.32 / 초 | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Ultra, resolution: 2K, fps: &lt;30fps       | 5.49 / 초  | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Ultra, resolution: 2K, fps: 30-60fps        | 10.97 / 초 | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Ultra, resolution: 2K, fps: 60-120fps       | 21.94 / 초 | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Ultra, resolution: 2K, fps: ≥120fps         | 32.92 / 초 | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Ultra, resolution: 4K, fps: &lt;30fps       | 7.17 / 초  | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Ultra, resolution: 4K, fps: 30-60fps        | 14.35 / 초 | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Ultra, resolution: 4K, fps: 60-120fps       | 28.49 / 초 | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Ultra, resolution: 4K, fps: ≥120fps         | 42.83 / 초 | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Ultra, resolution: 8K, fps: &lt;30fps       | 9.28 / 초  | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Ultra, resolution: 8K, fps: 30-60fps        | 18.57 / 초 | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Ultra, resolution: 8K, fps: 60-120fps       | 37.14 / 초 | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Ultra, resolution: 8K, fps: ≥120fps         | 55.7 / 초  | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Gen, resolution: 720P, fps: &lt;30fps       | 3.17 / 초  | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Gen, resolution: 720P, fps: 30-60fps        | 6.33 / 초  | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Gen, resolution: 720P, fps: 60-120fps       | 12.66 / 초 | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Gen, resolution: 720P, fps: ≥120fps         | 18.99 / 초 | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Gen, resolution: 1080P, fps: &lt;30fps      | 5.28 / 초  | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Gen, resolution: 1080P, fps: 30-60fps       | 10.55 / 초 | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Gen, resolution: 1080P, fps: 60-120fps      | 21.1 / 초  | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Gen, resolution: 1080P, fps: ≥120fps        | 31.65 / 초 | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Gen, resolution: 2K, fps: &lt;30fps         | 8.02 / 초  | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Gen, resolution: 2K, fps: 30-60fps          | 15.82 / 초 | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Gen, resolution: 2K, fps: 60-120fps         | 31.65 / 초 | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Gen, resolution: 2K, fps: ≥120fps           | 47.48 / 초 | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Gen, resolution: 4K / 8K, fps: &lt;30fps    | 11.82 / 초 | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Gen, resolution: 4K / 8K, fps: 30-60fps     | 23.84 / 초 | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Gen, resolution: 4K / 8K, fps: 60-120fps    | 47.48 / 초 | 비디오    |
+| Hitpaw 비디오 향상 제품 | type: Gen, resolution: 4K / 8K, fps: ≥120fps      | 71.32 / 초 | 비디오    |
+
+### 사진 향상
+
+| 제품 이름                     | 구성                                         | 크레딧        | 카테고리 |
+| :------------------------------- | :-------------------------------------------- | :----------- | :------- |
+| Hitpaw 사진 향상 제품 | type: Standard, megapixels: &lt;8MP            | 2.11 / 회   | 이미지    |
+| Hitpaw 사진 향상 제품 | type: Standard, megapixels: 8-12MP             | 4.22 / 회   | 이미지    |
+| Hitpaw 사진 향상 제품 | type: Standard, megapixels: 12-24MP            | 6.33 / 회   | 이미지    |
+| Hitpaw 사진 향상 제품 | type: Standard, megapixels: 24-48MP            | 14.77 / 회  | 이미지    |
+| Hitpaw 사진 향상 제품 | type: Standard, megapixels: 48-108MP           | 29.54 / 회  | 이미지    |
+| Hitpaw 사진 향상 제품 | type: Standard, megapixels: 108-216MP          | 50.64 / 회  | 이미지    |
+| Hitpaw 사진 향상 제품 | type: Standard, megapixels: 216-432MP          | 101.28 / 회 | 이미지    |
+| Hitpaw 사진 향상 제품 | type: Generative Portrait, megapixels: &lt;8MP | 4.22 / 회   | 이미지    |
+| Hitpaw 사진 향상 제품 | type: Generative Portrait, megapixels: 8-12MP  | 6.33 / 회   | 이미지    |
+| Hitpaw 사진 향상 제품 | type: Generative Portrait, megapixels: 12-24MP | 8.44 / 회   | 이미지    |
+| Hitpaw 사진 향상 제품 | type: Generative Portrait, megapixels: 24-34MP | 12.66 / 회  | 이미지    |
+| Hitpaw 사진 향상 제품 | type: Generative, megapixels: &lt;8MP          | 10.55 / 회  | 이미지    |
+| Hitpaw 사진 향상 제품 | type: Generative, megapixels: 8-12MP           | 12.66 / 회  | 이미지    |
+| Hitpaw 사진 향상 제품 | type: Generative, megapixels: 12-24MP          | 16.88 / 회  | 이미지    |
+| Hitpaw 사진 향상 제품 | type: Generative, megapixels: 24-34MP          | 31.65 / 회  | 이미지    |
+
+## Ideogram
+
+| 제품명                                | 구성                                                                    | 크레딧        | 카테고리 |
+| :------------------------------------ | :---------------------------------------------------------------------- | :------------ | :------- |
+| prod-v1-Ideogram V3 Image Generation  | endpoint: ideogram-v3/edit-character-ref, rendering_speed: DEFAULT      | 45.26 / 회    | 이미지   |
+| prod-v1-Ideogram V3 Image Generation  | endpoint: ideogram-v3/edit-character-ref, rendering_speed: QUALITY      | 60.35 / 회    | 이미지   |
+| prod-v1-Ideogram V3 Image Generation  | endpoint: ideogram-v3/edit-character-ref, rendering_speed: TURBO        | 30.17 / 회    | 이미지   |
+| prod-v1-Ideogram V3 Image Generation  | endpoint: ideogram-v3/edit, rendering_speed: BALANCED                   | 18.1 / 회     | 이미지   |
+| prod-v1-Ideogram V3 Image Generation  | endpoint: ideogram-v3/edit, rendering_speed: DEFAULT                    | 18.1 / 회     | 이미지   |
+| prod-v1-Ideogram V3 Image Generation  | endpoint: ideogram-v3/edit, rendering_speed: QUALITY                    | 27.16 / 회    | 이미지   |
+| prod-v1-Ideogram V3 Image Generation  | endpoint: ideogram-v3/edit, rendering_speed: TURBO                      | 9.05 / 회     | 이미지   |
+| prod-v1-Ideogram V3 Image Generation  | endpoint: ideogram-v3/generate-character-ref, rendering_speed: DEFAULT  | 45.26 / 회    | 이미지   |
+| prod-v1-Ideogram V3 Image Generation  | endpoint: ideogram-v3/generate-character-ref, rendering_speed: QUALITY  | 60.35 / 회    | 이미지   |
+| prod-v1-Ideogram V3 Image Generation  | endpoint: ideogram-v3/generate-character-ref, rendering_speed: TURBO    | 30.17 / 회    | 이미지   |
+| prod-v1-Ideogram V3 Image Generation  | endpoint: ideogram-v3/generate, rendering_speed: BALANCED               | 18.1 / 회     | 이미지   |
+| prod-v1-Ideogram V3 Image Generation  | endpoint: ideogram-v3/generate, rendering_speed: DEFAULT                | 18.1 / 회     | 이미지   |
+| prod-v1-Ideogram V3 Image Generation  | endpoint: ideogram-v3/generate, rendering_speed: QUALITY                | 27.16 / 회    | 이미지   |
+| prod-v1-Ideogram V3 Image Generation  | endpoint: ideogram-v3/generate, rendering_speed: TURBO                  | 9.05 / 회     | 이미지   |
+| prod-v1-Ideogram V3 Image Generation  | endpoint: ideogram-v3/reframe, rendering_speed: DEFAULT                 | 18.1 / 회     | 이미지   |
+| prod-v1-Ideogram V3 Image Generation  | endpoint: ideogram-v3/reframe, rendering_speed: QUALITY                 | 27.16 / 회    | 이미지   |
+| prod-v1-Ideogram V3 Image Generation  | endpoint: ideogram-v3/reframe, rendering_speed: TURBO                   | 9.05 / 회     | 이미지   |
+| prod-v1-Ideogram V3 Image Generation  | endpoint: ideogram-v3/remix, rendering_speed: BALANCED                  | 18.1 / 회     | 이미지   |
+| prod-v1-Ideogram V3 Image Generation  | endpoint: ideogram-v3/remix, rendering_speed: DEFAULT                   | 18.1 / 회     | 이미지   |
+| prod-v1-Ideogram V3 Image Generation  | endpoint: ideogram-v3/remix, rendering_speed: QUALITY                   | 27.16 / 회    | 이미지   |
+| prod-v1-Ideogram V3 Image Generation  | endpoint: ideogram-v3/remix, rendering_speed: TURBO                     | 9.05 / 회     | 이미지   |
+| prod-v1-Ideogram V3 Image Generation  | endpoint: ideogram-v3/replace-background, rendering_speed: BALANCED     | 18.1 / 회     | 이미지   |
+| prod-v1-Ideogram V3 Image Generation  | endpoint: ideogram-v3/replace-background, rendering_speed: DEFAULT      | 18.1 / 회     | 이미지   |
+| prod-v1-Ideogram V3 Image Generation  | endpoint: ideogram-v3/replace-background, rendering_speed: QUALITY      | 27.16 / 회    | 이미지   |
+| prod-v1-Ideogram V3 Image Generation  | endpoint: ideogram-v3/replace-background, rendering_speed: TURBO        | 9.05 / 회     | 이미지   |
+| prod-v1-Ideogram V3 Image Generation  | endpoint: remix, rendering_speed: TURBO                                 | 9.05 / 회     | 이미지   |
+| prod-v1-Ideogram V4 Image Generation  | endpoint: ideogram-v4/generate, rendering_speed: TURBO                  | 9.05 / 회     | 이미지   |
+| prod-v1-Ideogram V4 Image Generation  | endpoint: ideogram-v4/generate, rendering_speed: DEFAULT                | 18.1 / 회     | 이미지   |
+| prod-v1-Ideogram V4 Image Generation  | endpoint: ideogram-v4/generate, rendering_speed: QUALITY                | 30.17 / 회    | 이미지   |
+| prod-v1-Ideogram Image Generation Product | endpoint: edit, model: v_2                                             | 24.14 / 회    | 이미지   |
+| prod-v1-Ideogram Image Generation Product | endpoint: edit, model: v_2_turbo                                       | 15.09 / 회    | 이미지   |
+| prod-v1-Ideogram Image Generation Product | endpoint: generate, model: v_1                                         | 18.1 / 회     | 이미지   |
+| prod-v1-Ideogram Image Generation Product | endpoint: generate, model: v_1_turbo                                   | 6.03 / 회     | 이미지   |
+| prod-v1-Ideogram Image Generation Product | endpoint: generate, model: v_2a                                        | 12.07 / 회    | 이미지   |
+| prod-v1-Ideogram Image Generation Product | endpoint: generate, model: v_2a_turbo                                  | 7.54 / 회     | 이미지   |
+| prod-v1-Ideogram Image Generation Product | endpoint: generate, model: v_2                                         | 24.14 / 회    | 이미지   |
+| prod-v1-Ideogram Image Generation Product | endpoint: generate, model: v_2_turbo                                   | 15.09 / 회    | 이미지   |
+| prod-v1-Ideogram Image Generation Product | endpoint: reframe, model: v_2                                          | 24.14 / 회    | 이미지   |
+| prod-v1-Ideogram Image Generation Product | endpoint: reframe, model: v_2_turbo                                    | 15.09 / 회    | 이미지   |
+| prod-v1-Ideogram Image Generation Product | endpoint: remix, model: v_1                                            | 18.1 / 회     | 이미지   |
+| prod-v1-Ideogram Image Generation Product | endpoint: remix, model: v_1_turbo                                      | 6.03 / 회     | 이미지   |
+| prod-v1-Ideogram Image Generation Product | endpoint: remix, model: v_2a                                           | 12.07 / 회    | 이미지   |
+| prod-v1-Ideogram Image Generation Product | endpoint: remix, model: v_2a_turbo                                     | 7.54 / 회     | 이미지   |
+| prod-v1-Ideogram Image Generation Product | endpoint: remix, model: v_2                                            | 24.14 / 회    | 이미지   |
+| prod-v1-Ideogram Image Generation Product | endpoint: remix, model: v_2_turbo                                      | 15.09 / 회    | 이미지   |
+
+## Krea
+
+| 제품명 | 구성 | 크레딧 | 카테고리 |
+| :--- | :--- | :--- | :--- |
+| Krea 2 이미지 생성 | 모델: krea-2-medium-turbo | 3.2 /회 | 이미지 |
+| Krea 2 이미지 생성 | 모델: krea-2-medium-turbo, 이미지 스타일 참조 포함 | 3.7 /회 | 이미지 |
+| Krea 2 이미지 생성 | 모델: krea-2-medium-turbo, 무드보드 포함 | 4.2 /회 | 이미지 |
+| Krea 2 이미지 생성 | 모델: krea-2-medium | 6.4 /회 | 이미지 |
+| Krea 2 이미지 생성 | 모델: krea-2-medium, 이미지 스타일 참조 포함 | 7.4 /회 | 이미지 |
+| Krea 2 이미지 생성 | 모델: krea-2-medium, 무드보드 포함 | 8.5 /회 | 이미지 |
+| Krea 2 이미지 생성 | 모델: krea-2-large | 12.7 /회 | 이미지 |
+| Krea 2 이미지 생성 | 모델: krea-2-large, 이미지 스타일 참조 포함 | 13.8 /회 | 이미지 |
+| Krea 2 이미지 생성 | 모델: krea-2-large, 무드보드 포함 | 14.8 /회 | 이미지 |
+
+## Kling
+
+| 제품명                                  | 설정                                                    | 크레딧         | 카테고리 |
+| :-------------------------------------- | :------------------------------------------------------ | :------------- | :------- |
+| prod-v1-Kling 비디오 생성 제품          | mode: pro, model: kling-v1                              | 103.39 / run   | 비디오   |
+| prod-v1-Kling 비디오 생성 제품          | mode: pro, model: kling-v1-5                            | 103.39 / run   | 비디오   |
+| prod-v1-Kling 비디오 생성 제품          | mode: pro, model: kling-v1-6                            | 103.39 / run   | 비디오   |
+| prod-v1-Kling 비디오 생성 제품          | mode: pro, model: kling-v2-1                            | 103.39 / run   | 비디오   |
+| prod-v1-Kling 비디오 생성 제품          | mode: pro, model: kling-v2-1-master                     | 295.4 / run    | 비디오   |
+| prod-v1-Kling 비디오 생성 제품          | mode: pro, model: kling-v2-5-turbo                      | 73.85 / run    | 비디오   |
+| prod-v1-Kling 비디오 생성 제품          | mode: pro, model: kling-v2-master                       | 295.4 / run    | 비디오   |
+| prod-v1-Kling 비디오 생성 제품          | mode: std, model: kling-v1                              | 29.54 / sec    | 비디오   |
+| prod-v1-Kling 비디오 생성 제품          | mode: std, model: kling-v1-5                            | 59.08 / run    | 비디오   |
+| prod-v1-Kling 비디오 생성 제품          | mode: std, model: kling-v1-6                            | 59.08 / run    | 비디오   |
+| prod-v1-Kling 비디오 생성 제품          | mode: std, model: kling-v2-1                            | 59.08 / run    | 비디오   |
+| prod-v1-Kling 비디오 생성 제품          | mode: std, model: kling-v2-1-master                     | 295.4 / run    | 비디오   |
+| prod-v1-Kling 비디오 생성 제품          | mode: std, model: kling-v2-master                       | 295.4 / run    | 비디오   |
+| Kling 사운드 포함 비디오 생성 제품      | mode: pro, model: kling-v2-6, sound: off                | 14.77 / sec    | 비디오   |
+| Kling 사운드 포함 비디오 생성 제품      | mode: pro, model: kling-v2-6, sound: on                 | 29.54 / sec    | 비디오   |
+| Kling 사운드 포함 비디오 생성 제품      | resolution: 1080p, model: kling-v3, no_sound: true      | 23.63 / sec    | 비디오   |
+| Kling 사운드 포함 비디오 생성 제품      | resolution: 1080p, model: kling-v3, no_sound: false     | 35.45 / sec    | 비디오   |
+| Kling 사운드 포함 비디오 생성 제품      | resolution: 720p, model: kling-v3, no_sound: true       | 17.72 / sec    | 비디오   |
+| Kling 사운드 포함 비디오 생성 제품      | resolution: 720p, model: kling-v3, no_sound: false      | 26.59 / sec    | 비디오   |
+| Kling 사운드 포함 비디오 생성 제품      | mode: pro, model: kling-v3-omni, no_sound: true         | 23.63 / sec    | 비디오   |
+| Kling 사운드 포함 비디오 생성 제품      | mode: pro, model: kling-v3-omni, no_sound: false        | 29.54 / sec    | 비디오   |
+| Kling 사운드 포함 비디오 생성 제품      | mode: std, model: kling-v3-omni, no_sound: true         | 17.72 / sec    | 비디오   |
+| Kling 사운드 포함 비디오 생성 제품      | mode: std, model: kling-v3-omni, no_sound: false        | 23.63 / sec    | 비디오   |
+| Kling 사운드 포함 비디오 생성 제품      | mode: pro, model: kling-v3-4k                           | 88.62 / sec    | 비디오   |
+|                                         |                                                         |                |          |
+| Kling 사운드 포함 비디오 생성 제품      | resolution: 720p, model: kling-3.0-turbo                | 23.63 / sec    | 비디오   |
+| Kling 사운드 포함 비디오 생성 제품      | resolution: 1080p, model: kling-3.0-turbo               | 29.54 / sec    | 비디오   |
+| Kling 옴니 비디오 제품                  | generate_with_video: false, mode: pro, model: kling-video-o1 | 23.63 / sec | 비디오   |
+| Kling 옴니 비디오 제품                  | generate_with_video: false, mode: std, model: kling-video-o1 | 17.72 / sec | 비디오   |
+| Kling 옴니 비디오 제품                  | generate_with_video: true, mode: pro, model: kling-video-o1  | 35.45 / sec | 비디오   |
+| Kling 옴니 비디오 제품                  | generate_with_video: true, mode: std, model: kling-video-o1  | 26.59 / sec | 비디오   |
+| Kling 비디오 확장 제품                  | NA                                                        | 59.08 / run   | 비디오   |
+| Kling 립 싱크 제품                      | NA                                                        | 14.77 / run   | 이미지   |
+| Kling 모션 컨트롤 제품                  | mode: std, model: kling-v2-6                              | 14.77 / run   | 이미지   |
+| Kling 모션 컨트롤 제품                  | mode: pro, model: kling-v2-6                              | 23.63 / run   | 이미지   |
+| Kling 가상 착용                         | model: kolors-virtual-try-on-v1                           | 14.77 / run   | 이미지   |
+| Kling 가상 착용                         | model: kolors-virtual-try-on-v1-5                         | 14.77 / run   | 이미지   |
+| Kling 이미지 생성 제품                   | model: kling-v1, operation: text_to_image                 | 0.74 / run    | 이미지   |
+| Kling 이미지 생성 제품                   | model: kling-v1, operation: image_to_image                | 0.74 / run    | 이미지   |
+| Kling 이미지 생성 제품                   | model: kling-v1-5, operation: text_to_image               | 2.95 / run    | 이미지   |
+| Kling 이미지 생성 제품                   | model: kling-v1-5, operation: image_to_image              | 5.91 / run    | 이미지   |
+| Kling 이미지 생성 제품                   | model: kling-v2, operation: text_to_image                 | 2.95 / run    | 이미지   |
+| Kling 이미지 생성 제품                   | model: kling-v2-new, operation: image_to_image_restyle    | 5.91 / run    | 이미지   |
+| Kling 이미지 생성 제품                   | model: kling-v2-1, operation: text_to_image               | 2.95 / run    | 이미지   |
+| Kling 이미지 생성 제품                   | model: kling-v3, specs: 1k, operation: text_to_image      | 5.91 / run    | 이미지   |
+| Kling 이미지 생성 제품                   | model: kling-v3, specs: 2k, operation: text_to_image      | 5.91 / run    | 이미지   |
+| Kling 이미지 생성 제품                   | model: kling-v3, specs: 1k, operation: image_to_image     | 5.91 / run    | 이미지   |
+| Kling 이미지 생성 제품                   | model: kling-v3, specs: 2k, operation: image_to_image     | 5.91 / run    | 이미지   |
+| Kling 이미지 생성 제품                   | model: kling-v3, specs: 1k, operation: image_editing      | 11.82 / run   | 이미지   |
+| Kling 이미지 생성 제품                   | model: kling-v3, specs: 4k, operation: image_editing      | 11.82 / run   | 이미지   |
+| Kling 이미지 생성 제품                   | model: kling-v3-omni, specs: 1k, operation: text_to_image | 5.91 / run    | 이미지   |
+| Kling 이미지 생성 제품                   | model: kling-v3-omni, specs: 2k, operation: text_to_image | 5.91 / run    | 이미지   |
+| Kling 이미지 생성 제품                   | model: kling-v3-omni, specs: 1k, operation: image_to_image| 5.91 / run    | 이미지   |
+| Kling 이미지 생성 제품                   | model: kling-v3-omni, specs: 2k, operation: image_to_image| 5.91 / run    | 이미지   |
+| Kling 이미지 생성 제품                   | model: kling-v3-omni, specs: 1k, operation: image_editing | 11.82 / run   | 이미지   |
+| Kling 이미지 생성 제품                   | model: kling-v3-omni, specs: 4k, operation: image_editing | 11.82 / run   | 이미지   |
+| Kling 이미지 생성 제품                   | model: kling-image-o1, operation: text_to_image            | 5.91 / run    | 이미지   |
+| Kling 이미지 생성 제품                   | model: kling-image-o1, operation: image_to_image           | 5.91 / run    | 이미지   |
+| Kling 이미지 생성 제품                   | model: kling-image-o1, operation: image_editing            | 5.91 / run    | 이미지   |
+| Kling 이미지 생성 w/ N                   | model: kling-v1, operation: text_to_image                 | 0.74 / run    | 이미지   |
+| Kling 이미지 생성 w/ N                   | model: kling-v1, operation: image_to_image                | 0.74 / run    | 이미지   |
+| Kling 이미지 생성 w/ N                   | model: kling-v1-5, operation: text_to_image               | 2.95 / run    | 이미지   |
+| Kling 이미지 생성 w/ N                   | model: kling-v1-5, operation: image_to_image              | 5.91 / run    | 이미지   |
+| Kling 이미지 생성 w/ N                   | model: kling-v2, operation: text_to_image                 | 2.95 / run    | 이미지   |
+| Kling 크레딧                            | type: image                                               | 0.74 / run    | 이미지   |
+| Kling 크레딧                            | type: video                                               | 29.54 / run   | 이미지   |
+| Kling 카메라 컨트롤 제품                | type: text-to-video                                        | 29.54 / run   | 비디오   |
+| Kling 카메라 컨트롤 제품                | type: image-to-video                                       | 103.39 / run  | 비디오   |
+| Kling 아바타 제품                       | mode: std                                                  | 11.82 / sec   | 비디오   |
+| Kling 아바타 제품                       | mode: pro                                                  | 23.63 / sec   | 비디오   |
+| Kling 2.6 오디오 제품                   | mode: text-to-video, no_sound: true                        | 14.77 / sec   | 비디오   |
+| Kling 2.6 오디오 제품                   | mode: text-to-video, no_sound: false                       | 29.54 / sec   | 비디오   |
+| Kling 2.6 오디오 제품                   | mode: image-to-video, no_sound: true                       | 14.77 / sec   | 비디오   |
+| Kling 2.6 오디오 제품                   | mode: image-to-video, no_sound: false                      | 29.54 / sec   | 비디오   |
+
+## Lightricks
+
+| 제품명                     | 구성                                                            | 크레딧       | 카테고리 |
+| :------------------------- | :--------------------------------------------------------------- | :----------- | :------- |
+| Ltx 비디오 생성 제품        | 엔드포인트: 이미지-비디오, 모델: ltx-2-fast, 해상도: 1920x1080   | 8.44 / 초    | 비디오   |
+| Ltx 비디오 생성 제품        | 엔드포인트: 이미지-비디오, 모델: ltx-2-fast, 해상도: 2560x1440   | 16.88 / 초   | 비디오   |
+| Ltx 비디오 생성 제품        | 엔드포인트: 이미지-비디오, 모델: ltx-2-fast, 해상도: 3840x2160   | 33.76 / 초   | 비디오   |
+| Ltx 비디오 생성 제품        | 엔드포인트: 이미지-비디오, 모델: ltx-2-pro, 해상도: 1920x1080    | 12.66 / 초   | 비디오   |
+| Ltx 비디오 생성 제품        | 엔드포인트: 이미지-비디오, 모델: ltx-2-pro, 해상도: 2560x1440    | 25.32 / 초   | 비디오   |
+| Ltx 비디오 생성 제품        | 엔드포인트: 이미지-비디오, 모델: ltx-2-pro, 해상도: 3840x2160    | 50.64 / 회   | 비디오   |
+| Ltx 비디오 생성 제품        | 엔드포인트: 텍스트-비디오, 모델: ltx-2-fast, 해상도: 1920x1080   | 8.44 / 초    | 비디오   |
+| Ltx 비디오 생성 제품        | 엔드포인트: 텍스트-비디오, 모델: ltx-2-fast, 해상도: 2560x1440   | 16.88 / 초   | 비디오   |
+| Ltx 비디오 생성 제품        | 엔드포인트: 텍스트-비디오, 모델: ltx-2-fast, 해상도: 3840x2160   | 33.76 / 초   | 비디오   |
+| Ltx 비디오 생성 제품        | 엔드포인트: 텍스트-비디오, 모델: ltx-2-pro, 해상도: 1920x1080    | 12.66 / 초   | 비디오   |
+| Ltx 비디오 생성 제품        | 엔드포인트: 텍스트-비디오, 모델: ltx-2-pro, 해상도: 2560x1440    | 25.32 / 초   | 비디오   |
+| Ltx 비디오 생성 제품        | 엔드포인트: 텍스트-비디오, 모델: ltx-2-pro, 해상도: 3840x2160    | 50.64 / 회   | 비디오   |
+
+## Luma
+
+| 제품명                                              | 구성                                                                                              | 크레딧        | 카테고리 |
+| :-------------------------------------------------- | :------------------------------------------------------------------------------------------------- | :----------- | :------- |
+| prod-v1-Luma 비디오 생성 제품                        | model: ray-1-6                                                                                     | 0.97 / 초    | 비디오   |
+| prod-v1-Luma 비디오 생성 제품                        | model: ray-2                                                                                       | 1.93 / 초    | 비디오   |
+| prod-v1-Luma 비디오 생성 제품                        | model: ray-flash-2                                                                                 | 0.66 / 초    | 비디오   |
+| Luma 이미지 생성 (백만 픽셀) 제품                    | model: photon-1                                                                                    | 2.2 / 실행   | 이미지   |
+| Luma 이미지 생성 (백만 픽셀) 제품                    | model: photon-flash-1                                                                              | 0.57 / 실행   | 이미지   |
+| Luma Agents uni-1 이미지 제품                        | model: uni-1, task: text-to-image                                                                  | 8.52 / 실행   | 이미지   |
+| Luma Agents uni-1 이미지 제품                        | model: uni-1, task: image-to-image                                                                 | 9.16 / 실행   | 이미지   |
+| Luma Agents uni-1 이미지 제품                        | model: uni-1, task: image-reference, num_reference_images: 1                                       | 9.16 / 실행   | 이미지   |
+| Luma Agents uni-1 이미지 제품                        | model: uni-1, task: image-reference, num_reference_images: 2                                       | 9.79 / 실행   | 이미지   |
+| Luma Agents uni-1 이미지 제품                        | model: uni-1, task: image-reference, num_reference_images: 3                                       | 10.42 / 실행  | 이미지   |
+| Luma Agents uni-1 이미지 제품                        | model: uni-1, task: image-reference, num_reference_images: 4                                       | 11.06 / 실행  | 이미지   |
+| Luma Agents uni-1 이미지 제품                        | model: uni-1, task: image-reference, num_reference_images: 5                                       | 11.69 / 실행  | 이미지   |
+| Luma Agents uni-1 이미지 제품                        | model: uni-1, task: image-reference, num_reference_images: 6                                       | 12.32 / 실행  | 이미지   |
+| Luma Agents uni-1 이미지 제품                        | model: uni-1, task: image-reference, num_reference_images: 7                                       | 12.96 / 실행  | 이미지   |
+| Luma Agents uni-1 이미지 제품                        | model: uni-1, task: image-reference, num_reference_images: 8                                       | 13.59 / 실행  | 이미지   |
+| Luma Agents uni-1 이미지 제품                        | model: uni-1, task: image-reference, num_reference_images: 9                                       | 14.22 / 실행  | 이미지   |
+| Luma Agents uni-1-max 이미지 제품                    | model: uni-1-max, task: text-to-image                                                              | 21.10 / 실행  | 이미지   |
+| Luma Agents uni-1-max 이미지 제품                    | model: uni-1-max, task: image-to-image                                                             | 21.73 / 실행  | 이미지   |
+| Luma Agents uni-1-max 이미지 제품                    | model: uni-1-max, task: image-reference, num_reference_images: 1                                   | 21.73 / 실행  | 이미지   |
+| Luma Agents uni-1-max 이미지 제품                    | model: uni-1-max, task: image-reference, num_reference_images: 2                                   | 22.37 / 실행  | 이미지   |
+| Luma Agents uni-1-max 이미지 제품                    | model: uni-1-max, task: image-reference, num_reference_images: 3                                   | 23.00 / 실행  | 이미지   |
+| Luma Agents uni-1-max 이미지 제품                    | model: uni-1-max, task: image-reference, num_reference_images: 4                                   | 23.63 / 실행  | 이미지   |
+| Luma Agents uni-1-max 이미지 제품                    | model: uni-1-max, task: image-reference, num_reference_images: 5                                   | 24.27 / 실행  | 이미지   |
+| Luma Agents uni-1-max 이미지 제품                    | model: uni-1-max, task: image-reference, num_reference_images: 6                                   | 24.90 / 실행  | 이미지   |
+| Luma Agents uni-1-max 이미지 제품                    | model: uni-1-max, task: image-reference, num_reference_images: 7                                   | 25.53 / 실행  | 이미지   |
+| Luma Agents uni-1-max 이미지 제품                    | model: uni-1-max, task: image-reference, num_reference_images: 8                                   | 26.16 / 실행  | 이미지   |
+| Luma Agents uni-1-max 이미지 제품                    | model: uni-1-max, task: image-reference, num_reference_images: 9                                   | 26.80 / 실행  | 이미지   |
+
+### Luma Ray 3.2 비디오
+
+| 제품명 | 구성 | 크레딧 | 카테고리 |
+| :----------- | :------------ | :------ | :------- |
+| Luma Ray 3.2 비디오 생성 | 해상도: 360p, 길이: 5초 | 12.66 / 실행 | 비디오 |
+| Luma Ray 3.2 비디오 생성 | 해상도: 360p, 길이: 10초 | 37.98 / 실행 | 비디오 |
+| Luma Ray 3.2 비디오 생성 | 해상도: 540p, 길이: 5초 | 31.65 / 실행 | 비디오 |
+| Luma Ray 3.2 비디오 생성 | 해상도: 540p, 길이: 10초 | 94.95 / 실행 | 비디오 |
+| Luma Ray 3.2 비디오 생성 | 해상도: 720p, 길이: 5초 | 63.30 / 실행 | 비디오 |
+| Luma Ray 3.2 비디오 생성 | 해상도: 720p, 길이: 10초 | 189.90 / 실행 | 비디오 |
+| Luma Ray 3.2 비디오 생성 | 해상도: 1080p, 길이: 5초 | 253.20 / 실행 | 비디오 |
+| Luma Ray 3.2 비디오 생성 | 해상도: 1080p, 길이: 10초 | 759.60 / 실행 | 비디오 |
+| Luma Ray 3.2 비디오 편집 | 해상도: 360p | 113.94 (5초) - 227.88 (10초) / 실행 | 비디오 |
+| Luma Ray 3.2 비디오 편집 | 해상도: 540p | 151.92 (5초) - 303.84 (10초) / 실행 | 비디오 |
+| Luma Ray 3.2 비디오 편집 | 해상도: 720p | 227.88 (5초) - 455.76 (10초) / 실행 | 비디오 |
+| Luma Ray 3.2 비디오 편집 | 해상도: 1080p | 455.76 (5초) - 911.52 (10초) / 실행 | 비디오 |
+| Luma Ray 3.2 비디오 리프레임 | 해상도: 360p | 6.33 / 초 | 비디오 |
+| Luma Ray 3.2 비디오 리프레임 | 해상도: 540p | 12.66 / 초 | 비디오 |
+| Luma Ray 3.2 비디오 리프레임 | 해상도: 720p | 25.32 / 초 | 비디오 |
+| Luma Ray 3.2 비디오 리프레임 | 해상도: 1080p | 75.96 / 초 | 비디오 |
+
+## Meshy
+
+| 제품명                       | 구성                                                         | 크레딧        | 카테고리 |
+| :--------------------------- | :----------------------------------------------------------- | :------------ | :------- |
+| Meshy Retexture              | NA                                                           | 84.4 / 회     | 3D       |
+| Meshy Rigging                | NA                                                           | 42.2 / 회     | 3D       |
+| Meshy Remesh                 | NA                                                           | 42.2 / 회     | 3D       |
+| Meshy Animation              | NA                                                           | 25.32 / 회    | 3D       |
+| Meshy Multi Image to 3D      | should_texture: false                                        | 42.2 / 회     | 이미지   |
+| Meshy Multi Image to 3D      | should_texture: true                                         | 126.6 / 회    | 이미지   |
+| Meshy Text to 3D             | mode: preview, model: latest                                 | 168.8 / 회    | 3D       |
+| Meshy Text to 3D             | mode: preview, model: meshy-5                                | 42.2 / 회     | 3D       |
+| Meshy Text to 3D             | mode: refine, model: latest                                  | 84.4 / 회     | 3D       |
+| Meshy Image to 3D            | model: latest, model_type: lowpoly, should_texture: false    | 168.8 / 회    | 이미지   |
+| Meshy Image to 3D            | model: latest, model_type: lowpoly, should_texture: true     | 253.2 / 회    | 이미지   |
+| Meshy Image to 3D            | model: latest, model_type: standard, should_texture: false   | 168.8 / 회    | 이미지   |
+| Meshy Image to 3D            | model: latest, model_type: standard, should_texture: true    | 253.2 / 회    | 이미지   |
+| Meshy Image to 3D            | model: meshy-5, model_type: lowpoly, should_texture: false   | 168.8 / 회    | 이미지   |
+| Meshy Image to 3D            | model: meshy-5, model_type: lowpoly, should_texture: true    | 253.2 / 회    | 이미지   |
+| Meshy Image to 3D            | model: meshy-5, model_type: standard, should_texture: false  | 42.2 / 회     | 이미지   |
+| Meshy Image to 3D            | model: meshy-5, model_type: standard, should_texture: true   | 126.6 / 회    | 이미지   |
+
+## Minimax
+
+| 제품 이름                                        | 구성                                                       | 크레딧          | 카테고리 |
+| :----------------------------------------------- | :---------------------------------------------------------- | :-------------- | :------- |
+| prod-v1-Minimax 비디오 제품                        | 모델: i2v-01-director                                      | 90.73 / 회      | 비디오   |
+| prod-v1-Minimax 비디오 제품                        | 모델: i2v-01-live                                          | 90.73 / 회      | 비디오   |
+| prod-v1-Minimax 비디오 제품                        | 모델: i2v-01                                               | 90.73 / 회      | 비디오   |
+| prod-v1-Minimax 비디오 제품                        | 모델: s2v-01                                               | 137.15 / 회     | 비디오   |
+| prod-v1-Minimax 비디오 제품                        | 모델: t2v-01-director                                      | 90.73 / 회      | 비디오   |
+| prod-v1-Minimax 비디오 제품                        | 모델: t2v-01                                               | 90.73 / 회      | 비디오   |
+| Minimax 비디오 생성_Hailuo-02 이후 모델             | 지속 시간: 10, 모델: minimax-hailuo-02, 해상도: 768P        | 118.16 / 회     | 비디오   |
+| Minimax 비디오 생성_Hailuo-02 이후 모델             | 지속 시간: 6, 모델: minimax-hailuo-02, 해상도: 1080P        | 103.39 / 회     | 비디오   |
+| Minimax 비디오 생성_Hailuo-02 이후 모델             | 지속 시간: 6, 모델: minimax-hailuo-02, 해상도: 768P         | 59.08 / 회      | 비디오   |
+
+## Moonvalley
+
+  **서비스 이용 불가**: Moonvalley API 서비스를 더 이상 사용할 수 없습니다. 아래 나열된 노드는 지원 중단되었으며 예상대로 작동하지 않을 수 있습니다.
+
+| 제품 이름                        | 구성 | 크레딧        | 카테고리 |
+| :------------------------------- | :--- | :------------ | :------- |
+| Moonvalley Image-to-Video 5s     | NA   | 316.5 / run   | 비디오   |
+| Moonvalley Image-to-Video 10s    | NA   | 633 / run     | 비디오   |
+| Moonvalley Text-to-Video 5s      | NA   | 316.5 / run   | 비디오   |
+| Moonvalley Text-to-Video 10s     | NA   | 633 / run     | 비디오   |
+| Moonvalley Video-to-Video 5s     | NA   | 474.75 / run  | 비디오   |
+| Moonvalley Video-to-Video 10s    | NA   | 844 / run     | 비디오   |
+
+## OpenAI
+
+OpenAI 파트너 노드는 공개 API와 동일한 기본 USD 사용량을 청구합니다. **크레딧 = USD × 211** (페이지 헤더 참조). 아래 텍스트 모델 USD 요금은 OpenAI의 **[API 가격](https://developers.openai.com/api/docs/pricing)** **Standard** 등급 (100만 토큰당)과 일치하며, 이미지 토큰 승수는 `comfy_api_nodes/nodes_openai.py`와 일치합니다. DALL·E 및 Sora 고정 수학은 노드의 `price_badge` 표현식과 일치합니다. 최종 요금은 측정된 사용량(토큰, 기간 및 캐시 히트)에 따라 청구됩니다.
+
+### DALL·E 2 (`OpenAIDalle2`)
+
+생성된 이미지당 (여러 개를 요청하는 경우 `n`을 곱함).
+
+| 제품명                 | 구성              | 이미지당 크레딧 | 카테고리 |
+| :--------------------- | :---------------- | :-------------- | :------- |
+| OpenAI DALL·E 2 이미지 | 사이즈: 256x256   | 3.38            | 이미지   |
+| OpenAI DALL·E 2 이미지 | 사이즈: 512x512   | 3.80            | 이미지   |
+| OpenAI DALL·E 2 이미지 | 사이즈: 1024x1024 | 4.22            | 이미지   |
+
+### DALL·E 3 (`OpenAIDalle3`)
+
+| 제품명                 | 구성                                                   | 실행당 크레딧 | 카테고리 |
+| :--------------------- | :----------------------------------------------------- | :------------ | :------- |
+| OpenAI DALL·E 3 이미지 | quality: standard, size: 1024x1024                     | 8.44          | 이미지   |
+| OpenAI DALL·E 3 이미지 | quality: standard, size: 1024x1792 또는 1792x1024      | 16.88         | 이미지   |
+| OpenAI DALL·E 3 이미지 | quality: hd, size: 1024x1024                           | 16.88         | 이미지   |
+| OpenAI DALL·E 3 이미지 | quality: hd, size: 1024x1792 또는 1792x1024            | 25.32         | 이미지   |
+
+### GPT Image 1 / 1.5 / 2 (`OpenAIGPTImage1`)
+
+API 사용량 기준 토큰 기반. 크레딧 = USD × 211 (100만 토큰당, 노드의 `calculate_tokens_price_image_1` / `calculate_tokens_price_image_1_5` 도우미의 요율).
+
+| 제품명                           | 구성                | 100만 토큰당 크레딧 | 카테고리 |
+| :------------------------------- | :------------------ | :------------------ | :------- |
+| OpenAI GPT Image 입력 (텍스트/이미지) | model: gpt-image-1   | 2110 ($10 / 1M)     | 이미지   |
+| OpenAI GPT Image 출력 (이미지)       | model: gpt-image-1   | 8440 ($40 / 1M)     | 이미지   |
+| OpenAI GPT Image 입력 (텍스트/이미지) | model: gpt-image-1.5 | 1688 ($8 / 1M)      | 이미지   |
+| OpenAI GPT Image 출력 (이미지)       | model: gpt-image-1.5 | 6752 ($32 / 1M)     | 이미지   |
+| OpenAI GPT Image 입력 (이미지)       | model: gpt-image-2   | 1688 ($8 / 1M)      | 이미지   |
+| OpenAI GPT Image 캐시 입력 (이미지)  | model: gpt-image-2   | 422 ($2 / 1M)       | 이미지   |
+| OpenAI GPT Image 입력 (텍스트)       | model: gpt-image-2   | 1055 ($5 / 1M)      | 이미지   |
+| OpenAI GPT Image 캐시 입력 (텍스트)  | model: gpt-image-2   | 263.75 ($1.25 / 1M) | 이미지   |
+| OpenAI GPT Image 출력 (이미지)       | model: gpt-image-2   | 6330 ($30 / 1M)     | 이미지   |
+
+UI는 실행당 품질(`low` / `medium` / `high`)에 따른 **대략적인 USD 범위**를 표시합니다. 실제 비용은 토큰 수에 따라 달라집니다.
+
+### 채팅 (`OpenAIChatNode`)
+
+노드에서 선택 가능한 모델: `gpt-5.5`, `gpt-5.5-pro`, `gpt-5`, `gpt-5-mini`, `gpt-5-nano`, `gpt-4.1`, `gpt-4.1-mini`, `gpt-4.1-nano`, `o3`, `o4-mini`, `o1`, `o1-pro`. Standard 등급, 100만 토큰당 (캐시 열은 OpenAI의 캐시 입력 요율이 있는 경우 표시). 단기 및 장기 컨텍스트 가격이 모두 있는 모델의 경우, 요청이 단기 컨텍스트 창을 초과하면 장기 컨텍스트 요율이 적용됩니다.
+
+| 모델                        | 입력 크레딧 / 1M | 캐시 입력 크레딧 / 1M | 출력 크레딧 / 1M |
+| :-------------------------- | ----------------: | --------------------: | ----------------: |
+| gpt-5.5 (단기 컨텍스트)     | 1055              | 105.5                 | 6330              |
+| gpt-5.5 (장기 컨텍스트)     | 2110              | 211                   | 9495              |
+| gpt-5.5-pro (단기 컨텍스트) | 6330              | —                     | 37980             |
+| gpt-5.5-pro (장기 컨텍스트) | 12660             | —                     | 56970             |
+| gpt-5                       | 263.75            | 26.38                 | 2110              |
+| gpt-5-mini                  | 52.75             | 5.28                  | 422               |
+| gpt-5-nano                  | 10.55             | 1.06                  | 84.4              |
+| gpt-4.1                     | 422               | 105.5                 | 1688              |
+| gpt-4.1-mini                | 84.4              | 21.1                  | 337.6             |
+| gpt-4.1-nano                | 21.1              | 5.28                  | 84.4              |
+| o3                          | 422               | 105.5                 | 1688              |
+| o4-mini                     | 232.1             | 58.03                 | 928.4             |
+| o1                          | 3165              | 1582.5                | 12660             |
+| o1-pro                      | 31650             | —                     | 126600            |
+
+선택적 이미지 및 파일은 동일한 모델 입력 요율로 청구되는 토큰을 추가합니다.
+
+### Sora 비디오 (`OpenAIVideoSora2`)
+
+USD는 **(초당 요율) × (기간(초))** 입니다. 기간은 4, 8 또는 12가 될 수 있습니다. 크레딧 = USD × 211.
+
+| 제품명                       | 구성                                          | 초당 크레딧 | 카테고리 |
+| :--------------------------- | :-------------------------------------------- | :---------- | :------- |
+| OpenAI Sora 비디오 생성       | model: sora-2, size: 720x1280 또는 1280x720   | 21.10       | 비디오   |
+| OpenAI Sora 비디오 생성       | model: sora-2-pro, size: 720x1280 또는 1280x720 | 63.30      | 비디오   |
+| OpenAI Sora 비디오 생성       | model: sora-2-pro, size: 1024x1792 또는 1792x1024 | 105.50   | 비디오   |
+
+예시: `sora-2`, 1280x720, 8초 → 약 **168.8** 크레딧 ($0.10 × 8 × 211).
+
+## OpenRouter
+
+### OpenRouter LLM (`OpenRouterLLMNode`)
+
+백만 토큰 당 크레딧.
+
+| 모델                              | 입력 크레딧 / 1M | 출력 크레딧 / 1M |
+| :----------------------------------- | -----------------: | ------------------: |
+| `anthropic/claude-opus-4.7`          |               1055 |                5275 |
+| `openai/gpt-5.5-pro`                 |               6330 |               37980 |
+| `openai/gpt-5.5`                     |               1055 |                6330 |
+| `google/gemini-3.5-flash`            |              316.5 |                1899 |
+| `x-ai/grok-4.20`                     |             263.75 |               527.5 |
+| `x-ai/grok-4.3`                      |             263.75 |               527.5 |
+| `deepseek/deepseek-v4-pro`           |             91.785 |              183.57 |
+| `deepseek/deepseek-v4-flash`         |             23.632 |              47.264 |
+| `deepseek/deepseek-v3.2`             |             53.172 |              79.758 |
+| `qwen/qwen3.6-max-preview`           |             219.44 |             1316.64 |
+| `qwen/qwen3.6-plus`                  |            68.575 |              411.45 |
+| `qwen/qwen3.6-flash`                 |           39.5625 |             237.375 |
+| `mistralai/mistral-large-2512`       |              105.5 |               316.5 |
+| `mistralai/mistral-medium-3-5`       |              316.5 |              1582.5 |
+| `z-ai/glm-4.6`                       |              90.73 |              367.14 |
+| `z-ai/glm-5`                         |              126.6 |              405.12 |
+| `moonshotai/kimi-k2.6`               |             154.03 |              736.39 |
+| `moonshotai/kimi-k2-thinking`        |              126.6 |               527.5 |
+| `perplexity/sonar-pro`               |                633 |                3165 |
+| `perplexity/sonar-reasoning-pro`     |                422 |                1688 |
+| `perplexity/sonar-deep-research`     |                422 |                1688 |
+
+## Pika
+
+| 제품명                                                | 구성                                                  | 크레딧        | 카테고리 |
+| :---------------------------------------------------- | :---------------------------------------------------- | :------------ | :------- |
+| prod-v1-Pika 비디오 생성 제품 (10초)                     | endpoint: generate/2.2/i2v, resolution: 1080p         | 211 / run     | 비디오   |
+| prod-v1-Pika 비디오 생성 제품 (10초)                     | endpoint: generate/2.2/i2v, resolution: 720p          | 126.6 / run   | 비디오   |
+| prod-v1-Pika 비디오 생성 제품 (10초)                     | endpoint: generate/2.2/pikaframes, resolution: 1080p  | 211 / run     | 비디오   |
+| prod-v1-Pika 비디오 생성 제품 (10초)                     | endpoint: generate/2.2/pikaframes, resolution: 720p   | 52.75 / run   | 비디오   |
+| prod-v1-Pika 비디오 생성 제품 (10초)                     | endpoint: generate/2.2/pikascenes, resolution: 1080p  | 316.5 / run   | 비디오   |
+| prod-v1-Pika 비디오 생성 제품 (10초)                     | endpoint: generate/2.2/pikascenes, resolution: 720p   | 84.4 / run    | 비디오   |
+| prod-v1-Pika 비디오 생성 제품 (10초)                     | endpoint: generate/2.2/t2v, resolution: 1080p         | 211 / run     | 비디오   |
+| prod-v1-Pika 비디오 생성 제품 (10초)                     | endpoint: generate/2.2/t2v, resolution: 720p          | 126.6 / run   | 비디오   |
+| prod-v1-Pika 비디오 생성 (5초)                           | endpoint: generate/2.2/i2v, resolution: 1080p         | 94.95 / run   | 비디오   |
+| prod-v1-Pika 비디오 생성 (5초)                           | endpoint: generate/2.2/i2v, resolution: 720p          | 42.2 / run    | 비디오   |
+| prod-v1-Pika 비디오 생성 (5초)                           | endpoint: generate/2.2/pikaframes, resolution: 1080p  | 63.3 / run    | 비디오   |
+| prod-v1-Pika 비디오 생성 (5초)                           | endpoint: generate/2.2/pikaframes, resolution: 720p   | 42.2 / run    | 비디오   |
+| prod-v1-Pika 비디오 생성 (5초)                           | endpoint: generate/2.2/pikascenes, resolution: 1080p  | 105.5 / run   | 비디오   |
+| prod-v1-Pika 비디오 생성 (5초)                           | endpoint: generate/2.2/pikascenes, resolution: 720p   | 63.3 / run    | 비디오   |
+| prod-v1-Pika 비디오 생성 (5초)                           | endpoint: generate/2.2/t2v, resolution: 1080p         | 94.95 / run   | 비디오   |
+| prod-v1-Pika 비디오 생성 (5초)                           | endpoint: generate/2.2/t2v, resolution: 720p          | 42.2 / run    | 비디오   |
+| prod-v1-Pika 비디오 생성 (5초)                           | endpoint: generate/pikaffects, resolution: 720p       | 94.95 / run   | 비디오   |
+| Pika 기본 비디오 제품                                    | endpoint: generate/pikadditions                       | 63.3 / run    | 비디오   |
+| Pika 기본 비디오 제품                                    | endpoint: generate/pikaffects                         | 94.95 / run   | 비디오   |
+| Pika 기본 비디오 제품                                    | endpoint: generate/pikaswaps                          | 63.3 / run    | 비디오   |
+
+## Pixverse
+
+| 제품명                           | 구성                                               | 크레딧        | 카테고리 |
+| :------------------------------- | :------------------------------------------------ | :------------ | :------- |
+| Pixverse 5초 비디오 제품          | model: v3.5, motion_mode: fast, quality: 360p     | 189.9 / 회    | 비디오   |
+| Pixverse 5초 비디오 제품          | model: v3.5, motion_mode: fast, quality: 540p     | 189.9 / 회    | 비디오   |
+| Pixverse 5초 비디오 제품          | model: v3.5, motion_mode: fast, quality: 720p     | 253.2 / 회    | 비디오   |
+| Pixverse 5초 비디오 제품          | model: v3.5, motion_mode: normal, quality: 1080p  | 253.2 / 회    | 비디오   |
+| Pixverse 5초 비디오 제품          | model: v3.5, motion_mode: normal, quality: 360p   | 94.95 / 회    | 비디오   |
+| Pixverse 5초 비디오 제품          | model: v3.5, motion_mode: normal, quality: 540p   | 94.95 / 회    | 비디오   |
+| Pixverse 5초 비디오 제품          | model: v3.5, motion_mode: normal, quality: 720p   | 126.6 / 회    | 비디오   |
+| Pixverse 8초 비디오 제품          | model: v3.5, motion_mode: normal, quality: 360p   | 189.9 / 회    | 비디오   |
+| Pixverse 8초 비디오 제품          | model: v3.5, motion_mode: normal, quality: 540p   | 189.9 / 회    | 비디오   |
+| Pixverse 8초 비디오 제품          | model: v3.5, motion_mode: normal, quality: 720p   | 253.2 / 회    | 비디오   |
+
+## Quiver
+
+| 제품명               | 설정                   | 크레딧          | 카테고리 |
+| :------------------- | :--------------------- | :-------------- | :------- |
+| Quiver 텍스트 → SVG  | 모델: 화살표-1.1       | 60.35 / 회      | 이미지   |
+| Quiver 이미지 → SVG  | 모델: 화살표-1.1       | 45.26 / 회      | 이미지   |
+| Quiver 텍스트 → SVG  | 모델: 화살표-1.1-max   | 75.43 / 회      | 이미지   |
+| Quiver 이미지 → SVG  | 모델: 화살표-1.1-max   | 60.35 / 회      | 이미지   |
+
+## Recraft
+
+| 제품명                                 | 구성                                          | 크레딧        | 카테고리 |
+| :------------------------------------- | :-------------------------------------------- | :------------ | :------- |
+| Recraft 스타일 생성                     | endpoint: v2/style/create                     | 8.44 / run    | 이미지   |
+| Recraft 이미지 생성 (텍스트 → 이미지)   | endpoint: v2/auto/text-to-image               | 8.44 / run    | 이미지   |
+| Recraft 이미지 생성 (이미지 → 이미지)   | endpoint: v2/auto/image-to-image              | 8.44 / run    | 이미지   |
+| Recraft Inpainting                     | endpoint: v2/auto/inpainting                  | 8.44 / run    | 이미지   |
+| Recraft 벡터 생성 (텍스트 → 벡터)       | endpoint: v2/auto/text-to-vector              | 16.88 / run   | 이미지   |
+| Recraft 벡터 생성 (이미지 → 벡터)       | endpoint: v2/auto/vectorize-image             | 2.11 / run    | 이미지   |
+| Recraft 배경 교체                       | endpoint: v2/image/replace-background         | 8.44 / run    | 이미지   |
+| Recraft 배경 제거                       | endpoint: v2/image/remove-background          | 2.11 / run    | 이미지   |
+| Recraft Crisp Upscale                  | endpoint: v2/image/crisp-upscale              | 0.84 / run    | 이미지   |
+| Recraft Creative Upscale               | endpoint: v2/image/creative-upscale           | 52.75 / run   | 이미지   |
+| Recraft V4 텍스트-이미지                | model: recraftv4                              | 8.44 / run    | 이미지   |
+| Recraft V4 텍스트-이미지                | model: recraftv4_pro                          | 52.75 / run   | 이미지   |
+| Recraft V4 텍스트-벡터                  | model: recraftv4                              | 16.88 / run   | 이미지   |
+| Recraft V4 텍스트-벡터                  | model: recraftv4_pro                          | 63.30 / run   | 이미지   |
+
+## Reve
+
+> 표시된 가격은 기본 가격입니다(test\_time\_scaling=1, 후처리 없음). 업스케일링 또는 배경 제거를 활성화하면 실제 비용이 더 높아질 수 있습니다.
+
+| 제품명                    | 구성                           | 크레딧         | 카테고리 |
+| :---------------------- | :----------------------------- | :------------- | :------- |
+| Reve 이미지 생성         | 모델: reve-create@20250915     | 7.24 / 회      | 이미지   |
+| Reve 이미지 편집         | 모델: reve-edit@20250915       | 12.07 / 회     | 이미지   |
+| Reve 이미지 편집         | 모델: reve-edit-fast@20251030  | 2.11 / 회      | 이미지   |
+| Reve 이미지 리믹스       | 모델: reve-remix@20250915      | 12.07 / 회     | 이미지   |
+| Reve 이미지 리믹스       | 모델: reve-remix-fast@20251030 | 2.11 / 회      | 이미지   |
+
+## Rodin
+
+### Hyper3D Rodin (Gen-2)
+
+| 제품명                            | 구성   | 크레딧          | 카테고리 |
+| :-------------------------------- | :----- | :-------------- | :------- |
+| Rodin 3D 생성 (애드온 없음)       | NA     | 84.4 /회        | 3D       |
+| Rodin 3D 생성 (애드온 포함)       | NA     | 253.2 /회       | 3D       |
+
+### Hyper3D Rodin Gen-2.5 (`Rodin3D_Gen25_Image` / `Rodin3D_Gen25_Text`)
+
+| 제품명                           | 구성                                         | 크레딧          | 카테고리 |
+| :------------------------------- | :-------------------------------------------- | :-------------- | :------- |
+| Rodin Gen-2.5 (일반/빠름)        | 모드: 일반 또는 빠름                          | 158.25 /회      | 3D       |
+| Rodin Gen-2.5 (극고)             | 모드: 극고                                    | 316.5 /회       | 3D       |
+| Rodin Gen-2.5 HighPack 애드온    | addon_highpack: 참                            | +168.8 /회      | 3D       |
+
 ## Runway
 
-| 제품 이름                                     | 구성                     | 크레딧        | 카테고리 |
-| :------------------------------------------- | :----------------------- | :---------- | :------- |
-| prod-v1-Runway Video Generation Product     | model: gen3a_turbo       | 15.09 / 초  | Video    |
-| prod-v1-Runway Video Generation Product     | model: gen4_turbo        | 10.55 / 초  | Video    |
-| prod-v1-Runway Video Generation Product     | model: aleph2            | 84.48 / 초  | Video    |
-| RunwayML Image Generation Product           | model: gen4_image        | 24.14 / 회  | Image    |
-| Runway First & Last Frame Generation Product | model: gen4_turbo       | 15.09 / 초  | Video    |
+| 제품명                                   | 구성               | 크레딧       | 카테고리 |
+| :--------------------------------------- | :----------------- | :---------- | :------- |
+| prod-v1-Runway Video Generation Product  | 모델: gen3a_turbo  | 15.09 / 초  | 비디오   |
+| prod-v1-Runway Video Generation Product  | 모델: gen4_turbo   | 10.55 / 초  | 비디오   |
+| prod-v1-Runway Video Generation Product  | 모델: aleph2       | 84.48 / 초  | 비디오   |
+| RunwayML Image Generation Product        | 모델: gen4_image   | 24.14 / 실행 | 이미지   |
+| Runway First & Last Frame Generation Product | 모델: gen4_turbo  | 15.09 / 초  | 비디오   |
 
 ## Sonilo
 
-| 제품 이름                | 구성                                     | 크레딧       | 카테고리 |
-| :---------------------- | :--------------------------------------- | :---------- | :------- |
-| Sonilo Music Generate   | model: sonilo, type: video-to-music      | 1.9 / 초    | Audio    |
-| Sonilo Music Generate   | model: sonilo, type: text-to-music       | 1.055 / 초  | Audio    |
+| 제품명                | 구성                           | 크레딧    | 카테고리 |
+| :-------------------- | :----------------------------- | :--------- | :------- |
+| Sonilo Music Generate | 모델: sonilo, 유형: 비디오-음악 | 1.9 / sec  | 오디오    |
+| Sonilo Music Generate | 모델: sonilo, 유형: 텍스트-음악  | 1.055 / sec | 오디오    |
+
+## Stability AI
+
+| 제품 이름                                   | 구성                                                                       | 크레딧       | 카테고리 |
+| :------------------------------------------ | :------------------------------------------------------------------------- | :----------- | :------- |
+| prod-v1-Stability Image Generation Product  | endpoint: v2beta/stable-image/generate/core                                | 6.33 / 실행  | 이미지   |
+| prod-v1-Stability Image Generation Product  | endpoint: v2beta/stable-image/generate/ultra                               | 16.88 / 실행 | 이미지   |
+| prod-v1-Stability Image Generation Product  | endpoint: v2beta/stable-image/upscale/conservative                         | 84.4 / 실행  | 이미지   |
+| prod-v1-Stability Image Generation Product  | endpoint: v2beta/stable-image/upscale/creative                             | 126.6 / 실행 | 이미지   |
+| prod-v1-Stability Image Generation Product  | endpoint: v2beta/stable-image/upscale/fast                                 | 4.22 / 실행  | 이미지   |
+| Stability AI SD3 Image Products             | 모델: sd3.5-large                                                          | 13.71 / 실행 | 이미지   |
+| Stability AI SD3 Image Products             | 모델: sd3.5-large-turbo                                                    | 8.44 / 실행  | 이미지   |
+| Stability AI SD3 Image Products             | 모델: sd3.5-medium                                                         | 7.39 / 실행  | 이미지   |
+| Stability Audio Generation Product          | endpoint: v2beta/audio/stable-audio-2/audio-to-audio, 모델: stable-audio-2.5 | 42.2 / 실행  | 오디오   |
+| Stability Audio Generation Product          | endpoint: v2beta/audio/stable-audio-2/inpaint, 모델: stable-audio-2.5        | 42.2 / 실행  | 오디오   |
+| Stability Audio Generation Product          | endpoint: v2beta/audio/stable-audio-2/text-to-audio, 모델: stable-audio-2.5  | 42.2 / 실행  | 오디오   |
+
+## Tencent
+
+| 제품명                       | 설정                                                 | 크레딧       | 카테고리 |
+| :--------------------------- | :--------------------------------------------------- | :----------- | :------- |
+| Tencent 3D Generate Type     | endpoint: hunyuan/3d-pro, generate_type: Geometry    | 63.3 / run   | 3D       |
+| Tencent 3D Generate Type     | endpoint: hunyuan/3d-pro, generate_type: LowPoly     | 126.6 / run  | 3D       |
+| Tencent 3D Generate Type     | endpoint: hunyuan/3d-pro, generate_type: Normal      | 105.5 / run  | 3D       |
+| Tencent 3D Generate Type     | endpoint: hunyuan/3d-pro, generate_type: Sketch      | 105.5 / run  | 3D       |
+| Tencent 3D Face Count        | custom_face_count: 참, endpoint: hunyuan/3d-pro       | 42.2 / run   | 3D       |
+| Tencent 3D PBR               | enable_pbr: 참, endpoint: hunyuan/3d-pro             | 42.2 / run   | 3D       |
+| Tencent 3D Multiview Images  | endpoint: hunyuan/3d-pro, multi_view: 참             | 42.2 / run   | 이미지   |
+| Tencent 3D                   | endpoint: hunyuan/3d-part                            | 126.6 / run  | 3D       |
+| Tencent 3D                   | endpoint: hunyuan/3d-texture-edit                    | 126.6 / run  | 3D       |
+| Tencent 3D                   | endpoint: hunyuan/3d-uv                              | 42.2 / run   | 3D       |
+| Tencent 3D                   | endpoint: hunyuan/3d-smart-topology                  | 211 / run    | 3D       |
+
+## Topaz
+
+### 이미지 향상
+
+| 제품명                          | 구성                               | 크레딧        | 카테고리 |
+| :------------------------------ | :---------------------------------- | :------------ | :------- |
+| Topaz 이미지 향상 (Reimagine) | 입력 해상도: 720p (1280x720)        | 13.93 / 회    | 이미지    |
+| Topaz 이미지 향상 (Reimagine) | 입력 해상도: 1080p (1920x1080)      | 27.85 / 회    | 이미지    |
+| Topaz 이미지 향상 (Reimagine) | 입력 해상도: 1440p (2560x1440)      | 27.85 / 회    | 이미지    |
+| Topaz 이미지 향상 (Reimagine) | 입력 해상도: 4K (3840x2160)         | 69.63 / 회    | 이미지    |
+
+### 비디오 향상
+
+| 제품명               | 구성                                                                  | 크레딧          | 카테고리 |
+| :------------------- | :--------------------------------------------------------------------- | :-------------- | :------- |
+| Topaz 비디오 향상 | 모델: Starlight Precise 2.5 (slp-2.5), 업스케일러 해상도: FullHD (1080p)    | 12.99 / 초      | 비디오    |
+| Topaz 비디오 향상 | 모델: Starlight Precise 2.5 (slp-2.5), 업스케일러 해상도: 4K (2160p)        | 28.08 / 초      | 비디오    |
+| Topaz 비디오 향상 | 모델: Starlight (Astra) Fast (slf-1), 업스케일러 해상도: FullHD (1080p)     | 6.50 / 초       | 비디오    |
+| Topaz 비디오 향상 | 모델: Starlight (Astra) Fast (slf-1), 업스케일러 해상도: 4K (2160p)         | 14.16 / 초      | 비디오    |
+| Topaz 비디오 향상 | 모델: Starlight (Astra) Creative (slc-1), 업스케일러 해상도: FullHD (1080p) | 43.62 / 초      | 비디오    |
+| Topaz 비디오 향상 | 모델: Starlight (Astra) Creative (slc-1), 업스케일러 해상도: 4K (2160p)     | 77.99 / 초      | 비디오    |
+| Topaz 비디오 향상 | 보간 모델: apo-8, 입력 해상도: 720p                             | 2.55 / 초       | 비디오    |
+| Topaz 비디오 향상 | 보간 모델: apo-8, 입력 해상도: 1080p                            | 5.57 / 초       | 비디오    |
+| Topaz 비디오 향상 | 보간 모델: apo-8, 입력 해상도: 4K                               | 21.59 / 초       | 비디오    |
+| Topaz 비디오 향상 | 모델: Astra 2 (ast-2), 해상도: 1080p                                       | 1.688 / 프레임  | 비디오    |
+| Topaz 비디오 향상 | 모델: Astra 2 (ast-2), 해상도: 4K                                           | 2.813 / 프레임  | 비디오    |
+
+## Tripo
+
+| 제품명 | 구성 | 크레딧 | 카테고리 |
+| :--- | :--- | :--- | :--- |
+| Tripo 생성 (텍스처 포함) 제품 | model: v2.0-20240919, texture_quality: detailed, type: image_to_model | 84.4 / run | 3D |
+| Tripo 생성 (텍스처 포함) 제품 | model: v2.0-20240919, texture_quality: detailed, type: multiview_to_model | 84.4 / run | 3D |
+| Tripo 생성 (텍스처 포함) 제품 | model: v2.0-20240919, texture_quality: detailed, type: text_to_model | 63.3 / run | 3D |
+| Tripo 생성 (텍스처 포함) 제품 | model: v2.0-20240919, texture_quality: standard, type: image_to_model | 63.3 / run | 3D |
+| Tripo 생성 (텍스처 포함) 제품 | model: v2.0-20240919, texture_quality: standard, type: multiview_to_model | 63.3 / run | 3D |
+| Tripo 생성 (텍스처 포함) 제품 | model: v2.0-20240919, texture_quality: standard, type: text_to_model | 42.2 / run | 3D |
+| Tripo 생성 (텍스처 포함) 제품 | model: v2.5-20250123, texture_quality: detailed, type: image_to_model | 84.4 / run | 3D |
+| Tripo 생성 (텍스처 포함) 제품 | model: v2.5-20250123, texture_quality: detailed, type: multiview_to_model | 84.4 / run | 3D |
+| Tripo 생성 (텍스처 포함) 제품 | model: v2.5-20250123, texture_quality: detailed, type: text_to_model | 63.3 / run | 3D |
+| Tripo 생성 (텍스처 포함) 제품 | model: v2.5-20250123, texture_quality: standard, type: image_to_model | 63.3 / run | 3D |
+| Tripo 생성 (텍스처 포함) 제품 | model: v2.5-20250123, texture_quality: standard, type: multiview_to_model | 63.3 / run | 3D |
+| Tripo 생성 (텍스처 포함) 제품 | model: v2.5-20250123, texture_quality: standard, type: text_to_model | 42.2 / run | 3D |
+| Tripo 생성 (텍스처 포함) 제품 | model: v3.0-20250812, texture_quality: detailed, type: image_to_model | 84.4 / run | 3D |
+| Tripo 생성 (텍스처 포함) 제품 | model: v3.0-20250812, texture_quality: detailed, type: multiview_to_model | 84.4 / run | 3D |
+| Tripo 생성 (텍스처 포함) 제품 | model: v3.0-20250812, texture_quality: detailed, type: text_to_model | 63.3 / run | 3D |
+| Tripo 생성 (텍스처 포함) 제품 | model: v3.0-20250812, texture_quality: standard, type: image_to_model | 63.3 / run | 3D |
+| Tripo 생성 (텍스처 포함) 제품 | model: v3.0-20250812, texture_quality: standard, type: multiview_to_model | 63.3 / run | 3D |
+| Tripo 생성 (텍스처 포함) 제품 | model: v3.0-20250812, texture_quality: standard, type: text_to_model | 42.2 / run | 3D |
+| Tripo 생성 (텍스처 포함) 제품 | model: v3.1, texture_quality: detailed, type: image_to_model | 84.4 / run | 3D |
+| Tripo 생성 (텍스처 포함) 제품 | model: v3.1, texture_quality: detailed, type: multiview_to_model | 84.4 / run | 3D |
+| Tripo 생성 (텍스처 포함) 제품 | model: v3.1, texture_quality: detailed, type: text_to_model | 63.3 / run | 3D |
+| Tripo 생성 (텍스처 포함) 제품 | model: v3.1, texture_quality: standard, type: image_to_model | 63.3 / run | 3D |
+| Tripo 생성 (텍스처 포함) 제품 | model: v3.1, texture_quality: standard, type: multiview_to_model | 63.3 / run | 3D |
+| Tripo 생성 (텍스처 포함) 제품 | model: v3.1, texture_quality: standard, type: text_to_model | 42.2 / run | 3D |
+| Tripo 생성 (텍스처 없음) 제품 | model: v2.0-20240919, type: image_to_model | 42.2 / run | 3D |
+| Tripo 생성 (텍스처 없음) 제품 | model: v2.0-20240919, type: multiview_to_model | 42.2 / run | 3D |
+| Tripo 생성 (텍스처 없음) 제품 | model: v2.0-20240919, type: text_to_model | 21.1 / run | 3D |
+| Tripo 생성 (텍스처 없음) 제품 | model: v2.5-20250123, type: image_to_model | 42.2 / run | 3D |
+| Tripo 생성 (텍스처 없음) 제품 | model: v2.5-20250123, type: multiview_to_model | 42.2 / run | 3D |
+| Tripo 생성 (텍스처 없음) 제품 | model: v2.5-20250123, type: text_to_model | 21.1 / run | 3D |
+| Tripo 생성 (텍스처 없음) 제품 | model: v3.0-20250812, type: image_to_model | 42.2 / run | 3D |
+| Tripo 생성 (텍스처 없음) 제품 | model: v3.0-20250812, type: multiview_to_model | 42.2 / run | 3D |
+| Tripo 생성 (텍스처 없음) 제품 | model: v3.0-20250812, type: text_to_model | 21.1 / run | 3D |
+| Tripo 생성 (텍스처 없음) 제품 | model: v3.1, type: image_to_model | 42.2 / run | 3D |
+| Tripo 생성 (텍스처 없음) 제품 | model: v3.1, type: multiview_to_model | 42.2 / run | 3D |
+| Tripo 생성 (텍스처 없음) 제품 | model: v3.1, type: text_to_model | 21.1 / run | 3D |
+| Tripo 스타일 제품 | NA | 10.55 / run | 3D |
+| Tripo 사각형 제품 | NA | 10.55 / run | 3D |
+| Tripo 텍스처 추가 제품 | texture_quality: detailed | 42.2 / run | 3D |
+| Tripo 텍스처 추가 제품 | texture_quality: standard | 21.1 / run | 3D |
+| Tripo 후처리 제품 | type: animate_retarget | 21.1 / run | 3D |
+| Tripo 후처리 제품 | type: animate_rig | 52.75 / run | 3D |
+| Tripo 후처리 제품 | type: stylize_model | 42.2 / run | 3D |
+| Tripo 변환 제품 | convert_format: advanced | 21.1 / run | 3D |
+| Tripo 변환 제품 | convert_format: basic | 10.55 / run | 3D |
+| Tripo V1-4 생성 제품 | type: image_to_model | 63.3 / run | 3D |
+| Tripo V1-4 생성 제품 | type: refine_model | 63.3 / run | 3D |
+| Tripo V1-4 생성 제품 | type: text_to_model | 42.2 / run | 3D |
+| Tripo 지오메트리 품질 제품 | geometry_quality: detailed | 42.2 / run | 3D |
+| Tripo P1 생성 제품 | model: P1-20260311, type: text_to_model, output_mode: Geometry only | 63.3 / run | 3D |
+| Tripo P1 생성 제품 | model: P1-20260311, type: text_to_model, output_mode: Textured, texture_quality: standard | 84.4 / run | 3D |
+| Tripo P1 생성 제품 | model: P1-20260311, type: text_to_model, output_mode: Textured, texture_quality: detailed | 105.5 / run | 3D |
+| Tripo P1 생성 제품 | model: P1-20260311, type: image_to_model, output_mode: Geometry only | 84.4 / run | 3D |
+| Tripo P1 생성 제품 | model: P1-20260311, type: image_to_model, output_mode: Textured, texture_quality: standard | 105.5 / run | 3D |
+| Tripo P1 생성 제품 | model: P1-20260311, type: image_to_model, output_mode: Textured, texture_quality: detailed | 126.6 / run | 3D |
+| Tripo P1 생성 제품 | model: P1-20260311, type: multiview_to_model, output_mode: Geometry only | 84.4 / run | 3D |
+| Tripo P1 생성 제품 | model: P1-20260311, type: multiview_to_model, output_mode: Textured, texture_quality: standard | 105.5 / run | 3D |
+| Tripo P1 생성 제품 | model: P1-20260311, type: multiview_to_model, output_mode: Textured, texture_quality: detailed | 126.6 / run | 3D |
+
+| Tripo 3D 가져오기 제품 | NA | 무료 | 3D |
+
+## Vidu
+
+### 비디오 생성 — Q3
+
+| 제품명                             | 구성                                      | 크레딧             | 카테고리 |
+| :------------------------------- | :-------------------------------------- | :-------------- | :---- |
+| Vidu Q3 비디오 생성 제품 | model: vidu-q3-pro, resolution: 1080P   | 33.76 / sec | 비디오  |
+| Vidu Q3 비디오 생성 제품 | model: vidu-q3-pro, resolution: 720P    | 31.65 / sec | 비디오  |
+| Vidu Q3 비디오 생성 제품 | model: vidu-q3-pro, resolution: 540P    | 14.77 / sec | 비디오  |
+| Vidu Q3 비디오 생성 제품 | model: vidu-q3-turbo, resolution: 1080P | 16.88 / sec | 비디오  |
+| Vidu Q3 비디오 생성 제품 | model: vidu-q3-turbo, resolution: 720P  | 12.66 / sec | 비디오  |
+| Vidu Q3 비디오 생성 제품 | model: vidu-q3-turbo, resolution: 540P  | 8.44 / sec  | 비디오  |
+
+### 비디오 생성 — Q2
+
+> 비수기 가격은 일반 가격의 절반입니다. 소수점은 올림 처리됩니다.
+
+| 제품명                             | 구성                                                                       | 크레딧                                  | 카테고리 |
+| :------------------------------- | :----------------------------------------------------------------------- | :----------------------------------- | :---- |
+| Vidu Q2 비디오 생성 제품 | model: q2-turbo, type: img2video / start-end2video, resolution: 540P     | Starts at 6.33, +2.11/sec           | 비디오  |
+| Vidu Q2 비디오 생성 제품 | model: q2-turbo, type: img2video / start-end2video, resolution: 720P     | Starts at 8.44, +10.55/sec after 2s | 비디오  |
+| Vidu Q2 비디오 생성 제품 | model: q2-turbo, type: img2video / start-end2video, resolution: 1080P    | Starts at 36.92, +10.55/sec         | 비디오  |
+| Vidu Q2 비디오 생성 제품 | model: q2-pro, type: img2video / start-end2video, resolution: 540P       | Starts at 8.44, +5.28/sec after 2s  | 비디오  |
+| Vidu Q2 비디오 생성 제품 | model: q2-pro, type: img2video / start-end2video, resolution: 720P       | Starts at 15.82, +10.55/sec         | 비디오  |
+| Vidu Q2 비디오 생성 제품 | model: q2-pro, type: img2video / start-end2video, resolution: 1080P      | Starts at 58.03, +15.82/sec         | 비디오  |
+| Vidu Q2 비디오 생성 제품 | model: q2-pro-fast, type: img2video / start-end2video, resolution: 720P  | Starts at 8.44, +2.11/sec           | 비디오  |
+| Vidu Q2 비디오 생성 제품 | model: q2-pro-fast, type: img2video / start-end2video, resolution: 1080P | Starts at 16.88, +4.22/sec          | 비디오  |
+| Vidu Q2 비디오 생성 제품 | model: q2, type: text2video, resolution: 540P                            | Starts at 10.55, +2.11/sec          | 비디오  |
+| Vidu Q2 비디오 생성 제품 | model: q2, type: text2video, resolution: 720P                            | Starts at 15.82, +5.28/sec          | 비디오  |
+| Vidu Q2 비디오 생성 제품 | model: q2, type: text2video, resolution: 1080P                           | Starts at 21.1, +10.55/sec          | 비디오  |
+| Vidu Q2 비디오 생성 제품 | model: q2, type: reference2video, resolution: 540P                       | Starts at 15.82, +5.28/sec          | 비디오  |
+| Vidu Q2 비디오 생성 제품 | model: q2, type: reference2video, resolution: 720P                       | Starts at 26.38, +5.28/sec          | 비디오  |
+| Vidu Q2 비디오 생성 제품 | model: q2, type: reference2video, resolution: 1080P                      | Starts at 79.12, +10.55/sec         | 비디오  |
+| Vidu Q2 비디오 생성 제품 | model: q2-pro, type: reference2video, resolution: 540P                   | Starts at 21.1, +5.28/sec           | 비디오  |
+| Vidu Q2 비디오 생성 제품 | model: q2-pro, type: reference2video, resolution: 720P                   | Starts at 31.65, +5.28/sec          | 비디오  |
+| Vidu Q2 비디오 생성 제품 | model: q2-pro, type: reference2video, resolution: 1080P                  | Starts at 89.67, +10.55/sec         | 비디오  |
+
+### 비디오 생성 — Q1
+
+| 제품명                             | 구성                                                                                  | 크레딧         | 카테고리 |
+| :------------------------------- | :---------------------------------------------------------------------------------- | :---------- | :---- |
+| Vidu Q1 비디오 생성 제품 | model: vidu-q1, type: reference2video, style: general, duration: 5s, resolution: 1080P | 84.4 / run | 비디오  |
+| Vidu Q1 비디오 생성 제품 | model: vidu-q1, type: img2video, style: general, duration: 5s, resolution: 1080P       | 84.4 / run | 비디오  |
+| Vidu Q1 비디오 생성 제품 | model: vidu-q1, type: start-end2video, style: general, duration: 5s, resolution: 1080P | 84.4 / run | 비디오  |
+| Vidu Q1 비디오 생성 제품 | model: vidu-q1, type: text2video, style: general, duration: 5s, resolution: 1080P      | 84.4 / run | 비디오  |
+| Vidu Q1 비디오 생성 제품 | model: vidu-q1, type: text2video, style: anime, duration: 5s, resolution: 1080P        | 84.4 / run | 비디오  |
+
+### 비디오 생성 — Vidu 2.0
+
+| 제품명                          | 구성                                                                     | 크레딧          | 카테고리 |
+| :---------------------------- | :---------------------------------------------------------------------- | :----------- | :---- |
+| Vidu 2.0 비디오 생성 제품 | model: vidu-2.0, type: img2video, duration: 4S, resolution: 360P        | 21.1 / run  | 비디오  |
+| Vidu 2.0 비디오 생성 제품 | model: vidu-2.0, type: img2video, duration: 4S, resolution: 720P        | 42.2 / run  | 비디오  |
+| Vidu 2.0 비디오 생성 제품 | model: vidu-2.0, type: img2video, duration: 4S, resolution: 1080P       | 105.5 / run | 비디오  |
+| Vidu 2.0 비디오 생성 제품 | model: vidu-2.0, type: img2video, duration: 8S, resolution: 720P        | 105.5 / run | 비디오  |
+| Vidu 2.0 비디오 생성 제품 | model: vidu-2.0, type: reference2video, duration: 4S, resolution: 360P  | 84.4 / run  | 비디오  |
+| Vidu 2.0 비디오 생성 제품 | model: vidu-2.0, type: reference2video, duration: 4S, resolution: 720P  | 84.4 / run  | 비디오  |
+| Vidu 2.0 비디오 생성 제품 | model: vidu-2.0, type: start-end2video, duration: 4S, resolution: 360P  | 21.1 / run  | 비디오  |
+| Vidu 2.0 비디오 생성 제품 | model: vidu-2.0, type: start-end2video, duration: 4S, resolution: 720P  | 42.2 / run  | 비디오  |
+| Vidu 2.0 비디오 생성 제품 | model: vidu-2.0, type: start-end2video, duration: 4S, resolution: 1080P | 105.5 / run | 비디오  |
+| Vidu 2.0 비디오 생성 제품 | model: vidu-2.0, type: start-end2video, duration: 8S, resolution: 720P  | 105.5 / run | 비디오  |
+
+### 이미지 생성
+
+| 제품명                      | 구성                                                                             | 크레딧          | 카테고리 |
+| :------------------------ | :------------------------------------------------------------------------------ | :----------- | :---- |
+| Vidu 이미지 생성 제품 | model: viduq2, type: Text to Image, resolution: 1080P                       | 6.33 / run  | 이미지  |
+| Vidu 이미지 생성 제품 | model: viduq2, type: Text to Image, resolution: 2K                          | 8.44 / run  | 이미지  |
+| Vidu 이미지 생성 제품 | model: viduq2, type: Text to Image, resolution: 4K                          | 10.55 / run | 이미지  |
+| Vidu 이미지 생성 제품 | model: viduq2, type: Reference to Image, ref images: 1–3, resolution: 1080P | 8.44 / run  | 이미지  |
+| Vidu 이미지 생성 제품 | model: viduq2, type: Reference to Image, ref images: 1–3, resolution: 2K    | 12.66 / run | 이미지  |
+| Vidu 이미지 생성 제품 | model: viduq2, type: Reference to Image, ref images: 1–3, resolution: 4K    | 21.1 / run  | 이미지  |
+| Vidu 이미지 생성 제품 | model: viduq2, type: Reference to Image, ref images: 4–7, resolution: 1080P | 10.55 / run | 이미지  |
+| Vidu 이미지 생성 제품 | model: viduq2, type: Reference to Image, ref images: 4–7, resolution: 2K    | 16.88 / run | 이미지  |
+| Vidu 이미지 생성 제품 | model: viduq2, type: Reference to Image, ref images: 4–7, resolution: 4K    | 31.65 / run | 이미지  |
+| Vidu 이미지 생성 제품 | model: viduq1, type: Reference to Image, ref images: 1–7, resolution: 1080P | 21.1 / run  | 이미지  |
+
+### 비디오 확장
+
+| 제품명                 | 구성                                   | 크레딧                          | 카테고리 |
+| :------------------- | :----------------------------------- | :--------------------------- | :---- |
+| Vidu 비디오 확장 제품 | model: q2-turbo, resolution: 540P  | Starts at 10.55, +2.11/sec  | 비디오  |
+| Vidu 비디오 확장 제품 | model: q2-turbo, resolution: 720P  | Starts at 15.82, +5.28/sec  | 비디오  |
+| Vidu 비디오 확장 제품 | model: q2-turbo, resolution: 1080P | Starts at 42.2, +10.55/sec  | 비디오  |
+| Vidu 비디오 확장 제품 | model: q2-pro, resolution: 540P    | Starts at 15.82, +5.28/sec  | 비디오  |
+| Vidu 비디오 확장 제품 | model: q2-pro, resolution: 720P    | Starts at 31.65, +10.55/sec | 비디오  |
+| Vidu 비디오 확장 제품 | model: q2-pro, resolution: 1080P   | Starts at 63.3, +15.82/sec  | 비디오  |
+
+### 기타 기능
+
+| 제품명                | 구성 | 크레딧         | 카테고리 |
+| :------------------ | :-: | :---------- | :---- |
+| Vidu 립 싱크 제품   | —   | 21.1 / 5s   | 비디오  |
+| Vidu 모션 싱크 제품 | —   | 10.55 / sec | 비디오  |
+
+## WAN
+
+| 제품 이름                    | 구성                                           | 크레딧        | 카테고리 |
+| :--------------------------- | :--------------------------------------------- | :------------ | :------- |
+| Wan 이미지 생성 제품         | model: wan2.5-i2i-preview                      | 6.33 / run    | 이미지   |
+| Wan 이미지 생성 제품         | model: wan2.5-t2i-preview                      | 6.33 / run    | 이미지   |
+| Wan 이미지 생성 제품         | model: wan2.6-t2i                              | 6.33 / run    | 이미지   |
+| Wan 비디오 생성 제품         | model: wan2.5-i2v-preview, resolution: 1080P   | 31.65 / sec   | 비디오   |
+| Wan 비디오 생성 제품         | model: wan2.5-i2v-preview, resolution: 480P    | 10.55 / sec   | 비디오   |
+| Wan 비디오 생성 제품         | model: wan2.5-i2v-preview, resolution: 720P    | 21.1 / sec    | 비디오   |
+| Wan 비디오 생성 제품         | model: wan2.5-t2v-preview, resolution: 1080P   | 31.65 / sec   | 비디오   |
+| Wan 비디오 생성 제품         | model: wan2.5-t2v-preview, resolution: 480P    | 10.55 / sec   | 비디오   |
+| Wan 비디오 생성 제품         | model: wan2.5-t2v-preview, resolution: 720P    | 21.1 / sec    | 비디오   |
+| Wan 비디오 생성 제품         | model: wan2.6-i2v, resolution: 1080P           | 31.65 / sec   | 비디오   |
+| Wan 비디오 생성 제품         | model: wan2.6-i2v, resolution: 720P            | 21.1 / sec    | 비디오   |
+| Wan 비디오 생성 제품         | model: wan2.6-r2v, resolution: 1080P           | 31.65 / sec   | 비디오   |
+| Wan 비디오 생성 제품         | model: wan2.6-r2v, resolution: 720P            | 21.1 / sec    | 비디오   |
+| Wan 비디오 생성 제품         | model: wan2.6-t2v, resolution: 1080P           | 31.65 / sec   | 비디오   |
+| Wan 비디오 생성 제품         | model: wan2.6-t2v, resolution: 720P            | 21.1 / sec    | 비디오   |
+| Wan 비디오 생성 제품         | model: wan2.7-i2v, resolution: 1080P           | 31.65 / sec   | 비디오   |
+| Wan 비디오 생성 제품         | model: wan2.7-i2v, resolution: 720P            | 21.1 / sec    | 비디오   |
+| Wan 비디오 생성 제품         | model: wan2.7-r2v, resolution: 1080P           | 31.65 / sec   | 비디오   |
+| Wan 비디오 생성 제품         | model: wan2.7-r2v, resolution: 720P            | 21.1 / sec    | 비디오   |
+| Wan 비디오 생성 제품         | model: wan2.7-t2v, resolution: 1080P           | 31.65 / sec   | 비디오   |
+| Wan 비디오 생성 제품         | model: wan2.7-t2v, resolution: 720P            | 21.1 / sec    | 비디오   |
+| Wan 비디오 생성 제품         | model: wan2.7-videoedit, resolution: 1080P     | 31.65 / sec   | 비디오   |
+| Wan 비디오 생성 제품         | model: wan2.7-videoedit, resolution: 720P      | 21.1 / sec    | 비디오   |
+
+## Wavespeed
+
+| 제품명                | 구성                            | 크레딧          | 카테고리 |
+| :-------------------- | :------------------------------ | :-------------- | :------- |
+| Wavespeed Flashvsr    | 해상도: 1080p                   | 18.99 / 실행    | 이미지   |
+| Wavespeed Flashvsr    | 해상도: 2k                      | 25.32 / 실행    | 이미지   |
+| Wavespeed Flashvsr    | 해상도: 4k                      | 33.76 / 실행    | 이미지   |
+| Wavespeed Flashvsr    | 해상도: 720p                    | 12.66 / 실행    | 이미지   |
+| Wavespeed Image       | 엔드포인트: seedvr2             | 2.11 / 실행     | 이미지   |
+| Wavespeed Image       | 엔드포인트: ultimate-image-upscaler | 12.66 / 실행 | 이미지   |
+
+## xAI
+
+비디오 엔드포인트는 검토된 콘텐츠에 대해 요금이 부과됩니다.
+
+| 제품명                                              | 구성                                                                                                    | 크레딧          | 카테고리 |
+| :-------------------------------------------------- | :------------------------------------------------------------------------------------------------------ | :-------------- | :------- |
+| xAI 이미지 생성                                     | endpoint: v1/images/generations, model: grok-imagine-image-beta, resolution: 1k                         | 6.96 / 회       | 이미지   |
+| xAI 이미지 생성                                     | endpoint: v1/images/generations, model: grok-imagine-image-quality, resolution: 1k                      | 10.55 / 회      | 이미지   |
+| xAI 이미지 생성                                     | endpoint: v1/images/generations, model: grok-imagine-image-quality, resolution: 2k                      | 14.77 / 회      | 이미지   |
+| xAI 이미지 편집 출력                                | endpoint: v1/images/edits, model: grok-imagine-image-beta, resolution: 1k                               | 6.96 / 회       | 이미지   |
+| xAI 이미지 편집 출력                                | endpoint: v1/images/edits, model: grok-imagine-image-quality, resolution: 1k                            | 10.55 / 회      | 이미지   |
+| xAI 이미지 편집 출력                                | endpoint: v1/images/edits, model: grok-imagine-image-quality, resolution: 2k                            | 14.77 / 회      | 이미지   |
+| xAI 이미지 편집 입력                                | endpoint: v1/images/edits, model: grok-imagine-image-beta, resolution: 1k                               | 0.42 / 회       | 이미지   |
+| xAI 이미지 편집 입력                                | endpoint: v1/images/edits, model: grok-imagine-image-quality                                           | 2.11 / 회       | 이미지   |
+| xAI 비디오 생성 출력 비디오 (초당)                  | endpoint: v1/videos/generations, model: grok-imagine-video-beta, resolution: 480p                       | 38.19 / 초      | 비디오   |
+| xAI 비디오 생성 출력 비디오 (초당)                  | endpoint: v1/videos/generations, model: grok-imagine-video-beta, resolution: 720p                       | 38.19 / 초      | 비디오   |
+| xAI 비디오 생성 출력 비디오 (초당)                  | endpoint: v1/videos/generations, model: grok-imagine-video-1.5-preview, resolution: 480p                 | 24.14 / 초      | 비디오   |
+| xAI 비디오 생성 출력 비디오 (초당)                  | endpoint: v1/videos/generations, model: grok-imagine-video-1.5-preview, resolution: 720p                 | 42.24 / 초      | 비디오   |
+| xAI 비디오 생성 입력 이미지                         | endpoint: v1/videos/generations, model: grok-imagine-video-1.5-preview, type: image-to-video           | 3.02 / 초       | 비디오   |
+| xAI 비디오 생성 입력 이미지                         | endpoint: v1/videos/generations, model: grok-imagine-video-beta, resolution: 480p, type: image-to-video | 0.42 / 초       | 비디오   |
+| xAI 비디오 생성 입력 이미지                         | endpoint: v1/videos/generations, model: grok-imagine-video-beta, resolution: 720p, type: image-to-video | 0.42 / 초       | 비디오   |
+| xAI 비디오 편집 입력+출력 비디오 (초당)             | endpoint: v1/videos/edits, model: grok-imagine-video-beta, resolution: 480p                             | 40.3 / 초       | 비디오   |
+| xAI 이미지 편집 입력                                | endpoint: v1/images/edits, model: v1/images/edits, resolution: 1k                                       | 0.42 / 회       | 이미지   |
+| xAI 비디오 편집 입력+출력 비디오 (초당)             | endpoint: v1/videos/generations, model: grok-imagine-video-beta, resolution: 480p                       | 40.3 / 초       | 비디오   |
+| xAI 크레딧                                         | NA                                                                                                      | 2.11 / 회       | 이미지   |
+
+## 기타 (클라우드)
+
+| 제품명              | 구성                    | 크레딧      | 카테고리 |
+| :---------------- | :--------------------- | :--------- | :------- |
+| GPU 시간 제품       | gpu_type: rtx_pro_6000 | 0.27 / 초  | 이미지   |

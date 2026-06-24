@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Control and data plane architectural pattern for Durable Objects
 
-**Last reviewed:**  over 1 year ago
-
 ## Introduction
 
 [Durable Objects](https://developers.cloudflare.com/durable-objects/) are built on-top of [Cloudflare Workers](https://developers.cloudflare.com/workers/) spanning several locations across our global infrastructure network. Each Durable Object instance has its own durable storage persisted across requests, in-memory state, single-threaded execution, and can be placed in a specific region.

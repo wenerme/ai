@@ -12,14 +12,12 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # A/B testing with same-URL direct access
 
-**Last reviewed:**  over 5 years ago
-
 Set up an A/B test by controlling what response is served based on cookies. This version supports passing the request through to test and control on the origin, bypassing random assignment.
 
-* [  JavaScript ](#tab-panel-11639)
-* [  TypeScript ](#tab-panel-11640)
-* [  Python ](#tab-panel-11641)
-* [  Hono ](#tab-panel-11642)
+* [  JavaScript ](#tab-panel-11679)
+* [  TypeScript ](#tab-panel-11680)
+* [  Python ](#tab-panel-11681)
+* [  Hono ](#tab-panel-11682)
 
 JavaScript
 

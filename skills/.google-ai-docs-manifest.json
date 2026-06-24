@@ -74,8 +74,8 @@
   "google-ai-docs/thinking.md": {
     "url": "https://ai.google.dev/gemini-api/docs/thinking",
     "skill": "google-ai-docs",
-    "size": 16305,
-    "updatedAt": "2026-06-24T01:21:46.570Z"
+    "size": 16250,
+    "updatedAt": "2026-06-24T19:28:17.673Z"
   },
   "google-ai-docs/text-generation.md": {
     "url": "https://ai.google.dev/gemini-api/docs/text-generation",
@@ -152,8 +152,8 @@
   "google-ai-docs/pricing.md": {
     "url": "https://ai.google.dev/gemini-api/docs/pricing",
     "skill": "google-ai-docs",
-    "size": 57188,
-    "updatedAt": "2026-06-24T01:21:54.708Z"
+    "size": 57336,
+    "updatedAt": "2026-06-24T19:28:25.516Z"
   },
   "google-ai-docs/rate-limits.md": {
     "url": "https://ai.google.dev/gemini-api/docs/rate-limits",
@@ -206,8 +206,8 @@
   "google-ai-docs/api-key.md": {
     "url": "https://ai.google.dev/gemini-api/docs/api-key",
     "skill": "google-ai-docs",
-    "size": 14612,
-    "updatedAt": "2026-06-24T11:53:52.634Z"
+    "size": 14616,
+    "updatedAt": "2026-06-24T19:28:30.644Z"
   },
   "google-ai-docs/model-tuning.md": {
     "url": "https://ai.google.dev/gemini-api/docs/model-tuning",
@@ -320,14 +320,14 @@
   "google-ai-docs/maps-grounding.md": {
     "url": "https://ai.google.dev/gemini-api/docs/maps-grounding",
     "skill": "google-ai-docs",
-    "size": 17657,
-    "updatedAt": "2026-06-24T01:22:14.243Z"
+    "size": 17846,
+    "updatedAt": "2026-06-24T19:28:45.120Z"
   },
   "google-ai-docs/computer-use.md": {
     "url": "https://ai.google.dev/gemini-api/docs/computer-use",
     "skill": "google-ai-docs",
-    "size": 38711,
-    "updatedAt": "2026-06-24T01:22:14.681Z"
+    "size": 58547,
+    "updatedAt": "2026-06-24T19:28:45.802Z"
   },
   "google-ai-docs/custom-agents.md": {
     "url": "https://ai.google.dev/gemini-api/docs/custom-agents",
@@ -362,8 +362,8 @@
   "google-ai-docs/generate-content/thinking.md": {
     "url": "https://ai.google.dev/gemini-api/docs/generate-content/thinking",
     "skill": "google-ai-docs",
-    "size": 24930,
-    "updatedAt": "2026-06-24T01:22:17.271Z"
+    "size": 24529,
+    "updatedAt": "2026-06-24T19:28:48.688Z"
   },
   "google-ai-docs/models.md": {
     "url": "https://ai.google.dev/gemini-api/docs/models",

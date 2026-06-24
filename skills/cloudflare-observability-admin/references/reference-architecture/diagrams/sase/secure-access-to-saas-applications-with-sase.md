@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Secure access to SaaS applications with SASE
 
-**Last reviewed:**  over 1 year ago
-
 ## Introduction
 
 SaaS applications have become essential tools in today's business operations. While SaaS applications reduce IT and infrastructure burden, they also introduce new security challenges that traditional architectures struggle to address. Many companies today are on the path to implementing a [Zero Trust architecture ↗](https://zerotrustroadmap.org/), which heavily combines identity, device and network information to better secure applications.

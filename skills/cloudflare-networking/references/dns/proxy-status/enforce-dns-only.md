@@ -110,6 +110,11 @@ Enforce DNS-only does not affect the following records:
 Custom domain or route match
 Proxied records that match a Worker [route](https://developers.cloudflare.com/workers/configuration/routing/routes/) are regular DNS records and will be [affected](#included) by the enforce DNS-only setting.
 
+## What to expect
+
+* Changes take effect immediately at Cloudflare's edge — there is no DNS propagation delay.
+* Functionally equivalent to setting all proxied records to DNS-only.
+
 ## Check current status
 
 Use the [Show DNS Settings](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/account/methods/get/) endpoint to verify the current value:
@@ -132,6 +137,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/dns_settings" \ 
 * [Batch record changes](https://developers.cloudflare.com/dns/manage-dns-records/how-to/batch-record-changes/#edit-proxy-status-in-bulk) \- Change proxy status for multiple records in bulk within a single zone.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only/#page","headline":"Enforce DNS-only · Cloudflare DNS docs","description":"Bypass Cloudflare's reverse proxy for all zones at once.","url":"https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only/#page","headline":"Enforce DNS-only · Cloudflare DNS docs","description":"Bypass Cloudflare's reverse proxy for all zones at once.","url":"https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/proxy-status/","name":"Proxy status"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/proxy-status/enforce-dns-only/","name":"Enforce DNS-only"}}]}
 ```

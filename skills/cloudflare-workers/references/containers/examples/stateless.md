@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Stateless Instances
 
-**Last reviewed:**  about 1 year ago
-
 Run multiple instances across Cloudflare's network
 
 To simply proxy requests to one of multiple instances of a container, you can use the `getRandom` function:

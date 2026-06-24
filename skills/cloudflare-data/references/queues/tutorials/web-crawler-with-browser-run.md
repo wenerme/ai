@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Build a web crawler with Queues and Browser Run
 
-**Last reviewed:**  almost 2 years ago
-
 Example of how to use Queues and Browser Run to power a web crawler.
 
 This tutorial explains how to build and deploy a web crawler with Queues, [Browser Run](https://developers.cloudflare.com/browser-run/), and [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/).
@@ -106,8 +104,8 @@ pnpm wrangler kv namespace create crawler_screenshots
 
 Then, in your Wrangler file, add the following with the values generated in the terminal:
 
-* [  wrangler.jsonc ](#tab-panel-9821)
-* [  wrangler.toml ](#tab-panel-9822)
+* [  wrangler.jsonc ](#tab-panel-9861)
+* [  wrangler.toml ](#tab-panel-9862)
 
 JSONC
 
@@ -166,8 +164,8 @@ bun add robots-parser
 
 Then, add a Browser Run binding. Adding a Browser Run binding gives the Worker access to a headless Chromium instance you will control with Puppeteer.
 
-* [  wrangler.jsonc ](#tab-panel-9819)
-* [  wrangler.toml ](#tab-panel-9820)
+* [  wrangler.jsonc ](#tab-panel-9859)
+* [  wrangler.toml ](#tab-panel-9860)
 
 JSONC
 
@@ -209,8 +207,8 @@ Creating queue queues-web-crawler.Created queue queues-web-crawler.
 
 Then, in your Wrangler file, add the following:
 
-* [  wrangler.jsonc ](#tab-panel-9823)
-* [  wrangler.toml ](#tab-panel-9824)
+* [  wrangler.jsonc ](#tab-panel-9863)
+* [  wrangler.toml ](#tab-panel-9864)
 
 JSONC
 
@@ -229,8 +227,8 @@ Adding the `max_batch_timeout` of 60 seconds to the consumer queue is important 
 
 Your final Wrangler file should look similar to the one below.
 
-* [  wrangler.jsonc ](#tab-panel-9825)
-* [  wrangler.toml ](#tab-panel-9826)
+* [  wrangler.jsonc ](#tab-panel-9865)
+* [  wrangler.toml ](#tab-panel-9866)
 
 JSONC
 

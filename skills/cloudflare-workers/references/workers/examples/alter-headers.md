@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Alter headers
 
-**Last reviewed:**  over 5 years ago
-
 Example of how to add, change, or delete headers sent in a request or returned in a response.
 
 If you want to get started quickly, click on the button below.
@@ -22,10 +20,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11651)
-* [  TypeScript ](#tab-panel-11652)
-* [  Python ](#tab-panel-11653)
-* [  Hono ](#tab-panel-11654)
+* [  JavaScript ](#tab-panel-11691)
+* [  TypeScript ](#tab-panel-11692)
+* [  Python ](#tab-panel-11693)
+* [  Hono ](#tab-panel-11694)
 
 JavaScript
 

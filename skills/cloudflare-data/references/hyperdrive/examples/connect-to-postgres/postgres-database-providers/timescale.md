@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Timescale
 
-**Last reviewed:**  over 2 years ago
-
 Connect Hyperdrive to a Timescale time-series database.
 
 This example shows you how to connect Hyperdrive to a [Timescale ↗](https://www.timescale.com/) time-series database. Timescale is built on PostgreSQL, and includes powerful time-series, event and analytics features.
@@ -63,8 +61,8 @@ postgres://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
 
 Most database providers will provide a connection string you can directly copy-and-paste directly into Hyperdrive.
 
-* [ Dashboard ](#tab-panel-8869)
-* [ Wrangler CLI ](#tab-panel-8870)
+* [ Dashboard ](#tab-panel-8909)
+* [ Wrangler CLI ](#tab-panel-8910)
 
 To create a Hyperdrive configuration with the Cloudflare dashboard:
 
@@ -83,8 +81,8 @@ npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="
 ```
 2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-  * [  wrangler.jsonc ](#tab-panel-8867)
-  * [  wrangler.toml ](#tab-panel-8868)
+  * [  wrangler.jsonc ](#tab-panel-8907)
+  * [  wrangler.toml ](#tab-panel-8908)
 JSONC
 ```
 {  "$schema": "./node_modules/wrangler/config-schema.json",  "name": "hyperdrive-example",  "main": "src/index.ts",  // Set this to today's date  "compatibility_date": "2026-06-24",  "compatibility_flags": [    "nodejs_compat"  ],  // Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.  "hyperdrive": [    {      "binding": "HYPERDRIVE",      "id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"    }  ]}
@@ -147,8 +145,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-8871)
-* [  wrangler.toml ](#tab-panel-8872)
+* [  wrangler.jsonc ](#tab-panel-8911)
+* [  wrangler.toml ](#tab-panel-8912)
 
 JSONC
 

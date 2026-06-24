@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Jamf Pro
 
-**Last reviewed:**  about 2 years ago
-
 This guide covers how to configure [Jamf Pro ↗](https://learn.jamf.com/en-US/bundle/jamf-pro-documentation-current/page/Single%5FSign-On.html) as a SAML application in Cloudflare One.
 
 ## Prerequisites

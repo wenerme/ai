@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Conditional response
 
-**Last reviewed:**  over 4 years ago
-
 Return a response based on the incoming request's URL, HTTP method, User Agent, IP address, ASN or device type.
 
 If you want to get started quickly, click on the button below.
@@ -22,10 +20,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11701)
-* [  TypeScript ](#tab-panel-11702)
-* [  Python ](#tab-panel-11703)
-* [  Hono ](#tab-panel-11704)
+* [  JavaScript ](#tab-panel-11741)
+* [  TypeScript ](#tab-panel-11742)
+* [  Python ](#tab-panel-11743)
+* [  Hono ](#tab-panel-11744)
 
 JavaScript
 

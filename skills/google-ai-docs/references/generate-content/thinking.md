@@ -376,8 +376,7 @@ The following table details the `thinkingLevel` settings for each model type:
 
 | Thinking Level | Gemini 3.1 Pro | Gemini 3.1 Flash-Lite | Gemini 3 Flash | Gemini 3.5 Flash | Description |
 |---|---|---|---|---|---|
-| **`minimal`** | Not supported | Supported (Default) | Supported | Supported | Matches the "no thinking" setting for most queries. The model may think very minimally for complex coding tasks. Minimizes latency for chat or high throughput applications. Note, `minimal` does not guarantee that thinking is off. |
-| **`low`** | Supported | Supported | Supported | Supported | Minimizes latency and cost. Best for simple instruction following, chat, or high-throughput applications. |
+| **`low`** | Supported | Supported (Default) | Supported | Supported | Minimizes latency and cost. Best for simple instruction following, chat, or high-throughput applications. |
 | **`medium`** | Supported | Supported | Supported | Supported (Default) | Balanced thinking for most tasks. |
 | **`high`** | Supported (Default, Dynamic) | Supported (Dynamic) | Supported (Default, Dynamic) | Supported (Dynamic) | Maximizes reasoning depth. The model may take significantly longer to reach a first (non thinking) output token, but the output will be more carefully reasoned. |
 
@@ -477,8 +476,7 @@ The following example shows how to set the thinking level.
     }'
 
 You cannot disable thinking for Gemini 3.1 Pro. Gemini 3 Flash and Flash-Lite
-also do not support full thinking-off, but the `minimal`
-setting means the model likely will not think (though it still potentially can).
+also do not support full thinking-off.
 If you don't specify a thinking level, Gemini will use the Gemini 3 models'
 default thinking level (e.g., `"high"` for Gemini 3.1 Pro, and `"medium"` for Gemini 3.5 Flash).
 

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Publish to a Queue via Workers
 
-**Last reviewed:**  11 months ago
-
 Publish to a Queue directly from your Worker.
 
 The following example shows you how to publish messages to a Queue from a Worker. The example uses a Worker that receives a JSON payload from the request body and writes it as-is to the Queue, but in a real application you might have more logic before you queue a message.
@@ -25,8 +23,8 @@ The following example shows you how to publish messages to a Queue from a Worker
 
 Configure your Wrangler file as follows:
 
-* [  wrangler.jsonc ](#tab-panel-9735)
-* [  wrangler.toml ](#tab-panel-9736)
+* [  wrangler.jsonc ](#tab-panel-9775)
+* [  wrangler.toml ](#tab-panel-9776)
 
 JSONC
 

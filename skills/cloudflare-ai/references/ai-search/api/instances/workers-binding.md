@@ -25,8 +25,8 @@ To use AI Search with Workers, you must create an AI Search binding. You create 
 
 Access all instances within a [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/). You can get, create, list, and delete instances at runtime.
 
-* [  wrangler.jsonc ](#tab-panel-6672)
-* [  wrangler.toml ](#tab-panel-6673)
+* [  wrangler.jsonc ](#tab-panel-6712)
+* [  wrangler.toml ](#tab-panel-6713)
 
 JSONC
 
@@ -51,8 +51,8 @@ compatibility_date = "2026-03-27"
 
 Bind directly to a single instance in the `default` namespace. Use this when you know which instance you need at deploy time.
 
-* [  wrangler.jsonc ](#tab-panel-6674)
-* [  wrangler.toml ](#tab-panel-6675)
+* [  wrangler.jsonc ](#tab-panel-6714)
+* [  wrangler.toml ](#tab-panel-6715)
 
 JSONC
 
@@ -367,6 +367,12 @@ Enable response caching. Defaults to `true`.
 `cache_threshold` ` string ` optional
 
 The cache matching threshold. Valid values: `super_strict_match`, `close_enough`, `flexible_friend`, `anything_goes`. Defaults to `close_enough`.
+
+---
+
+`cache_ttl` ` number ` optional
+
+The cache entry TTL in seconds. Valid values are `600`, `1800`, `3600`, `7200`, `21600`, `43200`, `86400`, `172800`, `259200`, and `518400`. Defaults to `172800`.
 
 ---
 

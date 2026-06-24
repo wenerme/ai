@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Drizzle ORM
 
-**Last reviewed:**  about 1 year ago
-
 [Drizzle ORM ↗](https://orm.drizzle.team/) is a lightweight TypeScript ORM with a focus on type safety. This example demonstrates how to use Drizzle ORM with MySQL via Cloudflare Hyperdrive in a Workers application.
 
 ## Prerequisites
@@ -34,8 +32,8 @@ Terminal window
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-8773)
-* [  wrangler.toml ](#tab-panel-8774)
+* [  wrangler.jsonc ](#tab-panel-8813)
+* [  wrangler.toml ](#tab-panel-8814)
 
 JSONC
 

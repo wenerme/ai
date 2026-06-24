@@ -38,11 +38,8 @@ Next you need an HTTPS endpoint at `mta-sts.example.com` to serve your policy fi
 
 To do this you need to deploy a Worker that allows email clients to pull Cloudflare's Email Service policy file using the "well-known" URI convention.
 
-1. Go to your **Account** \> **Workers & Pages** and select **Create**. Pick the default "Hello World" option button, and replace the sample worker code with the following:
-TypeScript
-```
-export default {  async fetch(request, env, ctx): Promise<Response> {    return await fetch(      "https://mta-sts.mx.cloudflare.net/.well-known/mta-sts.txt",    );  },} satisfies ExportedHandler;
-```
+1. Deploy the MTA-STS proxy Worker to your account:
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/docs-examples/tree/main/workers/mta-sts-proxy)
 This Worker proxies `https://mta-sts.mx.cloudflare.net/.well-known/mta-sts.txt` to your own domain.
 2. After deploying it, go to the Worker configuration, then **Settings** \> **Domains & Routes** \> **+Add**. Type the subdomain `mta-sts.example.com`.
 ![MTA-STS Worker Custom Domain](https://developers.cloudflare.com/_astro/mta-sts-domain.UfZmAoBe_lkXVJ.webp)
@@ -67,6 +64,6 @@ Email Service also supports MTA-STS upstream, which greatly improves security wh
 * [Domain configuration](https://developers.cloudflare.com/email-service/configuration/domains/) — review your domain's DNS records.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/configuration/mta-sts/#page","headline":"Configure MTA-STS · Cloudflare Email Service docs","description":"Enable MTA Strict Transport Security for your Email Service domain to protect against downgrade attacks.","url":"https://developers.cloudflare.com/email-service/configuration/mta-sts/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/configuration/mta-sts/#page","headline":"Configure MTA-STS · Cloudflare Email Service docs","description":"Enable MTA Strict Transport Security for your Email Service domain to protect against downgrade attacks.","url":"https://developers.cloudflare.com/email-service/configuration/mta-sts/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/configuration/mta-sts/","name":"Configure MTA-STS"}}]}
 ```

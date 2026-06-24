@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Google Cloud SQL
 
-**Last reviewed:**  over 2 years ago
-
 Connect Hyperdrive to a Google Cloud SQL database instance.
 
 This example shows you how to connect Hyperdrive to a Google Cloud SQL MySQL database instance.
@@ -82,8 +80,8 @@ Hyperdrive will attempt to connect to your database with the provided credential
 
 This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-8765)
-* [  wrangler.toml ](#tab-panel-8766)
+* [  wrangler.jsonc ](#tab-panel-8805)
+* [  wrangler.toml ](#tab-panel-8806)
 
 JSONC
 
@@ -126,8 +124,8 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-8767)
-* [  wrangler.toml ](#tab-panel-8768)
+* [  wrangler.jsonc ](#tab-panel-8807)
+* [  wrangler.toml ](#tab-panel-8808)
 
 JSONC
 

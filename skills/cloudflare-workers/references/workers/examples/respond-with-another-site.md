@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Respond with another site
 
-**Last reviewed:**  over 5 years ago
-
 Respond to the Worker request with the response from another website (example.com in this example).
 
 If you want to get started quickly, click on the button below.
@@ -22,9 +20,9 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11801)
-* [  TypeScript ](#tab-panel-11802)
-* [  Python ](#tab-panel-11803)
+* [  JavaScript ](#tab-panel-11841)
+* [  TypeScript ](#tab-panel-11842)
+* [  Python ](#tab-panel-11843)
 
 JavaScript
 
@@ -32,7 +30,7 @@ JavaScript
 export default {  async fetch(request) {    function MethodNotAllowed(request) {      return new Response(`Method ${request.method} not allowed.`, {        status: 405,        headers: {          Allow: "GET",        },      });    }    // Only GET requests work with this proxy.    if (request.method !== "GET") return MethodNotAllowed(request);    return fetch(`https://example.com`);  },};
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwA2AIwAOYYIAswgKwBmYQoBcLFm2Ac4XGnwEiJU2YuUBYAFABhdFQgBTO9gAiUAM4x0bqNFsqSmngExCRUcMD2DABEUDT2AB4AdABWblGkqFBgjuGRMXFJqVGWNnaOENgAKnQw9v5wMDBgfARQtsjJcABucG68CLAQANTA6Ljg9paWCZ5IJLj2qHDgECQA3hYkJL10VLwB9hC8ABYAFAj2AI4g9m4QAJTrm1sB1Ly+VCQAsofHYwBy6AgAEEwGB0AB3ey4c5XG53R4bF4vC4QEAIT5UewQkgAJVuniobnspwABj8IH9cCQACRrC7XW4QRIRSljAC+oSB2zBkOhiVJABonsjkXcCCA3P5pII5ILnqKSMd7HAFggpSLFS9QeCIf4ogBxACilSi8q1JHZ5tF7PuRAVlodyGQJAA8lQwHQSMbKiQGfCIG4SBDMABrYM+Y4kSnuEgwBDoeJ0RIOqCoEiwxl3Fm-MYkACEDAYJENJqij1R6M+FKpgJBvKhMP9TLtDsrGIORzOpOOEAgMClzoS4Sa9kSvHQwFJra2Vos7KIlnUzE02l0PH4QjEkhk8iUChKtgcTlcHi8PjaVH8gW0pDCEWirNVwXSASyOQfUTI4LIxWsR-KKoajqbZGmaXhWnaVJbCmCw1iiYA4FiAB9UZxmyKIVHyBZCjSdkl2XVdgnXfQtyMXdTAUZhLCAA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBGAJwA2ABwSAzJPHCATAC4WLNsA5wuNPgJETp4uQsUBYAFABhdFQgBTO9gAiUAM4x0bqNFvKSGngExCRUcMD2DABEUDT2AB4AdABWblGkqFBgjuGRMXFJqVGWNnaOENgAKnQw9v5wMDBgfARQtsjJcABucG68CLAQANTA6Ljg9paWCZ5IJLj2qHDgECQA3hYkJL10VLwB9hC8ABYAFAj2AI4g9m4QAJTrm1sB1Ly+VCQAsofHYwBy6AgAEEwGB0AB3ey4c5XG53R4bF4vC4QEAIT5UewQkgAJVuniobnspwABj8IH9cCQACRrC7XW4QRIRSljAC+oSB2zBkOhiVJABonsjkXcCCA3P4ACyCACsgueopIx3scAWCClIuVL1B4Ih-iiAHEAKKVKKKnUkdmW0Xs+5EJXWp3IZAkADyVDAdBIpsqJAZ8IgbhIEMwAGtQz5jiRKe4SDAEOh4nREk6oKgSLDGXcWb8xiQAIQMBgkY1mqKPVHoz4UqmAkG8qEwwNMh1O6sYg5HM6k44QCAwKWuhLhJr2RK8dDAUntrY2izsoiWNTMDRaHQ8fhCMRSWTyJQlWwOJyuDxeHxtKj+QJaUhhCLRVnq4LpAJZHKPqJkcFkYrWY9yiqGo6m2Rpml4Vp2lSWwpgsNYomAOBYgAfVGcZsiiZR8gWQo0nZFdV3XYJNz0HdDH3UxmEsIA)
 
 TypeScript
 

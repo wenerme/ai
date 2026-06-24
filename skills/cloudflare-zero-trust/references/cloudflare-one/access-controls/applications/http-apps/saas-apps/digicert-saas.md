@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Digicert
 
-**Last reviewed:**  about 2 years ago
-
 This guide covers how to configure [Digicert ↗](https://docs.digicert.com/en/certcentral/manage-account/saml-admin-single-sign-on-guide/configure-saml-single-sign-on.html) as a SAML application in Cloudflare One.
 
 ## Prerequisites

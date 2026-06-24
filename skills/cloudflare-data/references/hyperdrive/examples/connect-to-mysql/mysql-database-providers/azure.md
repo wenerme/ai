@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Azure Database
 
-**Last reviewed:**  over 1 year ago
-
 Connect Hyperdrive to an Azure Database for MySQL instance.
 
 This example shows you how to connect Hyperdrive to an Azure Database for MySQL instance.
@@ -79,8 +77,8 @@ Hyperdrive will attempt to connect to your database with the provided credential
 
 This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-8761)
-* [  wrangler.toml ](#tab-panel-8762)
+* [  wrangler.jsonc ](#tab-panel-8801)
+* [  wrangler.toml ](#tab-panel-8802)
 
 JSONC
 
@@ -123,8 +121,8 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-8763)
-* [  wrangler.toml ](#tab-panel-8764)
+* [  wrangler.jsonc ](#tab-panel-8803)
+* [  wrangler.toml ](#tab-panel-8804)
 
 JSONC
 

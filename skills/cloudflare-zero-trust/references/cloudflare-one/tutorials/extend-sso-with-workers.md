@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Send SSO attributes to Access-protected origins with Workers
 
-**Last reviewed:**  over 1 year ago
-
 This tutorial will walk you through extending the single-sign-on (SSO) capabilities of [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) with our serverless computing platform, [Cloudflare Workers](https://developers.cloudflare.com/workers/). Specifically, this guide will demonstrate how to modify requests sent to your secured origin to include additional information from the Cloudflare Access authentication event.
 
 **Time to complete:** 45 minutes
@@ -91,8 +89,8 @@ Example user identity
 
 In the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), [set up a route](https://developers.cloudflare.com/workers/configuration/routing/routes/) that maps the Worker to your Access application domain:
 
-* [  wrangler.jsonc ](#tab-panel-7810)
-* [  wrangler.toml ](#tab-panel-7811)
+* [  wrangler.jsonc ](#tab-panel-7850)
+* [  wrangler.toml ](#tab-panel-7851)
 
 JSONC
 

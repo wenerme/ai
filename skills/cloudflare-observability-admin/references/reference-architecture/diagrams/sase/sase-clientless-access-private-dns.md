@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Access to private apps without having to deploy client agents
 
-**Last reviewed:**  about 2 years ago
-
 ## Introduction
 
 Using Cloudflare to access private resources - such as applications, servers, and networks that are not exposed directly to the internet - usually involves deploying an ([agent](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)) to devices and then using a server-side agent ([cloudflared](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/), [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)), to connect the private network or application to Cloudflare. This document describes an alternative approach which removes the need to deploy software to the user's device, making it easier for allowing third party access such as contractors and partners.

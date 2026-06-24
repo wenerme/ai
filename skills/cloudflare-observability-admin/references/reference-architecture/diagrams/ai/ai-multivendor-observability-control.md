@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Multi-vendor AI observability and control
 
-**Last reviewed:**  about 2 years ago
-
 ## Introduction
 
 The AI landscape is rapidly evolving with new models, services, and applications emerging daily. Many developers and organizations seek to enhance agility by opting for inference-as-a-service solutions like [Workers AI](https://developers.cloudflare.com/workers-ai/), rather than developing or managing models themselves.

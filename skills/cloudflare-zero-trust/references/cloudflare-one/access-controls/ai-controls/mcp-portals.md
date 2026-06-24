@@ -274,8 +274,8 @@ If no alias is set, the portal uses the original name and description from the u
 
 #### Set aliases in the dashboard
 
-* [ Portal-level alias ](#tab-panel-7161)
-* [ Server-level alias ](#tab-panel-7162)
+* [ Portal-level alias ](#tab-panel-7201)
+* [ Server-level alias ](#tab-panel-7202)
 
 To set an alias that applies to a specific portal:
 
@@ -367,7 +367,7 @@ This sanitization happens automatically. You do not need to call any helper func
 If you are building an MCP client with the [Agents SDK](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/), the SDK provides helper functions for working with server IDs and tool names:
 
 * **`normalizeServerId`** (exported from `agents/mcp/client`) normalizes a caller-supplied server ID into a safe string. For example, `"GitHub MCP!"` becomes `"github-mcp"`. The SDK calls this automatically when you pass an `id` option to `addMcpServer()`.
-* **`sanitizeToolName`** (exported from `@cloudflare/codemode`) converts a tool name into a valid JavaScript identifier by replacing hyphens and dots with underscores. This is called automatically in Code Mode contexts. Refer to the [Code Mode SDK reference](https://developers.cloudflare.com/agents/model-context-protocol/protocol/codemode/#sanitizetoolnamename) for details.
+* **`sanitizeToolName`** (exported from `@cloudflare/codemode`) converts a tool name into a valid JavaScript identifier by replacing hyphens and dots with underscores. This is called automatically in Code Mode contexts. Refer to the [Code Mode SDK reference](https://developers.cloudflare.com/agents/tools/codemode/api-reference/#code-and-output-utilities) for details.
 
 Note
 
@@ -407,7 +407,7 @@ When you connect with [Code Mode](#code-mode) enabled, the portal replaces all u
 | portal\_codemode\_search  | Searches available tools by running JavaScript in a sandboxed Worker. The sandbox provides a codemode.tools() function that returns all upstream tool definitions with sanitized names.                      |
 | portal\_codemode\_execute | Calls upstream tools by running JavaScript in a sandboxed Worker. The sandbox provides a codemode proxy object where each property maps to an upstream tool. Supports Promise.all() for parallel tool calls. |
 
-Refer to the [Code Mode SDK reference](https://developers.cloudflare.com/agents/model-context-protocol/protocol/codemode/) for details on writing code for these tools.
+Refer to the [Code Mode SDK reference](https://developers.cloudflare.com/agents/tools/codemode/api-reference/) for details on writing code for these tools.
 
 ## Manage portals via API
 
@@ -496,7 +496,7 @@ For the full list of supported resource arguments, refer to the [Terraform provi
 
 ## Code Mode
 
-[Code Mode](https://developers.cloudflare.com/agents/model-context-protocol/protocol/codemode/) is turned on by default on all MCP server portals. It reduces context window usage by collapsing all tools in the portal into a single `code` tool. Instead of loading a separate tool definition for each upstream MCP server tool, the connected AI agent writes JavaScript that calls typed `codemode.*` methods. The generated code runs in an isolated [Dynamic Worker](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/) environment, which keeps authentication credentials and environment variables out of the model context.
+[Code Mode](https://developers.cloudflare.com/agents/tools/codemode/) is turned on by default on all MCP server portals. It reduces context window usage by collapsing all tools in the portal into a single `code` tool. Instead of loading a separate tool definition for each upstream MCP server tool, the connected AI agent writes JavaScript that calls typed `codemode.*` methods. The generated code runs in an isolated [Dynamic Worker](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/) environment, which keeps authentication credentials and environment variables out of the model context.
 
 To use Code Mode, the MCP client must request it when connecting to the portal URL. Refer to [Connect with Code Mode](#connect-with-code-mode) for the required query parameter.
 
@@ -522,14 +522,14 @@ MCP client configuration with Code Mode
 
 When Code Mode is active, the portal advertises a single `code` tool to connected MCP clients. The AI agent discovers available tools by inspecting the typed method signatures in the Dynamic Worker environment and composes multiple tool calls into a single code execution.
 
-For more information on building with Code Mode, refer to the [Code Mode SDK reference](https://developers.cloudflare.com/agents/model-context-protocol/protocol/codemode/).
+For more information on building with Code Mode, refer to the [Code Mode SDK reference](https://developers.cloudflare.com/agents/tools/codemode/api-reference/).
 
 ### Turn off Code Mode
 
 To turn off Code Mode for a portal:
 
-* [ Dashboard ](#tab-panel-7163)
-* [ API ](#tab-panel-7164)
+* [ Dashboard ](#tab-panel-7203)
+* [ API ](#tab-panel-7204)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
 2. Find the portal you want to configure, then select the three dots > **Edit**.
@@ -728,7 +728,7 @@ MCP client configuration with search\_and\_execute
 {  "mcpServers": {    "example-portal": {      "command": "npx",      "args": [        "-y",        "mcp-remote@latest",        "https://<subdomain>.<domain>/mcp?optimize_context=search_and_execute"      ]    }  }}
 ```
 
-For more information on the Code Mode pattern behind `search_and_execute`, refer to the [Code Mode SDK reference](https://developers.cloudflare.com/agents/model-context-protocol/protocol/codemode/).
+For more information on the Code Mode pattern behind `search_and_execute`, refer to [Code Mode](https://developers.cloudflare.com/agents/tools/codemode/).
 
 ## Manage portal sessions
 
@@ -900,6 +900,6 @@ The portal homepage displays your Access organization name and branding. If the 
 2. Update your team name. The change will take effect the next time a user visits the portal homepage.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals · Cloudflare One docs","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals · Cloudflare One docs","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/ai-controls/","name":"AI controls"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/ai-controls/mcp-portals/","name":"MCP server portals"}}]}
 ```

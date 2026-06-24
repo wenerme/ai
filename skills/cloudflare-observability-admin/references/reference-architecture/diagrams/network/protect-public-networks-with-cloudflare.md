@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Protect public networks with Cloudflare
 
-**Last reviewed:**  over 1 year ago
-
 ## Introduction
 
 Network security teams have traditionally used various network firewalls or security appliances at the perimeter of their network to protect their public-facing networks against both external and internal threats like DDoS attacks, malware, ransomware, phishing, and leaking of sensitive information. However, these firewalls and security appliances are often expensive, complex to configure and manage, difficult to scale to handle large attacks, and lack the flexibility to quickly incorporate upgrades and patches to defend against newly discovered threats and vulnerabilities.

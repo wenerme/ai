@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Content-based asset creation
 
-**Last reviewed:**  over 2 years ago
-
 Combining text-generation models with text-to-image models can lead to powerful AI systems capable of generating visual content based on input prompts. This integration can be achieved through a collaborative framework where a text-generation model generates prompts for the text-to-image model based on input text.
 
 Here's how the process can work:

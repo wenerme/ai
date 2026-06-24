@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # AWS RDS and Aurora
 
-**Last reviewed:**  over 2 years ago
-
 Connect Hyperdrive to an AWS RDS or AWS Aurora MySQL database instance.
 
 This example shows you how to connect Hyperdrive to an Amazon Relational Database Service (Amazon RDS) or Amazon Aurora MySQL database instance.
@@ -126,8 +124,8 @@ Hyperdrive will attempt to connect to your database with the provided credential
 
 This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-8757)
-* [  wrangler.toml ](#tab-panel-8758)
+* [  wrangler.jsonc ](#tab-panel-8797)
+* [  wrangler.toml ](#tab-panel-8798)
 
 JSONC
 
@@ -170,8 +168,8 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-8759)
-* [  wrangler.toml ](#tab-panel-8760)
+* [  wrangler.jsonc ](#tab-panel-8799)
+* [  wrangler.toml ](#tab-panel-8800)
 
 JSONC
 

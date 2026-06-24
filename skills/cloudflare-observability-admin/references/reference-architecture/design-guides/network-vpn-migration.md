@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Network-focused migration from VPN concentrators to Zero Trust Network Access
 
-**Last reviewed:**  almost 2 years ago
-
 ## Introduction
 
 Over the past few years, the traditional approach of installing and maintaining hardware for remote access to private company networks is no longer secure or cost effective. Due to an increase in [vulnerabilities ↗](https://www.networkworld.com/article/2114694/new-vpn-risk-report-finds-nearly-half-of-enterprises-attacked-via-vpn-vulnerabilities.html) found in on-premises VPN products, security and IT teams are looking for solutions that don't require teams to monitor for and respond to [CVE alerts ↗](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=vpn). These same systems also limit the user's bandwidth because they route all user Internet traffic through a single infrastructure which results in a poor user experience. IT teams are recognizing the cost and effort to install and maintain their own hardware can be offset with more modern, and more secure cloud hosted services. User expectations for application performance are exposing limitations in bandwidth constrained, self hosted VPN solutions. In summary, running your own VPN is expensive, high risk and doesn't deliver a great user experience.

@@ -238,7 +238,7 @@ For more information, refer to [Access authentication logs](https://developers.c
 
 **Code Mode for MCP server portals**
 
-[MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) support [Code Mode](https://developers.cloudflare.com/agents/model-context-protocol/protocol/codemode/), a technique that reduces context window usage by replacing individual tool definitions with a single code execution tool. Code Mode is turned on by default on all portals.
+[MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) support [Code Mode MCP server patterns](https://developers.cloudflare.com/agents/model-context-protocol/codemode/), a technique that reduces context window usage by replacing individual tool definitions with a single code execution tool. Code Mode is turned on by default on all portals.
 
 To turn it off, edit the portal in **Access controls** \> **AI controls** and turn off **Code Mode** under **Basic information**.
 

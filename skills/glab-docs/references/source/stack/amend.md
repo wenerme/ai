@@ -34,6 +34,9 @@ glab stack amend -a -m "fixed a function in exisiting file"
 
 # Add all tracked and untracked files to staged changes and amend diff
 glab stack amend . -m "refactored file into new files"
+
+# Reword the commit message without adding any files
+glab stack amend --reword -m "updated commit message"
 ```
 
 ## Options
@@ -43,6 +46,7 @@ glab stack amend . -m "refactored file into new files"
   -d, --description string   A description of the change.
   -m, --message string       Alias for the description flag.
       --no-verify            Bypass the pre-commit and commit-msg hooks of git-commit(1).
+      --reword               Only update the commit message without staging any files.
 ```
 
 ## Options inherited from parent commands

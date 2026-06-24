@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Transcode images
 
-**Last reviewed:**  about 1 year ago
-
 Transcode an image from Workers AI before uploading to R2
 
 JavaScript

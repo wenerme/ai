@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # mysql
 
-**Last reviewed:**  about 1 year ago
-
 The [mysql ↗](https://github.com/mysqljs/mysql) package is a MySQL driver for Node.js. This example demonstrates how to use it with Cloudflare Workers and Hyperdrive.
 
 Install the [mysql ↗](https://github.com/mysqljs/mysql) driver:
@@ -38,8 +36,8 @@ bun add mysql
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-8775)
-* [  wrangler.toml ](#tab-panel-8776)
+* [  wrangler.jsonc ](#tab-panel-8815)
+* [  wrangler.toml ](#tab-panel-8816)
 
 JSONC
 

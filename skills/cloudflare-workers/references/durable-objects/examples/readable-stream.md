@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Use ReadableStream with Durable Object and Workers
 
-**Last reviewed:**  11 months ago
-
 Stream ReadableStream from Durable Objects.
 
 This example demonstrates:
@@ -23,8 +21,8 @@ This example demonstrates:
 * The Worker reads and logs the values from the stream.
 * The Worker then cancels the stream after 5 values.
 
-* [  JavaScript ](#tab-panel-8408)
-* [  TypeScript ](#tab-panel-8409)
+* [  JavaScript ](#tab-panel-8448)
+* [  TypeScript ](#tab-panel-8449)
 
 JavaScript
 

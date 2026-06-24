@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # Zero Trust GitLab SSH & HTTP
 
-**Last reviewed:**  over 5 years ago
-
 You can use Cloudflare Access to add Zero Trust rules to a self-hosted instance of GitLab. Combined with Cloudflare Tunnel, users can connect through HTTP and SSH and authenticate with your team's identity provider.
 
 **This walkthrough covers how to:**

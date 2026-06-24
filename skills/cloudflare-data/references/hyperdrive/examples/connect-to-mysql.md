@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Connect to MySQL
 
-**Last reviewed:**  about 1 year ago
-
 Hyperdrive supports MySQL and MySQL-compatible databases, [popular drivers](#supported-drivers), and Object Relational Mapper (ORM) libraries that use those drivers.
 
 ## Create a Hyperdrive
@@ -34,8 +32,8 @@ Terminal window
 
 The command above will output the ID of your Hyperdrive, which you will need to set in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) for your Workers project:
 
-* [  wrangler.jsonc ](#tab-panel-8749)
-* [  wrangler.toml ](#tab-panel-8750)
+* [  wrangler.jsonc ](#tab-panel-8789)
+* [  wrangler.toml ](#tab-panel-8790)
 
 JSONC
 
@@ -75,8 +73,8 @@ Other drivers and ORMs not listed may also be supported: this list is not exhaus
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-8751)
-* [  wrangler.toml ](#tab-panel-8752)
+* [  wrangler.jsonc ](#tab-panel-8791)
+* [  wrangler.toml ](#tab-panel-8792)
 
 JSONC
 
@@ -142,8 +140,8 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-8753)
-* [  wrangler.toml ](#tab-panel-8754)
+* [  wrangler.jsonc ](#tab-panel-8793)
+* [  wrangler.toml ](#tab-panel-8794)
 
 JSONC
 
@@ -200,8 +198,8 @@ bun add mysql
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-8755)
-* [  wrangler.toml ](#tab-panel-8756)
+* [  wrangler.jsonc ](#tab-panel-8795)
+* [  wrangler.toml ](#tab-panel-8796)
 
 JSONC
 

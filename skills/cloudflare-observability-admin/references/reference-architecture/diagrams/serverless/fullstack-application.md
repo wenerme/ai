@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Fullstack applications
 
-**Last reviewed:**  9 months ago
-
 Fullstack web applications combine frontend and backend technologies to deliver complete, dynamic user experiences. These applications rely on a broad technology stack covering user interfaces, backend services, databases, integrations, and increasingly, AI-driven features to function seamlessly and scale reliably.
 
 On the frontend, developers typically use HTML, CSS, and JavaScript, often alongside frameworks like React, Next.js, or Angular. These tools provide the structure and interactivity needed for modern user interfaces, helping manage state, render dynamic content, personalize experiences, and optimize performance across devices.

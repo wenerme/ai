@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Build a WebSocket server with WebSocket Hibernation
 
-**Last reviewed:**  over 2 years ago
-
 Build a WebSocket server using WebSocket Hibernation on Durable Objects and Workers.
 
 This example is similar to the [Build a WebSocket server](https://developers.cloudflare.com/durable-objects/examples/websocket-server/) example, but uses the WebSocket Hibernation API. The WebSocket Hibernation API should be preferred for WebSocket server applications built on Durable Objects, since it significantly decreases duration charge, and provides additional features that pair well with WebSocket applications. For more information, refer to [Use Durable Objects with WebSockets](https://developers.cloudflare.com/durable-objects/best-practices/websockets/).
@@ -22,9 +20,9 @@ Note
 
 WebSocket Hibernation is unavailable for outgoing WebSocket use cases. Hibernation is only supported when the Durable Object acts as a server. For use cases where outgoing WebSockets are required, refer to [Write a WebSocket client](https://developers.cloudflare.com/workers/examples/websockets/#write-a-websocket-client).
 
-* [  JavaScript ](#tab-panel-8435)
-* [  TypeScript ](#tab-panel-8436)
-* [  Python ](#tab-panel-8437)
+* [  JavaScript ](#tab-panel-8475)
+* [  TypeScript ](#tab-panel-8476)
+* [  Python ](#tab-panel-8477)
 
 JavaScript
 
@@ -109,8 +107,8 @@ class Session:  def __init__(self, *, ws):    self.ws = ws
 
 Finally, configure your Wrangler file to include a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) based on the namespace and class name chosen previously.
 
-* [  wrangler.jsonc ](#tab-panel-8433)
-* [  wrangler.toml ](#tab-panel-8434)
+* [  wrangler.jsonc ](#tab-panel-8473)
+* [  wrangler.toml ](#tab-panel-8474)
 
 JSONC
 

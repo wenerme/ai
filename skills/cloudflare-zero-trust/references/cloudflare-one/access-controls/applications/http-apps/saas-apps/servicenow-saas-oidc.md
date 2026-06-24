@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 # ServiceNow (OIDC)
 
-**Last reviewed:**  about 2 years ago
-
 This guide covers how to configure [ServiceNow ↗](https://docs.servicenow.com/bundle/washingtondc-platform-security/page/integrate/single-sign-on/task/create-OIDC-configuration-SSO.html) as an OIDC application in Cloudflare One.
 
 ## Prerequisites

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Stream OpenAI API Responses
 
-**Last reviewed:**  almost 3 years ago
-
 Use the OpenAI v4 SDK to stream responses from OpenAI.
 
 If you want to get started quickly, click on the button below.
@@ -28,8 +26,8 @@ Note
 
 For analytics, caching, rate limiting, and more, you can also send requests like this through Cloudflare's [AI Gateway](https://developers.cloudflare.com/ai-gateway/usage/providers/openai/).
 
-* [  TypeScript ](#tab-panel-11777)
-* [  Hono ](#tab-panel-11778)
+* [  TypeScript ](#tab-panel-11817)
+* [  Hono ](#tab-panel-11818)
 
 TypeScript
 

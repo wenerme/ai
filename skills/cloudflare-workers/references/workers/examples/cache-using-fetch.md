@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Cache using fetch
 
-**Last reviewed:**  over 5 years ago
-
 Determine how to cache a resource by setting TTLs, custom cache keys, and cache headers in a fetch request.
 
 If you want to get started quickly, click on the button below.
@@ -22,11 +20,11 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11691)
-* [  TypeScript ](#tab-panel-11692)
-* [  Hono ](#tab-panel-11693)
-* [  Python ](#tab-panel-11694)
-* [  Rust ](#tab-panel-11695)
+* [  JavaScript ](#tab-panel-11731)
+* [  TypeScript ](#tab-panel-11732)
+* [  Hono ](#tab-panel-11733)
+* [  Python ](#tab-panel-11734)
+* [  Rust ](#tab-panel-11735)
 
 JavaScript
 
@@ -103,9 +101,9 @@ JavaScript
 
 Normally, Cloudflare computes the cache key for a request based on the request's URL. Sometimes, though, you may like different URLs to be treated as if they were the same for caching purposes. For example, if your website content is hosted from both Amazon S3 and Google Cloud Storage - you have the same content in both places, and you can use a Worker to randomly balance between the two. However, you do not want to end up caching two copies of your content. You could utilize custom cache keys to cache based on the original request URL rather than the subrequest URL:
 
-* [  JavaScript ](#tab-panel-11696)
-* [  TypeScript ](#tab-panel-11697)
-* [  Hono ](#tab-panel-11698)
+* [  JavaScript ](#tab-panel-11736)
+* [  TypeScript ](#tab-panel-11737)
+* [  Hono ](#tab-panel-11738)
 
 JavaScript
 
@@ -154,8 +152,8 @@ Using custom cache keys and overrides based on response code, you can write a Wo
 
 The following example demonstrates how you might use this to cache requests for streaming media assets:
 
-* [  Module Worker ](#tab-panel-11699)
-* [  Service Worker ](#tab-panel-11700)
+* [  Module Worker ](#tab-panel-11739)
+* [  Service Worker ](#tab-panel-11740)
 
 index.js
 

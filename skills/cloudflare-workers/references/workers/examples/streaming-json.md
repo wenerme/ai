@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Stream large JSON
 
-**Last reviewed:**  6 months ago
-
 Parse and transform large JSON request and response bodies using streaming.
 
 Use the [Streams API](https://developers.cloudflare.com/workers/runtime-apis/streams/) to process JSON payloads that would exceed a Worker's 128 MB memory limit if fully buffered. Streaming allows you to parse and transform JSON data incrementally as it arrives. This is faster than buffering the entire payload into memory, as your Worker can start processing data incrementally, and allows your Worker to handle multi-gigabyte payloads or files within its memory limits.
@@ -32,8 +30,8 @@ npm install @streamparser/json-whatwg
 
 This example parses a large JSON request body and extracts specific fields without loading the entire payload into memory.
 
-* [  TypeScript ](#tab-panel-11835)
-* [  JavaScript ](#tab-panel-11836)
+* [  TypeScript ](#tab-panel-11875)
+* [  JavaScript ](#tab-panel-11876)
 
 TypeScript
 
@@ -61,8 +59,8 @@ export default {  async fetch(request) {    const parser = new JSONParser({ path
 
 This example fetches a large JSON response from an upstream API, transforms specific fields, and streams the modified response to the client.
 
-* [  TypeScript ](#tab-panel-11837)
-* [  JavaScript ](#tab-panel-11838)
+* [  TypeScript ](#tab-panel-11877)
+* [  JavaScript ](#tab-panel-11878)
 
 TypeScript
 

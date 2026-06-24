@@ -12,18 +12,16 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Auth with headers
 
-**Last reviewed:**  over 5 years ago
-
 Allow or deny a request based on a known pre-shared key in a header. This is not meant to replace the WebCrypto API.
 
 Caution when using in production
 
 The example code contains a generic header key and value of `X-Custom-PSK` and `mypresharedkey`. To best protect your resources, change the header key and value in the Workers editor before saving your code.
 
-* [  JavaScript ](#tab-panel-11659)
-* [  TypeScript ](#tab-panel-11660)
-* [  Python ](#tab-panel-11661)
-* [  Hono ](#tab-panel-11662)
+* [  JavaScript ](#tab-panel-11699)
+* [  TypeScript ](#tab-panel-11700)
+* [  Python ](#tab-panel-11701)
+* [  Hono ](#tab-panel-11702)
 
 JavaScript
 

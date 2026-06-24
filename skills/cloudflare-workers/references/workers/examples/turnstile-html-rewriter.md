@@ -12,14 +12,12 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Turnstile with Workers
 
-**Last reviewed:**  over 3 years ago
-
 Inject [Turnstile](https://developers.cloudflare.com/turnstile/) implicitly into HTML elements using the HTMLRewriter runtime API.
 
-* [  JavaScript ](#tab-panel-11839)
-* [  TypeScript ](#tab-panel-11840)
-* [  Hono ](#tab-panel-11841)
-* [  Python ](#tab-panel-11842)
+* [  JavaScript ](#tab-panel-11879)
+* [  TypeScript ](#tab-panel-11880)
+* [  Hono ](#tab-panel-11881)
+* [  Python ](#tab-panel-11882)
 
 JavaScript
 

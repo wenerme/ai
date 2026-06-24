@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 # Using a zero trust framework to secure SaaS applications
 
-**Last reviewed:**  over 1 year ago
-
 ## Introduction
 
 SaaS applications have become crucial in today's business landscape, particularly with the rise of hybrid workforces. As organizations adopt flexible working models, the ability of SaaS apps to provide seamless, global access is essential for maintaining productivity and fostering collaboration across distributed teams.

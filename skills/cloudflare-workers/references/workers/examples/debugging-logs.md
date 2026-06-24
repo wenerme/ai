@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Debugging logs
 
-**Last reviewed:**  over 5 years ago
-
 Send debugging information in an errored response to a logging service.
 
 If you want to get started quickly, click on the button below.
@@ -22,10 +20,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11726)
-* [  TypeScript ](#tab-panel-11727)
-* [  Python ](#tab-panel-11728)
-* [  Hono ](#tab-panel-11729)
+* [  JavaScript ](#tab-panel-11766)
+* [  TypeScript ](#tab-panel-11767)
+* [  Python ](#tab-panel-11768)
+* [  Hono ](#tab-panel-11769)
 
 JavaScript
 

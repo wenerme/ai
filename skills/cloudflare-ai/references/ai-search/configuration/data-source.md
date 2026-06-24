@@ -29,13 +29,14 @@ AI Search can ingest a variety of file types. The following plain text files and
 | Format     | File extensions                                                  | Mime Type                                                      |
 | ---------- | ---------------------------------------------------------------- | -------------------------------------------------------------- |
 | Text       | .txt, .rst                                                       | text/plain                                                     |
-| Log        | .log                                                             | text/plain                                                     |
+| Log        | .log, .log.gz                                                    | text/plain                                                     |
 | Config     | .ini, .conf, .env, .properties, .gitignore, .editorconfig, .toml | text/plain, text/toml                                          |
-| Markdown   | .markdown, .md, .mdx                                             | text/markdown                                                  |
+| Markdown   | .markdown, .md, .mdx, .mdoc                                      | text/markdown                                                  |
 | LaTeX      | .tex, .latex                                                     | application/x-tex, application/x-latex                         |
 | Script     | .sh, .bat, .ps1                                                  | application/x-sh, application/x-msdos-batch, text/x-powershell |
 | SGML       | .sgml                                                            | text/sgml                                                      |
 | JSON       | .json                                                            | application/json                                               |
+| SQL        | .sql                                                             | application/sql                                                |
 | YAML       | .yaml, .yml                                                      | application/x-yaml                                             |
 | CSS        | .css                                                             | text/css                                                       |
 | JavaScript | .js                                                              | application/javascript                                         |
@@ -75,6 +76,6 @@ AI Search has a file size limit of **up to 4 MB**.
 Files that exceed this limit will not be indexed and will show up in the error logs.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/data-source/#page","headline":"Data source · Cloudflare AI Search docs","description":"Connect a website, R2 bucket, or upload files directly to your AI Search instance for indexing.","url":"https://developers.cloudflare.com/ai-search/configuration/data-source/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/data-source/#page","headline":"Data source · Cloudflare AI Search docs","description":"Connect a website, R2 bucket, or upload files directly to your AI Search instance for indexing.","url":"https://developers.cloudflare.com/ai-search/configuration/data-source/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/configuration/data-source/","name":"Data source"}}]}
 ```

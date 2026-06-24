@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Access a private S3 bucket
 
-**Last reviewed:**  8 months ago
-
 This example demonstrates how to access a private S3 bucket that is not exposed to the public internet. In this guide, we will configure a Workers VPC Service for an internal S3-compatible storage service, create a Worker that makes requests to that bucket, and deploy the Worker to validate our changes.
 
 ## Prerequisites
@@ -77,8 +75,8 @@ Terminal window
 
 Update your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-11420)
-* [  wrangler.toml ](#tab-panel-11421)
+* [  wrangler.jsonc ](#tab-panel-11460)
+* [  wrangler.toml ](#tab-panel-11461)
 
 JSONC
 

@@ -137,22 +137,7 @@ Cloudflare support is unable to restore DNS or settings for deleted domains.
 
 ### Does Cloudflare limit the number of DNS records a domain can have?
 
-Yes. All customers have a limit on the number of DNS records they can create.
-
-* Free: 200
-* Pro: 3,500
-* Business: 3,500
-* Enterprise: 3,500
-
-Free zones created before 2024-09-01 00:00:00 UTC have an increased limit of 1,000.
-
-For more DNS records
-
-If you are an Enterprise customer and require more DNS records, contact your account team. Cloudflare can support millions of DNS records on a single zone.
-
-DNS records that other Cloudflare services create on your behalf — for example, the `TXT` and `MX` records added by [Email Routing](https://developers.cloudflare.com/email-service/) — also count toward this limit. To avoid disrupting those services, they are enforced against your record limit with a small buffer, so a zone may occasionally hold slightly more records than its limit would otherwise allow.
-
-To create new records yourself through the dashboard or API, your zone must still be within its record limit.
+Yes. Refer to [DNS records quota](https://developers.cloudflare.com/dns/manage-dns-records/#dns-records-quota) for current limits per plan and details on how quotas are enforced.
 
 ### How long does it take for a DNS change I made to push out?
 
@@ -189,6 +174,6 @@ This splitting is required by the DNS protocol and is performed by all DNS provi
 For DNS records proxied to Cloudflare, Cloudflare's IP addresses are returned in DNS queries instead of your original server IP address. This allows Cloudflare to optimize, cache, and protect all requests for your website.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/faq/#page","headline":"FAQ · Cloudflare DNS docs","description":"Find answers to common questions about Cloudflare's authoritative DNS.","url":"https://developers.cloudflare.com/dns/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/faq/#page","headline":"FAQ · Cloudflare DNS docs","description":"Find answers to common questions about Cloudflare's authoritative DNS.","url":"https://developers.cloudflare.com/dns/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/faq/","name":"FAQ"}}]}
 ```

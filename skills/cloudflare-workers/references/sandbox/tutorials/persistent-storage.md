@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Data persistence with R2
 
-**Last reviewed:**  7 months ago
-
 Mount object storage buckets as local filesystem paths to persist data across sandbox lifecycles. This tutorial uses Cloudflare R2, but the same approach works with any S3-compatible provider.
 
 This tutorial shows how to persist an external data directory mounted at `/data`. If you want the working project in `/workspace` to persist, refer to [Backup and restore](https://developers.cloudflare.com/sandbox/guides/backup-restore/).
@@ -82,8 +80,8 @@ Replace `my-data-bucket` with your R2 bucket name. Create the bucket first in th
 
 Replace `src/index.ts` with code that mounts R2 and processes data:
 
-* [  JavaScript ](#tab-panel-10647)
-* [  TypeScript ](#tab-panel-10648)
+* [  JavaScript ](#tab-panel-10687)
+* [  TypeScript ](#tab-panel-10688)
 
 JavaScript
 

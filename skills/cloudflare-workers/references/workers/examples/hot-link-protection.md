@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Hot-link protection
 
-**Last reviewed:**  over 5 years ago
-
 Block other websites from linking to your content. This is useful for protecting images.
 
 If you want to get started quickly, click on the button below.
@@ -22,10 +20,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11753)
-* [  TypeScript ](#tab-panel-11754)
-* [  Python ](#tab-panel-11755)
-* [  Hono ](#tab-panel-11756)
+* [  JavaScript ](#tab-panel-11793)
+* [  TypeScript ](#tab-panel-11794)
+* [  Python ](#tab-panel-11795)
+* [  Hono ](#tab-panel-11796)
 
 JavaScript
 

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Migrating from Vercel to Pages
 
-**Last reviewed:**  about 1 year ago
-
 In this tutorial, you will learn how to deploy your Vercel application to Cloudflare Pages.
 
 You should already have an existing project deployed on Vercel that you would like to host on Cloudflare Pages. Features such as Vercel's serverless functions are currently not supported in Cloudflare Pages.

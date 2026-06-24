@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Export and save D1 database
 
-**Last reviewed:**  over 1 year ago
-
 Export a D1 database into R2 storage with Workflows
 
 In this example, we implement a Workflow that runs on a schedule using the `schedules` field on the Workflow binding. That Workflow initiates a backup for a D1 database using the REST API, and then stores the SQL dump in an [R2](https://developers.cloudflare.com/r2) bucket.
@@ -59,8 +57,8 @@ Create `D1_REST_API_TOKEN` as a [secret](https://developers.cloudflare.com/worke
 
 Here is a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-13127)
-* [  wrangler.toml ](#tab-panel-13128)
+* [  wrangler.jsonc ](#tab-panel-13167)
+* [  wrangler.toml ](#tab-panel-13168)
 
 JSONC
 

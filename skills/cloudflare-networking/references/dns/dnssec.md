@@ -117,6 +117,37 @@ If you want to set up DNSSEC on a subdomain zone, refer to [Subdomain DNSSEC](ht
 
 ---
 
+## Migrate to Cloudflare with DNSSEC active
+
+If your current DNS provider supports adding external DNSKEY records, you can use the [active migration](https://developers.cloudflare.com/dns/dnssec/dnssec-active-migration/) path for zero-downtime DNSSEC migration using multi-signer DNSSEC.
+
+If your current provider does not support this, use the following approach. This involves a brief window without DNSSEC protection.
+
+1. Remove the DS record at your registrar.
+2. Wait for the DS record TTL to fully expire at the parent zone.
+  * Verify with `dig DS example.com` — commonly 24–48 hours for most TLDs.
+3. Change your nameservers to Cloudflare.
+4. Wait for the previous NS record TTL to expire (typically one hour or less).
+5. [Enable DNSSEC in Cloudflare](#enable-dnssec) and add the new DS record at your registrar.
+
+Warning
+
+If you change nameservers before the old DS TTL has fully expired, validating resolvers will return SERVFAIL because the cached DS records will not match Cloudflare's DNSSEC keys.
+
+## Roll back DNSSEC
+
+If you need to disable DNSSEC after enabling it:
+
+1. Remove the DS record at your registrar (or disable DNSSEC if using Cloudflare Registrar).
+2. Keep zone signing enabled in Cloudflare until the DS TTL has fully expired at the parent zone.
+3. The rollback window depends on the DS TTL, which varies by TLD.
+
+Note
+
+If you use Cloudflare Registrar, Cloudflare automatically submits DS records via CDS/CDNSKEY scanning, which can take one to two days. There is currently no way to manually control the exact timing of DS publication.
+
+---
+
 ## Limitations
 
 If your registrar does not support DNSSEC with Cloudflare's preferred cipher choice (Algorithm 13), you have several options:
@@ -128,6 +159,6 @@ If your registrar does not support DNSSEC with Cloudflare's preferred cipher cho
 If your top-level domain does not support DNSSEC with Algorithm 13 (also known as _ECDSA Curve P-256 with SHA-256_), [contact that top-level domain ↗](https://www.iana.org/domains/root/db).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/dnssec/#page","headline":"DNSSEC · Cloudflare DNS docs","description":"Protect your domain from DNS spoofing with DNSSEC.","url":"https://developers.cloudflare.com/dns/dnssec/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/dnssec/#page","headline":"DNSSEC · Cloudflare DNS docs","description":"Protect your domain from DNS spoofing with DNSSEC.","url":"https://developers.cloudflare.com/dns/dnssec/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/dnssec/","name":"DNSSEC"}}]}
 ```

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Route to private services from Workers
 
-**Last reviewed:**  8 months ago
-
 This example shows how to use Workers VPC to create a centralized gateway that routes requests based on URL paths, provides authentication and rate limiting, and load balances across internal services.
 
 ## Prerequisites
@@ -39,8 +37,8 @@ Note the service IDs returned for the next step.
 
 Update your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-11422)
-* [  wrangler.toml ](#tab-panel-11423)
+* [  wrangler.jsonc ](#tab-panel-11462)
+* [  wrangler.toml ](#tab-panel-11463)
 
 JSONC
 

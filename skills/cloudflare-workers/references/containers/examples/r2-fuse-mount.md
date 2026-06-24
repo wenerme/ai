@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Mount R2 buckets with FUSE
 
-**Last reviewed:**  7 months ago
-
 Mount R2 buckets as filesystems using FUSE in Containers
 
 FUSE (Filesystem in Userspace) allows you to mount [R2 buckets](https://developers.cloudflare.com/r2/) as filesystems within Containers. Applications can then interact with R2 using standard filesystem operations rather than object storage APIs.
@@ -53,8 +51,8 @@ The startup script creates a mount point, starts tigrisfs in the background to m
 
 Your Container needs [R2 credentials](https://developers.cloudflare.com/r2/api/tokens/) and configuration passed as environment variables. Store credentials as [Worker secrets](https://developers.cloudflare.com/workers/configuration/secrets/), then pass them through the `envVars` property:
 
-* [  JavaScript ](#tab-panel-7914)
-* [  TypeScript ](#tab-panel-7915)
+* [  JavaScript ](#tab-panel-7954)
+* [  TypeScript ](#tab-panel-7955)
 
 src/index.js
 
