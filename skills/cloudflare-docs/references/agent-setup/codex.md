@@ -49,7 +49,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**  
 For example:  
 ```  
-Configure Zero Trust access policies to protect my internal staging environment.  
+Check my Workers deployment logs for errors and suggest fixes.  
 ```
 
 1. **Download Codex**  

@@ -3092,6 +3092,7 @@ components:
         - Recraft
         - Reka
         - Relace
+        - Sakana AI
         - SambaNova
         - Seed
         - SiliconFlow
@@ -4872,8 +4873,9 @@ components:
           type: number
           format: double
           description: >-
-            Sampling temperature forwarded to panelist and judge inner calls.
-            When omitted, the provider's default applies.
+            Temperature forwarded to panelist inner calls. The judge always runs
+            at temperature 0 regardless of this value. When omitted, the
+            provider's default applies.
         tools:
           type: array
           items:

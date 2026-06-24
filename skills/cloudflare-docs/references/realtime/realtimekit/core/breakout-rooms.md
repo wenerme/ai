@@ -140,6 +140,28 @@ JavaScript
 // Check if the current participant has permission to switch to connected meetingconst hasPermissionToSwitchToConnectedMeeting = meeting.self.permissions.connectedMeetings.canSwitchConnectedMeetings;
 ```
 
+Kotlin
+
+```
+val connectedMeetings = meeting.connectedMeetings
+// Check if breakout rooms are activeval areBreakoutRoomsActive = connectedMeetings.isActive
+// Check permissions on the local participantval permissions = meeting.self.permissions.connectedMeetings
+// Check if the current participant has permission to create/alter breakout roomsval hasPermissionToAlterBreakoutRooms = permissions.canAlterConnectedMeetings
+// Check if the current participant has permission to switch between breakout roomsval hasPermissionToSwitchConnectedMeetings = permissions.canSwitchConnectedMeetings
+// Check if the current participant has permission to switch back to the parent meetingval hasPermissionToSwitchToParentMeeting = permissions.canSwitchToParentMeeting
+```
+
+Swift
+
+```
+let connectedMeetings = meeting.connectedMeetings
+// Check if breakout rooms are activelet areBreakoutRoomsActive = connectedMeetings.isActive
+// Check permissions on the local participantlet permissions = meeting.self.permissions.connectedMeetings
+// Check if the current participant has permission to create/alter breakout roomslet hasPermissionToAlterBreakoutRooms = permissions.canAlterConnectedMeetings
+// Check if the current participant has permission to switch between breakout roomslet hasPermissionToSwitchConnectedMeetings = permissions.canSwitchConnectedMeetings
+// Check if the current participant has permission to switch back to the parent meetinglet hasPermissionToSwitchToParentMeeting = permissions.canSwitchToParentMeeting
+```
+
 ### Create breakout rooms
 
 JavaScript
@@ -168,6 +190,22 @@ console.log("Created Breakout Rooms: ", breakoutRooms.map((room) => "Id:: " + ro
 ```
 
 `breakoutRooms` is an array of basic meeting information such as id and title. You can use the `id` of these objects to move participants to the breakout room.
+
+Kotlin
+
+```
+meeting.connectedMeetings.createMeetings(    titles = listOf("Breakout Room 1", "Breakout Room 2", "Breakout Room 3")) { result ->    result.onSuccess { breakoutRooms ->        val roomInfo = breakoutRooms.joinToString("\n") { "Id:: ${it.id} --- Title:: ${it.title}" }        println("Created Breakout Rooms: $roomInfo")    }.onFailure { error ->        println("Failed to create breakout rooms: ${error.value.message}")    }}
+```
+
+`breakoutRooms` is a list of basic meeting information such as `id` and `title`. You can use the `id` of these objects to move participants to the breakout room.
+
+Swift
+
+```
+meeting.connectedMeetings.createMeetings(titles: ["Breakout Room 1", "Breakout Room 2", "Breakout Room 3"]) { result in    switch result {    case .success(let breakoutRooms):        let roomInfo = breakoutRooms.map { "Id:: \($0.id) --- Title:: \($0.title)" }.joined(separator: "\n")        print("Created Breakout Rooms: \(roomInfo)")    case .failure(let error):        print("Failed to create breakout rooms: \(error.value.message)")    }}
+```
+
+`breakoutRooms` is an array of basic meeting information such as `id` and `title`. You can use the `id` of these objects to move participants to the breakout room.
 
 ### Retrieve list of breakout rooms and their participants
 
@@ -220,6 +258,47 @@ console.log("Created Breakout Rooms: ", breakoutRooms.map((room) => "Id:: " + ro
 
 `breakoutRooms` is an array of basic meeting information such as id and title. You can use the `id` of these objects to move participants to the breakout room.
 
+Kotlin
+
+```
+meeting.connectedMeetings.getConnectedMeetings { result ->    result.onSuccess { breakoutRoomsInfo ->        println("Parent Meeting: ${breakoutRoomsInfo.parentMeeting}")        println("Breakout Rooms: ${breakoutRoomsInfo.meetings}")    }.onFailure { error ->        println("Failed to fetch breakout rooms: ${error.value.message}")    }}
+```
+
+`breakoutRoomsInfo` is an object containing the list of breakout rooms and their participants, along with details of the parent meeting.
+
+This data can be used to display the list of breakout rooms and participants in the UI. This API refetches the list of breakout rooms and participants, and can therefore be considered the source of truth. It is advised to call this API to get the latest state if a lot of changes are in progress.
+
+You can also listen to the `onStateUpdate` event to receive real-time updates to the list of breakout rooms and participants.
+
+Kotlin
+
+```
+meeting.addConnectedMeetingsEventListener(object : RtkConnectedMeetingsEventListener {    override fun onStateUpdate(meetings: List<RtkConnectedMeeting>, parentMeeting: RtkConnectedMeeting?) {        println("State updated. Meetings: $meetings, Parent: $parentMeeting")
+        // Alternatively, access state directly from the connectedMeetings object        println("Meetings List: ${meeting.connectedMeetings.meetings}")        println("Parent Meeting: ${meeting.connectedMeetings.parentMeeting}")    }
+    override fun onChangingMeeting(meetingId: String) {}    override fun onMeetingChanged(error: MeetingError?) {}})
+```
+
+Swift
+
+```
+meeting.connectedMeetings.getConnectedMeetings { result in    switch result {    case .success(let breakoutRoomsInfo):        print("Parent Meeting: \(String(describing: breakoutRoomsInfo.parentMeeting))")        print("Breakout Rooms: \(breakoutRoomsInfo.meetings)")    case .failure(let error):        print("Failed to fetch breakout rooms: \(error.value.message)")    }}
+```
+
+`breakoutRoomsInfo` is an object containing the list of breakout rooms and their participants, along with details of the parent meeting.
+
+This data can be used to display the list of breakout rooms and participants in the UI. This API refetches the list of breakout rooms and participants, and can therefore be considered the source of truth. It is advised to call this API to get the latest state if a lot of changes are in progress.
+
+You can also listen to the `onStateUpdate` event to receive real-time updates to the list of breakout rooms and participants.
+
+Swift
+
+```
+class MyListener: RtkConnectedMeetingsEventListener {    func onStateUpdate(meetings: [RtkConnectedMeeting], parentMeeting: RtkConnectedMeeting?) {        print("State updated. Meetings: \(meetings), Parent: \(String(describing: parentMeeting))")
+        // Alternatively, access state directly from the connectedMeetings object        print("Meetings List: \(meeting.connectedMeetings.meetings)")        print("Parent Meeting: \(String(describing: meeting.connectedMeetings.parentMeeting))")    }
+    func onChangingMeeting(meetingId: String) {}    func onMeetingChanged(error: MeetingError?) {}}
+meeting.addConnectedMeetingsEventListener(MyListener())
+```
+
 ### Move participants to breakout rooms
 
 Once you have created breakout rooms, assign participants to the rooms.
@@ -248,6 +327,20 @@ JavaScript
 // Move participants to breakout roomsconst response = await meeting.connectedMeetings.moveParticipants(  "SOURCE_MEETING_ID", // sourceMeetingId, meeting id where participants are currently in  "TARGET_MEETING_ID", // targetMeetingId, meeting id where participants are to be moved  ["PARTICIPANT_ID_1", "PARTICIPANT_ID_2"], // participantIds, array of participant ids to be moved);
 ```
 
+Kotlin
+
+```
+// Retrieve list of breakout rooms & participantsmeeting.connectedMeetings.getConnectedMeetings { result ->    result.onSuccess { breakoutRoomsInfo ->        /*         * You can retrieve meetingIds and participantIds from breakoutRoomsInfo.         * Based on where the participant currently is, decide the sourceMeetingId and targetMeetingId.         */
+        // Move participants to a breakout room        meeting.connectedMeetings.moveParticipants(            sourceMeetingId = "SOURCE_MEETING_ID",            destinationMeetingId = "TARGET_MEETING_ID",            participantIds = listOf("PARTICIPANT_ID_1", "PARTICIPANT_ID_2")        ) { error ->            if (error != null) {                println("Failed to move participants: $error")            } else {                println("Participants moved successfully")            }        }    }}
+```
+
+Swift
+
+```
+// Retrieve list of breakout rooms & participantsmeeting.connectedMeetings.getConnectedMeetings { result in    switch result {    case .success(let breakoutRoomsInfo):        /*         * You can retrieve meetingIds and participantIds from breakoutRoomsInfo.         * Based on where the participant currently is, decide the fromMeetingId and toMeetingId.         */
+        // Move participants to a breakout room        meeting.connectedMeetings.moveParticipants(            sourceMeetingId: "SOURCE_MEETING_ID",            destinationMeetingId: "TARGET_MEETING_ID",            participantIds: ["PARTICIPANT_ID_1", "PARTICIPANT_ID_2"]        ) { error in            if let error = error {                print("Failed to move participants: \(error)")            } else {                print("Participants moved successfully")            }        }    case .failure(let error):        print("Failed to fetch breakout rooms: \(error.value.message)")    }}
+```
+
 ### Move participants, with a specific preset, to breakout rooms
 
 Once you have created breakout rooms, assign participants to the rooms.
@@ -268,6 +361,18 @@ JavaScript
 
 ```
 const response = await meeting.connectedMeetings.moveParticipantsWithCustomPreset(  "SOURCE_MEETING_ID", // sourceMeetingId, meeting id where participants are currently in  "TARGET_MEETING_ID", // targetMeetingId, meeting id where participants are to be moved  [{ presetId: "PRESET_ID_1" }, { presetId: "PRESET_ID_2" }], // array of objects with presetId field);
+```
+
+Kotlin
+
+```
+meeting.connectedMeetings.moveParticipantsWithCustomPreset(    sourceMeetingId = "SOURCE_MEETING_ID",    destinationMeetingId = "TARGET_MEETING_ID",    participants = listOf(        MoveParticipantPayload(id = "PARTICIPANT_ID_1", presetId = "PRESET_ID_1"),        MoveParticipantPayload(id = "PARTICIPANT_ID_2", presetId = "PRESET_ID_2")    )) { error ->    if (error != null) {        println("Failed to move participants: $error")    } else {        println("Participants moved with custom preset successfully")    }}
+```
+
+Swift
+
+```
+meeting.connectedMeetings.moveParticipantsWithCustomPreset(    sourceMeetingId: "SOURCE_MEETING_ID",    destinationMeetingId: "TARGET_MEETING_ID",    participants: [        MoveParticipantPayload(id: "PARTICIPANT_ID_1", presetId: "PRESET_ID_1"),        MoveParticipantPayload(id: "PARTICIPANT_ID_2", presetId: "PRESET_ID_2")    ]) { error in    if let error = error {        print("Failed to move participants: \(error)")    } else {        print("Participants moved with custom preset successfully")    }}
 ```
 
 ### Move local participant to breakout room
@@ -297,6 +402,23 @@ JavaScript
 ```
 // Listen to changingMeeting event to show a custom UI to indicate that a meeting switch is happeningmeeting.connectedMeetings.on("changingMeeting", (meetingId) => {  console.log("Switching to breakout room or main meeting with id: " + meetingId);  console.log("Show a Custom UI to indicate that a meeting switch is happening");});
 // Listen to meetingChanged event to update the meeting object referencemeeting.connectedMeetings.on("meetingChanged", (newMeeting) => {  console.log("Switched to breakout room or main meeting");  console.log("Every action now should be performed on this meeting");});
+```
+
+Kotlin
+
+```
+meeting.addConnectedMeetingsEventListener(object : RtkConnectedMeetingsEventListener {    // Triggered when a meeting switch is initiated — use this to show a loading UI    override fun onChangingMeeting(meetingId: String) {        println("Switching to breakout room or main meeting with id: $meetingId")        println("Show a custom UI to indicate that a meeting switch is happening")    }
+    // Triggered when the meeting switch is complete    override fun onMeetingChanged(error: MeetingError?) {        if (error != null) {            println("Failed to switch meeting: $error")        } else {            println("Switched to breakout room or main meeting successfully")        }    }
+    override fun onStateUpdate(meetings: List<RtkConnectedMeeting>, parentMeeting: RtkConnectedMeeting?) {}})
+```
+
+Swift
+
+```
+class MyListener: RtkConnectedMeetingsEventListener {    // Triggered when a meeting switch is initiated — use this to show a loading UI    func onChangingMeeting(meetingId: String) {        print("Switching to breakout room or main meeting with id: \(meetingId)")        print("Show a custom UI to indicate that a meeting switch is happening")    }
+    // Triggered when the meeting switch is complete    func onMeetingChanged(error: MeetingError?) {        if let error = error {            print("Failed to switch meeting: \(error)")        } else {            print("Switched to breakout room or main meeting successfully")        }    }
+    func onStateUpdate(meetings: [RtkConnectedMeeting], parentMeeting: RtkConnectedMeeting?) {}}
+meeting.addConnectedMeetingsEventListener(MyListener())
 ```
 
 ### Close breakout rooms
@@ -348,6 +470,39 @@ meeting.connectedMeetings.on("stateUpdate", ({meetings, parentMeeting}) => {  co
 // Alternatively, you can access the meetings and parentMeeting from the connectedMeetings objectconsole.log("Meetings List", meeting.connectedMeetings.meetings);console.log("Parent Meeting", meeting.connectedMeetings.parentMeeting);
 ```
 
+Kotlin
+
+```
+meeting.connectedMeetings.deleteMeetings(    meetingIds = listOf("MEETING_ID_TO_CLOSE_1", "MEETING_ID_TO_CLOSE_2")) { error ->    if (error != null) {        println("Failed to close breakout rooms: $error")    } else {        println("Breakout rooms closed successfully")    }}
+```
+
+This will also trigger the `onStateUpdate` event, updating the list of breakout rooms and participants.
+
+Kotlin
+
+```
+meeting.addConnectedMeetingsEventListener(object : RtkConnectedMeetingsEventListener {    override fun onStateUpdate(meetings: List<RtkConnectedMeeting>, parentMeeting: RtkConnectedMeeting?) {        println("State updated. Meetings: $meetings, Parent: $parentMeeting")
+        // Alternatively, access state directly from the connectedMeetings object        println("Meetings List: ${meeting.connectedMeetings.meetings}")        println("Parent Meeting: ${meeting.connectedMeetings.parentMeeting}")    }
+    override fun onChangingMeeting(meetingId: String) {}    override fun onMeetingChanged(error: MeetingError?) {}})
+```
+
+Swift
+
+```
+meeting.connectedMeetings.deleteMeetings(meetingIds: ["MEETING_ID_TO_CLOSE_1", "MEETING_ID_TO_CLOSE_2"]) { error in    if let error = error {        print("Failed to close breakout rooms: \(error)")    } else {        print("Breakout rooms closed successfully")    }}
+```
+
+This will also trigger the `onStateUpdate` event, updating the list of breakout rooms and participants.
+
+Swift
+
+```
+class MyListener: RtkConnectedMeetingsEventListener {    func onStateUpdate(meetings: [RtkConnectedMeeting], parentMeeting: RtkConnectedMeeting?) {        print("State updated. Meetings: \(meetings), Parent: \(String(describing: parentMeeting))")
+        // Alternatively, access state directly from the connectedMeetings object        print("Meetings List: \(meeting.connectedMeetings.meetings)")        print("Parent Meeting: \(String(describing: meeting.connectedMeetings.parentMeeting))")    }
+    func onChangingMeeting(meetingId: String) {}    func onMeetingChanged(error: MeetingError?) {}}
+meeting.addConnectedMeetingsEventListener(MyListener())
+```
+
 ## Next steps
 
 You have successfully integrated breakout rooms into your RealtimeKit application. Participants can now:
@@ -364,6 +519,6 @@ For more advanced customization, explore the following:
 * [Build Your Own UI](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/build-your-own-ui/) \- Create custom meeting interfaces
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/breakout-rooms/#page","headline":"Breakout Rooms · Cloudflare Realtime docs","description":"Create and manage breakout rooms to split participants into smaller groups in RealtimeKit.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/breakout-rooms/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/breakout-rooms/#page","headline":"Breakout Rooms · Cloudflare Realtime docs","description":"Create and manage breakout rooms to split participants into smaller groups in RealtimeKit.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/breakout-rooms/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/core/","name":"Build using Core SDK"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/core/breakout-rooms/","name":"Breakout Rooms"}}]}
 ```

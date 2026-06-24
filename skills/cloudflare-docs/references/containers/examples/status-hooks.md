@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Status Hooks
 
-**Last reviewed:**  12 months ago 
+**Last reviewed:**  about 1 year ago 
 
 Execute Workers code in reaction to Container status changes
 

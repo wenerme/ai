@@ -541,6 +541,10 @@ components:
           type: object
           additionalProperties:
             description: Any type
+        sakana-ai:
+          type: object
+          additionalProperties:
+            description: Any type
         sambanova:
           type: object
           additionalProperties:

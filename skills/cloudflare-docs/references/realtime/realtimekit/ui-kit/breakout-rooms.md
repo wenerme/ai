@@ -143,6 +143,58 @@ To assign participants manually:
 4. Click **Start Breakout**
 5. Click **Yes, start** in the confirmation dialog
 
+1. In your RealtimeKit meeting, tap **Breakout Rooms**
+2. In the Create Breakout dialog, add the number of rooms you want and tap **Create**
+
+Once you have created breakout rooms, assign participants to the rooms. You can assign participants automatically (RealtimeKit splits them evenly) or manually (you choose who goes where).
+
+#### Assign participants automatically
+
+To assign participants automatically:
+
+1. In the Assign Participants dialog, tap the shuffle button
+2. RealtimeKit assigns participants to the rooms
+3. Edit room names by tapping the pencil icon beside the room name (optional)
+4. Move participants to different rooms if needed
+5. Tap **Start Breakout**
+6. Tap **Yes, start** in the confirmation dialog
+
+#### Assign participants manually
+
+To assign participants manually:
+
+1. In the Assign Participants dialog, select the participants you want to assign to a room
+2. In the Rooms section, tap **Assign**
+3. Repeat for all participants and rooms
+4. Tap **Start Breakout**
+5. Tap **Yes, start** in the confirmation dialog
+
+1. In your RealtimeKit meeting, tap **Breakout Rooms**
+2. In the Create Breakout dialog, add the number of rooms you want and tap **Create**
+
+Once you have created breakout rooms, assign participants to the rooms. You can assign participants automatically (RealtimeKit splits them evenly) or manually (you choose who goes where).
+
+#### Assign participants automatically
+
+To assign participants automatically:
+
+1. In the Assign Participants dialog, tap the shuffle button
+2. RealtimeKit assigns participants to the rooms
+3. Edit room names by tapping the pencil icon beside the room name (optional)
+4. Move participants to different rooms if needed
+5. Tap **Start Breakout**
+6. Tap **Yes, start** in the confirmation dialog
+
+#### Assign participants manually
+
+To assign participants manually:
+
+1. In the Assign Participants dialog, select the participants you want to assign to a room
+2. In the Rooms section, tap **Assign**
+3. Repeat for all participants and rooms
+4. Tap **Start Breakout**
+5. Tap **Yes, start** in the confirmation dialog
+
 ## Integrate breakout rooms
 
 After setting up breakout rooms via the API, you need to integrate them into your application using the RealtimeKit SDK.
@@ -184,6 +236,39 @@ import { Component, ViewChild, AfterViewInit } from '@angular/core';import Realt
 ```
 
 The `meetingChanged` event is triggered when a participant switches between the main meeting and breakout rooms. Update the meeting object reference when this event fires.
+
+When using `RealtimeKitUI.startMeeting()`, the SDK automatically manages the `RtkConnectedMeetingsListener` — no extra setup is required for breakout room switching.
+
+If you are building a **custom meeting UI** (bypassing `MeetingViewController`), register the listener yourself:
+
+Swift
+
+```
+import RealtimeKitimport RealtimeKitUI
+let listener = RtkConnectedMeetingsListener(rtkClient: rtkClient)
+listener.onChangingMeeting = { meetingId in    // Show a loading overlay; the SDK is switching rooms    let isReturningToMain = meetingId == rtkClient.connectedMeetings.parentMeeting?.id    showLoadingOverlay(message: isReturningToMain ? "Returning to Main Room\u{2026}" : "Joining breakout room\u{2026}")}
+listener.onMeetingChanged = { error in    hideLoadingOverlay()    if let error {        showErrorAlert(message: error.message)    } else {        // Re-register all feature event listeners — the SDK clears them during the room switch        // Re-register your listener instances, for example:        // rtkClient.addSelfEventListener(selfEventListener: mySelfListener)        // rtkClient.addParticipantsEventListener(participantsEventListener: myParticipantsListener)    }}
+listener.onStateUpdate = { meetings, parentMeeting in    // Refresh your breakout-rooms UI list}
+```
+
+Note
+
+Hold a strong reference to `RtkConnectedMeetingsListener`. It deregisters itself on `deinit`.
+
+When using `RealtimeKitUIBuilder` \+ `startMeeting()`, the SDK automatically registers and manages `RtkConnectedMeetingsEventListener` — no extra setup is required for breakout room switching.
+
+If you are building a **custom meeting UI**, register the listener yourself:
+
+Kotlin
+
+```
+import com.cloudflare.realtimekit.ui.RtkConnectedMeetingsEventListenerimport com.cloudflare.realtimekit.models.MeetingError
+val connectedMeetingsListener = object : RtkConnectedMeetingsEventListener {    override fun onChangingMeeting(meetingId: String) {        // Show a transition screen; the SDK is switching rooms        val isReturningToMain = meetingId == meeting.connectedMeetings.parentMeeting?.id        showLoadingOverlay(isReturningToMain)    }
+    override fun onMeetingChanged(error: MeetingError?) {        hideLoadingOverlay()        if (error != null) {            showErrorMessage(error.message)        }        // No need to re-register listeners — the SDK handles this automatically    }}
+meeting.addConnectedMeetingsEventListener(connectedMeetingsListener)
+```
+
+The `onChangingMeeting` callback fires when the SDK starts leaving the current room. The `onMeetingChanged` callback fires when the switch completes (or fails).
 
 ### Render the meeting UI
 
@@ -237,6 +322,33 @@ The Default Meeting UI (`rtk-meeting` component) automatically joins the session
 
 The `showSetupScreen` property controls whether the setup screen is displayed, allowing participants to preview their audio and video before joining the session.
 
+Swift
+
+```
+import RealtimeKitimport RealtimeKitUI
+let meetingInfo = RtkMeetingInfo(authToken: "<participant_auth_token>")let rtkUI = RealtimeKitUI(meetingInfo: meetingInfo)
+let setupVC = rtkUI.startMeeting { [weak self] in    // Called when the participant leaves or ends the meeting    self?.dismiss(animated: true)}present(setupVC, animated: true)
+```
+
+Note
+
+Like the web UI Kit, `MeetingViewController` **automatically joins the session** — you do not need to call `meeting.join()` manually.
+
+The setup screen (audio/video preview) is shown by default. Built-in breakout room support — including the room-switching overlay and room title updates — is handled automatically by `MeetingViewController`.
+
+Kotlin
+
+```
+import com.cloudflare.realtimekit.models.RtkMeetingInfoimport com.cloudflare.realtimekit.ui.RealtimeKitUIBuilderimport com.cloudflare.realtimekit.ui.RealtimeKitUIInfo
+val meetingInfo = RtkMeetingInfo(authToken = "<participant_auth_token>")val uiKitInfo = RealtimeKitUIInfo(    activity = this,    rtkMeetingInfo = meetingInfo,)val rtkUIKit = RealtimeKitUIBuilder.build(uiKitInfo)rtkUIKit.startMeeting()
+```
+
+Note
+
+`RtkMeetingActivity` **automatically joins the session** — you do not need to call `meeting.join()` manually.
+
+Built-in breakout room support is handled automatically by `RtkMeetingActivity`. When the SDK moves participants between rooms, it displays a transition overlay with a localized message. The host can manage breakout rooms via the `RtkBreakoutRoomsBottomSheet`, which is shown automatically when the Breakout Rooms control bar button is tapped.
+
 ## Next steps
 
 You have successfully integrated breakout rooms into your RealtimeKit application. Participants can now:
@@ -253,6 +365,6 @@ For more advanced customization, explore the following:
 * [Build Your Own UI](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/build-your-own-ui/) \- Create custom meeting interfaces
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/breakout-rooms/#page","headline":"Breakout Rooms · Cloudflare Realtime docs","description":"Create and manage breakout rooms in RealtimeKit meetings for smaller group discussions.","url":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/breakout-rooms/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/breakout-rooms/#page","headline":"Breakout Rooms · Cloudflare Realtime docs","description":"Create and manage breakout rooms in RealtimeKit meetings for smaller group discussions.","url":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/breakout-rooms/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/ui-kit/","name":"Build using UI Kit"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/ui-kit/breakout-rooms/","name":"Breakout Rooms"}}]}
 ```

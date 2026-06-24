@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Stateless Instances
 
-**Last reviewed:**  12 months ago 
+**Last reviewed:**  about 1 year ago 
 
 Run multiple instances across Cloudflare's network
 

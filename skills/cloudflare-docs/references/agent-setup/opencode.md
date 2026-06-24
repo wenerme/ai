@@ -51,7 +51,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.  
+Build a serverless AI inference endpoint on Workers AI with streaming responses.  
 ```
 
 ## Cloudflare platform access

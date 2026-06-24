@@ -375,6 +375,7 @@ components:
         - Recraft
         - Reka
         - Relace
+        - Sakana AI
         - SambaNova
         - Seed
         - SiliconFlow

@@ -14,6 +14,20 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/realtime/realtimekit/release-notes/ios-ui-kit/index.xml)
 
+## 2026-06-24
+
+**RealtimeKit iOS UI Kit 2.0.0**
+
+**Breaking changes**
+
+* Upgraded to [RealtimeKit Core v3.0.0](https://developers.cloudflare.com/realtime/realtimekit/release-notes/ios-core/#2026-06-24). Plugins must now be declared on the client side when constructing `RtkMeetingInfo`.
+
+**Features**
+
+* Added Breakout Rooms support. Participants can be assigned to rooms manually or distributed automatically; hosts can create, rename, and close rooms, move participants between them, and return everyone to the main room. See the Connected Meetings documentation for a full guide.
+* Added an AI Transcription screen accessible from the More menu. The screen matches web SDK rendering behavior: consecutive utterances from the same speaker are grouped, the list auto-scrolls to the latest transcript, and transcripts can be filtered by participant name or text.
+* Added edit and delete actions for chat messages. Long-pressing a message opens a context menu with Edit and Delete options. Edited messages display an "edited" indicator.
+
 ## 2026-05-11
 
 **RealtimeKit iOS UI Kit 1.1.0**

@@ -197,6 +197,7 @@ components:
         - recraft
         - reka
         - relace
+        - sakana-ai
         - sambanova
         - seed
         - siliconflow

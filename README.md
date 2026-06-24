@@ -1007,7 +1007,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 90 skills, 24656 files, 270 MiB total
+> 90 skills, 24544 files, 269 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1031,13 +1031,13 @@ Use when implementing React state management with Zustand, including context-sco
 | `bun-ffi-interop-pattern` | 1 | 4.8 KiB |
 | `caddy-docs` | 82 | 667 KiB |
 | `chrome-devtools` | 1 | 3.6 KiB |
-| `claude-code-docs` | 110 | 3.7 MiB |
+| `claude-code-docs` | 110 | 3.8 MiB |
 | `clickhouse-docs` | 1086 | 9.9 MiB |
-| `cloudflare-docs` | 6617 | 49 MiB |
+| `cloudflare-docs` | 6499 | 48 MiB |
 | `codex-docs` | 164 | 1.4 MiB |
 | `comfyui-docs` | 4612 | 14 MiB |
 | `daisyui-v5` | 3 | 60 KiB |
-| `doris-docs` | 1571 | 9.4 MiB |
+| `doris-docs` | 1572 | 9.4 MiB |
 | `evalscope-cli` | 6 | 31 KiB |
 | `evalscope-docs` | 274 | 1.7 MiB |
 | `find-skills` | 1 | 4.5 KiB |
@@ -1045,14 +1045,14 @@ Use when implementing React state management with Zustand, including context-sco
 | `ghostty-docs` | 103 | 554 KiB |
 | `gitea-docs` | 101 | 686 KiB |
 | `glab-cli` | 5 | 21 KiB |
-| `glab-docs` | 288 | 448 KiB |
+| `glab-docs` | 290 | 451 KiB |
 | `google-ai-api` | 13 | 682 KiB |
 | `google-ai-docs` | 87 | 1.9 MiB |
 | `grafana-docs` | 623 | 5.9 MiB |
 | `humanizer` | 1 | 15 KiB |
-| `image-prompt-guide` | 9 | 324 KiB |
+| `image-prompt-guide` | 9 | 323 KiB |
 | `immich-docs` | 76 | 481 KiB |
-| `justfile-docs` | 95 | 157 KiB |
+| `justfile-docs` | 95 | 159 KiB |
 | `k3s-docs` | 58 | 1.8 MiB |
 | `lark-node-sdk` | 1 | 5.8 KiB |
 | `litellm-docs` | 3 | 18 KiB |
@@ -1071,14 +1071,14 @@ Use when implementing React state management with Zustand, including context-sco
 | `openai-sdk-python` | 508 | 15 MiB |
 | `openai-sdk-typescript` | 508 | 15 MiB |
 | `opencode-docs` | 53 | 453 KiB |
-| `openobserve-docs` | 442 | 2.3 MiB |
+| `openobserve-docs` | 445 | 2.3 MiB |
 | `openrouter-docs` | 496 | 6.4 MiB |
 | `orpc-docs` | 73 | 286 KiB |
 | `orpc-implementation-sops` | 2 | 7.4 KiB |
 | `papermc-docs` | 192 | 877 KiB |
 | `peekaboo` | 1 | 15 KiB |
 | `react-resizable-panels-v3-to-v4` | 1 | 9.2 KiB |
-| `requesting-code-review` | 2 | 6.2 KiB |
+| `requesting-code-review` | 2 | 7.9 KiB |
 | `shadcn` | 14 | 82 KiB |
 | `skill-writer` | 4 | 23 KiB |
 | `sling-cli` | 3 | 14 KiB |
