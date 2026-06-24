@@ -1084,7 +1084,7 @@ Use when implementing React state management with Zustand, including context-sco
 </details>
 ## Stats
 
-> 97 skills, 24665 files, 270 MiB total
+> 97 skills, 24483 files, 268 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1114,12 +1114,12 @@ Use when implementing React state management with Zustand, including context-sco
 | `cloudflare-data` | 393 | 3.0 MiB |
 | `cloudflare-docs` | 3 | 31 KiB |
 | `cloudflare-networking` | 823 | 4.9 MiB |
-| `cloudflare-observability-admin` | 1220 | 8.1 MiB |
+| `cloudflare-observability-admin` | 1222 | 8.1 MiB |
 | `cloudflare-security` | 1001 | 5.5 MiB |
 | `cloudflare-workers` | 768 | 6.9 MiB |
 | `cloudflare-zero-trust` | 928 | 9.5 MiB |
 | `codex-docs` | 164 | 1.4 MiB |
-| `comfyui-docs` | 4612 | 14 MiB |
+| `comfyui-docs` | 4616 | 14 MiB |
 | `daisyui-v5` | 3 | 60 KiB |
 | `doris-docs` | 1572 | 9.4 MiB |
 | `evalscope-cli` | 6 | 31 KiB |
@@ -1129,12 +1129,12 @@ Use when implementing React state management with Zustand, including context-sco
 | `ghostty-docs` | 103 | 554 KiB |
 | `gitea-docs` | 101 | 686 KiB |
 | `glab-cli` | 5 | 21 KiB |
-| `glab-docs` | 289 | 449 KiB |
+| `glab-docs` | 290 | 451 KiB |
 | `google-ai-api` | 13 | 682 KiB |
 | `google-ai-docs` | 87 | 1.9 MiB |
 | `grafana-docs` | 623 | 5.9 MiB |
 | `humanizer` | 1 | 15 KiB |
-| `image-prompt-guide` | 9 | 324 KiB |
+| `image-prompt-guide` | 9 | 323 KiB |
 | `immich-docs` | 76 | 481 KiB |
 | `justfile-docs` | 95 | 159 KiB |
 | `k3s-docs` | 58 | 1.8 MiB |
@@ -1144,18 +1144,18 @@ Use when implementing React state management with Zustand, including context-sco
 | `llamafactory-docs` | 20 | 152 KiB |
 | `luanti-docs` | 176 | 1.7 MiB |
 | `mastra` | 10 | 51 KiB |
-| `mastra-docs` | 754 | 5.9 MiB |
+| `mastra-docs` | 756 | 5.9 MiB |
 | `mihomo-docs` | 150 | 358 KiB |
 | `mikro-orm-v6-to-v7` | 5 | 37 KiB |
 | `mikroorm-docs` | 84 | 1.3 MiB |
 | `model-reference` | 17 | 64 KiB |
-| `nats-docs` | 200 | 1.5 MiB |
+| `nats-docs` | 6 | 42 KiB |
 | `openai-api` | 508 | 19 MiB |
 | `openai-docs` | 156 | 2.2 MiB |
 | `openai-sdk-python` | 508 | 15 MiB |
 | `openai-sdk-typescript` | 508 | 15 MiB |
 | `opencode-docs` | 53 | 453 KiB |
-| `openobserve-docs` | 442 | 2.3 MiB |
+| `openobserve-docs` | 445 | 2.3 MiB |
 | `openrouter-docs` | 496 | 6.4 MiB |
 | `orpc-docs` | 73 | 286 KiB |
 | `orpc-implementation-sops` | 2 | 7.4 KiB |

@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**
 For example:
 ```
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ## Cloudflare platform access

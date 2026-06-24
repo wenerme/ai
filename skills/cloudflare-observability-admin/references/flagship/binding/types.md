@@ -43,21 +43,20 @@ Returned by the `*Details` methods. Contains the evaluated value and metadata ab
 TypeScript
 
 ```
-interface FlagshipEvaluationDetails<T> {  flagKey: string;  value: T;  variant?: string;  reason?: string;  errorCode?: string;  errorMessage?: string;}
+interface FlagshipEvaluationDetails<T> {  flagKey: string;  value: T;  variant?: string;  reason?: string;  errorCode?: string;}
 ```
 
-| Property     | Type   | Description                                                                         |
-| ------------ | ------ | ----------------------------------------------------------------------------------- |
-| flagKey      | string | The key of the evaluated flag.                                                      |
-| value        | T      | The resolved flag value.                                                            |
-| variant      | string | The name of the matched variation, if any.                                          |
-| reason       | string | Why the flag resolved to this value (for example, "TARGETING\_MATCH" or "DEFAULT"). |
-| errorCode    | string | An error code if evaluation failed (for example, "TYPE\_MISMATCH" or "GENERAL").    |
-| errorMessage | string | A human-readable description of the error.                                          |
+| Property  | Type   | Description                                                                         |
+| --------- | ------ | ----------------------------------------------------------------------------------- |
+| flagKey   | string | The key of the evaluated flag.                                                      |
+| value     | T      | The resolved flag value.                                                            |
+| variant   | string | The name of the matched variant, if any.                                            |
+| reason    | string | Why the flag resolved to this value (for example, "TARGETING\_MATCH" or "DEFAULT"). |
+| errorCode | string | An error code if evaluation failed (for example, "TYPE\_MISMATCH" or "GENERAL").    |
 
 Refer to [evaluation reasons and error codes](https://developers.cloudflare.com/flagship/reference/evaluation-reasons/) for the full list of possible values.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/binding/types/#page","headline":"Types · Cloudflare Flagship docs","description":"TypeScript type definitions for the Flagship binding, including Flagship, FlagshipEvaluationContext, and FlagshipEvaluationDetails.","url":"https://developers.cloudflare.com/flagship/binding/types/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/binding/types/#page","headline":"Types · Cloudflare Flagship docs","description":"TypeScript type definitions for the Flagship binding, including Flagship, FlagshipEvaluationContext, and FlagshipEvaluationDetails.","url":"https://developers.cloudflare.com/flagship/binding/types/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/flagship/","name":"Flagship"}},{"@type":"ListItem","position":3,"item":{"@id":"/flagship/binding/","name":"Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/flagship/binding/types/","name":"Types"}}]}
 ```

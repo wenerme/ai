@@ -124,7 +124,7 @@ Evaluate flags using the OpenFeature client:
 * [ With binding ](#tab-panel-8627)
 * [ With app ID ](#tab-panel-8628)
 
-Pass the Flagship binding directly to the provider. This avoids additional HTTP requests and is the recommended approach inside a Worker. Authentication is handled automatically through the binding.
+Pass the Flagship binding directly to the provider. This avoids additional HTTP overhead and is the recommended approach inside a Worker. The binding handles authentication automatically.
 
 * [  JavaScript ](#tab-panel-8625)
 * [  TypeScript ](#tab-panel-8626)
@@ -132,7 +132,7 @@ Pass the Flagship binding directly to the provider. This avoids additional HTTP 
 JavaScript
 
 ```
-import { OpenFeature } from "@openfeature/server-sdk";import { FlagshipServerProvider } from "@cloudflare/flagship";
+import { OpenFeature } from "@openfeature/server-sdk";import { FlagshipServerProvider } from "@cloudflare/flagship/server";
 export default {  async fetch(request, env) {    await OpenFeature.setProviderAndWait(      new FlagshipServerProvider({ binding: env.FLAGS }),    );
     const client = OpenFeature.getClient();
     const showNewCheckout = await client.getBooleanValue(      "new-checkout",      false,      { targetingKey: "user-42" },    );
@@ -142,14 +142,14 @@ export default {  async fetch(request, env) {    await OpenFeature.setProviderAn
 TypeScript
 
 ```
-import { OpenFeature } from "@openfeature/server-sdk";import { FlagshipServerProvider } from "@cloudflare/flagship";
+import { OpenFeature } from "@openfeature/server-sdk";import { FlagshipServerProvider } from "@cloudflare/flagship/server";
 export default {  async fetch(request: Request, env: Env): Promise<Response> {    await OpenFeature.setProviderAndWait(      new FlagshipServerProvider({ binding: env.FLAGS }),    );
     const client = OpenFeature.getClient();
     const showNewCheckout = await client.getBooleanValue(      "new-checkout",      false,      { targetingKey: "user-42" },    );
     return new Response(      showNewCheckout ? "New checkout!" : "Standard checkout.",    );  },};
 ```
 
-Use an app ID, account ID, and an API token when running outside of a Worker (for example, in Node.js). The provider makes HTTP requests to the Flagship evaluation endpoint. Generate an [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) from your Cloudflare account with Flagship Evaluate permission.
+Use an app ID, account ID, and an API token when running outside of a Worker (for example, in Node.js). Generate an [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) from your Cloudflare account with Flagship Evaluate permission.
 
 * [  JavaScript ](#tab-panel-8623)
 * [  TypeScript ](#tab-panel-8624)
@@ -157,7 +157,7 @@ Use an app ID, account ID, and an API token when running outside of a Worker (fo
 JavaScript
 
 ```
-import { OpenFeature } from "@openfeature/server-sdk";import { FlagshipServerProvider } from "@cloudflare/flagship";
+import { OpenFeature } from "@openfeature/server-sdk";import { FlagshipServerProvider } from "@cloudflare/flagship/server";
 await OpenFeature.setProviderAndWait(  new FlagshipServerProvider({    appId: "<APP_ID>",    accountId: "<ACCOUNT_ID>",    authToken: "<API_TOKEN>",  }),);
 const client = OpenFeature.getClient();
 const showNewCheckout = await client.getBooleanValue("new-checkout", false, {  targetingKey: "user-42",});
@@ -166,7 +166,7 @@ const showNewCheckout = await client.getBooleanValue("new-checkout", false, {  t
 TypeScript
 
 ```
-import { OpenFeature } from "@openfeature/server-sdk";import { FlagshipServerProvider } from "@cloudflare/flagship";
+import { OpenFeature } from "@openfeature/server-sdk";import { FlagshipServerProvider } from "@cloudflare/flagship/server";
 await OpenFeature.setProviderAndWait(  new FlagshipServerProvider({    appId: "<APP_ID>",    accountId: "<ACCOUNT_ID>",    authToken: "<API_TOKEN>",  }),);
 const client = OpenFeature.getClient();
 const showNewCheckout = await client.getBooleanValue("new-checkout", false, {  targetingKey: "user-42",});
@@ -179,8 +179,9 @@ Refer to the [SDK documentation](https://developers.cloudflare.com/flagship/sdk/
 * Learn about [targeting rules](https://developers.cloudflare.com/flagship/targeting/) to serve different values based on user attributes.
 * Explore the full [binding API reference](https://developers.cloudflare.com/flagship/binding/) for all evaluation methods.
 * Read about [percentage rollouts](https://developers.cloudflare.com/flagship/targeting/percentage-rollouts/) for gradual feature releases.
+* Refer to the [Flagship API reference](https://developers.cloudflare.com/flagship/reference/api-reference/) to manage Flagship programmatically.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/get-started/#page","headline":"Get started · Cloudflare Flagship docs","description":"Create your first Flagship feature flag and evaluate it inside a Cloudflare Worker using the binding API.","url":"https://developers.cloudflare.com/flagship/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/get-started/#page","headline":"Get started · Cloudflare Flagship docs","description":"Create your first Flagship feature flag and evaluate it inside a Cloudflare Worker using the binding API.","url":"https://developers.cloudflare.com/flagship/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/flagship/","name":"Flagship"}},{"@type":"ListItem","position":3,"item":{"@id":"/flagship/get-started/","name":"Get started"}}]}
 ```

@@ -12,13 +12,15 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Methods
 
-The Flagship binding provides the following methods for evaluating feature flags. All methods are asynchronous and return a `Promise`. Evaluation methods never throw — they always return a value, falling back to the `defaultValue` you provide on errors.
+The Flagship binding provides the following methods for evaluating feature flags. All methods are asynchronous and return a `Promise`. For known evaluation failures, typed methods return the `defaultValue` you provide.
 
 Refer to the [types reference](https://developers.cloudflare.com/flagship/binding/types/) for the definitions of `FlagshipEvaluationContext` and `FlagshipEvaluationDetails`.
 
 ## `get()`
 
 Returns the raw flag value without type checking. Use this method when the flag type is not known at compile time.
+
+If you provide `defaultValue`, `get()` returns that value for known evaluation failures, such as a missing flag. If you omit `defaultValue`, known evaluation failures are thrown.
 
 TypeScript
 
@@ -218,11 +220,11 @@ const details = await env.FLAGS.getObjectDetails<ThemeConfig>(  "theme-config", 
 
 ## Error handling
 
-Evaluation methods never throw. They always return a value. When an error occurs, the method returns the `defaultValue` you provided. Use the `*Details` variants to inspect what went wrong.
+Typed evaluation methods return the `defaultValue` you provided for known evaluation failures, such as a missing flag or type mismatch. Unexpected runtime failures can still throw. Use the `*Details` methods to inspect known evaluation failures.
 
 ### Type mismatch
 
-If you call a typed method on a flag with a different type (for example, `getBooleanValue` on a string flag), the method returns the default value. The `*Details` variants set `errorCode` to `"TYPE_MISMATCH"`.
+If you call a typed method on a flag with a different type (for example, `getBooleanValue` on a string flag), the method returns the default value. The `*Details` methods set `errorCode` to `"TYPE_MISMATCH"`.
 
 TypeScript
 
@@ -232,12 +234,12 @@ TypeScript
 
 ### Evaluation failure
 
-If evaluation fails for any other reason (for example, a network error or missing flag), the method returns the default value. The `*Details` variants set `errorCode` to `"GENERAL"`.
+If evaluation fails for another reason, the method returns the default value. The `*Details` methods include an `errorCode` such as `"FLAG_NOT_FOUND"`, `"INVALID_CONTEXT"`, `"PARSE_ERROR"`, or `"GENERAL"`.
 
 TypeScript
 
 ```
-const details = await env.FLAGS.getStringDetails(  "nonexistent-flag",  "fallback",);console.log(details.value); // "fallback"console.log(details.errorCode); // "GENERAL"
+const details = await env.FLAGS.getStringDetails(  "nonexistent-flag",  "fallback",);console.log(details.value); // "fallback"console.log(details.errorCode); // "FLAG_NOT_FOUND"
 ```
 
 ## Parameters reference
@@ -251,6 +253,6 @@ The following table summarizes the parameters shared across all evaluation metho
 | context      | FlagshipEvaluationContext | No               | Key-value attributes for targeting rules (for example, { userId: "user-42", country: "US" }). |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/binding/methods/#page","headline":"Methods · Cloudflare Flagship docs","description":"Reference for all Flagship binding evaluation methods, including typed value and details methods for booleans, strings, numbers, and objects.","url":"https://developers.cloudflare.com/flagship/binding/methods/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/binding/methods/#page","headline":"Methods · Cloudflare Flagship docs","description":"Reference for all Flagship binding evaluation methods, including typed value and details methods for booleans, strings, numbers, and objects.","url":"https://developers.cloudflare.com/flagship/binding/methods/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/flagship/","name":"Flagship"}},{"@type":"ListItem","position":3,"item":{"@id":"/flagship/binding/","name":"Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/flagship/binding/methods/","name":"Methods"}}]}
 ```

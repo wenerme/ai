@@ -90,7 +90,11 @@ export default {  async fetch(request: Request, env: Env): Promise<Response> {  
 
 Refer to the [binding API reference](https://developers.cloudflare.com/flagship/binding/) for the full list of methods.
 
+## Local development
+
+Flagship bindings work with `wrangler dev`. Local Workers use the live Flagship app configured by `app_id`. There is no local flag store. Make sure your local Wrangler configuration points to a valid Flagship app before testing evaluations.
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/configuration/#page","headline":"Configuration · Cloudflare Flagship docs","description":"Add and configure a Flagship binding in your Wrangler configuration file to evaluate feature flags in a Worker.","url":"https://developers.cloudflare.com/flagship/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/configuration/#page","headline":"Configuration · Cloudflare Flagship docs","description":"Add and configure a Flagship binding in your Wrangler configuration file to evaluate feature flags in a Worker.","url":"https://developers.cloudflare.com/flagship/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/flagship/","name":"Flagship"}},{"@type":"ListItem","position":3,"item":{"@id":"/flagship/configuration/","name":"Configuration"}}]}
 ```

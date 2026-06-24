@@ -1,5 +1,5 @@
 ---
-title: Client provider
+title: TypeScript Client SDK
 description: Set up the FlagshipClientProvider to evaluate feature flags synchronously in browser applications using the OpenFeature web SDK.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
@@ -10,7 +10,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop)
 
-# Client provider
+# TypeScript Client SDK
 
 The `FlagshipClientProvider` implements the OpenFeature web provider interface for browser applications. It pre-fetches a declared set of flag values on initialization and resolves evaluations synchronously from an in-memory cache.
 
@@ -18,7 +18,7 @@ This makes the provider suitable for client-side rendering where synchronous acc
 
 Warning
 
-We do not recommend using the client provider in public-facing apps right now. It requires a Cloudflare API token, which would be exposed in client-side code and visible to anyone who inspects your application. We are working on a safer solution for client-side flag evaluation — in the meantime, use the [Worker binding](https://developers.cloudflare.com/flagship/binding/) or the [server provider](https://developers.cloudflare.com/flagship/sdk/server-provider/).
+We do not recommend using the client provider in public-facing apps right now. It requires a Cloudflare API token, which would be exposed in client-side code and visible to anyone who inspects your application. We are working on a safer solution for client-side flag evaluation — in the meantime, use the [Worker binding](https://developers.cloudflare.com/flagship/binding/) or the [TypeScript server SDK](https://developers.cloudflare.com/flagship/sdk/server-provider/).
 
 ## prefetchFlags
 
@@ -40,7 +40,7 @@ The following example initializes the provider with a set of pre-fetched flags a
 JavaScript
 
 ```
-import { OpenFeature } from "@openfeature/web-sdk";import { FlagshipClientProvider } from "@cloudflare/flagship";
+import { OpenFeature } from "@openfeature/web-sdk";import { FlagshipClientProvider } from "@cloudflare/flagship/web";
 await OpenFeature.setProviderAndWait(  new FlagshipClientProvider({    appId: "<APP_ID>",    accountId: "<ACCOUNT_ID>",    authToken: "<API_TOKEN>",    prefetchFlags: ["promo-banner", "dark-mode", "max-uploads"],  }),);
 // Set evaluation context globally. The provider re-fetches all prefetchFlags// whenever the context changes.await OpenFeature.setContext({ targetingKey: "user-42", plan: "enterprise" });
 const client = OpenFeature.getClient();
@@ -51,7 +51,7 @@ if (showBanner) {  document.getElementById("banner").style.display = "block";}
 TypeScript
 
 ```
-import { OpenFeature } from "@openfeature/web-sdk";import { FlagshipClientProvider } from "@cloudflare/flagship";
+import { OpenFeature } from "@openfeature/web-sdk";import { FlagshipClientProvider } from "@cloudflare/flagship/web";
 await OpenFeature.setProviderAndWait(  new FlagshipClientProvider({    appId: "<APP_ID>",    accountId: "<ACCOUNT_ID>",    authToken: "<API_TOKEN>",    prefetchFlags: ["promo-banner", "dark-mode", "max-uploads"],  }),);
 // Set evaluation context globally. The provider re-fetches all prefetchFlags// whenever the context changes.await OpenFeature.setContext({ targetingKey: "user-42", plan: "enterprise" });
 const client = OpenFeature.getClient();
@@ -61,16 +61,20 @@ if (showBanner) {  document.getElementById("banner").style.display = "block";}
 
 Note
 
-`getBooleanValue` on the client provider is synchronous and does not require `await`, unlike the [server provider](https://developers.cloudflare.com/flagship/sdk/server-provider/).
+`getBooleanValue` on the client provider is synchronous and does not require `await`, unlike the [TypeScript server SDK](https://developers.cloudflare.com/flagship/sdk/server-provider/).
 
 ## Configuration options
 
-| Option        | Type       | Required | Description                                                                                                                            |
-| ------------- | ---------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| appId         | string     | Yes      | The Flagship app ID from the Cloudflare dashboard.                                                                                     |
-| accountId     | string     | Yes      | Your Cloudflare account ID.                                                                                                            |
-| authToken     | string     | Yes      | A Cloudflare [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with Flagship read permissions. |
-| prefetchFlags | string\[\] | Yes      | Flag keys to fetch on initialization and on every context change. Flags not in this list return FLAG\_NOT\_FOUND at evaluation time.   |
+| Option        | Type        | Required | Description                                                                                                                            |
+| ------------- | ----------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| appId         | string      | Yes      | The Flagship app ID from the Cloudflare dashboard.                                                                                     |
+| accountId     | string      | Yes      | Your Cloudflare account ID.                                                                                                            |
+| authToken     | string      | Yes      | A Cloudflare [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with Flagship read permissions. |
+| fetchOptions  | RequestInit | No       | Custom fetch options applied to HTTP requests.                                                                                         |
+| timeout       | number      | No       | Request timeout in milliseconds. Defaults to 5000.                                                                                     |
+| retries       | number      | No       | Retry attempts on transient errors. Defaults to 1 and is capped at 10.                                                                 |
+| retryDelay    | number      | No       | Delay between retries in milliseconds. Defaults to 1000 and is capped at 30000.                                                        |
+| prefetchFlags | string\[\]  | Yes      | Flag keys to fetch on initialization and on every context change. Flags not in this list return FLAG\_NOT\_FOUND at evaluation time.   |
 
 ## When to use the client provider
 
@@ -79,6 +83,6 @@ Use the client provider in browser applications, single-page apps, or any client
 Evaluations are synchronous, so they do not block rendering. Flag values are fetched once during initialization and re-fetched whenever the evaluation context changes. To force a refresh, update the context via `OpenFeature.setContext(...)`.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/sdk/client-provider/#page","headline":"Client provider · Cloudflare Flagship docs","description":"Set up the FlagshipClientProvider to evaluate feature flags synchronously in browser applications using the OpenFeature web SDK.","url":"https://developers.cloudflare.com/flagship/sdk/client-provider/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/flagship/","name":"Flagship"}},{"@type":"ListItem","position":3,"item":{"@id":"/flagship/sdk/","name":"OpenFeature SDK"}},{"@type":"ListItem","position":4,"item":{"@id":"/flagship/sdk/client-provider/","name":"Client provider"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/sdk/client-provider/#page","headline":"TypeScript Client SDK · Cloudflare Flagship docs","description":"Set up the FlagshipClientProvider to evaluate feature flags synchronously in browser applications using the OpenFeature web SDK.","url":"https://developers.cloudflare.com/flagship/sdk/client-provider/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/flagship/","name":"Flagship"}},{"@type":"ListItem","position":3,"item":{"@id":"/flagship/sdk/","name":"OpenFeature SDKs"}},{"@type":"ListItem","position":4,"item":{"@id":"/flagship/sdk/client-provider/","name":"TypeScript Client SDK"}}]}
 ```

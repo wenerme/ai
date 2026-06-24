@@ -1,6 +1,6 @@
 ---
-title: OpenFeature SDK
-description: Use the @cloudflare/flagship OpenFeature SDK to evaluate Flagship feature flags from Workers, Node.js, or the browser.
+title: OpenFeature SDKs
+description: Use the official Flagship OpenFeature SDKs to evaluate feature flags from Workers, Node.js, browsers, and Python applications.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -10,24 +10,34 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop)
 
-# OpenFeature SDK
+# OpenFeature SDKs
 
-Evaluate Flagship feature flags from any JavaScript runtime using OpenFeature.
+Evaluate Flagship feature flags using OpenFeature.
 
 [OpenFeature ↗](https://openfeature.dev/) is the CNCF standard for feature flag interfaces. It provides a vendor-neutral API so you can switch between flag providers without changing evaluation code.
 
-The [@cloudflare/flagship ↗](https://www.npmjs.com/package/@cloudflare/flagship) package is an OpenFeature-compatible SDK for evaluating Flagship feature flags. The source code is available on [GitHub ↗](https://github.com/cloudflare/flagship).
+Flagship provides official OpenFeature-compatible SDKs for TypeScript and Python. The source code is available on [GitHub ↗](https://github.com/cloudflare/flagship).
 
-The SDK includes two providers:
+For Cloudflare Workers, use the Workers binding when possible. Use an SDK when you need OpenFeature compatibility, are running outside Workers, or need browser-side flag evaluation.
 
-* **FlagshipServerProvider** — For server-side runtimes such as [Cloudflare Workers](https://developers.cloudflare.com/workers/), Node.js, and other server-side JavaScript environments. Each evaluation call makes an asynchronous request to the Flagship evaluation endpoint.
-* **FlagshipClientProvider** — For browser applications. Pre-fetches all flag values on initialization and evaluates synchronously from an in-memory cache.
+| SDK        | Package                                                                      | Runtime                    | Evaluation modes                              |
+| ---------- | ---------------------------------------------------------------------------- | -------------------------- | --------------------------------------------- |
+| TypeScript | [@cloudflare/flagship ↗](https://www.npmjs.com/package/@cloudflare/flagship) | Workers, Node.js, browsers | Workers binding, HTTP, browser prefetch cache |
+| Python     | [cloudflare-flagship ↗](https://pypi.org/project/cloudflare-flagship/)       | Python server applications | HTTP                                          |
+
+## SDKs
+
+Flagship SDKs are organized by language. The TypeScript SDK has separate setup guides for server-side and browser usage because they use different OpenFeature packages and runtime behavior.
+
+* [TypeScript Server SDK](https://developers.cloudflare.com/flagship/sdk/server-provider/) — For Workers, Node.js, and other server-side JavaScript runtimes.
+* [TypeScript Client SDK](https://developers.cloudflare.com/flagship/sdk/client-provider/) — For browser applications that need synchronous OpenFeature web SDK evaluation.
+* [Python SDK](https://developers.cloudflare.com/flagship/sdk/python/) — For Python server applications.
 
 Note
 
 If you are running inside a Cloudflare Worker, the [binding](https://developers.cloudflare.com/flagship/binding/) is the recommended approach because it avoids HTTP overhead. You can also [pass the binding to the OpenFeature SDK](https://developers.cloudflare.com/flagship/sdk/server-provider/) to get the best of both. Use the SDK without a binding when running in non-Worker runtimes like Node.js or the browser.
 
-## Installation
+## TypeScript installation
 
 For server-side usage:
 
@@ -69,12 +79,31 @@ pnpm add @cloudflare/flagship @openfeature/web-sdk
 bun add @cloudflare/flagship @openfeature/web-sdk
 ```
 
+## Python installation
+
+Install the Python SDK with `uv` or `pip`:
+
+Terminal window
+
+```
+uv add cloudflare-flagship
+```
+
+Terminal window
+
+```
+pip install cloudflare-flagship
+```
+
+The Python SDK provides `FlagshipServerProvider` for server-side applications. It supports HTTP evaluation, sync and async APIs, all OpenFeature flag types, retries, timeouts, and optional response caching.
+
 ## Next steps
 
-* Set up the [server provider](https://developers.cloudflare.com/flagship/sdk/server-provider/) for Workers, Node.js, or other server-side runtimes.
-* Set up the [client provider](https://developers.cloudflare.com/flagship/sdk/client-provider/) for browser applications.
+* Set up the [TypeScript Server SDK](https://developers.cloudflare.com/flagship/sdk/server-provider/) for Workers, Node.js, or other server-side runtimes.
+* Set up the [TypeScript Client SDK](https://developers.cloudflare.com/flagship/sdk/client-provider/) for browser applications.
+* Set up the [Python SDK](https://developers.cloudflare.com/flagship/sdk/python/) for Python server applications.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/flagship/sdk/#page","headline":"OpenFeature SDK · Cloudflare Flagship docs","description":"Use the @cloudflare/flagship OpenFeature SDK to evaluate Flagship feature flags from Workers, Node.js, or the browser.","url":"https://developers.cloudflare.com/flagship/sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/flagship/","name":"Flagship"}},{"@type":"ListItem","position":3,"item":{"@id":"/flagship/sdk/","name":"OpenFeature SDK"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/flagship/sdk/#page","headline":"OpenFeature SDKs · Cloudflare Flagship docs","description":"Use the official Flagship OpenFeature SDKs to evaluate feature flags from Workers, Node.js, browsers, and Python applications.","url":"https://developers.cloudflare.com/flagship/sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/flagship/","name":"Flagship"}},{"@type":"ListItem","position":3,"item":{"@id":"/flagship/sdk/","name":"OpenFeature SDKs"}}]}
 ```

@@ -1,6 +1,6 @@
 ---
 title: Concepts
-description: Understand Flagship core concepts including apps, flags, variations, targeting rules, evaluation context, and flag propagation.
+description: Understand Flagship core concepts including apps, flags, variants, targeting rules, evaluation context, and flag propagation.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 # Concepts
 
-Flagship organizes feature flags into apps. You define flags with variations and targeting rules, then evaluate them within Cloudflare's global network.
+Flagship organizes feature flags into apps. You define flags with variants and targeting rules, then evaluate them within Cloudflare's global network.
 
 ## Overview
 
 Flagship feature flags go through three stages from creation to evaluation:
 
-1. **Configure** — Create flags and targeting rules in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) or through the API.
+1. **Configure** — Create flags and targeting rules in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) or through the [API](https://developers.cloudflare.com/api/resources/flagship).
 2. **Propagate** — Flagship automatically distributes your flag configuration across Cloudflare's global network within seconds.
 3. **Evaluate** — Your Worker (or SDK) evaluates flags locally using the propagated configuration. There is no round-trip to a central server.
 
@@ -32,36 +32,36 @@ An app typically maps to a single project, service, or product surface. Each Clo
 
 ## Flags
 
-A flag is a named feature toggle. Each flag has a key, a set of [variations](#variations), [targeting rules](#targeting-rules), and an enabled/disabled state.
+A flag is a named feature toggle. Each flag has a key, a set of [variants](#variants), [targeting rules](#targeting-rules), and an enabled/disabled state.
 
 Flag keys must be unique within an app. Keys can contain letters, numbers, hyphens, and underscores.
 
-When a flag is disabled, it always returns the default variation regardless of any targeting rules.
+When a flag is disabled, it always returns the default variant regardless of any targeting rules. Choose a default variant that is safe for your application if Flagship cannot evaluate the flag.
 
-## Variations
+## Variants
 
-Variations are the possible values a flag can return. Each flag must have at least one variation, and one variation is designated as the default.
+Variants are the possible values a flag can return. Each flag must have at least one variant, and one variant is designated as the default.
 
-Flagship supports four variation types:
+Flagship supports four variant types:
 
-| Type        | Example                                                               |
-| ----------- | --------------------------------------------------------------------- |
-| Boolean     | on: true, off: false                                                  |
-| String      | v1: "old-checkout", v2: "new-checkout"                                |
-| Number      | low: 100, high: 1000                                                  |
-| JSON object | premium: { "tier": "premium", "features": \["analytics", "export"\] } |
+| Type    | Example                                                               |
+| ------- | --------------------------------------------------------------------- |
+| Boolean | on: true, off: false                                                  |
+| String  | v1: "old-checkout", v2: "new-checkout"                                |
+| Number  | low: 100, high: 1000                                                  |
+| JSON    | premium: { "tier": "premium", "features": \["analytics", "export"\] } |
 
-Use boolean flags for simple on/off toggles. Use string, number, or JSON object flags when you need to deliver configuration values or structured data.
+Use boolean flags for simple on/off toggles. Use string, number, or JSON flags when you need to deliver configuration values or structured data. JSON variants can contain objects or arrays.
 
 ## Targeting rules
 
-Targeting rules control which variation a flag returns for a given request. Rules are evaluated in sequential order, and the first matching rule wins. If no rule matches, the default variation is returned.
+Targeting rules control which variant a flag returns for a given request. Rules are evaluated in sequential order, and the first matching rule wins. If no rule matches, the default variant is returned.
 
 Each rule contains:
 
 * **Conditions** that compare an attribute from the [evaluation context](#evaluation-context) against a value using an operator.
-* An optional **percentage rollout** that splits traffic across variations.
-* A **variation** to serve when the rule matches.
+* An optional **percentage rollout** that splits traffic across variants.
+* A **variant** to serve when the rule matches.
 
 Conditions within a rule can be grouped with `AND`/`OR` operators.
 
@@ -83,11 +83,13 @@ When using the [OpenFeature SDK](https://developers.cloudflare.com/flagship/sdk/
 
 Flagship uses context attributes to match targeting rules and to determine percentage rollout bucketing. A consistent context (for example, the same `userId`) produces the same rollout result on every evaluation.
 
+Avoid sending sensitive data in evaluation context. Only include attributes needed by targeting rules or rollout bucketing.
+
 ## Flag propagation
 
-During the brief propagation window after a flag change, some regions may still serve the previous flag value. After propagation completes, all subsequent evaluations return the updated value.
+After you change a flag, it can take up to 30 seconds for the updated value to reflect globally. During this propagation window, some evaluations may still return the previous flag value.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/concepts/#page","headline":"Concepts · Cloudflare Flagship docs","description":"Understand Flagship core concepts including apps, flags, variations, targeting rules, evaluation context, and flag propagation.","url":"https://developers.cloudflare.com/flagship/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/concepts/#page","headline":"Concepts · Cloudflare Flagship docs","description":"Understand Flagship core concepts including apps, flags, variants, targeting rules, evaluation context, and flag propagation.","url":"https://developers.cloudflare.com/flagship/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/flagship/","name":"Flagship"}},{"@type":"ListItem","position":3,"item":{"@id":"/flagship/concepts/","name":"Concepts"}}]}
 ```

@@ -49,7 +49,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**
 For example:
 ```
-Check my Workers deployment logs for errors and suggest fixes.
+Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
 ```
 
 1. **Download Codex**
