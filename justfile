@@ -84,6 +84,10 @@ update-mastra-docs:
 update-llamafactory-docs:
     bun scripts/sync-llamafactory-docs.ts
 
+# Sync NATS docs from local nats-io/nats.docs clone
+update-nats-docs:
+    bun scripts/sync-nats-docs.ts
+
 # Sync OpenObserve docs from local openobserve/openobserve-docs clone
 update-openobserve-docs:
     bun scripts/sync-openobserve-docs.ts
@@ -186,6 +190,7 @@ update:
     -just update-swift-ms-docs
     -just update-mastra-docs
     -just update-llamafactory-docs
+    -just update-nats-docs
     -just update-openobserve-docs
     -just update-slopus-happy-docs
     -just update-ghostty-docs

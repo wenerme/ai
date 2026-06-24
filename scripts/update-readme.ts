@@ -1,4 +1,4 @@
-import { readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { parse as parseYaml } from "yaml";
 
@@ -24,6 +24,8 @@ interface SkillMeta {
   name: string;
   description: string;
   source?: string; // markdown link or empty
+  files: number;
+  sizeBytes: number;
 }
 
 // Load external skills map (rsync-based): name -> repo
@@ -60,6 +62,27 @@ function truncate(s: string, max: number): string {
   return s.slice(0, cut > 0 ? cut : max) + "...";
 }
 
+function collectSkillStats(skillDir: string): { files: number; sizeBytes: number } {
+  const root = join(skillsDir, skillDir);
+  let files = 0;
+  let sizeBytes = 0;
+
+  function walk(dir: string) {
+    for (const entry of readdirSync(dir, { withFileTypes: true })) {
+      const path = join(dir, entry.name);
+      if (entry.isDirectory()) {
+        walk(path);
+      } else if (entry.isFile()) {
+        files++;
+        sizeBytes += statSync(path).size;
+      }
+    }
+  }
+
+  walk(root);
+  return { files, sizeBytes };
+}
+
 function parseSkillMeta(skillDir: string): SkillMeta | undefined {
   const skillMd = join(skillsDir, skillDir, "SKILL.md");
   let content: string;
@@ -73,10 +96,12 @@ function parseSkillMeta(skillDir: string): SkillMeta | undefined {
   if (!match) return undefined;
 
   const meta = parseYaml(match[1]);
+  const stats = collectSkillStats(skillDir);
   return {
     name: meta.name,
     description: String(meta.description || "").trim(),
     source: resolveSource(skillDir),
+    ...stats,
   };
 }
 
@@ -89,6 +114,22 @@ const skills = readdirSync(skillsDir, { withFileTypes: true })
 
 // Summary line for description in table
 const shortDesc = (s: SkillMeta) => truncate(s.description.split("\n")[0].trim(), 120);
+
+function formatBytes(bytes: number): string {
+  const units = ["B", "KiB", "MiB", "GiB"];
+  let value = bytes;
+  let unit = 0;
+  while (value >= 1024 && unit < units.length - 1) {
+    value /= 1024;
+    unit++;
+  }
+  if (unit === 0) return `${bytes} B`;
+  const digits = value >= 10 ? 0 : 1;
+  return `${value.toFixed(digits)} ${units[unit]}`;
+}
+
+const totalFiles = skills.reduce((sum, skill) => sum + skill.files, 0);
+const totalSizeBytes = skills.reduce((sum, skill) => sum + skill.sizeBytes, 0);
 
 // Generate markdown
 const lines = [
@@ -114,6 +155,14 @@ const lines = [
       `</details>`,
     ].join("\n"),
   ),
+  "## Stats",
+  "",
+  `> ${skills.length} skills, ${totalFiles} files, ${formatBytes(totalSizeBytes)} total`,
+  "",
+  "| Skill | Files | Size |",
+  "|-------|-------|------|",
+  ...skills.map((s) => `| \`${s.name}\` | ${s.files} | ${formatBytes(s.sizeBytes)} |`),
+  "",
 ];
 
 const block = lines.join("\n");

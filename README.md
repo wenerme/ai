@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 89 skills available
+> 90 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -32,7 +32,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `brainstorming` | You MUST use this before any creative work - creating features, building components, adding functionality, or modifying... | [obra/superpowers](https://github.com/obra/superpowers) |
 | `bun-docs` | Use when working with the Bun JavaScript runtime, package manager, bundler, or test runner: HTTP server, file I/O,... | [oven-sh/bun](https://github.com/oven-sh/bun) |
 | `bun-ffi-interop-pattern` | Use when calling native libraries via bun:ffi, loading shared libraries with dlopen, or working with FFI pointers and C... |  |
-| `caddy-docs` | USE THIS SKILL WHEN working with the Caddy web server: Caddyfile configuration, reverse_proxy, automatic HTTPS, TLS,... |  |
+| `caddy-docs` | USE THIS SKILL WHEN working with the Caddy web server: Caddyfile configuration, reverse_proxy, automatic HTTPS, TLS,... | [caddyserver.com](https://caddyserver.com/docs) |
 | `chrome-devtools` | Uses Chrome DevTools via MCP for efficient debugging, troubleshooting and browser automation. Use when debugging web... | [ChromeDevTools/chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp) |
 | `claude-code-docs` | Use when answering questions about Claude Code CLI features, configuration, hooks, skills, MCP, permissions, settings,... | [anthropics/claude-code](https://github.com/anthropics/claude-code) |
 | `clickhouse-docs` | Use when working with ClickHouse: MergeTree engine family, SQL syntax, data types, table functions, materialized views,... | [ClickHouse/clickhouse-docs](https://github.com/ClickHouse/clickhouse-docs) |
@@ -68,6 +68,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `mikro-orm-v6-to-v7` | Use when upgrading @mikro-orm packages from v6 to v7, fixing v7 runtime/type errors (decorator SyntaxError,... |  |
 | `mikroorm-docs` | MikroORM v7 documentation — TypeScript ORM for SQL and MongoDB with Data Mapper, Unit of Work, and Identity Map... | [mikro-orm/mikro-orm](https://github.com/mikro-orm/mikro-orm) |
 | `model-reference` | AI model quick reference: specs, benchmarks, recommended parameters, pricing. Use when looking up model info, comparing... | [docs.anthropic.com](https://docs.anthropic.com) |
+| `nats-docs` | Use when working with NATS: core messaging, subjects, request-reply, queue groups, JetStream streams/consumers/KV/object... | [nats-io/nats.docs](https://github.com/nats-io/nats.docs) |
 | `openai-api` | Use when working with the OpenAI REST API: Responses API, Chat Completions, audio transcription/speech, embeddings,... | [platform.openai.com](https://platform.openai.com/docs) |
 | `openai-docs` | Use when answering questions about OpenAI platform features, guides, and concepts: Responses API usage, agents, function... | [platform.openai.com](https://platform.openai.com/docs) |
 | `openai-sdk-python` | Use when writing Python code with the OpenAI SDK (openai package): creating responses, chat completions, audio... | [openai/openai-python](https://github.com/openai/openai-python) |
@@ -83,7 +84,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `requesting-code-review` | Use when completing tasks, implementing major features, or before merging to verify work meets requirements |  |
 | `shadcn` | Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI. Provides... | [shadcn-ui/ui](https://github.com/shadcn-ui/ui) |
 | `skill-writer` | Use when creating new skills, editing existing skills, optimizing skill descriptions and structure, splitting large... |  |
-| `sling-cli` | Use when moving data between databases, files, or APIs with the sling CLI; configuring connections, writing replication... |  |
+| `sling-cli` | Use when moving data between databases, files, or APIs with the sling CLI; configuring connections, writing replication... | [docs.slingdata.io](https://docs.slingdata.io) |
 | `slopus-happy-docs` | Happy Coder (happy-coder) documentation — mobile and web client for Claude Code & Codex with end-to-end encryption.... | [slopus/happy](https://github.com/slopus/happy) |
 | `swift-ms-docs` | USE THIS SKILL WHEN working with ms-swift (ModelScope Swift): fine-tuning LLMs/VLMs, LoRA/QLoRA/DoRA training, GRPO... | [modelscope/swift](https://github.com/modelscope/swift) |
 | `tea-cli` | tea CLI documentation — Gitea's official command-line tool. Covers login/auth, issues, pull requests (checkout, merge,... | [gitea.com](https://gitea.com/gitea/tea) |
@@ -645,6 +646,16 @@ AI model quick reference: specs, benchmarks, recommended parameters, pricing. Us
 
 </details>
 <details>
+<summary><code>nats-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill nats-docs
+```
+
+Use when working with NATS: core messaging, subjects, request-reply, queue groups, JetStream streams/consumers/KV/object store, nats CLI, server config, clustering, gateways, leaf nodes, accounts/JWT/auth/TLS, monitoring, Kubernetes/Docker, protocol, or troubleshooting NATS deployments.
+
+</details>
+<details>
 <summary><code>openai-api</code></summary>
 
 ```bash
@@ -994,6 +1005,103 @@ npx skills add wenerme/ai --skill zustand-mutative-pattern
 Use when implementing React state management with Zustand, including context-scoped stores, mutative updates, or actions namespace patterns
 
 </details>
+## Stats
+
+> 90 skills, 24656 files, 270 MiB total
+
+| Skill | Files | Size |
+|-------|-------|------|
+| `agent-browser` | 1 | 3.2 KiB |
+| `ai-sdk` | 5 | 24 KiB |
+| `alpine-aports-docs` | 7 | 41 KiB |
+| `anthropic-agent-sdk` | 30 | 614 KiB |
+| `anthropic-api` | 337 | 15 MiB |
+| `anthropic-docs` | 186 | 5.0 MiB |
+| `anthropic-sdk-csharp` | 147 | 8.4 MiB |
+| `anthropic-sdk-go` | 147 | 11 MiB |
+| `anthropic-sdk-java` | 147 | 8.7 MiB |
+| `anthropic-sdk-python` | 147 | 8.6 MiB |
+| `anthropic-sdk-ruby` | 147 | 8.2 MiB |
+| `anthropic-sdk-typescript` | 147 | 8.3 MiB |
+| `argocd-cli-guide` | 2 | 7.5 KiB |
+| `biome-docs` | 603 | 7.5 MiB |
+| `biome-lint` | 4 | 13 KiB |
+| `brainstorming` | 1 | 4.6 KiB |
+| `bun-docs` | 318 | 1.6 MiB |
+| `bun-ffi-interop-pattern` | 1 | 4.8 KiB |
+| `caddy-docs` | 82 | 667 KiB |
+| `chrome-devtools` | 1 | 3.6 KiB |
+| `claude-code-docs` | 110 | 3.7 MiB |
+| `clickhouse-docs` | 1086 | 9.9 MiB |
+| `cloudflare-docs` | 6617 | 49 MiB |
+| `codex-docs` | 164 | 1.4 MiB |
+| `comfyui-docs` | 4612 | 14 MiB |
+| `daisyui-v5` | 3 | 60 KiB |
+| `doris-docs` | 1571 | 9.4 MiB |
+| `evalscope-cli` | 6 | 31 KiB |
+| `evalscope-docs` | 274 | 1.7 MiB |
+| `find-skills` | 1 | 4.5 KiB |
+| `gemini-cli-docs` | 90 | 802 KiB |
+| `ghostty-docs` | 103 | 554 KiB |
+| `gitea-docs` | 101 | 686 KiB |
+| `glab-cli` | 5 | 21 KiB |
+| `glab-docs` | 288 | 448 KiB |
+| `google-ai-api` | 13 | 682 KiB |
+| `google-ai-docs` | 87 | 1.9 MiB |
+| `grafana-docs` | 623 | 5.9 MiB |
+| `humanizer` | 1 | 15 KiB |
+| `image-prompt-guide` | 9 | 324 KiB |
+| `immich-docs` | 76 | 481 KiB |
+| `justfile-docs` | 95 | 157 KiB |
+| `k3s-docs` | 58 | 1.8 MiB |
+| `lark-node-sdk` | 1 | 5.8 KiB |
+| `litellm-docs` | 3 | 18 KiB |
+| `llamacpp-docs` | 46 | 415 KiB |
+| `llamafactory-docs` | 20 | 152 KiB |
+| `luanti-docs` | 176 | 1.7 MiB |
+| `mastra` | 10 | 51 KiB |
+| `mastra-docs` | 754 | 5.9 MiB |
+| `mihomo-docs` | 150 | 358 KiB |
+| `mikro-orm-v6-to-v7` | 5 | 37 KiB |
+| `mikroorm-docs` | 84 | 1.3 MiB |
+| `model-reference` | 17 | 64 KiB |
+| `nats-docs` | 200 | 1.5 MiB |
+| `openai-api` | 508 | 19 MiB |
+| `openai-docs` | 156 | 2.2 MiB |
+| `openai-sdk-python` | 508 | 15 MiB |
+| `openai-sdk-typescript` | 508 | 15 MiB |
+| `opencode-docs` | 53 | 453 KiB |
+| `openobserve-docs` | 442 | 2.3 MiB |
+| `openrouter-docs` | 496 | 6.4 MiB |
+| `orpc-docs` | 73 | 286 KiB |
+| `orpc-implementation-sops` | 2 | 7.4 KiB |
+| `papermc-docs` | 192 | 877 KiB |
+| `peekaboo` | 1 | 15 KiB |
+| `react-resizable-panels-v3-to-v4` | 1 | 9.2 KiB |
+| `requesting-code-review` | 2 | 7.4 KiB |
+| `shadcn` | 14 | 82 KiB |
+| `skill-writer` | 4 | 24 KiB |
+| `sling-cli` | 3 | 14 KiB |
+| `slopus-happy-docs` | 75 | 716 KiB |
+| `swift-ms-docs` | 67 | 1.1 MiB |
+| `tea-cli` | 26 | 81 KiB |
+| `tencent-cls` | 4 | 12 KiB |
+| `threejs-docs` | 789 | 1.9 MiB |
+| `threejs-guide` | 11 | 134 KiB |
+| `tmux-session-manager` | 1 | 1.7 KiB |
+| `transformers-docs` | 164 | 1.2 MiB |
+| `ui-ux-pro-max` | 36 | 1.7 MiB |
+| `vite-docs` | 58 | 538 KiB |
+| `vitest-docs` | 220 | 1.3 MiB |
+| `vllm-docs` | 170 | 1.3 MiB |
+| `wails-docs` | 56 | 314 KiB |
+| `wode-db-schema-pattern` | 2 | 8.8 KiB |
+| `wode-emittery-pattern` | 2 | 9.8 KiB |
+| `writing-skills` | 7 | 105 KiB |
+| `zellij-docs` | 83 | 458 KiB |
+| `zellij-session-manager` | 1 | 10 KiB |
+| `zustand-mutative-pattern` | 2 | 12 KiB |
+
 <!--endregion-->
 
 ## References
